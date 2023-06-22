@@ -57,7 +57,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
       if (propName === "answers" && this[propName]) {
         this.correctAnswers = this[propName].split(",");
         for (var i = 0; i < this.correctAnswers.length; i++) {
-          this.correctAnswers[i] = this.correctAnswers[i].toUpperCase();
+          this.correctAnswers[i] = this.correctAnswers[i].trim().toUpperCase();
         }
       }
       if (
@@ -96,7 +96,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
       css`
         :host {
           display: grid;
-          padding: 16px;
+          padding: 8px;
           margin: 0px;
           border: 2px solid black;
         }
@@ -105,9 +105,9 @@ export class MarkTheWords extends I18NMixin(LitElement) {
         }
         button {
           display: inline-flex;
-          font-size: var(--x-ample-font-size, 24px);
-          padding: 8px 16px;
-          margin: 0 4px;
+          font-size: var(--x-ample-font-size, 20px);
+          padding: 4px 8px;
+          margin: 0px 2px;
           border-radius: none;
           transition: outline 0.2s ease-in-out;
         }
@@ -130,31 +130,29 @@ export class MarkTheWords extends I18NMixin(LitElement) {
         button[data-status="correct"]::after {
           content: "+1";
           color: green;
-          font-size: 14px;
-          font-weight: bold;
+          font-size: 12px;
           border-radius: 50%;
-          border: 3px solid green;
-          padding: 6px;
-          margin-left: 14px;
-          line-height: 14px;
-          height: 14px;
-          width: 14px;
+          border: 1px solid green;
+          padding: 3px;
+          margin-left: 4px;
+          line-height: 16px;
+          height: 16px;
+          width: 16px;
         }
         button[data-status="incorrect"] {
           outline: 3px solid purple;
         }
         button[data-status="incorrect"]::after {
           content: "-1";
-          font-size: 14px;
           color: purple;
-          font-weight: bold;
+          font-size: 12px;
           border-radius: 50%;
-          border: 3px solid purple;
-          padding: 6px;
-          margin-left: 14px;
-          line-height: 14px;
-          height: 14px;
-          width: 14px;
+          border: 1px solid purple;
+          padding: 3px;
+          margin-left: 4px;
+          line-height: 16px;
+          height: 16px;
+          width: 16px;
         }
         button[check-mode="active"] {
           pointer-events: none;
