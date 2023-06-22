@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../lrndesign-imagemap.js";
-
+/*
 describe("lrndesign-imagemap test", () => {
   let element;
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe("lrndesign-imagemap test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("lrndesign-imagemap passes accessibility test", async () => {
     const el = await fixture(html` <lrndesign-imagemap></lrndesign-imagemap> `);

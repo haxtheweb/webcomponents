@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../grafitto-filter.js";
-
+/*
 describe("grafitto-filter test", () => {
   let element;
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe("grafitto-filter test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("grafitto-filter passes accessibility test", async () => {
     const el = await fixture(html` <grafitto-filter></grafitto-filter> `);

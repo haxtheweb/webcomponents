@@ -146,6 +146,7 @@ class A11yGifPlayer extends I18NMixin(
           <div id="container">
             <slot hidden></slot>
             <img
+              id="gif"
               src="${this.__gifLoaded && this.__playing
                 ? this.src
                 : this.srcWithoutAnimation}"
@@ -168,6 +169,7 @@ class A11yGifPlayer extends I18NMixin(
 
             <button
               id="button"
+              aria-label="${this.t.toggleAnimation}"
               aria-controls="gif"
               aria-pressed="${this.__playing ? "true" : "false"}"
               @click="${this.toggle}"

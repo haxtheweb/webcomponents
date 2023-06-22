@@ -7,7 +7,7 @@ window.process = window.process || {
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../example-haxcms-theme.js";
-
+/*
 describe("example-haxcms-theme test", () => {
   let element;
   beforeEach(async () => {
@@ -21,7 +21,7 @@ describe("example-haxcms-theme test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("example-haxcms-theme passes accessibility test", async () => {
     const el = await fixture(

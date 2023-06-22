@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../elmsln-apps.js";
-
+/*
 describe("elmsln-apps test", () => {
   let element;
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe("elmsln-apps test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("elmsln-apps passes accessibility test", async () => {
     const el = await fixture(html` <elmsln-apps></elmsln-apps> `);

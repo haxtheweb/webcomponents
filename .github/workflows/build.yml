@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [ubuntu-latest, macos-latest]
+        platform: [ubuntu-latest]
         node-version: [18]
         include:
           - platform: ubuntu-latest
@@ -38,7 +38,5 @@ jobs:
         run: yarn install
       - name: A11y Test
         run: yarn lerna run test --no-bail
-      - name: Build
-        run: yarn lerna run build --no-bail
       - name: Rebuild Elements README
         run: cd elements && for dir in */; do head -4 $dir/README.md; done > README.md

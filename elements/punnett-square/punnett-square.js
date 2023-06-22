@@ -94,20 +94,35 @@ class PunnettSquare extends LitElement {
         }
 
         table {
-          border-collapse: var(--punnett-square-table-border-collapse, collapse);
+          border-collapse: var(
+            --punnett-square-table-border-collapse,
+            collapse
+          );
           width: var(--punnett-square-table-width, 100%);
           border: var(--punnett-square-table-border);
         }
 
         th {
-          border: var(--punnett-square-th-border, var(--punnett-square-table-border));
-          padding: var(--punnett-square-th-padding, var(--punnett-square-table-padding));
+          border: var(
+            --punnett-square-th-border,
+            var(--punnett-square-table-border)
+          );
+          padding: var(
+            --punnett-square-th-padding,
+            var(--punnett-square-table-padding)
+          );
         }
 
         td {
-          border: var(--punnett-square-td-border, var(--punnett-square-table-border));
+          border: var(
+            --punnett-square-td-border,
+            var(--punnett-square-table-border)
+          );
           text-align: var(--punnett-square-table-text-align, center);
-          padding: var(--punnett-square-td-padding, var(--punnett-square-table-padding));
+          padding: var(
+            --punnett-square-td-padding,
+            var(--punnett-square-table-padding)
+          );
         }
 
         #inputs {
@@ -122,42 +137,50 @@ class PunnettSquare extends LitElement {
 
         paper-input {
           --paper-input-container-input: {
-            font-size: var(--punnett-square-paper-input-font-size, --punnett-square-input-font-size);
-            text-align: var(--punnett-square-paper-input-text-align, --punnett-square-input-text-align);
+            font-size: var(
+              --punnett-square-paper-input-font-size,
+              --punnett-square-input-font-size
+            );
+            text-align: var(
+              --punnett-square-paper-input-text-align,
+              --punnett-square-input-text-align
+            );
           }
         }
       </style>
       <div id="inputs">
-        Variant1: <div class="input">${
-          this.editable
+        Variant1:
+        <div class="input">
+          ${this.editable
             ? html`
                 <paper-input
                   value="${this.variant1}"
                   @value-changed=${(e) => (this.variant1 = e.detail.value)}
                 ></paper-input>
               `
-            : html` ${this.variant1} `
-        }</div>
-        Variant2: <div class="input">${
-          this.editable
+            : html` ${this.variant1} `}
+        </div>
+        Variant2:
+        <div class="input">
+          ${this.editable
             ? html`
                 <paper-input
                   value="${this.variant2}"
                   @value-changed=${(e) => (this.variant2 = e.detail.value)}
                 ></paper-input>
               `
-            : html` ${this.variant2} `
-        }</div>
+            : html` ${this.variant2} `}
+        </div>
       </div>
 
       <table>
         <thead>
           <tr>
-            <th></th>
             ${value1.map(
               (allele1) => html` ${allele1.map((i) => html` <th>${i}</th> `)} `
             )}
           </tr>
+        </thead>
         <tbody>
           ${value2.map((allele2, index) =>
             allele2.map(
@@ -180,7 +203,6 @@ class PunnettSquare extends LitElement {
             )
           )}
         </tbody>
-        </thead>
       </table>
     `;
   }

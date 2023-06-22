@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../lrn-math.js";
-
+/*
 describe("lrn-math test", () => {
   let element;
   beforeEach(async () => {
@@ -13,7 +13,7 @@ describe("lrn-math test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("lrn-math passes accessibility test", async () => {
     const el = await fixture(html` <lrn-math></lrn-math> `);

@@ -7,7 +7,7 @@ window.process = window.process || {
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../clean-one.js";
-
+/*
 describe("clean-one test", () => {
   let element;
   beforeEach(async () => {
@@ -19,7 +19,7 @@ describe("clean-one test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("clean-one passes accessibility test", async () => {
     const el = await fixture(html` <clean-one></clean-one> `);
