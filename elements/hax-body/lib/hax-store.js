@@ -2074,6 +2074,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-refresh-tray-form": "refreshActiveNodeForm",
+      "rich-text-editor-prompt-open": "_richTextEditorPromptOpen",
+      "rich-text-editor-prompt-close": "_richTextEditorPromptClose",
     };
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {
@@ -2255,6 +2257,23 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       )}`,
       "_blank"
     );
+  }
+
+  _richTextEditorPromptOpen() {
+    // verify that we are not overflowing, a lot of themes have this ability
+    // which renders hax popups very difficult / unreliable to work with
+    const compStyles = window.getComputedStyle(document.body);
+    if (compStyles.getPropertyValue("overflow") == "hidden") {
+      this.__overflowHiddenOnOpen = compStyles.getPropertyValue("overflow");
+      document.body.style.overflow = "auto";
+    }
+  }
+  // set things back on close event
+  _richTextEditorPromptClose() {
+    if (this.__overflowHiddenOnOpen) {
+      document.body.style.overflow = this.__overflowHiddenOnOpen;
+      this.__overflowHiddenOnOpen = null;
+    }
   }
 
   /**
@@ -2549,11 +2568,11 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           {
             attribute: "target",
             title: "Target",
-            description: "Where to place the link.",
+            description: "Where to open the link.",
             inputMethod: "select",
             options: {
-              _blank: "New window - _blank",
               "": "Same window",
+              _blank: "New window - _blank",
               _top: "Top window - _top",
               _parent: "Parent window - _parent",
             },

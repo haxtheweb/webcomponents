@@ -346,8 +346,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.linkButton,
       label: this.t.linkButton,
-      allowTarget:
-        !!HAXStore.activeHaxBody && !!HAXStore.activeHaxBody.allowLinkTarget,
+      allowTarget: true,
     };
   }
   /**

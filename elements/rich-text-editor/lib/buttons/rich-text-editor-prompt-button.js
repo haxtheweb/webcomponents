@@ -78,6 +78,9 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           property: "innerHTML",
           title: "Text",
           inputMethod: "textfield",
+          description: "Text currently selected",
+          disabled: true,
+          required: true,
         },
       ];
       this.tagsList = "span";
@@ -140,12 +143,20 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
     }
     /**
      * closes prompt
-     * @event rich-text-editor-prompt-closed
+     * @event rich-text-editor-prompt-close
      *
      */
     close() {
       this.__highlight.unwrap(this.range);
       if (this.range) this.range.collapse();
+      this.dispatchEvent(
+        new CustomEvent("rich-text-editor-prompt-close", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
     }
 
     /**

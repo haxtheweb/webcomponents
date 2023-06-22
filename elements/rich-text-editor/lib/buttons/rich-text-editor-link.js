@@ -50,7 +50,10 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       {
         property: "href",
         title: "Link",
+        description: "The URL for this video.",
+        required: true,
         inputMethod: "url",
+        validationType: "url",
         autoValidate: true,
       },
     ];
@@ -64,6 +67,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.value = {
       ...super.value,
       href: null,
+      target: "_blank",
     };
     this.shortcutKeys = "ctrl+k";
   }
@@ -74,7 +78,10 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       {
         property: "href",
         title: "Link",
+        description: "The URL for this video.",
+        required: true,
         inputMethod: "url",
+        validationType: "url",
         autoValidate: true,
       },
     ];
@@ -91,7 +98,14 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
               {
                 property: "target",
                 title: "Target",
-                inputMethod: "textfield",
+                description: "Where to open the link.",
+                inputMethod: "select",
+                options: {
+                  "": "Same window",
+                  _blank: "New window - _blank",
+                  _top: "Top window - _top",
+                  _parent: "Parent window - _parent",
+                },
               },
             ];
       }
