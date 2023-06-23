@@ -366,7 +366,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             bottom: unset;
           }
           app-hax-top-bar::part(top-bar) {
-            grid-template-columns: 5% 85% 10%;
+            display: grid;
           }
           #undo,
           #redo {

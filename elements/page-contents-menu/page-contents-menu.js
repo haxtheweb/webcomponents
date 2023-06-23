@@ -33,6 +33,9 @@ class PageContentsMenu extends LitElement {
           padding: 0;
           margin: 0;
         }
+        :host([mobile]) .wrapper {
+          width: unset;
+        }
         .wrapper {
           display: inline-block;
           padding: 8px;

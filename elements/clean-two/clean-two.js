@@ -256,7 +256,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         .body-wrapper .content-wrapper .content {
           margin: 0;
-          padding: 0 64px 32px 64px;
+          padding: 0 16px 32px 64px;
         }
         
         nav {
@@ -303,6 +303,7 @@ class CleanTwo extends HAXCMSOperationButtons(
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
           }
+
         }
         site-menu {
           --site-menu-font-size: 15px;
@@ -370,6 +371,14 @@ class CleanTwo extends HAXCMSOperationButtons(
           font-size: 1.5em;
           margin-right: -52px;
         }
+        .header site-menu-content[mobile] {
+          position: absolute;
+          right: 18px;
+          top: 36px;
+          margin-right: 0;
+          float:unset;
+          display:block;
+        }
         .content {
           flex: 1 1 auto;
           margin: 0px 16px;
@@ -384,26 +393,18 @@ class CleanTwo extends HAXCMSOperationButtons(
             height: 0px;
           }
           site-active-title h1 {
-            height: 48px;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            width: 100%;
             word-break: break-all;
           }
         }
         @media screen and (max-width: 400px) {
           .content {
-            width: 200px;
+            min-width: 200px;
           }
           .body-wrapper {
             overflow-x: hidden;
           }
-          .header site-menu-content {
-            margin-right: -40px;
-          }
-          #haxcmsmobilemenunav {
-            min-width: 250px;
-            margin-left: 0px;
-          }
+          
           :host([menu-open]) #haxcmsmobilemenubutton{
             margin-left: -52px;
           }
@@ -418,9 +419,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           } 
         }
         @media screen and (max-width: 600px) {
-          .header site-menu-content {
-            margin-right: -40px;
-          }
           .link-actions .inner {
             display: block;
           }
