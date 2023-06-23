@@ -610,19 +610,21 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     }
     autorun(() => {
       localStorageSet("app-hax-darkMode", toJS(store.darkMode));
-      if (toJS(store.darkMode)) {
-        document.body.classList.add("dark-mode");
-        store.toast("I'm ascared of the dark", 2000, { fire: true });
-        this.dark = true;
-        SuperDaemonInstance.dark = true;
-        SuperDaemonInstance.toastInstance.darkMode = true;
-      } else {
-        document.body.classList.remove("dark-mode");
-        store.toast("Sunny day it is", 2000, { hat: "random" });
-        this.dark = false;
-        SuperDaemonInstance.dark = false;
-        SuperDaemonInstance.toastInstance.darkMode = false;
-      }
+      requestAnimationFrame(() => {
+        if (toJS(store.darkMode)) {
+          document.body.classList.add("dark-mode");
+          store.toast("I'm ascared of the dark", 2000, { fire: true });
+          this.dark = true;
+          SuperDaemonInstance.dark = true;
+          SuperDaemonInstance.toastInstance.darkMode = true;
+        } else {
+          document.body.classList.remove("dark-mode");
+          store.toast("Sunny day it is", 2000, { hat: "random" });
+          this.dark = false;
+          SuperDaemonInstance.dark = false;
+          SuperDaemonInstance.toastInstance.darkMode = false;
+        }
+      });
     });
     autorun(() => {
       const mode = toJS(store.appMode);
@@ -860,14 +862,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           left: 0;
           position: fixed;
         }
-        @media (max-width: 780px) {
+        @media (max-width: 640px) {
           app-hax-top-bar::part(top-bar) {
-            grid-template-columns: 20% 20% 60%;
+            grid-template-columns: 0% 35% 65%;
           }
-        }
-        @media (max-width: 600px) {
-          app-hax-top-bar::part(top-bar) {
-            grid-template-columns: 10% 30% 60%;
+          simple-tooltip {
+            --simple-tooltip-font-size: 10px;
           }
         }
         .label {
@@ -1014,9 +1014,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           }
           app-hax-site-button {
             --app-hax-site-button-font-size: 12px;
-          }
-          app-hax-site-bar {
-            --main-banner-width: 80vw;
           }
         }
         @media (max-height: 500px) {

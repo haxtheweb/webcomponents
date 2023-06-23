@@ -86,6 +86,12 @@ export class AppHaxTopBar extends LitElement {
         height: var(--top-bar-height);
         vertical-align: text-top;
       }
+      @media (max-width: 640px) {
+        .topBar .left {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
     `;
   }
 

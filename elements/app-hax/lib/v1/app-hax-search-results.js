@@ -99,10 +99,8 @@ export class AppHaxSearchResults extends SimpleColors {
           app-hax-site-bar a {
             font-size: 14px;
           }
-        }
-        @media (max-width: 400px) {
           app-hax-site-bar {
-            --main-banner-width: 90vw;
+            --main-banner-width: 70vw;
           }
         }
         span[slot="band"] {
