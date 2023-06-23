@@ -257,6 +257,11 @@ class HaxTray extends I18NMixin(
           flex-direction: row;
           transition: left 0.6s ease-in-out;
         }
+        :host([element-align="right"]) .wrapper {
+          right: -1000px;
+          flex-direction: row;
+          transition: right 0.6s ease-in-out;
+        }
         :host([tray-detail="view-source"]) .detail {
           width: 50vw;
           height: 50vh;
