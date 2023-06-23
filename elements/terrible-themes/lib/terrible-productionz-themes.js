@@ -254,7 +254,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                               </td>
                               <td>
                                 <p class="posted">
-                                  Title: ${this.activeItem.title}
+                                  Title: ${this.activeItem && this.activeItem.title ? this.activeItem.title : ``}
                                 </p>
                               </td>
                               <td align="right">
