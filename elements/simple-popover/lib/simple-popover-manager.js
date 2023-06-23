@@ -96,6 +96,7 @@ class SimplePopoverManager extends LitElement {
         part="simple-popover"
         ?hidden="${!this.opened}"
         position="${this.position}"
+        fit-to-visible-bounds
       >
         <div class="heading" part="simple-popover-heading">
           <slot name="heading"></slot>

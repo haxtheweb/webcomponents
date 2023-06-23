@@ -60,7 +60,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           background-color: green;
           border: 4px solid black;
           border-radius: 8px;
-          font-family: "Press Start 2P", sans-serif;
+          font-family: sans-serif;
         }
         button.hax-modal-btn.cancel {
           background-color: red;

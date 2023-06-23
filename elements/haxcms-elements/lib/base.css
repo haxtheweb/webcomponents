@@ -103,7 +103,7 @@ simple-modal::part(title) {
   text-align: center;
   font-size: 24px;
   color: white;
-  font-family: "Press Start 2P", sans-serif;
+  font-family: sans-serif;
   line-height: 24px;
   padding: 4px;
 }
@@ -115,7 +115,7 @@ simple-modal button.hax-modal-btn {
   background-color: green;
   border: 4px solid black;
   border-radius: 8px;
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: sans-serif;
 }
 simple-modal button.hax-modal-btn.cancel {
   background-color: red;
@@ -153,6 +153,17 @@ hax-tray {
   body, html, :root {
     --hax-panel-padding: 8px 0 8px 50px;
     --hax-base-styles-p-font-size: 24px;
+  }
+  simple-modal::part(title) {
+    font-size: 18px;
+    line-height: 18px;
+    padding: 4px;
+    font-family: sans-serif;
+  }
+  simple-modal button.hax-modal-btn {
+    font-size: 20px;
+    padding: 4px;
+    font-family: sans-serif;
   }
 }
 

@@ -428,23 +428,24 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       style: `
       simple-popover-manager::part(simple-popover) {
         max-width: 250px;
+        font-family: sans-serif;
       }
       simple-popover-manager button {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: sans-serif;
         font-size: 12px;
         margin: 0px 2px;
         color: var(--simple-colors-default-theme-grey-12);
       }
       simple-popover-manager p {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: sans-serif;
         padding: 0;
         margin: 0;
         width: 250px;
-        font-size: 12px;
+        font-size: 10px;
         line-height: 20px;
       }
       simple-popover-manager h1 {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: sans-serif;
         margin: 0;
         font-size: 12px;
         width: 250px;
@@ -454,15 +455,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       simple-popover-manager::part(simple-popover-heading) {
         color: black;
         background-color: white;
+        font-family: sans-serif;
       }
       body.dark-mode simple-popover-manager::part(simple-popover-body),
       body.dark-mode simple-popover-manager::part(simple-popover-heading) {
         color: white;
         background-color: black;
+        font-family: sans-serif;
       }
       body.dark-mode simple-popover-manager simple-icon-button-lite {
         color: white;
         background-color: black;
+        font-family: sans-serif;
       }
       `,
     });
@@ -863,9 +867,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           position: fixed;
         }
         @media (max-width: 640px) {
-          app-hax-top-bar::part(top-bar) {
-            grid-template-columns: 0% 35% 65%;
-          }
           simple-tooltip {
             --simple-tooltip-font-size: 10px;
           }
@@ -1179,21 +1180,21 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             class="soundToggle"
             id="soundtb"
             @click="${soundToggle}"
+            data-simple-tour-stop
+            data-stop-title="data-label"
+            data-label="Sound"
           >
             <span class="wired-button-label">Toggle sound effects</span>
             <simple-icon-lite
               src="${this.soundIcon}"
               loading="lazy"
               decoding="async"
-              data-simple-tour-stop
-              data-stop-title="data-label"
-              data-label="Sound"
             >
-              <div slot="tour" data-stop-content>
+            </simple-icon-lite>
+            <div slot="tour" data-stop-content>
                 Not a fan of the (awesome) sound effects? You can mute them if
                 you prefer.
               </div>
-            </simple-icon-lite>
           </wired-button>
           <simple-tooltip for="soundtb" position="bottom" slot="right"
             >Toggle sound</simple-tooltip
