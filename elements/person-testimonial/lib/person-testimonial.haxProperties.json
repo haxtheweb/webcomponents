@@ -38,6 +38,7 @@
         "title": "Image",
         "description": "Adds image to testimonial",
         "inputMethod": "haxupload",
+        "noVoiceRecord": true,
         "icon": "editor:insert-photo"
       },
       {

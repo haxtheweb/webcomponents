@@ -197,6 +197,8 @@ class MdBlock extends LitElement {
             title: "Source",
             description: "Source file for markdown",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
+            noCamera: true,
           },
         ],
         advanced: [],

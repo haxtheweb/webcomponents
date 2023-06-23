@@ -127,6 +127,8 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
             title: "Link",
             description: "Enter a link to any resource",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
+            noCamera: true,
             required: true,
           },
           {

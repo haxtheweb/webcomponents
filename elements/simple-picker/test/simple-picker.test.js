@@ -1,6 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
-import '../lib/simple-symbol-picker.js';
+import "../lib/simple-symbol-picker.js";
 
 describe("simple-picker test", () => {
   let element;

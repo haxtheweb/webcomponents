@@ -2005,7 +2005,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       title: "Join our Community",
       icon: "hax:discord",
       priority: -100,
-      tags: ["community", "discord","chat", "help"],
+      tags: ["community", "discord", "chat", "help"],
       value: {
         target: this,
         method: "_openExternalLink",
@@ -2036,7 +2036,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation"],
+        args: [
+          "https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation",
+        ],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
@@ -2116,7 +2118,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-refresh-tray-form": "refreshActiveNodeForm",
       "rich-text-editor-prompt-open": "_richTextEditorPromptOpen",
       "rich-text-editor-prompt-close": "_richTextEditorPromptClose",
-      "super-daemon-command-context-changed": "_superDaemonCommandContextChanged",
+      "super-daemon-command-context-changed":
+        "_superDaemonCommandContextChanged",
       "super-daemon-context-changed": "_superDaemonContextChanged",
     };
     // prevent leaving if we are in editMode
@@ -2327,7 +2330,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         },
       ];
     } else if (e.detail.value.indexOf("HAX") !== -1) {
-        SuperDaemonInstance.questionTags = [
+      SuperDaemonInstance.questionTags = [
         {
           value: "CMS/action/save",
           label: "Save current page",
@@ -2345,21 +2348,19 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           label: "HELP!",
         },
       ];
-    }
-    else {
+    } else {
       SuperDaemonInstance.questionTags = [
-      {
-        value: "*",
-        label: "List everything I can do",
-      },
-      {
-        value: "?",
-        label: "HELP!",
-      },
-    ];
+        {
+          value: "*",
+          label: "List everything I can do",
+        },
+        {
+          value: "?",
+          label: "HELP!",
+        },
+      ];
+    }
   }
-  }
-
 
   _richTextEditorPromptOpen() {
     // verify that we are not overflowing, a lot of themes have this ability
@@ -2459,6 +2460,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             title: "Source",
             description: "The URL for this video.",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
             icon: "link",
             required: true,
             validationType: "url",
@@ -2662,7 +2664,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           {
             attribute: "href",
             title: "Link",
-            description: "The URL for this video.",
+            description: "The URL for the link",
             inputMethod: "haxupload",
             required: true,
             validationType: "url",
@@ -2681,8 +2683,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           },
           DataStyleDecoration,
         ],
-        advanced: [
-        ],
+        advanced: [],
         developer: [
           {
             attribute: "title",

@@ -95,7 +95,6 @@ class AudioPlayer extends VideoPlayer {
             title: "Thumbnail image",
             description: "Optional. The URL for a thumbnail/poster image.",
             inputMethod: "haxupload",
-            noCamera: true,
             noVoiceRecord: true,
             validationType: "url",
           },

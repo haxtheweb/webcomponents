@@ -37,7 +37,8 @@
         "property": "image",
         "title": "Image",
         "description": "The image of the element",
-        "inputMethod": "haxupload"
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true
       },
       {
         "property": "alt",

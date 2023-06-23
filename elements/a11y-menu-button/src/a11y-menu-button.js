@@ -731,8 +731,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
     _handleClick(event) {
       // resolve touch vs pointer input
       if (event.pointerType === "touch") {
-      }
-      else {
+      } else {
         if (this.expanded) {
           this.close(true);
         } else {

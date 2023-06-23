@@ -80,6 +80,7 @@ class ProgressDonut extends LrndesignPie {
             title: "Image Source",
             description: "Source of image inside donut.",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
             icon: "link",
             validationType: "url",
           },

@@ -64,7 +64,9 @@ class ImageCompareSlider extends I18NMixin(
               ${this.title ? html` <h2>${this.title}</h2> ` : ``}
               <slot name="heading"></slot>
             </div>
-            <div id="description" slot="description"><slot name="description"></slot></div>
+            <div id="description" slot="description">
+              <slot name="description"></slot>
+            </div>
             <img
               slot="bottom"
               src="${this.bottomSrc}"
@@ -162,10 +164,8 @@ class ImageCompareSlider extends I18NMixin(
     });
   }
   static get haxProperties() {
-    return new URL(
-      `./lib/${this.tag}.haxProperties.json`,
-      import.meta.url
-    ).href;
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 customElements.define(ImageCompareSlider.tag, ImageCompareSlider);

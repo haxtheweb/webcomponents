@@ -177,7 +177,6 @@ class SimpleFieldsUpload extends I18NMixin(
             display: block;
           }
         }
-        
       `,
     ];
   }
@@ -279,7 +278,9 @@ class SimpleFieldsUpload extends I18NMixin(
             ?disabled="${this.disabled}"
             id="add-hidden"
             slot="add-button"
-          >${this.t.upload}..</button>
+          >
+            ${this.t.upload}..
+          </button>
           <div
             slot="drop-label"
             part="browse-area"
@@ -586,15 +587,17 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   _takeSelfie(e) {
     if (!this.camera) {
-      import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js").then(() => {
-        this.camera = document.createElement("simple-camera-snap");
-        this.camera.autoplay = true;
-        this.camera.addEventListener(
-          "simple-camera-snap-image",
-          this.__newPhotoShowedUp.bind(this)
-        );
-        this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
-      });
+      import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js").then(
+        () => {
+          this.camera = document.createElement("simple-camera-snap");
+          this.camera.autoplay = true;
+          this.camera.addEventListener(
+            "simple-camera-snap-image",
+            this.__newPhotoShowedUp.bind(this)
+          );
+          this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
+        }
+      );
     }
   }
   _voiceRecorder(e) {

@@ -35,6 +35,7 @@
         "title": "Top image",
         "description": "The base image to swipe over",
         "inputMethod": "haxupload",
+        "noVoiceRecord": true,
         "validationType": "url",
         "required": true
       },
@@ -50,6 +51,7 @@
         "title": "Bottom image",
         "description": "The base image to swipe over",
         "inputMethod": "haxupload",
+        "noVoiceRecord": true,
         "validationType": "url",
         "required": true
       },

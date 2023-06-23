@@ -231,16 +231,16 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     };
     {
       SuperDaemonInstance.questionTags = [
-      {
-        value: "*",
-        label: "List everything I can do",
-      },
-      {
-        value: "?",
-        label: "HELP!",
-      },
-    ];
-  }
+        {
+          value: "*",
+          label: "List everything I can do",
+        },
+        {
+          value: "?",
+          label: "HELP!",
+        },
+      ];
+    }
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
@@ -337,7 +337,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       title: "Join our Community",
       icon: "hax:discord",
       priority: -100,
-      tags: ["community", "discord","chat", "help"],
+      tags: ["community", "discord", "chat", "help"],
       value: {
         target: this,
         method: "_openExternalLink",
@@ -368,7 +368,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation"],
+        args: [
+          "https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation",
+        ],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
@@ -1192,9 +1194,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             >
             </simple-icon-lite>
             <div slot="tour" data-stop-content>
-                Not a fan of the (awesome) sound effects? You can mute them if
-                you prefer.
-              </div>
+              Not a fan of the (awesome) sound effects? You can mute them if you
+              prefer.
+            </div>
           </wired-button>
           <simple-tooltip for="soundtb" position="bottom" slot="right"
             >Toggle sound</simple-tooltip
@@ -1242,11 +1244,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                 part="newjourneybtn"
               ></app-hax-user-menu-button>
             </a>
-            <a
-              slot="main-menu"
-              href="home"
-              tabindex="-1"
-            >
+            <a slot="main-menu" href="home" tabindex="-1">
               <app-hax-user-menu-button
                 icon="hax:hax2022"
                 label="${this.t.listMySites}"
@@ -1329,17 +1327,13 @@ Window size: ${window.innerWidth}x${window.innerHeight}
 
   templateHome() {
     return html`<div class="start-journey">
-      <a
-        href="createSite-step-1"
-        @click="${this.startJourney}"
-        tabindex="-1"
-      >
-        <app-hax-site-button
-          label="&gt; Start new journey"
-        ></app-hax-site-button>
-      </a>
-    </div>
-    <app-hax-search-results></app-hax-search-results>`;
+        <a href="createSite-step-1" @click="${this.startJourney}" tabindex="-1">
+          <app-hax-site-button
+            label="&gt; Start new journey"
+          ></app-hax-site-button>
+        </a>
+      </div>
+      <app-hax-search-results></app-hax-search-results>`;
   }
 
   // eslint-disable-next-line class-methods-use-this

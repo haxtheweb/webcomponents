@@ -4,7 +4,10 @@ import "../audio-player.js";
 describe("elementName test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(html` <audio-player source="https://inline-audio-mocha.vercel.app/assets/whopper.mp3"></audio-player>
+    element = await fixture(html`
+      <audio-player
+        source="https://inline-audio-mocha.vercel.app/assets/whopper.mp3"
+      ></audio-player>
     `);
   });
 

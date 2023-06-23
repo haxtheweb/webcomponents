@@ -356,6 +356,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Source",
             description: "The URL for the image.",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
             required: true,
           },
           {

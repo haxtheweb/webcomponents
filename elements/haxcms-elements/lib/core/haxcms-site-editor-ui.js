@@ -1053,7 +1053,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           label="${this.t.accountInfo}"
         ></app-hax-user-menu-button> -->
           <slot slot="main-menu" name="haxcms-site-editor-ui-main-menu"></slot>
-          <a class="mysiteslink" href="${this.backLink}" slot="main-menu" part="mysiteslink" tabindex="-1">
+          <a class="mysiteslink" href="${
+            this.backLink
+          }" slot="main-menu" part="mysiteslink" tabindex="-1">
             <app-hax-user-menu-button
               icon="hax:hax2022"
               label="${this.t.mySites}"

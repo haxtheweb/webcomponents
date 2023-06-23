@@ -423,6 +423,7 @@ class LrndesignTimeline extends SimpleColors {
                 title: "Event Image",
                 description: "The path of the image.",
                 inputMethod: "haxupload",
+                noVoiceRecord: true,
               },
               {
                 property: "imagealt",

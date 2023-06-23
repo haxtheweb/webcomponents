@@ -27,8 +27,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       filterCommands: "Filter commands",
       commands: "Commands",
       loadingResults: "Loading results",
-      commonTasksText:
-        "Here are some common questions Merlin can answer..",
+      commonTasksText: "Here are some common questions Merlin can answer..",
     };
     this.opened = false;
     this.items = [];
@@ -246,8 +245,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
 
         @media screen and (max-width: 800px) {
           .voice {
-          --simple-icon-height: 30px;
-          --simple-icon-width: 30px;
+            --simple-icon-height: 30px;
+            --simple-icon-width: 30px;
           }
           .search {
             margin: 8px;
@@ -274,7 +273,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             --super-daemon-row-icon: 30px;
             margin: 4px;
           }
-          
+
           super-daemon-row::part(label-wrap) {
             min-width: 70%;
           }
@@ -288,7 +287,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             max-width: unset;
           }
           super-daemon-row::part(tags) {
-            display:none;
+            display: none;
           }
           super-daemon-row::part(path) {
             font-size: 12px;
@@ -546,13 +545,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       case "/":
       case "?":
         sdi.runProgram(value, {}, null, null, "", "");
-      break;
+        break;
       case "media":
         sdi.runProgram("/", {}, null, null, "", "sources");
-      break;
+        break;
       default:
         sdi.runProgram("*", {}, null, null, "", value);
-      break;
+        break;
     }
   }
 
