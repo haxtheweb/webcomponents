@@ -845,7 +845,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         }
         .start-journey {
           display: flex;
-          padding-top: 40px;
+          padding-top: 20px;
           justify-content: center;
         }
         app-hax-site-button {
@@ -1001,22 +1001,21 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             -webkit-animation: none;
           }
         }
-        @media (max-width: 680px) {
+        @media (max-width: 640px) {
           random-word {
-            visibility: none;
-            opacity: 0;
+            display: none;
           }
-        }
-        @media (max-height: 700px) {
           .content {
             margin-top: 4px;
           }
-          random-word {
-            visibility: none;
-            opacity: 0;
-          }
           .start-journey {
             padding-top: 0;
+          }
+          app-hax-site-button {
+            --app-hax-site-button-font-size: 12px;
+          }
+          app-hax-site-bar {
+            --main-banner-width: 80vw;
           }
         }
         @media (max-height: 500px) {
@@ -1319,21 +1318,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   }
 
   templateHome() {
-    return html` ${!this.searchTerm
-        ? html` <div class="start-journey">
-            <a
-              href="createSite-step-1"
-              @click="${this.startJourney}"
-              tabindex="-1"
-            >
-              <app-hax-site-button
-                label="&gt; Start new journey"
-              ></app-hax-site-button>
-            </a>
-          </div>`
-        : ``}
-
-      <app-hax-search-results></app-hax-search-results>`;
+    return html`<div class="start-journey">
+      <a
+        href="createSite-step-1"
+        @click="${this.startJourney}"
+        tabindex="-1"
+      >
+        <app-hax-site-button
+          label="&gt; Start new journey"
+        ></app-hax-site-button>
+      </a>
+    </div>
+    <app-hax-search-results></app-hax-search-results>`;
   }
 
   // eslint-disable-next-line class-methods-use-this

@@ -148,13 +148,42 @@ export class AppHaxSiteDetails extends SimpleColors {
         .info-icon::part(button) {
           outline: none;
         }
-        @media (max-width: 500px) {
+        @media (max-width: 640px) {
+          :host {
+            height: 140px;
+          }
           .btn-group button {
             padding: 4px;
             margin: 4px 0;
           }
           .flex-container > div {
             margin: 0px;
+          }
+          .info-headings {
+            font-size: 8px;
+          }
+          .info-date {
+            font-size: 8px;
+            line-height: 10px;
+          }
+          .info-icon {
+            --simple-icon-width: 30px;
+            --simple-icon-height: 30px;
+            padding: 2px;
+            border-radius: none;
+          }
+          .info-item {
+            font-size: 8px;
+          }
+          .flex-container {
+            margin: 2px;
+          }
+          .pre ::slotted(*) {
+            padding: 0px;
+            margin-top: 8px;
+          }
+          .info-group {
+            height: 24px;
           }
         }
       `,

@@ -104,7 +104,11 @@ export class AppHaxSearchBar extends LitElement {
       `,
     ];
   }
-
+  testKeydown(e) {
+    if (e.key === "Escape" || e.key === "Enter") {
+      this.toggleSearch();
+    }
+  }
   // eslint-disable-next-line class-methods-use-this
   search() {
     store.appEl.playSound("click");
@@ -130,6 +134,7 @@ export class AppHaxSearchBar extends LitElement {
         ?disabled="${!this.showSearch}"
         id="searchField"
         @input="${this.search}"
+        @keydown="${this.testKeydown}"
         type="text"
         placeholder="Site name.."
       />

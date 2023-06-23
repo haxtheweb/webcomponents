@@ -112,14 +112,12 @@ export class AppHaxSteps extends SimpleColors {
     if (!e.target.comingSoon) {
       const { value } = e.target;
       store.site.structure = value;
-      // for now, auto select type and theme
-      store.site.type = "own";
-      store.site.theme = "clean-one";
-      // skip theme if new user
-      /*if (toJS(store.isNewUser)) {
+      // @note for now, auto select type and theme if making a course
+      // we might want to revisit this in the future
+      if (value === "course") {
         store.site.type = "own";
         store.site.theme = "clean-one";
-      }*/
+      }
       store.appEl.playSound("click2");
     }
   }
