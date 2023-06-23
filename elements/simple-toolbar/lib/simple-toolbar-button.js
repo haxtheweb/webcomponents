@@ -196,6 +196,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.alignHorizontal = "center";
       this.disabled = false;
       this.showTextLabel = false;
+      this.toggled = false;
       this.toggles = false;
       this.radio = false;
       this.shortcutKeys = "";
@@ -268,10 +269,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       return (!!this.toggles || !!this.radio) & !!this.toggled;
     }
 
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {});
-    }
     /**
      * Called every time the element is inserted into the DOM. Useful for
      * running setup code, such as fetching resources or rendering.

@@ -165,6 +165,19 @@ class SimpleFieldsUpload extends I18NMixin(
         .vmsg-timer {
           padding: 4px;
         }
+        #add-hidden {
+          display: none;
+        }
+        /** account for mobile devices not sending this event accurately */
+        @media (max-width: 640px) {
+          #browse {
+            display: none;
+          }
+          #add-hidden {
+            display: block;
+          }
+        }
+        
       `,
     ];
   }
@@ -266,8 +279,7 @@ class SimpleFieldsUpload extends I18NMixin(
             ?disabled="${this.disabled}"
             id="add-hidden"
             slot="add-button"
-            hidden
-          ></button>
+          >${this.t.upload}..</button>
           <div
             slot="drop-label"
             part="browse-area"
@@ -319,13 +331,11 @@ class SimpleFieldsUpload extends I18NMixin(
             id="camerahole"
             ?hidden="${this.option !== "selfie"}"
             part="camera"
-            slot="drop-label"
             part="camera-preview"
           ></div>
           <div
             id="voicerecorder"
             ?hidden="${this.option !== "audio"}"
-            slot="drop-label"
             part="voice-preview"
           ></div>
           ${this.desc}
@@ -458,6 +468,11 @@ class SimpleFieldsUpload extends I18NMixin(
         attribute: "responsive-size",
         reflect: true,
       },
+      responsiveWidth: {
+        type: Number,
+        attribute: "responsive-width",
+        reflect: true,
+      },
       itemsList: {
         type: Object,
         attribute: "items-list",
@@ -571,14 +586,15 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   _takeSelfie(e) {
     if (!this.camera) {
-      import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js");
-      this.camera = document.createElement("simple-camera-snap");
-      this.camera.autoplay = true;
-      this.camera.addEventListener(
-        "simple-camera-snap-image",
-        this.__newPhotoShowedUp.bind(this)
-      );
-      this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
+      import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js").then(() => {
+        this.camera = document.createElement("simple-camera-snap");
+        this.camera.autoplay = true;
+        this.camera.addEventListener(
+          "simple-camera-snap-image",
+          this.__newPhotoShowedUp.bind(this)
+        );
+        this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
+      });
     }
   }
   _voiceRecorder(e) {

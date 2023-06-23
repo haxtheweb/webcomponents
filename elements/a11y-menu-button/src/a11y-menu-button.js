@@ -230,6 +230,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       this.position = "bottom";
       this.positionAlign = "start";
       this.offset = 0;
+      this.expanded = false;
       this.menuItems = [];
       this.keepOpenOnClick = false;
       this.noOpenOnHover = false;
@@ -728,10 +729,15 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     _handleClick(event) {
-      if (this.expanded) {
-        this.close(true);
-      } else {
-        this.focusOn(this.firstItem);
+      // resolve touch vs pointer input
+      if (event.pointerType === "touch") {
+      }
+      else {
+        if (this.expanded) {
+          this.close(true);
+        } else {
+          this.focusOn(this.firstItem);
+        }
       }
     }
     /**
