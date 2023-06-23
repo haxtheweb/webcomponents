@@ -169,6 +169,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       ...this.t,
       selectPage: "Select page",
       backToSiteList: "Back to site list",
+      listMySites: "List my sites",
       cancel: "Cancel",
       editDetails: "Page details",
       add: "Add",
@@ -1241,6 +1242,17 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                 icon="add"
                 label="${this.t.newJourney}"
                 part="newjourneybtn"
+              ></app-hax-user-menu-button>
+            </a>
+            <a
+              slot="main-menu"
+              href="home"
+              tabindex="-1"
+            >
+              <app-hax-user-menu-button
+                icon="hax:hax2022"
+                label="${this.t.listMySites}"
+                part="listMySites"
               ></app-hax-user-menu-button>
             </a>
             <!-- <app-hax-user-menu-button

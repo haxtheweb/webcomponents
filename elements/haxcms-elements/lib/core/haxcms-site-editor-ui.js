@@ -324,6 +324,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           transform: scale(0.9);
         }
 
+        .mysiteslink {
+          text-decoration: none;
+        }
+
         .logout::part(menu-button) {
           background-image: url("${unsafeCSS(LogOut)}");
           background-repeat: no-repeat;
@@ -406,14 +410,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         }
         @media (max-width: 600px) {
+          .haxLogo {
+            display: none;
+          }
+
+          .topbar-character rpg-character {
+            margin: 0 0 0px -8px;
+            height: 10px;
+            width: 48px;
+          }
           simple-toolbar {
             --simple-toolbar-button-padding: 0px;
-          }
-          .haxLogo simple-icon-lite {
-            margin: 0px;
+            justify-content: space-between;
           }
           .characterbtn-name {
-            display: none;
+            padding: 0px;
+            margin: -42px 8px 0px 0px;
+            width: 40px;
+            display: block;
+            text-overflow: ellipsis;
+            font-size: 12px;
+            font-family: auto;
+            letter-spacing: normal;
+            font-weight: normal;
           }
         }
       `,
@@ -544,6 +563,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       ...this.t,
       selectPage: "Select page",
       backToSiteList: "Back to site list",
+      mySites: "My sites",
       cancel: "Cancel",
       editDetails: "Page details",
       add: "Add",
@@ -1033,6 +1053,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           label="${this.t.accountInfo}"
         ></app-hax-user-menu-button> -->
           <slot slot="main-menu" name="haxcms-site-editor-ui-main-menu"></slot>
+          <a class="mysiteslink" href="${this.backLink}" slot="main-menu" part="mysiteslink" tabindex="-1">
+            <app-hax-user-menu-button
+              icon="hax:hax2022"
+              label="${this.t.mySites}"
+              part="mysitesbtn"
+            ></app-hax-user-menu-button>
+          </a>
           <app-hax-user-menu-button
             slot="main-menu"
             icon="add"
