@@ -114,6 +114,9 @@ class HAXCMSSiteDashboard extends SimpleColors {
           .toptext {
             font-size: 11px;
           }
+          button.hax-modal-btn {
+            font-size: 14px;
+          }
         }
         button {
           background-color: white;

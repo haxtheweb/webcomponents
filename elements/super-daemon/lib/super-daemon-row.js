@@ -273,7 +273,7 @@ export class SuperDaemonRow extends SimpleColors {
               >${this.textCharacter}</span
             >`
           : ``}
-        <div class="label-wrap">
+        <div class="label-wrap" part="label-wrap">
           <div class="action" part="action">${this.title}</div>
           <div class="path" part="path">${this.path}</div>
         </div>

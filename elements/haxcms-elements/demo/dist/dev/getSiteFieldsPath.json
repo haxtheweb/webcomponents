@@ -40,7 +40,8 @@
                 "title": "Logo",
                 "description": "Logo for thumbnails, browser tabs and used on phones",
                 "inputMethod": "haxupload",
-                "required": false
+                "required": false,
+                "noVoiceRecord": true
               }
             ]
           },
@@ -70,7 +71,8 @@
                 "description": "Banner image aplied to themes that implement one",
                 "inputMethod": "haxupload",
                 "required": false,
-                "icon": "image:image"
+                "icon": "image:image",
+                "noVoiceRecord": true
               },
               {
                 "property": "manifest-metadata-theme-variables-cssVariable",
@@ -114,7 +116,8 @@
                 "property": "manifest-metadata-author-image",
                 "title": "Image",
                 "description": "Photo",
-                "inputMethod": "haxupload"
+                "inputMethod": "haxupload",
+                "noVoiceRecord": true
               },
               {
                 "property": "manifest-metadata-author-name",
