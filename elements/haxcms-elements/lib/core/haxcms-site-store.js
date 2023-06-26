@@ -55,12 +55,10 @@ class Store {
     this.cmsSiteEditorBackend = {
       instance: null,
     };
-    this.dashboardOpened = false;
     makeObservable(this, {
       location: observable.ref, // router location in url
       editMode: observable, // global editing state
       jwt: observable, // json web token
-      dashboardOpened: observable, // if haxcms backend settings are open
       userData: observable, // user data object for logged in users
       manifest: observable, // JOS / manifest
       activeItemContent: observable, // active site content, cleaned up

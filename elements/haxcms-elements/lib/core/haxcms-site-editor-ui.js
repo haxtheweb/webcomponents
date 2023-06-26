@@ -75,23 +75,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host([edit-mode]) {
           z-index: 9999;
         }
-        :host([dashboard-opened]) {
-          left: 50vw;
-        }
-        /**
-         * Dashboard open trumps all contextual settings
-         */
-        :host([dashboard-opened]) #editbutton,
-        :host([dashboard-opened]) #editdetails,
-        :host([dashboard-opened]) #deletebutton,
-        :host([dashboard-opened]) #addbutton,
-        :host([dashboard-opened]) #outlinebutton,
-        :host([dashboard-opened]) #insightsbutton,
-        :host([dashboard-opened]) #addmenubutton,
-        :host([dashboard-opened]) #addbuttonchild,
-        :host([dashboard-opened]) #duplicatebutton {
-          display: none !important;
-        }
         :host *[hidden] {
           display: none;
         }
@@ -359,9 +342,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
 
         @media screen and (max-width: 800px) {
-          :host([dashboard-opened]) {
-            left: 90vw;
-          }
           :host([edit-mode]) {
             bottom: unset;
           }
@@ -468,7 +448,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     };
     this.rpgHat = "none";
     this.darkMode = false;
-    this.__settingsText = "";
     this.__editText = "";
     this.userMenuOpen = false;
     this.soundIcon = "";
@@ -675,10 +654,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-share-dialog.js"
-      );
-      // prettier-ignore
-      import(
-        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js"
       );
     }, 0);
   }
@@ -1006,7 +981,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 id="manifestbtn"
                 show-text-label
                 tabindex="${this.editMode ? "0" : "-1"}"
-                label="${this.__settingsText}"
+                label="${this.t.editSettings}"
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
             
@@ -1605,10 +1580,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           })
         );
       }
-      if (propName == "dashboardOpened" || propName == "t") {
-        // observer
-        this._dashboardOpenedChanged(this.dashboardOpened);
-      }
     });
   }
   _redoChanged(e) {
@@ -1666,9 +1637,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       __editText: {
         type: String,
       },
-      __settingsText: {
-        type: String,
-      },
       /**
        * small visual lock that events break on initial paint
        */
@@ -1710,11 +1678,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       icon: {
         type: String,
       },
-      dashboardOpened: {
-        type: Boolean,
-        reflect: true,
-        attribute: "dashboard-opened",
-      },
     };
   }
   connectedCallback() {
@@ -1738,10 +1701,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.icon = "hax:site-settings";
       this.__disposer.push(reaction);
     });
-    autorun((reaction) => {
-      this.dashboardOpened = toJS(store.dashboardOpened);
-      this.__disposer.push(reaction);
-    });
+
     autorun((reaction) => {
       const activeItem = toJS(store.activeItem);
       // update buttons to match since we got a state response
@@ -1760,15 +1720,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.__disposer[i].dispose();
     }
     super.disconnectedCallback();
-  }
-  _dashboardOpenedChanged(newValue) {
-    if (newValue) {
-      this.__settingsText = this.t.close;
-      this.icon = "icons:cancel";
-    } else if (!newValue) {
-      this.__settingsText = this.t.editSettings;
-      this.icon = "hax:site-settings";
-    }
   }
   /**
    * toggle state on button tap
@@ -1805,8 +1756,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: this.t.insights,
         styles: {
-          "--simple-modal-titlebar-background": "orange",
-          "--simple-modal-titlebar-color": "black",
+          "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+          "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
           "--simple-modal-width": "94vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
@@ -1868,8 +1819,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: "Are you sure you want to delete this page?",
         styles: {
-          "--simple-modal-titlebar-background": "orange",
-          "--simple-modal-titlebar-color": "black",
+          "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+          "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
           "--simple-modal-width": "25vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
@@ -1912,8 +1863,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: this.t.shareSite,
         styles: {
-          "--simple-modal-titlebar-background": "orange",
-          "--simple-modal-titlebar-color": "black",
+          "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+          "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
           "--simple-modal-width": "55vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
@@ -1943,14 +1894,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: this.t.outlineDesigner,
         styles: {
-          "--simple-modal-titlebar-background": "orange",
-          "--simple-modal-titlebar-color": "black",
+          "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+          "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
           "--simple-modal-z-index": "100000000",
           "--simple-modal-titlebar-height": "80px",
           "--simple-modal-width": "85vw",
           "--simple-modal-max-width": "85vw",
-          "--simple-modal-height": "90vh",
-          "--simple-modal-max-height": "90vh",
+          "--simple-modal-height": "85vh",
+          "--simple-modal-max-height": "85vh",
         },
         elements: {
           content: document.createElement("haxcms-outline-editor-dialog"),
@@ -1980,14 +1931,44 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: {},
       })
     );
-    window.dispatchEvent(
-      new CustomEvent("haxcms-load-site-dashboard", {
+    // prettier-ignore
+    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js").then(() => {
+      window.dispatchEvent(new CustomEvent("simple-modal-show", {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: e.target,
-      })
-    );
+        detail: {
+          title: this.t.editSettings,
+          styles: {
+            "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+            "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
+            "--simple-modal-z-index": "100000000",
+            "--simple-modal-titlebar-height": "80px",
+            "--simple-modal-width": "85vw",
+            "--simple-modal-max-width": "85vw",
+            "--simple-modal-height": "85vh",
+            "--simple-modal-max-height": "85vh",
+          },
+          elements: {
+            content: document.createElement("haxcms-site-dashboard"),
+          },
+          invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+          clone: false,
+          modal: true,
+        },
+      }));
+      // delay send so that the modal can be created
+      setTimeout(() => {
+        window.dispatchEvent(
+          new CustomEvent("haxcms-load-site-dashboard", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: e.target,
+          })
+        );          
+      }, 0);
+    });
   }
   /**
    * Edit state has changed.

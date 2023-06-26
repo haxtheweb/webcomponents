@@ -327,13 +327,6 @@ class HAXCMSSiteEditor extends LitElement {
         type: String,
         attribute: "get-form-token",
       },
-
-      /**
-       * Site dashboard element reference
-       */
-      siteDashboard: {
-        type: Object,
-      },
     };
   }
 
@@ -616,33 +609,26 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   loadSiteDashboard(e) {
-    this.__siteFieldsInvoked = e.detail; // ensure it exists as we do this on the fly and clean up constantly
-
-    if (!this.siteDashboard) {
-      let builder = document.getElementsByTagName("haxcms-site-builder")[0];
-      this.siteDashboard = document.createElement("haxcms-site-dashboard");
+    if (document.body.querySelector("haxcms-site-dashboard")) {
+      this.siteDashboard = document.body.querySelector("haxcms-site-dashboard");
       this.siteDashboard.headers = {
         Authorization: `Bearer ${this.jwt}`,
       };
+      this.siteDashboard.jwt = this.jwt;
+      this.siteDashboard.method = this.method;
+      this.siteDashboard.body = {
+        jwt: this.jwt,
+        token: this.getFormToken,
+        site: {
+          name: this.manifest.metadata.site.name,
+        },
+      };
       this.siteDashboard.loadEndpoint = this.getSiteFieldsPath;
-      this.siteDashboard.method = this.method; // insert right before the builder, you sneaky thing you
-
-      builder.parentNode.insertBefore(this.siteDashboard, builder);
+      // delay so propagation can happen into thing building the form
+      setTimeout(() => {
+        this.siteDashboard.generateRequest();        
+      }, 0);
     }
-
-    this.siteDashboard.body = {
-      jwt: this.jwt,
-      token: this.getFormToken,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-    };
-    this.siteDashboard.headers = {
-      Authorization: `Bearer ${this.jwt}`,
-    };
-    setTimeout(() => {
-      store.dashboardOpened = !store.dashboardOpened;
-    }, 300);
   }
 
   _schemaFormValueChanged(e) {
@@ -1007,7 +993,6 @@ class HAXCMSSiteEditor extends LitElement {
     // trigger a refresh of the data in node
     store.toast(`Site details saved, reloading to reflect changes!`, 2000);
     store.playSound("coin");
-    store.dashboardOpened = false;
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -1054,7 +1039,6 @@ class HAXCMSSiteEditor extends LitElement {
         detail: true,
       })
     );
-    store.dashboardOpened = false;
   }
   /**
    * Publish response
@@ -1081,7 +1065,6 @@ class HAXCMSSiteEditor extends LitElement {
       },
     });
     window.dispatchEvent(evt);
-    store.dashboardOpened = false;
   }
   /**
    * Save node event

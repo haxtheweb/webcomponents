@@ -46,14 +46,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           opacity: 0.2;
           visibility: hidden;
         }
-        :host([dashboard-opened]) {
-          display: inline-block !important;
-          margin-left: 50vw;
-          height: 100vh;
-          pointer-events: none;
-          opacity: 0.5;
-          width: 100vw;
-        }
         :host([theme-loaded]) #slot {
           opacity: 1;
           visibility: visible;
@@ -241,9 +233,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         loadOutline = true;
         loadPage = true;
       }
-      if (propName == "dashboardOpened") {
-        this._dashboardOpenedChanged(this[propName], oldValue);
-      } else if (propName == "themeData") {
+      if (propName == "themeData") {
         this._themeChanged(this[propName], oldValue);
       } else if (propName == "themeName") {
         this._themeNameChanged(this[propName], oldValue);
@@ -316,11 +306,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         type: Boolean,
         reflect: true,
         attribute: "is-logged-in",
-      },
-      dashboardOpened: {
-        type: Boolean,
-        reflect: true,
-        attribute: "dashboard-opened",
       },
       /**
        * queryParams
@@ -573,10 +558,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     window.dispatchEvent(new Event("resize"));
     setTimeout(() => {
       autorun((reaction) => {
-        this.dashboardOpened = toJS(store.dashboardOpened);
-        this.__disposer.push(reaction);
-      });
-      autorun((reaction) => {
         this.themeData = toJS(store.themeData);
         if (this.themeData) {
           // special support for "format" in the URL dictating the possible output format
@@ -608,15 +589,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         this.__disposer.push(reaction);
       });
     }, 0);
-  }
-  _dashboardOpenedChanged(newValue, oldValue) {
-    if (newValue) {
-      this.setAttribute("aria-hidden", "aria-hidden");
-      this.setAttribute("tabindex", "-1");
-    } else if (!newValue && oldValue) {
-      this.removeAttribute("aria-hidden");
-      this.removeAttribute("tabindex");
-    }
   }
   /**
    * Detached life cycle
@@ -902,12 +874,8 @@ window.HAXme = function (context = null) {
   }
   // apply context
   if (document.body) {
-    document.body.getElementsByTagName(
-      "haxcms-editor-builder"
-    )[0].__appliedContext = false;
-    document.body
-      .getElementsByTagName("haxcms-editor-builder")[0]
-      .applyContext(context);
+    document.body.querySelector("haxcms-editor-builder").__appliedContext = false;
+    document.body.querySelector("haxcms-editor-builder").applyContext(context);
   }
 };
 

@@ -36,7 +36,6 @@ class SimpleFieldsUpload extends I18NMixin(
         :host {
           pointer-events: all;
           overflow: visible;
-          transition: 0.3s all ease;
           --simple-login-camera-aspect: 1.777777777777;
           --simple-camera-snap-color: var(--simple-fields-color, currentColor);
           --simple-camera-snap-background: var(
@@ -80,7 +79,6 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         #upload-options {
           position: relative;
-          transition: height 0.3s linear;
         }
         div[slot="drop-label"] > * {
           flex: 0 1 auto;
