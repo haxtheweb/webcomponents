@@ -41,6 +41,12 @@
         "noVoiceRecord": true
       },
       {
+        "property": "title",
+        "title": "Title",
+        "description": "The title of the element",
+        "inputMethod": "textfield"
+      },
+      {
         "property": "alt",
         "title": "Alt Text",
         "description": "Add alt text to the image",
@@ -83,19 +89,13 @@
         "title": "Dark Theme",
         "description": "Enable Dark Theme",
         "inputMethod": "boolean"
-      },
-      {
-        "property": "link",
-        "title": "More link",
-        "description": "Link to additional information",
-        "inputMethod": "textfield"
       }
     ],
     "advanced": [
       {
-        "property": "title",
-        "title": "Title (Deprecated)",
-        "description": "The title of the element",
+        "property": "link",
+        "title": "More link",
+        "description": "Link to additional information",
         "inputMethod": "textfield"
       }
     ]

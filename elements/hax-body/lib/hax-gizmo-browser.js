@@ -228,7 +228,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       // and then tell the pop up it should look at and re-clone it's light dom
       setTimeout(() => {
         e.detail.openedChanged(true);
-      }, 0);
+      }, 10);
     }
   }
   /**

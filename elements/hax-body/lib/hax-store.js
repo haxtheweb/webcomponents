@@ -1082,7 +1082,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         case "hax-size-change":
           if (detail.value == 100) {
             this.activeNode.style.width = null;
-          } else {
+          }
+          else if (detail.value > 100) {
+            this.activeNode.style.width = null;          
+          }
+          else {
             this.activeNode.style.width = detail.value + "%";
           }
           changed = true;
