@@ -178,6 +178,10 @@ class SimpleFieldsUpload extends I18NMixin(
           #add-hidden {
             display: block;
           }
+          vaadin-upload::part(file-list) {
+            max-height: 48px;
+            font-size: 8px;
+          }
         }
       `,
     ];
