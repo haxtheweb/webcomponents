@@ -665,9 +665,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           :host {
             display: inline-flex;
             white-space: nowrap;
-            transition: all 0.5s;
             z-index: 1;
-            transition: z-index 0s;
           }
           :host(:hover),
           :host(:focus-wthin) {
@@ -736,7 +734,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             min-height: var(--simple-toolbar-button-height, 24px);
             padding: var(--simple-toolbar-button-padding, 1px);
             flex: var(--simple-toolbar-button-flex, 0 0 auto);
-            transition: all 0.5s;
             align-items: var(--simple-toolbar-button-align, center);
             justify-content: var(--simple-toolbar-button-justify, center);
           }
