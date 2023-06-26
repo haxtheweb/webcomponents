@@ -174,11 +174,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   getRange() {
     let sel = this.getSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
+    if (sel && sel.getRangeAt && sel.rangeCount) {
       return sel.getRangeAt(0);
     } else if (sel) {
       return sel;
-    } else false;
+    } else {
+      return false;
+    }
   }
 
   /**
