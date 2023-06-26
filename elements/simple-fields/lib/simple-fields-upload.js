@@ -153,6 +153,8 @@ class SimpleFieldsUpload extends I18NMixin(
           --simple-camera-snap-button-container-z-index: 5;
           --simple-camera-snap-button-border-radius: 100%;
           --simple-camera-snap-button-opacity: 0.7;
+          max-width: 250px;
+          margin: 0 auto;
         }
 
         /** voice stuff which is in lite dom below */
