@@ -76,6 +76,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   }
   constructor() {
     super();
+    this.activePreview = null;
     this.daemonKeyCombo = null;
     autorun(() => {
       this.daemonKeyCombo = toJS(HAXStore.daemonKeyCombo);
@@ -122,9 +123,11 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       ...super.properties,
       categories: { type: Array },
       recentGizmoList: { type: Array },
+      activePreview: { type: Number },
     };
   }
   closePopover() {
+    this.activePreview = null;
     let popover = window.SimplePopoverManager.requestAvailability();
     popover.opened = false;
   }
@@ -143,7 +146,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       <a11y-collapse id="recent" heading="Recent" heading-button expanded>
         <simple-button-grid columns="5" always-expanded part="grid">
           ${this.recentGizmoList.map(
-            (gizmo, i) => html` <simple-popover-selection event="hover">
+            (gizmo, i) => html` <simple-popover-selection data-index="${i}" @opened-changed="${this._hoverForPreviewChange}" event="hover">
               <hax-tray-button
                 small
                 show-text-label
@@ -161,10 +164,12 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 part="grid-button"
                 slot="button"
               ></hax-tray-button>
+              ${this.activePreview === parseInt(i) ? html`
               <hax-element-demo
                 render-tag="${gizmo.tag}"
                 slot="options"
               ></hax-element-demo>
+              ` : ``}
             </simple-popover-selection>`
           )}
         </simple-button-grid>
@@ -178,7 +183,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             ${this.filtered.map(
               (gizmo, i) =>
                 html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
-                  ? html` <simple-popover-selection event="hover">
+                  ? html` <simple-popover-selection data-index="${i}" @opened-changed="${this._hoverForPreviewChange}" event="hover">
                       <hax-tray-button
                         show-text-label
                         is-current-item
@@ -195,10 +200,12 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                         part="grid-button"
                         slot="button"
                       ></hax-tray-button>
-                      <hax-element-demo
-                        render-tag="${gizmo.tag}"
-                        slot="options"
-                      ></hax-element-demo>
+                      ${this.activePreview === parseInt(i) ? html`
+                        <hax-element-demo
+                          render-tag="${gizmo.tag}"
+                          slot="options"
+                        ></hax-element-demo>
+                        ` : ``}
                     </simple-popover-selection>`
                   : ``}`
             )}
@@ -208,6 +215,21 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   }
   static get tag() {
     return "hax-gizmo-browser";
+  }
+  // react to "opened" changing on the popover
+  _hoverForPreviewChange(e) {
+    const popover = e.detail;
+    // this is open
+    if (popover.opened) {
+      this.activePreview = parseInt(popover.dataset.index);
+      // @notice
+      // timing hack because the act of opening the element triggers a light dom rebuild
+      // in which the element is not yet visible, so we need to wait a tick
+      // and then tell the pop up it should look at and re-clone it's light dom
+      setTimeout(() => {
+        e.detail.openedChanged(true);
+      }, 0);
+    }
   }
   /**
    * Drag start so we know what target to set
