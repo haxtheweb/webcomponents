@@ -4,7 +4,7 @@
   "canPosition": true,
   "canEditSource": true,
   "gizmo": {
-    "title": "Blockquote",
+    "title": "Image Blockquote",
     "description": "A quote well designed with an optional image",
     "icon": "editor:format-quote",
     "color": "orange",
