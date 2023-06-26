@@ -87,12 +87,19 @@ export class AppHaxSearchResults extends SimpleColors {
         .description {
           max-height: 64px;
           overflow: hidden;
+          max-width: 80%;
           text-overflow: ellipsis;
+          word-break: break-all;
         }
 
         @media (max-width: 800px) {
           app-hax-site-bar {
             --main-banner-width: 60vw;
+          }
+          .description {
+            max-height: 24px;
+            font-size: 8px;
+            font-family: sans-serif;
           }
         }
         @media (max-width: 640px) {
