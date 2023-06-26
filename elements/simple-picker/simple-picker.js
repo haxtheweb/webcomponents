@@ -259,7 +259,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             transform: var(
               --simple-picker-expanded-icon-transform,
               rotate(0deg)
-            );--simple-picker-color-active
+            );
             transition: transform 0.25s;
           }
 

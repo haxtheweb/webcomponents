@@ -472,7 +472,6 @@ export const HaxElementizer = {
             element: "simple-icon-picker",
             attributes: {
               autofocus: true,
-              justify: true,
             },
             properties: {
               options: "icons",
