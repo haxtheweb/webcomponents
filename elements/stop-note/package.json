@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.5",
+  "version": "7.0.10",
   "description": "Automated conversion of stop-note/",
   "repository": {
     "type": "git",
@@ -41,14 +41,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/schema-behaviors": "^7.0.5",
-    "@lrnwebcomponents/simple-icon": "^7.0.5",
+    "@lrnwebcomponents/schema-behaviors": "^7.0.10",
+    "@lrnwebcomponents/simple-icon": "^7.0.10",
     "@lrnwebcomponents/utils": "^7.0.4",
     "lit": "^2.7.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.5",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.10",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
