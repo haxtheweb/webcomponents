@@ -97,6 +97,10 @@ body.dark-mode a {
   --hax-base-styles-a-color-active: var(--simple-colors-default-theme-cyan-11, #3b97e3);
 }
 
+super-daemon {
+  --simple-modal-z-index: 100000001;
+}
+
 simple-modal::part(title) {
   background-color: transparent;
   margin: 0;

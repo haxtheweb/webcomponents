@@ -193,7 +193,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       type = "image";
     } else if (this.label.toLowerCase().includes("video")) {
       type = "video";
-    } else {
+    } else if (HAXStore.haxTray.activeHaxElement) {
       let tmp = HAXStore.guessGizmoType(
         HAXStore.haxTray.activeHaxElement.properties
       );
