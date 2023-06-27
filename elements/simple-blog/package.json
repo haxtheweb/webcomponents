@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.11",
+  "version": "7.0.12",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   "dependencies": {
     "@github/time-elements": "3.1.4",
     "@lrnwebcomponents/hax-iconset": "^7.0.11",
-    "@lrnwebcomponents/haxcms-elements": "^7.0.11",
+    "@lrnwebcomponents/haxcms-elements": "^7.0.12",
     "@lrnwebcomponents/schema-behaviors": "^7.0.11",
     "@lrnwebcomponents/simple-colors": "^7.0.11",
     "@lrnwebcomponents/simple-datetime": "^7.0.11",

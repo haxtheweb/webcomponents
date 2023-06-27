@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.11",
+  "version": "7.0.12",
   "description": "The applications of ELMSLN in one place to make it easier to work on",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
     "@lrnwebcomponents/a11y-media-player": "^7.0.11",
     "@lrnwebcomponents/chartist-render": "^7.0.11",
     "@lrnwebcomponents/citation-element": "^7.0.11",
-    "@lrnwebcomponents/cms-hax": "^7.0.11",
+    "@lrnwebcomponents/cms-hax": "^7.0.12",
     "@lrnwebcomponents/dropdown-select": "^7.0.11",
     "@lrnwebcomponents/elmsln-loading": "^7.0.11",
     "@lrnwebcomponents/full-width-image": "^7.0.11",
@@ -100,7 +100,7 @@
     "@lrnwebcomponents/wave-player": "4.0.4",
     "@lrnwebcomponents/wikipedia-query": "^7.0.11",
     "@lrnwebcomponents/word-count": "^7.0.11",
-    "@lrnwebcomponents/wysiwyg-hax": "^7.0.11",
+    "@lrnwebcomponents/wysiwyg-hax": "^7.0.12",
     "@polymer/app-route": "^3.0.2",
     "@polymer/iron-icons": "3.0.1",
     "@polymer/iron-scroll-threshold": "^3.0.1",

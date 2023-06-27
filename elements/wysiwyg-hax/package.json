@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.11",
+  "version": "7.0.12",
   "description": "Start of wysiwyg-hax fork",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/cms-hax": "^7.0.11",
+    "@lrnwebcomponents/cms-hax": "^7.0.12",
     "lit": "^2.7.5"
   },
   "devDependencies": {
