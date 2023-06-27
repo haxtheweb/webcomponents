@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.10",
+  "version": "7.0.11",
   "description": "A circle that illustrates progression via the outline of the element",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.10",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.11",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

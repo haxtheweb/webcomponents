@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.10",
+  "version": "7.0.11",
   "description": "read and write localized data elements",
   "repository": {
     "type": "git",
@@ -41,9 +41,9 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/chartist-render": "^7.0.10",
+    "@lrnwebcomponents/chartist-render": "^7.0.11",
     "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/multiple-choice": "^7.0.10",
+    "@lrnwebcomponents/multiple-choice": "^7.0.11",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

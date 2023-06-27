@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.10",
+  "version": "7.0.11",
   "description": "Simple card for displaying product info",
   "repository": {
     "type": "git",
@@ -45,8 +45,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/intersection-element": "^7.0.4",
-    "@lrnwebcomponents/simple-colors": "^7.0.10",
-    "@lrnwebcomponents/simple-icon": "^7.0.10",
+    "@lrnwebcomponents/simple-colors": "^7.0.11",
+    "@lrnwebcomponents/simple-icon": "^7.0.11",
     "lit": "^2.7.5"
   },
   "devDependencies": {

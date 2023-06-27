@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.10",
+  "version": "7.0.11",
   "description": "Render an SVG based icon",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^7.0.10",
+    "@lrnwebcomponents/simple-colors": "^7.0.11",
     "flag-icons": "6.6.4",
     "lit": "^2.7.5"
   },

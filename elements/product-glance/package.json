@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.10",
+  "version": "7.0.11",
   "description": "glance / overview of a product feature",
   "repository": {
     "type": "git",
@@ -44,8 +44,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^7.0.10",
-    "@lrnwebcomponents/simple-icon": "^7.0.10",
+    "@lrnwebcomponents/simple-colors": "^7.0.11",
+    "@lrnwebcomponents/simple-icon": "^7.0.11",
     "lit": "^2.7.5"
   },
   "devDependencies": {
