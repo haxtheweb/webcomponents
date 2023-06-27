@@ -3559,6 +3559,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           // ensure that value doesn't have " in it unencoded
           if (typeof value === "string" && value !== "") {
             value = value.replace(new RegExp('"', "g"), "&quot;");
+            value = value.replace(new RegExp('&', "g"), "&amp;");
+            value = value.replace(new RegExp('<', "g"), "&#60;");
+            value = value.replace(new RegExp('>', "g"), "&#62;");            
             propvals[nodeName] = value;
           }
           // special handling for empty string cause it might mean boolean
@@ -3630,6 +3633,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               // ensure that value doesn't have " in it unencoded
               if (typeof value === "string" && value !== "") {
                 value = value.replace(new RegExp('"', "g"), "&quot;");
+                value = value.replace(new RegExp('&', "g"), "&amp;");
+                value = value.replace(new RegExp('<', "g"), "&#60;");
+                value = value.replace(new RegExp('>', "g"), "&#62;");
                 propvals[nodeName] = value;
               }
               // special handling for empty string cause it might mean boolean
