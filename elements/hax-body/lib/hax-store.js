@@ -1878,6 +1878,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "image",
       "csv",
       "doc",
+      "document",
       "archive",
       "markdown",
       "html",
@@ -2653,7 +2654,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         handles: [],
         meta: {
           author: "W3C",
-          hidden: true,
         },
       },
       settings: {
@@ -2826,13 +2826,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           "embed",
           "https",
           "html",
-          "resource",
           "address",
         ],
         handles: [],
         meta: {
-          hidden: true,
           author: "W3C",
+          hidden: true,
         },
       },
       settings: {
