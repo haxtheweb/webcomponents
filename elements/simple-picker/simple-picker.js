@@ -71,12 +71,24 @@ const SimplePickerBehaviors = function (SuperClass) {
         ...styles,
         css`
           :host {
-            --simple-picker-background-color: var(--simple-fields-background-color);
-            --simple-picker-options-background-color: var(--simple-fields-background-color);
+            --simple-picker-background-color: var(
+              --simple-fields-background-color
+            );
+            --simple-picker-options-background-color: var(
+              --simple-fields-background-color
+            );
             --simple-picker-color: var(--simple-fields-color);
-            --simple-picker-color-active: var(--simple-fields-faded-background-color, orange);
-            --simple-picker-option-active-color: var(--simple-fields-background-color);
-            --simple-picker-option-active-background-color: var(--simple-fields-faded-background-color, var(--simple-fields-color));
+            --simple-picker-color-active: var(
+              --simple-fields-faded-background-color,
+              orange
+            );
+            --simple-picker-option-active-color: var(
+              --simple-fields-background-color
+            );
+            --simple-picker-option-active-background-color: var(
+              --simple-fields-faded-background-color,
+              var(--simple-fields-color)
+            );
             display: var(--simple-picker-display, inline-flex);
             align-items: center;
             color: var(--simple-picker-color, currentColor);

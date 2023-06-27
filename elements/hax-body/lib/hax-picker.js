@@ -105,7 +105,11 @@ class HaxPicker extends LitElement {
           !this._isFiltered(element.keywords)
             ? ""
             : html`
-            <simple-popover-selection data-index="${index}" @opened-changed="${this._hoverForPreviewChange}" event="hover">
+                <simple-popover-selection
+                  data-index="${index}"
+                  @opened-changed="${this._hoverForPreviewChange}"
+                  event="hover"
+                >
                   <hax-tray-button
                     show-text-label
                     id="picker-item-${index}"
@@ -118,13 +122,15 @@ class HaxPicker extends LitElement {
                     icon-position="top"
                     slot="button"
                   ></hax-tray-button>
-                  ${this.activePreview === parseInt(index) ? html`
-                  <hax-element-demo
-                    render-tag="${element.tag}"
-                    slot="options"
-                    active-picker-schema="${index}"
-                  ></hax-element-demo>
-                  ` : ``}
+                  ${this.activePreview === parseInt(index)
+                    ? html`
+                        <hax-element-demo
+                          render-tag="${element.tag}"
+                          slot="options"
+                          active-picker-schema="${index}"
+                        ></hax-element-demo>
+                      `
+                    : ``}
                 </simple-popover-selection>
               `
         )}

@@ -457,15 +457,15 @@
     },
     {
       "name": "hax-element-demo",
-      "description": "Attributes:\n\n  * `active-picker-schema` {`number`} - \n\n  * `render-tag` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `activePickerSchema` {`number`} - \n\n  * `renderTag` {`string`} - \n\n  * `activeSchema` {`number`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
+      "description": "Attributes:\n\n  * `render-tag` {`string`} - \n\n  * `active-picker-schema` {`number`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `renderTag` {`string`} - \n\n  * `activePickerSchema` {`number`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
-        {
-          "name": "active-picker-schema",
-          "description": "`active-picker-schema` {`number`} - \n\nProperty: activePickerSchema"
-        },
         {
           "name": "render-tag",
           "description": "`render-tag` {`string`} - \n\nProperty: renderTag\n\nDefault: null"
+        },
+        {
+          "name": "active-picker-schema",
+          "description": "`active-picker-schema` {`number`} - \n\nProperty: activePickerSchema\n\nDefault: -1"
         },
         {
           "name": "element-visible",
@@ -486,8 +486,12 @@
     },
     {
       "name": "hax-gizmo-browser",
-      "description": "`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nEvents:\n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `categories` {`any[]`} - \n\n  * `recentGizmoList` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperties:\n\n  * `daemonKeyCombo` - \n\n  * `categories` {`any[]`} - \n\n  * `value` {`string`} - \n\n  * `recentGizmoList` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multiMatch` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
+      "description": "`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nEvents:\n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `activePreview` {`number`} - \n\n  * `categories` {`any[]`} - \n\n  * `recentGizmoList` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperties:\n\n  * `activePreview` {`number`} - \n\n  * `daemonKeyCombo` - \n\n  * `categories` {`any[]`} - \n\n  * `value` {`string`} - \n\n  * `recentGizmoList` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multiMatch` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
       "attributes": [
+        {
+          "name": "activePreview",
+          "description": "`activePreview` {`number`} - \n\nProperty: activePreview\n\nDefault: null"
+        },
         {
           "name": "categories",
           "description": "`categories` {`any[]`} - \n\nProperty: categories\n\nDefault: "
@@ -598,7 +602,7 @@
     },
     {
       "name": "hax-picker",
-      "description": "`hax-picker`\nA picker for selecting an item from a list of apps / hax gizmos which require\na decision to be made. This is used when multiple things match either on upload\nin the add operation of the app or in the gizmo selection to render through,\nsuch as having multiple ways of presenting an image.\n\nEvents:\n\n  * `hax-insert-content` {`CustomEvent<any>`} - \n\n  * `hax-app-picker-selection` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `keywords` - \n\n  * `filters` {`any[]`} - \n\n  * `filter-on` {`boolean`} - \n\n  * `_elements` {`any[]`} - raw element set\n\n  * `selectionList` {`any[]`} - Refactored list for selection purposes\n\n  * `picker-type` {`string`} - Allow multiple uses\n\nProperties:\n\n  * `keywords` - \n\n  * `filters` {`any[]`} - \n\n  * `filterOn` {`boolean`} - \n\n  * `_elements` {`any[]`} - raw element set\n\n  * `selectionList` {`any[]`} - Refactored list for selection purposes\n\n  * `pickerType` {`string`} - Allow multiple uses",
+      "description": "`hax-picker`\nA picker for selecting an item from a list of apps / hax gizmos which require\na decision to be made. This is used when multiple things match either on upload\nin the add operation of the app or in the gizmo selection to render through,\nsuch as having multiple ways of presenting an image.\n\nEvents:\n\n  * `hax-insert-content` {`CustomEvent<any>`} - \n\n  * `hax-app-picker-selection` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `keywords` - \n\n  * `filters` {`any[]`} - \n\n  * `filter-on` {`boolean`} - \n\n  * `_elements` {`any[]`} - raw element set\n\n  * `selectionList` {`any[]`} - Refactored list for selection purposes\n\n  * `activePreview` {`number`} - \n\n  * `picker-type` {`string`} - Allow multiple uses\n\nProperties:\n\n  * `keywords` - \n\n  * `filters` {`any[]`} - \n\n  * `filterOn` {`boolean`} - \n\n  * `_elements` {`any[]`} - raw element set\n\n  * `selectionList` {`any[]`} - Refactored list for selection purposes\n\n  * `activePreview` {`number`} - \n\n  * `pickerType` {`string`} - Allow multiple uses",
       "attributes": [
         {
           "name": "keywords",
@@ -620,6 +624,10 @@
         {
           "name": "selectionList",
           "description": "`selectionList` {`any[]`} - Refactored list for selection purposes\n\nProperty: selectionList\n\nDefault: "
+        },
+        {
+          "name": "activePreview",
+          "description": "`activePreview` {`number`} - \n\nProperty: activePreview\n\nDefault: null"
         },
         {
           "name": "picker-type",

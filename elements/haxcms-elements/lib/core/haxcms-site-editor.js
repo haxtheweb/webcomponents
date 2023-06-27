@@ -626,7 +626,7 @@ class HAXCMSSiteEditor extends LitElement {
       this.siteDashboard.loadEndpoint = this.getSiteFieldsPath;
       // delay so propagation can happen into thing building the form
       setTimeout(() => {
-        this.siteDashboard.generateRequest();        
+        this.siteDashboard.generateRequest();
       }, 0);
     }
   }

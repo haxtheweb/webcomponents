@@ -33,7 +33,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
     this.method = "POST";
     this.loadEndpoint = "";
     this.body = {};
-    this.headers = { };
+    this.headers = {};
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
     autorun((reaction) => {
@@ -239,7 +239,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
           cancelable: true,
           detail: {},
         })
-      );        
+      );
     }, 0);
   }
   /**

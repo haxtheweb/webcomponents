@@ -874,7 +874,9 @@ window.HAXme = function (context = null) {
   }
   // apply context
   if (document.body) {
-    document.body.querySelector("haxcms-editor-builder").__appliedContext = false;
+    document.body.querySelector(
+      "haxcms-editor-builder"
+    ).__appliedContext = false;
     document.body.querySelector("haxcms-editor-builder").applyContext(context);
   }
 };

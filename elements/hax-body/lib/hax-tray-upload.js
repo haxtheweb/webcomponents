@@ -1,10 +1,7 @@
 import { html, css } from "lit";
 import { HAXStore } from "./hax-store.js";
 import { HaxUploadField } from "./hax-upload-field.js";
-import {
-  autorun,
-  toJS,
-} from "mobx";
+import { autorun, toJS } from "mobx";
 
 class HaxTrayUpload extends HaxUploadField {
   /**
@@ -37,7 +34,11 @@ class HaxTrayUpload extends HaxUploadField {
     });
   }
   _editModeChanged(editMode) {
-    if (!editMode && this.shadowRoot && this.shadowRoot.querySelector("#fileupload")) {
+    if (
+      !editMode &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#fileupload")
+    ) {
       this.shadowRoot.querySelector("#fileupload").files = [];
     }
   }

@@ -146,7 +146,11 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       <a11y-collapse id="recent" heading="Recent" heading-button expanded>
         <simple-button-grid columns="5" always-expanded part="grid">
           ${this.recentGizmoList.map(
-            (gizmo, i) => html` <simple-popover-selection data-index="${i}" @opened-changed="${this._hoverForPreviewChange}" event="hover">
+            (gizmo, i) => html` <simple-popover-selection
+              data-index="${i}"
+              @opened-changed="${this._hoverForPreviewChange}"
+              event="hover"
+            >
               <hax-tray-button
                 small
                 show-text-label
@@ -164,12 +168,14 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 part="grid-button"
                 slot="button"
               ></hax-tray-button>
-              ${this.activePreview === parseInt(i) ? html`
-              <hax-element-demo
-                render-tag="${gizmo.tag}"
-                slot="options"
-              ></hax-element-demo>
-              ` : ``}
+              ${this.activePreview === parseInt(i)
+                ? html`
+                    <hax-element-demo
+                      render-tag="${gizmo.tag}"
+                      slot="options"
+                    ></hax-element-demo>
+                  `
+                : ``}
             </simple-popover-selection>`
           )}
         </simple-button-grid>
@@ -183,7 +189,11 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             ${this.filtered.map(
               (gizmo, i) =>
                 html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
-                  ? html` <simple-popover-selection data-index="${i}" @opened-changed="${this._hoverForPreviewChange}" event="hover">
+                  ? html` <simple-popover-selection
+                      data-index="${i}"
+                      @opened-changed="${this._hoverForPreviewChange}"
+                      event="hover"
+                    >
                       <hax-tray-button
                         show-text-label
                         is-current-item
@@ -200,12 +210,14 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                         part="grid-button"
                         slot="button"
                       ></hax-tray-button>
-                      ${this.activePreview === parseInt(i) ? html`
-                        <hax-element-demo
-                          render-tag="${gizmo.tag}"
-                          slot="options"
-                        ></hax-element-demo>
-                        ` : ``}
+                      ${this.activePreview === parseInt(i)
+                        ? html`
+                            <hax-element-demo
+                              render-tag="${gizmo.tag}"
+                              slot="options"
+                            ></hax-element-demo>
+                          `
+                        : ``}
                     </simple-popover-selection>`
                   : ``}`
             )}

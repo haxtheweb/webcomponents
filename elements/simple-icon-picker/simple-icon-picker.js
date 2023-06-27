@@ -26,8 +26,8 @@ class SimpleIconPicker extends SimplePicker {
           --simple-picker-option-size: 32px;
         }
         :host([expanded]:not([disabled])) #collapse {
-            height: var(--simple-picker-options-max-height, 250px);
-          }
+          height: var(--simple-picker-options-max-height, 250px);
+        }
       `,
     ];
   }

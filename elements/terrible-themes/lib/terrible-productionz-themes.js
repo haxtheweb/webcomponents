@@ -245,16 +245,23 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                               <td align="left">
                                 <p class="posted">
                                   Posted:
-                                  ${this.activeItem && this.activeItem.metadata && this.activeItem.metadata.created ? html`<simple-datetime
-                                    unix
-                                    .timestamp="${this.activeItem.metadata
-                                      .created}"
-                                  ></simple-datetime>` : ``}
+                                  ${this.activeItem &&
+                                  this.activeItem.metadata &&
+                                  this.activeItem.metadata.created
+                                    ? html`<simple-datetime
+                                        unix
+                                        .timestamp="${this.activeItem.metadata
+                                          .created}"
+                                      ></simple-datetime>`
+                                    : ``}
                                 </p>
                               </td>
                               <td>
                                 <p class="posted">
-                                  Title: ${this.activeItem && this.activeItem.title ? this.activeItem.title : ``}
+                                  Title:
+                                  ${this.activeItem && this.activeItem.title
+                                    ? this.activeItem.title
+                                    : ``}
                                 </p>
                               </td>
                               <td align="right">
