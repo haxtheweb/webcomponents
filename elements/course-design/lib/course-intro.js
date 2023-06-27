@@ -27,14 +27,6 @@ export class CourseIntro extends LitElement {
   }
   constructor() {
     super();
-    // Add the included Lato font-family
-    let link = document.createElement("link");
-    link.setAttribute(
-      "href",
-      "https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
-    );
-    link.setAttribute("rel", "stylesheet");
-    document.head.appendChild(link);
   }
   render() {
     return html`
