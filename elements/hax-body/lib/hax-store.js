@@ -2654,6 +2654,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         handles: [],
         meta: {
           author: "W3C",
+          hidden: true,
         },
       },
       settings: {

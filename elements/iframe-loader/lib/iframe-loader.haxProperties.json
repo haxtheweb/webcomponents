@@ -70,8 +70,6 @@
       "tag": "iframe-loader",
       "properties": {
         "source": "https://haxtheweb.org",
-        "height": "400",
-        "width": "50%",
         "disabled": true
       },
       "content": ""
