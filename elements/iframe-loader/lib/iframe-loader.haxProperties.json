@@ -12,25 +12,25 @@
     "handles": [
       {
         "type": "link",
-        "source": "src",
+        "source": "source",
         "height": "height",
         "width": "width"
       },
       {
         "type": "pdf",
-        "source": "src",
+        "source": "source",
         "height": "height",
         "width": "width"
       },
       {
         "type": "document",
-        "source": "src",
+        "source": "source",
         "height": "height",
         "width": "width"
       },
       {
         "type": "html",
-        "source": "src",
+        "source": "source",
         "height": "height",
         "width": "width"
       }
