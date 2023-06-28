@@ -2441,18 +2441,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         icon: "image:image",
         color: "blue-grey",
         tags: ["Images", "media", "img", "html"],
-        handles: [
-          {
-            type: "link",
-            source: "src",
-          },
-          {
-            type: "image",
-            source: "src",
-            height: "height",
-            width: "width",
-          },
-        ],
+        handles: [],
         meta: {
           author: "W3C",
           hidden: true,
