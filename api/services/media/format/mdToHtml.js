@@ -6,7 +6,7 @@ const mdClass = new MarkdownIt();
 
 export default async function handler(req, res) {
   let body = {};
-  if (req.query) {
+  if (req.query.md) {
     body = req.query;
   }
   else {
