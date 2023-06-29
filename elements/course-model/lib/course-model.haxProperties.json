@@ -42,8 +42,7 @@
       {
         "slot": "detail",
         "title": "Details area",
-        "inputMethod": "textarea",
-        "slotWrapper": "p"
+        "inputMethod": "code-editor"
       },
       {
         "slot": "animation",
