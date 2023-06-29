@@ -64,6 +64,7 @@ class HaxTray extends I18NMixin(
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
     };
+    this.trayIcon = "settings";
     this.resizeDrag = false;
     this.hideToolbar = false;
     this.dark = false;
@@ -1668,7 +1669,7 @@ class HaxTray extends I18NMixin(
       this.trayIcon = "hax:html-code";
       this.trayLabel = this.t.htmlSource;
     } else {
-      this.trayIcon = null;
+      this.trayIcon = "settings";
       this.trayLabel = null;
     }
     this.requestUpdate();

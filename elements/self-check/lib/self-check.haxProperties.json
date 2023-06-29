@@ -2,7 +2,7 @@
   "canScale": false,
   "canPosition": false,
   "canEditSource": true,
-  "type": "grid",
+  "contentEditable": false,
   "gizmo": {
     "title": "Self Check",
     "description": "The user will be able to complete a self-check.",
@@ -54,22 +54,12 @@
       {
         "slot": "question",
         "title": "Question",
-        "inputMethod": "textfield",
-        "slotWrapper": "p",
-        "allowedSlotWrappers": ["p", "div"],
-        "editMode": {
-          "correct": false
-        }
+        "inputMethod": "textarea"
       },
       {
         "slot": "",
         "title": "Answer",
-        "inputMethod": "textfield",
-        "slotWrapper": "p",
-        "allowedSlotWrappers": ["p", "div"],
-        "editMode": {
-          "correct": true
-        }
+        "inputMethod": "textarea"
       },
       {
         "property": "accentColor",
