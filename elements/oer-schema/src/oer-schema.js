@@ -98,12 +98,7 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
           "SEO",
           "Search engine",
         ],
-        handles: [
-          {
-            type: "inline",
-            text: "text",
-          },
-        ],
+        handles: [],
         meta: {
           author: "HAXTheWeb core team",
           inlineOnly: true,

@@ -141,12 +141,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         icon: "image:collections",
         color: "cyan",
         tags: ["Layout", "Media", "Images"],
-        handles: [
-          {
-            type: "image",
-            source: "image",
-          },
-        ],
+        handles: [],
         meta: {
           author: "HAXTheWeb core team",
         },

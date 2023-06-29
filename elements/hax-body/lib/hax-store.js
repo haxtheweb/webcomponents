@@ -655,6 +655,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "sup",
           "span",
           "mark",
+          "abbr",
           "i",
           "bold",
           "em",
@@ -693,7 +694,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "sub",
           "sup",
           "span",
+          "code",
           "mark",
+          "abbr",
           "i",
           "bold",
           "em",
@@ -1821,6 +1824,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "div",
       "span",
       "mark",
+      "abbr",
       "table",
       "caption",
       "sup",
@@ -2618,6 +2622,57 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       ],
     };
     this.setHaxProperties(mark, "mark");
+    let abbr = {
+      type: "element",
+      editingElement: "core",
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      contentEditable: true,
+      gizmo: {
+        title: "Abbreviation",
+        description: "Simple abbreviation with tooltip of full word",
+        icon: "hax:abbr",
+        color: "yellow",
+        tags: ["Content", "text", "abbr", "html"],
+        handles: [],
+        meta: {
+          author: "W3C",
+          hidden: true,
+        },
+      },
+      settings: {
+        configure: [
+          {
+            attribute: "innerText",
+            title: "Text",
+            description: "Text that is visible, the abbreviation",
+            inputMethod: "textfield",
+            required: true,
+          },
+          {
+            attribute: "title",
+            title: "Word",
+            description: "Word that the abbreviation is representing",
+            inputMethod: "textfield",
+            required: true,
+          },
+          DataStyleDecoration,
+        ],
+        advanced: [],
+        developer: [],
+      },
+      demoSchema: [
+        {
+          tag: "abbr",
+          content: "Abbr",
+          properties: {
+            title: "Abbreviation"
+          },
+        },
+      ],
+    };
+    this.setHaxProperties(abbr, "abbr");
     let ahref = {
       type: "element",
       editingElement: "core",
@@ -2643,7 +2698,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         handles: [],
         meta: {
           author: "W3C",
-          hidden: true,
         },
       },
       settings: {
@@ -2701,6 +2755,13 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "p",
+          content: "<a href=\"#\">Link to content</a>",
+          properties: {},
+        },
+      ],
     };
     // anything can be presented as a link
     this.validGizmoTypes.forEach((val) => {

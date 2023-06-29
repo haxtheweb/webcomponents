@@ -50,6 +50,7 @@ export const HaxIconsetManifest = [
       "4-8",
       "6-6",
       "8-4",
+      "abbr",
       "add-brick",
       "add-child-page",
       "add-item",

@@ -150,6 +150,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       strikethroughButton: "Cross out",
       codeButton: "Code",
       markButton: "Highlight",
+      abbrButton: "Abbreviation",
       removeFormatButton: "Remove format",
       linkButton: "Link",
       unlinkButton: "Remove Link",
@@ -309,6 +310,18 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       label: this.t.markButton,
     };
   }
+    /**
+   * default config for a <code></code> button
+   *
+   * @readonly
+   */
+    get abbrButton() {
+      return {
+        ...super.abbrButton,
+        icon: "hax:abbr",
+        label: this.t.abbrButton,
+      };
+    }
   /**
    * default config for a remove format button
    *
@@ -330,10 +343,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       type: "button-group",
       subtype: "advanced-inline-button-group",
       buttons: [
-        this.underlineButton,
         this.strikethroughButton,
-        this.codeButton,
         this.markButton,
+        this.abbrButton,
+        this.codeButton,
+        this.underlineButton,
       ],
     };
   }

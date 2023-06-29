@@ -53,12 +53,6 @@
         "inputMethod": "alt"
       },
       {
-        "slot": "heading",
-        "title": "Title",
-        "description": "Title the image",
-        "inputMethod": "textfield"
-      },
-      {
         "slot": "question",
         "title": "Question",
         "inputMethod": "textfield",

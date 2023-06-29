@@ -109,6 +109,7 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
         ],
         meta: {
           author: "HAXTheWeb core team",
+          inlineOnly: true,
         },
       },
       settings: {
