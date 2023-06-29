@@ -85,6 +85,9 @@ class PersonTestimonial extends SimpleColors {
           display: inline-flex;
           transform: rotateY(180deg);
         }
+        div ::slotted(*) {
+          display: inline;
+        }
 
         :host([data-hax-ray][data-hax-active]) [data-layout-slotname] {
           outline: var(

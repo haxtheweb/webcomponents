@@ -1,8 +1,7 @@
 {
-  "canScale": true,
-  "canPosition": true,
+  "canScale": false,
+  "canPosition": false,
   "canEditSource": true,
-  "contentEditable": true,
   "type": "grid",
   "gizmo": {
     "title": "Self Check",
