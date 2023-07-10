@@ -1,6 +1,7 @@
 import { stdPostBody, stdResponse, invalidRequest } from "../../../../utilities/requestHelpers.js";
 import { JSONOutlineSchema } from "../lib/JSONOutlineSchema.js";
 import { JSONOutlineSchemaItem } from "../lib/JSONOutlineSchemaItem.js";
+import { cleanTitle } from "../lib/JOSHelpers.js";
 import fetch from "node-fetch";
 import { parse } from 'node-html-parser';
 import * as df from 'markdown-it';
@@ -73,13 +74,19 @@ export default async function handler(req, res) {
         // test for lesson that we don't have yet
         if (data.values.lesson && !lessons[data.values.lesson]) {
           let lessonValue = data.values.lesson.split('. ');
+          if (lessonValue.length === 1) { // no period
+            lessonValue = [
+              "0",
+              lessonValue[0]
+            ]
+          }
           let lesson = new JSONOutlineSchemaItem();
           lesson.title = lessonValue[1];
           // blank page for now
           lesson.contents = '';
-          lesson.slug = lessonValue[1].toLowerCase();
+          lesson.slug = cleanTitle(lessonValue[1].toLowerCase());
           // path clean up a bit in file name even
-          lesson.location = `content/${lessonValue[1].toLowerCase()}.html`;
+          lesson.location = `content/${cleanTitle(lessonValue[1].toLowerCase())}.html`;
           // order is like 10.1
           lesson.order = parseInt(lessonValue[0]);
           // only 0 depth for lessons
@@ -99,9 +106,9 @@ export default async function handler(req, res) {
         let item = new JSONOutlineSchemaItem();
         item.title = data.title;
         item.contents = data.content;
-        item.slug = ghFile.path.replace(`${filepathBase}/`,'').replace('.md','');
+        item.slug = cleanTitle(ghFile.path.replace(`${filepathBase}/`,'').replace('.md',''));
         // path clean up a bit in file name even
-        item.location = `content/${ghFile.path.replace(`${filepathBase}/`,'').replace('.md','')}.html`;
+        item.location = `content/${cleanTitle(ghFile.path.replace(`${filepathBase}/`,'').replace('.md',''))}.html`;
         // order is like 10.1
         item.order = parseInt(data.values.id.split('.').pop());
         // only 1 depth
