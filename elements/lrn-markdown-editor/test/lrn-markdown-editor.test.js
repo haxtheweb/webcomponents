@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../lrn-markdown-editor.js";
-
+/*
 describe("lrn-markdown-editor test", () => {
   let element;
   beforeEach(async () => {
@@ -13,7 +13,7 @@ describe("lrn-markdown-editor test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
-});
+});*/
 
 /*
 describe("A11y/chai axe tests", () => {

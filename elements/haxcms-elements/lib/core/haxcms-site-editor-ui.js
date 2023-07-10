@@ -755,7 +755,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             icon="icons:cancel"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             @click="${this._cancelButtonTap}"
-            .hidden="${!this.editMode}"
+            ?hidden="${!this.editMode}"
+            ?disabled="${!this.editMode}"
             show-text-label
             tabindex="${this.editMode ? "0" : "-1"}"
             label="${this.t.cancel}"
@@ -765,6 +766,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <simple-toolbar-menu
             id="addmenubutton"
             ?hidden="${this.editMode}"
+            ?disabled="${this.editMode}"
             icon="hax:add-page"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             label="${this.t.add}.."
@@ -812,9 +814,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           
           <simple-toolbar-button
             ?hidden="${this.editMode}"
+            ?disabled="${this.editMode}"
             tabindex="${this.editMode ? "-1" : "0"}"
             id="deletebutton"
-            hidden
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             icon="icons:delete"
             @click="${this._deleteButtonTap}"
@@ -859,6 +861,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </simple-toolbar-button>
           <simple-toolbar-button
             ?hidden="${!this.editMode}"
+            ?disabled="${!this.editMode}"
             data-event="content-add"
             icon="hax:add-brick"
             id="content-add"
@@ -873,6 +876,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </simple-toolbar-button>
           <simple-toolbar-button
             ?hidden="${!this.editMode}"
+            ?disabled="${!this.editMode}"
             icon="hax:multimedia"
             label="${this.t.findMedia}"
             voice-command="select media (menu)"
@@ -884,6 +888,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </simple-toolbar-button>
           <simple-toolbar-button
            ?hidden="${!this.editMode}"
+           ?disabled="${!this.editMode}"
             data-event="content-map"
             icon="hax:newspaper"
             id="content-map"
@@ -907,12 +912,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             show-text-label
             ?hidden="${!this.editMode}"
+            ?disabled="${!this.editMode}"
           >
           </simple-toolbar-button>
 
           <simple-toolbar-menu
             show-text-label
             ?hidden="${this.editMode}"
+            ?disabled="${this.editMode}"
             icon="hax:home-edit"
             part="morebtn"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -922,6 +929,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-menu-item>
               <simple-toolbar-button
               ?hidden="${this.editMode}"
+              ?disabled="${this.editMode}"
               tabindex="${this.editMode ? "-1" : "0"}"
               id="outlinebutton"
               @click="${this._outlineButtonTap}"
@@ -935,6 +943,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-menu-item>
             <simple-toolbar-button
               ?hidden="${this.editMode}"
+              ?disabled="${this.editMode}"
               tabindex="${this.editMode ? "-1" : "0"}"
               id="insightsbutton"
               icon="hax:clipboard-pulse"
@@ -950,6 +959,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-menu-item>
             <simple-toolbar-button
               ?hidden="${this.editMode}"
+              ?disabled="${this.editMode}"
               tabindex="${this.editMode ? "-1" : "0"}"
               id="sharebutton"
               @click="${this._shareButtonTap}"
@@ -980,6 +990,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 part="manifestbtn"
                 id="manifestbtn"
                 show-text-label
+                ?disabled="${this.editMode}"
+                ?hidden="${this.editMode}"
                 tabindex="${this.editMode ? "0" : "-1"}"
                 label="${this.t.editSettings}"
               ></simple-toolbar-button>

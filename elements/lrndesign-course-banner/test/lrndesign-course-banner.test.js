@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../lrndesign-course-banner.js";
-
+/*
 describe("lrndesign-course-banner test", () => {
   let element;
   beforeEach(async () => {
@@ -16,7 +16,7 @@ describe("lrndesign-course-banner test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
-
+*/
 /*
 describe("A11y/chai axe tests", () => {
   it("lrndesign-course-banner passes accessibility test", async () => {

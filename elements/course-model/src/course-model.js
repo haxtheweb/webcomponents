@@ -56,11 +56,14 @@ class CourseModel extends LitElement {
           display: none;
         }
 
-        :host([visible="model-info"]) .slotted-text, .slotted-animation, . {
+        :host([visible="model-info"]) .slotted-text,
+        .slotted-animation {
           display: none;
         }
 
-        :host([visible="model-text"]) .slotted-info, .slotted-animation, .slotted-check {
+        :host([visible="model-text"]) .slotted-info,
+        .slotted-animation,
+        .slotted-check {
           display: none;
         }
 
@@ -68,7 +71,8 @@ class CourseModel extends LitElement {
           display: block;
         }
 
-        :host([visible="model-animation"]) .slotted-info, .slotted-text {
+        :host([visible="model-animation"]) .slotted-info,
+        .slotted-text {
           display: none;
         }
 
@@ -80,7 +84,7 @@ class CourseModel extends LitElement {
           display: block;
         }
 
-        :host([visible="model-check"])  .slotted-info {
+        :host([visible="model-check"]) .slotted-info {
           display: none;
         }
 
@@ -101,7 +105,7 @@ class CourseModel extends LitElement {
           }
         }
 
-        #model-wrap {
+        .model-wrap {
           position: relative;
         }
 
@@ -183,65 +187,66 @@ class CourseModel extends LitElement {
           }
         }
 
-      @media screen and (min-width: 920px) {
-        .tool-button {
-          height: 75px;
-          width: 75px;
+        @media screen and (min-width: 920px) {
+          .tool-button {
+            height: 75px;
+            width: 75px;
+          }
         }
-      }
 
-      .tool-button:hover {
-        background-color: #e2801e;
-      }
-
-      .tool-button:focus {
-        background-color: #e2801e;
-      }
-
-      .tool-button:active {
-        background-color: #e2801e;
-      }
-
-      @media screen and (min-width: 320px) {
-        svg {
-          height: 20px;
-          width: 20px;
-      }
-
-      @media screen and (min-width: 920px) {
-        svg {
-          height: 36px;
-          width: 36px;
+        .tool-button:hover {
+          background-color: #e2801e;
         }
-      }
 
-      #title {
-        flex-grow: 1;
-        background-color: dimgray;
-        height: inherit;
-        display: flex;
-        align-items: center;
-        padding: 0 0 0 15px;
-      }
-
-      @media screen and (min-width: 320px) {
-        img#brand {
-          width: 45px;
+        .tool-button:focus {
+          background-color: #e2801e;
         }
-      }
 
-      @media screen and (min-width: 920px) {
-        img#brand {
-          width: 70px;
+        .tool-button:active {
+          background-color: #e2801e;
         }
-      }
+
+        @media screen and (min-width: 320px) {
+          svg {
+            height: 20px;
+            width: 20px;
+          }
+        }
+
+        @media screen and (min-width: 920px) {
+          svg {
+            height: 36px;
+            width: 36px;
+          }
+        }
+
+        #title {
+          flex-grow: 1;
+          background-color: dimgray;
+          height: inherit;
+          display: flex;
+          align-items: center;
+          padding: 0 0 0 15px;
+        }
+
+        @media screen and (min-width: 320px) {
+          img#brand {
+            width: 45px;
+          }
+        }
+
+        @media screen and (min-width: 920px) {
+          img#brand {
+            width: 70px;
+          }
+        }
       `,
     ];
   }
 
   render() {
     return html`
-      <div id="model-wrap">
+      <div class="model-wrap">
         <div id="toolbar-wrap">
           <div id="nav">
             <button
@@ -266,7 +271,10 @@ class CourseModel extends LitElement {
                 <path
                   d="M4 22v-20h16v11.543c0 4.107-6 2.457-6 2.457s1.518 6-2.638 6h-7.362zm18-7.614v-14.386h-20v24h10.189c3.163 0 9.811-7.223 9.811-9.614zm-5-1.386h-10v-1h10v1zm0-4h-10v1h10v-1zm0-3h-10v1h10v-1z"
                 />
-              </svg>_srcChanged
+              </svg>
+            </button>
+            <button
+              title="Play Animation"
               id="animation"
               class="tool-button"
               @click="${this._openAnimation}"
@@ -303,7 +311,7 @@ class CourseModel extends LitElement {
           <div class="slotted-animation"><slot name="animation"></slot></div>
           <div class="slotted-check"><slot name="check"></slot></div>
         </div>
-        <div id="model-wrap" class="model">
+        <div class="model-wrap model">
           <model-viewer
             title="${this.title}"
             src="${this.src}"
@@ -318,6 +326,7 @@ class CourseModel extends LitElement {
       </div>
     `;
   }
+
   /**
    * Open Explore Slot
    */

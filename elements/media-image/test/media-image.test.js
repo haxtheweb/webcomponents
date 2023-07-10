@@ -6,7 +6,23 @@ describe("media-image test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <media-image title="test-title"></media-image> `
+      html`<media-image source="http://unsplash.it/200" size="small" figure-label-title="1.5" figure-label-description="This is the figure description">
+      <div slot="citation">
+        This is my citation.
+      </div>
+      <div slot="caption">
+        Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas
+        non nisi. Vestibulum
+        ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit
+        amet
+        aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Proin eget tortor
+        risus.
+        Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada.
+        Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula
+        elementum
+        sed sit amet dui. Vivamus suscipit tortor eget felis porttitor volutpat.
+      </div>
+    </media-image>`
     );
   });
 

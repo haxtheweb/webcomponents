@@ -196,7 +196,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       configureBlock: "Configure block",
       configure: "Configure",
       save: "Save",
+      home: "Home",
       saveChanges: "Save changes",
+      startNewJourney: "Start new journey",
       newJourney: "New Journey",
       accountInfo: "Account Info",
       outlineDesigner: "Outline designer",
@@ -1142,16 +1144,22 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       <header>
         <app-hax-top-bar>
           <slot name="app-header-pre" slot="left"></slot>
-          <a id="home" href="home" tabindex="-1" slot="left">
+          <a
+            id="home"
+            title="${this.t.home}"
+            href="home"
+            tabindex="-1"
+            slot="left"
+          >
             <simple-icon-lite
               id="hlogo"
               icon="hax:hax2022"
               tabindex="0"
               class="haxLogo"
-              title="Home"
+              title="${this.t.home}"
               data-simple-tour-stop
               data-stop-title="data-label"
-              data-label="Home"
+              data-label="${this.t.home}"
             >
               <div data-stop-content slot="tour" style="display:none;">
                 You can come back to this home screen whenever you click this!
@@ -1159,7 +1167,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             </simple-icon-lite>
           </a>
           <simple-tooltip for="hlogo" position="right" slot="left"
-            >Home</simple-tooltip
+            >${this.t.home}</simple-tooltip
           >
           <simple-toolbar-button
             icon="hax:wizard-hat"
@@ -1222,12 +1230,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               class="topbar-character"
               slot="menuButton"
               id="tbchar"
+              title="System menu"
             >
               <rpg-character
                 seed="${this.userName}"
                 width="68"
                 height="68"
-                aria-label="System menu"
                 hat="${this.userMenuOpen ? "edit" : "none"}"
               ></rpg-character>
               <span class="characterbtn-name">${this.userName}</span>
@@ -1244,7 +1252,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                 part="newjourneybtn"
               ></app-hax-user-menu-button>
             </a>
-            <a slot="main-menu" href="home" tabindex="-1">
+            <a
+              slot="main-menu"
+              title="${this.t.listMySites}"
+              href="home"
+              tabindex="-1"
+            >
               <app-hax-user-menu-button
                 icon="hax:hax2022"
                 label="${this.t.listMySites}"
@@ -1327,9 +1340,14 @@ Window size: ${window.innerWidth}x${window.innerHeight}
 
   templateHome() {
     return html`<div class="start-journey">
-        <a href="createSite-step-1" @click="${this.startJourney}" tabindex="-1">
+        <a
+          href="createSite-step-1"
+          @click="${this.startJourney}"
+          tabindex="-1"
+          title="${this.t.startNewJourney}"
+        >
           <app-hax-site-button
-            label="&gt; Start new journey"
+            label="&gt; ${this.t.startNewJourney}"
           ></app-hax-site-button>
         </a>
       </div>

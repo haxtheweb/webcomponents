@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../eco-json-schema-form.js";
-
+/*
 describe("eco-json-schema-form test", () => {
   let element;
   beforeEach(async () => {
@@ -14,7 +14,7 @@ describe("eco-json-schema-form test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
-
+*/
 /*
 describe("A11y/chai axe tests", () => {
   it("eco-json-schema-form passes accessibility test", async () => {

@@ -305,7 +305,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @returns
      */
     focus() {
-      if (this.focusableElement) {
+      if (this.focusableElement && !this.disabled) {
         this.isCurrentItem = true;
         this.focusableElement.focus();
       }
@@ -331,7 +331,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @param {event} e event
      */
     _handleClick(e) {
-      this.toggle();
+      if (!this.disabled) {
+        this.toggle();
+      }
     }
     /**
      * handles blur
@@ -535,7 +537,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @focus="${this._handleFocus}"
               part="button"
               role="radio"
-              tabindex="${this.isCurrentItem ? 1 : -1}"
+              tabindex="${this.isCurrentItem ? 0 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -555,7 +557,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @blur="${this._handleBlur}"
               @focus="${this._handleFocus}"
               part="button"
-              tabindex="${this.isCurrentItem ? 1 : -1}"
+              tabindex="${this.isCurrentItem ? 0 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -573,7 +575,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @blur="${this._handleBlur}"
               @focus="${this._handleFocus}"
               part="button"
-              tabindex="${this.isCurrentItem ? 1 : -1}"
+              tabindex="${this.isCurrentItem ? 0 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>

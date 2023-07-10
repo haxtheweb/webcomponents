@@ -5,7 +5,40 @@ import "../nav-card.js";
 describe("nav-card test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(html` <nav-card title="test-title"></nav-card> `);
+    element = await fixture(html` <nav-card accent-color="green">
+    <div slot="heading">Useful Links</div>
+    <div slot="subheading">(...or just <a href="//google.com">Google it</a>)</div>
+    <p slot="body">
+      Check out these useful links.
+    </p>
+    <div slot="linklist">
+      <nav-card-item icon="chevron-right" avatar="//placekitten.com/200/200">
+        <button id="heading1" aria-describedby="sub1" slot="label">Button text</button>
+        <span id="sub1" slot="description">A subheading that provides more description</span>
+      </nav-card-item>
+      <nav-card-item icon="chevron-right" avatar="//placekitten.com/190/200">
+        <a id="heading2" aria-describedby="sub2" slot="label" href="#">Accessible link text</a>
+        <span id="sub2" slot="description">A subheading that provides more description</span>
+      </nav-card-item>
+      <nav-card-item icon="chevron-right" accent-color="cyan" avatar="account-circle">
+        <a id="heading3" aria-describedby="sub3" slot="label" href="#">Accessible link text</a>
+        <span id="sub3" slot="description">A subheading that provides more description</span>
+      </nav-card-item>
+      <nav-card-item icon="chevron-right" accent-color="pink" dark avatar="star">
+        <button id="heading4" aria-describedby="sub4" slot="label">Button text</button>
+        <span id="sub4" slot="description">A subheading that provides more description</span>
+      </nav-card-item>
+      <nav-card-item icon="chevron-right">
+        <a id="heading5" aria-describedby="sub5" slot="label" href="#">Accessible link text</a>
+        <span id="sub5" slot="description">A subheading that provides more description</span>
+      </nav-card-item>
+      <nav-card-item icon="chevron-right" initials="H6">
+        <a id="heading6" aria-describedby="sub6" slot="label" href="#">Accessible link text</a>
+        <span id="sub6" slot="description">A subheading that provides more description</span>
+      </nav-card-item>
+    </div>
+    <p slot="footer">&lt;nav-card&gt;© The Pennsylvania State University</p>
+  </nav-card> `);
   });
 
   it("passes the a11y audit", async () => {

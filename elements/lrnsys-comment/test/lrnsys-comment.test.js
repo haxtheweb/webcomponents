@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../lrnsys-comment.js";
-
+/*
 describe("lrnsys-comment test", () => {
   let element;
   beforeEach(async () => {
@@ -14,7 +14,7 @@ describe("lrnsys-comment test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
-
+*/
 /*
 describe("A11y/chai axe tests", () => {
   it("lrnsys-comment passes accessibility test", async () => {

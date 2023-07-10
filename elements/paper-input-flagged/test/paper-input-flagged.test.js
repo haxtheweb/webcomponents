@@ -6,7 +6,7 @@ describe("paper-input-flagged test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <paper-input-flagged title="test-title"></paper-input-flagged> `
+      html`<paper-input-flagged value="Some content" label="URL"></paper-input-flagged> `
     );
   });
 

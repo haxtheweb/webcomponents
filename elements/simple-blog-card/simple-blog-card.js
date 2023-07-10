@@ -20,7 +20,7 @@ class SimpleBlogCard extends LitElement {
       css`
         :host {
           display: inline-flex;
-          --simple-blog-card-author-link: #03a87c;
+          --simple-blog-card-author-link: #00513c;
         }
 
         :host([hidden]) {
@@ -168,7 +168,7 @@ class SimpleBlogCard extends LitElement {
 
         .post-details {
           font-size: 14px;
-          color: var(--simple-blog-card-text, rgba(0, 0, 0, 0.54));
+          color: var(--simple-blog-card-text, rgba(0, 0, 0, 0.8));
         }
 
         .post-details .dot {
@@ -192,7 +192,7 @@ class SimpleBlogCard extends LitElement {
     return html`
  
  <div class="card-${this.size} card">
-   <img .alt="${this.alt}" .src="${this.image}" loading="lazy"/>
+   <img .alt="${this.alt}" src="${this.image}" loading="lazy"/>
    <div class="card-content">
      <a href="${this.link}">
        <h3>${this.title}</h3>
@@ -282,6 +282,7 @@ class SimpleBlogCard extends LitElement {
   }
   constructor() {
     super();
+    this.image = "";
     this.placeholder =
       "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBYRXhpZgAATU0AKgAAAAgAAgESAAMAAAABAAEAAIdpAAQAAAABAAAAJgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAqADAAQAAAABAAAAAgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgAAgACAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAHBwcHBwcMBwcMEQwMDBEXERERERcdFxcXFxcdIx0dHR0dHSMjIyMjIyMjKioqKioqMTExMTE3Nzc3Nzc3Nzc3P/bAEMBIiQkODQ4YDQ0YOacgJzm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5v/dAAQAAf/aAAwDAQACEQMRAD8AiooooA//2Q==";
     this.size = "medium";

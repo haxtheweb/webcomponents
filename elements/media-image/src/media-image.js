@@ -141,17 +141,16 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         source="${this.source}"
         modal-title="${this.modalTitle}"
         alt="${this.alt}"
-        .described-by="${this.describedBy}"
         tabindex="${!this.disableZoom ? "0" : "-1"}"
         @click="${this._handleClick}"
       ></media-image-image>
       <media-image-citation>
-        <slot name="citation"> ${this.citation} </slot>
+        <slot name="citation">${this.citation}</slot>
       </media-image-citation>
       ${this._hasCaption
         ? html`
-            <media-image-caption>
-              <slot name="caption"> ${this.caption} </slot>
+            <media-image-caption tabindex="0">
+              <slot name="caption">${this.caption}</slot>
             </media-image-caption>
           `
         : ``}
@@ -210,13 +209,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
        */
       citation: {
         type: String,
-      },
-      /**
-       * image aria-described by
-       */
-      describedBy: {
-        type: String,
-        attribute: "described-by",
       },
       /**
        * Image caption.
@@ -507,7 +499,6 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
         <img
           src="${this.source}"
           alt="${this.alt}"
-          aria-describedby="${this.describedBy || ""}"
           loading="lazy"
         />
       </div>
@@ -528,10 +519,6 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
       },
       alt: {
         type: String,
-      },
-      describedBy: {
-        type: String,
-        attribute: "described-by",
       },
       round: {
         type: Boolean,

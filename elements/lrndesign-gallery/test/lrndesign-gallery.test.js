@@ -6,7 +6,30 @@ describe("lrndesign-gallery test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <lrndesign-gallery title="test-title"></lrndesign-gallery> `
+      html` <lrndesign-gallery id="gallery4a" layout="grid" title="Regular Thumbnails" accent-color="indigo">
+      <div slot="description">This is a <em>regular</em> <strong>grid</strong>.</div>
+      <figure id="apple">
+        <img srcset="${new URL('../demo/images/thumbnails/apple.jpg',import.meta.url).href} 480w, ${new URL('../demo/images/atari.jpg',import.meta.url).href} 800w" sizes="(max-width: 600px) 480px, 800px" src="${new URL('../demo/images/atari.jpg',import.meta.url).href}" alt="A picture of an apple.">
+        <figcaption>
+          <h3>Apple</h3>
+          <p>This is an <em>apple</em> picture.</p>
+        </figcaption>
+      </figure>
+      <figure id="bananas">
+        <img srcset="${new URL('../demo/images/thumbnails/banana.jpg',import.meta.url).href} 480w, ${new URL('../demo/images/banana.jpg',import.meta.url).href} 800w" sizes="(max-width: 600px) 480px, 800px" src="${new URL('../demo/images/banana.jpg',import.meta.url).href}" alt="A picture of bananas.">
+        <figcaption>
+          <h3>Bananas</h3>
+          <p>This is a picture of <em>bananas</em>.</p>
+        </figcaption>
+      </figure>
+      <figure id="carrots">
+        <img srcset="${new URL('../demo/images/thumbnails/carrot.jpeg',import.meta.url).href} 480w, ${new URL('../demo/images/atari.jpg',import.meta.url).href} 800w" sizes="(max-width: 600px) 480px, 800px" src="${new URL('../demo/images/atari.jpg',import.meta.url).href}" alt="A picture of carrots.">
+        <figcaption>
+          <h3>Carrots</h3>
+          <p>This is a picture of <em>carrots</em>.</p>
+        </figcaption>
+      </figure>
+    </lrndesign-gallery>`
     );
   });
 

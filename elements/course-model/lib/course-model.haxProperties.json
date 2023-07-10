@@ -9,9 +9,7 @@
     "description": "",
     "icon": "icons:android",
     "color": "purple",
-    "tags": [
-      "Other"
-    ],
+    "tags": ["Other"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

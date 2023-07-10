@@ -6,7 +6,15 @@ describe("progress-donut test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <progress-donut title="test-title"></progress-donut> `
+      html`<progress-donut 
+      animation="500" 
+      animation-delay="500" 
+      desc="You have completed 5,4,8,12,6,3,4, and 3 points of work out of 50 points."
+      .complete="${[5,4,8,12,6,3,4,3]}"
+      image-src="${new URL('../demo/images/profile1.jpg', import.meta.url).href}" 
+      style="width:300px" 
+      total="50" >
+    </progress-donut>`
     );
   });
 
