@@ -30,7 +30,6 @@ class MapMenuItem extends I18NMixin(LitElement) {
           line-height: 44px;
         }
         .title {
-          display: inline-flex;
           text-transform: none;
           font-size: var(--map-menu-font-size, 16px);
           font-family: "Open+Sans", sans-serif;
@@ -42,7 +41,6 @@ class MapMenuItem extends I18NMixin(LitElement) {
           white-space: nowrap;
           overflow: hidden;
           word-break: break-all;
-          max-width: 200px;
         }
         a,
         a:visited {
