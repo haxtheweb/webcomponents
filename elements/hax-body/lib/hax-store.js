@@ -24,7 +24,7 @@ import {
   autorun,
   toJS,
 } from "mobx";
-configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
+configure({ enforceActions: false }); // strict mode off
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import {
   I18NMixin,

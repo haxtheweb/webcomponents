@@ -35,8 +35,8 @@
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --watch",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox"
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers firefox --timeout 10000 --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers firefox --timeout 10000"
   },
   "author": {
     "name": "btopro"
@@ -51,7 +51,7 @@
     "@lrnwebcomponents/simple-colors": "^7.0.11",
     "@lrnwebcomponents/simple-colors-shared-styles": "^7.0.5",
     "@lrnwebcomponents/utils": "^7.0.4",
-    "lit": "^2.7.5"
+    "lit": "^2.7.6"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",

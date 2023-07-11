@@ -6,7 +6,17 @@ describe("unity-webgl test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <unity-webgl title="test-title"></unity-webgl> `
+      html`<unity-webgl 
+      target="${new URL('../demo/example/build web', import.meta.url).href}" 
+      compression="unityweb"
+      streamingurl="StreamingAssets" 
+      companyname="DefaultCompany" 
+      productname="test webgl" 
+      productversion="0.1"
+      width="460px" 
+      height="400px" 
+      background="#231F20">
+    </unity-webgl>`
     );
   });
 

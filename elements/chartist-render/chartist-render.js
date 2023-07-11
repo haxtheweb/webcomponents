@@ -1070,9 +1070,9 @@ const ChartistRenderSuper = function (SuperClass) {
         </div>
         <div
           id="chart"
-          role="presentation"
           chart="${this.__chartId}"
-          aria-labelledby="${this.__chartId}-title"
+          role="presentation"
+          aria-label="${this.chartTitle}"
           aria-describedby="${this.__chartId}-table ${this.__chartId}-desc"
           class="ct-chart ${this.scale}"
         ></div>

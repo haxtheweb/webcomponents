@@ -479,12 +479,10 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
     this.modalContent = document.createElement("image-inspector");
     this.modalContent.noLeft = true;
     this.modalTitle = "";
-    setTimeout(() => {
-      this.addEventListener(
-        "simple-modal-show",
-        this.__modalShowEvent.bind(this)
-      );
-    }, 0);
+    this.addEventListener(
+      "simple-modal-show",
+      this.__modalShowEvent.bind(this)
+    );
   }
   /**
    * Only import the definition if they call up the modal because it's a pretty

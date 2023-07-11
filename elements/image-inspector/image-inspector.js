@@ -65,33 +65,33 @@ class ImageInspector extends LitElement {
     return html`
       <div class="wrap">
         <simple-icon-button
-          title="Zoom in"
+          label="Zoom in"
           icon="zoom-in"
           @click="${this.zoomIn}"
         ></simple-icon-button>
         <simple-icon-button
-          title="Zoom out"
+        label="Zoom out"
           icon="zoom-out"
           @click="${this.zoomOut}"
         ></simple-icon-button>
         <simple-icon-button
-          title="Rotate right"
+        label="Rotate right"
           icon="image:rotate-right"
           @click="${this.rotateRight}"
         ></simple-icon-button>
         <simple-icon-button
-          title="Rotate left"
+        label="Rotate left"
           icon="image:rotate-left"
           @click="${this.rotateLeft}"
         ></simple-icon-button>
         <simple-icon-button
-          title="Mirror image"
+        label="Mirror image"
           icon="image:flip"
           @click="${this.mirrorImage}"
         ></simple-icon-button>
         <a href="${this.src}" target="_blank" rel="noopener noreferrer">
           <simple-icon-button
-            title="Open in new window"
+          label="Open in new window"
             icon="launch"
           ></simple-icon-button>
         </a>

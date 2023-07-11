@@ -1,9 +1,3 @@
-// local development and mobx
-window.process = window.process || {
-  env: {
-    NODE_ENV: "development",
-  },
-};
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../haxor-slevin.js";

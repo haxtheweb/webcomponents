@@ -19,7 +19,7 @@ class LrnsysProgressCircle extends PolymerElement {
   static get template() {
     return html`
       <custom-style>
-        <style is="custom-style" include="paper-material-styles">
+        <style is="custom-style">
           :host {
             display: block;
             transition: box-shadow

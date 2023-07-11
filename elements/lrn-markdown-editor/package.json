@@ -47,7 +47,7 @@
     "@lrnwebcomponents/simple-icon": "^7.0.11",
     "@polymer/marked-element": "^3.0.0",
     "@polymer/paper-input": "^3.0.2",
-    "lit": "^2.7.5"
+    "lit": "^2.7.6"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",

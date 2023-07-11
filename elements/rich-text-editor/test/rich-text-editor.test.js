@@ -6,7 +6,9 @@ describe("rich-text-editor test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <rich-text-editor title="test-title"></rich-text-editor> `
+      html` <rich-text-editor>
+      <p>I'm the <a href="#top">easiest</a> way to implement editable rich text.</p>
+    </rich-text-editor> `
     );
   });
 

@@ -65,6 +65,9 @@ export const PrintBranchMixin = function (SuperClass) {
                   : `icons:print`}"
                 @click="${this.printBranchOfSite}"
                 icon-position="top"
+                label="${this.__printBranchLoading
+                  ? this.t.printingPleaseWait
+                  : this.t.print}"
                 id="print-branch-btn"
               >
               </simple-icon-button-lite>

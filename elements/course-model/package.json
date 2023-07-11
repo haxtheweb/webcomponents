@@ -44,7 +44,7 @@
   },
   "license": "",
   "dependencies": {
-    "lit": "^2.7.5",
+    "lit": "^2.7.6",
     "@google/model-viewer": "^3.1.1"
   },
   "devDependencies": {

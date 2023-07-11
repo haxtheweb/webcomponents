@@ -30,9 +30,8 @@
   "main": "mark-the-words.js",
   "module": "mark-the-words.js",
   "scripts": {
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs",
-    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --playwright --browsers chromium firefox webkit --config=../../web-test-runner.config.mjs",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -48,7 +47,7 @@
     "@lrnwebcomponents/i18n-manager": "^7.0.5",
     "@lrnwebcomponents/multiple-choice": "^7.0.11",
     "@lrnwebcomponents/simple-toolbar": "^7.0.11",
-    "lit": "^2.7.5"
+    "lit": "^2.7.6"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "3.0.0",

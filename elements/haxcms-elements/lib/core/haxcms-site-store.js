@@ -15,7 +15,7 @@ import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-ou
 import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
 import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
+configure({ enforceActions: false }); // strict mode off
 class Store {
   constructor() {
     this.badDevice = false;

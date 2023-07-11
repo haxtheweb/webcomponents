@@ -32,7 +32,8 @@ class LrnsysProgress extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="paper-material-styles">
+<custom-style>
+        <style is="custom-style">
         :host {
           display: block;
           margin-top: 24px;
@@ -108,6 +109,7 @@ class LrnsysProgress extends PolymerElement {
           --paper-spinner-stroke-width: 1.2px;
         }
       </style>
+      </custom-style>
 
       <iron-ajax
         id="ajax"

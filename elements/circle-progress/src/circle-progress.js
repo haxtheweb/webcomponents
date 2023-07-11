@@ -20,7 +20,8 @@ class CircleProgress extends mixinBehaviors(
 ) {
   static get template() {
     return html`
-      <style include="paper-material-styles">
+    <custom-style>
+        <style is="custom-style">
         :host {
           @apply --layout-vertical;
           @apply --layout-center-center;
@@ -45,6 +46,7 @@ class CircleProgress extends mixinBehaviors(
           stroke-linecap: var(--circle-progress-stroke-linecap, round);
         }
       </style>
+      </custom-style>
 
       <svg id="circle" width="100%" height="100%">
         <circle

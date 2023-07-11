@@ -46,7 +46,7 @@
     "@lrnwebcomponents/absolute-position-behavior": "^7.0.5",
     "@lrnwebcomponents/simple-icon": "^7.0.11",
     "@lrnwebcomponents/simple-tooltip": "^7.0.11",
-    "lit": "^2.7.5"
+    "lit": "^2.7.6"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",

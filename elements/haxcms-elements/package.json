@@ -33,8 +33,8 @@
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "cd demo && yarn start",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --watch",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox"
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --esbuild-target es2020 --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --esbuild-target es2020"
   },
   "author": {
     "name": "btopro"
@@ -109,6 +109,7 @@
     "wired-elements": "3.0.0-rc.6"
   },
   "devDependencies": {
+    "@web/dev-server-esbuild": "0.4.1",
     "@lrnwebcomponents/deduping-fix": "^7.0.4",
     "@lrnwebcomponents/storybook-utilities": "^7.0.11",
     "@open-wc/testing": "3.2.0",

@@ -53,6 +53,9 @@ export const PDFPageMixin = function (SuperClass) {
                 class="btn"
                 icon="${this.__pdfLoading ? `hax:loading` : `lrn:pdf`}"
                 id="pdf-page-btn"
+                label="${this.__pdfLoading
+                  ? this.t.downloadingPdfPleaseWait
+                  : this.t.downloadPdf}"
                 @click="${this.downloadPDFviaMicro}"
                 icon-position="top"
               >

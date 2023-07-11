@@ -230,7 +230,6 @@ class ProgressDonut extends LrndesignPie {
       data.element.attr({ opacity: -opacity });
       data.element.animate(animationDefinition, false);
     }
-    console.log(data, data.element._node.getTotalLength());
     if (data && data.index === this.complete.length - 1 && this.chart) {
       data.group.append(
         new Chartist.Svg(

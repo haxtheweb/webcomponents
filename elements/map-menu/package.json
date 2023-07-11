@@ -45,7 +45,7 @@
     "@lrnwebcomponents/lrndesign-avatar": "^7.0.11",
     "@lrnwebcomponents/simple-icon": "^7.0.11",
     "@lrnwebcomponents/simple-tooltip": "^7.0.11",
-    "lit": "^2.7.5"
+    "lit": "^2.7.6"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

@@ -6,7 +6,8 @@ describe("replace-tag test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <replace-tag title="test-title"></replace-tag> `
+      html`<replace-tag with="word-count">will replace</replace-tag>
+      `
     );
   });
 

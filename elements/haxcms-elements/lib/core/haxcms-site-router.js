@@ -33,9 +33,12 @@ class HAXCMSSiteRouter extends HTMLElement {
     /**
      * Subscribe to changes in the manifest
      */
-    this.__disposer = autorun(() => {
+    this.__disposer = this.__disposer ? this.__disposer : [];
+    autorun((reaction) => {
       this._updateRouter(store.routerManifest);
+      this.__disposer.push(reaction);
     });
+
     window.addEventListener(
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this),
@@ -51,9 +54,10 @@ class HAXCMSSiteRouter extends HTMLElement {
    * Detached life cycle
    */
   disconnectedCallback() {
-    this.__disposer.dispose();
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
     this.windowControllers.abort();
-    super.disconnectedCallback();
   }
   addRoutesEvent(e) {
     this.addRoutes(e.detail);

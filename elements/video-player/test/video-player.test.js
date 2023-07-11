@@ -6,7 +6,11 @@ describe("video-player test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <video-player title="test-title"></video-player> `
+      html` <video-player id="example" accent-color="amber" linkable>
+      <video>
+        <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+      </video>
+    </video-player> `
     );
   });
 

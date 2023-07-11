@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <base href="/elements/haxcms-elements/demo/" />
   <script>
@@ -712,8 +712,10 @@ IntersectionObserver.prototype._computeTargetAndRootIntersection =
       }
     } else {
       // If the element has a non-visible overflow, and it's not the <body>
-      // or <html> element, update the intersection rect.
-      // Note: <body> and <html> cannot be clipped to a rect that's not also
+      // or <!doctype html>
+<html lang="en"> element, update the intersection rect.
+      // Note: <body> and <!doctype html>
+<html lang="en"> cannot be clipped to a rect that's not also
       // the document rect, so no need to compute a new intersection.
       var doc = parent.ownerDocument;
       if (parent != doc.body &&
@@ -745,7 +747,8 @@ IntersectionObserver.prototype._getRootRect = function() {
   if (this.root && !isDoc(this.root)) {
     rootRect = getBoundingClientRect(this.root);
   } else {
-    // Use <html>/<body> instead of window since scroll bars affect size.
+    // Use <!doctype html>
+<html lang="en">/<body> instead of window since scroll bars affect size.
     var doc = isDoc(this.root) ? this.root : document;
     var html = doc.documentElement;
     var body = doc.body;

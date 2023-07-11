@@ -363,12 +363,7 @@ class LrndesignTimeline extends SimpleColors {
           "image",
           "text",
         ],
-        handles: [
-          {
-            type: "image",
-            source: "image",
-          },
-        ],
+        handles: [],
         meta: {
           author: "HAXTheWeb core team",
         },

@@ -58,7 +58,7 @@
     "@lrnwebcomponents/utils": "^7.0.4",
     "@lrnwebcomponents/voice-recorder": "^7.0.11",
     "@vaadin/vaadin-upload": "^4.4.1",
-    "lit": "^2.7.5"
+    "lit": "^2.7.6"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",

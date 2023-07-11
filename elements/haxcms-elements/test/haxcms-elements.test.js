@@ -1,18 +1,11 @@
 // local development and mobx
-window.process = window.process || {
-  env: {
-    NODE_ENV: "development",
-  },
-};
 import { fixture, expect, html } from "@open-wc/testing";
-
-import "../haxcms-elements.js";
-
+import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js";
 describe("haxcms-elements test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <haxcms-elements title="test-title"></haxcms-elements> `
+      html`<haxcms-site-builder id="site" file="${new URL('../demo/site.json', import.meta.url).href}"></haxcms-site-builder>`
     );
   });
 

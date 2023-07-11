@@ -312,6 +312,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           <img
             loading="lazy"
             class="image"
+            alt=""
             src="${this.image}"
             style="height:46px;width:100%;margin: 4px 0 2px 0;"
           />

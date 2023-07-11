@@ -12,6 +12,7 @@ const QRCodeMixin = function (SuperClass) {
       this.t = {
         ...this.t,
         currentPage: "Current page",
+        qrCodeForCurrentPage: "QR code for Current page",
       };
     }
     /**
@@ -68,6 +69,7 @@ const QRCodeMixin = function (SuperClass) {
             part="qr-code-btn"
             class="qr-code-btn btn"
             icon="hax:qr-code"
+            label="${this.t.qrCodeForCurrentPage}"
             @click="${this.QRCodeButtonToggle}"
             id="qrcodebtn"
           ></simple-icon-button-lite>

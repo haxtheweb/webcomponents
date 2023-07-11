@@ -65,7 +65,7 @@
     "@lrnwebcomponents/utils": "^7.0.4",
     "@lrnwebcomponents/wc-autoload": "^7.0.11",
     "@vaadin/router": "^1.7.4",
-    "lit": "^2.7.5",
+    "lit": "^2.7.6",
     "mobx": "6.9.0",
     "roughjs": "4.4.5",
     "scrollable-component": "^1.2.0",

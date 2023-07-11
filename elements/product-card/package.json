@@ -46,7 +46,7 @@
     "@lrnwebcomponents/grid-plate": "^7.0.11",
     "@lrnwebcomponents/simple-colors": "^7.0.11",
     "@lrnwebcomponents/utils": "^7.0.4",
-    "lit": "^2.7.5"
+    "lit": "^2.7.6"
   },
   "devDependencies": {
     "@lrnwebcomponents/a11y-gif-player": "^7.0.11",

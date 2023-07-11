@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { observable, makeObservable, configure, computed, toJS } from "mobx";
-configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
+configure({ enforceActions: false }); // strict mode off
 
 class GradeBookStoreClass extends LitElement {
   static get tag() {

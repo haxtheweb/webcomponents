@@ -55,7 +55,7 @@
     "@lrnwebcomponents/simple-toast": "^7.0.11",
     "@lrnwebcomponents/simple-tooltip": "^7.0.11",
     "@lrnwebcomponents/utils": "^7.0.4",
-    "lit": "^2.7.5"
+    "lit": "^2.7.6"
   },
   "devDependencies": {
     "@lrnwebcomponents/storybook-utilities": "^7.0.11",

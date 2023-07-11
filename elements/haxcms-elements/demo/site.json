@@ -42,7 +42,7 @@
     },
     "theme": {
       "element": "clean-one",
-      "path": "@lrnwebcomponents/terrible-themes/lib/terrible-productionz-themes.js",
+      "path": "node_modules/@lrnwebcomponents/clean-one/clean-one.js",
       "name": "Course theme",
       "variables": {
         "image": "assets/banner.jpg",

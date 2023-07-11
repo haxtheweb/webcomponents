@@ -11,16 +11,15 @@ describe("lrndesign-timeline test", () => {
         <section>
           <img
             class="media"
-            alt="Profile illustration of, James Pollock, Governor of Pennsylvania 1855-1858."
-            src="https://upload.wikimedia.org/wikipedia/commons/5/56/James_Pollock_Pennsylvania_Governor.jpg"
+            alt="Black and white photo original Old Main in an empty field."
+            src="https://libraries.psu.edu/sites/default/files/migrated/1287768717666.jpg"
           />
-          <h3>1855 - Charter</h3>
+          <h3>"1856 - Construction of Old Main</h3>
           <p>
-            Charter now in effect signed by Governor Pollock, February 22; first
-            Board of Trustees president, Judge Frederick Watts of Carlisle. Site
-            in Centre County selected from nine offered throughout state; 200
-            acres donated by James Irvin with $10,000 pledge from citizens of
-            Centre and Huntingdon counties.
+            Construction of Old Main (the &amp;quot;College Building&amp;quot;)
+            begun; supervised by William G. Waring, who was appointed
+            superintendent to open the school and plan farm, orchards and
+            nursery.
           </p>
         </section>
         <section>
@@ -36,14 +35,6 @@ describe("lrndesign-timeline test", () => {
             superintendent to open the school and plan farm, orchards and
             nursery.
           </p>
-        </section>
-        <section>
-          <h3>1874 - The Pennsylvania State College</h3>
-          <p>School renamed The Pennsylvania State College.</p>
-        </section>
-        <section>
-          <h3>1953 - The Pennsylvania State University</h3>
-          <p>The Pennsylvania State University became official name.</p>
         </section>
       </lrndesign-timeline>`
     );

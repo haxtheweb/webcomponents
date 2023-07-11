@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/marked-element": "3.0.1",
-    "lit": "^2.7.5",
+    "lit": "^2.7.6",
     "marked": "5.1.0"
   },
   "devDependencies": {
