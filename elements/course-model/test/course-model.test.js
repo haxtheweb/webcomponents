@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import "../course-model.js";
+//import "../course-model.js";
 /*
 describe("elementName test", () => {
   let element;

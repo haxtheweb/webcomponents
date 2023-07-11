@@ -10,7 +10,7 @@ export default {
           <script>window.process = { env: { NODE_ENV: "development" } }</script>
           <script>document.body.removeAttribute('no-js');window.__appCDN="./node_modules/";window.__appForceUpgrade=false;</script>
           <script>
-            window.WCAutoloadRegistryFile = "./wc-registry.json";
+            window.WCAutoloadRegistryFile = "\/elements\/haxcms-elements\/demo\/wc-registry.json";
             window.WCAutoloadBasePath = "/node_modules/";
             window.WCGlobalBasePath = "/node_modules/";
             // set this in order to simulate the published form of the site
@@ -19,19 +19,21 @@ export default {
             // this will let you simulate more operations without having a backend
             window.HAXCMSContext="demo";
             window.appSettings = {
-              "createNodePath": "dist\/dev\/createNodePath.json",
-              "saveOutlinePath": "dist\/dev\/saveNode.json",
-              "saveManifestPath": "dist\/dev\/saveManifestPath.json",
-              "getSiteFieldsPath": "dist\/dev\/getSiteFieldsPath.json",
-              "deleteNodePath": "dist\/dev\/saveNode.json",
-              "saveNodePath": "dist\/dev\/saveNode.json",
-              "getUserDataPath": "dist\/dev\/userData.json",
-              "login": "dist\/dev\/login.json",
-              "refreshUrl": "dist\/dev\/refreshUrl.json",
-              "logout": "dist\/dev\/logout.json",
-              "connectionSettings": "dist\/dev\/connectionSettings.json",
-              "publishSitePath": "dist\/dev\/saveNode.json",
-              "revertSitePath": "dist\/dev\/saveNode.json",
+              "demo": true,
+              "getSitesList": "sites.json",
+              "createNodePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/createNodePath.json",
+              "saveOutlinePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+              "saveManifestPath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveManifestPath.json",
+              "getSiteFieldsPath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/getSiteFieldsPath.json",
+              "deleteNodePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+              "saveNodePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+              "getUserDataPath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/userData.json",
+              "login": "\/elements\/haxcms-elements\/demo\/dist\/dev\/login.json",
+              "refreshUrl": "\/elements\/haxcms-elements\/demo\/dist\/dev\/refreshUrl.json",
+              "logout": "\/elements\/haxcms-elements\/demo\/dist\/dev\/logout.json",
+              "connectionSettings": "\/elements\/haxcms-elements\/demo\/dist\/dev\/connectionSettings.json",
+              "publishSitePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+              "revertSitePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
               "getFieldsToken": "adskjadshjudfu823u823u8fu8fij",
               "appStore": {
                 "url": "dist\/dev\/appstore.json"

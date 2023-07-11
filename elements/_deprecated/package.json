@@ -14,6 +14,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/exif-data": "7.0.5",
     "@lrnwebcomponents/full-screen-image": "7.0.11",
     "@lrnwebcomponents/r-coder": "7.0.11",
     "@lrnwebcomponents/dropdown-select": "7.0.11",
