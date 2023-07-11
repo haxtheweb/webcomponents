@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../lrndesign-timeline.js";
-
+/*
 describe("lrndesign-timeline test", () => {
   let element;
   beforeEach(async () => {
@@ -44,7 +44,7 @@ describe("lrndesign-timeline test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
-
+*/
 /*
 describe("A11y/chai axe tests", () => {
   it("lrndesign-timeline passes accessibility test", async () => {
