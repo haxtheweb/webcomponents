@@ -211,7 +211,7 @@ export class PageBreak extends IntersectionObserverMixin(
         this.shadowRoot
       ) {
         setTimeout(() => {
-          pageBreakManager.updateVisibleAsActive();
+          //pageBreakManager.updateVisibleAsActive();
         }, 0);
       }
       // replicate locked aross elements between here and next page break

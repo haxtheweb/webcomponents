@@ -452,6 +452,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       target.getAttribute("id");
     // alter URL state
     window.history.pushState({}, null, el.value);
+    window.dispatchEvent(new PopStateEvent('popstate'));
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");

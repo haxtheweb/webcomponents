@@ -32,83 +32,83 @@ class LrnsysProgress extends PolymerElement {
   }
   static get template() {
     return html`
-<custom-style>
+      <custom-style>
         <style is="custom-style">
-        :host {
-          display: block;
-          margin-top: 24px;
-        }
-        :host([size="tiny"]) {
-          font-size: 12.8px;
-        }
-        :host([size="small"]) {
-          font-size: 19.2px;
-        }
-        :host([size="medium"]) {
-          font-size: 25.6px;
-        }
-        :host([size="large"]) {
-          font-size: 44.8px;
-        }
-        :host([size="x-large"]) {
-          font-size: 64px;
-        }
-        :host([size="epic"]) {
-          font-size: 96px;
-        }
-        #circle-container {
-          display: flex;
-          justify-content: space-between;
-          margin: -24px 0 0 0;
-          padding: 0;
-          list-style: none;
-        }
-        .progress-title {
-          position: absolute !important;
-          clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-          clip: rect(1px, 1px, 1px, 1px);
-          overflow: hidden;
-          height: 1px;
-        }
-        simple-progress {
-          height: 8px;
-          --simple-progress-transition-duration: 0.5s;
-          --simple-progress-transition-timing-function: ease;
-          --simple-progress-transition-delay: 0.4s;
-          width: 100%;
-        }
-        /* required to get the box shadow above the progress bar */
-        .circle-node {
-          z-index: 1;
-        }
-        ul#circle-container li.circle-node {
-          list-style-type: none;
-        }
+          :host {
+            display: block;
+            margin-top: 24px;
+          }
+          :host([size="tiny"]) {
+            font-size: 12.8px;
+          }
+          :host([size="small"]) {
+            font-size: 19.2px;
+          }
+          :host([size="medium"]) {
+            font-size: 25.6px;
+          }
+          :host([size="large"]) {
+            font-size: 44.8px;
+          }
+          :host([size="x-large"]) {
+            font-size: 64px;
+          }
+          :host([size="epic"]) {
+            font-size: 96px;
+          }
+          #circle-container {
+            display: flex;
+            justify-content: space-between;
+            margin: -24px 0 0 0;
+            padding: 0;
+            list-style: none;
+          }
+          .progress-title {
+            position: absolute !important;
+            clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+            clip: rect(1px, 1px, 1px, 1px);
+            overflow: hidden;
+            height: 1px;
+          }
+          simple-progress {
+            height: 8px;
+            --simple-progress-transition-duration: 0.5s;
+            --simple-progress-transition-timing-function: ease;
+            --simple-progress-transition-delay: 0.4s;
+            width: 100%;
+          }
+          /* required to get the box shadow above the progress bar */
+          .circle-node {
+            z-index: 1;
+          }
+          ul#circle-container li.circle-node {
+            list-style-type: none;
+          }
 
-        :host([vertical]) {
-          width: max-content;
-        }
-        :host([vertical]) #circle-container {
-          display: block;
-        }
-        :host([vertical]) simple-progress {
-          display: none !important;
-        }
-        :host([vertical]) lrnsys-progress-circle {
-          margin: 16px 0;
-          padding: 0;
-          width: 100%;
-        }
+          :host([vertical]) {
+            width: max-content;
+          }
+          :host([vertical]) #circle-container {
+            display: block;
+          }
+          :host([vertical]) simple-progress {
+            display: none !important;
+          }
+          :host([vertical]) lrnsys-progress-circle {
+            margin: 16px 0;
+            padding: 0;
+            width: 100%;
+          }
 
-        lrnsys-progress-circle {
-          width: 40px;
-          height: 40px;
-          --lrnsys-progress-circle-size: 40px;
-          --lrnsys-progress-spinner-size: 32px;
-          --lrnsys-progress-icon-size: 24px;
-          --paper-spinner-stroke-width: 1.2px;
-        }
-      </style>
+          lrnsys-progress-circle {
+            width: 40px;
+            height: 40px;
+            --lrnsys-progress-circle-size: 40px;
+            --lrnsys-progress-spinner-size: 32px;
+            --lrnsys-progress-icon-size: 24px;
+            --paper-spinner-stroke-width: 1.2px;
+          }
+        </style>
       </custom-style>
 
       <iron-ajax

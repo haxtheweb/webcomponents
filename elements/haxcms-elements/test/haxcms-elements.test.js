@@ -5,7 +5,10 @@ describe("haxcms-elements test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html`<haxcms-site-builder id="site" file="${new URL('../demo/site.json', import.meta.url).href}"></haxcms-site-builder>`
+      html`<haxcms-site-builder
+        id="site"
+        file="${new URL("../demo/site.json", import.meta.url).href}"
+      ></haxcms-site-builder>`
     );
   });
 

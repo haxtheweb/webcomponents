@@ -125,7 +125,9 @@ class SimpleBlogHeader extends SimpleColors {
       <div class="blog-header">
         <simple-icon class="blog-logo" icon="${this.icon}"></simple-icon>
         ${this.title ? html`<h1 class="site-title">${this.title}</h1>` : ``}
-        ${this.title ? html`<h2 class="blog-description">${this.description}</h2>` : ``}
+        ${this.title
+          ? html`<h2 class="blog-description">${this.description}</h2>`
+          : ``}
         <div class="custom-links">
           <site-rss-button type="atom"></site-rss-button>
           <site-rss-button type="rss"></site-rss-button>

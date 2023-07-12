@@ -6,66 +6,132 @@ describe("page-flag test", () => {
   beforeEach(async () => {
     element = await fixture(
       html` <style>
-      page-flag:not(:defined) {
-        display: none;
-      }
-      .wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-      }
-    </style>
-    <div class="wrapper">
-    <grid-plate layout="1-1">
-      <div slot="col-1">
-        <h3>Basic page-flag demo</h3>
-        <page-flag accent-color="yellow">
-          <page-flag-comment seed="Bryan" accent-color="grey">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Other person" accent-color="orange">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Bryan" accent-color="green">This is a comment</page-flag-comment>
-        </page-flag>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <page-flag accent-color="orange">
-          <page-flag-comment seed="Bryan" date="2 days ago" accent-color="grey">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Other person" date="2 days ago" accent-color="orange">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Bryan" date="3 days ago" accent-color="green">This is a comment</page-flag-comment>
-        </page-flag>
-        <p>Here's a bunch of content</p>
-      </div>
-      <div slot="col-2">
-        <h3>Basic page-flag demo</h3>
-        <page-flag accent-color="yellow">
-          <page-flag-comment seed="Bryan" date="2 days ago" accent-color="grey">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Other person" date="2 days ago" accent-color="orange">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Bryan" date="3 days ago" accent-color="green">This is a comment</page-flag-comment>
-        </page-flag>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <page-flag>
-          <page-flag-comment seed="Bryan" date="2 days ago" accent-color="grey">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Other person" date="2 days ago" accent-color="orange">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Bryan" date="3 days ago" accent-color="green">This is a comment</page-flag-comment>
-        </page-flag>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <p>Here's a bunch of content</p>
-        <page-flag accent-color="orange">
-          <page-flag-comment seed="Bryan" date="2 days ago" accent-color="grey">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Other person" date="2 days ago" accent-color="orange">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Bryan" date="3 days ago" accent-color="green">This is a comment</page-flag-comment>
-        </page-flag>
-        <p>Here's a bunch of content</p>
-      </div>
-    </grid-plate>
-  </div>`
+          page-flag:not(:defined) {
+            display: none;
+          }
+          .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+          }
+        </style>
+        <div class="wrapper">
+          <grid-plate layout="1-1">
+            <div slot="col-1">
+              <h3>Basic page-flag demo</h3>
+              <page-flag accent-color="yellow">
+                <page-flag-comment seed="Bryan" accent-color="grey"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment seed="Other person" accent-color="orange"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment seed="Bryan" accent-color="green"
+                  >This is a comment</page-flag-comment
+                >
+              </page-flag>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <page-flag accent-color="orange">
+                <page-flag-comment
+                  seed="Bryan"
+                  date="2 days ago"
+                  accent-color="grey"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment
+                  seed="Other person"
+                  date="2 days ago"
+                  accent-color="orange"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment
+                  seed="Bryan"
+                  date="3 days ago"
+                  accent-color="green"
+                  >This is a comment</page-flag-comment
+                >
+              </page-flag>
+              <p>Here's a bunch of content</p>
+            </div>
+            <div slot="col-2">
+              <h3>Basic page-flag demo</h3>
+              <page-flag accent-color="yellow">
+                <page-flag-comment
+                  seed="Bryan"
+                  date="2 days ago"
+                  accent-color="grey"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment
+                  seed="Other person"
+                  date="2 days ago"
+                  accent-color="orange"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment
+                  seed="Bryan"
+                  date="3 days ago"
+                  accent-color="green"
+                  >This is a comment</page-flag-comment
+                >
+              </page-flag>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <page-flag>
+                <page-flag-comment
+                  seed="Bryan"
+                  date="2 days ago"
+                  accent-color="grey"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment
+                  seed="Other person"
+                  date="2 days ago"
+                  accent-color="orange"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment
+                  seed="Bryan"
+                  date="3 days ago"
+                  accent-color="green"
+                  >This is a comment</page-flag-comment
+                >
+              </page-flag>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <p>Here's a bunch of content</p>
+              <page-flag accent-color="orange">
+                <page-flag-comment
+                  seed="Bryan"
+                  date="2 days ago"
+                  accent-color="grey"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment
+                  seed="Other person"
+                  date="2 days ago"
+                  accent-color="orange"
+                  >This is a comment</page-flag-comment
+                >
+                <page-flag-comment
+                  seed="Bryan"
+                  date="3 days ago"
+                  accent-color="green"
+                  >This is a comment</page-flag-comment
+                >
+              </page-flag>
+              <p>Here's a bunch of content</p>
+            </div>
+          </grid-plate>
+        </div>`
     );
   });
 

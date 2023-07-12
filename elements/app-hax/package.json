@@ -64,7 +64,7 @@
     "@lrnwebcomponents/simple-tooltip": "^7.0.11",
     "@lrnwebcomponents/utils": "^7.0.4",
     "@lrnwebcomponents/wc-autoload": "^7.0.11",
-    "@vaadin/router": "^1.7.4",
+    "@vaadin/router": "^1.7.5",
     "lit": "^2.7.6",
     "mobx": "6.9.0",
     "roughjs": "4.4.5",
@@ -75,7 +75,7 @@
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.2.3",
+    "@web/dev-server": "0.3.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.0",
     "wct-browser-legacy": "1.0.2"

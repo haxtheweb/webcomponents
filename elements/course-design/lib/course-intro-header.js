@@ -19,8 +19,8 @@ class CourseIntroHeader extends LitElement {
     this.title = "";
     this.description = "";
     this.icon = "";
-    this.backgroundImage = '';
-    this.color = '';
+    this.backgroundImage = "";
+    this.color = "";
     autorun(() => {
       const manifest = toJS(store.manifest);
       if (
@@ -285,7 +285,9 @@ class CourseIntroHeader extends LitElement {
         </div>
         <div id="info">
           <h1 id="title">${this.title}</h1>
-          <h2 id="sub-heading" style="color:${this.color};">${this.description}</h2>
+          <h2 id="sub-heading" style="color:${this.color};">
+            ${this.description}
+          </h2>
           <h3 id="outline-title">
             <slot name="outline-title"></slot>
           </h3>

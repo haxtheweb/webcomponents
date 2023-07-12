@@ -11,9 +11,7 @@ import "../simple-blog.js";
 describe("simple-blog test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-blog></simple-blog> `
-    );
+    element = await fixture(html` <simple-blog></simple-blog> `);
   });
 
   it("passes the a11y audit", async () => {

@@ -494,11 +494,7 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
   render() {
     return html`
       <div class="image-wrap">
-        <img
-          src="${this.source}"
-          alt="${this.alt}"
-          loading="lazy"
-        />
+        <img src="${this.source}" alt="${this.alt}" loading="lazy" />
       </div>
     `;
   }

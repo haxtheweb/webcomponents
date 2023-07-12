@@ -310,18 +310,18 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       label: this.t.markButton,
     };
   }
-    /**
+  /**
    * default config for a <code></code> button
    *
    * @readonly
    */
-    get abbrButton() {
-      return {
-        ...super.abbrButton,
-        icon: "hax:abbr",
-        label: this.t.abbrButton,
-      };
-    }
+  get abbrButton() {
+    return {
+      ...super.abbrButton,
+      icon: "hax:abbr",
+      label: this.t.abbrButton,
+    };
+  }
   /**
    * default config for a remove format button
    *

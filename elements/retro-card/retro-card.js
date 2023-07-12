@@ -235,16 +235,7 @@ class RetroCard extends SimpleColors {
         icon: "icons:android",
         color: "purple",
         tags: ["Layout", "card", "layout"],
-        handles: [
-          {
-            type: "image",
-            source2: "mediaSource",
-            source: "hoverSource",
-            alt: "subtitle",
-            title: "title",
-            name: "title",
-          },
-        ],
+        handles: [],
         meta: {
           author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",

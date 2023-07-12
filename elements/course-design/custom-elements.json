@@ -45,7 +45,7 @@
     },
     {
       "name": "course-intro-header",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - ",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `backgroundImage` {`string`} - \n\n  * `color` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `backgroundImage` {`string`} - \n\n  * `color` {`string`} - ",
       "attributes": [
         {
           "name": "title",
@@ -58,6 +58,14 @@
         {
           "name": "icon",
           "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
+        },
+        {
+          "name": "backgroundImage",
+          "description": "`backgroundImage` {`string`} - \n\nProperty: backgroundImage\n\nDefault: "
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - \n\nProperty: color\n\nDefault: "
         }
       ]
     },
@@ -77,7 +85,7 @@
     },
     {
       "name": "course-intro-lesson-plans",
-      "description": "Attributes:\n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `_disposer` - ",
+      "description": "Attributes:\n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `items` {`any[]`} - ",
       "attributes": [
         {
           "name": "items",
@@ -87,7 +95,13 @@
     },
     {
       "name": "course-intro",
-      "attributes": []
+      "description": "Attributes:\n\n  * `color` {`string`} - \n\nProperties:\n\n  * `color` {`string`} - ",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "`color` {`string`} - \n\nProperty: color\n\nDefault: "
+        }
+      ]
     },
     {
       "name": "ebook-button",

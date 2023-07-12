@@ -57,7 +57,7 @@
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
     "@polymer/polymer": "^3.5.1",
-    "@web/dev-server": "0.2.3",
+    "@web/dev-server": "0.3.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.0",
     "wct-browser-legacy": "1.0.2"

@@ -7,8 +7,8 @@ describe("iframe-loader test", () => {
   beforeEach(async () => {
     element = await fixture(
       html` <iframe-loader>
-      <iframe src="https://btopro.com" height="400px" width="100%"></iframe>
-    </iframe-loader>`
+        <iframe src="https://btopro.com" height="400px" width="100%"></iframe>
+      </iframe-loader>`
     );
   });
 

@@ -6,18 +6,21 @@ describe("editable-table test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html`<editable-table 
-      id="food-table" 
-      bordered 
-      condensed 
-      filter 
-      printable
-      responsive
-      sort 
-      striped>
+      html`<editable-table
+        id="food-table"
+        bordered
+        condensed
+        filter
+        printable
+        responsive
+        sort
+        striped
+      >
         <table>
           <caption>
-            Is it a <em>sandwich</em>? Food classification chart.
+            Is it a
+            <em>sandwich</em
+            >? Food classification chart.
           </caption>
           <thead>
             <tr>
@@ -66,7 +69,7 @@ describe("editable-table test", () => {
             </tr>
           </tbody>
         </table>
-    </editable-table> `
+      </editable-table> `
     );
   });
 

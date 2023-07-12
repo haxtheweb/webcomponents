@@ -34,7 +34,7 @@ export class CourseIntro extends LitElement {
   }
   constructor() {
     super();
-    this.color = '';
+    this.color = "";
     autorun(() => {
       const manifest = toJS(store.manifest);
       if (
@@ -60,7 +60,10 @@ export class CourseIntro extends LitElement {
       <course-intro-lesson-plans
         part="course-intro-lesson-plans"
       ></course-intro-lesson-plans>
-      <course-intro-footer part="course-intro-footer" style="border-top: 3px solid ${this.color};">
+      <course-intro-footer
+        part="course-intro-footer"
+        style="border-top: 3px solid ${this.color};"
+      >
         <div slot="footer-left">
           <slot name="footer-left"></slot>
         </div>

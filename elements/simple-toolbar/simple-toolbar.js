@@ -679,7 +679,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           while (c && c.disabled) {
             this.currentItem = c;
             c = this.previousItem || this.lastItem;
-          }  
+          }
           this.focusOn(this.previousItem || this.lastItem);
           finished = true;
           break;
@@ -689,7 +689,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           while (c && c.disabled) {
             this.currentItem = c;
             c = this.firstItem;
-          } 
+          }
           this.focusOn(this.firstItem);
           finished = true;
           break;
@@ -699,7 +699,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           while (c && c.disabled) {
             this.currentItem = c;
             c = this.lastItem;
-          } 
+          }
           this.focusOn(this.lastItem);
           finished = true;
           break;
@@ -709,7 +709,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           while (c && c.disabled) {
             this.currentItem = c;
             c = this.previousItem || this.lastItem;
-          }  
+          }
           this.focusOn(this.previousItem || this.lastItem);
           finished = true;
           break;
@@ -719,7 +719,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           while (c && c.disabled) {
             this.currentItem = c;
             c = this.nextItem || this.firstItem;
-          }  
+          }
           this.focusOn(this.nextItem || this.firstItem);
           finished = true;
           break;

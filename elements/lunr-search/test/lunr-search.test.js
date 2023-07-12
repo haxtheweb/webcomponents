@@ -7,8 +7,10 @@ describe("lunr-search test", () => {
   beforeEach(async () => {
     element = await fixture(
       html`<lunr-search
-      data-source="${new URL('../demo/lunrSearchIndex.json', import.meta.url).href}"
-      demo></lunr-search>`
+        data-source="${new URL("../demo/lunrSearchIndex.json", import.meta.url)
+          .href}"
+        demo
+      ></lunr-search>`
     );
   });
 

@@ -7,16 +7,17 @@ describe("multiple-choice test", () => {
   beforeEach(async () => {
     element = await fixture(
       html`<multiple-choice
-      id="basic"
-      name="basic"
-      title="Which are ducks????"
-      randomize
-      question="Which are ducks?">
-        <input correct value="Huey"/>
-        <input correct value="Duey"/>
-        <input correct value="Daffy"/>
-        <input correct value="Donald"/>
-        <input value="Mickey"/>
+        id="basic"
+        name="basic"
+        title="Which are ducks????"
+        randomize
+        question="Which are ducks?"
+      >
+        <input correct value="Huey" />
+        <input correct value="Duey" />
+        <input correct value="Daffy" />
+        <input correct value="Donald" />
+        <input value="Mickey" />
         <p slot="correct-feedback">Yay! Let's jump in the money pit.</p>
         <p slot="incorrect-feedback">You're despicable. What a quack!</p>
       </multiple-choice>`

@@ -245,6 +245,7 @@ class PageContentsMenu extends LitElement {
       }
       // keep state in history
       window.history.pushState({}, null, target.getAttribute("href"));
+      window.dispatchEvent(new PopStateEvent('popstate'));
       // close menu
       this.hideSettings = true;
     }

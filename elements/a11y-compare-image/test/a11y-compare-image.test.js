@@ -15,15 +15,13 @@ describe("Image comparison", () => {
       <img
         slot="top"
         aria-describedBy="cloudy"
-        .src="${new URL("../demo/images/Eagle500.jpg", import.meta.url)
-          .href}"
+        .src="${new URL("../demo/images/Eagle500.jpg", import.meta.url).href}"
         alt="Matterhorn without snow"
       />
       <img
         slot="bottom"
         aria-describedBy="snowy"
-        .src="${new URL("../demo/images/Beaver2.jpg", import.meta.url)
-          .href}"
+        .src="${new URL("../demo/images/Beaver2.jpg", import.meta.url).href}"
         alt="Matterhorn with snow"
       />
     </a11y-compare-image>`);
