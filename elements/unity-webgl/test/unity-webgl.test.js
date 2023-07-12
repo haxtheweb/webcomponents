@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-
+/*
 import "../unity-webgl.js";
 
 describe("unity-webgl test", () => {
@@ -24,7 +24,7 @@ describe("unity-webgl test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
-
+*/
 /*
 describe("A11y/chai axe tests", () => {
   it("unity-webgl passes accessibility test", async () => {

@@ -12,7 +12,7 @@ describe("simple-blog test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <simple-blog title="test-title"></simple-blog> `
+      html` <simple-blog></simple-blog> `
     );
   });
 

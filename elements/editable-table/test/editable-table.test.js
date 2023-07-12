@@ -6,7 +6,67 @@ describe("editable-table test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <editable-table title="test-title"></editable-table> `
+      html`<editable-table 
+      id="food-table" 
+      bordered 
+      condensed 
+      filter 
+      printable
+      responsive
+      sort 
+      striped>
+        <table>
+          <caption>
+            Is it a <em>sandwich</em>? Food classification chart.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="row">Food</th>
+              <th scope="col">Enclosure</th>
+              <th scope="col">Contents</th>
+              <th scope="col">Orientation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Hamburger</th>
+              <td>one bun, split into two</td>
+              <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+              <td>horizontal</td>
+            </tr>
+            <tr>
+              <th scope="row">Hoagie</th>
+              <td>one bun</td>
+              <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+              <td>vertical</td>
+            </tr>
+            <tr>
+              <th scope="row">Hot Dog</th>
+              <td>one bun</td>
+              <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+              <td>vertical</td>
+            </tr>
+            <tr>
+              <th scope="row">Hot Pocket</th>
+              <td>two crusts sealed together</td>
+              <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+              <td>horizontal</td>
+            </tr>
+            <tr>
+              <th scope="row">Pie</th>
+              <td>two crusts sealed together</td>
+              <td>fruit or meat, vegetables, <i>and/or</i> cheese</td>
+              <td>horizontal</td>
+            </tr>
+            <tr>
+              <th scope="row">Taco</th>
+              <td>one shell</td>
+              <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+              <td>vertical</td>
+            </tr>
+          </tbody>
+        </table>
+    </editable-table> `
     );
   });
 

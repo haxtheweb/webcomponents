@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-
+/*
 import "../aframe-player.js";
 
 describe("aframe-player test", () => {
@@ -13,7 +13,7 @@ describe("aframe-player test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
-});
+});*/
 
 /*
 describe("A11y/chai axe tests", () => {

@@ -196,7 +196,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
           border: none !important;
           outline: none !important;
         }
-        td #icons {
+        td .icon-container {
           position: absolute;
           right: 0;
           top: calc(50% - 12px);
@@ -631,7 +631,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         @click="${this._onCellClick}"
       >
         ${this.cellEditor(rowIndex, colIndex, contents)}
-        <div id="icons">
+        <div class="icon-container">
           <simple-icon-lite
             class="sortable-icon"
             icon="editable-table:sortable"
