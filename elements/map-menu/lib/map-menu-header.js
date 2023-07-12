@@ -88,7 +88,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
 
         .title {
-          display: inline-flex;
           text-transform: none;
           font-size: var(--map-menu-font-size, 16px);
           font-family: "Open+Sans", sans-serif;
@@ -100,7 +99,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           white-space: nowrap;
           overflow: hidden;
           word-break: break-all;
-          max-width: 200px;
         }
 
         button {
