@@ -90,7 +90,7 @@ class SiteBreadcrumb extends LitElement {
       <div
         id="space"
         itemscope
-        itemtype="http://data-vocabulary.org/Breadcrumb"
+        itemtype="https://schema.org/BreadcrumbList"
       ></div>
     `;
   }
