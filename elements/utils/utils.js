@@ -163,7 +163,6 @@ export function normalizeEventPath(e) {
 function formatHTML(str) {
   var div = document.createElement("div");
   div.innerHTML = str.trim();
-
   return formatHTMLInternals(div, 0).innerHTML;
 }
 // HTML internals of the DOM tree

@@ -550,7 +550,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       setTimeout(async () => {
         const htmlCode = formatHTML(
           await HAXStore.activeHaxBody.haxToContent()
-        );
+        ).replace(/^\s+|\s+$/gm,'');
         this.shadowRoot.querySelector("#textarea").editorValue = htmlCode;
       }, 0);
     }
