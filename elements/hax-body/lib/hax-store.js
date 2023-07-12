@@ -3732,6 +3732,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     // drop these known things we never want to save
     delete propvals.draggable;
     delete propvals.contenteditable;
+    delete propvals.role;
     delete propvals["data-hax-ray"];
     delete propvals["data-hax-layout"];
     delete propvals["data-hax-active"];
