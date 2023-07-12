@@ -271,6 +271,22 @@ mark {
   padding: 4px 8px;
   border-radius: 6px;
 }
+abbr:focus, abbr:active, abbr:hover {
+  text-decoration: none;
+  background-color: var(--hax-base-styles-abbr-focus, #ffff33);
+  outline-offset: 2px;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+abbr {
+  transition: all 0.6s ease 0s;
+  padding: 2px 4px;
+  font-style: italic;
+  text-underline-position: under;
+  text-decoration: underline double;
+  cursor: help;
+  outline-color: var(--hax-base-styles-abbr-outline, #ffff33);
+}
 code {
   padding: 0.2em 0.4em;
   margin: 0;
