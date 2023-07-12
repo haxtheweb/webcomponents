@@ -14,6 +14,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/lrndesign-abbreviation": "7.0.11",
+    "@lrnwebcomponents/lrndesign-stepper": "7.0.11",
+    "@lrnwebcomponents/lrndesign-gallery": "7.0.11",
+    "@lrnwebcomponents/lrndesign-gallerycard": "7.0.11",
+    "@lrnwebcomponents/lrndesign-course-banner": "7.0.11",
+    "@lrnwebcomponents/punnett-square": "7.0.11",
     "@lrnwebcomponents/exif-data": "7.0.5",
     "@lrnwebcomponents/full-screen-image": "7.0.11",
     "@lrnwebcomponents/r-coder": "7.0.11",
