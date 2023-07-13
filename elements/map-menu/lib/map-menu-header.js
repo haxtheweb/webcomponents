@@ -18,18 +18,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         :host([active]) button {
           font-weight: bold;
         }
-        #container {
-          display: flex;
-          align-items: center;
-        }
-
-        .avatarlabel {
-          margin-right: 10px;
-        }
-
-        #center {
-          flex: 1 1 auto;
-        }
         a,
         a:visited {
           display: block;
@@ -53,16 +41,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
             --map-menu-item-a-active-background-color,
             var(--simple-colors-default-theme-light-grey-2, #dddddd)
           );
-        }
-        lrndesign-avatar {
-          display: inline-block;
-          background: #fff;
-          border-radius: 50%;
-          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-          padding: 2px;
-          position: relative;
-          margin-top: -2px;
-          transform: translateY(2px);
         }
 
         #link {
@@ -93,9 +71,9 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           font-family: "Open+Sans", sans-serif;
           text-overflow: ellipsis;
           height: 44px;
-          vertical-align: middle;
-          width: auto;
           line-height: 44px;
+          vertical-align: middle;
+          max-width: 260px;
           white-space: nowrap;
           overflow: hidden;
           word-break: break-all;
@@ -103,27 +81,21 @@ class MapMenuHeader extends I18NMixin(LitElement) {
 
         button {
           cursor: pointer;
-          display: flex;
           color: inherit;
+          display: flex;
           background-color: transparent;
           text-transform: none;
           width: 100%;
           justify-content: left;
           margin: 0px;
-          border: 0;
+          border: 0px;
           min-height: var(--map-menu-header-button-min-height, 44px);
-          padding: 0 16px;
+          padding: 0px 16px;
           text-align: left;
-          border-radius: 0;
-          height: var(
-            --map-menu-item-button-height,
-            var(--map-menu-item-height, 44px)
-          );
+          border-radius: 0px;
+          height: var( --map-menu-item-button-height, var(--map-menu-item-height, 44px) );
           vertical-align: middle;
-          line-height: var(
-            --map-menu-item-button-height,
-            var(--map-menu-item-height, 44px)
-          );
+          line-height: var( --map-menu-item-button-height, var(--map-menu-item-height, 44px) );
         }
         :host([status="new"]) a::after {
           border-right: 8px solid green;
@@ -158,44 +130,31 @@ class MapMenuHeader extends I18NMixin(LitElement) {
    */
   render() {
     return html`
-      <div id="container">
-        ${this.avatarLabel
-          ? html`
-              <div class="avatarlabel">
-                <lrndesign-avatar
-                  label="${this.avatarLabel}"
-                ></lrndesign-avatar>
-              </div>
-            `
-          : ``}
-        <div id="center">
-          <a tabindex="-1" href="${this.url}">
-            <button>
-              ${this.icon
-                ? html`
-                    <simple-icon-lite
-                      icon="${this.icon}"
-                      id="icon"
-                    ></simple-icon-lite>
-                    ${this.iconLabel
-                      ? html`<simple-tooltip for="icon"
-                          >${this.iconLabel}</simple-tooltip
-                        >`
-                      : ``}
-                  `
-                : ``}
-              <div class="title">${this.itemtitle}</div>
-              ${!this.published
-                ? html`<simple-icon-lite
-                    id="unpublished"
-                    title="${this.t.pageIsUnpublished}"
-                    icon="icons:visibility-off"
-                  ></simple-icon-lite>`
-                : ``}
-            </button>
-          </a>
-        </div>
-      </div>
+      <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
+        <button>
+          ${this.icon
+            ? html`
+                <simple-icon-lite
+                  icon="${this.icon}"
+                  id="icon"
+                ></simple-icon-lite>
+                ${this.iconLabel
+                  ? html`<simple-tooltip for="icon"
+                      >${this.iconLabel}</simple-tooltip
+                    >`
+                  : ``}
+              `
+            : ``}
+          <div class="title">${this.itemtitle}</div>
+          ${!this.published
+            ? html`<simple-icon-lite
+                id="unpublished"
+                title="${this.t.pageIsUnpublished}"
+                icon="icons:visibility-off"
+              ></simple-icon-lite>`
+            : ``}
+        </button>
+      </a>
     `;
   }
 
@@ -207,7 +166,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
-    this.avatarLabel = "";
     this.iconLabel = null;
     this.icon = null;
     this.url = "";
@@ -242,10 +200,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       if (["id", "selected"].includes(propName)) {
         this.__selectedChanged(this.selected, this.id);
       }
-      // only import avatar if we absolutely need it since its heavy
-      if (propName == "avatarLabel" && this[propName] != "") {
-        import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
-      }
     });
   }
   /**
@@ -263,10 +217,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       iconLabel: {
         type: String,
         attribute: "icon-label",
-      },
-      avatarLabel: {
-        type: String,
-        attribute: "avatar-label",
       },
       url: {
         type: String,

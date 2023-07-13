@@ -42,7 +42,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/a11y-collapse": "^7.0.11",
-    "@lrnwebcomponents/lrndesign-avatar": "^7.0.11",
     "@lrnwebcomponents/simple-icon": "^7.0.11",
     "@lrnwebcomponents/simple-tooltip": "^7.0.11",
     "lit": "^2.7.6"
