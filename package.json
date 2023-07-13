@@ -92,7 +92,8 @@
     "text-vide": "1.5.0",
     "node-html-parser": "5.3.3",
     "html-to-docx": "1.4.0",
-    "text-readability": "1.0.5"
+    "text-readability": "1.0.5",
+    "pretty": "2.0.0"
   },
   "devDependencies": {
     "web-animations-js": "2.3.2",
@@ -172,6 +173,7 @@
   "resolutions": {
     "@mdjs/mdjs-preview": "0.5.9",
     "@lit/reactive-element": "1.6.2",
+    "@google/model-viewer": "3.1.1",
     "lit-element": "3.3.2",
     "webpack": "5.87.0",
     "lit-html": "2.7.5",

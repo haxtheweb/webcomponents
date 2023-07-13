@@ -73,6 +73,18 @@ export function enableCoreServices() {
       type: "link for processing as link otherwise unused",
     },
   });
+
+  // prettyHtml
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/media/format/prettyHtml",
+    name: "@core/prettyHtml",
+    title: "Pretty HTML",
+    description: "Format HTML string (or file) to be more human readable",
+    params: {
+      html: "HTML or link to be converted",
+      type: "link for processing as link otherwise unused",
+    },
+  });
   // crypto
   MicroFrontendRegistry.add({
     endpoint: "/api/services/security/aes256",

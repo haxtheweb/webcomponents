@@ -137,6 +137,18 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           icon-position="top"
         >
         </hax-tray-button>
+        ${MicroFrontendRegistry.has("@core/prettyHtml")
+          ? html`
+            <hax-tray-button
+              label="${this.t.PrettifyHtml}"
+              icon="hax:format-textblock"
+              @click="${this.prettifyContent}"
+              show-text-label
+              icon-position="top"
+            >
+            </hax-tray-button>
+            `
+          : html``}
         <hax-tray-button
           @click="${this.selectBody}"
           icon="hax:html-code"
@@ -483,6 +495,23 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     HAXStore.activeHaxBody.importContent(stripMSWord(htmlBody));
     this.close();
   }
+
+  async prettifyContent(e) {
+    let haxBodyHtml = await HAXStore.activeHaxBody.haxToContent();
+    const response = await MicroFrontendRegistry.call("@core/prettyHtml", {
+      html: haxBodyHtml,
+    });
+    if (response.status == 200) {
+      this.shadowRoot.querySelector("#textarea").editorValue = "";
+      setTimeout(() => {
+        const htmlCode = response.data.replace(/^\s+|\s+$/gm,'');
+        this.shadowRoot.querySelector("#textarea").editorValue = htmlCode;
+      }, 0);
+    }
+    const htmlBody = this.shadowRoot.querySelector("#textarea").value;
+    HAXStore.toast("Formatting updated, Content updated");
+    HAXStore.activeHaxBody.importContent(htmlBody);
+  }
   /**
    * update content of the editor area
    */
@@ -617,6 +646,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       downloadDOCX: "Download DOCX",
       downloadMD: "Download Markdown",
       downloadPDF: "Download PDF",
+      PrettifyHtml: "Prettify HTML",
       cleanFormatting: "Clean Formatting",
       haxSchema: "HAXSchema",
       importContent: "Import content",
