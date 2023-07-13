@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.14",
+  "version": "7.0.15",
   "description": "Clean presentation of what to expect in an upcoming lesson of instruction",
   "repository": {
     "type": "git",
@@ -44,13 +44,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^7.0.11",
-    "@lrnwebcomponents/haxcms-elements": "^7.0.14",
-    "@lrnwebcomponents/i18n-manager": "^7.0.5",
+    "@lrnwebcomponents/hax-iconset": "^7.0.15",
+    "@lrnwebcomponents/haxcms-elements": "^7.0.15",
+    "@lrnwebcomponents/i18n-manager": "^7.0.15",
     "@lrnwebcomponents/intersection-element": "^7.0.4",
-    "@lrnwebcomponents/micro-frontend-registry": "^7.0.5",
-    "@lrnwebcomponents/simple-colors": "^7.0.11",
-    "@lrnwebcomponents/simple-icon": "^7.0.11",
+    "@lrnwebcomponents/micro-frontend-registry": "^7.0.15",
+    "@lrnwebcomponents/simple-colors": "^7.0.15",
+    "@lrnwebcomponents/simple-icon": "^7.0.15",
     "lit": "^2.7.6",
     "mobx": "6.9.0"
   },

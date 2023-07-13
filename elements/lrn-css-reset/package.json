@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.11",
+  "version": "7.0.15",
   "description": "CSS reset and additional base styles for lrnwebcomponents and apps",
   "repository": {
     "type": "git",

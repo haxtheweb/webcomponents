@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.14",
+  "version": "7.0.15",
   "description": "view 3d models with multiple angel rotation for a course experience",
   "repository": {
     "type": "git",
@@ -44,25 +44,25 @@
   },
   "license": "",
   "dependencies": {
-    "lit": "^2.7.6",
-    "@google/model-viewer": "3.1.1"
+    "@google/model-viewer": "3.1.1",
+    "lit": "^2.7.6"
   },
   "devDependencies": {
-    "@lrnwebcomponents/video-player": "^7.0.11",
-    "@lrnwebcomponents/media-image": "^7.0.11",
-    "@wcfactory/rollup-umd-build": "^0.12.1",
     "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@lrnwebcomponents/media-image": "^7.0.15",
+    "@lrnwebcomponents/video-player": "^7.0.15",
+    "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@web/dev-server": "0.3.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.21",
     "polymer-build": "3.1.4",
-    "@web/dev-server": "0.3.0",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2",
-    "@open-wc/testing": "2.5.32"
+    "web-animations-js": "2.3.2"
   },
   "resolutions": {
     "@google/model-viewer": "3.1.1"

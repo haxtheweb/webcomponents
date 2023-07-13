@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.11",
+  "version": "7.0.15",
   "description": "self check for a card that has a definition on the back",
   "repository": {
     "type": "git",
@@ -44,9 +44,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/i18n-manager": "^7.0.5",
-    "@lrnwebcomponents/simple-colors": "^7.0.11",
-    "@lrnwebcomponents/simple-icon": "^7.0.11",
+    "@lrnwebcomponents/i18n-manager": "^7.0.15",
+    "@lrnwebcomponents/simple-colors": "^7.0.15",
+    "@lrnwebcomponents/simple-icon": "^7.0.15",
     "lit": "^2.7.6"
   },
   "devDependencies": {

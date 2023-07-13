@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.11",
+  "version": "7.0.15",
   "description": "",
   "repository": {
     "type": "git",
@@ -44,12 +44,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/future-terminal-text": "^7.0.5",
-    "@lrnwebcomponents/hal-9000": "^7.0.11",
-    "@lrnwebcomponents/i18n-manager": "^7.0.5",
-    "@lrnwebcomponents/simple-fields": "^7.0.11",
-    "@lrnwebcomponents/simple-filter": "^7.0.5",
-    "@lrnwebcomponents/simple-icon": "^7.0.11",
+    "@lrnwebcomponents/future-terminal-text": "^7.0.15",
+    "@lrnwebcomponents/hal-9000": "^7.0.15",
+    "@lrnwebcomponents/i18n-manager": "^7.0.15",
+    "@lrnwebcomponents/simple-fields": "^7.0.15",
+    "@lrnwebcomponents/simple-filter": "^7.0.15",
+    "@lrnwebcomponents/simple-icon": "^7.0.15",
     "lit": "^2.7.6",
     "web-dialog": "^0.0.11"
   },

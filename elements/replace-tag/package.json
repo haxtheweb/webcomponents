@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.5",
+  "version": "7.0.15",
   "description": "Loading helpers and css",
   "repository": {
     "type": "git",
