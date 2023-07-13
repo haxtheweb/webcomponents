@@ -550,6 +550,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       editSettings: "Edit settings",
       source: "Source",
       viewSource: "View source",
+      confirmHtmlSourceExit: "HTML Source changes will not be saved without pressing the `Update HTML` button, Save without HTML code editor changes?",
       findMedia: "Find media",
       undo: "Undo",
       redo: "Redo",
@@ -1738,6 +1739,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    * toggle state on button tap
    */
   _editButtonTap(e) {
+    if (this.editMode && HAXStore.haxTray.trayDetail === "view-source") {
+      if (!window.confirm(this.t.confirmHtmlSourceExit)) {
+        return false;
+      }
+    }
     store.playSound("click");
     this.editMode = !this.editMode;
     // save button shifted to edit
