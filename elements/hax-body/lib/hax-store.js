@@ -2445,7 +2445,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         icon: "image:image",
         color: "blue-grey",
         tags: ["Images", "media", "img", "html"],
-        handles: [],
+        handles: [
+          {
+            type: "image",
+            source: "src",
+          }
+        ],
         meta: {
           author: "W3C",
           hidden: true,
