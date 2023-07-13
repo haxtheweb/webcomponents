@@ -1106,15 +1106,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               // trap for NOTHING existing and so the contenteditable process
               // could accidentally delete the entire element as well as the 1 before it
               // which is page break and makes us much sadness
+              // there's also edge cases w/ contenteditable where hitting delete on
+              // a container about to be made empty will then delete table or iframe before it
               if (this.activeNode && 
                 this.activeNode.textContent == "" &&
-                this.activeNode.previousElementSibling.tagName === "PAGE-BREAK" &&
+                this.activeNode.previousElementSibling &&
+                this.activeNode.previousElementSibling.tagName &&
+                (["TABLE", "EDITABLE-TABLE", "IFRAME-LOADER", "IFRAME", "WEBVIEW"].includes(this.activeNode.previousElementSibling.tagName) || (this.activeNode.previousElementSibling.tagName === "PAGE-BREAK" &&
                 this.shadowRoot
                 .querySelector("#body")
                 .assignedNodes({ flatten: true }).length === 2 &&
                 this.shadowRoot
                 .querySelector("#body")
-                .assignedNodes({ flatten: true })[1] === this.activeNode) {
+                .assignedNodes({ flatten: true })[1] === this.activeNode))) {
                 e.preventDefault();
               }
               this._useristyping = true;
