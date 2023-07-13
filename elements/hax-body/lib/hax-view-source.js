@@ -478,9 +478,22 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   /**
    * Import content into body area.
    */
-  importContent(e) {
+  async importContent(e) {
     // import contents of this text area into the activeHaxBody
-    const htmlBody = this.shadowRoot.querySelector("#textarea").value;
+    let htmlBody = this.shadowRoot.querySelector("#textarea").value;
+    let children =
+      HAXStore.activeHaxBody.shadowRoot.querySelector("#body").localName === "slot"
+        ? HAXStore.activeHaxBody.shadowRoot.querySelector("#body").assignedNodes({
+            flatten: true,
+          })
+        : [];
+    // we have children and we don't have a page break, so we need to
+    // inject the current one at the top of what's being imported
+    // or else they'll brick the resulting transaction
+    if (children.length > 0 && children[0].tagName === "PAGE-BREAK" && !htmlBody.includes("<page-break")) {
+      let pb = await HAXStore.nodeToContent(children[0]);
+      htmlBody = pb + "\n" + htmlBody;
+    }
     HAXStore.activeHaxBody.importContent(htmlBody);
     HAXStore.haxTray.trayDetail = "";
   }
