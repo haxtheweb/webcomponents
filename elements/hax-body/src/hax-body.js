@@ -3561,25 +3561,34 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (i !== -1) {
       haxRay = toJS(HAXStore.gizmoList)[i].title;
     }
-    // force images to NOT be draggable as we will manage D&D
-    if (node.tagName == "IMG") {
-      node.setAttribute("draggable", false);
+    if (node.tagName !== "PAGE-BREAK") {
+      // force images to NOT be draggable as we will manage D&D
+      if (node.tagName == "IMG") {
+        node.setAttribute("draggable", false);
+      }
+      // oooooo snap, drag and drop..
+      if (status) {
+        this.__applyDragDropState(node, haxRay);
+        listenerMethod = "addEventListener";
+      } else {
+        this.__applyDragDropState(node, false);
+        listenerMethod = "removeEventListener";
+      }
+      node[listenerMethod]("drop", this.dropEvent.bind(this));
+      node[listenerMethod]("dragenter", this.dragEnter.bind(this));
+      node[listenerMethod]("dragleave", this.dragLeave.bind(this));
+      node[listenerMethod]("dragover", (e) => {
+        this.__dragMoving = true;
+        e.preventDefault();
+      });
     }
-    // oooooo snap, drag and drop..
-    if (status) {
-      this.__applyDragDropState(node, haxRay);
-      listenerMethod = "addEventListener";
-    } else {
-      this.__applyDragDropState(node, false);
-      listenerMethod = "removeEventListener";
+    else {
+      if (status) {
+        node.setAttribute("data-hax-ray", haxRay);
+      } else {
+        node.removeAttribute("data-hax-ray");
+      }
     }
-    node[listenerMethod]("drop", this.dropEvent.bind(this));
-    node[listenerMethod]("dragenter", this.dragEnter.bind(this));
-    node[listenerMethod]("dragleave", this.dragLeave.bind(this));
-    node[listenerMethod]("dragover", (e) => {
-      this.__dragMoving = true;
-      e.preventDefault();
-    });
     // additional things for text based elements
     if (this._HTMLPrimativeTest(node)) {
       if (status) {
