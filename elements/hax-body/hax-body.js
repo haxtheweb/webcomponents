@@ -515,6 +515,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.t = {
       addContent: "Add Content",
     };
+    // double key press counter
+    this.timesClickedArrowDown = 0;
+    this.timesClickedArrowUp = 0;
     // primary registration for the namespace so all tags under hax
     // can leverage this data
     this.registerLocalization({
@@ -1029,6 +1032,43 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }, 100);
     }
   }
+  _onKeyUp(e) {
+    if (['ArrowUp', 'ArrowDown'].includes(e.key) && this.activeNode && HAXStore.isTextElement(this.activeNode)) {
+      let key = e.key;
+      this[`timesClicked${key}`]++;
+      if (this[`timesClicked${key}`] >= 2 && this.activeNode === this.prevKeyActiveNode) {
+        if (key === "ArrowUp") {
+          // implies we're at the top of the body
+          if (this.activeNode.previousElementSibling && this.activeNode.previousElementSibling.tagName === "PAGE-BREAK") {
+            this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
+          }
+          else if (this.activeNode.parentNode !== this && this.activeNode.parentNode.previousElementSibling  && this.activeNode.parentNode.previousElementSibling.tagName === "PAGE-BREAK") {
+            this.haxInsert("p", "", {}, this.activeNode.parentNode.previousElementSibling);
+            // would imply top of document, shouldn't be possible
+          } else if (!this.activeNode.previousElementSibling && this.activeNode.parentNode === this) {
+            let p = document.createElement("p");
+            this.insertBefore(p, this.activeNode);
+          }
+        }
+        else {
+          if (!this.activeNode.nextElementSibling && this.children[this.children.length - 1] === this.activeNode) {
+            this.haxInsert("p", "", {});
+          }
+          else if(this.activeNode.parentNode && this.activeNode.parentNode !== this && !this.activeNode.parentNode.nextElementSibling && this.children[this.children.length - 1] === this.activeNode.parentNode) {
+            this.haxInsert("p", "", {}, this.activeNode.parentNode);
+          }
+          this[`timesClicked${key}`] = 0;
+          this.prevKeyActiveNode = null;
+        }
+      }
+      else {
+        // store previous reference to ensure we stay in same context between key presses
+        this.prevKeyActiveNode = this.activeNode;
+      }
+      setTimeout(() => {this[`timesClicked${key}`] = 0; this.prevKeyActiveNode = null;}, 200);
+    }
+  }
+
   _onKeyDown(e) {
     // make sure we don't have an open drawer, and editing, and we are not focused on tray
     if (
@@ -1037,7 +1077,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       document.activeElement.tagName !== "BODY" &&
       document.activeElement.tagName !== "SIMPLE-MODAL"
     ) {
-      // if we are NOT editing and delete key is hit, delete the element
       if (this.getAttribute("contenteditable")) {
         this.__dropActiveVisible();
         this.__manageFakeEndCap(false);
@@ -2937,6 +2976,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.scrollerFixclickEvent = this.scrollerFixclickEvent.bind(this);
       this.blurEvent = this.blurEvent.bind(this);
       this._onKeyDown = this._onKeyDown.bind(this);
+      this._onKeyUp = this._onKeyUp.bind(this);
       this._keepContextVisible = this._keepContextVisible.bind(this);
       // helps ensure correct state attachment and detachment
       this.windowControllers = new AbortController();
@@ -2958,6 +2998,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         signal: this.windowControllers.signal,
       });
       window.addEventListener("keydown", this._onKeyDown, {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("keyup", this._onKeyUp, {
         signal: this.windowControllers.signal,
       });
       window.addEventListener("resize", this._keepContextVisible, {
@@ -3602,7 +3645,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     else {
       if (status) {
-        node.setAttribute("data-hax-ray", haxRay);
+        node.setAttribute("data-hax-ray", "");
       } else {
         node.removeAttribute("data-hax-ray");
       }
@@ -4118,6 +4161,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.contextMenus.plate.disableOps = false;
     this.contextMenus.plate.disableItemOps = false;
     this.contextMenus.plate.canMoveElement = this.canMoveElement;
+    setTimeout(() => {
+      this.prevKeyActiveNode = null;      
+    }, 5);
     if (oldValue) {
       oldValue.removeAttribute("data-hax-active");
     }

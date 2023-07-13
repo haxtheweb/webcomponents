@@ -1586,8 +1586,10 @@ class HaxTray extends I18NMixin(
           title: propTitle,
           properties: filteredProps.length > 0 ? filteredProps : undefined,
           disabled: filteredProps.length < 1,
+          // we only auto expand (and hence auto focus) active nodes if they are NOT text based
+          // grid plates are the exception to the rule here
           expanded:
-            propName === "configure" &&
+            propName === "configure" && this.activeNode.tagName !== "GRID-PLATE" &&
             (!HAXStore.isTextElement(this.activeNode) ||
               HAXStore.isInlineElement(this.activeNode)),
           accordion: true,
