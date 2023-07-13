@@ -544,6 +544,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       backToSiteList: "Back to site list",
       mySites: "My sites",
       cancel: "Cancel",
+      unsavedChangesWillBeLostIfSelectingOkAreYouSure: "Unsaved changes will be lost if selecting OK, are you sure?",
       editDetails: "Page details",
       add: "Add",
       editSettings: "Edit settings",
@@ -1785,24 +1786,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     window.dispatchEvent(evt);
   }
-  _cancelButtonTap(e) {
+  async _cancelButtonTap(e) {
+    const body = await HAXStore.activeHaxBody.haxToContent();
+    if (body != this._originalContent && !window.confirm(this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure)) {
+      return false;
+    }
     this.editMode = false;
-    store.playSound("error");
-    this.dispatchEvent(
-      new CustomEvent("hax-cancel", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.detail,
-      })
-    );
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {},
-      })
-    );
+      store.playSound("error");
+      this.dispatchEvent(
+        new CustomEvent("hax-cancel", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: e.detail,
+        })
+      );
+      window.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        })
+      );
   }
   /**
    * Delete button hit, confirm they want to do this
@@ -1987,6 +1992,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _editModeChanged(newValue, oldValue) {
     if (newValue) {
+      // store a content copy of original state as text, waiting for a paint / full setup
+      setTimeout(async () => {
+        this._originalContent = await HAXStore.activeHaxBody.haxToContent();
+      }, 100);
       this.__editIcon = "icons:save";
       this.__editText = this.t.saveChanges;
       SuperDaemonInstance.appendContext("HAX");
