@@ -1103,6 +1103,20 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // extra trap set for this in case we care that we are in the act of deleting
             case "Backspace":
             case "Delete":
+              // trap for NOTHING existing and so the contenteditable process
+              // could accidentally delete the entire element as well as the 1 before it
+              // which is page break and makes us much sadness
+              if (this.activeNode && 
+                this.activeNode.textContent == "" &&
+                this.activeNode.previousElementSibling.tagName === "PAGE-BREAK" &&
+                this.shadowRoot
+                .querySelector("#body")
+                .assignedNodes({ flatten: true }).length === 2 &&
+                this.shadowRoot
+                .querySelector("#body")
+                .assignedNodes({ flatten: true })[1] === this.activeNode) {
+                e.preventDefault();
+              }
               this._useristyping = true;
               this.__delHit = true;
               this.querySelectorAll("[data-hax-active]").forEach(
