@@ -122,6 +122,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     return {
       ...super.properties,
       categories: { type: Array },
+      hidden: { type: Boolean, reflect: true },
       recentGizmoList: { type: Array },
       activePreview: { type: Number },
     };
@@ -132,7 +133,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     popover.opened = false;
   }
   render() {
-    return html` <div class="toolbar-inner" part="toolbar">
+    return html`${this.hidden ? `` : html`<div class="toolbar-inner" part="toolbar">
         <simple-fields-field
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
@@ -223,7 +224,8 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             )}
           </simple-button-grid>
         </a11y-collapse>`
-      )}`;
+      )}
+    `}`;
   }
   static get tag() {
     return "hax-gizmo-browser";

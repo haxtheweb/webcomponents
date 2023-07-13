@@ -861,6 +861,7 @@ class SuperDaemon extends SimpleColors {
   // apply default voice commands for when we reset the voice UI
   defaultVoiceCommands() {
     this.addVoiceCommand(`(hey) ${this.voiceRespondsTo}`, this, "promptMerlin");
+    this.addVoiceCommand(`(hey) marilyn`, this, "promptMerlin"); // common mispronunciation
     this.addVoiceCommand(`stop listening`, this, "stopMerlin");
     this.addVoiceCommand(`close merlin`, this, "closeMerlin");
     this.addVoiceCommand(`cancel merlin`, this, "closeMerlin");

@@ -270,7 +270,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
     }
   }
   render() {
-    return html`
+    return html`${this.hidden ? `` : html`
       <h5>${this.t.contentStatistics}</h5>
       <div class="stats">
         <div class="stat">
@@ -367,7 +367,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
             </li>
           `;
         })}
-      </ul>
+      </ul>`}
     `;
   }
   editItem(index) {
@@ -500,6 +500,10 @@ class HaxMap extends I18NMixin(SimpleColors) {
        */
       opened: {
         type: Boolean,
+      },
+      hidden: {
+        type: Boolean,
+        reflect: true,
       },
       elementList: {
         type: Array,

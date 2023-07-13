@@ -76,7 +76,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     ];
   }
   render() {
-    return html`
+    return html`${this.hidden ? `` : html`
       <hax-toolbar>
         <hax-tray-button
           label="${this.t.updateHTML}"
@@ -250,7 +250,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           font-size="13"
           word-wrap
         ></code-editor>
-      </div>
+      </div>`}
     `;
   }
   static get tag() {
@@ -521,12 +521,18 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     if (!window.customElements.get("code-editor")) {
       import("@lrnwebcomponents/code-editor/code-editor.js").then(() => {
         this.updateEditor();
+        // delay is because we conditionally render the entire treee
+        // to reduce memory usage bc of how large the monoco window is
         setTimeout(() => {
           this.updateEditor();
         }, 1000);
       });
     } else {
-      this.updateEditor();
+      // delay is because we conditionally render the entire treee
+      // to reduce memory usage bc of how large the monoco window is
+      setTimeout(() => {
+        this.updateEditor();
+      }, 1000);
     }
   }
   /**
@@ -627,6 +633,10 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
        */
       globalPreferences: {
         type: Object,
+      },
+      hidden: {
+        type: Boolean,
+        reflect: true,
       },
       theme: {
         type: String,

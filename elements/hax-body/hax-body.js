@@ -2853,6 +2853,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             console.warn(e);
           }
         }
+        this._haxContextOperation({
+          detail: {
+            eventName: "content-edit",
+            value: true,
+          }
+        })
       } else {
         //make sure ective node is not still in edit mode
         if (!!this.activeNode) {
@@ -3162,9 +3168,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               mutation.addedNodes.length === 0 &&
               mutation.removedNodes.length > 0 &&
               this.shadowRoot &&
-              this.shadowRoot
+              ((this.shadowRoot
                 .querySelector("#body")
-                .assignedNodes({ flatten: true }).length === 0
+                .assignedNodes({ flatten: true }).length === 1 && 
+                this.shadowRoot
+                .querySelector("#body")
+                .assignedNodes({ flatten: true })[0].tagName === "PAGE-BREAK") || this.shadowRoot
+                .querySelector("#body")
+                .assignedNodes({ flatten: true }).length === 0)
             ) {
               // we saw that we had nothing, but let's ensure the DOM really stayed empty
               // some projects might lag 1 cycle here and really this is just to ensure
@@ -3172,11 +3183,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               // this helps ensure common operations like importing content don't accidentally
               // activate this 0 content case
               setTimeout(() => {
-                if (
+                if ((this.shadowRoot
+                  .querySelector("#body")
+                  .assignedNodes({ flatten: true }).length === 1 && 
                   this.shadowRoot
-                    .querySelector("#body")
-                    .assignedNodes({ flatten: true }).length === 0
-                ) {
+                  .querySelector("#body")
+                  .assignedNodes({ flatten: true })[0].tagName === "PAGE-BREAK") || this.shadowRoot
+                  .querySelector("#body")
+                  .assignedNodes({ flatten: true }).length === 0){
                   this.appendChild(document.createElement("p"));
                 }
               }, 100);
