@@ -1182,6 +1182,7 @@
     "sorting-question": "@lrnwebcomponents/sorting-question/sorting-question.js",
     "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
+    "course-model": "@lrnwebcomponents/course-model/course-model.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
     "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
