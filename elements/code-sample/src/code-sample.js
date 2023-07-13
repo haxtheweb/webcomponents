@@ -189,7 +189,7 @@ class CodeSample extends LitElement {
               "preserve-content": "preserve-content",
             },
             title: "Source",
-            description: "The URL for this video.",
+            description: "Code to be presented in content area",
             inputMethod: "code-editor",
           },
           {

@@ -50,11 +50,9 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       {
         property: "href",
         title: "Link",
-        description: "The URL for this video.",
+        description: "The URL to a resource.",
         required: true,
-        inputMethod: "url",
-        validationType: "url",
-        autoValidate: true,
+        inputMethod: "haxupload",
       },
     ];
     this.command = "createLink";
@@ -78,11 +76,9 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       {
         property: "href",
         title: "Link",
-        description: "The URL for this video.",
+        description: "The URL to a resource.",
         required: true,
-        inputMethod: "url",
-        validationType: "url",
-        autoValidate: true,
+        inputMethod: "haxupload",
       },
     ];
   }

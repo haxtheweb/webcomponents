@@ -2418,7 +2418,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             {
               attribute: "src",
               title: "Source",
-              description: "The URL for this video.",
+              description: "The URL for this resource.",
               inputMethod: "textfield",
               icon: "link",
               required: true,
@@ -2456,7 +2456,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           {
             attribute: "src",
             title: "Source",
-            description: "The URL for this video.",
+            description: "The URL for this image.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
             icon: "link",
@@ -2890,7 +2890,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           {
             attribute: "src",
             title: "Source",
-            description: "The URL for this video.",
+            description: "The URL for this resource.",
             inputMethod: "textfield",
             icon: "link",
             required: true,
