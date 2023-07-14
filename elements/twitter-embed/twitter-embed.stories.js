@@ -3,7 +3,7 @@ import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "HAX Widgets|Twitter Embed",
+  title: "Media|Twitter Embed",
   component: TwitterEmbed.tag,
   decorators: [withKnobs],
   parameters: {

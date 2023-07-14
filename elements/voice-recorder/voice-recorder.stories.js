@@ -3,7 +3,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 import { VoiceRecorder } from "./voice-recorder.js";
 
 export default {
-  title: "Forms|Audio Record",
+  title: "Media|Audio Record",
   component: VoiceRecorder.tag,
   decorators: [withKnobs],
   parameters: {

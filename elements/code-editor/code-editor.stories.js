@@ -6,7 +6,7 @@ import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Developer|Code editor",
+  title: "Other|Code editor",
   component: "code-editor",
   decorators: [withKnobs],
   parameters: {

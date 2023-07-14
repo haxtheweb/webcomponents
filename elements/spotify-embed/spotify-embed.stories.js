@@ -5,7 +5,7 @@ import { SpotifyEmbed } from "./spotify-embed.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Embed|SpotifyEmbed",
+  title: "Media|SpotifyEmbed",
   component: "spotify-embed",
   decorators: [withKnobs],
   parameters: {

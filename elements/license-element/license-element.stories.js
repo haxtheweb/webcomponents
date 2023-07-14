@@ -1,22 +1,22 @@
 import { html } from "lit-html";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { TerribleThemes } from "./terrible-themes.js";
+import { LicenseElement as sbClass } from "./license-element.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Themes|TerribleThemes",
-  component: "terrible-themes",
+  title: `Education|License`,
+  component: sbClass.tag,
   decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
 };
 const utils = new StorybookUtilities();
-export const TerribleThemesStory = () => {
+export const LicenseElementStory = () => {
   return utils.makeUsageDocs(
-    TerribleThemes,
+    sbClass,
     import.meta.url,
-    utils.makeElementFromClass(TerribleThemes)
+    utils.makeElementFromHaxDemo(sbClass)
   );
 };

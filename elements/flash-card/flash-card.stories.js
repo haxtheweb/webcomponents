@@ -5,7 +5,7 @@ import { FlashCard } from "./flash-card.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Card|FlashCard",
+  title: "Education|FlashCard",
   component: "flash-card",
   decorators: [withKnobs],
   parameters: {
@@ -17,6 +17,6 @@ export const FlashCardStory = () => {
   return utils.makeUsageDocs(
     FlashCard,
     import.meta.url,
-    utils.makeElementFromClass(FlashCard)
+    utils.makeElementFromHaxDemo(FlashCard)
   );
 };

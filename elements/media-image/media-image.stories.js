@@ -1,22 +1,22 @@
 import { html } from "lit-html";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { PageFlag } from "./page-flag.js";
+import { MediaImage } from "./media-image.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Flag|PageFlag",
-  component: "page-flag",
+  title: "Media|MediaImage",
+  component: "media-image",
   decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
 };
 const utils = new StorybookUtilities();
-export const PageFlagStory = () => {
+export const MediaImageStory = () => {
   return utils.makeUsageDocs(
-    PageFlag,
+    MediaImage,
     import.meta.url,
-    utils.makeElementFromClass(PageFlag)
+    utils.makeElementFromHaxDemo(MediaImage)
   );
 };

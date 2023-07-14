@@ -5,7 +5,7 @@ import { InlineAudio } from "./inline-audio.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Audio|InlineAudio",
+  title: "Media|InlineAudio",
   component: "inline-audio",
   decorators: [withKnobs],
   parameters: {

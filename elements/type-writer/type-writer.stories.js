@@ -3,7 +3,7 @@ import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Extra|Type Writer",
+  title: "Other|Type Writer",
   component: TypeWriter.tag,
   decorators: [withKnobs],
   parameters: {

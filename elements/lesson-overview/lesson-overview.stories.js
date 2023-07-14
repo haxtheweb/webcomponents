@@ -6,7 +6,7 @@ import "./lib/lesson-highlight.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Overview|LessonOverview",
+  title: "Microservices|LessonOverview",
   component: "lesson-overview",
   decorators: [withKnobs],
   parameters: {

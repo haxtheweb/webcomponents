@@ -5,7 +5,7 @@ import { AudioPlayer } from "./audio-player.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Player|AudioPlayer",
+  title: "Media|AudioPlayer",
   component: "audio-player",
   decorators: [withKnobs],
   parameters: {
@@ -17,6 +17,6 @@ export const AudioPlayerStory = () => {
   return utils.makeUsageDocs(
     AudioPlayer,
     import.meta.url,
-    utils.makeElementFromClass(AudioPlayer)
+    utils.makeElementFromHaxDemo(AudioPlayer)
   );
 };

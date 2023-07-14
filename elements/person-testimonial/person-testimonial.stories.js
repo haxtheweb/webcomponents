@@ -1,22 +1,22 @@
 import { html } from "lit-html";
-import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { CourseModel } from "./course-model.js";
-// need to account for polymer goofiness when webpack rolls this up
+import { PersonTestimonial } from "./person-testimonial.js";
 
 export default {
-  title: "Education|CourseModel",
-  component: "course-model",
+  title: "Cards|Person Testimonial",
+  component: "person-testimonial",
   decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
 };
+
 const utils = new StorybookUtilities();
-export const CourseModelStory = () => {
+export const PersonTestimonialStory = () => {
   return utils.makeUsageDocs(
-    CourseModel,
+    PersonTestimonial,
     import.meta.url,
-    utils.makeElementFromHaxDemo(CourseModel)
+    utils.makeElementFromHaxDemo(PersonTestimonial)
   );
 };

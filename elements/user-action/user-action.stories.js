@@ -3,7 +3,7 @@ import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "HAX Widgets|User action",
+  title: "Other|User action",
   component: UserAction.tag,
   decorators: [withKnobs],
   parameters: {

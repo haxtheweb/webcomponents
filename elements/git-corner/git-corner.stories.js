@@ -3,7 +3,7 @@ import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Developer|Git",
+  title: "Other|Git",
   component: GitCorner.tag,
   decorators: [withKnobs],
   parameters: {
