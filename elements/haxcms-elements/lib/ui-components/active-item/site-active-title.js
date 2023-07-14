@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
@@ -26,8 +27,14 @@ class SiteActiveTitle extends LitElement {
   render() {
     return html`
       <style>
-        :host {
+        site-active-title {
           display: block;
+        }
+        site-active-title[edit-mode]:hover {
+          cursor: pointer;
+          outline: 2px solid var(--hax-ui-color-hover, #0001);
+          transition: 0.2s outline-width ease-in-out;
+          outline-offset: 8px;
         }
         h1 .site-active-title-icon {
           --simple-icon-height: 32px;
@@ -64,19 +71,54 @@ class SiteActiveTitle extends LitElement {
       }
       if (propName == "editMode" && oldValue !== undefined) {
         if (this.editMode) {
-          this.activateController = new AbortController();
-          this.addEventListener(
-            "click",
-            (e) => {
-              const haxStore = window.HaxStore.requestAvailability();
-              haxStore.activeNode =
-                haxStore.activeHaxBody.querySelector("page-break");
-            },
-            { signal: this.activateController.signal }
-          );
+          // micro-task so slotted children are inhjected correctly
+          setTimeout(() => {
+            const haxStore = window.HaxStore.requestAvailability();
+            this.activateController = new AbortController();
+            this.addEventListener(
+              "click",
+              (e) => {
+                haxStore.activeNode =
+                  haxStore.activeHaxBody.querySelector("page-break");
+              },
+              { signal: this.activateController.signal }
+            );                    
+            this._inProgressPageBreak = new MutationObserver((mutationList) => {
+              mutationList.forEach((mutation) => {
+                switch (mutation.type) {
+                  case "attributes":
+                    switch (mutation.attributeName) {
+                      case "title":
+                        this.activeTitle = haxStore.activeHaxBody.querySelector("page-break").title;
+                        this.__title = this._makeTitle(
+                          this.dynamicMethodology,
+                          this.activeTitle,
+                          this.parentTitle,
+                          this.ancestorTitle
+                        );
+                        break;
+                      case "page-type":
+                        if (haxStore.activeHaxBody.querySelector("page-break").pageType) {
+                          this.icon = iconFromPageType(haxStore.activeHaxBody.querySelector("page-break").pageType);
+                        }
+                        else {
+                          this.icon = null;
+                        }
+                        break;
+                    }
+                    break;
+                }
+              });
+            });
+            this._inProgressPageBreak.observe(haxStore.activeHaxBody.querySelector("page-break"), {
+              attributeFilter: ["title", "page-type"],
+              attributes: true,
+            });
+          }, 0);
         } else {
           this.noFallback = false;
           this.activateController.abort();
+          this._inProgressPageBreak.disconnect();
         }
       }
     });

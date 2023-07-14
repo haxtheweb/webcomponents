@@ -257,7 +257,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         /* this helps ensure editable-table doesn't try internal text editor; all others should */
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*[contenteditable]:not(editable-table)) {
+          ::slotted(*[contenteditable][data-hax-ray]:not(editable-table)) {
           -webkit-appearance: textfield;
           cursor: text;
           -moz-user-select: text;
@@ -265,6 +265,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           -webkit-user-select: text;
           -o-user-select: text;
         }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-hax-ray]:hover) {
+          cursor: pointer;
+          outline: 2px solid var(--hax-ui-color-hover, #0001);
+          transition: 0.2s outline-width ease-in-out;
+          outline-offset: 8px;
+        }
+        
         :host([edit-mode])
           #bodycontainer
           ::slotted([contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
@@ -1717,7 +1726,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         this.__applyDragDropState(children[i], false);
         // remove some of the protected classes though they shouldn't leak through
         children[i].classList.remove("hax-hovered");
-        children[i].contentEditable = false;
+        children[i].removeAttribute("contenteditable");
         content += await HAXStore.nodeToContent(children[i]);
         if (!!this.__isLayout(children[i])) {
           this._applyContentEditable(this.editMode, children[i]);
