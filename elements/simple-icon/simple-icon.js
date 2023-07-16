@@ -28,6 +28,12 @@ class SimpleIcon extends SimpleIconBehaviors(SimpleColors) {
   static get tag() {
     return "simple-icon";
   }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
   static get styles() {
     return [
       ...super.styles,

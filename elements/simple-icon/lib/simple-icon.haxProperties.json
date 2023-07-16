@@ -1,0 +1,59 @@
+{
+  "type": "element",
+  "editingElement": "core",
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Icon",
+    "description": "Item from the full icon library",
+    "icon": "icons:face",
+    "color": "yellow",
+    "tags": [
+      "Content",
+      "text",
+      "icon"
+    ],
+    "handles": [
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "inlineOnly": true
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "icon",
+        "description": "Icon to render",
+        "inputMethod": "iconpicker",
+        "required": true
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Accent color to colorize icon",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Dark mode / inverted colorset",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  },
+  "demoSchema": [
+    {
+      "tag": "simple-icon",
+      "content": "",
+      "properties": {
+        "icon": "hax:2022",
+        "accentColor": "purple"
+      }
+    }
+  ]
+}

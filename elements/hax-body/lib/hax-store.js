@@ -38,6 +38,7 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/editable-table/editable-table.js";
 import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
 import { learningComponentTypes } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+import "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
 
 import "./hax-app.js";
 
