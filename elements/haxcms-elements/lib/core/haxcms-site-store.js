@@ -1102,6 +1102,7 @@ class HAXCMSSiteStore extends HTMLElement {
         case "demo": // demo / local development
         case "desktop": // implies electron
         case "local": // implies ability to use local file system
+        case "userfs": // implies hax.cloud stylee usage pattern
           context = window.HAXCMSContext;
           break;
         default:
