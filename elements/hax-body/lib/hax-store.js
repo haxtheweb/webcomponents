@@ -2957,6 +2957,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       h2: {
         title: "Heading",
         icon: "hax:h2",
+        tags: ["Text", "h2", "html", "text", "heading", "header"],
       },
       h3: {
         title: "Heading",
@@ -3051,7 +3052,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           gizmo: {
             title: prims[tag].title,
             icon: prims[tag].icon,
-            tags: ["Text", tag, "html", "text"],
+            tags: prims[tag].tags || ["Text", tag, "html", "text"],
             handles: prims[tag].handles || [],
             meta: {
               author: "W3C",
@@ -3614,8 +3615,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         } else {
           // ensure that value doesn't have " in it unencoded
           if (typeof value === "string" && value !== "") {
-            value = value.replace(new RegExp('"', "g"), "&quot;");
             value = value.replace(new RegExp("&", "g"), "&amp;");
+            value = value.replace(new RegExp('"', "g"), "&quot;");
             value = value.replace(new RegExp("<", "g"), "&#60;");
             value = value.replace(new RegExp(">", "g"), "&#62;");
             propvals[nodeName] = value;
@@ -3688,8 +3689,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             } else {
               // ensure that value doesn't have " in it unencoded
               if (typeof value === "string" && value !== "") {
-                value = value.replace(new RegExp('"', "g"), "&quot;");
                 value = value.replace(new RegExp("&", "g"), "&amp;");
+                value = value.replace(new RegExp('"', "g"), "&quot;");
                 value = value.replace(new RegExp("<", "g"), "&#60;");
                 value = value.replace(new RegExp(">", "g"), "&#62;");
                 propvals[nodeName] = value;
