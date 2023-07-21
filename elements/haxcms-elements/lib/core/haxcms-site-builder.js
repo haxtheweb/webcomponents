@@ -446,7 +446,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
-      localesPath: new URL("../../locales", import.meta.url).href,
+      localesPath: new URL("../../locales/haxcms.es.json", import.meta.url).href.replace(
+        "/haxcms.es.json",
+        "/"
+      ),
       locales: ["es"],
     });
     this.disableFeatures = "";

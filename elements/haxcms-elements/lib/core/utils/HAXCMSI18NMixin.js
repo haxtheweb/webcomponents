@@ -13,7 +13,10 @@ export const HAXCMSI18NMixin = function (SuperClass) {
       // can leverage the same localization bucket
       this.registerLocalization({
         context: this,
-        localesPath: new URL("../../../locales", import.meta.url).href,
+        localesPath: new URL("../../locales/haxcms.es.json", import.meta.url).href.replace(
+          "/haxcms.es.json",
+          "/"
+        ),
         namespace: "haxcms",
       });
     }
