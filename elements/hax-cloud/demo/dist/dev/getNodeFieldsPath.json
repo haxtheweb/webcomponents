@@ -1,0 +1,124 @@
+{
+  "status": 200,
+  "data": {
+    "fields": [
+      {
+        "property": "node",
+        "inputMethod": "tabs",
+        "properties": [
+          {
+            "property": "configure",
+            "title": "Configure",
+            "description": "Change node settings",
+            "properties": [
+              {
+                "property": "node-configure-title",
+                "description": "Title of the page",
+                "inputMethod": "textfield",
+                "required": true,
+                "icon": "editor:title"
+              },
+              {
+                "property": "node-configure-slug",
+                "description": "Location used in the URL",
+                "inputMethod": "textfield",
+                "required": true,
+                "disabled": true,
+                "icon": "device:gps-fixed"
+              },
+              {
+                "property": "node-configure-description",
+                "description": "Description for the post",
+                "inputMethod": "textfield",
+                "required": false,
+                "icon": "editor:short-text"
+              },
+              {
+                "property": "node-configure-images",
+                "description": "List of images",
+                "required": false,
+                "icon": "image:collections",
+                "title": "Other sources",
+                "inputMethod": "array",
+                "properties": [
+                  {
+                    "property": "src",
+                    "title": "Source",
+                    "description": "The URL for the image",
+                    "inputMethod": "textfield"
+                  },
+                  {
+                    "property": "alt",
+                    "title": "Alt",
+                    "description": "Alt text",
+                    "inputMethod": "textfield"
+                  }
+                ]
+              },
+              {
+                "property": "node-configure-subtitle",
+                "title": "Subtitle",
+                "description": "An additional subtitle",
+                "inputMethod": "textfield",
+                "icon": "editor:text-fields"
+              },
+              {
+                "property": "node-configure-accentColor",
+                "title": "Accent color",
+                "description": "Select the accent color for the player.",
+                "inputMethod": "colorpicker",
+                "icon": "editor:format-color-fill"
+              }
+            ]
+          },
+          {
+            "property": "advanced",
+            "title": "Advanced",
+            "description": "less common node settings",
+            "properties": [
+              {
+                "property": "node-advanced-created",
+                "description": "Created timestamp",
+                "inputMethod": "textfield",
+                "required": true,
+                "icon": "device:access-time"
+              },
+              {
+                "property": "node-advanced-theme",
+                "description": "Page theme",
+                "inputMethod": "select",
+                "required": false,
+                "icon": "editor:format-paint",
+                "options": {
+                  "odl-haxtheme": "Eberly ODL",
+                  "key": "haxcms-theme-developer",
+                  "learn-two-theme": "Learn",
+                  "outline-player": "Documentation",
+                  "simple-blog": "Simple blog",
+                  "haxcms-basic-theme": "Basic site",
+                  "haxcms-minimalist-theme": "Minimalist site",
+                  "haxcms-slide-theme": "Slide deck",
+                  "haxcms-dev-theme": "DEVELOPER: Test theme",
+                  "haxcms-theme-developer": "EXPERIMENTAL: HAX Theme Maker"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "value": {
+      "node": {
+        "configure": {
+          "node-configure-title": "Functions",
+          "node-configure-slug": "functions",
+          "node-configure-description": ""
+        },
+        "advanced": {
+          "node-advanced-created": 1552651607,
+          "node-advanced-theme": "haxor-slevin"
+        }
+      }
+    }
+  }
+}
