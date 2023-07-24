@@ -172,6 +172,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         tags: ["Search", "pages", "links"],
         eventName: "super-daemon-run-program",
         path: "/sources/site-pages",
+        context: ["HAX", "/"],
         value: {
           name: "Search pages",
           context: ["HAX", "/"],
@@ -194,7 +195,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
                        },
                       content: item.title,
                     },
-                    context: ["/", "/sources/site-pages"],
+                    context: ["HAX","/", "/sources/site-pages"],
                     eventName: "hax-super-daemon-insert-tag",
                     path: "/sources/site-pages",
                   });
