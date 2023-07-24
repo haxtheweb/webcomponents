@@ -1,7 +1,7 @@
 import { html } from "lit-html";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import "./micro-frontend-registry.js";
+import { MicroFrontendRegistry } from "./micro-frontend-registry.js";
 import "./demo/mf-htmlmd-example.js";
 import "./demo/docx-example.js";
 // need to account for polymer goofiness when webpack rolls this up
@@ -92,6 +92,39 @@ export const docxToPdf = () => {
 export const docxToHtml = () => {
   return getRenderString(html`<docx-example html></docx-example>`);
 };
+
+export const secureFeedback = () => {
+  return getRenderString(html`
+    <textarea id="data" cols="80" rows="20">Data to encrypt</textarea>
+    <div>
+      <p>
+        Anything you put in the above will be encrypted and you will be sent 
+        to a URL which includes the encrypted message in the URL which can
+        be sent around securely. The messages don't go away as it's just hashed
+        data. It assumes HTML but works with text as well.
+      </p>
+      <button id="securefeedbackbtn">Encrypt data</button>
+    </div>
+  `);
+};
+
+
+setTimeout(() => {
+  if (document.querySelector("#securefeedbackbtn")) {
+    document.querySelector("#securefeedbackbtn").addEventListener("click", async (e) => {
+    const response = await MicroFrontendRegistry.call("@core/crypto", {
+      op: "hash",
+      data: document.querySelector("#data").value,
+    });
+    if (response.status == 200 && response.data) {
+      window.open(
+        `https://secure-feedback.vercel.app/?message=${response.data}`,
+        "_blank"
+      );
+    }
+    });
+  }
+}, 1000);
 
 // via https://stackoverflow.com/questions/70657298/render-lit-lit-html-templateresult-as-string
 const getRenderString = (data) => {
