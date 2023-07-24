@@ -115,42 +115,97 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       }
     }
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "routerManifest") {
-        this.routerManifest.items.map((item) => {
-          let tags = ["CMS", "navigation"];
-          if (item.metadata && item.metadata.tags) {
-            tags = tags.concat(item.metadata.tags.split(","));
-          }
-          this.dispatchEvent(
-            new CustomEvent("super-daemon-define-option", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: {
-                title: item.title,
-                icon: "link",
-                tags: tags,
-                value: {
-                  target: this,
-                  method: "clickLink",
-                  args: [item.id],
-                },
-                context: "CMS",
-                eventName: "super-daemon-element-method",
-                path: "site/navigation/page",
-              },
-            })
-          );
-        });
-      }
-    });
-  }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    // ability to search pages in the manifest
+    this.dispatchEvent(new CustomEvent("super-daemon-define-option", {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      detail: {
+        title: "Go to page in this site",
+        icon: "link",
+        tags: ["Site", "navigation"],
+        eventName: "super-daemon-run-program",
+        path: "/site/navigation",
+        value: {
+          name: "Go to page",
+          context: "CMS",
+          program: async (input, values) => {
+            let results = [];
+            const manifest = this.routerManifest;
+            if (manifest && manifest.items.length > 0) {
+              manifest.items.forEach(async (item) => {
+                if (item.title.toLowerCase().includes(input.toLowerCase()) || input === '') {
+                  results.push({
+                    title: item.title,
+                    icon: "link",
+                    tags: ["CMS","page"],
+                    value: {
+                      target: this,
+                      method: "clickLink",
+                      args: [item.id],
+                    },
+                    context: "CMS",
+                    eventName: "super-daemon-element-method",
+                    path: "site/navigation/page",
+                  });
+                }
+              });
+            }
+            return results;
+          },
+        },
+      }
+    }));
+    // similar but this makes page addresses available as a media source
+    this.dispatchEvent(new CustomEvent("super-daemon-define-option", {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      detail: {
+        title: "Search pages in this site",
+        icon: "search",
+        tags: ["Search", "pages", "links"],
+        eventName: "super-daemon-run-program",
+        path: "/sources/site-pages",
+        value: {
+          name: "Search pages",
+          context: ["HAX", "/"],
+          program: async (input, values) => {
+            let results = [];
+            const manifest = this.routerManifest;
+            if (manifest && manifest.items.length > 0) {
+              manifest.items.forEach(async (item) => {
+                if (item.title.toLowerCase().includes(input.toLowerCase()) || input === '') {
+                  results.push({
+                    title: item.title,
+                    icon: "link",
+                    tags: ["CMS","page"],
+                    value: {
+                      value: 'a',
+                      eventName: "insert-tag",
+                      properties: { 
+                        href: item.slug,
+                        "data-uuid": item.id
+                       },
+                      content: item.title,
+                    },
+                    context: ["/", "/sources/site-pages"],
+                    eventName: "hax-super-daemon-insert-tag",
+                    path: "/sources/site-pages",
+                  });
+                }
+              });
+            }
+            return results;
+          },
+        },
+      }
+    }));
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
     autorun((reaction) => {
       this.activeId = toJS(store.activeId);

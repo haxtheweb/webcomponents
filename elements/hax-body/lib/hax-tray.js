@@ -1036,6 +1036,9 @@ class HaxTray extends I18NMixin(
           if (properties == null) {
             properties = {};
           }
+          if (e.detail.content) {
+            innerContent = e.detail.content;
+          }
           if (innerContent == null) {
             innerContent = "";
           }
