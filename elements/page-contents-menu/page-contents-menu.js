@@ -226,13 +226,9 @@ class PageContentsMenu extends LitElement {
       e.stopPropagation();
       e.stopImmediatePropagation();
       let objItem;
-      if (this.items[parseInt(target.getAttribute("data-index"))].item) {
-        objItem = this.items[parseInt(target.getAttribute("data-index"))].item;
-      } else {
-        objItem = this.contentContainer.querySelector(
-          "#" + this.items[parseInt(target.getAttribute("data-index"))].id
-        );
-      }
+      objItem = this.contentContainer.querySelector(
+        "#" + this.items[parseInt(target.getAttribute("data-index"))].id
+      );
       const isSafari = window.safari !== undefined;
       if (isSafari) {
         objItem.scrollIntoView();
@@ -245,6 +241,7 @@ class PageContentsMenu extends LitElement {
       }
       // keep state in history
       window.history.pushState({}, null, target.getAttribute("href"));
+      window.dispatchEvent(new PopStateEvent('popstate'));
       // close menu
       this.hideSettings = true;
     }
@@ -385,7 +382,7 @@ class PageContentsMenu extends LitElement {
     }
     setTimeout(() => {
       this.updateMenu();
-    }, 1000);
+    }, 1500);
   }
   /**
    * LitElement life cycle - property changed
@@ -564,7 +561,9 @@ class PageContentsMenu extends LitElement {
   _contentContainerChanged(newValue) {
     // simple test that this has content in it to parse
     if (newValue && newValue.childNodes && newValue.childNodes.length > 0) {
-      this.updateMenu();
+      setTimeout(() => {
+        this.updateMenu();        
+      }, 50);
     }
   }
 

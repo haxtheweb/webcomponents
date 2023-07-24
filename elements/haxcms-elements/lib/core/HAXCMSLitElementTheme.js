@@ -55,12 +55,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
               this.hoverIntentEnter.bind(this)
             );
             node.addEventListener(
-              "pointerout",
+              "pointerleave",
               this.hoverIntentLeave.bind(this)
             );
           });
         }
-      }, 500);
+      }, 100);
       this.__disposer.push(reaction);
     });
   }
@@ -444,6 +444,16 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     if (!target) {
       target = e.path[0];
     }
+    if (!target.id && target.parentNode && target.parentNode.id) {
+      target = target.parentNode;
+    }
+    const isSafari = window.safari !== undefined;
+    if (isSafari) {
+      target.scrollIntoView();
+    } else {
+      target.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
+    }
     let el = document.createElement("textarea");
     el.value =
       window.location.origin +
@@ -566,6 +576,37 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     // update the global managed CSS styles so we can "theme" the content
     // witout leaning on ::slotted which doesn't work always
     render(this.HAXCMSGlobalStyleSheetContent(), store.themeStyleElement);
+    // delay bc this shouldn't block page load in any way
+    setTimeout(() => {
+      setTimeout(() => {
+        if (this._location && this._location.hash) {
+          let target = this.querySelector(this._location.hash);
+          if (target) {
+            const isSafari = window.safari !== undefined;
+            if (isSafari) {
+              target.scrollIntoView();
+            } else {
+              target.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+            }
+          }
+        }
+      }, 0);
+      // headings only
+      let kidHeadings = this.querySelectorAll("h1,h2,h3,h4,h5,h6");
+      if (kidHeadings.length > 0) {
+        kidHeadings.forEach((node) => {
+          node.addEventListener("click", this.copyLink.bind(this));
+          node.addEventListener(
+            "pointerenter",
+            this.hoverIntentEnter.bind(this)
+          );
+          node.addEventListener(
+            "pointerleave",
+            this.hoverIntentLeave.bind(this)
+          );
+        });
+      }
+    }, 1500);
   }
   // LitElement life cycle
   updated(changedProperties) {
@@ -575,6 +616,19 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "_location") {
         this._locationChanged(this[propName], oldValue);
+        setTimeout(() => {
+          if (this._location && this._location.hash) {
+            let target = this.querySelector(this._location.hash);
+            if (target) {
+              const isSafari = window.safari !== undefined;
+              if (isSafari) {
+                target.scrollIntoView();
+              } else {
+                target.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+              }
+            }
+          }
+        }, 0);
       }
       if (propName == "color") {
         this._colorChanged(this[propName], oldValue);
