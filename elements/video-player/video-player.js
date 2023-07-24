@@ -944,19 +944,24 @@ class VideoPlayer extends IntersectionObserverMixin(
     }
   }
   _visChange(e) {
-    if (
-      document.visibilityState === "visible" &&
-      !this.playing &&
-      this.__forcePaused
-    ) {
-      this.__forcePaused = false;
-      // resume the video bc it has focus and we stopped it playing previously
-      this.shadowRoot.querySelector("a11y-media-player").togglePlay();
-    } else if (document.visibilityState === "hidden" && this.playing) {
-      // force pause the video; we're in learning mode and they swtiched tabs
-      this.__forcePaused = true;
-      this.shadowRoot.querySelector("a11y-media-player").togglePlay();
-    }
+    setTimeout(() => {
+      if (
+        document.visibilityState === "visible" &&
+        !this.playing &&
+        this.__forcePaused
+      ) {
+        this.__forcePaused = false;
+        // resume the video bc it has focus and we stopped it playing previously
+        this.shadowRoot.querySelector("a11y-media-player").togglePlay();
+      } else if (document.visibilityState === "hidden" && this.playing) {
+        // force pause the video; we're in learning mode and they swtiched tabs
+        this.__forcePaused = true;
+        this.shadowRoot.querySelector("a11y-media-player").togglePlay();
+      }
+      else {
+        this.__forcePaused = false;
+      }
+    }, 500);
   }
 }
 customElements.define(VideoPlayer.tag, VideoPlayer);
