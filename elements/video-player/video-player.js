@@ -50,7 +50,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       ? html`${!this.isA11yMedia
           ? html` <div
                 class="responsive-video-container"
-                .lang="${this.lang || undefined}"
+                .lang="${this.lang || "en"}"
               >
                 ${this.sandboxed
                   ? html``
@@ -288,7 +288,13 @@ class VideoPlayer extends IntersectionObserverMixin(
         ],
       },
       saveOptions: {
-        unsetAttributes: ["__utils", "__stand-alone", "colors"],
+        unsetAttributes: [
+          "__utils",
+          "__stand-alone",
+          "colors",
+          "playing",
+          "__forcePaused",
+        ],
       },
       demoSchema: [
         {
@@ -957,8 +963,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         // force pause the video; we're in learning mode and they swtiched tabs
         this.__forcePaused = true;
         this.shadowRoot.querySelector("a11y-media-player").togglePlay();
-      }
-      else {
+      } else {
         this.__forcePaused = false;
       }
     }, 500);
