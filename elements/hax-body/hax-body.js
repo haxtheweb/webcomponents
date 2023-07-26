@@ -2349,10 +2349,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       case "insert-above-active":
         if (this.activeNode && this.activeNode.previousElementSibling) {
           this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
-        } else {
+        } else if (this.activeNode) {
           // would imply top of document
           let p = document.createElement("p");
-          this.insertBefore(p, this.activeNode);
+          // account for slot being set in this edge case of being 
+          // the 1st child inserted into an element that is NOT parent body
+          if (this.activeNode.getAttribute('slot')) {
+            p.setAttribute('slot', this.activeNode.getAttribute('slot'));
+          }
+          this.activeNode.parentNode.insertBefore(p, this.activeNode);
+        }
+        else {
+          this.appendChild(p);
         }
         break;
       case "insert-below-active":
