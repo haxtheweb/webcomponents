@@ -112,7 +112,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                 .sources="${this.sourceProperties}"
                 ?stand-alone="${this.standAlone}"
                 sticky-corner="${this.stickyCorner || "none"}"
-                .thumbnail-src="${this.thumbnailSrc}"
+                thumbnail-src="${this.thumbnailSrc}"
                 .tracks="${this.trackProperties}"
                 .crossorigin="${this.crossorigin || "anonymous"}"
                 .width="${this.width}"
