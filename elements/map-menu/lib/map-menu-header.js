@@ -50,11 +50,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           flex-direction: column;
         }
 
-        #right simple-icon-lite {
-          display: inline-block;
-          color: gray;
-        }
-
         simple-icon-lite {
           color: inherit;
           display: inline-flex;
@@ -113,14 +108,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           margin-left: -8px;
         }
         #unpublished {
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          color: orange;
-          float: right;
-          margin: -4px 32px 0px 0px;
-          vertical-align: top;
-          height: 0px;
-          width: 0px;
+          color: red;
         }
       `,
     ];
@@ -132,6 +120,13 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     return html`
       <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
         <button>
+        ${!this.published
+          ? html`<simple-icon-lite
+              id="unpublished"
+              title="${this.t.pageIsUnpublished}"
+              icon="icons:visibility-off"
+            ></simple-icon-lite>`
+          : ``}
           ${this.icon
             ? html`
                 <simple-icon-lite
@@ -146,13 +141,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
               `
             : ``}
           <div class="title">${this.itemtitle}</div>
-          ${!this.published
-            ? html`<simple-icon-lite
-                id="unpublished"
-                title="${this.t.pageIsUnpublished}"
-                icon="icons:visibility-off"
-              ></simple-icon-lite>`
-            : ``}
         </button>
       </a>
     `;
@@ -235,6 +223,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       },
       published: {
         type: Boolean,
+        reflect: true,
       },
       locked: {
         type: Boolean,

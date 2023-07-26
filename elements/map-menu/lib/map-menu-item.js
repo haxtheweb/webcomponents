@@ -29,6 +29,11 @@ class MapMenuItem extends I18NMixin(LitElement) {
           margin-top: 12px;
           line-height: 44px;
         }
+        :host(:not([published])) {
+          text-decoration: line-through;
+          color: red;
+          opacity: .5;
+        }
         .title {
           text-transform: none;
           font-size: var(--map-menu-font-size, 16px);
@@ -104,14 +109,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
           margin-left: -8px;
         }
         #unpublished {
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          color: orange;
-          float: right;
-          margin: -4px 32px 0px 0px;
-          vertical-align: top;
-          height: 0px;
-          width: 0px;
+          color: red;
         }
         .no-icon {
           display: inline-flex;
@@ -126,6 +124,13 @@ class MapMenuItem extends I18NMixin(LitElement) {
     return html`
       <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
         <button>
+        ${!this.published
+            ? html`<simple-icon-lite
+                id="unpublished"
+                title="${this.t.pageIsUnpublished}"
+                icon="icons:visibility-off"
+              ></simple-icon-lite>`
+            : ``}
           ${this.icon
             ? html`
                 <simple-icon-lite
@@ -140,13 +145,6 @@ class MapMenuItem extends I18NMixin(LitElement) {
               `
             : html`<div class="no-icon"></div>`}
           <span class="title">${this.itemtitle}</span>
-          ${!this.published
-            ? html`<simple-icon-lite
-                id="unpublished"
-                title="${this.t.pageIsUnpublished}"
-                icon="icons:visibility-off"
-              ></simple-icon-lite>`
-            : ``}
         </button>
       </a>
     `;
@@ -161,7 +159,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
     this.itemtitle = "";
     this.url = "";
     this.active = false;
-    this.published = true;
+    this.published = false;
     this.locked = false;
     this.status = "";
     this.t = {

@@ -152,6 +152,7 @@ class MapMenuSubmenu extends LitElement {
       },
       published: {
         type: Boolean,
+        reflect: true,
       },
       locked: {
         type: Boolean,
