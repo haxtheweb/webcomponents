@@ -90,6 +90,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           visibility: hidden;
           opacity: 0;
         }
+
+        #deletebutton {
+          visibility: hidden;
+          opacity: 0;
+        }
+
         :host([page-allowed]) #editbutton,
         :host([page-allowed]) #editdetails,
         :host([page-allowed]) #deletebutton {
@@ -1695,7 +1701,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const activeItem = toJS(store.activeItem);
       // update buttons to match since we got a state response
       this.updateAvailableButtons();
-      if (activeItem && activeItem.id) {
+      if (activeItem && activeItem.id && !activeItem._internalRoute) {
         this.activeTitle = activeItem.title;
         this.pageAllowed = true;
       } else {

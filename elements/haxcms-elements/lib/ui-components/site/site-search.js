@@ -10,7 +10,8 @@ import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
-
+import "@lrnwebcomponents/lunr-search/lunr-search.js";
+import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
@@ -117,10 +118,6 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
     this.showPath = false;
     this.showDate = false;
     this.__results = [];
-    setTimeout(() => {
-      import("@lrnwebcomponents/lunr-search/lunr-search.js");
-      import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
-    }, 0);
   }
   // render function
   render() {
@@ -215,6 +212,7 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
   }
   _searchValueChanged(e) {
     this.search = e.detail.value;
+    // @todo update state to match so we can send search results along in the URL more statefully
   }
   async __resultsChanged(e) {
     if (e.detail.value) {
@@ -260,7 +258,6 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
             item.tags = fullItem.metadata.tags;
           }
         }
-        console.log(item);
       });
       this.__results = [...results];
     } else {
@@ -272,6 +269,7 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
    */
   static get properties() {
     return {
+      ...super.properties,
       dataSource: {
         type: String,
         attribute: "data-source",
@@ -306,6 +304,9 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
    * LitElement life cycle - ready callback
    */
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.shadowRoot
       .querySelector("#lunr")
       .addEventListener("results-changed", this.__resultsChanged.bind(this));
@@ -314,6 +315,9 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
    * LitElement life cycle - properties changed callback
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "search" && this[propName]) {
         this._searchChanged(this[propName], oldValue);

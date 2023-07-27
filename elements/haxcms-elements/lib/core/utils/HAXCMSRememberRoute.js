@@ -73,7 +73,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
           }
         }
         this.__evaluateRoute = true;
-      }, 1000);
+      }, 500);
     }
     /**
      * Respond to confirmation of wanting to resume the previous route

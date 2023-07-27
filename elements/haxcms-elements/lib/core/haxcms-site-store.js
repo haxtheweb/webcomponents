@@ -19,6 +19,12 @@ configure({ enforceActions: false }); // strict mode off
 class Store {
   constructor() {
     this.badDevice = false;
+    this.internalRoutes = {
+      "hax/search": {
+      },
+      "hax/view": {
+      },
+    };
     this.evaluatebadDevice();
     this.location = null;
     this.jwt = null;
@@ -46,6 +52,9 @@ class Store {
     this.themeStyleElement.id = "haxcms-theme-global-style-element";
     this.t = {
       close: "Close",
+      search: "Search",
+      view: "View",
+      pageNotFound: "Page not found",
     };
     this.activeId = null;
     this.userData = {};
@@ -497,6 +506,44 @@ class Store {
    */
   get activeItem() {
     let item = this.findItem(this.activeId);
+    // test alternate routes bc we didn't get it on item
+    if (this.activeId && HAXcmsStore.storePieces && HAXcmsStore.storePieces.siteRouter && (item === null || typeof item === "undefined")) {
+      switch (this.activeId) {
+        case "404":
+          // 404 page bc of a miss on the router
+          item = {
+            id: "404",
+            _internalRoute: true,
+            title: this.t.pageNotFound,
+            location: "hax-fake-404.html",
+          };
+          switch (HAXcmsStore.storePieces.siteRouter.currentRoute) {
+            case "hax/search":
+                if (typeof store.internalRoutes["hax/search"].callback === "function") {
+                  store.internalRoutes["hax/search"].callback();
+                }
+                else {
+                  setTimeout(() => {
+                    store.internalRoutes["hax/search"].callback();
+                  }, 1000);
+                }                
+              item = {
+                id: "hax/search",
+                _internalRoute: true,
+                title: this.t.search,
+              };
+            break;
+            case "hax/view":
+              item = {
+                id: "hax/view",
+                _internalRoute: true,
+                title: this.t.view,
+              };
+            break;
+          }
+        break;
+      }
+    }
     // ensure we found something, return null for consistency in data
     if (item) {
       return item;

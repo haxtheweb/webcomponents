@@ -768,6 +768,7 @@ class CleanTwo extends HAXCMSOperationButtons(
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
+    store.internalRoutes["hax/search"].callback = this.siteModalForceClick.bind(this);
     autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
@@ -806,7 +807,9 @@ class CleanTwo extends HAXCMSOperationButtons(
     // prettier-ignore
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js");
   }
-
+  siteModalForceClick(e) {
+    this.shadowRoot.querySelector("site-modal").shadowRoot.querySelector("simple-icon-button-lite").click();
+  }
   /**
    * Delay importing site-search until we click to open it directly
    */
@@ -815,6 +818,7 @@ class CleanTwo extends HAXCMSOperationButtons(
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
+      window.history.replaceState({}, null, 'hax/search');
       // weird looking but forces focus when it opens the search form
       window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
     });

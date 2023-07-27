@@ -115,7 +115,7 @@ const HAXCMSTheme = function (SuperClass) {
       if (!newValue || typeof newValue.route === "undefined") return;
       const location = newValue;
       const name = location.route.name;
-      if (name == "home" || name == "404") {
+      if (name == "home") {
         // if we are on the homepage then load the first item in the manifest
         // and set it active
         const firstItem = store.routerManifest.items.find(

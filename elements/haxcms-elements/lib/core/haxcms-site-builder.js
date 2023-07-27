@@ -8,11 +8,11 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
+import "./haxcms-site-router.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
-import "@lrnwebcomponents/replace-tag/replace-tag.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
-
+import "@lrnwebcomponents/replace-tag/replace-tag.js";
 // toggle store darkmode
 function darkToggle(e) {
   if (e.matches) {
@@ -143,15 +143,31 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this.activeItemContent = "";
     }
   }
+  display404Error() {
+    if (store.themeElement) {
+      let frag = document.createDocumentFragment();
+      let p = document.createElement("p");
+      p.innerHTML = `<strong>${this.shadowRoot.querySelector('haxcms-site-router').currentRoute}</strong> ${this.t.countNotBeLocated}. ${this.t.trySelectingAnotherPageOr} <a href="./">${this.t.goToHome}</a>.`;
+      frag.appendChild(p);
+      wipeSlot(store.themeElement, "*");
+      store.themeElement.appendChild(frag);
+      setTimeout(() => {
+        store.toast(this.t.pageNotFound, 4000, {
+          fire: true,
+          walking: true,
+        });
+      }, 1000);
+    }
+  }
   /**
    * Load Page data
    */
   async loadPageData() {
     // file required or we have nothing; other two mixed in for pathing
-    if (this.activeItemLocation) {
+    if (this.activeItemLocation && !this.loading) {
       this.loading = true;
       let url = `${this.outlineLocation}${this.activeItemLocation}`;
-      if (this._timeStamp != "") {
+      if (this._timeStamp) {
         if (url.indexOf("?") != -1) {
           url += `&${this._timeStamp}`;
         } else {
@@ -162,6 +178,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         .then((response) => {
           if (response.ok) {
             return response.text();
+          }
+          else {
+            this.display404Error();
           }
         })
         .then((data) => {
@@ -238,7 +257,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       ) {
         loadOutline = true;
       }
-      if (propName == "_timeStamp") {
+      if (propName == "_timeStamp" && this[propName]) {
         loadOutline = true;
         loadPage = true;
       }
@@ -452,6 +471,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.windowControllers = new AbortController();
+    this.t = {
+      ...super.t,
+      pageNotFound: "Page not found",
+      trySelectingAnotherPageOr: "Try selecting another page or ",
+      countNotBeLocated: "could not be located",
+      goToHome: "go to home page",
+    };
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
@@ -470,9 +496,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.themeLoaded = false;
     this.outlineLocation = "";
     this.activeItemLocation = "";
-    import("./haxcms-site-router.js").then(() => {
-      HAXcmsStore.storePieces.siteBuilder = this;
-    });
+    HAXcmsStore.storePieces.siteBuilder = this;
     // support initial setup stuff with slots
     for (var i in this.children) {
       if (this.children[i].tagName && this.children[i].getAttribute("slot")) {
@@ -527,6 +551,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    
     this.__ready = true;
     store.appReady = true;
     window.dispatchEvent(
