@@ -1465,10 +1465,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       tags: ["Developer", "change", "sites", "administration"],
       eventName: "super-daemon-run-program",
       path: "/hax/changeSite",
-      context: ["/"],
+      context: ["CMS"],
       value: {
         name: "Go to site",
-        context: "/",
+        context: "CMS",
         program: async (input, values) => {
           let results = [];
           // will work in a production haxiam environment to allow hopping between spaces

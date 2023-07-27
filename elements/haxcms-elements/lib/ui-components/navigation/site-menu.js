@@ -130,10 +130,11 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         icon: "link",
         tags: ["Site", "navigation"],
         eventName: "super-daemon-run-program",
+        context: ["CMS"],
         path: "/site/navigation",
         value: {
           name: "Go to page",
-          context: "CMS",
+          context: ["CMS"],
           program: async (input, values) => {
             let results = [];
             const manifest = this.routerManifest;
@@ -149,7 +150,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
                       method: "clickLink",
                       args: [item.id],
                     },
-                    context: "CMS",
+                    context: ["CMS"],
                     eventName: "super-daemon-element-method",
                     path: "site/navigation/page",
                   });
