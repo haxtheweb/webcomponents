@@ -459,6 +459,9 @@ class PageContentsMenu extends LitElement {
         if (!item.id && item.getAttribute('resource')) {
           item.setAttribute('id', item.tagName.toLowerCase() + item.getAttribute('resource').replace(/[^a-zA-Z0-9]/g, ''));
         }
+        else if (!item.id) {
+          item.setAttribute('id', item.tagName.toLowerCase() + i);
+        }
         let reference = {
           title: title,
           link: item.id ? document.location.pathname + "#" + item.id : null,
