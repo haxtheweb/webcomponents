@@ -38,7 +38,8 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         ?circle="${this.circle}"
         id="git-corner"
         source="${this.activeGitFileLink}"
-      ></git-corner>
+        alt="${this.t.seePageSource}"
+        ></git-corner>
       <simple-tooltip for="git-corner" position="auto">
         ${this.t.seePageSource}
       </simple-tooltip>

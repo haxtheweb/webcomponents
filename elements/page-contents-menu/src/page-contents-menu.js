@@ -442,17 +442,28 @@ class PageContentsMenu extends LitElement {
         validTags.includes(item.tagName.toLowerCase())
       ) {
         let title = item.innerText;
+        if (!title && item.title) {
+          title = item.title;
+        }
+        if (!title && item.mediaTitle) {
+          title = item.mediaTitle;
+        }
         if (
-          item.innerText == "" &&
+          !title &&
           this.fallbackText[item.tagName.toLowerCase()]
         ) {
           title = this.fallbackText[item.tagName.toLowerCase()];
+        }
+        // force an ID on items that don't have one
+        // or this will do nothing
+        if (!item.id && item.getAttribute('resource')) {
+          item.setAttribute('id', item.tagName.toLowerCase() + item.getAttribute('resource').replace(/[^a-zA-Z0-9]/g, ''));
         }
         let reference = {
           title: title,
           link: item.id ? document.location.pathname + "#" + item.id : null,
           id: item.id,
-          indent: parseInt(item.tagName.toLowerCase().replace("h", "")),
+          indent: parseInt(item.tagName.toLowerCase().replace("h", "")) ? parseInt(item.tagName.toLowerCase().replace("h", "")) : 2,
           active: "",
           item: item,
         };

@@ -56,8 +56,8 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
 
         map-menu::-webkit-scrollbar-thumb {
           border-radius: 2px;
-          -webkit-box-shadow: inset 0 0 4px
-            var(--site-menu-scrollbar-thumb-color, #999999);
+          -webkit-box-shadow: inset 0 0 4px var(--site-menu-scrollbar-thumb-color, #999999);
+          box-shadow: inset 0 0 4px var(--site-menu-scrollbar-thumb-color, #999999);
           background-color: var(--site-menu-scrollbar-thumb-color, #999999);
         }
       `,
