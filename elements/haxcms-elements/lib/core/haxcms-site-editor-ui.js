@@ -424,16 +424,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   static get tag() {
     return "haxcms-site-editor-ui";
   }
-  // ability to link to internal content inside of the 'a' tag
-  _internalLinkChanged(e) {
-    // look up the UUID
-    if (e.detail.value && store.findItem(e.detail.value)) {
-      const item = toJS(store.findItem(e.detail.value));
-      HAXStore.haxTray.shadowRoot.querySelector(
-        "[name='settings.configure.href']"
-      ).value = item.slug;
-    }
-  }
   _expandSettingsPanel(e) {
     this.shadowRoot.querySelector("#content-edit").click();
   }
@@ -521,21 +511,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             });
           }
         });
-        props.settings.configure.splice(1, 0, {
-          property: "data-uuid",
-          title: "Internal content",
-          description: "Link to content internal to this site",
-          inputMethod: "select",
-          itemsList: items,
-        });
-        setTimeout(() => {
-          HAXStore.haxTray.shadowRoot
-            .querySelector("[name='settings.configure.data-uuid']")
-            .addEventListener(
-              "value-changed",
-              this._internalLinkChanged.bind(this)
-            );
-        }, 100);
       };
     }
     this.t = {

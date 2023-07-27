@@ -85,6 +85,7 @@ export const HaxIconsetManifest = [
       "file-html",
       "file-jpg",
       "file-js",
+      "file-link-outline",
       "file-pdf",
       "file-png",
       "file-ppt",

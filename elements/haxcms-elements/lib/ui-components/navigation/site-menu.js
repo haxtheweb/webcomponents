@@ -168,12 +168,13 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       cancelable: true,
       composed: true,
       detail: {
-        title: "Search pages in this site",
-        icon: "search",
-        tags: ["Search", "pages", "links"],
+        title: "Link to site page",
+        icon: "hax:file-link-outline",
+        tags: ["Search", "pages", "links", "find", "look up", "search", "site", "page"],
         eventName: "super-daemon-run-program",
         path: "/sources/site-pages",
         context: ["HAX", "/"],
+        priority: -1,
         value: {
           name: "Search pages",
           context: ["HAX", "/"],
