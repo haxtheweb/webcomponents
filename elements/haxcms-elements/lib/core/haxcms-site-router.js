@@ -101,6 +101,28 @@ class HAXCMSSiteRouter extends HTMLElement {
    * @param {event} e
    */
   _routerLocationChanged(e) {
+    // no modal / toast should be open when we go to switch routes
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("haxcms-toast-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("super-daemon-modal-close", {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      })
+    );
     // need to store this separate from location bc it's possible to hit routes that are in the system
     // while location is assuming routes within the system itself
     store.currentRouterLocation = e.detail.location;

@@ -45,6 +45,16 @@ export class CleanOneSearchBox extends I18NMixin(LitElement) {
       locales: ["es", "fr", "de", "ja"],
     });
   }
+  focus() {
+    if (this.shadowRoot && this.shadowRoot.querySelector("input")) {
+      this.shadowRoot.querySelector("input").focus();
+    }
+  }
+  select() {
+    if (this.shadowRoot && this.shadowRoot.querySelector("input")) {
+      this.shadowRoot.querySelector("input").select();
+    }
+  }
   render() {
     return html`
       <input

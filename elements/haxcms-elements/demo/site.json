@@ -41,7 +41,7 @@
       "logo": "files/3450183.png"
     },
     "theme": {
-      "element": "clean-two",
+      "element": "clean-one",
       "path": "node_modules/@lrnwebcomponents/clean-one/clean-one.js",
       "name": "Course theme",
       "variables": {
@@ -94,7 +94,8 @@
       "description": "Include HAX in your projectThe developers docs will lay out the many specifications that make HAX possible including core concepts, different schema's it leverages ad how to define app store spec in ",
       "metadata": {
         "created": 1548826475,
-        "updated": 1617805490
+        "updated": 1617805490,
+        "tags": "submitting an assignment,page,another,things,here"
       }
     },
     {

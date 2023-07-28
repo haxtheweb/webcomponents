@@ -20,8 +20,8 @@ class Store {
   constructor() {
     this.badDevice = false;
     this.internalRoutes = {
-      "search": {},
-      "view": {},
+      search: {},
+      views: {},
     };
     this.evaluatebadDevice();
     this.location = null;
@@ -52,7 +52,7 @@ class Store {
     this.t = {
       close: "Close",
       search: "Search",
-      view: "View",
+      views: "Views",
       pageNotFound: "Page not found",
     };
     this.activeId = null;
@@ -530,7 +530,9 @@ class Store {
             item = {
               id: "x/" + internalRouteTest,
               _internalRoute: true,
+              component: `site-${internalRouteTest}-route`,
               title: this.t[internalRouteTest] || internalRouteTest, // translation otherwise just the route name
+              location: "hax-internal-route.html",
             };
           }
         break;

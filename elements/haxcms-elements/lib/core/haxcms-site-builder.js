@@ -164,6 +164,22 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }, 1000);
     }
   }
+  // interenal routes supply their own component which we render
+  renderInternalRoute() {
+    if (store.themeElement) {
+      let frag = document.createDocumentFragment();
+      if (store.activeItem.component) {
+        import(
+          `@lrnwebcomponents/haxcms-elements/lib/ui-components/routes/${store.activeItem.component}.js`
+        ).then(() => {
+          let el = document.createElement(store.activeItem.component);
+          frag.appendChild(el);
+          wipeSlot(store.themeElement, "*");
+          store.themeElement.appendChild(frag);
+        });
+      }
+    }
+  }
   /**
    * Load Page data
    */
@@ -179,7 +195,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           url += `?${this._timeStamp}`;
         }
       }
-      await fetch(url)
+      if (this.activeItemLocation === "hax-internal-route.html") {
+        this.renderInternalRoute();
+        this.loading = false;
+      }
+      else {
+        await fetch(url)
         .then((response) => {
           if (response.ok) {
             return response.text();
@@ -194,7 +215,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         })
         .catch((err) => {
           this.lastErrorChanged(err);
-        });
+        }); 
+      }
     }
   }
   /**

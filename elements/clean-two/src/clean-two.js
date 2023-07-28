@@ -13,6 +13,7 @@ import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { HAXCMSOperationButtons } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -674,6 +675,10 @@ class CleanTwo extends HAXCMSOperationButtons(
               <div id="haxcms-theme-top"></div>
               <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
               <site-active-title part="page-title"></site-active-title>
+              <site-active-tags
+                part="page-tags"
+                auto-accent-color
+              ></site-active-tags>
               <article
                 id="contentcontainer"
                 ?hidden="${this.searchTerm != "" ? true : false}"
@@ -823,8 +828,19 @@ class CleanTwo extends HAXCMSOperationButtons(
     setTimeout(() => {
       const theme = document.querySelector("clean-two");
       // edge cases where we're switching themes and this callback is not valid
-      if (theme && theme.shadowRoot && theme.shadowRoot.querySelector("site-modal") && theme.shadowRoot.querySelector("site-modal").shadowRoot && theme.shadowRoot.querySelector("site-modal").shadowRoot.querySelector("simple-icon-button-lite")) {
-        theme.shadowRoot.querySelector("site-modal").shadowRoot.querySelector("simple-icon-button-lite").click();
+      if (
+        theme &&
+        theme.shadowRoot &&
+        theme.shadowRoot.querySelector("site-modal") &&
+        theme.shadowRoot.querySelector("site-modal").shadowRoot &&
+        theme.shadowRoot
+          .querySelector("site-modal")
+          .shadowRoot.querySelector("simple-icon-button-lite")
+      ) {
+        theme.shadowRoot
+          .querySelector("site-modal")
+          .shadowRoot.querySelector("simple-icon-button-lite")
+          .click();
       }
     }, 500);
   }

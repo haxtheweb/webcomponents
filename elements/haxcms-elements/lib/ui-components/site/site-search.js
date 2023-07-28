@@ -129,6 +129,7 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
         label="${this.t.search}"
         placeholder="${this.t.typeAtLeast3LettersToStartSearch}.."
         type="text"
+        value="${this.search}"
         @value-changed="${this._searchValueChanged}"
       >
         <simple-icon icon="search" slot="prefix"></simple-icon>
@@ -212,9 +213,14 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
   }
   _searchValueChanged(e) {
     this.search = e.detail.value;
-    const params = new URLSearchParams(window.location.search);
-    params.set('search', this.search);
-    window.history.replaceState({}, "", decodeURIComponent(`./x/search?${params}`)); 
+    if (this.search) {
+      if (store.getInternalRoute() !== 'search') {
+        window.history.replaceState({}, null, "x/search");
+      }
+      const params = new URLSearchParams(window.location.search);
+      params.set('search', this.search);
+      window.history.replaceState({}, "", decodeURIComponent(`./x/search?${params}`));
+    }
   }
   async __resultsChanged(e) {
     if (e.detail.value) {

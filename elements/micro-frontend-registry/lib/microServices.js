@@ -377,6 +377,17 @@ export function enableHAXcmsServices() {
     },
   });
 
+    // views
+    MicroFrontendRegistry.add({
+      endpoint: "/api/apps/haxcms/views",
+      name: "@haxcms/views",
+      title: "Views, but for HAX",
+      description: "Views criteria for slicing and remixing HAX site data",
+      params: {
+        site: "location of the HAXcms site",
+      },
+    });
+
   // termsInPage
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/termsInPage",
