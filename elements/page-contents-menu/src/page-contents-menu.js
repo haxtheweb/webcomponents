@@ -32,6 +32,7 @@ class PageContentsMenu extends LitElement {
         :host([mobile]) .header .svg {
           padding: 0;
           margin: 0;
+          width: unset;
         }
         .wrapper {
           display: inline-block;
@@ -236,7 +237,7 @@ class PageContentsMenu extends LitElement {
         objItem.scrollIntoView({
           behavior: "smooth",
           block: "start",
-          inline: "nearest",
+          inline: "start",
         });
       }
       // keep state in history

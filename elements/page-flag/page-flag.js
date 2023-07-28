@@ -63,7 +63,9 @@ class PageFlag extends SimpleColors {
         :host {
           display: none;
           float: right;
+          z-index: var(--simple-modal-z-index, 1000);
           margin-right: -80px;
+          position: relative;
         }
         :host([show]) {
           display: block;

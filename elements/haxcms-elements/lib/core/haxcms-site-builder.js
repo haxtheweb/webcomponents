@@ -147,7 +147,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (store.themeElement) {
       let frag = document.createDocumentFragment();
       let p = document.createElement("p");
-      p.innerHTML = `<strong>${this.shadowRoot.querySelector('haxcms-site-router').currentRoute}</strong> ${this.t.countNotBeLocated}. ${this.t.trySelectingAnotherPageOr} <a href="./">${this.t.goToHome}</a>.`;
+      p.innerHTML = `<strong>${store.getInternalRoute()}</strong> ${this.t.couldNotBeLocated}. ${this.t.hereAreSomePossibleRemedies}
+      <ul>
+        <li><a href="x/search?search=${store.getInternalRoute()}">${this.t.useSearchToLocateTheContentYouAreLookingFor}</a></li>
+        <li><a href="./">${this.t.goToTheHomePage}</a></li>
+        <li>${this.t.navigateToAnotherPageInTheMenu}</li>
+      </ul>`;
       frag.appendChild(p);
       wipeSlot(store.themeElement, "*");
       store.themeElement.appendChild(frag);
@@ -474,9 +479,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.t = {
       ...super.t,
       pageNotFound: "Page not found",
-      trySelectingAnotherPageOr: "Try selecting another page or ",
-      countNotBeLocated: "could not be located",
-      goToHome: "go to home page",
+      navigateToAnotherPageInTheMenu: "Navigate to another page in the menu",
+      couldNotBeLocated: "could not be located",
+      hereAreSomePossibleRemedies: "Here are some possible remedies:",
+      useSearchToLocateTheContentYouAreLookingFor: "Use Search to locate the content you are looking for",
+      goToTheHomePage: "Go to the home page",
     };
     this.registerLocalization({
       context: this,

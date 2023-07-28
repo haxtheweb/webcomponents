@@ -20,13 +20,12 @@ class Store {
   constructor() {
     this.badDevice = false;
     this.internalRoutes = {
-      "hax/search": {
-      },
-      "hax/view": {
-      },
+      "search": {},
+      "view": {},
     };
     this.evaluatebadDevice();
     this.location = null;
+    this.currentRouterLocation = {};
     this.jwt = null;
     this.version = "0.0.0";
     this.soundStatus = localStorageGet("app-hax-soundStatus", true);
@@ -64,8 +63,11 @@ class Store {
     this.cmsSiteEditorBackend = {
       instance: null,
     };
+    this._registration = {}; // used for initial state registration as system setsup
     makeObservable(this, {
       location: observable.ref, // router location in url
+      currentRouterLocation: observable.ref,
+      internalRoutes: observable, // internal routes to haxcms
       editMode: observable, // global editing state
       jwt: observable, // json web token
       userData: observable, // user data object for logged in users
@@ -517,29 +519,19 @@ class Store {
             title: this.t.pageNotFound,
             location: "hax-fake-404.html",
           };
-          switch (HAXcmsStore.storePieces.siteRouter.currentRoute) {
-            case "hax/search":
-                if (typeof store.internalRoutes["hax/search"].callback === "function") {
-                  store.internalRoutes["hax/search"].callback();
-                }
-                else {
-                  setTimeout(() => {
-                    store.internalRoutes["hax/search"].callback();
-                  }, 1000);
-                }                
-              item = {
-                id: "hax/search",
-                _internalRoute: true,
-                title: this.t.search,
-              };
-            break;
-            case "hax/view":
-              item = {
-                id: "hax/view",
-                _internalRoute: true,
-                title: this.t.view,
-              };
-            break;
+          const internalRouteTest = store.getInternalRoute();
+          if (internalRouteTest && store.internalRoutes[internalRouteTest]) {
+            // if we have an internal route callback then call it
+            // also account for initial load in which this MAY not exist via TTFP
+            // but does exist some time later
+            if (typeof store.internalRoutes[internalRouteTest].callback === "function") {
+              store.internalRoutes[internalRouteTest].callback();
+            }
+            item = {
+              id: "x/" + internalRouteTest,
+              _internalRoute: true,
+              title: this.t[internalRouteTest] || internalRouteTest, // translation otherwise just the route name
+            };
           }
         break;
       }
@@ -915,7 +907,6 @@ class Store {
           this.spiderChildren(
             child,
             data,
-            start,
             end,
             parent,
             parentFound,
@@ -924,6 +915,13 @@ class Store {
         });
       }
     }
+  }
+  // need to get the internal route if it exists
+  getInternalRoute() {
+    if (this.currentRouterLocation && this.currentRouterLocation.params && this.currentRouterLocation.params[0]) {
+      return this.currentRouterLocation.params[0].replace('x/',''); // we always sub the x/ out bc it's assumed reserved
+    }
+    return false;
   }
   /**
    * Compute items leveraging the site query engine
@@ -1134,7 +1132,6 @@ class HAXCMSSiteStore extends HTMLElement {
    */
   getApplicationContext() {
     let context = "";
-    // @todo review if we even need this because newer contexts don't care
     // figure out the context we need to apply for where the editing creds
     // and API might come from
     // beaker is a unique scenario

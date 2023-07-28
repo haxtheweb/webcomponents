@@ -101,7 +101,9 @@ class HAXCMSSiteRouter extends HTMLElement {
    * @param {event} e
    */
   _routerLocationChanged(e) {
-    this.currentRoute = e.detail.location.params[0];
+    // need to store this separate from location bc it's possible to hit routes that are in the system
+    // while location is assuming routes within the system itself
+    store.currentRouterLocation = e.detail.location;
     // ignore 404s for files and assets as we actually might be reequesting those in page
     if (e.detail.location.route.name === "404" && (e.detail.location.params[0].startsWith("files/") || e.detail.location.params[0].startsWith("assets/"))) {
       // go to the file, if it's a miss that's not our app's concern

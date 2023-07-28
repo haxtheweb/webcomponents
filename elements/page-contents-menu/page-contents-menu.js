@@ -32,6 +32,7 @@ class PageContentsMenu extends LitElement {
         :host([mobile]) .header .svg {
           padding: 0;
           margin: 0;
+          width: unset;
         }
         .wrapper {
           display: inline-block;
@@ -236,7 +237,7 @@ class PageContentsMenu extends LitElement {
         objItem.scrollIntoView({
           behavior: "smooth",
           block: "start",
-          inline: "nearest",
+          inline: "start",
         });
       }
       // keep state in history
@@ -458,6 +459,9 @@ class PageContentsMenu extends LitElement {
         // or this will do nothing
         if (!item.id && item.getAttribute('resource')) {
           item.setAttribute('id', item.tagName.toLowerCase() + item.getAttribute('resource').replace(/[^a-zA-Z0-9]/g, ''));
+        }
+        else if (!item.id) {
+          item.setAttribute('id', item.tagName.toLowerCase() + i);
         }
         let reference = {
           title: title,
