@@ -170,7 +170,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       let frag = document.createDocumentFragment();
       if (store.activeItem.component) {
         import(
-          `@lrnwebcomponents/haxcms-elements/lib/ui-components/routes/${store.activeItem.component}.js`
+          `../ui-components/routes/${store.activeItem.component}.js`
         ).then(() => {
           let el = document.createElement(store.activeItem.component);
           frag.appendChild(el);
