@@ -7,7 +7,7 @@ import { validURL, cleanVideoSource } from "@lrnwebcomponents/utils/utils.js";
 class GradeBookPopUp extends I18NMixin(LitElement) {
   constructor() {
     super();
-    {
+    this.t = {
       studentSubmission: "Student submission",
       openInNewWindow: "Open in new window",
       submitted: "Submitted",
