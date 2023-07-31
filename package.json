@@ -25,7 +25,7 @@
     "prepare": "husky install",
     "start": "bash scripts/preinstall.sh && yarn run storybook",
     "lerna": "lerna",
-    "hax": "code . && cd elements/haxcms-elements && yarn start",
+    "hax": "cd elements/haxcms-elements && yarn start",
     "preinstall": "bash scripts/preinstall.sh",
     "postinstall": "bash scripts/postinstall.sh && ./node_modules/.bin/patch-package",
     "init": "lerna init",
