@@ -2,13 +2,16 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-tag-list.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/editable-table/lib/editable-table-display.js";
+
 import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 import { autorun, toJS } from "mobx";
 /**
@@ -74,8 +77,10 @@ export class SiteViewsRoute extends LitElement {
 
   constructor() {
     super();
-    this.display = "list";
     this.loading = false;
+    this.params = {
+      display: "list",
+    };
     this.results = [];
     this._debounce = null;
     enableServices(["haxcms"]);
@@ -85,9 +90,7 @@ export class SiteViewsRoute extends LitElement {
       this._debounce = setTimeout(async () => {
         if (!this.loading && store.getInternalRoute() === "views") {
           const searchParams = Object.fromEntries(new URLSearchParams(location.search));
-          if (searchParams.display) {
-            this.display = searchParams.display;
-          }
+          this.params = searchParams;
           const site = toJS(store.manifest);
           let base = document.querySelector("base").href;
           if (!base) {
@@ -126,21 +129,25 @@ export class SiteViewsRoute extends LitElement {
     const params = new URLSearchParams(window.location.search);
     params.set('display', e.target.dataset.display);
     window.history.pushState({}, "", decodeURIComponent(`./x/views?${params}`));
-    this.display = e.target.dataset.display;
+    this.params = Object.fromEntries(params);
   }
 
   render() {
     return html`
-      <simple-icon-button-lite ?data-active="${this.display === "list"}" data-display="list" @click="${this.toggleDisplay}" icon="hax:module">List display</simple-icon-button-lite>
-      <simple-icon-button-lite ?data-active="${this.display === "table"}" data-display="table" @click="${this.toggleDisplay}" icon="editable-table:col-striped">Table display</simple-icon-button-lite>
-      <simple-icon-button-lite ?data-active="${this.display === "card"}" data-display="card" @click="${this.toggleDisplay}" icon="image:grid-on">Card display</simple-icon-button-lite>
-
+      <simple-icon-button-lite ?data-active="${this.params.display === "list"}" data-display="list" @click="${this.toggleDisplay}" icon="hax:module">List display</simple-icon-button-lite>
+      <simple-icon-button-lite ?data-active="${this.params.display === "table"}" data-display="table" @click="${this.toggleDisplay}" icon="editable-table:col-striped">Table display</simple-icon-button-lite>
+      <simple-icon-button-lite ?data-active="${this.params.display === "card"}" data-display="card" @click="${this.toggleDisplay}" icon="image:grid-on">Card display</simple-icon-button-lite>
+      <simple-fields-tag-list
+        style="background-color:transparent;"
+        label="Tags"
+        value="${this.params.tag}"
+      ></simple-fields-tag-list>
       ${this.loading ? html`<h3>Loading...</h3>` : html`<h3>Results</h3>
-      ${this.display === "list" ? this.listTemplate() : ``}
+      ${this.params.display === "list" ? this.listTemplate() : ``}
       
-      ${this.display === "table" ? this.tableTemplate() : ``}
+      ${this.params.display === "table" ? this.tableTemplate() : ``}
 
-      ${this.display === "card" ? this.cardTemplate() : ``}
+      ${this.params.display === "card" ? this.cardTemplate() : ``}
       <slot></slot>`}`;
   }
 
@@ -182,7 +189,8 @@ export class SiteViewsRoute extends LitElement {
       striped>
     <table>
       <tr>
-      <th>Type</th>
+        <th>Icon</th>
+        <th>Type</th>
         <th>Title</th>
         <th>Tags</th>
         <th>Updated</th>
@@ -192,7 +200,8 @@ export class SiteViewsRoute extends LitElement {
     ${this.results.map(
       (item) => html`
       <tr>
-        <td>${item.metadata.pageType ? html`<simple-icon icon="${iconFromPageType(item.metadata.pageType)}"></simple-icon> ${item.metadata.pageType}` : ''}</td>
+        <td>${item.metadata.pageType ? html`<simple-icon title="${item.metadata.pageType}" icon="${iconFromPageType(item.metadata.pageType)}"></simple-icon>` : nothing}</td>
+        <td>${item.metadata.pageType ? item.metadata.pageType : nothing}</td>
         <td><a href="${item.slug}">${item.title}</a></td>
         <td>
           ${item.metadata.tags && item.metadata.tags != "" ? item.metadata.tags
@@ -285,9 +294,8 @@ export class SiteViewsRoute extends LitElement {
         type: Boolean,
         reflect: true
       },
-      display: {
-        type: String,
-        reflect: true
+      params: {
+        type: Object,
       },
     }
   }

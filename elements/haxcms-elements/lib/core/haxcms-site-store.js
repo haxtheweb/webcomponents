@@ -52,7 +52,7 @@ class Store {
     this.t = {
       close: "Close",
       search: "Search",
-      views: "Views",
+      views: "Content Views",
       pageNotFound: "Page not found",
     };
     this.activeId = null;
