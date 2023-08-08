@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
@@ -88,41 +89,51 @@ export class SiteViewsRoute extends LitElement {
       const routerLocation = store.currentRouterLocation;
       clearTimeout(this._debounce);
       this._debounce = setTimeout(async () => {
-        if (!this.loading && store.getInternalRoute() === "views") {
-          const searchParams = Object.fromEntries(new URLSearchParams(location.search));
-          this.params = searchParams;
-          const site = toJS(store.manifest);
-          let base = document.querySelector("base").href;
-          if (!base) {
-            base = '/';
-          }
-          const params = {
-            type: "site",
-            site: {
-              file: base + "site.json",
-              id: site.id,
-              title: site.title,
-              author: site.author,
-              description: site.description,
-              license: site.license,
-              metadata: site.metadata,
-              items: site.items,
-            },
-            link: base,
-            ...searchParams
-          };
-          this.loading = true;
-          const response = await MicroFrontendRegistry.call(
-            "@haxcms/views",
-            params
-          );
-          if (response.data) {
-            this.results = response.data;
-          }
-          this.loading = false;
-        }        
+        await this.rebuildSearchResults();        
       }, 0);
     });
+  }
+
+  async rebuildSearchResults() {
+    if (!this.loading && store.getInternalRoute() === "views") {
+      const rawParams = new URLSearchParams(location.search);
+      const searchParams = Object.fromEntries(rawParams);
+      this.params = {...this.params,...searchParams};
+      // ensure display is always stateful even if not directly set
+      if (!searchParams.display) {
+        rawParams.set('display', this.params.display || 'list');
+        window.history.replaceState({}, "", decodeURIComponent(`./x/views?${rawParams}`));
+      }
+      const site = toJS(store.manifest);
+      let base = document.querySelector("base").href;
+      if (!base) {
+        base = '/';
+      }
+      const params = {
+        type: "site",
+        site: {
+          file: base + "site.json",
+          id: site.id,
+          title: site.title,
+          author: site.author,
+          description: site.description,
+          license: site.license,
+          metadata: site.metadata,
+          items: site.items,
+        },
+        link: base,
+        ...searchParams
+      };
+      this.loading = true;
+      const response = await MicroFrontendRegistry.call(
+        "@haxcms/views",
+        params
+      );
+      if (response.data) {
+        this.results = response.data;
+      }
+      this.loading = false;
+    }
   }
 
   toggleDisplay(e) {
@@ -132,23 +143,109 @@ export class SiteViewsRoute extends LitElement {
     this.params = Object.fromEntries(params);
   }
 
+  toggleMediaDisplay(e) {
+    const params = new URLSearchParams(window.location.search);
+    params.set('mediatype', e.target.dataset.mediatype);
+    window.history.pushState({}, "", decodeURIComponent(`./x/views?${params}`));
+    this.params = Object.fromEntries(params);
+  }
+
+  // allows for removing the search filter, click needs a second for data to update
+  evaluateTagValue(e) {
+    setTimeout(() => {
+      if (this.shadowRoot.querySelector('simple-fields-tag-list').tagList.length === 0) {
+        const params = new URLSearchParams(window.location.search);
+        params.delete('tag');
+        window.history.pushState({}, "", decodeURIComponent(`./x/views?${params}`)); 
+        this.params = Object.fromEntries(params);
+      }        
+    }, 0);
+  }
+
   render() {
     return html`
-      <simple-icon-button-lite ?data-active="${this.params.display === "list"}" data-display="list" @click="${this.toggleDisplay}" icon="hax:module">List display</simple-icon-button-lite>
-      <simple-icon-button-lite ?data-active="${this.params.display === "table"}" data-display="table" @click="${this.toggleDisplay}" icon="editable-table:col-striped">Table display</simple-icon-button-lite>
-      <simple-icon-button-lite ?data-active="${this.params.display === "card"}" data-display="card" @click="${this.toggleDisplay}" icon="image:grid-on">Card display</simple-icon-button-lite>
-      <simple-fields-tag-list
-        style="background-color:transparent;"
-        label="Tags"
-        value="${this.params.tag}"
-      ></simple-fields-tag-list>
-      ${this.loading ? html`<h3>Loading...</h3>` : html`<h3>Results</h3>
-      ${this.params.display === "list" ? this.listTemplate() : ``}
-      
-      ${this.params.display === "table" ? this.tableTemplate() : ``}
+    <simple-icon-button-lite ?data-active="${this.params.display === "list"}" data-display="list" @click="${this.toggleDisplay}" icon="hax:module">List display</simple-icon-button-lite>
+    <simple-icon-button-lite ?data-active="${this.params.display === "table"}" data-display="table" @click="${this.toggleDisplay}" icon="editable-table:col-striped">Table display</simple-icon-button-lite>
+    <simple-icon-button-lite ?data-active="${this.params.display === "card"}" data-display="card" @click="${this.toggleDisplay}" icon="image:grid-on">Card display</simple-icon-button-lite>
+    <simple-icon-button-lite ?data-active="${this.params.display === "media"}" data-display="media" @click="${this.toggleDisplay}" icon="hax:multimedia">Media display</simple-icon-button-lite>
+    <simple-icon-button-lite @click="${this.rebuildSearchResults}" icon="refresh">Refresh data</simple-icon-button-lite>
+    
+    <simple-fields-tag-list
+      style="background-color:transparent;"
+      label="Tags"
+      single-value-only
+      @click="${this.evaluateTagValue}"
+      .value="${this.params.tag || null}"
+    ></simple-fields-tag-list>
+    ${this.loading ? html`<h3>Loading...</h3>` : html`<h3>Results</h3>
+${this.params.display === "list" ? this.listTemplate() : nothing}
+${this.params.display === "table" ? this.tableTemplate() : nothing}
+${this.params.display === "card" ? this.cardTemplate() : nothing}
+${this.params.display === "media" ? this.mediaTemplate() : nothing}
+    <slot></slot>`}`;
+  }
 
-      ${this.params.display === "card" ? this.cardTemplate() : ``}
-      <slot></slot>`}`;
+  iconFromKey(key) {
+    switch (key) {
+      case "audio":
+        return "av:volume-up";
+      case "selfChecks":
+        return "hax:check";
+      case "objectives":
+        return "hax:learning-outcome";
+      case "authorNotes":
+        return "hax:note";
+      case "images":
+        return "image:photo";
+      case "h5p":
+        return "hax:h5p";
+      case "headings":
+        return "editor:format-size";
+      case "dataTables":
+        return "editor:table-chart";
+      case "specialTags":
+        return "hax:tag";
+      case "links":
+        return "editor:link";
+      case "placeholders":
+        return "editor:insert-comment";
+      case "siteremotecontent":
+        return "hax:remote";
+      case "video":
+        return "av:videocam";
+      default:
+        return "hax:module";
+    }
+  }
+
+  mediaTemplate() {
+    let mediaKeys = [
+      "audio",
+      "selfChecks",
+      "objectives",
+      "authorNotes",
+      "images",
+      "h5p",
+      "headings",
+      "dataTables",
+      "specialTags",
+      "links",
+      "placeholders",
+      "siteremotecontent",
+      "video"
+  ];
+    return html`
+    <div>
+      ${mediaKeys.map((key) => html`
+        <simple-icon-button-lite ?data-active="${this.params.mediatype === key}" data-mediatype="${key}" @click="${this.toggleMediaDisplay}" icon="${this.iconFromKey(key)}">${key}</simple-icon-button-lite>
+      `)}
+    </div>
+    <div>
+    ${this.results.map((item) => html`
+      ${mediaKeys.map((key) => html`${typeof item.media[key] == "string" && this.params.mediatype === key ? unsafeHTML(item.media[key]) : nothing}`)}
+      `)}
+    </div>
+    `;
   }
 
   listTemplate() {
@@ -169,7 +266,7 @@ export class SiteViewsRoute extends LitElement {
             value="${tag.trim()}"
             accent-color="${item.accentColor}"
           ></simple-tag></a>`
-        ) : ``}
+        ) : nothing}
       </li>`)}
       </ul>`;
   }
@@ -213,7 +310,7 @@ export class SiteViewsRoute extends LitElement {
               value="${tag.trim()}"
               accent-color="${item.accentColor}"
             ></simple-tag></a>`
-          ) : ``}
+          ) : nothing}
         </td>
         <td>
           <simple-datetime
@@ -239,6 +336,17 @@ export class SiteViewsRoute extends LitElement {
       </editable-table-display>`;
   }
 
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      // change if tag changes, always change if coming to or from media since it's a larger query
+      if (propName === "params" && oldValue && this.params && (oldValue.tag !== this.params.tag || this.params.display === "media")) {
+        this.rebuildSearchResults();
+      }
+    });
+  }
 
   cardTemplate() {
     return html`${this.results.map(
@@ -254,7 +362,7 @@ export class SiteViewsRoute extends LitElement {
                     value="${tag.trim()}"
                     accent-color="${item.accentColor}"
                   ></simple-tag></a>`
-                ) : ``}</div>
+                ) : nothing}</div>
           <div slot="content">        <a href="${item.slug}">Link to content</a>
         </div>
         </accent-card>`)}`;
