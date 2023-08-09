@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "play-list",
+      "description": "`play-list`\n`scrollable component that accepts lightDom or data driven lists and generates a content player`\n\n",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}
