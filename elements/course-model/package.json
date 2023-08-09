@@ -44,7 +44,7 @@
   },
   "license": "",
   "dependencies": {
-    "@google/model-viewer": "3.1.1",
+    "@google/model-viewer": "3.2.1",
     "lit": "^2.7.6"
   },
   "devDependencies": {
@@ -65,7 +65,7 @@
     "web-animations-js": "2.3.2"
   },
   "resolutions": {
-    "@google/model-viewer": "3.1.1"
+    "@google/model-viewer": "3.2.1"
   },
   "private": false,
   "publishConfig": {
