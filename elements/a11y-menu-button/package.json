@@ -41,10 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-math": "^7.0.15",
-    "@lrnwebcomponents/lrn-vocab": "^7.0.15",
-    "@lrnwebcomponents/oer-schema": "^7.0.15",
-    "@lrnwebcomponents/rich-text-editor": "^7.0.15",
+    "@lrnwebcomponents/absolute-position-behavior": "^7.0.15",
+    "@lrnwebcomponents/utils": "^7.0.15",
     "lit": "^2.7.6"
   },
   "devDependencies": {

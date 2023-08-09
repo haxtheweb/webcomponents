@@ -42,7 +42,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-iconset": "^7.0.15",
-    "@lrnwebcomponents/haxcms-elements": "^7.0.15",
     "@lrnwebcomponents/map-menu": "^7.0.15",
     "@lrnwebcomponents/simple-colors": "^7.0.15",
     "@lrnwebcomponents/simple-icon": "^7.0.15",

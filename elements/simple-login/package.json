@@ -43,7 +43,6 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^7.0.4",
     "@lrnwebcomponents/simple-colors": "^7.0.15",
-    "@lrnwebcomponents/simple-fields": "^7.0.15",
     "@lrnwebcomponents/simple-icon": "^7.0.15",
     "@lrnwebcomponents/simple-progress": "^7.0.15",
     "@lrnwebcomponents/simple-tooltip": "^7.0.15",

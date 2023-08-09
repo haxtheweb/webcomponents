@@ -43,10 +43,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^7.0.15",
     "@lrnwebcomponents/q-r": "^7.0.15",
     "@lrnwebcomponents/simple-colors": "^7.0.15",
     "@lrnwebcomponents/utils": "^7.0.15",
+    "@lrnwebcomponents/simple-icon": "^7.0.15",
+    "@lrnwebcomponents/micro-frontend-registry": "^7.0.15",
+    "mobx": "^6.10.0",
     "lit": "^2.7.6"
   },
   "devDependencies": {
