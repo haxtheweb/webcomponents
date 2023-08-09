@@ -242,7 +242,7 @@ ${this.params.display === "media" ? this.mediaTemplate() : nothing}
     </div>
     <div>
     ${this.results.map((item) => html`
-      ${mediaKeys.map((key) => html`${typeof item.media[key] == "string" && this.params.mediatype === key ? unsafeHTML(item.media[key]) : nothing}`)}
+      ${mediaKeys.map((key) => html`${item.media && item.media[key] && typeof item.media[key] == "string" && this.params.mediatype === key ? unsafeHTML(item.media[key]) : nothing}`)}
       `)}
     </div>
     `;
