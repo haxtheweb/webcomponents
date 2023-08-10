@@ -756,7 +756,11 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
   // if hax store around, allow it to get slot content of the node
   if (window.HaxStore && window.HaxStore.instance) {
     slotContent = await window.HaxStore.instance.getHAXSlot(node);
-  } 
+  }
+  else {
+    // if HAX isn't around, just return the innerHTML as a string for asignment to content
+    slotContent = node.innerHTML;
+  }
   // support fallback on inner text if there were no nodes
   if (slotContent == "") {
     slotContent = node.innerText;

@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   else {
     body = stdPostBody(req);
   }
-if (body.site && body.type) {
+  if (body.site && body.type) {
     // get URL bits for validating and forming calls
     let url = '';
     if (body.type === 'link') {
@@ -48,7 +48,7 @@ if (body.site && body.type) {
       if (body.type === 'link') {
         siteData = null;
       }
-      siteManifest = await resolveSiteData(base);
+      siteManifest = await resolveSiteData(base, siteData);
       items = siteManifest.orderTree(siteManifest.items);
       if (body.tag) {
         items = items.filter((item) => {

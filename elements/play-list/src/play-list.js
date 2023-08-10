@@ -56,6 +56,9 @@ class PlayList extends LitElement {
   // this has gone through filtering and is safe as a result as it's just rendering
   // whatever has been put into the light dom
   renderHAXItem(item) {
+    if (item.properties.innerHTML){
+      delete item.properties.innerHTML;
+    }
     return html`${unsafeHTML(haxElementToNode(item).outerHTML)}`;
   }
 
@@ -113,12 +116,10 @@ class PlayList extends LitElement {
         :host .carousel .item * {
           width: 100%;
         }
-        
 
         :host([orientation="vertical"]) .carousel::part(base) {
           grid-template-areas: 'slides slides pagination';
         }
-
         :host([orientation="vertical"]) .carousel::part(pagination) {
           flex-direction: column;
         }
@@ -127,8 +128,10 @@ class PlayList extends LitElement {
           transform: rotate(90deg);
           display: flex;
         }
-
-
+        sl-carousel-item {
+          max-height: 400px;
+          overflow-y: auto;
+        }
       `,
     ];
   }
