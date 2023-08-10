@@ -2,11 +2,12 @@
  * Copyright 2023
  * @license , see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "@shoelace-style/shoelace/dist/components/carousel/carousel.js";
 import "@shoelace-style/shoelace/dist/components/carousel-item/carousel-item.js";
-import "@lrnwebcomponents/video-player/video-player.js";
 import { generateStyleLinkEls } from "./lib/SLStyleManager.js";
+import { haxElementToNode, nodeToHaxElement } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `play-list`
@@ -22,24 +23,40 @@ class PlayList extends LitElement {
     super();
     // handles SL styles link elements
     generateStyleLinkEls();
-    this.items = [
-      {
-        src: "https://shoelace.style/assets/examples/carousel/mountains.jpg",
-        alt: "A picture of a cat",
-      },
-      {
-        src: "https://shoelace.style/assets/examples/carousel/mountains.jpg",
-        alt: "A picture of a mountain",
-      }
-    ];
+    this.items = [];
     this.navigation = true;
     this.pagination = true;
     this.aspectRatio = "16:9";
     this.slide = 0;
     this.orientation = "horizontal";
-    // @todo add a mutation observer to watch for changes to the light dom
-    // and then use that to update the items array so that we can translate
-    // we have to do this so that we can ensure quality control of the light dom
+    // mutation observer for light dom changes
+    this._observer = new MutationObserver((mutations) => {
+      this.mirrorLightDomToItems();
+    });
+    this._observer.observe(this, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  async mirrorLightDomToItems() {
+    let items = Array.from(this.children);
+    if (items.length !== 0) {
+      await Promise.all(items.map(async (item) => {
+        return await nodeToHaxElement(item);
+      })).then((items) => {
+        this.items = items;
+      });
+    }
+    else {
+      this.items = [];
+    }
+  }
+  // takes a hax element, converts it to a node, turns it into html, then renders it
+  // this has gone through filtering and is safe as a result as it's just rendering
+  // whatever has been put into the light dom
+  renderHAXItem(item) {
+    return html`${unsafeHTML(haxElementToNode(item).outerHTML)}`;
   }
 
   /**
@@ -120,6 +137,7 @@ class PlayList extends LitElement {
    */
   render() {
     return html`
+    ${this.items.length > 0 ? html`
       <sl-carousel
       ?navigation="${this.navigation && this.orientation === 'horizontal'}"
       ?pagination="${this.pagination}"
@@ -129,18 +147,11 @@ class PlayList extends LitElement {
       style="--aspect-ratio: ${this.aspectRatio};">
       ${this.items.map((item) => html`
         <sl-carousel-item class="item">
-          <img
-          class="item"
-            alt="${item.alt}"
-            src="${item.src}"
-          />
+          ${this.renderHAXItem(item)}
         </sl-carousel-item>      
       `)}
-        <sl-carousel-item class="item">
-          <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="Why do I need to go anywhere?" >  <track src="files/HAXshort.vtt" kind="subtitles" label="English" slot="track">
-          </video-player>
-        </sl-carousel-item>
       </sl-carousel>
+      `: nothing}
     `;
   }
 
@@ -160,6 +171,7 @@ class PlayList extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.mirrorLightDomToItems();      
   }
   /**
    * LitElement life cycle - property changed
@@ -179,7 +191,7 @@ class PlayList extends LitElement {
           })
         );
         if (this.shadowRoot.querySelector('.carousel').activeSlide !== this[propName]) {
-          this.shadowRoot.querySelector('.carousel').goToSlide(parseInt(this[propName]));
+         // this.shadowRoot.querySelector('.carousel').goToSlide(parseInt(this[propName]));
         }
       }
     });

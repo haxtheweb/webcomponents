@@ -281,6 +281,7 @@ function dashToCamel(str) {
 }
 /**
  * Convert a haxElement to a DOM node.
+ * @return {Node} DOM node.
  */
 function haxElementToNode(haxSchema) {
   let tag = haxSchema.tag;
@@ -748,10 +749,14 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
   // support sandboxed environments which
   // will hate iframe tags but love webview
   let tag = node.tagName.toLowerCase();
-  if (window.HaxStore.instance._isSandboxed && tag === "iframe") {
+  if (window.HaxStore && window.HaxStore.instance && window.HaxStore.instance._isSandboxed && tag === "iframe") {
     tag = "webview";
   }
-  let slotContent = await window.HaxStore.instance.getHAXSlot(node);
+  let slotContent = '';
+  // if hax store around, allow it to get slot content of the node
+  if (window.HaxStore && window.HaxStore.instance) {
+    slotContent = await window.HaxStore.instance.getHAXSlot(node);
+  } 
   // support fallback on inner text if there were no nodes
   if (slotContent == "") {
     slotContent = node.innerText;

@@ -9,6 +9,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@lrnwebcomponents/video-player/video-player.js";
       import '../play-list.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
@@ -18,7 +19,14 @@
       <h3>Basic play-list demo</h3>
       <demo-snippet>
         <template>
-          <play-list orientation="vertical"></play-list>
+          <play-list orientation="vertical">
+            <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="Why d434343 anywhere?" >
+              <track src="files/HAXshort.vtt" kind="subtitles" label="English" slot="track">
+            </video-player>
+            <img src="https://placehold.it/350x150"/>
+            <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="Wfgdfgdfgd?" >
+            </video-player>
+          </play-list>
           <play-list></play-list>
         </template>
       </demo-snippet>

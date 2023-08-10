@@ -44,10 +44,12 @@
   },
   "license": "",
   "dependencies": {
+    "@lrnwebcomponents/utils": "^7.0.15",
     "@shoelace-style/shoelace": "2.6.0",
     "lit": "^2.7.5"
   },
   "devDependencies": {
+    "@lrnwebcomponents/video-player": "^7.0.15",
     "@wcfactory/rollup-umd-build": "^0.12.1",
     "@lrnwebcomponents/deduping-fix": "^7.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
