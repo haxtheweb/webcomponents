@@ -200,6 +200,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(LitElement) {
           ${this.params.parent ? html`<li>${this.t.parent}: ${this.params.parent}</li>` : nothing}
           ${this.params.tags ? html`<li>${this.t.tags}: ${this.params.tags}</li>` : nothing}
           ${this.params.blockFilter ? html`<li>${this.t.block}: ${this.params.blockFilter}</li>` : nothing}
+          <textarea cols="40" rows="5"><site-view search="${this.search}"></site-view></textarea>
         </ul>
       </li>
     </ul>

@@ -46,25 +46,23 @@ export function loadViewsForm() {
     },
   ];
   itemManifest.items.forEach((el) => {
-    if (el.id != this.itemId) {
-      // calculate -- depth so it looks like a tree
-      let itemBuilder = el;
-      // walk back through parent tree
-      let distance = "- ";
-      while (itemBuilder && itemBuilder.parent != null) {
-        itemBuilder = itemManifest.items.find(
-          (i) => i.id == itemBuilder.parent
-        );
-        // double check structure is sound
-        if (itemBuilder) {
-          distance = "--" + distance;
-        }
+    // calculate -- depth so it looks like a tree
+    let itemBuilder = el;
+    // walk back through parent tree
+    let distance = "- ";
+    while (itemBuilder && itemBuilder.parent != null) {
+      itemBuilder = itemManifest.items.find(
+        (i) => i.id == itemBuilder.parent
+      );
+      // double check structure is sound
+      if (itemBuilder) {
+        distance = "--" + distance;
       }
-      items.push({
-        text: distance + el.title,
-        value: el.id,
-      });
     }
+    items.push({
+      text: distance + el.title,
+      value: el.id,
+    });
   });
   return [
     {
