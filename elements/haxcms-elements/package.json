@@ -47,6 +47,7 @@
     "@lrnwebcomponents/beaker-broker": "^7.0.15",
     "@lrnwebcomponents/citation-element": "^7.0.15",
     "@lrnwebcomponents/clean-two": "^7.0.15",
+    "@lrnwebcomponents/play-list": "^7.0.15",
     "@lrnwebcomponents/course-design": "^7.0.15",
     "@lrnwebcomponents/dynamic-import-registry": "^7.0.15",
     "@lrnwebcomponents/editable-outline": "^7.0.15",

@@ -39,7 +39,7 @@ class SiteActiveTags extends LitElement {
     return html`${this.tags && this.tags != ""
       ? this.tags.split(",").map(
             (tag) => html`
-            <a href="x/views?tag=${tag.trim()}">
+            <a href="x/views?tags=${tag.trim()}">
               <simple-tag
                 ?auto-accent-color="${this.autoAccentColor}"
                 value="${tag.trim()}"

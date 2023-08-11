@@ -31,7 +31,10 @@ class PlayList extends LitElement {
     this.orientation = "horizontal";
     // mutation observer for light dom changes
     this._observer = new MutationObserver((mutations) => {
-      this.mirrorLightDomToItems();
+      clearTimeout(this._debounceMutations);
+      this._debounceMutations = setTimeout(() => {
+        this.mirrorLightDomToItems();        
+      }, 100);
     });
     this._observer.observe(this, {
       childList: true,
@@ -41,6 +44,9 @@ class PlayList extends LitElement {
 
   async mirrorLightDomToItems() {
     let items = Array.from(this.children);
+    if (items.length === 1 && items[0].tagName === "TEMPLATE") {
+      items = Array.from(items[0].children);
+    }
     if (items.length !== 0) {
       await Promise.all(items.map(async (item) => {
         return await nodeToHaxElement(item);
@@ -113,8 +119,9 @@ class PlayList extends LitElement {
           width: 500px;
         }
 
-        :host .carousel .item * {
+        :host .carousel .item .play-list-item {
           width: 100%;
+          min-height: 400px;
         }
 
         :host([orientation="vertical"]) .carousel::part(base) {
@@ -131,6 +138,7 @@ class PlayList extends LitElement {
         sl-carousel-item {
           max-height: 400px;
           overflow-y: auto;
+          justify-content: unset;
         }
       `,
     ];
@@ -148,7 +156,7 @@ class PlayList extends LitElement {
       @sl-slide-change="${this.slideIndexChanged}"
       class="carousel"
       style="--aspect-ratio: ${this.aspectRatio};">
-      ${this.items.map((item) => html`
+      ${this.items.map((item,index) => html`
         <sl-carousel-item class="item">
           ${this.renderHAXItem(item)}
         </sl-carousel-item>      

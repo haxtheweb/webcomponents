@@ -812,6 +812,12 @@ class SimpleFields extends SimpleFieldsLite {
               format: "tabs",
             },
           },
+          collapse: {
+            defaultSettings: {
+              type: "object",
+              format: "collapse",
+            },
+          },
           textarea: {
             defaultSettings: {
               type: "string",
