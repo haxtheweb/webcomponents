@@ -5,7 +5,7 @@ export function generateStyleLinkEls() {
       return false;
     }
 
-    const light = new URL("../../../node_modules/@shoelace-style/shoelace/dist/themes/light.css", import.meta.url)
+    const light = new URL("../../../@shoelace-style/shoelace/dist/themes/light.css", import.meta.url)
     let link = document.createElement("link");
     link.setAttribute("rel", "stylesheet");
     link.setAttribute("media", "(prefers-color-scheme:light)");
@@ -13,7 +13,7 @@ export function generateStyleLinkEls() {
     link.setAttribute("id", "showlace-light");
     document.head.appendChild(link);
 
-    const dark = new URL("../../../node_modules/@shoelace-style/shoelace/dist/themes/dark.css", import.meta.url)
+    const dark = new URL("../../../@shoelace-style/shoelace/dist/themes/dark.css", import.meta.url)
     link = document.createElement("link");
     link.setAttribute("rel", "stylesheet");
     link.setAttribute("media", "(prefers-color-scheme:dark)");
