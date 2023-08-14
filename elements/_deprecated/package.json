@@ -14,7 +14,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/drag-n-drop": "4.0.25",
     "@lrnwebcomponents/dropdown-select": "7.0.11",
     "@lrnwebcomponents/eco-json-schema-form": "7.0.14",
     "@lrnwebcomponents/exif-data": "7.0.5",
@@ -36,7 +35,6 @@
     "@lrnwebcomponents/lrndesign-stepper": "7.0.11",
     "@lrnwebcomponents/magazine-cover": "4.0.4",
     "@lrnwebcomponents/material-progress": "4.1.0",
-    "@lrnwebcomponents/material-word": "4.0.4",
     "@lrnwebcomponents/materializecss-styles": "4.1.0",
     "@lrnwebcomponents/paper-audio-player": "4.1.0",
     "@lrnwebcomponents/pdf-element": "7.0.0",
