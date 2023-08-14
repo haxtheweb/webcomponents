@@ -157,6 +157,7 @@ export const HaxIconsetManifest = [
       "timeline",
       "twitter",
       "unit",
+      "view-gallery",
       "vocab",
       "wizard-hat",
       "wordpress",

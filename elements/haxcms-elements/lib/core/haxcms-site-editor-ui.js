@@ -5,6 +5,7 @@ import {
   HAXStore,
 } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-view.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import {
   localStorageSet,
@@ -482,6 +483,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // page-flag for author notes
       let flag = document.createElement("page-flag");
       HAXStore.haxAutoloader.appendChild(flag);
+      // site-view for view blocks!!
+      let siteView = document.createElement("site-view");
+      HAXStore.haxAutoloader.appendChild(siteView);
 
       // links need to be given support for internal linkage updates on the form
       if (!HAXStore.primativeHooks.a) {

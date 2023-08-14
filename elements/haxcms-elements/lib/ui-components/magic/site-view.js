@@ -33,113 +33,6 @@ export const mediaKeys = [
   "video"
 ];
 
-// simple fields schema for our filter and display capabilities
-export function loadViewsForm() {
-  // get a fresh copy of the manifest so we can build the select
-  // list based on UUIDs in this site, presented in a tree format
-  const itemManifest = store.getManifest(true);
-  // default to null parent as the whole site
-  var items = [
-    {
-      text: "Select page",
-      value: null,
-    },
-  ];
-  itemManifest.items.forEach((el) => {
-    // calculate -- depth so it looks like a tree
-    let itemBuilder = el;
-    // walk back through parent tree
-    let distance = "- ";
-    while (itemBuilder && itemBuilder.parent != null) {
-      itemBuilder = itemManifest.items.find(
-        (i) => i.id == itemBuilder.parent
-      );
-      // double check structure is sound
-      if (itemBuilder) {
-        distance = "--" + distance;
-      }
-    }
-    items.push({
-      text: distance + el.title,
-      value: el.id,
-    });
-  });
-  return [
-    {
-      property: "settings",
-      inputMethod: "collapse",
-      properties: [
-        {
-          property: "displayFormat",
-          title: "Display format",
-          accordion: true,
-          expanded: false,
-          properties: [
-            {
-              property: "displayedAs",
-              title: "Displayed as",
-              description: "How the entire display should be rendered",
-              inputMethod: "select",
-              options: {
-                list: "List",
-                table: "Table",
-                card: "Card",
-                contentplayer: "Content Player"
-              }
-            },
-            {
-              property: "displayOf",
-              title: "Results as",
-              description: "How do you want each result to appear",
-              inputMethod: "select",
-              options: {
-                title: "Title",
-                full: "Full content",
-                fullRemote: "Full content (remote load)",
-                blocks: "Blocks"
-              }
-            }
-          ]
-        },
-        {
-          property: "filters",
-          title: "Filters",
-          accordion: true,
-          expanded: false,
-          properties: [
-            {
-              property: "parent",
-              title: "Parent",
-              description: "Limit results to those that have this item as it's parent",
-              inputMethod: "select",
-              itemsList: items
-            },
-            {
-              property: "tags",
-              title: "Tags",
-              description: "Filter by tags, comma separated",
-              inputMethod: "text"
-            },
-            {
-              property: "title",
-              title: "Title",
-              description: "Filter by title",
-              inputMethod: "text"
-            },
-            {
-              property: "blockFilter",
-              title: "Block filter",
-              description: "Filter by block type",
-              inputMethod: "select",
-              options: mediaKeys
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-
 /**
  * `site-view`
  * `UUID to render an accurate link and title in the site`
@@ -219,11 +112,9 @@ export class SiteView extends LitElement {
   constructor() {
     super();
     this.loading = false;
-    this.params = {
-      display: "list",
-      displayOf: "title",
-    };
     this.results = [];
+    this.params = {};
+    this.search = null;
     this._searchDebounce = null;
     enableServices(["haxcms"]);
   }
@@ -236,9 +127,9 @@ export class SiteView extends LitElement {
       gizmo: {
         title: "Site View",
         description: "A dynamic block that queries and displays certain information based on criteria",
-        icon: "av:call-to-action",
+        icon: "hax:view-gallery",
         color: "grey",
-        tags: ["Other", "haxcms"],
+        tags: ["Other","site","views","data","display","filter","view"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -246,8 +137,7 @@ export class SiteView extends LitElement {
         },
       },
       settings: {
-        configure: loadViewsForm(), 
-        advanced: [
+        configure: [
           {
             property: "search",
             title: "View URL",
@@ -260,7 +150,9 @@ export class SiteView extends LitElement {
       demoSchema: [
         {
           tag: "site-view",
-          properties: {},
+          properties: {
+            search: "?display=list&displayOf=title&parent=__ACTIVE__"
+          },
           content: "",
         },
       ],
@@ -437,10 +329,13 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate() : nothi
           },
         }));
       }
-      if (propName === "search" && oldValue && this.search) {
+      if (propName === "search") {
         const rawParams = new URLSearchParams(this.search);
         const searchParams = Object.fromEntries(rawParams);
         this.params = {...this.params,...searchParams};
+        if (this.params.parent === "__ACTIVE__") {
+          this.params.parent = store.activeItem.id;
+        }
         this.rebuildSearchResults();
       }
       if (propName === "results" && oldValue && this.results) {
@@ -452,7 +347,8 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate() : nothi
       }
     });
   }
-
+  // because of how processed <template> tags work in lit (illegal) we have to specialized way of rendering
+  // so that the play-list element is empty for a second and then we template stamp it into placee
   renderPlayListTemplate() {
     let template = document.createElement("template");
     render(html`${this.results.map((item) => html`
@@ -516,7 +412,6 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate() : nothi
     return {
       search: {
         type: String,
-        reflect: true
       },
       results: {
         type: Array,

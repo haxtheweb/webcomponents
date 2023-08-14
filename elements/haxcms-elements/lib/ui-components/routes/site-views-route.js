@@ -3,17 +3,126 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
-import { loadViewsForm, mediaKeys } from "@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-view.js";
+import { mediaKeys } from "@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-view.js";
+import { autorun } from "mobx";
+
+// simple fields schema for our filter and display capabilities
+export function loadViewsForm() {
+  // get a fresh copy of the manifest so we can build the select
+  // list based on UUIDs in this site, presented in a tree format
+  const itemManifest = store.getManifest(true);
+  // default to null parent as the whole site
+  var items = [
+    {
+      text: "Select page",
+      value: null,
+    },
+  ];
+  itemManifest.items.forEach((el) => {
+    // calculate -- depth so it looks like a tree
+    let itemBuilder = el;
+    // walk back through parent tree
+    let distance = "- ";
+    while (itemBuilder && itemBuilder.parent != null) {
+      itemBuilder = itemManifest.items.find(
+        (i) => i.id == itemBuilder.parent
+      );
+      // double check structure is sound
+      if (itemBuilder) {
+        distance = "--" + distance;
+      }
+    }
+    items.push({
+      text: distance + el.title,
+      value: el.id,
+    });
+  });
+  return [
+    {
+      property: "settings",
+      inputMethod: "collapse",
+      properties: [
+        {
+          property: "displayFormat",
+          title: "Display format",
+          accordion: true,
+          expanded: false,
+          properties: [
+            {
+              property: "displayedAs",
+              title: "Displayed as",
+              description: "How the entire display should be rendered",
+              inputMethod: "select",
+              options: {
+                list: "List",
+                table: "Table",
+                card: "Card",
+                contentplayer: "Content Player"
+              }
+            },
+            {
+              property: "displayOf",
+              title: "Results as",
+              description: "How do you want each result to appear",
+              inputMethod: "select",
+              options: {
+                title: "Title",
+                full: "Full content",
+                fullRemote: "Full content (remote load)",
+                blocks: "Blocks"
+              }
+            }
+          ]
+        },
+        {
+          property: "filters",
+          title: "Filters",
+          accordion: true,
+          expanded: false,
+          properties: [
+            {
+              property: "parent",
+              title: "Parent",
+              description: "Limit results to those that have this item as it's parent",
+              inputMethod: "select",
+              itemsList: items
+            },
+            {
+              property: "tags",
+              title: "Tags",
+              description: "Filter by tags, comma separated",
+              inputMethod: "text"
+            },
+            {
+              property: "title",
+              title: "Title",
+              description: "Filter by title",
+              inputMethod: "text"
+            },
+            {
+              property: "blockFilter",
+              title: "Block filter",
+              description: "Filter by block type",
+              inputMethod: "select",
+              options: mediaKeys
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 
 /**
- * `site-uuid-link`
- * `UUID to render an accurate link and title in the site`
+ * `site-views-route`
+ * `Route for displaying views output`
  *
  * @demo demo/index.html
  */
@@ -87,17 +196,53 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(LitElement) {
       tags: "Tags",
     }
     this.loading = false;
-    this.params = {
-      display: "list",
-      displayOf: "title",
-    };
     this._searchDebounce = null;
+    this.__disposer = this.__disposer ? this.__disposer : [];
+    autorun((reaction) => {
+      let search = new URLSearchParams(store.currentRouterLocation.search);
+      const params = Object.fromEntries(search);
+      if (this.shadowRoot) {
+        this.shadowRoot.querySelector('#schema').fields = loadViewsForm();
+        setTimeout(() => {
+          this.shadowRoot.querySelector('#schema').value = {
+            settings: {
+              displayFormat: {
+                displayedAs: params.display || "list",
+                displayOf: params.displayOf || "title",
+              },
+              filters: {
+                title: params.title || "",
+                parent: params.parent || "",
+                tags: params.tags || "",
+                blockFilter: params.blockFilter || ""
+              }
+            }
+          };
+        }, 0);
+      }
+      else {
+        this.params = params;
+      }
+      this.__disposer.push(reaction);
+    });
+  }
+
+  /**
+   * Detached life cycle
+   */
+  disconnectedCallback() {
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+    this._ready = false;
+    super.disconnectedCallback();
   }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._ready = true;
     this.shadowRoot.querySelector('#schema').fields = loadViewsForm();
     setTimeout(() => {
       this.shadowRoot.querySelector('#schema').value = {
@@ -109,13 +254,12 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(LitElement) {
           filters: {
             title: this.params.title || "",
             parent: this.params.parent || "",
-            tags: this.params.tags ? this.params.tags : "",
+            tags: this.params.tags || "",
             blockFilter: this.params.blockFilter || ""
           }
         }
       };
     }, 0);
-
   }
 
   formValuesChanged(e) {
@@ -123,7 +267,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(LitElement) {
     this._formDebounce = setTimeout(() => {
       const params = new URLSearchParams(window.location.search);
       const settings = e.detail.value.settings;
-      if (settings && settings.displayFormat && settings.filters) {
+      if (this._ready && settings && settings.displayFormat && settings.filters) {
         if (settings.displayFormat.displayedAs) {
           params.set('display', settings.displayFormat.displayedAs);
         }
@@ -200,7 +344,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(LitElement) {
           ${this.params.parent ? html`<li>${this.t.parent}: ${this.params.parent}</li>` : nothing}
           ${this.params.tags ? html`<li>${this.t.tags}: ${this.params.tags}</li>` : nothing}
           ${this.params.blockFilter ? html`<li>${this.t.block}: ${this.params.blockFilter}</li>` : nothing}
-          <textarea cols="40" rows="5"><site-view search="${this.search}"></site-view></textarea>
+          <label>Search query for use in embedded views</label><textarea cols="40" rows="5">${this.search}</textarea>
         </ul>
       </li>
     </ul>

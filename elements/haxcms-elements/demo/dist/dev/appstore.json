@@ -1173,6 +1173,7 @@
     "spotify-embed": "@lrnwebcomponents/spotify-embed/spotify-embed.js",
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
     "simple-icon": "@lrnwebcomponents/simple-icon/simple-icon.js",
+    "play-list": "@lrnwebcomponents/play-list/play-list.js",
     "inline-audio": "@lrnwebcomponents/inline-audio/inline-audio.js",
     "audio-player": "@lrnwebcomponents/audio-player/audio-player.js",
     "moar-sarcasm": "@lrnwebcomponents/moar-sarcasm/moar-sarcasm.js",
