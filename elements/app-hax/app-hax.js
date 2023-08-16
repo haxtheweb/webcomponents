@@ -293,7 +293,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       icon: "hax:hax2022",
       tags: ["Sites", "Administration", "change"],
       eventName: "super-daemon-run-program",
-      path: "hax/action/goToSite",
+      path: "HAX/action/goToSite",
       value: {
         name: "Go to site",
         program: async (input, values) => {
@@ -323,9 +323,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                 eventName: "super-daemon-element-method",
                 context: [
                   "*",
-                  "hax/action/goToSite/" + site.metadata.site.name,
+                  "HAX/action/goToSite/" + site.metadata.site.name,
                 ],
-                path: "hax/action/goToSite/" + site.metadata.site.name,
+                path: "HAX/action/goToSite/" + site.metadata.site.name,
               });
             }
           });
