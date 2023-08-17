@@ -38,10 +38,11 @@ export default async function handler(req, res) {
         let buff = Buffer.from(process.env.ELMSLN_VERCEL_SERVICE_AUTH).toString('base64');
         __fetchOptions.headers = {'Authorization': 'Basic ' + buff};
       }
-      var elapsed = process.hrtime()[0];
-      var all = 0;
+      var start = process.hrtime();
+      var elapsed = 0;
       for await (const item of site.items) {
-        if (all <= 54) {
+        // time out on vercel is 60s, let's not go above the greatest number ever
+        if (elapsed <= 54) {
           item.contents = await fetch(`http://${process.env.VERCEL_URL}/api/services/website/cacheAddress?q=${base}/${item.location.replace(`/${siteName}/`,'')}`, __fetchOptions).then((d) => d.ok ? d.json() : '').then((r) => r.data);
         }
         else {
@@ -52,8 +53,7 @@ export default async function handler(req, res) {
             downloads[file.url] = `${base}/${file.url}`;
           }
         }
-        elapsed = process.hrtime(elapsed)[0];
-        all = all+elapsed;
+        elapsed = process.hrtime(start)[0];
       }
     }
     res = stdResponse(res, {
