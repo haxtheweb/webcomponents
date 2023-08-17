@@ -128,6 +128,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           background-color: var(--simple-colors-default-theme-grey-1);
         }
 
+        simple-toolbar-menu-item a {
+          color: var(--simple-colors-default-theme-grey-12);
+          text-decoration: none;
+        }
+
         #deletebutton,
         #cancelbutton {
           color: var(--simple-colors-default-theme-red-11);
@@ -565,6 +570,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       more: "More",
       siteActions: "Site actions",
       insights: "Insights dashboard (beta)",
+      viewBuilder: "View builder (beta)",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",
@@ -941,6 +947,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               show-text-label
               voice-command="insights"
             ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <a href="views">
+                <simple-toolbar-button
+                  ?hidden="${this.editMode}"
+                  ?disabled="${this.editMode}"
+                  tabindex="${this.editMode ? "-1" : "0"}"
+                  icon="hax:module"
+                  icon-position="left"
+                  label="${this.t.viewBuilder}"
+                  show-text-label
+                  voice-command="views"
+                ></simple-toolbar-button>
+              </a>
             </simple-toolbar-menu-item>
 
             <simple-toolbar-menu-item>

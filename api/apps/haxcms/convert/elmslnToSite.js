@@ -38,11 +38,10 @@ export default async function handler(req, res) {
         let buff = Buffer.from(process.env.ELMSLN_VERCEL_SERVICE_AUTH).toString('base64');
         __fetchOptions.headers = {'Authorization': 'Basic ' + buff};
       }
-      var elapsed;
+      var elapsed = process.hrtime()[0];
       var all = 0;
       for await (const item of site.items) {
-        elapsed = process.hrtime()[1] / 100000000;
-        if (all < 55) {
+        if (all <= 54) {
           item.contents = await fetch(`http://${process.env.VERCEL_URL}/api/services/website/cacheAddress?q=${base}/${item.location.replace(`/${siteName}/`,'')}`, __fetchOptions).then((d) => d.ok ? d.json() : '').then((r) => r.data);
         }
         else {
@@ -53,7 +52,7 @@ export default async function handler(req, res) {
             downloads[file.url] = `${base}/${file.url}`;
           }
         }
-        elapsed = process.hrtime()[1] / 100000000;
+        elapsed = process.hrtime(elapsed)[0];
         all = all+elapsed;
       }
     }

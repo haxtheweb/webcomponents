@@ -12,6 +12,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import { mediaKeys } from "@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-view.js";
 import { autorun } from "mobx";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 // simple fields schema for our filter and display capabilities
 export function loadViewsForm() {
@@ -126,13 +127,14 @@ export function loadViewsForm() {
  *
  * @demo demo/index.html
  */
-export class SiteViewsRoute extends HAXCMSI18NMixin(LitElement) {
+export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
   static get tag() {
     return "site-views-route";
   }
 
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -148,6 +150,12 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(LitElement) {
         }
         [data-active] {
           background-color: var(--simple-colors-default-theme-accent-1);
+        }
+        a11y-collapse,
+        simple-fields {
+          --a11y-collapse-heading-color: var(--simple-colors-default-theme-grey-12);
+          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-grey-1);
         }
         simple-icon-button-lite {
           border-radius: 0;
@@ -194,7 +202,8 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(LitElement) {
       parent: "Parent",
       block: "Block",
       tags: "Tags",
-    }
+    };
+    this.accentColor="grey";
     this.loading = false;
     this._searchDebounce = null;
     this.__disposer = this.__disposer ? this.__disposer : [];
