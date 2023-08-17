@@ -159,11 +159,11 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
             --haxcms-user-styles-color-theme-color-3: #252737;
             --haxcms-user-styles-color-theme-color-4: #f4f4f5;
             --hax-base-styles-a-color-visited: var(
-              --simple-colors-default-theme-light-blue-2,
+              --simple-colors-default-theme-light-blue-10,
               #3eb1d0
             );
             --hax-base-styles-a-color: var(
-              --simple-colors-default-theme-light-blue-2,
+              --simple-colors-default-theme-light-blue-10,
               #3eb1d0
             );
             --hax-base-styles-a-color-active: #ffffff;

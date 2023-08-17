@@ -355,3 +355,108 @@ haxcms-site-builder[disable-features*="left-col"] .haxcms-theme-element::part(le
 {
   display: none !important;
 }
+
+
+/**
+ *  @deprecated ELMS:LN textbook styles
+ * https://github.com/elmsln/issues/issues/1658
+ */
+/* Required list template */
+.textbook_box {
+  display: block;
+  margin: 1em 0px 2em 0px;
+  padding: .5em;
+  border-radius: 4px 4px 0px 0px;
+}
+.textbook_box h3 {
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  float: right;
+  margin-top: -25px !important;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  margin-right:0px;
+  background-color: var(--simple-colors-default-theme-grey-2);
+  border:2px solid;
+  padding:4px 6px;
+  letter-spacing:.06em;
+  border-radius: 4px;
+}
+.textbook_box_required {
+  border: var(--simple-colors-default-theme-pink-8) 2px solid;
+}
+.textbook_box_required h3{
+  color: var(--simple-colors-default-theme-pink-8);
+}
+.textbook_box_required li:before{
+  color: var(--simple-colors-default-theme-grey-1);
+  background:  var(--simple-colors-default-theme-pink-8);
+}
+.textbook_box_required li:hover:before{
+ font-weight:bold;
+ color: var(--simple-colors-default-theme-pink-8);
+ border: .3em solid  var(--simple-colors-default-theme-pink-8);
+ background: var(--simple-colors-default-theme-grey-1);
+}
+/* Optional list color shift */
+.textbook_box_optional {
+  border:var(--simple-colors-default-theme-cyan-8) 2px solid;
+}
+.textbook_box_optional h3{
+  color: var(--simple-colors-default-theme-cyan-8);
+}
+.textbook_box_optional li:before{
+  color: var(--simple-colors-default-theme-grey-1);
+  background: var(--simple-colors-default-theme-cyan-8);
+}
+.textbook_box_optional li:hover:before{
+ font-weight:bold;
+ color: var(--simple-colors-default-theme-cyan-8);
+ border: .3em solid var(--simple-colors-default-theme-cyan-8);
+ background: var(--simple-colors-default-theme-grey-1);
+}
+
+.textbook_box ol, div.textbook_box ul{
+  counter-reset: li; /* Initiate a counter */
+  list-style: none; /* Remove default numbering */
+  font: 15px 'trebuchet MS', 'lucida sans';
+  padding: 0px 0px 0px 14px;
+  margin: 30px 20px 20px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.textbook_box li{
+  position: relative;
+  display: block;
+  padding: .4em .4em .4em 2em;
+  margin: .7em 0 !important;
+  background: var(--simple-colors-default-theme-grey-1);
+  color: var(--simple-colors-default-theme-grey-9);
+  text-decoration: none;
+  border-radius: .3em;
+  transition: all .3s ease-out;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.textbook_box li:hover{
+  background: var(--simple-colors-default-theme-grey-2);
+}
+
+.textbook_box li:before{
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;  
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: .3em solid var(--simple-colors-default-theme-grey-1);
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2em;
+  transition: all .3s ease-out;
+}
