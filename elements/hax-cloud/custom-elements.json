@@ -3,8 +3,13 @@
   "tags": [
     {
       "name": "hax-cloud",
-      "description": "`hax-cloud`\n`Turn any website into authorware with one tag and a computer`\n\n",
-      "attributes": []
+      "description": "Attributes:\n\n  * `step` {`number`} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `step` {`number`} - \n\n  * `fileRoot` {`string`} - \n\n  * `fileObjects` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "step",
+          "description": "`step` {`number`} - \n\nProperty: step\n\nDefault: 1"
+        }
+      ]
     }
   ],
   "globalAttributes": [],

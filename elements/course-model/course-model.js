@@ -33,95 +33,105 @@ class CourseModel extends LitElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    if (!this._sent && window.HaxStore && window.HaxStore.instance && window.HaxStore.instance.ready) {
+    if (
+      !this._sent &&
+      window.HaxStore &&
+      window.HaxStore.instance &&
+      window.HaxStore.instance.ready
+    ) {
       this._sent = true;
-      window.HaxStore.instance.setHaxProperties({
-        "api": "1",
-        "canScale": true,
-        "canPosition": true,
-        "canEditSource": true,
-        "contentEditable": false,
-        "gizmo": {
-          "title": "3d Model",
-          "description": "3D Model viewer",
-          "icon": "icons:android",
-          "color": "purple",
-          "tags": ["Resource", "3D", "model", "viewer"],
-          "handles": [],
-          "meta": {
-            "author": "Google"
-          }
-        },
-        "settings": {
-          "configure": [
-            {
-              "property": "poster",
-              "title": "Poster image",
-              "inputMethod": "haxupload",
-              noVoiceRecord: true,
+      window.HaxStore.instance.setHaxProperties(
+        {
+          api: "1",
+          canScale: true,
+          canPosition: true,
+          canEditSource: true,
+          contentEditable: false,
+          gizmo: {
+            title: "3d Model",
+            description: "3D Model viewer",
+            icon: "icons:android",
+            color: "purple",
+            tags: ["Resource", "3D", "model", "viewer"],
+            handles: [],
+            meta: {
+              author: "Google",
             },
+          },
+          settings: {
+            configure: [
+              {
+                property: "poster",
+                title: "Poster image",
+                inputMethod: "haxupload",
+                noVoiceRecord: true,
+              },
+              {
+                property: "src",
+                title: "Source",
+                inputMethod: "haxupload",
+                noVoiceRecord: true,
+                noCamera: true,
+              },
+              {
+                property: "alt",
+                title: "Alternate Text",
+                inputMethod: "alt",
+              },
+            ],
+            advanced: [
+              {
+                attribute: "environment-image",
+                title: "Environment Image",
+                inputMethod: "haxupload",
+                noVoiceRecord: true,
+                noCamera: true,
+              },
+              {
+                property: "ar",
+                title: "Augmented Reality",
+                inputMethod: "boolean",
+              },
+              {
+                attribute: "camera-controls",
+                title: "Camera controls",
+                inputMethod: "boolean",
+              },
+              {
+                attribute: "touch-action",
+                title: "Touch action",
+                inputMethod: "textfield",
+              },
+              {
+                attribute: "shadow-intensity",
+                title: "Shadow intensity",
+                inputMethod: "number",
+              },
+            ],
+            developer: [],
+          },
+          demoSchema: [
             {
-              "property": "src",
-              "title": "Source",
-              "inputMethod": "haxupload",
-              noVoiceRecord: true,
-              noCamera: true,
-            },
-            {
-              "property": "alt",
-              "title": "Alternate Text",
-              "inputMethod": "alt"
+              tag: "model-viewer",
+              content: "",
+              properties: {
+                alt: "Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum",
+                src: "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
+                ar: true,
+                "environment-image":
+                  "https://modelviewer.dev/shared-assets/environments/moon_1k.hdr",
+                poster:
+                  "https://modelviewer.dev/shared-assets/models/NeilArmstrong.webp",
+                "shadow-intensity": "1",
+                "camera-controls": true,
+                "touch-action": "pan-y",
+                style: "height: 500px;",
+              },
             },
           ],
-          "advanced": [
-            {
-              "attribute": "environment-image",
-              "title": "Environment Image",
-              "inputMethod": "haxupload",
-              noVoiceRecord: true,
-              noCamera: true,
-            },
-            {
-              "property": "ar",
-              "title": "Augmented Reality",
-              "inputMethod": "boolean"
-            },
-            {
-              "attribute": "camera-controls",
-              "title": "Camera controls",
-              "inputMethod": "boolean"
-            },
-            {
-              "attribute": "touch-action",
-              "title": "Touch action",
-              "inputMethod": "textfield"
-            },
-            {
-              "attribute": "shadow-intensity",
-              "title": "Shadow intensity",
-              "inputMethod": "number"
-            },
-          ],
-          "developer": []
         },
-        "demoSchema": [
-          {
-            tag: "model-viewer",
-            content: "",
-            properties: {
-              alt: "Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum",
-              src:"https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
-              ar: true,
-              "environment-image": "https://modelviewer.dev/shared-assets/environments/moon_1k.hdr",
-              poster:"https://modelviewer.dev/shared-assets/models/NeilArmstrong.webp",
-              "shadow-intensity": "1",
-              "camera-controls": true,
-              "touch-action":"pan-y",
-              "style": "height: 500px;"
-            }
-          }
-        ]
-      }, 'model-viewer');
+        "model-viewer"
+      );
     }
 
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)

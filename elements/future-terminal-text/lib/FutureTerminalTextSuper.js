@@ -1,6 +1,5 @@
 export const FutureTerminalTextLiteSuper = function (SuperClass) {
   return class extends SuperClass {
-
     /**
      * HTMLElement
      */

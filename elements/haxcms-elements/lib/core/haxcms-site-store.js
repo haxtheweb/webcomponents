@@ -509,7 +509,12 @@ class Store {
   get activeItem() {
     let item = this.findItem(this.activeId);
     // test alternate routes bc we didn't get it on item
-    if (this.activeId && HAXcmsStore.storePieces && HAXcmsStore.storePieces.siteRouter && (item === null || typeof item === "undefined")) {
+    if (
+      this.activeId &&
+      HAXcmsStore.storePieces &&
+      HAXcmsStore.storePieces.siteRouter &&
+      (item === null || typeof item === "undefined")
+    ) {
       switch (this.activeId) {
         case "404":
           // 404 page bc of a miss on the router
@@ -524,7 +529,10 @@ class Store {
             // if we have an internal route callback then call it
             // also account for initial load in which this MAY not exist via TTFP
             // but does exist some time later
-            if (typeof store.internalRoutes[internalRouteTest].callback === "function") {
+            if (
+              typeof store.internalRoutes[internalRouteTest].callback ===
+              "function"
+            ) {
               store.internalRoutes[internalRouteTest].callback();
             }
             item = {
@@ -535,7 +543,7 @@ class Store {
               location: "hax-internal-route.html",
             };
           }
-        break;
+          break;
       }
     }
     // ensure we found something, return null for consistency in data
@@ -920,8 +928,12 @@ class Store {
   }
   // need to get the internal route if it exists
   getInternalRoute() {
-    if (this.currentRouterLocation && this.currentRouterLocation.params && this.currentRouterLocation.params[0]) {
-      return this.currentRouterLocation.params[0].replace("x/",""); // we always sub the x/ out bc it's assumed reserved
+    if (
+      this.currentRouterLocation &&
+      this.currentRouterLocation.params &&
+      this.currentRouterLocation.params[0]
+    ) {
+      return this.currentRouterLocation.params[0].replace("x/", ""); // we always sub the x/ out bc it's assumed reserved
     }
     return false;
   }

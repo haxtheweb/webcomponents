@@ -9,13 +9,8 @@
     "description": "Item from the full icon library",
     "icon": "icons:face",
     "color": "yellow",
-    "tags": [
-      "Content",
-      "text",
-      "icon"
-    ],
-    "handles": [
-    ],
+    "tags": ["Content", "text", "icon"],
+    "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",
       "inlineOnly": true

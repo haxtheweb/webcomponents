@@ -76,182 +76,182 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     ];
   }
   render() {
-    return html`${this.hidden ? `` : html`
-      <hax-toolbar>
-        <hax-tray-button
-          label="${this.t.updateHTML}"
-          icon="icons:check"
-          @click="${this.importContent}"
-          show-text-label
-          icon-position="top"
-          class="updatecontent"
-        >
-        </hax-tray-button>
-        <simple-toolbar-menu
-          icon="icons:file-upload"
-          icon-position="top"
-          label="${this.t.importContent}"
-          show-text-label
-        >
-          <simple-toolbar-menu-item>
-            ${MicroFrontendRegistry.has("@core/docxToHtml")
-              ? html` <hax-tray-button
-                  @click="${this.importDOCXviaMicro}"
-                  label="${this.t.importDOCX}"
-                  icon="hax:file-docx"
-                  show-text-label
-                  icon-position="top"
-                >
-                </hax-tray-button>`
-              : html`
-                  <hax-tray-button
-                    @click="${this.importDOCX}"
-                    label="${this.t.importDOCX}"
-                    icon="hax:file-docx"
-                    show-text-label
-                    icon-position="top"
-                  >
-                  </hax-tray-button>
-                `}
-          </simple-toolbar-menu-item>
-          ${MicroFrontendRegistry.has("@core/mdToHtml")
-            ? html`
-                <simple-toolbar-menu-item>
-                  <hax-tray-button
-                    label="${this.t.importMarkdown}"
-                    icon="hax:format-textblock"
-                    @click="${this.importMDviaMicro}"
-                    show-text-label
-                    icon-position="top"
-                  >
-                  </hax-tray-button>
-                </simple-toolbar-menu-item>
-              `
-            : html``}
-        </simple-toolbar-menu>
-        <hax-tray-button
-          @click="${this.scrubContent}"
-          icon="editor:format-clear"
-          label="${this.t.cleanFormatting}"
-          show-text-label
-          icon-position="top"
-        >
-        </hax-tray-button>
-        ${MicroFrontendRegistry.has("@core/prettyHtml")
-          ? html`
+    return html`${this.hidden
+      ? ``
+      : html` <hax-toolbar>
             <hax-tray-button
-              label="${this.t.PrettifyHtml}"
-              icon="hax:format-textblock"
-              @click="${this.prettifyContent}"
+              label="${this.t.updateHTML}"
+              icon="icons:check"
+              @click="${this.importContent}"
+              show-text-label
+              icon-position="top"
+              class="updatecontent"
+            >
+            </hax-tray-button>
+            <simple-toolbar-menu
+              icon="icons:file-upload"
+              icon-position="top"
+              label="${this.t.importContent}"
+              show-text-label
+            >
+              <simple-toolbar-menu-item>
+                ${MicroFrontendRegistry.has("@core/docxToHtml")
+                  ? html` <hax-tray-button
+                      @click="${this.importDOCXviaMicro}"
+                      label="${this.t.importDOCX}"
+                      icon="hax:file-docx"
+                      show-text-label
+                      icon-position="top"
+                    >
+                    </hax-tray-button>`
+                  : html`
+                      <hax-tray-button
+                        @click="${this.importDOCX}"
+                        label="${this.t.importDOCX}"
+                        icon="hax:file-docx"
+                        show-text-label
+                        icon-position="top"
+                      >
+                      </hax-tray-button>
+                    `}
+              </simple-toolbar-menu-item>
+              ${MicroFrontendRegistry.has("@core/mdToHtml")
+                ? html`
+                    <simple-toolbar-menu-item>
+                      <hax-tray-button
+                        label="${this.t.importMarkdown}"
+                        icon="hax:format-textblock"
+                        @click="${this.importMDviaMicro}"
+                        show-text-label
+                        icon-position="top"
+                      >
+                      </hax-tray-button>
+                    </simple-toolbar-menu-item>
+                  `
+                : html``}
+            </simple-toolbar-menu>
+            <hax-tray-button
+              @click="${this.scrubContent}"
+              icon="editor:format-clear"
+              label="${this.t.cleanFormatting}"
               show-text-label
               icon-position="top"
             >
             </hax-tray-button>
-            `
-          : html``}
-        <hax-tray-button
-          @click="${this.selectBody}"
-          icon="hax:html-code"
-          label="${this.t.copyHTML}"
-          show-text-label
-          icon-position="top"
-        >
-        </hax-tray-button>
-        <simple-toolbar-menu
-          icon="icons:file-download"
-          icon-position="top"
-          label="${this.t.downloadContent}"
-          @dblclick="${this.download}"
-          show-text-label
-        >
-          <simple-toolbar-menu-item>
-            <hax-tray-button
-              icon="hax:file-html"
-              icon-position="top"
-              label="${this.t.downloadHTML}"
-              @click="${this.download}"
-              show-text-label
-            >
-            </hax-tray-button>
-          </simple-toolbar-menu-item>
-          <simple-toolbar-menu-item>
-            ${MicroFrontendRegistry.has("@core/htmlToDocx")
+            ${MicroFrontendRegistry.has("@core/prettyHtml")
               ? html`
                   <hax-tray-button
-                    label="${this.t.downloadDOCX}"
-                    icon="hax:file-docx"
-                    @click="${this.downloadDOCXviaMicro}"
+                    label="${this.t.PrettifyHtml}"
+                    icon="hax:format-textblock"
+                    @click="${this.prettifyContent}"
                     show-text-label
                     icon-position="top"
                   >
                   </hax-tray-button>
                 `
-              : html`
-                  <hax-tray-button
-                    label="${this.t.downloadDOCX}"
-                    icon="hax:file-docx"
-                    @click="${this.downloadDOCX}"
-                    show-text-label
-                    icon-position="top"
-                  >
-                  </hax-tray-button>
-                `}
-          </simple-toolbar-menu-item>
-          ${MicroFrontendRegistry.has("@core/htmlToMd")
-            ? html`
-                <simple-toolbar-menu-item>
-                  <hax-tray-button
-                    label="${this.t.downloadMD}"
-                    icon="hax:format-textblock"
-                    @click="${this.downloadMDviaMicro}"
-                    show-text-label
-                    icon-position="top"
-                  >
-                  </hax-tray-button>
-                </simple-toolbar-menu-item>
-              `
-            : html``}
-          ${MicroFrontendRegistry.has("@core/htmlToPdf")
-            ? html`
-                <simple-toolbar-menu-item>
-                  <hax-tray-button
-                    label="${this.t.downloadPDF}"
-                    icon="lrn:pdf"
-                    @click="${this.downloadPDFviaMicro}"
-                    show-text-label
-                    icon-position="top"
-                  >
-                  </hax-tray-button>
-                </simple-toolbar-menu-item>
-              `
-            : html``}
-          <simple-toolbar-menu-item>
+              : html``}
             <hax-tray-button
-              @click="${this.htmlToHaxElements}"
-              label="${this.t.haxSchema}"
-              icon="hax:code-json"
+              @click="${this.selectBody}"
+              icon="hax:html-code"
+              label="${this.t.copyHTML}"
               show-text-label
               icon-position="top"
-            ></hax-tray-button>
-          </simple-toolbar-menu-item>
-        </simple-toolbar-menu>
-      </hax-toolbar>
-      <div id="wrapper">
-        <div id="spacer"></div>
-        <textarea id="hiddentextarea" hidden></textarea>
-        <code-editor
-          id="textarea"
-          theme="${this.haxUiTheme == "hax"
-            ? "vs"
-            : this.haxUiTheme == "haxdark"
-            ? "vs-dark"
-            : "auto"}"
-          language="html"
-          font-size="13"
-          word-wrap
-        ></code-editor>
-      </div>`}
-    `;
+            >
+            </hax-tray-button>
+            <simple-toolbar-menu
+              icon="icons:file-download"
+              icon-position="top"
+              label="${this.t.downloadContent}"
+              @dblclick="${this.download}"
+              show-text-label
+            >
+              <simple-toolbar-menu-item>
+                <hax-tray-button
+                  icon="hax:file-html"
+                  icon-position="top"
+                  label="${this.t.downloadHTML}"
+                  @click="${this.download}"
+                  show-text-label
+                >
+                </hax-tray-button>
+              </simple-toolbar-menu-item>
+              <simple-toolbar-menu-item>
+                ${MicroFrontendRegistry.has("@core/htmlToDocx")
+                  ? html`
+                      <hax-tray-button
+                        label="${this.t.downloadDOCX}"
+                        icon="hax:file-docx"
+                        @click="${this.downloadDOCXviaMicro}"
+                        show-text-label
+                        icon-position="top"
+                      >
+                      </hax-tray-button>
+                    `
+                  : html`
+                      <hax-tray-button
+                        label="${this.t.downloadDOCX}"
+                        icon="hax:file-docx"
+                        @click="${this.downloadDOCX}"
+                        show-text-label
+                        icon-position="top"
+                      >
+                      </hax-tray-button>
+                    `}
+              </simple-toolbar-menu-item>
+              ${MicroFrontendRegistry.has("@core/htmlToMd")
+                ? html`
+                    <simple-toolbar-menu-item>
+                      <hax-tray-button
+                        label="${this.t.downloadMD}"
+                        icon="hax:format-textblock"
+                        @click="${this.downloadMDviaMicro}"
+                        show-text-label
+                        icon-position="top"
+                      >
+                      </hax-tray-button>
+                    </simple-toolbar-menu-item>
+                  `
+                : html``}
+              ${MicroFrontendRegistry.has("@core/htmlToPdf")
+                ? html`
+                    <simple-toolbar-menu-item>
+                      <hax-tray-button
+                        label="${this.t.downloadPDF}"
+                        icon="lrn:pdf"
+                        @click="${this.downloadPDFviaMicro}"
+                        show-text-label
+                        icon-position="top"
+                      >
+                      </hax-tray-button>
+                    </simple-toolbar-menu-item>
+                  `
+                : html``}
+              <simple-toolbar-menu-item>
+                <hax-tray-button
+                  @click="${this.htmlToHaxElements}"
+                  label="${this.t.haxSchema}"
+                  icon="hax:code-json"
+                  show-text-label
+                  icon-position="top"
+                ></hax-tray-button>
+              </simple-toolbar-menu-item>
+            </simple-toolbar-menu>
+          </hax-toolbar>
+          <div id="wrapper">
+            <div id="spacer"></div>
+            <textarea id="hiddentextarea" hidden></textarea>
+            <code-editor
+              id="textarea"
+              theme="${this.haxUiTheme == "hax"
+                ? "vs"
+                : this.haxUiTheme == "haxdark"
+                ? "vs-dark"
+                : "auto"}"
+              language="html"
+              font-size="13"
+              word-wrap
+            ></code-editor>
+          </div>`} `;
   }
   static get tag() {
     return "hax-view-source";
@@ -482,15 +482,22 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     // import contents of this text area into the activeHaxBody
     let htmlBody = this.shadowRoot.querySelector("#textarea").value;
     let children =
-      HAXStore.activeHaxBody.shadowRoot.querySelector("#body").localName === "slot"
-        ? HAXStore.activeHaxBody.shadowRoot.querySelector("#body").assignedNodes({
-            flatten: true,
-          })
+      HAXStore.activeHaxBody.shadowRoot.querySelector("#body").localName ===
+      "slot"
+        ? HAXStore.activeHaxBody.shadowRoot
+            .querySelector("#body")
+            .assignedNodes({
+              flatten: true,
+            })
         : [];
     // we have children and we don't have a page break, so we need to
     // inject the current one at the top of what's being imported
     // or else they'll brick the resulting transaction
-    if (children.length > 0 && children[0].tagName === "PAGE-BREAK" && !htmlBody.includes("<page-break")) {
+    if (
+      children.length > 0 &&
+      children[0].tagName === "PAGE-BREAK" &&
+      !htmlBody.includes("<page-break")
+    ) {
       let pb = await HAXStore.nodeToContent(children[0]);
       htmlBody = pb + "\n" + htmlBody;
     }
@@ -517,7 +524,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     if (response.status == 200) {
       this.shadowRoot.querySelector("#textarea").editorValue = "";
       setTimeout(() => {
-        const htmlCode = response.data.replace(/^\s+|\s+$/gm,'');
+        const htmlCode = response.data.replace(/^\s+|\s+$/gm, "");
         this.shadowRoot.querySelector("#textarea").editorValue = htmlCode;
       }, 0);
     }
@@ -598,7 +605,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       setTimeout(async () => {
         const htmlCode = formatHTML(
           await HAXStore.activeHaxBody.haxToContent()
-        ).replace(/^\s+|\s+$/gm,'');
+        ).replace(/^\s+|\s+$/gm, "");
         this.shadowRoot.querySelector("#textarea").editorValue = htmlCode;
       }, 0);
     }

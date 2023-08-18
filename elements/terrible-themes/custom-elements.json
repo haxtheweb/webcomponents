@@ -188,6 +188,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -201,9 +204,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -404,6 +404,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -417,9 +420,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -620,6 +620,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -633,9 +636,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -858,6 +858,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -871,9 +874,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -1096,6 +1096,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1109,9 +1112,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -1312,6 +1312,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1325,9 +1328,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -1528,6 +1528,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1541,9 +1544,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -1744,6 +1744,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1757,9 +1760,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -1960,6 +1960,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1973,9 +1976,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"

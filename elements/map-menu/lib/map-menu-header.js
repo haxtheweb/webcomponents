@@ -88,9 +88,15 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           padding: 0px 16px;
           text-align: left;
           border-radius: 0px;
-          height: var( --map-menu-item-button-height, var(--map-menu-item-height, 44px) );
+          height: var(
+            --map-menu-item-button-height,
+            var(--map-menu-item-height, 44px)
+          );
           vertical-align: middle;
-          line-height: var( --map-menu-item-button-height, var(--map-menu-item-height, 44px) );
+          line-height: var(
+            --map-menu-item-button-height,
+            var(--map-menu-item-height, 44px)
+          );
         }
         :host([status="new"]) a::after {
           border-right: 8px solid green;
@@ -120,13 +126,13 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     return html`
       <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
         <button>
-        ${!this.published
-          ? html`<simple-icon-lite
-              id="unpublished"
-              title="${this.t.pageIsUnpublished}"
-              icon="icons:visibility-off"
-            ></simple-icon-lite>`
-          : ``}
+          ${!this.published
+            ? html`<simple-icon-lite
+                id="unpublished"
+                title="${this.t.pageIsUnpublished}"
+                icon="icons:visibility-off"
+              ></simple-icon-lite>`
+            : ``}
           ${this.icon
             ? html`
                 <simple-icon-lite

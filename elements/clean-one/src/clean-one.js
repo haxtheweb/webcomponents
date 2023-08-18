@@ -904,10 +904,10 @@ class CleanOne extends HAXCMSRememberRoute(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
       ).then(() => {
         this.searchTerm = params.get("search");
-        this.shadowRoot.querySelector('clean-one-search-box').focus();
+        this.shadowRoot.querySelector("clean-one-search-box").focus();
         // stall to allow value to be set
         setTimeout(() => {
-          this.shadowRoot.querySelector('clean-one-search-box').select();
+          this.shadowRoot.querySelector("clean-one-search-box").select();
         }, 0);
       });
     }

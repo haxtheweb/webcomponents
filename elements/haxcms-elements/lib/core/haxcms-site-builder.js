@@ -136,10 +136,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this.activeItemContent = data;
     }
     // punt, we didn't find anything
-    else if(store.cmsSiteEditorBackend.instance && store.cmsSiteEditorBackend.instance.updateActiveItemContent) {
+    else if (
+      store.cmsSiteEditorBackend.instance &&
+      store.cmsSiteEditorBackend.instance.updateActiveItemContent
+    ) {
       store.cmsSiteEditorBackend.instance.updateActiveItemContent();
-    }
-    else {
+    } else {
       this.activeItemContent = "";
     }
   }
@@ -147,9 +149,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (store.themeElement) {
       let frag = document.createDocumentFragment();
       let p = document.createElement("p");
-      p.innerHTML = `<strong>${store.getInternalRoute()}</strong> ${this.t.couldNotBeLocated}. ${this.t.hereAreSomePossibleRemedies}
+      p.innerHTML = `<strong>${store.getInternalRoute()}</strong> ${
+        this.t.couldNotBeLocated
+      }. ${this.t.hereAreSomePossibleRemedies}
       <ul>
-        <li><a href="x/search?search=${store.getInternalRoute()}">${this.t.useSearchToLocateTheContentYouAreLookingFor}</a></li>
+        <li><a href="x/search?search=${store.getInternalRoute()}">${
+        this.t.useSearchToLocateTheContentYouAreLookingFor
+      }</a></li>
         <li><a href="./">${this.t.goToTheHomePage}</a></li>
         <li>${this.t.navigateToAnotherPageInTheMenu}</li>
       </ul>`;
@@ -169,14 +175,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (store.themeElement) {
       let frag = document.createDocumentFragment();
       if (store.activeItem.component) {
-        import(
-          `../ui-components/routes/${store.activeItem.component}.js`
-        ).then(() => {
-          let el = document.createElement(store.activeItem.component);
-          frag.appendChild(el);
-          wipeSlot(store.themeElement, "*");
-          store.themeElement.appendChild(frag);
-        });
+        import(`../ui-components/routes/${store.activeItem.component}.js`).then(
+          () => {
+            let el = document.createElement(store.activeItem.component);
+            frag.appendChild(el);
+            wipeSlot(store.themeElement, "*");
+            store.themeElement.appendChild(frag);
+          }
+        );
       }
     }
   }
@@ -198,24 +204,22 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       if (this.activeItemLocation === "hax-internal-route.html") {
         this.renderInternalRoute();
         this.loading = false;
-      }
-      else {
+      } else {
         await fetch(url)
-        .then((response) => {
-          if (response.ok) {
-            return response.text();
-          }
-          else {
-            this.display404Error();
-          }
-        })
-        .then((data) => {
-          this._updateActiveItemContent(data);
-          this.loading = false;
-        })
-        .catch((err) => {
-          this.lastErrorChanged(err);
-        }); 
+          .then((response) => {
+            if (response.ok) {
+              return response.text();
+            } else {
+              this.display404Error();
+            }
+          })
+          .then((data) => {
+            this._updateActiveItemContent(data);
+            this.loading = false;
+          })
+          .catch((err) => {
+            this.lastErrorChanged(err);
+          });
       }
     }
   }
@@ -504,16 +508,17 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       navigateToAnotherPageInTheMenu: "Navigate to another page in the menu",
       couldNotBeLocated: "could not be located",
       hereAreSomePossibleRemedies: "Here are some possible remedies:",
-      useSearchToLocateTheContentYouAreLookingFor: "Use Search to locate the content you are looking for",
+      useSearchToLocateTheContentYouAreLookingFor:
+        "Use Search to locate the content you are looking for",
       goToTheHomePage: "Go to the home page",
     };
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
-      localesPath: new URL("../../locales/haxcms.es.json", import.meta.url).href.replace(
-        "/haxcms.es.json",
-        "/"
-      ),
+      localesPath: new URL(
+        "../../locales/haxcms.es.json",
+        import.meta.url
+      ).href.replace("/haxcms.es.json", "/"),
       locales: ["es"],
     });
     this.disableFeatures = "";
@@ -580,7 +585,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    
+
     this.__ready = true;
     store.appReady = true;
     window.dispatchEvent(

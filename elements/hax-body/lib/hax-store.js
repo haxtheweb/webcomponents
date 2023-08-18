@@ -2450,7 +2450,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           {
             type: "image",
             source: "src",
-          }
+          },
         ],
         meta: {
           author: "W3C",
@@ -3355,10 +3355,14 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     if (
       SuperDaemonInstance.programTarget &&
       e.detail.properties &&
-      (e.detail.properties.src || e.detail.properties.source || e.detail.properties.href)
+      (e.detail.properties.src ||
+        e.detail.properties.source ||
+        e.detail.properties.href)
     ) {
       SuperDaemonInstance.programTarget.value =
-        e.detail.properties.src || e.detail.properties.source || e.detail.properties.href;
+        e.detail.properties.src ||
+        e.detail.properties.source ||
+        e.detail.properties.href;
     } else {
       this.haxTray._processTrayEvent(e);
     }

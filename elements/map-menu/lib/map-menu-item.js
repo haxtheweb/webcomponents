@@ -32,7 +32,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
         :host(:not([published])) {
           text-decoration: line-through;
           color: red;
-          opacity: .5;
+          opacity: 0.5;
         }
         .title {
           text-transform: none;
@@ -124,7 +124,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
     return html`
       <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
         <button>
-        ${!this.published
+          ${!this.published
             ? html`<simple-icon-lite
                 id="unpublished"
                 title="${this.t.pageIsUnpublished}"

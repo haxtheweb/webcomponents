@@ -162,11 +162,9 @@ class SuperDaemon extends SimpleColors {
       this._addVoiceCommand.bind(this),
       { signal: this.windowControllers.signal }
     );
-    window.addEventListener(
-      "super-daemon-modal-close",
-      this.close.bind(this),
-      { signal: this.windowControllers.signal }
-    );
+    window.addEventListener("super-daemon-modal-close", this.close.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
   disconnectedCallback() {
     this.windowControllers.abort();

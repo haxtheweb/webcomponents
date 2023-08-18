@@ -7,7 +7,10 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
-import { store, HAXcmsStore } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  store,
+  HAXcmsStore,
+} from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
 import "@lrnwebcomponents/lunr-search/lunr-search.js";
@@ -214,12 +217,16 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
   _searchValueChanged(e) {
     this.search = e.detail.value;
     if (this.search) {
-      if (store.getInternalRoute() !== 'search') {
+      if (store.getInternalRoute() !== "search") {
         window.history.replaceState({}, null, "x/search");
       }
       const params = new URLSearchParams(window.location.search);
-      params.set('search', this.search);
-      window.history.replaceState({}, "", decodeURIComponent(`./x/search?${params}`));
+      params.set("search", this.search);
+      window.history.replaceState(
+        {},
+        "",
+        decodeURIComponent(`./x/search?${params}`)
+      );
     }
   }
   async __resultsChanged(e) {

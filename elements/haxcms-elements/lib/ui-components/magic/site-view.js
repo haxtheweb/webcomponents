@@ -32,7 +32,7 @@ export const mediaKeys = [
   "links",
   "placeholders",
   "siteremotecontent",
-  "video"
+  "video",
 ];
 
 /**
@@ -106,14 +106,18 @@ export class SiteView extends SimpleColors {
         /* editable table display */
         editable-table-display,
         editable-table-display::part(table),
-        table,tr,th,td {
+        table,
+        tr,
+        th,
+        td {
           font-size: 16px;
         }
         editable-table-display {
           --simple-icon-width: 50px;
           --simple-icon-height: 36px;
         }
-    `];
+      `,
+    ];
   }
 
   constructor() {
@@ -130,7 +134,7 @@ export class SiteView extends SimpleColors {
     autorun((reaction) => {
       this.dark = toJS(store.darkMode);
       setTimeout(() => {
-        this.requestUpdate();        
+        this.requestUpdate();
       }, 0);
       this.__disposer.push(reaction);
     });
@@ -153,10 +157,11 @@ export class SiteView extends SimpleColors {
       canEditSource: false,
       gizmo: {
         title: "Site View",
-        description: "A dynamic block that queries and displays certain information based on criteria",
+        description:
+          "A dynamic block that queries and displays certain information based on criteria",
         icon: "hax:view-gallery",
         color: "grey",
-        tags: ["Other","site","views","data","display","filter","view"],
+        tags: ["Other", "site", "views", "data", "display", "filter", "view"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -168,17 +173,18 @@ export class SiteView extends SimpleColors {
           {
             property: "search",
             title: "View URL",
-            description: "URL containing criteria for generating the view. You can obtain this from the Views page.",
+            description:
+              "URL containing criteria for generating the view. You can obtain this from the Views page.",
             inputMethod: "textfield",
-            required: true
-          }
-        ]
+            required: true,
+          },
+        ],
       },
       demoSchema: [
         {
           tag: "site-view",
           properties: {
-            search: "?display=list&displayOf=title&parent=__ACTIVE__"
+            search: "?display=list&displayOf=title&parent=__ACTIVE__",
           },
           content: "",
         },
@@ -192,7 +198,7 @@ export class SiteView extends SimpleColors {
         const site = store.getManifest(true);
         let base = document.querySelector("base").href;
         if (!base) {
-          base = '/';
+          base = "/";
         }
         const params = {
           type: "site",
@@ -207,7 +213,7 @@ export class SiteView extends SimpleColors {
             items: site.items,
           },
           link: base,
-          ...this.params
+          ...this.params,
         };
         this.loading = true;
         const response = await MicroFrontendRegistry.call(
@@ -230,15 +236,28 @@ export class SiteView extends SimpleColors {
   }
 
   render() {
-    return html`
-    ${this.loading ? html`<div class="loading">${this.loading ? html`<simple-icon-lite icon="hax:loading"></simple-icon-lite>` : ``}</div>
-` : html`
-${this.results.length === 0 && !this.loading ? html`<h4>No results found</h4>` : nothing}
-${this.params.display === "list" ? this.listTemplate(this.dark, this.accentColor) : nothing}
-${this.params.display === "table" ? this.tableTemplate(this.dark, this.accentColor) : nothing}
-${this.params.display === "card" ? this.cardTemplate(this.dark, this.accentColor) : nothing}
-${this.params.display === "contentplayer" ? this.contentplayerTemplate(this.dark, this.accentColor) : nothing}
-    <slot></slot>`}`;
+    return html` ${this.loading
+      ? html`<div class="loading">
+          ${this.loading
+            ? html`<simple-icon-lite icon="hax:loading"></simple-icon-lite>`
+            : ``}
+        </div> `
+      : html` ${this.results.length === 0 && !this.loading
+            ? html`<h4>No results found</h4>`
+            : nothing}
+          ${this.params.display === "list"
+            ? this.listTemplate(this.dark, this.accentColor)
+            : nothing}
+          ${this.params.display === "table"
+            ? this.tableTemplate(this.dark, this.accentColor)
+            : nothing}
+          ${this.params.display === "card"
+            ? this.cardTemplate(this.dark, this.accentColor)
+            : nothing}
+          ${this.params.display === "contentplayer"
+            ? this.contentplayerTemplate(this.dark, this.accentColor)
+            : nothing}
+          <slot></slot>`}`;
   }
 
   contentplayerTemplate() {
@@ -246,102 +265,138 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate(this.dark
   }
 
   listTemplate() {
-    return html`
-    <ul class="list">
+    return html` <ul class="list">
       ${this.results.map(
-      (item) => html`
-        <li class="list-item">
-    ${this.params.displayOf === "blocks" ? 
-      mediaKeys.map((key) => 
-      (item.media && item.media[key] && 
-        typeof item.media[key] == "string" && 
-        this.params.blockFilter === key ? 
-        unsafeHTML(item.media[key]) : 
-        nothing
-      )
-    ) : html`<div class="play-list-item">
-      ${this.params.displayOf === "title" ? html`<div class="list-link"><a href="${item.slug}">${item.title}</a></div>
-      <div class="list-breadcrumb">${this.calculateBreadcrumb(item).map(item => html`
-      <span>${item.title}</span> `)}</div>
-      ${item.metadata.tags && item.metadata.tags != "" ? item.metadata.tags
-        .split(",")
-        .map(
-          (tag) => html`<a href="x/views?tags=${tag.trim()}">
-          <simple-tag
-            auto-accent-color
-            value="${tag.trim()}"
-            accent-color="${item.accentColor}"
-          ></simple-tag></a>`
-        ) : nothing}` : this.params.displayOf === "full" ? unsafeHTML(`<h3>${item.title}</h3>`+item.contents) : 
-      html`<site-remote-content player hide-reference uuid="${item.id}" show-title></site-remote-content>`}</div>`
-    }
-      </li>`)}
-      </ul>`;
+        (item) => html` <li class="list-item">
+          ${this.params.displayOf === "blocks"
+            ? mediaKeys.map((key) =>
+                item.media &&
+                item.media[key] &&
+                typeof item.media[key] == "string" &&
+                this.params.blockFilter === key
+                  ? unsafeHTML(item.media[key])
+                  : nothing
+              )
+            : html`<div class="play-list-item">
+                ${this.params.displayOf === "title"
+                  ? html`<div class="list-link">
+                        <a href="${item.slug}">${item.title}</a>
+                      </div>
+                      <div class="list-breadcrumb">
+                        ${this.calculateBreadcrumb(item).map(
+                          (item) => html` <span>${item.title}</span> `
+                        )}
+                      </div>
+                      ${item.metadata.tags && item.metadata.tags != ""
+                        ? item.metadata.tags
+                            .split(",")
+                            .map(
+                              (tag) => html`<a
+                                href="x/views?tags=${tag.trim()}"
+                              >
+                                <simple-tag
+                                  auto-accent-color
+                                  value="${tag.trim()}"
+                                  accent-color="${item.accentColor}"
+                                ></simple-tag
+                              ></a>`
+                            )
+                        : nothing}`
+                  : this.params.displayOf === "full"
+                  ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
+                  : html`<site-remote-content
+                      player
+                      hide-reference
+                      uuid="${item.id}"
+                      show-title
+                    ></site-remote-content>`}
+              </div>`}
+        </li>`
+      )}
+    </ul>`;
   }
 
-
   tableTemplate(dark, accentColor) {
-    return html`
-    <editable-table-display 
+    return html` <editable-table-display
       accent-color="cyan"
-      bordered 
-      caption="Content matching your search criteria" 
+      bordered
+      caption="Content matching your search criteria"
       numeric-styles
       column-header
       printable
       downloadable
       sort
-      striped>
-    <table>
-      <tr>
-        <th>Icon</th>
-        <th>Type</th>
-        <th>Title</th>
-        <th>Tags</th>
-        <th>Updated</th>
-        <th>Created</th>
-        <th>Status</th>
-      </tr>
-    ${this.results.map(
-      (item) => html`
-      <tr>
-        <td>${item.metadata.pageType ? html`<simple-icon ?dark="${dark}" accent-color="${accentColor}" title="${item.metadata.pageType}" icon="${iconFromPageType(item.metadata.pageType)}"></simple-icon>` : nothing}</td>
-        <td>${item.metadata.pageType ? item.metadata.pageType : nothing}</td>
-        <td><a href="${item.slug}" style="color:inherit">${item.title}</a></td>
-        <td>
-          ${item.metadata.tags && item.metadata.tags != "" ? item.metadata.tags
-          .split(",")
-          .map(
-            (tag) => html`<a part="tag-link" href="x/views?tags=${tag.trim()}">
-            <simple-tag
-              auto-accent-color
-              value="${tag.trim()}"
-              accent-color="${item.accentColor}"
-            ></simple-tag></a>`
-          ) : nothing}
-        </td>
-        <td>
-          <simple-datetime
-            format="m/j/y"
-            timestamp="${item.metadata.created}"
-            unix
-            class="info-date"
-          ></simple-datetime>
-        </td>
-        <td>
-          <simple-datetime
-            format="m/j/y"
-            timestamp="${item.metadata.updated}"
-            unix
-            class="info-date"
-          ></simple-datetime>
-        </td>
-        <td>
-          ${item.metadata.published !== false ? `published` : `unpublished`}
-        </td>
-      </tr>`)}
+      striped
+    >
+      <table>
+        <tr>
+          <th>Icon</th>
+          <th>Type</th>
+          <th>Title</th>
+          <th>Tags</th>
+          <th>Updated</th>
+          <th>Created</th>
+          <th>Status</th>
+        </tr>
+        ${this.results.map(
+          (item) => html` <tr>
+            <td>
+              ${item.metadata.pageType
+                ? html`<simple-icon
+                    ?dark="${dark}"
+                    accent-color="${accentColor}"
+                    title="${item.metadata.pageType}"
+                    icon="${iconFromPageType(item.metadata.pageType)}"
+                  ></simple-icon>`
+                : nothing}
+            </td>
+            <td>
+              ${item.metadata.pageType ? item.metadata.pageType : nothing}
+            </td>
+            <td>
+              <a href="${item.slug}" style="color:inherit">${item.title}</a>
+            </td>
+            <td>
+              ${item.metadata.tags && item.metadata.tags != ""
+                ? item.metadata.tags
+                    .split(",")
+                    .map(
+                      (tag) => html`<a
+                        part="tag-link"
+                        href="x/views?tags=${tag.trim()}"
+                      >
+                        <simple-tag
+                          auto-accent-color
+                          value="${tag.trim()}"
+                          accent-color="${item.accentColor}"
+                        ></simple-tag
+                      ></a>`
+                    )
+                : nothing}
+            </td>
+            <td>
+              <simple-datetime
+                format="m/j/y"
+                timestamp="${item.metadata.created}"
+                unix
+                class="info-date"
+              ></simple-datetime>
+            </td>
+            <td>
+              <simple-datetime
+                format="m/j/y"
+                timestamp="${item.metadata.updated}"
+                unix
+                class="info-date"
+              ></simple-datetime>
+            </td>
+            <td>
+              ${item.metadata.published !== false ? `published` : `unpublished`}
+            </td>
+          </tr>`
+        )}
       </table>
-      </editable-table-display>`;
+    </editable-table-display>`;
   }
 
   updated(changedProperties) {
@@ -350,16 +405,18 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate(this.dark
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "loading") {
-        this.dispatchEvent(new CustomEvent("loading-changed", {
-          detail: {
-            value: this.loading
-          },
-        }));
+        this.dispatchEvent(
+          new CustomEvent("loading-changed", {
+            detail: {
+              value: this.loading,
+            },
+          })
+        );
       }
       if (propName === "search") {
         const rawParams = new URLSearchParams(this.search);
         const searchParams = Object.fromEntries(rawParams);
-        this.params = {...this.params,...searchParams};
+        this.params = { ...this.params, ...searchParams };
         if (this.params.parent === "__ACTIVE__") {
           this.params.parent = store.activeItem.id;
         }
@@ -378,42 +435,66 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate(this.dark
   // so that the play-list element is empty for a second and then we template stamp it into placee
   renderPlayListTemplate() {
     let template = document.createElement("template");
-    render(html`${this.results.map((item) => html`
-    ${this.params.displayOf === "blocks" ? 
-      mediaKeys.map((key) => 
-      (item.media && item.media[key] && 
-        typeof item.media[key] == "string" && 
-        this.params.blockFilter === key ? 
-        unsafeHTML(item.media[key]) : 
-        nothing
-      )
-    ) : html`<div class="play-list-item">
-      ${this.params.displayOf === "title" ? html`<div class="list-link"><a href="${item.slug}">${item.title}</a></div>
-      <div class="list-breadcrumb">${this.calculateBreadcrumb(item).map(item => html`
-      <span>${item.title}</span> `)}</div>` : this.params.displayOf === "full" ? unsafeHTML(`<h3>${item.title}</h3>`+item.contents) : 
-      html`<site-remote-content player hide-reference uuid="${item.id}" show-title></site-remote-content>`}</div>`
-    }`)}`, template);
-    this.shadowRoot.querySelector("#contentplayertemplate").appendChild(template);
+    render(
+      html`${this.results.map(
+        (item) => html` ${this.params.displayOf === "blocks"
+          ? mediaKeys.map((key) =>
+              item.media &&
+              item.media[key] &&
+              typeof item.media[key] == "string" &&
+              this.params.blockFilter === key
+                ? unsafeHTML(item.media[key])
+                : nothing
+            )
+          : html`<div class="play-list-item">
+              ${this.params.displayOf === "title"
+                ? html`<div class="list-link">
+                      <a href="${item.slug}">${item.title}</a>
+                    </div>
+                    <div class="list-breadcrumb">
+                      ${this.calculateBreadcrumb(item).map(
+                        (item) => html` <span>${item.title}</span> `
+                      )}
+                    </div>`
+                : this.params.displayOf === "full"
+                ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
+                : html`<site-remote-content
+                    player
+                    hide-reference
+                    uuid="${item.id}"
+                    show-title
+                  ></site-remote-content>`}
+            </div>`}`
+      )}`,
+      template
+    );
+    this.shadowRoot
+      .querySelector("#contentplayertemplate")
+      .appendChild(template);
   }
 
   cardTemplate() {
     return html`${this.results.map(
-      (item) => html`
-        <accent-card accent-color="red" horizontal accent-heading>
-          <div slot="heading">${item.title}</div>
-          <div slot="subheading">${item.metadata.tags && item.metadata.tags != "" ? item.metadata.tags
+      (item) => html` <accent-card accent-color="red" horizontal accent-heading>
+        <div slot="heading">${item.title}</div>
+        <div slot="subheading">
+          ${item.metadata.tags && item.metadata.tags != ""
+            ? item.metadata.tags
                 .split(",")
                 .map(
                   (tag) => html`<a href="x/views?tags=${tag.trim()}">
-                  <simple-tag
-                    auto-accent-color
-                    value="${tag.trim()}"
-                    accent-color="${item.accentColor}"
-                  ></simple-tag></a>`
-                ) : nothing}</div>
-          <div slot="content"><a href="${item.slug}">Link to content</a>
+                    <simple-tag
+                      auto-accent-color
+                      value="${tag.trim()}"
+                      accent-color="${item.accentColor}"
+                    ></simple-tag
+                  ></a>`
+                )
+            : nothing}
         </div>
-        </accent-card>`)}`;
+        <div slot="content"><a href="${item.slug}">Link to content</a></div>
+      </accent-card>`
+    )}`;
   }
 
   calculateBreadcrumb(activeItem) {
@@ -422,9 +503,7 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate(this.dark
     let itemBuilder = activeItem;
     // walk back through parent tree
     while (itemBuilder && itemBuilder.parent != null) {
-      itemBuilder = site.items.find(
-        (i) => i.id == itemBuilder.parent
-      );
+      itemBuilder = site.items.find((i) => i.id == itemBuilder.parent);
       // double check structure is sound
       if (itemBuilder) {
         items.unshift({
@@ -446,12 +525,12 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate(this.dark
       },
       loading: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       params: {
         type: Object,
       },
-    }
+    };
   }
 }
 

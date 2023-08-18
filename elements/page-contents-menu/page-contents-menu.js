@@ -242,7 +242,7 @@ class PageContentsMenu extends LitElement {
       }
       // keep state in history
       window.history.pushState({}, null, target.getAttribute("href"));
-      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.dispatchEvent(new PopStateEvent("popstate"));
       // close menu
       this.hideSettings = true;
     }
@@ -449,25 +449,27 @@ class PageContentsMenu extends LitElement {
         if (!title && item.mediaTitle) {
           title = item.mediaTitle;
         }
-        if (
-          !title &&
-          this.fallbackText[item.tagName.toLowerCase()]
-        ) {
+        if (!title && this.fallbackText[item.tagName.toLowerCase()]) {
           title = this.fallbackText[item.tagName.toLowerCase()];
         }
         // force an ID on items that don't have one
         // or this will do nothing
-        if (!item.id && item.getAttribute('resource')) {
-          item.setAttribute('id', item.tagName.toLowerCase() + item.getAttribute('resource').replace(/[^a-zA-Z0-9]/g, ''));
-        }
-        else if (!item.id) {
-          item.setAttribute('id', item.tagName.toLowerCase() + i);
+        if (!item.id && item.getAttribute("resource")) {
+          item.setAttribute(
+            "id",
+            item.tagName.toLowerCase() +
+              item.getAttribute("resource").replace(/[^a-zA-Z0-9]/g, "")
+          );
+        } else if (!item.id) {
+          item.setAttribute("id", item.tagName.toLowerCase() + i);
         }
         let reference = {
           title: title,
           link: item.id ? document.location.pathname + "#" + item.id : null,
           id: item.id,
-          indent: parseInt(item.tagName.toLowerCase().replace("h", "")) ? parseInt(item.tagName.toLowerCase().replace("h", "")) : 2,
+          indent: parseInt(item.tagName.toLowerCase().replace("h", ""))
+            ? parseInt(item.tagName.toLowerCase().replace("h", ""))
+            : 2,
           active: "",
           item: item,
         };
@@ -577,7 +579,7 @@ class PageContentsMenu extends LitElement {
     // simple test that this has content in it to parse
     if (newValue && newValue.childNodes && newValue.childNodes.length > 0) {
       setTimeout(() => {
-        this.updateMenu();        
+        this.updateMenu();
       }, 50);
     }
   }

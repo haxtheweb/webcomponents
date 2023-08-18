@@ -74,7 +74,10 @@ class MapMenuBuilder extends LitElement {
   }
 
   getPublishedStatus(item) {
-    if (item.metadata && (item.metadata.published == false || item.metadata.published === "false")) {
+    if (
+      item.metadata &&
+      (item.metadata.published == false || item.metadata.published === "false")
+    ) {
       return false;
     }
     return true;

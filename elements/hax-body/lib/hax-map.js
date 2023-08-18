@@ -270,105 +270,106 @@ class HaxMap extends I18NMixin(SimpleColors) {
     }
   }
   render() {
-    return html`${this.hidden ? `` : html`
-      <h5>${this.t.contentStatistics}</h5>
-      <div class="stats">
-        <div class="stat">
-          <span>${this.wCount}</span>
-          <span>${this.t.words}</span>
-        </div>
-        <div class="stat">
-          <span>${this.pCount}</span>
-          <span>${this.t.paragraphs}</span>
-        </div>
-        <div class="stat">
-          <span>${this.cCount}</span>
-          <span>${this.t.characters}</span>
-        </div>
-        <div class="stat">
-          <span>${this.hCount}</span>
-          <span>${this.t.headings}</span>
-        </div>
-        <div class="stat">
-          <span>${this.eCount}</span>
-          <span>${this.t.widgets}</span>
-        </div>
-      </div>
-      <h5>${this.t.listView}</h5>
-      <ul>
-        ${this.indentedElements(this.elementList).map((element, index) => {
-          return html`
-            <li
-              class="${element.parent
-                ? `parent-${element.parent}`
-                : "no-parent"} ${[
-                "h1",
-                "h2",
-                "h3",
-                "h4",
-                "h5",
-                "h6",
-                element.tag,
-              ].includes(element.parent)
-                ? ""
-                : "is-child"}"
-            >
-              <hax-toolbar-item
-                align-horizontal="left"
-                @click="${(e) => this.goToItem(index)}"
-                @dblclick="${(e) => this.editItem(index)}"
-                data-index="${index}"
-                ?data-active-item="${element.node === this.activeNode}"
-                icon="${element.icon}"
-                label="${element.name}"
-                show-text-label
-              >
-              </hax-toolbar-item>
-              ${element.tag != "page-break"
-                ? html`
-                    <simple-icon-button-lite
-                      icon="${this.isLocked(index)
-                        ? "icons:lock"
-                        : "icons:lock-open"}"
-                      @click="${(e) => this.itemOp(index, "lock")}"
-                      title="Lock / Unlock"
-                    ></simple-icon-button-lite>
-                    ${HAXStore.isTextElement(element.node) ||
-                    element.tag == "grid-plate"
-                      ? html``
-                      : html`
-                          <simple-icon-button-lite
-                            icon="image:transform"
-                            @click="${(e) => this.itemOp(index, "transform")}"
-                            title="Change to.."
-                          ></simple-icon-button-lite>
-                        `}
-                    <simple-icon-button-lite
-                      icon="hax:keyboard-arrow-up"
-                      @click="${(e) => this.itemOp(index, "up")}"
-                      title="Move up"
-                      ?disabled="${this.isLocked(index)}"
-                    ></simple-icon-button-lite>
-                    <simple-icon-button-lite
-                      icon="hax:keyboard-arrow-down"
-                      @click="${(e) => this.itemOp(index, "down")}"
-                      title="Move down"
-                      ?disabled="${this.isLocked(index)}"
-                    ></simple-icon-button-lite>
-                    <simple-icon-button-lite
-                      class="del"
-                      icon="delete"
-                      @click="${(e) => this.itemOp(index, "delete")}"
-                      title="Delete"
-                      ?disabled="${this.isLocked(index)}"
-                    ></simple-icon-button-lite>
-                  `
-                : ``}
-            </li>
-          `;
-        })}
-      </ul>`}
-    `;
+    return html`${this.hidden
+      ? ``
+      : html` <h5>${this.t.contentStatistics}</h5>
+          <div class="stats">
+            <div class="stat">
+              <span>${this.wCount}</span>
+              <span>${this.t.words}</span>
+            </div>
+            <div class="stat">
+              <span>${this.pCount}</span>
+              <span>${this.t.paragraphs}</span>
+            </div>
+            <div class="stat">
+              <span>${this.cCount}</span>
+              <span>${this.t.characters}</span>
+            </div>
+            <div class="stat">
+              <span>${this.hCount}</span>
+              <span>${this.t.headings}</span>
+            </div>
+            <div class="stat">
+              <span>${this.eCount}</span>
+              <span>${this.t.widgets}</span>
+            </div>
+          </div>
+          <h5>${this.t.listView}</h5>
+          <ul>
+            ${this.indentedElements(this.elementList).map((element, index) => {
+              return html`
+                <li
+                  class="${element.parent
+                    ? `parent-${element.parent}`
+                    : "no-parent"} ${[
+                    "h1",
+                    "h2",
+                    "h3",
+                    "h4",
+                    "h5",
+                    "h6",
+                    element.tag,
+                  ].includes(element.parent)
+                    ? ""
+                    : "is-child"}"
+                >
+                  <hax-toolbar-item
+                    align-horizontal="left"
+                    @click="${(e) => this.goToItem(index)}"
+                    @dblclick="${(e) => this.editItem(index)}"
+                    data-index="${index}"
+                    ?data-active-item="${element.node === this.activeNode}"
+                    icon="${element.icon}"
+                    label="${element.name}"
+                    show-text-label
+                  >
+                  </hax-toolbar-item>
+                  ${element.tag != "page-break"
+                    ? html`
+                        <simple-icon-button-lite
+                          icon="${this.isLocked(index)
+                            ? "icons:lock"
+                            : "icons:lock-open"}"
+                          @click="${(e) => this.itemOp(index, "lock")}"
+                          title="Lock / Unlock"
+                        ></simple-icon-button-lite>
+                        ${HAXStore.isTextElement(element.node) ||
+                        element.tag == "grid-plate"
+                          ? html``
+                          : html`
+                              <simple-icon-button-lite
+                                icon="image:transform"
+                                @click="${(e) =>
+                                  this.itemOp(index, "transform")}"
+                                title="Change to.."
+                              ></simple-icon-button-lite>
+                            `}
+                        <simple-icon-button-lite
+                          icon="hax:keyboard-arrow-up"
+                          @click="${(e) => this.itemOp(index, "up")}"
+                          title="Move up"
+                          ?disabled="${this.isLocked(index)}"
+                        ></simple-icon-button-lite>
+                        <simple-icon-button-lite
+                          icon="hax:keyboard-arrow-down"
+                          @click="${(e) => this.itemOp(index, "down")}"
+                          title="Move down"
+                          ?disabled="${this.isLocked(index)}"
+                        ></simple-icon-button-lite>
+                        <simple-icon-button-lite
+                          class="del"
+                          icon="delete"
+                          @click="${(e) => this.itemOp(index, "delete")}"
+                          title="Delete"
+                          ?disabled="${this.isLocked(index)}"
+                        ></simple-icon-button-lite>
+                      `
+                    : ``}
+                </li>
+              `;
+            })}
+          </ul>`} `;
   }
   editItem(index) {
     if (index !== false && this.elementList[index].node) {

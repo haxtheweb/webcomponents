@@ -451,8 +451,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     if (isSafari) {
       target.scrollIntoView();
     } else {
-      target.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
     }
     let el = document.createElement("textarea");
     el.value =
@@ -462,7 +465,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       target.getAttribute("id");
     // alter URL state
     window.history.pushState({}, null, el.value);
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.dispatchEvent(new PopStateEvent("popstate"));
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");
@@ -586,7 +589,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             if (isSafari) {
               target.scrollIntoView();
             } else {
-              target.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+              });
             }
           }
         }
@@ -624,7 +631,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
               if (isSafari) {
                 target.scrollIntoView();
               } else {
-                target.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+                target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                  inline: "nearest",
+                });
               }
             }
           }

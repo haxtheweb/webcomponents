@@ -98,31 +98,32 @@ export const secureFeedback = () => {
     <textarea id="data" cols="80" rows="20">Data to encrypt</textarea>
     <div>
       <p>
-        Anything you put in the above will be encrypted and you will be sent 
-        to a URL which includes the encrypted message in the URL which can
-        be sent around securely. The messages don't go away as it's just hashed
-        data. It assumes HTML but works with text as well.
+        Anything you put in the above will be encrypted and you will be sent to
+        a URL which includes the encrypted message in the URL which can be sent
+        around securely. The messages don't go away as it's just hashed data. It
+        assumes HTML but works with text as well.
       </p>
       <button id="securefeedbackbtn">Encrypt data</button>
     </div>
   `);
 };
 
-
 setTimeout(() => {
   if (document.querySelector("#securefeedbackbtn")) {
-    document.querySelector("#securefeedbackbtn").addEventListener("click", async (e) => {
-    const response = await MicroFrontendRegistry.call("@core/crypto", {
-      op: "hash",
-      data: document.querySelector("#data").value,
-    });
-    if (response.status == 200 && response.data) {
-      window.open(
-        `https://secure-feedback.vercel.app/?message=${response.data}`,
-        "_blank"
-      );
-    }
-    });
+    document
+      .querySelector("#securefeedbackbtn")
+      .addEventListener("click", async (e) => {
+        const response = await MicroFrontendRegistry.call("@core/crypto", {
+          op: "hash",
+          data: document.querySelector("#data").value,
+        });
+        if (response.status == 200 && response.data) {
+          window.open(
+            `https://secure-feedback.vercel.app/?message=${response.data}`,
+            "_blank"
+          );
+        }
+      });
   }
 }, 1000);
 

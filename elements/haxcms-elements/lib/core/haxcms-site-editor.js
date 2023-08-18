@@ -84,7 +84,7 @@ class HAXCMSSiteEditor extends LitElement {
       </style>
       <iron-ajax
         reject-with-request
-        .headers="${{"Authorization": "Bearer ${this.jwt}"}}"
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="nodeupdateajax"
         .url="${this.saveNodePath}"
         .method="${this.method}"
@@ -95,7 +95,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{"Authorization": "Bearer ${this.jwt}"}}"
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="outlineupdateajax"
         .url="${this.saveOutlinePath}"
         .method="${this.method}"
@@ -106,7 +106,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{"Authorization": "Bearer ${this.jwt}"}}"
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="manifestupdateajax"
         .url="${this.saveManifestPath}"
         .method="${this.method}"
@@ -117,7 +117,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{"Authorization": "Bearer ${this.jwt}"}}"
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="publishajax"
         .loading="${this.publishing}"
         @loading-changed="${this.loadingChanged}"
@@ -130,7 +130,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{"Authorization": "Bearer ${this.jwt}"}}"
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="revertajax"
         .url="${this.revertSitePath}"
         .method="${this.method}"
@@ -141,7 +141,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{"Authorization": "Bearer ${this.jwt}"}}"
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="syncajax"
         .url="${this.syncSitePath}"
         .method="${this.method}"
@@ -152,7 +152,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{"Authorization": "Bearer ${this.jwt}"}}"
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="createajax"
         .url="${this.createNodePath}"
         .method="${this.method}"
@@ -164,7 +164,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{"Authorization": "Bearer ${this.jwt}"}}"
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="deleteajax"
         .url="${this.deleteNodePath}"
         .method="${this.method}"
@@ -176,7 +176,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{"Authorization": "Bearer ${this.jwt}"}}"
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="getuserdata"
         url="${this.getUserDataPath}"
         method="${this.method}"
@@ -345,7 +345,7 @@ class HAXCMSSiteEditor extends LitElement {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
       window.history.pushState({}, null, e.detail.value.data.slug);
-      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.dispatchEvent(new PopStateEvent("popstate"));
       store.toast(`Created ${e.detail.value.data.title}!`, 3000, {
         hat: "random",
       });
@@ -869,7 +869,7 @@ class HAXCMSSiteEditor extends LitElement {
     // this will force ID to update and avoid a page miss
     // when we deleted the node
     window.history.replaceState({}, null, store.fallbackItemSlug());
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.dispatchEvent(new PopStateEvent("popstate"));
     // delay ensures the fallback has been moved to prior to
     // rebuild of the manifest which should be lacking the deleted ID
     setTimeout(() => {
@@ -952,7 +952,7 @@ class HAXCMSSiteEditor extends LitElement {
       this.activeItem.slug !== e.detail.value.data.slug
     ) {
       window.history.replaceState({}, null, e.detail.value.data.slug);
-      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.dispatchEvent(new PopStateEvent("popstate"));
     }
     store.toast(`Page saved!`, 3000, { hat: "random" });
     store.playSound("coin");

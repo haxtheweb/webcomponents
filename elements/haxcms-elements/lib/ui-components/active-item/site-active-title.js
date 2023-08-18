@@ -82,14 +82,17 @@ class SiteActiveTitle extends LitElement {
                   haxStore.activeHaxBody.querySelector("page-break");
               },
               { signal: this.activateController.signal }
-            );                    
+            );
             this._inProgressPageBreak = new MutationObserver((mutationList) => {
               mutationList.forEach((mutation) => {
                 switch (mutation.type) {
                   case "attributes":
                     switch (mutation.attributeName) {
                       case "title":
-                        this.activeTitle = haxStore.activeHaxBody.querySelector("page-break").title;
+                        this.activeTitle =
+                          haxStore.activeHaxBody.querySelector(
+                            "page-break"
+                          ).title;
                         this.__title = this._makeTitle(
                           this.dynamicMethodology,
                           this.activeTitle,
@@ -98,10 +101,15 @@ class SiteActiveTitle extends LitElement {
                         );
                         break;
                       case "page-type":
-                        if (haxStore.activeHaxBody.querySelector("page-break").pageType) {
-                          this.icon = iconFromPageType(haxStore.activeHaxBody.querySelector("page-break").pageType);
-                        }
-                        else {
+                        if (
+                          haxStore.activeHaxBody.querySelector("page-break")
+                            .pageType
+                        ) {
+                          this.icon = iconFromPageType(
+                            haxStore.activeHaxBody.querySelector("page-break")
+                              .pageType
+                          );
+                        } else {
                           this.icon = null;
                         }
                         break;
@@ -110,10 +118,13 @@ class SiteActiveTitle extends LitElement {
                 }
               });
             });
-            this._inProgressPageBreak.observe(haxStore.activeHaxBody.querySelector("page-break"), {
-              attributeFilter: ["title", "page-type"],
-              attributes: true,
-            });
+            this._inProgressPageBreak.observe(
+              haxStore.activeHaxBody.querySelector("page-break"),
+              {
+                attributeFilter: ["title", "page-type"],
+                attributes: true,
+              }
+            );
           }, 0);
         } else {
           this.noFallback = false;

@@ -133,99 +133,100 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     popover.opened = false;
   }
   render() {
-    return html`${this.hidden ? `` : html`<div class="toolbar-inner" part="toolbar">
-        <simple-fields-field
-          id="inputfilter"
-          @value-changed="${this.inputfilterChanged}"
-          aria-controls="filter"
-          label="${this.t.filterContentTypes}"
-          type="text"
-          auto-validate=""
-          part="filter"
-        ></simple-fields-field>
-      </div>
-      <a11y-collapse id="recent" heading="Recent" heading-button expanded>
-        <simple-button-grid columns="5" always-expanded part="grid">
-          ${this.recentGizmoList.map(
-            (gizmo, i) => html` <simple-popover-selection
-              data-index="${i}"
-              @opened-changed="${this._hoverForPreviewChange}"
-              event="hover"
+    return html`${this.hidden
+      ? ``
+      : html`<div class="toolbar-inner" part="toolbar">
+            <simple-fields-field
+              id="inputfilter"
+              @value-changed="${this.inputfilterChanged}"
+              aria-controls="filter"
+              label="${this.t.filterContentTypes}"
+              type="text"
+              auto-validate=""
+              part="filter"
+            ></simple-fields-field>
+          </div>
+          <a11y-collapse id="recent" heading="Recent" heading-button expanded>
+            <simple-button-grid columns="5" always-expanded part="grid">
+              ${this.recentGizmoList.map(
+                (gizmo, i) => html` <simple-popover-selection
+                  data-index="${i}"
+                  @opened-changed="${this._hoverForPreviewChange}"
+                  event="hover"
+                >
+                  <hax-tray-button
+                    small
+                    show-text-label
+                    voice-command="insert ${gizmo.title}"
+                    draggable="true"
+                    @dragstart="${this._dragStart}"
+                    index="${i}"
+                    is-current-item
+                    label="${gizmo.title}"
+                    event-name="insert-tag"
+                    event-data="${gizmo.tag}"
+                    data-demo-schema="true"
+                    icon-position="top"
+                    icon="${gizmo.icon}"
+                    part="grid-button"
+                    slot="button"
+                  ></hax-tray-button>
+                  ${this.activePreview === parseInt(i)
+                    ? html`
+                        <hax-element-demo
+                          render-tag="${gizmo.tag}"
+                          slot="options"
+                        ></hax-element-demo>
+                      `
+                    : ``}
+                </simple-popover-selection>`
+              )}
+            </simple-button-grid>
+          </a11y-collapse>
+          ${this.categories.map(
+            (tag) => html` <a11y-collapse
+              heading="${this.ucfirst(tag)}"
+              heading-button
             >
-              <hax-tray-button
-                small
-                show-text-label
-                voice-command="insert ${gizmo.title}"
-                draggable="true"
-                @dragstart="${this._dragStart}"
-                index="${i}"
-                is-current-item
-                label="${gizmo.title}"
-                event-name="insert-tag"
-                event-data="${gizmo.tag}"
-                data-demo-schema="true"
-                icon-position="top"
-                icon="${gizmo.icon}"
-                part="grid-button"
-                slot="button"
-              ></hax-tray-button>
-              ${this.activePreview === parseInt(i)
-                ? html`
-                    <hax-element-demo
-                      render-tag="${gizmo.tag}"
-                      slot="options"
-                    ></hax-element-demo>
-                  `
-                : ``}
-            </simple-popover-selection>`
-          )}
-        </simple-button-grid>
-      </a11y-collapse>
-      ${this.categories.map(
-        (tag) => html` <a11y-collapse
-          heading="${this.ucfirst(tag)}"
-          heading-button
-        >
-          <simple-button-grid columns="3" always-expanded part="grid">
-            ${this.filtered.map(
-              (gizmo, i) =>
-                html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
-                  ? html` <simple-popover-selection
-                      data-index="${i}"
-                      @opened-changed="${this._hoverForPreviewChange}"
-                      event="hover"
-                    >
-                      <hax-tray-button
-                        show-text-label
-                        is-current-item
-                        voice-command="insert ${gizmo.title}"
-                        draggable="true"
-                        @dragstart="${this._dragStart}"
-                        index="${i}"
-                        label="${gizmo.title}"
-                        event-name="insert-tag"
-                        event-data="${gizmo.tag}"
-                        data-demo-schema="true"
-                        icon-position="top"
-                        icon="${gizmo.icon}"
-                        part="grid-button"
-                        slot="button"
-                      ></hax-tray-button>
-                      ${this.activePreview === parseInt(i)
-                        ? html`
-                            <hax-element-demo
-                              render-tag="${gizmo.tag}"
-                              slot="options"
-                            ></hax-element-demo>
-                          `
-                        : ``}
-                    </simple-popover-selection>`
-                  : ``}`
-            )}
-          </simple-button-grid>
-        </a11y-collapse>`
-      )}
-    `}`;
+              <simple-button-grid columns="3" always-expanded part="grid">
+                ${this.filtered.map(
+                  (gizmo, i) =>
+                    html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
+                      ? html` <simple-popover-selection
+                          data-index="${i}"
+                          @opened-changed="${this._hoverForPreviewChange}"
+                          event="hover"
+                        >
+                          <hax-tray-button
+                            show-text-label
+                            is-current-item
+                            voice-command="insert ${gizmo.title}"
+                            draggable="true"
+                            @dragstart="${this._dragStart}"
+                            index="${i}"
+                            label="${gizmo.title}"
+                            event-name="insert-tag"
+                            event-data="${gizmo.tag}"
+                            data-demo-schema="true"
+                            icon-position="top"
+                            icon="${gizmo.icon}"
+                            part="grid-button"
+                            slot="button"
+                          ></hax-tray-button>
+                          ${this.activePreview === parseInt(i)
+                            ? html`
+                                <hax-element-demo
+                                  render-tag="${gizmo.tag}"
+                                  slot="options"
+                                ></hax-element-demo>
+                              `
+                            : ``}
+                        </simple-popover-selection>`
+                      : ``}`
+                )}
+              </simple-button-grid>
+            </a11y-collapse>`
+          )} `}`;
   }
   static get tag() {
     return "hax-gizmo-browser";

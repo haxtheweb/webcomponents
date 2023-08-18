@@ -7,7 +7,10 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "@shoelace-style/shoelace/dist/components/carousel/carousel.js";
 import "@shoelace-style/shoelace/dist/components/carousel-item/carousel-item.js";
 import { generateStyleLinkEls } from "./lib/SLStyleManager.js";
-import { haxElementToNode, nodeToHaxElement } from "@lrnwebcomponents/utils/utils.js";
+import {
+  haxElementToNode,
+  nodeToHaxElement,
+} from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `play-list`
@@ -33,7 +36,7 @@ class PlayList extends LitElement {
     this._observer = new MutationObserver((mutations) => {
       clearTimeout(this._debounceMutations);
       this._debounceMutations = setTimeout(() => {
-        this.mirrorLightDomToItems();        
+        this.mirrorLightDomToItems();
       }, 100);
     });
     this._observer.observe(this, {
@@ -48,13 +51,14 @@ class PlayList extends LitElement {
       items = Array.from(items[0].children);
     }
     if (items.length !== 0) {
-      await Promise.all(items.map(async (item) => {
-        return await nodeToHaxElement(item);
-      })).then((items) => {
+      await Promise.all(
+        items.map(async (item) => {
+          return await nodeToHaxElement(item);
+        })
+      ).then((items) => {
         this.items = items;
       });
-    }
-    else {
+    } else {
       this.items = [];
     }
   }
@@ -62,7 +66,7 @@ class PlayList extends LitElement {
   // this has gone through filtering and is safe as a result as it's just rendering
   // whatever has been put into the light dom
   renderHAXItem(item) {
-    if (item.properties.innerHTML){
+    if (item.properties.innerHTML) {
       delete item.properties.innerHTML;
     }
     return html`${unsafeHTML(haxElementToNode(item).outerHTML)}`;
@@ -72,7 +76,8 @@ class PlayList extends LitElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 
   disconnectedCallback() {
@@ -88,10 +93,10 @@ class PlayList extends LitElement {
       items: { type: Array },
       navigation: { type: Boolean, reflect: true },
       pagination: { type: Boolean, reflect: true },
-      aspectRatio: { type: String, reflect: true, attribute: 'aspect-ratio' },
+      aspectRatio: { type: String, reflect: true, attribute: "aspect-ratio" },
       orientation: { type: String, reflect: true },
       slide: { type: Number, reflect: true },
-    }
+    };
   }
 
   /**
@@ -125,7 +130,7 @@ class PlayList extends LitElement {
         }
 
         :host([orientation="vertical"]) .carousel::part(base) {
-          grid-template-areas: 'slides slides pagination';
+          grid-template-areas: "slides slides pagination";
         }
         :host([orientation="vertical"]) .carousel::part(pagination) {
           flex-direction: column;
@@ -148,21 +153,27 @@ class PlayList extends LitElement {
    */
   render() {
     return html`
-    ${this.items.length > 0 ? html`
-      <sl-carousel
-      ?navigation="${this.navigation && this.orientation === 'horizontal'}"
-      ?pagination="${this.pagination}"
-      orientation="${this.orientation}"
-      @sl-slide-change="${this.slideIndexChanged}"
-      class="carousel"
-      style="--aspect-ratio: ${this.aspectRatio};">
-      ${this.items.map((item,index) => html`
-        <sl-carousel-item class="item">
-          ${this.renderHAXItem(item)}
-        </sl-carousel-item>      
-      `)}
-      </sl-carousel>
-      `: nothing}
+      ${this.items.length > 0
+        ? html`
+            <sl-carousel
+              ?navigation="${this.navigation &&
+              this.orientation === "horizontal"}"
+              ?pagination="${this.pagination}"
+              orientation="${this.orientation}"
+              @sl-slide-change="${this.slideIndexChanged}"
+              class="carousel"
+              style="--aspect-ratio: ${this.aspectRatio};"
+            >
+              ${this.items.map(
+                (item, index) => html`
+                  <sl-carousel-item class="item">
+                    ${this.renderHAXItem(item)}
+                  </sl-carousel-item>
+                `
+              )}
+            </sl-carousel>
+          `
+        : nothing}
     `;
   }
 
@@ -182,7 +193,7 @@ class PlayList extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.mirrorLightDomToItems();      
+    this.mirrorLightDomToItems();
   }
   /**
    * LitElement life cycle - property changed
@@ -193,16 +204,23 @@ class PlayList extends LitElement {
     }
     changedProperties.forEach((oldValue, propName) => {
       // sync slide index with changes in the carousel
-      if (propName == 'slide' && this.shadowRoot && typeof oldValue !== typeof undefined) {
+      if (
+        propName == "slide" &&
+        this.shadowRoot &&
+        typeof oldValue !== typeof undefined
+      ) {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
               value: this[propName],
-            }
+            },
           })
         );
-        if (this.shadowRoot.querySelector('.carousel').activeSlide !== this[propName]) {
-         // this.shadowRoot.querySelector('.carousel').goToSlide(parseInt(this[propName]));
+        if (
+          this.shadowRoot.querySelector(".carousel").activeSlide !==
+          this[propName]
+        ) {
+          // this.shadowRoot.querySelector('.carousel').goToSlide(parseInt(this[propName]));
         }
       }
     });

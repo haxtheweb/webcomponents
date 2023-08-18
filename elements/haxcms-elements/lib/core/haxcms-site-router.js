@@ -90,10 +90,15 @@ class HAXCMSSiteRouter extends HTMLElement {
   }
   // validate that a route exists
   lookupRoute(routeName = null) {
-    if  (routeName && store.routerManifest && store.routerManifest.items && store.routerManifest.items.filter((i) => i.slug === routeName).length > 0) {
+    if (
+      routeName &&
+      store.routerManifest &&
+      store.routerManifest.items &&
+      store.routerManifest.items.filter((i) => i.slug === routeName).length > 0
+    ) {
       return store.routerManifest.items.filter((i) => i.slug === routeName);
     }
-    return false
+    return false;
   }
   /**
    * React to page changes in the vaadin router and convert it
@@ -127,18 +132,31 @@ class HAXCMSSiteRouter extends HTMLElement {
     // while location is assuming routes within the system itself
     store.currentRouterLocation = e.detail.location;
     // ignore 404s for files and assets as we actually might be reequesting those in page
-    if (e.detail.location.route.name === "404" && (e.detail.location.params[0].startsWith("files/") || e.detail.location.params[0].startsWith("assets/"))) {
+    if (
+      e.detail.location.route.name === "404" &&
+      (e.detail.location.params[0].startsWith("files/") ||
+        e.detail.location.params[0].startsWith("assets/"))
+    ) {
       // go to the file, if it's a miss that's not our app's concern
       window.location = e.detail.location.pathname;
     }
     // PWAs on static domains need to be able to handle 404s which redirect to ?p=/slug bc of our handles
     // this is ONLY used for initial page hit at these locations
-    else if (e.detail.location.route.name === "home" && e.detail.location.search.startsWith('?p=/') && this.lookupRoute(e.detail.location.search.replace('?p=/', ''))) {
-      let item = this.lookupRoute(e.detail.location.search.replace('?p=/', ''))[0];
+    else if (
+      e.detail.location.route.name === "home" &&
+      e.detail.location.search.startsWith("?p=/") &&
+      this.lookupRoute(e.detail.location.search.replace("?p=/", ""))
+    ) {
+      let item = this.lookupRoute(
+        e.detail.location.search.replace("?p=/", "")
+      )[0];
       store.activeId = item.id;
-      window.history.replaceState({}, null, e.detail.location.search.replace('?p=/', ''));
-    }
-    else {
+      window.history.replaceState(
+        {},
+        null,
+        e.detail.location.search.replace("?p=/", "")
+      );
+    } else {
       store.location = e.detail.location;
     }
   }

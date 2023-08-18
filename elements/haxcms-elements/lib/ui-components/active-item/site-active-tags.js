@@ -30,7 +30,8 @@ class SiteActiveTags extends LitElement {
         a {
           text-decoration: none;
         }
-    `];
+      `,
+    ];
   }
   /**
    * LitElement
@@ -38,15 +39,14 @@ class SiteActiveTags extends LitElement {
   render() {
     return html`${this.tags && this.tags != ""
       ? this.tags.split(",").map(
-            (tag) => html`
-            <a href="x/views?tags=${tag.trim()}">
-              <simple-tag
-                ?auto-accent-color="${this.autoAccentColor}"
-                value="${tag.trim()}"
-                accent-color="${this.accentColor}"
-              ></simple-tag>
-            </a>`
-          )
+          (tag) => html` <a href="x/views?tags=${tag.trim()}">
+            <simple-tag
+              ?auto-accent-color="${this.autoAccentColor}"
+              value="${tag.trim()}"
+              accent-color="${this.accentColor}"
+            ></simple-tag>
+          </a>`
+        )
       : ``}`;
   }
   /**

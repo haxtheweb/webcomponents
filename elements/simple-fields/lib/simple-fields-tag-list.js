@@ -110,7 +110,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     setTimeout(() => {
-      this._updateTaglist();      
+      this._updateTaglist();
     }, 0);
   }
 
@@ -241,7 +241,11 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
     // ensure there is no duplicate value / term
     this.tagList = [
       ...this.tagList.filter((i) => {
-        if (i.term === this.shadowRoot.querySelector("input").value || i.term == '' || i.term === null) {
+        if (
+          i.term === this.shadowRoot.querySelector("input").value ||
+          i.term == "" ||
+          i.term === null
+        ) {
           return false;
         }
         return true;
@@ -287,7 +291,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
    */
   _fireValueChanged() {
     setTimeout(() => {
-      this._updateTaglist();      
+      this._updateTaglist();
     }, 0);
     this.dispatchEvent(
       new CustomEvent("value-changed", {

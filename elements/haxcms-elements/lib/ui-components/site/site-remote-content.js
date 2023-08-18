@@ -24,7 +24,9 @@ enableServices(["haxcms"]);
  *
  * @demo demo/index.html
  */
-class SiteRemoteContent extends HAXCMSI18NMixin(IntersectionObserverMixin(LitElement)) {
+class SiteRemoteContent extends HAXCMSI18NMixin(
+  IntersectionObserverMixin(LitElement)
+) {
   static get styles() {
     return [
       css`
@@ -114,15 +116,21 @@ class SiteRemoteContent extends HAXCMSI18NMixin(IntersectionObserverMixin(LitEle
    */
   render() {
     return html`
-    ${this.elementVisible ? html`
-      <div class="loading">${this.loading ? html`<simple-icon-lite icon="hax:loading"></simple-icon-lite>` : ``}</div>
-      ${this.showTitle && this._remoteTitle
-        ? html`<h3>${this._remoteTitle}</h3>`
+      ${this.elementVisible
+        ? html`
+            <div class="loading">
+              ${this.loading
+                ? html`<simple-icon-lite icon="hax:loading"></simple-icon-lite>`
+                : ``}
+            </div>
+            ${this.showTitle && this._remoteTitle
+              ? html`<h3>${this._remoteTitle}</h3>`
+              : ``}
+            <div id="slot"><slot></slot></div>
+          `
         : ``}
-      <div id="slot"><slot></slot></div>
-    ` : ``}
-    <div id="content"></div>
-`;
+      <div id="content"></div>
+    `;
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -244,7 +252,13 @@ class SiteRemoteContent extends HAXCMSI18NMixin(IntersectionObserverMixin(LitEle
       if (!this.breakreference) {
         lightChildrenToShadowRootSelector(this, "#content");
       }
-      if (!this.hideReference && this.itemManifest && this.itemManifest.title && response.data && !this.breakreference) {
+      if (
+        !this.hideReference &&
+        this.itemManifest &&
+        this.itemManifest.title &&
+        response.data &&
+        !this.breakreference
+      ) {
         window.HaxStore.instance.activeBodyIgnoreActive(false);
         var today = new Date();
         var dd = today.getDate();

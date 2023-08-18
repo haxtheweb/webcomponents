@@ -15,13 +15,15 @@ export default {
 };
 setTimeout(() => {
   if (document.querySelector("#loadstatsbutton")) {
-    document.querySelector("#loadstatsbutton").addEventListener("click", (e) => {
-      document.querySelector("#target").ancestor =
-        document.querySelector("#ancestor").value;
-      document
-        .querySelector("#target")
-        .getSmartData(document.querySelector("#text").value);
-    });
+    document
+      .querySelector("#loadstatsbutton")
+      .addEventListener("click", (e) => {
+        document.querySelector("#target").ancestor =
+          document.querySelector("#ancestor").value;
+        document
+          .querySelector("#target")
+          .getSmartData(document.querySelector("#text").value);
+      });
   }
 }, 1000);
 

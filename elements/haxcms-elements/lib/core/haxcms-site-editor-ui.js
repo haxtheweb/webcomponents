@@ -534,13 +534,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       backToSiteList: "Back to site list",
       mySites: "My sites",
       cancel: "Cancel",
-      unsavedChangesWillBeLostIfSelectingOkAreYouSure: "Unsaved changes will be lost if selecting OK, are you sure?",
+      unsavedChangesWillBeLostIfSelectingOkAreYouSure:
+        "Unsaved changes will be lost if selecting OK, are you sure?",
       editDetails: "Page details",
       add: "Add",
       editSettings: "Edit settings",
       source: "Source",
       viewSource: "View source",
-      confirmHtmlSourceExit: "HTML Source changes will not be saved without pressing the `Update HTML` button, Save without HTML code editor changes?",
+      confirmHtmlSourceExit:
+        "HTML Source changes will not be saved without pressing the `Update HTML` button, Save without HTML code editor changes?",
       findMedia: "Find media",
       undo: "Undo",
       redo: "Redo",
@@ -1799,26 +1801,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   async _cancelButtonTap(e) {
     const body = await HAXStore.activeHaxBody.haxToContent();
-    if (body != this._originalContent && !window.confirm(this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure)) {
+    if (
+      body != this._originalContent &&
+      !window.confirm(this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure)
+    ) {
       return false;
     }
     this.editMode = false;
-      store.playSound("error");
-      this.dispatchEvent(
-        new CustomEvent("hax-cancel", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: e.detail,
-        })
-      );
-      window.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        })
-      );
+    store.playSound("error");
+    this.dispatchEvent(
+      new CustomEvent("hax-cancel", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: e.detail,
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      })
+    );
   }
   /**
    * Delete button hit, confirm they want to do this

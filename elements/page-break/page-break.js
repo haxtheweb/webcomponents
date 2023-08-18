@@ -203,17 +203,6 @@ export class PageBreak extends IntersectionObserverMixin(
       ) {
         this.itemId = this.schemaResourceID.replace("#", "item-");
       }
-      // when visible, "click" the thing so that it's activated
-      if (
-        propName === "elementVisible" &&
-        this.elementVisible &&
-        this.itemId &&
-        this.shadowRoot
-      ) {
-        setTimeout(() => {
-          //pageBreakManager.updateVisibleAsActive();
-        }, 0);
-      }
       // replicate locked aross elements between here and next page break
       if (this.locked && propName === "locked") {
         pageBreakManager.elementsBetween(this).forEach((el) => {

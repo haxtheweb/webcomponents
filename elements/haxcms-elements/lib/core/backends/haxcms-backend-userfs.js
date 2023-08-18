@@ -4,7 +4,10 @@
  */
 import { LitElement, html } from "lit";
 import { FileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-broker/file-system-broker.js";
-import { store, HAXcmsStore } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  store,
+  HAXcmsStore,
+} from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
@@ -52,10 +55,10 @@ class HAXCMSBackendUserfs extends LitElement {
     super();
     // file object references so we can load and work with read/write ops
     this.fileObjects = {};
-    this.fileRoot = '';
+    this.fileRoot = "";
     this.windowControllers = new AbortController();
     this.__disposer = [];
-    this.jwt="hax-cloud-fake";
+    this.jwt = "hax-cloud-fake";
     // see up a tag to place RIGHT next to the site-builder itself
     autorun((reaction) => {
       this.jwt = toJS(store.jwt);
@@ -100,25 +103,36 @@ class HAXCMSBackendUserfs extends LitElement {
   // content. if this is called it's because site builder
   // couldn't find content and this method was implemented
   async updateActiveItemContent() {
-    let pathTest = this.fileRoot + '/' + this.activeItem.location.replace('/index.html', '');
-    let fileHandler = await this.fileObjects.filter((f) => f.kind === "file" && f.name === "index.html" && f.folder === pathTest);
+    let pathTest =
+      this.fileRoot + "/" + this.activeItem.location.replace("/index.html", "");
+    let fileHandler = await this.fileObjects.filter(
+      (f) =>
+        f.kind === "file" && f.name === "index.html" && f.folder === pathTest
+    );
     // if we found a match then load include the HTML
     if (fileHandler.length > 0) {
       let pageHTMLContent = await fileHandler[0].handle.getFile();
       HAXcmsStore.storePieces.siteBuilder.activeItemContent = "";
-      HAXcmsStore.storePieces.siteBuilder.activeItemContent = await pageHTMLContent.text();
+      HAXcmsStore.storePieces.siteBuilder.activeItemContent =
+        await pageHTMLContent.text();
     }
   }
 
   // write content to the active item location
   async writeActiveItemContent(htmlContent) {
     // need to pull <page-break> off and parse
-    htmlContent = htmlContent.replace(/<page-break(.*?)><\/page-break>/gm, '');
+    htmlContent = htmlContent.replace(/<page-break(.*?)><\/page-break>/gm, "");
     // @todo need to parse HAXStore.activeHaxBody.children[0] and ensure it's saved into the manifest
-    let pageBreak = await HAXStore.nodeToContent(HAXStore.activeHaxBody.children[0]);
+    let pageBreak = await HAXStore.nodeToContent(
+      HAXStore.activeHaxBody.children[0]
+    );
     // find the file handler that matches the current item based on location match
-    let pathTest = this.fileRoot + '/' + this.activeItem.location.replace('/index.html', '');
-    let fileHandler = await this.fileObjects.filter((f) => f.kind === "file" && f.name === "index.html" && f.folder === pathTest);
+    let pathTest =
+      this.fileRoot + "/" + this.activeItem.location.replace("/index.html", "");
+    let fileHandler = await this.fileObjects.filter(
+      (f) =>
+        f.kind === "file" && f.name === "index.html" && f.folder === pathTest
+    );
     // if we found a match then load include the HTML
     if (fileHandler.length > 0) {
       try {
@@ -126,15 +140,13 @@ class HAXCMSBackendUserfs extends LitElement {
         await writable.write(htmlContent);
         // Close the file and write the contents to disk.
         await writable.close();
-        return true;  
-      }
-      catch (e) {
+        return true;
+      } catch (e) {
         console.log(e);
       }
     }
     return false;
   }
-
 
   _appPicked(e) {
     if (e.detail.connection.protocol === "dat") {
@@ -161,22 +173,28 @@ class HAXCMSBackendUserfs extends LitElement {
    * Save page data
    */
   async saveNode(e) {
-    if (await this.writeActiveItemContent(await HAXStore.activeHaxBody.haxToContent())) {
+    if (
+      await this.writeActiveItemContent(
+        await HAXStore.activeHaxBody.haxToContent()
+      )
+    ) {
       store.toast("Page updated!");
-      store.cmsSiteEditor.instance.dispatchEvent(new CustomEvent("haxcms-trigger-update", {
+      store.cmsSiteEditor.instance.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update", {
           bubbles: true,
           composed: true,
           cancelable: false,
           detail: true,
         })
       );
-      store.cmsSiteEditor.instance.dispatchEvent(new CustomEvent("haxcms-trigger-update-node", {
+      store.cmsSiteEditor.instance.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update-node", {
           bubbles: true,
           composed: true,
           cancelable: false,
           detail: true,
         })
-      );  
+      );
     }
   }
   /**
@@ -377,7 +395,9 @@ class HAXCMSBackendUserfs extends LitElement {
     super.connectedCallback();
     // @todo need to ensure we have a local file folder selected via hax-cloud
     // @todo read in the appstore.json file from the repo itself
-    let appstore = await fetch(new URL('../../../../hax-cloud/lib/appstore.json', import.meta.url).href).then((response) => {
+    let appstore = await fetch(
+      new URL("../../../../hax-cloud/lib/appstore.json", import.meta.url).href
+    ).then((response) => {
       return response.json();
     });
     // attempt to dynamically import the hax cms site editor

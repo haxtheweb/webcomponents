@@ -83,9 +83,7 @@
     "developer": []
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "items"
-    ]
+    "unsetAttributes": ["items"]
   },
   "documentation": {
     "howTo": null,
