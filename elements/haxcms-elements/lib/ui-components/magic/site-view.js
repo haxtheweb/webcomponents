@@ -399,7 +399,7 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate(this.dark
   cardTemplate() {
     return html`${this.results.map(
       (item) => html`
-        <accent-card image-src="http://placekitten.com/200/600" accent-color="red" horizontal accent-heading>
+        <accent-card accent-color="red" horizontal accent-heading>
           <div slot="heading">${item.title}</div>
           <div slot="subheading">${item.metadata.tags && item.metadata.tags != "" ? item.metadata.tags
                 .split(",")
