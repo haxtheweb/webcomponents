@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.15",
+  "version": "7.0.16",
   "description": "Clean HAXcms theme, one.",
   "repository": {
     "type": "git",
@@ -43,18 +43,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^7.0.15",
-    "@lrnwebcomponents/responsive-utility": "^7.0.15",
-    "@lrnwebcomponents/scroll-button": "^7.0.15",
-    "@lrnwebcomponents/simple-colors": "^7.0.15",
-    "@lrnwebcomponents/simple-icon": "^7.0.15",
-    "@lrnwebcomponents/simple-popover": "^7.0.15",
-    "@lrnwebcomponents/utils": "^7.0.15",
+    "@lrnwebcomponents/hax-iconset": "^7.0.16",
+    "@lrnwebcomponents/responsive-utility": "^7.0.16",
+    "@lrnwebcomponents/scroll-button": "^7.0.16",
+    "@lrnwebcomponents/simple-colors": "^7.0.16",
+    "@lrnwebcomponents/simple-icon": "^7.0.16",
+    "@lrnwebcomponents/simple-popover": "^7.0.16",
+    "@lrnwebcomponents/utils": "^7.0.16",
     "lit": "^2.7.6",
     "mobx": "6.9.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@lrnwebcomponents/deduping-fix": "^7.0.16",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -9,7 +9,7 @@
     "files": {},
     "sharedStyles": []
   },
-  "version": "7.0.15",
+  "version": "7.0.16",
   "description": "Converts evolution content to web component equivalents.",
   "repository": {
     "type": "git",
@@ -37,14 +37,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@lrnwebcomponents/a11y-tabs": "^7.0.15",
-    "@lrnwebcomponents/accent-card": "^7.0.15",
-    "@lrnwebcomponents/hax-iconset": "^7.0.15",
-    "@lrnwebcomponents/simple-icon": "^7.0.15"
+    "@lrnwebcomponents/a11y-tabs": "^7.0.16",
+    "@lrnwebcomponents/accent-card": "^7.0.16",
+    "@lrnwebcomponents/hax-iconset": "^7.0.16",
+    "@lrnwebcomponents/simple-icon": "^7.0.16"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.15",
+    "@lrnwebcomponents/deduping-fix": "^7.0.16",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@web/dev-server": "0.3.0",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.15",
+  "version": "7.0.16",
   "description": "visual badge to communicate obtaining a skill",
   "repository": {
     "type": "git",
@@ -47,7 +47,7 @@
     "lit": "^2.7.6"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@lrnwebcomponents/deduping-fix": "^7.0.16",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

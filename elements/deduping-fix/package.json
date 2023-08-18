@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/deduping-fix",
-  "version": "7.0.4",
+  "version": "7.0.16",
   "description": "A very simple fix for Failed to execute 'define' on 'CustomElementRegistry'",
   "repository": {
     "type": "git",

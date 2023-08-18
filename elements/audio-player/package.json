@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.15",
+  "version": "7.0.16",
   "description": "simple audio web component to match video",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/video-player": "^7.0.15",
+    "@lrnwebcomponents/video-player": "^7.0.16",
     "lit": "^2.7.6"
   },
   "devDependencies": {

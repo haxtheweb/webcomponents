@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.15",
+  "version": "7.0.16",
   "description": "visual flag for notes about a piece of content",
   "repository": {
     "type": "git",
@@ -44,18 +44,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^7.0.15",
-    "@lrnwebcomponents/rpg-character": "^7.0.15",
-    "@lrnwebcomponents/simple-colors": "^7.0.15",
-    "@lrnwebcomponents/simple-datetime": "^7.0.15",
-    "@lrnwebcomponents/simple-fields": "^7.0.15",
-    "@lrnwebcomponents/simple-icon": "^7.0.15",
-    "@lrnwebcomponents/simple-picker": "^7.0.15",
+    "@lrnwebcomponents/absolute-position-behavior": "^7.0.16",
+    "@lrnwebcomponents/rpg-character": "^7.0.16",
+    "@lrnwebcomponents/simple-colors": "^7.0.16",
+    "@lrnwebcomponents/simple-datetime": "^7.0.16",
+    "@lrnwebcomponents/simple-fields": "^7.0.16",
+    "@lrnwebcomponents/simple-icon": "^7.0.16",
+    "@lrnwebcomponents/simple-picker": "^7.0.16",
     "lit": "^2.7.6"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/grid-plate": "^7.0.15",
+    "@lrnwebcomponents/deduping-fix": "^7.0.16",
+    "@lrnwebcomponents/grid-plate": "^7.0.16",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

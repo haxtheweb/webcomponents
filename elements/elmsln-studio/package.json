@@ -11,7 +11,7 @@
       "js": "src/elmsln-studio.js"
     }
   },
-  "version": "7.0.15",
+  "version": "7.0.16",
   "description": "Studio App for ELMS:LN",
   "repository": {
     "type": "git",
@@ -35,23 +35,23 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^7.0.15",
-    "@lrnwebcomponents/accent-card": "^7.0.15",
-    "@lrnwebcomponents/hax-iconset": "^7.0.15",
-    "@lrnwebcomponents/img-view-modal": "^7.0.15",
-    "@lrnwebcomponents/lrndesign-avatar": "^7.0.15",
+    "@lrnwebcomponents/a11y-collapse": "^7.0.16",
+    "@lrnwebcomponents/accent-card": "^7.0.16",
+    "@lrnwebcomponents/hax-iconset": "^7.0.16",
+    "@lrnwebcomponents/img-view-modal": "^7.0.16",
+    "@lrnwebcomponents/lrndesign-avatar": "^7.0.16",
     "@lrnwebcomponents/lrndesign-gallery": "^7.0.11",
-    "@lrnwebcomponents/nav-card": "^7.0.15",
-    "@lrnwebcomponents/simple-colors": "^7.0.15",
-    "@lrnwebcomponents/simple-fields": "^7.0.15",
-    "@lrnwebcomponents/simple-icon": "^7.0.15",
-    "@lrnwebcomponents/simple-modal": "^7.0.15",
+    "@lrnwebcomponents/nav-card": "^7.0.16",
+    "@lrnwebcomponents/simple-colors": "^7.0.16",
+    "@lrnwebcomponents/simple-fields": "^7.0.16",
+    "@lrnwebcomponents/simple-icon": "^7.0.16",
+    "@lrnwebcomponents/simple-modal": "^7.0.16",
     "lit": "^2.7.6",
     "lit-element-router": "2.0.3"
   },
   "devDependencies": {
     "@github/time-elements": "3.1.4",
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@lrnwebcomponents/deduping-fix": "^7.0.16",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.15",
+  "version": "7.0.16",
   "description": "Turn any website into authorware with one tag and a computer",
   "repository": {
     "type": "git",
@@ -44,26 +44,26 @@
   },
   "license": "",
   "dependencies": {
-    "lit": "^2.7.5",
-    "@lrnwebcomponents/file-system-broker": "^7.0.15",
-    "@lrnwebcomponents/simple-icon": "^7.0.15",
-    "@lrnwebcomponents/hax-iconset": "^7.0.15",
-    "@lrnwebcomponents/haxcms-elements": "^7.0.15"
+    "@lrnwebcomponents/file-system-broker": "^7.0.16",
+    "@lrnwebcomponents/hax-iconset": "^7.0.16",
+    "@lrnwebcomponents/haxcms-elements": "^7.0.16",
+    "@lrnwebcomponents/simple-icon": "^7.0.16",
+    "lit": "^2.7.5"
   },
   "devDependencies": {
-    "@wcfactory/rollup-umd-build": "^0.12.1",
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@lrnwebcomponents/deduping-fix": "^7.0.16",
+    "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@web/dev-server": "0.1.28",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.21",
     "polymer-build": "3.1.4",
-    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2",
-    "@open-wc/testing": "2.5.32"
+    "web-animations-js": "2.3.2"
   },
   "private": false,
   "publishConfig": {
