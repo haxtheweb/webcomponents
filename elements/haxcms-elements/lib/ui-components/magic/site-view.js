@@ -2,7 +2,7 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css, render, nothing } from "lit";
+import { html, css, render, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
@@ -16,6 +16,8 @@ import "@lrnwebcomponents/editable-table/lib/editable-table-display.js";
 import "@lrnwebcomponents/play-list/play-list.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-remote-content.js";
 import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { autorun, toJS } from "mobx";
 
 export const mediaKeys = [
   "audio",
@@ -39,13 +41,14 @@ export const mediaKeys = [
  *
  * @demo demo/index.html
  */
-export class SiteView extends LitElement {
+export class SiteView extends SimpleColors {
   static get tag() {
     return "site-view";
   }
 
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -106,17 +109,41 @@ export class SiteView extends LitElement {
         table,tr,th,td {
           font-size: 16px;
         }
+        editable-table-display {
+          --simple-icon-width: 50px;
+          --simple-icon-height: 36px;
+        }
     `];
   }
 
   constructor() {
     super();
     this.loading = false;
+    this.dark = false;
+    this.accentColor = "cyan";
     this.results = [];
     this.params = {};
     this.search = null;
     this._searchDebounce = null;
+    this.__disposer = this.__disposer ? this.__disposer : [];
     enableServices(["haxcms"]);
+    autorun((reaction) => {
+      this.dark = toJS(store.darkMode);
+      setTimeout(() => {
+        this.requestUpdate();        
+      }, 0);
+      this.__disposer.push(reaction);
+    });
+  }
+
+  /**
+   * Detached life cycle
+   */
+  disconnectedCallback() {
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+    super.disconnectedCallback();
   }
 
   static get haxProperties() {
@@ -206,11 +233,11 @@ export class SiteView extends LitElement {
     return html`
     ${this.loading ? html`<div class="loading">${this.loading ? html`<simple-icon-lite icon="hax:loading"></simple-icon-lite>` : ``}</div>
 ` : html`
-${this.results.length === 0 && !this.loading ? html`<h4>No results found</h4><p>Try changing the filter criteria.</p>` : nothing}
-${this.params.display === "list" ? this.listTemplate() : nothing}
-${this.params.display === "table" ? this.tableTemplate() : nothing}
-${this.params.display === "card" ? this.cardTemplate() : nothing}
-${this.params.display === "contentplayer" ? this.contentplayerTemplate() : nothing}
+${this.results.length === 0 && !this.loading ? html`<h4>No results found</h4>` : nothing}
+${this.params.display === "list" ? this.listTemplate(this.dark, this.accentColor) : nothing}
+${this.params.display === "table" ? this.tableTemplate(this.dark, this.accentColor) : nothing}
+${this.params.display === "card" ? this.cardTemplate(this.dark, this.accentColor) : nothing}
+${this.params.display === "contentplayer" ? this.contentplayerTemplate(this.dark, this.accentColor) : nothing}
     <slot></slot>`}`;
   }
 
@@ -253,10 +280,10 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate() : nothi
   }
 
 
-  tableTemplate() {
+  tableTemplate(dark, accentColor) {
     return html`
     <editable-table-display 
-      accent-color="cyan" 
+      accent-color="cyan"
       bordered 
       caption="Content matching your search criteria" 
       numeric-styles
@@ -278,9 +305,9 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate() : nothi
     ${this.results.map(
       (item) => html`
       <tr>
-        <td>${item.metadata.pageType ? html`<simple-icon title="${item.metadata.pageType}" icon="${iconFromPageType(item.metadata.pageType)}"></simple-icon>` : nothing}</td>
+        <td>${item.metadata.pageType ? html`<simple-icon ?dark="${dark}" accent-color="${accentColor}" title="${item.metadata.pageType}" icon="${iconFromPageType(item.metadata.pageType)}"></simple-icon>` : nothing}</td>
         <td>${item.metadata.pageType ? item.metadata.pageType : nothing}</td>
-        <td><a href="${item.slug}">${item.title}</a></td>
+        <td><a href="${item.slug}" style="color:inherit">${item.title}</a></td>
         <td>
           ${item.metadata.tags && item.metadata.tags != "" ? item.metadata.tags
           .split(",")
@@ -410,6 +437,7 @@ ${this.params.display === "contentplayer" ? this.contentplayerTemplate() : nothi
 
   static get properties() {
     return {
+      ...super.properties,
       search: {
         type: String,
       },

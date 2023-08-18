@@ -921,7 +921,7 @@ class Store {
   // need to get the internal route if it exists
   getInternalRoute() {
     if (this.currentRouterLocation && this.currentRouterLocation.params && this.currentRouterLocation.params[0]) {
-      return this.currentRouterLocation.params[0].replace('x/',''); // we always sub the x/ out bc it's assumed reserved
+      return this.currentRouterLocation.params[0].replace("x/",""); // we always sub the x/ out bc it's assumed reserved
     }
     return false;
   }

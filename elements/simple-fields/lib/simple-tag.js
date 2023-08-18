@@ -62,7 +62,7 @@ export class SimpleTag extends SimpleTagLiteSuper(SimpleColors) {
     );
     this.style.setProperty(
       "--simple-fields-button-color",
-      `var(--simple-colors-default-theme-grey-${contrastLevel}, black)`
+      `var(--simple-colors-fixed-theme-grey-${contrastLevel}, black)`
     );
     // set accent color
     return colorName;

@@ -161,6 +161,12 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
           border-radius: 0;
           font-size: 16px;
         }
+        .views-controls {
+          display: none;
+        }
+        :host([is-logged-in]) .views-controls {
+          display:block;
+        }
         /* list display */
         .list {
           margin: 0;
@@ -181,7 +187,6 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
         .list-breadcrumb {
           font-size: 10px;
         }
-
         .overview {
           padding: 0;
           margin: 0;
@@ -203,10 +208,15 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
       block: "Block",
       tags: "Tags",
     };
+    this.isLoggedIn = false;
     this.accentColor="grey";
     this.loading = false;
     this._searchDebounce = null;
     this.__disposer = this.__disposer ? this.__disposer : [];
+    autorun((reaction) => {
+      this.isLoggedIn = store.isLoggedIn;
+      this.__disposer.push(reaction);
+    });
     autorun((reaction) => {
       let search = new URLSearchParams(store.currentRouterLocation.search);
       const params = Object.fromEntries(search);
@@ -337,7 +347,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
 
   render() {
     return html`
-<grid-plate cols="1-1" disable-responsive>
+<grid-plate cols="1-1" disable-responsive class="views-controls">
   <div slot="col-1">
     <form id="form"><simple-fields id="schema" @value-changed="${this.formValuesChanged}"></simple-fields></form>
   </div>
@@ -359,7 +369,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
     </ul>
   </div>
 </grid-plate>
-${this.loading ? html`<h3>Loading...</h3>` : html`<h3>Results <simple-icon-button-lite icon="refresh" @click="${this.refreshData}">Refresh</simple-icon-button-lite></h3>`}
+${this.loading ? html`<h3>Loading...</h3>` : html`<h3 class="views-controls">Results <simple-icon-button-lite icon="refresh" @click="${this.refreshData}">Refresh</simple-icon-button-lite></h3>`}
 <site-view search="${this.search}" @loading-changed="${this.syncLoad}"></site-view>
     <slot></slot>`;
   }
@@ -400,6 +410,11 @@ ${this.loading ? html`<h3>Loading...</h3>` : html`<h3>Results <simple-icon-butto
       loading: {
         type: Boolean,
         reflect: true
+      },
+      isLoggedIn: {
+        type: Boolean,
+        reflect: true,
+        attribute: "is-logged-in"
       },
       params: {
         type: Object,

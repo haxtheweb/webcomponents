@@ -178,6 +178,11 @@ body {
 body.dark-mode {
   --app-hax-accent-color: white;
   --app-hax-background-color: black;
+  --editable-table-bg-color: var(--simple-colors-default-theme-grey-8);
+  --editable-table-stripe-bg-color: var(--simple-colors-default-theme-grey-9);
+  --editable-table-color: var(--simple-colors-default-theme-grey-1);
+  --editable-table-heading-bg-color: var(--simple-colors-default-theme-grey-7);
+  --editable-table-heading-color: var(--simple-colors-default-theme-grey-1);
 }
 
 body, html {
