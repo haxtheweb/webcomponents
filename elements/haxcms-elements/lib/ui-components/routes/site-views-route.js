@@ -200,6 +200,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
 
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
     this.search = window.location.search;
     this.t = super.t || {};
     this.t = {

@@ -85,6 +85,8 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
   }
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
+    this.__disposer = [];
     this.player = false;
     this.circularBlock = false;
     this.itemManifest = {};
@@ -95,7 +97,9 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
     this.showTitle = false;
     this.breakreference = false;
     this._remoteTitle = null;
+    this.t = super.t || {};
     this.t = {
+      ...this.t,
       selectPage: "Select page",
     };
     let pNode = this;

@@ -5,6 +5,10 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
  */
 export const HAXCMSI18NMixin = function (SuperClass) {
   return class extends I18NMixin(SuperClass) {
+    constructor() {
+      super();
+      this.HAXCMSI18NMixinBase = "../../";
+    }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) {
         super.firstUpdated(changedProperties);
@@ -14,7 +18,7 @@ export const HAXCMSI18NMixin = function (SuperClass) {
       this.registerLocalization({
         context: this,
         localesPath: new URL(
-          "../../locales/haxcms.es.json",
+          this.HAXCMSI18NMixinBase+"locales/haxcms.es.json",
           import.meta.url
         ).href.replace("/haxcms.es.json", "/"),
         namespace: "haxcms",

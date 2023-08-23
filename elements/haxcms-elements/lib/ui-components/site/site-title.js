@@ -55,6 +55,7 @@ class SiteTitle extends HAXCMSI18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
     this.__disposer = [];
     this.icon = null;
     this.t = {

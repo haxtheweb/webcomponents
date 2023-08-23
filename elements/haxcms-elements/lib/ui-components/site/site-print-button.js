@@ -52,6 +52,7 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   }
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
     this.t = {
       printPage: "Print page",
       printSite: "Print site",

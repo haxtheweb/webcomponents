@@ -100,6 +100,10 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   }
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
+    this.disabled = false;
+    this.icon = '';
+    this.position = "right";
     this.t = {
       noPreviousPage: "no previous page",
       noNextPage: "no next page",

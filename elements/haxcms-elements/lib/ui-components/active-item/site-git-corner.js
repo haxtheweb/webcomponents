@@ -47,6 +47,7 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   }
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
     this.t = this.t || {};
     this.t.seePageSource = "See page source";
     this.circle = false;

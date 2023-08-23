@@ -106,6 +106,7 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
     this.t = this.t || {};
     this.t = {
       ...this.t,
