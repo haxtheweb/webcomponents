@@ -716,7 +716,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (newValue) {
       var html = newValue;
       // only append if not empty
-      if (html !== null && store.activeItem) {
+      if (html !== null && store.activeItem && store.activeItem.metadata) {
         wipeSlot(store.themeElement, "*");
         // force a page break w/ the relevant details in code
         // this allows the UI to be modified
