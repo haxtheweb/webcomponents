@@ -3,7 +3,7 @@
   "canPosition": false,
   "canEditSource": false,
   "gizmo": {
-    "title": "Page break",
+    "title": "Page details",
     "description": "Define a visual split between pages which CMSs can use to create pages.",
     "icon": "editor:format-page-break",
     "color": "grey",
