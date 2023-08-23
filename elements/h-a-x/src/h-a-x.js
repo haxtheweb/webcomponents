@@ -31,8 +31,8 @@ class HAX extends HTMLElement {
       (item) =>
         `
         [data-style-decoration~="highlight"] {
-          color: var(--haxcms-style-element-color, white);
-          background-color: var(--haxcms-style-element-background-color, black);
+          color: var(--haxcms-style-element-color, white) !important;
+          background-color: var(--haxcms-style-element-background-color, black) !important;
           font-weight: 400;
           word-wrap: break-word;
           padding: 4px 8px;

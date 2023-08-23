@@ -89,11 +89,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       (item) =>
         css`
           .haxcms-theme-element [data-style-decoration~="highlight"] {
-            color: var(--haxcms-style-element-color, white);
+            color: var(--haxcms-style-element-color, white) !important;
             background-color: var(
               --haxcms-style-element-background-color,
               black
-            );
+            ) !important;
             font-weight: 400;
             word-wrap: break-word;
             padding: 4px 8px;
