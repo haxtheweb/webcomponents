@@ -450,7 +450,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     };
     this.rpgHat = "none";
     this.darkMode = false;
-    this.__editText = "";
+    this.__editText = "Edit";
     this.userMenuOpen = false;
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
@@ -559,12 +559,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       siteSettings: "Site settings",
       close: "Close",
       settings: "Settings",
-      editPage: "Edit page",
       edit: "Edit",
       configureBlock: "Configure block",
       configure: "Configure",
       save: "Save",
-      saveChanges: "Save changes",
       newJourney: "New Journey",
       accountInfo: "Account Info",
       outlineDesigner: "Outline designer",
@@ -1245,7 +1243,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
-      title: this.t.saveChanges,
+      title: this.t.save,
       icon: "icons:save",
       tags: ["CMS", "save", "page", "operation", "command"],
       value: {
@@ -1269,7 +1267,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/site/insights",
     });
     SuperDaemonInstance.defineOption({
-      title: this.t.editPage,
+      title: this.t.edit,
       icon: "hax:page-edit",
       tags: ["CMS", "edit", "page", "operation", "command"],
       value: {
@@ -1550,13 +1548,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       }
       if (propName === "responsiveSize") {
-        if (["xs", "sm", "md"].includes(this[propName])) {
+        if (["xs", "sm", "md"].includes(this[propaNme])) {
           if (this.editMode) {
             this.__editText = this.t.save;
           } else {
             this.__editText = this.t.edit;
           }
-          this.t.saveChanges = "Save";
           this.t.configureBlock = "Configure";
           this.t.addBlock = "Block";
           this.t.findMedia = "Media";
@@ -1564,9 +1561,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           this.t.viewSource = "Source";
         } else {
           if (this.editMode) {
-            this.__editText = this.t.saveChanges;
+            this.__editText = this.t.save;
           } else {
-            this.__editText = this.t.editPage;
+            this.__editText = this.t.edit;
           }
           this.t.configureBlock = "Configure block";
           this.t.addBlock = "Add block";
@@ -2013,12 +2010,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._originalContent = await HAXStore.activeHaxBody.haxToContent();
       }, 100);
       this.__editIcon = "icons:save";
-      this.__editText = this.t.saveChanges;
+      this.__editText = this.t.save;
       SuperDaemonInstance.appendContext("HAX");
       SuperDaemonInstance.removeContext("CMS");
     } else {
       this.__editIcon = "hax:page-edit";
-      this.__editText = this.t.editPage;
+      this.__editText = this.t.edit;
       SuperDaemonInstance.appendContext("CMS");
       SuperDaemonInstance.removeContext("HAX");
     }
