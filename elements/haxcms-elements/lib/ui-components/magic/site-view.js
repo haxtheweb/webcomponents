@@ -437,34 +437,35 @@ export class SiteView extends SimpleColors {
     let template = document.createElement("template");
     render(
       html`${this.results.map(
-        (item) => html` ${this.params.displayOf === "blocks"
-          ? mediaKeys.map((key) =>
-              item.media &&
-              item.media[key] &&
-              typeof item.media[key] == "string" &&
-              this.params.blockFilter === key
-                ? unsafeHTML(item.media[key])
-                : nothing
-            )
-          : html`<div class="play-list-item">
-              ${this.params.displayOf === "title"
-                ? html`<div class="list-link">
-                      <a href="${item.slug}">${item.title}</a>
-                    </div>
-                    <div class="list-breadcrumb">
-                      ${this.calculateBreadcrumb(item).map(
-                        (item) => html` <span>${item.title}</span> `
-                      )}
-                    </div>`
-                : this.params.displayOf === "full"
-                ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
-                : html`<site-remote-content
-                    player
-                    hide-reference
-                    uuid="${item.id}"
-                    show-title
-                  ></site-remote-content>`}
-            </div>`}`
+        (item) =>
+          html` ${this.params.displayOf === "blocks"
+            ? mediaKeys.map((key) =>
+                item.media &&
+                item.media[key] &&
+                typeof item.media[key] == "string" &&
+                this.params.blockFilter === key
+                  ? unsafeHTML(item.media[key])
+                  : nothing
+              )
+            : html`<div class="play-list-item">
+                ${this.params.displayOf === "title"
+                  ? html`<div class="list-link">
+                        <a href="${item.slug}">${item.title}</a>
+                      </div>
+                      <div class="list-breadcrumb">
+                        ${this.calculateBreadcrumb(item).map(
+                          (item) => html` <span>${item.title}</span> `
+                        )}
+                      </div>`
+                  : this.params.displayOf === "full"
+                  ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
+                  : html`<site-remote-content
+                      player
+                      hide-reference
+                      uuid="${item.id}"
+                      show-title
+                    ></site-remote-content>`}
+              </div>`}`
       )}`,
       template
     );

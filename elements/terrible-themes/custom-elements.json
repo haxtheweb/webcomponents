@@ -83,6 +83,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -299,6 +304,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -514,6 +524,11 @@
         }
       ],
       "properties": [
+        {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
         {
           "name": "t",
           "attribute": "t",
@@ -751,6 +766,11 @@
           "attribute": "author",
           "description": "The author of the item",
           "type": "string"
+        },
+        {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
         },
         {
           "name": "t",
@@ -991,6 +1011,11 @@
           "type": "string"
         },
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -1206,6 +1231,11 @@
         }
       ],
       "properties": [
+        {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
         {
           "name": "t",
           "attribute": "t",
@@ -1423,6 +1453,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -1639,6 +1674,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -1854,6 +1894,11 @@
         }
       ],
       "properties": [
+        {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
         {
           "name": "t",
           "attribute": "t",

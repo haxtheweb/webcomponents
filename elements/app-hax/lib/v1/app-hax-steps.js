@@ -927,7 +927,7 @@ export class AppHaxSteps extends SimpleColors {
       ].includes(e.key)
     ) {
       store.appEl.playSound("error");
-      store.toast(`"${e.key}" not allowed in names`);
+      store.toast(`"${e.key}" is not allowed. Use - or _`);
       e.preventDefault();
     } else if (e.key === "Enter") {
       this.chooseName();

@@ -889,7 +889,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // import the reference to the item dynamically, if we can
           try {
             // prettier-ignore
-            import(new URL("./../../../../" + newValue.path, import.meta.url).href).then((e) => {
+            import(new URL("./../../../../../" + newValue.path, import.meta.url).href).then((e) => {
               // add it into ourselves so it unpacks and we kick this off!
               this.__imported[theme.element] = theme.element;
               this.themeLoaded = true;

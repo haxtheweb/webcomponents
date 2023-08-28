@@ -14378,7 +14378,7 @@
         },
         {
           "name": "__editText",
-          "description": "`__editText` {`string`} - \n\nProperty: __editText\n\nDefault: "
+          "description": "`__editText` {`string`} - \n\nProperty: __editText\n\nDefault: Edit"
         },
         {
           "name": "userMenuOpen",
