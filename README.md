@@ -25,7 +25,7 @@ Web components that can work in just about anything, are very small (Vanila or L
 
 ![Logo](https://github.com/elmsln/elmsln-logos/blob/master/haxtheweb/2019-08-14_13-05-52.png)
 
-## Quick-start
+## Quick start
 
 *Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
 
