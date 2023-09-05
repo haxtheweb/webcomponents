@@ -43,7 +43,7 @@
     "theme": {
       "element": "app-hax-theme",
       "path": "node_modules/@lrnwebcomponents/app-hax/lib/app-hax-theme.js",
-      "name": "Course theme",
+      "name": "8-bit theme",
       "variables": {
         "image": "assets/banner.jpg",
         "hexCode": "#009dc7",
