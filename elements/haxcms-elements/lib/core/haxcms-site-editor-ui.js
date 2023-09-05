@@ -1548,7 +1548,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       }
       if (propName === "responsiveSize") {
-        if (["xs", "sm", "md"].includes(this[propaNme])) {
+        if (["xs", "sm", "md"].includes(this[propName])) {
           if (this.editMode) {
             this.__editText = this.t.save;
           } else {
