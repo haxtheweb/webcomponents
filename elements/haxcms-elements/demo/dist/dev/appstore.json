@@ -1170,6 +1170,8 @@
     }
   ],
   "autoloader": {
+    "page-section": "@lrnwebcomponents/page-section/page-section.js",
+    "simple-cta": "@lrnwebcomponents/simple-cta/simple-cta.js",
     "spotify-embed": "@lrnwebcomponents/spotify-embed/spotify-embed.js",
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
     "simple-icon": "@lrnwebcomponents/simple-icon/simple-icon.js",

@@ -50,7 +50,7 @@
     "@lrnwebcomponents/micro-frontend-registry": "^7.0.16",
     "@lrnwebcomponents/simple-colors": "^7.0.16",
     "@lrnwebcomponents/simple-icon": "^7.0.16",
-    "lit": "^2.7.6",
+    "lit": "^2.8.0",
     "mobx": "6.9.0"
   },
   "devDependencies": {

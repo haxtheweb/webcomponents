@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>PageSection: page-section Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@lrnwebcomponents/simple-cta/simple-cta.js';
+      import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+      import '../page-section.js';
+    </script>
+    <style>
+      html,body, :root {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-family: 'Roboto',Helvetica,Arial,Lucida,sans-serif;
+        font-weight: 700;
+        font-size: 5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <page-section filter background-color="blue" accent-color="blue" fold scroller image="https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/9/29664/files/2017/04/shutterstock_1251836-26rsp75.jpg">
+      <h1>Create websites easily with HAX</h1>
+      <simple-cta slot="buttons" link="https://haxtheweb.org/" accent-color="blue" dark>Log in</simple-cta>
+      <simple-cta slot="buttons" link="https://haxtheweb.org/" accent-color="blue">Get started</simple-cta>
+    </page-section>
+    <page-section background-color="orange" filter dark fold scroller>
+      <h1>Create websites easily with HAX</h1>
+      <simple-cta slot="buttons" link="https://haxtheweb.org/" accent-color="blue" dark>Log in</simple-cta>
+      <simple-cta slot="buttons" link="https://haxtheweb.org/" accent-color="blue">Get started</simple-cta>
+    </page-section>
+    <page-section background-color="blue" filter image="https://btopro.com/assets/banner.jpg">
+      <h1>Create websites easily with HAX</h1>
+      <simple-cta link="https://haxtheweb.org/" accent-color="blue" dark>Log in</simple-cta>
+      <simple-cta link="https://haxtheweb.org/" accent-color="blue">Get started</simple-cta>
+    </page-section>
+  </body>
+</html>

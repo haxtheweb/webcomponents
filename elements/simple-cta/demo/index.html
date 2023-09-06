@@ -10,6 +10,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
       import '../simple-cta.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
@@ -20,6 +21,7 @@
         display: block;
         width: 50%;
         --simple-cta-bg-color-is-user-selected: var(--simple-colors-default-theme-accent-11,orange);
+        --simple-cta-color-is-user-selected: var(--simple-colors-default-theme-accent-1,orange);
       }
     </style>
   </head>
@@ -28,15 +30,9 @@
       <h3>Basic simple-cta demo</h3>
       <demo-snippet>
         <template>
-          <simple-cta link="https://haxtheweb.org/" accent-color="purple" dark>Get started</simple-cta>
-          <simple-cta link="https://haxtheweb.org/" class="super-important">Start now!</simple-cta>
-          <div><simple-cta link="https://google.com/" accent-color="purple" title="Get started"></simple-cta></div>
-          <div><simple-cta link="demo/index.html" title="Something SUPER IMPORTANT" style="display:block;"></simple-cta></div>
-          <div>
-            <simple-cta style="display:block;">
-              <a href="demo/index.html">Something SUPER IMPORTANT</a>
-            </simple-cta>
-          </div>
+          <simple-cta link="https://haxtheweb.org/" accent-color="blue" dark>Get started</simple-cta>
+          <simple-cta link="https://haxtheweb.org/" accent-color="blue">Get started</simple-cta>
+          <simple-cta link="https://haxtheweb.org/" class="super-important">SUPER IMPORTANT</simple-cta>
         </template>
       </demo-snippet>
     </div>

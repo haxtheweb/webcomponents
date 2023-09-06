@@ -55,10 +55,10 @@
     "@lrnwebcomponents/top-alert": "4.0.1",
     "@lrnwebcomponents/wave-player": "4.0.4",
     "@polymer/paper-slider": "3.0.1",
-    "lit": "^2.7.6"
+    "lit": "^2.8.0"
   },
   "resolutions": {
-    "lit": "2.7.6",
+    "lit": "2.8.0",
     "@webcomponents/webcomponentsjs": "2.8.0",
     "@lrnwebcomponents/editable-table": "7.0.5",
     "@lrnwebcomponents/hax-body": "7.0.5",

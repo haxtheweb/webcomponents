@@ -47,7 +47,7 @@
     "@lrnwebcomponents/simple-progress": "^7.0.16",
     "@lrnwebcomponents/simple-tooltip": "^7.0.16",
     "@polymer/paper-progress": "^3.0.1",
-    "lit": "^2.7.6",
+    "lit": "^2.8.0",
     "msr": "^1.3.4"
   },
   "devDependencies": {

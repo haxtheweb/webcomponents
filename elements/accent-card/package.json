@@ -44,7 +44,7 @@
     "@lrnwebcomponents/intersection-element": "^7.0.4",
     "@lrnwebcomponents/schema-behaviors": "^7.0.16",
     "@lrnwebcomponents/simple-colors": "^7.0.16",
-    "lit": "^2.7.6"
+    "lit": "^2.8.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.16",

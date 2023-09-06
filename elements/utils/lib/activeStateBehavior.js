@@ -21,8 +21,8 @@ export const activeStateBehavior = function (SuperClass) {
     }
     static get properties() {
       let prop = {};
-      if (super.prop) {
-        prop = super.prop;
+      if (super.properties) {
+        prop = super.properties;
       }
       prop.isUserSelected = {
         type: Boolean,

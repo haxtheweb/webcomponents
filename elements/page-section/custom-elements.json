@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "page-section",
+      "description": "`page-section`\n`A well designed section of a page with many options for marketing purposes`\n\n",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

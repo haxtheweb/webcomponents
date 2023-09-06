@@ -48,7 +48,7 @@
     "@lrnwebcomponents/hax-iconset": "^7.0.16",
     "@lrnwebcomponents/haxcms-elements": "^7.0.16",
     "@lrnwebcomponents/simple-icon": "^7.0.16",
-    "lit": "^2.7.5"
+    "lit": "^2.8.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.16",

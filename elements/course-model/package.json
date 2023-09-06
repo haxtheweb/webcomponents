@@ -45,7 +45,7 @@
   "license": "",
   "dependencies": {
     "@google/model-viewer": "3.2.1",
-    "lit": "^2.7.6"
+    "lit": "^2.8.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.16",

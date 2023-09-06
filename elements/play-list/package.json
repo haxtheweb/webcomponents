@@ -46,7 +46,7 @@
   "dependencies": {
     "@lrnwebcomponents/utils": "^7.0.16",
     "@shoelace-style/shoelace": "2.6.0",
-    "lit": "^2.7.5"
+    "lit": "^2.8.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.16",

@@ -6,6 +6,7 @@ import { html, css } from "lit";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
 import { activeStateBehavior } from "@lrnwebcomponents/utils/lib/activeStateBehavior.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 /**
  * `simple-cta`
  * `Simple call to action button`
@@ -20,57 +21,66 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       css`
         :host {
           display: inline-block;
+          margin: 24px 16px 0 0;
+          margin-top: 20px;
           --simple-cta-color: var(
-            --simple-colors-default-theme-accent-1,
-            white
+            --simple-colors-default-theme-accent-1
           );
           --simple-cta-outline: var(
-            --simple-colors-default-theme-accent-12,
-            black
+            --simple-colors-default-theme-grey-12
           );
           --simple-cta-bg-color-is-user-selected: var(
-            --simple-colors-default-theme-accent-10,
-            darkgreen
+            --simple-colors-default-theme-accent-3
+          );
+          --simple-cta-color-is-user-selected: var(
+            --simple-colors-default-theme-accent-12
           );
           --simple-cta-bg-color: var(
-            --simple-colors-default-theme-accent-8,
-            green
+            --simple-colors-default-theme-accent-8
           );
-          margin: 60px 0 0;
         }
 
         :host([hidden]) {
           display: none;
         }
 
-        :host([contenteditable]) a {
-          pointer-events: none;
+        :host([is-user-selected]) .btn {
+          background-color: var(--simple-cta-bg-color-is-user-selected);
+          color: var(--simple-cta-color-is-user-selected);
         }
 
         :host([is-user-selected]) a {
-          background-color: var(--simple-cta-bg-color-is-user-selected);
-          outline: 1px solid var(--simple-cta-outline);
+          outline: 2px solid var(--simple-cta-outline);
         }
 
         a {
           display: block;
-          color: var(--simple-cta-color);
-          background-color: var(--simple-cta-bg-color);
-          transition: background 0.3s linear, border 0.3s linear,
-            border-radius 0.3s linear, box-shadow 0.3s linear;
           text-decoration: none;
-          font-size: 1em;
-          text-transform: uppercase;
-          border-radius: 100px 100px 100px 100px;
-          box-shadow: 0 6px 26px 0 rgba(0, 0, 0, 0.16);
-          padding: 16px 40px;
-          font-family: Sans-serif;
-          font-weight: 500;
         }
 
-        a span {
-          display: flex;
-          justify-content: center;
+        .btn {
+          display: block;
+          border-width: 2px;
+          border-color: var(--simple-cta-bg-color);
+          border-radius: 0px;
+          font-size: var(--simple-cta-font-size, 21px);
+          line-height: var(--simple-cta-line-height, 36px);
+          background-color: var(--simple-cta-bg-color);
+          padding: 10px 50px 10px 30px;
+          text-transform: uppercase;
+          color: var(--simple-cta-color);
+          font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif;
+          font-style: italic;
+          font-weight: 700;
+          transition: color 300ms ease 0ms,background-color 300ms ease 0ms,border 300ms ease 0ms;
+        }
+
+        .icon {
+          display: inline-flex;
+          margin-left: 10px;
+          line-height: var(--simple-cta-line-height, 36px);
+          --simple-icon-width: var(--simple-cta-font-size, 36px);
+          --simple-icon-height: var(--simple-cta-font-size, 36px);
         }
       `,
     ];
@@ -83,9 +93,8 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       role="button"
       part="simple-cta-link"
       @click="${this._clickCard}"
-      ?contenteditable="${this.editMode}"
     >
-      <span><span id="title">${this.title}</span><slot></slot></span>
+      <span class="btn"><span class="label">${this.label}</span><slot></slot>${!this.hideIcon ? html`<simple-icon-lite class="icon" icon="${this.icon}"></simple-icon-lite>`:``}</span>
     </a>`;
   }
 
@@ -101,12 +110,12 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
         description: "A simple button with a link to take action.",
         icon: "image:crop-16-9",
         color: "orange",
-        tags: ["Layout", "marketing", "button", "link", "url", "design"],
+        tags: ["Layout", "marketing", "button", "link", "url", "design", "cta"],
         handles: [
           {
             type: "link",
             source: "link",
-            title: "title",
+            title: "label",
           },
         ],
         meta: {
@@ -116,9 +125,9 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       settings: {
         configure: [
           {
-            property: "title",
-            title: "Title",
-            description: "Enter title for stop-note.",
+            property: "label",
+            title: "Label",
+            description: "Link label",
             inputMethod: "textfield",
             required: true,
           },
@@ -143,16 +152,31 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
             title: "Dark Theme",
             description: "Enable Dark Theme",
             inputMethod: "boolean",
-            icon: "icons:invert-colors",
           },
+          {
+            property: "hideIcon",
+            title: "Hide icon",
+            description: "Hide the icon used to accent text",
+            inputMethod: "boolean",
+          } 
         ],
-        advanced: [],
+        advanced: [
+          {
+            property: "icon",
+            title: "Icon",
+            description: "Action link icon",
+            inputMethod: "iconpicker",
+          }
+        ],
+      },
+      saveOptions: {
+        unsetAttributes: ["colors", "element-visible"],
       },
       demoSchema: [
         {
           tag: "simple-cta",
           properties: {
-            title: "Click to learn more",
+            label: "Click to learn more",
             link: "https://haxtheweb.org/",
           },
           content: "",
@@ -164,11 +188,13 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
   static get properties() {
     return {
       ...super.properties,
-
       link: {
         type: String,
       },
-      title: {
+      label: {
+        type: String,
+      },
+      icon: {
         type: String,
       },
       editMode: {
@@ -189,12 +215,15 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
    */
   constructor() {
     super();
-    this.link = "#";
-    this.title = null;
-    this.accentColor = "green";
+    this.link = null;
+    this.icon = "icons:chevron-right";
+    this.hideIcon = false;
+    this.label = null;
+    this.accentColor = "grey";
+    // progressive enhancement support
     if (this.querySelector("a")) {
       this.link = this.querySelector("a").getAttribute("href");
-      this.title = this.querySelector("a").innerText;
+      this.label = this.querySelector("a").innerText;
       this.innerHTML = null;
     }
   }
@@ -232,13 +261,8 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
    */
   haxactiveElementChanged(el, val) {
     // flag for HAX to not trigger active on changes
-    this.alignState();
     this.editMode = val;
     return false;
-  }
-  alignState() {
-    // easy, name is flat
-    this.title = this.shadowRoot.querySelector("#title").innerText;
   }
   /**
    * LitElement ready
@@ -260,28 +284,6 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       if (propName == "link") {
         this.remoteLinkURL = this[propName];
       }
-      /* notify example
-       // notify
-       if (propName == 'format') {
-         this.dispatchEvent(
-           new CustomEvent(`${propName}-changed`, {
-             detail: {
-               value: this[propName],
-             }
-           })
-         );
-       }
-       */
-      /* observer example
-       if (propName == 'activeNode') {
-         this._activeNodeChanged(this[propName], oldValue);
-       }
-       */
-      /* computed example
-       if (['id', 'selected'].includes(propName)) {
-         this.__selectedChanged(this.selected, this.id);
-       }
-       */
     });
   }
 }

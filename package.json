@@ -72,7 +72,7 @@
     "lunr": "2.3.9",
     "concurrently": "8.2.0",
     "promise-polyfill": "8.2.1",
-    "lit": "^2.7.6",
+    "lit": "^2.8.0",
     "jsdom": "19.0.0",
     "url": "0.11.0",
     "turndown": "7.1.1",
@@ -166,19 +166,19 @@
     "yo": "4.3.0",
     "@wcfactory/rollup-umd-build": "^0.13.0",
     "rollup-plugin-copy": "3.4.0",
-    "@lit/reactive-element": "^1.6.2",
-    "lit-element": "^3.3.2",
-    "lit-html": "^2.7.5"
+    "@lit/reactive-element": "^1.6.3",
+    "lit-element": "^3.3.3",
+    "lit-html": "^2.8.0"
   },
   "resolutions": {
     "@mdjs/mdjs-preview": "0.5.9",
-    "@lit/reactive-element": "1.6.2",
     "@google/model-viewer": "3.2.1",
-    "lit-element": "3.3.2",
     "webpack": "5.87.0",
-    "lit-html": "2.7.5",
     "roughjs": "4.4.5",
-    "lit": "2.7.6"
+    "@lit/reactive-element": "1.6.3",
+    "lit-element": "3.3.3",
+    "lit-html": "2.8.0",
+    "lit": "2.8.0"
   },
   "lint-staged": {
     "*.{js,json}": "prettier --write",
