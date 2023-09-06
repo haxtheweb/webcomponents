@@ -134,10 +134,10 @@ class PageSection extends SimpleColors {
   }
   bgStyle(bg, filter, image) {
     if (filter) {
-      return `background-color: ${bg};background-image: linear-gradient(180deg, var(--simple-colors-default-theme-accent-11) 1%,rgba(0,30,68,0.73) 28%,rgba(0,30,68,0) 100%),url(${image});`;
+      return `background-color: ${bg};background-image: linear-gradient(180deg, var(--simple-colors-default-theme-accent-11) 1%,rgba(0,30,68,0.73) 28%,rgba(0,30,68,0) 100%),url("${image}");`;
     }
     else {
-      return `background-color: ${bg};background-image: url(${image});`;
+      return `background-color: ${bg};background-image: url("${image}");`;
     }
   }
   /**
