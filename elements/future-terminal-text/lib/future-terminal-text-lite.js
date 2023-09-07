@@ -31,8 +31,8 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
           --fade-in-duration: 500ms;
         }
         span {
-          color: #5fa4a5;
-          text-shadow: 0 0 4px #5fa4a5;
+          color: var(--future-terminal-text-color, #5fa4a5);
+          text-shadow: 0 0 4px var(--future-terminal-text-color, #5fa4a5);
           animation: flicker var(--flicker-duration) var(--flicker-easing);
         }
         :host([red]) span {
@@ -86,7 +86,7 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
 
   // Template return function
   render() {
-    return html`<span><slot></slot></span>`;
+    return html`<span part="text"><slot></slot></span>`;
   }
 
   // properties available to the custom element for data binding
