@@ -6,6 +6,7 @@ import { LitElement, html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "@shoelace-style/shoelace/dist/components/carousel/carousel.js";
 import "@shoelace-style/shoelace/dist/components/carousel-item/carousel-item.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import { generateStyleLinkEls } from "./lib/SLStyleManager.js";
 import {
   haxElementToNode,
@@ -27,6 +28,7 @@ class PlayList extends LitElement {
     // handles SL styles link elements
     generateStyleLinkEls();
     this.items = [];
+    this.loop = false;
     this.navigation = true;
     this.pagination = true;
     this.aspectRatio = "16:9";
@@ -91,6 +93,7 @@ class PlayList extends LitElement {
   static get properties() {
     return {
       items: { type: Array },
+      loop: { type: Boolean, reflect: true },
       navigation: { type: Boolean, reflect: true },
       pagination: { type: Boolean, reflect: true },
       aspectRatio: { type: String, reflect: true, attribute: "aspect-ratio" },
@@ -128,22 +131,28 @@ class PlayList extends LitElement {
           width: 100%;
           min-height: 400px;
         }
-
         :host([orientation="vertical"]) .carousel::part(base) {
           grid-template-areas: "slides slides pagination";
         }
         :host([orientation="vertical"]) .carousel::part(pagination) {
           flex-direction: column;
         }
-
         :host([orientation="vertical"]) .carousel::part(navigation) {
           transform: rotate(90deg);
           display: flex;
         }
         sl-carousel-item {
           max-height: 400px;
+          padding: 8px;
           overflow-y: auto;
           justify-content: unset;
+        }
+        simple-icon-button-lite {
+          color: var(--play-list-icon-color, #999999);
+          --simple-icon-width: 72px;
+          --simple-icon-height: 72px;
+          height: 72px;
+          width: 72px;
         }
       `,
     ];
@@ -159,11 +168,14 @@ class PlayList extends LitElement {
               ?navigation="${this.navigation &&
               this.orientation === "horizontal"}"
               ?pagination="${this.pagination}"
+              ?loop="${this.loop}"
               orientation="${this.orientation}"
               @sl-slide-change="${this.slideIndexChanged}"
               class="carousel"
               style="--aspect-ratio: ${this.aspectRatio};"
-            >
+            >            
+              <simple-icon-button-lite icon="hardware:keyboard-arrow-left" slot="previous-icon"></simple-icon-button-lite>
+              <simple-icon-button-lite icon="hardware:keyboard-arrow-right" slot="next-icon"></simple-icon-button-lite>
               ${this.items.map(
                 (item, index) => html`
                   <sl-carousel-item class="item">
