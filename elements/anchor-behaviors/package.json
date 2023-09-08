@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.16",
+  "version": "7.0.17",
   "description": "handles anchors and params in the url",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.16",
+    "@lrnwebcomponents/deduping-fix": "^7.0.17",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

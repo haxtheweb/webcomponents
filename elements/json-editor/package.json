@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.16",
+  "version": "7.0.17",
   "description": "simple JSON blob data binding to a text area",
   "repository": {
     "type": "git",
@@ -45,9 +45,9 @@
     "lit": "^2.8.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.16",
-    "@lrnwebcomponents/json-outline-schema": "^7.0.16",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.16",
+    "@lrnwebcomponents/deduping-fix": "^7.0.17",
+    "@lrnwebcomponents/json-outline-schema": "^7.0.17",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.17",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

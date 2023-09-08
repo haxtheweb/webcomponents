@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.16",
+  "version": "7.0.17",
   "description": "Clean presentation of what to expect in an upcoming lesson of instruction",
   "repository": {
     "type": "git",
@@ -44,17 +44,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^7.0.16",
-    "@lrnwebcomponents/i18n-manager": "^7.0.16",
+    "@lrnwebcomponents/hax-iconset": "^7.0.17",
+    "@lrnwebcomponents/i18n-manager": "^7.0.17",
     "@lrnwebcomponents/intersection-element": "^7.0.4",
-    "@lrnwebcomponents/micro-frontend-registry": "^7.0.16",
-    "@lrnwebcomponents/simple-colors": "^7.0.16",
-    "@lrnwebcomponents/simple-icon": "^7.0.16",
+    "@lrnwebcomponents/micro-frontend-registry": "^7.0.17",
+    "@lrnwebcomponents/simple-colors": "^7.0.17",
+    "@lrnwebcomponents/simple-icon": "^7.0.17",
     "lit": "^2.8.0",
     "mobx": "6.9.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.16",
+    "@lrnwebcomponents/deduping-fix": "^7.0.17",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

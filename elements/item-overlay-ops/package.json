@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.16",
+  "version": "7.0.17",
   "description": "A wrapper that provides an overlay of operations to any element, usually a card.",
   "repository": {
     "type": "git",
@@ -41,12 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-icon": "^7.0.16",
+    "@lrnwebcomponents/simple-icon": "^7.0.17",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.16",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.16",
+    "@lrnwebcomponents/deduping-fix": "^7.0.17",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.17",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
