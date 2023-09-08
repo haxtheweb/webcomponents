@@ -47,6 +47,12 @@
         "description": "Shows a fold at the bottom of the section to visually indicate to user to scroll down"
       },
       {
+        "property": "full",
+        "inputMethod": "boolean",
+        "title": "Full screeen size",
+        "description": "Fill to the size of the user's display"
+      },
+      {
         "property": "filter",
         "inputMethod": "boolean",
         "title": "Apply Filter",
@@ -82,6 +88,7 @@
         "filter": true,
         "backgroundColor": "blue",
         "accentColor": "blue",
+        "full": true,
         "fold": true,
         "scroller": true
       }

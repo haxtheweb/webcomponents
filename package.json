@@ -96,6 +96,18 @@
     "pretty": "2.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@custom-elements-manifest/analyzer": "^0.4.17",
+    "@open-wc/building-rollup": "^2.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@web/dev-server": "^0.1.28",
+    "@web/rollup-plugin-import-meta-assets": "^1.0.7",
+    "babel-plugin-template-html-minifier": "^4.1.0",
+    "deepmerge": "^4.2.2",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-workbox": "^6.2.0",
+    "@web/rollup-plugin-html": "^2.0.1",
+    "@rollup/plugin-babel": "^6.0.3",
     "web-animations-js": "2.3.2",
     "babel-loader": "8.2.3",
     "babel-plugin-external-helpers": "6.22.0",

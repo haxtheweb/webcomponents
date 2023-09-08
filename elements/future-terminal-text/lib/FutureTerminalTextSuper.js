@@ -12,22 +12,27 @@ export const FutureTerminalTextLiteSuper = function (SuperClass) {
       this.glitchDuration = 50;
     }
     async _doGlitch() {
-      const text = this.innerHTML;
-      const scrambleCount =
-        Math.floor(
-          Math.floor((Math.random() * text.length) / 10) + text.length / 20
-        ) + 1;
-      const scrambleIterationCount =
-        Math.floor(Math.random() * this.glitchMax) + 10;
-      for (let j = 0; j < scrambleIterationCount; j++) {
-        let newText = text;
-        for (let i = 0; i < scrambleCount; i++) {
-          newText = this._scramble(newText);
+      // a11y -- check for reduced motion and DO NOT glitch if that is the case
+      const motionMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const prefersReducedMotion = motionMQ.matches;
+      if (!prefersReducedMotion) {
+        const text = this.innerHTML;
+        const scrambleCount =
+          Math.floor(
+            Math.floor((Math.random() * text.length) / 10) + text.length / 20
+          ) + 1;
+        const scrambleIterationCount =
+          Math.floor(Math.random() * this.glitchMax) + 10;
+        for (let j = 0; j < scrambleIterationCount; j++) {
+          let newText = text;
+          for (let i = 0; i < scrambleCount; i++) {
+            newText = this._scramble(newText);
+          }
+          this.innerHTML = newText;
+          await this._wait(this.glitchDuration);
         }
-        this.innerHTML = newText;
-        await this._wait(this.glitchDuration);
+        this.innerHTML = text;
       }
-      this.innerHTML = text;
     }
 
     _scramble(text) {
