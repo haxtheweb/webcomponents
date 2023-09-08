@@ -184,7 +184,7 @@ class PageSection extends SimpleColors {
   scrollToNextTarget(e) {
     const nextTarget = this.nextElementSibling;
     if (nextTarget && nextTarget.scrollIntoView) {
-      nextTarget.scrollIntoView({ behavior: "smooth", block: "end" });
+      nextTarget.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
   /**
