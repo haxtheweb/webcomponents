@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.17",
+  "version": "7.0.18",
   "description": "Unity WebGL player",
   "repository": {
     "type": "git",

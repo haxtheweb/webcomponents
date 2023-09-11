@@ -11,7 +11,7 @@
       "js": "src/a11y-figure.js"
     }
   },
-  "version": "7.0.17",
+  "version": "7.0.18",
   "description": "accessible figure with image description in details",
   "repository": {
     "type": "git",
@@ -35,11 +35,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^7.0.17",
+    "@lrnwebcomponents/a11y-details": "^7.0.18",
     "lit": "^2.8.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.17",
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
