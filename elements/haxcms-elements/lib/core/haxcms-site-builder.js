@@ -774,7 +774,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             varExists(this.manifest, "metadata.node.dynamicElementLoader")
           ) {
             let tagsFound = findTagsInHTML(html);
-            const basePath = new URL("./locales", import.meta.url).href;
+            const basePath =
+              new URL("./locales/haxcms.es.json", import.meta.url).href +
+              "/../";
             for (var i in tagsFound) {
               const tagName = tagsFound[i];
               if (

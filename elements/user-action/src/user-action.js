@@ -135,7 +135,11 @@ class UserAction extends HTMLElement {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `user-action.haxProperties`,
-          localesPath: new URL("./locales", import.meta.url).href,
+          localesPath:
+            new URL(
+              "./locales/user-action.haxProperties.es.json",
+              import.meta.url
+            ).href + "/../",
           locales: ["es"],
         },
       })

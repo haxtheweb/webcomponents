@@ -173,9 +173,15 @@ class PlayList extends LitElement {
               @sl-slide-change="${this.slideIndexChanged}"
               class="carousel"
               style="--aspect-ratio: ${this.aspectRatio};"
-            >            
-              <simple-icon-button-lite icon="hardware:keyboard-arrow-left" slot="previous-icon"></simple-icon-button-lite>
-              <simple-icon-button-lite icon="hardware:keyboard-arrow-right" slot="next-icon"></simple-icon-button-lite>
+            >
+              <simple-icon-button-lite
+                icon="hardware:keyboard-arrow-left"
+                slot="previous-icon"
+              ></simple-icon-button-lite>
+              <simple-icon-button-lite
+                icon="hardware:keyboard-arrow-right"
+                slot="next-icon"
+              ></simple-icon-button-lite>
               ${this.items.map(
                 (item, index) => html`
                   <sl-carousel-item class="item">

@@ -46,7 +46,7 @@
     "@lrnwebcomponents/deduping-fix": "^7.0.17",
     "@lrnwebcomponents/simple-icon": "^7.0.17",
     "@open-wc/testing": "3.2.0",
-    "@web/dev-server": "0.3.0",
+    "@web/dev-server": "0.3.1",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.0",
     "wct-browser-legacy": "1.0.2"

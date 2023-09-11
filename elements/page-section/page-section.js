@@ -38,7 +38,7 @@ class PageSection extends SimpleColors {
       scroller: { type: Boolean, reflect: true },
       bg: { type: String },
       image: { type: String, reflect: true },
-    }
+    };
   }
   /**
    * LitElement style callback
@@ -65,7 +65,7 @@ class PageSection extends SimpleColors {
           background-size: cover;
         }
         :host([full]) .section {
-          height: 100vh;        
+          height: 100vh;
         }
 
         .content {
@@ -104,14 +104,29 @@ class PageSection extends SimpleColors {
         }
 
         simple-tooltip {
-          --simple-tooltip-font-size: var(--page-section-tooltip-font-size, 16px);
-          --simple-tooltip-background: var(--page-section-tooltip-background, #000000);
+          --simple-tooltip-font-size: var(
+            --page-section-tooltip-font-size,
+            16px
+          );
+          --simple-tooltip-background: var(
+            --page-section-tooltip-background,
+            #000000
+          );
           --simple-tooltip-opacity: var(--page-section-tooltip-opacity, 0.8);
-          --simple-tooltip-text-color: var(--page-section-tooltip-text-color, white);
+          --simple-tooltip-text-color: var(
+            --page-section-tooltip-text-color,
+            white
+          );
           --simple-tooltip-delay-in: var(--page-section-tooltip-delay-in, 300);
           --simple-tooltip-delay-out: var(--page-section-tooltip-delay-out, 0);
-          --simple-tooltip-duration-in: var(--page-section-tooltip-duration-in, 300);
-          --simple-tooltip-duration-out: var(--page-section-tooltip-duration-out, 0); 
+          --simple-tooltip-duration-in: var(
+            --page-section-tooltip-duration-in,
+            300
+          );
+          --simple-tooltip-duration-out: var(
+            --page-section-tooltip-duration-out,
+            0
+          );
         }
 
         .fold {
@@ -121,7 +136,7 @@ class PageSection extends SimpleColors {
           bottom: 0;
           height: 100px;
           z-index: 10;
-          transform: scale(1,1);
+          transform: scale(1, 1);
           display: block;
           position: absolute;
           pointer-events: none;
@@ -141,7 +156,7 @@ class PageSection extends SimpleColors {
           color: var(--simple-colors-default-theme-accent-12);
         }
         section div ::slotted(h1) {
-          font-family: 'Roboto',Helvetica,Arial,Lucida,sans-serif;
+          font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif;
           font-weight: 700;
           font-size: 5rem;
           color: var(--simple-colors-default-theme-accent-12);
@@ -158,8 +173,7 @@ class PageSection extends SimpleColors {
   bgStyle(bg, filter, image) {
     if (filter) {
       return `background-color: ${bg};background-image: linear-gradient(180deg, var(--simple-colors-default-theme-accent-11) 1%,rgba(0,30,68,0.73) 28%,rgba(0,30,68,0) 100%),url("${image}");`;
-    }
-    else {
+    } else {
       return `background-color: ${bg};background-image: url("${image}");`;
     }
   }
@@ -168,14 +182,28 @@ class PageSection extends SimpleColors {
    */
   render() {
     return html`
-      <section class="section" style="${this.bgStyle(this.bg, this.filter, this.image)}">
+      <section
+        class="section"
+        style="${this.bgStyle(this.bg, this.filter, this.image)}"
+      >
         <div class="content" part="content">
           <slot></slot>
           <div>
             <slot name="buttons"></slot>
           </div>
         </div>
-        ${this.scroller ? html`<simple-icon-button-lite class="scroller" icon="icons:arrow-downward" id="scroller" @click="${this.scrollToNextTarget}" label="${this.scrollerLabel}"></simple-icon-button-lite><simple-tooltip for="scroller" position="top">${this.scrollerLabel}</simple-tooltip>` : ``}
+        ${this.scroller
+          ? html`<simple-icon-button-lite
+                class="scroller"
+                icon="icons:arrow-downward"
+                id="scroller"
+                @click="${this.scrollToNextTarget}"
+                label="${this.scrollerLabel}"
+              ></simple-icon-button-lite
+              ><simple-tooltip for="scroller" position="top"
+                >${this.scrollerLabel}</simple-tooltip
+              >`
+          : ``}
         ${this.fold ? html`<div class="fold"></div>` : ``}
       </section>
     `;
@@ -201,13 +229,13 @@ class PageSection extends SimpleColors {
       super.firstUpdated(changedProperties);
     }
   }
-   /**
+  /**
    * haxProperties integration via file reference
    */
-   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
-
 }
 customElements.define(PageSection.tag, PageSection);
 export { PageSection };

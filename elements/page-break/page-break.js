@@ -38,7 +38,8 @@ export class PageBreak extends IntersectionObserverMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales", import.meta.url).href,
+      localesPath:
+        new URL("./locales/page-break.es.json", import.meta.url).href + "/../",
       locales: ["es"],
     });
     this.developerTheme = null;

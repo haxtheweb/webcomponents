@@ -57,7 +57,7 @@
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@wcfactory/rollup-umd-build": "^0.12.1",
-    "@web/dev-server": "0.1.28",
+    "@web/dev-server": "0.3.1",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",

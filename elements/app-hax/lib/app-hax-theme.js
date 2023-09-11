@@ -34,7 +34,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
     PDFPageMixin(
       QRCodeMixin(
         HAXCMSThemeParts(
-            HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
+          HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
         )
       )
     )
@@ -453,32 +453,26 @@ class AppHaxTheme extends HAXCMSRememberRoute(
   render() {
     return html`
       <div class="site">
-        <div class="menu-outline">
-          ${this.HAXCMSMobileMenu()}
-        </div>
+        <div class="menu-outline">${this.HAXCMSMobileMenu()}</div>
         <div id="body" class="site-body" part="site-body">
           <div id="haxcms-theme-top"></div>
           <div class="site-inner">
             <main class="page-wrapper" role="main">
               <article class="main-content page-inner">
-              ${this.HAXCMSMobileMenuButton()}
+                ${this.HAXCMSMobileMenuButton()}
 
                 <site-breadcrumb
                   part="page-breadcrumb ${this.editMode
                     ? `edit-mode-active`
                     : ``}"
                 ></site-breadcrumb>
-                <site-active-title
-                  part="page-title"
-                ></site-active-title>
+                <site-active-title part="page-title"></site-active-title>
                 <site-active-tags
                   part="page-tags"
                   auto-accent-color
                 ></site-active-tags>
                 <div class="normal main-section">
-                  <section
-                    id="contentcontainer"
-                  >
+                  <section id="contentcontainer">
                     <div id="slot">
                       <slot></slot>
                     </div>
@@ -544,183 +538,196 @@ class AppHaxTheme extends HAXCMSRememberRoute(
     // hook up the scroll target
     this.shadowRoot.querySelector("scroll-button").target =
       this.shadowRoot.querySelector("#haxcms-theme-top");
-    
   }
   HAXCMSGlobalStyleSheetContent() {
-    const LMGridBox = new URL('./assets/images/LMGridBox.svg', import.meta.url).href;
-    const DMGridBox = new URL('./assets/images/DMGridBox.svg', import.meta.url).href;
-    const DesignLightModeLeft = new URL('./assets/images/DesignLightModeLeft.svg', import.meta.url).href;
-    const DesignLightModeRight = new URL('./assets/images/DesignLightModeRight.svg', import.meta.url).href;
-    const DesignDarkModeLeft = new URL('./assets/images/DesignDarkModeLeft.svg', import.meta.url).href;
-    const DesignDarkModeRight = new URL('./assets/images/DesignDarkModeRight.svg', import.meta.url).href;
+    const LMGridBox = new URL("./assets/images/LMGridBox.svg", import.meta.url)
+      .href;
+    const DMGridBox = new URL("./assets/images/DMGridBox.svg", import.meta.url)
+      .href;
+    const DesignLightModeLeft = new URL(
+      "./assets/images/DesignLightModeLeft.svg",
+      import.meta.url
+    ).href;
+    const DesignLightModeRight = new URL(
+      "./assets/images/DesignLightModeRight.svg",
+      import.meta.url
+    ).href;
+    const DesignDarkModeLeft = new URL(
+      "./assets/images/DesignDarkModeLeft.svg",
+      import.meta.url
+    ).href;
+    const DesignDarkModeRight = new URL(
+      "./assets/images/DesignDarkModeRight.svg",
+      import.meta.url
+    ).href;
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Press Start 2P', sans-serif;
-        overflow-x: hidden;
-        background-image: url("${unsafeCSS(LMGridBox)}");
-        background-repeat: repeat;
-        background-position: center center;
-        background-size: auto, 20% auto, 20% auto;
-        --app-hax-accent-color: black;
-        --app-hax-background-color: white;
-        --simple-tooltip-background: #000000;
-        --simple-tooltip-opacity: 1;
-        --simple-tooltip-text-color: #ffffff;
-        --simple-tooltip-delay-in: 0;
-        --simple-tooltip-duration-in: 200ms;
-        --simple-tooltip-duration-out: 0;
-        --simple-tooltip-border-radius: 0;
-        --simple-tooltip-font-size: 14px;
-      }
-      body.app-hax-create {
-        overflow: hidden;
-      }
-      body.dark-mode {
-        background-color: black;
-        background-image: url("${unsafeCSS(DMGridBox)}");
-        --app-hax-accent-color: white;
-        --app-hax-background-color: black;
-      }
-      body:not(.bad-device) {
-        background-image: url("${unsafeCSS(LMGridBox)}"),
-        url("${unsafeCSS(DesignLightModeLeft)}"),
-        url("${unsafeCSS(DesignLightModeRight)}");
-        background-repeat: repeat, repeat-y, repeat-y;
-        background-position: center center, top left, top right;
-        background-size: auto, 20% auto, 20% auto;
-        background-attachment: fixed, fixed, fixed;
-      }
-      div[slot="externalproviders"] {
-        display: none;
-      }
-      body div[slot="externalproviders"] {
-        display: unset;
-      }
-      body.dark-mode {
-        background-image: url("${unsafeCSS(DMGridBox)}"),
-        url("${unsafeCSS(DesignDarkModeLeft)}"),
-        url("${unsafeCSS(DesignDarkModeRight)}");
-      }
-
-      #loading {
-        font-family: 'Press Start 2P', sans-serif;
-        text-align: center;
-        margin-top: 100px;
-      }
-
-      #loading .title {
-        -webkit-text-stroke: 1px
-          var(--app-hax-accent-color, var(--accent-color));
-        -webkit-text-fill-color: var(
-          --app-hax-background-color,
-          var(--background-color)
-        );
-        font-weight: normal;
-        font-size: 4vw;
-        display: inline-flex;
-        align-items: center;
-      }
-
-      #loading .subtitle {
-        color: var(--app-hax-accent-color, var(--accent-color));
-        font-weight: normal;
-        margin-top: 2.5px;
-        font-size: 2vw;
-      }
-
-      #loading .bracket {
-        font-size: 10vw;
-        font-weight: normal;
-        vertical-align: middle;
-        -webkit-text-stroke: 0px;
-        -webkit-text-fill-color: var(
-          --app-hax-accent-color,
-          var(--accent-color)
-        );
-      }
-
-      @media (min-width: 721px) {
-        :root {
-          background-size: auto, 23% auto, 23% auto;
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: "Press Start 2P", sans-serif;
+          overflow-x: hidden;
+          background-image: url("${unsafeCSS(LMGridBox)}");
+          background-repeat: repeat;
+          background-position: center center;
+          background-size: auto, 20% auto, 20% auto;
+          --app-hax-accent-color: black;
+          --app-hax-background-color: white;
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-duration-in: 200ms;
+          --simple-tooltip-duration-out: 0;
+          --simple-tooltip-border-radius: 0;
+          --simple-tooltip-font-size: 14px;
         }
-      }
-
-      @media (min-width: 601px) and (max-width: 720px) {
-        :root {
-          background-size: auto, 26% auto, 26% auto;
+        body.app-hax-create {
+          overflow: hidden;
         }
-      }
-
-      @media (min-width: 481px) and (max-width: 600px) {
-        :root {
-          background-size: auto, 30% auto, 30% auto;
+        body.dark-mode {
+          background-color: black;
+          background-image: url("${unsafeCSS(DMGridBox)}");
+          --app-hax-accent-color: white;
+          --app-hax-background-color: black;
         }
-      }
-
-      @media (min-width: 371px) and (max-width: 480px) {
-        :root {
-          background-size: auto, 35% auto, 35% auto;
+        body:not(.bad-device) {
+          background-image: url("${unsafeCSS(LMGridBox)}"),
+            url("${unsafeCSS(DesignLightModeLeft)}"),
+            url("${unsafeCSS(DesignLightModeRight)}");
+          background-repeat: repeat, repeat-y, repeat-y;
+          background-position: center center, top left, top right;
+          background-size: auto, 20% auto, 20% auto;
+          background-attachment: fixed, fixed, fixed;
         }
-      }
-
-      @media (max-width: 370px) {
-        :root {
-          background-size: auto, 37% auto, 37% auto;
+        div[slot="externalproviders"] {
+          display: none;
         }
-      }
-      .version {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        background-color:  var(--simple-colors-default-theme-yellow-6);
-        display: inline-block;
-        padding: 8px;
-        color: var(--simple-colors-default-theme-grey-12);
-        border-right: 3px solid var(--simple-colors-default-theme-grey-12);
-        border-top: 3px solid  var(--simple-colors-default-theme-grey-12);
-      }
-      body.dark-mode .version {
-        background-color:  var(--simple-colors-default-theme-yellow-8);
-        color: var(--simple-colors-default-theme-grey-1);
-        border-right: 3px solid var(--simple-colors-default-theme-grey-1);
-        border-top: 3px solid  var(--simple-colors-default-theme-grey-1);
-      }
-      simple-modal::part(title) {
-        background-color: transparent;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        font-size: 20px;
-        line-height: 20px;
-        color: black;
-      }
-      simple-modal button.hax-modal-btn {
-        font-size: 30px;
-        padding: 8px;
-        margin: 4px;
-        color: white;
-        background-color: green;
-        border: 4px solid black;
-        border-radius: 8px;
-        font-family: 'Press Start 2P', sans-serif;
-      }
-      simple-modal button.hax-modal-btn.cancel {
-        background-color: red;
-      }
-      simple-modal button.hax-modal-btn:hover,
-      simple-modal button.hax-modal-btn:focus {
-        outline: 2px solid black;
-        cursor: pointer;
-        background-color: darkgreen;
-      }
-      simple-modal button.hax-modal-btn.cancel:hover,
-      simple-modal button.hax-modal-btn.cancel:focus {
-        background-color: darkred;
-      }
+        body div[slot="externalproviders"] {
+          display: unset;
+        }
+        body.dark-mode {
+          background-image: url("${unsafeCSS(DMGridBox)}"),
+            url("${unsafeCSS(DesignDarkModeLeft)}"),
+            url("${unsafeCSS(DesignDarkModeRight)}");
+        }
+
+        #loading {
+          font-family: "Press Start 2P", sans-serif;
+          text-align: center;
+          margin-top: 100px;
+        }
+
+        #loading .title {
+          -webkit-text-stroke: 1px
+            var(--app-hax-accent-color, var(--accent-color));
+          -webkit-text-fill-color: var(
+            --app-hax-background-color,
+            var(--background-color)
+          );
+          font-weight: normal;
+          font-size: 4vw;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        #loading .subtitle {
+          color: var(--app-hax-accent-color, var(--accent-color));
+          font-weight: normal;
+          margin-top: 2.5px;
+          font-size: 2vw;
+        }
+
+        #loading .bracket {
+          font-size: 10vw;
+          font-weight: normal;
+          vertical-align: middle;
+          -webkit-text-stroke: 0px;
+          -webkit-text-fill-color: var(
+            --app-hax-accent-color,
+            var(--accent-color)
+          );
+        }
+
+        @media (min-width: 721px) {
+          :root {
+            background-size: auto, 23% auto, 23% auto;
+          }
+        }
+
+        @media (min-width: 601px) and (max-width: 720px) {
+          :root {
+            background-size: auto, 26% auto, 26% auto;
+          }
+        }
+
+        @media (min-width: 481px) and (max-width: 600px) {
+          :root {
+            background-size: auto, 30% auto, 30% auto;
+          }
+        }
+
+        @media (min-width: 371px) and (max-width: 480px) {
+          :root {
+            background-size: auto, 35% auto, 35% auto;
+          }
+        }
+
+        @media (max-width: 370px) {
+          :root {
+            background-size: auto, 37% auto, 37% auto;
+          }
+        }
+        .version {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          background-color: var(--simple-colors-default-theme-yellow-6);
+          display: inline-block;
+          padding: 8px;
+          color: var(--simple-colors-default-theme-grey-12);
+          border-right: 3px solid var(--simple-colors-default-theme-grey-12);
+          border-top: 3px solid var(--simple-colors-default-theme-grey-12);
+        }
+        body.dark-mode .version {
+          background-color: var(--simple-colors-default-theme-yellow-8);
+          color: var(--simple-colors-default-theme-grey-1);
+          border-right: 3px solid var(--simple-colors-default-theme-grey-1);
+          border-top: 3px solid var(--simple-colors-default-theme-grey-1);
+        }
+        simple-modal::part(title) {
+          background-color: transparent;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+          font-size: 20px;
+          line-height: 20px;
+          color: black;
+        }
+        simple-modal button.hax-modal-btn {
+          font-size: 30px;
+          padding: 8px;
+          margin: 4px;
+          color: white;
+          background-color: green;
+          border: 4px solid black;
+          border-radius: 8px;
+          font-family: "Press Start 2P", sans-serif;
+        }
+        simple-modal button.hax-modal-btn.cancel {
+          background-color: red;
+        }
+        simple-modal button.hax-modal-btn:hover,
+        simple-modal button.hax-modal-btn:focus {
+          outline: 2px solid black;
+          cursor: pointer;
+          background-color: darkgreen;
+        }
+        simple-modal button.hax-modal-btn.cancel:hover,
+        simple-modal button.hax-modal-btn.cancel:focus {
+          background-color: darkred;
+        }
       `,
     ];
   }

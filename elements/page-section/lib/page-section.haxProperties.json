@@ -10,9 +10,7 @@
     "description": "",
     "icon": "av:call-to-action",
     "color": "purple",
-    "tags": [
-      "Layout", "page", "section", "container", "cta"
-    ],
+    "tags": ["Layout", "page", "section", "container", "cta"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

@@ -23,21 +23,15 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
           display: inline-block;
           margin: 24px 16px 0 0;
           margin-top: 20px;
-          --simple-cta-color: var(
-            --simple-colors-default-theme-accent-1
-          );
-          --simple-cta-outline: var(
-            --simple-colors-default-theme-grey-12
-          );
+          --simple-cta-color: var(--simple-colors-default-theme-accent-1);
+          --simple-cta-outline: var(--simple-colors-default-theme-grey-12);
           --simple-cta-bg-color-is-user-selected: var(
             --simple-colors-default-theme-accent-3
           );
           --simple-cta-color-is-user-selected: var(
             --simple-colors-default-theme-accent-12
           );
-          --simple-cta-bg-color: var(
-            --simple-colors-default-theme-accent-8
-          );
+          --simple-cta-bg-color: var(--simple-colors-default-theme-accent-8);
         }
 
         :host([hidden]) {
@@ -72,7 +66,8 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
           font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif;
           font-style: italic;
           font-weight: 700;
-          transition: color 300ms ease 0ms,background-color 300ms ease 0ms,border 300ms ease 0ms;
+          transition: color 300ms ease 0ms, background-color 300ms ease 0ms,
+            border 300ms ease 0ms;
         }
 
         .icon {
@@ -94,7 +89,14 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       part="simple-cta-link"
       @click="${this._clickCard}"
     >
-      <span class="btn"><span class="label">${this.label}</span><slot></slot>${!this.hideIcon ? html`<simple-icon-lite class="icon" icon="${this.icon}"></simple-icon-lite>`:``}</span>
+      <span class="btn"
+        ><span class="label">${this.label}</span><slot></slot>${!this.hideIcon
+          ? html`<simple-icon-lite
+              class="icon"
+              icon="${this.icon}"
+            ></simple-icon-lite>`
+          : ``}</span
+      >
     </a>`;
   }
 
@@ -158,7 +160,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
             title: "Hide icon",
             description: "Hide the icon used to accent text",
             inputMethod: "boolean",
-          } 
+          },
         ],
         advanced: [
           {
@@ -166,7 +168,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
             title: "Icon",
             description: "Action link icon",
             inputMethod: "iconpicker",
-          }
+          },
         ],
       },
       saveOptions: {
