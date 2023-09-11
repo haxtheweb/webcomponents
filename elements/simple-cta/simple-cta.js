@@ -202,6 +202,10 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       editMode: {
         type: Boolean,
       },
+      hideIcon: {
+        type: Boolean,
+        attribute: "hide-icon",
+      }
     };
   }
 
