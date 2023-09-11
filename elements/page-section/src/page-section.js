@@ -69,15 +69,15 @@ class PageSection extends SimpleColors {
         }
 
         .content {
-          padding: 0 15%;
           display: flex;
           flex-flow: column;
           justify-content: center;
           height: 100%;
           position: relative;
           z-index: 3;
-          width: 70%;
-          max-width: 1080px;
+          padding: var(--page-section-content-padding, 0 15%);
+          width: var(--page-section-content-width, 70%);
+          max-width: var(--page-section-content-max-width, 1080px);
           margin: 0 auto;
         }
 
@@ -169,13 +169,13 @@ class PageSection extends SimpleColors {
   render() {
     return html`
       <section class="section" style="${this.bgStyle(this.bg, this.filter, this.image)}">
-        <div class="content">
+        <div class="content" part="content">
           <slot></slot>
           <div>
             <slot name="buttons"></slot>
           </div>
         </div>
-        ${this.scroller ? html`<simple-icon-button-lite class="scroller" icon="icons:arrow-downward" id="scroller" title="${this.scrollerLabel}" @click="${this.scrollToNextTarget}"></simple-icon-button-lite><simple-tooltip for="scroller" position="top">${this.scrollerLabel}</simple-tooltip>` : ``}
+        ${this.scroller ? html`<simple-icon-button-lite class="scroller" icon="icons:arrow-downward" id="scroller" @click="${this.scrollToNextTarget}" label="${this.scrollerLabel}"></simple-icon-button-lite><simple-tooltip for="scroller" position="top">${this.scrollerLabel}</simple-tooltip>` : ``}
         ${this.fold ? html`<div class="fold"></div>` : ``}
       </section>
     `;
