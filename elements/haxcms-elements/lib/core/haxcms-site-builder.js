@@ -720,7 +720,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         wipeSlot(store.themeElement, "*");
         // force a page break w/ the relevant details in code
         // this allows the UI to be modified
+        // required fields followed by optional fields if defined
         newValue = `<page-break
+        break-type="site"
         title="${store.activeItem.title}"
         parent="${store.activeItem.parent}"
         item-id="${store.activeItem.id}"
@@ -737,11 +739,25 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             : ``
         }
         ${
+          store.activeItem.metadata.hideInMenu
+            ? `hide-in-menu="${store.activeItem.metadata.hideInMenu}"`
+            : ``
+        }
+        ${
+          store.activeItem.metadata.relatedItems
+            ? `related-items="${store.activeItem.metadata.relatedItems}"`
+            : ``
+        }
+        ${
+          store.activeItem.metadata.image
+            ? `image="${store.activeItem.metadata.image}"`
+            : ``
+        }
+        ${
           store.activeItem.metadata.theme && store.activeItem.metadata.theme.key
             ? `developer-theme="${store.activeItem.metadata.theme.key}"`
             : ``
         }
-        break-type="site"
         ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
         ${
           store.activeItem.metadata.published === false

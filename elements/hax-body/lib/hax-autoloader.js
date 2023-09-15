@@ -211,7 +211,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                   props.settings.configure = [];
                   props.settings.advanced = [];
                   props.settings.developer = [];
-                  props = wiring.standardAdvancedProps(props);
+                  props = wiring.standardAdvancedProps(props, name);
                   props.saveOptions = {};
                   props.demoSchema = [];
                   // try and make this have SOME fields, again, really guessing here

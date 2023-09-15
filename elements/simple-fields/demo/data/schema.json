@@ -24,6 +24,9 @@
         "tags": {
           "description": "Tags for the product",
           "type": "array",
+          "hideReorder": true,
+          "hideDuplicate": true,
+          "hideExpand": true,
           "items": {
             "properties": {
               "tag": { "type": "string" }

@@ -201,7 +201,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         icon="icons:reorder"
         label="Reorder this item"
         ?disabled="${this.disabled}"
-        ?hidden="${this.__dropAccepts || this.__dragging}"
+        ?hidden="${this.__dropAccepts || this.__dragging || this.hideReorder}"
         part="drag"
         tooltip-direction="right"
         @mousedown="${(e) => (this.draggable = "true")}"
@@ -255,6 +255,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           <div id="copy-delete">
             <simple-toolbar-button
               id="copy"
+              ?hidden="${this.hideDuplicate}"
               controls="${(this.parentNode || {}).id}"
               icon="content-copy"
               label="Copy this item"
@@ -310,6 +311,14 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         type: Boolean,
         reflect: true,
       },
+      hideReorder: {
+        type: Boolean,
+        attribute: "hide-reorder",
+      },
+      hideDuplicate: {
+        type: Boolean,
+        attribute: "hide-duplicate",
+      },
       /**
        * is disabled?
        */
@@ -361,6 +370,8 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
 
   constructor() {
     super();
+    this.hideReorder = false;
+    this.hideDuplicate = false;
     this.disabled = false;
     this.draggable = "truest";
     this.previewBy = [];

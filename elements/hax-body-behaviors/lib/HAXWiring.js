@@ -225,6 +225,7 @@ export class HAXWiring {
     this.haxProperties = {
       type: "element",
       editingElement: "core",
+      hideDefaultSettings: false,
       canScale: false,
       canPosition: false,
       canEditSource: true,
@@ -351,6 +352,12 @@ export class HAXWiring {
         if (typeof props.canPosition === typeof undefined) {
           props.canPosition = true;
         }
+        // @note really just for page-break but could see
+        // elements that are to LITERALLY be what is defined
+        // instead of mixing in our common settings
+        if (typeof props.hideDefaultSettings === typeof undefined) {
+          props.hideDefaultSettings = false;
+        }
         if (typeof props.canScale === typeof undefined) {
           props.canScale = true;
         }
@@ -413,7 +420,7 @@ export class HAXWiring {
             }
           }
           // apply standard set of props
-          props = this.standardAdvancedProps(props);
+          props = this.standardAdvancedProps(props, tag);
         }
         // support for advanced save options
         if (typeof props.saveOptions === typeof undefined) {
@@ -513,175 +520,177 @@ export class HAXWiring {
     /**
      * Standard advanced properties we support for all forms
      */
-    this.standardAdvancedProps = (props) => {
-      // specialized attribute to allow locking in hax of anything
-      props.settings.advanced.push({
-        attribute: "data-hax-lock",
-        title: "Lock editing",
-        description: "Prevent changes to this element and all its content",
-        inputMethod: "boolean",
-      });
-      props.settings.advanced.push({
-        attribute: "text-align",
-        title: "Text align",
-        description: "Horizontal alignment of text in the element.",
-        inputMethod: "select",
-        options: {
-          "": "",
-          left: "left",
-          center: "center",
-          right: "right",
-          justify: "justify",
-        },
-      });
-      props.settings.advanced.push({
-        attribute: "background-color",
-        title: "Background color",
-        description: "Accessible background colors for accenting content.",
-        inputMethod: "colorpicker",
-        required: false,
-      });
-      props.settings.advanced.push({
-        attribute: "font-size",
-        title: "Font size",
-        description: "Pre-selected font variation",
-        inputMethod: "select",
-        options: {
-          "x-small": "x-small",
-          small: "small",
-          "": "normal",
-          large: "large",
-          "x-large": "x-large",
-          "xx-large": "xx-large",
-        },
-      });
-      // allow styles to be modified this way
-      props.settings.advanced.push({
-        attribute: "padding-top",
-        title: "Padding top",
-        step: 8,
-        max: 128,
-        min: 0,
-        inputMethod: "slider",
-        suffix: "px",
-      });
-      props.settings.advanced.push({
-        attribute: "padding-right",
-        title: "Padding right",
-        step: 8,
-        max: 128,
-        min: 0,
-        inputMethod: "slider",
-        suffix: "px",
-      });
-      props.settings.advanced.push({
-        attribute: "padding-bottom",
-        title: "Padding bottom",
-        step: 8,
-        max: 128,
-        min: 0,
-        inputMethod: "slider",
-        suffix: "px",
-      });
-      props.settings.advanced.push({
-        attribute: "padding-left",
-        title: "Padding left",
-        step: 8,
-        max: 128,
-        min: 0,
-        inputMethod: "slider",
-        suffix: "px",
-      });
-      props.settings.advanced.push({
-        attribute: "margin-top",
-        title: "Margin top",
-        step: 8,
-        max: 128,
-        min: 0,
-        inputMethod: "slider",
-        suffix: "px",
-      });
-      props.settings.advanced.push({
-        attribute: "margin-right",
-        title: "Margin right",
-        step: 8,
-        max: 128,
-        min: 0,
-        inputMethod: "slider",
-        suffix: "px",
-      });
-      props.settings.advanced.push({
-        attribute: "margin-bottom",
-        title: "Margin bottom",
-        step: 8,
-        max: 128,
-        min: 0,
-        inputMethod: "slider",
-        suffix: "px",
-      });
-      props.settings.advanced.push({
-        attribute: "margin-left",
-        title: "Margin left",
-        step: 8,
-        max: 128,
-        min: 0,
-        inputMethod: "slider",
-        suffix: "px",
-      });
-      // allow classes to be modified this way
-      props.settings.developer.push({
-        attribute: "class",
-        title: "Classes",
-        description: "CSS classes applied manually to the element",
-        inputMethod: "textfield",
-      });
-      // allow styles to be modified this way
-      props.settings.developer.push({
-        attribute: "style",
-        title: "Styles",
-        description: "Custom CSS styles as applied to the element",
-        inputMethod: "textfield",
-      });
-      // allow schema definitions
-      props.settings.developer.push({
-        attribute: "prefix",
-        title: "Schema: prefix",
-        description: "Schema prefixes",
-        inputMethod: "textfield",
-      });
-      props.settings.developer.push({
-        attribute: "typeof",
-        title: "Schema: TypeOf",
-        description: "typeof definition for Schema usage",
-        inputMethod: "textfield",
-      });
-      props.settings.developer.push({
-        attribute: "property",
-        title: "Schema: Property",
-        description: "typeof definition for Schema usage",
-        inputMethod: "textfield",
-      });
-      props.settings.developer.push({
-        attribute: "resource",
-        title: "Schema: Resource ID",
-        description: "Schema resource identifier",
-        inputMethod: "textfield",
-      });
-      // allow the id to be modified
-      props.settings.developer.push({
-        attribute: "id",
-        title: "ID",
-        description: "element ID, only set this if you know why",
-        inputMethod: "textfield",
-      });
-      // we need to support slot in the UI but actually shift it around under the hood
-      // this is so that shadow roots don't get mad when previewing
-      props.settings.developer.push({
-        attribute: "slot",
-        title: "slot",
-        description: "DOM slot area",
-        inputMethod: "textfield",
-      });
+    this.standardAdvancedProps = (props, tag) => {
+      if (!props.hideDefaultSettings) {
+        // specialized attribute to allow locking in hax of anything
+        props.settings.advanced.push({
+          attribute: "data-hax-lock",
+          title: "Lock editing",
+          description: "Prevent changes to this element and all its content",
+          inputMethod: "boolean",
+        });
+        props.settings.advanced.push({
+          attribute: "text-align",
+          title: "Text align",
+          description: "Horizontal alignment of text in the element.",
+          inputMethod: "select",
+          options: {
+            "": "",
+            left: "left",
+            center: "center",
+            right: "right",
+            justify: "justify",
+          },
+        });
+        props.settings.advanced.push({
+          attribute: "background-color",
+          title: "Background color",
+          description: "Accessible background colors for accenting content.",
+          inputMethod: "colorpicker",
+          required: false,
+        });
+        props.settings.advanced.push({
+          attribute: "font-size",
+          title: "Font size",
+          description: "Pre-selected font variation",
+          inputMethod: "select",
+          options: {
+            "x-small": "x-small",
+            small: "small",
+            "": "normal",
+            large: "large",
+            "x-large": "x-large",
+            "xx-large": "xx-large",
+          },
+        });
+        // allow styles to be modified this way
+        props.settings.advanced.push({
+          attribute: "padding-top",
+          title: "Padding top",
+          step: 8,
+          max: 128,
+          min: 0,
+          inputMethod: "slider",
+          suffix: "px",
+        });
+        props.settings.advanced.push({
+          attribute: "padding-right",
+          title: "Padding right",
+          step: 8,
+          max: 128,
+          min: 0,
+          inputMethod: "slider",
+          suffix: "px",
+        });
+        props.settings.advanced.push({
+          attribute: "padding-bottom",
+          title: "Padding bottom",
+          step: 8,
+          max: 128,
+          min: 0,
+          inputMethod: "slider",
+          suffix: "px",
+        });
+        props.settings.advanced.push({
+          attribute: "padding-left",
+          title: "Padding left",
+          step: 8,
+          max: 128,
+          min: 0,
+          inputMethod: "slider",
+          suffix: "px",
+        });
+        props.settings.advanced.push({
+          attribute: "margin-top",
+          title: "Margin top",
+          step: 8,
+          max: 128,
+          min: 0,
+          inputMethod: "slider",
+          suffix: "px",
+        });
+        props.settings.advanced.push({
+          attribute: "margin-right",
+          title: "Margin right",
+          step: 8,
+          max: 128,
+          min: 0,
+          inputMethod: "slider",
+          suffix: "px",
+        });
+        props.settings.advanced.push({
+          attribute: "margin-bottom",
+          title: "Margin bottom",
+          step: 8,
+          max: 128,
+          min: 0,
+          inputMethod: "slider",
+          suffix: "px",
+        });
+        props.settings.advanced.push({
+          attribute: "margin-left",
+          title: "Margin left",
+          step: 8,
+          max: 128,
+          min: 0,
+          inputMethod: "slider",
+          suffix: "px",
+        });
+        // allow classes to be modified this way
+        props.settings.developer.push({
+          attribute: "class",
+          title: "Classes",
+          description: "CSS classes applied manually to the element",
+          inputMethod: "textfield",
+        });
+        // allow styles to be modified this way
+        props.settings.developer.push({
+          attribute: "style",
+          title: "Styles",
+          description: "Custom CSS styles as applied to the element",
+          inputMethod: "textfield",
+        });
+        // allow schema definitions
+        props.settings.developer.push({
+          attribute: "prefix",
+          title: "Schema: prefix",
+          description: "Schema prefixes",
+          inputMethod: "textfield",
+        });
+        props.settings.developer.push({
+          attribute: "typeof",
+          title: "Schema: TypeOf",
+          description: "typeof definition for Schema usage",
+          inputMethod: "textfield",
+        });
+        props.settings.developer.push({
+          attribute: "property",
+          title: "Schema: Property",
+          description: "typeof definition for Schema usage",
+          inputMethod: "textfield",
+        });
+        props.settings.developer.push({
+          attribute: "resource",
+          title: "Schema: Resource ID",
+          description: "Schema resource identifier",
+          inputMethod: "textfield",
+        });
+        // allow the id to be modified
+        props.settings.developer.push({
+          attribute: "id",
+          title: "ID",
+          description: "element ID, only set this if you know why",
+          inputMethod: "textfield",
+        });
+        // we need to support slot in the UI but actually shift it around under the hood
+        // this is so that shadow roots don't get mad when previewing
+        props.settings.developer.push({
+          attribute: "slot",
+          title: "slot",
+          description: "DOM slot area",
+          inputMethod: "textfield",
+        });
+      }
       return props;
     };
     /**
@@ -838,6 +847,9 @@ export class HAXWiring {
       // example properties valid for HAX context menu.
       let props = {
         api: "1",
+        type: "element",
+        editingElement: "core",
+        hideDefaultSettings: false,
         canScale: true,
         canPosition: true,
         canEditSource: true,

@@ -357,7 +357,10 @@
       "description": "",
       "metadata": {
         "created": 1548826475,
-        "updated": 1617805490
+        "updated": 1617805490,
+        "tags": "submitting an assignment,page,another,things,here",
+        "hideInMenu": true,
+        "relatedItems": ["item-39074718-758f-d51b-1dc5-15cfbb79e44c", "item-504d6323-873d-49e3-9de0-ffa56c28fdf5", "item-a91393ea-31f8-30bd-888f-275a05e08e0a"]
       }
     },
     {

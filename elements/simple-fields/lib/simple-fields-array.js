@@ -56,6 +56,18 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
         type: Boolean,
         attribute: "disable-add",
       },
+      hideExpand: {
+        type: Boolean,
+        attribute: "hide-expand",
+      },
+      hideReorder: {
+        type: Boolean,
+        attribute: "hide-reorder",
+      },
+      hideDuplicate: {
+        type: Boolean,
+        attribute: "hide-duplicate",
+      },
       /*
        * icon when expanded
        */
@@ -89,6 +101,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
           ?disabled="${this.disabled}"
           @click="${(e) => this.toggle()}"
           ?toggled="${this.expanded}"
+          ?hidden="${this.hideExpand}"
           toggles
           ?show-text-label="${this.responsiveSize !== "xs"}"
           label="${this.expanded ? "Collapse All" : "Expand All"}"
@@ -117,6 +130,9 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.hideExpand = false;
+    this.hideReorder = false;
+    this.hideDuplicate = false;
     this.count = 0;
     this.expanded = true;
     this.disableAdd = false;
@@ -148,15 +164,31 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     if (super.updated) super.updated(changedProperties);
 
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "expanded")
+      if (propName === "expanded") {
         this.querySelectorAll("simple-fields-array-item").forEach((item) =>
-          item.setAttribute("aria-expanded", this.expanded)
+        {
+          item.expanded = this.expanded;
+        });
+      }
+      if (propName === "hideDuplicate") {
+        this.querySelectorAll("simple-fields-array-item").forEach((item) =>
+       {   item.hideDuplicate = this.hideDuplicate;
+      });
+      }
+      if (propName === "hideReorder") {
+        this.querySelectorAll("simple-fields-array-item").forEach((item) =>
+        {
+          item.hideReorder = this.hideReorder;
+        }
         );
+      }
     });
   }
   buildItem(id) {
     let item = document.createElement("simple-fields-array-item");
     item.id = id;
+    item.hideReorder = this.hideReorder;
+    item.hideDuplicate = this.hideDuplicate;
     item.expanded = this.expanded;
     item.innerHTML = `
       <slot name="sort"></slot>
