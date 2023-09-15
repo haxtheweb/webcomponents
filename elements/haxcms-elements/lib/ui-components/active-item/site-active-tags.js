@@ -30,6 +30,9 @@ class SiteActiveTags extends LitElement {
         a {
           text-decoration: none;
         }
+        :host([edit-mode]) .tag-wrap {
+          pointer-events: none;
+        }
       `,
     ];
   }
@@ -37,9 +40,9 @@ class SiteActiveTags extends LitElement {
    * LitElement
    */
   render() {
-    return html`${this.tags && this.tags != ""
+    return html`<div class="tag-wrap"></div>${this.tags && this.tags != ""
       ? this.tags.split(",").map(
-          (tag) => html` <a href="x/views?tags=${tag.trim()}">
+          (tag) => html` <a @click="${this.testEditMode}" href="x/views?tags=${tag.trim()}">
             <simple-tag
               ?auto-accent-color="${this.autoAccentColor}"
               value="${tag.trim()}"
@@ -47,7 +50,15 @@ class SiteActiveTags extends LitElement {
             ></simple-tag>
           </a>`
         )
-      : ``}`;
+      : ``}</div>`;
+  }
+
+  testEditMode(e) {
+    if (this.editMode) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
   }
   /**
    * LitElement / popular convention
@@ -65,6 +76,11 @@ class SiteActiveTags extends LitElement {
         type: String,
         attribute: "accent-color",
       },
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode",
+      },
     };
   }
   /**
@@ -78,6 +94,10 @@ class SiteActiveTags extends LitElement {
     this.__disposer = [];
     autorun((reaction) => {
       this.tags = toJS(store.activeTags);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
   }
