@@ -825,7 +825,7 @@ class SimpleFieldsLite extends LitElement {
     if (!items) this._setValue(parent.name, []);
     index = index || index === 0 ? index : length;
     let subschema = { properties: {} };
-    subschema.properties[index] = this._addArrayItem(index, schema, previewBy);
+    subschema.properties[index] = this._addArrayItem(index, schema, previewBy, parent);
     this._setValue(`${parent.name}.${index}`, value);
     this._addToForm(subschema, parent, `${parent.id}.`, element);
   }
@@ -909,10 +909,14 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} parent array element
    * @param {object} item array item element
    */
-  _addArrayItem(counter, schema, previewBy) {
+  _addArrayItem(counter, schema, previewBy, parent = {}) {
     let item = this._deepClone(schema.items);
     item.label = `${parseInt(counter) + 1}`;
     item.previewBy = previewBy;
+    // we inherit these defaults from parent
+    item.hideReorder = parent.hideReorder;
+    item.hideDuplicate = parent.hideDuplicate;
+    item.expanded = parent.expanded;
     return item;
   }
   /**

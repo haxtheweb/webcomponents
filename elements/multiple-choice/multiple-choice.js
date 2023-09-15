@@ -176,9 +176,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
                       name="${index}"
                       @mousedown="${this.clickSingle}"
                       @keydown="${this.clickSingle}"
-                      .value="${answer.userGuess}"
+                      .value="${answer ? answer.userGuess : ""}"
                       @value-changed="${this.checkedEvent}"
-                      label="${answer.label ? answer.label : ""}"
+                      label="${(answer && answer.label) ? answer.label : ""}"
                     ></simple-fields-field>
                   `
                 )}
@@ -194,8 +194,8 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
                         property="oer:answer"
                         name="${index}"
                         type="checkbox"
-                        label="${answer.label ? answer.label : ""}"
-                        .value="${answer.userGuess}"
+                        label="${(answer && answer.label) ? answer.label : ""}"
+                        .value="${answer ? answer.userGuess : ""}"
                         @value-changed="${this.checkedEvent}"
                       ></simple-fields-field>
                     </li>
@@ -578,13 +578,15 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
       // otherwise page to page saves we could lose statefulness
       this.innerHTML = "";
       for (var i in node.answers) {
-        let answer = document.createElement("input");
-        answer.setAttribute("type", "checkbox");
-        answer.value = node.answers[i].label;
-        if (node.answers[i].correct) {
-          answer.setAttribute("correct", "correct");
+        if (node.answers[i]) {
+          let answer = document.createElement("input");
+          answer.setAttribute("type", "checkbox");
+          answer.value = node.answers[i].label;
+          if (node.answers[i].correct) {
+            answer.setAttribute("correct", "correct");
+          }
+          node.appendChild(answer);  
         }
-        node.appendChild(answer);
       }
     }
     return node;

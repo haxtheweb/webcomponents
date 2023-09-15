@@ -75,7 +75,7 @@ export class PageBreak extends IntersectionObserverMixin(
     let props = super.properties || {};
     return {
       ...props,
-      noderefs: { 
+      noderefs: {
         type: Array,
         attribute: false,
       },
@@ -585,13 +585,18 @@ export class PageBreak extends IntersectionObserverMixin(
       // pull theme list from the registry
       props.settings.developer.forEach((attr, index) => {
         // pull theme list from the registry
-        if (attr.property === "developerTheme" && window.appSettings && window.appSettings.themes) {
-          var themes = [{
-            text: '',
-            value: null,
-          }];
+        if (
+          attr.property === "developerTheme" &&
+          window.appSettings &&
+          window.appSettings.themes
+        ) {
+          var themes = [
+            {
+              text: "",
+              value: null,
+            },
+          ];
           Object.keys(window.appSettings.themes).map((key) => {
-            console.log(window.appSettings.themes[key]);
             themes.push({
               text: window.appSettings.themes[key].name,
               value: window.appSettings.themes[key].element,

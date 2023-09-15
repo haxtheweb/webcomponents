@@ -76,6 +76,9 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           position: relative;
           overflow: visible;
         }
+        :host([hide-reorder]) #drag-handle {
+          display: none;
+        }
         #preview {
           flex: 1 0 auto;
           margin: 0;
@@ -84,6 +87,10 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           max-width: calc(
             100% - 72px - 2 * var(--simple-fields-margin-small, 8px) / 2
           );
+        }
+        :host([hide-reorder]) #preview {
+          margin: 0 4px;
+          max-width: unset;
         }
         #heading,
         .heading-inner {
@@ -237,7 +244,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         <simple-toolbar-button
           id="expand"
           controls="${this.id}"
-          ?hidden="${this.responsiveSize !== "xs"}"
           icon="more-vert"
           label="Toggle expand"
           ?disabled="${this.disabled}"
@@ -265,33 +271,20 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
               tooltip-direction="left"
             >
             </simple-toolbar-button>
-            <simple-toolbar-menu
-              id="remove"
-              icon="delete"
-              label="Remove this item"
-              ?disabled="${this.disabled}"
-              fit-to-visible-bounds
-              part="remove"
-              position-align="end"
+            <simple-toolbar-button
+              id="confirm-remove"
+              class="danger"
               tooltip-direction="left"
+              align-horizontal="left"
+              role="menuitem"
+              controls="${this.id}"
+              icon="delete"
+              label="Remove"
+              ?disabled="${this.disabled}"
+              @click="${this._handleRemove}"
+              part="confirm-remove"
             >
-              <simple-toolbar-menu-item>
-                <simple-toolbar-button
-                  id="confirm-remove"
-                  class="danger"
-                  align-horizontal="left"
-                  role="menuitem"
-                  show-text-label
-                  controls="${this.id}"
-                  icon="delete"
-                  label="Remove"
-                  ?disabled="${this.disabled}"
-                  @click="${this._handleRemove}"
-                  part="confirm-remove"
-                >
-                </simple-toolbar-button>
-              </simple-toolbar-menu-item>
-            </simple-toolbar-menu>
+            </simple-toolbar-button>
           </div>
         </div>
       </div>
@@ -313,10 +306,12 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
       },
       hideReorder: {
         type: Boolean,
+        reflect: true,
         attribute: "hide-reorder",
       },
       hideDuplicate: {
         type: Boolean,
+        reflect: true,
         attribute: "hide-duplicate",
       },
       /**
@@ -375,7 +370,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.disabled = false;
     this.draggable = "truest";
     this.previewBy = [];
-    this.expanded = true;
+    this.expanded = false;
     this.responsiveSize = "sm";
     this.addEventListener("dragenter", this._dragEnter);
     this.addEventListener("dragleave", this._dragLeave);

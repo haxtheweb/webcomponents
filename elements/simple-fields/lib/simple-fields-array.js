@@ -54,18 +54,22 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
       },
       disableAdd: {
         type: Boolean,
+        reflect: true,
         attribute: "disable-add",
       },
       hideExpand: {
         type: Boolean,
+        reflect: true,
         attribute: "hide-expand",
       },
       hideReorder: {
         type: Boolean,
+        reflect: true,
         attribute: "hide-reorder",
       },
       hideDuplicate: {
         type: Boolean,
+        reflect: true,
         attribute: "hide-duplicate",
       },
       /*
@@ -134,7 +138,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.hideReorder = false;
     this.hideDuplicate = false;
     this.count = 0;
-    this.expanded = true;
+    this.expanded = false;
     this.disableAdd = false;
     this.responsiveSize = "sm";
   }

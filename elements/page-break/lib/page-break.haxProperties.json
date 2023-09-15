@@ -104,7 +104,6 @@
         "description": "Content related to this page",
         "inputMethod": "array",
         "itemLabel": "item",
-        "hideExpand": true,
         "hideReorder": true,
         "expanded": false,
         "hideDuplicate": true,
