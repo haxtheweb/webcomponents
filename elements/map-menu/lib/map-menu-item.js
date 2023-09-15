@@ -34,6 +34,11 @@ class MapMenuItem extends I18NMixin(LitElement) {
           color: red;
           opacity: 0.5;
         }
+
+        :host([hide-in-menu]) {
+          display: none;
+        }
+        
         .title {
           text-transform: none;
           font-size: var(--map-menu-font-size, 16px);
@@ -159,6 +164,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
     this.itemtitle = "";
     this.url = "";
     this.active = false;
+    this.hideInMenu = false;
     this.published = false;
     this.locked = false;
     this.status = "";
@@ -206,6 +212,11 @@ class MapMenuItem extends I18NMixin(LitElement) {
       published: {
         type: Boolean,
         reflect: true,
+      },
+      hideInMenu: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hide-in-menu",
       },
       locked: {
         type: Boolean,

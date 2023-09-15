@@ -43,6 +43,7 @@ class MapMenuBuilder extends LitElement {
                         : ""}"
                       selected="${this.selected}"
                       ?published="${this.getPublishedStatus(item)}"
+                      ?hide-in-menu="${this.hideInMenuStatus(item)}"
                     >
                       <map-menu-builder
                         .items="${item.children}"
@@ -63,6 +64,7 @@ class MapMenuBuilder extends LitElement {
                         : ""}"
                       selected="${this.selected}"
                       ?published="${this.getPublishedStatus(item)}"
+                      ?hide-in-menu="${this.hideInMenuStatus(item)}"
                       ?locked="${item.metadata.locked}"
                       status="${item.metadata.status}"
                     ></map-menu-item>
@@ -71,6 +73,15 @@ class MapMenuBuilder extends LitElement {
           )
         : ""}
     `;
+  }
+
+  hideInMenuStatus(item) {
+    if (
+      item.metadata && item.metadata.hideInMenu == true
+    ) {
+      return true;
+    }
+    return false;
   }
 
   getPublishedStatus(item) {
