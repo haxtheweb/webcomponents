@@ -44,6 +44,8 @@
   },
   "license": "",
   "dependencies": {
+    "@lrnwebcomponents/simple-img": "^7.0.18",
+    "@lrnwebcomponents/play-list": "^7.0.18",
     "lit": "^2.8.0"
   },
   "devDependencies": {

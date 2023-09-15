@@ -388,14 +388,7 @@ class ElmslnStudio extends router(
         i = this.peerSubmissions.length;
       }
     }
-    console.log(
-      "prevNextSubmission",
-      nav,
-      nav !== {},
-      nav !== {} ? nav : undefined,
-      this.peerSubmissions
-    );
-    return nav !== {} ? nav : undefined;
+    return nav != {} ? nav : undefined;
   }
 
   get submission() {

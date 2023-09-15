@@ -18,8 +18,15 @@
       <h3>Basic documentation-player demo</h3>
       <demo-snippet>
         <template>
-          <documentation-player>
-            This is documentation-player
+          <documentation-player label="Haxcellence" url="https://oer.hax.psu.edu/bto108/sites/haxcellence" image-url="https://oer.hax.psu.edu/bto108/sites/haxcellence/ontology">
+            <play-list orientation="vertical">
+              <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="Why d434343 anywhere?" >
+                <track src="files/HAXshort.vtt" kind="subtitles" label="English" slot="track">
+              </video-player>
+              <img src="https://placehold.it/350x150"/>
+              <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="Wfgdfgdfgd?" >
+              </video-player>
+            </play-list>
           </documentation-player>
         </template>
       </demo-snippet>

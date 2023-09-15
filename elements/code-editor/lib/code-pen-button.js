@@ -46,10 +46,11 @@ class CodePenButton extends LitElement {
     this.checkItOut = "Check it out on codepen";
     this.endPoint = "https://codepen.io/pen/define";
     this.data = {};
+    this.dataString = '';
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "data" && this[propName]) {
+      if (propName == "data" && this[propName] && this.dataString == '') {
         this.dataString = this._getDataString(this[propName]);
       }
     });

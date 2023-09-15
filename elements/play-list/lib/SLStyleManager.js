@@ -10,9 +10,9 @@ export function generateStyleLinkEls() {
   }
 
   const light = new URL(
-    "../../../@shoelace-style/shoelace/dist/themes/light.css",
+    "./light.css",
     import.meta.url
-  );
+  ).href;
   let link = document.createElement("link");
   link.setAttribute("rel", "stylesheet");
   link.setAttribute("media", "(prefers-color-scheme:light)");
@@ -21,9 +21,9 @@ export function generateStyleLinkEls() {
   document.head.appendChild(link);
 
   const dark = new URL(
-    "../../../@shoelace-style/shoelace/dist/themes/dark.css",
+    "./dark.css",
     import.meta.url
-  );
+  ).href;
   link = document.createElement("link");
   link.setAttribute("rel", "stylesheet");
   link.setAttribute("media", "(prefers-color-scheme:dark)");

@@ -529,7 +529,7 @@ class SimpleFieldsLite extends LitElement {
    * @memberof SimpleFieldsLite
    */
   get valid() {
-    return !this.error || Object.keys(this.error === {}).length === 0;
+    return !this.error || Object.keys(this.error || {}).length === 0;
   }
   /**
    * updates the schema
