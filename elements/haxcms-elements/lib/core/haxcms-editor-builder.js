@@ -109,12 +109,13 @@ class HAXCMSEditorBuilder extends HTMLElement {
         fetch(script.src).then((response) => {
           if (response.status != 404) {
             document.documentElement.appendChild(script);
+            this.__hasConnectionSettings = true;
           }
         });
       }
       // dynamic import if this isn't published tho we'll double check
       // that it's valid later
-      if (!["published", "11ty"].includes(context)) {
+      if (!["published", "11ty"].includes(context) && this.__hasConnectionSettings) {
         const basePath =
           new URL("./haxcms-editor-builder.js", import.meta.url).href + "/../";
         // import and set the tag based on the context
