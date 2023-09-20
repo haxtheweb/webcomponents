@@ -959,7 +959,7 @@ window.HAXme = function (context = null) {
     };
   }
   if (context == "demo") {
-    window.HAXCMSContext = true;
+    window.HAXCMSContext = "demo";
   }
   // apply context
   if (document.body) {

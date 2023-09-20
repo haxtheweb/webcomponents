@@ -258,6 +258,16 @@ class HAXCMSThemeWiring {
         localStorageSet("HAXCMSSystemData", {});
       }
     }
+    this.__disposer = this.__disposer ? this.__disposer : [];
+    autorun((reaction) => {
+      // we have a backend and we have a jwt, but didnt at onee point...
+      if (store.jwt && store.themeElement && store.cmsSiteEditorBackend.tag && store.themeElement.contentContainer && store.isLoggedIn) {
+        // this forces the connect callback to run which would have happened on intial spin up
+        // it also ensures some slow loading environments will still get the editor
+        this.connect(store.themeElement, store.themeElement.contentContainer)
+      }
+      this.__disposer.push(reaction);
+    });
   }
   /**
    * connect the theme and see if we have an authoring experience to inject correctly
@@ -290,12 +300,20 @@ class HAXCMSThemeWiring {
     if (this.cmsSiteEditorInstance) {
       document.body.appendChild(this.cmsSiteEditorInstance);
     }
-    this.cmsSiteEditorInstance = store.cmsSiteEditorAvailability();
-    store.cmsSiteEditor.instance.appElement = element;
-    store.cmsSiteEditor.instance.appendTarget = injector;
-    store.cmsSiteEditor.instance.appendTarget.appendChild(
-      store.cmsSiteEditor.instance
-    );
+    // if we don't have a backend, don't assume we have an editing experience
+    // or we'll keep injecting one regardless and then we're a lightdom read
+    // away from our autoloader hydrating it. also ensure we have a backend
+    // and a JWT from said backend before we proceed in injecting the editor
+    // this doesn't validate the jwt but the calls will do that for us
+    // this is ONLY the act of displaying the editor bar in the first place
+    if (store.jwt && store.cmsSiteEditorBackend.tag && store.isLoggedIn) {
+      this.cmsSiteEditorInstance = store.cmsSiteEditorAvailability();
+      store.cmsSiteEditor.instance.appElement = element;
+      store.cmsSiteEditor.instance.appendTarget = injector;
+      store.cmsSiteEditor.instance.appendTarget.appendChild(
+        store.cmsSiteEditor.instance
+      );
+    }
   }
   /**
    * detatch element events from whats passed in
