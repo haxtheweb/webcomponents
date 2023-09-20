@@ -376,12 +376,13 @@ class HAXCMSSiteEditor extends LitElement {
       var target = normalizeEventPath(e)[0];
       // check for JWT needing refreshed vs busted but must be 403
       switch (parseInt(e.detail.value.status)) {
-        // cookie data not found, need to go get it
+        // cookie data not found, or illegal operation, need to go get it
         // @notice this currently isn't possible but we could modify
         // the backend in the future to support throwing 401s dynamically
         // if we KNOW an event must expire the timing token
+        case 405:
         case 401:
-          this.dispatchEvent(
+            this.dispatchEvent(
             new CustomEvent("jwt-login-logout", {
               composed: true,
               bubbles: true,
