@@ -30,7 +30,9 @@
         "title": "Accent color",
         "description": "Accent color to colorize icon",
         "inputMethod": "colorpicker"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "dark",
         "title": "Dark",
@@ -38,7 +40,6 @@
         "inputMethod": "boolean"
       }
     ],
-    "advanced": [],
     "developer": []
   },
   "demoSchema": [
