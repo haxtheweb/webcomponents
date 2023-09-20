@@ -113,6 +113,9 @@ class HAXCMSEditorBuilder extends HTMLElement {
           }
         });
       }
+      if (context == "demo") {
+        this.__hasConnectionSettings = true;
+      }
       // dynamic import if this isn't published tho we'll double check
       // that it's valid later
       if (!["published", "11ty"].includes(context) && this.__hasConnectionSettings) {
