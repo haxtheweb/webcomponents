@@ -947,6 +947,7 @@ window.HAXme = function (context = null) {
       appStore: {
         url: "dist/dev/appstore.json",
       },
+      jwt: "made-up-thing",
       // add your custom theme here if testing locally and wanting to emulate the theme selector
       // this isn't really nessecary though
       themes: {
