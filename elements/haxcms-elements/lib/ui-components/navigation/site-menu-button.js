@@ -132,7 +132,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         ?disabled="${this.disabled}"
         aria-disabled="${this.disabled}"
         aria-label="${this.label}"
-        .part="${this.editMode ? `edit-mode-active` : ``}"
+        .part="${this.editMode ? `edit-mode-active link` : `link`}"
       >
         <button
           id="menulink"
@@ -140,7 +140,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
           ?disabled="${this.disabled}"
           ?raised="${this.raised}"
           aria-label="${this.label}"
-          .part="${this.editMode ? `edit-mode-active` : ``}"
+          .part="${this.editMode ? `edit-mode-active button` : `button`}"
         >
           <slot name="prefix"></slot>
           <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
