@@ -1,0 +1,8 @@
+<svg style="width:100px;height:100px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<ellipse transform="matrix(0.4981 0.8671 -0.8671 0.4981 67.6654 -16.9628)" fill="none" stroke="#363533" stroke-width="4" stroke-miterlimit="10" cx="48.486" cy="49.973" rx="28.779" ry="7.571"/>
+<ellipse transform="matrix(-0.4929 0.8701 -0.8701 -0.4929 116.2665 32.5203)" fill="none" stroke="#363533" stroke-width="4" stroke-miterlimit="10" cx="48.656" cy="50.143" rx="28.779" ry="7.571"/>
+<ellipse transform="matrix(-1 0.0047 -0.0047 -1 97.5483 100.0551)" fill="none" stroke="#363533" stroke-width="4" stroke-miterlimit="10" cx="48.656" cy="50.143" rx="28.779" ry="7.571"/>
+<circle fill="#363533" stroke="#363533" stroke-width="6" stroke-miterlimit="10" cx="27.635" cy="44.902" r="1.544"/>
+<circle fill="#363533" stroke="#363533" stroke-width="6" stroke-miterlimit="10" cx="54.199" cy="70.363" r="1.544"/>
+<circle fill="#363533" stroke="#363533" stroke-width="6" stroke-miterlimit="10" cx="63.195" cy="34.972" r="1.544"/>
+</svg>
