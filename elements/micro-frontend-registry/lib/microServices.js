@@ -208,6 +208,16 @@ export function enableHAXcmsServices() {
       body: "FormData class w/ uploaded file encoded into it",
     },
   });
+  // htmlToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/htmlToSite",
+    name: "@haxcms/htmlToSite",
+    title: "HTML to Site",
+    description: "Convert HTML file location to Site schema",
+    params: {
+      repoUrl: "Location of the repo",
+    },
+  });
   // evolutionToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/importEvolution",

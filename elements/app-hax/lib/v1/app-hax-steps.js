@@ -1074,6 +1074,14 @@ export class AppHaxSteps extends SimpleColors {
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
+            type="html"
+            prompt="URL for the html content"
+            callback="@haxcms/htmlToSite"
+            param="repoUrl"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.pressbooksImport}
             type="pressbooks"
             beta
