@@ -16,7 +16,6 @@ export default async function handler(req, res) {
   else {
     body = stdPostBody(req);
   }
-  console.log(body);
   if (!body || !body.repoUrl) {
     res = invalidRequest(res, 'missing `repoUrl` param');
   }
@@ -138,12 +137,13 @@ export default async function handler(req, res) {
         items.push(importSinglePage('new page', doc.querySelector('#import-wrapper').innerHTML, parentId));
       break;
     }
-    res = stdResponse(res,
-      {
+    res = stdResponse(res, {
+      data: {
         items: items,
         filename: parseURL.pathname,
-      }
-    );
+      },
+      status: 200
+    });
   }
 }
 

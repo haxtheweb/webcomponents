@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>PolarisTheme: polaris-theme Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/polaris-story-card.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      a {
+        text-decoration: none;
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+        margin-top: 2.5rem;
+      }
+      polaris-story-card {
+        padding: 0 15px;
+      }
+      .container {
+        margin: 64px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@400;500&family=Roboto:wght@400;500;700;900&display=swap" />
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic polaris-theme demo</h3>
+      <demo-snippet>
+        <template>
+          <div class="container">
+            <a href="https://hax.psu.edu/">
+              <polaris-story-card
+                image="https://www.psu.edu/impact-assets/images/cards/Shevy-card.jpg"
+                pillar="Education"
+                label="From the Waiting Room to the Living Room"
+              ></polaris-story-card>
+            </a>
+            <a href="https://hax.psu.edu/">
+              <polaris-story-card
+                image="https://www.psu.edu/impact-assets/images/cards/Kenneth.png"
+                pillar="Education"
+                label="Beyond Limitations"
+              ></polaris-story-card>
+            </a>
+            <a href="https://hax.psu.edu/">
+              <polaris-story-card
+                image="https://www.psu.edu/impact-assets/images/cards/Shoba-Wahdia_concluding.jpg"
+                pillar="Community"
+                label="Building Community Through Compassion"
+              ></polaris-story-card>
+            </a>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
