@@ -29,6 +29,7 @@ class PlayList extends LitElement {
     generateStyleLinkEls();
     this.items = [];
     this.loop = false;
+    this.edit = false;
     this.navigation = true;
     this.pagination = true;
     this.aspectRatio = "16:9";
@@ -94,6 +95,7 @@ class PlayList extends LitElement {
     return {
       items: { type: Array },
       loop: { type: Boolean, reflect: true },
+      edit: { type: Boolean, reflect: true },
       navigation: { type: Boolean, reflect: true },
       pagination: { type: Boolean, reflect: true },
       aspectRatio: { type: String, reflect: true, attribute: "aspect-ratio" },
@@ -154,6 +156,24 @@ class PlayList extends LitElement {
           height: 72px;
           width: 72px;
         }
+
+        /** edit mode, hax, etc */
+        :host([edit]) .edit-wrapper {
+          border: 2px dashed #999999;
+          box-sizing: border-box;
+          padding: 16px;
+          background-color: #f5f5f5;
+        }
+        :host([edit]) .edit-wrapper::before {
+          content: "Play list edit mode";
+          display: block;
+          font-size: 16px;
+        }
+        :host([edit]) .edit-wrapper ::slotted(*) {
+          display: block;
+          width: 100%;
+          padding: 16px;
+        }
       `,
     ];
   }
@@ -162,7 +182,7 @@ class PlayList extends LitElement {
    */
   render() {
     return html`
-      ${this.items.length > 0
+      ${this.items.length > 0 && !this.edit
         ? html`
             <sl-carousel
               ?navigation="${this.navigation &&
@@ -191,7 +211,7 @@ class PlayList extends LitElement {
               )}
             </sl-carousel>
           `
-        : nothing}
+        : html`<div class="edit-wrapper"><slot></slot></div>`}
     `;
   }
 
@@ -221,6 +241,10 @@ class PlayList extends LitElement {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      // implies we WERE in edit mode and now we are not
+      if (propName === "edit" && !this[propName] && oldValue) {
+        //this.mirrorLightDomToItems();
+      }
       // sync slide index with changes in the carousel
       if (
         propName == "slide" &&
@@ -242,6 +266,32 @@ class PlayList extends LitElement {
         }
       }
     });
+  }
+
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      inlineContextMenu: "haxinlineContextMenu",
+    };
+  }
+
+  /**
+   * add buttons when it is in context
+   */
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "lrn:edit",
+        callback: "haxToggleEdit",
+        label: "Toggle edit mode",
+      },
+    ];
+  }
+  haxToggleEdit(e) {
+    this.edit = !this.edit;
+    return true;
   }
 }
 customElements.define(PlayList.tag, PlayList);

@@ -39,6 +39,12 @@
         "inputMethod": "code-editor"
       },
       {
+        "property": "edit",
+        "title": "Edit mode",
+        "description": "Toggle between edit and preview mode for play list",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "navigation",
         "title": "Navigation",
         "description": "Show Forward and Backward navigation buttons",
@@ -83,7 +89,7 @@
     "developer": []
   },
   "saveOptions": {
-    "unsetAttributes": ["items"]
+    "unsetAttributes": ["items", "edit"]
   },
   "documentation": {
     "howTo": null,
