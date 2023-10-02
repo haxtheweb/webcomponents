@@ -184,6 +184,7 @@
     "@mdjs/mdjs-preview": "0.5.9",
     "@google/model-viewer": "3.2.1",
     "webpack": "5.87.0",
+    "uuid": "9.0.1",
     "roughjs": "4.4.5",
     "@lit/reactive-element": "1.6.3",
     "lit-element": "3.3.3",
