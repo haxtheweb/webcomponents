@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "uuid/dist/esm-node/index.js";
+import { v4 as uuidv4 } from '../../../vendor/uuid/esm-node/index.js';
 /**
  * JSONOutlineSchemaItem - a single item without an outline of items.
  */
