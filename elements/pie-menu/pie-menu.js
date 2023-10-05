@@ -158,6 +158,7 @@ class PieMenu extends PolymerElement {
           <circle
             id="center-button"
             xlink:title$="[[centerLabel]]"
+            aria-label="[[centerLabel]]"
             data-button="center"
             tabindex="0"
             on-click="_itemTapped"

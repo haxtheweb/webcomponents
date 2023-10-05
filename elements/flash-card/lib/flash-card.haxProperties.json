@@ -27,7 +27,8 @@
         "property": "imgSource",
         "title": "Image Source",
         "description": "Image file used for the card. Overrides Image Keyword.",
-        "inputMethod": "haxupload"
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true
       }
     ],
     "advanced": [

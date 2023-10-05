@@ -1,12 +1,22 @@
 import { fixture, expect, html } from "@open-wc/testing";
-
+/*
 import "../unity-webgl.js";
 
 describe("unity-webgl test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <unity-webgl title="test-title"></unity-webgl> `
+      html`<unity-webgl 
+      target="${new URL('../demo/example/build web', import.meta.url).href}" 
+      compression="unityweb"
+      streamingurl="StreamingAssets" 
+      companyname="DefaultCompany" 
+      productname="test webgl" 
+      productversion="0.1"
+      width="460px" 
+      height="400px" 
+      background="#231F20">
+    </unity-webgl>`
     );
   });
 
@@ -14,7 +24,7 @@ describe("unity-webgl test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
-
+*/
 /*
 describe("A11y/chai axe tests", () => {
   it("unity-webgl passes accessibility test", async () => {

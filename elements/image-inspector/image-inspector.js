@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/exif-data/exif-data.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
@@ -45,27 +44,8 @@ class ImageInspector extends LitElement {
           pointer-events: none; /** disable pointer events when rotated bc of HTML canvas issue */
           height: var(--image-inspector-height-rotated, 600px);
         }
-        .showData {
-          display: block;
-          z-index: 2;
-        }
         img-pan-zoom {
           --img-pan-zoom-height: var(--image-inspector-height, 600px);
-        }
-        exif-data {
-          margin: 0 auto;
-          justify-content: space-evenly;
-          position: absolute;
-          display: none;
-          margin: 0;
-          padding: 0;
-        }
-        exif-data img {
-          margin: 0;
-          opacity: 0;
-          padding: 0;
-          height: var(--image-inspector-height, 600px);
-          pointer-events: none;
         }
         .wrap {
           border-bottom: 1px solid black;
@@ -85,64 +65,41 @@ class ImageInspector extends LitElement {
     return html`
       <div class="wrap">
         <simple-icon-button
-          title="Zoom in"
+          label="Zoom in"
           icon="zoom-in"
           @click="${this.zoomIn}"
         ></simple-icon-button>
         <simple-icon-button
-          title="Zoom out"
+          label="Zoom out"
           icon="zoom-out"
           @click="${this.zoomOut}"
         ></simple-icon-button>
         <simple-icon-button
-          title="Rotate right"
+          label="Rotate right"
           icon="image:rotate-right"
           @click="${this.rotateRight}"
         ></simple-icon-button>
         <simple-icon-button
-          title="Rotate left"
+          label="Rotate left"
           icon="image:rotate-left"
           @click="${this.rotateLeft}"
         ></simple-icon-button>
         <simple-icon-button
-          title="Mirror image"
+          label="Mirror image"
           icon="image:flip"
           @click="${this.mirrorImage}"
         ></simple-icon-button>
         <a href="${this.src}" target="_blank" rel="noopener noreferrer">
           <simple-icon-button
-            title="Open in new window"
+            label="Open in new window"
             icon="launch"
           ></simple-icon-button>
         </a>
-        <simple-icon-button
-          title="EXIF Data"
-          icon="image:camera-roll"
-          @click="${this.exifDataEvent}"
-        ></simple-icon-button>
         <slot name="toolbar"></slot>
       </div>
-      <exif-data
-        id="exif"
-        @click=${this.hideData}
-        no-events
-        ?no-left="${this.noLeft}"
-        ><img src="${this.src}" />
-      </exif-data>
       <img-pan-zoom id="img" src="${this.src}"></img-pan-zoom>
       <slot></slot>
     `;
-  }
-  exifDataEvent(e) {
-    if (this.shadowRoot.querySelector("#exif").classList.contains("showData")) {
-      this.shadowRoot.querySelector("#exif").classList.remove("showData");
-    } else {
-      this.shadowRoot.querySelector("#exif").classList.add("showData");
-      this.shadowRoot.querySelector("#exif").updateExif(true);
-    }
-  }
-  hideData(e) {
-    this.shadowRoot.querySelector("#exif").classList.remove("showData");
   }
 
   static get tag() {
@@ -182,9 +139,6 @@ class ImageInspector extends LitElement {
       super.firstUpdated(changedProperties);
     }
     this.__img = this.shadowRoot.querySelector("#img");
-    this.shadowRoot.querySelector("#exif").alignTarget = this.__img;
-    this.shadowRoot.querySelector("#exif").alignTargetTop = "0px";
-    this.shadowRoot.querySelector("#exif").updateExif();
   }
   /**
    * Rotate the image to the right.

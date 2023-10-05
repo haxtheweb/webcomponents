@@ -223,7 +223,14 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
   /**
    * LitElement ready
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this._buildCountUp();
+  }
+
+  _buildCountUp() {
     const options = {
       startVal: this.start,
       decimalPlaces: this.decimalplaces,
@@ -245,9 +252,18 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
    * we can start counting
    */
   updated(propertiesChanged) {
+    if (super.updated) {
+      super.updated(propertiesChanged);
+    }
     propertiesChanged.forEach((oldValue, propName) => {
       if (propName == "elementVisible" && this[propName]) {
         this._countUp.start();
+      }
+      if (this.shadowRoot && propName == "end" && this[propName]) {
+        this._buildCountUp();
+        if (this.elementVisible) {
+          this._countUp.start();
+        }
       }
     });
   }

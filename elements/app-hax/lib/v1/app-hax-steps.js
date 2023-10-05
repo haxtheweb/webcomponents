@@ -112,8 +112,10 @@ export class AppHaxSteps extends SimpleColors {
     if (!e.target.comingSoon) {
       const { value } = e.target;
       store.site.structure = value;
-      // skip theme if new user
-      if (toJS(store.isNewUser)) {
+      // @note for now, auto select type and theme if making a course
+      // we might want to revisit this in the future
+      if (value === "course") {
+        store.site.type = "own";
         store.site.theme = "clean-one";
       }
       store.appEl.playSound("click2");
@@ -925,7 +927,7 @@ export class AppHaxSteps extends SimpleColors {
       ].includes(e.key)
     ) {
       store.appEl.playSound("error");
-      store.toast(`"${e.key}" not allowed in names`);
+      store.toast(`"${e.key}" is not allowed. Use - or _`);
       e.preventDefault();
     } else if (e.key === "Enter") {
       this.chooseName();
@@ -1072,6 +1074,14 @@ export class AppHaxSteps extends SimpleColors {
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
+            type="html"
+            prompt="URL for the html content"
+            callback="@haxcms/htmlToSite"
+            param="repoUrl"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.pressbooksImport}
             type="pressbooks"
             beta
@@ -1145,18 +1155,19 @@ export class AppHaxSteps extends SimpleColors {
                   value="import"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
-                <!-- <app-hax-site-button
-                  tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Website"
-                  value="website"
-                  @click=${this.chooseStructure}
-                ></app-hax-site-button> -->
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Portfolio"
                   value="portfolio"
                   @click=${this.chooseStructure}
                   ?coming-soon="${!this.unlockComingSoon}"
+                ></app-hax-site-button>
+                <app-hax-site-button
+                  tabindex="${this.step !== 1 ? "-1" : ""}"
+                  label="&gt; Website"
+                  value="website"
+                  ?coming-soon="${!this.unlockComingSoon}"
+                  @click=${this.chooseStructure}
                 ></app-hax-site-button>
               </div>
             </div>

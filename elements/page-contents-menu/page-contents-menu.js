@@ -32,6 +32,7 @@ class PageContentsMenu extends LitElement {
         :host([mobile]) .header .svg {
           padding: 0;
           margin: 0;
+          width: unset;
         }
         .wrapper {
           display: inline-block;
@@ -226,13 +227,9 @@ class PageContentsMenu extends LitElement {
       e.stopPropagation();
       e.stopImmediatePropagation();
       let objItem;
-      if (this.items[parseInt(target.getAttribute("data-index"))].item) {
-        objItem = this.items[parseInt(target.getAttribute("data-index"))].item;
-      } else {
-        objItem = this.contentContainer.querySelector(
-          "#" + this.items[parseInt(target.getAttribute("data-index"))].id
-        );
-      }
+      objItem = this.contentContainer.querySelector(
+        "#" + this.items[parseInt(target.getAttribute("data-index"))].id
+      );
       const isSafari = window.safari !== undefined;
       if (isSafari) {
         objItem.scrollIntoView();
@@ -240,11 +237,12 @@ class PageContentsMenu extends LitElement {
         objItem.scrollIntoView({
           behavior: "smooth",
           block: "start",
-          inline: "nearest",
+          inline: "start",
         });
       }
       // keep state in history
       window.history.pushState({}, null, target.getAttribute("href"));
+      window.dispatchEvent(new PopStateEvent("popstate"));
       // close menu
       this.hideSettings = true;
     }
@@ -385,7 +383,7 @@ class PageContentsMenu extends LitElement {
     }
     setTimeout(() => {
       this.updateMenu();
-    }, 1000);
+    }, 1500);
   }
   /**
    * LitElement life cycle - property changed
@@ -445,17 +443,33 @@ class PageContentsMenu extends LitElement {
         validTags.includes(item.tagName.toLowerCase())
       ) {
         let title = item.innerText;
-        if (
-          item.innerText == "" &&
-          this.fallbackText[item.tagName.toLowerCase()]
-        ) {
+        if (!title && item.title) {
+          title = item.title;
+        }
+        if (!title && item.mediaTitle) {
+          title = item.mediaTitle;
+        }
+        if (!title && this.fallbackText[item.tagName.toLowerCase()]) {
           title = this.fallbackText[item.tagName.toLowerCase()];
+        }
+        // force an ID on items that don't have one
+        // or this will do nothing
+        if (!item.id && item.getAttribute("resource")) {
+          item.setAttribute(
+            "id",
+            item.tagName.toLowerCase() +
+              item.getAttribute("resource").replace(/[^a-zA-Z0-9]/g, "")
+          );
+        } else if (!item.id) {
+          item.setAttribute("id", item.tagName.toLowerCase() + i);
         }
         let reference = {
           title: title,
           link: item.id ? document.location.pathname + "#" + item.id : null,
           id: item.id,
-          indent: parseInt(item.tagName.toLowerCase().replace("h", "")),
+          indent: parseInt(item.tagName.toLowerCase().replace("h", ""))
+            ? parseInt(item.tagName.toLowerCase().replace("h", ""))
+            : 2,
           active: "",
           item: item,
         };
@@ -564,7 +578,9 @@ class PageContentsMenu extends LitElement {
   _contentContainerChanged(newValue) {
     // simple test that this has content in it to parse
     if (newValue && newValue.childNodes && newValue.childNodes.length > 0) {
-      this.updateMenu();
+      setTimeout(() => {
+        this.updateMenu();
+      }, 50);
     }
   }
 

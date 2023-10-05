@@ -162,6 +162,9 @@ class SuperDaemon extends SimpleColors {
       this._addVoiceCommand.bind(this),
       { signal: this.windowControllers.signal }
     );
+    window.addEventListener("super-daemon-modal-close", this.close.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
   disconnectedCallback() {
     this.windowControllers.abort();
@@ -563,13 +566,17 @@ class SuperDaemon extends SimpleColors {
   // can't directly set context
   appendContext(context) {
     if (context && !this.context.includes(context)) {
-      this.context.push(context);
+      let newContext = [...this.context];
+      newContext.push(context);
+      this.context = [...newContext];
     }
   }
   // remove from context
   removeContext(context) {
     if (context && this.context.includes(context)) {
-      this.context.splice(this.context.indexOf(context), 1);
+      let newContext = [...this.context];
+      newContext.splice(newContext.indexOf(context), 1);
+      this.context = [...newContext];
     }
   }
   // if we click away, take the active value and apply it to the line
@@ -857,6 +864,7 @@ class SuperDaemon extends SimpleColors {
   // apply default voice commands for when we reset the voice UI
   defaultVoiceCommands() {
     this.addVoiceCommand(`(hey) ${this.voiceRespondsTo}`, this, "promptMerlin");
+    this.addVoiceCommand(`(hey) marilyn`, this, "promptMerlin"); // common mispronunciation
     this.addVoiceCommand(`stop listening`, this, "stopMerlin");
     this.addVoiceCommand(`close merlin`, this, "closeMerlin");
     this.addVoiceCommand(`cancel merlin`, this, "closeMerlin");
@@ -905,6 +913,28 @@ class SuperDaemon extends SimpleColors {
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
+    }
+    if (changedProperties.has("commandContext")) {
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-command-context-changed", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            value: this.commandContext,
+          },
+        })
+      );
+    }
+    if (changedProperties.has("context")) {
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-context-changed", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            value: this.context,
+          },
+        })
+      );
     }
     if (changedProperties.has("voiceSearch") && this.voiceSearch) {
       import("@lrnwebcomponents/hal-9000/hal-9000.js").then(() => {

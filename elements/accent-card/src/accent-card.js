@@ -480,6 +480,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             title: "Image",
             description: "Optional image",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
             icon: "editor:insert-photo",
           },
           {

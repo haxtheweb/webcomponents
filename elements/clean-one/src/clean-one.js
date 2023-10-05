@@ -822,6 +822,9 @@ class CleanOne extends HAXCMSRememberRoute(
       import(
          "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
        ).then(() => {
+        if (store.getInternalRoute() !== 'search') {
+          window.history.replaceState({}, null, "x/search");
+        }
          this.searchTerm = e.detail.value;
        });
     } else {
@@ -850,6 +853,7 @@ class CleanOne extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
+    this.searchTerm = "";
     this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore
     import(
@@ -892,6 +896,21 @@ class CleanOne extends HAXCMSRememberRoute(
     // hook up the scroll target
     this.shadowRoot.querySelector("scroll-button").target =
       this.shadowRoot.querySelector("#haxcms-theme-top");
+
+    const params = new URLSearchParams(store.currentRouterLocation.search);
+    // if we have a search param already, set it to the field on open
+    if (store.getInternalRoute() === "search" && params.get("search")) {
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+      ).then(() => {
+        this.searchTerm = params.get("search");
+        this.shadowRoot.querySelector("clean-one-search-box").focus();
+        // stall to allow value to be set
+        setTimeout(() => {
+          this.shadowRoot.querySelector("clean-one-search-box").select();
+        }, 0);
+      });
+    }
   }
   HAXCMSGlobalStyleSheetContent() {
     return [

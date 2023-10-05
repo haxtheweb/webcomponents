@@ -73,6 +73,18 @@ export function enableCoreServices() {
       type: "link for processing as link otherwise unused",
     },
   });
+
+  // prettyHtml
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/media/format/prettyHtml",
+    name: "@core/prettyHtml",
+    title: "Pretty HTML",
+    description: "Format HTML string (or file) to be more human readable",
+    params: {
+      html: "HTML or link to be converted",
+      type: "link for processing as link otherwise unused",
+    },
+  });
   // crypto
   MicroFrontendRegistry.add({
     endpoint: "/api/services/security/aes256",
@@ -194,6 +206,16 @@ export function enableHAXcmsServices() {
     description: "Convert .docx file to Site schema",
     params: {
       body: "FormData class w/ uploaded file encoded into it",
+    },
+  });
+  // htmlToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/htmlToSite",
+    name: "@haxcms/htmlToSite",
+    title: "HTML to Site",
+    description: "Convert HTML file location to Site schema",
+    params: {
+      repoUrl: "Location of the repo",
     },
   });
   // evolutionToSite
@@ -362,6 +384,17 @@ export function enableHAXcmsServices() {
     description: "array of terms found in the glossary slug",
     params: {
       url: "location of the HAXcms site",
+    },
+  });
+
+  // views
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/views",
+    name: "@haxcms/views",
+    title: "Views, but for HAX",
+    description: "Views criteria for slicing and remixing HAX site data",
+    params: {
+      site: "location of the HAXcms site",
     },
   });
 

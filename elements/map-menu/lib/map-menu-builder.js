@@ -42,7 +42,8 @@ class MapMenuBuilder extends LitElement {
                         ? item.metadata.avatarLabel
                         : ""}"
                       selected="${this.selected}"
-                      ?published="${item.metadata.published}"
+                      ?published="${this.getPublishedStatus(item)}"
+                      ?hide-in-menu="${this.hideInMenuStatus(item)}"
                     >
                       <map-menu-builder
                         .items="${item.children}"
@@ -62,7 +63,8 @@ class MapMenuBuilder extends LitElement {
                         ? item.metadata.pageType
                         : ""}"
                       selected="${this.selected}"
-                      ?published="${item.metadata.published}"
+                      ?published="${this.getPublishedStatus(item)}"
+                      ?hide-in-menu="${this.hideInMenuStatus(item)}"
                       ?locked="${item.metadata.locked}"
                       status="${item.metadata.status}"
                     ></map-menu-item>
@@ -71,6 +73,25 @@ class MapMenuBuilder extends LitElement {
           )
         : ""}
     `;
+  }
+
+  hideInMenuStatus(item) {
+    if (
+      item.metadata && item.metadata.hideInMenu == true
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  getPublishedStatus(item) {
+    if (
+      item.metadata &&
+      (item.metadata.published == false || item.metadata.published === "false")
+    ) {
+      return false;
+    }
+    return true;
   }
 
   static get tag() {

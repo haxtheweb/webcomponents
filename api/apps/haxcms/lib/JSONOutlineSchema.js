@@ -1,4 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from '../../../vendor/uuid/esm-node/index.js';
+
 import fetch from "node-fetch";
 import { JSONOutlineSchemaItem } from './JSONOutlineSchemaItem.js';
 /**

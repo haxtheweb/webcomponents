@@ -20,31 +20,34 @@ class CircleProgress extends mixinBehaviors(
 ) {
   static get template() {
     return html`
-      <style include="paper-material-styles">
-        :host {
-          @apply --layout-vertical;
-          @apply --layout-center-center;
-          position: relative;
-          width: var(--circle-progress-width, 64px);
-          height: var(--circle-progress-height, 64px);
-          margin: 24px;
-          border-radius: 50%;
-        }
-        svg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          display: none;
-        }
-        .circle-background {
-          stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);
-        }
-        .circle-foreground {
-          transition: stroke-dashoffset var(--circle-progress-transition, 150ms);
-          stroke: var(--circle-progress-stroke-color, blue);
-          stroke-linecap: var(--circle-progress-stroke-linecap, round);
-        }
-      </style>
+      <custom-style>
+        <style is="custom-style">
+          :host {
+            @apply --layout-vertical;
+            @apply --layout-center-center;
+            position: relative;
+            width: var(--circle-progress-width, 64px);
+            height: var(--circle-progress-height, 64px);
+            margin: 24px;
+            border-radius: 50%;
+          }
+          svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+          }
+          .circle-background {
+            stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);
+          }
+          .circle-foreground {
+            transition: stroke-dashoffset
+              var(--circle-progress-transition, 150ms);
+            stroke: var(--circle-progress-stroke-color, blue);
+            stroke-linecap: var(--circle-progress-stroke-linecap, round);
+          }
+        </style>
+      </custom-style>
 
       <svg id="circle" width="100%" height="100%">
         <circle

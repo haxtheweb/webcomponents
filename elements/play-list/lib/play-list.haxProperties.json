@@ -1,0 +1,105 @@
+{
+  "api": "1",
+  "type": "grid",
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "contentEditable": true,
+  "gizmo": {
+    "title": "Play list",
+    "description": "Display any kind of content in a play list",
+    "icon": "hax:view-gallery",
+    "color": "purple",
+    "tags": [
+      "Layout",
+      "play list",
+      "list",
+      "gallery",
+      "grid",
+      "player",
+      "slideshow",
+      "carousel",
+      "player"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "slotWrapper": "template",
+        "slotAttributes": {
+          "preserve-content": "preserve-content"
+        },
+        "title": "Source",
+        "description": "Code to be presented in content area",
+        "inputMethod": "code-editor"
+      },
+      {
+        "property": "edit",
+        "title": "Edit mode",
+        "description": "Toggle between edit and preview mode for play list",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "navigation",
+        "title": "Navigation",
+        "description": "Show Forward and Backward navigation buttons",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "pagination",
+        "title": "Pagination",
+        "description": "Show pagination dots",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "orientation",
+        "title": "Orientation",
+        "description": "Orientation of the slides",
+        "inputMethod": "select",
+        "options": {
+          "horizontal": "Horizontal",
+          "vertical": "Vertical"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slide to start on",
+        "description": "Slide the play list should focus on to start",
+        "inputMethod": "number"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Aspect Ratio",
+        "description": "Aspect ratio of the slides",
+        "inputMethod": "select",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ],
+    "developer": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["items", "edit"]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "play-list",
+      "content": "<img src=\"https://cdn2.thecatapi.com/images/9j5.jpg\" /><img src=\"https://cdn2.thecatapi.com/images/12.jpg\" />",
+      "properties": {}
+    }
+  ]
+}

@@ -50,8 +50,9 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       {
         property: "href",
         title: "Link",
-        inputMethod: "url",
-        autoValidate: true,
+        description: "The URL to a resource.",
+        required: true,
+        inputMethod: "haxupload",
       },
     ];
     this.command = "createLink";
@@ -64,6 +65,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.value = {
       ...super.value,
       href: null,
+      target: "_blank",
     };
     this.shortcutKeys = "ctrl+k";
   }
@@ -74,8 +76,9 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       {
         property: "href",
         title: "Link",
-        inputMethod: "url",
-        autoValidate: true,
+        description: "The URL to a resource.",
+        required: true,
+        inputMethod: "haxupload",
       },
     ];
   }
@@ -91,7 +94,14 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
               {
                 property: "target",
                 title: "Target",
-                inputMethod: "textfield",
+                description: "Where to open the link.",
+                inputMethod: "select",
+                options: {
+                  "": "Same window",
+                  _blank: "New window - _blank",
+                  _top: "Top window - _top",
+                  _parent: "Parent window - _parent",
+                },
               },
             ];
       }

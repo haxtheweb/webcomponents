@@ -270,6 +270,7 @@ class RelativeHeading extends RelativeHeadingLite {
             .aria-describedby="${this.id}"
             .icon="${this.linkIcon}"
             .title="${this.linkLabel}"
+            label="${this.linkLabel}"
             ?hidden="${this.disableLink}"
             ?disabled="${this.disableLink}"
             @click="${this._handleCopyClick}"

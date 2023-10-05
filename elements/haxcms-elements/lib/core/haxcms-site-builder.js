@@ -8,11 +8,11 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
+import "./haxcms-site-router.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
-import "@lrnwebcomponents/replace-tag/replace-tag.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/super-daemon/super-daemon.js";
-
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
+import "@lrnwebcomponents/replace-tag/replace-tag.js";
 // toggle store darkmode
 function darkToggle(e) {
   if (e.matches) {
@@ -45,14 +45,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         :host #slot {
           opacity: 0.2;
           visibility: hidden;
-        }
-        :host([dashboard-opened]) {
-          display: inline-block !important;
-          margin-left: 50vw;
-          height: 100vh;
-          pointer-events: none;
-          opacity: 0.5;
-          width: 100vw;
         }
         :host([theme-loaded]) #slot {
           opacity: 1;
@@ -131,45 +123,104 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     }
   }
   _updateActiveItemContent(data) {
-    let tmp = document.createElement("div");
-    tmp.innerHTML = data;
-    for (const node of tmp.childNodes) {
-      this.nodeNormalizeIDs(node);
+    if (data) {
+      let tmp = document.createElement("div");
+      tmp.innerHTML = data;
+      for (const node of tmp.childNodes) {
+        this.nodeNormalizeIDs(node);
+      }
+      data = tmp.innerHTML;
+      // cheat to ensure we get a rebuild of the content in case
+      // they only modified page title / other page-break based details
+      this.activeItemContent = "";
+      this.activeItemContent = data;
     }
-    data = tmp.innerHTML;
-    // cheat to ensure we get a rebuild of the content in case
-    // they only modified page title / other page-break based details
-    this.activeItemContent = "";
-    this.activeItemContent = data;
+    // punt, we didn't find anything
+    else if (
+      store.cmsSiteEditorBackend.instance &&
+      store.cmsSiteEditorBackend.instance.updateActiveItemContent
+    ) {
+      store.cmsSiteEditorBackend.instance.updateActiveItemContent();
+    } else {
+      this.activeItemContent = "";
+    }
+  }
+  display404Error() {
+    if (store.themeElement) {
+      let frag = document.createDocumentFragment();
+      let p = document.createElement("p");
+      p.innerHTML = `<strong>${store.getInternalRoute()}</strong> ${
+        this.t.couldNotBeLocated
+      }. ${this.t.hereAreSomePossibleRemedies}
+      <ul>
+        <li><a href="x/search?search=${store.getInternalRoute()}">${
+        this.t.useSearchToLocateTheContentYouAreLookingFor
+      }</a></li>
+        <li><a href="./">${this.t.goToTheHomePage}</a></li>
+        <li>${this.t.navigateToAnotherPageInTheMenu}</li>
+      </ul>`;
+      frag.appendChild(p);
+      wipeSlot(store.themeElement, "*");
+      store.themeElement.appendChild(frag);
+      setTimeout(() => {
+        store.toast(this.t.pageNotFound, 4000, {
+          fire: true,
+          walking: true,
+        });
+      }, 1000);
+    }
+  }
+  // interenal routes supply their own component which we render
+  renderInternalRoute() {
+    if (store.themeElement) {
+      let frag = document.createDocumentFragment();
+      if (store.activeItem.component) {
+        import(`../ui-components/routes/${store.activeItem.component}.js`).then(
+          () => {
+            let el = document.createElement(store.activeItem.component);
+            frag.appendChild(el);
+            wipeSlot(store.themeElement, "*");
+            store.themeElement.appendChild(frag);
+          }
+        );
+      }
+    }
   }
   /**
    * Load Page data
    */
   async loadPageData() {
     // file required or we have nothing; other two mixed in for pathing
-    if (this.activeItemLocation) {
+    if (this.activeItemLocation && !this.loading) {
       this.loading = true;
       let url = `${this.outlineLocation}${this.activeItemLocation}`;
-      if (this._timeStamp != "") {
+      if (this._timeStamp) {
         if (url.indexOf("?") != -1) {
           url += `&${this._timeStamp}`;
         } else {
           url += `?${this._timeStamp}`;
         }
       }
-      await fetch(url)
-        .then((response) => {
-          if (response.ok) {
-            return response.text();
-          }
-        })
-        .then((data) => {
-          this._updateActiveItemContent(data);
-          this.loading = false;
-        })
-        .catch((err) => {
-          this.lastErrorChanged(err);
-        });
+      if (this.activeItemLocation === "hax-internal-route.html") {
+        this.renderInternalRoute();
+        this.loading = false;
+      } else {
+        await fetch(url)
+          .then((response) => {
+            if (response.ok) {
+              return response.text();
+            } else {
+              this.display404Error();
+            }
+          })
+          .then((data) => {
+            this._updateActiveItemContent(data);
+            this.loading = false;
+          })
+          .catch((err) => {
+            this.lastErrorChanged(err);
+          });
+      }
     }
   }
   /**
@@ -237,13 +288,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       ) {
         loadOutline = true;
       }
-      if (propName == "_timeStamp") {
+      if (propName == "_timeStamp" && this[propName]) {
         loadOutline = true;
         loadPage = true;
       }
-      if (propName == "dashboardOpened") {
-        this._dashboardOpenedChanged(this[propName], oldValue);
-      } else if (propName == "themeData") {
+      if (propName == "themeData") {
         this._themeChanged(this[propName], oldValue);
       } else if (propName == "themeName") {
         this._themeNameChanged(this[propName], oldValue);
@@ -316,11 +365,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         type: Boolean,
         reflect: true,
         attribute: "is-logged-in",
-      },
-      dashboardOpened: {
-        type: Boolean,
-        reflect: true,
-        attribute: "dashboard-opened",
       },
       /**
        * queryParams
@@ -458,10 +502,23 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.windowControllers = new AbortController();
+    this.t = {
+      ...super.t,
+      pageNotFound: "Page not found",
+      navigateToAnotherPageInTheMenu: "Navigate to another page in the menu",
+      couldNotBeLocated: "could not be located",
+      hereAreSomePossibleRemedies: "Here are some possible remedies:",
+      useSearchToLocateTheContentYouAreLookingFor:
+        "Use Search to locate the content you are looking for",
+      goToTheHomePage: "Go to the home page",
+    };
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
-      localesPath: new URL("../../locales", import.meta.url).href,
+      localesPath: new URL(
+        "../../locales/haxcms.es.json",
+        import.meta.url
+      ).href.replace("/haxcms.es.json", "/"),
       locales: ["es"],
     });
     this.disableFeatures = "";
@@ -473,9 +530,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.themeLoaded = false;
     this.outlineLocation = "";
     this.activeItemLocation = "";
-    import("./haxcms-site-router.js").then(() => {
-      HAXcmsStore.storePieces.siteBuilder = this;
-    });
+    HAXcmsStore.storePieces.siteBuilder = this;
     // support initial setup stuff with slots
     for (var i in this.children) {
       if (this.children[i].tagName && this.children[i].getAttribute("slot")) {
@@ -530,6 +585,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+
     this.__ready = true;
     store.appReady = true;
     window.dispatchEvent(
@@ -573,10 +629,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     window.dispatchEvent(new Event("resize"));
     setTimeout(() => {
       autorun((reaction) => {
-        this.dashboardOpened = toJS(store.dashboardOpened);
-        this.__disposer.push(reaction);
-      });
-      autorun((reaction) => {
         this.themeData = toJS(store.themeData);
         if (this.themeData) {
           // special support for "format" in the URL dictating the possible output format
@@ -608,15 +660,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         this.__disposer.push(reaction);
       });
     }, 0);
-  }
-  _dashboardOpenedChanged(newValue, oldValue) {
-    if (newValue) {
-      this.setAttribute("aria-hidden", "aria-hidden");
-      this.setAttribute("tabindex", "-1");
-    } else if (!newValue && oldValue) {
-      this.removeAttribute("aria-hidden");
-      this.removeAttribute("tabindex");
-    }
   }
   /**
    * Detached life cycle
@@ -673,11 +716,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (newValue) {
       var html = newValue;
       // only append if not empty
-      if (html !== null && store.activeItem) {
+      if (html !== null && store.activeItem && store.activeItem.metadata) {
         wipeSlot(store.themeElement, "*");
         // force a page break w/ the relevant details in code
         // this allows the UI to be modified
+        // required fields followed by optional fields if defined
         newValue = `<page-break
+        break-type="site"
         title="${store.activeItem.title}"
         parent="${store.activeItem.parent}"
         item-id="${store.activeItem.id}"
@@ -694,11 +739,25 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             : ``
         }
         ${
+          store.activeItem.metadata.hideInMenu
+            ? `hide-in-menu="${store.activeItem.metadata.hideInMenu}"`
+            : ``
+        }
+        ${
+          store.activeItem.metadata.relatedItems
+            ? `related-items="${store.activeItem.metadata.relatedItems}"`
+            : ``
+        }
+        ${
+          store.activeItem.metadata.image
+            ? `image="${store.activeItem.metadata.image}"`
+            : ``
+        }
+        ${
           store.activeItem.metadata.theme && store.activeItem.metadata.theme.key
             ? `developer-theme="${store.activeItem.metadata.theme.key}"`
             : ``
         }
-        break-type="site"
         ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
         ${
           store.activeItem.metadata.published === false
@@ -731,7 +790,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             varExists(this.manifest, "metadata.node.dynamicElementLoader")
           ) {
             let tagsFound = findTagsInHTML(html);
-            const basePath = new URL("./locales", import.meta.url).href;
+            const basePath =
+              new URL("./locales/haxcms.es.json", import.meta.url).href +
+              "/../";
             for (var i in tagsFound) {
               const tagName = tagsFound[i];
               if (
@@ -846,7 +907,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // import the reference to the item dynamically, if we can
           try {
             // prettier-ignore
-            import(new URL("./../../../../" + newValue.path, import.meta.url).href).then((e) => {
+            import(new URL("./../../../../../" + newValue.path, import.meta.url).href).then((e) => {
               // add it into ourselves so it unpacks and we kick this off!
               this.__imported[theme.element] = theme.element;
               this.themeLoaded = true;
@@ -886,6 +947,7 @@ window.HAXme = function (context = null) {
       appStore: {
         url: "dist/dev/appstore.json",
       },
+      jwt: "made-up-thing",
       // add your custom theme here if testing locally and wanting to emulate the theme selector
       // this isn't really nessecary though
       themes: {
@@ -898,16 +960,14 @@ window.HAXme = function (context = null) {
     };
   }
   if (context == "demo") {
-    window.HAXCMSContext = true;
+    window.HAXCMSContext = "demo";
   }
   // apply context
   if (document.body) {
-    document.body.getElementsByTagName(
+    document.body.querySelector(
       "haxcms-editor-builder"
-    )[0].__appliedContext = false;
-    document.body
-      .getElementsByTagName("haxcms-editor-builder")[0]
-      .applyContext(context);
+    ).__appliedContext = false;
+    document.body.querySelector("haxcms-editor-builder").applyContext(context);
   }
 };
 

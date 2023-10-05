@@ -7,10 +7,14 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  store,
+  HAXcmsStore,
+} from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
-
+import "@lrnwebcomponents/lunr-search/lunr-search.js";
+import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
@@ -102,6 +106,7 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -117,10 +122,6 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
     this.showPath = false;
     this.showDate = false;
     this.__results = [];
-    setTimeout(() => {
-      import("@lrnwebcomponents/lunr-search/lunr-search.js");
-      import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
-    }, 0);
   }
   // render function
   render() {
@@ -132,6 +133,7 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
         label="${this.t.search}"
         placeholder="${this.t.typeAtLeast3LettersToStartSearch}.."
         type="text"
+        value="${this.search}"
         @value-changed="${this._searchValueChanged}"
       >
         <simple-icon icon="search" slot="prefix"></simple-icon>
@@ -215,6 +217,18 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
   }
   _searchValueChanged(e) {
     this.search = e.detail.value;
+    if (this.search) {
+      if (store.getInternalRoute() !== "search") {
+        window.history.replaceState({}, null, "x/search");
+      }
+      const params = new URLSearchParams(window.location.search);
+      params.set("search", this.search);
+      window.history.replaceState(
+        {},
+        "",
+        decodeURIComponent(`./x/search?${params}`)
+      );
+    }
   }
   async __resultsChanged(e) {
     if (e.detail.value) {
@@ -260,7 +274,6 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
             item.tags = fullItem.metadata.tags;
           }
         }
-        console.log(item);
       });
       this.__results = [...results];
     } else {
@@ -272,6 +285,7 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
    */
   static get properties() {
     return {
+      ...super.properties,
       dataSource: {
         type: String,
         attribute: "data-source",
@@ -306,6 +320,9 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
    * LitElement life cycle - ready callback
    */
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.shadowRoot
       .querySelector("#lunr")
       .addEventListener("results-changed", this.__resultsChanged.bind(this));
@@ -314,6 +331,9 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
    * LitElement life cycle - properties changed callback
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "search" && this[propName]) {
         this._searchChanged(this[propName], oldValue);

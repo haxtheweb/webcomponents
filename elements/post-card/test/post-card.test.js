@@ -20,7 +20,6 @@ describe("PostCard", () => {
 
   it("renders an h3", () => {
     const h3 = element.shadowRoot.querySelector("h3");
-    console.log(`Element is: ${h3}`);
     expect(h3).to.exist;
   });
 
@@ -66,7 +65,6 @@ describe("PostCardPostmark", () => {
   });
 
   it("renders a location", async () => {
-    console.log(element);
     const loco = element.shadowRoot.querySelector("p");
     expect(loco).to.exist;
     // expect(loco.textContent).to.equal('Europe')

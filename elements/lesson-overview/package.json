@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.9",
+  "version": "7.0.18",
   "description": "Clean presentation of what to expect in an upcoming lesson of instruction",
   "repository": {
     "type": "git",
@@ -44,22 +44,21 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^7.0.5",
-    "@lrnwebcomponents/haxcms-elements": "^7.0.9",
-    "@lrnwebcomponents/i18n-manager": "^7.0.5",
+    "@lrnwebcomponents/hax-iconset": "^7.0.18",
+    "@lrnwebcomponents/i18n-manager": "^7.0.18",
     "@lrnwebcomponents/intersection-element": "^7.0.4",
-    "@lrnwebcomponents/micro-frontend-registry": "^7.0.5",
-    "@lrnwebcomponents/simple-colors": "^7.0.5",
-    "@lrnwebcomponents/simple-icon": "^7.0.5",
-    "lit": "^2.7.5",
+    "@lrnwebcomponents/micro-frontend-registry": "^7.0.18",
+    "@lrnwebcomponents/simple-colors": "^7.0.18",
+    "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "lit": "^2.8.0",
     "mobx": "6.9.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.2.3",
+    "@web/dev-server": "0.3.1",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.0",
     "wct-browser-legacy": "1.0.2"
@@ -72,5 +71,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
+  "gitHead": "b9873176f9fe50a77dcf25e44bf3450d26fbb37a"
 }

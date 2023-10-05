@@ -138,10 +138,6 @@ export class RPGCharacterToast extends SimpleToastEl {
             --simple-toast-width: 80vw;
             --simple-toast-font-size: 12px;
           }
-          rpg-character {
-            width: 100px;
-            margin: 70px -24px 0 -24px;
-          }
         }
         @media (max-width: 500px) {
           :host {

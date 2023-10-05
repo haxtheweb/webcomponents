@@ -42,6 +42,8 @@
         "title": "URL",
         "description": "Enter an external url.",
         "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true,
         "required": true
       },
       {

@@ -13,6 +13,10 @@ import {
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import "@lrnwebcomponents/citation-element/citation-element.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+
 enableServices(["haxcms"]);
 /**
  * `site-remote-content`
@@ -20,17 +24,19 @@ enableServices(["haxcms"]);
  *
  * @demo demo/index.html
  */
-class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
+class SiteRemoteContent extends HAXCMSI18NMixin(
+  IntersectionObserverMixin(LitElement)
+) {
   static get styles() {
     return [
       css`
         :host {
-          display: inline;
+          display: block;
         }
         #slot {
           display: none;
         }
-        :host #content {
+        :host(:not([hide-reference])) #content {
           border-left: 10px solid #eeeeee;
           margin-left: -10px;
         }
@@ -45,181 +51,28 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
         :host([loading]) .loading {
           margin: 8px 0 0 -12px;
           font-size: 2px;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          --simple-icon-height: 20px;
+          --simple-icon-width: 20px;
           position: absolute;
-          -webkit-animation: load5 1.1s infinite ease;
-          animation: load5 1.1s infinite ease;
-          -webkit-transform: translateZ(0);
-          -ms-transform: translateZ(0);
-          transform: translateZ(0);
         }
-        @-webkit-keyframes load5 {
-          0%,
-          100% {
-            box-shadow: 0em -2.6em 0em 0em var(--enhanced-text-color, #000000),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.5),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
-          }
-          12.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
-              1.8em -1.8em 0 0em var(--enhanced-text-color, #000000),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
-          }
-          25% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7),
-              2.5em 0em 0 0em var(--enhanced-text-color, #000000),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          37.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.7),
-              1.75em 1.75em 0 0em var(--enhanced-text-color, #000000),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          50% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.5),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7),
-              0em 2.5em 0 0em var(--enhanced-text-color, #000000),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          62.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.7),
-              -1.8em 1.8em 0 0em var(--enhanced-text-color, #000000),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          75% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.5),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7),
-              -2.6em 0em 0 0em var(--enhanced-text-color, #000000),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          87.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.7),
-              -1.8em -1.8em 0 0em var(--enhanced-text-color, #000000);
-          }
+        :host([player][loading]) .loading {
+          margin: 8px 0px 0px -12px;
+          font-size: 2px;
+          height: 100%;
+          --simple-icon-height: 100px;
+          --simple-icon-width: 100px;
+          width: 400px;
+          display: flex;
+          justify-content: center;
+          position: relative;
+          top: 25px;
+          left: 25px;
         }
-        @keyframes load5 {
-          0%,
-          100% {
-            box-shadow: 0em -2.6em 0em 0em var(--enhanced-text-color, #000000),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.5),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
-          }
-          12.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
-              1.8em -1.8em 0 0em var(--enhanced-text-color, #000000),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
-          }
-          25% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7),
-              2.5em 0em 0 0em var(--enhanced-text-color, #000000),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          37.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.7),
-              1.75em 1.75em 0 0em var(--enhanced-text-color, #000000),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          50% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.5),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7),
-              0em 2.5em 0 0em var(--enhanced-text-color, #000000),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          62.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.7),
-              -1.8em 1.8em 0 0em var(--enhanced-text-color, #000000),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          75% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.5),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7),
-              -2.6em 0em 0 0em var(--enhanced-text-color, #000000),
-              -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-          }
-          87.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-              1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-              2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-              1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-              0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-              -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
-              -2.6em 0em 0 0em rgba(255, 255, 255, 0.7),
-              -1.8em -1.8em 0 0em var(--enhanced-text-color, #000000);
-          }
+
+        :host([player][loading]) .loading simple-icon-lite {
+          height: 100%;
         }
       `,
     ];
@@ -232,15 +85,21 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
+    this.__disposer = [];
+    this.player = false;
     this.circularBlock = false;
     this.itemManifest = {};
     this.loading = false;
     this.uuid = null;
+    this.hideReference = false;
     this.siteurl = "";
     this.showTitle = false;
     this.breakreference = false;
     this._remoteTitle = null;
+    this.t = super.t || {};
     this.t = {
+      ...this.t,
       selectPage: "Select page",
     };
     let pNode = this;
@@ -261,11 +120,19 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
    */
   render() {
     return html`
-      <div class="loading"></div>
-      ${this.showTitle && this._remoteTitle
-        ? html`<h3>${this._remoteTitle}</h3>`
+      ${this.elementVisible
+        ? html`
+            <div class="loading">
+              ${this.loading
+                ? html`<simple-icon-lite icon="hax:loading"></simple-icon-lite>`
+                : ``}
+            </div>
+            ${this.showTitle && this._remoteTitle
+              ? html`<h3>${this._remoteTitle}</h3>`
+              : ``}
+            <div id="slot"><slot></slot></div>
+          `
         : ``}
-      <div id="slot"><slot></slot></div>
       <div id="content"></div>
     `;
   }
@@ -274,79 +141,82 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (
-        propName === "uuid" &&
-        this[propName] &&
-        !this.breakreference &&
-        !this.loading &&
-        !this.circularBlock
-      ) {
-        this.loading = true;
-        let url = this.siteurl;
-        if (url == "" && window.HAXCMS && window.location) {
-          url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
-        }
-        // when UUID changes, remote load the content from it, replacing our own light dom material
-        MicroFrontendRegistry.call(
-          "@haxcms/pageCache",
-          {
-            site: url,
-            type: "link",
-            uuid: this.uuid,
-            data: true,
-          },
-          this.renderContentResponse.bind(this)
-        );
-      }
-      // aggressive, only run this if we actually are an author of material / have HAX tools
-      if (
-        propName === "siteurl" &&
-        window.HaxStore &&
-        !this.loading &&
-        !this.circularBlock
-      ) {
-        clearTimeout(this.__debounce);
-        this.__debounce = setTimeout(() => {
+      // no calls until we're actually visible
+      if (this.elementVisible) {
+        if (
+          (propName === "uuid" || propName === "elementVisible") &&
+          this[propName] &&
+          !this.breakreference &&
+          !this.loading &&
+          !this.circularBlock
+        ) {
           this.loading = true;
-          // forces the form to update as opposed to deferring to what it loaded initially
-          this.__refresh = true;
-          window.HaxStore.instance.refreshActiveNodeForm();
-        }, 1500);
-      }
-      // this is crazy, take that content and spill it into lightDom
-      // and it should be modifiable
-      if (propName === "breakreference" && this[propName]) {
-        // find the content area in shadow
-        const cid = this.shadowRoot.querySelector("#content");
-        let child = cid.firstElementChild;
-        while (child) {
-          this.appendChild(child);
-          child = cid.firstElementChild;
+          let url = this.siteurl;
+          if (url == "" && window.HAXCMS && window.location) {
+            url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
+          }
+          // when UUID changes, remote load the content from it, replacing our own light dom material
+          MicroFrontendRegistry.call(
+            "@haxcms/pageCache",
+            {
+              site: url,
+              type: "link",
+              uuid: this.uuid,
+              data: true,
+            },
+            this.renderContentResponse.bind(this)
+          );
         }
-      }
-      // used to be break reference, now we as re-establishing the reference
-      else if (
-        propName === "breakreference" &&
-        !this[propName] &&
-        oldValue &&
-        !this.circularBlock
-      ) {
-        this.loading = true;
-        wipeSlot(this);
-        let url = this.siteurl;
-        if (url == "" && window.HAXCMS && window.location) {
-          url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
+        // aggressive, only run this if we actually are an author of material / have HAX tools
+        if (
+          propName === "siteurl" &&
+          window.HaxStore &&
+          !this.loading &&
+          !this.circularBlock
+        ) {
+          clearTimeout(this.__debounce);
+          this.__debounce = setTimeout(() => {
+            this.loading = true;
+            // forces the form to update as opposed to deferring to what it loaded initially
+            this.__refresh = true;
+            window.HaxStore.instance.refreshActiveNodeForm();
+          }, 1500);
         }
-        MicroFrontendRegistry.call(
-          "@haxcms/pageCache",
-          {
-            site: url,
-            type: "link",
-            uuid: this.uuid,
-            data: true,
-          },
-          this.renderContentResponse.bind(this)
-        );
+        // this is crazy, take that content and spill it into lightDom
+        // and it should be modifiable
+        if (propName === "breakreference" && this[propName]) {
+          // find the content area in shadow
+          const cid = this.shadowRoot.querySelector("#content");
+          let child = cid.firstElementChild;
+          while (child) {
+            this.appendChild(child);
+            child = cid.firstElementChild;
+          }
+        }
+        // used to be break reference, now we as re-establishing the reference
+        else if (
+          propName === "breakreference" &&
+          !this[propName] &&
+          oldValue &&
+          !this.circularBlock
+        ) {
+          this.loading = true;
+          wipeSlot(this);
+          let url = this.siteurl;
+          if (url == "" && window.HAXCMS && window.location) {
+            url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
+          }
+          MicroFrontendRegistry.call(
+            "@haxcms/pageCache",
+            {
+              site: url,
+              type: "link",
+              uuid: this.uuid,
+              data: true,
+            },
+            this.renderContentResponse.bind(this)
+          );
+        }
       }
     });
   }
@@ -386,7 +256,13 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       if (!this.breakreference) {
         lightChildrenToShadowRootSelector(this, "#content");
       }
-      if (this.itemManifest && response.data && !this.breakreference) {
+      if (
+        !this.hideReference &&
+        this.itemManifest &&
+        this.itemManifest.title &&
+        response.data &&
+        !this.breakreference
+      ) {
         window.HaxStore.instance.activeBodyIgnoreActive(false);
         var today = new Date();
         var dd = today.getDate();
@@ -432,6 +308,10 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       uuid: {
         type: String,
       },
+      player: {
+        type: Boolean,
+        reflect: true,
+      },
       // to avoid confusion w/ the site itself
       siteurl: {
         type: String,
@@ -450,6 +330,11 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       breakreference: {
         type: Boolean,
         reflect: true,
+      },
+      hideReference: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hide-reference",
       },
     };
   }
@@ -548,7 +433,9 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
   // render the shadow root hidden content to lightDom
   // so we can pull it in on initial page load
   haxprogressiveEnhancement(el) {
-    return this.shadowRoot.querySelector("#content").innerHTML;
+    if (this.shadowRoot && this.shadowRoot.querySelector("#content")) {
+      return this.shadowRoot.querySelector("#content").innerHTML;
+    }
   }
   /**
    * Allow for dynamic setting of the parent field if we have the store around

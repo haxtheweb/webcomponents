@@ -83,6 +83,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -188,6 +193,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -201,9 +209,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -299,6 +304,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -404,6 +414,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -417,9 +430,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -515,6 +525,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -620,6 +635,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -633,9 +651,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -753,6 +768,11 @@
           "type": "string"
         },
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -858,6 +878,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -871,9 +894,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -991,6 +1011,11 @@
           "type": "string"
         },
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -1096,6 +1121,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1109,9 +1137,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -1207,6 +1232,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -1312,6 +1342,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1325,9 +1358,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -1423,6 +1453,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -1528,6 +1563,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1541,9 +1579,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -1639,6 +1674,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -1744,6 +1784,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1757,9 +1800,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"
@@ -1855,6 +1895,11 @@
       ],
       "properties": [
         {
+          "name": "HAXCMSI18NMixinBase",
+          "type": "string",
+          "default": "\"../../\""
+        },
+        {
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
@@ -1960,6 +2005,9 @@
           "name": "haxcms-toast-hide"
         },
         {
+          "name": "popstate"
+        },
+        {
           "name": "haxcms-toast-show"
         },
         {
@@ -1973,9 +2021,6 @@
         },
         {
           "name": "resize"
-        },
-        {
-          "name": "popstate"
         },
         {
           "name": "haxcms-active-item-changed"

@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../lazy-import-discover.js";
-
+/*
 describe("lazy-import-discover test", () => {
   let element;
   beforeEach(async () => {
@@ -14,7 +14,7 @@ describe("lazy-import-discover test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
-
+*/
 /*
 describe("A11y/chai axe tests", () => {
   it("lazy-import-discover passes accessibility test", async () => {

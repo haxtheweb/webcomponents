@@ -50,7 +50,9 @@ export class PostCard extends LitElement {
         detail: {
           context: this,
           namespace: "post-card",
-          localesPath: new URL("./locales", import.meta.url).href,
+          localesPath:
+            new URL("./locales/post-card.es.json", import.meta.url).href +
+            "/../",
           updateCallback: "render",
           locales: ["es", "de", "fr", "it", "ja", "zh_CN"],
         },

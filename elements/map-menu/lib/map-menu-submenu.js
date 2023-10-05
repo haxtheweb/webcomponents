@@ -19,6 +19,9 @@ class MapMenuSubmenu extends LitElement {
         :host([opened]) map-menu-header {
           /*border-left: 16px solid var(--map-menu-border-depth, rgba(0,0,0,.1));*/
         }
+        :host([hide-in-menu]) {
+          display: none;
+        }
         #container {
           margin: 0;
         }
@@ -50,6 +53,7 @@ class MapMenuSubmenu extends LitElement {
     this.itemtitle = "";
     this.locked = false;
     this.published = true;
+    this.hideInMenu = false;
     this.icon = null;
     this.__icon = "";
     setTimeout(() => {
@@ -96,6 +100,7 @@ class MapMenuSubmenu extends LitElement {
           icon-label="${this.iconLabel}"
           slot="heading"
           ?published="${this.published}"
+          ?hide-in-menu="${this.hideInMenu}"
           ?locked="${this.locked}"
           status="${this.status}"
         ></map-menu-header>
@@ -126,6 +131,11 @@ class MapMenuSubmenu extends LitElement {
         type: String,
         attribute: "avatar-label",
       },
+      hideInMenu: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hide-in-menu",
+      },
       label: {
         type: String,
       },
@@ -152,6 +162,7 @@ class MapMenuSubmenu extends LitElement {
       },
       published: {
         type: Boolean,
+        reflect: true,
       },
       locked: {
         type: Boolean,

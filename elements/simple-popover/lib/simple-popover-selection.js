@@ -5,6 +5,7 @@ import "./simple-popover-manager.js";
 class SimplePopoverSelection extends LitElement {
   constructor() {
     super();
+    this.opened = false;
     this.disabled = false;
     this.event = "click";
   }
@@ -106,7 +107,14 @@ class SimplePopoverSelection extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "opened" && this.shadowRoot) {
-        this.openedChanged(this[propName]);
+        if (oldValue !== undefined) {
+          this.openedChanged(this[propName]);
+          this.dispatchEvent(
+            new CustomEvent(`${propName}-changed`, {
+              detail: this,
+            })
+          );
+        }
       }
     });
   }

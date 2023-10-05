@@ -41,9 +41,9 @@
       "logo": "files/3450183.png"
     },
     "theme": {
-      "element": "clean-one",
-      "path": "@lrnwebcomponents/terrible-themes/lib/terrible-productionz-themes.js",
-      "name": "Course theme",
+      "element": "app-hax-theme",
+      "path": "node_modules/@lrnwebcomponents/app-hax/lib/app-hax-theme.js",
+      "name": "8-bit theme",
       "variables": {
         "image": "assets/banner.jpg",
         "hexCode": "#009dc7",
@@ -94,7 +94,8 @@
       "description": "Include HAX in your projectThe developers docs will lay out the many specifications that make HAX possible including core concepts, different schema's it leverages ad how to define app store spec in ",
       "metadata": {
         "created": 1548826475,
-        "updated": 1617805490
+        "updated": 1617805490,
+        "tags": "submitting an assignment,page,another,things,here"
       }
     },
     {
@@ -356,7 +357,10 @@
       "description": "",
       "metadata": {
         "created": 1548826475,
-        "updated": 1617805490
+        "updated": 1617805490,
+        "tags": "submitting an assignment,page,another,things,here",
+        "hideInMenu": true,
+        "relatedItems": ["item-39074718-758f-d51b-1dc5-15cfbb79e44c", "item-504d6323-873d-49e3-9de0-ffa56c28fdf5", "item-a91393ea-31f8-30bd-888f-275a05e08e0a"]
       }
     },
     {

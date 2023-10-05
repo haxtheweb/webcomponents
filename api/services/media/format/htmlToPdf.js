@@ -41,6 +41,7 @@ export default async function handler(req, res) {
       </body>
       <script>window.__appCDN="${magic}";</script>
       <script src="${magic}build.js"></script>
+      <script src="${magic}build-haxcms.js"></script>
     </html>`;
     const response = await fetch(`https://pdf-from.elmsln.vercel.app/api/pdfFrom`,
       {

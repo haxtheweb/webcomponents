@@ -26,18 +26,17 @@ export class SortingOption extends LitElement {
     this.addEventListener("mouseup", this.dragEnd);
   }
 
-  getCurrentPosition() {
+  getCurrentPosition(e) {
     if (!this.disabled) {
       this.style.backgroundColor = "darkgray";
       this.removeAttribute("correct");
       this.removeAttribute("incorrect");
-      var mouseTracker = window.event;
-      var posY = mouseTracker.clientY;
+      var posY = e.clientY;
       this.currentPosition = posY;
     }
   }
 
-  dragStart() {
+  dragStart(e) {
     if (!this.disabled) {
       //distance above or below current pos to switch index
       var changeBuffer = 30;
@@ -46,8 +45,7 @@ export class SortingOption extends LitElement {
         changeBuffer = 70;
       }
       // this.style.visibility = "hidden";
-      var mouseTracker = window.event;
-      var posY = mouseTracker.clientY;
+      var posY = e.clientY;
       //drag stop counts as drag for some reason so make sure not to set drag pos to zero
       if (posY != 0 && posY > 0) {
         this.dragPosition = posY;

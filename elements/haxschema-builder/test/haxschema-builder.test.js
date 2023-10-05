@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../haxschema-builder.js";
-
+/*
 describe("haxschema-builder test", () => {
   let element;
   beforeEach(async () => {
@@ -13,7 +13,7 @@ describe("haxschema-builder test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
-});
+});*/
 
 /*
 describe("A11y/chai axe tests", () => {

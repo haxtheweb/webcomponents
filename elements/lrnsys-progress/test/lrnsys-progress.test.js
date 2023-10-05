@@ -6,7 +6,16 @@ describe("lrnsys-progress test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <lrnsys-progress title="test-title"></lrnsys-progress> `
+      html`
+        <lrnsys-progress
+          sound=""
+          sound-finish=""
+          title="The steps to complete this lesson"
+          id="progress"
+          progressive-unlock=""
+          size="large"
+        ></lrnsys-progress>
+      `
     );
   });
 

@@ -278,7 +278,7 @@ class SelfCheck extends I18NMixin(
             <div class="check_button">
               <simple-icon-button
                 controls="answer_wrap"
-                aria-label="${this.t.revealAnswer}"
+                label="${this.t.revealAnswer}"
                 id="checkBtn"
                 class="check-btn"
                 icon="icons:check-circle"
@@ -312,7 +312,7 @@ class SelfCheck extends I18NMixin(
                 : ``}
               <div class="close_button">
                 <simple-icon-button
-                  aria-label="${this.t.close}"
+                  label="${this.t.close}"
                   id="closeBtn"
                   ?dark="${!this.dark}"
                   icon="icons:close"

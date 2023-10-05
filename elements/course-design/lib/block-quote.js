@@ -41,8 +41,8 @@ export class BlockQuote extends LitElement {
                 id="iconflip"
                 icon="editor:format-quote"
               ></simple-icon-lite>
-              <div><slot></slot></div>
-              <div><slot name="quote"></slot></div>
+              <span><slot></slot></span>
+              <span><slot name="quote"></slot></span>
               <simple-icon-lite icon="editor:format-quote"></simple-icon-lite>
             </div>
             <div id="citation">
@@ -84,6 +84,10 @@ export class BlockQuote extends LitElement {
           flex-direction: column;
           flex: 1 1 auto;
           padding: 20px 20px 0;
+        }
+
+        div ::slotted(*) {
+          display: inline;
         }
 
         #quote {

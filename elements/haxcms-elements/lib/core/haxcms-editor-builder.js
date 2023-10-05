@@ -89,7 +89,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
       });
     }
   }
-  applyContext(context = null) {
+  async applyContext(context = null) {
     if (!this.__appliedContext) {
       this.__appliedContext = true;
       // this allows forced context
@@ -106,15 +106,19 @@ class HAXCMSEditorBuilder extends HTMLElement {
         } else {
           script.src = `../../system/api/connectionSettings`;
         }
-        fetch(script.src).then((response) => {
-          if (response.status != 404) {
+        await fetch(script.src).then((response) => {
+          if (response.ok) {
+            this.__hasConnectionSettings = true;
             document.documentElement.appendChild(script);
           }
         });
       }
+      if (context == "demo") {
+        this.__hasConnectionSettings = true;
+      }
       // dynamic import if this isn't published tho we'll double check
       // that it's valid later
-      if (!["published", "11ty"].includes(context)) {
+      if (!["published", "11ty"].includes(context) && this.__hasConnectionSettings) {
         const basePath =
           new URL("./haxcms-editor-builder.js", import.meta.url).href + "/../";
         // import and set the tag based on the context

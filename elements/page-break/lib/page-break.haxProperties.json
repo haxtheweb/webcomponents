@@ -1,9 +1,11 @@
 {
+  "type": "element",
   "canScale": false,
   "canPosition": false,
   "canEditSource": false,
+  "hideDefaultSettings": true,
   "gizmo": {
-    "title": "Page break",
+    "title": "Page details",
     "description": "Define a visual split between pages which CMSs can use to create pages.",
     "icon": "editor:format-page-break",
     "color": "grey",
@@ -61,7 +63,9 @@
         "title": "Tags",
         "description": "Comma separated list of tags",
         "inputMethod": "textfield"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "published",
         "title": "Published",
@@ -73,14 +77,20 @@
         "title": "Lock page",
         "description": "Lock / Unlock all elements in this page",
         "inputMethod": "boolean"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "slug",
         "title": "Path",
         "description": "URL slug related to this page",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "image",
+        "title": "Image",
+        "description": "Image that represents the page, used in some themes and views.",
+        "inputMethod": "haxupload",
+        "noCamera": true,
+        "noVoiceRecord": true
       },
       {
         "property": "parent",
@@ -89,13 +99,37 @@
         "inputMethod": "textfield"
       },
       {
+        "property": "noderefs",
+        "title": "Related content",
+        "description": "Content related to this page",
+        "inputMethod": "array",
+        "itemLabel": "item",
+        "hideReorder": true,
+        "expanded": false,
+        "hideDuplicate": true,
+        "properties": [
+          {
+            "property": "node",
+            "title": "Page",
+            "description": "A page related to the current content",
+            "inputMethod": "textfield"
+          }
+        ]
+      }
+    ],
+    "developer": [
+      {
+        "property": "hideInMenu",
+        "title": "Hide in menu",
+        "description": "Useful if you need content with a slug",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "order",
         "title": "Order",
         "description": "Order relative to other sibling pages",
         "inputMethod": "number"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "developerTheme",
         "title": "Page theme",
@@ -105,7 +139,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["t", "_hax-state", "element-visible"]
+    "unsetAttributes": ["t", "_hax-state", "element-visible", "noderefs"]
   },
   "demoSchema": [
     {

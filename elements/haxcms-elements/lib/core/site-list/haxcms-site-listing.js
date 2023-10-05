@@ -2092,7 +2092,8 @@ class HAXCMSSiteListing extends PolymerElement {
       var target = normalizeEventPath(e)[0];
       // check for JWT needing refreshed vs busted but must be 403
       switch (parseInt(e.detail.value.status)) {
-        // cookie data not found, need to go get it
+        // cookie data not found, or illegal operation, need to go get it
+        case 405:
         case 401:
           this.dispatchEvent(
             new CustomEvent("jwt-login-logout", {

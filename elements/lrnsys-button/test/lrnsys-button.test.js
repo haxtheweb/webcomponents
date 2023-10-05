@@ -6,7 +6,13 @@ describe("lrnsys-button test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <lrnsys-button title="test-title"></lrnsys-button> `
+      html`
+        <lrnsys-button
+          alt="Google.com"
+          icon="cloud-done"
+          label="Google"
+        ></lrnsys-button>
+      `
     );
   });
 

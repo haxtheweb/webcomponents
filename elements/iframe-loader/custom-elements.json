@@ -49,7 +49,7 @@
         },
         {
           "name": "height",
-          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: 100"
+          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: 500"
         },
         {
           "name": "width",

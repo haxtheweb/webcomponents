@@ -75,6 +75,7 @@ class HaxPicker extends LitElement {
     super();
     this._elements = [];
     this.selectionList = [];
+    this.activePreview = null;
     this.pickerType = "gizmo";
   }
   render() {
@@ -104,7 +105,11 @@ class HaxPicker extends LitElement {
           !this._isFiltered(element.keywords)
             ? ""
             : html`
-                <simple-popover-selection event="hover">
+                <simple-popover-selection
+                  data-index="${index}"
+                  @opened-changed="${this._hoverForPreviewChange}"
+                  event="hover"
+                >
                   <hax-tray-button
                     show-text-label
                     id="picker-item-${index}"
@@ -117,16 +122,35 @@ class HaxPicker extends LitElement {
                     icon-position="top"
                     slot="button"
                   ></hax-tray-button>
-                  <hax-element-demo
-                    tag-name="${element.tag}"
-                    slot="options"
-                    active-picker-schema="${index}"
-                  ></hax-element-demo>
+                  ${this.activePreview === parseInt(index)
+                    ? html`
+                        <hax-element-demo
+                          render-tag="${element.tag}"
+                          slot="options"
+                          active-picker-schema="${index}"
+                        ></hax-element-demo>
+                      `
+                    : ``}
                 </simple-popover-selection>
               `
         )}
       </simple-button-grid>
     `;
+  }
+  // react to "opened" changing on the popover
+  _hoverForPreviewChange(e) {
+    const popover = e.detail;
+    // this is open
+    if (popover.opened) {
+      this.activePreview = parseInt(popover.dataset.index);
+      // @notice
+      // timing hack because the act of opening the element triggers a light dom rebuild
+      // in which the element is not yet visible, so we need to wait a tick
+      // and then tell the pop up it should look at and re-clone it's light dom
+      setTimeout(() => {
+        e.detail.openedChanged(true);
+      }, 10);
+    }
   }
   static get tag() {
     return "hax-picker";
@@ -138,6 +162,9 @@ class HaxPicker extends LitElement {
        */
       _elements: {
         type: Array,
+      },
+      activePreview: {
+        type: Number,
       },
       keywords: {
         type: Object,
@@ -256,6 +283,7 @@ class HaxPicker extends LitElement {
    * Handle the user selecting an app.
    */
   _selected(e) {
+    this.activePreview = null;
     let key = e.target.getAttribute("data-selected");
     e.preventDefault();
     e.stopPropagation();
@@ -286,6 +314,7 @@ class HaxPicker extends LitElement {
     this.close();
   }
   close() {
+    this.activePreview = null;
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,

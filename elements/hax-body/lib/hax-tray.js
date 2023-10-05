@@ -64,6 +64,7 @@ class HaxTray extends I18NMixin(
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
     };
+    this.trayIcon = "settings";
     this.resizeDrag = false;
     this.hideToolbar = false;
     this.dark = false;
@@ -256,6 +257,11 @@ class HaxTray extends I18NMixin(
           left: -1000px;
           flex-direction: row;
           transition: left 0.6s ease-in-out;
+        }
+        :host([element-align="right"]) .wrapper {
+          right: -1000px;
+          flex-direction: row;
+          transition: right 0.6s ease-in-out;
         }
         :host([tray-detail="view-source"]) .detail {
           width: 50vw;
@@ -1030,6 +1036,9 @@ class HaxTray extends I18NMixin(
           if (properties == null) {
             properties = {};
           }
+          if (e.detail.content) {
+            innerContent = e.detail.content;
+          }
           if (innerContent == null) {
             innerContent = "";
           }
@@ -1580,8 +1589,11 @@ class HaxTray extends I18NMixin(
           title: propTitle,
           properties: filteredProps.length > 0 ? filteredProps : undefined,
           disabled: filteredProps.length < 1,
+          // we only auto expand (and hence auto focus) active nodes if they are NOT text based
+          // grid plates are the exception to the rule here
           expanded:
             propName === "configure" &&
+            this.activeNode.tagName !== "GRID-PLATE" &&
             (!HAXStore.isTextElement(this.activeNode) ||
               HAXStore.isInlineElement(this.activeNode)),
           accordion: true,
@@ -1663,7 +1675,7 @@ class HaxTray extends I18NMixin(
       this.trayIcon = "hax:html-code";
       this.trayLabel = this.t.htmlSource;
     } else {
-      this.trayIcon = null;
+      this.trayIcon = "settings";
       this.trayLabel = null;
     }
     this.requestUpdate();

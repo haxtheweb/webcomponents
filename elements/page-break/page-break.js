@@ -26,6 +26,7 @@ export class PageBreak extends IntersectionObserverMixin(
   }
   constructor() {
     super();
+    this.relatedItems = null;
     this.status = "";
     this.t = {
       newPage: "New page",
@@ -38,9 +39,12 @@ export class PageBreak extends IntersectionObserverMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales", import.meta.url).href,
+      localesPath:
+        new URL("./locales/page-break.es.json", import.meta.url).href + "/../",
       locales: ["es"],
     });
+    this.hideInMenu = false;
+    this.noderefs = [];
     this.developerTheme = null;
     this.tags = null;
     this.title = this.t.newPage;
@@ -66,11 +70,21 @@ export class PageBreak extends IntersectionObserverMixin(
     // default break type for the vast majority of situations
     this.breakType = "node";
   }
+
   static get properties() {
     let props = super.properties || {};
     return {
       ...props,
+      noderefs: {
+        type: Array,
+        attribute: false,
+      },
+      relatedItems: {
+        type: String,
+        attribute: "related-items",
+      },
       order: { type: Number },
+      hideInMenu: { type: Boolean, attribute: "hide-in-menu" },
       tags: { type: String },
       developerTheme: { type: String, attribute: "developer-theme" },
       title: { type: String, reflect: true },
@@ -196,23 +210,24 @@ export class PageBreak extends IntersectionObserverMixin(
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      // @todo noderefs will have a nested object
+      // we need to build a non-nested object for the schema
+      // which we use to build a string based `thing,stuff,whatever` value
+      // this then is computed from noderefs changes HOWEVER noderefs changes
+      // is not saved while this is.
+      if (propName === "noderefs") {
+        let str = [];
+        for (let i = 0; i < this.noderefs.length; i++) {
+          str.push(this.noderefs[i].node);
+        }
+        this.relatedItems = str.join(",");
+      }
       if (
         propName === "schemaResourceID" &&
         this.itemId == null &&
         oldValue !== undefined
       ) {
         this.itemId = this.schemaResourceID.replace("#", "item-");
-      }
-      // when visible, "click" the thing so that it's activated
-      if (
-        propName === "elementVisible" &&
-        this.elementVisible &&
-        this.itemId &&
-        this.shadowRoot
-      ) {
-        setTimeout(() => {
-          pageBreakManager.updateVisibleAsActive();
-        }, 0);
       }
       // replicate locked aross elements between here and next page break
       if (this.locked && propName === "locked") {
@@ -420,6 +435,14 @@ export class PageBreak extends IntersectionObserverMixin(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    if (this.relatedItems) {
+      const items = this.relatedItems.split(",");
+      for (let i = 0; i < items.length; i++) {
+        this.noderefs.push({
+          node: items[i],
+        });
+      }
+    }
     // align schema ID w/ the ID from itemId on load
     if (this.itemId != null) {
       this.schemaResourceID = this.itemId;
@@ -547,10 +570,40 @@ export class PageBreak extends IntersectionObserverMixin(
           });
         }
       });
-      props.settings.configure.forEach((attr, index) => {
+      // apply same logic of the items in the active site to
+      // parent and related items
+      props.settings.advanced.forEach((attr, index) => {
         if (attr.property === "parent") {
-          props.settings.configure[index].inputMethod = "select";
-          props.settings.configure[index].itemsList = items;
+          props.settings.advanced[index].inputMethod = "select";
+          props.settings.advanced[index].itemsList = items;
+        }
+        if (attr.property === "noderefs") {
+          props.settings.advanced[index].properties[0].inputMethod = "select";
+          props.settings.advanced[index].properties[0].itemsList = items;
+        }
+      });
+      // pull theme list from the registry
+      props.settings.developer.forEach((attr, index) => {
+        // pull theme list from the registry
+        if (
+          attr.property === "developerTheme" &&
+          window.appSettings &&
+          window.appSettings.themes
+        ) {
+          var themes = [
+            {
+              text: "",
+              value: null,
+            },
+          ];
+          Object.keys(window.appSettings.themes).map((key) => {
+            themes.push({
+              text: window.appSettings.themes[key].name,
+              value: window.appSettings.themes[key].element,
+            });
+          });
+          props.settings.developer[index].inputMethod = "select";
+          props.settings.developer[index].itemsList = themes;
         }
       });
     }

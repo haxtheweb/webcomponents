@@ -6,7 +6,11 @@ describe("circle-progress test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <circle-progress title="test-title"></circle-progress> `
+      html`<circle-progress value="6" max="10"> 60% </circle-progress>
+
+        <circle-progress value="30" angle="90" stroke-width="8">
+          <b>30s</b>
+        </circle-progress>`
     );
   });
 

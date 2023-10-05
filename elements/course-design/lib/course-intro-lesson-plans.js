@@ -12,9 +12,24 @@ class CourseIntroLessonPlans extends LitElement {
   constructor() {
     super();
     this.items = [];
-    this._disposer = autorun(() => {
+    autorun(() => {
       if (store.routerManifest && store.routerManifest.items) {
         this._itemsChanged(toJS(store.routerManifest.items));
+      }
+    });
+    autorun(() => {
+      const badDevice = toJS(store.badDevice);
+      // good device, we can inject font we use
+      if (badDevice === false) {
+        // Add the included Lato font-family
+        let link = document.createElement("link");
+        link.setAttribute(
+          "href",
+          "https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+        );
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("fetchpriority", "low");
+        document.head.appendChild(link);
       }
     });
   }

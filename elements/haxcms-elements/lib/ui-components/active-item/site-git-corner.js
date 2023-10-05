@@ -38,6 +38,7 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         ?circle="${this.circle}"
         id="git-corner"
         source="${this.activeGitFileLink}"
+        alt="${this.t.seePageSource}"
       ></git-corner>
       <simple-tooltip for="git-corner" position="auto">
         ${this.t.seePageSource}
@@ -46,6 +47,7 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   }
   constructor() {
     super();
+    this.HAXCMSI18NMixinBase = "../../../";
     this.t = this.t || {};
     this.t.seePageSource = "See page source";
     this.circle = false;

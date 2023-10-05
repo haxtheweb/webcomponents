@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -55,12 +55,12 @@
         --app-hax-accent-color: white;
         --app-hax-background-color: black;
       }
-      body.app-loaded {
+      body.app-loaded:not(.bad-device) {
         background-image: url('../lib/assets/images/LMGridBox.svg'), url('../lib/assets/images/DesignLightModeLeft.svg'), url('../lib/assets/images/DesignLightModeRight.svg');
         background-repeat: repeat, repeat-y, repeat-y;
         background-position: center center, top left, top right;
         background-size: auto, 20% auto, 20% auto;
-        transition: all .3s ease-in-out;
+        background-attachment: fixed, fixed, fixed;
       }
       div[slot="externalproviders"] {
         display: none;

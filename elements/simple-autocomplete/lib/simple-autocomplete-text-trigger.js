@@ -135,11 +135,13 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
    */
   getRange() {
     let sel = this.getSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
+    if (sel && sel.getRangeAt && sel.rangeCount) {
       return sel.getRangeAt(0);
     } else if (sel) {
       return sel;
-    } else false;
+    } else {
+      return false;
+    }
   }
   /**
    * process in the autocompletes handling of this

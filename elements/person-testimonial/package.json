@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.5",
+  "version": "7.0.18",
   "description": "Automated conversion of person-testimonial",
   "repository": {
     "type": "git",
@@ -36,17 +36,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^7.0.5",
+    "@lrnwebcomponents/simple-colors": "^7.0.18",
     "@polymer/iron-image": "^3.0.1",
-    "lit": "^2.7.5"
+    "lit": "^2.8.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.5",
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.18",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.2.3",
+    "@web/dev-server": "0.3.1",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.0",
     "wct-browser-legacy": "1.0.2"
@@ -60,5 +60,5 @@
     "html",
     "haxtheweb"
   ],
-  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
+  "gitHead": "b9873176f9fe50a77dcf25e44bf3450d26fbb37a"
 }

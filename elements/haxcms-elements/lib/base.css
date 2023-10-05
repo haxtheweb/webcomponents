@@ -97,13 +97,17 @@ body.dark-mode a {
   --hax-base-styles-a-color-active: var(--simple-colors-default-theme-cyan-11, #3b97e3);
 }
 
+super-daemon {
+  --simple-modal-z-index: 100000001;
+}
+
 simple-modal::part(title) {
   background-color: transparent;
   margin: 0;
   text-align: center;
   font-size: 24px;
   color: white;
-  font-family: "Press Start 2P", sans-serif;
+  font-family: sans-serif;
   line-height: 24px;
   padding: 4px;
 }
@@ -115,7 +119,7 @@ simple-modal button.hax-modal-btn {
   background-color: green;
   border: 4px solid black;
   border-radius: 8px;
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: sans-serif;
 }
 simple-modal button.hax-modal-btn.cancel {
   background-color: red;
@@ -154,6 +158,17 @@ hax-tray {
     --hax-panel-padding: 8px 0 8px 50px;
     --hax-base-styles-p-font-size: 24px;
   }
+  simple-modal::part(title) {
+    font-size: 18px;
+    line-height: 18px;
+    padding: 4px;
+    font-family: sans-serif;
+  }
+  simple-modal button.hax-modal-btn {
+    font-size: 20px;
+    padding: 4px;
+    font-family: sans-serif;
+  }
 }
 
 body {
@@ -163,6 +178,11 @@ body {
 body.dark-mode {
   --app-hax-accent-color: white;
   --app-hax-background-color: black;
+  --editable-table-bg-color: var(--simple-colors-default-theme-grey-8);
+  --editable-table-stripe-bg-color: var(--simple-colors-default-theme-grey-9);
+  --editable-table-color: var(--simple-colors-default-theme-grey-1);
+  --editable-table-heading-bg-color: var(--simple-colors-default-theme-grey-7);
+  --editable-table-heading-color: var(--simple-colors-default-theme-grey-1);
 }
 
 body, html {
@@ -256,6 +276,22 @@ mark {
   padding: 4px 8px;
   border-radius: 6px;
 }
+abbr:focus, abbr:active, abbr:hover {
+  text-decoration: none;
+  background-color: var(--hax-base-styles-abbr-focus, #ffff33);
+  outline-offset: 2px;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+abbr {
+  transition: all 0.6s ease 0s;
+  padding: 2px 4px;
+  font-style: italic;
+  text-underline-position: under;
+  text-decoration: underline double;
+  cursor: help;
+  outline-color: var(--hax-base-styles-abbr-outline, #ffff33);
+}
 code {
   padding: 0.2em 0.4em;
   margin: 0;
@@ -323,4 +359,109 @@ haxcms-site-builder[disable-features*="right-col"] .haxcms-theme-element::part(r
 haxcms-site-builder[disable-features*="left-col"] .haxcms-theme-element::part(left-col)
 {
   display: none !important;
+}
+
+
+/**
+ *  @deprecated ELMS:LN textbook styles
+ * https://github.com/elmsln/issues/issues/1658
+ */
+/* Required list template */
+.textbook_box {
+  display: block;
+  margin: 1em 0px 2em 0px;
+  padding: .5em;
+  border-radius: 4px 4px 0px 0px;
+}
+.textbook_box h3 {
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  float: right;
+  margin-top: -25px !important;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  margin-right:0px;
+  background-color: var(--simple-colors-default-theme-grey-2);
+  border:2px solid;
+  padding:4px 6px;
+  letter-spacing:.06em;
+  border-radius: 4px;
+}
+.textbook_box_required {
+  border: var(--simple-colors-default-theme-pink-8) 2px solid;
+}
+.textbook_box_required h3{
+  color: var(--simple-colors-default-theme-pink-8);
+}
+.textbook_box_required li:before{
+  color: var(--simple-colors-default-theme-grey-1);
+  background:  var(--simple-colors-default-theme-pink-8);
+}
+.textbook_box_required li:hover:before{
+ font-weight:bold;
+ color: var(--simple-colors-default-theme-pink-8);
+ border: .3em solid  var(--simple-colors-default-theme-pink-8);
+ background: var(--simple-colors-default-theme-grey-1);
+}
+/* Optional list color shift */
+.textbook_box_optional {
+  border:var(--simple-colors-default-theme-cyan-8) 2px solid;
+}
+.textbook_box_optional h3{
+  color: var(--simple-colors-default-theme-cyan-8);
+}
+.textbook_box_optional li:before{
+  color: var(--simple-colors-default-theme-grey-1);
+  background: var(--simple-colors-default-theme-cyan-8);
+}
+.textbook_box_optional li:hover:before{
+ font-weight:bold;
+ color: var(--simple-colors-default-theme-cyan-8);
+ border: .3em solid var(--simple-colors-default-theme-cyan-8);
+ background: var(--simple-colors-default-theme-grey-1);
+}
+
+.textbook_box ol, div.textbook_box ul{
+  counter-reset: li; /* Initiate a counter */
+  list-style: none; /* Remove default numbering */
+  font: 15px 'trebuchet MS', 'lucida sans';
+  padding: 0px 0px 0px 14px;
+  margin: 30px 20px 20px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.textbook_box li{
+  position: relative;
+  display: block;
+  padding: .4em .4em .4em 2em;
+  margin: .7em 0 !important;
+  background: var(--simple-colors-default-theme-grey-1);
+  color: var(--simple-colors-default-theme-grey-9);
+  text-decoration: none;
+  border-radius: .3em;
+  transition: all .3s ease-out;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.textbook_box li:hover{
+  background: var(--simple-colors-default-theme-grey-2);
+}
+
+.textbook_box li:before{
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;  
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: .3em solid var(--simple-colors-default-theme-grey-1);
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2em;
+  transition: all .3s ease-out;
 }

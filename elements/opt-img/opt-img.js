@@ -204,12 +204,14 @@ class OptImg extends HTMLElement {
         detail: {
           context: this,
           namespace: "opt-img",
-          localesPath: new URL("./locales", import.meta.url).href,
+          localesPath:
+            new URL("./locales/opt-img.es.json", import.meta.url).href + "/../",
           updateCallback: "render",
           locales: ["es"],
         },
       })
     );
+
     // setup the intersection observer, only if we are not visible
     if (!this.loadingvisible) {
       this.intersectionObserver = new IntersectionObserver(

@@ -114,9 +114,9 @@ class FileSystemBroker extends HTMLElement {
   /**
    * Open directory
    */
-  async openDir(recursive = true) {
+  async openDir(recursive = true, options = {}) {
     try {
-      this.dirHandler = await window.showDirectoryPicker();
+      this.dirHandler = await window.showDirectoryPicker(options);
     } catch (e) {
       console.log(e);
     }
@@ -129,9 +129,9 @@ class FileSystemBroker extends HTMLElement {
     );
     return this.files;
   }
-  async readFileInDir(fileName) {
+  async readFileInDir(fileName, options = {}) {
     try {
-      this.dirHandler = await window.showDirectoryPicker();
+      this.dirHandler = await window.showDirectoryPicker(options);
       // need to load references found in the directory
       for await (const entry of this.dirHandler.values()) {
         if (
@@ -149,9 +149,9 @@ class FileSystemBroker extends HTMLElement {
     }
     return "";
   }
-  async writeFileInDir(fileName, content = "") {
+  async writeFileInDir(fileName, content = "", options = {}) {
     try {
-      this.dirHandler = await window.showDirectoryPicker();
+      this.dirHandler = await window.showDirectoryPicker(options);
       // need to load references found in the directory
       for await (const entry of this.dirHandler.values()) {
         if (

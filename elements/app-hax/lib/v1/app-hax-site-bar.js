@@ -151,6 +151,20 @@ export class AppHaxSiteBars extends SimpleColors {
           background-repeat: no-repeat;
           background-position: center;
         }
+        @media (max-width: 640px) {
+          :host {
+            --main-banner-height: 40px;
+            --band-banner-height: 140px;
+          }
+          #icon,
+          #dots {
+            --simple-icon-width: 30px;
+            --simple-icon-height: 30px;
+          }
+          #mainCard {
+            padding: 0;
+          }
+        }
       `,
     ];
   }

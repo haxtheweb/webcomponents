@@ -30,14 +30,14 @@ class HAXCMSSiteDashboard extends SimpleColors {
   constructor() {
     super();
     this.manifest = {};
+    this.method = "POST";
+    this.loadEndpoint = "";
+    this.body = {};
+    this.headers = {};
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
     autorun((reaction) => {
       this.jwt = toJS(store.jwt);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.dashboardOpened = toJS(store.dashboardOpened);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
@@ -51,19 +51,10 @@ class HAXCMSSiteDashboard extends SimpleColors {
       css`
         :host {
           z-index: 1;
-          display: inline-block;
-          vertical-align: top;
-          position: fixed;
-          height: calc(100vh - 48px);
-          width: 50vw;
-          margin-left: -50vw;
+          display: block;
           border-right: 2px solid #17271f;
           overflow: scroll;
           color: black;
-          background-color: var(--haxcms-dashboard-bg, orange);
-        }
-        :host([dashboard-opened]) {
-          margin-left: 0;
         }
         .buttons {
           position: absolute;
@@ -80,7 +71,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
           background-color: green;
           border: 4px solid black;
           border-radius: 8px;
-          font-family: "Press Start 2P", sans-serif;
+          font-family: sans-serif;
         }
         button.hax-modal-btn.cancel {
           background-color: red;
@@ -103,16 +94,15 @@ class HAXCMSSiteDashboard extends SimpleColors {
           display: inline-flex;
         }
         @media screen and (max-width: 600px) {
-          :host {
-            width: 90vw;
-            margin-left: -90vw;
-          }
           .title {
             font-size: 14px;
             margin: 0;
           }
           .toptext {
             font-size: 11px;
+          }
+          button.hax-modal-btn {
+            font-size: 14px;
           }
         }
         button {
@@ -134,8 +124,8 @@ class HAXCMSSiteDashboard extends SimpleColors {
           background-color: white;
         }
         #siteform {
-          --a11y-tabs-height: 80vh;
-          --a11y-tabs-tab-height: 75vh;
+          --a11y-tabs-height: 65vh;
+          --a11y-tabs-tab-height: 60vh;
           --primary-color: var(--haxcms-color, #000000);
           --paper-input-container-focus-color: var(--haxcms-color, #000000);
           --lumo-primary-text-color: var(--haxcms-color, #000000);
@@ -156,7 +146,6 @@ class HAXCMSSiteDashboard extends SimpleColors {
       <div class="fields-wrapper">
         <simple-fields-form
           id="siteform"
-          autoload
           .headers="${this.headers}"
           .body="${this.body}"
           .schematizer="${HaxSchematizer}"
@@ -178,10 +167,15 @@ class HAXCMSSiteDashboard extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
-      dashboardOpened: {
-        type: Boolean,
-        reflect: true,
-        attribute: "dashboard-opened",
+      loadEndpoint: {
+        type: String,
+        attribute: "load-endpoint",
+      },
+      headers: {
+        type: Object,
+      },
+      body: {
+        type: Object,
       },
       /**
        * Allow method to be overridden, useful in local testing
@@ -221,21 +215,8 @@ class HAXCMSSiteDashboard extends SimpleColors {
     }
     super.disconnectedCallback();
   }
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "dashboardOpened" && this.dashboardOpened) {
-        // API function so we refresh new data every time
-        this.removeAttribute("aria-hidden");
-        this.removeAttribute("tabindex");
-      }
-      if (propName === "dashboardOpened" && !this.dashboardOpened) {
-        this.setAttribute("aria-hidden", "aria-hidden");
-        this.setAttribute("tabindex", "-1");
-      }
-    });
+  generateRequest() {
+    this.shadowRoot.querySelector("#siteform").loadData();
   }
   /**
    * Save the fields as we get tapped
@@ -251,6 +232,15 @@ class HAXCMSSiteDashboard extends SimpleColors {
         detail: this.shadowRoot.querySelector("#siteform").submit(),
       })
     );
+    setTimeout(() => {
+      window.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        })
+      );
+    }, 0);
   }
   /**
    * Close the dashboard and reset state
@@ -258,11 +248,10 @@ class HAXCMSSiteDashboard extends SimpleColors {
   _cancel(e) {
     store.playSound("error");
     window.dispatchEvent(
-      new CustomEvent("haxcms-load-site-dashboard", {
+      new CustomEvent("simple-modal-hide", {
         bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.target,
+        cancelable: true,
+        detail: {},
       })
     );
   }

@@ -363,12 +363,7 @@ class LrndesignTimeline extends SimpleColors {
           "image",
           "text",
         ],
-        handles: [
-          {
-            type: "image",
-            source: "image",
-          },
-        ],
+        handles: [],
         meta: {
           author: "HAXTheWeb core team",
         },
@@ -423,6 +418,7 @@ class LrndesignTimeline extends SimpleColors {
                 title: "Event Image",
                 description: "The path of the image.",
                 inputMethod: "haxupload",
+                noVoiceRecord: true,
               },
               {
                 property: "imagealt",

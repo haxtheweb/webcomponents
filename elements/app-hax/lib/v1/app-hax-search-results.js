@@ -87,17 +87,27 @@ export class AppHaxSearchResults extends SimpleColors {
         .description {
           max-height: 64px;
           overflow: hidden;
+          max-width: 80%;
           text-overflow: ellipsis;
+          word-break: break-all;
         }
 
         @media (max-width: 800px) {
           app-hax-site-bar {
             --main-banner-width: 60vw;
           }
+          .description {
+            max-height: 24px;
+            font-size: 8px;
+            font-family: sans-serif;
+          }
         }
-        @media (max-width: 400px) {
+        @media (max-width: 640px) {
+          app-hax-site-bar a {
+            font-size: 14px;
+          }
           app-hax-site-bar {
-            --main-banner-width: 90vw;
+            --main-banner-width: 70vw;
           }
         }
         span[slot="band"] {

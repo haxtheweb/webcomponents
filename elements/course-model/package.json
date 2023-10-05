@@ -1,0 +1,79 @@
+{
+  "name": "@lrnwebcomponents/course-model",
+  "wcfactory": {
+    "className": "CourseModel",
+    "customElementClass": "LitElement",
+    "elementName": "course-model",
+    "generator-wcfactory-version": "0.13.1",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/course-model.css",
+      "scss": "src/course-model.scss",
+      "html": "src/course-model.html",
+      "js": "src/course-model.js",
+      "properties": "src/course-model-properties.json",
+      "hax": "src/course-model-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "7.0.18",
+  "description": "view 3d models with multiple angel rotation for a course experience",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "course-model.js",
+  "module": "course-model.js",
+  "umd": "course-model.umd.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"*.js|lib/**.js\" --format vscode --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": ""
+  },
+  "license": "",
+  "dependencies": {
+    "@google/model-viewer": "3.2.1",
+    "lit": "^2.8.0"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
+    "@lrnwebcomponents/media-image": "^7.0.18",
+    "@lrnwebcomponents/video-player": "^7.0.18",
+    "@open-wc/testing": "2.5.32",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@web/dev-server": "0.3.1",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.21",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "resolutions": {
+    "@google/model-viewer": "3.2.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ],
+  "gitHead": "b9873176f9fe50a77dcf25e44bf3450d26fbb37a"
+}

@@ -24,7 +24,7 @@ import {
   autorun,
   toJS,
 } from "mobx";
-configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
+configure({ enforceActions: false }); // strict mode off
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import {
   I18NMixin,
@@ -38,6 +38,7 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/editable-table/editable-table.js";
 import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
 import { learningComponentTypes } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+import "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
 
 import "./hax-app.js";
 
@@ -174,11 +175,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   getRange() {
     let sel = this.getSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
+    if (sel && sel.getRangeAt && sel.rangeCount) {
       return sel.getRangeAt(0);
     } else if (sel) {
       return sel;
-    } else false;
+    } else {
+      return false;
+    }
   }
 
   /**
@@ -653,6 +656,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "sup",
           "span",
           "mark",
+          "abbr",
           "i",
           "bold",
           "em",
@@ -691,7 +695,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "sub",
           "sup",
           "span",
+          "code",
           "mark",
+          "abbr",
           "i",
           "bold",
           "em",
@@ -1079,6 +1085,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           break;
         case "hax-size-change":
           if (detail.value == 100) {
+            this.activeNode.style.width = null;
+          } else if (detail.value > 100) {
             this.activeNode.style.width = null;
           } else {
             this.activeNode.style.width = detail.value + "%";
@@ -1817,6 +1825,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "div",
       "span",
       "mark",
+      "abbr",
       "table",
       "caption",
       "sup",
@@ -1874,6 +1883,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "image",
       "csv",
       "doc",
+      "document",
       "archive",
       "markdown",
       "html",
@@ -1913,20 +1923,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       return false;
     };
-    SuperDaemonInstance.questionTags = [
-      {
-        value: "*",
-        label: "What can I do?",
-      },
-      {
-        value: "media",
-        label: "Where can I find media?",
-      },
-      {
-        value: "edit",
-        label: "Edit page",
-      },
-    ];
 
     // emoji picker
     SuperDaemonInstance.defineOption({
@@ -2016,8 +2012,64 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
-      title: "Bug / issue",
+      title: "Join our Community",
+      icon: "hax:discord",
+      priority: -100,
+      tags: ["community", "discord", "chat", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://bit.ly/hax-discord"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/join",
+      context: ["logged-in", "CMS", "HAX", "?"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "User Tutorials",
       icon: "hax:hax2022",
+      priority: -1000,
+      tags: ["Documentation", "community", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/tutorials"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/tutorials",
+      context: ["logged-in", "CMS", "HAX", "?"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "User Documentation",
+      icon: "hax:hax2022",
+      tags: ["Documentation", "community", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: [
+          "https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation",
+        ],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/documentation",
+      context: ["logged-in", "CMS", "HAX", "?"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "HAX Teaching Excellence",
+      icon: "hax:hax2022",
+      tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/ontology"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/pedagogy",
+      context: ["logged-in", "CMS", "HAX", "?"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Bug / issue",
+      icon: "mdi-social:github-circle",
       tags: ["Bug report", "github", "git", "community", "issue queue"],
       value: {
         target: this,
@@ -2026,11 +2078,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["CMS", "HAX"],
+      context: ["logged-in", "CMS", "HAX", "?"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
-      icon: "hax:hax2022",
+      icon: "mdi-social:github-circle",
       tags: [
         "Feature request",
         "idea",
@@ -2044,7 +2096,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
-      context: ["logged-in", "CMS", "HAX"],
+      context: ["logged-in", "CMS", "HAX", "?"],
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
     });
@@ -2074,6 +2126,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-refresh-tray-form": "refreshActiveNodeForm",
+      "rich-text-editor-prompt-open": "_richTextEditorPromptOpen",
+      "rich-text-editor-prompt-close": "_richTextEditorPromptClose",
+      "super-daemon-command-context-changed":
+        "_superDaemonCommandContextChanged",
+      "super-daemon-context-changed": "_superDaemonContextChanged",
     };
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {
@@ -2219,6 +2276,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }, 0);
   }
 
+  _openExternalLink(link) {
+    window.open(link, "_blank");
+  }
+
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     let body = "";
     if (type == "merlin") {
@@ -2257,6 +2318,77 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     );
   }
 
+  _superDaemonCommandContextChanged(e) {
+    // hax can react to command context changes
+  }
+
+  _superDaemonContextChanged(e) {
+    // hax can react to command context changes
+    if (e.detail.value.indexOf("CMS") !== -1) {
+      SuperDaemonInstance.questionTags = [
+        {
+          value: "CMS/action/edit",
+          label: "Edit current page",
+        },
+        {
+          value: "*",
+          label: "List everything I can do",
+        },
+        {
+          value: "?",
+          label: "HELP!",
+        },
+      ];
+    } else if (e.detail.value.indexOf("HAX") !== -1) {
+      SuperDaemonInstance.questionTags = [
+        {
+          value: "CMS/action/save",
+          label: "Save current page",
+        },
+        {
+          value: "media",
+          label: "Where can I find media?",
+        },
+        {
+          value: "*",
+          label: "List everything I can do",
+        },
+        {
+          value: "?",
+          label: "HELP!",
+        },
+      ];
+    } else {
+      SuperDaemonInstance.questionTags = [
+        {
+          value: "*",
+          label: "List everything I can do",
+        },
+        {
+          value: "?",
+          label: "HELP!",
+        },
+      ];
+    }
+  }
+
+  _richTextEditorPromptOpen() {
+    // verify that we are not overflowing, a lot of themes have this ability
+    // which renders hax popups very difficult / unreliable to work with
+    const compStyles = window.getComputedStyle(document.body);
+    if (compStyles.getPropertyValue("overflow") == "hidden") {
+      this.__overflowHiddenOnOpen = compStyles.getPropertyValue("overflow");
+      document.body.style.overflow = "auto";
+    }
+  }
+  // set things back on close event
+  _richTextEditorPromptClose() {
+    if (this.__overflowHiddenOnOpen) {
+      document.body.style.overflow = this.__overflowHiddenOnOpen;
+      this.__overflowHiddenOnOpen = null;
+    }
+  }
+
   /**
    * Build HAX property definitions for primitives that we support.
    * @note if someone wants to MANUALLY inject definitions similar
@@ -2287,7 +2419,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             {
               attribute: "src",
               title: "Source",
-              description: "The URL for this video.",
+              description: "The URL for this resource.",
               inputMethod: "textfield",
               icon: "link",
               required: true,
@@ -2316,14 +2448,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         tags: ["Images", "media", "img", "html"],
         handles: [
           {
-            type: "link",
-            source: "src",
-          },
-          {
             type: "image",
             source: "src",
-            height: "height",
-            width: "width",
           },
         ],
         meta: {
@@ -2336,8 +2462,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           {
             attribute: "src",
             title: "Source",
-            description: "The URL for this video.",
+            description: "The URL for this image.",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
             icon: "link",
             required: true,
             validationType: "url",
@@ -2501,6 +2628,57 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       ],
     };
     this.setHaxProperties(mark, "mark");
+    let abbr = {
+      type: "element",
+      editingElement: "core",
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      contentEditable: true,
+      gizmo: {
+        title: "Abbreviation",
+        description: "Simple abbreviation with tooltip of full word",
+        icon: "hax:abbr",
+        color: "yellow",
+        tags: ["Content", "text", "abbr", "html"],
+        handles: [],
+        meta: {
+          author: "W3C",
+          hidden: true,
+        },
+      },
+      settings: {
+        configure: [
+          {
+            attribute: "innerText",
+            title: "Text",
+            description: "Text that is visible, the abbreviation",
+            inputMethod: "textfield",
+            required: true,
+          },
+          {
+            attribute: "title",
+            title: "Word",
+            description: "Word that the abbreviation is representing",
+            inputMethod: "textfield",
+            required: true,
+          },
+          DataStyleDecoration,
+        ],
+        advanced: [],
+        developer: [],
+      },
+      demoSchema: [
+        {
+          tag: "abbr",
+          content: "Abbr",
+          properties: {
+            title: "Abbreviation",
+          },
+        },
+      ],
+    };
+    this.setHaxProperties(abbr, "abbr");
     let ahref = {
       type: "element",
       editingElement: "core",
@@ -2526,7 +2704,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         handles: [],
         meta: {
           author: "W3C",
-          hidden: true,
         },
       },
       settings: {
@@ -2541,18 +2718,15 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           {
             attribute: "href",
             title: "Link",
-            description: "The URL for this video.",
+            description: "The URL for the link",
             inputMethod: "haxupload",
             required: true,
             validationType: "url",
           },
-          DataStyleDecoration,
-        ],
-        advanced: [
           {
             attribute: "target",
             title: "Target",
-            description: "Where to place the link.",
+            description: "Where to open the link.",
             inputMethod: "select",
             options: {
               "": "Same window",
@@ -2561,7 +2735,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               _parent: "Parent window - _parent",
             },
           },
+          DataStyleDecoration,
         ],
+        advanced: [],
         developer: [
           {
             attribute: "title",
@@ -2585,6 +2761,13 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "p",
+          content: '<a href="#">Link to content</a>',
+          properties: {},
+        },
+      ],
     };
     // anything can be presented as a link
     this.validGizmoTypes.forEach((val) => {
@@ -2700,13 +2883,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           "embed",
           "https",
           "html",
-          "resource",
           "address",
         ],
         handles: [],
         meta: {
-          hidden: true,
           author: "W3C",
+          hidden: true,
         },
       },
       settings: {
@@ -2714,7 +2896,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           {
             attribute: "src",
             title: "Source",
-            description: "The URL for this video.",
+            description: "The URL for this resource.",
             inputMethod: "textfield",
             icon: "link",
             required: true,
@@ -2775,6 +2957,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       h2: {
         title: "Heading",
         icon: "hax:h2",
+        tags: ["Text", "h2", "html", "text", "heading", "header"],
       },
       h3: {
         title: "Heading",
@@ -2869,7 +3052,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           gizmo: {
             title: prims[tag].title,
             icon: prims[tag].icon,
-            tags: ["Text", tag, "html", "text"],
+            tags: prims[tag].tags || ["Text", tag, "html", "text"],
             handles: prims[tag].handles || [],
             meta: {
               author: "W3C",
@@ -3172,10 +3355,14 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     if (
       SuperDaemonInstance.programTarget &&
       e.detail.properties &&
-      (e.detail.properties.src || e.detail.properties.source)
+      (e.detail.properties.src ||
+        e.detail.properties.source ||
+        e.detail.properties.href)
     ) {
       SuperDaemonInstance.programTarget.value =
-        e.detail.properties.src || e.detail.properties.source;
+        e.detail.properties.src ||
+        e.detail.properties.source ||
+        e.detail.properties.href;
     } else {
       this.haxTray._processTrayEvent(e);
     }
@@ -3432,7 +3619,10 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         } else {
           // ensure that value doesn't have " in it unencoded
           if (typeof value === "string" && value !== "") {
+            value = value.replace(new RegExp("&", "g"), "&amp;");
             value = value.replace(new RegExp('"', "g"), "&quot;");
+            value = value.replace(new RegExp("<", "g"), "&#60;");
+            value = value.replace(new RegExp(">", "g"), "&#62;");
             propvals[nodeName] = value;
           }
           // special handling for empty string cause it might mean boolean
@@ -3503,7 +3693,10 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             } else {
               // ensure that value doesn't have " in it unencoded
               if (typeof value === "string" && value !== "") {
+                value = value.replace(new RegExp("&", "g"), "&amp;");
                 value = value.replace(new RegExp('"', "g"), "&quot;");
+                value = value.replace(new RegExp("<", "g"), "&#60;");
+                value = value.replace(new RegExp(">", "g"), "&#62;");
                 propvals[nodeName] = value;
               }
               // special handling for empty string cause it might mean boolean
@@ -3550,6 +3743,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     // drop these known things we never want to save
     delete propvals.draggable;
     delete propvals.contenteditable;
+    delete propvals.role;
     delete propvals["data-hax-ray"];
     delete propvals["data-hax-layout"];
     delete propvals["data-hax-active"];

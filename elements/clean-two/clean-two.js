@@ -13,13 +13,15 @@ import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { HAXCMSOperationButtons } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
 /**
  * `clean-two`
  * `A 2nd clean theme`
@@ -232,6 +234,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           flex: 1;
           height: auto;
           height: 100vh;
+          position: absolute;
           font-size: 16px;
           color: #3B454E;
           background-color: #ffffff;
@@ -256,9 +259,10 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         .body-wrapper .content-wrapper .content {
           margin: 0;
-          padding: 0 64px 32px 64px;
+          padding: 0 16px 32px 64px;
+          max-width: 75%;
         }
-        
+
         nav {
           display: -webkit-box;
           display: -moz-box;
@@ -303,6 +307,7 @@ class CleanTwo extends HAXCMSOperationButtons(
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
           }
+
         }
         site-menu {
           --site-menu-font-size: 15px;
@@ -334,6 +339,18 @@ class CleanTwo extends HAXCMSOperationButtons(
         :host([responsive-size="xl"]) main,
         :host([responsive-size="lg"]) main {
           width: 800px;
+        }
+
+        :host([responsive-size="xs"]) .body-wrapper .content-wrapper .content,
+        :host([responsive-size="sm"]) .body-wrapper .content-wrapper .content,
+        :host([responsive-size="md"]) .body-wrapper .content-wrapper .content {
+          max-width: 90%;
+        }
+        :host([menu-open][responsive-size="md"]) .body-wrapper .content-wrapper .content {
+          max-width: 65%;
+        }
+        :host([menu-open][responsive-size="sm"]) .body-wrapper .content-wrapper .content {
+          max-width: 50%;
         }
 
         .qr-code-btn {
@@ -370,6 +387,16 @@ class CleanTwo extends HAXCMSOperationButtons(
           font-size: 1.5em;
           margin-right: -52px;
         }
+        .header site-menu-content[mobile] {
+          position: fixed;
+          right: 16px;
+          top: 64px;
+          width: 24px;
+          height: 24px;
+          margin-right: 0px;
+          display: block;
+          background-color: var(--hax-ui-background-color, #ffffff);
+        }
         .content {
           flex: 1 1 auto;
           margin: 0px 16px;
@@ -384,26 +411,18 @@ class CleanTwo extends HAXCMSOperationButtons(
             height: 0px;
           }
           site-active-title h1 {
-            height: 48px;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            width: 100%;
             word-break: break-all;
           }
         }
         @media screen and (max-width: 400px) {
           .content {
-            width: 200px;
+            min-width: 200px;
           }
           .body-wrapper {
             overflow-x: hidden;
           }
-          .header site-menu-content {
-            margin-right: -40px;
-          }
-          #haxcmsmobilemenunav {
-            min-width: 250px;
-            margin-left: 0px;
-          }
+          
           :host([menu-open]) #haxcmsmobilemenubutton{
             margin-left: -52px;
           }
@@ -418,9 +437,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           } 
         }
         @media screen and (max-width: 600px) {
-          .header site-menu-content {
-            margin-right: -40px;
-          }
           .link-actions .inner {
             display: block;
           }
@@ -564,6 +580,9 @@ class CleanTwo extends HAXCMSOperationButtons(
       this.shadowRoot.querySelector(".body-wrapper");
     window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
+    // shadow ready which means we should be able to open this even on a slow load
+    // if we are the route in question
+    store.internalRoutes["search"].callback = this.siteModalForceClick;
   }
 
   searchItemSelected(e) {
@@ -656,6 +675,10 @@ class CleanTwo extends HAXCMSOperationButtons(
               <div id="haxcms-theme-top"></div>
               <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
               <site-active-title part="page-title"></site-active-title>
+              <site-active-tags
+                part="page-tags"
+                auto-accent-color
+              ></site-active-tags>
               <article
                 id="contentcontainer"
                 ?hidden="${this.searchTerm != "" ? true : false}"
@@ -800,15 +823,27 @@ class CleanTwo extends HAXCMSOperationButtons(
       }
       this.__disposer.push(reaction);
     });
-
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
-    );
-    // prettier-ignore
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js");
   }
-
+  siteModalForceClick(e) {
+    setTimeout(() => {
+      const theme = document.querySelector("clean-two");
+      // edge cases where we're switching themes and this callback is not valid
+      if (
+        theme &&
+        theme.shadowRoot &&
+        theme.shadowRoot.querySelector("site-modal") &&
+        theme.shadowRoot.querySelector("site-modal").shadowRoot &&
+        theme.shadowRoot
+          .querySelector("site-modal")
+          .shadowRoot.querySelector("simple-icon-button-lite")
+      ) {
+        theme.shadowRoot
+          .querySelector("site-modal")
+          .shadowRoot.querySelector("simple-icon-button-lite")
+          .click();
+      }
+    }, 500);
+  }
   /**
    * Delay importing site-search until we click to open it directly
    */
@@ -817,8 +852,20 @@ class CleanTwo extends HAXCMSOperationButtons(
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
-      // weird looking but forces focus when it opens the search form
-      window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
+      if (store.getInternalRoute() !== 'search') {
+        window.history.replaceState({}, null, "x/search");
+      }
+      const params = new URLSearchParams(store.currentRouterLocation.search);
+      const input = window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");
+      input.focus();
+      // if we have a search param already, set it to the field on open
+      if (params.get("search")) {
+        input.value = params.get("search");
+        // stall to allow value to be set
+        setTimeout(() => {
+          input.select();          
+        }, 0);
+      }
     });
   }
   /**

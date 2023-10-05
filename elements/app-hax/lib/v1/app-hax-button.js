@@ -131,6 +131,10 @@ export class AppHaxButton extends LitElement {
             this.icon = "book";
             this.value = "notion";
             break;
+          case "html":
+            this.icon = "icons:code";
+            this.value = "HTML";
+          break;
           case "Blog":
             this.icon = "social:public";
             this.value = "Blog";
@@ -203,7 +207,7 @@ export class AppHaxButton extends LitElement {
           position: absolute;
           top: 0;
           left: 0;
-          margin-left: -40px;
+          margin-left: -50px;
           margin-top: -10px;
         }
         .haxButton {

@@ -9,7 +9,7 @@
     "files": {},
     "sharedStyles": []
   },
-  "version": "7.0.5",
+  "version": "7.0.18",
   "description": "Converts evolution content to web component equivalents.",
   "repository": {
     "type": "git",
@@ -19,7 +19,8 @@
   "main": "evo-to-wc.js",
   "module": "evo-to-wc.js",
   "scripts": {
-    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/evo-to-wc/test/",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -36,20 +37,20 @@
     "access": "public"
   },
   "dependencies": {
-    "@lrnwebcomponents/a11y-tabs": "^7.0.5",
-    "@lrnwebcomponents/accent-card": "^7.0.5",
-    "@lrnwebcomponents/hax-iconset": "^7.0.5",
-    "@lrnwebcomponents/simple-icon": "^7.0.5"
+    "@lrnwebcomponents/a11y-tabs": "^7.0.18",
+    "@lrnwebcomponents/accent-card": "^7.0.18",
+    "@lrnwebcomponents/hax-iconset": "^7.0.18",
+    "@lrnwebcomponents/simple-icon": "^7.0.18"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.5",
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.18",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.2.3",
+    "@web/dev-server": "0.3.1",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.0",
     "wct-browser-legacy": "1.0.2"
   },
-  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
+  "gitHead": "b9873176f9fe50a77dcf25e44bf3450d26fbb37a"
 }

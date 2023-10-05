@@ -35,6 +35,8 @@
         "title": "Source",
         "description": "The URL for this csv file.",
         "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true,
         "required": true
       },
       {

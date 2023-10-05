@@ -84,7 +84,7 @@ class HAXCMSSiteEditor extends LitElement {
       </style>
       <iron-ajax
         reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="nodeupdateajax"
         .url="${this.saveNodePath}"
         .method="${this.method}"
@@ -95,7 +95,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="outlineupdateajax"
         .url="${this.saveOutlinePath}"
         .method="${this.method}"
@@ -106,7 +106,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="manifestupdateajax"
         .url="${this.saveManifestPath}"
         .method="${this.method}"
@@ -117,7 +117,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="publishajax"
         .loading="${this.publishing}"
         @loading-changed="${this.loadingChanged}"
@@ -130,7 +130,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="revertajax"
         .url="${this.revertSitePath}"
         .method="${this.method}"
@@ -141,7 +141,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="syncajax"
         .url="${this.syncSitePath}"
         .method="${this.method}"
@@ -152,7 +152,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="createajax"
         .url="${this.createNodePath}"
         .method="${this.method}"
@@ -164,7 +164,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="deleteajax"
         .url="${this.deleteNodePath}"
         .method="${this.method}"
@@ -176,7 +176,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="getuserdata"
         url="${this.getUserDataPath}"
         method="${this.method}"
@@ -327,13 +327,6 @@ class HAXCMSSiteEditor extends LitElement {
         type: String,
         attribute: "get-form-token",
       },
-
-      /**
-       * Site dashboard element reference
-       */
-      siteDashboard: {
-        type: Object,
-      },
     };
   }
 
@@ -352,6 +345,7 @@ class HAXCMSSiteEditor extends LitElement {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
       window.history.pushState({}, null, e.detail.value.data.slug);
+      window.dispatchEvent(new PopStateEvent("popstate"));
       store.toast(`Created ${e.detail.value.data.title}!`, 3000, {
         hat: "random",
       });
@@ -382,12 +376,13 @@ class HAXCMSSiteEditor extends LitElement {
       var target = normalizeEventPath(e)[0];
       // check for JWT needing refreshed vs busted but must be 403
       switch (parseInt(e.detail.value.status)) {
-        // cookie data not found, need to go get it
+        // cookie data not found, or illegal operation, need to go get it
         // @notice this currently isn't possible but we could modify
         // the backend in the future to support throwing 401s dynamically
         // if we KNOW an event must expire the timing token
+        case 405:
         case 401:
-          this.dispatchEvent(
+            this.dispatchEvent(
             new CustomEvent("jwt-login-logout", {
               composed: true,
               bubbles: true,
@@ -616,33 +611,26 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   loadSiteDashboard(e) {
-    this.__siteFieldsInvoked = e.detail; // ensure it exists as we do this on the fly and clean up constantly
-
-    if (!this.siteDashboard) {
-      let builder = document.getElementsByTagName("haxcms-site-builder")[0];
-      this.siteDashboard = document.createElement("haxcms-site-dashboard");
+    if (document.body.querySelector("haxcms-site-dashboard")) {
+      this.siteDashboard = document.body.querySelector("haxcms-site-dashboard");
       this.siteDashboard.headers = {
         Authorization: `Bearer ${this.jwt}`,
       };
+      this.siteDashboard.jwt = this.jwt;
+      this.siteDashboard.method = this.method;
+      this.siteDashboard.body = {
+        jwt: this.jwt,
+        token: this.getFormToken,
+        site: {
+          name: this.manifest.metadata.site.name,
+        },
+      };
       this.siteDashboard.loadEndpoint = this.getSiteFieldsPath;
-      this.siteDashboard.method = this.method; // insert right before the builder, you sneaky thing you
-
-      builder.parentNode.insertBefore(this.siteDashboard, builder);
+      // delay so propagation can happen into thing building the form
+      setTimeout(() => {
+        this.siteDashboard.generateRequest();
+      }, 0);
     }
-
-    this.siteDashboard.body = {
-      jwt: this.jwt,
-      token: this.getFormToken,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-    };
-    this.siteDashboard.headers = {
-      Authorization: `Bearer ${this.jwt}`,
-    };
-    setTimeout(() => {
-      store.dashboardOpened = !store.dashboardOpened;
-    }, 300);
   }
 
   _schemaFormValueChanged(e) {
@@ -882,6 +870,7 @@ class HAXCMSSiteEditor extends LitElement {
     // this will force ID to update and avoid a page miss
     // when we deleted the node
     window.history.replaceState({}, null, store.fallbackItemSlug());
+    window.dispatchEvent(new PopStateEvent("popstate"));
     // delay ensures the fallback has been moved to prior to
     // rebuild of the manifest which should be lacking the deleted ID
     setTimeout(() => {
@@ -964,6 +953,7 @@ class HAXCMSSiteEditor extends LitElement {
       this.activeItem.slug !== e.detail.value.data.slug
     ) {
       window.history.replaceState({}, null, e.detail.value.data.slug);
+      window.dispatchEvent(new PopStateEvent("popstate"));
     }
     store.toast(`Page saved!`, 3000, { hat: "random" });
     store.playSound("coin");
@@ -1007,7 +997,6 @@ class HAXCMSSiteEditor extends LitElement {
     // trigger a refresh of the data in node
     store.toast(`Site details saved, reloading to reflect changes!`, 2000);
     store.playSound("coin");
-    store.dashboardOpened = false;
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -1054,7 +1043,6 @@ class HAXCMSSiteEditor extends LitElement {
         detail: true,
       })
     );
-    store.dashboardOpened = false;
   }
   /**
    * Publish response
@@ -1081,7 +1069,6 @@ class HAXCMSSiteEditor extends LitElement {
       },
     });
     window.dispatchEvent(evt);
-    store.dashboardOpened = false;
   }
   /**
    * Save node event

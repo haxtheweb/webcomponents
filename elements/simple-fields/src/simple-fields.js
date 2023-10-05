@@ -507,10 +507,6 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "simple-colors-picker",
                   attributes: {
                     autofocus: true,
-                    justify: true,
-                  },
-                  properties: {
-                    justify: "justify",
                   },
                 },
               },
@@ -591,10 +587,8 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "simple-icon-picker",
                   attributes: {
                     autofocus: true,
-                    justify: true,
                   },
                   properties: {
-                    justify: "justify",
                     options: "icons",
                     exclude: "exclude",
                     excludeSets: "excludeSets",
@@ -816,6 +810,12 @@ class SimpleFields extends SimpleFieldsLite {
             defaultSettings: {
               type: "object",
               format: "tabs",
+            },
+          },
+          collapse: {
+            defaultSettings: {
+              type: "object",
+              format: "collapse",
             },
           },
           textarea: {

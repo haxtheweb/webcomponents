@@ -19,9 +19,11 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
       "h6",
       "relative-heading",
       "video-player",
+      "audio-player",
     ];
     this.fallbackText = {
       "video-player": "Video",
+      "audio-player": "Audio",
     };
     this.hideIfEmpty = true;
     this.__disposer = this.__disposer ? this.__disposer : [];

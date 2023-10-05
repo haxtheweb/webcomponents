@@ -6,7 +6,9 @@ describe("music-player test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <music-player title="test-title"></music-player> `
+      html`<music-player
+        source="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+      ></music-player> `
     );
   });
 

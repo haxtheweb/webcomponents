@@ -167,21 +167,6 @@ export class PageBreakManagerEl extends HTMLElement {
   disconnectedCallback() {
     this.windowControllers.abort();
   }
-  // push an item into history from a page-break's path based on visibility
-  // the elements will self report their visibility status and then this callback
-  // will just pick the top most visible item and claim it is the route
-  updateVisibleAsActive() {
-    clearTimeout(this._timer);
-    this._timer = setTimeout(() => {
-      if (document.querySelector("page-break[element-visible]")) {
-        window.history.pushState(
-          {},
-          null,
-          document.querySelector("page-break[element-visible]").path
-        );
-      }
-    }, 500);
-  }
   registerPageBreak(e) {
     if (e.detail.action === "add") {
       // ensure this isn't already in there

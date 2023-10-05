@@ -3,7 +3,7 @@ import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Developer|HTML BLock",
+  title: "Other|HTML BLock",
   component: HtmlBlock.tag,
   decorators: [withKnobs],
   parameters: {

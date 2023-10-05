@@ -849,12 +849,14 @@ class EditableOutline extends LitElement {
    * Get a normalized range based on current selection
    */
   getDeepRange() {
-    let sel = this.getDeepSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
+    let sel = this.getSelection();
+    if (sel && sel.getRangeAt && sel.rangeCount) {
       return sel.getRangeAt(0);
     } else if (sel) {
       return sel;
-    } else false;
+    } else {
+      return false;
+    }
   }
 }
 customElements.define(EditableOutline.tag, EditableOutline);

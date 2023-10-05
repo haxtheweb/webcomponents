@@ -34,6 +34,7 @@
         "title": "Image",
         "description": "The image of the element",
         "inputMethod": "haxupload",
+        "noVoiceRecord": true,
         "validationType": "url",
         "icon": "editor:insert-photo"
       }

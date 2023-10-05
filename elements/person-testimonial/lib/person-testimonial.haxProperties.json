@@ -1,10 +1,10 @@
 {
   "type": "grid",
-  "canScale": true,
-  "canPosition": true,
+  "canScale": false,
+  "canPosition": false,
   "canEditSource": true,
   "gizmo": {
-    "title": "Blockquote",
+    "title": "Image Blockquote",
     "description": "A quote well designed with an optional image",
     "icon": "editor:format-quote",
     "color": "orange",
@@ -38,6 +38,7 @@
         "title": "Image",
         "description": "Adds image to testimonial",
         "inputMethod": "haxupload",
+        "noVoiceRecord": true,
         "icon": "editor:insert-photo"
       },
       {
@@ -73,8 +74,8 @@
         "title": "Quote",
         "description": "Quote by the person giving the testimonial",
         "inputMethod": "textfield",
-        "slotWrapper": "span",
-        "allowedSlotWrappers": ["span"]
+        "slotWrapper": "p",
+        "allowedSlotWrappers": ["p"]
       }
     ],
     "advanced": []
@@ -89,7 +90,7 @@
         "name": "bto-pro",
         "image": "https://github.com/btopro.png"
       },
-      "content": "<span>I at times, enjoy coffee. Those times, are all times.</span>"
+      "content": "<p>I at times, enjoy coffee. Those times, are all times.</p>"
     }
   ]
 }

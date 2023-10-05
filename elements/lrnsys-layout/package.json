@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.5",
+  "version": "7.0.18",
   "description": "Automated conversion of lrnsys-layout/",
   "repository": {
     "type": "git",
@@ -33,31 +33,30 @@
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "es-dev-server -c ../../es-dev-server.config.js",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --watch",
-    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox webkit"
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox"
   },
   "author": {
     "name": "btopro"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^7.0.5",
-    "@lrnwebcomponents/hax-iconset": "^7.0.5",
-    "@lrnwebcomponents/paper-avatar": "^7.0.5",
-    "@lrnwebcomponents/simple-colors": "^7.0.5",
-    "@lrnwebcomponents/simple-drawer": "^7.0.5",
-    "@lrnwebcomponents/simple-icon": "^7.0.5",
-    "@lrnwebcomponents/simple-modal": "^7.0.5",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.5",
+    "@lrnwebcomponents/a11y-collapse": "^7.0.18",
+    "@lrnwebcomponents/hax-iconset": "^7.0.18",
+    "@lrnwebcomponents/paper-avatar": "^7.0.18",
+    "@lrnwebcomponents/simple-colors": "^7.0.18",
+    "@lrnwebcomponents/simple-drawer": "^7.0.18",
+    "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "@lrnwebcomponents/simple-modal": "^7.0.18",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.18",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-drawer-panel": "^3.0.0",
     "@polymer/paper-input": "^3.0.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.5",
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.18",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -78,5 +77,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
+  "gitHead": "b9873176f9fe50a77dcf25e44bf3450d26fbb37a"
 }

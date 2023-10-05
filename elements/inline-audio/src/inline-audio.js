@@ -256,7 +256,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
         part="icon"
         class="icon"
         title="${this.title}"
-        aria-label="${this.aria}"
+        label="${this.aria}"
         icon="${this.icon}"
       ></simple-icon-button>
       <slot></slot>

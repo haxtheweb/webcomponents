@@ -151,6 +151,7 @@ class NavCardItem extends LitElement {
             title: "Avatar Image",
             description: "Select an image",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
             required: false,
           },
           {

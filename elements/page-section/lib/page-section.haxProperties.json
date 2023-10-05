@@ -1,0 +1,95 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "contentEditable": true,
+  "type": "grid",
+  "gizmo": {
+    "title": "Page section",
+    "description": "",
+    "icon": "av:call-to-action",
+    "color": "purple",
+    "tags": ["Layout", "page", "section", "container", "cta"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "inputMethod": "haxupload",
+        "title": "Image",
+        "description": "Background image of the section"
+      },
+      {
+        "property": "bg",
+        "inputMethod": "colorpicker",
+        "title": "Background color",
+        "description": "Background color of the section if no image is loaded"
+      },
+      {
+        "property": "scroller",
+        "inputMethod": "boolean",
+        "title": "Scroll button",
+        "description": "Displays a scroll button which will scroll down to the next element automatically"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "fold",
+        "inputMethod": "boolean",
+        "title": "Display fold",
+        "description": "Shows a fold at the bottom of the section to visually indicate to user to scroll down"
+      },
+      {
+        "property": "full",
+        "inputMethod": "boolean",
+        "title": "Full screeen size",
+        "description": "Fill to the size of the user's display"
+      },
+      {
+        "property": "filter",
+        "inputMethod": "boolean",
+        "title": "Apply Filter",
+        "description": "Apply visual filter to background / image"
+      },
+      {
+        "property": "accentColor",
+        "inputMethod": "colorpicker",
+        "title": "Accent Color",
+        "description": "Accent to text and filter if applied"
+      },
+      {
+        "property": "dark",
+        "inputMethod": "boolean",
+        "title": "Dark",
+        "description": "Inverts colors to be dark to light"
+      }
+    ],
+    "developer": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["colors"]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "page-section",
+      "content": "<h2>Section 1</h2><p slot=\"buttons\">Content</p>",
+      "properties": {
+        "filter": true,
+        "backgroundColor": "blue",
+        "accentColor": "blue",
+        "full": true,
+        "fold": true,
+        "scroller": true
+      }
+    }
+  ]
+}

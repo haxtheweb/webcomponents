@@ -35,7 +35,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       edit: "Edit",
       dragHandle: "Drag handle",
       moveUp: "Move up",
-      summonMerlin: "Summon Merlin",
       moveDown: "Move down",
       addColumn: "Add column",
       removeColumn: "Remove column",
@@ -494,17 +493,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             ?toggled="${this.viewSource}"
           ></hax-context-item>
           <slot name="more"></slot>
-          <hax-context-item
-            icon="hax:wizard-hat"
-            action
-            align-horizontal="left"
-            ?disabled="${
-              this.hasActiveEditingElement || this.viewSource || this.disableOps
-            }"
-            label="${this.t.summonMerlin}"
-            event-name="super-daemon"
-          >
-          </hax-context-item>
         </div>
       </hax-toolbar>
     `;

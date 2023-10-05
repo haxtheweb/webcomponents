@@ -1,0 +1,78 @@
+{
+  "name": "@lrnwebcomponents/page-section",
+  "wcfactory": {
+    "className": "PageSection",
+    "customElementClass": "LitElement",
+    "elementName": "page-section",
+    "generator-wcfactory-version": "0.13.1",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/page-section.css",
+      "scss": "src/page-section.scss",
+      "html": "src/page-section.html",
+      "js": "src/page-section.js",
+      "properties": "src/page-section-properties.json",
+      "hax": "src/page-section-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "7.0.18",
+  "description": "A well designed section of a page with many options for marketing purposes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "page-section.js",
+  "module": "page-section.js",
+  "umd": "page-section.umd.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"*.js|lib/**.js\" --format vscode --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": ""
+  },
+  "license": "",
+  "dependencies": {
+    "@lrnwebcomponents/media-image": "^7.0.18",
+    "@lrnwebcomponents/simple-colors": "^7.0.18",
+    "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.18",
+    "lit": "^2.8.0"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
+    "@lrnwebcomponents/simple-cta": "^7.0.18",
+    "@open-wc/testing": "2.5.32",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@web/dev-server": "0.3.1",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.21",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ],
+  "gitHead": "b9873176f9fe50a77dcf25e44bf3450d26fbb37a"
+}

@@ -10,6 +10,8 @@ class CourseIntroHeader extends LitElement {
       title: { type: String },
       description: { type: String },
       icon: { type: String },
+      backgroundImage: { type: String },
+      color: { type: String },
     };
   }
   constructor() {
@@ -17,6 +19,23 @@ class CourseIntroHeader extends LitElement {
     this.title = "";
     this.description = "";
     this.icon = "";
+    this.backgroundImage = "";
+    this.color = "";
+    autorun(() => {
+      const manifest = toJS(store.manifest);
+      if (
+        manifest &&
+        manifest.metadata &&
+        manifest.metadata.theme &&
+        manifest.metadata.theme.variables
+      ) {
+        this.title = manifest.title;
+        this.description = manifest.description;
+        this.icon = manifest.metadata.theme.variables.icon;
+        this.backgroundImage = `url('${manifest.metadata.theme.variables.image}')`;
+        this.color = manifest.metadata.theme.variables.hexCode;
+      }
+    });
   }
 
   static get styles() {
@@ -253,39 +272,10 @@ class CourseIntroHeader extends LitElement {
     ];
   }
 
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-
-    this._disposer = autorun(() => {
-      if (
-        store.manifest &&
-        store.manifest.metadata &&
-        store.manifest.metadata.theme &&
-        store.manifest.metadata.theme.variables
-      ) {
-        this.title = toJS(store.manifest.title);
-        this.description = toJS(store.manifest.description);
-        this.icon = toJS(store.manifest.metadata.theme.variables.icon);
-
-        this.shadowRoot.querySelector("#sub-heading").style.color = `${toJS(
-          store.manifest.metadata.theme.variables.hexCode
-        )}`;
-
-        this.shadowRoot.querySelector(
-          "#header"
-        ).style.backgroundImage = `url(${toJS(
-          store.manifest.metadata.theme.variables.image
-        )})`;
-      }
-    });
-  }
-
   render() {
     return html`
       <div id="header-container">
-        <div id="header">
+        <div id="header" style="background-image:${this.backgroundImage};">
           <div id="header-branding">
             <slot name="header-left"></slot>
           </div>
@@ -295,7 +285,9 @@ class CourseIntroHeader extends LitElement {
         </div>
         <div id="info">
           <h1 id="title">${this.title}</h1>
-          <h2 id="sub-heading">${this.description}</h2>
+          <h2 id="sub-heading" style="color:${this.color};">
+            ${this.description}
+          </h2>
           <h3 id="outline-title">
             <slot name="outline-title"></slot>
           </h3>

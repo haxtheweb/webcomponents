@@ -1,6 +1,7 @@
 import { html, css } from "lit";
 import { HAXStore } from "./hax-store.js";
 import { HaxUploadField } from "./hax-upload-field.js";
+import { autorun, toJS } from "mobx";
 
 class HaxTrayUpload extends HaxUploadField {
   /**
@@ -20,6 +21,9 @@ class HaxTrayUpload extends HaxUploadField {
       ...this.__winEvents,
       "place-holder-file-drop": "_placeHolderFileDrop",
     };
+    autorun(() => {
+      this._editModeChanged(toJS(HAXStore.editMode));
+    });
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
@@ -28,6 +32,15 @@ class HaxTrayUpload extends HaxUploadField {
         this.label = this.t.uploadMedia;
       }
     });
+  }
+  _editModeChanged(editMode) {
+    if (
+      !editMode &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#fileupload")
+    ) {
+      this.shadowRoot.querySelector("#fileupload").files = [];
+    }
   }
   /**
    * Respond to successful file upload, now inject url into url field and

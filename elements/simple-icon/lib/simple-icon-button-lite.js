@@ -147,7 +147,6 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
       return {
         ...super.properties,
         autofocus: {
-          attribute: "autofocus",
           type: Boolean,
         },
         ariaLabelledby: {
@@ -155,11 +154,9 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
           type: String,
         },
         controls: {
-          attribute: "controls",
           type: String,
         },
         disabled: {
-          attribute: "disabled",
           type: Boolean,
         },
         fieldName: {
@@ -167,7 +164,6 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
           type: String,
         },
         form: {
-          attribute: "form",
           type: String,
         },
         icon: {
@@ -175,25 +171,20 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
           reflect: true,
         },
         label: {
-          attribute: "label",
           type: String,
         },
         type: {
-          attribute: "type",
           type: String,
         },
         value: {
-          attribute: "value",
           type: String,
           reflect: true,
         },
         toggles: {
-          attribute: "toggles",
           type: Boolean,
           reflect: true,
         },
         toggled: {
-          attribute: "toggled",
           type: Boolean,
           reflect: true,
         },

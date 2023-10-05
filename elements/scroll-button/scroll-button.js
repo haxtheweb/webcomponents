@@ -23,7 +23,9 @@ class ScrollButton extends LitElement {
         detail: {
           context: this,
           namespace: "scroll-button",
-          localesPath: new URL("./locales", import.meta.url).href,
+          localesPath:
+            new URL("./locales/scroll-button.es.json", import.meta.url).href +
+            "/../",
           updateCallback: "render",
           locales: ["es"],
         },

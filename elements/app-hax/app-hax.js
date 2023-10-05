@@ -41,6 +41,11 @@ export class AppHax extends I18NMixin(SimpleTourFinder(SimpleColors)) {
   static get tag() {
     return "app-hax";
   }
+
+  _openExternalLink(link) {
+    window.open(link, "_blank");
+  }
+
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     let body = "";
     if (type == "merlin") {
@@ -164,6 +169,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       ...this.t,
       selectPage: "Select page",
       backToSiteList: "Back to site list",
+      listMySites: "List my sites",
       cancel: "Cancel",
       editDetails: "Page details",
       add: "Add",
@@ -185,12 +191,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       siteSettings: "Site settings",
       close: "Close",
       settings: "Settings",
-      editPage: "Edit page",
       edit: "Edit",
       configureBlock: "Configure block",
       configure: "Configure",
       save: "Save",
-      saveChanges: "Save changes",
+      home: "Home",
+      startNewJourney: "Start new journey",
       newJourney: "New Journey",
       accountInfo: "Account Info",
       outlineDesigner: "Outline designer",
@@ -223,16 +229,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       }
       return false;
     };
-    SuperDaemonInstance.questionTags = [
-      {
-        value: "*",
-        label: "What can I do?",
-      },
-      {
-        value: "sites",
-        label: "What sites do I have access to?",
-      },
-    ];
+    {
+      SuperDaemonInstance.questionTags = [
+        {
+          value: "*",
+          label: "List everything I can do",
+        },
+        {
+          value: "?",
+          label: "HELP!",
+        },
+      ];
+    }
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
@@ -283,8 +291,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       icon: "hax:hax2022",
       tags: ["Sites", "Administration", "change"],
       eventName: "super-daemon-run-program",
-      path: "hax/action/goToSite",
-      priority: -100,
+      path: "HAX/action/goToSite",
       value: {
         name: "Go to site",
         program: async (input, values) => {
@@ -314,9 +321,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                 eventName: "super-daemon-element-method",
                 context: [
                   "*",
-                  "hax/action/goToSite/" + site.metadata.site.name,
+                  "HAX/action/goToSite/" + site.metadata.site.name,
                 ],
-                path: "hax/action/goToSite/" + site.metadata.site.name,
+                path: "HAX/action/goToSite/" + site.metadata.site.name,
               });
             }
           });
@@ -327,8 +334,64 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     });
     // contribution helpers
     SuperDaemonInstance.defineOption({
-      title: "Bug / issue",
+      title: "Join our Community",
+      icon: "hax:discord",
+      priority: -100,
+      tags: ["community", "discord", "chat", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://bit.ly/hax-discord"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/join",
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "User Tutorials",
       icon: "hax:hax2022",
+      priority: -1000,
+      tags: ["Documentation", "community", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/tutorials"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/tutorials",
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "User Documentation",
+      icon: "hax:hax2022",
+      tags: ["Documentation", "community", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: [
+          "https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation",
+        ],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/documentation",
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "HAX Teaching Excellence",
+      icon: "hax:hax2022",
+      tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/ontology"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/pedagogy",
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Bug / issue",
+      icon: "mdi-social:github-circle",
       tags: ["Bug report", "github", "git", "community", "issue queue"],
       value: {
         target: this,
@@ -337,11 +400,11 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["*"],
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
-      icon: "hax:hax2022",
+      icon: "mdi-social:github-circle",
       tags: [
         "Feature request",
         "idea",
@@ -355,9 +418,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["*"],
     });
     this.windowControllers = new AbortController();
     this.__tour = SimpleTourManager;
@@ -367,23 +430,24 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       style: `
       simple-popover-manager::part(simple-popover) {
         max-width: 250px;
+        font-family: sans-serif;
       }
       simple-popover-manager button {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: sans-serif;
         font-size: 12px;
         margin: 0px 2px;
         color: var(--simple-colors-default-theme-grey-12);
       }
       simple-popover-manager p {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: sans-serif;
         padding: 0;
         margin: 0;
         width: 250px;
-        font-size: 12px;
+        font-size: 10px;
         line-height: 20px;
       }
       simple-popover-manager h1 {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: sans-serif;
         margin: 0;
         font-size: 12px;
         width: 250px;
@@ -393,15 +457,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       simple-popover-manager::part(simple-popover-heading) {
         color: black;
         background-color: white;
+        font-family: sans-serif;
       }
       body.dark-mode simple-popover-manager::part(simple-popover-body),
       body.dark-mode simple-popover-manager::part(simple-popover-heading) {
         color: white;
         background-color: black;
+        font-family: sans-serif;
       }
       body.dark-mode simple-popover-manager simple-icon-button-lite {
         color: white;
         background-color: black;
+        font-family: sans-serif;
       }
       `,
     });
@@ -549,19 +616,21 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     }
     autorun(() => {
       localStorageSet("app-hax-darkMode", toJS(store.darkMode));
-      if (toJS(store.darkMode)) {
-        document.body.classList.add("dark-mode");
-        store.toast("I'm ascared of the dark", 2000, { fire: true });
-        this.dark = true;
-        SuperDaemonInstance.dark = true;
-        SuperDaemonInstance.toastInstance.darkMode = true;
-      } else {
-        document.body.classList.remove("dark-mode");
-        store.toast("Sunny day it is", 2000, { hat: "random" });
-        this.dark = false;
-        SuperDaemonInstance.dark = false;
-        SuperDaemonInstance.toastInstance.darkMode = false;
-      }
+      requestAnimationFrame(() => {
+        if (toJS(store.darkMode)) {
+          document.body.classList.add("dark-mode");
+          store.toast("I'm ascared of the dark", 2000, { fire: true });
+          this.dark = true;
+          SuperDaemonInstance.dark = true;
+          SuperDaemonInstance.toastInstance.darkMode = true;
+        } else {
+          document.body.classList.remove("dark-mode");
+          store.toast("Sunny day it is", 2000, { hat: "random" });
+          this.dark = false;
+          SuperDaemonInstance.dark = false;
+          SuperDaemonInstance.toastInstance.darkMode = false;
+        }
+      });
     });
     autorun(() => {
       const mode = toJS(store.appMode);
@@ -785,7 +854,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         }
         .start-journey {
           display: flex;
-          padding-top: 40px;
+          padding-top: 20px;
           justify-content: center;
         }
         app-hax-site-button {
@@ -799,14 +868,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           left: 0;
           position: fixed;
         }
-        @media (max-width: 780px) {
-          app-hax-top-bar::part(top-bar) {
-            grid-template-columns: 20% 20% 60%;
-          }
-        }
-        @media (max-width: 600px) {
-          app-hax-top-bar::part(top-bar) {
-            grid-template-columns: 10% 30% 60%;
+        @media (max-width: 640px) {
+          simple-tooltip {
+            --simple-tooltip-font-size: 10px;
           }
         }
         .label {
@@ -941,22 +1005,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             -webkit-animation: none;
           }
         }
-        @media (max-width: 680px) {
+        @media (max-width: 640px) {
           random-word {
-            visibility: none;
-            opacity: 0;
+            display: none;
           }
-        }
-        @media (max-height: 700px) {
           .content {
             margin-top: 4px;
           }
-          random-word {
-            visibility: none;
-            opacity: 0;
-          }
           .start-journey {
             padding-top: 0;
+          }
+          app-hax-site-button {
+            --app-hax-site-button-font-size: 12px;
           }
         }
         @media (max-height: 500px) {
@@ -1082,16 +1142,22 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       <header>
         <app-hax-top-bar>
           <slot name="app-header-pre" slot="left"></slot>
-          <a id="home" href="home" tabindex="-1" slot="left">
+          <a
+            id="home"
+            title="${this.t.home}"
+            href="home"
+            tabindex="-1"
+            slot="left"
+          >
             <simple-icon-lite
               id="hlogo"
               icon="hax:hax2022"
               tabindex="0"
               class="haxLogo"
-              title="Home"
+              title="${this.t.home}"
               data-simple-tour-stop
               data-stop-title="data-label"
-              data-label="Home"
+              data-label="${this.t.home}"
             >
               <div data-stop-content slot="tour" style="display:none;">
                 You can come back to this home screen whenever you click this!
@@ -1099,7 +1165,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             </simple-icon-lite>
           </a>
           <simple-tooltip for="hlogo" position="right" slot="left"
-            >Home</simple-tooltip
+            >${this.t.home}</simple-tooltip
           >
           <simple-toolbar-button
             icon="hax:wizard-hat"
@@ -1122,21 +1188,21 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             class="soundToggle"
             id="soundtb"
             @click="${soundToggle}"
+            data-simple-tour-stop
+            data-stop-title="data-label"
+            data-label="Sound"
           >
             <span class="wired-button-label">Toggle sound effects</span>
             <simple-icon-lite
               src="${this.soundIcon}"
               loading="lazy"
               decoding="async"
-              data-simple-tour-stop
-              data-stop-title="data-label"
-              data-label="Sound"
             >
-              <div slot="tour" data-stop-content>
-                Not a fan of the (awesome) sound effects? You can mute them if
-                you prefer.
-              </div>
             </simple-icon-lite>
+            <div slot="tour" data-stop-content>
+              Not a fan of the (awesome) sound effects? You can mute them if you
+              prefer.
+            </div>
           </wired-button>
           <simple-tooltip for="soundtb" position="bottom" slot="right"
             >Toggle sound</simple-tooltip
@@ -1162,12 +1228,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               class="topbar-character"
               slot="menuButton"
               id="tbchar"
+              title="System menu"
             >
               <rpg-character
                 seed="${this.userName}"
                 width="68"
                 height="68"
-                aria-label="System menu"
                 hat="${this.userMenuOpen ? "edit" : "none"}"
               ></rpg-character>
               <span class="characterbtn-name">${this.userName}</span>
@@ -1182,6 +1248,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                 icon="add"
                 label="${this.t.newJourney}"
                 part="newjourneybtn"
+              ></app-hax-user-menu-button>
+            </a>
+            <a
+              slot="main-menu"
+              title="${this.t.listMySites}"
+              href="home"
+              tabindex="-1"
+            >
+              <app-hax-user-menu-button
+                icon="hax:hax2022"
+                label="${this.t.listMySites}"
+                part="listMySites"
               ></app-hax-user-menu-button>
             </a>
             <!-- <app-hax-user-menu-button
@@ -1259,20 +1337,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   }
 
   templateHome() {
-    return html` ${!this.searchTerm
-        ? html` <div class="start-journey">
-            <a
-              href="createSite-step-1"
-              @click="${this.startJourney}"
-              tabindex="-1"
-            >
-              <app-hax-site-button
-                label="&gt; Start new journey"
-              ></app-hax-site-button>
-            </a>
-          </div>`
-        : ``}
-
+    return html`<div class="start-journey">
+        <a
+          href="createSite-step-1"
+          @click="${this.startJourney}"
+          tabindex="-1"
+          title="${this.t.startNewJourney}"
+        >
+          <app-hax-site-button
+            label="&gt; ${this.t.startNewJourney}"
+          ></app-hax-site-button>
+        </a>
+      </div>
       <app-hax-search-results></app-hax-search-results>`;
   }
 

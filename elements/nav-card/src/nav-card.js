@@ -101,6 +101,7 @@ class NavCard extends AccentCard {
             title: "Image",
             description: "Optional image",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
           },
           {
             slot: "heading",

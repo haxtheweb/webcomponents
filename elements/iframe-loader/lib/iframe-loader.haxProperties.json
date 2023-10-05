@@ -12,32 +12,31 @@
     "handles": [
       {
         "type": "link",
-        "source": "src",
+        "source": "source",
         "height": "height",
         "width": "width"
       },
       {
         "type": "pdf",
-        "source": "src",
+        "source": "source",
         "height": "height",
         "width": "width"
       },
       {
         "type": "document",
-        "source": "src",
+        "source": "source",
         "height": "height",
         "width": "width"
       },
       {
         "type": "html",
-        "source": "src",
+        "source": "source",
         "height": "height",
         "width": "width"
       }
     ],
     "meta": {
-      "author": "HAXTheWeb core team",
-      "hidden": true
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {
@@ -71,8 +70,6 @@
       "tag": "iframe-loader",
       "properties": {
         "source": "https://haxtheweb.org",
-        "height": "400",
-        "width": "50%",
         "disabled": true
       },
       "content": ""

@@ -1,0 +1,79 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "course model",
+    "description": "",
+    "icon": "icons:android",
+    "color": "purple",
+    "tags": ["Other", "Course", "Model", "Eberly"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "title",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "src",
+        "title": "src",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "alt",
+        "title": "alt",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "",
+        "title": "Information area",
+        "inputMethod": "code-editor"
+      },
+      {
+        "slot": "detail",
+        "title": "Details area",
+        "inputMethod": "code-editor"
+      },
+      {
+        "slot": "animation",
+        "title": "Animation area",
+        "inputMethod": "code-editor"
+      },
+      {
+        "slot": "check",
+        "title": "Knowledge Check area",
+        "inputMethod": "code-editor"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "logo",
+        "title": "Logo area",
+        "inputMethod": "code-editor"
+      }
+    ],
+    "developer": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "course-model",
+      "content": "",
+      "properties": {}
+    }
+  ]
+}

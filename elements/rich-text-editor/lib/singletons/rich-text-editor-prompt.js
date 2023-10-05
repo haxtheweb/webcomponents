@@ -92,6 +92,8 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
         for="${this.__highlight ? this.__highlight.id : ""}"
         ?hidden="${this.hidden || this.__highlight.hidden}"
         position="bottom"
+        sticky
+        fit-to-visible-bounds
         position-align="center"
         .target="${this.__highlight}"
       >

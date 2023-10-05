@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.8",
+  "version": "7.0.18",
   "description": "Automated conversion of lrnsys-comment/",
   "repository": {
     "type": "git",
@@ -41,17 +41,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/grafitto-filter": "^7.0.5",
-    "@lrnwebcomponents/hax-iconset": "^7.0.5",
-    "@lrnwebcomponents/lrndesign-avatar": "^7.0.5",
-    "@lrnwebcomponents/lrnsys-button": "^7.0.8",
-    "@lrnwebcomponents/moment-element": "^7.0.5",
-    "@lrnwebcomponents/mtz-marked-editor": "^7.0.5",
-    "@lrnwebcomponents/simple-icon": "^7.0.5",
-    "@lrnwebcomponents/simple-modal": "^7.0.5",
-    "@lrnwebcomponents/simple-toast": "^7.0.5",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.5",
-    "@lrnwebcomponents/word-count": "^7.0.5",
+    "@lrnwebcomponents/grafitto-filter": "^7.0.18",
+    "@lrnwebcomponents/hax-iconset": "^7.0.18",
+    "@lrnwebcomponents/lrndesign-avatar": "^7.0.18",
+    "@lrnwebcomponents/lrnsys-button": "^7.0.18",
+    "@lrnwebcomponents/moment-element": "^7.0.18",
+    "@lrnwebcomponents/mtz-marked-editor": "^7.0.18",
+    "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "@lrnwebcomponents/simple-modal": "^7.0.18",
+    "@lrnwebcomponents/simple-toast": "^7.0.18",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.18",
+    "@lrnwebcomponents/word-count": "^7.0.18",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -67,12 +67,12 @@
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.5",
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.18",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.2.3",
+    "@web/dev-server": "0.3.1",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.0",
     "wct-browser-legacy": "1.0.2"
@@ -85,5 +85,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
+  "gitHead": "b9873176f9fe50a77dcf25e44bf3450d26fbb37a"
 }

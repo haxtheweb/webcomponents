@@ -196,6 +196,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.alignHorizontal = "center";
       this.disabled = false;
       this.showTextLabel = false;
+      this.toggled = false;
       this.toggles = false;
       this.radio = false;
       this.shortcutKeys = "";
@@ -268,10 +269,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       return (!!this.toggles || !!this.radio) & !!this.toggled;
     }
 
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {});
-    }
     /**
      * Called every time the element is inserted into the DOM. Useful for
      * running setup code, such as fetching resources or rendering.
@@ -308,7 +305,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @returns
      */
     focus() {
-      if (this.focusableElement) {
+      if (this.focusableElement && !this.disabled) {
         this.isCurrentItem = true;
         this.focusableElement.focus();
       }
@@ -334,7 +331,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @param {event} e event
      */
     _handleClick(e) {
-      this.toggle();
+      if (!this.disabled) {
+        this.toggle();
+      }
     }
     /**
      * handles blur
@@ -538,7 +537,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @focus="${this._handleFocus}"
               part="button"
               role="radio"
-              tabindex="${this.isCurrentItem ? 1 : -1}"
+              tabindex="${this.isCurrentItem ? 0 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -558,7 +557,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @blur="${this._handleBlur}"
               @focus="${this._handleFocus}"
               part="button"
-              tabindex="${this.isCurrentItem ? 1 : -1}"
+              tabindex="${this.isCurrentItem ? 0 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -576,7 +575,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @blur="${this._handleBlur}"
               @focus="${this._handleFocus}"
               part="button"
-              tabindex="${this.isCurrentItem ? 1 : -1}"
+              tabindex="${this.isCurrentItem ? 0 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -668,9 +667,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           :host {
             display: inline-flex;
             white-space: nowrap;
-            transition: all 0.5s;
             z-index: 1;
-            transition: z-index 0s;
           }
           :host(:hover),
           :host(:focus-wthin) {
@@ -739,7 +736,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             min-height: var(--simple-toolbar-button-height, 24px);
             padding: var(--simple-toolbar-button-padding, 1px);
             flex: var(--simple-toolbar-button-flex, 0 0 auto);
-            transition: all 0.5s;
             align-items: var(--simple-toolbar-button-align, center);
             justify-content: var(--simple-toolbar-button-justify, center);
           }

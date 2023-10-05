@@ -662,33 +662,64 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       let finished = false;
       let key = this._shortcutKeysMatch(e);
       if (key) return;
+      let c;
       switch (e.keyCode) {
         case this.keyCode.RIGHT:
+          c = this.nextItem || this.firstItem;
+          while (c && c.disabled) {
+            this.currentItem = c;
+            c = this.nextItem || this.firstItem;
+          }
           this.focusOn(this.nextItem || this.firstItem);
           finished = true;
           break;
 
         case this.keyCode.LEFT:
+          c = this.previousItem || this.lastItem;
+          while (c && c.disabled) {
+            this.currentItem = c;
+            c = this.previousItem || this.lastItem;
+          }
           this.focusOn(this.previousItem || this.lastItem);
           finished = true;
           break;
 
         case this.keyCode.HOME:
+          c = this.firstItem;
+          while (c && c.disabled) {
+            this.currentItem = c;
+            c = this.firstItem;
+          }
           this.focusOn(this.firstItem);
           finished = true;
           break;
 
         case this.keyCode.END:
+          c = this.lastItem;
+          while (c && c.disabled) {
+            this.currentItem = c;
+            c = this.lastItem;
+          }
           this.focusOn(this.lastItem);
           finished = true;
           break;
 
         case this.keyCode.UP:
+          c = this.previousItem || this.lastItem;
+          while (c && c.disabled) {
+            this.currentItem = c;
+            c = this.previousItem || this.lastItem;
+          }
           this.focusOn(this.previousItem || this.lastItem);
           finished = true;
           break;
 
         case this.keyCode.DOWN:
+          c = this.nextItem || this.firstItem;
+          while (c && c.disabled) {
+            this.currentItem = c;
+            c = this.nextItem || this.firstItem;
+          }
           this.focusOn(this.nextItem || this.firstItem);
           finished = true;
           break;

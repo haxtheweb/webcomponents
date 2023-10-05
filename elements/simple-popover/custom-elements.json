@@ -30,7 +30,7 @@
       "attributes": [
         {
           "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened",
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
           "valueSet": "v"
         },
         {

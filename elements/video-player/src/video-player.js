@@ -50,7 +50,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       ? html`${!this.isA11yMedia
           ? html` <div
                 class="responsive-video-container"
-                .lang="${this.lang || undefined}"
+                .lang="${this.lang || "en"}"
               >
                 ${this.sandboxed
                   ? html``
@@ -112,7 +112,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                 .sources="${this.sourceProperties}"
                 ?stand-alone="${this.standAlone}"
                 sticky-corner="${this.stickyCorner || "none"}"
-                .thumbnail-src="${this.thumbnailSrc}"
+                thumbnail-src="${this.thumbnailSrc}"
                 .tracks="${this.trackProperties}"
                 .crossorigin="${this.crossorigin || "anonymous"}"
                 .width="${this.width}"
@@ -212,7 +212,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             title: "Thumbnail image",
             description: "Optional. The URL for a thumbnail/poster image.",
             inputMethod: "haxupload",
-            noCamera: true,
             noVoiceRecord: true,
             validationType: "url",
           },
@@ -289,7 +288,13 @@ class VideoPlayer extends IntersectionObserverMixin(
         ],
       },
       saveOptions: {
-        unsetAttributes: ["__utils", "__stand-alone", "colors"],
+        unsetAttributes: [
+          "__utils",
+          "__stand-alone",
+          "colors",
+          "playing",
+          "__forcePaused",
+        ],
       },
       demoSchema: [
         {
@@ -522,7 +527,9 @@ class VideoPlayer extends IntersectionObserverMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales", import.meta.url).href,
+      localesPath:
+        new URL("./locales/video-player.es.json", import.meta.url).href +
+        "/../",
       locales: ["es"],
     });
   }
@@ -945,19 +952,23 @@ class VideoPlayer extends IntersectionObserverMixin(
     }
   }
   _visChange(e) {
-    if (
-      document.visibilityState === "visible" &&
-      !this.playing &&
-      this.__forcePaused
-    ) {
-      this.__forcePaused = false;
-      // resume the video bc it has focus and we stopped it playing previously
-      this.shadowRoot.querySelector("a11y-media-player").togglePlay();
-    } else if (document.visibilityState === "hidden" && this.playing) {
-      // force pause the video; we're in learning mode and they swtiched tabs
-      this.__forcePaused = true;
-      this.shadowRoot.querySelector("a11y-media-player").togglePlay();
-    }
+    setTimeout(() => {
+      if (
+        document.visibilityState === "visible" &&
+        !this.playing &&
+        this.__forcePaused
+      ) {
+        this.__forcePaused = false;
+        // resume the video bc it has focus and we stopped it playing previously
+        this.shadowRoot.querySelector("a11y-media-player").togglePlay();
+      } else if (document.visibilityState === "hidden" && this.playing) {
+        // force pause the video; we're in learning mode and they swtiched tabs
+        this.__forcePaused = true;
+        this.shadowRoot.querySelector("a11y-media-player").togglePlay();
+      } else {
+        this.__forcePaused = false;
+      }
+    }, 500);
   }
 }
 customElements.define(VideoPlayer.tag, VideoPlayer);

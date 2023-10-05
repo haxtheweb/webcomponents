@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
@@ -29,7 +29,7 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/NP0mQeLWCCo" allowfullscreen></iframe>
             <video><track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt"default></video>
           </video-player>
-          <video-player id="example" accent-color="amber" linkable>
+          <video-player id="example" accent-color="amber" linkable thumbnail-src="https://avatars.githubusercontent.com/u/329735?v=4">
             <video>
               <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
               <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
@@ -43,7 +43,7 @@
       <h2>video-player for youtube + repair to correctly normalize embed address</h2>
       <demo-snippet>
         <template>
-          <video-player preload="auto" source="//www.youtube.com/watch?v=LrS7dqokTLE" track="./samples/HAXshort.vtt"></video-player>
+          <video-player thumbnail-src="https://avatars.githubusercontent.com/u/329735?v=4" preload="auto" source="//www.youtube.com/watch?v=LrS7dqokTLE" track="./samples/HAXshort.vtt"></video-player>
           <video-player class="max-600" dark source="//www.youtube-nocookie.com/embed/LrS7dqokTLE"></video-player>
           <video-player class="max-600" accent-color="orange" source="//www.youtube.com/embed/LrS7dqokTLE"></video-player>
           <video-player class="max-600" accent-color="orange" dark source="//youtu.be/LrS7dqokTLE"></video-player>

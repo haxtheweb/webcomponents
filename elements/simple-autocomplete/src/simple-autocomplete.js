@@ -348,11 +348,13 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
    */
   getRange() {
     let sel = this.getSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
+    if (sel && sel.getRangeAt && sel.rangeCount) {
       return sel.getRangeAt(0);
     } else if (sel) {
       return sel;
-    } else false;
+    } else {
+      return false;
+    }
   }
   /**
    * Reset focus back on the input area while closing the popover

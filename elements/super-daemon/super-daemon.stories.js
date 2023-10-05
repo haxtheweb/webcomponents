@@ -5,7 +5,7 @@ import { SuperDaemon } from "./super-daemon.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Developer|Super Daemon",
+  title: "Other|Super Daemon",
   component: "super-daemon",
   decorators: [withKnobs],
   parameters: {

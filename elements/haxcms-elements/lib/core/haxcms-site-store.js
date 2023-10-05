@@ -15,12 +15,17 @@ import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-ou
 import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
 import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
+configure({ enforceActions: false }); // strict mode off
 class Store {
   constructor() {
     this.badDevice = false;
+    this.internalRoutes = {
+      search: {},
+      views: {},
+    };
     this.evaluatebadDevice();
     this.location = null;
+    this.currentRouterLocation = {};
     this.jwt = null;
     this.version = "0.0.0";
     this.soundStatus = localStorageGet("app-hax-soundStatus", true);
@@ -46,6 +51,9 @@ class Store {
     this.themeStyleElement.id = "haxcms-theme-global-style-element";
     this.t = {
       close: "Close",
+      search: "Search",
+      views: "Content Views",
+      pageNotFound: "Page not found",
     };
     this.activeId = null;
     this.userData = {};
@@ -55,12 +63,13 @@ class Store {
     this.cmsSiteEditorBackend = {
       instance: null,
     };
-    this.dashboardOpened = false;
+    this._registration = {}; // used for initial state registration as system setsup
     makeObservable(this, {
       location: observable.ref, // router location in url
+      currentRouterLocation: observable.ref,
+      internalRoutes: observable, // internal routes to haxcms
       editMode: observable, // global editing state
       jwt: observable, // json web token
-      dashboardOpened: observable, // if haxcms backend settings are open
       userData: observable, // user data object for logged in users
       manifest: observable, // JOS / manifest
       activeItemContent: observable, // active site content, cleaned up
@@ -499,6 +508,44 @@ class Store {
    */
   get activeItem() {
     let item = this.findItem(this.activeId);
+    // test alternate routes bc we didn't get it on item
+    if (
+      this.activeId &&
+      HAXcmsStore.storePieces &&
+      HAXcmsStore.storePieces.siteRouter &&
+      (item === null || typeof item === "undefined")
+    ) {
+      switch (this.activeId) {
+        case "404":
+          // 404 page bc of a miss on the router
+          item = {
+            id: "404",
+            _internalRoute: true,
+            title: this.t.pageNotFound,
+            location: "hax-fake-404.html",
+          };
+          const internalRouteTest = store.getInternalRoute();
+          if (internalRouteTest && store.internalRoutes[internalRouteTest]) {
+            // if we have an internal route callback then call it
+            // also account for initial load in which this MAY not exist via TTFP
+            // but does exist some time later
+            if (
+              typeof store.internalRoutes[internalRouteTest].callback ===
+              "function"
+            ) {
+              store.internalRoutes[internalRouteTest].callback();
+            }
+            item = {
+              id: "x/" + internalRouteTest,
+              _internalRoute: true,
+              component: `site-${internalRouteTest}-route`,
+              title: this.t[internalRouteTest] || internalRouteTest, // translation otherwise just the route name
+              location: "hax-internal-route.html",
+            };
+          }
+          break;
+      }
+    }
     // ensure we found something, return null for consistency in data
     if (item) {
       return item;
@@ -870,7 +917,6 @@ class Store {
           this.spiderChildren(
             child,
             data,
-            start,
             end,
             parent,
             parentFound,
@@ -879,6 +925,17 @@ class Store {
         });
       }
     }
+  }
+  // need to get the internal route if it exists
+  getInternalRoute() {
+    if (
+      this.currentRouterLocation &&
+      this.currentRouterLocation.params &&
+      this.currentRouterLocation.params[0]
+    ) {
+      return this.currentRouterLocation.params[0].replace("x/", ""); // we always sub the x/ out bc it's assumed reserved
+    }
+    return false;
   }
   /**
    * Compute items leveraging the site query engine
@@ -1089,7 +1146,6 @@ class HAXCMSSiteStore extends HTMLElement {
    */
   getApplicationContext() {
     let context = "";
-    // @todo review if we even need this because newer contexts don't care
     // figure out the context we need to apply for where the editing creds
     // and API might come from
     // beaker is a unique scenario
@@ -1104,6 +1160,7 @@ class HAXCMSSiteStore extends HTMLElement {
         case "demo": // demo / local development
         case "desktop": // implies electron
         case "local": // implies ability to use local file system
+        case "userfs": // implies hax.cloud stylee usage pattern
           context = window.HAXCMSContext;
           break;
         default:

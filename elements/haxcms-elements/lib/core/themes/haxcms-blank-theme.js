@@ -28,9 +28,34 @@ class HAXCMSBlankTheme extends CleanTwo {
   }
   static get styles() {
     return css`
+      :host([edit-mode]) {
+        opacity: 1;
+        --hax-base-styles-p-min-height: 38px;
+      }
+      :host([hidden]) {
+        display: none;
+      }
+      [hidden] {
+        display: none !important;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+      /**
+        * Hide the slotted content during edit mode. This must be here to work.
+        */
+      :host([edit-mode]) #slot {
+        display: none;
+      }
+      #slot {
+        min-height: 50vh;
+      }
       :host {
         display: block;
-        margin: 20px;
+        margin: 0px;
       }
     `;
   }

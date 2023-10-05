@@ -235,16 +235,7 @@ class RetroCard extends SimpleColors {
         icon: "icons:android",
         color: "purple",
         tags: ["Layout", "card", "layout"],
-        handles: [
-          {
-            type: "image",
-            source2: "mediaSource",
-            source: "hoverSource",
-            alt: "subtitle",
-            title: "title",
-            name: "title",
-          },
-        ],
+        handles: [],
         meta: {
           author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
@@ -289,6 +280,7 @@ class RetroCard extends SimpleColors {
             title: "Media source",
             description: "Primary media source",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
             required: true,
             icon: "icons:link",
             validationType: "url",
@@ -298,6 +290,7 @@ class RetroCard extends SimpleColors {
             description: "When user hovers / activates the card",
             title: "Source on hover",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
             required: false,
             validationType: "url",
             icon: "icons:android",

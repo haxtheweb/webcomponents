@@ -205,10 +205,12 @@ class GridPlate extends LitElement {
           margin: 0;
         }
         :host .column ::slotted(*) {
-          margin: var(--grid-plate-item-margin, 15px);
-          padding: var(--grid-plate-item-padding, 15px);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
+        }
+        :host([data-hax-ray]) .column ::slotted(*) {
+          margin: var(--grid-plate-item-margin, 15px);
+          padding: var(--grid-plate-item-padding, 15px);
         }
         :host([ready]) [data-layout-slotname] {
           transition: var(
@@ -244,25 +246,25 @@ class GridPlate extends LitElement {
           width: 124px;
         }
         /** this implies hax editing state is available **/
-        :host([data-hax-ray]) ::slotted(*) {
+        :host([data-hax-ray]) div ::slotted(*) {
           border: var(
             ---hax-body-editable-outline,
             1px solid var(--hax-ui-disabled-color, #ddd)
           );
         }
-        :host([data-hax-ray]) ::slotted(*:hover) {
+        :host([data-hax-ray]) div ::slotted(*:hover) {
           border: var(
             --hax-body-active-outline-hover,
             1px solid var(--hax-ui-color-faded, #444)
           );
         }
-        :host([data-hax-ray]) ::slotted([data-hax-active]) {
+        :host([data-hax-ray]) div ::slotted([data-hax-active]) {
           border: var(
             --hax-body-active-outline,
             1px solid var(--hax-ui-color-focus, #000)
           );
         }
-        :host([data-hax-ray]) ::slotted([data-hax-active]:hover) {
+        :host([data-hax-ray]) div ::slotted([data-hax-active]:hover) {
           border: var(
             --hax-body-active-drag-outline,
             1px solid var(--hax-ui-color-accent, #009dc7)
@@ -286,8 +288,8 @@ class GridPlate extends LitElement {
           );
           outline-width: 2px;
         }
-        :host([data-hax-ray]) ::slotted(img.active),
-        :host([data-hax-ray]) ::slotted(*.active):before {
+        :host([data-hax-ray]) div ::slotted(img.active),
+        :host([data-hax-ray]) div ::slotted(*.active):before {
           background-color: var(
             --hax-layout-slotted-active-outline-color,
             var(--hax-layout-accent-color, #009dc7)
@@ -299,7 +301,7 @@ class GridPlate extends LitElement {
           outline-style: dotted;
         }
         /* drag and drop */
-        :host .column ::slotted(*)::before {
+        :host([data-hax-ray]) .column ::slotted(*)::before {
           content: " ";
           width: calc(100% + 32px);
           display: block;
@@ -310,10 +312,10 @@ class GridPlate extends LitElement {
           border: none !important;
           transition: 0.2s all ease-in-out;
         }
-        :host .column ::slotted(*.hax-hovered)::before {
+        :host([data-hax-ray]) .column ::slotted(*.hax-hovered)::before {
           background-color: var(--hax-body-target-background-color) !important;
         }
-        :host .column ::slotted(img.hax-hovered) {
+        :host([data-hax-ray]) .column ::slotted(img.hax-hovered) {
           outline: var(
             ---hax-body-editable-outline,
             1px solid var(--hax-ui-disabled-color, #ddd)
@@ -324,7 +326,7 @@ class GridPlate extends LitElement {
         }
 
         @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
-          :host([data-hax-ray]) ::slotted(*.active) {
+          :host([data-hax-ray]) div ::slotted(*.active) {
             background-color: var(
               --hax-layout-slotted-active-outline-color,
               var(--hax-layout-accent-color, #009dc7)
@@ -485,7 +487,7 @@ class GridPlate extends LitElement {
             property: "disableResponsive",
             title: "Disable responsive",
             description:
-              "Check box to force layout to stick regardless of screen breakpoins",
+              "Check box to force layout to stick regardless of screen size",
             inputMethod: "boolean",
           },
         ],

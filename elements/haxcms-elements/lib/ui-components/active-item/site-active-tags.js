@@ -2,7 +2,7 @@
  * Copyright 2023 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit";
+import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
@@ -20,21 +20,45 @@ class SiteActiveTags extends LitElement {
   static get tag() {
     return "site-active-tags";
   }
+
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+        a {
+          text-decoration: none;
+        }
+        :host([edit-mode]) .tag-wrap {
+          pointer-events: none;
+        }
+      `,
+    ];
+  }
   /**
    * LitElement
    */
   render() {
-    return html`${this.tags && this.tags != ""
-      ? this.tags
-          .split(",")
-          .map(
-            (tag) => html` <simple-tag
+    return html`<div class="tag-wrap"></div>${this.tags && this.tags != ""
+      ? this.tags.split(",").map(
+          (tag) => html` <a @click="${this.testEditMode}" href="x/views?tags=${tag.trim()}">
+            <simple-tag
               ?auto-accent-color="${this.autoAccentColor}"
               value="${tag.trim()}"
               accent-color="${this.accentColor}"
-            ></simple-tag>`
-          )
-      : ``}`;
+            ></simple-tag>
+          </a>`
+        )
+      : ``}</div>`;
+  }
+
+  testEditMode(e) {
+    if (this.editMode) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
   }
   /**
    * LitElement / popular convention
@@ -52,6 +76,11 @@ class SiteActiveTags extends LitElement {
         type: String,
         attribute: "accent-color",
       },
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode",
+      },
     };
   }
   /**
@@ -67,6 +96,10 @@ class SiteActiveTags extends LitElement {
       this.tags = toJS(store.activeTags);
       this.__disposer.push(reaction);
     });
+    autorun((reaction) => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
   }
   /**
    * HTMLElement
@@ -77,12 +110,6 @@ class SiteActiveTags extends LitElement {
       this.__disposer[i].dispose();
     }
     super.disconnectedCallback();
-  }
-  /**
-   * Break shadowRoot
-   */
-  createRenderRoot() {
-    return this;
   }
 }
 customElements.define(SiteActiveTags.tag, SiteActiveTags);

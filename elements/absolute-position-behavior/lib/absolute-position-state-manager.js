@@ -211,7 +211,7 @@ class AbsolutePositionStateManager extends LitElement {
     if (this.__observer && this.__observer.disconnect)
       this.__observer.disconnect();
     this.windowControllers.abort();
-    if (this.__watchSticky)
+    if (this.__watchSticky && this.scrollTarget)
       this.scrollTarget.removeEventListener("scroll", this._handleScroll);
   }
 

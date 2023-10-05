@@ -5,7 +5,7 @@ import { FutureTerminalText } from "./future-terminal-text.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Terminal|FutureTerminalText",
+  title: "Other|FutureTerminalText",
   component: "future-terminal-text",
   decorators: [withKnobs],
   parameters: {

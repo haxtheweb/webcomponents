@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "hax-cloud",
+      "description": "Attributes:\n\n  * `step` {`number`} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `step` {`number`} - \n\n  * `fileRoot` {`string`} - \n\n  * `fileObjects` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "step",
+          "description": "`step` {`number`} - \n\nProperty: step\n\nDefault: 1"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

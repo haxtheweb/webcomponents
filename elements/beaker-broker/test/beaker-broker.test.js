@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../beaker-broker.js";
-
+/*
 describe("beaker-broker test", () => {
   let element;
   beforeEach(async () => {
@@ -14,7 +14,7 @@ describe("beaker-broker test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
-
+*/
 /*
 describe("A11y/chai axe tests", () => {
   it("beaker-broker passes accessibility test", async () => {

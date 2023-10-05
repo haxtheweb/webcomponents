@@ -163,7 +163,6 @@ export function normalizeEventPath(e) {
 function formatHTML(str) {
   var div = document.createElement("div");
   div.innerHTML = str.trim();
-
   return formatHTMLInternals(div, 0).innerHTML;
 }
 // HTML internals of the DOM tree
@@ -282,6 +281,7 @@ function dashToCamel(str) {
 }
 /**
  * Convert a haxElement to a DOM node.
+ * @return {Node} DOM node.
  */
 function haxElementToNode(haxSchema) {
   let tag = haxSchema.tag;
@@ -749,16 +749,24 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
   // support sandboxed environments which
   // will hate iframe tags but love webview
   let tag = node.tagName.toLowerCase();
-  if (window.HaxStore.instance._isSandboxed && tag === "iframe") {
+  if (window.HaxStore && window.HaxStore.instance && window.HaxStore.instance._isSandboxed && tag === "iframe") {
     tag = "webview";
   }
-  let slotContent = await window.HaxStore.instance.getHAXSlot(node);
+  let slotContent = '';
+  // if hax store around, allow it to get slot content of the node
+  if (window.HaxStore && window.HaxStore.instance) {
+    slotContent = await window.HaxStore.instance.getHAXSlot(node);
+  }
+  else {
+    // if HAX isn't around, just return the innerHTML as a string for asignment to content
+    slotContent = node.innerHTML;
+  }
   // support fallback on inner text if there were no nodes
   if (slotContent == "") {
     slotContent = node.innerText;
   }
   // special edge case for slot binding in primatives
-  if (tag === "a" || tag === "mark") {
+  if (tag === "a" || tag === "mark" || tag === "abbr") {
     props.innerText = slotContent;
   } else if (
     tag === "p" ||

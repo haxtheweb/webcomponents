@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <base href="/elements/haxcms-elements/demo/" />
   <script>
@@ -712,8 +712,8 @@ IntersectionObserver.prototype._computeTargetAndRootIntersection =
       }
     } else {
       // If the element has a non-visible overflow, and it's not the <body>
-      // or <html> element, update the intersection rect.
-      // Note: <body> and <html> cannot be clipped to a rect that's not also
+      // or element, update the intersection rect.
+      // Note: <body> and html cannot be clipped to a rect that's not also
       // the document rect, so no need to compute a new intersection.
       var doc = parent.ownerDocument;
       if (parent != doc.body &&
@@ -745,7 +745,7 @@ IntersectionObserver.prototype._getRootRect = function() {
   if (this.root && !isDoc(this.root)) {
     rootRect = getBoundingClientRect(this.root);
   } else {
-    // Use <html>/<body> instead of window since scroll bars affect size.
+    // Use instead of window since scroll bars affect size.
     var doc = isDoc(this.root) ? this.root : document;
     var html = doc.documentElement;
     var body = doc.body;
@@ -1220,25 +1220,6 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
       top: 50%;
       transform: translateY(-50%);
     }
-    #loading div.messaging h1 {
-      color: white;
-      font-family: 'Open Sans', 'arial', 'serif';
-      font-size: 40px;
-      background-color: orange;
-      transition: .4s ease-in-out all;
-    }
-    #loading img {
-      transition: .4s all ease-in-out;
-      width: 300px;
-      height: 300px;
-      margin-bottom: 50px;
-      border-radius: 50%;
-      border: 8px solid orange;
-      box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.45);
-      -moz-box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.45);
-	    -webkit-box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.45);
-      -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#444444')";
-    }
     .progress-line,
     .progress-line:before {
       height: 8px;
@@ -1249,7 +1230,7 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
       background-color: rgba(0,0,0, 0.05);
       display: -webkit-flex;
       display: flex;
-      width: 300px;
+      width: 30vw;
     }
     .progress-line:before {
       background-color: orange;
@@ -1299,9 +1280,8 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
 <body no-js vocab="http://schema.org/" prefix="oer:http://oerschema.org cc:http://creativecommons.org/ns dc:http://purl.org/dc/terms/">
   <div id="loading">
     <div class="messaging">
-      <img src="assets/banner.jpg" alt="" loading="lazy" height="300px" width="300px" />
       <div class="progress-line"></div>
-      <h1>Loading site..</h1>
+      <h1 role="alert" aria-busy="true">Loading site..</h1>
     </div>
   </div>
   <haxcms-site-builder id="site" file="site.json">

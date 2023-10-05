@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "course-model",
+      "description": "`course-model`\n`view 3d models with multiple angel rotation for a course experience`\n\nAttributes:\n\n  * `alt` {`string`} - \n\n  * `visible` {`string`} - \n\n  * `title` {`string`} - \n\n  * `src` {`string`} - \n\nProperties:\n\n  * `alt` {`string`} - \n\n  * `visible` {`string`} - \n\n  * `title` {`string`} - \n\n  * `src` {`string`} - ",
+      "attributes": [
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - \n\nProperty: alt"
+        },
+        {
+          "name": "visible",
+          "description": "`visible` {`string`} - \n\nProperty: visible\n\nDefault: model"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "src",
+          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "model-info",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "model-option",
+      "description": "Events:\n\n  * `model-select` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `src` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `src` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "url",
+          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: "
+        },
+        {
+          "name": "src",
+          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
+        },
+        {
+          "name": "onmodel-select",
+          "description": "`model-select` {`CustomEvent<this>`} - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

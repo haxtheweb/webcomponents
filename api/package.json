@@ -9,7 +9,6 @@
     "markdown-it": "13.0.1",
     "@lit-labs/ssr": "2.1.0",
     "stream": "0.0.2",
-    "uuid": "8.3.2",
     "node-fetch": "3.2.10",
     "base64-arraybuffer": "1.0.2",
     "epub-gen": "0.1.0",
@@ -18,8 +17,9 @@
     "asciify-image": "0.1.8",
     "concat-stream": "2.0.0",
     "text-vide": "1.5.0",
-    "node-html-parser": "5.3.3",
+    "node-html-parser": "6.1.10",
     "html-to-docx": "1.4.0",
-    "text-readability": "1.0.5"
+    "text-readability": "1.0.5",
+    "pretty": "2.0.0"
   }
 }

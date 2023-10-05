@@ -131,6 +131,7 @@ class LrndesignAvatar extends SimpleColors {
             title: "Image Source",
             description: "Optional: Upload an image for avatar.",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
           },
           {
             property: "label",

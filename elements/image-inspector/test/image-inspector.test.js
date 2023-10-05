@@ -6,7 +6,9 @@ describe("image-inspector test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <image-inspector title="test-title"></image-inspector> `
+      html`<image-inspector
+        src="https://placekitten.com/400/200"
+      ></image-inspector>`
     );
   });
 

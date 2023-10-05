@@ -27,6 +27,7 @@
         "description": "Background image",
         "inputMethod": "haxupload",
         "required": true,
+        "noVoiceRecord": true,
         "validationType": "url"
       },
       {

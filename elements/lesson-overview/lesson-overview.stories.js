@@ -6,7 +6,7 @@ import "./lib/lesson-highlight.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Overview|LessonOverview",
+  title: "Microservices|LessonOverview",
   component: "lesson-overview",
   decorators: [withKnobs],
   parameters: {
@@ -14,13 +14,17 @@ export default {
   },
 };
 setTimeout(() => {
-  document.querySelector("#btn").addEventListener("click", (e) => {
-    document.querySelector("#target").ancestor =
-      document.querySelector("#ancestor").value;
+  if (document.querySelector("#loadstatsbutton")) {
     document
-      .querySelector("#target")
-      .getSmartData(document.querySelector("#text").value);
-  });
+      .querySelector("#loadstatsbutton")
+      .addEventListener("click", (e) => {
+        document.querySelector("#target").ancestor =
+          document.querySelector("#ancestor").value;
+        document
+          .querySelector("#target")
+          .getSmartData(document.querySelector("#text").value);
+      });
+  }
 }, 1000);
 
 const utils = new StorybookUtilities();
@@ -31,7 +35,7 @@ export const LessonOverviewStory = () => {
     utils.getDemo(`
     <input type="textfield" id="text" value="https://oer.hax.psu.edu/bto108/sites/edtechjoker/" size="50" />
     <input type="textfield" id="ancestor" value="mlid-4599" size="50" />
-    <button id="btn">Load stats</button>
+    <button id="loadstatsbutton">Load stats</button>
     <lesson-overview id="target">
       <lesson-highlight smart="objectives"></lesson-highlight>
       <lesson-highlight smart="pages"></lesson-highlight>

@@ -5,12 +5,10 @@ describe("Image comparison", () => {
   beforeEach(async () => {
     element = await fixture(html` <image-compare-slider
       top-description-id="cloudy"
-      top-src="${new URL("../demo/images/Matterhorn02.png", import.meta.url)
-        .href}"
+      top-src="https://placekitten.com/400/200"
       top-alt="Matterhorn without snow"
       bottom-description-id="snowy"
-      bottom-src="${new URL("../demo/images/Matterhorn01.png", import.meta.url)
-        .href}"
+      bottom-src="https://placekitten.com/400/201"
       bottom-alt="Matterhorn with snow"
     >
       <h2 slot="heading">Default Compare Mode</h2>

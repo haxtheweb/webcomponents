@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "./course-intro-header.js";
 import "./course-intro-lesson-plans.js";
 //import "./course-intro-footer.js";
@@ -25,16 +27,25 @@ export class CourseIntro extends LitElement {
       `,
     ];
   }
+  static get properties() {
+    return {
+      color: { type: String },
+    };
+  }
   constructor() {
     super();
-    // Add the included Lato font-family
-    let link = document.createElement("link");
-    link.setAttribute(
-      "href",
-      "https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
-    );
-    link.setAttribute("rel", "stylesheet");
-    document.head.appendChild(link);
+    this.color = "";
+    autorun(() => {
+      const manifest = toJS(store.manifest);
+      if (
+        manifest &&
+        manifest.metadata &&
+        manifest.metadata.theme &&
+        manifest.metadata.theme.variables
+      ) {
+        this.color = manifest.metadata.theme.variables.hexCode;
+      }
+    });
   }
   render() {
     return html`
@@ -49,7 +60,10 @@ export class CourseIntro extends LitElement {
       <course-intro-lesson-plans
         part="course-intro-lesson-plans"
       ></course-intro-lesson-plans>
-      <course-intro-footer part="course-intro-footer">
+      <course-intro-footer
+        part="course-intro-footer"
+        style="border-top: 3px solid ${this.color};"
+      >
         <div slot="footer-left">
           <slot name="footer-left"></slot>
         </div>

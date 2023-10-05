@@ -257,6 +257,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       };
     }
     /**
+     * default config for a span format button
+     *
+     * @readonly
+     */
+    get abbrButton() {
+      return {
+        command: "wrapRange",
+        commandVal: "ABBR",
+        toggles: true,
+        label: "Abbr",
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
      * default config for a style button group: format, bold, italic, and remove format
      *
      * @readonly

@@ -3,7 +3,7 @@ import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Developer|Github Preview",
+  title: "Other|Github Preview",
   component: GithubPreview.tag,
   decorators: [withKnobs],
   parameters: {

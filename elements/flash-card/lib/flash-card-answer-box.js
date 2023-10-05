@@ -244,6 +244,7 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
       }
 
       #status-message {
+        font-size: 16px;
         margin-right: 15px;
         display: flex;
         align-items: center;

@@ -1,0 +1,77 @@
+{
+  "name": "@lrnwebcomponents/hax-cloud",
+  "wcfactory": {
+    "className": "HaxCloud",
+    "customElementClass": "LitElement",
+    "elementName": "hax-cloud",
+    "generator-wcfactory-version": "0.13.1",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/hax-cloud.css",
+      "scss": "src/hax-cloud.scss",
+      "html": "src/hax-cloud.html",
+      "js": "src/hax-cloud.js",
+      "properties": "src/hax-cloud-properties.json",
+      "hax": "src/hax-cloud-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "7.0.18",
+  "description": "Turn any website into authorware with one tag and a computer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "hax-cloud.js",
+  "module": "hax-cloud.js",
+  "umd": "hax-cloud.umd.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"*.js|lib/**.js\" --format vscode --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "cd demo && yarn start",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": ""
+  },
+  "license": "",
+  "dependencies": {
+    "@lrnwebcomponents/file-system-broker": "^7.0.18",
+    "@lrnwebcomponents/hax-iconset": "^7.0.18",
+    "@lrnwebcomponents/haxcms-elements": "^7.0.18",
+    "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "lit": "^2.8.0"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
+    "@open-wc/testing": "2.5.32",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@web/dev-server": "0.3.1",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.21",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ],
+  "gitHead": "b9873176f9fe50a77dcf25e44bf3450d26fbb37a"
+}

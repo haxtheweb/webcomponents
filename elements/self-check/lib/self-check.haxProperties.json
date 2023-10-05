@@ -1,9 +1,8 @@
 {
-  "canScale": true,
-  "canPosition": true,
+  "canScale": false,
+  "canPosition": false,
   "canEditSource": true,
-  "contentEditable": true,
-  "type": "grid",
+  "contentEditable": false,
   "gizmo": {
     "title": "Self Check",
     "description": "The user will be able to complete a self-check.",
@@ -37,7 +36,14 @@
         "property": "image",
         "title": "Image",
         "description": "The image of the element",
-        "inputMethod": "haxupload"
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true
+      },
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "The title of the element",
+        "inputMethod": "textfield"
       },
       {
         "property": "alt",
@@ -46,30 +52,14 @@
         "inputMethod": "alt"
       },
       {
-        "slot": "heading",
-        "title": "Title",
-        "description": "Title the image",
-        "inputMethod": "textfield"
-      },
-      {
         "slot": "question",
         "title": "Question",
-        "inputMethod": "textfield",
-        "slotWrapper": "p",
-        "allowedSlotWrappers": ["p", "div"],
-        "editMode": {
-          "correct": false
-        }
+        "inputMethod": "textarea"
       },
       {
         "slot": "",
         "title": "Answer",
-        "inputMethod": "textfield",
-        "slotWrapper": "p",
-        "allowedSlotWrappers": ["p", "div"],
-        "editMode": {
-          "correct": true
-        }
+        "inputMethod": "textarea"
       },
       {
         "property": "accentColor",
@@ -82,19 +72,13 @@
         "title": "Dark Theme",
         "description": "Enable Dark Theme",
         "inputMethod": "boolean"
-      },
-      {
-        "property": "link",
-        "title": "More link",
-        "description": "Link to additional information",
-        "inputMethod": "textfield"
       }
     ],
     "advanced": [
       {
-        "property": "title",
-        "title": "Title (Deprecated)",
-        "description": "The title of the element",
+        "property": "link",
+        "title": "More link",
+        "description": "Link to additional information",
         "inputMethod": "textfield"
       }
     ]

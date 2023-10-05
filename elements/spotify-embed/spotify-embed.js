@@ -66,7 +66,7 @@ class SpotifyEmbed extends LitElement {
             .playlistid}?utm_source=generator${this.theme
             ? `&theme=${this.theme}`
             : ""}"
-          title="Spotify Embed"
+          title="Spotify Song Embed"
           height="${this.size == "normal" ? "352" : "152"}"
           style="border-radius:12px"
           width="100%"

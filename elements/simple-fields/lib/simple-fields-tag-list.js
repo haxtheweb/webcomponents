@@ -88,12 +88,17 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
       label: {
         type: String,
       },
+      singleValueOnly: {
+        type: Boolean,
+        attribute: "single-value-only",
+      },
     };
   }
   constructor() {
     super();
     this.windowControllers = new AbortController();
     this.label = "Tags";
+    this.singleValueOnly = false;
     this.value = "";
     this.tagList = [];
     this.id = this._generateUUID();
@@ -102,7 +107,15 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
     this.addEventListener("drop", this._handleDragDrop);
   }
 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    setTimeout(() => {
+      this._updateTaglist();
+    }, 0);
+  }
+
   updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id" && !this.id) this.id = this._generateUUID();
       if (propName === "value") this._fireValueChanged();
@@ -228,18 +241,27 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
     // ensure there is no duplicate value / term
     this.tagList = [
       ...this.tagList.filter((i) => {
-        if (i.term === this.shadowRoot.querySelector("input").value) {
+        if (
+          i.term === this.shadowRoot.querySelector("input").value ||
+          i.term == "" ||
+          i.term === null
+        ) {
           return false;
         }
         return true;
       }),
     ];
     let tagList = this.tagList;
-    tagList.push({
-      term: tag,
-      color: "grey",
-    });
-    this.tagList = [...tagList];
+    if (tag !== "") {
+      if (this.singleValueOnly) {
+        tagList = [];
+      }
+      tagList.push({
+        term: tag,
+        color: "grey",
+      });
+      this.tagList = [...tagList];
+    }
     this.shadowRoot.querySelector("input").value = "";
   }
   /**
@@ -268,6 +290,9 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
    * @event value-changed
    */
   _fireValueChanged() {
+    setTimeout(() => {
+      this._updateTaglist();
+    }, 0);
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: false,

@@ -23,7 +23,7 @@ import "./lib/simple-picker-option.js";
   `--simple-picker-font-size` | Main font-size. | inherit
   `--simple-picker-color` | Main text color. | black
   `--simple-picker-color-active` | Color of sample text when button is focused within or hovered. | --simple-picker-color
-  `--simple-picker-color-disabled` | Disabled text color. | #888
+  `--simple-picker-color-disabled` | Disabled text color. | #555
   `--simple-picker-background-color` | Background color for button. | #f0f0f0
   `--simple-picker-background-color-disabled` | Background color for button when picker is disabled. | #e8e8e8
   `--simple-picker-border-radius` | Main border-radius. | 2px
@@ -71,12 +71,24 @@ const SimplePickerBehaviors = function (SuperClass) {
         ...styles,
         css`
           :host {
-            --simple-picker-background-color: var(--simple-fields-background-color);
-            --simple-picker-options-background-color: var(--simple-fields-background-color);
-            --simple-picker-color: var(--simple-fields-color);
-            --simple-picker-color-active: var(--simple-fields-faded-background-color, orange);
-            --simple-picker-option-active-color: var(--simple-fields-background-color);
-            --simple-picker-option-active-background-color: var(--simple-fields-faded-background-color, var(--simple-fields-color));
+            --simple-picker-background-color: var(
+              --simple-fields-background-color
+            );
+            --simple-picker-options-background-color: var(
+              --simple-fields-background-color
+            );
+            --simple-picker-color: var(--simple-fields-color, black);
+            --simple-picker-color-active: var(
+              --simple-fields-faded-background-color,
+              orange
+            );
+            --simple-picker-option-active-color: var(
+              --simple-fields-background-color
+            );
+            --simple-picker-option-active-background-color: var(
+              --simple-fields-faded-background-color,
+              var(--simple-fields-color)
+            );
             display: var(--simple-picker-display, inline-flex);
             align-items: center;
             color: var(--simple-picker-color, currentColor);
@@ -98,7 +110,7 @@ const SimplePickerBehaviors = function (SuperClass) {
           }
 
           :host([disabled]) {
-            --simple-picker-color: var(--simple-picker-color-disabled, #888);
+            --simple-picker-color: var(--simple-picker-color-disabled, #545454);
             --simple-picker-background-color: var(
               --simple-picker-background-color-disabled,
               #e8e8e8
@@ -137,7 +149,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             padding-right: 0px;
             color: var(
               --simple-picker-float-label-color,
-              var(--simple-picker-color-disabled, #888)
+              var(--simple-picker-color-disabled, #555)
             );
             transition: all 0.5s;
             max-height: unset;
@@ -191,7 +203,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             border-style: var(--simple-picker-border-style, solid);
             border-color: var(
               --simple-picker-border-color,
-              var(--simple-picker-color-disabled, #888)
+              var(--simple-picker-color-disabled, #555)
             );
           }
 
@@ -213,7 +225,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               --simple-picker-focus-border-color,
               var(
                 --simple-picker-border-color,
-                var(--simple-picker-color-disabled, #888)
+                var(--simple-picker-color-disabled, #555)
               )
             );
             transition: all 0.5s;
@@ -232,7 +244,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               --simple-picker-listbox-border-width,
               var(
                 --simple-picker-border-color,
-                var(--simple-picker-color-disabled, #888)
+                var(--simple-picker-color-disabled, #555)
               )
             );
           }
@@ -259,7 +271,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             transform: var(
               --simple-picker-expanded-icon-transform,
               rotate(0deg)
-            );--simple-picker-color-active
+            );
             transition: transform 0.25s;
           }
 
@@ -301,7 +313,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               --simple-picker-options-border-color,
               var(
                 --simple-picker-border-color,
-                var(--simple-picker-color-disabled, #888)
+                var(--simple-picker-color-disabled, #555)
               )
             );
             background-color: var(
@@ -451,7 +463,6 @@ const SimplePickerBehaviors = function (SuperClass) {
           .aria-labelledby="${this.ariaLabelledby}"
           .disabled="${this.disabled || !this.__options}"
           part="input"
-          role="option"
           tabindex="0"
           @click="${this._handleListboxClick}"
           @mousedown="${this._handleListboxMousedown}"

@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.5",
+  "version": "7.0.18",
   "description": "A table that's editable",
   "repository": {
     "type": "git",
@@ -33,32 +33,32 @@
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --watch",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox"
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers firefox --watch --timeout 10000",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers firefox --timeout 10000"
   },
   "author": {
     "name": "btopro"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-menu-button": "^7.0.5",
-    "@lrnwebcomponents/hax-iconset": "^7.0.5",
-    "@lrnwebcomponents/responsive-utility": "^7.0.5",
-    "@lrnwebcomponents/rich-text-editor": "^7.0.5",
-    "@lrnwebcomponents/simple-icon": "^7.0.5",
-    "@lrnwebcomponents/simple-picker": "^7.0.5",
-    "@lrnwebcomponents/simple-toolbar": "^7.0.5",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.5",
-    "@lrnwebcomponents/utils": "^7.0.4",
-    "lit": "^2.7.5"
+    "@lrnwebcomponents/a11y-menu-button": "^7.0.18",
+    "@lrnwebcomponents/hax-iconset": "^7.0.18",
+    "@lrnwebcomponents/responsive-utility": "^7.0.18",
+    "@lrnwebcomponents/rich-text-editor": "^7.0.18",
+    "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "@lrnwebcomponents/simple-picker": "^7.0.18",
+    "@lrnwebcomponents/simple-toolbar": "^7.0.18",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.18",
+    "@lrnwebcomponents/utils": "^7.0.18",
+    "lit": "^2.8.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.5",
+    "@lrnwebcomponents/deduping-fix": "^7.0.18",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.18",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.2.3",
+    "@web/dev-server": "0.3.1",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.0",
     "wct-browser-legacy": "1.0.2"
@@ -71,5 +71,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
+  "gitHead": "b9873176f9fe50a77dcf25e44bf3450d26fbb37a"
 }

@@ -86,6 +86,28 @@ export class AppHaxTopBar extends LitElement {
         height: var(--top-bar-height);
         vertical-align: text-top;
       }
+      @media (max-width: 640px) {
+        .topBar .left {
+          opacity: 0;
+          pointer-events: none;
+        }
+        .topBar .center {
+          text-align: left;
+        }
+        .topBar .right {
+          text-align: left;
+        }
+        #home {
+          display: none;
+        }
+        app-hax-search-bar {
+          display: none;
+        }
+        .topBar {
+          grid-template-columns: 0% 35% 65%;
+          display: inline-grid;
+        }
+      }
     `;
   }
 

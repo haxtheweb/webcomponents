@@ -43,6 +43,7 @@
         "title": "Animated GIF",
         "description": "The URL to your animated GIF.",
         "inputMethod": "haxupload",
+        "noVoiceRecord": true,
         "icon": "link",
         "validationType": "url",
         "required": true
@@ -62,6 +63,7 @@
         "title": "Still Image",
         "description": "The URL to a still image version of your GIF.",
         "inputMethod": "haxupload",
+        "noVoiceRecord": true,
         "icon": "link",
         "validationType": "url",
         "required": true

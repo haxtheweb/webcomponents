@@ -141,17 +141,16 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         source="${this.source}"
         modal-title="${this.modalTitle}"
         alt="${this.alt}"
-        .described-by="${this.describedBy}"
         tabindex="${!this.disableZoom ? "0" : "-1"}"
         @click="${this._handleClick}"
       ></media-image-image>
       <media-image-citation>
-        <slot name="citation"> ${this.citation} </slot>
+        <slot name="citation">${this.citation}</slot>
       </media-image-citation>
       ${this._hasCaption
         ? html`
-            <media-image-caption>
-              <slot name="caption"> ${this.caption} </slot>
+            <media-image-caption tabindex="0">
+              <slot name="caption">${this.caption}</slot>
             </media-image-caption>
           `
         : ``}
@@ -210,13 +209,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
        */
       citation: {
         type: String,
-      },
-      /**
-       * image aria-described by
-       */
-      describedBy: {
-        type: String,
-        attribute: "described-by",
       },
       /**
        * Image caption.
@@ -356,6 +348,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Source",
             description: "The URL for the image.",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
             required: true,
           },
           {
@@ -486,12 +479,10 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
     this.modalContent = document.createElement("image-inspector");
     this.modalContent.noLeft = true;
     this.modalTitle = "";
-    setTimeout(() => {
-      this.addEventListener(
-        "simple-modal-show",
-        this.__modalShowEvent.bind(this)
-      );
-    }, 0);
+    this.addEventListener(
+      "simple-modal-show",
+      this.__modalShowEvent.bind(this)
+    );
   }
   /**
    * Only import the definition if they call up the modal because it's a pretty
@@ -503,12 +494,7 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
   render() {
     return html`
       <div class="image-wrap">
-        <img
-          src="${this.source}"
-          alt="${this.alt}"
-          aria-describedby="${this.describedBy || ""}"
-          loading="lazy"
-        />
+        <img src="${this.source}" alt="${this.alt}" loading="lazy" />
       </div>
     `;
   }
@@ -527,10 +513,6 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
       },
       alt: {
         type: String,
-      },
-      describedBy: {
-        type: String,
-        attribute: "described-by",
       },
       round: {
         type: Boolean,

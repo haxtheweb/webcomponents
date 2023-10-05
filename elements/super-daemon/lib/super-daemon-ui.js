@@ -27,8 +27,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       filterCommands: "Filter commands",
       commands: "Commands",
       loadingResults: "Loading results",
-      commonTasksText:
-        "Merlin helps show you what's possible. Here are some common answers..",
+      commonTasksText: "Here are some common questions Merlin can answer..",
     };
     this.opened = false;
     this.items = [];
@@ -245,6 +244,17 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
 
         @media screen and (max-width: 800px) {
+          .voice {
+            --simple-icon-height: 30px;
+            --simple-icon-width: 30px;
+          }
+          .search {
+            margin: 8px;
+          }
+          simple-fields-field::part(option-input) {
+            font-size: 14px;
+            line-height: 20px;
+          }
           .results-stats,
           .common-tasks-text,
           .question-tags {
@@ -260,42 +270,29 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             display: none;
           }
           super-daemon-row {
-            --super-daemon-row-icon: 32px;
-            margin: 8px;
+            --super-daemon-row-icon: 30px;
+            margin: 4px;
+          }
+
+          super-daemon-row::part(label-wrap) {
+            min-width: 70%;
           }
           super-daemon-row::part(button) {
             padding: 4px;
           }
           super-daemon-row::part(action) {
-            font-size: 28px;
-            line-height: 28px;
-            height: 28px;
-          }
-          super-daemon-row::part(path) {
-            font-size: 16px;
-          }
-          super-daemon-row::part(tags) {
-            width: 20%;
-          }
-          super-daemon-row::part(tag) {
-            display: none;
-          }
-          super-daemon-row::part(tag-0) {
-            display: inline-flex !important;
-            --simple-fields-font-size: 12px;
-          }
-        }
-        @media screen and (max-width: 640px) {
-          super-daemon-row::part(path) {
-            font-size: 12px;
-          }
-          super-daemon-row::part(action) {
             font-size: 24px;
             line-height: 24px;
             height: 24px;
+            max-width: unset;
+          }
+          super-daemon-row::part(tags) {
+            display: none;
+          }
+          super-daemon-row::part(path) {
+            font-size: 12px;
           }
         }
-
         :host([mini]) {
           color: var(--simple-colors-default-theme-grey-12, black);
           background-color: var(--simple-colors-default-theme-grey-1, white);
@@ -543,17 +540,17 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   commonConcepts(value) {
     const sdi = window.SuperDaemonManager.requestAvailability();
     switch (value) {
+      case "*":
+      case ">":
+      case "/":
+      case "?":
+        sdi.runProgram(value, {}, null, null, "", "");
+        break;
       case "media":
         sdi.runProgram("/", {}, null, null, "", "sources");
         break;
-      case "edit":
-        sdi.runProgram("*", {}, null, null, "", "CMS/action/edit");
-        break;
-      case "*":
-        sdi.runProgram("*", {}, null, null, "", "");
-        break;
-      case "sites":
-        sdi.runProgram("*", {}, null, null, "", "sites");
+      default:
+        sdi.runProgram("*", {}, null, null, "", value);
         break;
     }
   }

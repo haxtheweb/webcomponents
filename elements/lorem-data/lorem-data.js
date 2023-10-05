@@ -51,7 +51,6 @@ class LoremData extends LoremDataBehaviors(LitElement) {
   }
 
   render() {
-    console.warn(this.data);
     return html`
       <button @click="${this.saveAll}">Save All</button>
       ${Object.keys(this.schemas || []).map(

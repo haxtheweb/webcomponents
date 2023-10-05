@@ -272,7 +272,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
       this.__focused = false;
       this.__hovered = false;
       this.editing = false;
-      this.setAttribute("tabindex", 1);
+      this.setAttribute("tabindex", 0);
       this.addEventListener("click", this._handleClick);
     }
     get editable() {

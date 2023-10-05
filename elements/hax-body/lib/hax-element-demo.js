@@ -9,7 +9,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
   constructor() {
     super();
     this.renderTag = null;
-    this.activeSchema = -1;
+    this.activePickerSchema = -1;
   }
   static get properties() {
     return {

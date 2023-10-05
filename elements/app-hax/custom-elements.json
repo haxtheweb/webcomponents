@@ -94,90 +94,37 @@
       ]
     },
     {
-      "name": "random-word",
-      "description": "Events:\n\n  * `word-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `key` {`string`} - \n\n  * `phrases` - \n\n  * `word` {`string`} - \n\nProperties:\n\n  * `key` {`string`} - \n\n  * `phrases` - \n\n  * `word` {`string`} - ",
+      "name": "clean-one",
+      "description": "`clean-one`\n`Clean HAXcms theme, one.`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
-          "name": "key",
-          "description": "`key` {`string`} - \n\nProperty: key\n\nDefault: null"
+          "name": "__printBranchLoading",
+          "description": "`__printBranchLoading` {`boolean`} - \n\nProperty: __printBranchLoading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "phrases",
-          "description": "`phrases` - \n\nProperty: phrases\n\nDefault: [object Object]"
+          "name": "__pdfLoading",
+          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "word",
-          "description": "`word` {`string`} - \n\nProperty: word\n\nDefault: null"
+          "name": "showQRCode",
+          "description": "`showQRCode` {`boolean`} - \n\nProperty: showQRCode\n\nDefault: false",
+          "valueSet": "v"
         },
-        {
-          "name": "onword-changed",
-          "description": "`word-changed` {`CustomEvent<any>`} - "
-        }
-      ]
-    },
-    {
-      "name": "rpg-character-toast",
-      "description": "Events:\n\n  * `opened-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `dark-mode` {`boolean`} - \n\n  * `awaiting-merlin-input` {`boolean`} - \n\n  * `merlin` {`boolean`} - \n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `darkMode` {`boolean`} - \n\n  * `awaitingMerlinInput` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `merlin` {`boolean`} - \n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
         {
           "name": "dark-mode",
           "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
           "valueSet": "v"
         },
         {
-          "name": "awaiting-merlin-input",
-          "description": "`awaiting-merlin-input` {`boolean`} - \n\nProperty: awaitingMerlinInput\n\nDefault: false",
+          "name": "menu-open",
+          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
           "valueSet": "v"
         },
         {
-          "name": "merlin",
-          "description": "`merlin` {`boolean`} - \n\nProperty: merlin\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "class-style",
-          "description": "`class-style` {`string`} - Class name, fit-bottom being a useful one\n\nProperty: classStyle\n\nDefault: "
-        },
-        {
-          "name": "future",
-          "description": "`future` {`boolean`} - \n\nProperty: future\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "event-callback",
-          "description": "`event-callback` {`string`} - Event callback when hide is called\n\nProperty: eventCallback\n\nDefault: null"
-        },
-        {
-          "name": "fire",
-          "description": "`fire` {`boolean`} - \n\nProperty: fire\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hat",
-          "description": "`hat` {`string`} - \n\nProperty: hat\n\nDefault: coffee"
-        },
-        {
-          "name": "walking",
-          "description": "`walking` {`boolean`} - \n\nProperty: walking\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "text",
-          "description": "`text` {`string`} - Plain text based message to display\n\nProperty: text\n\nDefault: Saved"
-        },
-        {
-          "name": "alwaysvisible",
-          "description": "`alwaysvisible` {`boolean`} - \n\nProperty: alwaysvisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "duration",
-          "description": "`duration` {`number`} - How long the toast message should be displayed\n\nProperty: duration\n\nDefault: 3000"
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - Opened state of the toast, use event to change\n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "accent-color",
@@ -189,553 +136,246 @@
           "valueSet": "v"
         },
         {
-          "name": "onopened-changed",
-          "description": "`opened-changed` {`CustomEvent<{ value: any; }>`} - "
-        }
-      ]
-    },
-    {
-      "name": "app-hax-backend-api",
-      "description": "Events:\n\n  * `jwt-login-logout` {`CustomEvent<boolean>`} - \n\n  * `jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - \n\nAttributes:\n\n  * `token` {`string`} - \n\n  * `jwt` {`string`} - \n\n  * `method` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `appSettings` - \n\nProperties:\n\n  * `token` {`string`} - \n\n  * `jwt` {`string`} - \n\n  * `method` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `lastResponse` - \n\n  * `appSettings` - ",
-      "attributes": [
-        {
-          "name": "token",
-          "description": "`token` {`string`} - \n\nProperty: token"
-        },
-        {
-          "name": "jwt",
-          "description": "`jwt` {`string`} - \n\nProperty: jwt"
-        },
-        {
-          "name": "method",
-          "description": "`method` {`string`} - \n\nProperty: method"
-        },
-        {
-          "name": "base-path",
-          "description": "`base-path` {`string`} - \n\nProperty: basePath\n\nDefault: /"
-        },
-        {
-          "name": "appSettings",
-          "description": "`appSettings` - \n\nProperty: appSettings\n\nDefault: [object Object]"
-        },
-        {
-          "name": "onjwt-login-logout",
-          "description": "`jwt-login-logout` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onjwt-login-refresh-token",
-          "description": "`jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - "
-        }
-      ]
-    },
-    {
-      "name": "app-hax-router",
-      "description": "`app-hax-router`\n\nProperties:\n\n  * `windowControllers` - \n\n  * `router` - ",
-      "attributes": []
-    },
-    {
-      "name": "app-hax-button",
-      "description": "Attributes:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `elevation` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `coming-soon` {`boolean`} - \n\n  * `prompt` {`string`} - \n\n  * `callback` {`string`} - \n\n  * `param` {`string`} - \n\n  * `beta` {`boolean`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `value` - \n\n  * `disabled` {`boolean`} - \n\n  * `elevation` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `comingSoon` {`boolean`} - \n\n  * `prompt` {`string`} - \n\n  * `callback` {`string`} - \n\n  * `param` {`string`} - \n\n  * `beta` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: save"
-        },
-        {
-          "name": "type",
-          "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: null"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "elevation",
-          "description": "`elevation` {`number`} - \n\nProperty: elevation\n\nDefault: 2"
-        },
-        {
-          "name": "active",
-          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "coming-soon",
-          "description": "`coming-soon` {`boolean`} - \n\nProperty: comingSoon\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "prompt",
-          "description": "`prompt` {`string`} - \n\nProperty: prompt\n\nDefault: null"
-        },
-        {
-          "name": "callback",
-          "description": "`callback` {`string`} - \n\nProperty: callback\n\nDefault: null"
-        },
-        {
-          "name": "param",
-          "description": "`param` {`string`} - \n\nProperty: param\n\nDefault: null"
-        },
-        {
-          "name": "beta",
-          "description": "`beta` {`boolean`} - \n\nProperty: beta\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "app-hax-hat-progress",
-      "description": "Events:\n\n  * `progress-ready` {`CustomEvent<boolean>`} - \n\n  * `promise-progress-finished` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `promises` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `promises` {`any[]`} - \n\n  * `max` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "promises",
-          "description": "`promises` {`any[]`} - \n\nProperty: promises\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onprogress-ready",
-          "description": "`progress-ready` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onpromise-progress-finished",
-          "description": "`promise-progress-finished` {`CustomEvent<boolean>`} - "
-        }
-      ]
-    },
-    {
-      "name": "app-hax-label",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - ",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Welcome"
-        },
-        {
-          "name": "subtitle",
-          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: Start your journey now!"
-        }
-      ]
-    },
-    {
-      "name": "app-hax-search-bar",
-      "description": "Attributes:\n\n  * `searchTerm` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `show-search` {`boolean`} - \n\nProperties:\n\n  * `searchTerm` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showSearch` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "searchTerm",
-          "description": "`searchTerm` {`string`} - \n\nProperty: searchTerm\n\nDefault: "
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "show-search",
-          "description": "`show-search` {`boolean`} - \n\nProperty: showSearch\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "app-hax-search-results",
-      "description": "Attributes:\n\n  * `searchItems` {`any[]`} - \n\n  * `displayItems` {`any[]`} - \n\n  * `searchTerm` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `searchItems` {`any[]`} - \n\n  * `displayItems` {`any[]`} - \n\n  * `searchTerm` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "searchItems",
-          "description": "`searchItems` {`any[]`} - \n\nProperty: searchItems\n\nDefault: "
-        },
-        {
-          "name": "displayItems",
-          "description": "`displayItems` {`any[]`} - \n\nProperty: displayItems\n\nDefault: "
-        },
-        {
-          "name": "searchTerm",
-          "description": "`searchTerm` {`string`} - \n\nProperty: searchTerm\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "app-hax-site-bar",
-      "description": "Attributes:\n\n  * `icon` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `inprogress` {`boolean`} - \n\n  * `icon-link` {`string`} - \n\n  * `textInfo` - \n\n  * `site-id` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `inprogress` {`boolean`} - \n\n  * `iconLink` {`string`} - \n\n  * `textInfo` - \n\n  * `siteId` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: link"
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "inprogress",
-          "description": "`inprogress` {`boolean`} - \n\nProperty: inprogress\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "icon-link",
-          "description": "`icon-link` {`string`} - \n\nProperty: iconLink\n\nDefault: /"
-        },
-        {
-          "name": "textInfo",
-          "description": "`textInfo` - \n\nProperty: textInfo\n\nDefault: [object Object]"
-        },
-        {
-          "name": "site-id",
-          "description": "`site-id` {`string`} - \n\nProperty: siteId\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "app-hax-site-button",
-      "description": "Attributes:\n\n  * `label` {`string`} - \n\n  * `value` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `elevation` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `coming-soon` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `label` {`string`} - \n\n  * `value` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `elevation` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `comingSoon` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: null"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: null"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "elevation",
-          "description": "`elevation` {`number`} - \n\nProperty: elevation\n\nDefault: 3"
-        },
-        {
-          "name": "active",
-          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "coming-soon",
-          "description": "`coming-soon` {`boolean`} - \n\nProperty: comingSoon\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "app-hax-site-details",
-      "description": "Events:\n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; styles: { \"--simple-modal-titlebar-background\": string; ... 6 more ...; \"--simple-modal-titlebar-height\": string; }; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `details` - \n\n  * `site-id` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `need` {`string`} - \n\n  * `details` - \n\n  * `siteId` {`string`} - \n\n  * `detailOps` {`{}[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "details",
-          "description": "`details` - \n\nProperty: details\n\nDefault: [object Object]"
-        },
-        {
-          "name": "site-id",
-          "description": "`site-id` {`string`} - \n\nProperty: siteId\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; styles: { \"--simple-modal-titlebar-background\": string; ... 6 more ...; \"--simple-modal-titlebar-height\": string; }; }>`} - "
-        },
-        {
-          "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` {`CustomEvent<any>`} - "
-        }
-      ]
-    },
-    {
-      "name": "app-hax-site-login",
-      "description": "Events:\n\n  * `jwt-login-login` {`CustomEvent<{ username: string; password: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `username` {`string`} - \n\n  * `password` {`string`} - \n\n  * `errorMSG` {`string`} - \n\n  * `hidePassword` {`boolean`} - \n\n  * `hasPass` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `windowControllers` - \n\n  * `username` {`string`} - \n\n  * `password` {`string`} - \n\n  * `errorMSG` {`string`} - \n\n  * `hidePassword` {`boolean`} - \n\n  * `hasPass` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "username",
-          "description": "`username` {`string`} - \n\nProperty: username\n\nDefault: "
-        },
-        {
-          "name": "password",
-          "description": "`password` {`string`} - \n\nProperty: password\n\nDefault: "
-        },
-        {
-          "name": "errorMSG",
-          "description": "`errorMSG` {`string`} - \n\nProperty: errorMSG\n\nDefault: Enter User name"
-        },
-        {
-          "name": "hidePassword",
-          "description": "`hidePassword` {`boolean`} - \n\nProperty: hidePassword\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasPass",
-          "description": "`hasPass` {`boolean`} - \n\nProperty: hasPass\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onjwt-login-login",
-          "description": "`jwt-login-login` {`CustomEvent<{ username: string; password: any; }>`} - "
-        },
-        {
-          "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
-        }
-      ]
-    },
-    {
-      "name": "app-hax-steps",
-      "description": "Attributes:\n\n  * `unlock-coming-soon` {`boolean`} - \n\n  * `unlock-terrible` {`boolean`} - \n\n  * `nameTyped` {`string`} - \n\n  * `stepRoutes` {`any[]`} - \n\n  * `step` {`number`} - \n\n  * `loaded` {`boolean`} - \n\n  * `themeNames` {`any[]`} - \n\n  * `appSettings` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `unlockComingSoon` {`boolean`} - \n\n  * `unlockTerrible` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `nameTyped` {`string`} - \n\n  * `stepRoutes` {`any[]`} - \n\n  * `_progressReady` {`boolean`} - \n\n  * `step` {`number`} - \n\n  * `loaded` {`boolean`} - \n\n  * `themeNames` {`any[]`} - \n\n  * `appSettings` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "unlock-coming-soon",
-          "description": "`unlock-coming-soon` {`boolean`} - \n\nProperty: unlockComingSoon\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "unlock-terrible",
-          "description": "`unlock-terrible` {`boolean`} - \n\nProperty: unlockTerrible\n\nDefault: false",
-          "valueSet": "v"
+          "name": "hex-color",
+          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
         },
         {
-          "name": "nameTyped",
-          "description": "`nameTyped` {`string`} - \n\nProperty: nameTyped\n\nDefault: "
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
         },
         {
-          "name": "stepRoutes",
-          "description": "`stepRoutes` {`any[]`} - \n\nProperty: stepRoutes\n\nDefault: "
+          "name": "contentContainer",
+          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
         },
         {
-          "name": "step",
-          "description": "`step` {`number`} - \n\nProperty: step\n\nDefault: null"
+          "name": "_location",
+          "description": "`_location` - location as object\n\nProperty: _location"
         },
-        {
-          "name": "loaded",
-          "description": "`loaded` {`boolean`} - \n\nProperty: loaded\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "themeNames",
-          "description": "`themeNames` {`any[]`} - \n\nProperty: themeNames\n\nDefault: "
-        },
-        {
-          "name": "appSettings",
-          "description": "`appSettings` - \n\nProperty: appSettings\n\nDefault: [object Object]"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "app-hax-toast",
-      "description": "Events:\n\n  * `opened-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `dark-mode` {`boolean`} - \n\n  * `awaiting-merlin-input` {`boolean`} - \n\n  * `merlin` {`boolean`} - \n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `darkMode` {`boolean`} - \n\n  * `awaitingMerlinInput` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `merlin` {`boolean`} - \n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "dark-mode",
-          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
-          "valueSet": "v"
-        },
-        {
-          "name": "awaiting-merlin-input",
-          "description": "`awaiting-merlin-input` {`boolean`} - \n\nProperty: awaitingMerlinInput\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "merlin",
-          "description": "`merlin` {`boolean`} - \n\nProperty: merlin\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "class-style",
-          "description": "`class-style` {`string`} - Class name, fit-bottom being a useful one\n\nProperty: classStyle\n\nDefault: "
-        },
-        {
-          "name": "future",
-          "description": "`future` {`boolean`} - \n\nProperty: future\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "event-callback",
-          "description": "`event-callback` {`string`} - Event callback when hide is called\n\nProperty: eventCallback\n\nDefault: null"
-        },
-        {
-          "name": "fire",
-          "description": "`fire` {`boolean`} - \n\nProperty: fire\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hat",
-          "description": "`hat` {`string`} - \n\nProperty: hat\n\nDefault: coffee"
-        },
-        {
-          "name": "walking",
-          "description": "`walking` {`boolean`} - \n\nProperty: walking\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "text",
-          "description": "`text` {`string`} - Plain text based message to display\n\nProperty: text\n\nDefault: Saved"
-        },
-        {
-          "name": "alwaysvisible",
-          "description": "`alwaysvisible` {`boolean`} - \n\nProperty: alwaysvisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "duration",
-          "description": "`duration` {`number`} - How long the toast message should be displayed\n\nProperty: duration\n\nDefault: 3000"
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - Opened state of the toast, use event to change\n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onopened-changed",
-          "description": "`opened-changed` {`CustomEvent<{ value: any; }>`} - "
-        }
-      ]
-    },
-    {
-      "name": "app-hax-top-bar",
-      "description": "Attributes:\n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - ",
-      "attributes": [
         {
           "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode\n\nDefault: false",
+          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-width",
+          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "sm",
+          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
+        },
+        {
+          "name": "md",
+          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
+        },
+        {
+          "name": "lg",
+          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
+        },
+        {
+          "name": "xl",
+          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
+        },
+        {
+          "name": "disable-responsive",
+          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onhaxcms-toast-hide",
+          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onsuper-daemon-define-option",
+          "description": "`super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
+        },
+        {
+          "name": "onhaxcms-toast-show",
+          "description": "`haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
+        },
+        {
+          "name": "oncontent-container-changed",
+          "description": "`content-container-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onis-logged-in-changed",
+          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onedit-mode-changed",
+          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onhaxcms-active-item-changed",
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
-      "name": "app-hax-user-menu-button",
-      "description": "Attributes:\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - ",
+      "name": "app-hax-theme",
+      "description": "`clean-one`\n`Clean HAXcms theme, one.`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: account-circle"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Default"
-        }
-      ]
-    },
-    {
-      "name": "app-hax-user-menu",
-      "description": "Attributes:\n\n  * `is-open` {`boolean`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `isOpen` {`boolean`} - \n\n  * `icon` {`string`} - ",
-      "attributes": [
-        {
-          "name": "is-open",
-          "description": "`is-open` {`boolean`} - \n\nProperty: isOpen\n\nDefault: false",
+          "name": "__printBranchLoading",
+          "description": "`__printBranchLoading` {`boolean`} - \n\nProperty: __printBranchLoading\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: account-circle"
-        }
-      ]
-    },
-    {
-      "name": "app-hax-wired-toggle",
-      "description": "Attributes:\n\n  * `label` {`string`} - \n\n  * `checked` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `tourName` {`string`} - \n\n  * `label` {`string`} - \n\n  * `checked` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `input` - \n\n  * `knob` - \n\n  * `onChange` - \n\n  * `refreshKnob` - \n\n  * `svg` {`SVGSVGElement | undefined`} - \n\n  * `lastSize` {`Point`} - \n\n  * `seed` {`number`} - ",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Dark mode"
-        },
-        {
-          "name": "checked",
-          "description": "`checked` {`boolean`} - \n\nProperty: checked\n\nDefault: false",
+          "name": "__pdfLoading",
+          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "wired-darkmode-toggle",
-      "description": "Attributes:\n\n  * `label` {`string`} - \n\n  * `checked` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `label` {`string`} - \n\n  * `checked` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `input` - \n\n  * `knob` - \n\n  * `onChange` - \n\n  * `refreshKnob` - \n\n  * `svg` {`SVGSVGElement | undefined`} - \n\n  * `lastSize` {`Point`} - \n\n  * `seed` {`number`} - ",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Dark mode"
-        },
-        {
-          "name": "checked",
-          "description": "`checked` {`boolean`} - \n\nProperty: checked\n\nDefault: false",
+          "name": "showQRCode",
+          "description": "`showQRCode` {`boolean`} - \n\nProperty: showQRCode\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
+          "name": "dark-mode",
+          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
           "valueSet": "v"
+        },
+        {
+          "name": "menu-open",
+          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hex-color",
+          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+        },
+        {
+          "name": "contentContainer",
+          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
+        },
+        {
+          "name": "_location",
+          "description": "`_location` - location as object\n\nProperty: _location"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-width",
+          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "sm",
+          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
+        },
+        {
+          "name": "md",
+          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
+        },
+        {
+          "name": "lg",
+          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
+        },
+        {
+          "name": "xl",
+          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
+        },
+        {
+          "name": "disable-responsive",
+          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onhaxcms-toast-hide",
+          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onsuper-daemon-define-option",
+          "description": "`super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
+        },
+        {
+          "name": "onhaxcms-toast-show",
+          "description": "`haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
+        },
+        {
+          "name": "oncontent-container-changed",
+          "description": "`content-container-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onis-logged-in-changed",
+          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onedit-mode-changed",
+          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onhaxcms-active-item-changed",
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
         }
       ]
     }

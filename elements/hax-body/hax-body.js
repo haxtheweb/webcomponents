@@ -257,7 +257,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         /* this helps ensure editable-table doesn't try internal text editor; all others should */
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*[contenteditable]:not(editable-table)) {
+          ::slotted(*[contenteditable][data-hax-ray]:not(editable-table)) {
           -webkit-appearance: textfield;
           cursor: text;
           -moz-user-select: text;
@@ -265,6 +265,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           -webkit-user-select: text;
           -o-user-select: text;
         }
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-ray]:hover) {
+          cursor: pointer;
+          outline: 2px solid var(--hax-ui-color-hover, #0001);
+          transition: 0.2s outline-width ease-in-out;
+          outline-offset: 8px;
+        }
+
         :host([edit-mode])
           #bodycontainer
           ::slotted([contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
@@ -515,6 +522,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.t = {
       addContent: "Add Content",
     };
+    // double key press counter
+    this.timesClickedArrowDown = 0;
+    this.timesClickedArrowUp = 0;
     // primary registration for the namespace so all tags under hax
     // can leverage this data
     this.registerLocalization({
@@ -834,10 +844,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get properties() {
     return {
       ...super.properties,
-      /** enabldes link targets */
-      allowLinkTarget: {
-        type: Boolean,
-      },
       _useristyping: {
         type: Boolean,
       },
@@ -1033,6 +1039,74 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }, 100);
     }
   }
+  _onKeyUp(e) {
+    if (
+      ["ArrowUp", "ArrowDown"].includes(e.key) &&
+      this.activeNode &&
+      HAXStore.isTextElement(this.activeNode)
+    ) {
+      let key = e.key;
+      this[`timesClicked${key}`]++;
+      if (
+        this[`timesClicked${key}`] >= 2 &&
+        this.activeNode === this.prevKeyActiveNode
+      ) {
+        if (key === "ArrowUp") {
+          // implies we're at the top of the body
+          if (
+            this.activeNode.previousElementSibling &&
+            this.activeNode.previousElementSibling.tagName === "PAGE-BREAK"
+          ) {
+            this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
+          } else if (
+            this.activeNode.parentNode !== this &&
+            this.activeNode.parentNode.previousElementSibling &&
+            this.activeNode.parentNode.previousElementSibling.tagName ===
+              "PAGE-BREAK"
+          ) {
+            this.haxInsert(
+              "p",
+              "",
+              {},
+              this.activeNode.parentNode.previousElementSibling
+            );
+            // would imply top of document, shouldn't be possible
+          } else if (
+            !this.activeNode.previousElementSibling &&
+            this.activeNode.parentNode === this
+          ) {
+            let p = document.createElement("p");
+            this.insertBefore(p, this.activeNode);
+          }
+        } else {
+          if (
+            !this.activeNode.nextElementSibling &&
+            this.children[this.children.length - 1] === this.activeNode
+          ) {
+            this.haxInsert("p", "", {});
+          } else if (
+            this.activeNode.parentNode &&
+            this.activeNode.parentNode !== this &&
+            !this.activeNode.parentNode.nextElementSibling &&
+            this.children[this.children.length - 1] ===
+              this.activeNode.parentNode
+          ) {
+            this.haxInsert("p", "", {}, this.activeNode.parentNode);
+          }
+          this[`timesClicked${key}`] = 0;
+          this.prevKeyActiveNode = null;
+        }
+      } else {
+        // store previous reference to ensure we stay in same context between key presses
+        this.prevKeyActiveNode = this.activeNode;
+      }
+      setTimeout(() => {
+        this[`timesClicked${key}`] = 0;
+        this.prevKeyActiveNode = null;
+      }, 200);
+    }
+  }
+
   _onKeyDown(e) {
     // make sure we don't have an open drawer, and editing, and we are not focused on tray
     if (
@@ -1041,7 +1115,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       document.activeElement.tagName !== "BODY" &&
       document.activeElement.tagName !== "SIMPLE-MODAL"
     ) {
-      // if we are NOT editing and delete key is hit, delete the element
       if (this.getAttribute("contenteditable")) {
         this.__dropActiveVisible();
         this.__manageFakeEndCap(false);
@@ -1107,6 +1180,34 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // extra trap set for this in case we care that we are in the act of deleting
             case "Backspace":
             case "Delete":
+              // trap for NOTHING existing and so the contenteditable process
+              // could accidentally delete the entire element as well as the 1 before it
+              // which is page break and makes us much sadness
+              // there's also edge cases w/ contenteditable where hitting delete on
+              // a container about to be made empty will then delete table or iframe before it
+              if (
+                this.activeNode &&
+                this.activeNode.textContent == "" &&
+                this.activeNode.previousElementSibling &&
+                this.activeNode.previousElementSibling.tagName &&
+                ([
+                  "TABLE",
+                  "EDITABLE-TABLE",
+                  "IFRAME-LOADER",
+                  "IFRAME",
+                  "WEBVIEW",
+                ].includes(this.activeNode.previousElementSibling.tagName) ||
+                  (this.activeNode.previousElementSibling.tagName ===
+                    "PAGE-BREAK" &&
+                    this.shadowRoot
+                      .querySelector("#body")
+                      .assignedNodes({ flatten: true }).length === 2 &&
+                    this.shadowRoot
+                      .querySelector("#body")
+                      .assignedNodes({ flatten: true })[1] === this.activeNode))
+              ) {
+                e.preventDefault();
+              }
               this._useristyping = true;
               this.__delHit = true;
               this.querySelectorAll("[data-hax-active]").forEach(
@@ -1664,7 +1765,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         this.__applyDragDropState(children[i], false);
         // remove some of the protected classes though they shouldn't leak through
         children[i].classList.remove("hax-hovered");
-        children[i].contentEditable = false;
+        children[i].removeAttribute("contenteditable");
         content += await HAXStore.nodeToContent(children[i]);
         if (!!this.__isLayout(children[i])) {
           this._applyContentEditable(this.editMode, children[i]);
@@ -2287,10 +2388,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       case "insert-above-active":
         if (this.activeNode && this.activeNode.previousElementSibling) {
           this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
-        } else {
+        } else if (this.activeNode) {
           // would imply top of document
           let p = document.createElement("p");
-          this.insertBefore(p, this.activeNode);
+          // account for slot being set in this edge case of being
+          // the 1st child inserted into an element that is NOT parent body
+          if (this.activeNode.getAttribute("slot")) {
+            p.setAttribute("slot", this.activeNode.getAttribute("slot"));
+          }
+          this.activeNode.parentNode.insertBefore(p, this.activeNode);
+        } else {
+          this.appendChild(p);
         }
         break;
       case "insert-below-active":
@@ -2857,6 +2965,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             console.warn(e);
           }
         }
+        this._haxContextOperation({
+          detail: {
+            eventName: "content-edit",
+            value: true,
+          },
+        });
       } else {
         //make sure ective node is not still in edit mode
         if (!!this.activeNode) {
@@ -2917,6 +3031,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.scrollerFixclickEvent = this.scrollerFixclickEvent.bind(this);
       this.blurEvent = this.blurEvent.bind(this);
       this._onKeyDown = this._onKeyDown.bind(this);
+      this._onKeyUp = this._onKeyUp.bind(this);
       this._keepContextVisible = this._keepContextVisible.bind(this);
       // helps ensure correct state attachment and detachment
       this.windowControllers = new AbortController();
@@ -2938,6 +3053,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         signal: this.windowControllers.signal,
       });
       window.addEventListener("keydown", this._onKeyDown, {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("keyup", this._onKeyUp, {
         signal: this.windowControllers.signal,
       });
       window.addEventListener("resize", this._keepContextVisible, {
@@ -3166,9 +3284,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               mutation.addedNodes.length === 0 &&
               mutation.removedNodes.length > 0 &&
               this.shadowRoot &&
-              this.shadowRoot
+              ((this.shadowRoot
                 .querySelector("#body")
-                .assignedNodes({ flatten: true }).length === 0
+                .assignedNodes({ flatten: true }).length === 1 &&
+                this.shadowRoot
+                  .querySelector("#body")
+                  .assignedNodes({ flatten: true })[0].tagName ===
+                  "PAGE-BREAK") ||
+                this.shadowRoot
+                  .querySelector("#body")
+                  .assignedNodes({ flatten: true }).length === 0)
             ) {
               // we saw that we had nothing, but let's ensure the DOM really stayed empty
               // some projects might lag 1 cycle here and really this is just to ensure
@@ -3177,6 +3302,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               // activate this 0 content case
               setTimeout(() => {
                 if (
+                  (this.shadowRoot
+                    .querySelector("#body")
+                    .assignedNodes({ flatten: true }).length === 1 &&
+                    this.shadowRoot
+                      .querySelector("#body")
+                      .assignedNodes({ flatten: true })[0].tagName ===
+                      "PAGE-BREAK") ||
                   this.shadowRoot
                     .querySelector("#body")
                     .assignedNodes({ flatten: true }).length === 0
@@ -3551,25 +3683,33 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (i !== -1) {
       haxRay = toJS(HAXStore.gizmoList)[i].title;
     }
-    // force images to NOT be draggable as we will manage D&D
-    if (node.tagName == "IMG") {
-      node.setAttribute("draggable", false);
-    }
-    // oooooo snap, drag and drop..
-    if (status) {
-      this.__applyDragDropState(node, haxRay);
-      listenerMethod = "addEventListener";
+    if (node.tagName !== "PAGE-BREAK") {
+      // force images to NOT be draggable as we will manage D&D
+      if (node.tagName == "IMG") {
+        node.setAttribute("draggable", false);
+      }
+      // oooooo snap, drag and drop..
+      if (status) {
+        this.__applyDragDropState(node, haxRay);
+        listenerMethod = "addEventListener";
+      } else {
+        this.__applyDragDropState(node, false);
+        listenerMethod = "removeEventListener";
+      }
+      node[listenerMethod]("drop", this.dropEvent.bind(this));
+      node[listenerMethod]("dragenter", this.dragEnter.bind(this));
+      node[listenerMethod]("dragleave", this.dragLeave.bind(this));
+      node[listenerMethod]("dragover", (e) => {
+        this.__dragMoving = true;
+        e.preventDefault();
+      });
     } else {
-      this.__applyDragDropState(node, false);
-      listenerMethod = "removeEventListener";
+      if (status) {
+        node.setAttribute("data-hax-ray", "");
+      } else {
+        node.removeAttribute("data-hax-ray");
+      }
     }
-    node[listenerMethod]("drop", this.dropEvent.bind(this));
-    node[listenerMethod]("dragenter", this.dragEnter.bind(this));
-    node[listenerMethod]("dragleave", this.dragLeave.bind(this));
-    node[listenerMethod]("dragover", (e) => {
-      this.__dragMoving = true;
-      e.preventDefault();
-    });
     // additional things for text based elements
     if (this._HTMLPrimativeTest(node)) {
       if (status) {
@@ -4081,6 +4221,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.contextMenus.plate.disableOps = false;
     this.contextMenus.plate.disableItemOps = false;
     this.contextMenus.plate.canMoveElement = this.canMoveElement;
+    setTimeout(() => {
+      this.prevKeyActiveNode = null;
+    }, 5);
     if (oldValue) {
       oldValue.removeAttribute("data-hax-active");
     }

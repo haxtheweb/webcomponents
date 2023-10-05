@@ -3033,7 +3033,7 @@
           var r = "v";
           "dev" === s.default.version && (r = "");
           var l = " * Tone.js " + r + s.default.version + " * ";
-          console.log("%c" + l, "background: #000; color: #fff");
+          //console.log("%c" + l, "background: #000; color: #fff");
         }
       } else
         s.default.supported ||

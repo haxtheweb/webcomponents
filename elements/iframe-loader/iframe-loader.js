@@ -55,7 +55,7 @@ export class IframeLoader extends LitElement {
     super();
     this.disabled = false;
     this.loading = true;
-    this.height = 100;
+    this.height = 500;
     this.width = "100%";
     this.__iframe = null;
     // if we have an initial iframe, go for it

@@ -76,6 +76,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   }
   constructor() {
     super();
+    this.activePreview = null;
     this.daemonKeyCombo = null;
     autorun(() => {
       this.daemonKeyCombo = toJS(HAXStore.daemonKeyCombo);
@@ -121,93 +122,129 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     return {
       ...super.properties,
       categories: { type: Array },
+      hidden: { type: Boolean, reflect: true },
       recentGizmoList: { type: Array },
+      activePreview: { type: Number },
     };
   }
   closePopover() {
+    this.activePreview = null;
     let popover = window.SimplePopoverManager.requestAvailability();
     popover.opened = false;
   }
   render() {
-    return html` <div class="toolbar-inner" part="toolbar">
-        <simple-fields-field
-          id="inputfilter"
-          @value-changed="${this.inputfilterChanged}"
-          aria-controls="filter"
-          label="${this.t.filterContentTypes}"
-          type="text"
-          auto-validate=""
-          part="filter"
-        ></simple-fields-field>
-      </div>
-      <a11y-collapse id="recent" heading="Recent" heading-button expanded>
-        <simple-button-grid columns="5" always-expanded part="grid">
-          ${this.recentGizmoList.map(
-            (gizmo, i) => html` <simple-popover-selection event="hover">
-              <hax-tray-button
-                small
-                show-text-label
-                voice-command="insert ${gizmo.title}"
-                draggable="true"
-                @dragstart="${this._dragStart}"
-                index="${i}"
-                is-current-item
-                label="${gizmo.title}"
-                event-name="insert-tag"
-                event-data="${gizmo.tag}"
-                data-demo-schema="true"
-                icon-position="top"
-                icon="${gizmo.icon}"
-                part="grid-button"
-                slot="button"
-              ></hax-tray-button>
-              <hax-element-demo
-                render-tag="${gizmo.tag}"
-                slot="options"
-              ></hax-element-demo>
-            </simple-popover-selection>`
-          )}
-        </simple-button-grid>
-      </a11y-collapse>
-      ${this.categories.map(
-        (tag) => html` <a11y-collapse
-          heading="${this.ucfirst(tag)}"
-          heading-button
-        >
-          <simple-button-grid columns="3" always-expanded part="grid">
-            ${this.filtered.map(
-              (gizmo, i) =>
-                html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
-                  ? html` <simple-popover-selection event="hover">
-                      <hax-tray-button
-                        show-text-label
-                        is-current-item
-                        voice-command="insert ${gizmo.title}"
-                        draggable="true"
-                        @dragstart="${this._dragStart}"
-                        index="${i}"
-                        label="${gizmo.title}"
-                        event-name="insert-tag"
-                        event-data="${gizmo.tag}"
-                        data-demo-schema="true"
-                        icon-position="top"
-                        icon="${gizmo.icon}"
-                        part="grid-button"
-                        slot="button"
-                      ></hax-tray-button>
-                      <hax-element-demo
-                        render-tag="${gizmo.tag}"
-                        slot="options"
-                      ></hax-element-demo>
-                    </simple-popover-selection>`
-                  : ``}`
-            )}
-          </simple-button-grid>
-        </a11y-collapse>`
-      )}`;
+    return html`${this.hidden
+      ? ``
+      : html`<div class="toolbar-inner" part="toolbar">
+            <simple-fields-field
+              id="inputfilter"
+              @value-changed="${this.inputfilterChanged}"
+              aria-controls="filter"
+              label="${this.t.filterContentTypes}"
+              type="text"
+              auto-validate=""
+              part="filter"
+            ></simple-fields-field>
+          </div>
+          <a11y-collapse id="recent" heading="Recent" heading-button expanded>
+            <simple-button-grid columns="5" always-expanded part="grid">
+              ${this.recentGizmoList.map(
+                (gizmo, i) => html` <simple-popover-selection
+                  data-index="${i}"
+                  @opened-changed="${this._hoverForPreviewChange}"
+                  event="hover"
+                >
+                  <hax-tray-button
+                    small
+                    show-text-label
+                    voice-command="insert ${gizmo.title}"
+                    draggable="true"
+                    @dragstart="${this._dragStart}"
+                    index="${i}"
+                    is-current-item
+                    label="${gizmo.title}"
+                    event-name="insert-tag"
+                    event-data="${gizmo.tag}"
+                    data-demo-schema="true"
+                    icon-position="top"
+                    icon="${gizmo.icon}"
+                    part="grid-button"
+                    slot="button"
+                  ></hax-tray-button>
+                  ${this.activePreview === parseInt(i)
+                    ? html`
+                        <hax-element-demo
+                          render-tag="${gizmo.tag}"
+                          slot="options"
+                        ></hax-element-demo>
+                      `
+                    : ``}
+                </simple-popover-selection>`
+              )}
+            </simple-button-grid>
+          </a11y-collapse>
+          ${this.categories.map(
+            (tag) => html` <a11y-collapse
+              heading="${this.ucfirst(tag)}"
+              heading-button
+            >
+              <simple-button-grid columns="3" always-expanded part="grid">
+                ${this.filtered.map(
+                  (gizmo, i) =>
+                    html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
+                      ? html` <simple-popover-selection
+                          data-index="${i}"
+                          @opened-changed="${this._hoverForPreviewChange}"
+                          event="hover"
+                        >
+                          <hax-tray-button
+                            show-text-label
+                            is-current-item
+                            voice-command="insert ${gizmo.title}"
+                            draggable="true"
+                            @dragstart="${this._dragStart}"
+                            index="${i}"
+                            label="${gizmo.title}"
+                            event-name="insert-tag"
+                            event-data="${gizmo.tag}"
+                            data-demo-schema="true"
+                            icon-position="top"
+                            icon="${gizmo.icon}"
+                            part="grid-button"
+                            slot="button"
+                          ></hax-tray-button>
+                          ${this.activePreview === parseInt(i)
+                            ? html`
+                                <hax-element-demo
+                                  render-tag="${gizmo.tag}"
+                                  slot="options"
+                                ></hax-element-demo>
+                              `
+                            : ``}
+                        </simple-popover-selection>`
+                      : ``}`
+                )}
+              </simple-button-grid>
+            </a11y-collapse>`
+          )} `}`;
   }
   static get tag() {
     return "hax-gizmo-browser";
+  }
+  // react to "opened" changing on the popover
+  _hoverForPreviewChange(e) {
+    const popover = e.detail;
+    // this is open
+    if (popover.opened) {
+      this.activePreview = parseInt(popover.dataset.index);
+      // @notice
+      // timing hack because the act of opening the element triggers a light dom rebuild
+      // in which the element is not yet visible, so we need to wait a tick
+      // and then tell the pop up it should look at and re-clone it's light dom
+      setTimeout(() => {
+        e.detail.openedChanged(true);
+      }, 10);
+    }
   }
   /**
    * Drag start so we know what target to set
