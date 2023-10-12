@@ -446,9 +446,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           #slot ::slotted(iframe) {
             width: auto;
           }
-          #slot ::slotted(*) {
-            word-break: break-all;
-          }
           #slot ::slotted(h1),
           #slot ::slotted(h2),
           #slot ::slotted(h3) {
