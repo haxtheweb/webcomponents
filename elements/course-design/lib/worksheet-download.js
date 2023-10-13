@@ -41,7 +41,7 @@ export class WorksheetDownload extends LitElement {
             property: "link",
             title: "Link",
             description: "The link for the download.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "editor:insert-link",
           },
         ],
