@@ -6,7 +6,9 @@ The authoring experience of HAX and the ability to make fast, static file backed
 Get all the details you want on [HAXTheWeb.org](https://haxtheweb.org/haxcms-1)!
 HAX seeks to be the smallest possible back-end CMS to make HAX work and be able to build websites with it. Leveraging JSON Outline Schema, HAX is able to author multiple pages, which it then writes onto the file system. This way a slim server layer is just for basic authentication, knowing how to save files, and placing them in version control.
 
-Watch and Read more about HAX here: https://oer.hax.psu.edu/bto108/sites/haxcellence/what-is-hax
+Watch and Read more about HAX here:
+- Youtube channel - https://www.youtube.com/@haxtheweb
+- HAXCellence https://oer.hax.psu.edu/bto108/sites/haxcellence/what-is-hax
 
 # Issues / Support / Community
 - Discord Channel - https://bit.ly/hax-discord
