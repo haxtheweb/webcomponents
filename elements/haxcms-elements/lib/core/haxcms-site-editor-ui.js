@@ -1439,6 +1439,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "clean-one",
             "clean-two",
             "learn-two-theme",
+            "polaris-theme",
             "bootstrap-theme",
             "outline-player",
             "haxor-slevin",
