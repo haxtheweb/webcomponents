@@ -215,17 +215,17 @@ class PolarisTheme extends HAXCMSOperationButtons(
         }
 
         /** stuff to refactor out after this is initially working visually */
-        #psumark {
+        #mark {
           display: inline;
           width: 218px;
           float: left;
           margin: 0px 30px 0px 40px;
         }
-        #psumark a {
+        #mark a {
           display: block;
         }
         @media only screen and (max-width: 1023px) {
-          #psumark {
+          #mark {
             float: none;
             margin: 15px auto;
             max-width: 218px;
@@ -381,9 +381,9 @@ class PolarisTheme extends HAXCMSOperationButtons(
       </site-modal>
       <div class="wrap">
         <slot name="header">
-          <div id="psumark">
-            <a href="http://www.psu.edu">
-              <img src="https://camp.tlt.psu.edu/wp-content/themes/genesis-psu/images/PS_HOR_REV_RGB_2C.png" alt=" Visit the Pennsylvania State University Home Page">
+          <div id="mark">
+            <a href="${this.bannerLink}">
+              <img src="${this.bannerImage}" alt="${this.bannerAlt}" loading="lazy" decoding="async" fetchpriority="low" />
             </a>
           </div>
           <div class="title-area">
@@ -471,6 +471,15 @@ class PolarisTheme extends HAXCMSOperationButtons(
       siteDescription: {
         type: String,
       },
+      bannerLink: {
+        type: String,
+      },
+      bannerImage: {
+        type: String,
+      },
+      bannerAlt: {
+        type: String,
+      },
       pageTimestamp: {
         type: Number,
       },
@@ -495,7 +504,22 @@ class PolarisTheme extends HAXCMSOperationButtons(
     // has been designed around them
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
+    this.bannerAlt = '';
+    this.bannerImage = '';
+    this.bannerLink = '';
     this.__disposer = this.__disposer ? this.__disposer : [];
+    autorun((reaction) => {
+      this.bannerLink = toJS(store.bannerLink);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.bannerImage = toJS(store.bannerImage);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.bannerAlt = toJS(store.bannerAlt);
+      this.__disposer.push(reaction);
+    });
     autorun((reaction) => {
       this.siteDescription = toJS(store.siteDescription);
       this.__disposer.push(reaction);

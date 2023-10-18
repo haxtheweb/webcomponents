@@ -600,11 +600,19 @@ class Store {
             path: "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
             name: "Basic theme",
             variables: {
-              image: "assets/banner.jpg",
               icon: "icons:record-voice-over",
               hexCode: "#da004e",
               cssVariable: "pink",
+              image: "assets/banner.jpg",
+              imageAlt: "",
+              imageLink: "",
             },
+            regions: {
+              header: null,
+              left: null,
+              right: null,
+              footer: null,
+            }
           },
         };
       }
