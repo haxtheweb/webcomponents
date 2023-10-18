@@ -215,6 +215,7 @@ class SiteTopMenu extends LitElement {
         <slot name="prefix"></slot>
         ${this.__items.map(
           (item, index) => html`
+          ${(item.metadata.hideInMenu === true || item.metadata.published === false)  ? `` : html`
             <li class="spacing">
               <a
                 data-id="${item.id}"
@@ -231,7 +232,7 @@ class SiteTopMenu extends LitElement {
                 </button>
               </a>
             </li>
-          `
+          `} `
         )}
         <slot name="suffix"></slot>
         </ul>

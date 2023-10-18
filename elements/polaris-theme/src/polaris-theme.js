@@ -51,8 +51,8 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --polaris-content-bg-color: #ffffff;
           --polaris-header-bg-color: #262c3a;
           --polaris-nav-bg-color: #1173ca;
-          --polaris-footer-1-bg-color: #262c3a;
-          --polaris-footer-2-bg-color: #141720;
+          --polaris-footer-secondary-bg-color: #262c3a;
+          --polaris-footer-primary-bg-color: #141720;
           background-color: var(--polaris-bg-color);
         }
         h1,
@@ -193,21 +193,21 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --simple-modal-titlebar-background: var(--polaris-nav-bg-color);
         }
 
-        .footer-1 {
-          background-color: var(--polaris-footer-1-bg-color);
+        .footer-secondary {
+          background-color: var(--polaris-footer-secondary-bg-color);
           color: #999;
           clear: both;
-          padding: 40px 0 16px;
+          padding: 40px 16px 16px;
         }
 
         footer {
-          background-color: var(--polaris-footer-2-bg-color);
+          background-color: var(--polaris-footer-primary-bg-color);
         }
 
-        .footer-2 {
+        .footer-primary {
           color: #ededed;
           font-size: 14px;
-          padding: 40px 0;
+          padding: 40px 16px;
           text-align: center;
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
           line-height: 22px;
@@ -286,15 +286,15 @@ class PolarisTheme extends HAXCMSOperationButtons(
           line-height: 1;
           margin: 0 0 24px;
         }
-        .footer-1 a:hover {
+        .footer-secondary a:hover {
           color: #ddd;
         }
 
-        .footer-1 a {
+        .footer-secondary a {
           border-bottom: 1px solid #666;
           color: #999;
         }
-        .footer-1 p {
+        .footer-secondary p {
           margin: 0 0 24px;
           padding: 0;
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -318,19 +318,19 @@ class PolarisTheme extends HAXCMSOperationButtons(
           height: auto;
           width: auto;
         }
-        .psu_footer_links a {
+        .footer_links a {
           margin: 0 8px;
         }
-        .psu_footer_links {
+        .footer_links {
           text-align: left;
           padding-top: 3px;
         }
 
-        .footer-2 a {
+        .footer-primary a {
           color: #2c76c7;
           border-bottom: 1px solid #2c76c7;
         }
-        .footer-2 a:hover {
+        .footer-primary a:hover {
           color: #fff;
           border-bottom: 1px solid #fff;
         }
@@ -338,7 +338,6 @@ class PolarisTheme extends HAXCMSOperationButtons(
           color: #1173ca;
           text-decoration: none;
         }
-        /** end PSU speciifc looking stuff */
         @media only screen and (max-width: 1139px) {
           main {
             width: 620px;
@@ -396,7 +395,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
             <div id="mark">
               <a href="${this.imageLink}">
                 <img
-                  src="${this.imageImage}"
+                  src="${this.image}"
                   alt="${this.imageAlt}"
                   loading="lazy"
                   decoding="async"
@@ -421,9 +420,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
         </div>
       </header>
       <nav itemtype="http://schema.org/SiteNavigationElement">
-        <div class="wrap">
-          <site-top-menu indicator="arrow"></site-top-menu>
-        </div>
+        <site-top-menu indicator="none"></site-top-menu>
       </nav>
       <div class="content site-inner wrap">
         <main>
@@ -457,47 +454,16 @@ class PolarisTheme extends HAXCMSOperationButtons(
         itemtype="http://schema.org/WPFooter"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
-        <section class="footer-1">
+        <section class="footer-secondary">
           <div class="wrap">
-            <slot name="footer-1"
-              ><p>
-                Penn State encourages qualified persons with disabilities to
-                participate in its programs and activities. If you anticipate
-                needing any type of accommodation or have questions about the
-                physical access provided, please contact
-                <a href="mailto:tlt@psu.edu">tlt@psu.edu</a> or 814-865-2030 in
-                advance of your participation or visit.
-              </p></slot
-            >
+            <slot name="footer-secondary"></slot>
+            <div id="footerSecondary"></div>
           </div>
         </section>
-        <section class="footer-2">
+        <section class="footer-primary">
           <div class="wrap">
-            <slot name="footer-2">
-              <div class="footer-logo">
-                <a href="http://www.psu.edu">
-                  <img
-                    src="https://camp.tlt.psu.edu/wp-content/themes/genesis-psu/images/PS_HOR_REV_RGB_2C.png"
-                    alt=" Visit the Pennsylvania State University Home Page"
-                    class="footer-logo"
-                  />
-                </a>
-              </div>
-              <div class="psu_footer_links">
-                Copyright 2023 © The Pennsylvania State University
-                <a href="http://www.psu.edu/web-privacy-statement">Privacy</a>
-                <a href="http://guru.psu.edu/policies/AD85.html"
-                  >Non-Discrimination</a
-                >
-                <a href="http://guru.psu.edu/policies/OHR/hr11.html"
-                  >Equal Opportunity</a
-                >
-                <a href="http://www.psu.edu/accessibilitystatement"
-                  >Accessibility</a
-                >
-                <a href="http://www.psu.edu/legal-statements">Legal</a>
-              </div>
-            </slot>
+            <slot name="footer-primary"></slot>
+            <div id="footerPrimary"></div>
           </div>
         </section>
         <scroll-button></scroll-button>
@@ -522,7 +488,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
       imageLink: {
         type: String,
       },
-      imageImage: {
+      image: {
         type: String,
       },
       imageAlt: {
@@ -551,11 +517,14 @@ class PolarisTheme extends HAXCMSOperationButtons(
     // loaded in when we have a theme that intentionally
     // has been designed around them
     this.HAXCMSThemeSettings.autoScroll = true;
+    // oh my....
+    this.regions = ["footerSecondary", "footerPrimary"];
     this.searchTerm = "";
     this.imageAlt = "";
     this.image = "";
     this.imageLink = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
+
     autorun((reaction) => {
       this.imageLink = toJS(store.themeData.variables.imageLink);
       this.__disposer.push(reaction);

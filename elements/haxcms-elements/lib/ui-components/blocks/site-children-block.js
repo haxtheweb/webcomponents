@@ -187,7 +187,7 @@ class SiteChildrenBlock extends LitElement {
           ?fixed-id="${this.fixedId}"
         ></site-query-menu-slice>
         ${this.__items.map(
-          (item) => html`
+          (item) => html`${(item.metadata.hideInMenu === true || item.metadata.published === false)  ? `` : html`
             <li class="spacing">
               <a
                 data-id="${item.id}"
@@ -201,6 +201,7 @@ class SiteChildrenBlock extends LitElement {
                 </button>
               </a>
             </li>
+            `}
           `
         )}
       </ul>

@@ -80,6 +80,7 @@ class Store {
       siteDescription: computed, // site description
       isLoggedIn: computed, // simple boolean for state so we can style based on logged in
       themeData: computed, // get the active theme from manifest + activeId
+      regionData: computed, // get the active region data from manifest + activeId
       homeLink: computed,
       activeId: observable, // this affects all state changes associated to activeItem
       activeItem: computed, // active item object
@@ -96,6 +97,26 @@ class Store {
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
       badDevice: observable, // if we have a low performance device
     });
+  }
+  /**
+   * loadRegionData
+   */
+  get regionData() {
+    if (this.manifest) {
+      var regionData = {};
+      // this is required so better be...
+      if (varExists(this.manifest, "metadata.theme.regions")) {
+        regionData = this.manifest.metadata.theme.regions;
+      } else {
+        // fallback juuuuust to be safe...
+        regionData = {
+          header: null,
+          footerPrimary: null,
+          footerSecondary: null,
+        };
+      }
+      return regionData;
+    }
   }
   /**
    * Get a unique slug name / path based on existing slug, page data and if we are to automatically generate
@@ -609,9 +630,8 @@ class Store {
             },
             regions: {
               header: null,
-              left: null,
-              right: null,
-              footer: null,
+              footerPrimary: null,
+              footerSecondary: null,
             }
           },
         };
