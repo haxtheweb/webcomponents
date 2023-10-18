@@ -49,20 +49,25 @@ class PolarisTheme extends HAXCMSOperationButtons(
           display: block;
           --polaris-bg-color: #f5f5f5;
           --polaris-content-bg-color: #ffffff;
-          --polaris-header-bg-color: #262C3A;
+          --polaris-header-bg-color: #262c3a;
           --polaris-nav-bg-color: #1173ca;
-          --polaris-footer-1-bg-color: #262C3A;
+          --polaris-footer-1-bg-color: #262c3a;
           --polaris-footer-2-bg-color: #141720;
           background-color: var(--polaris-bg-color);
         }
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
           font-family: "Open Sans", sans-serif;
           font-weight: 300;
         }
 
         a {
-            color: #1173ca;
-            text-decoration: none;
+          color: #1173ca;
+          text-decoration: none;
         }
         .search-modal-btn {
           --simple-icon-width: 36px;
@@ -80,7 +85,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --simple-icon-button-border-radius: none;
         }
         .entry-content a {
-            color: #1173ca;
+          color: #1173ca;
         }
 
         site-active-title {
@@ -106,7 +111,8 @@ class PolarisTheme extends HAXCMSOperationButtons(
           padding-top: 40px;
         }
 
-        .site-inner, .wrap {
+        .site-inner,
+        .wrap {
           margin: 0 auto;
           max-width: 1140px;
         }
@@ -119,7 +125,6 @@ class PolarisTheme extends HAXCMSOperationButtons(
           padding: 40px 40px 24px;
           background-color: var(--polaris-content-bg-color);
         }
-
 
         header:not(:empty) {
           background-color: var(--polaris-header-bg-color);
@@ -143,7 +148,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --site-top-menu-bg: var(--polaris-nav-bg-color);
           --site-top-menu-indicator-color: #ffffff;
           --site-top-menu-link-active-color: #ffffff;
-          --site-top-menu-link-color: #EDEDED;
+          --site-top-menu-link-color: #ededed;
           --site-top-menu-link-bg-color-hover: #ffffff;
           --site-top-menu-link-bg-color-hover: #0b4b83;
           clear: both;
@@ -200,7 +205,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
         }
 
         .footer-2 {
-          color: #EDEDED;
+          color: #ededed;
           font-size: 14px;
           padding: 40px 0;
           text-align: center;
@@ -216,7 +221,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
 
         /** stuff to refactor out after this is initially working visually */
         #mark {
-          display: inline;
+          display: inline-flex;
           width: 218px;
           float: left;
           margin: 0px 30px 0px 40px;
@@ -234,8 +239,9 @@ class PolarisTheme extends HAXCMSOperationButtons(
             display: block;
           }
         }
-        .site-title a, .site-title a:hover {
-          color: #EDEDED;
+        .site-title a,
+        .site-title a:hover {
+          color: #ededed;
         }
         header a img {
           margin-bottom: -4px;
@@ -243,11 +249,16 @@ class PolarisTheme extends HAXCMSOperationButtons(
         }
 
         img {
-            height: auto;
-            width: auto;
+          height: auto;
+          width: auto;
         }
-        embed, iframe, img, object, video, .wp-caption {
-            max-width: 100%;
+        embed,
+        iframe,
+        img,
+        object,
+        video,
+        .wp-caption {
+          max-width: 100%;
         }
         .wrap:after {
           clear: both;
@@ -295,17 +306,17 @@ class PolarisTheme extends HAXCMSOperationButtons(
           width: 110px;
         }
         .footer-logo {
-            float: left;
-            margin-right: 30px;
+          float: left;
+          margin-right: 30px;
         }
 
         a img {
-            margin-bottom: -4px;
-            margin-bottom: -4px;
+          margin-bottom: -4px;
+          margin-bottom: -4px;
         }
         img {
-            height: auto;
-            width: auto;
+          height: auto;
+          width: auto;
         }
         .psu_footer_links a {
           margin: 0 8px;
@@ -316,26 +327,27 @@ class PolarisTheme extends HAXCMSOperationButtons(
         }
 
         .footer-2 a {
-            color: #2c76c7;
-            border-bottom: 1px solid #2c76c7;
+          color: #2c76c7;
+          border-bottom: 1px solid #2c76c7;
         }
         .footer-2 a:hover {
-          color: #FFF;
+          color: #fff;
           border-bottom: 1px solid #fff;
         }
         a {
-            color: #1173ca;
-            text-decoration: none;
+          color: #1173ca;
+          text-decoration: none;
         }
         /** end PSU speciifc looking stuff */
-        @media only screen and (max-width: 1139px){
+        @media only screen and (max-width: 1139px) {
           main {
             width: 620px;
           }
           aside {
             width: 300px;
           }
-          .site-inner, .wrap {
+          .site-inner,
+          .wrap {
             max-width: 960px;
           }
         }
@@ -365,95 +377,131 @@ class PolarisTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
-    <header itemtype="http://schema.org/WPHeader">
-      <site-modal
-        @site-modal-click="${this.siteModalClick}"
-        .part="${this.editMode ? `edit-mode-active` : ``}"
-        ?disabled="${this.editMode}"
-        icon="icons:search"
-        title="Search site"
-        class="search-modal-btn"
-        button-label="Search"
-        part="search-btn"
-        position="right"
-      >
-        <site-search></site-search>
-      </site-modal>
-      <div class="wrap">
-        <slot name="header">
-          <div id="mark">
-            <a href="${this.bannerLink}">
-              <img src="${this.bannerImage}" alt="${this.bannerAlt}" loading="lazy" decoding="async" fetchpriority="low" />
-            </a>
-          </div>
-          <div class="title-area">
-            <p class="site-title" itemprop="headline">
-            <site-title 
-            .part="${this.editMode ? `edit-mode-active` : ``}"
-            ?disabled="${this.editMode}" part="site-title"></site-title>
-            <p class="site-description" itemprop="description">${this.siteDescription}</p>
-          </div>
-        </slot>
-      </div>
-    </header>
-    <nav itemtype="http://schema.org/SiteNavigationElement">
-      <div class="wrap">
-        <site-top-menu indicator="arrow"></site-top-menu>
-      </div>
-    </nav>
-    <div class="content site-inner wrap">
-      <main>
-        <article id="contentcontainer">
-          <div id="haxcms-theme-top"></div>
-          <site-breadcrumb></site-breadcrumb>
-          <site-active-title part="page-title"></site-active-title>
-          <site-active-tags
-            part="page-tags"
-            auto-accent-color
-          ></site-active-tags>
-          <section id="slot">
-            <slot></slot>
-          </section>
-        </article>
-      </main>
-      <aside role="complementary" aria-label="Primary Sidebar" itemtype="http://schema.org/WPSideBar">
-        <section>
-          <h4>Contents</h4>
-          <site-children-block
-            dynamic-methodology="ancestor"
-          ></site-children-block>
-        </section>
-      </aside>
-    </div>
-    <footer itemtype="http://schema.org/WPFooter" .part="${this.editMode ? `edit-mode-active` : ``}"
->
-      <section class="footer-1">
+      <header itemtype="http://schema.org/WPHeader">
+        <site-modal
+          @site-modal-click="${this.siteModalClick}"
+          .part="${this.editMode ? `edit-mode-active` : ``}"
+          ?disabled="${this.editMode}"
+          icon="icons:search"
+          title="Search site"
+          class="search-modal-btn"
+          button-label="Search"
+          part="search-btn"
+          position="right"
+        >
+          <site-search></site-search>
+        </site-modal>
         <div class="wrap">
-          <slot name="footer-1"><p>Penn State encourages qualified persons with disabilities to participate in its programs and activities. If you anticipate needing any type of accommodation or have questions about the physical access provided, please contact <a href="mailto:tlt@psu.edu">tlt@psu.edu</a> or 814-865-2030 in advance of your participation or visit.</p></slot>
-        </div>
-      </section>
-      <section class="footer-2">
-        <div class="wrap">
-          <slot name="footer-2">
-          <div class="footer-logo">
-            <a href="http://www.psu.edu">
-              <img src="https://camp.tlt.psu.edu/wp-content/themes/genesis-psu/images/PS_HOR_REV_RGB_2C.png" alt=" Visit the Pennsylvania State University Home Page" class="footer-logo">
-            </a>
-          </div>
-          <div class="psu_footer_links">
-            Copyright 2023 © The Pennsylvania State University
-            <a href="http://www.psu.edu/web-privacy-statement">Privacy</a>
-            <a href="http://guru.psu.edu/policies/AD85.html">Non-Discrimination</a>
-            <a href="http://guru.psu.edu/policies/OHR/hr11.html">Equal Opportunity</a>
-            <a href="http://www.psu.edu/accessibilitystatement">Accessibility</a>
-            <a href="http://www.psu.edu/legal-statements">Legal</a>
-          </div>
+          <slot name="header">
+            <div id="mark">
+              <a href="${this.imageLink}">
+                <img
+                  src="${this.imageImage}"
+                  alt="${this.imageAlt}"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </a>
+            </div>
+            <div class="title-area">
+              <p class="site-title" itemprop="headline">
+                <site-title
+                  .part="${this.editMode ? `edit-mode-active` : ``}"
+                  ?disabled="${this.editMode}"
+                  part="site-title"
+                ></site-title>
+              </p>
+
+              <p class="site-description" itemprop="description">
+                ${this.siteDescription}
+              </p>
+            </div>
           </slot>
         </div>
-      </section>
-      <scroll-button
-      ></scroll-button>
-    </footer>
+      </header>
+      <nav itemtype="http://schema.org/SiteNavigationElement">
+        <div class="wrap">
+          <site-top-menu indicator="arrow"></site-top-menu>
+        </div>
+      </nav>
+      <div class="content site-inner wrap">
+        <main>
+          <article id="contentcontainer">
+            <div id="haxcms-theme-top"></div>
+            <site-breadcrumb></site-breadcrumb>
+            <site-active-title part="page-title"></site-active-title>
+            <site-active-tags
+              part="page-tags"
+              auto-accent-color
+            ></site-active-tags>
+            <section id="slot">
+              <slot></slot>
+            </section>
+          </article>
+        </main>
+        <aside
+          role="complementary"
+          aria-label="Primary Sidebar"
+          itemtype="http://schema.org/WPSideBar"
+        >
+          <section>
+            <h4>Contents</h4>
+            <site-children-block
+              dynamic-methodology="ancestor"
+            ></site-children-block>
+          </section>
+        </aside>
+      </div>
+      <footer
+        itemtype="http://schema.org/WPFooter"
+        .part="${this.editMode ? `edit-mode-active` : ``}"
+      >
+        <section class="footer-1">
+          <div class="wrap">
+            <slot name="footer-1"
+              ><p>
+                Penn State encourages qualified persons with disabilities to
+                participate in its programs and activities. If you anticipate
+                needing any type of accommodation or have questions about the
+                physical access provided, please contact
+                <a href="mailto:tlt@psu.edu">tlt@psu.edu</a> or 814-865-2030 in
+                advance of your participation or visit.
+              </p></slot
+            >
+          </div>
+        </section>
+        <section class="footer-2">
+          <div class="wrap">
+            <slot name="footer-2">
+              <div class="footer-logo">
+                <a href="http://www.psu.edu">
+                  <img
+                    src="https://camp.tlt.psu.edu/wp-content/themes/genesis-psu/images/PS_HOR_REV_RGB_2C.png"
+                    alt=" Visit the Pennsylvania State University Home Page"
+                    class="footer-logo"
+                  />
+                </a>
+              </div>
+              <div class="psu_footer_links">
+                Copyright 2023 © The Pennsylvania State University
+                <a href="http://www.psu.edu/web-privacy-statement">Privacy</a>
+                <a href="http://guru.psu.edu/policies/AD85.html"
+                  >Non-Discrimination</a
+                >
+                <a href="http://guru.psu.edu/policies/OHR/hr11.html"
+                  >Equal Opportunity</a
+                >
+                <a href="http://www.psu.edu/accessibilitystatement"
+                  >Accessibility</a
+                >
+                <a href="http://www.psu.edu/legal-statements">Legal</a>
+              </div>
+            </slot>
+          </div>
+        </section>
+        <scroll-button></scroll-button>
+      </footer>
     `;
   }
 
@@ -471,13 +519,13 @@ class PolarisTheme extends HAXCMSOperationButtons(
       siteDescription: {
         type: String,
       },
-      bannerLink: {
+      imageLink: {
         type: String,
       },
-      bannerImage: {
+      imageImage: {
         type: String,
       },
-      bannerAlt: {
+      imageAlt: {
         type: String,
       },
       pageTimestamp: {
@@ -504,20 +552,20 @@ class PolarisTheme extends HAXCMSOperationButtons(
     // has been designed around them
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
-    this.bannerAlt = '';
-    this.bannerImage = '';
-    this.bannerLink = '';
+    this.imageAlt = "";
+    this.image = "";
+    this.imageLink = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
-      this.bannerLink = toJS(store.bannerLink);
+      this.imageLink = toJS(store.themeData.imageLink);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
-      this.bannerImage = toJS(store.bannerImage);
+      this.image = toJS(store.themeData.image);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
-      this.bannerAlt = toJS(store.bannerAlt);
+      this.imageAlt = toJS(store.themeData.imageAlt);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
@@ -582,24 +630,24 @@ class PolarisTheme extends HAXCMSOperationButtons(
   /**
    * life cycle, element is afixed to the DOM
    */
-    firstUpdated(changedProperties) {
-      if (super.firstUpdated) {
-        super.firstUpdated(changedProperties);
-      }
-      this.__link = document.createElement("link");
-      this.__link.rel = "stylesheet";
-      this.__link.href =
-      "https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;700&family=Open+Sans&family=Press+Start+2P&display=swap";
-      document.head.appendChild(this.__link);
-      this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector("article");
-      window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
-        this.HAXCMSThemeSettings.scrollTarget;
-
-      // hook up the scroll target
-      this.shadowRoot.querySelector("scroll-button").target =
-        this.shadowRoot.querySelector("#haxcms-theme-top");
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
     }
+    this.__link = document.createElement("link");
+    this.__link.rel = "stylesheet";
+    this.__link.href =
+      "https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;700&family=Open+Sans&family=Press+Start+2P&display=swap";
+    document.head.appendChild(this.__link);
+    this.HAXCMSThemeSettings.scrollTarget =
+      this.shadowRoot.querySelector("article");
+    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+      this.HAXCMSThemeSettings.scrollTarget;
+
+    // hook up the scroll target
+    this.shadowRoot.querySelector("scroll-button").target =
+      this.shadowRoot.querySelector("#haxcms-theme-top");
+  }
   /**
    * life cycle, element is removed from the DOM
    */
