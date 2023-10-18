@@ -557,15 +557,15 @@ class PolarisTheme extends HAXCMSOperationButtons(
     this.imageLink = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
-      this.imageLink = toJS(store.themeData.imageLink);
+      this.imageLink = toJS(store.themeData.variables.imageLink);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
-      this.image = toJS(store.themeData.image);
+      this.image = toJS(store.themeData.variables.image);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
-      this.imageAlt = toJS(store.themeData.imageAlt);
+      this.imageAlt = toJS(store.themeData.variables.imageAlt);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
