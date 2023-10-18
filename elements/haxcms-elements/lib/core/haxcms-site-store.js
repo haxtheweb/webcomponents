@@ -76,7 +76,8 @@ class Store {
       themeElement: observable, // theme element
       version: observable, // version of haxcms FRONTEND as per package.json
       routerManifest: computed, // router mixed in manifest w/ routes / paths
-      siteTitle: computed,
+      siteTitle: computed, // site title
+      siteDescription: computed, // site description
       isLoggedIn: computed, // simple boolean for state so we can style based on logged in
       themeData: computed, // get the active theme from manifest + activeId
       homeLink: computed,
@@ -485,6 +486,15 @@ class Store {
   get siteTitle() {
     if (this.manifest && this.manifest.title) {
       return this.manifest.title;
+    }
+    return "";
+  }
+  /**
+   * Return the site description
+   */
+  get siteDescription() {
+    if (this.manifest && this.manifest.description) {
+      return this.manifest.description;
     }
     return "";
   }
