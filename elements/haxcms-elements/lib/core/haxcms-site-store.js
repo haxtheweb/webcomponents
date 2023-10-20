@@ -99,7 +99,7 @@ class Store {
     });
   }
   /**
-   * loadRegionData
+   * regionData is pulled out of theme info
    */
   get regionData() {
     if (this.manifest) {

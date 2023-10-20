@@ -25,7 +25,6 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     super();
     this.editMode = false;
     this.isLoggedIn = false;
-    this.regions = [];
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
@@ -65,31 +64,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       this.__disposer.push(reaction);
     });
   }
-  // load region data based on matching regions the theme has declared
-  async loadRegionData(regionData) {
-    for (let region in regionData) {
-      let item = store.findItem(regionData[region]);
-      // if this theme cares about this region, and we found an item
-      // then we can load the region!
-      if (this.regions.includes(region) && item) {
-        await fetch(item.location)
-        .then((response) => {
-          if (response.ok) {
-            return response.text();
-          }
-        })
-        .then((data) => {
-          // region data found
-          if (this.shadowRoot.querySelector(`#${region}`)) {
-            this.shadowRoot.querySelector(`#${region}`).innerHTML = data;
-          }
-        })
-        .catch((err) => {
-          console.warn('region not found');
-        });
-      }
-    }
-  }
+
   hoverIntentEnter(e) {
     this.__styleTag = document.createElement("style");
     let iconPath = SimpleIconsetStore.getIcon("icons:link");
@@ -598,11 +573,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // load region data when we get access to it
-    autorun((reaction) => {
-      this.loadRegionData(toJS(store.regionData));
-      this.__disposer.push(reaction);
-    });
+
     if (this.contentContainer == null) {
       this.contentContainer =
         this.shadowRoot.querySelector("#contentcontainer");
