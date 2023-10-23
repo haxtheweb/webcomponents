@@ -33,7 +33,7 @@ const enabledCircle = new URL(
 const themeContext = {
   portfolio: ["haxor-slevin", "bootstrap-theme"],
   course: ["clean-one", "clean-two", "learn-two-theme"],
-  website: ["bootstrap-theme", "outline-player", "haxor-slevin"],
+  website: ["polaris-theme"],
   import: ["clean-one", "clean-two", "learn-two-theme"],
 };
 export class AppHaxSteps extends SimpleColors {
@@ -117,6 +117,10 @@ export class AppHaxSteps extends SimpleColors {
       if (value === "course") {
         store.site.type = "own";
         store.site.theme = "clean-one";
+      }
+      if (value === "website") {
+        store.site.type = "own";
+        store.site.theme = "polaris-theme";
       }
       store.appEl.playSound("click2");
     }
@@ -1022,11 +1026,6 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="blog"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>`;
         break;
       case "import":
@@ -1157,17 +1156,16 @@ export class AppHaxSteps extends SimpleColors {
                 ></app-hax-site-button>
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
+                  label="&gt; Website"
+                  value="website"
+                  @click=${this.chooseStructure}
+                ></app-hax-site-button>
+                <app-hax-site-button
+                  tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Portfolio"
                   value="portfolio"
                   @click=${this.chooseStructure}
                   ?coming-soon="${!this.unlockComingSoon}"
-                ></app-hax-site-button>
-                <app-hax-site-button
-                  tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Website"
-                  value="website"
-                  ?coming-soon="${!this.unlockComingSoon}"
-                  @click=${this.chooseStructure}
                 ></app-hax-site-button>
               </div>
             </div>
