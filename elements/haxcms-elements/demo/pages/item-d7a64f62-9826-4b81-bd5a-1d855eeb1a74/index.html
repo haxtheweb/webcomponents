@@ -1,0 +1,105 @@
+<p>I was recently interviewed on the <a href="https://drunkenux.com/podcast/33-hax-the-planet/">Drunken UX podcast</a>
+
+
+
+
+
+
+
+
+
+
+
+
+, a show about all things web and user experience design. I was there to talk web components, block editors, and of course <a href="https://haxtheweb.org/">#HAXTheWeb</a>
+
+
+
+
+
+
+
+
+
+.</p>
+<p><br/></p>
+<p>The conversation steered into the advantages of web components over past technology solutions and libraries and is a really good consolidation of a lot of my thoughts about web components and their importance in building a more sustainable, open web. Half way through we turn to HAX and I'm left open to rant... (so I do)</p>
+<p>I'd like to unpack a statement because I realize that while I did an ok job of explaining it, I'd like to have it written down if it end sup coming up. I said something intentionally controversial because if we don't challenge those with power, regardless of their intention, then we are left accepting powerlessness as a feature instead of the bug that it is.</p>
+<h2>The quote</h2>
+<p>The takes place at 44:41 remaining in the show. <a href="https://drunkenux.com/podcast/">Please subscribe to, rate and review their podcast</a>
+
+
+
+
+
+
+
+
+
+
+
+
+ but I wanted to link to the audio here in context in case you wanted to listen to it while reading why I feel this way.</p>
+<paper-audio-player src="https://episodes.drunkenux.com/drunkenux/dux-e33.mp3" title="#33: HAX the Planet!" preload="auto" current-time="4036.446044" time-left="5387.833469" small-skip="15" large-skip="60" role="application" aria-label="Audio Player" aria-describedby="title" accent-color="purple" resource="#7b05d228-7263-fb95-435e" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 75%; margin: 0px auto; display: block;"></paper-audio-player>
+<lrndesign-blockquote citation="04/01/2019" image="files/crop-sm/IMG_20190127_153429.jpg" author="btopro" display-mode="leather" resource="#f2d9bcf3-7000-eacb-cf69" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 100%; margin: 0px auto; display: block;">  <span>I see Gutenberg as a<br/>
+<strong>direct existential threat</strong>
+
+
+
+
+
+
+
+
+
+
+
+
+ to the open web [and OER].</span></lrndesign-blockquote>
+<p>So this critique is not of the people who work on Gutenberg. It is a deeper philosophical question of trust and control in open source and the open web. When I say do you trust Matt. I don't mean as a person, I mean do you trust one person with control of your entire UX, forever.</p>
+<p>It's a fair comparison to say the same could be lodged at me in designing HAX; and yes I am aware other people have worked on Gutenberg (and HAX has more then just me on it...). My primary criticisms grouped:</p>
+<h2 class="hax-active">Sustainability</h2>
+<p>React is the flavor of this five year segment of time and we're coming up on its end. Being from Drupal I saw core developers jump on javascript trains that had already fallen out of favor by the time they deployed. This will not be the case with web components. Web components are in the browser you're viewing this on. They aren't going away.</p>
+<p>You may say "But React isn't going away" and that's reasonable. But I mean... jQuery didn't go anywhere... so why did we all move away from it for these advanced platforms? It's all "just" javascript right?</p>
+<p>React's destiny is pegged to Facebook's desire for it; which means WordPress will have to keep pace with where they take that community. I don't view this as long term sustainable. Will a WordPress site site, without being touched, and still function correctly 10 years from now when needing to update the Gutenblocks as well as surrounding JS library ecosystem?</p>
+<p>HAX output no longer requires HAX. Content pulled into HAX is just reading DOM and then processing it. We can disappear tomorrow and our elements will still work. Since we treat the DOM as an API, we will continue to expand it at a rate that far outpaces Gutenberg.</p>
+<h2 class="hax-active">A story</h2>
+<p>Our components work anywhere, with or without HAX. We make a public website (like this one you're viewing). As part of the build we make a new card element. It can go from usage on this website to generalized, HAX capable element in about 5 minutes. The web expands our platform, not WordPress. WordPress (Drupal too) will never keep pace with our expansion just given this fact.</p>
+<p>As we build the web, we build up the base of legos for all of it. Not just specific pockets of it.</p>
+<p>Accessibility</p>
+<p>Gutenberg and accessibility have had a rocky time out of the gate. Learning React, just to participate in accessibility testing is a non-starter. We keep our web components compiled but not bundled in part for this reason. Anyone can run an accessibility audit on something we make, find the element in the DOM that wraps what failed, and make a report. They can also see the file it came from and trace it back to the source; which what they'll find...looks...like...html.</p>
+<p>This may seem petty but it's not. We're actually at odds with the web component community standards (which is to roll things like Webpack / bundlers to reduce assets delivered). It's more important to us that anyone can find, diagnose, and remix what we're doing, and the traceability by the average web professional (not WP pro + React pro) is critical to long term sustainability.</p>
+<p>HAX also originates in higher education, where we have <i><b>legal</b>
+
+
+
+
+
+
+
+
+
+
+
+</i>
+
+
+
+
+
+
+
+
+
+
+
+ and ethical responsibilities to generate, maintain and improve the accessibility of what we produce. Web components represent an immense opportunity for us to generate a more open and accessible web as a result of remix.</p>
+<h2 class="hax-active">Power consolidation</h2>
+<p>Please don't confuse charity with corporate interests. "OH THANK YOU FOR THIS EDITOR"... which you only produced because you need to in order to try and go after markets like Wix and Squarespace. The goal isn't democratizing the web anymore, it's consolidating power under one banner. Non-conspiratorially, the less people that understand the authoring experience of WordPress, the more business for WordPress.com and vendor space.</p>
+<p>Our component library is highly readable, has tooling (and soon front end assets) to completely automate the writing of the wiring for our editor. Editor outputs are no longer tied to the editor; we seek a great rebalancing of the powers of the web. HAX has ties into multiple CMS ecosystems already and can easily be ported over to others.</p>
+<p>Yes, we're building a "CMS" to manage pages because the editor eliminates the vast majority of needs for database driven anything. Yes, I'll continue to criticize database backed solutions (while still having to maintain my own slew of them). However, HAXcms will be completely built out of open and reusable components that aside from our theme scaffolding will make sense in other solutions (that are non-HAX). We are actively tearing down power structures in the methodologies by which we are approaching development.</p>
+<p>We publish all our components to webcomponents.org, a public, non-CMS specific location. I've seen talk of WP having its own Blocks catalog, which makes sense... but again, why consolidate UX discovery to one ecosystem. Why develop for a single ecosystem when you can improve the web holistically?</p>
+<h2>Not being a jerk.</h2>
+<p>Gutenberg is a fantastic idea with a lot of effort and resources and sleepless nights poured into it. It will empower people to produce things and is open source and those are great things. I think it threatens long term sustainability, accessibility, and development interest. I think web components provide a unique opportunity to tear down the power silos we've all built over the last decade.</p>
+<p>You shouldn't need someone else in order to present yourself online. It shouldn't cost you anything. You should have total ownership and control over your information. It shouldn't be tied to any platform beyond the browser itself.</p>
+<p>We have a unique opportunity to ensure that happens. <span style="caret-color: var(--hax-color-text);">Don't throw your efforts into a single silo that will let you down.</span></p>

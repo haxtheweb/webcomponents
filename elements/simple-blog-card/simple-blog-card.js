@@ -36,7 +36,8 @@ class SimpleBlogCard extends LitElement {
           display: flex;
         }
 
-        div.card {
+        .card {
+          display: block;
           height: auto !important;
           overflow: hidden;
         }
@@ -122,7 +123,7 @@ class SimpleBlogCard extends LitElement {
           height: 125px;
         }
 
-        div.card h3 {
+        .card h3 {
           font-size: var(--simple-blog-card-heading-font-size, 22px);
           color: var(--simple-blog-card-header, black);
           text-decoration: none;
@@ -190,35 +191,32 @@ class SimpleBlogCard extends LitElement {
   // render function
   render() {
     return html`
- 
- <div class="card-${this.size} card">
-   <img .alt="${this.alt}" src="${this.image}" loading="lazy"/>
+ <a href="${this.link}" class="card-${this.size} card">
+   <img .alt="${this.alt}" src="${this.image}" loading="lazy" decoding="async" fetchpriority="low"/>
    <div class="card-content">
-     <a href="${this.link}">
-       <h3>${this.title}</h3>
-       <div class="teaser">
-         <slot></slot>
-       </div>
-     </a>
+    <h3>${this.title}</h3>
+    <div class="teaser">
+      <slot></slot>
+    </div>
    </div>
    <div class="card-actions">
-     <div id="author" class="author-block">
-       <paper-avatar
-         .label="${this.author}"
-         .src="${this.authorimage}">
-       </paper-avatar>
-       <div class="author-info">
-         <a .href="${this.authorlink}">${this.author}</a>
-         <div class="post-details">
-           <simple-datetime format="M jS" .timestamp="${this.timestamp}" unix>
-           </simple-datetime>
-           <span class="dot">&#183</span>
-           <span class="reading-time" .title="${this.readtime} min read"></span>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>`;
+      <div id="author" class="author-block">
+        <paper-avatar
+          .label="${this.author}"
+          .src="${this.authorimage}">
+        </paper-avatar>
+        <div class="author-info">
+          ${this.author}
+          <div class="post-details">
+            <simple-datetime format="M jS" .timestamp="${this.timestamp}" unix>
+            </simple-datetime>
+            <span class="dot">&#183</span>
+            <span class="reading-time" .title="${this.readtime} min read"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>`;
   }
 
   // properties available to the custom element for data binding

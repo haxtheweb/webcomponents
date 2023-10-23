@@ -1,19 +1,19 @@
 {
-    "id": "3622256b-e0a9-43ae-bbb6-7e58a0de6f60",
-    "title": "Learning Design summer camp",
+    "id": "99e4b4fb-bc10-4540-96b1-c12c79982fdf",
+    "title": "bto-pro",
     "author": "",
-    "description": "Live. Learn. Collaborate. Camp.",
+    "description": "Mind of the Information Altruist",
     "license": "by-sa",
     "metadata": {
         "author": {
-            "image": "",
-            "name": "",
-            "email": "",
-            "socialLink": ""
+            "image": "files\/PXL_20220729_131000960.jpg",
+            "name": "Bryan Ollendyke",
+            "email": "btopro@outlook.com",
+            "socialLink": "https:\/\/www.linkedin.com\/in\/btopro\/"
         },
         "site": {
-            "name": "tlt",
-            "logo": "files\/PS_HOR_REV_RGB_2C.png",
+            "name": "btopro",
+            "logo": "files\/1500x500.jpeg",
             "settings": {
                 "lang": "en-US",
                 "publishPagesOn": true,
@@ -21,234 +21,1812 @@
                 "sw": false,
                 "forceUpgrade": true
             },
-            "created": 1697648274,
-            "updated": 1697657243,
+            "created": 1698074988,
+            "updated": 1698076319,
             "git": {
                 "vendor": "github",
                 "branch": "gh-pages"
             },
             "version": "7.0.18",
-            "domain": "",
+            "domain": "https:\/\/btopro.com",
             "static": {}
         },
         "theme": {
-            "element": "polaris-theme",
-            "path": "@lrnwebcomponents\/polaris-theme\/polaris-theme.js",
-            "name": "Polaris",
-            "thumbnail": "build\/es6\/node_modules\/@lrnwebcomponents\/app-hax\/lib\/assets\/images\/BlueStyle.svg",
+            "element": "haxor-slevin",
+            "path": "@lrnwebcomponents\/haxor-slevin\/haxor-slevin.js",
+            "name": "Haxor Blog theme",
+            "thumbnail": "build\/es6\/node_modules\/@lrnwebcomponents\/app-hax\/lib\/assets\/images\/PartyStyle.svg",
             "variables": {
-                "image": "files\/PS_HOR_REV_RGB_2C1.png",
-                "imageAlt": "Visit the Pennsylvania State University Home Page",
-                "imageLink": "https:\/\/www.psu.edu\/",
+                "image": "files\/1500x5001.jpeg",
+                "imageAlt": "",
+                "imageLink": "",
                 "hexCode": "#aeff00",
-                "cssVariable": "--simple-colors-default-theme-light-blue-7",
-                "icon": "av:library-books"
+                "cssVariable": "--simple-colors-default-theme-purple-7",
+                "icon": "av:add-to-queue"
             },
-            "regions": {
-                "footerSecondary": "item-c89f3ac9-fedc-45c9-b062-2a44c860edda",
-                "footerPrimary": "item-ff74da8e-1297-4e9d-8b83-ace410af48a2"
-            }
+            "regions": {}
         },
         "node": {
             "fields": {}
         },
         "build": {
             "version": "7.0.18",
-            "structure": "course",
-            "type": "own"
+            "structure": "import",
+            "type": "haxcms"
         }
     },
     "items": [
         {
-            "id": "item-1b63e8fe-0858-4d58-84cf-02373376c35d",
+            "id": "item-4a18ebe0-cf6a-49cd-9531-4c430ba2a9e0",
             "indent": 0,
-            "location": "pages\/item-1b63e8fe-0858-4d58-84cf-02373376c35d\/index.html",
-            "slug": "welcome",
-            "order": 0,
+            "location": "pages\/item-4a18ebe0-cf6a-49cd-9531-4c430ba2a9e0\/index.html",
+            "slug": "the-climb-1",
+            "order": "0",
             "parent": null,
-            "title": "Welcome to camp",
-            "description": "  Learning Design Summer Camp is an informal, community-designed gathering of people from across Penn State who are interested in the big issues related to the learning design process, including i",
+            "title": "The Climb",
+            "description": "",
             "metadata": {
-                "created": "1697648274",
-                "updated": 1697655719,
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "7",
+                "contentDetails": {
+                    "headings": "1",
+                    "paragraphs": "19",
+                    "schema": [],
+                    "tags": {
+                        "p": "19",
+                        "lrndesign-blockquote": "1",
+                        "ol": "1",
+                        "video-player": "1",
+                        "h2": "1",
+                        "ul": "1",
+                        "grid-plate": "1"
+                    },
+                    "elements": "25"
+                },
                 "files": [
                     {
-                        "fullUrl": "\/sites\/tlt\/files\/PS_HOR_REV_RGB_2C.png",
-                        "url": "files\/PS_HOR_REV_RGB_2C.png",
-                        "type": "image\/png",
-                        "name": "PS_HOR_REV_RGB_2C.png",
-                        "size": "25571"
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/edtechjoker.gif",
+                        "fullUrl": "\/sites\/btopro\/files\/edtechjoker.gif",
+                        "url": "files\/edtechjoker.gif",
+                        "type": "image\/gif",
+                        "name": "edtechjoker.gif",
+                        "size": "838403"
                     },
                     {
-                        "fullUrl": "\/sites\/tlt\/files\/PS_HOR_REV_RGB_2C1.png",
-                        "url": "files\/PS_HOR_REV_RGB_2C1.png",
-                        "type": "image\/png",
-                        "name": "PS_HOR_REV_RGB_2C1.png",
-                        "size": "25571"
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/edtechjoker.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/edtechjoker.jpg",
+                        "url": "files\/edtechjoker.jpg",
+                        "type": "image\/jpeg",
+                        "name": "edtechjoker.jpg",
+                        "size": "68012"
+                    },
+                    {
+                        "fullUrl": "\/sites\/btopro\/files\/PXL_20220729_131000960.jpg",
+                        "url": "files\/PXL_20220729_131000960.jpg",
+                        "type": "image\/jpeg",
+                        "name": "PXL_20220729_131000960.jpg",
+                        "size": 138328
+                    }
+                ]
+            }
+        },
+        {
+            "id": "item-88a3c232-54d6-4179-8059-634223f201c4",
+            "indent": 0,
+            "location": "pages\/item-88a3c232-54d6-4179-8059-634223f201c4\/index.html",
+            "slug": "keep-moving-week-0",
+            "order": "0",
+            "parent": null,
+            "title": "Keep moving: Week 0",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "10",
+                "contentDetails": {
+                    "headings": "1",
+                    "paragraphs": "6",
+                    "schema": [],
+                    "tags": {
+                        "p": "6",
+                        "ul": "2",
+                        "h2": "1"
+                    },
+                    "elements": "9"
+                },
+                "published": "1",
+                "files": [
+                    {
+                        "fullUrl": "\/sites\/btopro\/files\/1500x500.jpeg",
+                        "url": "files\/1500x500.jpeg",
+                        "type": "image\/jpeg",
+                        "name": "1500x500.jpeg",
+                        "size": 118690
+                    },
+                    {
+                        "fullUrl": "\/sites\/btopro\/files\/mini-P1010017.JPG",
+                        "url": "files\/mini-P1010017.JPG",
+                        "type": "image\/jpeg",
+                        "name": "mini-P1010017.JPG",
+                        "size": 130121
+                    }
+                ]
+            }
+        },
+        {
+            "id": "item-8e045593-79fd-401d-b380-1029001f5574",
+            "indent": 0,
+            "location": "pages\/item-8e045593-79fd-401d-b380-1029001f5574\/index.html",
+            "slug": "arrival",
+            "order": 0,
+            "parent": null,
+            "title": "Arrival",
+            "description": "Some decades, nothing happens. Other days, decades happen.That sentiment about sums up what the last few weeks have been like. As if everyone began to realize what we built, all at once, after years",
+            "metadata": {
+                "created": 1698076822,
+                "updated": 1698082821,
+                "images": [],
+                "videos": [
+                    "https:\/\/youtu.be\/iPGgdRGyUtM?si=tkME13Ni2qPOeTts",
+                    "https:\/\/www.youtube.com\/watch?v=G5yEgFIxzl0"
+                ],
+                "published": true,
+                "hideInMenu": false,
+                "locked": false,
+                "readtime": 4,
+                "relatedItems": "item-4a18ebe0-cf6a-49cd-9531-4c430ba2a9e0,item-1235ea3a-9254-4b93-8df3-8909fddcce88,item-e0c25c63-ad3e-421e-8fd2-86cd5516d3a2",
+                "image": "https:\/\/images-assets.nasa.gov\/image\/2011-3753\/2011-3753~thumb.jpg",
+                "tags": "hax"
+            }
+        },
+        {
+            "id": "item-1235ea3a-9254-4b93-8df3-8909fddcce88",
+            "indent": 0,
+            "location": "pages\/item-1235ea3a-9254-4b93-8df3-8909fddcce88\/index.html",
+            "slug": "information-altruism-2-0",
+            "order": "1",
+            "parent": null,
+            "title": "Information Altruism 2.0",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "7",
+                "contentDetails": {
+                    "headings": "6",
+                    "paragraphs": "18",
+                    "schema": [],
+                    "tags": {
+                        "p": "18",
+                        "h2": "3",
+                        "ul": "1",
+                        "ol": "2",
+                        "h3": "3"
+                    },
+                    "elements": "27"
+                }
+            }
+        },
+        {
+            "id": "item-82b4b5d3-b8cb-4fab-ac71-10b98a0dac91",
+            "indent": 0,
+            "location": "pages\/item-82b4b5d3-b8cb-4fab-ac71-10b98a0dac91\/index.html",
+            "slug": "why-i-started-hax-camp-1",
+            "order": "2",
+            "parent": null,
+            "title": "Why I started hax-camp",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/EBd7L7eXkAAOW_d.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/EBd7L7eXkAAOW_d.jpg",
+                        "url": "files\/EBd7L7eXkAAOW_d.jpg",
+                        "type": "image\/jpeg",
+                        "name": "EBd7L7eXkAAOW_d.jpg",
+                        "size": "1546770"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_213158.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_213158.jpg",
+                        "url": "files\/IMG_20190729_213158.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190729_213158.jpg",
+                        "size": "192990"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190819_205859.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190819_205859.jpg",
+                        "url": "files\/IMG_20190819_205859.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190819_205859.jpg",
+                        "size": "141777"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_103418.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
+                        "url": "files\/IMG_20190729_103418.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190729_103418.jpg",
+                        "size": "13500"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_213151.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_213151.jpg",
+                        "url": "files\/IMG_20190729_213151.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190729_213151.jpg",
+                        "size": "174216"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190726_110706.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190726_110706.jpg",
+                        "url": "files\/IMG_20190726_110706.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190726_110706.jpg",
+                        "size": "173441"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190726_105535.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190726_105535.jpg",
+                        "url": "files\/IMG_20190726_105535.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190726_105535.jpg",
+                        "size": "158038"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190716_102855.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190716_102855.jpg",
+                        "url": "files\/IMG_20190716_102855.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190716_102855.jpg",
+                        "size": "124200"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot14025.480000011157.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot14025.480000011157.jpg",
+                        "url": "files\/headshot14025.480000011157.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot14025.480000011157.jpg",
+                        "size": "207453"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/IMG_20190823_102434 2.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190823_102434 2.jpg",
+                        "url": "files\/IMG_20190823_102434 2.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190823_102434 2.jpg",
+                        "size": "100516"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot143493.3299999684.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot143493.3299999684.jpg",
+                        "url": "files\/headshot143493.3299999684.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot143493.3299999684.jpg",
+                        "size": "258395"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
+                        "url": "files\/IMG_20190729_103418.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190729_103418.jpg",
+                        "size": "13500"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot495331.4750000136.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot495331.4750000136.jpg",
+                        "url": "files\/headshot495331.4750000136.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot495331.4750000136.jpg",
+                        "size": "228989"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot504645.5449999776.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot504645.5449999776.jpg",
+                        "url": "files\/headshot504645.5449999776.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot504645.5449999776.jpg",
+                        "size": "241173"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot511743.1799999904.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot511743.1799999904.jpg",
+                        "url": "files\/headshot511743.1799999904.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot511743.1799999904.jpg",
+                        "size": "190065"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot14076.185000012629.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot14076.185000012629.jpg",
+                        "url": "files\/headshot14076.185000012629.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot14076.185000012629.jpg",
+                        "size": "165743"
                     }
                 ],
-                "published": "1",
-                "locked": "",
-                "status": "",
-                "hideInMenu": "",
+                "readtime": "4",
+                "contentDetails": {
+                    "headings": "0",
+                    "paragraphs": "18",
+                    "schema": [
+                        {
+                            "resource": "#3ad05175-0f0a-9aa3-bd92",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        },
+                        {
+                            "typeof": "oer:Assessment",
+                            "resource": "#69279b8a-babf-7bb2-bb73",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        }
+                    ],
+                    "tags": {
+                        "p": "18",
+                        "video-player": "1",
+                        "multiple-choice": "1",
+                        "grid-plate": "1"
+                    },
+                    "elements": "21"
+                }
+            }
+        },
+        {
+            "id": "item-25c16bd5-a817-4df1-b147-88e448309a4b",
+            "indent": 0,
+            "location": "pages\/item-25c16bd5-a817-4df1-b147-88e448309a4b\/index.html",
+            "slug": "abstractionism-1",
+            "order": "3",
+            "parent": null,
+            "title": "Abstractionism",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "3",
+                "contentDetails": {
+                    "headings": "5",
+                    "paragraphs": "35",
+                    "schema": [],
+                    "tags": {
+                        "p": "35",
+                        "h2": "5"
+                    },
+                    "elements": "40"
+                }
+            }
+        },
+        {
+            "id": "item-0589f6d1-3184-4e46-a856-7522d2a1b435",
+            "indent": 0,
+            "location": "pages\/item-0589f6d1-3184-4e46-a856-7522d2a1b435\/index.html",
+            "slug": "villains-and-visionaries",
+            "order": "4",
+            "parent": null,
+            "title": "Villains and Visionaries",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "3",
+                "contentDetails": {
+                    "headings": "0",
+                    "paragraphs": "12",
+                    "schema": [],
+                    "tags": {
+                        "p": "12"
+                    },
+                    "elements": "12"
+                }
+            }
+        },
+        {
+            "id": "item-7080d384-ade3-441e-867f-4d5b955f99a2",
+            "indent": 0,
+            "location": "pages\/item-7080d384-ade3-441e-867f-4d5b955f99a2\/index.html",
+            "slug": "our-values-empowerment-1",
+            "order": "5",
+            "parent": null,
+            "title": "Our Values: Empowerment",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "3",
+                "contentDetails": {
+                    "headings": "1",
+                    "paragraphs": "19",
+                    "schema": [],
+                    "tags": {
+                        "p": "19",
+                        "h3": "1"
+                    },
+                    "elements": "20"
+                }
+            }
+        },
+        {
+            "id": "item-92cf5d68-96a8-44c4-b31a-9aae74c08ab7",
+            "indent": 0,
+            "location": "pages\/item-92cf5d68-96a8-44c4-b31a-9aae74c08ab7\/index.html",
+            "slug": "catching-gman-1",
+            "order": "6",
+            "parent": null,
+            "title": "Catching Gman",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot422070.074999996.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot422070.074999996.jpg",
+                        "url": "files\/headshot422070.074999996.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot422070.074999996.jpg",
+                        "size": "199646"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot451242.7200000384.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot451242.7200000384.jpg",
+                        "url": "files\/headshot451242.7200000384.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot451242.7200000384.jpg",
+                        "size": "223650"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot522511.73000002746.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot522511.73000002746.jpg",
+                        "url": "files\/headshot522511.73000002746.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot522511.73000002746.jpg",
+                        "size": "210524"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot529121.6300000087.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot529121.6300000087.jpg",
+                        "url": "files\/headshot529121.6300000087.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot529121.6300000087.jpg",
+                        "size": "216612"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot533131.1700000078.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/headshot533131.1700000078.jpg",
+                        "url": "files\/headshot533131.1700000078.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot533131.1700000078.jpg",
+                        "size": "227296"
+                    },
+                    {
+                        "fullUrl": "\/sites\/btopro\/files\/1500x5001.jpeg",
+                        "url": "files\/1500x5001.jpeg",
+                        "type": "image\/jpeg",
+                        "name": "1500x5001.jpeg",
+                        "size": 118690
+                    }
+                ],
+                "readtime": "5",
+                "contentDetails": {
+                    "headings": "0",
+                    "paragraphs": "24",
+                    "schema": [
+                        {
+                            "resource": "#48fe53f8-f89e-bf0b-407b",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        }
+                    ],
+                    "tags": {
+                        "p": "24",
+                        "lrndesign-blockquote": "1"
+                    },
+                    "elements": "25"
+                }
+            }
+        },
+        {
+            "id": "item-2d2887cc-08c8-4f22-8554-abcce1823282",
+            "indent": 0,
+            "location": "pages\/item-2d2887cc-08c8-4f22-8554-abcce1823282\/index.html",
+            "slug": "the-infinite-void-1",
+            "order": "7",
+            "parent": null,
+            "title": "The infinite void",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "3",
+                "contentDetails": {
+                    "headings": "0",
+                    "paragraphs": "12",
+                    "schema": [],
+                    "tags": {
+                        "p": "12"
+                    },
+                    "elements": "12"
+                }
+            }
+        },
+        {
+            "id": "item-5d49d1f3-0918-4bc9-90ef-855c8dcdc711",
+            "indent": 0,
+            "location": "pages\/item-5d49d1f3-0918-4bc9-90ef-855c8dcdc711\/index.html",
+            "slug": "my-first-time-on-stage-2",
+            "order": "8",
+            "parent": null,
+            "title": "My first time on stage",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "8",
+                "contentDetails": {
+                    "headings": "0",
+                    "paragraphs": "29",
+                    "schema": [],
+                    "tags": {
+                        "p": "29",
+                        "ul": "2"
+                    },
+                    "elements": "31"
+                }
+            }
+        },
+        {
+            "id": "item-be5cdfec-cdfd-4db8-8ace-8b13f3da004a",
+            "indent": 0,
+            "location": "pages\/item-be5cdfec-cdfd-4db8-8ace-8b13f3da004a\/index.html",
+            "slug": "annabella-2",
+            "order": "9",
+            "parent": null,
+            "title": "Annabella",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "8",
+                "contentDetails": {
+                    "headings": "0",
+                    "paragraphs": "37",
+                    "schema": [
+                        {
+                            "resource": "#2b95c77e-01c9-6a24-2a2f",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        },
+                        {
+                            "resource": "#f4f74a88-45e4-607f-a073",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        }
+                    ],
+                    "tags": {
+                        "p": "37",
+                        "lrndesign-blockquote": "1",
+                        "video-player": "1",
+                        "blockquote": "1"
+                    },
+                    "elements": "40"
+                }
+            }
+        },
+        {
+            "id": "item-006601d9-4063-4bd9-ba32-3e959b631d31",
+            "indent": 0,
+            "location": "pages\/item-006601d9-4063-4bd9-ba32-3e959b631d31\/index.html",
+            "slug": "hey-remember-when-2",
+            "order": "10",
+            "parent": null,
+            "title": "Hey, remember when",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "4",
+                "contentDetails": {
+                    "headings": "0",
+                    "paragraphs": "21",
+                    "schema": [],
+                    "tags": {
+                        "p": "21",
+                        "meme-maker": "1",
+                        "ol": "1",
+                        "full-width-image": "3"
+                    },
+                    "elements": "26"
+                },
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190713_185619.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190713_185619.jpg",
+                        "url": "files\/IMG_20190713_185619.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190713_185619.jpg",
+                        "size": "833595"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190713_115919.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190713_115919.jpg",
+                        "url": "files\/IMG_20190713_115919.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190713_115919.jpg",
+                        "size": "1228849"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190713_122826.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190713_122826.jpg",
+                        "url": "files\/IMG_20190713_122826.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190713_122826.jpg",
+                        "size": "536118"
+                    }
+                ],
+                "fields": {
+                    "images": [],
+                    "subtitle": "",
+                    "tags": []
+                }
+            }
+        },
+        {
+            "id": "item-e3d7d519-9549-4e44-9ab8-b9df805a3531",
+            "indent": 0,
+            "location": "pages\/item-e3d7d519-9549-4e44-9ab8-b9df805a3531\/index.html",
+            "slug": "open-community-pedagogy-2",
+            "order": "11",
+            "parent": null,
+            "title": "Open Community Pedagogy",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/scale-50\/color-spectrum.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/scale-50\/color-spectrum.jpg",
+                        "url": "files\/scale-50\/color-spectrum.jpg",
+                        "type": "image\/jpeg",
+                        "name": "color-spectrum.jpg",
+                        "size": "78574"
+                    }
+                ],
+                "readtime": "2",
+                "contentDetails": {
+                    "headings": "1",
+                    "paragraphs": "5",
+                    "schema": [
+                        {
+                            "resource": "#14d3e7f4-6c51-533f-5986",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        }
+                    ],
+                    "tags": {
+                        "self-check": "1",
+                        "p": "5",
+                        "h2": "1",
+                        "ul": "1"
+                    },
+                    "elements": "8"
+                }
+            }
+        },
+        {
+            "id": "item-6286f8c6-5ba7-4623-8028-45fa1ac0ccdc",
+            "indent": 0,
+            "location": "pages\/item-6286f8c6-5ba7-4623-8028-45fa1ac0ccdc\/index.html",
+            "slug": "stand-against-the-ocean-2",
+            "order": "12",
+            "parent": null,
+            "title": "Stand against the ocean",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/scale-50\/IMG_20190307_142300.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/scale-50\/IMG_20190307_142300.jpg",
+                        "url": "files\/scale-50\/IMG_20190307_142300.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190307_142300.jpg",
+                        "size": "98301"
+                    }
+                ],
+                "readtime": "2",
+                "contentDetails": {
+                    "headings": "1",
+                    "paragraphs": "9",
+                    "schema": [
+                        {
+                            "resource": "#2a70bb89-4959-afee-809a",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        }
+                    ],
+                    "tags": {
+                        "meme-maker": "1",
+                        "p": "9",
+                        "h2": "1",
+                        "hr": "1",
+                        "video-player": "1"
+                    },
+                    "elements": "13"
+                }
+            }
+        },
+        {
+            "id": "item-e0c25c63-ad3e-421e-8fd2-86cd5516d3a2",
+            "indent": 0,
+            "location": "pages\/item-e0c25c63-ad3e-421e-8fd2-86cd5516d3a2\/index.html",
+            "slug": "edtechjoker-2",
+            "order": "13",
+            "parent": null,
+            "title": "EdTechJoker",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "4",
+                "contentDetails": {
+                    "headings": "0",
+                    "paragraphs": "16",
+                    "schema": [
+                        {
+                            "resource": "#38020ce8-4c27-cdc1-9060",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        }
+                    ],
+                    "tags": {
+                        "p": "16",
+                        "video-player": "1"
+                    },
+                    "elements": "17"
+                }
+            }
+        },
+        {
+            "id": "item-1d1c8e5d-8c25-4035-bedb-0bbdc15a9814",
+            "indent": 0,
+            "location": "pages\/item-1d1c8e5d-8c25-4035-bedb-0bbdc15a9814\/index.html",
+            "slug": "technical-weapons-2",
+            "order": "14",
+            "parent": null,
+            "title": "Technical weapons",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "6",
+                "contentDetails": {
+                    "headings": "7",
+                    "paragraphs": "49",
+                    "schema": [],
+                    "tags": {
+                        "p": "49",
+                        "h2": "6",
+                        "h3": "1",
+                        "meme-maker": "1"
+                    },
+                    "elements": "57"
+                },
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/scale-50\/headshot3389968.250000001.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/scale-50\/headshot3389968.250000001.jpg",
+                        "url": "files\/scale-50\/headshot3389968.250000001.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot3389968.250000001.jpg",
+                        "size": "276959"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/scale-50\/headshot3408605.23.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/scale-50\/headshot3408605.23.jpg",
+                        "url": "files\/scale-50\/headshot3408605.23.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot3408605.23.jpg",
+                        "size": "255873"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "item-73248929-e4a5-44eb-aea5-8e2373a34b69",
+            "indent": 0,
+            "location": "pages\/item-73248929-e4a5-44eb-aea5-8e2373a34b69\/index.html",
+            "slug": "i-made-a-thing-2",
+            "order": "15",
+            "parent": null,
+            "title": "I made a thing",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
                 "readtime": "1",
-                "videos": [],
-                "images": []
+                "contentDetails": {
+                    "headings": "0",
+                    "paragraphs": "2",
+                    "schema": [
+                        {
+                            "resource": "#cdcc0336-59b6-9b44-a040",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        }
+                    ],
+                    "tags": {
+                        "p": "2",
+                        "video-player": "1"
+                    },
+                    "elements": "3"
+                },
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/scale-50\/headshot18171.065.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/scale-50\/headshot18171.065.jpg",
+                        "url": "files\/scale-50\/headshot18171.065.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot18171.065.jpg",
+                        "size": "150157"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/scale-50\/headshot61007.78000000003.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/scale-50\/headshot61007.78000000003.jpg",
+                        "url": "files\/scale-50\/headshot61007.78000000003.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot61007.78000000003.jpg",
+                        "size": "135577"
+                    }
+                ]
             }
         },
         {
-            "id": "item-c89f3ac9-fedc-45c9-b062-2a44c860edda",
+            "id": "item-04fb0667-5539-4d0a-b841-a203d6117d69",
             "indent": 0,
-            "location": "pages\/item-c89f3ac9-fedc-45c9-b062-2a44c860edda\/index.html",
-            "slug": "theme-regions\/footer-1",
-            "order": 0,
-            "parent": "item-8751e8f4-f96f-4665-a27c-ab3833f8679e",
-            "title": "Footer 1",
-            "description": "                Penn State encourages qualified persons with disabilities to                participate in its programs and activities. If you anticipate                needing any type of accommo",
-            "metadata": {
-                "locked": false,
-                "created": 1697655719,
-                "images": [],
-                "videos": [],
-                "updated": 1697655797,
-                "published": true,
-                "hideInMenu": false,
-                "readtime": 1
-            }
-        },
-        {
-            "id": "item-730d4249-03b1-459b-902b-716dfc9fb3a4",
-            "indent": 0,
-            "location": "pages\/item-730d4249-03b1-459b-902b-716dfc9fb3a4\/index.html",
-            "slug": "registration",
-            "order": 1,
+            "location": "pages\/item-04fb0667-5539-4d0a-b841-a203d6117d69\/index.html",
+            "slug": "the-web-components-high-performance-video-2",
+            "order": "16",
             "parent": null,
-            "title": "Registration",
+            "title": "THE web components high performance video",
             "description": "",
             "metadata": {
-                "locked": "",
-                "created": "1697649368",
-                "images": [],
-                "videos": [],
-                "updated": 1697655719,
-                "published": "1",
-                "status": ""
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/sites\/btopro\/files\/scale-50\/2019-05-24_11-14-49.jpg",
+                        "fullUrl": "\/sites\/btopro\/files\/scale-50\/2019-05-24_11-14-49.jpg",
+                        "url": "files\/scale-50\/2019-05-24_11-14-49.jpg",
+                        "type": "image\/jpeg",
+                        "name": "2019-05-24_11-14-49.jpg",
+                        "size": "30556"
+                    }
+                ],
+                "readtime": "2",
+                "contentDetails": {
+                    "headings": "1",
+                    "paragraphs": "6",
+                    "schema": [
+                        {
+                            "resource": "#3e3cee5f-bc3f-b445-8b9f",
+                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                        }
+                    ],
+                    "tags": {
+                        "p": "6",
+                        "h2": "1",
+                        "img": "1",
+                        "ul": "1",
+                        "video-player": "1"
+                    },
+                    "elements": "10"
+                },
+                "fields": {
+                    "images": [],
+                    "subtitle": "",
+                    "tags": []
+                }
             }
         },
         {
-            "id": "item-ff74da8e-1297-4e9d-8b83-ace410af48a2",
+            "id": "item-70f48666-098d-42fa-8b9d-064f3e678583",
             "indent": 0,
-            "location": "pages\/item-ff74da8e-1297-4e9d-8b83-ace410af48a2\/index.html",
-            "slug": "theme-regions\/footer-2",
-            "order": 1,
-            "parent": "item-8751e8f4-f96f-4665-a27c-ab3833f8679e",
-            "title": "Footer 2",
-            "description": "                                                                                                                    Copyright 2023 &#169; The Pennsylvania State University           ",
-            "metadata": {
-                "locked": false,
-                "created": 1697655719,
-                "images": [],
-                "videos": [],
-                "updated": 1697657232,
-                "published": true,
-                "hideInMenu": false,
-                "readtime": 1
-            }
-        },
-        {
-            "id": "item-0ebdb1b7-a7f1-45b8-a9fd-67c661ab3828",
-            "indent": 0,
-            "location": "pages\/item-0ebdb1b7-a7f1-45b8-a9fd-67c661ab3828\/index.html",
-            "slug": "ldsc-2023-un-conference",
-            "order": 2,
+            "location": "pages\/item-70f48666-098d-42fa-8b9d-064f3e678583\/index.html",
+            "slug": "ocean",
+            "order": "17",
             "parent": null,
-            "title": "LDSC 2023 Un-conference",
+            "title": "Ocean",
             "description": "",
             "metadata": {
-                "locked": "",
-                "created": "1697649368",
-                "images": [],
-                "videos": [],
-                "updated": 1697655719,
-                "published": "1",
-                "status": ""
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/scale-50\/headshot.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/scale-50\/headshot.jpg",
+                        "url": "files\/scale-50\/headshot.jpg",
+                        "type": "image\/jpeg",
+                        "name": "headshot.jpg",
+                        "size": "32993"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/scale-50\/collapse.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/scale-50\/collapse.jpg",
+                        "url": "files\/scale-50\/collapse.jpg",
+                        "type": "image\/jpeg",
+                        "name": "collapse.jpg",
+                        "size": "2620344"
+                    }
+                ],
+                "readtime": "6"
             }
         },
         {
-            "id": "item-8ce3b75a-d876-459d-8400-af2c9c92bdf3",
+            "id": "item-d7a64f62-9826-4b81-bd5a-1d855eeb1a74",
             "indent": 0,
-            "location": "pages\/item-8ce3b75a-d876-459d-8400-af2c9c92bdf3\/index.html",
-            "slug": "camp-gallery",
-            "order": 3,
+            "location": "pages\/item-d7a64f62-9826-4b81-bd5a-1d855eeb1a74\/index.html",
+            "slug": "drunken-ux-interview-2",
+            "order": "18",
             "parent": null,
-            "title": "Camp Gallery",
+            "title": "Drunken UX interview",
             "description": "",
             "metadata": {
-                "locked": "",
-                "created": "1697649368",
-                "images": [],
-                "videos": [],
-                "updated": 1697655719,
-                "published": "1",
-                "status": ""
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/scale-50\/IMG_20190127_153429.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/scale-50\/IMG_20190127_153429.jpg",
+                        "url": "files\/scale-50\/IMG_20190127_153429.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190127_153429.jpg",
+                        "size": "27242"
+                    }
+                ],
+                "fields": {
+                    "images": [],
+                    "subtitle": "Drunken Experience?",
+                    "tags": []
+                },
+                "readtime": "6"
             }
         },
         {
-            "id": "item-4202f9ca-9467-4b9c-a62d-3e83466dd283",
+            "id": "item-15cbf071-ff46-4ec6-90dd-35c57537af97",
             "indent": 0,
-            "location": "pages\/item-4202f9ca-9467-4b9c-a62d-3e83466dd283\/index.html",
-            "slug": "conference-schedule",
-            "order": 4,
+            "location": "pages\/item-15cbf071-ff46-4ec6-90dd-35c57537af97\/index.html",
+            "slug": "fortify-2",
+            "order": "19",
             "parent": null,
-            "title": "Conference Schedule",
+            "title": "Fortify",
             "description": "",
             "metadata": {
-                "locked": "",
-                "created": "1697649368",
-                "images": [],
-                "videos": [],
-                "updated": 1697655719,
-                "published": "1",
-                "status": ""
+                "siteName": "btopro",
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/IMG_20190221_184100.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/IMG_20190221_184100.jpg",
+                        "url": "files\/IMG_20190221_184100.jpg",
+                        "type": "image\/jpeg",
+                        "name": "IMG_20190221_184100.jpg",
+                        "size": "132868"
+                    }
+                ],
+                "readtime": "3"
             }
         },
         {
-            "id": "item-0a149250-e1d8-4521-8629-c9b0990de9df",
+            "id": "item-8f85b86c-0619-4fb5-8c19-39b49c11e96b",
             "indent": 0,
-            "location": "pages\/item-0a149250-e1d8-4521-8629-c9b0990de9df\/index.html",
-            "slug": "2023-keynote-speaker",
-            "order": 5,
+            "location": "pages\/item-8f85b86c-0619-4fb5-8c19-39b49c11e96b\/index.html",
+            "slug": "all-screens-have-rights-2",
+            "order": "20",
             "parent": null,
-            "title": "2023 Keynote Speaker",
+            "title": "All screens have rights",
             "description": "",
             "metadata": {
-                "locked": "",
-                "created": "1697649368",
-                "images": [],
-                "videos": [],
-                "updated": 1697655719,
-                "published": "1",
-                "status": ""
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/ie8.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/ie8.jpg",
+                        "url": "files\/ie8.jpg",
+                        "type": "image\/jpeg",
+                        "name": "ie8.jpg",
+                        "size": "33248"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/safari4.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/safari4.jpg",
+                        "url": "files\/safari4.jpg",
+                        "type": "image\/jpeg",
+                        "name": "safari4.jpg",
+                        "size": "31316"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/ff3.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/ff3.jpg",
+                        "url": "files\/ff3.jpg",
+                        "type": "image\/jpeg",
+                        "name": "ff3.jpg",
+                        "size": "27317"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/android22.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/android22.jpg",
+                        "url": "files\/android22.jpg",
+                        "type": "image\/jpeg",
+                        "name": "android22.jpg",
+                        "size": "19865"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/ipad2.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/ipad2.jpg",
+                        "url": "files\/ipad2.jpg",
+                        "type": "image\/jpeg",
+                        "name": "ipad2.jpg",
+                        "size": "28313"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/ie6.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/ie6.jpg",
+                        "url": "files\/ie6.jpg",
+                        "type": "image\/jpeg",
+                        "name": "ie6.jpg",
+                        "size": "33838"
+                    }
+                ],
+                "readtime": "5"
             }
         },
         {
-            "id": "item-8751e8f4-f96f-4665-a27c-ab3833f8679e",
+            "id": "item-7502f3ce-134f-4c88-beaf-85e539c0e801",
             "indent": 0,
-            "location": "pages\/item-8751e8f4-f96f-4665-a27c-ab3833f8679e\/index.html",
-            "slug": "theme-regions",
-            "order": 6,
+            "location": "pages\/item-7502f3ce-134f-4c88-beaf-85e539c0e801\/index.html",
+            "slug": "reclaim-the-web-2",
+            "order": "21",
             "parent": null,
-            "title": "Theme Regions",
+            "title": "Reclaim the web",
             "description": "",
             "metadata": {
-                "locked": false,
-                "created": 1697655719,
-                "images": [],
-                "videos": [],
-                "updated": 1697657255,
-                "published": true,
-                "hideInMenu": true,
-                "readtime": 1
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "3"
+            }
+        },
+        {
+            "id": "item-985e5628-b3e6-44e5-85dc-c4d7be7bd754",
+            "indent": 0,
+            "location": "pages\/item-985e5628-b3e6-44e5-85dc-c4d7be7bd754\/index.html",
+            "slug": "structured-anarchy-2",
+            "order": "22",
+            "parent": null,
+            "title": "Structured Anarchy",
+            "description": "",
+            "metadata": {
+                "siteName": "btopro",
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "4"
+            }
+        },
+        {
+            "id": "item-f13dd50c-31fe-4c59-a79c-0543b0c7f52d",
+            "indent": 0,
+            "location": "pages\/item-f13dd50c-31fe-4c59-a79c-0543b0c7f52d\/index.html",
+            "slug": "haxcms-theme-layer-code-review-2",
+            "order": "23",
+            "parent": null,
+            "title": "HAXcms Theme layer Code Review",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "1"
+            }
+        },
+        {
+            "id": "item-cd716dd0-59b0-a24d-1ddb-2779369c52b2",
+            "indent": 0,
+            "location": "pages\/item-cd716dd0-59b0-a24d-1ddb-2779369c52b2\/index.html",
+            "slug": "2018-innovation-submission-2",
+            "order": "24",
+            "parent": null,
+            "title": "2018 Innovation Submission",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "1"
+            }
+        },
+        {
+            "id": "item-44797f99-e67b-41ce-a32f-57ccafea33ec",
+            "indent": 0,
+            "location": "pages\/item-44797f99-e67b-41ce-a32f-57ccafea33ec\/index.html",
+            "slug": "elms-ln-code-review-series-part-1-2",
+            "order": "25",
+            "parent": null,
+            "title": "ELMS:LN Code review series Part 1",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "readtime": "1"
+            }
+        },
+        {
+            "id": "item-c97a8e67-971e-4e92-8b38-e348c780d072",
+            "indent": 0,
+            "location": "pages\/item-c97a8e67-971e-4e92-8b38-e348c780d072\/index.html",
+            "slug": "golden-shimmering-joy-2",
+            "order": "26",
+            "parent": null,
+            "title": "Golden, shimmering, joy",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-5e860e67-2444-0304-6180-9cb7dee92321",
+            "indent": 0,
+            "location": "pages\/item-5e860e67-2444-0304-6180-9cb7dee92321\/index.html",
+            "slug": "common-web-component-state-question-2",
+            "order": "27",
+            "parent": null,
+            "title": "Common web component state question",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-e165f124-11d5-4b9a-06ed-7b6bf1802ca8",
+            "indent": 0,
+            "location": "pages\/item-e165f124-11d5-4b9a-06ed-7b6bf1802ca8\/index.html",
+            "slug": "ngdle-is-really-just-enigma-misspelled-2",
+            "order": "28",
+            "parent": null,
+            "title": "NGDLE is really just Enigma misspelled",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/e4e17905cd786316dd2485bc5e6bc8854f18661b-ngdle-university.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/e4e17905cd786316dd2485bc5e6bc8854f18661b-ngdle-university.jpg",
+                        "url": "files\/e4e17905cd786316dd2485bc5e6bc8854f18661b-ngdle-university.jpg",
+                        "type": "image\/jpeg",
+                        "name": "e4e17905cd786316dd2485bc5e6bc8854f18661b-ngdle-university.jpg",
+                        "size": "112990"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/e4e17905cd786316dd2485bc5e6bc8854f18661b-ngdle-university.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/e4e17905cd786316dd2485bc5e6bc8854f18661b-ngdle-university.jpg",
+                        "url": "files\/e4e17905cd786316dd2485bc5e6bc8854f18661b-ngdle-university.jpg",
+                        "type": "image\/jpeg",
+                        "name": "e4e17905cd786316dd2485bc5e6bc8854f18661b-ngdle-university.jpg",
+                        "size": "112990"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/935b7d832386eaf3173d063a70fe5000fc03dc1c-ngdle-university-uni-side.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/935b7d832386eaf3173d063a70fe5000fc03dc1c-ngdle-university-uni-side.jpg",
+                        "url": "files\/935b7d832386eaf3173d063a70fe5000fc03dc1c-ngdle-university-uni-side.jpg",
+                        "type": "image\/jpeg",
+                        "name": "935b7d832386eaf3173d063a70fe5000fc03dc1c-ngdle-university-uni-side.jpg",
+                        "size": "64238"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "item-c01a9db3-d74c-d8f9-c813-3c1bd61695a0",
+            "indent": 0,
+            "location": "pages\/item-c01a9db3-d74c-d8f9-c813-3c1bd61695a0\/index.html",
+            "slug": "compartmentalizing-2",
+            "order": "29",
+            "parent": null,
+            "title": "Compartmentalizing",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-4701288e-1af1-cbd5-a7ea-e110e22cfe1a",
+            "indent": 0,
+            "location": "pages\/item-4701288e-1af1-cbd5-a7ea-e110e22cfe1a\/index.html",
+            "slug": "occupy-the-bridge-2",
+            "order": "30",
+            "parent": null,
+            "title": "OCCUPY... the bridge",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-46aa6443-ebf1-62b2-6523-760490d5ce9b",
+            "indent": 0,
+            "location": "pages\/item-46aa6443-ebf1-62b2-6523-760490d5ce9b\/index.html",
+            "slug": "when-educators-left-the-lms-2",
+            "order": "31",
+            "parent": null,
+            "title": "When Educators left the LMS",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-8cef1ad3-7cc7-778a-b125-1d85f265742d",
+            "indent": 0,
+            "location": "pages\/item-8cef1ad3-7cc7-778a-b125-1d85f265742d\/index.html",
+            "slug": "the-lms-is-cable-we-are-roku-expect-us-2",
+            "order": "32",
+            "parent": null,
+            "title": "The LMS is Cable, We are Roku. Expect Us",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-6c53744c-1b33-97a1-976f-90484f5bc450",
+            "indent": 0,
+            "location": "pages\/item-6c53744c-1b33-97a1-976f-90484f5bc450\/index.html",
+            "slug": "innovation-s-four-ingredients-2",
+            "order": "33",
+            "parent": null,
+            "title": "Innovation's four ingredients",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-401610da-127f-602f-5298-265f5eea00ee",
+            "indent": 0,
+            "location": "pages\/item-401610da-127f-602f-5298-265f5eea00ee\/index.html",
+            "slug": "straddling-the-abyss-2",
+            "order": "34",
+            "parent": null,
+            "title": "Straddling the Abyss",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-f82147b6-1844-d3c0-9515-01130ce85c79",
+            "indent": 0,
+            "location": "pages\/item-f82147b6-1844-d3c0-9515-01130ce85c79\/index.html",
+            "slug": "the-knowledge-decentralization-manifesto-2",
+            "order": "35",
+            "parent": null,
+            "title": "The Knowledge Decentralization Manifesto",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-c150b20f-d7ed-4a1d-1ca5-7b4406c040a9",
+            "indent": 0,
+            "location": "pages\/item-c150b20f-d7ed-4a1d-1ca5-7b4406c040a9\/index.html",
+            "slug": "the-knowledge-decentralization-manifesto-the-prolog-2",
+            "order": "36",
+            "parent": null,
+            "title": "The Knowledge Decentralization Manifesto (The Prolog)",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-79649f12-a6d2-98f5-3c0b-8b88f2a24457",
+            "indent": 0,
+            "location": "pages\/item-79649f12-a6d2-98f5-3c0b-8b88f2a24457\/index.html",
+            "slug": "hax-apereo-piece-2",
+            "order": "37",
+            "parent": null,
+            "title": "HAX apereo piece",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-c9e2488a-44dd-f0d4-4b3f-651245add81a",
+            "indent": 0,
+            "location": "pages\/item-c9e2488a-44dd-f0d4-4b3f-651245add81a\/index.html",
+            "slug": "the-perfect-cup-of-coffee-2",
+            "order": "38",
+            "parent": null,
+            "title": "The perfect cup of coffee",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-fd7f3b3e-edbb-ea0f-fc85-717973f49cb0",
+            "indent": 0,
+            "location": "pages\/item-fd7f3b3e-edbb-ea0f-fc85-717973f49cb0\/index.html",
+            "slug": "watch-the-ripples-and-you-ll-miss-the-waves-2",
+            "order": "39",
+            "parent": null,
+            "title": "Watch the ripples and you'll miss the waves",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-40122e25-5673-4544-133f-2acb042dbb23",
+            "indent": 0,
+            "location": "pages\/item-40122e25-5673-4544-133f-2acb042dbb23\/index.html",
+            "slug": "i-challenge-you-to-transform-education-together-2",
+            "order": "40",
+            "parent": null,
+            "title": "I challenge you to Transform Education; together",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-1851779a-7fe1-2fa1-ddd5-0a926467a3e3",
+            "indent": 0,
+            "location": "pages\/item-1851779a-7fe1-2fa1-ddd5-0a926467a3e3\/index.html",
+            "slug": "ngdle-oer-cost-reduction-accessibility-and-decentralization-the-future-of-our-institutions-2",
+            "order": "41",
+            "parent": null,
+            "title": "NGDLE, OER, Cost reduction, accessibility and Decentralization: the future of our institutions.",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-4080a73d-360e-7a65-131b-705b8c6169e7",
+            "indent": 0,
+            "location": "pages\/item-4080a73d-360e-7a65-131b-705b8c6169e7\/index.html",
+            "slug": "actually-curing-edtech-2",
+            "order": "42",
+            "parent": null,
+            "title": "Actually, curing edtech",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-1f14703a-1e61-d454-f03a-52a94333e9d1",
+            "indent": 0,
+            "location": "pages\/item-1f14703a-1e61-d454-f03a-52a94333e9d1\/index.html",
+            "slug": "in-my-own-words-zero-cost-education-2",
+            "order": "43",
+            "parent": null,
+            "title": "In my own words: Zero cost education.",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-bea307e8-0af9-4518-dc18-c5323302165c",
+            "indent": 0,
+            "location": "pages\/item-bea307e8-0af9-4518-dc18-c5323302165c\/index.html",
+            "slug": "education-technology-action-2",
+            "order": "44",
+            "parent": null,
+            "title": "Education, Technology... Action.",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-897d5115-b6de-2c55-afa7-ba3262f4d9ca",
+            "indent": 0,
+            "location": "pages\/item-897d5115-b6de-2c55-afa7-ba3262f4d9ca\/index.html",
+            "slug": "pure-joy-2",
+            "order": "45",
+            "parent": null,
+            "title": "Pure Joy",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-70c61ad7-f543-9af8-dd1b-1b65f0f453b2",
+            "indent": 0,
+            "location": "pages\/item-70c61ad7-f543-9af8-dd1b-1b65f0f453b2\/index.html",
+            "slug": "creating-the-decentralized-instructional-experience-app-2",
+            "order": "46",
+            "parent": null,
+            "title": "Creating the decentralized instructional experience app",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-1222b362-d24d-0aa7-20e7-724767f57656",
+            "indent": 0,
+            "location": "pages\/item-1222b362-d24d-0aa7-20e7-724767f57656\/index.html",
+            "slug": "using-webcomponents-to-unearth-the-ngdle-2",
+            "order": "47",
+            "parent": null,
+            "title": "Using Webcomponents to unearth the NGDLE",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-be6f30a2-8a4d-e986-6af3-930f91e00464",
+            "indent": 0,
+            "location": "pages\/item-be6f30a2-8a4d-e986-6af3-930f91e00464\/index.html",
+            "slug": "this-is-not-reality-2",
+            "order": "48",
+            "parent": null,
+            "title": "This is not reality",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-d6d569eb-16fb-b10f-097a-9afbfa6a02b0",
+            "indent": 0,
+            "location": "pages\/item-d6d569eb-16fb-b10f-097a-9afbfa6a02b0\/index.html",
+            "slug": "playing-for-40-2",
+            "order": "49",
+            "parent": null,
+            "title": "Playing for 40",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-e8c71c40-1351-7293-ae61-2e01b348f71f",
+            "indent": 0,
+            "location": "pages\/item-e8c71c40-1351-7293-ae61-2e01b348f71f\/index.html",
+            "slug": "dood-2",
+            "order": "50",
+            "parent": null,
+            "title": "Dood",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-930234f4-c1d5-1d04-b08a-fddc47aa98dd",
+            "indent": 0,
+            "location": "pages\/item-930234f4-c1d5-1d04-b08a-fddc47aa98dd\/index.html",
+            "slug": "generation-uine-2",
+            "order": "51",
+            "parent": null,
+            "title": "Generation Uine",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-8099a4ba-8fbc-a60f-7451-ac12d8d17409",
+            "indent": 0,
+            "location": "pages\/item-8099a4ba-8fbc-a60f-7451-ac12d8d17409\/index.html",
+            "slug": "birthday-party-2",
+            "order": "52",
+            "parent": null,
+            "title": "Birthday party",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-773011dc-d235-36bf-7c70-fb0f8a4f4f1c",
+            "indent": 0,
+            "location": "pages\/item-773011dc-d235-36bf-7c70-fb0f8a4f4f1c\/index.html",
+            "slug": "-alt-reality-2",
+            "order": "53",
+            "parent": null,
+            "title": "[Alt] + {{reality}}",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-1b6dd8f4-a01e-45d6-dafe-944b4c60320e",
+            "indent": 0,
+            "location": "pages\/item-1b6dd8f4-a01e-45d6-dafe-944b4c60320e\/index.html",
+            "slug": "end-of-summer-2",
+            "order": "54",
+            "parent": null,
+            "title": "End of Summer",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-bf9b2910-4880-c87f-4026-143bb334d1a6",
+            "indent": 0,
+            "location": "pages\/item-bf9b2910-4880-c87f-4026-143bb334d1a6\/index.html",
+            "slug": "combating-the-rise-of-authoritarianism-2",
+            "order": "55",
+            "parent": null,
+            "title": "Combating the rise of authoritarianism",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-e479640f-e5e2-189a-1ae1-2a3f44d01a59",
+            "indent": 0,
+            "location": "pages\/item-e479640f-e5e2-189a-1ae1-2a3f44d01a59\/index.html",
+            "slug": "attacking-the-false-binary-of-politics-2",
+            "order": "56",
+            "parent": null,
+            "title": "Attacking the false Binary (of politics)",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-92c8d1d5-e579-930b-2c57-e9753e9dfefe",
+            "indent": 0,
+            "location": "pages\/item-92c8d1d5-e579-930b-2c57-e9753e9dfefe\/index.html",
+            "slug": "singularity-digital-activism-and-saving-our-institutions-2",
+            "order": "57",
+            "parent": null,
+            "title": "Singularity, Digital Activism, and saving our institutions",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-818bd74d-1af8-6db0-3fb0-c1fe996c4f9d",
+            "indent": 0,
+            "location": "pages\/item-818bd74d-1af8-6db0-3fb0-c1fe996c4f9d\/index.html",
+            "slug": "ddosa-2",
+            "order": "58",
+            "parent": null,
+            "title": "DDoSA",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-f7c4705e-c70b-6cf9-0623-095830584d4d",
+            "indent": 0,
+            "location": "pages\/item-f7c4705e-c70b-6cf9-0623-095830584d4d\/index.html",
+            "slug": "occutea-wallparty-2",
+            "order": "59",
+            "parent": null,
+            "title": "OccuTea WallParty",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-9566b53a-7c4c-54fb-4054-390d7c4c6e2e",
+            "indent": 0,
+            "location": "pages\/item-9566b53a-7c4c-54fb-4054-390d7c4c6e2e\/index.html",
+            "slug": "efficiency-as-activism-2",
+            "order": "60",
+            "parent": null,
+            "title": "Efficiency as Activism",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-093425c7-cba0-e10b-60f8-9bf6afd32f9a",
+            "indent": 0,
+            "location": "pages\/item-093425c7-cba0-e10b-60f8-9bf6afd32f9a\/index.html",
+            "slug": "rate-of-perception-2",
+            "order": "61",
+            "parent": null,
+            "title": "Rate of perception",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-f8a9a36b-2d96-17ec-0a07-356191bb57ff",
+            "indent": 0,
+            "location": "pages\/item-f8a9a36b-2d96-17ec-0a07-356191bb57ff\/index.html",
+            "slug": "ministry-of-information-2",
+            "order": "62",
+            "parent": null,
+            "title": "Ministry of information",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988
+            }
+        },
+        {
+            "id": "item-2ddc5396-01fe-60fc-5c23-fa40abae58e9",
+            "indent": 0,
+            "location": "pages\/item-2ddc5396-01fe-60fc-5c23-fa40abae58e9\/index.html",
+            "slug": "organic-deployment-architecture-2",
+            "order": "63",
+            "parent": null,
+            "title": "Organic Deployment Architecture",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/3f7119c8ee0795b23c3ed754c7e48860e8ad8b98-organic.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/3f7119c8ee0795b23c3ed754c7e48860e8ad8b98-organic.jpg",
+                        "url": "files\/3f7119c8ee0795b23c3ed754c7e48860e8ad8b98-organic.jpg",
+                        "type": "image\/jpeg",
+                        "name": "3f7119c8ee0795b23c3ed754c7e48860e8ad8b98-organic.jpg",
+                        "size": "37511"
+                    },
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/container.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/container.jpg",
+                        "url": "files\/container.jpg",
+                        "type": "image\/jpeg",
+                        "name": "container.jpg",
+                        "size": "41825"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "item-b1e5eaa3-a5e9-ee65-d607-9d5cf65f5e70",
+            "indent": 0,
+            "location": "pages\/item-b1e5eaa3-a5e9-ee65-d607-9d5cf65f5e70\/index.html",
+            "slug": "legacy-of-human-hierarchy-2",
+            "order": "64",
+            "parent": null,
+            "title": "Legacy of Human Hierarchy",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/037e9f1490d0606b7967973e65ebefb1dbb333ee-file0001605429169.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/037e9f1490d0606b7967973e65ebefb1dbb333ee-file0001605429169.jpg",
+                        "url": "files\/037e9f1490d0606b7967973e65ebefb1dbb333ee-file0001605429169.jpg",
+                        "type": "image\/jpeg",
+                        "name": "037e9f1490d0606b7967973e65ebefb1dbb333ee-file0001605429169.jpg",
+                        "size": "28645"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "item-07d2884a-9e17-32f2-3175-0887f02bb49c",
+            "indent": 0,
+            "location": "pages\/item-07d2884a-9e17-32f2-3175-0887f02bb49c\/index.html",
+            "slug": "transform-control-2",
+            "order": "65",
+            "parent": null,
+            "title": "Transform Control",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/2cbcf74eb414cbc4ffc644bc923c33a3b5e3be26-sandbagged.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/2cbcf74eb414cbc4ffc644bc923c33a3b5e3be26-sandbagged.jpg",
+                        "url": "files\/2cbcf74eb414cbc4ffc644bc923c33a3b5e3be26-sandbagged.jpg",
+                        "type": "image\/jpeg",
+                        "name": "2cbcf74eb414cbc4ffc644bc923c33a3b5e3be26-sandbagged.jpg",
+                        "size": "65965"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "item-25e65b02-61b2-b987-7e86-601a241f74c9",
+            "indent": 0,
+            "location": "pages\/item-25e65b02-61b2-b987-7e86-601a241f74c9\/index.html",
+            "slug": "transforming-industry-through-information-altruism-2",
+            "order": "66",
+            "parent": null,
+            "title": "Transforming industry through information altruism",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/89cd7f14f2e207bd9a20b916cddc089da4ba3464-butterfly.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/89cd7f14f2e207bd9a20b916cddc089da4ba3464-butterfly.jpg",
+                        "url": "files\/89cd7f14f2e207bd9a20b916cddc089da4ba3464-butterfly.jpg",
+                        "type": "image\/jpeg",
+                        "name": "89cd7f14f2e207bd9a20b916cddc089da4ba3464-butterfly.jpg",
+                        "size": "54050"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "item-c6866e7a-1981-8c76-293a-0b96181e4945",
+            "indent": 0,
+            "location": "pages\/item-c6866e7a-1981-8c76-293a-0b96181e4945\/index.html",
+            "slug": "sustainable-systems-development-a-moral-issue-2",
+            "order": "67",
+            "parent": null,
+            "title": "Sustainable Systems Development: A moral issue",
+            "description": "",
+            "metadata": {
+                "created": 1698074988,
+                "updated": 1698074988,
+                "files": [
+                    {
+                        "path": "\/var\/www\/html\/_sites\/btopro\/files\/243b170c2b1bfa37b38cf9b7b4d1f2b6810e8906-dsc01395.jpg",
+                        "fullUrl": "\/_sites\/btopro\/files\/243b170c2b1bfa37b38cf9b7b4d1f2b6810e8906-dsc01395.jpg",
+                        "url": "files\/243b170c2b1bfa37b38cf9b7b4d1f2b6810e8906-dsc01395.jpg",
+                        "type": "image\/jpeg",
+                        "name": "243b170c2b1bfa37b38cf9b7b4d1f2b6810e8906-dsc01395.jpg",
+                        "size": "12098"
+                    }
+                ]
             }
         }
     ]

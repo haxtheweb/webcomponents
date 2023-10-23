@@ -56,7 +56,7 @@ class FullWidthImage extends LitElement {
 
         .caption {
           padding: 35px 0;
-          font-size: 25px;
+          font-size: var(--full-width-image-font-size, 25px);
           line-height: 40px;
           color: #fff;
           font-style: italic;

@@ -9,7 +9,10 @@ import { autorun, toJS } from "mobx";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
+import "@lrnwebcomponents/full-width-image/full-width-image.js";
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
@@ -43,8 +46,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         }
 
         /**
-      * Hide the slotted content during edit mode. This must be here to work.
-      */
+        * Hide the slotted content during edit mode. This must be here to work.
+        */
         :host([edit-mode]) #slot {
           display: none;
         }
@@ -57,6 +60,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         }
         site-active-title {
           font-size: 36px;
+        }
+        site-modal {
+          display: inline-flex;
         }
         .wrapper {
           padding-bottom: 80px;
@@ -95,10 +101,11 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           padding-bottom: 16px;
           min-height: 300px;
         }
+        full-width-image {
+          --full-width-image-font-size: 54px;
+        }
         .header-wrapper {
           padding: 0 20px;
-          height: 54px;
-          width: 100%;
           display: flex;
           margin: 0 auto;
           z-index: 100;
@@ -109,13 +116,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         }
         .header-wrapper div {
           display: inline-flex;
-        }
-        .header-image {
-          max-width: 600px;
-          width: 100%;
-        }
-        .header-image img.image {
-          max-width: 800px;
         }
         .backbutton {
           height: 54px;
@@ -170,10 +170,11 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           position: fixed;
           bottom: 0;
           left: 0;
+          overflow: hidden;
           right: 0;
           box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, 0.0785);
           padding: 10px 0;
-          height: 50px;
+          height: 36px;
           z-index: 100;
           opacity: 1;
           transition: 0.2s opacity linear;
@@ -233,13 +234,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         }
 
         @media screen and (max-width: 800px) {
-          .header-image {
-            max-width: 200px;
-            width: 100%;
-          }
-          .header-image img.image {
-            max-width: 200px;
-          }
           .simple-blog-card-wrapper simple-blog-card {
             margin: 0 10vw;
           }
@@ -296,27 +290,16 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           </site-modal>
         </div>
         <div>
-          <button
-            class="backbutton"
-            @click="${this._goBack}"
-            title="Back to blog post list"
+          <simple-icon-button-lite
+          class="backbutton"
+          @click="${this._goBack}"
+            icon="${this.icon}"
+            style="color:white;"
           >
-            <simple-icon-lite
-              icon="${this.icon}"
-              style="color:white;"
-            ></simple-icon-lite>
-            <span class="hide-small">${this.title}</span>
-          </button>
+          <span class="hide-small">Home</span>
+        </simple-icon-button-lite>
         </div>
-        <div class="header-image">
-          <img
-            loading="lazy"
-            class="image"
-            alt=""
-            src="${this.image}"
-            style="height:46px;width:100%;margin: 4px 0 2px 0;"
-          />
-        </div>
+        <site-region name="header"></site-region>
       </header>
       <div class="wrapper">
         <iron-pages .selected="${this.selectedPage}">
@@ -330,22 +313,14 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
               ${this.__mainPosts.map(
                 (post) => html`
                   <simple-blog-card
-                    alt="${post.metadata.fields &&
-                    post.metadata.fields.images &&
-                    post.metadata.fields.images[0] &&
-                    post.metadata.fields.images[0].alt
-                      ? post.metadata.fields.images[0].alt
-                      : ""}"
                     color="${this.color}"
                     .title="${post.title}"
                     size="large"
                     .link="${post.slug}"
                     .image="${this._showImage(
-                      post.metadata.fields &&
-                        post.metadata.fields.images &&
-                        post.metadata.fields.images[0] &&
-                        post.metadata.fields.images[0].alt
-                        ? post.metadata.fields.images[0].alt
+                      post.metadata &&
+                        post.metadata.image
+                        ? post.metadata.image
                         : false
                     )}"
                     .author="${this.author.name}"
@@ -370,22 +345,14 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
               ${this.__extraPosts.map(
                 (post) => html`
                   <simple-blog-card
-                    alt="${post.metadata.fields &&
-                    post.metadata.fields.images &&
-                    post.metadata.fields.images[0] &&
-                    post.metadata.fields.images[0].alt
-                      ? post.metadata.fields.images[0].alt
-                      : ""}"
                     color="${this.color}"
                     .title="${post.title}"
                     size="small"
                     .link="${post.slug}"
                     .image="${this._showImage(
-                      post.metadata.fields &&
-                        post.metadata.fields.images &&
-                        post.metadata.fields.images[0] &&
-                        post.metadata.fields.images[0].alt
-                        ? post.metadata.fields.images[0].alt
+                      post.metadata &&
+                        post.metadata.image
+                        ? post.metadata.image
                         : false
                     )}"
                     .author="${this.author.name}"
@@ -403,14 +370,17 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           </div>
           <main class="contentcontainer-wrapper">
             <article id="contentcontainer">
+              <site-region name="contentTop"></site-region>
               <site-git-corner position="right"></site-git-corner>
-              <site-active-title></site-active-title>
+              ${this.activeItem && this.activeItem.metadata && this.activeItem.metadata.image ?
+              html`<full-width-image source="${this.activeItem.metadata.image}" caption="${this.activeItem.title}"></full-width-image>` : html`<site-active-title></site-active-title>`}
               <h3 class="subtitle" .hidden="${!this.subtitle}">
                 ${this.subtitle}
               </h3>
               <section id="slot">
                 <slot></slot>
               </section>
+              <site-region name="contentBottom"></site-region>
             </article>
             <site-query
               @result-changed="${this.__followUpPostsChanged}"
@@ -422,22 +392,14 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
               ${this.__followUpPosts.map(
                 (post) => html`
                   <simple-blog-card
-                    alt="${post.metadata.fields &&
-                    post.metadata.fields.images &&
-                    post.metadata.fields.images[0] &&
-                    post.metadata.fields.images[0].alt
-                      ? post.metadata.fields.images[0].alt
-                      : ""}"
                     color="${this.color}"
                     .title="${post.title}"
                     size="small"
                     .link="${post.slug}"
                     .image="${this._showImage(
-                      post.metadata.fields &&
-                        post.metadata.fields.images &&
-                        post.metadata.fields.images[0] &&
-                        post.metadata.fields.images[0].alt
-                        ? post.metadata.fields.images[0].alt
+                      post.metadata &&
+                        post.metadata.image
+                        ? post.metadata.image
                         : false
                     )}"
                     .author="${this.author.name}"
@@ -520,6 +482,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                 ></site-share-widget>
               </div>
             </footer>
+            <site-region name="footerPrimary"></site-region>
           </main>
         </iron-pages>
       </div>
@@ -536,7 +499,18 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     this.__mainPosts = e.detail.value;
   }
   __followUpPostsChanged(e) {
-    this.__followUpPosts = e.detail.value;
+    var posts = [];
+    // support for posts to define their own related content
+    if (this.activeItem && this.activeItem.metadata && this.activeItem.metadata.relatedItems) {
+      const ids = this.activeItem.metadata.relatedItems.split(',');
+      ids.map((id) => {
+        posts.push(store.findItem(id));
+      });
+    }
+    else {
+      posts = e.detail.value;
+    }
+    this.__followUpPosts = posts;
   }
   static get properties() {
     return {
@@ -552,6 +526,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         type: Number,
         reflect: true,
         attribute: "selected-page",
+      },
+      activeItem: {
+        type: Object
       },
       stateClass: {
         type: String,
@@ -598,57 +575,51 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     this.__mainPosts = [];
     this.__extraPosts = [];
     this.__followUpPosts = [];
-    setTimeout(() => {
-      this.selectedPage = 0;
-      import("@polymer/iron-pages/iron-pages.js");
-      // prettier-ignore
-      import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
+    this.activeItem = {};
+    this.selectedPage = 0;
+    import("@polymer/iron-pages/iron-pages.js");
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
+    );
+    import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
+    autorun((reaction) => {
+      let location = toJS(store.location);
+      this._noticeLocationChange(location);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      let manifest = toJS(store.manifest);
+      this.title = varGet(manifest, "title", "");
+      this.image = varGet(
+        manifest,
+        "metadata.theme.variables.image",
+        "assets/banner.jpg"
       );
-      import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
-      autorun((reaction) => {
-        let location = toJS(store.location);
-        this._noticeLocationChange(location);
-        this.__disposer.push(reaction);
-      });
-      autorun((reaction) => {
-        let manifest = toJS(store.manifest);
-        this.title = varGet(manifest, "title", "");
-        this.image = varGet(
-          manifest,
-          "metadata.theme.variables.image",
-          "assets/banner.jpg"
-        );
-        this.icon = varGet(
-          manifest,
-          "metadata.theme.variables.icon",
-          "icons:record-voice-over"
-        );
-        this.author = varGet(manifest, "metadata.author", {});
-        this.__disposer.push(reaction);
-      });
-      autorun((reaction) => {
-        this.activeManifestIndexCounter = toJS(
-          store.activeManifestIndexCounter
-        );
-        this.__disposer.push(reaction);
-      });
-      autorun((reaction) => {
-        this.activeTitle = toJS(store.activeTitle);
-        this.shareUrl = document.location.href;
-        this.shareMsg = this.activeTitle + " " + this.shareUrl;
-        if (varGet(store.activeItem, "metadata.fields.subtitle", false)) {
-          this.subtitle = store.activeItem.metadata.fields.subtitle;
-        } else {
-          this.subtitle = false;
-        }
-        // look for image on the post and make it the pin share
-        if (varGet(store.activeItem, "metadata.fields.images.0.src", false)) {
-          this.activeImage = store.activeItem.metadata.fields.images[0].src;
-        }
-        this.__disposer.push(reaction);
-      });
-    }, 0);
+      this.icon = varGet(
+        manifest,
+        "metadata.theme.variables.icon",
+        "icons:record-voice-over"
+      );
+      this.author = varGet(manifest, "metadata.author", {});
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.activeManifestIndexCounter = toJS(
+        store.activeManifestIndexCounter
+      );
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.activeTitle = toJS(store.activeTitle);
+      this.shareUrl = document.location.href;
+      this.shareMsg = this.activeTitle + " " + this.shareUrl;
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.activeItem = toJS(store.activeItem);
+      this.__disposer.push(reaction);
+    })
   }
   /**
    * LitElement shadowDom ready

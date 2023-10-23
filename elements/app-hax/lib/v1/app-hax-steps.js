@@ -118,6 +118,10 @@ export class AppHaxSteps extends SimpleColors {
         store.site.type = "own";
         store.site.theme = "clean-one";
       }
+      if (value === "portfolio") {
+        store.site.type = "own";
+        store.site.theme = "haxor-slevin";
+      }
       if (value === "website") {
         store.site.type = "own";
         store.site.theme = "polaris-theme";
@@ -1156,16 +1160,15 @@ export class AppHaxSteps extends SimpleColors {
                 ></app-hax-site-button>
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Website"
-                  value="website"
+                  label="&gt; Portfolio"
+                  value="portfolio"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Portfolio"
-                  value="portfolio"
+                  label="&gt; Website"
+                  value="website"
                   @click=${this.chooseStructure}
-                  ?coming-soon="${!this.unlockComingSoon}"
                 ></app-hax-site-button>
               </div>
             </div>
