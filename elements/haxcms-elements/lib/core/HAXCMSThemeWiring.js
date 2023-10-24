@@ -73,7 +73,7 @@ const HAXCMSTheme = function (SuperClass) {
     _getHexColor(color) {
       // legacy support for materializeCSS names
       let name = color.replace("-text", "");
-      let colors = window.SimpleColorsStyles.colors;
+      let colors = window.SimpleColorsSharedStyles.colors;
       if (colors[name]) {
         return colors[name][6];
       }

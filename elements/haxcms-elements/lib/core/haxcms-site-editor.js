@@ -1154,7 +1154,7 @@ class HAXCMSSiteEditor extends LitElement {
 
     if (values.cssVariable) {
       values.hexCode =
-        window.SimpleColorsStyles.colors[
+        window.SimpleColorsSharedStyles.colors[
           values.cssVariable
             .replace("--simple-colors-default-theme-", "")
             .replace("-7", "")

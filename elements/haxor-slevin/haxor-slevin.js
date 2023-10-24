@@ -13,6 +13,9 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@lrnwebcomponents/full-width-image/full-width-image.js";
+import "@polymer/iron-pages/iron-pages.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
+
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
@@ -25,7 +28,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       css`
         :host {
           display: block;
-          background-color: #ffffff;
+          background-color: var(--simple-colors-default-theme-accent-1);
           color: rgba(0, 0, 0, 0.84);
           --hax-base-styles-a-color: var(--haxcms-color, #2196f3);
           --hax-base-styles-a-color-visited: var(--haxcms-color, #2196f3);
@@ -37,8 +40,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         site-share-widget:not(:defined),
         site-active-title:not(:defined),
         site-git-corner:not(:defined),
-        social-share-link:not(:defined),
-        simple-blog-card:not(:defined) {
+        social-share-link:not(:defined) {
           display: none;
         }
         :host([hidden]) {
@@ -51,7 +53,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         :host([edit-mode]) #slot {
           display: none;
         }
-        :host([edit-mode]) .contentcontainer-wrapper simple-blog-card {
+        :host([edit-mode]) accent-card {
           opacity: 0.2;
           pointer-events: none;
         }
@@ -79,20 +81,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           box-sizing: border-box;
           padding-left: 20px;
           padding-right: 20px;
-        }
-        simple-blog-card {
-          padding: 16px;
-          min-height: 100px;
-          border: 2px solid lightgray;
-          margin: 8px;
-          text-align: center;
-        }
-        .simple-blog-card-wrapper {
-          display: flex;
-          justify-content: space-evenly;
-        }
-        simple-blog-card[size="micro"] {
-          padding: 4px;
         }
         iron-pages {
           padding-top: 64px;
@@ -234,42 +222,17 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         }
 
         @media screen and (max-width: 800px) {
-          .simple-blog-card-wrapper simple-blog-card {
-            margin: 0 10vw;
-          }
-          .simple-blog-card-wrapper {
-            text-align: center;
-          }
           #contentcontainer,
           #home {
             padding-left: 8px;
             padding-right: 8px;
             transition: 0.5s opacity ease-in-out;
           }
-          simple-blog-card {
-            padding: 0;
-          }
           .hide-small {
             display: none !important;
           }
-          .annoy-user .rss {
-            margin-left: unset;
-          }
           .annoy-user {
-            position: relative;
-            bottom: unset;
-            left: unset;
-            right: unset;
-            padding: 0;
-            height: unset;
-          }
-          .annoy-user span {
-            height: unset;
-            line-height: unset;
-          }
-          .annoy-inner {
-            max-width: unset;
-            margin: 0;
+            display: none;
           }
         }
       `,
@@ -306,67 +269,34 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           <div id="home">
             <site-query
               @result-changed="${this.__mainPostsChanged}"
-              limit="2"
+              limit="10"
               sort='{"created": "ASC"}'
             ></site-query>
-            <div class="simple-blog-card-wrapper">
               ${this.__mainPosts.map(
                 (post) => html`
-                  <simple-blog-card
-                    color="${this.color}"
-                    .title="${post.title}"
-                    size="large"
-                    .link="${post.slug}"
-                    .image="${this._showImage(
+                <accent-card 
+                image-align="center"
+                image-valign="top" 
+                accent-background
+                accent-color="${this.color}" 
+                accent-heading 
+                horizontal 
+                image-src="${this._showImage(
                       post.metadata &&
                         post.metadata.image
                         ? post.metadata.image
                         : false
                     )}"
-                    .author="${this.author.name}"
-                    .timestamp="${post.metadata.created}"
-                    .readtime="${post.metadata.readtime}"
-                    .authorimage="${this.author.image}"
-                    .placeholder="${this.image}"
-                    .authorlink="${this.author.socialLink}"
-                  >
-                    ${post.description}
-                  </simple-blog-card>
-                `
+                >
+                <div slot="heading"><a href="${post.slug}">${post.title}</a></div>
+                <div slot="subheading"><simple-datetime unix timestamp="${post.metadata.created}"></simple-datetime></div>
+                <div slot="content">
+                  <p>
+                  ${post.description}
+                  </p>
+                </div>
+              </accent-card>`
               )}
-            </div>
-            <site-query
-              @result-changed="${this.__extraPostsChanged}"
-              start-index="2"
-              limit="4"
-              sort='{"created": "ASC"}'
-            ></site-query>
-            <div class="simple-blog-card-wrapper">
-              ${this.__extraPosts.map(
-                (post) => html`
-                  <simple-blog-card
-                    color="${this.color}"
-                    .title="${post.title}"
-                    size="small"
-                    .link="${post.slug}"
-                    .image="${this._showImage(
-                      post.metadata &&
-                        post.metadata.image
-                        ? post.metadata.image
-                        : false
-                    )}"
-                    .author="${this.author.name}"
-                    .timestamp="${post.metadata.created}"
-                    .readtime="${post.metadata.readtime}"
-                    .authorimage="${this.author.image}"
-                    .placeholder="${this.image}"
-                    .authorlink="${this.author.socialLink}"
-                  >
-                    ${post.description}
-                  </simple-blog-card>
-                `
-              )}
-            </div>
           </div>
           <main class="contentcontainer-wrapper">
             <article id="contentcontainer">
@@ -384,36 +314,36 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             </article>
             <site-query
               @result-changed="${this.__followUpPostsChanged}"
-              limit="3"
+              limit="6"
               start-index="${this.activeManifestIndexCounter}"
               sort='{"created": "ASC"}'
             ></site-query>
-            <div class="simple-blog-card-wrapper">
               ${this.__followUpPosts.map(
                 (post) => html`
-                  <simple-blog-card
-                    color="${this.color}"
-                    .title="${post.title}"
-                    size="small"
-                    .link="${post.slug}"
-                    .image="${this._showImage(
+                  <accent-card 
+                image-align="center"
+                image-valign="top" 
+                accent-background
+                accent-color="${this.color}" 
+                accent-heading 
+                horizontal 
+                image-src="${this._showImage(
                       post.metadata &&
                         post.metadata.image
                         ? post.metadata.image
                         : false
                     )}"
-                    .author="${this.author.name}"
-                    .timestamp="${post.metadata.created}"
-                    .readtime="${post.metadata.readtime}"
-                    .authorimage="${this.author.image}"
-                    .placeholder="${this.image}"
-                    .authorlink="${this.author.socialLink}"
-                  >
-                    ${post.description}
-                  </simple-blog-card>
+                >
+                <div slot="heading"><a href="${post.slug}">${post.title}</a></div>
+                <div slot="subheading"><simple-datetime unix timestamp="${post.metadata.created}"></simple-datetime></div>
+                <div slot="content">
+                  <p>
+                  ${post.description}
+                  </p>
+                </div>
+              </accent-card>
                 `
               )}
-            </div>
             <nav class="social-float hide-small ${this.stateClass}">
               <ul>
                 <li>
@@ -515,10 +445,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
   static get properties() {
     return {
       ...super.properties,
-
-      manifest: {
-        type: Object,
-      },
       color: {
         type: String,
       },
@@ -536,16 +462,10 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       __mainPosts: {
         type: Array,
       },
-      __extraPosts: {
-        type: Array,
-      },
       __followUpPosts: {
         type: Array,
       },
     };
-  }
-  __extraPostsChanged(e) {
-    this.__extraPosts = e.detail.value;
   }
   _getStateClass(editMode) {
     if (editMode) {
@@ -554,8 +474,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     return "";
   }
   _getColor(manifest) {
-    if (manifest && varExists(manifest, "metadata.theme.variables.hexCode")) {
-      return manifest.metadata.theme.variables.hexCode;
+    if (manifest && varExists(manifest, "metadata.theme.variables.cssVariable")) {
+      return manifest.metadata.theme.variables.cssVariable.replace('--simple-colors-default-theme-', '').replace('-7','');
     }
   }
   /**
@@ -573,16 +493,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     this.icon = "icons:search";
     this.__disposer = [];
     this.__mainPosts = [];
-    this.__extraPosts = [];
     this.__followUpPosts = [];
     this.activeItem = {};
     this.selectedPage = 0;
-    import("@polymer/iron-pages/iron-pages.js");
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
-    );
-    import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
     autorun((reaction) => {
       let location = toJS(store.location);
       this._noticeLocationChange(location);
@@ -590,6 +503,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     });
     autorun((reaction) => {
       let manifest = toJS(store.manifest);
+      this.color = this._getColor(manifest);
       this.title = varGet(manifest, "title", "");
       this.image = varGet(
         manifest,
@@ -628,38 +542,33 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     if (super.firstUpdated) {
       super.firstUpdated();
     }
-    setTimeout(() => {
-      // prettier-ignore
-      import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
-      );
-      // prettier-ignore
-      import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js"
-      );
-      // prettier-ignore
-      import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
-      );
-      // prettier-ignore
-      import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
-      );
-      import("@lrnwebcomponents/social-share-link/social-share-link.js");
-      // prettier-ignore
-      import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
-      );
-    }, 0);
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+    );
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js"
+    );
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
+    );
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+    );
+    import("@lrnwebcomponents/social-share-link/social-share-link.js");
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+    );
   }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "manifest") {
-        this.color = this._getColor(this[propName]);
-      }
       if (propName == "editMode") {
         this.stateClass = this._getStateClass(this[propName]);
       }
