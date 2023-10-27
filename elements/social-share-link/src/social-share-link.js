@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, LitElement } from "lit";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
@@ -26,7 +26,7 @@ class SocialShareLink extends LitElement {
           display: none;
         }
 
-        :host a {
+        a {
           display: inline-flex;
           align-items: center;
           color: var(--social-share-link-color, inherit);
@@ -36,12 +36,12 @@ class SocialShareLink extends LitElement {
           border-radius: var(--social-share-button-border-radius, 0px);
         }
 
-        :host a:visited {
+        a:visited {
           color: var(--social-share-visited-link-color, inherit);
         }
 
-        :host a:focus,
-        :host a:hover {
+        a:focus,
+        a:hover {
           color: var(--social-share-link-hover-color, inherit);
         }
 
@@ -79,15 +79,15 @@ class SocialShareLink extends LitElement {
           background-color: var(--social-share-disabled-button-bg, #666);
         }
 
-        :host simple-icon {
+        simple-icon-lite {
           margin-right: 5px;
         }
 
-        :host a.text-only simple-icon {
+        a.text-only simple-icon-lite {
           display: none;
         }
 
-        :host a.icon-only .linktext {
+        a.icon-only .linktext {
           position: absolute;
           left: -999999px;
           top: 0;
@@ -96,7 +96,7 @@ class SocialShareLink extends LitElement {
           overflow: hidden;
         }
 
-        :host a.icon-only simple-icon {
+        a.icon-only simple-icon-lite {
           margin-right: 0;
         }
       `,
@@ -112,13 +112,13 @@ class SocialShareLink extends LitElement {
       rel="noopener noreferrer"
       target="_blank"
     >
-      <simple-icon
-        dark
+      <simple-icon-lite
+        ?dark="${this.dark}"
         contrast="4"
         aria-hidden="true"
         icon="${this.__icon}"
         ?hidden="${!this.__showIcon}"
-      ></simple-icon>
+      ></simple-icon-lite>
       <span class="linktext">${this.__linkText}</span>
     </a>`;
   }

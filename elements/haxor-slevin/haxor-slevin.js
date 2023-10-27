@@ -6,6 +6,8 @@ import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -13,23 +15,25 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@lrnwebcomponents/full-width-image/full-width-image.js";
-import "@polymer/iron-pages/iron-pages.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
-
+import "@lrnwebcomponents/date-card/lib/date-chip.js";
+import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@polymer/iron-pages/iron-pages.js";
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
  * @demo demo/index.html
  * @element haxor-slevin
  */
-class HaxorSlevin extends HAXCMSLitElementTheme {
+class HaxorSlevin extends HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementTheme)) {
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: block;
-          background-color: var(--simple-colors-default-theme-accent-1);
-          color: rgba(0, 0, 0, 0.84);
+          background-color: var(--simple-colors-default-theme-grey-1);
+          color: var(--simple-colors-default-theme-grey-12);
+          transition: .6s ease-in-out color, .6s ease-in-out background-color;
           --hax-base-styles-a-color: var(--haxcms-color, #2196f3);
           --hax-base-styles-a-color-visited: var(--haxcms-color, #2196f3);
           --hax-base-styles-a-color-active: var(--haxcms-color, #2196f3);
@@ -92,12 +96,64 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         full-width-image {
           --full-width-image-font-size: 54px;
         }
+        date-chip {
+          float: right;
+          --date-chip-font-size: 40px;
+          --date-chip-month-font-size: 24px;
+          margin: -64px 16px 16px;
+        }
+        .article-link,
+        .article-link-bottom {
+          text-decoration: none;
+          opacity: .9;
+          -webkit-filter: saturate(30%);
+          filter: saturate(30%);
+          transition: .3s ease-in-out opacity, .3s ease-in-out filter;
+          cursor: pointer;
+        }
+        .article-link:nth-of-type(1) {
+          -webkit-filter: saturate(80%);
+          filter: saturate(80%);
+        }
+        .article-link:nth-of-type(2n) {
+          -webkit-filter: saturate(30%);
+          filter: saturate(30%);
+        }
+        .article-link accent-card::part(image) {
+          -webkit-filter: saturate(0%);
+          filter: saturate(0%);
+          transition: .3s ease-in-out all;
+        }
+        .article-link:nth-of-type(1) accent-card::part(image) {
+          -webkit-filter: saturate(80%);
+          filter: saturate(80%);
+        }
+        .article-link:nth-of-type(2n) accent-card::part(image) {
+          -webkit-filter: saturate(30%);
+          filter: saturate(30%);
+        }
+        .article-link:focus accent-card::part(image),
+        .article-link:hover accent-card::part(image) {
+          -webkit-filter: saturate(200%);
+          filter: saturate(200%);
+        }
+        .article-link-bottom:focus,
+        .article-link-bottom:hover,
+        .article-link:focus,
+        .article-link:hover {
+          opacity: 1;
+          -webkit-filter: saturate(100%);
+          filter: saturate(100%);
+        }
+        .article-link:hover span {
+          text-decoration: underline;
+        }
         .header-wrapper {
           padding: 0 20px;
           display: flex;
           margin: 0 auto;
           z-index: 100;
-          color: #ffffff;
+          color: var(--simple-colors-default-theme-accent-1);
           justify-content: center;
           box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
           background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
@@ -113,7 +169,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           background-color: transparent;
           border: none;
           display: inline-flex;
-          color: white;
+          color: var(--simple-colors-default-theme-accent-1);
           min-width: 100px;
           text-transform: unset;
           margin: 0px 16px;
@@ -147,13 +203,17 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         }
 
         social-share-link {
-          --social-share-button-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
+          --social-share-button-color: var(--simple-colors-default-theme-accent-1);
+          --social-share-button-bg: var(--simple-colors-default-theme-accent-7);
           --social-share-button-padding: 8px;
           --social-share-button-border-radius: 50%;
+          --social-share-button-hover-bg: var(--simple-colors-default-theme-accent-10);
+          --social-share-button-hover-color: var(--simple-colors-default-theme-accent-2);
         }
 
         .annoy-user {
-          background-color: rgba(255, 255, 255, 0.9);
+          color: var(--simple-colors-default-theme-accent-12);
+          background-color: var(--simple-colors-default-theme-accent-2);
           display: block;
           position: fixed;
           bottom: 0;
@@ -178,9 +238,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           --simple-icon-width: 40px;
           display: flex;
           padding-right: 20px;
-        }
-        .annoy-user simple-icon-lite {
-          color: black;
         }
         .annoy-user span {
           flex: 1 1 auto;
@@ -214,9 +271,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         site-rss-button {
           margin: 0 4px;
           padding: 0;
-          color: black;
-          --site-rss-color: #000000;
-          --site-rss-bg-color: var(--haxcms-color, rgba(255, 0, 116, 1));
+          color: var(--simple-colors-default-theme-accent-12);
+          --site-rss-color: var(--simple-colors-default-theme-accent-10);
+          --site-rss-bg-color: var(--simple-colors-default-theme-accent-10);
           --site-rss-simple-icon-button-padding: 0 4px;
           --site-rss-simple-icon-button-margin: 0;
         }
@@ -254,10 +311,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         </div>
         <div>
           <simple-icon-button-lite
-          class="backbutton"
-          @click="${this._goBack}"
+            class="backbutton"
+            @click="${this._goBack}"
             icon="${this.icon}"
-            style="color:white;"
           >
           <span class="hide-small">Home</span>
         </simple-icon-button-lite>
@@ -274,6 +330,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             ></site-query>
               ${this.__mainPosts.map(
                 (post) => html`
+                <a class="article-link" href="${post.slug}">
                 <accent-card 
                 image-align="center"
                 image-valign="top" 
@@ -288,14 +345,12 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                         : false
                     )}"
                 >
-                <div slot="heading"><a href="${post.slug}">${post.title}</a></div>
-                <div slot="subheading"><simple-datetime unix timestamp="${post.metadata.created}"></simple-datetime></div>
-                <div slot="content">
-                  <p>
+                <div slot="heading"><span>${post.title}</span></div>
+                <p slot="content">
+                  <date-chip unix timestamp="${post.metadata.created}" accent-color="${this.color}"></date-chip>
                   ${post.description}
-                  </p>
-                </div>
-              </accent-card>`
+                </p>
+              </accent-card></a>`
               )}
           </div>
           <main class="contentcontainer-wrapper">
@@ -320,6 +375,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             ></site-query>
               ${this.__followUpPosts.map(
                 (post) => html`
+                <a class="article-link-bottom" href="${post.slug}">
                   <accent-card 
                 image-align="center"
                 image-valign="top" 
@@ -334,14 +390,14 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                         : false
                     )}"
                 >
-                <div slot="heading"><a href="${post.slug}">${post.title}</a></div>
+                <div slot="heading">${post.title}</div>
                 <div slot="subheading"><simple-datetime unix timestamp="${post.metadata.created}"></simple-datetime></div>
                 <div slot="content">
                   <p>
                   ${post.description}
                   </p>
                 </div>
-              </accent-card>
+              </accent-card></a>
                 `
               )}
             <nav class="social-float hide-small ${this.stateClass}">
@@ -397,7 +453,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                 <simple-icon-lite
                   icon="${this.icon}"
                   class="hide-small"
-                  style="color:black;"
                 ></simple-icon-lite>
                 <span class="hide-small">
                   Never miss a story from <strong>${this.title}</strong> use RSS
@@ -538,9 +593,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
   /**
    * LitElement shadowDom ready
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
     if (super.firstUpdated) {
-      super.firstUpdated();
+      super.firstUpdated(changedProperties);
     }
     // prettier-ignore
     import(
