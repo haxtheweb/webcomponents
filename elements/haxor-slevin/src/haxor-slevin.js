@@ -4,10 +4,11 @@
  */
 import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -25,7 +26,7 @@ import "@polymer/iron-pages/iron-pages.js";
  * @demo demo/index.html
  * @element haxor-slevin
  */
-class HaxorSlevin extends HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementTheme)) {
+class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementTheme))) {
   static get styles() {
     return [...super.styles,
       css`
@@ -60,6 +61,9 @@ class HaxorSlevin extends HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementThe
         :host([edit-mode]) accent-card {
           opacity: 0.2;
           pointer-events: none;
+        }
+        accent-card {
+          overflow: hidden;
         }
         #slot {
           min-height: 50vh;
@@ -149,14 +153,14 @@ class HaxorSlevin extends HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementThe
           text-decoration: underline;
         }
         .header-wrapper {
-          padding: 0 20px;
+          padding: 12px 24px;
           display: flex;
           margin: 0 auto;
           z-index: 100;
           color: var(--simple-colors-default-theme-accent-1);
           justify-content: center;
           box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
-          background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
+          background-color: var(--simple-colors-default-theme-accent-10);
         }
         .header-wrapper div {
           display: inline-flex;

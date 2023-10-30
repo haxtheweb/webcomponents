@@ -46,29 +46,27 @@ const HAXCMSRememberRoute = function (SuperClass) {
             `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
           ) != toJS(store.location.pathname)
         ) {
-          let slot = document.createElement("a");
-          slot.setAttribute(
+          let btn = document.createElement("a");
+          btn.setAttribute(
             "href",
             localStorageGet(
               `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
             )
           );
-          slot.style.height = "40px";
-          slot.style.display = "block";
-          slot.addEventListener("click", this.resumeLastRoute.bind(this));
-          slot.innerHTML = `<button style="padding:4px;font-weight:bold;background-color: black; color: white; border: 4px solid black; border-radius:none;margin-left:4px;cursor: pointer;">${this.t.resume}</button>`;
+          btn.addEventListener("click", this.resumeLastRoute.bind(this));
+          btn.innerHTML = `<button style="padding:4px;font-weight:bold;background-color: black; color: white; border: 4px solid black; border-radius:none;margin-left:4px;cursor: pointer;">${this.t.resume}</button>`;
           const urlParams = new URLSearchParams(window.location.search);
           const format = urlParams.get("format");
           // ensure we don't show this if we have an alternate format request
           if (!format) {
             store.toast(
               this.t.resumeMessage,
-              10000,
+              5000,
               {},
               "capsule",
               null,
               null,
-              slot
+              btn
             );
           }
         }
