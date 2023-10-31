@@ -133,13 +133,13 @@ export class RPGCharacterToast extends SimpleToastEl {
           height: 16px;
         }
         .dismiss {
-          padding:4px;
-          font-weight:bold;
+          padding: 4px;
+          font-weight: bold;
           background-color: black;
           color: white;
           border: 4px solid black;
-          border-radius:none;
-          margin-left:4px;
+          border-radius: none;
+          margin-left: 4px;
           cursor: pointer;
         }
         .leftedge {
@@ -237,7 +237,14 @@ export class RPGCharacterToast extends SimpleToastEl {
               icon="hax:loading"
             ></simple-icon-lite>`
           : ``}
-        ${!this.merlin ? html`<div class="buttons"><slot></slot><button class="dismiss" @click="${this.hide}">${this.closeText}</button></div>` : ``}
+        ${!this.merlin
+          ? html`<div class="buttons">
+              <slot></slot
+              ><button class="dismiss" @click="${this.hide}">
+                ${this.closeText}
+              </button>
+            </div>`
+          : ``}
       </span>
       <span class="bubble rightedge"></span>
       ${this.merlin

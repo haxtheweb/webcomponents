@@ -1027,10 +1027,10 @@ export class AppHaxSteps extends SimpleColors {
         break;
       case "website":
         template = html` <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="blog"
-          ></app-hax-button>`;
+          tabindex="${step !== 2 ? "-1" : ""}"
+          @click=${this.chooseType}
+          type="blog"
+        ></app-hax-button>`;
         break;
       case "import":
         template = html` <app-hax-button
