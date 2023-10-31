@@ -8,7 +8,7 @@ class SiteRegion extends LitElement {
   static get properties() {
     return {
       name: { type: String },
-      contentItemId: { type: String },
+      contentItemIds: { type: Array },
     };
   }
 
@@ -20,7 +20,7 @@ class SiteRegion extends LitElement {
     autorun((reaction) => {
       const data = toJS(store.regionData);
       if (this.name && data[this.name]) {
-        this.contentItemId = data[this.name];
+        this.contentItemIds = data[this.name];
       }
       this.__disposer.push(reaction);
     });
@@ -32,33 +32,35 @@ class SiteRegion extends LitElement {
         if (propName === 'name' && this[propName]) {
           const data = toJS(store.regionData);
           if (data[this.name]) {
-            this.contentItemId = data[this.name];
+            this.contentItemIds = data[this.name];
           }
         }
-        if (propName === 'contentItemId' && this[propName]) {
-          let item = store.findItem(this.contentItemId);
-          if (item && item.location) {
-            fetch(item.location,
-              {
-                method: 'GET',
-                priority: 'low',
-              }
-            )
-            .then((response) => {
-              if (response.ok) {
-                return response.text();
-              }
-            })
-            .then((data) => {
-              // region data found
-              let div = document.createElement('div');
-              div.innerHTML = data;
-              this.innerHTML = div.innerHTML;
-            })
-            .catch((err) => {
-              console.error('regio data not found');
-            });
-          }
+        if (propName === 'contentItemIds' && this[propName] && this[propName].length > 0) {
+          this.contentItemIds.map(async (id) => {
+            let item = store.findItem(id);
+            if (item && item.location) {      
+              await fetch(item.location,
+                {
+                  method: 'GET',
+                  priority: 'low',
+                }
+              )
+              .then((response) => {
+                if (response.ok) {
+                  return response.text();
+                }
+              })
+              .then((data) => {
+                // region data found
+                let div = document.createElement('div');
+                div.innerHTML = data;
+                this.appendChild(div);
+              })
+              .catch((err) => {
+                console.error('region data not found');
+              });
+            }
+          })
         }
       }
     });

@@ -356,6 +356,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
                 </p>
               </accent-card></a>`
               )}
+            <site-region name="footerPrimary"></site-region>
           </div>
           <main class="contentcontainer-wrapper">
             <article id="contentcontainer">
@@ -471,7 +472,6 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
                 ></site-share-widget>
               </div>
             </footer>
-            <site-region name="footerPrimary"></site-region>
           </main>
         </iron-pages>
       </div>

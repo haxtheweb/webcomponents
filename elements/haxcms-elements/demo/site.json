@@ -44,7 +44,9 @@
                 "cssVariable": "--simple-colors-default-theme-purple-7",
                 "icon": "av:add-to-queue"
             },
-            "regions": {}
+            "regions": {
+              "footerPrimary": ["item-4a18ebe0-cf6a-49cd-9531-4c430ba2a9e0", "item-8e045593-79fd-401d-b380-1029001f5574"]
+            }
         },
         "node": {
             "fields": {}
