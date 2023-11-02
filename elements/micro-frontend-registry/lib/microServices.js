@@ -39,6 +39,38 @@ export function enableCoreServices() {
     },
   });
 
+  // metadata
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/website/metadata",
+    name: "@core/metadata",
+    method: "GET",
+    title: "URL Metadata",
+    description:
+      "Skims metadata off a link",
+    params: {
+      q: "url to process",
+    },
+    userContext: [
+      {
+        action: "paste",
+        data: "url",
+        memory: {
+          isLoggedIn: true
+        },
+        result: function(data) {
+          return {
+            tag: "a",
+            content: data.title || data["og:site_name"] || data["og:title"] || data.url,
+            properties: {
+              href: data.url,
+              rel: "nofollow"
+            }
+          };
+        }
+      }
+    ]
+  });
+
   // mdToHtml
   MicroFrontendRegistry.add({
     endpoint: "/api/services/media/format/mdToHtml",

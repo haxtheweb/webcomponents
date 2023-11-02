@@ -14,6 +14,7 @@ import "./super-daemon-row.js";
 export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   constructor() {
     super();
+    this.focused = false;
     this.voiceSearch = false;
     this.iconAccent = "purple";
     this.multiMatch = true;
@@ -32,6 +33,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.opened = false;
     this.items = [];
     this.mini = false;
+    this.wand = false;
     this.loading = false;
     this.listeningForInput = false;
     this.programSearch = "";
@@ -43,7 +45,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     };
     this.where = "index";
     this.icon = "hardware:keyboard-return";
-    this.questionTags = [];
   }
   static get tag() {
     return "super-daemon-ui";
@@ -61,12 +62,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         attribute: "listening-for-input",
       },
       mini: { type: Boolean, reflect: true },
+      wand: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       programSearch: { type: String, attribute: "program-search" },
       programName: { type: String, attribute: "program-name" },
       commandContext: { type: String, attribute: "command-context" },
       opened: { type: Boolean, reflect: true },
-      questionTags: { type: Array },
+      focused: { type: Boolean, reflect: true }
     };
   }
 
@@ -93,6 +95,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         .search {
           display: flex;
           margin: 16px;
+        }
+        :host([wand]) .search {
+          margin: -16px 16px 6px 4px;
         }
         .search input {
           display: inline-flex;
@@ -171,6 +176,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           color: var(--simple-colors-default-theme-grey-10, black);
           padding: 8px;
           margin: 8px;
+        }
+        :host([focused][wand]) .results {
+          display: block;
         }
         .results {
           width: 100%;
@@ -342,11 +350,26 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           }, 600);
         }
       }
-      if (propName == "opened") {
+      if (propName == "opened" && this.shadowRoot) {
         if (this.opened) {
+          document.body.style.overflow = "hidden";
           this.shadowRoot.querySelector("#inputfilter").focus();
-          // reset to top of results
-          this.shadowRoot.querySelector(".results").scrollTo(0, 0);
+          // ensure whole recordset is on screen if in mini mode
+          if (this.mini && !this.wand) {
+            // reset to top of results
+            this.shadowRoot.querySelector(".results").scrollTo(0, 0);
+            if (typeof this.shadowRoot.querySelector('#bottom').scrollIntoViewIfNeeded === "function") {
+              this.shadowRoot.querySelector('#bottom').scrollIntoViewIfNeeded(true);
+            } else {
+              this.shadowRoot.querySelector('#bottom').scrollIntoView({
+                behavior: "smooth",
+                inline: "center",
+              });
+            }  
+          }
+        }
+        else {
+          document.body.style.overflow = "";
         }
       }
       if (propName == "commandContext") {
@@ -584,24 +607,16 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     }
   }
 
+  fieldFocusLoss(e) {
+    this.focused = false;
+  }
+
+  fieldFocus(e) {
+    this.focused = true;
+  }
+
   render() {
     return html`
-      <div class="common-tasks-text">${this.t.commonTasksText}</div>
-      <div class="question-tags">
-        ${this.questionTags
-          ? this.questionTags.map(
-              (item, i) => html` <simple-tag
-                tabindex="0"
-                @keydown="${this.tagKeydown}"
-                @click="${this.tagClick}"
-                accent-color="grey"
-                value="${item.label}"
-                part="tag tag-${i}"
-                data-value="${item.value}"
-              ></simple-tag>`
-            )
-          : ``}
-      </div>
       <div class="search">
         ${this.voiceSearch
           ? html`<simple-icon-button-lite
@@ -628,6 +643,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           @keydown="${this._inputKeydown}"
+          @focus="${this.fieldFocus}"
+          @blur="${this.fieldFocusLoss}"
           .value="${this.like}"
           aria-controls="filter"
           label="${this.t.filterCommands}"
@@ -673,7 +690,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                           .tags="${item.tags}"
                           event-name="${item.eventName}"
                           path="${item.path}"
-                          ?more="${item.more && !this.mini}"
+                          ?more="${item.more && (!this.mini || this.wand)}"
                           ?mini="${this.mini}"
                           >${item.more ? item.more : nothing}</super-daemon-row
                         >
@@ -682,6 +699,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                   `}
             `}
       </div>
+      <div id="bottom"></div>
     `;
   }
 }

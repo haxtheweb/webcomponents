@@ -34,9 +34,9 @@ class SuperDaemon extends SimpleColors {
       program: { type: String },
       programSearch: { type: String },
       like: { type: String },
-      questionTags: { type: Array },
       value: { type: String },
       mini: { type: Boolean },
+      wand: { type: Boolean, reflect: true },
       activeNode: { type: Object },
       programTarget: { type: Object },
       voiceSearch: { type: Boolean, reflect: true, attribute: "voice-search" },
@@ -107,11 +107,11 @@ class SuperDaemon extends SimpleColors {
     this.icon = "hardware:keyboard-return";
     this.context = [];
     this.opened = false;
-    this.questionTags = [];
     this.items = [];
     this.loading = false;
     this.like = "";
     this.mini = false;
+    this.wand = false;
     this._programValues = {};
     this.programSearch = "";
     this.allItems = [];
@@ -265,6 +265,10 @@ class SuperDaemon extends SimpleColors {
       if (!option.priority) {
         option.priority = 0;
       }
+      // no context means it's pervasive
+      if (!option.context) {
+        option.context = "*";
+      }
       // create new object from existing so we can build an index
       // remove icon, image, value, textCharacter, eventName as these are not searchable values
       // then create an idex by making everything else into a space separated string
@@ -358,16 +362,10 @@ class SuperDaemon extends SimpleColors {
         // platform specific additional modifier
         if (this.key1 == "Ctrl" && e.ctrlKey) {
           this.opened = !this.opened;
-          // ensure we're not in mini mode if we are
-          if (this.opened) {
-            this.mini = false;
-          }
+          this.keyHandlerCallback();
         } else if (this.key1 == "Alt" && e.altKey) {
           this.opened = !this.opened;
-          // ensure we're not in mini mode if we are
-          if (this.opened) {
-            this.mini = false;
-          }
+          this.keyHandlerCallback();
         }
       }
       if (e.key == "Escape" && this.opened) {
@@ -439,18 +437,24 @@ class SuperDaemon extends SimpleColors {
           --simple-icon-width: 24px;
           --simple-icon-height: 24px;
         }
+        :host([wand]) absolute-position-behavior {
+          top: 24px !important;
+        }
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 10000);
           min-width: 280px;
           color: var(--simple-colors-default-theme-grey-12, black);
         }
+        absolute-position-behavior super-daemon-ui[mini][wand] {
+          margin: -18px 0 0 0;
+          padding: 0px;
+        }
         absolute-position-behavior super-daemon-ui {
-          margin-top: -46px;
+          width: 280px;
+          margin: -64px 0 0 -8px;
+          padding: 4px 0 0 0;
           color: var(--simple-colors-default-theme-grey-12, black);
           background-color: var(--simple-colors-default-theme-grey-1, white);
-          width: 400px;
-          margin-left: 14px;
-          padding-top: 8px;
         }
         super-daemon-ui {
           color: var(--simple-colors-default-theme-grey-12, black);
@@ -472,11 +476,12 @@ class SuperDaemon extends SimpleColors {
    */
   close(e) {
     // clean up event for click away in mini mode if active
-    this.opened = false;
     this.activeNode = null;
     this.loading = false;
     this.like = "";
+    this.opened = false;
     this.mini = false;
+    this.wand = false;
     this._programValues = {};
     this.programSearch = "";
     this.voiceCommands = {};
@@ -518,6 +523,11 @@ class SuperDaemon extends SimpleColors {
       if (item.context) {
         // if we're in a global context, include all global context results
         let results = [];
+        // if we have a context and it's ALL then it shows up for any context
+        // system wide commands for example
+        if (item.context === "*") {
+          return item;
+        }
         if (this.commandContext == "*") {
           results = context.filter((value) => item.context.includes(value));
         } else {
@@ -704,7 +714,7 @@ class SuperDaemon extends SimpleColors {
       ? html`
           <absolute-position-behavior
             justify
-            position="bottom"
+            position="${this.wand ? "right" : "bottom"}"
             allow-overlap
             sticky
             auto
@@ -712,11 +722,11 @@ class SuperDaemon extends SimpleColors {
             ?hidden="${!this.opened}"
           >
             <super-daemon-ui
-              ?open="${this.opened}"
+              ?opened="${this.opened}"
               ?mini="${this.mini}"
+              ?wand="${this.wand}"
               icon="${this.icon}"
               ?dark="${this.dark}"
-              .questionTags="${this.questionTags}"
               ?loading="${this.loading}"
               like="${this.like}"
               ?listening-for-input="${this.listeningForInput}"
@@ -746,14 +756,13 @@ class SuperDaemon extends SimpleColors {
             @focusout="${this.focusout}"
           >
             <super-daemon-ui
-              ?open="${this.opened}"
+              ?opened="${this.opened}"
               icon="${this.icon}"
               ?loading="${this.loading}"
               like="${this.like}"
               ?dark="${this.dark}"
               ?voice-search="${this.voiceSearch}"
               ?listening-for-input="${this.listeningForInput}"
-              .questionTags="${this.questionTags}"
               @like-changed="${this.likeChanged}"
               .items="${this.itemsForDisplay(this.items, this.programResults)}"
               command-context="${this.commandContext}"
@@ -1074,6 +1083,12 @@ class SuperDaemon extends SimpleColors {
         }
       }, 0);
     }
+  }
+  
+  // key handler as far as what to do if combo pressed
+  // this way application can modify defaults as needed
+  keyHandlerCallback() {
+    return true;
   }
   // override to block calling from global key commands
   allowedCallback() {

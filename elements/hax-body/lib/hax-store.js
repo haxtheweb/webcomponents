@@ -2128,9 +2128,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-refresh-tray-form": "refreshActiveNodeForm",
       "rich-text-editor-prompt-open": "_richTextEditorPromptOpen",
       "rich-text-editor-prompt-close": "_richTextEditorPromptClose",
-      "super-daemon-command-context-changed":
-        "_superDaemonCommandContextChanged",
-      "super-daemon-context-changed": "_superDaemonContextChanged",
     };
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {
@@ -2316,60 +2313,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       )}`,
       "_blank"
     );
-  }
-
-  _superDaemonCommandContextChanged(e) {
-    // hax can react to command context changes
-  }
-
-  _superDaemonContextChanged(e) {
-    // hax can react to command context changes
-    if (e.detail.value.indexOf("CMS") !== -1) {
-      SuperDaemonInstance.questionTags = [
-        {
-          value: "CMS/action/edit",
-          label: "Edit current page",
-        },
-        {
-          value: "*",
-          label: "List everything I can do",
-        },
-        {
-          value: "?",
-          label: "HELP!",
-        },
-      ];
-    } else if (e.detail.value.indexOf("HAX") !== -1) {
-      SuperDaemonInstance.questionTags = [
-        {
-          value: "CMS/action/save",
-          label: "Save current page",
-        },
-        {
-          value: "media",
-          label: "Where can I find media?",
-        },
-        {
-          value: "*",
-          label: "List everything I can do",
-        },
-        {
-          value: "?",
-          label: "HELP!",
-        },
-      ];
-    } else {
-      SuperDaemonInstance.questionTags = [
-        {
-          value: "*",
-          label: "List everything I can do",
-        },
-        {
-          value: "?",
-          label: "HELP!",
-        },
-      ];
-    }
   }
 
   _richTextEditorPromptOpen() {

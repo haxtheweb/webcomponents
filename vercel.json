@@ -1,10 +1,6 @@
 {
   "functions": {
-    "api/**/*.js": {
-      "memory": 1024,
-      "maxDuration": 15
-    },
-    "api/apps/haxcms/*.js": {
+    "api/apps/haxcms/**.js": {
       "memory": 1024,
       "maxDuration": 60
     },
@@ -15,6 +11,10 @@
     "api/apps/haxcms/convert/*.js": {
       "memory": 3008,
       "maxDuration": 300
+    },
+    "api/**/*.js": {
+      "memory": 1024,
+      "maxDuration": 15
     }
   }
 }

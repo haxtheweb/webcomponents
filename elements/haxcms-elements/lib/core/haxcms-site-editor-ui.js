@@ -139,7 +139,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-border-color: var(
             --simple-colors-default-theme-red-2
           );
-          margin-right: 64px;
         }
         #merlin {
           color: var(--simple-colors-default-theme-purple-10);
@@ -460,6 +459,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.allowedCallback = () => {
       return true;
     };
+    SuperDaemonInstance.keyHandlerCallback = () => {
+      const merlin = this.shadowRoot.querySelector('#merlin');
+      store.playSound("click");
+      // modal shouldn't be possible but just in-case
+      if (merlin.getAttribute("data-event") == "super-daemon-modal") {
+        HAXStore.haxTray.collapsed = false;
+      }
+      else {
+        SuperDaemonInstance.mini = true;
+        SuperDaemonInstance.wand = true;
+        SuperDaemonInstance.activeNode = this.shadowRoot.querySelector('#merlin');
+      }
+      SuperDaemonInstance.runProgram(
+        "*",
+      );
+      return true;
+    };
     // nothing message so we can suggest a link to make a suggestion
     SuperDaemonInstance.noResultsSlot = () => {
       return html`Expecting to see results?
@@ -570,7 +586,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       more: "More",
       siteActions: "Site actions",
       insights: "Insights dashboard (beta)",
-      viewBuilder: "View builder (beta)",
+      viewBuilder: "View builder (alpha)",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",
@@ -818,18 +834,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="delete page"
           ></simple-toolbar-button>
 
-
-          <simple-toolbar-button
-            icon="hax:wizard-hat"
-            label="${this.t.merlin}"
-            voice-command="${this.t.merlin}"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            id="merlin"
-            @click="${this.haxButtonOp}"
-            data-event="super-daemon"
-            show-text-label
-           ></simple-toolbar-button>
-
           <simple-toolbar-button
             data-event="content-edit"
             icon="settings"
@@ -938,6 +942,32 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ?hidden="${this.editMode}"
               ?disabled="${this.editMode}"
               tabindex="${this.editMode ? "-1" : "0"}"
+              id="sharebutton"
+              @click="${this._shareButtonTap}"
+              icon="social:share"
+              part="sharebtn"
+              show-text-label
+              icon-position="left"
+              label="${this.t.shareSite}"
+            ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <haxcms-button-add
+                hidden
+                ?disabled="${this.editMode}"
+                type="docximport"
+                id="docximport"
+                show-text-label
+                data-super-daemon-path="CMS/action/import/docx"
+                data-super-daemon-label="${this.t.importDocxFile}"
+                data-super-daemon-icon="hax:file-docx"
+              ></haxcms-button-add>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+            <simple-toolbar-button
+              ?hidden="${this.editMode}"
+              ?disabled="${this.editMode}"
+              tabindex="${this.editMode ? "-1" : "0"}"
               id="insightsbutton"
               icon="hax:clipboard-pulse"
               part="insightsbtn"
@@ -964,32 +994,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             </simple-toolbar-menu-item>
 
             <simple-toolbar-menu-item>
-            <simple-toolbar-button
-              ?hidden="${this.editMode}"
-              ?disabled="${this.editMode}"
-              tabindex="${this.editMode ? "-1" : "0"}"
-              id="sharebutton"
-              @click="${this._shareButtonTap}"
-              icon="social:share"
-              part="sharebtn"
-              show-text-label
-              icon-position="left"
-              label="${this.t.shareSite}"
-            ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-              <haxcms-button-add
-                hidden
-                ?disabled="${this.editMode}"
-                type="docximport"
-                id="docximport"
-                show-text-label
-                data-super-daemon-path="CMS/action/import/docx"
-                data-super-daemon-label="${this.t.importDocxFile}"
-                data-super-daemon-icon="hax:file-docx"
-              ></haxcms-button-add>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
               <simple-toolbar-button
                 @click="${this._manifestButtonTap}"
                 icon-position="left"
@@ -1003,9 +1007,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 label="${this.t.editSettings}"
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
-            
           </simple-toolbar-menu>
           <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
+          ${this.responsiveSize === 'xs' ? html`
+          <simple-toolbar-button
+            icon="hax:wizard-hat"
+            label="${this.t.merlin}"
+            voice-command="${this.t.merlin}"
+            icon-position="${this.getIconPosition(this.responsiveSize)}"
+            id="merlin"
+            @click="${this.haxButtonOp}"
+            data-event="super-daemon-modal"
+            show-text-label
+          ></simple-toolbar-button>` : html`
+          <simple-toolbar-button
+            icon="hax:wizard-hat"
+            label="${this.t.merlin}"
+            voice-command="${this.t.merlin}"
+            icon-position="${this.getIconPosition(this.responsiveSize)}"
+            id="merlin"
+            @click="${this.haxButtonOp}"
+            data-event="super-daemon"
+            show-text-label
+          ></simple-toolbar-button>`}
         </simple-toolbar>
 
         <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu"
@@ -1080,6 +1104,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let exec = e.target.getAttribute("data-event");
     switch (exec) {
       case "super-daemon":
+        store.playSound("click");
+        SuperDaemonInstance.mini = true;
+        SuperDaemonInstance.wand = true;
+        SuperDaemonInstance.activeNode = e.target;
+        SuperDaemonInstance.runProgram(
+          "*",
+        );
+        SuperDaemonInstance.open();
+        break;
+      case "super-daemon-modal":
         store.playSound("click");
         SuperDaemonInstance.open();
         HAXStore.haxTray.collapsed = false;
@@ -1337,7 +1371,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         method: "toggle",
       },
       voice: "(toggle) dark mode",
-      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-method",
       path: "CMS/action/darkMode",
     });
@@ -1349,7 +1382,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         target: this.shadowRoot.querySelector(".soundToggle"),
       },
-      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-click",
       path: "CMS/action/sound",
     });

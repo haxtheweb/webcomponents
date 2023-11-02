@@ -229,18 +229,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       }
       return false;
     };
-    {
-      SuperDaemonInstance.questionTags = [
-        {
-          value: "*",
-          label: "List everything I can do",
-        },
-        {
-          value: "?",
-          label: "HELP!",
-        },
-      ];
-    }
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
