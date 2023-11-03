@@ -12,6 +12,7 @@ import "./haxcms-site-router.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
+import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 import "@lrnwebcomponents/replace-tag/replace-tag.js";
 // toggle store darkmode
 function darkToggle(e) {
@@ -579,6 +580,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     });
     autorun(() => {
       this.isLoggedIn = toJS(store.isLoggedIn);
+      UserScaffoldInstance.writeMemory('isLoggedIn', this.isLoggedIn);
     });
   }
   firstUpdated(changedProperties) {

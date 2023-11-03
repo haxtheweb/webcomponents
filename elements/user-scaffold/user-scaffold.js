@@ -1,0 +1,253 @@
+/**
+ * Copyright 2023
+ * @license , see License.md for full text.
+ */
+import { localStorageSet, localStorageGet, validURL } from "@lrnwebcomponents/utils/utils.js";
+import {
+  observable,
+  makeObservable,
+  computed,
+  configure,
+  autorun,
+  toJS,
+} from "mobx";
+configure({ enforceActions: false }); // strict mode off
+// register globally so we can make sure there is only one
+window.UserScaffold = window.UserScaffold || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same user-scaffold element, making it a singleton.
+window.UserScaffold.requestAvailability = () => {
+  // if there is no single instance, generate one and append it to end of the document
+  if (!window.UserScaffold.instance) {
+    window.UserScaffold.instance = document.createElement("user-scaffold");
+    document.body.appendChild(window.UserScaffold.instance);
+  }
+  return window.UserScaffold.instance;
+};
+export const UserScaffoldInstance = window.UserScaffold.requestAvailability();
+
+const MEMORYINTERVALPOLLING = 3000;
+/**
+ * `user-scaffold`
+ * `memory and context to establish and maintain appropriate user scaffolding`
+ *
+ * @demo demo/index.html
+ * @element user-scaffold
+ */
+export class UserScaffold extends HTMLElement {
+  constructor() {
+    super();
+    this.windowControllers = new AbortController();
+    this.stMemory = {
+      interactionDelay: 0,
+      interactionCount: 0,
+    };
+    this.ltMemory = localStorageGet("user-scaffold-ltMemory", {});
+    this.action = {
+      type: null,
+      architype: null,
+    };
+    this.data = {
+      raw: null,
+      safe: null,
+      architype: null
+    };
+    // event wiring
+    this.userActionArchitypes();
+
+    makeObservable(this, {
+      stMemory: observable,
+      ltMemory: observable,
+      action: observable,
+      data: observable,
+      memory: computed,
+    });
+
+    // debug to illustrate memory
+    this.__disposer = this.__disposer ? this.__disposer : [];
+    autorun((reaction) => {
+      console.warn("START STATE");
+      console.log(`memory`, toJS(this.memory));
+      console.log(`action`, toJS(this.action));
+      console.log(`data`, toJS(this.data));
+      console.warn("END STATE");
+      this.__disposer.push(reaction);
+    });
+  }
+  // brings in our standard user action architypes
+  // these should provide the basis for understanding
+  // what the user is attempting to do in an application
+  userActionArchitypes() {
+    // always polling to understand if an action is taken
+    this.interactionInterval = setInterval(() => {
+      // limit writes to 30 seconds. Not going to track beyond that
+      if (this.readMemory('interactionDelay') <= MEMORYINTERVALPOLLING*10) {
+        this.incrementWriteMemory('interactionDelay', MEMORYINTERVALPOLLING);
+      }
+    }, MEMORYINTERVALPOLLING);
+    // events
+    window.addEventListener("click", this.userMouseAction.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    window.addEventListener("paste", this.userPasteAction.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    window.addEventListener("dragover", this.userDragAction.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+  }
+  // user has pasted, anywhere which is them indicating
+  // they want to bring something into the application
+  userPasteAction(e) {
+    if (e.isTrusted) {
+      this.action = {
+        type: "paste",
+        architype: "input",
+      }
+      let pasteContent = "";
+      // default is text
+      let architype = "text";
+      // intercept paste event
+      if (e.clipboardData || e.originalEvent.clipboardData) {
+        pasteContent = (e.originalEvent || e).clipboardData.getData(
+          "text/html"
+        );
+        // if it is purely plain text it could fail to come across as HTML and be empty
+        if (pasteContent == "") {
+          pasteContent = (e.originalEvent || e).clipboardData.getData("text");
+        }
+        else {
+          architype = "text/html";
+        }
+      } else if (window.clipboardData) {
+        pasteContent = window.clipboardData.getData("Text");
+      }
+      const raw = pasteContent;
+      pasteContent = pasteContent.trim();
+      // clear empty span tags that can pop up
+      pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
+      //remove styling
+      pasteContent = pasteContent.replace(
+        /(?:style="(\S+:\s*[^;"]+;\s*)*)+"/g,
+        ""
+      );
+      // clean up div tags that can come in from contenteditable pastes
+      // p tags make more sense in the content area
+      pasteContent = pasteContent.replace(/<div/g, "<p");
+      pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
+      let safe = pasteContent;
+      console.log(pasteContent);
+      // evaluate architype based on what this might be..
+      // look for base64 like copy and paste of an image from clipboard
+      if (this.isBase64(pasteContent)) {
+        architype = 'base64';
+        safe = this.isBase64(pasteContent);
+      }
+      else if (e.clipboardData.files.length > 0) {
+        architype = 'file';
+        if (e.clipboardData.files.length > 1) {
+          architype = 'files';
+        }
+      }
+      else if (validURL(pasteContent)) {
+        architype = 'url';
+      }
+
+      this.data = {
+        raw: raw,
+        safe: safe,
+        architype: architype,
+      };
+    }
+  }
+  // dragging a file in implies certain capabilities
+  userDragAction(e) {console.log(e.dataTransfer.items[0]);
+    if (e.isTrusted && e.dataTransfer && e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+      console.log(e.dataTransfer.items);
+      this.action = {
+        type: "drag",
+        architype: "input",
+      }
+      this.data = {
+        raw: e.dataTransfer.items[0].type,
+        safe: e.dataTransfer.items[0].type,
+        architype: e.dataTransfer.items[0].kind,
+      };
+    }
+  }
+
+  // reset interaction counter
+  userMouseAction(e) {
+    // don't respond to fake click events
+    if (e.isTrusted) {
+      this.action = {
+        type: "click",
+        architype: "input",
+      }
+      this.writeMemory('interactionDelay', 0);
+      this.incrementWriteMemory('interactionCount', 1);
+    }
+  }
+  incrementWriteMemory(key, value, type = "short") {
+    let prop = 'stMemory';
+    if (type == "long") {
+      prop = 'ltMemory';
+    }
+    this.writeMemory(key, this[prop][key] + value, type);
+  }
+  // write memory state for long or short term memory
+  // short is default, while long also is going to write localStorage
+  writeMemory(key, value, type = "short") {
+    let prop = 'stMemory';
+    if (type == "long") {
+      prop = 'ltMemory';
+      this[prop][key] = value;
+      localStorageSet(`user-scaffold-${prop}`, this[prop]);
+    }
+    else {
+      this[prop][key] = value;
+    }
+  }
+  // read memory state
+  readMemory(key) {
+    if (this.memory[key]) {
+      return this.memory[key];
+    }
+    return null;
+  }
+  // combine long and short term memory
+  // this should ensure that short overrides long if
+  // key is the same
+  get memory() {
+    return {...this.ltMemory, ...this.stMemory};
+  }
+  /**
+   * detect base64 object
+   */
+  isBase64(str) {
+    try {
+      return btoa(atob(str)) == str;
+    } catch (err) {
+      return false;
+    }
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "user-scaffold";
+  }
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+    this.windowControllers.abort();
+    super.disconnectedCallback();
+  }
+}
+customElements.define(UserScaffold.tag, UserScaffold);
