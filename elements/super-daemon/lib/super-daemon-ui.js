@@ -162,12 +162,14 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           max-width: 100px;
         }
         :host([mini]) .program {
-          line-height: 12px;
-          font-size: 10px;
-          max-width: 50px;
+          line-height: 24px;
+          font-size: 12px;
+          max-width: 8px;
           height: 24px;
-          margin: 0;
-          padding: 2px;
+          margin: 0px;
+          padding: 0px 4px 0px 2px;
+          font-weight: bold;
+          font-style: italic;
         }
         .results-stats {
           right: 0;

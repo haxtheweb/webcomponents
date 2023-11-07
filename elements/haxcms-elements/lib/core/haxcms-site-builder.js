@@ -5,6 +5,7 @@ import {
   wipeSlot,
   varExists,
   localStorageSet,
+  validURL,
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
@@ -582,7 +583,68 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this.isLoggedIn = toJS(store.isLoggedIn);
       UserScaffoldInstance.writeMemory('isLoggedIn', this.isLoggedIn);
     });
+    // user scaffolding wired up to superDaemon
+    autorun(() => {
+      const usAction = toJS(UserScaffoldInstance.action);
+      // try to evaluate typing in merlin
+      if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn && 
+        UserScaffoldInstance.memory.recentTarget === SuperDaemonInstance &&
+        SuperDaemonInstance.programName === null &&
+        UserScaffoldInstance.memory.interactionDelay > 600 &&
+        ["paste", "key"].includes(usAction.type)
+        ) {
+        if (validURL(SuperDaemonInstance.value)) {
+          SuperDaemonInstance.waveWand(["/", {}, "hax-agent", "Agent", SuperDaemonInstance.value], null, "coin2")
+        }
+      }
+      else if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn && 
+        SuperDaemonInstance.programName === null &&
+        ["paste"].includes(usAction.type) &&
+        UserScaffoldInstance.data.architype == "url"
+      ) {
+        SuperDaemonInstance.waveWand(["/", {}, "hax-agent", "Agent", toJS(UserScaffoldInstance.data.value)], null, "coin2")
+      }
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Magic Wand",
+      icon: "hax:hax2022",
+      priority: -10000,
+      tags: ["Agent", "help", "merlin"],
+      eventName: "super-daemon-run-program",
+      path: "HAX/agent",
+      value: {
+        name: "Agent",
+        machineName: "hax-agent",
+        program: (input, values) => {
+          let results = [{
+            title: "Insert url",
+            icon: "hax:hax2022",
+            tags: ["agent"],
+            value: {
+              target: this,
+              method: "goToLocation",
+              args: [input],
+            },
+            eventName: "super-daemon-element-method",
+            context: [
+              "/",
+              "HAX/agent",
+            ],
+            path: "HAX/agent/insert",
+          }];
+          return results;
+        },
+      },
+    });
   }
+  goToLocation(input) {
+    alert(input);
+  }
+  
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);

@@ -8,14 +8,14 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/a11y-collapse.js';
+import '@lrnwebcomponents/a11y-collapse/a11y-collapse.js';
 /* At top of an application */
 <script type="module" src="a11y-collapse.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/a11y-collapse.js';
+  import '@lrnwebcomponents/a11y-collapse/a11y-collapse.js';
 
-  import {A11yCollapse} from '@lrnwebcomponents/a11y-collapse';
+  import {A11yCollapse} from '@lrnwebcomponents/a11y-collapse/a11y-collapse';
 </script>
 ```
 

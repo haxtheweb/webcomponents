@@ -1009,7 +1009,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             </simple-toolbar-menu-item>
           </simple-toolbar-menu>
           <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
-          ${this.responsiveSize === 'xs' ? html`
           <simple-toolbar-button
             icon="hax:wizard-hat"
             label="${this.t.merlin}"
@@ -1017,19 +1016,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             id="merlin"
             @click="${this.haxButtonOp}"
-            data-event="super-daemon-modal"
+            data-event="${this.responsiveSize === 'xs' ? 'super-daemon-modal' : 'super-daemon'}"
             show-text-label
-          ></simple-toolbar-button>` : html`
-          <simple-toolbar-button
-            icon="hax:wizard-hat"
-            label="${this.t.merlin}"
-            voice-command="${this.t.merlin}"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            id="merlin"
-            @click="${this.haxButtonOp}"
-            data-event="super-daemon"
-            show-text-label
-          ></simple-toolbar-button>`}
+          ></simple-toolbar-button>
         </simple-toolbar>
 
         <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu"
@@ -1104,20 +1093,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let exec = e.target.getAttribute("data-event");
     switch (exec) {
       case "super-daemon":
-        store.playSound("click");
-        SuperDaemonInstance.mini = true;
-        SuperDaemonInstance.wand = true;
-        SuperDaemonInstance.activeNode = e.target;
-        SuperDaemonInstance.runProgram(
-          "*",
-        );
-        SuperDaemonInstance.open();
-        break;
+        SuperDaemonInstance.waveWand(["*"], e.target, null);
+      break;
       case "super-daemon-modal":
         store.playSound("click");
         SuperDaemonInstance.open();
         HAXStore.haxTray.collapsed = false;
-        break;
+      break;
       case "media-program":
         store.playSound("click");
         SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
@@ -1275,6 +1257,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           path: item.getAttribute("data-super-daemon-path"),
         });
       });
+    SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector("#merlin");
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
       title: this.t.save,

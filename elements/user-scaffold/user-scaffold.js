@@ -27,7 +27,7 @@ window.UserScaffold.requestAvailability = () => {
 };
 export const UserScaffoldInstance = window.UserScaffold.requestAvailability();
 
-const MEMORYINTERVALPOLLING = 3000;
+const MEMORYINTERVALPOLLING = 300;
 /**
  * `user-scaffold`
  * `memory and context to establish and maintain appropriate user scaffolding`
@@ -36,8 +36,18 @@ const MEMORYINTERVALPOLLING = 3000;
  * @element user-scaffold
  */
 export class UserScaffold extends HTMLElement {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "user-scaffold";
+  }
+
   constructor() {
     super();
+    // DEBUG MODE
+    this.debug = true;
     this.windowControllers = new AbortController();
     this.stMemory = {
       interactionDelay: 0,
@@ -50,40 +60,44 @@ export class UserScaffold extends HTMLElement {
     };
     this.data = {
       raw: null,
-      safe: null,
+      value: null,
       architype: null
     };
+    this.active = true;
     // event wiring
     this.userActionArchitypes();
-
     makeObservable(this, {
+      debug: observable,
       stMemory: observable,
       ltMemory: observable,
       action: observable,
       data: observable,
+      active: observable,
       memory: computed,
     });
-
-    // debug to illustrate memory
-    this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      console.warn("START STATE");
-      console.log(`memory`, toJS(this.memory));
-      console.log(`action`, toJS(this.action));
-      console.log(`data`, toJS(this.data));
-      console.warn("END STATE");
-      this.__disposer.push(reaction);
+    autorun(() => {
+      if (this.debug) {
+        console.warn("START STATE");
+        console.log(`memory`, toJS(this.memory));
+        console.log(`action`, toJS(this.action));
+        console.log(`data`, toJS(this.data));
+        console.warn("END STATE");
+      }
     });
   }
+  // @todo active / inactive state -- any program NOT scaffold needs to sete active false
+  // required action - here'es something and you MUST pick one (docx, cancel edited page)
+  // suggested action - here's some things you MIGHT want to do (link that inserts title instead)
+  
   // brings in our standard user action architypes
   // these should provide the basis for understanding
   // what the user is attempting to do in an application
   userActionArchitypes() {
     // always polling to understand if an action is taken
     this.interactionInterval = setInterval(() => {
-      // limit writes to 30 seconds. Not going to track beyond that
-      if (this.readMemory('interactionDelay') <= MEMORYINTERVALPOLLING*10) {
-        this.incrementWriteMemory('interactionDelay', MEMORYINTERVALPOLLING);
+      // limit writes to 12 seconds. Not going to track beyond that
+      if (this.active && this.readMemory('interactionDelay') <= MEMORYINTERVALPOLLING*10) {
+        this.incrementWriteMemory('interactionDelay', MEMORYINTERVALPOLLING*2);
       }
     }, MEMORYINTERVALPOLLING);
     // events
@@ -93,9 +107,27 @@ export class UserScaffold extends HTMLElement {
     window.addEventListener("paste", this.userPasteAction.bind(this), {
       signal: this.windowControllers.signal,
     });
+    window.addEventListener("keydown", this.userKeyDownAction.bind(this), {
+      signal: this.windowControllers.signal,
+    });
     window.addEventListener("dragover", this.userDragAction.bind(this), {
       signal: this.windowControllers.signal,
     });
+  }
+  userKeyDownAction(e) {
+    if (e.isTrusted) {
+      this.action = {
+        type: "key",
+        architype: "input",
+      };
+      this.data = {
+        raw: e.key,
+        value: e.key,
+        architype: "text",
+      };
+      this.writeMemory('recentTarget', e.target);
+      this.writeMemory('interactionDelay', 0);
+    }
   }
   // user has pasted, anywhere which is them indicating
   // they want to bring something into the application
@@ -137,7 +169,6 @@ export class UserScaffold extends HTMLElement {
       pasteContent = pasteContent.replace(/<div/g, "<p");
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       let safe = pasteContent;
-      console.log(pasteContent);
       // evaluate architype based on what this might be..
       // look for base64 like copy and paste of an image from clipboard
       if (this.isBase64(pasteContent)) {
@@ -156,22 +187,21 @@ export class UserScaffold extends HTMLElement {
 
       this.data = {
         raw: raw,
-        safe: safe,
+        value: safe,
         architype: architype,
       };
     }
   }
   // dragging a file in implies certain capabilities
-  userDragAction(e) {console.log(e.dataTransfer.items[0]);
+  userDragAction(e) {
     if (e.isTrusted && e.dataTransfer && e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-      console.log(e.dataTransfer.items);
       this.action = {
         type: "drag",
         architype: "input",
       }
       this.data = {
         raw: e.dataTransfer.items[0].type,
-        safe: e.dataTransfer.items[0].type,
+        value: e.dataTransfer.items[0].type,
         architype: e.dataTransfer.items[0].kind,
       };
     }
@@ -185,6 +215,7 @@ export class UserScaffold extends HTMLElement {
         type: "click",
         architype: "input",
       }
+      this.writeMemory('recentTarget', e.target);
       this.writeMemory('interactionDelay', 0);
       this.incrementWriteMemory('interactionCount', 1);
     }
@@ -233,19 +264,9 @@ export class UserScaffold extends HTMLElement {
     }
   }
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "user-scaffold";
-  }
-  /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
     this.windowControllers.abort();
     super.disconnectedCallback();
   }

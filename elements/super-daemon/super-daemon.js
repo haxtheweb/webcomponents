@@ -91,6 +91,7 @@ class SuperDaemon extends SimpleColors {
     this.toastInstance = SuperDaemonToastInstance;
     // used when in mini mode to know what to point to and how to focus after the fact
     this.activeSelection = null;
+    this.wandTarget = null; // consistent wand target to fallback on across app
     this.voiceCommands = {};
     this.programTarget = null;
     this.activeRange = null;
@@ -172,9 +173,29 @@ class SuperDaemon extends SimpleColors {
     this.windowControllers2.abort();
     super.disconnectedCallback();
   }
+  // waving the magic wand is a common feedback loop combination
+  // we have a target as far as location to position
+  // we are in mini / wand mode
+  // we run a program
+  // we play a sound (optional)
+  // we open merlin
+  // this is to save on this continuous interaction pattern
+  waveWand(params, target = null, sound = null) {
+    if (!target) {
+      target = this.wandTarget;
+    }
+    this.mini = true;
+    this.wand = true;
+    this.activeNode = target;
+    this.runProgram(...params);
+    if (sound) {
+      this.playSound(sound);
+    }
+    this.open();
+  }
   // reset to filter for a specific term with something like runProgram('*',null,null,null, "Insert Blocks");
-  // Run wikipedia search with runProgram('/',{method},'Wikipedia','Drupal');
-  runProgram(
+
+  async runProgram(
     context = "/",
     values = {},
     program = null,
@@ -183,7 +204,25 @@ class SuperDaemon extends SimpleColors {
     like = null
   ) {
     this.commandContext = context;
-    this._programToRun = program;
+    // resolve program as string based name vs function passed in
+    if (typeof program === "string") {
+      const itemMatch = await this.allItems.find((item) => {
+        if (item.value.machineName === program) {
+          return true;
+        }
+        return false;
+      });
+      if (itemMatch) {
+        this._programToRun = itemMatch.value.program;
+        values = itemMatch.value;
+      }
+      else {
+        console.error("Incorrect program called", program);
+      }
+    }
+    else {
+      this._programToRun = program;
+    }
     this.programSearch = search;
     // used to force a search prepopulation
     if (like != null) {
@@ -191,19 +230,21 @@ class SuperDaemon extends SimpleColors {
     }
     // ensure we have a program as this could be used for resetting program state
     if (this._programToRun) {
-      this.shadowRoot.querySelector("super-daemon-ui").setupProgram();
-      setTimeout(async () => {
-        try {
-          this.loading = true;
-          this.programResults = await this._programToRun(
-            this.programSearch,
-            values
-          );
-          this.loading = false;
-        } catch (e) {
-          this.loading = false;
-        }
-      }, 50);
+      setTimeout(() => {        
+        this.shadowRoot.querySelector("super-daemon-ui").setupProgram();
+        setTimeout(async () => {
+          try {
+            this.loading = true;
+            this.programResults = await this._programToRun(
+              this.programSearch,
+              values
+            );
+            this.loading = false;
+          } catch (e) {
+            this.loading = false;
+          }
+        }, 50);
+      }, 0);
     } else {
       this.programResults = [];
     }
@@ -440,6 +481,8 @@ class SuperDaemon extends SimpleColors {
         }
         :host([wand]) absolute-position-behavior {
           top: 24px !important;
+          right: 0;
+          position: fixed !important;
         }
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 10000);
@@ -923,6 +966,13 @@ class SuperDaemon extends SimpleColors {
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
+    }
+    // wand hasa to forcibly be near the target
+    if (changedProperties.has('activeNode') && this.activeNode && this.wand && this.mini) {
+      requestAnimationFrame(() => {
+        const rect = this.activeNode.getBoundingClientRect();
+        this.shadowRoot.querySelector('absolute-position-behavior').style.left = (rect.left+rect.width) + 'px';        
+      });
     }
     if (changedProperties.has("commandContext")) {
       this.dispatchEvent(
