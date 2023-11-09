@@ -582,6 +582,22 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     autorun(() => {
       this.isLoggedIn = toJS(store.isLoggedIn);
       UserScaffoldInstance.writeMemory('isLoggedIn', this.isLoggedIn);
+      const tstamp = Math.floor(Date.now() / 1000);
+      if (this.isLoggedIn && !this.loggedInTime) {
+        this.loggedInTime = tstamp;
+        var ll = UserScaffoldInstance.readMemory('recentLogins');
+        if (!ll) {
+          UserScaffoldInstance.writeMemory('recentLogins', [tstamp], "long");
+        }
+        else if (ll) {
+          // cap at last 5 login times
+          if (ll.length < 5) {
+            ll.shift();
+          }
+          ll.push(tstamp);
+          UserScaffoldInstance.writeMemory('recentLogins', ll, "long");
+        }
+      }
     });
     // user scaffolding wired up to superDaemon
     autorun(() => {
@@ -609,40 +625,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         SuperDaemonInstance.waveWand(["/", {}, "hax-agent", "Agent", toJS(UserScaffoldInstance.data.value)], null, "coin2")
       }
     });
-    SuperDaemonInstance.defineOption({
-      title: "Magic Wand",
-      icon: "hax:hax2022",
-      priority: -10000,
-      tags: ["Agent", "help", "merlin"],
-      eventName: "super-daemon-run-program",
-      path: "HAX/agent",
-      value: {
-        name: "Agent",
-        machineName: "hax-agent",
-        program: (input, values) => {
-          let results = [{
-            title: "Insert url",
-            icon: "hax:hax2022",
-            tags: ["agent"],
-            value: {
-              target: this,
-              method: "goToLocation",
-              args: [input],
-            },
-            eventName: "super-daemon-element-method",
-            context: [
-              "/",
-              "HAX/agent",
-            ],
-            path: "HAX/agent/insert",
-          }];
-          return results;
-        },
-      },
-    });
-  }
-  goToLocation(input) {
-    alert(input);
   }
   
   firstUpdated(changedProperties) {

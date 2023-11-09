@@ -21,6 +21,8 @@ import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu.js";
 import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu-button.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
+import "@lrnwebcomponents/super-daemon/lib/super-daemon-search.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-site-insights.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
@@ -140,15 +142,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             --simple-colors-default-theme-red-2
           );
         }
-        #merlin {
+        .merlin {
           color: var(--simple-colors-default-theme-purple-10);
           --simple-toolbar-border-color: var(
             --simple-colors-default-theme-purple-2
           );
         }
-        #merlin:hover,
-        #merlin:active,
-        #merlin:focus {
+        .merlin:hover,
+        .merlin:active,
+        .merlin:focus {
           background-color: var(--simple-colors-default-theme-purple-1);
         }
         #deletebutton:hover,
@@ -435,9 +437,30 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   static get tag() {
     return "haxcms-site-editor-ui";
   }
+  
   _expandSettingsPanel(e) {
     this.shadowRoot.querySelector("#content-edit").click();
   }
+
+  async insertUrl(input, mode) {
+    if (store.editMode === false) {
+      store.editMode = true;
+    }
+    if (mode) {
+      const response = await MicroFrontendRegistry.call(
+        "@core/metadata",
+        { q: input }
+      );
+      if (response.data && (response.data['og:title'] || response.data.title)) {
+        let values = {
+          title: response.data['og:title'] || response.data.title,
+          source: input,
+        };
+        HAXStore.insertLogicFromValues(values, this);
+      }
+    }
+  }
+
   constructor() {
     super();
     this.__winEvents = {
@@ -460,7 +483,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return true;
     };
     SuperDaemonInstance.keyHandlerCallback = () => {
-      const merlin = this.shadowRoot.querySelector('#merlin');
+      const merlin = this.shadowRoot.querySelector('.merlin');
       store.playSound("click");
       // modal shouldn't be possible but just in-case
       if (merlin.getAttribute("data-event") == "super-daemon-modal") {
@@ -469,7 +492,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       else {
         SuperDaemonInstance.mini = true;
         SuperDaemonInstance.wand = true;
-        SuperDaemonInstance.activeNode = this.shadowRoot.querySelector('#merlin');
+        SuperDaemonInstance.activeNode = this.shadowRoot.querySelector('.merlin');
       }
       SuperDaemonInstance.runProgram(
         "*",
@@ -494,7 +517,53 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         for what you thought you would see here!`;
     };
     SuperDaemonInstance.appendContext("CMS");
-
+    SuperDaemonInstance.defineOption({
+      title: "Magic Wand",
+      icon: "hax:hax2022",
+      priority: -10000,
+      tags: ["Agent", "help", "merlin"],
+      eventName: "super-daemon-run-program",
+      path: "HAX/agent",
+      value: {
+        name: "Agent",
+        machineName: "hax-agent",
+        program: (input, values) => {
+          let results = [{
+            title: "URL with page title",
+            icon: "hax:hax2022",
+            tags: ["agent"],
+            value: {
+              target: this,
+              method: "insertUrl",
+              args: [input, true],
+            },
+            eventName: "super-daemon-element-method",
+            context: [
+              "/",
+              "HAX/agent",
+            ],
+            path: "HAX/agent/insert",
+          },
+          {
+            title: "Insert url alone",
+            icon: "hax:hax2022",
+            tags: ["agent"],
+            value: {
+              target: this,
+              method: "insertUrl",
+              args: [input, false],
+            },
+            eventName: "super-daemon-element-method",
+            context: [
+              "/",
+              "HAX/agent",
+            ],
+            path: "HAX/agent/insert",
+          }];
+          return results;
+        },
+      },
+    });
     if (HAXStore.ready) {
       let s = document.createElement("site-remote-content");
       HAXStore.haxAutoloader.appendChild(s);
@@ -1009,16 +1078,27 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             </simple-toolbar-menu-item>
           </simple-toolbar-menu>
           <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
+          ${this.responsiveSize !== 'xs' ? html`
+          <super-daemon-search
+            @click="${this.haxButtonOp}"
+            icon="hax:wizard-hat"
+            voice-search
+            class="merlin"
+            mini
+            wand
+          >
+          </super-daemon-search>` : html`
           <simple-toolbar-button
             icon="hax:wizard-hat"
             label="${this.t.merlin}"
             voice-command="${this.t.merlin}"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
-            id="merlin"
+            class="merlin"
             @click="${this.haxButtonOp}"
             data-event="${this.responsiveSize === 'xs' ? 'super-daemon-modal' : 'super-daemon'}"
             show-text-label
           ></simple-toolbar-button>
+          `}
         </simple-toolbar>
 
         <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu"
@@ -1257,7 +1337,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           path: item.getAttribute("data-super-daemon-path"),
         });
       });
-    SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector("#merlin");
+    SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector(".merlin");
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
       title: this.t.save,

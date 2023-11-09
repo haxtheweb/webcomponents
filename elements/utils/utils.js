@@ -203,6 +203,15 @@ export function localStorageSet(name, newItem) {
   }
 }
 
+// delete item from local storage
+export function localStorageDelete(name) {
+  try {
+    return localStorage.removeItem(name);
+  } catch (e) {
+    return false;
+  }
+}
+
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 function validURL(str) {
   let url;

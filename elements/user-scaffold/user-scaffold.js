@@ -2,7 +2,7 @@
  * Copyright 2023
  * @license , see License.md for full text.
  */
-import { localStorageSet, localStorageGet, validURL } from "@lrnwebcomponents/utils/utils.js";
+import { localStorageSet, localStorageGet, localStorageDelete, validURL } from "@lrnwebcomponents/utils/utils.js";
 import {
   observable,
   makeObservable,
@@ -110,6 +110,9 @@ export class UserScaffold extends HTMLElement {
     window.addEventListener("keydown", this.userKeyDownAction.bind(this), {
       signal: this.windowControllers.signal,
     });
+    window.addEventListener("drop", this.userDropAction.bind(this), {
+      signal: this.windowControllers.signal,
+    });
     window.addEventListener("dragover", this.userDragAction.bind(this), {
       signal: this.windowControllers.signal,
     });
@@ -192,6 +195,24 @@ export class UserScaffold extends HTMLElement {
       };
     }
   }
+  // dropping a file in implies certain capabilities
+  userDropAction(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    console.log(e);
+    if (e.isTrusted && e.dataTransfer && e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+      this.action = {
+        type: "drop",
+        architype: "input",
+      }
+      this.data = {
+        raw: e.dataTransfer.items[0].type,
+        value: e.dataTransfer.items[0].type,
+        architype: e.dataTransfer.items[0].kind,
+      };
+    }
+  }
   // dragging a file in implies certain capabilities
   userDragAction(e) {
     if (e.isTrusted && e.dataTransfer && e.dataTransfer.items && e.dataTransfer.items.length > 0) {
@@ -240,10 +261,22 @@ export class UserScaffold extends HTMLElement {
       this[prop][key] = value;
     }
   }
+  // remove from memory
+  deleteMemory(key, type = "short") {
+    let prop = 'stMemory';
+    if (type == "long") {
+      prop = 'ltMemory';
+      delete this[prop][key];
+      localStorageDelete(`user-scaffold-${prop}`);
+    }
+    else {
+      delete this[prop][key];
+    }    
+  }
   // read memory state
   readMemory(key) {
     if (this.memory[key]) {
-      return this.memory[key];
+      return toJS(this.memory[key]);
     }
     return null;
   }

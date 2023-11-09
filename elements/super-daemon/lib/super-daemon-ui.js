@@ -1,24 +1,18 @@
 import { html, css, nothing } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
 import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./super-daemon-row.js";
+import "./super-daemon-search.js";
 
 export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   constructor() {
     super();
     this.focused = false;
+    this.like = '';
     this.voiceSearch = false;
     this.iconAccent = "purple";
     this.multiMatch = true;
-    this._defaultTextEmpty = "No results for this term";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -28,7 +22,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       filterCommands: "Filter commands",
       commands: "Commands",
       loadingResults: "Loading results",
-      commonTasksText: "Here are some common questions Merlin can answer..",
     };
     this.opened = false;
     this.items = [];
@@ -83,30 +76,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         :host {
           display: block;
         }
-        .question-tags {
-          display: flex;
-          justify-content: space-evenly;
-          padding: 8px;
-        }
-        .common-tasks-text {
-          font-size: 18px;
-          padding: 8px;
-        }
-        .search {
+        super-daemon-search {
           display: flex;
           margin: 16px;
         }
-        :host([wand]) .search {
+        :host([wand]) super-daemon-search {
           margin: -16px 16px 6px 4px;
-        }
-        .search input {
-          display: inline-flex;
-          width: 100%;
-        }
-        .search .icon {
-          display: inline-flex;
-          --simple-icon-height: 50px;
-          --simple-icon-width: 100px;
         }
         .voice {
           --simple-icon-height: 50px;
@@ -142,34 +117,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           font-family: "Roboto Mono", monospace;
           font-style: italic;
           margin: 16px;
-        }
-        .program {
-          display: inline-flex;
-          font-family: "Roboto Mono", monospace;
-          color: var(--simple-colors-default-theme-grey-1, white);
-          background-color: var(--simple-colors-default-theme-grey-12, black);
-          line-break: anywhere;
-          word-break: break-all;
-          word-wrap: break-word;
-          text-overflow: clip;
-          overflow: hidden;
-          line-height: 16px;
-          height: 16px;
-          padding: 2px 4px;
-          margin: 16px 0 0 -2px;
-          font-size: 10px;
-          width: 100%;
-          max-width: 100px;
-        }
-        :host([mini]) .program {
-          line-height: 24px;
-          font-size: 12px;
-          max-width: 8px;
-          height: 24px;
-          margin: 0px;
-          padding: 0px 4px 0px 2px;
-          font-weight: bold;
-          font-style: italic;
         }
         .results-stats {
           right: 0;
@@ -222,62 +169,20 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           margin: 8px auto;
           line-height: 14px;
         }
-        simple-fields-field {
-          line-height: 40px;
-          padding: 8px;
-          color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: var(--simple-colors-default-theme-grey-1, white);
-          line-height: normal;
-          font-family: inherit;
-          width: 100%;
-          margin: 0px;
-        }
-        simple-tag:hover,
-        simple-tag:focus {
-          cursor: pointer;
-          outline: 1px solid var(--simple-colors-default-theme-grey-10, black);
-          outline-offset: 4px;
-        }
-        :host([mini]) simple-fields-field::part(option-input) {
-          font-size: 12px;
-        }
-        simple-fields-field::part(option-input) {
-          padding: 0px 2px;
-          font-size: 24px;
-        }
-        simple-fields-field::part(label) {
-          opacity: 0;
-          height: 0;
-          width: 0;
-          position: absolute;
-          pointer-events: none;
-        }
 
         @media screen and (max-width: 800px) {
           .voice {
             --simple-icon-height: 30px;
             --simple-icon-width: 30px;
           }
-          .search {
+          super-daemon-search {
             margin: 8px;
           }
-          simple-fields-field::part(option-input) {
-            font-size: 14px;
-            line-height: 20px;
-          }
-          .results-stats,
-          .common-tasks-text,
-          .question-tags {
+          .results-stats {
             display: none;
           }
           .results {
             padding: 0px;
-          }
-          simple-fields-field {
-            line-height: 20px;
-          }
-          .search .icon {
-            display: none;
           }
           super-daemon-row {
             --super-daemon-row-icon: 30px;
@@ -311,9 +216,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           --super-daemon-row-icon: 24px;
           border-radius: 0px;
         }
-        :host([mini]) .results-stats,
-        :host([mini]) .common-tasks-text,
-        :host([mini]) .question-tags {
+        :host([mini]) .results-stats {
           display: none;
         }
         :host([mini]) .results {
@@ -321,9 +224,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           max-height: unset;
           min-height: unset;
           height: 200px;
-        }
-        :host([mini]) .search .icon {
-          display: none;
         }
       `,
     ];
@@ -355,7 +255,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       if (propName == "opened" && this.shadowRoot) {
         if (this.opened) {
           document.body.style.overflow = "hidden";
-          this.shadowRoot.querySelector("#inputfilter").focus();
+          this.focusInput();
           // ensure whole recordset is on screen if in mini mode
           if (this.mini && !this.wand) {
             // reset to top of results
@@ -395,21 +295,20 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     });
   }
 
+  focusInput() {
+    this.shadowRoot.querySelector("super-daemon-search").focusInput();
+  }
+
+  selectInput() {
+    this.shadowRoot.querySelector("super-daemon-search").selectInput();
+  }
+
   setupProgram() {
     this.programSearch = "";
-    this.shadowRoot.querySelector("#inputfilter").focus();
-    this.shadowRoot.querySelector("#inputfilter").select();
+    this.focusInput();
+    this.selectInput();
     // reset to top of results
     this.shadowRoot.querySelector(".results").scrollTo(0, 0);
-  }
-  // feed results to the program as opposed to the global context based on program running
-  inputfilterChanged(e) {
-    if (this.programName) {
-      // don't set like if we're in a program
-      this.programSearch = e.target.value;
-    } else {
-      this.like = e.target.value;
-    }
   }
   // reset search values because we selected something
   itemSelected(e) {
@@ -462,105 +361,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       }
     }
   }
-  // keydown when we have focus on the input field
-  _inputKeydown(e) {
-    if (this.filtered.length > 0) {
-      switch (e.key) {
-        case "Enter":
-          this.shadowRoot.querySelector("super-daemon-row").selected();
-          break;
-        case "ArrowUp":
-          // @todo get focus on the row via an "active" parameter so we can just target that in the UI
-          this.shadowRoot
-            .querySelector("super-daemon-row:last-child")
-            .shadowRoot.querySelector("button")
-            .focus();
-          this.shadowRoot
-            .querySelector("super-daemon-row:last-child")
-            .scrollIntoView({ block: "end", inline: "nearest" });
-          break;
-        case "ArrowDown":
-          this.shadowRoot
-            .querySelector("super-daemon-row")
-            .shadowRoot.querySelector("button")
-            .focus();
-          this.shadowRoot
-            .querySelector("super-daemon-row")
-            .scrollIntoView({ block: "start", inline: "nearest" });
-          break;
-      }
-    }
-    // account for global override keys
-    switch (e.key) {
-      case "!":
-      case "/":
-      case "\\":
-      case ">":
-      case "<":
-      case "?":
-        // support variations on "slash" and developer commands that should interpret as same thing
-        if (e.key === "\\" && this.like == "") {
-          this.commandContext = "/";
-          e.preventDefault();
-        } else if (e.key === "!" && this.like == "") {
-          this.commandContext = "/";
-          e.preventDefault();
-        } else if (e.key === "<" && this.like == "") {
-          this.commandContext = ">";
-          e.preventDefault();
-        } else if (this.like == "") {
-          this.commandContext = e.key;
-          e.preventDefault();
-        }
-        break;
-      case "Backspace":
-        // use this to back out of a program context
-        if (this.programSearch == "" && this.programName) {
-          // run this to unset the program context
-          this.dispatchEvent(
-            new CustomEvent("super-daemon-run-program", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: false,
-            })
-          );
-          e.preventDefault();
-        } else if (
-          !this.programName &&
-          this.like == "" &&
-          this.commandContext
-        ) {
-          this.commandContext = "*";
-          e.preventDefault();
-        }
-        break;
-    }
-  }
-
-  getActiveTitle(context) {
-    switch (context) {
-      case "/":
-        return this.t.slashCommandsActive;
-      case ">":
-        return this.t.developerConsoleActive;
-      case "?":
-        return this.t.helpActive;
-    }
-    return "";
-  }
-
-  getActiveIcon(context) {
-    switch (context) {
-      case "/":
-        return "hax:slash";
-      case ">":
-        return "hax:console-line";
-      case "?":
-        return "icons:help";
-    }
-    return "";
-  }
 
   commonConcepts(value) {
     const sdi = window.SuperDaemonManager.requestAvailability();
@@ -591,77 +391,51 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     }
   }
 
-  voiceSearchClick() {
-    // refernced this way to avoid circular dependency
-    const sdi = window.SuperDaemonManager.requestAvailability();
-    if (this.listeningForInput) {
-      sdi.listeningForInput = false;
+  focusedChanged(e) {
+    this.focused = e.detail.value;
+  }
+  
+  // feed results to the program as opposed to the global context based on program running
+  inputfilterChanged(e) {
+    if (this.programName) {
+      // don't set like if we're in a program
+      this.programSearch = e.target.value;
     } else {
-      // start talking which listeners in super-daemon will activate
-      // after the text is spoken to avoid polluting input
-      sdi.hal.speak("How may I help you?", sdi.santaMode).then((e) => {
-        sdi.playSound();
-        sdi.listeningForInput = true;
-      });
-      this.shadowRoot.querySelector("#inputfilter").focus();
+      this.like = e.target.value;
+    }
+  }
+
+  listeningForInputChanged(e) {
+    if (e.detail.value) {
       // reset to top of results
       this.shadowRoot.querySelector(".results").scrollTo(0, 0);
     }
   }
 
-  fieldFocusLoss(e) {
-    this.focused = false;
-  }
-
-  fieldFocus(e) {
-    this.focused = true;
+  commandContextChanged(e) {
+    this.commandContext = e.detail.value;
   }
 
   render() {
     return html`
-      <div class="search">
-        ${this.voiceSearch
-          ? html`<simple-icon-button-lite
-              class="voice ${this.listeningForInput ? "listening" : ""}"
-              @click="${this.voiceSearchClick}"
-              icon="${this.listeningForInput
-                ? "hax:loading"
-                : "settings-voice"}"
-              ?dark="${this.dark}"
-              title="${this.t.voiceSearch}"
-            ></simple-icon-button-lite>`
-          : ``}
-        ${this.commandContext != "*"
-          ? html`<simple-icon-lite
-              title="${this.getActiveTitle(this.commandContext)}"
-              icon="${this.getActiveIcon(this.commandContext)}"
-              class="user-context-icon"
-            ></simple-icon-lite>`
-          : ``}
-        ${this.programName
-          ? html`<span class="program">${this.programName}</span>`
-          : ``}
-        <simple-fields-field
-          id="inputfilter"
-          @value-changed="${this.inputfilterChanged}"
-          @keydown="${this._inputKeydown}"
-          @focus="${this.fieldFocus}"
-          @blur="${this.fieldFocusLoss}"
-          .value="${this.like}"
-          aria-controls="filter"
-          label="${this.t.filterCommands}"
-          placeholder="${this.t.whatAreYouLookingFor}"
-          type="text"
-          auto-validate=""
-          autofocus
-          part="filter"
-        ></simple-fields-field>
-        <simple-icon
-          icon="${this.icon}"
-          class="icon"
-          accent-color="${this.listeningForInput ? this.iconAccent : "grey"}"
-        ></simple-icon>
-      </div>
+      <super-daemon-search
+      @focused-changed="${this.focusedChanged}"
+      @value-changed="${this.inputfilterChanged}"
+      @command-context-changed="${this.commandContextChanged}"
+      @listening-for-input-changed="${this.listeningForInputChanged}"
+      icon="${this.icon}"
+      icon-accent="${this.iconAccent}"
+      value="${this.like}"
+      ?voice-search="${this.voiceSearch}"
+      ?mini="${this.mini}"
+      ?wand="${this.wand}"
+      ?loading="${this.loading}"
+      program-search="${this.programSearch}"
+      ?listening-for-input="${this.listeningForInput}"
+      command-context="${this.commandContext}"
+      >
+
+      </super-daemon-search>
       <div class="results-stats">
         ${this.filtered.length} / ${this.items.length} ${this.t.commands}
       </div>

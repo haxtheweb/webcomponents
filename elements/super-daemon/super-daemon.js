@@ -361,12 +361,12 @@ class SuperDaemon extends SimpleColors {
   }
 
   updateSearchInputViaVoice(input) {
-    const field = this.shadowRoot
-      .querySelector("super-daemon-ui")
-      .shadowRoot.querySelector("simple-fields-field");
-    field.value = input;
-    field.focus();
-    field.select();
+      this.shadowRoot
+      .querySelector("super-daemon-ui").like = input;
+    this.shadowRoot
+      .querySelector("super-daemon-ui").focusInput();
+    this.shadowRoot
+      .querySelector("super-daemon-ui").selectInput();
     // turn off bc we got a match
     setTimeout(() => {
       this.setListeningStatus(false);
@@ -706,13 +706,9 @@ class SuperDaemon extends SimpleColors {
         });
       }
       this.shadowRoot
-        .querySelector("super-daemon-ui")
-        .shadowRoot.querySelector("simple-fields-field")
-        .focus();
+        .querySelector("super-daemon-ui").focusInput();
       this.shadowRoot
-        .querySelector("super-daemon-ui")
-        .shadowRoot.querySelector("simple-fields-field")
-        .select();
+        .querySelector("super-daemon-ui").selectInput();
     }, 0);
   }
   focusout(e) {
@@ -732,13 +728,9 @@ class SuperDaemon extends SimpleColors {
         setTimeout(() => {
           if (this.opened) {
             this.shadowRoot
-              .querySelector("super-daemon-ui")
-              .shadowRoot.querySelector("simple-fields-field")
-              .focus();
+              .querySelector("super-daemon-ui").focusInput();
             this.shadowRoot
-              .querySelector("super-daemon-ui")
-              .shadowRoot.querySelector("simple-fields-field")
-              .select();
+              .querySelector("super-daemon-ui").selectInput();
           }
         }, 0);
       }
@@ -1083,11 +1075,10 @@ class SuperDaemon extends SimpleColors {
               // if program, reset input and prompt for more!
               if (item.value.program) {
                 this.playSound().then((e) => {
-                  let field = this.shadowRoot
-                    .querySelector("super-daemon-ui")
-                    .shadowRoot.querySelector("simple-fields-field");
-                  field.focus();
-                  field.select();
+                  this.shadowRoot
+                    .querySelector("super-daemon-ui").focusInput();
+                  this.shadowRoot
+                    .querySelector("super-daemon-ui").selectInput();
                 });
               } else {
                 // disable bc we got a hit
