@@ -17,7 +17,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.t = {
       ...this.t,
       noResultsForThisTerm: this._defaultTextEmpty,
-      whatAreYouLookingFor: "Type what you are looking to do here..",
+      whatAreYouLookingFor: "What are you trying to do?",
       voiceSearch: "Voice search",
       filterCommands: "Filter commands",
       commands: "Commands",

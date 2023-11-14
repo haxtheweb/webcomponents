@@ -28,7 +28,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      whatAreYouLookingFor: "Type what you are looking to do here..",
+      whatAreYouLookingFor: "What are you trying to do?",
       voiceSearch: "Voice search",
       filterCommands: "Filter commands",
       commands: "Commands",
@@ -131,17 +131,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         class="icon"
         accent-color="${this.listeningForInput ? this.iconAccent : "grey"}"
       ></simple-icon> -->
-      ${this.voiceSearch
-        ? html`<simple-icon-button-lite
-            class="voice ${this.listeningForInput ? "listening" : ""}"
-            @click="${this.voiceSearchClick}"
-            icon="${this.listeningForInput
-              ? "hax:loading"
-              : "settings-voice"}"
-            ?dark="${this.dark}"
-            title="${this.t.voiceSearch}"
-          ></simple-icon-button-lite>`
-        : ``}
       ${this.commandContext != "*"
         ? html`<simple-icon-lite
             title="${this.getActiveTitle(this.commandContext)}"
@@ -166,7 +155,18 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         auto-validate=""
         autofocus
         part="filter"
-      ></simple-fields-field>`;
+      ></simple-fields-field>
+      ${this.voiceSearch
+        ? html`<simple-icon-button-lite
+            class="voice ${this.listeningForInput ? "listening" : ""}"
+            @click="${this.voiceSearchClick}"
+            icon="${this.listeningForInput
+              ? "hax:loading"
+              : "settings-voice"}"
+            ?dark="${this.dark}"
+            title="${this.t.voiceSearch}"
+          ></simple-icon-button-lite>`
+        : ``}`;
   }
 
   updated(changedProperties) {
@@ -325,6 +325,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         }
         :host([mini]) simple-fields-field::part(option-input) {
           font-size: 12px;
+          --simple-fields-text-align: left;
         }
         :host([mini][wand]) simple-fields-field::part(option-input) {
           font-size: 14px;

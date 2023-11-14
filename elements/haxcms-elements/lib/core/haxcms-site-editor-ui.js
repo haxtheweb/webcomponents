@@ -148,9 +148,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             --simple-colors-default-theme-purple-2
           );
         }
-        .merlin:hover,
-        .merlin:active,
-        .merlin:focus {
+        simple-toolbar-button.merlin:hover,
+        simple-toolbar-button.merlin:active,
+        simple-toolbar-button.merlin:focus {
           background-color: var(--simple-colors-default-theme-purple-1);
         }
         #deletebutton:hover,
@@ -1078,16 +1078,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             </simple-toolbar-menu-item>
           </simple-toolbar-menu>
           <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
-          ${this.responsiveSize !== 'xs' ? html`
-          <super-daemon-search
-            @click="${this.haxButtonOp}"
-            icon="hax:wizard-hat"
-            voice-search
-            class="merlin"
-            mini
-            wand
-          >
-          </super-daemon-search>` : html`
           <simple-toolbar-button
             icon="hax:wizard-hat"
             label="${this.t.merlin}"
@@ -1098,7 +1088,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             data-event="${this.responsiveSize === 'xs' ? 'super-daemon-modal' : 'super-daemon'}"
             show-text-label
           ></simple-toolbar-button>
-          `}
+          <super-daemon-search
+            @click="${this.haxButtonOp}"
+            icon="hax:wizard-hat"
+            voice-search
+            class="merlin"
+            mini
+            wand
+          >
+          </super-daemon-search>
         </simple-toolbar>
 
         <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu"
