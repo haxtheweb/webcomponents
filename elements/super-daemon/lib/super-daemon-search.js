@@ -227,10 +227,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       css`
         :host {
           display: flex;
-          margin: 16px;
-        }
-        :host([wand]) {
-          margin: -16px 16px 6px 4px;
+          margin: 0;
         }
         :host input {
           display: inline-flex;
@@ -316,8 +313,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           background-color: var(--simple-colors-default-theme-grey-1, white);
           line-height: normal;
           font-family: inherit;
-          width: 100%;
-          margin: 0px;
+          width: 240px;
+          margin: 8px 0 0 0;
+          min-width: 100px;
         }
         simple-tag:hover,
         simple-tag:focus {
@@ -327,6 +325,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         }
         :host([mini]) simple-fields-field::part(option-input) {
           font-size: 12px;
+        }
+        :host([mini][wand]) simple-fields-field::part(option-input) {
+          font-size: 14px;
         }
         simple-fields-field::part(option-input) {
           padding: 0px 2px;

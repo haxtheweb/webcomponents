@@ -15,6 +15,7 @@ import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-ou
 import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
 import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 configure({ enforceActions: false }); // strict mode off
 class Store {
   constructor() {
@@ -27,7 +28,7 @@ class Store {
     this.location = null;
     this.currentRouterLocation = {};
     this.jwt = null;
-    this.version = "0.0.0";
+    this.version = null;
     this.soundStatus = localStorageGet("app-hax-soundStatus", true);
     this.darkMode = !localStorageGet("app-hax-darkMode")
       ? false
@@ -1118,6 +1119,17 @@ class HAXCMSSiteStore extends HTMLElement {
         }
       }
     });
+    autorun(() => {
+      const memVersion = UserScaffoldInstance.readMemory('versionLatest');
+      if (store.version && memVersion != store.version) {
+        // store the initial version
+        if (memVersion == null) {
+          UserScaffoldInstance.writeMemory('versionInitial', store.version, "long");
+        }
+        UserScaffoldInstance.writeMemory('versionLatest', store.version, "long");
+      }
+    });
+
     /**
      * When editMode changes notify HAXeditor.
      */
