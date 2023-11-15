@@ -81,7 +81,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           margin: 16px;
         }
         :host([wand]) super-daemon-search {
-          margin: -16px 16px 6px 4px;
+          margin: -24px 0 0 0;
+          height: 48px;
         }
         .voice {
           --simple-icon-height: 50px;

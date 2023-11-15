@@ -483,7 +483,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return true;
     };
     SuperDaemonInstance.keyHandlerCallback = () => {
-      const merlin = this.shadowRoot.querySelector('.merlin');
+      const merlin = this.shadowRoot.querySelector('#merlin');
       store.playSound("click");
       // modal shouldn't be possible but just in-case
       if (merlin.getAttribute("data-event") == "super-daemon-modal") {
@@ -492,7 +492,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       else {
         SuperDaemonInstance.mini = true;
         SuperDaemonInstance.wand = true;
-        SuperDaemonInstance.activeNode = this.shadowRoot.querySelector('.merlin');
+        SuperDaemonInstance.activeNode = this.shadowRoot.querySelector('#merlin');
       }
       SuperDaemonInstance.runProgram(
         "*",
@@ -1084,6 +1084,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="${this.t.merlin}"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             class="merlin"
+            id="merlin"
             @click="${this.haxButtonOp}"
             data-event="${this.responsiveSize === 'xs' ? 'super-daemon-modal' : 'super-daemon'}"
             show-text-label
@@ -1093,6 +1094,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             icon="hax:wizard-hat"
             voice-search
             class="merlin"
+            data-event="${this.responsiveSize === 'xs' ? 'super-daemon-modal' : 'super-daemon'}"
             mini
             wand
           >
@@ -1171,7 +1173,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let exec = e.target.getAttribute("data-event");
     switch (exec) {
       case "super-daemon":
-        SuperDaemonInstance.waveWand(["*"], e.target, null);
+        SuperDaemonInstance.waveWand(["*"], this.shadowRoot.querySelector('#merlin'), null);
       break;
       case "super-daemon-modal":
         store.playSound("click");
@@ -1335,7 +1337,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           path: item.getAttribute("data-super-daemon-path"),
         });
       });
-    SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector(".merlin");
+    SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector("#merlin");
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
       title: this.t.save,
