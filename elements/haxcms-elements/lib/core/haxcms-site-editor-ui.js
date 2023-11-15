@@ -494,9 +494,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         SuperDaemonInstance.wand = true;
         SuperDaemonInstance.activeNode = this.shadowRoot.querySelector('#merlin');
       }
-      SuperDaemonInstance.runProgram(
-        "*",
-      );
+      SuperDaemonInstance.runProgram("", "*");
       return true;
     };
     // nothing message so we can suggest a link to make a suggestion
@@ -1091,7 +1089,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ></simple-toolbar-button>
           <super-daemon-search
             @click="${this.haxButtonOp}"
+            @value-changed="${this.haxButtonOp}"
             icon="hax:wizard-hat"
+            id="search"
             voice-search
             class="merlin"
             data-event="${this.responsiveSize === 'xs' ? 'super-daemon-modal' : 'super-daemon'}"
@@ -1173,7 +1173,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let exec = e.target.getAttribute("data-event");
     switch (exec) {
       case "super-daemon":
-        SuperDaemonInstance.waveWand(["*"], this.shadowRoot.querySelector('#merlin'), null);
+        console.log(e);
+        const value = this.shadowRoot.querySelector('#search').value;
+        if (e.type === "value-changed") {
+          if (value) {
+            SuperDaemonInstance.waveWand([value, "*"], this.shadowRoot.querySelector('#merlin'), null);
+          }
+        }
+        else {
+          SuperDaemonInstance.waveWand([value, "*"], this.shadowRoot.querySelector('#merlin'), null);
+        }
+        // this will reset UX expectation but also trigger this to run again so need to
+        // have weird loop above to ensure it's not going to affect it
+        this.shadowRoot.querySelector('#search').value = null;
       break;
       case "super-daemon-modal":
         store.playSound("click");
@@ -1182,7 +1194,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       break;
       case "media-program":
         store.playSound("click");
-        SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
+        SuperDaemonInstance.runProgram("sources");
         SuperDaemonInstance.open();
         HAXStore.haxTray.collapsed = false;
         break;

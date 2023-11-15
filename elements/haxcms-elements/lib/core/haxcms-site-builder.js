@@ -612,7 +612,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         ["paste", "key"].includes(usAction.type)
         ) {
         if (validURL(SuperDaemonInstance.value)) {
-          SuperDaemonInstance.waveWand(["/", {}, "hax-agent", "Agent", SuperDaemonInstance.value], null, "coin2")
+          SuperDaemonInstance.waveWand([SuperDaemonInstance.value, "/", {}, "hax-agent", "Agent"], null, "coin2")
         }
       }
       else if (
@@ -622,7 +622,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         ["paste"].includes(usAction.type) &&
         UserScaffoldInstance.data.architype == "url"
       ) {
-        SuperDaemonInstance.waveWand(["/", {}, "hax-agent", "Agent", toJS(UserScaffoldInstance.data.value)], null, "coin2")
+        SuperDaemonInstance.waveWand([toJS(UserScaffoldInstance.data.value), "/", {}, "hax-agent", "Agent"], null, "coin2")
       }
     });
   }

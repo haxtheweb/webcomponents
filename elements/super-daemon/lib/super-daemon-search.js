@@ -24,7 +24,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.loading = false;
     this.listeningForInput = false;
     this.commandContext = "*";
-    this.value = '';
+    this.value = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -121,6 +121,8 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   // feed results to the program as opposed to the global context based on program running
   inputfilterChanged(e) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
     this.value=e.target.value;
   }
 
@@ -179,6 +181,14 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         }
       }));
     }
+    if (changedProperties.has('value') && this.value) {
+      this.dispatchEvent(new CustomEvent('value-changed', {
+        composed: true,
+        detail: {
+          value: this.value
+        }
+      }));
+    }
     if (changedProperties.has('listeningForInput')) {
       this.dispatchEvent(new CustomEvent('listening-for-input-changed', {
         composed: true,
@@ -207,7 +217,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   focusInput() {
     setTimeout(() => {
-      this.shadowRoot.querySelector("#inputfilter").focus();      
+      this.shadowRoot.querySelector("#inputfilter").focus();
     }, 0);
   }
 

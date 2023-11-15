@@ -1266,12 +1266,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
                 SuperDaemonInstance.activeNode = rng.commonAncestorContainer;
                 SuperDaemonInstance.runProgram(
-                  "*",
-                  {},
-                  null,
-                  null,
-                  null,
-                  rng.commonAncestorContainer.textContent.trim()
+                  rng.commonAncestorContainer.textContent.trim(), '*'
                 );
                 SuperDaemonInstance.open();
               }
@@ -2730,12 +2725,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         SuperDaemonInstance.activeNode = active;
         SuperDaemonInstance.runProgram(
-          "*",
-          {},
-          null,
-          null,
-          null,
-          active.textContent.trim()
+          active.textContent.trim(),
+          "*"
         );
         SuperDaemonInstance.open();
         break;

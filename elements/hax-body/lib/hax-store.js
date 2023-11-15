@@ -39,7 +39,7 @@ import "@lrnwebcomponents/editable-table/editable-table.js";
 import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
 import { learningComponentTypes } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 import "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
-
+import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 import "./hax-app.js";
 
 const FALLBACK_LANG = "en";
@@ -2187,7 +2187,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.trayDetail = "content-edit";
     this.appList = [];
     this.gizmoList = [];
-    this.recentGizmoList = [];
+    this.recentGizmoList = UserScaffoldInstance.readMemory('recentGizmoList') || [];
     this.haxAutoloader = null;
     this.activeHaxBody = null;
     this.haxTray = null;
@@ -2250,6 +2250,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     });
     autorun(() => {
       this._editModeChanged(toJS(this.editMode));
+    });
+    // when recent updates anywhere, write this to memory
+    autorun(() => {
+      const recentGizmoList = toJS(this.recentGizmoList);
+      if (recentGizmoList.length > 0) {
+        UserScaffoldInstance.writeMemory('recentGizmoList', recentGizmoList, "long");
+      }
     });
   }
   // select the text in question and insert in the correct location

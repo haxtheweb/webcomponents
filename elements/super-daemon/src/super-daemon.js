@@ -193,15 +193,15 @@ class SuperDaemon extends SimpleColors {
     }
     this.open();
   }
-  // reset to filter for a specific term with something like runProgram('*',null,null,null, "Insert Blocks");
+  // reset to filter for a specific term with something like runProgram('blocks','*',null,null,null);
 
   async runProgram(
+    like = null,
     context = "/",
     values = {},
     program = null,
     name = null,
-    search = "",
-    like = null
+    search = ""
   ) {
     this.commandContext = context;
     // resolve program as string based name vs function passed in
@@ -257,6 +257,7 @@ class SuperDaemon extends SimpleColors {
       this._programValues = data;
       this.like = "";
       this.runProgram(
+        null,
         data.context,
         this._programValues,
         data.program,
@@ -264,7 +265,7 @@ class SuperDaemon extends SimpleColors {
         ""
       );
     } else {
-      this.runProgram("/");
+      this.runProgram("","/");
       this._programValues = {};
     }
   }
@@ -707,7 +708,7 @@ class SuperDaemon extends SimpleColors {
       }
       this.shadowRoot
         .querySelector("super-daemon-ui").focusInput();
-      this.shadowRoot
+        this.shadowRoot
         .querySelector("super-daemon-ui").selectInput();
     }, 0);
   }

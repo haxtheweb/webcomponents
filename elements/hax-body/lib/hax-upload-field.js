@@ -201,7 +201,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         type = tmp;
       }
     }
-    SuperDaemonInstance.runProgram("/", {}, null, null, "", type);
+    SuperDaemonInstance.runProgram(type);
 
     //SuperDaemonInstance.appendContext();
     // allows for diverting input back to target

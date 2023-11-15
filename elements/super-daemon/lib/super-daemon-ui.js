@@ -370,13 +370,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       case ">":
       case "/":
       case "?":
-        sdi.runProgram(value, {}, null, null, "", "");
+        sdi.runProgram(value);
         break;
       case "media":
-        sdi.runProgram("/", {}, null, null, "", "sources");
+        sdi.runProgram("sources", "/");
         break;
       default:
-        sdi.runProgram("*", {}, null, null, "", value);
+        sdi.runProgram(value, "*");
         break;
     }
   }

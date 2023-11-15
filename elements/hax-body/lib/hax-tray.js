@@ -876,7 +876,7 @@ class HaxTray extends I18NMixin(
       </hax-tray-button>`;
   }
   _clickMediaButton(e) {
-    SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
+    SuperDaemonInstance.runProgram("sources");
     SuperDaemonInstance.open();
   }
   get moreButtons() {
