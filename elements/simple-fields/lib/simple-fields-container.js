@@ -696,6 +696,12 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         this.__delayedFocus = true;
       }
     }
+    /**
+     * shift cursor to end of field
+     */
+    cursorAtEnd() {
+      this.field.selectionStart = this.field.selectionEnd = this.field.value.length;
+    }
 
     /**
      * selects all text

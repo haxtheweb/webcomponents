@@ -22,6 +22,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 const RichTextStyles = [
   css`
     :host {
+      height: var(--rich-text-editor-button-height, 32px);
       --simple-toolbar-border-color: var(--rich-text-editor-border-color, #ddd);
       --simple-toolbar-border-width: var(--rich-text-editor-border-width, 1px);
       --simple-toolbar-button-bg: var(--rich-text-editor-bg, #ffffff);

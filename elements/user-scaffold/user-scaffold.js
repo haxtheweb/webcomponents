@@ -47,7 +47,7 @@ export class UserScaffold extends HTMLElement {
   constructor() {
     super();
     // DEBUG MODE
-    this.debug = true;
+    this.debug = false;
     this.windowControllers = new AbortController();
     this.stMemory = {
       interactionDelay: 0,
@@ -77,11 +77,7 @@ export class UserScaffold extends HTMLElement {
     });
     autorun(() => {
       if (this.debug) {
-        console.warn("START STATE");
-        console.log(`memory`, toJS(this.memory));
-        console.log(`action`, toJS(this.action));
-        console.log(`data`, toJS(this.data));
-        console.warn("END STATE");
+        console.trace(this);
       }
     });
   }

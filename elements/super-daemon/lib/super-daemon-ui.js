@@ -137,9 +137,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           max-height: 50vh;
           min-height: 30vh;
           overflow-y: scroll;
-          scroll-snap-align: start;
-          scroll-snap-type: y mandatory;
           padding: 32px 0px;
+        }
+        .results super-daemon-row {
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
         }
         .no-results {
           font-size: 32px;
@@ -221,7 +223,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           display: none;
         }
         :host([mini]) .results {
-          padding: 4px 0px;
+          padding: 40px 4px;
           max-height: unset;
           min-height: unset;
           height: 200px;
@@ -255,23 +257,16 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       }
       if (propName == "opened" && this.shadowRoot) {
         if (this.opened) {
-          document.body.style.overflow = "hidden";
           this.focusInput();
           // ensure whole recordset is on screen if in mini mode
           if (this.mini && !this.wand) {
+            document.body.style.overflow = "hidden";
             // reset to top of results
             this.shadowRoot.querySelector(".results").scrollTo(0, 0);
-            if (typeof this.shadowRoot.querySelector('#bottom').scrollIntoViewIfNeeded === "function") {
-              this.shadowRoot.querySelector('#bottom').scrollIntoViewIfNeeded(true);
-            } else {
-              this.shadowRoot.querySelector('#bottom').scrollIntoView({
-                behavior: "smooth",
-                inline: "center",
-              });
-            }  
           }
         }
         else {
+          // only a select mode makes this happen but still worth trapping for
           document.body.style.overflow = "";
         }
       }
@@ -332,13 +327,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           ) {
             this.shadowRoot
               .querySelector("super-daemon-row:last-child")
-              .shadowRoot.querySelector("button")
               .focus();
           } else {
             this.shadowRoot
               .querySelector("super-daemon-row[active]")
-              .previousElementSibling.shadowRoot.querySelector("button")
-              .focus();
+              .previousElementSibling.focus();
           }
           break;
         case "ArrowDown":
@@ -350,45 +343,14 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           ) {
             this.shadowRoot
               .querySelector("super-daemon-row")
-              .shadowRoot.querySelector("button")
               .focus();
           } else {
             this.shadowRoot
               .querySelector("super-daemon-row[active]")
-              .nextElementSibling.shadowRoot.querySelector("button")
-              .focus();
+              .nextElementSibling.focus();
           }
           break;
       }
-    }
-  }
-
-  commonConcepts(value) {
-    const sdi = window.SuperDaemonManager.requestAvailability();
-    switch (value) {
-      case "*":
-      case ">":
-      case "/":
-      case "?":
-        sdi.runProgram(value);
-        break;
-      case "media":
-        sdi.runProgram("sources", "/");
-        break;
-      default:
-        sdi.runProgram(value, "*");
-        break;
-    }
-  }
-
-  tagClick(e) {
-    this.commonConcepts(e.target.getAttribute("data-value"));
-  }
-
-  tagKeydown(e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      this.commonConcepts(e.target.getAttribute("data-value"));
     }
   }
 
@@ -417,9 +379,79 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.commandContext = e.detail.value;
   }
 
+   // keydown when we have focus on the input field
+   _inputKeydown(e) {
+    if (this.filtered.length > 0) {
+      switch (e.key) {
+        case "Enter":
+          this.shadowRoot.querySelector("super-daemon-row").selected();
+          break;
+        case "ArrowUp":
+          // @todo get focus on the row via an "active" parameter so we can just target that in the UI
+          this.shadowRoot
+            .querySelector("super-daemon-row:last-child")
+            .shadowRoot.querySelector("button")
+            .focus();
+          break;
+        case "ArrowDown":
+          this.shadowRoot
+            .querySelector("super-daemon-row")
+            .shadowRoot.querySelector("button")
+            .focus();
+          break;
+      }
+    }
+    // account for global override keys
+    switch (e.key) {
+      case "!":
+      case "/":
+      case "\\":
+      case ">":
+      case "<":
+        // support variations on "slash" and developer commands that should interpret as same thing
+        if (e.key === "\\" && this.like == "") {
+          this.commandContext = "/";
+          e.preventDefault();
+        } else if (e.key === "!" && this.like == "") {
+          this.commandContext = "/";
+          e.preventDefault();
+        } else if (e.key === "<" && this.like == "") {
+          this.commandContext = ">";
+          e.preventDefault();
+        } else if (this.like == "") {
+          this.commandContext = e.key;
+          e.preventDefault();
+        }
+        break;
+      case "Backspace":
+        // use this to back out of a program context
+        if (this.programSearch == "" && this.programName) {
+          // run this to unset the program context
+          this.dispatchEvent(
+            new CustomEvent("super-daemon-run-program", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: false,
+            })
+          );
+          e.preventDefault();
+        } else if (
+          !this.programName &&
+          this.like == "" &&
+          this.commandContext
+        ) {
+          this.commandContext = "*";
+          e.preventDefault();
+        }
+        break;
+    }
+  }
+
   render() {
     return html`
       <super-daemon-search
+      @keydown="${this._inputKeydown}"
       @focused-changed="${this.focusedChanged}"
       @value-changed="${this.inputfilterChanged}"
       @command-context-changed="${this.commandContextChanged}"

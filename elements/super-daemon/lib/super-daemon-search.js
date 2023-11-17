@@ -25,6 +25,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.listeningForInput = false;
     this.commandContext = "*";
     this.value = null;
+    this.disabled = false;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -37,6 +38,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   static get properties() {
     return {
       icon: { type: String },
+      disabled: { type: Boolean, reflect: true },
       iconAccent: { type: String, attribute: "icon-accent" },
       voiceSearch: { type: Boolean, reflect: true, attribute: "voice-search" },
       listeningForInput: {
@@ -54,76 +56,81 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   }
 
   voiceSearchClick() {
-    // refernced this way to avoid circular dependency
-    const sdi = window.SuperDaemonManager.requestAvailability();
-    if (this.listeningForInput) {
-      sdi.listeningForInput = false;
-    } else {
-      // start talking which listeners in super-daemon will activate
-      // after the text is spoken to avoid polluting input
-      sdi.hal.speak("How may I help you?", sdi.santaMode).then((e) => {
-        sdi.playSound();
-        sdi.listeningForInput = true;
-      });
-      this.focusInput();
+    if (!this.disabled) {
+      // refernced this way to avoid circular dependency
+      const sdi = window.SuperDaemonManager.requestAvailability();
+      if (this.listeningForInput) {
+        sdi.listeningForInput = false;
+      } else {
+        // start talking which listeners in super-daemon will activate
+        // after the text is spoken to avoid polluting input
+        sdi.hal.speak("How may I help you?", sdi.santaMode).then((e) => {
+          sdi.playSound();
+          sdi.listeningForInput = true;
+        });
+        this.focusInput();
+      }
     }
   }
 
   // keydown when we have focus on the input field
   _inputKeydown(e) {
-    // account for global override keys
-    switch (e.key) {
-      case "!":
-      case "/":
-      case "\\":
-      case ">":
-      case "<":
-      case "?":
-        // support variations on "slash" and developer commands that should interpret as same thing
-        if (e.key === "\\" && this.value == "") {
-          this.commandContext = "/";
-          e.preventDefault();
-        } else if (e.key === "!" && this.value == "") {
-          this.commandContext = "/";
-          e.preventDefault();
-        } else if (e.key === "<" && this.value == "") {
-          this.commandContext = ">";
-          e.preventDefault();
-        } else if (this.value == "") {
-          this.commandContext = e.key;
-          e.preventDefault();
-        }
-        break;
-      case "Backspace":
-        // use this to back out of a program context
-        if (this.programSearch == "" && this.programName) {
-          // run this to unset the program context
-          this.dispatchEvent(
-            new CustomEvent("super-daemon-run-program", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: false,
-            })
-          );
-          e.preventDefault();
-        } else if (
-          !this.programName &&
-          this.value == "" &&
-          this.commandContext
-        ) {
-          this.commandContext = "*";
-          e.preventDefault();
-        }
-        break;
+    if (!this.disabled) {
+      // account for global override keys
+      switch (e.key) {
+        case "!":
+        case "/":
+        case "\\":
+        case ">":
+        case "<":
+          // support variations on "slash" and developer commands that should interpret as same thing
+          if (e.key === "\\" && this.value == "") {
+            this.commandContext = "/";
+            e.preventDefault();
+          } else if (e.key === "!" && this.value == "") {
+            this.commandContext = "/";
+            e.preventDefault();
+          } else if (e.key === "<" && this.value == "") {
+            this.commandContext = ">";
+            e.preventDefault();
+          } else if (this.value == "") {
+            this.commandContext = e.key;
+            e.preventDefault();
+          }
+          break;
+        case "Backspace":
+          // use this to back out of a program context
+          if (this.programSearch == "" && this.programName) {
+            // run this to unset the program context
+            this.dispatchEvent(
+              new CustomEvent("super-daemon-run-program", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: false,
+              })
+            );
+            e.preventDefault();
+          } else if (
+            !this.programName &&
+            this.value == "" &&
+            this.commandContext
+          ) {
+            this.commandContext = "*";
+            e.preventDefault();
+          }
+          break;
+      }
     }
   }
 
   // feed results to the program as opposed to the global context based on program running
   inputfilterChanged(e) {
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    this.value=e.target.value;
+    if (!this.disabled) {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      this.value=e.target.value;  
+    }
   }
 
   render() {
@@ -145,6 +152,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         : ``}
       <simple-fields-field
         id="inputfilter"
+        ?disabled="${this.disabled}"
         @value-changed="${this.inputfilterChanged}"
         @keydown="${this._inputKeydown}"
         @focus="${this.fieldFocus}"
@@ -181,7 +189,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         }
       }));
     }
-    if (changedProperties.has('value') && this.value) {
+    if (changedProperties.has('value') && changedProperties.get('value') !== undefined) {
       this.dispatchEvent(new CustomEvent('value-changed', {
         composed: true,
         detail: {
@@ -218,6 +226,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   focusInput() {
     setTimeout(() => {
       this.shadowRoot.querySelector("#inputfilter").focus();
+      this.shadowRoot.querySelector("#inputfilter").cursorAtEnd();
     }, 0);
   }
 
@@ -238,6 +247,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         :host {
           display: flex;
           margin: 0;
+        }
+        :host([disabled]) {
+          pointer-events: none;
         }
         :host input {
           display: inline-flex;
@@ -273,9 +285,10 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           --simple-icon-width: 30px;
         }
         :host([mini]) .user-context-icon {
-          --simple-icon-height: 24px;
-          --simple-icon-width: 24px;
-          margin-top: 0px;
+          --simple-icon-height: 32px;
+          --simple-icon-width: 32px;
+          margin-top: 8px;
+          margin-left: 6px;
         }
         .program {
           display: inline-flex;
@@ -326,6 +339,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           width: 240px;
           margin: 8px 0 0 0;
           min-width: 100px;
+          --simple-fields-background-color: transparent;
         }
         simple-tag:hover,
         simple-tag:focus {
@@ -388,8 +402,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         return this.t.slashCommandsActive;
       case ">":
         return this.t.developerConsoleActive;
-      case "?":
-        return this.t.helpActive;
     }
     return "";
   }
@@ -397,11 +409,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   getActiveIcon(context) {
     switch (context) {
       case "/":
-        return "hax:slash";
+        return "hax:wand";
       case ">":
         return "hax:console-line";
-      case "?":
-        return "icons:help";
     }
     return "";
   }

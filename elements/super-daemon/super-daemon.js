@@ -164,7 +164,7 @@ class SuperDaemon extends SimpleColors {
       this._addVoiceCommand.bind(this),
       { signal: this.windowControllers.signal }
     );
-    window.addEventListener("super-daemon-modal-close", this.close.bind(this), {
+    window.addEventListener("super-daemon-close", this.close.bind(this), {
       signal: this.windowControllers.signal,
     });
   }
@@ -337,13 +337,13 @@ class SuperDaemon extends SimpleColors {
           // helps w/ splitting on / or else it's just a single item anyway
           let q = i.split("/");
           q.map((j) => {
-            if (!["", "*", "/", " ", "?", ">"].includes(j)) {
+            if (!["", "*", "/", " ", ">"].includes(j)) {
               index.push(j.toLocaleLowerCase());
             }
           });
         } else if (Array.isArray(i)) {
           i.map((j) => {
-            if (!["", "*", "/", " ", "?", ">"].includes(j)) {
+            if (!["", "*", "/", " ", ">"].includes(j)) {
               index.push(j.toLocaleLowerCase());
             }
           });
@@ -366,8 +366,6 @@ class SuperDaemon extends SimpleColors {
       .querySelector("super-daemon-ui").like = input;
     this.shadowRoot
       .querySelector("super-daemon-ui").focusInput();
-    this.shadowRoot
-      .querySelector("super-daemon-ui").selectInput();
     // turn off bc we got a match
     setTimeout(() => {
       this.setListeningStatus(false);
@@ -484,10 +482,12 @@ class SuperDaemon extends SimpleColors {
           top: 24px !important;
           right: 0;
           position: fixed !important;
+          display: table;
         }
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 10000);
           min-width: 280px;
+          width: 280px;
           color: var(--simple-colors-default-theme-grey-12, black);
         }
         absolute-position-behavior super-daemon-ui[mini][wand] {
@@ -519,7 +519,7 @@ class SuperDaemon extends SimpleColors {
   /**
    * Close the modal and do some clean up
    */
-  close(e) {
+  close(e = {}) {
     // clean up event for click away in mini mode if active
     this.activeNode = null;
     this.loading = false;
@@ -538,6 +538,20 @@ class SuperDaemon extends SimpleColors {
     this.setListeningStatus(false);
     // hide the toast if it's up.. unless in santa mode..
     if (!this.santaMode) {
+      // generate a close event if this wasn't already from a close event
+      // this happens when other parts of the program invoke close() directly
+      // as opposed to the event of selecting a result
+      if (!e || e.type !== "super-daemon-close") {
+        window.dispatchEvent(
+          new CustomEvent("super-daemon-close", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: true,
+          })
+        );
+      }
+      // we have an event, but not a close event
       if (e && e.type !== "super-daemon-close" && e.type !== "close") {
         window.dispatchEvent(
           new CustomEvent("super-daemon-toast-hide", {
@@ -635,9 +649,21 @@ class SuperDaemon extends SimpleColors {
     }
   }
   // if we click away, take the active value and apply it to the line
+  // ensure a synthetic event does not trigger this
   clickOnMiniMode(e) {
-    if (e.target !== this) {
-      this.miniCancel();
+    if (e.isTrusted) {
+      // ensure clicking on us does not disappear but since this is a "once"
+      // event application we need to reissue the event if we clicked on us
+      if (e.target !== this) {
+        this.miniCancel();
+      }
+      else {
+        window.addEventListener("click", this.clickOnMiniMode.bind(this), {
+          once: true,
+          passive: true,
+          signal: this.windowControllers2.signal,
+        });
+      }  
     }
   }
   // if we cancel out of mini mode there's a lot of UX enhancements we can do for the end user
@@ -646,6 +672,7 @@ class SuperDaemon extends SimpleColors {
       this.activeNode &&
       this.activeNode.focus &&
       this.mini &&
+      !this.wand &&
       this.activeRange &&
       this.activeSelection
     ) {
@@ -696,7 +723,7 @@ class SuperDaemon extends SimpleColors {
     }
     this.windowControllers2.abort();
     this.reprocessVoiceCommands();
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       this.windowControllers2 = new AbortController();
       // ensure if we click away from the UI that we close and clean up
       if (this.mini) {
@@ -708,9 +735,7 @@ class SuperDaemon extends SimpleColors {
       }
       this.shadowRoot
         .querySelector("super-daemon-ui").focusInput();
-        this.shadowRoot
-        .querySelector("super-daemon-ui").selectInput();
-    }, 0);
+    });
   }
   focusout(e) {
     if (e) {
@@ -730,8 +755,6 @@ class SuperDaemon extends SimpleColors {
           if (this.opened) {
             this.shadowRoot
               .querySelector("super-daemon-ui").focusInput();
-            this.shadowRoot
-              .querySelector("super-daemon-ui").selectInput();
           }
         }, 0);
       }
@@ -945,9 +968,6 @@ class SuperDaemon extends SimpleColors {
     this.voiceCommands["(run) program"] = (response) => {
       this.commandContextChanged({ detail: { value: "/", label: "program" } });
     };
-    this.voiceCommands["(I need) help"] = (response) => {
-      this.commandContextChanged({ detail: { value: "?", label: "help" } });
-    };
     this.voiceCommands["developer (mode)"] = (response) => {
       this.commandContextChanged({
         detail: { value: ">", label: "developer" },
@@ -1078,8 +1098,6 @@ class SuperDaemon extends SimpleColors {
                 this.playSound().then((e) => {
                   this.shadowRoot
                     .querySelector("super-daemon-ui").focusInput();
-                  this.shadowRoot
-                    .querySelector("super-daemon-ui").selectInput();
                 });
               } else {
                 // disable bc we got a hit
@@ -1098,7 +1116,6 @@ class SuperDaemon extends SimpleColors {
       switch (e.detail.value) {
         case "/":
         case "*": // global context / anything
-        case "?":
         case ">":
           this.commandContext = e.detail.value;
           this.items = this.filterItems(this.allItems, this.context);

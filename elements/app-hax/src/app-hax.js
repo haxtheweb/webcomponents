@@ -243,7 +243,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/app/tour",
-      context: ["*", "?"],
+      context: ["*"],
     });
 
     // contribution helpers
@@ -333,7 +333,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "User Tutorials",
@@ -347,7 +347,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/tutorials",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "User Documentation",
@@ -362,7 +362,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "HAX Teaching Excellence",
@@ -375,7 +375,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/pedagogy",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -388,7 +388,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
@@ -406,7 +406,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
     });

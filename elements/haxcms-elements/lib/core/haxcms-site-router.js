@@ -122,7 +122,7 @@ class HAXCMSSiteRouter extends HTMLElement {
       })
     );
     window.dispatchEvent(
-      new CustomEvent("super-daemon-modal-close", {
+      new CustomEvent("super-daemon-close", {
         bubbles: true,
         cancelable: true,
         detail: {},

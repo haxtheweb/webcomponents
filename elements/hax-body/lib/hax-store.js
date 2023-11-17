@@ -2023,7 +2023,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "User Tutorials",
@@ -2037,7 +2037,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/tutorials",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "User Documentation",
@@ -2052,7 +2052,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "HAX Teaching Excellence",
@@ -2065,7 +2065,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/pedagogy",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -2078,7 +2078,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
@@ -2096,7 +2096,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
     });

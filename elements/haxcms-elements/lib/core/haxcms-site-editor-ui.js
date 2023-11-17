@@ -469,6 +469,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "hax-drop-focus-event": "_expandSettingsPanel",
       "hax-store-ready": "haxStoreReady",
       "jwt-logged-in": "_jwtLoggedIn",
+      "super-daemon-close": "sdCloseEvent"
     };
     this.rpgHat = "none";
     this.darkMode = false;
@@ -1168,24 +1169,38 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       </app-hax-top-bar>
     `;
   }
+  // daemon was told to close so enable the search bar again
+  sdCloseEvent(e) {
+    setTimeout(() => {
+      // trap helps ensure user expectation of no input but without triggering
+      // an input change event which activates things running
+      this._ignoreReset = true;
+      this.shadowRoot.querySelector('#search').value = '';
+    }, 0);
+    this.shadowRoot.querySelector('#search').disabled = false;
+  }
 
   haxButtonOp(e) {
     let exec = e.target.getAttribute("data-event");
     switch (exec) {
       case "super-daemon":
-        console.log(e);
-        const value = this.shadowRoot.querySelector('#search').value;
-        if (e.type === "value-changed") {
-          if (value) {
+        if (!this._ignoreReset || e.type === "click") {
+          const value = this.shadowRoot.querySelector('#search').value;
+          if (e.type === "value-changed") {
+            if (value) {
+              SuperDaemonInstance.waveWand([value, "*"], this.shadowRoot.querySelector('#merlin'), null);
+            }
+          }
+          else {
             SuperDaemonInstance.waveWand([value, "*"], this.shadowRoot.querySelector('#merlin'), null);
           }
+          // this will reset UX expectation but also trigger this to run again so need to
+          // have weird loop above to ensure it's not going to affect it
+          this.shadowRoot.querySelector('#search').value = null;
+          // this helps with accessibility
+          this.shadowRoot.querySelector('#search').disabled = true;
         }
-        else {
-          SuperDaemonInstance.waveWand([value, "*"], this.shadowRoot.querySelector('#merlin'), null);
-        }
-        // this will reset UX expectation but also trigger this to run again so need to
-        // have weird loop above to ensure it's not going to affect it
-        this.shadowRoot.querySelector('#search').value = null;
+        this._ignoreReset = false;
       break;
       case "super-daemon-modal":
         store.playSound("click");
@@ -1686,7 +1701,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         } else {
           this.rpgHat = "none";
         }
-        SuperDaemonInstance.close();
+        if (oldValue !== undefined) {
+          SuperDaemonInstance.close();
+        }
         // observer
         this._editModeChanged(this[propName], oldValue);
         // notify

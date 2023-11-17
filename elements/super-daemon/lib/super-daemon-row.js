@@ -61,16 +61,16 @@ export class SuperDaemonRow extends SimpleColors {
         }
         :host([active]) {
           cursor: pointer;
-          border-radius: 8px;
+          border-radius: 4px;
           background-color: var(
             --super-daemon-row-hover,
             rgba(0, 100, 200, 0.1)
           );
-          outline: 2px solid black;
+          outline: 1px solid black;
         }
         :host([mini]) {
           margin: 0;
-          --super-daemon-row-label: 18px;
+          --super-daemon-row-label: 14px;
           --super-daemon-row-path: 10px;
         }
         button {
@@ -88,6 +88,7 @@ export class SuperDaemonRow extends SimpleColors {
         :host([mini]) button {
           padding: 4px;
           justify-content: flex-start;
+          align-items: center;
         }
         .result-icon {
           display: inline-flex;
@@ -114,13 +115,13 @@ export class SuperDaemonRow extends SimpleColors {
           max-width: 50px;
         }
         .label-wrap {
-          min-width: 50%;
+          min-width: 80%;
           overflow: hidden;
           text-align: left;
         }
         :host([mini]) .label-wrap {
           width: 100%;
-          margin-left: 16px;
+          margin-left: 12px;
         }
         .tags {
           width: 30%;
@@ -147,7 +148,7 @@ export class SuperDaemonRow extends SimpleColors {
         .label-wrap .path {
           font-size: var(--super-daemon-row-path, 20px);
           font-style: italic;
-          margin-top: 8px;
+          margin-top: 6px;
           overflow-wrap: break-word;
           word-break: break-all;
           overflow: hidden;
@@ -240,6 +241,10 @@ export class SuperDaemonRow extends SimpleColors {
   }
   _focusOut(e) {
     this.active = false;
+  }
+
+  focus() {
+    this.shadowRoot.querySelector('button').focus();
   }
 
   pickColor(val) {
