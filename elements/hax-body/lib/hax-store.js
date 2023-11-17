@@ -2187,7 +2187,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.trayDetail = "content-edit";
     this.appList = [];
     this.gizmoList = [];
-    this.recentGizmoList = UserScaffoldInstance.readMemory('recentGizmoList') || [];
+    this.recentGizmoList =
+      UserScaffoldInstance.readMemory("recentGizmoList") || [];
     this.haxAutoloader = null;
     this.activeHaxBody = null;
     this.haxTray = null;
@@ -2255,7 +2256,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     autorun(() => {
       const recentGizmoList = toJS(this.recentGizmoList);
       if (recentGizmoList.length > 0) {
-        UserScaffoldInstance.writeMemory('recentGizmoList', recentGizmoList, "long");
+        UserScaffoldInstance.writeMemory(
+          "recentGizmoList",
+          recentGizmoList,
+          "long"
+        );
       }
     });
   }

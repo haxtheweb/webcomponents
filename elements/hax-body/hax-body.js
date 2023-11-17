@@ -199,7 +199,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --simple-picker-option-active-color: var(--hax-tray-text-color);
           --simple-picker-color-active: var(--hax-tray-text-color);
           --simple-picker-color: var(--hax-tray-text-color);
-
         }
         :host([edit-mode][tray-status="full-panel"]) {
           opacity: 0.2;
@@ -475,9 +474,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           .hax-context-visible {
             height: auto;
           }
-          :host(:not([tray-status="collapsed"])) {
-            /*z-index: -1; */
-          }
+
           :host([edit-mode]) #bodycontainer,
           :host([edit-mode]) #bodycontainer[element-align="left"],
           :host([edit-mode]) #bodycontainer[element-align="right"] {
@@ -1268,7 +1265,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
                 SuperDaemonInstance.activeNode = rng.commonAncestorContainer;
                 SuperDaemonInstance.runProgram(
-                  rng.commonAncestorContainer.textContent.trim(), '*'
+                  rng.commonAncestorContainer.textContent.trim(),
+                  "*"
                 );
                 SuperDaemonInstance.open();
               }
@@ -2726,10 +2724,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           active = rng.commonAncestorContainer.parentNode;
         }
         SuperDaemonInstance.activeNode = active;
-        SuperDaemonInstance.runProgram(
-          active.textContent.trim(),
-          "*"
-        );
+        SuperDaemonInstance.runProgram(active.textContent.trim(), "*");
         SuperDaemonInstance.open();
         break;
       case "hide-context-menus":

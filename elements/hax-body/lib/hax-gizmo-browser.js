@@ -147,7 +147,12 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
               part="filter"
             ></simple-fields-field>
           </div>
-          <a11y-collapse id="recent" heading="${this.t.recent}" heading-button expanded>
+          <a11y-collapse
+            id="recent"
+            heading="${this.t.recent}"
+            heading-button
+            expanded
+          >
             <simple-button-grid columns="5" always-expanded part="grid">
               ${this.recentGizmoList.map(
                 (gizmo, i) => html` <simple-popover-selection

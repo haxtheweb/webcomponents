@@ -928,8 +928,9 @@ class HaxTray extends I18NMixin(
             class="tray-detail-titlebar-icon"
             icon="${this.trayIcon}"
           ></simple-icon-lite>
-          <div class="tray-detail-titlebar-label"
->${this.trayLabel || `${this.activeTagName}`}</div>
+          <div class="tray-detail-titlebar-label">
+            ${this.trayLabel || `${this.activeTagName}`}
+          </div>
           <div class="tray-detail-titlebar-actions">${this.menuButtons}</div>
         </h4>
       </div>
