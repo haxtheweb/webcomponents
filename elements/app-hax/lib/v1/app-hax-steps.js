@@ -32,6 +32,7 @@ const enabledCircle = new URL(
 
 const themeContext = {
   portfolio: ["haxor-slevin", "bootstrap-theme"],
+  blog: ["haxor-slevin"],
   course: ["clean-one", "clean-two", "learn-two-theme"],
   website: ["polaris-theme"],
   import: ["clean-one", "clean-two", "learn-two-theme"],
@@ -117,6 +118,10 @@ export class AppHaxSteps extends SimpleColors {
       if (value === "course") {
         store.site.type = "own";
         store.site.theme = "clean-one";
+      }
+      if (value === "blog") {
+        store.site.type = "own";
+        store.site.theme = "haxor-slevin";
       }
       if (value === "portfolio") {
         store.site.type = "own";
@@ -1029,6 +1034,13 @@ export class AppHaxSteps extends SimpleColors {
         template = html` <app-hax-button
           tabindex="${step !== 2 ? "-1" : ""}"
           @click=${this.chooseType}
+          type="website"
+        ></app-hax-button>`;
+        break;
+      case "blog":
+        template = html` <app-hax-button
+          tabindex="${step !== 2 ? "-1" : ""}"
+          @click=${this.chooseType}
           type="blog"
         ></app-hax-button>`;
         break;
@@ -1146,6 +1158,12 @@ export class AppHaxSteps extends SimpleColors {
           <div class="carousel-with-snapping-track">
             <div class="carousel-with-snapping-item" id="step-1">
               <div class="step-wrapper">
+              <app-hax-site-button
+                  tabindex="${this.step !== 1 ? "-1" : ""}"
+                  label="&gt; Blog"
+                  value="blog"
+                  @click=${this.chooseStructure}
+                ></app-hax-site-button>
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Course"
@@ -1154,7 +1172,13 @@ export class AppHaxSteps extends SimpleColors {
                 ></app-hax-site-button>
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Import From.."
+                  label="&gt; Website"
+                  value="website"
+                  @click=${this.chooseStructure}
+                ></app-hax-site-button>
+                <app-hax-site-button
+                  tabindex="${this.step !== 1 ? "-1" : ""}"
+                  label="&gt; Import site from.."
                   value="import"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
@@ -1163,12 +1187,7 @@ export class AppHaxSteps extends SimpleColors {
                   label="&gt; Portfolio"
                   value="portfolio"
                   @click=${this.chooseStructure}
-                ></app-hax-site-button>
-                <app-hax-site-button
-                  tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Website"
-                  value="website"
-                  @click=${this.chooseStructure}
+                  coming-soon
                 ></app-hax-site-button>
               </div>
             </div>
