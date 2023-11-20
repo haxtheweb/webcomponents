@@ -29,11 +29,16 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      whatAreYouLookingFor: "What are you trying to do?",
       voiceSearch: "Voice search",
       filterCommands: "Filter commands",
       commands: "Commands",
     };
+    this.possibleActions = [
+      "What are you trying to do?",
+      "Type / in content to reveal Merlin",
+      "You can drop files here",
+      "Try typing Search.."
+    ]
   }
   static get properties() {
     return {
@@ -160,7 +165,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         .value="${this.value}"
         aria-controls="filter"
         label="${this.t.filterCommands}"
-        placeholder="${this.t.whatAreYouLookingFor}"
+        placeholder="${this.suggestPossibleAction()}"
         type="text"
         auto-validate=""
         autofocus
@@ -177,6 +182,21 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
             title="${this.t.voiceSearch}"
           ></simple-icon-button-lite>`
         : ``}`;
+  }
+
+  suggestPossibleAction() {
+    return this.randomOption(this.possibleActions);
+  }
+
+  /**
+ * random option from and array of options
+ * @param {array} options
+ * @returns {*}
+ */
+  randomOption(options = []) {
+    return options.length > 0
+      ? options[Math.floor(Math.random() * Math.floor(options.length))]
+      : undefined;
   }
 
   updated(changedProperties) {
@@ -317,17 +337,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           padding: 0px 4px 0px 2px;
           font-weight: bold;
           font-style: italic;
-        }
-        .slotted {
-          display: block;
-          max-width: 90%;
-          font-size: 20px;
-        }
-        .slotted ::slotted(a) {
-          color: var(--simple-colors-default-theme-grey-8, blue);
-          font-weight: bold;
-          text-decoration: underline;
-          cursor: pointer;
         }
         simple-fields-field {
           line-height: 40px;

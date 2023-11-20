@@ -158,8 +158,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
         .slotted {
           display: block;
-          max-width: 90%;
-          font-size: 20px;
+          font-size: 16px;
+          line-height: 24px;
         }
         .slotted ::slotted(a) {
           color: var(--simple-colors-default-theme-grey-8, blue);

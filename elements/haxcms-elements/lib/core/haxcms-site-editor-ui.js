@@ -500,7 +500,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     };
     // nothing message so we can suggest a link to make a suggestion
     SuperDaemonInstance.noResultsSlot = () => {
-      return html`Expecting to see results?
+      return html`<div class="no-results">Expecting to see an option Merlin didn't provide?</div>
         <a
           @click="${(e) => {
             HAXStore._haxStoreContribute(
@@ -508,12 +508,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "POP,enhancement",
               SuperDaemonInstance.commandContext +
                 " " +
-                SuperDaemonInstance.like
+                SuperDaemonInstance.value
             );
           }}"
-          >Make a suggestion</a
-        >
-        for what you thought you would see here!`;
+          >Make a suggestion to improve results</a
+        >`;
     };
     SuperDaemonInstance.appendContext("CMS");
     SuperDaemonInstance.defineOption({

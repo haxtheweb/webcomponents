@@ -799,7 +799,10 @@ class SuperDaemon extends SimpleColors {
               @super-daemon-close="${this.close}"
               @super-daemon-command-context-changed="${this
                 .commandContextChanged}"
-            ></super-daemon-ui>
+              >${this.noResultsSlot(
+                this.like || this.programSearch
+              )}</super-daemon-ui
+            >
           </absolute-position-behavior>
         `
       : html`
