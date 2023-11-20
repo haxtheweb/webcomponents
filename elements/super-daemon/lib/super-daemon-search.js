@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { mimeTypeToName } from "@lrnwebcomponents/utils/utils.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -26,6 +27,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.commandContext = "*";
     this.value = null;
     this.disabled = false;
+    this.dragover = false;
+    this.droppable = false;
+    this.droppableType = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -34,11 +38,11 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       commands: "Commands",
     };
     this.possibleActions = [
-      "What are you trying to do?",
-      "Type / in content to reveal Merlin",
-      "You can drop files here",
-      "Try typing Search.."
-    ]
+      "🧙‍♂️ What are you trying to do?",
+      "💡 Type / in content to open 🧙‍♂️ Merlin",
+      "📁 Dragging 📄 files here to work",
+      "🕵 Type search to find 📺 media",
+    ];
   }
   static get properties() {
     return {
@@ -51,6 +55,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         reflect: true,
         attribute: "listening-for-input",
       },
+      droppable: { type: Boolean, reflect: true },
+      dragover: { type: Boolean, reflect: true },
+      droppableType: { type: String, attribute: "droppable-type" },
       value: { type: String },
       mini: { type: Boolean, reflect: true },
       wand: { type: Boolean, reflect: true },
@@ -165,7 +172,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         .value="${this.value}"
         aria-controls="filter"
         label="${this.t.filterCommands}"
-        placeholder="${this.suggestPossibleAction()}"
+        placeholder="${this.suggestPossibleAction(this.droppableType)}"
         type="text"
         auto-validate=""
         autofocus
@@ -184,8 +191,13 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         : ``}`;
   }
 
-  suggestPossibleAction() {
-    return this.randomOption(this.possibleActions);
+  suggestPossibleAction(mimeType) {
+    if (!mimeType) {
+      return this.randomOption(this.possibleActions);
+    }
+    else {
+      return `📂 Drop '${mimeTypeToName(mimeType)}' here for options`
+    }
   }
 
   /**
@@ -208,6 +220,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           value: this.focused
         }
       }));
+    }
+    if (changedProperties.has('droppable') && !this.droppable) {
+      this.dragover = false;
     }
     if (changedProperties.has('value') && changedProperties.get('value') !== undefined) {
       this.dispatchEvent(new CustomEvent('value-changed', {
@@ -267,6 +282,26 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         :host {
           display: flex;
           margin: 0;
+        }
+        :host([droppable]) {
+          outline-offset: -4px;
+          outline: 4px solid rgba(255, 0, 255, 0.1);
+        }
+        :host([droppable]),
+        :host([droppable]) .voice,
+        :host([droppable]) simple-fields-field {
+          --simple-fields-placeholder-font-weight: bold;
+          --simple-fields-placeholder-opacity: 0.8;
+          --simple-fields-placeholder-color: var(--simple-colors-default-theme-grey-12, grey);
+          background-color: rgba(255, 0, 255, 0.05);
+        }
+        :host([droppable][dragover]) {
+          outline: 4px dashed rgba(255, 0, 255, 0.2);
+        }
+        :host([droppable][dragover]),
+        :host([droppable][dragover]) .voice,
+        :host([droppable][dragover]) simple-fields-field {
+          background-color: rgba(255, 0, 255, 0.1);
         }
         :host([disabled]) {
           pointer-events: none;
@@ -346,9 +381,11 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           line-height: normal;
           font-family: inherit;
           width: 240px;
-          margin: 8px 0 0 0;
+          margin: 4px 0 0 0;
           min-width: 100px;
           --simple-fields-background-color: transparent;
+          --simple-fields-placeholder-opacity: 0.4;
+          --simple-fields-placeholder-color: var(--simple-colors-default-theme-purple-12, purple);
         }
         simple-tag:hover,
         simple-tag:focus {

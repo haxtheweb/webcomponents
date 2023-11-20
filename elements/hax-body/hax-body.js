@@ -278,7 +278,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ::slotted([contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
-          transition: 0.2s all ease-in-out;
+          transition: 0.6s all ease-in-out;
+        }
+
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted([contenteditable][data-hax-ray][data-hax-active]:empty:not([data-instructional-action]))::before {
+          content: "Type '/' to add blocks";
+          opacity: 0.4;
+          font-size: 18px;
         }
 
         :host([edit-mode])

@@ -2,6 +2,8 @@ import { html, css, nothing } from "lit";
 import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
+import { autorun, toJS } from "mobx";
 import "./super-daemon-row.js";
 import "./super-daemon-search.js";
 
@@ -17,7 +19,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.t = {
       ...this.t,
       noResultsForThisTerm: this._defaultTextEmpty,
-      whatAreYouLookingFor: "What are you trying to do?",
       voiceSearch: "Voice search",
       filterCommands: "Filter commands",
       commands: "Commands",
@@ -36,8 +37,35 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       ...SimpleColors.shadowRootOptions,
       delegatesFocus: true,
     };
+    this.activeDrag = false;
+    this.activeType = null;
     this.where = "index";
     this.icon = "hardware:keyboard-return";
+    // user scaffolding wired up to superDaemon
+    autorun(() => {
+      const usAction = toJS(UserScaffoldInstance.action);
+      const usData = toJS(UserScaffoldInstance.data);
+      const sdi = window.SuperDaemonManager.requestAvailability();
+      // try to evaluate typing in merlin
+      if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn && 
+        sdi.programName === null &&
+        usAction.type === 'drag'
+        ) {
+        this.activeDrag = true;
+        this.activeType = usData.value || usData.architype;
+      }
+      else if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn && 
+        sdi.programName === null &&
+        usAction.type === 'dragleave'
+        ) {
+        this.activeDrag = false;
+        this.activeType = null;
+      }
+    });
   }
   static get tag() {
     return "super-daemon-ui";
@@ -53,6 +81,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         type: Boolean,
         reflect: true,
         attribute: "listening-for-input",
+      },
+      activeDrag: {
+        type: Boolean,
+      },
+      activeType: {
+        type: String,
       },
       mini: { type: Boolean, reflect: true },
       wand: { type: Boolean, reflect: true },
@@ -257,6 +291,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       }
       if (propName == "opened" && this.shadowRoot) {
         if (this.opened) {
+          this.activeType = null;
+          this.activeDrag = false;
           this.focusInput();
           // ensure whole recordset is on screen if in mini mode
           if (this.mini && !this.wand) {
@@ -448,6 +484,29 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     }
   }
 
+  /**
+   * drag / drop event block
+   */
+  dropEvent(e) {
+    e.preventDefault();
+    this.activeDrag = false;
+    this.activeType = null;
+    const sdi = window.SuperDaemonManager.requestAvailability();
+    sdi.waveWand(['', "/", e, "hax-agent", "Agent"], this.shadowRoot.querySelector('#merlin'), "coin2");
+  }
+  dragenterEvent(e) {
+    e.preventDefault();
+    this.shadowRoot.querySelector('super-daemon-search').dragover = true;
+  }
+  dragoverEvent(e) {
+    e.preventDefault();
+    this.shadowRoot.querySelector('super-daemon-search').dragover = true;
+  }
+  dragleaveEvent(e) {
+    e.preventDefault();
+    this.shadowRoot.querySelector('super-daemon-search').dragover = false;
+  }
+
   render() {
     return html`
       <super-daemon-search
@@ -456,6 +515,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       @value-changed="${this.inputfilterChanged}"
       @command-context-changed="${this.commandContextChanged}"
       @listening-for-input-changed="${this.listeningForInputChanged}"
+      @drop="${this.dropEvent}"
+      @dragenter="${this.dragenterEvent}"
+      @dragleave="${this.dragleaveEvent}"
+      @dragover="${this.dragoverEvent}"
       icon="${this.icon}"
       icon-accent="${this.iconAccent}"
       value="${this.like}"
@@ -466,6 +529,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       program-search="${this.programSearch}"
       ?listening-for-input="${this.listeningForInput}"
       command-context="${this.commandContext}"
+      droppable-type="${this.activeType}"
+      ?droppable="${this.activeDrag}"
       >
 
       </super-daemon-search>

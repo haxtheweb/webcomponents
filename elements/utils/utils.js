@@ -194,6 +194,48 @@ export function localStorageGet(name, defaultValue = "") {
   }
 }
 
+// convert mimetype into a readable file extension
+export function mimeTypeToName(mimeType) {
+  let data = mimeType.split('/');
+  switch (data[1]) {
+    case 'msword':
+      return '.doc';
+    case 'application/vnd.ms-excel':
+      return '.xls';
+    case 'vnd.ms-powerpoint':
+      return '.ppt';
+    case 'vnd.openxmlformats-officedocument.wordprocessingml.document':
+      return '.docx';
+    case 'vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+      return '.xlsx';
+    case 'vnd.openxmlformats-officedocument.presentationml.presentation':
+      return '.pptx';
+    case 'mpeg':
+      return '.mp3';
+    case 'svg+xml':
+      return 'svg';
+    case 'plain':
+      return 'text';
+    case 'rtf':
+    case 'gif':
+    case 'jpeg':
+    case 'png':
+    case 'webm':
+    case 'webp':
+    case 'html':
+    case 'htm':
+    case 'text':
+    case 'zip':
+    case 'csv':
+    case 'pdf':
+    case 'mp4':
+    case 'markdown':
+    return `.${data[1]}`;
+  }
+
+  return 'file';
+}
+
 // set type safe variables
 export function localStorageSet(name, newItem) {
   try {

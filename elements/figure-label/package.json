@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.8.0"
+    "lit": "^3.1.0"
   },
   "devDependencies": {
     "@open-wc/testing": "3.2.0",

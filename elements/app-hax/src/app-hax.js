@@ -186,7 +186,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       addPage: "Add page",
       addChildPage: "Add child page",
       clonePage: "Clone page",
-      importDocxFile: "Import docx file",
       delete: "Delete page",
       siteSettings: "Site settings",
       close: "Close",

@@ -194,9 +194,6 @@ export class UserScaffold extends HTMLElement {
   // dropping a file in implies certain capabilities
   userDropAction(e) {
     e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    console.log(e);
     if (e.isTrusted && e.dataTransfer && e.dataTransfer.items && e.dataTransfer.items.length > 0) {
       this.action = {
         type: "drop",

@@ -96,6 +96,20 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               transparent
             );
           }
+          input::placeholder {
+            font-weight: var(
+              --simple-fields-placeholder-font-weight,
+              inherit
+            );
+            opacity: var(
+              --simple-fields-placeholder-opacity,
+              0.5
+            );
+            color: var(
+              --simple-fields-placeholder-color,
+              black
+            );
+          }
           select.field {
             width: calc(100% - 26px);
             padding-right: 26px;

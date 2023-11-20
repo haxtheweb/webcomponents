@@ -47,7 +47,7 @@
     "@lrnwebcomponents/radio-behaviors": "^7.0.18",
     "@lrnwebcomponents/simple-icon": "^7.0.18",
     "@lrnwebcomponents/simple-tooltip": "^7.0.18",
-    "lit": "^2.8.0"
+    "lit": "^3.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.0.5",

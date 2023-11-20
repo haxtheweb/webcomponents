@@ -214,7 +214,6 @@ class SuperDaemon extends SimpleColors {
       });
       if (itemMatch) {
         this._programToRun = itemMatch.value.program;
-        values = itemMatch.value;
       }
       else {
         console.error("Incorrect program called", program);

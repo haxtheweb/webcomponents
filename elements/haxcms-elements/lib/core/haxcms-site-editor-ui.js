@@ -10,6 +10,7 @@ import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility
 import {
   localStorageSet,
   winEventsElement,
+  mimeTypeToName,
 } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -23,6 +24,8 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 import "@lrnwebcomponents/super-daemon/lib/super-daemon-search.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-site-insights.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
@@ -442,6 +445,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.shadowRoot.querySelector("#content-edit").click();
   }
 
+  async processFileUpload(eventData, mode) {
+    enableServices(["core"]);
+    const file = eventData.dataTransfer.files[0];
+    // tee up as a form for upload
+    const formData = new FormData();
+    formData.append("upload", file);
+    const response = await MicroFrontendRegistry.call(
+      "@core/docxToHtml",
+      formData
+    );
+    if (response && response.data && response.data.contents) {
+      if (mode === 'appendChild') {
+        if (store.editMode === false) {
+          store.editMode = true;
+          setTimeout(async () => {
+            let content = await HAXStore.activeHaxBody.haxToContent();
+            HAXStore.activeHaxBody.importContent(content + response.data.contents);              
+          }, 100);
+        } 
+      }  
+    }
+  }
+
   async insertUrl(input, mode) {
     if (store.editMode === false) {
       store.editMode = true;
@@ -526,38 +552,69 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         name: "Agent",
         machineName: "hax-agent",
         program: (input, values) => {
-          let results = [{
-            title: "URL with page title",
-            icon: "hax:hax2022",
-            tags: ["agent"],
-            value: {
-              target: this,
-              method: "insertUrl",
-              args: [input, true],
+          const usAction = toJS(UserScaffoldInstance.action);
+          const usData = toJS(UserScaffoldInstance.data);
+          // @todo we neeed to look deeper at the type of user action
+          // executed in order to make this happen
+          let results = [];
+          if (usAction.type === 'drop') {
+            switch(mimeTypeToName(usData.value)) {
+              case '.docx':
+              case '.doc':
+                // values for the drop even should be the file refeerence
+                console.log(values);
+
+                //haxcms-create-node event with modifications
+                // should be able to support this operation.
+                // we hand off the file reference / event object
+                // and then replace the file picker selection event
+                // with this event and we should get the interaction pattern
+                // we're looking to rope into where it confirms first via
+                // outline design.
+
+                // now, for another pattern we'll want to just insert and
+                // skip a lot of these steps.
+                results = [{
+                  title: "Insert 'doc' content as HTML",
+                  icon: "hax:hax2022",
+                  tags: ["agent"],
+                  value: {
+                    target: this,
+                    method: "processFileUpload",
+                    args: [values, 'appendChild'],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "HAX/agent/insert",
+                }];
+              break;
+            }
+          }
+          else {
+            results = [{
+              title: "URL with page title",
+              icon: "hax:hax2022",
+              tags: ["agent"],
+              value: {
+                target: this,
+                method: "insertUrl",
+                args: [input, true],
+              },
+              eventName: "super-daemon-element-method",
+              path: "HAX/agent/insert",
             },
-            eventName: "super-daemon-element-method",
-            context: [
-              "/",
-              "HAX/agent",
-            ],
-            path: "HAX/agent/insert",
-          },
-          {
-            title: "Insert url alone",
-            icon: "hax:hax2022",
-            tags: ["agent"],
-            value: {
-              target: this,
-              method: "insertUrl",
-              args: [input, false],
-            },
-            eventName: "super-daemon-element-method",
-            context: [
-              "/",
-              "HAX/agent",
-            ],
-            path: "HAX/agent/insert",
-          }];
+            {
+              title: "Insert url alone",
+              icon: "hax:hax2022",
+              tags: ["agent"],
+              value: {
+                target: this,
+                method: "insertUrl",
+                args: [input, false],
+              },
+              eventName: "super-daemon-element-method",
+              path: "HAX/agent/insert",
+            }];
+          }
           return results;
         },
       },
@@ -670,9 +727,35 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.backLink = "../../";
     this.activeTagName = "";
     this.activeNode = null;
+    this.activeDrag = false;
+    this.activeType = null;
     if (window.appSettings && window.appSettings.backLink) {
       this.backLink = window.appSettings.backLink;
     }
+    // user scaffolding wired up to superDaemon
+    autorun(() => {
+      const usAction = toJS(UserScaffoldInstance.action);
+      const usData = toJS(UserScaffoldInstance.data);
+      // try to evaluate typing in merlin
+      if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn && 
+        SuperDaemonInstance.programName === null &&
+        usAction.type === 'drag'
+        ) {
+        this.activeDrag = true;
+        this.activeType = usData.value || usData.architype;
+      }
+      else if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn && 
+        SuperDaemonInstance.programName === null &&
+        usAction.type === 'dragleave'
+        ) {
+        this.activeDrag = false;
+        this.activeType = null;
+      }
+    });
     autorun(() => {
       const activeGizmo = toJS(HAXStore.activeGizmo);
       if (activeGizmo && activeGizmo.title) {
@@ -1090,6 +1173,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <super-daemon-search
             @click="${this.haxButtonOp}"
             @value-changed="${this.haxButtonOp}"
+            @drop="${this.dropEvent}"
+            @dragenter="${this.dragenterEvent}"
+            @dragleave="${this.dragleaveEvent}"
+            @dragover="${this.dragoverEvent}"
             icon="hax:wizard-hat"
             id="search"
             voice-search
@@ -1097,6 +1184,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             data-event="${this.responsiveSize === 'xs' ? 'super-daemon-modal' : 'super-daemon'}"
             mini
             wand
+            droppable-type="${this.activeType}"
+            ?droppable="${this.activeDrag}"
           >
           </super-daemon-search>
         </simple-toolbar>
@@ -1168,15 +1257,40 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       </app-hax-top-bar>
     `;
   }
+
+  /**
+   * drag / drop event block
+   */
+  dropEvent(e) {
+    e.preventDefault();
+    this.activeDrag = false;
+    this.activeType = null;
+    SuperDaemonInstance.waveWand(['', "/", e, "hax-agent", "Agent"], this.shadowRoot.querySelector('#merlin'), "coin2");
+  }
+  dragenterEvent(e) {
+    e.preventDefault();
+    this.sdSearch.dragover = true;
+  }
+  dragoverEvent(e) {
+    e.preventDefault();
+    this.sdSearch.dragover = true;
+  }
+  dragleaveEvent(e) {
+    e.preventDefault();
+    this.sdSearch.dragover = false;
+  }
   // daemon was told to close so enable the search bar again
   sdCloseEvent(e) {
     setTimeout(() => {
       // trap helps ensure user expectation of no input but without triggering
       // an input change event which activates things running
       this._ignoreReset = true;
-      this.shadowRoot.querySelector('#search').value = '';
+      this.sdSearch.value = '';
     }, 0);
-    this.shadowRoot.querySelector('#search').disabled = false;
+    this.sdSearch.disabled = false;
+    this.sdSearch.dragover = false;
+    this.sdSearch.droppable = false;
+    this.sdSearch.droppableType = null;
   }
 
   haxButtonOp(e) {
@@ -1184,7 +1298,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     switch (exec) {
       case "super-daemon":
         if (!this._ignoreReset || e.type === "click") {
-          const value = this.shadowRoot.querySelector('#search').value;
+          const value = this.sdSearch.value;
           if (e.type === "value-changed") {
             if (value) {
               SuperDaemonInstance.waveWand([value, "*"], this.shadowRoot.querySelector('#merlin'), null);
@@ -1195,9 +1309,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
           // this will reset UX expectation but also trigger this to run again so need to
           // have weird loop above to ensure it's not going to affect it
-          this.shadowRoot.querySelector('#search').value = null;
+          this.sdSearch.value = null;
           // this helps with accessibility
-          this.shadowRoot.querySelector('#search').disabled = true;
+          this.sdSearch.disabled = false;
+          this.sdSearch.dragover = false;
+          this.sdSearch.droppable = false;
+          this.sdSearch.droppableType = null;
         }
         this._ignoreReset = false;
       break;
@@ -1363,6 +1480,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           path: item.getAttribute("data-super-daemon-path"),
         });
       });
+    this.sdSearch = this.shadowRoot.querySelector('super-daemon-search');
     SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector("#merlin");
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
@@ -1736,6 +1854,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       userName: {
         type: String,
         attribute: "user-name",
+      },
+      activeDrag: {
+        type: Boolean,
+      },
+      activeType: {
+        type: String,
       },
       activeNode: {
         type: Object,
