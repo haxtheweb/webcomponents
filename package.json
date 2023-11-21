@@ -50,6 +50,7 @@
     "@web/test-runner-playwright": "0.10.1"
   },
   "dependencies": {
+    "lit": "^3.1.0",
     "patch-package": "6.4.7",
     "validate-element-name": "3.0.0",
     "@babel/core": "^7.9.0",
@@ -70,7 +71,6 @@
     "lunr": "2.3.9",
     "concurrently": "8.2.0",
     "promise-polyfill": "8.2.1",
-    "lit": "^3.1.0",
     "jsdom": "19.0.0",
     "url": "0.11.0",
     "turndown": "7.1.1",
@@ -175,18 +175,18 @@
     "yo": "4.3.0",
     "@wcfactory/rollup-umd-build": "^0.13.0",
     "rollup-plugin-copy": "3.4.0",
-    "@lit/reactive-element": "^1.6.3",
-    "lit-element": "^3.3.3",
-    "lit-html": "^2.8.0"
+    "@lit/reactive-element": "^2.0.2",
+    "lit-element": "^4.0.2",
+    "lit-html": "^3.1.0"
   },
   "resolutions": {
     "@mdjs/mdjs-preview": "0.5.9",
     "@google/model-viewer": "3.2.1",
     "webpack": "5.87.0",
     "roughjs": "4.4.5",
-    "@lit/reactive-element": "1.6.3",
-    "lit-element": "3.3.3",
-    "lit-html": "2.8.0",
+    "@lit/reactive-element": "2.0.2",
+    "lit-element": "4.0.2",
+    "lit-html": "3.1.0",
     "lit": "3.1.0"
   },
   "lint-staged": {
