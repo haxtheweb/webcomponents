@@ -15,15 +15,18 @@ export class PolarisCta extends LitElement {
     this.filled = false;
   }
 
-  static properties = {
-    text: { type: String },
-    link: { type: String },
-    type: { type: String, reflect: true },
-    outlined: { type: Boolean, reflect: true },
-    filled: { type: Boolean, reflect: true },
-  };
+  static get properties() {
+    return {
+      text: { type: String },
+      link: { type: String },
+      type: { type: String, reflect: true },
+      outlined: { type: Boolean, reflect: true },
+      filled: { type: Boolean, reflect: true },
+    };
+  }
 
-  static styles = css`
+  static get styles() {
+    return [css`
     :host {
       display: block;
       margin-left: 32px;
@@ -121,7 +124,8 @@ export class PolarisCta extends LitElement {
       --polaris-cta-background-color: var(--polaris-cta-psu-darkblue);
       --polaris-cta-color: var(--polaris-cta-psu-lightblue);
     }
-  `;
+  `];
+  }
 
   render() {
     return html`<a href="${this.link}"><slot>${this.text}</slot></a>`;

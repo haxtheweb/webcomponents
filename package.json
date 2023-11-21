@@ -76,7 +76,7 @@
     "turndown": "7.1.1",
     "sharp": "0.30.6",
     "markdown-it": "13.0.1",
-    "@lit-labs/ssr": "3.1.5",
+    "@lit-labs/ssr": "3.2.0",
     "stream": "0.0.2",
     "node-fetch": "3.2.10",
     "base64-arraybuffer": "1.0.2",
@@ -174,19 +174,13 @@
     "whatwg-fetch": "3.6.2",
     "yo": "4.3.0",
     "@wcfactory/rollup-umd-build": "^0.13.0",
-    "rollup-plugin-copy": "3.4.0",
-    "@lit/reactive-element": "^2.0.2",
-    "lit-element": "^4.0.2",
-    "lit-html": "^3.1.0"
+    "rollup-plugin-copy": "3.4.0"
   },
   "resolutions": {
     "@mdjs/mdjs-preview": "0.5.9",
     "@google/model-viewer": "3.2.1",
     "webpack": "5.87.0",
     "roughjs": "4.4.5",
-    "@lit/reactive-element": "2.0.2",
-    "lit-element": "4.0.2",
-    "lit-html": "3.1.0",
     "lit": "3.1.0"
   },
   "lint-staged": {
