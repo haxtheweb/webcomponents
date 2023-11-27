@@ -1,0 +1,136 @@
+diff --git a/node_modules/polymer-build/lib/js-transform.js b/node_modules/polymer-build/lib/js-transform.js
+index 00b71cb..6a3e08d 100644
+--- a/node_modules/polymer-build/lib/js-transform.js
++++ b/node_modules/polymer-build/lib/js-transform.js
+@@ -66,6 +66,17 @@ const babelTransformEs2018 = [
+     require('@babel/plugin-proposal-object-rest-spread'),
+     require('@babel/plugin-proposal-async-generator-functions'),
+ ];
++const babelTransformEs2020 = [
++    require('@babel/plugin-proposal-optional-chaining'),
++    require('@babel/plugin-proposal-nullish-coalescing-operator'),
++    require('@babel/plugin-transform-optional-catch-binding'),
++];
++const babelTransformEs2021 = [
++    require('@babel/plugin-proposal-logical-assignment-operators'),
++];
++const babelTransformEs2022 = [
++    require('@babel/plugin-proposal-class-properties'),
++];
+ // Loading this plugin removes inlined Babel helpers.
+ const babelExternalHelpersPlugin = require('@babel/plugin-external-helpers');
+ const babelTransformModulesAmd = [
+@@ -136,21 +147,33 @@ function jsTransform(js, options) {
+         plugins.push(...babelTransformEs2016);
+         plugins.push(...babelTransformEs2017);
+         plugins.push(...babelTransformEs2018);
++        plugins.push(...babelTransformEs2020);
++        plugins.push(...babelTransformEs2021);
++        plugins.push(...babelTransformEs2022);
+     }
+     else if (options.compile === 'es2015') {
+         doBabelTransform = true;
+         plugins.push(...babelTransformEs2016);
+         plugins.push(...babelTransformEs2017);
+         plugins.push(...babelTransformEs2018);
++        plugins.push(...babelTransformEs2020);
++        plugins.push(...babelTransformEs2021);
++        plugins.push(...babelTransformEs2022);
+     }
+     else if (options.compile === 'es2016') {
+         doBabelTransform = true;
+         plugins.push(...babelTransformEs2017);
+         plugins.push(...babelTransformEs2018);
++        plugins.push(...babelTransformEs2020);
++        plugins.push(...babelTransformEs2021);
++        plugins.push(...babelTransformEs2022);
+     }
+     else if (options.compile === 'es2017') {
+         doBabelTransform = true;
+         plugins.push(...babelTransformEs2018);
++        plugins.push(...babelTransformEs2020);
++        plugins.push(...babelTransformEs2021);
++        plugins.push(...babelTransformEs2022);
+     }
+     if (options.moduleResolution === 'node') {
+         if (!options.filePath) {
+@@ -180,6 +203,11 @@ function jsTransform(js, options) {
+                     // tslint:disable-next-line: no-any
+                     'importMeta',
+                     'objectRestSpread',
++                    'optionalChaining',
++                    'nullishCoalescingOperator',
++                    'classProperties',
++                    'optionalCatchBinding',
++                    'logicalAssignment',
+                 ],
+             });
+         }
+diff --git a/node_modules/polymer-build/src/js-transform.ts b/node_modules/polymer-build/src/js-transform.ts
+index 91e6a8b..4f0b8c0 100644
+--- a/node_modules/polymer-build/src/js-transform.ts
++++ b/node_modules/polymer-build/src/js-transform.ts
+@@ -73,6 +73,20 @@ const babelTransformEs2018 = [
+   require('@babel/plugin-proposal-async-generator-functions'),
+ ];
+ 
++const babelTransformEs2020 = [
++  require('@babel/plugin-proposal-optional-chaining'),
++  require('@babel/plugin-proposal-nullish-coalescing-operator'),
++  require('@babel/plugin-transform-optional-catch-binding'),
++];
++
++const babelTransformEs2021 = [
++  require('@babel/plugin-proposal-logical-assignment-operators'),
++];
++
++const babelTransformEs2022 = [
++  require('@babel/plugin-proposal-class-properties'),
++];
++
+ // Loading this plugin removes inlined Babel helpers.
+ const babelExternalHelpersPlugin = require('@babel/plugin-external-helpers');
+ 
+@@ -207,18 +221,30 @@ export function jsTransform(js: string, options: JsTransformOptions): string {
+     plugins.push(...babelTransformEs2016);
+     plugins.push(...babelTransformEs2017);
+     plugins.push(...babelTransformEs2018);
++    plugins.push(...babelTransformEs2020);
++    plugins.push(...babelTransformEs2021);
++    plugins.push(...babelTransformEs2022);
+   } else if (options.compile === 'es2015') {
+     doBabelTransform = true;
+     plugins.push(...babelTransformEs2016);
+     plugins.push(...babelTransformEs2017);
+     plugins.push(...babelTransformEs2018);
++    plugins.push(...babelTransformEs2020);
++    plugins.push(...babelTransformEs2021);
++    plugins.push(...babelTransformEs2022);
+   } else if (options.compile === 'es2016') {
+     doBabelTransform = true;
+     plugins.push(...babelTransformEs2017);
+     plugins.push(...babelTransformEs2018);
++    plugins.push(...babelTransformEs2020);
++    plugins.push(...babelTransformEs2021);
++    plugins.push(...babelTransformEs2022);
+   } else if (options.compile === 'es2017') {
+     doBabelTransform = true;
+     plugins.push(...babelTransformEs2018);
++    plugins.push(...babelTransformEs2020);
++    plugins.push(...babelTransformEs2021);
++    plugins.push(...babelTransformEs2022);
+   }
+   if (options.moduleResolution === 'node') {
+     if (!options.filePath) {
+@@ -258,6 +284,11 @@ export function jsTransform(js: string, options: JsTransformOptions): string {
+           // tslint:disable-next-line: no-any
+           'importMeta' as any,
+           'objectRestSpread',
++          'optionalChaining',
++          'nullishCoalescingOperator',
++          'classProperties',
++          'optionalCatchBinding',
++          'logicalAssignment',
+         ],
+       });
+     } catch (e) {
