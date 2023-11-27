@@ -126,6 +126,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
 
     static get properties() {
       return {
+        ...super.properties,
         ...SimpleToolbarGlobalProperties,
         /**
          * The `id` of the `simple-toolbar` that the toolbar controls.

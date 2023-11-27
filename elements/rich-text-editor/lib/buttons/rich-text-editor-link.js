@@ -16,6 +16,14 @@ import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-b
  * @element rich-text-editor-link
  * @demo ./demo/buttons.html
  */
+const hrefField = {
+  property: "href",
+  title: "Link",
+  description: "The URL to a resource.",
+  required: true,
+  inputMethod: "haxupload",
+};
+
 class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   LitElement
 ) {
@@ -45,16 +53,25 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   }
   constructor() {
     super();
-    this.fields = [
-      ...super.fields,
-      {
-        property: "href",
-        title: "Link",
-        description: "The URL to a resource.",
-        required: true,
-        inputMethod: "haxupload",
-      },
-    ];
+    if (super.fields) {
+      this.fields = [
+        ...super.fields,
+        ,hrefField
+      ];
+    }
+    else {
+      this.fields = [
+        {
+          property: "innerHTML",
+          title: "Text",
+          inputMethod: "textfield",
+          description: "Text currently selected",
+          disabled: true,
+          required: true,
+        },
+        hrefField
+      ];
+    }    
     this.command = "createLink";
     this.icon = "link";
     this.label = "Link";
@@ -72,14 +89,15 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
 
   get defaultFields() {
     return [
-      ...super.fields,
       {
-        property: "href",
-        title: "Link",
-        description: "The URL to a resource.",
+        property: "innerHTML",
+        title: "Text",
+        inputMethod: "textfield",
+        description: "Text currently selected",
+        disabled: true,
         required: true,
-        inputMethod: "haxupload",
       },
+      hrefField,
     ];
   }
 

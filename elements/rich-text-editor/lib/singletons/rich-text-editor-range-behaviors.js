@@ -13,6 +13,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      */
     static get properties() {
       return {
+        ...super.properties,
         /**
          * current text selected range, which is actually a range.
          */
