@@ -1,0 +1,42 @@
+{
+  "api": "1",
+  "type": "grid",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "contentEditable": true,
+  "gizmo": {
+    "title": "Collection",
+    "description": "",
+    "icon": "icons:android",
+    "color": "purple",
+    "tags": [
+      "Layout", "collection", "list", "items"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "collection-list",
+      "content": "",
+      "properties": {}
+    }
+  ]
+}

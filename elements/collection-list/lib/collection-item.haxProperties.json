@@ -1,0 +1,41 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Collection item",
+    "description": "",
+    "icon": "icons:android",
+    "color": "purple",
+    "tags": [
+      "Layout", "collection", "list", "card"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "collection-item",
+      "content": "",
+      "properties": {}
+    }
+  ]
+}

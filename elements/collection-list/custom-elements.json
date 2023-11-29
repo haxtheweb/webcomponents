@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "collection-list",
+      "description": "`collection-list`\n`listing and display elements for collections of items`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "collection-item",
+      "description": "Attributes:\n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `line3` {`string`} - \n\nProperties:\n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `line3` {`string`} - ",
+      "attributes": [
+        {
+          "name": "url",
+          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: "
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: "
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
+        },
+        {
+          "name": "line1",
+          "description": "`line1` {`string`} - \n\nProperty: line1\n\nDefault: "
+        },
+        {
+          "name": "line2",
+          "description": "`line2` {`string`} - \n\nProperty: line2\n\nDefault: "
+        },
+        {
+          "name": "line3",
+          "description": "`line3` {`string`} - \n\nProperty: line3\n\nDefault: "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

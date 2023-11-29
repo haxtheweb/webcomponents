@@ -1,0 +1,75 @@
+{
+  "name": "@lrnwebcomponents/collection-list",
+  "wcfactory": {
+    "className": "CollectionList",
+    "customElementClass": "LitElement",
+    "elementName": "collection-list",
+    "generator-wcfactory-version": "0.13.1",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/collection-list.css",
+      "scss": "src/collection-list.scss",
+      "html": "src/collection-list.html",
+      "js": "src/collection-list.js",
+      "properties": "src/collection-list-properties.json",
+      "hax": "src/collection-list-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "7.0.18",
+  "description": "listing and display elements for collections of items",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "collection-list.js",
+  "module": "collection-list.js",
+  "umd": "collection-list.umd.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"*.js|lib/**.js\" --format vscode --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": ""
+  },
+  "license": "",
+  "dependencies": {
+    "lit": "^3.1.0",
+    "mobx": "6.12.0",
+    "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "@lrnwebcomponents/haxcms-elements": "^7.0.18"
+  },
+  "devDependencies": {
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.21",
+    "polymer-build": "3.1.4",
+    "@web/dev-server": "0.1.28",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2",
+    "@open-wc/testing": "2.5.32"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}
