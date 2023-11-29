@@ -174,6 +174,44 @@ class CollectionsTheme extends HAXCMSOperationButtons(
            --scroll-button-tooltip-background-color:var(--haxcms-user-styles-color-theme-color-1);
            --scroll-button-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
          }
+
+         footer {
+          display: block;
+         }
+         footer .wrap {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background-color: rgb(226, 128, 30);
+          height: 200px;
+         }
+         .footer-secondary {
+            font-family: Roboto, sans-serif;
+            color: rgb(255, 255, 255);
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 1.2;
+            text-align: center;
+            margin: 25px 0px 0px;
+        }
+        .footer-primary {
+            font-family: Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+        #odl_mark a {
+          display: flex;
+          background-color: rgb(226, 128, 30);
+          border: 2px solid rgb(255, 255, 255);
+          border-radius: 50%;
+          padding: 8px;
+          opacity: 0.4;
+      }
+      #odl_mark {
+          margin: 25px 0px 15px;
+      }
       `,
     ];
   }
@@ -242,6 +280,11 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           <slot name="footer-primary"></slot>
           <site-region name="footerPrimary"></site-region>
         </div>
+        <div id="odl_mark">
+          <a href="http://odl.science.psu.edu">
+            <img style="width:60px; height:60px;" alt="${this.title}" sizing="cover" src="${this.logo}">
+          </a>
+        </div>
       </section>
       <scroll-button .part="${this.editMode ? `edit-mode-active` : ``}"></scroll-button>
     </footer>
@@ -286,7 +329,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       );
       this.logo = varGet(
         manifest,
-        "metadata.theme.variables.logo",
+        "metadata.theme.site.logo",
         "assets/banner.jpg"
       );
       this.__disposer.push(reaction);
@@ -295,6 +338,11 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       this.activeTitle = toJS(store.activeTitle);
       this.__disposer.push(reaction);
     });
+  }
+  _getColor(manifest) {
+    if (manifest && varExists(manifest, "metadata.theme.variables.cssVariable")) {
+      return manifest.metadata.theme.variables.cssVariable.replace('--simple-colors-default-theme-', '').replace('-7','');
+    }
   }
 }
 customElements.define(CollectionsTheme.tag, CollectionsTheme);
