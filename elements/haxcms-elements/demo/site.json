@@ -32,7 +32,7 @@
             "static": {}
         },
         "theme": {
-            "element": "haxor-slevin",
+            "element": "collections-theme",
             "path": "@lrnwebcomponents\/collection-item\/lib\/collections-theme.js",
             "name": "Collections theme",
             "thumbnail": "build\/es6\/node_modules\/@lrnwebcomponents\/app-hax\/lib\/assets\/images\/PartyStyle.svg",

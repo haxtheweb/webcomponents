@@ -9,7 +9,9 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
       import '../collection-list.js';
+      import '../lib/collection-item.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -19,7 +21,35 @@
       <demo-snippet>
         <template>
           <collection-list>
-            This is collection-list
+            <collection-item
+              image="https://oer.courses.science.psu.edu/assets/images/course-banners/astro140.png"
+              url="https://haxtheweb.org"
+              alt="Really fun HAX site"
+              icon="save"
+              line1="Chem 100"
+              line2="Chemical formulas"
+              line3="By: Scientist"
+            >
+            </collection-item>
+            <collection-item
+              image="https://oer.courses.science.psu.edu/assets/images/course-banners/astro140.png"
+              url="https://haxtheweb.org"
+              alt="Really fun HAX site"
+              icon="help"
+              line1="Art 100"
+              line2="Principles of design"
+              line3="By: Anna D"
+            >
+            </collection-item>
+            <collection-item
+              url="https://haxtheweb.org"
+              alt="Really fun HAX site"
+              icon="icons:save"
+              line1="HAX 100"
+              line2="HAX the web"
+              line3="By: btopro"
+            >
+            </collection-item>
           </collection-list>
         </template>
       </demo-snippet>

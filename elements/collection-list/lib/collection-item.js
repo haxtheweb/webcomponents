@@ -36,7 +36,7 @@ class CollectionItem extends LitElement {
     return [
       css`
         :host {
-          display: inline-flex;
+          display: inline-block;
           font-family: roboto, sans-serif;
         }
 
@@ -97,6 +97,7 @@ class CollectionItem extends LitElement {
         }
 
         .image {
+          background-color: grey;
           background-repeat: no-repeat;
           background-size: cover;
           background-position: right center;
@@ -113,7 +114,7 @@ class CollectionItem extends LitElement {
         <div class="wrap">
           <div class="image" style="background-image:url(${this.image})"></div>
           <div class="icon">
-            <simple-icon type="${this.icon}"></simple-icon>
+            <simple-icon icon="${this.icon}"></simple-icon>
           </div>
           <div class="line-1">${this.line1}</div>
           <div class="line-2">${this.line2}</div>

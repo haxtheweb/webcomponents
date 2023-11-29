@@ -32,10 +32,13 @@ class CollectionList extends LitElement {
           display: block;
         }
         .wrapper {
-          display: flex;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-column-gap: 2vw;
+          grid-row-gap: 2vw;
         }
         .wrapper ::slotted(*) {
-          display: inline-flex;
+          display: inline-block;
         }
       `,
     ];

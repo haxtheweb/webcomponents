@@ -31,6 +31,15 @@ class CollectionList extends LitElement {
         :host {
           display: block;
         }
+        .wrapper {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-column-gap: 2vw;
+          grid-row-gap: 2vw;
+        }
+        .wrapper ::slotted(*) {
+          display: inline-block;
+        }
       `,
     ];
   }
@@ -39,11 +48,18 @@ class CollectionList extends LitElement {
    */
   render() {
     return html`
-      <div>
+      <div class="wrapper">
         <slot></slot>
       </div>
     `;
   }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
+
   /**
    * Convention we use
    */
