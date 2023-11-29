@@ -1170,6 +1170,8 @@
     }
   ],
   "autoloader": {
+    "collection-list": "@lrnwebcomponents/collection-list/collection-list.js",
+    "collection-item": "@lrnwebcomponents/collection-list/lib/collection-item.js",
     "page-section": "@lrnwebcomponents/page-section/page-section.js",
     "simple-cta": "@lrnwebcomponents/simple-cta/simple-cta.js",
     "spotify-embed": "@lrnwebcomponents/spotify-embed/spotify-embed.js",
