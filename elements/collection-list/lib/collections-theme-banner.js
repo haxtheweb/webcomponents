@@ -21,9 +21,10 @@ class CollectionsThemeBanner extends LitElement {
     return [css`
       :host {
         display: block;
+        line-height: initial;
       }
 
-      .image_wrap {
+      .wrap {
         background-repeat: no-repeat;
         background-size: cover;
         background-position: right center;
@@ -38,21 +39,22 @@ class CollectionsThemeBanner extends LitElement {
       }
 
       @media screen and (max-width: 700px) {
-        .image_wrap {
+        .wrap {
           height: 55vw;
         }
       }
 
-      .image_text {
-        background: rgba(0, 0, 0, 0.5);
+      .image-text {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(2px);
         width: calc(150px + (355 - 28) * ((100vw - 300px) / (1600 - 300)));
         margin: 0 5vw;
         padding: 2vw;
       }
 
-      .image_text h1 {
+      .image-text h1 {
         font-size: calc(23px + (72 - 28) * ((100vw - 300px) / (1600 - 300)));
-        color: #fff;
+        color: #ffffff;
         font-weight: 400;
         line-height: 1.1;
         margin: 0;
@@ -60,13 +62,13 @@ class CollectionsThemeBanner extends LitElement {
         width: 100%;
       }
 
-      .branding_wrap {
+      .branding {
         display: flex;
         align-items: center;
-        background-color: #e2801e;
+        background-color: var(--header-bg-color);
         border-top: solid;
         border-top-width: 4px;
-        border-top-color: #fff;
+        border-top-color: #ffffff;
       }
       
       .logo {
@@ -78,44 +80,46 @@ class CollectionsThemeBanner extends LitElement {
         width: 48%;
         border: solid;
         border-width: 4px;
-        border-color: #fff;
+        border-color: #ffffff;
         border-radius: 50%;
-        background-color: #e2801e;
-        margin: -52px 0 0 25px;
+        background-color: var(--header-bg-color);
+        margin: -52px 0 0 24px;
       }
 
       @media screen and (max-width: 700px) {
         .logo img {
-          margin: 0 0 0 5px;
+          margin: 0 0 0 4px;
         }
       }
 
-      .company_name {
+      .company {
         width: 76%;
         margin: 0 0 0 auto;
+        padding: 0;
       }
 
-      .company_name h2 {
+      .company h2 {
         font-size: calc(18px + (72 - 28) * ((100vw - 300px) / (1600 - 300)));
         font-weight: 400;
-        color: #fff;
-        margin: 5px 0 5px 0;
+        color: #ffffff;
+        margin: 4px 0 4px 0;
+        padding: 0;
       }
     `];
   }
 
   render() {
     return html`
-      <div class="image_wrap" style="background-image:url(${this.image})">
-        <div class="image_text">
+      <div class="wrap" style="background-image:url(${this.image})">
+        <div class="image-text">
           <h1>${this.pagetitle}</h1>
         </div>
       </div>
-      <div class="branding_wrap">
+      <div class="branding">
         <div class="logo">
           <img src="${this.logo}" alt="" decoding="async" fetchpriority="low"/>
         </div>
-        <div class="company_name">
+        <div class="company">
           <h2>${this.sitename}</h2>
         </div>
       </div>

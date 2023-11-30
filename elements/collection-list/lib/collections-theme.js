@@ -2,7 +2,7 @@
  * Copyright 2023 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, render } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
@@ -57,18 +57,58 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       activeTitle: { type: String },
     };
   }
+  HAXCMSGlobalStyleSheetEditModeContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetEditModeContent(),
+      css`
+      #bodycontainer ::slotted(h1),
+      #bodycontainer ::slotted(h2),
+      #bodycontainer ::slotted(h3),
+      #bodycontainer ::slotted(h4),
+      #bodycontainer ::slotted(h5),
+      #bodycontainer ::slotted(h6){
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+      }
+      `,
+    ];
+  }
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+      collections-theme h1,
+      collections-theme h2,
+      collections-theme h3,
+      collections-theme h4,
+      collections-theme h5,
+      collections-theme h6 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+      }
+      `,
+    ];
+  }
   //styles function
   static get styles() {
     return [
       ...super.styles,
       css`
         :host {
+          --bg-color: #ffffff;
+          --content-bg-color: #ffffff;
+          --nav-link-color: #363533;
+          --header-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
+          --nav-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
+          --footer-secondary-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
+          --footer-primary-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
+          
           display: block;
           font-size: 18px;
           font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
           letter-spacing: normal;
           line-height: 28.8px;
-          background-color: white;
+          background-color: var(--bg-color);
           --haxcms-base-styles-body-font-size:18px;
           --hax-base-styles-a-font-size: 18px;
           --hax-base-styles-p-font-size: 18px;
@@ -94,8 +134,8 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
-          --hax-base-styles-a-color-visited:  var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
-          --hax-base-styles-a-color: var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
+          --hax-base-styles-a-color-visited:  var(--haxcms-color, var(--simple-colors-default-theme-orange-6));
+          --hax-base-styles-a-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6));
           --hax-base-styles-a-color-active: #000000;
           --site-search-result-background-color: transparent;
           --site-search-result-background-color-hover: #F5F5F5;
@@ -105,114 +145,175 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           --site-search-result-color: #252737;
         }
 
-        #container {
-          width: 80%;
-          margin: 0 auto 25px auto;
+        #contentcontainer {
+          width: 68%;
+          margin: 0 auto 24px;
+        }
+
+        :host([edit-mode]) #contentcontainer {
+          width: 68%;
+          margin: 0 336px 24px;
         }
 
         #nav {
           display: flex;
           justify-content: flex-end;
-          background-color: #e2801e;
+          background-color: var(--nav-bg-color);
         }
-
-        .link {
-          background-color: #363533;
-          border-bottom: solid 4px #fff;
-          width: auto;
+        site-top-menu {
+          font-family: "Roboto", sans-serif;
+          --site-top-menu-wrapper-justify-content: end;
+          --site-top-menu-bg: var(--nav-bg-color);
+          --site-top-menu-indicator-color: #ffffff;
+          --site-top-menu-link-active-color: #ffffff;
+          --site-top-menu-link-color: #ffffff;
+          --site-top-menu-link-bg-color: var(--nav-link-color);
+          --site-top-menu-link-color-hover: var(--nav-bg-color);
+          --site-top-menu-link-bg-color-hover: var(--nav-link-color);
+          clear: both;
+          font-weight: 300;
+          line-height: 1.5;
+          width: 100%;
         }
-
-        .link a {
-          display: flex;
-          flex: 1 1 auto;
-          align-items: center;
-          font-family: roboto, sans-serif;
+        site-top-menu::part(button) {
           font-size: 18px;
+          padding: 16px;
+          font-family: "Roboto", sans-serif;
           font-weight: 300;
           text-decoration: none;
           text-transform: uppercase;
-          color: #fff;
-          padding: 15px;
+        }
+        site-top-menu::part(indicator) {
+          margin-top: -4px;
+          border-bottom-width: 4px;
         }
 
         @media only screen and (max-width: 700px) {
           .link a {
             font-size: 16px;
-            padding: 5px;
+            padding: 4px;
           }
         }
 
-        page-banner {
-          font-family: "Roboto", sans-serif;
-        }
 
-        homepage-banner {
+        collections-theme-banner {
           margin-bottom: 160px;
           font-family: "Roboto", sans-serif;
         }
 
         @media only screen and (max-width: 1600px) {
-          homepage-banner {
+          collections-theme-banner {
             margin-bottom: 90px;
           }
         }
 
         @media only screen and (max-width: 1200px) {
-          homepage-banner {
+          collections-theme-banner {
             margin-bottom: 60px;
           }
         }
 
         @media only screen and (max-width: 800px) {
-          homepage-banner {
+          collections-theme-banner {
             margin-bottom: 50px;
           }
         }
         scroll-button {
-           --scroll-button-color: var(--haxcms-user-styles-color-theme-color-1);
-           --scroll-button-background-color: var(--haxcms-user-styles-color-theme-color-2);
-           --scroll-button-tooltip-background-color:var(--haxcms-user-styles-color-theme-color-1);
-           --scroll-button-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
-         }
-
-         footer {
+          --scroll-button-color: var(--haxcms-user-styles-color-theme-color-1);
+          --scroll-button-active-color: var(--haxcms-user-styles-color-theme-color-1, #e2801e);
+          --scroll-button-background-color: var(--haxcms-user-styles-color-theme-color-2, #e2801e);
+          --scroll-button-tooltip-background-color:var(--haxcms-user-styles-color-theme-color-1);
+          --scroll-button-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+          position: fixed;
+          right: 0;
+          bottom: 64px;
+          margin-right: 24px;
+        }
+        header {
+          padding: 4px;
+          margin-top: 2px;
+        }
+        footer {
           display: block;
-         }
-         footer .wrap {
+        }
+        footer .wrap {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          background-color: rgb(226, 128, 30);
-          height: 200px;
-         }
-         .footer-secondary {
-            font-family: Roboto, sans-serif;
-            color: rgb(255, 255, 255);
-            font-weight: 300;
-            font-size: 18px;
-            line-height: 1.2;
-            text-align: center;
-            margin: 25px 0px 0px;
+          background-color: var(--footer-primary-bg-color);
+          min-height: 200px;
+          margin: 0;
+          padding: 0;
+        }
+        footer .site-region-wrapper .footer-secondary
+        footer .site-region-wrapper .footer-primary {
+          display: flex;
         }
         .footer-primary {
-            font-family: Roboto, sans-serif;
-            font-size: 18px;
-            font-weight: 300;
-            line-height: 1.2;
+          font-family: "Roboto", sans-serif;
+          color: #ffffff;
+          font-weight: 300;
+          font-size: 18px;
+          line-height: 1.2;
+          text-align: center;
+          margin: 0;
+          padding: 0;
         }
-        #odl_mark a {
+        .footer-secondary {
+          font-family: "Roboto", sans-serif;
+          font-size: 18px;
+          color: #ffffff;
+          font-weight: 300;
+          line-height: 1.2;
+          margin: 24px 0 0 0;
+          padding: 0;
+        }
+        .legal-statement {
           display: flex;
-          background-color: rgb(226, 128, 30);
-          border: 2px solid rgb(255, 255, 255);
+          margin: 0;
+          padding: 10px 0px 0px;
+        }
+        .legal-item {
+          color: #ffffff;
+          padding: 0px 8px 24px;
+          border-right: 2px solid #ffffff;
+          height: 0px;
+          margin: 0;
+        }
+        .legal-item:last-child {
+          border: none;
+        }
+        .legal-item a {
+          text-decoration: none;
+          color: #ffffff;
+        }
+        .legal-item a:focus,
+        .legal-item a:hover {
+          color: #000000;
+        }
+        .legal-item a:focus {
+          outline-offset: 4px;
+        }
+        .mark a {
+          display: flex;
+          background-color: var(--footer-primary-bg-color);
+          border: 2px solid #ffffff;
           border-radius: 50%;
           padding: 8px;
           opacity: 0.4;
-      }
-      #odl_mark {
-          margin: 25px 0px 15px;
-      }
-      `,
+        }
+        .mark {
+          margin: 24px 0px 16px;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+`,
     ];
   }
 
@@ -247,7 +348,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     <nav id="nav" part="site-top-menu" itemtype="http://schema.org/SiteNavigationElement">
       <site-top-menu
       .part="${this.editMode ? `edit-mode-active` : ``}"
-      indicator="none"></site-top-menu>
+      indicator="line"></site-top-menu>
     </nav>
     <collections-theme-banner
       image="${this.image}"
@@ -257,6 +358,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     >
     </collections-theme-banner>
     <main>
+      <div id="haxcms-theme-top"></div>
       <article
         id="contentcontainer"
       >
@@ -269,21 +371,16 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         itemtype="http://schema.org/WPFooter"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
-      <section class="footer-secondary">
+      <section class="footer">
         <div class="wrap">
-        </div>
-      </section>
-      <section class="footer-primary">
-        <div class="wrap">
-          <slot name="footer-secondary"></slot>
-          <site-region name="footerSecondary"></site-region>
-          <slot name="footer-primary"></slot>
-          <site-region name="footerPrimary"></site-region>
-        </div>
-        <div id="odl_mark">
-          <a href="http://odl.science.psu.edu">
-            <img style="width:60px; height:60px;" alt="${this.title}" sizing="cover" src="${this.logo}">
-          </a>
+          <div class="footer-secondary">
+            <slot name="footer-secondary"></slot>
+            <site-region name="footerSecondary"></site-region>
+          </div>
+          <div class="footer-primary">
+            <slot name="footer-primary"></slot>
+            <site-region name="footerPrimary"></site-region>
+          </div>
         </div>
       </section>
       <scroll-button .part="${this.editMode ? `edit-mode-active` : ``}"></scroll-button>
@@ -311,7 +408,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         const link = document.createElement("link");
         link.setAttribute(
           "href",
-          "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+          "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap"
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");
@@ -329,7 +426,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       );
       this.logo = varGet(
         manifest,
-        "metadata.theme.site.logo",
+        "metadata.site.logo",
         "assets/banner.jpg"
       );
       this.__disposer.push(reaction);

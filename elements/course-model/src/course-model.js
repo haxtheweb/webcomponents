@@ -212,7 +212,7 @@ class CourseModel extends LitElement {
 
         #info-wrap {
           background: rgba(0, 0, 0, 0.8);
-          color: rgb(255, 255, 255);
+          color: #ffffff;
           position: absolute;
           z-index: 1;
           overflow-y: scroll;

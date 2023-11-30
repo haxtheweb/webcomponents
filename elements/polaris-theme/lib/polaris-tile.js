@@ -102,7 +102,7 @@ export class PolarisTile extends LitElement {
         background-color: rgb(30, 64, 124);
       }
       :host([type="2"]) .tile {
-        background-color: rgb(255, 255, 255);
+        background-color: #ffffff;
         color: rgb(0, 30, 68);
       }
 

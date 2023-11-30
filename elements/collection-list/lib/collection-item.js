@@ -37,7 +37,7 @@ class CollectionItem extends LitElement {
       css`
         :host {
           display: inline-block;
-          font-family: roboto, sans-serif;
+          font-family: "Roboto", sans-serif;
         }
 
         a {

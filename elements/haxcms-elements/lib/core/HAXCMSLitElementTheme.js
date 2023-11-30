@@ -85,6 +85,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       this.__styleTag.remove();
     }
   }
+
+  HAXCMSGlobalStyleSheetEditModeContent() {
+    return [css``];
+  }
+
   HAXCMSGlobalStyleSheetContent() {
     let styles = ["red", "blue", "green", "orange", "purple"].map(
       (item) =>
@@ -680,6 +685,17 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           })
         );
         this._editModeChanged(this[propName], oldValue);
+        if (this.HAXCMSGlobalStyleSheetEditModeContent) {
+          // inject's theme's specific style sheet criteria into hax body
+          // this should ensure that low level css is the same if in shadowRoot for hax-body or
+          // primary design
+          if (window.HaxStore && window.HaxStore.requestAvailability()) {
+            render(
+              this.HAXCMSGlobalStyleSheetEditModeContent(),
+              window.HaxStore.requestAvailability().activeHaxBody.shadowRoot.querySelector("#hax-body-style-element")
+            );
+          }
+        }
       }
     });
   }

@@ -3,7 +3,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 class SiteRegion extends LitElement {
   static get tag() {
-    return 'site-region';
+    return "site-region";
   }
   static get properties() {
     return {
@@ -54,6 +54,7 @@ class SiteRegion extends LitElement {
                 // region data found
                 let div = document.createElement('div');
                 div.innerHTML = data;
+                div.classList.add('site-region-wrapper');
                 this.appendChild(div);
               })
               .catch((err) => {

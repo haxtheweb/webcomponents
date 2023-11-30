@@ -67,7 +67,7 @@ class SiteTopMenu extends LitElement {
         }
         .wrapper {
           display: flex;
-          justify-content: space-evenly;
+          justify-content: var(--site-top-menu-wrapper-justify-content, space-evenly);
           background-color: var(--site-top-menu-bg);
         }
         :host .wrapper ::slotted(div.spacing) {
@@ -83,15 +83,15 @@ class SiteTopMenu extends LitElement {
         button {
           cursor: pointer;
           text-transform: unset;
+          background-color: var(--site-top-menu-link-bg-color, transparent);
           min-width: unset;
-          background-color: transparent;
           border: none;
           transition: background-color 0.2s ease-in-out;
         }
         button:focus,
         button:hover {
           color: var(--site-top-menu-link-color-hover);
-          background-color: var(--site-top-menu-link-bg-color-hover);
+          background-color: var(--site-top-menu-link-bg-color-hover, transparent);
         }
         .active {
           color: var(--site-top-menu-link-active-color, #000000);
@@ -209,8 +209,8 @@ class SiteTopMenu extends LitElement {
           id="menu"
           title="Open navigation"
         >
-        <span class="mobiletitle">${this.mobileTitle}</span>
-</simple-icon-button-lite>
+          <span class="mobiletitle">${this.mobileTitle}</span>
+        </simple-icon-button-lite>
         <ul class="link-list">
         <slot name="prefix"></slot>
         ${this.__items.map(
