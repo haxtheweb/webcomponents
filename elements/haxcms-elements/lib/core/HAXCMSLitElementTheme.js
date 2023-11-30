@@ -36,12 +36,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       if (
         this.HAXCMSThemeSettings.autoScroll &&
         this.shadowRoot &&
-        this.HAXCMSThemeSettings.scrollTarget
+        this.HAXCMSThemeSettings.scrollTarget &&
+        this.HAXCMSThemeSettings.scrollTarget.scrollIntoView
       ) {
-        this.HAXCMSThemeSettings.scrollTarget.scrollTo({
-          top: 0,
-          left: 0,
-        });
+        this.HAXCMSThemeSettings.scrollTarget.scrollIntoView({ block: "start", inline: "nearest", behavior: "smooth" });
       }
       // delay bc this shouldn't block page load in any way
       setTimeout(() => {
@@ -685,7 +683,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           })
         );
         this._editModeChanged(this[propName], oldValue);
-        if (this.HAXCMSGlobalStyleSheetEditModeContent) {
+        if (!this.__themeStylesAppliedToHaxBody && this.HAXCMSGlobalStyleSheetEditModeContent) {
+          this.__themeStylesAppliedToHaxBody = true;
           // inject's theme's specific style sheet criteria into hax body
           // this should ensure that low level css is the same if in shadowRoot for hax-body or
           // primary design

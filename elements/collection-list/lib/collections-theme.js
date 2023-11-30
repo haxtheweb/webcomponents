@@ -25,7 +25,7 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "./collections-theme-banner.js";
 
 /**
- * `collection-theme`
+ * `collections-theme`
  * `A theme for presenting collections of material`
  *
  * @microcopy - language worth noting:
@@ -33,7 +33,7 @@ import "./collections-theme-banner.js";
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
  * @demo demo/index.html
- * @element collection-theme
+ * @element collections-theme
  */
 class CollectionsTheme extends HAXCMSOperationButtons(
   HAXCMSRememberRoute(
@@ -61,14 +61,26 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     return [
       ...super.HAXCMSGlobalStyleSheetEditModeContent(),
       css`
+      #bodycontainer ::slotted(*) {
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+      }
       #bodycontainer ::slotted(h1),
       #bodycontainer ::slotted(h2),
       #bodycontainer ::slotted(h3),
       #bodycontainer ::slotted(h4),
       #bodycontainer ::slotted(h5),
-      #bodycontainer ::slotted(h6){
+      #bodycontainer ::slotted(h6) {
         font-family: "Roboto", sans-serif;
         font-weight: 400;
+      }
+      #bodycontainer ::slotted(p),
+      #bodycontainer ::slotted(ul),
+      #bodycontainer ::slotted(ol),
+      #bodycontainer ::slotted(blockquote) {
+        font-size: 18px;
+        margin-block-start: 16px;
+        margin-block-end: 16px;
       }
       `,
     ];
@@ -77,6 +89,10 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
+      collections-theme {
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+      }
       collections-theme h1,
       collections-theme h2,
       collections-theme h3,
@@ -85,6 +101,15 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       collections-theme h6 {
         font-family: "Roboto", sans-serif;
         font-weight: 400;
+      }
+      collections-theme p,
+      collections-theme ul,
+      collections-theme ol,
+      collections-theme blockquote
+       {
+        font-size: 18px;
+        margin-block-start: 16px;
+        margin-block-end: 16px;
       }
       `,
     ];
@@ -98,6 +123,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           --bg-color: #ffffff;
           --content-bg-color: #ffffff;
           --nav-link-color: #363533;
+          --icon-color: #363533;
           --header-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
           --nav-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
           --footer-secondary-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
@@ -196,26 +222,26 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         }
 
 
-        collections-theme-banner {
-          margin-bottom: 160px;
+        main {
+          padding-top: 160px;
           font-family: "Roboto", sans-serif;
         }
 
         @media only screen and (max-width: 1600px) {
-          collections-theme-banner {
-            margin-bottom: 90px;
+          main {
+            padding-top: 90px;
           }
         }
 
         @media only screen and (max-width: 1200px) {
-          collections-theme-banner {
-            margin-bottom: 60px;
+          main {
+            padding-top: 60px;
           }
         }
 
         @media only screen and (max-width: 800px) {
-          collections-theme-banner {
-            margin-bottom: 50px;
+          main {
+            padding-top: 50px;
           }
         }
         scroll-button {
@@ -330,7 +356,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       "https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;700&family=Open+Sans&display=swap";
     document.head.appendChild(this.__link);
     this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector("article");
+      this.shadowRoot.querySelector("#contentcontainer");
     window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
 
@@ -357,8 +383,8 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       logo="${this.logo}"
     >
     </collections-theme-banner>
+    <div id="haxcms-theme-top"></div>
     <main>
-      <div id="haxcms-theme-top"></div>
       <article
         id="contentcontainer"
       >

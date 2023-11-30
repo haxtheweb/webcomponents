@@ -60,6 +60,173 @@
         }
     },
     "items": [
+      {
+        "id": "home",
+        "indent": 0,
+        "location": "pages\/home\/index.html",
+        "slug": "why-i-started-hax-camp-1",
+        "order": -1,
+        "parent": null,
+        "title": "Why I started hax-camp",
+        "description": "",
+        "metadata": {
+            "created": 1698074988,
+            "updated": 1698074988,
+            "files": [
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/EBd7L7eXkAAOW_d.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/EBd7L7eXkAAOW_d.jpg",
+                    "url": "files\/EBd7L7eXkAAOW_d.jpg",
+                    "type": "image\/jpeg",
+                    "name": "EBd7L7eXkAAOW_d.jpg",
+                    "size": "1546770"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_213158.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_213158.jpg",
+                    "url": "files\/IMG_20190729_213158.jpg",
+                    "type": "image\/jpeg",
+                    "name": "IMG_20190729_213158.jpg",
+                    "size": "192990"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190819_205859.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190819_205859.jpg",
+                    "url": "files\/IMG_20190819_205859.jpg",
+                    "type": "image\/jpeg",
+                    "name": "IMG_20190819_205859.jpg",
+                    "size": "141777"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_103418.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
+                    "url": "files\/IMG_20190729_103418.jpg",
+                    "type": "image\/jpeg",
+                    "name": "IMG_20190729_103418.jpg",
+                    "size": "13500"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_213151.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_213151.jpg",
+                    "url": "files\/IMG_20190729_213151.jpg",
+                    "type": "image\/jpeg",
+                    "name": "IMG_20190729_213151.jpg",
+                    "size": "174216"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190726_110706.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190726_110706.jpg",
+                    "url": "files\/IMG_20190726_110706.jpg",
+                    "type": "image\/jpeg",
+                    "name": "IMG_20190726_110706.jpg",
+                    "size": "173441"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190726_105535.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190726_105535.jpg",
+                    "url": "files\/IMG_20190726_105535.jpg",
+                    "type": "image\/jpeg",
+                    "name": "IMG_20190726_105535.jpg",
+                    "size": "158038"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190716_102855.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190716_102855.jpg",
+                    "url": "files\/IMG_20190716_102855.jpg",
+                    "type": "image\/jpeg",
+                    "name": "IMG_20190716_102855.jpg",
+                    "size": "124200"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot14025.480000011157.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/headshot14025.480000011157.jpg",
+                    "url": "files\/headshot14025.480000011157.jpg",
+                    "type": "image\/jpeg",
+                    "name": "headshot14025.480000011157.jpg",
+                    "size": "207453"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/IMG_20190823_102434 2.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190823_102434 2.jpg",
+                    "url": "files\/IMG_20190823_102434 2.jpg",
+                    "type": "image\/jpeg",
+                    "name": "IMG_20190823_102434 2.jpg",
+                    "size": "100516"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot143493.3299999684.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/headshot143493.3299999684.jpg",
+                    "url": "files\/headshot143493.3299999684.jpg",
+                    "type": "image\/jpeg",
+                    "name": "headshot143493.3299999684.jpg",
+                    "size": "258395"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
+                    "url": "files\/IMG_20190729_103418.jpg",
+                    "type": "image\/jpeg",
+                    "name": "IMG_20190729_103418.jpg",
+                    "size": "13500"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot495331.4750000136.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/headshot495331.4750000136.jpg",
+                    "url": "files\/headshot495331.4750000136.jpg",
+                    "type": "image\/jpeg",
+                    "name": "headshot495331.4750000136.jpg",
+                    "size": "228989"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot504645.5449999776.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/headshot504645.5449999776.jpg",
+                    "url": "files\/headshot504645.5449999776.jpg",
+                    "type": "image\/jpeg",
+                    "name": "headshot504645.5449999776.jpg",
+                    "size": "241173"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot511743.1799999904.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/headshot511743.1799999904.jpg",
+                    "url": "files\/headshot511743.1799999904.jpg",
+                    "type": "image\/jpeg",
+                    "name": "headshot511743.1799999904.jpg",
+                    "size": "190065"
+                },
+                {
+                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot14076.185000012629.jpg",
+                    "fullUrl": "\/sites\/btopro\/files\/headshot14076.185000012629.jpg",
+                    "url": "files\/headshot14076.185000012629.jpg",
+                    "type": "image\/jpeg",
+                    "name": "headshot14076.185000012629.jpg",
+                    "size": "165743"
+                }
+            ],
+            "readtime": "4",
+            "contentDetails": {
+                "headings": "0",
+                "paragraphs": "18",
+                "schema": [
+                    {
+                        "resource": "#3ad05175-0f0a-9aa3-bd92",
+                        "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                    },
+                    {
+                        "typeof": "oer:Assessment",
+                        "resource": "#69279b8a-babf-7bb2-bb73",
+                        "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
+                    }
+                ],
+                "tags": {
+                    "p": "18",
+                    "video-player": "1",
+                    "multiple-choice": "1",
+                    "grid-plate": "1"
+                },
+                "elements": "21"
+            }
+        }
+    },
         {
             "id": "header",
             "indent": 0,
@@ -212,173 +379,6 @@
                         "h3": "3"
                     },
                     "elements": "27"
-                }
-            }
-        },
-        {
-            "id": "item-82b4b5d3-b8cb-4fab-ac71-10b98a0dac91",
-            "indent": 0,
-            "location": "pages\/item-82b4b5d3-b8cb-4fab-ac71-10b98a0dac91\/index.html",
-            "slug": "why-i-started-hax-camp-1",
-            "order": "2",
-            "parent": null,
-            "title": "Why I started hax-camp",
-            "description": "",
-            "metadata": {
-                "created": 1698074988,
-                "updated": 1698074988,
-                "files": [
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/EBd7L7eXkAAOW_d.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/EBd7L7eXkAAOW_d.jpg",
-                        "url": "files\/EBd7L7eXkAAOW_d.jpg",
-                        "type": "image\/jpeg",
-                        "name": "EBd7L7eXkAAOW_d.jpg",
-                        "size": "1546770"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_213158.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_213158.jpg",
-                        "url": "files\/IMG_20190729_213158.jpg",
-                        "type": "image\/jpeg",
-                        "name": "IMG_20190729_213158.jpg",
-                        "size": "192990"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190819_205859.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190819_205859.jpg",
-                        "url": "files\/IMG_20190819_205859.jpg",
-                        "type": "image\/jpeg",
-                        "name": "IMG_20190819_205859.jpg",
-                        "size": "141777"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_103418.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
-                        "url": "files\/IMG_20190729_103418.jpg",
-                        "type": "image\/jpeg",
-                        "name": "IMG_20190729_103418.jpg",
-                        "size": "13500"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_213151.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_213151.jpg",
-                        "url": "files\/IMG_20190729_213151.jpg",
-                        "type": "image\/jpeg",
-                        "name": "IMG_20190729_213151.jpg",
-                        "size": "174216"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190726_110706.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190726_110706.jpg",
-                        "url": "files\/IMG_20190726_110706.jpg",
-                        "type": "image\/jpeg",
-                        "name": "IMG_20190726_110706.jpg",
-                        "size": "173441"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190726_105535.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190726_105535.jpg",
-                        "url": "files\/IMG_20190726_105535.jpg",
-                        "type": "image\/jpeg",
-                        "name": "IMG_20190726_105535.jpg",
-                        "size": "158038"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190716_102855.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190716_102855.jpg",
-                        "url": "files\/IMG_20190716_102855.jpg",
-                        "type": "image\/jpeg",
-                        "name": "IMG_20190716_102855.jpg",
-                        "size": "124200"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot14025.480000011157.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/headshot14025.480000011157.jpg",
-                        "url": "files\/headshot14025.480000011157.jpg",
-                        "type": "image\/jpeg",
-                        "name": "headshot14025.480000011157.jpg",
-                        "size": "207453"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/IMG_20190823_102434 2.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190823_102434 2.jpg",
-                        "url": "files\/IMG_20190823_102434 2.jpg",
-                        "type": "image\/jpeg",
-                        "name": "IMG_20190823_102434 2.jpg",
-                        "size": "100516"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot143493.3299999684.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/headshot143493.3299999684.jpg",
-                        "url": "files\/headshot143493.3299999684.jpg",
-                        "type": "image\/jpeg",
-                        "name": "headshot143493.3299999684.jpg",
-                        "size": "258395"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
-                        "url": "files\/IMG_20190729_103418.jpg",
-                        "type": "image\/jpeg",
-                        "name": "IMG_20190729_103418.jpg",
-                        "size": "13500"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot495331.4750000136.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/headshot495331.4750000136.jpg",
-                        "url": "files\/headshot495331.4750000136.jpg",
-                        "type": "image\/jpeg",
-                        "name": "headshot495331.4750000136.jpg",
-                        "size": "228989"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot504645.5449999776.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/headshot504645.5449999776.jpg",
-                        "url": "files\/headshot504645.5449999776.jpg",
-                        "type": "image\/jpeg",
-                        "name": "headshot504645.5449999776.jpg",
-                        "size": "241173"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot511743.1799999904.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/headshot511743.1799999904.jpg",
-                        "url": "files\/headshot511743.1799999904.jpg",
-                        "type": "image\/jpeg",
-                        "name": "headshot511743.1799999904.jpg",
-                        "size": "190065"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot14076.185000012629.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/headshot14076.185000012629.jpg",
-                        "url": "files\/headshot14076.185000012629.jpg",
-                        "type": "image\/jpeg",
-                        "name": "headshot14076.185000012629.jpg",
-                        "size": "165743"
-                    }
-                ],
-                "readtime": "4",
-                "contentDetails": {
-                    "headings": "0",
-                    "paragraphs": "18",
-                    "schema": [
-                        {
-                            "resource": "#3ad05175-0f0a-9aa3-bd92",
-                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
-                        },
-                        {
-                            "typeof": "oer:Assessment",
-                            "resource": "#69279b8a-babf-7bb2-bb73",
-                            "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
-                        }
-                    ],
-                    "tags": {
-                        "p": "18",
-                        "video-player": "1",
-                        "multiple-choice": "1",
-                        "grid-plate": "1"
-                    },
-                    "elements": "21"
                 }
             }
         },
