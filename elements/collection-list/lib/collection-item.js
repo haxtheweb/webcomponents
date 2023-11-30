@@ -163,7 +163,7 @@ class CollectionItem extends LitElement {
     if (this._haxstate && this.url) {
       e.preventDefault();
       e.stopPropagation();
-      ee.stopImmediatePropagation();
+      e.stopImmediatePropagation();
     }
   }
 

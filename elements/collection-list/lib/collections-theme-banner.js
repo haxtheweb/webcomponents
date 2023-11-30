@@ -77,20 +77,39 @@ class CollectionsThemeBanner extends LitElement {
       }
 
       .logo img {
-        width: 48%;
+        width: 300px;
         border: solid;
+        height: 300px;
         border-width: 4px;
         border-color: #ffffff;
         border-radius: 50%;
         background-color: var(--header-bg-color);
-        margin: -52px 0 0 24px;
+        margin: -64px 0px 0px 64px;
       }
 
-      @media screen and (max-width: 700px) {
+      @media only screen and (max-width: 1600px) {
         .logo img {
-          margin: 0 0 0 4px;
+          width: 200px;
+          height: 200px;
+          margin: -50px 0px 0px 50px;
+          }
         }
-      }
+
+        @media only screen and (max-width: 1200px) {
+          .logo img {
+            width: 100px;
+            height: 100px;
+            margin: 0px 0px 0px 25px;
+          }
+        }
+
+        @media only screen and (max-width: 800px) {
+          .logo img {
+            width: 64px;
+            height: 64px;
+            margin: 0px 0px 0px 16px;
+          }
+        }
 
       .company {
         width: 76%;

@@ -31,7 +31,7 @@ const enabledCircle = new URL(
 ).href;
 
 const themeContext = {
-  portfolio: ["collections-theme", "bootstrap-theme"],
+  collection: ["collections-theme", "bootstrap-theme"],
   blog: ["haxor-slevin"],
   course: ["clean-one", "clean-two", "learn-two-theme"],
   website: ["polaris-theme"],

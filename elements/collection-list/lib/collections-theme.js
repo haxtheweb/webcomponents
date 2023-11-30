@@ -223,7 +223,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
 
 
         main {
-          padding-top: 160px;
+          padding-top: 100px;
           font-family: "Roboto", sans-serif;
         }
 
