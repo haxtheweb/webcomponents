@@ -123,9 +123,9 @@ export class AppHaxSteps extends SimpleColors {
         store.site.type = "own";
         store.site.theme = "haxor-slevin";
       }
-      if (value === "portfolio") {
+      if (value === "collection") {
         store.site.type = "own";
-        store.site.theme = "haxor-slevin";
+        store.site.theme = "collections-theme";
       }
       if (value === "website") {
         store.site.type = "own";
@@ -994,7 +994,7 @@ export class AppHaxSteps extends SimpleColors {
     const structure = toJS(store.site.structure);
     var template = html``;
     switch (structure) {
-      case "portfolio":
+      case "collection":
         template = html` <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
@@ -1166,6 +1166,12 @@ export class AppHaxSteps extends SimpleColors {
                 ></app-hax-site-button>
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
+                  label="&gt; Collection"
+                  value="collection"
+                  @click=${this.chooseStructure}
+                ></app-hax-site-button>
+                <app-hax-site-button
+                  tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Course"
                   value="course"
                   @click=${this.chooseStructure}
@@ -1181,13 +1187,6 @@ export class AppHaxSteps extends SimpleColors {
                   label="&gt; Import site from.."
                   value="import"
                   @click=${this.chooseStructure}
-                ></app-hax-site-button>
-                <app-hax-site-button
-                  tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Portfolio"
-                  value="portfolio"
-                  @click=${this.chooseStructure}
-                  coming-soon
                 ></app-hax-site-button>
               </div>
             </div>
