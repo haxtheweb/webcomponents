@@ -36,6 +36,13 @@
         "required": false
       },
       {
+        "property": "saturate",
+        "inputMethod": "boolean",
+        "title": "Saturation effect",
+        "description": "Image saturation shifts based on user focus",
+        "required": false
+      },
+      {
         "property": "line1",
         "inputMethod": "textfield",
         "title": "Line 1",

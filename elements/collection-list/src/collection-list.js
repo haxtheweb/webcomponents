@@ -107,6 +107,15 @@ class CollectionList extends LitElement {
           column-gap: 2vw;
           row-gap: 2vw;
         }
+        :host([responsive-size="sm"]) .wrapper {
+          column-gap: 1.5vw;
+          row-gap: 1.5vw;
+        }
+        :host([responsive-size="xs"]) .wrapper {
+          column-gap: 1vw;
+          row-gap: 1vw;
+        }
+
         :host([items-per-row="1"]) .wrapper {
           grid-template-columns: repeat(1, minmax(250px, 1fr));
         }
@@ -117,6 +126,8 @@ class CollectionList extends LitElement {
           grid-template-columns: repeat(3, minmax(250px, 1fr));
         }
         :host([items-per-row="3"][responsive-size="xs"]) .wrapper {
+          column-gap: 1.5vw;
+          row-gap: 1.5vw;
           grid-template-columns: repeat(2, minmax(250px, 1fr));
         }
         :host([items-per-row="4"]) .wrapper {
@@ -133,7 +144,7 @@ class CollectionList extends LitElement {
           row-gap: 1.25vw;
         }
         :host([items-per-row="5"][responsive-size="xs"]) .wrapper {
-          grid-template-columns: repeat(3, minmax(200px, 1fr));
+          grid-template-columns: repeat(3, minmax(150px, 1fr));
         }
         :host([items-per-row="6"]) .wrapper {
           grid-template-columns: repeat(6, minmax(150px, 1fr));
@@ -141,7 +152,7 @@ class CollectionList extends LitElement {
           row-gap: 1vw;
         }
         :host([items-per-row="6"][responsive-size="xs"]) .wrapper {
-          grid-template-columns: repeat(4, minmax(150px, 1fr));
+          grid-template-columns: repeat(3, minmax(150px, 1fr));
         }
         :host([items-per-row="7"]) .wrapper {
           grid-template-columns: repeat(7, minmax(150px, 1fr));
