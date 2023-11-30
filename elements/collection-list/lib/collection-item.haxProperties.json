@@ -66,8 +66,8 @@
       {
         "property": "alt",
         "inputMethod": "alt",
-        "title": "Line 1",
-        "description": "Alternative text for the image",
+        "title": "Alt",
+        "description": "Alternative text to describe the link",
         "required": false
       },
       {

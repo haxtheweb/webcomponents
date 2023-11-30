@@ -139,13 +139,13 @@ class SimpleLoginCamera extends HTMLElement {
       audio: this.hasAttribute("audio"),
     });
   }
-  takeASnap() {
+  async takeASnap() {
     const canvas = document.createElement("canvas"); // create a canvas
     const ctx = canvas.getContext("2d"); // get its context
     canvas.width = this._video.videoWidth; // set its size to the one of the video
     canvas.height = this._video.videoHeight;
     ctx.drawImage(this._video, 0, 0); // the video
-    return new Promise((res, rej) => {
+    return await new Promise((res, rej) => {
       canvas.toBlob(res, "image/jpeg"); // request a Blob from the canvas
     });
   }
