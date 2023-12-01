@@ -183,7 +183,10 @@ class HaxAutoloader extends HAXElement(LitElement) {
                       name
                     );
                   } else {
-                    console.warn(`${name} didn't have hax wiring in the end`);
+                    console.warn(
+                      `${name} didn't have hax wiring so HAX guessed as best it can. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`
+                    );
+                    this.guessHaxWiring(name);
                   }
                 })
                 .catch((error) => {
@@ -210,74 +213,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                 console.warn(
                   `${name} didn't have hax wiring so HAX guessed as best it can. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`
                 );
-                try {
-                  let wiring = new HAXWiring();
-                  let props = wiring.prototypeHaxProperties();
-                  props.gizmo.title = name;
-                  props.gizmo.handles = [];
-                  props.settings.configure = [];
-                  props.settings.advanced = [];
-                  props.settings.developer = [];
-                  props = wiring.standardAdvancedProps(props, name);
-                  props.saveOptions = {};
-                  props.demoSchema = [];
-                  // try and make this have SOME fields, again, really guessing here
-                  let tmpProps = {};
-                  // relatively cross library
-                  if (customElements.get(name)) {
-                    tmpProps = customElements.get(name).properties;
-                  }
-                  if (tmpProps) {
-                    for (let propName in tmpProps) {
-                      if (
-                        tmpProps[propName].type &&
-                        tmpProps[propName].type.name
-                      ) {
-                        switch (tmpProps[propName].type.name) {
-                          case "String":
-                            props.settings.configure.push({
-                              property: propName,
-                              title: propName,
-                              description: "",
-                              inputMethod: "textfield",
-                            });
-                            break;
-                          case "Number":
-                            props.settings.configure.push({
-                              property: propName,
-                              title: propName,
-                              description: "",
-                              inputMethod: "number",
-                            });
-                            break;
-                          case "Boolean":
-                            props.settings.configure.push({
-                              property: propName,
-                              title: propName,
-                              description: "",
-                              inputMethod: "boolean",
-                            });
-                            break;
-                        }
-                      }
-                    }
-                  } else {
-                    let tmpProps = document
-                      .createElement(name)
-                      .getAttributeNames();
-                    for (let i = 0; i < tmpProps.length; i++) {
-                      props.settings.configure.push({
-                        attribute: tmpProps[i],
-                        title: tmpProps[i],
-                        description: "",
-                        inputMethod: "textfield",
-                      });
-                    }
-                  }
-                  wiring.readyToFireHAXSchema(name, props, this);
-                } catch (e) {
-                  console.warn("HAX failed to create wiring that worked");
-                }
+                this.guessHaxWiring(name);
               }
             }
           }
@@ -287,6 +223,78 @@ class HaxAutoloader extends HAXElement(LitElement) {
         }
       }
       effectiveChildren[i].remove();
+    }
+  }
+
+  guessHaxWiring(name) {
+    try {
+      let wiring = new HAXWiring();
+      let props = wiring.prototypeHaxProperties();
+      props.gizmo.title = name.replace('-', ' ');
+      props.gizmo.tags = ['Other', 'undefined', name.replace('-', ' '), name]
+      props.gizmo.handles = [];
+      props.settings.configure = [];
+      props.settings.advanced = [];
+      props.settings.developer = [];
+      props = wiring.standardAdvancedProps(props, name);
+      props.saveOptions = {};
+      props.demoSchema = [];
+      // try and make this have SOME fields, again, really guessing here
+      let tmpProps = {};
+      // relatively cross library
+      if (customElements.get(name)) {
+        tmpProps = customElements.get(name).properties;
+      }
+      if (tmpProps) {
+        for (let propName in tmpProps) {
+          if (
+            tmpProps[propName].type &&
+            tmpProps[propName].type.name
+          ) {
+            switch (tmpProps[propName].type.name) {
+              case "String":
+                props.settings.configure.push({
+                  property: propName,
+                  title: propName,
+                  description: "",
+                  inputMethod: "textfield",
+                });
+                break;
+              case "Number":
+                props.settings.configure.push({
+                  property: propName,
+                  title: propName,
+                  description: "",
+                  inputMethod: "number",
+                });
+                break;
+              case "Boolean":
+                props.settings.configure.push({
+                  property: propName,
+                  title: propName,
+                  description: "",
+                  inputMethod: "boolean",
+                });
+                break;
+            }
+          }
+        }
+      } else {
+        let tmpProps = document
+          .createElement(name)
+          .getAttributeNames();
+        for (let i = 0; i < tmpProps.length; i++) {
+          props.settings.configure.push({
+            attribute: tmpProps[i],
+            title: tmpProps[i],
+            description: "",
+            inputMethod: "textfield",
+          });
+        }
+      }
+      wiring.readyToFireHAXSchema(name, props, this);
+    } catch (e) {
+      console.warn("HAX failed to create wiring that worked");
     }
   }
 }

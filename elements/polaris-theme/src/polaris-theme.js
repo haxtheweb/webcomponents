@@ -530,11 +530,30 @@ class PolarisTheme extends HAXCMSOperationButtons(
   static get tag() {
     return "polaris-theme";
   }
+
+  appStoreReady(e) {
+    if (window.HaxStore && window.HaxStore.requestAvailability()) {
+      let store = window.HaxStore.requestAvailability();
+      // elements that are in HAXcms that are injected regardless of what editor says
+      // because the CMS controls certain internal connectors
+      ["polaris-cta", "polaris-mark", "polaris-story-card", "polaris-tile"].map((name) => {
+        let el = document.createElement(name);
+        store.haxAutoloader.appendChild(el);
+      })
+      this.windowControllersLoaded.abort();
+    }
+  }
   /**
    * Add elements to cheat on initial paint here
    */
   constructor() {
     super();
+    this.windowControllersLoaded = new AbortController();
+    window.addEventListener(
+      "hax-store-app-store-loaded",
+      this.appStoreReady.bind(this),
+      { once: true, passive: true, signal: this.windowControllersLoaded.signal }
+    );
     // @todo support injection of blocks specific to polaris
     // this way we can have blocks whos definitions only get
     // loaded in when we have a theme that intentionally

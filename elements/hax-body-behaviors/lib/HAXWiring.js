@@ -859,7 +859,7 @@ export class HAXWiring {
           description: "",
           icon: "icons:android",
           color: "purple",
-          tags: ["Content"],
+          tags: ["Other"],
           handles: [
             {
               type: "data",

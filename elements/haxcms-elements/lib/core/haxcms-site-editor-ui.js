@@ -493,7 +493,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
-      "hax-store-ready": "haxStoreReady",
       "jwt-logged-in": "_jwtLoggedIn",
       "super-daemon-close": "sdCloseEvent"
     };
@@ -811,13 +810,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
     }, 0);
   }
-  haxStoreReady(e) {
-    // it is safe to add in elements that we want the editor to have every haxcms instance
-    if (e.detail) {
-      let s = document.createElement("site-remote-content");
-      HAXStore.haxAutoloader.appendChild(s);
-    }
-  }
+
   soundToggle() {
     const status = !toJS(store.soundStatus);
     store.soundStatus = status;
