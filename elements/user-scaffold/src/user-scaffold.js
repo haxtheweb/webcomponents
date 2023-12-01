@@ -100,12 +100,13 @@ export class UserScaffold extends HTMLElement {
     window.addEventListener("click", this.userMouseAction.bind(this), {
       signal: this.windowControllers.signal,
     });
-    window.addEventListener("paste", this.userPasteAction.bind(this), {
+    // @todo COMMENT IN AFTER WE GET UX PATTERN DOWN FOR USERS PASTING
+    /*window.addEventListener("paste", this.userPasteAction.bind(this), {
       signal: this.windowControllers.signal,
     });
     window.addEventListener("keydown", this.userKeyDownAction.bind(this), {
       signal: this.windowControllers.signal,
-    });
+    });*/
     window.addEventListener("drop", this.userDropAction.bind(this), {
       signal: this.windowControllers.signal,
     });

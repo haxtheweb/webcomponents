@@ -1,10 +1,12 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
 
-class CollectionItem extends LitElement {
+class CollectionItem extends SimpleColors {
   static get properties() {
     return {
+      ...super.properties,
       url: { type: String },
       image: { type: String },
       alt: { type: String },
@@ -13,10 +15,18 @@ class CollectionItem extends LitElement {
       line2: { type: String },
       line3: { type: String },
       saturate: { type: Boolean, reflect: true },
+      tags: { type: String },
+      autoAccentColor: {
+        type: Boolean,
+        attribute: "auto-accent-color",
+      },
+      editable: { type: Boolean },
     };
   }
   constructor() {
     super();
+    this.editable = true; // always editable unless something dictates we are not like a smart list..
+    this.tags = null;
     this.saturate = false;
     this.url = null;
     this.image = null;
@@ -25,6 +35,8 @@ class CollectionItem extends LitElement {
     this.line1 = null;
     this.line2 = null;
     this.line3 = null;
+    this.autoAccentColor = false;
+    this.accentColor = null;
   }
 
   /**
@@ -36,13 +48,13 @@ class CollectionItem extends LitElement {
 
 
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: inline-block;
           font-family: "Roboto", sans-serif;
+          background-color: var(--simple-colors-default-theme-accent-1);
         }
-
         a {
           text-decoration: none;
           color: var(--icon-color);
@@ -76,6 +88,18 @@ class CollectionItem extends LitElement {
           display: flex;
           flex-direction: column;
           align-items: center;
+        }
+
+        simple-tags {
+          margin-left: 2px;
+          margin-bottom: -32px;
+          padding: 0;
+          height: 32px;
+          line-height: 32px;
+          width: 100%;
+          z-index: 1;
+          display: flex;
+          overflow: hidden;
         }
 
         .line-1 {
@@ -145,10 +169,12 @@ class CollectionItem extends LitElement {
     return html`
       <a href="${this.url}" title="${this.alt}" @click="${this._handleClick}">
         <div class="wrap">
+          ${this.tags ? html`<simple-tags tags="${this.tags}" accent-color="${this.accentColor}" ?auto-accent-color="${this.autoAccentColor}"></simple-tags>`: ``}
           <div class="image" style="${this.image ? `background-image:url(${this.image})`:``}"></div>
-          <div class="icon">
-            <simple-icon icon="${this.icon}"></simple-icon>
-          </div>
+          ${this.icon ? html`<div class="icon">
+            <simple-icon icon="${this.icon}" accent-color="${this.accentColor}"></simple-icon>
+          </div>`: ``}
+          <div><slot></slot></div>
           <div class="line-1">${this.line1}</div>
           <div class="line-2">${this.line2}</div>
           <div class="line-3">${this.line3}</div>
@@ -156,11 +182,9 @@ class CollectionItem extends LitElement {
       </a>
     `;
   }
-  static get tag() {
-    return "collection-item";
-  }
+
   _handleClick(e) {
-    if (this._haxstate && this.url) {
+    if ((this._haxstate && this.url) || (this.parentNode && this.parentNode.getAttribute('lock-items'))) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
@@ -182,6 +206,10 @@ class CollectionItem extends LitElement {
 
   haxeditModeChanged(value) {
     this._haxstate = value;
+  }
+
+  static get tag() {
+    return "collection-item";
   }
 }
 customElements.define(CollectionItem.tag, CollectionItem);

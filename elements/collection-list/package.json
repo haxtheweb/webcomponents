@@ -39,16 +39,18 @@
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
-  "author": {
-    "name": ""
+    "author": {
+    "name": "btopro"
   },
-  "license": "",
+  "license": "Apache-2.0",
   "dependencies": {
     "lit": "^3.1.0",
     "mobx": "6.12.0",
     "@lrnwebcomponents/simple-icon": "^7.0.18",
     "@lrnwebcomponents/haxcms-elements": "^7.0.18",
-    "@lrnwebcomponents/responsive-utility": "^7.0.18"
+    "@lrnwebcomponents/responsive-utility": "^7.0.18",
+    "@lrnwebcomponents/simple-colors": "^7.0.18",
+    "@lrnwebcomponents/simple-fields": "^7.0.18"
   },
   "devDependencies": {
     "@lrnwebcomponents/hax-iconset": "^7.0.18",

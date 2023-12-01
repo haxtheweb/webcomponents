@@ -129,19 +129,26 @@ class HaxAutoloader extends HAXElement(LitElement) {
             // @todo need to support name spacing of packages so that we
             // don't assume they are all relative to lrnwebcomponents
             if (!window.customElements.get(name)) {
-              // fallback support since we now support import / a complex object
-              let nameLocation = varGet(
-                HAXStore,
-                `__appStoreData.autoloader.${name}.import`,
-                varGet(
+              let fileLocation;
+              // attempt to load via dynamic import registry if we have one available
+              // so that we have a better chance of success
+              if (window.WCAutoload && window.WCAutoload.requestAvailability() && window.WCAutoload.requestAvailability().registry.getPathToTag(name)) {
+                fileLocation = window.WCAutoload.requestAvailability().registry.getPathToTag(name);
+              }
+              else {
+                // fallback support since we now support import / a complex object
+                let nameLocation = varGet(
                   HAXStore,
-                  `__appStoreData.autoloader.${name}`,
-                  `@lrnwebcomponents/${name}/${name}.js`
-                )
-              );
-              import(
-                `${new URL("./../../../", import.meta.url).href}${nameLocation}`
-              )
+                  `__appStoreData.autoloader.${name}.import`,
+                  varGet(
+                    HAXStore,
+                    `__appStoreData.autoloader.${name}`,
+                    `@lrnwebcomponents/${name}/${name}.js`
+                  )
+                );
+                fileLocation = `${new URL("./../../../", import.meta.url).href}${nameLocation}`;
+              }
+              import(fileLocation)
                 .then((response) => {
                   // get the custom element definition we used to add that file
                   let CEClass = window.customElements.get(name);

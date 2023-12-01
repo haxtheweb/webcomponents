@@ -347,7 +347,7 @@ class SiteQuery extends LitElement {
         return [];
       }
       // reduce results if we need to
-      if (limit !== 0) {
+      if (limit !== 0 && limit > 0) {
         // remove last item while there's more items then the limit
         while (items.length > limit) {
           items.pop();

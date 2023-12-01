@@ -70,6 +70,13 @@ class DynamicImportRegistry extends HTMLElement {
       this.register(e.detail);
     }
   }
+  // returns path to tag from registry
+  getPathToTag(tag) {
+    if (this.list && tag &&  this.list[tag]) {
+      return `${this.basePath}${this.list[tag]}`;
+    }
+    return false;
+  }
   /**
    * This implements the definition with checks to ensure it need not run
    */
@@ -113,6 +120,7 @@ class DynamicImportRegistry extends HTMLElement {
             },
           })
         );
+        return false;
       }
     }
   }

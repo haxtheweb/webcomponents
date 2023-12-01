@@ -620,17 +620,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     if (HAXStore.ready) {
-      let s = document.createElement("site-remote-content");
-      HAXStore.haxAutoloader.appendChild(s);
-      // site-remote-content injects citation element so ensure it's in there too!
-      let ce = document.createElement("citation-element");
-      HAXStore.haxAutoloader.appendChild(ce);
-      // page-flag for author notes
-      let flag = document.createElement("page-flag");
-      HAXStore.haxAutoloader.appendChild(flag);
-      // site-view for view blocks!!
-      let siteView = document.createElement("site-view");
-      HAXStore.haxAutoloader.appendChild(siteView);
+      // elements that are in HAXcms that are injected regardless of what editor says
+      // because the CMS controls certain internal connectors
+      ["site-remote-content", "citation-element", "page-flag", "site-view", "site-collection-list", "collection-list", "collection-item"].map((name) => {
+        let el = document.createElement(name);
+        HAXStore.haxAutoloader.appendChild(el);
+      })
 
       // links need to be given support for internal linkage updates on the form
       if (!HAXStore.primativeHooks.a) {

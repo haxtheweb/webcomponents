@@ -39,10 +39,10 @@
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
-  "author": {
-    "name": ""
+    "author": {
+    "name": "btopro"
   },
-  "license": "",
+  "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/media-image": "^7.0.18",
     "@lrnwebcomponents/simple-colors": "^7.0.18",

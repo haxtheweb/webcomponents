@@ -2,15 +2,19 @@
   "api": "1",
   "type": "grid",
   "editingElement": "core",
-  "hideDefaultSettings": true,
-  "canScale": true,
+  "hideDefaultSettings": false,
+  "canScale": {
+    "min": 30,
+    "step": 10,
+    "max": 100
+  },
   "canPosition": true,
   "canEditSource": true,
   "contentEditable": true,
   "gizmo": {
     "title": "Collection",
     "description": "",
-    "icon": "icons:android",
+    "icon": "lrn:canban",
     "color": "purple",
     "tags": [
       "Layout",
@@ -45,6 +49,8 @@
       }
     ],
     "advanced": [
+    ],
+    "developer": [
       {
         "property": "breakpointSm",
         "title": "Small Breakpoint",
@@ -73,8 +79,7 @@
         "inputMethod": "textfield",
         "validationType": "number"
       }
-    ],
-    "developer": []
+    ]
   },
   "saveOptions": {
     "unsetAttributes": []

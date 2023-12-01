@@ -9,7 +9,7 @@
   "gizmo": {
     "title": "Collection item",
     "description": "",
-    "icon": "icons:android",
+    "icon": "hax:figure",
     "color": "purple",
     "tags": [
       "Layout", "collection", "list", "card"
@@ -36,13 +36,6 @@
         "required": false
       },
       {
-        "property": "saturate",
-        "inputMethod": "boolean",
-        "title": "Saturation effect",
-        "description": "Image saturation shifts based on user focus",
-        "required": false
-      },
-      {
         "property": "line1",
         "inputMethod": "textfield",
         "title": "Line 1",
@@ -62,6 +55,41 @@
         "title": "Line 3",
         "description": "Third line of text",
         "required": false
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "inputMethod": "iconpicker",
+        "title": "Icon",
+        "description": "Icon to represent the item",
+        "required": false
+      },
+      {
+        "property": "saturate",
+        "inputMethod": "boolean",
+        "title": "Saturation effect",
+        "description": "Image saturation shifts based on user focus",
+        "required": false
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Comma separated list of tags",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "accentColor",
+        "title": "Color",
+        "description": "color for tags",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Managed tag accent",
+        "description": "Automatically generate accent color for tags",
+        "inputMethod": "boolean"
       },
       {
         "property": "alt",
@@ -69,20 +97,12 @@
         "title": "Alt",
         "description": "Alternative text to describe the link",
         "required": false
-      },
-      {
-        "property": "icon",
-        "inputMethod": "iconpicker",
-        "title": "Icon",
-        "description": "Icon to represent the item",
-        "required": false
       }
     ],
-    "advanced": [],
     "developer": []
   },
   "saveOptions": {
-    "unsetAttributes": []
+    "unsetAttributes": ["editable"]
   },
   "documentation": {
     "howTo": null,
@@ -97,7 +117,8 @@
         "line2": "Write HTML without realizing it",
         "line3": "by @btopro",
         "url": "https://hax.psu.edu/",
-        "icon": "hax:hax2022"
+        "icon": "hax:hax2022",
+        "tags": "innovative, sustainable"
       }
     }
   ]

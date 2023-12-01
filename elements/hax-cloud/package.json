@@ -39,10 +39,10 @@
     "serve": "cd demo && yarn start",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
-  "author": {
-    "name": ""
+    "author": {
+    "name": "btopro"
   },
-  "license": "",
+  "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/file-system-broker": "^7.0.18",
     "@lrnwebcomponents/hax-iconset": "^7.0.18",

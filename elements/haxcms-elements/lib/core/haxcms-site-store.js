@@ -447,7 +447,9 @@ class Store {
         let metadata = i.metadata;
         let location = i.location;
         let slug = i.slug;
-        if (metadata && metadata.pageType) {
+        // support generating page type for icon visualized
+        // but default to icon it says if they defined one already
+        if (metadata && metadata.pageType && !metadata.icon) {
           i.metadata.icon = iconFromPageType(metadata.pageType);
         }
         return Object.assign({}, i, {

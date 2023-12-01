@@ -27,6 +27,7 @@ export class PageBreak extends IntersectionObserverMixin(
   constructor() {
     super();
     this.relatedItems = null;
+    this.icon = null;
     this.status = "";
     this.t = {
       newPage: "New page",
@@ -43,6 +44,7 @@ export class PageBreak extends IntersectionObserverMixin(
         new URL("./locales/page-break.es.json", import.meta.url).href + "/../",
       locales: ["es"],
     });
+    this.description = null;
     this.hideInMenu = false;
     this.noderefs = [];
     this.developerTheme = null;
@@ -83,6 +85,8 @@ export class PageBreak extends IntersectionObserverMixin(
         type: String,
         attribute: "related-items",
       },
+      icon: { type: String },
+      description: { type: String },
       order: { type: Number },
       hideInMenu: { type: Boolean, attribute: "hide-in-menu" },
       tags: { type: String },

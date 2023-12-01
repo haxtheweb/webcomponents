@@ -3,6 +3,8 @@
  * @license , see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+
 /**
  * `collection-list`
  * `listing and display elements for collections of items`

@@ -773,6 +773,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         parent="${store.activeItem.parent}"
         item-id="${store.activeItem.id}"
         slug="${store.activeItem.slug}"
+        description="${store.activeItem.description}"
         order="${store.activeItem.order}"
         ${
           store.activeItem.metadata.pageType
