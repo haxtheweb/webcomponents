@@ -170,7 +170,7 @@ class CollectionItem extends SimpleColors {
       <a href="${this.url}" title="${this.alt}" @click="${this._handleClick}">
         <div class="wrap">
           ${this.tags ? html`<simple-tags tags="${this.tags}" accent-color="${this.accentColor}" ?auto-accent-color="${this.autoAccentColor}"></simple-tags>`: ``}
-          <div class="image" style="${this.image ? `background-image:url(${this.image})`:``}"></div>
+          <div class="image" style="${this.image ? `background-image:url("${this.image}")`:``}"></div>
           ${this.icon ? html`<div class="icon">
             <simple-icon icon="${this.icon}" accent-color="${this.accentColor}"></simple-icon>
           </div>`: ``}

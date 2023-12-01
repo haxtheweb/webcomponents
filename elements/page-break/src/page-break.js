@@ -53,6 +53,7 @@ export class PageBreak extends IntersectionObserverMixin(
     this.pageType = null;
     this.slug = "";
     this.published = false;
+    this.image = null;
     this.target = null;
     this.locked = false;
     this.order = null;
@@ -93,6 +94,7 @@ export class PageBreak extends IntersectionObserverMixin(
       developerTheme: { type: String, attribute: "developer-theme" },
       title: { type: String, reflect: true },
       slug: { type: String },
+      image: { type: String },
       parent: { type: String, reflect: true },
       published: { type: Boolean, reflect: true },
       locked: { type: Boolean, reflect: true },
