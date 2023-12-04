@@ -1281,18 +1281,29 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
         opacity: 0;
       }
     }
-    </style>
-    <script id="loadingscript">
+  </style>
+  <script id="loadingscript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
     window.addEventListener('haxcms-ready', function(e) {
+      var s = document.createElement('script');
+      s.async = true;
+      document.body.appendChild(s);
       // give the web components a second to build
       setTimeout(function() {
+        var gaid = window.HAXCMS.requestAvailability().store.getManifest().metadata.site.settings.gaID || null;
+        if (gaid) {
+          gtag('config', gaid);
+          s.src = `https://www.googletagmanager.com/gtag/js?id=${gaid}`;
+        }
         document.querySelector('#loading').classList.add('loaded');
         setTimeout(function() {
           document.querySelector('#loading').parentNode.removeChild(document.querySelector('#loading'));
           document.querySelector('#loadingstyles').parentNode.removeChild(document.querySelector('#loadingstyles'));
           document.querySelector('#loadingscript').parentNode.removeChild(document.querySelector('#loadingscript'));
         }, 600);
-      }, 300);
+      }, 100);
     });
   </script>
 </head>

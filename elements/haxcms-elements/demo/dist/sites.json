@@ -28,7 +28,8 @@
             "pathauto": false,
             "publishPagesOn": false,
             "sw": false,
-            "forceUpgrade": false
+            "forceUpgrade": false,
+            "gaID": "abc-123"
           },
           "git": {
             "vendor": "github",

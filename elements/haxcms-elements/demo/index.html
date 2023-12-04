@@ -1138,34 +1138,34 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"><title>HAXCMS</title>
   <meta name="description" content="My HAXCMS site description">
-  
+
   <link rel="icon" href="assets/favicon.ico">
-  
+
   <meta name="theme-color" content="#3f51b5">
-  
+
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="My site">
-  
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="My App">
-  
+
   <link rel="apple-touch-icon" href="assets/icon-48x48.png">
   <link rel="apple-touch-icon" sizes="72x72" href="assets/icon-72x72.png">
   <link rel="apple-touch-icon" sizes="96x96" href="assets/icon-96x96.png">
   <link rel="apple-touch-icon" sizes="144x144" href="assets/icon-144x144.png">
   <link rel="apple-touch-icon" sizes="192x192" href="assets/icon-192x192.png">
-  
+
   <meta name="msapplication-TileImage" content="assets/icon-144x144.png">
   <meta name="msapplication-TileColor" content="#3f51b5">
   <meta name="msapplication-tap-highlight" content="no">
-  
+
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@elmsln">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="books-app">
   <meta property="og:image" content="assets/icon-144x144.png" />
-  
+
   <link rel="preconnect" crossorigin href="https://fonts.googleapis.com">
   <link rel="preconnect" crossorigin href="https://cdnjs.cloudflare.com">
   <link rel="prefetch" href="site.json">
@@ -1262,18 +1262,29 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
         opacity: 0;
       }
     }
-    </style>
-    <script id="loadingscript">
+  </style>
+  <script id="loadingscript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
     window.addEventListener('haxcms-ready', function(e) {
+      var s = document.createElement('script');
+      s.async = true;
+      document.body.appendChild(s);
       // give the web components a second to build
       setTimeout(function() {
+        var gaid = window.HAXCMS.requestAvailability().store.getManifest().metadata.site.settings.gaID || null;
+        if (gaid) {
+          gtag('config', gaid);
+          s.src = `https://www.googletagmanager.com/gtag/js?id=${gaid}`;
+        }
         document.querySelector('#loading').classList.add('loaded');
         setTimeout(function() {
           document.querySelector('#loading').parentNode.removeChild(document.querySelector('#loading'));
           document.querySelector('#loadingstyles').parentNode.removeChild(document.querySelector('#loadingstyles'));
           document.querySelector('#loadingscript').parentNode.removeChild(document.querySelector('#loadingscript'));
         }, 600);
-      }, 300);
+      }, 100);
     });
   </script>
 </head>
