@@ -59,7 +59,7 @@ export class TrainingButton extends LitElement {
         font-weight: normal;
       }
 
-      h2 {
+      .dot div {
         font-size: 15px;
         align-items: center;
         margin-left: 10px;
@@ -113,7 +113,7 @@ export class TrainingButton extends LitElement {
     return html`
       <div class="wrapper">
         <span class="dot">
-          <h2>${this.id}</h2>
+          <div>${this.index}</div>
         </span>
         <span id="title">${this.title}</span>
         <slot></slot>
@@ -123,4 +123,4 @@ export class TrainingButton extends LitElement {
 }
 
 // tell the browser about our tag and class it should run when it sees it
-customElements.define(TvChannel.tag, TvChannel);
+customElements.define(TrainingButton.tag, TrainingButton);

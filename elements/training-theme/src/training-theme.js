@@ -18,6 +18,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-act
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import { autorun, toJS } from "mobx";
+
 import "./lib/training-button.js";
 import "./lib/training-top.js";
 
@@ -40,10 +41,14 @@ class TrainingTheme extends HAXCMSOperationButtons(
 ) {
   constructor() {
     super();
+    this.items = [];
     this.activeId = null; // To keep track of the active index
     this.time = 0; // To store the timecode of the content
     autorun(() => {
       this.activeId = toJS(store.activeId);
+    });
+    autorun(() => {
+      this.items = toJS(store.manifest.items);
     });
   }
   /**
@@ -56,6 +61,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
   static get properties() {
     return {
       ...super.properties,
+      items: { type: Array },
       activeId: { type: String },
       time: { type: String },
     };
@@ -177,13 +183,13 @@ class TrainingTheme extends HAXCMSOperationButtons(
       <training-top time="${this.time}"></training-top>
       <div class="alignContent">
         <div class="training-topics">
-          ${this.manifest.items.map(
+          ${this.items.map(
             (item, index) => html`
               <training-button
                 title="${item.title}"
                 id="${item.id}"
                 @click="${this.itemClick}"
-                index="${index}"
+                index="${(index+1)}"
                 ?active="${item.id === this.activeId}"
               >
               </training-button>
@@ -198,8 +204,8 @@ class TrainingTheme extends HAXCMSOperationButtons(
           </article>
         </main>
         <footer class="fabs">
-          <site-menu-button type="prev"></site-menu-button>
-          <site-menu-button type="next"></site-menu-button>
+          <site-menu-button type="prev" hide-label>Previous</site-menu-button>
+          <site-menu-button type="next" hide-label>Next</site-menu-button>
         </footer>
       </div>
     `;
