@@ -32,9 +32,9 @@
       "static": {}
     },
     "theme": {
-      "element": "collections-theme",
-      "path": "@lrnwebcomponents/collection-item/lib/collections-theme.js",
-      "name": "Collections theme",
+      "element": "training-theme",
+      "path": "@lrnwebcomponents/training-theme/training-theme.js",
+      "name": "training theme",
       "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
         "image": "https://oer.courses.science.psu.edu/assets/images/theme-images/oer-homepage-banner.jpg",
