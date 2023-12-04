@@ -11,7 +11,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   constructor() {
     super();
     this.focused = false;
-    this.like = '';
+    this.like = "";
     this.voiceSearch = false;
     this.iconAccent = "purple";
     this.multiMatch = true;
@@ -49,19 +49,18 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       // try to evaluate typing in merlin
       if (
         UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn && 
+        UserScaffoldInstance.memory.isLoggedIn &&
         sdi.programName === null &&
-        usAction.type === 'drag'
-        ) {
+        usAction.type === "drag"
+      ) {
         this.activeDrag = true;
         this.activeType = usData.value || usData.architype;
-      }
-      else if (
+      } else if (
         UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn && 
+        UserScaffoldInstance.memory.isLoggedIn &&
         sdi.programName === null &&
-        usAction.type === 'dragleave'
-        ) {
+        usAction.type === "dragleave"
+      ) {
         this.activeDrag = false;
         this.activeType = null;
       }
@@ -95,7 +94,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       programName: { type: String, attribute: "program-name" },
       commandContext: { type: String, attribute: "command-context" },
       opened: { type: Boolean, reflect: true },
-      focused: { type: Boolean, reflect: true }
+      focused: { type: Boolean, reflect: true },
     };
   }
 
@@ -300,8 +299,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             // reset to top of results
             this.shadowRoot.querySelector(".results").scrollTo(0, 0);
           }
-        }
-        else {
+        } else {
           // only a select mode makes this happen but still worth trapping for
           document.body.style.overflow = "";
         }
@@ -377,9 +375,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("super-daemon-row[active]") ===
             this.shadowRoot.querySelector("super-daemon-row:last-child")
           ) {
-            this.shadowRoot
-              .querySelector("super-daemon-row")
-              .focus();
+            this.shadowRoot.querySelector("super-daemon-row").focus();
           } else {
             this.shadowRoot
               .querySelector("super-daemon-row[active]")
@@ -393,7 +389,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   focusedChanged(e) {
     this.focused = e.detail.value;
   }
-  
+
   // feed results to the program as opposed to the global context based on program running
   inputfilterChanged(e) {
     if (this.programName) {
@@ -415,8 +411,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.commandContext = e.detail.value;
   }
 
-   // keydown when we have focus on the input field
-   _inputKeydown(e) {
+  // keydown when we have focus on the input field
+  _inputKeydown(e) {
     if (this.filtered.length > 0) {
       switch (e.key) {
         case "Enter":
@@ -492,47 +488,50 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.activeDrag = false;
     this.activeType = null;
     const sdi = window.SuperDaemonManager.requestAvailability();
-    sdi.waveWand(['', "/", e, "hax-agent", "Agent"], this.shadowRoot.querySelector('#merlin'), "coin2");
+    sdi.waveWand(
+      ["", "/", e, "hax-agent", "Agent"],
+      this.shadowRoot.querySelector("#merlin"),
+      "coin2"
+    );
   }
   dragenterEvent(e) {
     e.preventDefault();
-    this.shadowRoot.querySelector('super-daemon-search').dragover = true;
+    this.shadowRoot.querySelector("super-daemon-search").dragover = true;
   }
   dragoverEvent(e) {
     e.preventDefault();
-    this.shadowRoot.querySelector('super-daemon-search').dragover = true;
+    this.shadowRoot.querySelector("super-daemon-search").dragover = true;
   }
   dragleaveEvent(e) {
     e.preventDefault();
-    this.shadowRoot.querySelector('super-daemon-search').dragover = false;
+    this.shadowRoot.querySelector("super-daemon-search").dragover = false;
   }
 
   render() {
     return html`
       <super-daemon-search
-      @keydown="${this._inputKeydown}"
-      @focused-changed="${this.focusedChanged}"
-      @value-changed="${this.inputfilterChanged}"
-      @command-context-changed="${this.commandContextChanged}"
-      @listening-for-input-changed="${this.listeningForInputChanged}"
-      @drop="${this.dropEvent}"
-      @dragenter="${this.dragenterEvent}"
-      @dragleave="${this.dragleaveEvent}"
-      @dragover="${this.dragoverEvent}"
-      icon="${this.icon}"
-      icon-accent="${this.iconAccent}"
-      value="${this.like}"
-      ?voice-search="${this.voiceSearch}"
-      ?mini="${this.mini}"
-      ?wand="${this.wand}"
-      ?loading="${this.loading}"
-      program-search="${this.programSearch}"
-      ?listening-for-input="${this.listeningForInput}"
-      command-context="${this.commandContext}"
-      droppable-type="${this.activeType}"
-      ?droppable="${this.activeDrag}"
+        @keydown="${this._inputKeydown}"
+        @focused-changed="${this.focusedChanged}"
+        @value-changed="${this.inputfilterChanged}"
+        @command-context-changed="${this.commandContextChanged}"
+        @listening-for-input-changed="${this.listeningForInputChanged}"
+        @drop="${this.dropEvent}"
+        @dragenter="${this.dragenterEvent}"
+        @dragleave="${this.dragleaveEvent}"
+        @dragover="${this.dragoverEvent}"
+        icon="${this.icon}"
+        icon-accent="${this.iconAccent}"
+        value="${this.like}"
+        ?voice-search="${this.voiceSearch}"
+        ?mini="${this.mini}"
+        ?wand="${this.wand}"
+        ?loading="${this.loading}"
+        program-search="${this.programSearch}"
+        ?listening-for-input="${this.listeningForInput}"
+        command-context="${this.commandContext}"
+        droppable-type="${this.activeType}"
+        ?droppable="${this.activeDrag}"
       >
-
       </super-daemon-search>
       <div class="results-stats">
         ${this.filtered.length} / ${this.items.length} ${this.t.commands}

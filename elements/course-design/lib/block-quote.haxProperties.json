@@ -8,7 +8,14 @@
     "description": "Designed Quote",
     "icon": "editor:format-quote",
     "color": "blue",
-    "tags": ["Layout", "quote", "blockquote", "content", "design", "presentation"],
+    "tags": [
+      "Layout",
+      "quote",
+      "blockquote",
+      "content",
+      "design",
+      "presentation"
+    ],
     "meta": {
       "author": "HAXTheWeb core team"
     }

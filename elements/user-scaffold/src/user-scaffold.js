@@ -2,7 +2,12 @@
  * Copyright 2023
  * @license , see License.md for full text.
  */
-import { localStorageSet, localStorageGet, localStorageDelete, validURL } from "@lrnwebcomponents/utils/utils.js";
+import {
+  localStorageSet,
+  localStorageGet,
+  localStorageDelete,
+  validURL,
+} from "@lrnwebcomponents/utils/utils.js";
 import {
   observable,
   makeObservable,
@@ -61,7 +66,7 @@ export class UserScaffold extends HTMLElement {
     this.data = {
       raw: null,
       value: null,
-      architype: null
+      architype: null,
     };
     this.active = true;
     // event wiring
@@ -84,7 +89,7 @@ export class UserScaffold extends HTMLElement {
   // @todo active / inactive state -- any program NOT scaffold needs to sete active false
   // required action - here'es something and you MUST pick one (docx, cancel edited page)
   // suggested action - here's some things you MIGHT want to do (link that inserts title instead)
-  
+
   // brings in our standard user action architypes
   // these should provide the basis for understanding
   // what the user is attempting to do in an application
@@ -92,8 +97,14 @@ export class UserScaffold extends HTMLElement {
     // always polling to understand if an action is taken
     this.interactionInterval = setInterval(() => {
       // limit writes to 12 seconds. Not going to track beyond that
-      if (this.active && this.readMemory('interactionDelay') <= MEMORYINTERVALPOLLING*10) {
-        this.incrementWriteMemory('interactionDelay', MEMORYINTERVALPOLLING*2);
+      if (
+        this.active &&
+        this.readMemory("interactionDelay") <= MEMORYINTERVALPOLLING * 10
+      ) {
+        this.incrementWriteMemory(
+          "interactionDelay",
+          MEMORYINTERVALPOLLING * 2
+        );
       }
     }, MEMORYINTERVALPOLLING);
     // events
@@ -125,8 +136,8 @@ export class UserScaffold extends HTMLElement {
         value: e.key,
         architype: "text",
       };
-      this.writeMemory('recentTarget', e.target);
-      this.writeMemory('interactionDelay', 0);
+      this.writeMemory("recentTarget", e.target);
+      this.writeMemory("interactionDelay", 0);
     }
   }
   // user has pasted, anywhere which is them indicating
@@ -136,7 +147,7 @@ export class UserScaffold extends HTMLElement {
       this.action = {
         type: "paste",
         architype: "input",
-      }
+      };
       let pasteContent = "";
       // default is text
       let architype = "text";
@@ -148,8 +159,7 @@ export class UserScaffold extends HTMLElement {
         // if it is purely plain text it could fail to come across as HTML and be empty
         if (pasteContent == "") {
           pasteContent = (e.originalEvent || e).clipboardData.getData("text");
-        }
-        else {
+        } else {
           architype = "text/html";
         }
       } else if (window.clipboardData) {
@@ -172,17 +182,15 @@ export class UserScaffold extends HTMLElement {
       // evaluate architype based on what this might be..
       // look for base64 like copy and paste of an image from clipboard
       if (this.isBase64(pasteContent)) {
-        architype = 'base64';
+        architype = "base64";
         safe = this.isBase64(pasteContent);
-      }
-      else if (e.clipboardData.files.length > 0) {
-        architype = 'file';
+      } else if (e.clipboardData.files.length > 0) {
+        architype = "file";
         if (e.clipboardData.files.length > 1) {
-          architype = 'files';
+          architype = "files";
         }
-      }
-      else if (validURL(pasteContent)) {
-        architype = 'url';
+      } else if (validURL(pasteContent)) {
+        architype = "url";
       }
 
       this.data = {
@@ -195,11 +203,16 @@ export class UserScaffold extends HTMLElement {
   // dropping a file in implies certain capabilities
   userDropAction(e) {
     e.preventDefault();
-    if (e.isTrusted && e.dataTransfer && e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+    if (
+      e.isTrusted &&
+      e.dataTransfer &&
+      e.dataTransfer.items &&
+      e.dataTransfer.items.length > 0
+    ) {
       this.action = {
         type: "drop",
         architype: "input",
-      }
+      };
       this.data = {
         raw: e.dataTransfer.items[0].type,
         value: e.dataTransfer.items[0].type,
@@ -209,11 +222,16 @@ export class UserScaffold extends HTMLElement {
   }
   // dragging a file in implies certain capabilities
   userDragAction(e) {
-    if (e.isTrusted && e.dataTransfer && e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+    if (
+      e.isTrusted &&
+      e.dataTransfer &&
+      e.dataTransfer.items &&
+      e.dataTransfer.items.length > 0
+    ) {
       this.action = {
         type: "drag",
         architype: "input",
-      }
+      };
       this.data = {
         raw: e.dataTransfer.items[0].type,
         value: e.dataTransfer.items[0].type,
@@ -229,43 +247,41 @@ export class UserScaffold extends HTMLElement {
       this.action = {
         type: "click",
         architype: "input",
-      }
-      this.writeMemory('recentTarget', e.target);
-      this.writeMemory('interactionDelay', 0);
-      this.incrementWriteMemory('interactionCount', 1);
+      };
+      this.writeMemory("recentTarget", e.target);
+      this.writeMemory("interactionDelay", 0);
+      this.incrementWriteMemory("interactionCount", 1);
     }
   }
   incrementWriteMemory(key, value, type = "short") {
-    let prop = 'stMemory';
+    let prop = "stMemory";
     if (type == "long") {
-      prop = 'ltMemory';
+      prop = "ltMemory";
     }
     this.writeMemory(key, this[prop][key] + value, type);
   }
   // write memory state for long or short term memory
   // short is default, while long also is going to write localStorage
   writeMemory(key, value, type = "short") {
-    let prop = 'stMemory';
+    let prop = "stMemory";
     if (type == "long") {
-      prop = 'ltMemory';
+      prop = "ltMemory";
       this[prop][key] = value;
       localStorageSet(`user-scaffold-${prop}`, this[prop]);
-    }
-    else {
+    } else {
       this[prop][key] = value;
     }
   }
   // remove from memory
   deleteMemory(key, type = "short") {
-    let prop = 'stMemory';
+    let prop = "stMemory";
     if (type == "long") {
-      prop = 'ltMemory';
+      prop = "ltMemory";
       delete this[prop][key];
       localStorageDelete(`user-scaffold-${prop}`);
-    }
-    else {
+    } else {
       delete this[prop][key];
-    }    
+    }
   }
   // read memory state
   readMemory(key) {
@@ -278,7 +294,7 @@ export class UserScaffold extends HTMLElement {
   // this should ensure that short overrides long if
   // key is the same
   get memory() {
-    return {...this.ltMemory, ...this.stMemory};
+    return { ...this.ltMemory, ...this.stMemory };
   }
   /**
    * detect base64 object

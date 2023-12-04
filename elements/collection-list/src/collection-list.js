@@ -57,7 +57,7 @@ class CollectionList extends LitElement {
       itemsPerRow: {
         type: String,
         reflect: true,
-        attribute: "items-per-row"
+        attribute: "items-per-row",
       },
       /**
        * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`
@@ -158,8 +158,8 @@ class CollectionList extends LitElement {
         }
         :host([items-per-row="7"]) .wrapper {
           grid-template-columns: repeat(7, minmax(150px, 1fr));
-          column-gap: .5vw;
-          row-gap: .5vw;
+          column-gap: 0.5vw;
+          row-gap: 0.5vw;
         }
         :host([items-per-row="7"][responsive-size="sm"]) .wrapper {
           grid-template-columns: repeat(4, minmax(125px, 1fr));
@@ -169,8 +169,8 @@ class CollectionList extends LitElement {
         }
         :host([items-per-row="8"]) .wrapper {
           grid-template-columns: repeat(8, minmax(125px, 1fr));
-          column-gap: .5vw;
-          row-gap: .5vw;
+          column-gap: 0.5vw;
+          row-gap: 0.5vw;
         }
         :host([items-per-row="8"][responsive-size="sm"]) .wrapper {
           grid-template-columns: repeat(4, minmax(125px, 1fr));
@@ -195,7 +195,8 @@ class CollectionList extends LitElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 
   /**

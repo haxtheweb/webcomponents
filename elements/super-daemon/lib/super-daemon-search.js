@@ -11,7 +11,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
 export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   static get tag() {
-    return 'super-daemon-search';
+    return "super-daemon-search";
   }
   constructor() {
     super();
@@ -19,7 +19,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.icon = "hardware:keyboard-return";
     this.iconAccent = "purple";
     this.voiceSearch = false;
-    this.programSearch = '';
+    this.programSearch = "";
     this.mini = false;
     this.wand = false;
     this.loading = false;
@@ -63,7 +63,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       wand: { type: Boolean, reflect: true },
       programName: { type: String, attribute: "program-name" },
       commandContext: { type: String, attribute: "command-context" },
-      focused: { type: Boolean, reflect: true }
+      focused: { type: Boolean, reflect: true },
     };
   }
 
@@ -141,13 +141,12 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     if (!this.disabled) {
       e.stopPropagation();
       e.stopImmediatePropagation();
-      this.value=e.target.value;  
+      this.value = e.target.value;
     }
   }
 
   render() {
-    return html`
-        <!--  <simple-icon
+    return html` <!--  <simple-icon
         icon="${this.icon}"
         class="icon"
         accent-color="${this.listeningForInput ? this.iconAccent : "grey"}"
@@ -182,9 +181,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         ? html`<simple-icon-button-lite
             class="voice ${this.listeningForInput ? "listening" : ""}"
             @click="${this.voiceSearchClick}"
-            icon="${this.listeningForInput
-              ? "hax:loading"
-              : "settings-voice"}"
+            icon="${this.listeningForInput ? "hax:loading" : "settings-voice"}"
             ?dark="${this.dark}"
             title="${this.t.voiceSearch}"
           ></simple-icon-button-lite>`
@@ -194,17 +191,16 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   suggestPossibleAction(mimeType) {
     if (!mimeType) {
       return this.randomOption(this.possibleActions);
-    }
-    else {
-      return `📂 Drop '${mimeTypeToName(mimeType)}' here for options`
+    } else {
+      return `📂 Drop '${mimeTypeToName(mimeType)}' here for options`;
     }
   }
 
   /**
- * random option from and array of options
- * @param {array} options
- * @returns {*}
- */
+   * random option from and array of options
+   * @param {array} options
+   * @returns {*}
+   */
   randomOption(options = []) {
     return options.length > 0
       ? options[Math.floor(Math.random() * Math.floor(options.length))]
@@ -213,41 +209,52 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has('focused')) {
-      this.dispatchEvent(new CustomEvent('focused-changed', {
-        composed: true,
-        detail: {
-          value: this.focused
-        }
-      }));
+    if (changedProperties.has("focused")) {
+      this.dispatchEvent(
+        new CustomEvent("focused-changed", {
+          composed: true,
+          detail: {
+            value: this.focused,
+          },
+        })
+      );
     }
-    if (changedProperties.has('droppable') && !this.droppable) {
+    if (changedProperties.has("droppable") && !this.droppable) {
       this.dragover = false;
     }
-    if (changedProperties.has('value') && changedProperties.get('value') !== undefined) {
-      this.dispatchEvent(new CustomEvent('value-changed', {
-        composed: true,
-        detail: {
-          value: this.value
-        }
-      }));
+    if (
+      changedProperties.has("value") &&
+      changedProperties.get("value") !== undefined
+    ) {
+      this.dispatchEvent(
+        new CustomEvent("value-changed", {
+          composed: true,
+          detail: {
+            value: this.value,
+          },
+        })
+      );
     }
-    if (changedProperties.has('listeningForInput')) {
-      this.dispatchEvent(new CustomEvent('listening-for-input-changed', {
-        composed: true,
-        detail: {
-          value: this.listeningForInput
-        }
-      }));
+    if (changedProperties.has("listeningForInput")) {
+      this.dispatchEvent(
+        new CustomEvent("listening-for-input-changed", {
+          composed: true,
+          detail: {
+            value: this.listeningForInput,
+          },
+        })
+      );
     }
-    if (changedProperties.has('commandContext')) {
-      this.dispatchEvent(new CustomEvent('command-context-changed', {
-        composed: true,
-        detail: {
-          value: this.commandContext
-        }
-      }));
-    }    
+    if (changedProperties.has("commandContext")) {
+      this.dispatchEvent(
+        new CustomEvent("command-context-changed", {
+          composed: true,
+          detail: {
+            value: this.commandContext,
+          },
+        })
+      );
+    }
   }
 
   fieldFocusLoss(e) {
@@ -267,7 +274,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   selectInput() {
     setTimeout(() => {
-      this.shadowRoot.querySelector("#inputfilter").select();      
+      this.shadowRoot.querySelector("#inputfilter").select();
     }, 0);
   }
 
@@ -292,7 +299,10 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         :host([droppable]) simple-fields-field {
           --simple-fields-placeholder-font-weight: bold;
           --simple-fields-placeholder-opacity: 0.8;
-          --simple-fields-placeholder-color: var(--simple-colors-default-theme-grey-12, grey);
+          --simple-fields-placeholder-color: var(
+            --simple-colors-default-theme-grey-12,
+            grey
+          );
           background-color: rgba(255, 0, 255, 0.05);
         }
         :host([droppable][dragover]) {
@@ -385,7 +395,10 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           min-width: 100px;
           --simple-fields-background-color: transparent;
           --simple-fields-placeholder-opacity: 0.4;
-          --simple-fields-placeholder-color: var(--simple-colors-default-theme-purple-12, purple);
+          --simple-fields-placeholder-color: var(
+            --simple-colors-default-theme-purple-12,
+            purple
+          );
         }
         simple-tag:hover,
         simple-tag:focus {

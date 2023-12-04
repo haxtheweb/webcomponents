@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "simple-camera-snap",
-      "description": "Events:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\n  * `simple-camera-snap-image` {`CustomEvent<{ img: any; raw: any; }>`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `t` - \n\n  * `template` - ",
+      "description": "Events:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\n  * `simple-camera-snap-image` {`CustomEvent<{ img: string; raw: any; }>`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `t` - \n\n  * `template` - ",
       "attributes": [
         {
           "name": "oni18n-manager-register-element",
@@ -11,7 +11,7 @@
         },
         {
           "name": "onsimple-camera-snap-image",
-          "description": "`simple-camera-snap-image` {`CustomEvent<{ img: any; raw: any; }>`} - "
+          "description": "`simple-camera-snap-image` {`CustomEvent<{ img: string; raw: any; }>`} - "
         }
       ]
     },

@@ -536,10 +536,12 @@ class PolarisTheme extends HAXCMSOperationButtons(
       let store = window.HaxStore.requestAvailability();
       // elements that are in HAXcms that are injected regardless of what editor says
       // because the CMS controls certain internal connectors
-      ["polaris-cta", "polaris-mark", "polaris-story-card", "polaris-tile"].map((name) => {
-        let el = document.createElement(name);
-        store.haxAutoloader.appendChild(el);
-      })
+      ["polaris-cta", "polaris-mark", "polaris-story-card", "polaris-tile"].map(
+        (name) => {
+          let el = document.createElement(name);
+          store.haxAutoloader.appendChild(el);
+        }
+      );
       this.windowControllersLoaded.abort();
     }
   }

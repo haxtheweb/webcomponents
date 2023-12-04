@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 class SiteRegion extends LitElement {
@@ -29,39 +29,41 @@ class SiteRegion extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (this.shadowRoot) {
-        if (propName === 'name' && this[propName]) {
+        if (propName === "name" && this[propName]) {
           const data = toJS(store.regionData);
           if (data[this.name]) {
             this.contentItemIds = data[this.name];
           }
         }
-        if (propName === 'contentItemIds' && this[propName] && this[propName].length > 0) {
+        if (
+          propName === "contentItemIds" &&
+          this[propName] &&
+          this[propName].length > 0
+        ) {
           this.contentItemIds.map(async (id) => {
             let item = store.findItem(id);
-            if (item && item.location) {      
-              await fetch(item.location,
-                {
-                  method: 'GET',
-                  priority: 'low',
-                }
-              )
-              .then((response) => {
-                if (response.ok) {
-                  return response.text();
-                }
+            if (item && item.location) {
+              await fetch(item.location, {
+                method: "GET",
+                priority: "low",
               })
-              .then((data) => {
-                // region data found
-                let div = document.createElement('div');
-                div.innerHTML = data;
-                div.classList.add('site-region-wrapper');
-                this.appendChild(div);
-              })
-              .catch((err) => {
-                console.error('region data not found');
-              });
+                .then((response) => {
+                  if (response.ok) {
+                    return response.text();
+                  }
+                })
+                .then((data) => {
+                  // region data found
+                  let div = document.createElement("div");
+                  div.innerHTML = data;
+                  div.classList.add("site-region-wrapper");
+                  this.appendChild(div);
+                })
+                .catch((err) => {
+                  console.error("region data not found");
+                });
             }
-          })
+          });
         }
       }
     });

@@ -214,12 +214,10 @@ class SuperDaemon extends SimpleColors {
       });
       if (itemMatch) {
         this._programToRun = itemMatch.value.program;
-      }
-      else {
+      } else {
         console.error("Incorrect program called", program);
       }
-    }
-    else {
+    } else {
       this._programToRun = program;
     }
     this.programSearch = search;
@@ -229,7 +227,7 @@ class SuperDaemon extends SimpleColors {
     }
     // ensure we have a program as this could be used for resetting program state
     if (this._programToRun) {
-      setTimeout(() => {        
+      setTimeout(() => {
         this.shadowRoot.querySelector("super-daemon-ui").setupProgram();
         setTimeout(async () => {
           try {
@@ -264,7 +262,7 @@ class SuperDaemon extends SimpleColors {
         ""
       );
     } else {
-      this.runProgram("","/");
+      this.runProgram("", "/");
       this._programValues = {};
     }
   }
@@ -361,10 +359,8 @@ class SuperDaemon extends SimpleColors {
   }
 
   updateSearchInputViaVoice(input) {
-      this.shadowRoot
-      .querySelector("super-daemon-ui").like = input;
-    this.shadowRoot
-      .querySelector("super-daemon-ui").focusInput();
+    this.shadowRoot.querySelector("super-daemon-ui").like = input;
+    this.shadowRoot.querySelector("super-daemon-ui").focusInput();
     // turn off bc we got a match
     setTimeout(() => {
       this.setListeningStatus(false);
@@ -655,14 +651,13 @@ class SuperDaemon extends SimpleColors {
       // event application we need to reissue the event if we clicked on us
       if (e.target !== this) {
         this.miniCancel();
-      }
-      else {
+      } else {
         window.addEventListener("click", this.clickOnMiniMode.bind(this), {
           once: true,
           passive: true,
           signal: this.windowControllers2.signal,
         });
-      }  
+      }
     }
   }
   // if we cancel out of mini mode there's a lot of UX enhancements we can do for the end user
@@ -732,8 +727,7 @@ class SuperDaemon extends SimpleColors {
           signal: this.windowControllers2.signal,
         });
       }
-      this.shadowRoot
-        .querySelector("super-daemon-ui").focusInput();
+      this.shadowRoot.querySelector("super-daemon-ui").focusInput();
     });
   }
   focusout(e) {
@@ -752,8 +746,7 @@ class SuperDaemon extends SimpleColors {
       if (parent !== this.shadowRoot.querySelector("super-daemon-ui")) {
         setTimeout(() => {
           if (this.opened) {
-            this.shadowRoot
-              .querySelector("super-daemon-ui").focusInput();
+            this.shadowRoot.querySelector("super-daemon-ui").focusInput();
           }
         }, 0);
       }
@@ -983,10 +976,16 @@ class SuperDaemon extends SimpleColors {
       super.updated(changedProperties);
     }
     // wand hasa to forcibly be near the target
-    if (changedProperties.has('activeNode') && this.activeNode && this.wand && this.mini) {
+    if (
+      changedProperties.has("activeNode") &&
+      this.activeNode &&
+      this.wand &&
+      this.mini
+    ) {
       requestAnimationFrame(() => {
         const rect = this.activeNode.getBoundingClientRect();
-        this.shadowRoot.querySelector('absolute-position-behavior').style.left = (rect.left+rect.width) + 'px';        
+        this.shadowRoot.querySelector("absolute-position-behavior").style.left =
+          rect.left + rect.width + "px";
       });
     }
     if (changedProperties.has("commandContext")) {
@@ -1098,8 +1097,7 @@ class SuperDaemon extends SimpleColors {
               // if program, reset input and prompt for more!
               if (item.value.program) {
                 this.playSound().then((e) => {
-                  this.shadowRoot
-                    .querySelector("super-daemon-ui").focusInput();
+                  this.shadowRoot.querySelector("super-daemon-ui").focusInput();
                 });
               } else {
                 // disable bc we got a hit
@@ -1146,7 +1144,7 @@ class SuperDaemon extends SimpleColors {
       }, 0);
     }
   }
-  
+
   // key handler as far as what to do if combo pressed
   // this way application can modify defaults as needed
   keyHandlerCallback() {

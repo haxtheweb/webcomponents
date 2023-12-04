@@ -46,9 +46,9 @@ class CollectionItem extends SimpleColors {
     return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 
-
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: inline-block;
@@ -61,7 +61,7 @@ class CollectionItem extends SimpleColors {
           display: block;
           min-height: 300px;
           border: solid 1px #dcdcdc;
-          transition: .3s ease-in-out opacity, .3s ease-in-out filter;
+          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
         }
         :host([saturate]) a {
           -webkit-filter: saturate(30%);
@@ -69,7 +69,7 @@ class CollectionItem extends SimpleColors {
         }
         a:focus-within,
         a:focus,
-        a:hover { 
+        a:hover {
           box-shadow: 1px 1px 5px #dcdcdc;
         }
         :host([saturate]) a:focus-within,
@@ -119,14 +119,14 @@ class CollectionItem extends SimpleColors {
           margin: 0px;
           line-height: 1.2;
           padding: 4px 4px 4px;
-          letter-spacing: -.5px;
+          letter-spacing: -0.5px;
         }
 
         .line-3 {
           max-height: 24px;
           line-height: 24px;
           font-size: 14px;
-          letter-spacing: -.5px;
+          letter-spacing: -0.5px;
           overflow: hidden;
           word-break: break-all;
         }
@@ -158,8 +158,8 @@ class CollectionItem extends SimpleColors {
           background-position: right center;
           width: 100%;
           height: 150px;
-          opacity: .9;
-          transition: .3s ease-in-out opacity, .3s ease-in-out filter;
+          opacity: 0.9;
+          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
         }
       `,
     ];
@@ -169,11 +169,25 @@ class CollectionItem extends SimpleColors {
     return html`
       <a href="${this.url}" title="${this.alt}" @click="${this._handleClick}">
         <div class="wrap">
-          ${this.tags ? html`<simple-tags tags="${this.tags}" accent-color="${this.accentColor}" ?auto-accent-color="${this.autoAccentColor}"></simple-tags>`: ``}
-          <div class="image" style="${this.image ? `background-image:url("${this.image}")`:``}"></div>
-          ${this.icon ? html`<div class="icon">
-            <simple-icon icon="${this.icon}" accent-color="${this.accentColor}"></simple-icon>
-          </div>`: ``}
+          ${this.tags
+            ? html`<simple-tags
+                tags="${this.tags}"
+                accent-color="${this.accentColor}"
+                ?auto-accent-color="${this.autoAccentColor}"
+              ></simple-tags>`
+            : ``}
+          <div
+            class="image"
+            style="${this.image ? `background-image:url("${this.image}")` : ``}"
+          ></div>
+          ${this.icon
+            ? html`<div class="icon">
+                <simple-icon
+                  icon="${this.icon}"
+                  accent-color="${this.accentColor}"
+                ></simple-icon>
+              </div>`
+            : ``}
           <div><slot></slot></div>
           <div class="line-1">${this.line1}</div>
           <div class="line-2">${this.line2}</div>
@@ -184,7 +198,10 @@ class CollectionItem extends SimpleColors {
   }
 
   _handleClick(e) {
-    if ((this._haxstate && this.url) || (this.parentNode && this.parentNode.getAttribute('lock-items'))) {
+    if (
+      (this._haxstate && this.url) ||
+      (this.parentNode && this.parentNode.getAttribute("lock-items"))
+    ) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();

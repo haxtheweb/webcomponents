@@ -132,10 +132,18 @@ class HaxAutoloader extends HAXElement(LitElement) {
               let fileLocation;
               // attempt to load via dynamic import registry if we have one available
               // so that we have a better chance of success
-              if (window.WCAutoload && window.WCAutoload.requestAvailability() && window.WCAutoload.requestAvailability().registry.getPathToTag(name)) {
-                fileLocation = window.WCAutoload.requestAvailability().registry.getPathToTag(name);
-              }
-              else {
+              if (
+                window.WCAutoload &&
+                window.WCAutoload.requestAvailability() &&
+                window.WCAutoload.requestAvailability().registry.getPathToTag(
+                  name
+                )
+              ) {
+                fileLocation =
+                  window.WCAutoload.requestAvailability().registry.getPathToTag(
+                    name
+                  );
+              } else {
                 // fallback support since we now support import / a complex object
                 let nameLocation = varGet(
                   HAXStore,
@@ -146,7 +154,9 @@ class HaxAutoloader extends HAXElement(LitElement) {
                     `@lrnwebcomponents/${name}/${name}.js`
                   )
                 );
-                fileLocation = `${new URL("./../../../", import.meta.url).href}${nameLocation}`;
+                fileLocation = `${
+                  new URL("./../../../", import.meta.url).href
+                }${nameLocation}`;
               }
               import(fileLocation)
                 .then((response) => {
@@ -230,8 +240,8 @@ class HaxAutoloader extends HAXElement(LitElement) {
     try {
       let wiring = new HAXWiring();
       let props = wiring.prototypeHaxProperties();
-      props.gizmo.title = name.replace('-', ' ');
-      props.gizmo.tags = ['Other', 'undefined', name.replace('-', ' '), name]
+      props.gizmo.title = name.replace("-", " ");
+      props.gizmo.tags = ["Other", "undefined", name.replace("-", " "), name];
       props.gizmo.handles = [];
       props.settings.configure = [];
       props.settings.advanced = [];
@@ -247,10 +257,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
       }
       if (tmpProps) {
         for (let propName in tmpProps) {
-          if (
-            tmpProps[propName].type &&
-            tmpProps[propName].type.name
-          ) {
+          if (tmpProps[propName].type && tmpProps[propName].type.name) {
             switch (tmpProps[propName].type.name) {
               case "String":
                 props.settings.configure.push({
@@ -280,9 +287,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
           }
         }
       } else {
-        let tmpProps = document
-          .createElement(name)
-          .getAttributeNames();
+        let tmpProps = document.createElement(name).getAttributeNames();
         for (let i = 0; i < tmpProps.length; i++) {
           props.settings.configure.push({
             attribute: tmpProps[i],

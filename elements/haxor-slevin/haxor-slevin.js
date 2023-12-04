@@ -26,15 +26,18 @@ import "@polymer/iron-pages/iron-pages.js";
  * @demo demo/index.html
  * @element haxor-slevin
  */
-class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementTheme))) {
+class HaxorSlevin extends HAXCMSRememberRoute(
+  HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementTheme))
+) {
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
           background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
-          transition: .6s ease-in-out color, .6s ease-in-out background-color;
+          transition: 0.6s ease-in-out color, 0.6s ease-in-out background-color;
           --hax-base-styles-a-color: var(--haxcms-color, #2196f3);
           --hax-base-styles-a-color-visited: var(--haxcms-color, #2196f3);
           --hax-base-styles-a-color-active: var(--haxcms-color, #2196f3);
@@ -109,10 +112,10 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
         .article-link,
         .article-link-bottom {
           text-decoration: none;
-          opacity: .9;
+          opacity: 0.9;
           -webkit-filter: saturate(30%);
           filter: saturate(30%);
-          transition: .3s ease-in-out opacity, .3s ease-in-out filter;
+          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
           cursor: pointer;
         }
         .article-link:nth-of-type(1) {
@@ -126,7 +129,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
         .article-link accent-card::part(image) {
           -webkit-filter: saturate(0%);
           filter: saturate(0%);
-          transition: .3s ease-in-out all;
+          transition: 0.3s ease-in-out all;
         }
         .article-link:nth-of-type(1) accent-card::part(image) {
           -webkit-filter: saturate(80%);
@@ -207,12 +210,18 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
         }
 
         social-share-link {
-          --social-share-button-color: var(--simple-colors-default-theme-accent-1);
+          --social-share-button-color: var(
+            --simple-colors-default-theme-accent-1
+          );
           --social-share-button-bg: var(--simple-colors-default-theme-accent-7);
           --social-share-button-padding: 8px;
           --social-share-button-border-radius: 50%;
-          --social-share-button-hover-bg: var(--simple-colors-default-theme-accent-10);
-          --social-share-button-hover-color: var(--simple-colors-default-theme-accent-2);
+          --social-share-button-hover-bg: var(
+            --simple-colors-default-theme-accent-10
+          );
+          --social-share-button-hover-color: var(
+            --simple-colors-default-theme-accent-2
+          );
         }
 
         .annoy-user {
@@ -319,8 +328,8 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
             @click="${this._goBack}"
             icon="${this.icon}"
           >
-          <span class="hide-small">Home</span>
-        </simple-icon-button-lite>
+            <span class="hide-small">Home</span>
+          </simple-icon-button-lite>
         </div>
         <site-region name="header"></site-region>
       </header>
@@ -332,38 +341,47 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
               limit="10"
               sort='{"created": "ASC"}'
             ></site-query>
-              ${this.__mainPosts.map(
-                (post) => html`
-                <a class="article-link" href="${post.slug}">
-                <accent-card 
-                image-align="center"
-                image-valign="top" 
-                accent-background
-                accent-color="${this.color}" 
-                accent-heading 
-                horizontal 
-                image-src="${this._showImage(
-                      post.metadata &&
-                        post.metadata.image
-                        ? post.metadata.image
-                        : false
-                    )}"
+            ${this.__mainPosts.map(
+              (post) => html` <a class="article-link" href="${post.slug}">
+                <accent-card
+                  image-align="center"
+                  image-valign="top"
+                  accent-background
+                  accent-color="${this.color}"
+                  accent-heading
+                  horizontal
+                  image-src="${this._showImage(
+                    post.metadata && post.metadata.image
+                      ? post.metadata.image
+                      : false
+                  )}"
                 >
-                <div slot="heading"><span>${post.title}</span></div>
-                <p slot="content">
-                  <date-chip unix timestamp="${post.metadata.created}" accent-color="${this.color}"></date-chip>
-                  ${post.description}
-                </p>
-              </accent-card></a>`
-              )}
+                  <div slot="heading"><span>${post.title}</span></div>
+                  <p slot="content">
+                    <date-chip
+                      unix
+                      timestamp="${post.metadata.created}"
+                      accent-color="${this.color}"
+                    ></date-chip>
+                    ${post.description}
+                  </p>
+                </accent-card></a
+              >`
+            )}
             <site-region name="footerPrimary"></site-region>
           </div>
           <main class="contentcontainer-wrapper">
             <article id="contentcontainer">
               <site-region name="contentTop"></site-region>
               <site-git-corner position="right"></site-git-corner>
-              ${this.activeItem && this.activeItem.metadata && this.activeItem.metadata.image ?
-              html`<full-width-image source="${this.activeItem.metadata.image}" caption="${this.activeItem.title}"></full-width-image>` : html`<site-active-title></site-active-title>`}
+              ${this.activeItem &&
+              this.activeItem.metadata &&
+              this.activeItem.metadata.image
+                ? html`<full-width-image
+                    source="${this.activeItem.metadata.image}"
+                    caption="${this.activeItem.title}"
+                  ></full-width-image>`
+                : html`<site-active-title></site-active-title>`}
               <h3 class="subtitle" .hidden="${!this.subtitle}">
                 ${this.subtitle}
               </h3>
@@ -378,33 +396,36 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
               start-index="${this.activeManifestIndexCounter}"
               sort='{"created": "ASC"}'
             ></site-query>
-              ${this.__followUpPosts.map(
-                (post) => html`
+            ${this.__followUpPosts.map(
+              (post) => html`
                 <a class="article-link-bottom" href="${post.slug}">
-                  <accent-card 
-                image-align="center"
-                image-valign="top" 
-                accent-background
-                accent-color="${this.color}" 
-                accent-heading 
-                horizontal 
-                image-src="${this._showImage(
-                      post.metadata &&
-                        post.metadata.image
+                  <accent-card
+                    image-align="center"
+                    image-valign="top"
+                    accent-background
+                    accent-color="${this.color}"
+                    accent-heading
+                    horizontal
+                    image-src="${this._showImage(
+                      post.metadata && post.metadata.image
                         ? post.metadata.image
                         : false
                     )}"
+                  >
+                    <div slot="heading">${post.title}</div>
+                    <div slot="subheading">
+                      <simple-datetime
+                        unix
+                        timestamp="${post.metadata.created}"
+                      ></simple-datetime>
+                    </div>
+                    <div slot="content">
+                      <p>${post.description}</p>
+                    </div>
+                  </accent-card></a
                 >
-                <div slot="heading">${post.title}</div>
-                <div slot="subheading"><simple-datetime unix timestamp="${post.metadata.created}"></simple-datetime></div>
-                <div slot="content">
-                  <p>
-                  ${post.description}
-                  </p>
-                </div>
-              </accent-card></a>
-                `
-              )}
+              `
+            )}
             <nav class="social-float hide-small ${this.stateClass}">
               <ul>
                 <li>
@@ -490,13 +511,16 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
   __followUpPostsChanged(e) {
     var posts = [];
     // support for posts to define their own related content
-    if (this.activeItem && this.activeItem.metadata && this.activeItem.metadata.relatedItems) {
-      const ids = this.activeItem.metadata.relatedItems.split(',');
+    if (
+      this.activeItem &&
+      this.activeItem.metadata &&
+      this.activeItem.metadata.relatedItems
+    ) {
+      const ids = this.activeItem.metadata.relatedItems.split(",");
       ids.map((id) => {
         posts.push(store.findItem(id));
       });
-    }
-    else {
+    } else {
       posts = e.detail.value;
     }
     this.__followUpPosts = posts;
@@ -513,7 +537,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
         attribute: "selected-page",
       },
       activeItem: {
-        type: Object
+        type: Object,
       },
       stateClass: {
         type: String,
@@ -533,8 +557,13 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
     return "";
   }
   _getColor(manifest) {
-    if (manifest && varExists(manifest, "metadata.theme.variables.cssVariable")) {
-      return manifest.metadata.theme.variables.cssVariable.replace('--simple-colors-default-theme-', '').replace('-7','');
+    if (
+      manifest &&
+      varExists(manifest, "metadata.theme.variables.cssVariable")
+    ) {
+      return manifest.metadata.theme.variables.cssVariable
+        .replace("--simple-colors-default-theme-", "")
+        .replace("-7", "");
     }
   }
   /**
@@ -578,9 +607,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
-      this.activeManifestIndexCounter = toJS(
-        store.activeManifestIndexCounter
-      );
+      this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
@@ -592,7 +619,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(HAXCMSThemeParts(SimpleColorsSuper
     autorun((reaction) => {
       this.activeItem = toJS(store.activeItem);
       this.__disposer.push(reaction);
-    })
+    });
   }
   /**
    * LitElement shadowDom ready

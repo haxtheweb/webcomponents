@@ -16,12 +16,7 @@
     "description": "",
     "icon": "lrn:canban",
     "color": "purple",
-    "tags": [
-      "Layout",
-      "collection",
-      "list",
-      "items"
-    ],
+    "tags": ["Layout", "collection", "list", "items"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -48,8 +43,7 @@
         "required": true
       }
     ],
-    "advanced": [
-    ],
+    "advanced": [],
     "developer": [
       {
         "property": "breakpointSm",

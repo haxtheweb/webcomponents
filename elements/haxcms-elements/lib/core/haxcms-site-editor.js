@@ -382,7 +382,7 @@ class HAXCMSSiteEditor extends LitElement {
         // if we KNOW an event must expire the timing token
         case 405:
         case 401:
-            this.dispatchEvent(
+          this.dispatchEvent(
             new CustomEvent("jwt-login-logout", {
               composed: true,
               bubbles: true,

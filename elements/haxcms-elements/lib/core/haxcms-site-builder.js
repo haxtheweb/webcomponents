@@ -581,21 +581,20 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     });
     autorun(() => {
       this.isLoggedIn = toJS(store.isLoggedIn);
-      UserScaffoldInstance.writeMemory('isLoggedIn', this.isLoggedIn);
+      UserScaffoldInstance.writeMemory("isLoggedIn", this.isLoggedIn);
       const tstamp = Math.floor(Date.now() / 1000);
       if (this.isLoggedIn && !this.loggedInTime) {
         this.loggedInTime = tstamp;
-        var ll = UserScaffoldInstance.readMemory('recentLogins');
+        var ll = UserScaffoldInstance.readMemory("recentLogins");
         if (!ll) {
-          UserScaffoldInstance.writeMemory('recentLogins', [tstamp], "long");
-        }
-        else if (ll) {
+          UserScaffoldInstance.writeMemory("recentLogins", [tstamp], "long");
+        } else if (ll) {
           // cap at last 5 login times
           if (ll.length < 5) {
             ll.shift();
           }
           ll.push(tstamp);
-          UserScaffoldInstance.writeMemory('recentLogins', ll, "long");
+          UserScaffoldInstance.writeMemory("recentLogins", ll, "long");
         }
       }
     });
@@ -605,28 +604,41 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // try to evaluate typing in merlin
       if (
         UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn && 
+        UserScaffoldInstance.memory.isLoggedIn &&
         UserScaffoldInstance.memory.recentTarget === SuperDaemonInstance &&
         SuperDaemonInstance.programName === null &&
         UserScaffoldInstance.memory.interactionDelay > 600 &&
         ["paste", "key"].includes(usAction.type)
-        ) {
+      ) {
         if (validURL(SuperDaemonInstance.value)) {
-          SuperDaemonInstance.waveWand([SuperDaemonInstance.value, "/", {}, "hax-agent", "Agent"], null, "coin2")
+          SuperDaemonInstance.waveWand(
+            [SuperDaemonInstance.value, "/", {}, "hax-agent", "Agent"],
+            null,
+            "coin2"
+          );
         }
-      }
-      else if (
+      } else if (
         UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn && 
+        UserScaffoldInstance.memory.isLoggedIn &&
         SuperDaemonInstance.programName === null &&
         ["paste"].includes(usAction.type) &&
         UserScaffoldInstance.data.architype == "url"
       ) {
-        SuperDaemonInstance.waveWand([toJS(UserScaffoldInstance.data.value), "/", {}, "hax-agent", "Agent"], null, "coin2")
+        SuperDaemonInstance.waveWand(
+          [
+            toJS(UserScaffoldInstance.data.value),
+            "/",
+            {},
+            "hax-agent",
+            "Agent",
+          ],
+          null,
+          "coin2"
+        );
       }
     });
   }
-  
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);

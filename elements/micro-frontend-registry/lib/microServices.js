@@ -45,8 +45,7 @@ export function enableCoreServices() {
     name: "@core/metadata",
     method: "GET",
     title: "URL Metadata",
-    description:
-      "Skims metadata off a link",
+    description: "Skims metadata off a link",
     params: {
       q: "url to process",
     },
@@ -55,20 +54,24 @@ export function enableCoreServices() {
         action: "paste",
         data: "url",
         memory: {
-          isLoggedIn: true
+          isLoggedIn: true,
         },
-        result: function(data) {
+        result: function (data) {
           return {
             tag: "a",
-            content: data.title || data["og:site_name"] || data["og:title"] || data.url,
+            content:
+              data.title ||
+              data["og:site_name"] ||
+              data["og:title"] ||
+              data.url,
             properties: {
               href: data.url,
-              rel: "nofollow"
-            }
+              rel: "nofollow",
+            },
           };
-        }
-      }
-    ]
+        },
+      },
+    ],
   });
 
   // mdToHtml

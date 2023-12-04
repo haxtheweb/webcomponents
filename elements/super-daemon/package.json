@@ -51,7 +51,7 @@
     "@lrnwebcomponents/simple-filter": "^7.0.18",
     "@lrnwebcomponents/simple-icon": "^7.0.18",
     "lit": "^3.1.0",
-    "@lrnwebcomponents/user-scaffold":"^7.0.18",
+    "@lrnwebcomponents/user-scaffold": "^7.0.18",
     "mobx": "6.12.0",
     "web-dialog": "^0.0.11"
   },

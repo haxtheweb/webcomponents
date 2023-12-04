@@ -1158,7 +1158,7 @@ export class AppHaxSteps extends SimpleColors {
           <div class="carousel-with-snapping-track">
             <div class="carousel-with-snapping-item" id="step-1">
               <div class="step-wrapper">
-              <app-hax-site-button
+                <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Blog"
                   value="blog"

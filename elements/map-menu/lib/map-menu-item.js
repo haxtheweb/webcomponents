@@ -38,7 +38,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
         :host([hide-in-menu]) {
           display: none;
         }
-        
+
         .title {
           text-transform: none;
           font-size: var(--map-menu-font-size, 16px);

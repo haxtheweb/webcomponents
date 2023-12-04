@@ -635,7 +635,7 @@ class Store {
               header: null,
               footerPrimary: null,
               footerSecondary: null,
-            }
+            },
           },
         };
       }
@@ -1122,13 +1122,21 @@ class HAXCMSSiteStore extends HTMLElement {
       }
     });
     autorun(() => {
-      const memVersion = UserScaffoldInstance.readMemory('versionLatest');
+      const memVersion = UserScaffoldInstance.readMemory("versionLatest");
       if (store.version && memVersion != store.version) {
         // store the initial version
         if (memVersion == null) {
-          UserScaffoldInstance.writeMemory('versionInitial', store.version, "long");
+          UserScaffoldInstance.writeMemory(
+            "versionInitial",
+            store.version,
+            "long"
+          );
         }
-        UserScaffoldInstance.writeMemory('versionLatest', store.version, "long");
+        UserScaffoldInstance.writeMemory(
+          "versionLatest",
+          store.version,
+          "long"
+        );
       }
     });
 

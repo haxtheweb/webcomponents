@@ -244,7 +244,7 @@ export class SuperDaemonRow extends SimpleColors {
   }
 
   focus() {
-    this.shadowRoot.querySelector('button').focus();
+    this.shadowRoot.querySelector("button").focus();
   }
 
   pickColor(val) {

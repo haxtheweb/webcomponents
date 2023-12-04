@@ -39,7 +39,7 @@
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
-    "author": {
+  "author": {
     "name": "btopro"
   },
   "license": "Apache-2.0",

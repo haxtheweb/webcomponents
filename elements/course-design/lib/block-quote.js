@@ -29,7 +29,7 @@ export class BlockQuote extends LitElement {
           ? html`
               <div
                 id="image"
-                style="background-image:url(${this.image});"
+                style="background-image:url('${this.image}');"
                 alt="${this.alt}"
               ></div>
             `

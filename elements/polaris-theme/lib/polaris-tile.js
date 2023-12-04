@@ -1,7 +1,6 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 export class PolarisTile extends LitElement {
-
   static get tag() {
     return "polaris-tile";
   }
@@ -36,7 +35,7 @@ export class PolarisTile extends LitElement {
         right: 14px;
         width: 23px;
         height: 23px;
-        background-image: url('https://static-00.iconduck.com/assets.00/external-link-icon-2048x2048-wo7lfgrz.png');
+        background-image: url("https://static-00.iconduck.com/assets.00/external-link-icon-2048x2048-wo7lfgrz.png");
         background-size: cover;
         transition: transform 0.2s;
       }
@@ -60,7 +59,7 @@ export class PolarisTile extends LitElement {
         align-items: center;
         height: 281px;
         width: 336px;
-        font-family: "Roboto", 'Franklin Gothic Medium', Tahoma, sans-serif;
+        font-family: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
         font-size: 32px;
         color: white;
         box-shadow: rgba(0, 3, 33, 0.1) 0px 8px 16px 0px;
@@ -108,7 +107,11 @@ export class PolarisTile extends LitElement {
 
       :host([type="3"]) .tile {
         background-color: rgba(0, 0, 0, 0);
-        background-image: linear-gradient(rgb(30, 64, 124) 0%, rgb(0, 30, 68) 65%, rgb(0, 30, 68) 100%);
+        background-image: linear-gradient(
+          rgb(30, 64, 124) 0%,
+          rgb(0, 30, 68) 65%,
+          rgb(0, 30, 68) 100%
+        );
       }
 
       :host([type="4"]) .tile {
@@ -127,22 +130,30 @@ export class PolarisTile extends LitElement {
   render() {
     return html`
       <div
-       class="tile"
-       style="${this.image ? `background-image: url(${this.image});`:``}"
-       >
+        class="tile"
+        style="${this.image ? `background-image: url(${this.image});` : ``}"
+      >
         <div class="content">
           <div class="name">
             <slot>${this.line1}</slot>
           </div>
-          ${this.line2 ? html`
-          <div class="splitspacer">
-            <hr class="split-line" />
-          </div>
-          <div class="additionalText">
-            ${this.line2}
-          </div>
-          ` : ``}
-          ${this.link ? html`<a class="button" href="${this.link}" title="${this.line1 ? this.line1 : "Additional details about this fact"}"></a>`: ``}
+          ${this.line2
+            ? html`
+                <div class="splitspacer">
+                  <hr class="split-line" />
+                </div>
+                <div class="additionalText">${this.line2}</div>
+              `
+            : ``}
+          ${this.link
+            ? html`<a
+                class="button"
+                href="${this.link}"
+                title="${this.line1
+                  ? this.line1
+                  : "Additional details about this fact"}"
+              ></a>`
+            : ``}
         </div>
       </div>
     `;

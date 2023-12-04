@@ -72,7 +72,7 @@ class DynamicImportRegistry extends HTMLElement {
   }
   // returns path to tag from registry
   getPathToTag(tag) {
-    if (this.list && tag &&  this.list[tag]) {
+    if (this.list && tag && this.list[tag]) {
       return `${this.basePath}${this.list[tag]}`;
     }
     return false;

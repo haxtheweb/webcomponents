@@ -13,14 +13,14 @@ export class SiteCollectionList extends CollectionList {
     this.results = [];
     this.breakSmartCollection = false;
     this.limit = 8;
-    this.sort = 'title';
+    this.sort = "title";
 
-    this.parent = '';
-    this.tags = '';
-    this.pageType = '';
-    this.published = 'true';
-    this.hideInMenu = '';
-    this.relatedItems = '';
+    this.parent = "";
+    this.tags = "";
+    this.pageType = "";
+    this.published = "true";
+    this.hideInMenu = "";
+    this.relatedItems = "";
 
     this.t = {
       allItems: "All items",
@@ -35,18 +35,23 @@ export class SiteCollectionList extends CollectionList {
         .conditions="${this.conditions}"
         limit="${this.limit}"
       ></site-query>
-      <collection-list items-per-row="${this.itemsPerRow}" lock-items="lock-items">
-      ${this.results.map((item) => html`
-        <collection-item
-          line1="${item.title}"
-          line2="${item.description}"
-          url="${item.slug}"
-          image="${item.metadata.image}"
-          tags="${item.metadata.tags}"
-          icon="${item.metadata.icon}"
-          ?editable="${!this.editMode}"
-        ></collection-item>
-      `)}
+      <collection-list
+        items-per-row="${this.itemsPerRow}"
+        lock-items="lock-items"
+      >
+        ${this.results.map(
+          (item) => html`
+            <collection-item
+              line1="${item.title}"
+              line2="${item.description}"
+              url="${item.slug}"
+              image="${item.metadata.image}"
+              tags="${item.metadata.tags}"
+              icon="${item.metadata.icon}"
+              ?editable="${!this.editMode}"
+            ></collection-item>
+          `
+        )}
       </collection-list>
     `;
   }
@@ -108,38 +113,52 @@ export class SiteCollectionList extends CollectionList {
           })
         );
       }
-      if (this.shadowRoot && ["parent", "tags", "pageType", "published", "hideInMenu", "relatedItems"].includes(propName)) {
+      if (
+        this.shadowRoot &&
+        [
+          "parent",
+          "tags",
+          "pageType",
+          "published",
+          "hideInMenu",
+          "relatedItems",
+        ].includes(propName)
+      ) {
         let conditions = {};
-        if (this.parent !== '') {
+        if (this.parent !== "") {
           conditions.parent = this.parent;
         }
-        if (this.tags !== '' && this.tags !== null) {
+        if (this.tags !== "" && this.tags !== null) {
           conditions["metadata.tags"] = this.tags;
         }
-        if (this.pageType !== '' && this.pageType !== null) {
+        if (this.pageType !== "" && this.pageType !== null) {
           conditions["metadata.pageType"] = this.pageType;
         }
-        if (this.published !== 'null') {
-          conditions["metadata.published"] = this.published === "true" ? true : false;
+        if (this.published !== "null") {
+          conditions["metadata.published"] =
+            this.published === "true" ? true : false;
         }
-        if (this.hideInMenu != 'null') {
-          conditions["metadata.hideInMenu"] = this.hideInMenu === "true" ? true : false;
+        if (this.hideInMenu != "null") {
+          conditions["metadata.hideInMenu"] =
+            this.hideInMenu === "true" ? true : false;
         }
-        if (this.relatedItems != '' && this.relatedItems !== null) {
+        if (this.relatedItems != "" && this.relatedItems !== null) {
           conditions["metadata.relatedItems"] = this.relatedItems;
         }
-        this.conditions = {...conditions};
+        this.conditions = { ...conditions };
         console.log(this.conditions);
       }
       if (this.shadowRoot && propName === "sort") {
         let sortObj = {};
         sortObj[this[propName]] = "ASC";
-        this.sortObj = {...sortObj};
+        this.sortObj = { ...sortObj };
       }
       // convert to editable list
       if (propName === "breakSmartCollection" && this.breakSmartCollection) {
         // find the content area in shadow
-        let clone = this.shadowRoot.querySelector('collection-list').cloneNode(true);
+        let clone = this.shadowRoot
+          .querySelector("collection-list")
+          .cloneNode(true);
         this.parentNode.insertBefore(clone, this);
         // remove self after clone of root data so it's broken off
         setTimeout(() => {
@@ -196,13 +215,13 @@ export class SiteCollectionList extends CollectionList {
         props.settings.configure[index].itemsList = [
           {
             text: `-- ${this.t.allItems} --`,
-            value: '',
+            value: "",
           },
           {
             text: `-- ${this.t.topLevelItems} --`,
             value: null,
           },
-          ...items
+          ...items,
         ];
       }
       if (attr.property === "relatedItems") {
@@ -210,9 +229,9 @@ export class SiteCollectionList extends CollectionList {
         props.settings.configure[index].itemsList = [
           {
             text: `-- ${this.t.allItems} --`,
-            value: '',
+            value: "",
           },
-          ...items
+          ...items,
         ];
       }
     });
@@ -224,11 +243,14 @@ export class SiteCollectionList extends CollectionList {
     return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
   static get styles() {
-    return [...super.styles, css`
-      :host {
-        display: block;
-      }
-    `];
+    return [
+      ...super.styles,
+      css`
+        :host {
+          display: block;
+        }
+      `,
+    ];
   }
   static get tag() {
     return "site-collection-list";

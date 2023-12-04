@@ -700,7 +700,8 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      * shift cursor to end of field
      */
     cursorAtEnd() {
-      this.field.selectionStart = this.field.selectionEnd = this.field.value.length;
+      this.field.selectionStart = this.field.selectionEnd =
+        this.field.value.length;
     }
 
     /**

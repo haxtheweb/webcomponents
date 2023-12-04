@@ -54,12 +54,8 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   constructor() {
     super();
     if (super.fields) {
-      this.fields = [
-        ...super.fields,
-        ,hrefField
-      ];
-    }
-    else {
+      this.fields = [...super.fields, , hrefField];
+    } else {
       this.fields = [
         {
           property: "innerHTML",
@@ -69,9 +65,9 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
           disabled: true,
           required: true,
         },
-        hrefField
+        hrefField,
       ];
-    }    
+    }
     this.command = "createLink";
     this.icon = "link";
     this.label = "Link";

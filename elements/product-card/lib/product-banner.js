@@ -138,7 +138,7 @@ class ProductBanner extends SimpleColors {
         <div
           class="image_wrap"
           alt="${this.alt}"
-          style="background-image:url(${this.image})"
+          style="background-image:url('${this.image}')"
         >
           <div class="image"></div>
           ${this.primaryText

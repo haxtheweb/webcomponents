@@ -11,9 +11,7 @@
     "description": "",
     "icon": "hax:figure",
     "color": "purple",
-    "tags": [
-      "Layout", "collection", "list", "card"
-    ],
+    "tags": ["Layout", "collection", "list", "card"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

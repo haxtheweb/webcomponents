@@ -1,412 +1,411 @@
 {
-    "id": "99e4b4fb-bc10-4540-96b1-c12c79982fdf",
-    "title": "Office of Digital Learning",
-    "author": "",
-    "description": "Mind of the Information Altruist",
-    "license": "by-sa",
-    "metadata": {
-        "author": {
-            "image": "files\/PXL_20220729_131000960.jpg",
-            "name": "Bryan Ollendyke",
-            "email": "btopro@outlook.com",
-            "socialLink": "https:\/\/www.linkedin.com\/in\/btopro\/"
-        },
-        "site": {
-            "name": "btopro",
-            "logo": "https://oer.courses.science.psu.edu/assets/images/theme-images/odl-logo.png",
-            "settings": {
-                "lang": "en-US",
-                "publishPagesOn": true,
-                "pathauto": false,
-                "sw": false,
-                "forceUpgrade": true
-            },
-            "created": 1698074988,
-            "updated": 1698076319,
-            "git": {
-                "vendor": "github",
-                "branch": "gh-pages"
-            },
-            "version": "7.0.18",
-            "domain": "https:\/\/btopro.com",
-            "static": {}
-        },
-        "theme": {
-            "element": "collections-theme",
-            "path": "@lrnwebcomponents\/collection-item\/lib\/collections-theme.js",
-            "name": "Collections theme",
-            "thumbnail": "build\/es6\/node_modules\/@lrnwebcomponents\/app-hax\/lib\/assets\/images\/PartyStyle.svg",
-            "variables": {
-                "image": "https://oer.courses.science.psu.edu/assets/images/theme-images/oer-homepage-banner.jpg",
-                "imageAlt": "",
-                "imageLink": "",
-                "hexCode": "#e2801e",
-                "cssVariable": "--simple-colors-default-theme-orange-6",
-                "icon": "av:add-to-queue"
-            },
-            "regions": {
-              "header": ["header"],
-              "footerPrimary": ["footerPrimary"],
-              "footerSecondary": ["footerSecondary"]
-            }
-        },
-        "node": {
-            "fields": {}
-        },
-        "build": {
-            "version": "7.0.18",
-            "structure": "import",
-            "type": "haxcms"
-        }
+  "id": "99e4b4fb-bc10-4540-96b1-c12c79982fdf",
+  "title": "Office of Digital Learning",
+  "author": "",
+  "description": "Mind of the Information Altruist",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "files/PXL_20220729_131000960.jpg",
+      "name": "Bryan Ollendyke",
+      "email": "btopro@outlook.com",
+      "socialLink": "https://www.linkedin.com/in/btopro/"
     },
-    "items": [
-      {
-        "id": "home",
-        "indent": 0,
-        "location": "pages\/home\/index.html",
-        "slug": "why-i-started-hax-camp-1",
-        "order": -1,
-        "parent": null,
-        "title": "Why I started hax-camp",
-        "description": "",
-        "metadata": {
-            "created": 1698074988,
-            "updated": 1698074988,
-            "files": [
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/EBd7L7eXkAAOW_d.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/EBd7L7eXkAAOW_d.jpg",
-                    "url": "files\/EBd7L7eXkAAOW_d.jpg",
-                    "type": "image\/jpeg",
-                    "name": "EBd7L7eXkAAOW_d.jpg",
-                    "size": "1546770"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_213158.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_213158.jpg",
-                    "url": "files\/IMG_20190729_213158.jpg",
-                    "type": "image\/jpeg",
-                    "name": "IMG_20190729_213158.jpg",
-                    "size": "192990"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190819_205859.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190819_205859.jpg",
-                    "url": "files\/IMG_20190819_205859.jpg",
-                    "type": "image\/jpeg",
-                    "name": "IMG_20190819_205859.jpg",
-                    "size": "141777"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_103418.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
-                    "url": "files\/IMG_20190729_103418.jpg",
-                    "type": "image\/jpeg",
-                    "name": "IMG_20190729_103418.jpg",
-                    "size": "13500"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190729_213151.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_213151.jpg",
-                    "url": "files\/IMG_20190729_213151.jpg",
-                    "type": "image\/jpeg",
-                    "name": "IMG_20190729_213151.jpg",
-                    "size": "174216"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190726_110706.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190726_110706.jpg",
-                    "url": "files\/IMG_20190726_110706.jpg",
-                    "type": "image\/jpeg",
-                    "name": "IMG_20190726_110706.jpg",
-                    "size": "173441"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190726_105535.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190726_105535.jpg",
-                    "url": "files\/IMG_20190726_105535.jpg",
-                    "type": "image\/jpeg",
-                    "name": "IMG_20190726_105535.jpg",
-                    "size": "158038"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/\/IMG_20190716_102855.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190716_102855.jpg",
-                    "url": "files\/IMG_20190716_102855.jpg",
-                    "type": "image\/jpeg",
-                    "name": "IMG_20190716_102855.jpg",
-                    "size": "124200"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot14025.480000011157.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/headshot14025.480000011157.jpg",
-                    "url": "files\/headshot14025.480000011157.jpg",
-                    "type": "image\/jpeg",
-                    "name": "headshot14025.480000011157.jpg",
-                    "size": "207453"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/IMG_20190823_102434 2.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190823_102434 2.jpg",
-                    "url": "files\/IMG_20190823_102434 2.jpg",
-                    "type": "image\/jpeg",
-                    "name": "IMG_20190823_102434 2.jpg",
-                    "size": "100516"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot143493.3299999684.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/headshot143493.3299999684.jpg",
-                    "url": "files\/headshot143493.3299999684.jpg",
-                    "type": "image\/jpeg",
-                    "name": "headshot143493.3299999684.jpg",
-                    "size": "258395"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/IMG_20190729_103418.jpg",
-                    "url": "files\/IMG_20190729_103418.jpg",
-                    "type": "image\/jpeg",
-                    "name": "IMG_20190729_103418.jpg",
-                    "size": "13500"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot495331.4750000136.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/headshot495331.4750000136.jpg",
-                    "url": "files\/headshot495331.4750000136.jpg",
-                    "type": "image\/jpeg",
-                    "name": "headshot495331.4750000136.jpg",
-                    "size": "228989"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot504645.5449999776.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/headshot504645.5449999776.jpg",
-                    "url": "files\/headshot504645.5449999776.jpg",
-                    "type": "image\/jpeg",
-                    "name": "headshot504645.5449999776.jpg",
-                    "size": "241173"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot511743.1799999904.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/headshot511743.1799999904.jpg",
-                    "url": "files\/headshot511743.1799999904.jpg",
-                    "type": "image\/jpeg",
-                    "name": "headshot511743.1799999904.jpg",
-                    "size": "190065"
-                },
-                {
-                    "path": "\/var\/www\/html\/sites\/btopro\/files\/headshot14076.185000012629.jpg",
-                    "fullUrl": "\/sites\/btopro\/files\/headshot14076.185000012629.jpg",
-                    "url": "files\/headshot14076.185000012629.jpg",
-                    "type": "image\/jpeg",
-                    "name": "headshot14076.185000012629.jpg",
-                    "size": "165743"
-                }
-            ],
-            "readtime": "4",
-            "contentDetails": {
-                "headings": "0",
-                "paragraphs": "18",
-                "schema": [
-                    {
-                        "resource": "#3ad05175-0f0a-9aa3-bd92",
-                        "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
-                    },
-                    {
-                        "typeof": "oer:Assessment",
-                        "resource": "#69279b8a-babf-7bb2-bb73",
-                        "prefix": "oer:http:\/\/oerschema.org\/ schema:http:\/\/schema.org\/ dc:http:\/\/purl.org\/dc\/terms\/ foaf:http:\/\/xmlns.com\/foaf\/0.1\/ cc:http:\/\/creativecommons.org\/ns# bib:http:\/\/bib.schema.org "
-                    }
-                ],
-                "tags": {
-                    "p": "18",
-                    "video-player": "1",
-                    "multiple-choice": "1",
-                    "grid-plate": "1"
-                },
-                "elements": "21"
-            }
-        }
+    "site": {
+      "name": "btopro",
+      "logo": "https://oer.courses.science.psu.edu/assets/images/theme-images/odl-logo.png",
+      "settings": {
+        "lang": "en-US",
+        "publishPagesOn": true,
+        "pathauto": false,
+        "sw": false,
+        "forceUpgrade": true
+      },
+      "created": 1698074988,
+      "updated": 1698076319,
+      "git": {
+        "vendor": "github",
+        "branch": "gh-pages"
+      },
+      "version": "7.0.18",
+      "domain": "https://btopro.com",
+      "static": {}
     },
-        {
-            "id": "header",
-            "indent": 0,
-            "location": "pages\/header\/index.html",
-            "slug": "the-climb-1",
-            "order": "0",
-            "parent": null,
-            "title": "The Climb",
-            "description": "",
-            "metadata": {
-                "created": 1698074988,
-                "updated": 1698074988,
-                "readtime": "7",
-                "published": true,
-                "hideInMenu": true,
-                "contentDetails": {
-                    "headings": "1",
-                    "paragraphs": "19",
-                    "schema": [],
-                    "tags": {
-                        "p": "19",
-                        "lrndesign-blockquote": "1",
-                        "ol": "1",
-                        "video-player": "1",
-                        "h2": "1",
-                        "ul": "1",
-                        "grid-plate": "1"
-                    },
-                    "elements": "25"
-                },
-                "files": [
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/edtechjoker.gif",
-                        "fullUrl": "\/sites\/btopro\/files\/edtechjoker.gif",
-                        "url": "files\/edtechjoker.gif",
-                        "type": "image\/gif",
-                        "name": "edtechjoker.gif",
-                        "size": "838403"
-                    },
-                    {
-                        "path": "\/var\/www\/html\/sites\/btopro\/files\/edtechjoker.jpg",
-                        "fullUrl": "\/sites\/btopro\/files\/edtechjoker.jpg",
-                        "url": "files\/edtechjoker.jpg",
-                        "type": "image\/jpeg",
-                        "name": "edtechjoker.jpg",
-                        "size": "68012"
-                    },
-                    {
-                        "fullUrl": "\/sites\/btopro\/files\/PXL_20220729_131000960.jpg",
-                        "url": "files\/PXL_20220729_131000960.jpg",
-                        "type": "image\/jpeg",
-                        "name": "PXL_20220729_131000960.jpg",
-                        "size": 138328
-                    }
-                ]
+    "theme": {
+      "element": "collections-theme",
+      "path": "@lrnwebcomponents/collection-item/lib/collections-theme.js",
+      "name": "Collections theme",
+      "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",
+      "variables": {
+        "image": "https://oer.courses.science.psu.edu/assets/images/theme-images/oer-homepage-banner.jpg",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#e2801e",
+        "cssVariable": "--simple-colors-default-theme-orange-6",
+        "icon": "av:add-to-queue"
+      },
+      "regions": {
+        "header": ["header"],
+        "footerPrimary": ["footerPrimary"],
+        "footerSecondary": ["footerSecondary"]
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "7.0.18",
+      "structure": "import",
+      "type": "haxcms"
+    }
+  },
+  "items": [
+    {
+      "id": "home",
+      "indent": 0,
+      "location": "pages/home/index.html",
+      "slug": "why-i-started-hax-camp-1",
+      "order": -1,
+      "parent": null,
+      "title": "Why I started hax-camp",
+      "description": "",
+      "metadata": {
+        "created": 1698074988,
+        "updated": 1698074988,
+        "files": [
+          {
+            "path": "/var/www/html/sites/btopro/files//EBd7L7eXkAAOW_d.jpg",
+            "fullUrl": "/sites/btopro/files/EBd7L7eXkAAOW_d.jpg",
+            "url": "files/EBd7L7eXkAAOW_d.jpg",
+            "type": "image/jpeg",
+            "name": "EBd7L7eXkAAOW_d.jpg",
+            "size": "1546770"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files//IMG_20190729_213158.jpg",
+            "fullUrl": "/sites/btopro/files/IMG_20190729_213158.jpg",
+            "url": "files/IMG_20190729_213158.jpg",
+            "type": "image/jpeg",
+            "name": "IMG_20190729_213158.jpg",
+            "size": "192990"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files//IMG_20190819_205859.jpg",
+            "fullUrl": "/sites/btopro/files/IMG_20190819_205859.jpg",
+            "url": "files/IMG_20190819_205859.jpg",
+            "type": "image/jpeg",
+            "name": "IMG_20190819_205859.jpg",
+            "size": "141777"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files//IMG_20190729_103418.jpg",
+            "fullUrl": "/sites/btopro/files/IMG_20190729_103418.jpg",
+            "url": "files/IMG_20190729_103418.jpg",
+            "type": "image/jpeg",
+            "name": "IMG_20190729_103418.jpg",
+            "size": "13500"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files//IMG_20190729_213151.jpg",
+            "fullUrl": "/sites/btopro/files/IMG_20190729_213151.jpg",
+            "url": "files/IMG_20190729_213151.jpg",
+            "type": "image/jpeg",
+            "name": "IMG_20190729_213151.jpg",
+            "size": "174216"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files//IMG_20190726_110706.jpg",
+            "fullUrl": "/sites/btopro/files/IMG_20190726_110706.jpg",
+            "url": "files/IMG_20190726_110706.jpg",
+            "type": "image/jpeg",
+            "name": "IMG_20190726_110706.jpg",
+            "size": "173441"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files//IMG_20190726_105535.jpg",
+            "fullUrl": "/sites/btopro/files/IMG_20190726_105535.jpg",
+            "url": "files/IMG_20190726_105535.jpg",
+            "type": "image/jpeg",
+            "name": "IMG_20190726_105535.jpg",
+            "size": "158038"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files//IMG_20190716_102855.jpg",
+            "fullUrl": "/sites/btopro/files/IMG_20190716_102855.jpg",
+            "url": "files/IMG_20190716_102855.jpg",
+            "type": "image/jpeg",
+            "name": "IMG_20190716_102855.jpg",
+            "size": "124200"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files/headshot14025.480000011157.jpg",
+            "fullUrl": "/sites/btopro/files/headshot14025.480000011157.jpg",
+            "url": "files/headshot14025.480000011157.jpg",
+            "type": "image/jpeg",
+            "name": "headshot14025.480000011157.jpg",
+            "size": "207453"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files/IMG_20190823_102434 2.jpg",
+            "fullUrl": "/sites/btopro/files/IMG_20190823_102434 2.jpg",
+            "url": "files/IMG_20190823_102434 2.jpg",
+            "type": "image/jpeg",
+            "name": "IMG_20190823_102434 2.jpg",
+            "size": "100516"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files/headshot143493.3299999684.jpg",
+            "fullUrl": "/sites/btopro/files/headshot143493.3299999684.jpg",
+            "url": "files/headshot143493.3299999684.jpg",
+            "type": "image/jpeg",
+            "name": "headshot143493.3299999684.jpg",
+            "size": "258395"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files/IMG_20190729_103418.jpg",
+            "fullUrl": "/sites/btopro/files/IMG_20190729_103418.jpg",
+            "url": "files/IMG_20190729_103418.jpg",
+            "type": "image/jpeg",
+            "name": "IMG_20190729_103418.jpg",
+            "size": "13500"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files/headshot495331.4750000136.jpg",
+            "fullUrl": "/sites/btopro/files/headshot495331.4750000136.jpg",
+            "url": "files/headshot495331.4750000136.jpg",
+            "type": "image/jpeg",
+            "name": "headshot495331.4750000136.jpg",
+            "size": "228989"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files/headshot504645.5449999776.jpg",
+            "fullUrl": "/sites/btopro/files/headshot504645.5449999776.jpg",
+            "url": "files/headshot504645.5449999776.jpg",
+            "type": "image/jpeg",
+            "name": "headshot504645.5449999776.jpg",
+            "size": "241173"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files/headshot511743.1799999904.jpg",
+            "fullUrl": "/sites/btopro/files/headshot511743.1799999904.jpg",
+            "url": "files/headshot511743.1799999904.jpg",
+            "type": "image/jpeg",
+            "name": "headshot511743.1799999904.jpg",
+            "size": "190065"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files/headshot14076.185000012629.jpg",
+            "fullUrl": "/sites/btopro/files/headshot14076.185000012629.jpg",
+            "url": "files/headshot14076.185000012629.jpg",
+            "type": "image/jpeg",
+            "name": "headshot14076.185000012629.jpg",
+            "size": "165743"
+          }
+        ],
+        "readtime": "4",
+        "contentDetails": {
+          "headings": "0",
+          "paragraphs": "18",
+          "schema": [
+            {
+              "resource": "#3ad05175-0f0a-9aa3-bd92",
+              "prefix": "oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+            },
+            {
+              "typeof": "oer:Assessment",
+              "resource": "#69279b8a-babf-7bb2-bb73",
+              "prefix": "oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
             }
-        },
-        {
-            "id": "footerPrimary",
-            "indent": 0,
-            "location": "pages\/footerPrimary\/index.html",
-            "slug": "keep-moving-week-0",
-            "order": "0",
-            "parent": null,
-            "title": "Keep moving: Week 0",
-            "description": "",
-            "metadata": {
-                "created": 1698074988,
-                "updated": 1698074988,
-                "readtime": "10",
-                "published": true,
-                "hideInMenu": true,
-                "contentDetails": {
-                    "headings": "1",
-                    "paragraphs": "6",
-                    "schema": [],
-                    "tags": {
-                        "p": "6",
-                        "ul": "2",
-                        "h2": "1"
-                    },
-                    "elements": "9"
-                },
-                "files": [
-                    {
-                        "fullUrl": "\/sites\/btopro\/files\/1500x500.jpeg",
-                        "url": "files\/1500x500.jpeg",
-                        "type": "image\/jpeg",
-                        "name": "1500x500.jpeg",
-                        "size": 118690
-                    },
-                    {
-                        "fullUrl": "\/sites\/btopro\/files\/mini-P1010017.JPG",
-                        "url": "files\/mini-P1010017.JPG",
-                        "type": "image\/jpeg",
-                        "name": "mini-P1010017.JPG",
-                        "size": 130121
-                    }
-                ]
-            }
-        },
-        {
-            "id": "footerSecondary",
-            "indent": 0,
-            "location": "pages\/footerSecondary\/index.html",
-            "slug": "arrival",
-            "order": 0,
-            "parent": null,
-            "title": "Arrival",
-            "description": "Some decades, nothing happens. Other days, decades happen.That sentiment about sums up what the last few weeks have been like. As if everyone began to realize what we built, all at once, after years",
-            "metadata": {
-                "created": 1698076822,
-                "updated": 1698082821,
-                "images": [],
-                "videos": [
-                    "https:\/\/youtu.be\/iPGgdRGyUtM?si=tkME13Ni2qPOeTts",
-                    "https:\/\/www.youtube.com\/watch?v=G5yEgFIxzl0"
-                ],
-                "published": true,
-                "hideInMenu": true,
-                "locked": false,
-                "readtime": 4,
-                "relatedItems": "item-4a18ebe0-cf6a-49cd-9531-4c430ba2a9e0,item-1235ea3a-9254-4b93-8df3-8909fddcce88,item-e0c25c63-ad3e-421e-8fd2-86cd5516d3a2",
-                "image": "https:\/\/images-assets.nasa.gov\/image\/2011-3753\/2011-3753~thumb.jpg",
-                "tags": "hax"
-            }
-        },
-        {
-            "id": "item-1235ea3a-9254-4b93-8df3-8909fddcce88",
-            "indent": 0,
-            "location": "pages\/item-1235ea3a-9254-4b93-8df3-8909fddcce88\/index.html",
-            "slug": "information-altruism-2-0",
-            "order": "1",
-            "parent": null,
-            "title": "Information Altruism 2.0",
-            "description": "",
-            "metadata": {
-                "created": 1698074988,
-                "updated": 1698074988,
-                "readtime": "7",
-                "contentDetails": {
-                    "headings": "6",
-                    "paragraphs": "18",
-                    "schema": [],
-                    "tags": {
-                        "p": "18",
-                        "h2": "3",
-                        "ul": "1",
-                        "ol": "2",
-                        "h3": "3"
-                    },
-                    "elements": "27"
-                }
-            }
-        },
-        {
-            "id": "item-25c16bd5-a817-4df1-b147-88e448309a4b",
-            "indent": 0,
-            "location": "pages\/item-25c16bd5-a817-4df1-b147-88e448309a4b\/index.html",
-            "slug": "abstractionism-1",
-            "order": "3",
-            "parent": null,
-            "title": "Abstractionism",
-            "description": "",
-            "metadata": {
-                "created": 1698074988,
-                "updated": 1698074988,
-                "readtime": "3",
-                "contentDetails": {
-                    "headings": "5",
-                    "paragraphs": "35",
-                    "schema": [],
-                    "tags": {
-                        "p": "35",
-                        "h2": "5"
-                    },
-                    "elements": "40"
-                }
-            }
+          ],
+          "tags": {
+            "p": "18",
+            "video-player": "1",
+            "multiple-choice": "1",
+            "grid-plate": "1"
+          },
+          "elements": "21"
         }
-        
-    ]
+      }
+    },
+    {
+      "id": "header",
+      "indent": 0,
+      "location": "pages/header/index.html",
+      "slug": "the-climb-1",
+      "order": "0",
+      "parent": null,
+      "title": "The Climb",
+      "description": "",
+      "metadata": {
+        "created": 1698074988,
+        "updated": 1698074988,
+        "readtime": "7",
+        "published": true,
+        "hideInMenu": true,
+        "contentDetails": {
+          "headings": "1",
+          "paragraphs": "19",
+          "schema": [],
+          "tags": {
+            "p": "19",
+            "lrndesign-blockquote": "1",
+            "ol": "1",
+            "video-player": "1",
+            "h2": "1",
+            "ul": "1",
+            "grid-plate": "1"
+          },
+          "elements": "25"
+        },
+        "files": [
+          {
+            "path": "/var/www/html/sites/btopro/files/edtechjoker.gif",
+            "fullUrl": "/sites/btopro/files/edtechjoker.gif",
+            "url": "files/edtechjoker.gif",
+            "type": "image/gif",
+            "name": "edtechjoker.gif",
+            "size": "838403"
+          },
+          {
+            "path": "/var/www/html/sites/btopro/files/edtechjoker.jpg",
+            "fullUrl": "/sites/btopro/files/edtechjoker.jpg",
+            "url": "files/edtechjoker.jpg",
+            "type": "image/jpeg",
+            "name": "edtechjoker.jpg",
+            "size": "68012"
+          },
+          {
+            "fullUrl": "/sites/btopro/files/PXL_20220729_131000960.jpg",
+            "url": "files/PXL_20220729_131000960.jpg",
+            "type": "image/jpeg",
+            "name": "PXL_20220729_131000960.jpg",
+            "size": 138328
+          }
+        ]
+      }
+    },
+    {
+      "id": "footerPrimary",
+      "indent": 0,
+      "location": "pages/footerPrimary/index.html",
+      "slug": "keep-moving-week-0",
+      "order": "0",
+      "parent": null,
+      "title": "Keep moving: Week 0",
+      "description": "",
+      "metadata": {
+        "created": 1698074988,
+        "updated": 1698074988,
+        "readtime": "10",
+        "published": true,
+        "hideInMenu": true,
+        "contentDetails": {
+          "headings": "1",
+          "paragraphs": "6",
+          "schema": [],
+          "tags": {
+            "p": "6",
+            "ul": "2",
+            "h2": "1"
+          },
+          "elements": "9"
+        },
+        "files": [
+          {
+            "fullUrl": "/sites/btopro/files/1500x500.jpeg",
+            "url": "files/1500x500.jpeg",
+            "type": "image/jpeg",
+            "name": "1500x500.jpeg",
+            "size": 118690
+          },
+          {
+            "fullUrl": "/sites/btopro/files/mini-P1010017.JPG",
+            "url": "files/mini-P1010017.JPG",
+            "type": "image/jpeg",
+            "name": "mini-P1010017.JPG",
+            "size": 130121
+          }
+        ]
+      }
+    },
+    {
+      "id": "footerSecondary",
+      "indent": 0,
+      "location": "pages/footerSecondary/index.html",
+      "slug": "arrival",
+      "order": 0,
+      "parent": null,
+      "title": "Arrival",
+      "description": "Some decades, nothing happens. Other days, decades happen.That sentiment about sums up what the last few weeks have been like. As if everyone began to realize what we built, all at once, after years",
+      "metadata": {
+        "created": 1698076822,
+        "updated": 1698082821,
+        "images": [],
+        "videos": [
+          "https://youtu.be/iPGgdRGyUtM?si=tkME13Ni2qPOeTts",
+          "https://www.youtube.com/watch?v=G5yEgFIxzl0"
+        ],
+        "published": true,
+        "hideInMenu": true,
+        "locked": false,
+        "readtime": 4,
+        "relatedItems": "item-4a18ebe0-cf6a-49cd-9531-4c430ba2a9e0,item-1235ea3a-9254-4b93-8df3-8909fddcce88,item-e0c25c63-ad3e-421e-8fd2-86cd5516d3a2",
+        "image": "https://images-assets.nasa.gov/image/2011-3753/2011-3753~thumb.jpg",
+        "tags": "hax"
+      }
+    },
+    {
+      "id": "item-1235ea3a-9254-4b93-8df3-8909fddcce88",
+      "indent": 0,
+      "location": "pages/item-1235ea3a-9254-4b93-8df3-8909fddcce88/index.html",
+      "slug": "information-altruism-2-0",
+      "order": "1",
+      "parent": null,
+      "title": "Information Altruism 2.0",
+      "description": "",
+      "metadata": {
+        "created": 1698074988,
+        "updated": 1698074988,
+        "readtime": "7",
+        "contentDetails": {
+          "headings": "6",
+          "paragraphs": "18",
+          "schema": [],
+          "tags": {
+            "p": "18",
+            "h2": "3",
+            "ul": "1",
+            "ol": "2",
+            "h3": "3"
+          },
+          "elements": "27"
+        }
+      }
+    },
+    {
+      "id": "item-25c16bd5-a817-4df1-b147-88e448309a4b",
+      "indent": 0,
+      "location": "pages/item-25c16bd5-a817-4df1-b147-88e448309a4b/index.html",
+      "slug": "abstractionism-1",
+      "order": "3",
+      "parent": null,
+      "title": "Abstractionism",
+      "description": "",
+      "metadata": {
+        "created": 1698074988,
+        "updated": 1698074988,
+        "readtime": "3",
+        "contentDetails": {
+          "headings": "5",
+          "paragraphs": "35",
+          "schema": [],
+          "tags": {
+            "p": "35",
+            "h2": "5"
+          },
+          "elements": "40"
+        }
+      }
+    }
+  ]
 }

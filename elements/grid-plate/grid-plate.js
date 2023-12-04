@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {

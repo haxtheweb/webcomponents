@@ -440,7 +440,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   static get tag() {
     return "haxcms-site-editor-ui";
   }
-  
+
   _expandSettingsPanel(e) {
     this.shadowRoot.querySelector("#content-edit").click();
   }
@@ -456,15 +456,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       formData
     );
     if (response && response.data && response.data.contents) {
-      if (mode === 'appendChild') {
+      if (mode === "appendChild") {
         if (store.editMode === false) {
           store.editMode = true;
           setTimeout(async () => {
             let content = await HAXStore.activeHaxBody.haxToContent();
-            HAXStore.activeHaxBody.importContent(content + response.data.contents);              
+            HAXStore.activeHaxBody.importContent(
+              content + response.data.contents
+            );
           }, 100);
-        } 
-      }  
+        }
+      }
     }
   }
 
@@ -473,13 +475,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       store.editMode = true;
     }
     if (mode) {
-      const response = await MicroFrontendRegistry.call(
-        "@core/metadata",
-        { q: input }
-      );
-      if (response.data && (response.data['og:title'] || response.data.title)) {
+      const response = await MicroFrontendRegistry.call("@core/metadata", {
+        q: input,
+      });
+      if (response.data && (response.data["og:title"] || response.data.title)) {
         let values = {
-          title: response.data['og:title'] || response.data.title,
+          title: response.data["og:title"] || response.data.title,
           source: input,
         };
         HAXStore.insertLogicFromValues(values, this);
@@ -494,7 +495,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
       "jwt-logged-in": "_jwtLoggedIn",
-      "super-daemon-close": "sdCloseEvent"
+      "super-daemon-close": "sdCloseEvent",
     };
     this.rpgHat = "none";
     this.darkMode = false;
@@ -509,23 +510,25 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return true;
     };
     SuperDaemonInstance.keyHandlerCallback = () => {
-      const merlin = this.shadowRoot.querySelector('#merlin');
+      const merlin = this.shadowRoot.querySelector("#merlin");
       store.playSound("click");
       // modal shouldn't be possible but just in-case
       if (merlin.getAttribute("data-event") == "super-daemon-modal") {
         HAXStore.haxTray.collapsed = false;
-      }
-      else {
+      } else {
         SuperDaemonInstance.mini = true;
         SuperDaemonInstance.wand = true;
-        SuperDaemonInstance.activeNode = this.shadowRoot.querySelector('#merlin');
+        SuperDaemonInstance.activeNode =
+          this.shadowRoot.querySelector("#merlin");
       }
       SuperDaemonInstance.runProgram("", "*");
       return true;
     };
     // nothing message so we can suggest a link to make a suggestion
     SuperDaemonInstance.noResultsSlot = () => {
-      return html`<div class="no-results">Expecting to see an option Merlin didn't provide?</div>
+      return html`<div class="no-results">
+          Expecting to see an option Merlin didn't provide?
+        </div>
         <a
           @click="${(e) => {
             HAXStore._haxStoreContribute(
@@ -556,10 +559,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           // @todo we neeed to look deeper at the type of user action
           // executed in order to make this happen
           let results = [];
-          if (usAction.type === 'drop') {
-            switch(mimeTypeToName(usData.value)) {
-              case '.docx':
-              case '.doc':
+          if (usAction.type === "drop") {
+            switch (mimeTypeToName(usData.value)) {
+              case ".docx":
+              case ".doc":
                 // values for the drop even should be the file refeerence
                 console.log(values);
 
@@ -573,46 +576,49 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
                 // now, for another pattern we'll want to just insert and
                 // skip a lot of these steps.
-                results = [{
-                  title: "Insert 'doc' content as HTML",
-                  icon: "hax:hax2022",
-                  tags: ["agent"],
-                  value: {
-                    target: this,
-                    method: "processFileUpload",
-                    args: [values, 'appendChild'],
+                results = [
+                  {
+                    title: "Insert 'doc' content as HTML",
+                    icon: "hax:hax2022",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileUpload",
+                      args: [values, "appendChild"],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "HAX/agent/insert",
                   },
-                  eventName: "super-daemon-element-method",
-                  path: "HAX/agent/insert",
-                }];
-              break;
+                ];
+                break;
             }
-          }
-          else {
-            results = [{
-              title: "URL with page title",
-              icon: "hax:hax2022",
-              tags: ["agent"],
-              value: {
-                target: this,
-                method: "insertUrl",
-                args: [input, true],
+          } else {
+            results = [
+              {
+                title: "URL with page title",
+                icon: "hax:hax2022",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "insertUrl",
+                  args: [input, true],
+                },
+                eventName: "super-daemon-element-method",
+                path: "HAX/agent/insert",
               },
-              eventName: "super-daemon-element-method",
-              path: "HAX/agent/insert",
-            },
-            {
-              title: "Insert url alone",
-              icon: "hax:hax2022",
-              tags: ["agent"],
-              value: {
-                target: this,
-                method: "insertUrl",
-                args: [input, false],
+              {
+                title: "Insert url alone",
+                icon: "hax:hax2022",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "insertUrl",
+                  args: [input, false],
+                },
+                eventName: "super-daemon-element-method",
+                path: "HAX/agent/insert",
               },
-              eventName: "super-daemon-element-method",
-              path: "HAX/agent/insert",
-            }];
+            ];
           }
           return results;
         },
@@ -621,10 +627,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (HAXStore.ready) {
       // elements that are in HAXcms that are injected regardless of what editor says
       // because the CMS controls certain internal connectors
-      ["site-remote-content", "citation-element", "page-flag", "site-view", "site-collection-list", "collection-list", "collection-item"].map((name) => {
+      [
+        "site-remote-content",
+        "citation-element",
+        "page-flag",
+        "site-view",
+        "site-collection-list",
+        "collection-list",
+        "collection-item",
+      ].map((name) => {
         let el = document.createElement(name);
         HAXStore.haxAutoloader.appendChild(el);
-      })
+      });
 
       // links need to be given support for internal linkage updates on the form
       if (!HAXStore.primativeHooks.a) {
@@ -733,19 +747,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // try to evaluate typing in merlin
       if (
         UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn && 
+        UserScaffoldInstance.memory.isLoggedIn &&
         SuperDaemonInstance.programName === null &&
-        usAction.type === 'drag'
-        ) {
+        usAction.type === "drag"
+      ) {
         this.activeDrag = true;
         this.activeType = usData.value || usData.architype;
-      }
-      else if (
+      } else if (
         UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn && 
+        UserScaffoldInstance.memory.isLoggedIn &&
         SuperDaemonInstance.programName === null &&
-        usAction.type === 'dragleave'
-        ) {
+        usAction.type === "dragleave"
+      ) {
         this.activeDrag = false;
         this.activeType = null;
       }
@@ -1155,7 +1168,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             class="merlin"
             id="merlin"
             @click="${this.haxButtonOp}"
-            data-event="${this.responsiveSize === 'xs' ? 'super-daemon-modal' : 'super-daemon'}"
+            data-event="${
+              this.responsiveSize === "xs"
+                ? "super-daemon-modal"
+                : "super-daemon"
+            }"
             show-text-label
           ></simple-toolbar-button>
           <super-daemon-search
@@ -1169,7 +1186,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             id="search"
             voice-search
             class="merlin"
-            data-event="${this.responsiveSize === 'xs' ? 'super-daemon-modal' : 'super-daemon'}"
+            data-event="${
+              this.responsiveSize === "xs"
+                ? "super-daemon-modal"
+                : "super-daemon"
+            }"
             mini
             wand
             droppable-type="${this.activeType}"
@@ -1253,7 +1274,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     e.preventDefault();
     this.activeDrag = false;
     this.activeType = null;
-    SuperDaemonInstance.waveWand(['', "/", e, "hax-agent", "Agent"], this.shadowRoot.querySelector('#merlin'), "coin2");
+    SuperDaemonInstance.waveWand(
+      ["", "/", e, "hax-agent", "Agent"],
+      this.shadowRoot.querySelector("#merlin"),
+      "coin2"
+    );
   }
   dragenterEvent(e) {
     e.preventDefault();
@@ -1273,7 +1298,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // trap helps ensure user expectation of no input but without triggering
       // an input change event which activates things running
       this._ignoreReset = true;
-      this.sdSearch.value = '';
+      this.sdSearch.value = "";
     }, 0);
     this.sdSearch.disabled = false;
     this.sdSearch.dragover = false;
@@ -1289,11 +1314,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           const value = this.sdSearch.value;
           if (e.type === "value-changed") {
             if (value) {
-              SuperDaemonInstance.waveWand([value, "*"], this.shadowRoot.querySelector('#merlin'), null);
+              SuperDaemonInstance.waveWand(
+                [value, "*"],
+                this.shadowRoot.querySelector("#merlin"),
+                null
+              );
             }
-          }
-          else {
-            SuperDaemonInstance.waveWand([value, "*"], this.shadowRoot.querySelector('#merlin'), null);
+          } else {
+            SuperDaemonInstance.waveWand(
+              [value, "*"],
+              this.shadowRoot.querySelector("#merlin"),
+              null
+            );
           }
           // this will reset UX expectation but also trigger this to run again so need to
           // have weird loop above to ensure it's not going to affect it
@@ -1305,12 +1337,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           this.sdSearch.droppableType = null;
         }
         this._ignoreReset = false;
-      break;
+        break;
       case "super-daemon-modal":
         store.playSound("click");
         SuperDaemonInstance.open();
         HAXStore.haxTray.collapsed = false;
-      break;
+        break;
       case "media-program":
         store.playSound("click");
         SuperDaemonInstance.runProgram("sources");
@@ -1468,7 +1500,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           path: item.getAttribute("data-super-daemon-path"),
         });
       });
-    this.sdSearch = this.shadowRoot.querySelector('super-daemon-search');
+    this.sdSearch = this.shadowRoot.querySelector("super-daemon-search");
     SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector("#merlin");
     // load up commands for daemon
     SuperDaemonInstance.defineOption({

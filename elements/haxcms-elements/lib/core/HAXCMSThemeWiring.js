@@ -261,10 +261,16 @@ class HAXCMSThemeWiring {
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
       // we have a backend and we have a jwt, but didnt at onee point...
-      if (store.jwt && store.themeElement && store.cmsSiteEditorBackend.tag && store.themeElement.contentContainer && store.isLoggedIn) {
+      if (
+        store.jwt &&
+        store.themeElement &&
+        store.cmsSiteEditorBackend.tag &&
+        store.themeElement.contentContainer &&
+        store.isLoggedIn
+      ) {
         // this forces the connect callback to run which would have happened on intial spin up
         // it also ensures some slow loading environments will still get the editor
-        this.connect(store.themeElement, store.themeElement.contentContainer)
+        this.connect(store.themeElement, store.themeElement.contentContainer);
       }
       this.__disposer.push(reaction);
     });

@@ -39,7 +39,7 @@
     "serve": "cd demo && yarn start",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
-    "author": {
+  "author": {
     "name": "btopro"
   },
   "license": "Apache-2.0",

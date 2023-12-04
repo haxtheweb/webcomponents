@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "play-list",
-      "description": "`play-list`\n`scrollable component that accepts lightDom or data driven lists and generates a content player`\n\nAttributes:\n\n  * `items` {`any[]`} - \n\n  * `loop` {`boolean`} - \n\n  * `navigation` {`boolean`} - \n\n  * `pagination` {`boolean`} - \n\n  * `aspect-ratio` {`string`} - \n\n  * `slide` {`number`} - \n\n  * `orientation` {`string`} - \n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `loop` {`boolean`} - \n\n  * `navigation` {`boolean`} - \n\n  * `pagination` {`boolean`} - \n\n  * `aspectRatio` {`string`} - \n\n  * `slide` {`number`} - \n\n  * `orientation` {`string`} - \n\n  * `_observer` - ",
+      "description": "`play-list`\n`scrollable component that accepts lightDom or data driven lists and generates a content player`\n\nAttributes:\n\n  * `items` {`any[]`} - \n\n  * `loop` {`boolean`} - \n\n  * `edit` {`boolean`} - \n\n  * `navigation` {`boolean`} - \n\n  * `pagination` {`boolean`} - \n\n  * `aspect-ratio` {`string`} - \n\n  * `slide` {`number`} - \n\n  * `orientation` {`string`} - \n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `loop` {`boolean`} - \n\n  * `edit` {`boolean`} - \n\n  * `navigation` {`boolean`} - \n\n  * `pagination` {`boolean`} - \n\n  * `aspectRatio` {`string`} - \n\n  * `slide` {`number`} - \n\n  * `orientation` {`string`} - \n\n  * `_observer` - ",
       "attributes": [
         {
           "name": "items",
@@ -12,6 +12,11 @@
         {
           "name": "loop",
           "description": "`loop` {`boolean`} - \n\nProperty: loop\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
           "valueSet": "v"
         },
         {

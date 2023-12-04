@@ -40,17 +40,22 @@ class SiteActiveTags extends LitElement {
    * LitElement
    */
   render() {
-    return html`<div class="tag-wrap"></div>${this.tags && this.tags != ""
-      ? this.tags.split(",").map(
-          (tag) => html` <a @click="${this.testEditMode}" href="x/views?tags=${tag.trim()}">
-            <simple-tag
-              ?auto-accent-color="${this.autoAccentColor}"
-              value="${tag.trim()}"
-              accent-color="${this.accentColor}"
-            ></simple-tag>
-          </a>`
-        )
-      : ``}</div>`;
+    return html`<div class="tag-wrap"></div>${
+      this.tags && this.tags != ""
+        ? this.tags.split(",").map(
+            (tag) => html` <a
+              @click="${this.testEditMode}"
+              href="x/views?tags=${tag.trim()}"
+            >
+              <simple-tag
+                ?auto-accent-color="${this.autoAccentColor}"
+                value="${tag.trim()}"
+                accent-color="${this.accentColor}"
+              ></simple-tag>
+            </a>`
+          )
+        : ``
+    }</div>`;
   }
 
   testEditMode(e) {

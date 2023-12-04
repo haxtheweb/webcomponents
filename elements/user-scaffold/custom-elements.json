@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "user-scaffold",
-      "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`\n\nProperties:\n\n  * `stMemory` - \n\n  * `ltMemory` - \n\n  * `action` - ",
+      "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`\n\nProperties:\n\n  * `memory` - \n\n  * `debug` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `stMemory` - \n\n  * `ltMemory` - \n\n  * `action` - \n\n  * `data` - \n\n  * `active` {`boolean`} - ",
       "attributes": []
     }
   ],

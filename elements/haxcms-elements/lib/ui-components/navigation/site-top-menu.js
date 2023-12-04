@@ -67,7 +67,10 @@ class SiteTopMenu extends LitElement {
         }
         .wrapper {
           display: flex;
-          justify-content: var(--site-top-menu-wrapper-justify-content, space-evenly);
+          justify-content: var(
+            --site-top-menu-wrapper-justify-content,
+            space-evenly
+          );
           background-color: var(--site-top-menu-bg);
         }
         :host .wrapper ::slotted(div.spacing) {
@@ -91,7 +94,10 @@ class SiteTopMenu extends LitElement {
         button:focus,
         button:hover {
           color: var(--site-top-menu-link-color-hover);
-          background-color: var(--site-top-menu-link-bg-color-hover, transparent);
+          background-color: var(
+            --site-top-menu-link-bg-color-hover,
+            transparent
+          );
         }
         .active {
           color: var(--site-top-menu-link-active-color, #000000);
@@ -147,7 +153,7 @@ class SiteTopMenu extends LitElement {
             line-height: 32px;
             --simple-icon-width: 32px;
             --simple-icon-height: 32px;
-            padding: 8px;            
+            padding: 8px;
           }
           .mobiletitle {
             font-size: 24px;
@@ -158,8 +164,7 @@ class SiteTopMenu extends LitElement {
           .wrapper .mobile-button:hover {
             color: var(--site-top-menu-link-color-hover);
           }
-          .wrapper .mobile-button
-          .wrapper {
+          .wrapper .mobile-button .wrapper {
             display: block;
           }
           .link {
@@ -212,29 +217,37 @@ class SiteTopMenu extends LitElement {
           <span class="mobiletitle">${this.mobileTitle}</span>
         </simple-icon-button-lite>
         <ul class="link-list">
-        <slot name="prefix"></slot>
-        ${this.__items.map(
-          (item, index) => html`
-          ${(item.metadata.hideInMenu === true || item.metadata.published === false)  ? `` : html`
-            <li class="spacing">
-              <a
-                data-id="${item.id}"
-                class="link"
-                tabindex="-1"
-                title="Go to ${item.title}"
-                href="${item.slug}"
-                part="a"
-                itemprop="url"
-              >
-                <button id="item-${item.id}" part="button">
-                  <span class="link-index">${this.humanIndex(index)}</span>
-                  <span class="link-title" itemprop="name">${item.title}</span>
-                </button>
-              </a>
-            </li>
-          `} `
-        )}
-        <slot name="suffix"></slot>
+          <slot name="prefix"></slot>
+          ${this.__items.map(
+            (item, index) => html`
+              ${item.metadata.hideInMenu === true ||
+              item.metadata.published === false
+                ? ``
+                : html`
+                    <li class="spacing">
+                      <a
+                        data-id="${item.id}"
+                        class="link"
+                        tabindex="-1"
+                        title="Go to ${item.title}"
+                        href="${item.slug}"
+                        part="a"
+                        itemprop="url"
+                      >
+                        <button id="item-${item.id}" part="button">
+                          <span class="link-index"
+                            >${this.humanIndex(index)}</span
+                          >
+                          <span class="link-title" itemprop="name"
+                            >${item.title}</span
+                          >
+                        </button>
+                      </a>
+                    </li>
+                  `}
+            `
+          )}
+          <slot name="suffix"></slot>
         </ul>
       </div>
       <div id="indicator" part="indicator"></div>
@@ -332,7 +345,7 @@ class SiteTopMenu extends LitElement {
         type: Boolean,
         reflect: true,
         attribute: "mobile-menu-open",
-      }
+      },
     };
   }
   humanIndex(index) {

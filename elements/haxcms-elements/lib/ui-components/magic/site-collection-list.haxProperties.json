@@ -12,14 +12,7 @@
     "description": "A collection built off of data in the site manifest",
     "icon": "hax:idea",
     "color": "blue",
-    "tags": [
-      "Layout",
-      "smart",
-      "site",
-      "collection",
-      "list",
-      "items"
-    ],
+    "tags": ["Layout", "smart", "site", "collection", "list", "items"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -149,7 +142,14 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["editMode", "conditions", "sortObj", "results", "breakSmartCollection", "t"]
+    "unsetAttributes": [
+      "editMode",
+      "conditions",
+      "sortObj",
+      "results",
+      "breakSmartCollection",
+      "t"
+    ]
   },
   "documentation": {
     "howTo": null,
@@ -159,8 +159,7 @@
     {
       "tag": "site-collection-list",
       "content": "",
-      "properties": {
-      }
+      "properties": {}
     }
   ]
 }

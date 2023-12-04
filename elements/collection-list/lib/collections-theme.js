@@ -46,7 +46,6 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     )
   )
 ) {
-
   static get properties() {
     return {
       ...super.properties,
@@ -61,27 +60,27 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     return [
       ...super.HAXCMSGlobalStyleSheetEditModeContent(),
       css`
-      #bodycontainer ::slotted(*) {
-        font-family: "Roboto", sans-serif;
-        font-weight: 300;
-      }
-      #bodycontainer ::slotted(h1),
-      #bodycontainer ::slotted(h2),
-      #bodycontainer ::slotted(h3),
-      #bodycontainer ::slotted(h4),
-      #bodycontainer ::slotted(h5),
-      #bodycontainer ::slotted(h6) {
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
-      }
-      #bodycontainer ::slotted(p),
-      #bodycontainer ::slotted(ul),
-      #bodycontainer ::slotted(ol),
-      #bodycontainer ::slotted(blockquote) {
-        font-size: 18px;
-        margin-block-start: 16px;
-        margin-block-end: 16px;
-      }
+        #bodycontainer ::slotted(*) {
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+        }
+        #bodycontainer ::slotted(h1),
+        #bodycontainer ::slotted(h2),
+        #bodycontainer ::slotted(h3),
+        #bodycontainer ::slotted(h4),
+        #bodycontainer ::slotted(h5),
+        #bodycontainer ::slotted(h6) {
+          font-family: "Roboto", sans-serif;
+          font-weight: 400;
+        }
+        #bodycontainer ::slotted(p),
+        #bodycontainer ::slotted(ul),
+        #bodycontainer ::slotted(ol),
+        #bodycontainer ::slotted(blockquote) {
+          font-size: 18px;
+          margin-block-start: 16px;
+          margin-block-end: 16px;
+        }
       `,
     ];
   }
@@ -89,28 +88,27 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
-      collections-theme {
-        font-family: "Roboto", sans-serif;
-        font-weight: 300;
-      }
-      collections-theme h1,
-      collections-theme h2,
-      collections-theme h3,
-      collections-theme h4,
-      collections-theme h5,
-      collections-theme h6 {
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
-      }
-      collections-theme p,
-      collections-theme ul,
-      collections-theme ol,
-      collections-theme blockquote
-       {
-        font-size: 18px;
-        margin-block-start: 16px;
-        margin-block-end: 16px;
-      }
+        collections-theme {
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+        }
+        collections-theme h1,
+        collections-theme h2,
+        collections-theme h3,
+        collections-theme h4,
+        collections-theme h5,
+        collections-theme h6 {
+          font-family: "Roboto", sans-serif;
+          font-weight: 400;
+        }
+        collections-theme p,
+        collections-theme ul,
+        collections-theme ol,
+        collections-theme blockquote {
+          font-size: 18px;
+          margin-block-start: 16px;
+          margin-block-end: 16px;
+        }
       `,
     ];
   }
@@ -368,49 +366,54 @@ class CollectionsTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
-    <header itemtype="http://schema.org/WPHeader">
-      <site-region name="header"></site-region>
-    </header>
-    <nav id="nav" part="site-top-menu" itemtype="http://schema.org/SiteNavigationElement">
-      <site-top-menu
-      .part="${this.editMode ? `edit-mode-active` : ``}"
-      indicator="line"></site-top-menu>
-    </nav>
-    <collections-theme-banner
-      image="${this.image}"
-      sitename="${this.title}"
-      pagetitle="${this.activeTitle}"
-      logo="${this.logo}"
-    >
-    </collections-theme-banner>
-    <div id="haxcms-theme-top"></div>
-    <main>
-      <article
-        id="contentcontainer"
+      <header itemtype="http://schema.org/WPHeader">
+        <site-region name="header"></site-region>
+      </header>
+      <nav
+        id="nav"
+        part="site-top-menu"
+        itemtype="http://schema.org/SiteNavigationElement"
       >
-        <section id="slot">
-          <slot></slot>
-        </section>
-      </article>
-    </main>
-    <footer
+        <site-top-menu
+          .part="${this.editMode ? `edit-mode-active` : ``}"
+          indicator="line"
+        ></site-top-menu>
+      </nav>
+      <collections-theme-banner
+        image="${this.image}"
+        sitename="${this.title}"
+        pagetitle="${this.activeTitle}"
+        logo="${this.logo}"
+      >
+      </collections-theme-banner>
+      <div id="haxcms-theme-top"></div>
+      <main>
+        <article id="contentcontainer">
+          <section id="slot">
+            <slot></slot>
+          </section>
+        </article>
+      </main>
+      <footer
         itemtype="http://schema.org/WPFooter"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
-      <section class="footer">
-        <div class="wrap">
-          <div class="footer-secondary">
-            <slot name="footer-secondary"></slot>
-            <site-region name="footerSecondary"></site-region>
+        <section class="footer">
+          <div class="wrap">
+            <div class="footer-secondary">
+              <slot name="footer-secondary"></slot>
+              <site-region name="footerSecondary"></site-region>
+            </div>
+            <div class="footer-primary">
+              <slot name="footer-primary"></slot>
+              <site-region name="footerPrimary"></site-region>
+            </div>
           </div>
-          <div class="footer-primary">
-            <slot name="footer-primary"></slot>
-            <site-region name="footerPrimary"></site-region>
-          </div>
-        </div>
-      </section>
-      <scroll-button .part="${this.editMode ? `edit-mode-active` : ``}"></scroll-button>
-    </footer>
+        </section>
+        <scroll-button
+          .part="${this.editMode ? `edit-mode-active` : ``}"
+        ></scroll-button>
+      </footer>
     `;
   }
 
@@ -450,11 +453,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         "metadata.theme.variables.image",
         "assets/banner.jpg"
       );
-      this.logo = varGet(
-        manifest,
-        "metadata.site.logo",
-        "assets/banner.jpg"
-      );
+      this.logo = varGet(manifest, "metadata.site.logo", "assets/banner.jpg");
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
@@ -463,8 +462,13 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     });
   }
   _getColor(manifest) {
-    if (manifest && varExists(manifest, "metadata.theme.variables.cssVariable")) {
-      return manifest.metadata.theme.variables.cssVariable.replace('--simple-colors-default-theme-', '').replace('-7','');
+    if (
+      manifest &&
+      varExists(manifest, "metadata.theme.variables.cssVariable")
+    ) {
+      return manifest.metadata.theme.variables.cssVariable
+        .replace("--simple-colors-default-theme-", "")
+        .replace("-7", "");
     }
   }
 }
