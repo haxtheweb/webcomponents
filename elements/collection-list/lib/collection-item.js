@@ -20,12 +20,11 @@ class CollectionItem extends SimpleColors {
         type: Boolean,
         attribute: "auto-accent-color",
       },
-      editable: { type: Boolean },
     };
   }
   constructor() {
     super();
-    this.editable = true; // always editable unless something dictates we are not like a smart list..
+    this._haxstate = false;
     this.tags = null;
     this.saturate = false;
     this.url = null;
@@ -199,8 +198,8 @@ class CollectionItem extends SimpleColors {
 
   _handleClick(e) {
     if (
-      (this._haxstate && this.url) ||
-      (this.parentNode && this.parentNode.getAttribute("lock-items"))
+      this._haxstate ||
+      (this.parentNode && this.parentNode.getAttribute("lock-items") === "lock-items")
     ) {
       e.preventDefault();
       e.stopPropagation();
@@ -211,16 +210,8 @@ class CollectionItem extends SimpleColors {
   haxHooks() {
     return {
       editModeChanged: "haxeditModeChanged",
-      activeElementChanged: "haxactiveElementChanged",
     };
   }
-
-  haxactiveElementChanged(element, value) {
-    if (value) {
-      this._haxstate = value;
-    }
-  }
-
   haxeditModeChanged(value) {
     this._haxstate = value;
   }

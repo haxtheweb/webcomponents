@@ -2,6 +2,7 @@
   "api": "1",
   "type": "element",
   "editingElement": "core",
+  "hideDefaultSettings": true,
   "canScale": false,
   "canPosition": false,
   "canEditSource": true,
