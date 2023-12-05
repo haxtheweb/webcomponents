@@ -1194,6 +1194,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 ? "super-daemon-modal"
                 : "super-daemon"
             }"
+            ?hidden="${["xs"].includes(this.responsiveSize)}"
             mini
             wand
             droppable-type="${this.activeType}"

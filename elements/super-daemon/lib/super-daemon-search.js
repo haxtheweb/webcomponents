@@ -316,10 +316,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         :host([disabled]) {
           pointer-events: none;
         }
-        :host input {
-          display: inline-flex;
-          width: 100%;
-        }
         :host .icon {
           display: inline-flex;
           --simple-icon-height: 50px;
@@ -439,6 +435,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           }
           simple-fields-field {
             line-height: 20px;
+            width: 100px;
           }
           .search .icon {
             display: none;
