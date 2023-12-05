@@ -158,6 +158,7 @@ export class SiteCollectionList extends CollectionList {
         let clone = this.shadowRoot
           .querySelector("collection-list")
           .cloneNode(true);
+        clone.removeAttribute("lock-items"); // otherwise everything is locked
         this.parentNode.insertBefore(clone, this);
         // remove self after clone of root data so it's broken off
         setTimeout(() => {
