@@ -705,6 +705,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       delete: "Delete page",
       shareSite: "Share site",
       siteSettings: "Site settings",
+      themeSettings: "Theme settings",
+      seoSettings: "SEO settings",
+      authorSettings: "Author settings",
       close: "Close",
       settings: "Settings",
       edit: "Edit",
@@ -1542,7 +1545,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.siteSettings,
       icon: "hax:site-settings",
-      tags: ["CMS", "site", "settings", "operation", "command"],
+      tags: ["CMS", "site", "settings", "operation", "command", "theme", "seo", "author"],
       value: {
         target: this,
         method: "_manifestButtonTap",
@@ -1551,6 +1554,45 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "CMS",
       eventName: "super-daemon-element-method",
       path: "CMS/action/site/settings",
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.themeSettings,
+      icon: "hax:site-settings",
+      tags: ["CMS", "site", "settings", "operation", "command", "theme", "seo", "author"],
+      value: {
+        target: this,
+        method: "_manifestButtonTap",
+        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/site/settings/theme",
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.seoSettings,
+      icon: "hax:site-settings",
+      tags: ["CMS", "site", "settings", "operation", "command", "theme", "seo", "search", "engine"],
+      value: {
+        target: this,
+        method: "_manifestButtonTap",
+        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/site/settings/seo",
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.authorSettings,
+      icon: "hax:site-settings",
+      tags: ["CMS", "site", "settings", "operation", "command", "theme", "author"],
+      value: {
+        target: this,
+        method: "_manifestButtonTap",
+        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/site/settings/author",
     });
     SuperDaemonInstance.defineOption({
       title: this.t.shareSite,
