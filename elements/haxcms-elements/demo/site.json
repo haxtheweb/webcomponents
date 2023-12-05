@@ -32,7 +32,7 @@
       "static": {}
     },
     "theme": {
-      "element": "training-theme",
+      "element": "collections-theme",
       "path": "@lrnwebcomponents/training-theme/training-theme.js",
       "name": "training theme",
       "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",
@@ -41,7 +41,7 @@
         "imageAlt": "",
         "imageLink": "",
         "hexCode": "#e2801e",
-        "cssVariable": "--simple-colors-default-theme-orange-6",
+        "cssVariable": "--simple-colors-default-theme-blue-6",
         "icon": "av:add-to-queue"
       },
       "regions": {

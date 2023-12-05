@@ -243,11 +243,11 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           }
         }
         scroll-button {
-          --scroll-button-color: var(--haxcms-user-styles-color-theme-color-1);
-          --scroll-button-active-color: var(--haxcms-user-styles-color-theme-color-1, #e2801e);
-          --scroll-button-background-color: var(--haxcms-user-styles-color-theme-color-2, #e2801e);
-          --scroll-button-tooltip-background-color:var(--haxcms-user-styles-color-theme-color-1);
-          --scroll-button-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
+          --scroll-button-color: var(--bg-color);
+          --scroll-button-active-color: var(--nav-bg-color);
+          --scroll-button-background-color: var(--nav-bg-color);
+          --scroll-button-tooltip-background-color:var(--nav-link-color);
+          --scroll-button-tooltip-color: var(--bg-color);
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
           position: fixed;
