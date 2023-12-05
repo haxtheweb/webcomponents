@@ -7,6 +7,7 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
+import { EmailPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/EmailPageMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -35,10 +36,12 @@ import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/P
 class CleanOne extends HAXCMSRememberRoute(
   PrintBranchMixin(
     PDFPageMixin(
-      QRCodeMixin(
-        HAXCMSThemeParts(
-          HAXCMSUserStylesMenuMixin(
-            HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
+      EmailPageMixin(
+        QRCodeMixin(
+          HAXCMSThemeParts(
+            HAXCMSUserStylesMenuMixin(
+              HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
+            )
           )
         )
       )
@@ -235,6 +238,12 @@ class CleanOne extends HAXCMSRememberRoute(
            top: 0px;
            right: 16px;
            position: fixed;
+         }
+         :host([is-logged-in]) .pull-right {
+          margin-top: 48px;
+         }
+         #emailbtnwrapper {
+          display: inline-flex;
          }
          .main-content *,
          .main-content ::slotted(*) {
@@ -743,7 +752,8 @@ class CleanOne extends HAXCMSRememberRoute(
                     : ``}
                 </div>
                 <div class="pull-right">
-                  ${this.QRCodeButton()}
+                ${this.EmailPageButton()}
+                ${this.QRCodeButton()}
                   <site-rss-button
                     type="rss"
                     class="btn js-toolbar-action"

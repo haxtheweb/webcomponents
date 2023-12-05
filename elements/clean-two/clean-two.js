@@ -7,6 +7,7 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
+import { EmailPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/EmailPageMixin.js";
 import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
@@ -35,10 +36,12 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu
  */
 class CleanTwo extends HAXCMSOperationButtons(
   HAXCMSRememberRoute(
-    PDFPageMixin(
-      PrintBranchMixin(
-        QRCodeMixin(
-          HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+    EmailPageMixin(
+      PDFPageMixin(
+        PrintBranchMixin(
+          QRCodeMixin(
+            HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+          )
         )
       )
     )
@@ -159,6 +162,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           display: block;
           float: unset;
         }
+        .email-btn,
         .print-branch-btn simple-icon-button-lite,
         .pdf-page-btn simple-icon-button-lite {
           --simple-icon-height: 24px;
@@ -643,7 +647,8 @@ class CleanTwo extends HAXCMSOperationButtons(
                     import-method="view"
                     part="print-btn"
                   ></replace-tag>`}
-              ${this.QRCodeButton("right")}
+                ${this.EmailPageButton("right")}
+                ${this.QRCodeButton("right")}
               <replace-tag
                 with="site-rss-button"
                 type="rss"
