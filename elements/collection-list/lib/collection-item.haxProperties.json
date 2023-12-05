@@ -85,12 +85,6 @@
         "inputMethod": "colorpicker"
       },
       {
-        "property": "autoAccentColor",
-        "title": "Managed tag accent",
-        "description": "Automatically generate accent color for tags",
-        "inputMethod": "boolean"
-      },
-      {
         "property": "alt",
         "inputMethod": "alt",
         "title": "Alt",

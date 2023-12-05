@@ -455,6 +455,9 @@ class SuperDaemon extends SimpleColors {
           position: fixed !important;
           margin: auto;
         }
+        web-dialog super-daemon-ui {
+          --super-daemon-search-width: 100%;
+        }
         :host([resize="none"]) web-dialog[open].style-scope.simple-modal,
         :host([resize="horizontal"]) web-dialog[open].style-scope.simple-modal {
           top: calc(50% - var(--simple-modal-height, auto) / 2);

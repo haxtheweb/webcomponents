@@ -1343,9 +1343,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._ignoreReset = false;
         break;
       case "super-daemon-modal":
-        store.playSound("click");
-        SuperDaemonInstance.open();
-        HAXStore.haxTray.collapsed = false;
+        if (!this._ignoreReset || e.type === "click") {
+          store.playSound("click");
+          SuperDaemonInstance.open();
+          HAXStore.haxTray.collapsed = false;
+        }
         break;
       case "media-program":
         store.playSound("click");

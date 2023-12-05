@@ -16,10 +16,6 @@ class CollectionItem extends SimpleColors {
       line3: { type: String },
       saturate: { type: Boolean, reflect: true },
       tags: { type: String },
-      autoAccentColor: {
-        type: Boolean,
-        attribute: "auto-accent-color",
-      },
     };
   }
   constructor() {
@@ -34,7 +30,6 @@ class CollectionItem extends SimpleColors {
     this.line1 = null;
     this.line2 = null;
     this.line3 = null;
-    this.autoAccentColor = false;
     this.accentColor = null;
   }
 
@@ -172,7 +167,7 @@ class CollectionItem extends SimpleColors {
             ? html`<simple-tags
                 tags="${this.tags}"
                 accent-color="${this.accentColor}"
-                ?auto-accent-color="${this.autoAccentColor}"
+                auto-accent-color
               ></simple-tags>`
             : ``}
           <div
@@ -210,7 +205,14 @@ class CollectionItem extends SimpleColors {
   haxHooks() {
     return {
       editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
     };
+  }
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this._haxstate = value;
+    }
   }
   haxeditModeChanged(value) {
     this._haxstate = value;

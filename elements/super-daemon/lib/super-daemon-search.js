@@ -327,6 +327,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           --simple-icon-button-border-radius: 0;
           color: var(--simple-colors-default-theme-grey-10, grey);
           transition: color 0.6s ease-in-out;
+          margin: 0 16px 0 4px;
         }
         :host([mini]) .voice {
           --simple-icon-height: 24px;
@@ -386,7 +387,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           background-color: var(--simple-colors-default-theme-grey-1, white);
           line-height: normal;
           font-family: inherit;
-          width: 240px;
+          width: var(--super-daemon-search-width, 240px);
           margin: 4px 0 0 0;
           min-width: 100px;
           --simple-fields-background-color: transparent;
@@ -435,7 +436,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           }
           simple-fields-field {
             line-height: 20px;
-            width: 100px;
+            width: var(--super-daemon-search-width, 100px);
           }
           .search .icon {
             display: none;
