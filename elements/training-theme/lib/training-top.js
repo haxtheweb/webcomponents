@@ -1,16 +1,14 @@
 
 // import stuff
 import { LitElement, html, css } from "lit";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 
 export class TrainingTop extends LitElement {
   // defaults
   constructor() {
     super();
-    this.title = "";
-    this.presenter = "";
     this.id = "";
     this.time = "";
-   
   }
   // convention I enjoy using to define the tag's name
   static get tag() {
@@ -19,7 +17,6 @@ export class TrainingTop extends LitElement {
   // LitElement convention so we update render() when values change
   static get properties() {
     return {
-      title: { type: String },
       presenter: { type: String },
       id: { type: String },
       time: { type: String },
@@ -29,12 +26,28 @@ export class TrainingTop extends LitElement {
   static get styles() {
     return css`
       :host {
-        display: inline-flex;
+        display: block;
       }
       .wrapper {
         padding: 16px;
         background-color: #eeeeee;
       }
+
+      site-title {
+          color: black;
+          --site-title-link-h1-display: inline-block;
+          --site-title-link-display: flex;
+          --site-title-link-text-decoration: none;
+          --site-title-heading-font-family: var(
+            --__learn-two-theme-default-font-family
+          );
+          --site-title-heading-font-size: 32px;
+          --site-title-heading-margin: 0;
+          --site-title-heading-padding: 0;
+          --site-title-heading-text-align: center;
+          --site-title-heading-text-rendering: optimizelegibility;
+          --site-title-heading-font-weight: 100;
+        }
 
       #codelab-title {
         background: #fff;
@@ -47,12 +60,8 @@ export class TrainingTop extends LitElement {
         align-items: center;
         justify-content: space-between;
         height: 64px;
-        padding: 0 36px 0 16px;
-        z-index: 1000;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        padding: 0 0 0 16px;
+        width: 100%;
       }
 
       .title {
@@ -82,14 +91,7 @@ export class TrainingTop extends LitElement {
   render() {
     return html`
       <div id="codelab-title">
-        <h1 is-upgraded="" class="title">
-          <a
-            href="https://codelabs.developers.google.com/codelabs/the-lit-path?hl=en"
-            >From Web Component to Lit Element</a
-          >
-        </h1>
-    
-        <sl-icon class="stopwatch" style="margin-right:3px; font-size:20px; " name="stopwatch"></sl-icon>
+        <site-title icon="home" position="top"></site-title>
         <div class="codelab-time-container">
 
           <div
@@ -101,22 +103,6 @@ export class TrainingTop extends LitElement {
             ${this.time}
           </div>
         </div>    
-<div class="">
-  <div class="" id="gb">
-    <div class="" ng-non-bindable="" data-ogsr-up="" style="padding:0;height:auto;display:block">
-      <div class="" style="display:block">
-        <div class=""></div>
-        <div class="">
-          <div class="">
-            <a class="" aria-label="Google Account: Oj Akanbi (oakanbi13@gmail.com)" href="https://accounts.google.com/SignOutOptions?hl=en&amp;continue=https://codelabs.developers.google.com/_d/profile/ogb%3Fhl%3Den&amp;ec=GBRAywI" role="button" tabindex="0" id="devsite-signin-btn">
-              <img class="" style = "border-radius: 33px" href ="https://lh3.googleusercontent.com/ogw/AKPQZvzoUf_x8dNI-Nv_q2cF1O1_ZPavIMJqxzFvCMkRKg=s32-c-mo" srcset="https://lh3.googleusercontent.com/ogw/AKPQZvzoUf_x8dNI-Nv_q2cF1O1_ZPavIMJqxzFvCMkRKg=s32-c-mo 1x, https://lh3.googleusercontent.com/ogw/AKPQZvzoUf_x8dNI-Nv_q2cF1O1_ZPavIMJqxzFvCMkRKg=s64-c-mo 2x" alt="" aria-hidden="true" data-noaft="">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
       </div>
     `;

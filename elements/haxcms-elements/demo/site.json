@@ -32,7 +32,7 @@
       "static": {}
     },
     "theme": {
-      "element": "collections-theme",
+      "element": "training-theme",
       "path": "@lrnwebcomponents/training-theme/training-theme.js",
       "name": "training theme",
       "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",
@@ -70,7 +70,6 @@
       "title": "Why I started hax-camp",
       "description": "",
       "metadata": {
-        "image": "https://www.jerseymikes.com/media/static/logo.png",
         "created": 1698074988,
         "updated": 1698074988,
         "files": [

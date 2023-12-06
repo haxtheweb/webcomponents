@@ -1744,6 +1744,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "clean-two",
             "learn-two-theme",
             "polaris-theme",
+            "collections-theme",
+            "training-theme",
             "bootstrap-theme",
             "outline-player",
             "haxor-slevin",

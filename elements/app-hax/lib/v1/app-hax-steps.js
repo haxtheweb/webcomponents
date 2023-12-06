@@ -35,6 +35,7 @@ const themeContext = {
   blog: ["haxor-slevin"],
   course: ["clean-one", "clean-two", "learn-two-theme"],
   website: ["polaris-theme"],
+  training: ["training-theme"],
   import: ["clean-one", "clean-two", "learn-two-theme"],
 };
 export class AppHaxSteps extends SimpleColors {
@@ -130,6 +131,10 @@ export class AppHaxSteps extends SimpleColors {
       if (value === "website") {
         store.site.type = "own";
         store.site.theme = "polaris-theme";
+      }
+      if (value === "training") {
+        store.site.type = "own";
+        store.site.theme = "training-theme";
       }
       store.appEl.playSound("click2");
     }
@@ -1037,6 +1042,13 @@ export class AppHaxSteps extends SimpleColors {
           type="website"
         ></app-hax-button>`;
         break;
+      case "training":
+        template = html` <app-hax-button
+          tabindex="${step !== 2 ? "-1" : ""}"
+          @click=${this.chooseType}
+          type="training"
+        ></app-hax-button>`;
+        break;
       case "blog":
         template = html` <app-hax-button
           tabindex="${step !== 2 ? "-1" : ""}"
@@ -1174,6 +1186,12 @@ export class AppHaxSteps extends SimpleColors {
                   tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Course"
                   value="course"
+                  @click=${this.chooseStructure}
+                ></app-hax-site-button>
+                <app-hax-site-button
+                  tabindex="${this.step !== 1 ? "-1" : ""}"
+                  label="&gt; Training"
+                  value="training"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
                 <app-hax-site-button

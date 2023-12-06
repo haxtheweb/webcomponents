@@ -8,6 +8,8 @@ import { autorun, toJS } from "mobx";
 import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+
 /**
  * `site-title`
  * `Title of the site`
@@ -15,25 +17,31 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 
  * @demo demo/index.html
  */
-class SiteTitle extends HAXCMSI18NMixin(LitElement) {
+class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: block;
           text-rendering: optimizelegibility;
           position: relative;
           color: inherit;
+          --simple-icon-width: 32px;
+          --simple-icon-height: 32px;
         }
         a {
           color: inherit;
           display: var(--site-title-link-display, block);
           text-decoration: var(--site-title-link-text-decoration);
         }
+        simple-icon-lite {
+          margin-right: 8px;
+        }
         a h1 {
+          display: var(--site-title-link-h1-display, block);
           color: inherit;
           text-rendering: optimizelegibility;
           font-family: var(--site-title-heading-font-family);
@@ -43,6 +51,7 @@ class SiteTitle extends HAXCMSI18NMixin(LitElement) {
           text-align: var(--site-title-heading-text-align);
           text-rendering: var(--site-title-heading-text-rendering);
           font-weight: var(--site-title-heading-font-weight);
+          line-height: var(--site-title-heading-font-size);
         }
       `,
     ];
@@ -70,6 +79,16 @@ class SiteTitle extends HAXCMSI18NMixin(LitElement) {
       this.homeLink = toJS(store.homeLink);
       this.__disposer.push(reaction);
     });
+    autorun((reaction) => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+  }
+
+  _editClick(e) {
+    if (this.disabled || this.editMode) {
+      e.preventDefault();
+    }
   }
   /**
    * LitElement
@@ -79,13 +98,15 @@ class SiteTitle extends HAXCMSI18NMixin(LitElement) {
       <a
         href="${this.homeLink}"
         title="${this.t.home}"
-        ?disabled="${this.disabled}"
+        @click="${this._editClick}"
+        .part="${this.editMode ? `edit-mode-active` : ``}"
+        ?disabled="${this.disabled || this.editMode}"
       >
         <simple-icon-lite
           ?hidden="${this.icon ? false : true}"
           icon="${this.icon}"
         ></simple-icon-lite>
-        ${this.notitle ? html`` : html` <h1>${this.siteTitle}</h1> `}
+        ${this.notitle ? `` : html` <h1>${this.siteTitle}</h1> `}
       </a>
     `;
   }
@@ -93,9 +114,14 @@ class SiteTitle extends HAXCMSI18NMixin(LitElement) {
    * Props
    */
   static get properties() {
-    return {
+    return {...super.properties,
       disabled: {
         type: Boolean,
+        reflect: true,
+      },
+      editMode: {
+        type: Boolean,
+        attribute: 'edit-mode',
         reflect: true,
       },
       /**

@@ -311,6 +311,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         site-title {
           color: #fafafa;
           --site-title-link-display: inline-block;
+          --site-title-link-h1-display: inline-block;
           --site-title-link-text-decoration: none;
           --site-title-heading-font-family: var(
             --__learn-two-theme-default-font-family

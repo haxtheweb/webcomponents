@@ -1,14 +1,23 @@
 
 // import stuff
 import { LitElement, html, css } from "lit";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
+import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 
-export class TrainingButton extends LitElement {
+export class TrainingButton extends HAXCMSThemeParts(LitElement) {
   // defaults
   constructor() {
     super();
     this.title = "";
-    this.id = "";
+    this.disabled = false;
     this.index = null;
+    this.active = false;
+    this.slug = null;
+    autorun((reaction) => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
   }
   // convention I enjoy using to define the tag's name
   static get tag() {
@@ -16,46 +25,48 @@ export class TrainingButton extends LitElement {
   }
   // LitElement convention so we update render() when values change
   static get properties() {
-    return {
+    return {...super.properties,
       title: { type: String },
-      id: { type: String },
       index: { type: Number },
+      slug: { type: String },
+      editMode: { type: Boolean, reflect: true, attribute: 'edit-mode' },
+      active: { type: Boolean, reflect: true },
+      disabled: { type: Boolean, reflect: true },
     };
   }
 
   // LitElement convention for applying styles JUST to our element
   static get styles() {
-    return css`
+    return [...super.styles, css`
       :host {
         display: block;
-        /* margin: 16px;
-        padding: 16px; */
+        margin: 8px 0px;
       }
-      .wrapper {
-        /* font-size: larger; */
+      button {
+        border: 1px solid rgb(218, 220, 224);
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
         text-decoration: none;
+        cursor: pointer;
         display: flex;
         -webkit-box-align: center;
         align-items: center;
-        /* font-size: 100px; */
         color: rgb(128, 134, 139);
+        background-color: transparent;
         min-height: 52px;
         font-weight: bold;
         line-height: 20px;
         box-sizing: content-box;
+        width: 100%;
         position: relative;
+        margin: 0;
+        padding: 0;
         font-family: Roboto, Noto, sans-serif;
         -webkit-font-smoothing: antialiased;
-        transition: all 0.3s ease-in-out 0s;
-        border: 1px solid rgb(218, 220, 224);
-        border-radius: 5px;
-        margin: 4px 17px;
-        background-color: rgb(255, 255, 255);
       }
       #title {
-        font-size: 14px;
-        align-items: center;
-        margin: auto -2px;
+        font-size: 13px;
+        text-align: left;
         font-weight: normal;
       }
 
@@ -79,46 +90,51 @@ export class TrainingButton extends LitElement {
         align-items: center;
         justify-content: center;
       }
+      a,button {
+        text-decoration: none;
+      }
 
-      .wrapper:active {
+      :host([disabled]) {
+        background-color: #dddddd;
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.8;
+      }
+
+      button:hover,
+      button:focus,
+      button:active {
+        border: 1px solid grey;
+        color: black;
+      }
+
+      :host([active]) button {
+        color: white;
         background-color: #1a73e8;
       }
-    `;
-  }
-
-  updated(changedProperties) {
-    // Course progression
-    if (changedProperties.has("index") && this.index !== null) {
-      const dot = this.shadowRoot.querySelector(".dot");
-      const id = this.shadowRoot.querySelector("#title");
-
-      if (parseInt(this.id) - 1 === this.index) {
-        id.style.fontWeight = "bold";
-      } else {
-        id.style.fontWeight = "normal";
-      }
-
-      if (parseInt(this.id) - 1 <= this.index) {
-        dot.style.backgroundColor = "#1a73e8";
-        id.style.color = "black";
-      } else {
-        dot.style.backgroundColor = "rgb(128, 134, 140)";
-        id.style.color = "";
-      }
-    }
+    `];
   }
 
   // LitElement rendering template of your element
   render() {
     return html`
-      <div class="wrapper">
+    <a ?disabled="${this.disabled || this.editMode}" href="${this.slug}" tabindex="-1"
+    @click="${this._editClick}"
+        .part="${this.editMode ? `edit-mode-active` : ``}">
+      <button ?disabled="${this.disabled}" class="wrapper">
         <span class="dot">
           <div>${this.index}</div>
         </span>
         <span id="title">${this.title}</span>
         <slot></slot>
-      </div>
+      </button>
+    </a>
     `;
+  }
+  _editClick(e) {
+    if (this.disabled || this.editMode) {
+      e.preventDefault();
+    }
   }
 }
 
