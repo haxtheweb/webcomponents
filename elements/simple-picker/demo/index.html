@@ -41,7 +41,7 @@
       <h3>simple-picker as a Color-Picker</h3>
       <demo-snippet>
         <template>
-          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color"></simple-picker>
+          <simple-picker allow-null id="colorpicker" hide-option-labels label="Pick a Color"></simple-picker>
           <script>
             document.getElementById('colorpicker').options=[  
               [ 
@@ -61,7 +61,7 @@
         <template>
           <div id="icondemo">
             <label id="iconpicker-label">Pick an Icon: </label> 
-            <simple-picker id="iconpicker" align-right aria-labelledby="iconpicker-label" hide-option-labels value="search"></simple-picker>
+            <simple-picker allow-null id="iconpicker" align-right aria-labelledby="iconpicker-label" hide-option-labels value="search"></simple-picker>
             <script>
               document.getElementById('iconpicker').options=[ 
                 [ 

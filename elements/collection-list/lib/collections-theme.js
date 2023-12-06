@@ -457,6 +457,21 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
+      let activeItem = toJS(store.activeItem);
+      if (activeItem && activeItem.metadata && activeItem.metadata.image) {
+        this.image = activeItem.metadata.image;
+      }
+      else {
+        let manifest = toJS(store.manifest);
+        this.image = varGet(
+          manifest,
+          "metadata.theme.variables.image",
+          "assets/banner.jpg"
+        );
+      }
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
       this.activeTitle = toJS(store.activeTitle);
       this.__disposer.push(reaction);
     });

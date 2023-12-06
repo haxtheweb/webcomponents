@@ -44,7 +44,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^3.1.0"
+    "lit": "^3.1.0",
+    "mobx": "6.12.0",
+    "@lrnwebcomponents/simple-colors": "^7.0.18",
+    "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "@lrnwebcomponents/i18n-manager": "^7.0.18",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.18",
+    "@lrnwebcomponents/hax-iconset": "^7.0.18",
+    "@lrnwebcomponents/haxcms-elements": "^7.0.18"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.7.7",

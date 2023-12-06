@@ -1273,13 +1273,15 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
       document.body.appendChild(s);
       // give the web components a second to build
       setTimeout(function() {
-        var gaid = window.HAXCMS.requestAvailability().store.getManifest().metadata.site.settings.gaID || null;
-        if (gaid) {
-          gtag('config', gaid);
-          s.src = `https://www.googletagmanager.com/gtag/js?id=${gaid}`;
-        }
         document.querySelector('#loading').classList.add('loaded');
         setTimeout(function() {
+          if (window.HAXCMS.requestAvailability().store.getManifest()) {
+            var gaid = window.HAXCMS.requestAvailability().store.getManifest().metadata.site.settings.gaID || null;
+            if (gaid) {
+              gtag('config', gaid);
+              s.src = `https://www.googletagmanager.com/gtag/js?id=${gaid}`;
+            }
+          }
           document.querySelector('#loading').parentNode.removeChild(document.querySelector('#loading'));
           document.querySelector('#loadingstyles').parentNode.removeChild(document.querySelector('#loadingstyles'));
           document.querySelector('#loadingscript').parentNode.removeChild(document.querySelector('#loadingscript'));

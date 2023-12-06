@@ -1,10 +1,12 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
-export class BlockQuote extends LitElement {
+export class BlockQuote extends SimpleColors {
   static get properties() {
     return {
+      ...super.properties,
       citation: { type: String },
       image: { type: String },
       alt: { type: String },
@@ -12,7 +14,7 @@ export class BlockQuote extends LitElement {
   }
 
   static get haxProperties() {
-    return new URL("./block-quote.haxProperties.json", import.meta.url).href;
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 
   constructor() {
@@ -20,6 +22,7 @@ export class BlockQuote extends LitElement {
     this.citation = "";
     this.image = "";
     this.alt = "";
+    this.accentColor = 'grey';
   }
 
   render() {
@@ -57,18 +60,19 @@ export class BlockQuote extends LitElement {
     return "block-quote";
   }
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
+          background-color: var(--simple-colors-default-theme-accent-2, #f5f5f5);
+          color: var(--simple-colors-default-theme-accent-12, #000000);
           display: block;
         }
 
         #wrap {
           display: flex;
-          background-color: var(--block-quote-background-color, #f5f5f5);
+          border-left-color: var( --simple-colors-default-theme-accent-3, #747474);
           border-left: solid;
           border-left-width: 8px;
-          border-left-color: var(--block-quote-border-color, #747474);
           padding: 25px;
         }
 
@@ -105,7 +109,7 @@ export class BlockQuote extends LitElement {
         }
 
         simple-icon-lite {
-          color: #747474;
+          color: var( --simple-colors-default-theme-accent-7, #747474);
           height: 30px;
           width: 30px;
         }
@@ -125,7 +129,7 @@ export class BlockQuote extends LitElement {
             margin: 0 auto 0;
             border: solid;
             border-width: 6px;
-            border-color: var(--block-quote-border-color, #747474);
+            border-color: var( --simple-colors-default-theme-accent-3, #747474);
             border-radius: 50%;
           }
         }

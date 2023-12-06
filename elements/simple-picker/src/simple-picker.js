@@ -6,6 +6,7 @@ import { LitElement, html, css, nothing } from "lit";
 import { cache } from "lit/directives/cache.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lit-labs/virtualizer";
 import "./lib/simple-picker-option.js";
 /**
    * `simple-picker`
@@ -99,6 +100,11 @@ const SimplePickerBehaviors = function (SuperClass) {
                 var(--simple-picker-sample-padding, 2px) * 2 +
                 var(--simple-picker-border-width, 1px) * 2
             );
+            min-height: var(--simple-picker-height);
+            max-height: var(--simple-picker-height);
+          }
+
+          lit-virtualizer {
             min-height: var(--simple-picker-height);
             max-height: var(--simple-picker-height);
           }
@@ -731,13 +737,17 @@ const SimplePickerBehaviors = function (SuperClass) {
     }
 
     _renderOptions(options) {
-      return html`${(options || []).map(
-        (row, rownum) => html`
-          <div class="row" ?hidden="${!this._isRowHidden(row)}">
-            ${Array.isArray(row) ? this._renderRow(row, rownum) : nothing}
-          </div>
-        `
-      )}`;
+      return html`
+      <lit-virtualizer
+        scroller
+        .items=${(options || [])}
+        .renderItem=${this.renderItem.bind(this)}
+      ></lit-virtualizer>`;
+    }
+    renderItem(row, rownum) {
+       return html`<div class="row" ?hidden="${!this._isRowHidden(row)}">
+      ${Array.isArray(row) ? this._renderRow(row, rownum) : nothing}
+      </div>`;
     }
     _isRowHidden(row) {
       return (
@@ -749,7 +759,7 @@ const SimplePickerBehaviors = function (SuperClass) {
       return html`${(row || []).map(
         (option, colnum) => html`
           <simple-picker-option
-            @option-focus="${this._handleOptionFocus}"
+            @option-focus="${this._handleOptionFocus.bind(this)}"
             @set-selected-option="${this._handleSetSelectedOption}"
             ?active="${`${this.__activeDesc}` === `option-${rownum}-${colnum}`}"
             ?hide-option-labels="${this.hideOptionLabels}"
@@ -777,6 +787,22 @@ const SimplePickerBehaviors = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "value") this._valueChanged(oldValue);
         if (propName === "options") this._optionsChanged(oldValue);
+        if (propName === "expanded" && this.shadowRoot && this.expanded) {
+          // delay to allow virtualizer to calculate how many
+          setTimeout(() => {
+            const virtualizer = this.shadowRoot.querySelector('lit-virtualizer');
+            if (virtualizer && virtualizer.querySelector('.row')) {
+              // gutter accounts for the scrollbar
+              let gutter = 24;
+              // if 1st item is null, we need to account for that when having multiple
+              // items in a single row              
+              if (!this.allowNull && ["SIMPLE-SYMBOL-PICKER", "SIMPLE-EMOJI-PICKER"].includes(this.tagName)) {
+                gutter = gutter + virtualizer.querySelector('.row').querySelector(":last-child").getBoundingClientRect().width;
+              }
+              virtualizer.style.width = parseInt(virtualizer.querySelector('.row').getBoundingClientRect().width + gutter) + "px";
+            }
+          }, 100);
+      }
       });
       /**
        * Fires when properties change
