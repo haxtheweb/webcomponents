@@ -950,7 +950,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
     updated(changedProperties) {
       super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {
+        changedProperties.forEach((oldValue, propName) => {          
         if (propName === "range") this._rangeChanged(this.range, oldValue);
         if (propName === "config") this.updateToolbar();
         if (propName === "editor") this._editorChange();

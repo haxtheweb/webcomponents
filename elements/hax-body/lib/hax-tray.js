@@ -412,6 +412,7 @@ class HaxTray extends I18NMixin(
         }
         #settingsform {
           margin: -8px -8px 0;
+          --a11y-collapse-padding-bottom: 100px;
           --simple-fields-field-margin: 12px;
           --a11y-collapse-heading-color: var(
             --simple-colors-default-theme-accent-12

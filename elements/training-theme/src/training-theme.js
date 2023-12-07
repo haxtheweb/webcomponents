@@ -132,6 +132,11 @@ class TrainingTheme extends HAXCMSOperationButtons(
           background: #f8f9fa;
         }
 
+        site-active-title h1 {
+          border-left: 4px solid blue;
+          padding-left: 4px;
+        }
+
         site-menu-button[type="prev"] {
           border-radius: 4px;
           font-family:

@@ -41,17 +41,17 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
       :host {
         display: block;
         margin: 8px 0px;
+        border: 2px solid rgb(218, 220, 224);
+        border-radius: 4px;
       }
       button {
-        border: 1px solid rgb(218, 220, 224);
+        border: none;
         background-color: rgb(255, 255, 255);
-        border-radius: 5px;
         text-decoration: none;
         cursor: pointer;
         display: flex;
         -webkit-box-align: center;
         align-items: center;
-        color: rgb(128, 134, 139);
         background-color: transparent;
         min-height: 52px;
         font-weight: bold;
@@ -65,27 +65,27 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
         -webkit-font-smoothing: antialiased;
       }
       #title {
-        font-size: 13px;
+        font-size: 18px;
         text-align: left;
         font-weight: normal;
       }
 
       .dot div {
-        font-size: 15px;
+        font-size: 24px;
         align-items: center;
-        margin-left: 10px;
-        margin-top: auto;
-        margin-bottom: auto;
-        margin-right: 10px;
+        margin: auto 0px;
         color: white;
+        height: 32px;
+        line-height: 32px;
+        width: 32px;
       }
 
       .dot {
-        height: 25px;
-        width: 25px;
+        height: 32px;
+        width: 32px;
+        margin: 16px;
         background-color: rgb(128 134 140);
         border-radius: 50%;
-        margin: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -101,14 +101,21 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
         opacity: 0.8;
       }
 
-      button:hover,
-      button:focus,
-      button:active {
-        border: 1px solid grey;
+      :host:hover,
+      :host:focus-within,
+      :host:focus,
+      :host:active {
+        border: 2px solid grey;
         color: black;
       }
-
-      :host([active]) button {
+      :host([active])  {
+        border: 2px solid black;
+      }
+      :host([active]) .dot {
+        background-color: black;
+        color: white;
+      }
+      :host([active]) {
         color: white;
         background-color: #1a73e8;
       }

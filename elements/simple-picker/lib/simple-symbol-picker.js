@@ -26,6 +26,9 @@ class SimpleSymbolPicker extends SimplePickerBehaviors(LitElement) {
           line-height: 30px;
           width: 30px;
         }
+        simple-picker-option[part="sample-option"] {
+          --simple-picker-option-size: unset;
+        }
         #icon {
           margin-left: calc(-0.125 * var(--simple-picker-icon-size, 16px));
         }

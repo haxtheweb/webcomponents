@@ -32,7 +32,7 @@
       "static": {}
     },
     "theme": {
-      "element": "training-theme",
+      "element": "collections-theme",
       "path": "@lrnwebcomponents/training-theme/training-theme.js",
       "name": "training theme",
       "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",
@@ -367,6 +367,9 @@
         "created": 1698074988,
         "updated": 1698074988,
         "readtime": "7",
+        "theme": {
+          "element": "training-theme"
+        },
         "contentDetails": {
           "headings": "6",
           "paragraphs": "18",
