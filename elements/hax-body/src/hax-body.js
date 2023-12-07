@@ -1050,7 +1050,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (
       ["ArrowUp", "ArrowDown"].includes(e.key) &&
       this.activeNode &&
-      HAXStore.isTextElement(this.activeNode)
+      HAXStore.isTextElement(this.activeNode) &&
+      !SuperDaemonInstance.opened
     ) {
       let key = e.key;
       this[`timesClicked${key}`]++;

@@ -165,6 +165,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           width: 100%;
           padding: 16px 0px;
         }
+        :host([mini]) .results lit-virtualizer {
+          max-height: unset;
+          height: unset;
+        }
         .results lit-virtualizer {
           max-height: 50vh;
           width: 100%;
@@ -256,10 +260,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           display: none;
         }
         :host([mini]) .results {
-          padding: 40px 4px;
-          max-height: unset;
-          min-height: unset;
-          height: 200px;
+          padding: 0;
         }
       `,
     ];
@@ -413,6 +414,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
 
   // keydown when we have focus on the input field
   _inputKeydown(e) {
+    // @todo this needs to account for virtualizer so that we get the 1st and last item correctly
     if (this.filtered.length > 0) {
       switch (e.key) {
         case "Enter":
