@@ -2268,14 +2268,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   async _insertTextResult(text) {
     this.activeNode.focus();
     // @todo seems to insert at the end always
-    SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
-    SuperDaemonInstance.activeRange.collapse(true);
-    SuperDaemonInstance.activeSelection.removeAllRanges();
-    SuperDaemonInstance.activeSelection.addRange(
-      SuperDaemonInstance.activeRange
-    );
-    SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
-    SuperDaemonInstance.activeSelection.collapseToEnd();
+    if (SuperDaemonInstance.activeRange) {
+      SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
+      SuperDaemonInstance.activeRange.collapse(true);
+      SuperDaemonInstance.activeSelection.removeAllRanges();
+      SuperDaemonInstance.activeSelection.addRange(
+        SuperDaemonInstance.activeRange
+      );
+      SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
+      SuperDaemonInstance.activeSelection.collapseToEnd();
+    }
     setTimeout(() => {
       if (this.activeNode.textContent == "") {
         this.activeNode.textContent = text;

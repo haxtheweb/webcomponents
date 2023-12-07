@@ -75,7 +75,7 @@ export class SuperDaemonRow extends SimpleColors {
         }
         button {
           display: flex;
-          padding: 16px;
+          padding: 8px;
           width: 100%;
           border-radius: 0;
           color: var(--simple-colors-default-theme-accent-12, black);
@@ -101,8 +101,8 @@ export class SuperDaemonRow extends SimpleColors {
         }
         .result-image {
           display: inline-flex;
-          max-height: 64px;
-          max-width: 100px;
+          height: 64px;
+          width: 100px;
         }
         .result-textCharacter {
           display: inline-flex;
@@ -111,11 +111,12 @@ export class SuperDaemonRow extends SimpleColors {
           font-size: 42px;
         }
         :host([mini]) .result-image {
-          max-height: 32px;
-          max-width: 50px;
+          height: 32px;
+          width: 50px;
         }
         .label-wrap {
-          min-width: 80%;
+          margin-left: 16px;
+          min-width: 70%;
           overflow: hidden;
           text-align: left;
         }
@@ -124,7 +125,6 @@ export class SuperDaemonRow extends SimpleColors {
           margin-left: 12px;
         }
         .tags {
-          width: 30%;
           line-height: 32px;
           height: 64px;
           text-align: left;

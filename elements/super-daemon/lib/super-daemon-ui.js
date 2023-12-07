@@ -4,6 +4,7 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 import { autorun, toJS } from "mobx";
+import "@lit-labs/virtualizer";
 import "./super-daemon-row.js";
 import "./super-daemon-search.js";
 
@@ -20,8 +21,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       ...this.t,
       noResultsForThisTerm: this._defaultTextEmpty,
       voiceSearch: "Voice search",
-      filterCommands: "Filter commands",
-      commands: "Commands",
+      results: "Results",
       loadingResults: "Loading results",
     };
     this.opened = false;
@@ -153,38 +153,37 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           margin: 16px;
         }
         .results-stats {
-          right: 0;
-          position: absolute;
           font-size: 12px;
           color: var(--simple-colors-default-theme-grey-10, black);
           padding: 8px;
-          margin: 8px;
+          float: right;
         }
         :host([focused][wand]) .results {
           display: block;
         }
         .results {
           width: 100%;
-          display: block;
-          border: 2px solid var(--simple-colors-default-theme-grey-10, black);
+          padding: 16px 0px;
+        }
+        .results lit-virtualizer {
           max-height: 50vh;
-          min-height: 30vh;
-          overflow-y: scroll;
-          padding: 32px 0px;
+          width: 100%;
+          display: block;
+          height: 50vh;
+          border: 2px solid var(--simple-colors-default-theme-grey-10, black);
         }
         .results super-daemon-row {
           scroll-snap-align: start;
           scroll-snap-stop: always;
+          width: -webkit-fill-available;
         }
         .no-results {
           font-size: 32px;
           font-weight: bold;
-          max-width: 90%;
           word-break: break-all;
           overflow: hidden;
           line-height: 32px;
-          height: 32px;
-          margin: 16px auto;
+          margin: 32px;
           border: 1px solid transparent;
           box-shadow: none;
           outline: 0px;
@@ -251,6 +250,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         :host([mini]) super-daemon-row {
           --super-daemon-row-icon: 24px;
           border-radius: 0px;
+          margin: 4px;
         }
         :host([mini]) .results-stats {
           display: none;
@@ -533,11 +533,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         ?droppable="${this.activeDrag}"
       >
       </super-daemon-search>
-      <div class="results-stats">
-        ${this.filtered.length} / ${this.items.length} ${this.t.commands}
-      </div>
       <div
-        class="results"
+      class="results"
         @keydown="${this._resultsKeydown}"
         @super-daemon-row-selected="${this.itemSelected}"
       >
@@ -547,12 +544,14 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
               ${!this.filtered.length || this.filtered.length === 0
                 ? html`<div class="no-results">
                       ${this.t.noResultsForThisTerm}
+                      <div class="slotted"><slot></slot></div>
                     </div>
-                    <div class="slotted"><slot></slot></div>`
+                    `
                 : html`
-                    ${this.filtered.map(
-                      (item, i) => html`
-                        <super-daemon-row
+                    <lit-virtualizer
+                    scroller
+                    .items=${this.filtered}
+                    .renderItem=${(item, i) => item ? html`<super-daemon-row
                           data-row-index="${i}"
                           .value="${item.value}"
                           icon="${item.icon}"
@@ -566,11 +565,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                           ?more="${item.more && (!this.mini || this.wand)}"
                           ?mini="${this.mini}"
                           >${item.more ? item.more : nothing}</super-daemon-row
-                        >
-                      `
-                    )}
-                  `}
+                        >` : ``}
+                  ></lit-virtualizer>
+              `}
             `}
+        <div class="results-stats">
+          ${this.filtered.length} / ${this.items.length} ${this.t.results}
+        </div>
       </div>
       <div id="bottom"></div>
     `;
