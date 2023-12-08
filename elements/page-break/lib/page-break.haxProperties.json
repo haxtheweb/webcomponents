@@ -151,7 +151,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["t", "_hax-state", "element-visible", "noderefs"]
+    "unsetAttributes": ["t", "_hax-state", "element-visible", "noderefs", "style", "resource", "prefix"]
   },
   "demoSchema": [
     {
