@@ -122,7 +122,7 @@ class SuperDaemon extends SimpleColors {
     this.commandContext = "*";
     const isSafari = window.safari !== undefined;
     if (isSafari) {
-      this.key1 = "Ctrl";
+      this.key1 = "Meta";
     } else {
       this.key1 = "Alt";
     }
@@ -394,12 +394,16 @@ class SuperDaemon extends SimpleColors {
     // modifier required to activate
     if (this.allowedCallback()) {
       // open and close events
+      console.log(e);
       if (this.key2 == "Shift" && e.shiftKey) {
         // platform specific additional modifier
         if (this.key1 == "Ctrl" && e.ctrlKey) {
           this.opened = !this.opened;
           this.keyHandlerCallback();
         } else if (this.key1 == "Alt" && e.altKey) {
+          this.opened = !this.opened;
+          this.keyHandlerCallback();
+        } else if (this.key1 == "Meta" && (e.key === "Meta" || e.metaKey)) {
           this.opened = !this.opened;
           this.keyHandlerCallback();
         }
