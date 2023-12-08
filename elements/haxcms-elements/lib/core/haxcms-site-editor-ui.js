@@ -418,6 +418,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           simple-toolbar {
             --simple-toolbar-button-padding: 0px;
             justify-content: space-between;
+            background-color: white;
+            height: auto;
           }
           .characterbtn-name {
             padding: 0px;

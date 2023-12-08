@@ -175,6 +175,9 @@ class SimpleFieldsUpload extends I18NMixin(
           }
           #add-hidden {
             display: block;
+            float: right;
+            width: 100%;
+            margin: 0 0 16px 0;
           }
           vaadin-upload::part(file-list) {
             max-height: 48px;
@@ -286,7 +289,6 @@ class SimpleFieldsUpload extends I18NMixin(
             ${this.t.upload}..
           </button>
           <div
-            slot="drop-label"
             part="browse-area"
             ?hidden="${this.option == "selfie" ||
             this.option == "audio" ||
