@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "discord-embed",
+      "description": "`discord-embed`\n`widgetbot.io based embed widget for discord threads and channels`\n\n",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

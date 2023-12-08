@@ -544,10 +544,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     };
     SuperDaemonInstance.appendContext("CMS");
     SuperDaemonInstance.defineOption({
-      title: "Magic Wand",
+      title: "Magic File Wand",
       icon: "hax:hax2022",
       priority: -10000,
       tags: ["Agent", "help", "merlin"],
+      more: html`<span>Magic operations that involve files and operations that transform process</span>`,
       eventName: "super-daemon-run-program",
       path: "HAX/agent",
       value: {
