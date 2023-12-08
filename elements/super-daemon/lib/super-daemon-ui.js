@@ -361,8 +361,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("super-daemon-row")
           ) {
             this.shadowRoot
-              .querySelector("super-daemon-row:last-child")
+            .querySelector("lit-virtualizer").scrollToIndex(this.filtered.length-1, 'center');
+            requestAnimationFrame(() => {
+              this.shadowRoot
+              .querySelector("super-daemon-row:last-of-type")
               .focus();
+            });
           } else {
             this.shadowRoot
               .querySelector("super-daemon-row[active]")
@@ -374,9 +378,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           // allow wrap around
           if (
             this.shadowRoot.querySelector("super-daemon-row[active]") ===
-            this.shadowRoot.querySelector("super-daemon-row:last-child")
+            this.shadowRoot.querySelector("super-daemon-row:last-of-type")
           ) {
-            this.shadowRoot.querySelector("super-daemon-row").focus();
+            this.shadowRoot
+            .querySelector("lit-virtualizer").scrollToIndex(0, 'center');
+            requestAnimationFrame(() => {
+              this.shadowRoot.querySelector("super-daemon-row").focus();
+            });
           } else {
             this.shadowRoot
               .querySelector("super-daemon-row[active]")
@@ -414,24 +422,26 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
 
   // keydown when we have focus on the input field
   _inputKeydown(e) {
-    // @todo this needs to account for virtualizer so that we get the 1st and last item correctly
     if (this.filtered.length > 0) {
       switch (e.key) {
         case "Enter":
           this.shadowRoot.querySelector("super-daemon-row").selected();
           break;
         case "ArrowUp":
-          // @todo get focus on the row via an "active" parameter so we can just target that in the UI
           this.shadowRoot
-            .querySelector("super-daemon-row:last-child")
-            .shadowRoot.querySelector("button")
-            .focus();
+            .querySelector("lit-virtualizer").scrollToIndex(this.filtered.length-1, 'center');
+            requestAnimationFrame(() => {
+              this.shadowRoot
+              .querySelector("super-daemon-row:last-of-type")
+              .focus();
+            });
           break;
         case "ArrowDown":
           this.shadowRoot
-            .querySelector("super-daemon-row")
-            .shadowRoot.querySelector("button")
-            .focus();
+            .querySelector("lit-virtualizer").scrollToIndex(0, 'center');
+            requestAnimationFrame(() => {
+              this.shadowRoot.querySelector("super-daemon-row").focus();
+            });
           break;
       }
     }
