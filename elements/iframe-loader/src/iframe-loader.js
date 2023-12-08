@@ -53,6 +53,7 @@ export class IframeLoader extends LitElement {
   }
   constructor() {
     super();
+    this.invalidSource = false;
     this.disabled = false;
     this.loading = true;
     this.height = 500;
@@ -177,22 +178,24 @@ export class IframeLoader extends LitElement {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "source") {
-        if (this.__iframe) {
-          this.__iframe.setAttribute("src", this.source);
-        } else {
-          this.__iframe = document.createElement("iframe");
-          this.__iframe.setAttribute("width", this.width);
-          this.__iframe.setAttribute("height", this.height);
-          this.__mutationObserver.observe(this.__iframe, {
-            attributes: true,
-          });
-          this.__iframe.setAttribute("src", this.source);
-          this.appendChild(this.__iframe);
-        }
-      } else if (["height", "width"].includes(propName)) {
-        if (this.__iframe) {
-          this.__iframe.setAttribute(propName, this[propName]);
+      if (!this.invalidSource) {
+        if (propName === "source") {
+          if (this.__iframe) {
+            this.__iframe.setAttribute("src", this.source);
+          } else {
+            this.__iframe = document.createElement("iframe");
+            this.__iframe.setAttribute("width", this.width);
+            this.__iframe.setAttribute("height", this.height);
+            this.__mutationObserver.observe(this.__iframe, {
+              attributes: true,
+            });
+            this.__iframe.setAttribute("src", this.source);
+            this.appendChild(this.__iframe);
+          }
+        } else if (["height", "width"].includes(propName)) {
+          if (this.__iframe) {
+            this.__iframe.setAttribute(propName, this[propName]);
+          }
         }
       }
     });

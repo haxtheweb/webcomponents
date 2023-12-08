@@ -37,7 +37,7 @@ export const remoteLinkBehavior = function (SuperClass) {
         target.setAttribute("target", "_blank");
         target.setAttribute("rel", "noopener noreferrer");
       }
-      else {
+      else if (target) {
         target.removeAttribute("target");
         target.removeAttribute("rel");
       }
