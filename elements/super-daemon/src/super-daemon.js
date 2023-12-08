@@ -394,7 +394,6 @@ class SuperDaemon extends SimpleColors {
     // modifier required to activate
     if (this.allowedCallback()) {
       // open and close events
-      console.log(e);
       if (this.key2 == "Shift" && e.shiftKey) {
         // platform specific additional modifier
         if (this.key1 == "Ctrl" && e.ctrlKey) {

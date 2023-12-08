@@ -284,7 +284,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted([contenteditable][data-hax-ray][data-hax-active]:empty:not([data-instructional-action]))::before {
-          content: "Type '/' to add blocks";
+          content: "Type '/' for Merlin";
           opacity: 0.4;
           font-size: 18px;
         }

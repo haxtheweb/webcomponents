@@ -37,12 +37,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       filterCommands: "Filter commands",
       commands: "Commands",
     };
-    this.possibleActions = [
-      "🧙‍♂️ What are you trying to do?",
-      "💡 Type / in content to open 🧙‍♂️ Merlin",
-      "📁 Dragging 📄 files here to work",
-      "🕵 Type search to find 📺 media",
-    ];
+    this.possibleActions = [];
   }
   static get properties() {
     return {
@@ -50,6 +45,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       disabled: { type: Boolean, reflect: true },
       iconAccent: { type: String, attribute: "icon-accent" },
       voiceSearch: { type: Boolean, reflect: true, attribute: "voice-search" },
+      possibleActions: { type: Array },
       listeningForInput: {
         type: Boolean,
         reflect: true,
@@ -171,7 +167,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         .value="${this.value}"
         aria-controls="filter"
         label="${this.t.filterCommands}"
-        placeholder="${this.suggestPossibleAction(this.droppableType)}"
         type="text"
         auto-validate=""
         autofocus
@@ -188,7 +183,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         : ``}`;
   }
 
-  suggestPossibleAction(mimeType) {
+  suggestPossibleAction(mimeType = false) {
     if (!mimeType) {
       return this.randomOption(this.possibleActions);
     } else {
@@ -207,6 +202,14 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       : undefined;
   }
 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.shadowRoot.querySelector("#inputfilter").placeholder =
+      this.suggestPossibleAction();
+  }
+
   updated(changedProperties) {
     super.updated(changedProperties);
     if (changedProperties.has("focused")) {
@@ -218,6 +221,31 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           },
         })
       );
+    }
+    if (changedProperties.has("wand")) {
+      if (!this.wand) {
+        this.possibleActions = ["🔮 Insert blocks", "🕵 Find media 📺"];
+      } else {
+        const sdi = window.SuperDaemonManager.requestAvailability();
+        // open, then present slightly different options for engagement
+        if (sdi.opened) {
+          this.possibleActions = [
+            "🧑 Submit your ideas💡",
+            "📁 Drop files here 📄",
+            "🕵 Type what you want to do",
+          ];
+        } else {
+          this.possibleActions = [
+            `🧙‍♂️ ${sdi.key1} + ${sdi.key2} opens Merlin`,
+            "🔮 Click to do anything!",
+            "📁 Drop files here 📄",
+          ];
+        }
+      }
+    }
+    if (changedProperties.has("droppableType") && this.shadowRoot) {
+      this.shadowRoot.querySelector("#inputfilter").placeholder =
+        this.suggestPossibleAction(this.droppableType);
     }
     if (changedProperties.has("droppable") && !this.droppable) {
       this.dragover = false;

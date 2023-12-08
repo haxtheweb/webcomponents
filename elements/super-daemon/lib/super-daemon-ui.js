@@ -361,11 +361,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("super-daemon-row")
           ) {
             this.shadowRoot
-            .querySelector("lit-virtualizer").scrollToIndex(this.filtered.length-1, 'center');
+              .querySelector("lit-virtualizer")
+              .scrollToIndex(this.filtered.length - 1, "center");
             requestAnimationFrame(() => {
               this.shadowRoot
-              .querySelector("super-daemon-row:last-of-type")
-              .focus();
+                .querySelector("super-daemon-row:last-of-type")
+                .focus();
             });
           } else {
             this.shadowRoot
@@ -381,7 +382,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("super-daemon-row:last-of-type")
           ) {
             this.shadowRoot
-            .querySelector("lit-virtualizer").scrollToIndex(0, 'center');
+              .querySelector("lit-virtualizer")
+              .scrollToIndex(0, "center");
             requestAnimationFrame(() => {
               this.shadowRoot.querySelector("super-daemon-row").focus();
             });
@@ -429,19 +431,21 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           break;
         case "ArrowUp":
           this.shadowRoot
-            .querySelector("lit-virtualizer").scrollToIndex(this.filtered.length-1, 'center');
-            requestAnimationFrame(() => {
-              this.shadowRoot
+            .querySelector("lit-virtualizer")
+            .scrollToIndex(this.filtered.length - 1, "center");
+          requestAnimationFrame(() => {
+            this.shadowRoot
               .querySelector("super-daemon-row:last-of-type")
               .focus();
-            });
+          });
           break;
         case "ArrowDown":
           this.shadowRoot
-            .querySelector("lit-virtualizer").scrollToIndex(0, 'center');
-            requestAnimationFrame(() => {
-              this.shadowRoot.querySelector("super-daemon-row").focus();
-            });
+            .querySelector("lit-virtualizer")
+            .scrollToIndex(0, "center");
+          requestAnimationFrame(() => {
+            this.shadowRoot.querySelector("super-daemon-row").focus();
+          });
           break;
       }
     }
@@ -546,7 +550,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       >
       </super-daemon-search>
       <div
-      class="results"
+        class="results"
         @keydown="${this._resultsKeydown}"
         @super-daemon-row-selected="${this.itemSelected}"
       >
@@ -555,31 +559,35 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           : html`
               ${!this.filtered.length || this.filtered.length === 0
                 ? html`<div class="no-results">
-                      ${this.t.noResultsForThisTerm}
-                      <div class="slotted"><slot></slot></div>
-                    </div>
-                    `
+                    ${this.t.noResultsForThisTerm}
+                    <div class="slotted"><slot></slot></div>
+                  </div> `
                 : html`
                     <lit-virtualizer
-                    scroller
-                    .items=${this.filtered}
-                    .renderItem=${(item, i) => item ? html`<super-daemon-row
-                          data-row-index="${i}"
-                          .value="${item.value}"
-                          icon="${item.icon}"
-                          image="${item.image}"
-                          ?dark="${this.dark}"
-                          text-character="${item.textCharacter}"
-                          title="${item.title}"
-                          .tags="${item.tags}"
-                          event-name="${item.eventName}"
-                          path="${item.path}"
-                          ?more="${item.more && (!this.mini || this.wand)}"
-                          ?mini="${this.mini}"
-                          >${item.more ? item.more : nothing}</super-daemon-row
-                        >` : ``}
-                  ></lit-virtualizer>
-              `}
+                      scroller
+                      .items=${this.filtered}
+                      .renderItem=${(item, i) =>
+                        item
+                          ? html`<super-daemon-row
+                              data-row-index="${i}"
+                              .value="${item.value}"
+                              icon="${item.icon}"
+                              image="${item.image}"
+                              ?dark="${this.dark}"
+                              text-character="${item.textCharacter}"
+                              title="${item.title}"
+                              .tags="${item.tags}"
+                              event-name="${item.eventName}"
+                              path="${item.path}"
+                              ?more="${item.more && (!this.mini || this.wand)}"
+                              ?mini="${this.mini}"
+                              >${item.more
+                                ? item.more
+                                : nothing}</super-daemon-row
+                            >`
+                          : ``}
+                    ></lit-virtualizer>
+                  `}
             `}
         <div class="results-stats">
           ${this.filtered.length} / ${this.items.length} ${this.t.results}

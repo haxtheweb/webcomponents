@@ -213,23 +213,26 @@ export function mimeTypeToName(mimeType) {
     case 'mpeg':
       return '.mp3';
     case 'svg+xml':
-      return 'svg';
+      return '.svg';
+    case 'markdown':
+      return '.md';
     case 'plain':
       return 'text';
+    case 'text':
+      return '.txt';
     case 'rtf':
     case 'gif':
     case 'jpeg':
+    case 'jpg':
     case 'png':
     case 'webm':
     case 'webp':
     case 'html':
     case 'htm':
-    case 'text':
     case 'zip':
     case 'csv':
     case 'pdf':
     case 'mp4':
-    case 'markdown':
     return `.${data[1]}`;
   }
 
