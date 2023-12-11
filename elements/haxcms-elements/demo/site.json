@@ -46,6 +46,10 @@
       },
       "regions": {
         "header": ["header"],
+        "sidebarFirst": [],
+        "sidebarSecond": [],
+        "contentTop": [],
+        "contentBottom": [],
         "footerPrimary": ["footerPrimary"],
         "footerSecondary": ["footerSecondary"]
       }

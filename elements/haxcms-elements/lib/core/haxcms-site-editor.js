@@ -1151,7 +1151,15 @@ class HAXCMSSiteEditor extends LitElement {
   saveManifest(e) {
     // now let's work on the outline
     let values = e.detail; // if we have a cssVariable selected then generate a hexCode off of it
-
+    // regions translation to simplify submission
+    if (values.manifest.theme && values.manifest.theme.regions) {
+      Object.keys(values.manifest.theme.regions).forEach((key, index) => {
+        if (values.manifest.theme.regions[key] && values.manifest.theme.regions[key].length > 0) {
+          values.manifest.theme[key] = values.manifest.theme.regions[key].map(item => item.node ? item.node : null);
+        }
+      });
+      delete values.manifest.theme.regions;  
+    }
     if (values.cssVariable) {
       values.hexCode =
         window.SimpleColorsSharedStyles.colors[

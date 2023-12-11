@@ -89,6 +89,147 @@
                 "inputMethod": "iconpicker",
                 "required": false,
                 "icon": "icons:send"
+              },
+              {
+                "property": "regions",
+                "inputMethod": "fieldset",
+                "title": "Regions",
+                "description": "Settings related to themes that leverage content for pervasive display in their layout",    
+                "properties": [
+                  {
+                    "property": "manifest-metadata-theme-regions-header",
+                    "title": "Header",
+                    "description": "Page to use for the content of the 'header' region",
+                    "inputMethod": "array",
+                    "required": false,
+                    "itemLabel": "item",
+                    "hideReorder": true,
+                    "expanded": false,
+                    "hideDuplicate": true,
+                    "properties": [
+                      {
+                        "property": "node",
+                        "title": "Page",
+                        "inputMethod": "select",
+                        "itemsList": []
+                      }
+                    ]
+                  },
+                  {
+                    "property": "manifest-metadata-theme-regions-sidebarFirst",
+                    "title": "Sidebar first",
+                    "description": "Page to use for the content of the 'sidebar first' region",
+                    "inputMethod": "array",
+                    "required": false,
+                    "itemLabel": "item",
+                    "hideReorder": true,
+                    "expanded": false,
+                    "hideDuplicate": true,
+                    "properties": [
+                      {
+                        "property": "node",
+                        "title": "Page",
+                        "inputMethod": "select",
+                        "itemsList": []
+                      }
+                    ]
+                  },
+                  {
+                    "property": "manifest-metadata-theme-regions-sidebarSecond",
+                    "title": "Sidebar second",
+                    "description": "Page to use for the content of the 'sidebar second' region",
+                    "inputMethod": "array",
+                    "required": false,
+                    "itemLabel": "item",
+                    "hideReorder": true,
+                    "expanded": false,
+                    "hideDuplicate": true,
+                    "properties": [
+                      {
+                        "property": "node",
+                        "title": "Page",
+                        "inputMethod": "select",
+                        "itemsList": []
+                      }
+                    ]
+                  },
+                  {
+                    "property": "manifest-metadata-theme-regions-contentTop",
+                    "title": "Content top",
+                    "description": "Page to use for the content of the 'content top' region'",
+                    "inputMethod": "array",
+                    "required": false,
+                    "itemLabel": "item",
+                    "hideReorder": true,
+                    "expanded": false,
+                    "hideDuplicate": true,
+                    "properties": [
+                      {
+                        "property": "node",
+                        "title": "Page",
+                        "inputMethod": "select",
+                        "itemsList": []
+                      }
+                    ]
+                  },
+                  {
+                    "property": "manifest-metadata-theme-regions-contentBottom",
+                    "title": "Content bottom",
+                    "description": "Page to use for the content of the 'content bottom' region",
+                    "inputMethod": "array",
+                    "required": false,
+                    "itemLabel": "item",
+                    "hideReorder": true,
+                    "expanded": false,
+                    "hideDuplicate": true,
+                    "properties": [
+                      {
+                        "property": "node",
+                        "title": "Page",
+                        "inputMethod": "select",
+                        "itemsList": []
+                      }
+                    ]
+                  },
+                  {
+                    "property": "manifest-metadata-theme-regions-footerPrimary",
+                    "title": "Footer primary",
+                    "description": "Page to use for the content of the 'footer primary' region",
+                    "inputMethod": "array",
+                    "required": false,
+                    "itemLabel": "item",
+                    "hideReorder": true,
+                    "expanded": false,
+                    "hideDuplicate": true,
+                    "properties": [
+                      {
+                        "property": "node",
+                        "title": "Page",
+                        "inputMethod": "select",
+                        "itemsList": []
+                      }
+                    ]
+                  },
+                  {
+                    "property": "manifest-metadata-theme-regions-footerSecondary",
+                    "title": "Footer secondary",
+                    "description": "Page to use for the content of the 'footer secondary' region",
+                    "inputMethod": "array",
+                    "required": false,
+                    "itemLabel": "item",
+                    "hideReorder": true,
+                    "expanded": false,
+                    "hideDuplicate": true,
+                    "properties": [
+                      {
+                        "property": "node",
+                        "title": "Page",
+                        "inputMethod": "select",
+                        "itemsList": []
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -219,11 +360,30 @@
           "manifest-metadata-author-socialLink": "https://twitter.com/btopro"
         },
         "theme": {
-          "manifest-metadata-theme-element": "simple-blog",
-          "manifest-metadata-theme-variables-image": "assets/banner.jpg",
-          "manifest-metadata-theme-variables-hexCode": "#3a00ff",
-          "manifest-metadata-theme-variables-cssVariable": "indigo",
-          "manifest-metadata-theme-variables-icon": "icons:record-voice-over"
+          "manifest-metadata-theme-element": "haxor-slevin",
+          "manifest-metadata-theme-variables-image": "https://images-assets.nasa.gov/image/201106070074HQ/201106070074HQ~thumb.jpg",
+          "manifest-metadata-theme-variables-hexCode": "#aeff00",
+          "manifest-metadata-theme-variables-cssVariable": "pink",
+          "manifest-metadata-theme-variables-icon": "av:art-track",
+          "manifest-metadata-theme-variables-imageLink": null,
+          "manifest-metadata-theme-variables-imageAlt": "fgbhnfghfgh",
+          "regions": {
+              "manifest-metadata-theme-regions-header": [
+                {
+                    "node": "header"
+                }
+            ],
+              "manifest-metadata-theme-regions-sidebarFirst": null,
+              "manifest-metadata-theme-regions-sidebarSecond": null,
+              "manifest-metadata-theme-regions-contentTop": null,
+              "manifest-metadata-theme-regions-contentBottom": null,
+              "manifest-metadata-theme-regions-footerPrimary": [
+                {
+                    "node": "footerPrimary"
+                }
+            ],
+              "manifest-metadata-theme-regions-footerSecondary": null
+          }
         },
         "seo": {
           "manifest-metadata-site-settings-pathauto": null,

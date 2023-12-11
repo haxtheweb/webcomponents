@@ -112,6 +112,10 @@ class Store {
         // fallback juuuuust to be safe...
         regionData = {
           header: null,
+          sidebarFirst: null,
+          sidebarSecond: null,
+          contentTop: null,
+          contentBottom: null,
           footerPrimary: null,
           footerSecondary: null,
         };
@@ -633,6 +637,10 @@ class Store {
             },
             regions: {
               header: null,
+              sidebarFirst: null,
+              sidebarSecond: null,
+              contentTop: null,
+              contentBottom: null,
               footerPrimary: null,
               footerSecondary: null,
             },
