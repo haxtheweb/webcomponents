@@ -22,6 +22,7 @@ const hrefField = {
   description: "The URL to a resource.",
   required: true,
   inputMethod: "haxupload",
+  autofocus: true,
 };
 
 class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
@@ -57,6 +58,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       this.fields = [...super.fields, , hrefField];
     } else {
       this.fields = [
+        hrefField,
         {
           property: "innerHTML",
           title: "Text",
@@ -65,7 +67,6 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
           disabled: true,
           required: true,
         },
-        hrefField,
       ];
     }
     this.command = "createLink";
@@ -85,6 +86,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
 
   get defaultFields() {
     return [
+      hrefField,
       {
         property: "innerHTML",
         title: "Text",
@@ -93,7 +95,6 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
         disabled: true,
         required: true,
       },
-      hrefField,
     ];
   }
 

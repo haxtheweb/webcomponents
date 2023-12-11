@@ -2666,19 +2666,19 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       settings: {
         configure: [
           {
-            attribute: "innerText",
-            title: "Text",
-            description: "Text of the link",
-            inputMethod: "textfield",
-            required: true,
-          },
-          {
             attribute: "href",
             title: "Link",
             description: "The URL for the link",
             inputMethod: "haxupload",
             required: true,
             validationType: "url",
+          },
+          {
+            attribute: "innerText",
+            title: "Text",
+            description: "Text of the link",
+            inputMethod: "textfield",
+            required: true,
           },
           {
             attribute: "target",
