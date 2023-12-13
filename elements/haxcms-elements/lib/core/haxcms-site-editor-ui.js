@@ -447,63 +447,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.shadowRoot.querySelector("#content-edit").click();
   }
 
-  async processFileUpload(eventData, data, mode) {
-    enableServices(["core"]);
-    console.log(data);
-    let response = null;
-    let contents = '';
-    const file = eventData.dataTransfer.files[0];
-    // tee up as a form for upload
-    const formData = new FormData();
-    formData.append("upload", file);
-    await import('@lrnwebcomponents/file-system-broker/file-system-broker.js');
-    const broker = window.FileSystemBroker.requestAvailability();
-    switch (mimeTypeToName(data.value)) {
-      case ".docx":
-      case ".doc":
-        response = await MicroFrontendRegistry.call(
-          "@core/docxToHtml",
-          formData
-        );
-      break;
-      case ".md":
-      case ".txt":
-        contents = await broker.getFileContents("markdown");
-        response = await MicroFrontendRegistry.call("@core/mdToHtml", {
-          md: contents,
-        });
-      break;
-      // HTML we read directly from the file and just insert it
-      case ".html":
-      case ".htm":
-        contents = await broker.getFileContents("html");
-        response = {
-          data: {
-            contents: contents
-          }
-        };
-      break;
-    }
-    if (response && response.data && response.data.contents) {
-      if (mode === "appendChild") {
-        if (store.editMode === false) {
-          store.editMode = true;
-          setTimeout(async () => {
-            let content = await HAXStore.activeHaxBody.haxToContent();
-            HAXStore.activeHaxBody.importContent(
-              content + response.data.contents
-            );
-          }, 100);
-        }
-      }
-    }
-  }
-
   // a file needs to be selected via the program and then sub-program options presented
   selectFileToProcess() {
     import('@lrnwebcomponents/file-system-broker/file-system-broker.js').then(async (e) => {
       const broker = window.FileSystemBroker.requestAvailability();
-      const content = await broker.getFileContents("*");
+      const contents = await broker.getFileContents("*");
       const fileData = broker.fileHandler;
       let tmp = fileData.name.split('.');
       let type = '';
@@ -515,7 +463,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       SuperDaemonInstance.waveWand(
         ["", "/", {
           operation: 'file-selected',
-          contents: content,
+          contents: contents,
           data: fileData,
           type: type,
         }, "hax-agent", "Agent"],
@@ -525,9 +473,261 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
   }
 
-  // upload file and do what the user asked contextually
-  async processFileContentsBasedOnUserDesire(fileData, mode) {
+  // processing visualization
+  setProcessingVisual() {
+    let loadingIcon = document.createElement("simple-icon-lite");
+    loadingIcon.icon = "hax:loading";
+    loadingIcon.style.setProperty("--simple-icon-height", "40px");
+    loadingIcon.style.setProperty("--simple-icon-width", "40px");
+    loadingIcon.style.height = "150px";
+    loadingIcon.style.marginLeft = "8px";
+    store.toast(`Processing`, 5000, {
+      hat: "construction",
+      speed: 100,
+      walking: true,
+      slot: loadingIcon,
+    });
+  }
 
+  // upload file and do what the user asked contextually
+  async processFileContentsBasedOnUserDesire(values, mode) {
+    const usData = toJS(UserScaffoldInstance.data);
+    const e = usData.event;
+    this.setProcessingVisual();
+    switch (mode) {
+      // upload and possibly link/embed the item
+      case 'upload':
+      case 'link':
+      case 'insert-file':
+        if (mode === 'upload') {
+          // do the uploading
+          // confirm it went through
+          // put link in the dialog confirmation if desired to open in new window
+          try {
+            if (e.dataTransfer.items[0].kind === "file") {
+              e.placeHolderElement = null;
+              // fire this specialized event up so things like HAX can intercept
+              this.dispatchEvent(
+                new CustomEvent("place-holder-file-drop", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: e,
+                })
+              );
+            }
+          } catch (e) {}
+        }
+        else if (mode === 'link') {
+          // do the uploading
+          // take resulting upload 
+          // put in editMode if we have to
+          // insert link in bottom of page / below whatever is active
+          let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
+          try {
+            if (e.dataTransfer.items[0].kind === "file") {
+              e.placeHolderElement = p;
+              // fire this specialized event up so things like HAX can intercept
+              this.dispatchEvent(
+                new CustomEvent("place-holder-file-drop", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: e,
+                })
+              );
+            }
+          } catch (e) {}
+        }
+        else {
+          // upload
+          // take resulting upload 
+          // put in editMode if we have to
+          // insert result into bottom of page / active
+          // allowing hax to evaluate what type should be inserted (gizmoGuess)
+          let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
+          try {
+            if (e.dataTransfer.items[0].kind === "file") {
+              e.placeHolderElement = p;
+              // fire this specialized event up so things like HAX can intercept
+              this.dispatchEvent(
+                new CustomEvent("place-holder-file-drop", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: e,
+                })
+              );
+            }
+          } catch (e) {}
+        }
+      break;
+      case 'insert-html':
+      case 'create-sibling':
+      case 'create-child':
+      case 'create-branch':
+        let endpointCall = null;
+        let dataToPost = new FormData();
+        switch (values.type) {
+          case 'docx':
+          case 'doc':
+            dataToPost.append("upload", values.data); // should contain our file
+            // single file vs whole site processing
+            endpointCall = "@core/docxToHtml";
+            if (mode === 'create-branch') {
+              endpointCall = "@haxcms/docxToSite";
+            }
+          break;
+          case 'md':
+          case "txt":
+            endpointCall = "@core/mdToHtml";
+            dataToPost = {
+              md: values.contents
+            };
+          break;
+          case "html":
+          case "htm":
+            // take content directly
+          break;
+        }
+        // put in editMode if we have to
+        // insert result into bottom of page
+        let response = {};
+        
+        if (endpointCall) {
+          if (mode === "insert-html") {
+            response = await MicroFrontendRegistry.call(
+              endpointCall,
+              dataToPost
+            );
+            if (response.status == 200) {
+              // fake file event from built in method for same ux
+              this.insertElementsFromContentBlob(response.data.contents || response.data);
+            }
+          }
+          else if (['create-sibling', 'create-child'].includes(mode)) {
+            response = await MicroFrontendRegistry.call(
+              endpointCall,
+              dataToPost
+            );
+            if (response.status == 200) {
+              this.createNewNode(mode.replace('create-', ''), values.data.name, response.data.contents || response.data);
+            }
+          }
+          else {
+            dataToPost.append("method", 'branch');
+            dataToPost.append("type", 'branch');
+            const item = toJS(store.activeItem);
+            dataToPost.append("parentId", item.parent);
+            response = await MicroFrontendRegistry.call(
+              endpointCall,
+              dataToPost
+            );
+            // this is branch only
+            // went through for processing
+            if (response.status == 200) {
+              // fake file event from built in method for same ux
+              this.insertElementsFromContentBlob(response.data.contents || response.data);
+            }
+          }
+        }
+        else {
+          // implies HTML so just use the file without processing
+          // we don't support create-branch for this yet
+          if (mode !== 'create-branch') {
+            this.createNewNode(mode.replace('create-', ''), values.data.name, values.contents);
+          }
+        }
+      break;
+    }
+  }
+  // create node w/ title and contents passed in
+  createNewNode(type, title = "New page", contents = "<p></p>") {
+    let order = null;
+    let parent = null;
+    const item = toJS(store.activeItem);
+    if (item) {
+      if (type === "sibling") {
+        parent = item.parent;
+        order = parseInt(item.order) + 1;
+      } else if (type === "child") {
+        parent = item.id;
+        // @todo might need to check last child and add to end order wise there
+        order = 0;
+      }
+      else {
+        // API invoked incorrectly
+        parent = null;
+        order = 0;
+      }
+    }
+    if (title == "") {
+      title = "New page";
+    }
+    var payload = {
+      node: {
+        title: title,
+        location: "",
+        contents: contents,
+      },
+      order: order,
+      parent: parent,
+    };
+    // haxcms is in charge of making the node from here
+    this.dispatchEvent(new CustomEvent("haxcms-create-node", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        originalTarget: this,
+        values: payload,
+      },
+    }));
+  }
+
+  // insert content based on the contents we read from a file
+  // this will be under the active node
+  insertElementsFromContentBlob(content) {
+    let addToEnd = false;
+    // insert HTML needs to be editing the active page if its not in edit mode
+    if (store.editMode === false) {
+      store.editMode = true;
+      addToEnd = true;
+    }
+    else if (this.activeNode.hasAttribute("slot")) {
+      // test for slot on insert attempt
+      slot = this.activeNode.getAttribute("slot");
+    } 
+    const div = document.createElement('div');
+    div.innerHTML = content;
+
+    let slot = false;
+    // ensure we have a parent or we won't be able to insert beyond active and should just append to the bottom
+    if (!addToEnd && this.activeNode && this.activeNode.parentNode) {
+      for (var i = div.children.length - 1; i > 0; i--) {
+        if (slot) {
+          div.children[i].setAttribute("slot", slot);
+        }
+        this.activeNode.parentNode.insertBefore(
+          div.children[i],
+          this.activeNode.nextSibling
+        );
+      }
+    }
+    else {
+      // give initial setup time to process since we forced it into edit mode to be here
+      setTimeout(() => {
+        for (var i = div.children.length - 1; i > 0; i--) {
+          HAXStore.activeHaxBody.appendChild(
+            div.children[i]
+          );
+        }
+        setTimeout(() => {
+          HAXStore.activeHaxBody.scrollHere(this.activeNode);
+        }, 1000);
+      }, 100);
+    }
+    HAXStore.toast(this.t.contentImported);
   }
 
   // insert URL w/ variations in method
@@ -616,26 +816,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         machineName: "hax-agent",
         program: async (input, values) => {
           const usAction = toJS(UserScaffoldInstance.action);
-          const usData = toJS(UserScaffoldInstance.data);
           const usMemory = toJS(UserScaffoldInstance.memory);
+          const usData = toJS(UserScaffoldInstance.data);
           // @todo we neeed to look deeper at the type of user action
           // executed in order to make this happen
           let results = [];
-          console.log(usAction, usData, usMemory);
-          // @todo drop not working, need to be able to convert it to the file
-          // object work we use w/ broker so that it's easier to select
-          // and work with / reuse the below code for file selected
-          if (usAction.type === "drop") {
-            var file = values.dataTransfer.files[0];
-            reader = new FileReader();
-            console.log(reader);
-            reader.onload = async (e) => {
-              console.log(e.target.result);
-            };
-            console.log(reader.readAsDataURL(file));
-          }
           // file selected, so we are looping back around
-          else if (values.operation === "file-selected") {
+          if (values.operation === "file-selected") {
             switch (values.type) {
               case 'md':
               case 'docx':
@@ -673,20 +860,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       path: "Page created under current",
                     }
                   );
-                  results.push(
-                    {
-                      title: `Create outline from ${values.type}`,
-                      icon: "hax:site-map",
-                      tags: ["agent"],
-                      value: {
-                        target: this,
-                        method: "processFileContentsBasedOnUserDesire",
-                        args: [values, 'create-branch'],
-                      },
-                      eventName: "super-daemon-element-method",
-                      path: "H1,H2 tags create menu pages",
-                    }
-                  );
+                  // @todo only docx currently supports this though there's really no reason it can't
+                  // happen in other HTML structured data
+                  if (['docx', 'doc'].includes(values.type)) {
+                    results.push(
+                      {
+                        title: `Create outline from ${values.type}`,
+                        icon: "hax:site-map",
+                        tags: ["agent"],
+                        value: {
+                          target: this,
+                          method: "processFileContentsBasedOnUserDesire",
+                          args: [values, 'create-branch'],
+                        },
+                        eventName: "super-daemon-element-method",
+                        path: "H1,H2 tags create menu pages",
+                      }
+                    );
+                  }
                 }
                 results.push(
                   {
@@ -696,7 +887,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     value: {
                       target: this,
                       method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert'],
+                      args: [values, 'insert-html'],
                     },
                     eventName: "super-daemon-element-method",
                     path: "Content converted to HTML and inserted",
@@ -715,7 +906,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     value: {
                       target: this,
                       method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert'],
+                      args: [values, 'insert-file'],
                     },
                     eventName: "super-daemon-element-method",
                     path: "Image embedded in page",
@@ -731,7 +922,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     value: {
                       target: this,
                       method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert'],
+                      args: [values, 'insert-file'],
                     },
                     eventName: "super-daemon-element-method",
                     path: "PDF embedded in a frame element",
@@ -766,6 +957,27 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 eventName: "super-daemon-element-method",
                 path: "File uploaded for later use",
               }
+            );
+          }
+          else if (usAction.type === "drop" && values.type === "drop") {
+            const file = usData.file;
+            const contents = await file.text();
+            let tmp = file.name.split('.');
+            let type = '';
+            // don't assume there is a file extension
+            if (tmp.length > 1) {
+              type = tmp.pop();
+            }
+            // wand hands off for next part now that we've got a file selected
+            SuperDaemonInstance.waveWand(
+              ["", "/", {
+                operation: 'file-selected',
+                contents: contents,
+                data: file,
+                type: type,
+              }, "hax-agent", "Agent"],
+              this.shadowRoot.querySelector("#merlin"),
+              "coin2"
             );
           }
           // default actions when we have no context
@@ -923,6 +1135,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       logOut: "Log out",
       menu: "Menu",
       showMore: "More",
+      contentImported: "Content imported!",
     };
     this.backText = "Site list";
     this.painting = true;
@@ -1476,8 +1689,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.activeType = null;
     SuperDaemonInstance.waveWand(
       ["", "/", e, "hax-agent", "Agent"],
-      this.shadowRoot.querySelector("#merlin"),
-      "coin2"
+      this.shadowRoot.querySelector("#merlin")
     );
   }
   dragenterEvent(e) {

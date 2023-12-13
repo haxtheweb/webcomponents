@@ -203,21 +203,44 @@ export class UserScaffold extends HTMLElement {
   // dropping a file in implies certain capabilities
   userDropAction(e) {
     e.preventDefault();
-    if (
-      e.isTrusted &&
-      e.dataTransfer &&
-      e.dataTransfer.items &&
-      e.dataTransfer.items.length > 0
-    ) {
-      this.action = {
-        type: "drop",
-        architype: "input",
-      };
-      this.data = {
-        raw: e.dataTransfer.items[0].type,
-        value: e.dataTransfer.items[0].type,
-        architype: e.dataTransfer.items[0].kind,
-      };
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    if (e.isTrusted) {
+      if (e.dataTransfer.items) {
+        // Use DataTransferItemList interface to access the file(s)
+        [...e.dataTransfer.items].forEach((item, i) => {
+          // If dropped items aren't files, reject them
+          if (item.kind === "file") {
+            let file = item.getAsFile();
+            this.action = {
+              type: "drop",
+              architype: "input",
+            };
+            this.data = {
+              event: e,
+              file: file,
+              raw: e.dataTransfer.items[0].type,
+              value: e.dataTransfer.items[0].type,
+              architype: e.dataTransfer.items[0].kind,
+            };
+          }
+        });
+      } else {
+        // Use DataTransfer interface to access the file(s)
+        [...e.dataTransfer.files].forEach((file, i) => {
+          this.action = {
+            type: "drop",
+            architype: "input",
+          };
+          this.data = {
+            event: e,
+            file: file,
+            raw: e.dataTransfer.items[0].type,
+            value: e.dataTransfer.items[0].type,
+            architype: e.dataTransfer.items[0].kind,
+          };
+        });
+      }
     }
   }
   // dragging a file in implies certain capabilities

@@ -31,6 +31,7 @@ export class RPGCharacterToast extends SimpleToastEl {
     this.eventCallback = null;
     this.fire = false;
     this.hat = "coffee";
+    this.speed = 500;
     this.walking = false;
   }
 
@@ -172,6 +173,7 @@ export class RPGCharacterToast extends SimpleToastEl {
       fire: { type: Boolean },
       hat: { type: String },
       walking: { type: Boolean },
+      speed: { type: Number },
       /**
        * Opened state of the toast, use event to change
        */
@@ -260,6 +262,7 @@ export class RPGCharacterToast extends SimpleToastEl {
               seed="${this.userName}"
               ?fire="${this.fire}"
               hat="${this.hat}"
+              speed="${this.speed}"
               ?walking="${this.walking}"
             ></rpg-character>
           `}
@@ -328,6 +331,7 @@ export class RPGCharacterToast extends SimpleToastEl {
     this.hat = e.detail.hat ? e.detail.hat : "coffee";
     this.merlin = e.detail.merlin ? e.detail.merlin : false;
     this.walking = e.detail.walking ? e.detail.walking : false;
+    this.speed = e.detail.speed ? e.detail.speed : 500;
     this.text = e.detail.text ? e.detail.text : "Saved";
     this.future = e.detail.future ? e.detail.future : false;
     this.classStyle = e.detail.classStyle ? e.detail.classStyle : "";

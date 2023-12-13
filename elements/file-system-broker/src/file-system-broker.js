@@ -123,7 +123,7 @@ class FileSystemBroker extends HTMLElement {
     try {
       this.dirHandler = await window.showDirectoryPicker(options);
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
     this.files = [];
     this.files = await this.__readDir(
@@ -150,7 +150,7 @@ class FileSystemBroker extends HTMLElement {
         }
       }
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
     return "";
   }
@@ -176,7 +176,7 @@ class FileSystemBroker extends HTMLElement {
         }
       }
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
     return false;
   }
