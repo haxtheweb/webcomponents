@@ -28,7 +28,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.items = [];
     this.mini = false;
     this.wand = false;
-    this.loading = false;
+    this.loading = true;
     this.listeningForInput = false;
     this.programSearch = "";
     this.commandContext = "*";
@@ -147,8 +147,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           margin-top: 0px;
         }
         .loading {
-          font-size: 24px;
-          font-family: "Roboto Mono", monospace;
+          font-size: 12px;
           font-style: italic;
           margin: 16px;
         }
@@ -194,8 +193,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
         .slotted {
           display: block;
-          font-size: 16px;
-          line-height: 24px;
+          font-size: 12px;
+          line-height: 18px;
         }
         .slotted ::slotted(a) {
           color: var(--simple-colors-default-theme-grey-8, blue);
@@ -204,9 +203,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           cursor: pointer;
         }
         :host([mini]) .no-results {
-          font-size: 14px;
-          margin: 8px auto;
-          line-height: 14px;
+          margin: 16px;
         }
 
         @media screen and (max-width: 800px) {
@@ -272,6 +269,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "filtered" && typeof oldValue !== "undefined") {
+        if (this.filtered.length > 0) {
+          this.loading = false;
+        }
         const sdi = window.SuperDaemonManager.requestAvailability();
         if (sdi.santaMode || this.listeningForInput) {
           clearTimeout(this._selectTimeout);

@@ -110,6 +110,11 @@ export class SuperDaemonRow extends SimpleColors {
           max-width: 100px;
           font-size: 42px;
         }
+        :host([mini]) .result-textCharacter {
+          font-size: 20px;
+          height: 20px;
+          width: 20px;
+        }
         :host([mini]) .result-image {
           height: 32px;
           width: 50px;
@@ -183,6 +188,8 @@ export class SuperDaemonRow extends SimpleColors {
         details[open] {
           padding: 0 16px 16px 16px;
           animation: details-show 100ms ease-in-out;
+          line-height: 16px;
+          font-size: 12px;
         }
       `,
     ];

@@ -57,7 +57,7 @@ class SuperDaemon extends SimpleColors {
     // change theme program
     SuperDaemonInstance.defineOption({
       title: "Toggle Santa Mode",
-      icon: "settings-voice",
+      textCharacter: "🎅",
       tags: [
         "Developer",
         "government",

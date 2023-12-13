@@ -11,7 +11,7 @@ import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-b
  * @customElement
  * @lit-html
  * @lit-element
- * @extends RichTextEditorPromptButtonBehaviors
+ * @extends RichTextEditorPromptButtonyarnr Behaviors
  * @extends LitElement
  * @element rich-text-editor-link
  * @demo ./demo/buttons.html

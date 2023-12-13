@@ -447,16 +447,43 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.shadowRoot.querySelector("#content-edit").click();
   }
 
-  async processFileUpload(eventData, mode) {
+  async processFileUpload(eventData, data, mode) {
     enableServices(["core"]);
+    console.log(data);
+    let response = null;
+    let contents = '';
     const file = eventData.dataTransfer.files[0];
     // tee up as a form for upload
     const formData = new FormData();
     formData.append("upload", file);
-    const response = await MicroFrontendRegistry.call(
-      "@core/docxToHtml",
-      formData
-    );
+    await import('@lrnwebcomponents/file-system-broker/file-system-broker.js');
+    const broker = window.FileSystemBroker.requestAvailability();
+    switch (mimeTypeToName(data.value)) {
+      case ".docx":
+      case ".doc":
+        response = await MicroFrontendRegistry.call(
+          "@core/docxToHtml",
+          formData
+        );
+      break;
+      case ".md":
+      case ".txt":
+        contents = await broker.getFileContents("markdown");
+        response = await MicroFrontendRegistry.call("@core/mdToHtml", {
+          md: contents,
+        });
+      break;
+      // HTML we read directly from the file and just insert it
+      case ".html":
+      case ".htm":
+        contents = await broker.getFileContents("html");
+        response = {
+          data: {
+            contents: contents
+          }
+        };
+      break;
+    }
     if (response && response.data && response.data.contents) {
       if (mode === "appendChild") {
         if (store.editMode === false) {
@@ -472,6 +499,38 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
 
+  // a file needs to be selected via the program and then sub-program options presented
+  selectFileToProcess() {
+    import('@lrnwebcomponents/file-system-broker/file-system-broker.js').then(async (e) => {
+      const broker = window.FileSystemBroker.requestAvailability();
+      const content = await broker.getFileContents("*");
+      const fileData = broker.fileHandler;
+      let tmp = fileData.name.split('.');
+      let type = '';
+      // don't assume there is a file extension
+      if (tmp.length > 1) {
+        type = tmp.pop();
+      }
+      // wand hands off for next part now that we've got a file selected
+      SuperDaemonInstance.waveWand(
+        ["", "/", {
+          operation: 'file-selected',
+          contents: content,
+          data: fileData,
+          type: type,
+        }, "hax-agent", "Agent"],
+        this.shadowRoot.querySelector("#merlin"),
+        "coin2"
+      );
+    });
+  }
+
+  // upload file and do what the user asked contextually
+  async processFileContentsBasedOnUserDesire(fileData, mode) {
+
+  }
+
+  // insert URL w/ variations in method
   async insertUrl(input, mode) {
     if (store.editMode === false) {
       store.editMode = true;
@@ -550,52 +609,185 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       icon: "hax:hax2022",
       priority: -10000,
       tags: ["Agent", "help", "merlin"],
-      more: html`<span>Magic operations that involve files and operations that transform process</span>`,
       eventName: "super-daemon-run-program",
       path: "HAX/agent",
       value: {
         name: "Agent",
         machineName: "hax-agent",
-        program: (input, values) => {
+        program: async (input, values) => {
           const usAction = toJS(UserScaffoldInstance.action);
           const usData = toJS(UserScaffoldInstance.data);
+          const usMemory = toJS(UserScaffoldInstance.memory);
           // @todo we neeed to look deeper at the type of user action
           // executed in order to make this happen
           let results = [];
+          console.log(usAction, usData, usMemory);
+          // @todo drop not working, need to be able to convert it to the file
+          // object work we use w/ broker so that it's easier to select
+          // and work with / reuse the below code for file selected
           if (usAction.type === "drop") {
-            switch (mimeTypeToName(usData.value)) {
-              case ".docx":
-              case ".doc":
-                // values for the drop even should be the file refeerence
-                console.log(values);
-
-                //haxcms-create-node event with modifications
-                // should be able to support this operation.
-                // we hand off the file reference / event object
-                // and then replace the file picker selection event
-                // with this event and we should get the interaction pattern
-                // we're looking to rope into where it confirms first via
-                // outline design.
-
-                // now, for another pattern we'll want to just insert and
-                // skip a lot of these steps.
-                results = [
+            var file = values.dataTransfer.files[0];
+            reader = new FileReader();
+            console.log(reader);
+            reader.onload = async (e) => {
+              console.log(e.target.result);
+            };
+            console.log(reader.readAsDataURL(file));
+          }
+          // file selected, so we are looping back around
+          else if (values.operation === "file-selected") {
+            switch (values.type) {
+              case 'md':
+              case 'docx':
+              case 'doc':
+              case "txt":
+              case "html":
+              case "htm":
+                // only show options to make new content if we are NOT in edit mode
+                if (!usMemory.editMode) {
+                  results.push(
+                    {
+                      title: `New Sibling Page from ${values.type}`,
+                      icon: "hax:add-page",
+                      tags: ["agent"],
+                      value: {
+                        target: this,
+                        method: "processFileContentsBasedOnUserDesire",
+                        args: [values, 'create-sibling'],
+                      },
+                      eventName: "super-daemon-element-method",
+                      path: "Page created next to current",
+                    }
+                  );
+                  results.push(
+                    {
+                      title: `New Child Page from ${values.type}`,
+                      icon: "hax:add-child-page",
+                      tags: ["agent"],
+                      value: {
+                        target: this,
+                        method: "processFileContentsBasedOnUserDesire",
+                        args: [values, 'create-child'],
+                      },
+                      eventName: "super-daemon-element-method",
+                      path: "Page created under current",
+                    }
+                  );
+                  results.push(
+                    {
+                      title: `Create outline from ${values.type}`,
+                      icon: "hax:site-map",
+                      tags: ["agent"],
+                      value: {
+                        target: this,
+                        method: "processFileContentsBasedOnUserDesire",
+                        args: [values, 'create-branch'],
+                      },
+                      eventName: "super-daemon-element-method",
+                      path: "H1,H2 tags create menu pages",
+                    }
+                  );
+                }
+                results.push(
                   {
-                    title: "Insert 'doc' content as HTML",
-                    icon: "hax:hax2022",
+                    title: `Insert ${values.type} contents in Page`,
+                    icon: "hax:html-code",
                     tags: ["agent"],
                     value: {
                       target: this,
-                      method: "processFileUpload",
-                      args: [values, "appendChild"],
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, 'insert'],
                     },
                     eventName: "super-daemon-element-method",
-                    path: "HAX/agent/insert",
-                  },
-                ];
-                break;
+                    path: "Content converted to HTML and inserted",
+                  }
+                );
+              break;
+              case 'png':
+              case 'jpeg':
+              case 'gif':
+              case "jpg":
+                results.push(
+                  {
+                    title: `Insert ${values.type} in page`,
+                    icon: "editor:insert-photo",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, 'insert'],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "Image embedded in page",
+                  }
+                );
+              break;
+              case "pdf":
+                results.push(
+                  {
+                    title: `Embed ${values.type} in page`,
+                    icon: "hax:file-pdf",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, 'insert'],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "PDF embedded in a frame element",
+                  }
+                );
+              break;
             }
-          } else {
+            results.push(
+              {
+                title: `Link to ${values.type} file`,
+                icon: "editor:insert-link",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "processFileContentsBasedOnUserDesire",
+                  args: [values, 'link'],
+                },
+                eventName: "super-daemon-element-method",
+                path: "File uploaded and linked to",
+              }
+            );
+            results.push(
+              {
+                title: `Just Upload ${values.type} file`,
+                icon: "file-upload",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "processFileContentsBasedOnUserDesire",
+                  args: [values, 'upload'],
+                },
+                eventName: "super-daemon-element-method",
+                path: "File uploaded for later use",
+              }
+            );
+          }
+          // default actions when we have no context
+          else {
+            results = [
+              {
+                title: "Select file..",
+                icon: "folder-open",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "selectFileToProcess",
+                  args: [],
+                },
+                eventName: "super-daemon-element-method",
+                path: "Watch Merlin work his magic!",
+              }
+            ];
+            // this forces it to just happen
+            // and can be disabled later if we obtain different magic file operations
+            this.selectFileToProcess();
+            /*
             results = [
               {
                 title: "URL with page title",
@@ -622,6 +814,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 path: "HAX/agent/insert",
               },
             ];
+            */
           }
           return results;
         },
@@ -2030,6 +2223,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
+      UserScaffoldInstance.writeMemory("editMode", this.editMode);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {

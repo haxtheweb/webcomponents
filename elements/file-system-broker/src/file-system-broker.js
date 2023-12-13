@@ -66,6 +66,11 @@ class FileSystemBroker extends HTMLElement {
   typeToAccept(type) {
     let accept = {};
     switch (type) {
+      case "html":
+        accept = {
+          "text/html": [".html", ".htm"],
+        };
+        break;
       case "xls":
       case "xlsx":
       case "ods":
