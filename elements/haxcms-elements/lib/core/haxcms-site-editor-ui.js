@@ -503,20 +503,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           // do the uploading
           // confirm it went through
           // put link in the dialog confirmation if desired to open in new window
-          try {
-            if (e.dataTransfer.items[0].kind === "file") {
-              e.placeHolderElement = null;
-              // fire this specialized event up so things like HAX can intercept
-              this.dispatchEvent(
-                new CustomEvent("place-holder-file-drop", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: e,
-                })
-              );
-            }
-          } catch (e) {}
+          // fire this specialized event up so things like HAX can intercept
+          this.dispatchEvent(
+            new CustomEvent("hax-file-upload", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: {
+                file: values.data,
+                placeHolderElement: null
+              },
+            })
+          );
         }
         else if (mode === 'link') {
           // do the uploading
@@ -524,20 +522,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           // put in editMode if we have to
           // insert link in bottom of page / below whatever is active
           let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
-          try {
-            if (e.dataTransfer.items[0].kind === "file") {
-              e.placeHolderElement = p;
-              // fire this specialized event up so things like HAX can intercept
-              this.dispatchEvent(
-                new CustomEvent("place-holder-file-drop", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: e,
-                })
-              );
-            }
-          } catch (e) {}
+            // fire this specialized event up so things like HAX can intercept
+            this.dispatchEvent(
+              new CustomEvent("hax-file-upload", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: {
+                  file: values.data,
+                  placeHolderElement: p
+                }
+              })
+            );
         }
         else {
           // upload
@@ -546,20 +542,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           // insert result into bottom of page / active
           // allowing hax to evaluate what type should be inserted (gizmoGuess)
           let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
-          try {
-            if (e.dataTransfer.items[0].kind === "file") {
-              e.placeHolderElement = p;
-              // fire this specialized event up so things like HAX can intercept
-              this.dispatchEvent(
-                new CustomEvent("place-holder-file-drop", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: e,
-                })
-              );
-            }
-          } catch (e) {}
+          // fire this specialized event up so things like HAX can intercept
+          this.dispatchEvent(
+            new CustomEvent("hax-file-upload", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: {
+                file: values.data,
+                placeHolderElement: p
+              },
+            })
+          );
         }
       break;
       case 'insert-html':
