@@ -50,6 +50,7 @@
     "@lrnwebcomponents/simple-fields": "^7.0.18",
     "@lrnwebcomponents/simple-filter": "^7.0.18",
     "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "@lit-labs/virtualizer": "2.0.11",
     "lit": "^3.1.0",
     "@lrnwebcomponents/user-scaffold": "^7.0.18",
     "mobx": "6.12.0",
