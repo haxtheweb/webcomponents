@@ -77,7 +77,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["element-visible"]
+    "unsetAttributes": ["element-visible", "t"]
   },
   "demoSchema": [
     {

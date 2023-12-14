@@ -576,6 +576,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             endpointCall = "@core/docxToHtml";
             if (mode === 'create-branch') {
               endpointCall = "@haxcms/docxToSite";
+              dataToPost.append("method", 'branch');
+              dataToPost.append("type", 'branch');
+              // set parent to same as current page's parent
+              const item = toJS(store.activeItem);
+              dataToPost.append("parentId", item.parent);
             }
           break;
           case 'md':
@@ -605,36 +610,140 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               this.insertElementsFromContentBlob(response.data.contents || response.data);
             }
           }
-          else if (['create-sibling', 'create-child'].includes(mode)) {
-            response = await MicroFrontendRegistry.call(
-              endpointCall,
-              dataToPost
-            );
-            if (response.status == 200) {
-              this.createNewNode(mode.replace('create-', ''), values.data.name, response.data.contents || response.data);
-            }
-          }
           else {
-            dataToPost.append("method", 'branch');
-            dataToPost.append("type", 'branch');
-            const item = toJS(store.activeItem);
-            dataToPost.append("parentId", item.parent);
             response = await MicroFrontendRegistry.call(
               endpointCall,
               dataToPost
             );
-            // this is branch only
-            // went through for processing
             if (response.status == 200) {
-              // fake file event from built in method for same ux
-              this.insertElementsFromContentBlob(response.data.contents || response.data);
+              if (['create-sibling', 'create-child'].includes(mode)) {
+                this.createNewNode(mode.replace('create-', ''), values.data.name, response.data.contents || response.data);
+              }
+              else {
+                // must be a valid response and have at least SOME html to bother attempting
+                if ( response.data && response.data.contents != "") {
+                  // right here is where we need to interject our confirmation dialog
+                  // workflow. We can take the items that just came back and visualize them
+                  // using our outline / hierarchy visualization
+                  let reqBody = {};
+                  reqBody.items = response.data.items;
+                  await import(
+                    "@lrnwebcomponents/outline-designer/outline-designer.js"
+                  ).then(async (e) => {
+                    reqBody.jwt = toJS(store.jwt);
+                    reqBody.site = {
+                      name: toJS(store.manifest.metadata.site.name),
+                    };
+                    const outline = document.createElement("outline-designer");
+                    outline.items = response.data.items;
+                    outline.eventData = reqBody;
+                    outline.storeTools = true;
+
+                    const b1 = document.createElement("button");
+                    b1.innerText = "Confirm";
+                    b1.classList.add("hax-modal-btn");
+                    b1.addEventListener("click", async (e) => {
+                      const data = await outline.getData();
+                      let deleted = 0;
+                      let modified = 0;
+                      let added = 0;
+                      data.items.map((item) => {
+                        if (item.delete) {
+                          deleted++;
+                        } else if (item.new) {
+                          added++;
+                        } else if (item.modified) {
+                          modified++;
+                        }
+                      });
+                      let sumChanges = `${
+                        added > 0 ? `‣ ${added} new pages will be created\n` : ""
+                      }${
+                        modified > 0 ? `‣ ${modified} pages will be updated\n` : ""
+                      }${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ""}`;
+                      let confirmation = false;
+                      // no confirmation required if there are no tracked changes
+                      if (sumChanges == "") {
+                        confirmation = true;
+                      } else {
+                        confirmation = window.confirm(
+                          `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
+                        );
+                      }
+                      if (confirmation) {
+                        // @todo absolutely hate this solution. when we clean out the rats nest
+                        // that is iron-ajax calls in site-editor then we can simplify this action
+                        store.cmsSiteEditorAvailability().querySelector("#createajax").body = data;
+                        this.setProcessingVisual();
+                        // @todo absolutely hate this solution. when we clean out the rats nest
+                        // that is iron-ajax calls in site-editor then we can simplify this action
+                        store.cmsSiteEditorAvailability().querySelector("#createajax").generateRequest();
+                        const evt = new CustomEvent("simple-modal-hide", {
+                          bubbles: true,
+                          composed: true,
+                          cancelable: true,
+                          detail: {},
+                        });
+                        window.dispatchEvent(evt);
+                      }
+                    });
+                    const b2 = document.createElement("button");
+                    b2.innerText = "Cancel";
+                    b2.classList.add("hax-modal-btn");
+                    b2.classList.add("cancel");
+                    b2.addEventListener("click", (e) => {
+                      const evt = new CustomEvent("simple-modal-hide", {
+                        bubbles: true,
+                        composed: true,
+                        cancelable: true,
+                        detail: {},
+                      });
+                      window.dispatchEvent(evt);
+                    });
+                    // button container
+                    const div = document.createElement("div");
+                    div.appendChild(b1);
+                    div.appendChild(b2);
+
+                    this.dispatchEvent(
+                      new CustomEvent("simple-modal-show", {
+                        bubbles: true,
+                        cancelable: true,
+                        composed: true,
+                        detail: {
+                          title: "Confirm structure",
+                          elements: { content: outline, buttons: div },
+                          modal: true,
+                          styles: {
+                            "--simple-modal-titlebar-background": "transparent",
+                            "--simple-modal-titlebar-color": "black",
+                            "--simple-modal-width": "90vw",
+                            "--simple-modal-min-width": "300px",
+                            "--simple-modal-z-index": "100000000",
+                            "--simple-modal-height": "90vh",
+                            "--simple-modal-min-height": "400px",
+                            "--simple-modal-titlebar-height": "64px",
+                            "--simple-modal-titlebar-color": "black",
+                            "--simple-modal-titlebar-height": "80px",
+                            "--simple-modal-titlebar-background": "orange",
+                          },
+                        },
+                      })
+                    );
+                  });
+                }
+              }
             }
           }
         }
         else {
           // implies HTML so just use the file without processing
           // we don't support create-branch for this yet
-          if (mode !== 'create-branch') {
+          if (mode === "insert-html") {
+            this.insertElementsFromContentBlob(values.contents);
+          }
+          // @todo we may support create-branch in the future for non-docx paths but just in case we goof up for now
+          else if (mode !== 'create-branch') {
             this.createNewNode(mode.replace('create-', ''), values.data.name, values.contents);
           }
         }
@@ -642,17 +751,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
   // create node w/ title and contents passed in
-  createNewNode(type, title = "New page", contents = "<p></p>") {
+  async createNewNode(type, title = "New page", contents = "<p></p>") {
     let order = null;
     let parent = null;
     const item = toJS(store.activeItem);
     if (item) {
       if (type === "sibling") {
         parent = item.parent;
-        order = parseInt(item.order) + 1;
+        // same so its put right next to it
+        order = parseInt(item.order);
       } else if (type === "child") {
         parent = item.id;
-        // @todo might need to check last child and add to end order wise there
+        // find last child, or just be the 1st one.
+        let tmp = toJS(await store.getLastChildItem(item.id)).order;
+        order = 0;
+        if (tmp || tmp === 0) {
+          order = (tmp+1);
+        }
+      }
+      else if (type === "branch") {
+        parent = null;
         order = 0;
       }
       else {
@@ -724,8 +842,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         setTimeout(() => {
           HAXStore.activeHaxBody.scrollHere(this.activeNode);
+          setTimeout(() => {
+            HAXStore.activeHaxBody.scrollHere(this.activeNode);
+          }, 500);
         }, 1000);
-      }, 100);
+      }, 300);
     }
     HAXStore.toast(this.t.contentImported);
   }
@@ -818,8 +939,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           const usAction = toJS(UserScaffoldInstance.action);
           const usMemory = toJS(UserScaffoldInstance.memory);
           const usData = toJS(UserScaffoldInstance.data);
-          // @todo we neeed to look deeper at the type of user action
-          // executed in order to make this happen
           let results = [];
           // file selected, so we are looping back around
           if (values.operation === "file-selected") {
@@ -1515,18 +1634,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             ></simple-toolbar-button>
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
-              <haxcms-button-add
-                hidden
-                ?disabled="${this.editMode}"
-                type="docximport"
-                id="docximport"
-                show-text-label
-                data-super-daemon-path="CMS/action/import/docx"
-                data-super-daemon-label="${this.t.importDocxFile}"
-                data-super-daemon-icon="hax:file-docx"
-              ></haxcms-button-add>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
             <simple-toolbar-button
               ?hidden="${this.editMode}"
               ?disabled="${this.editMode}"
@@ -1857,11 +1964,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           {
             varPath: "createNodePath",
             selector: "#duplicatebutton",
-          },
-          {
-            varPath: "createNodePath",
-            selector: "#docximport",
-          },
+          }
         ];
         // see which features should be enabled
         ary.forEach((pair) => {

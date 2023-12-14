@@ -162,8 +162,14 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
         let replacement = document.createElement(props.with);
         // set the value in the new object
         for (var i in props) {
-          if (props[i] != null) {
-            replacement.setAttribute(i, props[i]);
+          if (props[i] != null && props[i] != "" && props[i] != ".") {
+            // trap for bad attributes that were manually typed
+            // or HTML imported that was improper in the past
+            try {
+              replacement.setAttribute(i, props[i]);
+            } catch (error) {
+              console.warn("Invalid Attribute Name detected: " + i);
+            }
           }
         }
         replacement.removeAttribute("laser-loader");

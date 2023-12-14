@@ -784,6 +784,28 @@ class Store {
     }
     return null;
   }
+
+  /**
+   * shortcut to find the last child of an item
+   */
+  async getLastChildItem(id) {
+    if (this.manifest && id) {
+      let current = {};
+      await this.manifest.items.map((item) => {
+        if (item.parent === id) {
+          if (typeof current.order === typeof undefined) {
+              current = item;
+          }
+          else if (current.order < item.order) {
+              current = item;
+          }
+        }
+      });
+      return current;
+    }
+    return null;
+  }
+
   /**
    * shortcut to find an item in the manifest based on id
    */
