@@ -2,12 +2,13 @@
  * Copyright 2021
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css, unsafeCSS } from "lit-element/lit-element.js";
+import { html, css, unsafeCSS } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 // Defines the type options available in the HAX wiring, "Learning Objectives" is the default.
@@ -148,7 +149,7 @@ export function iconFromPageType(type) {
  * @demo demo/index.html
  * @element learning-component
  */
-class LearningComponent extends I18NMixin(LitElement) {
+class LearningComponent extends I18NMixin(SimpleColors) {
   /**
    * Convention we use
    */
@@ -161,16 +162,32 @@ class LearningComponent extends I18NMixin(LitElement) {
    */
   static get properties() {
     return {
+      ...super.properties,
       type: { type: String, reflect: true },
       subtitle: { type: String },
+      title: { type: String },
+      icon: { type: String },
       url: { type: String },
     };
   }
 
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has('type') && this.type) {
+      this.accentColor = learningComponentColors[this.type];
+      this.title = learningComponentTypes[this.type];
+      this.icon = iconFromPageType(this.type)
+    }
+  }
+
   constructor() {
     super();
+    this.icon = null;
+    this.accentColor = null;
+    this.dark = false;
     this.type = "objectives";
     this.subtitle = null;
+    this.title = null;
     this.url = null;
     this.t = {
       ...super.t,
@@ -182,19 +199,7 @@ class LearningComponent extends I18NMixin(LitElement) {
    * CSS
    */
   static get styles() {
-    let typeToColors = Object.keys(learningComponentColors).map((type) => {
-      let color = learningComponentColors[type];
-      return `
-        :host([type="${type}"]) .header {
-          --header-objectives-bg-color: var(--header-${type}-bg-color, var(--simple-colors-default-theme-${color}-8));
-        }
-        :host([type="${type}"]) simple-icon-button-lite {
-          --simple-icon-color: var(--svg-url-${type}-fill-color, var(--simple-colors-default-theme-${color}-8));
-        }
-      `;
-    });
-
-    return [
+    return [super.styles,
       css`
         :host {
           display: block;
@@ -202,20 +207,17 @@ class LearningComponent extends I18NMixin(LitElement) {
           border: 1px solid var(--card-border-color, #d9d9d9);
           margin: 15px 0 15px;
         }
-
-        ${unsafeCSS(typeToColors.join("\n"))}
-
         .header {
           display: flex;
           align-items: center;
           background-color: var(
             --header-objectives-bg-color,
-            var(--simple-colors-default-theme-orange-7, #dc7927)
+            var(--simple-colors-default-theme-accent-8, #dc7927)
           );
           padding: 10px;
           color: var(
             --header-font-color,
-            var(--simple-colors-default-theme-grey-1, #fff)
+            var(--simple-colors-default-theme-accent-1, #fff)
           );
         }
         .title {
@@ -242,13 +244,17 @@ class LearningComponent extends I18NMixin(LitElement) {
         }
         simple-icon-lite,
         simple-icon-button-lite {
-          fill: var(
+          color: var(
             --header-svg-fill-color,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
           border-radius: 50%;
           margin: 0 15px 0 10px;
           padding: 5px;
+        }
+
+        simple-icon-button-lite {
+          color: var(--simple-colors-default-theme-accent-8);
         }
 
         @media screen and (min-width: 320px) {
@@ -312,12 +318,12 @@ class LearningComponent extends I18NMixin(LitElement) {
       <div class="header">
         <div class="icon">
           <simple-icon-lite
-            icon="${iconFromPageType(this.type)}"
+            icon="${this.icon}"
           ></simple-icon-lite>
         </div>
         <div class="title-wrap">
           <div class="sub-title">${this.subtitle}</div>
-          <div class="title">${learningComponentTypes[this.type]}</div>
+          <div class="title">${this.title}</div>
         </div>
       </div>
       <div class="content">
@@ -348,16 +354,17 @@ class LearningComponent extends I18NMixin(LitElement) {
   static get haxProperties() {
     return {
       type: "grid",
-      canScale: true,
+      canScale: false,
       canPosition: false,
-      canEditSource: true,
+
+      hideDefaultSettings: true,
       gizmo: {
         title: "Learning Component",
         description:
           "A card for instructors to communicate pedagogy and instructional strategies.",
         icon: "icons:bookmark",
         color: "orange",
-        tags: ["Instructional", "content", "design", "presentation"],
+        tags: ["Instructional", "content", "design", "presentation", "instruction", "course", "learning", "card"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -378,7 +385,6 @@ class LearningComponent extends I18NMixin(LitElement) {
             title: "Sub-Title",
             description: "The sub-title of the card.",
             inputMethod: "textfield",
-            icon: "editor:title",
           },
           {
             property: "url",
@@ -386,14 +392,38 @@ class LearningComponent extends I18NMixin(LitElement) {
             description:
               "An optional link  for the card (Link not available for Learning Objectives).",
             inputMethod: "url",
-            icon: "editor:insert-link",
           },
           {
             slot: "",
             title: "Contents",
           },
         ],
-        advanced: [],
+        advanced: [
+          {
+            property: "title",
+            title: "Title",
+            description: "Set Title, this overrides type based title",
+            inputMethod: "textfield",
+          },
+          {
+            property: "icon",
+            title: "Icon",
+            description: "Set icon, this overrides type based icon",
+            inputMethod: "iconpicker",
+          },
+          {
+            property: "accentColor",
+            title: "Accent color",
+            description: "Set accent color, this overrides type based color",
+            inputMethod: "colorpicker",
+          },
+          {
+            property: "dark",
+            title: "Dark mode",
+            description: "Invert high and low tones",
+            inputMethod: "boolean",
+          },
+        ],
       },
       demoSchema: [
         {
