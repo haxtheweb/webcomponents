@@ -1600,7 +1600,6 @@ class HaxTray extends I18NMixin(
           // grid plates are the exception to the rule here
           expanded:
             propName === "configure" &&
-            this.activeNode.tagName !== "GRID-PLATE" &&
             (!HAXStore.isTextElement(this.activeNode) ||
               HAXStore.isInlineElement(this.activeNode)),
           accordion: true,

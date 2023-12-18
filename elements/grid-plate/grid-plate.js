@@ -204,12 +204,16 @@ class GridPlate extends LitElement {
           margin: 0;
         }
         :host .column ::slotted(*) {
+          margin: var(--grid-plate-item-margin, 0);
+          padding: var(--grid-plate-item-padding, 0);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
         }
         :host([data-hax-ray]) .column ::slotted(*) {
-          margin: var(--grid-plate-item-margin, 15px);
-          padding: var(--grid-plate-item-padding, 15px);
+          /* if we have no values for these, but are in hax edit mode, at least have some
+          so that selection boxes are apparent */
+          margin: var(--grid-plate-item-margin, 16px);
+          padding: var(--grid-plate-item-padding, 16px);
         }
         :host([ready]) [data-layout-slotname] {
           transition: var(
@@ -353,6 +357,8 @@ class GridPlate extends LitElement {
   }
   constructor() {
     super();
+    this.itemMargin = null;
+    this.itemPadding = null;
     this.ready = false;
     this.breakpointSm = 900;
     this.breakpointMd = 1200;
@@ -451,10 +457,10 @@ class GridPlate extends LitElement {
       canScale: true,
       canPosition: true,
       canEditSource: true,
-      contentEditable: undefined,
+      contentEditable: false,
       gizmo: {
         title: "Column layout",
-        description: "Simple card in a cool retro design",
+        description: "Layout material in simple columns",
         icon: "hax:3-3-3-3",
         color: "grey",
         tags: [
@@ -483,14 +489,36 @@ class GridPlate extends LitElement {
             options: new GridPlateLayoutOptions().options,
           },
           {
+            property: "itemPadding",
+            title: "Padding top",
+            description: "Padding inside each item",
+            step: 8,
+            max: 128,
+            min: 0,
+            inputMethod: "slider",
+            suffix: "px",
+          },
+          {
+            property: "itemMargin",
+            title: "Item margins",
+            description: "Margin between items",
+            step: 8,
+            max: 64,
+            min: 0,
+            inputMethod: "slider",
+            suffix: "px",
+          }
+        ],
+        advanced: [
+          {
             property: "disableResponsive",
             title: "Disable responsive",
             description:
               "Check box to force layout to stick regardless of screen size",
             inputMethod: "boolean",
-          },
+          }
         ],
-        advanced: [
+        developer: [
           {
             property: "breakpointSm",
             title: "Small Breakpoint",
@@ -522,8 +550,8 @@ class GridPlate extends LitElement {
               "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
             inputMethod: "textfield",
             validationType: "number",
-          },
-        ],
+          }
+        ]
       },
       saveOptions: {
         unsetAttributes: [
@@ -539,15 +567,27 @@ class GridPlate extends LitElement {
           tag: "grid-plate",
           properties: {
             disableResponsive: true,
+            itemMargin: 16,
+            itemPadding: 16,
           },
           content:
-            '<p slot="col-1">Column one</p><p slot="col-2">Column two</p>',
+            '<p slot="col-1">Column one content to replace</p><p slot="col-2">Column two content to replace</p>',
         },
       ],
     };
   }
   static get properties() {
     return {
+      itemPadding: {
+        type: Number,
+        reflect: true,
+        attribute: "item-padding",
+      },
+      itemMargin: {
+        type: Number,
+        reflect: true,
+        attribute: "item-margin",
+      },
       /**
        * Custom small breakpoint for the layouts; only updated on attached
        */
@@ -645,7 +685,7 @@ class GridPlate extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       // if any of these changed, update col widths
       if (
-        ["responsiveSize", "layout", "layouts", "disableResponsive"].includes(
+        ["responsiveSize", "layout", "layouts", "disableResponsive", "itemPadding","itemMargin"].includes(
           propName
         )
       ) {
@@ -660,6 +700,22 @@ class GridPlate extends LitElement {
         }, 0);
       }
       switch (propName) {
+        case "itemMargin":
+          if (this[propName]) {
+            this.style.setProperty('--grid-plate-item-margin', this[propName] + 'px');
+          }
+          else {
+            this.style.removeProperty('--grid-plate-item-margin');
+          }
+        break;
+        case "itemPadding":
+        if (this[propName]) {
+          this.style.setProperty('--grid-plate-item-padding', this[propName] + 'px');
+        }
+        else {
+          this.style.removeProperty('--grid-plate-item-padding');
+        }
+        break;
         // observer, ensure we are sized correctly after widths change
         case "__columnWidths":
           // widths changed because of layout somehow, wait for the resize transition

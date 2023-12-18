@@ -1041,6 +1041,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     path: "PDF embedded in a frame element",
                   }
                 );
+              default:
+              // go run the hax hooks to see if any web components supply 
+              // a way of handling material that is of that file type
               break;
             }
             results.push(
