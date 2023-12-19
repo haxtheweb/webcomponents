@@ -116,6 +116,16 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               icon-position="top"
             >
             </hax-tray-button>
+            ${HAXStore.revisionHistoryLink ? html`
+            <hax-tray-button
+              @click="${this.revisionHistoryClick}"
+              icon="hax:git"
+              label="${this.t.revisionHistory}"
+              show-text-label
+              icon-position="top"
+            >
+            </hax-tray-button>` : ``}
+            
             <simple-toolbar-menu
               icon="icons:file-download"
               icon-position="top"
@@ -417,6 +427,12 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       }, 1000);
     }
   }
+
+  revisionHistoryClick() {
+    if (HAXStore.revisionHistoryLink) {
+      window.open(HAXStore.revisionHistoryLink, "_blank");
+    }
+  }
   /**
    * selectBody
    */
@@ -540,6 +556,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       PrettifyHtml: "Prettify HTML",
       cleanFormatting: "Clean Formatting",
       haxSchema: "HAXSchema",
+      revisionHistory: "Revision history"
     };
     this.registerLocalization({
       context: this,

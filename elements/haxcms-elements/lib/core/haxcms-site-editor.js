@@ -52,6 +52,20 @@ class HAXCMSSiteEditor extends LitElement {
     });
     autorun((reaction) => {
       this.activeItem = toJS(store.activeItem);
+      const baseUrl = toJS(store.location.baseUrl);
+      // account for haxiam vs non-haxiam
+      if (baseUrl) {
+        const sitePathAry = baseUrl.replace('/sites', '').split('/');
+        if (sitePathAry.length === 5) {
+          HAXStore.revisionHistoryLink = `/${sitePathAry[2]}/gitlist/${sitePathAry[3]}/logpatch/master/${this.activeItem.location}`;
+        } 
+        else if (sitePathAry.length === 4) {
+          HAXStore.revisionHistoryLink = `/${sitePathAry[1]}/gitlist/${sitePathAry[2]}/logpatch/master/${this.activeItem.location}`;
+        } 
+        else if (sitePathAry.length === 3) {
+          HAXStore.revisionHistoryLink = `/gitlist/${sitePathAry[1]}/logpatch/master/${this.activeItem.location}`;
+        }  
+      }
       this.__disposer.push(reaction);
     });
   }
