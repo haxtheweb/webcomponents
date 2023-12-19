@@ -145,7 +145,6 @@ export class SiteCollectionList extends CollectionList {
           conditions["metadata.relatedItems"] = this.relatedItems;
         }
         this.conditions = { ...conditions };
-        console.log(this.conditions);
       }
       if (this.shadowRoot && propName === "sort") {
         let sortObj = {};
