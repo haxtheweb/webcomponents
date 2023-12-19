@@ -100,7 +100,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         this.audio = new Audio(
           new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
         );
-        this.audio.volume = 0.5;
+        this.audio.volume = 0.3;
         this.audio.onended = (event) => {
           resolve();
         };
@@ -186,7 +186,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       addPage: "Add page",
       addChildPage: "Add child page",
       clonePage: "Clone page",
-      importDocxFile: "Import docx file",
       delete: "Delete page",
       siteSettings: "Site settings",
       close: "Close",
@@ -229,18 +228,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       }
       return false;
     };
-    {
-      SuperDaemonInstance.questionTags = [
-        {
-          value: "*",
-          label: "List everything I can do",
-        },
-        {
-          value: "?",
-          label: "HELP!",
-        },
-      ];
-    }
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
@@ -255,7 +242,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/app/tour",
-      context: ["*", "?"],
+      context: ["*"],
     });
 
     // contribution helpers
@@ -345,7 +332,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "User Tutorials",
@@ -359,7 +346,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/tutorials",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "User Documentation",
@@ -374,7 +361,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "HAX Teaching Excellence",
@@ -387,7 +374,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/pedagogy",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -400,7 +387,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
@@ -418,7 +405,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
-      context: ["logged-in", "CMS", "HAX", "?", "*"],
+      context: ["logged-in", "CMS", "HAX", "*"],
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
     });

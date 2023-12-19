@@ -230,42 +230,6 @@
         "slug": "/bto108/sites/microfrontends/"
       },
       {
-        "id": "b47fe456-cb6f-438c-9182-bd6694c2cfb3",
-        "title": "static-this-shit",
-        "author": "",
-        "description": "",
-        "license": "by-sa",
-        "metadata": {
-          "author": {},
-          "site": {
-            "name": "static-this-shit",
-            "logo": "assets/banner.jpg",
-            "created": 1635530037,
-            "updated": 1635530037,
-            "git": {}
-          },
-          "theme": {
-            "element": "clean-one",
-            "path": "@lrnwebcomponents/clean-one/clean-one.js",
-            "name": "Course theme",
-            "variables": {
-              "icon": "icons:add-circle-outline",
-              "hexCode": "#aeff00",
-              "cssVariable": "--simple-colors-default-theme-light-blue-7"
-            }
-          },
-          "node": {
-            "fields": {}
-          },
-          "pageCount": 2
-        },
-        "indent": 0,
-        "order": 0,
-        "parent": null,
-        "location": "/bto108/sites/static-this-shit/",
-        "slug": "/bto108/sites/static-this-shit/"
-      },
-      {
         "id": "879550a7-ef12-40d6-a491-051a628a10cb",
         "title": "IST 210",
         "author": "",

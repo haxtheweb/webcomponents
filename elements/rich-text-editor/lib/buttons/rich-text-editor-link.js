@@ -11,11 +11,20 @@ import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-b
  * @customElement
  * @lit-html
  * @lit-element
- * @extends RichTextEditorPromptButtonBehaviors
+ * @extends RichTextEditorPromptButtonyarnr Behaviors
  * @extends LitElement
  * @element rich-text-editor-link
  * @demo ./demo/buttons.html
  */
+const hrefField = {
+  property: "href",
+  title: "Link",
+  description: "The URL to a resource.",
+  required: true,
+  inputMethod: "haxupload",
+  autofocus: true,
+};
+
 class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   LitElement
 ) {
@@ -45,16 +54,21 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   }
   constructor() {
     super();
-    this.fields = [
-      ...super.fields,
-      {
-        property: "href",
-        title: "Link",
-        description: "The URL to a resource.",
-        required: true,
-        inputMethod: "haxupload",
-      },
-    ];
+    if (super.fields) {
+      this.fields = [...super.fields, , hrefField];
+    } else {
+      this.fields = [
+        hrefField,
+        {
+          property: "innerHTML",
+          title: "Text",
+          inputMethod: "textfield",
+          description: "Text currently selected",
+          disabled: true,
+          required: true,
+        },
+      ];
+    }
     this.command = "createLink";
     this.icon = "link";
     this.label = "Link";
@@ -72,13 +86,14 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
 
   get defaultFields() {
     return [
-      ...super.fields,
+      hrefField,
       {
-        property: "href",
-        title: "Link",
-        description: "The URL to a resource.",
+        property: "innerHTML",
+        title: "Text",
+        inputMethod: "textfield",
+        description: "Text currently selected",
+        disabled: true,
         required: true,
-        inputMethod: "haxupload",
       },
     ];
   }

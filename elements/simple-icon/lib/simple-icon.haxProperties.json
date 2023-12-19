@@ -30,15 +30,15 @@
         "title": "Accent color",
         "description": "Accent color to colorize icon",
         "inputMethod": "colorpicker"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "dark",
         "title": "Dark",
         "description": "Dark mode / inverted colorset",
         "inputMethod": "boolean"
       }
+    ],
+    "advanced": [
     ],
     "developer": []
   },

@@ -9,10 +9,7 @@ export function generateStyleLinkEls() {
     return false;
   }
 
-  const light = new URL(
-    "./light.css",
-    import.meta.url
-  ).href;
+  const light = new URL("./light.css", import.meta.url).href;
   let link = document.createElement("link");
   link.setAttribute("rel", "stylesheet");
   link.setAttribute("media", "(prefers-color-scheme:light)");
@@ -20,10 +17,7 @@ export function generateStyleLinkEls() {
   link.setAttribute("id", "showlace-light");
   document.head.appendChild(link);
 
-  const dark = new URL(
-    "./dark.css",
-    import.meta.url
-  ).href;
+  const dark = new URL("./dark.css", import.meta.url).href;
   link = document.createElement("link");
   link.setAttribute("rel", "stylesheet");
   link.setAttribute("media", "(prefers-color-scheme:dark)");

@@ -40,15 +40,15 @@
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
-    "name": ""
+    "name": "btopro"
   },
-  "license": "",
+  "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/file-system-broker": "^7.0.18",
     "@lrnwebcomponents/hax-iconset": "^7.0.18",
     "@lrnwebcomponents/haxcms-elements": "^7.0.18",
     "@lrnwebcomponents/simple-icon": "^7.0.18",
-    "lit": "^2.8.0"
+    "lit": "^3.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.18",

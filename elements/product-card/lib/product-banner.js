@@ -47,17 +47,17 @@ class ProductBanner extends SimpleColors {
           }
         }
 
-        .image_text {
+        .image-text {
           background: rgba(0, 0, 0, 0.5);
           width: calc(150px + (355 - 28) * ((100vw - 300px) / (1600 - 300)));
           margin: 0 5vw;
           padding: 2vw;
         }
-        :host([dark]) .image_text {
+        :host([dark]) .image-text {
           background: rgba(255, 255, 255, 0.5);
         }
 
-        .image_text h1 {
+        .image-text h1 {
           font-size: calc(23px + (72 - 28) * ((100vw - 300px) / (1600 - 300)));
           color: var(
             --product-banner-text-color,
@@ -138,12 +138,12 @@ class ProductBanner extends SimpleColors {
         <div
           class="image_wrap"
           alt="${this.alt}"
-          style="background-image:url(${this.image})"
+          style="background-image:url('${this.image}')"
         >
           <div class="image"></div>
           ${this.primaryText
             ? html`
-                <div class="image_text">
+                <div class="image-text">
                   <h1>${this.primaryText}</h1>
                 </div>
               `

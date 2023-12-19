@@ -91,10 +91,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
           height: 30px;
         }
         rich-text-editor-button {
-          height: 30px;
+          height: 32px;
           --simple-toolbar-button-width: 26px;
           --simple-toolbar-button-height: 26px;
-          line-height: 30px;
+          line-height: 32px;
         }
       `,
     ];
@@ -162,8 +162,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       symbolButton: "Insert Symbol",
       emojiButton: "Insert Emoticon",
       imageButton: "Insert Image",
-      orderedListButton: "Bulleted list",
-      unorderedListButton: "Numbered list",
+      orderedListButton: "Numbered list",
+      unorderedListButton: "Bulleted list",
       blockquoteButton: "Blockquote",
       indentButton: "Indent",
       outdentButton: "Outdent",

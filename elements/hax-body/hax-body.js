@@ -196,8 +196,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --simple-picker-option-active-background-color: var(
             --hax-ui-color-accent
           );
-          --simple-picker-option-active-color: var(--hax-ui-background-color);
-          --simple-picker-color: var(--hax-ui-color);
+          --simple-picker-option-active-color: var(--hax-tray-text-color);
+          --simple-picker-color-active: var(--hax-tray-text-color);
+          --simple-picker-color: var(--hax-tray-text-color);
         }
         :host([edit-mode][tray-status="full-panel"]) {
           opacity: 0.2;
@@ -277,7 +278,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ::slotted([contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
-          transition: 0.2s all ease-in-out;
+          transition: 0.6s all ease-in-out;
+        }
+
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted([contenteditable][data-hax-ray][data-hax-active]:empty:not([data-instructional-action]))::before {
+          content: "Type '/' for Merlin";
+          opacity: 0.4;
+          font-size: 18px;
         }
 
         :host([edit-mode])
@@ -473,9 +482,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           .hax-context-visible {
             height: auto;
           }
-          :host(:not([tray-status="collapsed"])) {
-            /*z-index: -1; */
-          }
+
           :host([edit-mode]) #bodycontainer,
           :host([edit-mode]) #bodycontainer[element-align="left"],
           :host([edit-mode]) #bodycontainer[element-align="right"] {
@@ -1043,7 +1050,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (
       ["ArrowUp", "ArrowDown"].includes(e.key) &&
       this.activeNode &&
-      HAXStore.isTextElement(this.activeNode)
+      HAXStore.isTextElement(this.activeNode) &&
+      !SuperDaemonInstance.opened
     ) {
       let key = e.key;
       this[`timesClicked${key}`]++;
@@ -1266,12 +1274,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
                 SuperDaemonInstance.activeNode = rng.commonAncestorContainer;
                 SuperDaemonInstance.runProgram(
-                  "*",
-                  {},
-                  null,
-                  null,
-                  null,
-                  rng.commonAncestorContainer.textContent.trim()
+                  rng.commonAncestorContainer.textContent.trim(),
+                  "*"
                 );
                 SuperDaemonInstance.open();
               }
@@ -2729,14 +2733,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           active = rng.commonAncestorContainer.parentNode;
         }
         SuperDaemonInstance.activeNode = active;
-        SuperDaemonInstance.runProgram(
-          "*",
-          {},
-          null,
-          null,
-          null,
-          active.textContent.trim()
-        );
+        SuperDaemonInstance.runProgram(active.textContent.trim(), "*");
         SuperDaemonInstance.open();
         break;
       case "hide-context-menus":

@@ -1,0 +1,143 @@
+<p>The <a href="https://www.engadget.com/2019/03/26/european-parliament-copyright-directive-article-13/">EU recently passed Article 13</a>
+
+
+
+
+
+, which it's still too early to tell the implications of but it's troubling to say the least. Any time people start trying to legislate 1s and 0s I get concerned; namely, because their interests are in direct competition with those of their citizens (governments enjoy having major international enterprises they can sue to fill their coffers after all).</p>
+<p>That whole thing had me thinking about access to information and the ideas of <a href="https://www.nytimes.com/2013/01/13/technology/aaron-swartz-internet-activist-dies-at-26.html">Aaron Swartz</a>
+
+
+
+
+
+; namely that information seeks to be free. In the years since Aaron's unfortunate death, we've seen silicon valley accelerate in its quest to put up barriers to the free flow of information in the name of a new enemy: User Experience.</p>
+<p>Facebook: "We have the best experiences, and so you should <i><b>share</b>
+
+
+
+
+
+</i>
+
+
+
+
+
+ all your content here without thinking about it"<br/>Twitter: "We have the fastest experience, so you should <i><b>share</b>
+
+
+
+
+
+</i>
+
+
+
+
+
+ your stream of consciousness here without thinking about it"<br/>Medium: "We have the best writing experience, so you should share your ideas here while working them out."<br/></p>
+<p>These platforms. These digital silos, do empower people to share and have a voice. But they are antithetical to the open content and open access vision that Aaron is often credited with.</p>
+<p>I was passed along some links recently related to <a href="https://indieweb.org/">Indieweb</a>
+
+
+
+
+
+ and <a href="https://ioo.coop/">The Internet of Ownership</a>
+
+
+
+
+
+, and it got me thinking. HAX and HAXcms are in this sphere of local control, better control, better tools, more access to those tools, but I haddn't really thought through the additional technical requirements not talked about in that pursuit. Namely, that every screen has a right to content.</p>
+<h2 class="hax-active">Extending the vision of Information seeks to be Free</h2>
+<p>Every screen you possess has a right to access content. If you are connected to the internet, there should be no barriers between that screen and web based HTML data structures... otherwise known as all information that exists on the internet.</p>
+<p>Every site you access adopts the web platform standards.. with a catch.</p>
+<h3 class="hax-active">Click here to upgrade your app?</h3>
+<p><i>Not using Chrome? Click here to switch</i>
+
+
+
+
+
+</p>
+<p><i>You appear to be using an outdated browser, please upgrade.</i>
+
+
+
+
+
+</p>
+<p>Now look, upgrading, and modernizing with the web are nice. Helpful especially to the developer. But if we as developers</p>
+<p>Every screens have a right to content. The internet has given birth to incredible communications possibilities (duh). But in that rise, we've seen an ebb and flow as far as access to content, ideas and media. Facebook, twitter and others require you to use updated devices and software in order to access their platform.</p>
+<h3>I'm sorry let's reframe that</h3>
+<p>Facebook, twitter and others require you to upgrade and pay additional monies for modern, fancy devices, <b>in order to read and express ideas with one another.</b>
+
+
+
+
+
+</p>
+<p>The platforms require you to use them and manipulate you into using them more. They connect you to people but at a price; that you will always connect through them. One of the major methods of dissolving decentralized individual ownership of the web was by killing RSS.</p>
+<p>Google played a huge role in this through killing it's podcasting platform; and not that they controlled the universe in this regard, but it forced content producers to think of other ways of doing syndication. Namely, through Google and Apple app stores.</p>
+<h2 class="hax-active">We want to bring the old web back</h2>
+<p>And here's the plan. Beyond just HAX and HAXcms, its important to realize the philosophical design decisions that have now been baked into the HAXcms platform which I'll list as features in headings below.</p>
+<h3 class="hax-active">Automatic RSS and Atom feed generation</h3>
+<p>RSS and Atom allow sites to share updates about what's been produced. It is (an old) format that is a pure form of notifying others sites about your latest postings and work. HAXcms now automatically generates these data feeds and then provides buttons for designers that automatically wire them up. This will let more people start publishing in these formats without having to think about it or know they exist.</p>
+<h3 class="hax-active">Automatic sitemap / robots generation</h3>
+<p>For search engines to find you, you need good SEO. HAXcms outputs with SEO best practices automatically baked into the platform. Again, you shouldn't have to think about getting high search rankings in order to do it. It should just happen.</p>
+<h3 class="hax-active">Automatic Offline / lack of internet usage</h3>
+<p>All HAXcms sites are what is known as "Progressive Web Apps" (PWA). A PWA can leverage modern browser techniques to allow users to install your website on their phone (or laptop), which improves performance and makes reading more enjoyable. Also, if a user has been to your website (installed or not) and loses internet connection, they'll still have access to all of the content of your site (minus things like remotely loaded images / links to other websites). This ensures a high quality experience even when internet is of low quality (big for rural, low income, mass transit or otherwise lacking in data connection users).</p>
+<h3 class="hax-active">Support for all screens</h3>
+<p>This was a tricky one. HAXcms is now able to deliver to all platforms of the web going back to <i>IE6 / FF 3 / Safari 4</i>
+
+
+
+
+, possibly even earlier. For reference, <a href="https://en.wikipedia.org/wiki/Internet_Explorer_6">IE6 is 20 years old</a>
+
+ . In order to achieve this, we've implemented a (brilliant) progressive enhancement strategy that works like so:</p>
+<ul><li>Modern / evergreen? You get the highest quality, fastest method of shipping assets to you (~85% traffic)</li>
+
+
+
+
+
+<li>Slightly behind / off version? You get the same quality, slightly slower to load (ES5 versions, still works great tho. ~8% traffic)</li>
+
+
+<li>Edge / semi-modern but not web components native platforms - You get an alternate experience though still web components (~4%)</li>
+
+
+
+
+
+<li>IE 6 - 11 / Anything made in the last 20 years, or has javascript disabled (~3% or less). You get an iframe / dramatically simplified version of the site. Web components in content won't work, but you'll still get all the images and text of the website.</li>
+
+
+
+
+
+</ul>
+<p> This approach will let us hit <b><i>effectively 100% of global web traffic with content</i>
+
+
+
+
+
+</b>
+
+
+
+
+
+, without changing the workflow of you, the publisher. Own you content. Own your experience. HAX the current market that has forced us all to require they exist in order to have a voice. <a href="https://haxtheweb.org/">HAXTheWeb</a>
+
+
+
+
+
+.</p>
+<p>Here are screenshots of IE6, Safari 4, iPad2, Android 2.2 and Firefox 3 of this site!</p>
+<img src="files/safari4.jpg" style="width: 75%;"/><img src="files/ff3.jpg" style="width: 75%;"/><img src="files/android22.jpg" style="width: 25%;"/><img src="files/ipad2.jpg" style="width: 50%;"/><img src="files/ie6.jpg" style="width: 100%;"/>

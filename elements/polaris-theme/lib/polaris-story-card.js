@@ -10,13 +10,12 @@ import { LitElement, html, css } from "lit";
  * @element polaris-story-card
  */
 class PolarisStoryCard extends LitElement {
-  
   static get properties() {
     return {
       image: { type: String },
       label: { type: String },
       pillar: { type: String },
-    }
+    };
   }
 
   /**
@@ -81,7 +80,7 @@ class PolarisStoryCard extends LitElement {
           position: relative;
           top: 4px;
           padding: 4px 10px;
-          background-color: #001E44;
+          background-color: #001e44;
           font-weight: 500;
         }
       `,
@@ -92,7 +91,10 @@ class PolarisStoryCard extends LitElement {
    */
   render() {
     return html`
-      <div class="wrapper" style="background: url('${this.image}') center center no-repeat;">
+      <div
+        class="wrapper"
+        style="background: url('${this.image}') center center no-repeat;"
+      >
         <span class="pillar">${this.pillar}</span>
         <div class="body">
           <div class="label">${this.label}</div>

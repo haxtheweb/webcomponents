@@ -22,14 +22,14 @@ class DocumentationPlayer extends LitElement {
    */
   constructor() {
     super();
-    this.label = '';
+    this.label = "";
     this.haxSchema = [];
     this.imageUrl = "";
     this.url = "";
     setTimeout(async () => {
       for (let i = 0; i < this.children.length; i++) {
-        this.haxSchema.push(await nodeToHaxElement(this.children[i]));     
-      }        
+        this.haxSchema.push(await nodeToHaxElement(this.children[i]));
+      }
     }, 0);
   }
 
@@ -39,7 +39,7 @@ class DocumentationPlayer extends LitElement {
       haxSchema: { type: Array, attribute: false },
       imageUrl: { type: String, attribute: "image-url" },
       url: { type: String, attribute: "url" },
-    }
+    };
   }
   /**
    * LitElement style callback
@@ -77,13 +77,24 @@ class DocumentationPlayer extends LitElement {
   renderPlayListTemplate() {
     let template = document.createElement("template");
     render(
-      html`
-        <div>
-            <a href="${this.url}" rel="noopener" target="_blank">${this.label}</a>
-            <simple-img loading="lazy" fetchpriority="low" decoding="async" src="https://screenshoturl.elmsln.vercel.app/api/screenshotUrl?quality=10&amp;render=img&amp;urlToCapture=${this.imageUrl}" alt="" width="300" height="200" quality="80"></simple-img>
+      html` <div>
+          <a href="${this.url}" rel="noopener" target="_blank">${this.label}</a>
+          <simple-img
+            loading="lazy"
+            fetchpriority="low"
+            decoding="async"
+            src="https://screenshoturl.elmsln.vercel.app/api/screenshotUrl?quality=10&amp;render=img&amp;urlToCapture=${this
+              .imageUrl}"
+            alt=""
+            width="300"
+            height="200"
+            quality="80"
+          ></simple-img>
         </div>
         <div id="codesample"></div>
-        <code-pen-button data-string="${this.codePenData(this.label)}"></code-pen-button>
+        <code-pen-button
+          data-string="${this.codePenData(this.label)}"
+        ></code-pen-button>
         ${this.renderHAXInjectButton()}`,
       template
     );
@@ -95,8 +106,7 @@ class DocumentationPlayer extends LitElement {
       template.innerHTML = this.innerHTML.trim();
       let codesample = document.createElement("code-sample");
       codesample.innerHTML = template.outerHTML;
-      this.shadowRoot
-      .querySelector("#codesample").appendChild(codesample);
+      this.shadowRoot.querySelector("#codesample").appendChild(codesample);
     }, 10);
   }
 
@@ -112,15 +122,15 @@ class DocumentationPlayer extends LitElement {
     // we may need a singleton in order to do this correctly just because of how all this evaluative
     // template rendering works. play-list in sl-carousel in a ridiculous example of this nesting
     // and we lose our events along the way.
-      return html`
-        <simple-icon-button-lite
-          icon="settings"
-          @click="${this._injectHAX}"
-        >Insert into your side</simple-icon-button-lite>
-      `;
+    return html`
+      <simple-icon-button-lite icon="settings" @click="${this._injectHAX}"
+        >Insert into your side</simple-icon-button-lite
+      >
+    `;
   }
   _injectHAX(e) {
-    window.dispatchEvent(new CustomEvent("hax-insert", {
+    window.dispatchEvent(
+      new CustomEvent("hax-insert", {
         detail: {
           value: this.haxSchema,
         },

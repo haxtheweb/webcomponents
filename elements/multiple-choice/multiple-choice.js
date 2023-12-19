@@ -178,7 +178,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
                       @keydown="${this.clickSingle}"
                       .value="${answer ? answer.userGuess : ""}"
                       @value-changed="${this.checkedEvent}"
-                      label="${(answer && answer.label) ? answer.label : ""}"
+                      label="${answer && answer.label ? answer.label : ""}"
                     ></simple-fields-field>
                   `
                 )}
@@ -194,7 +194,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
                         property="oer:answer"
                         name="${index}"
                         type="checkbox"
-                        label="${(answer && answer.label) ? answer.label : ""}"
+                        label="${answer && answer.label ? answer.label : ""}"
                         .value="${answer ? answer.userGuess : ""}"
                         @value-changed="${this.checkedEvent}"
                       ></simple-fields-field>
@@ -585,7 +585,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
           if (node.answers[i].correct) {
             answer.setAttribute("correct", "correct");
           }
-          node.appendChild(answer);  
+          node.appendChild(answer);
         }
       }
     }

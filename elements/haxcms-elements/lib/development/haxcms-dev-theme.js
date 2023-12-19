@@ -200,7 +200,6 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
             <div class="card">
               <div class="card-content">
                 <div>title: [[item.title]]</div>
-                <div>image: [[item.metadata.fields.image]]</div>
                 <div>description: [[item.description]]</div>
                 <div>slug: [[item.slug]]</div>
                 <div>location: [[item.location]]</div>

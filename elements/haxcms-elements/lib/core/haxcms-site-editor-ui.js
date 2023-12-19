@@ -10,6 +10,7 @@ import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility
 import {
   localStorageSet,
   winEventsElement,
+  mimeTypeToName,
 } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -21,6 +22,10 @@ import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu.js";
 import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu-button.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
+import "@lrnwebcomponents/super-daemon/lib/super-daemon-search.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-site-insights.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
@@ -139,17 +144,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-border-color: var(
             --simple-colors-default-theme-red-2
           );
-          margin-right: 64px;
         }
-        #merlin {
+        .merlin {
           color: var(--simple-colors-default-theme-purple-10);
           --simple-toolbar-border-color: var(
             --simple-colors-default-theme-purple-2
           );
         }
-        #merlin:hover,
-        #merlin:active,
-        #merlin:focus {
+        simple-toolbar-button.merlin:hover,
+        simple-toolbar-button.merlin:active,
+        simple-toolbar-button.merlin:focus {
           background-color: var(--simple-colors-default-theme-purple-1);
         }
         #deletebutton:hover,
@@ -414,6 +418,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           simple-toolbar {
             --simple-toolbar-button-padding: 0px;
             justify-content: space-between;
+            background-color: white;
+            height: auto;
           }
           .characterbtn-name {
             padding: 0px;
@@ -436,17 +442,449 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   static get tag() {
     return "haxcms-site-editor-ui";
   }
+
   _expandSettingsPanel(e) {
     this.shadowRoot.querySelector("#content-edit").click();
   }
+
+  // a file needs to be selected via the program and then sub-program options presented
+  selectFileToProcess() {
+    import('@lrnwebcomponents/file-system-broker/file-system-broker.js').then(async (e) => {
+      const broker = window.FileSystemBroker.requestAvailability();
+      const contents = await broker.getFileContents("*");
+      const fileData = broker.fileHandler;
+      let tmp = fileData.name.split('.');
+      let type = '';
+      // don't assume there is a file extension
+      if (tmp.length > 1) {
+        type = tmp.pop();
+      }
+      // wand hands off for next part now that we've got a file selected
+      SuperDaemonInstance.waveWand(
+        ["", "/", {
+          operation: 'file-selected',
+          contents: contents,
+          data: fileData,
+          type: type,
+        }, "hax-agent", "Agent"],
+        this.shadowRoot.querySelector("#merlin"),
+        "coin2"
+      );
+    });
+  }
+
+  // processing visualization
+  setProcessingVisual() {
+    let loadingIcon = document.createElement("simple-icon-lite");
+    loadingIcon.icon = "hax:loading";
+    loadingIcon.style.setProperty("--simple-icon-height", "40px");
+    loadingIcon.style.setProperty("--simple-icon-width", "40px");
+    loadingIcon.style.height = "150px";
+    loadingIcon.style.marginLeft = "8px";
+    store.toast(`Processing`, 5000, {
+      hat: "construction",
+      speed: 100,
+      walking: true,
+      slot: loadingIcon,
+    });
+  }
+
+  // upload file and do what the user asked contextually
+  async processFileContentsBasedOnUserDesire(values, mode, operationType) {
+    const usData = toJS(UserScaffoldInstance.data);
+    const e = usData.event;
+    this.setProcessingVisual();
+    switch (mode) {
+      // upload and possibly link/embed the item
+      case 'upload':
+      case 'link':
+      case 'insert-file':
+        if (mode === 'upload') {
+          // do the uploading
+          // confirm it went through
+          // put link in the dialog confirmation if desired to open in new window
+          // fire this specialized event up so things like HAX can intercept
+          this.dispatchEvent(
+            new CustomEvent("hax-file-upload", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: {
+                file: values.data,
+                placeHolderElement: null,
+                operationType: operationType,
+              },
+            })
+          );
+        }
+        else if (mode === 'link') {
+          if (store.editMode === false) {
+            store.editMode = true;
+          }
+          // do the uploading
+          // take resulting upload 
+          // put in editMode if we have to
+          // insert link in bottom of page / below whatever is active
+          setTimeout(() => {
+            let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
+              // fire this specialized event up so things like HAX can intercept
+              this.dispatchEvent(
+                new CustomEvent("hax-file-upload", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: {
+                    file: values.data,
+                    placeHolderElement: p,
+                    operationType: operationType,
+                  }
+                })
+              );
+          }, 300);
+        }
+        else {
+          if (store.editMode === false) {
+            store.editMode = true;
+          }
+          // upload
+          // take resulting upload 
+          // put in editMode if we have to
+          // insert result into bottom of page / active
+          // allowing hax to evaluate what type should be inserted (gizmoGuess)
+          setTimeout(() => {
+            let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
+            // fire this specialized event up so things like HAX can intercept
+            this.dispatchEvent(
+              new CustomEvent("hax-file-upload", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: {
+                  file: values.data,
+                  placeHolderElement: p,
+                  operationType: operationType,
+                },
+              })
+            );
+          }, 300);
+        }
+      break;
+      case 'insert-html':
+      case 'create-sibling':
+      case 'create-child':
+      case 'create-branch':
+        let endpointCall = null;
+        let dataToPost = new FormData();
+        switch (values.type) {
+          case 'docx':
+          case 'doc':
+            dataToPost.append("upload", values.data); // should contain our file
+            // single file vs whole site processing
+            endpointCall = "@core/docxToHtml";
+            if (mode === 'create-branch') {
+              endpointCall = "@haxcms/docxToSite";
+              dataToPost.append("method", 'branch');
+              dataToPost.append("type", 'branch');
+              // set parent to same as current page's parent
+              const item = toJS(store.activeItem);
+              dataToPost.append("parentId", item.parent);
+            }
+          break;
+          case 'md':
+          case "txt":
+            endpointCall = "@core/mdToHtml";
+            dataToPost = {
+              md: values.contents
+            };
+          break;
+          case "html":
+          case "htm":
+            // take content directly
+          break;
+        }
+        // put in editMode if we have to
+        // insert result into bottom of page
+        let response = {};
+        
+        if (endpointCall) {
+          if (mode === "insert-html") {
+            response = await MicroFrontendRegistry.call(
+              endpointCall,
+              dataToPost
+            );
+            if (response.status == 200) {
+              // fake file event from built in method for same ux
+              this.insertElementsFromContentBlob(response.data.contents || response.data);
+            }
+          }
+          else {
+            response = await MicroFrontendRegistry.call(
+              endpointCall,
+              dataToPost
+            );
+            if (response.status == 200) {
+              if (['create-sibling', 'create-child'].includes(mode)) {
+                this.createNewNode(mode.replace('create-', ''), values.data.name, response.data.contents || response.data);
+              }
+              else {
+                // must be a valid response and have at least SOME html to bother attempting
+                if ( response.data && response.data.contents != "") {
+                  // right here is where we need to interject our confirmation dialog
+                  // workflow. We can take the items that just came back and visualize them
+                  // using our outline / hierarchy visualization
+                  let reqBody = {};
+                  reqBody.items = response.data.items;
+                  await import(
+                    "@lrnwebcomponents/outline-designer/outline-designer.js"
+                  ).then(async (e) => {
+                    reqBody.jwt = toJS(store.jwt);
+                    reqBody.site = {
+                      name: toJS(store.manifest.metadata.site.name),
+                    };
+                    const outline = document.createElement("outline-designer");
+                    outline.items = response.data.items;
+                    outline.eventData = reqBody;
+                    outline.storeTools = true;
+
+                    const b1 = document.createElement("button");
+                    b1.innerText = "Confirm";
+                    b1.classList.add("hax-modal-btn");
+                    b1.addEventListener("click", async (e) => {
+                      const data = await outline.getData();
+                      let deleted = 0;
+                      let modified = 0;
+                      let added = 0;
+                      data.items.map((item) => {
+                        if (item.delete) {
+                          deleted++;
+                        } else if (item.new) {
+                          added++;
+                        } else if (item.modified) {
+                          modified++;
+                        }
+                      });
+                      let sumChanges = `${
+                        added > 0 ? `‣ ${added} new pages will be created\n` : ""
+                      }${
+                        modified > 0 ? `‣ ${modified} pages will be updated\n` : ""
+                      }${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ""}`;
+                      let confirmation = false;
+                      // no confirmation required if there are no tracked changes
+                      if (sumChanges == "") {
+                        confirmation = true;
+                      } else {
+                        confirmation = window.confirm(
+                          `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
+                        );
+                      }
+                      if (confirmation) {
+                        // @todo absolutely hate this solution. when we clean out the rats nest
+                        // that is iron-ajax calls in site-editor then we can simplify this action
+                        store.cmsSiteEditorAvailability().querySelector("#createajax").body = data;
+                        this.setProcessingVisual();
+                        // @todo absolutely hate this solution. when we clean out the rats nest
+                        // that is iron-ajax calls in site-editor then we can simplify this action
+                        store.cmsSiteEditorAvailability().querySelector("#createajax").generateRequest();
+                        const evt = new CustomEvent("simple-modal-hide", {
+                          bubbles: true,
+                          composed: true,
+                          cancelable: true,
+                          detail: {},
+                        });
+                        window.dispatchEvent(evt);
+                      }
+                    });
+                    const b2 = document.createElement("button");
+                    b2.innerText = "Cancel";
+                    b2.classList.add("hax-modal-btn");
+                    b2.classList.add("cancel");
+                    b2.addEventListener("click", (e) => {
+                      const evt = new CustomEvent("simple-modal-hide", {
+                        bubbles: true,
+                        composed: true,
+                        cancelable: true,
+                        detail: {},
+                      });
+                      window.dispatchEvent(evt);
+                    });
+                    // button container
+                    const div = document.createElement("div");
+                    div.appendChild(b1);
+                    div.appendChild(b2);
+
+                    this.dispatchEvent(
+                      new CustomEvent("simple-modal-show", {
+                        bubbles: true,
+                        cancelable: true,
+                        composed: true,
+                        detail: {
+                          title: "Confirm structure",
+                          elements: { content: outline, buttons: div },
+                          modal: true,
+                          styles: {
+                            "--simple-modal-titlebar-background": "transparent",
+                            "--simple-modal-titlebar-color": "black",
+                            "--simple-modal-width": "90vw",
+                            "--simple-modal-min-width": "300px",
+                            "--simple-modal-z-index": "100000000",
+                            "--simple-modal-height": "90vh",
+                            "--simple-modal-min-height": "400px",
+                            "--simple-modal-titlebar-height": "64px",
+                            "--simple-modal-titlebar-color": "black",
+                            "--simple-modal-titlebar-height": "80px",
+                            "--simple-modal-titlebar-background": "orange",
+                          },
+                        },
+                      })
+                    );
+                  });
+                }
+              }
+            }
+          }
+        }
+        else {
+          // implies HTML so just use the file without processing
+          // we don't support create-branch for this yet
+          if (mode === "insert-html") {
+            this.insertElementsFromContentBlob(values.contents);
+          }
+          // @todo we may support create-branch in the future for non-docx paths but just in case we goof up for now
+          else if (mode !== 'create-branch') {
+            this.createNewNode(mode.replace('create-', ''), values.data.name, values.contents);
+          }
+        }
+      break;
+    }
+  }
+  // create node w/ title and contents passed in
+  async createNewNode(type, title = "New page", contents = "<p></p>") {
+    let order = null;
+    let parent = null;
+    const item = toJS(store.activeItem);
+    if (item) {
+      if (type === "sibling") {
+        parent = item.parent;
+        // same so its put right next to it
+        order = parseInt(item.order);
+      } else if (type === "child") {
+        parent = item.id;
+        // find last child, or just be the 1st one.
+        let tmp = toJS(await store.getLastChildItem(item.id)).order;
+        order = 0;
+        if (tmp || tmp === 0) {
+          order = (tmp+1);
+        }
+      }
+      else if (type === "branch") {
+        parent = null;
+        order = 0;
+      }
+      else {
+        // API invoked incorrectly
+        parent = null;
+        order = 0;
+      }
+    }
+    if (title == "") {
+      title = "New page";
+    }
+    var payload = {
+      node: {
+        title: title,
+        location: "",
+        contents: contents,
+      },
+      order: order,
+      parent: parent,
+    };
+    // haxcms is in charge of making the node from here
+    this.dispatchEvent(new CustomEvent("haxcms-create-node", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        originalTarget: this,
+        values: payload,
+      },
+    }));
+  }
+
+  // insert content based on the contents we read from a file
+  // this will be under the active node
+  insertElementsFromContentBlob(content) {
+    let addToEnd = false;
+    // insert HTML needs to be editing the active page if its not in edit mode
+    if (store.editMode === false) {
+      store.editMode = true;
+      addToEnd = true;
+    }
+    else if (this.activeNode.hasAttribute("slot")) {
+      // test for slot on insert attempt
+      slot = this.activeNode.getAttribute("slot");
+    } 
+    const div = document.createElement('div');
+    div.innerHTML = content;
+
+    let slot = false;
+    // ensure we have a parent or we won't be able to insert beyond active and should just append to the bottom
+    if (!addToEnd && this.activeNode && this.activeNode.parentNode) {
+      for (var i = div.children.length - 1; i > 0; i--) {
+        if (slot) {
+          div.children[i].setAttribute("slot", slot);
+        }
+        this.activeNode.parentNode.insertBefore(
+          div.children[i],
+          this.activeNode.nextSibling
+        );
+      }
+    }
+    else {
+      // give initial setup time to process since we forced it into edit mode to be here
+      setTimeout(() => {
+        for (var i = div.children.length - 1; i > 0; i--) {
+          HAXStore.activeHaxBody.appendChild(
+            div.children[i]
+          );
+        }
+        setTimeout(() => {
+          HAXStore.activeHaxBody.scrollHere(this.activeNode);
+          setTimeout(() => {
+            HAXStore.activeHaxBody.scrollHere(this.activeNode);
+          }, 500);
+        }, 1000);
+      }, 300);
+    }
+    HAXStore.toast(this.t.contentImported);
+  }
+
+  // insert URL w/ variations in method
+  async insertUrl(input, mode) {
+    if (store.editMode === false) {
+      store.editMode = true;
+    }
+    if (mode) {
+      const response = await MicroFrontendRegistry.call("@core/metadata", {
+        q: input,
+      });
+      if (response.data && (response.data["og:title"] || response.data.title)) {
+        let values = {
+          title: response.data["og:title"] || response.data.title,
+          source: input,
+        };
+        HAXStore.insertLogicFromValues(values, this);
+      }
+    }
+  }
+
   constructor() {
     super();
     this.__winEvents = {
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
-      "hax-store-ready": "haxStoreReady",
       "jwt-logged-in": "_jwtLoggedIn",
+      "super-daemon-close": "sdCloseEvent",
     };
     this.rpgHat = "none";
     this.darkMode = false;
@@ -460,9 +898,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.allowedCallback = () => {
       return true;
     };
+    SuperDaemonInstance.keyHandlerCallback = () => {
+      const merlin = this.shadowRoot.querySelector("#merlin");
+      store.playSound("click");
+      // modal shouldn't be possible but just in-case
+      if (merlin.getAttribute("data-event") == "super-daemon-modal") {
+        HAXStore.haxTray.collapsed = false;
+      } else {
+        SuperDaemonInstance.mini = true;
+        SuperDaemonInstance.wand = true;
+        SuperDaemonInstance.activeNode =
+          this.shadowRoot.querySelector("#merlin");
+      }
+      SuperDaemonInstance.runProgram("", "*");
+      return true;
+    };
     // nothing message so we can suggest a link to make a suggestion
     SuperDaemonInstance.noResultsSlot = () => {
-      return html`Expecting to see results?
+      return html`<div class="no-results">
+          Expecting to see an option Merlin didn't provide?
+        </div>
         <a
           @click="${(e) => {
             HAXStore._haxStoreContribute(
@@ -470,27 +925,257 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "POP,enhancement",
               SuperDaemonInstance.commandContext +
                 " " +
-                SuperDaemonInstance.like
+                SuperDaemonInstance.value
             );
           }}"
-          >Make a suggestion</a
-        >
-        for what you thought you would see here!`;
+          >Make a suggestion to improve results</a
+        >`;
     };
     SuperDaemonInstance.appendContext("CMS");
-
+    SuperDaemonInstance.defineOption({
+      title: "Magic File Wand",
+      icon: "hax:hax2022",
+      priority: -10000,
+      tags: ["Agent", "help", "merlin"],
+      eventName: "super-daemon-run-program",
+      path: "HAX/agent",
+      value: {
+        name: "Agent",
+        machineName: "hax-agent",
+        program: async (input, values) => {
+          const usAction = toJS(UserScaffoldInstance.action);
+          const usMemory = toJS(UserScaffoldInstance.memory);
+          const usData = toJS(UserScaffoldInstance.data);
+          let results = [];
+          // file selected, so we are looping back around
+          if (values.operation === "file-selected") {
+            switch (values.type) {
+              case 'md':
+              case 'docx':
+              case 'doc':
+              case "txt":
+              case "html":
+              case "htm":
+                // only show options to make new content if we are NOT in edit mode
+                if (!usMemory.editMode) {
+                  results.push(
+                    {
+                      title: `New Sibling Page from ${values.type}`,
+                      icon: "hax:add-page",
+                      tags: ["agent"],
+                      value: {
+                        target: this,
+                        method: "processFileContentsBasedOnUserDesire",
+                        args: [values, 'create-sibling'],
+                      },
+                      eventName: "super-daemon-element-method",
+                      path: "Page created next to current",
+                    }
+                  );
+                  results.push(
+                    {
+                      title: `New Child Page from ${values.type}`,
+                      icon: "hax:add-child-page",
+                      tags: ["agent"],
+                      value: {
+                        target: this,
+                        method: "processFileContentsBasedOnUserDesire",
+                        args: [values, 'create-child'],
+                      },
+                      eventName: "super-daemon-element-method",
+                      path: "Page created under current",
+                    }
+                  );
+                  // @todo only docx currently supports this though there's really no reason it can't
+                  // happen in other HTML structured data
+                  if (['docx', 'doc'].includes(values.type)) {
+                    results.push(
+                      {
+                        title: `Create outline from ${values.type}`,
+                        icon: "hax:site-map",
+                        tags: ["agent"],
+                        value: {
+                          target: this,
+                          method: "processFileContentsBasedOnUserDesire",
+                          args: [values, 'create-branch'],
+                        },
+                        eventName: "super-daemon-element-method",
+                        path: "H1,H2 tags create menu pages",
+                      }
+                    );
+                  }
+                }
+                results.push(
+                  {
+                    title: `Insert ${values.type} contents in Page`,
+                    icon: "hax:html-code",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, 'insert-html'],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "Content converted to HTML and inserted",
+                  }
+                );
+              break;
+              case 'png':
+              case 'jpeg':
+              case 'gif':
+              case "jpg":
+                results.push(
+                  {
+                    title: `Insert ${values.type} in page`,
+                    icon: "editor:insert-photo",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, 'insert-file', 'image'],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "Image embedded in page",
+                  }
+                );
+              break;
+              case "pdf":
+                results.push(
+                  {
+                    title: `Embed ${values.type} in page`,
+                    icon: "hax:file-pdf",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, 'insert-file', 'iframe'],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "PDF embedded in a frame element",
+                  }
+                );
+              default:
+              // go run the hax hooks to see if any web components supply 
+              // a way of handling material that is of that file type
+              break;
+            }
+            results.push(
+              {
+                title: `Link to ${values.type} file`,
+                icon: "editor:insert-link",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "processFileContentsBasedOnUserDesire",
+                  args: [values, 'link', 'link'],
+                },
+                eventName: "super-daemon-element-method",
+                path: "File uploaded and linked to",
+              }
+            );
+            results.push(
+              {
+                title: `Just Upload ${values.type} file`,
+                icon: "file-upload",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "processFileContentsBasedOnUserDesire",
+                  args: [values, 'upload', 'upload-only'],
+                },
+                eventName: "super-daemon-element-method",
+                path: "File uploaded for later use",
+              }
+            );
+          }
+          else if (usAction.type === "drop" && values.type === "drop") {
+            const file = usData.file;
+            const contents = await file.text();
+            let tmp = file.name.split('.');
+            let type = '';
+            // don't assume there is a file extension
+            if (tmp.length > 1) {
+              type = tmp.pop();
+            }
+            // wand hands off for next part now that we've got a file selected
+            SuperDaemonInstance.waveWand(
+              ["", "/", {
+                operation: 'file-selected',
+                contents: contents,
+                data: file,
+                type: type,
+              }, "hax-agent", "Agent"],
+              this.shadowRoot.querySelector("#merlin"),
+              "coin2"
+            );
+          }
+          // default actions when we have no context
+          else {
+            results = [
+              {
+                title: "Select file..",
+                icon: "folder-open",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "selectFileToProcess",
+                  args: [],
+                },
+                eventName: "super-daemon-element-method",
+                path: "Watch Merlin work his magic!",
+              }
+            ];
+            // this forces it to just happen
+            // and can be disabled later if we obtain different magic file operations
+            this.selectFileToProcess();
+            /*
+            results = [
+              {
+                title: "URL with page title",
+                icon: "hax:hax2022",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "insertUrl",
+                  args: [input, true],
+                },
+                eventName: "super-daemon-element-method",
+                path: "HAX/agent/insert",
+              },
+              {
+                title: "Insert url alone",
+                icon: "hax:hax2022",
+                tags: ["agent"],
+                value: {
+                  target: this,
+                  method: "insertUrl",
+                  args: [input, false],
+                },
+                eventName: "super-daemon-element-method",
+                path: "HAX/agent/insert",
+              },
+            ];
+            */
+          }
+          return results;
+        },
+      },
+    });
     if (HAXStore.ready) {
-      let s = document.createElement("site-remote-content");
-      HAXStore.haxAutoloader.appendChild(s);
-      // site-remote-content injects citation element so ensure it's in there too!
-      let ce = document.createElement("citation-element");
-      HAXStore.haxAutoloader.appendChild(ce);
-      // page-flag for author notes
-      let flag = document.createElement("page-flag");
-      HAXStore.haxAutoloader.appendChild(flag);
-      // site-view for view blocks!!
-      let siteView = document.createElement("site-view");
-      HAXStore.haxAutoloader.appendChild(siteView);
+      // elements that are in HAXcms that are injected regardless of what editor says
+      // because the CMS controls certain internal connectors
+      [
+        "site-remote-content",
+        "citation-element",
+        "page-flag",
+        "site-view",
+        "site-collection-list",
+        "collection-list",
+        "collection-item",
+      ].map((name) => {
+        let el = document.createElement(name);
+        HAXStore.haxAutoloader.appendChild(el);
+      });
 
       // links need to be given support for internal linkage updates on the form
       if (!HAXStore.primativeHooks.a) {
@@ -553,10 +1238,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       addPage: "Add page",
       addChildPage: "Add child page",
       clonePage: "Clone page",
-      importDocxFile: "Import docx file",
       delete: "Delete page",
       shareSite: "Share site",
       siteSettings: "Site settings",
+      themeSettings: "Theme settings",
+      seoSettings: "SEO settings",
+      authorSettings: "Author settings",
       close: "Close",
       settings: "Settings",
       edit: "Edit",
@@ -570,12 +1257,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       more: "More",
       siteActions: "Site actions",
       insights: "Insights dashboard (beta)",
-      viewBuilder: "View builder (beta)",
+      viewBuilder: "View builder (alpha)",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",
       menu: "Menu",
       showMore: "More",
+      contentImported: "Content imported!",
     };
     this.backText = "Site list";
     this.painting = true;
@@ -587,9 +1275,34 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.backLink = "../../";
     this.activeTagName = "";
     this.activeNode = null;
+    this.activeDrag = false;
+    this.activeType = null;
     if (window.appSettings && window.appSettings.backLink) {
       this.backLink = window.appSettings.backLink;
     }
+    // user scaffolding wired up to superDaemon
+    autorun(() => {
+      const usAction = toJS(UserScaffoldInstance.action);
+      const usData = toJS(UserScaffoldInstance.data);
+      // try to evaluate typing in merlin
+      if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn &&
+        SuperDaemonInstance.programName === null &&
+        usAction.type === "drag"
+      ) {
+        this.activeDrag = true;
+        this.activeType = usData.value || usData.architype;
+      } else if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn &&
+        SuperDaemonInstance.programName === null &&
+        usAction.type === "dragleave"
+      ) {
+        this.activeDrag = false;
+        this.activeType = null;
+      }
+    });
     autorun(() => {
       const activeGizmo = toJS(HAXStore.activeGizmo);
       if (activeGizmo && activeGizmo.title) {
@@ -650,13 +1363,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
     }, 0);
   }
-  haxStoreReady(e) {
-    // it is safe to add in elements that we want the editor to have every haxcms instance
-    if (e.detail) {
-      let s = document.createElement("site-remote-content");
-      HAXStore.haxAutoloader.appendChild(s);
-    }
-  }
+
   soundToggle() {
     const status = !toJS(store.soundStatus);
     store.soundStatus = status;
@@ -818,18 +1525,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="delete page"
           ></simple-toolbar-button>
 
-
-          <simple-toolbar-button
-            icon="hax:wizard-hat"
-            label="${this.t.merlin}"
-            voice-command="${this.t.merlin}"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            id="merlin"
-            @click="${this.haxButtonOp}"
-            data-event="super-daemon"
-            show-text-label
-           ></simple-toolbar-button>
-
           <simple-toolbar-button
             data-event="content-edit"
             icon="settings"
@@ -938,6 +1633,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ?hidden="${this.editMode}"
               ?disabled="${this.editMode}"
               tabindex="${this.editMode ? "-1" : "0"}"
+              id="sharebutton"
+              @click="${this._shareButtonTap}"
+              icon="social:share"
+              part="sharebtn"
+              show-text-label
+              icon-position="left"
+              label="${this.t.shareSite}"
+            ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+            <simple-toolbar-button
+              ?hidden="${this.editMode}"
+              ?disabled="${this.editMode}"
+              tabindex="${this.editMode ? "-1" : "0"}"
               id="insightsbutton"
               icon="hax:clipboard-pulse"
               part="insightsbtn"
@@ -964,32 +1673,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             </simple-toolbar-menu-item>
 
             <simple-toolbar-menu-item>
-            <simple-toolbar-button
-              ?hidden="${this.editMode}"
-              ?disabled="${this.editMode}"
-              tabindex="${this.editMode ? "-1" : "0"}"
-              id="sharebutton"
-              @click="${this._shareButtonTap}"
-              icon="social:share"
-              part="sharebtn"
-              show-text-label
-              icon-position="left"
-              label="${this.t.shareSite}"
-            ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-              <haxcms-button-add
-                hidden
-                ?disabled="${this.editMode}"
-                type="docximport"
-                id="docximport"
-                show-text-label
-                data-super-daemon-path="CMS/action/import/docx"
-                data-super-daemon-label="${this.t.importDocxFile}"
-                data-super-daemon-icon="hax:file-docx"
-              ></haxcms-button-add>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
               <simple-toolbar-button
                 @click="${this._manifestButtonTap}"
                 icon-position="left"
@@ -1003,9 +1686,46 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 label="${this.t.editSettings}"
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
-            
           </simple-toolbar-menu>
           <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
+          <simple-toolbar-button
+            icon="hax:wizard-hat"
+            label="${this.t.merlin}"
+            voice-command="${this.t.merlin}"
+            icon-position="${this.getIconPosition(this.responsiveSize)}"
+            class="merlin"
+            id="merlin"
+            @click="${this.haxButtonOp}"
+            data-event="${
+              this.responsiveSize === "xs"
+                ? "super-daemon-modal"
+                : "super-daemon"
+            }"
+            show-text-label
+          ></simple-toolbar-button>
+          <super-daemon-search
+            @click="${this.haxButtonOp}"
+            @value-changed="${this.haxButtonOp}"
+            @drop="${this.dropEvent}"
+            @dragenter="${this.dragenterEvent}"
+            @dragleave="${this.dragleaveEvent}"
+            @dragover="${this.dragoverEvent}"
+            icon="hax:wizard-hat"
+            id="search"
+            voice-search
+            class="merlin"
+            data-event="${
+              this.responsiveSize === "xs"
+                ? "super-daemon-modal"
+                : "super-daemon"
+            }"
+            ?hidden="${["xs"].includes(this.responsiveSize)}"
+            mini
+            wand
+            droppable-type="${this.activeType}"
+            ?droppable="${this.activeDrag}"
+          >
+          </super-daemon-search>
         </simple-toolbar>
 
         <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu"
@@ -1076,17 +1796,86 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     `;
   }
 
+  /**
+   * drag / drop event block
+   */
+  dropEvent(e) {
+    e.preventDefault();
+    this.activeDrag = false;
+    this.activeType = null;
+    SuperDaemonInstance.waveWand(
+      ["", "/", e, "hax-agent", "Agent"],
+      this.shadowRoot.querySelector("#merlin")
+    );
+  }
+  dragenterEvent(e) {
+    e.preventDefault();
+    this.sdSearch.dragover = true;
+  }
+  dragoverEvent(e) {
+    e.preventDefault();
+    this.sdSearch.dragover = true;
+  }
+  dragleaveEvent(e) {
+    e.preventDefault();
+    this.sdSearch.dragover = false;
+  }
+  // daemon was told to close so enable the search bar again
+  sdCloseEvent(e) {
+    setTimeout(() => {
+      // trap helps ensure user expectation of no input but without triggering
+      // an input change event which activates things running
+      this._ignoreReset = true;
+      this.sdSearch.value = "";
+    }, 0);
+    this.sdSearch.disabled = false;
+    this.sdSearch.dragover = false;
+    this.sdSearch.droppable = false;
+    this.sdSearch.droppableType = null;
+  }
+
   haxButtonOp(e) {
     let exec = e.target.getAttribute("data-event");
     switch (exec) {
       case "super-daemon":
-        store.playSound("click");
-        SuperDaemonInstance.open();
-        HAXStore.haxTray.collapsed = false;
+        if (!this._ignoreReset || e.type === "click") {
+          const value = this.sdSearch.value;
+          if (e.type === "value-changed") {
+            if (value) {
+              SuperDaemonInstance.waveWand(
+                [value, "*"],
+                this.shadowRoot.querySelector("#merlin"),
+                null
+              );
+            }
+          } else {
+            SuperDaemonInstance.waveWand(
+              [value, "*"],
+              this.shadowRoot.querySelector("#merlin"),
+              null
+            );
+          }
+          // this will reset UX expectation but also trigger this to run again so need to
+          // have weird loop above to ensure it's not going to affect it
+          this.sdSearch.value = null;
+          // this helps with accessibility
+          this.sdSearch.disabled = false;
+          this.sdSearch.dragover = false;
+          this.sdSearch.droppable = false;
+          this.sdSearch.droppableType = null;
+        }
+        this._ignoreReset = false;
+        break;
+      case "super-daemon-modal":
+        if (!this._ignoreReset || e.type === "click") {
+          store.playSound("click");
+          SuperDaemonInstance.open();
+          HAXStore.haxTray.collapsed = false;
+        }
         break;
       case "media-program":
         store.playSound("click");
-        SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
+        SuperDaemonInstance.runProgram("sources");
         SuperDaemonInstance.open();
         HAXStore.haxTray.collapsed = false;
         break;
@@ -1184,11 +1973,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           {
             varPath: "createNodePath",
             selector: "#duplicatebutton",
-          },
-          {
-            varPath: "createNodePath",
-            selector: "#docximport",
-          },
+          }
         ];
         // see which features should be enabled
         ary.forEach((pair) => {
@@ -1241,6 +2026,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           path: item.getAttribute("data-super-daemon-path"),
         });
       });
+    this.sdSearch = this.shadowRoot.querySelector("super-daemon-search");
+    SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector("#merlin");
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
       title: this.t.save,
@@ -1281,7 +2068,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.siteSettings,
       icon: "hax:site-settings",
-      tags: ["CMS", "site", "settings", "operation", "command"],
+      tags: ["CMS", "site", "settings", "operation", "command", "theme", "seo", "author"],
       value: {
         target: this,
         method: "_manifestButtonTap",
@@ -1290,6 +2077,45 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "CMS",
       eventName: "super-daemon-element-method",
       path: "CMS/action/site/settings",
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.themeSettings,
+      icon: "hax:site-settings",
+      tags: ["CMS", "site", "settings", "operation", "command", "theme", "seo", "author"],
+      value: {
+        target: this,
+        method: "_manifestButtonTap",
+        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/site/settings/theme",
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.seoSettings,
+      icon: "hax:site-settings",
+      tags: ["CMS", "site", "settings", "operation", "command", "theme", "seo", "search", "engine"],
+      value: {
+        target: this,
+        method: "_manifestButtonTap",
+        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/site/settings/seo",
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.authorSettings,
+      icon: "hax:site-settings",
+      tags: ["CMS", "site", "settings", "operation", "command", "theme", "author"],
+      value: {
+        target: this,
+        method: "_manifestButtonTap",
+        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/site/settings/author",
     });
     SuperDaemonInstance.defineOption({
       title: this.t.shareSite,
@@ -1337,7 +2163,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         method: "toggle",
       },
       voice: "(toggle) dark mode",
-      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-method",
       path: "CMS/action/darkMode",
     });
@@ -1349,7 +2174,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         target: this.shadowRoot.querySelector(".soundToggle"),
       },
-      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-click",
       path: "CMS/action/sound",
     });
@@ -1439,6 +2263,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "clean-one",
             "clean-two",
             "learn-two-theme",
+            "polaris-theme",
+            "collections-theme",
+            "training-theme",
             "bootstrap-theme",
             "outline-player",
             "haxor-slevin",
@@ -1578,7 +2405,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         } else {
           this.rpgHat = "none";
         }
-        SuperDaemonInstance.close();
+        if (oldValue !== undefined) {
+          SuperDaemonInstance.close();
+        }
         // observer
         this._editModeChanged(this[propName], oldValue);
         // notify
@@ -1612,6 +2441,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       userName: {
         type: String,
         attribute: "user-name",
+      },
+      activeDrag: {
+        type: Boolean,
+      },
+      activeType: {
+        type: String,
       },
       activeNode: {
         type: Object,
@@ -1712,6 +2547,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
+      UserScaffoldInstance.writeMemory("editMode", this.editMode);
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {

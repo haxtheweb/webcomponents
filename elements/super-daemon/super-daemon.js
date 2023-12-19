@@ -9,6 +9,7 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
 import "./lib/super-daemon-ui.js";
 import { SuperDaemonToastInstance } from "./lib/super-daemon-toast.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+
 /**
  * `super-daemon`
  * ``
@@ -34,9 +35,9 @@ class SuperDaemon extends SimpleColors {
       program: { type: String },
       programSearch: { type: String },
       like: { type: String },
-      questionTags: { type: Array },
       value: { type: String },
       mini: { type: Boolean },
+      wand: { type: Boolean, reflect: true },
       activeNode: { type: Object },
       programTarget: { type: Object },
       voiceSearch: { type: Boolean, reflect: true, attribute: "voice-search" },
@@ -56,7 +57,7 @@ class SuperDaemon extends SimpleColors {
     // change theme program
     SuperDaemonInstance.defineOption({
       title: "Toggle Santa Mode",
-      icon: "settings-voice",
+      textCharacter: "🎅",
       tags: [
         "Developer",
         "government",
@@ -90,6 +91,7 @@ class SuperDaemon extends SimpleColors {
     this.toastInstance = SuperDaemonToastInstance;
     // used when in mini mode to know what to point to and how to focus after the fact
     this.activeSelection = null;
+    this.wandTarget = null; // consistent wand target to fallback on across app
     this.voiceCommands = {};
     this.programTarget = null;
     this.activeRange = null;
@@ -107,11 +109,11 @@ class SuperDaemon extends SimpleColors {
     this.icon = "hardware:keyboard-return";
     this.context = [];
     this.opened = false;
-    this.questionTags = [];
     this.items = [];
     this.loading = false;
     this.like = "";
     this.mini = false;
+    this.wand = false;
     this._programValues = {};
     this.programSearch = "";
     this.allItems = [];
@@ -120,7 +122,7 @@ class SuperDaemon extends SimpleColors {
     this.commandContext = "*";
     const isSafari = window.safari !== undefined;
     if (isSafari) {
-      this.key1 = "Ctrl";
+      this.key1 = "Meta";
     } else {
       this.key1 = "Alt";
     }
@@ -162,7 +164,7 @@ class SuperDaemon extends SimpleColors {
       this._addVoiceCommand.bind(this),
       { signal: this.windowControllers.signal }
     );
-    window.addEventListener("super-daemon-modal-close", this.close.bind(this), {
+    window.addEventListener("super-daemon-close", this.close.bind(this), {
       signal: this.windowControllers.signal,
     });
   }
@@ -171,18 +173,53 @@ class SuperDaemon extends SimpleColors {
     this.windowControllers2.abort();
     super.disconnectedCallback();
   }
-  // reset to filter for a specific term with something like runProgram('*',null,null,null, "Insert Blocks");
-  // Run wikipedia search with runProgram('/',{method},'Wikipedia','Drupal');
-  runProgram(
+  // waving the magic wand is a common feedback loop combination
+  // we have a target as far as location to position
+  // we are in mini / wand mode
+  // we run a program
+  // we play a sound (optional)
+  // we open merlin
+  // this is to save on this continuous interaction pattern
+  waveWand(params, target = null, sound = null) {
+    if (!target) {
+      target = this.wandTarget;
+    }
+    this.mini = true;
+    this.wand = true;
+    this.activeNode = target;
+    this.runProgram(...params);
+    if (sound) {
+      this.playSound(sound);
+    }
+    this.open();
+  }
+  // reset to filter for a specific term with something like runProgram('blocks','*',null,null,null);
+
+  async runProgram(
+    like = null,
     context = "/",
     values = {},
     program = null,
     name = null,
-    search = "",
-    like = null
+    search = ""
   ) {
     this.commandContext = context;
-    this._programToRun = program;
+    // resolve program as string based name vs function passed in
+    if (typeof program === "string") {
+      const itemMatch = await this.allItems.find((item) => {
+        if (item.value.machineName === program) {
+          return true;
+        }
+        return false;
+      });
+      if (itemMatch) {
+        this._programToRun = itemMatch.value.program;
+      } else {
+        console.error("Incorrect program called", program);
+      }
+    } else {
+      this._programToRun = program;
+    }
     this.programSearch = search;
     // used to force a search prepopulation
     if (like != null) {
@@ -190,19 +227,21 @@ class SuperDaemon extends SimpleColors {
     }
     // ensure we have a program as this could be used for resetting program state
     if (this._programToRun) {
-      this.shadowRoot.querySelector("super-daemon-ui").setupProgram();
-      setTimeout(async () => {
-        try {
-          this.loading = true;
-          this.programResults = await this._programToRun(
-            this.programSearch,
-            values
-          );
-          this.loading = false;
-        } catch (e) {
-          this.loading = false;
-        }
-      }, 50);
+      setTimeout(() => {
+        this.shadowRoot.querySelector("super-daemon-ui").setupProgram();
+        setTimeout(async () => {
+          try {
+            this.loading = true;
+            this.programResults = await this._programToRun(
+              this.programSearch,
+              values
+            );
+            this.loading = false;
+          } catch (e) {
+            this.loading = false;
+          }
+        }, 50);
+      }, 0);
     } else {
       this.programResults = [];
     }
@@ -215,6 +254,7 @@ class SuperDaemon extends SimpleColors {
       this._programValues = data;
       this.like = "";
       this.runProgram(
+        null,
         data.context,
         this._programValues,
         data.program,
@@ -222,7 +262,7 @@ class SuperDaemon extends SimpleColors {
         ""
       );
     } else {
-      this.runProgram("/");
+      this.runProgram("", "/");
       this._programValues = {};
     }
   }
@@ -265,6 +305,10 @@ class SuperDaemon extends SimpleColors {
       if (!option.priority) {
         option.priority = 0;
       }
+      // no context means it's pervasive
+      if (!option.context) {
+        option.context = "*";
+      }
       // create new object from existing so we can build an index
       // remove icon, image, value, textCharacter, eventName as these are not searchable values
       // then create an idex by making everything else into a space separated string
@@ -290,13 +334,13 @@ class SuperDaemon extends SimpleColors {
           // helps w/ splitting on / or else it's just a single item anyway
           let q = i.split("/");
           q.map((j) => {
-            if (!["", "*", "/", " ", "?", ">"].includes(j)) {
+            if (!["", "*", "/", " ", ">"].includes(j)) {
               index.push(j.toLocaleLowerCase());
             }
           });
         } else if (Array.isArray(i)) {
           i.map((j) => {
-            if (!["", "*", "/", " ", "?", ">"].includes(j)) {
+            if (!["", "*", "/", " ", ">"].includes(j)) {
               index.push(j.toLocaleLowerCase());
             }
           });
@@ -315,12 +359,8 @@ class SuperDaemon extends SimpleColors {
   }
 
   updateSearchInputViaVoice(input) {
-    const field = this.shadowRoot
-      .querySelector("super-daemon-ui")
-      .shadowRoot.querySelector("simple-fields-field");
-    field.value = input;
-    field.focus();
-    field.select();
+    this.shadowRoot.querySelector("super-daemon-ui").like = input;
+    this.shadowRoot.querySelector("super-daemon-ui").focusInput();
     // turn off bc we got a match
     setTimeout(() => {
       this.setListeningStatus(false);
@@ -358,16 +398,13 @@ class SuperDaemon extends SimpleColors {
         // platform specific additional modifier
         if (this.key1 == "Ctrl" && e.ctrlKey) {
           this.opened = !this.opened;
-          // ensure we're not in mini mode if we are
-          if (this.opened) {
-            this.mini = false;
-          }
+          this.keyHandlerCallback();
         } else if (this.key1 == "Alt" && e.altKey) {
           this.opened = !this.opened;
-          // ensure we're not in mini mode if we are
-          if (this.opened) {
-            this.mini = false;
-          }
+          this.keyHandlerCallback();
+        } else if (this.key1 == "Meta" && (e.key === "Meta" || e.metaKey)) {
+          this.opened = !this.opened;
+          this.keyHandlerCallback();
         }
       }
       if (e.key == "Escape" && this.opened) {
@@ -421,6 +458,9 @@ class SuperDaemon extends SimpleColors {
           position: fixed !important;
           margin: auto;
         }
+        web-dialog super-daemon-ui {
+          --super-daemon-search-width: 100%;
+        }
         :host([resize="none"]) web-dialog[open].style-scope.simple-modal,
         :host([resize="horizontal"]) web-dialog[open].style-scope.simple-modal {
           top: calc(50% - var(--simple-modal-height, auto) / 2);
@@ -439,18 +479,28 @@ class SuperDaemon extends SimpleColors {
           --simple-icon-width: 24px;
           --simple-icon-height: 24px;
         }
+        :host([wand]) absolute-position-behavior {
+          top: 24px !important;
+          right: 0;
+          position: fixed !important;
+          display: table;
+        }
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 10000);
           min-width: 280px;
+          width: 280px;
           color: var(--simple-colors-default-theme-grey-12, black);
         }
+        absolute-position-behavior super-daemon-ui[mini][wand] {
+          margin: -18px 0 0 0;
+          padding: 0px;
+        }
         absolute-position-behavior super-daemon-ui {
-          margin-top: -46px;
+          width: 280px;
+          margin: -64px 0 0 -8px;
+          padding: 4px 0 0 0;
           color: var(--simple-colors-default-theme-grey-12, black);
           background-color: var(--simple-colors-default-theme-grey-1, white);
-          width: 400px;
-          margin-left: 14px;
-          padding-top: 8px;
         }
         super-daemon-ui {
           color: var(--simple-colors-default-theme-grey-12, black);
@@ -470,13 +520,14 @@ class SuperDaemon extends SimpleColors {
   /**
    * Close the modal and do some clean up
    */
-  close(e) {
+  close(e = {}) {
     // clean up event for click away in mini mode if active
-    this.opened = false;
     this.activeNode = null;
     this.loading = false;
     this.like = "";
+    this.opened = false;
     this.mini = false;
+    this.wand = false;
     this._programValues = {};
     this.programSearch = "";
     this.voiceCommands = {};
@@ -488,6 +539,20 @@ class SuperDaemon extends SimpleColors {
     this.setListeningStatus(false);
     // hide the toast if it's up.. unless in santa mode..
     if (!this.santaMode) {
+      // generate a close event if this wasn't already from a close event
+      // this happens when other parts of the program invoke close() directly
+      // as opposed to the event of selecting a result
+      if (!e || e.type !== "super-daemon-close") {
+        window.dispatchEvent(
+          new CustomEvent("super-daemon-close", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: true,
+          })
+        );
+      }
+      // we have an event, but not a close event
       if (e && e.type !== "super-daemon-close" && e.type !== "close") {
         window.dispatchEvent(
           new CustomEvent("super-daemon-toast-hide", {
@@ -518,6 +583,11 @@ class SuperDaemon extends SimpleColors {
       if (item.context) {
         // if we're in a global context, include all global context results
         let results = [];
+        // if we have a context and it's ALL then it shows up for any context
+        // system wide commands for example
+        if (item.context === "*") {
+          return item;
+        }
         if (this.commandContext == "*") {
           results = context.filter((value) => item.context.includes(value));
         } else {
@@ -552,7 +622,7 @@ class SuperDaemon extends SimpleColors {
       this.audio = new Audio(
         new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
       );
-      this.audio.volume = 0.8;
+      this.audio.volume = 0.3;
       this.audio.onended = (event) => {
         resolve();
       };
@@ -580,9 +650,20 @@ class SuperDaemon extends SimpleColors {
     }
   }
   // if we click away, take the active value and apply it to the line
+  // ensure a synthetic event does not trigger this
   clickOnMiniMode(e) {
-    if (e.target !== this) {
-      this.miniCancel();
+    if (e.isTrusted) {
+      // ensure clicking on us does not disappear but since this is a "once"
+      // event application we need to reissue the event if we clicked on us
+      if (e.target !== this) {
+        this.miniCancel();
+      } else {
+        window.addEventListener("click", this.clickOnMiniMode.bind(this), {
+          once: true,
+          passive: true,
+          signal: this.windowControllers2.signal,
+        });
+      }
     }
   }
   // if we cancel out of mini mode there's a lot of UX enhancements we can do for the end user
@@ -591,6 +672,7 @@ class SuperDaemon extends SimpleColors {
       this.activeNode &&
       this.activeNode.focus &&
       this.mini &&
+      !this.wand &&
       this.activeRange &&
       this.activeSelection
     ) {
@@ -641,7 +723,7 @@ class SuperDaemon extends SimpleColors {
     }
     this.windowControllers2.abort();
     this.reprocessVoiceCommands();
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       this.windowControllers2 = new AbortController();
       // ensure if we click away from the UI that we close and clean up
       if (this.mini) {
@@ -651,15 +733,8 @@ class SuperDaemon extends SimpleColors {
           signal: this.windowControllers2.signal,
         });
       }
-      this.shadowRoot
-        .querySelector("super-daemon-ui")
-        .shadowRoot.querySelector("simple-fields-field")
-        .focus();
-      this.shadowRoot
-        .querySelector("super-daemon-ui")
-        .shadowRoot.querySelector("simple-fields-field")
-        .select();
-    }, 0);
+      this.shadowRoot.querySelector("super-daemon-ui").focusInput();
+    });
   }
   focusout(e) {
     if (e) {
@@ -677,14 +752,7 @@ class SuperDaemon extends SimpleColors {
       if (parent !== this.shadowRoot.querySelector("super-daemon-ui")) {
         setTimeout(() => {
           if (this.opened) {
-            this.shadowRoot
-              .querySelector("super-daemon-ui")
-              .shadowRoot.querySelector("simple-fields-field")
-              .focus();
-            this.shadowRoot
-              .querySelector("super-daemon-ui")
-              .shadowRoot.querySelector("simple-fields-field")
-              .select();
+            this.shadowRoot.querySelector("super-daemon-ui").focusInput();
           }
         }, 0);
       }
@@ -704,7 +772,7 @@ class SuperDaemon extends SimpleColors {
       ? html`
           <absolute-position-behavior
             justify
-            position="bottom"
+            position="${this.wand ? "right" : "bottom"}"
             allow-overlap
             sticky
             auto
@@ -712,11 +780,11 @@ class SuperDaemon extends SimpleColors {
             ?hidden="${!this.opened}"
           >
             <super-daemon-ui
-              ?open="${this.opened}"
+              ?opened="${this.opened}"
               ?mini="${this.mini}"
+              ?wand="${this.wand}"
               icon="${this.icon}"
               ?dark="${this.dark}"
-              .questionTags="${this.questionTags}"
               ?loading="${this.loading}"
               like="${this.like}"
               ?listening-for-input="${this.listeningForInput}"
@@ -729,7 +797,10 @@ class SuperDaemon extends SimpleColors {
               @super-daemon-close="${this.close}"
               @super-daemon-command-context-changed="${this
                 .commandContextChanged}"
-            ></super-daemon-ui>
+              >${this.noResultsSlot(
+                this.like || this.programSearch
+              )}</super-daemon-ui
+            >
           </absolute-position-behavior>
         `
       : html`
@@ -746,14 +817,13 @@ class SuperDaemon extends SimpleColors {
             @focusout="${this.focusout}"
           >
             <super-daemon-ui
-              ?open="${this.opened}"
+              ?opened="${this.opened}"
               icon="${this.icon}"
               ?loading="${this.loading}"
               like="${this.like}"
               ?dark="${this.dark}"
               ?voice-search="${this.voiceSearch}"
               ?listening-for-input="${this.listeningForInput}"
-              .questionTags="${this.questionTags}"
               @like-changed="${this.likeChanged}"
               .items="${this.itemsForDisplay(this.items, this.programResults)}"
               command-context="${this.commandContext}"
@@ -899,9 +969,6 @@ class SuperDaemon extends SimpleColors {
     this.voiceCommands["(run) program"] = (response) => {
       this.commandContextChanged({ detail: { value: "/", label: "program" } });
     };
-    this.voiceCommands["(I need) help"] = (response) => {
-      this.commandContextChanged({ detail: { value: "?", label: "help" } });
-    };
     this.voiceCommands["developer (mode)"] = (response) => {
       this.commandContextChanged({
         detail: { value: ">", label: "developer" },
@@ -913,6 +980,19 @@ class SuperDaemon extends SimpleColors {
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
+    }
+    // wand hasa to forcibly be near the target
+    if (
+      changedProperties.has("activeNode") &&
+      this.activeNode &&
+      this.wand &&
+      this.mini
+    ) {
+      requestAnimationFrame(() => {
+        const rect = this.activeNode.getBoundingClientRect();
+        this.shadowRoot.querySelector("absolute-position-behavior").style.left =
+          rect.left + rect.width + "px";
+      });
     }
     if (changedProperties.has("commandContext")) {
       this.dispatchEvent(
@@ -1023,11 +1103,7 @@ class SuperDaemon extends SimpleColors {
               // if program, reset input and prompt for more!
               if (item.value.program) {
                 this.playSound().then((e) => {
-                  let field = this.shadowRoot
-                    .querySelector("super-daemon-ui")
-                    .shadowRoot.querySelector("simple-fields-field");
-                  field.focus();
-                  field.select();
+                  this.shadowRoot.querySelector("super-daemon-ui").focusInput();
                 });
               } else {
                 // disable bc we got a hit
@@ -1046,7 +1122,6 @@ class SuperDaemon extends SimpleColors {
       switch (e.detail.value) {
         case "/":
         case "*": // global context / anything
-        case "?":
         case ">":
           this.commandContext = e.detail.value;
           this.items = this.filterItems(this.allItems, this.context);
@@ -1074,6 +1149,12 @@ class SuperDaemon extends SimpleColors {
         }
       }, 0);
     }
+  }
+
+  // key handler as far as what to do if combo pressed
+  // this way application can modify defaults as needed
+  keyHandlerCallback() {
+    return true;
   }
   // override to block calling from global key commands
   allowedCallback() {

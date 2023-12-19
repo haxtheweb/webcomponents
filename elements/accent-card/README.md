@@ -8,14 +8,14 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/accent-card.js';
+import '@lrnwebcomponents/accent-card/accent-card.js';
 /* At top of an application */
 <script type="module" src="accent-card.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/accent-card.js';
+  import '@lrnwebcomponents/accent-card/accent-card.js';
 
-  import {AccentCard} from '@lrnwebcomponents/accent-card';
+  import {AccentCard} from '@lrnwebcomponents/accent-card/accent-card';
 </script>
 ```
 

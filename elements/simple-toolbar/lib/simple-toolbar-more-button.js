@@ -39,7 +39,7 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
     this.toggled = false;
     this.toggles = true;
     this.label = "More buttons";
-    this.labelToggled = "Fewer buttons";
+    this.labelToggled = "Less buttons";
     this.tooltipDirection = "left";
     this.disabled = false;
   }

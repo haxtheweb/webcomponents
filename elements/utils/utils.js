@@ -194,10 +194,64 @@ export function localStorageGet(name, defaultValue = "") {
   }
 }
 
+// convert mimetype into a readable file extension
+export function mimeTypeToName(mimeType) {
+  let data = mimeType.split('/');
+  switch (data[1]) {
+    case 'msword':
+      return '.doc';
+    case 'application/vnd.ms-excel':
+      return '.xls';
+    case 'vnd.ms-powerpoint':
+      return '.ppt';
+    case 'vnd.openxmlformats-officedocument.wordprocessingml.document':
+      return '.docx';
+    case 'vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+      return '.xlsx';
+    case 'vnd.openxmlformats-officedocument.presentationml.presentation':
+      return '.pptx';
+    case 'mpeg':
+      return '.mp3';
+    case 'svg+xml':
+      return '.svg';
+    case 'markdown':
+      return '.md';
+    case 'plain':
+      return 'text';
+    case 'text':
+      return '.txt';
+    case 'rtf':
+    case 'gif':
+    case 'jpeg':
+    case 'jpg':
+    case 'png':
+    case 'webm':
+    case 'webp':
+    case 'html':
+    case 'htm':
+    case 'zip':
+    case 'csv':
+    case 'pdf':
+    case 'mp4':
+    return `.${data[1]}`;
+  }
+
+  return 'file';
+}
+
 // set type safe variables
 export function localStorageSet(name, newItem) {
   try {
     return localStorage.setItem(name, JSON.stringify(newItem));
+  } catch (e) {
+    return false;
+  }
+}
+
+// delete item from local storage
+export function localStorageDelete(name) {
+  try {
+    return localStorage.removeItem(name);
   } catch (e) {
     return false;
   }

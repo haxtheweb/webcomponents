@@ -172,7 +172,7 @@ class CourseCard extends SimpleColors {
         <div id="card_wrap">
           <div
             id="course_image"
-            style="background-image:url(${this.image})"
+            style="background-image:url('${this.image}')"
           ></div>
           <div id="course_icon">
             <simple-icon

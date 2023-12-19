@@ -15,6 +15,7 @@ import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-ou
 import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
 import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 configure({ enforceActions: false }); // strict mode off
 class Store {
   constructor() {
@@ -27,7 +28,7 @@ class Store {
     this.location = null;
     this.currentRouterLocation = {};
     this.jwt = null;
-    this.version = "0.0.0";
+    this.version = null;
     this.soundStatus = localStorageGet("app-hax-soundStatus", true);
     this.darkMode = !localStorageGet("app-hax-darkMode")
       ? false
@@ -76,9 +77,11 @@ class Store {
       themeElement: observable, // theme element
       version: observable, // version of haxcms FRONTEND as per package.json
       routerManifest: computed, // router mixed in manifest w/ routes / paths
-      siteTitle: computed,
+      siteTitle: computed, // site title
+      siteDescription: computed, // site description
       isLoggedIn: computed, // simple boolean for state so we can style based on logged in
       themeData: computed, // get the active theme from manifest + activeId
+      regionData: computed, // get the active region data from manifest + activeId
       homeLink: computed,
       activeId: observable, // this affects all state changes associated to activeItem
       activeItem: computed, // active item object
@@ -95,6 +98,30 @@ class Store {
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
       badDevice: observable, // if we have a low performance device
     });
+  }
+  /**
+   * regionData is pulled out of theme info
+   */
+  get regionData() {
+    if (this.manifest) {
+      var regionData = {};
+      // this is required so better be...
+      if (varExists(this.manifest, "metadata.theme.regions")) {
+        regionData = this.manifest.metadata.theme.regions;
+      } else {
+        // fallback juuuuust to be safe...
+        regionData = {
+          header: null,
+          sidebarFirst: null,
+          sidebarSecond: null,
+          contentTop: null,
+          contentBottom: null,
+          footerPrimary: null,
+          footerSecondary: null,
+        };
+      }
+      return regionData;
+    }
   }
   /**
    * Get a unique slug name / path based on existing slug, page data and if we are to automatically generate
@@ -174,7 +201,7 @@ class Store {
                 import.meta.url
               ).href
             );
-            this.audio.volume = 0.5;
+            this.audio.volume = 0.3;
             this.audio.play();
             break;
           default:
@@ -184,7 +211,7 @@ class Store {
                 import.meta.url
               ).href
             );
-            this.audio.volume = 0.5;
+            this.audio.volume = 0.3;
             this.audio.play();
             console.warn(`${sound} is not a valid sound file yet`);
             break;
@@ -424,7 +451,9 @@ class Store {
         let metadata = i.metadata;
         let location = i.location;
         let slug = i.slug;
-        if (metadata && metadata.pageType) {
+        // support generating page type for icon visualized
+        // but default to icon it says if they defined one already
+        if (metadata && metadata.pageType && !metadata.icon) {
           i.metadata.icon = iconFromPageType(metadata.pageType);
         }
         return Object.assign({}, i, {
@@ -485,6 +514,15 @@ class Store {
   get siteTitle() {
     if (this.manifest && this.manifest.title) {
       return this.manifest.title;
+    }
+    return "";
+  }
+  /**
+   * Return the site description
+   */
+  get siteDescription() {
+    if (this.manifest && this.manifest.description) {
+      return this.manifest.description;
     }
     return "";
   }
@@ -590,10 +628,21 @@ class Store {
             path: "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
             name: "Basic theme",
             variables: {
-              image: "assets/banner.jpg",
               icon: "icons:record-voice-over",
               hexCode: "#da004e",
               cssVariable: "pink",
+              image: "assets/banner.jpg",
+              imageAlt: "",
+              imageLink: "",
+            },
+            regions: {
+              header: null,
+              sidebarFirst: null,
+              sidebarSecond: null,
+              contentTop: null,
+              contentBottom: null,
+              footerPrimary: null,
+              footerSecondary: null,
             },
           },
         };
@@ -735,6 +784,28 @@ class Store {
     }
     return null;
   }
+
+  /**
+   * shortcut to find the last child of an item
+   */
+  async getLastChildItem(id) {
+    if (this.manifest && id) {
+      let current = {};
+      await this.manifest.items.map((item) => {
+        if (item.parent === id) {
+          if (typeof current.order === typeof undefined) {
+              current = item;
+          }
+          else if (current.order < item.order) {
+              current = item;
+          }
+        }
+      });
+      return current;
+    }
+    return null;
+  }
+
   /**
    * shortcut to find an item in the manifest based on id
    */
@@ -1080,6 +1151,25 @@ class HAXCMSSiteStore extends HTMLElement {
         }
       }
     });
+    autorun(() => {
+      const memVersion = UserScaffoldInstance.readMemory("versionLatest");
+      if (store.version && memVersion != store.version) {
+        // store the initial version
+        if (memVersion == null) {
+          UserScaffoldInstance.writeMemory(
+            "versionInitial",
+            store.version,
+            "long"
+          );
+        }
+        UserScaffoldInstance.writeMemory(
+          "versionLatest",
+          store.version,
+          "long"
+        );
+      }
+    });
+
     /**
      * When editMode changes notify HAXeditor.
      */

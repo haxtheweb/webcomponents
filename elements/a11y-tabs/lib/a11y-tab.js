@@ -65,6 +65,7 @@ class A11yTab extends LitElement {
             display: none;
           }
           #content-inner {
+            height: var(--a11y-tabs-tab-height, --a11y-tabs-height);
             max-width: 100%;
             overflow: auto;
           }

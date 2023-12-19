@@ -173,6 +173,12 @@
                 "icon": "icons:link"
               },
               {
+                "property": "manifest-metadata-site-settings-gaID",
+                "title": "Google Analytics ID",
+                "description": "Copy Google Analytics ID here to track data in site",
+                "inputMethod": "textfield"
+              },
+              {
                 "property": "manifest-metadata-site-static-cdn",
                 "title": "CDN",
                 "description": "CDN to use for published assets",
@@ -224,6 +230,7 @@
           "manifest-metadata-site-settings-publishPagesOn": null,
           "manifest-metadata-site-settings-sw": null,
           "manifest-metadata-site-settings-forceUpgrade": null,
+          "manifest-metadata-site-settings-gaID": null,
           "manifest-metadata-site-static-cdn": "cdn.waxam.io",
           "manifest-metadata-site-static-offline": null
         }

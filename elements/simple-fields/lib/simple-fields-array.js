@@ -169,22 +169,19 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
 
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "expanded") {
-        this.querySelectorAll("simple-fields-array-item").forEach((item) =>
-        {
+        this.querySelectorAll("simple-fields-array-item").forEach((item) => {
           item.expanded = this.expanded;
         });
       }
       if (propName === "hideDuplicate") {
-        this.querySelectorAll("simple-fields-array-item").forEach((item) =>
-       {   item.hideDuplicate = this.hideDuplicate;
-      });
+        this.querySelectorAll("simple-fields-array-item").forEach((item) => {
+          item.hideDuplicate = this.hideDuplicate;
+        });
       }
       if (propName === "hideReorder") {
-        this.querySelectorAll("simple-fields-array-item").forEach((item) =>
-        {
+        this.querySelectorAll("simple-fields-array-item").forEach((item) => {
           item.hideReorder = this.hideReorder;
-        }
-        );
+        });
       }
     });
   }

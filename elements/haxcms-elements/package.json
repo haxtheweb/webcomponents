@@ -105,7 +105,7 @@
     "@polymer/polymer": "^3.5.1",
     "@vaadin/router": "^1.7.5",
     "@vaadin/vaadin-grid": "^5.2.5",
-    "mobx": "6.9.0",
+    "mobx": "6.12.0",
     "web-social-share": "8.0.1",
     "wired-elements": "3.0.0-rc.6"
   },

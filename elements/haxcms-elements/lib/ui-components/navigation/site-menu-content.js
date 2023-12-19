@@ -1,6 +1,7 @@
 import { PageContentsMenu } from "@lrnwebcomponents/page-contents-menu/page-contents-menu.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import { autorun, toJS } from "mobx";
 import { css, html } from "lit";
 
@@ -54,6 +55,14 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
       this.__disposer.push(reaction);
     });
   }
+
+  backToTop() {
+    this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
   /**
    * wrap the base render function in a part that demonstrates edit mode
    */
@@ -61,6 +70,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
     return html`
       <div .part="${this.editMode ? `edit-mode-active` : ``}">
         ${super.render()}
+        <simple-icon-button-lite icon="icons:arrow-upward" @click="${this.backToTop}">Back to top</simple-icon-button-lite>
       </div>
     `;
   }

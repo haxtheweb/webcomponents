@@ -4,11 +4,18 @@
   "canEditSource": true,
   "type": "grid",
   "gizmo": {
-    "title": "Blockquote",
+    "title": "Block quote",
     "description": "Designed Quote",
     "icon": "editor:format-quote",
     "color": "blue",
-    "tags": ["Layout", "content", "design", "presentation"],
+    "tags": [
+      "Layout",
+      "quote",
+      "blockquote",
+      "content",
+      "design",
+      "presentation"
+    ],
     "meta": {
       "author": "HAXTheWeb core team"
     }

@@ -225,6 +225,7 @@ export const HaxIconsetManifest = [
       "vimeo",
       "vocab",
       "vr",
+      "wand",
       "wizard-hat",
       "wordpress",
     ],

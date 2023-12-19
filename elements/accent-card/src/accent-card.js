@@ -111,6 +111,10 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             --accent-card-background-color,
             var(--simple-colors-default-theme-accent-1, #fff)
           );
+          color: var(
+            --accent-card-color,
+            var(--simple-colors-default-theme-accent-12, #000)
+          );
         }
         article {
           position: relative;
@@ -366,9 +370,11 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       <article id="card">
         <div
           class="image-outer"
+          part="image-wrapper"
           ?hidden="${!this.elementVisible || !this.imageSrc}"
         >
           <div
+            part="image"
             class="image"
             .style="${this.elementVisible && this.imageSrc
               ? `background-image: url(${this.imageSrc});`

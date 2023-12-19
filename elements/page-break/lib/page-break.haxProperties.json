@@ -119,6 +119,18 @@
     ],
     "developer": [
       {
+        "property": "description",
+        "title": "Description",
+        "description": "Used for collections and enhancing Search engine optimization",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "This will override page type if you have a specific one",
+        "inputMethod": "iconpicker"
+      },
+      {
         "property": "hideInMenu",
         "title": "Hide in menu",
         "description": "Useful if you need content with a slug",
@@ -139,7 +151,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["t", "_hax-state", "element-visible", "noderefs"]
+    "unsetAttributes": ["t", "_hax-state", "element-visible", "noderefs", "style", "resource", "prefix"]
   },
   "demoSchema": [
     {

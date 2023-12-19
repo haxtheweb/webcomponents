@@ -100,12 +100,8 @@
     },
     {
       "name": "code-pen-button",
-      "description": "`code-pen-button`\n`Post data to codepen to form a new pen`\n\nAttributes:\n\n  * `data-string` {`string`} - Data object as a JSON string for the POST data in page.\n\n  * `check-it-out` {`string`} - \n\n  * `end-point` {`string`} - End point for posting should it change in the future.\n\n  * `data` - Data object to post to code pen\n\nProperties:\n\n  * `dataString` {`string`} - Data object as a JSON string for the POST data in page.\n\n  * `checkItOut` {`string`} - \n\n  * `endPoint` {`string`} - End point for posting should it change in the future.\n\n  * `data` - Data object to post to code pen",
+      "description": "`code-pen-button`\n`Post data to codepen to form a new pen`\n\nAttributes:\n\n  * `check-it-out` {`string`} - \n\n  * `end-point` {`string`} - End point for posting should it change in the future.\n\n  * `data` - Data object to post to code pen\n\n  * `data-string` {`string`} - Data object as a JSON string for the POST data in page.\n\nProperties:\n\n  * `checkItOut` {`string`} - \n\n  * `endPoint` {`string`} - End point for posting should it change in the future.\n\n  * `data` - Data object to post to code pen\n\n  * `dataString` {`string`} - Data object as a JSON string for the POST data in page.",
       "attributes": [
-        {
-          "name": "data-string",
-          "description": "`data-string` {`string`} - Data object as a JSON string for the POST data in page.\n\nProperty: dataString"
-        },
         {
           "name": "check-it-out",
           "description": "`check-it-out` {`string`} - \n\nProperty: checkItOut\n\nDefault: Check it out on codepen"
@@ -117,6 +113,10 @@
         {
           "name": "data",
           "description": "`data` - Data object to post to code pen\n\nProperty: data\n\nDefault: [object Object]"
+        },
+        {
+          "name": "data-string",
+          "description": "`data-string` {`string`} - Data object as a JSON string for the POST data in page.\n\nProperty: dataString\n\nDefault: "
         }
       ]
     }

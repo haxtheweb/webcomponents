@@ -25,9 +25,6 @@ class SimpleIconPicker extends SimplePicker {
         simple-picker-option {
           --simple-picker-option-size: 32px;
         }
-        :host([expanded]:not([disabled])) #collapse {
-          height: var(--simple-picker-options-max-height, 250px);
-        }
       `,
     ];
   }
@@ -107,7 +104,7 @@ class SimpleIconPicker extends SimplePicker {
   constructor() {
     super();
     this.hideOptionLabels = true;
-    this.allowNull = false;
+    this.allowNull = true; // default true because of how icon pickers tend to be leveraged
     this.icons = [];
     this.value = null;
     this.options = [];

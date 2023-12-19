@@ -22,7 +22,7 @@
     },
     {
       "name": "map-menu-header",
-      "description": "Events:\n\n  * `toggle-header` {`CustomEvent<boolean>`} - \n\n  * `active-item` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `icon-label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `status` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `itemtitle` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `iconLabel` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `status` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `itemtitle` {`string`} - \n\n  * `t` - ",
+      "description": "Events:\n\n  * `toggle-header` {`CustomEvent<boolean>`} - \n\n  * `active-item` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `icon-label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `status` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `itemtitle` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `iconLabel` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `status` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `itemtitle` {`string`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "id",
@@ -72,6 +72,11 @@
           "valueSet": "v"
         },
         {
+          "name": "hide-in-menu",
+          "description": "`hide-in-menu` {`boolean`} - \n\nProperty: hideInMenu\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
           "name": "locked",
           "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
           "valueSet": "v"
@@ -96,7 +101,7 @@
     },
     {
       "name": "map-menu-item",
-      "description": "Events:\n\n  * `active-item` {`CustomEvent<this>`} - \n\n  * `link-clicked` {`CustomEvent<{ id: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `icon-label` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `iconLabel` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - ",
+      "description": "Events:\n\n  * `active-item` {`CustomEvent<this>`} - \n\n  * `link-clicked` {`CustomEvent<{ id: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `icon-label` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `iconLabel` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "id",
@@ -125,6 +130,11 @@
         {
           "name": "active",
           "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-in-menu",
+          "description": "`hide-in-menu` {`boolean`} - \n\nProperty: hideInMenu\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -157,7 +167,7 @@
     },
     {
       "name": "map-menu-submenu",
-      "description": "Events:\n\n  * `map-meu-item-hidden-check` {`CustomEvent<any>`} - \n\n  * `toggle-updated` {`CustomEvent<{ opened: boolean; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon-label` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\n  * `avatar-label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `iconLabel` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - ",
+      "description": "Events:\n\n  * `map-meu-item-hidden-check` {`CustomEvent<any>`} - \n\n  * `toggle-updated` {`CustomEvent<{ opened: boolean; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon-label` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\n  * `avatar-label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `iconLabel` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - ",
       "attributes": [
         {
           "name": "id",
@@ -214,6 +224,11 @@
         {
           "name": "published",
           "description": "`published` {`boolean`} - \n\nProperty: published\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-in-menu",
+          "description": "`hide-in-menu` {`boolean`} - \n\nProperty: hideInMenu\n\nDefault: false",
           "valueSet": "v"
         },
         {

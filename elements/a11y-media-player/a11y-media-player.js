@@ -2308,7 +2308,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           : `${100 / this.aspect}%`,
       thumbnail =
         this.poster && (this.isYoutube || this.audioOnly)
-          ? `background-image:url(${this.poster});`
+          ? `background-image:url('${this.poster}');`
           : ``;
     return `height:${height};padding-top:${paddingTop};${thumbnail}`;
   }

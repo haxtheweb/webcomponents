@@ -61,21 +61,21 @@ export class SuperDaemonRow extends SimpleColors {
         }
         :host([active]) {
           cursor: pointer;
-          border-radius: 8px;
+          border-radius: 4px;
           background-color: var(
             --super-daemon-row-hover,
             rgba(0, 100, 200, 0.1)
           );
-          outline: 2px solid black;
+          outline: 1px solid black;
         }
         :host([mini]) {
           margin: 0;
-          --super-daemon-row-label: 18px;
+          --super-daemon-row-label: 14px;
           --super-daemon-row-path: 10px;
         }
         button {
           display: flex;
-          padding: 16px;
+          padding: 8px;
           width: 100%;
           border-radius: 0;
           color: var(--simple-colors-default-theme-accent-12, black);
@@ -88,6 +88,7 @@ export class SuperDaemonRow extends SimpleColors {
         :host([mini]) button {
           padding: 4px;
           justify-content: flex-start;
+          align-items: center;
         }
         .result-icon {
           display: inline-flex;
@@ -100,8 +101,8 @@ export class SuperDaemonRow extends SimpleColors {
         }
         .result-image {
           display: inline-flex;
-          max-height: 64px;
-          max-width: 100px;
+          height: 64px;
+          width: 100px;
         }
         .result-textCharacter {
           display: inline-flex;
@@ -109,21 +110,26 @@ export class SuperDaemonRow extends SimpleColors {
           max-width: 100px;
           font-size: 42px;
         }
+        :host([mini]) .result-textCharacter {
+          font-size: 20px;
+          height: 20px;
+          width: 20px;
+        }
         :host([mini]) .result-image {
-          max-height: 32px;
-          max-width: 50px;
+          height: 32px;
+          width: 50px;
         }
         .label-wrap {
-          min-width: 50%;
+          margin-left: 16px;
+          min-width: 70%;
           overflow: hidden;
           text-align: left;
         }
         :host([mini]) .label-wrap {
           width: 100%;
-          margin-left: 16px;
+          margin-left: 12px;
         }
         .tags {
-          width: 30%;
           line-height: 32px;
           height: 64px;
           text-align: left;
@@ -147,7 +153,7 @@ export class SuperDaemonRow extends SimpleColors {
         .label-wrap .path {
           font-size: var(--super-daemon-row-path, 20px);
           font-style: italic;
-          margin-top: 8px;
+          margin-top: 6px;
           overflow-wrap: break-word;
           word-break: break-all;
           overflow: hidden;
@@ -182,6 +188,8 @@ export class SuperDaemonRow extends SimpleColors {
         details[open] {
           padding: 0 16px 16px 16px;
           animation: details-show 100ms ease-in-out;
+          line-height: 16px;
+          font-size: 12px;
         }
       `,
     ];
@@ -240,6 +248,10 @@ export class SuperDaemonRow extends SimpleColors {
   }
   _focusOut(e) {
     this.active = false;
+  }
+
+  focus() {
+    this.shadowRoot.querySelector("button").focus();
   }
 
   pickColor(val) {

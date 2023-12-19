@@ -40,11 +40,11 @@
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
-    "name": ""
+    "name": "btopro"
   },
-  "license": "",
+  "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.7.5"
+    "lit": "^3.1.0"
   },
   "devDependencies": {
     "@wcfactory/rollup-umd-build": "^0.12.1",

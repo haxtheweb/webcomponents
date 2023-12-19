@@ -79,7 +79,7 @@ class DateCard extends SimpleColors {
         .dayName {
           text-align: center;
           vertical-align: middle;
-          font-family: roboto;
+          font-family: "Roboto", sans-serif;
           line-height: 16px;
           margin-bottom: 8px;
           margin-top: 15px;
@@ -111,7 +111,7 @@ class DateCard extends SimpleColors {
         .time,
         .location {
           vertical-align: middle;
-          font-family: roboto;
+          font-family: "Roboto", sans-serif;
           line-height: 16px;
           margin-bottom: 8px;
         }

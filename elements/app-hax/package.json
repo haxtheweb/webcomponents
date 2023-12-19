@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lit-labs/motion": "^1.0.2",
+    "@lit-labs/motion": "^1.0.6",
     "@lrnwebcomponents/grid-plate": "^7.0.18",
     "@lrnwebcomponents/hax-iconset": "^7.0.18",
     "@lrnwebcomponents/i18n-manager": "^7.0.18",
@@ -65,8 +65,8 @@
     "@lrnwebcomponents/utils": "^7.0.18",
     "@lrnwebcomponents/wc-autoload": "^7.0.18",
     "@vaadin/router": "^1.7.5",
-    "lit": "^2.8.0",
-    "mobx": "6.9.0",
+    "lit": "^3.1.0",
+    "mobx": "6.12.0",
     "roughjs": "4.4.5",
     "scrollable-component": "^1.2.0",
     "wired-elements": "3.0.0-rc.6"

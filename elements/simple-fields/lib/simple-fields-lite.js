@@ -825,7 +825,12 @@ class SimpleFieldsLite extends LitElement {
     if (!items) this._setValue(parent.name, []);
     index = index || index === 0 ? index : length;
     let subschema = { properties: {} };
-    subschema.properties[index] = this._addArrayItem(index, schema, previewBy, parent);
+    subschema.properties[index] = this._addArrayItem(
+      index,
+      schema,
+      previewBy,
+      parent
+    );
     this._setValue(`${parent.name}.${index}`, value);
     this._addToForm(subschema, parent, `${parent.id}.`, element);
   }

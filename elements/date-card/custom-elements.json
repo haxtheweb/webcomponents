@@ -47,6 +47,38 @@
           "valueSet": "v"
         }
       ]
+    },
+    {
+      "name": "date-chip",
+      "description": "Attributes:\n\n  * `timestamp` {`number`} - \n\n  * `unix` {`boolean`} - \n\n  * `month` {`string`} - \n\n  * `day` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `timestamp` {`number`} - \n\n  * `unix` {`boolean`} - \n\n  * `month` {`string`} - \n\n  * `day` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "timestamp",
+          "description": "`timestamp` {`number`} - \n\nProperty: timestamp\n\nDefault: null"
+        },
+        {
+          "name": "unix",
+          "description": "`unix` {`boolean`} - \n\nProperty: unix\n\nDefault: null",
+          "valueSet": "v"
+        },
+        {
+          "name": "month",
+          "description": "`month` {`string`} - \n\nProperty: month\n\nDefault: null"
+        },
+        {
+          "name": "day",
+          "description": "`day` {`number`} - \n\nProperty: day\n\nDefault: null"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     }
   ],
   "globalAttributes": [],

@@ -29,7 +29,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
   }
   constructor() {
     super();
-    this.manifest = {};
+    this.siteTitle = '';
     this.method = "POST";
     this.loadEndpoint = "";
     this.body = {};
@@ -41,7 +41,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
+      this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
     });
   }
@@ -141,7 +141,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
   render() {
     return html`
       <div class="title-wrapper">
-        <h2 class="title">${this.manifest.title} settings</h2>
+        <h2 class="title">${this.siteTitle} settings</h2>
       </div>
       <div class="fields-wrapper">
         <simple-fields-form
@@ -151,6 +151,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
           .schematizer="${HaxSchematizer}"
           .elementizer="${HaxElementizer}"
           load-endpoint="${this.loadEndpoint}"
+          @simple-fields-form-data-loaded="${this.fieldDataLoaded}"
           method="${this.method}"
         ></simple-fields-form>
       </div>
@@ -195,14 +196,8 @@ class HAXCMSSiteDashboard extends SimpleColors {
       publishing: {
         type: Boolean,
       },
-      /**
-       * Outline of items in json outline schema format
-       */
-      /**
-       * Outline of items in json outline schema format
-       */
-      manifest: {
-        type: Object,
+      siteTitle: {
+        type: String,
       },
     };
   }
@@ -214,6 +209,49 @@ class HAXCMSSiteDashboard extends SimpleColors {
       this.__disposer[i].dispose();
     }
     super.disconnectedCallback();
+  }
+  fieldDataLoaded() {
+    const itemManifest = store.getManifestItems(true);
+    var items = [
+      {
+        text: ``,
+        value: null,
+      },
+    ];
+    itemManifest.forEach((el) => {
+      if (el.id != this.itemId) {
+        // calculate -- depth so it looks like a tree
+        let itemBuilder = el;
+        // walk back through parent tree
+        let distance = "- ";
+        while (itemBuilder && itemBuilder.parent != null) {
+          itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+          // double check structure is sound
+          if (itemBuilder) {
+            distance = "--" + distance;
+          }
+        }
+        items.push({
+          text: distance + el.title,
+          value: el.id,
+        });
+      }
+    });
+    requestAnimationFrame(() => {
+      const fields = this.shadowRoot.querySelector("#siteform").fields;
+      // loop through and set itemsList dynamically
+      fields.find(item => item.property === "manifest").properties
+      .find(item => item.property === "theme").properties
+      .find(item => item.property === "regions").properties.map(item => {
+        item.properties[0].itemsList = items;
+      });
+      setTimeout(() => {
+        this.shadowRoot.querySelector("#siteform").fields = [...fields];
+        requestAnimationFrame(() => {
+          this.shadowRoot.querySelector("#siteform").requestUpdate();
+        });
+      }, 0);
+    });
   }
   generateRequest() {
     this.shadowRoot.querySelector("#siteform").loadData();

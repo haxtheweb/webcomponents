@@ -5,6 +5,7 @@ import {
   wipeSlot,
   varExists,
   localStorageSet,
+  validURL,
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
@@ -12,6 +13,7 @@ import "./haxcms-site-router.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
+import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 import "@lrnwebcomponents/replace-tag/replace-tag.js";
 // toggle store darkmode
 function darkToggle(e) {
@@ -579,8 +581,64 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     });
     autorun(() => {
       this.isLoggedIn = toJS(store.isLoggedIn);
+      UserScaffoldInstance.writeMemory("isLoggedIn", this.isLoggedIn);
+      const tstamp = Math.floor(Date.now() / 1000);
+      if (this.isLoggedIn && !this.loggedInTime) {
+        this.loggedInTime = tstamp;
+        var ll = UserScaffoldInstance.readMemory("recentLogins");
+        if (!ll) {
+          UserScaffoldInstance.writeMemory("recentLogins", [tstamp], "long");
+        } else if (ll) {
+          // cap at last 5 login times
+          if (ll.length < 5) {
+            ll.shift();
+          }
+          ll.push(tstamp);
+          UserScaffoldInstance.writeMemory("recentLogins", ll, "long");
+        }
+      }
+    });
+    // user scaffolding wired up to superDaemon
+    autorun(() => {
+      const usAction = toJS(UserScaffoldInstance.action);
+      // try to evaluate typing in merlin
+      if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn &&
+        UserScaffoldInstance.memory.recentTarget === SuperDaemonInstance &&
+        SuperDaemonInstance.programName === null &&
+        UserScaffoldInstance.memory.interactionDelay > 600 &&
+        ["paste", "key"].includes(usAction.type)
+      ) {
+        if (validURL(SuperDaemonInstance.value)) {
+          SuperDaemonInstance.waveWand(
+            [SuperDaemonInstance.value, "/", {}, "hax-agent", "Agent"],
+            null,
+            "coin2"
+          );
+        }
+      } else if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn &&
+        SuperDaemonInstance.programName === null &&
+        ["paste"].includes(usAction.type) &&
+        UserScaffoldInstance.data.architype == "url"
+      ) {
+        SuperDaemonInstance.waveWand(
+          [
+            toJS(UserScaffoldInstance.data.value),
+            "/",
+            {},
+            "hax-agent",
+            "Agent",
+          ],
+          null,
+          "coin2"
+        );
+      }
     });
   }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -727,6 +785,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         parent="${store.activeItem.parent}"
         item-id="${store.activeItem.id}"
         slug="${store.activeItem.slug}"
+        description="${store.activeItem.description}"
         order="${store.activeItem.order}"
         ${
           store.activeItem.metadata.pageType

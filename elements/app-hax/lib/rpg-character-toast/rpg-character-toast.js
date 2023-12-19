@@ -21,6 +21,7 @@ export class RPGCharacterToast extends SimpleToastEl {
     this.awaitingMerlinInput = false;
     this.windowControllers = new AbortController();
     this.text = "Saved";
+    this.closeText = "Close";
     this.merlin = false;
     this.classStyle = "";
     this.future = false;
@@ -30,6 +31,7 @@ export class RPGCharacterToast extends SimpleToastEl {
     this.eventCallback = null;
     this.fire = false;
     this.hat = "coffee";
+    this.speed = 500;
     this.walking = false;
   }
 
@@ -44,7 +46,7 @@ export class RPGCharacterToast extends SimpleToastEl {
         future-terminal-text {
           min-width: 300px;
           overflow-wrap: break-all;
-          text-elipsis: ellipsis;
+          text-overflow: ellipsis;
           line-height: 36px;
           font-size: 18px;
           text-align: left;
@@ -95,17 +97,15 @@ export class RPGCharacterToast extends SimpleToastEl {
           border: var(--simple-toast-border);
           z-index: var(--simple-toast-z-index, 10000000);
           font-size: var(--simple-toast-font-size, 18px);
-          font-family: "Press Start 2P", sans-serif;
+          font-family: sans-serif;
           font-weight: bold;
           text-align: center;
           vertical-align: middle;
         }
         rpg-character {
-          margin: 30px -30px 0 -30px;
-          width: 145px;
-          margin: 6px 0 0 0;
-          padding: 16px;
-          background-color: var(--simple-colors-default-theme-orange-1, orange);
+          width: 64px;
+          margin: 0;
+          padding: 0;
         }
         .bubble {
           height: 142px;
@@ -117,54 +117,46 @@ export class RPGCharacterToast extends SimpleToastEl {
           background-color: white;
           background-repeat: repeat-x;
           background-image: url("${unsafeCSS(SpeechBubbleMiddle)}");
+          padding: 54px 2px 0 2px;
+          display: block;
+        }
+        .message {
+          line-height: 16px;
+          font-size: 16px;
+          height: 16px;
+          display: block;
+          margin-bottom: 16px;
+        }
+        .buttons {
+          display: block;
+          line-height: 16px;
+          font-size: 16px;
+          height: 16px;
+        }
+        .dismiss {
+          padding: 4px;
+          font-weight: bold;
+          background-color: black;
+          color: white;
+          border: 4px solid black;
+          border-radius: none;
+          margin-left: 4px;
+          cursor: pointer;
         }
         .leftedge {
           background-image: url("${unsafeCSS(SpeechBubbleL)}");
-          width: 24px;
+          width: 20px;
           background-color: white;
         }
         .rightedge {
           background-image: url("${unsafeCSS(SpeechBubbleR)}");
-          width: 54px;
+          width: 40px;
           background-color: white;
         }
         :host([dark-mode]) .mid,
         :host([dark-mode]) .leftedge,
         :host([dark-mode]) .rightedge {
           filter: invert(1);
-        }
-        @media (max-width: 800px) {
-          :host {
-            --simple-toast-width: 80vw;
-            --simple-toast-font-size: 12px;
-          }
-        }
-        @media (max-width: 500px) {
-          :host {
-            height: 50px;
-            line-height: 50px;
-            border: none;
-          }
-          rpg-character {
-            display: none;
-          }
-          .rightedge {
-            display: none;
-          }
-          .leftedge {
-            display: none;
-          }
-          .mid {
-            height: 50px;
-            line-height: 50px;
-            background-image: unset;
-          }
-          .bubble {
-            height: 50px;
-            margin: 0;
-            border: 2px solid black;
-            border-radius: 5px;
-          }
         }
       `,
     ];
@@ -181,6 +173,7 @@ export class RPGCharacterToast extends SimpleToastEl {
       fire: { type: Boolean },
       hat: { type: String },
       walking: { type: Boolean },
+      speed: { type: Number },
       /**
        * Opened state of the toast, use event to change
        */
@@ -239,14 +232,21 @@ export class RPGCharacterToast extends SimpleToastEl {
               glitch-max="3"
               glitch-duration="40"
             ></future-terminal-text>`
-          : html`${this.text}`}
+          : html`<div class="message">${this.text}</div>`}
         ${this.awaitingMerlinInput
           ? html`<simple-icon-lite
               class="awaiting-input"
               icon="hax:loading"
             ></simple-icon-lite>`
           : ``}
-        <slot></slot>
+        ${!this.merlin
+          ? html`<div class="buttons">
+              <slot></slot
+              ><button class="dismiss" @click="${this.hide}">
+                ${this.closeText}
+              </button>
+            </div>`
+          : ``}
       </span>
       <span class="bubble rightedge"></span>
       ${this.merlin
@@ -257,11 +257,12 @@ export class RPGCharacterToast extends SimpleToastEl {
           ></simple-icon>`
         : html`
             <rpg-character
-              height="130"
-              width="130"
+              height="180"
+              width="64"
               seed="${this.userName}"
               ?fire="${this.fire}"
               hat="${this.hat}"
+              speed="${this.speed}"
               ?walking="${this.walking}"
             ></rpg-character>
           `}
@@ -330,6 +331,7 @@ export class RPGCharacterToast extends SimpleToastEl {
     this.hat = e.detail.hat ? e.detail.hat : "coffee";
     this.merlin = e.detail.merlin ? e.detail.merlin : false;
     this.walking = e.detail.walking ? e.detail.walking : false;
+    this.speed = e.detail.speed ? e.detail.speed : 500;
     this.text = e.detail.text ? e.detail.text : "Saved";
     this.future = e.detail.future ? e.detail.future : false;
     this.classStyle = e.detail.classStyle ? e.detail.classStyle : "";
@@ -360,6 +362,9 @@ export class RPGCharacterToast extends SimpleToastEl {
 
   hide() {
     if (!this.awaitingMerlinInput) {
+      // to avoid constantly running in the background
+      this.walking = false;
+      this.speed = 500;
       if (this.eventCallback) {
         const evt = new CustomEvent(this.eventCallback, {
           bubbles: true,

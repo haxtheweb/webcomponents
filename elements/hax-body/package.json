@@ -40,6 +40,7 @@
     "@lrnwebcomponents/accent-card": "^7.0.18",
     "@lrnwebcomponents/code-editor": "^7.0.18",
     "@lrnwebcomponents/course-design": "^7.0.18",
+    "@lrnwebcomponents/user-scaffold": "^7.0.18",
     "@lrnwebcomponents/dl-behavior": "^7.0.18",
     "@lrnwebcomponents/editable-table": "^7.0.18",
     "@lrnwebcomponents/file-system-broker": "^7.0.18",
@@ -68,8 +69,8 @@
     "@lrnwebcomponents/undo-manager": "^7.0.18",
     "@lrnwebcomponents/utils": "^7.0.18",
     "@vaadin/vaadin-upload": "^4.4.1",
-    "lit": "^2.8.0",
-    "mobx": "6.9.0"
+    "lit": "^3.1.0",
+    "mobx": "6.12.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/a11y-collapse": "^7.0.18",

@@ -1,0 +1,165 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Smart Collection",
+    "description": "A collection built off of data in the site manifest",
+    "icon": "hax:idea",
+    "color": "blue",
+    "tags": ["Layout", "smart", "site", "collection", "list", "items"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "itemsPerRow",
+        "inputMethod": "select",
+        "title": "Items per row",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "": "auto"
+        },
+        "description": "How many collection items should be displayed per row",
+        "required": true
+      },
+      {
+        "property": "parent",
+        "title": "Parent",
+        "description": "Limit results to those that have this item as it's parent",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Filter by tags, comma separated",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "pageType",
+        "title": "Page type",
+        "description": "Filter by page type",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "published",
+        "title": "Publishing status",
+        "description": "Filter by publishing status",
+        "inputMethod": "select",
+        "options": {
+          "null": "Show all items",
+          "true": "Only published items",
+          "false": "Only unpublished items"
+        }
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Hidden in menus status",
+        "description": "Filter by hidden in menus status",
+        "inputMethod": "select",
+        "options": {
+          "null": "Show all items",
+          "false": "Only items in menus",
+          "true": "Only hidden items"
+        }
+      },
+      {
+        "property": "relatedItems",
+        "title": "Related items",
+        "description": "Filter by related items",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sort",
+        "title": "Sort by",
+        "inputMethod": "select",
+        "options": {
+          "title": "Title",
+          "metadata.updated": "Updated date",
+          "metadata.created": "Created date",
+          "order": "Order"
+        }
+      },
+      {
+        "property": "limit",
+        "title": "Limit",
+        "description": "Limit results",
+        "inputMethod": "number"
+      },
+      {
+        "property": "breakSmartCollection",
+        "title": "Break smart collection",
+        "description": "Collection items convert to a Collection List to allow editing directly. These items will no longer get updates when the reference pages update.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakpointSm",
+        "title": "Small Breakpoint",
+        "description": "Anything less than this number (in pixels) will render with the smallest version of this layout",
+        "inputMethod": "textfield",
+        "validationType": "number"
+      },
+      {
+        "property": "breakpointMd",
+        "title": "Medium Breakpoint",
+        "description": "Anything less than this number (in pixels) will render with the small version of this layout",
+        "inputMethod": "textfield",
+        "validationType": "number"
+      },
+      {
+        "property": "breakpointLg",
+        "title": "Large Breakpoint",
+        "description": "Anything less than this number (in pixels) will render with the medium version of this layout.",
+        "inputMethod": "textfield",
+        "validationType": "number"
+      },
+      {
+        "property": "breakpointXl",
+        "title": "Extra-Large Breakpoint",
+        "description": "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
+        "inputMethod": "textfield",
+        "validationType": "number"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": [
+      "editMode",
+      "conditions",
+      "sortObj",
+      "results",
+      "breakSmartCollection",
+      "t"
+    ]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "site-collection-list",
+      "content": "",
+      "properties": {}
+    }
+  ]
+}

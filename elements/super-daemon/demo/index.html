@@ -144,6 +144,11 @@
       </select>
     </div>
     <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
       var prevContext;
       document.querySelector("select").addEventListener("change", function(e) {
         const daemon = window.SuperDaemonManager.requestAvailability();

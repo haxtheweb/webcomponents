@@ -37,6 +37,10 @@ export const remoteLinkBehavior = function (SuperClass) {
         target.setAttribute("target", "_blank");
         target.setAttribute("rel", "noopener noreferrer");
       }
+      else if (target) {
+        target.removeAttribute("target");
+        target.removeAttribute("rel");
+      }
     }
     /**
      * Internal function to check if a url is external

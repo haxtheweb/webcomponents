@@ -76,9 +76,7 @@ class MapMenuBuilder extends LitElement {
   }
 
   hideInMenuStatus(item) {
-    if (
-      item.metadata && item.metadata.hideInMenu == true
-    ) {
+    if (item.metadata && item.metadata.hideInMenu == true) {
       return true;
     }
     return false;

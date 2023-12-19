@@ -1,0 +1,92 @@
+{
+  "api": "1",
+  "type": "grid",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": {
+    "min": 30,
+    "step": 10,
+    "max": 100
+  },
+  "canPosition": true,
+  "canEditSource": true,
+  "contentEditable": true,
+  "gizmo": {
+    "title": "Collection",
+    "description": "",
+    "icon": "lrn:canban",
+    "color": "purple",
+    "tags": ["Layout", "collection", "list", "items"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "itemsPerRow",
+        "inputMethod": "select",
+        "title": "Items per row",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "": "auto"
+        },
+        "description": "How many collection items should be displayed per row",
+        "required": true
+      }
+    ],
+    "advanced": [],
+    "developer": [
+      {
+        "property": "breakpointSm",
+        "title": "Small Breakpoint",
+        "description": "Anything less than this number (in pixels) will render with the smallest version of this layout",
+        "inputMethod": "textfield",
+        "validationType": "number"
+      },
+      {
+        "property": "breakpointMd",
+        "title": "Medium Breakpoint",
+        "description": "Anything less than this number (in pixels) will render with the small version of this layout",
+        "inputMethod": "textfield",
+        "validationType": "number"
+      },
+      {
+        "property": "breakpointLg",
+        "title": "Large Breakpoint",
+        "description": "Anything less than this number (in pixels) will render with the medium version of this layout.",
+        "inputMethod": "textfield",
+        "validationType": "number"
+      },
+      {
+        "property": "breakpointXl",
+        "title": "Extra-Large Breakpoint",
+        "description": "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
+        "inputMethod": "textfield",
+        "validationType": "number"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "collection-list",
+      "content": "<collection-item line1='HAX @ PSU' line2='Write HTML without realizing it' line3='by @btopro' url='https://hax.psu.edu/' icon='hax:hax2022'></collection-item>",
+      "properties": {}
+    }
+  ]
+}

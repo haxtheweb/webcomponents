@@ -39,7 +39,7 @@ import "@lrnwebcomponents/editable-table/editable-table.js";
 import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
 import { learningComponentTypes } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 import "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
-
+import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 import "./hax-app.js";
 
 const FALLBACK_LANG = "en";
@@ -271,7 +271,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     linkOnMultiple = false
   ) {
     // we have no clue what this is.. let's try and guess..
-    let type = this.guessGizmoType(values);
+    let type = this.activePlaceHolderOperationType || this.guessGizmoType(values);
+    if (type === 'upload-only') {
+      this.toast("Upload successful!");
+      return false;
+    }
+    // told to insert a link based on operation executed
+    if (this.activePlaceHolderOperationType === "link") {
+      linkOnMultiple = true;
+    }
     let typeName = type;
     // we want to simplify insert but if we get wildcard... do whatever
     let preferExclusive = true;
@@ -314,6 +322,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           );
         }
       } else {
+        // @todo this should somehow get it's options passed to and from merlin
         // hand off to hax-app-picker to deal with the rest of this
         this.haxAppPicker.presentOptions(
           haxElements,
@@ -532,6 +541,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
        */
       activePlaceHolder: {
         type: Object,
+      },
+      // we might not have this value, or we might have a specific way we want to handle this
+      // other than just displaying the configuration of how to display this
+      activePlaceHolderOperationType: {
+        type: String,
       },
       /**
        * Possible appStore endpoint for loading in things dynamically.
@@ -1693,6 +1707,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               txt.setAttribute("target", "_blank");
               txt.innerText = pasteContent;
             }
+            range.deleteContents();
             range.insertNode(txt);
             setTimeout(() => {
               this._positionCursorInNode(txt, txt.length);
@@ -1900,7 +1915,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   constructor() {
     super();
     enableServices(["core"]);
-    this.toastShowEventName = "simple-toast-show";
+    this.toastShowEventName = window.HAXCMS ? "haxcms-toast-show" : "simple-toast-show";
     this.t = {
       close: "Close",
     };
@@ -2023,7 +2038,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "User Tutorials",
@@ -2037,7 +2052,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/tutorials",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "User Documentation",
@@ -2052,7 +2067,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "HAX Teaching Excellence",
@@ -2065,7 +2080,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/pedagogy",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -2078,7 +2093,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
@@ -2096,7 +2111,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
-      context: ["logged-in", "CMS", "HAX", "?"],
+      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
     });
@@ -2128,9 +2143,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-refresh-tray-form": "refreshActiveNodeForm",
       "rich-text-editor-prompt-open": "_richTextEditorPromptOpen",
       "rich-text-editor-prompt-close": "_richTextEditorPromptClose",
-      "super-daemon-command-context-changed":
-        "_superDaemonCommandContextChanged",
-      "super-daemon-context-changed": "_superDaemonContextChanged",
     };
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {
@@ -2176,6 +2188,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.activeEditingElement = null;
     this.haxBodies = [];
     this.activePlaceHolder = null;
+    this.activePlaceHolderOperationType = null;
     this.sessionObject = {};
     this.editMode = false;
     this.skipExitTrap = false;
@@ -2190,7 +2203,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.trayDetail = "content-edit";
     this.appList = [];
     this.gizmoList = [];
-    this.recentGizmoList = [];
+    this.recentGizmoList =
+      UserScaffoldInstance.readMemory("recentGizmoList") || [];
     this.haxAutoloader = null;
     this.activeHaxBody = null;
     this.haxTray = null;
@@ -2228,6 +2242,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this._isSandboxed = typeof test.reload === "function";
     window.SimpleToast.requestAvailability();
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
+    this.revisionHistoryLink = null;
     // mobx
     makeObservable(this, {
       daemonKeyCombo: observable,
@@ -2238,6 +2253,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       activeGizmo: computed,
       activeNodeIndex: computed,
       editMode: observable,
+      revisionHistoryLink: observable,
       elementAlign: observable,
       trayStatus: observable,
       trayDetail: observable,
@@ -2254,19 +2270,32 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     autorun(() => {
       this._editModeChanged(toJS(this.editMode));
     });
+    // when recent updates anywhere, write this to memory
+    autorun(() => {
+      const recentGizmoList = toJS(this.recentGizmoList);
+      if (recentGizmoList.length > 0) {
+        UserScaffoldInstance.writeMemory(
+          "recentGizmoList",
+          recentGizmoList,
+          "long"
+        );
+      }
+    });
   }
   // select the text in question and insert in the correct location
   async _insertTextResult(text) {
     this.activeNode.focus();
     // @todo seems to insert at the end always
-    SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
-    SuperDaemonInstance.activeRange.collapse(true);
-    SuperDaemonInstance.activeSelection.removeAllRanges();
-    SuperDaemonInstance.activeSelection.addRange(
-      SuperDaemonInstance.activeRange
-    );
-    SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
-    SuperDaemonInstance.activeSelection.collapseToEnd();
+    if (SuperDaemonInstance.activeRange) {
+      SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
+      SuperDaemonInstance.activeRange.collapse(true);
+      SuperDaemonInstance.activeSelection.removeAllRanges();
+      SuperDaemonInstance.activeSelection.addRange(
+        SuperDaemonInstance.activeRange
+      );
+      SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
+      SuperDaemonInstance.activeSelection.collapseToEnd();
+    }
     setTimeout(() => {
       if (this.activeNode.textContent == "") {
         this.activeNode.textContent = text;
@@ -2316,60 +2345,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       )}`,
       "_blank"
     );
-  }
-
-  _superDaemonCommandContextChanged(e) {
-    // hax can react to command context changes
-  }
-
-  _superDaemonContextChanged(e) {
-    // hax can react to command context changes
-    if (e.detail.value.indexOf("CMS") !== -1) {
-      SuperDaemonInstance.questionTags = [
-        {
-          value: "CMS/action/edit",
-          label: "Edit current page",
-        },
-        {
-          value: "*",
-          label: "List everything I can do",
-        },
-        {
-          value: "?",
-          label: "HELP!",
-        },
-      ];
-    } else if (e.detail.value.indexOf("HAX") !== -1) {
-      SuperDaemonInstance.questionTags = [
-        {
-          value: "CMS/action/save",
-          label: "Save current page",
-        },
-        {
-          value: "media",
-          label: "Where can I find media?",
-        },
-        {
-          value: "*",
-          label: "List everything I can do",
-        },
-        {
-          value: "?",
-          label: "HELP!",
-        },
-      ];
-    } else {
-      SuperDaemonInstance.questionTags = [
-        {
-          value: "*",
-          label: "List everything I can do",
-        },
-        {
-          value: "?",
-          label: "HELP!",
-        },
-      ];
-    }
   }
 
   _richTextEditorPromptOpen() {
@@ -2709,19 +2684,19 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       settings: {
         configure: [
           {
-            attribute: "innerText",
-            title: "Text",
-            description: "Text of the link",
-            inputMethod: "textfield",
-            required: true,
-          },
-          {
             attribute: "href",
             title: "Link",
             description: "The URL for the link",
             inputMethod: "haxupload",
             required: true,
             validationType: "url",
+          },
+          {
+            attribute: "innerText",
+            title: "Text",
+            description: "Text of the link",
+            inputMethod: "textfield",
+            required: true,
           },
           {
             attribute: "target",
@@ -3234,6 +3209,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
       } else if (
+        this.activeNode && 
         this.activeNode.parentNode &&
         this.activeNode.parentNode.tagName != "HAX-BODY"
       ) {

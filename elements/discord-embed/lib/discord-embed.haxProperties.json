@@ -1,0 +1,55 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": true,
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Discord Embed",
+    "description": "Embed discord communities based on share URL",
+    "icon": "hax:discord",
+    "color": "purple",
+    "tags": ["Resource", "discord", "embed", "link", "social"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resource url",
+        "description": "Resource url",
+        "inputMethod": "textfield",
+        "icon": "link",
+        "required": true,
+        "validationType": "url"
+      },
+      {
+        "property": "height",
+        "title": "Height",
+        "description": "Content frame height",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "width",
+        "title": "Width",
+        "description": "Content frame width",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "discord-embed",
+      "content": "",
+      "properties": {
+      }
+    }
+  ]
+}

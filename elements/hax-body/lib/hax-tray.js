@@ -74,7 +74,6 @@ class HaxTray extends I18NMixin(
       htmlSource: "HTML Source",
       structureTip: "View Page Structure",
       edit: "Edit",
-      properties: "Properties",
       save: "Save",
       move: "Move",
       close: "Close",
@@ -200,7 +199,7 @@ class HaxTray extends I18NMixin(
         .tray-detail-titlebar-icon {
           --simple-icon-height: 40px;
           --simple-icon-width: 40px;
-          padding: 4px;
+          width: 8%;
         }
         .wrapper {
           position: fixed;
@@ -285,6 +284,7 @@ class HaxTray extends I18NMixin(
         }
         :host([edit-mode][element-align="right"]) .wrapper {
           right: 0px;
+          flex-direction: row-reverse;
         }
         :host([edit-mode][collapsed]) .wrapper {
           width: unset;
@@ -403,11 +403,16 @@ class HaxTray extends I18NMixin(
         .tray-detail-titlebar h4 {
           flex: 1 1 auto;
         }
+        .tray-detail-titlebar .tray-detail-titlebar-label {
+          display: inline-flex;
+          max-width: 160px;
+        }
         .tray-detail-titlebar .tray-detail-titlebar-actions {
-          float: right;
+          display: inline-flex;
         }
         #settingsform {
           margin: -8px -8px 0;
+          --a11y-collapse-padding-bottom: 100px;
           --simple-fields-field-margin: 12px;
           --a11y-collapse-heading-color: var(
             --simple-colors-default-theme-accent-12
@@ -872,7 +877,7 @@ class HaxTray extends I18NMixin(
       </hax-tray-button>`;
   }
   _clickMediaButton(e) {
-    SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
+    SuperDaemonInstance.runProgram("sources");
     SuperDaemonInstance.open();
   }
   get moreButtons() {
@@ -924,7 +929,9 @@ class HaxTray extends I18NMixin(
             class="tray-detail-titlebar-icon"
             icon="${this.trayIcon}"
           ></simple-icon-lite>
-          ${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}
+          <div class="tray-detail-titlebar-label">
+            ${this.trayLabel || `${this.activeTagName}`}
+          </div>
           <div class="tray-detail-titlebar-actions">${this.menuButtons}</div>
         </h4>
       </div>
@@ -1593,7 +1600,6 @@ class HaxTray extends I18NMixin(
           // grid plates are the exception to the rule here
           expanded:
             propName === "configure" &&
-            this.activeNode.tagName !== "GRID-PLATE" &&
             (!HAXStore.isTextElement(this.activeNode) ||
               HAXStore.isInlineElement(this.activeNode)),
           accordion: true,

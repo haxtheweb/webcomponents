@@ -19,7 +19,6 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     this.t.copy = "Copy";
     this.t.newChildPage = "Child";
     this.t.duplicatePage = "Clone";
-    this.t.docxImport = "Import pages (docx)";
     this.icon = "hax:add-page";
     this.voiceCommand = "add page";
     this.dark = false;
@@ -61,9 +60,6 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
       case "duplicate":
         this.icon = "hax:duplicate";
         return (this.label = this.t.duplicatePage);
-      case "docximport":
-        this.icon = "hax:file-docx";
-        return (this.label = this.t.docxImport);
     }
     this.icon = undefined;
     this.setAttribute("role", "menuitem");
@@ -106,9 +102,6 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
         title = item.title + " " + this.t.copy;
         parent = item.parent;
         order = parseInt(item.order) + 1;
-      } else if (this.type === "docximport") {
-        parent = null;
-        order = 0;
       }
     }
     // sanity fallback in case a translation system is bricked
@@ -126,8 +119,6 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     // special flag for duplicating the content of an existing item
     if (this.type === "duplicate") {
       payload.node.duplicate = item.id;
-    } else if (this.type === "docximport") {
-      payload.docximport = "branch";
     }
     // wrapper on CustomEvent to ensure uniformity
     this.HAXCMSFireButtonEvent("haxcms-create-node", this, payload);

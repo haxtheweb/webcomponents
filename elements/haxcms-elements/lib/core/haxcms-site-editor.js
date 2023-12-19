@@ -52,6 +52,20 @@ class HAXCMSSiteEditor extends LitElement {
     });
     autorun((reaction) => {
       this.activeItem = toJS(store.activeItem);
+      const baseUrl = toJS(store.location.baseUrl);
+      // account for haxiam vs non-haxiam
+      if (baseUrl) {
+        const sitePathAry = baseUrl.replace('/sites', '').split('/');
+        if (sitePathAry.length === 5) {
+          HAXStore.revisionHistoryLink = `/${sitePathAry[2]}/gitlist/${sitePathAry[3]}/logpatch/master/${this.activeItem.location}`;
+        } 
+        else if (sitePathAry.length === 4) {
+          HAXStore.revisionHistoryLink = `/${sitePathAry[1]}/gitlist/${sitePathAry[2]}/logpatch/master/${this.activeItem.location}`;
+        } 
+        else if (sitePathAry.length === 3) {
+          HAXStore.revisionHistoryLink = `/gitlist/${sitePathAry[1]}/logpatch/master/${this.activeItem.location}`;
+        }  
+      }
       this.__disposer.push(reaction);
     });
   }
@@ -382,7 +396,7 @@ class HAXCMSSiteEditor extends LitElement {
         // if we KNOW an event must expire the timing token
         case 405:
         case 401:
-            this.dispatchEvent(
+          this.dispatchEvent(
             new CustomEvent("jwt-login-logout", {
               composed: true,
               bubbles: true,
@@ -1151,10 +1165,18 @@ class HAXCMSSiteEditor extends LitElement {
   saveManifest(e) {
     // now let's work on the outline
     let values = e.detail; // if we have a cssVariable selected then generate a hexCode off of it
-
+    // regions translation to simplify submission
+    if (values.manifest.theme && values.manifest.theme.regions) {
+      Object.keys(values.manifest.theme.regions).forEach((key, index) => {
+        if (values.manifest.theme.regions[key] && values.manifest.theme.regions[key].length > 0) {
+          values.manifest.theme[key] = values.manifest.theme.regions[key].map(item => item.node ? item.node : null);
+        }
+      });
+      delete values.manifest.theme.regions;  
+    }
     if (values.cssVariable) {
       values.hexCode =
-        window.SimpleColorsStyles.colors[
+        window.SimpleColorsSharedStyles.colors[
           values.cssVariable
             .replace("--simple-colors-default-theme-", "")
             .replace("-7", "")

@@ -78,7 +78,6 @@ class SiteChildrenBlock extends LitElement {
     this.start = 1;
     this.end = 1000;
     this.fixedId = false;
-    this.noink = false;
     this.__items = [];
   }
 
@@ -99,8 +98,20 @@ class SiteChildrenBlock extends LitElement {
         .link {
           display: block;
           color: var(--site-children-block-link-color, #444444);
+          text-decoration: none;
+        }
+        .link button:hover,
+        .link button:focus {
+          text-decoration: underline;
         }
         button {
+          cursor: pointer;
+          display: block;
+          line-height: inherit;
+          font-size: inherit;
+          padding: 0;
+          margin: 0;
+          text-align: left;
           text-transform: unset;
           min-width: unset;
           width: 100%;
@@ -111,7 +122,15 @@ class SiteChildrenBlock extends LitElement {
           border: none;
           color: inherit;
         }
-
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        li {
+          margin: 0;
+          padding: 0;
+        }
         .active {
           color: var(--site-children-block-link-active-color, #000000);
           background-color: var(--site-children-block-link-active-bg);
@@ -158,7 +177,7 @@ class SiteChildrenBlock extends LitElement {
   // render function
   render() {
     return html`
-      <div class="wrapper">
+      <ul class="wrapper">
         <site-query-menu-slice
           @result-changed="${this.resultChanged}"
           dynamic-methodology="${this.dynamicMethodology}"
@@ -168,23 +187,26 @@ class SiteChildrenBlock extends LitElement {
           ?fixed-id="${this.fixedId}"
         ></site-query-menu-slice>
         ${this.__items.map(
-          (item) => html`
-            <div class="spacing">
-              <a
-                data-id="${item.id}"
-                class="link"
-                tabindex="-1"
-                href="${item.slug}"
-              >
-                <button noink="${this.noink}">
-                  <div class="indent indent-${item.indent}"></div>
-                  ${item.title}
-                </button>
-              </a>
-            </div>
-          `
+          (item) => html`${item.metadata.hideInMenu === true ||
+          item.metadata.published === false
+            ? ``
+            : html`
+                <li class="spacing">
+                  <a
+                    data-id="${item.id}"
+                    class="link"
+                    tabindex="-1"
+                    href="${item.slug}"
+                  >
+                    <button>
+                      <div class="indent indent-${item.indent}"></div>
+                      ${item.title}
+                    </button>
+                  </a>
+                </li>
+              `} `
         )}
-      </div>
+      </ul>
     `;
   }
   static get properties() {
@@ -222,12 +244,6 @@ class SiteChildrenBlock extends LitElement {
       fixedId: {
         type: Boolean,
         attribute: "fixed-id",
-      },
-      /**
-       * to control ink on the buttons
-       */
-      noink: {
-        type: Boolean,
       },
       /**
        * just to bind data between things

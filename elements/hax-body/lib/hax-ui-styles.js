@@ -122,7 +122,10 @@ export const HaxUiFields = [
       --simple-fields-detail-line-height: 120%;
       --simple-fields-margin: var(--hax-ui-spacing);
       --simple-fields-background-color: var(--hax-ui-background-color);
-      --simple-fields-color: var(--hax-tray-text-color);
+      --simple-fields-color: var(--hax-ui-color);
+      --simple-picker-option-active-color: var(--hax-ui-color);
+      --simple-picker-color-active: var(--hax-ui-color);
+      --simple-picker-color: var(--hax-ui-color);
       --simple-fields-accent-color: var(--hax-ui-color-accent);
       --simple-fields-accent-color-light: var(--hax-ui-background-color-faded);
       --simple-fields-error-color: var(--hax-ui-color-danger-secondary);

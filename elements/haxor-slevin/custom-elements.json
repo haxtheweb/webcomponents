@@ -3,16 +3,8 @@
   "tags": [
     {
       "name": "haxor-slevin",
-      "description": "`haxor-slevin`\n`Tech blogger theme`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `json-outline-schema-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `manifest` - \n\n  * `selected-page` {`number`} - \n\n  * `stateClass` {`string`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `manifest` - \n\n  * `selectedPage` {`number`} - \n\n  * `stateClass` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
+      "description": "`haxor-slevin`\n`Tech blogger theme`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `json-outline-schema-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `stateClass` {`string`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `activeItem` - \n\n  * `selected-page` {`number`} - \n\n  * `t` - \n\n  * `dark-mode` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `stateClass` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `activeItem` - \n\n  * `selectedPage` {`number`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `darkMode` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
-        {
-          "name": "manifest",
-          "description": "`manifest` - \n\nProperty: manifest"
-        },
-        {
-          "name": "selected-page",
-          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage"
-        },
         {
           "name": "stateClass",
           "description": "`stateClass` {`string`} - \n\nProperty: stateClass"
@@ -22,12 +14,34 @@
           "description": "`__mainPosts` {`any[]`} - \n\nProperty: __mainPosts\n\nDefault: "
         },
         {
-          "name": "__extraPosts",
-          "description": "`__extraPosts` {`any[]`} - \n\nProperty: __extraPosts\n\nDefault: "
-        },
-        {
           "name": "__followUpPosts",
           "description": "`__followUpPosts` {`any[]`} - \n\nProperty: __followUpPosts\n\nDefault: "
+        },
+        {
+          "name": "activeItem",
+          "description": "`activeItem` - \n\nProperty: activeItem\n\nDefault: [object Object]"
+        },
+        {
+          "name": "selected-page",
+          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage\n\nDefault: 0"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "dark-mode",
+          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "hex-color",
@@ -95,6 +109,10 @@
         {
           "name": "onjson-outline-schema-active-item-changed",
           "description": "`json-outline-schema-active-item-changed` {`CustomEvent<{}>`} - "
+        },
+        {
+          "name": "onhaxcms-toast-hide",
+          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
         },
         {
           "name": "onhaxcms-toast-show",

@@ -40,7 +40,7 @@ export class SuperDaemonToast extends SimpleToastEl {
       ...super.styles,
       css`
         :host {
-          --simple-toast-z-index: 100000000;
+          --simple-toast-z-index: 100000002;
         }
         :host([opened]) {
           display: flex;
@@ -49,7 +49,7 @@ export class SuperDaemonToast extends SimpleToastEl {
         future-terminal-text {
           min-width: 300px;
           overflow-wrap: break-all;
-          text-elipsis: ellipsis;
+          text-overflow: ellipsis;
           line-height: 36px;
           font-size: 18px;
           text-align: left;
@@ -125,7 +125,7 @@ export class SuperDaemonToast extends SimpleToastEl {
         }
         .rightedge {
           background-image: url("${unsafeCSS(SpeechBubbleR)}");
-          width: 54px;
+          width: 42px;
           background-color: white;
           transform: scaleX(-1.1);
         }
@@ -133,37 +133,6 @@ export class SuperDaemonToast extends SimpleToastEl {
         :host([dark-mode]) .leftedge,
         :host([dark-mode]) .rightedge {
           filter: invert(1);
-        }
-        @media (max-width: 800px) {
-          :host {
-            --simple-toast-width: 80vw;
-            --simple-toast-font-size: 12px;
-          }
-        }
-        @media (max-width: 500px) {
-          :host {
-            height: 50px;
-            line-height: 50px;
-            border: none;
-          }
-
-          .rightedge {
-            display: none;
-          }
-          .leftedge {
-            display: none;
-          }
-          .mid {
-            height: 50px;
-            line-height: 50px;
-            background-image: unset;
-          }
-          .bubble {
-            height: 50px;
-            margin: 0;
-            border: 2px solid black;
-            border-radius: 5px;
-          }
         }
       `,
     ];

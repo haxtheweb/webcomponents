@@ -190,7 +190,7 @@
     },
     {
       "name": "simple-icon-lite",
-      "description": "`simple-icon-lite`\n`Render an SVG based icon`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `no-colorize` {`boolean`} - \n\n  * `dir` {`string`} - \n\nProperties:\n\n  * `feFlood` {`TemplateResult<2> | \"\"`} - \n\n  * `src` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `documentDir` {`string`} - \n\n  * `useSafariPolyfill` {`boolean`} - \n\n  * `safariMask` {`string`} - \n\n  * `noColorize` {`boolean`} - \n\n  * `dir` {`string`} - ",
+      "description": "`simple-icon-lite`\n`Render an SVG based icon`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `no-colorize` {`boolean`} - \n\n  * `dir` {`string`} - \n\nProperties:\n\n  * `feFlood` {`UncompiledTemplateResult<2> | \"\"`} - \n\n  * `src` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `documentDir` {`string`} - \n\n  * `useSafariPolyfill` {`boolean`} - \n\n  * `safariMask` {`string`} - \n\n  * `noColorize` {`boolean`} - \n\n  * `dir` {`string`} - ",
       "attributes": [
         {
           "name": "src",
@@ -240,7 +240,7 @@
     },
     {
       "name": "simple-icon",
-      "description": "`simple-icon`\n`Render an SVG based icon`\n\nAttributes:\n\n  * `contrast` {`number`} - \n\n  * `src` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `no-colorize` {`boolean`} - \n\n  * `dir` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `contrast` {`number`} - \n\n  * `feFlood` {`TemplateResult<2> | \"\"`} - \n\n  * `src` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `documentDir` {`string`} - \n\n  * `useSafariPolyfill` {`boolean`} - \n\n  * `safariMask` {`string`} - \n\n  * `noColorize` {`boolean`} - \n\n  * `dir` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`simple-icon`\n`Render an SVG based icon`\n\nAttributes:\n\n  * `contrast` {`number`} - \n\n  * `src` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `no-colorize` {`boolean`} - \n\n  * `dir` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `contrast` {`number`} - \n\n  * `feFlood` {`UncompiledTemplateResult<2> | \"\"`} - \n\n  * `src` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `documentDir` {`string`} - \n\n  * `useSafariPolyfill` {`boolean`} - \n\n  * `safariMask` {`string`} - \n\n  * `noColorize` {`boolean`} - \n\n  * `dir` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "contrast",
