@@ -253,6 +253,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         @click="${this._onInputClick}"
         ?disabled="${this.disabled}"
         @focus="${this._onInputFocus}"
+        @paste="${this._onInputPaste}"
         id="${this.id}"
         @keydown="${this._onInputKeydown}"
         @keyup="${this._onInputKeyup}"
@@ -498,6 +499,13 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     this.removeVisualFocusAll();
     setTimeout(this.close(false), 300);
   }
+
+  _onInputPaste(e) {
+    clearTimeout(this.__debounce);
+    this.__debounce = setTimeout(() => {
+      this.value = this.input.value;
+    }, 0);
+  }
   /**
    * handles input focus
    *
@@ -516,6 +524,10 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   _onInputKeydown(event) {
+    clearTimeout(this.__debounce);
+    this.__debounce = setTimeout(() => {
+      this.value = this.input.value;
+    }, 300);
     var flag = false,
       altKey = event.altKey;
 
@@ -796,7 +808,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     setTimeout(this.close(false), 300);
   }
   open() {
-    if (!this.exapanded) this.expanded = true;
+    if (!this.expanded) this.expanded = true;
   }
   close(force) {
     //return;
