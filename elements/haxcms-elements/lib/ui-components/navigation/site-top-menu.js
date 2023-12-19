@@ -26,7 +26,6 @@ class SiteTopMenu extends LitElement {
     super();
     this.windowControllers = new AbortController();
     this.__disposer = [];
-    this.manifest = {};
     this.activeId = null;
     this.sticky = false;
     this.indicator = "line";
@@ -195,14 +194,13 @@ class SiteTopMenu extends LitElement {
     if (e.detail.value === null) {
       this.__items = [];
     } else {
-      this.__items = e.detail.value;
+      this.__items = [...e.detail.value];
     }
   }
   // render function
   render() {
     return html`
       <site-query
-        .result="${this.__items}"
         @result-changed="${this.__resultChanged}"
         .sort="${this.sort}"
         .conditions="${this.conditions}"
@@ -272,12 +270,6 @@ class SiteTopMenu extends LitElement {
     return {
       __items: {
         type: Array,
-      },
-      /**
-       * manifest of everything, in case we need to check on children of parents
-       */
-      manifest: {
-        type: Object,
       },
       /**
        * acitvely selected item
@@ -377,11 +369,12 @@ class SiteTopMenu extends LitElement {
         if (this.shadowRoot.querySelector('[data-id="' + newValue + '"]')) {
           el = this.shadowRoot.querySelector('[data-id="' + newValue + '"]');
         } else {
-          let tmpItem = this.manifest.items.find((i) => i.id == newValue);
+          const items = store.getManifestItems(true);
+          let tmpItem = items.find((i) => i.id == newValue);
           // fallback, maybe there's a child of this currently active
           while (el === null && tmpItem && tmpItem.parent != null) {
             // take the parent object of this current item
-            tmpItem = this.manifest.items.find((i) => i.id == tmpItem.parent);
+            tmpItem = items.find((i) => i.id == tmpItem.parent);
             // see if IT lives in the dom, if not, keep going until we run out
             if (
               tmpItem &&
@@ -431,10 +424,6 @@ class SiteTopMenu extends LitElement {
     this.shadowRoot
       .querySelector("#menu")
       .addEventListener("click", this.toggleOpen.bind(this));
-    autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      this.__disposer.push(reaction);
-    });
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
