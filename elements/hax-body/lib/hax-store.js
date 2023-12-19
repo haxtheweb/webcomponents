@@ -1707,6 +1707,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               txt.setAttribute("target", "_blank");
               txt.innerText = pasteContent;
             }
+            range.deleteContents();
             range.insertNode(txt);
             setTimeout(() => {
               this._positionCursorInNode(txt, txt.length);
