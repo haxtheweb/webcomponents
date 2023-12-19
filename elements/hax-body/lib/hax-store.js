@@ -271,7 +271,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     linkOnMultiple = false
   ) {
     // we have no clue what this is.. let's try and guess..
-    let type = this.guessGizmoType(values);
+    let type = this.activePlaceHolderOperationType || this.guessGizmoType(values);
+    if (type === 'upload-only') {
+      this.toast("Upload successful!");
+      return false;
+    }
+    // told to insert a link based on operation executed
+    if (this.activePlaceHolderOperationType === "link") {
+      linkOnMultiple = true;
+    }
     let typeName = type;
     // we want to simplify insert but if we get wildcard... do whatever
     let preferExclusive = true;
@@ -314,6 +322,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           );
         }
       } else {
+        // @todo this should somehow get it's options passed to and from merlin
         // hand off to hax-app-picker to deal with the rest of this
         this.haxAppPicker.presentOptions(
           haxElements,
@@ -532,6 +541,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
        */
       activePlaceHolder: {
         type: Object,
+      },
+      // we might not have this value, or we might have a specific way we want to handle this
+      // other than just displaying the configuration of how to display this
+      activePlaceHolderOperationType: {
+        type: String,
       },
       /**
        * Possible appStore endpoint for loading in things dynamically.
@@ -1900,7 +1914,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   constructor() {
     super();
     enableServices(["core"]);
-    this.toastShowEventName = "simple-toast-show";
+    this.toastShowEventName = window.HAXCMS ? "haxcms-toast-show" : "simple-toast-show";
     this.t = {
       close: "Close",
     };
@@ -2173,6 +2187,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.activeEditingElement = null;
     this.haxBodies = [];
     this.activePlaceHolder = null;
+    this.activePlaceHolderOperationType = null;
     this.sessionObject = {};
     this.editMode = false;
     this.skipExitTrap = false;
@@ -3193,6 +3208,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
       } else if (
+        this.activeNode && 
         this.activeNode.parentNode &&
         this.activeNode.parentNode.tagName != "HAX-BODY"
       ) {

@@ -362,6 +362,9 @@ export class RPGCharacterToast extends SimpleToastEl {
 
   hide() {
     if (!this.awaitingMerlinInput) {
+      // to avoid constantly running in the background
+      this.walking = false;
+      this.speed = 500;
       if (this.eventCallback) {
         const evt = new CustomEvent(this.eventCallback, {
           bubbles: true,

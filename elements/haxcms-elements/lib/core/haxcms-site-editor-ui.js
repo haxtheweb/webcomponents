@@ -490,7 +490,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   // upload file and do what the user asked contextually
-  async processFileContentsBasedOnUserDesire(values, mode) {
+  async processFileContentsBasedOnUserDesire(values, mode, operationType) {
     const usData = toJS(UserScaffoldInstance.data);
     const e = usData.event;
     this.setProcessingVisual();
@@ -511,17 +511,48 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               composed: true,
               detail: {
                 file: values.data,
-                placeHolderElement: null
+                placeHolderElement: null,
+                operationType: operationType,
               },
             })
           );
         }
         else if (mode === 'link') {
+          if (store.editMode === false) {
+            store.editMode = true;
+          }
           // do the uploading
           // take resulting upload 
           // put in editMode if we have to
           // insert link in bottom of page / below whatever is active
-          let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
+          setTimeout(() => {
+            let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
+              // fire this specialized event up so things like HAX can intercept
+              this.dispatchEvent(
+                new CustomEvent("hax-file-upload", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: {
+                    file: values.data,
+                    placeHolderElement: p,
+                    operationType: operationType,
+                  }
+                })
+              );
+          }, 300);
+        }
+        else {
+          if (store.editMode === false) {
+            store.editMode = true;
+          }
+          // upload
+          // take resulting upload 
+          // put in editMode if we have to
+          // insert result into bottom of page / active
+          // allowing hax to evaluate what type should be inserted (gizmoGuess)
+          setTimeout(() => {
+            let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
             // fire this specialized event up so things like HAX can intercept
             this.dispatchEvent(
               new CustomEvent("hax-file-upload", {
@@ -530,30 +561,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 composed: true,
                 detail: {
                   file: values.data,
-                  placeHolderElement: p
-                }
+                  placeHolderElement: p,
+                  operationType: operationType,
+                },
               })
             );
-        }
-        else {
-          // upload
-          // take resulting upload 
-          // put in editMode if we have to
-          // insert result into bottom of page / active
-          // allowing hax to evaluate what type should be inserted (gizmoGuess)
-          let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
-          // fire this specialized event up so things like HAX can intercept
-          this.dispatchEvent(
-            new CustomEvent("hax-file-upload", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: {
-                file: values.data,
-                placeHolderElement: p
-              },
-            })
-          );
+          }, 300);
         }
       break;
       case 'insert-html':
@@ -1019,7 +1032,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     value: {
                       target: this,
                       method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert-file'],
+                      args: [values, 'insert-file', 'image'],
                     },
                     eventName: "super-daemon-element-method",
                     path: "Image embedded in page",
@@ -1035,7 +1048,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     value: {
                       target: this,
                       method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert-file'],
+                      args: [values, 'insert-file', 'iframe'],
                     },
                     eventName: "super-daemon-element-method",
                     path: "PDF embedded in a frame element",
@@ -1054,7 +1067,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 value: {
                   target: this,
                   method: "processFileContentsBasedOnUserDesire",
-                  args: [values, 'link'],
+                  args: [values, 'link', 'link'],
                 },
                 eventName: "super-daemon-element-method",
                 path: "File uploaded and linked to",
@@ -1068,7 +1081,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 value: {
                   target: this,
                   method: "processFileContentsBasedOnUserDesire",
-                  args: [values, 'upload'],
+                  args: [values, 'upload', 'upload-only'],
                 },
                 eventName: "super-daemon-element-method",
                 path: "File uploaded for later use",
