@@ -241,9 +241,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       if (!!i && !!i.type && i.type != "")
                         keywords[i.type.toLowerCase()] = true;
                     });
-                    [...gizmo.tags].forEach((i) => {
-                      if (!!i && i != "") keywords[i.toLowerCase()] = true;
-                    });
+                    if (gizmo.tags && gizmo.tags.length > 0) {
+                      [...gizmo.tags].forEach((i) => {
+                        if (!!i && i != "") keywords[i.toLowerCase()] = true;
+                      });  
+                    }
                     gizmo.keywords = Object.keys(keywords);
                     //prevent duplicates
                     if (!matchedTags.includes(gizmo.tag)) {
