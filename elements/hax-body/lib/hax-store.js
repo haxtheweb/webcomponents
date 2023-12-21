@@ -281,6 +281,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (this.activePlaceHolderOperationType === "link") {
       linkOnMultiple = true;
     }
+    // reset this after
+    this.activePlaceHolderOperationType = null;
     let typeName = type;
     // we want to simplify insert but if we get wildcard... do whatever
     let preferExclusive = true;
