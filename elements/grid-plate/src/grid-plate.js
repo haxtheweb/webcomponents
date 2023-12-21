@@ -489,6 +489,13 @@ class GridPlate extends LitElement {
             options: new GridPlateLayoutOptions().options,
           },
           {
+            property: "disableResponsive",
+            title: "Disable responsive",
+            description:
+              "Check box to force layout to stick regardless of screen size",
+            inputMethod: "boolean",
+          },
+          {
             property: "itemPadding",
             title: "Padding top",
             description: "Padding inside each item",
@@ -510,13 +517,6 @@ class GridPlate extends LitElement {
           }
         ],
         advanced: [
-          {
-            property: "disableResponsive",
-            title: "Disable responsive",
-            description:
-              "Check box to force layout to stick regardless of screen size",
-            inputMethod: "boolean",
-          }
         ],
         developer: [
           {
@@ -633,6 +633,7 @@ class GridPlate extends LitElement {
        */
       disableResponsive: {
         type: Boolean,
+        reflect: true,
         attribute: "disable-responsive",
       },
       /**
