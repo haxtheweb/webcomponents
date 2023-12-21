@@ -921,10 +921,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * got a message that we need to update our page content
    */
   _triggerUpdatedNode(e) {
-    // ensure we don't get a miss on initial load
-    if (this.activeItem.location) {
-      this.loadPageData();
-    }
+    this.loadPageData();
   }
   /**
    * notice manifest changes and ensure slot is rebuilt.

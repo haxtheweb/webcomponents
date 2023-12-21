@@ -259,8 +259,9 @@ class PlayList extends LitElement {
           })
         );
         if (
+          this.shadowRoot.querySelector(".carousel") &&
           this.shadowRoot.querySelector(".carousel").activeSlide !==
-          this[propName]
+            this[propName]
         ) {
           // this.shadowRoot.querySelector('.carousel').goToSlide(parseInt(this[propName]));
         }
