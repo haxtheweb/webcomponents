@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.18",
+  "version": "8.0.0",
   "description": "Provide a laugh and a good example of VanillaJS for demos",
   "repository": {
     "type": "git",

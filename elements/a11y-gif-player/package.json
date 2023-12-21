@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.18",
+  "version": "8.0.0",
   "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",
@@ -36,17 +36,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^7.0.18",
-    "@lrnwebcomponents/intersection-element": "^7.0.4",
-    "@lrnwebcomponents/micro-frontend-registry": "^7.0.18",
-    "@lrnwebcomponents/schema-behaviors": "^7.0.18",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.18",
+    "@lrnwebcomponents/a11y-details": "^8.0.0",
+    "@lrnwebcomponents/intersection-element": "^8.0.0",
+    "@lrnwebcomponents/micro-frontend-registry": "^8.0.0",
+    "@lrnwebcomponents/schema-behaviors": "^8.0.0",
+    "@lrnwebcomponents/simple-tooltip": "^8.0.0",
     "lit": "^3.1.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.18",
-    "@lrnwebcomponents/simple-img": "^7.0.18",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.18",
+    "@lrnwebcomponents/deduping-fix": "^8.0.0",
+    "@lrnwebcomponents/simple-img": "^8.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^8.0.0",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.18",
+  "version": "8.0.0",
   "description": "Mark desired words in a sentence",
   "repository": {
     "type": "git",
@@ -44,9 +44,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/i18n-manager": "^7.0.18",
-    "@lrnwebcomponents/multiple-choice": "^7.0.18",
-    "@lrnwebcomponents/simple-toolbar": "^7.0.18",
+    "@lrnwebcomponents/i18n-manager": "^8.0.0",
+    "@lrnwebcomponents/multiple-choice": "^8.0.0",
+    "@lrnwebcomponents/simple-toolbar": "^8.0.0",
     "lit": "^3.1.0"
   },
   "devDependencies": {

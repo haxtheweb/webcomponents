@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.18",
+  "version": "8.0.0",
   "description": "singleton to simplify interactions with the file system on a user&#39;s device",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^7.0.4"
+    "@lrnwebcomponents/es-global-bridge": "^8.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.7.7",

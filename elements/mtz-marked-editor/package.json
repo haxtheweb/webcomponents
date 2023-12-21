@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.18",
+  "version": "8.0.0",
   "description": "Automated conversion of mtz-marked-editor",
   "repository": {
     "type": "git",
@@ -41,15 +41,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-icon": "^7.0.18",
+    "@lrnwebcomponents/simple-icon": "^8.0.0",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-form-element-behavior": "^3.0.1",
     "@polymer/iron-validatable-behavior": "^3.0.1",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.18",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.18",
+    "@lrnwebcomponents/deduping-fix": "^8.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^8.0.0",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

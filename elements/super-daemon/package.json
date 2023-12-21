@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.18",
+  "version": "8.0.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -44,20 +44,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/future-terminal-text": "^7.0.18",
-    "@lrnwebcomponents/hal-9000": "^7.0.18",
-    "@lrnwebcomponents/i18n-manager": "^7.0.18",
-    "@lrnwebcomponents/simple-fields": "^7.0.18",
-    "@lrnwebcomponents/simple-filter": "^7.0.18",
-    "@lrnwebcomponents/simple-icon": "^7.0.18",
     "@lit-labs/virtualizer": "2.0.11",
+    "@lrnwebcomponents/future-terminal-text": "^8.0.0",
+    "@lrnwebcomponents/hal-9000": "^8.0.0",
+    "@lrnwebcomponents/i18n-manager": "^8.0.0",
+    "@lrnwebcomponents/simple-fields": "^8.0.0",
+    "@lrnwebcomponents/simple-filter": "^8.0.0",
+    "@lrnwebcomponents/simple-icon": "^8.0.0",
+    "@lrnwebcomponents/user-scaffold": "^8.0.0",
     "lit": "^3.1.0",
-    "@lrnwebcomponents/user-scaffold": "^7.0.18",
     "mobx": "6.12.0",
     "web-dialog": "^0.0.11"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.18",
+    "@lrnwebcomponents/deduping-fix": "^8.0.0",
     "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
