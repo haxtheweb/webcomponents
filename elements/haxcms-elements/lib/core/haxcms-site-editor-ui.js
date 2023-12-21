@@ -1039,6 +1039,40 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   }
                 );
               break;
+              case "mp4":
+                results.push(
+                  {
+                    title: `Insert ${values.type} in page`,
+                    icon: "av:play-circle-filled",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, 'insert-file', 'video'],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "Video embedded in page",
+                  }
+                );
+              break;
+              case "midi":
+              case "mid":
+              case "mp3":
+                results.push(
+                  {
+                    title: `Insert ${values.type} in page`,
+                    icon: "av:volume-up",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, 'insert-file', 'audio'],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "Audio embedded in page",
+                  }
+                );
+              break;
               case "pdf":
                 results.push(
                   {
@@ -1048,7 +1082,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     value: {
                       target: this,
                       method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert-file', 'iframe'],
+                      args: [values, 'insert-file', 'pdf'],
                     },
                     eventName: "super-daemon-element-method",
                     path: "PDF embedded in a frame element",
