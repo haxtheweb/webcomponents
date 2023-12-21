@@ -54,7 +54,7 @@ class HAXCMSSiteEditor extends LitElement {
       this.activeItem = toJS(store.activeItem);
       const baseUrl = toJS(store.location.baseUrl);
       // account for haxiam vs non-haxiam
-      if (baseUrl) {
+      if (baseUrl && this.activeItem && this.activeItem.location) {
         const sitePathAry = baseUrl.replace('/sites', '').split('/');
         if (sitePathAry.length === 5) {
           HAXStore.revisionHistoryLink = `/${sitePathAry[2]}/gitlist/${sitePathAry[3]}/logpatch/master/${this.activeItem.location}`;

@@ -196,8 +196,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // now we can look through them
         // look for a match
         for (let gizmoposition in this.gizmoList) {
-          let gizmo = this.gizmoList[gizmoposition],
-            tags = [];
+          let gizmo = toJS(this.gizmoList[gizmoposition]);
           let props = !!values.innerHTML ? { innerHTML: values.innerHTML } : {};
           // reset match per gizmo
           let match = false;
@@ -244,7 +243,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                     if (gizmo.tags && gizmo.tags.length > 0) {
                       [...gizmo.tags].forEach((i) => {
                         if (!!i && i != "") keywords[i.toLowerCase()] = true;
-                      });  
+                      });
                     }
                     gizmo.keywords = Object.keys(keywords);
                     //prevent duplicates
