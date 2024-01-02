@@ -514,10 +514,9 @@ class GridPlate extends LitElement {
             min: 0,
             inputMethod: "slider",
             suffix: "px",
-          }
+          },
         ],
-        advanced: [
-        ],
+        advanced: [],
         developer: [
           {
             property: "breakpointSm",
@@ -550,8 +549,8 @@ class GridPlate extends LitElement {
               "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
             inputMethod: "textfield",
             validationType: "number",
-          }
-        ]
+          },
+        ],
       },
       saveOptions: {
         unsetAttributes: [
@@ -686,9 +685,14 @@ class GridPlate extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       // if any of these changed, update col widths
       if (
-        ["responsiveSize", "layout", "layouts", "disableResponsive", "itemPadding","itemMargin"].includes(
-          propName
-        )
+        [
+          "responsiveSize",
+          "layout",
+          "layouts",
+          "disableResponsive",
+          "itemPadding",
+          "itemMargin",
+        ].includes(propName)
       ) {
         clearTimeout(this.__calcWidthLock);
         this.__calcWidthLock = setTimeout(() => {
@@ -703,20 +707,24 @@ class GridPlate extends LitElement {
       switch (propName) {
         case "itemMargin":
           if (this[propName]) {
-            this.style.setProperty('--grid-plate-item-margin', this[propName] + 'px');
+            this.style.setProperty(
+              "--grid-plate-item-margin",
+              this[propName] + "px"
+            );
+          } else {
+            this.style.removeProperty("--grid-plate-item-margin");
           }
-          else {
-            this.style.removeProperty('--grid-plate-item-margin');
-          }
-        break;
+          break;
         case "itemPadding":
-        if (this[propName]) {
-          this.style.setProperty('--grid-plate-item-padding', this[propName] + 'px');
-        }
-        else {
-          this.style.removeProperty('--grid-plate-item-padding');
-        }
-        break;
+          if (this[propName]) {
+            this.style.setProperty(
+              "--grid-plate-item-padding",
+              this[propName] + "px"
+            );
+          } else {
+            this.style.removeProperty("--grid-plate-item-padding");
+          }
+          break;
         // observer, ensure we are sized correctly after widths change
         case "__columnWidths":
           // widths changed because of layout somehow, wait for the resize transition
