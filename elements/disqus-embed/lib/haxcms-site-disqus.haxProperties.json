@@ -1,0 +1,59 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": true,
+  "canScale": true,
+  "canPosition": false,
+  "canEditSource": false,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Disqus comments",
+    "description": "Integration with the Disqus commenting web service",
+    "icon": "hax:disqus",
+    "color": "purple",
+    "tags": [
+      "Other",
+      "comment",
+      "social",
+      "commenting",
+      "comments",
+      "social media",
+      "engagement",
+      "discussion",
+      "feedback"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Short name",
+        "description": "Property short name on disqus",
+        "inputMethod": "textfield",
+        "required": true
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": true,
+    "unsetAttributes": ["page-url", "page-identifier", "page-title", "lang"]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "haxcms-site-disqus",
+      "content": "",
+      "properties": {}
+    }
+  ]
+}

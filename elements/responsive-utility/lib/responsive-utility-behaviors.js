@@ -20,6 +20,7 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
         ...props,
         disableResponsive: {
           type: Boolean,
+          reflect: true,
           attribute: "disable-responsive",
         },
         /*

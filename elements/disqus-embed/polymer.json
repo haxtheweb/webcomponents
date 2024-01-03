@@ -1,0 +1,31 @@
+{
+  "entrypoint": "demo/index.html",
+  "extraDependencies": [
+    "node_modules/@webcomponents/webcomponentsjs/*.js",
+    "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js",
+    "node_modules/@webcomponents/webcomponentsjs/bundles/*.js"
+  ],
+  "sources": [],
+  "builds": [
+    {
+      "name": "es6",
+      "browserCapabilities": ["es2018", "modules"],
+      "js": {
+        "minify": false,
+        "transformImportMeta": true
+      },
+      "css": {
+        "minify": false
+      },
+      "html": {
+        "minify": false
+      },
+      "bundle": false
+    }
+  ],
+  "moduleResolution": "node",
+  "npm": true,
+  "lint": {
+    "rules": ["polymer-3"]
+  }
+}

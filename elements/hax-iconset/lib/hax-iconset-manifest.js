@@ -112,6 +112,7 @@ export const HaxIconsetManifest = [
       "container",
       "delete-restore",
       "discord",
+      "disqus",
       "documents",
       "duplicate",
       "email",

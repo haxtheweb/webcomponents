@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>DisqusEmbed: disqus-embed Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../disqus-embed.js';
+      import "@lrnwebcomponents/grid-plate/grid-plate.js";
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <button onclick="cool();">Change pageID</button>
+    <script>
+      function cool() {
+        document.querySelector('disqus-embed').pageIdentifier = "cool";
+        document.querySelector('disqus-embed').pageURL = "https://btopro.com/cool";
+      }
+    </script>
+    <div class="vertical-section-container centered">
+      <h3>Basic disqus-embed demo</h3>
+      <demo-snippet>
+        <template>
+          <grid-plate layout="1-1-1">
+            <div slot="col-1">Cool stuff</div>
+            <disqus-embed slot="col-2" short-name="btopro-com" page-url="https://btopro.com" page-identifier="abs-1233-333-22" page-title="Really Awesome blog post name"></disqus-embed>
+          </grid-plate>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
