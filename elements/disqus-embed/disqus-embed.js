@@ -12,6 +12,7 @@ import { LitElement, html, css } from "lit";
 class DisqusEmbed extends LitElement {
   constructor() {
     super();
+    this.loadingText = "Loading comments..";
     this.pageURL = null;
     this.pageIdentifier = null;
     this.pageTitle = null;
@@ -21,6 +22,7 @@ class DisqusEmbed extends LitElement {
 
   static get properties() {
     return {
+      loadingText: { type: String, attribute: 'loading-text', },
       pageURL: {
         type: String,
         attribute: "page-url",
@@ -43,20 +45,17 @@ class DisqusEmbed extends LitElement {
     };
   }
 
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    // so we can target for anchor links if needed based on their docs
-    this.setAttribute("id", "disqus_thread");
-  }
-
   static get styles() {
     return [
       css`
         :host {
           display: block;
           min-height: 64px;
+          background-color: white;
+          color: black;
+          border-radius: 16px;
+          border: 2px solid black;
+          padding: 24px;
         }
       `,
     ];
@@ -65,7 +64,7 @@ class DisqusEmbed extends LitElement {
    * LitElement render callback
    */
   render() {
-    return html`<slot></slot>`;
+    return html`<slot>${this.loadingText}</slot>`;
   }
 
   updated(changedProperties) {
@@ -74,20 +73,18 @@ class DisqusEmbed extends LitElement {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "shortName" && this[propName]) {
-        clearTimeout(this._timeout);
-        this._timeout = setTimeout(() => {
-          this.createEmbedScript(this.shortName);
-        }, 0);
+        DisqusInstance.createEmbedScript(this, this.shortName);
       }
       // on ANY change to the element let's rebuild the configuration except initial shortName setting
       if (propName !== "shortName" && window.DISQUS) {
         clearTimeout(this._timeout);
         this._timeout = setTimeout(() => {
-          this.rebuildConfiguration(
+          DisqusInstance.rebuildConfiguration(
+            this,
             this.pageIdentifier,
             this.pageURL,
             this.pageTitle,
-            this.lang
+            this.lang,
           );
         }, 100);
       }
@@ -99,38 +96,179 @@ class DisqusEmbed extends LitElement {
   static get tag() {
     return "disqus-embed";
   }
-
-  createEmbedScript(name) {
-    // unset existing
-    this.innerHTML = "";
-    const embed = document.createElement("script");
-    embed.setAttribute("data-timestamp", +new Date());
-    embed.type = "text/javascript";
-    embed.async = true;
-    embed.src = `https://${name}.disqus.com/embed.js`;
-    this.appendChild(embed);
-  }
-
-  rebuildConfiguration(identifier, url, title, lang) {
-    if (window.DISQUS) {
-      window.DISQUS.reset({
-        reload: true,
-        config: function () {
-          this.page.identifier = identifier;
-          this.page.url = url;
-          this.page.title = title;
-          this.language = lang;
-        },
-      });
-    }
-  }
 }
 customElements.define(DisqusEmbed.tag, DisqusEmbed);
 export { DisqusEmbed };
 
+class DisqusBroker extends LitElement {
+  constructor() {
+    super();
+    // use this to store a reference to what is rendering the disqus visually
+    // this also gets called in teh callbacks so that when events happen we can
+    // move Disqus to the visual target once it's safe to do so
+    this.renderTarget = null;
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // this ensures that the container gets populated from the jQuery-esk calls
+    // to the global document
+    this.setAttribute("id", "disqus_thread");
+  }
+
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: none;
+        }
+      `,
+    ];
+  }
+  /**
+   * LitElement render callback
+   */
+  render() {
+    return html`<slot></slot>`;
+  }
+
+  /**
+   * Convention we use
+   */
+  static get tag() {
+    return "disqus-broker";
+  }
+
+  createEmbedScript(target, name) {
+    console.log('create');
+    this.renderTarget = target;
+    this.innerHTML = "";
+    if (!this._embed) {
+      this._embed = document.createElement("script");
+      this._embed.setAttribute("data-timestamp", +new Date());
+      this._embed.type = "text/javascript";
+      this._embed.async = true;
+      this._embed.src = `https://${name}.disqus.com/embed.js`;
+      this.insertAdjacentElement("afterend", this._embed);
+    }
+  }
+
+  // when anything changes we need to ensure that we rebuild / reset Disqus object
+  rebuildConfiguration(target, identifier, url, title, lang) {
+    if (window.DISQUS) {
+      this.renderTarget = target;
+      this.innerHTML = "";
+      while (this.renderTarget.childNodes.length > 0) {
+        this.appendChild(this.renderTarget.childNodes[0]);
+      }
+      setTimeout(() => {
+        window.DISQUS.reset({
+          reload: true,
+          config: function () {
+            this.page.identifier = identifier;
+            this.page.url = url;
+            this.page.title = title;
+            this.language = lang;
+          },
+        });
+        setTimeout(() => {
+          this.renderToTarget();
+        }, 100);
+      }, 500);
+    }
+  }
+
+  renderToTarget() {
+    while (this.childNodes.length > 0) {
+      this.renderTarget.appendChild(this.childNodes[0]);
+    }
+  }
+
+  // This brokers the 'events' that take place in the undocumented aspects of the
+  // Disqus API. Brittle potentially but these were written in 2012 and still work as of 2023
+  // so probably safe
+  apiCallback(call) {
+    switch (call) {
+      // ready to use
+      case 'onReady':
+        this.renderToTarget();
+      break;
+      // user identified / logged in; this can fire multiple times
+      case 'onIdentify':
+        this.renderToTarget();
+      break;
+      // the user posted a new comment or replied
+      case 'onNewComment':
+        console.log(call);
+      break;
+      // these claim to be there but I have not been able to generate them happening
+      case 'afterRender':
+        console.log(call);
+      break;
+      case 'onInit':
+        console.log(call);
+      break;
+      case 'onPaginate':
+        console.log(call);
+      break;
+      case 'preData':
+        console.log(call);
+      break;
+      case 'preReset':
+        console.log(call);
+      break;
+      default:
+        console.log(call);
+      break;
+    }
+  }
+}
+customElements.define(DisqusBroker.tag, DisqusBroker);
+export { DisqusBroker };
+
+window.DisqusSingleton = window.DisqusSingleton || {};
+window.DisqusSingleton.requestAvailability = () => {
+  if (!window.DisqusSingleton.instance) {
+    window.DisqusSingleton.instance = document.createElement(
+      DisqusBroker.tag
+    );
+    document.body.insertAdjacentElement('afterbegin', window.DisqusSingleton.instance)
+  }
+  return window.DisqusSingleton.instance;
+};
+// most common way to access registry
+export const DisqusInstance = window.DisqusSingleton.requestAvailability();
+
 // set initially and then modify based on prop changes in tag
-window.disqus_config =
-  window.disqus_config ||
-  function () {
-    this.language = "en";
-  };
+window.disqus_config = window.disqus_config || function () {
+  this.language = "en";
+  this.callbacks.onReady = [function() {
+    DisqusInstance.apiCallback('onReady');
+  }];
+  this.callbacks.onIdentify = [function() {
+    DisqusInstance.apiCallback('onIdentify');
+  }];
+  this.callbacks.afterRender = [function() {
+    DisqusInstance.apiCallback('afterRender');
+  }];
+  this.callbacks.beforeComment = [function() {
+    DisqusInstance.apiCallback('beforeComment');
+  }];
+  this.callbacks.onInit = [function() {
+    DisqusInstance.apiCallback('onInit');
+  }];
+  this.callbacks.onNewComment = [function() {
+    DisqusInstance.apiCallback('onNewComment');
+  }];
+  this.callbacks.onPaginate = [function() {
+    DisqusInstance.apiCallback('onPaginate');
+  }];
+  this.callbacks.preData = [function() {
+    DisqusInstance.apiCallback('preData');
+  }];
+  this.callbacks.preReset = [function() {
+    DisqusInstance.apiCallback('preReset');
+  }];
+};
