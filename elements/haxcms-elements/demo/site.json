@@ -32,7 +32,7 @@
       "static": {}
     },
     "theme": {
-      "element": "collections-theme",
+      "element": "clean-one",
       "path": "@lrnwebcomponents/training-theme/training-theme.js",
       "name": "training theme",
       "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",

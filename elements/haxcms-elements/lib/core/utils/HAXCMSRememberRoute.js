@@ -12,7 +12,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
       super();
       const resumeMessage = "Resume where you left off last session?";
       this.__evaluateRoute = false;
-      this.t = this.t || {};
+      this.t = super.t || {};
       this.t = {
         ...this.t,
         resumeMessage: resumeMessage,
