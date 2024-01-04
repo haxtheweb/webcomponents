@@ -12,8 +12,10 @@ class HAXCMSSiteDisqus extends DisqusEmbed {
       this.pageIdentifier = toJS(store.activeId);
     });
     autorun(() => {
-      const location = toJS(store.location.route.path);
-      this.pageURL = location;
+      const location = toJS(store.location);
+      if (location && location.route && location.route.path) {
+        this.pageURL = location.route.path;
+      }
     });
     autorun(() => {
       const manifest = toJS(store.manifest);
