@@ -1170,7 +1170,7 @@
     }
   ],
   "autoloader": {
-    "haxcms-site-disqus": "@lrnwebcomponents/discord-embed/lib/haxcms-site-disqus.js",
+    "haxcms-site-disqus": "@lrnwebcomponents/disqus-embed/lib/haxcms-site-disqus.js",
     "discord-embed": "@lrnwebcomponents/discord-embed/discord-embed.js",
     "collection-list": "@lrnwebcomponents/collection-list/collection-list.js",
     "collection-item": "@lrnwebcomponents/collection-list/lib/collection-item.js",
