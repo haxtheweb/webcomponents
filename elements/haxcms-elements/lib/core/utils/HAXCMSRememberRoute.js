@@ -12,12 +12,8 @@ const HAXCMSRememberRoute = function (SuperClass) {
       super();
       const resumeMessage = "Resume where you left off last session?";
       this.__evaluateRoute = false;
-      this.t = super.t || {};
-      this.t = {
-        ...this.t,
-        resumeMessage: resumeMessage,
-        resume: "Resume",
-      };
+      this.t.resumeMessage = resumeMessage;
+      this.t.resume = "Resume";
       autorun((reaction) => {
         if (store && store.location && store.location.pathname) {
           const activePathName = toJS(store.location.pathname);

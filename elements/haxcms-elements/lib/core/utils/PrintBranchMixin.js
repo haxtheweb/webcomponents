@@ -14,13 +14,9 @@ export const PrintBranchMixin = function (SuperClass) {
     constructor() {
       super();
       enableServices(["haxcms"]);
-      this.t = this.t || {};
-      this.t = {
-        ...this.t,
-        print: "Print",
-        printPage: "Print page",
-        printingPleaseWait: "Printing, please wait..",
-      };
+      this.t.print = "Print";
+      this.t.printPage = "Print page";
+      this.t.printingPleaseWait = "Printing, please wait..";
       this.__printBranchLoading = false;
       this.dispatchEvent(
         new CustomEvent("super-daemon-define-option", {

@@ -33,14 +33,14 @@ import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/P
  * @demo demo/index.html
  * @element clean-one
  */
-class CleanOne extends HAXCMSRememberRoute(
+class CleanOne extends HAXCMSUserStylesMenuMixin(
   PrintBranchMixin(
     PDFPageMixin(
       EmailPageMixin(
         QRCodeMixin(
           HAXCMSThemeParts(
-            HAXCMSUserStylesMenuMixin(
-              HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
+            HAXCMSMobileMenuMixin(
+              HAXCMSRememberRoute(SimpleColorsSuper(HAXCMSLitElementTheme))
             )
           )
         )
@@ -752,8 +752,7 @@ class CleanOne extends HAXCMSRememberRoute(
                     : ``}
                 </div>
                 <div class="pull-right">
-                ${this.EmailPageButton()}
-                ${this.QRCodeButton()}
+                  ${this.EmailPageButton()} ${this.QRCodeButton()}
                   <site-rss-button
                     type="rss"
                     class="btn js-toolbar-action"

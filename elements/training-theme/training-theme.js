@@ -42,7 +42,6 @@ class TrainingTheme extends HAXCMSOperationButtons(
   constructor() {
     super();
     this.items = [];
-    this.t = super.t || {};
     this.t.next = "Next";
     this.t.previous = "Previous";
     this.maxIndex = 0;
@@ -91,19 +90,19 @@ class TrainingTheme extends HAXCMSOperationButtons(
   }
   // LitElement convention for applying styles JUST to our element
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
         }
 
         .alignContent {
-          display: grid; 
-          grid-template-columns: 0.5fr 1.5fr; 
-          grid-template-rows: 1fr; 
-          gap: 16px; 
-          grid-template-areas: 
-            ". ."; 
+          display: grid;
+          grid-template-columns: 0.5fr 1.5fr;
+          grid-template-rows: 1fr;
+          gap: 16px;
+          grid-template-areas: ". .";
         }
 
         .training-topics {
@@ -139,10 +138,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
 
         site-menu-button[type="prev"] {
           border-radius: 4px;
-          font-family:
-            Google Sans,
-            Arial,
-            sans-serif;
+          font-family: Google Sans, Arial, sans-serif;
           font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.6px;
@@ -154,17 +150,12 @@ class TrainingTheme extends HAXCMSOperationButtons(
           pointer-events: auto;
           text-transform: none;
           border: 0;
-          box-shadow:
-            0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12),
-            0 3px 1px -2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
         site-menu-button[type="next"] {
           border-radius: 4px;
-          font-family:
-            Google Sans,
-            Arial,
-            sans-serif;
+          font-family: Google Sans, Arial, sans-serif;
           font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.6px;
@@ -176,16 +167,14 @@ class TrainingTheme extends HAXCMSOperationButtons(
           pointer-events: auto;
           text-transform: none;
           border: 0;
-          box-shadow:
-            0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12),
-            0 3px 1px -2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
         .link-actions {
           margin: 0;
           display: block;
           padding: 0;
-          border-top: 2px solid #E6ECF1;
+          border-top: 2px solid #e6ecf1;
           margin-top: 24px;
           align-items: center;
           padding-top: 24px;
@@ -208,9 +197,12 @@ class TrainingTheme extends HAXCMSOperationButtons(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
-          color: #242A31;
-          border: 1px solid #E6ECF1;
+          --site-menu-button-button-hover-color: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-purple-7)
+          );
+          color: #242a31;
+          border: 1px solid #e6ecf1;
           margin: 0;
           display: block;
           padding: 0;
@@ -225,7 +217,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
           flex-direction: row;
           -moz-transition: border 250ms ease;
           text-decoration: none;
-          background-color: #FFFFFF;
+          background-color: #ffffff;
           -webkit-box-align: center;
           page-break-inside: avoid;
           -ms-grid-row-align: stretch;
@@ -239,7 +231,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
           height: 40px;
           width: 40px;
           margin-left: -66px;
-          padding:0;
+          padding: 0;
           --github-corner-size: 40px;
           --site-git-corner-color: black;
           --site-git-corner-background: transparent;
@@ -298,10 +290,10 @@ class TrainingTheme extends HAXCMSOperationButtons(
           overflow: hidden;
         }
         site-menu-button[type="next"] div {
-         text-align: left; 
+          text-align: left;
         }
         site-menu-button[type="prev"] div {
-         text-align: right; 
+          text-align: right;
         }
       `,
     ];
@@ -318,12 +310,12 @@ class TrainingTheme extends HAXCMSOperationButtons(
                 <training-button
                   title="${item.title}"
                   slug="${item.slug}"
-                  index="${(index+1)}"
+                  index="${index + 1}"
                   ?disabled="${this.maxIndex < index}"
                   ?active="${item.id === this.activeId}"
                 >
                 </training-button>
-              `,
+              `
             )}
           </div>
         </div>
@@ -336,10 +328,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
           </article>
           <div class="link-actions">
             <div class="inner">
-              <replace-tag
-                with="site-menu-button"
-                import-only
-              ></replace-tag>
+              <replace-tag with="site-menu-button" import-only></replace-tag>
               <site-menu-button
                 hide-label
                 type="prev"

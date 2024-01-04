@@ -13,12 +13,8 @@ export const PDFPageMixin = function (SuperClass) {
     constructor() {
       super();
       enableServices(["core"]);
-      this.t = this.t || {};
-      this.t = {
-        ...this.t,
-        downloadPdf: "Download PDF",
-        downloadingPdfPleaseWait: "Downloading PDF, please wait",
-      };
+      this.t.downloadPdf = "Download PDF";
+      this.t.downloadingPdfPleaseWait = "Downloading PDF, please wait";
       this.__pdfLoading = false;
       this.dispatchEvent(
         new CustomEvent("super-daemon-define-option", {

@@ -12,21 +12,17 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
     constructor() {
       super();
-      this.t = this.t || {};
-      this.t = {
-        ...this.t,
-        A: "A",
-        increaseFontSize: "Increase font size",
-        decreaseFontSize: "Decrease font size",
-        setFontToSerif: "Set font to serif",
-        setFontToSansSerif: "Set font to sans serif",
-        serif: "Serif",
-        sansSerif: "Sans serif",
-        day: "Day",
-        sepia: "Sepia",
-        night: "Night",
-        textSettings: "Text settings",
-      };
+      this.t.A = "A";
+      this.t.increaseFontSize = "Increase font size";
+      this.t.decreaseFontSize = "Decrease font size";
+      this.t.setFontToSerif = "Set font to serif";
+      this.t.setFontToSansSerif = "Set font to sans serif";
+      this.t.serif = "Serif";
+      this.t.sansSerif = "Sans serif";
+      this.t.day = "Day";
+      this.t.sepia = "Sepia";
+      this.t.night = "Night";
+      this.t.textSettings = "Text settings";
       this.hideUserStylesMenu = true;
       this.fontSize = localStorageGet("haxcms-userPref-fontSize", 1);
       this.fontFamily = localStorageGet("haxcms-userPref-fontFamily", 0);

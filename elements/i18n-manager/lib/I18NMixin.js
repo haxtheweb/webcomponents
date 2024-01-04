@@ -11,7 +11,9 @@ export const I18NMixin = function (SuperClass) {
      */
     constructor() {
       super();
-      this.t = super.t || {};
+      if (!this.t) {
+        this.t = {};
+      }
     }
     /**
      * Enhanced data reactivity for LitElement if available

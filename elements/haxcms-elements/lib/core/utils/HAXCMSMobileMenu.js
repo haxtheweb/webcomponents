@@ -16,7 +16,6 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
     constructor() {
       super();
       this.menuOpen = true;
-      this.t = this.t || {};
       this.t.closeMenu = "Close menu";
       this.t.openMenu = "Open menu";
       this.t.toggleSiteMenu = "Toggle site menu";

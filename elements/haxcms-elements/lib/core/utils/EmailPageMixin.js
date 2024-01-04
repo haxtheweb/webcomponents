@@ -9,12 +9,8 @@ const EmailPageMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
     constructor() {
       super();
-      this.t = this.t || {};
-      this.t = {
-        ...this.t,
-        emailPage: "Email page",
-        emailLinkToCurrentPage: "Email link to Current page",
-      };
+      this.t.emailPage = "Email page";
+      this.t.emailLinkToCurrentPage = "Email link to Current page";
     }
     static get styles() {
       let styles = [];

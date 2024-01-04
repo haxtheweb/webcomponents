@@ -97,11 +97,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
     this.showTitle = false;
     this.breakreference = false;
     this._remoteTitle = null;
-    this.t = super.t || {};
-    this.t = {
-      ...this.t,
-      selectPage: "Select page",
-    };
+    this.t.selectPage = "Select page";
     let pNode = this;
     let pCounter = 0;
     // ensure we don't have too deep a reference to avoid infinite remotes

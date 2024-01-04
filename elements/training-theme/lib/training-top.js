@@ -1,4 +1,3 @@
-
 // import stuff
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
@@ -34,25 +33,24 @@ export class TrainingTop extends LitElement {
       }
 
       site-title {
-          color: black;
-          --site-title-link-h1-display: inline-block;
-          --site-title-link-display: flex;
-          --site-title-link-text-decoration: none;
-          --site-title-heading-font-family: var(
-            --__learn-two-theme-default-font-family
-          );
-          --site-title-heading-font-size: 32px;
-          --site-title-heading-margin: 0;
-          --site-title-heading-padding: 0;
-          --site-title-heading-text-align: center;
-          --site-title-heading-text-rendering: optimizelegibility;
-          --site-title-heading-font-weight: 100;
-        }
+        color: black;
+        --site-title-link-h1-display: inline-block;
+        --site-title-link-display: flex;
+        --site-title-link-text-decoration: none;
+        --site-title-heading-font-family: var(
+          --__learn-two-theme-default-font-family
+        );
+        --site-title-heading-font-size: 32px;
+        --site-title-heading-margin: 0;
+        --site-title-heading-padding: 0;
+        --site-title-heading-text-align: center;
+        --site-title-heading-text-rendering: optimizelegibility;
+        --site-title-heading-font-weight: 100;
+      }
 
       #codelab-title {
         background: #fff;
-        box-shadow:
-          0 1px 2px 0 rgba(60, 64, 67, 0.3),
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
           0 2px 6px 2px rgba(60, 64, 67, 0.15);
         color: #3c4043;
         display: flex;
@@ -81,7 +79,7 @@ export class TrainingTop extends LitElement {
         display: inline-block;
       }
 
-      .title a { 
+      .title a {
         color: #5a5e61;
         text-decoration: none;
       }
@@ -93,7 +91,6 @@ export class TrainingTop extends LitElement {
       <div id="codelab-title">
         <site-title icon="home" position="top"></site-title>
         <div class="codelab-time-container">
-
           <div
             class="time-remaining"
             tabindex="0"
@@ -102,8 +99,7 @@ export class TrainingTop extends LitElement {
           >
             ${this.time}
           </div>
-        </div>    
-
+        </div>
       </div>
     `;
   }

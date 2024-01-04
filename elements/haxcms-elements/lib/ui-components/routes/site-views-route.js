@@ -202,15 +202,11 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
     super();
     this.HAXCMSI18NMixinBase = "../../../";
     this.search = window.location.search;
-    this.t = super.t || {};
-    this.t = {
-      ...this.t,
-      selectPage: "Select Page",
-      title: "Title",
-      parent: "Parent",
-      block: "Block",
-      tags: "Tags",
-    };
+    this.t.selectPage = "Select Page";
+    this.t.title = "Title";
+    this.t.parent = "Parent";
+    this.t.block = "Block";
+    this.t.tags = "Tags";
     this.isLoggedIn = false;
     this.accentColor = "grey";
     this.loading = false;

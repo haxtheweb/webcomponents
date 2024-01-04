@@ -10,12 +10,8 @@ const QRCodeMixin = function (SuperClass) {
     constructor() {
       super();
       this.showQRCode = false;
-      this.t = this.t || {};
-      this.t = {
-        ...this.t,
-        currentPage: "Current page",
-        qrCodeForCurrentPage: "QR code for Current page",
-      };
+      this.t.currentPage = "Current page";
+      this.t.qrCodeForCurrentPage = "QR code for Current page";
     }
     /**
      * life cycle, element is afixed to the DOM
