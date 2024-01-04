@@ -96,6 +96,34 @@ class DisqusEmbed extends LitElement {
   static get tag() {
     return "disqus-embed";
   }
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    // ensure we're correctly built when connected
+    clearTimeout(this._timeout);
+    this._timeout = setTimeout(() => {
+      DisqusInstance.rebuildConfiguration(
+        this,
+        this.pageIdentifier,
+        this.pageURL,
+        this.pageTitle,
+        this.lang,
+      );
+    }, 100);
+  }
+  disconnectedCallback() {
+    // if we are about to disconnect, ensure the lightDom's children
+    // get sent back to the Disqus instance. This could be a theme
+    // changing / the element moving around and needing to be reconnected
+    // later on
+    while (this.childNodes.length > 0) {
+      DisqusInstance.appendChild(this.childNodes[0]);
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+  }
 }
 customElements.define(DisqusEmbed.tag, DisqusEmbed);
 export { DisqusEmbed };
@@ -142,7 +170,6 @@ class DisqusBroker extends LitElement {
   }
 
   createEmbedScript(target, name) {
-    console.log('create');
     this.renderTarget = target;
     this.innerHTML = "";
     if (!this._embed) {
@@ -181,9 +208,15 @@ class DisqusBroker extends LitElement {
   }
 
   renderToTarget() {
-    while (this.childNodes.length > 0) {
-      this.renderTarget.appendChild(this.childNodes[0]);
-    }
+    // debounce to ensure we don't spam render
+    // since we don't have control over the API in disqus as to how often or when
+    // it decides to fire
+    clearTimeout(this._timeout);
+    this._timeout = setTimeout(() => {
+      while (this.childNodes.length > 0) {
+        this.renderTarget.appendChild(this.childNodes[0]);
+      }
+    }, 100);
   }
 
   // This brokers the 'events' that take place in the undocumented aspects of the
@@ -191,34 +224,14 @@ class DisqusBroker extends LitElement {
   // so probably safe
   apiCallback(call) {
     switch (call) {
-      // ready to use
+      // ready to use, render to target
       case 'onReady':
-        this.renderToTarget();
-      break;
       // user identified / logged in; this can fire multiple times
       case 'onIdentify':
         this.renderToTarget();
       break;
       // the user posted a new comment or replied
       case 'onNewComment':
-        console.log(call);
-      break;
-      // these claim to be there but I have not been able to generate them happening
-      case 'afterRender':
-        console.log(call);
-      break;
-      case 'onInit':
-        console.log(call);
-      break;
-      case 'onPaginate':
-        console.log(call);
-      break;
-      case 'preData':
-        console.log(call);
-      break;
-      case 'preReset':
-        console.log(call);
-      break;
       default:
         console.log(call);
       break;
