@@ -40,9 +40,10 @@
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
-    "name": ""
+    "name": "elmsln",
+    "url": "https://www.elmsln.org/"
   },
-  "license": "",
+  "license": "Apache-2.0",
   "dependencies": {
     "lit": "^3.1.0"
   },

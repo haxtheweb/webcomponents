@@ -47,12 +47,12 @@
         "required": true
       },
       {
-        "property": "icon",
+        "property": "status",
         "title": "Action Icon",
         "description": "Icon used for stop-note",
         "inputMethod": "select",
         "options": {
-          "stopnoteicons:stop-icon": "Stop",
+          "stop": "Stop",
           "stopnoteicons:warning-icon": "Warning",
           "stopnoteicons:confirm-icon": "Confirmation",
           "stopnoteicons:book-icon": "Notice"

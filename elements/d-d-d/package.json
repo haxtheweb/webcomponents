@@ -1,19 +1,19 @@
 {
-  "name": "@lrnwebcomponents/discord-embed",
+  "name": "@lrnwebcomponents/d-d-d",
   "wcfactory": {
-    "className": "DiscordEmbed",
+    "className": "DDD",
     "customElementClass": "LitElement",
-    "elementName": "discord-embed",
+    "elementName": "d-d-d",
     "generator-wcfactory-version": "0.13.1",
     "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/discord-embed.css",
-      "scss": "src/discord-embed.scss",
-      "html": "src/discord-embed.html",
-      "js": "src/discord-embed.js",
-      "properties": "src/discord-embed-properties.json",
-      "hax": "src/discord-embed-hax.json"
+      "css": "src/d-d-d.css",
+      "scss": "src/d-d-d.scss",
+      "html": "src/d-d-d.html",
+      "js": "src/d-d-d.js",
+      "properties": "src/d-d-d-properties.json",
+      "hax": "src/d-d-d-hax.json"
     },
     "iconset": {},
     "sharedHaxProps": [],
@@ -21,14 +21,14 @@
     "sharedStyles": []
   },
   "version": "8.0.0",
-  "description": "widgetbot.io based embed widget for discord threads and channels",
+  "description": "design, develop, destroy the competition",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "discord-embed.js",
-  "module": "discord-embed.js",
-  "umd": "discord-embed.umd.js",
+  "main": "d-d-d.js",
+  "module": "d-d-d.js",
+  "umd": "d-d-d.umd.js",
   "scripts": {
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
@@ -45,22 +45,23 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/simple-colors": "^8.0.0",
     "lit": "^3.1.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.0",
-    "@open-wc/testing": "2.5.32",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@lrnwebcomponents/deduping-fix": "^7.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@wcfactory/rollup-umd-build": "^0.12.1",
-    "@web/dev-server": "0.1.28",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.21",
     "polymer-build": "3.1.4",
+    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2"
+    "web-animations-js": "2.3.2",
+    "@open-wc/testing": "2.5.32"
   },
   "private": false,
   "publishConfig": {
@@ -69,6 +70,5 @@
   "keywords": [
     "web-components",
     "html"
-  ],
-  "gitHead": "2791492ff7ab40c7d4c827c4b305e33c0a971230"
+  ]
 }
