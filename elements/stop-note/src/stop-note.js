@@ -3,6 +3,7 @@ import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavi
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 // register the iconset
 SimpleIconsetStore.registerIconset(
@@ -17,12 +18,12 @@ SimpleIconsetStore.registerIconset(
  * @demo demo/index.html
  * @element stop-note
  */
-class StopNote extends I18NMixin(remoteLinkBehavior(LitElement)) {
+class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: block;
@@ -143,7 +144,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(LitElement)) {
   }
   static get properties() {
     return {
-      ...(super.properties || {}),
+      ...super.properties,
       /**
        * Title Message
        */
