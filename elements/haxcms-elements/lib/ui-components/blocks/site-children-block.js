@@ -75,7 +75,7 @@ class SiteChildrenBlock extends LitElement {
     super();
     this.__disposer = [];
     this.dynamicMethodology = "active";
-    this.start = 1;
+    this.start = 0;
     this.end = 1000;
     this.fixedId = false;
     this.__items = [];

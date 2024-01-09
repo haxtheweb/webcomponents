@@ -25,7 +25,7 @@ class SiteQueryMenuSlice extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
-    this.start = 1;
+    this.start = 0;
     this.end = 1000;
     this.dynamicMethodology = "active";
     this.fixedId = false;
