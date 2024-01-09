@@ -1,4 +1,4 @@
-import { html } from "lit-html";
+/*import { html } from "lit-html";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { TrainingTheme } from "./training-theme.js";
@@ -20,3 +20,4 @@ export const TrainingThemeStory = () => {
     utils.makeElementFromClass(TrainingTheme)
   );
 };
+*/
