@@ -3,21 +3,38 @@
  * @license , see License.md for full fs.
  */
 import { LitElement, html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `d-d-d`
  * `design, develop, destroy the competition`
  * @demo demo/index.html
  * @element d-d-d
  */
-class DDD extends SimpleColors {
+export const styleGuideTopics = {
+  "Headers": "Headers",
+  "FW": "FW",
+  "FS": "FS",
+  "BS": "BS",
+  "Breakpoints": "Breakpoints",
+  "MP": "MP",
+  "PolarisColors": "PolarisColors",
+  "PolarisFunctionalColors": "PolarisFunctionalColors",
+};
+
+class DDD extends SimpleColorsSuper(LitElement) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
-    this.stuff = '';
-    this.options = ['Headers', 'FW', 'FS', 'BS', 'Breakpoints', 'MP', 'PolarisColors', 'PolarisFunctionalColors'];
+    this.option = '*';
+    this.options = Object.keys(styleGuideTopics);
+  }
+  static get properties() {
+    return {
+      option: { type: String },
+      options: { type: Array },
+    }
   }
   /**
    * LitElement style callback
@@ -2275,7 +2292,6 @@ class DDD extends SimpleColors {
   }
 
   renderHeaders(){
-    console.log('test');
     return html`
     <h3 class='my-20 font-beaverBlue'> Headers </h3>
       <h1>Default Header 1</h1>
@@ -2293,11 +2309,11 @@ class DDD extends SimpleColors {
     return html`
     <h3 class='my-20 font-beaverBlue'> Font Weights </h3>
     <div class='ml-10 bg-limestoneMaxLight'>
-      <h3 class='fw-0'>Font Weight 0 (nav only)</h1>
-      <h3 class='fw-1'>Font Weight 1 (header only)</h1>
-      <h3 class='fw-2'>Font Weight 2 (header only)</h1>
-      <h3 class='fw-3'>Font Weight 3 (default)</h1>
-      <h3 class='fw-4'>Font Weight 4 (header only)</h1>
+      <h3 class='fw-0'>Font Weight 0 (nav only)</h3>
+      <h3 class='fw-1'>Font Weight 1 (header only)</h3>
+      <h3 class='fw-2'>Font Weight 2 (header only)</h3>
+      <h3 class='fw-3'>Font Weight 3 (default)</h3>
+      <h3 class='fw-4'>Font Weight 4 (header only)</h3>
     </div>
     <h6 class='fw-2 ml-10'>Accessible using class: <span class='fw-4'>fw-x</span></h6>
     `;
@@ -2521,30 +2537,14 @@ class DDD extends SimpleColors {
     `;
   }
 
-  renderStuff(stuff){
-    if(this.options.includes(stuff)){
-      this[`render${stuff}()`];
-    }
-    else{
-      this.options.forEach((option) => {
-        this[`render${option}()`];
-        console.log('render' + option + '()');
-      })
-    }
-  }
-
   /**
    * LitElement render callback
    */
   render() {
-    return html`
-      <div>
-        <slot></slot>
-      </div>
-
-      ${this.renderStuff('Headers')}
-
-    `;
+    if(this.options.includes(this.option)){
+      return html`${this[`render${this.option}`]()}`;
+    }
+    return html`${this.options.map((option) => this[`render${option}`]())}`;
   }
   /**
    * Convention we use
@@ -2553,44 +2553,56 @@ class DDD extends SimpleColors {
     return "d-d-d";
   }
   /**
-   * LitElement ready
+   * haxProperties integration via file reference
    */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
+  static get haxProperties() {
+    return {
+      "api": "1",
+      "type": "element",
+      "editingElement": "core",
+      "hideDefaultSettings": false,
+      "canScale": true,
+      "canPosition": true,
+      "canEditSource": true,
+      "contentEditable": false,
+      "gizmo": {
+        "title": "d d-d",
+        "description": "",
+        "icon": "icons:android",
+        "color": "purple",
+        "tags": [
+          "Other"
+        ],
+        "handles": [],
+        "meta": {
+          "author": "HAXTheWeb core team"
+        }
+      },
+      "settings": {
+        "configure": [{
+          property: "option",
+          title: "Option to render",
+          type: "select",
+          options: {"*": "Full styleguide", ...styleGuideTopics}
+        }],
+        "advanced": [],
+        "developer": []
+      },
+      "saveOptions": {
+        "unsetAttributes": []
+      },
+      "documentation": {
+        "howTo": null,
+        "purpose": null
+      },
+      "demoSchema": [
+        {
+          "tag": "d-d-d",
+          "content": "",
+          "properties": {}
+        }
+      ]
     }
-  }
-  /**
-   * LitElement life cycle - property changed
-   */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
-      }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
-    });
   }
 }
 customElements.define(DDD.tag, DDD);
