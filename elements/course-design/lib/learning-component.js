@@ -124,7 +124,7 @@ export function iconFromPageType(type) {
     case "present":
       return "courseicons:strategy";
       break;
-    case "reading":
+    case "read":
       return "courseicons:strategy";
       break;
     case "reflect":
@@ -173,7 +173,7 @@ class LearningComponent extends I18NMixin(SimpleColors) {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has('type') && this.type) {
+    if (changedProperties.has('type') && this.type && this.type != '') {
       this.accentColor = learningComponentColors[this.type];
       this.title = learningComponentTypes[this.type];
       this.icon = iconFromPageType(this.type)
@@ -185,7 +185,7 @@ class LearningComponent extends I18NMixin(SimpleColors) {
     this.icon = null;
     this.accentColor = null;
     this.dark = false;
-    this.type = "objectives";
+    this.type = '';
     this.subtitle = null;
     this.title = null;
     this.url = null;
@@ -232,6 +232,8 @@ class LearningComponent extends I18NMixin(SimpleColors) {
         }
         .icon {
           display: flex;
+          min-height: 64px;
+          min-width: 88px;
         }
         .urlbutton {
           margin: 25px 0 0 0;
@@ -317,9 +319,10 @@ class LearningComponent extends I18NMixin(SimpleColors) {
     return html`
       <div class="header">
         <div class="icon">
+          ${this.icon ? html`
           <simple-icon-lite
             icon="${this.icon}"
-          ></simple-icon-lite>
+          ></simple-icon-lite>` : ``}
         </div>
         <div class="title-wrap">
           <div class="sub-title">${this.subtitle}</div>
@@ -356,7 +359,6 @@ class LearningComponent extends I18NMixin(SimpleColors) {
       type: "grid",
       canScale: false,
       canPosition: false,
-
       hideDefaultSettings: true,
       gizmo: {
         title: "Learning Component",
@@ -377,8 +379,8 @@ class LearningComponent extends I18NMixin(SimpleColors) {
             title: "Type",
             description: "The type of card to be used.",
             inputMethod: "select",
-            options: learningComponentTypes,
-            required: true,
+            options: {"": "", ...learningComponentTypes},
+            required: false
           },
           {
             property: "subtitle",
@@ -423,6 +425,11 @@ class LearningComponent extends I18NMixin(SimpleColors) {
             description: "Invert high and low tones",
             inputMethod: "boolean",
           },
+        ],
+      },
+      saveOptions: {
+        unsetAttributes: [
+          "t",
         ],
       },
       demoSchema: [
