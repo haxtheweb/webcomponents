@@ -1,6 +1,6 @@
 /**
  * Copyright 2024
- * @license , see License.md for full text.
+ * @license , see License.md for full fs.
  */
 import { LitElement, html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
@@ -16,6 +16,8 @@ class DDD extends SimpleColors {
    */
   constructor() {
     super();
+    this.stuff = '';
+    this.options = ['Headers', 'FW', 'FS', 'BS', 'Breakpoints', 'MP', 'PolarisColors', 'PolarisFunctionalColors'];
   }
   /**
    * LitElement style callback
@@ -33,43 +35,43 @@ class DDD extends SimpleColors {
         :host{
            /* base polaris colors */
            --ddd-polaris-beaverBlue: #1E407C;
-           --ddd-landgrantBrown: #6A3028;
-           --ddd-nittanyNavy: #001E44;
-           --ddd-navy40: rgba(0,30,68,.4);
-           --ddd-navy65: rgba(0,30,68,.65);
-           --ddd-navy80: rgba(0,30,68,.8);
-           --ddd-potentialMidnight: #000321;
-           --ddd-potential50:rgba(0,3,33,.5);
-           --ddd-pughBlue:#96BEE6;
-           --ddd-coalyGray:#262626;
-           --ddd-keystoneYellow:#FFD100;
-           --ddd-slateGray:#314D64;
-           --ddd-slateLight:#CCDAE6;
-           --ddd-slateMaxLight:#EEF3F7;
-           --ddd-skyBlue: #009CDE;
-           --ddd-skyLight: #CCF0FF;
-           --ddd-skyMaxlight: #E6F7FF;
-           --ddd-limestoneGray: #A2AAAD;
-           --ddd-limestoneLight: #E4E5E7;
-           --ddd-limestoneMaxLight: #F2F2F4;
-           --ddd-white: #FFFFFF;
-           --ddd-shrineLight: #F7F2EE;
-           --ddd-shrineMaxLight: #FDFBF5;
-           --ddd-creekTeal: #3EA39E;
-           --ddd-creekLight: #CFECEB;
-           --ddd-creekMaxLight: #EDF8F7;
-           --ddd-shrineTan: #B88965;
-           --ddd-roarGolden: #BF8226;
-           --ddd-roarLight: #F9EDDC;
-           --ddd-roarMaxlight: #FFFAF2;
-           --ddd-forestGreen: #4A7729;
-           --ddd-athertonViolet: #AC8DCE;
-           --ddd-original87Pink: #BC204B;
-           --ddd-discoveryCoral: #F2665E;
-           --ddd-futureLime: #99CC00;
-           --ddd-wonderPurple: #491D70;
-           --ddd-inventOrange: #E98300;
-           --ddd-opportunityGreen: #008755;
+           --ddd-polaris-landgrantBrown: #6A3028;
+           --ddd-polaris-nittanyNavy: #001E44;
+           --ddd-polaris-navy40: rgba(0,30,68,.4);
+           --ddd-polaris-navy65: rgba(0,30,68,.65);
+           --ddd-polaris-navy80: rgba(0,30,68,.8);
+           --ddd-polaris-potentialMidnight: #000321;
+           --ddd-polaris-potential50:rgba(0,3,33,.5);
+           --ddd-polaris-pughBlue:#96BEE6;
+           --ddd-polaris-coalyGray:#262626;
+           --ddd-polaris-keystoneYellow:#FFD100;
+           --ddd-polaris-slateGray:#314D64;
+           --ddd-polaris-slateLight:#CCDAE6;
+           --ddd-polaris-slateMaxLight:#EEF3F7;
+           --ddd-polaris-skyBlue: #009CDE;
+           --ddd-polaris-skyLight: #CCF0FF;
+           --ddd-polaris-skyMaxlight: #E6F7FF;
+           --ddd-polaris-limestoneGray: #A2AAAD;
+           --ddd-polaris-limestoneLight: #E4E5E7;
+           --ddd-polaris-limestoneMaxLight: #F2F2F4;
+           --ddd-polaris-white: #FFFFFF;
+           --ddd-polaris-shrineLight: #F7F2EE;
+           --ddd-polaris-shrineMaxLight: #FDFBF5;
+           --ddd-polaris-creekTeal: #3EA39E;
+           --ddd-polaris-creekLight: #CFECEB;
+           --ddd-polaris-creekMaxLight: #EDF8F7;
+           --ddd-polaris-shrineTan: #B88965;
+           --ddd-polaris-roarGolden: #BF8226;
+           --ddd-polaris-roarLight: #F9EDDC;
+           --ddd-polaris-roarMaxlight: #FFFAF2;
+           --ddd-polaris-forestGreen: #4A7729;
+           --ddd-polaris-athertonViolet: #AC8DCE;
+           --ddd-polaris-original87Pink: #BC204B;
+           --ddd-polaris-discoveryCoral: #F2665E;
+           --ddd-polaris-futureLime: #99CC00;
+           --ddd-polaris-wonderPurple: #491D70;
+           --ddd-polaris-inventOrange: #E98300;
+           --ddd-polaris-opportunityGreen: #008755;
 
            /* 
            base colors, cannot be modified by user; SimpleColors hijacks this
@@ -95,33 +97,33 @@ class DDD extends SimpleColors {
           /* simplecolors needs to be included ->  */
 
           /*fonts*/
-          --ddd-font-primary: 'Roboto'; /* heading / titles */
+          --ddd-font-primary: 'Roboto', Arial, Tahoma, sans-serif; /* heading / titles */
           --ddd-font-primary-regular: 400;
           --ddd-font-primary-medium: 500;
           --ddd-font-primary-bold: 700; /* default weight */
           --ddd-font-primary-black: 900; 
 
-          --ddd-font-secondary: 'Roboto Slab'; /* body font */
+          --ddd-font-secondary: 'Roboto Condensed', 'Arial Narrow', Arial, Tahoma, sans-serif; /* body font */
           --ddd-font-secondary-bold: 700;
 
-          --ddd-font-navigation: 'Roboto Condensed'; /* navigation font */
+          --ddd-font-navigation: 'Roboto Slab', Georgia, 'Times New Roman', serif; /* navigation font */
           --ddd-font-navigation-light: 300;
           --ddd-font-navigation-bold: 700;
 
           /* font sizes */
-          --ddd-font-size-4xs: 16px; /* body default */
-          --ddd-font-size-3xs: 18px;
-          --ddd-font-size-2xs: 20px; /* h6 */
+          --ddd-font-size-4xs: 16px;
+          --ddd-font-size-3xs: 18px; /* body default */
+          --ddd-font-size-xxs: 20px;
           --ddd-font-size-xs: 22px;
-          --ddd-font-size-s: 24px; /* h5 */
-          --ddd-font-size-ms: 28px;
+          --ddd-font-size-s: 24px; /* h6 */
+          --ddd-font-size-ms: 28px; /* h5 */
           --ddd-font-size-m: 32px; /* h4 */
-          --ddd-font-size-ml: 36px;
-          --ddd-font-size-l: 40px; /* h3 */
-          --ddd-font-size-xl: 48px;
-          --ddd-font-size-xxl: 56px; /* h2 */
+          --ddd-font-size-ml: 36px; /* h3 */
+          --ddd-font-size-l: 40px; /* h2 */
+          --ddd-font-size-xl: 48px; /* h1 */
+          --ddd-font-size-xxl: 56px;
           --ddd-font-size-3xl: 64px;
-          --ddd-font-size-4xl: 72px; /* h1 */
+          --ddd-font-size-4xl: 72px;
 
           /* spacing */
           --ddd-spacing-0: 0px;
@@ -170,9 +172,407 @@ class DDD extends SimpleColors {
           --ddd-shadow-3: rgba(0, 3, 33, 0.063) 0px 12px 24px 0px;
           --ddd-shadow-4: rgba(0, 3, 33, 0.063) 0px 16px 32px 0px;
 
+          /* breakpoints */
+          --ddd-breakpoint-sm: 360px;
+          --ddd-breakpoint-md: 768px;
+          --ddd-breakpoint-lg: 1080px;
+          --ddd-breakpoint-xl: 1440px;
+
+          /* letter spacing */
+          /*       
+            '16-lg': '0.015rem',
+            '16-sm': '0.005rem',
+            '18-lg': '0.016875rem',
+            '18-sm': '0.005625rem',
+            '20-lg': '0.01875rem',
+            '20-sm': '0.00625rem',
+            '22-lg': '0.020624999999999998rem',
+            '22-sm': '0.006875rem',
+            '24-lg': '0.0225rem',
+            '24-sm': '0.0075rem',
+            '28-lg': '0.02625rem',
+            '28-sm': '0.00875rem',
+            '32-lg': '0.03rem',
+            '32-sm': '0.01rem',
+            '36-lg': '0.03375rem',
+            '36-sm': '0.01125rem',
+            '40-lg': '0.0375rem',
+            '40-sm': '0.0125rem',
+            '48-lg': '0.045rem',
+            '48-sm': '0.015rem',
+            '56-lg': '0.0525rem',
+            '56-sm': '0.0175rem',
+            '64-lg': '0.06rem',
+            '64-sm': '0.02rem',
+            '72-lg': '0.0675rem',
+            '72-sm': '0.0225rem'
+          */
         }
 
-        *{ /* margin & padding */
+        /*
+            lineHeights: {
+              '120': '120%',
+              '150': '150%',
+              auto: 'Auto'
+            },
+            radii: {
+              circle: '100%',
+              lg: '8px',
+              md: '4px',
+              none: '0px',
+              rounded: '50px',
+              sm: '2px'
+            },
+            shadows: {
+              lg: '0px 12px 24px 0px #00032110',
+              md: '0px 8px 16px 0px #00032110',
+              sm: '0px 4px 8px 0px #00032110',
+              xl: '0px 16px 32px 0px #00032110'
+            },
+            sizes: [
+              '0%',
+              '25%',
+              '50%',
+              '75%',
+              '100%',
+              'fit-content',
+              'auto',
+              '33%',
+              '66%',
+              '70%',
+              '80%'
+            ],
+            space: {
+              '0': '0rem',
+              '1': '0.25rem',
+              '2': '0.5rem',
+              '3': '0.75rem',
+              '4': '1rem',
+              '5': '1.25rem',
+              '6': '1.5rem',
+              '7': '1.75rem',
+              '8': '2rem',
+              '9': '2.25rem',
+              '10': '2.5rem',
+              '11': '2.75rem',
+              '12': '3rem',
+              '13': '3.25rem',
+              '14': '3.5rem',
+              '15': '3.75rem',
+              '16': '4rem',
+              '17': '4.25rem',
+              '18': '4.5rem',
+              '19': '4.75rem',
+              '20': '5rem',
+              '21': '5.25rem',
+              '22': '5.5rem',
+              '23': '5.75rem',
+              '24': '6rem',
+              '25': '6.25rem',
+              '26': '6.5rem',
+              '27': '6.75rem',
+              '28': '7rem',
+              '29': '7.25rem',
+              '30': '7.5rem'
+            },
+            styles: {
+              root: {
+                fontFamily: 'Roboto',
+                fontWeight: 'regular',
+                width: '100%'
+              }
+            },
+            text: {
+              bodyStyle: {
+                '16-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    16,
+                    16,
+                    16,
+                    16
+                  ],
+                  fontWeight: 'regular',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '18-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    18,
+                    18,
+                    18,
+                    18
+                  ],
+                  fontWeight: 'regular',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '20-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    18,
+                    18,
+                    20,
+                    20
+                  ],
+                  fontWeight: 'regular',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '22-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    18,
+                    20,
+                    22,
+                    22
+                  ],
+                  fontWeight: 'regular',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '24-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    20,
+                    22,
+                    24,
+                    24
+                  ],
+                  fontWeight: 'regular',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '28-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    22,
+                    24,
+                    28,
+                    28
+                  ],
+                  fontWeight: 'regular',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                }
+              },
+              buttonText: {
+                md: {
+                  fontFamily: 'Roboto',
+                  fontSize: 18,
+                  fontWeight: 'medium',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal',
+                  textTransform: 'capitalize'
+                },
+                sm: {
+                  fontFamily: 'Roboto',
+                  fontSize: 16,
+                  fontWeight: 'medium',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal',
+                  textTransform: 'capitalize'
+                }
+              },
+              chip: {
+                cursor: 'pointer',
+                fontFamily: 'Roboto',
+                fontSize: 18,
+                fontWeight: 'bold',
+                letterSpacing: '.03em',
+                lineHeight: '20px'
+              },
+              displayStyle: {
+                '48-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    36,
+                    40,
+                    48,
+                    48
+                  ],
+                  fontWeight: 'black',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '56-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    40,
+                    48,
+                    56,
+                    56
+                  ],
+                  fontWeight: 'black',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '64-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    48,
+                    56,
+                    64,
+                    64
+                  ],
+                  fontWeight: 'black',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '72-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    56,
+                    64,
+                    72,
+                    72
+                  ],
+                  fontWeight: 'black',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                }
+              },
+              headingStyle: {
+                '16-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    16,
+                    16,
+                    16,
+                    16
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '18-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    18,
+                    18,
+                    18,
+                    18
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '20-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    18,
+                    18,
+                    20,
+                    20
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '22-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    18,
+                    20,
+                    22,
+                    22
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '24-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    20,
+                    22,
+                    24,
+                    24
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '28-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    22,
+                    24,
+                    28,
+                    28
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '32-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    24,
+                    28,
+                    32,
+                    32
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '36-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    28,
+                    32,
+                    36,
+                    36
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '40-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    32,
+                    36,
+                    40,
+                    40
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '48-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    36,
+                    40,
+                    48,
+                    48
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+                '56-responsive': {
+                  fontFamily: 'sans',
+                  fontSize: [
+                    40,
+                    48,
+                    56,
+                    56
+                  ],
+                  fontWeight: 'bold',
+                  letterSpacing: 'normal',
+                  lineHeight: 'normal'
+                },
+
+        */
+
+        @media{  /* margin & padding */
+          .m-auto{
+            margin: auto;
+          }
           .m-0{
             margin: var(--ddd-spacing-0);
           }
@@ -265,6 +665,9 @@ class DDD extends SimpleColors {
           }
           .m-30{
             margin: var(--ddd-spacing-30);
+          }
+          .mt-auto{
+            margin-top: auto;
           }
           .mt-0{
             margin-top: var(--ddd-spacing-0);
@@ -359,6 +762,9 @@ class DDD extends SimpleColors {
           .mt-30{
             margin-top: var(--ddd-spacing-30);
           }
+          .mb-auto{
+            margin-bottom: auto;
+          }
           .mb-0{
             margin-bottom: var(--ddd-spacing-0);
           }
@@ -451,6 +857,9 @@ class DDD extends SimpleColors {
           }
           .mb-30{
             margin-bottom: var(--ddd-spacing-30);
+          }
+          .ml-auto{
+            margin-left: auto;
           }
           .ml-0{
             margin-left: var(--ddd-spacing-0);
@@ -545,6 +954,9 @@ class DDD extends SimpleColors {
           .ml-30{
             margin-left: var(--ddd-spacing-30);
           }
+          .mr-auto{
+            margin-right: auto;
+          }
           .mr-0{
             margin-right: var(--ddd-spacing-0);
           }
@@ -637,6 +1049,10 @@ class DDD extends SimpleColors {
           }
           .mr-30{
             margin-right: var(--ddd-spacing-30);
+          }
+          .mx-auto{
+            margin-left: auto;
+            margin-right: auto;
           }
           .mx-0{
             margin-left: var(--ddd-spacing-0);
@@ -761,6 +1177,10 @@ class DDD extends SimpleColors {
           .mx-30{
             margin-left: var(--ddd-spacing-30);
             margin-right: var(--ddd-spacing-30);
+          }
+          .my-auto{
+            margin-top: auto;
+            margin-bottom: auto;
           }
           .my-0{
             margin-top: var(--ddd-spacing-0);
@@ -1602,65 +2022,517 @@ class DDD extends SimpleColors {
           }
         }
 
-        *{ /* font base states */
-        h1, h2, h3, h4, h5, h6{
-          font-family: var(--ddd-font-primary);
-          font-weight: var(--ddd-font-primary-bold);
-        }
-        .fw-0{
-          font-weight: var(--ddd-font-primary-regular);
-        }
-       .fw-1{
-          font-weight: var(--ddd-font-primary-medium);
-        }
-        .fw-2{
-          font-weight: var(--ddd-font-primary-bold);
-        }
-        .fw-3{
-          font-weight: var(--ddd-font-primary-black);
-        }
-        h1{
-          font-size: var(--ddd-font-size-4xl);
-          margin-top: var(--ddd-spacing-8);
-          margin-bottom: var(--ddd-spacing-8);
-        }
-        h2{
-          font-size: var(--ddd-font-size-xxl);
-          margin-top: var(--ddd-spacing-7);
-          margin-bottom: var(--ddd-spacing-7);
-        }
-        h3{
-          font-size: var(--ddd-font-size-l);
-          margin-top: var(--ddd-spacing-6);
-          margin-bottom: var(--ddd-spacing-6);
-        }
-        h4{
-          font-size: var(--ddd-font-size-m);
-          margin-top: var(--ddd-spacing-5);
-          margin-bottom: var(--ddd-spacing-5);
-        }
-        h5{
-          font-size: var(--ddd-font-size-s);
-          margin-top: var(--ddd-spacing-4);
-          margin-bottom: var(--ddd-spacing-4);
-        }
-        h6{
-          font-size: var(--ddd-font-size-2xs);
-          margin-top: var(--ddd-spacing-3);
-          margin-bottom: var(--ddd-spacing-3);
-        }
-        body{
-          font-family: var(--ddd-font-secondary);
-          font-size: var(--ddd-font-size-4xs);
-          margin-top: var(--ddd-spacing-1);
-          margin-bottom: var(--ddd-spacing-1);
-        }
-        }
+          /* font base states */
+          h1, h2, h3, h4, h5, h6{
+            font-family: var(--ddd-font-primary);
+            font-weight: var(--ddd-font-primary-bold);
+          }
+          .fw-0{
+            font-weight: var(--ddd-font-primary-light); /* available for navigation */
+          }
+          .fw-1{
+            font-weight: var(--ddd-font-primary-regular); /* available for headers */
+          }
+          .fw-2{
+            font-weight: var(--ddd-font-primary-medium); /* available for headers */
+          }
+          .fw-3{
+            font-weight: var(--ddd-font-primary-bold);  /* default for headers, body & navigation */
+          }
+          .fw-4{
+            font-weight: var(--ddd-font-primary-black); /* available for headers */
+          }
+          h1{
+            font-size: var(--ddd-font-size-xl);
+            margin: var(--ddd-spacing-8) 0;
+          }
+          h2{
+            font-size: var(--ddd-font-size-l);
+            margin: var(--ddd-spacing-7) 0;
+          }
+          h3{
+            font-size: var(--ddd-font-size-ml);
+            margin: var(--ddd-spacing-6) 0;
+          }
+          h4{
+            font-size: var(--ddd-font-size-m);
+            margin: var(--ddd-spacing-5) 0;
+          }
+          h5{
+            font-size: var(--ddd-font-size-ms);
+            margin: var(--ddd-spacing-4) 0;
+          }
+          h6{
+            font-size: var(--ddd-font-size-s);
+            margin: var(--ddd-spacing-3) 0;
+          }
+          p{
+            font-family: var(--ddd-font-secondary);
+            font-size: var(--ddd-font-size-3xs);
+            margin: var(--ddd-spacing-1) 0;
+            font-weight: var(--ddd-font-secondary-bold);
+          }
+          .ddd-nav{
+            font-family: var(--ddd-font-navigation);
+            font-size: var(--ddd-font-size-s);
+            font-weight: var(--ddd-font-navigation-bold);
+          }
 
 
+          /* font sizes */
+          .fs-4xs{
+            font-size: var(--ddd-font-size-4xs);
+          }
+          .fs-3xs{
+            font-size: var(--ddd-font-size-3xs);
+          }
+          .fs-xxs{
+            font-size: var(--ddd-font-size-xxs);
+          }
+          .fs-xs{
+            font-size: var(--ddd-font-size-xs);
+          }
+          .fs-s{
+            font-size: var(--ddd-font-size-s);
+          }
+          .fs-ms{
+            font-size: var(--ddd-font-size-ms);
+          }
+          .fs-m{
+            font-size: var(--ddd-font-size-m);
+          }
+          .fs-ml{
+            font-size: var(--ddd-font-size-ml);
+          }
+          .fs-l{
+            font-size: var(--ddd-font-size-l);
+          }
+          .fs-xl{
+            font-size: var(--ddd-font-size-xl);
+          }
+          .fs-xxl{
+            font-size: var(--ddd-font-size-xxl);
+          }
+          .fs-3xl{
+            font-size: var(--ddd-font-size-3xl);
+          }
+          .fs-4xl{
+            font-size: var(--ddd-font-size-4xl);
+          }
+        
+
+          /* border & shadows */
+          .b-0{
+            border: none;
+          }
+          .b-1{
+            border: 1px solid var(--ddd-polaris-beaverBlue);
+          }
+          .b-2{
+            border: 2px solid var(--ddd-polaris-beaverBlue);
+          }
+          .b-3{
+            border: 3px solid var(--ddd-polaris-beaverBlue);
+          }
+          .b-4{
+            border: 4px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bt-0{
+            border-top: none;
+          }
+          .bt-1{
+            border-top: 1px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bt-2{
+            border-top: 2px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bt-3{
+            border-top: 3px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bt-4{
+            border-top: 4px solid var(--ddd-polaris-beaverBlue);
+          }
+          .br-0{
+            border-right: none;
+          }
+          .br-1{
+            border-right: 1px solid var(--ddd-polaris-beaverBlue);
+          }
+          .br-2{
+            border-right: 2px solid var(--ddd-polaris-beaverBlue);
+          }
+          .br-3{
+            border-right: 3px solid var(--ddd-polaris-beaverBlue);
+          }
+          .br-4{
+            border-right: 4px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bb-0{
+            border-bottom: none;
+          }
+          .bb-1{
+            border-bottom: 1px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bb-2{
+            border-bottom: 2px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bb-3{
+            border-bottom: 3px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bb-4{
+            border-bottom: 4px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bl-0{
+            border-left: none;
+          }
+          .bl-1{
+            border-left: 1px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bl-2{
+            border-left: 2px solid var(--ddd-polaris-beaverBlue);
+          } 
+          .bl-3{
+            border-left: 3px solid var(--ddd-polaris-beaverBlue);
+          }
+          .bl-4{
+            border-left: 4px solid var(--ddd-polaris-beaverBlue);
+          }
+
+          .boxshadow-0{
+            box-shadow: none;
+          }
+          .boxshadow-1{
+            box-shadow: var(--ddd-shadow-1);
+          }
+          .boxshadow-2{
+            box-shadow: var(--ddd-shadow-2);
+          }
+          .boxshadow-3{
+            box-shadow: var(--ddd-shadow-3);
+          }
+          .boxshadow-4{
+            box-shadow: var(--ddd-shadow-4);
+          }
+          .textshadow-0{       
+            text-shadow: none;
+          }
+          /* no current text shadow comp to use */
+          /*.textshadow-1{
+            text-shadow: black 0px 0px 10px;
+          }
+          .textshadow-2{
+            text-shadow: var(--ddd-shadow-2);
+          }
+          .textshadow-3{
+            text-shadow: var(--ddd-shadow-3);
+          }
+          .textshadow-4{
+            text-shadow: var(--ddd-shadow-4);
+          }*/
+
+
+
+      /* used for demo */
+       .flex{
+        display: flex;
+       } 
+       .grid-4{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--ddd-spacing-4);
+       }
+       .grid-3{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--ddd-spacing-4);
+       }
+       .grid-2{
+        display: grid;
+        grid-template-columns: .5fr 1.5fr;
+        gap: var(--ddd-spacing-4);
+       }
+       .spacing-demo{
+        display: grid;
+        height: 100%;
+       }
+       .font-beaverBlue{
+        color: var(--ddd-polaris-beaverBlue);
+       }
+
+       .bg-limestoneMaxLight{
+        background-color: var(--ddd-polaris-limestoneMaxLight);
+       }
+
+       .bg-potentialMidnight{
+        background-color: var(--ddd-polaris-potentialMidnight);
+       }
+
+       .bg-white{
+        background-color: var(--ddd-polaris-white);
+       }
       `,
     ];
   }
+
+  renderHeaders(){
+    console.log('test');
+    return html`
+    <h3 class='my-20 font-beaverBlue'> Headers </h3>
+      <h1>Default Header 1</h1>
+      <h2>Default Header 2</h2>
+      <h3>Default Header 3</h3>
+      <h4>Default Header 4</h4>
+      <h5>Default Header 5</h5>
+      <h6>Default Header 6</h6>
+      <p>Default Body</p>
+      <span class='ddd-nav'>Default Navigation</span>
+    `;
+  }
+
+  renderFW(){
+    return html`
+    <h3 class='my-20 font-beaverBlue'> Font Weights </h3>
+    <div class='ml-10 bg-limestoneMaxLight'>
+      <h3 class='fw-0'>Font Weight 0 (nav only)</h1>
+      <h3 class='fw-1'>Font Weight 1 (header only)</h1>
+      <h3 class='fw-2'>Font Weight 2 (header only)</h1>
+      <h3 class='fw-3'>Font Weight 3 (default)</h1>
+      <h3 class='fw-4'>Font Weight 4 (header only)</h1>
+    </div>
+    <h6 class='fw-2 ml-10'>Accessible using class: <span class='fw-4'>fw-x</span></h6>
+    `;
+  }
+
+  renderFS(){
+    return html`
+    <h3 class='my-20 font-beaverBlue'> Font Sizes </h3>
+    <div class='ml-10 bg-limestoneMaxLight'>
+      <h3 class='fs-4xs flex'>Font Size 4xs</h3>
+      <h3 class='fs-3xs flex'>Font Size 3xs</h3>
+      <h3 class='fs-xxs flex'>Font Size xxs</h3>
+      <h3 class='fs-xs flex'>Font Size xs</h3>
+      <h3 class='fs-s flex'>Font Size s</h3>
+      <h3 class='fs-ms flex'>Font Size ms</h3>
+      <h3 class='fs-m flex'>Font Size m</h3>
+      <h3 class='fs-ml flex'>Font Size ml</h3>
+      <h3 class='fs-l flex'>Font Size l</h3>
+      <h3 class='fs-xl flex'>Font Size xl</h3>
+      <h3 class='fs-xxl flex'>Font Size xxl</h3>
+      <h3 class='fs-3xl flex'>Font Size 3xl</h3>
+      <h3 class='fs-4xl flex'>Font Size 4xl</h3>
+    </div>
+    <h6 class='fw-2 ml-10'>Accessible using class: <span class='fw-4'>fs-x</span></h6>
+    `;
+  }
+
+  renderBS(){
+    return html`
+    <h3 class='my-20 font-beaverBlue'> Borders & Shadows </h3>
+    <div class='mt-10 grid-4 ml-10'>
+      <div class='p-10 b-1'><h5>Border 1</h5></div>
+      <div class='p-10 b-2'><h5>Border 2</h5></div>
+      <div class='p-10 b-3'><h5>Border 3</h5></div>
+      <div class='p-10 b-4'><h5>Border 4</h5></div>
+    </div>
+    <h6 class='fw-2 ml-10 mb-15'>Accessible using classes: <span class='fw-4'>b-x, bt-x, br-x, bb-x, bl-x</span></h6>
+    <div class='grid-4 mt-10 ml-10'>
+      <div class='p-10 boxshadow-1'><h5>Box Shadow 1</h5></div>
+      <div class='p-10 boxshadow-2'><h5>Box Shadow 2</h5></div>
+      <div class='p-10 boxshadow-3'><h5>Box Shadow 3</h5></div>
+      <div class='p-10 boxshadow-4'><h5>Box Shadow 4</h5></div>
+    </div>
+    <h6 class='fw-2 ml-10 mb-15'>Accessible using class: <span class='fw-4'>boxshadow-x</span></h6>
+    <div class='grid-4 mt-10 ml-10'>
+      <div class='p-10 textshadow-1'><h5>Text Shadow 1</h5></div>
+      <div class='p-10 textshadow-2'><h5>Text Shadow 2</h5></div>
+      <div class='p-10 textshadow-3'><h5>Text Shadow 3</h5></div>
+      <div class='p-10 textshadow-4'><h5>Text Shadow 4</h5></div>
+    </div>
+    <h6 class='fw-2 ml-10 mb-15'>Accessible using class: <span class='fw-4'>textshadow-x</span></h6>
+    `;
+  }
+
+  renderBreakpoints(){
+    return html`
+    <h3 class='my-20 font-beaverBlue'> Breakpoints </h3>
+    <div class='grid-2 mt-10 ml-10 mb-5'>
+      <h4>sm</h4><h4>360px</h4>
+      <h4>md</h4><h4>768px</h4>
+      <h4>lg</h4><h4>1080px</h4>
+      <h4>xl</h4><h4>1440px</h4>
+    </div>
+    <h6 class='fw-2 ml-10 mb-15'>Accessible via css variables: <span class='fw-4'>--ddd-breakpoint-x</span></h6>
+    `;
+  }
+
+  renderMP(){
+    return html`
+    <h3 class='my-20 font-beaverBlue'> Margin & Padding </h3>
+      <div class='grid-3 mt-10 mb-5 ml-20 '>
+        <h4>Class Name</h4><h4>Value</h4><h4>Example</h4>
+        <h5>m-0</h5><h5>0px</h5><div class='bg-potentialMidnight'><span class='m-0 bg-white spacing-demo'></span></div>
+        <h5>m-1</h5><h5>4px</h5><div class='bg-potentialMidnight'><span class='ml-1 bg-white spacing-demo'></span></div>
+        <h5>m-2</h5><h5>8px</h5><div class='bg-potentialMidnight'><span class='ml-2 bg-white spacing-demo'></span></div>
+        <h5>m-3</h5><h5>12px</h5><div class='bg-potentialMidnight'><span class='ml-3 bg-white spacing-demo'></span></div>
+        <h5>m-4</h5><h5>16px</h5><div class='bg-potentialMidnight'><span class='ml-4 bg-white spacing-demo'></span></div>
+        <h5>m-5</h5><h5>20px</h5><div class='bg-potentialMidnight'><span class='ml-5 bg-white spacing-demo'></span></div>
+        <h5>m-6</h5><h5>24px</h5><div class='bg-potentialMidnight'><span class='ml-6 bg-white spacing-demo'></span></div>
+        <h5>m-7</h5><h5>28px</h5><div class='bg-potentialMidnight'><span class='ml-7 bg-white spacing-demo'></span></div>
+        <h5>m-8</h5><h5>32px</h5><div class='bg-potentialMidnight'><span class='ml-8 bg-white spacing-demo'></span></div>
+        <h5>m-9</h5><h5>36px</h5><div class='bg-potentialMidnight'><span class='ml-9 bg-white spacing-demo'></span></div>
+        <h5>m-10</h5><h5>40px</h5><div class='bg-potentialMidnight'><span class='ml-10 bg-white spacing-demo'></span></div>
+        <h5>m-11</h5><h5>44px</h5><div class='bg-potentialMidnight'><span class='ml-11 bg-white spacing-demo'></span></div>
+        <h5>m-12</h5><h5>48px</h5><div class='bg-potentialMidnight'><span class='ml-12 bg-white spacing-demo'></span></div>
+        <h5>m-13</h5><h5>52px</h5><div class='bg-potentialMidnight'><span class='ml-13 bg-white spacing-demo'></span></div>
+        <h5>m-14</h5><h5>56px</h5><div class='bg-potentialMidnight'><span class='ml-14 bg-white spacing-demo'></span></div>
+        <h5>m-15</h5><h5>60px</h5><div class='bg-potentialMidnight'><span class='ml-15 bg-white spacing-demo'></span></div>
+        <h5>m-16</h5><h5>64px</h5><div class='bg-potentialMidnight'><span class='ml-16 bg-white spacing-demo'></span></div>
+        <h5>m-17</h5><h5>68px</h5><div class='bg-potentialMidnight'><span class='ml-17 bg-white spacing-demo'></span></div>
+        <h5>m-18</h5><h5>72px</h5><div class='bg-potentialMidnight'><span class='ml-18 bg-white spacing-demo'></span></div>
+        <h5>m-19</h5><h5>76px</h5><div class='bg-potentialMidnight'><span class='ml-19 bg-white spacing-demo'></span></div>
+        <h5>m-20</h5><h5>80px</h5><div class='bg-potentialMidnight'><span class='ml-20 bg-white spacing-demo'></span></div>
+        <h5>m-21</h5><h5>84px</h5><div class='bg-potentialMidnight'><span class='ml-21 bg-white spacing-demo'></span></div>
+        <h5>m-22</h5><h5>88px</h5><div class='bg-potentialMidnight'><span class='ml-22 bg-white spacing-demo'></span></div>
+        <h5>m-23</h5><h5>92px</h5><div class='bg-potentialMidnight'><span class='ml-23 bg-white spacing-demo'></span></div>
+        <h5>m-24</h5><h5>96px</h5><div class='bg-potentialMidnight'><span class='ml-24 bg-white spacing-demo'></span></div>
+        <h5>m-25</h5><h5>100px</h5><div class='bg-potentialMidnight'><span class='ml-25 bg-white spacing-demo'></span></div>
+        <h5>m-26</h5><h5>104px</h5><div class='bg-potentialMidnight'><span class='ml-26 bg-white spacing-demo'></span></div>
+        <h5>m-27</h5><h5>108px</h5><div class='bg-potentialMidnight'><span class='ml-27 bg-white spacing-demo'></span></div>
+        <h5>m-28</h5><h5>112px</h5><div class='bg-potentialMidnight'><span class='ml-28 bg-white spacing-demo'></span></div>
+        <h5>m-29</h5><h5>116px</h5><div class='bg-potentialMidnight'><span class='ml-29 bg-white spacing-demo'></span></div>
+        <h5>m-30</h5><h5>120px</h5><div class='bg-potentialMidnight'><span class='ml-30 bg-white spacing-demo'></span></div>
+      </div>
+      <h6 class='fw-2 ml-10 my-0'>Accessible using format: <span class='fw-4'>(m or p)(side [optional])-x</span></h6>
+      <h6 class='fw-2 ml-10 mb-15'> Sides: Top (t), Right (r), Bottom (b), Left (l), X (x), Y (y) </h6>
+      `;
+  }
+
+  renderPolarisColors(){
+    return html`
+    <h3 class='my-20 font-beaverBlue'> Polaris Colors </h3>
+      <div class='grid-2 my-30 ml-10'>
+        <h5>--ddd-polaris-beaverBlue</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-beaverBlue);'></div>
+        <h5>--ddd-polaris-landgrantBrown</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-landgrantBrown);'></div>
+        <h5>--ddd-polaris-nittanyNavy</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-nittanyNavy);'></div>
+        <h5>--ddd-polaris-navy40</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-navy40);'></div>
+        <h5>--ddd-polaris-navy65</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-navy65);'></div>
+        <h5>--ddd-polaris-navy80</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-navy80);'></div>
+        <h5>--ddd-polaris-potentialMidnight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-potentialMidnight);'></div>
+        <h5>--ddd-polaris-potential50</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-potential50);'></div>
+        <h5>--ddd-polaris-pughBlue</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-pughBlue);'></div>
+        <h5>--ddd-polaris-coalyGray</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-coalyGray);'></div>
+        <h5>--ddd-polaris-keystoneYellow</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-keystoneYellow);'></div>
+        <h5>--ddd-polaris-slateGray</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-slateGray);'></div>
+        <h5>--ddd-polaris-slateLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-slateLight);'></div>
+        <h5>--ddd-polaris-slateMaxLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-slateMaxLight);'></div>
+        <h5>--ddd-polaris-skyBlue</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-skyBlue);'></div>
+        <h5>--ddd-polaris-skyLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-skyLight);'></div>
+        <h5>--ddd-polaris-skyMaxlight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-skyMaxlight);'></div>
+        <h5>--ddd-polaris-limestoneGray</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-limestoneGray);'></div>
+        <h5>--ddd-polaris-limestoneLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-limestoneLight);'></div>
+        <h5>--ddd-polaris-limestoneMaxLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-limestoneMaxLight);'></div>
+        <h5>--ddd-polaris-white</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-white);'></div>
+        <h5>--ddd-polaris-shrineLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-shrineLight);'></div>
+        <h5>--ddd-polaris-shrineMaxLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-shrineMaxLight);'></div>
+        <h5>--ddd-polaris-creekTeal</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-creekTeal);'></div>
+        <h5>--ddd-polaris-creekLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-creekLight);'></div>
+        <h5>--ddd-polaris-creekMaxLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-creekMaxLight);'></div>
+        <h5>--ddd-polaris-shrineTan</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-shrineTan);'></div>
+        <h5>--ddd-polaris-roarGolden</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-roarGolden);'></div>
+        <h5>--ddd-polaris-roarLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-roarLight);'></div>
+        <h5>--ddd-polaris-roarMaxlight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-roarMaxlight);'></div>
+        <h5>--ddd-polaris-forestGreen</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-forestGreen);'></div>
+        <h5>--ddd-polaris-athertonViolet</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-athertonViolet);'></div>
+        <h5>--ddd-polaris-original87Pink</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-original87Pink);'></div>
+        <h5>--ddd-polaris-discoveryCoral</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-discoveryCoral);'></div>
+        <h5>--ddd-polaris-futureLime</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-futureLime);'></div>
+        <h5>--ddd-polaris-wonderPurple</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-wonderPurple);'></div>
+        <h5>--ddd-polaris-inventOrange</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-inventOrange);'></div>
+        <h5>--ddd-polaris-opportunityGreen</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-polaris-opportunityGreen);'></div>
+      </div>
+    `;
+  }
+
+  renderPolarisFunctionalColors(){
+    return html`
+    <h3 class='my-20 font-beaverBlue'> Polaris Functional Colors </h3>
+      <div class='grid-2 my-30 ml-10'>
+        <h5>--ddd-link</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-link);'></div>
+        <h5>--ddd-linkLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-linkLight);'></div>
+        <h5>--ddd-disabled</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-disabled);'></div>
+        <h5>--ddd-error</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-error);'></div>
+        <h5>--ddd-errorLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-errorLight);'></div>
+        <h5>--ddd-warning</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-warning);'></div>
+        <h5>--ddd-warningLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-warningLight);'></div>
+        <h5>--ddd-info</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-info);'></div>
+        <h5>--ddd-infoLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-infoLight);'></div>
+        <h5>--ddd-success</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-success);'></div>
+        <h5>--ddd-successLight</h5>
+        <div class='m-5 p-10 border-1' style='background-color: var(--ddd-successLight);'></div>
+      </div>
+    `;
+  }
+
+  renderStuff(stuff){
+    if(this.options.includes(stuff)){
+      this[`render${stuff}()`];
+    }
+    else{
+      this.options.forEach((option) => {
+        this[`render${option}()`];
+        console.log('render' + option + '()');
+      })
+    }
+  }
+
   /**
    * LitElement render callback
    */
@@ -1668,8 +2540,10 @@ class DDD extends SimpleColors {
     return html`
       <div>
         <slot></slot>
-        <h1 class='fw-3 mt-0 pt-0 mx-0'>h1</h1>
       </div>
+
+      ${this.renderStuff('Headers')}
+
     `;
   }
   /**
