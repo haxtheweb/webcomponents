@@ -3,8 +3,26 @@
   "tags": [
     {
       "name": "d-d-d",
-      "description": "`d-d-d`\n`design, develop, destroy the competition`\n\n",
-      "attributes": []
+      "description": "Attributes:\n\n  * `option` {`string`} - \n\n  * `options` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `option` {`string`} - \n\n  * `options` {`any[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "option",
+          "description": "`option` {`string`} - \n\nProperty: option\n\nDefault: *"
+        },
+        {
+          "name": "options",
+          "description": "`options` {`any[]`} - \n\nProperty: options"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     }
   ],
   "globalAttributes": [],
