@@ -89,7 +89,7 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
     firstUpdated() {
       super.firstUpdated();
       if (!this.disableResponsive) {
-        window.ResponsiveUtility.requestAvailability();
+        globalThis.ResponsiveUtility.requestAvailability();
         this.dispatchEvent(
           new CustomEvent("responsive-element", {
             bubbles: true,

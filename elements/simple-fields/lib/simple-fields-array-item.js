@@ -508,7 +508,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    window.ResponsiveUtility.requestAvailability();
+    globalThis.ResponsiveUtility.requestAvailability();
 
     /**
      * needs the size of parent container to add responsive styling

@@ -547,7 +547,7 @@ class SimpleFieldsUpload extends I18NMixin(
     } else {
       this.option = "fileupload";
     }
-    window.ResponsiveUtility.requestAvailability();
+    globalThis.ResponsiveUtility.requestAvailability();
 
     /**
      * needs the size of parent container to add responsive styling

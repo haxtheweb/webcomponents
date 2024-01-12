@@ -1,58 +1,64 @@
-import { stdPostBody, stdResponse } from "../utilities/requestHelpers.js";
-import fetch from "node-fetch";
-// @todo remote load HTML or accept string
-// leverage the WC registry supplied OR default to a CDN
-// return hydrated shadow using Lit hydration thing
-import { render } from '@lit-labs/ssr/lib/render-with-global-dom-shim.js';
-import { Readable } from 'stream';
+import { stdResponse, invalidRequest, stdPostBody } from "../../utilities/requestHelpers.js";
+import { render } from '@lit-labs/ssr';
+import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
 import { html } from 'lit';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import pkg from 'jsdom';
-const { JSDOM } = pkg;
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
+// node parser
+import { parse } from 'node-html-parser';
+
+import wcRegistry from "../../wc-registry.json" assert { type: 'json' };
 
 export default async function handler(req, res) {
+  // destructing GET params after ? available in this object
+  // use this if POST data is what's being sent
   let body = {};
-  if (req.query.body) {
+  let q = null;
+  if (req.query.q) {
     body = req.query;
   }
   else {
     body = stdPostBody(req);
   }
-  var htmlContent = body.html;
-  var domBody = '';
-  // md is actually a link reference so fetch it 1st
-  if (body.type === 'link' && htmlContent) {
-    htmlContent = await fetch(htmlContent.trim()).then((d) => d.ok ? d.text(): '');
-    const dom = new JSDOM(htmlContent);
-    domBody = dom.window.document.querySelector("body").innerHTML;
-    console.log(domBody);
+  // fallback support for post
+  if (body && body.q) {
+    q = body.q;
   }
-  const ssrContent = await readStream(Readable.from(render(html`
-    ${unsafeHTML(domBody)}
-    <script type="module">
-        // Hydrate template-shadowroots eagerly after rendering (for browsers without
-        // native declarative shadow roots)
-        import {
-          hasNativeDeclarativeShadowRoots,
-          hydrateShadowRoots
-        } from './node_modules/@webcomponents/template-shadowroot/template-shadowroot.js';
-        if (!hasNativeDeclarativeShadowRoots) {
-          hydrateShadowRoots(document.body);
+  if (body && body.type == "link") {
+    q = await fetch(q).then((d) => d.ok ? d.text() : '');
+  }
+  // need to know what we're searching for otherwise bail
+  if (q) {
+    const doc = parse(q);
+    // can select all the dt's for term
+    // then all the dd's for definition
+    // array lengths should match if valid HTML
+    // also ensure we have any results at all
+    if (doc.querySelectorAll('*').length > 0) {
+      const allEls = doc.querySelectorAll('*');
+      for (var i=0; i < allEls.length; i++) {
+        // see if it's in the registry
+        if (wcRegistry[allEls[i].tagName.toLowerCase()]) {
+          try {
+            console.log(`importing ${wcRegistry[allEls[i].tagName.toLowerCase()]}`);
+            await import(wcRegistry[allEls[i].tagName.toLowerCase()]);
+          }
+          catch(e) {
+            console.log(e);
+          }
         }
-        // ...
-        // Load and hydrate components lazily
-        import("./node_modules/@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js");
-      </script>
-  `)));
-  res = stdResponse(res, ssrContent)
-}
-
-function readStream(stream, encoding = "utf8") {
-	stream.setEncoding(encoding);
-	return new Promise((resolve, reject) => {
-			let data = "";
-			stream.on("data", chunk => data += chunk);
-			stream.on("end", () => resolve(data));
-			stream.on("error", error => reject(error));
-	});
+      }
+    }
+    const myServerTemplate = () => html`${unsafeHTML(q)}`;
+    const ssrResult = render(myServerTemplate());
+    const content = await collectResult(ssrResult);
+    // Awaits promises
+    res = stdResponse(res, content, {cache: 86400,type : 'text/html' });
+  }
+  else {
+    // invalidate the response and provide a reason
+    // this optionally takes in a status code otherwise default is 400
+    // vercel will through a 500 if there was any bricking issue so we don't
+    // need to throw that most likely
+    res = invalidRequest(res, 'missing `q` param');
+  }
 }

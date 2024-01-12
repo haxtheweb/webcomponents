@@ -584,7 +584,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.sourceData &&
       this.sourceData.length > 0 &&
       this.sourceData[0] !== undefined &&
-      window.MediaBehaviors.Video._sourceIsIframe(this.sourceData[0].src) &&
+      globalThis.MediaBehaviors.Video._sourceIsIframe(this.sourceData[0].src) &&
       !this.sandboxed
     ) {
       return true;
@@ -630,7 +630,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.sourceData &&
       this.sourceData.length > 0 &&
       typeof this.sourceData[0] !== undefined &&
-      window.MediaBehaviors.Video._sourceIsIframe(this.sourceData[0].src)
+      globalThis.MediaBehaviors.Video._sourceIsIframe(this.sourceData[0].src)
     ) {
       // fake creation of a webview element to see if it's valid
       // or not.
@@ -812,8 +812,8 @@ class VideoPlayer extends IntersectionObserverMixin(
   _computeSRC(source, type) {
     if (source !== null && typeof source !== undefined) {
       // ensure that this is a valid url / cleaned up a bit
-      type = type || window.MediaBehaviors.Video.getVideoType(source);
-      source = window.MediaBehaviors.Video.cleanVideoSource(source, type);
+      type = type || globalThis.MediaBehaviors.Video.getVideoType(source);
+      source = globalThis.MediaBehaviors.Video.cleanVideoSource(source, type);
       if (type == "vimeo") {
         if (this.vimeoTitle) {
           source += "?title=1";
@@ -833,9 +833,9 @@ class VideoPlayer extends IntersectionObserverMixin(
       } else if (type == "twitch") {
         // required for origin matching when doing iframe embed
         if (source.indexOf("?") > -1) {
-          source += "&parent=" + window.location.hostname;
+          source += "&parent=" + globalThis.location.hostname;
         } else {
-          source += "?parent=" + window.location.hostname;
+          source += "?parent=" + globalThis.location.hostname;
         }
       }
     }
@@ -873,7 +873,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.sourceData[0] !== undefined &&
       typeof this.sourceData[0].src !== typeof undefined
     ) {
-      this.sourceType = window.MediaBehaviors.Video.getVideoType(
+      this.sourceType = globalThis.MediaBehaviors.Video.getVideoType(
         this.sourceData[0].src
       );
     }
@@ -894,7 +894,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         this.sourceType &&
         typeof oldValue !== typeof undefined
       ) {
-        let type = window.MediaBehaviors.Video.getVideoType(
+        let type = globalThis.MediaBehaviors.Video.getVideoType(
           this.sourceData[0].src
         );
         if (type != this.sourceType) {
@@ -946,7 +946,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.sourceData[0] !== undefined &&
       typeof this.sourceData[0].src !== typeof undefined
     ) {
-      this.sourceType = window.MediaBehaviors.Video.getVideoType(
+      this.sourceType = globalThis.MediaBehaviors.Video.getVideoType(
         this.sourceData[0].src
       );
     }

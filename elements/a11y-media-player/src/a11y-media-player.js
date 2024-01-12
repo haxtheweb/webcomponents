@@ -1845,8 +1845,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
 
   constructor() {
     super();
-    window.ResponsiveUtility.requestAvailability();
-    window.A11yMediaStateManager.requestAvailability();
+    globalThis.ResponsiveUtility.requestAvailability();
+    globalThis.A11yMediaStateManager.requestAvailability();
     this.__playerReady = false;
     this.audioOnly = false;
     this.autoplay = false;
@@ -1909,7 +1909,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * @returns {number} media width divided by height
    */
   get anchor() {
-    let anchor = window.AnchorBehaviors;
+    let anchor = globalThis.AnchorBehaviors;
     return {
       target: anchor ? anchor.getTarget(this) : false,
       params: anchor ? anchor.params : {},
@@ -2377,7 +2377,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * @returns {string} url for sharing the video
    */
   get shareLink() {
-    let url = window.location.href.split(/[#?]/)[0],
+    let url = globalThis.location.href.split(/[#?]/)[0],
       id = this.id ? `?id=${this.id}` : ``,
       currentTime =
         id !== "" && this.currentTime && this.currentTime !== 0
@@ -2652,7 +2652,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * @param {string} the title of the media
    */
   download() {
-    let a = document.createElement("a"),
+    let a = globalThis.document.createElement("a"),
       title =
         this.mediaTitle && this.mediaTitle.trim() != ""
           ? `${this.mediaTitle} (${this._getLocal(
@@ -2677,9 +2677,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     );
     a.setAttribute("download", filename + ".txt");
     a.style.display = "none";
-    document.body.appendChild(a);
+    globalThis.document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);
+    globalThis.document.body.removeChild(a);
     /**
      * Fires when transcript is downloaded
      * @event transcript-downloaded
@@ -2698,7 +2698,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * takes the user to YouTube
    */
   goToYoutube() {
-    window.open(`https://www.youtube.com/watch?v=${this.youtubeId}`);
+    globalThis.open(`https://www.youtube.com/watch?v=${this.youtubeId}`);
   }
 
   /**
@@ -2715,7 +2715,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               "label"
             )})`
           : this._getLocal(this.localization, "transcript", "label"),
-      print = window.open(
+      print = globalThis.open(
         "",
         "",
         "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
@@ -2789,7 +2789,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * DEPRECATED: Fires when media plays
      * @event a11y-player-playing
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("a11y-player-playing", {
         bubbles: true,
         composed: true,
@@ -2829,7 +2829,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when media stops
      * @event stop
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("stop", {
         bubbles: true,
         composed: true,
@@ -2849,7 +2849,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when media retarts
      * @event restart
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("restart", {
         bubbles: true,
         composed: true,
@@ -2870,7 +2870,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when media moves backward
      * @event backward
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("backward", {
         bubbles: true,
         composed: true,
@@ -2891,7 +2891,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when media moves forward
      * @event forward
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("forward", {
         bubbles: true,
         composed: true,
@@ -2913,7 +2913,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
        * Fires when media seeks
        * @event seek
        */
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("seek", {
           bubbles: true,
           composed: true,
@@ -2994,7 +2994,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     }
 
     if (!media) {
-      primary = document.createElement(
+      primary = globalThis.document.createElement(
         this.querySelectorAll('source[type*="audio"]').length > 0 || !hasVideo
           ? "audio"
           : "video"
@@ -3014,14 +3014,14 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
 
     /* handle deprecated tracks */
     (this.tracks || []).forEach((track) => {
-      let node = document.createElement("track");
+      let node = globalThis.document.createElement("track");
       Object.keys(track).forEach((key) => node.setAttribute(key, track[key]));
       primary.appendChild(node);
     });
 
     /* handle deprecated sources */
     (this.sources || []).forEach((source) => {
-      let node = document.createElement("source");
+      let node = globalThis.document.createElement("source");
       Object.keys(source).forEach((key) => node.setAttribute(key, source[key]));
       primary.appendChild(node);
     });
@@ -3066,7 +3066,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when video playback rate changes
      * @event playback-rate-changed
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("playback-rate-changed", {
         bubbles: true,
         composed: true,
@@ -3089,7 +3089,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when video volume changes
      * @event volume-changed
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("volume-changed", {
         bubbles: true,
         composed: true,
@@ -3110,7 +3110,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when closed caption is toggled
      * @event cc-toggle
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("cc-toggle", {
         bubbles: true,
         composed: true,
@@ -3141,7 +3141,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when fullscreen is toggled
      * @event fullscreen-toggle
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("fullscreen-toggle", {
         bubbles: true,
         composed: true,
@@ -3163,7 +3163,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when looping is toggled
      * @event loop-toggle
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("loop-toggle", {
         bubbles: true,
         composed: true,
@@ -3187,7 +3187,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when play/pause is toggled
      * @event play-toggle
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("play-toggle", {
         bubbles: true,
         composed: true,
@@ -3207,7 +3207,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when mute is toggled
      * @event muted-toggle
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("muted-toggle", {
         bubbles: true,
         composed: true,
@@ -3322,14 +3322,14 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * handles copying the share link
    */
   _handleCopyLink() {
-    let el = document.createElement("textarea");
+    let el = globalThis.document.createElement("textarea");
     this.pause();
     el.value = this.shareLink;
-    document.body.appendChild(el);
+    globalThis.document.body.appendChild(el);
     el.select();
-    document.execCommand("copy");
+    globalThis.document.execCommand("copy");
 
-    document.body.removeChild(el);
+    globalThis.document.body.removeChild(el);
     SimpleToastStore.showSimpleToast({
       detail: {
         duration: 3000,
@@ -3508,7 +3508,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires player needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
           element: this,
@@ -3525,7 +3525,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when a new player is ready for a11y-media-state-manager
      * @event a11y-player
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("a11y-player", {
         bubbles: true,
         composed: true,

@@ -226,7 +226,7 @@ class ResponsiveGridRow extends LitElement {
     this.gutter = 0;
     this.responsiveToParent = false;
     this.screen = "xs";
-    window.ResponsiveUtility.requestAvailability();
+    globalThis.ResponsiveUtility.requestAvailability();
   }
   /**
    * LitElement ready

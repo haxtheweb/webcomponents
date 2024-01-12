@@ -4,15 +4,15 @@
  */
 
 // register globally so we can make sure there is only one
-window.I18NManagerStore = window.I18NManagerStore || {};
-window.I18NManagerStore.requestAvailability = () => {
-  if (!window.I18NManagerStore.instance) {
-    window.I18NManagerStore.instance = document.createElement("i18n-manager");
-    document.body.appendChild(window.I18NManagerStore.instance);
+globalThis.I18NManagerStore = globalThis.I18NManagerStore || {};
+globalThis.I18NManagerStore.requestAvailability = () => {
+  if (!globalThis.I18NManagerStore.instance && globalThis.document) {
+    globalThis.I18NManagerStore.instance = globalThis.document.createElement("i18n-manager");
+    globalThis.document.body.appendChild(globalThis.I18NManagerStore.instance);
   }
-  return window.I18NManagerStore.instance;
+  return globalThis.I18NManagerStore.instance;
 };
-export const I18NManagerStore = window.I18NManagerStore.requestAvailability();
+export const I18NManagerStore = globalThis.I18NManagerStore.requestAvailability();
 const FALLBACK_LANG = "en";
 const FALLBACK_DIR = "ltr";
 /**
@@ -68,13 +68,13 @@ class I18NManager extends HTMLElement {
    */
   connectedCallback() {
     this.__ready = true;
-    window.addEventListener(
+    globalThis.addEventListener(
       "i18n-manager-register-element",
       this.registerLocalizationEvent.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "languagechange",
       this.changeLanguageEvent.bind(this),
       { signal: this.windowControllers.signal }

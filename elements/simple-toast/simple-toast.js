@@ -6,19 +6,19 @@ import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lib/simple-toast-el.js";
 // register globally so we can make sure there is only one
-window.SimpleToast = window.SimpleToast || {};
+globalThis.SimpleToast = globalThis.SimpleToast || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same simple-toast element, making it a singleton.
-window.SimpleToast.requestAvailability = () => {
+globalThis.SimpleToast.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.SimpleToast.instance) {
-    window.SimpleToast.instance = document.createElement("simple-toast");
-    document.body.appendChild(window.SimpleToast.instance);
+  if (!globalThis.SimpleToast.instance && globalThis.document) {
+    globalThis.SimpleToast.instance = globalThis.document.createElement("simple-toast");
+    globalThis.document.body.appendChild(globalThis.SimpleToast.instance);
   }
-  return window.SimpleToast.instance;
+  return globalThis.SimpleToast.instance;
 };
-export const SimpleToastStore = window.SimpleToast.requestAvailability();
+export const SimpleToastStore = globalThis.SimpleToast.requestAvailability();
 
 /**
  * `simple-toast`
@@ -161,13 +161,13 @@ class SimpleToast extends SimpleColors {
   }
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener(
+    globalThis.addEventListener(
       "simple-toast-hide",
       this.hideSimpleToast.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "simple-toast-show",
       this.showSimpleToast.bind(this),
       { signal: this.windowControllers.signal }

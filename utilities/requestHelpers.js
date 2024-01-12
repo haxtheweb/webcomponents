@@ -4,6 +4,8 @@ export function stdPostBody(req) {
     return JSON.parse(req.body);
   }
   catch(e) {
+    console.log(req.body);
+    console.log(e);
     // empty body response
     return null
   }

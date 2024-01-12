@@ -443,7 +443,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         return "archive";
       }
       // if it's external we can't assume what it actually is
-      else if (window.MediaBehaviors.Video.getVideoType(source) != "external") {
+      else if (globalThis.MediaBehaviors.Video.getVideoType(source) != "external") {
         return "video";
       }
     }

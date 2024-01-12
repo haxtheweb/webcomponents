@@ -4,16 +4,16 @@
  */
 
 // register globally so we can make sure there is only one
-window.AnchorBehaviors = window.AnchorBehaviors || {};
+globalThis.AnchorBehaviors = globalThis.AnchorBehaviors || {};
 // request if this exists. This helps invoke the el existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.AnchorBehaviors.getTarget = (element = null) => {
+globalThis.AnchorBehaviors.getTarget = (element = null) => {
   /** gets and sets parameters */
   let getParams = () => {
       let str =
-          window.location.hash.substring(1).replace(/^(.+)&?/, "id=$1") ||
-          window.location.search.substring(1) ||
+      globalThis.location.hash.substring(1).replace(/^(.+)&?/, "id=$1") ||
+      globalThis.location.search.substring(1) ||
           "",
         uri = str
           ? `{"${decodeURI(str)
@@ -30,7 +30,7 @@ window.AnchorBehaviors.getTarget = (element = null) => {
           return true;
         },
         params = uri && isJSON(uri) ? JSON.parse(uri) : {};
-      window.AnchorBehaviors.params = params;
+        globalThis.AnchorBehaviors.params = params;
     },
     testElement = (element, params) => {
       if (element && (params.id || params.resource)) {
@@ -49,33 +49,33 @@ window.AnchorBehaviors.getTarget = (element = null) => {
     };
 
   /** sets target element */
-  if (!window.AnchorBehaviors.target) {
-    if (!window.AnchorBehaviors.params) {
-      if (document.readyState === "complete") {
+  if (!globalThis.AnchorBehaviors.target) {
+    if (!globalThis.AnchorBehaviors.params) {
+      if (globalThis.document.readyState === "complete") {
         getParams();
       }
-      window.onload = getParams();
+      globalThis.onload = getParams();
     }
     /** search for all combos of id and resource id */
-    window.AnchorBehaviors.target =
-      document.getElementById(window.AnchorBehaviors.params.id) ||
-      document.getElementById(`#${window.AnchorBehaviors.params.id}`) ||
-      document.querySelector(
+    globalThis.AnchorBehaviors.target =
+      globalThis.document.getElementById(globalThis.AnchorBehaviors.params.id) ||
+      globalThis.document.getElementById(`#${globalThis.AnchorBehaviors.params.id}`) ||
+      globalThis.document.querySelector(
         `[resource="#${
-          window.AnchorBehaviors.params.id ||
-          window.AnchorBehaviors.params.resource
+          globalThis.AnchorBehaviors.params.id ||
+          globalThis.AnchorBehaviors.params.resource
         }"]`
       ) ||
-      document.querySelector(
+      globalThis.document.querySelector(
         `[resource="${
-          window.AnchorBehaviors.params.id ||
-          window.AnchorBehaviors.params.resource
+          globalThis.AnchorBehaviors.params.id ||
+          globalThis.AnchorBehaviors.params.resource
         }"]`
       ) ||
-      testElement(element, window.AnchorBehaviors.params) ||
+      testElement(element, globalThis.AnchorBehaviors.params) ||
       null;
-    if (window.AnchorBehaviors.target)
-      window.AnchorBehaviors.target.scrollIntoView();
+    if (globalThis.AnchorBehaviors.target)
+    globalThis.AnchorBehaviors.target.scrollIntoView();
   }
-  return window.AnchorBehaviors.target;
+  return globalThis.AnchorBehaviors.target;
 };

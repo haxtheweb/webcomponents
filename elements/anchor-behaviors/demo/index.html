@@ -43,13 +43,13 @@
           <div resource="#test2">This is a test of resource. </div>
           <code id="detail">No anchor or query string found. </code>
           <script>
-            window.onload = function(){
-              let anchor = window.AnchorBehaviors,
-                detail = document.getElementById('detail');
+            globalThis.onload = function(){
+              let anchor = globalThis.AnchorBehaviors,
+                detail = globalThis.document.getElementById('detail');
               setTimeout(() => {
-                window.AnchorBehaviors.getTarget();                
+                globalThis.AnchorBehaviors.getTarget();                
               }, 500);
-              detail.innerHTML = `window.AnchorBehaviors.params = ${JSON.stringify(anchor.params)};`;
+              detail.innerHTML = `globalThis.AnchorBehaviors.params = ${JSON.stringify(anchor.params)};`;
               if(anchor.target !== null) anchor.target.appendChild(detail);
             }
           </script>

@@ -113,20 +113,20 @@ class SimpleIconset extends HTMLElement {
 
 customElements.define(SimpleIconset.tag, SimpleIconset);
 
-window.SimpleIconset = window.SimpleIconset || {};
+globalThis.SimpleIconset = globalThis.SimpleIconset || {};
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.SimpleIconset.requestAvailability = () => {
-  if (window.SimpleIconset.instance == null) {
-    window.SimpleIconset.instance = document.createElement("simple-iconset");
+globalThis.SimpleIconset.requestAvailability = () => {
+  if (globalThis.SimpleIconset.instance == null && globalThis.document) {
+    globalThis.SimpleIconset.instance = globalThis.document.createElement("simple-iconset");
+    globalThis.document.body.appendChild(globalThis.SimpleIconset.instance);
   }
-  document.body.appendChild(window.SimpleIconset.instance);
-  return window.SimpleIconset.instance;
+  return globalThis.SimpleIconset.instance;
 };
 // self request so that when this file is referenced it exists in the dom
 const SimpleIconsetStore =
   typeof global !== "undefined"
     ? new SimpleIconset()
-    : window.SimpleIconset.requestAvailability();
+    : globalThis.SimpleIconset.requestAvailability();
 export { SimpleIconset, SimpleIconsetStore };

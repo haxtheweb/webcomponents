@@ -5,18 +5,18 @@
 import { LitElement } from "lit";
 
 // register globally so we can make sure there is only one
-window.A11yMediaStateManager = window.A11yMediaStateManager || {};
+globalThis.A11yMediaStateManager = globalThis.A11yMediaStateManager || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.A11yMediaStateManager.requestAvailability = () => {
-  if (!window.A11yMediaStateManager.instance) {
-    window.A11yMediaStateManager.instance = document.createElement(
+globalThis.A11yMediaStateManager.requestAvailability = () => {
+  if (!globalThis.A11yMediaStateManager.instance && globalThis.document) {
+    globalThis.A11yMediaStateManager.instance = globalThis.document.createElement(
       "a11y-media-state-manager"
     );
-    document.body.appendChild(window.A11yMediaStateManager.instance);
+    globalThis.document.body.appendChild(globalThis.A11yMediaStateManager.instance);
   }
-  return window.A11yMediaStateManager.instance;
+  return globalThis.A11yMediaStateManager.instance;
 };
 /**
  * `a11y-media-state-manager`
@@ -62,8 +62,8 @@ class A11yMediaStateManager extends LitElement {
     this.__playerLoader = (e) => this.players.push(e.detail);
 
     // sets the instance to the current instance
-    if (!window.A11yMediaStateManager.instance) {
-      window.A11yMediaStateManager.instance = this;
+    if (!globalThis.A11yMediaStateManager.instance) {
+      globalThis.A11yMediaStateManager.instance = this;
     }
   }
 
@@ -105,7 +105,7 @@ class A11yMediaStateManager extends LitElement {
    */
   get observer() {
     let handleIntersect = (entries, observer) => {
-      window.A11yMediaStateManager.instance._handleIntersect(entries, observer);
+      globalThis.A11yMediaStateManager.instance._handleIntersect(entries, observer);
     };
     this._observer =
       this._observer ||
@@ -156,21 +156,21 @@ class A11yMediaStateManager extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     // listen for a player that starts playing
-    window.addEventListener(
+    globalThis.addEventListener(
       "a11y-player-playing",
       this.__stickyManager.bind(this),
       { signal: this.windowControllers.signal }
     );
 
     // listen for a player toggling fullscreen mode
-    window.addEventListener(
+    globalThis.addEventListener(
       "fullscreen-toggle",
       this._handleFullscreen.bind(this),
       { signal: this.windowControllers.signal }
     );
 
     // listen for a players added to the page
-    window.addEventListener("a11y-player", this.__playerLoader.bind(this), {
+    globalThis.addEventListener("a11y-player", this.__playerLoader.bind(this), {
       signal: this.windowControllers.signal,
     });
   }

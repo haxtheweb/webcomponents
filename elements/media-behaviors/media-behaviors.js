@@ -1,5 +1,5 @@
 // ensure MediaBehaviors exists
-window.MediaBehaviors = window.MediaBehaviors || {};
+globalThis.MediaBehaviors = globalThis.MediaBehaviors || {};
 /**
  * `MediaBehaviors.Video` provides some helper functions for working with video
  * from multiple sources. It helps resolve a video by type and currently supports
@@ -15,7 +15,7 @@ window.MediaBehaviors = window.MediaBehaviors || {};
  *
  * @polymerBehavior MediaBehaviors.Video
  **/
-window.MediaBehaviors.Video = {
+globalThis.MediaBehaviors.Video = {
   /**
    * Compute iframe or video tag for implementation.
    */

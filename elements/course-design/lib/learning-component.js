@@ -2,7 +2,7 @@
  * Copyright 2021
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css, unsafeCSS } from "lit-element/lit-element.js";
+import { html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";

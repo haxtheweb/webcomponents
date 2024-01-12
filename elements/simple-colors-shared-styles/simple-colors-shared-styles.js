@@ -12,8 +12,8 @@
  */
 import { LitElement, html, css } from "lit";
 
-window.SimpleColorsSharedStyles = {};
-window.SimpleColorsSharedStyles.instance = null;
+globalThis.SimpleColorsSharedStyles = {};
+globalThis.SimpleColorsSharedStyles.instance = null;
 
 class SimpleColorsSharedStyles extends LitElement {
   //styles function
@@ -1058,23 +1058,23 @@ export { SimpleColorsSharedStyles };
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.SimpleColorsSharedStyles.requestAvailability = () => {
-  if (window.SimpleColorsSharedStyles.instance == null) {
-    window.SimpleColorsSharedStyles.instance = document.createElement(
+globalThis.SimpleColorsSharedStyles.requestAvailability = () => {
+  if (globalThis.SimpleColorsSharedStyles.instance == null) {
+    globalThis.SimpleColorsSharedStyles.instance = document.createElement(
       "simple-colors-shared-styles"
     );
-    window.SimpleColorsSharedStyles.colors =
-      window.SimpleColorsSharedStyles.instance.colors;
-    window.SimpleColorsSharedStyles.contrasts =
-      window.SimpleColorsSharedStyles.instance.contrasts;
-    window.SimpleColorsSharedStyles.stylesheet =
+    globalThis.SimpleColorsSharedStyles.colors =
+    globalThis.SimpleColorsSharedStyles.instance.colors;
+    globalThis.SimpleColorsSharedStyles.contrasts =
+    globalThis.SimpleColorsSharedStyles.instance.contrasts;
+    globalThis.SimpleColorsSharedStyles.stylesheet =
       document.createElement("style");
-    window.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
-    document.head.appendChild(window.SimpleColorsSharedStyles.stylesheet);
+      globalThis.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
+    document.head.appendChild(globalThis.SimpleColorsSharedStyles.stylesheet);
   }
-  return window.SimpleColorsSharedStyles.instance;
+  return globalThis.SimpleColorsSharedStyles.instance;
 };
 export const SimpleColorsSharedStylesGlobal =
   typeof global !== "undefined"
     ? new SimpleColorsSharedStyles()
-    : window.SimpleColorsSharedStyles.requestAvailability();
+    : globalThis.SimpleColorsSharedStyles.requestAvailability();

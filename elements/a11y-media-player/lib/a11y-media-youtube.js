@@ -6,13 +6,13 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 // singleton for youtube frames
-window.A11yMediaYoutubeManager = window.A11yMediaYoutubeManager || {
+globalThis.A11yMediaYoutubeManager = globalThis.A11yMediaYoutubeManager || {
   /* gets iframes for all  */
   getIframes: () => {
-    window.A11yMediaYoutubeManager.queue.forEach((instance) => {
+    globalThis.A11yMediaYoutubeManager.queue.forEach((instance) => {
       instance.__yt = instance._preloadVideo(true);
     });
-    window.A11yMediaYoutubeManager.queue = [];
+    globalThis.A11yMediaYoutubeManager.queue = [];
   },
   queue: [], //array of instances waiting for iframes
 };
@@ -278,16 +278,16 @@ class A11yMediaYoutube extends LitElement {
    */
 
   init() {
-    window.A11yMediaYoutubeManager.queue.push(this);
+    globalThis.A11yMediaYoutubeManager.queue.push(this);
     /* checks for api and either uses it to get iframes or gets it */
-    if (window.A11yMediaYoutubeManager.api) {
-      if (window.YT) window.A11yMediaYoutubeManager.getIframes();
+    if (globalThis.A11yMediaYoutubeManager.api) {
+      if (globalThis.YT) globalThis.A11yMediaYoutubeManager.getIframes();
     } else {
-      window.onYouTubeIframeAPIReady = (e) => {
-        window.A11yMediaYoutubeManager.getIframes();
+      globalThis.onYouTubeIframeAPIReady = (e) => {
+        globalThis.A11yMediaYoutubeManager.getIframes();
       };
 
-      window.A11yMediaYoutubeManager.api = this.api;
+      globalThis.A11yMediaYoutubeManager.api = this.api;
     }
   }
 
@@ -524,8 +524,8 @@ class A11yMediaYoutube extends LitElement {
         "image"
       );
       let setYT = (e) => (this.__video = e.target),
-        port = window.location.port ? `:${window.location.port}` : ``,
-        origin = `${window.location.protocol}//${window.location.hostname}${port}`;
+        port = globalThis.location.port ? `:${globalThis.location.port}` : ``,
+        origin = `${globalThis.location.protocol}//${globalThis.location.hostname}${port}`;
       youtube = new YT.Player(divid, {
         width: root.width,
         height: root.height,
@@ -541,7 +541,7 @@ class A11yMediaYoutube extends LitElement {
           modestbranding: 1,
           //todo research playsinline
           rel: 0,
-          widget_referrer: window.location.href,
+          widget_referrer: globalThis.location.href,
         },
       });
       youtube.timeupdate;

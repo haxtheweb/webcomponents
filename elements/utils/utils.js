@@ -161,7 +161,7 @@ export function normalizeEventPath(e) {
 }
 // nicely formats / indents an HTML DOM tree for output
 function formatHTML(str) {
-  var div = document.createElement("div");
+  var div = globalThis.document.createElement("div");
   div.innerHTML = str.trim();
   return formatHTMLInternals(div, 0).innerHTML;
 }
@@ -171,11 +171,11 @@ function formatHTMLInternals(node, level) {
     indentAfter = new Array(level - 1).join("  "),
     textNode;
   for (var i = 0; i < node.children.length; i++) {
-    textNode = document.createTextNode("\n" + indentBefore);
+    textNode = globalThis.document.createTextNode("\n" + indentBefore);
     node.insertBefore(textNode, node.children[i]);
     formatHTMLInternals(node.children[i], level);
     if (node.lastElementChild == node.children[i]) {
-      textNode = document.createTextNode("\n" + indentAfter);
+      textNode = globalThis.document.createTextNode("\n" + indentAfter);
       node.appendChild(textNode);
     }
   }
@@ -344,14 +344,14 @@ function haxElementToNode(haxSchema) {
   // support sandboxed environments which
   // will hate iframe tags but love webview
   if (
-    window.HaxStore &&
-    window.HaxStore.instance &&
-    window.HaxStore.instance._isSandboxed &&
+    globalThis.HaxStore &&
+    globalThis.HaxStore.instance &&
+    globalThis.HaxStore.instance._isSandboxed &&
     tag === "iframe"
   ) {
     tag = "webview";
   }
-  var frag = document.createElement(tag);
+  var frag = globalThis.document.createElement(tag);
   frag.innerHTML = content;
   // clone the fragment which will force an escalation to full node
   var newNode = frag.cloneNode(true);
@@ -803,13 +803,13 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
   // support sandboxed environments which
   // will hate iframe tags but love webview
   let tag = node.tagName.toLowerCase();
-  if (window.HaxStore && window.HaxStore.instance && window.HaxStore.instance._isSandboxed && tag === "iframe") {
+  if (globalThis.HaxStore && globalThis.HaxStore.instance && globalThis.HaxStore.instance._isSandboxed && tag === "iframe") {
     tag = "webview";
   }
   let slotContent = '';
   // if hax store around, allow it to get slot content of the node
-  if (window.HaxStore && window.HaxStore.instance) {
-    slotContent = await window.HaxStore.instance.getHAXSlot(node);
+  if (globalThis.HaxStore && globalThis.HaxStore.instance) {
+    slotContent = await globalThis.HaxStore.instance.getHAXSlot(node);
   }
   else {
     // if HAX isn't around, just return the innerHTML as a string for asignment to content
@@ -923,11 +923,11 @@ export {
 
 const debug = false;
 
-const validNodeTypes = [
-  Node.ELEMENT_NODE,
-  Node.TEXT_NODE,
-  Node.DOCUMENT_FRAGMENT_NODE,
-];
+const validNodeTypes = globalThis.Node ? [
+  globalThis.Node.ELEMENT_NODE,
+  globalThis.Node.TEXT_NODE,
+  globalThis.Node.DOCUMENT_FRAGMENT_NODE,
+] : [];
 function isValidNode(node) {
   return validNodeTypes.includes(node.nodeType);
 }
@@ -960,52 +960,6 @@ function findNode(s, parentNode, isLeft) {
 }
 
 /**
- * @param {function(!Event)} fn to add to selectionchange internals
- */
-const addInternalListener = (() => {
-  const testNode = document.createElement("div");
-  const testRoot = testNode.attachShadow({ mode: "open" });
-  if (testRoot.getSelection) {
-    // getSelection really exists, why are you using us?
-    document.addEventListener("selectionchange", (ev) => {
-      document.dispatchEvent(new CustomEvent("-shadow-selectionchange"));
-    });
-    return () => {};
-  }
-
-  let withinInternals = false;
-  const handlers = [];
-
-  document.addEventListener("selectionchange", (ev) => {
-    if (withinInternals) {
-      return;
-    }
-    document.dispatchEvent(new CustomEvent("-shadow-selectionchange"));
-    withinInternals = true;
-    window.setTimeout(() => {
-      withinInternals = false;
-    }, 0);
-    handlers.forEach((fn) => fn(ev));
-  });
-
-  return (fn) => handlers.push(fn);
-})();
-
-let wasCaret = false;
-let resolveTask = null;
-addInternalListener((ev) => {
-  const s = window.getSelection();
-  if (s.type === "Caret") {
-    wasCaret = true;
-  } else if (wasCaret && !resolveTask) {
-    resolveTask = Promise.resolve(true).then(() => {
-      wasCaret = false;
-      resolveTask = null;
-    });
-  }
-});
-
-/**
  * detect if an element is currently in the viewport / visible
  * @param {Node} el
  * @returns Boolean
@@ -1014,8 +968,8 @@ export function isElementInViewport(
   el,
   bounds = {
     top: 0,
-    right: window.innerWidth,
-    bottom: window.innerHeight,
+    right: globalThis.innerWidth,
+    bottom: globalThis.innerHeight,
     left: 0,
   }
 ) {
@@ -1065,7 +1019,7 @@ function getSelectionDirection(s, leftNode, rightNode) {
   const initialSize = measure();
   debug && console.info(`initial selection: "${s.toString()}"`);
 
-  if (initialSize === 1 && wasCaret && leftNode === rightNode) {
+  if (initialSize === 1 && leftNode === rightNode) {
     // nb. We need to reset a single selection as Safari _always_ tells us the cursor was dragged
     // left to right (maybe RTL on those devices).
     // To be fair, Chrome has the same bug.
@@ -1212,7 +1166,7 @@ export function getRange(root) {
     return thisFrame;
   }
 
-  const initialText = window.getSelection().toString();
+  const initialText = globalThis.getSelection().toString();
   const result = internalGetShadowSelection(root);
   const rs = (result && result.range && result.range.toString()) || null;
   if (rs !== null && rs !== initialText) {
@@ -1227,18 +1181,17 @@ export function getRange(root) {
   }
 
   cachedRange.set(root, result.range);
-  window.setTimeout(() => {
+  globalThis.setTimeout(() => {
     cachedRange.delete(root);
   }, 0);
   debug && console.debug("getRange got", result);
   return result.range;
 }
 
-const fakeSelectionNode = document.createTextNode("");
 export function internalGetShadowSelection(root) {
-  const range = document.createRange();
-
-  const s = window.getSelection();
+  const fakeSelectionNode = globalThis.document.createTextNode("");
+  const range = globalThis.document.createRange();
+  const s = globalThis.getSelection();
   if (s && root.host && !s.containsNode(root.host, true)) {
     return { range: null, mode: "none" };
   }

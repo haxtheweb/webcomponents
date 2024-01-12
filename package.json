@@ -74,7 +74,7 @@
     "turndown": "7.1.1",
     "sharp": "0.30.6",
     "markdown-it": "13.0.1",
-    "@lit-labs/ssr": "3.2.0",
+    "@lit-labs/ssr": "3.2.1",
     "stream": "0.0.2",
     "node-fetch": "3.2.10",
     "base64-arraybuffer": "1.0.2",

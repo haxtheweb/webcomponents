@@ -10,9 +10,9 @@ import { ResizeObserver } from "@juggle/resize-observer";
  * @demo ./index.html
  */
 
-window.ResponsiveUtility = {};
+globalThis.ResponsiveUtility = {};
 
-window.ResponsiveUtility.instance = null;
+globalThis.ResponsiveUtility.instance = null;
 class ResponsiveUtility extends LitElement {
   render() {
     return html` <slot></slot> `;
@@ -40,13 +40,13 @@ class ResponsiveUtility extends LitElement {
     detail.observer = this._getObserver(detail);
     detail.observer.observe(detail.element);
     this.details.push(detail);
-    window.ResponsiveUtility.setSize(detail);
+    globalThis.ResponsiveUtility.setSize(detail);
   }
 
   _getObserver(detail) {
     return new ResizeObserver((en) =>
       en.forEach((e) =>
-        window.ResponsiveUtility.setSize(
+      globalThis.ResponsiveUtility.setSize(
           detail,
           e.contentBoxSize || e.borderBoxSize || e.contentRect || e.target
             ? e.target.offsetWidth
@@ -85,18 +85,18 @@ class ResponsiveUtility extends LitElement {
   constructor() {
     super();
     this.details = [];
-    window.addEventListener(
+    globalThis.addEventListener(
       "responsive-element",
       this.responiveElementEvent.bind(this)
     );
 
     /* handle element deregistration */
-    window.addEventListener(
+    globalThis.addEventListener(
       "delete-responsive-element",
       this.deleteResponiveElementEvent.bind(this)
     );
-    if (window.ResponsiveUtility.instance == null)
-      window.ResponsiveUtility.instance = this;
+    if (globalThis.ResponsiveUtility.instance == null)
+    globalThis.ResponsiveUtility.instance = this;
   }
 }
 customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
@@ -105,12 +105,12 @@ export { ResponsiveUtility };
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.ResponsiveUtility.requestAvailability = () => {
-  if (window.ResponsiveUtility.instance == null) {
-    window.ResponsiveUtility.instance =
-      document.createElement("responsive-utility");
+globalThis.ResponsiveUtility.requestAvailability = () => {
+  if (globalThis.ResponsiveUtility.instance == null) {
+    globalThis.ResponsiveUtility.instance =
+      globalThis.document.createElement("responsive-utility");
   }
-  document.body.appendChild(window.ResponsiveUtility.instance);
+  globalThis.document.body.appendChild(globalThis.ResponsiveUtility.instance);
 };
 /**
  * Sets responsive size based on detail provided by reponsive element
@@ -123,7 +123,7 @@ window.ResponsiveUtility.requestAvailability = () => {
  *   "xl": (optional custom xl breakpoint, default is 1800),
  * }
  */
-window.ResponsiveUtility.setSize = (detail, width = 0) => {
+globalThis.ResponsiveUtility.setSize = (detail, width = 0) => {
   let size,
     el = detail.element,
     attr = detail.attribute,

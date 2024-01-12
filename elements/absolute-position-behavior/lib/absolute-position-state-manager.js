@@ -5,19 +5,19 @@
 import { LitElement } from "lit";
 
 // register globally so we can make sure there is only one
-window.AbsolutePositionStateManager = window.AbsolutePositionStateManager || {};
+globalThis.AbsolutePositionStateManager = globalThis.AbsolutePositionStateManager || {};
 // request if this exists. This helps invoke element existing in dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through same modal
-window.AbsolutePositionStateManager.requestAvailability = () => {
-  if (!window.AbsolutePositionStateManager.instance) {
-    window.AbsolutePositionStateManager.instance = document.createElement(
+globalThis.AbsolutePositionStateManager.requestAvailability = () => {
+  if (!globalThis.AbsolutePositionStateManager.instance && globalThis.document) {
+    globalThis.AbsolutePositionStateManager.instance = globalThis.document.createElement(
       "absolute-position-state-manager"
     );
-    let instance = window.AbsolutePositionStateManager.instance;
-    document.body.appendChild(instance);
+    let instance = globalThis.AbsolutePositionStateManager.instance;
+    globalThis.document.body.appendChild(instance);
   }
-  return window.AbsolutePositionStateManager.instance;
+  return globalThis.AbsolutePositionStateManager.instance;
 };
 /**
  * `absolute-position-state-manager`
@@ -94,10 +94,10 @@ class AbsolutePositionStateManager extends LitElement {
       });
       this.updateElements();
       this.windowControllers = new AbortController();
-      document.addEventListener("load", this.updateElements.bind(this), {
+      globalThis.document.addEventListener("load", this.updateElements.bind(this), {
         signal: this.windowControllers.signal,
       });
-      window.addEventListener("resize", this._handleResize.bind(this), {
+      globalThis.addEventListener("resize", this._handleResize.bind(this), {
         signal: this.windowControllers.signal,
       });
     }
@@ -124,7 +124,7 @@ class AbsolutePositionStateManager extends LitElement {
   _handleScroll() {
     if (this.__timeout2) clearTimeout(this.__timeout2);
     this.__timeout2 = setTimeout(
-      window.AbsolutePositionStateManager.instance.updateStickyElements(),
+      globalThis.AbsolutePositionStateManager.instance.updateStickyElements(),
       1000
     );
   }
@@ -135,7 +135,7 @@ class AbsolutePositionStateManager extends LitElement {
   _handleResize() {
     if (this.__timeout) clearTimeout(this.__timeout);
     this.__timeout = setTimeout(
-      window.AbsolutePositionStateManager.instance.updateElements(),
+      globalThis.AbsolutePositionStateManager.instance.updateElements(),
       250
     );
   }
@@ -165,7 +165,7 @@ class AbsolutePositionStateManager extends LitElement {
     if (update) {
       if (this.__timeout) clearTimeout(this.__timeout);
       this.__timeout = setTimeout(
-        window.AbsolutePositionStateManager.instance.updateElements(),
+        globalThis.AbsolutePositionStateManager.instance.updateElements(),
         250
       );
     }
@@ -298,7 +298,7 @@ class AbsolutePositionStateManager extends LitElement {
     //target width before getting other dimensions
     if (el.justify) el.style.width = `${t.width}px`;
     //get body, parent, and element dimensions
-    let w = document.body.getBoundingClientRect(),
+    let w = globalThis.document.body.getBoundingClientRect(),
       p = parent.getBoundingClientRect(),
       e = el.getBoundingClientRect(),
       //optional offset property
@@ -345,12 +345,12 @@ class AbsolutePositionStateManager extends LitElement {
           //determine whether overflowed content should be part of height/width calculations
           eh =
             !el.allowOverlap &&
-            window.getComputedStyle(el, null).overflowY == "visible"
+            globalThis.getComputedStyle(el, null).overflowY == "visible"
               ? Math.max(e.height, el.scrollHeight)
               : e.height,
           ew =
             !el.allowOverlap &&
-            window.getComputedStyle(el, null).overflowX == "visible"
+            globalThis.getComputedStyle(el, null).overflowX == "visible"
               ? Math.max(e.width, el.scrollWidth)
               : e.width;
         //calculate coordinate based on position property,
@@ -398,13 +398,13 @@ class AbsolutePositionStateManager extends LitElement {
     //if element is sticky, adjust top posiiton accordingly
     if (el.sticky) {
       let scrollTop =
-          window.pageYOffset ||
+      globalThis.pageYOffset ||
           (
-            document.documentElement ||
-            document.body.parentNode ||
-            document.body
+            globalThis.document.documentElement ||
+            globalThis.document.body.parentNode ||
+            globalThis.document.body
           ).scrollTop,
-        maxH = window.innerHeight,
+        maxH = globalThis.innerHeight,
         eheight =
           e.height === 0 && el.children && el.children[0]
             ? el.children[0].offsetHeight
