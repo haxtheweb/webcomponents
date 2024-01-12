@@ -559,11 +559,13 @@ class PageContentsMenu extends LitElement {
           let objItem = this.contentContainer.querySelector(
             "#" + this.items[0].id
           );
-          // if we are ABOVE the 1st item, assume top; otherwise it's end
-          if (objItem.getBoundingClientRect().top >= browserViewport) {
-            this.items[0].active = "active";
-          } else {
-            this.items[this.items.length - 1].active = "active";
+          if (objItem) {
+            // if we are ABOVE the 1st item, assume top; otherwise it's end
+            if (objItem.getBoundingClientRect().top >= browserViewport) {
+              this.items[0].active = "active";
+            } else {
+              this.items[this.items.length - 1].active = "active";
+            }
           }
         } catch (e) {
           console.log(e);

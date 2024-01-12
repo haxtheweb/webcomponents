@@ -455,7 +455,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
       // wipe out what we got
       wipeSlot(this, "*");
+      console.log(newValue);
       store.themeElement = document.createElement(newValue);
+      console.log(store.themeElement);
       // apply a class so that we can write generic CSS selectors in integrations
       store.themeElement.classList.add("haxcms-theme-element");
       this.appendChild(store.themeElement);

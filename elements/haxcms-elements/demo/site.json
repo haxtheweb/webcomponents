@@ -13,7 +13,7 @@
     },
     "site": {
       "name": "btopro",
-      "logo": "https://oer.courses.science.psu.edu/assets/images/theme-images/odl-logo.png",
+      "logo": "assets/apple-icon copy.png",
       "settings": {
         "lang": "en-US",
         "publishPagesOn": true,
@@ -32,12 +32,12 @@
       "static": {}
     },
     "theme": {
-      "element": "clean-one",
+      "element": "haxor-slevin",
       "path": "@lrnwebcomponents/training-theme/training-theme.js",
       "name": "training theme",
       "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
-        "image": "https://oer.courses.science.psu.edu/assets/images/theme-images/oer-homepage-banner.jpg",
+        "image": "assets/apple-icon copy.png",
         "imageAlt": "",
         "imageLink": "",
         "hexCode": "#e2801e",
@@ -354,7 +354,7 @@
         "locked": false,
         "readtime": 4,
         "relatedItems": "item-4a18ebe0-cf6a-49cd-9531-4c430ba2a9e0,item-1235ea3a-9254-4b93-8df3-8909fddcce88,item-e0c25c63-ad3e-421e-8fd2-86cd5516d3a2",
-        "image": "https://images-assets.nasa.gov/image/2011-3753/2011-3753~thumb.jpg",
+        "image": "assets/apple-icon copy.png",
         "tags": "hax"
       }
     },
