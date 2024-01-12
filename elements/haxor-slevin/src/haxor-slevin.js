@@ -351,11 +351,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
                   accent-color="${this.color}"
                   accent-heading
                   horizontal
-                  image-src="${this._showImage(
-                    post.metadata && post.metadata.image
-                      ? post.metadata.image
-                      : false
-                  )}"
+                  image-src="${(post.metadata && post.metadata.image) ? post.metadata.image : this.image}"
                 >
                   <div slot="heading"><span>${post.title}</span></div>
                   <p slot="content">
@@ -407,11 +403,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
                     accent-color="${this.color}"
                     accent-heading
                     horizontal
-                    image-src="${this._showImage(
-                      post.metadata && post.metadata.image
-                        ? post.metadata.image
-                        : false
-                    )}"
+                    image-src="${(post.metadata && post.metadata.image) ? post.metadata.image : this.image}"
                   >
                     <div slot="heading">${post.title}</div>
                     <div slot="subheading">
@@ -519,7 +511,9 @@ class HaxorSlevin extends HAXCMSRememberRoute(
     ) {
       const ids = this.activeItem.metadata.relatedItems.split(",");
       ids.map((id) => {
-        posts.push(store.findItem(id));
+        if (store.findItem(id)) {
+          posts.push(toJS(store.findItem(id)));
+        }
       });
     } else {
       posts = e.detail.value;
@@ -534,8 +528,10 @@ class HaxorSlevin extends HAXCMSRememberRoute(
       },
       selectedPage: {
         type: Number,
-        reflect: true,
         attribute: "selected-page",
+      },
+      activeManifestIndexCounter: {
+        type: Number,
       },
       activeItem: {
         type: Object,
@@ -585,42 +581,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
     this.__followUpPosts = [];
     this.activeItem = {};
     this.selectedPage = 0;
-    autorun((reaction) => {
-      let location = toJS(store.location);
-      this._noticeLocationChange(location);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      let manifest = toJS(store.manifest);
-      this.color = this._getColor(manifest);
-      this.title = varGet(manifest, "title", "");
-      this.image = varGet(
-        manifest,
-        "metadata.theme.variables.image",
-        "assets/banner.jpg"
-      );
-      this.icon = varGet(
-        manifest,
-        "metadata.theme.variables.icon",
-        "icons:record-voice-over"
-      );
-      this.author = varGet(manifest, "metadata.author", {});
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeTitle = toJS(store.activeTitle);
-      this.shareUrl = document.location.href;
-      this.shareMsg = this.activeTitle + " " + this.shareUrl;
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeItem = toJS(store.activeItem);
-      this.__disposer.push(reaction);
-    });
+    this.activeManifestIndexCounter = 0;
   }
   /**
    * LitElement shadowDom ready
@@ -661,15 +622,6 @@ class HaxorSlevin extends HAXCMSRememberRoute(
       }
     });
   }
-  _showImage(image) {
-    if (image) {
-      return image;
-    }
-    if (this.image) {
-      return this.image;
-    }
-    return false;
-  }
   /**
    * Listen for router location changes and select page to match
    */
@@ -693,6 +645,45 @@ class HaxorSlevin extends HAXCMSRememberRoute(
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
     }, 50);
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    autorun((reaction) => {
+      let location = toJS(store.location);
+      this._noticeLocationChange(location);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      let manifest = toJS(store.manifest);
+      this.color = this._getColor(manifest);
+      this.title = varGet(manifest, "title", "");
+      this.image = varGet(
+        manifest,
+        "metadata.theme.variables.image",
+        "assets/banner.jpg"
+      );
+      this.icon = varGet(
+        manifest,
+        "metadata.theme.variables.icon",
+        "icons:record-voice-over"
+      );
+      this.author = varGet(manifest, "metadata.author", {});
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.activeTitle = toJS(store.activeTitle);
+      this.shareUrl = document.location.href;
+      this.shareMsg = this.activeTitle + " " + this.shareUrl;
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.activeItem = toJS(store.activeItem);
+      this.__disposer.push(reaction);
+    });
   }
   /**
    * life cycle, element is removed from the DOM
