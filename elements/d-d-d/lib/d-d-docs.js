@@ -11,7 +11,7 @@ import { DDD } from "../d-d-d.js";
  * @element d-d-docs
  */
 export const styleGuideTopics = {
-  Headers: "Headers",
+  Typography: "Typography",
   FW: "FW",
   FS: "FS",
   BS: "BS",
@@ -36,9 +36,61 @@ class DDDocs extends DDD {
       options: { type: Array },
     };
   }
+  static get styles() {
+    return [...super.styles,
+      css`
+        /* used for demo */
+        .flex {
+          display: flex;
+        }
+        .grid-4 {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: var(--ddd-spacing-4);
+        }
+        .grid-3 {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--ddd-spacing-4);
+        }
+        .grid-2 {
+          display: grid;
+          grid-template-columns: 0.5fr 1.5fr;
+          gap: var(--ddd-spacing-4);
+        }
+        .spacing-demo {
+          display: grid;
+          height: 100%;
+        }
+        .font-beaverBlue {
+          color: var(--ddd-polaris-beaverBlue);
+        }
+        .bg-limestoneMaxLight {
+          background-color: var(--ddd-polaris-limestoneMaxLight);
+        }
+        .bg-potentialMidnight {
+          background-color: var(--ddd-polaris-potentialMidnight);
+        }
+        .bg-white {
+          background-color: var(--ddd-polaris-white);
+        }
+      `,
+    ];
+  }
 
-  renderHeaders() {
+  renderTypography() {
     return html`
+      <h1>Typography</h1>
+      <h2>Available Typefaces</h2>
+      <hr>
+      <p>Primary Font: <span class="fw-3">Roboto</span></p>
+      <p>Class: <span class="fw-3">ddd-font-primary</span></p>
+      <p>Weights: 400(regular),<span class="fw-2">500(medium)</span><span class="fw-3">700(bold)</span><span class="fw-4">900(black)</span></p>
+      
+      <div class="">
+        
+      </div>
+      <!--
       <h3 class="my-20 font-beaverBlue">Headers</h3>
       <h6>Default Header 6</h6>
       <h5>Default Header 5</h5>
@@ -48,6 +100,7 @@ class DDDocs extends DDD {
       <h1>Default Header 1</h1>
       <p>Default Body</p>
       <span class="ddd-nav">Default Navigation</span>
+      -->
     `;
   }
 
