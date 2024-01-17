@@ -342,12 +342,12 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener(
+    globalThis.addEventListener(
       "simple-tag-dragstart",
       this._handleGlobalTagDrag.bind(this),
       { signal: this.windowControllers.signal }
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "simple-tag-drop",
       this._handleGlobalTagDrop.bind(this),
       { signal: this.windowControllers.signal }

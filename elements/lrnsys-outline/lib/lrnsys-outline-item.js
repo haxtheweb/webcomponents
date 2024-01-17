@@ -499,7 +499,7 @@ class LrnsysOutlineItem extends PolymerElement {
     ) {
       return this.parentNode.parentNode.getSelection();
     }
-    return window.getSelection();
+    return globalThis.getSelection();
   }
 
   _onArrowUp() {

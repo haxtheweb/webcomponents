@@ -55,7 +55,7 @@ class RichTextEditorClipboard extends LitElement {
       this.__textarea.value = await navigator.clipboard.readText();
       this.__textarea.focus();
       this.__textarea.select();
-      document.execCommand("paste");
+      globalThis.document.execCommand("paste");
     }, 1);
   }
   get value() {
@@ -83,16 +83,16 @@ customElements.define(RichTextEditorClipboard.tag, RichTextEditorClipboard);
 export { RichTextEditorClipboard };
 
 // register globally so we can make sure there is only one
-window.RichTextEditorClipboard = window.RichTextEditorClipboard || {};
+globalThis.RichTextEditorClipboard = globalThis.RichTextEditorClipboard || {};
 // request if this exists. This helps invoke element existing in dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through same modal
-window.RichTextEditorClipboard.requestAvailability = () => {
-  if (!window.RichTextEditorClipboard.instance) {
-    window.RichTextEditorClipboard.instance = document.createElement(
+globalThis.RichTextEditorClipboard.requestAvailability = () => {
+  if (!globalThis.RichTextEditorClipboard.instance) {
+    globalThis.RichTextEditorClipboard.instance = globalThis.document.createElement(
       "rich-text-editor-clipboard"
     );
-    document.body.appendChild(window.RichTextEditorClipboard.instance);
+    globalThis.document.body.appendChild(globalThis.RichTextEditorClipboard.instance);
   }
-  return window.RichTextEditorClipboard.instance;
+  return globalThis.RichTextEditorClipboard.instance;
 };

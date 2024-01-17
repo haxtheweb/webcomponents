@@ -55,16 +55,16 @@ class HAXCMSBackendPHP extends LitElement {
    */
   firstUpdated(changedProperties) {
     setTimeout(() => {
-      if (window.appSettings) {
+      if (globalThis.appSettings) {
         let jwtlogin = this.shadowRoot.querySelector("#jwt");
-        jwtlogin.url = window.appSettings.login;
-        jwtlogin.refreshUrl = window.appSettings.refreshUrl;
-        jwtlogin.logoutUrl = window.appSettings.logout;
-        jwtlogin.redirectUrl = window.appSettings.redirectUrl;
+        jwtlogin.url = globalThis.appSettings.login;
+        jwtlogin.refreshUrl = globalThis.appSettings.refreshUrl;
+        jwtlogin.logoutUrl = globalThis.appSettings.logout;
+        jwtlogin.redirectUrl = globalThis.appSettings.redirectUrl;
         // allow setting in session driven environments
         // its not a real JWT but it drives the environment to operate correctly
-        if (window.appSettings.jwt) {
-          this.jwt = window.appSettings.jwt;
+        if (globalThis.appSettings.jwt) {
+          this.jwt = globalThis.appSettings.jwt;
         }
       }
       if (
@@ -79,7 +79,7 @@ class HAXCMSBackendPHP extends LitElement {
         // DO have a dynamic backend, we didn't get a hit on the JWT
         // meaning that we are in a dynamic environment but logged out
         // at the moment (or viewing a site we don't have authorization to)
-        window.dispatchEvent(
+        globalThis.dispatchEvent(
           new CustomEvent("haxcms-not-logged-in", {
             bubbles: true,
             composed: true,
@@ -142,33 +142,33 @@ class HAXCMSBackendPHP extends LitElement {
           // have JWT credentials but isn't actually published
           // we also need this here because PHP is the assumed
           // fallback backend
-          if (window.appSettings) {
+          if (globalThis.appSettings) {
             store.cmsSiteEditorAvailability();
             store.cmsSiteEditor.instance.jwt = this.jwt;
             store.jwt = this.jwt;
             store.cmsSiteEditor.instance.saveNodePath =
-              window.appSettings.saveNodePath;
+              globalThis.appSettings.saveNodePath;
             store.cmsSiteEditor.instance.saveManifestPath =
-              window.appSettings.saveManifestPath;
+              globalThis.appSettings.saveManifestPath;
             store.cmsSiteEditor.instance.saveOutlinePath =
-              window.appSettings.saveOutlinePath;
+              globalThis.appSettings.saveOutlinePath;
             store.cmsSiteEditor.instance.getSiteFieldsPath =
-              window.appSettings.getSiteFieldsPath;
+              globalThis.appSettings.getSiteFieldsPath;
             store.cmsSiteEditor.instance.getFormToken =
-              window.appSettings.getFormToken;
+              globalThis.appSettings.getFormToken;
             store.cmsSiteEditor.instance.publishSitePath =
-              window.appSettings.publishSitePath;
+              globalThis.appSettings.publishSitePath;
             store.cmsSiteEditor.instance.syncSitePath =
-              window.appSettings.syncSitePath;
+              globalThis.appSettings.syncSitePath;
             store.cmsSiteEditor.instance.revertSitePath =
-              window.appSettings.revertSitePath;
+              globalThis.appSettings.revertSitePath;
             store.cmsSiteEditor.instance.createNodePath =
-              window.appSettings.createNodePath;
+              globalThis.appSettings.createNodePath;
             store.cmsSiteEditor.instance.deleteNodePath =
-              window.appSettings.deleteNodePath;
+              globalThis.appSettings.deleteNodePath;
             store.cmsSiteEditor.instance.getUserDataPath =
-              window.appSettings.getUserDataPath;
-            store.cmsSiteEditor.instance.appStore = window.appSettings.appStore;
+              globalThis.appSettings.getUserDataPath;
+            store.cmsSiteEditor.instance.appStore = globalThis.appSettings.appStore;
           }
         },
         (e) => {

@@ -262,7 +262,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
   _saveSiteFieldsTap(e) {
     store.playSound("click");
     // fire event with details for saving
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("haxcms-save-site-data", {
         bubbles: true,
         composed: true,
@@ -271,7 +271,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
       })
     );
     setTimeout(() => {
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("simple-modal-hide", {
           bubbles: true,
           cancelable: true,
@@ -285,7 +285,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
    */
   _cancel(e) {
     store.playSound("error");
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,

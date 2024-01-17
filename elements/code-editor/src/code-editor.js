@@ -145,8 +145,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     this.hideLineNumbers = false;
     this.focused = false;
     // helps in local testing and some edge cases of CDNs
-    if (window.WCGlobalBasePath) {
-      this.libPath = window.WCGlobalBasePath;
+    if (globalThis.WCGlobalBasePath) {
+      this.libPath = globalThis.WCGlobalBasePath;
     } else {
       this.libPath = new URL("./../../", import.meta.url).href;
     }
@@ -203,10 +203,11 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   }
 
   getTheme(theme) {
-    let watch = window.matchMedia && theme == "auto",
-      dark = watch && window.matchMedia("(prefers-color-scheme: dark)").matches,
+    let watch = globalThis.matchMedia && theme == "auto",
+      dark =
+        watch && globalThis.matchMedia("(prefers-color-scheme: dark)").matches,
       light =
-        watch && window.matchMedia("(prefers-color-scheme: light)").matches,
+        watch && globalThis.matchMedia("(prefers-color-scheme: light)").matches,
       other = !theme || theme == "auto" ? "vs-dark" : theme,
       color = dark ? "vs-dark" : light ? "vs" : other;
     this.setAttribute("theme-colors", color);
@@ -355,7 +356,10 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
             },
           })
         );
-        if (this[propName] && !window.customElements.get("code-pen-button")) {
+        if (
+          this[propName] &&
+          !globalThis.customElements.get("code-pen-button")
+        ) {
           import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
         }
       }
@@ -391,7 +395,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return {
       title: title,
       html: editorValue,
-      head: `<script>window.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/";</script><script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>`,
+      head: `<script>globalThis.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/";</script><script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>`,
     };
   }
   /**

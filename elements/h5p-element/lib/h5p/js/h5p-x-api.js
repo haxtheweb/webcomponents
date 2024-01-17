@@ -1,4 +1,4 @@
-var H5P = (window.H5P = window.H5P || {});
+var H5P = (globalThis.H5P = globalThis.H5P || {});
 
 /**
  * The external event dispatcher. Others, outside of H5P may register and

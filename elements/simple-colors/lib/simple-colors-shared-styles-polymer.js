@@ -12,7 +12,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  * @element simple-colors-shared-styles-polymer
  */
 
-const StyleElement = document.createElement("dom-module");
+const StyleElement = globalThis.document.createElement("dom-module");
 
 // styles
 const css = html`

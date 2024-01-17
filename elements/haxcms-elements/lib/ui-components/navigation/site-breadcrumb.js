@@ -150,10 +150,10 @@ class SiteBreadcrumb extends LitElement {
         }
       }
       for (var i in items) {
-        let icon = document.createElement("simple-icon-lite");
+        let icon = globalThis.document.createElement("simple-icon-lite");
         icon.icon = "icons:chevron-right";
         if (items[i].slug != null) {
-          let button = document.createElement("button");
+          let button = globalThis.document.createElement("button");
           button.innerText = items[i].title;
           button.noink = true;
           // disable buttons if we ware editing
@@ -161,7 +161,7 @@ class SiteBreadcrumb extends LitElement {
             button.setAttribute("disabled", "disabled");
             this.shadowRoot.querySelector("#space").appendChild(button);
           } else {
-            let link = document.createElement("a");
+            let link = globalThis.document.createElement("a");
             link.setAttribute("href", items[i].slug);
             link.setAttribute("tabindex", "-1");
             link.setAttribute("itemprop", "url");
@@ -170,7 +170,7 @@ class SiteBreadcrumb extends LitElement {
           }
           this.shadowRoot.querySelector("#space").appendChild(icon);
         } else {
-          let span = document.createElement("span");
+          let span = globalThis.document.createElement("span");
           span.innerText = items[i].title;
           this.shadowRoot.querySelector("#space").appendChild(span);
         }

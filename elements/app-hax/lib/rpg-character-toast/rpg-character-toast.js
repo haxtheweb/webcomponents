@@ -286,12 +286,12 @@ export class RPGCharacterToast extends SimpleToastEl {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener(
+    globalThis.addEventListener(
       "rpg-character-toast-hide",
       this.hideSimpleToast.bind(this),
       { signal: this.windowControllers.signal }
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "rpg-character-toast-show",
       this.showSimpleToast.bind(this),
       { signal: this.windowControllers.signal }

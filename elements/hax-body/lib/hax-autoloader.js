@@ -128,19 +128,19 @@ class HaxAutoloader extends HAXElement(LitElement) {
             // this delivers locally or from remote
             // @todo need to support name spacing of packages so that we
             // don't assume they are all relative to lrnwebcomponents
-            if (!window.customElements.get(name)) {
+            if (!globalThis.customElements.get(name)) {
               let fileLocation;
               // attempt to load via dynamic import registry if we have one available
               // so that we have a better chance of success
               if (
-                window.WCAutoload &&
-                window.WCAutoload.requestAvailability() &&
-                window.WCAutoload.requestAvailability().registry.getPathToTag(
+                globalThis.WCAutoload &&
+                globalThis.WCAutoload.requestAvailability() &&
+                globalThis.WCAutoload.requestAvailability().registry.getPathToTag(
                   name
                 )
               ) {
                 fileLocation =
-                  window.WCAutoload.requestAvailability().registry.getPathToTag(
+                  globalThis.WCAutoload.requestAvailability().registry.getPathToTag(
                     name
                   );
               } else {
@@ -161,7 +161,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
               import(fileLocation)
                 .then((response) => {
                   // get the custom element definition we used to add that file
-                  let CEClass = window.customElements.get(name);
+                  let CEClass = globalThis.customElements.get(name);
                   if (!CEClass) {
                     console.error(
                       `${name} was not a valid custom element yet a load was attempted`
@@ -205,7 +205,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                 });
             } else {
               // get the custom element definition we used to add that file
-              let CEClass = window.customElements.get(name);
+              let CEClass = globalThis.customElements.get(name);
               if (!CEClass) {
                 console.error(
                   `${name} was not a valid custom element yet a load was attempted`
@@ -287,7 +287,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
           }
         }
       } else {
-        let tmpProps = document.createElement(name).getAttributeNames();
+        let tmpProps = globalThis.document.createElement(name).getAttributeNames();
         for (let i = 0; i < tmpProps.length; i++) {
           props.settings.configure.push({
             attribute: tmpProps[i],

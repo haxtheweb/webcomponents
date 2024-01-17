@@ -171,8 +171,8 @@ class RichTextEditorSource extends LitElement {
     this.id = "";
     import("@lrnwebcomponents/code-editor/code-editor.js");
     // sets instance to current instance
-    if (!window.RichTextEditorSource.instance) {
-      window.RichTextEditorSource.instance = this;
+    if (!globalThis.RichTextEditorSource.instance) {
+      globalThis.RichTextEditorSource.instance = this;
       return this;
     }
   }
@@ -211,7 +211,7 @@ class RichTextEditorSource extends LitElement {
       this.disabled = true;
       this.__codeEditorValue = "";
       this.innerHTML = this.__codeEditorValue;
-      document.body.append(this);
+      globalThis.document.body.append(this);
     } else {
       this.__toolbar = toolbar;
       this.__target = toolbar.target;
@@ -254,19 +254,19 @@ customElements.define(RichTextEditorSource.tag, RichTextEditorSource);
 export { RichTextEditorSource };
 
 // register globally so we can make sure there is only one
-window.RichTextEditorSource = window.RichTextEditorSource || {};
+globalThis.RichTextEditorSource = globalThis.RichTextEditorSource || {};
 // request if this exists. This helps invoke element existing in dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through same modal
-window.RichTextEditorSource.requestAvailability = () => {
-  if (!window.RichTextEditorSource.instance) {
-    window.RichTextEditorSource.instance = document.createElement(
+globalThis.RichTextEditorSource.requestAvailability = () => {
+  if (!globalThis.RichTextEditorSource.instance) {
+    globalThis.RichTextEditorSource.instance = globalThis.document.createElement(
       "rich-text-editor-source"
     );
-    window.RichTextEditorSource.stylesheet = document.createElement("style");
-    window.RichTextEditorSource.stylesheet.innerHTML = `rich-text-editor-source + [data-rich-text-editor-view-source-mode] { display: none }`;
-    document.body.appendChild(window.RichTextEditorSource.instance);
-    document.head.appendChild(window.RichTextEditorSource.stylesheet);
+    globalThis.RichTextEditorSource.stylesheet = globalThis.document.createElement("style");
+    globalThis.RichTextEditorSource.stylesheet.innerHTML = `rich-text-editor-source + [data-rich-text-editor-view-source-mode] { display: none }`;
+    globalThis.document.body.appendChild(globalThis.RichTextEditorSource.instance);
+    globalThis.document.head.appendChild(globalThis.RichTextEditorSource.stylesheet);
   }
-  return window.RichTextEditorSource.instance;
+  return globalThis.RichTextEditorSource.instance;
 };

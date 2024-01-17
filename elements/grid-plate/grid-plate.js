@@ -369,7 +369,7 @@ class GridPlate extends LitElement {
     this.layout = "1-1";
     this.layouts = new GridPlateLayoutOptions().layouts;
     this.responsiveSize = "xs";
-    window.ResponsiveUtility.requestAvailability();
+    globalThis.ResponsiveUtility.requestAvailability();
   }
   /**
    * LitElement render

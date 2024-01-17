@@ -57,7 +57,7 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     autorun((reaction) => {
       if (
         varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
-        !window.customElements.get("git-corner")
+        !globalThis.customElements.get("git-corner")
       ) {
         import("@lrnwebcomponents/git-corner/git-corner.js");
       }
@@ -70,7 +70,7 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
           store.activeItem.location;
         // 11ty has a very unique setting for source vs input
         // @note let's try to do this as little as possible..
-        if (window.HAXCMSContext == "11ty") {
+        if (globalThis.HAXCMSContext == "11ty") {
           filePath = filePath.replace("/src/./pages/", "/src/content/");
         }
         this.activeGitFileLink = filePath;

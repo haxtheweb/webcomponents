@@ -601,7 +601,7 @@ export const displayBehaviors = function (SuperClass) {
      * @param {string} the title of the media
      */
     download() {
-      let a = document.createElement("a"),
+      let a = globalThis.document.createElement("a"),
         title =
           this.downloadable && this.caption.trim() != ""
             ? `Table as CSV`
@@ -614,9 +614,9 @@ export const displayBehaviors = function (SuperClass) {
       );
       a.setAttribute("download", filename + ".txt");
       a.style.display = "none";
-      document.body.appendChild(a);
+      globalThis.document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
+      globalThis.document.body.removeChild(a);
 
       /**
        * Fires when transcript is printed
@@ -646,7 +646,7 @@ export const displayBehaviors = function (SuperClass) {
           : this.shadowRoot.querySelector("table"),
         print = !table
           ? false
-          : window.open(
+          : globalThis.open(
               "",
               "",
               "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status=0"
@@ -728,7 +728,7 @@ export const displayBehaviors = function (SuperClass) {
      * @returns {html}
      */
     getHTML(str = " ") {
-      this.__tempDiv = this.__tempDiv || document.createElement("template");
+      this.__tempDiv = this.__tempDiv || globalThis.document.createElement("template");
       this.__tempDiv.innerHTML = str;
       let temp = this.__tempDiv.content.cloneNode(true);
       return temp;
@@ -827,7 +827,7 @@ export const displayBehaviors = function (SuperClass) {
       ].join("");
       // allow response as a DOM node
       if (asNode) {
-        let div = document.createElement("div");
+        let div = globalThis.document.createElement("div");
         div.innerHTML = response;
         return div.querySelector("table");
       }
@@ -839,7 +839,7 @@ export const displayBehaviors = function (SuperClass) {
      * @returns {object} HTML object for managed table
      */
     getTableHTMLNode() {
-      let n = document.createElement("editable-table-display");
+      let n = globalThis.document.createElement("editable-table-display");
       // replicate values that we had previously so they get reflected back into DOM
       let props = this.getTableProperties();
       for (var i in props) {

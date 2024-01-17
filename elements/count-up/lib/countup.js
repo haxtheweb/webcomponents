@@ -123,7 +123,7 @@ var __assign =
         (this.options.separator = String(this.options.separator)),
         (this.useEasing = this.options.useEasing),
         "" === this.options.separator && (this.options.useGrouping = !1),
-        (this.el = "string" == typeof t ? document.getElementById(t) : t),
+        (this.el = "string" == typeof t ? globalThis.document.getElementById(t) : t),
         this.el
           ? this.printValue(this.startVal)
           : (this.error = "[CountUp] target is null or undefined");

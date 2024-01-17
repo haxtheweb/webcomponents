@@ -1,18 +1,18 @@
 // register globally so we can make sure there is only one
-window.PerformanceDetectManager = window.PerformanceDetectManager || {};
+globalThis.PerformanceDetectManager = globalThis.PerformanceDetectManager || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.PerformanceDetectManager.requestAvailability = () => {
-  if (!window.PerformanceDetectManager.instance) {
-    window.PerformanceDetectManager.instance =
-      document.createElement("performance-detect");
-    document.body.appendChild(window.PerformanceDetectManager.instance);
+globalThis.PerformanceDetectManager.requestAvailability = () => {
+  if (!globalThis.PerformanceDetectManager.instance) {
+    globalThis.PerformanceDetectManager.instance =
+      globalThis.document.createElement("performance-detect");
+    globalThis.document.body.appendChild(globalThis.PerformanceDetectManager.instance);
   }
-  return window.PerformanceDetectManager.instance;
+  return globalThis.PerformanceDetectManager.instance;
 };
 export const DeviceDetails =
-  window.PerformanceDetectManager.requestAvailability();
+  globalThis.PerformanceDetectManager.requestAvailability();
 class PerformanceDetect extends HTMLElement {
   constructor() {
     super();

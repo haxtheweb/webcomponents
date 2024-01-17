@@ -126,7 +126,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   }
   _updateActiveItemContent(data) {
     if (data) {
-      let tmp = document.createElement("div");
+      let tmp = globalThis.document.createElement("div");
       tmp.innerHTML = data;
       for (const node of tmp.childNodes) {
         this.nodeNormalizeIDs(node);
@@ -149,8 +149,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   }
   display404Error() {
     if (store.themeElement) {
-      let frag = document.createDocumentFragment();
-      let p = document.createElement("p");
+      let frag = globalThis.document.createDocumentFragment();
+      let p = globalThis.document.createElement("p");
       p.innerHTML = `<strong>${store.getInternalRoute()}</strong> ${
         this.t.couldNotBeLocated
       }. ${this.t.hereAreSomePossibleRemedies}
@@ -175,11 +175,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   // interenal routes supply their own component which we render
   renderInternalRoute() {
     if (store.themeElement) {
-      let frag = document.createDocumentFragment();
+      let frag = globalThis.document.createDocumentFragment();
       if (store.activeItem.component) {
         import(`../ui-components/routes/${store.activeItem.component}.js`).then(
           () => {
-            let el = document.createElement(store.activeItem.component);
+            let el = globalThis.document.createElement(store.activeItem.component);
             frag.appendChild(el);
             wipeSlot(store.themeElement, "*");
             store.themeElement.appendChild(frag);
@@ -455,7 +455,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
       // wipe out what we got
       wipeSlot(this, "*");
-      store.themeElement = document.createElement(newValue);
+      store.themeElement = globalThis.document.createElement(newValue);
       // apply a class so that we can write generic CSS selectors in integrations
       store.themeElement.classList.add("haxcms-theme-element");
       this.appendChild(store.themeElement);
@@ -473,11 +473,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // if we force reloads then let's do it now
         if (
           window &&
-          window.location &&
-          window.appSettings &&
-          window.appSettings.reloadOnError
+          globalThis.location &&
+          globalThis.appSettings &&
+          globalThis.appSettings.reloadOnError
         ) {
-          window.location.reload();
+          globalThis.location.reload();
         }
         store.toast(
           e.detail.value.status + " " + e.detail.value.statusText,
@@ -489,11 +489,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // if we force reloads then let's do it now
         if (
           window &&
-          window.location &&
-          window.appSettings &&
-          window.appSettings.reloadOnError
+          globalThis.location &&
+          globalThis.appSettings &&
+          globalThis.appSettings.reloadOnError
         ) {
-          window.location.reload();
+          globalThis.location.reload();
         }
       }
     }
@@ -549,17 +549,17 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         }
       }
     }
-    window.addEventListener("hax-store-ready", this.storeReady.bind(this), {
+    globalThis.addEventListener("hax-store-ready", this.storeReady.bind(this), {
       signal: this.windowControllers.signal,
     });
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdatedData.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-trigger-update-node",
       this._triggerUpdatedNode.bind(this),
       { signal: this.windowControllers.signal }
@@ -574,9 +574,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     autorun(() => {
       localStorageSet("app-hax-darkMode", toJS(store.darkMode));
       if (toJS(store.darkMode)) {
-        document.body.classList.add("dark-mode");
+        globalThis.document.body.classList.add("dark-mode");
       } else {
-        document.body.classList.remove("dark-mode");
+        globalThis.document.body.classList.remove("dark-mode");
       }
     });
     autorun(() => {
@@ -646,7 +646,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
 
     this.__ready = true;
     store.appReady = true;
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("haxcms-ready", {
         bubbles: true,
         composed: true,
@@ -662,13 +662,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       .then((response) => {
         import("./haxcms-toast.js");
 
-        this.editorBuilder = document.createElement("haxcms-editor-builder");
+        this.editorBuilder = globalThis.document.createElement("haxcms-editor-builder");
         // attach editor builder after we've appended to the screen
         if (this.parentNode) {
           this.parentNode.insertBefore(this.editorBuilder, this);
         }
         else {
-          document.body.appendChild(this.editorBuilder);
+          globalThis.document.body.appendChild(this.editorBuilder);
         }
         // get fresh data if not published / demo which is a form of published
         if (
@@ -684,14 +684,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         /* Error handling */
         console.warn(error);
       });
-    window.dispatchEvent(new Event("resize"));
+    globalThis.dispatchEvent(new Event("resize"));
     setTimeout(() => {
       autorun((reaction) => {
         this.themeData = toJS(store.themeData);
         if (this.themeData) {
           // special support for "format" in the URL dictating the possible output format
           // this is for a11y, mobile, print and other possible output modes
-          const urlParams = new URLSearchParams(window.location.search);
+          const urlParams = new URLSearchParams(globalThis.location.search);
           const format = urlParams.get("format");
           if (format != null) {
             switch (format) {
@@ -734,10 +734,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (
       store.cmsSiteEditor &&
       store.cmsSiteEditor.instance &&
-      window.HaxStore.requestAvailability().activeHaxBody &&
+      globalThis.HaxStore.requestAvailability().activeHaxBody &&
       store.activeItemContent
     ) {
-      window.HaxStore.requestAvailability().activeHaxBody.importContent(
+      globalThis.HaxStore.requestAvailability().activeHaxBody.importContent(
         store.activeItemContent
       );
     }
@@ -845,7 +845,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           }
           // if there are, dynamically import them but only if we don't have a global manager
           if (
-            !window.WCAutoload &&
+            !globalThis.WCAutoload &&
             varExists(this.manifest, "metadata.node.dynamicElementLoader")
           ) {
             let tagsFound = findTagsInHTML(html);
@@ -856,7 +856,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
               const tagName = tagsFound[i];
               if (
                 this.manifest.metadata.node.dynamicElementLoader[tagName] &&
-                !window.customElements.get(tagName)
+                !globalThis.customElements.get(tagName)
               ) {
                 // prettier-ignore
                 import(
@@ -871,9 +871,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
                   });
               }
             }
-          } else if (window.WCAutoload) {
+          } else if (globalThis.WCAutoload) {
             setTimeout(() => {
-              window.WCAutoload.process();
+              globalThis.WCAutoload.process();
             }, 0);
           }
         }, 5);
@@ -945,12 +945,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         this.themeLoaded = true;
       } else {
         // global will handle this
-        if (window.WCAutoload) {
+        if (globalThis.WCAutoload) {
           this.__imported[theme.element] = theme.element;
           this.themeLoaded = true;
           setTimeout(() => {
-            window.WCAutoload.process();
-            window.dispatchEvent(
+            globalThis.WCAutoload.process();
+            globalThis.dispatchEvent(
               new CustomEvent("haxcms-theme-ready", {
                 bubbles: true,
                 composed: true,
@@ -982,12 +982,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
 // this is only going to be visually enabled but it won't actually
 // be able to talk to the backend correctly bc the JWT won't exist
 // the endpoints are also fictional. also useful for testing purposes
-window.HAXme = function (context = null) {
+globalThis.HAXme = function (context = null) {
   if (context == null) {
     // fake a demo
     context = "demo";
     // fake endpoints
-    window.appSettings = {
+    globalThis.appSettings = {
       login: "dist/dev/login.json",
       logout: "dist/dev/logout.json",
       saveNodePath: "dist/dev/saveNode.json",
@@ -1016,14 +1016,14 @@ window.HAXme = function (context = null) {
     };
   }
   if (context == "demo") {
-    window.HAXCMSContext = "demo";
+    globalThis.HAXCMSContext = "demo";
   }
   // apply context
-  if (document.body) {
-    document.body.querySelector(
+  if (globalThis.document.body) {
+    globalThis.document.body.querySelector(
       "haxcms-editor-builder"
     ).__appliedContext = false;
-    document.body.querySelector("haxcms-editor-builder").applyContext(context);
+    globalThis.document.body.querySelector("haxcms-editor-builder").applyContext(context);
   }
 };
 

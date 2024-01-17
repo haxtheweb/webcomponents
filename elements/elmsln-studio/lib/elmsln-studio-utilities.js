@@ -293,7 +293,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
      * @returns {string} accent color
      */
     accentColor(str) {
-      let card = document.createElement("accent-card"),
+      let card = globalThis.document.createElement("accent-card"),
         colors = !card || !card.colors ? [""] : Object.keys(card.colors),
         i =
           str && str.charCodeAt(0)

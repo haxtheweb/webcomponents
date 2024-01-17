@@ -804,7 +804,7 @@ function OpenSeadragon(options) {
     };
 
   /**
-   * A crude way of determining if an object is a window.
+   * A crude way of determining if an object is a globalThis.
    * Taken from jQuery 1.6.1
    * @function isWindow
    * @memberof OpenSeadragon
@@ -900,7 +900,7 @@ function OpenSeadragon(options) {
    * @memberof OpenSeadragon
    */
   $.supportsCanvas = (function () {
-    var canvasElement = document.createElement("canvas");
+    var canvasElement = globalThis.document.createElement("canvas");
     return !!(
       $.isFunction(canvasElement.getContext) && canvasElement.getContext("2d")
     );
@@ -931,8 +931,8 @@ function OpenSeadragon(options) {
    */
   $.pixelDensityRatio = (function () {
     if ($.supportsCanvas) {
-      var context = document.createElement("canvas").getContext("2d");
-      var devicePixelRatio = window.devicePixelRatio || 1;
+      var context = globalThis.document.createElement("canvas").getContext("2d");
+      var devicePixelRatio = globalThis.devicePixelRatio || 1;
       var backingStoreRatio =
         context.webkitBackingStorePixelRatio ||
         context.mozBackingStorePixelRatio ||
@@ -1355,7 +1355,7 @@ function OpenSeadragon(options) {
        */
       getElement: function (element) {
         if (typeof element == "string") {
-          element = document.getElementById(element);
+          element = globalThis.document.getElementById(element);
         }
         return element;
       },
@@ -1450,14 +1450,14 @@ function OpenSeadragon(options) {
        * @param {Element|String} element
        * @returns {CSSStyle}
        */
-      getElementStyle: document.documentElement.currentStyle
+      getElementStyle: globalThis.document.documentElement.currentStyle
         ? function (element) {
             element = $.getElement(element);
             return element.currentStyle;
           }
         : function (element) {
             element = $.getElement(element);
-            return window.getComputedStyle(element, "");
+            return globalThis.getComputedStyle(element, "");
           },
 
       /**
@@ -1473,7 +1473,7 @@ function OpenSeadragon(options) {
           if (memo[property] !== undefined) {
             return memo[property];
           }
-          var style = document.createElement("div").style;
+          var style = globalThis.document.createElement("div").style;
           var result = null;
           if (style[property] !== undefined) {
             result = property;
@@ -1562,7 +1562,7 @@ function OpenSeadragon(options) {
           };
         } else {
           $.getEvent = function () {
-            return window.event;
+            return globalThis.event;
           };
         }
         return $.getEvent(event);
@@ -1592,12 +1592,12 @@ function OpenSeadragon(options) {
             event = $.getEvent(event);
             result.x =
               event.clientX +
-              document.body.scrollLeft +
-              document.documentElement.scrollLeft;
+              globalThis.document.body.scrollLeft +
+              globalThis.document.documentElement.scrollLeft;
             result.y =
               event.clientY +
-              document.body.scrollTop +
-              document.documentElement.scrollTop;
+              globalThis.document.body.scrollTop +
+              globalThis.document.documentElement.scrollTop;
 
             return result;
           };
@@ -1614,25 +1614,25 @@ function OpenSeadragon(options) {
        * @returns {OpenSeadragon.Point}
        */
       getPageScroll: function () {
-        var docElement = document.documentElement || {},
-          body = document.body || {};
+        var docElement = globalThis.document.documentElement || {},
+          body = globalThis.document.body || {};
 
-        if (typeof window.pageXOffset == "number") {
+        if (typeof globalThis.pageXOffset == "number") {
           $.getPageScroll = function () {
-            return new $.Point(window.pageXOffset, window.pageYOffset);
+            return new $.Point(globalThis.pageXOffset, globalThis.pageYOffset);
           };
         } else if (body.scrollLeft || body.scrollTop) {
           $.getPageScroll = function () {
             return new $.Point(
-              document.body.scrollLeft,
-              document.body.scrollTop
+              globalThis.document.body.scrollLeft,
+              globalThis.document.body.scrollTop
             );
           };
         } else if (docElement.scrollLeft || docElement.scrollTop) {
           $.getPageScroll = function () {
             return new $.Point(
-              document.documentElement.scrollLeft,
-              document.documentElement.scrollTop
+              globalThis.document.documentElement.scrollLeft,
+              globalThis.document.documentElement.scrollTop
             );
           };
         } else {
@@ -1649,9 +1649,9 @@ function OpenSeadragon(options) {
        * @returns {OpenSeadragon.Point}
        */
       setPageScroll: function (scroll) {
-        if (typeof window.scrollTo !== "undefined") {
+        if (typeof globalThis.scrollTo !== "undefined") {
           $.setPageScroll = function (scroll) {
-            window.scrollTo(scroll.x, scroll.y);
+            globalThis.scrollTo(scroll.x, scroll.y);
           };
         } else {
           var originalScroll = $.getPageScroll();
@@ -1661,30 +1661,30 @@ function OpenSeadragon(options) {
             return;
           }
 
-          document.body.scrollLeft = scroll.x;
-          document.body.scrollTop = scroll.y;
+          globalThis.document.body.scrollLeft = scroll.x;
+          globalThis.document.body.scrollTop = scroll.y;
           var currentScroll = $.getPageScroll();
           if (
             currentScroll.x !== originalScroll.x &&
             currentScroll.y !== originalScroll.y
           ) {
             $.setPageScroll = function (scroll) {
-              document.body.scrollLeft = scroll.x;
-              document.body.scrollTop = scroll.y;
+              globalThis.document.body.scrollLeft = scroll.x;
+              globalThis.document.body.scrollTop = scroll.y;
             };
             return;
           }
 
-          document.documentElement.scrollLeft = scroll.x;
-          document.documentElement.scrollTop = scroll.y;
+          globalThis.document.documentElement.scrollLeft = scroll.x;
+          globalThis.document.documentElement.scrollTop = scroll.y;
           currentScroll = $.getPageScroll();
           if (
             currentScroll.x !== originalScroll.x &&
             currentScroll.y !== originalScroll.y
           ) {
             $.setPageScroll = function (scroll) {
-              document.documentElement.scrollLeft = scroll.x;
-              document.documentElement.scrollTop = scroll.y;
+              globalThis.document.documentElement.scrollLeft = scroll.x;
+              globalThis.document.documentElement.scrollTop = scroll.y;
             };
             return;
           }
@@ -1697,30 +1697,30 @@ function OpenSeadragon(options) {
       },
 
       /**
-       * Determines the size of the browsers window.
+       * Determines the size of the browsers globalThis.
        * @function
        * @returns {OpenSeadragon.Point}
        */
       getWindowSize: function () {
-        var docElement = document.documentElement || {},
-          body = document.body || {};
+        var docElement = globalThis.document.documentElement || {},
+          body = globalThis.document.body || {};
 
-        if (typeof window.innerWidth == "number") {
+        if (typeof globalThis.innerWidth == "number") {
           $.getWindowSize = function () {
-            return new $.Point(window.innerWidth, window.innerHeight);
+            return new $.Point(globalThis.innerWidth, globalThis.innerHeight);
           };
         } else if (docElement.clientWidth || docElement.clientHeight) {
           $.getWindowSize = function () {
             return new $.Point(
-              document.documentElement.clientWidth,
-              document.documentElement.clientHeight
+              globalThis.document.documentElement.clientWidth,
+              globalThis.document.documentElement.clientHeight
             );
           };
         } else if (body.clientWidth || body.clientHeight) {
           $.getWindowSize = function () {
             return new $.Point(
-              document.body.clientWidth,
-              document.body.clientHeight
+              globalThis.document.body.clientWidth,
+              globalThis.document.body.clientHeight
             );
           };
         } else {
@@ -1784,7 +1784,7 @@ function OpenSeadragon(options) {
        * @returns {Element}
        */
       makeNeutralElement: function (tagName) {
-        var element = document.createElement(tagName),
+        var element = globalThis.document.createElement(tagName),
           style = element.style;
 
         style.background = "transparent none";
@@ -1996,12 +1996,12 @@ function OpenSeadragon(options) {
        * @param {Boolean} [useCapture]
        */
       addEvent: (function () {
-        if (window.addEventListener) {
+        if (globalThis.addEventListener) {
           return function (element, eventName, handler, useCapture) {
             element = $.getElement(element);
             element.addEventListener(eventName, handler, useCapture);
           };
-        } else if (window.attachEvent) {
+        } else if (globalThis.attachEvent) {
           return function (element, eventName, handler, useCapture) {
             element = $.getElement(element);
             element.attachEvent("on" + eventName, handler);
@@ -2021,12 +2021,12 @@ function OpenSeadragon(options) {
        * @param {Boolean} [useCapture]
        */
       removeEvent: (function () {
-        if (window.removeEventListener) {
+        if (globalThis.removeEventListener) {
           return function (element, eventName, handler, useCapture) {
             element = $.getElement(element);
             element.removeEventListener(eventName, handler, useCapture);
           };
-        } else if (window.detachEvent) {
+        } else if (globalThis.detachEvent) {
           return function (element, eventName, handler, useCapture) {
             element = $.getElement(element);
             element.detachEvent("on" + eventName, handler);
@@ -2122,7 +2122,7 @@ function OpenSeadragon(options) {
       },
 
       /**
-       * Retrieves the value of a url parameter from the window.location string.
+       * Retrieves the value of a url parameter from the globalThis.location string.
        * @function
        * @param {String} key
        * @returns {String} The value of the url parameter or null if no param matches.
@@ -2144,8 +2144,8 @@ function OpenSeadragon(options) {
       getUrlProtocol: function (url) {
         var match = url.match(/^([a-z]+:)\/\//i);
         if (match === null) {
-          // Relative URL, retrive the protocol from window.location
-          return window.location.protocol;
+          // Relative URL, retrive the protocol from globalThis.location
+          return globalThis.location.protocol;
         }
         return match[1].toLowerCase();
       },
@@ -2158,7 +2158,7 @@ function OpenSeadragon(options) {
        * @returns {XMLHttpRequest}
        */
       createAjaxRequest: function (local) {
-        // IE11 does not support window.ActiveXObject so we just try to
+        // IE11 does not support globalThis.ActiveXObject so we just try to
         // create one to see if it is supported.
         // See: http://msdn.microsoft.com/en-us/library/ie/dn423948%28v=vs.85%29.aspx
         var supportActiveX;
@@ -2170,7 +2170,7 @@ function OpenSeadragon(options) {
         }
 
         if (supportActiveX) {
-          if (window.XMLHttpRequest) {
+          if (globalThis.XMLHttpRequest) {
             $.createAjaxRequest = function (local) {
               if (local) {
                 return new ActiveXObject("Microsoft.XMLHTTP");
@@ -2182,7 +2182,7 @@ function OpenSeadragon(options) {
               return new ActiveXObject("Microsoft.XMLHTTP");
             };
           }
-        } else if (window.XMLHttpRequest) {
+        } else if (globalThis.XMLHttpRequest) {
           $.createAjaxRequest = function () {
             return new XMLHttpRequest();
           };
@@ -2307,9 +2307,9 @@ function OpenSeadragon(options) {
 
           request.onreadystatechange = function () {};
 
-          if (window.XDomainRequest) {
+          if (globalThis.XDomainRequest) {
             // IE9 or IE8 might as well try to use XDomainRequest
-            var xdr = new window.XDomainRequest();
+            var xdr = new globalThis.XDomainRequest();
             if (xdr) {
               xdr.onload = function (e) {
                 if ($.isFunction(onSuccess)) {
@@ -2366,9 +2366,9 @@ function OpenSeadragon(options) {
         var script,
           url = options.url,
           head =
-            document.head ||
-            document.getElementsByTagName("head")[0] ||
-            document.documentElement,
+            globalThis.document.head ||
+            globalThis.document.getElementsByTagName("head")[0] ||
+            globalThis.document.documentElement,
           jsonpCallback = options.callbackName || "openseadragon" + $.now(),
           previous = window[jsonpCallback],
           replace = "$1" + jsonpCallback + "$2",
@@ -2396,7 +2396,7 @@ function OpenSeadragon(options) {
           }
         };
 
-        script = document.createElement("script");
+        script = globalThis.document.createElement("script");
 
         //TODO: having an issue with async info requests
         if (undefined !== options.async || false !== options.async) {
@@ -2443,13 +2443,13 @@ function OpenSeadragon(options) {
       },
 
       /**
-       * Parses an XML string into a DOM Document.
+       * Parses an XML string into a DOM globalThis.document.
        * @function
        * @param {String} string
        * @returns {Document}
        */
       parseXml: function (string) {
-        if (window.DOMParser) {
+        if (globalThis.DOMParser) {
           $.parseXml = function (string) {
             var xmlDoc = null,
               parser;
@@ -2458,7 +2458,7 @@ function OpenSeadragon(options) {
             xmlDoc = parser.parseFromString(string, "text/xml");
             return xmlDoc;
           };
-        } else if (window.ActiveXObject) {
+        } else if (globalThis.ActiveXObject) {
           $.parseXml = function (string) {
             var xmlDoc = null;
 
@@ -2481,8 +2481,8 @@ function OpenSeadragon(options) {
        * @returns {Object}
        */
       parseJSON: function (string) {
-        if (window.JSON && window.JSON.parse) {
-          $.parseJSON = window.JSON.parse;
+        if (globalThis.JSON && globalThis.JSON.parse) {
+          $.parseJSON = globalThis.JSON.parse;
         } else {
           // Should only be used by IE8 in non standards mode
           $.parseJSON = function (string) {
@@ -2524,7 +2524,7 @@ function OpenSeadragon(options) {
     //document.location.hash = msg;
   };
 
-  $.console = window.console || {
+  $.console = globalThis.console || {
     log: nullfunction,
     debug: nullfunction,
     info: nullfunction,
@@ -2583,7 +2583,7 @@ function OpenSeadragon(options) {
         }
         break;
       case "Netscape":
-        if (window.addEventListener) {
+        if (globalThis.addEventListener) {
           if (ua.indexOf("Firefox") >= 0) {
             $.Browser.vendor = $.BROWSERS.FIREFOX;
             $.Browser.version = parseFloat(
@@ -2614,7 +2614,7 @@ function OpenSeadragon(options) {
     }
 
     // ignore '?' portion of query string
-    var query = window.location.search.substring(1),
+    var query = globalThis.location.search.substring(1),
       parts = query.split("&"),
       part,
       sep,
@@ -2747,8 +2747,8 @@ function OpenSeadragon(options) {
    * @returns {Element}
    */
   function getOffsetParent(element, isFixed) {
-    if (isFixed && element != document.body) {
-      return document.body;
+    if (isFixed && element != globalThis.document.body) {
+      return globalThis.document.body;
     } else {
       return element.offsetParent;
     }
@@ -2764,7 +2764,7 @@ function OpenSeadragon(options) {
     // expose as commonjs module
     module.exports = factory();
   } else {
-    // expose as window.OpenSeadragon
+    // expose as globalThis.openSeadragon
     root.OpenSeadragon = factory();
   }
 })(this, function () {
@@ -2837,73 +2837,73 @@ function OpenSeadragon(options) {
   };
 
   // check for native support
-  if (document.exitFullscreen) {
+  if (globalThis.document.exitFullscreen) {
     // W3C standard
     fullScreenApi.supportsFullScreen = true;
     fullScreenApi.getFullScreenElement = function () {
-      return document.fullscreenElement;
+      return globalThis.document.fullscreenElement;
     };
     fullScreenApi.requestFullScreen = function (element) {
       return element.requestFullscreen();
     };
     fullScreenApi.exitFullScreen = function () {
-      document.exitFullscreen();
+      globalThis.document.exitFullscreen();
     };
     fullScreenApi.fullScreenEventName = "fullscreenchange";
     fullScreenApi.fullScreenErrorEventName = "fullscreenerror";
-  } else if (document.msExitFullscreen) {
+  } else if (globalThis.document.msExitFullscreen) {
     // IE 11
     fullScreenApi.supportsFullScreen = true;
     fullScreenApi.getFullScreenElement = function () {
-      return document.msFullscreenElement;
+      return globalThis.document.msFullscreenElement;
     };
     fullScreenApi.requestFullScreen = function (element) {
       return element.msRequestFullscreen();
     };
     fullScreenApi.exitFullScreen = function () {
-      document.msExitFullscreen();
+      globalThis.document.msExitFullscreen();
     };
     fullScreenApi.fullScreenEventName = "MSFullscreenChange";
     fullScreenApi.fullScreenErrorEventName = "MSFullscreenError";
-  } else if (document.webkitExitFullscreen) {
+  } else if (globalThis.document.webkitExitFullscreen) {
     // Recent webkit
     fullScreenApi.supportsFullScreen = true;
     fullScreenApi.getFullScreenElement = function () {
-      return document.webkitFullscreenElement;
+      return globalThis.document.webkitFullscreenElement;
     };
     fullScreenApi.requestFullScreen = function (element) {
       return element.webkitRequestFullscreen();
     };
     fullScreenApi.exitFullScreen = function () {
-      document.webkitExitFullscreen();
+      globalThis.document.webkitExitFullscreen();
     };
     fullScreenApi.fullScreenEventName = "webkitfullscreenchange";
     fullScreenApi.fullScreenErrorEventName = "webkitfullscreenerror";
-  } else if (document.webkitCancelFullScreen) {
+  } else if (globalThis.document.webkitCancelFullScreen) {
     // Old webkit
     fullScreenApi.supportsFullScreen = true;
     fullScreenApi.getFullScreenElement = function () {
-      return document.webkitCurrentFullScreenElement;
+      return globalThis.document.webkitCurrentFullScreenElement;
     };
     fullScreenApi.requestFullScreen = function (element) {
       return element.webkitRequestFullScreen();
     };
     fullScreenApi.exitFullScreen = function () {
-      document.webkitCancelFullScreen();
+      globalThis.document.webkitCancelFullScreen();
     };
     fullScreenApi.fullScreenEventName = "webkitfullscreenchange";
     fullScreenApi.fullScreenErrorEventName = "webkitfullscreenerror";
-  } else if (document.mozCancelFullScreen) {
+  } else if (globalThis.document.mozCancelFullScreen) {
     // Firefox
     fullScreenApi.supportsFullScreen = true;
     fullScreenApi.getFullScreenElement = function () {
-      return document.mozFullScreenElement;
+      return globalThis.document.mozFullScreenElement;
     };
     fullScreenApi.requestFullScreen = function (element) {
       return element.mozRequestFullScreen();
     };
     fullScreenApi.exitFullScreen = function () {
-      document.mozCancelFullScreen();
+      globalThis.document.mozCancelFullScreen();
     };
     fullScreenApi.fullScreenEventName = "mozfullscreenchange";
     fullScreenApi.fullScreenErrorEventName = "mozfullscreenerror";
@@ -4155,7 +4155,7 @@ function OpenSeadragon(options) {
       // Only fire up the interval timer when there's gesture pointers to track
       if (trackerPoints.length === 1) {
         lastTime = $.now();
-        intervalId = window.setInterval(_doTracking, 50);
+        intervalId = globalThis.setInterval(_doTracking, 50);
       }
     };
 
@@ -4170,7 +4170,7 @@ function OpenSeadragon(options) {
           // Only run the interval timer if theres gesture pointers to track
           len--;
           if (len === 0) {
-            window.clearInterval(intervalId);
+            globalThis.clearInterval(intervalId);
           }
           break;
         }
@@ -4194,9 +4194,9 @@ function OpenSeadragon(options) {
    */
   $.MouseTracker.wheelEventName =
     ($.Browser.vendor == $.BROWSERS.IE && $.Browser.version > 8) ||
-    "onwheel" in document.createElement("div")
+    "onwheel" in globalThis.document.createElement("div")
       ? "wheel" // Modern browsers support 'wheel'
-      : document.onmousewheel !== undefined
+      : globalThis.document.onmousewheel !== undefined
       ? "mousewheel" // Webkit and IE support at least 'mousewheel'
       : "DOMMouseScroll"; // Assume old Firefox
 
@@ -4204,7 +4204,7 @@ function OpenSeadragon(options) {
    * Detect legacy mouse capture support.
    */
   $.MouseTracker.supportsMouseCapture = (function () {
-    var divElement = document.createElement("div");
+    var divElement = globalThis.document.createElement("div");
     return (
       $.isFunction(divElement.setCapture) &&
       $.isFunction(divElement.releaseCapture)
@@ -4230,10 +4230,10 @@ function OpenSeadragon(options) {
     $.MouseTracker.subscribeEvents.push("MozMousePixelScroll");
   }
 
-  // Note: window.navigator.pointerEnable is deprecated on IE 11 and not part of W3C spec.
+  // Note: globalThis.navigator.pointerEnable is deprecated on IE 11 and not part of W3C spec.
   if (
-    window.PointerEvent &&
-    (window.navigator.pointerEnabled || $.Browser.vendor !== $.BROWSERS.IE)
+    globalThis.PointerEvent &&
+    (globalThis.navigator.pointerEnabled || $.Browser.vendor !== $.BROWSERS.IE)
   ) {
     // IE11 and other W3C Pointer Event implementations (see http://www.w3.org/TR/pointerevents)
     $.MouseTracker.havePointerEvents = true;
@@ -4252,7 +4252,7 @@ function OpenSeadragon(options) {
       $.MouseTracker.maxTouchPoints = 0;
     }
     $.MouseTracker.haveMouseEnter = false;
-  } else if (window.MSPointerEvent && window.navigator.msPointerEnabled) {
+  } else if (globalThis.MSPointerEvent && globalThis.navigator.msPointerEnabled) {
     // IE10
     $.MouseTracker.havePointerEvents = true;
     $.MouseTracker.subscribeEvents.push(
@@ -4663,9 +4663,9 @@ function OpenSeadragon(options) {
         // We emulate mouse capture by hanging listeners on the document object.
         //    (Note we listen on the capture phase so the captured handlers will get called first)
         // eslint-disable-next-line no-use-before-define
-        if (isInIframe && canAccessEvents(window.top)) {
+        if (isInIframe && canAccessEvents(globalThis.top)) {
           $.addEvent(
-            window.top,
+            globalThis.top,
             eventParams.upName,
             eventParams.upHandler,
             true
@@ -4709,9 +4709,9 @@ function OpenSeadragon(options) {
         // We emulate mouse capture by hanging listeners on the document object.
         //    (Note we listen on the capture phase so the captured handlers will get called first)
         // eslint-disable-next-line no-use-before-define
-        if (isInIframe && canAccessEvents(window.top)) {
+        if (isInIframe && canAccessEvents(globalThis.top)) {
           $.removeEvent(
-            window.top,
+            globalThis.top,
             eventParams.upName,
             eventParams.upHandler,
             true
@@ -6633,7 +6633,7 @@ function OpenSeadragon(options) {
    */
   var isInIframe = (function () {
     try {
-      return window.self !== window.top;
+      return globalThis.self !== globalThis.top;
     } catch (e) {
       return true;
     }
@@ -7477,7 +7477,7 @@ function OpenSeadragon(options) {
       this.tileSources = [this.xmlPath];
     }
 
-    this.element = this.element || document.getElementById(this.id);
+    this.element = this.element || globalThis.document.getElementById(this.id);
     this.canvas = $.makeNeutralElement("div");
 
     this.canvas.className = "openseadragon-canvas";
@@ -7513,10 +7513,10 @@ function OpenSeadragon(options) {
     //Used for toggling between fullscreen and default container size
     //TODO: these can be closure private and shared across Viewer
     //      instances.
-    this.bodyWidth = document.body.style.width;
-    this.bodyHeight = document.body.style.height;
-    this.bodyOverflow = document.body.style.overflow;
-    this.docOverflow = document.documentElement.style.overflow;
+    this.bodyWidth = globalThis.document.body.style.width;
+    this.bodyHeight = globalThis.document.body.style.height;
+    this.bodyOverflow = globalThis.document.body.style.overflow;
+    this.docOverflow = globalThis.document.documentElement.style.overflow;
 
     this.innerTracker = new $.MouseTracker({
       element: this.canvas,
@@ -8158,9 +8158,9 @@ function OpenSeadragon(options) {
        * @fires OpenSeadragon.Viewer.event:full-page
        */
       setFullPage: function (fullPage) {
-        var body = document.body,
+        var body = globalThis.document.body,
           bodyStyle = body.style,
-          docStyle = document.documentElement.style,
+          docStyle = globalThis.document.documentElement.style,
           _this = this,
           nodes,
           i;
@@ -8453,7 +8453,7 @@ function OpenSeadragon(options) {
           $.addEvent(document, $.fullScreenEventName, onFullScreenChange);
           $.addEvent(document, $.fullScreenErrorEventName, onFullScreenChange);
 
-          $.requestFullScreen(document.body);
+          $.requestFullScreen(globalThis.document.body);
         } else {
           $.exitFullScreen();
         }
@@ -9464,7 +9464,7 @@ function OpenSeadragon(options) {
         this._hideMessage();
 
         var div = $.makeNeutralElement("div");
-        div.appendChild(document.createTextNode(message));
+        div.appendChild(globalThis.document.createTextNode(message));
 
         this.messageDiv = $.makeCenteredNode(div);
 
@@ -9714,7 +9714,7 @@ function OpenSeadragon(options) {
 
       element = $.getElement(overlay.id);
       if (!element) {
-        element = document.createElement("a");
+        element = globalThis.document.createElement("a");
         element.href = "#/overlay/" + id;
       }
       element.id = id;
@@ -9799,7 +9799,7 @@ function OpenSeadragon(options) {
     viewer.controlsShouldFade = true;
     viewer.controlsFadeBeginTime = $.now() + viewer.controlsFadeDelay;
 
-    window.setTimeout(function () {
+    globalThis.setTimeout(function () {
       scheduleControlsFade(viewer);
     }, viewer.controlsFadeDelay);
   }
@@ -10059,7 +10059,7 @@ function OpenSeadragon(options) {
   function onCanvasClick(event) {
     var gestureSettings;
 
-    var haveKeyboardFocus = document.activeElement == this.canvas;
+    var haveKeyboardFocus = globalThis.document.activeElement == this.canvas;
 
     // If we don't have keyboard focus, request it.
     if (!haveKeyboardFocus) {
@@ -10314,7 +10314,7 @@ function OpenSeadragon(options) {
   }
 
   function onCanvasExit(event) {
-    if (window.location != window.parent.location) {
+    if (globalThis.location != globalThis.parent.location) {
       $.MouseTracker.resetAllMouseTrackers();
     }
 
@@ -11029,7 +11029,7 @@ function OpenSeadragon(options) {
         }
       }
     } else {
-      this.element = document.getElementById(options.id);
+      this.element = globalThis.document.getElementById(options.id);
       options.controlOptions = {
         anchor: $.ControlAnchor.NONE,
         attachToViewer: false,
@@ -11189,7 +11189,7 @@ function OpenSeadragon(options) {
     });
 
     viewer.world.addHandler("item-index-change", function (event) {
-      window.setTimeout(function () {
+      globalThis.setTimeout(function () {
         var item = _this.world.getItemAt(event.previousIndex);
         _this.world.setItemIndex(item, event.newIndex);
       }, 1);
@@ -14601,7 +14601,7 @@ function OpenSeadragon(options) {
           ? this._image.naturalHeight
           : this._image.height;
 
-        var bigCanvas = document.createElement("canvas");
+        var bigCanvas = globalThis.document.createElement("canvas");
         var bigContext = bigCanvas.getContext("2d");
 
         bigCanvas.width = currentWidth;
@@ -14624,7 +14624,7 @@ function OpenSeadragon(options) {
         while (currentWidth >= 2 && currentHeight >= 2) {
           currentWidth = Math.floor(currentWidth / 2);
           currentHeight = Math.floor(currentHeight / 2);
-          var smallCanvas = document.createElement("canvas");
+          var smallCanvas = globalThis.document.createElement("canvas");
           var smallContext = smallCanvas.getContext("2d");
           smallCanvas.width = currentWidth;
           smallCanvas.height = currentHeight;
@@ -15115,7 +15115,7 @@ function OpenSeadragon(options) {
   function beginFading(button) {
     button.shouldFade = true;
     button.fadeBeginTime = $.now() + button.fadeDelay;
-    window.setTimeout(function () {
+    globalThis.setTimeout(function () {
       scheduleFade(button);
     }, button.fadeDelay);
   }
@@ -17005,7 +17005,7 @@ function OpenSeadragon(options) {
         self.finish(false);
       };
 
-      this.jobId = window.setTimeout(function () {
+      this.jobId = globalThis.setTimeout(function () {
         self.errorMsg = "Image load exceeded timeout (" + self.timeout + " ms)";
         self.finish(false);
       }, this.timeout);
@@ -17024,13 +17024,13 @@ function OpenSeadragon(options) {
             // BlobBuilder fallback adapted from
             // http://stackoverflow.com/questions/15293694/blob-constructor-browser-compatibility
             try {
-              blb = new window.Blob([request.response]);
+              blb = new globalThis.Blob([request.response]);
             } catch (e) {
               var BlobBuilder =
-                window.BlobBuilder ||
-                window.WebKitBlobBuilder ||
-                window.MozBlobBuilder ||
-                window.MSBlobBuilder;
+                globalThis.BlobBuilder ||
+                globalThis.WebKitBlobBuilder ||
+                globalThis.MozBlobBuilder ||
+                globalThis.MSBlobBuilder;
               if (e.name === "TypeError" && BlobBuilder) {
                 var bb = new BlobBuilder();
                 bb.append(request.response);
@@ -17044,7 +17044,7 @@ function OpenSeadragon(options) {
             }
             // Create a URL for the blob data and make it the source of the image object.
             // This will still trigger Image.onload to indicate a successful tile load.
-            var url = (window.URL || window.webkitURL).createObjectURL(blb);
+            var url = (globalThis.URL || globalThis.webkitURL).createObjectURL(blb);
             self.image.src = url;
           },
           error: function (request) {
@@ -17078,7 +17078,7 @@ function OpenSeadragon(options) {
       }
 
       if (this.jobId) {
-        window.clearTimeout(this.jobId);
+        globalThis.clearTimeout(this.jobId);
       }
 
       this.callback(this);
@@ -17874,7 +17874,7 @@ function OpenSeadragon(options) {
           //    element,
           //    element.prevNextSibling
           //);
-          document.body.appendChild(element);
+          globalThis.document.body.appendChild(element);
         }
       }
 
@@ -18552,7 +18552,7 @@ function OpenSeadragon(options) {
       var context = this.context;
       if (useSketch) {
         if (this.sketchCanvas === null) {
-          this.sketchCanvas = document.createElement("canvas");
+          this.sketchCanvas = globalThis.document.createElement("canvas");
           var sketchCanvasSize = this._calculateSketchCanvasSize();
           this.sketchCanvas.width = sketchCanvasSize.x;
           this.sketchCanvas.height = sketchCanvasSize.y;
@@ -20409,7 +20409,7 @@ function OpenSeadragon(options) {
     },
 
     /**
-     * Convert image coordinates to pixel coordinates relative to the window.
+     * Convert image coordinates to pixel coordinates relative to the globalThis.
      * Note: not accurate with multi-image.
      * @param {OpenSeadragon.Point} pixel
      * @returns {OpenSeadragon.Point}
@@ -20488,7 +20488,7 @@ function OpenSeadragon(options) {
     },
 
     /**
-     * Convert viewport coordinates to pixel coordinates relative to the window.
+     * Convert viewport coordinates to pixel coordinates relative to the globalThis.
      * @param {OpenSeadragon.Point} point
      * @returns {OpenSeadragon.Point}
      */
@@ -21268,7 +21268,7 @@ function OpenSeadragon(options) {
       },
 
       /**
-       * Convert image coordinates to pixel coordinates relative to the window.
+       * Convert image coordinates to pixel coordinates relative to the globalThis.
        * @param {OpenSeadragon.Point} pixel
        * @returns {OpenSeadragon.Point}
        */
@@ -22362,7 +22362,7 @@ function OpenSeadragon(options) {
       finish();
     } else {
       // Wait until after the update, in case caching unloads any tiles
-      window.setTimeout(finish, 1);
+      globalThis.setTimeout(finish, 1);
     }
   }
 
@@ -23038,7 +23038,7 @@ function OpenSeadragon(options) {
 
     getRenderedContext: function () {
       if (!this._renderedContext) {
-        var canvas = document.createElement("canvas");
+        var canvas = globalThis.document.createElement("canvas");
         canvas.width = this._image.width;
         canvas.height = this._image.height;
         this._renderedContext = canvas.getContext("2d");

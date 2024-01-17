@@ -146,7 +146,7 @@ export class AppHaxSiteLogin extends SimpleColors {
     const value = this.shadowRoot.querySelector("#password").value;
     // attempt login and wait for response from the jwt-login tag via
     // jwt-logged-in event @see _jwtLoggedIn
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("jwt-login-login", {
         composed: true,
         bubbles: true,
@@ -173,10 +173,10 @@ export class AppHaxSiteLogin extends SimpleColors {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
+    globalThis.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
       signal: this.windowControllers.signal,
     });
-    window.addEventListener(
+    globalThis.addEventListener(
       "jwt-login-login-failed",
       this._jwtLoginFailed.bind(this),
       { signal: this.windowControllers.signal }

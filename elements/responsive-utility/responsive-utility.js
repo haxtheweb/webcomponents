@@ -46,7 +46,7 @@ class ResponsiveUtility extends LitElement {
   _getObserver(detail) {
     return new ResizeObserver((en) =>
       en.forEach((e) =>
-      globalThis.ResponsiveUtility.setSize(
+        globalThis.ResponsiveUtility.setSize(
           detail,
           e.contentBoxSize || e.borderBoxSize || e.contentRect || e.target
             ? e.target.offsetWidth
@@ -96,7 +96,7 @@ class ResponsiveUtility extends LitElement {
       this.deleteResponiveElementEvent.bind(this)
     );
     if (globalThis.ResponsiveUtility.instance == null)
-    globalThis.ResponsiveUtility.instance = this;
+      globalThis.ResponsiveUtility.instance = this;
   }
 }
 customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
@@ -106,11 +106,12 @@ export { ResponsiveUtility };
  * Checks to see if there is an instance available, and if not appends one
  */
 globalThis.ResponsiveUtility.requestAvailability = () => {
-  if (globalThis.ResponsiveUtility.instance == null) {
+  if (globalThis.ResponsiveUtility.instance == null && globalThis.document) {
     globalThis.ResponsiveUtility.instance =
       globalThis.document.createElement("responsive-utility");
+    globalThis.document.body.appendChild(globalThis.ResponsiveUtility.instance);
   }
-  globalThis.document.body.appendChild(globalThis.ResponsiveUtility.instance);
+  return globalThis.ResponsiveUtility.instance;
 };
 /**
  * Sets responsive size based on detail provided by reponsive element

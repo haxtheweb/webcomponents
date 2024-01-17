@@ -56,9 +56,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
       this.author = manifest.author;
       this.__disposer.push(reaction);
     });
-    document.body.style.backgroundColor = "#000000";
-    document.body.style.color = "#D2D2D2";
-    document.body.style.backgroundImage = `url(${
+    globalThis.document.body.style.backgroundColor = "#000000";
+    globalThis.document.body.style.color = "#D2D2D2";
+    globalThis.document.body.style.backgroundImage = `url(${
       new URL("assets/header.jpg", import.meta.url).href
     }/../productionzbg.jpg)`;
   }
@@ -319,11 +319,11 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.__link = document.createElement("link");
+    this.__link = globalThis.document.createElement("link");
     this.__link.rel = "stylesheet";
     this.__link.href =
       "https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans&family=Press+Start+2P&display=swap";
-    document.head.appendChild(this.__link);
+    globalThis.document.head.appendChild(this.__link);
   }
   /**
    * life cycle, element is removed from the DOM

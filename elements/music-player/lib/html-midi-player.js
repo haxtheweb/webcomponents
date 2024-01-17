@@ -1443,7 +1443,7 @@
           var e = t.split(".");
           return (
             (e = e[e.length - 1]),
-            "" !== document.createElement("audio").canPlayType("audio/" + e)
+            "" !== globalThis.document.createElement("audio").canPlayType("audio/" + e)
           );
         }),
         (s.default.loaded = function () {
@@ -22352,7 +22352,7 @@
                 });
               const r = "http://www.w3.org/2000/svg";
               function i(t, e, n, i, o, s, a = 1) {
-                const u = document.createElementNS(r, "path");
+                const u = globalThis.document.createElementNS(r, "path");
                 return (
                   u.setAttributeNS(null, "d", e),
                   u.setAttributeNS(
@@ -22366,7 +22366,7 @@
                 );
               }
               function o(t, e, n, i, o, s = !1, a = 1, u = 1) {
-                const c = document.createElementNS(r, "text");
+                const c = globalThis.document.createElementNS(r, "text");
                 c.setAttributeNS(null, "font-family", "Times"),
                   c.setAttributeNS(null, "font-size", o),
                   s && c.setAttributeNS(null, "font-weight", "bold"),
@@ -22375,17 +22375,17 @@
                     "transform",
                     `translate(${n}, ${i}) scale(${a}, ${u})`
                   );
-                const l = document.createTextNode(e);
+                const l = globalThis.document.createTextNode(e);
                 return c.appendChild(l), t.appendChild(c), c;
               }
               function s(t, e) {
-                const n = document.createElementNS(r, "g");
+                const n = globalThis.document.createElementNS(r, "g");
                 return n.setAttribute("data-id", e), t.appendChild(n), n;
               }
               function a(t, e = !1, n = 1, i = 0) {
                 let o = t.querySelector("animate");
                 if (!o) {
-                  (o = document.createElementNS(r, "animate")).setAttributeNS(
+                  (o = globalThis.document.createElementNS(r, "animate")).setAttributeNS(
                     null,
                     "attributeName",
                     "opacity"
@@ -22657,7 +22657,7 @@
                   (this.handleScrollEvent = (t) => {
                     (this.lastKnownScrollLeft = this.parentElement.scrollLeft),
                       this.ticking ||
-                        window.requestAnimationFrame(() => {
+                        globalThis.requestAnimationFrame(() => {
                           this.changeAndDrawSignaturesIfNeeded(
                             this.lastKnownScrollLeft
                           ),
@@ -22692,7 +22692,7 @@
                     this.div.removeChild(this.div.lastChild);
                   (this.div.style.overflow = "visible"),
                     (this.div.style.position = "relative"),
-                    (this.overlaySVG = document.createElementNS(
+                    (this.overlaySVG = globalThis.document.createElementNS(
                       i.SVGNS,
                       "svg"
                     )),
@@ -22704,7 +22704,7 @@
                     )),
                     (this.signaturesBlinking = !1),
                     (this.signaturesQuarters = 0),
-                    (this.parentElement = document.createElement("div")),
+                    (this.parentElement = globalThis.document.createElement("div")),
                     (this.parentElement.style.overflow = "auto"),
                     this.div.appendChild(this.parentElement),
                     (this.ticking = !1),
@@ -22713,7 +22713,7 @@
                       "scroll",
                       this.handleScrollEvent
                     ),
-                    (this.staffSVG = document.createElementNS(i.SVGNS, "svg")),
+                    (this.staffSVG = globalThis.document.createElementNS(i.SVGNS, "svg")),
                     this.parentElement.appendChild(this.staffSVG),
                     (this.staffG = Object(i.createSVGGroupChild)(
                       this.staffSVG,
@@ -23126,7 +23126,7 @@
                   const p =
                     t === this.overlayG || this.config.pixelsPerTimeStep > 0;
                   if (p) {
-                    (l = document.createElementNS(
+                    (l = globalThis.document.createElementNS(
                       i.SVGNS,
                       "rect"
                     )).setAttributeNS(null, "x", "" + e),
@@ -23135,7 +23135,7 @@
                       l.setAttributeNS(null, "height", "1"),
                       l.setAttribute("data-id", "background"),
                       t.appendChild(l);
-                    const n = document.defaultView.getComputedStyle(
+                    const n = globalThis.document.defaultView.getComputedStyle(
                       this.div.parentElement
                     );
                     l.setAttributeNS(
@@ -24775,7 +24775,7 @@
             super(t, n),
               (this.ctx = e.getContext("2d")),
               (this.parentElement = e.parentElement);
-            const r = window.devicePixelRatio || 1;
+            const r = globalThis.devicePixelRatio || 1;
             this.ctx &&
               ((this.ctx.canvas.width = r * this.width),
               (this.ctx.canvas.height = r * this.height),
@@ -24895,7 +24895,7 @@
           }
           drawNote(t, e, n, r, i, o, s) {
             if (!this.svg) return;
-            const a = document.createElementNS(
+            const a = globalThis.document.createElementNS(
               "http://www.w3.org/2000/svg",
               "rect"
             );
@@ -24972,7 +24972,7 @@
               this.draw();
           }
           setupDOM(t) {
-            (this.parentElement = document.createElement("div")),
+            (this.parentElement = globalThis.document.createElement("div")),
               this.parentElement.classList.add("waterfall-notes-container");
             const e = Math.max(t.getBoundingClientRect().height, 200);
             (this.parentElement.style.paddingTop =
@@ -24982,11 +24982,11 @@
               (this.parentElement.style.boxSizing = "border-box"),
               (this.parentElement.style.overflowX = "hidden"),
               (this.parentElement.style.overflowY = "auto"),
-              (this.svg = document.createElementNS(
+              (this.svg = globalThis.document.createElementNS(
                 "http://www.w3.org/2000/svg",
                 "svg"
               )),
-              (this.svgPiano = document.createElementNS(
+              (this.svgPiano = globalThis.document.createElementNS(
                 "http://www.w3.org/2000/svg",
                 "svg"
               )),
@@ -25116,7 +25116,7 @@
                   r++;
           }
           drawWhiteKey(t, e) {
-            const n = document.createElementNS(
+            const n = globalThis.document.createElementNS(
               "http://www.w3.org/2000/svg",
               "rect"
             );
@@ -25136,7 +25136,7 @@
             );
           }
           drawBlackKey(t, e) {
-            const n = document.createElementNS(
+            const n = globalThis.document.createElementNS(
               "http://www.w3.org/2000/svg",
               "rect"
             );
@@ -26558,30 +26558,30 @@
       t = !1;
     }
     function a() {
-      document.addEventListener("mousemove", c),
-        document.addEventListener("mousedown", c),
-        document.addEventListener("mouseup", c),
-        document.addEventListener("pointermove", c),
-        document.addEventListener("pointerdown", c),
-        document.addEventListener("pointerup", c),
-        document.addEventListener("touchmove", c),
-        document.addEventListener("touchstart", c),
-        document.addEventListener("touchend", c);
+      globalThis.document.addEventListener("mousemove", c),
+        globalThis.document.addEventListener("mousedown", c),
+        globalThis.document.addEventListener("mouseup", c),
+        globalThis.document.addEventListener("pointermove", c),
+        globalThis.document.addEventListener("pointerdown", c),
+        globalThis.document.addEventListener("pointerup", c),
+        globalThis.document.addEventListener("touchmove", c),
+        globalThis.document.addEventListener("touchstart", c),
+        globalThis.document.addEventListener("touchend", c);
     }
     function c(e) {
       (e.target.nodeName && "html" === e.target.nodeName.toLowerCase()) ||
         ((t = !1),
-        document.removeEventListener("mousemove", c),
-        document.removeEventListener("mousedown", c),
-        document.removeEventListener("mouseup", c),
-        document.removeEventListener("pointermove", c),
-        document.removeEventListener("pointerdown", c),
-        document.removeEventListener("pointerup", c),
-        document.removeEventListener("touchmove", c),
-        document.removeEventListener("touchstart", c),
-        document.removeEventListener("touchend", c));
+        globalThis.document.removeEventListener("mousemove", c),
+        globalThis.document.removeEventListener("mousedown", c),
+        globalThis.document.removeEventListener("mouseup", c),
+        globalThis.document.removeEventListener("pointermove", c),
+        globalThis.document.removeEventListener("pointerdown", c),
+        globalThis.document.removeEventListener("pointerup", c),
+        globalThis.document.removeEventListener("touchmove", c),
+        globalThis.document.removeEventListener("touchstart", c),
+        globalThis.document.removeEventListener("touchend", c));
     }
-    document.addEventListener(
+    globalThis.document.addEventListener(
       "keydown",
       function (n) {
         n.metaKey ||
@@ -26591,13 +26591,13 @@
       },
       !0
     ),
-      document.addEventListener("mousedown", u, !0),
-      document.addEventListener("pointerdown", u, !0),
-      document.addEventListener("touchstart", u, !0),
-      document.addEventListener(
+      globalThis.document.addEventListener("mousedown", u, !0),
+      globalThis.document.addEventListener("pointerdown", u, !0),
+      globalThis.document.addEventListener("touchstart", u, !0),
+      globalThis.document.addEventListener(
         "visibilitychange",
         function (e) {
-          "hidden" === document.visibilityState && (n && (t = !0), a());
+          "hidden" === globalThis.document.visibilityState && (n && (t = !0), a());
         },
         !0
       ),
@@ -26625,8 +26625,8 @@
             (e.target.classList.contains("focus-visible") ||
               e.target.hasAttribute("data-focus-visible-added")) &&
             ((n = !0),
-            window.clearTimeout(o),
-            (o = window.setTimeout(function () {
+            globalThis.clearTimeout(o),
+            (o = globalThis.setTimeout(function () {
               n = !1;
             }, 100)),
             (t = e.target).hasAttribute("data-focus-visible-added") &&
@@ -26638,23 +26638,23 @@
       e.nodeType === Node.DOCUMENT_FRAGMENT_NODE && e.host
         ? e.host.setAttribute("data-js-focus-visible", "")
         : e.nodeType === Node.DOCUMENT_NODE &&
-          (document.documentElement.classList.add("js-focus-visible"),
-          document.documentElement.setAttribute("data-js-focus-visible", ""));
+          (globalThis.document.documentElement.classList.add("js-focus-visible"),
+          globalThis.document.documentElement.setAttribute("data-js-focus-visible", ""));
   }
   if ("undefined" != typeof window && "undefined" != typeof document) {
     var t;
-    window.applyFocusVisiblePolyfill = e;
+    globalThis.applyFocusVisiblePolyfill = e;
     try {
       t = new CustomEvent("focus-visible-polyfill-ready");
     } catch (e) {
-      (t = document.createEvent("CustomEvent")).initCustomEvent(
+      (t = globalThis.document.createEvent("CustomEvent")).initCustomEvent(
         "focus-visible-polyfill-ready",
         !1,
         !1,
         {}
       );
     }
-    window.dispatchEvent(t);
+    globalThis.dispatchEvent(t);
   }
   "undefined" != typeof document && e(document);
 });
@@ -26704,7 +26704,7 @@
       });
     };
   }
-  var s = document.createElement("template");
+  var s = globalThis.document.createElement("template");
   function r(t) {
     var e = t < 0,
       i = (t = Math.floor(Math.abs(t || 0))) % 60,
@@ -26741,7 +26741,7 @@
     connectedCallback() {
       this.domInitialized ||
         ((this.domInitialized = !0),
-        (this.wrapper = document.createElement("div")),
+        (this.wrapper = globalThis.document.createElement("div")),
         this.appendChild(this.wrapper),
         this.initVisualizerNow());
     }
@@ -26750,7 +26750,7 @@
     }
     initVisualizer() {
       null == this.initTimeout &&
-        (this.initTimeout = window.setTimeout(() => this.initVisualizerNow()));
+        (this.initTimeout = globalThis.setTimeout(() => this.initVisualizerNow()));
     }
     initVisualizerNow() {
       var t = this;
@@ -26765,7 +26765,7 @@
         )
           if ("piano-roll" === t.type) {
             t.wrapper.classList.add("piano-roll-visualizer");
-            var i = document.createElementNS(
+            var i = globalThis.document.createElementNS(
               "http://www.w3.org/2000/svg",
               "svg"
             );
@@ -26780,7 +26780,7 @@
               ));
           else if ("staff" === t.type) {
             t.wrapper.classList.add("staff-visualizer");
-            var n = document.createElement("div");
+            var n = globalThis.document.createElement("div");
             t.wrapper.appendChild(n),
               (t.visualizer = new e.StaffSVGVisualizer(t.ns, n, t._config));
           }
@@ -26854,7 +26854,7 @@
     connectedCallback() {
       if (!this.domInitialized) {
         this.domInitialized = !0;
-        var t = window.applyFocusVisiblePolyfill;
+        var t = globalThis.applyFocusVisiblePolyfill;
         null != t && t(this.shadowRoot),
           this.playButton.addEventListener("click", () => {
             this.player.isPlaying() ? this.stop() : this.start();
@@ -26885,8 +26885,8 @@
         var n = () => {
           this.setVisualizerSelector(i);
         };
-        "loading" === document.readyState
-          ? window.addEventListener("DOMContentLoaded", n)
+        "loading" === globalThis.document.readyState
+          ? globalThis.addEventListener("DOMContentLoaded", n)
           : n();
       }
     }
@@ -26895,7 +26895,7 @@
         null == this.initTimeout &&
           (this.stop(),
           this.freeze(),
-          (this.initTimeout = window.setTimeout(() =>
+          (this.initTimeout = globalThis.setTimeout(() =>
             this.initPlayerNow(this.needInitNs)
           )));
     }
@@ -26995,7 +26995,7 @@
       for (var e of this.visualizerListeners.values())
         for (var i of l) this.removeEventListener(i, e[i]);
       if ((this.visualizerListeners.clear(), null != t))
-        for (var n of document.querySelectorAll(t))
+        for (var n of globalThis.document.querySelectorAll(t))
           n instanceof o
             ? this.addVisualizer(n)
             : console.warn(

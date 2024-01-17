@@ -147,14 +147,14 @@
     };
 
     /**
-     * This is a wrapper around document.querySelector that will return the query if it's already of type Node
+     * This is a wrapper around globalThis.document.querySelector that will return the query if it's already of type Node
      *
      * @memberof Chartist.Core
      * @param {String|Node} query The query to use for selecting a Node or a DOM node that will be returned directly
      * @return {Node}
      */
     Chartist.querySelector = function (query) {
-      return query instanceof Node ? query : document.querySelector(query);
+      return query instanceof Node ? query : globalThis.document.querySelector(query);
     };
 
     /**
@@ -1131,7 +1131,7 @@
       if (useForeignObject) {
         // We need to set width and height explicitly to px as span will not expand with width and height being
         // 100% in all browsers
-        var content = document.createElement("span");
+        var content = globalThis.document.createElement("span");
         content.className = classes.join(" ");
         content.setAttribute("xmlns", Chartist.namespaces.xhtml);
         content.innerText = labels[index];
@@ -1216,7 +1216,7 @@
 
         if (responsiveOptions) {
           for (i = 0; i < responsiveOptions.length; i++) {
-            var mql = window.matchMedia(responsiveOptions[i][0]);
+            var mql = globalThis.matchMedia(responsiveOptions[i][0]);
             if (mql.matches) {
               currentOptions = Chartist.extend(
                 currentOptions,
@@ -1240,11 +1240,11 @@
         });
       }
 
-      if (!window.matchMedia) {
-        throw "window.matchMedia not found! Make sure you're using a polyfill.";
+      if (!globalThis.matchMedia) {
+        throw "globalThis.matchMedia not found! Make sure you're using a polyfill.";
       } else if (responsiveOptions) {
         for (i = 0; i < responsiveOptions.length; i++) {
-          var mql = window.matchMedia(responsiveOptions[i][0]);
+          var mql = globalThis.matchMedia(responsiveOptions[i][0]);
           mql.addListener(updateCurrentOptions);
           mediaQueryListeners.push(mql);
         }
@@ -2048,7 +2048,7 @@
     }
 
     /**
-     * This method can be called on the API object of each chart and will un-register all event listeners that were added to other components. This currently includes a window.resize listener as well as media query listeners if any responsive options have been provided. Use this function if you need to destroy and recreate Chartist charts dynamically.
+     * This method can be called on the API object of each chart and will un-register all event listeners that were added to other components. This currently includes a globalThis.resize listener as well as media query listeners if any responsive options have been provided. Use this function if you need to destroy and recreate Chartist charts dynamically.
      *
      * @memberof Chartist.Base
      */
@@ -2056,10 +2056,10 @@
       // Only detach if initialization already occurred on this chart. If this chart still hasn't initialized (therefore
       // the initializationTimeoutId is still a valid timeout reference, we will clear the timeout
       if (!this.initializeTimeoutId) {
-        window.removeEventListener("resize", this.resizeListener);
+        globalThis.removeEventListener("resize", this.resizeListener);
         this.optionsProvider.removeMediaQueryListeners();
       } else {
-        window.clearTimeout(this.initializeTimeoutId);
+        globalThis.clearTimeout(this.initializeTimeoutId);
       }
 
       return this;
@@ -2091,7 +2091,7 @@
 
     function initialize() {
       // Add window resize listener that re-creates the chart
-      window.addEventListener("resize", this.resizeListener);
+      globalThis.addEventListener("resize", this.resizeListener);
 
       // Obtain current options based on matching media queries (if responsive options are given)
       // This will also register a listener that is re-creating the chart based on media changes
@@ -2220,7 +2220,7 @@
       if (name instanceof Element) {
         this._node = name;
       } else {
-        this._node = document.createElementNS(Chartist.namespaces.svg, name);
+        this._node = globalThis.document.createElementNS(Chartist.namespaces.svg, name);
 
         // If this is an SVG element created then custom namespace
         if (name === "svg") {
@@ -2375,7 +2375,7 @@
       // If content is string then we convert it to DOM
       // TODO: Handle case where content is not a string nor a DOM Node
       if (typeof content === "string") {
-        var container = document.createElement("div");
+        var container = globalThis.document.createElement("div");
         container.innerHTML = content;
         content = container.firstChild;
       }
@@ -2406,7 +2406,7 @@
      * @return {Chartist.Svg} The same wrapper object that was used to add the newly created element
      */
     function text(t) {
-      this._node.appendChild(document.createTextNode(t));
+      this._node.appendChild(globalThis.document.createTextNode(t));
       return this;
     }
 
@@ -2760,7 +2760,7 @@
      * @return {Boolean} True of false if the feature is supported or not
      */
     Chartist.Svg.isSupported = function (feature) {
-      return document.implementation.hasFeature(
+      return globalThis.document.implementation.hasFeature(
         "http://www.w3.org/TR/SVG11/feature#" + feature,
         "1.1"
       );
@@ -2805,7 +2805,7 @@
      * An instance of this class is also returned by `Chartist.Svg.querySelectorAll`.
      *
      * @memberof Chartist.Svg
-     * @param {Array<Node>|NodeList} nodeList An Array of SVG DOM nodes or a SVG DOM NodeList (as returned by document.querySelectorAll)
+     * @param {Array<Node>|NodeList} nodeList An Array of SVG DOM nodes or a SVG DOM NodeList (as returned by globalThis.document.querySelectorAll)
      * @constructor
      */
     function SvgList(nodeList) {

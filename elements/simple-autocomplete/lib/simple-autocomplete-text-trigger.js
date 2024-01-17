@@ -78,7 +78,7 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
           );
         } else if (this.target.getAttribute("contenteditable") != null) {
           // set range appropriately for cursor placement
-          var range = document.createRange();
+          var range = globalThis.document.createRange();
           var sel = this.getSelection();
           range.setStart(
             this.target.childNodes[0],
@@ -100,10 +100,10 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
   connectTargetEvents(enable = true) {
     if (enable) {
       this.windowControllers = new AbortController();
-      window.addEventListener("keydown", this.targetKeyDownMonitor.bind(this), {
+      globalThis.addEventListener("keydown", this.targetKeyDownMonitor.bind(this), {
         signal: this.windowControllers.signal,
       });
-      window.addEventListener("keyup", this.targetKeyMonitor.bind(this), {
+      globalThis.addEventListener("keyup", this.targetKeyMonitor.bind(this), {
         signal: this.windowControllers.signal,
       });
     } else {
@@ -128,7 +128,7 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
       }
     }
     // missed on both, hope the normal one will work
-    return window.getSelection();
+    return globalThis.getSelection();
   }
   /**
    * Get a normalized range based on current selection

@@ -323,7 +323,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         }
       }
       // save this back to the system data
-      window.localStorage.setItem("HAXCMSSystemData", JSON.stringify(userData));
+      globalThis.localStorage.setItem("HAXCMSSystemData", JSON.stringify(userData));
     } catch (e) {}
   }
 }

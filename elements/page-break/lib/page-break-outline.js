@@ -7,7 +7,7 @@ export class PageBreakOutline extends HTMLElement {
     this.windowControllers = new AbortController();
     this.target = null;
     this.selector = null;
-    this.div = document.createElement("div");
+    this.div = globalThis.document.createElement("div");
     this.appendChild(this.div);
     this.basePath = "";
     this.addEventListener("click", this.clickHandler.bind(this));
@@ -24,13 +24,13 @@ export class PageBreakOutline extends HTMLElement {
     }
     if (name === "selector" && newValue) {
       this.selector = newValue;
-      this.target = document.querySelector(this.selector);
+      this.target = globalThis.document.querySelector(this.selector);
       this.render(this.div);
     }
   }
   connectedCallback() {
     setTimeout(() => {
-      window.addEventListener("page-break-change", this.rerender.bind(this), {
+      globalThis.addEventListener("page-break-change", this.rerender.bind(this), {
         signal: this.windowControllers.signal,
       });
     }, 0);

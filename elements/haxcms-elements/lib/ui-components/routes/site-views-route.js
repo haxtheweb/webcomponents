@@ -201,7 +201,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
   constructor() {
     super();
     this.HAXCMSI18NMixinBase = "../../../";
-    this.search = window.location.search;
+    this.search = globalThis.location.search;
     this.t.selectPage = "Select Page";
     this.t.title = "Title";
     this.t.parent = "Parent";
@@ -282,7 +282,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
   formValuesChanged(e) {
     clearTimeout(this._formDebounce);
     this._formDebounce = setTimeout(() => {
-      const params = new URLSearchParams(window.location.search);
+      const params = new URLSearchParams(globalThis.location.search);
       const settings = e.detail.value.settings;
       if (
         this._ready &&
@@ -332,7 +332,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
         } else {
           params.delete("blockFilter");
         }
-        window.history.pushState(
+        globalThis.history.pushState(
           {},
           "",
           decodeURIComponent(`./x/views?${params}`)
@@ -437,7 +437,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
         // ensure display is always stateful even if not directly set
         if (!searchParams.display) {
           rawParams.set("display", this.params.display || "list");
-          window.history.replaceState(
+          globalThis.history.replaceState(
             {},
             "",
             decodeURIComponent(`./x/views?${rawParams}`)

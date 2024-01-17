@@ -1,10 +1,10 @@
 import("@lrnwebcomponents/simple-icon/lib/simple-iconset.js").then(() => {
   if (
-    window.Drupal &&
-    window.Drupal.settings &&
-    window.Drupal.settings.basePath
+    globalThis.Drupal &&
+    globalThis.Drupal.settings &&
+    globalThis.Drupal.settings.basePath
   ) {
-    window.SimpleIconset.requestAvailability().registerIconset(
+    globalThis.SimpleIconset.requestAvailability().registerIconset(
       "elmsln-custom-icons",
       `${Drupal.settings.basePath}sites/all/libraries/_my_libraries/elmsln-custom-icons/`
     );

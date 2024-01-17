@@ -36,8 +36,8 @@ class HAXCMSSiteEditor extends LitElement {
     this.__disposer = [];
     this.method = "POST";
     this.editMode = false;
-    window.SimpleToast.requestAvailability();
-    window.SimpleModal.requestAvailability();
+    globalThis.SimpleToast.requestAvailability();
+    globalThis.SimpleModal.requestAvailability();
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       // force import on editMode enabled
@@ -358,8 +358,8 @@ class HAXCMSSiteEditor extends LitElement {
   __createNodeResponseChanged(e) {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
-      window.history.pushState({}, null, e.detail.value.data.slug);
-      window.dispatchEvent(new PopStateEvent("popstate"));
+      globalThis.history.pushState({}, null, e.detail.value.data.slug);
+      globalThis.dispatchEvent(new PopStateEvent("popstate"));
       store.toast(`Created ${e.detail.value.data.title}!`, 3000, {
         hat: "random",
       });
@@ -478,7 +478,7 @@ class HAXCMSSiteEditor extends LitElement {
     // so the UI and other pieces can react to this news
     // this tag is going to be added by a backend if it has determined we have a valid one
 
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("haxcms-site-editor-loaded", {
         bubbles: true,
         composed: true,
@@ -487,7 +487,7 @@ class HAXCMSSiteEditor extends LitElement {
       })
     );
     // inject cms styles for uniformity between shadowroot
-    const link = document.createElement("link");
+    const link = globalThis.document.createElement("link");
     link.rel = "stylesheet";
     link.href = new URL("../base.css", import.meta.url).href;
     this.querySelector("#hax")
@@ -549,63 +549,63 @@ class HAXCMSSiteEditor extends LitElement {
       this.windowControllers.abort();
     }
     this.windowControllers = new AbortController();
-    window.addEventListener(
+    globalThis.addEventListener(
       "jwt-login-refresh-error",
       this._tokenRefreshFailed.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-store-ready",
       this._storeReadyToGo.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "json-outline-schema-active-body-changed",
       this._bodyChanged.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-save-outline",
       this.saveOutline.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
+    globalThis.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
       signal: this.windowControllers.signal,
     });
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-load-site-dashboard",
       this.loadSiteDashboard.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-load-user-data",
       this.loadUserData.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener("haxcms-create-node", this.createNode.bind(this), {
+    globalThis.addEventListener("haxcms-create-node", this.createNode.bind(this), {
       signal: this.windowControllers.signal,
     });
 
-    window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this), {
+    globalThis.addEventListener("haxcms-delete-node", this.deleteNode.bind(this), {
       signal: this.windowControllers.signal,
     });
   }
@@ -625,8 +625,8 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   loadSiteDashboard(e) {
-    if (document.body.querySelector("haxcms-site-dashboard")) {
-      this.siteDashboard = document.body.querySelector("haxcms-site-dashboard");
+    if (globalThis.document.body.querySelector("haxcms-site-dashboard")) {
+      this.siteDashboard = globalThis.document.body.querySelector("haxcms-site-dashboard");
       this.siteDashboard.headers = {
         Authorization: `Bearer ${this.jwt}`,
       };
@@ -687,7 +687,7 @@ class HAXCMSSiteEditor extends LitElement {
           // enable core services
           enableServices(["haxcms"]);
           // get the broker for docx selection
-          const broker = window.FileSystemBroker.requestAvailability();
+          const broker = globalThis.FileSystemBroker.requestAvailability();
           const file = await broker.loadFile("docx");
           // tee up as a form for upload
           const formData = new FormData();
@@ -721,12 +721,12 @@ class HAXCMSSiteEditor extends LitElement {
             await import(
               "@lrnwebcomponents/outline-designer/outline-designer.js"
             ).then(async (e) => {
-              const outline = document.createElement("outline-designer");
+              const outline = globalThis.document.createElement("outline-designer");
               outline.items = response.data.items;
               outline.eventData = reqBody;
               outline.storeTools = true;
 
-              const b1 = document.createElement("button");
+              const b1 = globalThis.document.createElement("button");
               b1.innerText = "Confirm";
               b1.classList.add("hax-modal-btn");
               b1.addEventListener("click", async (e) => {
@@ -753,7 +753,7 @@ class HAXCMSSiteEditor extends LitElement {
                 if (sumChanges == "") {
                   confirmation = true;
                 } else {
-                  confirmation = window.confirm(
+                  confirmation = globalThis.confirm(
                     `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
                   );
                 }
@@ -767,10 +767,10 @@ class HAXCMSSiteEditor extends LitElement {
                     cancelable: true,
                     detail: {},
                   });
-                  window.dispatchEvent(evt);
+                  globalThis.dispatchEvent(evt);
                 }
               });
-              const b2 = document.createElement("button");
+              const b2 = globalThis.document.createElement("button");
               b2.innerText = "Cancel";
               b2.classList.add("hax-modal-btn");
               b2.classList.add("cancel");
@@ -781,10 +781,10 @@ class HAXCMSSiteEditor extends LitElement {
                   cancelable: true,
                   detail: {},
                 });
-                window.dispatchEvent(evt);
+                globalThis.dispatchEvent(evt);
               });
               // button container
-              const div = document.createElement("div");
+              const div = globalThis.document.createElement("div");
               div.appendChild(b1);
               div.appendChild(b2);
 
@@ -826,7 +826,7 @@ class HAXCMSSiteEditor extends LitElement {
           cancelable: true,
           detail: {},
         });
-        window.dispatchEvent(evt);
+        globalThis.dispatchEvent(evt);
       }
     }
   }
@@ -874,7 +874,7 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {},
     });
-    window.dispatchEvent(evt);
+    globalThis.dispatchEvent(evt);
   }
   /**
    * node deleted response
@@ -883,8 +883,8 @@ class HAXCMSSiteEditor extends LitElement {
   _handleDeleteResponse(response) {
     // this will force ID to update and avoid a page miss
     // when we deleted the node
-    window.history.replaceState({}, null, store.fallbackItemSlug());
-    window.dispatchEvent(new PopStateEvent("popstate"));
+    globalThis.history.replaceState({}, null, store.fallbackItemSlug());
+    globalThis.dispatchEvent(new PopStateEvent("popstate"));
     // delay ensures the fallback has been moved to prior to
     // rebuild of the manifest which should be lacking the deleted ID
     setTimeout(() => {
@@ -966,8 +966,8 @@ class HAXCMSSiteEditor extends LitElement {
       e.detail.value.data.slug &&
       this.activeItem.slug !== e.detail.value.data.slug
     ) {
-      window.history.replaceState({}, null, e.detail.value.data.slug);
-      window.dispatchEvent(new PopStateEvent("popstate"));
+      globalThis.history.replaceState({}, null, e.detail.value.data.slug);
+      globalThis.dispatchEvent(new PopStateEvent("popstate"));
     }
     store.toast(`Page saved!`, 3000, { hat: "random" });
     store.playSound("coin");
@@ -1020,7 +1020,7 @@ class HAXCMSSiteEditor extends LitElement {
       })
     );
     setTimeout(() => {
-      window.location.reload();
+      globalThis.location.reload();
     }, 2000);
   }
   /**
@@ -1065,7 +1065,7 @@ class HAXCMSSiteEditor extends LitElement {
   _handlePublishResponse(e) {
     let data = e.detail.response; // show the published response
 
-    let content = document.createElement("span");
+    let content = globalThis.document.createElement("span");
     content.innerHTML = `
     <a href="${data.url}" target="_blank">
       <button raised style="color:yellow;text-transform: none;font-weight: bold;">
@@ -1082,7 +1082,7 @@ class HAXCMSSiteEditor extends LitElement {
         slot: content.cloneNode(true),
       },
     });
-    window.dispatchEvent(evt);
+    globalThis.dispatchEvent(evt);
   }
   /**
    * Save node event
@@ -1147,7 +1147,7 @@ class HAXCMSSiteEditor extends LitElement {
   }
   // processing visualization
   setProcessingVisual() {
-    let loadingIcon = document.createElement("simple-icon-lite");
+    let loadingIcon = globalThis.document.createElement("simple-icon-lite");
     loadingIcon.icon = "hax:loading";
     loadingIcon.style.setProperty("--simple-icon-height", "40px");
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
@@ -1176,7 +1176,7 @@ class HAXCMSSiteEditor extends LitElement {
     }
     if (values.cssVariable) {
       values.hexCode =
-        window.SimpleColorsSharedStyles.colors[
+        globalThis.SimpleColorsSharedStyles.colors[
           values.cssVariable
             .replace("--simple-colors-default-theme-", "")
             .replace("-7", "")

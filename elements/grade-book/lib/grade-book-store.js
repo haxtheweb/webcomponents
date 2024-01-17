@@ -57,13 +57,13 @@ class GradeBookStoreClass extends LitElement {
 }
 customElements.define(GradeBookStoreClass.tag, GradeBookStoreClass);
 export { GradeBookStoreClass };
-window.GradeBookStore = window.GradeBookStore || {};
-window.GradeBookStore.requestAvailability = function () {
-  if (!window.GradeBookStore.instance) {
-    window.GradeBookStore.instance = document.createElement("grade-book-store");
-    document.body.appendChild(window.GradeBookStore.instance);
+globalThis.GradeBookStore = globalThis.GradeBookStore || {};
+globalThis.GradeBookStore.requestAvailability = function () {
+  if (!globalThis.GradeBookStore.instance) {
+    globalThis.GradeBookStore.instance = globalThis.document.createElement("grade-book-store");
+    globalThis.document.body.appendChild(globalThis.GradeBookStore.instance);
   }
-  return window.GradeBookStore.instance;
+  return globalThis.GradeBookStore.instance;
 };
 // export the singleton so everyone can directly reference it
-export const GradeBookStore = window.GradeBookStore.requestAvailability();
+export const GradeBookStore = globalThis.GradeBookStore.requestAvailability();

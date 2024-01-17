@@ -114,7 +114,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         form[pair[0]] = pair[1];
       }
     }
-    this.link = `${window.location.href.replace("iam.", `${form.access}.`)}${
+    this.link = `${globalThis.location.href.replace("iam.", `${form.access}.`)}${
       form["disable-features"]
         ? `?disable-features=${form["disable-features"]}`
         : ``
@@ -145,7 +145,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   }
   constructor() {
     super();
-    this.link = window.location.href;
+    this.link = globalThis.location.href;
   }
 }
 customElements.define(HAXCMSShareDialog.tag, HAXCMSShareDialog);

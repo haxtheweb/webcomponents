@@ -171,7 +171,7 @@ class MonacoElement extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     if (!this.__init) this.initIFrame();
-    window.addEventListener(
+    globalThis.addEventListener(
       "message",
       (message) => {
         this.handleMessage(message);
@@ -191,7 +191,7 @@ class MonacoElement extends LitElement {
     this.iframe = this.shadowRoot.querySelector("#iframe");
     if (this.document && !this.__init) {
       this.__init = true;
-      const div = document.createElement("div");
+      const div = globalThis.document.createElement("div");
       div.id = "container";
       this.document.body.appendChild(div);
       var iframeScript = `
@@ -217,7 +217,7 @@ class MonacoElement extends LitElement {
     setupEditor() {
       require.config({ paths: { vs: '${this.libPath}' } });
       require(['vs/editor/editor.main'], () => {
-        this.editor = monaco.editor.create(document.getElementById('container'), {
+        this.editor = monaco.editor.create(globalThis.document.getElementById('container'), {
           value: this.value,
           language: '${this.language}',
           scrollBeyondLastLine: false,
@@ -297,11 +297,11 @@ class MonacoElement extends LitElement {
         payload: payload,
         editorReference: this._editorReference_
       }
-      window.parent.postMessage(msg, window.parent.location.href);
+      globalThis.parent.postMessage(msg, globalThis.parent.location.href);
     }
 
     setupEventListener(type, callback) {
-      window.addEventListener(type, data => {
+      globalThis.addEventListener(type, data => {
         callback(data);
       });
     }
@@ -431,7 +431,7 @@ class MonacoElement extends LitElement {
     if (this.iframe.contentWindow != null) {
       this.iframe.contentWindow.postMessage(
         JSON.stringify({ event, payload }),
-        window.location.href
+        globalThis.location.href
       );
     }
   }
@@ -478,4 +478,4 @@ class MonacoElement extends LitElement {
 
 customElements.define("monaco-element", MonacoElement);
 export { MonacoElement };
-window.MonacoData = window.MonacoData || {};
+globalThis.MonacoData = globalThis.MonacoData || {};

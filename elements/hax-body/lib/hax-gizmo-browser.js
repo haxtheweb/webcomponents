@@ -130,7 +130,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   }
   closePopover() {
     this.activePreview = null;
-    let popover = window.SimplePopoverManager.requestAvailability();
+    let popover = globalThis.SimplePopoverManager.requestAvailability();
     popover.opened = false;
   }
   render() {
@@ -262,7 +262,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
       target = haxElementToNode(schema.demoSchema[0]);
     } else {
-      target = document.createElement(e.target.eventData);
+      target = globalThis.document.createElement(e.target.eventData);
     }
     HAXStore.recentGizmoList.push(schema.gizmo);
     HAXStore.__dragTarget = target;

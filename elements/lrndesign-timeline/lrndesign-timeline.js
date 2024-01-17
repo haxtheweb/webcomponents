@@ -532,7 +532,7 @@ class LrndesignTimeline extends SimpleColors {
     super();
     this.events = [];
     this.timelineSize = "xs";
-    window.ResponsiveUtility.requestAvailability();
+    globalThis.ResponsiveUtility.requestAvailability();
   }
 
   /**

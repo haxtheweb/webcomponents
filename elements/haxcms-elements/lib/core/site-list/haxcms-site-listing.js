@@ -1224,13 +1224,13 @@ class HAXCMSSiteListing extends PolymerElement {
   _loggedInChanged(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined) {
       if (newValue) {
-        document.body.setAttribute("data-logged-in", "data-logged-in");
+        globalThis.document.body.setAttribute("data-logged-in", "data-logged-in");
         this.__loginText = "Log out";
         this.__loginIcon = "icons:account-circle";
         this.standardResponse("Welcome, log in successful!");
         this.shadowRoot.querySelector("#add").hidden = false;
       } else {
-        document.body.removeAttribute("data-logged-in");
+        globalThis.document.body.removeAttribute("data-logged-in");
         this.__loginText = "Log in";
         this.__loginIcon = "icons:power-settings-new";
         this.standardResponse("You logged out");
@@ -1310,13 +1310,13 @@ class HAXCMSSiteListing extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback(); // if we're on an insecure environment, hide the buttons for camera
-    window.addEventListener(
+    globalThis.addEventListener(
       "jwt-login-refresh-error",
       this._tokenRefreshFailed.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener("jwt-token", this.updateJwt.bind(this), {
+    globalThis.addEventListener("jwt-token", this.updateJwt.bind(this), {
       signal: this.windowControllers.signal,
     });
 
@@ -1336,7 +1336,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.loggedIn = true;
     }
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "sites-listing-refresh-data",
       this.refreshData.bind(this),
       { signal: this.windowControllers.signal }
@@ -1350,7 +1350,7 @@ class HAXCMSSiteListing extends PolymerElement {
        * then we can't safely execute a DOM manipulating execCommand.
        * This
        */
-      if (document.head.createShadowRoot || document.head.attachShadow) {
+      if (globalThis.document.head.createShadowRoot || globalThis.document.head.attachShadow) {
       } else {
         console.warn("Shadow DOM missing, ALL YOUR IE R BELONG TO US");
         console.warn(
@@ -1387,29 +1387,29 @@ class HAXCMSSiteListing extends PolymerElement {
           "selected-items-changed",
           this._gridSelectedItemsChanged.bind(this)
         );
-      this.__loginPath = window.appSettings.login;
-      this.__refreshPath = window.appSettings.refreshUrl;
-      this.__logoutPath = window.appSettings.logout;
-      this.__setConfigPath = window.appSettings.setConfigPath;
-      this.__getUserDataPath = window.appSettings.getUserDataPath;
-      this.__setUserPhotoPath = window.appSettings.setUserPhotoPath;
-      this.__getConfigPath = window.appSettings.getConfigPath;
-      this.__createNewSitePath = window.appSettings.createNewSitePath;
-      this.__gitImportSitePath = window.appSettings.gitImportSitePath;
-      this.__downloadSitePath = window.appSettings.downloadSitePath;
-      this.__archiveSitePath = window.appSettings.archiveSitePath;
-      this.__cloneSitePath = window.appSettings.cloneSitePath;
-      this.__publishSitePath = window.appSettings.publishSitePath;
-      this.__syncSitePath = window.appSettings.syncSitePath;
-      this.__revertSitePath = window.appSettings.revertSitePath;
-      this.__deleteSitePath = window.appSettings.deleteSitePath; // case where backend has set the JWT ahead of time
+      this.__loginPath = globalThis.appSettings.login;
+      this.__refreshPath = globalThis.appSettings.refreshUrl;
+      this.__logoutPath = globalThis.appSettings.logout;
+      this.__setConfigPath = globalThis.appSettings.setConfigPath;
+      this.__getUserDataPath = globalThis.appSettings.getUserDataPath;
+      this.__setUserPhotoPath = globalThis.appSettings.setUserPhotoPath;
+      this.__getConfigPath = globalThis.appSettings.getConfigPath;
+      this.__createNewSitePath = globalThis.appSettings.createNewSitePath;
+      this.__gitImportSitePath = globalThis.appSettings.gitImportSitePath;
+      this.__downloadSitePath = globalThis.appSettings.downloadSitePath;
+      this.__archiveSitePath = globalThis.appSettings.archiveSitePath;
+      this.__cloneSitePath = globalThis.appSettings.cloneSitePath;
+      this.__publishSitePath = globalThis.appSettings.publishSitePath;
+      this.__syncSitePath = globalThis.appSettings.syncSitePath;
+      this.__revertSitePath = globalThis.appSettings.revertSitePath;
+      this.__deleteSitePath = globalThis.appSettings.deleteSitePath; // case where backend has set the JWT ahead of time
       // useful for systems that are managing login above HAXcms
 
-      if (window.appSettings.jwt) {
-        this.set("jwt", window.appSettings.jwt);
+      if (globalThis.appSettings.jwt) {
+        this.set("jwt", globalThis.appSettings.jwt);
       }
 
-      document.body.addEventListener(
+      globalThis.document.body.addEventListener(
         "haxcms-load-site",
         this.loadActiveSite.bind(this),
         { signal: this.windowControllers.signal }
@@ -1442,7 +1442,7 @@ class HAXCMSSiteListing extends PolymerElement {
   }
 
   permissionsListen() {
-    window.addEventListener(
+    globalThis.addEventListener(
       "simple-login-camera-icon-click",
       async () => {
         await this.snapPhoto();
@@ -1450,7 +1450,7 @@ class HAXCMSSiteListing extends PolymerElement {
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "simple-login-cancel-icon-click",
       async () => {
         await this.clearPhoto();
@@ -1464,7 +1464,7 @@ class HAXCMSSiteListing extends PolymerElement {
 
     this.__cameraBlob = await camera.takeASnap().then(camera.imageBlob); // make an img to show on screen
 
-    let img = document.createElement("img"); // turn blob into a url to visualize locally
+    let img = globalThis.document.createElement("img"); // turn blob into a url to visualize locally
     img.src = URL.createObjectURL(this.__cameraBlob);
     camera.removeAttribute("autoplay");
     const selfie = this.shadowRoot.querySelector("#selfie");
@@ -1520,8 +1520,8 @@ class HAXCMSSiteListing extends PolymerElement {
     let themeOptions = [];
     let firstTheme = null;
 
-    for (var theme in window.appSettings.themes) {
-      themeOptions[theme] = window.appSettings.themes[theme].name;
+    for (var theme in globalThis.appSettings.themes) {
+      themeOptions[theme] = globalThis.appSettings.themes[theme].name;
 
       if (!firstTheme) {
         firstTheme = theme;
@@ -1667,9 +1667,9 @@ class HAXCMSSiteListing extends PolymerElement {
         .querySelector('[modal-id="help"]')
         .associateEvents(this.shadowRoot.querySelector("#help"));
     }, 0);
-    window.JSONOutlineSchema.requestAvailability();
-    window.SimpleModal.requestAvailability();
-    window.SimpleToast.requestAvailability();
+    globalThis.JSONOutlineSchema.requestAvailability();
+    globalThis.SimpleModal.requestAvailability();
+    globalThis.SimpleToast.requestAvailability();
     const jos = this.shadowRoot.querySelector("jos-render");
     jos.map = {
       tag: "course-card",
@@ -1743,9 +1743,9 @@ class HAXCMSSiteListing extends PolymerElement {
     let item = findSite.pop(); // if location isn't there, push out to it
 
     if (item.slug) {
-      window.open(item.slug);
+      globalThis.open(item.slug);
     } else {
-      window.open(this.basePath + "_sites/" + item.metadata.site.name + "/");
+      globalThis.open(this.basePath + "_sites/" + item.metadata.site.name + "/");
     }
   }
   /**
@@ -1961,13 +1961,13 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   _saveConfig(e) {
-    window.HAXCMS.config.values =
+    globalThis.HAXCMS.config.values =
       this.shadowRoot.querySelector("#settingsform").value;
     this.set("setConfigParams", {});
     this.set("setConfigParams", {
       jwt: this.jwt,
       token: this.createParams.token,
-      values: window.HAXCMS.config.values,
+      values: globalThis.HAXCMS.config.values,
     });
     this.notifyPath("setConfigParams.*");
     this.shadowRoot.querySelector("#setconfigrequest").generateRequest();
@@ -2020,14 +2020,14 @@ class HAXCMSSiteListing extends PolymerElement {
   }
 
   handleConfigResponse(e) {
-    window.HAXCMS.config = e.detail.response;
+    globalThis.HAXCMS.config = e.detail.response;
     this.shadowRoot.querySelector("#settingsform").schema = {};
     this.shadowRoot.querySelector("#settingsform").schema =
-      window.HAXCMS.config.schema;
+      globalThis.HAXCMS.config.schema;
     this.shadowRoot.querySelector("#settingsform").value = {};
     this.shadowRoot.querySelector("#settingsform").value =
-      window.HAXCMS.config.values;
-    window.dispatchEvent(new Event("resize"));
+      globalThis.HAXCMS.config.values;
+    globalThis.dispatchEvent(new Event("resize"));
   }
 
   handleSetConfigResponse(e) {
@@ -2055,12 +2055,12 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   handleDownloadResponse(e) {
-    let element = document.createElement("a");
+    let element = globalThis.document.createElement("a");
     element.setAttribute("href", e.detail.response.link);
     element.style.display = "none";
-    document.body.appendChild(element);
+    globalThis.document.body.appendChild(element);
     element.click();
-    document.body.removeChild(element);
+    globalThis.document.body.removeChild(element);
     this.standardResponse(this.activeItem.title + " downloaded!");
   }
 
@@ -2136,7 +2136,7 @@ class HAXCMSSiteListing extends PolymerElement {
               text: e.detail.value.status + " " + e.detail.value.statusText,
             },
           });
-          window.dispatchEvent(evt);
+          globalThis.dispatchEvent(evt);
           break;
       }
     }

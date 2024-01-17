@@ -18,9 +18,9 @@ class SimplePopoverSelection extends LitElement {
 
   openedChanged(state) {
     if (state) {
-      let popover = window.SimplePopoverManager.requestAvailability();
-      render(document.createElement("div"), popover);
-      let div = document.createElement("div");
+      let popover = globalThis.SimplePopoverManager.requestAvailability();
+      render(globalThis.document.createElement("div"), popover);
+      let div = globalThis.document.createElement("div");
       let slot = this.querySelectorAll('[slot="options"]');
       // account for nesting in a single option area
       if (
@@ -45,7 +45,7 @@ class SimplePopoverSelection extends LitElement {
       // due to how shadowDOM + things at the app level / singleton would allow
       if (this.querySelector('[slot="style"]')) {
         let styleData = this.querySelector('[slot="style"]').cloneNode(true);
-        let style = document.createElement("style");
+        let style = globalThis.document.createElement("style");
         style.innerHTML = styleData.innerHTML;
         content = html`${unsafeHTML(div.innerHTML)}${unsafeHTML(
           style.outerHTML
@@ -53,7 +53,7 @@ class SimplePopoverSelection extends LitElement {
       } else {
         content = html`${unsafeHTML(div.innerHTML)}`;
       }
-      let wrap = document.createElement("div");
+      let wrap = globalThis.document.createElement("div");
       wrap.setAttribute("slot", "body");
       popover.appendChild(wrap);
       render(content, wrap);
@@ -61,7 +61,7 @@ class SimplePopoverSelection extends LitElement {
       setTimeout(() => {
         // walk kids in the element and apply event listeners back to here
         let children =
-          window.SimplePopoverManager.requestAvailability().querySelectorAll(
+          globalThis.SimplePopoverManager.requestAvailability().querySelectorAll(
             "*"
           );
         for (var i in children) {
@@ -71,26 +71,26 @@ class SimplePopoverSelection extends LitElement {
         }
         // select the item we were told to activate OR just the 1st element
         if (
-          window.SimplePopoverManager.requestAvailability().querySelector(
+          globalThis.SimplePopoverManager.requestAvailability().querySelector(
             "[data-simple-popover-selection-active]"
           )
         ) {
-          window.SimplePopoverManager.requestAvailability()
+          globalThis.SimplePopoverManager.requestAvailability()
             .querySelector("[data-simple-popover-selection-active]")
             .focus();
         } else if (
-          window.SimplePopoverManager.requestAvailability() &&
-          window.SimplePopoverManager.requestAvailability().querySelector(
+          globalThis.SimplePopoverManager.requestAvailability() &&
+          globalThis.SimplePopoverManager.requestAvailability().querySelector(
             ":first-child"
           )
         ) {
-          window.SimplePopoverManager.requestAvailability()
+          globalThis.SimplePopoverManager.requestAvailability()
             .querySelector(":first-child")
             .focus();
         }
       }, 0);
     }
-    window.SimplePopoverManager.requestAvailability().setPopover(
+    globalThis.SimplePopoverManager.requestAvailability().setPopover(
       this,
       this.querySelector('[slot="button"]'),
       state
@@ -129,7 +129,7 @@ class SimplePopoverSelection extends LitElement {
     // close after an item is selected
     this.opened = false;
     setTimeout(() => {
-      window.SimplePopoverManager.requestAvailability().setPopover(
+      globalThis.SimplePopoverManager.requestAvailability().setPopover(
         this,
         this.querySelector('[slot="button"]'),
         false

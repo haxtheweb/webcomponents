@@ -148,7 +148,7 @@ class SiteUuidLink extends LitElement {
    * with values to do so
    */
   haxsetupActiveElementForm(props) {
-    if (window.HAXCMS) {
+    if (globalThis.HAXCMS) {
       const itemManifest = store.getManifestItems(true);
       // default to null parent as the whole site
       var items = [

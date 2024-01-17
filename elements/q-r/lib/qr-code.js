@@ -11,10 +11,10 @@ class QRCodeElement extends HTMLElement {
     // Define Properties
     Object.keys(QRCodeElement.defaultAttributes).map(this._defineProperty);
     const location = new URL("./qr.js", import.meta.url).href;
-    window.addEventListener(`es-bridge-qr-loaded`, this._qrLoaded.bind(this), {
+    globalThis.addEventListener(`es-bridge-qr-loaded`, this._qrLoaded.bind(this), {
       signal: this.windowControllers.signal,
     });
-    window.ESGlobalBridge.requestAvailability().load("qr", location);
+    globalThis.ESGlobalBridge.requestAvailability().load("qr", location);
   }
   disconnectedCallback() {
     this.windowControllers.abort();
@@ -47,7 +47,7 @@ class QRCodeElement extends HTMLElement {
     if (fn && typeof fn === "function") {
       fn.call(this, oldValue, newValue);
     }
-    if (window.ESGlobalBridge.requestAvailability().imports["qr"] === true) {
+    if (globalThis.ESGlobalBridge.requestAvailability().imports["qr"] === true) {
       this.generate();
     }
   }
@@ -91,8 +91,8 @@ class QRCodeElement extends HTMLElement {
   }
   generatePNG() {
     try {
-      let img = document.createElement("img");
-      img.src = window.QRCode.generatePNG(this.data, this.getOptions());
+      let img = globalThis.document.createElement("img");
+      img.src = globalThis.QRCode.generatePNG(this.data, this.getOptions());
       this.clear();
       this.shadowRoot.appendChild(img);
     } catch (e) {
@@ -100,12 +100,12 @@ class QRCodeElement extends HTMLElement {
     }
   }
   generateHTML() {
-    let div = window.QRCode.generateHTML(this.data, this.getOptions());
+    let div = globalThis.QRCode.generateHTML(this.data, this.getOptions());
     this.clear();
     this.shadowRoot.appendChild(div);
   }
   generateSVG() {
-    let div = window.QRCode.generateSVG(this.data, this.getOptions());
+    let div = globalThis.QRCode.generateSVG(this.data, this.getOptions());
     this.clear();
     this.shadowRoot.appendChild(div);
   }

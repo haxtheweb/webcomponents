@@ -79,18 +79,18 @@ export const PDFPageMixin = function (SuperClass) {
       let htmlContent = toJS(store.activeItemContent);
       // base helps w/ calculating URLs in content
       var base = "";
-      if (document.querySelector("base")) {
-        base = document.querySelector("base").href;
+      if (globalThis.document.querySelector("base")) {
+        base = globalThis.document.querySelector("base").href;
       }
       const response = await MicroFrontendRegistry.call("@core/htmlToPdf", {
         base: base,
         html: htmlContent,
       });
       if (response.status == 200 && response.data) {
-        const link = document.createElement("a");
+        const link = globalThis.document.createElement("a");
         // click link to download file
         // @todo this downloads but claims to be corrupt.
-        link.href = window.URL.createObjectURL(
+        link.href = globalThis.URL.createObjectURL(
           b64toBlob(response.data, "application/pdf")
         );
         link.download = `${toJS(store.activeTitle)}.pdf`;

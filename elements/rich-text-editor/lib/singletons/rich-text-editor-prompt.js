@@ -187,13 +187,13 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
   constructor() {
     super();
     this.haxUIElement = true;
-    window.addEventListener(
+    globalThis.addEventListener(
       "rich-text-editor-prompt-open",
       this.open.bind(this)
     );
     // sets instance to current instance
-    if (!window.RichTextEditorPrompt.instance) {
-      window.RichTextEditorPrompt.instance = this;
+    if (!globalThis.RichTextEditorPrompt.instance) {
+      globalThis.RichTextEditorPrompt.instance = this;
       return this;
     }
   }
@@ -347,16 +347,16 @@ customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);
 export { RichTextEditorPrompt };
 
 // register globally so we can make sure there is only one
-window.RichTextEditorPrompt = window.RichTextEditorPrompt || {};
+globalThis.RichTextEditorPrompt = globalThis.RichTextEditorPrompt || {};
 // request if this exists. This helps invoke element existing in dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through same modal
-window.RichTextEditorPrompt.requestAvailability = () => {
-  if (!window.RichTextEditorPrompt.instance) {
-    window.RichTextEditorPrompt.instance = document.createElement(
+globalThis.RichTextEditorPrompt.requestAvailability = () => {
+  if (!globalThis.RichTextEditorPrompt.instance) {
+    globalThis.RichTextEditorPrompt.instance = globalThis.document.createElement(
       "rich-text-editor-prompt"
     );
-    document.body.appendChild(window.RichTextEditorPrompt.instance);
+    globalThis.document.body.appendChild(globalThis.RichTextEditorPrompt.instance);
   }
-  return window.RichTextEditorPrompt.instance;
+  return globalThis.RichTextEditorPrompt.instance;
 };

@@ -9,9 +9,9 @@ class JosRender extends LitElement {
   }
   constructor() {
     super();
-    this.registry = window.DynamicImportRegistry.requestAvailability();
-    if (window.WCGlobalBasePath) {
-      this.registry.basePath = window.WCGlobalBasePath;
+    this.registry = globalThis.DynamicImportRegistry.requestAvailability();
+    if (globalThis.WCGlobalBasePath) {
+      this.registry.basePath = globalThis.WCGlobalBasePath;
     }
     this.items = [];
   }
@@ -56,7 +56,7 @@ class JosRender extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach(async (oldValue, propName) => {
       if (propName == "source") {
-        let site = window.JSONOutlineSchema.requestAvailability();
+        let site = globalThis.JSONOutlineSchema.requestAvailability();
         // load source
         if (await site.load(this[propName])) {
           this.items = [...site.items];
@@ -90,7 +90,7 @@ class JosRender extends LitElement {
       wipeSlot(this);
       let values = valueMapTransform(items, this.map.properties);
       values.forEach((item) => {
-        let n = document.createElement(this.map.tag);
+        let n = globalThis.document.createElement(this.map.tag);
         Object.assign(n, item);
         this.appendChild(n);
       });

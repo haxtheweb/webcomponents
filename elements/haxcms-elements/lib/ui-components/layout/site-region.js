@@ -54,7 +54,7 @@ class SiteRegion extends LitElement {
                 })
                 .then((data) => {
                   // region data found
-                  let div = document.createElement("div");
+                  let div = globalThis.document.createElement("div");
                   div.innerHTML = data;
                   div.classList.add("site-region-wrapper");
                   this.appendChild(div);

@@ -61,7 +61,7 @@ class LrnsysDrawer extends SimpleColors {
     setTimeout(() => {
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }, 0);
-    this.__modal = window.SimpleDrawer.requestAvailability();
+    this.__modal = globalThis.SimpleDrawer.requestAvailability();
   }
   /**
    * LitElement render
@@ -233,8 +233,8 @@ class LrnsysDrawer extends SimpleColors {
   toggleDrawer() {
     // assemble everything in the slot
     let nodes = this.children;
-    let h = document.createElement("span");
-    let c = document.createElement("span");
+    let h = globalThis.document.createElement("span");
+    let c = globalThis.document.createElement("span");
     for (var i in nodes) {
       if (typeof nodes[i].tagName !== typeof undefined) {
         switch (nodes[i].getAttribute("slot")) {

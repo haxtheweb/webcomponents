@@ -355,7 +355,7 @@ The `table_to_book` and `table_to_sheet` utility functions take a DOM TABLE
 element and iterate through the child nodes.
 
 ```js
-var workbook = XLSX.utils.table_to_book(document.getElementById('tableau'));
+var workbook = XLSX.utils.table_to_book(globalThis.document.getElementById('tableau'));
 /* DO SOMETHING WITH workbook HERE */
 ```
 
@@ -366,11 +366,11 @@ Multiple tables on a web page can be converted to individual worksheets:
 var workbook = XLSX.utils.book_new();
 
 /* convert table 'table1' to worksheet named "Sheet1" */
-var ws1 = XLSX.utils.table_to_sheet(document.getElementById('table1'));
+var ws1 = XLSX.utils.table_to_sheet(globalThis.document.getElementById('table1'));
 XLSX.utils.book_append_sheet(workbook, ws1, "Sheet1");
 
 /* convert table 'table2' to worksheet named "Sheet2" */
-var ws2 = XLSX.utils.table_to_sheet(document.getElementById('table2'));
+var ws2 = XLSX.utils.table_to_sheet(globalThis.document.getElementById('table2'));
 XLSX.utils.book_append_sheet(workbook, ws2, "Sheet2");
 
 /* workbook now has 2 worksheets */
@@ -379,7 +379,7 @@ XLSX.utils.book_append_sheet(workbook, ws2, "Sheet2");
 Alternatively, the HTML code can be extracted and parsed:
 
 ```js
-var htmlstr = document.getElementById('tableau').outerHTML;
+var htmlstr = globalThis.document.getElementById('tableau').outerHTML;
 var workbook = XLSX.read(htmlstr, {type:'string'});
 ```
 
@@ -687,7 +687,7 @@ any DOM element.
 
 ```js
 var worksheet = workbook.Sheets[workbook.SheetNames[0]];
-var container = document.getElementById('tableau');
+var container = globalThis.document.getElementById('tableau');
 container.innerHTML = XLSX.utils.sheet_to_html(worksheet);
 ```
 
@@ -2120,7 +2120,7 @@ To generate the example sheet, start with the HTML table:
 To process the table:
 
 ```js
-var tbl = document.getElementById('sheetjs');
+var tbl = globalThis.document.getElementById('sheetjs');
 var wb = XLSX.utils.table_to_book(tbl);
 ```
 </details>
@@ -2164,15 +2164,15 @@ function create_gap_rows(ws, nrows) {
 }
 
 /* first table */
-var ws = XLSX.utils.table_to_sheet(document.getElementById('table1'));
+var ws = XLSX.utils.table_to_sheet(globalThis.document.getElementById('table1'));
 create_gap_rows(ws, 1); // one row gap after first table
 
 /* second table */
-XLSX.utils.sheet_add_dom(ws, document.getElementById('table2'), {origin: -1});
+XLSX.utils.sheet_add_dom(ws, globalThis.document.getElementById('table2'), {origin: -1});
 create_gap_rows(ws, 3); // three rows gap after second table
 
 /* third table */
-XLSX.utils.sheet_add_dom(ws, document.getElementById('table3'), {origin: -1});
+XLSX.utils.sheet_add_dom(ws, globalThis.document.getElementById('table3'), {origin: -1});
 ```
 
 </details>

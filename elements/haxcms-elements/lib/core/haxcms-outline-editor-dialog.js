@@ -182,7 +182,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
   }
   _manifestItemsChanged(newValue) {
     if (newValue) {
-      window.JSONOutlineSchema.requestAvailability().items = newValue;
+      globalThis.JSONOutlineSchema.requestAvailability().items = newValue;
       this.manifestItemsStatic = JSON.stringify(newValue, null, 2);
     }
   }
@@ -238,12 +238,12 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     if (sumChanges == "") {
       confirmation = true;
     } else {
-      confirmation = window.confirm(
+      confirmation = globalThis.confirm(
         `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
       );
     }
     if (confirmation) {
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("haxcms-save-outline", {
           bubbles: true,
           composed: true,

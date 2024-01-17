@@ -66,7 +66,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   voiceSearchClick() {
     if (!this.disabled) {
       // refernced this way to avoid circular dependency
-      const sdi = window.SuperDaemonManager.requestAvailability();
+      const sdi = globalThis.SuperDaemonManager.requestAvailability();
       if (this.listeningForInput) {
         sdi.listeningForInput = false;
       } else {
@@ -226,7 +226,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       if (!this.wand) {
         this.possibleActions = ["🔮 Insert blocks", "🕵 Find media 📺"];
       } else {
-        const sdi = window.SuperDaemonManager.requestAvailability();
+        const sdi = globalThis.SuperDaemonManager.requestAvailability();
         // open, then present slightly different options for engagement
         if (sdi.opened) {
           this.possibleActions = [

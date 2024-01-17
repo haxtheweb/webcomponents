@@ -48,19 +48,19 @@ class HaxElementListSelector extends LitElement {
     // default fields json blob, most implementations should provide their own though obviously
     this.fieldsEndpoint = new URL("./fields.json", import.meta.url).href;
     // allow flobal base path focibly set
-    if (window.WCGlobalBasePath) {
-      this.basePath = window.WCGlobalBasePath;
+    if (globalThis.WCGlobalBasePath) {
+      this.basePath = globalThis.WCGlobalBasePath;
     } else {
       this.basePath = new URL("./../../../", import.meta.url).href;
     }
     // allow global definition of wc-registry for custom ones
-    if (window.WCGlobalRegistryFileName) {
-      this.__regFile = window.WCGlobalRegistryFileName;
+    if (globalThis.WCGlobalRegistryFileName) {
+      this.__regFile = globalThis.WCGlobalRegistryFileName;
     } else {
       this.__regFile = "wc-registry.json";
     }
     setTimeout(() => {
-      window.addEventListener(
+      globalThis.addEventListener(
         "a11y-tabs-active-changed",
         this._activeTabChanged.bind(this)
       );

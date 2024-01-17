@@ -148,8 +148,8 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
         ) {
           this.loading = true;
           let url = this.siteurl;
-          if (url == "" && window.HAXCMS && window.location) {
-            url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
+          if (url == "" && globalThis.HAXCMS && globalThis.location) {
+            url = `${globalThis.location.origin}${globalThis.HAXCMS.instance.store.location.baseUrl}`;
           }
           // when UUID changes, remote load the content from it, replacing our own light dom material
           MicroFrontendRegistry.call(
@@ -166,7 +166,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
         // aggressive, only run this if we actually are an author of material / have HAX tools
         if (
           propName === "siteurl" &&
-          window.HaxStore &&
+          globalThis.HaxStore &&
           !this.loading &&
           !this.circularBlock
         ) {
@@ -175,7 +175,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
             this.loading = true;
             // forces the form to update as opposed to deferring to what it loaded initially
             this.__refresh = true;
-            window.HaxStore.instance.refreshActiveNodeForm();
+            globalThis.HaxStore.instance.refreshActiveNodeForm();
           }, 1500);
         }
         // this is crazy, take that content and spill it into lightDom
@@ -199,8 +199,8 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
           this.loading = true;
           wipeSlot(this);
           let url = this.siteurl;
-          if (url == "" && window.HAXCMS && window.location) {
-            url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
+          if (url == "" && globalThis.HAXCMS && globalThis.location) {
+            url = `${globalThis.location.origin}${globalThis.HAXCMS.instance.store.location.baseUrl}`;
           }
           MicroFrontendRegistry.call(
             "@haxcms/pageCache",
@@ -221,15 +221,15 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
       // if HAX is actively editing, don't capture these mutations
       // in hax-body or the nodes become contenteditable when they
       // should not be
-      if (window.HaxStore && !this.breakreference) {
-        window.HaxStore.instance.activeBodyIgnoreActive(true);
+      if (globalThis.HaxStore && !this.breakreference) {
+        globalThis.HaxStore.instance.activeBodyIgnoreActive(true);
       }
       // find the content area in shadow
       const cid = this.shadowRoot.querySelector("#content");
       // remove past stuff
       wipeSlot(cid);
       // build fake div and encap the content from endpoint
-      let div = document.createElement("div");
+      let div = globalThis.document.createElement("div");
       // encap script just to be paranoid
       let html = response.data.content.replace(
         /<script[\s\S]*?>/gi,
@@ -259,7 +259,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
         response.data &&
         !this.breakreference
       ) {
-        window.HaxStore.instance.activeBodyIgnoreActive(false);
+        globalThis.HaxStore.instance.activeBodyIgnoreActive(false);
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth() + 1;
@@ -270,7 +270,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
           (this.nextElementSibling &&
             this.nextElementSibling.tagName !== "CITATION-ELEMENT")
         ) {
-          let ce = document.createElement("citation-element");
+          let ce = globalThis.document.createElement("citation-element");
           ce.title = `${this.itemManifest.title} - ${response.data.title}`;
           ce.source = `${response.data.site}${response.data.slug}`;
           ce.date = `${dd}/${mm}/${yyyy}`;
@@ -438,7 +438,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
    * with values to do so
    */
   async haxsetupActiveElementForm(props) {
-    if (window.HAXCMS) {
+    if (globalThis.HAXCMS) {
       if (Object.keys(this.itemManifest).length === 0 || this.__refresh) {
         this.__refresh = false;
         // support remore vs local look up

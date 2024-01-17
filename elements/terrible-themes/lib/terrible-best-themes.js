@@ -38,7 +38,7 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
-    document.body.style.backgroundColor = "#e6fbff";
+    globalThis.document.body.style.backgroundColor = "#e6fbff";
   }
   /**
    * LitElement style callback

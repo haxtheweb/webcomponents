@@ -150,7 +150,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
      * needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
           element: this,
@@ -186,7 +186,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     });
   }
   buildItem(id) {
-    let item = document.createElement("simple-fields-array-item");
+    let item = globalThis.document.createElement("simple-fields-array-item");
     item.id = id;
     item.hideReorder = this.hideReorder;
     item.hideDuplicate = this.hideDuplicate;

@@ -40,8 +40,8 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.haxUIElement = true;
-      this.__highlight = window.RichTextEditorHighlight.requestAvailability();
-      this.__clipboard = window.RichTextEditorClipboard.requestAvailability();
+      this.__highlight = globalThis.RichTextEditorHighlight.requestAvailability();
+      this.__clipboard = globalThis.RichTextEditorClipboard.requestAvailability();
     }
 
     get commandIsToggled() {
@@ -129,7 +129,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     closeToolbar(toolbar = this.__toolbar, editor = this.__toolbar.target) {
       if (editor) toolbar.disableEditing(editor);
       toolbar.target = undefined;
-      document.body.append(toolbar);
+      globalThis.document.body.append(toolbar);
     }
     /* ------ HANDLES CLIPBOARD AND HTML ------------------------- */
 
@@ -207,7 +207,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       let target = this.__toolbar.target;
       if (target) {
         let range = this.range,
-          div = document.createElement("div"),
+          div = globalThis.document.createElement("div"),
           parent = range.commonAncestorContainer.parentNode,
           closest = parent.closest(
             "[contenteditable=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])"
@@ -247,7 +247,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     getSelection() {
       return this.__toolbar
         ? this.__toolbar.getSelection()
-        : window.getSelection();
+        : globalThis.getSelection();
     }
 
     /**
@@ -290,7 +290,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     ) {
       let query =
           !!range && !!command
-            ? document.queryCommandState(this.command)
+            ? globalThis.document.queryCommandState(this.command)
             : false,
         /* workaround because queryCommandState("underline") returns true on links */
         block =
@@ -474,7 +474,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       if (!node || !node.parentNode) return;
       if (!range) {
         let sel = this.getSelection();
-        range = document.createRange();
+        range = globalThis.document.createRange();
         sel.removeAllRanges();
         sel.addRange(range);
       }
@@ -492,7 +492,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       if (node) {
         if (!range) {
           let sel = this.getSelection();
-          range = document.createRange();
+          range = globalThis.document.createRange();
           sel.removeAllRanges();
           sel.addRange(range);
         }
@@ -569,7 +569,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      */
     initViewSource() {
       this.__source =
-        this.__source || window.RichTextEditorSource.requestAvailability();
+        this.__source || globalThis.RichTextEditorSource.requestAvailability();
     }
     /**
      * handles commands sent from toolbar
@@ -615,13 +615,13 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           }
           target.normalize();
         }
-        if (this.__highlight.parentNode === document.body)
+        if (this.__highlight.parentNode === globalThis.document.body)
           this.__highlight.wrap(range);
         this.__highlight.unwrap(range);
         range = range || this.__highlight.range || this.range;
         this.selectRange(range);
         if (command != "paste" && command != "wrapRange") {
-          document.execCommand(command, false, commandVal);
+          globalThis.document.execCommand(command, false, commandVal);
           target.normalize();
         } else if (navigator.clipboard && command == "paste") {
           this.pasteFromClipboard();

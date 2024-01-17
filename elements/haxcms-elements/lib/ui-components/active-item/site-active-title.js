@@ -73,7 +73,7 @@ class SiteActiveTitle extends LitElement {
         if (this.editMode) {
           // micro-task so slotted children are inhjected correctly
           setTimeout(() => {
-            const haxStore = window.HaxStore.requestAvailability();
+            const haxStore = globalThis.HaxStore.requestAvailability();
             this.activateController = new AbortController();
             this.addEventListener(
               "click",

@@ -12,12 +12,12 @@
    * @param {Template|string|object} [options.template] - Template of the graph
    * @param {string} [options.author = "Sergio Flores <saxo-guy@epic.com>"] - Default author for commits
    * @param {string} [options.mode = (null|"compact")]  - Display mode
-   * @param {HTMLElement} [options.canvas] - DOM canvas (ex: document.getElementById("id"))
+   * @param {HTMLElement} [options.canvas] - DOM canvas (ex: globalThis.document.getElementById("id"))
    * @param {string} [options.orientation = ("vertical-reverse"|"horizontal"|"horizontal-reverse")] - Graph orientation
    * @param {boolean} [options.reverseArrow = false] - Make arrows point to ancestors if true
    * @param {number} [options.initCommitOffsetX = 0] - Add custom offsetX to initial commit.
    * @param {number} [options.initCommitOffsetY = 0] - Add custom offsetY to initial commit.
-   * @param {HTMLElement} [options.tooltipContainer = document.body] - HTML Element containing tooltips in compact mode.
+   * @param {HTMLElement} [options.tooltipContainer = globalThis.document.body] - HTML Element containing tooltips in compact mode.
    *
    * @this GitGraph
    **/
@@ -113,16 +113,16 @@
     // Canvas init
     this.canvas = this.element
       ? this.element
-      : document.getElementById(this.elementId) || options.canvas;
+      : globalThis.document.getElementById(this.elementId) || options.canvas;
     this.context = this.canvas.getContext("2d");
     this.context.textBaseline = "center";
 
     // Tooltip layer
-    this.tooltip = document.createElement("div");
+    this.tooltip = globalThis.document.createElement("div");
     this.tooltip.className = "gitgraph-tooltip";
     this.tooltip.style.position = "fixed";
     this.tooltip.style.display = "none";
-    var tooltipContainer = options.tooltipContainer || document.body;
+    var tooltipContainer = options.tooltipContainer || globalThis.document.body;
     tooltipContainer.appendChild(this.tooltip);
 
     // Navigation vars
@@ -149,7 +149,7 @@
     this.canvas.addEventListener("mousedown", this.mouseDownOptions, false);
 
     // Render on window resize
-    window.onresize = this.render.bind(this);
+    globalThis.onresize = this.render.bind(this);
   }
 
   /**
@@ -369,12 +369,12 @@
   GitGraph.prototype.applyCommits = function (event, callbackFn) {
     // Fallback onto layerX/layerY for older versions of Firefox.
     function getOffsetById(id) {
-      var el = document.getElementById(id);
+      var el = globalThis.document.getElementById(id);
       var rect = el.getBoundingClientRect();
 
       return {
-        top: rect.top + document.body.scrollTop,
-        left: rect.left + document.body.scrollLeft,
+        top: rect.top + globalThis.document.body.scrollTop,
+        left: rect.left + globalThis.document.body.scrollLeft,
       };
     }
 
@@ -783,7 +783,7 @@
     // Detail
     var isCompact = this.parent.mode === "compact";
     if (typeof options.detailId === "string" && !isCompact) {
-      options.detail = document.getElementById(options.detailId);
+      options.detail = globalThis.document.getElementById(options.detailId);
     } else {
       options.detail = null;
     }
@@ -1785,9 +1785,9 @@
    * @private
    */
   function _getFontHeight(font) {
-    var body = document.getElementsByTagName("body")[0];
-    var dummy = document.createElement("div");
-    var dummyText = document.createTextNode("Mg");
+    var body = globalThis.document.getElementsByTagName("body")[0];
+    var dummy = globalThis.document.createElement("div");
+    var dummyText = globalThis.document.createTextNode("Mg");
 
     dummy.appendChild(dummyText);
     dummy.setAttribute("style", "font: " + font + "; display: inline-block;");
@@ -1862,18 +1862,18 @@
   function _emitEvent(element, eventName, data) {
     var event;
 
-    if (document.createEvent) {
-      event = document.createEvent("HTMLEvents");
+    if (globalThis.document.createEvent) {
+      event = globalThis.document.createEvent("HTMLEvents");
       event.initEvent(eventName, true, true);
     } else {
-      event = document.createEventObject();
+      event = globalThis.document.createEventObject();
       event.eventType = eventName;
     }
 
     event.eventName = eventName;
     event.data = data || {};
 
-    if (document.createEvent) {
+    if (globalThis.document.createEvent) {
       element.dispatchEvent(event);
     } else {
       element.fireEvent("on" + event.eventType, event);
@@ -1895,7 +1895,7 @@
     // Account for high-resolution displays
     scalingFactor = 1;
 
-    if (window.devicePixelRatio) {
+    if (globalThis.devicePixelRatio) {
       backingStorePixelRatio =
         context.webkitBackingStorePixelRatio ||
         context.mozBackingStorePixelRatio ||
@@ -1904,7 +1904,7 @@
         context.backingStorePixelRatio ||
         1;
 
-      scalingFactor *= window.devicePixelRatio / backingStorePixelRatio;
+      scalingFactor *= globalThis.devicePixelRatio / backingStorePixelRatio;
     }
 
     return scalingFactor;
@@ -2017,8 +2017,8 @@
   }
 
   // Expose GitGraph object
-  window.GitGraph = GitGraph;
-  window.GitGraph.Branch = Branch;
-  window.GitGraph.Commit = Commit;
-  window.GitGraph.Template = Template;
+  globalThis.GitGraph = GitGraph;
+  globalThis.GitGraph.Branch = Branch;
+  globalThis.GitGraph.Commit = Commit;
+  globalThis.GitGraph.Template = Template;
 })();

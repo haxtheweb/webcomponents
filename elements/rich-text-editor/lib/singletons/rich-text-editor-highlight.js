@@ -80,7 +80,7 @@ class RichTextEditorHighlight extends LitElement {
     nodes.forEach((node) => {
       if (this.parentNode) this.parentNode.insertBefore(node, this);
     });
-    document.body.append(this);
+    globalThis.document.body.append(this);
     this.hidden = true;
     this.range = undefined;
   }
@@ -103,7 +103,7 @@ class RichTextEditorHighlight extends LitElement {
     nodes.forEach((node, i) => {
       if (range) range.insertNode(node);
     });
-    document.body.append(this);
+    globalThis.document.body.append(this);
     this.hidden = true;
     this.range = range;
   }
@@ -112,16 +112,16 @@ customElements.define(RichTextEditorHighlight.tag, RichTextEditorHighlight);
 export { RichTextEditorHighlight };
 
 // register globally so we can make sure there is only one
-window.RichTextEditorHighlight = window.RichTextEditorHighlight || {};
+globalThis.RichTextEditorHighlight = globalThis.RichTextEditorHighlight || {};
 // request if this exists. This helps invoke element existing in dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through same modal
-window.RichTextEditorHighlight.requestAvailability = () => {
-  if (!window.RichTextEditorHighlight.instance) {
-    window.RichTextEditorHighlight.instance = document.createElement(
+globalThis.RichTextEditorHighlight.requestAvailability = () => {
+  if (!globalThis.RichTextEditorHighlight.instance) {
+    globalThis.RichTextEditorHighlight.instance = globalThis.document.createElement(
       "rich-text-editor-highlight"
     );
-    document.body.appendChild(window.RichTextEditorHighlight.instance);
+    globalThis.document.body.appendChild(globalThis.RichTextEditorHighlight.instance);
   }
-  return window.RichTextEditorHighlight.instance;
+  return globalThis.RichTextEditorHighlight.instance;
 };

@@ -526,10 +526,10 @@ class AppHaxTheme extends HAXCMSRememberRoute(
       super.firstUpdated(changedProperties);
     }
     // only way to hit this
-    document.body.style.overflow = "hidden";
+    globalThis.document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector("#body");
-    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
 
     // hook up the scroll target

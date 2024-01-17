@@ -348,14 +348,14 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.__link = document.createElement("link");
+    this.__link = globalThis.document.createElement("link");
     this.__link.rel = "stylesheet";
     this.__link.href =
       "https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;700&family=Open+Sans&display=swap";
-    document.head.appendChild(this.__link);
+    globalThis.document.head.appendChild(this.__link);
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector("#contentcontainer");
-    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
 
     // hook up the scroll target
@@ -434,14 +434,14 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       const badDevice = toJS(store.badDevice);
       // good device, we can inject font we use
       if (badDevice === false) {
-        const link = document.createElement("link");
+        const link = globalThis.document.createElement("link");
         link.setAttribute(
           "href",
           "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap"
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");
-        document.head.appendChild(link);
+        globalThis.document.head.appendChild(link);
       }
     });
     autorun((reaction) => {

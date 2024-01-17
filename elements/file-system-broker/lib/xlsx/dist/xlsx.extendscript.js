@@ -162,7 +162,7 @@ if (typeof Uint8Array !== "undefined" && !Uint8Array.prototype.slice)
 var IE_SaveFile = (function () {
   try {
     if (typeof IE_SaveFile_Impl == "undefined")
-      document.write(
+      globalThis.document.write(
         [
           '<script type="text/vbscript" language="vbscript">',
           'IE_GetProfileAndPath_Key = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\\"',
@@ -213,7 +213,7 @@ var IE_SaveFile = (function () {
 var IE_LoadFile = (function () {
   try {
     if (typeof IE_LoadFile_Impl == "undefined")
-      document.write(
+      globalThis.document.write(
         [
           '<script type="text/vbscript" language="vbscript">',
           'Function IE_LoadFile_Impl(FileName): Dim out(), plen, i, cc: Set fso = CreateObject("Scripting.FileSystemObject"): Set f = fso.GetFile(FileName): Set stream = f.OpenAsTextStream(1, 0): plen = f.Size: ReDim out(plen): For i = 1 To plen Step 1: cc = Hex(Asc(stream.read(1))): If Len(cc) < 2 Then: cc = "0" & cc: End If: out(i) = cc: Next: IE_LoadFile_Impl = Join(out,""): End Function',
@@ -239,9 +239,9 @@ var IE_LoadFile = (function () {
 // getComputedStyle polyfill from https://gist.github.com/8HNHoFtE/5891086
 if (
   typeof window !== "undefined" &&
-  typeof window.getComputedStyle !== "function"
+  typeof globalThis.getComputedStyle !== "function"
 ) {
-  window.getComputedStyle = function (e, t) {
+  globalThis.getComputedStyle = function (e, t) {
     return (
       (this.el = e),
       (this.getPropertyValue = function (t) {
@@ -1974,10 +1974,10 @@ Usage:
               } catch (e) {
                 try {
                   var Builder =
-                    window.BlobBuilder ||
-                    window.WebKitBlobBuilder ||
-                    window.MozBlobBuilder ||
-                    window.MSBlobBuilder;
+                    globalThis.BlobBuilder ||
+                    globalThis.WebKitBlobBuilder ||
+                    globalThis.MozBlobBuilder ||
+                    globalThis.MSBlobBuilder;
                   var builder = new Builder();
                   builder.append(buffer);
                   exports.blob = builder.getBlob("application/zip").size === 0;
@@ -2367,10 +2367,10 @@ Usage:
               try {
                 // deprecated, browser only, old way
                 var Builder =
-                  window.BlobBuilder ||
-                  window.WebKitBlobBuilder ||
-                  window.MozBlobBuilder ||
-                  window.MSBlobBuilder;
+                  globalThis.BlobBuilder ||
+                  globalThis.WebKitBlobBuilder ||
+                  globalThis.MozBlobBuilder ||
+                  globalThis.MSBlobBuilder;
                 var builder = new Builder();
                 builder.append(buffer);
                 return builder.getBlob("application/zip");
@@ -5701,7 +5701,7 @@ Usage:
             this.w_mask = 0; /* w_size - 1 */
 
             this.window = null;
-            /* Sliding window. Input bytes are read into the second half of the window,
+            /* Sliding globalThis. Input bytes are read into the second half of the window,
              * and move to the first half later to keep a dictionary of at least wSize
              * bytes. With this organization, matches are limited to a distance of
              * wSize-MAX_MATCH bytes, but this ensures that IO is always
@@ -5710,7 +5710,7 @@ Usage:
 
             this.window_size = 0;
             /* Actual size of window: 2*wSize, except when the user input buffer
-             * is directly used as sliding window.
+             * is directly used as sliding globalThis.
              */
 
             this.prev = null;
@@ -10230,7 +10230,7 @@ function make_xlsx_lib(XLSX) {
   if (typeof module !== "undefined" && typeof require !== "undefined") {
     if (typeof cptable === "undefined") {
       if (typeof global !== "undefined") global.cptable = undefined;
-      else if (typeof window !== "undefined") window.cptable = undefined;
+      else if (typeof window !== "undefined") globalThis.cptable = undefined;
     }
   }
 
@@ -14150,7 +14150,7 @@ function make_xlsx_lib(XLSX) {
       if (
         typeof URL !== "undefined" &&
         typeof document !== "undefined" &&
-        document.createElement &&
+        globalThis.document.createElement &&
         URL.createObjectURL
       ) {
         var url = URL.createObjectURL(blob);
@@ -14168,13 +14168,13 @@ function make_xlsx_lib(XLSX) {
             saveAs: true,
           });
         }
-        var a = document.createElement("a");
+        var a = globalThis.document.createElement("a");
         if (a.download != null) {
           a.download = fname;
           a.href = url;
-          document.body.appendChild(a);
+          globalThis.document.body.appendChild(a);
           a.click();
-          document.body.removeChild(a);
+          globalThis.document.body.removeChild(a);
           if (URL.revokeObjectURL && typeof setTimeout !== "undefined")
             setTimeout(function () {
               URL.revokeObjectURL(url);

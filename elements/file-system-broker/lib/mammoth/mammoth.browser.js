@@ -569,12 +569,12 @@
             var elementConverters = {
               document: function (document, messages, options) {
                 var children = convertElements(
-                  document.children,
+                  globalThis.document.children,
                   messages,
                   options
                 );
                 var notes = noteReferences.map(function (noteReference) {
-                  return document.notes.resolve(noteReference);
+                  return globalThis.document.notes.resolve(noteReference);
                 });
                 var notesNodes = convertElements(notes, messages, options);
                 return children.concat([
@@ -5752,11 +5752,11 @@
                       return !util.global.dispatchEvent(domEvent);
                     };
                   } else {
-                    var event = document.createEvent("CustomEvent");
+                    var event = globalThis.document.createEvent("CustomEvent");
                     event.initCustomEvent("testingtheevent", false, true, {});
                     util.global.dispatchEvent(event);
                     return function (name, event) {
-                      var domEvent = document.createEvent("CustomEvent");
+                      var domEvent = globalThis.document.createEvent("CustomEvent");
                       domEvent.initCustomEvent(
                         name.toLowerCase(),
                         false,
@@ -10137,15 +10137,15 @@
               typeof MutationObserver !== "undefined" &&
               !(
                 typeof window !== "undefined" &&
-                window.navigator &&
-                (window.navigator.standalone || window.cordova)
+                globalThis.navigator &&
+                (globalThis.navigator.standalone || globalThis.cordova)
               )
             ) {
               schedule = (function () {
-                var div = document.createElement("div");
+                var div = globalThis.document.createElement("div");
                 var opts = { attributes: true };
                 var toggleScheduled = false;
-                var div2 = document.createElement("div");
+                var div2 = globalThis.document.createElement("div");
                 var o2 = new MutationObserver(function () {
                   div.classList.toggle("foo");
                   toggleScheduled = false;

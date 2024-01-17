@@ -43,24 +43,24 @@ export class AppHax extends I18NMixin(SimpleTourFinder(SimpleColors)) {
   }
 
   _openExternalLink(link) {
-    window.open(link, "_blank");
+    globalThis.open(link, "_blank");
   }
 
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     let body = "";
     if (type == "merlin") {
       var title = `[${type}] New command request from HAX daemon`;
-      body = `Location: ${window.location.href}
+      body = `Location: ${globalThis.location.href}
 Merlin command: ${daemonTerm}
 What did you want merlin to do?
 `;
     } else {
       var title = `[${type}] User report from HAX daemon`;
-      body = `Location: ${window.location.href}
+      body = `Location: ${globalThis.location.href}
 Browser: ${navigator.userAgent}
 OS: ${navigator.userAgentData.platform} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
-Screen: ${window.screen.width}x${window.screen.height}
-Window size: ${window.innerWidth}x${window.innerHeight}
+Screen: ${globalThis.screen.width}x${globalThis.screen.height}
+Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
       if (navigator.getBattery) {
         const stats = await navigator.getBattery();
@@ -76,7 +76,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       body += `${type == "feature" ? `Your idea:` : `Bug you experienced:`}
 `;
     }
-    window.open(
+    globalThis.open(
       `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
         body
       )}`,
@@ -119,7 +119,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
    * A token refresh just failed so force to login prompt / state
    */
   _tokenRefreshFailed(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
         bubbles: true,
@@ -134,16 +134,16 @@ Window size: ${window.innerWidth}x${window.innerHeight}
 
   connectedCallback() {
     super.connectedCallback();
-    window
+    globalThis
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", darkToggle, {
         signal: this.windowControllers.signal,
       });
-    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
+    globalThis.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
       signal: this.windowControllers.signal,
     });
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "jwt-login-refresh-error",
       this._tokenRefreshFailed.bind(this),
       { signal: this.windowControllers.signal }
@@ -151,7 +151,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   }
 
   goToLocation(location) {
-    window.location = location;
+    globalThis.location = location;
   }
 
   disconnectedCallback() {
@@ -210,12 +210,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       showMore: "More",
     };
     if (
-      typeof window.speechSynthesis !== "undefined" &&
-      (window.SpeechRecognition ||
-        window.webkitSpeechRecognition ||
-        window.mozSpeechRecognition ||
-        window.msSpeechRecognition ||
-        window.oSpeechRecognition)
+      typeof globalThis.speechSynthesis !== "undefined" &&
+      (globalThis.SpeechRecognition ||
+        globalThis.webkitSpeechRecognition ||
+        globalThis.mozSpeechRecognition ||
+        globalThis.msSpeechRecognition ||
+        globalThis.oSpeechRecognition)
     ) {
       SuperDaemonInstance.voiceSearch = true;
     }
@@ -557,7 +557,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           if (location.route.slug) {
             this.reset();
             setTimeout(() => {
-              window.location = location.route.slug;
+              globalThis.location = location.route.slug;
             }, 0);
           }
           // page miss is high check too
@@ -597,7 +597,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     // manage dark mode
     // only set this initially if we don't have an app state of our own
     if (localStorageGet("app-hax-darkMode", null) === null) {
-      store.darkMode = window.matchMedia(
+      store.darkMode = globalThis.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
     }
@@ -655,14 +655,14 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   reset(reload = false) {
     // localStorage possible to be blocked by permission of system
     try {
-      window.localStorage.removeItem("app-hax-step");
-      window.localStorage.removeItem("app-hax-site");
+      globalThis.localStorage.removeItem("app-hax-step");
+      globalThis.localStorage.removeItem("app-hax-site");
       if (reload) {
         // should always be a base tag for a SPA but just checking
         if (document.querySelector("base")) {
-          window.location = document.querySelector("base").href;
+          globalThis.location = document.querySelector("base").href;
         } else {
-          window.location.reload();
+          globalThis.location.reload();
         }
       }
     } catch (e) {
@@ -695,7 +695,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   }
   // eslint-disable-next-line class-methods-use-this
   logout() {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
         bubbles: true,
@@ -1403,11 +1403,11 @@ Window size: ${window.innerWidth}x${window.innerHeight}
 }
 customElements.define(AppHax.tag, AppHax);
 
-window.AppHax = window.AppHax || {};
+globalThis.AppHax = globalThis.AppHax || {};
 
-window.AppHax.requestAvailability = () => {
-  if (!window.AppHax.instance) {
-    window.AppHax.instance = document.querySelector(AppHax.tag);
+globalThis.AppHax.requestAvailability = () => {
+  if (!globalThis.AppHax.instance && globalThis.document) {
+    globalThis.AppHax.instance = document.querySelector(AppHax.tag);
   }
-  return window.AppHax.instance;
+  return globalThis.AppHax.instance;
 };

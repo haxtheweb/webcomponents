@@ -86,7 +86,7 @@ const QRCodeMixin = function (SuperClass) {
                       modulesize="4"
                       margin="0"
                       title="${store.activeTitle}"
-                      data="${window.location.href}"
+                      data="${globalThis.location.href}"
                     ></q-r>
                   </div>
                 `

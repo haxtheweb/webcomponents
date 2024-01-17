@@ -76,7 +76,7 @@ class SimpleSymbolPicker extends SimplePickerBehaviors(LitElement) {
     }
     let optData = [{ alt: null, icon: this.icon, value: null }];
     this.symbolTypes.forEach((type) =>
-      window.SimplePickerSymbols[type].forEach((symbol) => optData.push(symbol))
+      globalThis.SimplePickerSymbols[type].forEach((symbol) => optData.push(symbol))
     );
     optData = this._setPickerOptions(optData);
     this.options = optData;
@@ -111,7 +111,7 @@ class SimpleSymbolPicker extends SimplePickerBehaviors(LitElement) {
     if (this.options.length > 1) super._setSelectedOption();
   }
 }
-window.SimplePickerSymbols = window.SimplePickerSymbols || {
+globalThis.SimplePickerSymbols = globalThis.SimplePickerSymbols || {
   symbols: [
     { value: "&iexcl;", alt: "&iexcl;" },
     { value: "&cent;", alt: "&cent;" },

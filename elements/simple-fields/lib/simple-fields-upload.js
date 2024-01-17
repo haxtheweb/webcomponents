@@ -553,7 +553,7 @@ class SimpleFieldsUpload extends I18NMixin(
      * needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
           element: this,
@@ -595,7 +595,7 @@ class SimpleFieldsUpload extends I18NMixin(
     if (!this.camera) {
       import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js").then(
         () => {
-          this.camera = document.createElement("simple-camera-snap");
+          this.camera = globalThis.document.createElement("simple-camera-snap");
           this.camera.autoplay = true;
           this.camera.addEventListener(
             "simple-camera-snap-image",
@@ -609,7 +609,7 @@ class SimpleFieldsUpload extends I18NMixin(
   _voiceRecorder(e) {
     if (!this.voice) {
       import("@lrnwebcomponents/voice-recorder/voice-recorder.js").then(() => {
-        this.voice = document.createElement("voice-recorder");
+        this.voice = globalThis.document.createElement("voice-recorder");
         this.voice.addEventListener(
           "voice-recorder-recording-blob",
           this.__newAudioShowedUp.bind(this)

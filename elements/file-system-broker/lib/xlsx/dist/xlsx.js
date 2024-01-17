@@ -11,7 +11,7 @@ function make_xlsx_lib(XLSX) {
   if (typeof module !== "undefined" && typeof require !== "undefined") {
     if (typeof cptable === "undefined") {
       if (typeof global !== "undefined") global.cptable = undefined;
-      else if (typeof window !== "undefined") window.cptable = undefined;
+      else if (typeof window !== "undefined") globalThis.cptable = undefined;
     }
   }
 
@@ -3931,7 +3931,7 @@ function make_xlsx_lib(XLSX) {
       if (
         typeof URL !== "undefined" &&
         typeof document !== "undefined" &&
-        document.createElement &&
+        globalThis.document.createElement &&
         URL.createObjectURL
       ) {
         var url = URL.createObjectURL(blob);
@@ -3949,13 +3949,13 @@ function make_xlsx_lib(XLSX) {
             saveAs: true,
           });
         }
-        var a = document.createElement("a");
+        var a = globalThis.document.createElement("a");
         if (a.download != null) {
           a.download = fname;
           a.href = url;
-          document.body.appendChild(a);
+          globalThis.document.body.appendChild(a);
           a.click();
-          document.body.removeChild(a);
+          globalThis.document.body.removeChild(a);
           if (URL.revokeObjectURL && typeof setTimeout !== "undefined")
             setTimeout(function () {
               URL.revokeObjectURL(url);

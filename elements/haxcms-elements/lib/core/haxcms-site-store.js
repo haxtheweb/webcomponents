@@ -48,7 +48,7 @@ class Store {
     this.manifest = null;
     this.activeItemContent = "";
     this.themeElement = null;
-    this.themeStyleElement = document.createElement("style");
+    this.themeStyleElement = globalThis.document.createElement("style");
     this.themeStyleElement.id = "haxcms-theme-global-style-element";
     this.t = {
       close: "Close",
@@ -235,7 +235,7 @@ class Store {
   ) {
     if (this.appReady) {
       // gets it all the way to the top immediately
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("haxcms-toast-show", {
           bubbles: true,
           composed: true,
@@ -332,9 +332,9 @@ class Store {
       );
     }
     // support for language being defined in the manifest of the site
-    if (document.documentElement && manifest.metadata.site.lang) {
-      document.documentElement.lang = manifest.metadata.site.lang;
-      window.dispatchEvent(
+    if (globalThis.document.documentElement && manifest.metadata.site.lang) {
+      globalThis.document.documentElement.lang = manifest.metadata.site.lang;
+      globalThis.dispatchEvent(
         new CustomEvent("languagechange", {
           detail: manifest.metadata.site.lang,
         })
@@ -350,7 +350,7 @@ class Store {
         detail: manifest,
       })
     );
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("haxcms-item-rebuild", {
         bubbles: true,
         composed: true,
@@ -365,7 +365,7 @@ class Store {
   cmsSiteEditorAvailability() {
     if (!this.cmsSiteEditor.instance) {
       this.cmsSiteEditor.instance =
-        document.createElement("haxcms-site-editor");
+        globalThis.document.createElement("haxcms-site-editor");
     }
     return this.cmsSiteEditor.instance;
   }
@@ -431,7 +431,7 @@ class Store {
    */
   get routerManifest() {
     const manifest = this.manifest;
-    document.body.dispatchEvent(
+    globalThis.document.body.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -911,7 +911,7 @@ class Store {
       );
     }
     this.manifest.items.replace(newItems);
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -919,7 +919,7 @@ class Store {
         detail: this.manifest,
       })
     );
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("haxcms-item-rebuild", {
         bubbles: true,
         composed: true,
@@ -1069,23 +1069,23 @@ class Store {
  */
 export const store = new Store();
 // register globally so we can make sure there is only one
-window.HAXCMS = window.HAXCMS || {};
+globalThis.HAXCMS = globalThis.HAXCMS || {};
 // developer command to force theme to change for testing
-window.HAXCMS.setTheme = function (theme) {
-  window.HAXCMS.instance.store.manifest.metadata.theme.element = theme;
+globalThis.HAXCMS.setTheme = function (theme) {
+  globalThis.HAXCMS.instance.store.manifest.metadata.theme.element = theme;
 };
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.HAXCMS.requestAvailability = () => {
-  if (!window.HAXCMS.instance) {
-    window.HAXCMS.instance = document.createElement("haxcms-site-store");
-    document.body.appendChild(window.HAXCMS.instance);
+globalThis.HAXCMS.requestAvailability = () => {
+  if (!globalThis.HAXCMS.instance) {
+    globalThis.HAXCMS.instance = globalThis.document.createElement("haxcms-site-store");
+    globalThis.document.body.appendChild(globalThis.HAXCMS.instance);
   }
-  return window.HAXCMS.instance;
+  return globalThis.HAXCMS.instance;
 };
 // weird, but self appending
-export const HAXcmsStore = window.HAXCMS.requestAvailability();
+export const HAXcmsStore = globalThis.HAXCMS.requestAvailability();
 /**
  * HTMLElement
  */
@@ -1130,7 +1130,7 @@ class HAXCMSSiteStore extends HTMLElement {
     autorun(() => {
       const foundItem = toJS(store.findItem(store.activeId));
       if (foundItem) {
-        document.body.dispatchEvent(
+        globalThis.document.body.dispatchEvent(
           new CustomEvent("json-outline-schema-active-item-changed", {
             bubbles: true,
             composed: true,
@@ -1139,12 +1139,12 @@ class HAXCMSSiteStore extends HTMLElement {
           })
         );
         //change site title when page changes
-        document.title = store.activeTitle;
+        globalThis.document.title = store.activeTitle;
       }
     });
     autorun(() => {
       if (store.appReady) {
-        const favicon = document.querySelector('link[rel="icon"]');
+        const favicon = globalThis.document.querySelector('link[rel="icon"]');
         if (favicon) {
           this.faviconSiteDefault = favicon.href;
           this.faviconInstance = favicon;
@@ -1177,11 +1177,11 @@ class HAXCMSSiteStore extends HTMLElement {
       const editMode = toJS(store.editMode);
       // trap for early setup
       if (
-        window.HaxStore &&
-        window.HaxStore.requestAvailability() &&
-        window.HaxStore.requestAvailability().write
+        globalThis.HaxStore &&
+        globalThis.HaxStore.requestAvailability() &&
+        globalThis.HaxStore.requestAvailability().write
       ) {
-        window.dispatchEvent(
+        globalThis.dispatchEvent(
           new CustomEvent("haxcms-edit-mode-changed", {
             bubbles: true,
             composed: true,
@@ -1189,18 +1189,18 @@ class HAXCMSSiteStore extends HTMLElement {
             detail: editMode,
           })
         );
-        window.HaxStore.requestAvailability().editMode = editMode;
-        window.HaxStore.requestAvailability().toastShowEventName =
+        globalThis.HaxStore.requestAvailability().editMode = editMode;
+        globalThis.HaxStore.requestAvailability().toastShowEventName =
           "haxcms-toast-show";
       }
     });
   }
   connectedCallback() {
-    document.body.appendChild(this.store.themeStyleElement);
+    globalThis.document.body.appendChild(this.store.themeStyleElement);
   }
   disconnectedCallback() {
     this.store.themeStyleElement.remove();
-    this.store.themeStyleElement = document.createElement("style");
+    this.store.themeStyleElement = globalThis.document.createElement("style");
   }
   // short cut to revert to the default favicon
   resetFavicon() {
@@ -1223,12 +1223,12 @@ class HAXCMSSiteStore extends HTMLElement {
   // set the cursor to something else
   setCursor(icon = null, isIcon = true) {
     if (!icon) {
-      document.body.style.removeProperty("cursor");
+      globalThis.document.body.style.removeProperty("cursor");
     } else {
       if (isIcon) {
         icon = SimpleIconsetStore.getIcon(icon);
       }
-      document.body.style.cursor = `url("${icon}") 16 16, pointer`;
+      globalThis.document.body.style.cursor = `url("${icon}") 16 16, pointer`;
     }
   }
   /**
@@ -1242,7 +1242,7 @@ class HAXCMSSiteStore extends HTMLElement {
     if (typeof DatArchive !== typeof undefined) {
       context = "beaker"; // implies usage of BeakerBrowser, an experimental browser for decentralization
     } else {
-      switch (window.HAXCMSContext) {
+      switch (globalThis.HAXCMSContext) {
         case "published": // implies this is to behave as if it is completely static
         case "nodejs": // implies nodejs based backend, tho no diff from
         case "php": // implies php backend
@@ -1251,7 +1251,7 @@ class HAXCMSSiteStore extends HTMLElement {
         case "desktop": // implies electron
         case "local": // implies ability to use local file system
         case "userfs": // implies hax.cloud stylee usage pattern
-          context = window.HAXCMSContext;
+          context = globalThis.HAXCMSContext;
           break;
         default:
           // we don't have one so assume it's php for now

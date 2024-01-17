@@ -325,8 +325,8 @@ class SimpleFieldsLite extends LitElement {
   }
   constructor() {
     super();
-    if (window.WCGlobalBasePath) {
-      this.basePath = window.WCGlobalBasePath;
+    if (globalThis.WCGlobalBasePath) {
+      this.basePath = globalThis.WCGlobalBasePath;
     } else {
       this.basePath = new URL("./../../../", import.meta.url).href;
     }
@@ -607,14 +607,14 @@ class SimpleFieldsLite extends LitElement {
         data = config || this._convertSchema(schemaProp);
       if (data && data.element) {
         let id = `${prefix}${key}`,
-          element = document.createElement(data.element),
+          element = globalThis.document.createElement(data.element),
           wrapper =
             schemaProp.properties ||
             schemaProp.items ||
             schemaProp.noWrap ||
             data.noWrap
               ? element
-              : document.createElement("simple-fields-container"),
+              : globalThis.document.createElement("simple-fields-container"),
           value = this._getValue(`${prefix}${key}`),
           elementProperties =
             !Object.getPrototypeOf(element) &&
@@ -627,9 +627,9 @@ class SimpleFieldsLite extends LitElement {
           if (!!schemaProp[key]) element[key] = schemaProp[key];
         });
         // support for dynamic import of location of this field
-        if (!window.customElements.get(data.element) && data.import) {
+        if (!globalThis.customElements.get(data.element) && data.import) {
           import(`${this.basePath}${data.import}`);
-        } else if (!window.customElements.get(data.element)) {
+        } else if (!globalThis.customElements.get(data.element)) {
           console.warn(`missing field: ${data.element}`);
         }
         let label =
@@ -730,7 +730,7 @@ class SimpleFieldsLite extends LitElement {
         Object.keys(data.slots || {}).forEach((slot) => {
           if (data.slots[slot] && schemaProp[data.slots[slot]]) {
             data.slots[slot].split(/[\s,]/).forEach((field) => {
-              let span = document.createElement("span");
+              let span = globalThis.document.createElement("span");
               span.slot = slot;
               span.innerHTML = schemaProp[field];
               element.appendChild(span);
@@ -797,7 +797,7 @@ class SimpleFieldsLite extends LitElement {
    */
   _configElement(target, value, propName, slotName = false) {
     if (slotName) {
-      let span = document.createElement("span");
+      let span = globalThis.document.createElement("span");
       span.slot = slotName;
       if (value) span.innerHTML = value;
       if (target)

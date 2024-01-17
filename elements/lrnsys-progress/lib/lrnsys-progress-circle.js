@@ -624,16 +624,16 @@ class LrnsysProgressCircle extends PolymerElement {
     // calculate sound to use and ensure it only ever happens once
     // via the __chimed flag
     if (this.status == "complete") {
-      window.audio = new Audio(this.completeSound);
+      globalThis.audio = new Audio(this.completeSound);
       this.__chimed = true;
     } else if (this.status == "finished") {
-      window.audio = new Audio(this.finishedSound);
+      globalThis.audio = new Audio(this.finishedSound);
       this.__finishchimed = true;
     } else {
       // shouldn't be possible
-      window.audio = new Audio();
+      globalThis.audio = new Audio();
     }
-    window.audio.play();
+    globalThis.audio.play();
   }
   /**
    * Calculate loading based on the status of the item.

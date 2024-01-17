@@ -21,7 +21,7 @@ class Store {
     fetch(new URL("../../../haxcms-elements/package.json", import.meta.url))
       .then((response) => response.json())
       .then((obj) => (this.version = obj.version));
-    this.appSettings = window.appSettings || {};
+    this.appSettings = globalThis.appSettings || {};
     // defer to local if we have it for JWT
     if (this.appSettings.jwt) {
       localStorageSet("jwt", this.appSettings.jwt);
@@ -220,8 +220,8 @@ class Store {
     });
   }
   setPageTitle(title) {
-    if (document.querySelector("title")) {
-      document.querySelector("title").innerText = `HAX: ${title}`;
+    if (globalThis.document.querySelector("title")) {
+      globalThis.document.querySelector("title").innerText = `HAX: ${title}`;
     }
   }
   // refresh
@@ -317,7 +317,7 @@ class Store {
 
   // centralize toast messages
   toast(msg, duration = 3000, extras = {}) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("haxcms-toast-show", {
         bubbles: true,
         cancelable: true,

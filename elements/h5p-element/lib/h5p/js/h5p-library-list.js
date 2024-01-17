@@ -81,13 +81,13 @@ var H5PLibraryList = H5PLibraryList || {};
         $(".h5p-admin-upgrade-library", $libraryRow)
           .attr("title", t.upgradeLibrary)
           .click(function() {
-            window.location.href = library.upgradeUrl;
+            globalThis.location.href = library.upgradeUrl;
           });
       }
 
       // Open details view when clicked
       $(".h5p-admin-view-library", $libraryRow).on("click", function() {
-        window.location.href = library.detailsUrl;
+        globalThis.location.href = library.detailsUrl;
       });
 
       var $deleteButton = $(".h5p-admin-delete-library", $libraryRow);
@@ -104,7 +104,7 @@ var H5PLibraryList = H5PLibraryList || {};
       } else {
         // Go to delete page om click.
         $deleteButton.attr("title", t.deleteLibrary).on("click", function() {
-          window.location.href = library.deleteUrl;
+          globalThis.location.href = library.deleteUrl;
         });
       }
 

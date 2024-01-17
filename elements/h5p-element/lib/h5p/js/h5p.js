@@ -2,19 +2,19 @@
 // TODO: Should we split up the generic parts needed by the editor(and others), and the parts needed to "run" H5Ps?
 
 /** @namespace */
-var H5P = (window.H5P = window.H5P || {});
+var H5P = (globalThis.H5P = globalThis.H5P || {});
 
 /**
  * Tells us if we're inside of an iframe.
  * @member {boolean}
  */
-H5P.isFramed = window.self !== window.parent;
+H5P.isFramed = globalThis.self !== globalThis.parent;
 
 /**
- * jQuery instance of current window.
+ * jQuery instance of current globalThis.
  * @member {H5P.jQuery}
  */
-H5P.$window = H5P.jQuery(window);
+H5P.$window = H5P.jQuery(globalThis);
 
 /**
  * List over H5P instances on the current page.
@@ -23,14 +23,14 @@ H5P.$window = H5P.jQuery(window);
 H5P.instances = [];
 
 // Detect if we support fullscreen, and what prefix to use.
-if (document.documentElement.requestFullScreen) {
+if (globalThis.document.documentElement.requestFullScreen) {
   /**
    * Browser prefix to use when entering fullscreen mode.
    * undefined means no fullscreen support.
    * @member {string}
    */
   H5P.fullScreenBrowserPrefix = "";
-} else if (document.documentElement.webkitRequestFullScreen) {
+} else if (globalThis.document.documentElement.webkitRequestFullScreen) {
   H5P.safariBrowser = navigator.userAgent.match(/version\/([.\d]+)/i);
   H5P.safariBrowser =
     H5P.safariBrowser === null ? 0 : parseInt(H5P.safariBrowser[1]);
@@ -39,9 +39,9 @@ if (document.documentElement.requestFullScreen) {
   if (H5P.safariBrowser === 0 || H5P.safariBrowser > 6) {
     H5P.fullScreenBrowserPrefix = "webkit";
   }
-} else if (document.documentElement.mozRequestFullScreen) {
+} else if (globalThis.document.documentElement.mozRequestFullScreen) {
   H5P.fullScreenBrowserPrefix = "moz";
-} else if (document.documentElement.msRequestFullscreen) {
+} else if (globalThis.document.documentElement.msRequestFullscreen) {
   H5P.fullScreenBrowserPrefix = "ms";
 }
 
@@ -61,7 +61,7 @@ H5P.opened = {};
 H5P.init = function(target) {
   // Useful jQuery object.
   if (H5P.$body === undefined) {
-    H5P.$body = H5P.jQuery(document.body);
+    H5P.$body = H5P.jQuery(globalThis.document.body);
   }
 
   // Determine if we can use full screen
@@ -77,11 +77,11 @@ H5P.init = function(target) {
       !H5P.fullscreenDisabled &&
       (!(H5P.isFramed && H5P.externalEmbed !== false) ||
         !!(
-          document.fullscreenEnabled ||
-          document.webkitFullscreenEnabled ||
-          document.mozFullScreenEnabled
+          globalThis.document.fullscreenEnabled ||
+          globalThis.document.webkitFullscreenEnabled ||
+          globalThis.document.mozFullScreenEnabled
         ));
-    // -We should consider document.msFullscreenEnabled when they get their
+    // -We should consider globalThis.document.msFullscreenEnabled when they get their
     // -element sizing corrected. Ref. https://connect.microsoft.com/IE/feedback/details/838286/ie-11-incorrectly-reports-dom-element-sizes-in-fullscreen-mode-when-fullscreened-element-is-within-an-iframe
     // Update: Seems to be no need as they've moved on to Webkit
   }
@@ -312,9 +312,9 @@ H5P.init = function(target) {
       if (H5P.externalEmbed === false) {
         // Internal embed
         // Make it possible to resize the iframe when the content changes size. This way we get no scrollbars.
-        var iframe = window.frameElement;
+        var iframe = globalThis.frameElement;
         var resizeIframe = function() {
-          if (window.parent.H5P.isFullscreen) {
+          if (globalThis.parent.H5P.isFullscreen) {
             return; // Skip if full screen.
           }
 
@@ -354,25 +354,25 @@ H5P.init = function(target) {
           H5P.communicator.send("hello");
         });
 
-        // Handle hello message from our parent window
+        // Handle hello message from our parent globalThis
         H5P.communicator.on("hello", function() {
           // Initial setup/handshake is done
           parentIsFriendly = true;
 
           // Make iframe responsive
-          document.body.style.height = "auto";
+          globalThis.document.body.style.height = "auto";
 
           // Hide scrollbars for correct size
-          document.body.style.overflow = "hidden";
+          globalThis.document.body.style.overflow = "hidden";
 
           // Content need to be resized to fit the new iframe size
           H5P.trigger(instance, "resize");
         });
 
-        // When resize has been prepared tell parent window to resize
+        // When resize has been prepared tell parent globalThis to resize
         H5P.communicator.on("resizePrepared", function() {
           H5P.communicator.send("resize", {
-            scrollHeight: document.body.scrollHeight
+            scrollHeight: globalThis.document.body.scrollHeight
           });
         });
 
@@ -391,8 +391,8 @@ H5P.init = function(target) {
             // Only resize if the iframe can be resized
             if (parentIsFriendly) {
               H5P.communicator.send("prepareResize", {
-                scrollHeight: document.body.scrollHeight,
-                clientHeight: document.body.clientHeight
+                scrollHeight: globalThis.document.body.scrollHeight,
+                clientHeight: globalThis.document.body.clientHeight
               });
             } else {
               H5P.communicator.send("hello");
@@ -403,9 +403,9 @@ H5P.init = function(target) {
     }
 
     if (!H5P.isFramed || H5P.externalEmbed === false) {
-      // Resize everything when window is resized.
-      H5P.jQuery(window.parent).resize(function() {
-        if (window.parent.H5P.isFullscreen) {
+      // Resize everything when globalThis is resized.
+      H5P.jQuery(globalThis.parent).resize(function() {
+        if (globalThis.parent.H5P.isFullscreen) {
           // Use timeout to avoid bug in certain browsers when exiting fullscreen. Some browser will trigger resize before the fullscreenchange event.
           H5P.trigger(instance, "resize");
         } else {
@@ -468,7 +468,7 @@ H5P.getHeadTags = function(contentId) {
     createStyleTags(H5PIntegration.contents["cid-" + contentId].styles) +
     createScriptTags(H5PIntegration.core.scripts) +
     createScriptTags(H5PIntegration.contents["cid-" + contentId].scripts) +
-    "<script>H5PIntegration = window.parent.H5PIntegration; var H5P = H5P || {}; H5P.externalEmbed = false;</script>"
+    "<script>H5PIntegration = globalThis.parent.H5PIntegration; var H5P = H5P || {}; H5P.externalEmbed = false;</script>"
   );
 };
 
@@ -489,10 +489,10 @@ H5P.communicator = (function() {
     var actionHandlers = {};
 
     // Register message listener
-    window.addEventListener(
+    globalThis.addEventListener(
       "message",
       function receiveMessage(event) {
-        if (window.parent !== event.source || event.data.context !== "h5p") {
+        if (globalThis.parent !== event.source || event.data.context !== "h5p") {
           return; // Only handle messages from parent and in the correct context
         }
 
@@ -527,11 +527,11 @@ H5P.communicator = (function() {
       data.action = action;
 
       // Parent origin can be anything
-      window.parent.postMessage(data, "*");
+      globalThis.parent.postMessage(data, "*");
     };
   }
 
-  return window.postMessage && window.addEventListener
+  return globalThis.postMessage && globalThis.addEventListener
     ? new Communicator()
     : undefined;
 })();
@@ -569,8 +569,8 @@ H5P.fullScreen = function(
   }
 
   if (H5P.isFramed && H5P.externalEmbed === false) {
-    // Trigger resize on wrapper in parent window.
-    window.parent.H5P.fullScreen(
+    // Trigger resize on wrapper in parent globalThis.
+    globalThis.parent.H5P.fullScreen(
       $element,
       instance,
       exitCallback,
@@ -579,7 +579,7 @@ H5P.fullScreen = function(
     );
     H5P.isFullscreen = true;
     H5P.exitFullScreen = function() {
-      window.parent.H5P.exitFullScreen();
+      globalThis.parent.H5P.exitFullScreen();
     };
     H5P.on(instance, "exitFullScreen", function() {
       H5P.isFullscreen = false;
@@ -625,7 +625,7 @@ H5P.fullScreen = function(
    * @private
    */
   var entered = function() {
-    // Do not rely on window resize events.
+    // Do not rely on globalThis resize events.
     H5P.trigger(instance, "resize");
     H5P.trigger(instance, "focus");
     H5P.trigger(instance, "enterFullScreen");
@@ -642,7 +642,7 @@ H5P.fullScreen = function(
     H5P.isFullscreen = false;
     $classes.removeClass(classes);
 
-    // Do not rely on window resize events.
+    // Do not rely on globalThis resize events.
     H5P.trigger(instance, "resize");
     H5P.trigger(instance, "focus");
 
@@ -696,7 +696,7 @@ H5P.fullScreen = function(
 
     // Disable zoom
     var prevViewportContent, h5pViewport;
-    var metaTags = document.getElementsByTagName("meta");
+    var metaTags = globalThis.document.getElementsByTagName("meta");
     for (var i = 0; i < metaTags.length; i++) {
       if (metaTags[i].name === "viewport") {
         // Use the existing viewport tag
@@ -707,14 +707,14 @@ H5P.fullScreen = function(
     }
     if (!prevViewportContent) {
       // Create a new viewport tag
-      h5pViewport = document.createElement("meta");
+      h5pViewport = globalThis.document.createElement("meta");
       h5pViewport.name = "viewport";
     }
     h5pViewport.content =
       "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0";
     if (!prevViewportContent) {
       // Insert the new viewport tag
-      var head = document.getElementsByTagName("head")[0];
+      var head = globalThis.document.getElementsByTagName("head")[0];
       head.appendChild(h5pViewport);
     }
 
@@ -728,7 +728,7 @@ H5P.fullScreen = function(
         H5P.fullScreenBrowserPrefix === "ms"
           ? "MSFullscreenChange"
           : H5P.fullScreenBrowserPrefix + "fullscreenchange";
-    document.addEventListener(eventName, function() {
+    globalThis.document.addEventListener(eventName, function() {
       if (first === undefined) {
         // We are entering fullscreen mode
         first = false;
@@ -738,7 +738,7 @@ H5P.fullScreen = function(
 
       // We are exiting fullscreen
       done("h5p-fullscreen");
-      document.removeEventListener(eventName, arguments.callee, false);
+      globalThis.document.removeEventListener(eventName, arguments.callee, false);
     });
 
     if (H5P.fullScreenBrowserPrefix === "") {
@@ -758,9 +758,9 @@ H5P.fullScreen = function(
     // Allows everone to exit
     H5P.exitFullScreen = function() {
       if (H5P.fullScreenBrowserPrefix === "") {
-        document.exitFullscreen();
+        globalThis.document.exitFullscreen();
       } else if (H5P.fullScreenBrowserPrefix === "moz") {
-        document.mozCancelFullScreen();
+        globalThis.document.mozCancelFullScreen();
       } else {
         document[H5P.fullScreenBrowserPrefix + "ExitFullscreen"]();
       }
@@ -801,7 +801,7 @@ H5P.getPath = function(path, contentId) {
     if (!prefix) {
       prefix = H5PIntegration.url + "/content/" + contentId;
     }
-  } else if (window.H5PEditor !== undefined) {
+  } else if (globalThis.H5PEditor !== undefined) {
     prefix = H5PEditor.filesPath;
   } else {
     return;
@@ -809,7 +809,7 @@ H5P.getPath = function(path, contentId) {
 
   if (!hasProtocol(prefix)) {
     // Use absolute urls
-    prefix = window.location.protocol + "//" + window.location.host + prefix;
+    prefix = globalThis.location.protocol + "//" + globalThis.location.host + prefix;
   }
 
   return prefix + "/" + path;
@@ -885,7 +885,7 @@ H5P.newRunnable = function(library, contentId, $attachTo, skipResize, extras) {
   var constructor;
   try {
     nameSplit = nameSplit[0].split(".");
-    constructor = window;
+    constructor = globalThis;
     for (var i = 0; i < nameSplit.length; i++) {
       constructor = constructor[nameSplit[i]];
     }
@@ -989,7 +989,7 @@ H5P.newRunnable = function(library, contentId, $attachTo, skipResize, extras) {
  * @param {*} err Error to print.
  */
 H5P.error = function(err) {
-  if (window.console !== undefined && console.error !== undefined) {
+  if (globalThis.console !== undefined && console.error !== undefined) {
     console.error(err.stack ? err.stack : err);
   }
 };
@@ -1350,7 +1350,7 @@ H5P.openReuseDialog = function(
         })
         .appendTo($dialog.find("h2"));
       $dialog.find(".h5p-download-button").click(function() {
-        window.location.href = contentData.exportUrl;
+        globalThis.location.href = contentData.exportUrl;
         instance.triggerXAPI("downloaded");
         dialog.close();
       });
@@ -1537,11 +1537,11 @@ H5P.attachToastTo = function(element, message, config) {
 
     if (path != null) {
       // Safari doesn't include Window, but it should.
-      return path.indexOf(window) < 0 ? path.concat(window) : path;
+      return path.indexOf(globalThis) < 0 ? path.concat(globalThis) : path;
     }
 
-    if (target === window) {
-      return [window];
+    if (target === globalThis) {
+      return [globalThis];
     }
 
     function getParents(node, memo) {
@@ -1555,7 +1555,7 @@ H5P.attachToastTo = function(element, message, config) {
       }
     }
 
-    return [target].concat(getParents(target), window);
+    return [target].concat(getParents(target), globalThis);
   };
 
   /**
@@ -1579,7 +1579,7 @@ H5P.attachToastTo = function(element, message, config) {
    * Remove the toast message.
    */
   const removeToast = function() {
-    document.removeEventListener("click", clickHandler);
+    globalThis.document.removeEventListener("click", clickHandler);
     if (toast.parentNode) {
       toast.parentNode.removeChild(toast);
     }
@@ -1677,7 +1677,7 @@ H5P.attachToastTo = function(element, message, config) {
     }
 
     // Prevent overflow
-    const overflowElement = document.body;
+    const overflowElement = globalThis.document.body;
     const bounds = overflowElement.getBoundingClientRect();
     if ((position.noOverflowLeft || position.noOverflowX) && left < bounds.x) {
       left = bounds.x;
@@ -1707,16 +1707,16 @@ H5P.attachToastTo = function(element, message, config) {
   config.duration = config.duration || 3000;
 
   // Build toast
-  const toast = document.createElement("div");
+  const toast = globalThis.document.createElement("div");
   toast.setAttribute("id", config.style);
   toast.classList.add("h5p-toast-disabled");
   toast.classList.add(config.style);
 
-  const msg = document.createElement("span");
+  const msg = globalThis.document.createElement("span");
   msg.innerHTML = message;
   toast.appendChild(msg);
 
-  document.body.appendChild(toast);
+  globalThis.document.body.appendChild(toast);
 
   // The message has to be set before getting the coordinates
   const coordinates = getToastCoordinates(element, toast, config.position);
@@ -1727,7 +1727,7 @@ H5P.attachToastTo = function(element, message, config) {
   const timer = setTimeout(removeToast, config.duration);
 
   // The toast can also be removed by clicking somewhere
-  document.addEventListener("click", clickHandler);
+  globalThis.document.addEventListener("click", clickHandler);
 };
 
 /**
@@ -2793,7 +2793,7 @@ H5P.createTitle = function(rawTitle, maxLength) {
       self.from = specificKey;
     }
 
-    if (window.H5PEditor && H5PEditor.contentId) {
+    if (globalThis.H5PEditor && H5PEditor.contentId) {
       self.contentId = H5PEditor.contentId;
     }
 
@@ -2926,7 +2926,7 @@ H5P.createTitle = function(rawTitle, maxLength) {
 
   // Init H5P when page is fully loadded
   $(document).ready(function() {
-    window.addEventListener("storage", function(event) {
+    globalThis.addEventListener("storage", function(event) {
       // Pick up clipboard changes from other tabs
       if (event.key === "h5pClipboard") {
         // Trigger an event so all 'Paste' buttons may be enabled.
@@ -3028,11 +3028,11 @@ H5P.createTitle = function(rawTitle, maxLength) {
      * @member {boolean} H5P.externalEmbed
      */
 
-    // Relay events to top window. This must be done before H5P.init
+    // Relay events to top globalThis. This must be done before H5P.init
     // since events may be fired on initialization.
     if (H5P.isFramed && H5P.externalEmbed === false) {
       H5P.externalDispatcher.on("*", function(event) {
-        window.parent.H5P.externalDispatcher.trigger.call(this, event);
+        globalThis.parent.H5P.externalDispatcher.trigger.call(this, event);
       });
     }
 
@@ -3043,7 +3043,7 @@ H5P.createTitle = function(rawTitle, maxLength) {
     if (!H5P.preventInit) {
       // Note that this start script has to be an external resource for it to
       // load in correct order in IE9.
-      H5P.init(document.body);
+      H5P.init(globalThis.document.body);
     }
 
     if (H5PIntegration.saveFreq !== false) {

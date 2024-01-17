@@ -65,7 +65,7 @@ class LrnsysDialog extends SimpleColors {
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import("./lrnsys-button-inner.js");
     }, 0);
-    this.__modal = window.SimpleModal.requestAvailability();
+    this.__modal = globalThis.SimpleModal.requestAvailability();
   }
   render() {
     return html`
@@ -218,8 +218,8 @@ class LrnsysDialog extends SimpleColors {
   openDialog() {
     // assemble everything in the slot
     let nodes = this.children;
-    let h = document.createElement("span");
-    let c = document.createElement("span");
+    let h = globalThis.document.createElement("span");
+    let c = globalThis.document.createElement("span");
     let node = {};
     for (var i in nodes) {
       if (typeof nodes[i].tagName !== typeof undefined) {

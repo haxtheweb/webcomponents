@@ -22,8 +22,8 @@ class DOCXFileSystemBroker extends FileSystemBroker {
       "mammoth",
       this.libPath + "mammoth.browser.min.js"
     ).then(() => {
-      if (window.mammoth) {
-        this.docx = window.mammoth;
+      if (globalThis.mammoth) {
+        this.docx = globalThis.mammoth;
         // fire event in case anyone wants to react on loaded event
         this.dispatchEvent(
           new CustomEvent("docx-reader-ready", {
@@ -39,7 +39,7 @@ class DOCXFileSystemBroker extends FileSystemBroker {
 
   __toHTML(buffer, name) {
     // need an event to imply loaded here
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("docx-file-system-data", {
         composed: false,
         bubbles: false,
@@ -65,14 +65,14 @@ class DOCXFileSystemBroker extends FileSystemBroker {
       </body>
     </html>`;
     if (dl) {
-      let dl = document.createElement("a");
-      document.body.appendChild(dl);
+      let dl = globalThis.document.createElement("a");
+      globalThis.document.body.appendChild(dl);
       dl.href =
         `data:application/vnd.ms-word;charset=utf-8,` +
         encodeURIComponent(fileContents);
       dl.download = `${filename}.docx`;
       dl.click();
-      document.body.removeChild(dl);
+      globalThis.document.body.removeChild(dl);
     }
     return fileContents;
   }
@@ -93,20 +93,20 @@ class DOCXFileSystemBroker extends FileSystemBroker {
 
 customElements.define(DOCXFileSystemBroker.tag, DOCXFileSystemBroker);
 // register globally so we can make sure there is only one
-window.DOCXFileSystemBroker = window.DOCXFileSystemBroker || {};
-window.DOCXFileSystemBroker.requestAvailability = () => {
+globalThis.DOCXFileSystemBroker = globalThis.DOCXFileSystemBroker || {};
+globalThis.DOCXFileSystemBroker.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.DOCXFileSystemBroker.instance) {
-    window.DOCXFileSystemBroker.instance = document.createElement(
+  if (!globalThis.DOCXFileSystemBroker.instance) {
+    globalThis.DOCXFileSystemBroker.instance = globalThis.document.createElement(
       "docx-file-system-broker"
     );
-    document.body.appendChild(window.DOCXFileSystemBroker.instance);
+    globalThis.document.body.appendChild(globalThis.DOCXFileSystemBroker.instance);
   }
-  return window.DOCXFileSystemBroker.instance;
+  return globalThis.DOCXFileSystemBroker.instance;
 };
 // forces appending
 const DOCXFileSystemBrokerSingleton =
-  window.DOCXFileSystemBroker.requestAvailability();
+  globalThis.DOCXFileSystemBroker.requestAvailability();
 export {
   DOCXFileSystemBrokerSingleton,
   DOCXFileSystemBroker,

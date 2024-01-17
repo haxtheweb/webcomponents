@@ -32,7 +32,7 @@ class SimpleModalTemplate extends LitElement {
   constructor() {
     super();
     this.title = "";
-    this.modal = window.SimpleModal.requestAvailability();
+    this.modal = globalThis.SimpleModal.requestAvailability();
   }
   //render function
   static get properties() {
@@ -119,7 +119,7 @@ class SimpleModalTemplate extends LitElement {
         title: this.title !== null ? this.title : false,
       },
     });
-    window.dispatchEvent(evt);
+    globalThis.dispatchEvent(evt);
   }
   _getCustom() {
     let slot = this.querySelectorAll('[slot="custom"]');
@@ -137,7 +137,7 @@ class SimpleModalTemplate extends LitElement {
     if (slot && slot[0] && slot[0].tagName == "SLOT") {
       slot = slot[0].assignedNodes({ flatten: true });
     }
-    let container = document.createElement("div");
+    let container = globalThis.document.createElement("div");
     slot.forEach((el) => {
       container.appendChild(el.cloneNode(true));
     });

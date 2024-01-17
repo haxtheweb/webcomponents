@@ -315,7 +315,7 @@ class HaxPicker extends LitElement {
   }
   close() {
     this.activePreview = null;
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,

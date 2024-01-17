@@ -1,4 +1,4 @@
-var H5P = (window.H5P = window.H5P || {});
+var H5P = (globalThis.H5P = globalThis.H5P || {});
 
 /**
  * The Event class for the EventDispatcher.

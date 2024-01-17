@@ -151,7 +151,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
    * this overrides the default button behavior so that the gizmo's content doen't get doubled
    */
   updateSelection() {
-    let tag = document.createElement(this.tagsList),
+    let tag = globalThis.document.createElement(this.tagsList),
       html = "";
     this.fields.forEach((field) => {
       if (

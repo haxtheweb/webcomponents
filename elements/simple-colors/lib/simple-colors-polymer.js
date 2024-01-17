@@ -52,7 +52,7 @@ class SimpleColorsPolymer extends PolymerElement {
       colors: {
         name: "colors",
         type: Object,
-        value: window.SimpleColorsSharedStyles.colors,
+        value: globalThis.SimpleColorsSharedStyles.colors,
         notify: true,
       },
     };
@@ -64,8 +64,8 @@ class SimpleColorsPolymer extends PolymerElement {
 
   constructor() {
     super();
-    this.__utils = window.SimpleColorsSharedStyles.requestAvailability();
-    this.colors = window.SimpleColorsSharedStyles.colors;
+    this.__utils = globalThis.SimpleColorsSharedStyles.requestAvailability();
+    this.colors = globalThis.SimpleColorsSharedStyles.colors;
   }
 
   /**

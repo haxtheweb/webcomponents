@@ -289,7 +289,7 @@ class SimpleBlogFooter extends SimpleColors {
     autorun((reaction) => {
       this.manifest = toJS(store.routerManifest);
       if (varExists(this.manifest, "title")) {
-        document.title = this.manifest.title;
+        globalThis.document.title = this.manifest.title;
       }
       if (varExists(this.manifest, "metadata.theme.variables.cssVariable")) {
         // json outline schema changed, allow other things to react
@@ -324,8 +324,8 @@ class SimpleBlogFooter extends SimpleColors {
    * Fire event to unset the global activeItem.
    */
   _backButtonTap(e) {
-    window.history.pushState(null, null, store.location.baseUrl);
-    window.dispatchEvent(new PopStateEvent("popstate"));
+    globalThis.history.pushState(null, null, store.location.baseUrl);
+    globalThis.dispatchEvent(new PopStateEvent("popstate"));
   }
 }
 customElements.define(SimpleBlogFooter.tag, SimpleBlogFooter);

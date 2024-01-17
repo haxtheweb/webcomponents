@@ -98,7 +98,7 @@
       });
     };
 
-    if (window.Worker !== undefined) {
+    if (globalThis.Worker !== undefined) {
       // Prepare our workers
       self.initWorkers();
       start();
@@ -119,8 +119,8 @@
 
     // Determine number of workers (defaults to 4)
     var numWorkers =
-      window.navigator !== undefined && window.navigator.hardwareConcurrency
-        ? window.navigator.hardwareConcurrency
+      globalThis.navigator !== undefined && globalThis.navigator.hardwareConcurrency
+        ? globalThis.navigator.hardwareConcurrency
         : 4;
     self.workers = new Array(numWorkers);
 
@@ -186,7 +186,7 @@
       if (inData.left === 0) {
         var total = new Date().getTime() - self.started;
 
-        if (window.console && console.log) {
+        if (globalThis.console && console.log) {
           console.log(
             "The upgrade process took " +
               total / 1000 +

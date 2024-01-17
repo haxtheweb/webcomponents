@@ -207,7 +207,7 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
       })
     );
     // hide modal if it's there
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
@@ -219,11 +219,11 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
     this.search = e.detail.value;
     if (this.search) {
       if (store.getInternalRoute() !== "search") {
-        window.history.replaceState({}, null, "x/search");
+        globalThis.history.replaceState({}, null, "x/search");
       }
-      const params = new URLSearchParams(window.location.search);
+      const params = new URLSearchParams(globalThis.location.search);
       params.set("search", this.search);
-      window.history.replaceState(
+      globalThis.history.replaceState(
         {},
         "",
         decodeURIComponent(`./x/search?${params}`)

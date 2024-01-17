@@ -161,7 +161,7 @@ class SimpleIconsetDemo extends LitElement {
   }
   constructor() {
     super();
-    window.SimpleIconset.requestAvailability();
+    globalThis.SimpleIconset.requestAvailability();
     this.imports = [];
     this._getIconsets();
   }

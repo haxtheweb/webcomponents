@@ -20,13 +20,13 @@ export class AppHaxToast extends RPGCharacterToast {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-toast-hide",
       this.hideSimpleToast.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-toast-show",
       this.showSimpleToast.bind(this),
       { signal: this.windowControllers.signal }
@@ -46,13 +46,15 @@ export class AppHaxToast extends RPGCharacterToast {
   }
 }
 customElements.define(AppHaxToast.tag, AppHaxToast);
-window.AppHaxToast = window.AppHaxToast || {};
+globalThis.AppHaxToast = globalThis.AppHaxToast || {};
 
-window.AppHaxToast.requestAvailability = () => {
-  if (!window.AppHaxToast.instance) {
-    window.AppHaxToast.instance = document.createElement(AppHaxToast.tag);
-    document.body.appendChild(window.AppHaxToast.instance);
+globalThis.AppHaxToast.requestAvailability = () => {
+  if (!globalThis.AppHaxToast.instance) {
+    globalThis.AppHaxToast.instance = globalThis.document.createElement(
+      AppHaxToast.tag
+    );
+    globalThis.document.body.appendChild(globalThis.AppHaxToast.instance);
   }
-  return window.AppHaxToast.instance;
+  return globalThis.AppHaxToast.instance;
 };
-export const AppHaxToastInstance = window.AppHaxToast.requestAvailability();
+export const AppHaxToastInstance = globalThis.AppHaxToast.requestAvailability();

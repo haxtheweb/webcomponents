@@ -168,7 +168,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       } catch (e) {}
     }
     // missed on both, hope the normal one will work
-    return window.getSelection();
+    return globalThis.getSelection();
   }
   /**
    * Get a normalized range based on current selection
@@ -476,7 +476,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     slot = null
   ) {
     // gets it all the way to the top immediately
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent(this.toastShowEventName, {
         bubbles: true,
         composed: true,
@@ -926,7 +926,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (typeof appDataResponse.apps !== typeof undefined) {
         var apps = appDataResponse.apps;
         for (let i = 0; i < apps.length; i++) {
-          let app = document.createElement("hax-app");
+          let app = globalThis.document.createElement("hax-app");
           app.data = apps[i];
           this.appendChild(app);
         }
@@ -935,7 +935,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (typeof appDataResponse.stax !== typeof undefined) {
         var staxs = appDataResponse.stax;
         for (let i = 0; i < staxs.length; i++) {
-          let stax = document.createElement("hax-stax");
+          let stax = globalThis.document.createElement("hax-stax");
           stax.data = staxs[i];
           this.appendChild(stax);
         }
@@ -962,18 +962,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   async _handleDynamicImports(items, haxAutoloader) {
     let basePath = new URL("./../../../", import.meta.url).href;
-    if (window.WCGlobalBasePath) {
-      basePath = window.WCGlobalBasePath;
+    if (globalThis.WCGlobalBasePath) {
+      basePath = globalThis.WCGlobalBasePath;
     }
     for (let i in items) {
       // try to skip an import
-      if (window.customElements.get(i)) {
-        if (window.customElements.get(i).haxProperties) {
-          this.setHaxProperties(window.customElements.get(i).haxProperties, i);
+      if (globalThis.customElements.get(i)) {
+        if (globalThis.customElements.get(i).haxProperties) {
+          this.setHaxProperties(globalThis.customElements.get(i).haxProperties, i);
         } else {
           // edge case of no definition
           try {
-            let tmpEl = document.createElement(i);
+            let tmpEl = globalThis.document.createElement(i);
             haxAutoloader.appendChild(tmpEl);
           } catch (e) {}
         }
@@ -988,23 +988,23 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           .then((response) => {
             // see if it imported now
             if (
-              window.customElements.get(i) &&
-              window.customElements.get(i).haxProperties
+              globalThis.customElements.get(i) &&
+              globalThis.customElements.get(i).haxProperties
             ) {
               this.setHaxProperties(
-                window.customElements.get(i).haxProperties,
+                globalThis.customElements.get(i).haxProperties,
                 i
               );
             } else {
               // edge case of no definition
-              haxAutoloader.appendChild(document.createElement(i));
+              haxAutoloader.appendChild(globalThis.document.createElement(i));
             }
           })
           .catch((error) => {
             /* Error handling */
             console.warn(error);
             // also try putting it in the autoloader and hope for the best
-            haxAutoloader.appendChild(document.createElement(i));
+            haxAutoloader.appendChild(globalThis.document.createElement(i));
           });
       }
     }
@@ -1309,7 +1309,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         })
       );
       // normalize the rich teext editor prompts w/ the rest of HAX
-      let rtep = window.RichTextEditorPrompt.requestAvailability();
+      let rtep = globalThis.RichTextEditorPrompt.requestAvailability();
       if (rtep) {
         rtep.shadowRoot.querySelector("#formfields").schematizer =
           HaxSchematizer;
@@ -1325,7 +1325,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             haxTray.shadowRoot.querySelector("#haxcancelbutton")
           );
         if (!!haxCancel.shadowRoot.querySelector("#dialog")) {
-          window.addEventListener(
+          globalThis.addEventListener(
             "simple-modal-confirmed",
             this._handleConfirmCancel.bind(this)
           );
@@ -1358,7 +1358,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _positionCursorInNode(node, position = 0) {
     this.activeHaxBody.positionContextMenus();
-    var range = document.createRange();
+    var range = globalThis.document.createRange();
     var sel = this.getSelection();
     range.setStart(node, position);
     range.collapse(true);
@@ -1414,9 +1414,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   async _onPaste(e) {
     if (
       this.editMode &&
-      document.activeElement.tagName !== "HAX-TRAY" &&
-      document.activeElement.tagName !== "BODY" &&
-      document.activeElement.tagName !== "SIMPLE-MODAL"
+      globalThis.document.activeElement.tagName !== "HAX-TRAY" &&
+      globalThis.document.activeElement.tagName !== "BODY" &&
+      globalThis.document.activeElement.tagName !== "SIMPLE-MODAL"
     ) {
       // only perform this on a text element that is active
       // otherwise inject a P so we can paste into it
@@ -1435,8 +1435,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         if (pasteContent == "") {
           pasteContent = (e.originalEvent || e).clipboardData.getData("text");
         }
-      } else if (window.clipboardData) {
-        pasteContent = window.clipboardData.getData("Text");
+      } else if (globalThis.clipboardData) {
+        pasteContent = globalThis.clipboardData.getData("Text");
       }
       pasteContent = pasteContent.trim();
       // clear empty span tags that can pop up
@@ -1462,8 +1462,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           // If there's an image, display it in the canvas
           if (imageBlob) {
             // Crossbrowser support for URL
-            var URLObj = window.URL || window.webkitURL;
-            let img = document.createElement("img");
+            var URLObj = globalThis.URL || globalThis.webkitURL;
+            let img = globalThis.document.createElement("img");
             // turn blob into a url to visualize locally, this is just temporary
             img.src = URLObj.createObjectURL(imageBlob);
             this.activeNode.parentNode.insertBefore(
@@ -1541,7 +1541,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       let newContent = "";
       // verify this is HTML prior to treating it as such
       // HTML pasting to ensure it's clean is very slow
-      let fragment = document.createElement("div");
+      let fragment = globalThis.document.createElement("div");
       fragment.innerHTML = pasteContent;
       let haxElements = [];
       // test that this is valid HTML before we dig into it as elements
@@ -1672,7 +1672,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let range = this.getRange();
         let sel = this.getSelection();
         // tee up a wrapper so we can walk and put every element in
-        let newNodes = document.createElement("div");
+        let newNodes = globalThis.document.createElement("div");
         // defined so that we can
         newNodes.innerHTML = newContent;
         if (range && sel) {
@@ -1699,12 +1699,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                 txt = Array.from(newNodes.childNodes).pop();
               } else {
                 // just make a text node if this is NODE a link
-                txt = document.createTextNode(newNodes.innerHTML);
+                txt = globalThis.document.createTextNode(newNodes.innerHTML);
               }
             } else {
               // make a link because we have something that looks like one
               // and we passed all above checks
-              txt = document.createElement("a");
+              txt = globalThis.document.createElement("a");
               txt.setAttribute("href", pasteContent);
               txt.setAttribute("rel", "noopener noreferrer");
               txt.setAttribute("target", "_blank");
@@ -1723,7 +1723,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               range.endOffset != this.activeNode.innerText.length
             ) {
               _enterSplit = true;
-              document.execCommand("insertParagraph");
+              globalThis.document.execCommand("insertParagraph");
             }
             // sanity check and then insert our new paste node right AFTER the thing we are pasting in the middle of
             // this hopefully captures complex HTML pastes and inserts them in a logical way
@@ -1918,18 +1918,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   constructor() {
     super();
     enableServices(["core"]);
-    this.toastShowEventName = window.HAXCMS ? "haxcms-toast-show" : "simple-toast-show";
+    this.toastShowEventName = globalThis.HAXCMS ? "haxcms-toast-show" : "simple-toast-show";
     this.t = {
       close: "Close",
     };
     // customizations to daemon
     if (
-      typeof window.speechSynthesis !== "undefined" &&
-      (window.SpeechRecognition ||
-        window.webkitSpeechRecognition ||
-        window.mozSpeechRecognition ||
-        window.msSpeechRecognition ||
-        window.oSpeechRecognition)
+      typeof globalThis.speechSynthesis !== "undefined" &&
+      (globalThis.SpeechRecognition ||
+        globalThis.webkitSpeechRecognition ||
+        globalThis.mozSpeechRecognition ||
+        globalThis.msSpeechRecognition ||
+        globalThis.oSpeechRecognition)
     ) {
       SuperDaemonInstance.voiceSearch = true;
     }
@@ -1952,10 +1952,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         context: "/",
         program: async (input, values) => {
           let results = [];
-          let txt = document.createElement("textarea");
-          await Object.keys(window.SimplePickerEmojis).forEach(
+          let txt = globalThis.document.createElement("textarea");
+          await Object.keys(globalThis.SimplePickerEmojis).forEach(
             async (category) => {
-              await window.SimplePickerEmojis[category].forEach(
+              await globalThis.SimplePickerEmojis[category].forEach(
                 async (emoji) => {
                   if (input == "" || emoji.description.includes(input)) {
                     txt.innerHTML = emoji.value;
@@ -1995,10 +1995,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         context: "/",
         program: async (input, values) => {
           let results = [];
-          let txt = document.createElement("textarea");
-          await Object.keys(window.SimplePickerSymbols).forEach(
+          let txt = globalThis.document.createElement("textarea");
+          await Object.keys(globalThis.SimplePickerSymbols).forEach(
             async (category) => {
-              await window.SimplePickerSymbols[category].forEach(
+              await globalThis.SimplePickerSymbols[category].forEach(
                 async (symbol) => {
                   if (input == "" || category.includes(input)) {
                     txt.innerHTML = symbol.value;
@@ -2148,7 +2148,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "rich-text-editor-prompt-close": "_richTextEditorPromptClose",
     };
     // prevent leaving if we are in editMode
-    window.onbeforeunload = (e) => {
+    globalThis.onbeforeunload = (e) => {
       if (!this.skipExitTrap && this.editMode) {
         var saving =
           "Are you sure you want to leave? Your work will not be saved!";
@@ -2241,10 +2241,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.validGridTagList = this.__validGridTags();
     this.validGizmoTypes = this.__validGizmoTypes();
     // test for sandboxed env
-    let test = document.createElement("webview");
+    let test = globalThis.document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
-    window.SimpleToast.requestAvailability();
-    document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
+    globalThis.SimpleToast.requestAvailability();
+    globalThis.document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
     this.revisionHistoryLink = null;
     // mobx
     makeObservable(this, {
@@ -2303,30 +2303,30 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (this.activeNode.textContent == "") {
         this.activeNode.textContent = text;
       } else {
-        document.execCommand("insertHTML", false, text);
+        globalThis.document.execCommand("insertHTML", false, text);
       }
     }, 0);
   }
 
   _openExternalLink(link) {
-    window.open(link, "_blank");
+    globalThis.open(link, "_blank");
   }
 
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     let body = "";
     if (type == "merlin") {
       var title = `[${type}] New command request from HAX daemon`;
-      body = `Location: ${window.location.href}
+      body = `Location: ${globalThis.location.href}
 Merlin command: ${daemonTerm}
 What did you want merlin to do?
 `;
     } else {
       var title = `[${type}] User report from HAX daemon`;
-      body = `Location: ${window.location.href}
+      body = `Location: ${globalThis.location.href}
 Browser: ${navigator.userAgent}
 OS: ${navigator.userAgentData.platform} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
-Screen: ${window.screen.width}x${window.screen.height}
-Window size: ${window.innerWidth}x${window.innerHeight}
+Screen: ${globalThis.screen.width}x${globalThis.screen.height}
+Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
       if (navigator.getBattery) {
         const stats = await navigator.getBattery();
@@ -2342,7 +2342,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       body += `${type == "feature" ? `Your idea:` : `Bug you experienced:`}
 `;
     }
-    window.open(
+    globalThis.open(
       `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
         body
       )}`,
@@ -2353,16 +2353,16 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   _richTextEditorPromptOpen() {
     // verify that we are not overflowing, a lot of themes have this ability
     // which renders hax popups very difficult / unreliable to work with
-    const compStyles = window.getComputedStyle(document.body);
+    const compStyles = globalThis.getComputedStyle(globalThis.document.body);
     if (compStyles.getPropertyValue("overflow") == "hidden") {
       this.__overflowHiddenOnOpen = compStyles.getPropertyValue("overflow");
-      document.body.style.overflow = "auto";
+      globalThis.document.body.style.overflow = "auto";
     }
   }
   // set things back on close event
   _richTextEditorPromptClose() {
     if (this.__overflowHiddenOnOpen) {
-      document.body.style.overflow = this.__overflowHiddenOnOpen;
+      globalThis.document.body.style.overflow = this.__overflowHiddenOnOpen;
       this.__overflowHiddenOnOpen = null;
     }
   }
@@ -2374,9 +2374,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
    * application context. This is going to inject a definition
    * at run time that's for a theoretical tag defined with this
    * but that hasn't been used yet.
-    window.addEventListener("hax-store-ready", function(e) {
+    globalThis.addEventListener("hax-store-ready", function(e) {
         setTimeout(() => {
-          window.HaxStore.requestAvailability().setHaxProperties(window.customElements.get('instruction-card').haxProperties, 'instruction-card');
+          globalThis.HaxStore.requestAvailability().setHaxProperties(globalThis.customElements.get('instruction-card').haxProperties, 'instruction-card');
         }, 1000);
       }); 
     });
@@ -2727,7 +2727,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             attribute: "rel",
             title: "rel",
             description:
-              "Specifies the relationship between this document and the opened document. Change as part of security or SEO policy.",
+              "Specifies the relationship between this document and the opened globalThis.document. Change as part of security or SEO policy.",
             inputMethod: "select",
             options: {
               noopener: "noopener",
@@ -2834,7 +2834,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     };
     this.setHaxProperties(table, "table");
     // kinda silly but need the definitions for editable-table as well
-    let eTable = document.createElement("editable-table");
+    let eTable = globalThis.document.createElement("editable-table");
     this.haxAutoloader.appendChild(eTable);
     // iframe needs a wrapper or you can't select them because of the spec
     let iframe = {
@@ -2885,7 +2885,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     };
     this.setHaxProperties(iframe, "iframe");
     // gets the definition in by force as if iframes don't exist
-    let iframeLoader = document.createElement("iframe-loader");
+    let iframeLoader = globalThis.document.createElement("iframe-loader");
     this.haxAutoloader.appendChild(iframeLoader);
     let prims = {
       caption: {
@@ -3141,8 +3141,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   async _haxStoreInsertContent(e) {
     if (e.detail) {
       let details = e.detail;
-      if (window.customElements.get(details.tag)) {
-        let prototypeNode = document.createElement(details.tag);
+      if (globalThis.customElements.get(details.tag)) {
+        let prototypeNode = globalThis.document.createElement(details.tag);
         // @see haxHooks: preProcessInsertContent
         if (this.testHook(prototypeNode, "preProcessInsertContent")) {
           details = await this.runHook(
@@ -3359,7 +3359,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
      * then we can't safely execute a DOM manipulating execCommand.
      * This
      */
-    if (document.head.createShadowRoot || document.head.attachShadow) {
+    if (globalThis.document.head.createShadowRoot || globalThis.document.head.attachShadow) {
       return true;
     } else {
       console.warn("Shadow DOM missing, certain operations hidden");
@@ -3477,11 +3477,11 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       });
       // preconnect apps at registration time
       if (app.connection && app.connection.protocol && app.connection.url) {
-        let preconnectlink = document.createElement("link");
+        let preconnectlink = globalThis.document.createElement("link");
         preconnectlink.rel = "preconnect";
         preconnectlink.href =
           app.connection.protocol + "://" + app.connection.url;
-        document.head.appendChild(preconnectlink);
+        globalThis.document.head.appendChild(preconnectlink);
       }
       // we don't care about this after it's launched
       if (
@@ -3533,7 +3533,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
    */
   async htmlToHaxElements(html) {
     let elements = [];
-    let fragment = document.createElement("div");
+    let fragment = globalThis.document.createElement("div");
     fragment.innerHTML = html;
     // test that this is valid HTML before we dig into it as elements
     // and that it actually has children prior to parsing for children
@@ -4014,14 +4014,14 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         // custom functionality to run when a gizmo is registered
         //console.warn(e.detail.tag);
         if (
-          window.customElements.get(e.detail.tag) &&
+          globalThis.customElements.get(e.detail.tag) &&
           this.testHook(
-            document.createElement(e.detail.tag),
+            globalThis.document.createElement(e.detail.tag),
             "gizmoRegistration"
           )
         ) {
           await this.runHook(
-            document.createElement(e.detail.tag),
+            globalThis.document.createElement(e.detail.tag),
             "gizmoRegistration",
             [this]
           );
@@ -4065,10 +4065,10 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     if (
       !translationMap &&
       this.globalPreferences.haxLang == FALLBACK_LANG &&
-      window.customElements.get(tag) &&
-      window.customElements.get(tag).haxProperties
+      globalThis.customElements.get(tag) &&
+      globalThis.customElements.get(tag).haxProperties
     ) {
-      translationMap = window.customElements.get(tag).haxProperties;
+      translationMap = globalThis.customElements.get(tag).haxProperties;
       // support
       if (typeof translationMap === "string") {
         translationMap = await fetch(translationMap).then((response) => {
@@ -4119,20 +4119,20 @@ customElements.define(HaxStore.tag, HaxStore);
 export { HaxStore };
 // window bridge for external projects that want to account for HAX
 // yet don't want to require it as part of an import chain
-window.HaxStore = window.HaxStore || {};
-window.HaxStore.requestAvailability = function () {
-  if (!window.HaxStore.instance) {
-    window.HaxStore.instance = document.createElement("hax-store");
-    document.body.appendChild(window.HaxStore.instance);
+globalThis.HaxStore = globalThis.HaxStore || {};
+globalThis.HaxStore.requestAvailability = function () {
+  if (!globalThis.HaxStore.instance) {
+    globalThis.HaxStore.instance = globalThis.document.createElement("hax-store");
+    globalThis.document.body.appendChild(globalThis.HaxStore.instance);
   }
-  return window.HaxStore.instance;
+  return globalThis.HaxStore.instance;
 };
 // export the singleton so everyone can directly reference it
-export const HAXStore = window.HaxStore.requestAvailability();
+export const HAXStore = globalThis.HaxStore.requestAvailability();
 
 // debugging / developer console shortcuts
-window.Hax = window.Hax || {};
-window.Hax.add = function (tag) {
+globalThis.Hax = globalThis.Hax || {};
+globalThis.Hax.add = function (tag) {
   if (HAXStore.elementList[tag]) {
     // generate schema from the tag
     let schema = HAXStore.haxSchemaFromTag(tag);
@@ -4140,7 +4140,7 @@ window.Hax.add = function (tag) {
     if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
       target = haxElementToNode(schema.demoSchema[0]);
     } else {
-      target = document.createElement(tag);
+      target = globalThis.document.createElement(tag);
     }
     HAXStore.activeHaxBody.haxReplaceNode(HAXStore.activeNode, target);
     HAXStore.activeHaxBody.__focusLogic(target);
@@ -4149,16 +4149,16 @@ window.Hax.add = function (tag) {
     HAXStore.toast(`${tag} is not a valid tag`);
   }
 };
-window.Hax.delete = function () {
+globalThis.Hax.delete = function () {
   if (HAXStore.activeNode != null) {
     HAXStore.activeHaxBody.haxDeleteNode(HAXStore.activeNode);
   }
 };
-window.Hax.duplicate = function () {
+globalThis.Hax.duplicate = function () {
   HAXStore.activeHaxBody.haxDuplicateNode(HAXStore.activeNode);
 };
 
-window.Hax.move = function (dir = true) {
+globalThis.Hax.move = function (dir = true) {
   if (dir) {
     HAXStore.activeHaxBody.haxMoveGridPlate(HAXStore.activeNode, -1);
   } else {
@@ -4166,22 +4166,22 @@ window.Hax.move = function (dir = true) {
   }
 };
 
-window.Hax.grid = function (op = true) {
+globalThis.Hax.grid = function (op = true) {
   HAXStore.activeHaxBody.haxGridPlateOps(op);
 };
 
-window.Hax.set = function (key, value) {
+globalThis.Hax.set = function (key, value) {
   HAXStore.write(key, value, window);
 };
 
-window.Hax.get = function (key) {
+globalThis.Hax.get = function (key) {
   return HAXStore[key];
 };
 
-window.Hax.export = async function () {
+globalThis.Hax.export = async function () {
   return await HAXStore.activeHaxBody.haxToContent();
 };
 
-window.Hax.import = function (htmlContent = "<p></p>") {
+globalThis.Hax.import = function (htmlContent = "<p></p>") {
   return HAXStore.activeHaxBody.importContent(htmlContent);
 };

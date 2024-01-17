@@ -1,4 +1,4 @@
-var $_documentContainer = document.createElement("div");
+var $_documentContainer = globalThis.document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<iron-iconset-svg name="courseicons" size="100">

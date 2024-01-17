@@ -188,13 +188,13 @@ class A11yMediaYoutube extends LitElement {
    * Add a <link rel={preload | preconnect} ...> to the head
    */
   static addPrefetch(kind, url, as) {
-    const linkEl = document.createElement("link");
+    const linkEl = globalThis.document.createElement("link");
     linkEl.rel = kind;
     linkEl.href = url;
     if (as) {
       linkEl.as = as;
     }
-    document.head.append(linkEl);
+    globalThis.document.head.append(linkEl);
   }
   /**
    * single instance of YouTube iframe script
@@ -203,15 +203,15 @@ class A11yMediaYoutube extends LitElement {
    */
   get api() {
     let scriptid = "a11y-media-youtube-api",
-      ytapi = document.querySelector(`#${scriptid}`);
+      ytapi = globalThis.document.querySelector(`#${scriptid}`);
 
     /* only add if script doesn't already exist */
     if (!ytapi) {
-      ytapi = document.createElement("script");
+      ytapi = globalThis.document.createElement("script");
       ytapi.setAttribute("id", scriptid);
       ytapi.setAttribute("src", "https://www.youtube.com/iframe_api");
       ytapi.setAttribute("type", "text/javascript");
-      document.body.appendChild(ytapi);
+      globalThis.document.body.appendChild(ytapi);
     }
     return ytapi;
   }
@@ -508,10 +508,10 @@ class A11yMediaYoutube extends LitElement {
     let root = this,
       load =
         (!auto || this.preload !== "none") && this.videoId && !this.__video,
-      div = document.createElement("div"),
+      div = globalThis.document.createElement("div"),
       divid = `container-${this.id}`,
       youtube = null;
-    document.body.appendChild(div);
+    globalThis.document.body.appendChild(div);
     div.setAttribute("id", divid);
     if (load) {
       // Warm the connection for the poster image

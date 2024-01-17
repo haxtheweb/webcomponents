@@ -17,7 +17,9 @@ export class AppHaxBackendAPI extends LitElement {
     super();
     this.jwt = localStorageGet("jwt", null);
     this.method =
-      window && window.appSettings && window.appSettings.demo ? "GET" : "POST";
+      window && globalThis.appSettings && globalThis.appSettings.demo
+        ? "GET"
+        : "POST";
     this.basePath = "/";
     this.lastResponse = {};
     this.appSettings = {};
@@ -107,7 +109,7 @@ export class AppHaxBackendAPI extends LitElement {
             return response.json();
           } else if (response.status === 401) {
             // call not allowed, log out bc unauthorized
-            window.dispatchEvent(
+            globalThis.dispatchEvent(
               new CustomEvent("jwt-login-logout", {
                 composed: true,
                 bubbles: true,
@@ -119,7 +121,7 @@ export class AppHaxBackendAPI extends LitElement {
           // we got a miss, logout cause something is wrong
           else if (response.status === 404) {
             // call not allowed, log out bc unauthorized
-            window.dispatchEvent(
+            globalThis.dispatchEvent(
               new CustomEvent("jwt-login-logout", {
                 composed: true,
                 bubbles: true,
@@ -132,7 +134,7 @@ export class AppHaxBackendAPI extends LitElement {
             // or out of date one. let's kick off a call to get a new one
             // hopefully from the timing token, knowing this ALSO could kick
             // over here.
-            window.dispatchEvent(
+            globalThis.dispatchEvent(
               new CustomEvent("jwt-login-refresh-token", {
                 composed: true,
                 bubbles: true,
@@ -241,15 +243,17 @@ export class AppHaxBackendAPI extends LitElement {
   }
 }
 
-window.AppHaxAPI = window.AppHaxAPI || {};
+globalThis.AppHaxAPI = globalThis.AppHaxAPI || {};
 
-window.AppHaxAPI.requestAvailability = () => {
-  if (!window.AppHaxAPI.instance) {
-    window.AppHaxAPI.instance = document.createElement(AppHaxBackendAPI.tag);
-    document.body.appendChild(window.AppHaxAPI.instance);
+globalThis.AppHaxAPI.requestAvailability = () => {
+  if (!globalThis.AppHaxAPI.instance) {
+    globalThis.AppHaxAPI.instance = globalThis.document.createElement(
+      AppHaxBackendAPI.tag
+    );
+    globalThis.document.body.appendChild(globalThis.AppHaxAPI.instance);
   }
-  return window.AppHaxAPI.instance;
+  return globalThis.AppHaxAPI.instance;
 };
-export const AppHaxAPI = window.AppHaxAPI.requestAvailability();
+export const AppHaxAPI = globalThis.AppHaxAPI.requestAvailability();
 
 customElements.define(AppHaxBackendAPI.tag, AppHaxBackendAPI);

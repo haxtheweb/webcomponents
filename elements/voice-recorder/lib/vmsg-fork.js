@@ -227,8 +227,8 @@ export class Recorder {
 
     return getUserMedia({ audio: true }).then((stream) => {
       this.stream = stream;
-      const audioCtx = (this.audioCtx = new (window.AudioContext ||
-        window.webkitAudioContext)());
+      const audioCtx = (this.audioCtx = new (globalThis.AudioContext ||
+        globalThis.webkitAudioContext)());
 
       const sourceNode = audioCtx.createMediaStreamSource(stream);
       const gainNode = (this.gainNode = (
@@ -329,7 +329,7 @@ export class Recorder {
 }
 
 export class Form {
-  constructor(opts = {}, target = document.body, resolve, reject) {
+  constructor(opts = {}, target = globalThis.document.body, resolve, reject) {
     this.recorder = new Recorder(opts, this.onStop.bind(this));
     this.resolve = resolve;
     this.reject = reject;
@@ -360,14 +360,14 @@ export class Form {
     if (this.target && this.target.querySelector(".vmsg-popup")) {
       this.target.querySelector(".vmsg-popup").remove();
     }
-    const renderArea = (this.renderArea = document.createElement("div"));
+    const renderArea = (this.renderArea = globalThis.document.createElement("div"));
     renderArea.className = "vmsg-popup";
     renderArea.addEventListener("click", (e) => e.stopPropagation());
 
-    const progress = document.createElement("div");
+    const progress = globalThis.document.createElement("div");
     progress.className = "vmsg-progress";
     for (let i = 0; i < 3; i++) {
-      const progressDot = document.createElement("div");
+      const progressDot = globalThis.document.createElement("div");
       progressDot.className = "vmsg-progress-dot";
       progress.appendChild(progressDot);
     }
@@ -385,18 +385,18 @@ export class Form {
     this.drawInit();
     this.clearAll();
 
-    const recordRow = document.createElement("div");
+    const recordRow = globalThis.document.createElement("div");
     recordRow.className = "vmsg-record-row";
     this.renderArea.appendChild(recordRow);
 
     const audio = (this.audio = new Audio());
 
-    const timer = (this.timer = document.createElement("div"));
+    const timer = (this.timer = globalThis.document.createElement("div"));
     timer.className = "vmsg-timer";
     this.drawTime(0);
     recordRow.appendChild(timer);
 
-    const recordBtn = (this.recordBtn = document.createElement(
+    const recordBtn = (this.recordBtn = globalThis.document.createElement(
       "simple-icon-button-lite"
     ));
     recordBtn.className = "vmsg-button vmsg-record-button";
@@ -405,7 +405,7 @@ export class Form {
     recordBtn.addEventListener("click", () => this.startRecording());
     recordRow.appendChild(recordBtn);
 
-    const stopBtn = (this.stopBtn = document.createElement(
+    const stopBtn = (this.stopBtn = globalThis.document.createElement(
       "simple-icon-button-lite"
     ));
     stopBtn.className = "vmsg-button vmsg-stop-button";
@@ -415,7 +415,7 @@ export class Form {
     stopBtn.addEventListener("click", () => this.stopRecording());
     recordRow.appendChild(stopBtn);
 
-    const previewBtn = (this.previewBtn = document.createElement(
+    const previewBtn = (this.previewBtn = globalThis.document.createElement(
       "simple-icon-button-lite"
     ));
     previewBtn.className = "vmsg-button vmsg-record-button";
@@ -437,7 +437,7 @@ export class Form {
     });
     recordRow.appendChild(previewBtn);
 
-    const saveBtn = (this.saveBtn = document.createElement(
+    const saveBtn = (this.saveBtn = globalThis.document.createElement(
       "simple-icon-button-lite"
     ));
     saveBtn.className = "vmsg-button vmsg-save-button";
@@ -447,9 +447,9 @@ export class Form {
     saveBtn.addEventListener("click", () => this.close(this.recorder.blob));
     recordRow.appendChild(saveBtn);
 
-    /*const gainWrapper = document.createElement("div");
+    /*const gainWrapper = globalThis.document.createElement("div");
     gainWrapper.className = "vmsg-slider-wrapper vmsg-gain-slider-wrapper";
-    const gainSlider = document.createElement("input");
+    const gainSlider = globalThis.document.createElement("input");
     gainSlider.className = "vmsg-slider vmsg-gain-slider";
     gainSlider.setAttribute("type", "range");
     gainSlider.min = 0;
@@ -463,9 +463,9 @@ export class Form {
     gainWrapper.appendChild(gainSlider);
     this.renderArea.appendChild(gainWrapper);
 
-    const pitchWrapper = document.createElement("div");
+    const pitchWrapper = globalThis.document.createElement("div");
     pitchWrapper.className = "vmsg-slider-wrapper vmsg-pitch-slider-wrapper";
-    const pitchSlider = document.createElement("input");
+    const pitchSlider = globalThis.document.createElement("input");
     pitchSlider.className = "vmsg-slider vmsg-pitch-slider";
     pitchSlider.setAttribute("type", "range");
     pitchSlider.min = -1;
@@ -496,7 +496,7 @@ export class Form {
     console.error(err);
     this.drawInit();
     this.clearAll();
-    const error = document.createElement("div");
+    const error = globalThis.document.createElement("div");
     error.className = "vmsg-error";
     error.textContent = err.toString();
     this.renderArea.appendChild(error);

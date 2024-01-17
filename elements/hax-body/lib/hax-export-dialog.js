@@ -23,7 +23,7 @@ class HaxExportDialog extends I18NMixin(LitElement) {
   }
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("simple-modal-show", this.modalToggle.bind(this), {
+    globalThis.addEventListener("simple-modal-show", this.modalToggle.bind(this), {
       signal: this.windowControllers.signal,
     });
   }

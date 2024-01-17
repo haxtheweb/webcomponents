@@ -514,7 +514,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
      * needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
           element: this,
