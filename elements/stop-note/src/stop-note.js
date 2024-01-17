@@ -4,13 +4,14 @@ import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-ico
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 // register the iconset
 SimpleIconsetStore.registerIconset(
   "stopnoteicons",
   `${
     new URL("./stop-note.js", import.meta.url).href
-  }/../lib/svgs/stopnoteicons/`
+  }/../lib/svgs/stopnoteicons-new/`
 );
 /**
  * `stop-note`
@@ -18,7 +19,7 @@ SimpleIconsetStore.registerIconset(
  * @demo demo/index.html
  * @element stop-note
  */
-class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
+class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -91,9 +92,13 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
         }
 
         .svg_wrap {
-          background-color: var(--accent-color);
+          background-color: var(--ddd-theme-polaris-errorLight);
           padding: 5px;
           width: auto;
+        }
+
+        .stop-icon {
+          fill: var(--ddd-theme-polaris-error);
         }
       `,
     ];

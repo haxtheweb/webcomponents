@@ -4,7 +4,6 @@
  */
 import { html, css } from "lit";
 import { DDD } from "../d-d-d.js";
-import { EditableTable } from "../../editable-table/editable-table.js";
 /**
  * `d-d-docs`
  * `design, develop, destroy the competition, documentation`
@@ -16,9 +15,12 @@ export const styleGuideTopics = {
   Breakpoints: "Breakpoints",
   PolarisColors: "PolarisColors",
   PolarisFunctionalColors: "PolarisFunctionalColors",
-  BS: "BS",
-  MP: "MP",
+  Gradients: "Gradients",
+  Radius: "Radius",
+  Shadows: "Shadows",
+  Spacing: "Spacing",
   Typography: "Typography",
+  RichText: "RichText",
 };
 
 class DDDocs extends DDD {
@@ -40,6 +42,10 @@ class DDDocs extends DDD {
     return [...super.styles,
       css`
         /* used for demo */
+        :host{
+          background-color: var(--ddd-theme-polaris-background);
+        }
+
         .flex {
           display: flex;
         }
@@ -58,6 +64,14 @@ class DDDocs extends DDD {
         .grid-2-narrow{
           display: grid;
           grid-template-columns: 0.1fr 5fr;
+        }
+        .grid-6 {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+        }
+        .grid-7 {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
         }
         .spacing-demo {
           display: grid;
@@ -117,9 +131,8 @@ class DDDocs extends DDD {
   renderBorders() {
     return html `
       <h1 class="fs-m my-2">Borders</h1>
-      <h2 class="fs-s mt-0 mb-5 pb-5 bb-xs">Available Borders</h2>
-      <div class="mx-10">
-      <div class="grid-4 gap-10">
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Borders</h2>
+      <div class="grid-4 gap-10 mx-10 my-15">
         <div class="p-10 b-xs bs-sm"><p class="bb-xs mb-5"></p><p>Class: <span class="fw-3">xs</span></p></div>
         <div class="p-10 b-xs bs-sm"><p class="bb-sm mb-5"></p><p>Class: <span class="fw-3">sm</span></p></div>
         <div class="p-10 b-xs bs-sm"><p class="bb-md mb-5"></p><p>Class: <span class="fw-3">md</span></p></div>
@@ -130,8 +143,8 @@ class DDDocs extends DDD {
   renderBreakpoints() {
     return html`
       <h1 class="fs-m mt-20 mb-2">Breakpoints</h1>
-      <h2 class="fs-s mt-0 mb-5 pb-5 bb-xs">Available Breakpoints</h2>
-      <table class="my-20 mx-10">
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Breakpoints</h2>
+      <table class="my-15 mx-10">
         <thead>
           <tr>
             <th>Breakpoint</th>
@@ -164,8 +177,9 @@ class DDDocs extends DDD {
 
   renderPolarisColors() {
     return html`
-      <h3 class="my-20 font-beaverBlue">Polaris Colors</h3>
-      <div class="grid-2 gap-4 my-30 ml-10">
+    <h1 class="fs-m mt-20 mb-2">Polaris Colors</h1>
+    <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Colors from the Polaris Theme</h2>
+      <div class="grid-2 gap-4 my-15 ml-10">
       <h5>--ddd-theme-polaris-beaverBlue</h5>
       <div class="m-5 p-10 b-xs" style="background-color: var(--ddd-theme-polaris-beaverBlue);" title="#1e407c"></div>
       <h5>--ddd-theme-polaris-beaver70</h5>
@@ -264,8 +278,9 @@ class DDDocs extends DDD {
 
   renderPolarisFunctionalColors() {
     return html`
-      <h3 class="my-20 font-beaverBlue">Polaris Functional Colors</h3>
-      <div class="grid-2 gap-4 my-30 ml-10">
+    <h1 class="fs-m mt-20 mb-2">Polaris Functional Colors</h1>
+    <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Functional Colors from the Polaris Theme</h2>
+      <div class="grid-2 gap-4 my-15 ml-10">
         <h5>--ddd-theme-polaris-link</h5>
         <div class="m-5 p-10 b-xs" style="background-color: var(--ddd-theme-polaris-link);" title="#005fa9"></div>
         <h5>--ddd-theme-polaris-link80</h5>
@@ -302,173 +317,61 @@ class DDDocs extends DDD {
     `;
   }
 
-  renderGradients() {} // Pickup Here
-
-  renderTypography() {
+  renderGradients() {
     return html`
-      <h1 class="fs-m my-2">Typography</h1>
-      <h2 class="fs-s mt-0 mb-5 pb-5 bb-xs">Available Typefaces</h2>
-      <div class="mx-10">
-        <p>Primary Font: <span class="fw-3">Roboto</span></p>
-        <p>Class: <span class="fw-3">ddd-font-primary</span></p>
-        <p class="mb-10">Weights: 400(regular), <span class="fw-2">500(medium),</span> <span class="fw-3">700(bold),</span> <span class="fw-4">900(black)</span></p>
-      </div>
-      <div class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10">
-        <p>16</p><h3 class="fs-4xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>18</p><h3 class="fs-3xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>20</p><h3 class="fs-xxs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>24</p><h3 class="fs-xs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>28</p><h3 class="fs-s m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>32</p><h3 class="fs-ms m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>36</p><h3 class="fs-m m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>40</p><h3 class="fs-ml m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>44</p><h3 class="fs-l m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>48</p><h3 class="fs-xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>56</p><h3 class="fs-xxl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>64</p><h3 class="fs-3xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>72</p><h3 class="fs-4xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      </div>
-      <div class="mx-10">
-        <p>Primary Font: <span class="fw-3">Roboto Slab</span></p>
-        <p>Class: <span class="fw-3">ddd-font-secondary</span></p>
-        <p class="mb-10">Weights: <span class="fw-3">700(bold)</span></p>
-      </div>
-      <div class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10">
-        <p>16</p><h3 class="ddd-font-secondary fs-4xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>18</p><h3 class="ddd-font-secondary fs-3xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>20</p><h3 class="ddd-font-secondary fs-xxs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>24</p><h3 class="ddd-font-secondary fs-xs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>28</p><h3 class="ddd-font-secondary fs-s m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>32</p><h3 class="ddd-font-secondary fs-ms m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>36</p><h3 class="ddd-font-secondary fs-m m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>40</p><h3 class="ddd-font-secondary fs-ml m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>44</p><h3 class="ddd-font-secondary fs-l m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>48</p><h3 class="ddd-font-secondary fs-xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>56</p><h3 class="ddd-font-secondary fs-xxl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>64</p><h3 class="ddd-font-secondary fs-3xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-        <p>72</p><h3 class="ddd-font-secondary fs-4xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      </div>
-      <div class="mx-10">
-      <p>Primary Font: <span class="fw-3">Roboto Condesned</span></p>
-      <p>Class: <span class="fw-3">ddd-font-nav</span></p>
-      <p class="mb-10">Weights: <span class="fw-0">300(light),</span> <span class="fw-3">700(bold)</span></p>
+    <h1 class="fs-m mt-20 mb-2">Gradients</h1>
+    <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Gradients from the Polaris Theme</h2>
+    <div class="grid-6 my-15 ml-10">
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-navBar"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-navBar<span></p></div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-footer"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-footer<span></p></div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-newsFeature"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-newsFeature<span></p></div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-buttons"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-buttons<span></p></div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero<span></p></div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero2"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero2<span></p></div>
     </div>
-    <div class="b-1 grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10">
-      <p>16</p><h3 class="ddd-font-nav fs-4xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>18</p><h3 class="ddd-font-nav fs-3xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>20</p><h3 class="ddd-font-nav fs-xxs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>24</p><h3 class="ddd-font-nav fs-xs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>28</p><h3 class="ddd-font-nav fs-s m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>32</p><h3 class="ddd-font-nav fs-ms m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>36</p><h3 class="ddd-font-nav fs-m m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>40</p><h3 class="ddd-font-nav fs-ml m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>44</p><h3 class="ddd-font-nav fs-l m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>48</p><h3 class="ddd-font-nav fs-xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>56</p><h3 class="ddd-font-nav fs-xxl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>64</p><h3 class="ddd-font-nav fs-3xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-      <p>72</p><h3 class="ddd-font-nav fs-4xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-    </div>
-    <div class="mx-10">
-    <h1 class="fs-m my-2 bb-xs">Accessing Classes</h1>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Font Families</h2>
-    <p class="mb-10">Classes: ddd-font-primary, ddd-font-secondary, ddd-font-nav</p>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Font Weights</h2>
-    <p class="mb-10">Classes: fw-0, fw-1, fw-2, fw-3, fw-4</p>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Font Sizes</h2>
-    <p class="mb-10">Classes: fs-x (4xs, 3xs, 2xs, xs, s, ms, m, ml, l, xl, 2xl, 3xl, 4xl)</p>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Letter Spacing</h2>
-    <table class="my-10">
-      <thead><th>Class</th><th>Value</th><th>Example</th></thead>
-      <tr><td>ls-16-sm</td><td>0.08px</td><td><span class="ls-16-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-18-sm</td><td>0.09px</td><td><span class="ls-18-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-20-sm</td><td>0.1px</td><td><span class="ls-20-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-24-sm</td><td>0.12px</td><td><span class="ls-24-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-28-sm</td><td>0.14px</td><td><span class="ls-28-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-32-sm</td><td>0.16px</td><td><span class="ls-32-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-36-sm</td><td>0.18px</td><td><span class="ls-36-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-40-sm</td><td>0.2px</td><td><span class="ls-40-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-44-sm</td><td>0.22px</td><td><span class="ls-44-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-48-sm</td><td>0.24px</td><td><span class="ls-48-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-56-sm</td><td>0.28px</td><td><span class="ls-56-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-64-sm</td><td>0.32px</td><td><span class="ls-64-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-72-sm</td><td>0.36px</td><td><span class="ls-72-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-16-lg</td><td>0.24px</td><td><span class="ls-16-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-18-lg</td><td>0.27px</td><td><span class="ls-18-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-20-lg</td><td>0.3px</td><td><span class="ls-20-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-24-lg</td><td>0.36px</td><td><span class="ls-24-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-28-lg</td><td>0.42px</td><td><span class="ls-28-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-32-lg</td><td>0.48px</td><td><span class="ls-32-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-36-lg</td><td>0.54px</td><td><span class="ls-36-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-40-lg</td><td>0.6px</td><td><span class="ls-40-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-44-lg</td><td>0.66px</td><td><span class="ls-44-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-48-lg</td><td>0.72px</td><td><span class="ls-48-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-56-lg</td><td>0.84px</td><td><span class="ls-56-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-64-lg</td><td>0.96px</td><td><span class="ls-64-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-72-lg</td><td>1.08px</td><td><span class="ls-72-lg fw-1">PSU-FLEX</span></td></tr>
-    </table>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Line Height</h2>
-    <div class="grid-4 gap-4">
-      <div>
-        <p class="lh-120 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
-        <p class="text-center">Class: <span class="fw-3">lh-120</span></p>
-      </div>
-      <div>
-        <p class="lh-140 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
-        <p class="text-center">Class: <span class="fw-3">lh-140</span></p>
-      </div>
-      <div>
-        <p class="lh-150 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
-        <p class="text-center">Class: <span class="fw-3">lh-150</span></p>
-      </div>
-      <div>
-        <p class="lh-160 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
-        <p class="text-center">Class: <span class="fw-3">lh-160</span></p>
-      </div>
-    </div>
+      `;
+  }
+
+  renderRadius() {
+    return html`
+    <h1 class="fs-m mt-20 mb-2">Radius</h1>
+    <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Radius classes</h2>
+    <div class="grid-7 my-15 mx-10 gap-2">
+    <div><p class="py-20 r-xs b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xs<span></p></div>
+    <div><p class="py-20 r-sm b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-sm<span></p></div>
+    <div><p class="py-20 r-md b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-md<span></p></div>
+    <div><p class="py-20 r-lg b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-lg<span></p></div>
+    <div><p class="py-20 r-xl b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xl<span></p></div>
+    <div><p class="py-20 r-rounded b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-rounded<span></p></div>
+    <div><div class="my-4 py-20 r-circle b-sm bs-sm"></div><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-circle<span></p></div>
     </div>
     `;
   }
 
-
-
-  renderBS() {
+  renderShadows() {
     return html`
-      <h3 class="my-20 font-beaverBlue">Borders & Shadows</h3>
-      <div class="mt-10 grid-4 gap-4 ml-10">
-        <div class="p-10 b-xs"><h5>Border 1</h5></div>
-        <div class="p-10 b-sm"><h5>Border 2</h5></div>
-        <div class="p-10 b-md"><h5>Border 3</h5></div>
-        <div class="p-10 b-lg"><h5>Border 4</h5></div>
-      </div>
-      <h6 class="fw-2 ml-10 mb-15">
-        Accessible using classes:
-        <span class="fw-4">b-x, bt-x, br-x, bb-x, bl-x</span>
-      </h6>
-      <div class="grid-4 gap-4 mt-10 ml-10">
-        <div class="p-10 boxshadow-1"><h5>Box Shadow 1</h5></div>
-        <div class="p-10 boxshadow-2"><h5>Box Shadow 2</h5></div>
-        <div class="p-10 boxshadow-3"><h5>Box Shadow 3</h5></div>
-        <div class="p-10 boxshadow-4"><h5>Box Shadow 4</h5></div>
-      </div>
-      <h6 class="fw-2 ml-10 mb-15">
-        Accessible using class: <span class="fw-4">boxshadow-x</span>
-      </h6>
-      <div class="grid-4 gap-4 mt-10 ml-10">
-        <div class="p-10 textshadow-1"><h5>Text Shadow 1</h5></div>
-        <div class="p-10 textshadow-2"><h5>Text Shadow 2</h5></div>
-        <div class="p-10 textshadow-3"><h5>Text Shadow 3</h5></div>
-        <div class="p-10 textshadow-4"><h5>Text Shadow 4</h5></div>
-      </div>
-      <h6 class="fw-2 ml-10 mb-15">
-        Accessible using class: <span class="fw-4">textshadow-x</span>
-      </h6>
+    <h1 class="fs-m mt-20 mb-2">Shadows</h1>
+    <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Shadow classes</h2>
+    <div class="grid-4 my-15 mx-30 gap-30">
+    <div><p class="py-20 b-sm bs-xs"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-xs<span></p></div>
+    <div><p class="py-20 b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-sm<span></p></div>
+    <div><p class="py-20 b-sm bs-md"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-md<span></p></div>
+    <div><p class="py-20 b-sm bs-lg"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-lg<span></p></div>
+    </div>
+    <div class="grid-4 mt-10 mx-15">
+    <div><h3 class="py-20 m-auto text-center textShadow-1">Text Shadow</h3><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-xs<span></p></div>
+    <div><h3 class="py-20 m-auto text-center textShadow-2">Text Shadow</h3><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-sm<span></p></div>
+    <div><h3 class="py-20 m-auto text-center textShadow-3">Text Shadow</h3><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-md<span></p></div>
+    <div><h3 class="py-20 m-auto text-center textShadow-4">Text Shadow</h3><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-lg<span></p></div>
+    </div>
     `;
   }
 
-  renderMP() {
+  RenderSpacing(){
     return html`
-      <h3 class="my-20 font-beaverBlue">Margin & Padding</h3>
-      <div class="grid-3 gap-4 mt-10 mb-5 ml-20 ">
+    <h1 class="fs-m mt-20 mb-2">Spacing</h1>
+    <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Spacing classes</h2>
+      <div class="grid-3 gap-4 mt-10 mb-5 mx-20">
         <h4>Class Name</h4>
         <h4>Value</h4>
         <h4>Example</h4>
@@ -638,17 +541,198 @@ class DDDocs extends DDD {
     `;
   }
 
+  renderTypography() {
+    return html`
+      <h1 class="fs-m my-2">Typography</h1>
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Typefaces</h2>
+      <div class="mx-10">
+        <p>Primary Font: <span class="fw-3">Roboto</span></p>
+        <p>Class: <span class="fw-3">ddd-font-primary</span></p>
+        <p class="mb-10">Weights: 400(regular), <span class="fw-2">500(medium),</span> <span class="fw-3">700(bold),</span> <span class="fw-4">900(black)</span></p>
+      </div>
+      <div class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10">
+        <p>16</p><h3 class="fs-4xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>18</p><h3 class="fs-3xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>20</p><h3 class="fs-xxs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>24</p><h3 class="fs-xs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>28</p><h3 class="fs-s m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>32</p><h3 class="fs-ms m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>36</p><h3 class="fs-m m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>40</p><h3 class="fs-ml m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>44</p><h3 class="fs-l m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>48</p><h3 class="fs-xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>56</p><h3 class="fs-xxl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>64</p><h3 class="fs-3xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>72</p><h3 class="fs-4xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      </div>
+      <div class="mx-10">
+        <p>Primary Font: <span class="fw-3">Roboto Slab</span></p>
+        <p>Class: <span class="fw-3">ddd-font-secondary</span></p>
+        <p class="mb-10">Weights: <span class="fw-3">700(bold)</span></p>
+      </div>
+      <div class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10">
+        <p>16</p><h3 class="ddd-font-secondary fs-4xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>18</p><h3 class="ddd-font-secondary fs-3xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>20</p><h3 class="ddd-font-secondary fs-xxs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>24</p><h3 class="ddd-font-secondary fs-xs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>28</p><h3 class="ddd-font-secondary fs-s m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>32</p><h3 class="ddd-font-secondary fs-ms m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>36</p><h3 class="ddd-font-secondary fs-m m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>40</p><h3 class="ddd-font-secondary fs-ml m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>44</p><h3 class="ddd-font-secondary fs-l m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>48</p><h3 class="ddd-font-secondary fs-xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>56</p><h3 class="ddd-font-secondary fs-xxl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>64</p><h3 class="ddd-font-secondary fs-3xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <p>72</p><h3 class="ddd-font-secondary fs-4xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      </div>
+      <div class="mx-10">
+      <p>Primary Font: <span class="fw-3">Roboto Condesned</span></p>
+      <p>Class: <span class="fw-3">ddd-font-nav</span></p>
+      <p class="mb-10">Weights: <span class="fw-0">300(light),</span> <span class="fw-3">700(bold)</span></p>
+    </div>
+    <div class="b-1 grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10">
+      <p>16</p><h3 class="ddd-font-nav fs-4xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>18</p><h3 class="ddd-font-nav fs-3xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>20</p><h3 class="ddd-font-nav fs-xxs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>24</p><h3 class="ddd-font-nav fs-xs m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>28</p><h3 class="ddd-font-nav fs-s m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>32</p><h3 class="ddd-font-nav fs-ms m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>36</p><h3 class="ddd-font-nav fs-m m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>40</p><h3 class="ddd-font-nav fs-ml m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>44</p><h3 class="ddd-font-nav fs-l m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>48</p><h3 class="ddd-font-nav fs-xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>56</p><h3 class="ddd-font-nav fs-xxl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>64</p><h3 class="ddd-font-nav fs-3xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+      <p>72</p><h3 class="ddd-font-nav fs-4xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+    </div>
+    <div class="mx-10">
+    <h1 class="fs-m my-2 bb-xs">Accessing Classes</h1>
+    <h2 class="fs-s mt-0 mb-5 pb-5 ">Font Families</h2>
+    <p class="mb-10">Classes: ddd-font-primary, ddd-font-secondary, ddd-font-nav</p>
+    <h2 class="fs-s mt-0 mb-5 pb-5 ">Font Weights</h2>
+    <p class="mb-10">Classes: fw-0, fw-1, fw-2, fw-3, fw-4</p>
+    <h2 class="fs-s mt-0 mb-5 pb-5 ">Font Sizes</h2>
+    <p class="mb-10">Classes: fs-x (4xs, 3xs, 2xs, xs, s, ms, m, ml, l, xl, 2xl, 3xl, 4xl)</p>
+    <h2 class="fs-s mt-0 mb-5 pb-5 ">Letter Spacing</h2>
+    <table class="my-10">
+      <thead><th>Class</th><th>Value</th><th>Example</th></thead>
+      <tr><td>ls-16-sm</td><td>0.08px</td><td><span class="ls-16-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-18-sm</td><td>0.09px</td><td><span class="ls-18-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-20-sm</td><td>0.1px</td><td><span class="ls-20-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-24-sm</td><td>0.12px</td><td><span class="ls-24-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-28-sm</td><td>0.14px</td><td><span class="ls-28-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-32-sm</td><td>0.16px</td><td><span class="ls-32-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-36-sm</td><td>0.18px</td><td><span class="ls-36-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-40-sm</td><td>0.2px</td><td><span class="ls-40-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-44-sm</td><td>0.22px</td><td><span class="ls-44-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-48-sm</td><td>0.24px</td><td><span class="ls-48-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-56-sm</td><td>0.28px</td><td><span class="ls-56-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-64-sm</td><td>0.32px</td><td><span class="ls-64-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-72-sm</td><td>0.36px</td><td><span class="ls-72-sm fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-16-lg</td><td>0.24px</td><td><span class="ls-16-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-18-lg</td><td>0.27px</td><td><span class="ls-18-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-20-lg</td><td>0.3px</td><td><span class="ls-20-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-24-lg</td><td>0.36px</td><td><span class="ls-24-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-28-lg</td><td>0.42px</td><td><span class="ls-28-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-32-lg</td><td>0.48px</td><td><span class="ls-32-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-36-lg</td><td>0.54px</td><td><span class="ls-36-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-40-lg</td><td>0.6px</td><td><span class="ls-40-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-44-lg</td><td>0.66px</td><td><span class="ls-44-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-48-lg</td><td>0.72px</td><td><span class="ls-48-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-56-lg</td><td>0.84px</td><td><span class="ls-56-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-64-lg</td><td>0.96px</td><td><span class="ls-64-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-72-lg</td><td>1.08px</td><td><span class="ls-72-lg fw-1">PSU-FLEX</span></td></tr>
+    </table>
+    <h2 class="fs-s mt-0 mb-5 pb-5 ">Line Height</h2>
+    <div class="grid-4 gap-4">
+      <div>
+        <p class="lh-120 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
+        <p class="text-center">Class: <span class="fw-3">lh-120</span></p>
+      </div>
+      <div>
+        <p class="lh-140 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
+        <p class="text-center">Class: <span class="fw-3">lh-140</span></p>
+      </div>
+      <div>
+        <p class="lh-150 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
+        <p class="text-center">Class: <span class="fw-3">lh-150</span></p>
+      </div>
+      <div>
+        <p class="lh-auto p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
+        <p class="text-center">Class: <span class="fw-3">lh-auto</span></p>
+      </div>
+    </div>
+    </div>
+    `;
+  }
 
+  renderRichText() {
+    return html`
+    <h1 class="fs-m my-2">Rich Text</h1>
+    <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Rich text formatting and other data displays</h2>
+    <div class="b-xs py-8 px-4 my-10 mx-30">
+      <h1>h1 Heading</h1>
+      <h2>h2 Heading</h2>
+      <h3>h3 Heading</h3>
+      <h4>h4 Heading</h4>
+      <h5>h5 Heading</h5>
+      <h6>h6 Heading</h6>
+      <p>Body text - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of leteters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+      <p class="my-2"><a>HyperLink</a></p>
+      <p class="my-2"><b>Bold Text</b></p>
+      <p class="my-2"><i>Italic Text</i></p>
+      <u>Underlined Text</u>
+      <p>Unordered List</p>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+      <p>Ordered List</p>
+      <ol>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ol>
+      <blockquote>The Pennsylvania State University is a multi-campus, land-grant, public research university that educates students from around the world and supports individuals and communities through integrated programs of teaching, research, and service.</blockquote>
+      <hr>
+      <h2>Sample Text<span class="hr-vertical py-2"></span></h2>
+    <!--  
+      Hr element
+    -->
+      <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Departments</a></li>
+        <li><a href="#">Electrical Engineering</a></li>
+      </ul>
+      <details><summary>U.S. News & World Report</summary><p>Details text</p></details>
+    `;
+  }
 
   /**
    * LitElement render callback
-   */
+  */
   render() {
     if (this.options.includes(this.option)) {
-      return html`${this[`render${this.option}`]()}`;
+      const renderMethod = this[`render${this.option}`];
+      if (typeof renderMethod === 'function') {
+        return html`${renderMethod.call(this)}`;
+      } else {
+        console.error(`Render method for option "${this.option}" not found.`);
+      }
+    } else {
+      return html`${this.options.map((option) => {
+        const renderMethod = this[`render${option}`];
+        if (typeof renderMethod === 'function') {
+          return renderMethod.call(this);
+        } else {
+          console.error(`Render method for option "${option}" not found.`);
+          return html``; // Return empty template if method not found
+        }
+      })}`;
     }
-    return html`${this.options.map((option) => this[`render${option}`]())}`;
   }
+
   /**
    * Convention we use
    */
