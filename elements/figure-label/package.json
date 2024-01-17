@@ -29,7 +29,8 @@
   "scripts": {
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
-    "dev": "concurrently --kill-others 'yarn run watch' 'yarn run serve'",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\""
+,
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
