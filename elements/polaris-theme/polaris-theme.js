@@ -449,7 +449,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
         <main>
           <article id="contentcontainer">
             <div id="haxcms-theme-top"></div>
-            <site-breadcrumb></site-breadcrumb>
+            <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
             <site-active-title part="page-title"></site-active-title>
             <site-active-tags
               part="page-tags"
@@ -464,10 +464,12 @@ class PolarisTheme extends HAXCMSOperationButtons(
           role="complementary"
           aria-label="Primary Sidebar"
           itemtype="http://schema.org/WPSideBar"
+          part="page-primary-sidebar"
         >
           <section>
             <h4>Contents</h4>
             <site-children-block
+              part="page-children-block"
               dynamic-methodology="ancestor"
             ></site-children-block>
           </section>
