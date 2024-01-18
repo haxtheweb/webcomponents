@@ -694,7 +694,7 @@ function highlightBlock(block) {
   if (isNotHighlighted(language)) return;
 
   if (options.useBR) {
-    node = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
+    node = globalThis.document.createElementNS("http://www.w3.org/1999/xhtml", "div");
     node.innerHTML = block.innerHTML
       .replace(/\n/g, "")
       .replace(/<br[ \/]*>/g, "\n");
@@ -706,7 +706,7 @@ function highlightBlock(block) {
 
   originalStream = nodeStream(node);
   if (originalStream.length) {
-    resultNode = document.createElementNS(
+    resultNode = globalThis.document.createElementNS(
       "http://www.w3.org/1999/xhtml",
       "div"
     );
@@ -743,7 +743,7 @@ function initHighlighting() {
   if (initHighlighting.called) return;
   initHighlighting.called = true;
 
-  var blocks = document.querySelectorAll("pre code");
+  var blocks = globalThis.document.querySelectorAll("pre code");
   ArrayProto.forEach.call(blocks, highlightBlock);
 }
 
@@ -955,7 +955,7 @@ export function highlightjs_line_numbers() {
 
   // Function to workaround a copy issue with Microsoft Edge.
   // Due to hljs-ln wrapping the lines of code inside a <table> element,
-  // itself wrapped inside a <pre> element, window.getSelection().toString()
+  // itself wrapped inside a <pre> element, globalThis.getSelection().toString()
   // does not contain any line breaks. So we need to get them back using the
   // rendered code in the DOM as reference.
   function edgeGetSelectedCodeLines(selection) {
@@ -1025,15 +1025,15 @@ export function highlightjs_line_numbers() {
 
   // ensure consistent code copy/paste behavior across all browsers
   // (see https://github.com/wcoder/highlightjs-line-numbers.js/issues/51)
-  document.addEventListener("copy", function (e) {
+  globalThis.document.addEventListener("copy", function (e) {
     // get current selection
-    var selection = window.getSelection();
+    var selection = globalThis.getSelection();
     // override behavior when one wants to copy line of codes
     if (isHljsLnCodeDescendant(selection.anchorNode)) {
       var selectionText;
       // workaround an issue with Microsoft Edge as copied line breaks
       // are removed otherwise from the selection string
-      if (window.navigator.userAgent.indexOf("Edge") !== -1) {
+      if (globalThis.navigator.userAgent.indexOf("Edge") !== -1) {
         selectionText = edgeGetSelectedCodeLines(selection);
       } else {
         // other browsers can directly use the selection string
@@ -1097,7 +1097,7 @@ export function highlightjs_line_numbers() {
   function lineNumbersValue(value, options) {
     if (typeof value !== "string") return;
 
-    var element = document.createElement("code");
+    var element = globalThis.document.createElement("code");
     element.innerHTML = value;
 
     return lineNumbersInternal(element, options);

@@ -71,7 +71,7 @@ class PaperFilterDialog extends PolymerElement {
   open() {
     // Attach dialog to the body to ensure it's on top of all existing overlays
     // XXX - Known issue: this generates addEventListener errors from a11y
-    document.body.appendChild(this);
+    globalThis.document.body.appendChild(this);
 
     // Wait until dialog is added to the DOM (required for Safari)
     setTimeout(

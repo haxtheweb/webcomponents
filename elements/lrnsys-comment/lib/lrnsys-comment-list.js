@@ -251,7 +251,7 @@ class LrnsysCommentList extends PolymerElement {
   }
   constructor() {
     super();
-    window.SimpleModal.requestAvailability();
+    globalThis.SimpleModal.requestAvailability();
     setTimeout(() => {
       this.addEventListener("comment-save", this.handleSave.bind(this));
       this.addEventListener("comment-editing", this.handleEditing.bind(this));
@@ -273,23 +273,23 @@ class LrnsysCommentList extends PolymerElement {
   handleDeleteDialog(e) {
     this.activeComment = e.detail.comment;
     // content of dialog
-    let c = document.createElement("p");
-    let t = document.createTextNode(
+    let c = globalThis.document.createElement("p");
+    let t = globalThis.document.createTextNode(
       "Are you sure you want to delete your comment? This cannot be undone."
     );
     c.appendChild(t);
     // buttons
-    let b = document.createElement("div");
+    let b = globalThis.document.createElement("div");
     b.classList.add("buttons");
     // close button
-    let pb = document.createElement("button");
+    let pb = globalThis.document.createElement("button");
     pb.setAttribute("dialog-dismiss", "dialog-dismiss");
     pb.style.padding = "16px";
     pb.style.margin = "16px";
-    t = document.createTextNode("Keep comment");
+    t = globalThis.document.createTextNode("Keep comment");
     pb.appendChild(t);
     // confirm button
-    let pb2 = document.createElement("button");
+    let pb2 = globalThis.document.createElement("button");
     pb2.setAttribute("dialog-confirm", "dialog-confirm");
     pb2.setAttribute("autofocus", "autofocus");
     pb2.addEventListener("click", this._handleDeleteConfirm.bind(this));
@@ -297,7 +297,7 @@ class LrnsysCommentList extends PolymerElement {
     pb2.style.backgroundColor = "red";
     pb2.style.padding = "16px";
     pb2.style.margin = "16px";
-    t = document.createTextNode("Delete the comment");
+    t = globalThis.document.createTextNode("Delete the comment");
     pb2.appendChild(t);
     // append buttons
     b.appendChild(pb2);

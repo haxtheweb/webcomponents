@@ -358,9 +358,9 @@ function DocumentConversion(options, comments) {
 
   var elementConverters = {
     document: function (document, messages, options) {
-      var children = convertElements(document.children, messages, options);
+      var children = convertElements(globalThis.document.children, messages, options);
       var notes = noteReferences.map(function (noteReference) {
-        return document.notes.resolve(noteReference);
+        return globalThis.document.notes.resolve(noteReference);
       });
       var notesNodes = convertElements(notes, messages, options);
       return children.concat([

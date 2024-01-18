@@ -436,7 +436,7 @@ class SiteTopMenu extends LitElement {
         this.__disposer.push(reaction);
       });
     }, 50);
-    window.addEventListener(
+    globalThis.addEventListener(
       "resize",
       () => {
         this._activeIdChanged(this.activeId);
@@ -444,7 +444,7 @@ class SiteTopMenu extends LitElement {
       { signal: this.windowControllers.signal }
     );
     setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
+      globalThis.dispatchEvent(new Event("resize"));
     }, 3000);
   }
   disconnectedCallback() {

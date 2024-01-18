@@ -205,7 +205,7 @@ class SimpleBlogPost extends SimpleColors {
     super.connectedCallback();
     this.__disposer = [];
     setTimeout(() => {
-      window.addEventListener("scroll", this._scrollListener.bind(this), {
+      globalThis.addEventListener("scroll", this._scrollListener.bind(this), {
         signal: this.windowControllers.signal,
       });
       autorun((reaction) => {
@@ -235,7 +235,7 @@ class SimpleBlogPost extends SimpleColors {
   _scrollListener(e) {
     if (this.hasImage) {
       let top =
-        (window.pageYOffset || document.scrollTop) - (document.clientTop || 0);
+        (globalThis.pageYOffset || globalThis.document.scrollTop) - (globalThis.document.clientTop || 0);
       if (top < 0 || top > 1500) {
         return;
       }

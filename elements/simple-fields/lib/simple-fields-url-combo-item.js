@@ -109,7 +109,7 @@ class SimpleFieldsUrlComboItem extends LitElement {
    * @returns {object}
    */
   get currentLocation() {
-    return window.location;
+    return globalThis.location;
   }
   /**
    * URL object from value string

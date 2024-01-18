@@ -68,32 +68,32 @@ class HAXCMSBackendUserfs extends LitElement {
       this.activeItem = toJS(store.activeItem);
       this.__disposer.push(reaction);
     });
-    window.addEventListener("jwt-token", this._jwtTokenFired.bind(this), {
+    globalThis.addEventListener("jwt-token", this._jwtTokenFired.bind(this), {
       signal: this.windowControllers.signal,
     });
 
     // HAX CMS events to intercept
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this),
       { signal: this.windowControllers.signal }
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-save-outline",
       this.saveOutline.bind(this),
       { signal: this.windowControllers.signal }
     );
-    window.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
+    globalThis.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
       signal: this.windowControllers.signal,
     });
-    window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this), {
+    globalThis.addEventListener("haxcms-delete-node", this.deleteNode.bind(this), {
       signal: this.windowControllers.signal,
     });
-    window.addEventListener("haxcms-create-node", this.createNode.bind(this), {
+    globalThis.addEventListener("haxcms-create-node", this.createNode.bind(this), {
       signal: this.windowControllers.signal,
     });
     // listen for app being selected
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-app-picker-selection",
       this._appPicked.bind(this),
       { signal: this.windowControllers.signal }

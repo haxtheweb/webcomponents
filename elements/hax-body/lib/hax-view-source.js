@@ -247,9 +247,9 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
     ).then(async (e) => {
       let body = await HAXStore.activeHaxBody.haxToContent();
-      window.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
+      globalThis.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
         body,
-        document.title
+        globalThis.document.title
       );
       HAXStore.toast(this.t.fileDownloaded);
       this.close();
@@ -265,10 +265,10 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       html: haxBodyHtml,
     });
     if (response.status == 200) {
-      const link = document.createElement("a");
+      const link = globalThis.document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = window.URL.createObjectURL(
+      link.href = globalThis.URL.createObjectURL(
         b64toBlob(
           `${response.data}`,
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -292,10 +292,10 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       html: haxBodyHtml,
     });
     if (response.status == 200 && response.data) {
-      const link = document.createElement("a");
+      const link = globalThis.document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = window.URL.createObjectURL(
+      link.href = globalThis.URL.createObjectURL(
         b64toBlob(btoa(response.data), "text/markdown")
       );
       link.download = "PageContents.md";
@@ -314,18 +314,18 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     let htmlContent = await HAXStore.activeHaxBody.haxToContent();
     // base helps w/ calculating URLs in content
     var base = "";
-    if (document.querySelector("base")) {
-      base = document.querySelector("base").href;
+    if (globalThis.document.querySelector("base")) {
+      base = globalThis.document.querySelector("base").href;
     }
     const response = await MicroFrontendRegistry.call("@core/htmlToPdf", {
       base: base,
       html: htmlContent,
     });
     if (response.status == 200 && response.data) {
-      const link = document.createElement("a");
+      const link = globalThis.document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = window.URL.createObjectURL(
+      link.href = globalThis.URL.createObjectURL(
         b64toBlob(response.data, "application/pdf")
       );
       link.download = "PageContents.pdf";
@@ -410,7 +410,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   openSource() {
     // import at this time so we can delay as long as possible
     // from needing to pull in monaco
-    if (!window.customElements.get("code-editor")) {
+    if (!globalThis.customElements.get("code-editor")) {
       import("@lrnwebcomponents/code-editor/code-editor.js").then(() => {
         this.updateEditor();
         // delay is because we conditionally render the entire treee
@@ -430,7 +430,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
 
   revisionHistoryClick() {
     if (HAXStore.revisionHistoryLink) {
-      window.open(HAXStore.revisionHistoryLink, "_blank");
+      globalThis.open(HAXStore.revisionHistoryLink, "_blank");
     }
   }
   /**
@@ -442,7 +442,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     hiddenarea.removeAttribute("hidden");
     hiddenarea.focus();
     hiddenarea.select();
-    document.execCommand("copy");
+    globalThis.document.execCommand("copy");
     hiddenarea.setAttribute("hidden", "hidden");
     HAXStore.toast(this.t.copiedToClipboard);
     //this.close();
@@ -462,7 +462,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     hiddenarea.value = str;
     hiddenarea.focus();
     hiddenarea.select();
-    document.execCommand("copy");
+    globalThis.document.execCommand("copy");
     hiddenarea.value = val;
     hiddenarea.setAttribute("hidden", "hidden");
     HAXStore.toast(this.t.copiedToClipboard);
@@ -507,7 +507,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
             />
             <title>hax-body demo</title>
-            <script>window.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/"; </script> <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script> 
+            <script>globalThis.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/"; </script> <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script> 
             <style>
               body {
                 padding: 32px;

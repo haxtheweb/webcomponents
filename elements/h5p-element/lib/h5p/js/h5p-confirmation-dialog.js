@@ -66,7 +66,7 @@ H5P.ConfirmationDialog = (function(EventDispatcher) {
     var resizeIFrame = false;
 
     // Create background
-    var popupBackground = document.createElement("div");
+    var popupBackground = globalThis.document.createElement("div");
     popupBackground.classList.add(
       "h5p-confirmation-dialog-background",
       "hidden",
@@ -74,7 +74,7 @@ H5P.ConfirmationDialog = (function(EventDispatcher) {
     );
 
     // Create outer popup
-    var popup = document.createElement("div");
+    var popup = globalThis.document.createElement("div");
     popup.classList.add("h5p-confirmation-dialog-popup", "hidden");
     popup.setAttribute("role", "dialog");
     popup.setAttribute(
@@ -91,46 +91,46 @@ H5P.ConfirmationDialog = (function(EventDispatcher) {
     });
 
     // Popup header
-    var header = document.createElement("div");
+    var header = globalThis.document.createElement("div");
     header.classList.add("h5p-confirmation-dialog-header");
     popup.appendChild(header);
 
     // Header text
-    var headerText = document.createElement("div");
+    var headerText = globalThis.document.createElement("div");
     headerText.classList.add("h5p-confirmation-dialog-header-text");
     headerText.innerHTML = options.headerText;
     header.appendChild(headerText);
 
     // Popup body
-    var body = document.createElement("div");
+    var body = globalThis.document.createElement("div");
     body.classList.add("h5p-confirmation-dialog-body");
     popup.appendChild(body);
 
     // Popup text
-    var text = document.createElement("div");
+    var text = globalThis.document.createElement("div");
     text.classList.add("h5p-confirmation-dialog-text");
     text.innerHTML = options.dialogText;
     text.id = "h5p-confirmation-dialog-dialog-text-" + uniqueId;
     body.appendChild(text);
 
     // Popup buttons
-    var buttons = document.createElement("div");
+    var buttons = globalThis.document.createElement("div");
     buttons.classList.add("h5p-confirmation-dialog-buttons");
     body.appendChild(buttons);
 
     // Cancel button
-    var cancelButton = document.createElement("button");
+    var cancelButton = globalThis.document.createElement("button");
     cancelButton.classList.add("h5p-core-cancel-button");
     cancelButton.textContent = options.cancelText;
 
     // Confirm button
-    var confirmButton = document.createElement("button");
+    var confirmButton = globalThis.document.createElement("button");
     confirmButton.classList.add("h5p-core-button");
     confirmButton.classList.add("h5p-confirmation-dialog-confirm-button");
     confirmButton.textContent = options.confirmText;
 
     // Exit button
-    var exitButton = document.createElement("button");
+    var exitButton = globalThis.document.createElement("button");
     exitButton.classList.add("h5p-confirmation-dialog-exit");
     exitButton.setAttribute("aria-hidden", "true");
     exitButton.tabIndex = -1;
@@ -309,7 +309,7 @@ H5P.ConfirmationDialog = (function(EventDispatcher) {
      */
     this.show = function(offsetTop) {
       // Capture focused item
-      previouslyFocused = document.activeElement;
+      previouslyFocused = globalThis.document.activeElement;
       wrapperElement.appendChild(popupBackground);
       startCapturingFocus();
       disableUnderlay();
@@ -366,7 +366,7 @@ H5P.ConfirmationDialog = (function(EventDispatcher) {
      * @param {number|null} minHeight
      */
     this.setViewPortMinimumHeight = function(minHeight) {
-      var container = document.querySelector(".h5p-container") || document.body;
+      var container = globalThis.document.querySelector(".h5p-container") || globalThis.document.body;
       container.style.minHeight =
         typeof minHeight === "number" ? minHeight + "px" : minHeight;
     };

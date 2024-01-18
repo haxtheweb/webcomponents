@@ -107,7 +107,7 @@ export const HAXCMSOperationButtons = function (SuperClass) {
           })
         );
       }
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("simple-modal-hide", {
           bubbles: true,
           cancelable: true,
@@ -125,7 +125,7 @@ export const HAXCMSOperationButtons = function (SuperClass) {
           detail: e.detail,
         })
       );
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("simple-modal-hide", {
           bubbles: true,
           cancelable: true,

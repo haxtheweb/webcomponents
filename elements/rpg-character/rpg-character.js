@@ -58,9 +58,11 @@ class RpgCharacter extends SimpleColors {
     this.hatColor = 0;
     this.demo = false;
     this.fire = false;
-    this.reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    if (globalThis.matchMedia) {
+      this.reduceMotion = globalThis.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+    }
   }
 
   randomColor(seed = null) {

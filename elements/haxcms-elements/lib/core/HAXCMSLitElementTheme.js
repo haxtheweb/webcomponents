@@ -68,7 +68,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   }
 
   hoverIntentEnter(e) {
-    this.__styleTag = document.createElement("style");
+    this.__styleTag = globalThis.document.createElement("style");
     let iconPath = SimpleIconsetStore.getIcon("icons:link");
     this.__styleTag.innerHTML = `
     #${e.target.getAttribute(
@@ -455,7 +455,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     if (!target.id && target.parentNode && target.parentNode.id) {
       target = target.parentNode;
     }
-    const isSafari = window.safari !== undefined;
+    const isSafari = globalThis.safari !== undefined;
     if (isSafari) {
       target.scrollIntoView();
     } else {
@@ -465,20 +465,20 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         inline: "nearest",
       });
     }
-    let el = document.createElement("textarea");
+    let el = globalThis.document.createElement("textarea");
     el.value =
-      window.location.origin +
-      window.location.pathname +
+    globalThis.location.origin +
+      globalThis.location.pathname +
       "#" +
       target.getAttribute("id");
     // alter URL state
-    window.history.pushState({}, null, el.value);
-    window.dispatchEvent(new PopStateEvent("popstate"));
-    document.body.appendChild(el);
+    globalThis.history.pushState({}, null, el.value);
+    globalThis.dispatchEvent(new PopStateEvent("popstate"));
+    globalThis.document.body.appendChild(el);
     el.select();
-    document.execCommand("copy");
-    document.body.removeChild(el);
-    window.dispatchEvent(
+    globalThis.document.execCommand("copy");
+    globalThis.document.body.removeChild(el);
+    globalThis.dispatchEvent(
       new CustomEvent("haxcms-toast-show", {
         cancelable: true,
         detail: {
@@ -594,7 +594,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         if (this._location && this._location.hash) {
           let target = this.querySelector(this._location.hash);
           if (target) {
-            const isSafari = window.safari !== undefined;
+            const isSafari = globalThis.safari !== undefined;
             if (isSafari) {
               target.scrollIntoView();
             } else {
@@ -636,7 +636,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           if (this._location && this._location.hash) {
             let target = this.querySelector(this._location.hash);
             if (target) {
-              const isSafari = window.safari !== undefined;
+              const isSafari = globalThis.safari !== undefined;
               if (isSafari) {
                 target.scrollIntoView();
               } else {
@@ -695,10 +695,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           // inject's theme's specific style sheet criteria into hax body
           // this should ensure that low level css is the same if in shadowRoot for hax-body or
           // primary design
-          if (window.HaxStore && window.HaxStore.requestAvailability()) {
+          if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
             render(
               this.HAXCMSGlobalStyleSheetEditModeContent(),
-              window.HaxStore.requestAvailability().activeHaxBody.shadowRoot.querySelector(
+              globalThis.HaxStore.requestAvailability().activeHaxBody.shadowRoot.querySelector(
                 "#hax-body-style-element"
               )
             );

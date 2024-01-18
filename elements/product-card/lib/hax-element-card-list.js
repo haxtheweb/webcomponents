@@ -12,7 +12,7 @@ class HAXElementCardList extends LitElement {
     this.value = {};
     this.cols = 2;
     this._layout = "1-1-1";
-    window.SimpleModal.requestAvailability();
+    globalThis.SimpleModal.requestAvailability();
   }
   static get tag() {
     return "hax-element-card-list";
@@ -233,7 +233,7 @@ class HAXElementCardList extends LitElement {
   }
   _viewDemo(e) {
     if (e.target && e.target.nextElementSibling) {
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("simple-modal-show", {
           bubbles: true,
           composed: true,

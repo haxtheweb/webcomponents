@@ -151,7 +151,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           attribute: "disabled",
         },
         /**
-         * The command used for document.execCommand.
+         * The command used for globalThis.document.execCommand.
          */
         command: {
           type: String,
@@ -180,7 +180,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         },
 
         /**
-         * The command used for document.execCommand when toggled.
+         * The command used for globalThis.document.execCommand when toggled.
          */
         toggledCommand: {
           attribute: "toggled-command",
@@ -225,7 +225,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     }
 
     /**
-     * gets command param for document.execCommand
+     * gets command param for globalThis.document.execCommand
      * @readonly
      */
     get operationCommand() {
@@ -234,7 +234,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         : this.command;
     }
     /**
-     * gets value param for document.execCommand
+     * gets value param for globalThis.document.execCommand
      * @readonly
      */
     get operationCommandVal() {
@@ -382,7 +382,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      */
     _getSelectedHtml() {
       if (this.range) {
-        let div = document.createElement("div"),
+        let div = globalThis.document.createElement("div"),
           contents = this.range.cloneContents(),
           val;
         div.appendChild(contents);

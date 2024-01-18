@@ -42,7 +42,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
             `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
           ) != toJS(store.location.pathname)
         ) {
-          let btn = document.createElement("a");
+          let btn = globalThis.document.createElement("a");
           btn.setAttribute(
             "href",
             localStorageGet(
@@ -51,7 +51,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
           );
           btn.addEventListener("click", this.resumeLastRoute.bind(this));
           btn.innerHTML = `<button style="padding:4px;font-weight:bold;background-color: black; color: white; border: 4px solid black; border-radius:none;margin-left:4px;cursor: pointer;">${this.t.resume}</button>`;
-          const urlParams = new URLSearchParams(window.location.search);
+          const urlParams = new URLSearchParams(globalThis.location.search);
           const format = urlParams.get("format");
           // ensure we don't show this if we have an alternate format request
           if (!format) {
@@ -73,7 +73,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
      * Respond to confirmation of wanting to resume the previous route
      */
     resumeLastRoute(e) {
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("haxcms-toast-hide", {
           bubbles: true,
           composed: true,

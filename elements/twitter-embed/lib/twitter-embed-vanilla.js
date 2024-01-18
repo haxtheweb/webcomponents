@@ -16,10 +16,10 @@ class TwitterEmbedVanilla extends HTMLElement {
   constructor() {
     super();
     this.lang =
-      document.body.getAttribute("xml:lang") ||
-      document.body.getAttribute("lang") ||
-      document.documentElement.getAttribute("xml:lang") ||
-      document.documentElement.getAttribute("lang") ||
+      globalThis.document.body.getAttribute("xml:lang") ||
+      globalThis.document.body.getAttribute("lang") ||
+      globalThis.document.documentElement.getAttribute("xml:lang") ||
+      globalThis.document.documentElement.getAttribute("lang") ||
       navigator.language ||
       FALLBACK_LANG;
     this.dataWidth = this.getAttribute("data-width")

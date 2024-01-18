@@ -348,8 +348,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   }
   refreshData() {
     let base = this.base;
-    if (base == "" && document.querySelector("base")) {
-      base = document.querySelector("base").href;
+    if (base == "" && globalThis.document.querySelector("base")) {
+      base = globalThis.document.querySelector("base").href;
     }
     const site = toJS(store.manifest);
     const params = {
@@ -436,7 +436,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     return readVal.join(", ");
   }
   closeModal() {
-    window.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
   }
   activeChanged(e) {
     this.activeTab = e.detail.activeTab;
@@ -580,8 +580,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   render() {
     const data = this.data;
     let base = this.base;
-    if (base == "" && document.querySelector("base")) {
-      base = document.querySelector("base").href;
+    if (base == "" && globalThis.document.querySelector("base")) {
+      base = globalThis.document.querySelector("base").href;
     }
     return html`
       ${this.pageSelector()}

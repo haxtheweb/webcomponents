@@ -22,14 +22,14 @@ class CourseIntroLessonPlans extends LitElement {
       // good device, we can inject font we use
       if (badDevice === false) {
         // Add the included Lato font-family
-        let link = document.createElement("link");
+        let link = globalThis.document.createElement("link");
         link.setAttribute(
           "href",
           "https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");
-        document.head.appendChild(link);
+        globalThis.document.head.appendChild(link);
       }
     });
   }

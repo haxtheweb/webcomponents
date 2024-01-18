@@ -119,10 +119,10 @@ class RelativeHeadingLite extends LitElement {
   /**
    * returns state manager
    * @readonly
-   * @returns {object} window.RelativeHeadingStateManager instance
+   * @returns {object} globalThis.RelativeHeadingStateManager instance
    */
   get manager() {
-    return window.RelativeHeadingStateManager.requestAvailability();
+    return globalThis.RelativeHeadingStateManager.requestAvailability();
   }
 
   /**

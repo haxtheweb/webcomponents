@@ -58,7 +58,7 @@ const loadingStylesResizeEvent = function () {
   WCRegistryLoaderCSSDebounce2 = setTimeout(() => {
     // ensure we have something undefind
     if (
-      document.body.querySelectorAll("replace-tag,:not(:defined)").length > 0
+      globalThis.document.body.querySelectorAll("replace-tag,:not(:defined)").length > 0
     ) {
       WCRegistryLoaderCSS();
     } else {
@@ -68,6 +68,6 @@ const loadingStylesResizeEvent = function () {
   }, 100);
 };
 // resize function incase the screen changes shape while still loading (like phone rotating)
-window.addEventListener("resize", loadingStylesResizeEvent, {
+globalThis.addEventListener("resize", loadingStylesResizeEvent, {
   signal: windowControllers.signal,
 });

@@ -22,9 +22,9 @@ class HAXCMSBlankTheme extends CleanTwo {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    document.body.style.setProperty("--haxcms-color", "white");
+    globalThis.document.body.style.setProperty("--haxcms-color", "white");
     // in-case coming from a theme that undoes this
-    document.body.style.overflow = "auto";
+    globalThis.document.body.style.overflow = "auto";
   }
   static get styles() {
     return css`

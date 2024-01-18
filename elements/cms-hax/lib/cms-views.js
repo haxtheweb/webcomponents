@@ -161,25 +161,25 @@ class CMSViews extends PolymerElement {
   _handleviewsResponse(newValue, oldValue) {
     if (newValue !== null && typeof newValue.content !== typeof undefined) {
       // store the text and url callbacks
-      if (document.getElementById("cmstokenidtolockonto") != null) {
+      if (globalThis.document.getElementById("cmstokenidtolockonto") != null) {
         document
           .getElementById("cmstokenidtolockonto")
           .setAttribute("href", newValue.editEndpoint);
-        document.getElementById("cmstokenidtolockonto").innerHTML =
+        globalThis.document.getElementById("cmstokenidtolockonto").innerHTML =
           newValue.editText;
       }
       // wipe our own slot here
       wipeSlot(this);
       // now inject the content we got
       microTask.run(() => {
-        let frag = document.createElement("span");
+        let frag = globalThis.document.createElement("span");
         frag.innerHTML = newValue.content;
         let newNode = frag.cloneNode(true);
         this.appendChild(newNode);
         setTimeout(() => {
           this.loading = false;
-          if (window.WCAutoload) {
-            window.WCAutoload.process();
+          if (globalThis.WCAutoload) {
+            globalThis.WCAutoload.process();
           }
         }, 600);
       });
@@ -198,9 +198,9 @@ class CMSViews extends PolymerElement {
       // support going from a null element to a real one
       if (
         typeof this.viewsEndPoint === typeof undefined &&
-        typeof window.cmsviewsEndPoint !== typeof undefined
+        typeof globalThis.cmsviewsEndPoint !== typeof undefined
       ) {
-        this.viewsEndPoint = window.cmsviewsEndPoint;
+        this.viewsEndPoint = globalThis.cmsviewsEndPoint;
       }
       if (this.viewsEndPoint) {
         this.loading = true;
@@ -228,9 +228,9 @@ class CMSViews extends PolymerElement {
         // support for autoloading the views data needed for the request from globals
         if (
           typeof this.viewsEndPoint === typeof undefined &&
-          typeof window.cmsviewsEndPoint !== typeof undefined
+          typeof globalThis.cmsviewsEndPoint !== typeof undefined
         ) {
-          this.viewsEndPoint = window.cmsviewsEndPoint;
+          this.viewsEndPoint = globalThis.cmsviewsEndPoint;
         }
         if (this.viewsEndPoint) {
           this.loading = true;

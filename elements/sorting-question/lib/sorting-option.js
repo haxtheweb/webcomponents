@@ -335,4 +335,4 @@ export class SortingOption extends LitElement {
 
 //define element
 
-window.customElements.define(SortingOption.tag, SortingOption);
+globalThis.customElements.define(SortingOption.tag, SortingOption);

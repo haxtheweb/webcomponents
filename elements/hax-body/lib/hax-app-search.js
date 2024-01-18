@@ -125,15 +125,15 @@ class HaxAppSearch extends LitElement {
 
     for (param in params) {
       value = params[param];
-      //param = window.encodeURIComponent(param);
+      //param = globalThis.encodeURIComponent(param);
       if (param == "__HAXJWT__" || param == "__HAXAPPENDUPLOADENDPOINT__") {
         // do nothing we skip these internal values
       } else if (Array.isArray(value)) {
         for (var i = 0; i < value.length; i++) {
-          queryParts.push(param + "=" + window.encodeURIComponent(value[i]));
+          queryParts.push(param + "=" + globalThis.encodeURIComponent(value[i]));
         }
       } else if (value !== null) {
-        queryParts.push(param + "=" + window.encodeURIComponent(value));
+        queryParts.push(param + "=" + globalThis.encodeURIComponent(value));
       } else {
         queryParts.push(param);
       }

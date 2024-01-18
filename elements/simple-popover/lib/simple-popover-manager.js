@@ -180,13 +180,13 @@ class SimplePopoverManager extends LitElement {
       // Highly polarized detection of 50% in any direction
       // forces the pointer in the opposite direction
       if (orientation == "tb") {
-        if (menu.y > window.innerHeight / 2) {
+        if (menu.y > globalThis.innerHeight / 2) {
           position = "top";
         } else {
           position = "bottom";
         }
       } else {
-        if (menu.x > window.innerWidth / 2) {
+        if (menu.x > globalThis.innerWidth / 2) {
           position = "left";
         } else {
           position = "right";
@@ -209,18 +209,18 @@ customElements.define("simple-popover-manager", SimplePopoverManager);
 export { SimplePopoverManager };
 
 // register globally so we can make sure there is only one
-window.SimplePopoverManager = window.SimplePopoverManager || {};
+globalThis.SimplePopoverManager = globalThis.SimplePopoverManager || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.SimplePopoverManager.requestAvailability = () => {
-  if (!window.SimplePopoverManager.instance) {
-    window.SimplePopoverManager.instance = document.createElement(
+globalThis.SimplePopoverManager.requestAvailability = () => {
+  if (!globalThis.SimplePopoverManager.instance) {
+    globalThis.SimplePopoverManager.instance = globalThis.document.createElement(
       "simple-popover-manager"
     );
-    document.body.appendChild(window.SimplePopoverManager.instance);
+    globalThis.document.body.appendChild(globalThis.SimplePopoverManager.instance);
   }
-  return window.SimplePopoverManager.instance;
+  return globalThis.SimplePopoverManager.instance;
 };
 // self append
-window.SimplePopoverManager.requestAvailability();
+globalThis.SimplePopoverManager.requestAvailability();

@@ -158,7 +158,7 @@ export class AppHaxSteps extends SimpleColors {
         // enable core services
         enableServices(["haxcms"]);
         // get the broker for docx selection
-        const broker = window.FileSystemBroker.requestAvailability();
+        const broker = globalThis.FileSystemBroker.requestAvailability();
         const file = await broker.loadFile("docx");
         // tee up as a form for upload
         const formData = new FormData();
@@ -213,7 +213,7 @@ export class AppHaxSteps extends SimpleColors {
           // enable core services
           enableServices(["haxcms"]);
           // get the broker for docx selection
-          const broker = window.FileSystemBroker.requestAvailability();
+          const broker = globalThis.FileSystemBroker.requestAvailability();
           const file = await broker.loadFile("zip");
           // tee up as a form for upload
           const formData = new FormData();
@@ -265,7 +265,7 @@ export class AppHaxSteps extends SimpleColors {
   async gbImport(e) {
     if (!e.target.comingSoon) {
       const { type } = e.target;
-      let gbURL = window.prompt("URL for the Gitbook repo");
+      let gbURL = globalThis.prompt("URL for the Gitbook repo");
       enableServices(["haxcms"]);
       this.setProcessingVisual();
       const response = await MicroFrontendRegistry.call(
@@ -306,7 +306,7 @@ export class AppHaxSteps extends SimpleColors {
   async importFromURL(e) {
     const { type, prompt, callback, param } = e.target;
     if (!e.target.comingSoon) {
-      let promptUrl = window.prompt(prompt);
+      let promptUrl = globalThis.prompt(prompt);
       enableServices(["haxcms"]);
       this.setProcessingVisual();
       const params = {};
@@ -347,7 +347,7 @@ export class AppHaxSteps extends SimpleColors {
   async notionImport(e) {
     if (!e.target.comingSoon) {
       const { type } = e.target;
-      let notionUrl = window.prompt("URL for the Github Notion repo");
+      let notionUrl = globalThis.prompt("URL for the Github Notion repo");
       enableServices(["haxcms"]);
       this.setProcessingVisual();
       const response = await MicroFrontendRegistry.call(
@@ -395,7 +395,7 @@ export class AppHaxSteps extends SimpleColors {
         // enable core services
         enableServices(["haxcms"]);
         // get the broker for docx selection
-        const broker = window.FileSystemBroker.requestAvailability();
+        const broker = globalThis.FileSystemBroker.requestAvailability();
         const file = await broker.loadFile("html");
         // tee up as a form for upload
         const formData = new FormData();
@@ -443,7 +443,7 @@ export class AppHaxSteps extends SimpleColors {
   }
   // makes guy have hat on, shows it's doing something
   setProcessingVisual() {
-    let loadingIcon = document.createElement("simple-icon-lite");
+    let loadingIcon = globalThis.document.createElement("simple-icon-lite");
     loadingIcon.icon = "hax:loading";
     loadingIcon.style.setProperty("--simple-icon-height", "40px");
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
@@ -533,10 +533,10 @@ export class AppHaxSteps extends SimpleColors {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("resize", this.maintainScroll.bind(this), {
+    globalThis.addEventListener("resize", this.maintainScroll.bind(this), {
       signal: this.windowControllers.signal,
     });
-    window.addEventListener("popstate", this.popstateListener.bind(this), {
+    globalThis.addEventListener("popstate", this.popstateListener.bind(this), {
       signal: this.windowControllers.signal,
     });
   }
@@ -665,7 +665,7 @@ export class AppHaxSteps extends SimpleColors {
    * AND MAKE OUR LIVES SO WONDERFUL TO SCROLL TO THINGS SMOOTHLY
    */
   scrollToThing(sel, props) {
-    const isSafari = window.safari !== undefined;
+    const isSafari = globalThis.safari !== undefined;
     if (
       this.shadowRoot.querySelector(".carousel-with-snapping-item.active-step")
     ) {

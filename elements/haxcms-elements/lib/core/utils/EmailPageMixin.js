@@ -52,7 +52,7 @@ const EmailPageMixin = function (SuperClass) {
     EmailPageButtonAction(e) {
       let title = store.activeTitle.replace(/"/g,'%22');
       title= title.replace(/&/g,'%26');
-      window.open(`mailto:?subject=${title}&body=${encodeURIComponent(window.location.href)}`, 'mail');
+      globalThis.open(`mailto:?subject=${title}&body=${encodeURIComponent(globalThis.location.href)}`, 'mail');
     }
   };
 };

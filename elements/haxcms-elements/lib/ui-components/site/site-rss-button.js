@@ -144,10 +144,10 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   _generateLink(newValue) {
     // remove existing if this is moving around
     if (this._link && this._link.href) {
-      document.head.removeChild(this._link);
+      globalThis.document.head.removeChild(this._link);
     }
     if (newValue) {
-      let link = document.createElement("link");
+      let link = globalThis.document.createElement("link");
       link.rel = "alternate";
       if (newValue === "rss") {
         link.href = "rss.xml";
@@ -161,7 +161,7 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         this.icon = "communication:rss-feed";
       }
       this.href = link.href;
-      document.head.appendChild(link);
+      globalThis.document.head.appendChild(link);
       this._link = link;
     }
   }

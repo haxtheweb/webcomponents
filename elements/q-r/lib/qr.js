@@ -986,7 +986,7 @@
       var modsize = Math.max(options.modulesize || 5, 0.5);
       var margin = Math.max(options.margin !== null ? options.margin : 4, 0.0);
 
-      var e = document.createElement("div");
+      var e = globalThis.document.createElement("div");
       var n = matrix.length;
       var html = [
         '<table border="0" cellspacing="0" cellpadding="0" style="border:' +
@@ -1024,7 +1024,7 @@
       var common =
         ' class= "fg"' + ' width="' + modsize + '" height="' + modsize + '"/>';
 
-      var e = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      var e = globalThis.document.createElementNS("http://www.w3.org/2000/svg", "svg");
       e.setAttribute("viewBox", "0 0 " + size + " " + size);
       e.setAttribute("style", "shape-rendering:crispEdges");
       if (options.modulesize) {
@@ -1060,7 +1060,7 @@
       var n = matrix.length;
       var size = modsize * (n + 2 * margin);
 
-      var canvas = document.createElement("canvas"),
+      var canvas = globalThis.document.createElement("canvas"),
         context;
       canvas.width = canvas.height = size;
       context = canvas.getContext("2d");

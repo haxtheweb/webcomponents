@@ -45,7 +45,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     autorun(() => {
       const usAction = toJS(UserScaffoldInstance.action);
       const usData = toJS(UserScaffoldInstance.data);
-      const sdi = window.SuperDaemonManager.requestAvailability();
+      const sdi = globalThis.SuperDaemonManager.requestAvailability();
       // try to evaluate typing in merlin
       if (
         UserScaffoldInstance.active &&
@@ -272,7 +272,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         if (this.filtered.length > 0) {
           this.loading = false;
         }
-        const sdi = window.SuperDaemonManager.requestAvailability();
+        const sdi = globalThis.SuperDaemonManager.requestAvailability();
         if (sdi.santaMode || this.listeningForInput) {
           clearTimeout(this._selectTimeout);
           this._selectTimeout = setTimeout(() => {
@@ -296,13 +296,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           this.focusInput();
           // ensure whole recordset is on screen if in mini mode
           if (this.mini && !this.wand) {
-            document.body.style.overflow = "hidden";
+            globalThis.document.body.style.overflow = "hidden";
             // reset to top of results
             this.shadowRoot.querySelector(".results").scrollTo(0, 0);
           }
         } else {
           // only a select mode makes this happen but still worth trapping for
-          document.body.style.overflow = "";
+          globalThis.document.body.style.overflow = "";
         }
       }
       if (propName == "commandContext") {
@@ -503,7 +503,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     e.preventDefault();
     this.activeDrag = false;
     this.activeType = null;
-    const sdi = window.SuperDaemonManager.requestAvailability();
+    const sdi = globalThis.SuperDaemonManager.requestAvailability();
     sdi.waveWand(
       ["", "/", e, "hax-agent", "Agent"],
       this.shadowRoot.querySelector("#merlin"),

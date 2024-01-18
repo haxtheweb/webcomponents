@@ -123,7 +123,7 @@
     connectedCallback() {
       this.style = "display: block; position: relative;";
 
-      this.canvas = document.createElement("canvas");
+      this.canvas = globalThis.document.createElement("canvas");
       this.canvas.id = "confetti-container-canvas-🎉";
       this.ctx = this.canvas.getContext("2d");
       // debugger;
@@ -212,14 +212,14 @@
       });
 
       if (this.sequins.length || this.confetti.length) {
-        window.requestAnimationFrame(this.render.bind(this));
+        globalThis.requestAnimationFrame(this.render.bind(this));
       } else {
         this.removeAttribute("popped");
       }
     }
   }
 
-  if (window.customElements && window.customElements.define) {
+  if (globalThis.customElements && globalThis.customElements.define) {
     customElements.define("confetti-container", Confetti);
   }
 })();

@@ -12,7 +12,7 @@ class SimpleCameraSnap extends HTMLElement {
     this.t = {
       takePhoto: "Take Photo",
     };
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           context: this,
@@ -23,7 +23,7 @@ class SimpleCameraSnap extends HTMLElement {
         },
       })
     );
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
     this.attachShadow({ mode: "open" });
     if (!delayRender) {
       this.render();
@@ -36,8 +36,8 @@ class SimpleCameraSnap extends HTMLElement {
     this.shadowRoot.innerHTML = null;
     this.template.innerHTML = this.html;
 
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }

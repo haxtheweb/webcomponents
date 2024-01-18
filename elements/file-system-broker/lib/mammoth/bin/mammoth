@@ -16,7 +16,7 @@ var outputGroup = parser.addMutuallyExclusiveGroup();
 outputGroup.addArgument(["output-path"], {
     type: "string",
     nargs: "?",
-    help: "Output path for the generated document. Images will be stored inline in the output document. Output is written to stdout if not set."
+    help: "Output path for the generated globalThis.document. Images will be stored inline in the output globalThis.document. Output is written to stdout if not set."
 });
 outputGroup.addArgument(["--output-dir"], {
     type: "string",

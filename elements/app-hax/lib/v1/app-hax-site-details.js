@@ -199,7 +199,7 @@ export class AppHaxSiteDetails extends SimpleColors {
     if (target.tagName === "DIV") {
       target = target.parentNode;
     }
-    const div = document.createElement("div");
+    const div = globalThis.document.createElement("div");
     const op = target.getAttribute("data-site-operation");
     const opName = target.getAttribute("data-site-operation-name");
     const siteID = target.getAttribute("data-site");
@@ -211,7 +211,7 @@ export class AppHaxSiteDetails extends SimpleColors {
           store.manifest.items.filter((item) => item.id === siteID).pop()
         );
         div.appendChild(
-          document.createTextNode(
+          globalThis.document.createTextNode(
             `Are you sure you want to ${op.replace("Site", "")} ${
               site.metadata.site.name
             }?`
@@ -220,19 +220,19 @@ export class AppHaxSiteDetails extends SimpleColors {
         // gitlist opens in a new window
         if (op === "gitList") {
           // open link in new window
-          window.open(
+          globalThis.open(
             `gitlist/${site.metadata.site.name}`,
             "_blank",
             "noopener noreferrer"
           );
         } else {
-          const bcontainer = document.createElement("div");
-          const b = document.createElement("button");
+          const bcontainer = globalThis.document.createElement("div");
+          const b = globalThis.document.createElement("button");
           b.innerText = "Confirm";
           b.classList.add("hax-modal-btn");
           b.addEventListener("click", this.confirmOperation.bind(this));
           bcontainer.appendChild(b);
-          const b2 = document.createElement("button");
+          const b2 = globalThis.document.createElement("button");
           b2.innerText = "Cancel";
           b2.classList.add("hax-modal-btn");
           b2.classList.add("cancel");
@@ -268,7 +268,7 @@ export class AppHaxSiteDetails extends SimpleColors {
   cancelOperation() {
     store.activeSiteOp = "";
     store.activeSiteId = null;
-    window.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
     store.appEl.playSound("error");
   }
 
@@ -290,7 +290,7 @@ export class AppHaxSiteDetails extends SimpleColors {
         // download is weird relative to the others
         if (activeOp === "downloadSite") {
           // cheat to download a file path
-          window.open(
+          globalThis.open(
             store.AppHaxAPI.lastResponse.downloadSite.data.link,
             "_blank"
           );
@@ -299,7 +299,7 @@ export class AppHaxSiteDetails extends SimpleColors {
         }
       }
     );
-    window.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
     store.appEl.playSound("success");
     store.toast(
       `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,

@@ -11,7 +11,7 @@ rather than attempting to exactly copy the styling (font, text size, colour, etc
 
 There's a large mismatch between the structure used by .docx and the structure of HTML,
 meaning that the conversion is unlikely to be perfect for more complicated documents.
-Mammoth works best if you only use styles to semantically mark up your document.
+Mammoth works best if you only use styles to semantically mark up your globalThis.document.
 
 The following features are currently supported:
 
@@ -24,7 +24,7 @@ The following features are currently supported:
 
 * Tables.
   The formatting of the table itself, such as borders, is currently ignored,
-  but the formatting of the text is treated the same as in the rest of the document.
+  but the formatting of the text is treated the same as in the rest of the globalThis.document.
 
 * Footnotes and endnotes.
 
@@ -73,7 +73,7 @@ The easiest way to try out mammoth is to use the web demo:
 You can convert docx files by passing the path to the docx file and the output file.
 For instance:
 
-    mammoth document.docx output.html
+    mammoth globalThis.document.docx output.html
 
 If no output file is specified, output is written to stdout instead.
 
@@ -88,7 +88,7 @@ If an output directory is specified by `--output-dir`,
 the images are written to separate files instead.
 For instance:
 
-    mammoth document.docx --output-dir=output-dir
+    mammoth globalThis.document.docx --output-dir=output-dir
 
 Existing files will be overwritten if present.
 
@@ -97,7 +97,7 @@ Existing files will be overwritten if present.
 A custom style map can be read from a file using `--style-map`.
 For instance:
 
-    mammoth document.docx output.html --style-map=custom-style-map
+    mammoth globalThis.document.docx output.html --style-map=custom-style-map
 
 Where `custom-style-map` looks something like:
 
@@ -115,7 +115,7 @@ and is likely to produce better results.
 Using `--output-format=markdown` will cause Markdown to be generated.
 For instance:
 
-    mammoth document.docx --output-format=markdown
+    mammoth globalThis.document.docx --output-format=markdown
 
 ### Library
 
@@ -149,7 +149,7 @@ mammoth.convertToHtml({path: "path/to/document.docx"})
 Note that `mammoth.convertToHtml` returns a [promise](http://promises-aplus.github.io/promises-spec/).
 
 You can also extract the raw text of the document by using `mammoth.extractRawText`.
-This will ignore all formatting in the document.
+This will ignore all formatting in the globalThis.document.
 Each paragraph is followed by two newlines.
 
 ```javascript
@@ -325,7 +325,7 @@ with links to the comments wrapped using the specified style mapping.
 
 Converts the source document to HTML.
 
-* `input`: an object describing the source document.
+* `input`: an object describing the source globalThis.document.
   On node.js, the following inputs are supported:
 
     * `{path: path}`, where `path` is the path to the .docx file.
@@ -387,11 +387,11 @@ except that the `value` property of the result contains Markdown rather than HTM
 
 #### `mammoth.extractRawText(input)`
 
-Extract the raw text of the document.
-This will ignore all formatting in the document.
+Extract the raw text of the globalThis.document.
+This will ignore all formatting in the globalThis.document.
 Each paragraph is followed by two newlines.
 
-* `input`: an object describing the source document.
+* `input`: an object describing the source globalThis.document.
   On node.js, the following inputs are supported:
 
     * `{path: path}`, where `path` is the path to the .docx file.
@@ -415,7 +415,7 @@ Given an existing docx file,
 When the new docx file is read by Mammoth,
 it will use the embedded style map.
 
-* `input`: an object describing the source document.
+* `input`: an object describing the source globalThis.document.
   On node.js, the following inputs are supported:
 
     * `{path: path}`, where `path` is the path to the .docx file.
@@ -428,7 +428,7 @@ it will use the embedded style map.
 * `styleMap`: the style map to embed.
 
 * Returns a promise.
-  Call `toBuffer()` on the value inside the promise to get a `Buffer` representing the new document.
+  Call `toBuffer()` on the value inside the promise to get a `Buffer` representing the new globalThis.document.
 
 For instance:
 

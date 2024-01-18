@@ -13,15 +13,15 @@ class SimpleLoginAvatar extends HTMLElement {
   constructor(delayRender = false) {
     super();
     this.tag = SimpleLoginAvatar.tag;
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
     this.attachShadow({ mode: "open" });
     if (!delayRender) {
       this.render();
     }
   }
   connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.styleElement(this);
     }
   }
   _copyAttribute(name, to) {
@@ -36,8 +36,8 @@ class SimpleLoginAvatar extends HTMLElement {
   render() {
     this.shadowRoot.innerHTML = null;
     this.template.innerHTML = this.html;
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }

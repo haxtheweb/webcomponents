@@ -450,7 +450,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // a file needs to be selected via the program and then sub-program options presented
   selectFileToProcess() {
     import('@lrnwebcomponents/file-system-broker/file-system-broker.js').then(async (e) => {
-      const broker = window.FileSystemBroker.requestAvailability();
+      const broker = globalThis.FileSystemBroker.requestAvailability();
       const contents = await broker.getFileContents("*");
       const fileData = broker.fileHandler;
       let tmp = fileData.name.split('.');
@@ -475,7 +475,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   // processing visualization
   setProcessingVisual() {
-    let loadingIcon = document.createElement("simple-icon-lite");
+    let loadingIcon = globalThis.document.createElement("simple-icon-lite");
     loadingIcon.icon = "hax:loading";
     loadingIcon.style.setProperty("--simple-icon-height", "40px");
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
@@ -641,12 +641,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     reqBody.site = {
                       name: toJS(store.manifest.metadata.site.name),
                     };
-                    const outline = document.createElement("outline-designer");
+                    const outline = globalThis.document.createElement("outline-designer");
                     outline.items = response.data.items;
                     outline.eventData = reqBody;
                     outline.storeTools = true;
 
-                    const b1 = document.createElement("button");
+                    const b1 = globalThis.document.createElement("button");
                     b1.innerText = "Confirm";
                     b1.classList.add("hax-modal-btn");
                     b1.addEventListener("click", async (e) => {
@@ -673,7 +673,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       if (sumChanges == "") {
                         confirmation = true;
                       } else {
-                        confirmation = window.confirm(
+                        confirmation = globalThis.confirm(
                           `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
                         );
                       }
@@ -691,10 +691,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                           cancelable: true,
                           detail: {},
                         });
-                        window.dispatchEvent(evt);
+                        globalThis.dispatchEvent(evt);
                       }
                     });
-                    const b2 = document.createElement("button");
+                    const b2 = globalThis.document.createElement("button");
                     b2.innerText = "Cancel";
                     b2.classList.add("hax-modal-btn");
                     b2.classList.add("cancel");
@@ -705,10 +705,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                         cancelable: true,
                         detail: {},
                       });
-                      window.dispatchEvent(evt);
+                      globalThis.dispatchEvent(evt);
                     });
                     // button container
-                    const div = document.createElement("div");
+                    const div = globalThis.document.createElement("div");
                     div.appendChild(b1);
                     div.appendChild(b2);
 
@@ -823,7 +823,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // test for slot on insert attempt
       slot = this.activeNode.getAttribute("slot");
     } 
-    const div = document.createElement('div');
+    const div = globalThis.document.createElement('div');
     div.innerHTML = content;
 
     let slot = false;
@@ -1207,7 +1207,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "collection-list",
         "collection-item",
       ].map((name) => {
-        let el = document.createElement(name);
+        let el = globalThis.document.createElement(name);
         HAXStore.haxAutoloader.appendChild(el);
       });
 
@@ -1311,8 +1311,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.activeNode = null;
     this.activeDrag = false;
     this.activeType = null;
-    if (window.appSettings && window.appSettings.backLink) {
-      this.backLink = window.appSettings.backLink;
+    if (globalThis.appSettings && globalThis.appSettings.backLink) {
+      this.backLink = globalThis.appSettings.backLink;
     }
     // user scaffolding wired up to superDaemon
     autorun(() => {
@@ -1350,16 +1350,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const badDevice = toJS(store.badDevice);
       // good device, we can inject font we use
       if (badDevice === false) {
-        const link = document.createElement("link");
+        const link = globalThis.document.createElement("link");
         link.setAttribute(
           "href",
           "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");
-        document.head.appendChild(link);
+        globalThis.document.head.appendChild(link);
       } else if (badDevice === true) {
-        document.body.classList.add("bad-device");
+        globalThis.document.body.classList.add("bad-device");
       }
     });
     autorun(() => {
@@ -1938,7 +1938,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   _logout() {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
         bubbles: true,
@@ -1953,7 +1953,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (e.detail === false && this.__logoutUserAction) {
       this.__logoutUserAction = false;
       setTimeout(() => {
-        window.location.reload();
+        globalThis.location.reload();
       }, 100);
     }
   }
@@ -1984,8 +1984,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (this.shadowRoot) {
       setTimeout(() => {
         // backText
-        if (window.appSettings && window.appSettings.backText) {
-          this.backText = window.appSettings.backText;
+        if (globalThis.appSettings && globalThis.appSettings.backText) {
+          this.backText = globalThis.appSettings.backText;
         }
         let ary = [
           {
@@ -2012,17 +2012,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         // see which features should be enabled
         ary.forEach((pair) => {
           if (
-            window.appSettings &&
-            window.appSettings[pair.varPath] &&
-            window.appSettings[pair.varPath] != null &&
-            window.appSettings[pair.varPath] != "" &&
-            window.appSettings[pair.varPath] != "null"
+            globalThis.appSettings &&
+            globalThis.appSettings[pair.varPath] &&
+            globalThis.appSettings[pair.varPath] != null &&
+            globalThis.appSettings[pair.varPath] != "" &&
+            globalThis.appSettings[pair.varPath] != "null"
           ) {
             if (pair.dep) {
               if (
-                window.appSettings[pair.dep] != null &&
-                window.appSettings[pair.dep] != "" &&
-                window.appSettings[pair.dep] != "null"
+                globalThis.appSettings[pair.dep] != null &&
+                globalThis.appSettings[pair.dep] != "" &&
+                globalThis.appSettings[pair.dep] != "null"
               ) {
                 this.shadowRoot
                   .querySelector(pair.selector)
@@ -2242,16 +2242,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         name: "Load HAXSchema",
         context: ">",
         program: async (input, values) => {
-          const reg = window.WCAutoload.requestAvailability();
+          const reg = globalThis.WCAutoload.requestAvailability();
           let results = [];
           Object.keys(reg.registry.list).forEach(async (tag) => {
             let icon = "hax:hax2022";
-            if (window.customElements.get(tag)) {
+            if (globalThis.customElements.get(tag)) {
               if (
-                window.customElements.get(tag).haxProperties &&
-                window.customElements.get(tag).haxProperties.gizmo
+                globalThis.customElements.get(tag).haxProperties &&
+                globalThis.customElements.get(tag).haxProperties.gizmo
               ) {
-                icon = window.customElements.get(tag).haxProperties.gizmo.icon;
+                icon = globalThis.customElements.get(tag).haxProperties.gizmo.icon;
               }
             }
             if (input == "" || tag.includes(input)) {
@@ -2262,9 +2262,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 icon: icon,
                 tags: ["schema"],
                 value: {
-                  target: window.HaxStore.instance,
+                  target: globalThis.HaxStore.instance,
                   method: "_handleDynamicImports",
-                  args: [tmp, window.HaxStore.instance.haxAutoloader],
+                  args: [tmp, globalThis.HaxStore.instance.haxAutoloader],
                 },
                 eventName: "super-daemon-element-method",
                 context: [">", ">hax/loadElement/" + tag],
@@ -2310,7 +2310,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 icon: "image:style",
                 tags: ["theme"],
                 value: {
-                  target: window.HAXCMS,
+                  target: globalThis.HAXCMS,
                   method: "setTheme",
                   args: [name],
                 },
@@ -2393,7 +2393,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   goToLocation(location) {
-    window.location = location;
+    globalThis.location = location;
   }
 
   updated(changedProperties) {
@@ -2614,7 +2614,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _editButtonTap(e) {
     if (this.editMode && HAXStore.haxTray.trayDetail === "view-source") {
-      if (!window.confirm(this.t.confirmHtmlSourceExit)) {
+      if (!globalThis.confirm(this.t.confirmHtmlSourceExit)) {
         return false;
       }
     }
@@ -2631,7 +2631,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         })
       );
     }
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
@@ -2641,7 +2641,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _insightsButtonTap(e) {
     store.playSound("click");
-    const c = document.createElement("haxcms-site-insights");
+    const c = globalThis.document.createElement("haxcms-site-insights");
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
@@ -2664,13 +2664,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         modal: false,
       },
     });
-    window.dispatchEvent(evt);
+    globalThis.dispatchEvent(evt);
   }
   async _cancelButtonTap(e) {
     const body = await HAXStore.activeHaxBody.haxToContent();
     if (
       body != this._originalContent &&
-      !window.confirm(this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure)
+      !globalThis.confirm(this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure)
     ) {
       return false;
     }
@@ -2684,7 +2684,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: e.detail,
       })
     );
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
@@ -2697,19 +2697,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _deleteButtonTap(e) {
     store.playSound("click");
-    let c = document.createElement("span");
+    let c = globalThis.document.createElement("span");
     c.innerHTML = `"${store.activeItem.title}" will be removed from the outline but its content stays on the file system.`;
-    let b1 = document.createElement("button");
-    b1.appendChild(document.createTextNode("Confirm"));
+    let b1 = globalThis.document.createElement("button");
+    b1.appendChild(globalThis.document.createTextNode("Confirm"));
     b1.classList.add("hax-modal-btn");
     b1.addEventListener("click", this._deleteActive.bind(this));
-    let b2 = document.createElement("button");
-    b2.appendChild(document.createTextNode("cancel"));
+    let b2 = globalThis.document.createElement("button");
+    b2.appendChild(globalThis.document.createTextNode("cancel"));
     b2.addEventListener("click", () => store.playSound("error"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
     b2.classList.add("hax-modal-btn");
     b2.classList.add("cancel");
-    let b = document.createElement("span");
+    let b = globalThis.document.createElement("span");
     b.appendChild(b1);
     b.appendChild(b2);
     const evt = new CustomEvent("simple-modal-show", {
@@ -2734,7 +2734,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         modal: true,
       },
     });
-    window.dispatchEvent(evt);
+    globalThis.dispatchEvent(evt);
   }
   /**
    * delete active item
@@ -2773,14 +2773,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-titlebar-height": "80px",
         },
         elements: {
-          content: document.createElement("haxcms-share-dialog"),
+          content: globalThis.document.createElement("haxcms-share-dialog"),
         },
         invokedBy: this.shadowRoot.querySelector("#sharebutton"),
         clone: false,
         modal: false,
       },
     });
-    window.dispatchEvent(evt);
+    globalThis.dispatchEvent(evt);
   }
   /**
    * toggle state on button tap
@@ -2804,19 +2804,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-max-height": "85vh",
         },
         elements: {
-          content: document.createElement("haxcms-outline-editor-dialog"),
+          content: globalThis.document.createElement("haxcms-outline-editor-dialog"),
         },
         invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
         clone: false,
         modal: true,
       },
     });
-    window.dispatchEvent(evt);
+    globalThis.dispatchEvent(evt);
   }
   _addButtonTap() {
     store.playSound("click");
     setTimeout(() => {
-      window.location = this.backLink + "createSite-step-1";
+      globalThis.location = this.backLink + "createSite-step-1";
     }, 100);
   }
   /**
@@ -2824,7 +2824,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _manifestButtonTap(e) {
     store.playSound("click");
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
@@ -2833,7 +2833,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
     // prettier-ignore
     import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js").then(() => {
-      window.dispatchEvent(new CustomEvent("simple-modal-show", {
+      globalThis.dispatchEvent(new CustomEvent("simple-modal-show", {
         bubbles: true,
         composed: true,
         cancelable: false,
@@ -2850,7 +2850,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "--simple-modal-max-height": "85vh",
           },
           elements: {
-            content: document.createElement("haxcms-site-dashboard"),
+            content: globalThis.document.createElement("haxcms-site-dashboard"),
           },
           invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
           clone: false,
@@ -2859,7 +2859,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }));
       // delay send so that the modal can be created
       setTimeout(() => {
-        window.dispatchEvent(
+        globalThis.dispatchEvent(
           new CustomEvent("haxcms-load-site-dashboard", {
             bubbles: true,
             composed: true,

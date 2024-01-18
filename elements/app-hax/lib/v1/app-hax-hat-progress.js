@@ -67,7 +67,7 @@ export class AppHaxHatProgress extends SimpleColors {
             }
 
             const createResponse = store.AppHaxAPI.lastResponse.createSite.data;
-            const text = document.createElement("button");
+            const text = globalThis.document.createElement("button");
             this.shadowRoot.querySelector("#value").textContent = this.max;
             text.textContent = "Let's go!";
             text.classList.add("game");
@@ -77,7 +77,10 @@ export class AppHaxHatProgress extends SimpleColors {
             text.addEventListener("click", () => {
               store.appEl.reset();
               setTimeout(() => {
-                window.location = createResponse.slug.replace("index.html", "");
+                globalThis.location = createResponse.slug.replace(
+                  "index.html",
+                  ""
+                );
               }, 0);
             });
             this.shadowRoot
@@ -115,7 +118,7 @@ export class AppHaxHatProgress extends SimpleColors {
                   store.appEl.reset();
                   setTimeout(() => {
                     store.setPageTitle(`Enjoy!`);
-                    window.location = createResponse.slug.replace(
+                    globalThis.location = createResponse.slug.replace(
                       "index.html",
                       ""
                     );

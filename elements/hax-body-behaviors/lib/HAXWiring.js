@@ -245,14 +245,14 @@ export class HAXWiring {
       if (typeof this.tagName !== typeof undefined) {
         tag = this.tagName.toLowerCase();
       }
-      window.addEventListener(
+      globalThis.addEventListener(
         "hax-store-ready",
         this._haxStoreReady.bind(this)
       );
       if (
-        typeof window.HaxStore !== typeof undefined &&
-        window.HaxStore.instance != null &&
-        window.HaxStore.instance.ready
+        typeof globalThis.HaxStore !== typeof undefined &&
+        globalThis.HaxStore.instance != null &&
+        globalThis.HaxStore.instance.ready
       ) {
         return this.setHaxProperties(props, tag, context, true);
       } else {
@@ -271,7 +271,7 @@ export class HAXWiring {
         let tag = this.tagName;
         let props = this.haxProperties;
         let context = this;
-        if (tag != "" && typeof window.HaxStore === typeof undefined) {
+        if (tag != "" && typeof globalThis.HaxStore === typeof undefined) {
           const evt = new CustomEvent("hax-register-properties", {
             bubbles: true,
             composed: true,
@@ -284,7 +284,7 @@ export class HAXWiring {
           context.dispatchEvent(evt);
         } else if (
           tag != "" &&
-          typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
+          typeof globalThis.HaxStore.instance.elementList[tag.toLowerCase()] ===
             typeof undefined
         ) {
           const evt = new CustomEvent("hax-register-properties", {
@@ -299,7 +299,7 @@ export class HAXWiring {
           context.dispatchEvent(evt);
         } else if (
           typeof this.tagName !== typeof undefined &&
-          typeof window.HaxStore.instance.elementList[
+          typeof globalThis.HaxStore.instance.elementList[
             this.tagName.toLowerCase()
           ] === typeof undefined
         ) {
@@ -374,8 +374,8 @@ export class HAXWiring {
           // this would be if the user defined their own icons
           if (typeof props.gizmo.iconLib !== typeof undefined) {
             var basePath;
-            if (window.WCGlobalBasePath) {
-              basePath = window.WCGlobalBasePath;
+            if (globalThis.WCGlobalBasePath) {
+              basePath = globalThis.WCGlobalBasePath;
             } else {
               basePath = new URL("./../../../", import.meta.url).href;
             }
@@ -466,7 +466,7 @@ export class HAXWiring {
       }
     };
     this.readyToFireHAXSchema = (tag, props, context) => {
-      if (tag != "" && typeof window.HaxStore === typeof undefined) {
+      if (tag != "" && typeof globalThis.HaxStore === typeof undefined) {
         const evt = new CustomEvent("hax-register-properties", {
           bubbles: true,
           composed: true,
@@ -794,9 +794,9 @@ export class HAXWiring {
       if (
         haxProperties.gizmo &&
         haxProperties.gizmo.tag &&
-        window.customElements.get(haxProperties.gizmo.tag)
+        globalThis.customElements.get(haxProperties.gizmo.tag)
       ) {
-        let tmp = document.createElement(haxProperties.gizmo.tag);
+        let tmp = globalThis.document.createElement(haxProperties.gizmo.tag);
         if (typeof tmp.postProcessgetHaxJSONSchema === "function") {
           schema = tmp.postProcessgetHaxJSONSchema(schema);
         } else {
@@ -977,7 +977,7 @@ export const HAXElement = function (SuperClass) {
         /**
          * haxProperties
          */
-        haxProperties: window.HAXWiring.haxProperties,
+        haxProperties: globalThis.HAXWiring.haxProperties,
       };
     }
     /**
@@ -990,14 +990,14 @@ export const HAXElement = function (SuperClass) {
         tag = this.tagName.toLowerCase();
       }
       if (
-        window.HaxStore &&
-        window.HaxStore.instance != null &&
-        window.HaxStore.instance.ready
+        globalThis.HaxStore &&
+        globalThis.HaxStore.instance != null &&
+        globalThis.HaxStore.instance.ready
       ) {
         return this.HAXWiring.setHaxProperties(props, tag, context, true);
       } else {
         // slow load environment, set listener and hold off of processing
-        window.addEventListener(
+        globalThis.addEventListener(
           "hax-store-ready",
           this._haxStoreReady.bind(this),
           { signal: this.windowControllers.signal }
@@ -1086,15 +1086,15 @@ export const HAXElement = function (SuperClass) {
 // LEGACY. This is a Polymer 1.x syntax element "behavior"
 // This has been replaced with HAXElement, a super class which can be used to wrap classes
 // invoke an instance so we can support behaviors as well
-window.HAXWiring = new HAXWiring();
+globalThis.HAXWiring = new HAXWiring();
 // ensure HAXPropertiesBehaviors exists
-window.HAXBehaviors = window.HAXBehaviors || {};
-window.HAXBehaviors.PropertiesBehaviors = {
+globalThis.HAXBehaviors = globalThis.HAXBehaviors || {};
+globalThis.HAXBehaviors.PropertiesBehaviors = {
   properties: {
     /**
      * haxProperties
      */
-    haxProperties: window.HAXWiring.haxProperties,
+    haxProperties: globalThis.HAXWiring.haxProperties,
   },
   /**
    * Setter to bridge private haxProperties setter.
@@ -1105,28 +1105,28 @@ window.HAXBehaviors.PropertiesBehaviors = {
     if (tag == "" && typeof this.tagName !== typeof undefined) {
       tag = this.tagName.toLowerCase();
     }
-    window.addEventListener("hax-store-ready", this._haxStoreReady.bind(this));
+    globalThis.addEventListener("hax-store-ready", this._haxStoreReady.bind(this));
     if (
-      typeof window.HaxStore !== typeof undefined &&
-      window.HaxStore.instance != null &&
-      window.HaxStore.instance.ready
+      typeof globalThis.HaxStore !== typeof undefined &&
+      globalThis.HaxStore.instance != null &&
+      globalThis.HaxStore.instance.ready
     ) {
-      return window.HAXWiring.setHaxProperties(props, tag, context, true);
+      return globalThis.HAXWiring.setHaxProperties(props, tag, context, true);
     } else {
-      return window.HAXWiring.setHaxProperties(props, tag, context, false);
+      return globalThis.HAXWiring.setHaxProperties(props, tag, context, false);
     }
   },
   /**
    * Private function to fire off props when ready
    */
   _haxStoreReady: function (e) {
-    return window.HAXWiring._haxStoreReady(e);
+    return globalThis.HAXWiring._haxStoreReady(e);
   },
   /**
    * Validate settings object.
    */
   validateSetting: function (setting) {
-    return window.HAXWiring.validateSetting(setting);
+    return globalThis.HAXWiring.validateSetting(setting);
   },
   /**
    * Match convention for set.
@@ -1140,13 +1140,13 @@ window.HAXBehaviors.PropertiesBehaviors = {
    * type is configure or advanced
    */
   getHaxJSONSchema: function (type, haxProperties, target = this) {
-    return window.HAXWiring.getHaxJSONSchema(type, haxProperties, target);
+    return globalThis.HAXWiring.getHaxJSONSchema(type, haxProperties, target);
   },
   /**
    * Default postProcessgetHaxJSONSchema to be overridden.
    */
   postProcessgetHaxJSONSchema: function (schema) {
-    return window.HAXWiring.postProcessgetHaxJSONSchema(schema);
+    return globalThis.HAXWiring.postProcessgetHaxJSONSchema(schema);
   },
   /**
    * Internal helper for getHaxJSONSchema to buiild the properties object
@@ -1159,18 +1159,18 @@ window.HAXBehaviors.PropertiesBehaviors = {
    * Convert input method to schedma type
    */
   getHaxJSONSchemaType: function (inputMethod) {
-    return window.HAXWiring.getHaxJSONSchemaType(inputMethod);
+    return globalThis.HAXWiring.getHaxJSONSchemaType(inputMethod);
   },
   /**
    * List valid input methods.
    */
   validHAXPropertyInputMethod: function () {
-    return window.HAXWiring.validHAXPropertyInputMethod();
+    return globalThis.HAXWiring.validHAXPropertyInputMethod();
   },
   /**
    * Return a haxProperties prototype / example structure
    */
   prototypeHaxProperties: function () {
-    return window.HAXWiring.prototypeHaxProperties();
+    return globalThis.HAXWiring.prototypeHaxProperties();
   },
 };

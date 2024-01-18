@@ -24,7 +24,7 @@ class HaxAppPicker extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("simple-modal-show", this.modalToggle.bind(this), {
+    globalThis.addEventListener("simple-modal-show", this.modalToggle.bind(this), {
       signal: this.windowControllers.signal,
     });
   }

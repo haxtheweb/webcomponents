@@ -24,7 +24,7 @@ class HAXCMSSiteRouter extends HTMLElement {
   constructor() {
     super();
     this.windowControllers = new AbortController();
-    window.HAXCMS.requestAvailability().storePieces.siteRouter = this;
+    globalThis.HAXCMS.requestAvailability().storePieces.siteRouter = this;
     // create router
     let options = {};
     if (this.baseURI) {
@@ -40,12 +40,12 @@ class HAXCMSSiteRouter extends HTMLElement {
       this.__disposer.push(reaction);
     });
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this),
       { signal: this.windowControllers.signal }
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-site-router-add",
       this.addRoutesEvent.bind(this),
       { signal: this.windowControllers.signal }
@@ -107,21 +107,21 @@ class HAXCMSSiteRouter extends HTMLElement {
    */
   _routerLocationChanged(e) {
     // no modal / toast should be open when we go to switch routes
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
         detail: {},
       })
     );
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("haxcms-toast-hide", {
         bubbles: true,
         cancelable: true,
         detail: {},
       })
     );
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("super-daemon-close", {
         bubbles: true,
         cancelable: true,
@@ -138,7 +138,7 @@ class HAXCMSSiteRouter extends HTMLElement {
         e.detail.location.params[0].startsWith("assets/"))
     ) {
       // go to the file, if it's a miss that's not our app's concern
-      window.location = e.detail.location.pathname;
+      globalThis.location = e.detail.location.pathname;
     }
     // PWAs on static domains need to be able to handle 404s which redirect to ?p=/slug bc of our handles
     // this is ONLY used for initial page hit at these locations
@@ -151,7 +151,7 @@ class HAXCMSSiteRouter extends HTMLElement {
         e.detail.location.search.replace("?p=/", "").split('&')[0]
       )[0];
       store.activeId = item.id;
-      window.history.replaceState(
+      globalThis.history.replaceState(
         {},
         null,
         e.detail.location.search.replace("?p=/", "").split('&')[0]

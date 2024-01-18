@@ -24,8 +24,8 @@ class XLSXFileSystemBroker extends FileSystemBroker {
       "xlsx",
       this.libPath + "dist/xlsx.full.min.js"
     ).then(() => {
-      if (window.XLSX) {
-        this.XLSX = window.XLSX;
+      if (globalThis.XLSX) {
+        this.XLSX = globalThis.XLSX;
         // fire event in case anyone wants to react on loaded event
         this.dispatchEvent(
           new CustomEvent("xlsx-ready", {
@@ -159,7 +159,7 @@ class XLSXFileSystemBroker extends FileSystemBroker {
           console.error(e.data.d);
           break;
         case this.XW.msg:
-          window.dispatchEvent(
+          globalThis.dispatchEvent(
             new CustomEvent("xlsx-file-system-data", {
               composed: false,
               bubbles: false,
@@ -185,20 +185,20 @@ class XLSXFileSystemBroker extends FileSystemBroker {
 
 customElements.define(XLSXFileSystemBroker.tag, XLSXFileSystemBroker);
 // register globally so we can make sure there is only one
-window.XLSXFileSystemBroker = window.XLSXFileSystemBroker || {};
-window.XLSXFileSystemBroker.requestAvailability = () => {
+globalThis.XLSXFileSystemBroker = globalThis.XLSXFileSystemBroker || {};
+globalThis.XLSXFileSystemBroker.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.XLSXFileSystemBroker.instance) {
-    window.XLSXFileSystemBroker.instance = document.createElement(
+  if (!globalThis.XLSXFileSystemBroker.instance) {
+    globalThis.XLSXFileSystemBroker.instance = globalThis.document.createElement(
       "xlsx-file-system-broker"
     );
-    document.body.appendChild(window.XLSXFileSystemBroker.instance);
+    globalThis.document.body.appendChild(globalThis.XLSXFileSystemBroker.instance);
   }
-  return window.XLSXFileSystemBroker.instance;
+  return globalThis.XLSXFileSystemBroker.instance;
 };
 // forces appending
 const XLSXFileSystemBrokerSingleton =
-  window.XLSXFileSystemBroker.requestAvailability();
+  globalThis.XLSXFileSystemBroker.requestAvailability();
 export {
   XLSXFileSystemBrokerSingleton,
   XLSXFileSystemBroker,

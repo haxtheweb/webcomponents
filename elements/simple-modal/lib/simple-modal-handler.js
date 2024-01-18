@@ -14,7 +14,7 @@ export const SimpleModalHandler = function (SuperClass) {
     constructor() {
       super();
       setTimeout(() => {
-        window.SimpleModal.requestAvailability();
+        globalThis.SimpleModal.requestAvailability();
         this.addEventListener(
           "click",
           this.__SimpleModalHandlerClick.bind(this)

@@ -6,7 +6,7 @@
 var H5POldEmbed =
   H5POldEmbed ||
   (function() {
-    var head = document.getElementsByTagName("head")[0];
+    var head = globalThis.document.getElementsByTagName("head")[0];
     var resizer = false;
 
     /**
@@ -20,7 +20,7 @@ var H5POldEmbed =
       // Callback for when content data is loaded.
       window[callback] = function(content) {
         // Add resizing script to head
-        var resizer = document.createElement("script");
+        var resizer = globalThis.document.createElement("script");
         resizer.src = content;
         head.appendChild(resizer);
 
@@ -30,7 +30,7 @@ var H5POldEmbed =
       };
 
       // Create data script
-      data = document.createElement("script");
+      data = globalThis.document.createElement("script");
       data.src =
         url + (url.indexOf("?") === -1 ? "?" : "&") + "callback=" + callback;
       head.appendChild(data);
@@ -41,7 +41,7 @@ var H5POldEmbed =
      */
     var addIframe = function(script) {
       // Add iframe
-      var iframe = document.createElement("iframe");
+      var iframe = globalThis.document.createElement("iframe");
       iframe.src = script.getAttribute("data-h5p");
       iframe.frameBorder = false;
       iframe.allowFullscreen = true;
@@ -54,7 +54,7 @@ var H5POldEmbed =
      * Go throught all script tags with the data-h5p attribute and load content.
      */
     function H5POldEmbed() {
-      var scripts = document.getElementsByTagName("script");
+      var scripts = globalThis.document.getElementsByTagName("script");
       var h5ps = []; // Use seperate array since scripts grow in size.
       for (var i = 0; i < scripts.length; i++) {
         var script = scripts[i];

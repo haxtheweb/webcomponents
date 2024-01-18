@@ -13,7 +13,7 @@ function make_xlsx_lib(XLSX) {
       if (typeof global !== "undefined")
         global.cptable = require("./dist/cpexcel.js");
       else if (typeof window !== "undefined")
-        window.cptable = require("./dist/cpexcel.js");
+        globalThis.cptable = require("./dist/cpexcel.js");
     }
   }
 
@@ -3933,7 +3933,7 @@ function make_xlsx_lib(XLSX) {
       if (
         typeof URL !== "undefined" &&
         typeof document !== "undefined" &&
-        document.createElement &&
+        globalThis.document.createElement &&
         URL.createObjectURL
       ) {
         var url = URL.createObjectURL(blob);
@@ -3951,13 +3951,13 @@ function make_xlsx_lib(XLSX) {
             saveAs: true,
           });
         }
-        var a = document.createElement("a");
+        var a = globalThis.document.createElement("a");
         if (a.download != null) {
           a.download = fname;
           a.href = url;
-          document.body.appendChild(a);
+          globalThis.document.body.appendChild(a);
           a.click();
-          document.body.removeChild(a);
+          globalThis.document.body.removeChild(a);
           if (URL.revokeObjectURL && typeof setTimeout !== "undefined")
             setTimeout(function () {
               URL.revokeObjectURL(url);

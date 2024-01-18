@@ -18,7 +18,7 @@ export const LoremDataBehaviors = function (SuperClass) {
       super();
     }
     get colors() {
-      let simple = window.SimpleColorsSharedStyles.requestAvailability();
+      let simple = globalThis.SimpleColorsSharedStyles.requestAvailability();
       return simple && simple.colors ? Object.keys(simple.colors) : false;
     }
     get icons() {

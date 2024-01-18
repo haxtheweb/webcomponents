@@ -57,7 +57,7 @@ class SiteShareWidget extends LitElement {
   }
   constructor() {
     super();
-    defineCustomElements(window);
+    defineCustomElements(globalThis);
     this.alt = "Share page";
     this.icon = "social:share";
     this.activeGitFileLink = "";
@@ -74,7 +74,7 @@ class SiteShareWidget extends LitElement {
    */
   click(e) {
     if (this.shadowRoot && this.shadowRoot.querySelector("web-social-share")) {
-      const location = window.location.href;
+      const location = globalThis.location.href;
       const email = varGet(store, "manifest.metadata.author.email", "");
       const share = {
         displayNames: true,

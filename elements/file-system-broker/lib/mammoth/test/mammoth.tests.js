@@ -204,7 +204,7 @@ test("options.transformDocument is used to transform document if set", function 
   });
   var options = {
     transformDocument: function (document) {
-      document.children[0].styleId = "Heading1";
+      globalThis.document.children[0].styleId = "Heading1";
       return document;
     },
   };

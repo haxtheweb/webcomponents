@@ -252,12 +252,12 @@ export class SuperDaemonToast extends SimpleToastEl {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener(
+    globalThis.addEventListener(
       "super-daemon-toast-hide",
       this.hideSimpleToast.bind(this),
       { signal: this.windowControllers.signal }
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "super-daemon-toast-show",
       this.showSimpleToast.bind(this),
       { signal: this.windowControllers.signal }
@@ -342,16 +342,16 @@ export class SuperDaemonToast extends SimpleToastEl {
   }
 }
 customElements.define(SuperDaemonToast.tag, SuperDaemonToast);
-window.SuperDaemonToast = window.SuperDaemonToast || {};
+globalThis.SuperDaemonToast = globalThis.SuperDaemonToast || {};
 
-window.SuperDaemonToast.requestAvailability = () => {
-  if (!window.SuperDaemonToast.instance) {
-    window.SuperDaemonToast.instance = document.createElement(
+globalThis.SuperDaemonToast.requestAvailability = () => {
+  if (!globalThis.SuperDaemonToast.instance) {
+    globalThis.SuperDaemonToast.instance = globalThis.document.createElement(
       SuperDaemonToast.tag
     );
-    document.body.appendChild(window.SuperDaemonToast.instance);
+    globalThis.document.body.appendChild(globalThis.SuperDaemonToast.instance);
   }
-  return window.SuperDaemonToast.instance;
+  return globalThis.SuperDaemonToast.instance;
 };
 export const SuperDaemonToastInstance =
-  window.SuperDaemonToast.requestAvailability();
+  globalThis.SuperDaemonToast.requestAvailability();

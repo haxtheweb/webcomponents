@@ -111,10 +111,10 @@ export const SimpleIconBehaviors = function (SuperClass) {
     }
     get documentDir() {
       return (
-        document.body.getAttribute("xml:dir") ||
-        document.body.getAttribute("dir") ||
-        document.documentElement.getAttribute("xml:dir") ||
-        document.documentElement.getAttribute("dir") ||
+        globalThis.document.body.getAttribute("xml:dir") ||
+        globalThis.document.body.getAttribute("dir") ||
+        globalThis.document.documentElement.getAttribute("xml:dir") ||
+        globalThis.document.documentElement.getAttribute("dir") ||
         "ltr"
       );
     }

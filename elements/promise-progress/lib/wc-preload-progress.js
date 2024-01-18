@@ -16,7 +16,7 @@ export class WCPreloadProgress extends PromiseProgress {
   constructor() {
     super();
     this.wcList = [];
-    this.registry = window.DynamicImportRegistry.requestAvailability();
+    this.registry = globalThis.DynamicImportRegistry.requestAvailability();
   }
   static get properties() {
     return {

@@ -32,23 +32,23 @@ class HAXCMSPrintTheme extends CleanTwo {
   }
   async print(e) {
     this.shadowRoot.querySelector("#printbtn").style.display = "none";
-    window.addEventListener("afterprint", (e) => {
-      window.close();
+    globalThis.addEventListener("afterprint", (e) => {
+      globalThis.close();
     });
-    if (window.SimpleToast && window.SimpleToast.requestAvailability) {
-      window.SimpleToast.requestAvailability().hide();
+    if (globalThis.SimpleToast && globalThis.SimpleToast.requestAvailability) {
+      globalThis.SimpleToast.requestAvailability().hide();
     }
-    window.scrollBy({
+    globalThis.scrollBy({
       left: 0,
-      top: document.body.scrollHeight,
+      top: globalThis.document.body.scrollHeight,
       behavior: "smooth",
     });
     setTimeout(() => {
-      window.scrollTo(0, 0);
+      globalThis.scrollTo(0, 0);
       setTimeout(() => {
-        window.document.close();
-        window.focus();
-        window.print();
+        globalThis.document.close();
+        globalThis.focus();
+        globalThis.print();
       }, 10);
     }, 500);
   }
@@ -56,21 +56,21 @@ class HAXCMSPrintTheme extends CleanTwo {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    document.body.style.setProperty("--haxcms-color", "white");
-    document.body.style.overflow = "auto";
-    if (window.SimpleToast && window.SimpleToast.requestAvailability) {
-      window.SimpleToast.requestAvailability().hide();
+    globalThis.document.body.style.setProperty("--haxcms-color", "white");
+    globalThis.document.body.style.overflow = "auto";
+    if (globalThis.SimpleToast && globalThis.SimpleToast.requestAvailability) {
+      globalThis.SimpleToast.requestAvailability().hide();
     }
     // support replace tag which needs to run its replacements first
     const replaceTag = Array.from(
-      document.body.querySelectorAll("haxcms-print-theme replace-tag")
+      globalThis.document.body.querySelectorAll("haxcms-print-theme replace-tag")
     );
     for (let i = 0; i < replaceTag.length; i++) {
       replaceTag[i].runReplacement();
     }
     setTimeout(() => {
       const all = Array.from(
-        document.body.querySelectorAll("haxcms-print-theme *")
+        globalThis.document.body.querySelectorAll("haxcms-print-theme *")
       );
       for (let i = 0; i < all.length; i++) {
         all[i].elementVisible = true;

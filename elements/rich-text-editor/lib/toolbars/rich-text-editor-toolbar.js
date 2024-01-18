@@ -23,7 +23,7 @@ import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js
 import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js";
 import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-unlink.js";
 
-window.RichTextEditorToolbars = window.RichTextEditorToolbars || [];
+globalThis.RichTextEditorToolbars = globalThis.RichTextEditorToolbars || [];
 /**
  * RichTextEditorToolbarBehaviors
  *
@@ -905,7 +905,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.breadcrumbsLabel = "Select";
       this.breadcrumbsSelectAllLabel = "All";
       this.__toolbar = this;
-      document.addEventListener(
+      globalThis.document.addEventListener(
         shadow.eventName,
         this._handleTargetSelection.bind(this.__toolbar),
         { signal: this.windowControllers.signal }
@@ -917,7 +917,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
     connectedCallback() {
       super.connectedCallback();
-      window.RichTextEditorToolbars.push(this);
+      globalThis.RichTextEditorToolbars.push(this);
     }
 
     /**
@@ -926,7 +926,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     disconnectedCallback() {
       this.windowControllers.abort();
-      window.RichTextEditorToolbars = window.RichTextEditorToolbars.filter(
+      globalThis.RichTextEditorToolbars = globalThis.RichTextEditorToolbars.filter(
         (toolbar) => toolbar !== this
       );
       super.disconnectedCallback();
@@ -937,7 +937,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       super.firstUpdated(changedProperties);
       if (this.hasBreadcrumbs && this.editor)
         this.positionByTarget(this.editor);
-      this.__prompt = window.RichTextEditorPrompt.requestAvailability();
+      this.__prompt = globalThis.RichTextEditorPrompt.requestAvailability();
       this.__prompt.addEventListener("open", (e) => {
         this.__promptOpen = true;
       });
@@ -1169,10 +1169,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     _addBreadcrumbs() {
       if (!this.breadcrumbs) {
-        this.breadcrumbs = document.createElement(
+        this.breadcrumbs = globalThis.document.createElement(
           "rich-text-editor-breadcrumbs"
         );
-        document.body.appendChild(this.breadcrumbs);
+        globalThis.document.body.appendChild(this.breadcrumbs);
       }
       this.breadcrumbs.label = this.breadcrumbsLabel;
       return this.breadcrumbs;
@@ -1284,10 +1284,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.breadcrumbs.slot = target.slot;
         }
       } else {
-        document.body.append(this);
+        globalThis.document.body.append(this);
         this.slot = undefined;
         if (this.breadcrumbs) {
-          document.body.append(this.breadcrumbs);
+          globalThis.document.body.append(this.breadcrumbs);
           this.breadcrumbs.slot = undefined;
         }
       }
@@ -1371,7 +1371,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     insertNew(target) {
-      let content = document.createElement("rich-text-editor");
+      let content = globalThis.document.createElement("rich-text-editor");
       target.parentNode.insertBefore(content, target);
       content.appendChild(target);
     }

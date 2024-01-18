@@ -47,7 +47,7 @@ export class AppHaxRouter extends HTMLElement {
   }
 
   connectedCallback() {
-    window.addEventListener(
+    globalThis.addEventListener(
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this),
       { signal: this.windowControllers.signal }

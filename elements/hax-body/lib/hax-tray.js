@@ -162,7 +162,7 @@ class HaxTray extends I18NMixin(
       this.globalPreferences = toJS(HAXStore.globalPreferences);
       this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
       this.dark = this.haxUiTheme === "haxdark";
-      document.body.setAttribute("hax-ui-theme", this.haxUiTheme);
+      globalThis.document.body.setAttribute("hax-ui-theme", this.haxUiTheme);
     });
     autorun(() => {
       this.editMode = toJS(HAXStore.editMode);
@@ -649,7 +649,7 @@ class HaxTray extends I18NMixin(
           }
           if (this.elementAlign === "right") {
             this.shadowRoot.querySelector(".detail").style.width =
-              window.innerWidth - this.__moveX - base + "px";
+              globalThis.innerWidth - this.__moveX - base + "px";
           } else {
             this.shadowRoot.querySelector(".detail").style.width =
               this.__moveX - base + "px";
@@ -1093,7 +1093,7 @@ class HaxTray extends I18NMixin(
         this.startTour();
         break;
       case "stop-tour":
-        window.SimpleTourManager.requestAvailability().stopTour("hax");
+        globalThis.SimpleTourManager.requestAvailability().stopTour("hax");
         break;
       case "undo":
         HAXStore.activeHaxBody.undo();
@@ -1109,9 +1109,9 @@ class HaxTray extends I18NMixin(
     }
   }
   startTour() {
-    this.__tour = this.__tour || window.SimpleTourManager.requestAvailability();
+    this.__tour = this.__tour || globalThis.SimpleTourManager.requestAvailability();
     this.tourController = new AbortController();
-    window.addEventListener(
+    globalThis.addEventListener(
       "tour-changed",
       this._handleTourChanged.bind(this),
       { signal: this.tourController.signal }
@@ -1119,7 +1119,7 @@ class HaxTray extends I18NMixin(
     this.__tour.startTour("hax");
   }
   stopTour() {
-    this.__tour = this.__tour || window.SimpleTourManager.requestAvailability();
+    this.__tour = this.__tour || globalThis.SimpleTourManager.requestAvailability();
     this.__tour.stopTour("hax");
     this.tourController.abort();
   }
@@ -1438,7 +1438,7 @@ class HaxTray extends I18NMixin(
       // now we need to parse through for slotted items
       // build a fake tree, then walk the configuration / Settings
       // looking for slot types
-      let tmp = document.createElement("div");
+      let tmp = globalThis.document.createElement("div");
       tmp.innerHTML = this.activeHaxElement.content;
       // step through each key
       tmp.childNodes.forEach((el) => {
@@ -1858,7 +1858,7 @@ class HaxTray extends I18NMixin(
                           (wrapper) => !exclusions.includes(wrapper)
                         );
                     }
-                    var tmpel = document.createElement(slotTag);
+                    var tmpel = globalThis.document.createElement(slotTag);
                     if (
                       this.__activePropSchema.settings[key][propTmp]
                         .slotAttributes
@@ -1988,7 +1988,7 @@ class HaxTray extends I18NMixin(
    */
   _clickEditButton(e) {
     HAXStore.editMode = true;
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
@@ -2010,7 +2010,7 @@ class HaxTray extends I18NMixin(
         detail: e.detail,
       })
     );
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,

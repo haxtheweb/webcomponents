@@ -1711,10 +1711,10 @@ Usage:
               } catch (e) {
                 try {
                   var Builder =
-                    window.BlobBuilder ||
-                    window.WebKitBlobBuilder ||
-                    window.MozBlobBuilder ||
-                    window.MSBlobBuilder;
+                    globalThis.BlobBuilder ||
+                    globalThis.WebKitBlobBuilder ||
+                    globalThis.MozBlobBuilder ||
+                    globalThis.MSBlobBuilder;
                   var builder = new Builder();
                   builder.append(buffer);
                   exports.blob = builder.getBlob("application/zip").size === 0;
@@ -2104,10 +2104,10 @@ Usage:
               try {
                 // deprecated, browser only, old way
                 var Builder =
-                  window.BlobBuilder ||
-                  window.WebKitBlobBuilder ||
-                  window.MozBlobBuilder ||
-                  window.MSBlobBuilder;
+                  globalThis.BlobBuilder ||
+                  globalThis.WebKitBlobBuilder ||
+                  globalThis.MozBlobBuilder ||
+                  globalThis.MSBlobBuilder;
                 var builder = new Builder();
                 builder.append(buffer);
                 return builder.getBlob("application/zip");
@@ -5438,7 +5438,7 @@ Usage:
             this.w_mask = 0; /* w_size - 1 */
 
             this.window = null;
-            /* Sliding window. Input bytes are read into the second half of the window,
+            /* Sliding globalThis. Input bytes are read into the second half of the window,
              * and move to the first half later to keep a dictionary of at least wSize
              * bytes. With this organization, matches are limited to a distance of
              * wSize-MAX_MATCH bytes, but this ensures that IO is always
@@ -5447,7 +5447,7 @@ Usage:
 
             this.window_size = 0;
             /* Actual size of window: 2*wSize, except when the user input buffer
-             * is directly used as sliding window.
+             * is directly used as sliding globalThis.
              */
 
             this.prev = null;

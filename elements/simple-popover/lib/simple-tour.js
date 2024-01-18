@@ -14,11 +14,11 @@ class SimpleTour extends LitElement {
     this.tourInfo = {};
     this.activeElementDelay = 500;
     this.stop = -1;
-    window.addEventListener(
+    globalThis.addEventListener(
       "simple-tour-register",
       this.registerNewTourEvent.bind(this)
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "simple-tour-create-tour-stop",
       this.createTourStopEvent.bind(this)
     );
@@ -116,7 +116,7 @@ class SimpleTour extends LitElement {
     );
   }
   stopTour(e) {
-    window.SimplePopoverManager.requestAvailability().setPopover(
+    globalThis.SimplePopoverManager.requestAvailability().setPopover(
       this,
       this,
       false,
@@ -214,8 +214,8 @@ class SimpleTour extends LitElement {
         (propName == "active" && this.active)
       ) {
         render(
-          document.createElement("div"),
-          window.SimplePopoverManager.requestAvailability()
+          globalThis.document.createElement("div"),
+          globalThis.SimplePopoverManager.requestAvailability()
         );
         let title = this.stacks[this.active][this.stop].title;
         let description = this.stacks[this.active][this.stop].description;
@@ -245,8 +245,8 @@ class SimpleTour extends LitElement {
                 "<style>" + this.tourInfo[this.active].style + "</style>"
               )
             : ""}`;
-        render(content, window.SimplePopoverManager.requestAvailability());
-        window.SimplePopoverManager.requestAvailability().setPopover(
+        render(content, globalThis.SimplePopoverManager.requestAvailability());
+        globalThis.SimplePopoverManager.requestAvailability().setPopover(
           this,
           this.stacks[this.active][this.stop].target,
           true,
@@ -301,16 +301,16 @@ customElements.define("simple-tour", SimpleTour);
 export { SimpleTour, TourStop };
 
 // register globally so we can make sure there is only one
-window.SimpleTourManager = window.SimpleTourManager || {};
+globalThis.SimpleTourManager = globalThis.SimpleTourManager || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.SimpleTourManager.requestAvailability = () => {
-  if (!window.SimpleTourManager.instance) {
-    window.SimpleTourManager.instance = document.createElement("simple-tour");
-    document.body.appendChild(window.SimpleTourManager.instance);
+globalThis.SimpleTourManager.requestAvailability = () => {
+  if (!globalThis.SimpleTourManager.instance) {
+    globalThis.SimpleTourManager.instance = globalThis.document.createElement("simple-tour");
+    globalThis.document.body.appendChild(globalThis.SimpleTourManager.instance);
   }
-  return window.SimpleTourManager.instance;
+  return globalThis.SimpleTourManager.instance;
 };
 // self append
-export const SimpleTourManager = window.SimpleTourManager.requestAvailability();
+export const SimpleTourManager = globalThis.SimpleTourManager.requestAvailability();

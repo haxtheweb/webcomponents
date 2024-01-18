@@ -52,7 +52,7 @@ class GradeBookLite extends UIRenderPieces(
     this.where = "term";
     this.hasFilePicker = false;
     this.source = "googledocs";
-    if (window.showOpenFilePicker) {
+    if (globalThis.showOpenFilePicker) {
       this.source = "filesystem";
       this.hasFilePicker = true;
     }
@@ -157,11 +157,11 @@ class GradeBookLite extends UIRenderPieces(
         for (let entry of entries) {
           if (entry.contentBoxSize) {
             pixels = Math.round(
-              window.innerHeight - entry.contentBoxSize[0].blockSize - 122
+              globalThis.innerHeight - entry.contentBoxSize[0].blockSize - 122
             );
           } else {
             pixels = Math.round(
-              window.innerHeight - entry.contentRect.height - 122
+              globalThis.innerHeight - entry.contentRect.height - 122
             );
           }
         }
@@ -356,7 +356,7 @@ class GradeBookLite extends UIRenderPieces(
           if (!this.__applied) {
             this.__applied = true;
             // this listener gets the event from the service worker
-            window.addEventListener("xlsx-file-system-data", (e) => {
+            globalThis.addEventListener("xlsx-file-system-data", (e) => {
               let database = e.detail.data;
               for (var i in database) {
                 let loadedData = this.transformTable(database[i]);
@@ -1030,18 +1030,18 @@ class GradeBookLite extends UIRenderPieces(
       .trim();
     // base helps w/ calculating URLs in content
     var base = "";
-    if (document.querySelector("base")) {
-      base = document.querySelector("base").href;
+    if (globalThis.document.querySelector("base")) {
+      base = globalThis.document.querySelector("base").href;
     }
     const response = await MicroFrontendRegistry.call("@core/htmlToPdf", {
       base: base,
       html: htmlContent,
     });
     if (response.status == 200 && response.data) {
-      const link = document.createElement("a");
+      const link = globalThis.document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = window.URL.createObjectURL(
+      link.href = globalThis.URL.createObjectURL(
         b64toBlob(response.data, "application/pdf")
       );
       link.download = `StudentReport.pdf`;
@@ -1068,7 +1068,7 @@ class GradeBookLite extends UIRenderPieces(
       data: htmlContent,
     });
     if (response.status == 200 && response.data) {
-      window.open(
+      globalThis.open(
         `https://secure-feedback.vercel.app/?message=${response.data}`,
         "_blank"
       );
@@ -1080,7 +1080,7 @@ class GradeBookLite extends UIRenderPieces(
     if (this.__openWindow && !this.__openWindow.closed) {
       this.__openWindow.focus();
     } else {
-      this.__openWindow = window.open(
+      this.__openWindow = globalThis.open(
         "",
         "studentwork",
         `left=0,top=0,width=${screen.width / 2},height=${
@@ -1707,7 +1707,7 @@ class GradeBookLite extends UIRenderPieces(
   // ensure when we drop a tag onto the UI that it removes all the outlines
   // of fields that can have items dropped into them
   _handleDragDrop(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-tag-drop", {
         detail: {
           value: "drop",
@@ -1717,7 +1717,7 @@ class GradeBookLite extends UIRenderPieces(
   }
   // set the drag transfer data
   setDragTransfer(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-tag-dragstart", {
         detail: {
           value: e.target,
@@ -1735,16 +1735,16 @@ class GradeBookLite extends UIRenderPieces(
 }
 customElements.define(GradeBookLite.tag, GradeBookLite);
 export { GradeBookLite };
-window.GradeBook = window.GradeBook || {};
-window.GradeBook.requestAvailability = () => {
+globalThis.GradeBook = globalThis.GradeBook || {};
+globalThis.GradeBook.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.GradeBook.instance) {
-    if (document.querySelector("grade-book")) {
-      window.GradeBook.instance = document.querySelector("grade-book");
+  if (!globalThis.GradeBook.instance) {
+    if (globalThis.document.querySelector("grade-book")) {
+      globalThis.GradeBook.instance = globalThis.document.querySelector("grade-book");
     } else {
-      window.GradeBook.instance = document.createElement("grade-book");
-      document.body.appendChild(window.GradeBook.instance);
+      globalThis.GradeBook.instance = globalThis.document.createElement("grade-book");
+      globalThis.document.body.appendChild(globalThis.GradeBook.instance);
     }
   }
-  return window.GradeBook.instance;
+  return globalThis.GradeBook.instance;
 };

@@ -196,7 +196,7 @@ export class SiteView extends SimpleColors {
     this._searchDebounce = setTimeout(async () => {
       if (this.shadowRoot && !this.loading) {
         const site = store.getManifest(true);
-        let base = document.querySelector("base").href;
+        let base = globalThis.document.querySelector("base").href;
         if (!base) {
           base = "/";
         }
@@ -434,7 +434,7 @@ export class SiteView extends SimpleColors {
   // because of how processed <template> tags work in lit (illegal) we have to specialized way of rendering
   // so that the play-list element is empty for a second and then we template stamp it into placee
   renderPlayListTemplate() {
-    let template = document.createElement("template");
+    let template = globalThis.document.createElement("template");
     render(
       html`${this.results.map(
         (item) =>

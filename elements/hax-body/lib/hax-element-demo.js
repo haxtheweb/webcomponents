@@ -52,9 +52,9 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         // support for active element being run through for a conversion
         if (
           this.activePickerSchema !== -1 &&
-          document.querySelector("hax-picker") &&
-          document.querySelector("hax-picker")._elements &&
-          document.querySelector("hax-picker")._elements.length > 0
+          globalThis.document.querySelector("hax-picker") &&
+          globalThis.document.querySelector("hax-picker")._elements &&
+          globalThis.document.querySelector("hax-picker")._elements.length > 0
         ) {
           // bc of data rendering we need to get full schema from source
           // this is bizarre looking for sure but we template stamp
@@ -63,7 +63,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           // so instead of rebuilding and finding ours again we can just set the active
           // index to what it was at render time
           el = haxElementToNode(
-            document.querySelector("hax-picker")._elements[
+            globalThis.document.querySelector("hax-picker")._elements[
               this.activePickerSchema
             ]
           );
@@ -74,7 +74,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         ) {
           el = haxElementToNode(schema.demoSchema[0]);
         } else {
-          el = document.createElement(this[propName]);
+          el = globalThis.document.createElement(this[propName]);
         }
         this.appendChild(el);
       }

@@ -105,7 +105,7 @@ class DateTitle extends LitElement {
     const textArr = text.split("");
     const container = this.shadowRoot.querySelector(".container");
     const containerHeight = container.clientHeight;
-    const newElement = document.createElement("div");
+    const newElement = globalThis.document.createElement("div");
     newElement.setAttribute("class", className);
 
     const deg = range / textArr.length;

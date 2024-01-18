@@ -21,7 +21,7 @@ class MonacoEditor {
   setupEditor() {
     require.config({ paths: { vs: 'node_modules/monaco-editor/min/vs' } });
     require(['vs/editor/editor.main'], () => {
-      this.editor = monaco.editor.create(document.getElementById('container'), {
+      this.editor = monaco.editor.create(globalThis.document.getElementById('container'), {
         value: this.value,
         language: this.language,
         scrollBeyondLastLine: false,
@@ -75,14 +75,14 @@ class MonacoEditor {
   }
 
   postMessage(event, payload) {
-    window.parent.postMessage(
+    globalThis.parent.postMessage(
       JSON.stringify({ event, payload }),
-      window.parent.location.href
+      globalThis.parent.location.href
     );
   }
 
   setupEventListener(type, callback) {
-    window.addEventListener(type, data => {
+    globalThis.addEventListener(type, data => {
       callback(data);
     });
   }

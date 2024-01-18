@@ -12,7 +12,7 @@ const MutationObserverImportMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
-      window.DynamicImportRegistry.requestAvailability();
+      globalThis.DynamicImportRegistry.requestAvailability();
     }
     connectedCallback() {
       if (super.connectedCallback) {
@@ -46,7 +46,7 @@ const MutationObserverImportMixin = function (SuperClass) {
      * Process new elements
      */
     processNewElement(node) {
-      let registry = window.DynamicImportRegistry.requestAvailability();
+      let registry = globalThis.DynamicImportRegistry.requestAvailability();
       registry.loadDefinition(node.tagName);
     }
   };

@@ -177,20 +177,20 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     this.sourceView = false;
     this.haxUIElement = true;
     this.tourName = "hax";
-    window.HaxTextEditorToolbarConfig = window.HaxTextEditorToolbarConfig || {};
-    window.HaxTextEditorToolbarConfig.inlineGizmos =
-      window.HaxTextEditorToolbarConfig.inlineGizmos || {};
-    window.HaxTextEditorToolbarConfig.default = window
+    globalThis.HaxTextEditorToolbarConfig = globalThis.HaxTextEditorToolbarConfig || {};
+    globalThis.HaxTextEditorToolbarConfig.inlineGizmos =
+      globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {};
+    globalThis.HaxTextEditorToolbarConfig.default = window
       .HaxTextEditorToolbarConfig.default || [...this.defaultConfig];
-    this.config = window.HaxTextEditorToolbarConfig.default;
+    this.config = globalThis.HaxTextEditorToolbarConfig.default;
     this.sticky = false;
     this.__updated = false;
     this.setTarget(undefined);
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-store-ready",
       this._handleHaxStoreReady.bind(this)
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-register-properties",
       this._handleElementRegister.bind(this)
     );
@@ -699,7 +699,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     if (
       !tag ||
       !props ||
-      !!window.HaxTextEditorToolbarConfig.inlineGizmos[tag] ||
+      !!globalThis.HaxTextEditorToolbarConfig.inlineGizmos[tag] ||
       tag.indexOf("-") < 0
     )
       return;
@@ -715,7 +715,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       inline = custom && (inlineOnly || handlesInline);
     if (!element.gizmo.title) element.gizmo.title = title;
     if (inline) {
-      window.HaxTextEditorToolbarConfig.inlineGizmos[tag] = {
+      globalThis.HaxTextEditorToolbarConfig.inlineGizmos[tag] = {
         element: element,
         type: "hax-text-editor-button",
       };
@@ -734,8 +734,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     if (this.__updated) return;
     this.__updated = true;
     let buttons = Object.keys(
-      window.HaxTextEditorToolbarConfig.inlineGizmos || {}
-    ).map((key) => window.HaxTextEditorToolbarConfig.inlineGizmos[key]);
+      globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {}
+    ).map((key) => globalThis.HaxTextEditorToolbarConfig.inlineGizmos[key]);
     return buttons.length === 0
       ? [...(this.defaultConfig || [])]
       : [

@@ -119,7 +119,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
           attribute: "disabled",
         },
         /**
-         * command used for document.execCommand.
+         * command used for globalThis.document.execCommand.
          */
         command: {
           type: String,

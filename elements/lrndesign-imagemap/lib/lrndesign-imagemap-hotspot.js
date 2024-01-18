@@ -79,7 +79,7 @@ class LrndesignImagemapHotspot extends LitElement {
   }
 
   loadSvg(svg, hotspots) {
-    let div = document.createElement("div");
+    let div = globalThis.document.createElement("div");
     div.innerHTML = svg;
     let slot = div.children[0];
     slot.slot = svg;

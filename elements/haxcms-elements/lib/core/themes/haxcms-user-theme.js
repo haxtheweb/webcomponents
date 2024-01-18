@@ -66,7 +66,7 @@ class HAXCMSUserTheme extends HAXCMSPolymerElementTheme {
     this.__counter = 0;
     this.getCSS();
     this.getHTML();
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-custom-theme-template-ready",
       this.templateReady.bind(this)
     );
@@ -95,7 +95,7 @@ class HAXCMSUserTheme extends HAXCMSPolymerElementTheme {
       this._html = e.detail.html;
     }
     if (this.__counter === 2) {
-      let t = document.createElement("template");
+      let t = globalThis.document.createElement("template");
       t.innerHTML = `
       <style>
         /**

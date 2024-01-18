@@ -9,8 +9,8 @@ class SimpleLoginCamera extends HTMLElement {
   constructor() {
     super();
     this.windowControllers = new AbortController();
-    if (window.WCGlobalBasePath) {
-      this.basePath = window.WCGlobalBasePath;
+    if (globalThis.WCGlobalBasePath) {
+      this.basePath = globalThis.WCGlobalBasePath;
     } else {
       this.basePath = new URL("./../../../", import.meta.url).href;
     }
@@ -20,7 +20,7 @@ class SimpleLoginCamera extends HTMLElement {
       stopSave: "Stop & Save",
       clickToTakePhoto: "Click to take photo",
     };
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           context: this,
@@ -32,21 +32,21 @@ class SimpleLoginCamera extends HTMLElement {
       })
     );
     const location = `${this.basePath}msr/MediaStreamRecorder.min.js`;
-    window.ESGlobalBridge.requestAvailability().load("msr", location);
-    window.addEventListener(
+    globalThis.ESGlobalBridge.requestAvailability().load("msr", location);
+    globalThis.addEventListener(
       "es-bridge-msr-loaded",
       this._msrLoaded.bind(this),
       { signal: this.windowControllers.signal }
     );
 
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
     this._shadow = this.attachShadow({ mode: "closed" });
     this.render();
     this._video = this._shadow.querySelector("video");
     this._error = this._shadow.querySelector("p");
     this._record = this._shadow.querySelector("button.record");
     this._pauseRecord = this._shadow.querySelector("button.pause-record");
-    document.addEventListener(
+    globalThis.document.addEventListener(
       "DOMContentLoaded",
       this.documentLoaded.bind(this),
       { signal: this.windowControllers.signal }
@@ -85,8 +85,8 @@ class SimpleLoginCamera extends HTMLElement {
     this._shadow.innerHTML = null;
     this.template.innerHTML = this.html;
 
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     this._shadow.appendChild(this.template.content.cloneNode(true));
   }
@@ -140,7 +140,7 @@ class SimpleLoginCamera extends HTMLElement {
     });
   }
   async takeASnap() {
-    const canvas = document.createElement("canvas"); // create a canvas
+    const canvas = globalThis.document.createElement("canvas"); // create a canvas
     const ctx = canvas.getContext("2d"); // get its context
     canvas.width = this._video.videoWidth; // set its size to the one of the video
     canvas.height = this._video.videoHeight;
@@ -151,7 +151,7 @@ class SimpleLoginCamera extends HTMLElement {
   }
   renderImage(blob) {
     // uses the <a download> to download a Blob
-    let img = document.createElement("img");
+    let img = globalThis.document.createElement("img");
     img.src = URL.createObjectURL(blob);
     return img;
   }
@@ -160,10 +160,10 @@ class SimpleLoginCamera extends HTMLElement {
   }
   download(blob) {
     // uses the <a download> to download a Blob
-    let a = document.createElement("a");
+    let a = globalThis.document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = "screenshot.jpg";
-    document.body.appendChild(a);
+    globalThis.document.body.appendChild(a);
     a.click();
   }
   _addVideoAtributes() {
@@ -183,12 +183,12 @@ class SimpleLoginCamera extends HTMLElement {
     });
   }
   async _applyMSR() {
-    window.addEventListener(
+    globalThis.addEventListener(
       "site-listing-video-activate",
       async () => {
         try {
           this._video.srcObject = await this._cameraStream();
-          window.stream = this._video.srcObject;
+          globalThis.stream = this._video.srcObject;
           this._addVideoAtributes();
           if (this.hasAttribute("record")) {
             this.MediaStreamRecorder = new MediaStreamRecorder(
@@ -231,7 +231,7 @@ class SimpleLoginCamera extends HTMLElement {
   }
 
   connectedCallback() {
-    if (window.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
+    if (globalThis.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
       this._applyMSR();
     }
     this._t = { ...this.t };
@@ -240,7 +240,7 @@ class SimpleLoginCamera extends HTMLElement {
    * Try to apply when fully loaded dom
    */
   documentLoaded(e) {
-    if (window.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
+    if (globalThis.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
       this._applyMSR();
     }
   }

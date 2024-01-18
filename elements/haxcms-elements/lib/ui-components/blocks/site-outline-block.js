@@ -279,7 +279,7 @@ class SiteOutlineBlock extends PolymerElement {
         this.activeId = toJS(store.activeId);
       });
     }, 50);
-    window.addEventListener(
+    globalThis.addEventListener(
       "resize",
       () => {
         this._activeIdChanged(this.activeId);

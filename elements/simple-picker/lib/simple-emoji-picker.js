@@ -97,7 +97,7 @@ class SimpleEmojiPicker extends IntersectionObserverMixin(
       import("./SimplePickerEmojis.js").then(() => {
         let optData = [{ alt: null, icon: this.icon, value: null }];
         this.emojiTypes.forEach((type) =>
-          window.SimplePickerEmojis[type].forEach((emoji) =>
+          globalThis.SimplePickerEmojis[type].forEach((emoji) =>
             optData.push(emoji)
           )
         );

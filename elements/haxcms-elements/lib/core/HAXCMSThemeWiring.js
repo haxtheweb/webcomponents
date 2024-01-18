@@ -73,7 +73,7 @@ const HAXCMSTheme = function (SuperClass) {
     _getHexColor(color) {
       // legacy support for materializeCSS names
       let name = color.replace("-text", "");
-      let colors = window.SimpleColorsSharedStyles.colors;
+      let colors = globalThis.SimpleColorsSharedStyles.colors;
       if (colors[name]) {
         return colors[name][6];
       }
@@ -172,7 +172,7 @@ const HAXCMSTheme = function (SuperClass) {
       autorun((reaction) => {
         const __manifest = toJS(store.manifest);
         if (__manifest && varExists(__manifest, "title")) {
-          document.title = __manifest.title;
+          globalThis.document.title = __manifest.title;
         }
         if (
           __manifest &&
@@ -202,7 +202,7 @@ const HAXCMSTheme = function (SuperClass) {
             color = `var(${color})`;
           }
           // set this directly instead of messing w/ accentColor
-          document.body.style.setProperty("--haxcms-color", color);
+          globalThis.document.body.style.setProperty("--haxcms-color", color);
         }
         this.__disposer.push(reaction);
       });
@@ -213,7 +213,7 @@ const HAXCMSTheme = function (SuperClass) {
     }
     __styleReapply() {
       // trick browser into thinking we just reized
-      window.dispatchEvent(new Event("resize"));
+      globalThis.dispatchEvent(new Event("resize"));
     }
     /**
      * Disconnect the wiring for the theme and clean up state
@@ -231,8 +231,8 @@ const HAXCMSTheme = function (SuperClass) {
      * Correctly reset state and dispatch event to notify of active item change
      */
     resetActive() {
-      window.history.pushState(null, null, store.location.baseUrl);
-      window.dispatchEvent(new PopStateEvent("popstate"));
+      globalThis.history.pushState(null, null, store.location.baseUrl);
+      globalThis.dispatchEvent(new PopStateEvent("popstate"));
       this.dispatchEvent(
         new CustomEvent("haxcms-active-item-changed", {
           bubbles: true,
@@ -251,7 +251,7 @@ const HAXCMSTheme = function (SuperClass) {
  */
 class HAXCMSThemeWiring {
   constructor(element, load = true) {
-    window.SimpleColorsSharedStyles.requestAvailability();
+    globalThis.SimpleColorsSharedStyles.requestAvailability();
     if (load) {
       // @todo may want to set this to sessionStorage instead...
       if (localStorageGet("HAXCMSSystemData", null) == null) {
@@ -283,19 +283,19 @@ class HAXCMSThemeWiring {
       this.windowControllers.abort();
     }
     this.windowControllers = new AbortController();
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-active-item-changed",
       this._activeItemUpdate.bind(element),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-edit-mode-changed",
       this._globalEditChanged.bind(element),
       { signal: this.windowControllers.signal }
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdate.bind(element),
       { signal: this.windowControllers.signal }
@@ -304,7 +304,7 @@ class HAXCMSThemeWiring {
     // inject the tools to allow for an authoring experience
     // ensuring they are loaded into the correct theme
     if (this.cmsSiteEditorInstance) {
-      document.body.appendChild(this.cmsSiteEditorInstance);
+      globalThis.document.body.appendChild(this.cmsSiteEditorInstance);
     }
     // if we don't have a backend, don't assume we have an editing experience
     // or we'll keep injecting one regardless and then we're a lightdom read
@@ -328,7 +328,7 @@ class HAXCMSThemeWiring {
     this.windowControllers.abort();
     // need to unplug this so that the new theme can pick it up.
     if (this.cmsSiteEditorInstance) {
-      document.body.appendChild(this.cmsSiteEditorInstance);
+      globalThis.document.body.appendChild(this.cmsSiteEditorInstance);
     }
   }
   /**
@@ -355,12 +355,12 @@ class HAXCMSThemeWiring {
       this.dispatchEvent(evt);
       // update title as a simple nicity
       if (typeof newValue.title !== typeof undefined) {
-        document.title = store.routerManifest.title + " - " + newValue.title;
+        globalThis.document.title = store.routerManifest.title + " - " + newValue.title;
       } else {
-        document.title = store.routerManifest.title;
+        globalThis.document.title = store.routerManifest.title;
       }
     } else {
-      document.title = store.routerManifest.title;
+      globalThis.document.title = store.routerManifest.title;
     }
   }
   /**

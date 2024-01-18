@@ -5,18 +5,18 @@ import { LitElement, html, css } from "lit";
  */
 
 // register globally so we can make sure there is only one
-window.RelativeHeadingStateManager = window.RelativeHeadingStateManager || {};
+globalThis.RelativeHeadingStateManager = globalThis.RelativeHeadingStateManager || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.RelativeHeadingStateManager.requestAvailability = () => {
-  if (!window.RelativeHeadingStateManager.instance) {
-    window.RelativeHeadingStateManager.instance = document.createElement(
+globalThis.RelativeHeadingStateManager.requestAvailability = () => {
+  if (!globalThis.RelativeHeadingStateManager.instance) {
+    globalThis.RelativeHeadingStateManager.instance = globalThis.document.createElement(
       "relative-heading-state-manager"
     );
-    document.body.appendChild(window.RelativeHeadingStateManager.instance);
+    globalThis.document.body.appendChild(globalThis.RelativeHeadingStateManager.instance);
   }
-  return window.RelativeHeadingStateManager.instance;
+  return globalThis.RelativeHeadingStateManager.instance;
 };
 /**
  * `relative-heading-state-manager`
@@ -93,8 +93,8 @@ class RelativeHeadingStateManager extends LitElement {
     this.copyHeading = {};
     this.usesCopyLink = false;
     // sets the instance to the current instance
-    if (!window.RelativeHeadingStateManager.instance)
-      window.RelativeHeadingStateManager.instance = this;
+    if (!globalThis.RelativeHeadingStateManager.instance)
+      globalThis.RelativeHeadingStateManager.instance = this;
   }
   static get styles() {
     return [
@@ -132,7 +132,7 @@ class RelativeHeadingStateManager extends LitElement {
    * @returns {string}
    */
   get copyUrl() {
-    return `${window.location.href.replace(window.location.hash, "")}#${
+    return `${globalThis.location.href.replace(globalThis.location.hash, "")}#${
       this.copyHeading && this.copyHeading.id ? this.copyHeading.id : ""
     }`;
   }
@@ -155,12 +155,12 @@ class RelativeHeadingStateManager extends LitElement {
    */
   copyLink(heading) {
     this.copyHeading = heading;
-    let el = document.createElement("textarea");
+    let el = globalThis.document.createElement("textarea");
     el.value = this.copyUrl;
-    document.body.appendChild(el);
+    globalThis.document.body.appendChild(el);
     el.select();
-    document.execCommand("copy");
-    document.body.removeChild(el);
+    globalThis.document.execCommand("copy");
+    globalThis.document.body.removeChild(el);
     if (
       this.shadowRoot.querySelector("#relative-heading-toast") &&
       this.shadowRoot.querySelector("#relative-heading-toast").open

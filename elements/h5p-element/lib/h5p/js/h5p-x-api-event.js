@@ -1,4 +1,4 @@
-var H5P = (window.H5P = window.H5P || {});
+var H5P = (globalThis.H5P = globalThis.H5P || {});
 
 /**
  * Used for xAPI events.

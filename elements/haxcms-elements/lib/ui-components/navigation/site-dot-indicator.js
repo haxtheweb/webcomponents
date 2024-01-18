@@ -137,13 +137,13 @@ class SiteDotIndicator extends LitElement {
         .removeChild(this.shadowRoot.querySelector("#list").firstChild);
     }
     for (var i in routerManifest.items) {
-      let li = document.createElement("li");
+      let li = globalThis.document.createElement("li");
       li.setAttribute("data-item", routerManifest.items[i].id);
       li.setAttribute("title", routerManifest.items[i].title);
       if (this.activeId === routerManifest.items[i].id) {
         li.classList.add("active");
       }
-      let link = document.createElement("a");
+      let link = globalThis.document.createElement("a");
       link.href = routerManifest.items[i].slug;
       li.appendChild(link);
       this.shadowRoot.querySelector("#list").appendChild(li);

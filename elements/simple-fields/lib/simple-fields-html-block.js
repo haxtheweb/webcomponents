@@ -45,7 +45,7 @@ class SimpleFieldsHtmlBlock extends LitElement {
     wipeSlot(this);
     // sanity check to ditch scripts
     let html = encapScript(newValue);
-    let frag = document.createRange().createContextualFragment(html);
+    let frag = globalThis.document.createRange().createContextualFragment(html);
     // self apend to flow into slot and show up
     this.appendChild(frag);
   }

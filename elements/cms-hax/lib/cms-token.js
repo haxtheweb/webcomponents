@@ -196,11 +196,11 @@ class CMSToken extends PolymerElement {
   _handleTokenResponse(newValue, oldValue) {
     if (newValue !== null && typeof newValue.content !== typeof undefined) {
       // store the text and url callbacks in the event we're in an editing mode
-      if (document.getElementById("cmstokenidtolockonto") != null) {
+      if (globalThis.document.getElementById("cmstokenidtolockonto") != null) {
         document
           .getElementById("cmstokenidtolockonto")
           .setAttribute("href", newValue.editEndpoint);
-        document.getElementById("cmstokenidtolockonto").innerHTML =
+        globalThis.document.getElementById("cmstokenidtolockonto").innerHTML =
           newValue.editText;
         document
           .getElementById("cmstokenidtolockonto")
@@ -210,12 +210,12 @@ class CMSToken extends PolymerElement {
       wipeSlot(this);
       // now inject the content we got
       microTask.run(() => {
-        let template = document.createElement("template");
+        let template = globalThis.document.createElement("template");
         template.innerHTML = newValue.content;
-        this.appendChild(document.importNode(template.content, true));
+        this.appendChild(globalThis.document.importNode(template.content, true));
         setTimeout(() => {
-          if (window.WCAutoload) {
-            window.WCAutoload.process();
+          if (globalThis.WCAutoload) {
+            globalThis.WCAutoload.process();
           }
         }, 0);
         this.loading = false;
@@ -235,9 +235,9 @@ class CMSToken extends PolymerElement {
       // support going from a null element to a real one
       if (
         typeof this.tokenEndPoint === typeof undefined &&
-        typeof window.cmstokenEndPoint !== typeof undefined
+        typeof globalThis.cmstokenEndPoint !== typeof undefined
       ) {
-        this.tokenEndPoint = window.cmstokenEndPoint;
+        this.tokenEndPoint = globalThis.cmstokenEndPoint;
       }
       if (this.tokenEndPoint) {
         this.loading = true;
@@ -285,9 +285,9 @@ class CMSToken extends PolymerElement {
         // support for autoloading the token data needed for the request from globals
         if (
           typeof this.tokenEndPoint === typeof undefined &&
-          typeof window.cmstokenEndPoint !== typeof undefined
+          typeof globalThis.cmstokenEndPoint !== typeof undefined
         ) {
-          this.tokenEndPoint = window.cmstokenEndPoint;
+          this.tokenEndPoint = globalThis.cmstokenEndPoint;
         }
         if (this.tokenEndPoint) {
           this.loading = true;
@@ -297,7 +297,7 @@ class CMSToken extends PolymerElement {
         }
       }
     }
-    document.addEventListener(
+    globalThis.document.addEventListener(
       "visibilitychange",
       this._windowVisibilityChanged.bind(this),
       { signal: this.windowControllers.signal }

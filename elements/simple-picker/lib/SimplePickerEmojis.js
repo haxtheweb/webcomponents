@@ -1,4 +1,4 @@
-window.SimplePickerEmojis = window.SimplePickerEmojis || {
+globalThis.SimplePickerEmojis = globalThis.SimplePickerEmojis || {
   emotions: [
     { value: "&#x1F600;", alt: "&#x1F600;", description: "grinning face" },
     {
@@ -2415,4 +2415,4 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
   ],
 };
 
-export const SimplePickerEmojis = window.SimplePickerEmojis;
+export const SimplePickerEmojis = globalThis.SimplePickerEmojis;

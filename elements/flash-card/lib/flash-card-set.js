@@ -103,7 +103,7 @@ export class FlashCardSet extends SimpleColors {
   formatEl(number) {
     // console.log(this.currentQuestion, this.questions, this.cardLength);
     // create a new element
-    const el = document.createElement("flash-card");
+    const el = globalThis.document.createElement("flash-card");
     el.setAttribute("id", `card${number}`);
     if (number !== 0) {
       el.className = "hidden";

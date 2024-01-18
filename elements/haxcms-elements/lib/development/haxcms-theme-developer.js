@@ -350,7 +350,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     if (HAXStore.ready) {
       this._setDefinitions();
     }
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-store-ready",
       this._fireDefinitions.bind(this),
       { signal: this.windowControllers.signal }

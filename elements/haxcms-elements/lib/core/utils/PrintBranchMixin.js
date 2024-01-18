@@ -83,8 +83,8 @@ export const PrintBranchMixin = function (SuperClass) {
       this.__printBranchLoading = true;
       // base helps w/ calculating URLs in content
       var base = "";
-      if (document.querySelector("base")) {
-        base = document.querySelector("base").href;
+      if (globalThis.document.querySelector("base")) {
+        base = globalThis.document.querySelector("base").href;
       }
       const site = toJS(store.manifest);
       const params = {
@@ -101,7 +101,7 @@ export const PrintBranchMixin = function (SuperClass) {
         },
         ancestor: toJS(store.activeId),
         link: base,
-        magic: window.__appCDN,
+        magic: globalThis.__appCDN,
         base: base,
       };
       const response = await MicroFrontendRegistry.call(
@@ -109,10 +109,10 @@ export const PrintBranchMixin = function (SuperClass) {
         params
       );
       if (response.status == 200 && response.data) {
-        const link = document.createElement("a");
+        const link = globalThis.document.createElement("a");
         // click link to download file
         // @todo this downloads but claims to be corrupt.
-        link.href = window.URL.createObjectURL(
+        link.href = globalThis.URL.createObjectURL(
           b64toBlob(
             btoa(unescape(encodeURIComponent(response.data))),
             "text/html"
@@ -124,8 +124,8 @@ export const PrintBranchMixin = function (SuperClass) {
         link.click();
         this.removeChild(link);*/
         // fallback in case the service fails
-        window.open(
-          window.URL.createObjectURL(
+        globalThis.open(
+          globalThis.URL.createObjectURL(
             b64toBlob(
               btoa(unescape(encodeURIComponent(response.data))),
               "text/html"
@@ -136,8 +136,8 @@ export const PrintBranchMixin = function (SuperClass) {
         );
       } else {
         // fallback in case the service fails
-        window.open(
-          window.location.href + "?format=print-page",
+        globalThis.open(
+          globalThis.location.href + "?format=print-page",
           "",
           "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1"
         );

@@ -157,7 +157,7 @@ export class PageBreakManagerEl extends HTMLElement {
   }
 
   connectedCallback() {
-    window.addEventListener(
+    globalThis.addEventListener(
       "page-break-registration",
       this.registerPageBreak.bind(this),
       { signal: this.windowControllers.signal }
@@ -202,7 +202,7 @@ export class PageBreakManagerEl extends HTMLElement {
                   )
                 : new Number(el.tagName.replace("H", ""))) + element.depth;
             tagNumber = tagNumber > 6 ? 6 : tagNumber;
-            const newH = document.createElement(`h${tagNumber}`);
+            const newH = globalThis.document.createElement(`h${tagNumber}`);
             newH.setAttribute("data-original-level", el.tagName);
             for (var i = 0, l = el.attributes.length; i < l; ++i) {
               newH.setAttribute(
@@ -277,17 +277,17 @@ export class PageBreakManagerEl extends HTMLElement {
 }
 
 // register globally so we can make sure there is only one
-window.PageBreakManager = window.PageBreakManager || {};
+globalThis.PageBreakManager = globalThis.PageBreakManager || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.PageBreakManager.requestAvailability = () => {
-  if (!window.PageBreakManager.instance) {
-    window.PageBreakManager.instance =
-      document.createElement("page-break-manager");
-    document.body.appendChild(window.PageBreakManager.instance);
+globalThis.PageBreakManager.requestAvailability = () => {
+  if (!globalThis.PageBreakManager.instance) {
+    globalThis.PageBreakManager.instance =
+      globalThis.document.createElement("page-break-manager");
+    globalThis.document.body.appendChild(globalThis.PageBreakManager.instance);
   }
-  return window.PageBreakManager.instance;
+  return globalThis.PageBreakManager.instance;
 };
 customElements.define("page-break-manager", PageBreakManagerEl);
-export const pageBreakManager = window.PageBreakManager.requestAvailability();
+export const pageBreakManager = globalThis.PageBreakManager.requestAvailability();

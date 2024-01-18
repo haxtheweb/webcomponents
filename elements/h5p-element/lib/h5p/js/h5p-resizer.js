@@ -1,13 +1,13 @@
 // H5P iframe Resizer
 (function() {
   if (
-    !window.postMessage ||
-    !window.addEventListener ||
-    window.h5pResizerInitialized
+    !globalThis.postMessage ||
+    !globalThis.addEventListener ||
+    globalThis.h5pResizerInitialized
   ) {
     return; // Not supported
   }
-  window.h5pResizerInitialized = true;
+  globalThis.h5pResizerInitialized = true;
 
   // Map actions to handlers
   var actionHandlers = {};
@@ -35,10 +35,10 @@
         respond("resize");
       } else {
         // Frame is gone, unregister.
-        window.removeEventListener("resize", resize);
+        globalThis.removeEventListener("resize", resize);
       }
     };
-    window.addEventListener("resize", resize, false);
+    globalThis.addEventListener("resize", resize, false);
 
     // Respond to let the iframe know we can resize it
     respond("hello");
@@ -89,7 +89,7 @@
   };
 
   // Listen for messages from iframes
-  window.addEventListener(
+  globalThis.addEventListener(
     "message",
     function receiveMessage(event) {
       if (event.data.context !== "h5p") {
@@ -98,7 +98,7 @@
 
       // Find out who sent the message
       var iframe,
-        iframes = document.getElementsByTagName("iframe");
+        iframes = globalThis.document.getElementsByTagName("iframe");
       for (var i = 0; i < iframes.length; i++) {
         if (iframes[i].contentWindow === event.source) {
           iframe = iframes[i];
@@ -129,7 +129,7 @@
   );
 
   // Let h5p iframes know we're ready!
-  var iframes = document.getElementsByTagName("iframe");
+  var iframes = globalThis.document.getElementsByTagName("iframe");
   var ready = {
     context: "h5p",
     action: "ready"

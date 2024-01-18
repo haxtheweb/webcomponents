@@ -25,9 +25,9 @@ class HAXCMSEditorBuilder extends HTMLElement {
   constructor() {
     super();
     this.windowControllers = new AbortController();
-    window.HAXCMS.requestAvailability().storePieces.editorBuilder = this;
+    globalThis.HAXCMS.requestAvailability().storePieces.editorBuilder = this;
     this.applyContext();
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-site-editor-loaded",
       this.editorLoaded.bind(this),
       { signal: this.windowControllers.signal }
@@ -59,7 +59,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js"
       ).then(() => {
-        store.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement = globalThis.document.createElement(
           "haxcms-site-editor-ui"
         );
         for (var key in store.setupSlots) {
@@ -80,7 +80,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
           this.parentNode.insertBefore(store.cmsSiteEditor.haxCmsSiteEditorUIElement, this);
         }
         else {
-          document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
+          globalThis.document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
         }
         // forces a nice fade in transition
         setTimeout(() => {
@@ -94,22 +94,22 @@ class HAXCMSEditorBuilder extends HTMLElement {
       this.__appliedContext = true;
       // this allows forced context
       if (context == null) {
-        context = window.HAXCMS.requestAvailability().getApplicationContext();
+        context = globalThis.HAXCMS.requestAvailability().getApplicationContext();
       }
       if (["php", "nodejs", "desktop"].includes(context)) {
         // append this script to global scope to show up via window
         // this is a unique case since it's server side generated in HAXCMS
-        let script = document.createElement("script");
+        let script = globalThis.document.createElement("script");
         // IF we're in a live environment this will always be 2 levels back
-        if (window.appSettings && window.appSettings.connectionSettings) {
-          script.src = window.appSettings.connectionSettings;
+        if (globalThis.appSettings && globalThis.appSettings.connectionSettings) {
+          script.src = globalThis.appSettings.connectionSettings;
         } else {
           script.src = `../../system/api/connectionSettings`;
         }
         await fetch(script.src).then((response) => {
           if (response.ok) {
             this.__hasConnectionSettings = true;
-            document.documentElement.appendChild(script);
+            globalThis.document.documentElement.appendChild(script);
           }
         });
       }
@@ -130,10 +130,10 @@ class HAXCMSEditorBuilder extends HTMLElement {
         import(`${basePath}backends/${store.cmsSiteEditorBackend.tag}.js`).then(
           (e) => {
             if (!store.cmsSiteEditorBackend.instance) {
-              store.cmsSiteEditorBackend.instance = document.createElement(
+              store.cmsSiteEditorBackend.instance = globalThis.document.createElement(
                 store.cmsSiteEditorBackend.tag
               );
-              document.body.appendChild(store.cmsSiteEditorBackend.instance);
+              globalThis.document.body.appendChild(store.cmsSiteEditorBackend.instance);
             }
           }
         );
