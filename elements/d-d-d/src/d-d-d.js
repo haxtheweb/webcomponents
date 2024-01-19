@@ -872,6 +872,7 @@ class DDD extends SimpleColorsSuper(LitElement) {
         a{
           color: var(--ddd-theme-polaris-link);
           font-weight: var(--ddd-font-primary-bold);
+          text-decoration: none;
         }
         a:hover{
           text-decoration: underline;
