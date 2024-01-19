@@ -9,6 +9,7 @@
   <script type="module">
     import "@polymer/iron-demo-helpers/demo-snippet.js";
     import "../stop-note.js";
+    import "../lib/stop-note-proposed.js";
   </script>
 </head>
 
@@ -22,6 +23,13 @@
         </stop-note>
       </template>
     </demo-snippet>
+    <demo-snippet>
+      <template>
+        <stop-note-proposed>
+          <span slot="message">You can write any message you want here.</span>
+        </stop-note-proposed>
+      </template>
+    </demo-snippet>
   </div>
   <div class="vertical-section-container">
     <h3>Basic stop-note demo: URL</h3>
@@ -30,6 +38,13 @@
         <stop-note title="Error Message" url="https://www.google.com">
           <span slot="message">You can write any error message you want here.</span>
         </stop-note>
+      </template>
+    </demo-snippet>
+    <demo-snippet>
+      <template>
+        <stop-note-proposed title="Error Message" url="https://www.google.com">
+          <span slot="message">You can write any error message you want here.</span>
+        </stop-note-proposed>
       </template>
     </demo-snippet>
   </div><div class="vertical-section-container">
@@ -41,6 +56,13 @@
         </stop-note>
       </template>
     </demo-snippet>
+    <demo-snippet>
+      <template>
+        <stop-note-proposed title="Warning Message" url="https://www.google.com" icon="stopnoteicons:warning-icon">
+          <span slot="message">You can write any warning message you want here.</span>
+        </stop-note-proposed>
+      </template>
+    </demo-snippet>
   </div><div class="vertical-section-container">
     <h3>Basic stop-note demo: Confirm</h3>
     <demo-snippet>
@@ -50,6 +72,13 @@
         </stop-note>
       </template>
     </demo-snippet>
+    <demo-snippet>
+      <template>
+        <stop-note-proposed title="Confirmation Message" url="https://www.google.com" icon="stopnoteicons:confirm-icon">
+          <span slot="message">You can write any confirmation message you want here.</span>
+        </stop-note-proposed>
+      </template>
+    </demo-snippet>
   </div><div class="vertical-section-container">
       <h3>Basic stop-note demo: Read</h3>
       <demo-snippet>
@@ -57,6 +86,13 @@
           <stop-note title="Read the Textbook" icon="stopnoteicons:book-icon">
             <span slot="message">You can write anything you want here (chapters, pages, etc.).</span>
           </stop-note>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <stop-note-proposed title="Read the Textbook" icon="stopnoteicons:book-icon">
+            <span slot="message">You can write anything you want here (chapters, pages, etc.).</span>
+          </stop-note-proposed>
         </template>
       </demo-snippet>
     </div>

@@ -16,7 +16,7 @@ import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
   * @lit-element
   * @demo demo/index.html
   */
-class FigureLabel extends DDD {
+class FigureLabelProposed extends DDD {
   //styles function
   static get styles() {
     return [...super.styles, 
@@ -134,9 +134,9 @@ class FigureLabel extends DDD {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "figure-label";
+    return "figure-label-proposed";
   }
 }
-customElements.define("figure-label", FigureLabel);
+customElements.define(FigureLabelProposed.tag, FigureLabelProposed);
 
-export { FigureLabel };
+export { FigureLabelProposed };
