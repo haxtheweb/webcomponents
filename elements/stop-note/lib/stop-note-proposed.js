@@ -11,7 +11,7 @@ SimpleIconsetStore.registerIconset(
   "stopnoteicons",
   `${
     new URL("./stop-note.js", import.meta.url).href
-  }/../lib/svgs/stopnoteicons-new/`
+  }/../lib/svgs/stopnoteicons-proposed/`
 );
 /**
  * `stop-note`
