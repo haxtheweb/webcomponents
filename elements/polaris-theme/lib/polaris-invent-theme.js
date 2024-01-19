@@ -56,10 +56,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           --polaris-footer-secondary-bg-color: #1e407c;
           --polaris-footer-primary-bg-color: #001e44;
             background-color: var(--polaris-bg-color);
-          --haxcms-base-styles-body-font-size:18px;
-          --hax-base-styles-a-font-size: 18px;
-          --hax-base-styles-p-font-size: 18px;
-          --hax-base-styles-list-font-size: 18px;
+          --haxcms-base-styles-body-font-size: var(--ddd-font-size-s);
+          --hax-base-styles-a-font-size: var(--ddd-font-size-s);
+          --hax-base-styles-p-font-size: var(--ddd-font-size-s);
+          --hax-base-styles-list-font-size: var(--ddd-font-size-s);
           --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
           --haxcms-base-styles-body-line-height: 32px;
           --hax-base-styles-list-line-height: 28.8px
@@ -77,16 +77,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
            --hax-base-styles-h5-font-size: inherit;
            --hax-base-styles-h6-font-size: inherit;
         }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          font-family: "Open Sans", sans-serif;
-          font-weight: 300;
-        }
-
         a {
           color: #1173ca;
           text-decoration: none;
@@ -129,10 +119,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           padding: 40px 0;
         }
 
-        .content.wrap {
-          clear: both;
-        }
-
         .site-inner {
           display: flex;
         }
@@ -154,12 +140,9 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         header:not(:empty) {
           background-color: var(--polaris-header-bg-color);
         }
-        main {
-          width: 900px;
-        }
-        nav {
+  
+        .nav {
           background-color: var(--polaris-nav-bg-color);
-          width: 360px;
           color: var(--polaris-nav-color);
         }
 
@@ -390,21 +373,17 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           color: #1173ca;
           text-decoration: none;
         }
+        #haxcmsmobilemenubutton {
+          padding: 20px;
+          --simple-icon-height: 40px;
+          --simple-icon-width: 40px;
+        }
         @media only screen and (max-width: 1139px) {
-          main {
-            width: 620px;
-          }
-          aside {
-            width: 300px;
-          }
           .wrap {
             max-width: 960px;
           }
         }
         @media only screen and (max-width: 1023px) {
-          main {
-            width: 100%;
-          }
           header .wrap {
             padding: 20px 0;
           }
@@ -420,11 +399,56 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             bottom: 0px;
             --simple-icon-width: 20px;
             --simple-icon-height: 20px;
+          } 
+        }
+        :host([responsive-size="xl"]) main {
+          width: calc(var(--menu-size) + 70%);
+        }
+        :host([responsive-size="lg"]) main {
+          width: calc(var(--menu-size) + 70%);
+        }
+        :host([responsive-size="md"]) main {
+          width: calc(var(--menu-size) + 65%);
+        }
+        :host([responsive-size="sm"]) main {
+          width: calc(var(--menu-size) + 60%);
+        }
+        .left-col {
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          flex: 0 1 0%;
+          margin: 0;
+          padding: 0;
+          margin-left: -360px;
+          transition: margin 300ms ease;
+          height: fit-content;
+        }
+        :host {
+          --menu-size: 360px;
+        }
+        :host([menu-open]) {
+          --menu-size: 0px;
+        }
+        :host([menu-open]) .left-col {
+          margin-left: 0px;
+          position: sticky;
+        }
+        @media screen and (min-width: 900px){
+          .left-col {
+            flex: 0 0 auto;
+            width: auto;
+            z-index: 15;
+            width: 360px;
+            align-items: stretch;
+            flex-direction: column;
+            -webkit-box-align: stretch;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
           }
-          
-          .content.wrap {
-            width: 100%;
-          }
+
         }
       `,
     ];
@@ -453,9 +477,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         </div>
       </header>
       <div class="content site-inner">
-        <nav itemtype="http://schema.org/SiteNavigationElement">
-          <site-menu part="page-menu"></site-menu>
-        </nav>
+        <div class="nav">
+          ${this.HAXCMSMobileMenuButton("right")}
+          <div class="left-col" part="left-col">${this.HAXCMSMobileMenu()}</div>
+        </div>
         <main>
           <article id="contentcontainer">
             <site-active-title part="page-title"></site-active-title>
