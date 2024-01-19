@@ -3,23 +3,15 @@ import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavi
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
-// register the iconset
-SimpleIconsetStore.registerIconset(
-  "stopnoteicons",
-  `${
-    new URL("./stop-note.js", import.meta.url).href
-  }/../lib/svgs/stopnoteicons-proposed/`
-);
 /**
- * `stop-note`
+ * `stop-note-proposed`
  * `A note that directs people to an action item of different warning levels`
  * @demo demo/index.html
- * @element stop-note
+ * @element stop-note-proposed
  */
-class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
+class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -71,7 +63,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         }
 
         .message_wrap {
-          border-right: 4px solid var(--accent-color);
+          border-right: var(--ddd-border-size-4) solid var(--accent-color);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
           flex: 1 1 auto;
           background-color: var(--background-color);
@@ -110,8 +102,8 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         }
 
         .svg_wrap {
-          background-color: var(--ddd-theme-polaris-limestoneMaxLight);
-          padding: var(--ddd-spacing-1);
+          background-color: var(--accent-color);
+          padding: var(--ddd-spacing-2);
           width: auto;
         }
 
@@ -149,7 +141,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
     `;
   }
   static get tag() {
-    return "stop-note";
+    return "stop-note-proposed";
   }
   constructor() {
     super();
@@ -269,5 +261,5 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
       .href;
   }
 }
-customElements.define(StopNote.tag, StopNote);
-export { StopNote };
+customElements.define(StopNoteProposed.tag, StopNoteProposed);
+export { StopNoteProposed };
