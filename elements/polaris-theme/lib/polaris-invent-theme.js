@@ -52,7 +52,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           --polaris-header-bg-color: #1e417b;
           --polaris-nav-color: #ffffff;
           --polaris-nav-bg-color: #009cde;
-          --ddd-theme-polaris-inventOrange: #e98300;
           --polaris-footer-secondary-bg-color: #1e407c;
           --polaris-footer-primary-bg-color: #001e44;
             background-color: var(--polaris-bg-color);
@@ -110,9 +109,9 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           font-weight: 300;
         }
         site-active-title h1 {
-          margin: 0;
+          font-size: var(--ddd-font-size-l);
           padding: 0;
-          font-size: 36px;
+          margin: var(--ddd-spacing-10) 0 var(--ddd-spacing-5);
         }
 
         header .wrap {
@@ -135,6 +134,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           padding: 40px 40px 24px;
           padding: 40px 40px 24px;
           background-color: var(--polaris-content-bg-color);
+          font-family: var(--ddd-font-primary);
         }
 
         header:not(:empty) {
@@ -147,12 +147,14 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
 
         site-menu {
-          --site-menu-font-size: 18px;
+          font-family: var(--ddd-font-navigation);
+          --site-menu-font-size: var(--ddd-font-size-xs);
           --map-menu-item-a-active-background-color: var(--polaris-header-bg-color);
           --map-menu-item-button-active-color: white;
           --map-menu-item-button-active-background-color: var(--ddd-theme-polaris-inventOrange);
-          margin-bottom: 40px;
-          padding: 40px;
+          margin-bottom: 20px;
+          padding: 0 20px;
+          width: 320px;
         }
 
         site-modal {
@@ -265,6 +267,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
 
         footer {
+          font-family: var(--ddd-font-secondary);
           background-color: var(--polaris-footer-primary-bg-color);
         }
 
@@ -479,7 +482,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       <div class="content site-inner">
         <div class="nav">
           ${this.HAXCMSMobileMenuButton("right")}
-          <div class="left-col" part="left-col">${this.HAXCMSMobileMenu()}</div>
+          <div class="left-col ddd-font-nav" part="left-col">${this.HAXCMSMobileMenu()}</div>
         </div>
         <main>
           <article id="contentcontainer">
