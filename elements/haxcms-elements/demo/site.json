@@ -45,7 +45,7 @@
         "icon": "av:add-to-queue"
       },
       "regions": {
-        "header": ["header"],
+        "header": [],
         "sidebarFirst": [],
         "sidebarSecond": [],
         "contentTop": [],

@@ -652,14 +652,6 @@ class PolarisTheme extends HAXCMSOperationButtons(
     this.__link.href =
       "https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;700&family=Open+Sans&family=Press+Start+2P&display=swap";
     document.head.appendChild(this.__link);
-    this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector("article");
-    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
-      this.HAXCMSThemeSettings.scrollTarget;
-
-    // hook up the scroll target
-    this.shadowRoot.querySelector("scroll-button").target =
-      this.shadowRoot.querySelector("#haxcms-theme-top");
   }
   /**
    * life cycle, element is removed from the DOM

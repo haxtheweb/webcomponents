@@ -19,7 +19,9 @@ class MapMenuItem extends I18NMixin(LitElement) {
           overflow: var(--map-menu-item-overflow, hidden);
         }
         :host([active]) button {
-          font-weight: bold;
+          font-weight: var(--map-menu-item-button-active-font-weight, bold);
+          color: var(--map-menu-item-button-active-color, inherit);
+          background-color: var(--map-menu-item-button-active-background-color, transparent);
         }
         simple-icon-lite {
           display: inline-flex;

@@ -367,7 +367,7 @@ class DDDocs extends DDD {
     `;
   }
 
-  RenderSpacing(){
+  renderSpacing(){
     return html`
     <h1 class="fs-m mt-20 mb-2">Spacing</h1>
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Spacing classes</h2>
