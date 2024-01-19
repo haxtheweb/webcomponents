@@ -14,14 +14,15 @@ import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors
 //export const styleGuideHeaders = {css``}
 
 export const styleGuideTopics = {
-  Typography: "Typography",
-  FW: "FW",
-  FS: "FS",
-  BS: "BS",
+  Borders: "Borders",
   Breakpoints: "Breakpoints",
-  MP: "MP",
   PolarisColors: "PolarisColors",
   PolarisFunctionalColors: "PolarisFunctionalColors",
+  Gradients: "Gradients",
+  Radius: "Radius",
+  Shadows: "Shadows",
+  Spacing: "Spacing",
+  Typography: "Typography"
 };
 
 class DDD extends SimpleColorsSuper(LitElement) {
@@ -32,7 +33,7 @@ class DDD extends SimpleColorsSuper(LitElement) {
     super();
     this.option = "*";
     this.options = Object.keys(styleGuideTopics);
-    this.loadFonts(["https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap", "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap", "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap"]);
+    this.loadFonts(["https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap", "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap", "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"]);
   }
 
   loadFonts(fonts) {
@@ -86,6 +87,10 @@ class DDD extends SimpleColorsSuper(LitElement) {
           --ddd-theme-polaris-potential75: rgba(0, 3, 33, 0.75);
           --ddd-theme-polaris-pughBlue: #96bee6;
           --ddd-theme-polaris-coalyGray: #262626;
+          --ddd-theme-polaris-coaly45: rgba(38, 38, 38, 0.45);
+          --ddd-theme-polaris-coaly60: rgba(38, 38, 38, 0.6);
+          --ddd-theme-polaris-coaly75: rgba(38, 38, 38, 0.75);
+          --ddd-theme-polaris-coaly90: rgba(38, 38, 38, 0.9);
           --ddd-theme-polaris-keystoneYellow: #ffd100;
           --ddd-theme-polaris-slateGray: #314d64;
           --ddd-theme-polaris-slateLight: #ccdae6;
@@ -144,7 +149,13 @@ class DDD extends SimpleColorsSuper(LitElement) {
           --ddd-theme-polaris-alertAllClear: #f2ffcc;
           --ddd-theme-polaris-alertNonEmergency: #e6f7ff;
 
+          --ddd-theme-polaris-background: #eff2f5;
+
           /* simplecolors needs to be included ->  */
+
+          /* 
+          Come back to grid in style guide - > decide number of columns based on container breakpoints
+          */
 
           /*fonts*/
           --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
@@ -158,19 +169,20 @@ class DDD extends SimpleColorsSuper(LitElement) {
 
           --ddd-font-navigation: "Roboto Condensed", sans-serif; /* navigation font */
           --ddd-font-navigation-light: 300;
+          --ddd-font-navigation-regular: 400;
           --ddd-font-navigation-bold: 700;
 
           /* font sizes */
           --ddd-font-size-4xs: 16px;
           --ddd-font-size-3xs: 18px; /* body default */
-          --ddd-font-size-xxs: 20px;
-          --ddd-font-size-xs: 22px;
-          --ddd-font-size-s: 24px; /* h6 */
-          --ddd-font-size-ms: 28px; /* h5 */
-          --ddd-font-size-m: 32px; /* h4 */
-          --ddd-font-size-ml: 36px; /* h3 */
-          --ddd-font-size-l: 40px; /* h2 */
-          --ddd-font-size-xl: 48px; /* h1 */
+          --ddd-font-size-xxs: 20px; /* h6 */
+          --ddd-font-size-xs: 22px; /* h5 */
+          --ddd-font-size-s: 24px; /* h4 */
+          --ddd-font-size-ms: 28px; /* h3 */
+          --ddd-font-size-m: 32px; /* h2 */
+          --ddd-font-size-ml: 36px;
+          --ddd-font-size-l: 40px; /* h1 */
+          --ddd-font-size-xl: 48px;
           --ddd-font-size-xxl: 56px;
           --ddd-font-size-3xl: 64px;
           --ddd-font-size-4xl: 72px;
@@ -249,11 +261,18 @@ class DDD extends SimpleColorsSuper(LitElement) {
           --ddd-border-size-4: 4px;
 
           /* shadows */
-          --ddd-shadow-0: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-          --ddd-shadow-1: rgba(0, 3, 33, 0.063) 0px 4px 8px 0px;
-          --ddd-shadow-2: rgba(0, 3, 33, 0.063) 0px 8px 16px 0px;
-          --ddd-shadow-3: rgba(0, 3, 33, 0.063) 0px 12px 24px 0px;
-          --ddd-shadow-4: rgba(0, 3, 33, 0.063) 0px 16px 32px 0px;
+          --ddd-boxShadow-0: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+          --ddd-boxShadow-1: rgba(0, 3, 33, 0.063) 0px 4px 8px 0px;
+          --ddd-boxShadow-2: rgba(0, 3, 33, 0.063) 0px 8px 16px 0px;
+          --ddd-boxShadow-3: rgba(0, 3, 33, 0.063) 0px 12px 24px 0px;
+          --ddd-boxShadow-4: rgba(0, 3, 33, 0.063) 0px 16px 32px 0px;
+
+          --ddd-textShadow-0: 0px 0px 0px rgba(0, 0, 0, 0); /* No shadow */
+          --ddd-textShadow-1: rgba(0, 3, 33, 0.063) 0px 2px 4px;
+          --ddd-textShadow-2: rgba(0, 3, 33, 0.063) 0px 4px 8px;
+          --ddd-textShadow-3: rgba(0, 3, 33, 0.063) 0px 6px 12px;
+          --ddd-textShadow-4: rgba(0, 3, 33, 0.063) 0px 8px 16px;
+
 
           /* breakpoints */
           --ddd-breakpoint-sm: 360px;
@@ -271,6 +290,13 @@ class DDD extends SimpleColorsSuper(LitElement) {
           --ddd-radius-rounded: 100px;
           --ddd-radius-circle: 100%;
 
+          /* Gradients */
+          --ddd-theme-polaris-gradient-navBar: linear-gradient(90deg, rgb(0, 30, 68) 0%, rgb(0, 30, 68) 31%, rgb(30, 64, 124) 76%, rgb(0, 3, 33) 100%);
+          --ddd-theme-polaris-gradient-footer: linear-gradient(rgb(30, 64, 124) 0%, rgb(0, 30, 68) 65%, rgb(0, 30, 68) 100%);
+          --ddd-theme-polaris-gradient-newsFeature: linear-gradient(360deg, rgb(30, 64, 124) 20%, rgb(0, 156, 222) 100%);
+          --ddd-theme-polaris-gradient-buttons: linear-gradient(rgb(0, 156, 222) 0%, rgb(30, 64, 124) 85%);
+          --ddd-theme-polaris-gradient-hero: linear-gradient(360deg, rgba(0, 30, 68, 0.8) 0%, rgba(0, 30, 68, 0.4) 50%, rgba(0, 3, 33, 0) 100%);
+          --ddd-theme-polaris-gradient-hero2: linear-gradient(360deg, rgb(0, 30, 68) 0%, rgba(0, 30, 68, 0.4) 50%, rgba(0, 3, 33, 0) 100%);
         }
         /* border & shadows */
         .b-0 {border: none;}
@@ -812,35 +838,45 @@ class DDD extends SimpleColorsSuper(LitElement) {
             --ddd-font-primary-black
           ); /* available for headers */
         }
+        *{
+          font-family: var(--ddd-font-primary);
+        }
         h1 {
-          font-size: var(--ddd-font-size-xl);
-          margin: var(--ddd-spacing-8) 0;
+          font-size: var(--ddd-font-size-l);
+          margin: var(--ddd-spacing-10) 0 var(--ddd-spacing-5);
+        }
+        h2,h3,h4,h5,h6 {
+          margin:  var(--ddd-spacing-7) 0 var(--ddd-spacing-3);
         }
         h2 {
-          font-size: var(--ddd-font-size-l);
-          margin: var(--ddd-spacing-7) 0;
+          font-size: var(--ddd-font-size-m);
         }
         h3 {
-          font-size: var(--ddd-font-size-ml);
-          margin: var(--ddd-spacing-6) 0;
+          font-size: var(--ddd-font-size-ms);
         }
         h4 {
-          font-size: var(--ddd-font-size-m);
-          margin: var(--ddd-spacing-5) 0;
+          font-size: var(--ddd-font-size-s);
         }
         h5 {
-          font-size: var(--ddd-font-size-ms);
-          margin: var(--ddd-spacing-4) 0;
+          font-size: var(--ddd-font-size-xs);
         }
         h6 {
-          font-size: var(--ddd-font-size-s);
-          margin: var(--ddd-spacing-3) 0;
+          font-size: var(--ddd-font-size-xxs);
         }
         p {
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-3xs);
-          margin: var(--ddd-spacing-1) 0;
+          margin: var(--ddd-spacing-4) 0;
           font-weight: var(--ddd-font-secondary-regular);
+        }
+        a{
+          color: var(--ddd-theme-polaris-link);
+          font-weight: var(--ddd-font-primary-bold);
+          text-decoration: none;
+        }
+        a:hover{
+          text-decoration: underline;
+          cursor: pointer;
         }
         .ddd-font-nav {
           font-family: var(--ddd-font-navigation);
@@ -852,6 +888,122 @@ class DDD extends SimpleColorsSuper(LitElement) {
         }
         .ddd-font-secondary {
           font-family: var(--ddd-font-secondary);
+        }
+
+        thead, tbody, tfoot, tr, td, th{
+          font-family: var(--ddd-font-primary);
+        }
+        ul, ol{
+          display: flex;
+          flex-flow: column;
+          gap: 1.5rem;
+          font-family: var(--ddd-font-primary);
+        }
+        ul li::marker, ol li::marker{
+          unicode-bidi: isolate;
+          font-variant-numeric: tabular-nums;
+          text-transform: none;
+          text-indent: 0px;
+          text-align: start;
+          text-align-last: start;
+        }
+        ul{
+          list-style: square;
+        }
+        ul li::marker{
+          color: var(--ddd-theme-polaris-skyBlue);
+        }
+        blockquote{
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-3xs);
+          font-style: italic;
+          border-left: var(--ddd-spacing-1) solid var(--ddd-theme-polaris-pughBlue);
+          padding-left: var(--ddd-spacing-6);
+          margin: var(--ddd-spacing-9) 0 var(--ddd-spacing-9) var(--ddd-spacing-10);
+        }
+        hr{
+          border-bottom: 2px solid var(--ddd-theme-polaris-potentialMidnight);
+          width: 100%;
+        }
+        .hr-vertical{
+          margin-left: var(--ddd-spacing-4);
+          border-bottom: none;
+          border-right: 2px solid var(--ddd-theme-polaris-potentialMidnight);
+          height: fit-content;
+        }
+        .breadcrumb{
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-navigation-light);
+          margin: var(--ddd-spacing-6) 0;
+          padding: 0;
+          pointer-events: auto;
+          list-style: '/ ';
+          gap: var(--ddd-spacing-5);
+          display: flex;
+          flex-flow: row;
+          color: var(--ddd-theme-polaris-link);
+        }
+        .breadcrumb li::marker{
+          color: black;
+          font-weight: var(--ddd-font-primary-regular);
+        }
+        .breadcrumb li:first-child{
+          list-style: none;
+        }
+        .breadcrumb li:last-child a{
+          color: black;
+          pointer-events: none;
+        }
+        .breadcrumb li a{
+          padding-left: var(--ddd-spacing-1);
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-navigation-regular);
+          text-decoration: none;
+        }
+        .breadcrumb li a:hover{
+          text-decoration: underline;
+          pointer-events: auto;
+        }
+
+        summary{
+          display: flex;
+          font-size: var(--ddd-font-size-xxs);
+          font-weight: var(--ddd-font-primary-bold);
+          cursor: pointer;
+          text-wrap: wrap;
+          align-items: center;
+          padding: 0 var(--ddd-spacing-5) var(--ddd-spacing-5) 0;
+          user-select: none;
+          color: black;
+        }
+        summary::marker{
+          content: "";
+        }
+        summary::after{
+          content: "+";
+          margin-left: auto;
+          text-align: right;
+          color: var(--ddd-theme-polaris-link);
+          font-weight: var(--ddd-font-primary-regular);
+          font-size: var(--ddd-font-size-m);
+          line-height: 1;
+        }
+        details{
+          display: flex;
+          border-bottom: 2px solid var(--ddd-theme-polaris-slateMaxLight);
+          position: relative;
+          max-width: 650px;
+          padding: 0 0 0 var(--ddd-spacing-5);
+          color: black;
+        }
+        details[open] > summary{
+          color: var(--ddd-theme-polaris-link);
+        }
+        details[open] > summary::after{
+          content: "--";
+          font-size: var(--ddd-font-size-m);
+          letter-spacing: -1.8px;
+          padding-right: 2px;
         }
 
         .fs-4xs { font-size: var(--ddd-font-size-4xs); }
@@ -901,36 +1053,34 @@ class DDD extends SimpleColorsSuper(LitElement) {
         .lh-auto { line-height: normal; }
         
         .bs-0 { box-shadow: none; }
-        .bs-xs { box-shadow: var(--ddd-shadow-1); }
-        .bs-sm { box-shadow: var(--ddd-shadow-2); }
-        .bs-md { box-shadow: var(--ddd-shadow-3); }
-        .bs-lg { box-shadow: var(--ddd-shadow-4); }
+        .bs-xs { box-shadow: var(--ddd-boxShadow-1); }
+        .bs-sm { box-shadow: var(--ddd-boxShadow-2); }
+        .bs-md { box-shadow: var(--ddd-boxShadow-3); }
+        .bs-lg { box-shadow: var(--ddd-boxShadow-4); }
         
-        .textshadow-0 { text-shadow: none; }
-        /* no current text shadow comp to use */
-        /*.textshadow-1{
-            text-shadow: black 0px 0px 10px;
-          }
-          .textshadow-2{
-            text-shadow: var(--ddd-shadow-2);
-          }
-          .textshadow-3{
-            text-shadow: var(--ddd-shadow-3);
-          }
-          .textshadow-4{
-            text-shadow: var(--ddd-shadow-4);
-          }*/
+        .textShadow-0 { text-shadow: var(--ddd-textShadow-0); }
+        .textshadow-1{text-shadow: var(--ddd-textShadow-1);}
+        .textShadow-2{text-shadow: var(--ddd-textShadow-2);}
+        .textShadow-3{text-shadow: var(--ddd-textShadow-3);}
+        .textShadow-4{text-shadow: var(--ddd-textShadow-4);}
 
-          .r-0 { border-radius: var(--ddd-radius-0); }
-          .r-xs { border-radius: var(--ddd-radius-xs); }
-          .r-sm { border-radius: var(--ddd-radius-sm); }
-          .r-md { border-radius: var(--ddd-radius-md); }
-          .r-lg { border-radius: var(--ddd-radius-lg); }
-          .r-xl { border-radius: var(--ddd-radius-xl); }
-          .r-rounded { border-radius: var(--ddd-radius-rounded); }
-          .r-circle { border-radius: var(--ddd-radius-circle); }
+        .r-0 { border-radius: var(--ddd-radius-0); }
+        .r-xs { border-radius: var(--ddd-radius-xs); }
+        .r-sm { border-radius: var(--ddd-radius-sm); }
+        .r-md { border-radius: var(--ddd-radius-md); }
+        .r-lg { border-radius: var(--ddd-radius-lg); }
+        .r-xl { border-radius: var(--ddd-radius-xl); }
+        .r-rounded { border-radius: var(--ddd-radius-rounded); }
+        .r-circle { border-radius: var(--ddd-radius-circle); }
 
-
+        .bg-transparent { background-color: transparent; }
+        .bg-white { background-color: var(--ddd-theme-polaris-white); }
+        .bg-gradient-navBar{background: var(--ddd-theme-polaris-gradient-navBar);}
+        .bg-gradient-footer{background: var(--ddd-theme-polaris-gradient-footer);}
+        .bg-gradient-newsFeature{background: var(--ddd-theme-polaris-gradient-newsFeature);}
+        .bg-gradient-buttons{background: var(--ddd-theme-polaris-gradient-buttons);}
+        .bg-gradient-hero{background: var(--ddd-theme-polaris-gradient-hero);}
+        .bg-gradient-hero2{background: var(--ddd-theme-polaris-gradient-hero2);}
       `,
     ];
   }
