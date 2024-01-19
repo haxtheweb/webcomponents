@@ -102,12 +102,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           color: #1173ca;
         }
 
-        site-active-title {
-          font-size: 28px;
-          line-height: 1;
-          font-family: "Open Sans", sans-serif;
-          font-weight: 300;
-        }
         site-active-title h1 {
           font-size: var(--ddd-font-size-l);
           padding: 0;
