@@ -16,7 +16,9 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           --map-menu-item-height: 44px;
         }
         :host([active]) button {
-          font-weight: bold;
+          font-weight: var(--map-menu-item-button-active-font-weight, bold);
+          color: var(--map-menu-item-button-active-color, inherit);
+          background-color: var(--map-menu-item-button-active-background-color, transparent);
         }
         a,
         a:visited {

@@ -25,18 +25,15 @@ export const styleGuideTopics = {
   Typography: "Typography"
 };
 
-class DDD extends SimpleColorsSuper(LitElement) {
-  /**
-   * HTMLElement
-   */
+export const DDDFonts = ["https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap", "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap", "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"];
+// super class so we can mix styles into other things more easily
+export const DDDSuper = function (SuperClass) {
+  return class extends SimpleColorsSuper(SuperClass) {
   constructor() {
     super();
-    this.option = "*";
-    this.options = Object.keys(styleGuideTopics);
-    this.loadFonts(["https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap", "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap", "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"]);
   }
-
-  loadFonts(fonts) {
+  // call this to load all the fonts that are official
+  loadDDDFonts(fonts) {
     fonts.forEach((font) => {
     const link = document.createElement("link");
         link.setAttribute(
@@ -47,13 +44,6 @@ class DDD extends SimpleColorsSuper(LitElement) {
         link.setAttribute("fetchpriority", "low");
         document.head.appendChild(link);
     });
-  }
-
-  static get properties() {
-    return {
-      option: { type: String },
-      options: { type: Array },
-    };
   }
   /**
    * LitElement style callback
@@ -68,7 +58,7 @@ class DDD extends SimpleColorsSuper(LitElement) {
       ...styles,
       //styleGuideHeaders,
       css`
-      :host{
+      body, html, :root, :host {
           /* base polaris colors */
           --ddd-theme-polaris-beaverBlue: #1e407c;
           --ddd-theme-polaris-beaver70: rgba(30, 64, 124, 0.7);
@@ -1084,65 +1074,40 @@ class DDD extends SimpleColorsSuper(LitElement) {
       `,
     ];
   }
+  }
+};
 
-  /**
-   * Convention we use
-   */
+// autoloads fonts and gives it a tag name; this is useful
+class DDD extends DDDSuper(LitElement) {
+  constructor() {
+    super();
+    this.loadDDDFonts(DDDFonts);
+  }
   static get tag() {
     return "d-d-d";
   }
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return {
-      api: "1",
-      type: "element",
-      editingElement: "core",
-      hideDefaultSettings: false,
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      contentEditable: false,
-      gizmo: {
-        title: "Design, Develop, Destroy",
-        description: "Design system implementation for HAX",
-        icon: "icons:android",
-        color: "purple",
-        tags: ["Other", "developer", "design"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "option",
-            title: "Option to render",
-            type: "select",
-            options: { "*": "Full styleguide", ...styleGuideTopics },
-          },
-        ],
-        advanced: [],
-        developer: [],
-      },
-      saveOptions: {
-        unsetAttributes: [],
-      },
-      documentation: {
-        howTo: null,
-        purpose: null,
-      },
-      demoSchema: [
-        {
-          tag: "d-d-d",
-          content: "",
-          properties: {},
-        },
-      ],
-    };
-  }
 }
+
 customElements.define(DDD.tag, DDD);
 export { DDD };
+
+/**
+ * Checks to see if there is an instance available, and if not appends one.
+ * then it injects the styles into the global document scope so that they can be used anywhere
+ */
+globalThis.DDDSharedStyles = globalThis.DDDSharedStyles || {};
+globalThis.DDDSharedStyles.requestAvailability = () => {
+  if (globalThis.DDDSharedStyles.instance == null && globalThis.document) {
+    // convert css into text content of arrays mashed together
+    // this way we can inject it into a global style sheet
+    let globalStyles = DDD.styles.map((st) => st.cssText).join("");
+    globalThis.DDDSharedStyles.instance = globalThis.document.createElement("style");
+    // marker for debugging to make it easier to find
+    globalThis.DDDSharedStyles.instance.classList.add("ddd-global-styles");
+    globalThis.DDDSharedStyles.instance.innerHTML = `${globalStyles}`;
+    globalThis.document.head.appendChild(globalThis.DDDSharedStyles.instance);
+  }
+  return globalThis.DDDSharedStyles.instance;
+};
+// self-appending on call
+export const DDDSharedStylesGlobal = globalThis.DDDSharedStyles.requestAvailability();

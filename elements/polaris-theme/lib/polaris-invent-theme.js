@@ -15,13 +15,13 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
 import { autorun, toJS } from "mobx";
+import { DDDSuper, DDDFonts } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
- * `polaris-theme`
+ * `polaris-invent-theme`
  * `A 2nd polaris theme`
  *
  * @microcopy - language worth noting:
@@ -29,13 +29,13 @@ import { autorun, toJS } from "mobx";
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
  * @demo demo/index.html
- * @element polaris-theme
+ * @element polaris-invent-theme
  */
 class PolarisInventTheme extends HAXCMSOperationButtons(
   PDFPageMixin(
     PrintBranchMixin(
       QRCodeMixin(
-        HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+        HAXCMSThemeParts(HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)))
       )
     )
   )
@@ -47,17 +47,19 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       css`
         :host {
           display: block;
-          --polaris-bg-color: #f5f5f5;
+          --polaris-bg-color: #f2f2f4;
           --polaris-content-bg-color: #ffffff;
-          --polaris-header-bg-color: #262c3a;
-          --polaris-nav-bg-color: #1173ca;
-          --polaris-footer-secondary-bg-color: #262c3a;
-          --polaris-footer-primary-bg-color: #141720;
-          background-color: var(--polaris-bg-color);
-          --haxcms-base-styles-body-font-size:16px;
-          --hax-base-styles-a-font-size: 16px;
-          --hax-base-styles-p-font-size: 16px;
-          --hax-base-styles-list-font-size: 16px;
+          --polaris-header-bg-color: #1e417b;
+          --polaris-nav-color: #ffffff;
+          --polaris-nav-bg-color: #009cde;
+          --ddd-theme-polaris-inventOrange: #e98300;
+          --polaris-footer-secondary-bg-color: #1e407c;
+          --polaris-footer-primary-bg-color: #001e44;
+            background-color: var(--polaris-bg-color);
+          --haxcms-base-styles-body-font-size:18px;
+          --hax-base-styles-a-font-size: 18px;
+          --hax-base-styles-p-font-size: 18px;
+          --hax-base-styles-list-font-size: 18px;
           --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
           --haxcms-base-styles-body-line-height: 32px;
           --hax-base-styles-list-line-height: 28.8px
@@ -90,18 +92,21 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           text-decoration: none;
         }
         .search-modal-btn {
-          --simple-icon-width: 36px;
-          --simple-icon-height: 36px;
-          padding: 6px;
+          --simple-icon-width: 40px;
+          --simple-icon-height: 40px;
+          padding: 20px;
           color: white;
+          position: absolute;
+          right: 0;
         }
         scroll-button {
           position: fixed;
           right: 0px;
-          bottom: 125px;
+          bottom: 40px;
           z-index: 10000;
-          --simple-icon-width: 48px;
-          --simple-icon-height: 48px;
+          --scroll-button-background-color: var(--ddd-theme-polaris-inventOrange);
+          --simple-icon-width: 40px;
+          --simple-icon-height: 40px;
           --simple-icon-button-border-radius: none;
         }
         .entry-content a {
@@ -119,9 +124,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           padding: 0;
           font-size: 36px;
         }
-        site-breadcrumb {
-          margin: 0 0 16px 4px;
-        }
 
         header .wrap {
           padding: 40px 0;
@@ -129,10 +131,12 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
 
         .content.wrap {
           clear: both;
-          padding-top: 40px;
         }
 
-        .site-inner,
+        .site-inner {
+          display: flex;
+        }
+
         .wrap {
           margin: 0 auto;
           max-width: 1140px;
@@ -150,40 +154,20 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         header:not(:empty) {
           background-color: var(--polaris-header-bg-color);
         }
-
+        main {
+          width: 900px;
+        }
         nav {
           background-color: var(--polaris-nav-bg-color);
-        }
-        .site-title {
-          color: #ffffff;
-        }
-        .title-area {
-          width: 63%;
-          margin-left: 30px;
-          padding: 12px 0px 0px 0px;
-          float: left;
-          font-family: "Lato", sans-serif;
-          font-weight: 700;
-        }
-        main {
-          float: left;
-          width: 740px;
-        }
-        aside {
-          float: right;
           width: 360px;
-        }
-        aside section h4 {
-          font-size: 16px;
-          margin: 0 0 24px 0;
-          text-transform: uppercase;
-          font-family: "Open Sans", sans-serif;
-          font-weight: 300;
+          color: var(--polaris-nav-color);
         }
 
-        aside section {
-          background-color: #fff;
-          border-radius: 3px;
+        site-menu {
+          --site-menu-font-size: 18px;
+          --map-menu-item-a-active-background-color: var(--polaris-header-bg-color);
+          --map-menu-item-button-active-color: white;
+          --map-menu-item-button-active-background-color: var(--ddd-theme-polaris-inventOrange);
           margin-bottom: 40px;
           padding: 40px;
         }
@@ -220,31 +204,33 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
-          color: #242A31;
-          border: 1px solid #E6ECF1;
+          --site-menu-button-button-hover-color: black;
+          --site-menu-button-icon-fill-color: white;
+          color: white;
+          background-color: var(--ddd-theme-polaris-inventOrange);
+          border: 1px solid var(--ddd-theme-polaris-inventOrange);
           margin: 0;
           display: block;
           padding: 0;
           position: relative;
           align-self: stretch;
           box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
-          transition: border 250ms ease;
+          transition: border 300ms ease;
           align-items: center;
           justify-self: stretch;
           text-overflow: ellipsis;
           border-radius: 3px;
           flex-direction: row;
-          -moz-transition: border 250ms ease;
           text-decoration: none;
-          background-color: #FFFFFF;
           -webkit-box-align: center;
           page-break-inside: avoid;
           -ms-grid-row-align: stretch;
           -webkit-box-orient: horizontal;
-          -webkit-transition: border 250ms ease;
           -ms-grid-column-align: stretch;
           -webkit-box-direction: normal;
+        }
+        site-menu-button[disabled] {
+          display: none !important;
         }
 
         site-menu-button[edit-mode][disabled] {
@@ -263,19 +249,19 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           padding: 16px;
           text-overflow: ellipsis;
           text-decoration: none;
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 500;
           line-height: 1.5;
           text-transform: none;
         }
         site-menu-button div .top {
-          font-size: 12px;
-          font-weight: 400;
+          font-size: 18px;
+          font-weight: 800;
           line-height: 1.625;
-          color: #444444;
+          color: white;
         }
         site-menu-button div .bottom {
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 500;
           line-height: 1.5;
           max-height: 50px;
@@ -290,7 +276,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
 
         .footer-secondary {
           background-color: var(--polaris-footer-secondary-bg-color);
-          color: #999;
+          color: white;
           clear: both;
           padding: 40px 16px 16px;
         }
@@ -300,18 +286,13 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
 
         .footer-primary {
-          color: #ededed;
+          color: white;
           font-size: 14px;
           padding: 40px 16px;
           text-align: center;
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
           line-height: 22px;
           font-weight: 300;
-        }
-        .site-inner {
-          clear: both;
-          padding-top: 40px;
-          padding-top: 40px;
         }
 
         /** stuff to refactor out after this is initially working visually */
@@ -333,14 +314,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             text-align: center;
             display: block;
           }
-        }
-        .site-title a,
-        .site-title a:hover {
-          color: #ededed;
-        }
-        header a img {
-          margin-bottom: -4px;
-          margin-bottom: -4px;
         }
 
         img {
@@ -364,23 +337,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           content: " ";
           display: table;
         }
-        .site-title {
-          font-family: "Lato", sans-serif;
-          font-size: 28px;
-          font-weight: 300;
-          line-height: 1;
-          margin: 0 0 8px;
-          margin: 0 0 8px;
-          text-transform: uppercase;
-        }
-        .site-description {
-          color: #999;
-          font-family: "Lato", sans-serif;
-          font-size: 16px;
-          font-weight: 300;
-          line-height: 1;
-          margin: 0 0 24px;
-        }
+
         .footer-secondary a:hover {
           color: #ddd;
         }
@@ -440,26 +397,31 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           aside {
             width: 300px;
           }
-          .site-inner,
           .wrap {
             max-width: 960px;
           }
         }
         @media only screen and (max-width: 1023px) {
-          aside,
           main {
             width: 100%;
-          }
-          .site-title,
-          .site-description {
-            text-align: center;
-          }
-          .site-title {
-            padding: 0px 60px;
           }
           header .wrap {
             padding: 20px 0;
           }
+          .search-modal-btn {
+            --simple-icon-width: 20px;
+            --simple-icon-height: 20px;
+            padding: 10px;
+            color: white;
+            position: absolute;
+            right: 0;
+          }
+          scroll-button {
+            bottom: 0px;
+            --simple-icon-width: 20px;
+            --simple-icon-height: 20px;
+          }
+          
           .content.wrap {
             width: 100%;
           }
@@ -470,6 +432,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
+      <div id="haxcms-theme-top"></div>
       <header itemtype="http://schema.org/WPHeader">
         <site-modal
           @site-modal-click="${this.siteModalClick}"
@@ -486,41 +449,15 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         </site-modal>
         <div class="wrap">
           <site-region name="header"></site-region>
-          <slot name="header">
-            <div id="mark">
-              <a href="${this.imageLink}">
-                <img
-                  src="${this.image}"
-                  alt="${this.imageAlt}"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority="low"
-                />
-              </a>
-            </div>
-            <div class="title-area">
-              <p class="site-title" itemprop="headline">
-                <site-title
-                  .part="${this.editMode ? `edit-mode-active` : ``}"
-                  ?disabled="${this.editMode}"
-                  part="site-title"
-                ></site-title>
-              </p>
-
-              <p class="site-description" itemprop="description">
-                ${this.siteDescription}
-              </p>
-            </div>
-          </slot>
+          <slot name="header"></slot>
         </div>
       </header>
-      <div class="content site-inner wrap">
+      <div class="content site-inner">
         <nav itemtype="http://schema.org/SiteNavigationElement">
           <site-menu part="page-menu"></site-menu>
         </nav>
         <main>
           <article id="contentcontainer">
-            <div id="haxcms-theme-top"></div>
             <site-active-title part="page-title"></site-active-title>
             <site-active-tags
               part="page-tags"
@@ -530,37 +467,30 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
               <slot></slot>
             </section>
             <div class="link-actions">
-                <div class="inner">
-                  <replace-tag
-                    with="site-menu-button"
-                    import-only
-                  ></replace-tag>
-                  <site-menu-button
-                    hide-label
-                    type="prev"
-                    position="right"
-                    class="navigation"
-                    @label-changed="${this.__prevPageLabelChanged}"
-                  >
-                    <div slot="suffix" class="wrapper">
-                      <div class="top">Previous</div>
-                      <div class="bottom">${this.prevPage}</div>
-                    </div>
-                  </site-menu-button>
-                  <site-menu-button
-                    hide-label
-                    type="next"
-                    position="left"
-                    class="navigation"
-                    @label-changed="${this.__nextPageLabelChanged}"
-                  >
-                    <div slot="prefix" class="wrapper">
-                      <div class="top">Next</div>
-                      <div class="bottom">${this.nextPage}</div>
-                    </div>
-                  </site-menu-button>
-                </div>
+              <div class="inner">
+                <replace-tag with="site-menu-button" import-only></replace-tag>
+                <site-menu-button
+                  hide-label
+                  type="prev"
+                  position="right"
+                  class="navigation"
+                >
+                  <div slot="suffix" class="wrapper">
+                    <div class="top">Go back</div>
+                  </div>
+                </site-menu-button>
+                <site-menu-button
+                  hide-label
+                  type="next"
+                  position="left"
+                  class="navigation"
+                >
+                  <div slot="prefix" class="wrapper">
+                    <div class="top">Continue</div>
+                  </div>
+                </site-menu-button>
               </div>
+            </div>
           </article>
         </main>
       </div>
@@ -623,8 +553,8 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
   }
 
   appStoreReady(e) {
-    if (window.HaxStore && window.HaxStore.requestAvailability()) {
-      let store = window.HaxStore.requestAvailability();
+    if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
+      let store = globalThis.HaxStore.requestAvailability();
       // elements that are in HAXcms that are injected regardless of what editor says
       // because the CMS controls certain internal connectors
       ["polaris-cta", "polaris-mark", "polaris-story-card", "polaris-tile"].map(
@@ -642,7 +572,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
   constructor() {
     super();
     this.windowControllersLoaded = new AbortController();
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this),
       { once: true, passive: true, signal: this.windowControllersLoaded.signal }
@@ -683,14 +613,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       const badDevice = toJS(store.badDevice);
       // good device, we can inject font we use
       if (badDevice === false) {
-        const link = document.createElement("link");
-        link.setAttribute(
-          "href",
-          "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
-        );
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("fetchpriority", "low");
-        document.head.appendChild(link);
+        this.loadDDDFonts(DDDFonts);
       }
     });
 
@@ -714,10 +637,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
       if (store.getInternalRoute() !== 'search') {
-        window.history.replaceState({}, null, "x/search");
+        globalThis.history.replaceState({}, null, "x/search");
       }
       const params = new URLSearchParams(store.currentRouterLocation.search);
-      const input = window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");
+      const input = globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");
       input.focus();
       // if we have a search param already, set it to the field on open
       if (params.get("search")) {
@@ -728,27 +651,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }, 0);
       }
     });
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.__link = document.createElement("link");
-    this.__link.rel = "stylesheet";
-    this.__link.href =
-      "https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;700&family=Open+Sans&family=Press+Start+2P&display=swap";
-    document.head.appendChild(this.__link);
-    this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector("article");
-    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
-      this.HAXCMSThemeSettings.scrollTarget;
-
-    // hook up the scroll target
-    this.shadowRoot.querySelector("scroll-button").target =
-      this.shadowRoot.querySelector("#haxcms-theme-top");
   }
   /**
    * life cycle, element is removed from the DOM
