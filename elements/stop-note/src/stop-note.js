@@ -4,14 +4,13 @@ import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-ico
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 // register the iconset
 SimpleIconsetStore.registerIconset(
   "stopnoteicons",
   `${
     new URL("./stop-note.js", import.meta.url).href
-  }/../lib/svgs/stopnoteicons-new/`
+  }/../lib/svgs/stopnoteicons/`
 );
 /**
  * `stop-note`
@@ -19,7 +18,7 @@ SimpleIconsetStore.registerIconset(
  * @demo demo/index.html
  * @element stop-note
  */
-class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
+class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -29,11 +28,9 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         :host {
           display: block;
           width: auto;
-          --background-color: var(--ddd-theme-polaris-errorLight);
-          --accent-color: var(--ddd-theme-polaris-error);
-          margin: var(--ddd-spacing-5) 0;
-          font-family: var(--ddd-font-primary);
-          font-weight: var(--ddd-font-primary-bold);
+          --background-color: #f7f7f7;
+          --accent-color: #d32f2f;
+          margin-bottom: 20px;
         }
 
         simple-icon {
@@ -42,23 +39,19 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         }
 
         :host([icon="stopnoteicons:stop-icon"]) {
-          --accent-color: var(--ddd-theme-polaris-original87Pink);
-          --background-color: var(--ddd-theme-polaris-errorLight);
+          --accent-color: #d8261c;
         }
 
         :host([icon="stopnoteicons:warning-icon"]) {
-          --accent-color: var(--ddd-theme-polaris-keystoneYellow);
-          --background-color: var(--ddd-theme-polaris-warningLight);
+          --accent-color: #ffeb3b;
         }
 
         :host([icon="stopnoteicons:confirm-icon"]) {
-          --accent-color: var(--ddd-theme-polaris-success);
-          --background-color: var(--ddd-theme-polaris-successLight);
+          --accent-color: #81c784;
         }
 
         :host([icon="stopnoteicons:book-icon"]) {
-          --accent-color: var(--ddd-theme-polaris-info);
-          --background-color: var(--ddd-theme-polaris-infoLight);
+          --accent-color: #21a3db;
         }
 
         .container {
@@ -66,42 +59,30 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
           width: auto;
         }
 
-        :host([url='']):not([title='']) .message_wrap { /* trying to add more padding to top if there's no link */
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-6);
-        }
-
         .message_wrap {
-          border-right: 4px solid var(--accent-color);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
+          border-right: 7px solid var(--accent-color);
+          padding: 10px 25px;
           flex: 1 1 auto;
           background-color: var(--background-color);
         }
 
-        :host([title=""]) .secondary_message {
-          display: flex;
-          height: 90%;
-          align-items: center;
-          margin-top: auto;
-          font-size: var(--ddd-font-size-s);
-          width: 100%;
-          font-weight: var(--ddd-font-primary-bold);
+        .main_message {
+          font-size: 32px;
+          margin-top: 10px;
         }
 
         .secondary_message {
-          font-size: var(--ddd-font-size-3xs);
+          margin-top: 5px;
+          font-size: 19.2px;
           width: 100%;
-          font-weight: var(--ddd-font-primary-regular);
         }
-
 
         .link a {
-          font-size: var(--ddd-font-size-3xs);
-        }
-        a:-webkit-any-link {
+          margin-top: 5px;
+          font-size: 19.2px;
+          float: left;
+          clear: left;
           text-decoration: none;
-        }
-        a:hover {
-          text-decoration: underline;
         }
 
         .svg {
@@ -110,13 +91,9 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         }
 
         .svg_wrap {
-          background-color: var(--ddd-theme-polaris-limestoneMaxLight);
-          padding: var(--ddd-spacing-1);
+          background-color: var(--accent-color);
+          padding: 5px;
           width: auto;
-        }
-
-        .stop-icon {
-          fill: var(--accent-color);
         }
       `,
     ];
@@ -130,14 +107,14 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
           </div>
         </div>
         <div class="message_wrap">
-          <h3 class="main_message mt-1 mb-0 pb-0" id="title">${this.title}</h3>
-          <div class="secondary_message my-2">
+          <div class="main_message" id="title">${this.title}</div>
+          <div class="secondary_message">
             <slot></slot>
             <slot name="message"></slot>
           </div>
           ${this.url
             ? html`
-                <div class="link mb-1">
+                <div class="link">
                   <a href="${this.url}" id="link">
                     ${this.t.moreInformation} &gt;
                   </a>
