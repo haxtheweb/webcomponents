@@ -287,6 +287,11 @@ export const DDDSuper = function (SuperClass) {
           --ddd-theme-polaris-gradient-buttons: linear-gradient(rgb(0, 156, 222) 0%, rgb(30, 64, 124) 85%);
           --ddd-theme-polaris-gradient-hero: linear-gradient(360deg, rgba(0, 30, 68, 0.8) 0%, rgba(0, 30, 68, 0.4) 50%, rgba(0, 3, 33, 0) 100%);
           --ddd-theme-polaris-gradient-hero2: linear-gradient(360deg, rgb(0, 30, 68) 0%, rgba(0, 30, 68, 0.4) 50%, rgba(0, 3, 33, 0) 100%);
+                    
+          --ddd-svg-s: 24px;
+          --ddd-svg-m: 48px;
+          --ddd-svg-l: 72px;
+          --ddd-svg-xl: 96px;
         }
         /* border & shadows */
         .b-0 {border: none;}

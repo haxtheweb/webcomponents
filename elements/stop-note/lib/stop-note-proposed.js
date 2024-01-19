@@ -82,10 +82,6 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
           width: auto;
         }
 
-        :host([url='']):not([title='']) .message_wrap { /* trying to add more padding to top if there's no link */
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-6);
-        }
-
         .message_wrap {
           border-right: var(--ddd-border-size-4) solid var(--accent-color);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
@@ -95,7 +91,7 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
 
         :host([title=""]) .secondary_message {
           display: flex;
-          height: 90%;
+          height: 60%;
           align-items: center;
           margin-top: auto;
           font-size: var(--ddd-font-size-s);
@@ -146,8 +142,8 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
           </div>
         </div>
         <div class="message_wrap">
-          <h3 class="main_message mt-1 mb-0 pb-0" id="title">${this.title}</h3>
-          <div class="secondary_message my-2">
+          <h3 class="main_message ${this.url ? 'mt-2' : 'mt-5'} mb-2 pb-0" id="title">${this.title}</h3>
+          <div class="secondary_message mb-2">
             <slot></slot>
             <slot name="message"></slot>
           </div>
@@ -230,6 +226,7 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
+    StopNoteIconList[this.status] ? this.icon = StopNoteIconList[this.status] : this.icon = StopNoteIconList["stop"];
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
@@ -276,10 +273,10 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
   }
   haxtoggleIcon(e) {
     const iconAry = [
-      "stopnoteicons:stop-icon",
-      "stopnoteicons:warning-icon",
-      "stopnoteicons:confirm-icon",
-      "stopnoteicons:book-icon",
+      "stopnoteicons:stop-icon-proposed",
+      "stopnoteicons:warning-icon-proposed",
+      "stopnoteicons:confirm-icon-proposed",
+      "stopnoteicons:book-icon-proposed",
     ];
     let icon = iconAry[0];
     if (iconAry.lastIndexOf(this.icon) != iconAry.length - 1) {

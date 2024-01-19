@@ -2,6 +2,6 @@
   {
     "name": "stopnoteicons",
     "path": "./lib/svgs/stopnoteicons",
-    "icons": ["book-icon", "confirm-icon", "stop-icon", "warning-icon"]
+    "icons": ["book-icon", "confirm-icon", "stop-icon", "warning-icon", "book-icon-proposed", "confirm-icon-proposed", "warning-icon-propsoed", "stop-icon-proposed"]
   }
 ]
