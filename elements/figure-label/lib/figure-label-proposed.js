@@ -2,7 +2,8 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
   * `figure-label`
   * @element figure-label
@@ -15,10 +16,10 @@ import { LitElement, html, css } from "lit";
   * @lit-element
   * @demo demo/index.html
   */
-class FigureLabel extends LitElement {
+class FigureLabel extends DDD {
   //styles function
   static get styles() {
-    return [
+    return [...super.styles, 
       css`
         :host {
           display: block;
@@ -30,20 +31,22 @@ class FigureLabel extends LitElement {
 
         #wrap {
           display: flex;
-          margin-bottom: 1em;
+          margin-bottom: var(--ddd-spacing-4);
         }
 
         #title {
-          background-color: var(--figure-label-title-background-color, #f2f2f2);
-          padding: 10.8px 13.5px 10.8px;
-          font-size: 13.5px;
+          font-family: var(--ddd-font-primary);
+          background-color: var(--ddd-theme-polaris-limestoneLight);
+          font-size: var(--ddd-font-size-4xs);
+          padding: var(--ddd-spacing-3);
+          font-weight: var(--ddd-font-primary-bold);
         }
 
         #description {
-          border: solid 1px
-            var(--figure-label-description-background-color, #f2f2f2);
-          padding: 10.8px 13.5px 10.8px;
-          font-size: 13.5px;
+          font-family: var(--ddd-font-primary);
+          border: 1px solid var(--ddd-theme-polaris-limestoneLight);
+          padding: var(--ddd-spacing-3);
+          font-size: var(--ddd-font-size-4xs);
         }
       `,
     ];

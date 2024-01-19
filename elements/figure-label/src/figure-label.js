@@ -2,8 +2,7 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { LitElement, html, css } from "lit";
 /**
   * `figure-label`
   * @element figure-label
@@ -16,10 +15,10 @@ import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
   * @lit-element
   * @demo demo/index.html
   */
-class FigureLabel extends DDD {
+class FigureLabel extends LitElement {
   //styles function
   static get styles() {
-    return [...super.styles, 
+    return [
       css`
         :host {
           display: block;
@@ -31,22 +30,20 @@ class FigureLabel extends DDD {
 
         #wrap {
           display: flex;
-          margin-bottom: var(--ddd-spacing-4);
+          margin-bottom: 1em;
         }
 
         #title {
-          font-family: var(--ddd-font-primary);
-          background-color: var(--ddd-theme-polaris-limestoneLight);
-          font-size: var(--ddd-font-size-4xs);
-          padding: var(--ddd-spacing-3);
-          font-weight: var(--ddd-font-primary-bold);
+          background-color: var(--figure-label-title-background-color, #f2f2f2);
+          padding: 10.8px 13.5px 10.8px;
+          font-size: 13.5px;
         }
 
         #description {
-          font-family: var(--ddd-font-primary);
-          border: 1px solid var(--ddd-theme-polaris-limestoneLight);
-          padding: var(--ddd-spacing-3);
-          font-size: var(--ddd-font-size-4xs);
+          border: solid 1px
+            var(--figure-label-description-background-color, #f2f2f2);
+          padding: 10.8px 13.5px 10.8px;
+          font-size: 13.5px;
         }
       `,
     ];
