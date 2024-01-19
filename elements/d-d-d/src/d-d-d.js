@@ -860,7 +860,7 @@ export const DDDSuper = function (SuperClass) {
         }
         p {
           font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-3xs);
+          font-size: var(--ddd-font-size-3xs, var(--ddd-theme-haxcms-font-size));
           margin: var(--ddd-spacing-4) 0;
           font-weight: var(--ddd-font-secondary-regular);
         }
@@ -889,6 +889,7 @@ export const DDDSuper = function (SuperClass) {
           font-family: var(--ddd-font-primary);
         }
         ul, ol{
+          font-size: var(--ddd-font-size-3xs, var(--ddd-theme-haxcms-font-size));
           display: flex;
           flex-flow: column;
           gap: 1.5rem;
@@ -910,7 +911,7 @@ export const DDDSuper = function (SuperClass) {
         }
         blockquote{
           font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-3xs);
+          font-size: var(--ddd-font-size-3xs, var(--ddd-theme-haxcms-font-size));
           font-style: italic;
           border-left: var(--ddd-spacing-1) solid var(--ddd-theme-polaris-pughBlue);
           padding-left: var(--ddd-spacing-6);

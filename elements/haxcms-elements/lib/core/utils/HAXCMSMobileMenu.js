@@ -130,6 +130,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           id="haxcmsmobilemenunav"
           role="navigation"
           aria-labelledby="sitemenu"
+          itemtype="http://schema.org/SiteNavigationElement"
         >
           <replace-tag
             with="site-menu"
