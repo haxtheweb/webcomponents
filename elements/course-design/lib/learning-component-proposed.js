@@ -232,8 +232,8 @@ class LearningComponentProposed extends I18NMixin(DDD) {
         }
         .icon {
           display: flex;
-          min-height: 64px;
-          min-width: 88px;
+          min-height: var(--ddd-icon-xl);
+          min-width: var(--ddd-icon-xl);
         }
         .urlbutton {
           margin: var(--ddd-spacing-6) 0 0 0;
@@ -251,7 +251,7 @@ class LearningComponentProposed extends I18NMixin(DDD) {
             var(--simple-colors-default-theme-grey-1, #fff)
           );
           margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
-          padding: 5px;
+          padding: var(--ddd-spacing-1);
         }
 
         simple-icon-button-lite {
@@ -273,8 +273,8 @@ class LearningComponentProposed extends I18NMixin(DDD) {
             justify-content: center;
           }
           simple-icon-lite {
-            --simple-icon-width: 24px;
-            --simple-icon-height: 24px;
+            --simple-icon-width: var(--ddd-icon-xxs);
+            --simple-icon-height: var(--ddd-icon-xxs);
             height: 35px;
             width: 35px;
           }
@@ -296,8 +296,8 @@ class LearningComponentProposed extends I18NMixin(DDD) {
           }
           simple-icon-lite,
           simple-icon-button-lite {
-            --simple-icon-width: 36px;
-            --simple-icon-height: 36px;
+            --simple-icon-width: var(--ddd-icon-sm);
+            --simple-icon-height: var(--ddd-icon-sm);
             height: 50px;
             width: 50px;
           }

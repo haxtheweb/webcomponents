@@ -288,10 +288,13 @@ export const DDDSuper = function (SuperClass) {
           --ddd-theme-polaris-gradient-hero: linear-gradient(360deg, rgba(0, 30, 68, 0.8) 0%, rgba(0, 30, 68, 0.4) 50%, rgba(0, 3, 33, 0) 100%);
           --ddd-theme-polaris-gradient-hero2: linear-gradient(360deg, rgb(0, 30, 68) 0%, rgba(0, 30, 68, 0.4) 50%, rgba(0, 3, 33, 0) 100%);
                     
-          --ddd-svg-s: 24px;
-          --ddd-svg-m: 48px;
-          --ddd-svg-l: 72px;
-          --ddd-svg-xl: 96px;
+          --ddd-icon-xxs: 24px;
+          --ddd-icon-xs: 32px;
+          --ddd-icon-sm: 40px;
+          --ddd-icon-md: 48px;
+          --ddd-icon-lg: 56px;
+          --ddd-icon-xl: 64px;
+
         }
         /* border & shadows */
         .b-0 {border: none;}
@@ -319,8 +322,6 @@ export const DDDSuper = function (SuperClass) {
         .bl-sm { border-left: 2px solid var(--ddd-theme-polaris-limestoneLight); }
         .bl-md { border-left: 3px solid var(--ddd-theme-polaris-limestoneLight); }
         .bl-lg { border-left: 4px solid var(--ddd-theme-polaris-limestoneLight); }
-        hr { border-top: 1px solid var(--ddd-theme-polaris-limestoneLight); }
-        
         
         /* margin & padding */
         .m-auto { margin: auto; }
@@ -915,16 +916,21 @@ export const DDDSuper = function (SuperClass) {
           font-style: italic;
           border-left: var(--ddd-spacing-1) solid var(--ddd-theme-polaris-pughBlue);
           padding-left: var(--ddd-spacing-6);
+          padding-bottom: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-9) 0 var(--ddd-spacing-9) var(--ddd-spacing-10);
         }
         hr{
-          border-bottom: 2px solid var(--ddd-theme-polaris-potentialMidnight);
-          width: 100%;
+          display: block;
+          border-bottom: 3px solid var(--ddd-theme-polaris-skyBlue);
+          width: 48px;
+          margin: var(--ddd-spacing-9) 0;
+          padding: 0;
         }
-        .hr-vertical{
-          margin-left: var(--ddd-spacing-4);
+        .hr-vert{
+          margin: 0 var(--ddd-spacing-4);
+          padding: 0 var(--ddd-spacing-1);
           border-bottom: none;
-          border-right: 2px solid var(--ddd-theme-polaris-potentialMidnight);
+          border-right: 3px solid var(--ddd-theme-polaris-skyBlue);
           height: fit-content;
         }
         .breadcrumb{

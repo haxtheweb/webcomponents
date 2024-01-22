@@ -9,6 +9,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../self-check.js';
+      import '../lib/self-check-proposed.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       self-check {
@@ -34,6 +35,13 @@
             The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.
           </self-check>
 
+          <self-check-proposed accent-color="light-blue" title="Sharks Self Check"
+            image="https://upload.wikimedia.org/wikipedia/commons/5/56/White_shark.jpg"
+            alt="Great White Shark">
+            <span slot="question">How large can the average great white shark grow to be?</span>
+            The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.
+          </self-check-proposed>
+
           <self-check accent-color="red" title="Blood Type Quiz"
             image="https://media.defense.gov/2016/Mar/01/2001470412/1088/820/0/160301-F-UU298-014.jpg"
             alt="Blood Drive bus and sign" link="https://www.redcrossblood.org/donate-blood/blood-types.html">
@@ -42,6 +50,14 @@
             If you guessed Type O, you were probably thinking about the universal 
             <em>red cell</em> donor.
           </self-check>
+          <self-check-proposed accent-color="red" title="Blood Type Quiz"
+          image="https://media.defense.gov/2016/Mar/01/2001470412/1088/820/0/160301-F-UU298-014.jpg"
+          alt="Blood Drive bus and sign" link="https://www.redcrossblood.org/donate-blood/blood-types.html">
+          <span slot="question">Which blood type is the universal <em>plasma</em> donor?</span>
+          The universal <em>plasma</em> donor has Type AB blood. 
+          If you guessed Type O, you were probably thinking about the universal 
+          <em>red cell</em> donor.
+        </self-check-proposed>
         </template>
       </demo-snippet>
 
@@ -55,6 +71,14 @@
             The red ghost is Blinky, the pink ghost is Pinky,
             the cyan ghost is Inky, and the orange ghost is clyde.
           </self-check>
+
+          <self-check-proposed accent-color="yellow" dark title="Video Game Trivia"
+            image="https://c1.staticflickr.com/5/4139/4865516413_1df74bbcc2_n.jpg"
+            alt="Pac-Man screenshot" link="https://en.wikipedia.org/wiki/Pac-Man#enemies">
+            <span slot="question">What are the names of the ghosts that chase Pac-Man?</span>
+            The red ghost is Blinky, the pink ghost is Pinky,
+            the cyan ghost is Inky, and the orange ghost is clyde.
+          </self-check-proposed>
         </template>
       </demo-snippet>
 
@@ -70,6 +94,16 @@
             Yellow journalism describes journalism that prioritizes sales 
             &amp; sensationalism over research and accuracy
           </self-check>
+
+          <self-check-proposed title="News Knowledge"
+            image="https://upload.wikimedia.org/wikipedia/commons/9/98/Independence_Seaport_Museum_224.JPG"
+            alt="Pac-Man screenshot" link="https://en.wikipedia.org/wiki/Yellow_journalism">
+            <span slot="question">
+              What is <em>yellow journalism</em>?
+            </span>
+            Yellow journalism describes journalism that prioritizes sales 
+            &amp; sensationalism over research and accuracy
+          </self-check-proposed>
         </template>
       </demo-snippet>
     </div>
