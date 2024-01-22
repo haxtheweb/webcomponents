@@ -235,9 +235,6 @@ class LearningComponentProposed extends I18NMixin(DDD) {
           min-height: var(--ddd-icon-xl);
           min-width: var(--ddd-icon-xl);
         }
-        .urlbutton {
-          margin: var(--ddd-spacing-6) 0 0 0;
-        }
         .urlbutton a {
           display: flex;
           align-items: center;
@@ -258,10 +255,12 @@ class LearningComponentProposed extends I18NMixin(DDD) {
           color: var(--simple-colors-default-theme-accent-8);
         }
 
+        .content {
+          font-size: var(--ddd-font-size-3xs);
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
+        }
+
         @media screen and (min-width: 320px) {
-          .content {
-            padding: var(--ddd-spacing-6) var(--ddd-spacing-8);
-          }
           .title {
             font-size: var(--ddd-font-size-3xs);
           }
@@ -281,9 +280,6 @@ class LearningComponentProposed extends I18NMixin(DDD) {
         }
 
         @media screen and (min-width: 920px) {
-          .content {
-            padding: var(--ddd-spacing-6) var(--ddd-spacing-23);
-          }
           .title {
             font-size: var(--ddd-font-size-ms)
           }
@@ -294,12 +290,17 @@ class LearningComponentProposed extends I18NMixin(DDD) {
             display: flex;
             justify-content: end;
           }
-          simple-icon-lite,
-          simple-icon-button-lite {
+          simple-icon-lite{
             --simple-icon-width: var(--ddd-icon-sm);
             --simple-icon-height: var(--ddd-icon-sm);
-            height: 50px;
-            width: 50px;
+            height: var(--ddd-icon-xl);
+            width: var(--ddd-icon-xl);
+          }
+          simple-icon-button-lite {
+            --simple-icon-width: var(--ddd-icon-md);
+            --simple-icon-height: var(--ddd-icon-md);
+            height: var(--ddd-icon-xl);
+            width: var(--ddd-icon-xl);
           }
         }
       `,
@@ -311,19 +312,19 @@ class LearningComponentProposed extends I18NMixin(DDD) {
    */
   render() {
     return html`
-      <div class="header b-xs bb-0">
+      <div class="header">
         <div class="icon">
           ${this.icon ? html`
           <simple-icon-lite
-            icon="${this.icon}" class="b-md r-rounded"
+            icon="${this.icon}" class="b-sm r-rounded"
           ></simple-icon-lite>` : ``}
         </div>
         <div class="title-wrap">
-          <div class="sub-title">${this.subtitle}</div>
-          <div class="title">${this.title}</div>
+          <div class="sub-title lh-120">${this.subtitle}</div>
+          <div class="title lh-120">${this.title}</div>
         </div>
       </div>
-      <div class="content b-xs bt-0">
+      <div class="content b-sm bt-0 bs-lg">
         <slot></slot>
         ${this.url
           ? html` <div class="urlbutton">

@@ -44,6 +44,7 @@ class SelfCheckProposed extends I18NMixin(
     this.question = "";
     this.accentColor = "blue";
     this.title = "Self-Check";
+    this.fullWidthImage = false;
     this.t = {
       revealAnswer: "Reveal Answer",
       close: "Close",
@@ -62,7 +63,6 @@ class SelfCheckProposed extends I18NMixin(
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
-          max-width: 60%;
         }
         :host([hidden]),
         *[hidden] {
@@ -70,7 +70,6 @@ class SelfCheckProposed extends I18NMixin(
         }
 
         div.card {
-          width: 100%;
           color: var(
             --self-check-question-text,
             var(--simple-colors-default-theme-grey-12, #000)
@@ -83,10 +82,13 @@ class SelfCheckProposed extends I18NMixin(
         }
 
         simple-icon-button {
-          --simple-icon-width: var(--ddd-icon-xs);
-          --simple-icon-height: var(--ddd-icon-xs);
-          padding: var(--ddd-spacing-0);
-          margin: var(--ddd-spacing-0);
+          display: flex;
+          --simple-icon-width: var(--ddd-icon-sm);
+          --simple-icon-height: var(--ddd-icon-sm);
+          height: var(--ddd-icon-xl);
+          width: var(--ddd-icon-xl);
+          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-1);
         }
 
         .check_button {
@@ -104,20 +106,22 @@ class SelfCheckProposed extends I18NMixin(
         }
 
         simple-icon#questionmark {
-          --simple-icon-width: var(--ddd-icon-sm);
-          --simple-icon-height: var(--ddd-icon-sm);
-          padding-left: var(--ddd-spacing-1);
+          --simple-icon-width: var(--ddd-icon-md);
+          --simple-icon-height: var(--ddd-icon-md);
           color: var(
             --self-check-heading-text,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
+          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-3);
         }
 
         .heading {
+          display: flex;
+          align-items: center;
           text-transform: uppercase;
-          font-size: var(--ddd-font-size-s);
+          font-size: var(--ddd-font-size-m);
           font-weight: var(--ddd-font-primary-medium);
-          margin: var(--ddd-spacing-2);
           color: var(
             --self-check-heading-text,
             var(--simple-colors-default-theme-grey-1, #fff)
@@ -137,6 +141,7 @@ class SelfCheckProposed extends I18NMixin(
           align-items: center;
           width: 100%;
           margin:  calc(var(--ddd-spacing-6) * -1) 0 0;
+          padding:var(--ddd-spacing-3);
         }
 
         #question_wrap {
@@ -154,7 +159,7 @@ class SelfCheckProposed extends I18NMixin(
         .question {
           font-size: var(--ddd-font-size-3xs);
           line-height: var(--ddd-lh-120);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
         }
 
         :host([correct]) .question {
@@ -188,7 +193,7 @@ class SelfCheckProposed extends I18NMixin(
 
         .answer {
           font-size: var(--ddd-font-size-3xs);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
           line-height: var(--ddd-lh-120);
         }
 
@@ -247,7 +252,7 @@ class SelfCheckProposed extends I18NMixin(
   }
   render() {
     return html`
-      <div class="card bs-lg b-xs">
+      <div class="card bs-lg b-sm">
         <div class="image-wrap">
           ${this.renderSVGLoader()}
           <img
@@ -260,6 +265,7 @@ class SelfCheckProposed extends I18NMixin(
         <div class="triangle"></div>
         <div id="header_wrap">
           <simple-icon
+            class="b-sm r-circle" style="${this.dark ? "border-color: var(--ddd-theme-polaris-potentialMidnight);" : ""}"
             id="questionmark"
             icon="icons:help"
             ?dark="${!this.dark}"

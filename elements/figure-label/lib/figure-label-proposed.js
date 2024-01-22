@@ -35,6 +35,8 @@ class FigureLabelProposed extends DDD {
         }
 
         #title {
+          display: flex;
+          align-items: center;
           font-family: var(--ddd-font-primary);
           background-color: var(--ddd-theme-polaris-limestoneLight);
           font-size: var(--ddd-font-size-4xs);
