@@ -44,7 +44,6 @@ class MapMenuItem extends I18NMixin(LitElement) {
         .title {
           text-transform: none;
           font-size: var(--map-menu-font-size, 16px);
-          font-family: "Open+Sans", sans-serif;
           text-overflow: ellipsis;
           height: 44px;
           vertical-align: middle;
@@ -80,6 +79,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
           cursor: pointer;
           color: inherit;
           display: flex;
+          font-family: inherit;
           background-color: transparent;
           text-transform: none;
           width: 100%;

@@ -65,7 +65,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         .title {
           text-transform: none;
           font-size: var(--map-menu-font-size, 16px);
-          font-family: "Open+Sans", sans-serif;
           text-overflow: ellipsis;
           height: 44px;
           line-height: 44px;
@@ -78,6 +77,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
 
         button {
           cursor: pointer;
+          font-family: inherit;
           color: inherit;
           display: flex;
           background-color: transparent;
