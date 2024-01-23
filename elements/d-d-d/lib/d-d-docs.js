@@ -616,32 +616,32 @@ class DDDocs extends DDD {
     <h2 class="fs-s mt-0 mb-5 pb-5 ">Letter Spacing</h2>
     <table class="my-10">
       <thead><th>Class</th><th>Value</th><th>Example</th></thead>
-      <tr><td>ls-16-sm</td><td>0.08px</td><td><span class="ls-16-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-18-sm</td><td>0.09px</td><td><span class="ls-18-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-20-sm</td><td>0.1px</td><td><span class="ls-20-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-24-sm</td><td>0.12px</td><td><span class="ls-24-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-28-sm</td><td>0.14px</td><td><span class="ls-28-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-32-sm</td><td>0.16px</td><td><span class="ls-32-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-36-sm</td><td>0.18px</td><td><span class="ls-36-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-40-sm</td><td>0.2px</td><td><span class="ls-40-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-44-sm</td><td>0.22px</td><td><span class="ls-44-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-48-sm</td><td>0.24px</td><td><span class="ls-48-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-56-sm</td><td>0.28px</td><td><span class="ls-56-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-64-sm</td><td>0.32px</td><td><span class="ls-64-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-72-sm</td><td>0.36px</td><td><span class="ls-72-sm fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-16-lg</td><td>0.24px</td><td><span class="ls-16-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-18-lg</td><td>0.27px</td><td><span class="ls-18-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-20-lg</td><td>0.3px</td><td><span class="ls-20-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-24-lg</td><td>0.36px</td><td><span class="ls-24-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-28-lg</td><td>0.42px</td><td><span class="ls-28-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-32-lg</td><td>0.48px</td><td><span class="ls-32-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-36-lg</td><td>0.54px</td><td><span class="ls-36-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-40-lg</td><td>0.6px</td><td><span class="ls-40-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-44-lg</td><td>0.66px</td><td><span class="ls-44-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-48-lg</td><td>0.72px</td><td><span class="ls-48-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-56-lg</td><td>0.84px</td><td><span class="ls-56-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-64-lg</td><td>0.96px</td><td><span class="ls-64-lg fw-1">PSU-FLEX</span></td></tr>
-      <tr><td>ls-72-lg</td><td>1.08px</td><td><span class="ls-72-lg fw-1">PSU-FLEX</span></td></tr>
+      <tr><td>ls-16-sm</td><td>0.08px</td><td><span class="ls-16-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-18-sm</td><td>0.09px</td><td><span class="ls-18-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-20-sm</td><td>0.1px</td><td><span class="ls-20-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-24-sm</td><td>0.12px</td><td><span class="ls-24-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-28-sm</td><td>0.14px</td><td><span class="ls-28-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-32-sm</td><td>0.16px</td><td><span class="ls-32-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-36-sm</td><td>0.18px</td><td><span class="ls-36-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-40-sm</td><td>0.2px</td><td><span class="ls-40-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-44-sm</td><td>0.22px</td><td><span class="ls-44-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-48-sm</td><td>0.24px</td><td><span class="ls-48-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-56-sm</td><td>0.28px</td><td><span class="ls-56-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-64-sm</td><td>0.32px</td><td><span class="ls-64-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-72-sm</td><td>0.36px</td><td><span class="ls-72-sm fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-16-lg</td><td>0.24px</td><td><span class="ls-16-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-18-lg</td><td>0.27px</td><td><span class="ls-18-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-20-lg</td><td>0.3px</td><td><span class="ls-20-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-24-lg</td><td>0.36px</td><td><span class="ls-24-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-28-lg</td><td>0.42px</td><td><span class="ls-28-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-32-lg</td><td>0.48px</td><td><span class="ls-32-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-36-lg</td><td>0.54px</td><td><span class="ls-36-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-40-lg</td><td>0.6px</td><td><span class="ls-40-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-44-lg</td><td>0.66px</td><td><span class="ls-44-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-48-lg</td><td>0.72px</td><td><span class="ls-48-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-56-lg</td><td>0.84px</td><td><span class="ls-56-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-64-lg</td><td>0.96px</td><td><span class="ls-64-lg fw-1">DDD-FLEX</span></td></tr>
+      <tr><td>ls-72-lg</td><td>1.08px</td><td><span class="ls-72-lg fw-1">DDD-FLEX</span></td></tr>
     </table>
     <h2 class="fs-s mt-0 mb-5 pb-5 ">Line Height</h2>
     <div class="grid-4 gap-4">
@@ -697,6 +697,7 @@ class DDDocs extends DDD {
       <blockquote>The Pennsylvania State University is a multi-campus, land-grant, public research university that educates students from around the world and supports individuals and communities through integrated programs of teaching, research, and service.</blockquote>
       <hr>
       <h2><span class="hr-vert py-2"></span>Sample Text</h2>
+     </div>
     <!--  
       Hr element
     -->
