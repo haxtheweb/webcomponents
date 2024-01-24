@@ -41,7 +41,7 @@ class SiteActiveTags extends LitElement {
    */
   render() {
     return html`<div class="tag-wrap"></div>${
-      this.tags && this.tags != ""
+      this.tags && this.tags != "" && this.tags.split
         ? this.tags.split(",").map(
             (tag) => html` <a
               @click="${this.testEditMode}"

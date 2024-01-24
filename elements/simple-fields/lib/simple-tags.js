@@ -18,7 +18,8 @@ export class SimpleTags extends LitElement {
 
   render() {
     return html` <div class="tag-container">
-      ${this.tags
+      ${
+      this.tags && this.tags != "" && this.tags.split
         ? this.tags.split(",").map((tag) => {
             return html`
               <simple-tag

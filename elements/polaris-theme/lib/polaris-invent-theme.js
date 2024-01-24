@@ -105,7 +105,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         site-active-title h1 {
           font-size: var(--ddd-font-size-l);
           padding: 0;
-          margin: var(--ddd-spacing-10) 0 var(--ddd-spacing-5);
+          margin: 0 0 var(--ddd-spacing-5) 0;
         }
 
         header .wrap {
@@ -123,10 +123,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
 
         article {
           border-radius: 3px;
-          margin-bottom: 40px;
-          margin-bottom: 40px;
-          padding: 40px 40px 24px;
-          padding: 40px 40px 24px;
+          padding: 0px 40px 20px 20px;
           background-color: var(--polaris-content-bg-color);
           font-family: var(--ddd-font-primary);
         }
@@ -344,7 +341,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
 
         a img {
           margin-bottom: -4px;
-          margin-bottom: -4px;
         }
         img {
           height: auto;
@@ -371,9 +367,9 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           text-decoration: none;
         }
         #haxcmsmobilemenubutton {
-          padding: 20px;
-          --simple-icon-height: 40px;
-          --simple-icon-width: 40px;
+          padding: 8px;
+          --simple-icon-height: 32px;
+          --simple-icon-width: 32px;
         }
         @media only screen and (max-width: 1139px) {
           .wrap {
@@ -434,6 +430,14 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           position: sticky;
         }
         @media screen and (min-width: 900px){
+          #haxcmsmobilemenubutton {
+            padding: 20px;
+            --simple-icon-height: 40px;
+            --simple-icon-width: 40px;
+          }
+          article {
+            padding: 64px 80px 40px 40px;
+          }
           .left-col {
             flex: 0 0 auto;
             width: auto;
