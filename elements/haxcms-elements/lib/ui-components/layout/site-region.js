@@ -40,30 +40,38 @@ class SiteRegion extends LitElement {
           this[propName] &&
           this[propName].length > 0
         ) {
-          this.contentItemIds.map(async (id) => {
-            let item = store.findItem(id);
-            if (item && item.location) {
-              await fetch(item.location, {
-                method: "GET",
-                priority: "low",
-              })
-                .then((response) => {
-                  if (response.ok) {
-                    return response.text();
-                  }
+          clearTimeout(this.__debounce);
+          this.__debounce = setTimeout(async () => {
+            // reset because it's going to get built by the content item IDs we found
+            this.innerHTML = '';
+            await this.contentItemIds.map(async (id) => {
+              let item = store.findItem(id);
+              if (item && item.location) {
+                await fetch(item.location, {
+                  method: "GET",
+                  priority: "low",
                 })
-                .then((data) => {
-                  // region data found
-                  let div = globalThis.document.createElement("div");
-                  div.innerHTML = data;
-                  div.classList.add("site-region-wrapper");
-                  this.appendChild(div);
-                })
-                .catch((err) => {
-                  console.error("region data not found");
-                });
-            }
-          });
+                  .then((response) => {
+                    if (response.ok) {
+                      return response.text();
+                    }
+                  })
+                  .then((data) => {
+                    // region data found
+                    let div = globalThis.document.createElement("div");
+                    div.innerHTML = data;
+                    div.classList.add("site-region-wrapper");
+                    // set a part to improve shadowRoot targetting from outside the theme
+                    // css vars still based way to penetrate this
+                    div.setAttribute('part',`site-region-wrapper-${this.name}`);
+                    this.appendChild(div);
+                  })
+                  .catch((err) => {
+                    console.error("region data not found");
+                  });
+              }
+            });
+          }, 100);
         }
       }
     });
