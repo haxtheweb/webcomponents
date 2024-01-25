@@ -16,24 +16,21 @@
                 "title": "title",
                 "description": "Name of the site",
                 "inputMethod": "textfield",
-                "required": true,
-                "icon": "editor:title"
+                "required": true
               },
               {
                 "property": "manifest-metadata-site-domain",
                 "title": "Domain",
                 "description": "Domain of this website",
                 "inputMethod": "textfield",
-                "required": false,
-                "icon": "icons:open-in-browser"
+                "required": false
               },
               {
                 "property": "manifest-description",
                 "title": "Description",
                 "description": "Simple description of the site",
                 "inputMethod": "textfield",
-                "required": false,
-                "icon": "editor:short-text"
+                "required": false
               },
               {
                 "property": "manifest-metadata-site-logo",
@@ -56,22 +53,28 @@
                 "description": "Design and presentation layer for your site",
                 "inputMethod": "select",
                 "required": false,
-                "icon": "editor:format-paint",
-                "options": {
-                  "clean-one": "Course theme",
-                  "clean-two": "Course theme 2",
-                  "learn-two-theme": "Course theme 3",
-                  "haxor-slevin": "Coder blog",
-                  "outline-player": "Documentation"
-                }
+                "options": {}
               },
               {
                 "property": "manifest-metadata-theme-variables-image",
-                "title": "Banner",
-                "description": "Banner image aplied to themes that implement one",
+                "title": "Image",
+                "description": "Image aplied to themes that implement one",
                 "inputMethod": "haxupload",
+                "required": false
+              },
+              {
+                "property": "manifest-metadata-theme-variables-imageLink",
+                "title": "Banner link",
+                "description": "Optional banner image link",
+                "inputMethod": "textfield",
+                "required": false
+              },
+              {
+                "property": "manifest-metadata-theme-variables-imageAlt",
+                "title": "Banner alt",
+                "description": "Alternative text for the banner image",
+                "inputMethod": "textfield",
                 "required": false,
-                "icon": "image:image",
                 "noVoiceRecord": true
               },
               {
@@ -79,16 +82,14 @@
                 "title": "Accent color",
                 "description": "Accent color applied to themes that implement it",
                 "inputMethod": "colorpicker",
-                "required": true,
-                "icon": "editor:format-color-fill"
+                "required": true
               },
               {
                 "property": "manifest-metadata-theme-variables-icon",
                 "title": "Icon",
                 "description": "Icon to represent the site in themes that implement it",
                 "inputMethod": "iconpicker",
-                "required": false,
-                "icon": "icons:send"
+                "required": false
               },
               {
                 "property": "regions",
@@ -110,8 +111,7 @@
                       {
                         "property": "node",
                         "title": "Page",
-                        "inputMethod": "select",
-                        "itemsList": []
+                        "inputMethod": "select"
                       }
                     ]
                   },
@@ -129,8 +129,7 @@
                       {
                         "property": "node",
                         "title": "Page",
-                        "inputMethod": "select",
-                        "itemsList": []
+                        "inputMethod": "select"
                       }
                     ]
                   },
@@ -148,8 +147,7 @@
                       {
                         "property": "node",
                         "title": "Page",
-                        "inputMethod": "select",
-                        "itemsList": []
+                        "inputMethod": "select"
                       }
                     ]
                   },
@@ -167,8 +165,7 @@
                       {
                         "property": "node",
                         "title": "Page",
-                        "inputMethod": "select",
-                        "itemsList": []
+                        "inputMethod": "select"
                       }
                     ]
                   },
@@ -186,8 +183,7 @@
                       {
                         "property": "node",
                         "title": "Page",
-                        "inputMethod": "select",
-                        "itemsList": []
+                        "inputMethod": "select"
                       }
                     ]
                   },
@@ -205,8 +201,7 @@
                       {
                         "property": "node",
                         "title": "Page",
-                        "inputMethod": "select",
-                        "itemsList": []
+                        "inputMethod": "select"
                       }
                     ]
                   },
@@ -224,8 +219,7 @@
                       {
                         "property": "node",
                         "title": "Page",
-                        "inputMethod": "select",
-                        "itemsList": []
+                        "inputMethod": "select"
                       }
                     ]
                   }
@@ -286,18 +280,22 @@
             "description": "Search engine and detailed internal path handling",
             "properties": [
               {
+                "property": "manifest-metadata-site-settings-lang",
+                "title": "Language",
+                "description": "https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes for acceptable language codes.",
+                "inputMethod": "textfield"
+              },
+              {
                 "property": "manifest-metadata-site-settings-pathauto",
                 "title": "Pathauto",
                 "description": "Automatically maintain and update page paths",
-                "inputMethod": "boolean",
-                "icon": "icons:link"
+                "inputMethod": "boolean"
               },
               {
                 "property": "manifest-metadata-site-settings-publishPagesOn",
                 "title": "Hide unpublished pages",
                 "description": "Check the box to hide unpublished pages",
-                "inputMethod": "boolean",
-                "icon": "icons:link"
+                "inputMethod": "boolean"
               },
               {
                 "property": "manifest-metadata-site-settings-sw",
@@ -310,34 +308,13 @@
                 "property": "manifest-metadata-site-settings-forceUpgrade",
                 "title": "Force browser upgrade",
                 "description": "Force users viewing the site to have evergreen browsers (not recommended)",
-                "inputMethod": "boolean",
-                "icon": "icons:link"
+                "inputMethod": "boolean"
               },
               {
                 "property": "manifest-metadata-site-settings-gaID",
                 "title": "Google Analytics ID",
                 "description": "Copy Google Analytics ID here to track data in site",
                 "inputMethod": "textfield"
-              },
-              {
-                "property": "manifest-metadata-site-static-cdn",
-                "title": "CDN",
-                "description": "CDN to use for published assets",
-                "inputMethod": "select",
-                "required": true,
-                "options": {
-                  "cdn.webcomponents.psu.edu": "Penn State CDN",
-                  "cdn.waxam.io": "Waxam CDN",
-                  "build": "Local (no CDN)"
-                },
-                "icon": "link"
-              },
-              {
-                "property": "manifest-metadata-site-static-offline",
-                "title": "Offline",
-                "description": "Published site will work when completely offline",
-                "inputMethod": "boolean",
-                "required": false
               }
             ]
           }
