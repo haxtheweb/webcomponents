@@ -1,7 +1,6 @@
 import { css, html } from "lit";
 import { CollectionList } from "@lrnwebcomponents/collection-list/collection-list.js";
 import "@lrnwebcomponents/collection-list/lib/collection-item.js";
-
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 
@@ -38,7 +37,7 @@ export class SiteCollectionList extends CollectionList {
       ></site-query>
       <collection-list
         items-per-row="${this.itemsPerRow}"
-        lock-items="lock-items"
+        ?lock-items="${this.editMode}"
       >
         ${this.results.map(
           (item) => html`
@@ -173,12 +172,19 @@ export class SiteCollectionList extends CollectionList {
   haxHooks() {
     return {
       editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
       setupActiveElementForm: "haxsetupActiveElementForm",
     };
   }
 
   haxeditModeChanged(value) {
     this.editMode = value;
+  }
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this.editMode = value;
+    }
   }
   /**
    * Allow for dynamic setting of the parent field if we have the store around

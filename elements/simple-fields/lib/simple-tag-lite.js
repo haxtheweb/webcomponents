@@ -80,7 +80,7 @@ export const SimpleTagLiteSuper = function (SuperClass) {
             border-radius: var(--simple-fields-tag-border-radius, 4px);
             padding: var(--simple-fields-button-padding, 2px)
               calc(2 * var(--simple-fields-button-padding, 2px));
-            border-width: 1px;
+            border-width: var(--simple-fields-tag-border-width, 1px);
             border-style: solid;
             border-color: var(
               --simple-fields-fieldset-border-color,
@@ -92,7 +92,7 @@ export const SimpleTagLiteSuper = function (SuperClass) {
           }
           simple-icon-button-lite {
             cursor: pointer;
-            margin-left: 4px;
+            margin-left: var(--simple-fields-tag-margin-left, 4px);
             --simple-icon-height: var(--simple-fields-font-size, 16px);
             --simple-icon-width: var(--simple-fields-font-size, 16px);
           }
