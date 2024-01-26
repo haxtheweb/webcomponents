@@ -77,7 +77,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["element-visible", "t"]
+    "unsetAttributes": ["__playing", "__gif-loaded", "element-visible", "t"]
   },
   "demoSchema": [
     {
