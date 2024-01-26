@@ -497,7 +497,7 @@ class GridPlate extends LitElement {
           },
           {
             property: "itemPadding",
-            title: "Padding top",
+            title: "Item Padding",
             description: "Padding inside each item",
             step: 8,
             max: 128,

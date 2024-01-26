@@ -1,5 +1,7 @@
 import { css, html } from "lit";
 import { CollectionList } from "@lrnwebcomponents/collection-list/collection-list.js";
+import "@lrnwebcomponents/collection-list/lib/collection-item.js";
+
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 
@@ -14,7 +16,6 @@ export class SiteCollectionList extends CollectionList {
     this.breakSmartCollection = false;
     this.limit = 8;
     this.sort = "title";
-
     this.parent = "";
     this.tags = "";
     this.pageType = "";
