@@ -1,0 +1,48 @@
+
+<p>HAX technology is unlike anything that's existed previously in the CMS space. HAX sites have the following characteristics that make them unique:</p>
+<ul><li>They are static per save and lack a database</li>
+<li>PHP / NodeJS / server back-end is just processing the data, writing the static files</li>
+<li>You can download the site as a zip and place it anywhere and it should JustWork&#8482;</li>
+</ul>
+<h2 id="header-e92aafec-f0e8-dda8-5e71-3bff31f40dc8">Understanding the CDN network priority</h2>
+<p>No configuration / file changes are required for the below to operate because of how the <code>build.js</code>
+ script included with all HAX sites works. You can read more about this in the <a href="https://dev.to/btopro/uwc-part-3-the-magic-script-122a" target="_blank">Dev.to blog series about how Penn State ships web components</a>
+. The magic script, extended since the original article was written, operates in the following order:</p>
+<ul><li>Tests if <code>wc-registry.json</code>
+ exists locally and loads all assets locally</li>
+<li>If it doesn't exist (this is the default when downloading to NOT have all these assets), it falls-back to the Penn State CDN copy of&#160;wc-registry.json</li>
+<li>If that doesn't work it attempts to fall-back to a 3rd party CDN mirror</li>
+<li>If that fails, it fails to hydrate the site</li>
+</ul>
+<h2 id="header-91bd2404-6c16-4190-c5b9-04df9dd0253e">Working with local copies for deploying without CDN usage</h2>
+<p>If you wish your site to be 100% self contained and NOT rely on our CDN to hydrate, then you'll want to copy and include the following files on your server:</p>
+<ul><li>the build directory from HAXcms</li>
+<li>the wc-registry.json file from HAXcms</li>
+</ul>
+<p>Place this folder and file in the root of your site and it will operate completely agnostic of changes to the CDN managed to keep sites on the latest copy of assets.</p>
+<h2 id="header-dad1ae52-9e59-fb6e-7577-d35ebe650f1d">Deploy to github page</h2>
+<p>No configuration beyond getting the files up on github should be necessary. Just make sure when configuring the Settings for your repo that you point to the <code>main</code>
+ / <code>master</code>
+ branch as opposed to <code>gh-pages</code>
+ branch for serving your site.</p>
+<h2 id="header-9d4229ff-52fb-fe52-1e8e-7b6ce2e567d8">Deploy to surge.sh</h2>
+<p><code>surge.sh .</code>
+ should be all you need in order to publish a newly downloaded folder to surge. This is because of the magic script's defaults matching surge!</p>
+<h2 id="header-7ba89033-9662-3ed6-3aa1-3f85d7197001">Download and unzip on a server</h2>
+<p>Downloading HAX sites allows you to take your site with you at the click of a button by unzipping it onto your own hosting service. Here are some considerations of that:</p>
+<ul><li>Your domain name change might mean that if you hard coded links in your content, you'll want to search and replace them</li>
+<li>If your host serves static files, you should be good with the default configuration, but if the host has <code>PHP</code>
+ running on it you might want to consider having a copy of HAXcms on the server. This is because the default <code>.htaccess</code>
+ file settings prioritize loading <code>index.php</code>
+ over the included <code>index.html</code>
+ . You'll want to make sure that you change this setting OR review the top of the <code>index.php</code>
+ file for where to store a copy of HAXcms on your server. The advantage of having <code>PHP</code>
+ based hosting is that it will improve SEO scores / initial load performance due to being able to hint to the browser what content is coming.</li>
+<li>It is not recommended modifying the <code>index.php</code>
+ file as it is managed and will change in future downloads / exports, but the paths mentioned can be modified in order to load HAXcms dynamically if your hosting / path provider requires that you store these elsewhere</li>
+</ul>
+<h2 id="header-129519de-db21-cbef-718d-541ece302507">Customizing downloaded site CSS/JS</h2>
+<p>In all sites there is a backdoor file for adding custom CSS and JS. These files have defaults (of nothing) but load so that if you want to make hard-coded changes you can inject customized JS and CSS. For JS <code>custom/build/custom.es6.js</code>
+ is the file you'll want to modify and for CSS <code>theme/theme.css</code>
+</p>
+<p></p>
