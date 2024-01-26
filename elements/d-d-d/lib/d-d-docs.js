@@ -695,8 +695,7 @@ class DDDocs extends DDD {
         <li>Item 3</li>
       </ol>
       <blockquote>The Pennsylvania State University is a multi-campus, land-grant, public research university that educates students from around the world and supports individuals and communities through integrated programs of teaching, research, and service.</blockquote>
-      <hr>
-      <h2><span class="hr-vert py-2"></span>Sample Text</h2>
+      <h2 class="hr-vert">Sample Text</h2><hr>
      </div>
     <!--  
       Hr element

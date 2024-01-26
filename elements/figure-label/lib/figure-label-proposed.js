@@ -38,7 +38,7 @@ class FigureLabelProposed extends DDDSuper(LitElement) {
           display: flex;
           align-items: center;
           font-family: var(--ddd-font-primary);
-          background-color: var(--ddd-component-figure-label-title, var(--ddd-app-accent-color , var(--ddd-theme-polaris-limestoneLight)));
+          background-color: var(--ddd-component-figure-label-title, var(--ddd-theme-accent-color , var(--ddd-theme-polaris-limestoneLight)));
           font-size: var(--ddd-font-size-4xs);
           padding: var(--ddd-spacing-3);
           font-weight: var(--ddd-font-primary-bold);
@@ -46,7 +46,7 @@ class FigureLabelProposed extends DDDSuper(LitElement) {
 
         #description {
           font-family: var(--ddd-font-primary);
-          border-color: var(--ddd-component-figure-label-border, var(--ddd-app-accent-color , var(--ddd-theme-polaris-limestoneLight)));
+          border-color: var(--ddd-component-figure-label-border, var(--ddd-theme-accent-color , var(--ddd-theme-polaris-limestoneLight)));
           padding: var(--ddd-spacing-3);
           font-size: var(--ddd-font-size-4xs);
         }

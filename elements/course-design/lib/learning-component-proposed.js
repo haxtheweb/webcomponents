@@ -204,19 +204,18 @@ class LearningComponentProposed extends I18NMixin(DDD) {
       css`
         :host {
           display: block;
-          font-family: var(--ddd-font-primary);
           margin: var(--ddd-spacing-4) 0;
         }
         .header {
           display: flex;
           align-items: center;
-          background-color: var(
-            --ddd-app-color-accent,
-            var(--simple-colors-default-theme-accent-8, #dc7927)
+          background-color: var(--ddd-component-learning-component-title-background ,
+            var(--ddd-theme-accent-color,
+            var(--simple-colors-default-theme-accent-8, #dc7927))
           );
           padding: var(--ddd-spacing-3);
           color: var(
-            --ddd-app-color-font,
+            --ddd-theme-font-color,
             var(--simple-colors-default-theme-accent-1, #fff)
           );
         }
@@ -239,7 +238,6 @@ class LearningComponentProposed extends I18NMixin(DDD) {
           display: flex;
           align-items: center;
           text-decoration: none;
-          color: #000;
         }
         simple-icon-lite,
         simple-icon-button-lite {
@@ -256,7 +254,6 @@ class LearningComponentProposed extends I18NMixin(DDD) {
         }
 
         .content {
-          font-size: var(--ddd-font-size-3xs);
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
         }
 

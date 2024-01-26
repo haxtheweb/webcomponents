@@ -59,6 +59,16 @@ export const DDDSuper = function (SuperClass) {
       //styleGuideHeaders,
       css`
       body, html, :root, :host {
+        /* global override font styles for light-dom content */
+        --ddd-theme-body-font-size: 16px;
+        --ddd-theme-h1-font-size: 40px;
+        --ddd-theme-h2-font-size: 32px;
+        --ddd-theme-h3-font-size: 28px;
+        --ddd-theme-h4-font-size: 24px;
+        --ddd-theme-h5-font-size: 22px;
+        --ddd-theme-h6-font-size: 20px;
+        --ddd-theme-accent-color: navy;
+        --ddd-theme-font-color: yellow;
           /* base polaris colors */
           --ddd-theme-polaris-beaverBlue: #1e407c;
           --ddd-theme-polaris-beaver70: rgba(30, 64, 124, 0.7);
@@ -294,7 +304,9 @@ export const DDDSuper = function (SuperClass) {
           --ddd-icon-md: 48px;
           --ddd-icon-lg: 56px;
           --ddd-icon-xl: 64px;
-
+          --ddd-icon-2xl: 72px;
+          --ddd-icon-3xl: 84px;
+          --ddd-icon-4xl: 96px;
         }
         /* border & shadows */
         .b-0 {border: none;}
@@ -838,37 +850,47 @@ export const DDDSuper = function (SuperClass) {
           font-family: var(--ddd-font-primary);
         }
         h1 {
-          font-size: var(--ddd-font-size-l);
+          font-size: var(--ddd-theme-h1-font-size);
           margin: var(--ddd-spacing-10) 0 var(--ddd-spacing-5);
+          line-height: auto;
+          letter-spacing: auto;
         }
         h2,h3,h4,h5,h6 {
           margin:  var(--ddd-spacing-7) 0 var(--ddd-spacing-3);
+          padding: 0;
+          line-height: auto;
+          letter-spacing: auto;
         }
         h2 {
-          font-size: var(--ddd-font-size-m);
+          font-size: var(--ddd-theme-h2-font-size);
         }
         h3 {
-          font-size: var(--ddd-font-size-ms);
+          font-size: var(--ddd-theme-h3-font-size);
         }
         h4 {
-          font-size: var(--ddd-font-size-s);
+          font-size: var(--ddd-theme-h4-font-size);
         }
         h5 {
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--ddd-theme-h5-font-size);
         }
         h6 {
-          font-size: var(--ddd-font-size-xxs);
+          font-size: var(--ddd-theme-h6-font-size);
+        }
+        p, div{
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-theme-body-font-size, var(--ddd-theme-haxcms-font-size));
+          font-weight: var(--ddd-font-secondary-regular);
+          line-height: normal;
+          letter-spacing: normal;
         }
         p {
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-3xs, var(--ddd-theme-haxcms-font-size));
           margin: var(--ddd-spacing-4) 0;
-          font-weight: var(--ddd-font-secondary-regular);
         }
         a{
           color: var(--ddd-theme-polaris-link);
           font-weight: var(--ddd-font-primary-bold);
           text-decoration: none;
+          font-size: var(--ddd-theme-body-font-size);
         }
         a:hover{
           text-decoration: underline;
@@ -876,7 +898,7 @@ export const DDDSuper = function (SuperClass) {
         }
         .ddd-font-nav {
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-s);
+          font-size: var(--ddd-theme-h4-font-size);
           font-weight: var(--ddd-font-navigation-bold);
         }
         .ddd-font-primary {
@@ -887,14 +909,18 @@ export const DDDSuper = function (SuperClass) {
         }
 
         thead, tbody, tfoot, tr, td, th{
+          font-size: var(--ddd-theme-body-font-size);
           font-family: var(--ddd-font-primary);
         }
         ul, ol{
-          font-size: var(--ddd-font-size-3xs, var(--ddd-theme-haxcms-font-size));
+          font-size: var(--ddd-theme-body-font-size, var(--ddd-theme-haxcms-font-size));
           display: flex;
           flex-flow: column;
-          gap: 1.5rem;
+          gap: 1.2rem;
           font-family: var(--ddd-font-primary);
+        }
+        ul li, ol li{
+          font-size: var(--ddd-theme-body-font-size, var(--ddd-theme-haxcms-font-size));
         }
         ul li::marker, ol li::marker{
           unicode-bidi: isolate;
@@ -912,7 +938,7 @@ export const DDDSuper = function (SuperClass) {
         }
         blockquote{
           font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-3xs, var(--ddd-theme-haxcms-font-size));
+          font-size: var(--ddd-theme-body-font-size, var(--ddd-theme-haxcms-font-size));
           font-style: italic;
           border-left: var(--ddd-spacing-1) solid var(--ddd-theme-polaris-pughBlue);
           padding-left: var(--ddd-spacing-6);
@@ -921,20 +947,18 @@ export const DDDSuper = function (SuperClass) {
         }
         hr{
           display: block;
-          border-bottom: 3px solid var(--ddd-theme-polaris-skyBlue);
-          width: 48px;
-          margin: var(--ddd-spacing-9) 0;
+          border-top: 3px solid var(--ddd-theme-polaris-skyBlue);
+          width: var(--ddd-theme-h1-font-size);
+          margin: 0;
           padding: 0;
         }
         .hr-vert{
-          margin: 0 var(--ddd-spacing-4);
-          padding: 0 var(--ddd-spacing-1);
           border-bottom: none;
           border-right: 3px solid var(--ddd-theme-polaris-skyBlue);
-          height: fit-content;
+          display: inline-block;
+          padding-right: var(--ddd-spacing-3);
         }
         .breadcrumb{
-          font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-navigation-light);
           margin: var(--ddd-spacing-6) 0;
           padding: 0;
@@ -969,7 +993,7 @@ export const DDDSuper = function (SuperClass) {
 
         summary{
           display: flex;
-          font-size: var(--ddd-font-size-xxs);
+          font-size: var(--ddd-theme-h4-font-size);
           font-weight: var(--ddd-font-primary-bold);
           cursor: pointer;
           text-wrap: wrap;

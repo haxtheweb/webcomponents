@@ -70,14 +70,6 @@ class SelfCheckProposed extends I18NMixin(
         }
 
         div.card {
-          color: var(
-            --self-check-question-text,
-            var(--simple-colors-default-theme-grey-12, #000)
-          );
-          background-color: var(
-            --self-check-question-color,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
           overflow: hidden;
         }
 
@@ -108,10 +100,6 @@ class SelfCheckProposed extends I18NMixin(
         simple-icon#questionmark {
           --simple-icon-width: var(--ddd-icon-lg);
           --simple-icon-height: var(--ddd-icon-lg);
-          color: var(
-            --self-check-heading-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
           margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
           padding: var(--ddd-spacing-2);
         }
@@ -122,20 +110,26 @@ class SelfCheckProposed extends I18NMixin(
           text-transform: uppercase;
           font-size: var(--ddd-font-size-m);
           font-weight: var(--ddd-font-primary-medium);
-          color: var(
-            --self-check-heading-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
+          color: 
+          var(--ddd-component-self-check-title-color,
+            var(--ddd-theme-font-color,
+              var(--simple-colors-default-theme-grey-12, #000)
+            )
           );
         }
 
         #header_wrap {
-          color: var(
-            --self-check-heading-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
+          color: 
+          var(--ddd-component-self-check-title-color,
+            var(--ddd-theme-font-color,
+              var(--simple-colors-default-theme-grey-12, #000)
+            )
           );
-          background-color: var(
-            --self-check-heading-color,
-            var(--simple-colors-default-theme-accent-8, #444)
+          background-color: 
+          var(--ddd-component-self-check-title-background,
+            var(--ddd-theme-accent-color,
+              var(--simple-colors-default-theme-grey-1, #fff)
+            )
           );
           display: flex;
           align-items: center;
@@ -146,18 +140,18 @@ class SelfCheckProposed extends I18NMixin(
 
         #question_wrap {
           color: var(
-            --self-check-question-text,
+            --ddd-component-self-check-question-text,
             var(--simple-colors-default-theme-grey-12, #000)
           );
           background-color: var(
-            --self-check-question-color,
+            --ddd-component-self-check-question-background,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
           position: relative;
         }
 
         .question {
-          font-size: var(--ddd-font-size-3xs);
+          font-size: var(--ddd-theme-h5-font-size);
           line-height: var(--ddd-lh-120);
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
         }
@@ -170,11 +164,11 @@ class SelfCheckProposed extends I18NMixin(
           visibility: hidden;
           opacity: 0;
           color: var(
-            --self-check-answer-text,
+            --ddd-component-self-check-answer-text,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
           background-color: var(
-            --self-check-answer-color,
+            --ddd-component-self-check-answer-background,
             var(--simple-colors-default-theme-light-green-11, #00762e)
           );
           width: 100%;
@@ -206,16 +200,18 @@ class SelfCheckProposed extends I18NMixin(
           display: inline-flex;
         }
 
+
         .triangle {
           width: 0;
           height: 0;
           border-left: var(--ddd-spacing-6) solid transparent;
           border-right: var(--ddd-spacing-6) solid transparent;
           border-bottom: var(--ddd-spacing-6) solid
-            var(
-              --self-check-heading-color,
-              var(--simple-colors-default-theme-accent-8, #444)
-            );
+          var(--ddd-component-self-check-title-background,
+            var(--ddd-theme-accent-color,
+              var(--simple-colors-default-theme-grey-1, #fff)
+            )
+          );
           position: relative;
           top: calc(var(--ddd-spacing-5) * -1);
           left: var(--ddd-spacing-9);

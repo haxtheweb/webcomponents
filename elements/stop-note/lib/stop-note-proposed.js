@@ -32,13 +32,11 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
           --background-color: var(--ddd-component-stop-note-icon-background, var(--ddd-theme-polaris-errorLight));
           --accent-color: var(--ddd-component-stop-note-text-background, var(--ddd-theme-polaris-error));
           margin: var(--ddd-spacing-5) 0;
-          font-family: var(--ddd-font-primary);
-          font-weight: var(--ddd-font-primary-bold);
         }
 
         simple-icon {
-          --simple-icon-height: 100px;
-          --simple-icon-width: 100px;
+          --simple-icon-height: var(--ddd-icon-4xl);
+          --simple-icon-width: var(--ddd-icon-4xl);
         }
 
         :host([icon="stopnoteicons:stop-icon"]) {
@@ -100,15 +98,10 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
         }
 
         .secondary_message {
-          font-size: var(--ddd-font-size-3xs);
           width: 100%;
           font-weight: var(--ddd-font-primary-regular);
         }
 
-
-        .link a {
-          font-size: var(--ddd-font-size-3xs);
-        }
         a:-webkit-any-link {
           text-decoration: none;
         }
@@ -122,6 +115,9 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
         }
 
         .svg_wrap {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           background-color: var(--ddd-component-stop-note-icon-background, var(--accent-color));
           padding: var(--ddd-spacing-2);
           width: auto;
