@@ -106,14 +106,14 @@ class SelfCheckProposed extends I18NMixin(
         }
 
         simple-icon#questionmark {
-          --simple-icon-width: var(--ddd-icon-md);
-          --simple-icon-height: var(--ddd-icon-md);
+          --simple-icon-width: var(--ddd-icon-lg);
+          --simple-icon-height: var(--ddd-icon-lg);
           color: var(
             --self-check-heading-text,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
           margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-2);
         }
 
         .heading {
@@ -218,6 +218,7 @@ class SelfCheckProposed extends I18NMixin(
             );
           position: relative;
           top: calc(var(--ddd-spacing-5) * -1);
+          left: var(--ddd-spacing-9);
         }
 
         .more_info {
@@ -265,7 +266,7 @@ class SelfCheckProposed extends I18NMixin(
         <div class="triangle"></div>
         <div id="header_wrap">
           <simple-icon
-            class="b-sm r-circle" style="${this.dark ? "border-color: var(--ddd-theme-polaris-potentialMidnight);" : ""}"
+            class="r-circle"
             id="questionmark"
             icon="icons:help"
             ?dark="${!this.dark}"

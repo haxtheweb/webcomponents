@@ -27,9 +27,22 @@
       </demo-snippet>
       <demo-snippet>
         <template>
-          <figure-label-proposed title="1.3" description="Microbs under microscope">
-            1.3 - Microbs under microscope
-          </figure-label-proposed>
+          <div>
+            <figure-label-proposed title="1.3" description="Default color styling">
+            </figure-label-proposed>
+            <div style="--ddd-app-accent-color: var(--ddd-theme-polaris-pughBlue);">
+              <figure-label-proposed title="1.3" description="Application override color set">
+              </figure-label-proposed> <!-- application override -->
+              <div style="
+              --ddd-component-figure-label-title: var(--ddd-theme-polaris-creekLight);
+              --ddd-component-figure-label-border: var(--ddd-theme-polaris-nittanyNavy);
+              ">
+                <figure-label-proposed title="1.3" description="Component override color set">
+                </figure-label-proposed> <!-- component override -->
+              </div>
+            </div>
+          </div>
+
         </template>
       </demo-snippet>
     </div>

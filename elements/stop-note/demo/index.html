@@ -30,6 +30,19 @@
         </stop-note-proposed>
       </template>
     </demo-snippet>
+    <demo-snippet>
+      <template>
+        <div style="
+          --ddd-component-stop-note-icon-background: var(--ddd-theme-polaris-skyBlue);
+          --ddd-component-stop-note-text-background: var(--ddd-theme-polaris-skyLight);
+          --ddd-component-stop-note-border: var(--ddd-theme-polaris-nittanyNavy);
+          ">
+          <stop-note-proposed title="Error Message" url="https://www.google.com">
+            <span slot="message">You can write any error message you want here.</span>
+          </stop-note-proposed>
+        </div>
+      </template>
+    </demo-snippet>
   </div>
   <div class="vertical-section-container">
     <h3>Basic stop-note demo: URL</h3>
@@ -47,6 +60,8 @@
         </stop-note-proposed>
       </template>
     </demo-snippet>
+
+    
   </div><div class="vertical-section-container">
     <h3>Basic stop-note demo: Warning</h3>
     <demo-snippet>
@@ -58,7 +73,7 @@
     </demo-snippet>
     <demo-snippet>
       <template>
-        <stop-note-proposed title="Warning Message" url="https://www.google.com" status="warning" icon="stopnoteicons:warning-icon-proposed">
+        <stop-note-proposed title="Warning Message" url="https://www.google.com" status="warning" icon="stopnoteicons:warning-icon">
           <span slot="message">You can write any warning message you want here.</span>
         </stop-note-proposed>
       </template>
