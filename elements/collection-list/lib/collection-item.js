@@ -1,9 +1,8 @@
 import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
-
-class CollectionItem extends SimpleColors {
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+class CollectionItem extends DDD {
   static get properties() {
     return {
       ...super.properties,
@@ -46,7 +45,6 @@ class CollectionItem extends SimpleColors {
       css`
         :host {
           display: inline-block;
-          font-family: "Roboto", sans-serif;
           background-color: var(--simple-colors-default-theme-accent-1);
         }
         a {
@@ -54,8 +52,9 @@ class CollectionItem extends SimpleColors {
           color: var(--icon-color);
           display: block;
           min-height: 300px;
-          border: solid 1px #dcdcdc;
+          border: solid var(--ddd-border-size-1) var(--ddd-theme-polaris-slateMaxLight);
           transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
+          box-shadow: var(--ddd-boxShadow-1);
         }
         :host([saturate]) a {
           -webkit-filter: saturate(30%);
@@ -64,7 +63,7 @@ class CollectionItem extends SimpleColors {
         a:focus-within,
         a:focus,
         a:hover {
-          box-shadow: 1px 1px 5px #dcdcdc;
+          box-shadow: var(--ddd-boxShadow-2);
         }
         :host([saturate]) a:focus-within,
         :host([saturate]) a:focus,
@@ -85,11 +84,11 @@ class CollectionItem extends SimpleColors {
         }
 
         simple-tags {
-          margin-left: 2px;
-          margin-bottom: -32px;
-          padding: 0;
-          height: 32px;
-          line-height: 32px;
+          margin-left: var(--ddd-spacing-1);
+          margin-bottom: calc(-1 * var(--ddd-spacing-8));
+          padding: var(--ddd-spacing-0);
+          height: var(--ddd-spacing-8);
+          line-height: var(--ddd-spacing-8);
           width: 100%;
           z-index: 1;
           display: flex;
@@ -97,56 +96,52 @@ class CollectionItem extends SimpleColors {
         }
 
         .line-1 {
-          font-size: 28px;
           text-transform: uppercase;
           text-align: center;
-          line-height: 1.4;
-          padding: 0;
-          margin: 0;
+          word-break: break-word;
+          padding: 0 var(--ddd-spacing-2);
         }
-
         .line-2 {
-          font-size: 18px;
-          max-height: 38px;
+          max-height: var(--ddd-spacing-13);
           overflow: hidden;
           text-align: center;
-          margin: 0px;
-          line-height: 1.2;
-          padding: 4px 4px 4px;
-          letter-spacing: -0.5px;
+          word-break: break-word;
+          padding: 0 var(--ddd-spacing-2);
         }
-
         .line-3 {
-          max-height: 24px;
-          line-height: 24px;
-          font-size: 14px;
-          letter-spacing: -0.5px;
+          max-height: var(--ddd-spacing-6);
           overflow: hidden;
-          word-break: break-all;
+          word-break: break-word;
+          padding: 0 var(--ddd-spacing-2);
         }
 
         .icon {
-          background-color: #fff;
-          border-radius: 50%;
+          background-color: rgb(255, 255, 255);
+          border-radius: var(--ddd-radius-circle);
           position: relative;
-          bottom: 50px;
-          border: solid;
+          bottom: var(--ddd-spacing-8);
+          border-style: solid;
+          border-image: initial;
           border-color: var(--icon-color);
-          border-width: 5px;
-          margin: 0 0 -40px 0;
-          height: 70px;
-          width: 70px;
+          border-width: var(--ddd-border-size-3);
+          margin: 0 0 calc(-1 * var(--ddd-icon-xs)) 0;
+          height: var(--ddd-spacing-12);
+          width: var(--ddd-spacing-12);
+        }
+
+        .no-icon {
+          margin-bottom: var(--ddd-spacing-6);
         }
 
         simple-icon {
           fill: var(--icon-color);
-          --simple-icon-width: 50px;
-          --simple-icon-height: 50px;
-          margin: 10px;
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
+          margin: var(--ddd-spacing-2);
         }
 
         .image {
-          background-color: grey;
+          background-color: white;
           background-repeat: no-repeat;
           background-size: cover;
           background-position: right center;
@@ -154,6 +149,9 @@ class CollectionItem extends SimpleColors {
           height: 150px;
           opacity: 0.9;
           transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
+          border-bottom-style: solid;
+          border-bottom-color: var(--icon-color);
+          border-bottom-width: var(--ddd-border-size-3);
         }
       `,
     ];
@@ -171,7 +169,7 @@ class CollectionItem extends SimpleColors {
               ></simple-tags>`
             : ``}
           <div
-            class="image"
+            class="image bg-gradient-hero"
             style="${this.image ? `background-image:url("${this.image}")` : ``}"
           ></div>
           ${this.icon
@@ -181,11 +179,11 @@ class CollectionItem extends SimpleColors {
                   accent-color="${this.accentColor}"
                 ></simple-icon>
               </div>`
-            : ``}
+            : html`<div class="no-icon"></div>`}
           <div><slot></slot></div>
-          <div class="line-1">${this.line1}</div>
-          <div class="line-2">${this.line2}</div>
-          <div class="line-3">${this.line3}</div>
+          <div class="line-1 fs-xxs lh-150">${this.line1}</div>
+          <div class="line-2 fs-3xs lh-150">${this.line2}</div>
+          <div class="line-3 fs-4xs lh-150">${this.line3}</div>
         </div>
       </a>
     `;
@@ -194,7 +192,7 @@ class CollectionItem extends SimpleColors {
   _handleClick(e) {
     if (
       this._haxstate ||
-      (this.parentNode && this.parentNode.getAttribute("lock-items") === "lock-items")
+      (this.parentNode && this.parentNode.getAttribute("lock-items") !== null)
     ) {
       e.preventDefault();
       e.stopPropagation();

@@ -74,7 +74,7 @@ class CollectionList extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
           element: this,
@@ -160,6 +160,9 @@ class CollectionList extends LitElement {
           grid-template-columns: repeat(7, minmax(150px, 1fr));
           column-gap: 0.5vw;
           row-gap: 0.5vw;
+        }
+        :host([items-per-row="7"][responsive-size="md"]) .wrapper {
+          grid-template-columns: repeat(5, minmax(125px, 1fr));
         }
         :host([items-per-row="7"][responsive-size="sm"]) .wrapper {
           grid-template-columns: repeat(4, minmax(125px, 1fr));

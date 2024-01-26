@@ -1,12 +1,12 @@
 import { css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { SimpleTagLiteSuper } from "./simple-tag-lite.js";
 import {
   SimpleFieldsButtonStyles,
   SimpleFieldsTooltipStyles,
 } from "./simple-fields-ui.js";
 
-export class SimpleTag extends SimpleTagLiteSuper(SimpleColors) {
+export class SimpleTag extends SimpleTagLiteSuper(DDD) {
   constructor() {
     super();
     this.autoAccentColor = false;
@@ -97,6 +97,8 @@ export class SimpleTag extends SimpleTagLiteSuper(SimpleColors) {
             --simple-colors-default-theme-accent-3,
             #eeeeee
           );
+          --simple-fields-tag-margin-left: var(--ddd-spacing-2);
+          --simple-fields-tag-border-width: var(--ddd-border-size-1);
         }
       `,
     ];
