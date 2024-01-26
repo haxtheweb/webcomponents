@@ -17,6 +17,7 @@ yarn-error.log
 yarn.lock
 test/index.html
 storybook
+elements/haxcms-elements/demo/files/
 elements/grade-book/demo/psu/
 elements/elmsln-apps/lib/lrnapp-studio-instructor/demo/*
 elements/elmsln-apps/lib/lrnapp-studio-instructor/lrnapp-studio-submission/api/submissions/353
