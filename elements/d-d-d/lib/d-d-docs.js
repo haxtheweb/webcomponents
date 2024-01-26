@@ -43,7 +43,6 @@ class DDDocs extends DDD {
       css`
         /* used for demo */
         :host{
-          background-color: var(--ddd-theme-polaris-background);
         }
 
         .flex {
@@ -133,10 +132,26 @@ class DDDocs extends DDD {
       <h1 class="fs-m my-2">Borders</h1>
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Borders</h2>
       <div class="grid-4 gap-10 mx-10 my-15">
-        <div class="p-10 b-xs bs-sm"><p class="bb-xs mb-5"></p><p>Class: <span class="fw-3">xs</span></p></div>
-        <div class="p-10 b-xs bs-sm"><p class="bb-sm mb-5"></p><p>Class: <span class="fw-3">sm</span></p></div>
-        <div class="p-10 b-xs bs-sm"><p class="bb-md mb-5"></p><p>Class: <span class="fw-3">md</span></p></div>
-        <div class="p-10 b-xs bs-sm"><p class="bb-lg mb-5"></p><p>Class: <span class="fw-3">lg</span></p></div>
+        <div class="p-10 b-xs bs-sm">
+          <p class="bb-xs mb-5"></p>
+          <p>Class: <span class="fw-3">b-xs</span></p>
+          <p class="mb-5">css variable: <span class="fw-3">--ddd-border-xs</span></p>
+        </div>
+        <div class="p-10 b-xs bs-sm">
+          <p class="bb-sm mb-5"></p>
+          <p>Class: <span class="fw-3">b-sm</span></p>
+          <p class="mb-5">css variable: <span class="fw-3">--ddd-border-sm</span></p>
+        </div>
+        <div class="p-10 b-xs bs-sm">
+          <p class="bb-md mb-5"></p>
+          <p>Class: <span class="fw-3">b-md</span></p>
+          <p class="mb-5">css variable: <span class="fw-3">--ddd-border-md</span></p>
+        </div>
+        <div class="p-10 b-xs bs-sm">
+          <p class="bb-lg mb-5"></p>
+          <p>Class: <span class="fw-3">b-lg</span></p>
+          <p class="mb-5">css variable: <span class="fw-3">--ddd-border-lg</span></p>
+        </div>
     `;
   }
 
@@ -322,12 +337,30 @@ class DDDocs extends DDD {
     <h1 class="fs-m mt-20 mb-2">Gradients</h1>
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Gradients from the Polaris Theme</h2>
     <div class="grid-6 my-15 ml-10">
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-navBar"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-navBar<span></p></div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-footer"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-footer<span></p></div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-newsFeature"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-newsFeature<span></p></div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-buttons"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-buttons<span></p></div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero<span></p></div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero2"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero2<span></p></div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-navBar"></p>
+        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-navBar<span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-navBar</span></p>
+      </div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-footer"></p>
+        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-footer<span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-footer</span></p>
+      </div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-newsFeature"></p>
+        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-newsFeature<span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-newsFeature</span></p>
+      </div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-buttons"></p>
+        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-buttons<span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-buttons</span></p>
+      </div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero"></p>
+        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero<span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-hero</span></p>
+      </div>
+      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero2"></p>
+        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero2<span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-hero2</span></p>
+      </div>
     </div>
       `;
   }
@@ -337,13 +370,34 @@ class DDDocs extends DDD {
     <h1 class="fs-m mt-20 mb-2">Radius</h1>
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Radius classes</h2>
     <div class="grid-7 my-15 mx-10 gap-2">
-    <div><p class="py-20 r-xs b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xs<span></p></div>
-    <div><p class="py-20 r-sm b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-sm<span></p></div>
-    <div><p class="py-20 r-md b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-md<span></p></div>
-    <div><p class="py-20 r-lg b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-lg<span></p></div>
-    <div><p class="py-20 r-xl b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xl<span></p></div>
-    <div><p class="py-20 r-rounded b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-rounded<span></p></div>
-    <div><div class="my-4 py-20 r-circle b-sm bs-sm"></div><p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-circle<span></p></div>
+    <div><p class="py-20 r-xs b-sm bs-sm"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xs<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-xs</span></p>
+    </div>
+    <div><p class="py-20 r-sm b-sm bs-sm"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-sm<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-sm</span></p>
+    </div>
+    <div><p class="py-20 r-md b-sm bs-sm"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-md<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-md</span></p>
+    </div>
+    <div><p class="py-20 r-lg b-sm bs-sm"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-lg<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-lg</span></p>
+    </div>
+    <div><p class="py-20 r-xl b-sm bs-sm"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xl<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-xl</span></p>
+    </div>
+    <div><p class="py-20 r-rounded b-sm bs-sm"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-rounded<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-rounded</span></p>
+    </div>
+    <div><div class="my-4 py-20 r-circle b-sm bs-sm"></div>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-circle<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-circle</span></p>
+    </div>
     </div>
     `;
   }
@@ -353,16 +407,40 @@ class DDDocs extends DDD {
     <h1 class="fs-m mt-20 mb-2">Shadows</h1>
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Shadow classes</h2>
     <div class="grid-4 my-15 mx-30 gap-30">
-    <div><p class="py-20 b-sm bs-xs"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-xs<span></p></div>
-    <div><p class="py-20 b-sm bs-sm"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-sm<span></p></div>
-    <div><p class="py-20 b-sm bs-md"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-md<span></p></div>
-    <div><p class="py-20 b-sm bs-lg"></p><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-lg<span></p></div>
+    <div><p class="py-20 b-sm bs-xs"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-xs<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-boxShadow-xs</span></p>
+    </div>
+    <div><p class="py-20 b-sm bs-sm"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-sm<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-boxShadow-sm</span></p>
+    </div>
+    <div><p class="py-20 b-sm bs-md"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-md<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-boxShadow-md</span></p>
+    </div>
+    <div><p class="py-20 b-sm bs-lg"></p>
+      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-lg<span></p>
+      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-boxShadow-lg</span></p>
+    </div>
     </div>
     <div class="grid-4 mt-10 mx-15">
-    <div><h3 class="py-20 m-auto text-center textShadow-1">Text Shadow</h3><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-xs<span></p></div>
-    <div><h3 class="py-20 m-auto text-center textShadow-2">Text Shadow</h3><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-sm<span></p></div>
-    <div><h3 class="py-20 m-auto text-center textShadow-3">Text Shadow</h3><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-md<span></p></div>
-    <div><h3 class="py-20 m-auto text-center textShadow-4">Text Shadow</h3><p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-lg<span></p></div>
+    <div><h3 class="py-20 m-auto text-center textShadow-1">Text Shadow</h3>
+    <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-xs<span></p>
+    <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-textShadow-xs</span></p>
+    </div>
+    <div><h3 class="py-20 m-auto text-center textShadow-2">Text Shadow</h3>
+    <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-sm<span></p>
+    <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-textShadow-sm</span></p>
+    </div>
+    <div><h3 class="py-20 m-auto text-center textShadow-3">Text Shadow</h3>
+    <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-md<span></p>
+    <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-textShadow-md</span></p>
+    </div>
+    <div><h3 class="py-20 m-auto text-center textShadow-4">Text Shadow</h3>
+    <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-lg<span></p>
+    <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-textShadow-lg</span></p>
+    </div>
     </div>
     `;
   }
@@ -371,6 +449,9 @@ class DDDocs extends DDD {
     return html`
     <h1 class="fs-m mt-20 mb-2">Spacing</h1>
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Spacing classes</h2>
+    <h6 class="fw-2 ml-10 mb-15">
+    CSS Variable:<span class="fw-4">--ddd-spacing-x</span> (1-30)
+    </h6>
       <div class="grid-3 gap-4 mt-10 mb-5 mx-20">
         <h4>Class Name</h4>
         <h4>Value</h4>
@@ -535,8 +616,11 @@ class DDDocs extends DDD {
         Accessible using format:
         <span class="fw-4">(m or p)(side [optional])-x</span>
       </h6>
-      <h6 class="fw-2 ml-10 mb-15">
+      <h6 class="fw-2 ml-10">
         Sides: Top (t), Right (r), Bottom (b), Left (l), X (x), Y (y)
+      </h6>
+      <h6 class="fw-2 ml-10 mb-15">
+        Example: <span class="fw-4">mt-1</span> = margin-top: 4px
       </h6>
     `;
   }
@@ -546,9 +630,9 @@ class DDDocs extends DDD {
       <h1 class="fs-m my-2">Typography</h1>
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Typefaces</h2>
       <div class="mx-10">
-        <p>Primary Font: <span class="fw-3">Roboto</span></p>
-        <p>Class: <span class="fw-3">ddd-font-primary</span></p>
-        <p class="mb-10">Weights: 400(regular), <span class="fw-2">500(medium),</span> <span class="fw-3">700(bold),</span> <span class="fw-4">900(black)</span></p>
+        <p>Primary Font: <span class="fw-3">Roboto (ddd-font-primary) [--ddd-font-primary]</span></p>
+        <p class="mb-10">Weights: 400 (fw-1) [--ddd-font-primary-regular], <span class="fw-2">500 (fw-2) [--ddd-font-primary-medium],</span>
+        <span class="fw-3"><< Default >> 700 (fw-3) [--ddd-font-primary-bold],</span> <span class="fw-4">900 (fw-4) [--ddd-font-primary-black]</span></p>
       </div>
       <div class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10">
         <p>16</p><h3 class="fs-4xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
@@ -566,9 +650,8 @@ class DDDocs extends DDD {
         <p>72</p><h3 class="fs-4xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
       </div>
       <div class="mx-10">
-        <p>Primary Font: <span class="fw-3">Roboto Slab</span></p>
-        <p>Class: <span class="fw-3">ddd-font-secondary</span></p>
-        <p class="mb-10">Weights: <span class="fw-3">700(bold)</span></p>
+        <p>Primary Font: <span class="fw-3">Roboto Slab (ddd-font-secondary) [--ddd-font-secondary]</span></p>
+        <p class="mb-10">Weights: <span class="fw-3">700 (fw-3) [--ddd-font-secondary-bold]</span></p>
       </div>
       <div class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10">
         <p>16</p><h3 class="ddd-font-secondary fs-4xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
@@ -586,9 +669,10 @@ class DDDocs extends DDD {
         <p>72</p><h3 class="ddd-font-secondary fs-4xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
       </div>
       <div class="mx-10">
-      <p>Primary Font: <span class="fw-3">Roboto Condesned</span></p>
-      <p>Class: <span class="fw-3">ddd-font-nav</span></p>
-      <p class="mb-10">Weights: <span class="fw-0">300(light),</span> <span class="fw-3">700(bold)</span></p>
+      <p>Primary Font: <span class="fw-3">Roboto Condensed (ddd-font-nav) [--ddd-font-navigation]</span></p>
+      <p class="mb-10">Weights: <span class="fw-0">300 (fw-0) [--ddd-font-navigation-light],</span>
+      <span class="fw-1">400 (fw-1) [--ddd-font-navigation-regular],</span>
+      <span class="fw-3">700 (fw-3) [--ddd-font-navigation-bold]</span></p>
     </div>
     <div class="b-1 grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10">
       <p>16</p><h3 class="ddd-font-nav fs-4xs my-1 mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
@@ -606,14 +690,8 @@ class DDDocs extends DDD {
       <p>72</p><h3 class="ddd-font-nav fs-4xl m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
     </div>
     <div class="mx-10">
-    <h1 class="fs-m my-2 bb-xs">Accessing Classes</h1>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Font Families</h2>
-    <p class="mb-10">Classes: ddd-font-primary, ddd-font-secondary, ddd-font-nav</p>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Font Weights</h2>
-    <p class="mb-10">Classes: fw-0, fw-1, fw-2, fw-3, fw-4</p>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Font Sizes</h2>
-    <p class="mb-10">Classes: fs-x (4xs, 3xs, 2xs, xs, s, ms, m, ml, l, xl, 2xl, 3xl, 4xl)</p>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Letter Spacing</h2>
+    <h2 class="mt-0 mb-5 pb-5 ">Letter Spacing</h2>
+    <h6>CSS Variable is same as class name, with '--ddd-' prefix</h6>
     <table class="my-10">
       <thead><th>Class</th><th>Value</th><th>Example</th></thead>
       <tr><td>ls-16-sm</td><td>0.08px</td><td><span class="ls-16-sm fw-1">DDD-FLEX</span></td></tr>
@@ -643,23 +721,27 @@ class DDDocs extends DDD {
       <tr><td>ls-64-lg</td><td>0.96px</td><td><span class="ls-64-lg fw-1">DDD-FLEX</span></td></tr>
       <tr><td>ls-72-lg</td><td>1.08px</td><td><span class="ls-72-lg fw-1">DDD-FLEX</span></td></tr>
     </table>
-    <h2 class="fs-s mt-0 mb-5 pb-5 ">Line Height</h2>
+    <h2 class="fs-s mt-4 mb-5 pb-5 ">Line Height</h2>
     <div class="grid-4 gap-4">
       <div>
         <p class="lh-120 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
         <p class="text-center">Class: <span class="fw-3">lh-120</span></p>
+        <p class="text-center">CSS Variable: <span class="fw-3">--ddd-lh-120</span></p>
       </div>
       <div>
         <p class="lh-140 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
         <p class="text-center">Class: <span class="fw-3">lh-140</span></p>
+        <p class="text-center">CSS Variable: <span class="fw-3">--ddd-lh-140</span></p>
       </div>
       <div>
         <p class="lh-150 p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
         <p class="text-center">Class: <span class="fw-3">lh-150</span></p>
+        <p class="text-center">CSS Variable: <span class="fw-3">--ddd-lh-150</span></p>
       </div>
       <div>
         <p class="lh-auto p-5 b-xs bs-sm mb-10">So, I came across your post because I was facing the same issue, but I've found a solution.</p>
         <p class="text-center">Class: <span class="fw-3">lh-auto</span></p>
+        <p class="text-center">CSS Variable: <span class="fw-3">N/A</span></p>
       </div>
     </div>
     </div>
@@ -695,18 +777,19 @@ class DDDocs extends DDD {
         <li>Item 3</li>
       </ol>
       <blockquote>The Pennsylvania State University is a multi-campus, land-grant, public research university that educates students from around the world and supports individuals and communities through integrated programs of teaching, research, and service.</blockquote>
-      <hr>
-      <h2><span class="hr-vert py-2"></span>Sample Text</h2>
-     </div>
-    <!--  
-      Hr element
-    -->
+      <h2 class="hr-vert">Sample Text</h2><hr>
       <ul class="breadcrumb">
         <li><a href="#">Home</a></li>
         <li><a href="#">Departments</a></li>
         <li><a href="#">Electrical Engineering</a></li>
       </ul>
-      <details><summary>U.S. News & World Report</summary><p>Details text</p></details>
+      <details class="my-5"><summary>U.S. News & World Report</summary><p>Details text</p></details>
+      <p>This is an example of code:<code>Console.log("Hello World!");</code> in a paragraph</p>
+      <code class="block-code">Here is an example of a block of code on it's own, using class 'block-code', redundant, but avoids common 'block' class name</code>
+      <pre>Here is an    example of a    block using the    'pre'    tag on it's    own</pre>
+      <p>Here is a good example of some <mark>Highlighted Text</mark></p>
+      <p>Here is an example of an abbreviation: <abbr title="Pennsylvania State University">Penn State</abbr></p>
+      </div>
     `;
   }
 

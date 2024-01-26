@@ -2,8 +2,8 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { html, css, LitElement } from "lit";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
   * `figure-label`
   * @element figure-label
@@ -16,7 +16,7 @@ import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
   * @lit-element
   * @demo demo/index.html
   */
-class FigureLabelProposed extends DDD {
+class FigureLabelProposed extends DDDSuper(LitElement) {
   //styles function
   static get styles() {
     return [...super.styles, 
@@ -38,7 +38,7 @@ class FigureLabelProposed extends DDD {
           display: flex;
           align-items: center;
           font-family: var(--ddd-font-primary);
-          background-color: var(--ddd-theme-polaris-limestoneLight);
+          background-color: var(--ddd-component-figure-label-title, var(--ddd-theme-accent-color , var(--ddd-theme-polaris-limestoneLight)));
           font-size: var(--ddd-font-size-4xs);
           padding: var(--ddd-spacing-3);
           font-weight: var(--ddd-font-primary-bold);
@@ -46,7 +46,7 @@ class FigureLabelProposed extends DDD {
 
         #description {
           font-family: var(--ddd-font-primary);
-          border: 1px solid var(--ddd-theme-polaris-limestoneLight);
+          border-color: var(--ddd-component-figure-label-border, var(--ddd-theme-accent-color , var(--ddd-theme-polaris-limestoneLight)));
           padding: var(--ddd-spacing-3);
           font-size: var(--ddd-font-size-4xs);
         }
@@ -58,7 +58,7 @@ class FigureLabelProposed extends DDD {
   render() {
     return html` <div id="wrap">
       <div id="title">${this.title}</div>
-      <div id="description">${this.description}</div>
+      <div id="description" class="b-sm bl-0">${this.description}</div>
     </div>`;
   }
 
@@ -113,20 +113,11 @@ class FigureLabelProposed extends DDD {
   static get properties() {
     return {
       ...super.properties,
-
       title: {
-        name: "title",
         type: String,
-        value: "",
-        reflectToAttribute: false,
-        observer: false,
       },
       description: {
-        name: "description",
         type: String,
-        value: "",
-        reflectToAttribute: false,
-        observer: false,
       },
     };
   }
