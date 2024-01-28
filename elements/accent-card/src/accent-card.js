@@ -275,6 +275,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         }
         #heading div {
           flex: 0 0 auto;
+          width: 100%;
         }
         #heading [data-layout-slotname="heading"] {
           margin: 0;
