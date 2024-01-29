@@ -5,12 +5,15 @@
 import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
-import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
-import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSOperationButtons } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
+import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
+import { EmailPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/EmailPageMixin.js";
+import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
+import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
@@ -20,6 +23,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper, DDDFonts } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { HAXCMSToastInstance } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-toast.js";
 /**
  * `polaris-invent-theme`
  * `A 2nd polaris theme`
@@ -32,13 +36,13 @@ import { DDDSuper, DDDFonts } from "@lrnwebcomponents/d-d-d/d-d-d.js";
  * @element polaris-invent-theme
  */
 class PolarisInventTheme extends HAXCMSOperationButtons(
-  PDFPageMixin(
+  HAXCMSRememberRoute(EmailPageMixin(PDFPageMixin(
     PrintBranchMixin(
       QRCodeMixin(
         HAXCMSThemeParts(HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)))
       )
     )
-  )
+  )))
 ) {
   //styles function
   static get styles() {
@@ -79,14 +83,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         a {
           color: #1173ca;
           text-decoration: none;
-        }
-        .search-modal-btn {
-          --simple-icon-width: 40px;
-          --simple-icon-height: 40px;
-          padding: 20px;
-          color: white;
-          position: absolute;
-          right: 0;
         }
         scroll-button {
           position: fixed;
@@ -149,7 +145,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
 
         site-modal {
-          float: right;
           --simple-modal-titlebar-background: var(--polaris-nav-bg-color);
         }
 
@@ -380,14 +375,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           header .wrap {
             padding: 20px 0;
           }
-          .search-modal-btn {
-            --simple-icon-width: 20px;
-            --simple-icon-height: 20px;
-            padding: 10px;
-            color: white;
-            position: absolute;
-            right: 0;
-          }
           scroll-button {
             bottom: 0px;
             --simple-icon-width: 20px;
@@ -429,9 +416,33 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           margin-left: 0px;
           position: sticky;
         }
+
+        .pdf-page-btn,
+        .print-branch-btn,
+        .search-modal-btn,
+        #emailbtnwrapper,
+        #qrcodebtnwrapper {
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+          margin: 8px 12px;
+          transition: .3s ease-in-out all;
+        }
+
+        :host([menu-open]) .pdf-page-btn,
+        :host([menu-open]) .search-modal-btn,
+        :host([menu-open]) .print-branch-btn,
+        :host([menu-open]) #emailbtnwrapper,
+        :host([menu-open]) #qrcodebtnwrapper {
+          display: inline-flex;
+          --simple-icon-height: 30px;
+          --simple-icon-width: 30px;
+          margin: 0 4px;
+        }
+        :host([menu-open]) .search-modal-btn {
+          margin-left: 92px;
+        }
         @media screen and (min-width: 900px){
           #haxcmsmobilemenubutton {
-            padding: 20px;
             --simple-icon-height: 40px;
             --simple-icon-width: 40px;
           }
@@ -459,19 +470,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
     return html`
       <div id="haxcms-theme-top"></div>
       <header itemtype="http://schema.org/WPHeader">
-        <site-modal
-          @site-modal-click="${this.siteModalClick}"
-          .part="${this.editMode ? `edit-mode-active` : ``}"
-          ?disabled="${this.editMode}"
-          icon="icons:search"
-          title="Search site"
-          class="search-modal-btn"
-          button-label="Search"
-          part="search-btn"
-          position="right"
-        >
-          <site-search></site-search>
-        </site-modal>
         <div class="wrap">
           <site-region name="header"></site-region>
           <slot name="header"></slot>
@@ -480,6 +478,33 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       <div class="content site-inner">
         <div class="nav">
           ${this.HAXCMSMobileMenuButton("right")}
+          <site-modal
+            @site-modal-click="${this.siteModalClick}"
+            .part="${this.editMode ? `edit-mode-active` : ``}"
+            ?disabled="${this.editMode}"
+            icon="icons:search"
+            title="Search site"
+            class="search-modal-btn"
+            button-label="Search"
+            part="search-btn"
+            position="right"
+          >
+            <site-search></site-search>
+          </site-modal>
+          ${MicroFrontendRegistry.has("@core/htmlToPdf")
+                ? this.PDFPageButton("right")
+                : ``}
+              ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
+                ? this.PrintBranchButton("right")
+                : html`<replace-tag
+                    with="site-print-button"
+                    position="right"
+                    class="btn js-toolbar-action"
+                    import-method="view"
+                    part="print-btn"
+                  ></replace-tag>`}
+              ${this.QRCodeButton("right")}
+              ${this.EmailPageButton("right")}
           <div class="left-col ddd-font-nav" part="left-col">${this.HAXCMSMobileMenu()}</div>
         </div>
         <main>
@@ -597,6 +622,14 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
    */
   constructor() {
     super();
+    console.log(HAXCMSToastInstance);
+    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-display', 'none');
+    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-mid-background-image', 'none');
+    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-right-background-image', 'none');
+    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-left-background-image', 'none');
+    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-mid-padding', 0);
+    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-height', '96px');
+    HAXCMSToastInstance.style.backgroundColor = "white";
     this.windowControllersLoaded = new AbortController();
     globalThis.addEventListener(
       "hax-store-app-store-loaded",

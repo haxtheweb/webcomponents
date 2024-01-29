@@ -81,7 +81,7 @@ export class RPGCharacterToast extends SimpleToastEl {
         :host {
           --simple-toast-bottom: 0px;
           --simple-toast-bottom-offscreen: -284px;
-          height: 142px;
+          height: var(--rpg-character-toast-height, 142px);
           display: none;
           width: var(--simple-toast-width, auto);
           color: var(
@@ -106,18 +106,19 @@ export class RPGCharacterToast extends SimpleToastEl {
           width: 64px;
           margin: 0;
           padding: 0;
+          display: var(--rpg-character-toast-display);
         }
         .bubble {
-          height: 142px;
+          height: var(--rpg-character-toast-height, 142px);
           display: inline-flex;
           margin-top: 6px;
         }
         .mid {
-          line-height: 142px;
+          line-height: var(--rpg-character-toast-height, 142px);
           background-color: white;
           background-repeat: repeat-x;
-          background-image: url("${unsafeCSS(SpeechBubbleMiddle)}");
-          padding: 54px 2px 0 2px;
+          background-image: var(--rpg-character-toast-mid-background-image, url("${unsafeCSS(SpeechBubbleMiddle)}"));
+          padding: var(--rpg-character-toast-mid-padding, 54px 2px 0 2px);
           display: block;
         }
         .message {
@@ -144,12 +145,12 @@ export class RPGCharacterToast extends SimpleToastEl {
           cursor: pointer;
         }
         .leftedge {
-          background-image: url("${unsafeCSS(SpeechBubbleL)}");
+          background-image: var(--rpg-character-toast-left-background-image, url("${unsafeCSS(SpeechBubbleL)}"));
           width: 20px;
           background-color: white;
         }
         .rightedge {
-          background-image: url("${unsafeCSS(SpeechBubbleR)}");
+          background-image: var(--rpg-character-toast-right-background-image, url("${unsafeCSS(SpeechBubbleR)}"));
           width: 40px;
           background-color: white;
         }
@@ -221,9 +222,9 @@ export class RPGCharacterToast extends SimpleToastEl {
   }
 
   render() {
-    return html` <div class="bubble">
-      <span class="bubble leftedge"></span>
-      <span class="bubble mid">
+    return html` <div class="bubble" part="bubble-wrapper">
+      <span class="bubble leftedge" part="bubble-left"></span>
+      <span class="bubble mid" part="bubble-mid">
         <slot name="pre"></slot>
         ${this.future
           ? html` <future-terminal-text
@@ -248,7 +249,7 @@ export class RPGCharacterToast extends SimpleToastEl {
             </div>`
           : ``}
       </span>
-      <span class="bubble rightedge"></span>
+      <span class="bubble rightedge" part="bubble-right"></span>
       ${this.merlin
         ? html` <simple-icon
             class="merlin"
@@ -263,6 +264,7 @@ export class RPGCharacterToast extends SimpleToastEl {
               ?fire="${this.fire}"
               hat="${this.hat}"
               speed="${this.speed}"
+              part="rpg-character"
               ?walking="${this.walking}"
             ></rpg-character>
           `}
