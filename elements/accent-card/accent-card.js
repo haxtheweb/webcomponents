@@ -264,6 +264,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           );
           padding-bottom: var(--accent-card-heading-padding-bottom, 0px);
           margin: 0;
+          overflow: hidden;
         }
         ::slotted(*[slot="heading"]) {
           font-size: 26px;

@@ -132,6 +132,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           color: var(--polaris-nav-color);
         }
 
+        #slot {
+          line-break: anywhere;
+        }
+
         site-menu {
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-xs);
