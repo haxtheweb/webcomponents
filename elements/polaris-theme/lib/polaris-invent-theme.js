@@ -118,7 +118,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
 
         article {
-          border-radius: 3px;
           padding: 0px 40px 20px 20px;
           background-color: var(--polaris-content-bg-color);
           font-family: var(--ddd-font-primary);
@@ -153,9 +152,9 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           display: block;
           padding: 0;
           border-top: 2px solid #E6ECF1;
-          margin-top: 24px;
+          margin-top: 16px;
           align-items: center;
-          padding-top: 24px;
+          padding-top: 16px;
           flex-direction: row;
           -webkit-box-align: center;
           -webkit-box-orient: horizontal;
@@ -163,15 +162,22 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
         .link-actions .inner {
           width: auto;
-          margin: 0;
-          display: grid;
-          padding: 0;
-          -ms-grid-rows: auto;
-          grid-column-gap: 24px;
-          -ms-grid-columns: 1fr 1fr;
-          grid-template-rows: auto;
-          grid-template-areas: "previous next";
-          grid-template-columns: 1fr 1fr;
+          margin: 16px;
+          display: block;
+        }
+
+        @media screen and (min-width: 900px){
+          .link-actions .inner {
+            margin: 0;
+            display: grid;
+            padding: 0;
+            -ms-grid-rows: auto;
+            grid-column-gap: 24px;
+            -ms-grid-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: "previous next";
+            grid-template-columns: 1fr 1fr;
+          }
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
@@ -180,7 +186,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           color: white;
           background-color: var(--ddd-theme-polaris-inventOrange);
           border: 1px solid var(--ddd-theme-polaris-inventOrange);
-          margin: 0;
+          margin: 8px;
           display: block;
           padding: 0;
           position: relative;
@@ -250,6 +256,17 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           color: white;
           clear: both;
           padding: 40px 16px 16px;
+        }
+
+        @media screen and (max-width: 400px){
+          main {
+            width: calc(100vw - 48px);
+            overflow: hidden;
+          }
+  
+          footer {
+            width: calc(100vw - 8px);
+          }
         }
 
         footer {
@@ -362,9 +379,9 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           text-decoration: none;
         }
         #haxcmsmobilemenubutton {
-          padding: 8px;
-          --simple-icon-height: 32px;
-          --simple-icon-width: 32px;
+          padding: 4px;
+          --simple-icon-height: 28px;
+          --simple-icon-width: 28px;
         }
         @media only screen and (max-width: 1139px) {
           .wrap {
