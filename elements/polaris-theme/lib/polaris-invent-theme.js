@@ -133,7 +133,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
 
         #slot {
-          line-break: anywhere;
+          line-break: auto;
         }
 
         site-menu {
@@ -643,7 +643,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
    */
   constructor() {
     super();
-    console.log(HAXCMSToastInstance);
+    // forcibly set things about the RPG toast for this design
     HAXCMSToastInstance.style.setProperty('--rpg-character-toast-display', 'none');
     HAXCMSToastInstance.style.setProperty('--rpg-character-toast-mid-background-image', 'none');
     HAXCMSToastInstance.style.setProperty('--rpg-character-toast-right-background-image', 'none');

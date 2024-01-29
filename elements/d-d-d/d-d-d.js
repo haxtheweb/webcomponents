@@ -2081,6 +2081,7 @@ export const DDDSuper = function (SuperClass) {
           }
           a,
           a:-webkit-any-link {
+            line-break: anywhere;
             color: var(--ddd-theme-polaris-link);
             font-weight: var(--ddd-font-primary-bold);
             text-decoration: none;
