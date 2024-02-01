@@ -7,7 +7,7 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { css, html } from "lit";
 
 /**
@@ -21,7 +21,7 @@ import { css, html } from "lit";
  * @element video-player
  */
 class VideoPlayer extends IntersectionObserverMixin(
-  MediaBehaviorsVideo(SchemaBehaviors(I18NMixin(SimpleColors)))
+  MediaBehaviorsVideo(SchemaBehaviors(I18NMixin(DDD)))
 ) {
   //styles function
   static get styles() {
@@ -30,15 +30,15 @@ class VideoPlayer extends IntersectionObserverMixin(
       css`
         :host {
           display: block;
-          margin: 0 0 15px;
-          line-height: 16px !important;
-          font-size: 16px !important;
         }
 
         .video-caption {
           font-style: italic;
           margin: 0;
           padding: 8px;
+        }
+        a11y-media-player {
+          box-shadow: var(--ddd-boxShadow-lg);
         }
       `,
     ];

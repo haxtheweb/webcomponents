@@ -55,7 +55,7 @@ export class SimpleTags extends LitElement {
           justify-content: center;
         }
         simple-tag {
-          margin: 2px 2px;
+          margin: 4px 4px;
         }
       `,
     ];

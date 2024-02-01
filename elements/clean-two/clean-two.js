@@ -23,6 +23,7 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `clean-two`
  * `A 2nd clean theme`
@@ -40,7 +41,7 @@ class CleanTwo extends HAXCMSOperationButtons(
       PDFPageMixin(
         PrintBranchMixin(
           QRCodeMixin(
-            HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+            HAXCMSThemeParts(HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)))
           )
         )
       )
@@ -230,9 +231,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0;
           background-color: white;
         }
-        site-active-title h1 {
-          margin: 0;
-        }
         
         .body-wrapper {
           flex: 1;
@@ -314,10 +312,11 @@ class CleanTwo extends HAXCMSOperationButtons(
 
         }
         site-menu {
-          --site-menu-font-size: 15px;
           --site-menu-color: #000000;
           --site-menu-active-color: #E6ECF1;
           --site-menu-item-active-item-color: var(--simple-colors-default-theme-light-blue-1, rgba(100,100,255,.1));
+          font-family: var(--ddd-font-navigation);
+          --site-menu-font-size: var(--ddd-font-size-xs);
           overflow-y: auto;
           flex: 1 1 auto;
           height: 100vh;
@@ -562,7 +561,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           width: 36px;
         }
         site-breadcrumb {
-          --site-breadcrumb-font-size: 12px;
           margin-bottom: 16px;
         }
         .search-modal-btn {

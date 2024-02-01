@@ -98,7 +98,8 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
             #eeeeee
           );
           --simple-fields-tag-margin-left: var(--ddd-spacing-2);
-          --simple-fields-tag-border-width: var(--ddd-border-size-1);
+          --simple-fields-tag-border-width: var(--ddd-border-xs);
+          font-size: var(--ddd-font-size-4xs);
         }
       `,
     ];

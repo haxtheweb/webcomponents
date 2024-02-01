@@ -7,69 +7,56 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `site-breadcrumb`
  * `A basic breadcrumb of links based on the active state in HAXcms on JSON Outline Schema`
  *
  * @demo demo/index.html
  */
-class SiteBreadcrumb extends LitElement {
+class SiteBreadcrumb extends DDD {
   static get styles() {
     return [
       css`
         :host {
           display: block;
-          font-size: var(--site-breadcrumb-font-size, 16px);
-          color: var(--site-breadcrumb-color, #383f45);
         }
-        a {
-          font-size: var(--site-breadcrumb-font-size, 16px);
-          color: inherit;
-          display: inline-block;
-          padding: 0px 8px 0px 0px;
-          text-decoration: var(--site-breadcrumb-text-decoration, underline);
-          line-height: 30px;
-          height: 30px;
-        }
-        button {
-          margin: 0;
+        .breadcrumb {
+          font-weight: var(--ddd-font-navigation-light);
+          margin: var(--ddd-spacing-6) 0;
           padding: 0;
-          font-size: var(--site-breadcrumb-font-size, 16px);
-          font-family: inherit;
-          min-width: unset;
-          display: inline-flex;
-          text-transform: unset;
-          background-color: transparent;
-          border: none;
-          letter-spacing: inherit;
-          cursor: pointer;
-          color: inherit;
+          pointer-events: auto;
+          list-style: "/ ";
+          gap: var(--ddd-spacing-5);
+          display: flex;
+          flex-flow: row;
+          color: var(--ddd-theme-polaris-link);
         }
-        a:hover,
-        a:focus,
-        a:active,
-        button:hover,
-        button:focus,
-        button:active {
-          background-color: var(--site-breadcrumb-hover-bg, transparent);
-          color: var(--site-breadcrumb-hover-color, #222222);
+        .breadcrumb li::marker {
+          color: black;
+          font-weight: var(--ddd-font-primary-regular);
         }
-        span {
-          margin: 0px;
-          font-size: var(--site-breadcrumb-font-size, 16px);
-          padding: 0px 8px 0px 0px;
-          display: inline-block;
-          vertical-align: middle;
-          height: 30px;
-          line-height: 30px;
+        .breadcrumb li:first-child {
+          list-style: none;
         }
-        simple-icon-lite {
-          display: inline-block;
-          --simple-icon-height: 24px;
-          --simple-icon-width: 24px;
-          padding: 0px 8px 0px 0px;
-          color: inherit;
-          line-height: 30px;
+        .breadcrumb li a {
+          padding-left: var(--ddd-spacing-1);
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-navigation-regular);
+          text-decoration: none;
+          font-size: var(--site-breadcrumb-font-size, var(--ddd-font-size-4xs, 16px));
+          color: var(--site-breadcrumb-color, var(--ddd-theme-polaris-link, #383f45));
+        }
+        .breadcrumb li:first-child a {
+          padding-left: 0;
+        }
+        .breadcrumb li:last-child a {
+          color: var(--site-breadcrumb-color, black);
+          pointer-events: none;
+        }
+        .breadcrumb li a:hover {
+          text-decoration: underline;
+          pointer-events: auto;
         }
       `,
     ];
@@ -83,16 +70,23 @@ class SiteBreadcrumb extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
+    this.items = [];
   }
   // render function
   render() {
     return html`
-      <div
-        id="space"
-        itemscope
-        itemtype="https://schema.org/BreadcrumbList"
-      ></div>
-    `;
+    ${this.items.length > 0 ? html`
+    <ul class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        ${this.items.map((item) => html`<li><a href="${item.slug}">${item.title}</a></li>`)}
+      </ul>
+    ` : ``}`;
+  }
+
+  static get properties() {
+    return {
+      items: { type: Array},
+      editMode: { type: Boolean, reflect: true, attribute: "edit-mode" },
+    };
   }
 
   firstUpdated(changedProperties) {
@@ -100,10 +94,6 @@ class SiteBreadcrumb extends LitElement {
       super.firstUpdated(changedProperties);
     }
     // keep editMode in sync globally
-    autorun((reaction) => {
-      this.manifest = toJS(store.routerManifest);
-      this.__disposer.push(reaction);
-    });
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
@@ -120,25 +110,19 @@ class SiteBreadcrumb extends LitElement {
     const activeItem = active;
     if (
       activeItem &&
-      this.shadowRoot &&
-      this.shadowRoot.querySelector("#space")
+      this.shadowRoot
     ) {
-      // wipe out the slot and rebuild it
-      while (this.shadowRoot.querySelector("#space").firstChild !== null) {
-        this.shadowRoot
-          .querySelector("#space")
-          .removeChild(this.shadowRoot.querySelector("#space").firstChild);
-      }
       var items = [
         {
           title: activeItem.title,
-          slug: null,
+          slug: activeItem.slug,
         },
       ];
       let itemBuilder = activeItem;
+      let manifest = toJS(store.routerManifest);
       // walk back through parent tree
       while (itemBuilder && itemBuilder.parent != null) {
-        itemBuilder = this.manifest.items.find(
+        itemBuilder = manifest.items.find(
           (i) => i.id == itemBuilder.parent
         );
         // double check structure is sound
@@ -149,31 +133,12 @@ class SiteBreadcrumb extends LitElement {
           });
         }
       }
-      for (var i in items) {
-        let icon = globalThis.document.createElement("simple-icon-lite");
-        icon.icon = "icons:chevron-right";
-        if (items[i].slug != null) {
-          let button = globalThis.document.createElement("button");
-          button.innerText = items[i].title;
-          button.noink = true;
-          // disable buttons if we ware editing
-          if (this.editMode) {
-            button.setAttribute("disabled", "disabled");
-            this.shadowRoot.querySelector("#space").appendChild(button);
-          } else {
-            let link = globalThis.document.createElement("a");
-            link.setAttribute("href", items[i].slug);
-            link.setAttribute("tabindex", "-1");
-            link.setAttribute("itemprop", "url");
-            link.appendChild(button);
-            this.shadowRoot.querySelector("#space").appendChild(link);
-          }
-          this.shadowRoot.querySelector("#space").appendChild(icon);
-        } else {
-          let span = globalThis.document.createElement("span");
-          span.innerText = items[i].title;
-          this.shadowRoot.querySelector("#space").appendChild(span);
-        }
+      // don't display if we are the only thing in the trail bc there is no point
+      if (items.length === 1) {
+        this.items = [];
+      }
+      else {
+        this.items = [...items];
       }
     }
   }

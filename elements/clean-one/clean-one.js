@@ -17,10 +17,10 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-act
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "./lib/clean-one-search-box.js";
-import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 /**
  * `clean-one`
@@ -40,7 +40,7 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
         QRCodeMixin(
           HAXCMSThemeParts(
             HAXCMSMobileMenuMixin(
-              HAXCMSRememberRoute(SimpleColorsSuper(HAXCMSLitElementTheme))
+              HAXCMSRememberRoute(DDDSuper((HAXCMSLitElementTheme)))
             )
           )
         )
@@ -133,12 +133,14 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
            --simple-tooltip-text-color: var(--haxcms-user-styles-color-theme-color-2);
          }
          site-menu {
-           height: var(--clean-one-site-menu-height, calc(100vh - 60px));
-           --site-menu-active-color: var(--haxcms-user-styles-color-theme-color-3); 
-           --site-menu-item-active-item-color: var(--simple-colors-default-theme-light-blue-1, rgba(100,100,255,.1));
-           --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
-           --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
-           --map-menu-item-a-active-background-color: var(--simple-colors-default-theme-grey-1, rgba(200,200,200,.1));
+          height: var(--clean-one-site-menu-height, calc(100vh - 60px));
+          --site-menu-active-color: var(--haxcms-user-styles-color-theme-color-3); 
+          --site-menu-item-active-item-color: var(--simple-colors-default-theme-light-blue-1, rgba(100,100,255,.1));
+          --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
+          --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
+          --map-menu-item-a-active-background-color: var(--simple-colors-default-theme-grey-1, rgba(200,200,200,.1));
+          font-family: var(--ddd-font-navigation);
+          --site-menu-font-size: var(--ddd-font-size-xs);
          }
          scroll-button {
            --scroll-button-color: var(--haxcms-user-styles-color-theme-color-1);
@@ -171,8 +173,10 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
          }
          scroll-button,
          site-breadcrumb {
-           color: var(--haxcms-user-styles-color-theme-color-1);
+          color: var(--haxcms-user-styles-color-theme-color-1);
+          --site-breadcrumb-color: var(--haxcms-user-styles-color-theme-color-1);
          }
+
          * {
            -webkit-box-sizing: border-box;
            -moz-box-sizing: border-box;

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
@@ -100,12 +100,12 @@ import "./lib/a11y-media-youtube.js";
  `--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`
   *
   * @element a11y-media-player
-  * @extends SimpleColors
+  * @extends DDD
   * @demo ./demo/index.html video demo
   * @demo ./demo/audio.html audio demo
   * @demo ./demo/youtube.html YouTube demo
   */
-class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
+class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
   //styles function
   static get styles() {
     return [
@@ -597,8 +597,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         }
 
         .media-caption:not(:empty) {
-          width: calc(100% - 30px);
-          padding: 5px 15px;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          font-size: var(--ddd-font-size-xs);
+          font-weight: bold;
         }
 
         .media-type {

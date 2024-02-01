@@ -52,9 +52,9 @@ class CollectionItem extends DDD {
           color: var(--icon-color);
           display: block;
           min-height: 300px;
-          border: solid var(--ddd-border-size-1) var(--ddd-theme-polaris-slateMaxLight);
+          border: solid var(--ddd-border-xs) var(--ddd-theme-polaris-slateMaxLight);
           transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
-          box-shadow: var(--ddd-boxShadow-1);
+          box-shadow: var(--ddd-boxShadow-xs);
         }
         :host([saturate]) a {
           -webkit-filter: saturate(30%);
@@ -63,7 +63,7 @@ class CollectionItem extends DDD {
         a:focus-within,
         a:focus,
         a:hover {
-          box-shadow: var(--ddd-boxShadow-2);
+          box-shadow: var(--ddd-boxShadow-sm);
         }
         :host([saturate]) a:focus-within,
         :host([saturate]) a:focus,
@@ -85,10 +85,8 @@ class CollectionItem extends DDD {
 
         simple-tags {
           margin-left: var(--ddd-spacing-1);
-          margin-bottom: calc(-1 * var(--ddd-spacing-8));
+          margin-bottom: calc(-1 * var(--ddd-spacing-11));
           padding: var(--ddd-spacing-0);
-          height: var(--ddd-spacing-8);
-          line-height: var(--ddd-spacing-8);
           width: 100%;
           z-index: 1;
           display: flex;
@@ -123,7 +121,7 @@ class CollectionItem extends DDD {
           border-style: solid;
           border-image: initial;
           border-color: var(--icon-color);
-          border-width: var(--ddd-border-size-3);
+          border-width: var(--ddd-border-md);
           margin: 0 0 calc(-1 * var(--ddd-icon-xs)) 0;
           height: var(--ddd-spacing-12);
           width: var(--ddd-spacing-12);
@@ -151,7 +149,7 @@ class CollectionItem extends DDD {
           transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
           border-bottom-style: solid;
           border-bottom-color: var(--icon-color);
-          border-bottom-width: var(--ddd-border-size-3);
+          border-bottom-width: var(--ddd-border-md);
         }
       `,
     ];
