@@ -1343,16 +1343,16 @@ class DDDocs extends DDD {
           <p>Details text</p>
         </details>
         <p>
-          This is an example of code:<code>Console.log("Hello World!");</code>
+          This is an example of code:<code popupText="Click to copy to clipboard">Console.log("Hello World!");</code>
           in a paragraph
         </p>
-        <code class="block-code"
-          >Here is an example of a block of code on it's own, using class
-          'block-code', redundant, but avoids common 'block' class name</code
-        >
+        <textarea></textarea>
+        <code class="block-code" popupText="Click to copy to clipboard">
+          Here is an example of a block of code on it's own, using class
+          'block-code', redundant, but avoids common 'block' class name
+          </code>
         <pre>
-Here is an    example of a    block using the    'pre'    tag on it's    own</pre
-        >
+Here is an    example of a    block using the    'pre'    tag on it's    own</pre>
         <p>Here is a good example of some <mark>Highlighted Text</mark></p>
         <p>
           Here is an example of an abbreviation:
