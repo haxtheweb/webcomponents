@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, LitElement } from "lit";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
   * `figure-label`
   * @element figure-label
@@ -16,7 +16,7 @@ import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
   * @lit-element
   * @demo demo/index.html
   */
-class FigureLabelProposed extends DDDSuper(LitElement) {
+class FigureLabelProposed extends (DDD) {
   //styles function
   static get styles() {
     return [...super.styles, 
@@ -45,10 +45,14 @@ class FigureLabelProposed extends DDDSuper(LitElement) {
         }
 
         #description {
+          display: flex;
+          align-items: center;
           font-family: var(--ddd-font-primary);
-          border-color: var(--ddd-component-figure-label-border, var(--ddd-theme-accent-color , var(--ddd-theme-polaris-limestoneLight)));
-          padding: var(--ddd-spacing-3);
+          border-color: var(--ddd-component-figure-label-title, var(--ddd-theme-accent-color , var(--ddd-theme-polaris-limestoneLight)));
+          padding: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-4xs);
+          background: var(--ddd-component-figure-label-background, var(--ddd-theme-polaris-white));
+          font-weight: var(--ddd-font-primary-regular);
         }
       `,
     ];

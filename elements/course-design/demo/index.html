@@ -19,6 +19,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lib/block-quote.js';
+      import '../lib/block-quote-proposed.js';
       import '../lib/ebook-button.js';
       import '../lib/lrn-h5p.js';
       import '../lib/course-intro.js';
@@ -189,13 +190,20 @@
       <h3>block-quote</h3>
       <demo-snippet>
         <template>
-          <block-quote citation="Albert Einstein">
+          <block-quote citation="Albert Einstein" image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg">
             <span slot="quote">
               I was sitting in a chair in the patent office at Bern, when all of a sudden
               a thought occurred to me: ‘If a person falls freely, he will not feel his
               own weight.
             </span>
           </block-quote>
+          <block-quote-proposed citation="Albert Einstein" image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg">
+            <span slot="quote">
+              I was sitting in a chair in the patent office at Bern, when all of a sudden
+              a thought occurred to me: ‘If a person falls freely, he will not feel his
+              own weight.
+            </span>
+          </block-quote-proposed>
         </template>
       </demo-snippet>
       <h3>worksheet-download</h3>

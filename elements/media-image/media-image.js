@@ -5,36 +5,41 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleModalHandler } from "@lrnwebcomponents/simple-modal/lib/simple-modal-handler.js";
-import "@lrnwebcomponents/figure-label/figure-label.js";
+import "@lrnwebcomponents/figure-label/lib/figure-label-proposed.js";
+import {DDD} from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `media-image`
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
  * @element media-image
  */
-class MediaImage extends SchemaBehaviors(LitElement) {
+class MediaImage extends (DDD) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: block;
           width: auto;
           margin: auto;
           max-width: 600px;
-          --box-background-color: #f7f6ef;
+          font-family: var(--ddd-font-primary);
+          font-weight: var(--ddd-font-primary-bold);
+          font-size: var(--ddd-font-size-3xs);
         }
 
         :host([card]) {
-          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14);
-          padding: 20px;
+          box-shadow: var(--ddd-boxShadow-xs);
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-polaris-limestoneLight);
+          padding: var(--ddd-spacing-5);
+          background-color: var(--ddd-component-media-image-card-color, var(--card-background-color));
         }
 
         :host([box]) {
-          background-color: var(--box-background-color);
-          padding: 20px;
+          padding: var(--ddd-spacing-5);
         }
         @media screen and (min-width: 650px) {
           :host([size="small"]) {
@@ -78,12 +83,19 @@ class MediaImage extends SchemaBehaviors(LitElement) {
 
         media-image-caption {
           max-height: 100px;
-          padding-bottom: 20px;
-          border-bottom: dashed 2px lightgray;
-          margin-bottom: 20px;
+          border: var(--ddd-border-sm);
+          border-color: var(--ddd-component-figure-label-title, var(--ddd-theme-accent-color , var(--ddd-theme-polaris-limestoneLight)));
+          background: var(--ddd-component-figure-label-background, transparent);
+          padding: var(--ddd-spacing-2);
+          margin-bottom: var(--ddd-spacing-5);
+          line-height: var(--ddd-lh-140);
         }
         :host(:not([disable-zoom])) media-image-image:hover {
           cursor: pointer;
+        }
+
+        .citation{
+          font-size: 12px;
         }
       `,
     ];
@@ -103,7 +115,15 @@ class MediaImage extends SchemaBehaviors(LitElement) {
     this.card = false;
     this.box = false;
     this.offset = "none";
+    this.cardColor = "var(--ddd-theme-polaris-white)";
   }
+  firstUpdated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if(propName == "cardColor"){
+        this.style.setProperty("--card-background-color", this.cardColor);
+      }
+    }
+  )}
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "caption") {
@@ -129,10 +149,10 @@ class MediaImage extends SchemaBehaviors(LitElement) {
     return html`
       ${this.__figureLabel
         ? html`
-            <figure-label
+            <figure-label-proposed
               title="${this.figureLabelTitle}"
               description="${this.figureLabelDescription}"
-            ></figure-label>
+            ></figure-label-proposed>
           `
         : ``}
       <media-image-image
@@ -145,7 +165,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         @click="${this._handleClick}"
       ></media-image-image>
       <media-image-citation>
-        <slot name="citation">${this.citation}</slot>
+        <slot class="citation" name="citation">${this.citation}</slot>
       </media-image-citation>
       ${this._hasCaption
         ? html`
@@ -183,6 +203,10 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   static get properties() {
     return {
       ...super.properties,
+      cardColor: {
+        type: String,
+        reflect: true,
+      },
       __figureLabel: {
         type: Boolean,
       },
@@ -451,12 +475,12 @@ customElements.define(MediaImage.tag, MediaImage);
  * `A simple image presentaiton with minor documented options`
  * @element media-image-image
  */
-class MediaImageImage extends SimpleModalHandler(LitElement) {
+class MediaImageImage extends SimpleModalHandler(DDD) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: block;
@@ -467,8 +491,10 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
         .image-wrap img {
           width: 100%;
         }
-        :host([round]) .image-wrap {
-          border-radius: 50%;
+        :host([round]) .image-wrap img{
+          border-radius: var(--ddd-radius-circle);
+          height: fit-content;
+          overflow: show;
         }
       `,
     ];
@@ -536,25 +562,29 @@ customElements.define(MediaImageImage.tag, MediaImageImage);
  * @demo demo/index.html
  * @element media-image-citation
  */
-class MediaImageCitation extends LitElement {
+class MediaImageCitation extends (DDD) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: block;
           overflow: auto;
         }
 
+        .citation ::slotted(*[slot="citation"]) {
+          font-size: var(--ddd-font-size-4xs);
+        }
+
         .citation {
-          font-size: 13.3333px;
-          line-height: 24px;
-          font-weight: 400;
+          font-size: var(--ddd-font-size-4xs) !important;
+          line-height: var(--ddd-lh-140);
+          font-weight: var(--ddd-font-primary-regular);
           font-style: italic;
-          color: #4c4c4c;
-          margin: 15px 0 15px;
+          color: var(--ddd-theme-polaris-limestoneGray);
+          margin: var(--ddd-spacing-4) 0;
         }
       `,
     ];
@@ -574,22 +604,16 @@ customElements.define(MediaImageCitation.tag, MediaImageCitation);
  * @demo demo/index.html
  * @element media-image-caption
  */
-class MediaImageCaption extends LitElement {
+class MediaImageCaption extends (DDD) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: block;
           overflow: auto;
-        }
-
-        .caption {
-          line-height: 28.8px;
-          font-size: 16px;
-          font-weight: 400;
         }
 
         .caption ::slotted(*) {

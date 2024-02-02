@@ -63,6 +63,7 @@ class SelfCheckProposed extends I18NMixin(
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
+          width: 60%;
         }
         :host([hidden]),
         *[hidden] {
@@ -71,6 +72,7 @@ class SelfCheckProposed extends I18NMixin(
 
         div.card {
           overflow: hidden;
+          container-name: card;
         }
 
         simple-icon-button {
@@ -133,7 +135,6 @@ class SelfCheckProposed extends I18NMixin(
           );
           display: flex;
           align-items: center;
-          width: 100%;
           margin:  calc(var(--ddd-spacing-6) * -1) 0 0;
           padding:var(--ddd-spacing-3);
         }
@@ -151,6 +152,8 @@ class SelfCheckProposed extends I18NMixin(
         }
 
         .question {
+          display: grid;
+          grid-template-columns: 1fr .1fr;
           font-size: var(--ddd-theme-h5-font-size);
           line-height: var(--ddd-lh-120);
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
@@ -243,6 +246,10 @@ class SelfCheckProposed extends I18NMixin(
         }
         ::slotted(p:last-child) {
           margin-top: 0;
+        }
+
+        @container card (width < 600px) {
+          .
         }
       `,
     ];

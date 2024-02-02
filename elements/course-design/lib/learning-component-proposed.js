@@ -254,6 +254,8 @@ class LearningComponentProposed extends I18NMixin(DDD) {
         }
 
         .content {
+          display: grid;
+          grid-template-columns: 1fr .1fr;
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
         }
 
