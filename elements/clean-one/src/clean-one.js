@@ -20,7 +20,7 @@ import "./lib/clean-one-search-box.js";
 import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper, DDDFonts } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 /**
  * `clean-one`
@@ -863,6 +863,7 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
    */
   constructor() {
     super();
+    this.loadDDDFonts(DDDFonts);
     this.searchTerm = "";
     this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore

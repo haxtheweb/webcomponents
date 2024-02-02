@@ -48,14 +48,14 @@
       },
       {
         "property": "status",
-        "title": "Action Icon",
-        "description": "Icon used for stop-note",
+        "title": "Status",
+        "description": "Setting status changes the colors and icons to match",
         "inputMethod": "select",
         "options": {
           "stop": "Stop",
-          "stopnoteicons:warning-icon": "Warning",
-          "stopnoteicons:confirm-icon": "Confirmation",
-          "stopnoteicons:book-icon": "Notice"
+          "warning": "Warning",
+          "success": "Confirmation",
+          "info": "Notice"
         }
       },
       {

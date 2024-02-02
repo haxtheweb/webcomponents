@@ -83,18 +83,6 @@
     ],
     "advanced": [
       {
-        "property": "correctIcon",
-        "title": "Correct icon",
-        "description": "Icon to display when correct answer happens",
-        "inputMethod": "iconpicker"
-      },
-      {
-        "property": "incorrectIcon",
-        "title": "Incorrect icon",
-        "description": "Icon to display when wrong answer happens",
-        "inputMethod": "iconpicker"
-      },
-      {
         "property": "checkLabel",
         "title": "Check answers label",
         "description": "Label for getting solution feedback",

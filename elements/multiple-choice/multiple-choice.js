@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDDFonts, DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
@@ -12,7 +12,7 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
  * @demo demo/index.html
  * @element multiple-choice
  */
-class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
+class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -23,11 +23,11 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         :host {
           display: block;
           min-width: 160px;
-          padding: 16px;
-          margin-bottom: 16px;
-          border: 1px solid var(--simple-colors-default-theme-grey-8);
+          padding: var(--ddd-spacing-8);
+          border: var(--ddd-border-md);
           background-color: var(--simple-colors-default-theme-accent-1);
-          border-radius: 3px;
+          border-radius: var(--ddd-radius-xs);
+          transition: all .3s ease-in-out;
           color: var(--simple-colors-default-theme-grey-12);
           --simple-toolbar-button-border-color: var(
             --simple-colors-default-theme-grey-4
@@ -57,21 +57,35 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
           --simple-fields-border-bottom-focus-size: 0px;
         }
 
+        :host(:focus),
+        :host(:focus-within),
+        :host(:hover) {
+          border-color: var(--simple-colors-default-theme-accent-12);
+        }
+
         :host button {
           background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
         }
-        :host button:hover,
-        :host button:focus,
-        :host button:active {
+        :host simple-fields-field:hover,
+        :host simple-fields-field:focus,
+        :host simple-fields-field:focus-within,
+        :host simple-fields-field:active {
           cursor: pointer;
-          background-color: var(--simple-colors-default-theme-grey-2);
-          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-accent-3);
+          color: var(--simple-colors-default-theme-accent-12);
+          box-shadow: var(--ddd-boxShadow-sm);
+          border-color: black;
         }
         ul {
           list-style: none;
           padding: 0;
           margin: 0;
+        }
+        h3 {
+          padding: 0;
+          margin: 0 0 var(--ddd-spacing-8) 0;
+          font-family: var(--ddd-font-navigation);
         }
         ul li {
           padding: 0;
@@ -79,29 +93,68 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         simple-icon {
           display: inline-flex;
         }
-        h3 {
-          margin-top: 0;
-        }
         #buttons {
           display: flex;
           align-items: center;
           justify-content: flex-end;
+          margin: var(--ddd-spacing-4) 0 0 0;
         }
         #check {
-          margin-right: 8px;
+          margin-right: var(--ddd-spacing-4);
         }
         simple-fields-field {
-          padding: 8px;
-          margin: 2px;
+          padding: var(--ddd-spacing-4);
+          transition: all .3s ease-in-out;
+          margin: 0;
+          border: var(--ddd-border-md);
+          border-radius: var(--ddd-radius-xs);
+          color: var(--simple-colors-default-theme-accent-10);
           background-color: var(--simple-colors-default-theme-accent-2);
+          --simple-fields-font-family: var(--ddd-font-navigation);
+          --simple-fields-font-size: var(--ddd-font-size-xs);
+          --simple-fields-line-height: var(--ddd-font-size-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+        }
+        simple-toolbar-button {
+          font-size: var(--ddd-font-size-xs);
+          font-family: var(--ddd-font-navigation);
+          transition: all .3s ease-in-out;
+        }
+        :host simple-toolbar-button:hover::part(button),
+        :host simple-toolbar-button:focus::part(button),
+        :host simple-toolbar-button:focus-within::part(button),
+        :host simple-toolbar-button:active::part(button) {
+          cursor: pointer;
+          background-color: var(--simple-colors-default-theme-accent-3);
+          color: var(--simple-colors-default-theme-accent-12);
+          box-shadow: var(--ddd-boxShadow-sm);
+          border-color: black;
+        }
+        simple-toolbar-button::part(button) {
+          border: var(--ddd-border-md);
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-2);
+          transition: all .3s ease-in-out;
+        }
+        simple-toolbar-button::part(label) {
+          font-size: var(--ddd-font-size-xs);
+          font-family: var(--ddd-font-navigation);
+          padding: 0;
+          margin: 0;
         }
         simple-fields-field::part(option-inner) {
           position: absolute;
           right: 0px;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-xs);
           bottom: 50%;
           top: 50%;
           padding: 0px;
           margin: 0px;
+        }
+        ul, ol {
+          gap: var(--ddd-spacing-4);
         }
         simple-icon {
           display: inline-flex;
@@ -114,6 +167,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
   }
   constructor() {
     super();
+    this.loadDDDFonts(DDDFonts);
     this.shadowRootOptions = {
       ...LitElement.shadowRootOptions,
       delegatesFocus: true,
@@ -163,7 +217,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     return html`
       <confetti-container id="confetti">
         <meta property="oer:assessing" content="${this.relatedResource}" />
-        <h3><span property="oer:name">${this.question}</span></h3>
+        <h3 property="oer:name">${this.question}</h3>
         ${this.singleOption
           ? html`
               <fieldset id="answers">

@@ -1,9 +1,18 @@
 import { html, css } from "lit";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+
+
+// register the iconset
+SimpleIconsetStore.registerIconset(
+  "stopnoteicons",
+  `${
+    new URL("./stop-note.js", import.meta.url).href
+  }/../lib/svgs/stopnoteicons/`
+);
 
 /**
  * `stop-note`
@@ -39,6 +48,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
             var(--ddd-theme-polaris-error)
           );
           margin: var(--ddd-spacing-5) 0;
+          color: var(--simple-colors-fixed-theme-accent-12);
         }
 
         simple-icon {
@@ -138,6 +148,10 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
           padding: var(--ddd-spacing-2);
           width: auto;
         }
+        .main_message,
+        .secondary_message ::slotted(*) {
+          color: black;
+        }
       `,
     ];
   }
@@ -180,7 +194,8 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
     super();
     this.url = null;
     this.title = "";
-    this.status = "stop";
+    this.status = null;
+    this.accentColor = "grey";
     this.icon = "stopnoteicons:stop-icon";
     this.t = {
       moreInformation: "More Information",
@@ -228,10 +243,8 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
       if (propName == "url") {
         this.remoteLinkURL = this[propName];
       }
-      if (propName == "status") {
-        StopNoteIconList[this[propName]]
-          ? (this.icon = StopNoteIconList[this[propName]])
-          : (this.icon = StopNoteIconList["stop"]);
+      if (propName == "status" && this[propName] && StopNoteIconList[this[propName]]) {
+        this.icon = StopNoteIconList[this[propName]];
       }
     });
   }
@@ -241,9 +254,15 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
-    StopNoteIconList[this.status]
-      ? (this.icon = StopNoteIconList[this.status])
-      : (this.icon = StopNoteIconList["stop"]);
+    // if we have no status BUT icon was supplied; this is to support legacy implementations
+    // where the icon was the thing dictating the status
+    if (this.status === null && this.icon) {
+      Object.keys(StopNoteIconList).map(value => {
+        if (StopNoteIconList[value] === this.icon) {
+          this.status = value;
+        }
+      });
+    }
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
@@ -279,29 +298,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
     }
     return false;
   }
-  haxinlineContextMenu(ceMenu) {
-    ceMenu.ceButtons = [
-      {
-        icon: "image:style",
-        callback: "haxtoggleIcon",
-        label: "Toggle icon",
-      },
-    ];
-  }
-  haxtoggleIcon(e) {
-    const iconAry = [
-      "stopnoteicons:stop-icon",
-      "stopnoteicons:warning-icon",
-      "stopnoteicons:confirm-icon",
-      "stopnoteicons:book-icon",
-    ];
-    let icon = iconAry[0];
-    if (iconAry.lastIndexOf(this.icon) != iconAry.length - 1) {
-      icon = iconAry[iconAry.lastIndexOf(this.icon) + 1];
-    }
-    this.icon = icon;
-    return true;
-  }
+
   static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;

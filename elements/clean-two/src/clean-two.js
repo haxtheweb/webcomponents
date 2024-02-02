@@ -23,7 +23,7 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper, DDDFonts } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `clean-two`
  * `A 2nd clean theme`
@@ -791,6 +791,7 @@ class CleanTwo extends HAXCMSOperationButtons(
    */
   constructor() {
     super();
+    this.loadDDDFonts(DDDFonts);
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];

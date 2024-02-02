@@ -38,13 +38,16 @@ export const DDDSuper = function (SuperClass) {
     }
     // call this to load all the fonts that are official
     loadDDDFonts(fonts) {
-      fonts.forEach((font) => {
-        const link = document.createElement("link");
-        link.setAttribute("href", font);
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("fetchpriority", "low");
-        document.head.appendChild(link);
-      });
+      if (globalThis && globalThis.document && !globalThis.document.querySelector('[data-ddd="font"]')) {
+        fonts.forEach((font) => {
+          const link = globalThis.document.createElement("link");
+          link.setAttribute("href", font);
+          link.setAttribute("rel", "stylesheet");
+          link.setAttribute("fetchpriority", "low");
+          link.setAttribute("data-ddd", "font");
+          globalThis.document.head.appendChild(link);
+        });  
+      }
     }
     /**
      * LitElement style callback
@@ -2639,7 +2642,7 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
     globalThis.DDDSharedStyles.instance =
       globalThis.document.createElement("style");
     // marker for debugging to make it easier to find
-    globalThis.DDDSharedStyles.instance.classList.add("ddd-global-styles");
+    globalThis.DDDSharedStyles.instance.setAttribute('data-ddd','global-styles');
     globalThis.DDDSharedStyles.instance.innerHTML = `${globalStyles}`;
     globalThis.document.head.appendChild(globalThis.DDDSharedStyles.instance);
   }
