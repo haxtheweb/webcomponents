@@ -24,3 +24,25 @@
     </div>
   </body>
 </html>
+<script>
+  window.onload = function() {
+    const dddDocs = document.querySelector('d-d-docs');
+    console.log(dddDocs);
+    const codeList = dddDocs.shadowRoot.querySelectorAll('code');
+    codeList.forEach(codeElement => {
+      codeElement.addEventListener('click', function() {
+      console.log('code clicked');
+      const range = document.createRange();
+      range.selectNodeContents(codeElement);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.execCommand('copy');
+      codeElement.setAttribute('popupText', 'Copied to clipboard!');
+    });
+    codeElement.addEventListener('mouseout', function() {
+      codeElement.setAttribute('popupText', 'Click to copy to clipboard');
+    });
+    }); 
+  }
+  </script>

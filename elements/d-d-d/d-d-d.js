@@ -2247,6 +2247,7 @@ export const DDDSuper = function (SuperClass) {
             padding-right: 2px;
           }
           code {
+            transition: all 0.2s ease 0s;
             display: inline-block;
             padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
             margin: 0 var(--ddd-spacing-1);
@@ -2262,14 +2263,54 @@ export const DDDSuper = function (SuperClass) {
               )
             );
             border-radius: var(--ddd-radius-xs);
-            border: var(--ddd-border-xs);
+            border: var(--ddd-border-lg);
+            border-style: groove;
+            border-color: var(--ddd-theme-polaris-limestoneMaxLight);
             font-family: var(--ddd-font-primary);
             letter-spacing: var(--ddd-ls-16-lg);
+            cursor: grab;
+            pointer-events: auto;
+            position: relative;
           }
           code.block-code {
             padding: var(--ddd-spacing-2);
             margin: var(--ddd-spacing-5) 0;
           }
+          code::-moz-selection { /* Code for Firefox */
+            background: transparent;
+          }
+          code::selection {
+            background: transparent;
+          }
+          code:focus::after,
+          code:active::after,
+          code:hover::after {
+            content: attr(popupText);
+            position: absolute;
+            white-space: nowrap;
+            font-style: normal;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            width: fit-content;
+            height: fit-content;
+            padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+            color: var(
+              --ddd-theme-font-color,
+              var(--ddd-theme-polaris-white, #fff)
+            );
+            background-color: var(
+              --ddd-theme-accent-color,
+              var(--ddd-theme-polaris-info, , rgba(175, 184, 193, 0.2))
+            );
+            font-size: var(
+              --ddd-theme-body-font-size,
+              var(--ddd-theme-haxcms-font-size)
+            );
+            font-weight: var(--ddd-font-primary-regular);
+            border-radius: var(--ddd-radius-xs);
+          }
+
           pre {
             display: inline-block;
             padding: var(--ddd-spacing-4);
@@ -2329,9 +2370,9 @@ export const DDDSuper = function (SuperClass) {
             position: absolute;
             white-space: nowrap;
             font-style: normal;
-            top: -100%;
+            position: absolute;
+            bottom: 100%;
             left: 0;
-            right: 0;
             width: fit-content;
             height: fit-content;
             padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
@@ -2575,6 +2616,7 @@ class DDD extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.loadDDDFonts(DDDFonts);
+
   }
   static get tag() {
     return "d-d-d";

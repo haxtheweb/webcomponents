@@ -72,6 +72,7 @@ class SelfCheckProposed extends I18NMixin(
 
         div.card {
           overflow: hidden;
+          container-type: inline-size;
           container-name: card;
         }
 
@@ -104,33 +105,33 @@ class SelfCheckProposed extends I18NMixin(
           --simple-icon-height: var(--ddd-icon-lg);
           margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
           padding: var(--ddd-spacing-2);
+          color: 
+          var(--ddd-component-self-check-title-color,
+            var(--ddd-theme-font-color,
+              var(--simple-colors-default-theme-accent-1, #000)
+            )
+          );
         }
 
         .heading {
           display: flex;
           align-items: center;
           text-transform: uppercase;
-          font-size: var(--ddd-font-size-m);
+          font-size: var(--ddd-font-size-ms);
           font-weight: var(--ddd-font-primary-medium);
           color: 
           var(--ddd-component-self-check-title-color,
             var(--ddd-theme-font-color,
-              var(--simple-colors-default-theme-grey-12, #000)
+              var(--simple-colors-default-theme-accent-1, #000)
             )
           );
         }
 
         #header_wrap {
-          color: 
-          var(--ddd-component-self-check-title-color,
-            var(--ddd-theme-font-color,
-              var(--simple-colors-default-theme-grey-12, #000)
-            )
-          );
           background-color: 
           var(--ddd-component-self-check-title-background,
             var(--ddd-theme-accent-color,
-              var(--simple-colors-default-theme-grey-1, #fff)
+              var(--simple-colors-default-theme-accent-8, #fff)
             )
           );
           display: flex;
@@ -154,7 +155,7 @@ class SelfCheckProposed extends I18NMixin(
         .question {
           display: grid;
           grid-template-columns: 1fr .1fr;
-          font-size: var(--ddd-theme-h5-font-size);
+          font-size: var(--ddd-theme-body-font-size);
           line-height: var(--ddd-lh-120);
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
         }
@@ -172,7 +173,7 @@ class SelfCheckProposed extends I18NMixin(
           );
           background-color: var(
             --ddd-component-self-check-answer-background,
-            var(--simple-colors-default-theme-light-green-11, #00762e)
+            var(--simple-colors-default-theme-light-green-7, #00762e)
           );
           width: 100%;
           top: 0;
@@ -189,6 +190,8 @@ class SelfCheckProposed extends I18NMixin(
         }
 
         .answer {
+          display: grid;
+          grid-template-columns: 1fr .1fr;
           font-size: var(--ddd-font-size-3xs);
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
           line-height: var(--ddd-lh-120);
@@ -212,7 +215,7 @@ class SelfCheckProposed extends I18NMixin(
           border-bottom: var(--ddd-spacing-6) solid
           var(--ddd-component-self-check-title-background,
             var(--ddd-theme-accent-color,
-              var(--simple-colors-default-theme-grey-1, #fff)
+              var(--simple-colors-default-theme-accent-8, #fff)
             )
           );
           position: relative;
@@ -248,8 +251,18 @@ class SelfCheckProposed extends I18NMixin(
           margin-top: 0;
         }
 
-        @container card (width < 600px) {
-          .
+        @container card (width < 585px) {
+          #header_wrap {
+            margin:  calc(var(--ddd-spacing-9) * -1) 0 0;
+          }
+        }
+        @container card (width > 790px) {
+          #header_wrap {
+            margin:  calc(var(--ddd-spacing-8) * -1) 0 0;
+          }
+          .image-wrap {
+            max-height: 600px;
+          }
         }
       `,
     ];
@@ -310,17 +323,6 @@ class SelfCheckProposed extends I18NMixin(
                 <slot></slot>
               </user-action>
               <div class="close_button">
-              ${this.link
-                ? html`
-                    <div class="more_info">
-                      <user-action track="click" every="every"
-                        ><a href="${this.link}" target="_blank" rel="noopener"
-                          >${this.t.moreInformation}...</a
-                        ></user-action
-                      >
-                    </div>
-                  `
-                : ``}
                 <simple-icon-button
                   label="${this.t.close}"
                   id="closeBtn"
@@ -337,6 +339,17 @@ class SelfCheckProposed extends I18NMixin(
                   ${this.t.close}
                 </simple-tooltip>
               </div>
+              ${this.link
+                ? html`
+                    <div class="more_info">
+                      <user-action track="click" every="every"
+                        ><a href="${this.link}" target="_blank" rel="noopener"
+                          >${this.t.moreInformation}...</a
+                        ></user-action
+                      >
+                    </div>
+                  `
+                : ``}
             </div>
           </div>
         </div>
