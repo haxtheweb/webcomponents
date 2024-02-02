@@ -2120,7 +2120,7 @@ export const DDDSuper = function (SuperClass) {
             );
             display: flex;
             flex-flow: column;
-            gap: 1.2rem;
+            gap: 1rem;
             font-family: var(--ddd-font-primary);
           }
           ul li,
