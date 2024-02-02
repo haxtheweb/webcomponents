@@ -11,7 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../figure-label.js';
-      import '../lib/figure-label-proposed.js';
+      import '../lib/figure-label.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -28,17 +28,17 @@
       <demo-snippet>
         <template>
           <div>
-            <figure-label-proposed accent-color="red" title="1.3" description="Default color styling (accent color enabled)">
-            </figure-label-proposed>
+            <figure-label accent-color="red" title="1.3" description="Default color styling (accent color enabled)">
+            </figure-label>
             <div style="--ddd-theme-accent-color: var(--ddd-theme-polaris-pughBlue);">
-              <figure-label-proposed title="1.3" description="Application override color set">
-              </figure-label-proposed> <!-- application override -->
+              <figure-label title="1.3" description="Application override color set">
+              </figure-label> <!-- application override -->
               <div style="
               --ddd-component-figure-label-title: var(--ddd-theme-polaris-link80);
               --ddd-component-figure-label-background: var(--ddd-theme-polaris-infoLight);
               ">
-                <figure-label-proposed title="1.3" description="Component override color set">
-                </figure-label-proposed> <!-- component override -->
+                <figure-label title="1.3" description="Component override color set">
+                </figure-label> <!-- component override -->
               </div>
             </div>
           </div>

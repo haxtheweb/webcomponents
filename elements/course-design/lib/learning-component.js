@@ -8,8 +8,8 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 // Defines the type options available in the HAX wiring, "Learning Objectives" is the default.
 export const learningComponentNouns = {
@@ -149,7 +149,7 @@ export function iconFromPageType(type) {
  * @demo demo/index.html
  * @element learning-component
  */
-class LearningComponent extends I18NMixin(SimpleColors) {
+class LearningComponent extends I18NMixin(DDD) {
   /**
    * Convention we use
    */
@@ -204,109 +204,106 @@ class LearningComponent extends I18NMixin(SimpleColors) {
       css`
         :host {
           display: block;
-          font-family: "Open Sans", sans-serif;
-          border: 1px solid var(--card-border-color, #d9d9d9);
-          margin: 15px 0 15px;
+          margin: var(--ddd-spacing-4) 0;
         }
         .header {
           display: flex;
           align-items: center;
           background-color: var(
-            --header-objectives-bg-color,
-            var(--simple-colors-default-theme-accent-8, #dc7927)
+            --ddd-component-learning-component-title-background,
+            var(
+              --ddd-theme-accent-color,
+              var(--simple-colors-default-theme-accent-8, #dc7927)
+            )
           );
-          padding: 10px;
+          padding: var(--ddd-spacing-3);
           color: var(
-            --header-font-color,
+            --ddd-theme-font-color,
             var(--simple-colors-default-theme-accent-1, #fff)
           );
         }
         .title {
-          margin: 0;
-          padding: 0;
-          font-weight: 600;
+          margin: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-0);
+          font-weight: var(--ddd-font-primary-bold);
           text-transform: uppercase;
         }
         .sub-title {
-          font-weight: 300;
+          font-weight: var(--ddd-font-primary-regular);
           text-transform: uppercase;
         }
         .icon {
           display: flex;
-          min-height: 64px;
-          min-width: 88px;
-        }
-        .urlbutton {
-          margin: 25px 0 0 0;
+          min-height: var(--ddd-icon-xl);
+          min-width: var(--ddd-icon-xl);
         }
         .urlbutton a {
           display: flex;
           align-items: center;
           text-decoration: none;
-          color: #000;
         }
         simple-icon-lite,
         simple-icon-button-lite {
           color: var(
-            --header-svg-fill-color,
+            --ddd-app-color-icons,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
-          border-radius: 50%;
-          margin: 0 15px 0 10px;
-          padding: 5px;
+          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-1);
         }
 
         simple-icon-button-lite {
           color: var(--simple-colors-default-theme-accent-8);
         }
 
+        .content {
+          display: grid;
+          grid-template-columns: 1fr 0.1fr;
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
+            var(--ddd-spacing-5) var(--ddd-spacing-6);
+        }
+
         @media screen and (min-width: 320px) {
-          .content {
-            padding: 25px 30px;
-          }
           .title {
-            font-size: 18px;
+            font-size: var(--ddd-font-size-3xs);
           }
           .sub-title {
-            font-size: 14px;
+            font-size: var(--ddd-font-size-4xs);
           }
           .urlbutton {
             display: flex;
             justify-content: center;
           }
           simple-icon-lite {
-            --simple-icon-width: 24px;
-            --simple-icon-height: 24px;
+            --simple-icon-width: var(--ddd-icon-xxs);
+            --simple-icon-height: var(--ddd-icon-xxs);
             height: 35px;
             width: 35px;
-            border: 2px solid
-              var(
-                --header-svg-border-color,
-                var(--simple-colors-default-theme-grey-1, #fff)
-              );
           }
         }
 
         @media screen and (min-width: 920px) {
-          .content {
-            padding: 25px 90px;
-          }
           .title {
-            font-size: 28px;
+            font-size: var(--ddd-font-size-ms);
           }
           .sub-title {
-            font-size: 24px;
+            font-size: var(--ddd-font-size-s);
           }
           .urlbutton {
             display: flex;
             justify-content: end;
           }
-          simple-icon-lite,
+          simple-icon-lite {
+            --simple-icon-width: var(--ddd-icon-sm);
+            --simple-icon-height: var(--ddd-icon-sm);
+            height: var(--ddd-icon-xl);
+            width: var(--ddd-icon-xl);
+          }
           simple-icon-button-lite {
-            --simple-icon-width: 36px;
-            --simple-icon-height: 36px;
-            height: 50px;
-            width: 50px;
+            --simple-icon-width: var(--ddd-icon-md);
+            --simple-icon-height: var(--ddd-icon-md);
+            height: var(--ddd-icon-xl);
+            width: var(--ddd-icon-xl);
           }
         }
       `,
@@ -321,15 +318,18 @@ class LearningComponent extends I18NMixin(SimpleColors) {
       <div class="header">
         <div class="icon">
           ${this.icon
-            ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite>`
+            ? html` <simple-icon-lite
+                icon="${this.icon}"
+                class="b-sm r-rounded"
+              ></simple-icon-lite>`
             : ``}
         </div>
         <div class="title-wrap">
-          <div class="sub-title">${this.subtitle}</div>
-          <div class="title">${this.title}</div>
+          <div class="sub-title lh-120">${this.subtitle}</div>
+          <div class="title lh-120">${this.title}</div>
         </div>
       </div>
-      <div class="content">
+      <div class="content b-sm bt-0 bs-lg">
         <slot></slot>
         ${this.url
           ? html` <div class="urlbutton">

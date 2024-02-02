@@ -19,14 +19,14 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lib/block-quote.js';
-      import '../lib/block-quote-proposed.js';
+      import '../lib/block-quote.js';
       import '../lib/ebook-button.js';
       import '../lib/lrn-h5p.js';
       import '../lib/course-intro.js';
       import '../lib/learning-component.js';
       import '../lib/activity-box.js';
       import '../lib/worksheet-download.js';
-      import '../lib/learning-component-proposed.js';
+      import '../lib/learning-component.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -35,6 +35,28 @@
       <h3>Basic usage of activity-box</h3>
       <demo-snippet>
         <template>
+          <learning-component subtitle="Step 2: Interview Potential Customers" accent-color="orange" title="Learning Objectives" icon="courseicons:learning-objectives" type="">
+
+            <p>This step includes three parts:&nbsp;</p>
+            <ul>
+          
+              <li>
+          
+                <a href="/step2-part1">Part 1: Figure Out What To Ask</a>
+              </li>
+              <li>
+          
+                <a href="/step2-part2">Part 2: Find People To Interview</a>
+          &nbsp;
+          
+              </li>
+              <li>
+          
+                <a href="/step2-part3">Part 3: Conduct Customer Interviews</a>
+              </li>
+            </ul>
+            <p>In Step 2, you will be interviewing potential customers to find out if your assumptions are correct or where they fall short. This process helps you make sure that you are building something that solves a real problem for real customers.</p>
+          </learning-component>
           <learning-component icon="av:explicit">
             <div>
               <ul>
@@ -46,7 +68,7 @@
               </ul>
             </div>
           </learning-component>
-          <learning-component-proposed icon="av:explicit">
+          <learning-component icon="av:explicit">
             <div>
               <ul>
                 <li>Learning Objective 1...</li>
@@ -56,7 +78,7 @@
                 <li>Learning Objective 5...</li>
               </ul>
             </div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component subtitle="Unit 1">
             <div>
               <ul>
@@ -68,7 +90,7 @@
               </ul>
             </div>
           </learning-component>
-          <learning-component-proposed subtitle="Unit 1">
+          <learning-component subtitle="Unit 1">
             <div>
               <ul>
                 <li>Learning Objective 1...</li>
@@ -78,91 +100,91 @@
                 <li>Learning Objective 5...</li>
               </ul>
             </div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="knowledge" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="knowledge" subtitle="Unit 1">
+          <learning-component type="knowledge" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="connection" subtitle="Unit 1">
             <div>This specific chemistry foundation is related to...</div>
           </learning-component>
-          <learning-component-proposed type="connection" subtitle="Unit 1">
+          <learning-component type="connection" subtitle="Unit 1">
             <div>This specific chemistry foundation is related to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="strategy" subtitle="Draw a Diagram" url="https://www.google.com/">
             <div>In order to better understand this complex process, try drawing a diagam to help undestand the concept..</div>
           </learning-component>
-          <learning-component-proposed type="strategy" subtitle="Draw a Diagram" url="https://www.google.com/">
+          <learning-component type="strategy" subtitle="Draw a Diagram" url="https://www.google.com/">
             <div>In order to better understand this complex process, try drawing a diagam to help undestand the concept..</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="assessment" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="assessment" subtitle="Unit 1">
+          <learning-component type="assessment" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="discuss" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="discuss" subtitle="Unit 1">
+          <learning-component type="discuss" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="listen" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="listen" subtitle="Unit 1">
+          <learning-component type="listen" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="make" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="make" subtitle="Unit 1">
+          <learning-component type="make" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="observe" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="observe" subtitle="Unit 1">
+          <learning-component type="observe" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="present" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="present" subtitle="Unit 1">
+          <learning-component type="present" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="read" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="read" subtitle="Unit 1">
+          <learning-component type="read" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="reflect" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="reflect" subtitle="Unit 1">
+          <learning-component type="reflect" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="research" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="research" subtitle="Unit 1">
+          <learning-component type="research" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="watch" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="watch" subtitle="Unit 1">
+          <learning-component type="watch" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
           <learning-component type="write" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
           </learning-component>
-          <learning-component-proposed type="write" subtitle="Unit 1">
+          <learning-component type="write" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
-          </learning-component-proposed>
+          </learning-component>
         </template>
       </demo-snippet>
     </div>
@@ -197,13 +219,13 @@
               own weight.
             </span>
           </block-quote>
-          <block-quote-proposed citation="Albert Einstein" image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg">
+          <block-quote citation="Albert Einstein" image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg">
             <span slot="quote">
               I was sitting in a chair in the patent office at Bern, when all of a sudden
               a thought occurred to me: ‘If a person falls freely, he will not feel his
               own weight.
             </span>
-          </block-quote-proposed>
+          </block-quote>
         </template>
       </demo-snippet>
       <h3>worksheet-download</h3>

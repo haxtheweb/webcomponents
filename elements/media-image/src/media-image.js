@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleModalHandler } from "@lrnwebcomponents/simple-modal/lib/simple-modal-handler.js";
-import "@lrnwebcomponents/figure-label/lib/figure-label-proposed.js";
+import "@lrnwebcomponents/figure-label/figure-label.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `media-image`
@@ -159,10 +159,10 @@ class MediaImage extends DDD {
     return html`
       ${this.__figureLabel
         ? html`
-            <figure-label-proposed
+            <figure-label
               title="${this.figureLabelTitle}"
               description="${this.figureLabelDescription}"
-            ></figure-label-proposed>
+            ></figure-label>
           `
         : ``}
       <media-image-image

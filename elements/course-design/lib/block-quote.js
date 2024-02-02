@@ -1,9 +1,9 @@
 import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
-export class BlockQuote extends SimpleColors {
+export class BlockQuote extends DDD {
   static get properties() {
     return {
       ...super.properties,
@@ -22,7 +22,6 @@ export class BlockQuote extends SimpleColors {
     this.citation = "";
     this.image = "";
     this.alt = "";
-    this.accentColor = "grey";
   }
 
   render() {
@@ -43,13 +42,19 @@ export class BlockQuote extends SimpleColors {
               <simple-icon-lite
                 id="iconflip"
                 icon="editor:format-quote"
+                style="align-items: start"
               ></simple-icon-lite>
               <span><slot></slot></span>
               <span><slot name="quote"></slot></span>
-              <simple-icon-lite icon="editor:format-quote"></simple-icon-lite>
+              <simple-icon-lite
+                icon="editor:format-quote"
+                style="align-items: start"
+              ></simple-icon-lite>
             </div>
             <div id="citation">
-              ${this.citation ? html` <p>-- ${this.citation}</p> ` : ""}
+              ${this.citation
+                ? html` <p><span class="dash">--</span> ${this.citation}</p> `
+                : ""}
             </div>
           </div>
         </div>
@@ -65,22 +70,26 @@ export class BlockQuote extends SimpleColors {
       css`
         :host {
           background-color: var(
-            --simple-colors-default-theme-accent-2,
-            #f5f5f5
+            --ddd-component-block-quote-background,
+            var(--ddd-theme-polaris-limestoneMaxLight, #f5f5f5)
           );
-          color: var(--simple-colors-default-theme-accent-12, #000000);
           display: block;
+          align-items: start;
+          width: fit-content;
         }
 
         #wrap {
           display: flex;
-          border-left-color: var(
-            --simple-colors-default-theme-accent-3,
-            #747474
+          border-left: var(--ddd-border-lg);
+          border-color: var(
+            --ddd-component-block-quote-border-color,
+            var(
+              --ddd-theme-accent-color,
+              var(--ddd-theme-polaris-limestoneGray)
+            )
           );
-          border-left: solid;
-          border-left-width: 8px;
-          padding: 25px;
+          padding: var(--ddd-spacing-6);
+          text-align: center;
         }
 
         @media screen and (max-width: 1200px) {
@@ -94,7 +103,7 @@ export class BlockQuote extends SimpleColors {
           display: flex;
           flex-direction: column;
           flex: 1 1 auto;
-          padding: 20px 20px 0;
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-5) 0;
         }
 
         div ::slotted(*) {
@@ -102,8 +111,9 @@ export class BlockQuote extends SimpleColors {
         }
 
         #quote {
+          align-items: center;
           font-style: italic;
-          line-height: 1.4;
+          line-height: var(--ddd-lh-140);
         }
 
         #iconflip {
@@ -115,8 +125,20 @@ export class BlockQuote extends SimpleColors {
           -ms-filter: "FlipH";
         }
 
+        .dash {
+          letter-spacing: -0.5em;
+          margin-right: var(--ddd-spacing-2);
+        }
+
         simple-icon-lite {
-          color: var(--simple-colors-default-theme-accent-7, #747474);
+          align-self: flex-start;
+          color: var(
+            --ddd-component-block-quote-icon,
+            var(
+              --ddd-theme-accent-color,
+              var(--ddd-theme-polaris-limestoneGray)
+            )
+          );
           height: var(--ddd-icon-xs);
           width: var(--ddd-icon-xs);
         }
@@ -133,16 +155,17 @@ export class BlockQuote extends SimpleColors {
         @media screen and (max-width: 1200px) {
           #image {
             height: 200px;
-            margin: 0 auto 0;
-            border: solid;
-            border-width: 6px;
-            border-color: var(--simple-colors-default-theme-accent-3, #747474);
-            border-radius: 50%;
+            margin: 0 auto;
+            border: var(--ddd-border-lg);
+            border-color: var(
+              --ddd-component-block-quote-image-border,
+              var(
+                --ddd-theme-accent-color,
+                var(--ddd-theme-polaris-limestoneGray)
+              )
+            );
+            border-radius: var(--ddd-radius-circle);
           }
-        }
-
-        #citation {
-          font-size: 16px;
         }
       `,
     ];

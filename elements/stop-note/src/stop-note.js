@@ -1,24 +1,25 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
-// register the iconset
-SimpleIconsetStore.registerIconset(
-  "stopnoteicons",
-  `${
-    new URL("./stop-note.js", import.meta.url).href
-  }/../lib/svgs/stopnoteicons/`
-);
 /**
  * `stop-note`
  * `A note that directs people to an action item of different warning levels`
  * @demo demo/index.html
  * @element stop-note
  */
-class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
+
+export const StopNoteIconList = {
+  stop: "stopnoteicons:stop-icon",
+  warning: "stopnoteicons:warning-icon",
+  success: "stopnoteicons:confirm-icon",
+  info: "stopnoteicons:book-icon",
+};
+
+class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -29,30 +30,56 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
         :host {
           display: block;
           width: auto;
-          --background-color: #f7f7f7;
-          --accent-color: #d32f2f;
-          margin-bottom: 20px;
+          --background-color: var(
+            --ddd-component-stop-note-icon-background,
+            var(--ddd-theme-polaris-errorLight)
+          );
+          --accent-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--ddd-theme-polaris-error)
+          );
+          margin: var(--ddd-spacing-5) 0;
         }
 
         simple-icon {
-          --simple-icon-height: 100px;
-          --simple-icon-width: 100px;
+          --simple-icon-height: var(--ddd-icon-4xl);
+          --simple-icon-width: var(--ddd-icon-4xl);
         }
 
         :host([icon="stopnoteicons:stop-icon"]) {
-          --accent-color: #d8261c;
+          --accent-color: var(--ddd-theme-polaris-original87Pink);
+          --background-color: var(--ddd-theme-polaris-errorLight);
+        }
+        :host([status="stop"]) {
+          --accent-color: var(--ddd-theme-polaris-original87Pink);
+          --background-color: var(--ddd-theme-polaris-errorLight);
         }
 
         :host([icon="stopnoteicons:warning-icon"]) {
-          --accent-color: #ffeb3b;
+          --accent-color: var(--ddd-theme-polaris-keystoneYellow);
+          --background-color: var(--ddd-theme-polaris-warningLight);
+        }
+        :host([status="warning"]) {
+          --accent-color: var(--ddd-theme-polaris-keystoneYellow);
+          --background-color: var(--ddd-theme-polaris-warningLight);
         }
 
         :host([icon="stopnoteicons:confirm-icon"]) {
-          --accent-color: #81c784;
+          --accent-color: var(--ddd-theme-polaris-success);
+          --background-color: var(--ddd-theme-polaris-successLight);
+        }
+        :host([status="success"]) {
+          --accent-color: var(--ddd-theme-polaris-success);
+          --background-color: var(--ddd-theme-polaris-successLight);
         }
 
         :host([icon="stopnoteicons:book-icon"]) {
-          --accent-color: #21a3db;
+          --accent-color: var(--ddd-theme-polaris-info);
+          --background-color: var(--ddd-theme-polaris-infoLight);
+        }
+        :host([status="info"]) {
+          --accent-color: var(--ddd-theme-polaris-info);
+          --background-color: var(--ddd-theme-polaris-infoLight);
         }
 
         .container {
@@ -61,29 +88,38 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
         }
 
         .message_wrap {
-          border-right: 7px solid var(--accent-color);
-          padding: 10px 25px;
+          border-color: var(
+            --ddd-component-stop-note-border,
+            var(--accent-color)
+          );
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
           flex: 1 1 auto;
-          background-color: var(--background-color);
+          background-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--background-color)
+          );
         }
 
-        .main_message {
-          font-size: 32px;
-          margin-top: 10px;
+        :host([title=""]) .secondary_message {
+          display: flex;
+          height: 60%;
+          align-items: center;
+          margin-top: auto;
+          font-size: var(--ddd-font-size-s);
+          width: 100%;
+          font-weight: var(--ddd-font-primary-bold);
         }
 
         .secondary_message {
-          margin-top: 5px;
-          font-size: 19.2px;
           width: 100%;
+          font-weight: var(--ddd-font-primary-regular);
         }
 
-        .link a {
-          margin-top: 5px;
-          font-size: 19.2px;
-          float: left;
-          clear: left;
+        a:-webkit-any-link {
           text-decoration: none;
+        }
+        a:hover {
+          text-decoration: underline;
         }
 
         .svg {
@@ -92,8 +128,14 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
         }
 
         .svg_wrap {
-          background-color: var(--accent-color);
-          padding: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(
+            --ddd-component-stop-note-icon-background,
+            var(--accent-color)
+          );
+          padding: var(--ddd-spacing-2);
           width: auto;
         }
       `,
@@ -107,15 +149,20 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
             <simple-icon icon="${this.icon}" no-colorize></simple-icon>
           </div>
         </div>
-        <div class="message_wrap">
-          <div class="main_message" id="title">${this.title}</div>
-          <div class="secondary_message">
+        <div class="message_wrap br-lg">
+          <h3
+            class="main_message ${this.url ? "mt-2" : "mt-5"} mb-2 pb-0"
+            id="title"
+          >
+            ${this.title}
+          </h3>
+          <div class="secondary_message mb-2">
             <slot></slot>
             <slot name="message"></slot>
           </div>
           ${this.url
             ? html`
-                <div class="link">
+                <div class="link mb-1">
                   <a href="${this.url}" id="link">
                     ${this.t.moreInformation} &gt;
                   </a>
@@ -133,6 +180,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
     super();
     this.url = null;
     this.title = "";
+    this.status = "stop";
     this.icon = "stopnoteicons:stop-icon";
     this.t = {
       moreInformation: "More Information",
@@ -166,6 +214,10 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
         type: String,
         reflect: true,
       },
+      status: {
+        type: String,
+        reflect: true,
+      },
     };
   }
   updated(changedProperties) {
@@ -176,6 +228,11 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
       if (propName == "url") {
         this.remoteLinkURL = this[propName];
       }
+      if (propName == "status") {
+        StopNoteIconList[this[propName]]
+          ? (this.icon = StopNoteIconList[this[propName]])
+          : (this.icon = StopNoteIconList["stop"]);
+      }
     });
   }
   /**
@@ -184,6 +241,9 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
+    StopNoteIconList[this.status]
+      ? (this.icon = StopNoteIconList[this.status])
+      : (this.icon = StopNoteIconList["stop"]);
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.

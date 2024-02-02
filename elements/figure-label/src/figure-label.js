@@ -2,7 +2,8 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
   * `figure-label`
   * @element figure-label
@@ -15,10 +16,11 @@ import { LitElement, html, css } from "lit";
   * @lit-element
   * @demo demo/index.html
   */
-class FigureLabel extends LitElement {
+class FigureLabel extends DDD {
   //styles function
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -30,20 +32,56 @@ class FigureLabel extends LitElement {
 
         #wrap {
           display: flex;
-          margin-bottom: 1em;
+          margin-bottom: var(--ddd-spacing-4);
         }
 
         #title {
-          background-color: var(--figure-label-title-background-color, #f2f2f2);
-          padding: 10.8px 13.5px 10.8px;
-          font-size: 13.5px;
+          display: flex;
+          align-items: center;
+          font-family: var(--ddd-font-primary);
+          background-color: var(
+            --ddd-component-figure-label-title,
+            var(
+              --ddd-theme-accent-color,
+              var(
+                --simple-colors-default-theme-accent-2,
+                var(--ddd-theme-polaris-limestoneLight)
+              )
+            )
+          ); /* is this hierarchy correct? */
+          color: var(
+            --ddd-component-figure-label-title-text,
+            var(
+              --simple-colors-default-theme-accent-11,
+              var(--ddd-theme-polaris-potentialMidnight)
+            )
+          );
+          font-size: var(--ddd-font-size-4xs);
+          padding: var(--ddd-spacing-3);
+          font-weight: var(--ddd-font-primary-bold);
         }
 
         #description {
-          border: solid 1px
-            var(--figure-label-description-background-color, #f2f2f2);
-          padding: 10.8px 13.5px 10.8px;
-          font-size: 13.5px;
+          display: flex;
+          align-items: center;
+          font-family: var(--ddd-font-primary);
+          border-color: var(
+            --ddd-component-figure-label-title,
+            var(
+              --ddd-theme-accent-color,
+              var(
+                --simple-colors-default-theme-accent-2,
+                var(--ddd-theme-polaris-limestoneLight)
+              )
+            )
+          );
+          padding: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-4xs);
+          background: var(
+            --ddd-component-figure-label-background,
+            var(--ddd-theme-polaris-white)
+          );
+          font-weight: var(--ddd-font-primary-regular);
         }
       `,
     ];
@@ -53,7 +91,7 @@ class FigureLabel extends LitElement {
   render() {
     return html` <div id="wrap">
       <div id="title">${this.title}</div>
-      <div id="description">${this.description}</div>
+      <div id="description" class="b-sm bl-0">${this.description}</div>
     </div>`;
   }
 
@@ -108,20 +146,11 @@ class FigureLabel extends LitElement {
   static get properties() {
     return {
       ...super.properties,
-
       title: {
-        name: "title",
         type: String,
-        value: "",
-        reflectToAttribute: false,
-        observer: false,
       },
       description: {
-        name: "description",
         type: String,
-        value: "",
-        reflectToAttribute: false,
-        observer: false,
       },
     };
   }
@@ -134,6 +163,6 @@ class FigureLabel extends LitElement {
     return "figure-label";
   }
 }
-customElements.define("figure-label", FigureLabel);
+customElements.define(FigureLabel.tag, FigureLabel);
 
 export { FigureLabel };

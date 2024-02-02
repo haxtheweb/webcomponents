@@ -2,8 +2,8 @@
   "version": "experimental",
   "tags": [
     {
-      "name": "stop-note-proposed",
-      "path": "./lib/stop-note-proposed.js",
+      "name": "stop-note",
+      "path": "./stop-note.js",
       "attributes": [
         {
           "name": "url",
@@ -64,93 +64,6 @@
           "attribute": "status",
           "type": "string",
           "default": "\"stop\""
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "Icon selected",
-          "type": "string",
-          "default": "\"stopnoteicons:stop-icon\""
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object",
-          "default": "{\"moreInformation\":\"More Information\"}"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        }
-      ]
-    },
-    {
-      "name": "stop-note",
-      "path": "./stop-note.js",
-      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`",
-      "attributes": [
-        {
-          "name": "url",
-          "description": "url to additional resources",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "description": "Title Message",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "icon",
-          "description": "Icon selected",
-          "type": "string",
-          "default": "\"stopnoteicons:stop-icon\""
-        },
-        {
-          "name": "t",
-          "type": "object",
-          "default": "{\"moreInformation\":\"More Information\"}"
-        },
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "url to additional resources",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title Message",
-          "type": "string",
-          "default": "\"\""
         },
         {
           "name": "icon",

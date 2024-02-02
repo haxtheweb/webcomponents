@@ -9,7 +9,7 @@
   <script type="module">
     import "@polymer/iron-demo-helpers/demo-snippet.js";
     import "../stop-note.js";
-    import "../lib/stop-note-proposed.js";
+    import "../lib/stop-note.js";
   </script>
 </head>
 
@@ -25,9 +25,9 @@
     </demo-snippet>
     <demo-snippet>
       <template>
-        <stop-note-proposed>
+        <stop-note>
           <span slot="message">You can write any message you want here.</span>
-        </stop-note-proposed>
+        </stop-note>
       </template>
     </demo-snippet>
     <demo-snippet>
@@ -37,9 +37,9 @@
           --ddd-component-stop-note-text-background: var(--ddd-theme-polaris-skyLight);
           --ddd-component-stop-note-border: var(--ddd-theme-polaris-nittanyNavy);
           ">
-          <stop-note-proposed title="Error Message" url="https://www.google.com">
+          <stop-note title="Error Message" url="https://www.google.com">
             <span slot="message">You can write any error message you want here.</span>
-          </stop-note-proposed>
+          </stop-note>
         </div>
       </template>
     </demo-snippet>
@@ -55,9 +55,9 @@
     </demo-snippet>
     <demo-snippet>
       <template>
-        <stop-note-proposed title="Error Message" url="https://www.google.com">
+        <stop-note title="Error Message" url="https://www.google.com">
           <span slot="message">You can write any error message you want here.</span>
-        </stop-note-proposed>
+        </stop-note>
       </template>
     </demo-snippet>
 
@@ -73,9 +73,9 @@
     </demo-snippet>
     <demo-snippet>
       <template>
-        <stop-note-proposed title="Warning Message" url="https://www.google.com" status="warning" icon="stopnoteicons:warning-icon">
+        <stop-note title="Warning Message" url="https://www.google.com" status="warning" icon="stopnoteicons:warning-icon">
           <span slot="message">You can write any warning message you want here.</span>
-        </stop-note-proposed>
+        </stop-note>
       </template>
     </demo-snippet>
   </div><div class="vertical-section-container">
@@ -89,9 +89,9 @@
     </demo-snippet>
     <demo-snippet>
       <template>
-        <stop-note-proposed title="Confirmation Message" url="https://www.google.com" status="success" icon="stopnoteicons:confirm-icon">
+        <stop-note title="Confirmation Message" url="https://www.google.com" status="success" icon="stopnoteicons:confirm-icon">
           <span slot="message">You can write any confirmation message you want here.</span>
-        </stop-note-proposed>
+        </stop-note>
       </template>
     </demo-snippet>
   </div><div class="vertical-section-container">
@@ -105,9 +105,9 @@
       </demo-snippet>
       <demo-snippet>
         <template>
-          <stop-note-proposed title="Read the Textbook" icon="stopnoteicons:book-icon" status="info">
+          <stop-note title="Read the Textbook" icon="stopnoteicons:book-icon" status="info">
             <span slot="message">You can write anything you want here (chapters, pages, etc.).</span>
-          </stop-note-proposed>
+          </stop-note>
         </template>
       </demo-snippet>
     </div>

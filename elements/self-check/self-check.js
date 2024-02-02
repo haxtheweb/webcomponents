@@ -1,11 +1,11 @@
 import { LitElement, html, css, svg } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { lazyImageLoader } from "@lrnwebcomponents/lazy-image-helpers/lazy-image-helpers.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `self-check`
  * 
@@ -32,9 +32,7 @@ Custom property | Description | Default
  * @element self-check
  * 
  */
-class SelfCheck extends I18NMixin(
-  lazyImageLoader(SchemaBehaviors(SimpleColors))
-) {
+class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   constructor() {
     super();
     this.correct = false;
@@ -43,6 +41,7 @@ class SelfCheck extends I18NMixin(
     this.question = "";
     this.accentColor = "blue";
     this.title = "Self-Check";
+    this.fullWidthImage = false;
     this.t = {
       revealAnswer: "Reveal Answer",
       close: "Close",
@@ -60,7 +59,8 @@ class SelfCheck extends I18NMixin(
       css`
         :host {
           display: block;
-          margin: 15px 0;
+          margin: var(--ddd-spacing-4) 0;
+          width: 60%;
         }
         :host([hidden]),
         *[hidden] {
@@ -68,31 +68,29 @@ class SelfCheck extends I18NMixin(
         }
 
         div.card {
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-          width: 100%;
-          color: var(
-            --self-check-question-text,
-            var(--simple-colors-default-theme-grey-12, #000)
-          );
-          background-color: var(
-            --self-check-question-color,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
           overflow: hidden;
+          container-type: inline-size;
+          container-name: card;
         }
 
         simple-icon-button {
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          position: relative;
-          left: 10px;
-          bottom: -10px;
-          padding: 2px;
+          display: flex;
+          --simple-icon-width: var(--ddd-icon-sm);
+          --simple-icon-height: var(--ddd-icon-sm);
+          height: var(--ddd-icon-xl);
+          width: var(--ddd-icon-xl);
+          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-1);
         }
 
         .check_button {
           display: flex;
           justify-content: flex-end;
+        }
+        :host([link]) .close_button {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
         .close_button {
           display: flex;
@@ -100,55 +98,67 @@ class SelfCheck extends I18NMixin(
         }
 
         simple-icon#questionmark {
-          --simple-icon-width: 35px;
-          --simple-icon-height: 35px;
-          padding: 5px;
+          --simple-icon-width: var(--ddd-icon-lg);
+          --simple-icon-height: var(--ddd-icon-lg);
+          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-2);
           color: var(
-            --self-check-heading-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
+            --ddd-component-self-check-title-color,
+            var(
+              --ddd-theme-font-color,
+              var(--simple-colors-default-theme-accent-1, #000)
+            )
           );
         }
 
         .heading {
+          display: flex;
+          align-items: center;
           text-transform: uppercase;
-          font-size: 22px;
-          margin: 10px;
+          font-size: var(--ddd-font-size-ms);
+          font-weight: var(--ddd-font-primary-medium);
           color: var(
-            --self-check-heading-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
+            --ddd-component-self-check-title-color,
+            var(
+              --ddd-theme-font-color,
+              var(--simple-colors-default-theme-accent-1, #000)
+            )
           );
         }
 
         #header_wrap {
-          color: var(
-            --self-check-heading-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
           background-color: var(
-            --self-check-heading-color,
-            var(--simple-colors-default-theme-accent-8, #444)
+            --ddd-component-self-check-title-background,
+            var(
+              --ddd-theme-accent-color,
+              var(--simple-colors-default-theme-accent-8, #fff)
+            )
           );
           display: flex;
           align-items: center;
-          width: 100%;
-          margin: -20px 0 0;
+          margin: calc(var(--ddd-spacing-6) * -1) 0 0;
+          padding: var(--ddd-spacing-3);
         }
 
         #question_wrap {
           color: var(
-            --self-check-question-text,
+            --ddd-component-self-check-question-text,
             var(--simple-colors-default-theme-grey-12, #000)
           );
           background-color: var(
-            --self-check-question-color,
+            --ddd-component-self-check-question-background,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
           position: relative;
         }
 
         .question {
-          font-size: 16px;
-          padding: 15px 15px;
+          display: grid;
+          grid-template-columns: 1fr 0.1fr;
+          font-size: var(--ddd-theme-body-font-size);
+          line-height: var(--ddd-lh-120);
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
+            var(--ddd-spacing-5) var(--ddd-spacing-6);
         }
 
         :host([correct]) .question {
@@ -159,22 +169,17 @@ class SelfCheck extends I18NMixin(
           visibility: hidden;
           opacity: 0;
           color: var(
-            --self-check-answer-text,
+            --ddd-component-self-check-answer-text,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
           background-color: var(
-            --self-check-answer-color,
-            var(--simple-colors-default-theme-light-green-11, #00762e)
+            --ddd-component-self-check-answer-background,
+            var(--simple-colors-default-theme-light-green-7, #00762e)
           );
-          border-top: 2px solid
-            var(
-              --self-check-answer-text,
-              var(--simple-colors-default-theme-grey-1, #fff)
-            );
           width: 100%;
           top: 0;
-          transition: all 0.2s ease;
           left: calc(100%);
+          transition: all 0.2s ease;
           position: absolute;
         }
 
@@ -186,9 +191,12 @@ class SelfCheck extends I18NMixin(
         }
 
         .answer {
-          font-size: 16px;
-          padding: 15px;
-          line-height: 19.2px;
+          display: grid;
+          grid-template-columns: 1fr 0.1fr;
+          font-size: var(--ddd-font-size-3xs);
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
+            var(--ddd-spacing-5) var(--ddd-spacing-6);
+          line-height: var(--ddd-lh-120);
         }
 
         #quote_start {
@@ -203,16 +211,19 @@ class SelfCheck extends I18NMixin(
         .triangle {
           width: 0;
           height: 0;
-          border-left: 20px solid transparent;
-          border-right: 20px solid transparent;
-          border-bottom: 20px solid
+          border-left: var(--ddd-spacing-6) solid transparent;
+          border-right: var(--ddd-spacing-6) solid transparent;
+          border-bottom: var(--ddd-spacing-6) solid
             var(
-              --self-check-heading-color,
-              var(--simple-colors-default-theme-accent-8, #444)
+              --ddd-component-self-check-title-background,
+              var(
+                --ddd-theme-accent-color,
+                var(--simple-colors-default-theme-accent-8, #fff)
+              )
             );
           position: relative;
-          top: -20px;
-          left: -1px;
+          top: calc(var(--ddd-spacing-5) * -1);
+          left: var(--ddd-spacing-9);
         }
 
         .more_info {
@@ -242,12 +253,26 @@ class SelfCheck extends I18NMixin(
         ::slotted(p:last-child) {
           margin-top: 0;
         }
+
+        @container card (width < 585px) {
+          #header_wrap {
+            margin: calc(var(--ddd-spacing-9) * -1) 0 0;
+          }
+        }
+        @container card (width > 790px) {
+          #header_wrap {
+            margin: calc(var(--ddd-spacing-8) * -1) 0 0;
+          }
+          .image-wrap {
+            max-height: 600px;
+          }
+        }
       `,
     ];
   }
   render() {
     return html`
-      <div class="card">
+      <div class="card bs-lg b-sm">
         <div class="image-wrap">
           ${this.renderSVGLoader()}
           <img
@@ -260,6 +285,7 @@ class SelfCheck extends I18NMixin(
         <div class="triangle"></div>
         <div id="header_wrap">
           <simple-icon
+            class="r-circle"
             id="questionmark"
             icon="icons:help"
             ?dark="${!this.dark}"
@@ -281,7 +307,7 @@ class SelfCheck extends I18NMixin(
                 label="${this.t.revealAnswer}"
                 id="checkBtn"
                 class="check-btn"
-                icon="icons:check-circle"
+                icon="image:remove-red-eye"
                 ?dark="${this.dark}"
                 @click="${this.openAnswer}"
               ></simple-icon-button>
@@ -299,17 +325,6 @@ class SelfCheck extends I18NMixin(
               <user-action track="visibility">
                 <slot></slot>
               </user-action>
-              ${this.link
-                ? html`
-                    <div class="more_info">
-                      <user-action track="click" every="every"
-                        ><a href="${this.link}" target="_blank" rel="noopener"
-                          >${this.t.moreInformation}...</a
-                        ></user-action
-                      >
-                    </div>
-                  `
-                : ``}
               <div class="close_button">
                 <simple-icon-button
                   label="${this.t.close}"
@@ -327,6 +342,17 @@ class SelfCheck extends I18NMixin(
                   ${this.t.close}
                 </simple-tooltip>
               </div>
+              ${this.link
+                ? html`
+                    <div class="more_info">
+                      <user-action track="click" every="every"
+                        ><a href="${this.link}" target="_blank" rel="noopener"
+                          >${this.t.moreInformation}...</a
+                        ></user-action
+                      >
+                    </div>
+                  `
+                : ``}
             </div>
           </div>
         </div>
@@ -427,7 +453,6 @@ class SelfCheck extends I18NMixin(
   /**
    * Property for toggling "checkbtn".
    */
-
   openAnswer(e) {
     this.correct = !this.correct;
   }

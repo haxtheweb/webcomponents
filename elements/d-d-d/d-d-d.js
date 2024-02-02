@@ -2276,7 +2276,8 @@ export const DDDSuper = function (SuperClass) {
             padding: var(--ddd-spacing-2);
             margin: var(--ddd-spacing-5) 0;
           }
-          code::-moz-selection { /* Code for Firefox */
+          code::-moz-selection {
+            /* Code for Firefox */
             background: transparent;
           }
           code::selection {
@@ -2616,7 +2617,6 @@ class DDD extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.loadDDDFonts(DDDFonts);
-
   }
   static get tag() {
     return "d-d-d";
