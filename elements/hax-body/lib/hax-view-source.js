@@ -116,16 +116,17 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               icon-position="top"
             >
             </hax-tray-button>
-            ${HAXStore.revisionHistoryLink ? html`
-            <hax-tray-button
-              @click="${this.revisionHistoryClick}"
-              icon="hax:git"
-              label="${this.t.revisionHistory}"
-              show-text-label
-              icon-position="top"
-            >
-            </hax-tray-button>` : ``}
-            
+            ${HAXStore.revisionHistoryLink
+              ? html` <hax-tray-button
+                  @click="${this.revisionHistoryClick}"
+                  icon="hax:git"
+                  label="${this.t.revisionHistory}"
+                  show-text-label
+                  icon-position="top"
+                >
+                </hax-tray-button>`
+              : ``}
+
             <simple-toolbar-menu
               icon="icons:file-download"
               icon-position="top"
@@ -556,7 +557,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       PrettifyHtml: "Prettify HTML",
       cleanFormatting: "Clean Formatting",
       haxSchema: "HAXSchema",
-      revisionHistory: "Revision history"
+      revisionHistory: "Revision history",
     };
     this.registerLocalization({
       context: this,

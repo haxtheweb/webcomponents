@@ -40,7 +40,7 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
         QRCodeMixin(
           HAXCMSThemeParts(
             HAXCMSMobileMenuMixin(
-              HAXCMSRememberRoute(DDDSuper((HAXCMSLitElementTheme)))
+              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme))
             )
           )
         )

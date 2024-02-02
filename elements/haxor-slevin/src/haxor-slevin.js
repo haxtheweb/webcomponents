@@ -351,7 +351,9 @@ class HaxorSlevin extends HAXCMSRememberRoute(
                   accent-color="${this.color}"
                   accent-heading
                   horizontal
-                  image-src="${(post.metadata && post.metadata.image) ? post.metadata.image : this.image}"
+                  image-src="${post.metadata && post.metadata.image
+                    ? post.metadata.image
+                    : this.image}"
                 >
                   <div slot="heading"><span>${post.title}</span></div>
                   <p slot="content">
@@ -403,7 +405,9 @@ class HaxorSlevin extends HAXCMSRememberRoute(
                     accent-color="${this.color}"
                     accent-heading
                     horizontal
-                    image-src="${(post.metadata && post.metadata.image) ? post.metadata.image : this.image}"
+                    image-src="${post.metadata && post.metadata.image
+                      ? post.metadata.image
+                      : this.image}"
                   >
                     <div slot="heading">${post.title}</div>
                     <div slot="subheading">

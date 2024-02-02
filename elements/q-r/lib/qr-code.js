@@ -11,9 +11,13 @@ class QRCodeElement extends HTMLElement {
     // Define Properties
     Object.keys(QRCodeElement.defaultAttributes).map(this._defineProperty);
     const location = new URL("./qr.js", import.meta.url).href;
-    globalThis.addEventListener(`es-bridge-qr-loaded`, this._qrLoaded.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      `es-bridge-qr-loaded`,
+      this._qrLoaded.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      }
+    );
     globalThis.ESGlobalBridge.requestAvailability().load("qr", location);
   }
   disconnectedCallback() {
@@ -47,7 +51,9 @@ class QRCodeElement extends HTMLElement {
     if (fn && typeof fn === "function") {
       fn.call(this, oldValue, newValue);
     }
-    if (globalThis.ESGlobalBridge.requestAvailability().imports["qr"] === true) {
+    if (
+      globalThis.ESGlobalBridge.requestAvailability().imports["qr"] === true
+    ) {
       this.generate();
     }
   }

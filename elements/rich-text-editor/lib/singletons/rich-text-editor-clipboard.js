@@ -89,10 +89,11 @@ globalThis.RichTextEditorClipboard = globalThis.RichTextEditorClipboard || {};
 // is rendered through same modal
 globalThis.RichTextEditorClipboard.requestAvailability = () => {
   if (!globalThis.RichTextEditorClipboard.instance) {
-    globalThis.RichTextEditorClipboard.instance = globalThis.document.createElement(
-      "rich-text-editor-clipboard"
+    globalThis.RichTextEditorClipboard.instance =
+      globalThis.document.createElement("rich-text-editor-clipboard");
+    globalThis.document.body.appendChild(
+      globalThis.RichTextEditorClipboard.instance
     );
-    globalThis.document.body.appendChild(globalThis.RichTextEditorClipboard.instance);
   }
   return globalThis.RichTextEditorClipboard.instance;
 };

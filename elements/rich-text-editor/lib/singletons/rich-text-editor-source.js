@@ -260,13 +260,17 @@ globalThis.RichTextEditorSource = globalThis.RichTextEditorSource || {};
 // is rendered through same modal
 globalThis.RichTextEditorSource.requestAvailability = () => {
   if (!globalThis.RichTextEditorSource.instance) {
-    globalThis.RichTextEditorSource.instance = globalThis.document.createElement(
-      "rich-text-editor-source"
-    );
-    globalThis.RichTextEditorSource.stylesheet = globalThis.document.createElement("style");
+    globalThis.RichTextEditorSource.instance =
+      globalThis.document.createElement("rich-text-editor-source");
+    globalThis.RichTextEditorSource.stylesheet =
+      globalThis.document.createElement("style");
     globalThis.RichTextEditorSource.stylesheet.innerHTML = `rich-text-editor-source + [data-rich-text-editor-view-source-mode] { display: none }`;
-    globalThis.document.body.appendChild(globalThis.RichTextEditorSource.instance);
-    globalThis.document.head.appendChild(globalThis.RichTextEditorSource.stylesheet);
+    globalThis.document.body.appendChild(
+      globalThis.RichTextEditorSource.instance
+    );
+    globalThis.document.head.appendChild(
+      globalThis.RichTextEditorSource.stylesheet
+    );
   }
   return globalThis.RichTextEditorSource.instance;
 };

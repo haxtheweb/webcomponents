@@ -24,13 +24,20 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
           width: auto;
-          --background-color: var(--ddd-component-stop-note-icon-background, var(--ddd-theme-polaris-errorLight));
-          --accent-color: var(--ddd-component-stop-note-text-background, var(--ddd-theme-polaris-error));
+          --background-color: var(
+            --ddd-component-stop-note-icon-background,
+            var(--ddd-theme-polaris-errorLight)
+          );
+          --accent-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--ddd-theme-polaris-error)
+          );
           margin: var(--ddd-spacing-5) 0;
         }
 
@@ -68,11 +75,11 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
 
         :host([icon="stopnoteicons:book-icon"]) {
           --accent-color: var(--ddd-theme-polaris-info);
-          --background-color:  var(--ddd-theme-polaris-infoLight);
+          --background-color: var(--ddd-theme-polaris-infoLight);
         }
         :host([status="info"]) {
-          --accent-color:  var(--ddd-theme-polaris-info);
-          --background-color:  var(--ddd-theme-polaris-infoLight);
+          --accent-color: var(--ddd-theme-polaris-info);
+          --background-color: var(--ddd-theme-polaris-infoLight);
         }
 
         .container {
@@ -81,10 +88,16 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
         }
 
         .message_wrap {
-          border-color: var(--ddd-component-stop-note-border, var(--accent-color));
+          border-color: var(
+            --ddd-component-stop-note-border,
+            var(--accent-color)
+          );
           padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
           flex: 1 1 auto;
-          background-color: var(--ddd-component-stop-note-text-background, var(--background-color));
+          background-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--background-color)
+          );
         }
 
         :host([title=""]) .secondary_message {
@@ -118,7 +131,10 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: var(--ddd-component-stop-note-icon-background, var(--accent-color));
+          background-color: var(
+            --ddd-component-stop-note-icon-background,
+            var(--accent-color)
+          );
           padding: var(--ddd-spacing-2);
           width: auto;
         }
@@ -134,7 +150,12 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
           </div>
         </div>
         <div class="message_wrap br-lg">
-          <h3 class="main_message ${this.url ? 'mt-2' : 'mt-5'} mb-2 pb-0" id="title">${this.title}</h3>
+          <h3
+            class="main_message ${this.url ? "mt-2" : "mt-5"} mb-2 pb-0"
+            id="title"
+          >
+            ${this.title}
+          </h3>
           <div class="secondary_message mb-2">
             <slot></slot>
             <slot name="message"></slot>
@@ -196,7 +217,7 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
       status: {
         type: String,
         reflect: true,
-      }
+      },
     };
   }
   updated(changedProperties) {
@@ -208,7 +229,9 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
         this.remoteLinkURL = this[propName];
       }
       if (propName == "status") {
-        StopNoteIconList[this[propName]] ? this.icon = StopNoteIconList[this[propName]] : this.icon = StopNoteIconList["stop"];
+        StopNoteIconList[this[propName]]
+          ? (this.icon = StopNoteIconList[this[propName]])
+          : (this.icon = StopNoteIconList["stop"]);
       }
     });
   }
@@ -218,7 +241,9 @@ class StopNoteProposed extends I18NMixin(remoteLinkBehavior(DDD)) {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
-    StopNoteIconList[this.status] ? this.icon = StopNoteIconList[this.status] : this.icon = StopNoteIconList["stop"];
+    StopNoteIconList[this.status]
+      ? (this.icon = StopNoteIconList[this.status])
+      : (this.icon = StopNoteIconList["stop"]);
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.

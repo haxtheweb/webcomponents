@@ -212,7 +212,9 @@ class CMSToken extends PolymerElement {
       microTask.run(() => {
         let template = globalThis.document.createElement("template");
         template.innerHTML = newValue.content;
-        this.appendChild(globalThis.document.importNode(template.content, true));
+        this.appendChild(
+          globalThis.document.importNode(template.content, true)
+        );
         setTimeout(() => {
           if (globalThis.WCAutoload) {
             globalThis.WCAutoload.process();

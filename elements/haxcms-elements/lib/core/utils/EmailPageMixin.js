@@ -50,9 +50,14 @@ const EmailPageMixin = function (SuperClass) {
       `;
     }
     EmailPageButtonAction(e) {
-      let title = store.activeTitle.replace(/"/g,'%22');
-      title= title.replace(/&/g,'%26');
-      globalThis.open(`mailto:?subject=${title}&body=${encodeURIComponent(globalThis.location.href)}`, 'mail');
+      let title = store.activeTitle.replace(/"/g, "%22");
+      title = title.replace(/&/g, "%26");
+      globalThis.open(
+        `mailto:?subject=${title}&body=${encodeURIComponent(
+          globalThis.location.href
+        )}`,
+        "mail"
+      );
     }
   };
 };

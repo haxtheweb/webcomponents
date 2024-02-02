@@ -360,7 +360,8 @@ export class Form {
     if (this.target && this.target.querySelector(".vmsg-popup")) {
       this.target.querySelector(".vmsg-popup").remove();
     }
-    const renderArea = (this.renderArea = globalThis.document.createElement("div"));
+    const renderArea = (this.renderArea =
+      globalThis.document.createElement("div"));
     renderArea.className = "vmsg-popup";
     renderArea.addEventListener("click", (e) => e.stopPropagation());
 

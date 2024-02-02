@@ -58,7 +58,8 @@ const loadingStylesResizeEvent = function () {
   WCRegistryLoaderCSSDebounce2 = setTimeout(() => {
     // ensure we have something undefind
     if (
-      globalThis.document.body.querySelectorAll("replace-tag,:not(:defined)").length > 0
+      globalThis.document.body.querySelectorAll("replace-tag,:not(:defined)")
+        .length > 0
     ) {
       WCRegistryLoaderCSS();
     } else {

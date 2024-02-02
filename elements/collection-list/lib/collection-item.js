@@ -52,7 +52,8 @@ class CollectionItem extends DDD {
           color: var(--icon-color);
           display: block;
           min-height: 300px;
-          border: solid var(--ddd-border-xs) var(--ddd-theme-polaris-slateMaxLight);
+          border: solid var(--ddd-border-xs)
+            var(--ddd-theme-polaris-slateMaxLight);
           transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
           box-shadow: var(--ddd-boxShadow-xs);
         }

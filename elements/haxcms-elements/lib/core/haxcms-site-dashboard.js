@@ -29,7 +29,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
   }
   constructor() {
     super();
-    this.siteTitle = '';
+    this.siteTitle = "";
     this.method = "POST";
     this.loadEndpoint = "";
     this.body = {};
@@ -240,14 +240,16 @@ class HAXCMSSiteDashboard extends SimpleColors {
     requestAnimationFrame(() => {
       const fields = this.shadowRoot.querySelector("#siteform").fields;
       // loop through and set itemsList dynamically
-      fields.find(item => item.property === "manifest").properties
-      .find(item2 => item2.property === "theme").properties
-      .find(item3 => item3.property === "regions").properties.map(item4 => {
-        // shouldn't be possible otherwise but verify this is an array
-        if (item4.inputMethod === "array") {
-          item4.properties[0].itemsList = items;
-        }
-      });
+      fields
+        .find((item) => item.property === "manifest")
+        .properties.find((item2) => item2.property === "theme")
+        .properties.find((item3) => item3.property === "regions")
+        .properties.map((item4) => {
+          // shouldn't be possible otherwise but verify this is an array
+          if (item4.inputMethod === "array") {
+            item4.properties[0].itemsList = items;
+          }
+        });
       setTimeout(() => {
         this.shadowRoot.querySelector("#siteform").fields = [...fields];
         requestAnimationFrame(() => {

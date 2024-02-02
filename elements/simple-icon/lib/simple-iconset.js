@@ -119,7 +119,8 @@ globalThis.SimpleIconset = globalThis.SimpleIconset || {};
  */
 globalThis.SimpleIconset.requestAvailability = () => {
   if (globalThis.SimpleIconset.instance == null && globalThis.document) {
-    globalThis.SimpleIconset.instance = globalThis.document.createElement("simple-iconset");
+    globalThis.SimpleIconset.instance =
+      globalThis.document.createElement("simple-iconset");
     globalThis.document.body.appendChild(globalThis.SimpleIconset.instance);
   }
   return globalThis.SimpleIconset.instance;

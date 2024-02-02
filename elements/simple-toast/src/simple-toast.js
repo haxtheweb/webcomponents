@@ -13,7 +13,8 @@ globalThis.SimpleToast = globalThis.SimpleToast || {};
 globalThis.SimpleToast.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
   if (!globalThis.SimpleToast.instance && globalThis.document) {
-    globalThis.SimpleToast.instance = globalThis.document.createElement("simple-toast");
+    globalThis.SimpleToast.instance =
+      globalThis.document.createElement("simple-toast");
     globalThis.document.body.appendChild(globalThis.SimpleToast.instance);
   }
   return globalThis.SimpleToast.instance;

@@ -55,16 +55,14 @@ class HAXCMSSiteEditor extends LitElement {
       const baseUrl = toJS(store.location.baseUrl);
       // account for haxiam vs non-haxiam
       if (baseUrl && this.activeItem && this.activeItem.location) {
-        const sitePathAry = baseUrl.replace('/sites', '').split('/');
+        const sitePathAry = baseUrl.replace("/sites", "").split("/");
         if (sitePathAry.length === 5) {
           HAXStore.revisionHistoryLink = `/${sitePathAry[2]}/gitlist/${sitePathAry[3]}/logpatch/master/${this.activeItem.location}`;
-        } 
-        else if (sitePathAry.length === 4) {
+        } else if (sitePathAry.length === 4) {
           HAXStore.revisionHistoryLink = `/${sitePathAry[1]}/gitlist/${sitePathAry[2]}/logpatch/master/${this.activeItem.location}`;
-        } 
-        else if (sitePathAry.length === 3) {
+        } else if (sitePathAry.length === 3) {
           HAXStore.revisionHistoryLink = `/gitlist/${sitePathAry[1]}/logpatch/master/${this.activeItem.location}`;
-        }  
+        }
       }
       this.__disposer.push(reaction);
     });
@@ -601,13 +599,21 @@ class HAXCMSSiteEditor extends LitElement {
       { signal: this.windowControllers.signal }
     );
 
-    globalThis.addEventListener("haxcms-create-node", this.createNode.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      "haxcms-create-node",
+      this.createNode.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      }
+    );
 
-    globalThis.addEventListener("haxcms-delete-node", this.deleteNode.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      "haxcms-delete-node",
+      this.deleteNode.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      }
+    );
   }
 
   /**
@@ -626,7 +632,9 @@ class HAXCMSSiteEditor extends LitElement {
 
   loadSiteDashboard(e) {
     if (globalThis.document.body.querySelector("haxcms-site-dashboard")) {
-      this.siteDashboard = globalThis.document.body.querySelector("haxcms-site-dashboard");
+      this.siteDashboard = globalThis.document.body.querySelector(
+        "haxcms-site-dashboard"
+      );
       this.siteDashboard.headers = {
         Authorization: `Bearer ${this.jwt}`,
       };
@@ -721,7 +729,8 @@ class HAXCMSSiteEditor extends LitElement {
             await import(
               "@lrnwebcomponents/outline-designer/outline-designer.js"
             ).then(async (e) => {
-              const outline = globalThis.document.createElement("outline-designer");
+              const outline =
+                globalThis.document.createElement("outline-designer");
               outline.items = response.data.items;
               outline.eventData = reqBody;
               outline.storeTools = true;
@@ -1168,11 +1177,16 @@ class HAXCMSSiteEditor extends LitElement {
     // regions translation to simplify submission
     if (values.manifest.theme && values.manifest.theme.regions) {
       Object.keys(values.manifest.theme.regions).forEach((key, index) => {
-        if (values.manifest.theme.regions[key] && values.manifest.theme.regions[key].length > 0) {
-          values.manifest.theme[key] = values.manifest.theme.regions[key].map(item => item.node ? item.node : null);
+        if (
+          values.manifest.theme.regions[key] &&
+          values.manifest.theme.regions[key].length > 0
+        ) {
+          values.manifest.theme[key] = values.manifest.theme.regions[key].map(
+            (item) => (item.node ? item.node : null)
+          );
         }
       });
-      delete values.manifest.theme.regions;  
+      delete values.manifest.theme.regions;
     }
     if (values.cssVariable) {
       values.hexCode =

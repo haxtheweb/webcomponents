@@ -154,7 +154,9 @@
      * @return {Node}
      */
     Chartist.querySelector = function (query) {
-      return query instanceof Node ? query : globalThis.document.querySelector(query);
+      return query instanceof Node
+        ? query
+        : globalThis.document.querySelector(query);
     };
 
     /**
@@ -2220,7 +2222,10 @@
       if (name instanceof Element) {
         this._node = name;
       } else {
-        this._node = globalThis.document.createElementNS(Chartist.namespaces.svg, name);
+        this._node = globalThis.document.createElementNS(
+          Chartist.namespaces.svg,
+          name
+        );
 
         // If this is an SVG element created then custom namespace
         if (name === "svg") {

@@ -177,7 +177,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     this.sourceView = false;
     this.haxUIElement = true;
     this.tourName = "hax";
-    globalThis.HaxTextEditorToolbarConfig = globalThis.HaxTextEditorToolbarConfig || {};
+    globalThis.HaxTextEditorToolbarConfig =
+      globalThis.HaxTextEditorToolbarConfig || {};
     globalThis.HaxTextEditorToolbarConfig.inlineGizmos =
       globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {};
     globalThis.HaxTextEditorToolbarConfig.default = window

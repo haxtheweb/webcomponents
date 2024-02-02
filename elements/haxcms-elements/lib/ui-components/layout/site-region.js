@@ -43,7 +43,7 @@ class SiteRegion extends LitElement {
           clearTimeout(this.__debounce);
           this.__debounce = setTimeout(async () => {
             // reset because it's going to get built by the content item IDs we found
-            this.innerHTML = '';
+            this.innerHTML = "";
             await this.contentItemIds.map(async (id) => {
               let item = store.findItem(id);
               if (item && item.location) {
@@ -63,7 +63,10 @@ class SiteRegion extends LitElement {
                     div.classList.add("site-region-wrapper");
                     // set a part to improve shadowRoot targetting from outside the theme
                     // css vars still based way to penetrate this
-                    div.setAttribute('part',`site-region-wrapper-${this.name}`);
+                    div.setAttribute(
+                      "part",
+                      `site-region-wrapper-${this.name}`
+                    );
                     this.appendChild(div);
                   })
                   .catch((err) => {

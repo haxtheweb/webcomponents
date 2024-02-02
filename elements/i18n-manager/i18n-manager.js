@@ -7,12 +7,14 @@
 globalThis.I18NManagerStore = globalThis.I18NManagerStore || {};
 globalThis.I18NManagerStore.requestAvailability = () => {
   if (!globalThis.I18NManagerStore.instance && globalThis.document) {
-    globalThis.I18NManagerStore.instance = globalThis.document.createElement("i18n-manager");
+    globalThis.I18NManagerStore.instance =
+      globalThis.document.createElement("i18n-manager");
     globalThis.document.body.appendChild(globalThis.I18NManagerStore.instance);
   }
   return globalThis.I18NManagerStore.instance;
 };
-export const I18NManagerStore = globalThis.I18NManagerStore.requestAvailability();
+export const I18NManagerStore =
+  globalThis.I18NManagerStore.requestAvailability();
 const FALLBACK_LANG = "en";
 const FALLBACK_DIR = "ltr";
 /**

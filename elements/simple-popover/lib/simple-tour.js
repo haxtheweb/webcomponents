@@ -307,10 +307,12 @@ globalThis.SimpleTourManager = globalThis.SimpleTourManager || {};
 // is rendered through the same modal
 globalThis.SimpleTourManager.requestAvailability = () => {
   if (!globalThis.SimpleTourManager.instance) {
-    globalThis.SimpleTourManager.instance = globalThis.document.createElement("simple-tour");
+    globalThis.SimpleTourManager.instance =
+      globalThis.document.createElement("simple-tour");
     globalThis.document.body.appendChild(globalThis.SimpleTourManager.instance);
   }
   return globalThis.SimpleTourManager.instance;
 };
 // self append
-export const SimpleTourManager = globalThis.SimpleTourManager.requestAvailability();
+export const SimpleTourManager =
+  globalThis.SimpleTourManager.requestAvailability();

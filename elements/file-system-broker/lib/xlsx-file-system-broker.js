@@ -189,10 +189,11 @@ globalThis.XLSXFileSystemBroker = globalThis.XLSXFileSystemBroker || {};
 globalThis.XLSXFileSystemBroker.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
   if (!globalThis.XLSXFileSystemBroker.instance) {
-    globalThis.XLSXFileSystemBroker.instance = globalThis.document.createElement(
-      "xlsx-file-system-broker"
+    globalThis.XLSXFileSystemBroker.instance =
+      globalThis.document.createElement("xlsx-file-system-broker");
+    globalThis.document.body.appendChild(
+      globalThis.XLSXFileSystemBroker.instance
     );
-    globalThis.document.body.appendChild(globalThis.XLSXFileSystemBroker.instance);
   }
   return globalThis.XLSXFileSystemBroker.instance;
 };

@@ -353,10 +353,11 @@ globalThis.RichTextEditorPrompt = globalThis.RichTextEditorPrompt || {};
 // is rendered through same modal
 globalThis.RichTextEditorPrompt.requestAvailability = () => {
   if (!globalThis.RichTextEditorPrompt.instance) {
-    globalThis.RichTextEditorPrompt.instance = globalThis.document.createElement(
-      "rich-text-editor-prompt"
+    globalThis.RichTextEditorPrompt.instance =
+      globalThis.document.createElement("rich-text-editor-prompt");
+    globalThis.document.body.appendChild(
+      globalThis.RichTextEditorPrompt.instance
     );
-    globalThis.document.body.appendChild(globalThis.RichTextEditorPrompt.instance);
   }
   return globalThis.RichTextEditorPrompt.instance;
 };

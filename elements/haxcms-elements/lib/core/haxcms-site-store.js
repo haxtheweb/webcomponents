@@ -794,10 +794,9 @@ class Store {
       await this.manifest.items.map((item) => {
         if (item.parent === id) {
           if (typeof current.order === typeof undefined) {
-              current = item;
-          }
-          else if (current.order < item.order) {
-              current = item;
+            current = item;
+          } else if (current.order < item.order) {
+            current = item;
           }
         }
       });
@@ -1079,7 +1078,8 @@ globalThis.HAXCMS.setTheme = function (theme) {
 // is rendered through the same modal
 globalThis.HAXCMS.requestAvailability = () => {
   if (!globalThis.HAXCMS.instance) {
-    globalThis.HAXCMS.instance = globalThis.document.createElement("haxcms-site-store");
+    globalThis.HAXCMS.instance =
+      globalThis.document.createElement("haxcms-site-store");
     globalThis.document.body.appendChild(globalThis.HAXCMS.instance);
   }
   return globalThis.HAXCMS.instance;

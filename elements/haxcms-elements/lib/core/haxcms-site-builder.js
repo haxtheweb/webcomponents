@@ -179,7 +179,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       if (store.activeItem.component) {
         import(`../ui-components/routes/${store.activeItem.component}.js`).then(
           () => {
-            let el = globalThis.document.createElement(store.activeItem.component);
+            let el = globalThis.document.createElement(
+              store.activeItem.component
+            );
             frag.appendChild(el);
             wipeSlot(store.themeElement, "*");
             store.themeElement.appendChild(frag);
@@ -1023,7 +1025,9 @@ globalThis.HAXme = function (context = null) {
     globalThis.document.body.querySelector(
       "haxcms-editor-builder"
     ).__appliedContext = false;
-    globalThis.document.body.querySelector("haxcms-editor-builder").applyContext(context);
+    globalThis.document.body
+      .querySelector("haxcms-editor-builder")
+      .applyContext(context);
   }
 };
 

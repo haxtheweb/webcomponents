@@ -1224,7 +1224,10 @@ class HAXCMSSiteListing extends PolymerElement {
   _loggedInChanged(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined) {
       if (newValue) {
-        globalThis.document.body.setAttribute("data-logged-in", "data-logged-in");
+        globalThis.document.body.setAttribute(
+          "data-logged-in",
+          "data-logged-in"
+        );
         this.__loginText = "Log out";
         this.__loginIcon = "icons:account-circle";
         this.standardResponse("Welcome, log in successful!");
@@ -1350,7 +1353,10 @@ class HAXCMSSiteListing extends PolymerElement {
        * then we can't safely execute a DOM manipulating execCommand.
        * This
        */
-      if (globalThis.document.head.createShadowRoot || globalThis.document.head.attachShadow) {
+      if (
+        globalThis.document.head.createShadowRoot ||
+        globalThis.document.head.attachShadow
+      ) {
       } else {
         console.warn("Shadow DOM missing, ALL YOUR IE R BELONG TO US");
         console.warn(
@@ -1745,7 +1751,9 @@ class HAXCMSSiteListing extends PolymerElement {
     if (item.slug) {
       globalThis.open(item.slug);
     } else {
-      globalThis.open(this.basePath + "_sites/" + item.metadata.site.name + "/");
+      globalThis.open(
+        this.basePath + "_sites/" + item.metadata.site.name + "/"
+      );
     }
   }
   /**

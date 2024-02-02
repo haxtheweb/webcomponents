@@ -97,10 +97,11 @@ globalThis.DOCXFileSystemBroker = globalThis.DOCXFileSystemBroker || {};
 globalThis.DOCXFileSystemBroker.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
   if (!globalThis.DOCXFileSystemBroker.instance) {
-    globalThis.DOCXFileSystemBroker.instance = globalThis.document.createElement(
-      "docx-file-system-broker"
+    globalThis.DOCXFileSystemBroker.instance =
+      globalThis.document.createElement("docx-file-system-broker");
+    globalThis.document.body.appendChild(
+      globalThis.DOCXFileSystemBroker.instance
     );
-    globalThis.document.body.appendChild(globalThis.DOCXFileSystemBroker.instance);
   }
   return globalThis.DOCXFileSystemBroker.instance;
 };

@@ -728,7 +728,8 @@ export const displayBehaviors = function (SuperClass) {
      * @returns {html}
      */
     getHTML(str = " ") {
-      this.__tempDiv = this.__tempDiv || globalThis.document.createElement("template");
+      this.__tempDiv =
+        this.__tempDiv || globalThis.document.createElement("template");
       this.__tempDiv.innerHTML = str;
       let temp = this.__tempDiv.content.cloneNode(true);
       return temp;

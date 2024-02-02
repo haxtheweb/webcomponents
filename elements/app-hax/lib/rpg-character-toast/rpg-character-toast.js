@@ -117,7 +117,10 @@ export class RPGCharacterToast extends SimpleToastEl {
           line-height: var(--rpg-character-toast-height, 142px);
           background-color: white;
           background-repeat: repeat-x;
-          background-image: var(--rpg-character-toast-mid-background-image, url("${unsafeCSS(SpeechBubbleMiddle)}"));
+          background-image: var(
+            --rpg-character-toast-mid-background-image,
+            url("${unsafeCSS(SpeechBubbleMiddle)}")
+          );
           padding: var(--rpg-character-toast-mid-padding, 54px 2px 0 2px);
           display: block;
         }
@@ -145,12 +148,18 @@ export class RPGCharacterToast extends SimpleToastEl {
           cursor: pointer;
         }
         .leftedge {
-          background-image: var(--rpg-character-toast-left-background-image, url("${unsafeCSS(SpeechBubbleL)}"));
+          background-image: var(
+            --rpg-character-toast-left-background-image,
+            url("${unsafeCSS(SpeechBubbleL)}")
+          );
           width: 20px;
           background-color: white;
         }
         .rightedge {
-          background-image: var(--rpg-character-toast-right-background-image, url("${unsafeCSS(SpeechBubbleR)}"));
+          background-image: var(
+            --rpg-character-toast-right-background-image,
+            url("${unsafeCSS(SpeechBubbleR)}")
+          );
           width: 40px;
           background-color: white;
         }

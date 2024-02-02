@@ -231,7 +231,9 @@ class SimpleLoginCamera extends HTMLElement {
   }
 
   connectedCallback() {
-    if (globalThis.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
+    if (
+      globalThis.ESGlobalBridge.requestAvailability().imports["msr"] === true
+    ) {
       this._applyMSR();
     }
     this._t = { ...this.t };
@@ -240,7 +242,9 @@ class SimpleLoginCamera extends HTMLElement {
    * Try to apply when fully loaded dom
    */
   documentLoaded(e) {
-    if (globalThis.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
+    if (
+      globalThis.ESGlobalBridge.requestAvailability().imports["msr"] === true
+    ) {
       this._applyMSR();
     }
   }

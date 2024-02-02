@@ -7,7 +7,9 @@ globalThis.PerformanceDetectManager.requestAvailability = () => {
   if (!globalThis.PerformanceDetectManager.instance) {
     globalThis.PerformanceDetectManager.instance =
       globalThis.document.createElement("performance-detect");
-    globalThis.document.body.appendChild(globalThis.PerformanceDetectManager.instance);
+    globalThis.document.body.appendChild(
+      globalThis.PerformanceDetectManager.instance
+    );
   }
   return globalThis.PerformanceDetectManager.instance;
 };

@@ -22,7 +22,7 @@ class DisqusEmbed extends LitElement {
 
   static get properties() {
     return {
-      loadingText: { type: String, attribute: 'loading-text', },
+      loadingText: { type: String, attribute: "loading-text" },
       pageURL: {
         type: String,
         attribute: "page-url",
@@ -84,7 +84,7 @@ class DisqusEmbed extends LitElement {
             this.pageIdentifier,
             this.pageURL,
             this.pageTitle,
-            this.lang,
+            this.lang
           );
         }, 100);
       }
@@ -108,7 +108,7 @@ class DisqusEmbed extends LitElement {
         this.pageIdentifier,
         this.pageURL,
         this.pageTitle,
-        this.lang,
+        this.lang
       );
     }, 100);
   }
@@ -225,16 +225,16 @@ class DisqusBroker extends LitElement {
   apiCallback(call) {
     switch (call) {
       // ready to use, render to target
-      case 'onReady':
+      case "onReady":
       // user identified / logged in; this can fire multiple times
-      case 'onIdentify':
+      case "onIdentify":
         this.renderToTarget();
-      break;
+        break;
       // the user posted a new comment or replied
-      case 'onNewComment':
+      case "onNewComment":
       default:
         console.log(call);
-      break;
+        break;
     }
   }
 }
@@ -244,10 +244,11 @@ export { DisqusBroker };
 window.DisqusSingleton = window.DisqusSingleton || {};
 window.DisqusSingleton.requestAvailability = () => {
   if (!window.DisqusSingleton.instance) {
-    window.DisqusSingleton.instance = document.createElement(
-      DisqusBroker.tag
+    window.DisqusSingleton.instance = document.createElement(DisqusBroker.tag);
+    document.body.insertAdjacentElement(
+      "afterbegin",
+      window.DisqusSingleton.instance
     );
-    document.body.insertAdjacentElement('afterbegin', window.DisqusSingleton.instance)
   }
   return window.DisqusSingleton.instance;
 };
@@ -255,33 +256,53 @@ window.DisqusSingleton.requestAvailability = () => {
 export const DisqusInstance = window.DisqusSingleton.requestAvailability();
 
 // set initially and then modify based on prop changes in tag
-window.disqus_config = window.disqus_config || function () {
-  this.language = "en";
-  this.callbacks.onReady = [function() {
-    DisqusInstance.apiCallback('onReady');
-  }];
-  this.callbacks.onIdentify = [function() {
-    DisqusInstance.apiCallback('onIdentify');
-  }];
-  this.callbacks.afterRender = [function() {
-    DisqusInstance.apiCallback('afterRender');
-  }];
-  this.callbacks.beforeComment = [function() {
-    DisqusInstance.apiCallback('beforeComment');
-  }];
-  this.callbacks.onInit = [function() {
-    DisqusInstance.apiCallback('onInit');
-  }];
-  this.callbacks.onNewComment = [function() {
-    DisqusInstance.apiCallback('onNewComment');
-  }];
-  this.callbacks.onPaginate = [function() {
-    DisqusInstance.apiCallback('onPaginate');
-  }];
-  this.callbacks.preData = [function() {
-    DisqusInstance.apiCallback('preData');
-  }];
-  this.callbacks.preReset = [function() {
-    DisqusInstance.apiCallback('preReset');
-  }];
-};
+window.disqus_config =
+  window.disqus_config ||
+  function () {
+    this.language = "en";
+    this.callbacks.onReady = [
+      function () {
+        DisqusInstance.apiCallback("onReady");
+      },
+    ];
+    this.callbacks.onIdentify = [
+      function () {
+        DisqusInstance.apiCallback("onIdentify");
+      },
+    ];
+    this.callbacks.afterRender = [
+      function () {
+        DisqusInstance.apiCallback("afterRender");
+      },
+    ];
+    this.callbacks.beforeComment = [
+      function () {
+        DisqusInstance.apiCallback("beforeComment");
+      },
+    ];
+    this.callbacks.onInit = [
+      function () {
+        DisqusInstance.apiCallback("onInit");
+      },
+    ];
+    this.callbacks.onNewComment = [
+      function () {
+        DisqusInstance.apiCallback("onNewComment");
+      },
+    ];
+    this.callbacks.onPaginate = [
+      function () {
+        DisqusInstance.apiCallback("onPaginate");
+      },
+    ];
+    this.callbacks.preData = [
+      function () {
+        DisqusInstance.apiCallback("preData");
+      },
+    ];
+    this.callbacks.preReset = [
+      function () {
+        DisqusInstance.apiCallback("preReset");
+      },
+    ];
+  };

@@ -95,7 +95,7 @@
                 "property": "regions",
                 "inputMethod": "fieldset",
                 "title": "Regions",
-                "description": "Settings related to themes that leverage content for pervasive display in their layout",    
+                "description": "Settings related to themes that leverage content for pervasive display in their layout",
                 "properties": [
                   {
                     "property": "manifest-metadata-theme-regions-header",
@@ -345,21 +345,21 @@
           "manifest-metadata-theme-variables-imageLink": null,
           "manifest-metadata-theme-variables-imageAlt": "fgbhnfghfgh",
           "regions": {
-              "manifest-metadata-theme-regions-header": [
-                {
-                    "node": "header"
-                }
+            "manifest-metadata-theme-regions-header": [
+              {
+                "node": "header"
+              }
             ],
-              "manifest-metadata-theme-regions-sidebarFirst": null,
-              "manifest-metadata-theme-regions-sidebarSecond": null,
-              "manifest-metadata-theme-regions-contentTop": null,
-              "manifest-metadata-theme-regions-contentBottom": null,
-              "manifest-metadata-theme-regions-footerPrimary": [
-                {
-                    "node": "footerPrimary"
-                }
+            "manifest-metadata-theme-regions-sidebarFirst": null,
+            "manifest-metadata-theme-regions-sidebarSecond": null,
+            "manifest-metadata-theme-regions-contentTop": null,
+            "manifest-metadata-theme-regions-contentBottom": null,
+            "manifest-metadata-theme-regions-footerPrimary": [
+              {
+                "node": "footerPrimary"
+              }
             ],
-              "manifest-metadata-theme-regions-footerSecondary": null
+            "manifest-metadata-theme-regions-footerSecondary": null
           }
         },
         "seo": {

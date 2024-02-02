@@ -272,8 +272,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     linkOnMultiple = false
   ) {
     // we have no clue what this is.. let's try and guess..
-    let type = this.activePlaceHolderOperationType || this.guessGizmoType(values);
-    if (type === 'upload-only') {
+    let type =
+      this.activePlaceHolderOperationType || this.guessGizmoType(values);
+    if (type === "upload-only") {
       this.toast("Upload successful!");
       return false;
     }
@@ -443,7 +444,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         return "archive";
       }
       // if it's external we can't assume what it actually is
-      else if (globalThis.MediaBehaviors.Video.getVideoType(source) != "external") {
+      else if (
+        globalThis.MediaBehaviors.Video.getVideoType(source) != "external"
+      ) {
         return "video";
       }
     }
@@ -969,7 +972,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // try to skip an import
       if (globalThis.customElements.get(i)) {
         if (globalThis.customElements.get(i).haxProperties) {
-          this.setHaxProperties(globalThis.customElements.get(i).haxProperties, i);
+          this.setHaxProperties(
+            globalThis.customElements.get(i).haxProperties,
+            i
+          );
         } else {
           // edge case of no definition
           try {
@@ -1918,7 +1924,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   constructor() {
     super();
     enableServices(["core"]);
-    this.toastShowEventName = globalThis.HAXCMS ? "haxcms-toast-show" : "simple-toast-show";
+    this.toastShowEventName = globalThis.HAXCMS
+      ? "haxcms-toast-show"
+      : "simple-toast-show";
     this.t = {
       close: "Close",
     };
@@ -3212,7 +3220,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
       } else if (
-        this.activeNode && 
+        this.activeNode &&
         this.activeNode.parentNode &&
         this.activeNode.parentNode.tagName != "HAX-BODY"
       ) {
@@ -3359,7 +3367,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
      * then we can't safely execute a DOM manipulating execCommand.
      * This
      */
-    if (globalThis.document.head.createShadowRoot || globalThis.document.head.attachShadow) {
+    if (
+      globalThis.document.head.createShadowRoot ||
+      globalThis.document.head.attachShadow
+    ) {
       return true;
     } else {
       console.warn("Shadow DOM missing, certain operations hidden");
@@ -4122,7 +4133,8 @@ export { HaxStore };
 globalThis.HaxStore = globalThis.HaxStore || {};
 globalThis.HaxStore.requestAvailability = function () {
   if (!globalThis.HaxStore.instance) {
-    globalThis.HaxStore.instance = globalThis.document.createElement("hax-store");
+    globalThis.HaxStore.instance =
+      globalThis.document.createElement("hax-store");
     globalThis.document.body.appendChild(globalThis.HaxStore.instance);
   }
   return globalThis.HaxStore.instance;

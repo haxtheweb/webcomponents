@@ -168,6 +168,7 @@ class SimpleFields extends SimpleFieldsLite {
 
       disableResponsive: {
         type: Boolean,
+        reflect: true,
         attribute: "disable-responsive",
       },
       /**

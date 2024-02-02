@@ -31,7 +31,7 @@
     },
     {
       "name": "iframe-loader",
-      "description": "Attributes:\n\n  * `source` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - \n\n  * `__observer` - ",
+      "description": "Attributes:\n\n  * `source` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `invalidSource` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - \n\n  * `__observer` - ",
       "attributes": [
         {
           "name": "source",

@@ -310,17 +310,17 @@ class SelfCheckProposed extends I18NMixin(
                 <slot></slot>
               </user-action>
               <div class="close_button">
-              ${this.link
-                ? html`
-                    <div class="more_info">
-                      <user-action track="click" every="every"
-                        ><a href="${this.link}" target="_blank" rel="noopener"
-                          >${this.t.moreInformation}...</a
-                        ></user-action
-                      >
-                    </div>
-                  `
-                : ``}
+                ${this.link
+                  ? html`
+                      <div class="more_info">
+                        <user-action track="click" every="every"
+                          ><a href="${this.link}" target="_blank" rel="noopener"
+                            >${this.t.moreInformation}...</a
+                          ></user-action
+                        >
+                      </div>
+                    `
+                  : ``}
                 <simple-icon-button
                   label="${this.t.close}"
                   id="closeBtn"

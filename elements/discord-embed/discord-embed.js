@@ -16,16 +16,18 @@ class DiscordEmbed extends LitElement {
    */
   constructor() {
     super();
-    this.source = '';
+    this.source = "";
     this.height = 500;
     this.width = "100%";
   }
   static get styles() {
-    return [css`
-      :host {
-        display: block;
-      }
-    `];
+    return [
+      css`
+        :host {
+          display: block;
+        }
+      `,
+    ];
   }
   static get properties() {
     return {
@@ -52,11 +54,19 @@ class DiscordEmbed extends LitElement {
   }
 
   render() {
-    return html`${(this.source && (this.source.includes('discord.com') || this.source.includes('e.widgetbot.io'))) ? html`
-    <iframe-loader>
-      <iframe src="${this.source}" height="${this.height}" width="${this.width}"></iframe>
-    </iframe-loader>
-    ` : html`<div>Invalid Discord share link</div>`}`;
+    return html`${this.source &&
+    (this.source.includes("discord.com") ||
+      this.source.includes("e.widgetbot.io"))
+      ? html`
+          <iframe-loader>
+            <iframe
+              src="${this.source}"
+              height="${this.height}"
+              width="${this.width}"
+            ></iframe>
+          </iframe-loader>
+        `
+      : html`<div>Invalid Discord share link</div>`}`;
   }
 
   /**
@@ -69,7 +79,10 @@ class DiscordEmbed extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "source" && this.source) {
         if (this.source.includes("https://discord.com/channels")) {
-          this.source = this.source.replace("https://discord.com/channels/", "https://e.widgetbot.io/channels/");
+          this.source = this.source.replace(
+            "https://discord.com/channels/",
+            "https://e.widgetbot.io/channels/"
+          );
         }
       }
     });

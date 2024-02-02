@@ -12,8 +12,8 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
   /** gets and sets parameters */
   let getParams = () => {
       let str =
-      globalThis.location.hash.substring(1).replace(/^(.+)&?/, "id=$1") ||
-      globalThis.location.search.substring(1) ||
+          globalThis.location.hash.substring(1).replace(/^(.+)&?/, "id=$1") ||
+          globalThis.location.search.substring(1) ||
           "",
         uri = str
           ? `{"${decodeURI(str)
@@ -30,7 +30,7 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
           return true;
         },
         params = uri && isJSON(uri) ? JSON.parse(uri) : {};
-        globalThis.AnchorBehaviors.params = params;
+      globalThis.AnchorBehaviors.params = params;
     },
     testElement = (element, params) => {
       if (element && (params.id || params.resource)) {
@@ -58,8 +58,12 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
     }
     /** search for all combos of id and resource id */
     globalThis.AnchorBehaviors.target =
-      globalThis.document.getElementById(globalThis.AnchorBehaviors.params.id) ||
-      globalThis.document.getElementById(`#${globalThis.AnchorBehaviors.params.id}`) ||
+      globalThis.document.getElementById(
+        globalThis.AnchorBehaviors.params.id
+      ) ||
+      globalThis.document.getElementById(
+        `#${globalThis.AnchorBehaviors.params.id}`
+      ) ||
       globalThis.document.querySelector(
         `[resource="#${
           globalThis.AnchorBehaviors.params.id ||
@@ -75,7 +79,7 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
       testElement(element, globalThis.AnchorBehaviors.params) ||
       null;
     if (globalThis.AnchorBehaviors.target)
-    globalThis.AnchorBehaviors.target.scrollIntoView();
+      globalThis.AnchorBehaviors.target.scrollIntoView();
   }
   return globalThis.AnchorBehaviors.target;
 };

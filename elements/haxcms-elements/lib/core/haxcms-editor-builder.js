@@ -94,14 +94,18 @@ class HAXCMSEditorBuilder extends HTMLElement {
       this.__appliedContext = true;
       // this allows forced context
       if (context == null) {
-        context = globalThis.HAXCMS.requestAvailability().getApplicationContext();
+        context =
+          globalThis.HAXCMS.requestAvailability().getApplicationContext();
       }
       if (["php", "nodejs", "desktop"].includes(context)) {
         // append this script to global scope to show up via window
         // this is a unique case since it's server side generated in HAXCMS
         let script = globalThis.document.createElement("script");
         // IF we're in a live environment this will always be 2 levels back
-        if (globalThis.appSettings && globalThis.appSettings.connectionSettings) {
+        if (
+          globalThis.appSettings &&
+          globalThis.appSettings.connectionSettings
+        ) {
           script.src = globalThis.appSettings.connectionSettings;
         } else {
           script.src = `../../system/api/connectionSettings`;
@@ -130,10 +134,13 @@ class HAXCMSEditorBuilder extends HTMLElement {
         import(`${basePath}backends/${store.cmsSiteEditorBackend.tag}.js`).then(
           (e) => {
             if (!store.cmsSiteEditorBackend.instance) {
-              store.cmsSiteEditorBackend.instance = globalThis.document.createElement(
-                store.cmsSiteEditorBackend.tag
+              store.cmsSiteEditorBackend.instance =
+                globalThis.document.createElement(
+                  store.cmsSiteEditorBackend.tag
+                );
+              globalThis.document.body.appendChild(
+                store.cmsSiteEditorBackend.instance
               );
-              globalThis.document.body.appendChild(store.cmsSiteEditorBackend.instance);
             }
           }
         );

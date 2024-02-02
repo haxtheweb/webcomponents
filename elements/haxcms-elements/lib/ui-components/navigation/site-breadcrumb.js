@@ -44,8 +44,14 @@ class SiteBreadcrumb extends DDD {
           font-family: var(--ddd-font-navigation);
           font-weight: var(--ddd-font-navigation-regular);
           text-decoration: none;
-          font-size: var(--site-breadcrumb-font-size, var(--ddd-font-size-4xs, 16px));
-          color: var(--site-breadcrumb-color, var(--ddd-theme-polaris-link, #383f45));
+          font-size: var(
+            --site-breadcrumb-font-size,
+            var(--ddd-font-size-4xs, 16px)
+          );
+          color: var(
+            --site-breadcrumb-color,
+            var(--ddd-theme-polaris-link, #383f45)
+          );
         }
         .breadcrumb li:first-child a {
           padding-left: 0;
@@ -74,17 +80,24 @@ class SiteBreadcrumb extends DDD {
   }
   // render function
   render() {
-    return html`
-    ${this.items.length > 0 ? html`
-    <ul class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-        ${this.items.map((item) => html`<li><a href="${item.slug}">${item.title}</a></li>`)}
-      </ul>
-    ` : ``}`;
+    return html` ${this.items.length > 0
+      ? html`
+          <ul
+            class="breadcrumb"
+            itemscope
+            itemtype="https://schema.org/BreadcrumbList"
+          >
+            ${this.items.map(
+              (item) => html`<li><a href="${item.slug}">${item.title}</a></li>`
+            )}
+          </ul>
+        `
+      : ``}`;
   }
 
   static get properties() {
     return {
-      items: { type: Array},
+      items: { type: Array },
       editMode: { type: Boolean, reflect: true, attribute: "edit-mode" },
     };
   }
@@ -108,10 +121,7 @@ class SiteBreadcrumb extends DDD {
    */
   _activeItemChanged(active) {
     const activeItem = active;
-    if (
-      activeItem &&
-      this.shadowRoot
-    ) {
+    if (activeItem && this.shadowRoot) {
       var items = [
         {
           title: activeItem.title,
@@ -122,9 +132,7 @@ class SiteBreadcrumb extends DDD {
       let manifest = toJS(store.routerManifest);
       // walk back through parent tree
       while (itemBuilder && itemBuilder.parent != null) {
-        itemBuilder = manifest.items.find(
-          (i) => i.id == itemBuilder.parent
-        );
+        itemBuilder = manifest.items.find((i) => i.id == itemBuilder.parent);
         // double check structure is sound
         if (itemBuilder) {
           items.unshift({
@@ -136,8 +144,7 @@ class SiteBreadcrumb extends DDD {
       // don't display if we are the only thing in the trail bc there is no point
       if (items.length === 1) {
         this.items = [];
-      }
-      else {
+      } else {
         this.items = [...items];
       }
     }

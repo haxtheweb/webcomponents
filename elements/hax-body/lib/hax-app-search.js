@@ -130,7 +130,9 @@ class HaxAppSearch extends LitElement {
         // do nothing we skip these internal values
       } else if (Array.isArray(value)) {
         for (var i = 0; i < value.length; i++) {
-          queryParts.push(param + "=" + globalThis.encodeURIComponent(value[i]));
+          queryParts.push(
+            param + "=" + globalThis.encodeURIComponent(value[i])
+          );
         }
       } else if (value !== null) {
         queryParts.push(param + "=" + globalThis.encodeURIComponent(value));

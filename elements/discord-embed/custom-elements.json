@@ -3,8 +3,21 @@
   "tags": [
     {
       "name": "discord-embed",
-      "description": "`discord-embed`\n`widgetbot.io based embed widget for discord threads and channels`\n\n",
-      "attributes": []
+      "description": "`discord-embed`\n`widgetbot.io based embed widget for discord threads and channels`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - ",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: "
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: 500"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - \n\nProperty: width\n\nDefault: 100%"
+        }
+      ]
     }
   ],
   "globalAttributes": [],
