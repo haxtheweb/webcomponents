@@ -22,7 +22,8 @@ class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -114,14 +115,15 @@ class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
    * Props
    */
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       disabled: {
         type: Boolean,
         reflect: true,
       },
       editMode: {
         type: Boolean,
-        attribute: 'edit-mode',
+        attribute: "edit-mode",
         reflect: true,
       },
       /**

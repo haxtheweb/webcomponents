@@ -3,7 +3,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
-export class BlockQuoteProposed extends (DDD) {
+export class BlockQuoteProposed extends DDD {
   static get properties() {
     return {
       ...super.properties,
@@ -46,10 +46,15 @@ export class BlockQuoteProposed extends (DDD) {
               ></simple-icon-lite>
               <span><slot></slot></span>
               <span><slot name="quote"></slot></span>
-              <simple-icon-lite icon="editor:format-quote" style="align-items: start"></simple-icon-lite>
+              <simple-icon-lite
+                icon="editor:format-quote"
+                style="align-items: start"
+              ></simple-icon-lite>
             </div>
             <div id="citation">
-              ${this.citation ? html` <p><span class="dash">--</span> ${this.citation}</p> ` : ""}
+              ${this.citation
+                ? html` <p><span class="dash">--</span> ${this.citation}</p> `
+                : ""}
             </div>
           </div>
         </div>
@@ -60,10 +65,14 @@ export class BlockQuoteProposed extends (DDD) {
     return "block-quote-proposed";
   }
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
-          background-color: var(--ddd-component-block-quote-background, var(--ddd-theme-polaris-limestoneMaxLight, #f5f5f5));
+          background-color: var(
+            --ddd-component-block-quote-background,
+            var(--ddd-theme-polaris-limestoneMaxLight, #f5f5f5)
+          );
           display: block;
           align-items: start;
           width: fit-content;
@@ -72,7 +81,13 @@ export class BlockQuoteProposed extends (DDD) {
         #wrap {
           display: flex;
           border-left: var(--ddd-border-lg);
-          border-color: var(--ddd-component-block-quote-border-color, var(--ddd-theme-accent-color ,var(--ddd-theme-polaris-limestoneGray)));
+          border-color: var(
+            --ddd-component-block-quote-border-color,
+            var(
+              --ddd-theme-accent-color,
+              var(--ddd-theme-polaris-limestoneGray)
+            )
+          );
           padding: var(--ddd-spacing-6);
           text-align: center;
         }
@@ -110,14 +125,20 @@ export class BlockQuoteProposed extends (DDD) {
           -ms-filter: "FlipH";
         }
 
-        .dash{
+        .dash {
           letter-spacing: -0.5em;
           margin-right: var(--ddd-spacing-2);
         }
 
         simple-icon-lite {
           align-self: flex-start;
-          color: var(--ddd-component-block-quote-icon, var(--ddd-theme-accent-color ,var(--ddd-theme-polaris-limestoneGray)));
+          color: var(
+            --ddd-component-block-quote-icon,
+            var(
+              --ddd-theme-accent-color,
+              var(--ddd-theme-polaris-limestoneGray)
+            )
+          );
           height: var(--ddd-icon-xs);
           width: var(--ddd-icon-xs);
         }
@@ -136,7 +157,13 @@ export class BlockQuoteProposed extends (DDD) {
             height: 200px;
             margin: 0 auto;
             border: var(--ddd-border-lg);
-            border-color: var(--ddd-component-block-quote-image-border, var(--ddd-theme-accent-color, var(--ddd-theme-polaris-limestoneGray)));
+            border-color: var(
+              --ddd-component-block-quote-image-border,
+              var(
+                --ddd-theme-accent-color,
+                var(--ddd-theme-polaris-limestoneGray)
+              )
+            );
             border-radius: var(--ddd-radius-circle);
           }
         }

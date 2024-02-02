@@ -56,7 +56,9 @@ globalThis.HAXCMSToast = globalThis.HAXCMSToast || {};
 
 globalThis.HAXCMSToast.requestAvailability = () => {
   if (!globalThis.HAXCMSToast.instance) {
-    globalThis.HAXCMSToast.instance = globalThis.document.createElement(HAXCMSToast.tag);
+    globalThis.HAXCMSToast.instance = globalThis.document.createElement(
+      HAXCMSToast.tag
+    );
     globalThis.document.body.appendChild(globalThis.HAXCMSToast.instance);
   }
   return globalThis.HAXCMSToast.instance;

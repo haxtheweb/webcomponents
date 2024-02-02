@@ -68,7 +68,9 @@
           }
 
           [].forEach.call(options.items, function (thisItem) {
-            var $wrapper = globalThis.document.createElement(options.label.html);
+            var $wrapper = globalThis.document.createElement(
+              options.label.html
+            );
             options.label.class.split(" ").forEach(function (className) {
               if ($wrapper.classList) {
                 $wrapper.classList.add(className);

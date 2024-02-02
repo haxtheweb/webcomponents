@@ -30,9 +30,13 @@ export class PageBreakOutline extends HTMLElement {
   }
   connectedCallback() {
     setTimeout(() => {
-      globalThis.addEventListener("page-break-change", this.rerender.bind(this), {
-        signal: this.windowControllers.signal,
-      });
+      globalThis.addEventListener(
+        "page-break-change",
+        this.rerender.bind(this),
+        {
+          signal: this.windowControllers.signal,
+        }
+      );
     }, 0);
     // render on initial paint
     this.render(this.div);

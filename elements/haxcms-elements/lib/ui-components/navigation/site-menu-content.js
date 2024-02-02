@@ -60,7 +60,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
     this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }
   /**
@@ -70,7 +70,11 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
     return html`
       <div .part="${this.editMode ? `edit-mode-active` : ``}">
         ${super.render()}
-        <simple-icon-button-lite icon="icons:arrow-upward" @click="${this.backToTop}">Back to top</simple-icon-button-lite>
+        <simple-icon-button-lite
+          icon="icons:arrow-upward"
+          @click="${this.backToTop}"
+          >Back to top</simple-icon-button-lite
+        >
       </div>
     `;
   }

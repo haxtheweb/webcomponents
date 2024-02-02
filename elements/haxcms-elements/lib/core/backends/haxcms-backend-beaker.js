@@ -79,12 +79,20 @@ class HAXCMSBackendBeaker extends LitElement {
     globalThis.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
       signal: this.windowControllers.signal,
     });
-    globalThis.addEventListener("haxcms-delete-node", this.deleteNode.bind(this), {
-      signal: this.windowControllers.signal,
-    });
-    globalThis.addEventListener("haxcms-create-node", this.createNode.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      "haxcms-delete-node",
+      this.deleteNode.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      }
+    );
+    globalThis.addEventListener(
+      "haxcms-create-node",
+      this.createNode.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      }
+    );
     // listen for app being selected
     globalThis.addEventListener(
       "hax-app-picker-selection",

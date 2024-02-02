@@ -118,10 +118,11 @@ globalThis.RichTextEditorHighlight = globalThis.RichTextEditorHighlight || {};
 // is rendered through same modal
 globalThis.RichTextEditorHighlight.requestAvailability = () => {
   if (!globalThis.RichTextEditorHighlight.instance) {
-    globalThis.RichTextEditorHighlight.instance = globalThis.document.createElement(
-      "rich-text-editor-highlight"
+    globalThis.RichTextEditorHighlight.instance =
+      globalThis.document.createElement("rich-text-editor-highlight");
+    globalThis.document.body.appendChild(
+      globalThis.RichTextEditorHighlight.instance
     );
-    globalThis.document.body.appendChild(globalThis.RichTextEditorHighlight.instance);
   }
   return globalThis.RichTextEditorHighlight.instance;
 };

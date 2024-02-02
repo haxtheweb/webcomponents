@@ -7,7 +7,7 @@
       "attributes": [
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "dark-mode",
@@ -90,7 +90,7 @@
         {
           "name": "t",
           "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "darkMode",
@@ -228,7 +228,7 @@
       "attributes": [
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "dark-mode",
@@ -311,7 +311,7 @@
         {
           "name": "t",
           "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "darkMode",
@@ -449,7 +449,7 @@
       "attributes": [
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "dark-mode",
@@ -532,7 +532,7 @@
         {
           "name": "t",
           "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "darkMode",
@@ -680,7 +680,7 @@
         },
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "dark-mode",
@@ -775,7 +775,7 @@
         {
           "name": "t",
           "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "darkMode",
@@ -923,7 +923,7 @@
         },
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "dark-mode",
@@ -1018,7 +1018,7 @@
         {
           "name": "t",
           "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "darkMode",
@@ -1156,7 +1156,7 @@
       "attributes": [
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "dark-mode",
@@ -1239,7 +1239,7 @@
         {
           "name": "t",
           "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "darkMode",
@@ -1377,7 +1377,7 @@
       "attributes": [
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "dark-mode",
@@ -1460,7 +1460,7 @@
         {
           "name": "t",
           "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "darkMode",
@@ -1598,7 +1598,7 @@
       "attributes": [
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "dark-mode",
@@ -1681,7 +1681,7 @@
         {
           "name": "t",
           "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "darkMode",
@@ -1819,7 +1819,7 @@
       "attributes": [
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "dark-mode",
@@ -1902,7 +1902,7 @@
         {
           "name": "t",
           "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "type": "object"
         },
         {
           "name": "darkMode",

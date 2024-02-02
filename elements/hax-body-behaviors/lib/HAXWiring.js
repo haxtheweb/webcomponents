@@ -1105,7 +1105,10 @@ globalThis.HAXBehaviors.PropertiesBehaviors = {
     if (tag == "" && typeof this.tagName !== typeof undefined) {
       tag = this.tagName.toLowerCase();
     }
-    globalThis.addEventListener("hax-store-ready", this._haxStoreReady.bind(this));
+    globalThis.addEventListener(
+      "hax-store-ready",
+      this._haxStoreReady.bind(this)
+    );
     if (
       typeof globalThis.HaxStore !== typeof undefined &&
       globalThis.HaxStore.instance != null &&

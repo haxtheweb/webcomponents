@@ -174,10 +174,10 @@ class LearningComponentProposed extends I18NMixin(DDD) {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has('type') && this.type && this.type != '') {
+    if (changedProperties.has("type") && this.type && this.type != "") {
       this.accentColor = learningComponentColors[this.type];
       this.title = learningComponentTypes[this.type];
-      this.icon = iconFromPageType(this.type)
+      this.icon = iconFromPageType(this.type);
     }
   }
 
@@ -186,7 +186,7 @@ class LearningComponentProposed extends I18NMixin(DDD) {
     this.icon = null;
     this.accentColor = null;
     this.dark = false;
-    this.type = '';
+    this.type = "";
     this.subtitle = null;
     this.title = null;
     this.url = null;
@@ -200,7 +200,8 @@ class LearningComponentProposed extends I18NMixin(DDD) {
    * CSS
    */
   static get styles() {
-    return [super.styles,
+    return [
+      super.styles,
       css`
         :host {
           display: block;
@@ -209,9 +210,12 @@ class LearningComponentProposed extends I18NMixin(DDD) {
         .header {
           display: flex;
           align-items: center;
-          background-color: var(--ddd-component-learning-component-title-background ,
-            var(--ddd-theme-accent-color,
-            var(--simple-colors-default-theme-accent-8, #dc7927))
+          background-color: var(
+            --ddd-component-learning-component-title-background,
+            var(
+              --ddd-theme-accent-color,
+              var(--simple-colors-default-theme-accent-8, #dc7927)
+            )
           );
           padding: var(--ddd-spacing-3);
           color: var(
@@ -255,8 +259,9 @@ class LearningComponentProposed extends I18NMixin(DDD) {
 
         .content {
           display: grid;
-          grid-template-columns: 1fr .1fr;
-          padding: var(--ddd-spacing-5) var(--ddd-spacing-3) var(--ddd-spacing-5) var(--ddd-spacing-6);
+          grid-template-columns: 1fr 0.1fr;
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
+            var(--ddd-spacing-5) var(--ddd-spacing-6);
         }
 
         @media screen and (min-width: 320px) {
@@ -280,7 +285,7 @@ class LearningComponentProposed extends I18NMixin(DDD) {
 
         @media screen and (min-width: 920px) {
           .title {
-            font-size: var(--ddd-font-size-ms)
+            font-size: var(--ddd-font-size-ms);
           }
           .sub-title {
             font-size: var(--ddd-font-size-s);
@@ -289,7 +294,7 @@ class LearningComponentProposed extends I18NMixin(DDD) {
             display: flex;
             justify-content: end;
           }
-          simple-icon-lite{
+          simple-icon-lite {
             --simple-icon-width: var(--ddd-icon-sm);
             --simple-icon-height: var(--ddd-icon-sm);
             height: var(--ddd-icon-xl);
@@ -313,10 +318,12 @@ class LearningComponentProposed extends I18NMixin(DDD) {
     return html`
       <div class="header">
         <div class="icon">
-          ${this.icon ? html`
-          <simple-icon-lite
-            icon="${this.icon}" class="b-sm r-rounded"
-          ></simple-icon-lite>` : ``}
+          ${this.icon
+            ? html` <simple-icon-lite
+                icon="${this.icon}"
+                class="b-sm r-rounded"
+              ></simple-icon-lite>`
+            : ``}
         </div>
         <div class="title-wrap">
           <div class="sub-title lh-120">${this.subtitle}</div>
@@ -360,7 +367,16 @@ class LearningComponentProposed extends I18NMixin(DDD) {
           "A card for instructors to communicate pedagogy and instructional strategies.",
         icon: "icons:bookmark",
         color: "orange",
-        tags: ["Instructional", "content", "design", "presentation", "instruction", "course", "learning", "card"],
+        tags: [
+          "Instructional",
+          "content",
+          "design",
+          "presentation",
+          "instruction",
+          "course",
+          "learning",
+          "card",
+        ],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -373,8 +389,8 @@ class LearningComponentProposed extends I18NMixin(DDD) {
             title: "Type",
             description: "The type of card to be used.",
             inputMethod: "select",
-            options: {"": "", ...learningComponentTypes},
-            required: false
+            options: { "": "", ...learningComponentTypes },
+            required: false,
           },
           {
             property: "subtitle",
@@ -422,9 +438,7 @@ class LearningComponentProposed extends I18NMixin(DDD) {
         ],
       },
       saveOptions: {
-        unsetAttributes: [
-          "t",
-        ],
+        unsetAttributes: ["t"],
       },
       demoSchema: [
         {

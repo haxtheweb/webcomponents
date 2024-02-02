@@ -23,7 +23,8 @@ class StopNote extends I18NMixin(remoteLinkBehavior(SimpleColors)) {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;

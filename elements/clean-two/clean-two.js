@@ -41,7 +41,9 @@ class CleanTwo extends HAXCMSOperationButtons(
       PDFPageMixin(
         PrintBranchMixin(
           QRCodeMixin(
-            HAXCMSThemeParts(HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)))
+            HAXCMSThemeParts(
+              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme))
+            )
           )
         )
       )
@@ -645,8 +647,7 @@ class CleanTwo extends HAXCMSOperationButtons(
                     import-method="view"
                     part="print-btn"
                   ></replace-tag>`}
-                ${this.EmailPageButton("right")}
-                ${this.QRCodeButton("right")}
+              ${this.EmailPageButton("right")} ${this.QRCodeButton("right")}
               <replace-tag
                 with="site-rss-button"
                 type="rss"

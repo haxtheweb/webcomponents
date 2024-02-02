@@ -287,7 +287,9 @@ class HaxAutoloader extends HAXElement(LitElement) {
           }
         }
       } else {
-        let tmpProps = globalThis.document.createElement(name).getAttributeNames();
+        let tmpProps = globalThis.document
+          .createElement(name)
+          .getAttributeNames();
         for (let i = 0; i < tmpProps.length; i++) {
           props.settings.configure.push({
             attribute: tmpProps[i],

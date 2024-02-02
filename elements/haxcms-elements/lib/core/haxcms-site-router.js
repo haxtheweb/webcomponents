@@ -145,16 +145,18 @@ class HAXCMSSiteRouter extends HTMLElement {
     else if (
       e.detail.location.route.name === "home" &&
       e.detail.location.search.startsWith("?p=/") &&
-      this.lookupRoute(e.detail.location.search.replace("?p=/", "").split('&')[0])
+      this.lookupRoute(
+        e.detail.location.search.replace("?p=/", "").split("&")[0]
+      )
     ) {
       let item = this.lookupRoute(
-        e.detail.location.search.replace("?p=/", "").split('&')[0]
+        e.detail.location.search.replace("?p=/", "").split("&")[0]
       )[0];
       store.activeId = item.id;
       globalThis.history.replaceState(
         {},
         null,
-        e.detail.location.search.replace("?p=/", "").split('&')[0]
+        e.detail.location.search.replace("?p=/", "").split("&")[0]
       );
     } else {
       store.location = e.detail.location;

@@ -449,28 +449,36 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   // a file needs to be selected via the program and then sub-program options presented
   selectFileToProcess() {
-    import('@lrnwebcomponents/file-system-broker/file-system-broker.js').then(async (e) => {
-      const broker = globalThis.FileSystemBroker.requestAvailability();
-      const contents = await broker.getFileContents("*");
-      const fileData = broker.fileHandler;
-      let tmp = fileData.name.split('.');
-      let type = '';
-      // don't assume there is a file extension
-      if (tmp.length > 1) {
-        type = tmp.pop();
+    import("@lrnwebcomponents/file-system-broker/file-system-broker.js").then(
+      async (e) => {
+        const broker = globalThis.FileSystemBroker.requestAvailability();
+        const contents = await broker.getFileContents("*");
+        const fileData = broker.fileHandler;
+        let tmp = fileData.name.split(".");
+        let type = "";
+        // don't assume there is a file extension
+        if (tmp.length > 1) {
+          type = tmp.pop();
+        }
+        // wand hands off for next part now that we've got a file selected
+        SuperDaemonInstance.waveWand(
+          [
+            "",
+            "/",
+            {
+              operation: "file-selected",
+              contents: contents,
+              data: fileData,
+              type: type,
+            },
+            "hax-agent",
+            "Agent",
+          ],
+          this.shadowRoot.querySelector("#merlin"),
+          "coin2"
+        );
       }
-      // wand hands off for next part now that we've got a file selected
-      SuperDaemonInstance.waveWand(
-        ["", "/", {
-          operation: 'file-selected',
-          contents: contents,
-          data: fileData,
-          type: type,
-        }, "hax-agent", "Agent"],
-        this.shadowRoot.querySelector("#merlin"),
-        "coin2"
-      );
-    });
+    );
   }
 
   // processing visualization
@@ -496,10 +504,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.setProcessingVisual();
     switch (mode) {
       // upload and possibly link/embed the item
-      case 'upload':
-      case 'link':
-      case 'insert-file':
-        if (mode === 'upload') {
+      case "upload":
+      case "link":
+      case "insert-file":
+        if (mode === "upload") {
           // do the uploading
           // confirm it went through
           // put link in the dialog confirmation if desired to open in new window
@@ -516,38 +524,36 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               },
             })
           );
-        }
-        else if (mode === 'link') {
+        } else if (mode === "link") {
           if (store.editMode === false) {
             store.editMode = true;
           }
           // do the uploading
-          // take resulting upload 
+          // take resulting upload
           // put in editMode if we have to
           // insert link in bottom of page / below whatever is active
           setTimeout(() => {
             let p = HAXStore.activeHaxBody.haxInsert("p", "", {});
-              // fire this specialized event up so things like HAX can intercept
-              this.dispatchEvent(
-                new CustomEvent("hax-file-upload", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: {
-                    file: values.data,
-                    placeHolderElement: p,
-                    operationType: operationType,
-                  }
-                })
-              );
+            // fire this specialized event up so things like HAX can intercept
+            this.dispatchEvent(
+              new CustomEvent("hax-file-upload", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: {
+                  file: values.data,
+                  placeHolderElement: p,
+                  operationType: operationType,
+                },
+              })
+            );
           }, 300);
-        }
-        else {
+        } else {
           if (store.editMode === false) {
             store.editMode = true;
           }
           // upload
-          // take resulting upload 
+          // take resulting upload
           // put in editMode if we have to
           // insert result into bottom of page / active
           // allowing hax to evaluate what type should be inserted (gizmoGuess)
@@ -568,44 +574,44 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             );
           }, 300);
         }
-      break;
-      case 'insert-html':
-      case 'create-sibling':
-      case 'create-child':
-      case 'create-branch':
+        break;
+      case "insert-html":
+      case "create-sibling":
+      case "create-child":
+      case "create-branch":
         let endpointCall = null;
         let dataToPost = new FormData();
         switch (values.type) {
-          case 'docx':
-          case 'doc':
+          case "docx":
+          case "doc":
             dataToPost.append("upload", values.data); // should contain our file
             // single file vs whole site processing
             endpointCall = "@core/docxToHtml";
-            if (mode === 'create-branch') {
+            if (mode === "create-branch") {
               endpointCall = "@haxcms/docxToSite";
-              dataToPost.append("method", 'branch');
-              dataToPost.append("type", 'branch');
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
               // set parent to same as current page's parent
               const item = toJS(store.activeItem);
               dataToPost.append("parentId", item.parent);
             }
-          break;
-          case 'md':
+            break;
+          case "md":
           case "txt":
             endpointCall = "@core/mdToHtml";
             dataToPost = {
-              md: values.contents
+              md: values.contents,
             };
-          break;
+            break;
           case "html":
           case "htm":
             // take content directly
-          break;
+            break;
         }
         // put in editMode if we have to
         // insert result into bottom of page
         let response = {};
-        
+
         if (endpointCall) {
           if (mode === "insert-html") {
             response = await MicroFrontendRegistry.call(
@@ -614,21 +620,25 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             );
             if (response.status == 200) {
               // fake file event from built in method for same ux
-              this.insertElementsFromContentBlob(response.data.contents || response.data);
+              this.insertElementsFromContentBlob(
+                response.data.contents || response.data
+              );
             }
-          }
-          else {
+          } else {
             response = await MicroFrontendRegistry.call(
               endpointCall,
               dataToPost
             );
             if (response.status == 200) {
-              if (['create-sibling', 'create-child'].includes(mode)) {
-                this.createNewNode(mode.replace('create-', ''), values.data.name, response.data.contents || response.data);
-              }
-              else {
+              if (["create-sibling", "create-child"].includes(mode)) {
+                this.createNewNode(
+                  mode.replace("create-", ""),
+                  values.data.name,
+                  response.data.contents || response.data
+                );
+              } else {
                 // must be a valid response and have at least SOME html to bother attempting
-                if ( response.data && response.data.contents != "") {
+                if (response.data && response.data.contents != "") {
                   // right here is where we need to interject our confirmation dialog
                   // workflow. We can take the items that just came back and visualize them
                   // using our outline / hierarchy visualization
@@ -641,7 +651,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     reqBody.site = {
                       name: toJS(store.manifest.metadata.site.name),
                     };
-                    const outline = globalThis.document.createElement("outline-designer");
+                    const outline =
+                      globalThis.document.createElement("outline-designer");
                     outline.items = response.data.items;
                     outline.eventData = reqBody;
                     outline.storeTools = true;
@@ -664,10 +675,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                         }
                       });
                       let sumChanges = `${
-                        added > 0 ? `‣ ${added} new pages will be created\n` : ""
+                        added > 0
+                          ? `‣ ${added} new pages will be created\n`
+                          : ""
                       }${
-                        modified > 0 ? `‣ ${modified} pages will be updated\n` : ""
-                      }${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ""}`;
+                        modified > 0
+                          ? `‣ ${modified} pages will be updated\n`
+                          : ""
+                      }${
+                        deleted > 0
+                          ? `‣ ${deleted} pages will be deleted\n`
+                          : ""
+                      }`;
                       let confirmation = false;
                       // no confirmation required if there are no tracked changes
                       if (sumChanges == "") {
@@ -680,11 +699,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       if (confirmation) {
                         // @todo absolutely hate this solution. when we clean out the rats nest
                         // that is iron-ajax calls in site-editor then we can simplify this action
-                        store.cmsSiteEditorAvailability().querySelector("#createajax").body = data;
+                        store
+                          .cmsSiteEditorAvailability()
+                          .querySelector("#createajax").body = data;
                         this.setProcessingVisual();
                         // @todo absolutely hate this solution. when we clean out the rats nest
                         // that is iron-ajax calls in site-editor then we can simplify this action
-                        store.cmsSiteEditorAvailability().querySelector("#createajax").generateRequest();
+                        store
+                          .cmsSiteEditorAvailability()
+                          .querySelector("#createajax")
+                          .generateRequest();
                         const evt = new CustomEvent("simple-modal-hide", {
                           bubbles: true,
                           composed: true,
@@ -742,19 +766,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               }
             }
           }
-        }
-        else {
+        } else {
           // implies HTML so just use the file without processing
           // we don't support create-branch for this yet
           if (mode === "insert-html") {
             this.insertElementsFromContentBlob(values.contents);
           }
           // @todo we may support create-branch in the future for non-docx paths but just in case we goof up for now
-          else if (mode !== 'create-branch') {
-            this.createNewNode(mode.replace('create-', ''), values.data.name, values.contents);
+          else if (mode !== "create-branch") {
+            this.createNewNode(
+              mode.replace("create-", ""),
+              values.data.name,
+              values.contents
+            );
           }
         }
-      break;
+        break;
     }
   }
   // create node w/ title and contents passed in
@@ -773,14 +800,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         let tmp = toJS(await store.getLastChildItem(item.id)).order;
         order = 0;
         if (tmp || tmp === 0) {
-          order = (tmp+1);
+          order = tmp + 1;
         }
-      }
-      else if (type === "branch") {
+      } else if (type === "branch") {
         parent = null;
         order = 0;
-      }
-      else {
+      } else {
         // API invoked incorrectly
         parent = null;
         order = 0;
@@ -799,15 +824,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       parent: parent,
     };
     // haxcms is in charge of making the node from here
-    this.dispatchEvent(new CustomEvent("haxcms-create-node", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        originalTarget: this,
-        values: payload,
-      },
-    }));
+    this.dispatchEvent(
+      new CustomEvent("haxcms-create-node", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          originalTarget: this,
+          values: payload,
+        },
+      })
+    );
   }
 
   // insert content based on the contents we read from a file
@@ -818,12 +845,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (store.editMode === false) {
       store.editMode = true;
       addToEnd = true;
-    }
-    else if (this.activeNode.hasAttribute("slot")) {
+    } else if (this.activeNode.hasAttribute("slot")) {
       // test for slot on insert attempt
       slot = this.activeNode.getAttribute("slot");
-    } 
-    const div = globalThis.document.createElement('div');
+    }
+    const div = globalThis.document.createElement("div");
     div.innerHTML = content;
 
     let slot = false;
@@ -838,14 +864,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           this.activeNode.nextSibling
         );
       }
-    }
-    else {
+    } else {
       // give initial setup time to process since we forced it into edit mode to be here
       setTimeout(() => {
         for (var i = div.children.length - 1; i > 0; i--) {
-          HAXStore.activeHaxBody.appendChild(
-            div.children[i]
-          );
+          HAXStore.activeHaxBody.appendChild(div.children[i]);
         }
         setTimeout(() => {
           HAXStore.activeHaxBody.scrollHere(this.activeNode);
@@ -950,195 +973,180 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           // file selected, so we are looping back around
           if (values.operation === "file-selected") {
             switch (values.type) {
-              case 'md':
-              case 'docx':
-              case 'doc':
+              case "md":
+              case "docx":
+              case "doc":
               case "txt":
               case "html":
               case "htm":
                 // only show options to make new content if we are NOT in edit mode
                 if (!usMemory.editMode) {
-                  results.push(
-                    {
-                      title: `New Sibling Page from ${values.type}`,
-                      icon: "hax:add-page",
-                      tags: ["agent"],
-                      value: {
-                        target: this,
-                        method: "processFileContentsBasedOnUserDesire",
-                        args: [values, 'create-sibling'],
-                      },
-                      eventName: "super-daemon-element-method",
-                      path: "Page created next to current",
-                    }
-                  );
-                  results.push(
-                    {
-                      title: `New Child Page from ${values.type}`,
-                      icon: "hax:add-child-page",
-                      tags: ["agent"],
-                      value: {
-                        target: this,
-                        method: "processFileContentsBasedOnUserDesire",
-                        args: [values, 'create-child'],
-                      },
-                      eventName: "super-daemon-element-method",
-                      path: "Page created under current",
-                    }
-                  );
+                  results.push({
+                    title: `New Sibling Page from ${values.type}`,
+                    icon: "hax:add-page",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, "create-sibling"],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "Page created next to current",
+                  });
+                  results.push({
+                    title: `New Child Page from ${values.type}`,
+                    icon: "hax:add-child-page",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, "create-child"],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "Page created under current",
+                  });
                   // @todo only docx currently supports this though there's really no reason it can't
                   // happen in other HTML structured data
-                  if (['docx', 'doc'].includes(values.type)) {
-                    results.push(
-                      {
-                        title: `Create outline from ${values.type}`,
-                        icon: "hax:site-map",
-                        tags: ["agent"],
-                        value: {
-                          target: this,
-                          method: "processFileContentsBasedOnUserDesire",
-                          args: [values, 'create-branch'],
-                        },
-                        eventName: "super-daemon-element-method",
-                        path: "H1,H2 tags create menu pages",
-                      }
-                    );
+                  if (["docx", "doc"].includes(values.type)) {
+                    results.push({
+                      title: `Create outline from ${values.type}`,
+                      icon: "hax:site-map",
+                      tags: ["agent"],
+                      value: {
+                        target: this,
+                        method: "processFileContentsBasedOnUserDesire",
+                        args: [values, "create-branch"],
+                      },
+                      eventName: "super-daemon-element-method",
+                      path: "H1,H2 tags create menu pages",
+                    });
                   }
                 }
-                results.push(
-                  {
-                    title: `Insert ${values.type} contents in Page`,
-                    icon: "hax:html-code",
-                    tags: ["agent"],
-                    value: {
-                      target: this,
-                      method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert-html'],
-                    },
-                    eventName: "super-daemon-element-method",
-                    path: "Content converted to HTML and inserted",
-                  }
-                );
-              break;
-              case 'png':
-              case 'jpeg':
-              case 'gif':
+                results.push({
+                  title: `Insert ${values.type} contents in Page`,
+                  icon: "hax:html-code",
+                  tags: ["agent"],
+                  value: {
+                    target: this,
+                    method: "processFileContentsBasedOnUserDesire",
+                    args: [values, "insert-html"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Content converted to HTML and inserted",
+                });
+                break;
+              case "png":
+              case "jpeg":
+              case "gif":
               case "jpg":
-                results.push(
-                  {
-                    title: `Insert ${values.type} in page`,
-                    icon: "editor:insert-photo",
-                    tags: ["agent"],
-                    value: {
-                      target: this,
-                      method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert-file', 'image'],
-                    },
-                    eventName: "super-daemon-element-method",
-                    path: "Image embedded in page",
-                  }
-                );
-              break;
+                results.push({
+                  title: `Insert ${values.type} in page`,
+                  icon: "editor:insert-photo",
+                  tags: ["agent"],
+                  value: {
+                    target: this,
+                    method: "processFileContentsBasedOnUserDesire",
+                    args: [values, "insert-file", "image"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Image embedded in page",
+                });
+                break;
               case "mp4":
-                results.push(
-                  {
-                    title: `Insert ${values.type} in page`,
-                    icon: "av:play-circle-filled",
-                    tags: ["agent"],
-                    value: {
-                      target: this,
-                      method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert-file', 'video'],
-                    },
-                    eventName: "super-daemon-element-method",
-                    path: "Video embedded in page",
-                  }
-                );
-              break;
+                results.push({
+                  title: `Insert ${values.type} in page`,
+                  icon: "av:play-circle-filled",
+                  tags: ["agent"],
+                  value: {
+                    target: this,
+                    method: "processFileContentsBasedOnUserDesire",
+                    args: [values, "insert-file", "video"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Video embedded in page",
+                });
+                break;
               case "midi":
               case "mid":
               case "mp3":
-                results.push(
-                  {
-                    title: `Insert ${values.type} in page`,
-                    icon: "av:volume-up",
-                    tags: ["agent"],
-                    value: {
-                      target: this,
-                      method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert-file', 'audio'],
-                    },
-                    eventName: "super-daemon-element-method",
-                    path: "Audio embedded in page",
-                  }
-                );
-              break;
+                results.push({
+                  title: `Insert ${values.type} in page`,
+                  icon: "av:volume-up",
+                  tags: ["agent"],
+                  value: {
+                    target: this,
+                    method: "processFileContentsBasedOnUserDesire",
+                    args: [values, "insert-file", "audio"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Audio embedded in page",
+                });
+                break;
               case "pdf":
-                results.push(
-                  {
-                    title: `Embed ${values.type} in page`,
-                    icon: "hax:file-pdf",
-                    tags: ["agent"],
-                    value: {
-                      target: this,
-                      method: "processFileContentsBasedOnUserDesire",
-                      args: [values, 'insert-file', 'pdf'],
-                    },
-                    eventName: "super-daemon-element-method",
-                    path: "PDF embedded in a frame element",
-                  }
-                );
+                results.push({
+                  title: `Embed ${values.type} in page`,
+                  icon: "hax:file-pdf",
+                  tags: ["agent"],
+                  value: {
+                    target: this,
+                    method: "processFileContentsBasedOnUserDesire",
+                    args: [values, "insert-file", "pdf"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "PDF embedded in a frame element",
+                });
               default:
-              // go run the hax hooks to see if any web components supply 
-              // a way of handling material that is of that file type
-              break;
+                // go run the hax hooks to see if any web components supply
+                // a way of handling material that is of that file type
+                break;
             }
-            results.push(
-              {
-                title: `Link to ${values.type} file`,
-                icon: "editor:insert-link",
-                tags: ["agent"],
-                value: {
-                  target: this,
-                  method: "processFileContentsBasedOnUserDesire",
-                  args: [values, 'link', 'link'],
-                },
-                eventName: "super-daemon-element-method",
-                path: "File uploaded and linked to",
-              }
-            );
-            results.push(
-              {
-                title: `Just Upload ${values.type} file`,
-                icon: "file-upload",
-                tags: ["agent"],
-                value: {
-                  target: this,
-                  method: "processFileContentsBasedOnUserDesire",
-                  args: [values, 'upload', 'upload-only'],
-                },
-                eventName: "super-daemon-element-method",
-                path: "File uploaded for later use",
-              }
-            );
-          }
-          else if (usAction.type === "drop" && values.type === "drop") {
+            results.push({
+              title: `Link to ${values.type} file`,
+              icon: "editor:insert-link",
+              tags: ["agent"],
+              value: {
+                target: this,
+                method: "processFileContentsBasedOnUserDesire",
+                args: [values, "link", "link"],
+              },
+              eventName: "super-daemon-element-method",
+              path: "File uploaded and linked to",
+            });
+            results.push({
+              title: `Just Upload ${values.type} file`,
+              icon: "file-upload",
+              tags: ["agent"],
+              value: {
+                target: this,
+                method: "processFileContentsBasedOnUserDesire",
+                args: [values, "upload", "upload-only"],
+              },
+              eventName: "super-daemon-element-method",
+              path: "File uploaded for later use",
+            });
+          } else if (usAction.type === "drop" && values.type === "drop") {
             const file = usData.file;
             const contents = await file.text();
-            let tmp = file.name.split('.');
-            let type = '';
+            let tmp = file.name.split(".");
+            let type = "";
             // don't assume there is a file extension
             if (tmp.length > 1) {
               type = tmp.pop();
             }
             // wand hands off for next part now that we've got a file selected
             SuperDaemonInstance.waveWand(
-              ["", "/", {
-                operation: 'file-selected',
-                contents: contents,
-                data: file,
-                type: type,
-              }, "hax-agent", "Agent"],
+              [
+                "",
+                "/",
+                {
+                  operation: "file-selected",
+                  contents: contents,
+                  data: file,
+                  type: type,
+                },
+                "hax-agent",
+                "Agent",
+              ],
               this.shadowRoot.querySelector("#merlin"),
               "coin2"
             );
@@ -1157,7 +1165,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 },
                 eventName: "super-daemon-element-method",
                 path: "Watch Merlin work his magic!",
-              }
+              },
             ];
             // this forces it to just happen
             // and can be disabled later if we obtain different magic file operations
@@ -2007,7 +2015,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           {
             varPath: "createNodePath",
             selector: "#duplicatebutton",
-          }
+          },
         ];
         // see which features should be enabled
         ary.forEach((pair) => {
@@ -2102,7 +2110,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.siteSettings,
       icon: "hax:site-settings",
-      tags: ["CMS", "site", "settings", "operation", "command", "theme", "seo", "author"],
+      tags: [
+        "CMS",
+        "site",
+        "settings",
+        "operation",
+        "command",
+        "theme",
+        "seo",
+        "author",
+      ],
       value: {
         target: this,
         method: "_manifestButtonTap",
@@ -2115,7 +2132,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.themeSettings,
       icon: "hax:site-settings",
-      tags: ["CMS", "site", "settings", "operation", "command", "theme", "seo", "author"],
+      tags: [
+        "CMS",
+        "site",
+        "settings",
+        "operation",
+        "command",
+        "theme",
+        "seo",
+        "author",
+      ],
       value: {
         target: this,
         method: "_manifestButtonTap",
@@ -2128,7 +2154,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.seoSettings,
       icon: "hax:site-settings",
-      tags: ["CMS", "site", "settings", "operation", "command", "theme", "seo", "search", "engine"],
+      tags: [
+        "CMS",
+        "site",
+        "settings",
+        "operation",
+        "command",
+        "theme",
+        "seo",
+        "search",
+        "engine",
+      ],
       value: {
         target: this,
         method: "_manifestButtonTap",
@@ -2141,7 +2177,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.authorSettings,
       icon: "hax:site-settings",
-      tags: ["CMS", "site", "settings", "operation", "command", "theme", "author"],
+      tags: [
+        "CMS",
+        "site",
+        "settings",
+        "operation",
+        "command",
+        "theme",
+        "author",
+      ],
       value: {
         target: this,
         method: "_manifestButtonTap",
@@ -2251,7 +2295,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 globalThis.customElements.get(tag).haxProperties &&
                 globalThis.customElements.get(tag).haxProperties.gizmo
               ) {
-                icon = globalThis.customElements.get(tag).haxProperties.gizmo.icon;
+                icon =
+                  globalThis.customElements.get(tag).haxProperties.gizmo.icon;
               }
             }
             if (input == "" || tag.includes(input)) {
@@ -2671,7 +2716,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const body = await HAXStore.activeHaxBody.haxToContent();
     if (
       body != this._originalContent &&
-      !globalThis.confirm(this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure)
+      !globalThis.confirm(
+        this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure
+      )
     ) {
       return false;
     }
@@ -2805,7 +2852,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-max-height": "85vh",
         },
         elements: {
-          content: globalThis.document.createElement("haxcms-outline-editor-dialog"),
+          content: globalThis.document.createElement(
+            "haxcms-outline-editor-dialog"
+          ),
         },
         invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
         clone: false,

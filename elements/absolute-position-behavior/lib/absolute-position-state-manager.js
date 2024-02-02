@@ -5,15 +5,18 @@
 import { LitElement } from "lit";
 
 // register globally so we can make sure there is only one
-globalThis.AbsolutePositionStateManager = globalThis.AbsolutePositionStateManager || {};
+globalThis.AbsolutePositionStateManager =
+  globalThis.AbsolutePositionStateManager || {};
 // request if this exists. This helps invoke element existing in dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through same modal
 globalThis.AbsolutePositionStateManager.requestAvailability = () => {
-  if (!globalThis.AbsolutePositionStateManager.instance && globalThis.document) {
-    globalThis.AbsolutePositionStateManager.instance = globalThis.document.createElement(
-      "absolute-position-state-manager"
-    );
+  if (
+    !globalThis.AbsolutePositionStateManager.instance &&
+    globalThis.document
+  ) {
+    globalThis.AbsolutePositionStateManager.instance =
+      globalThis.document.createElement("absolute-position-state-manager");
     let instance = globalThis.AbsolutePositionStateManager.instance;
     globalThis.document.body.appendChild(instance);
   }
@@ -94,9 +97,13 @@ class AbsolutePositionStateManager extends LitElement {
       });
       this.updateElements();
       this.windowControllers = new AbortController();
-      globalThis.document.addEventListener("load", this.updateElements.bind(this), {
-        signal: this.windowControllers.signal,
-      });
+      globalThis.document.addEventListener(
+        "load",
+        this.updateElements.bind(this),
+        {
+          signal: this.windowControllers.signal,
+        }
+      );
       globalThis.addEventListener("resize", this._handleResize.bind(this), {
         signal: this.windowControllers.signal,
       });
@@ -398,7 +405,7 @@ class AbsolutePositionStateManager extends LitElement {
     //if element is sticky, adjust top posiiton accordingly
     if (el.sticky) {
       let scrollTop =
-      globalThis.pageYOffset ||
+          globalThis.pageYOffset ||
           (
             globalThis.document.documentElement ||
             globalThis.document.body.parentNode ||

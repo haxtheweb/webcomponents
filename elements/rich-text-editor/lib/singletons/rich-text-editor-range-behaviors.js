@@ -40,8 +40,10 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.haxUIElement = true;
-      this.__highlight = globalThis.RichTextEditorHighlight.requestAvailability();
-      this.__clipboard = globalThis.RichTextEditorClipboard.requestAvailability();
+      this.__highlight =
+        globalThis.RichTextEditorHighlight.requestAvailability();
+      this.__clipboard =
+        globalThis.RichTextEditorClipboard.requestAvailability();
     }
 
     get commandIsToggled() {

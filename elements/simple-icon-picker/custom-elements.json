@@ -45,7 +45,7 @@
         },
         {
           "name": "allowNull",
-          "description": "`allowNull` {`boolean`} - Allow a null option to be selected?\n\nProperty: allowNull\n\nDefault: false",
+          "description": "`allowNull` {`boolean`} - Allow a null option to be selected?\n\nProperty: allowNull\n\nDefault: true",
           "valueSet": "v"
         },
         {

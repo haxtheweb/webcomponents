@@ -100,9 +100,13 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
   connectTargetEvents(enable = true) {
     if (enable) {
       this.windowControllers = new AbortController();
-      globalThis.addEventListener("keydown", this.targetKeyDownMonitor.bind(this), {
-        signal: this.windowControllers.signal,
-      });
+      globalThis.addEventListener(
+        "keydown",
+        this.targetKeyDownMonitor.bind(this),
+        {
+          signal: this.windowControllers.signal,
+        }
+      );
       globalThis.addEventListener("keyup", this.targetKeyMonitor.bind(this), {
         signal: this.windowControllers.signal,
       });

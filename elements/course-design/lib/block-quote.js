@@ -22,7 +22,7 @@ export class BlockQuote extends SimpleColors {
     this.citation = "";
     this.image = "";
     this.alt = "";
-    this.accentColor = 'grey';
+    this.accentColor = "grey";
   }
 
   render() {
@@ -60,17 +60,24 @@ export class BlockQuote extends SimpleColors {
     return "block-quote";
   }
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
-          background-color: var(--simple-colors-default-theme-accent-2, #f5f5f5);
+          background-color: var(
+            --simple-colors-default-theme-accent-2,
+            #f5f5f5
+          );
           color: var(--simple-colors-default-theme-accent-12, #000000);
           display: block;
         }
 
         #wrap {
           display: flex;
-          border-left-color: var( --simple-colors-default-theme-accent-3, #747474);
+          border-left-color: var(
+            --simple-colors-default-theme-accent-3,
+            #747474
+          );
           border-left: solid;
           border-left-width: 8px;
           padding: 25px;
@@ -109,7 +116,7 @@ export class BlockQuote extends SimpleColors {
         }
 
         simple-icon-lite {
-          color: var( --simple-colors-default-theme-accent-7, #747474);
+          color: var(--simple-colors-default-theme-accent-7, #747474);
           height: var(--ddd-icon-xs);
           width: var(--ddd-icon-xs);
         }
@@ -129,7 +136,7 @@ export class BlockQuote extends SimpleColors {
             margin: 0 auto 0;
             border: solid;
             border-width: 6px;
-            border-color: var( --simple-colors-default-theme-accent-3, #747474);
+            border-color: var(--simple-colors-default-theme-accent-3, #747474);
             border-radius: 50%;
           }
         }

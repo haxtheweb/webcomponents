@@ -19,7 +19,12 @@ class HAXCMSSiteDisqus extends DisqusEmbed {
     });
     autorun(() => {
       const manifest = toJS(store.manifest);
-      if (manifest && manifest.metadata && manifest.metadata.site && manifest.metadata.site.lang) {
+      if (
+        manifest &&
+        manifest.metadata &&
+        manifest.metadata.site &&
+        manifest.metadata.site.lang
+      ) {
         this.lang = manifest.metadata.site.lang;
       }
     });

@@ -694,7 +694,10 @@ function highlightBlock(block) {
   if (isNotHighlighted(language)) return;
 
   if (options.useBR) {
-    node = globalThis.document.createElementNS("http://www.w3.org/1999/xhtml", "div");
+    node = globalThis.document.createElementNS(
+      "http://www.w3.org/1999/xhtml",
+      "div"
+    );
     node.innerHTML = block.innerHTML
       .replace(/\n/g, "")
       .replace(/<br[ \/]*>/g, "\n");

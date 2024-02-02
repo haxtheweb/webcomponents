@@ -1024,7 +1024,10 @@
       var common =
         ' class= "fg"' + ' width="' + modsize + '" height="' + modsize + '"/>';
 
-      var e = globalThis.document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      var e = globalThis.document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg"
+      );
       e.setAttribute("viewBox", "0 0 " + size + " " + size);
       e.setAttribute("style", "shape-rendering:crispEdges");
       if (options.modulesize) {

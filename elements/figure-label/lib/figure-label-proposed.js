@@ -16,10 +16,11 @@ import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
   * @lit-element
   * @demo demo/index.html
   */
-class FigureLabelProposed extends (DDD) {
+class FigureLabelProposed extends DDD {
   //styles function
   static get styles() {
-    return [...super.styles, 
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -52,7 +53,10 @@ class FigureLabelProposed extends (DDD) {
           border-color: var(--ddd-component-figure-label-title, var(--ddd-theme-accent-color , var(--simple-colors-default-theme-accent-2, var(--ddd-theme-polaris-limestoneLight))));
           padding: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-4xs);
-          background: var(--ddd-component-figure-label-background, var(--ddd-theme-polaris-white));
+          background: var(
+            --ddd-component-figure-label-background,
+            var(--ddd-theme-polaris-white)
+          );
           font-weight: var(--ddd-font-primary-regular);
         }
       `,

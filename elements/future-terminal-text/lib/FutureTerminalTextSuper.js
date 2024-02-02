@@ -13,7 +13,9 @@ export const FutureTerminalTextLiteSuper = function (SuperClass) {
     }
     async _doGlitch() {
       // a11y -- check for reduced motion and DO NOT glitch if that is the case
-      const motionMQ = globalThis.matchMedia("(prefers-reduced-motion: reduce)");
+      const motionMQ = globalThis.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
       const prefersReducedMotion = motionMQ.matches;
       if (!prefersReducedMotion) {
         const text = this.innerHTML;

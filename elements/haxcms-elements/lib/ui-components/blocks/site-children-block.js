@@ -187,24 +187,25 @@ class SiteChildrenBlock extends LitElement {
           ?fixed-id="${this.fixedId}"
         ></site-query-menu-slice>
         ${this.__items.map(
-          (item) => html`${item.metadata.hideInMenu === true ||
-          item.metadata.published === false
-            ? ``
-            : html`
-                <li class="spacing">
-                  <a
-                    data-id="${item.id}"
-                    class="link"
-                    tabindex="-1"
-                    href="${item.slug}"
-                  >
-                    <button>
-                      <div class="indent indent-${item.indent}"></div>
-                      ${item.title}
-                    </button>
-                  </a>
-                </li>
-              `} `
+          (item) =>
+            html`${item.metadata.hideInMenu === true ||
+            item.metadata.published === false
+              ? ``
+              : html`
+                  <li class="spacing">
+                    <a
+                      data-id="${item.id}"
+                      class="link"
+                      tabindex="-1"
+                      href="${item.slug}"
+                    >
+                      <button>
+                        <div class="indent indent-${item.indent}"></div>
+                        ${item.title}
+                      </button>
+                    </a>
+                  </li>
+                `} `
         )}
       </ul>
     `;

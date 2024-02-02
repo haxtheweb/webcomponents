@@ -931,7 +931,9 @@ function OpenSeadragon(options) {
    */
   $.pixelDensityRatio = (function () {
     if ($.supportsCanvas) {
-      var context = globalThis.document.createElement("canvas").getContext("2d");
+      var context = globalThis.document
+        .createElement("canvas")
+        .getContext("2d");
       var devicePixelRatio = globalThis.devicePixelRatio || 1;
       var backingStoreRatio =
         context.webkitBackingStorePixelRatio ||
@@ -4252,7 +4254,10 @@ function OpenSeadragon(options) {
       $.MouseTracker.maxTouchPoints = 0;
     }
     $.MouseTracker.haveMouseEnter = false;
-  } else if (globalThis.MSPointerEvent && globalThis.navigator.msPointerEnabled) {
+  } else if (
+    globalThis.MSPointerEvent &&
+    globalThis.navigator.msPointerEnabled
+  ) {
     // IE10
     $.MouseTracker.havePointerEvents = true;
     $.MouseTracker.subscribeEvents.push(
@@ -17044,7 +17049,9 @@ function OpenSeadragon(options) {
             }
             // Create a URL for the blob data and make it the source of the image object.
             // This will still trigger Image.onload to indicate a successful tile load.
-            var url = (globalThis.URL || globalThis.webkitURL).createObjectURL(blb);
+            var url = (globalThis.URL || globalThis.webkitURL).createObjectURL(
+              blb
+            );
             self.image.src = url;
           },
           error: function (request) {

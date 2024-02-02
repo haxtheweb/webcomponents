@@ -1064,12 +1064,12 @@ globalThis.SimpleColorsSharedStyles.requestAvailability = () => {
       "simple-colors-shared-styles"
     );
     globalThis.SimpleColorsSharedStyles.colors =
-    globalThis.SimpleColorsSharedStyles.instance.colors;
+      globalThis.SimpleColorsSharedStyles.instance.colors;
     globalThis.SimpleColorsSharedStyles.contrasts =
-    globalThis.SimpleColorsSharedStyles.instance.contrasts;
+      globalThis.SimpleColorsSharedStyles.instance.contrasts;
     globalThis.SimpleColorsSharedStyles.stylesheet =
       document.createElement("style");
-      globalThis.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
+    globalThis.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
     document.head.appendChild(globalThis.SimpleColorsSharedStyles.stylesheet);
   }
   return globalThis.SimpleColorsSharedStyles.instance;

@@ -76,7 +76,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["responsive-width","responsive-size"]
+    "unsetAttributes": ["responsive-width", "responsive-size"]
   },
   "documentation": {
     "howTo": null,

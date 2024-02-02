@@ -467,7 +467,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     }
     let el = globalThis.document.createElement("textarea");
     el.value =
-    globalThis.location.origin +
+      globalThis.location.origin +
       globalThis.location.pathname +
       "#" +
       target.getAttribute("id");
@@ -695,7 +695,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           // inject's theme's specific style sheet criteria into hax body
           // this should ensure that low level css is the same if in shadowRoot for hax-body or
           // primary design
-          if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
+          if (
+            globalThis.HaxStore &&
+            globalThis.HaxStore.requestAvailability()
+          ) {
             render(
               this.HAXCMSGlobalStyleSheetEditModeContent(),
               globalThis.HaxStore.requestAvailability().activeHaxBody.shadowRoot.querySelector(

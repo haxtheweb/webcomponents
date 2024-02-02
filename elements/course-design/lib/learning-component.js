@@ -173,10 +173,10 @@ class LearningComponent extends I18NMixin(SimpleColors) {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has('type') && this.type && this.type != '') {
+    if (changedProperties.has("type") && this.type && this.type != "") {
       this.accentColor = learningComponentColors[this.type];
       this.title = learningComponentTypes[this.type];
-      this.icon = iconFromPageType(this.type)
+      this.icon = iconFromPageType(this.type);
     }
   }
 
@@ -185,7 +185,7 @@ class LearningComponent extends I18NMixin(SimpleColors) {
     this.icon = null;
     this.accentColor = null;
     this.dark = false;
-    this.type = '';
+    this.type = "";
     this.subtitle = null;
     this.title = null;
     this.url = null;
@@ -199,7 +199,8 @@ class LearningComponent extends I18NMixin(SimpleColors) {
    * CSS
    */
   static get styles() {
-    return [super.styles,
+    return [
+      super.styles,
       css`
         :host {
           display: block;
@@ -319,10 +320,9 @@ class LearningComponent extends I18NMixin(SimpleColors) {
     return html`
       <div class="header">
         <div class="icon">
-          ${this.icon ? html`
-          <simple-icon-lite
-            icon="${this.icon}"
-          ></simple-icon-lite>` : ``}
+          ${this.icon
+            ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite>`
+            : ``}
         </div>
         <div class="title-wrap">
           <div class="sub-title">${this.subtitle}</div>
@@ -366,7 +366,16 @@ class LearningComponent extends I18NMixin(SimpleColors) {
           "A card for instructors to communicate pedagogy and instructional strategies.",
         icon: "icons:bookmark",
         color: "orange",
-        tags: ["Instructional", "content", "design", "presentation", "instruction", "course", "learning", "card"],
+        tags: [
+          "Instructional",
+          "content",
+          "design",
+          "presentation",
+          "instruction",
+          "course",
+          "learning",
+          "card",
+        ],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -379,8 +388,8 @@ class LearningComponent extends I18NMixin(SimpleColors) {
             title: "Type",
             description: "The type of card to be used.",
             inputMethod: "select",
-            options: {"": "", ...learningComponentTypes},
-            required: false
+            options: { "": "", ...learningComponentTypes },
+            required: false,
           },
           {
             property: "subtitle",
@@ -428,9 +437,7 @@ class LearningComponent extends I18NMixin(SimpleColors) {
         ],
       },
       saveOptions: {
-        unsetAttributes: [
-          "t",
-        ],
+        unsetAttributes: ["t"],
       },
       demoSchema: [
         {

@@ -737,16 +737,15 @@ const SimplePickerBehaviors = function (SuperClass) {
     }
 
     _renderOptions(options) {
-      return html`
-      <lit-virtualizer
+      return html` <lit-virtualizer
         scroller
-        .items=${(options || [])}
+        .items=${options || []}
         .renderItem=${this.renderItem.bind(this)}
       ></lit-virtualizer>`;
     }
     renderItem(row, rownum) {
-       return html`<div class="row" ?hidden="${!this._isRowHidden(row)}">
-      ${Array.isArray(row) ? this._renderRow(row, rownum) : nothing}
+      return html`<div class="row" ?hidden="${!this._isRowHidden(row)}">
+        ${Array.isArray(row) ? this._renderRow(row, rownum) : nothing}
       </div>`;
     }
     _isRowHidden(row) {
@@ -790,35 +789,66 @@ const SimplePickerBehaviors = function (SuperClass) {
         if (propName === "expanded" && this.shadowRoot && this.expanded) {
           // delay to allow virtualizer to calculate how many
           setTimeout(() => {
-            const virtualizer = this.shadowRoot.querySelector('lit-virtualizer');
+            const virtualizer =
+              this.shadowRoot.querySelector("lit-virtualizer");
             // only apply the 1st time opening
-            if (virtualizer && virtualizer.querySelector('.row') && virtualizer.style.width == '') {
+            if (
+              virtualizer &&
+              virtualizer.querySelector(".row") &&
+              virtualizer.style.width == ""
+            ) {
               // gutter accounts for the scrollbar
               let gutter = 24;
-              let rowData = virtualizer.querySelector('.row').getBoundingClientRect();
+              let rowData = virtualizer
+                .querySelector(".row")
+                .getBoundingClientRect();
               // null initial option which some things allow in their options provided
               if (rowData.width === 0) {
-                [...virtualizer.querySelectorAll('.row')].map((item) => item.getBoundingClientRect().width > rowData.width ? rowData = item.getBoundingClientRect() : rowData = rowData);
+                [...virtualizer.querySelectorAll(".row")].map((item) =>
+                  item.getBoundingClientRect().width > rowData.width
+                    ? (rowData = item.getBoundingClientRect())
+                    : (rowData = rowData)
+                );
               }
               // if 1st item is null, we need to account for that when having multiple
-              // items in a single row              
-              if (!this.allowNull && ["SIMPLE-SYMBOL-PICKER", "SIMPLE-EMOJI-PICKER"].includes(this.tagName)) {
-                gutter = gutter + virtualizer.querySelector('.row').querySelector(":last-child").getBoundingClientRect().width;
+              // items in a single row
+              if (
+                !this.allowNull &&
+                ["SIMPLE-SYMBOL-PICKER", "SIMPLE-EMOJI-PICKER"].includes(
+                  this.tagName
+                )
+              ) {
+                gutter =
+                  gutter +
+                  virtualizer
+                    .querySelector(".row")
+                    .querySelector(":last-child")
+                    .getBoundingClientRect().width;
               }
               // width is what a common row is
               virtualizer.style.width = parseInt(rowData.width + gutter) + "px";
               // test if height is smaller than our lowest value is it doesn't look odd
               // but if we're going to scroll then allow it to scroll
-              if ((rowData.height * virtualizer.querySelectorAll('.row').length) < 150) {
-                virtualizer.style.minHeight = parseInt(rowData.height * virtualizer.querySelectorAll('.row').length + 2) + "px";
+              if (
+                rowData.height * virtualizer.querySelectorAll(".row").length <
+                150
+              ) {
+                virtualizer.style.minHeight =
+                  parseInt(
+                    rowData.height *
+                      virtualizer.querySelectorAll(".row").length +
+                      2
+                  ) + "px";
               }
               // apply row style so it fills the container when it can
               requestAnimationFrame(() => {
-                [...virtualizer.querySelectorAll('.row')].map((item) => item.style.width = "-webkit-fill-available");
+                [...virtualizer.querySelectorAll(".row")].map(
+                  (item) => (item.style.width = "-webkit-fill-available")
+                );
               });
             }
           }, 100);
-      }
+        }
       });
       /**
        * Fires when properties change

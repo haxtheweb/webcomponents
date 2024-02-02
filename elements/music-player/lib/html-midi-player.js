@@ -1443,7 +1443,10 @@
           var e = t.split(".");
           return (
             (e = e[e.length - 1]),
-            "" !== globalThis.document.createElement("audio").canPlayType("audio/" + e)
+            "" !==
+              globalThis.document
+                .createElement("audio")
+                .canPlayType("audio/" + e)
           );
         }),
         (s.default.loaded = function () {
@@ -22385,11 +22388,10 @@
               function a(t, e = !1, n = 1, i = 0) {
                 let o = t.querySelector("animate");
                 if (!o) {
-                  (o = globalThis.document.createElementNS(r, "animate")).setAttributeNS(
-                    null,
-                    "attributeName",
-                    "opacity"
-                  ),
+                  (o = globalThis.document.createElementNS(
+                    r,
+                    "animate"
+                  )).setAttributeNS(null, "attributeName", "opacity"),
                     o.setAttributeNS(null, "dur", "4s"),
                     o.setAttributeNS(null, "fill", "freeze"),
                     o.setAttributeNS(null, "keyTimes", "0; 0.25; 0.5; 0.75; 1");
@@ -22704,7 +22706,8 @@
                     )),
                     (this.signaturesBlinking = !1),
                     (this.signaturesQuarters = 0),
-                    (this.parentElement = globalThis.document.createElement("div")),
+                    (this.parentElement =
+                      globalThis.document.createElement("div")),
                     (this.parentElement.style.overflow = "auto"),
                     this.div.appendChild(this.parentElement),
                     (this.ticking = !1),
@@ -22713,7 +22716,10 @@
                       "scroll",
                       this.handleScrollEvent
                     ),
-                    (this.staffSVG = globalThis.document.createElementNS(i.SVGNS, "svg")),
+                    (this.staffSVG = globalThis.document.createElementNS(
+                      i.SVGNS,
+                      "svg"
+                    )),
                     this.parentElement.appendChild(this.staffSVG),
                     (this.staffG = Object(i.createSVGGroupChild)(
                       this.staffSVG,
@@ -26597,7 +26603,8 @@
       globalThis.document.addEventListener(
         "visibilitychange",
         function (e) {
-          "hidden" === globalThis.document.visibilityState && (n && (t = !0), a());
+          "hidden" === globalThis.document.visibilityState &&
+            (n && (t = !0), a());
         },
         !0
       ),
@@ -26638,8 +26645,13 @@
       e.nodeType === Node.DOCUMENT_FRAGMENT_NODE && e.host
         ? e.host.setAttribute("data-js-focus-visible", "")
         : e.nodeType === Node.DOCUMENT_NODE &&
-          (globalThis.document.documentElement.classList.add("js-focus-visible"),
-          globalThis.document.documentElement.setAttribute("data-js-focus-visible", ""));
+          (globalThis.document.documentElement.classList.add(
+            "js-focus-visible"
+          ),
+          globalThis.document.documentElement.setAttribute(
+            "data-js-focus-visible",
+            ""
+          ));
   }
   if ("undefined" != typeof window && "undefined" != typeof document) {
     var t;
@@ -26750,7 +26762,9 @@
     }
     initVisualizer() {
       null == this.initTimeout &&
-        (this.initTimeout = globalThis.setTimeout(() => this.initVisualizerNow()));
+        (this.initTimeout = globalThis.setTimeout(() =>
+          this.initVisualizerNow()
+        ));
     }
     initVisualizerNow() {
       var t = this;

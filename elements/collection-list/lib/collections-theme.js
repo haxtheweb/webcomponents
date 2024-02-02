@@ -460,8 +460,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       let activeItem = toJS(store.activeItem);
       if (activeItem && activeItem.metadata && activeItem.metadata.image) {
         this.image = activeItem.metadata.image;
-      }
-      else {
+      } else {
         let manifest = toJS(store.manifest);
         this.image = varGet(
           manifest,

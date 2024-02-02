@@ -6,19 +6,20 @@ import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleModalHandler } from "@lrnwebcomponents/simple-modal/lib/simple-modal-handler.js";
 import "@lrnwebcomponents/figure-label/lib/figure-label-proposed.js";
-import {DDD} from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `media-image`
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
  * @element media-image
  */
-class MediaImage extends (DDD) {
+class MediaImage extends DDD {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -35,7 +36,10 @@ class MediaImage extends (DDD) {
           border: var(--ddd-border-xs);
           border-color: var(--ddd-theme-polaris-limestoneLight);
           padding: var(--ddd-spacing-5);
-          background-color: var(--ddd-component-media-image-card-color, var(--card-background-color));
+          background-color: var(
+            --ddd-component-media-image-card-color,
+            var(--card-background-color)
+          );
         }
 
         :host([box]) {
@@ -84,7 +88,13 @@ class MediaImage extends (DDD) {
         media-image-caption {
           max-height: 100px;
           border: var(--ddd-border-sm);
-          border-color: var(--ddd-component-figure-label-title, var(--ddd-theme-accent-color , var(--ddd-theme-polaris-limestoneLight)));
+          border-color: var(
+            --ddd-component-figure-label-title,
+            var(
+              --ddd-theme-accent-color,
+              var(--ddd-theme-polaris-limestoneLight)
+            )
+          );
           background: var(--ddd-component-figure-label-background, transparent);
           padding: var(--ddd-spacing-2);
           margin-bottom: var(--ddd-spacing-5);
@@ -94,7 +104,7 @@ class MediaImage extends (DDD) {
           cursor: pointer;
         }
 
-        .citation{
+        .citation {
           font-size: 12px;
         }
       `,
@@ -119,11 +129,11 @@ class MediaImage extends (DDD) {
   }
   firstUpdated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if(propName == "cardColor"){
+      if (propName == "cardColor") {
         this.style.setProperty("--card-background-color", this.cardColor);
       }
-    }
-  )}
+    });
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "caption") {
@@ -480,7 +490,8 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -491,7 +502,7 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
         .image-wrap img {
           width: 100%;
         }
-        :host([round]) .image-wrap img{
+        :host([round]) .image-wrap img {
           border-radius: var(--ddd-radius-circle);
           height: fit-content;
           overflow: show;
@@ -562,12 +573,13 @@ customElements.define(MediaImageImage.tag, MediaImageImage);
  * @demo demo/index.html
  * @element media-image-citation
  */
-class MediaImageCitation extends (DDD) {
+class MediaImageCitation extends DDD {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -604,12 +616,13 @@ customElements.define(MediaImageCitation.tag, MediaImageCitation);
  * @demo demo/index.html
  * @element media-image-caption
  */
-class MediaImageCaption extends (DDD) {
+class MediaImageCaption extends DDD {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;

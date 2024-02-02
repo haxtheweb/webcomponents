@@ -11,10 +11,11 @@ globalThis.A11yMediaStateManager = globalThis.A11yMediaStateManager || {};
 // is rendered through the same modal
 globalThis.A11yMediaStateManager.requestAvailability = () => {
   if (!globalThis.A11yMediaStateManager.instance && globalThis.document) {
-    globalThis.A11yMediaStateManager.instance = globalThis.document.createElement(
-      "a11y-media-state-manager"
+    globalThis.A11yMediaStateManager.instance =
+      globalThis.document.createElement("a11y-media-state-manager");
+    globalThis.document.body.appendChild(
+      globalThis.A11yMediaStateManager.instance
     );
-    globalThis.document.body.appendChild(globalThis.A11yMediaStateManager.instance);
   }
   return globalThis.A11yMediaStateManager.instance;
 };
@@ -105,7 +106,10 @@ class A11yMediaStateManager extends LitElement {
    */
   get observer() {
     let handleIntersect = (entries, observer) => {
-      globalThis.A11yMediaStateManager.instance._handleIntersect(entries, observer);
+      globalThis.A11yMediaStateManager.instance._handleIntersect(
+        entries,
+        observer
+      );
     };
     this._observer =
       this._observer ||

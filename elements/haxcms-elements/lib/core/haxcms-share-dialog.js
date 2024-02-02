@@ -114,7 +114,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         form[pair[0]] = pair[1];
       }
     }
-    this.link = `${globalThis.location.href.replace("iam.", `${form.access}.`)}${
+    this.link = `${globalThis.location.href.replace(
+      "iam.",
+      `${form.access}.`
+    )}${
       form["disable-features"]
         ? `?disable-features=${form["disable-features"]}`
         : ``

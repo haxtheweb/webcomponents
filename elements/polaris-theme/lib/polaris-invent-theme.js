@@ -36,13 +36,19 @@ import { HAXCMSToastInstance } from "@lrnwebcomponents/haxcms-elements/lib/core/
  * @element polaris-invent-theme
  */
 class PolarisInventTheme extends HAXCMSOperationButtons(
-  HAXCMSRememberRoute(EmailPageMixin(PDFPageMixin(
-    PrintBranchMixin(
-      QRCodeMixin(
-        HAXCMSThemeParts(HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)))
+  HAXCMSRememberRoute(
+    EmailPageMixin(
+      PDFPageMixin(
+        PrintBranchMixin(
+          QRCodeMixin(
+            HAXCMSThemeParts(
+              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme))
+            )
+          )
+        )
       )
     )
-  )))
+  )
 ) {
   //styles function
   static get styles() {
@@ -513,20 +519,21 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             <site-search></site-search>
           </site-modal>
           ${MicroFrontendRegistry.has("@core/htmlToPdf")
-                ? this.PDFPageButton("right")
-                : ``}
-              ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
-                ? this.PrintBranchButton("right")
-                : html`<replace-tag
-                    with="site-print-button"
-                    position="right"
-                    class="btn js-toolbar-action"
-                    import-method="view"
-                    part="print-btn"
-                  ></replace-tag>`}
-              ${this.QRCodeButton("right")}
-              ${this.EmailPageButton("right")}
-          <div class="left-col ddd-font-nav" part="left-col">${this.HAXCMSMobileMenu()}</div>
+            ? this.PDFPageButton("right")
+            : ``}
+          ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
+            ? this.PrintBranchButton("right")
+            : html`<replace-tag
+                with="site-print-button"
+                position="right"
+                class="btn js-toolbar-action"
+                import-method="view"
+                part="print-btn"
+              ></replace-tag>`}
+          ${this.QRCodeButton("right")} ${this.EmailPageButton("right")}
+          <div class="left-col ddd-font-nav" part="left-col">
+            ${this.HAXCMSMobileMenu()}
+          </div>
         </div>
         <main>
           <article id="contentcontainer">
@@ -644,12 +651,30 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
   constructor() {
     super();
     // forcibly set things about the RPG toast for this design
-    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-display', 'none');
-    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-mid-background-image', 'none');
-    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-right-background-image', 'none');
-    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-left-background-image', 'none');
-    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-mid-padding', 0);
-    HAXCMSToastInstance.style.setProperty('--rpg-character-toast-height', '96px');
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-display",
+      "none"
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-mid-background-image",
+      "none"
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-right-background-image",
+      "none"
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-left-background-image",
+      "none"
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-mid-padding",
+      0
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-height",
+      "96px"
+    );
     HAXCMSToastInstance.style.backgroundColor = "white";
     this.windowControllersLoaded = new AbortController();
     globalThis.addEventListener(

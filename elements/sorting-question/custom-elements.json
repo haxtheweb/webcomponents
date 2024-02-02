@@ -2,17 +2,6 @@
   "version": 1,
   "tags": [
     {
-      "name": "sorting-option",
-      "description": "Attributes:\n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `option` {`string`} - ",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
       "name": "sorting-question",
       "description": "Attributes:\n\n  * `disabled` {`boolean`} - \n\n  * `celebrate` {`boolean`} - \n\n  * `shame` {`boolean`} - \n\n  * `numberOfOptions` {`number`} - \n\n  * `numberCorrrect` {`number`} - \n\n  * `correctOrder` {`any[]`} - \n\n  * `mute` {`boolean`} - \n\n  * `no-background` {`boolean`} - \n\n  * `question` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `celebrate` {`boolean`} - \n\n  * `shame` {`boolean`} - \n\n  * `numberOfOptions` {`number`} - \n\n  * `numberCorrrect` {`number`} - \n\n  * `correctOrder` {`any[]`} - \n\n  * `mute` {`boolean`} - \n\n  * `noBackground` {`boolean`} - \n\n  * `question` {`string`} - \n\n  * `t` - ",
       "attributes": [

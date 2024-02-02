@@ -3,8 +3,12 @@
   "tags": [
     {
       "name": "disqus-embed",
-      "description": "`disqus-embed`\n`Disqus service integration`\n\nAttributes:\n\n  * `page-url` {`string`} - \n\n  * `page-identifier` {`string`} - \n\n  * `page-title` {`string`} - \n\n  * `short-name` {`string`} - \n\n  * `lang` {`string`} - \n\nProperties:\n\n  * `pageURL` {`string`} - \n\n  * `pageIdentifier` {`string`} - \n\n  * `pageTitle` {`string`} - \n\n  * `shortName` {`string`} - \n\n  * `lang` {`string`} - ",
+      "description": "`disqus-embed`\n`Disqus service integration`\n\nAttributes:\n\n  * `loading-text` {`string`} - \n\n  * `page-url` {`string`} - \n\n  * `page-identifier` {`string`} - \n\n  * `page-title` {`string`} - \n\n  * `short-name` {`string`} - \n\n  * `lang` {`string`} - \n\nProperties:\n\n  * `loadingText` {`string`} - \n\n  * `pageURL` {`string`} - \n\n  * `pageIdentifier` {`string`} - \n\n  * `pageTitle` {`string`} - \n\n  * `shortName` {`string`} - \n\n  * `lang` {`string`} - ",
       "attributes": [
+        {
+          "name": "loading-text",
+          "description": "`loading-text` {`string`} - \n\nProperty: loadingText\n\nDefault: Loading comments.."
+        },
         {
           "name": "page-url",
           "description": "`page-url` {`string`} - \n\nProperty: pageURL\n\nDefault: null"
@@ -28,9 +32,18 @@
       ]
     },
     {
+      "name": "disqus-broker",
+      "description": "Properties:\n\n  * `renderTarget` - ",
+      "attributes": []
+    },
+    {
       "name": "haxcms-site-disqus",
-      "description": "Attributes:\n\n  * `page-url` {`string`} - \n\n  * `page-identifier` {`string`} - \n\n  * `page-title` {`string`} - \n\n  * `short-name` {`string`} - \n\n  * `lang` {`string`} - \n\nProperties:\n\n  * `pageURL` {`string`} - \n\n  * `pageIdentifier` {`string`} - \n\n  * `pageTitle` {`string`} - \n\n  * `shortName` {`string`} - \n\n  * `lang` {`string`} - ",
+      "description": "Attributes:\n\n  * `loading-text` {`string`} - \n\n  * `page-url` {`string`} - \n\n  * `page-identifier` {`string`} - \n\n  * `page-title` {`string`} - \n\n  * `short-name` {`string`} - \n\n  * `lang` {`string`} - \n\nProperties:\n\n  * `loadingText` {`string`} - \n\n  * `pageURL` {`string`} - \n\n  * `pageIdentifier` {`string`} - \n\n  * `pageTitle` {`string`} - \n\n  * `shortName` {`string`} - \n\n  * `lang` {`string`} - ",
       "attributes": [
+        {
+          "name": "loading-text",
+          "description": "`loading-text` {`string`} - \n\nProperty: loadingText\n\nDefault: Loading comments.."
+        },
         {
           "name": "page-url",
           "description": "`page-url` {`string`} - \n\nProperty: pageURL\n\nDefault: null"

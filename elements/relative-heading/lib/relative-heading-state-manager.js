@@ -5,16 +5,18 @@ import { LitElement, html, css } from "lit";
  */
 
 // register globally so we can make sure there is only one
-globalThis.RelativeHeadingStateManager = globalThis.RelativeHeadingStateManager || {};
+globalThis.RelativeHeadingStateManager =
+  globalThis.RelativeHeadingStateManager || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
 globalThis.RelativeHeadingStateManager.requestAvailability = () => {
   if (!globalThis.RelativeHeadingStateManager.instance) {
-    globalThis.RelativeHeadingStateManager.instance = globalThis.document.createElement(
-      "relative-heading-state-manager"
+    globalThis.RelativeHeadingStateManager.instance =
+      globalThis.document.createElement("relative-heading-state-manager");
+    globalThis.document.body.appendChild(
+      globalThis.RelativeHeadingStateManager.instance
     );
-    globalThis.document.body.appendChild(globalThis.RelativeHeadingStateManager.instance);
   }
   return globalThis.RelativeHeadingStateManager.instance;
 };

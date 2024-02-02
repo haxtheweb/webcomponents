@@ -355,7 +355,8 @@ class HAXCMSThemeWiring {
       this.dispatchEvent(evt);
       // update title as a simple nicity
       if (typeof newValue.title !== typeof undefined) {
-        globalThis.document.title = store.routerManifest.title + " - " + newValue.title;
+        globalThis.document.title =
+          store.routerManifest.title + " - " + newValue.title;
       } else {
         globalThis.document.title = store.routerManifest.title;
       }

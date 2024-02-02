@@ -5756,7 +5756,8 @@
                     event.initCustomEvent("testingtheevent", false, true, {});
                     util.global.dispatchEvent(event);
                     return function (name, event) {
-                      var domEvent = globalThis.document.createEvent("CustomEvent");
+                      var domEvent =
+                        globalThis.document.createEvent("CustomEvent");
                       domEvent.initCustomEvent(
                         name.toLowerCase(),
                         false,

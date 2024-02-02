@@ -1109,7 +1109,8 @@ class HaxTray extends I18NMixin(
     }
   }
   startTour() {
-    this.__tour = this.__tour || globalThis.SimpleTourManager.requestAvailability();
+    this.__tour =
+      this.__tour || globalThis.SimpleTourManager.requestAvailability();
     this.tourController = new AbortController();
     globalThis.addEventListener(
       "tour-changed",
@@ -1119,7 +1120,8 @@ class HaxTray extends I18NMixin(
     this.__tour.startTour("hax");
   }
   stopTour() {
-    this.__tour = this.__tour || globalThis.SimpleTourManager.requestAvailability();
+    this.__tour =
+      this.__tour || globalThis.SimpleTourManager.requestAvailability();
     this.__tour.stopTour("hax");
     this.tourController.abort();
   }

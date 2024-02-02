@@ -235,7 +235,8 @@ class SimpleBlogPost extends SimpleColors {
   _scrollListener(e) {
     if (this.hasImage) {
       let top =
-        (globalThis.pageYOffset || globalThis.document.scrollTop) - (globalThis.document.clientTop || 0);
+        (globalThis.pageYOffset || globalThis.document.scrollTop) -
+        (globalThis.document.clientTop || 0);
       if (top < 0 || top > 1500) {
         return;
       }
