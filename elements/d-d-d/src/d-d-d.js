@@ -67,7 +67,7 @@ export const DDDSuper = function (SuperClass) {
           :root,
           :host {
             /* global override font styles for light-dom content */
-            --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
+            --ddd-theme-body-font-size: var(--ddd-font-size-3xs);
             --ddd-theme-h1-font-size: var(--ddd-font-size-l);
             --ddd-theme-h2-font-size: var(--ddd-font-size-m);
             --ddd-theme-h3-font-size: var(--ddd-font-size-ms);
@@ -341,6 +341,7 @@ export const DDDSuper = function (SuperClass) {
               rgba(0, 3, 33, 0) 100%
             );
 
+            --ddd-icon-3xs: 20px;
             --ddd-icon-xxs: 24px;
             --ddd-icon-xs: 32px;
             --ddd-icon-sm: 40px;

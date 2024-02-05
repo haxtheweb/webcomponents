@@ -30,7 +30,7 @@ export const editableTableStyles = [
       display: block;
       width: 100%;
       max-width: 100%;
-      margin: 15px 0;
+      margin: var(--ddd-spacing-4) 0;
       font-size: var(--editable-table-font-size, unset);
       font-family: var(--editable-table-font-family, inherit);
       font-weight: var(--editable-table-medium-weight, 300);
@@ -59,14 +59,14 @@ export const editableTableStyles = [
       border-color: var(--editable-table-border-color, #999);
       font-weight: var(--editable-table-light-weight, 200);
       color: var(--editable-table-color, #222);
-      background-color: var(--editable-table-bg-color, #fff);
+      background-color: var(--editable-table-bg-color, var(--ddd-theme-polaris-white, #fff));
     }
     .th,
     .td,
     .th-or-td .icon-container {
       font-weight: var(--editable-table-light-weight, 200);
       color: var(--editable-table-color, #222);
-      background-color: var(--editable-table-bg-color, #fff);
+      background-color: var(--editable-table-bg-color, var(--ddd-theme-polaris-white, #fff));
     }
     caption {
       font-size: var(
@@ -92,22 +92,22 @@ export const editableTableStyles = [
     }
     .thead-tr .th,
     .thead-tr .th .icon-container {
-      background-color: var(--editable-table-heading-bg-color, #e0e0e0);
+      background-color: var(--editable-table-heading-bg-color, var(--ddd-theme-polaris-limestoneLight, #e0e0e0));
       font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(--editable-table-heading-color, #000);
+      color: var(--editable-table-heading-color, var(--ddd-theme-polaris-coalyGray, #000));
     }
     .tbody-tr .th,
     .tbody-tr .th .icon-container {
       font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(--editable-table-heading-color, #000);
-      background-color: var(--editable-table-bg-color, #fff);
+      color: var(--editable-table-heading-color, var(--ddd-theme-polaris-coalyGray, #000));
+      background-color: var(--editable-table-bg-color, var(--ddd-theme-polaris-white, #fff));
       text-align: left;
     }
     *[bordered] .th,
     *[bordered] .td {
       border-width: var(--editable-table-border-width, 1px);
       border-style: var(--editable-table-border-style, solid);
-      border-color: var(--editable-table-border-color, #999);
+      border-color: var(--editable-table-border-color, var(--ddd-theme-polaris-coalyGray, #999));
     }
     *[condensed] {
       --editable-table-cell-vertical-padding: var(
@@ -121,19 +121,19 @@ export const editableTableStyles = [
     }
     *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td,
     *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td .icon-container {
-      background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
+      background-color: var(--editable-table-stripe-bg-color, var(--ddd-theme-polaris-limestoneMaxLight, #f0f0f0));
     }
     *[column-striped] .tbody-tr .th-or-td:nth-child(2n),
     *[column-striped] .tbody-tr .th-or-td:nth-child(2n) .icon-container,
     *[column-striped] .tfoot-tr .th-or-td:nth-child(2n),
     *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) .icon-container {
-      background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
+      background-color: var(--editable-table-stripe-bg-color, var(--ddd-theme-polaris-limestoneMaxLight, #f0f0f0));
     }
     .tfoot-tr .th,
     .tfoot-tr .td {
       border-top: 2px solid var(--editable-table-color, #222);
       font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(--editable-table-heading-color, #000);
+      color: var(--editable-table-heading-color, var(--ddd-theme-polaris-coalyGray, #000));
     }
     caption,
     .th-or-td {
@@ -201,14 +201,11 @@ export const editableTableDisplayStyles = [
       margin-right: 0px;
       --simple-picker-border-width: 1px;
       --simple-picker-focus-border-width: 1px;
-      --simple-picker-border-color: var(--editable-table-border-color, #999);
+      --simple-picker-border-color: var(--editable-table-border-color, var(--ddd-theme-polaris-coalyGray, #999));
     }
     .th,
     .td {
-      padding-top: var(--editable-table-cell-vertical-padding, 10px);
-      padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
-      padding-left: var(--editable-table-cell-horizontal-padding, 6px);
-      padding-right: var(--editable-table-cell-horizontal-padding, 6px);
+      padding: var(--editable-table-cell-vertical-padding, var(--ddd-spacing-3, 10px)) var(--editable-table-cell-horizontal-padding, var(--ddd-spacing-2, 6px));
     }
     span.cell {
       display: block;

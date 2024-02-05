@@ -207,7 +207,8 @@ class LearningComponent extends I18NMixin(DDD) {
           margin: var(--ddd-spacing-4) 0;
         }
         .header {
-          display: flex;
+          display: grid;
+          grid-template-columns: .1fr 1fr;
           align-items: center;
           background-color: var(
             --ddd-component-learning-component-title-background,
@@ -279,6 +280,7 @@ class LearningComponent extends I18NMixin(DDD) {
             justify-content: end;
           }
           simple-icon-lite {
+            aspect-ratio: 1 / 1;
             --simple-icon-width: var(--ddd-icon-xxs);
             --simple-icon-height: var(--ddd-icon-xxs);
             height: 35px;
@@ -320,7 +322,7 @@ class LearningComponent extends I18NMixin(DDD) {
           ${this.icon
             ? html` <simple-icon-lite
                 icon="${this.icon}"
-                class="b-sm r-rounded"
+                class="b-sm r-circle"
               ></simple-icon-lite>`
             : ``}
         </div>

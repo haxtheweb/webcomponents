@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { editableTableCellStyles } from "./editable-table-behaviors.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -19,7 +20,7 @@ import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/l
  * @customElement
  * @extends LitElement
  */
-class EditableTableFilter extends SimpleToolbarButtonBehaviors(LitElement) {
+class EditableTableFilter extends SimpleToolbarButtonBehaviors( DDD ) {
   static get styles() {
     return [
       ...(super.styles || []),
@@ -43,6 +44,7 @@ class EditableTableFilter extends SimpleToolbarButtonBehaviors(LitElement) {
         #cell {
           flex: 1 1 auto !important;
           display: inline-block;
+          padding: var(--ddd-spacing-1);
         }
       `,
     ];

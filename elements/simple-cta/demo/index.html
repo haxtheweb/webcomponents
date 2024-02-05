@@ -14,25 +14,60 @@
       import '../simple-cta.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
-    <style>
-      simple-cta.super-important {
-        font-size: 50px;
-        margin: 50px;
-        display: block;
-        width: 50%;
-        --simple-cta-bg-color-is-user-selected: var(--simple-colors-default-theme-accent-11,orange);
-        --simple-cta-color-is-user-selected: var(--simple-colors-default-theme-accent-1,orange);
-      }
-    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic simple-cta demo</h3>
       <demo-snippet>
         <template>
-          <simple-cta link="https://haxtheweb.org/" accent-color="blue" dark>Get started</simple-cta>
-          <simple-cta link="https://haxtheweb.org/" accent-color="blue">Get started</simple-cta>
-          <simple-cta link="https://haxtheweb.org/" class="super-important">SUPER IMPORTANT</simple-cta>
+          <div class="mx-8 p-5" style="background-color: var(--ddd-theme-polaris-slateMaxLight); display: flex; flex-direction: column;">
+            <simple-cta hide-icon>Primary Outlined</simple-cta>
+            <simple-cta>Primary Outlined</simple-cta>
+            <simple-cta large hide-icon>Primary Outlined</simple-cta>
+            <simple-cta large>Primary Outlined</simple-cta>
+          </div>
+          <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-limestoneMaxLight); display: flex; flex-direction: column;">
+            <simple-cta filled hide-icon>Primary Filled</simple-cta>
+            <simple-cta filled>Primary Filled</simple-cta>
+            <simple-cta filled large hide-icon>Primary Filled</simple-cta>
+            <simple-cta filled large>Primary Filled</simple-cta>
+          </div>
+          <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-nittanyNavy); display: flex; flex-direction: column;">
+            <simple-cta light hide-icon>Light Outlined</simple-cta>
+            <simple-cta light>Light Outlined</simple-cta>
+            <simple-cta light large hide-icon>Light Outlined</simple-cta>
+            <simple-cta light large>Light Outlined</simple-cta>
+          </div>
+          <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-nittanyNavy); display: flex; flex-direction: column;">
+            <simple-cta light filled hide-icon>Light Filled</simple-cta>
+            <simple-cta light filled>Light Filled</simple-cta>
+            <simple-cta light filled large hide-icon>Light Filled</simple-cta>
+            <simple-cta light filled large>Light Filled</simple-cta>
+          </div>
+          <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-potentialMidnight); display: flex; flex-direction: column;">
+            <simple-cta white hide-icon>White Outlined</simple-cta>
+            <simple-cta white>White Outlined</simple-cta>
+            <simple-cta white large hide-icon>White Outlined</simple-cta>
+            <simple-cta white large>White Outlined</simple-cta>
+          </div>
+          <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-potentialMidnight); display: flex; flex-direction: column;">
+            <simple-cta white filled hide-icon>White Filled</simple-cta>
+            <simple-cta white filled>White Filled</simple-cta>
+            <simple-cta white filled large hide-icon>White Filled</simple-cta>
+            <simple-cta white filled large>White Filled</simple-cta>
+          </div>
+          <div class="mx-8 p-5" style="background-color: var(--ddd-theme-polaris-slateMaxLight); display: flex; flex-direction: column;">
+            <simple-cta hide-icon hotline>Hotline Primary Outlined</simple-cta>
+            <simple-cta filled hotline>Hotline Primary Filled</simple-cta>
+          </div>
+          <div class="mx-8 p-5" style="background-color: var(--ddd-theme-polaris-nittanyNavy); display: flex; flex-direction: column;">
+            <simple-cta light large hide-icon hotline>Hotline Light Outlined</simple-cta>
+            <simple-cta light filled large hotline>Hotline Light Filled</simple-cta>
+          </div>
+          <div class="mx-8 p-5" style="background-color: var(--ddd-theme-polaris-potentialMidnight); display: flex; flex-direction: column;">
+            <simple-cta white large hotline>Hotline White Outlined</simple-cta>
+            <simple-cta white filled large hide-icon hotline>Hotline White Filled</simple-cta>
+          </div>
         </template>
       </demo-snippet>
     </div>
