@@ -86,7 +86,7 @@ class MediaImage extends DDD {
         }
 
         media-image-caption {
-          max-height: 100px;
+          max-height: var(--ddd-icon-4xl);
           border: var(--ddd-border-sm);
           border-color: var(
             --ddd-component-figure-label-title,
@@ -102,10 +102,6 @@ class MediaImage extends DDD {
         }
         :host(:not([disable-zoom])) media-image-image:hover {
           cursor: pointer;
-        }
-
-        .citation {
-          font-size: 12px;
         }
       `,
     ];
@@ -498,6 +494,7 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
         }
         .image-wrap {
           overflow: hidden;
+          height: fit-content;
         }
         .image-wrap img {
           width: 100%;
@@ -591,12 +588,10 @@ class MediaImageCitation extends DDD {
         }
 
         .citation {
-          font-size: var(--ddd-font-size-4xs) !important;
           line-height: var(--ddd-lh-140);
-          font-weight: var(--ddd-font-primary-regular);
           font-style: italic;
           color: var(--ddd-theme-polaris-limestoneGray);
-          margin: var(--ddd-spacing-4) 0;
+          margin: var(--ddd-spacing-2) 0;
         }
       `,
     ];
@@ -627,6 +622,7 @@ class MediaImageCaption extends DDD {
         :host {
           display: block;
           overflow: auto;
+          margin-top: var(--ddd-spacing-1);
         }
 
         .caption ::slotted(*) {

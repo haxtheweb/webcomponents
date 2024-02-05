@@ -2395,6 +2395,9 @@ export const DDDSuper = function (SuperClass) {
             font-weight: var(--ddd-font-primary-regular);
             border-radius: var(--ddd-radius-xs);
           }
+          div[slot="citation"]{
+             font-size: var(--ddd-font-size-4xs);
+          }
 
           .fs-4xs {
             font-size: var(--ddd-font-size-4xs);
