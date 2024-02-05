@@ -125,13 +125,16 @@ class DDDocs extends DDD {
         th:first-child {
           border-left: none;
         }
+
+        details{
+          max-width: 90%;
+        }
       `,
     ];
   }
 
   renderBorders() {
     return html`
-      <h1 class="fs-m my-2">Borders</h1>
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Borders</h2>
       <div class="grid-4 gap-10 mx-10 my-15">
         <div class="p-10 b-xs bs-sm">
@@ -168,7 +171,6 @@ class DDDocs extends DDD {
 
   renderBreakpoints() {
     return html`
-      <h1 class="fs-m mt-20 mb-2">Breakpoints</h1>
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Breakpoints</h2>
       <table class="my-15 mx-10">
         <thead>
@@ -203,7 +205,6 @@ class DDDocs extends DDD {
 
   renderPolarisColors() {
     return html`
-      <h1 class="fs-m mt-20 mb-2">Polaris Colors</h1>
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
         Available Colors from the Polaris Theme
       </h2>
@@ -490,7 +491,6 @@ class DDDocs extends DDD {
 
   renderPolarisFunctionalColors() {
     return html`
-      <h1 class="fs-m mt-20 mb-2">Polaris Functional Colors</h1>
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
         Available Functional Colors from the Polaris Theme
       </h2>
@@ -597,7 +597,6 @@ class DDDocs extends DDD {
 
   renderGradients() {
     return html`
-    <h1 class="fs-m mt-20 mb-2">Gradients</h1>
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Gradients from the Polaris Theme</h2>
     <div class="grid-6 my-15 ml-10">
       <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-navBar"></p>
@@ -630,7 +629,6 @@ class DDDocs extends DDD {
 
   renderRadius() {
     return html`
-    <h1 class="fs-m mt-20 mb-2">Radius</h1>
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Radius classes</h2>
     <div class="grid-7 my-15 mx-10 gap-2">
     <div><p class="py-20 r-xs b-sm bs-sm"></p>
@@ -667,7 +665,6 @@ class DDDocs extends DDD {
 
   renderShadows() {
     return html`
-    <h1 class="fs-m mt-20 mb-2">Shadows</h1>
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Shadow classes</h2>
     <div class="grid-4 my-15 mx-30 gap-30">
     <div><p class="py-20 b-sm bs-xs"></p>
@@ -710,7 +707,6 @@ class DDDocs extends DDD {
 
   renderSpacing() {
     return html`
-      <h1 class="fs-m mt-20 mb-2">Spacing</h1>
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Spacing classes</h2>
       <h6 class="fw-2 ml-10 mb-15">
         CSS Variable:<span class="fw-4">--ddd-spacing-x</span> (1-30)
@@ -890,7 +886,6 @@ class DDDocs extends DDD {
 
   renderTypography() {
     return html`
-      <h1 class="fs-m my-2">Typography</h1>
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Typefaces</h2>
       <div class="mx-10">
         <p>
@@ -1291,7 +1286,6 @@ class DDDocs extends DDD {
 
   renderRichText() {
     return html`
-      <h1 class="fs-m my-2">Rich Text</h1>
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">
         Rich text formatting and other data displays
       </h2>
@@ -1355,14 +1349,31 @@ class DDDocs extends DDD {
           'block-code', redundant, but avoids common 'block' class name
         </code>
         <pre>
-Here is an    example of a    block using the    'pre'    tag on it's    own</pre
-        >
-        <p>Here is a good example of some <mark>Highlighted Text</mark></p>
-        <p>
-          Here is an example of an abbreviation:
-          <abbr title="Pennsylvania State University">Penn State</abbr>
-        </p>
-      </div>
+    Here is an    example of a    block using the    'pre'    tag on it's    own</pre
+            >
+            <p>Here is a good example of some <mark>Highlighted Text</mark></p>
+            <p>
+              Here is an example of an abbreviation:
+              <abbr title="Pennsylvania State University">Penn State</abbr>
+            </p>
+          </div>
+    `;
+  }
+
+  selectOption() {
+    return html`
+      <h1 class="fs-m my-2">Select an option to render</h1>
+      <select class="mb-5"
+        @change="${(e) => {
+          this.option = e.target.value;
+          this.shadowRoot.querySelector("select").value = this.option;
+        }}"
+      >
+        <option value="*">Full styleguide</option>
+        ${this.options.map(
+          (option) => html`<option value="${option}">${option}</option>`
+        )}
+      </select>
     `;
   }
 
@@ -1373,20 +1384,26 @@ Here is an    example of a    block using the    'pre'    tag on it's    own</pr
     if (this.options.includes(this.option)) {
       const renderMethod = this[`render${this.option}`];
       if (typeof renderMethod === "function") {
-        return html`${renderMethod.call(this)}`;
+        return html`
+          ${this.selectOption()}
+          ${renderMethod.call(this)}
+        `;
       } else {
         console.error(`Render method for option "${this.option}" not found.`);
       }
     } else {
-      return html`${this.options.map((option) => {
-        const renderMethod = this[`render${option}`];
-        if (typeof renderMethod === "function") {
-          return renderMethod.call(this);
-        } else {
-          console.error(`Render method for option "${option}" not found.`);
-          return html``; // Return empty template if method not found
-        }
-      })}`;
+      return html`
+        ${this.selectOption()}
+        ${this.options.map((option) => {
+          const renderMethod = this[`render${option}`];
+          if (typeof renderMethod === "function") {
+            return html`<details><summary>${option}</summary>${renderMethod.call(this)}</details>`;
+          } else {
+            console.error(`Render method for option "${option}" not found.`);
+            return html``; // Return empty template if method not found
+          }
+        })}
+      `;
     }
   }
 

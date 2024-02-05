@@ -257,10 +257,13 @@ class LearningComponent extends I18NMixin(DDD) {
         }
 
         .content {
-          display: grid;
-          grid-template-columns: 1fr 0.1fr;
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
             var(--ddd-spacing-5) var(--ddd-spacing-6);
+        }
+
+        .urlPresent{
+          display: grid;
+          grid-template-columns: 1fr .1fr;
         }
 
         @media screen and (min-width: 320px) {
@@ -272,7 +275,8 @@ class LearningComponent extends I18NMixin(DDD) {
           }
           .urlbutton {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: end;
           }
           simple-icon-lite {
             --simple-icon-width: var(--ddd-icon-xxs);
@@ -288,10 +292,6 @@ class LearningComponent extends I18NMixin(DDD) {
           }
           .sub-title {
             font-size: var(--ddd-font-size-s);
-          }
-          .urlbutton {
-            display: flex;
-            justify-content: end;
           }
           simple-icon-lite {
             --simple-icon-width: var(--ddd-icon-sm);
@@ -329,8 +329,10 @@ class LearningComponent extends I18NMixin(DDD) {
           <div class="title lh-120">${this.title}</div>
         </div>
       </div>
-      <div class="content b-sm bt-0 bs-lg">
-        <slot></slot>
+      <div class="content b-sm bt-0 bs-lg ${this.url ? "urlPresent" : ""}">
+        <div class="slot">
+          <slot></slot>
+        </div>
         ${this.url
           ? html` <div class="urlbutton">
               <a

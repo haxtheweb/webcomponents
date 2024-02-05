@@ -136,7 +136,7 @@ export class BlockQuote extends DDD {
             --ddd-component-block-quote-icon,
             var(
               --ddd-theme-accent-color,
-              var(--ddd-theme-polaris-limestoneGray)
+              var(--ddd-theme-polaris-potential50)
             )
           );
           height: var(--ddd-icon-xs);
