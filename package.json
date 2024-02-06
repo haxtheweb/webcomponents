@@ -72,7 +72,7 @@
     "jsdom": "19.0.0",
     "url": "0.11.0",
     "turndown": "7.1.1",
-    "sharp": "0.30.6",
+    "sharp": "0.32.6",
     "markdown-it": "13.0.1",
     "@lit-labs/ssr": "3.2.1",
     "stream": "0.0.2",
