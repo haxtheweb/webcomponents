@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import {
   editBehaviors,
   editableTableStyles,
@@ -77,13 +78,13 @@ Custom property | Description | Default
  * @extends ResponsiveUtilityBehaviors
  * @extends editableTableStyles
  */
-class EditableTable extends editBehaviors(LitElement) {
+class EditableTable extends editBehaviors(DDD) {
   static get styles() {
     return [
       css`
         :host([hidden]) {
           display: none !important;
-          margin: 15px 0;
+          margin: var(--ddd-spacing-4) 0;
         }
 
         :host > * {

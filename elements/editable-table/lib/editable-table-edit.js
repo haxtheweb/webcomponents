@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import {
   displayBehaviors,
   editBehaviors,
@@ -40,7 +41,7 @@ if (!DocumentType.prototype.replaceWith) {
  * @extends ResponsiveUtilityBehaviors
  * @extends editableTableStyles
  */
-class EditableTableEdit extends editBehaviors(LitElement) {
+class EditableTableEdit extends editBehaviors(DDD) {
   static get styles() {
     return [
       ...(super.styles || []),
@@ -60,8 +61,8 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         .sortable-icon {
           display: none;
           opacity: 0.4;
-          width: 24px;
-          height: 24px;
+          width: var(--ddd-icon-xxs);
+          height: var(--ddd-icon-xxs);
         }
         :host([sort]) tbody .tr:first-child .sortable-icon,
         :host([filter]) tbody .tr:not(:first-of-type) .filter-icon {
@@ -90,17 +91,16 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         }
         caption,
         .th-or-td {
-          border: 1px solid #ddd;
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-polaris-limestoneGray);
         }
         label,
         .label {
           color: var(--editable-table-secondary-text-color, #444);
-          font-size: var(--editable-table-secondary-font-size, 12px);
+          font-size: var(--editable-table-secondary-font-size, var(--ddd-font-size-4xs));
           font-family: var(
             --editable-table-secondary-font-family,
-            "Roboto",
-            "Noto",
-            sans-serif
+            var(--ddd-font-primary)
           );
           margin-right: 0.5em;
         }
@@ -143,13 +143,13 @@ class EditableTableEdit extends editBehaviors(LitElement) {
           flex: 0 0 auto;
           justify-content: space-around;
           align-items: center;
-          margin: 0 2.5px;
+          margin: 0 var(--ddd-spacing-1);
         }
         caption {
           position: relative;
         }
         caption > * {
-          margin: 0 2.5px;
+          margin: 0 var(--ddd-spacing-1);
         }
         #caption {
           flex: 1 1 auto;
@@ -181,10 +181,10 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         }
         rich-text-editor {
           margin-bottom: 1px;
-          padding: var(--editable-table-cell-vertical-padding, 10px)
-            var(--editable-table-cell-horizontal-padding, 6px);
+          padding: var(--editable-table-cell-vertical-padding, var(--ddd-spacing-3))
+            var(--editable-table-cell-horizontal-padding, var(--ddd-spacing-2));
           border: none !important;
-          margin-right: 24px;
+          margin-right: var(--ddd-spacing-6);
           --rich-text-editor-min-height: 12px;
         }
         rich-text-editor[contenteditable="true"].heightmax {
@@ -200,10 +200,10 @@ class EditableTableEdit extends editBehaviors(LitElement) {
           position: absolute;
           right: 0;
           top: calc(50% - 12px);
-          width: 24px;
+          width: var(--ddd-icon-xxs);
         }
         td simple-icon-lite {
-          width: 24px;
+          width: var(--ddd-icon-xxs);
         }
         td:focus-within {
           outline: 1px dotted currentColor;

@@ -5,7 +5,7 @@
 import { html, css } from "lit";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
 import { activeStateBehavior } from "@lrnwebcomponents/utils/lib/activeStateBehavior.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 /**
  * `simple-cta`
@@ -13,7 +13,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
  * @demo demo/index.html
  * @element simple-cta
  */
-class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
+class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
   //styles function
   static get styles() {
     return [
@@ -21,61 +21,118 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       css`
         :host {
           display: inline-block;
-          margin: 24px 16px 0 0;
-          margin-top: 20px;
-          --simple-cta-color: var(--simple-colors-default-theme-accent-1);
-          --simple-cta-outline: var(--simple-colors-default-theme-grey-12);
-          --simple-cta-bg-color-is-user-selected: var(
-            --simple-colors-default-theme-accent-3
-          );
-          --simple-cta-color-is-user-selected: var(
-            --simple-colors-default-theme-accent-12
-          );
-          --simple-cta-bg-color: var(--simple-colors-default-theme-accent-8);
+          width: fit-content;
+          height: fit-content;
+          margin: var(--ddd-spacing-4) 0 0;
+          border-radius: var(--ddd-radius-xs);
+          --component-color: var(--ddd-theme-polaris-link);
+          --component-background-color: transparent;
+          --component-border-color: var(--ddd-theme-polaris-link);
         }
 
         :host([hidden]) {
           display: none;
         }
 
-        :host([is-user-selected]) .btn {
-          background-color: var(--simple-cta-bg-color-is-user-selected);
-          color: var(--simple-cta-color-is-user-selected);
+        :host([filled]){
+          --component-color: var(--ddd-theme-polaris-white);
+          --component-background-color: var(--ddd-theme-polaris-link);
+        }
+        :host([filled]:focus-within), :host([filled]) a:hover, :host([filled]) a:active {
+          --component-background-color: var(--ddd-theme-polaris-nittanyNavy);
+          --component-border-color: var(--component-background-color);
         }
 
-        :host([is-user-selected]) a {
-          outline: 2px solid var(--simple-cta-outline);
+        :host([light]){
+          --component-color: var(--ddd-theme-polaris-linkLight);
+          --component-background-color: transparent;
+          --component-border-color: var(--ddd-theme-polaris-linkLight);
+        }
+        :host([light]:focus-within), :host([light]) a:hover, :host([light]) a:active {
+          --component-background-color: var(--ddd-theme-polaris-linkLight);
+          --component-color: var(--ddd-theme-polaris-nittanyNavy);
+          --component-border-color: var(--component-background-color);
+        }
+
+        :host([light][filled]){
+          --component-color: var(--ddd-theme-polaris-nittanyNavy);
+          --component-background-color: var(--ddd-theme-polaris-linkLight);
+        }
+        :host([light][filled]:focus-within), :host([light][filled]) a:hover, :host([light][filled]) a:active {
+          --component-background-color: var(--ddd-theme-polaris-white);
+          --component-border-color: var(--component-background-color);
+        }
+
+        :host([white]){
+          --component-color: var(--ddd-theme-polaris-white);
+          --component-background-color: transparent;
+          --component-border-color: var(--component-color);
+        }
+        :host([white]:focus-within), :host([white]) a:hover, :host([white]) a:active {
+          --component-background-color: var(--ddd-theme-polaris-white);
+          --component-color: var(--ddd-theme-polaris-potentialMidnight);
+        }
+
+        :host([white][filled]){
+          --component-color: var(--ddd-theme-polaris-potentialMidnight);
+          --component-background-color: var(--ddd-theme-polaris-white);
+          --component-border-color: var(--ddd-theme-polaris-potentialMidnight);
+        }
+        :host([white][filled]:focus-within), :host([white][filled]) a:hover, :host([white][filled]) a:active {
+          --component-background-color: var(--ddd-theme-polaris-linkLight);
+          --component-border-color: var(--ddd-theme-polaris-potentialMidnight);
+        }
+
+        :host([hotline]) .btn{
+          text-transform: uppercase;
+          font-style: italic;
+          font-weight: var(--ddd-font-primary-black);
         }
 
         a {
           display: block;
           text-decoration: none;
+          box-sizing: border-box;
+        }
+        :host(:focus-within), a:hover, a:active {
+          text-decoration: none;
+          --component-background-color: var(--ddd-theme-polaris-link);
+          --component-color: var(--ddd-theme-polaris-white);
         }
 
         .btn {
-          display: block;
-          border-width: 2px;
-          border-color: var(--simple-cta-bg-color);
-          border-radius: 0px;
-          font-size: var(--simple-cta-font-size, 21px);
-          line-height: var(--simple-cta-line-height, 36px);
-          background-color: var(--simple-cta-bg-color);
-          padding: 10px 50px 10px 30px;
-          text-transform: uppercase;
-          color: var(--simple-cta-color);
-          font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif;
-          font-style: italic;
-          font-weight: 700;
-          transition: color 300ms ease 0ms, background-color 300ms ease 0ms,
-            border 300ms ease 0ms;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          text-decoration: none;
+          height: fit-content;
+          width: fit-content;
+          border-radius: var(--ddd-radius-xs);
+          color: var(--component-color, var(--ddd-theme-polaris-link));
+          border: var(--ddd-border-sm);
+          border-color: var(--component-border-color, var(--ddd-theme-polaris-link));
+          padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+          transition: all 0.2s ease-out;
+          background-color: var(--component-background-color, transparent);
+          font-weight: var(--ddd-font-primary-medium);
+        }
+        
+        .hideIcon {
+          padding: 0.75rem 1.5rem;
+        }
+
+        .large{
+          padding: 1rem 2.75rem 1rem 3.25rem;
+        }
+        .large.hideIcon {
+          padding: 1rem 3.25rem;
         }
 
         .icon {
           display: inline-flex;
-          margin-left: 10px;
-          line-height: var(--simple-cta-line-height, 36px);
-          --simple-icon-width: var(--simple-cta-font-size, 36px);
-          --simple-icon-height: var(--simple-cta-font-size, 36px);
+          --simple-icon-width: var(--simple-cta-font-size, var(--ddd-icon-3xs));
+          --simple-icon-height: var(--simple-cta-font-size, var(--ddd-icon-3xs));
         }
       `,
     ];
@@ -89,7 +146,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       part="simple-cta-link"
       @click="${this._clickCard}"
     >
-      <span class="btn"
+      <span class="btn ${this.large ? "large" : ""} ${this.hideIcon ? "hideIcon" : ""} "
         ><span class="label">${this.label}</span><slot></slot>${!this.hideIcon
           ? html`<simple-icon-lite
               class="icon"
@@ -206,6 +263,22 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
         type: Boolean,
         attribute: "hide-icon",
       },
+      large: {
+        type: Boolean,
+        reflect: true,
+      },
+      filled: {
+        type: Boolean,
+        reflect: true,
+      },
+      light: {
+        type: Boolean,
+        reflect: true,
+      },
+      hotline: {
+        type: Boolean,
+        reflect: true,
+      },
     };
   }
 
@@ -225,7 +298,10 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
     this.icon = "icons:chevron-right";
     this.hideIcon = false;
     this.label = null;
-    this.accentColor = "grey";
+    this.color = 'primary';
+    this.outlined = null;
+    this.hotline = null;
+    this.large = null;
     // progressive enhancement support
     if (this.querySelector("a")) {
       this.link = this.querySelector("a").getAttribute("href");

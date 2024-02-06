@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import {
   cellBehaviors,
   editableTableCellStyles,
@@ -23,7 +24,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * @extends A11yMenuButton
  */
 class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
-  cellBehaviors(LitElement)
+  cellBehaviors( DDD )
 ) {
   static get styles() {
     return [

@@ -67,7 +67,7 @@ export const DDDSuper = function (SuperClass) {
           :root,
           :host {
             /* global override font styles for light-dom content */
-            --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
+            --ddd-theme-body-font-size: var(--ddd-font-size-3xs);
             --ddd-theme-h1-font-size: var(--ddd-font-size-l);
             --ddd-theme-h2-font-size: var(--ddd-font-size-m);
             --ddd-theme-h3-font-size: var(--ddd-font-size-ms);
@@ -341,6 +341,7 @@ export const DDDSuper = function (SuperClass) {
               rgba(0, 3, 33, 0) 100%
             );
 
+            --ddd-icon-3xs: 20px;
             --ddd-icon-xxs: 24px;
             --ddd-icon-xs: 32px;
             --ddd-icon-sm: 40px;
@@ -2233,12 +2234,19 @@ export const DDDSuper = function (SuperClass) {
             line-height: 1;
           }
           details {
+            transition: max-height 7s ease-out;
+            overflow: hidden;
+            max-height: 50px;
             display: flex;
             border-bottom: 2px solid var(--ddd-theme-polaris-slateMaxLight);
             position: relative;
             max-width: 650px;
             padding: 0 0 0 var(--ddd-spacing-5);
             color: black;
+            margin: var(--ddd-spacing-6) 0;
+          }
+          details[open] {
+            max-height: 10000px; /* Adjust this value to fit your content */
           }
           details[open] > summary {
             color: var(--ddd-theme-polaris-link);
@@ -2394,6 +2402,12 @@ export const DDDSuper = function (SuperClass) {
             );
             font-weight: var(--ddd-font-primary-regular);
             border-radius: var(--ddd-radius-xs);
+          }
+          div[slot="citation"]{
+             font-size: var(--ddd-font-size-4xs);
+          }
+          *::selection {
+            background-color: var(--ddd-theme-polaris-linkLight);
           }
 
           .fs-4xs {
@@ -2608,6 +2622,25 @@ export const DDDSuper = function (SuperClass) {
           }
           .bg-gradient-hero2 {
             background: var(--ddd-theme-polaris-gradient-hero2);
+          }
+
+          select{
+            display: flex;
+            box-sizing: border-box;
+            transition: all 0.2s ease 0s;
+            cursor: pointer;
+            color: var(--ddd-theme-polaris-coalyGray);
+            width: fit-content;
+            border: var(--ddd-border-xs);
+            background-color: var(--ddd-theme-polaris-white);
+            font-family: var(--ddd-font-primary);
+            font-weight: var(--ddd-font-primary-regular);
+            font-size: var(--ddd-theme-body-font-size);
+            line-height: 150%;
+            letter-spacing: normal;
+            padding: var(--ddd-spacing-2);
+            border-radius: var(--ddd-radius-xs);
+            border-color: var(--ddd-theme-polaris-potential50);
           }
         `,
       ];

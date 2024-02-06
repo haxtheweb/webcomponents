@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import {
   displayBehaviors,
   editableTableDisplayStyles,
@@ -23,7 +24,7 @@ import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
  * @extends LitElement
  */
 class EditableTableDisplay extends displayBehaviors(
-  ResponsiveUtilityBehaviors(LitElement)
+  ResponsiveUtilityBehaviors( DDD )
 ) {
   static get styles() {
     return [
