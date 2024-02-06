@@ -10,7 +10,8 @@
   "type": "module",
   "scripts": {},
   "author": {
-    "name": "btopro"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -55,10 +56,10 @@
     "@lrnwebcomponents/top-alert": "4.0.1",
     "@lrnwebcomponents/wave-player": "4.0.4",
     "@polymer/paper-slider": "3.0.1",
-    "lit": "^3.1.0"
+    "lit": "^3.1.2"
   },
   "resolutions": {
-    "lit": "3.1.0",
+    "lit": "3.1.2",
     "@webcomponents/webcomponentsjs": "2.8.0",
     "@lrnwebcomponents/editable-table": "7.0.5",
     "@lrnwebcomponents/hax-body": "7.0.5",

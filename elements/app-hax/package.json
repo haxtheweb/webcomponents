@@ -30,8 +30,8 @@
   "main": "app-hax.js",
   "module": "app-hax.js",
   "scripts": {
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers firefox --timeout 10000",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers firefox --timeout 10000",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium --timeout 10000",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium --timeout 10000",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -40,11 +40,12 @@
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
-    "name": "btopro"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lit-labs/motion": "^1.0.6",
+    "@lit-labs/motion": "^1.0.7",
     "@lrnwebcomponents/grid-plate": "^8.0.0",
     "@lrnwebcomponents/hax-iconset": "^8.0.0",
     "@lrnwebcomponents/i18n-manager": "^8.0.0",
@@ -65,19 +66,19 @@
     "@lrnwebcomponents/utils": "^8.0.0",
     "@lrnwebcomponents/wc-autoload": "^8.0.0",
     "@vaadin/router": "^1.7.5",
-    "lit": "^3.1.0",
+    "lit": "^3.1.2",
     "mobx": "6.12.0",
     "roughjs": "4.4.5",
     "scrollable-component": "^1.2.0",
     "wired-elements": "3.0.0-rc.6"
   },
   "devDependencies": {
-    "@open-wc/testing": "3.2.0",
+    "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.3.1",
+    "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
-    "concurrently": "8.2.0",
+    "concurrently": "8.2.2",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,

@@ -19,8 +19,8 @@
   "main": "evo-to-wc.js",
   "module": "evo-to-wc.js",
   "scripts": {
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --watch",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -29,7 +29,8 @@
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
-    "name": "nikkimk"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
   "private": false,
@@ -47,9 +48,9 @@
     "@lrnwebcomponents/storybook-utilities": "^8.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.3.1",
+    "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
-    "concurrently": "8.2.0",
+    "concurrently": "8.2.2",
     "wct-browser-legacy": "1.0.2"
   },
   "gitHead": "2791492ff7ab40c7d4c827c4b305e33c0a971230"

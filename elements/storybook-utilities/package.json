@@ -9,7 +9,8 @@
   "type": "module",
   "main": "storybook-utilities.js",
   "author": {
-    "name": "nikkimk"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
   "dependencies": {

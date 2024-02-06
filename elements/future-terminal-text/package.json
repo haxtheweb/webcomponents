@@ -29,8 +29,8 @@
   "main": "future-terminal-text.js",
   "module": "future-terminal-text.js",
   "scripts": {
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -39,20 +39,21 @@
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
-    "name": "btopro"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^3.1.0"
+    "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@open-wc/testing": "3.2.0",
+    "@lrnwebcomponents/deduping-fix": "^8.0.0",
+    "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.3.1",
+    "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
-    "concurrently": "8.2.0",
+    "concurrently": "8.2.2",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,

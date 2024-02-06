@@ -10,7 +10,8 @@
   "main": "lib/IntersectionElementSuper.js",
   "module": "lib/IntersectionElementSuper.js",
   "author": {
-    "name": "btopro"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
   "private": false,

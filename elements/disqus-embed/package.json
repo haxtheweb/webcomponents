@@ -30,8 +30,8 @@
   "module": "disqus-embed.js",
   "umd": "disqus-embed.umd.js",
   "scripts": {
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"*.js|lib/**.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -40,12 +40,12 @@
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
-    "name": "elmsln",
-    "url": "https://www.elmsln.org/"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^3.1.0"
+    "lit": "^3.1.2"
   },
   "devDependencies": {
     "@wcfactory/rollup-umd-build": "^0.12.1",
@@ -53,14 +53,14 @@
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
-    "concurrently": "5.3.0",
+    "concurrently": "8.2.2",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.21",
     "polymer-build": "3.1.4",
-    "@web/dev-server": "0.1.28",
+    "@web/dev-server": "0.4.2",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2",
-    "@open-wc/testing": "2.5.32"
+    "@open-wc/testing": "4.0.0"
   },
   "private": false,
   "publishConfig": {
