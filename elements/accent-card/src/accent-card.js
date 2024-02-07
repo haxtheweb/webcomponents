@@ -2,9 +2,10 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { LitElement, html, css } from "lit";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+
 /**
  * `accent-card`
  * @element accent-card
@@ -65,8 +66,9 @@ Custom property | Description | Default
  * @demo ./demo/borders.html borders and shadow
  * @demo ./demo/images.html image aligmnent
  * @demo ./demo/variables.html css variables
+ * @demo ./demo/comparison.html Comaparison
  */
-class AccentCard extends IntersectionObserverMixin(DDD) {
+class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   /**
    * Store tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -81,19 +83,39 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
       css`
         :host {
           display: block;
-          border-radius: var(--ddd-radius-xs);
-          margin: 0 0 var(--ddd-spacing-4);
-          box-shadow: var(--ddd-boxShadow-xs);
-          color: var(--accent-card-color, var(--simple-colors-default-theme-grey-9, #222));
-          background-color: var(--accent-card-background-color, var(--simple-colors-default-theme-grey-1, #fff));
+          border-radius: 2px;
+          margin: 0 0 15px;
+          box-shadow: var(
+            --accent-card-box-shadow,
+            0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12),
+            0 3px 1px -2px rgba(0, 0, 0, 0.2)
+          );
+          color: var(
+            --accent-card-color,
+            var(--simple-colors-default-theme-grey-9, #222)
+          );
+          background-color: var(
+            --accent-card-background-color,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
         }
         :host([dark]),
         :host([dark]) .body ::slotted(*) {
-          color: var(--accent-card-color, var(--simple-colors-default-theme-grey-12, #fff));
+          color: var(
+            --accent-card-color,
+            var(--simple-colors-default-theme-grey-12, #fff)
+          );
         }
         :host([accent-background]) {
-          background-color: var(--accent-card-background-color, var(--simple-colors-default-theme-accent-1, #fff));
-          color: var( --accent-card-color, var(--simple-colors-default-theme-accent-12, #000));
+          background-color: var(
+            --accent-card-background-color,
+            var(--simple-colors-default-theme-accent-1, #fff)
+          );
+          color: var(
+            --accent-card-color,
+            var(--simple-colors-default-theme-accent-12, #000)
+          );
         }
         article {
           position: relative;
@@ -116,18 +138,27 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           box-shadow: none;
         }
         :host([flat]:not([accent-background])) {
-          border: var(--ddd-border-xs);
+          border-width: 1px;
+          border-style: solid;
           border-color: var(--accent-card-footer-border-color);
         }
         :host([dark][flat]:not([accent-background])) {
-          border-color: var(--accent-card-footer-border-color, var(--simple-colors-default-theme-grey-6, #666));
+          border-color: var(
+            --accent-card-footer-border-color,
+            var(--simple-colors-default-theme-grey-6, #666)
+          );
         }
         :host(:not([horizontal]):not([no-border])) article {
-          border-top: var(--ddd-border-lg);
-          border-top-color: var(--accent-card-border-color, var(--simple-colors-default-theme-accent-6, #ddd));
+          border-top-width: 4px;
+          border-top-style: solid;
+          border-top-color: var(
+            --accent-card-border-color,
+            var(--simple-colors-default-theme-accent-6, #ddd)
+          );
         }
         :host([horizontal]:not([no-border])) article {
-          border-left: var(--ddd-border-lg);
+          border-left-width: 4px;
+          border-left-style: solid;
           border-left-color: var(
             --accent-card-border-color,
             var(--simple-colors-default-theme-accent-6, #ddd)
@@ -194,10 +225,19 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           bottom: 0;
           left: 0;
           right: 0;
-          padding: var(--accent-card-image-padding-top, 0) 
-            var(--accent-card-image-padding-right, var(--accent-card-padding, var(--ddd-spacing-5))) 
-            var(--accent-card-image-padding-bottom, var(--accent-card-padding, var(--ddd-spacing-5))) 
-            var(--accent-card-image-padding-left, var(--accent-card-padding, var(--ddd-spacing-5)));
+          padding-top: var(--accent-card-image-padding-top, 0);
+          padding-bottom: var(
+            --accent-card-image-padding-bottom,
+            var(--accent-card-padding, 20px)
+          );
+          padding-left: var(
+            --accent-card-image-padding-left,
+            var(--accent-card-padding, 20px)
+          );
+          padding-right: var(
+            --accent-card-image-padding-right,
+            var(--accent-card-padding, 20px)
+          );
         }
         ::slotted([slot="image-corner"]) {
           text-align: right;
@@ -215,17 +255,25 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           display: flex;
           justify-content: space-between;
           align-items: var(--accent-card-heading-align, unset);
-          padding: unset 
-            var(--accent-card-heading-padding-right, var(--accent-card-padding, var(--ddd-spacing-5)))
-            var(--accent-card-heading-padding-bottom, 0px)
-            var(--accent-card-heading-padding-left, var(--accent-card-padding, var(--ddd-spacing-5)));
+          padding-left: var(
+            --accent-card-heading-padding-left,
+            var(--accent-card-padding, 20px)
+          );
+          padding-right: var(
+            --accent-card-heading-padding-right,
+            var(--accent-card-padding, 20px)
+          );
+          padding-bottom: var(--accent-card-heading-padding-bottom, 0px);
           margin: 0;
           overflow: hidden;
         }
         ::slotted(*[slot="heading"]) {
           font-size: 26px;
           font-weight: bold;
-          padding-top: var(--accent-card-heading-padding-top, var(--accent-card-padding, 20px));
+          padding-top: var(
+            --accent-card-heading-padding-top,
+            var(--accent-card-padding, 20px)
+          );
         }
         #heading div {
           flex: 0 0 auto;
@@ -258,10 +306,22 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
         }
         #content {
           font-size: 100%;
-          padding: var(--accent-card-content-padding-top, var(--accent-card-padding, var(--ddd-spacing-5)))
-          var(--accent-card-content-padding-right, var(--accent-card-padding, var(--ddd-spacing-5)))
-          var(--accent-card-content-padding-bottom, var(--accent-card-padding, var(--ddd-spacing-5)))
-          var(--accent-card-content-padding-left, var(--accent-card-padding, var(--ddd-spacing-5)));
+          padding-top: var(
+            --accent-card-content-padding-top,
+            var(--accent-card-padding, 20px)
+          );
+          padding-left: var(
+            --accent-card-content-padding-left,
+            var(--accent-card-padding, 20px)
+          );
+          padding-right: var(
+            --accent-card-content-padding-right,
+            var(--accent-card-padding, 20px)
+          );
+          padding-bottom: var(
+            --accent-card-content-padding-bottom,
+            var(--accent-card-padding, 20px)
+          );
           flex: 1 1 auto;
         }
         ::slotted(*[slot]:first-of-type) {
@@ -274,15 +334,22 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
         }
         #footer {
           flex: 0 0 auto;
-          border-top: var(--ddd-border-xs);
+          border-top-width: 1px;
+          border-top-style: solid;
           border-top-color: var(
             --accent-card-footer-border-color,
             var(--simple-colors-default-theme-grey-3, #ddd)
           );
-          padding: var(--accent-card-footer-padding-top, unset) 
-          var(--accent-card-footer-padding-right, var(--accent-card-padding, var(--ddd-spacing-5))) 
-          var(--accent-card-footer-padding-bottom, unset)
-          var(--accent-card-footer-padding-left, var(--accent-card-padding, var(--ddd-spacing-5)));
+          padding-top: var(--accent-card-footer-padding-top, unset);
+          padding-left: var(
+            --accent-card-footer-padding-left,
+            var(--accent-card-padding, 20px)
+          );
+          padding-right: var(
+            --accent-card-footer-padding-right,
+            var(--accent-card-padding, 20px)
+          );
+          padding-bottom: var(--accent-card-footer-padding-bottom, unset);
         }
         :host([dark]) #footer {
           border-top-color: var(

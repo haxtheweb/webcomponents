@@ -33,11 +33,11 @@
             cursor: pointer;
             background-color: transparent;
           }
-          accent-card[image-src="images/image6.jpg"] {
+          accent-card[image-src="images/image2.jpg"] {
             --accent-card-image-height: 75px;
             width: 400px;
           }
-          accent-card[image-src="images/image8.jpg"] {
+          accent-card[image-src="images/image1.jpg"] {
             --accent-card-image-x: right;
             --accent-card-image-width: 100%;
             width: 400px;
@@ -56,7 +56,7 @@
       </demo-snippet>
       <demo-snippet>
         <template>
-          <accent-card accent-color="cyan" image-src="./images/image6.jpg">
+          <accent-card accent-color="cyan" image-src="./images/image2.jpg" link="https://google.com">
             <div slot="image-corner">image-corner</div>
             <div slot="heading">Vertical Accent Card with Content</div>
             <div slot="corner">corner</div>
@@ -64,13 +64,12 @@
             <div slot="content">This is the content section of a card with the default orientation.</div>
             <div slot="footer"><button>Read more...</button></div>
           </accent-card>
-          <accent-card accent-color="brown" horizontal image-src="./images/image8.jpg">
+          <accent-card accent-color="brown" horizontal image-src="./images/image1.jpg" link="https://google.com" icon="icons:add-circle-outline" icon-size="md">
             <div slot="image-corner">image-corner</div>
             <div slot="heading">Horizontal Accent Card with Content</div>
             <div slot="corner">corner</div>
             <div slot="subheading">Includes image, subheading, and footer.</div>
             <div slot="content">This is the content section of a card with horizontal orientation.</div>
-            <div slot="footer"><button>Read more...</button></div>
           </accent-card>
           <style>
             accent-card {

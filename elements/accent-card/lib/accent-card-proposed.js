@@ -2,61 +2,15 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { html, css } from "lit";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 /**
  * `accent-card`
  * @element accent-card
  * a card with optional accent stylings.
  * 
-### Styling
-
-`<accent-card>` provides following custom properties and mixins
-for styling:
-
-#### Defaults
-Custom property | Description | Default
-----------------|-------------|----------
-`--accent-card-image-width` | Width of image when card is horizontal. | 30%
-`--accent-card-image-height` | Height of image when card is vertical. | 10%
-`--accent-card-padding` | Sets padding inside accent card. | 20px
-`--accent-card-footer-border-color` | Card footer's border color.* | `--simple-colors-default-theme-grey-3`
-`--accent-card-box-shadow` | Card footer's box-shadow. | 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
-`--accent-card-heading-align` | Corner and heading align-items | unset
-
-#### Overriding Default Padding
-Custom property | Description | Default
-----------------|-------------|----------
-`--accent-card-image-padding-top` | Overrides top padding of image. | 0
-`--accent-card-image-padding-left` | Overrides left padding of image. | `--accent-card-padding`
-`--accent-card-image-padding-right` | Overrides right padding of image. | `--accent-card-padding`
-`--accent-card-image-padding-bottom` | Overrides bottom padding of image. | `--accent-card-padding`
-`--accent-card-heading-padding-top` | Overrides top padding of heading. | `--accent-card-padding`
-`--accent-card-heading-padding-left` | Overrides left padding of heading. | `--accent-card-padding`
-`--accent-card-heading-padding-right` | Overrides right padding of heading. | `--accent-card-padding`
-`--accent-card-heading-padding-bottom` | Overrides bottom padding of heading. | 0
-`--accent-card-subheading-padding-top` | Overrides top padding of subheading. | unset
-`--accent-card-subheading-padding-left` | Overrides left padding of subheading. | `--accent-card-padding`
-`--accent-card-subheading-padding-right` | Overrides right padding of subheading. | `--accent-card-padding`
-`--accent-card-subheading-padding-bottom` | Overrides bottom padding of subheading. | unset
-`--accent-card-content-padding-top` | Overrides top padding of content. | `--accent-card-padding`
-`--accent-card-content-padding-left` | Overrides left padding of content. | `--accent-card-padding`
-`--accent-card-content-padding-right` | Overrides right padding of content. | `--accent-card-padding`
-`--accent-card-content-padding-bottom` | Overrides bottom padding of content. | --accent-card-padding`
-`--accent-card-footer-padding-top` | Overrides top padding of footer. | unset
-`--accent-card-footer-padding-left` | Overrides left padding of footer. | `--accent-card-padding`
-`--accent-card-footer-padding-right` | Overrides right padding of footer. | `--accent-card-padding`
-`--accent-card-footer-padding-bottom` | Overrides bottom padding of footer. | unset
-
-#### Overriding Default Colors
-Custom property | Description | Default
-----------------|-------------|----------
-`--accent-card-color`	| Card's text color.* | `--simple-colors-default-theme-grey-9`
-`--accent-card-background-color` | Card's background color.* | varies based on attributes
-`--accent-card-border-color` | Card's border color.* | varies based on attributes
-`--accent-card-heading-color` | Card's heading color.* | varies based on attributes
  *
  * @extends SimpleColors
 
@@ -66,15 +20,14 @@ Custom property | Description | Default
  * @demo ./demo/borders.html borders and shadow
  * @demo ./demo/images.html image aligmnent
  * @demo ./demo/variables.html css variables
- * @demo ./demo/comparison.html Comaparison
  */
-class AccentCard extends IntersectionObserverMixin(SimpleColors) {
+class AccentCard extends IntersectionObserverMixin(DDD) {
   /**
    * Store tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "accent-card";
+    return "accent-card-proposed";
   }
   // render function
   static get styles() {
@@ -83,82 +36,45 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       css`
         :host {
           display: block;
-          border-radius: 2px;
-          margin: 0 0 15px;
-          box-shadow: var(
-            --accent-card-box-shadow,
-            0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12),
-            0 3px 1px -2px rgba(0, 0, 0, 0.2)
-          );
-          color: var(
-            --accent-card-color,
-            var(--simple-colors-default-theme-grey-9, #222)
-          );
-          background-color: var(
-            --accent-card-background-color,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
+          margin: 0 0 var(--ddd-spacing-4);
         }
-        :host([dark]),
-        :host([dark]) .body ::slotted(*) {
-          color: var(
-            --accent-card-color,
-            var(--simple-colors-default-theme-grey-12, #fff)
-          );
-        }
-        :host([accent-background]) {
-          background-color: var(
-            --accent-card-background-color,
-            var(--simple-colors-default-theme-accent-1, #fff)
-          );
-          color: var(
-            --accent-card-color,
-            var(--simple-colors-default-theme-accent-12, #000)
-          );
-        }
-        article {
-          position: relative;
+        .card {
           width: 100%;
           box-sizing: border-box;
+          border-radius: var(--ddd-radius-xs);
+          border: var(--ddd-border-xs);
+          box-shadow: var(--ddd-boxShadow-xs);
         }
-        article,
+        .card,
         .body {
           display: flex;
           flex: 1 1 auto;
           flex-direction: column;
         }
-        :host([horizontal]) article {
+        
+        :host([horizontal]) .card {
           display: flex;
           justify-content: space-between;
           align-items: stretch;
           flex-direction: row;
         }
+
         :host([flat]) {
           box-shadow: none;
         }
         :host([flat]:not([accent-background])) {
-          border-width: 1px;
-          border-style: solid;
+          border: var(--ddd-border-xs);
           border-color: var(--accent-card-footer-border-color);
         }
         :host([dark][flat]:not([accent-background])) {
-          border-color: var(
-            --accent-card-footer-border-color,
-            var(--simple-colors-default-theme-grey-6, #666)
-          );
+          border-color: var(--accent-card-footer-border-color, var(--simple-colors-default-theme-grey-6, #666));
         }
         :host(:not([horizontal]):not([no-border])) article {
-          border-top-width: 4px;
-          border-top-style: solid;
-          border-top-color: var(
-            --accent-card-border-color,
-            var(--simple-colors-default-theme-accent-6, #ddd)
-          );
+          border-top: var(--ddd-border-lg);
+          border-top-color: var(--accent-card-border-color, var(--simple-colors-default-theme-accent-6, #ddd));
         }
         :host([horizontal]:not([no-border])) article {
-          border-left-width: 4px;
-          border-left-style: solid;
+          border-left: var(--ddd-border-lg);
           border-left-color: var(
             --accent-card-border-color,
             var(--simple-colors-default-theme-accent-6, #ddd)
@@ -194,9 +110,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         .image {
           height: 100%;
           width: 100%;
-          background-size: cover;
-          background-position-x: var(--accent-card-image-x, center);
-          background-position-y: var(--accent-card-image-y, center);
+          object-fit: contain;
         }
         :host([image-align="left"]) .image {
           background-position-x: left;
@@ -218,26 +132,12 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         }
         :host(:not([horizontal])) .image {
           height: 0;
-          padding-top: var(--accent-card-image-height, 10%);
         }
         #imagecorner {
           position: absolute;
           bottom: 0;
           left: 0;
           right: 0;
-          padding-top: var(--accent-card-image-padding-top, 0);
-          padding-bottom: var(
-            --accent-card-image-padding-bottom,
-            var(--accent-card-padding, 20px)
-          );
-          padding-left: var(
-            --accent-card-image-padding-left,
-            var(--accent-card-padding, 20px)
-          );
-          padding-right: var(
-            --accent-card-image-padding-right,
-            var(--accent-card-padding, 20px)
-          );
         }
         ::slotted([slot="image-corner"]) {
           text-align: right;
@@ -249,31 +149,19 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         .body {
           flex-grow: 1;
           overflow: visible;
+          padding: var(--ddd-spacing-5);
         }
         #heading {
           flex: 0 0 auto;
           display: flex;
           justify-content: space-between;
           align-items: var(--accent-card-heading-align, unset);
-          padding-left: var(
-            --accent-card-heading-padding-left,
-            var(--accent-card-padding, 20px)
-          );
-          padding-right: var(
-            --accent-card-heading-padding-right,
-            var(--accent-card-padding, 20px)
-          );
-          padding-bottom: var(--accent-card-heading-padding-bottom, 0px);
           margin: 0;
           overflow: hidden;
         }
         ::slotted(*[slot="heading"]) {
           font-size: 26px;
           font-weight: bold;
-          padding-top: var(
-            --accent-card-heading-padding-top,
-            var(--accent-card-padding, 20px)
-          );
         }
         #heading div {
           flex: 0 0 auto;
@@ -293,35 +181,9 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           flex: 0 0 auto;
           font-size: 90%;
           font-style: italic;
-          padding-top: var(--accent-card-subheading-padding-top, unset);
-          padding-left: var(
-            --accent-card-subheading-padding-left,
-            var(--accent-card-padding, 20px)
-          );
-          padding-right: var(
-            --accent-card-subheading-padding-right,
-            var(--accent-card-padding, 20px)
-          );
-          padding-bottom: var(--accent-card-subheading-padding-bottom, unset);
         }
         #content {
           font-size: 100%;
-          padding-top: var(
-            --accent-card-content-padding-top,
-            var(--accent-card-padding, 20px)
-          );
-          padding-left: var(
-            --accent-card-content-padding-left,
-            var(--accent-card-padding, 20px)
-          );
-          padding-right: var(
-            --accent-card-content-padding-right,
-            var(--accent-card-padding, 20px)
-          );
-          padding-bottom: var(
-            --accent-card-content-padding-bottom,
-            var(--accent-card-padding, 20px)
-          );
           flex: 1 1 auto;
         }
         ::slotted(*[slot]:first-of-type) {
@@ -332,24 +194,17 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           margin-bottom: 0;
           margin-block-end: 0;
         }
-        #footer {
+        .footer {
+          display: flex;
           flex: 0 0 auto;
-          border-top-width: 1px;
-          border-top-style: solid;
-          border-top-color: var(
+          margin: var(--ddd-spacing-2) 0 0;
+          padding: var(--ddd-spacing-2) 0 0;
+          border-top: var(--ddd-border-xs);
+          border-color: var(
             --accent-card-footer-border-color,
             var(--simple-colors-default-theme-grey-3, #ddd)
           );
-          padding-top: var(--accent-card-footer-padding-top, unset);
-          padding-left: var(
-            --accent-card-footer-padding-left,
-            var(--accent-card-padding, 20px)
-          );
-          padding-right: var(
-            --accent-card-footer-padding-right,
-            var(--accent-card-padding, 20px)
-          );
-          padding-bottom: var(--accent-card-footer-padding-bottom, unset);
+          justify-content: flex-end;
         }
         :host([dark]) #footer {
           border-top-color: var(
@@ -365,12 +220,16 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             0.5s margin ease-in-out
           );
         }
+
+        simple-icon-button-lite {
+          aspect-ratio: 1;
+        }
       `,
     ];
   }
   render() {
     return html`
-      <article id="card">
+      <div class="card">
         <div
           class="image-outer"
           part="image-wrapper"
@@ -400,9 +259,16 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           <div id="content">
             <slot name="content"></slot>
           </div>
-          <div id="footer">
-            <slot name="footer"></slot>
-          </div>
+          ${this.link ? 
+            html`
+              <div class="footer">
+                <a href="${this.link}" target="_blank" rel="nofollow noopener">
+                  <simple-icon-button-lite icon="${this.icon}" 
+                  style="${this.iconSize ? `--simple-icon-height: var(--ddd-icon-${this.iconSize}); --simple-icon-width: var(--ddd-icon-${this.iconSize});` : `--simple-icon-height: var(--ddd-icon-xs); --simple-icon-width: var(--ddd-icon-xs);`}"></simple-icon-button-lite>
+                </a>
+              </div>
+              ` : ""}
+          
         </div>
       </article>
     `;
@@ -599,6 +465,8 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
     this.imageValign = null;
     this.noBorder = false;
     this.ready = false;
+    this.link = null;
+    this.icon = "icons:add-circle-outline";
   }
   /**
    * life cycle
@@ -694,6 +562,19 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       ready: {
         type: Boolean,
         reflect: true,
+      },
+      link: {
+        type: String,
+        reflect: true,
+      },
+      icon: {
+        type: String,
+        reflect: true,
+      },
+      iconSize: {
+        type: String,
+        reflect: true,
+        attribute: "icon-size",
       },
     };
   }
