@@ -3785,7 +3785,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             // case for the web in general as it'll register as not a primative
             // even though it is...
             if (
-              !this.HTMLPrimativeTest(slotnodes[j].tagName) &&
+              !this.HTMLPrimativeTest(slotnodes[j]) &&
               slotnodes[j].tagName !== "TEMPLATE"
             ) {
               content += await this.nodeToContent(slotnodes[j]);
@@ -3839,7 +3839,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     content = content.replace(/<span style="(.*?)">/gim, "<span>");
     content = content.replace(/<span>\s*?<\/span>/g, " ");
     content = content.replace(/<span><br\/><\/span>/gm, "");
-    // account for things taht on normal paste would pick up too many css vars
+    // account for things that on normal paste would pick up too many css vars
     content = content.replace(/<strong style="(.*?)">/gim, "<strong>");
     content = content.replace(/<b style="(.*?)">/gim, "<b>");
     content = content.replace(/<strike style="(.*?)">/gim, "<strike>");
@@ -3852,19 +3852,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // br somehow getting through here
     content = content.replace(/<p><br\/><\/p>/gm, "<p></p>");
     content = content.replace(/<p><br><\/p>/gm, "<p></p>");
-    // whitespace in reverse of the top case now that we've cleaned it up
-    content = content.replace(/<\/p>(\s*)<p>/gm, "</p><p>");
-    content = content
-      .split("\n\r")
-      .join("\n")
-      .split("\r")
-      .join("\n")
-      .split("\n\n")
-      .join("\n")
-      .split("\n\n")
-      .join("\n")
-      .split("\n\n")
-      .join("\n");
     // @see haxHooks: postProcessNodeToContent
     if (this.testHook(node, "postProcessNodeToContent")) {
       content = await this.runHook(node, "postProcessNodeToContent", [content]);
