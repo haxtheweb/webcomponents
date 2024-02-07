@@ -66,7 +66,6 @@ Custom property | Description | Default
  * @demo ./demo/borders.html borders and shadow
  * @demo ./demo/images.html image aligmnent
  * @demo ./demo/variables.html css variables
- * @demo ./demo/comparison.html Comaparison
  */
 class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   /**
@@ -580,7 +579,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             imageSrc: "http://placekitten.com/200/600",
           },
           content:
-            '<div slot="heading">Accent Card</div><div slot="subheading">A card with optional accent stylings.</div><div slot="content"><p>This card is highly customizable to contain any content you\'d like</p></div>',
+            '<h5 slot="heading">Accent Card</h5><div slot="subheading">A card with optional accent stylings.</div><div slot="content"><p>This card is highly customizable to contain any content you\'d like</p></div>',
         },
       ],
       saveOptions: {

@@ -21,7 +21,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
  * @demo ./demo/images.html image aligmnent
  * @demo ./demo/variables.html css variables
  */
-class AccentCard extends IntersectionObserverMixin(DDD) {
+class AccentCardProposed extends IntersectionObserverMixin(DDD) {
   /**
    * Store tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -37,14 +37,55 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
         :host {
           display: block;
           margin: 0 0 var(--ddd-spacing-4);
+          color: var(
+            --accent-card-color,
+            var(--ddd-theme-polaris-coalyGray, #000)
+          );
+          background-color: var(
+            --accent-card-background-color,
+            var(--ddd-theme-polaris-white, #fff)
+          );
+          border-radius: var(--ddd-radius-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
+          container-type: normal;
+          container-name: accent-card;
+        }
+        :host([dark]),
+        :host([dark]) .body ::slotted(*), 
+        :host([dark]) simple-icon-button-lite {
+          color: var(
+            --accent-card-color,
+            var(--ddd-theme-polaris-white, #fff)
+          );
+          background-color: var(--accent-card-background-color, var(--ddd-theme-polaris-coalyGray, #000));
+        }
+        :host([accent-background]),
+        :host([accent-background]) .body ::slotted(*),
+        :host([accent-background]) simple-icon-button-lite {
+          background-color: var(
+            --accent-card-background-color,
+            var(--ddd-theme-polaris-beaverBlue, #fff)
+          );
+          color: var(
+            --accent-card-color,
+            var(--ddd-theme-polaris-white, #000)
+          );
         }
         .card {
           width: 100%;
           box-sizing: border-box;
-          border-radius: var(--ddd-radius-xs);
           border: var(--ddd-border-xs);
-          box-shadow: var(--ddd-boxShadow-xs);
+          border-radius: var(--ddd-radius-xs);
+          border-top: var(--ddd-border-lg);
+          overflow: hidden;
+          position: relative;
         }
+        @container accent-card (width < 500px) {
+          .card{
+             flex-direction: column;
+          }
+        }
+
         .card,
         .body {
           display: flex;
@@ -57,6 +98,8 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           justify-content: space-between;
           align-items: stretch;
           flex-direction: row;
+          border: var(--ddd-border-xs);
+          border-left: var(--ddd-border-lg);
         }
 
         :host([flat]) {
@@ -69,36 +112,36 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
         :host([dark][flat]:not([accent-background])) {
           border-color: var(--accent-card-footer-border-color, var(--simple-colors-default-theme-grey-6, #666));
         }
-        :host(:not([horizontal]):not([no-border])) article {
+        :host(:not([horizontal]):not([no-border])) .card {
           border-top: var(--ddd-border-lg);
           border-top-color: var(--accent-card-border-color, var(--simple-colors-default-theme-accent-6, #ddd));
         }
-        :host([horizontal]:not([no-border])) article {
+        :host([horizontal]:not([no-border])) .card {
           border-left: var(--ddd-border-lg);
           border-left-color: var(
             --accent-card-border-color,
             var(--simple-colors-default-theme-accent-6, #ddd)
           );
         }
-        :host([dark]:not([horizontal]):not([no-border])) article {
+        :host([dark]:not([horizontal]):not([no-border])) .card {
           border-top-color: var(
             --accent-card-border-color,
             var(--simple-colors-default-theme-accent-7, #fff)
           );
         }
-        :host([dark][horizontal]:not([no-border])) article {
+        :host([dark][horizontal]:not([no-border])) .card {
           border-left-color: var(
             --accent-card-border-color,
             var(--simple-colors-default-theme-accent-7, #fff)
           );
         }
         .image-outer {
+          display: flex;
           box-sizing: border-box;
           position: relative;
           overflow: visible;
         }
         :host([horizontal]) .image-outer {
-          height: auto;
           width: var(--accent-card-image-width, 30%);
           flex: 0 0 auto;
         }
@@ -108,9 +151,13 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           min-height: var(--accent-card-heading-min-height);
         }
         .image {
-          height: 100%;
+          object-fit: scale-down;
           width: 100%;
-          object-fit: contain;
+          height: 100%;
+          background-size: cover;
+        }
+        :host([image-align]) .image, :host([image-valign]) .image{
+          object-fit: cover;
         }
         :host([image-align="left"]) .image {
           background-position-x: left;
@@ -149,7 +196,7 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
         .body {
           flex-grow: 1;
           overflow: visible;
-          padding: var(--ddd-spacing-5);
+          padding: 0 var(--ddd-spacing-5);
         }
         #heading {
           flex: 0 0 auto;
@@ -159,18 +206,6 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           margin: 0;
           overflow: hidden;
         }
-        ::slotted(*[slot="heading"]) {
-          font-size: 26px;
-          font-weight: bold;
-        }
-        #heading div {
-          flex: 0 0 auto;
-          width: 100%;
-        }
-        #heading [data-layout-slotname="heading"] {
-          margin: 0;
-          flex: 1 1 auto;
-        }
         :host([accent-heading][accent-color]) #heading ::slotted(*) {
           color: var(
             --accent-card-heading-color,
@@ -179,11 +214,9 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
         }
         #subheading {
           flex: 0 0 auto;
-          font-size: 90%;
           font-style: italic;
         }
         #content {
-          font-size: 100%;
           flex: 1 1 auto;
         }
         ::slotted(*[slot]:first-of-type) {
@@ -199,17 +232,23 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           flex: 0 0 auto;
           margin: var(--ddd-spacing-2) 0 0;
           padding: var(--ddd-spacing-2) 0 0;
-          border-top: var(--ddd-border-xs);
-          border-color: var(
-            --accent-card-footer-border-color,
-            var(--simple-colors-default-theme-grey-3, #ddd)
-          );
           justify-content: flex-end;
+          padding-bottom: var(--bottom-padding, 0);
         }
+        .footer a {
+          margin-left: var(--ddd-spacing-2);
+        }
+        .footer ::slotted(*) {
+          display: flex;
+          justify-content: end;
+          align-content: center;
+          flex-wrap: wrap;
+        }
+
         :host([dark]) #footer {
           border-top-color: var(
             --accent-card-footer-border-color,
-            var(--simple-colors-default-theme-grey-6, #666)
+            var(--ddd-theme-polaris-limestoneGray, #666)
           );
         }
         :host([ready]) [data-layout-slotname] {
@@ -221,8 +260,18 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           );
         }
 
+        :host([link]) .footer, .footer:has(*:not(:empty)) {
+          border-top: var(--ddd-border-xs);
+          border-color: var(
+            --accent-card-footer-border-color,
+            var(--ddd-theme-polaris-limestoneLight, #ddd)
+          );
+          --bottom-padding: var(--ddd-spacing-2);
+        }
+
         simple-icon-button-lite {
           aspect-ratio: 1;
+          color: var(--accent-card-color);
         }
       `,
     ];
@@ -235,13 +284,9 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           part="image-wrapper"
           ?hidden="${!this.elementVisible || !this.imageSrc}"
         >
-          <div
-            part="image"
-            class="image"
-            .style="${this.elementVisible && this.imageSrc
-              ? `background-image: url("${this.imageSrc}");`
-              : ``}"
-          ></div>
+          ${this.imageSrc ? html`
+              <img src="${this.imageSrc}" class="image" part="image"/>
+          ` : ''}
           <div id="imagecorner"><slot name="image-corner"></slot></div>
         </div>
         <div class="body">
@@ -259,16 +304,16 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           <div id="content">
             <slot name="content"></slot>
           </div>
-          ${this.link ? 
-            html`
-              <div class="footer">
-                <a href="${this.link}" target="_blank" rel="nofollow noopener">
-                  <simple-icon-button-lite icon="${this.icon}" 
-                  style="${this.iconSize ? `--simple-icon-height: var(--ddd-icon-${this.iconSize}); --simple-icon-width: var(--ddd-icon-${this.iconSize});` : `--simple-icon-height: var(--ddd-icon-xs); --simple-icon-width: var(--ddd-icon-xs);`}"></simple-icon-button-lite>
-                </a>
-              </div>
-              ` : ""}
-          
+          <div class="footer">
+            <slot name="footer"></slot>
+            ${this.link ? 
+              html`
+              <a href="${this.link}" target="_blank" rel="nofollow noopener">
+                <simple-icon-button-lite icon="${this.icon}" 
+                style="${this.iconSize ? `--simple-icon-height: var(--ddd-icon-${this.iconSize}); --simple-icon-width: var(--ddd-icon-${this.iconSize});` : `--simple-icon-height: var(--ddd-icon-xs); --simple-icon-width: var(--ddd-icon-xs);`}"></simple-icon-button-lite>
+              </a>
+                ` : ""}
+          </div>       
         </div>
       </article>
     `;
@@ -579,5 +624,5 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
     };
   }
 }
-customElements.define(AccentCard.tag, AccentCard);
-export { AccentCard };
+customElements.define(AccentCardProposed.tag, AccentCardProposed);
+export { AccentCardProposed };
