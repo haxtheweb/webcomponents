@@ -38,7 +38,11 @@ export const DDDSuper = function (SuperClass) {
     }
     // call this to load all the fonts that are official
     loadDDDFonts(fonts) {
-      if (globalThis && globalThis.document && !globalThis.document.querySelector('[data-ddd="font"]')) {
+      if (
+        globalThis &&
+        globalThis.document &&
+        !globalThis.document.querySelector('[data-ddd="font"]')
+      ) {
         fonts.forEach((font) => {
           const link = globalThis.document.createElement("link");
           link.setAttribute("href", font);
@@ -46,7 +50,7 @@ export const DDDSuper = function (SuperClass) {
           link.setAttribute("fetchpriority", "low");
           link.setAttribute("data-ddd", "font");
           globalThis.document.head.appendChild(link);
-        });  
+        });
       }
     }
     /**
@@ -336,6 +340,18 @@ export const DDDSuper = function (SuperClass) {
             );
             --ddd-theme-polaris-gradient-hero2: linear-gradient(
               360deg,
+              rgb(0, 30, 68) 0%,
+              rgba(0, 30, 68, 0.4) 50%,
+              rgba(0, 3, 33, 0) 100%
+            );
+            --ddd-theme-polaris-gradient-antihero: linear-gradient(
+              180deg,
+              rgba(0, 30, 68, 0.8) 0%,
+              rgba(0, 30, 68, 0.4) 50%,
+              rgba(0, 3, 33, 0) 100%
+            );
+            --ddd-theme-polaris-gradient-antihero2: linear-gradient(
+              180deg,
               rgb(0, 30, 68) 0%,
               rgba(0, 30, 68, 0.4) 50%,
               rgba(0, 3, 33, 0) 100%
@@ -2166,6 +2182,7 @@ export const DDDSuper = function (SuperClass) {
           }
           hr {
             display: block;
+            border: none;
             border-top: 3px solid var(--ddd-theme-polaris-skyBlue);
             width: var(--ddd-theme-h1-font-size);
             margin: 0;
@@ -2675,7 +2692,10 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
     globalThis.DDDSharedStyles.instance =
       globalThis.document.createElement("style");
     // marker for debugging to make it easier to find
-    globalThis.DDDSharedStyles.instance.setAttribute('data-ddd','global-styles');
+    globalThis.DDDSharedStyles.instance.setAttribute(
+      "data-ddd",
+      "global-styles",
+    );
     globalThis.DDDSharedStyles.instance.innerHTML = `${globalStyles}`;
     globalThis.document.head.appendChild(globalThis.DDDSharedStyles.instance);
   }

@@ -3,7 +3,7 @@
  * @license , see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
@@ -12,7 +12,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
  * @demo demo/index.html
  * @element page-section
  */
-class PageSection extends SimpleColors {
+class PageSection extends DDD {
   /**
    * HTMLElement
    */
@@ -149,22 +149,29 @@ class PageSection extends SimpleColors {
           outline: 0;
           background-color: transparent;
         }
+        :host section div ::slotted(p) {
+          font-size: var(--ddd-font-size-m) !important;
+        }
+        :host section div ::slotted(hr) {
+          border-top-color: var(--ddd-theme-polaris-skyBlue) !important;
+          width: var(--ddd-spacing-21) !important;
+        }
+        :host section div ::slotted(h1) {
+          font-size: var(--ddd-font-size-xxl) !important;
+        }
+        :host([image]) section div ::slotted(p),
         :host([image]) section div ::slotted(h1) {
           color: var(--simple-colors-default-theme-accent-1);
         }
+        :host([image][dark]) section div ::slotted(p),
         :host([image][dark]) section div ::slotted(h1) {
           color: var(--simple-colors-default-theme-accent-12);
         }
         section div ::slotted(h1) {
-          font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif;
-          font-weight: 700;
-          font-size: 5rem;
-          color: var(--simple-colors-default-theme-accent-12);
           font-style: normal;
           text-transform: none;
           text-decoration: none;
-          letter-spacing: 1px;
-          padding-bottom: 12px;
+          padding-bottom: var(--ddd-spacing-3);
           margin: 0;
         }
       `,
@@ -172,7 +179,7 @@ class PageSection extends SimpleColors {
   }
   bgStyle(bg, filter, image) {
     if (filter) {
-      return `background-color: ${bg};background-image: linear-gradient(180deg, var(--simple-colors-default-theme-accent-11) 1%,rgba(0,30,68,0.73) 28%,rgba(0,30,68,0) 100%),url("${image}");`;
+      return `background-color: ${bg};background-image:var(--ddd-theme-polaris-gradient-antihero),url("${image}");`;
     } else {
       return `background-color: ${bg};background-image: url("${image}");`;
     }

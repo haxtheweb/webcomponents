@@ -126,7 +126,7 @@ class DDDocs extends DDD {
           border-left: none;
         }
 
-        details{
+        details {
           max-width: 90%;
         }
       `,
@@ -1350,20 +1350,21 @@ class DDDocs extends DDD {
         </code>
         <pre>
     Here is an    example of a    block using the    'pre'    tag on it's    own</pre
-            >
-            <p>Here is a good example of some <mark>Highlighted Text</mark></p>
-            <p>
-              Here is an example of an abbreviation:
-              <abbr title="Pennsylvania State University">Penn State</abbr>
-            </p>
-          </div>
+        >
+        <p>Here is a good example of some <mark>Highlighted Text</mark></p>
+        <p>
+          Here is an example of an abbreviation:
+          <abbr title="Pennsylvania State University">Penn State</abbr>
+        </p>
+      </div>
     `;
   }
 
   selectOption() {
     return html`
       <h1 class="fs-m my-2">Select an option to render</h1>
-      <select class="mb-5"
+      <select
+        class="mb-5"
         @change="${(e) => {
           this.option = e.target.value;
           this.shadowRoot.querySelector("select").value = this.option;
@@ -1371,7 +1372,7 @@ class DDDocs extends DDD {
       >
         <option value="*">Full styleguide</option>
         ${this.options.map(
-          (option) => html`<option value="${option}">${option}</option>`
+          (option) => html`<option value="${option}">${option}</option>`,
         )}
       </select>
     `;
@@ -1384,10 +1385,7 @@ class DDDocs extends DDD {
     if (this.options.includes(this.option)) {
       const renderMethod = this[`render${this.option}`];
       if (typeof renderMethod === "function") {
-        return html`
-          ${this.selectOption()}
-          ${renderMethod.call(this)}
-        `;
+        return html` ${this.selectOption()} ${renderMethod.call(this)} `;
       } else {
         console.error(`Render method for option "${this.option}" not found.`);
       }
@@ -1397,7 +1395,10 @@ class DDDocs extends DDD {
         ${this.options.map((option) => {
           const renderMethod = this[`render${option}`];
           if (typeof renderMethod === "function") {
-            return html`<details><summary>${option}</summary>${renderMethod.call(this)}</details>`;
+            return html`<details>
+              <summary>${option}</summary>
+              ${renderMethod.call(this)}
+            </details>`;
           } else {
             console.error(`Render method for option "${option}" not found.`);
             return html``; // Return empty template if method not found
