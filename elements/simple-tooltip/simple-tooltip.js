@@ -195,6 +195,8 @@ class SimpleTooltip extends LitElement {
         .hidden {
           position: absolute;
           left: -10000px;
+          inset-inline-start: -10000px;
+          inset-inline-end: initial;
           top: auto;
           width: 1px;
           height: 1px;
