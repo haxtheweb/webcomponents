@@ -81,10 +81,10 @@
   "demoSchema": [
     {
       "tag": "page-section",
-      "content": "<h2>Section 1</h2><p slot=\"buttons\">Content</p>",
+      "content": "<h3>Sharp looking section</h3><p>This is some sharp looking, well presented content</p>",
       "properties": {
         "filter": true,
-        "backgroundColor": "blue",
+        "bg": "blue",
         "accentColor": "blue",
         "full": true,
         "fold": true,

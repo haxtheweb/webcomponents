@@ -215,7 +215,7 @@ class GridPlate extends LitElement {
           margin: var(--grid-plate-item-margin, 16px);
           padding: var(--grid-plate-item-padding, 16px);
         }
-        :host([ready]) [data-layout-slotname] {
+        :host([ready][data-hax-ray]) [data-layout-slotname] {
           transition: var(
             --hax-layout-container-transition,
             0.5s width ease-in-out,

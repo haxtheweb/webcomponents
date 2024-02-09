@@ -372,6 +372,18 @@ export const DDDSuper = function (SuperClass) {
 
             scroll-behavior: smooth;
           }
+          /* helper class for accessibility of screen reader only content */
+          .sr-only {
+            position: absolute;
+            left: -10000px;
+            inset-inline-start: -10000px;
+            inset-inline-end: initial;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+          }
+
           /* border & shadows */
           .b-0 {
             border: none;
@@ -2055,7 +2067,6 @@ export const DDDSuper = function (SuperClass) {
             font-family: var(--ddd-font-primary);
           }
           h1 {
-            font-size: var(--ddd-theme-h1-font-size);
             margin: var(--ddd-spacing-10) 0 var(--ddd-spacing-5);
             line-height: auto;
             letter-spacing: auto;
@@ -2069,6 +2080,9 @@ export const DDDSuper = function (SuperClass) {
             padding: 0;
             line-height: auto;
             letter-spacing: auto;
+          }
+          h1 {
+            font-size: var(--ddd-theme-h1-font-size);
           }
           h2 {
             font-size: var(--ddd-theme-h2-font-size);

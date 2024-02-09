@@ -26,6 +26,7 @@ class PageSection extends DDD {
     this.image = null;
     this.accentColor = "blue";
     this.scrollerLabel = "Scroll to reveal content";
+    this.preset = null;
   }
 
   static get properties() {
@@ -38,6 +39,7 @@ class PageSection extends DDD {
       scroller: { type: Boolean, reflect: true },
       bg: { type: String },
       image: { type: String, reflect: true },
+      preset: { type: String, reflect: true },
     };
   }
   /**
@@ -56,10 +58,20 @@ class PageSection extends DDD {
           display: block;
         }
 
+        /** presets */
+        :host([preset="non-homepage-antihero"]) section div.text ::slotted(h1),
+        :host([preset="non-homepage-antihero"]) section div.text ::slotted(h2),
+        :host([preset="non-homepage-antihero"]) section div.text ::slotted(h3) {
+          color: var(--ddd-theme-polaris-beaverBlue);
+        }
+        :host([image][preset="non-homepage-antihero"]) .scroller,
+        :host([image][preset="non-homepage-antihero"]) section div ::slotted(p) {
+          color: var(--ddd-theme-polaris-beaverBlue);
+        }
+
         .section {
-          width: 100%;
           height: var(--page-section-height, 100%);
-          padding: var(--page-section-padding, 0);
+          padding: var(--page-section-padding, 0 var(--ddd-spacing-25));
           position: relative;
           background-position: 50%;
           background-size: cover;
@@ -88,25 +100,31 @@ class PageSection extends DDD {
           color: var(--simple-colors-default-theme-accent-12);
         }
         :host([fold]) .scroller {
-          margin-top: -100px;
+          margin-top: calc(var(--ddd-spacing-25) * -1);
         }
         .scroller {
           position: relative;
-          margin: 0px auto;
-          --simple-icon-width: 64px;
-          --simple-icon-height: 64px;
+          margin: 0 auto;
+          --simple-icon-width: var(--ddd-icon-lg);
+          --simple-icon-height: var(--ddd-icon-lg);
           color: var(--simple-colors-default-theme-accent-12);
           display: flex;
-          height: 64px;
-          margin-top: -32px;
-          width: 64px;
+          width: var(--ddd-icon-xl);
+          height: var(--ddd-icon-xl);
+          margin-top: calc(var(--ddd-icon-xl) *-1);
           z-index: 11;
         }
-
+        .scroller:focus-within::part(icon),
+        .scroller:focus::part(icon),
+        .scroller:hover::part(icon) {
+          transition: .3s all ease-in-out;
+          --simple-icon-width: var(--ddd-icon-xl);
+          --simple-icon-height: var(--ddd-icon-xl);
+        }
         simple-tooltip {
           --simple-tooltip-font-size: var(
             --page-section-tooltip-font-size,
-            16px
+            var(--ddd-font-size-s, 16px)
           );
           --simple-tooltip-background: var(
             --page-section-tooltip-background,
@@ -131,10 +149,10 @@ class PageSection extends DDD {
 
         .fold {
           background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNGRkZGRkYiPjxwYXRoIGQ9Ik02NDAgMTM5TDAgMHYxNDBoMTI4MFYwTDY0MCAxMzl6Ii8+PC9nPjwvc3ZnPg==");
-          background-size: 100% 100px;
+          background-size: 100% var(--ddd-spacing-25);
           background-repeat: no-repeat;
-          bottom: 0;
-          height: 100px;
+          bottom: -1px; /* ensures no line clip on smaller devices */
+          height: var(--ddd-spacing-25);
           z-index: 10;
           transform: scale(1, 1);
           display: block;
@@ -150,18 +168,52 @@ class PageSection extends DDD {
           background-color: transparent;
         }
 
+        :host(:not([full])) .section {
+          padding-top: var(--ddd-spacing-8);
+        }
+
+        :host([fold]:not([full])) .section {
+          padding-bottom: var(--ddd-spacing-25);
+        }
+        :host([scroller]:not([full])) .content {
+          padding-bottom: var(--ddd-spacing-25);
+        }
+
         /* Hero styles / types */
         /* @todo add a variable for 'type' of section and to enforce it via reflection here */
         /* specific tag support to react to light dom and force setting */
-        :host section div ::slotted(p) {
+        :host([large]) section div.text ::slotted(p) {
           font-size: var(--ddd-font-size-m) !important;
+        }
+        :host([large]) section div.text ::slotted(h1),
+        :host([large]) section div.text ::slotted(h2),
+        :host([large]) section div.text ::slotted(h3) {
+          font-size: var(--ddd-font-size-xxl) !important;
+        }
+
+        :host section div.buttons ::slotted(*) {
+          margin: 0;
+          padding: 0;
+        }
+        
+        :host section div ::slotted(p) {
+          font-size: var(--ddd-font-size-s) !important;
         }
         :host section div ::slotted(hr) {
           border-top-color: var(--ddd-theme-polaris-skyBlue) !important;
           width: var(--ddd-spacing-21) !important;
         }
-        :host section div ::slotted(h1) {
-          font-size: var(--ddd-font-size-xxl) !important;
+        :host section div ::slotted(h1),
+        :host section div ::slotted(h2),
+        :host section div ::slotted(h3) {
+          font-size: var(--ddd-font-size-xl) !important;
+          font-style: normal;
+          text-transform: none;
+          text-decoration: none;
+          padding-bottom: var(--ddd-spacing-2) !important;
+          margin: 0 !important;
+          margin-top: var(--ddd-spacing-4) !important;
+          margin-bottom: var(--ddd-spacing-2) !important;
         }
         :host([image]) section div ::slotted(p),
         :host([image]) section div ::slotted(h1) {
@@ -171,22 +223,115 @@ class PageSection extends DDD {
         :host([image][dark]) section div ::slotted(h1) {
           color: var(--simple-colors-default-theme-accent-12);
         }
-        section div ::slotted(h1) {
-          font-style: normal;
-          text-transform: none;
-          text-decoration: none;
-          padding-bottom: var(--ddd-spacing-3);
-          margin: 0;
+
+        :host section div.entice {
+          display: flex;
+        }
+        :host section div.entice ::slotted(*) {
+          padding: var(--ddd-spacing-2);
+          background-color: rgba(0, 0, 0, 0.533);
+          color: black;
+          margin: 0 !important;
+          margin-bottom: var(--ddd-spacing-4) !important;
+          font-size: var(--ddd-font-size-3xs) !important;
         }
 
-        sm	360px	26px
-md	768px	40px
-lg	1080px	46px
-xl	1440px	62px
+        :host section div ::slotted(grid-plate) {
+          --grid-plate-item-margin: var(--ddd-spacing-4);
+          --grid-plate-item-padding: var(--ddd-spacing-4);
+        }
 
+        @media (max-width: 768px) {
+          .section {
+            padding: var(--page-section-padding, 0 var(--ddd-spacing-5));
+          }
+          .content {
+            padding: var(--page-section-content-padding, 0 5%);
+            width: var(--page-section-content-width, 90%);
+          }
+          :host([large]) section div.text ::slotted(p) {
+            font-size: var(--ddd-font-size-s) !important;
+          }
+          :host([large]) section div.text ::slotted(h1),
+          :host([large]) section div.text ::slotted(h2),
+          :host([large]) section div.text ::slotted(h3) {
+            font-size: var(--ddd-font-size-l) !important;
+          }
+
+          :host section div.buttons ::slotted(*) {
+            margin: 0;
+            padding: 0;
+          }
+
+          :host section div ::slotted(grid-plate) {
+            --grid-plate-item-margin: var(--ddd-spacing-1);
+            --grid-plate-item-padding: var(--ddd-spacing-1);
+          }
+
+          :host section div.entice ::slotted(*) {
+            padding: var(--ddd-spacing-1);
+            margin-bottom: var(--ddd-spacing-2) !important;
+            font-size: var(--ddd-font-size-4xs) !important;
+          }
+
+          :host section div ::slotted(h1),
+          :host section div ::slotted(h2),
+          :host section div ::slotted(h3) {
+            font-size: var(--ddd-font-size-m) !important;
+          }
+          
+          :host section div ::slotted(p) {
+            font-size: var(--ddd-font-size-xs) !important;
+          }
+
+          :host section div ::slotted(hr) {
+            border-top-color: var(--ddd-theme-polaris-skyBlue) !important;
+            width: var(--ddd-spacing-10) !important;
+          }
+        }
+        @media (max-width: 768px) and (orientation: landscape) {
+          .fold {
+            height: var(--ddd-spacing-22);
+          }
+          .scroller {
+            --simple-icon-width: var(--ddd-icon-sm);
+            --simple-icon-height: var(--ddd-icon-sm);
+            width: var(--ddd-icon-md);
+            height: var(--ddd-icon-md);
+            margin-top: calc(var(--ddd-icon-md) *-1);
+          }
+          .scroller:focus-within::part(icon),
+          .scroller:focus::part(icon),
+          .scroller:hover::part(icon) {
+            --simple-icon-width: var(--ddd-icon-md);
+            --simple-icon-height: var(--ddd-icon-md);
+          }
+          :host([fold]) .scroller {
+            margin-top: calc(var(--ddd-spacing-20) * -1);
+          }
+        }
+        
       `,
     ];
   }
+
+
+
+  updated(changedProperties) {
+    // presets force certain design consistency
+    if (changedProperties.has('preset') && this.preset) {
+      switch (this.preset) {
+        case "non-homepage-antihero":
+          this.bg = "var(--ddd-theme-polaris-limestoneLight)";
+          this.image = new URL("./lib/assets/geo-bkg.png", import.meta.url).href;
+        break;
+        case "non-homepage-antihero-light-blue":
+          this.bg = "var(--ddd-theme-polaris-slateMaxLight)";
+        break;
+      }
+    }
+  }
+
   bgStyle(bg, filter, image) {
     if (filter) {
       return `background-color: ${bg};background-image:var(--ddd-theme-polaris-gradient-antihero),url("${image}");`;
@@ -204,8 +349,13 @@ xl	1440px	62px
         style="${this.bgStyle(this.bg, this.filter, this.image)}"
       >
         <div class="content" part="content">
-          <slot></slot>
-          <div>
+          <div class="text">
+            <slot></slot>
+          </div>
+          <div class="entice">
+            <slot name="entice"></slot>
+          </div>
+          <div class="buttons">
             <slot name="buttons"></slot>
           </div>
         </div>
@@ -237,14 +387,6 @@ xl	1440px	62px
    */
   static get tag() {
     return "page-section";
-  }
-  /**
-   * LitElement ready
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
   }
   /**
    * haxProperties integration via file reference
