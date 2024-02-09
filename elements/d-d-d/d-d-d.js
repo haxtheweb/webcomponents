@@ -2266,7 +2266,7 @@ export const DDDSuper = function (SuperClass) {
             line-height: 1;
           }
           details {
-            transition: max-height 7s ease-out;
+            transition: max-height 4s ease-out;
             overflow: hidden;
             max-height: 50px;
             display: flex;
@@ -2285,6 +2285,7 @@ export const DDDSuper = function (SuperClass) {
           }
           details[open] > summary::after {
             content: "--";
+            wrap: nowrap;
             font-size: var(--ddd-font-size-m);
             letter-spacing: -1.8px;
             padding-right: 2px;
