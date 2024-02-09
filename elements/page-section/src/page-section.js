@@ -327,6 +327,7 @@ class PageSection extends DDD {
         break;
         case "non-homepage-antihero-light-blue":
           this.bg = "var(--ddd-theme-polaris-slateMaxLight)";
+          this.image = null;
         break;
       }
     }
