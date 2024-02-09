@@ -149,6 +149,10 @@ class PageSection extends DDD {
           outline: 0;
           background-color: transparent;
         }
+
+        /* Hero styles / types */
+        /* @todo add a variable for 'type' of section and to enforce it via reflection here */
+        /* specific tag support to react to light dom and force setting */
         :host section div ::slotted(p) {
           font-size: var(--ddd-font-size-m) !important;
         }
@@ -174,6 +178,12 @@ class PageSection extends DDD {
           padding-bottom: var(--ddd-spacing-3);
           margin: 0;
         }
+
+        sm	360px	26px
+md	768px	40px
+lg	1080px	46px
+xl	1440px	62px
+
       `,
     ];
   }
