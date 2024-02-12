@@ -11,6 +11,7 @@
       import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
       import "@lrnwebcomponents/future-terminal-text/future-terminal-text.js";
       import "@lrnwebcomponents/grid-plate/grid-plate.js";
+      import "@lrnwebcomponents/video-player/video-player.js";
       import "@lrnwebcomponents/rpg-character/rpg-character.js";
       import '../page-section.js';
     </script>
@@ -55,8 +56,7 @@
          installations or vendor lock-in. The HAX block system allows for sustainable content creation that is easy to click and build for 
          novices while outputting clean, semantic HTML for experts.</p>
     </page-section>
-
-    <page-section preset="non-homepage-antihero" scroller>
+    <page-section preset="lines" scroller>
       <h1>This is University Text</h1>
       <hr/> 
       <p>
@@ -67,7 +67,19 @@
         the positive impact made on communities across the world.
       </p>
     </page-section>
-    <page-section preset="non-homepage-antihero-light-blue" id="section-6" class="section" fold="" accent-color="blue">
+
+    <page-section preset="antihero" scroller>
+      <h1>This is University Text</h1>
+      <hr/> 
+      <p>
+        There’s a reason University consistently ranks among the top one percent 
+        of the world’s universities. 
+        Across University campuses, our University students and University faculty and staff know the 
+        real measure of success goes beyond the classroom—it’s 
+        the positive impact made on communities across the world.
+      </p>
+    </page-section>
+    <page-section preset="antihero-light" id="section-6" class="section" fold="" accent-color="blue">
       <grid-plate layout="1-1"> 
         <div slot="col-1"> 
           <h3>About</h3> <p> HAX is a service provided through a collaboration between Penn State College of Arts and Architecture,
@@ -132,8 +144,12 @@
                                     a mundane administrative interface. Websites produced by HAX can be a mix of professi
                                     onal and playful but the 8-bit design helps you designate between the admin task and wh
                                     at end-users see. </p> </div> </details> </div>
-                                   </page-section>
-    <page-section full bg="orange" filter dark fold scroller image="https://btopro.com/files/scale-50/IMG_20190307_142300.jpg">
+    </page-section>
+
+    <page-section full preset="video">
+      <video-player source="https://www.youtube.com/watch?v=BlLoHvqiIzg" media-title="A walk through time"></video-player>
+    </page-section>
+                                   <page-section full bg="orange" filter dark fold scroller image="https://btopro.com/files/scale-50/IMG_20190307_142300.jpg">
 
       <h1>Create websites easily with HAX</h1>
       <simple-cta  filled slot="buttons" link="https://haxtheweb.org/" accent-color="blue" dark>Log in</simple-cta>

@@ -4,6 +4,7 @@
   "canPosition": true,
   "canEditSource": true,
   "contentEditable": true,
+  "hideDefaultSettings": true,
   "type": "grid",
   "gizmo": {
     "title": "Page section",
@@ -19,25 +20,45 @@
   "settings": {
     "configure": [
       {
+        "property": "preset",
+        "inputMethod": "radio",
+        "title": "Preset",
+        "description": "Well designed preset which toggles other settings",
+        "listItems": [
+          {
+            "label": "Custom",
+            "value": "custom"
+          },
+          {
+            "label": "Antihero",
+            "value": "non-homepage-antihero"
+          },
+          {
+            "label": "Anti-hero light",
+            "value": "non-homepage-antihero-light-blue"
+          }
+        ]
+      },
+      {
         "property": "image",
         "inputMethod": "haxupload",
         "title": "Image",
-        "description": "Background image of the section"
+        "description": "Background media of the section"
       },
       {
         "property": "bg",
         "inputMethod": "colorpicker",
         "title": "Background color",
         "description": "Background color of the section if no image is loaded"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "scroller",
         "inputMethod": "boolean",
         "title": "Scroll button",
         "description": "Displays a scroll button which will scroll down to the next element automatically"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "fold",
         "inputMethod": "boolean",
@@ -55,21 +76,16 @@
         "inputMethod": "boolean",
         "title": "Apply Filter",
         "description": "Apply visual filter to background / image"
-      },
-      {
-        "property": "accentColor",
-        "inputMethod": "colorpicker",
-        "title": "Accent Color",
-        "description": "Accent to text and filter if applied"
-      },
-      {
-        "property": "dark",
-        "inputMethod": "boolean",
-        "title": "Dark",
-        "description": "Inverts colors to be dark to light"
       }
     ],
-    "developer": []
+    "developer": [
+      {
+        "property": "anchor",
+        "inputMethod": "textfield",
+        "title": "Anchor text",
+        "description": "Anchor label when visualized in navigation"
+      }
+    ]
   },
   "saveOptions": {
     "unsetAttributes": ["colors"]
@@ -81,11 +97,11 @@
   "demoSchema": [
     {
       "tag": "page-section",
-      "content": "<h3>Sharp looking section</h3><p>This is some sharp looking, well presented content</p>",
+      "content": "<h2>Sharp looking section</h2><hr/><p>This is some sharp looking, well presented content</p><simple-cta hotline filled outlined slot=\"buttons\">Really sharp</simple-cta>",
       "properties": {
+        "preset": "non-homepage-antihero",
         "filter": true,
         "bg": "blue",
-        "accentColor": "blue",
         "full": true,
         "fold": true,
         "scroller": true

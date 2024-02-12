@@ -14,6 +14,7 @@
       import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
       import '../collection-list.js';
       import '../lib/collection-item.js';
+      import '../lib/collection-row.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -22,6 +23,12 @@
       <h3>Basic collection-list demo</h3>
       <demo-snippet>
         <template>
+          <collection-row image="https://oer.courses.science.psu.edu/assets/images/course-banners/phys010.png" alt="This is my sweet alt text." line1="Phys 010" icon="courseicons:phys1" line2="Behind the Headlines" line3="Dr. Miguel Alejandro Mostafa" url="https://oer.hax.psu.edu/mam1264/sites/phys010">
+          </collection-row>
+          <collection-row tags="cool,fun" image="https://oer.courses.science.psu.edu/assets/images/course-banners/phys211.png" alt="This is my sweet alt text." line1="Phys 211" icon="courseicons:phys2" line2="Mechanics" line3="Dr. Louis Leblond" url="https://oer.hax.psu.edu/lul29/sites/phys211">
+          </collection-row>
+          <collection-row tags="cool,fun,stuff,whatever,dsfijdsfjidsfijidjsfijsdfijsdfijdsfijidjsf" accent-color="red" auto-accent-color image="https://oer.courses.science.psu.edu/assets/images/course-banners/phys212.png" alt="This is my sweet alt text." line1="Phys 212" icon="courseicons:phys3" line2="Electricity and Magnetism" line3="Dr. Louis Leblond" url="https://oer.hax.psu.edu/lul29/sites/phys212">
+          </collection-row>
           <h3>What Is OER?</h3>
           <p>
             Open Edcuational Resources are freely accessible, openly licensed text,

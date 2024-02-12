@@ -27,11 +27,13 @@ class PageSection extends DDD {
     this.accentColor = "blue";
     this.scrollerLabel = "Scroll to reveal content";
     this.preset = null;
+    this.anchor = null;
   }
 
   static get properties() {
     return {
       ...super.properties,
+      anchor: { type: String },
       scrollerLabel: { type: String, attribute: "scroller-label" },
       filter: { type: Boolean, reflect: true },
       fold: { type: Boolean, reflect: true },
@@ -59,14 +61,45 @@ class PageSection extends DDD {
         }
 
         /** presets */
-        :host([preset="non-homepage-antihero"]) section div.text ::slotted(h1),
-        :host([preset="non-homepage-antihero"]) section div.text ::slotted(h2),
-        :host([preset="non-homepage-antihero"]) section div.text ::slotted(h3) {
+        :host([preset="antihero"]) section div.text ::slotted(h1),
+        :host([preset="antihero"]) section div.text ::slotted(h2),
+        :host([preset="antihero"]) section div.text ::slotted(h3) {
           color: var(--ddd-theme-polaris-beaverBlue);
         }
-        :host([image][preset="non-homepage-antihero"]) .scroller,
-        :host([image][preset="non-homepage-antihero"]) section div ::slotted(p) {
+        :host([image][preset="antihero"]) .scroller,
+        :host([image][preset="antihero"]) section div ::slotted(p) {
           color: var(--ddd-theme-polaris-beaverBlue);
+        }
+        /** lines add texture to blank bg */
+        :host([preset="lines"]) section div.text ::slotted(h1),
+        :host([preset="lines"]) section div.text ::slotted(h2),
+        :host([preset="lines"]) section div.text ::slotted(h3) {
+          color: var(--ddd-theme-polaris-lines);
+        }
+        :host([image][preset="lines"]) .scroller,
+        :host([image][preset="lines"]) section div ::slotted(p) {
+          color: var(--ddd-theme-polaris-lines);
+        }
+        /** video can allow visualization to go beyond readability limit bc its watching */
+
+        :host([preset="video"]) .content {
+          max-width: 1440px;
+        }
+
+        :host([preset="video"]) section div.text ::slotted(video-player) {
+          --video-player-color: var(--ddd-theme-polaris-white);
+          --video-player-bg-color: var(--ddd-theme-polaris-nittanyNavy);
+          --video-player-border-color: var(--ddd-theme-polaris-limestoneLight);
+          --video-player-caption-color: var(--ddd-theme-polaris-white);
+          --video-player-hover-color: var(--ddd-theme-polaris-white);
+          --video-player-hover-bg-color: var(--ddd-theme-polaris-beaver70);
+
+          --video-player-accent-color: var(--ddd-theme-polaris-beaverBlue);
+          --video-player-faded-accent-color: var(--ddd-theme-polaris-beaver80);
+          --video-player-disabled-color: var(--ddd-theme-polaris-navy40);
+
+          color: var(--ddd-theme-polaris-beaverBlue);
+          font-family: var(--ddd-font-navigation);
         }
 
         .section {
@@ -315,21 +348,35 @@ class PageSection extends DDD {
     ];
   }
 
-
+  cleanAnchor(anchor) {
+    return anchor ? anchor.replace(/[^a-zA-Z]+/g, '').toLowerCase() : '';
+  }
 
   updated(changedProperties) {
     // presets force certain design consistency
     if (changedProperties.has('preset') && this.preset) {
       switch (this.preset) {
-        case "non-homepage-antihero":
+        case "antihero":
           this.bg = "var(--ddd-theme-polaris-limestoneLight)";
           this.image = new URL("./lib/assets/geo-bkg.png", import.meta.url).href;
         break;
-        case "non-homepage-antihero-light-blue":
+        case "video":
+          this.bg = "var(--ddd-theme-polaris-limestoneLight)";
+          this.image = null;
+        break;
+        case "antihero-light":
           this.bg = "var(--ddd-theme-polaris-slateMaxLight)";
           this.image = null;
         break;
+        case "lines":
+          this.bg = "var(--ddd-theme-polaris-white)";
+          this.image = new URL("./lib/assets/texture-lines.svg", import.meta.url).href;
+        break;
       }
+    }
+    // support for setting ID via an anchor prop which can be used in some designs
+    if (changedProperties.has('anchor') && this.anchor && this.shadowRoot && !this.getAttribute('id')) {
+      this.setAttribute('id', this.cleanAnchor(this.anchor));
     }
   }
 

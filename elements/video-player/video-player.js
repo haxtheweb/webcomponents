@@ -39,6 +39,49 @@ class VideoPlayer extends IntersectionObserverMixin(
         }
         a11y-media-player {
           box-shadow: var(--ddd-boxShadow-lg);
+          --a11y-media-color: var(--video-player-color, var(
+            --simple-colors-default-theme-grey-11,
+            #111111
+          ));
+
+          --a11y-media-caption-color: var(--video-player-caption-color, var(
+            --simple-colors-default-theme-grey-2,
+            #eeeeee
+          ));
+          --a11y-media-bg-color: var(--video-player-bg-color, var(
+            --simple-colors-default-theme-grey-2,
+            #eeeeee
+          ));
+
+          --a11y-media-border-color: var(--video-player-border-color, var(
+            --simple-colors-default-theme-grey-3,
+            #dddddd
+          ));
+
+          --a11y-media-hover-color: var(--video-player-hover-color, var(
+            --simple-colors-default-theme-grey-12,
+            #000000
+          ));
+
+          --a11y-media-hover-bg-color: var(--video-player-hover-bg-color, var(
+            --simple-colors-default-theme-grey-2,
+            #eeeeee
+          ));
+
+          --a11y-media-accent-color: var(--video-player-accent-color, var(
+            --simple-colors-default-theme-grey-9,
+            #333333
+          ));
+
+          --a11y-media-faded-accent-color: var(--video-player-faded-accent-color, var(
+            --simple-colors-default-theme-grey-8,
+            #444444
+          ));
+
+          --a11y-media-disabled-color: var(--video-player-disabled-color, var(
+            --simple-colors-default-theme-grey-5,
+            #bbbbbb
+          ));
         }
       `,
     ];

@@ -115,7 +115,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           display: block;
           overflow: hidden;
           width: calc(100% - 2px);
-          font-family: var(--simple-fields-font-family, sans-serif);
+          font-family: var(--ddd-font-navigation);
+          --a11y-media-controls-font-family: var(--ddd-font-navigation);
           --a11y-media-player-height: unset;
           --a11y-media-color: var(
             --simple-colors-default-theme-grey-11,
@@ -869,7 +870,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           }
 
           .media-caption {
-            color: var(--a11y-media-bg-color);
+            color: var(--a11y-media-caption-color, var(--a11y-media-bg-color));
             background-color: var(--a11y-media-accent-color);
           }
 
