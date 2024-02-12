@@ -62,10 +62,10 @@ Custom property | Description | Default
 
  * @demo ./demo/index.html demo
  * @demo ./demo/colors.html colors
- * @demo ./demo/orientation.html card orientation
+ * @demo ./demo/orientation.html card orientation & links
  * @demo ./demo/borders.html borders and shadow
  * @demo ./demo/images.html image aligmnent
- * @demo ./demo/variables.html css variables
+ * @demo ./demo/imageWidth.html image width
  */
 class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   /**

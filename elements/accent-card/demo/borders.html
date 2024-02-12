@@ -8,7 +8,7 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../accent-card.js';
+      import '../lib/accent-card-proposed.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
@@ -17,21 +17,15 @@
     <div class="vertical-section-container centered">
       <h1>accent-card Borders and Shadow</h1>
       <demo-snippet>
-        <style>
-          accent-card {
-            display: inline-flex;
-            margin: 10px;
-          }
-        </style>
         <template>
-          <accent-card no-border>
-            <div slot="heading">Accent Card, No Border</div>
+          <accent-card-proposed no-border>
+            <h3 slot="heading">Accent Card, No Border</h3>
             <div slot="content">This card has no accent border.</div>
-          </accent-card>
-          <accent-card flat>
-            <div slot="heading">Flat Accent Card (No Shadow)</div>
+          </accent-card-proposed>
+          <accent-card-proposed flat>
+            <h3 slot="heading">Flat Accent Card (No Shadow)</h3>
             <div slot="content">This is a flat accent card. (It has no box-shadow.)</div>
-          </accent-card>
+          </accent-card-proposed>
         </template>
       </demo-snippet>
     </div>

@@ -8,7 +8,7 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../accent-card.js';
+      import '../lib/accent-card-proposed.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
@@ -19,43 +19,47 @@
 
       <h2>Horizontal Alignment</h2>
       <demo-snippet>
-        <style>
-          accent-card {
-            display: inline-flex;
-            margin: 10px;
-          }
-        </style>
         <template>
-          <accent-card accent-color="blue-grey" accent-heading horizontal image-src="./images/image4.jpg">
-            <div slot="heading">Accent Card, Default Image Alignment</div>
+          <accent-card-proposed accent-color="blue-grey" accent-heading horizontal image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
+            <h3 slot="heading">Accent Card, No Image Alignment</h3>
+            <div slot="content">This is an accent card with the default image positioning (without alignment).
+              <p>This is just used as a reference to see the full image and how it interacts with the different alignments.</p>
+            </div>
+          </accent-card-proposed>
+          <accent-card-proposed accent-color="blue-grey" accent-heading horizontal image-align image-width="narrow" image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
+            <h3 slot="heading">Accent Card, Default Image Alignment</h3>
             <div slot="content">This is an accent card with the default image positioning.</div>
-          </accent-card>
-          <accent-card image-align="left" accent-color="blue-grey" accent-heading horizontal image-src="./images/image4.jpg">
-            <div slot="heading">Accent Card, Image Aligned to Left</div>
-            <div slot="content">This is an accent card with the <tt>left</tt> of the image in position.</div>
-          </accent-card>
-          <accent-card image-align="right" accent-color="blue-grey" accent-heading horizontal image-src="./images/image4.jpg">
-            <div slot="heading">Accent Card, Image Aligned to Right</div>
-            <div slot="content">This is an accent card with the <tt>right</tt> of the image in position.</div>
-          </accent-card>
+          </accent-card-proposed>
+          <accent-card-proposed image-align="left" accent-color="blue-grey" accent-heading horizontal image-width="narrow" image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
+            <h3 slot="heading">Accent Card, Image Aligned to Left</h3>
+            <div slot="content">This is an accent card with the <mark>left</mark> of the image in position.</div>
+          </accent-card-proposed>
+          <accent-card-proposed image-align="right" accent-color="blue-grey" accent-heading horizontal image-width="narrow" image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
+            <h3 slot="heading">Accent Card, Image Aligned to Right</h3>
+            <div slot="content">This is an accent card with the <mark>right</mark> of the image in position.</div>
+          </accent-card-proposed>
         </template>
       </demo-snippet>
 
       <h2>Vertical Alignment</h2>
       <demo-snippet>
         <template>
-          <accent-card accent-color="pink" heading="Accent Card, Default Image Alignment" horizontal image-src="./images/image3a.jpg">
-            <div slot="heading">Accent Card, Default Image Alignment</div>
+          <accent-card-proposed accent-color="pink" horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
+            <h3 slot="heading">Accent Card, No Image Alignment</h3>
+            <div slot="content">This is an accent card with the no image positioning.</div>
+          </accent-card-proposed>
+          <accent-card-proposed accent-color="pink" image-width="wide" image-valign horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
+            <h3 slot="heading">Accent Card, Default Image Alignment</h3>
             <div slot="content">This is an accent card with the default image positioning.</div>
-          </accent-card>
-          <accent-card image-valign="top" accent-color="pink" horizontal image-src="./images/image3a.jpg">
-            <div slot="heading">Accent Card, Image Aligned to Top</div>
-            <div slot="content">This is an accent card with the <tt>top</tt> of the image in position.</div>
-          </accent-card>
-          <accent-card image-valign="bottom" accent-color="pink" horizontal image-src="./images/image3a.jpg">
-            <div slot="heading">Accent Card, Image Aligned to Bottom</div>
-            <div slot="content">This is an accent card with the <tt>bottom</tt> of the image in position.</div>
-          </accent-card>
+          </accent-card-proposed>
+          <accent-card-proposed image-valign="top" image-width="wide" accent-color="pink" horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
+            <h3 slot="heading">Accent Card, Image Aligned to Top</h3>
+            <div slot="content">This is an accent card with the <mark>top</mark> of the image in position.</div>
+          </accent-card-proposed>
+          <accent-card-proposed image-valign="bottom" image-width="wide" accent-color="pink" horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
+            <h3 slot="heading">Accent Card, Image Aligned to Bottom</h3>
+            <div slot="content">This is an accent card with the <mark>bottom</mark> of the image in position.</div>
+          </accent-card-proposed>
         </template>
       </demo-snippet>
     </div>
