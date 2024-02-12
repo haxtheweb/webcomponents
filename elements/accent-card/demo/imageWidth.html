@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>AccentCard: accent-card CSS Variables</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/accent-card-proposed.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>accent-card examples</h1>
+      <h2>Card Width (Vertical Layout)</h2>
+      <demo-snippet>
+        <template>
+          <accent-card-proposed image-width="wide" image-src="./images/Sustainable_Development_Goal_13.png">
+            <h3 slot="heading">Accent Card, image-width set to wide</h3>
+            <div slot="content">This is an accent card with the wide image width (640px).</div>
+          </accent-card-proposed>
+          <accent-card-proposed image-src="./images/Sustainable_Development_Goal_13.png">
+            <h3 slot="heading">Accent Card, default width</h3>
+            <div slot="content">This is an accent card with the default image width (480px)</div>
+          </accent-card-proposed>
+          <accent-card-proposed image-width="narrow" image-src="./images/Sustainable_Development_Goal_13.png">
+            <h3 slot="heading">Accent Card, image-width set to narrow</h3>
+            <div slot="content">This is an accent card with the narrow image width (320px)</div>
+          </accent-card-proposed>
+        </template>
+      </demo-snippet>
+
+      <h2>Image Width (Horizontal Layout, Dark Card)</h2>
+      <demo-snippet>
+        <template>
+          <accent-card-proposed dark horizontal image-width="wide" image-src="./images/Sustainable_Development_Goal_13.png">
+            <h3 slot="heading">Accent Card, Default Width</h3>
+            <div slot="content">This is a horizontal accent card with the image width set to wide (50%).
+              <p>This could be used for a long paragraph on content that is relevant to the picture on the left.</p>
+            </div>
+          </accent-card-proposed>
+          <accent-card-proposed dark horizontal image-src="./images/Sustainable_Development_Goal_13.png">
+            <h3 slot="heading">Accent Card, Custom Width</h3>
+            <div slot="content">This is a horizontal accent card with the default image width (35%)</div>
+          </accent-card-proposed>
+          <accent-card-proposed dark horizontal image-width="narrow" image-src="./images/Sustainable_Development_Goal_13.png">
+            <h3 slot="heading">Accent Card, Custom Width</h3>
+            <div slot="content">This is a horizontal accent card with image width set to <tt>20%</tt>.</div>
+          </accent-card-proposed>
+          </style>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

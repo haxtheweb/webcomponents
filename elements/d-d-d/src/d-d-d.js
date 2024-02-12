@@ -2067,7 +2067,7 @@ export const DDDSuper = function (SuperClass) {
             font-family: var(--ddd-font-primary);
           }
           h1 {
-            margin: var(--ddd-spacing-10) 0 var(--ddd-spacing-5);
+            margin: var(--ddd-spacing-12) 0 var(--ddd-spacing-8);
             line-height: auto;
             letter-spacing: auto;
           }
@@ -2076,10 +2076,27 @@ export const DDDSuper = function (SuperClass) {
           h4,
           h5,
           h6 {
-            margin: var(--ddd-spacing-7) 0 var(--ddd-spacing-3);
+            margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-4);
             padding: 0;
             line-height: auto;
             letter-spacing: auto;
+          }
+          h1 + h2,
+          h1 + h3,
+          h1 + h4,
+          h1 + h5,
+          h1 + h6,
+          h2 + h3,
+          h2 + h4,
+          h2 + h5,
+          h2 + h6,
+          h3 + h4,
+          h3 + h5,
+          h3 + h6,
+          h4 + h5,
+          h4 + h6,
+          h5 + h6 {
+            margin-top: 0;
           }
           h1 {
             font-size: var(--ddd-theme-h1-font-size);
@@ -2266,7 +2283,7 @@ export const DDDSuper = function (SuperClass) {
             line-height: 1;
           }
           details {
-            transition: max-height 7s ease-out;
+            transition: max-height 4s ease-out;
             overflow: hidden;
             max-height: 50px;
             display: flex;
@@ -2285,6 +2302,7 @@ export const DDDSuper = function (SuperClass) {
           }
           details[open] > summary::after {
             content: "--";
+            wrap: nowrap;
             font-size: var(--ddd-font-size-m);
             letter-spacing: -1.8px;
             padding-right: 2px;

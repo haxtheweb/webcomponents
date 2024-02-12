@@ -8,7 +8,7 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../accent-card.js';
+      import '../lib/accent-card-proposed.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
@@ -18,29 +18,32 @@
       <h1>accent-card Colors</h1>
       <h2>Accent Color</h2>
       <demo-snippet>
-        <style>    
-          accent-card {
-            display: inline-flex;
-            margin: 10px;
-          }  
-        </style>
         <template>
-          <accent-card>
-            <div slot="heading">Default Accent</div>
+          <accent-card-proposed>
+            <h3 slot="heading">Default Accent</h3>
             <div slot="content">This card has the default accent.</div>
-          </accent-card>
-          <accent-card accent-color="deep-orange">
-            <div slot="heading">Deep Orange Accent</div>
+          </accent-card-proposed>
+          <accent-card-proposed accent-color="deep-orange">
+            <h3 slot="heading">Deep Orange Accent</h3>
             <div slot="content">This card has a deep-orange accent.</div>
-          </accent-card>
-          <accent-card dark>
-            <div slot="heading">Dark Card</div>
+          </accent-card-proposed>
+          <accent-card-proposed dark>
+            <h3 slot="heading">Dark Card</h3>
             <div slot="content">This card is dark with the default accent.</div>
-          </accent-card>
-          <accent-card accent-color="teal" dark>
-            <div slot="heading">Dark with Teal Accent</div>
+          </accent-card-proposed>
+          <accent-card-proposed accent-color="teal" dark>
+            <h3 slot="heading">Dark with Teal Accent</h3>
             <div slot="content">This card is dark with a teal accent.</div>
-          </accent-card>
+          </accent-card-proposed>
+          <accent-card-proposed accent-background>
+            <h3 slot="heading">accent-background</h3>
+            <div slot="content">This card is dark with the default accent.</div>
+          </accent-card-proposed>
+          <accent-card-proposed accent-background accent-color="red" link="https://google.com">
+            <h3 slot="heading">accent-background with red Accent</h3>
+            <div slot="content">This card is dark with a red accent.</div>
+            <div slot="footer">Read More...</div>
+          </accent-card-proposed>
         </template>
       </demo-snippet>
 
