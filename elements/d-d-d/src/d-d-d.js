@@ -2063,7 +2063,7 @@ export const DDDSuper = function (SuperClass) {
               --ddd-font-primary-black
             ); /* available for headers */
           }
-          * {
+          :root {
             font-family: var(--ddd-font-primary);
           }
           h1 {
@@ -2118,7 +2118,6 @@ export const DDDSuper = function (SuperClass) {
           }
           p,
           div {
-            font-family: var(--ddd-font-primary);
             font-size: var(
               --ddd-theme-body-font-size,
               var(--ddd-theme-haxcms-font-size)

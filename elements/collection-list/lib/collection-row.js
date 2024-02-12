@@ -60,6 +60,7 @@ class CollectionRow extends DDD {
           display: flex;
           flex-direction: row;
           gap: var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-8);
           align-items: center;
         }
 
@@ -76,7 +77,12 @@ class CollectionRow extends DDD {
         .text {
           padding: 0 var(--ddd-spacing-2);
           height: var(--ddd-spacing-38);
-          font-size: var(---ddd-font-size-xs);
+          font-size: var(--ddd-font-size-3xs);
+          font-family: var(--ddd-font-navigation);
+        }
+        .text ::slotted(*) {
+          font-size: var(--ddd-font-size-3xs);
+          font-family: var(--ddd-font-navigation) !important;
         }
 
         .line-2 {
@@ -114,12 +120,23 @@ class CollectionRow extends DDD {
           background-size: cover;
           background-position: right center;
           width: 100%;
-          height: 150px;
           opacity: 0.9;
           transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
           border-bottom-style: solid;
           border-bottom-color: var(--icon-color);
           border-bottom-width: var(--ddd-border-md);
+          max-width: 100%;
+          height: auto;
+          vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+          .wrap {
+            display: block;
+          }
+          .image {
+            display: block;
+          }
         }
       `,
     ];
