@@ -1078,6 +1078,16 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-default-theme-accent-11: #b1c5ce;
             --simple-colors-default-theme-accent-12: #e7eff1;
           }
+
+          /* from a11y-utils */
+          .sr-only {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+          }
         `,
       ];
     }
