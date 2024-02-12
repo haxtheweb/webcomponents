@@ -46,14 +46,14 @@ class CollectionItem extends DDD {
         :host {
           display: inline-block;
           background-color: var(--simple-colors-default-theme-accent-1);
+          height: fit-content;
         }
         a {
           text-decoration: none;
           color: var(--icon-color);
           display: block;
           min-height: 300px;
-          border: solid var(--ddd-border-xs)
-            var(--ddd-theme-polaris-slateMaxLight);
+          border: var(--ddd-border-xs);
           transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
           box-shadow: var(--ddd-boxShadow-xs);
         }
@@ -101,17 +101,25 @@ class CollectionItem extends DDD {
           padding: 0 var(--ddd-spacing-2);
         }
         .line-2 {
+          display: block;
           max-height: var(--ddd-spacing-13);
+          width: calc(100% - var(--ddd-spacing-4));
           overflow: hidden;
           text-align: center;
-          word-break: break-word;
           padding: 0 var(--ddd-spacing-2);
+          display: inline-block;
+          word-break: break-word;
+          word-wrap:break-word;
         }
         .line-3 {
-          max-height: var(--ddd-spacing-6);
+          padding: 0 var(--ddd-spacing-3);
+          text-align: center;
+          word-break: break-all;
+          white-space: nowrap;
           overflow: hidden;
-          word-break: break-word;
-          padding: 0 var(--ddd-spacing-2);
+          text-overflow: ellipsis;
+          width: calc(100% - var(--ddd-spacing-6));
+          margin-bottom: var(--ddd-spacing-2);
         }
 
         .icon {

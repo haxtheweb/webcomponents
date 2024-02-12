@@ -129,6 +129,43 @@ class DDDocs extends DDD {
         details {
           max-width: 90%;
         }
+
+        
+        .fakeHero{
+          overflow: auto;
+          position: relative;
+          height: 600px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          backdrop-filter: blur(5px);
+        }
+        .fakeHero::before {
+          content: "";
+          position: fixed;
+          left: 0;
+          right: 0;
+          z-index: -1;
+        
+          display: block;
+          background-image: url('https://www.worldcampus.psu.edu/sites/default/files/2018-12/1920x840_about-us_L1_1.jpg');
+          background-size: cover;
+          background-position: center;
+          width: 100%;
+          height: 100%;
+        
+          -webkit-filter: blur(2px);
+          -moz-filter: blur(2px);
+          -o-filter: blur(2px);
+          -ms-filter: blur(2px);
+          filter: blur(2px);
+        }
+
+        .pageHeaderContainer{
+          display: grid;
+          grid-template-columns: 1fr 3.3fr 1fr;
+        }
+
       `,
     ];
   }
@@ -1356,6 +1393,12 @@ class DDDocs extends DDD {
           Here is an example of an abbreviation:
           <abbr title="Pennsylvania State University">Penn State</abbr>
         </p>
+        <ul class="ddd-link-list">
+          <li><a href="#">All Degrees</a></li>
+          <li><a href="#">NEW: Interdisciplinary Science and Business Degree</a></li>
+          <li><a href="#">NEW: Polymer Engineering and Science Degree</a></li>
+          <li><a href="#">NEW: Digital Media Arts and Technology</a></li>
+        </ul>
       </div>
     `;
   }
@@ -1375,6 +1418,17 @@ class DDDocs extends DDD {
           (option) => html`<option value="${option}">${option}</option>`,
         )}
       </select>
+      <div class="fakeHero">
+        <h1 class="type1">We Are</h1>
+      </div>
+      <div class="pageHeaderContainer">
+        <b></b>
+        <h2 class="type2 large">Web Privacy Statement<hr></h2>
+      </div>
+      <div class="pageHeaderContainer">
+        <b></b>
+        <h2 class="type3">Discover Penn State<hr></h2>
+      </div>
     `;
   }
 

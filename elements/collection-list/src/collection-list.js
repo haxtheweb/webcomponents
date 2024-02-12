@@ -2,8 +2,9 @@
  * Copyright 2023
  * @license , see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 /**
  * `collection-list`
@@ -11,7 +12,7 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
  * @demo demo/index.html
  * @element collection-list
  */
-class CollectionList extends LitElement {
+class CollectionList extends (DDD) {
   /**
    * HTMLElement
    */
