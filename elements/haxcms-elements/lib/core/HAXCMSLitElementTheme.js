@@ -411,12 +411,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           background-position: center;
           content: "";
           display: block;
-          position: absolute;
+          position: relative;
           z-index: 1;
           border: var(--hax-action-border, 3px solid black);
           border-radius: 50%;
           left: 0px;
-          margin: 4px;
+          margin: 0 0px -50px -64px;
         }
         h1[data-instructional-action]::after,
         h2[data-instructional-action]::after,
@@ -432,10 +432,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           mask-size: contain;
           -webkit-mask-repeat: no-repeat;
           -webkit-mask-size: contain;
-          padding: 22px;
-          margin: 10px;
-          position: absolute;
+          padding: 15px;
+          margin: 8px 0px 0px -52px;
+          position: relative;
           left: 0px;
+          float: left;
         }
         [data-instructional-action][data-id-emphasize] {
           background-color: var(--hax-action-color) !important;
