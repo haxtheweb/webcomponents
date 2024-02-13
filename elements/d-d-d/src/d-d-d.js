@@ -2063,8 +2063,15 @@ export const DDDSuper = function (SuperClass) {
               --ddd-font-primary-black
             ); /* available for headers */
           }
+          /** least specific so that it's applied as the default to top of document */
           :root {
             font-family: var(--ddd-font-primary);
+            font-size: var(
+              --ddd-theme-body-font-size,
+              var(--ddd-theme-haxcms-font-size)
+            );
+            font-weight: var(--ddd-font-primary-regular);
+            letter-spacing: normal;
           }
           h1 {
             margin: var(--ddd-spacing-12) 0 var(--ddd-spacing-8);
@@ -2116,22 +2123,13 @@ export const DDDSuper = function (SuperClass) {
           h6 {
             font-size: var(--ddd-theme-h6-font-size);
           }
-          p,
-          div {
-            font-size: var(
-              --ddd-theme-body-font-size,
-              var(--ddd-theme-haxcms-font-size)
-            );
-            font-weight: var(--ddd-font-primary-regular);
-            letter-spacing: normal;
-          }
           p {
             line-height: var(--ddd-lh-140);
             margin: var(--ddd-spacing-4) 0;
           }
           a,
           a:-webkit-any-link {
-            line-break: anywhere;
+            line-break: auto;
             color: var(--ddd-theme-polaris-link);
             font-weight: var(--ddd-font-primary-bold);
             text-decoration: none;

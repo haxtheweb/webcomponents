@@ -46,29 +46,35 @@ class CollectionItem extends DDD {
         :host {
           display: inline-block;
           background-color: var(--simple-colors-default-theme-accent-1);
+          --collection-row-accent-color: var(--simple-colors-default-theme-accent-10);
         }
-        a {
-          text-decoration: none;
-          color: var(--icon-color);
+        a.link, a.link:-webkit-any-link {
+          outline-color: var(--collection-row-accent-color);
+          outline-offset: -1px;
+          outline-width: 3px;
+          color: var(--collection-row-accent-color);
           display: block;
-          min-height: 300px;
+          height: 300px;
           border: solid var(--ddd-border-xs)
             var(--ddd-theme-polaris-slateMaxLight);
-          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
           box-shadow: var(--ddd-boxShadow-xs);
         }
-        :host([saturate]) a {
+        :host([saturate]) a.link {
           -webkit-filter: saturate(30%);
           filter: saturate(30%);
         }
-        a:focus-within,
-        a:focus,
-        a:hover {
+        a.link:focus-within,
+        a.link:focus,
+        a.link:hover {
           box-shadow: var(--ddd-boxShadow-sm);
         }
-        :host([saturate]) a:focus-within,
-        :host([saturate]) a:focus,
-        :host([saturate]) a:hover {
+        a.link:focus-within,
+        a.link:focus {
+          outline-style: solid;
+        }
+        :host([saturate]) a.link:focus-within,
+        :host([saturate]) a.link:focus,
+        :host([saturate]) a.link:hover {
           filter: saturate(200%);
         }
 
@@ -85,33 +91,45 @@ class CollectionItem extends DDD {
         }
 
         simple-tags {
-          margin-left: var(--ddd-spacing-1);
           margin-bottom: calc(-1 * var(--ddd-spacing-11));
           padding: var(--ddd-spacing-0);
           width: 100%;
           z-index: 1;
-          display: flex;
+          display: block;
           overflow: hidden;
+          height: 44px;
+          position: relative;
+        }
+
+        .no-tags {
+          margin-bottom: calc(-1 * var(--ddd-spacing-11));
+          padding: var(--ddd-spacing-0);
+          width: 100%;
+          z-index: 1;
+          display: block;
+          overflow: hidden;
+          height: 44px;
+          position: relative;
         }
 
         .line-1 {
           text-transform: uppercase;
           text-align: center;
           word-break: break-word;
-          padding: 0 var(--ddd-spacing-2);
+          padding: 0 var(--ddd-spacing-1);
         }
         .line-2 {
           max-height: var(--ddd-spacing-13);
           overflow: hidden;
           text-align: center;
           word-break: break-word;
-          padding: 0 var(--ddd-spacing-2);
+          padding: 0 var(--ddd-spacing-1);
         }
         .line-3 {
           max-height: var(--ddd-spacing-6);
           overflow: hidden;
           word-break: break-word;
-          padding: 0 var(--ddd-spacing-2);
+          padding: 0 var(--ddd-spacing-1);
         }
 
         .icon {
@@ -121,7 +139,7 @@ class CollectionItem extends DDD {
           bottom: var(--ddd-spacing-8);
           border-style: solid;
           border-image: initial;
-          border-color: var(--icon-color);
+          border-color: var(--collection-row-accent-color);
           border-width: var(--ddd-border-md);
           margin: 0 0 calc(-1 * var(--ddd-icon-xs)) 0;
           height: var(--ddd-spacing-12);
@@ -133,7 +151,7 @@ class CollectionItem extends DDD {
         }
 
         simple-icon {
-          fill: var(--icon-color);
+          fill: var(--collection-row-accent-color);
           --simple-icon-width: var(--ddd-icon-xs);
           --simple-icon-height: var(--ddd-icon-xs);
           margin: var(--ddd-spacing-2);
@@ -145,11 +163,11 @@ class CollectionItem extends DDD {
           background-size: cover;
           background-position: right center;
           width: 100%;
-          height: 150px;
+          height: 160px;
           opacity: 0.9;
           transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
           border-bottom-style: solid;
-          border-bottom-color: var(--icon-color);
+          border-bottom-color: var(--collection-row-accent-color);
           border-bottom-width: var(--ddd-border-md);
         }
       `,
@@ -158,7 +176,7 @@ class CollectionItem extends DDD {
 
   render() {
     return html`
-      <a href="${this.url}" title="${this.alt}" @click="${this._handleClick}">
+      <a class="link" href="${this.url}" title="${this.alt}" @click="${this._handleClick}">
         <div class="wrap">
           ${this.tags
             ? html`<simple-tags
@@ -166,7 +184,7 @@ class CollectionItem extends DDD {
                 accent-color="${this.accentColor}"
                 auto-accent-color
               ></simple-tags>`
-            : ``}
+            : html`<div class="no-tags"></div>`}
           <div
             class="image bg-gradient-hero"
             style="${this.image ? `background-image:url("${this.image}")` : ``}"

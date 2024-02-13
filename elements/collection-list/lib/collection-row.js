@@ -45,15 +45,31 @@ class CollectionRow extends DDD {
           display: block;
           border-top: 1px solid black;
           padding: var(--ddd-spacing-6) 0 var(--ddd-spacing-5);
+          --collection-row-accent-color: var(--simple-colors-default-theme-accent-10);
         }
 
         a {
           text-decoration: none;
-          color: var(--icon-color);
         }
-        :host([saturate]) .image-wrapper {
-          -webkit-filter: saturate(200%);
+        :host([saturate]) .image-wrap {
+          -webkit-filter: saturate(30%);
+          filter: saturate(30%);
+        }
+
+        :host([saturate]:focus-within) .image-wrap,
+        :host([saturate]:hover) .image-wrap {
           filter: saturate(200%);
+        }
+
+        .image-wrap {
+          max-width: 250px;
+          width: 100%;
+          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
+        }
+
+        p {
+          margin: 0;
+          padding: 0;
         }
 
         .wrap {
@@ -65,17 +81,13 @@ class CollectionRow extends DDD {
         }
 
         simple-tags {
-          margin-left: var(--ddd-spacing-1);
-          margin-bottom: calc(-1 * var(--ddd-spacing-11));
-          padding: var(--ddd-spacing-0);
-          width: 100%;
-          z-index: 1;
-          display: flex;
+          margin: var(--ddd-spacing-1);
+          padding: 0;
+          display: inline-flex;
           overflow: hidden;
         }
 
         .text {
-          padding: 0 var(--ddd-spacing-2);
           height: var(--ddd-spacing-38);
           font-size: var(--ddd-font-size-3xs);
           font-family: var(--ddd-font-navigation);
@@ -100,7 +112,7 @@ class CollectionRow extends DDD {
           bottom: var(--ddd-spacing-8);
           border-style: solid;
           border-image: initial;
-          border-color: var(--icon-color);
+          border-color: var(--collection-row-accent-color);
           border-width: var(--ddd-border-md);
           margin: 0 0 calc(-1 * var(--ddd-icon-xs)) 0;
           height: var(--ddd-spacing-12);
@@ -108,10 +120,16 @@ class CollectionRow extends DDD {
         }
 
         simple-icon {
-          fill: var(--icon-color);
+          fill: var(--collection-row-accent-color);
           --simple-icon-width: var(--ddd-icon-xs);
           --simple-icon-height: var(--ddd-icon-xs);
           margin: var(--ddd-spacing-2);
+        }
+        .footer {
+          margin-left: var(--ddd-spacing-6);
+        }
+        .footer simple-icon {
+          display: inline-flex;
         }
 
         .image {
@@ -123,7 +141,7 @@ class CollectionRow extends DDD {
           opacity: 0.9;
           transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
           border-bottom-style: solid;
-          border-bottom-color: var(--icon-color);
+          border-bottom-color: var(--collection-row-accent-color);
           border-bottom-width: var(--ddd-border-md);
           max-width: 100%;
           height: auto;
@@ -131,11 +149,18 @@ class CollectionRow extends DDD {
         }
 
         @media (max-width: 768px) {
+          .footer {
+            display: flex;
+            margin-left: var(--ddd-spacing-5);
+          }
           .wrap {
             display: block;
           }
           .image {
             display: block;
+          }
+          .image-wrap {
+            max-width: unset;
           }
         }
       `,
@@ -146,16 +171,9 @@ class CollectionRow extends DDD {
     return html`
     <div class="wrap">
       <div class="image-wrap">
-        ${this.tags
-          ? html`<simple-tags
-              tags="${this.tags}"
-              accent-color="${this.accentColor}"
-              auto-accent-color
-            ></simple-tags>`
-          : ``}
-        <img
+      ${this.image ? html`<img
           class="image bg-gradient-hero"
-          src="${this.image}" alt="${this.alt}" />
+          src="${this.image}" alt="${this.alt}" />`: ``}
       </div>
       <div>
         <p class="text">
@@ -165,6 +183,17 @@ class CollectionRow extends DDD {
         </p>
       </div>
     </div>
+    <div class="footer">
+      ${this.icon ? html`<simple-icon icon="${this.icon}" accent-color="${this.accentColor}"
+></simple-icon>`: ``}
+      ${this.tags
+          ? html`<simple-tags
+              tags="${this.tags}"
+              accent-color="${this.accentColor}"
+              auto-accent-color
+            ></simple-tags>`
+          : ``}
+        </div>
     `;
   }
 
