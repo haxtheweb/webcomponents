@@ -21,6 +21,7 @@ export const styleGuideTopics = {
   Spacing: "Spacing",
   Typography: "Typography",
   RichText: "RichText",
+  PageSections : "PageSections",
 };
 
 class DDDocs extends DDD {
@@ -1403,6 +1404,24 @@ class DDDocs extends DDD {
     `;
   }
 
+  renderPageSections() {
+    return html`
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Page Sections</h2>
+      <div class="b-xs">
+        <div class="fakeHero">
+          <h1 class="type1">We Are</h1>
+        </div>
+        <div class="pageHeaderContainer">
+          <b></b>
+          <h2 class="type2 large">Web Privacy Statement<hr></h2>
+        </div>
+        <div class="pageHeaderContainer">
+          <b></b>
+          <h2 class="type3">Discover Penn State<hr></h2>
+        </div>
+      `;
+  }
+
   selectOption() {
     return html`
       <h1 class="fs-m my-2">Select an option to render</h1>
@@ -1418,17 +1437,6 @@ class DDDocs extends DDD {
           (option) => html`<option value="${option}">${option}</option>`,
         )}
       </select>
-      <div class="fakeHero">
-        <h1 class="type1">We Are</h1>
-      </div>
-      <div class="pageHeaderContainer">
-        <b></b>
-        <h2 class="type2 large">Web Privacy Statement<hr></h2>
-      </div>
-      <div class="pageHeaderContainer">
-        <b></b>
-        <h2 class="type3">Discover Penn State<hr></h2>
-      </div>
     `;
   }
 
@@ -1449,7 +1457,7 @@ class DDDocs extends DDD {
         ${this.options.map((option) => {
           const renderMethod = this[`render${option}`];
           if (typeof renderMethod === "function") {
-            return html`<details>
+            return html`<details style="max-width: 100%;">
               <summary>${option}</summary>
               ${renderMethod.call(this)}
             </details>`;
