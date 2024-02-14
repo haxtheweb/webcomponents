@@ -19,7 +19,9 @@ body, html, :root {
   --haxcms-tooltip-color: #FFFFFF;
   --haxcms-tooltip-background-color: #000000;
   --github-corner-background: var(--haxcms-color, --haxcms-system-bg);
-  --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --haxcms-base-styles-body-font-family: var(--ddd-font-primary, "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif);
+  --ddd-theme-haxcms-font-size: var(--hax-base-styles-p-font-size);
+  
   /** HAX specific settings **/
   --hax-color-bg: var(--haxcms-system-bg, #37474f);
   --hax-color-border-outline: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
@@ -53,14 +55,14 @@ body, html, :root {
   --hax-base-styles-p-font-size: 32px;
   --hax-base-styles-p-letter-spacing: 0.5px;
   --hax-base-styles-a-color: #2196f3;
-  --hax-base-styles-a-font-size: 24px;
+  --hax-base-styles-a-font-size: 32px;
   --hax-base-styles-a-font-weight: normal;
   --hax-base-styles-a-color-visited: #2196f3;
   --hax-base-styles-a-color-active: #2196f3;
   --hax-base-styles-a-font-weight-active: normal;
   --hax-base-styles-list-padding-bottom: 1.5em;
   --hax-base-styles-list-line-height: 40px;
-  --hax-base-styles-list-font-size: 24px;
+  --hax-base-styles-list-font-size: 32px;
   --hax-base-styles-list-max-width: 28em;
   --hax-base-styles-list-last-child-padding-bottom: 1em;
   --hax-base-styles-list-padding-left: 20px;
@@ -107,7 +109,7 @@ simple-modal::part(title) {
   text-align: center;
   font-size: 24px;
   color: white;
-  font-family: sans-serif;
+  font-family: var(--ddd-font-navigation, sans-serif);
   line-height: 24px;
   padding: 4px;
 }
@@ -119,7 +121,7 @@ simple-modal button.hax-modal-btn {
   background-color: green;
   border: 4px solid black;
   border-radius: 8px;
-  font-family: sans-serif;
+  font-family: var(--ddd-font-navigation, sans-serif);
 }
 simple-modal button.hax-modal-btn.cancel {
   background-color: red;
@@ -162,12 +164,12 @@ hax-tray {
     font-size: 18px;
     line-height: 18px;
     padding: 4px;
-    font-family: sans-serif;
+    font-family: var(--ddd-font-navigation, sans-serif);
   }
   simple-modal button.hax-modal-btn {
     font-size: 20px;
     padding: 4px;
-    font-family: sans-serif;
+    font-family: var(--ddd-font-navigation, sans-serif);
   }
 }
 
@@ -237,7 +239,6 @@ p {
 a,
 a:-webkit-any-link {
   color: var(--hax-base-styles-a-color);
-  font-size: var(--hax-base-styles-a-font-size);
   font-weight: var(--hax-base-styles-a-font-weight);
 }
 
@@ -316,11 +317,6 @@ pre {
 }
 
 blockquote {
-  font-family: var(
-    --hax-base-styles-accent-font-family,
-    "Playfair Display",
-    serif
-  );
   font-size: var(
     --hax-base-styles-blockquote-font-size,
     calc(1.33333337 * var(--haxcms-base-styles-body-font-size, 18px))

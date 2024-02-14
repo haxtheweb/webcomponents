@@ -2133,7 +2133,6 @@ export const DDDSuper = function (SuperClass) {
             color: var(--ddd-theme-polaris-link);
             font-weight: var(--ddd-font-primary-bold);
             text-decoration: none;
-            font-size: var(--ddd-theme-body-font-size);
           }
           a:hover {
             text-decoration: underline;

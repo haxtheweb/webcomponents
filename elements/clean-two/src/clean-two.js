@@ -42,13 +42,13 @@ class CleanTwo extends HAXCMSOperationButtons(
         PrintBranchMixin(
           QRCodeMixin(
             HAXCMSThemeParts(
-              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme))
-            )
-          )
-        )
-      )
-    )
-  )
+              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
 ) {
   //styles function
   static get styles() {
@@ -58,20 +58,18 @@ class CleanTwo extends HAXCMSOperationButtons(
         :host {
           display: block;
           font-size: 18px;
-          font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
           letter-spacing: normal;
           line-height: 28.8px;
           background-color: white;
-          --haxcms-base-styles-body-font-size:18px;
+          --haxcms-base-styles-body-font-size: 18px;
           --hax-base-styles-a-font-size: 18px;
           --hax-base-styles-p-font-size: 18px;
           --hax-base-styles-list-font-size: 18px;
-          --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
           --haxcms-base-styles-body-line-height: 28.8px;
           --hax-base-styles-list-line-height: 28.8px
-          --hax-base-styles-p-line-height: 28.8px;
+            --hax-base-styles-p-line-height: 28.8px;
           --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing : normal;
+          --haxcms-base-styles-body-letter-spacing: normal;
           --hax-base-styles-p-min-height: auto;
           --hax-base-styles-list-max-width: auto;
           --haxcms-base-styles-p-min-height: auto;
@@ -87,11 +85,17 @@ class CleanTwo extends HAXCMSOperationButtons(
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
-          --hax-base-styles-a-color-visited:  var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
-          --hax-base-styles-a-color: var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
+          --hax-base-styles-a-color-visited: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-purple-7)
+          );
+          --hax-base-styles-a-color: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-purple-7)
+          );
           --hax-base-styles-a-color-active: #000000;
           --site-search-result-background-color: transparent;
-          --site-search-result-background-color-hover: #F5F5F5;
+          --site-search-result-background-color-hover: #f5f5f5;
           --site-search-link-color-hover: #252737;
           --site-search-link-text-color: #252737;
           --site-search-link-color: #252737;
@@ -101,7 +105,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0;
           display: block;
           padding: 0;
-          border-top: 2px solid #E6ECF1;
+          border-top: 2px solid #e6ecf1;
           margin-top: 24px;
           align-items: center;
           padding-top: 24px;
@@ -124,9 +128,12 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
-          color: #242A31;
-          border: 1px solid #E6ECF1;
+          --site-menu-button-button-hover-color: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-purple-7)
+          );
+          color: #242a31;
+          border: 1px solid #e6ecf1;
           margin: 0;
           display: block;
           padding: 0;
@@ -141,7 +148,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           flex-direction: row;
           -moz-transition: border 250ms ease;
           text-decoration: none;
-          background-color: #FFFFFF;
+          background-color: #ffffff;
           -webkit-box-align: center;
           page-break-inside: avoid;
           -ms-grid-row-align: stretch;
@@ -155,7 +162,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           height: 40px;
           width: 40px;
           margin-left: -66px;
-          padding:0;
+          padding: 0;
           --github-corner-size: 40px;
           --site-git-corner-color: black;
           --site-git-corner-background: transparent;
@@ -214,10 +221,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           overflow: hidden;
         }
         site-menu-button[type="next"] div {
-         text-align: left; 
+          text-align: left;
         }
         site-menu-button[type="prev"] div {
-         text-align: right; 
+          text-align: right;
         }
         site-active-title {
           display: block;
@@ -233,14 +240,14 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0;
           background-color: white;
         }
-        
+
         .body-wrapper {
           flex: 1;
           height: auto;
           height: 100vh;
           position: absolute;
           font-size: 16px;
-          color: #3B454E;
+          color: #3b454e;
           background-color: #ffffff;
           width: 100%;
           margin: 0 auto;
@@ -276,9 +283,9 @@ class CleanTwo extends HAXCMSOperationButtons(
           display: flex;
           z-index: 15;
           min-width: 300px;
-          background: #F5F7F9;
+          background: #f5f7f9;
           align-items: stretch;
-          border-right: 1px solid #E6ECF1;
+          border-right: 1px solid #e6ecf1;
           flex-direction: column;
           -webkit-box-align: stretch;
           -webkit-box-orient: vertical;
@@ -294,29 +301,31 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0;
           padding: 0;
           margin-left: -300px;
-          background-color: #F5F7F9;
+          background-color: #f5f7f9;
           transition: margin 250ms ease;
           height: fit-content;
         }
-        @media screen and (min-width: 900px){
+        @media screen and (min-width: 900px) {
           .left-col {
             flex: 0 0 auto;
             width: auto;
             z-index: 15;
             width: 300px;
             align-items: stretch;
-            border-right: 1px solid #E6ECF1;
+            border-right: 1px solid #e6ecf1;
             flex-direction: column;
             -webkit-box-align: stretch;
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
           }
-
         }
         site-menu {
           --site-menu-color: #000000;
-          --site-menu-active-color: #E6ECF1;
-          --site-menu-item-active-item-color: var(--simple-colors-default-theme-light-blue-1, rgba(100,100,255,.1));
+          --site-menu-active-color: #e6ecf1;
+          --site-menu-item-active-item-color: var(
+            --simple-colors-default-theme-light-blue-1,
+            rgba(100, 100, 255, 0.1)
+          );
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-xs);
           overflow-y: auto;
@@ -351,10 +360,16 @@ class CleanTwo extends HAXCMSOperationButtons(
         :host([responsive-size="md"]) .body-wrapper .content-wrapper .content {
           max-width: 90%;
         }
-        :host([menu-open][responsive-size="md"]) .body-wrapper .content-wrapper .content {
+        :host([menu-open][responsive-size="md"])
+          .body-wrapper
+          .content-wrapper
+          .content {
           max-width: 65%;
         }
-        :host([menu-open][responsive-size="sm"]) .body-wrapper .content-wrapper .content {
+        :host([menu-open][responsive-size="sm"])
+          .body-wrapper
+          .content-wrapper
+          .content {
           max-width: 50%;
         }
 
@@ -427,8 +442,8 @@ class CleanTwo extends HAXCMSOperationButtons(
           .body-wrapper {
             overflow-x: hidden;
           }
-          
-          :host([menu-open]) #haxcmsmobilemenubutton{
+
+          :host([menu-open]) #haxcmsmobilemenubutton {
             margin-left: -52px;
           }
           .link-actions .inner {
@@ -439,7 +454,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           }
           #slot ::slotted(iframe) {
             width: auto;
-          } 
+          }
         }
         @media screen and (max-width: 600px) {
           .link-actions .inner {
@@ -459,7 +474,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           #slot ::slotted(h4),
           #slot ::slotted(h5),
           #slot ::slotted(h6) {
-            font-size: .9em !important;
+            font-size: 0.9em !important;
           }
           #slot ::slotted(replace-tag) {
             overflow: hidden;
@@ -475,7 +490,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
           min-height: 100%;
-          color: #3B454E;
+          color: #3b454e;
         }
         .site-menu-content-wrapper {
           display: -webkit-box;
@@ -528,7 +543,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0;
           display: flex;
           padding: 0;
-          border-top: 2px solid #E6ECF1;
+          border-top: 2px solid #e6ecf1;
           margin-top: 24px;
           align-items: center;
           padding-top: 24px;
@@ -807,7 +822,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         const link = document.createElement("link");
         link.setAttribute(
           "href",
-          "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+          "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap",
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");
