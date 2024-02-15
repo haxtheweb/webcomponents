@@ -6,6 +6,8 @@ import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { DDDSuper, DDDFonts } from "../d-d-d.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
 
 // a "blank" theme that allows for production of a brochure design by reading off of the page-sections used
@@ -21,6 +23,11 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     });
     this._observer.observe(this, {
       childList: true,
+    });
+    autorun((reaction) => {
+      if (store && store.location && store.location.pathname) {
+        this.activePathName = toJS(store.location.pathname);
+      }
     });
   }
   getSections() {
@@ -47,7 +54,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
         >
           ${this.getSections(this.sectionLoad).map(
             (section) => html`
-              <a href="#${section.id}" tabindex="-1" class="menu-item"
+              <a href="${this.activePathName}#${section.id}" tabindex="-1" class="menu-item"
                 ><button data-target="${section.id}">
                   ${section.label}
                 </button></a
@@ -112,7 +119,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     return css`
       :host([edit-mode]) {
         opacity: 1;
-        margin: 100px 300px; /** helps when editing to see spacing */
+        margin: 0px 350px; /** helps when editing to see spacing */
       }
       :host([hidden]) {
         display: none;
