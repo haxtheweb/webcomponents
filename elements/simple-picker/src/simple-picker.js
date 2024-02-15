@@ -107,6 +107,8 @@ const SimplePickerBehaviors = function (SuperClass) {
           lit-virtualizer {
             min-height: var(--simple-picker-height);
             max-height: var(--simple-picker-height);
+            width: 100%;
+            display: block;
           }
 
           :host([block-label]) {
@@ -292,7 +294,7 @@ const SimplePickerBehaviors = function (SuperClass) {
 
           :host([expanded]:not([disabled])) #collapse {
             display: block;
-            position: unset;
+            position: var(--simple-picker-expanded-display, unset);
             background-color: var(
               --simple-picker-options-background-color,
               #fff
@@ -826,7 +828,7 @@ const SimplePickerBehaviors = function (SuperClass) {
                     .getBoundingClientRect().width;
               }
               // width is what a common row is
-              virtualizer.style.width = parseInt(rowData.width + gutter) + "px";
+              virtualizer.style.width = parseInt(rowData.width) + "px";
               // test if height is smaller than our lowest value is it doesn't look odd
               // but if we're going to scroll then allow it to scroll
               if (
@@ -835,8 +837,8 @@ const SimplePickerBehaviors = function (SuperClass) {
               ) {
                 virtualizer.style.minHeight =
                   parseInt(
-                    rowData.height *
-                      virtualizer.querySelectorAll(".row").length +
+                    (rowData.height *
+                      virtualizer.querySelectorAll(".row").length) +
                       2
                   ) + "px";
               }
@@ -845,6 +847,10 @@ const SimplePickerBehaviors = function (SuperClass) {
                 [...virtualizer.querySelectorAll(".row")].map(
                   (item) => (item.style.width = "-webkit-fill-available")
                 );
+              });
+              requestAnimationFrame(() => {
+                let listbox = this.getBoundingClientRect();
+                virtualizer.style.minWidth = parseInt(listbox.width) + "px";
               });
             }
           }, 100);

@@ -180,6 +180,7 @@ class MediaImage extends DDD {
             </media-image-caption>
           `
         : ``}
+      ${this.link ? html`<a href="${this.link}"></a>` : ``}
     `;
   }
   haxHooks() {

@@ -25,7 +25,7 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
       ...super.styles,
       css`
         #options {
-          display: var(--simple-fields-radio-option-display, flex);
+          display: var(--simple-fields-radio-option-display, block);
           flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
         }
         code-editor {

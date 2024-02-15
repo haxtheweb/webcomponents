@@ -1207,7 +1207,6 @@
     "date-card": "@lrnwebcomponents/date-card/date-card.js",
     "h5p-element": "@lrnwebcomponents/h5p-element/h5p-element.js",
     "md-block": "@lrnwebcomponents/md-block/md-block.js",
-    "full-width-image": "@lrnwebcomponents/full-width-image/full-width-image.js",
     "page-break": "@lrnwebcomponents/page-break/page-break.js",
     "rpg-character": "@lrnwebcomponents/rpg-character/rpg-character.js"
   }

@@ -517,40 +517,7 @@ class GridPlate extends LitElement {
           },
         ],
         advanced: [],
-        developer: [
-          {
-            property: "breakpointSm",
-            title: "Small Breakpoint",
-            description:
-              "Anything less than this number (in pixels) will render with the smallest version of this layout",
-            inputMethod: "textfield",
-            validationType: "number",
-          },
-          {
-            property: "breakpointMd",
-            title: "Medium Breakpoint",
-            description:
-              "Anything less than this number (in pixels) will render with the small version of this layout",
-            inputMethod: "textfield",
-            validationType: "number",
-          },
-          {
-            property: "breakpointLg",
-            title: "Large Breakpoint",
-            description:
-              "Anything less than this number (in pixels) will render with the medium version of this layout.",
-            inputMethod: "textfield",
-            validationType: "number",
-          },
-          {
-            property: "breakpointXl",
-            title: "Extra-Large Breakpoint",
-            description:
-              "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
-            inputMethod: "textfield",
-            validationType: "number",
-          },
-        ],
+        developer: [],
       },
       saveOptions: {
         unsetAttributes: [

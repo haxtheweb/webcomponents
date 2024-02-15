@@ -2718,7 +2718,6 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
     // convert css into text content of arrays mashed together
     // this way we can inject it into a global style sheet
     let globalStyles = DDD.styles.map((st) => st.cssText).join("");
-    console.log(globalStyles);
     globalThis.DDDSharedStyles.instance =
       globalThis.document.createElement("style");
     // marker for debugging to make it easier to find

@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/accent-card/accent-card.js";
 import "@github/time-elements";
 import "@lrnwebcomponents/nav-card/nav-card.js";
-//import "@lrnwebcomponents/accent-card/lib/accent-card-clickable.js";
 import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
