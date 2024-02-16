@@ -90,13 +90,12 @@ class CollectionItem extends DDD {
           flex-direction: column;
           align-items: center;
           overflow: hidden;
-
         }
 
         simple-tags {
           margin-bottom: calc(-1 * var(--ddd-spacing-11));
           padding: var(--ddd-spacing-0);
-          width: 250px;
+          width: 240px;
           z-index: 1;
           display: block;
           overflow: hidden;

@@ -50,8 +50,9 @@ export class SimpleTags extends LitElement {
         }
         .tag-container {
           display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
+          flex-wrap: nowrap;
+          overflow-x: hidden;
+          justify-content: flex-start;
         }
         simple-tag {
           margin: 4px 4px;
