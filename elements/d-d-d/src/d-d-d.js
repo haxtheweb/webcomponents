@@ -2320,7 +2320,7 @@ export const DDDSuper = function (SuperClass) {
             border-bottom: 2px solid var(--ddd-theme-polaris-slateMaxLight);
             position: relative;
             max-width: 650px;
-            padding: 0 0 0 var(--ddd-spacing-5);
+            padding: 0;
             color: black;
             margin: var(--ddd-spacing-6) 0;
           }
