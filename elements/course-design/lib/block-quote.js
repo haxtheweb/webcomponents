@@ -29,11 +29,11 @@ export class BlockQuote extends DDD {
       <div id="wrap">
         ${this.image
           ? html`
-              <div
+              <img
                 id="image"
-                style="background-image:url('${this.image}');"
+                src="${this.image}"
                 alt="${this.alt}"
-              ></div>
+              />
             `
           : ""}
         <div id="quote_wrap">
@@ -73,9 +73,10 @@ export class BlockQuote extends DDD {
             --ddd-component-block-quote-background,
             var(--ddd-theme-polaris-limestoneMaxLight, #f5f5f5)
           );
-          display: block;
+          display: flex;
           align-items: start;
-          width: fit-content;
+          width: 100%;
+          container-type: inline-size;
         }
 
         #wrap {
@@ -90,13 +91,6 @@ export class BlockQuote extends DDD {
           );
           padding: var(--ddd-spacing-6);
           text-align: center;
-        }
-
-        @media screen and (max-width: 1200px) {
-          #wrap {
-            flex-direction: column;
-            border: none;
-          }
         }
 
         #inner_wrap {
@@ -144,15 +138,17 @@ export class BlockQuote extends DDD {
         }
 
         #image {
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
+          background-size: scale-down;
           width: 100%;
           max-width: var(--block-quote-image-max-width, 200px);
           height: auto;
         }
 
-        @media screen and (max-width: 1200px) {
+        @container (max-width: 499px){
+          #wrap {
+            flex-direction: column;
+            border: none;
+          }
           #image {
             height: 200px;
             margin: 0 auto;

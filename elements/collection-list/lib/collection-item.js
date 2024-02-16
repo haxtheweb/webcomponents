@@ -44,7 +44,7 @@ class CollectionItem extends DDD {
       ...super.styles,
       css`
         :host {
-          display: inline-block;
+          display: inline;
           background-color: var(--simple-colors-default-theme-accent-1);
           height: fit-content;
           --collection-row-accent-color: var(--simple-colors-default-theme-accent-10);
@@ -89,12 +89,14 @@ class CollectionItem extends DDD {
           display: flex;
           flex-direction: column;
           align-items: center;
+          overflow: hidden;
+
         }
 
         simple-tags {
           margin-bottom: calc(-1 * var(--ddd-spacing-11));
           padding: var(--ddd-spacing-0);
-          width: 100%;
+          width: 250px;
           z-index: 1;
           display: block;
           overflow: hidden;
