@@ -119,7 +119,7 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
           index: 0,
           value: true,
         },
-      })
+      }),
     );
   }
   render() {

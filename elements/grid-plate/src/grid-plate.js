@@ -204,8 +204,8 @@ class GridPlate extends LitElement {
           margin: 0;
         }
         :host .column ::slotted(*) {
-          margin: var(--grid-plate-item-margin, 0);
-          padding: var(--grid-plate-item-padding, 0);
+          margin: var(--grid-plate-item-margin, 16px);
+          padding: var(--grid-plate-item-padding, 16px);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
         }
@@ -313,7 +313,7 @@ class GridPlate extends LitElement {
           z-index: 2;
           height: 12px;
           border: none !important;
-          transition: 0.2s all ease-in-out;
+          transition: 0.3s all ease-in-out;
         }
         :host([data-hax-ray]) .column ::slotted(*.hax-hovered)::before {
           background-color: var(--hax-body-target-background-color) !important;
@@ -394,7 +394,7 @@ class GridPlate extends LitElement {
             >
               <slot name="col-${num}"></slot>
             </div>
-          `
+          `,
         )}
       </div>
     `;
@@ -439,13 +439,13 @@ class GridPlate extends LitElement {
           lg: this.breakpointLg,
           xl: this.breakpointXl,
         },
-      })
+      }),
     );
     this.__columnWidths = this._getColumnWidths(
       this.responsiveSize,
       this.layout,
       this.layouts,
-      this.disableResponsive
+      this.disableResponsive,
     );
   }
   /**
@@ -667,26 +667,26 @@ class GridPlate extends LitElement {
             this.responsiveSize,
             this.layout,
             this.layouts,
-            this.disableResponsive
+            this.disableResponsive,
           );
         }, 0);
       }
       switch (propName) {
         case "itemMargin":
-          if (this[propName]) {
+          if (this[propName] && this[propName] !== 16) {
             this.style.setProperty(
               "--grid-plate-item-margin",
-              this[propName] + "px"
+              this[propName] + "px",
             );
           } else {
             this.style.removeProperty("--grid-plate-item-margin");
           }
           break;
         case "itemPadding":
-          if (this[propName]) {
+          if (this[propName] && this[propName] !== 16) {
             this.style.setProperty(
               "--grid-plate-item-padding",
-              this[propName] + "px"
+              this[propName] + "px",
             );
           } else {
             this.style.removeProperty("--grid-plate-item-padding");
@@ -703,7 +703,7 @@ class GridPlate extends LitElement {
           this.dispatchEvent(
             new CustomEvent("disable-responsive-changed", {
               detail: this[propName],
-            })
+            }),
           );
           break;
       }
@@ -725,7 +725,7 @@ class GridPlate extends LitElement {
     responsiveSize = "sm",
     layout = "1-1",
     layouts,
-    disableResponsive
+    disableResponsive,
   ) {
     if (layouts) {
       let newl = layouts[layout],

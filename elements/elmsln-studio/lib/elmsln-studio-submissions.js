@@ -7,7 +7,7 @@ import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "./elmsln-studio-submission-card.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/accent-card/lib/accent-card.js";
+import "@lrnwebcomponents/accent-card/accent-card.js";
 
 /**
  * `elmsln-studio-submissions`

@@ -78,36 +78,36 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
             </button>
             ${this.tooltipTemplate}`
         : this.toggles
-        ? html` <button
-              id="button"
-              aria-pressed="${this.isToggled ? "true" : "false"}"
-              class="simple-toolbar-button"
-              ?disabled="${this.disabled}"
-              ?controls="${this.controls}"
-              @click="${this._handleClick}"
-              @keydown="${this._handleKeys}"
-              @mousedown="${this._handleMousedown}"
-              part="button"
-              tabindex="${this.isCurrentItem ? 1 : -1}"
-            >
-              ${this.buttonInnerTemplate}
-            </button>
-            ${this.tooltipTemplate}`
-        : html` <button
-              id="button"
-              class="simple-toolbar-button"
-              ?disabled="${this.disabled}"
-              ?controls="${this.controls}"
-              @click="${this._handleClick}"
-              @keydown="${this._handleKeys}"
-              @mousedown="${this._handleMousedown}"
-              tabindex="0"
-              part="button"
-              tabindex="${this.isCurrentItem ? 1 : -1}"
-            >
-              ${this.buttonInnerTemplate}
-            </button>
-            ${this.tooltipTemplate}`;
+          ? html` <button
+                id="button"
+                aria-pressed="${this.isToggled ? "true" : "false"}"
+                class="simple-toolbar-button"
+                ?disabled="${this.disabled}"
+                ?controls="${this.controls}"
+                @click="${this._handleClick}"
+                @keydown="${this._handleKeys}"
+                @mousedown="${this._handleMousedown}"
+                part="button"
+                tabindex="${this.isCurrentItem ? 1 : -1}"
+              >
+                ${this.buttonInnerTemplate}
+              </button>
+              ${this.tooltipTemplate}`
+          : html` <button
+                id="button"
+                class="simple-toolbar-button"
+                ?disabled="${this.disabled}"
+                ?controls="${this.controls}"
+                @click="${this._handleClick}"
+                @keydown="${this._handleKeys}"
+                @mousedown="${this._handleMousedown}"
+                tabindex="0"
+                part="button"
+                tabindex="${this.isCurrentItem ? 1 : -1}"
+              >
+                ${this.buttonInnerTemplate}
+              </button>
+              ${this.tooltipTemplate}`;
     }
 
     static get simpleButtonThemeStyles() {

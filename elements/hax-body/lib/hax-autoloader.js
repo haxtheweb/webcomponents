@@ -62,7 +62,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
           piece: "haxAutoloader",
           object: this,
         },
-      })
+      }),
     );
   }
   connectedCallback() {
@@ -136,12 +136,12 @@ class HaxAutoloader extends HAXElement(LitElement) {
                 globalThis.WCAutoload &&
                 globalThis.WCAutoload.requestAvailability() &&
                 globalThis.WCAutoload.requestAvailability().registry.getPathToTag(
-                  name
+                  name,
                 )
               ) {
                 fileLocation =
                   globalThis.WCAutoload.requestAvailability().registry.getPathToTag(
-                    name
+                    name,
                   );
               } else {
                 // fallback support since we now support import / a complex object
@@ -151,8 +151,8 @@ class HaxAutoloader extends HAXElement(LitElement) {
                   varGet(
                     HAXStore,
                     `__appStoreData.autoloader.${name}`,
-                    `@lrnwebcomponents/${name}/${name}.js`
-                  )
+                    `@lrnwebcomponents/${name}/${name}.js`,
+                  ),
                 );
                 fileLocation = `${
                   new URL("./../../../", import.meta.url).href
@@ -164,14 +164,14 @@ class HaxAutoloader extends HAXElement(LitElement) {
                   let CEClass = globalThis.customElements.get(name);
                   if (!CEClass) {
                     console.error(
-                      `${name} was not a valid custom element yet a load was attempted`
+                      `${name} was not a valid custom element yet a load was attempted`,
                     );
                   } else if (typeof CEClass.getHaxProperties === "function") {
                     this.setHaxProperties(CEClass.getHaxProperties(), name);
                   } else if (typeof CEClass.HAXWiring === "function") {
                     this.setHaxProperties(
                       CEClass.HAXWiring.getHaxProperties(),
-                      name
+                      name,
                     );
                   } else if (CEClass.haxProperties) {
                     this.setHaxProperties(CEClass.haxProperties, name);
@@ -181,20 +181,20 @@ class HaxAutoloader extends HAXElement(LitElement) {
                     varGet(
                       HAXStore,
                       `__appStoreData.autoloader.${name}.haxProperties`,
-                      false
+                      false,
                     )
                   ) {
                     this.setHaxProperties(
                       varGet(
                         HAXStore,
                         `__appStoreData.autoloader.${name}.haxProperties`,
-                        false
+                        false,
                       ),
-                      name
+                      name,
                     );
                   } else {
                     console.warn(
-                      `${name} didn't have hax wiring so HAX guessed as best it can. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`
+                      `${name} didn't have hax wiring so HAX guessed as best it can. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`,
                     );
                     this.guessHaxWiring(name);
                   }
@@ -208,20 +208,20 @@ class HaxAutoloader extends HAXElement(LitElement) {
               let CEClass = globalThis.customElements.get(name);
               if (!CEClass) {
                 console.error(
-                  `${name} was not a valid custom element yet a load was attempted`
+                  `${name} was not a valid custom element yet a load was attempted`,
                 );
               } else if (typeof CEClass.getHaxProperties === "function") {
                 this.setHaxProperties(CEClass.getHaxProperties(), name);
               } else if (typeof CEClass.HAXWiring === "function") {
                 this.setHaxProperties(
                   CEClass.HAXWiring.getHaxProperties(),
-                  name
+                  name,
                 );
               } else if (CEClass.haxProperties) {
                 this.setHaxProperties(CEClass.haxProperties, name);
               } else {
                 console.warn(
-                  `${name} didn't have hax wiring so HAX guessed as best it can. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`
+                  `${name} didn't have hax wiring so HAX guessed as best it can. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`,
                 );
                 this.guessHaxWiring(name);
               }

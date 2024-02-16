@@ -136,10 +136,10 @@ export const HaxContextBehaviors = function (SuperClass) {
       return this.activeNode && HAXStore.isLayoutElement(this.activeNode)
         ? this.activeNode
         : this.activeNode &&
-          this.activeNode.parentNode &&
-          HAXStore.isLayoutElement(this.activeNode.parentNode)
-        ? this.activeNode.parentNode
-        : undefined;
+            this.activeNode.parentNode &&
+            HAXStore.isLayoutElement(this.activeNode.parentNode)
+          ? this.activeNode.parentNode
+          : undefined;
     }
     /**
      * if layout element is itself a slot, get its layout element
@@ -195,8 +195,8 @@ export const HaxContextBehaviors = function (SuperClass) {
       return gizmo
         ? gizmo.title || gizmo.tag
         : node && node.tagName
-        ? node.tagName.toLowerCase()
-        : "";
+          ? node.tagName.toLowerCase()
+          : "";
     }
 
     /**

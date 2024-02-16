@@ -65,7 +65,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           el = haxElementToNode(
             globalThis.document.querySelector("hax-picker")._elements[
               this.activePickerSchema
-            ]
+            ],
           );
         } else if (
           schema.gizmo.tag &&

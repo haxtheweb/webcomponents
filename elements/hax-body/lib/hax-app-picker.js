@@ -29,7 +29,7 @@ class HaxAppPicker extends LitElement {
       this.modalToggle.bind(this),
       {
         signal: this.windowControllers.signal,
-      }
+      },
     );
   }
   disconnectedCallback() {
@@ -47,7 +47,7 @@ class HaxAppPicker extends LitElement {
         this.type,
         this.title,
         this.pickerType,
-        this.target
+        this.target,
       );
     }
   }
@@ -69,7 +69,7 @@ class HaxAppPicker extends LitElement {
     type = "element",
     title = "Select an option",
     pickerType = "gizmo",
-    target = window
+    target = window,
   ) {
     this.elements = elements;
     this.type = type;
@@ -110,7 +110,7 @@ class HaxAppPicker extends LitElement {
           piece: "haxAppPicker",
           object: this,
         },
-      })
+      }),
     );
   }
 }

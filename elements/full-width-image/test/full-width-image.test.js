@@ -5,9 +5,9 @@ import "../full-width-image.js";
 describe("full-width-image test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <full-width-image title="test-title"></full-width-image> `
-    );
+    element = await fixture(html`
+      <full-width-image title="test-title"></full-width-image>
+    `);
   });
 
   it("passes the a11y audit", async () => {

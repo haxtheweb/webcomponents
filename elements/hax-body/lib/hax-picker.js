@@ -132,7 +132,7 @@ class HaxPicker extends LitElement {
                       `
                     : ``}
                 </simple-popover-selection>
-              `
+              `,
         )}
       </simple-button-grid>
     `;
@@ -202,7 +202,7 @@ class HaxPicker extends LitElement {
     elements,
     type = "element",
     title = "Select an option",
-    pickerType = "gizmo"
+    pickerType = "gizmo",
   ) {
     // wipe existing
     this.pickerType = pickerType;
@@ -297,7 +297,7 @@ class HaxPicker extends LitElement {
             cancelable: true,
             composed: true,
             detail: this._elements[key],
-          })
+          }),
         );
       } else {
         // bubble this up
@@ -307,7 +307,7 @@ class HaxPicker extends LitElement {
             cancelable: true,
             composed: true,
             detail: this._elements[key],
-          })
+          }),
         );
       }
     }
@@ -320,7 +320,7 @@ class HaxPicker extends LitElement {
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
   }
 }

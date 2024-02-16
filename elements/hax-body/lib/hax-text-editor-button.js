@@ -16,7 +16,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * @demo demo/index.html
  */
 class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -71,7 +71,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
     let el = this.element || {},
       settings = el.settings || {},
@@ -93,7 +93,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -162,7 +162,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         tag[field.property] = this.value[field.property];
       if (!!field.slot && !!this.value[field.slot])
         html += `<${this.getSlotWrapper(field)}${Object.keys(
-          field.slotAttributes || {}
+          field.slotAttributes || {},
         ).map((attr) => ` ${attr}="${field.slotAttributes[attr]}"`)}>
             ${this.value[slot]}
           </${this.getSlotWrapper(field)}>`;
@@ -184,7 +184,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
       allowed = field.allowedSlotWrappers,
       excluded = field.excludedSlotWrappers || [],
       filter = ["span", "div", "p"].filter(
-        (wrapper) => !excluded.includes(wrapper)
+        (wrapper) => !excluded.includes(wrapper),
       );
     return fallback ? fallback : allowed && allowed[0] ? allowed[0] : filter;
   }

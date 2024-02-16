@@ -81,7 +81,7 @@ export class CleanOneSearchBox extends I18NMixin(LitElement) {
           detail: {
             value: this.shadowRoot.querySelector("input").value,
           },
-        })
+        }),
       );
     }
   }

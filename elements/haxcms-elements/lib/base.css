@@ -10,17 +10,15 @@
   --haxcms-system-danger-color: var(--simple-colors-default-theme-red-7, #FF7777);
   --paper-toast-color: #FFFFFF;
   --paper-toast-background-color: var(--haxcms-system-bg, #000000);
-  --simple-modal-titlebar-color: #FFFFFF;
+  --simple-modal-titlebar-color: var(--ddd-theme-polaris-infoLight);
   --simple-modal-z-index: 10000000;
-  --simple-modal-titlebar-background: var(--haxcms-system-bg);
+  --simple-modal-titlebar-background: var(--ddd-theme-polaris-info);
   --simple-modal-header-color: #FFFFFF;
   --simple-modal-header-background: var(--haxcms-system-bg);
   --simple-modal-button-color: #FFFFFF;
   --haxcms-tooltip-color: #FFFFFF;
   --haxcms-tooltip-background-color: #000000;
   --github-corner-background: var(--haxcms-color, --haxcms-system-bg);
-  --haxcms-base-styles-body-font-family: var(--ddd-font-primary, "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif);
-  --ddd-theme-haxcms-font-size: var(--hax-base-styles-p-font-size);
   
   /** HAX specific settings **/
   --hax-color-bg: var(--haxcms-system-bg, #37474f);
@@ -107,10 +105,9 @@ simple-modal::part(title) {
   background-color: transparent;
   margin: 0;
   text-align: center;
-  font-size: 24px;
-  color: white;
+  font-size: var(--ddd-font-size-ms);
+  color: var(--ddd-theme-polaris-infoLight);
   font-family: var(--ddd-font-navigation, sans-serif);
-  line-height: 24px;
   padding: 4px;
 }
 simple-modal button.hax-modal-btn {
@@ -152,7 +149,10 @@ hax-tray {
 }
 
 @media print {
-  body {-webkit-print-color-adjust: exact;}
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }
 
 @media screen and (max-width: 800px) {

@@ -56,8 +56,7 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
         .table tbody tr {
           position: relative;
           height: 48px;
-          -webkit-transition-duration: 0.28s;
-          transition-duration: 0.28s;
+          transition-duration: 0.3s;
           -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           -webkit-transition-property: background-color;
@@ -185,7 +184,7 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
         <thead>
           <tr>
             ${this.tableHeadings.map(
-              (heading) => html` <th scope="col">${heading}</th> `
+              (heading) => html` <th scope="col">${heading}</th> `,
             )}
           </tr>
         </thead>
@@ -195,7 +194,7 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
               <tr>
                 ${row.map((col) => html` <td>${col}</td> `)}
               </tr>
-            `
+            `,
           )}
         </tbody>
       </table>

@@ -8,7 +8,7 @@ describe("image-inspector test", () => {
     element = await fixture(
       html`<image-inspector
         src="https://placekitten.com/400/200"
-      ></image-inspector>`
+      ></image-inspector>`,
     );
   });
 

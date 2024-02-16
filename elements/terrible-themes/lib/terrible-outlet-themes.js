@@ -25,7 +25,7 @@ import { autorun, toJS } from "mobx";
  * @element terrible-themes
  */
 class TerribleOutletThemes extends HAXCMSRememberRoute(
-  HAXCMSThemeParts(HAXCMSLitElementTheme)
+  HAXCMSThemeParts(HAXCMSLitElementTheme),
 ) {
   /**
    * Add elements to cheat on initial paint here

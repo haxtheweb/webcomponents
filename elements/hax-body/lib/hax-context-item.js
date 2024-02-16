@@ -120,7 +120,7 @@ class HaxContextItem extends HaxToolbarItemBehaviors(LitElement) {
             eventName: this.eventName,
             value: this.value,
           },
-        })
+        }),
       );
     }
   }

@@ -24,7 +24,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu
  * @element terrible-themes
  */
 class TerribleThemes extends HAXCMSRememberRoute(
-  HAXCMSThemeParts(HAXCMSLitElementTheme)
+  HAXCMSThemeParts(HAXCMSLitElementTheme),
 ) {
   /**
    * Add elements to cheat on initial paint here
@@ -51,48 +51,50 @@ class TerribleThemes extends HAXCMSRememberRoute(
       ...styles,
       css`
         :host {
-          color: #242A31;
+          color: #242a31;
           width: 100%;
           margin: 0;
           display: flex;
           padding: 0;
-          background: #F5F7F9;
+          background: #f5f7f9;
           min-height: 100vh;
           flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
           font-size: 18px;
-          font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,
+            sans-serif;
           letter-spacing: normal;
           line-height: 28.8px;
-          --haxcms-base-styles-body-font-size:18px;
+          --haxcms-base-styles-body-font-size: 18px;
           --hax-base-styles-a-font-size: 18px;
           --hax-base-styles-p-font-size: 18px;
           --hax-base-styles-list-font-size: 18px;
-          --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          --haxcms-base-styles-body-font-family: "Open Sans", "Helvetica Neue",
+            Helvetica, Arial, sans-serif;
           --haxcms-base-styles-body-line-height: 28.8px;
           --hax-base-styles-list-line-height: 28.8px
-          --hax-base-styles-p-line-height: 28.8px;
+            --hax-base-styles-p-line-height: 28.8px;
           --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing : normal;
-           --hax-base-styles-p-min-height: auto;
-           --hax-base-styles-list-max-width: auto;
-           --haxcms-base-styles-p-min-height: auto;
-           --hax-base-styles-list-padding-bottom: auto;
-           --hax-base-styles-h1-font-size: inherit;
-           --hax-base-styles-h2-font-size: inherit;
-           --hax-base-styles-h3-font-size: inherit;
-           --hax-base-styles-h4-font-size: inherit;
-           --hax-base-styles-h5-font-size: inherit;
-           --hax-base-styles-h6-font-size: inherit;
-           --simple-tooltip-background: #000000;
-           --simple-tooltip-opacity: 1;
-           --simple-tooltip-text-color: #ffffff;
-           --simple-tooltip-delay-in: 0;
-           --simple-tooltip-border-radius: 0;
-         }
+          --haxcms-base-styles-body-letter-spacing: normal;
+          --hax-base-styles-p-min-height: auto;
+          --hax-base-styles-list-max-width: auto;
+          --haxcms-base-styles-p-min-height: auto;
+          --hax-base-styles-list-padding-bottom: auto;
+          --hax-base-styles-h1-font-size: inherit;
+          --hax-base-styles-h2-font-size: inherit;
+          --hax-base-styles-h3-font-size: inherit;
+          --hax-base-styles-h4-font-size: inherit;
+          --hax-base-styles-h5-font-size: inherit;
+          --hax-base-styles-h6-font-size: inherit;
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
+        }
 
-         site-active-title {
+        site-active-title {
           display: block;
           padding: 0;
           flex-wrap: wrap;
@@ -111,28 +113,26 @@ class TerribleThemes extends HAXCMSRememberRoute(
         site-menu-button {
           --site-menu-button-link-decoration: none;
           --site-menu-button-button-hover-color: pink;
-          color: #242A31;
-          border: 1px solid #E6ECF1;
+          color: #242a31;
+          border: 1px solid #e6ecf1;
           margin: 0;
           display: block;
           padding: 0;
           position: relative;
           align-self: stretch;
           box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
-          transition: border 250ms ease;
+          transition: border 0.3s ease;
           align-items: center;
           justify-self: stretch;
           text-overflow: ellipsis;
           border-radius: 3px;
           flex-direction: row;
-          -moz-transition: border 250ms ease;
           text-decoration: none;
-          background-color: #FFFFFF;
+          background-color: #ffffff;
           -webkit-box-align: center;
           page-break-inside: avoid;
           -ms-grid-row-align: stretch;
           -webkit-box-orient: horizontal;
-          -webkit-transition: border 250ms ease;
           -ms-grid-column-align: stretch;
           -webkit-box-direction: normal;
         }
@@ -165,85 +165,84 @@ class TerribleThemes extends HAXCMSRememberRoute(
           overflow: hidden;
         }
         site-menu-button[type="next"] div {
-         text-align: left; 
+          text-align: left;
         }
         site-menu-button[type="prev"] div {
-         text-align: right; 
+          text-align: right;
         }
         /*ASP Message passed between pages*/
-        p.message{
-          color : #FF0000;
-          font-size : 12px;
-          font-weight : bold;
-          font-family : Arial, Helvetica, sans-serif;
+        p.message {
+          color: #ff0000;
+          font-size: 12px;
+          font-weight: bold;
+          font-family: Arial, Helvetica, sans-serif;
         }
         /*ASP login status passed between pages*/
-        p.loginState{
-          font-size : 11px;
-          font-weight : bold;
-          font-family : Arial, Helvetica, sans-serif;
+        p.loginState {
+          font-size: 11px;
+          font-weight: bold;
+          font-family: Arial, Helvetica, sans-serif;
         }
 
         /*    */
-        pre.blog_post{
-          font-size : 10px;
-          font-weight : bold;
-          font-family : Arial, Helvetica, sans-serif;
-          width : 380;
+        pre.blog_post {
+          font-size: 10px;
+          font-weight: bold;
+          font-family: Arial, Helvetica, sans-serif;
+          width: 380;
         }
 
         /*Generic table*/
-        table
-        {
-          font-size : 12px;
-          font-family : Arial, Helvetica, sans-serif;
+        table {
+          font-size: 12px;
+          font-family: Arial, Helvetica, sans-serif;
         }
         /*Description Text for apt shot*/
-        table.photofooter{  
+        table.photofooter {
           font-size: 12px;
-          font-weight : bold;
+          font-weight: bold;
         }
         /*Top Text for Log in*/
-        table.topText{
-          font-size : 12px;
-          font-weight : bold;
+        table.topText {
+          font-size: 12px;
+          font-weight: bold;
         }
         /*Heading for news stand*/
-        table.happeningHeading{  
-          font-size : 10px;
-          font-weight : bold;
+        table.happeningHeading {
+          font-size: 10px;
+          font-weight: bold;
         }
         /*Heading for news stand*/
-        table.mediaTable{  
-          font-size : 12px;
-          font-weight : bold;
+        table.mediaTable {
+          font-size: 12px;
+          font-weight: bold;
         }
         /*Generic link*/
-        a{
-          font-weight : bold;
-          text-decoration : none;
-          font-family : Arial, Helvetica, sans-serif;
+        a {
+          font-weight: bold;
+          text-decoration: none;
+          font-family: Arial, Helvetica, sans-serif;
         }
-        a:hover{
-          color: #4444FF;
-          text-decoration : underline;
+        a:hover {
+          color: #4444ff;
+          text-decoration: underline;
         }
         /*Log out link at top right*/
-        a.loginState:visited{
-          color: #0000FF;
+        a.loginState:visited {
+          color: #0000ff;
         }
         /*Menu*/
-        a.menu{
-          font-size : 14px;
+        a.menu {
+          font-size: 14px;
           color: #000000;
-          text-decoration : underline;
+          text-decoration: underline;
         }
-        a.menu:hover{ 
-          color: #0000FF;
-          text-decoration : none;
+        a.menu:hover {
+          color: #0000ff;
+          text-decoration: none;
         }
-        a.menu:active { 
-          color:#FF0000;
+        a.menu:active {
+          color: #ff0000;
         }
         site-top-menu {
           font-size: 18px;

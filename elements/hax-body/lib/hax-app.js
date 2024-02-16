@@ -142,7 +142,7 @@ class HAXApp extends HTMLElement {
           composed: true,
           cancelable: false,
           detail: this.data,
-        })
+        }),
       );
     }
   }

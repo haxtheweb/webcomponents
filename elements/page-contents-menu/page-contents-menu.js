@@ -2,21 +2,29 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `page-contents-menu`
- * `Links that jump you to the right place in the page&#39;s content`
+ * `Links that jump you to the right place in the page's content`
  * @demo demo/index.html
  * @element page-contents-menu
  */
-class PageContentsMenu extends LitElement {
+class PageContentsMenu extends DDD {
   //styles function
   static get styles() {
     return [
       css`
         :host {
           display: block;
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-navigation-light);
+          --page-contents-menu-link-color-focus: var(--ddd-theme-polaris-link);
+          --page-contents-menu-link: black;
+          --page-contents-menu-link-font-size: var(--ddd-font-size-3xs);
+          --page-contents-menu-link-font-size-active: var(--ddd-font-size-xxs);
+          --page-contents-menu-link-font-size-focus: var(--ddd-font-size-3xs);
         }
         :host([is-empty][hide-if-empty]) {
           display: none;
@@ -35,31 +43,30 @@ class PageContentsMenu extends LitElement {
           width: unset;
         }
         .wrapper {
-          display: inline-block;
-          padding: 8px;
-          width: 250px;
+          display: block;
+          margin-bottom: 16px;
         }
         .header {
           display: flex;
-          color: var(--page-contents-menu-heading-color, #9daab6);
+          color: var(--page-contents-menu-heading-color, black);
           padding: 0 24px 0 0;
           margin: 0 0 8px 0;
         }
         .header .svg {
           padding-right: 6px;
           display: inline-flex;
-          color: var(--page-contents-menu-link, #74818d);
+          color: var(--page-contents-menu-link, black);
         }
         svg {
-          width: 1em;
-          height: 1em;
+          width: 32px;
+          height: 32px;
           vertical-align: middle;
         }
         .header .label {
           align-items: center;
           display: inline-flex;
-          font-size: var(--page-contents-menu-heading-font-size, 10px);
-          font-weight: var(--page-contents-menu-heading-font-weight, 700);
+          font-size: var(--page-contents-menu-heading-font-size, var(--ddd-font-size-4xs));
+          font-weight: var(--page-contents-menu-heading-font-weight, var(--ddd-font-navigation-bold));
           padding: 0;
           margin: 0;
           line-height: 1;
@@ -88,7 +95,7 @@ class PageContentsMenu extends LitElement {
           font-size: var(--page-contents-menu-link-font-size, 10px);
           text-decoration: none;
           font-weight: var(--page-contents-menu-link-font-weight, 500);
-          color: var(--page-contents-menu-link, #74818d);
+          color: var(--page-contents-menu-link, black);
           cursor: pointer;
           margin: 0px;
           align-items: center;
@@ -97,38 +104,41 @@ class PageContentsMenu extends LitElement {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-          line-height: 24px;
-          letter-spacing: 0.5px;
           transition: font 0.3s ease-in-out, border 0.1s ease-in-out;
           border-left: rgba(0, 0, 0, 0.1) 1px solid;
         }
-        .link:hover,
-        .link:focus {
+        .link:not(.active):hover {
           text-decoration: underline;
-          color: var(--page-contents-menu-link-hover, rgb(56, 132, 255));
-          font-size: 11px;
+          color: var(--page-contents-menu-link-color-focus, rgb(56, 132, 255));
+          font-size: var(--page-contents-menu-link-font-size-focus, 11px);
         }
-        .link:focus {
+        .link:not(.active):focus {
+          color: var(--page-contents-menu-link-color-focus, rgb(56, 132, 255));
+          font-size: var(--page-contents-menu-link-font-size-focus, 11px);
           outline: 1px solid var(--page-contents-menu-link, black);
           outline-offset: 4px;
         }
         .indent-1 {
-          padding-left: 8px;
+          padding-left: var(--ddd-spacing-2);
         }
         .indent-2 {
-          padding-left: 16px;
+          padding-left: var(--ddd-spacing-3);
         }
         .indent-3,
         .indent-4,
         .indent-5,
         .indent-6 {
-          padding-left: 24px;
+          padding-left: var(--ddd-spacing-4);
         }
         .link:active,
         .active {
           font-weight: bold;
           border-left: black 3px solid;
-          font-size: 12px;
+          font-size: var(--page-contents-menu-link-font-size-active, 12px);
+        }
+        :host([mobile]) .link:active,
+        :host([mobile]) .active {
+          border-left: black 2px solid;
         }
       `,
     ];
@@ -175,7 +185,7 @@ class PageContentsMenu extends LitElement {
           >
             ${this.label}
           </simple-tooltip>
-          ${!this.mobile ? html` <h2 class="label">${this.label}</h2> ` : ``}
+          ${!this.mobile ? html` <div class="label">${this.label}</div> ` : ``}
         </div>
         ${this.mobile
           ? html`
@@ -255,6 +265,7 @@ class PageContentsMenu extends LitElement {
           <a
             class="link indent-${item.indent} ${item.active}"
             tabindex="0"
+            title="${item.title}"
             @click="${this.scrollToObject}"
             @keypress="${this.keyScroll}"
             data-index="${index}"
@@ -268,6 +279,7 @@ class PageContentsMenu extends LitElement {
         <a
           class="link indent-${item.indent} ${item.active}"
           href="${item.link}"
+          title="${item.title}"
           @click="${this.scrollToObject}"
           @keypress="${this.keyScroll}"
           data-index="${index}"

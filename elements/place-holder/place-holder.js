@@ -23,7 +23,7 @@ class PlaceHolder extends SimpleColors {
         :host {
           display: block;
           border: none;
-          transition: 0.2s all linear;
+          transition: 0.3s all linear;
         }
         :host([drag-over]) {
           border: var(--place-holder-drag-over-border, 4px dashed #2196f3);
@@ -146,7 +146,7 @@ class PlaceHolder extends SimpleColors {
         cancelable: true,
         composed: true,
         detail: this.type,
-      })
+      }),
     );
   }
 
@@ -260,7 +260,7 @@ class PlaceHolder extends SimpleColors {
               cancelable: true,
               composed: true,
               detail: e,
-            })
+            }),
           );
         }
       } catch (e) {}

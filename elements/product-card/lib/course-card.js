@@ -39,7 +39,7 @@ class CourseCard extends SimpleColors {
 
         a {
           filter: var(--course-card-filter);
-          transition: 0.2s all ease-in-out;
+          transition: 0.3s all ease-in-out;
           text-decoration: none;
           color: var(--simple-colors-default-theme-accent-12, #000);
           background-color: var(--simple-colors-default-theme-grey-1, #ffffff);

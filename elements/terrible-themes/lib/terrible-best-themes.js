@@ -25,7 +25,7 @@ import { autorun, toJS } from "mobx";
  */
 const skater = new URL("./assets/SKATER.gif", import.meta.url).href;
 class TerribleBestThemes extends HAXCMSRememberRoute(
-  HAXCMSThemeParts(HAXCMSLitElementTheme)
+  HAXCMSThemeParts(HAXCMSLitElementTheme),
 ) {
   /**
    * Add elements to cheat on initial paint here

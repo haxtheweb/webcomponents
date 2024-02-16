@@ -28,7 +28,7 @@ class HaxExportDialog extends I18NMixin(LitElement) {
       this.modalToggle.bind(this),
       {
         signal: this.windowControllers.signal,
-      }
+      },
     );
   }
   disconnectedCallback() {

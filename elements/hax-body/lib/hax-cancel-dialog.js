@@ -70,7 +70,7 @@ class HaxCancelDialog extends I18NMixin(LitElement) {
           piece: "haxCancel",
           object: this,
         },
-      })
+      }),
     );
   }
 

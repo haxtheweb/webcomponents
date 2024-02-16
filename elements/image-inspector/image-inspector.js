@@ -28,7 +28,7 @@ class ImageInspector extends LitElement {
           --simple-icon-height: 36px;
           margin: 0 8px;
           background-color: var(--image-inspector-background-color, #fdfdfd);
-          transition: 0.2s all ease-in-out;
+          transition: 0.3s all ease-in-out;
         }
         simple-icon-button:hover,
         simple-icon-button:focus,

@@ -39,7 +39,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
         label: section.anchor,
       });
     });
-    return items;
+    return items; 
   }
   render() {
     return html`

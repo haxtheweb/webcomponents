@@ -43,7 +43,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @element hax-tray
  */
 class HaxTray extends I18NMixin(
-  SimpleTourFinder(winEventsElement(SimpleColors))
+  SimpleTourFinder(winEventsElement(SimpleColors)),
 ) {
   /**
    * Convention we use
@@ -141,7 +141,7 @@ class HaxTray extends I18NMixin(
     this.__setup = false;
     this.addEventListener(
       "hax-tray-button-click",
-      this._processTrayEvent.bind(this)
+      this._processTrayEvent.bind(this),
     );
     autorun(() => {
       this.activeGizmo = toJS(HAXStore.activeGizmo);
@@ -216,8 +216,11 @@ class HaxTray extends I18NMixin(
           height: calc(100vh - 48px);
           max-height: calc(100vh - 48px);
           z-index: var(--hax-ui-focus-z-index);
-          transition: height 0.6s ease-in-out, width 0.6s ease-in-out,
-            opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+          transition:
+            height 0.6s ease-in-out,
+            width 0.6s ease-in-out,
+            opacity 0.6s ease-in-out,
+            visibility 0.6s ease-in-out;
         }
         :host([collapsed]) #resize {
           display: none;
@@ -591,8 +594,8 @@ class HaxTray extends I18NMixin(
     let status = this.collapsed
       ? "collapsed"
       : this.trayDetail == "view-source"
-      ? "full-panel"
-      : "side-panel";
+        ? "full-panel"
+        : "side-panel";
     HAXStore.trayStatus = status;
     HAXStore.trayDetail = this.trayDetail;
     return status;
@@ -657,7 +660,7 @@ class HaxTray extends I18NMixin(
           }
         }
       },
-      { signal: this.dragController.signal }
+      { signal: this.dragController.signal },
     );
     this.addEventListener(
       "mouseup",
@@ -665,7 +668,7 @@ class HaxTray extends I18NMixin(
         this.resizeDrag = false;
         this.dragController.abort();
       },
-      { signal: this.dragController.signal }
+      { signal: this.dragController.signal },
     );
   }
 
@@ -954,8 +957,8 @@ class HaxTray extends I18NMixin(
       code-theme="${this.haxUiTheme == "system"
         ? "auto"
         : this.haxUiTheme == "haxdark"
-        ? "vs-dark"
-        : "vs"}"
+          ? "vs-dark"
+          : "vs"}"
       ?hidden="${this.trayDetail !== "content-edit"}"
     ></simple-fields>`;
   }
@@ -1014,7 +1017,7 @@ class HaxTray extends I18NMixin(
             cancelable: true,
             composed: true,
             detail: target.stax,
-          })
+          }),
         );
         break;
       case "insert-tag":
@@ -1054,7 +1057,7 @@ class HaxTray extends I18NMixin(
           haxElement = HAXStore.haxElementPrototype(
             gizmo,
             properties,
-            innerContent
+            innerContent,
           );
         }
         this.dispatchEvent(
@@ -1063,7 +1066,7 @@ class HaxTray extends I18NMixin(
             cancelable: true,
             composed: true,
             detail: haxElement,
-          })
+          }),
         );
         break;
       case "toggle-element-align":
@@ -1116,7 +1119,7 @@ class HaxTray extends I18NMixin(
     globalThis.addEventListener(
       "tour-changed",
       this._handleTourChanged.bind(this),
-      { signal: this.tourController.signal }
+      { signal: this.tourController.signal },
     );
     this.__tour.startTour("hax");
   }
@@ -1300,7 +1303,7 @@ class HaxTray extends I18NMixin(
             piece: "haxTray",
             object: this,
           },
-        })
+        }),
       );
     }
   }
@@ -1339,7 +1342,7 @@ class HaxTray extends I18NMixin(
           if (
             !oldValue ||
             !["content-map", "content-edit", "content-add"].includes(
-              this.trayDetail
+              this.trayDetail,
             )
           ) {
             this.trayDetail = "content-edit";
@@ -1592,7 +1595,7 @@ class HaxTray extends I18NMixin(
               (prop) =>
                 prop.slot !== "" &&
                 !prop.slot &&
-                (!prop.attribute || prop.attribute != "slot")
+                (!prop.attribute || prop.attribute != "slot"),
             );
         this.activeSchema[0].properties.push({
           property: propName,
@@ -1728,7 +1731,7 @@ class HaxTray extends I18NMixin(
                       lock: settings[key][prop],
                       node: this.activeNode,
                     },
-                  })
+                  }),
                 );
                 // also lock all fields except us
                 this.__lockAllSettings(settings[key][prop]);
@@ -1751,7 +1754,7 @@ class HaxTray extends I18NMixin(
                         eventName: settings[key][prop],
                         value: settings[key][prop],
                       },
-                    })
+                    }),
                   );
                 }
               }
@@ -1767,7 +1770,7 @@ class HaxTray extends I18NMixin(
                         eventName: "hax-size-change",
                         value: settings[key][prop],
                       },
-                    })
+                    }),
                   );
                 }
               } else if (
@@ -1792,7 +1795,7 @@ class HaxTray extends I18NMixin(
                         eventName: "hax-style-setting-change",
                         value: settings[key],
                       },
-                    })
+                    }),
                   );
                 }
               }
@@ -1858,7 +1861,7 @@ class HaxTray extends I18NMixin(
                             .excludedSlotWrappers || [];
                       if (exclusions)
                         wrappers = wrappers.filter(
-                          (wrapper) => !exclusions.includes(wrapper)
+                          (wrapper) => !exclusions.includes(wrapper),
                         );
                     }
                     var tmpel = globalThis.document.createElement(slotTag);
@@ -1872,7 +1875,7 @@ class HaxTray extends I18NMixin(
                         tmpel.setAttribute(
                           attr,
                           this.__activePropSchema.settings[key][propTmp]
-                            .slotAttributes[attr]
+                            .slotAttributes[attr],
                         );
                       }
                     }
@@ -1893,7 +1896,7 @@ class HaxTray extends I18NMixin(
                       // wipe just the slot in question
                       wipeSlot(
                         this.activeNode,
-                        this.__activePropSchema.settings[key][propTmp].slot
+                        this.__activePropSchema.settings[key][propTmp].slot,
                       );
                       this.activeNode.appendChild(cloneIt);
                     }
@@ -1907,7 +1910,7 @@ class HaxTray extends I18NMixin(
                   if (settings[key][prop] === true) {
                     this.activeNode.setAttribute(
                       camelCaseToDash(prop),
-                      camelCaseToDash(prop)
+                      camelCaseToDash(prop),
                     );
                   } else if (
                     settings[key][prop] === false ||
@@ -1917,7 +1920,7 @@ class HaxTray extends I18NMixin(
                   } else {
                     this.activeNode.setAttribute(
                       camelCaseToDash(prop),
-                      settings[key][prop]
+                      settings[key][prop],
                     );
                   }
                 } catch (e) {
@@ -1937,7 +1940,7 @@ class HaxTray extends I18NMixin(
                       lock: false,
                       node: this.activeNode,
                     },
-                  })
+                  }),
                 );
                 this.__lockAllSettings(false);
               }
@@ -1959,7 +1962,7 @@ class HaxTray extends I18NMixin(
   __lockAllSettings(status) {
     this.shadowRoot
       .querySelectorAll(
-        "simple-fields-tab *[is-simple-field-type]:not([name='settings.advanced.data-hax-lock'])"
+        "simple-fields-tab *[is-simple-field-type]:not([name='settings.advanced.data-hax-lock'])",
       )
       .forEach((node) => {
         node.disabled = status;
@@ -1996,7 +1999,7 @@ class HaxTray extends I18NMixin(
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
   }
 
@@ -2011,14 +2014,14 @@ class HaxTray extends I18NMixin(
         cancelable: true,
         composed: true,
         detail: e.detail,
-      })
+      }),
     );
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
   }
 }

@@ -73,7 +73,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
         <simple-icon-button-lite
           icon="icons:arrow-upward"
           @click="${this.backToTop}"
-          >Back to top</simple-icon-button-lite
+          ><span>Back to top</span></simple-icon-button-lite
         >
       </div>
     `;
@@ -82,16 +82,22 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
     return [
       ...super.styles,
       css`
-        :host {
-          --page-contents-menu-link-hover: var(
-            --haxcms-color,
-            var(--simple-colors-default-theme-purple-7)
-          );
+        span {
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-navigation-bold);
+        }
+        simple-icon-button-lite {
+          color: inherit;
+          display: table;
+        }
+        simple-icon-button-lite:focus,
+        simple-icon-button-lite:hover {
+          color: var(--ddd-theme-polaris-link);
         }
         .contents {
           max-height: 80vh;
-          border-bottom: 1px solid lightgray;
-          width: 250px;
+          padding: 8px;
+          border-bottom: var(--ddd-border-xs);
         }
         @media screen and (max-width: 600px) {
           .indent-1,
@@ -100,20 +106,28 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
           .indent-4,
           .indent-5,
           .indent-6 {
-            padding-left: 0;
+            padding-left: 4px;
           }
         }
         :host([hide-if-empty][is-empty]) {
           display: none !important;
         }
         :host([mobile]) .item {
-          max-width: 240px;
+          max-width: 300px;
+        }
+        :host([mobile]) {
+          --page-contents-menu-link-font-size: var(--ddd-font-size-4xs);
+          --page-contents-menu-link-font-size-active: var(--ddd-font-size-4xs);
+          --page-contents-menu-link-font-size-focus: var(--ddd-font-size-4xs);
         }
         :host([mobile]) simple-popover {
-          --simple-popover-max-height: 200px;
-          --simple-popover-max-width: 240px;
+          --simple-popover-max-height: 300px;
+          --simple-popover-max-width: 340px;
           overflow: hidden;
           top: 0px !important;
+        }
+        :host([mobile]) simple-icon-button-lite {
+          display: none;
         }
       `,
     ];

@@ -254,6 +254,7 @@ export class SiteCollectionList extends CollectionList {
       css`
         :host {
           display: block;
+          margin: var(--ddd-spacing-10) 0;
         }
       `,
     ];
