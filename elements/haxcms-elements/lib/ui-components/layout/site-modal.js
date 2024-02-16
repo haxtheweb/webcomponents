@@ -35,8 +35,8 @@ class SiteModal extends HAXCMSThemeParts(LitElement) {
           color: var(--site-modal-icon-color);
         }
         simple-modal-template {
-          --simple-modal-width: 50vw;
-          --simple-modal-height: 50vh;
+          --simple-modal-width: 60vw;
+          --simple-modal-height: 70vh;
           --simple-modal-min-width: 50vw;
           --simple-modal-min-height: 50vh;
         }

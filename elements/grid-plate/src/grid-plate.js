@@ -313,7 +313,7 @@ class GridPlate extends LitElement {
           z-index: 2;
           height: 12px;
           border: none !important;
-          transition: 0.2s all ease-in-out;
+          transition: 0.3s all ease-in-out;
         }
         :host([data-hax-ray]) .column ::slotted(*.hax-hovered)::before {
           background-color: var(--hax-body-target-background-color) !important;

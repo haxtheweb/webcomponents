@@ -66,12 +66,9 @@ export const DDDSuper = function (SuperClass) {
         ...styles,
         //styleGuideHeaders,
         css`
-          body,
-          html,
-          :root,
-          :host {
+          :root, html, body, :host {
             /* global override font styles for light-dom content */
-            --ddd-theme-body-font-size: var(--ddd-font-size-3xs);
+            --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
             --ddd-theme-h1-font-size: var(--ddd-font-size-l);
             --ddd-theme-h2-font-size: var(--ddd-font-size-m);
             --ddd-theme-h3-font-size: var(--ddd-font-size-ms);
@@ -79,19 +76,6 @@ export const DDDSuper = function (SuperClass) {
             --ddd-theme-h5-font-size: var(--ddd-font-size-xs);
             --ddd-theme-h6-font-size: var(--ddd-font-size-xxs);
 
-            --ddd-font-size-4xs: 16px;
-            --ddd-font-size-3xs: 18px; /* body default */
-            --ddd-font-size-xxs: 20px; /* h6 */
-            --ddd-font-size-xs: 22px; /* h5 */
-            --ddd-font-size-s: 24px; /* h4 */
-            --ddd-font-size-ms: 28px; /* h3 */
-            --ddd-font-size-m: 32px; /* h2 */
-            --ddd-font-size-ml: 36px;
-            --ddd-font-size-l: 40px; /* h1 */
-            --ddd-font-size-xl: 48px;
-            --ddd-font-size-xxl: 56px;
-            --ddd-font-size-3xl: 64px;
-            --ddd-font-size-4xl: 72px;
             /* base polaris colors */
             --ddd-theme-polaris-beaverBlue: #1e407c;
             --ddd-theme-polaris-beaver70: rgba(30, 64, 124, 0.7);
@@ -171,9 +155,6 @@ export const DDDSuper = function (SuperClass) {
             --ddd-theme-polaris-alertNonEmergency: #e6f7ff;
 
             --ddd-theme-polaris-background: #eff2f5;
-
-            /* simplecolors needs to be included ->  */
-
             /* 
           Come back to grid in style guide - > decide number of columns based on container breakpoints
           */
@@ -375,7 +356,22 @@ export const DDDSuper = function (SuperClass) {
             /* borrowed from base styling */
 
             scroll-behavior: smooth;
+            font-family: var(--ddd-font-primary);
+            font-size: var(--ddd-theme-body-font-size);
+            font-weight: var(--ddd-font-primary-regular);
+            letter-spacing: normal;
           }
+          /* selector ensures fonts are set appropriately in the theme element */
+          .haxcms-theme-element p,
+          .haxcms-theme-element ul,
+          .haxcms-theme-element ol {
+            line-height: var(--ddd-lh-150);
+            font-size: var(--ddd-theme-body-font-size);
+            font-family: var(--ddd-font-primary);
+            letter-spacing: normal;
+            text-align: justify;
+          }
+
           /* helper class for accessibility of screen reader only content */
           .sr-only {
             position: absolute;
@@ -399,10 +395,10 @@ export const DDDSuper = function (SuperClass) {
             border: var(--ddd-border-sm);
           }
           .b-md {
-            border: ;
+            border: var(--ddd-border-md);
           }
           .b-lg {
-            border: ;
+            border: var(--ddd-border-lg);
           }
           .bt-0 {
             border-top: none;
@@ -2067,16 +2063,7 @@ export const DDDSuper = function (SuperClass) {
               --ddd-font-primary-black
             ); /* available for headers */
           }
-          /** least specific so that it's applied as the default to top of document */
-          :root {
-            font-family: var(--ddd-font-primary);
-            font-size: var(
-              --ddd-theme-body-font-size,
-              var(--ddd-theme-haxcms-font-size)
-            );
-            font-weight: var(--ddd-font-primary-regular);
-            letter-spacing: normal;
-          }
+
           h1 {
             margin: var(--ddd-spacing-12) 0 var(--ddd-spacing-8);
             line-height: auto;
@@ -2128,8 +2115,7 @@ export const DDDSuper = function (SuperClass) {
             font-size: var(--ddd-theme-h6-font-size);
           }
           p {
-            line-height: var(--ddd-lh-140);
-            margin: var(--ddd-spacing-4) 0;
+            margin: var(--ddd-spacing-6) 0;
           }
 
           /* heading presets */
@@ -2204,15 +2190,12 @@ export const DDDSuper = function (SuperClass) {
           }
           ul,
           ol {
-            font-size: var(
-              --ddd-theme-body-font-size,
-              var(--ddd-theme-haxcms-font-size)
-            );
+            font-size: var(--ddd-theme-body-font-size);
             display: flex;
             flex-flow: column;
-            gap: 1rem;
+            gap: var(--ddd-spacing-3);
             font-family: var(--ddd-font-primary);
-            margin: .5em 0;
+            margin: .var(--ddd-spacing-6) 0;
           }
           ul.link-list{
             list-style: none;
@@ -2228,10 +2211,7 @@ export const DDDSuper = function (SuperClass) {
           }
           ul li,
           ol li {
-            font-size: var(
-              --ddd-theme-body-font-size,
-              var(--ddd-theme-haxcms-font-size)
-            );
+            font-size: var(--ddd-theme-body-font-size);
           }
           ul li::marker,
           ol li::marker {
@@ -2250,10 +2230,7 @@ export const DDDSuper = function (SuperClass) {
           }
           blockquote {
             font-family: var(--ddd-font-primary);
-            font-size: var(
-              --ddd-theme-body-font-size,
-              var(--ddd-theme-haxcms-font-size)
-            );
+            font-size: var(--ddd-theme-body-font-size);
             font-style: italic;
             border-left: var(--ddd-spacing-1) solid
               var(--ddd-theme-polaris-pughBlue);
@@ -2355,20 +2332,17 @@ export const DDDSuper = function (SuperClass) {
           }
           details[open] > summary::after {
             content: "--";
-            wrap: nowrap;
+            text-wrap: nowrap;
             font-size: var(--ddd-font-size-m);
             letter-spacing: -1.8px;
             padding-right: 2px;
           }
           code {
-            transition: all 0.2s ease 0s;
+            transition: all 0.3s ease 0s;
             display: inline-block;
-            padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+            padding: 2px var(--ddd-spacing-1); /* breaking DDD spacing sys on purpose for code */
             margin: 0 var(--ddd-spacing-1);
-            font-size: var(
-              --ddd-theme-body-font-size,
-              var(--ddd-theme-haxcms-font-size)
-            );
+            font-size: calc(var(--ddd-theme-body-font-size) - var(--ddd-spacing-1));
             background-color: var(
               --ddd-theme-polaris-limestoneLight,
               var(
@@ -2376,15 +2350,14 @@ export const DDDSuper = function (SuperClass) {
                 rgba(175, 184, 193, 0.2)
               )
             );
+            line-height: 1;
             border-radius: var(--ddd-radius-xs);
-            border: var(--ddd-border-lg);
+            border: var(--ddd-border-md);
             border-style: groove;
             border-color: var(--ddd-theme-polaris-limestoneMaxLight);
-            font-family: var(--ddd-font-primary);
+            font-family: monospace;
             letter-spacing: var(--ddd-ls-16-lg);
-            cursor: grab;
             pointer-events: auto;
-            position: relative;
           }
           code.block-code {
             padding: var(--ddd-spacing-2);
@@ -2392,45 +2365,16 @@ export const DDDSuper = function (SuperClass) {
           }
           code::-moz-selection {
             /* Code for Firefox */
-            background: transparent;
+            background: var(--ddd-theme-polaris-keystoneYellow);
           }
           code::selection {
-            background: transparent;
-          }
-          code:focus::after,
-          code:active::after,
-          code:hover::after {
-            content: attr(popupText);
-            position: absolute;
-            white-space: nowrap;
-            font-style: normal;
-            position: absolute;
-            bottom: 100%;
-            left: 0;
-            width: fit-content;
-            height: fit-content;
-            padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-            color: var(
-              --ddd-theme-font-color,
-              var(--ddd-theme-polaris-white, #fff)
-            );
-            background-color: var(
-              --ddd-theme-accent-color,
-              var(--ddd-theme-polaris-info, , rgba(175, 184, 193, 0.2))
-            );
-            font-size: var(
-              --ddd-theme-body-font-size,
-              var(--ddd-theme-haxcms-font-size)
-            );
-            font-weight: var(--ddd-font-primary-regular);
-            border-radius: var(--ddd-radius-xs);
+            background: var(--ddd-theme-polaris-keystoneYellow);
           }
 
           pre {
             display: inline-block;
             padding: var(--ddd-spacing-4);
             overflow: auto;
-            line-height: var(--ddd-lh-140);
             background-color: var(
               --ddd-theme-polaris-limestoneMaxLight,
               var(
@@ -2442,10 +2386,7 @@ export const DDDSuper = function (SuperClass) {
             margin: var(--ddd-spacing-1) 0;
             word-break: normal;
             word-wrap: normal;
-            font-size: var(
-              --ddd-theme-body-font-size,
-              var(--ddd-theme-haxcms-font-size)
-            );
+            font-size: var(--ddd-theme-body-font-size);
           }
           mark {
             font-weight: var(--ddd-font-primary-medium);
@@ -2497,12 +2438,9 @@ export const DDDSuper = function (SuperClass) {
             );
             background-color: var(
               --ddd-theme-accent-color,
-              var(--ddd-theme-polaris-info, , rgba(175, 184, 193, 0.2))
+              var(--ddd-theme-polaris-info, rgba(175, 184, 193, 0.2))
             );
-            font-size: var(
-              --ddd-theme-body-font-size,
-              var(--ddd-theme-haxcms-font-size)
-            );
+            font-size: var(--ddd-theme-body-font-size);
             font-weight: var(--ddd-font-primary-regular);
             border-radius: var(--ddd-radius-xs);
           }
@@ -2785,7 +2723,7 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
   if (globalThis.DDDSharedStyles.instance == null && globalThis.document) {
     // convert css into text content of arrays mashed together
     // this way we can inject it into a global style sheet
-    let globalStyles = DDD.styles.map((st) => st.cssText).join("");
+    let globalStyles = DDD.styles.map((st) => st.cssText ? st.cssText : '').join("");
     globalThis.DDDSharedStyles.instance =
       globalThis.document.createElement("style");
     // marker for debugging to make it easier to find
@@ -2794,8 +2732,8 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
       "global-styles",
     );
     globalThis.DDDSharedStyles.instance.innerHTML = `${globalStyles}`;
-    globalThis.document.head.appendChild(globalThis.DDDSharedStyles.instance);
-  }
+    globalThis.document.body.appendChild(globalThis.DDDSharedStyles.instance);
+}
   return globalThis.DDDSharedStyles.instance;
 };
 // self-appending on call

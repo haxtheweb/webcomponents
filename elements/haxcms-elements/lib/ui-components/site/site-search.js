@@ -12,6 +12,7 @@ import {
   HAXcmsStore,
 } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
 import "@lrnwebcomponents/lunr-search/lunr-search.js";
 import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
@@ -21,42 +22,45 @@ import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
  *
  * @demo demo/index.html
  */
-class SiteSearch extends HAXCMSI18NMixin(LitElement) {
+class SiteSearch extends HAXCMSI18NMixin(DDD) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
-          font-size: 16px;
           color: var(--site-search-color, #383f45);
         }
         [hidden] {
           display: none;
         }
-        .result {
+        a.result {
           display: block;
-          background-color: var(--site-search-result-background-color, #eeeeee);
+          background-color: var(--site-search-result-background-color, var(--ddd-theme-polaris-limestoneLight, #ddd));
           color: var(--site-search-result-color, #222222);
-          padding: 12px;
-          margin: 4px 0;
+          padding: var(--ddd-spacing-2);
+          margin: var(--ddd-spacing-2) 0;
+          font-weight: var(--ddd-font-primary-regular);
+          transition: background-color .3s ease-in-out;
         }
+
         .result:hover,
         .result:focus {
           background-color: var(
             --site-search-result-background-color-hover,
-            #dddddd
+            var(--ddd-theme-polaris-infoLight)
           );
-          color: var(--site-search-link-color-hover, #000000);
+          color: var(--site-search-link-color-hover, var(--ddd-theme-polaris-info, #000));
           text-decoration: none;
-          outline: 4px solid grey;
+          outline: 3px solid var(--ddd-theme-polaris-info);
         }
         .result .title {
-          font-size: 28px;
-          margin: 0 0 8px 0;
-          line-height: 1;
+          font-size: var(--ddd-font-size-xs);
+          margin: 0 0 var(--ddd-spacing-4) 0;
+          font-weight: var(--ddd-font-primary-medium);
         }
         .result {
           color: var(--site-search-link-color, #444444);
@@ -77,14 +81,17 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
           padding-left: 8px;
         }
         .results-found-text {
+          font-family: var(--ddd-font-secondary);
           margin-bottom: 1.5rem;
           padding-bottom: 0.5rem;
         }
         #search {
           flex-grow: 2;
           margin-right: 4px;
-          --simple-fields-accent-color: var(--site-search-text-color, #000);
-          color: var(--site-search-placeholder-color, #222);
+          margin-bottom: 0;
+          font-size: var(--ddd-font-size-xs);
+          --simple-fields-accent-color: var(--site-search-text-color, var(--ddd-theme-polaris-info, black));
+          color: var(--site-search-text-color, var(--ddd-theme-polaris-info, black));
         }
         .page-title-icon {
           --simple-icon-height: 32px;

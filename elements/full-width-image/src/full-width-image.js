@@ -42,11 +42,7 @@ class FullWidthImage extends LitElement {
           background-color: rgba(0, 0, 0, 0.6);
           padding: 100px;
           height: 100px;
-          transition: 0.5s all ease-in-out;
-          -webkit-transition: 0.5s all ease-in-out;
-          -moz-transition: 0.5s all ease-in-out;
-          -ms-transition: 0.5s all ease-in-out;
-          -o-transition: 0.5s all ease-in-out;
+          transition: 0.3s all ease-in-out;
         }
 
         .wrapper:hover {

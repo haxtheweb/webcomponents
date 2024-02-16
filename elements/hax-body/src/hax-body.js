@@ -356,7 +356,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]) {
           opacity: 0.5;
-          transition: 0.2s all ease-in-out;
+          transition: 0.3s all ease-in-out;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]:hover) {
           opacity: 0.9;
@@ -455,7 +455,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           margin: -12px 0 0 0;
           z-index: 2;
           height: 12px;
-          transition: 0.2s all ease-in-out;
+          transition: 0.3s all ease-in-out;
         }
         :host([edit-mode][hax-mover]) #bodycontainer ::slotted(img) {
           outline: var(--hax-body-editable-outline);

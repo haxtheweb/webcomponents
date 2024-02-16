@@ -56,8 +56,7 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
         .table tbody tr {
           position: relative;
           height: 48px;
-          -webkit-transition-duration: 0.28s;
-          transition-duration: 0.28s;
+          transition-duration: 0.3s;
           -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           -webkit-transition-property: background-color;

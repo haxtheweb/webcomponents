@@ -192,7 +192,7 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
            color: #364149;
            background: #fafafa;
            border-right: 1px solid rgba(0,0,0,.07);
-           transition: left 250ms ease;
+           transition: left .3s ease;
          }
          /* content */
          .main-section h1 {
@@ -250,7 +250,7 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
            bottom: 0;
            min-width: 400px;
            overflow-y: auto;
-           transition: left 250ms ease;
+           transition: left .3s ease;
          }
 
         :host([responsive-size="xs"]) .page-inner,

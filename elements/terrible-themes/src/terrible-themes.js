@@ -119,20 +119,18 @@ class TerribleThemes extends HAXCMSRememberRoute(
           position: relative;
           align-self: stretch;
           box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
-          transition: border 250ms ease;
+          transition: border .3s ease;
           align-items: center;
           justify-self: stretch;
           text-overflow: ellipsis;
           border-radius: 3px;
           flex-direction: row;
-          -moz-transition: border 250ms ease;
           text-decoration: none;
           background-color: #FFFFFF;
           -webkit-box-align: center;
           page-break-inside: avoid;
           -ms-grid-row-align: stretch;
           -webkit-box-orient: horizontal;
-          -webkit-transition: border 250ms ease;
           -ms-grid-column-align: stretch;
           -webkit-box-direction: normal;
         }

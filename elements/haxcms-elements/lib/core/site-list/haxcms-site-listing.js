@@ -301,7 +301,7 @@ class HAXCMSSiteListing extends PolymerElement {
         #add {
           background-color: var(--haxcms-site-listing-color-hover);
           color: var(--haxcms-site-listing-color-light);
-          transition: 0.2s all linear;
+          transition: 0.3s all linear;
         }
         #add:hover,
         #add:active,

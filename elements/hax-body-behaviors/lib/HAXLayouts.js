@@ -62,7 +62,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             ::slotted([contenteditable][data-hax-ray]:empty)::before {
             content: attr(data-hax-ray);
             opacity: 0.2;
-            transition: 0.2s all ease-in-out;
+            transition: 0.3s all ease-in-out;
           }
           :host([data-hax-ray]) ::slotted(*:hover) {
             outline: var(--hax-layout-slotted-hover-outline-width, 0px)

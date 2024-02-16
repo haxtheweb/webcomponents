@@ -1376,13 +1376,12 @@ class DDDocs extends DDD {
         </details>
         <p>
           This is an example of code:<code
-            popupText="Click to copy to clipboard"
             >Console.log("Hello World!");</code
           >
           in a paragraph
         </p>
         <textarea></textarea>
-        <code class="block-code" popupText="Click to copy to clipboard">
+        <code class="block-code">
           Here is an example of a block of code on it's own, using class
           'block-code', redundant, but avoids common 'block' class name
         </code>

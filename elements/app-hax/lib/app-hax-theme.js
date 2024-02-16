@@ -133,7 +133,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
            color: #364149;
            background-color: #ffffffEE;
            border-right: 1px solid rgba(0,0,0,.07);
-           transition: left 250ms ease;
+           transition: left .3s ease;
          }
          :host([dark]) .menu-outline {
            color: white;
@@ -188,7 +188,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
            bottom: 0;
            min-width: 400px;
            overflow-y: auto;
-           transition: left 250ms ease;
+           transition: left .3s ease;
          }
 
         :host([responsive-size="xs"]) .page-inner,
