@@ -93,7 +93,6 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
         .contents {
           max-height: 80vh;
           border-bottom: var(--ddd-border-xs);
-          width: 200px;
         }
         @media screen and (max-width: 600px) {
           .indent-1,
@@ -109,13 +108,21 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
           display: none !important;
         }
         :host([mobile]) .item {
-          max-width: 200px;
+          max-width: 300px;
+        }
+        :host([mobile]) {
+          --page-contents-menu-link-font-size: var(--ddd-font-size-4xs);
+          --page-contents-menu-link-font-size-active: var(--ddd-font-size-4xs);
+          --page-contents-menu-link-font-size-focus: var(--ddd-font-size-4xs);
         }
         :host([mobile]) simple-popover {
-          --simple-popover-max-height: 200px;
-          --simple-popover-max-width: 240px;
+          --simple-popover-max-height: 300px;
+          --simple-popover-max-width: 340px;
           overflow: hidden;
           top: 0px !important;
+        }
+        :host([mobile]) simple-icon-button-lite {
+          display: none;
         }
       `,
     ];

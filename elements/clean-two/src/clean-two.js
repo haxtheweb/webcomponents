@@ -213,8 +213,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           height: 100vh;
           position: absolute;
           font-size: 16px;
-          color: #3b454e;
-          background-color: #ffffff;
           width: 100%;
           margin: 0 auto;
           display: flex;
@@ -318,7 +316,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           max-width: 800px;
           padding: 0 32px;
         }
-        :host([responsive-size="xl"]) main,
+        :host([responsive-size="xl"]) main {
+          max-width: 900px;
+          padding: 0 6vw;
+        }
         :host([responsive-size="lg"]) main {
           width: 800px;
         }
@@ -358,15 +359,14 @@ class CleanTwo extends HAXCMSOperationButtons(
           display: inline-flex;
           float: right;
           color: black;
-          font-size: 1.5em;
           margin-right: -52px;
         }
         .header site-menu-content[mobile] {
           position: fixed;
           right: 16px;
           top: 64px;
-          width: 24px;
-          height: 24px;
+          width: 32px;
+          height: 32px;
           margin-right: 0px;
           display: block;
           background-color: var(--hax-ui-background-color, #ffffff);
