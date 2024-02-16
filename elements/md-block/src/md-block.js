@@ -60,7 +60,6 @@ class MdBlock extends LitElement {
         a,
         a:-webkit-any-link {
           color: var(--hax-base-styles-a-color);
-          font-size: var(--hax-base-styles-a-font-size);
           font-weight: var(--hax-base-styles-a-font-weight);
         }
 

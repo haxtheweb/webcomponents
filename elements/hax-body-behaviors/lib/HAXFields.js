@@ -124,6 +124,12 @@ export const HaxSchematizer = {
         format: "select",
       },
     },
+    radio: {
+      defaultSettings: {
+        type: "string",
+        format: "radio",
+      },
+    },
     slider: {
       defaultSettings: {
         type: "number",

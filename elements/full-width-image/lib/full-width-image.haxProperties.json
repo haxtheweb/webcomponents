@@ -3,7 +3,7 @@
   "canPosition": false,
   "canEditSource": true,
   "gizmo": {
-    "title": "Section break",
+    "title": "Image section",
     "description": "Full width image to break up a section of the page",
     "icon": "image:image",
     "color": "green",

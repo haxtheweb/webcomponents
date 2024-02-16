@@ -39,7 +39,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             position: relative;
           }
           #options {
-            display: var(--simple-fields-radio-option-display, flex);
+            display: var(--simple-fields-radio-option-display, block);
             flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
           }
           fieldset.block-options #options {
@@ -52,6 +52,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             align-items: stretch;
             justify-content: space-between;
             margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+            width: 100%;
           }
           fieldset.block-options .option {
             flex-direction: row-reverse;
@@ -125,7 +126,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           :host([type="checkbox"]) span,
           :host([type="radio"]) span {
             position: relative;
-            flex: 1 0 auto;
+            flex: 0 0 auto;
             display: flex;
             align-items: center;
           }
@@ -639,7 +640,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           <div id="options" part="fieldset-options">
             ${(this.sortedOptions || []).map(
               (option) => html`
-                <div class="option" part="option">
+                <div class="option" part="option" @click="${(e) => {
+                    // @note this can cause issues in listening up above..
+                    if (e.target.tagName === "DIV") {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      this._handleIconClick(this.getChecked(option), option);
+                    }
+                  }}">
                   <label
                     for="${this.id}.${option.value}"
                     class="radio-label"
@@ -680,17 +688,19 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         ? "icons:radio-button-checked"
         : "icons:radio-button-unchecked";
     }
+    getChecked(option) {
+      return this.type !== "radio" && this.type !== "checkbox"
+      ? false
+      : !option
+      ? !!this.value
+      : this.type === "radio"
+      ? this.value === (option || {}).value
+      : (this.value || []).includes &&
+        (this.value || []).includes((option || {}).value);
+    }
     getInput(option) {
-      let checked =
-          this.type !== "radio" && this.type !== "checkbox"
-            ? false
-            : !option
-            ? !!this.value
-            : this.type === "radio"
-            ? this.value === (option || {}).value
-            : (this.value || []).includes &&
-              (this.value || []).includes((option || {}).value),
-        icon = this.getOptionIcon(checked);
+      let checked = this.getChecked(option);
+      let icon = this.getOptionIcon(checked);
       return html`
         <span class="input-option" part="option-inner">
           <input

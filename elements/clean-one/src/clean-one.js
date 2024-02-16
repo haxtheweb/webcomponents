@@ -64,30 +64,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
-          font-size: 18px;
-          font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-          letter-spacing: normal;
-          line-height: 28.8px;
-          --haxcms-base-styles-body-font-size:18px;
-          --hax-base-styles-a-font-size: 18px;
-          --hax-base-styles-p-font-size: 18px;
-          --hax-base-styles-list-font-size: 18px;
-          --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-          --haxcms-base-styles-body-line-height: 28.8px;
-          --hax-base-styles-list-line-height: 28.8px
-          --hax-base-styles-p-line-height: 28.8px;
-          --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing : normal;
-           --hax-base-styles-p-min-height: auto;
-           --hax-base-styles-list-max-width: auto;
-           --haxcms-base-styles-p-min-height: auto;
-           --hax-base-styles-list-padding-bottom: auto;
-           --hax-base-styles-h1-font-size: inherit;
-           --hax-base-styles-h2-font-size: inherit;
-           --hax-base-styles-h3-font-size: inherit;
-           --hax-base-styles-h4-font-size: inherit;
-           --hax-base-styles-h5-font-size: inherit;
-           --hax-base-styles-h6-font-size: inherit;
            --simple-tooltip-background: #000000;
            --simple-tooltip-opacity: 1;
            --simple-tooltip-text-color: #ffffff;
@@ -206,7 +182,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
            left: 0;
          }
          .menu-outline {
-           font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
            position: absolute;
            top: 0;
            left: -300px;

@@ -1,17 +1,23 @@
 {
   "api": "1",
-  "canScale": true,
-  "canPosition": true,
+  "canScale": false,
+  "canPosition": false,
   "canEditSource": true,
-  "contentEditable": true,
+  "contentEditable": false,
   "hideDefaultSettings": true,
   "type": "grid",
   "gizmo": {
     "title": "Page section",
-    "description": "",
+    "description": "A section of content to a website. Useful for designing in screens of material",
     "icon": "av:call-to-action",
     "color": "purple",
-    "tags": ["Layout", "page", "section", "container", "cta"],
+    "tags": [
+      "Layout",
+      "page",
+      "section",
+      "container",
+      "cta"
+    ],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -24,26 +30,20 @@
         "inputMethod": "radio",
         "title": "Preset",
         "description": "Well designed preset which toggles other settings",
-        "listItems": [
-          {
-            "label": "Custom",
-            "value": "custom"
-          },
-          {
-            "label": "Antihero",
-            "value": "non-homepage-antihero"
-          },
-          {
-            "label": "Anti-hero light",
-            "value": "non-homepage-antihero-light-blue"
-          }
-        ]
+        "options": {
+          "custom": "Custom",
+          "antihero": "Anti-hero",
+          "antihero-light": "Anti-hero: Light",
+          "video": "Video"
+        }
       },
       {
         "property": "image",
         "inputMethod": "haxupload",
         "title": "Image",
-        "description": "Background media of the section"
+        "description": "Background media of the section",
+        "noVoiceRecord": true,
+        "noCamera": true
       },
       {
         "property": "bg",
@@ -76,6 +76,24 @@
         "inputMethod": "boolean",
         "title": "Apply Filter",
         "description": "Apply visual filter to background / image"
+      },
+      {
+        "slot": "",
+        "inputMethod": "textfield",
+        "description": "Content for the section",
+        "title": "Content"
+      },
+      {
+        "slot": "entice",
+        "title": "Entice",
+        "description": "Optional enticement section",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "buttons",
+        "title": "Buttons",
+        "description": "Buttons grouping below text",
+        "inputMethod": "textfield"
       }
     ],
     "developer": [
@@ -88,7 +106,9 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["colors"]
+    "unsetAttributes": [
+      "colors"
+    ]
   },
   "documentation": {
     "howTo": null,
@@ -99,9 +119,9 @@
       "tag": "page-section",
       "content": "<h2>Sharp looking section</h2><hr/><p>This is some sharp looking, well presented content</p><simple-cta hotline filled outlined slot=\"buttons\">Really sharp</simple-cta>",
       "properties": {
-        "preset": "non-homepage-antihero",
+        "preset": "antihero",
         "filter": true,
-        "bg": "blue",
+        "bg": "light-blue",
         "full": true,
         "fold": true,
         "scroller": true

@@ -398,6 +398,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         h5[data-instructional-action],
         h6[data-instructional-action] {
           padding-left: 72px;
+          line-height: 50px;
+          min-height: 64px;
         }
         h1[data-instructional-action]::before,
         h2[data-instructional-action]::before,
@@ -411,13 +413,15 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           background-position: center;
           content: "";
           display: block;
-          position: absolute;
+          position: relative;
           z-index: 1;
           border: var(--hax-action-border, 3px solid black);
           border-radius: 50%;
           left: 0px;
-          margin: 4px;
+          top: 4px;
+          margin:0 0 -50px -64px;
         }
+        
         h1[data-instructional-action]::after,
         h2[data-instructional-action]::after,
         h3[data-instructional-action]::after,
@@ -432,10 +436,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           mask-size: contain;
           -webkit-mask-repeat: no-repeat;
           -webkit-mask-size: contain;
-          padding: 22px;
-          margin: 10px;
-          position: absolute;
-          left: 0px;
+          padding: 18px;
+          margin: 0 0px 0px -40px;
+          position: relative;
+          left: -14px;
+          float: left;
+          top: 8px;
         }
         [data-instructional-action][data-id-emphasize] {
           background-color: var(--hax-action-color) !important;
