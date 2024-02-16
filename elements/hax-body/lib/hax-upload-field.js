@@ -82,7 +82,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           targets,
           type,
           `${this.t.whereUpload} ${type}?`,
-          "app"
+          "app",
         );
       } else {
         HAXStore.toast(`${this.t.cantHandle} ${type} ${this.t.uploads}!`, 5000);
@@ -195,7 +195,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       type = "video";
     } else if (HAXStore.haxTray.activeHaxElement) {
       let tmp = HAXStore.guessGizmoType(
-        HAXStore.haxTray.activeHaxElement.properties
+        HAXStore.haxTray.activeHaxElement.properties,
       );
       if (tmp != "*") {
         type = tmp;

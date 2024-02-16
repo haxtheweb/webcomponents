@@ -394,7 +394,7 @@ class GridPlate extends LitElement {
             >
               <slot name="col-${num}"></slot>
             </div>
-          `
+          `,
         )}
       </div>
     `;
@@ -439,13 +439,13 @@ class GridPlate extends LitElement {
           lg: this.breakpointLg,
           xl: this.breakpointXl,
         },
-      })
+      }),
     );
     this.__columnWidths = this._getColumnWidths(
       this.responsiveSize,
       this.layout,
       this.layouts,
-      this.disableResponsive
+      this.disableResponsive,
     );
   }
   /**
@@ -667,7 +667,7 @@ class GridPlate extends LitElement {
             this.responsiveSize,
             this.layout,
             this.layouts,
-            this.disableResponsive
+            this.disableResponsive,
           );
         }, 0);
       }
@@ -676,7 +676,7 @@ class GridPlate extends LitElement {
           if (this[propName]) {
             this.style.setProperty(
               "--grid-plate-item-margin",
-              this[propName] + "px"
+              this[propName] + "px",
             );
           } else {
             this.style.removeProperty("--grid-plate-item-margin");
@@ -686,7 +686,7 @@ class GridPlate extends LitElement {
           if (this[propName]) {
             this.style.setProperty(
               "--grid-plate-item-padding",
-              this[propName] + "px"
+              this[propName] + "px",
             );
           } else {
             this.style.removeProperty("--grid-plate-item-padding");
@@ -703,7 +703,7 @@ class GridPlate extends LitElement {
           this.dispatchEvent(
             new CustomEvent("disable-responsive-changed", {
               detail: this[propName],
-            })
+            }),
           );
           break;
       }
@@ -725,7 +725,7 @@ class GridPlate extends LitElement {
     responsiveSize = "sm",
     layout = "1-1",
     layouts,
-    disableResponsive
+    disableResponsive,
   ) {
     if (layouts) {
       let newl = layouts[layout],

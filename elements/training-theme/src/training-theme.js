@@ -33,11 +33,11 @@ class TrainingTheme extends HAXCMSOperationButtons(
     PDFPageMixin(
       PrintBranchMixin(
         QRCodeMixin(
-          HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
-        )
-      )
-    )
-  )
+          HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)),
+        ),
+      ),
+    ),
+  ),
 ) {
   constructor() {
     super();
@@ -138,7 +138,10 @@ class TrainingTheme extends HAXCMSOperationButtons(
 
         site-menu-button[type="prev"] {
           border-radius: 4px;
-          font-family: Google Sans, Arial, sans-serif;
+          font-family:
+            Google Sans,
+            Arial,
+            sans-serif;
           font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.6px;
@@ -150,12 +153,17 @@ class TrainingTheme extends HAXCMSOperationButtons(
           pointer-events: auto;
           text-transform: none;
           border: 0;
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+          box-shadow:
+            0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12),
+            0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
         site-menu-button[type="next"] {
           border-radius: 4px;
-          font-family: Google Sans, Arial, sans-serif;
+          font-family:
+            Google Sans,
+            Arial,
+            sans-serif;
           font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.6px;
@@ -167,8 +175,10 @@ class TrainingTheme extends HAXCMSOperationButtons(
           pointer-events: auto;
           text-transform: none;
           border: 0;
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+          box-shadow:
+            0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12),
+            0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
         .link-actions {
           margin: 0;
@@ -209,7 +219,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
           position: relative;
           align-self: stretch;
           box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
-          transition: border .3s ease;
+          transition: border 0.3s ease;
           align-items: center;
           justify-self: stretch;
           text-overflow: ellipsis;
@@ -313,7 +323,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
                   ?active="${item.id === this.activeId}"
                 >
                 </training-button>
-              `
+              `,
             )}
           </div>
         </div>

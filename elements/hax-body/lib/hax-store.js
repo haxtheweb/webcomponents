@@ -269,7 +269,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     values,
     context,
     failOnAnything = false,
-    linkOnMultiple = false
+    linkOnMultiple = false,
   ) {
     // we have no clue what this is.. let's try and guess..
     let type =
@@ -311,7 +311,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               cancelable: true,
               composed: true,
               detail: haxElements[0],
-            })
+            }),
           );
         } else if (linkOnMultiple) {
           context.dispatchEvent(
@@ -322,7 +322,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               detail: haxElements.find((item) => {
                 return item.tag == "a";
               }),
-            })
+            }),
           );
         }
       } else {
@@ -332,13 +332,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           haxElements,
           type,
           "Pick how to present this " + typeName,
-          "gizmo"
+          "gizmo",
         );
       }
       return true;
     } else {
       this.toast(
-        "Sorry, HAX doesn't know how to handle that type of link yet."
+        "Sorry, HAX doesn't know how to handle that type of link yet.",
       );
       return false;
     }
@@ -354,7 +354,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           bubbles: true,
           cancelable: false,
           detail: { property: prop, value: value, owner: obj },
-        })
+        }),
       );
     }
   }
@@ -476,7 +476,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     classStyle = "capsule",
     closeText = this.t.close,
     eventCallback = null,
-    slot = null
+    slot = null,
   ) {
     // gets it all the way to the top immediately
     globalThis.dispatchEvent(
@@ -493,7 +493,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           slot: slot,
           ...extras,
         },
-      })
+      }),
     );
   }
   /**
@@ -896,7 +896,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // force this to be an object
         appDataResponse.autoloader = Object.assign(
           {},
-          appDataResponse.autoloader
+          appDataResponse.autoloader,
         );
         for (let i in appDataResponse.autoloader) {
           let CEname = i;
@@ -914,7 +914,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             if (CEimport.haxProperties) {
               this.setHaxProperties(
                 appDataResponse.autoloader[i].haxProperties,
-                CEname
+                CEname,
               );
             }
             CEimport = appDataResponse.autoloader[i].import;
@@ -949,7 +949,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           cancelable: true,
           composed: true,
           detail: true,
-        })
+        }),
       );
       // now process the dynamic imports
       await this._handleDynamicImports(items, this.haxAutoloader);
@@ -974,7 +974,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         if (globalThis.customElements.get(i).haxProperties) {
           this.setHaxProperties(
             globalThis.customElements.get(i).haxProperties,
-            i
+            i,
           );
         } else {
           // edge case of no definition
@@ -999,7 +999,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             ) {
               this.setHaxProperties(
                 globalThis.customElements.get(i).haxProperties,
-                i
+                i,
               );
             } else {
               // edge case of no definition
@@ -1126,12 +1126,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               }
               setTimeout(() => {
                 if (key === "background-color") {
-                  this.activeNode.style[
-                    key
-                  ] = `var(--simple-colors-default-theme-${detail.value[key]}-1)`;
-                  this.activeNode.style[
-                    "color"
-                  ] = `var(--simple-colors-default-theme-${detail.value[key]}-12)`;
+                  this.activeNode.style[key] =
+                    `var(--simple-colors-default-theme-${detail.value[key]}-1)`;
+                  this.activeNode.style["color"] =
+                    `var(--simple-colors-default-theme-${detail.value[key]}-12)`;
                 } else if (key === "text-align") {
                   this.activeNode.style[key] = detail.value[key];
                 } else if (key === "font-size") {
@@ -1206,7 +1204,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             this.haxAutoloader,
             this.activeHaxBody,
             this.haxTray,
-            this.haxCancel
+            this.haxCancel,
           );
         }, 0);
       }
@@ -1298,7 +1296,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         this.write(
           "globalPreferences",
           this.storageData.globalPreferences,
-          this
+          this,
         );
       }
     }, 0);
@@ -1312,7 +1310,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           cancelable: false,
           composed: true,
           detail: true,
-        })
+        }),
       );
       // normalize the rich teext editor prompts w/ the rest of HAX
       let rtep = globalThis.RichTextEditorPrompt.requestAvailability();
@@ -1328,12 +1326,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         haxCancel.shadowRoot
           .querySelector("#dialog")
           .associateEvents(
-            haxTray.shadowRoot.querySelector("#haxcancelbutton")
+            haxTray.shadowRoot.querySelector("#haxcancelbutton"),
           );
         if (!!haxCancel.shadowRoot.querySelector("#dialog")) {
           globalThis.addEventListener(
             "simple-modal-confirmed",
-            this._handleConfirmCancel.bind(this)
+            this._handleConfirmCancel.bind(this),
           );
         }
       }
@@ -1354,7 +1352,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           composed: true,
           cancelable: false,
           detail: e.detail,
-        })
+        }),
       );
     }
   }
@@ -1435,7 +1433,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // intercept paste event
       if (e.clipboardData || e.originalEvent.clipboardData) {
         pasteContent = (e.originalEvent || e).clipboardData.getData(
-          "text/html"
+          "text/html",
         );
         // if it is purely plain text it could fail to come across as HTML and be empty
         if (pasteContent == "") {
@@ -1450,7 +1448,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       //remove styling
       pasteContent = pasteContent.replace(
         /(?:style="(\S+:\s*[^;"]+;\s*)*)+"/g,
-        ""
+        "",
       );
       // clean up div tags that can come in from contenteditable pastes
       // p tags make more sense in the content area
@@ -1474,7 +1472,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             img.src = URLObj.createObjectURL(imageBlob);
             this.activeNode.parentNode.insertBefore(
               img,
-              this.activeNode.nextElementSibling
+              this.activeNode.nextElementSibling,
             );
             for (let i in e.clipboardData.items) {
               // generate a file name if one doesn't exist
@@ -1501,7 +1499,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                 cancelable: true,
                 composed: true,
                 detail: e,
-              })
+              }),
             );
             return img;
           }
@@ -1538,7 +1536,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             cancelable: true,
             composed: true,
             detail: e,
-          })
+          }),
         );
       }
       // detect word garbage
@@ -1566,7 +1564,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           function (placeholder, part) {
             let s = part.split('"');
             return `<place-holder type=\"image\" text=\"file:${s[0]}"></place-holder>`;
-          }
+          },
         );
         // edges that some things preserve empty white space needlessly
         haxElements = await this.htmlToHaxElements(pasteContent);
@@ -1762,18 +1760,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                 if (_enterSplit) {
                   this.activeHaxBody.haxReplaceNode(
                     siblingEl.previousElementSibling,
-                    activeEl
+                    activeEl,
                   );
                   _enterSplit = false;
                 } else if (siblingEl.parentNode) {
                   siblingEl.parentNode.insertBefore(
                     activeEl,
-                    siblingEl.nextElementSibling
+                    siblingEl.nextElementSibling,
                   );
                 } else {
                   siblingEl.insertBefore(
                     activeEl,
-                    siblingEl.nextElementSibling
+                    siblingEl.nextElementSibling,
                   );
                 }
               }
@@ -1782,7 +1780,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                 if (this.activeNode.getAttribute("slot")) {
                   activeEl.setAttribute(
                     "slot",
-                    this.activeNode.getAttribute("slot")
+                    this.activeNode.getAttribute("slot"),
                   );
                 }
                 // if we have an empty element we are hitting paste on
@@ -1792,7 +1790,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                 } else {
                   this.activeNode.parentNode.insertBefore(
                     activeEl,
-                    this.activeNode.nextElementSibling
+                    this.activeNode.nextElementSibling,
                   );
                 }
               }
@@ -1806,7 +1804,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               if (activeEl && activeEl.childNodes && activeEl.childNodes[0]) {
                 this._positionCursorInNode(
                   activeEl.childNodes[0],
-                  activeEl.childNodes[0].length
+                  activeEl.childNodes[0].length,
                 );
                 activeEl = null;
                 siblingEl = null;
@@ -1981,9 +1979,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       path: "/HAX/text/emoji/" + txt.value,
                     });
                   }
-                }
+                },
               );
-            }
+            },
           );
           return results;
         },
@@ -2024,9 +2022,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       path: "/HAX/text/symbol/" + txt.value,
                     });
                   }
-                }
+                },
               );
-            }
+            },
           );
           return results;
         },
@@ -2288,7 +2286,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         UserScaffoldInstance.writeMemory(
           "recentGizmoList",
           recentGizmoList,
-          "long"
+          "long",
         );
       }
     });
@@ -2302,7 +2300,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       SuperDaemonInstance.activeRange.collapse(true);
       SuperDaemonInstance.activeSelection.removeAllRanges();
       SuperDaemonInstance.activeSelection.addRange(
-        SuperDaemonInstance.activeRange
+        SuperDaemonInstance.activeRange,
       );
       SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
       SuperDaemonInstance.activeSelection.collapseToEnd();
@@ -2352,9 +2350,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     globalThis.open(
       `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
-        body
+        body,
       )}`,
-      "_blank"
+      "_blank",
     );
   }
 
@@ -3073,7 +3071,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             },
           ],
         },
-        tag
+        tag,
       );
     }
     let hr = {
@@ -3156,7 +3154,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           details = await this.runHook(
             prototypeNode,
             "preProcessInsertContent",
-            [details, this.activeNode]
+            [details, this.activeNode],
           );
         }
       }
@@ -3238,13 +3236,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           this.activeHaxBody.haxInsert(
             details.tag,
             details.content,
-            properties
+            properties,
           );
         } else {
           this.activeHaxBody.haxInsert(
             details.tag,
             details.content,
-            properties
+            properties,
           );
         }
       } else {
@@ -3277,7 +3275,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           } else {
             return false;
           }
-        })
+        }),
       )
       .flat();
   }
@@ -3308,7 +3306,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         this.activeHaxBody.haxInsert(
           e.detail[i].tag,
           e.detail[i].content,
-          properties
+          properties,
         );
       }
     }
@@ -3332,7 +3330,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           this.haxAutoloader,
           this.activeHaxBody,
           this.haxTray,
-          this.haxCancel
+          this.haxCancel,
         );
       }, 0);
     }
@@ -3432,7 +3430,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               HAXStore.activeApp = toJS(HAXStore.appList[values.index]);
             }
             let queryParam = Object.keys(
-              values.detail.connection.operations.browse.search
+              values.detail.connection.operations.browse.search,
             )[0];
             let searchDataMap = {};
             searchDataMap[queryParam] = input;
@@ -3456,7 +3454,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 gizmoType,
                 map,
                 false,
-                true
+                true,
               );
               // see if we got anything
               if (haxElements.length > 0) {
@@ -3596,7 +3594,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       ) {
         propvals[nodeName] = JSON.stringify(value).replace(
           new RegExp('"', "g"),
-          "&quot;"
+          "&quot;",
         );
       }
       // only write things that aren't empty
@@ -3664,12 +3662,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             if (value.constructor === Array && value != []) {
               propvals[nodeName] = JSON.stringify(value).replace(
                 new RegExp('"', "g"),
-                "&quot;"
+                "&quot;",
               );
             } else if (typeof value === "object" && value != {}) {
               propvals[nodeName] = JSON.stringify(value).replace(
                 new RegExp('"', "g"),
-                "&quot;"
+                "&quot;",
               );
             }
           }
@@ -3895,7 +3893,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   async refreshActiveNodeForm() {
     this.haxTray.activeHaxElement = await nodeToHaxElement(
       this.haxTray.activeNode,
-      null
+      null,
     );
     await this.haxTray._setupForm();
   }
@@ -3961,7 +3959,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         let detail = e.detail;
         detail.properties = await this.attemptGizmoTranslation(
           detail.tag,
-          detail.properties
+          detail.properties,
         );
 
         // look for a gizmo; it's not required, technically.
@@ -4015,13 +4013,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           globalThis.customElements.get(e.detail.tag) &&
           this.testHook(
             globalThis.document.createElement(e.detail.tag),
-            "gizmoRegistration"
+            "gizmoRegistration",
           )
         ) {
           await this.runHook(
             globalThis.document.createElement(e.detail.tag),
             "gizmoRegistration",
-            [this]
+            [this],
           );
         }
       }
@@ -4057,7 +4055,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   async attemptGizmoTranslation(tag, properties) {
     // support locales if available and not default lang
     var translationMap = await I18NManagerStore.loadNamespaceFile(
-      tag + ".haxProperties"
+      tag + ".haxProperties",
     );
     // if we have a map, rewrite the matching properties within the objects
     if (

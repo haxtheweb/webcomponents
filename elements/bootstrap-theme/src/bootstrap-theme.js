@@ -25,7 +25,7 @@ import { autorun, toJS } from "mobx";
  * @element bootstrap-theme
  */
 class BootstrapTheme extends HAXCMSThemeParts(
-  BootstrapUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+  BootstrapUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)),
 ) {
   /**
    * Convention we use
@@ -106,7 +106,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           background-color: var(
             --bootstrap-theme-light-secondary-background-color
           );
-          transition: left .3s ease;
+          transition: left 0.3s ease;
         }
 
         site-menu::part(map-menu) {
@@ -183,7 +183,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           bottom: 0;
           min-width: 400px;
           overflow-y: auto;
-          transition: left .3s ease;
+          transition: left 0.3s ease;
         }
         .site-body .site-inner {
           position: relative;
@@ -604,7 +604,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     link.setAttribute("rel", "stylesheet");
     link.setAttribute(
       "href",
-      basePath + "bootstrap/dist/css/bootstrap.min.css"
+      basePath + "bootstrap/dist/css/bootstrap.min.css",
     );
     document.head.appendChild(link);
     return link;
@@ -643,11 +643,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
     let jqueryPath = "jquery/dist/jquery.min.js";
     window.ESGlobalBridge.requestAvailability().load(
       "jquery",
-      basePath + jqueryPath
+      basePath + jqueryPath,
     );
     window.addEventListener(
       `es-bridge-jquery-loaded`,
-      this._jqueryLoaded.bind(this)
+      this._jqueryLoaded.bind(this),
     );
   }
 
@@ -660,11 +660,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
     let bootstrapPath = "bootstrap/dist/js/bootstrap.bundle.min.js";
     window.ESGlobalBridge.requestAvailability().load(
       "bootstrap",
-      basePath + bootstrapPath
+      basePath + bootstrapPath,
     );
     window.addEventListener(
       `es-bridge-bootstrap-loaded`,
-      this._bootstrapLoaded.bind(this)
+      this._bootstrapLoaded.bind(this),
     );
   }
 

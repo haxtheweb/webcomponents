@@ -383,7 +383,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
             eventName: "content-edit",
             value: true,
           },
-        })
+        }),
       );
     }
   }
@@ -422,7 +422,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
                   eventName: "hax-transform-node",
                   value: true,
                 },
-              })
+              }),
             );
             break;
           case "lock":

@@ -146,7 +146,7 @@ class PlaceHolder extends SimpleColors {
         cancelable: true,
         composed: true,
         detail: this.type,
-      })
+      }),
     );
   }
 
@@ -260,7 +260,7 @@ class PlaceHolder extends SimpleColors {
               cancelable: true,
               composed: true,
               detail: e,
-            })
+            }),
           );
         }
       } catch (e) {}

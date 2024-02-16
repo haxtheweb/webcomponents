@@ -23,7 +23,7 @@ import { autorun, toJS } from "mobx";
  * @element terrible-themes
  */
 class TerribleProductionzThemes extends HAXCMSRememberRoute(
-  HAXCMSThemeParts(HAXCMSLitElementTheme)
+  HAXCMSThemeParts(HAXCMSLitElementTheme),
 ) {
   /**
    * Add elements to cheat on initial paint here
@@ -76,30 +76,30 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
       css`
         :host {
           display: block;
-          --haxcms-base-styles-body-font-size:18px;
+          --haxcms-base-styles-body-font-size: 18px;
           --hax-base-styles-a-font-size: 18px;
           --hax-base-styles-p-font-size: 18px;
           --hax-base-styles-list-font-size: 18px;
           --haxcms-base-styles-body-line-height: 28.8px;
           --hax-base-styles-list-line-height: 28.8px
-          --hax-base-styles-p-line-height: 28.8px;
+            --hax-base-styles-p-line-height: 28.8px;
           --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing : normal;
-           --hax-base-styles-p-min-height: auto;
-           --hax-base-styles-list-max-width: auto;
-           --haxcms-base-styles-p-min-height: auto;
-           --hax-base-styles-list-padding-bottom: auto;
-           --hax-base-styles-h1-font-size: inherit;
-           --hax-base-styles-h2-font-size: inherit;
-           --hax-base-styles-h3-font-size: inherit;
-           --hax-base-styles-h4-font-size: inherit;
-           --hax-base-styles-h5-font-size: inherit;
-           --hax-base-styles-h6-font-size: inherit;
-           --simple-tooltip-background: #000000;
-           --simple-tooltip-opacity: 1;
-           --simple-tooltip-text-color: #ffffff;
-           --simple-tooltip-delay-in: 0;
-           --simple-tooltip-border-radius: 0;
+          --haxcms-base-styles-body-letter-spacing: normal;
+          --hax-base-styles-p-min-height: auto;
+          --hax-base-styles-list-max-width: auto;
+          --haxcms-base-styles-p-min-height: auto;
+          --hax-base-styles-list-padding-bottom: auto;
+          --hax-base-styles-h1-font-size: inherit;
+          --hax-base-styles-h2-font-size: inherit;
+          --hax-base-styles-h3-font-size: inherit;
+          --hax-base-styles-h4-font-size: inherit;
+          --hax-base-styles-h5-font-size: inherit;
+          --hax-base-styles-h6-font-size: inherit;
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
         }
         scroll-button {
           position: fixed;
@@ -112,7 +112,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
           --scroll-button-background-color: black;
           --scroll-button-tooltip-background-color: black;
           --scroll-button-tooltip-color: lime;
-         }
+        }
         .title-text {
           display: block;
           font-family: "Caveat", cursive;
@@ -131,12 +131,14 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
 
         site-menu {
           color: white;
-          --site-menu-active-color: lime; 
-           --site-menu-item-active-item-color: forestgreen;
-           --haxcms-tooltip-color: lime;
-           --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
-           --map-menu-item-a-active-color: black;
-           --map-menu-item-a-active-background-color: lime;
+          --site-menu-active-color: lime;
+          --site-menu-item-active-item-color: forestgreen;
+          --haxcms-tooltip-color: lime;
+          --haxcms-tooltip-background-color: var(
+            --haxcms-user-styles-color-theme-color-1
+          );
+          --map-menu-item-a-active-color: black;
+          --map-menu-item-a-active-background-color: lime;
         }
         section {
           padding: 25px;
@@ -232,7 +234,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                   class="title-text"
                   style="background-image: url(${new URL(
                     "assets/header.jpg",
-                    import.meta.url
+                    import.meta.url,
                   ).href}/../movies.jpg)"
                 ></site-active-title>
                 <table border="1" cellpadding="0" cellspacing="0" width="100%">

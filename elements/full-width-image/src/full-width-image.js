@@ -111,9 +111,8 @@ class FullWidthImage extends LitElement {
 
   _sourceChanged(newValue) {
     if (typeof newValue !== typeof undefined) {
-      this.shadowRoot.querySelector(
-        "#image"
-      ).style.backgroundImage = `url("${newValue}")`;
+      this.shadowRoot.querySelector("#image").style.backgroundImage =
+        `url("${newValue}")`;
     }
   }
 }

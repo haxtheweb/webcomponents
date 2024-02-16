@@ -18,7 +18,7 @@ import { RichTextEditorButtonBehaviors } from "@lrnwebcomponents/rich-text-edito
  * @demo ./demo/buttons.html
  */
 class HaxTextEditorPasteButton extends RichTextEditorButtonBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.

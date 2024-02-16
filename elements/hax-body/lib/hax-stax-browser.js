@@ -72,7 +72,7 @@ class HaxStaxBrowser extends LitElement {
                 color="green"
                 event-name="insert-stax"
               ></hax-tray-button>
-            `
+            `,
           )}
         </simple-button-grid>
       </a11y-collapse>

@@ -56,7 +56,7 @@ class HaxButton extends HaxToolbarItemBehaviors(LitElement) {
           index: this.index,
           value: this.eventData,
         },
-      })
+      }),
     );
   }
   /**
@@ -78,7 +78,7 @@ class HaxButton extends HaxToolbarItemBehaviors(LitElement) {
               context: this,
               callback: "_voiceEvent",
             },
-          })
+          }),
         );
       }
     });

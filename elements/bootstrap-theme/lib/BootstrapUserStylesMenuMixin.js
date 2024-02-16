@@ -428,7 +428,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         !this.hideUserStylesMenu &&
         !target.includes(this.toggleUserStylesMenuTarget) &&
         !target.includes(
-          this.shadowRoot.querySelector("#haxcmsuserstylesmenu")
+          this.shadowRoot.querySelector("#haxcmsuserstylesmenu"),
         ) &&
         target.tagName !== "BUTTON"
       ) {
@@ -454,7 +454,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         super.firstUpdated(changedProperties);
       }
       this.toggleUserStylesMenuTarget = this.shadowRoot.querySelector(
-        "#haxcmsuserstylesmenupopover"
+        "#haxcmsuserstylesmenupopover",
       );
       // hook up the pop over menu
       this.shadowRoot.querySelector("#haxcmsuserstylesmenu").target =

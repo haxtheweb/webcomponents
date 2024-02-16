@@ -194,17 +194,16 @@ class BootstrapBreadcrumb extends LitElement {
               </a>
             </li>
             ${this.items.map(
-              (item) =>
-                html`
-                  <li
-                    class="breadcrumb-item"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="${item.title}"
-                  >
-                    <a href="${item.slug}"> ${item.title} </a>
-                  </li>
-                `
+              (item) => html`
+                <li
+                  class="breadcrumb-item"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="${item.title}"
+                >
+                  <a href="${item.slug}"> ${item.title} </a>
+                </li>
+              `,
             )}
           </ol>
         </nav>

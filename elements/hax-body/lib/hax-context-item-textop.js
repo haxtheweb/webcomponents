@@ -102,7 +102,7 @@ class HaxContextItemTextop extends HaxToolbarItemBehaviors(LitElement) {
             eventName: this.eventName,
             value: this.value,
           },
-        })
+        }),
       );
     }
   }

@@ -275,7 +275,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
+          ::slotted(
+            [contenteditable][data-hax-ray]:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
           transition: 0.6s all ease-in-out;
@@ -283,7 +287,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray][data-hax-active]:empty:not([data-instructional-action]))::before {
+          ::slotted(
+            [contenteditable][data-hax-ray][data-hax-active]:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
           content: "Type '/' for Merlin";
           opacity: 0.4;
           font-size: 18px;
@@ -291,14 +299,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:hover:empty:not([data-instructional-action]))::before {
+          ::slotted(
+            [contenteditable][data-hax-ray]:hover:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
           opacity: 0.4;
           cursor: text;
         }
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty:focus:not([data-instructional-action]))::before {
+          ::slotted(
+            [contenteditable][data-hax-ray]:empty:focus:not(
+                [data-instructional-action]
+              )
+          )::before {
           content: "";
         }
         :host([edit-mode]) #bodycontainer ::slotted(p) {
@@ -556,7 +572,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.polyfillSafe = HAXStore.computePolyfillSafe();
     this.addEventListener(
       "place-holder-replace",
-      this.replacePlaceholder.bind(this)
+      this.replacePlaceholder.bind(this),
     );
     this.addEventListener("focusin", this._focusIn.bind(this));
     this.addEventListener("mousemove", this._mouseMove.bind(this));
@@ -640,7 +656,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // way out of a column to the host of the template
             this.__activeHover =
               eventPath[0].closest(
-                "[data-move-order]"
+                "[data-move-order]",
               ).parentNode.parentNode.host;
           } else {
             // to avoid a later loop, we force this to "false"
@@ -667,7 +683,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }
             this.__activeHover =
               eventPath[0].closest(
-                "[data-move-order]"
+                "[data-move-order]",
               ).parentNode.parentNode.host.children[0];
           }
         } else if (eventPath[0].closest("#bodycontainer")) {
@@ -795,13 +811,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         data-node-type="${!this.activeNode
           ? ""
           : this.viewSourceToggle
-          ? this.activeNode.parentNode.tagName
-          : this.activeNode.tagName}"
+            ? this.activeNode.parentNode.tagName
+            : this.activeNode.tagName}"
         .target="${!this.activeNode
           ? document.body
           : this.viewSourceToggle
-          ? this.activeNode.parentNode
-          : this.activeNode}"
+            ? this.activeNode.parentNode
+            : this.activeNode}"
         .trayStatus="${this.trayStatus}"
         ?hidden="${!this.activeNode}"
       >
@@ -819,7 +835,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           <hax-text-editor-toolbar
             id="textcontextmenu"
             class="hax-context-menu ignore-activation ${this.calcClasses(
-              this.activeNode
+              this.activeNode,
             )}"
             .activeNode="${this.activeNode}"
             show="always"
@@ -927,7 +943,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   firstUpdated(changedProperties) {
     render(
       this.HAXBODYStyleSheetContent(),
-      this.shadowRoot.querySelector("#hax-body-style-element")
+      this.shadowRoot.querySelector("#hax-body-style-element"),
     );
     this.dispatchEvent(
       new CustomEvent("hax-register-body", {
@@ -935,7 +951,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
     // try to normalize paragraph insert on enter
     try {
@@ -1076,7 +1092,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               "p",
               "",
               {},
-              this.activeNode.parentNode.previousElementSibling
+              this.activeNode.parentNode.previousElementSibling,
             );
             // would imply top of document, shouldn't be possible
           } else if (
@@ -1175,7 +1191,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 this.activeNode &&
                 this.activeNode.tagName === "P" &&
                 ["1", "#", "`", ">", "-"].includes(
-                  this.activeNode.textContent[0]
+                  this.activeNode.textContent[0],
                 )
               ) {
                 // ensure the "whitespace character" has been replaced w/ a normal space
@@ -1219,7 +1235,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               this._useristyping = true;
               this.__delHit = true;
               this.querySelectorAll("[data-hax-active]").forEach(
-                (el) => el.classList.remove
+                (el) => el.classList.remove,
               );
               setTimeout(() => {
                 const tmp = HAXStore.getSelection();
@@ -1249,7 +1265,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   ) {
                     this.__focusLogic(
                       rng.commonAncestorContainer.parentNode,
-                      false
+                      false,
                     );
                   } else {
                     this.__focusLogic(rng.commonAncestorContainer, false);
@@ -1275,7 +1291,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 SuperDaemonInstance.activeNode = rng.commonAncestorContainer;
                 SuperDaemonInstance.runProgram(
                   rng.commonAncestorContainer.textContent.trim(),
-                  "*"
+                  "*",
                 );
                 SuperDaemonInstance.open();
               }
@@ -1286,7 +1302,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             case "ArrowRight":
               this._useristyping = true;
               this.querySelectorAll("[data-hax-active]").forEach(
-                (el) => el.classList.remove
+                (el) => el.classList.remove,
               );
               setTimeout(() => {
                 const tmp = HAXStore.getSelection();
@@ -1316,7 +1332,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   ) {
                     this.__focusLogic(
                       rng.commonAncestorContainer.parentNode,
-                      false
+                      false,
                     );
                   } else {
                     this.__focusLogic(rng.commonAncestorContainer, false);
@@ -1333,13 +1349,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   this.activeNode &&
                   this.activeNode.tagName === "P" &&
                   ["1", "#", "`", ">", "-"].includes(
-                    this.activeNode.textContent[0]
+                    this.activeNode.textContent[0],
                   )
                 ) {
                   // ensure the "whitespace character" has been replaced w/ a normal space
                   const guess = this.activeNode.textContent.replaceAll(
                     / /g,
-                    " "
+                    " ",
                   );
                   // ensures that the user has done a matching action and a " " spacebar to ensure they
                   // are ready to commit the action
@@ -1361,7 +1377,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // see if our map matches
     if (HAXStore.keyboardShortcuts[guess.replace(" ", "")]) {
       let el = haxElementToNode(
-        HAXStore.keyboardShortcuts[guess.replace(" ", "")]
+        HAXStore.keyboardShortcuts[guess.replace(" ", "")],
       );
       this.haxReplaceNode(this.activeNode, el);
       this.__focusLogic(el);
@@ -1483,8 +1499,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             .map((group) =>
               settings[group].filter(
                 (setting) =>
-                  !!setting.slot && (!slotId || setting.slot === slotId)
-              )
+                  !!setting.slot && (!slotId || setting.slot === slotId),
+              ),
             )
             .flat()
         : undefined;
@@ -1569,14 +1585,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       !!grid && grid.tag === "grid-plate"
         ? ["grid-plate"]
         : !!slots
-        ? slots.excludedSlotWrappers
-        : undefined;
+          ? slots.excludedSlotWrappers
+          : undefined;
     let inclusions = !!slots ? slots.allowedSlotWrappers : undefined;
     if (!!exclusions || !!inclusions)
       haxElements = haxElements.filter(
         (el) =>
           !exclusions.includes(el.tag) &&
-          (!inclusions || inclusions.includes(el.tag))
+          (!inclusions || inclusions.includes(el.tag)),
       );
 
     // see if we got anything
@@ -1596,7 +1612,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           haxElements,
           "__convert",
           `Change ${humanName} to...`,
-          "gizmo"
+          "gizmo",
         );
       }
     } else {
@@ -1628,7 +1644,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     content,
     properties = {},
     active = this.activeNode,
-    child = false
+    child = false,
   ) {
     // verify this tag is a valid one
     // create a new element fragment w/ content in it
@@ -1709,7 +1725,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         if (active.parentNode && active.parentNode.nextElementSibling) {
           active.parentNode.nextElementSibling.parentNode.insertBefore(
             newNode,
-            active.parentNode.nextElementSibling
+            active.parentNode.nextElementSibling,
           );
         } else if (active.parentNode && active.nextElementSibling) {
           if (this.__addAbove) {
@@ -1971,7 +1987,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               props &&
               props.gizmo &&
               (props.gizmo.handles || []).filter(
-                (handle) => (handle || {}).type === "inline"
+                (handle) => (handle || {}).type === "inline",
               ).length > 0;
           if (!props || props.editingElement == "core") {
             // hide menu if we have active on a list item
@@ -2038,7 +2054,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       //move within a slot
       parent.insertBefore(
         node,
-        direction > 0 ? target.nextElementSibling : target
+        direction > 0 ? target.nextElementSibling : target,
       );
     } else if (!!move) {
       //move slot
@@ -2465,7 +2481,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               : [...grid.children].filter((child) =>
                   !slot || slot === ""
                     ? !child.slot || child.slot === ""
-                    : child.slot === slot
+                    : child.slot === slot,
                 )[i] || target,
             //sets active node and positions accordingly
             nodePosition = (node = target) => {
@@ -2511,7 +2527,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ) {
             HAXStore.activeEditingElement.setAttribute(
               "slot",
-              this.activeNode.getAttribute("slot")
+              this.activeNode.getAttribute("slot"),
             );
           }
           this.__ignoreActive = true;
@@ -2525,7 +2541,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             HAXStore.activeNode = await HAXStore.runHook(
               this.activeNode,
               "preProcessNodeToContent",
-              [this.activeNode]
+              [this.activeNode],
             );
           }
           wrap(this.activeNode, HAXStore.activeEditingElement);
@@ -2536,19 +2552,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           let replacement = await HAXStore.runHook(
             HAXStore.activeEditingElement,
             "activeElementChanged",
-            [this.activeNode, false]
+            [this.activeNode, false],
           );
           let oldSchema = {};
           if (this.activeNode && this.activeNode.tagName) {
             oldSchema = HAXStore.haxSchemaFromTag(
-              this.activeNode.tagName.toLowerCase()
+              this.activeNode.tagName.toLowerCase(),
             );
           } else if (
             this.activeNode.parentElement &&
             this.activeNode.parentElement.tagName
           ) {
             oldSchema = HAXStore.haxSchemaFromTag(
-              this.activeNode.parentElement.tagName.toLowerCase()
+              this.activeNode.parentElement.tagName.toLowerCase(),
             );
           }
           // test for slots to match to ensure this is maintained
@@ -2559,7 +2575,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ) {
             replacement.setAttribute(
               "slot",
-              this.activeNode.getAttribute("slot")
+              this.activeNode.getAttribute("slot"),
             );
           }
           // clean up from possible clone of settings we don't allow cloning
@@ -2572,7 +2588,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ) {
             for (var i in oldSchema.saveOptions.unsetAttributes) {
               replacement.removeAttribute(
-                oldSchema.saveOptions.unsetAttributes[i]
+                oldSchema.saveOptions.unsetAttributes[i],
               );
             }
           }
@@ -2603,7 +2619,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               ) {
                 HAXStore.activeEditingElement.setAttribute(
                   "slot",
-                  this.activeNode.getAttribute("slot")
+                  this.activeNode.getAttribute("slot"),
                 );
               }
               this.__ignoreActive = true;
@@ -2612,7 +2628,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               this.activeNode.removeAttribute("data-hax-active");
               wrap(this.activeNode, HAXStore.activeEditingElement);
               this.viewSourceElement = HAXStore.activeEditingElement;
-            }
+            },
           );
         } else {
           this.activeNode.__haxSourceView = false;
@@ -2620,10 +2636,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           let replacement = await HAXStore.runHook(
             HAXStore.activeEditingElement,
             "activeElementChanged",
-            [this.activeNode, false]
+            [this.activeNode, false],
           );
           let oldSchema = HAXStore.haxSchemaFromTag(
-            this.activeNode.tagName.toLowerCase()
+            this.activeNode.tagName.toLowerCase(),
           );
           // test for slots to match to ensure this is maintained
           if (
@@ -2633,7 +2649,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ) {
             replacement.setAttribute(
               "slot",
-              this.activeNode.getAttribute("slot")
+              this.activeNode.getAttribute("slot"),
             );
           }
           // clean up from possible clone of settings we don't allow cloning
@@ -2646,7 +2662,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ) {
             for (var i in oldSchema.saveOptions.unsetAttributes) {
               replacement.removeAttribute(
-                oldSchema.saveOptions.unsetAttributes[i]
+                oldSchema.saveOptions.unsetAttributes[i],
               );
             }
           }
@@ -2665,7 +2681,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // trigger the default selected value in context menu to match
         HAXStore.activeNode = this.haxChangeTagName(
           this.activeNode,
-          detail.value
+          detail.value,
         );
         this.positionContextMenus();
         break;
@@ -3004,7 +3020,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.hideContextMenus();
       // clean up for nested items we might miss
       let activeKids = this.querySelectorAll(
-        "[contenteditable],[data-hax-active]"
+        "[contenteditable],[data-hax-active]",
       );
       for (var i = 0; i < activeKids.length; i++) {
         let el = activeKids[i];
@@ -3043,12 +3059,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       window.addEventListener(
         "hax-context-item-selected",
         this._haxContextOperation,
-        { signal: this.windowControllers.signal }
+        { signal: this.windowControllers.signal },
       );
       window.addEventListener(
         "hax-toggle-active-node-lock",
         this._toggleNodeLocking,
-        { signal: this.windowControllers.signal }
+        { signal: this.windowControllers.signal },
       );
       window.addEventListener("click", this.scrollerFixclickEvent, {
         signal: this.windowControllers.signal,
@@ -3095,7 +3111,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     node.tagName === "BR" &&
                     node.parentElement &&
                     HAXStore.__validGridTags().includes(
-                      node.parentElement.tagName.toLowerCase()
+                      node.parentElement.tagName.toLowerCase(),
                     ) &&
                     node ===
                       node.parentElement.childNodes[
@@ -3222,7 +3238,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                         // correctly add or remove listeners
                         this.__applyNodeEditableState(
                           grandKids[j],
-                          this.editMode
+                          this.editMode,
                         );
                       }
                     }
@@ -3231,7 +3247,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   // this way it's easier to anchor to them in the future
                   if (
                     ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
-                      node.tagName
+                      node.tagName,
                     ) &&
                     node.getAttribute("id") == null
                   ) {
@@ -3266,7 +3282,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     }
                     HAXStore.activeNode.setAttribute(
                       "data-hax-active",
-                      "data-hax-active"
+                      "data-hax-active",
                     );
                   } else {
                     this.___moveLock = false;
@@ -3403,7 +3419,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   _HTMLInlineTextDecorationTest(node) {
     return ["span", "b", "strong", "i", "em", "u", "strike"].includes(
-      node.tagName.toLowerCase()
+      node.tagName.toLowerCase(),
     );
   }
   /**
@@ -3424,7 +3440,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   _applyContentEditable(
     status,
-    target = this.shadowRoot.querySelector("#body")
+    target = this.shadowRoot.querySelector("#body"),
   ) {
     // this is just direct children so 1st level of the body
     let children =
@@ -3499,7 +3515,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     let slot = target.getAttribute("slot"),
       container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
-        (node) => node.parentNode
+        (node) => node.parentNode,
       ),
       order = containers.indexOf(container) || -1;
     return order;
@@ -3515,7 +3531,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
-        (node) => node.parentNode
+        (node) => node.parentNode,
       ),
       order = containers.indexOf(container) || -1,
       dest = order + (before ? -1 : 1);
@@ -3531,7 +3547,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
-        (node) => node.parentNode
+        (node) => node.parentNode,
       ),
       order = containers.indexOf(container) || -1,
       dest = order + (before ? -1 : 1),
@@ -3547,7 +3563,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         function (acc, e) {
           return acc;
         },
-        []
+        [],
       );
       // sort the children by slot id being low to high
       children = children.sort(function (a, b) {
@@ -3584,7 +3600,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   __layoutSlots(layout) {
     return layout.shadowRoot
       ? [...layout.shadowRoot.querySelectorAll("[slot]")].map((container) =>
-          container.getAttribute("name")
+          container.getAttribute("name"),
         )
       : [];
   }
@@ -3610,7 +3626,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         container.addEventListener("dragleave", events.dragleave);
       });
       slots.forEach((slot) =>
-        slot.addEventListener("slotchange", events.slotchange)
+        slot.addEventListener("slotchange", events.slotchange),
       );
       layout.haxLayoutObserver = new MutationObserver((mutations) => {
         if (!layout.getAttribute("hax-layout-sorting")) {
@@ -3656,7 +3672,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         container.removeEventListener("dragleave", events.dragleave);
       });
       slots.forEach((slot) =>
-        slot.removeEventListener("slotchange", events.slotchange)
+        slot.removeEventListener("slotchange", events.slotchange),
       );
       layout.removeAttribute("data-hax-ray");
     }
@@ -3838,7 +3854,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             } else if (eventPath[0].classList.contains("column")) {
               tmp.setAttribute(
                 "slot",
-                eventPath[0].getAttribute("id").replace("col", "col-")
+                eventPath[0].getAttribute("id").replace("col", "col-"),
               );
             } else {
               tmp.removeAttribute("slot");
@@ -3848,7 +3864,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             if (eventPath[0].classList.contains("column")) {
               tmp.setAttribute(
                 "slot",
-                eventPath[0].getAttribute("id").replace("col", "col-")
+                eventPath[0].getAttribute("id").replace("col", "col-"),
               );
             }
             // account for drop target of main body yet still having a slot attr
@@ -3874,7 +3890,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               cancelable: true,
               composed: true,
               detail: e,
-            })
+            }),
           );
         } else {
           // set taget based on drag target
@@ -3907,7 +3923,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 } else if (eventPath[0].classList.contains("column")) {
                   target.setAttribute(
                     "slot",
-                    eventPath[0].getAttribute("id").replace("col", "col-")
+                    eventPath[0].getAttribute("id").replace("col", "col-"),
                   );
                 } else {
                   target.removeAttribute("slot");
@@ -3917,7 +3933,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 if (eventPath[0].classList.contains("column")) {
                   target.setAttribute(
                     "slot",
-                    eventPath[0].getAttribute("id").replace("col", "col-")
+                    eventPath[0].getAttribute("id").replace("col", "col-"),
                   );
                 }
                 // account for drop target of main body yet still having a slot attr
@@ -3958,7 +3974,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 cancelable: true,
                 composed: true,
                 detail: this.activeNode,
-              })
+              }),
             );
             this.scrollHere(this.activeNode);
             this.positionContextMenus();
@@ -4042,7 +4058,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       document.body.clientWidth,
       document.documentElement.scrollWidth,
       document.documentElement.offsetWidth,
-      document.documentElement.clientWidth
+      document.documentElement.clientWidth,
     );
     var documentHeight = Math.max(
       document.body.scrollHeight,
@@ -4050,7 +4066,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       document.body.clientHeight,
       document.documentElement.scrollHeight,
       document.documentElement.offsetHeight,
-      document.documentElement.clientHeight
+      document.documentElement.clientHeight,
     );
 
     // Calculate the maximum scroll offset in each direction. Since you can only
@@ -4312,7 +4328,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         let replacement = await HAXStore.runHook(
           oldValue.parentNode,
           "activeElementChanged",
-          [oldValue, false]
+          [oldValue, false],
         );
         if (replacement && replacement !== oldValue) {
           // test for slots to match to ensure this is maintained
@@ -4333,7 +4349,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ) {
             for (var i in oldSchema.saveOptions.unsetAttributes) {
               replacement.removeAttribute(
-                oldSchema.saveOptions.unsetAttributes[i]
+                oldSchema.saveOptions.unsetAttributes[i],
               );
             }
           }
@@ -4369,13 +4385,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           await import(`${basePath}${newSchema.editingElement.import}`);
         }
         HAXStore.activeEditingElement = document.createElement(
-          newSchema.editingElement.tag
+          newSchema.editingElement.tag,
         );
         // test for slots to match to ensure this is maintained
         if (newValue.getAttribute && newValue.getAttribute("slot") != null) {
           HAXStore.activeEditingElement.setAttribute(
             "slot",
-            newValue.getAttribute("slot")
+            newValue.getAttribute("slot"),
           );
         }
         // support for a callback on insert to do any additional work it wants
@@ -4389,7 +4405,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         await HAXStore.runHook(
           HAXStore.activeEditingElement,
           "activeElementChanged",
-          [newValue, true]
+          [newValue, true],
         );
       }
     }
@@ -4432,8 +4448,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         !parent || !parent.nodeType
           ? undefined
           : parent.nodeType == 1
-          ? parent
-          : parent.host;
+            ? parent
+            : parent.host;
     return container;
   }
   /**

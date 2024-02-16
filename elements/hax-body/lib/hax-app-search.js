@@ -104,7 +104,7 @@ class HaxAppSearch extends LitElement {
     // searching internal app paths that leverage JWT for security
     if (HAXStore.connectionRewrites.appendJwt != null && params.__HAXJWT__) {
       params[HAXStore.connectionRewrites.appendJwt] = localStorageGet(
-        HAXStore.connectionRewrites.appendJwt
+        HAXStore.connectionRewrites.appendJwt,
       );
     }
     queryString = queryString + this.queryStringData(params);
@@ -131,7 +131,7 @@ class HaxAppSearch extends LitElement {
       } else if (Array.isArray(value)) {
         for (var i = 0; i < value.length; i++) {
           queryParts.push(
-            param + "=" + globalThis.encodeURIComponent(value[i])
+            param + "=" + globalThis.encodeURIComponent(value[i]),
           );
         }
       } else if (value !== null) {
@@ -243,7 +243,7 @@ class HaxAppSearch extends LitElement {
       if (typeof app.connection.operations.browse.data !== typeof undefined) {
         requestParams = Object.assign(
           requestParams,
-          app.connection.operations.browse.data
+          app.connection.operations.browse.data,
         );
       }
       this.method = app.connection.operations.browse.method;
@@ -346,7 +346,7 @@ class HaxAppSearch extends LitElement {
           if (typeof map.preview.image !== typeof undefined) {
             media[i].image = this._resolveObjectPath(
               map.preview.image,
-              data[i]
+              data[i],
             );
           } else if (typeof map.image !== typeof undefined) {
             media[i].image = map.image;
@@ -364,14 +364,14 @@ class HaxAppSearch extends LitElement {
               }
               media[i].map.source = map.gizmo._url_source.replace(
                 "<%= id %>",
-                _id
+                _id,
               );
               media[i].map.url = media[i].map.source;
             } else {
               if (map.gizmo[prop].constructor === Object) {
                 let tmp = this._resolveObjectPath(
                   map.gizmo[prop].property,
-                  data[i]
+                  data[i],
                 );
                 if (map.gizmo[prop].op === "split") {
                   tmp = tmp.split(map.gizmo[prop].delimiter);
@@ -383,7 +383,7 @@ class HaxAppSearch extends LitElement {
               } else {
                 media[i].map[prop] = this._resolveObjectPath(
                   map.gizmo[prop],
-                  data[i]
+                  data[i],
                 );
               }
             }
@@ -407,7 +407,7 @@ class HaxAppSearch extends LitElement {
             media[i].type = this._resolveObjectPath(map.gizmo.type, data[i]);
           } else if (typeof map.gizmo.mimetype !== typeof undefined) {
             media[i].type = HAXStore.mimeTypeToGizmoType(
-              this._resolveObjectPath(map.gizmo.mimetype, data[i])
+              this._resolveObjectPath(map.gizmo.mimetype, data[i]),
             );
           } else if (HAXStore.guessGizmoType(map.gizmo) != "*") {
             // try and guess the type based on file ending

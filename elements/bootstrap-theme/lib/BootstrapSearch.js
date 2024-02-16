@@ -63,7 +63,7 @@ class BootstrapSearch extends LitElement {
         bubbles: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 

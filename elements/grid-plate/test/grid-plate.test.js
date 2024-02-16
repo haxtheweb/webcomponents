@@ -5,9 +5,9 @@ import "../grid-plate.js";
 describe("grid-plate test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <grid-plate title="test-title"></grid-plate> `
-    );
+    element = await fixture(html`
+      <grid-plate title="test-title"></grid-plate>
+    `);
   });
 
   it("passes the a11y audit", async () => {

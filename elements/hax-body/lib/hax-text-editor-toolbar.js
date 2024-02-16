@@ -20,7 +20,7 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
  * @demo demo/index.html
  */
 class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
-  I18NMixin(HaxContextBehaviors(LitElement))
+  I18NMixin(HaxContextBehaviors(LitElement)),
 ) {
   //styles function
   static get styles() {
@@ -189,11 +189,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     this.setTarget(undefined);
     globalThis.addEventListener(
       "hax-store-ready",
-      this._handleHaxStoreReady.bind(this)
+      this._handleHaxStoreReady.bind(this),
     );
     globalThis.addEventListener(
       "hax-register-properties",
-      this._handleElementRegister.bind(this)
+      this._handleElementRegister.bind(this),
     );
   }
   /**
@@ -735,7 +735,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     if (this.__updated) return;
     this.__updated = true;
     let buttons = Object.keys(
-      globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {}
+      globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {},
     ).map((key) => globalThis.HaxTextEditorToolbarConfig.inlineGizmos[key]);
     return buttons.length === 0
       ? [...(this.defaultConfig || [])]

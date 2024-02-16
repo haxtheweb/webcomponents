@@ -214,8 +214,8 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               theme="${this.haxUiTheme == "hax"
                 ? "vs"
                 : this.haxUiTheme == "haxdark"
-                ? "vs-dark"
-                : "auto"}"
+                  ? "vs-dark"
+                  : "auto"}"
               language="html"
               font-size="13"
               word-wrap
@@ -250,7 +250,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       let body = await HAXStore.activeHaxBody.haxToContent();
       globalThis.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
         body,
-        globalThis.document.title
+        globalThis.document.title,
       );
       HAXStore.toast(this.t.fileDownloaded);
       this.close();
@@ -272,8 +272,8 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       link.href = globalThis.URL.createObjectURL(
         b64toBlob(
           `${response.data}`,
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        )
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ),
       );
       link.download = "PageContents.docx";
       link.target = "_blank";
@@ -297,7 +297,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       // click link to download file
       // @todo this downloads but claims to be corrupt.
       link.href = globalThis.URL.createObjectURL(
-        b64toBlob(btoa(response.data), "text/markdown")
+        b64toBlob(btoa(response.data), "text/markdown"),
       );
       link.download = "PageContents.md";
       link.target = "_blank";
@@ -327,7 +327,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       // click link to download file
       // @todo this downloads but claims to be corrupt.
       link.href = globalThis.URL.createObjectURL(
-        b64toBlob(response.data, "application/pdf")
+        b64toBlob(response.data, "application/pdf"),
       );
       link.download = "PageContents.pdf";
       link.target = "_blank";
@@ -454,7 +454,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
    */
   async htmlToHaxElements(e) {
     let elements = await HAXStore.htmlToHaxElements(
-      this.shadowRoot.querySelector("#textarea").value
+      this.shadowRoot.querySelector("#textarea").value,
     );
     var str = JSON.stringify(elements, null, 2);
     let val = this.shadowRoot.querySelector("#textarea").value;
@@ -483,7 +483,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       this.shadowRoot.querySelector("#textarea").editorValue = "";
       setTimeout(async () => {
         const htmlCode = formatHTML(
-          await HAXStore.activeHaxBody.haxToContent()
+          await HAXStore.activeHaxBody.haxToContent(),
         );
         this.shadowRoot.querySelector("#textarea").editorValue = htmlCode;
       }, 0);

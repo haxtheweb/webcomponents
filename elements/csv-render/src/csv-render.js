@@ -184,7 +184,7 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
         <thead>
           <tr>
             ${this.tableHeadings.map(
-              (heading) => html` <th scope="col">${heading}</th> `
+              (heading) => html` <th scope="col">${heading}</th> `,
             )}
           </tr>
         </thead>
@@ -194,7 +194,7 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
               <tr>
                 ${row.map((col) => html` <td>${col}</td> `)}
               </tr>
-            `
+            `,
           )}
         </tbody>
       </table>
