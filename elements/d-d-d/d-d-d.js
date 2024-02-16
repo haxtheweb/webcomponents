@@ -209,6 +209,10 @@ export const DDDSuper = function (SuperClass) {
             --ddd-font-size-3xl: 64px;
             --ddd-font-size-4xl: 72px;
 
+            --ddd-font-size-type1-l: 200px;
+            --ddd-font-size-type1-m: 150px;
+            --ddd-font-size-type1-s: 80px;
+
             /* letter spacing */
             --ddd-ls-16-sm: 0.08px;
             --ddd-ls-18-sm: 0.09px;
@@ -2127,6 +2131,45 @@ export const DDDSuper = function (SuperClass) {
             line-height: var(--ddd-lh-140);
             margin: var(--ddd-spacing-4) 0;
           }
+
+          /* heading presets */
+          h1.type1{
+            font-size: var(--ddd-font-size-type1-s);
+            font-weight: var(--ddd-font-primary-black);
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+            color: var(--ddd-theme-polaris-white);
+            flex-wrap: nowrap;
+            overflow-wrap: normal;
+            text-wrap: wrap;
+          }
+          @media (min-width: 768px) {
+            h1.type1{
+              font-size: var(--ddd-font-size-type1-m);
+            }
+          }
+          @media (min-width: 1080px) {
+            h1.type1{
+              font-size: var(--ddd-font-size-type1-l);
+            }
+          }
+
+          h2.type2 {
+            font-size: var(--ddd-font-size-4xl);
+            color: var(--ddd-theme-polaris-beaverBlue);
+          }
+          .h2 > hr{
+            width: 84px;
+            border-width: 4px;
+            margin-top: var(--ddd-spacing-6);
+          }
+          h2.type3 {
+            font-size: var(--ddd-font-size-xxl);
+            color: var(--ddd-theme-polaris-nittanyNavy);
+          }
+
           a,
           a:-webkit-any-link {
             line-break: auto;
@@ -2170,6 +2213,18 @@ export const DDDSuper = function (SuperClass) {
             gap: 1rem;
             font-family: var(--ddd-font-primary);
             margin: .5em 0;
+          }
+          ul.link-list{
+            list-style: none;
+          }
+          ul.link-list li::after{
+            content: url('data:image/svg+xml; utf8, <svg style="width:32px;height:32px;" fill="%23005fa9" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="%23005fa9" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+            height: calc(var(--ddd-theme-body-font-size) + 2px);
+            width: calc(var(--ddd-theme-body-font-size) + 2px);
+            display: inline-block;
+            position: relative;
+            bottom: calc(-1 * var(--ddd-spacing-1));
+            left: 0px;
           }
           ul li,
           ol li {
@@ -2219,8 +2274,10 @@ export const DDDSuper = function (SuperClass) {
           .hr-vert {
             border-bottom: none;
             border-left: 3px solid var(--ddd-theme-polaris-skyBlue);
-            display: inline-block;
             padding-left: var(--ddd-spacing-3);
+          }
+          h2 > hr {
+            margin-top: var(--ddd-spacing-4);
           }
           .breadcrumb {
             font-weight: var(--ddd-font-navigation-light);
@@ -2259,12 +2316,12 @@ export const DDDSuper = function (SuperClass) {
             display: flex;
             font-size: var(--ddd-theme-h4-font-size);
             font-weight: var(--ddd-font-primary-bold);
+            color: var(--ddd-theme-polaris-nittanyNavy);
             cursor: pointer;
             text-wrap: wrap;
             align-items: center;
             padding: 0 var(--ddd-spacing-5) var(--ddd-spacing-5) 0;
             user-select: none;
-            color: black;
           }
           summary::marker {
             content: "";
@@ -2688,6 +2745,17 @@ export const DDDSuper = function (SuperClass) {
             border-radius: var(--ddd-radius-xs);
             border-color: var(--ddd-theme-polaris-potential50);
           }
+
+
+          /* Logical Gaps:
+            Heading colors; sizes; letter spacing; line height
+            When to use chevron > with links?
+            gradients need to be rotated (sometimes?)
+            When to use // after headers?
+
+
+
+          */
         `,
       ];
     }
