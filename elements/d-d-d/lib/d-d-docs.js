@@ -4,6 +4,8 @@
  */
 import { html, css } from "lit";
 import { DDD } from "../d-d-d.js";
+import "@lrnwebcomponents/page-section/page-section.js";
+import "@lrnwebcomponents/simple-cta/simple-cta.js";
 /**
  * `d-d-docs`
  * `design, develop, destroy the competition, documentation`
@@ -127,46 +129,9 @@ class DDDocs extends DDD {
           border-left: none;
         }
 
-        details {
-          max-width: 90%;
+        simple-cta + simple-cta {
+          margin-left: var(--ddd-spacing-4);
         }
-
-        
-        .fakeHero{
-          overflow: auto;
-          position: relative;
-          height: 600px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          backdrop-filter: blur(5px);
-        }
-        .fakeHero::before {
-          content: "";
-          position: fixed;
-          left: 0;
-          right: 0;
-          z-index: -1;
-        
-          display: block;
-          background-image: url('https://www.worldcampus.psu.edu/sites/default/files/2018-12/1920x840_about-us_L1_1.jpg');
-          background-size: cover;
-          background-position: center;
-          width: 100%;
-          height: 100%;
-        
-          -webkit-filter: blur(2px);
-          -moz-filter: blur(2px);
-          -o-filter: blur(2px);
-          -ms-filter: blur(2px);
-          filter: blur(2px);
-        }
-
-        .pageHeaderContainer{
-          display: grid;
-          grid-template-columns: 1fr 3.3fr 1fr;
-        }
-
       `,
     ];
   }
@@ -1408,18 +1373,143 @@ class DDDocs extends DDD {
     return html`
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Page Sections</h2>
       <div class="b-xs">
-        <div class="fakeHero">
-          <h1 class="type1">We Are</h1>
-        </div>
-        <div class="pageHeaderContainer">
-          <b></b>
-          <h2 class="type2 large">Web Privacy Statement<hr></h2>
-        </div>
-        <div class="pageHeaderContainer">
-          <b></b>
-          <h2 class="type3">Discover Penn State<hr></h2>
+      <page-section large full filter bg="blue" fold scroller 
+      image="http://staging-static.vmhost.psu.edu/components/img/homepage-hero/homepage-hero-test-0.jpg">
+        <h1>We'll meet you where you are.</h1>
+        <hr />
+        <p>
+          We're ready for you, future Nittany Lions! From virtual tours, online orientation experiences to connecting with current students, staff, and faculty in real time.
+        </p>
+      </page-section>
+      <page-section large id="section-1" full="" class="section top" filter="" accent-color="blue" fold scroller="" scroller-label="Let's learn about HAX" image="https://hax.psu.edu/assets/images/splash.jpg">
+        <h1>
+          Create <future-terminal-text white="" glitch="" class="create" accent-color="green">ANYTHING</future-terminal-text> easily with 
+          <future-terminal-text glitch="" class="hax" accent-color="green">HAX</future-terminal-text>
+        </h1>
+        <p slot="entice">Part of <strong>Penn State</strong>?</p>
+        <simple-cta hotline filled outlined slot="buttons" link="https://haxtheweb.org/">Log in</simple-cta>
+        <simple-cta hide-icon  filled white slot="buttons" link="https://haxtheweb.org/">Learn HAX</simple-cta>
+      </page-section>
+      <page-section fold id="section-2" class="section" scroller="" scroller-label="By the numbers" accent-color="blue">
+        <h2>What is HAX?</h2> 
+        <hr/> 
+        <p><strong>A radically simple approach to <em>web authoring</em> and <em>content ownership</em>.</strong></p> 
+        <p>HAX is built on the premise that any and everyone should be able to create rich, engaging content without the need for complex platforms,
+          installations or vendor lock-in. The HAX block system allows for sustainable content creation that is easy to click and build for 
+          novices while outputting clean, semantic HTML for experts.</p>
+      </page-section>
+      <page-section preset="lines" scroller>
+        <h1>This is University Text</h1>
+        <hr/> 
+        <p>
+          There's a reason University consistently ranks among the top one percent 
+          of the world's universities. 
+          Across University campuses, our University students and University faculty and staff know the 
+          real measure of success goes beyond the classroom—it's 
+          the positive impact made on communities across the world.
+        </p>
+      </page-section>
+      <page-section preset="antihero" scroller>
+        <h1>This is University Text</h1>
+        <hr/> 
+        <p>
+          There’s a reason University consistently ranks among the top one percent 
+          of the world’s universities. 
+          Across University campuses, our University students and University faculty and staff know the 
+          real measure of success goes beyond the classroom—it’s 
+          the positive impact made on communities across the world.
+        </p>
+      </page-section>
+      <page-section preset="antihero-light" id="section-6" class="section" fold="" accent-color="blue">
+        <grid-plate layout="1-1"> 
+          <div slot="col-1"> 
+            <h3>About</h3> <p> HAX is a service provided through a collaboration between Penn State College of Arts and Architecture,
+              Eberly College of Science, College of Information Sciences and Technology, and University libraries. The platform
+              is powered by HAXcms, originally developed to power 100s of high scale online courses. Interested in collabora
+              ting? Contact <a href="mailto:bmr1@psu.edu">Bill Rose, Product Owner</a>. 
+            </p>
+          </div> 
+          <div slot="col-2"> 
+            <h3>Privacy policy</h3> 
+            <p> Penn State IT does not monitor websites and does not assume responsibility for any published content. 
+              The content authors are responsible for the content of their websites. Use of this service is governed
+                by <a href="https://security.psu.edu/awareness/psu-policies/" target="_blank" rel="nofollow noopener">Penn State 
+                policies and guidelines</a>, including
+                  <a href="https://policy.psu.edu/policies/ad54" target="_blank" rel="nofollow noopener">Penn State IT Web Services Policy</a>.
+                  All pages must be compliant with <a href="https://policies.psu.edu/policies/ad69" target="_blank" rel="noopener">Accessibility 
+                    Standards, Policy AD69</a>.
+            </p>
+          </div>
+        </grid-plate>
+      </page-section>
+      <page-section id="section-7" class="section" accent-color="blue">
+        <h3>Frequently Asked Questions</h3>
+          <hr> 
+        <details> <summary> Who can use HAX? </summary> 
+          <p> Anyone, anywhere! Thanks to HAX being open source, all you need is a web server and a domain name to get s
+            tarted. We also support publishing directly to GitHub pages and other static publishing tools for advanced developer
+            use-cases. If you are part of Penn State though you can just click <a href="https://iam.hax.psu.edu/login.php">log in</a> t
+            o get started immediately! </p> </details> <details> <summary> Who supports HAX? </summary> <p> The HAX user community is su
+              pported internal to Penn State by a collaboration between several units including the College of Arts and Architecture, Eber
+              ly College of Science, College of Information Sciences and Technology, and University Libraries. HAX also receives contribut
+              ions from groups outside of Penn State including Buttercups LLC and community members at large. </p> </details> <details> <summary> 
+                How do I join the community? </summary> <p> Join our community Discord channel to get support from the community and
+                  the HAX team. <a href="https://bit.ly/hax-discord">Join the HAX Discord</a> </p> </details> <details> <summary> Why 
+                    was HAX created? </summary> <div> <p> HAX is a response to a lack of products existing to meet the needs of producing 
+                      accessible and engaging web content in online course environments. The university has a rich history of building a mi
+                      x of custom, open source and buying repurposed commercial products with varying success. </p> <p> HAX was born out of
+                        a university Request For Information (RFI) that sought to build a custom Drupal Instructional Content manage
+                        ment System (iCMS). After requirements were gathered by stakeholders across the university, it was determin
+                        ed that the best path forward was to build a new kind of solution as the system requirements described wer
+                        e far beyond what any commercial product was offering, and no vendors responded to the Request for proposal 
+                        after initial RFI process. </p> </div> </details> <details> <summary> How are decisions made? </summary> <p> D
+                          ecisions about the platform are influenced by a mix of needs from students, faculty and staff either taking cou
+                          rses delivered via the platform or actively building material with the platform. The direction of HAX is steered
+                          by the <em>Core Product Development team</em> which meets monthly and is made up of representatives from any g
+                          roup contributing development, design, or other skillsets toward the platform's development and sustainment. If 
+                          you would like to join the <em>Core Product Development team</em> please co
+                          ntact <a href="mailto:bmr1@psu.edu">Bill Rose, Product Owner</a>. </p> </details> <details> <summary> What's 
+                            with the 8-bit RPG administration design? </summary> <div> <p>Our 8-bit vibe was a design challenge pre
+                              sented to four College of IST students in the Spring of 2022. They were tasked with creating
+                              an over-world design that was fun, inviting, creative, and unique. The team took these requiremen
+                              ts and built an experience that is playful, easy to use, and feels more like playing a video game than
+                                building a websi
+                                te. </p> <div class="rpg-container"> <rpg-character accent-color="orange" seed="tdgpqm6u1n"></rpg-character>
+                                  <rpg-character accent-color="orange" seed="cv6u5ms29n"></rpg-character> 
+                                  <rpg-character accent-color="orange" seed="jgpxs50ngd"></rpg-character>
+                                    <rpg-character accent-color="orange" seed="c2eedydyq2"></rpg-character> 
+                                    <rpg-character accent-color="orange" seed="lvf7xdcw2o"></rpg-character>
+                                    <rpg-character accent-color="orange" seed="tb9cplwx63"></rpg-character> 
+                                    </div> <p>Each RPG style character is unique to the user logging in and helps 
+                                      provide a humanizing and playful element to other aspects of what otherwise would be 
+                                      a mundane administrative interface. Websites produced by HAX can be a mix of professi
+                                      onal and playful but the 8-bit design helps you designate between the admin task and wh
+                                      at end-users see. </p> </div> </details> </div>
+      </page-section>
+      <page-section full preset="video">
+        <video-player source="https://www.youtube.com/watch?v=BlLoHvqiIzg" media-title="A walk through time"></video-player>
+      </page-section>
+      <page-section full bg="orange" filter dark fold scroller image="https://btopro.com/files/scale-50/IMG_20190307_142300.jpg">
+        <h1>Create websites easily with HAX</h1>
+        <simple-cta  filled slot="buttons" link="https://haxtheweb.org/" accent-color="blue" dark>Log in</simple-cta>
+        <simple-cta hide-icon white filled slot="buttons" link="https://haxtheweb.org/" accent-color="blue">Get started</simple-cta>
+      </page-section>
+      <page-section full bg="blue" filter image="https://btopro.com/assets/banner.jpg">
+        <h1>Create websites easily with HAX</h1>
+        <simple-cta link="https://haxtheweb.org/" accent-color="blue" dark>Log in</simple-cta>
+        <simple-cta link="https://haxtheweb.org/" accent-color="blue">Get started</simple-cta>
+      </page-section>
         </div>
       `;
+  }
+
+  renderInstructionalComponents() {
+    return html`
+    <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Instructional Components</h2>
+      <div class="b-xs">
+
+      </div>
+    `;
   }
 
   selectOption() {
