@@ -93,8 +93,11 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: var(--ddd-theme-polaris-info, #383f45);
-          transition: all .3s ease-in-out;
+          --site-menu-button-button-hover-color: var(
+            --ddd-theme-polaris-info,
+            #383f45
+          );
+          transition: all 0.3s ease-in-out;
           color: black;
           border: var(--ddd-border-sm);
           margin: 0;
@@ -236,7 +239,8 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         .body-wrapper .content-wrapper .content {
           margin: 0;
-          padding: 0 var(--ddd-spacing-2) var(--ddd-spacing-8) var(--ddd-spacing-16);
+          padding: 0 var(--ddd-spacing-2) var(--ddd-spacing-8)
+            var(--ddd-spacing-16);
         }
 
         nav {
@@ -288,8 +292,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           --site-menu-color: #000000;
           --site-menu-active-color: #e6ecf1;
           --site-menu-item-active-item-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            rgba(100, 100, 255, 0.1)
+            --ddd-theme-polaris-infoLight
           );
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-xs);
