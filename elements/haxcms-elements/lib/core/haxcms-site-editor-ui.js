@@ -1771,7 +1771,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         </simple-toolbar>
 
         <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu"
-        ?is-open="${this.userMenuOpen}" @mouseleave="${this.closeMenu}">
+        ?is-open="${this.userMenuOpen}">
           <button
             class="topbar-character"
             slot="menuButton"

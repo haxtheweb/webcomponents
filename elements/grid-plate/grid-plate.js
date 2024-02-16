@@ -204,8 +204,8 @@ class GridPlate extends LitElement {
           margin: 0;
         }
         :host .column ::slotted(*) {
-          margin: var(--grid-plate-item-margin, 0);
-          padding: var(--grid-plate-item-padding, 0);
+          margin: var(--grid-plate-item-margin, 16px);
+          padding: var(--grid-plate-item-padding, 16px);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
         }
@@ -673,7 +673,7 @@ class GridPlate extends LitElement {
       }
       switch (propName) {
         case "itemMargin":
-          if (this[propName]) {
+          if (this[propName] && this[propName] !== 16) {
             this.style.setProperty(
               "--grid-plate-item-margin",
               this[propName] + "px",
@@ -683,7 +683,7 @@ class GridPlate extends LitElement {
           }
           break;
         case "itemPadding":
-          if (this[propName]) {
+          if (this[propName] && this[propName] !== 16) {
             this.style.setProperty(
               "--grid-plate-item-padding",
               this[propName] + "px",

@@ -22,7 +22,7 @@ class PageContentsMenu extends DDD {
           font-weight: var(--ddd-font-navigation-light);
           --page-contents-menu-link-color-focus: var(--ddd-theme-polaris-link);
           --page-contents-menu-link: black;
-          --page-contents-menu-link-font-size: var(--ddd-font-size-4xs);
+          --page-contents-menu-link-font-size: var(--ddd-font-size-3xs);
           --page-contents-menu-link-font-size-active: var(--ddd-font-size-xxs);
           --page-contents-menu-link-font-size-focus: var(--ddd-font-size-3xs);
         }
@@ -43,9 +43,8 @@ class PageContentsMenu extends DDD {
           width: unset;
         }
         .wrapper {
-          display: inline-block;
-          padding: 8px;
-          width: 292px;
+          display: block;
+          margin-bottom: 16px;
         }
         .header {
           display: flex;
@@ -59,8 +58,8 @@ class PageContentsMenu extends DDD {
           color: var(--page-contents-menu-link, black);
         }
         svg {
-          width: 1em;
-          height: 1em;
+          width: 32px;
+          height: 32px;
           vertical-align: middle;
         }
         .header .label {
@@ -108,12 +107,12 @@ class PageContentsMenu extends DDD {
           transition: font 0.3s ease-in-out, border 0.1s ease-in-out;
           border-left: rgba(0, 0, 0, 0.1) 1px solid;
         }
-        .link:hover {
+        .link:not(.active):hover {
           text-decoration: underline;
           color: var(--page-contents-menu-link-color-focus, rgb(56, 132, 255));
           font-size: var(--page-contents-menu-link-font-size-focus, 11px);
         }
-        .link:focus {
+        .link:not(.active):focus {
           color: var(--page-contents-menu-link-color-focus, rgb(56, 132, 255));
           font-size: var(--page-contents-menu-link-font-size-focus, 11px);
           outline: 1px solid var(--page-contents-menu-link, black);
@@ -136,6 +135,10 @@ class PageContentsMenu extends DDD {
           font-weight: bold;
           border-left: black 3px solid;
           font-size: var(--page-contents-menu-link-font-size-active, 12px);
+        }
+        :host([mobile]) .link:active,
+        :host([mobile]) .active {
+          border-left: black 2px solid;
         }
       `,
     ];

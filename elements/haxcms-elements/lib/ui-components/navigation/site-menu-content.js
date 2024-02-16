@@ -86,12 +86,17 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
           font-family: var(--ddd-font-navigation);
           font-weight: var(--ddd-font-navigation-bold);
         }
+        simple-icon-button-lite {
+          color: inherit;
+          display: table;
+        }
         simple-icon-button-lite:focus,
         simple-icon-button-lite:hover {
           color: var(--ddd-theme-polaris-link);
         }
         .contents {
           max-height: 80vh;
+          padding: 8px;
           border-bottom: var(--ddd-border-xs);
         }
         @media screen and (max-width: 600px) {
@@ -101,7 +106,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
           .indent-4,
           .indent-5,
           .indent-6 {
-            padding-left: 0;
+            padding-left: 4px;
           }
         }
         :host([hide-if-empty][is-empty]) {
