@@ -13,7 +13,7 @@ import "@lrnwebcomponents/course-design/lib/learning-component.js";
 import "@lrnwebcomponents/course-design/lib/block-quote.js";
 import "@lrnwebcomponents/self-check/self-check.js";
 import "@lrnwebcomponents/media-image/media-image.js";
-import "@lrnwebcomponents/accent-card/lib/accent-card-proposed.js";
+import "@lrnwebcomponents/accent-card/accent-card.js";
 /**
  * `d-d-docs`
  * `design, develop, destroy the competition, documentation`
@@ -1651,16 +1651,16 @@ class DDDocs extends DDD {
       </div>
       <div class="m-10">
         <h3>accent-card</h3>
-        <accent-card-proposed dark link="https://google.com" accent-color="orange" image-src="https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-463043655-1.jpg?resize=1200,630">
+        <accent-card dark link="https://google.com" accent-color="orange" image-src="https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-463043655-1.jpg?resize=1200,630">
           <h3 slot="heading">Default Orientation</h3>
           <div slot="content">This card has the default orientation.</div>
           <div slot="footer">Read More...</div>
-        </accent-card-proposed>
-        <accent-card-proposed accent-background horizontal accent-color="red" link="https://google.com" image-width="" image-src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg">
+        </accent-card>
+        <accent-card accent-background horizontal accent-color="red" link="https://google.com" image-width="" image-src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg">
           <h5 slot="heading">Default Orientation</h5>
           <div slot="content">This card has the default orientation.</div>
           <div slot="footer">Read More...</div>
-        </accent-card-proposed>
+        </accent-card>
     </div>
     `;
   }

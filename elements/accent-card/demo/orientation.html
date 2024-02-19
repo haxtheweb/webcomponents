@@ -9,7 +9,6 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../accent-card.js';
-      import '../lib/accent-card-proposed.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
@@ -19,27 +18,27 @@
       <h1>accent-card Orientation</h1>
       <demo-snippet>
         <template>
-          <accent-card-proposed>
+          <accent-card>
             <h3 slot="heading">Default Orientation</h3>
             <div slot="content">This card has the default orientation.</div>
-          </accent-card-proposed>
-          <accent-card-proposed link="https://google.com">
+          </accent-card>
+          <accent-card link="https://google.com">
             <h3 slot="heading">Default Orientation</h3>
             <div slot="content">This card has the default orientation.</div>
             <div slot="footer">Read More...</div>
-          </accent-card-proposed>
+          </accent-card>
           <div>
-            <accent-card-proposed dark link="https://google.com" accent-color="orange" image-src="https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-463043655-1.jpg?resize=1200,630">
+            <accent-card dark link="https://google.com" accent-color="orange" image-src="https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-463043655-1.jpg?resize=1200,630">
               <h3 slot="heading">Default Orientation</h3>
               <div slot="content">This card has the default orientation.</div>
               <div slot="footer">Read More...</div>
-            </accent-card-proposed>
+            </accent-card>
           </div>
-          <accent-card-proposed accent-background horizontal accent-color="red" link="https://google.com" image-width="" image-src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg">
+          <accent-card accent-background horizontal accent-color="red" link="https://google.com" image-width="" image-src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg">
             <h5 slot="heading">Default Orientation</h5>
             <div slot="content">This card has the default orientation.</div>
             <div slot="footer">Read More...</div>
-          </accent-card-proposed>
+          </accent-card>
         </template>
       </demo-snippet>
     </div>

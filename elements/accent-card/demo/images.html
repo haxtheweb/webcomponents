@@ -8,7 +8,6 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lib/accent-card-proposed.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
@@ -20,46 +19,46 @@
       <h2>Horizontal Alignment</h2>
       <demo-snippet>
         <template>
-          <accent-card-proposed accent-color="blue-grey" accent-heading horizontal image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
+          <accent-card accent-color="blue-grey" accent-heading horizontal image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
             <h3 slot="heading">Accent Card, No Image Alignment</h3>
             <div slot="content">This is an accent card with the default image positioning (without alignment).
               <p>This is just used as a reference to see the full image and how it interacts with the different alignments.</p>
             </div>
-          </accent-card-proposed>
-          <accent-card-proposed accent-color="blue-grey" accent-heading horizontal image-align image-width="narrow" image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
+          </accent-card>
+          <accent-card accent-color="blue-grey" accent-heading horizontal image-align image-width="narrow" image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
             <h3 slot="heading">Accent Card, Default Image Alignment</h3>
             <div slot="content">This is an accent card with the default image positioning.</div>
-          </accent-card-proposed>
-          <accent-card-proposed image-align="left" accent-color="blue-grey" accent-heading horizontal image-width="narrow" image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
+          </accent-card>
+          <accent-card image-align="left" accent-color="blue-grey" accent-heading horizontal image-width="narrow" image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
             <h3 slot="heading">Accent Card, Image Aligned to Left</h3>
             <div slot="content">This is an accent card with the <mark>left</mark> of the image in position.</div>
-          </accent-card-proposed>
-          <accent-card-proposed image-align="right" accent-color="blue-grey" accent-heading horizontal image-width="narrow" image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
+          </accent-card>
+          <accent-card image-align="right" accent-color="blue-grey" accent-heading horizontal image-width="narrow" image-src="https://highlandcanine.com/wp-content/uploads/2021/01/siberian-husky-in-the-snow.jpg">
             <h3 slot="heading">Accent Card, Image Aligned to Right</h3>
             <div slot="content">This is an accent card with the <mark>right</mark> of the image in position.</div>
-          </accent-card-proposed>
+          </accent-card>
         </template>
       </demo-snippet>
 
       <h2>Vertical Alignment</h2>
       <demo-snippet>
         <template>
-          <accent-card-proposed accent-color="pink" horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
+          <accent-card accent-color="pink" horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
             <h3 slot="heading">Accent Card, No Image Alignment</h3>
             <div slot="content">This is an accent card with the no image positioning.</div>
-          </accent-card-proposed>
-          <accent-card-proposed accent-color="pink" image-width="wide" image-valign horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
+          </accent-card>
+          <accent-card accent-color="pink" image-width="wide" image-valign horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
             <h3 slot="heading">Accent Card, Default Image Alignment</h3>
             <div slot="content">This is an accent card with the default image positioning.</div>
-          </accent-card-proposed>
-          <accent-card-proposed image-valign="top" image-width="wide" accent-color="pink" horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
+          </accent-card>
+          <accent-card image-valign="top" image-width="wide" accent-color="pink" horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
             <h3 slot="heading">Accent Card, Image Aligned to Top</h3>
             <div slot="content">This is an accent card with the <mark>top</mark> of the image in position.</div>
-          </accent-card-proposed>
-          <accent-card-proposed image-valign="bottom" image-width="wide" accent-color="pink" horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
+          </accent-card>
+          <accent-card image-valign="bottom" image-width="wide" accent-color="pink" horizontal image-src="https://vgl.ucdavis.edu/sites/g/files/dgvnsk15116/files/media/images/German-Shepherd-Health-Panel-600px.jpg">
             <h3 slot="heading">Accent Card, Image Aligned to Bottom</h3>
             <div slot="content">This is an accent card with the <mark>bottom</mark> of the image in position.</div>
-          </accent-card-proposed>
+          </accent-card>
         </template>
       </demo-snippet>
     </div>
