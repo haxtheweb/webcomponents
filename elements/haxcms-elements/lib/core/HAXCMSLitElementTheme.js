@@ -703,7 +703,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           // primary design
           if (
             globalThis.HaxStore &&
-            globalThis.HaxStore.requestAvailability()
+            globalThis.HaxStore.requestAvailability() &&
+            globalThis.HaxStore.requestAvailability().activeHaxBody &&
+            globalThis.HaxStore.requestAvailability().activeHaxBody.shadowRoot
           ) {
             render(
               this.HAXCMSGlobalStyleSheetEditModeContent(),

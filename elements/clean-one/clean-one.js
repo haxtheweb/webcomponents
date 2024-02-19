@@ -54,34 +54,25 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
       ...super.styles,
       css`
         :host {
-          color: #242a31;
           width: 100%;
           margin: 0;
           display: flex;
           padding: 0;
-          background: #f5f7f9;
           min-height: 100vh;
           flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
-          --simple-tooltip-background: #000000;
+          --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
+          background: white;
+          --simple-tooltip-background: var(--ddd-theme-polaris-info);
+          --simple-tooltip-text-color: var(--ddd-theme-polaris-infoLight);
           --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
+          --hax-base-styles-a-color-active: #000000;
         }
         site-git-corner {
           --site-git-corner-background: black;
-        }
-        simple-tooltip {
-          --simple-tooltip-background: var(
-            --haxcms-tooltip-background-color,
-            #000000
-          );
-          --simple-tooltip-text-color: var(--haxcms-tooltip-color, #ffffff);
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-border-radius: 0;
         }
 
         :host([hidden]) {
@@ -101,14 +92,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
         .btn-container .btn {
           padding: 8px 4px;
         }
-        simple-tooltip {
-          --simple-tooltip-background: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
-          --simple-tooltip-text-color: var(
-            --haxcms-user-styles-color-theme-color-2
-          );
-        }
         site-menu {
           height: var(--clean-one-site-menu-height, calc(100vh - 60px));
           --site-menu-active-color: var(
@@ -118,10 +101,8 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
             --simple-colors-default-theme-light-blue-1,
             rgba(100, 100, 255, 0.1)
           );
-          --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
-          --haxcms-tooltip-background-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
+          --haxcms-tooltip-color: var(--ddd-theme-polaris-infoLight);
+          --haxcms-tooltip-background-color: var(--ddd-theme-polaris-info);
           --map-menu-item-a-active-background-color: var(
             --simple-colors-default-theme-grey-1,
             rgba(200, 200, 200, 0.1)
@@ -156,25 +137,29 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           --simple-icon-fill-color: var(
             --haxcms-user-styles-color-theme-color-1
           );
-          --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
-          --haxcms-tooltip-background-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
+          --haxcms-tooltip-color: var(--ddd-theme-polaris-infoLight);
+          --haxcms-tooltip-background-color: var(--ddd-theme-polaris-info);
         }
         .pdf-page-btn,
         .print-branch-btn {
           padding: 8px 4px;
           display: inline-flex;
         }
+        site-breadcrumb {
+          --site-breadcrumb-margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-7);
+        }
         site-menu-button {
           --site-menu-button-icon-fill-color: var(
             --haxcms-user-styles-color-theme-color-1
           );
-          --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
-          --haxcms-tooltip-background-color: var(
-            --haxcms-user-styles-color-theme-color-1
+          --site-menu-button-link-decoration: none;
+          --site-menu-button-button-hover-color: var(
+            --ddd-theme-polaris-info,
+            #383f45
           );
-          --site-menu-button-button-hover-background-color: rgba(0, 0, 0, 0.1);
+          --haxcms-tooltip-color: var(--ddd-theme-polaris-infoLight);
+          --haxcms-tooltip-background-color: var(--ddd-theme-polaris-info);
+          --site-menu-button-button-hover-background-color: var(--ddd-theme-polaris-limestoneLight);
         }
         scroll-button,
         site-breadcrumb {
@@ -196,19 +181,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
         }
         /* links */
 
-        a {
-          text-decoration: none;
-        }
-        a:hover,
-        a:focus,
-        a:active {
-          outline: thin dotted;
-        }
-        a:-webkit-any-link {
-          color: -webkit-link;
-          cursor: pointer;
-          text-decoration: underline;
-        }
         :host([menu-open]) .menu-outline {
           left: 0;
         }
@@ -220,9 +192,9 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           z-index: 1;
           overflow-y: hidden;
           width: 300px;
-          color: #364149;
-          background: #fafafa;
-          border-right: 1px solid rgba(0, 0, 0, 0.07);
+          color: black;
+          background: var(--ddd-theme-polaris-shrineMaxLight);
+          border-right: var(--ddd-border-xs);
           transition: left 0.3s ease;
         }
         /* content */
@@ -264,7 +236,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
         #emailbtnwrapper {
           display: inline-flex;
         }
-        .main-content *,
         .main-content ::slotted(*) {
           box-sizing: border-box;
           -webkit-box-sizing: border-box;
@@ -464,11 +435,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           bottom: 0;
           overflow-y: auto;
         }
-        .main-content * {
-          box-sizing: border-box;
-          -webkit-box-sizing: border-box;
-          font-size: inherit;
-        }
         .page-wrapper {
           position: relative;
           outline: 0;
@@ -505,9 +471,7 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           right: 0;
         }
         .main-content site-active-title h1 {
-          font-size: 36px;
-          margin: 20px 0;
-          text-rendering: optimizeLegibility;
+          margin: 0 0 var(--ddd-spacing-4) 0;
         }
         .navigation {
           position: fixed;
