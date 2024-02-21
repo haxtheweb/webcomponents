@@ -2,14 +2,14 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { css, html } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { css, html } from "lit";
-
+import { copyToClipboard } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
@@ -21,7 +21,7 @@ import { css, html } from "lit";
  * @element video-player
  */
 class VideoPlayer extends IntersectionObserverMixin(
-  MediaBehaviorsVideo(SchemaBehaviors(I18NMixin(DDD)))
+  MediaBehaviorsVideo(SchemaBehaviors(I18NMixin(DDD))),
 ) {
   //styles function
   static get styles() {
@@ -39,49 +39,49 @@ class VideoPlayer extends IntersectionObserverMixin(
         }
         a11y-media-player {
           box-shadow: var(--ddd-boxShadow-lg);
-          --a11y-media-color: var(--video-player-color, var(
-            --simple-colors-default-theme-grey-11,
-            #111111
-          ));
+          --a11y-media-color: var(
+            --video-player-color,
+            var(--simple-colors-default-theme-grey-11, #111111)
+          );
 
-          --a11y-media-caption-color: var(--video-player-caption-color, var(
-            --simple-colors-default-theme-grey-2,
-            #eeeeee
-          ));
-          --a11y-media-bg-color: var(--video-player-bg-color, var(
-            --simple-colors-default-theme-grey-2,
-            #eeeeee
-          ));
+          --a11y-media-caption-color: var(
+            --video-player-caption-color,
+            var(--simple-colors-default-theme-grey-2, #eeeeee)
+          );
+          --a11y-media-bg-color: var(
+            --video-player-bg-color,
+            var(--simple-colors-default-theme-grey-2, #eeeeee)
+          );
 
-          --a11y-media-border-color: var(--video-player-border-color, var(
-            --simple-colors-default-theme-grey-3,
-            #dddddd
-          ));
+          --a11y-media-border-color: var(
+            --video-player-border-color,
+            var(--simple-colors-default-theme-grey-3, #dddddd)
+          );
 
-          --a11y-media-hover-color: var(--video-player-hover-color, var(
-            --simple-colors-default-theme-grey-12,
-            #000000
-          ));
+          --a11y-media-hover-color: var(
+            --video-player-hover-color,
+            var(--simple-colors-default-theme-grey-12, #000000)
+          );
 
-          --a11y-media-hover-bg-color: var(--video-player-hover-bg-color, var(
-            --simple-colors-default-theme-grey-2,
-            #eeeeee
-          ));
+          --a11y-media-hover-bg-color: var(
+            --video-player-hover-bg-color,
+            var(--simple-colors-default-theme-grey-2, #eeeeee)
+          );
 
-          --a11y-media-accent-color: var(--video-player-accent-color, var(
-            --simple-colors-default-theme-grey-9,
-            #333333
-          ));
+          --a11y-media-accent-color: var(
+            --video-player-accent-color,
+            var(--simple-colors-default-theme-grey-9, #333333)
+          );
 
-          --a11y-media-faded-accent-color: var(--video-player-faded-accent-color, var(
-            --simple-colors-default-theme-grey-8,
-            #444444
-          ));
+          --a11y-media-faded-accent-color: var(
+            --video-player-faded-accent-color,
+            var(--simple-colors-default-theme-grey-8, #444444)
+          );
 
-          --a11y-media-disabled-color: var(--video-player-disabled-color, var(
-            --simple-colors-default-theme-grey-5,
-            #bbbbbb
-          ));
+          --a11y-media-disabled-color: var(
+            --video-player-disabled-color,
+            var(--simple-colors-default-theme-grey-5, #bbbbbb)
+          );
         }
       `,
     ];
@@ -207,6 +207,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         meta: {
           author: "HAXTheWeb core team",
           outlineDesigner: true,
+          anchorLabel: "mediaTitle"
         },
       },
       settings: {
@@ -750,7 +751,7 @@ class VideoPlayer extends IntersectionObserverMixin(
 
   get audioOnly() {
     let videos = this.sourceData.filter(
-      (item) => item.type.indexOf("audio") > -1
+      (item) => item.type.indexOf("audio") > -1,
     );
     return videos.length > 1;
   }
@@ -808,7 +809,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     ) {
       return this._computeSRC(this.sourceData[0].src).replace(
         /.*\/embed\//,
-        ""
+        "",
       );
     }
     return;
@@ -890,7 +891,26 @@ class VideoPlayer extends IntersectionObserverMixin(
   haxHooks() {
     return {
       postProcessNodeToContent: "haxpostProcessNodeToContent",
+      inlineContextMenu: "haxinlineContextMenu",
     };
+  }
+
+  /**
+   * add buttons when it is in context
+   */
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "hax:anchor",
+        callback: "haxClickTimeCode",
+        label: "Copy current timecode",
+      }
+    ];
+  }
+  haxClickTimeCode(e) {
+    this.pause();
+    copyToClipboard(parseInt(this.currentTime));
+    return true;
   }
   /**
    * postProcesshaxNodeToContent - clean up so we don't have empty array data
@@ -917,7 +937,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       typeof this.sourceData[0].src !== typeof undefined
     ) {
       this.sourceType = globalThis.MediaBehaviors.Video.getVideoType(
-        this.sourceData[0].src
+        this.sourceData[0].src,
       );
     }
   }
@@ -938,7 +958,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         typeof oldValue !== typeof undefined
       ) {
         let type = globalThis.MediaBehaviors.Video.getVideoType(
-          this.sourceData[0].src
+          this.sourceData[0].src,
         );
         if (type != this.sourceType) {
           this.sourceType = type;
@@ -978,7 +998,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         document.addEventListener(
           "visibilitychange",
           this._visChange.bind(this),
-          { signal: this.windowControllers.signal }
+          { signal: this.windowControllers.signal },
         );
       }
     });
@@ -990,8 +1010,50 @@ class VideoPlayer extends IntersectionObserverMixin(
       typeof this.sourceData[0].src !== typeof undefined
     ) {
       this.sourceType = globalThis.MediaBehaviors.Video.getVideoType(
-        this.sourceData[0].src
+        this.sourceData[0].src,
       );
+    }
+  }
+  /**
+   * mapping down into the shadowRoot element bc these are common things to want to know
+   */
+  get currentTime() {
+    if (
+      this.shadowRoot
+    ) {
+      return this.shadowRoot.querySelector("a11y-media-player").currentTime;
+    }
+    return 0;
+  }
+  restart() {
+    this.pause();
+    this.seek(0);
+    this.play();
+  }
+  pause() {
+    if (
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("a11y-media-player").__playing
+    ) {
+      this.shadowRoot.querySelector("a11y-media-player").pause();
+    }
+  }
+  play() {
+    if (
+      this.shadowRoot &&
+      !this.shadowRoot.querySelector("a11y-media-player").__playing
+    ) {
+      this.shadowRoot.querySelector("a11y-media-player").play();
+    }
+  }
+  seek(time) {
+    if (this.shadowRoot) {
+      if (!this.shadowRoot.querySelector("a11y-media-player").__playing) {
+        this.play();
+      }
+      setTimeout(() => {
+        this.shadowRoot.querySelector("a11y-media-player").seek(parseInt(time));
+      }, 0);
     }
   }
   _visChange(e) {

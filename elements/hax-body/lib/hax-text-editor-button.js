@@ -88,7 +88,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     this.label = gizmo.title || gizmo.tag;
     this.value = this.getValue(undefined);
     this.dispatchEvent(
-      new CustomEvent("deregister-button", {
+      new CustomEvent("register-button", {
         bubbles: true,
         cancelable: true,
         composed: true,

@@ -2,10 +2,11 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css, LitElement } from "lit";
+import { html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
@@ -19,7 +20,7 @@ import { pageBreakManager } from "./lib/page-break-manager.js";
  * @element page-break
  */
 export class PageBreak extends IntersectionObserverMixin(
-  I18NMixin(SchemaBehaviors(LitElement))
+  I18NMixin(SchemaBehaviors(DDD))
 ) {
   static get tag() {
     return "page-break";
@@ -28,6 +29,8 @@ export class PageBreak extends IntersectionObserverMixin(
     super();
     this.relatedItems = null;
     this.icon = null;
+    this.color = null;
+    this.entityType = 'page';
     this.status = "";
     this.t = {
       newPage: "New page",
@@ -87,6 +90,8 @@ export class PageBreak extends IntersectionObserverMixin(
         attribute: "related-items",
       },
       icon: { type: String },
+      color: { type: String },
+      entityType: { type: String, attribute: "entity-type" },
       description: { type: String },
       order: { type: Number },
       hideInMenu: { type: Boolean, attribute: "hide-in-menu" },
@@ -378,16 +383,17 @@ export class PageBreak extends IntersectionObserverMixin(
   }
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
           opacity: 0;
-          height: 1px;
+          height: var(--ddd-spacing-1);
         }
         :host([data-hax-ray]) {
           display: block;
-          margin: 20px 0;
-          padding: 20px;
+          margin: var(--ddd-spacing-5) 0;
+          padding: var(--ddd-spacing-5);
           opacity: 0.2;
           background-position: center;
           background-repeat: no-repeat;
@@ -395,9 +401,9 @@ export class PageBreak extends IntersectionObserverMixin(
         }
         .mid {
           border: none;
-          border-top: 2px solid #cccccc;
+          border-top: var(--ddd-border-sm);
           overflow: visible;
-          margin: 4px 0 0 0;
+          margin: var(--ddd-spacing-1) 0 0 0;
           padding: 0;
           height: 0;
         }
@@ -411,28 +417,20 @@ export class PageBreak extends IntersectionObserverMixin(
           font-weight: bold;
           color: #000000;
           background-color: #ffffff;
-          font-size: 16px;
+          font-size: var(--ddd-font-size-4xs);
           left: calc(50% - 3em);
-          top: -8px;
+          top: calc(-1 * var(--ddd-spacing-2));
           position: relative;
           height: 0;
-          line-height: 36px;
+          line-height: var(--ddd-spacing-9);
         }
         simple-icon-button-lite {
           float: right;
           color: #000000;
-          --simple-icon-width: 36px;
-          --simple-icon-height: 36px;
+          --simple-icon-width: var(--ddd-icon-sm);
+          --simple-icon-height: var(--ddd-icon-sm);
           margin-top: -28px;
           margin-right: -46px;
-        }
-        .sr-only {
-          position: absolute;
-          left: -10000px;
-          top: auto;
-          width: 1px;
-          height: 1px;
-          overflow: hidden;
         }
       `,
     ];

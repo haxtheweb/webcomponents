@@ -82,6 +82,7 @@ class Store {
       isLoggedIn: computed, // simple boolean for state so we can style based on logged in
       themeData: computed, // get the active theme from manifest + activeId
       regionData: computed, // get the active region data from manifest + activeId
+      entityData: computed, // get entity data from manifest
       homeLink: computed,
       activeId: observable, // this affects all state changes associated to activeItem
       activeItem: computed, // active item object
@@ -99,6 +100,28 @@ class Store {
       badDevice: observable, // if we have a low performance device
     });
   }
+
+  /**
+   * entityData is pulled out of theme info
+   */
+ get entityData() {
+    if (this.manifest && this.manifest.items) {
+      var entityData = {};
+      this.manifest.items.map((item) => {
+        if (item.metadata) {
+          entityData[item.id] = {
+            id: item.id,
+            title: item.title,
+            color: item.metadata.color || null,
+            icon: item.metadata.icon || null,
+            type: item.metadata.entityType || 'page'
+          };
+        }
+      });
+      return entityData;
+    }
+  }
+
   /**
    * regionData is pulled out of theme info
    */

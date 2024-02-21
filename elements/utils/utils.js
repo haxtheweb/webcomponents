@@ -3,6 +3,33 @@
  */
 
 /**
+ * copy to clipboard w/ toast and authorization
+ * based on https://www.freecodecamp.org/news/copy-text-to-clipboard-javascript/
+ */
+export async function copyToClipboard(value) {
+  let msg = `Copied ${value} to clipboard`;
+  // the official way but they have to authorize it in navigator hence async
+  try {
+    await globalThis.navigator.clipboard.writeText(value);
+  } catch (err) {
+    msg = "Failed to authorize copy, refresh and authorize action";
+  }
+  let toastShowEventName = globalThis.HAXCMSToast ? "haxcms-toast-show" : "simple-toast-show";
+  // gets it all the way to the top immediately
+  globalThis.dispatchEvent(
+    new CustomEvent(toastShowEventName, {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: msg,
+        duration: 3000,
+      },
+    })
+  );
+}
+
+/**
  * Convert a base64 encoded string to type Blob
  * @param {String} b64Data - base64 encoded string
  * @param {String} contentType - type to mark as the encoding of the blob

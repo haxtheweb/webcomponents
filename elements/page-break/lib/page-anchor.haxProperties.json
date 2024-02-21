@@ -1,0 +1,52 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "api": "1",
+  "gizmo": {
+    "title": "Page Anchor",
+    "description": "Link to specific points in a video on the page",
+    "icon": "hax:anchor",
+    "color": "grey",
+    "tags": [
+      "Other",
+      "video-player",
+      "audio-player",
+      "play-list",
+      "time-line",
+      "site",
+      "taxonomy",
+      "config",
+      "entity"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "inlineOnly": true
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Page target",
+        "description": "ID or resource that the anchor relates the material to",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "value",
+        "title": "Deep link Value",
+        "description": "Value associated to the anchor, example: timestamp, slide id, etc.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "entityId",
+        "title": "Site entity",
+        "description": "Optional Associated site entity. This allows the site to control the presentation of the related entity concept, taxonomy, etc. Otherwise color and icon defaults to the related item.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  }
+}

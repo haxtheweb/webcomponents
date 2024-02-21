@@ -5,18 +5,16 @@ import "../video-player.js";
 describe("video-player test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html`
-        <video-player id="example" accent-color="amber" linkable>
-          <video>
-            <source
-              src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </video-player>
-      `
-    );
+    element = await fixture(html`
+      <video-player id="example" accent-color="amber" linkable>
+        <video>
+          <source
+            src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </video-player>
+    `);
   });
 
   it("passes the a11y audit", async () => {

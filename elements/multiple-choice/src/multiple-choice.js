@@ -403,7 +403,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
    * Reset user answers and shuffle the board again.
    */
   resetAnswers(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
         bubbles: true,
         composed: true,
@@ -451,7 +451,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
    * that they want to see how they did.
    */
   _verifyAnswers(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
         bubbles: true,
         composed: true,
@@ -463,7 +463,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
     let extras = {};
     let toastShowEventName = "simple-toast-show";
     // support for haxcms toast
-    if (window.HAXCMSToast) {
+    if (globalThis.HAXCMSToast) {
       toastShowEventName = "haxcms-toast-show";
       si.style.setProperty("--simple-icon-height", "40px");
       si.style.setProperty("--simple-icon-width", "40px");
@@ -494,7 +494,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
     si.accentColor = this.__toastColor;
     si.dark = true;
     // gets it all the way to the top immediately
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent(toastShowEventName, {
         bubbles: true,
         composed: true,
@@ -685,5 +685,5 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
     }
   }
 }
-window.customElements.define(MultipleChoice.tag, MultipleChoice);
+globalThis.customElements.define(MultipleChoice.tag, MultipleChoice);
 export { MultipleChoice };

@@ -1172,6 +1172,7 @@
   "autoloader": {
     "haxcms-site-disqus": "@lrnwebcomponents/disqus-embed/lib/haxcms-site-disqus.js",
     "discord-embed": "@lrnwebcomponents/discord-embed/discord-embed.js",
+    "page-anchor": "@lrnwebcomponents/page-break/lib/page-anchor.js",
     "collection-list": "@lrnwebcomponents/collection-list/collection-list.js",
     "collection-item": "@lrnwebcomponents/collection-list/lib/collection-item.js",
     "page-section": "@lrnwebcomponents/page-section/page-section.js",

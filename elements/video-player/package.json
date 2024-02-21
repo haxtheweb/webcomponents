@@ -49,8 +49,7 @@
     "@lrnwebcomponents/intersection-element": "^8.0.0",
     "@lrnwebcomponents/media-behaviors": "^8.0.0",
     "@lrnwebcomponents/schema-behaviors": "^8.0.0",
-    "@lrnwebcomponents/simple-colors": "^8.0.0",
-    "@lrnwebcomponents/simple-colors-shared-styles": "^8.0.0",
+    "@lrnwebcomponents/d-d-d": "^8.0.0",
     "@lrnwebcomponents/utils": "^8.0.0",
     "lit": "^3.1.2"
   },

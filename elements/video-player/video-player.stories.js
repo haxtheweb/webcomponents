@@ -15,6 +15,6 @@ export const BasicVideoPlayer = () => {
   return utils.makeUsageDocs(
     VideoPlayer,
     import.meta.url,
-    utils.makeElementFromHaxDemo(VideoPlayer)
+    utils.makeElementFromHaxDemo(VideoPlayer),
   );
 };

@@ -695,7 +695,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * @returns
    * @memberof HaxTextEditorToolbar
    */
-  _setInlineElement(tag, props) {
+  async _setInlineElement(tag, props) {
     //skip if tag is already registered
     if (
       !tag ||

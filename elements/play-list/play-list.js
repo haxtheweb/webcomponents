@@ -11,6 +11,7 @@ import { generateStyleLinkEls } from "./lib/SLStyleManager.js";
 import {
   haxElementToNode,
   nodeToHaxElement,
+  copyToClipboard
 } from "@lrnwebcomponents/utils/utils.js";
 
 /**
@@ -278,6 +279,11 @@ class PlayList extends LitElement {
     };
   }
 
+  haxClickSlideIndex(e) {
+    copyToClipboard(this.slide);
+    return true;
+  }
+
   /**
    * add buttons when it is in context
    */
@@ -288,6 +294,11 @@ class PlayList extends LitElement {
         callback: "haxToggleEdit",
         label: "Toggle edit mode",
       },
+      {
+        icon: "hax:anchor",
+        callback: "haxClickSlideIndex",
+        label: "Copy slide index",
+      }
     ];
   }
   haxToggleEdit(e) {

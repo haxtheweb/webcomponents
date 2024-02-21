@@ -125,10 +125,28 @@
         "inputMethod": "textfield"
       },
       {
+        "property": "entityType",
+        "title": "Entity Type",
+        "description": "All entities are pages unless otherwise set",
+        "inputMethod": "select",
+        "options": {
+          "page": "Page (default)",
+          "taxonomy": "Taxonomy",
+          "taxonomyTerm": "Taxonomy Term",
+          "region": "Region"
+        }
+      },
+      {
         "property": "icon",
         "title": "Icon",
-        "description": "This will override page type if you have a specific one",
+        "description": "Icon to associate with this item in the site",
         "inputMethod": "iconpicker"
+      },
+      {
+        "property": "color",
+        "title": "Color",
+        "description": "Color associated with this item in the site",
+        "inputMethod": "colorpicker"
       },
       {
         "property": "hideInMenu",

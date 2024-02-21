@@ -2356,7 +2356,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     );
   }
 
-  _richTextEditorPromptOpen() {
+  async _richTextEditorPromptOpen(e) {
+    if (e.detail.element && e.detail.element.gizmo.tag) {
+      const fakeNode = globalThis.document.createElement(e.detail.element.gizmo.tag);
+      // @see haxHook: setupActiveElementForm - allow elements to modify the properties to be rendered
+      if (HAXStore.testHook(fakeNode, "setupActiveElementForm")) {
+        await HAXStore.runHook(fakeNode, "setupActiveElementForm", [e.detail.element]);
+      }
+    }
+    // support contextual hax hooks for active item form overwrites
+
     // verify that we are not overflowing, a lot of themes have this ability
     // which renders hax popups very difficult / unreliable to work with
     const compStyles = globalThis.getComputedStyle(globalThis.document.body);
