@@ -73,7 +73,7 @@
         },
         {
           "name": "cardColor",
-          "description": "`cardColor` {`string`} - \n\nProperty: cardColor\n\nDefault: var(--ddd-theme-polaris-white)"
+          "description": "`cardColor` {`string`} - \n\nProperty: cardColor\n\nDefault: var(--ddd-theme-default-white)"
         },
         {
           "name": "accent-color",

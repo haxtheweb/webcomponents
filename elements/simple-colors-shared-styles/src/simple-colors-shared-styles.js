@@ -1001,7 +1001,7 @@ class SimpleColorsSharedStyles extends LitElement {
         isLarge,
         colorName,
         colorShade,
-        color
+        color,
       );
     });
     return result;
@@ -1021,7 +1021,7 @@ class SimpleColorsSharedStyles extends LitElement {
     colorName,
     colorShade,
     contrastName,
-    contrastShade
+    contrastShade,
   ) {
     let hasGrey =
         colorName === "grey" || contrastName === "grey"
@@ -1061,7 +1061,7 @@ export { SimpleColorsSharedStyles };
 globalThis.SimpleColorsSharedStyles.requestAvailability = () => {
   if (globalThis.SimpleColorsSharedStyles.instance == null) {
     globalThis.SimpleColorsSharedStyles.instance = document.createElement(
-      "simple-colors-shared-styles"
+      "simple-colors-shared-styles",
     );
     globalThis.SimpleColorsSharedStyles.colors =
       globalThis.SimpleColorsSharedStyles.instance.colors;

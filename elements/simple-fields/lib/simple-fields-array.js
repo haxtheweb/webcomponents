@@ -161,7 +161,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
           lg: 1000,
           xl: 2000,
         },
-      })
+      }),
     );
   }
   updated(changedProperties) {
@@ -208,7 +208,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.dispatchEvent(
       new CustomEvent("add", {
         detail: this,
-      })
+      }),
     );
   }
 
@@ -222,7 +222,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.dispatchEvent(
       new CustomEvent("remove", {
         detail: e.detail,
-      })
+      }),
     );
   }
   /**
@@ -280,7 +280,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.dispatchEvent(
       new CustomEvent("toggle", {
         detail: this,
-      })
+      }),
     );
     if (this.expanded) {
       /**
@@ -291,7 +291,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
       this.dispatchEvent(
         new CustomEvent("expand", {
           detail: this,
-        })
+        }),
       );
     } else {
       /**
@@ -302,7 +302,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
       this.dispatchEvent(
         new CustomEvent("collapse", {
           detail: this,
-        })
+        }),
       );
     }
   }

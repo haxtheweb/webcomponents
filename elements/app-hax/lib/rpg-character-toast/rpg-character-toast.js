@@ -7,7 +7,7 @@ const SpeechBubbleL = new URL("./images/SpeechBubbleL.svg", import.meta.url)
   .href;
 const SpeechBubbleMiddle = new URL(
   "./images/SpeechBubbleMiddle.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 const SpeechBubbleR = new URL("./images/SpeechBubbleR.svg", import.meta.url)
   .href;
@@ -300,12 +300,12 @@ export class RPGCharacterToast extends SimpleToastEl {
     globalThis.addEventListener(
       "rpg-character-toast-hide",
       this.hideSimpleToast.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
       "rpg-character-toast-show",
       this.showSimpleToast.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 

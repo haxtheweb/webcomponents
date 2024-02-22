@@ -199,13 +199,13 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
     haxProps.settings.configure = haxProps.settings.configure.concat(
       lineBar.gridBackground,
       lineConfig,
-      lineBar.padding
+      lineBar.padding,
     );
     haxProps.settings.advanced = haxProps.settings.advanced.concat(
       lineBar.minMax,
       lineAdvanced,
       lineBar.xAxis,
-      lineBar.yAxis
+      lineBar.yAxis,
     );
     return haxProps;
   }
@@ -241,7 +241,7 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
             y: this.pointLabelsOffsetY,
           },
           textAnchor: ["start", "end", "middle"].includes(
-            this.pointLabelsAnchor
+            this.pointLabelsAnchor,
           )
             ? this.pointLabelsAnchor
             : "middle",

@@ -28,8 +28,8 @@ export const LoremDataBehaviors = function (SuperClass) {
       ]
         .map((iconset) =>
           ((iconset || {}).icons || []).map((icon) =>
-            iconset.name == "icons" ? icon : `${iconset.name}:${icon}`
-          )
+            iconset.name == "icons" ? icon : `${iconset.name}:${icon}`,
+          ),
         )
         .flat();
     }
@@ -116,19 +116,19 @@ export const LoremDataBehaviors = function (SuperClass) {
       return !d
         ? ""
         : format === "long"
-        ? d.toLocaleDateString(undefined, {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })
-        : format === "short"
-        ? d.toLocaleDateString(undefined, { month: "long", day: "numeric" })
-        : d.toLocaleDateString(undefined, {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          });
+          ? d.toLocaleDateString(undefined, {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          : format === "short"
+            ? d.toLocaleDateString(undefined, { month: "long", day: "numeric" })
+            : d.toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              });
     }
 
     /**
@@ -169,7 +169,7 @@ export const LoremDataBehaviors = function (SuperClass) {
       minwidth = 200,
       maxwidth = 1000,
       minheight = 200,
-      maxheight = 1000
+      maxheight = 1000,
     ) {
       let w = this.randomNumber(minwidth, maxwidth, 1),
         h = this.randomNumber(minheight, maxheight, 1);
@@ -201,16 +201,16 @@ export const LoremDataBehaviors = function (SuperClass) {
         units === "milliseconds"
           ? this.randomNumber(min, max)
           : units === "seconds"
-          ? this.randomNumber(min * 1000, max * 1000)
-          : units === "minutes"
-          ? this.randomNumber(min * 60000, max * 60000)
-          : units === "hours"
-          ? this.randomNumber(min * 3600000, max * 3600000)
-          : units === "days"
-          ? this.randomNumber(min * 86400000, max * 86400000)
-          : units === "weeks"
-          ? this.randomNumber(min * 604800000, max * 604800000)
-          : this.randomNumber(min * 31536000000, max * 31536000000);
+            ? this.randomNumber(min * 1000, max * 1000)
+            : units === "minutes"
+              ? this.randomNumber(min * 60000, max * 60000)
+              : units === "hours"
+                ? this.randomNumber(min * 3600000, max * 3600000)
+                : units === "days"
+                  ? this.randomNumber(min * 86400000, max * 86400000)
+                  : units === "weeks"
+                    ? this.randomNumber(min * 604800000, max * 604800000)
+                    : this.randomNumber(min * 31536000000, max * 31536000000);
       return start + amt;
     }
 
@@ -257,7 +257,7 @@ export const LoremDataBehaviors = function (SuperClass) {
       aspect = this.randomAspect(),
       searchTerms = [],
       searchAll = false,
-      multiple = -1
+      multiple = -1,
     ) {
       return `https://loremflickr.com/${aspect}${
         searchTerms.length === 0
@@ -270,10 +270,10 @@ export const LoremDataBehaviors = function (SuperClass) {
       return topic && ["man", "woman", "person"].includes(topic)
         ? this.randomProfileImage(aspect, topic)
         : typeof multiple === typeof undefined
-        ? this.randomPlaceImg(aspect, greyscale, topic)
-        : topic === "any"
-        ? this.randomPicsum(aspect, greyscale, undefined, multiple)
-        : this.randomFlickr(aspect, [topic], false, multiple);
+          ? this.randomPlaceImg(aspect, greyscale, topic)
+          : topic === "any"
+            ? this.randomPicsum(aspect, greyscale, undefined, multiple)
+            : this.randomFlickr(aspect, [topic], false, multiple);
     }
 
     randomImageData(aspect = this.randomAspect(), greyscale, topic, multiple) {
@@ -313,7 +313,7 @@ export const LoremDataBehaviors = function (SuperClass) {
     randomObject(schema = {}) {
       let obj = {};
       Object.keys(schema).forEach(
-        (key) => (obj[key] = this.randomType(schema[key]))
+        (key) => (obj[key] = this.randomType(schema[key])),
       );
       return obj;
     }
@@ -356,8 +356,8 @@ export const LoremDataBehaviors = function (SuperClass) {
         filter === "greyscale"
           ? "/greyscale"
           : filter === "sepia"
-          ? "/sepia"
-          : ""
+            ? "/sepia"
+            : ""
       }`;
     }
 
@@ -386,7 +386,7 @@ export const LoremDataBehaviors = function (SuperClass) {
       sentMinPerPara = 2,
       sentMaxPerPara = 5,
       wordMinPerSent = 3,
-      wordMaxPerSent = 10
+      wordMaxPerSent = 10,
     ) {
       let passage = [];
       for (let i = this.randomNumber(min, max); i > 0; i--) {
@@ -395,8 +395,8 @@ export const LoremDataBehaviors = function (SuperClass) {
             sentMinPerPara,
             sentMaxPerPara,
             wordMinPerSent,
-            wordMaxPerSent
-          )}</p>`
+            wordMaxPerSent,
+          )}</p>`,
         );
       }
       return passage.join("");
@@ -448,7 +448,7 @@ export const LoremDataBehaviors = function (SuperClass) {
               schema.start,
               schema.units,
               schema.min,
-              schema.max
+              schema.max,
             );
             break;
           case "hex":
@@ -462,7 +462,7 @@ export const LoremDataBehaviors = function (SuperClass) {
               schema.aspect,
               schema.greyscale,
               schema.topic,
-              schema.multiple
+              schema.multiple,
             );
             break;
           case "imageData":
@@ -470,7 +470,7 @@ export const LoremDataBehaviors = function (SuperClass) {
               schema.aspect,
               schema.greyscale,
               schema.topic,
-              schema.multiple
+              schema.multiple,
             );
             break;
           case "letter":
@@ -480,7 +480,7 @@ export const LoremDataBehaviors = function (SuperClass) {
             val = this.randomLink(
               schema.filetype,
               schema.minPath,
-              schema.maxPath
+              schema.maxPath,
             );
             break;
           case "number":
@@ -499,7 +499,7 @@ export const LoremDataBehaviors = function (SuperClass) {
               schema.min,
               schema.max,
               schema.wordMinPerSent,
-              schema.wordMaxPerSent
+              schema.wordMaxPerSent,
             );
             break;
           case "sentence":
@@ -525,7 +525,7 @@ export const LoremDataBehaviors = function (SuperClass) {
             }
             return arr2;
           })
-          .flat()
+          .flat(),
       );
     }
 

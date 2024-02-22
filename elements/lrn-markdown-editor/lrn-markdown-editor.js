@@ -169,7 +169,7 @@ class LrnMarkdownEditor extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });

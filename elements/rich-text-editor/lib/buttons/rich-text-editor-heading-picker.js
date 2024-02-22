@@ -17,7 +17,7 @@ import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
  * @demo ./demo/buttons.html
  */
 class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -118,6 +118,6 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
 }
 customElements.define(
   RichTextEditorHeadingPicker.tag,
-  RichTextEditorHeadingPicker
+  RichTextEditorHeadingPicker,
 );
 export { RichTextEditorHeadingPicker };

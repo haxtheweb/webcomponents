@@ -58,11 +58,11 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
     }
     this.style.setProperty(
       "--simple-fields-button-background-color",
-      `var(--simple-colors-default-theme-accent-${shade}, orange)`
+      `var(--simple-colors-default-theme-accent-${shade}, orange)`,
     );
     this.style.setProperty(
       "--simple-fields-button-color",
-      `var(--simple-colors-fixed-theme-grey-${contrastLevel}, black)`
+      `var(--simple-colors-fixed-theme-grey-${contrastLevel}, black)`,
     );
     // set accent color
     return colorName;

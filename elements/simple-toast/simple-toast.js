@@ -165,13 +165,13 @@ class SimpleToast extends SimpleColors {
     globalThis.addEventListener(
       "simple-toast-hide",
       this.hideSimpleToast.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "simple-toast-show",
       this.showSimpleToast.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   /**

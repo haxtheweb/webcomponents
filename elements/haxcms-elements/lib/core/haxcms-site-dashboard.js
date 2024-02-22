@@ -273,7 +273,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
         composed: true,
         cancelable: true,
         detail: this.shadowRoot.querySelector("#siteform").submit(),
-      })
+      }),
     );
     setTimeout(() => {
       globalThis.dispatchEvent(
@@ -281,7 +281,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
           bubbles: true,
           cancelable: true,
           detail: {},
-        })
+        }),
       );
     }, 0);
   }
@@ -295,7 +295,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
   }
 }

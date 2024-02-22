@@ -18,6 +18,6 @@ export const HaxTheWeb = () => {
     utils.makeElementFromClass(HaxLogo, {
       emptyslot: `<span slot="pre">The</span>
   <span slot="post">of complacency</span>`,
-    })
+    }),
   );
 };

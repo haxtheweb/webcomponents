@@ -5,9 +5,9 @@ import "../type-writer.js";
 describe("type-writer test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <type-writer title="test-title"></type-writer> `
-    );
+    element = await fixture(html`
+      <type-writer title="test-title"></type-writer>
+    `);
   });
 
   it("passes the a11y audit", async () => {

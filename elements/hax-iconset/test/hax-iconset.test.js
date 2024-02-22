@@ -5,9 +5,9 @@ import "../hax-iconset.js";
 describe("hax-iconset test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <hax-iconset title="test-title"></hax-iconset> `
-    );
+    element = await fixture(html`
+      <hax-iconset title="test-title"></hax-iconset>
+    `);
   });
 
   it("passes the a11y audit", async () => {

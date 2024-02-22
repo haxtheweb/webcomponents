@@ -36,7 +36,7 @@ function updateRelationships(docxFile) {
       var namespaces = { "": relationshipsUri };
       return docxFile.write(
         path,
-        xml.writeString(relationshipsContainer, namespaces)
+        xml.writeString(relationshipsContainer, namespaces),
       );
     });
 }

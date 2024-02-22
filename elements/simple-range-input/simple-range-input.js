@@ -124,8 +124,10 @@ class SimpleRangeInput extends SimpleColors {
           margin: calc(
               0.5 *
                 (
-                  var(--simple-range-input-track-height, 10px) -
-                    var(--simple-range-input-pin-height, 20px)
+                  var(--simple-range-input-track-height, 10px) - var(
+                      --simple-range-input-pin-height,
+                      20px
+                    )
                 )
             )
             0;
@@ -174,8 +176,10 @@ class SimpleRangeInput extends SimpleColors {
           margin: calc(
               0.5 *
                 (
-                  var(--simple-range-input-track-height, 10px) -
-                    var(--simple-range-input-pin-height, 20px)
+                  var(--simple-range-input-track-height, 10px) - var(
+                      --simple-range-input-pin-height,
+                      20px
+                    )
                 )
             )
             0;
@@ -236,8 +240,10 @@ class SimpleRangeInput extends SimpleColors {
           margin: calc(
               0.5 *
                 (
-                  var(--simple-range-input-track-height, 10px) -
-                    var(--simple-range-input-pin-height, 20px)
+                  var(--simple-range-input-track-height, 10px) - var(
+                      --simple-range-input-pin-height,
+                      20px
+                    )
                 )
             )
             0;
@@ -305,7 +311,7 @@ class SimpleRangeInput extends SimpleColors {
                 detail: {
                   value: this.immediateValue,
                 },
-              })
+              }),
             );
           } else {
             this.value = this.immediateValue;
@@ -317,7 +323,7 @@ class SimpleRangeInput extends SimpleColors {
               detail: {
                 value: this.value,
               },
-            })
+            }),
           );
         }
       });

@@ -34,7 +34,7 @@ export const WYSIWYGCodepen = () => {
 const getRenderString = (data) => {
   const { strings, values } = data;
   const v = [...values, ""].map((e) =>
-    typeof e === "object" ? getRenderString(e) : e
+    typeof e === "object" ? getRenderString(e) : e,
   );
   return strings.reduce((acc, s, i) => acc + s + v[i], "");
 };

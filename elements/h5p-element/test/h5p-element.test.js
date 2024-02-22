@@ -5,9 +5,9 @@ import "../h5p-element.js";
 describe("h5p-element test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <h5p-element title="test-title"></h5p-element> `
-    );
+    element = await fixture(html`
+      <h5p-element title="test-title"></h5p-element>
+    `);
   });
 
   it("passes the a11y audit", async () => {

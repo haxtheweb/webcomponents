@@ -18,6 +18,6 @@ export const StandardUsage = () => {
     utils.makeElementFromClass(GithubPreview, {
       repo: "lrnwebcomponents",
       org: "elmsln",
-    })
+    }),
   );
 };

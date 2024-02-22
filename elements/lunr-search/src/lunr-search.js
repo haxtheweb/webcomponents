@@ -33,7 +33,7 @@ class LunrSearch extends LitElement {
         ? html`${this.results.map(
             (item) =>
               html`<h2>${item.title}</h2>
-                <p>${item.description}</p>`
+                <p>${item.description}</p>`,
           )}`
         : ``}
       <slot></slot>`;
@@ -112,7 +112,7 @@ class LunrSearch extends LitElement {
     window.addEventListener(
       "es-bridge-lunr-loaded",
       this._lunrLoaded.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.ESGlobalBridge.requestAvailability().load("lunr", location);
@@ -153,7 +153,7 @@ class LunrSearch extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       // only request data when we actually have a data source
@@ -166,7 +166,7 @@ class LunrSearch extends LitElement {
           this.search,
           this.index,
           this.minScore,
-          this.limit
+          this.limit,
         );
       }
       if (
@@ -176,7 +176,7 @@ class LunrSearch extends LitElement {
           this.data,
           this.fields,
           this.noStopWords,
-          this.__lunrLoaded
+          this.__lunrLoaded,
         );
       }
     });
@@ -238,7 +238,7 @@ class LunrSearch extends LitElement {
             data,
             this.fields,
             true,
-            this.__lunrLoaded
+            this.__lunrLoaded,
           );
         }
         searched = this.indexNoStopWords.search(search);

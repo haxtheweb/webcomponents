@@ -18,7 +18,7 @@ import "./simple-toolbar-menu-item.js";
  */
 const SimpleToolbarMenuBehaviors = function (SuperClass) {
   return class extends A11yMenuButtonBehaviors(
-    SimpleToolbarButtonBehaviors(SuperClass)
+    SimpleToolbarButtonBehaviors(SuperClass),
   ) {
     static get simpleButtonCoreStyles() {
       return [
@@ -229,8 +229,8 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         Object.keys(listeners).forEach((evt) =>
           (item.focusableElement || item).addEventListener(
             evt,
-            listeners[evt].bind(this)
-          )
+            listeners[evt].bind(this),
+          ),
         );
       }
     }
@@ -245,8 +245,8 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         Object.keys(listeners).forEach((evt) =>
           (item.focusableElement || item).removeEventListener(
             evt,
-            listeners[evt].bind(this)
-          )
+            listeners[evt].bind(this),
+          ),
         );
         if (this.__menuItems)
           this.__menuItems = [...this.menuItems.filter((i) => item !== i)];

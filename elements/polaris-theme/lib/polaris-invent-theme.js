@@ -22,7 +22,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
 import { autorun, toJS } from "mobx";
-import { DDDSuper, DDDFonts } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { HAXCMSToastInstance } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-toast.js";
 /**
  * `polaris-invent-theme`
@@ -42,13 +42,13 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         PrintBranchMixin(
           QRCodeMixin(
             HAXCMSThemeParts(
-              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme))
-            )
-          )
-        )
-      )
-    )
-  )
+              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
 ) {
   //styles function
   static get styles() {
@@ -64,27 +64,28 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           --polaris-nav-bg-color: #009cde;
           --polaris-footer-secondary-bg-color: #1e407c;
           --polaris-footer-primary-bg-color: #001e44;
-            background-color: var(--polaris-bg-color);
+          background-color: var(--polaris-bg-color);
           --haxcms-base-styles-body-font-size: var(--ddd-font-size-s);
           --hax-base-styles-a-font-size: var(--ddd-font-size-s);
           --hax-base-styles-p-font-size: var(--ddd-font-size-s);
           --hax-base-styles-list-font-size: var(--ddd-font-size-s);
-          --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          --haxcms-base-styles-body-font-family: "Open Sans", "Helvetica Neue",
+            Helvetica, Arial, sans-serif;
           --haxcms-base-styles-body-line-height: 32px;
           --hax-base-styles-list-line-height: 28.8px
-          --hax-base-styles-p-line-height: 28.8px;
+            --hax-base-styles-p-line-height: 28.8px;
           --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing : normal;
-           --hax-base-styles-p-min-height: auto;
-           --hax-base-styles-list-max-width: auto;
-           --haxcms-base-styles-p-min-height: auto;
-           --hax-base-styles-list-padding-bottom: auto;
-           --hax-base-styles-h1-font-size: 36px;
-           --hax-base-styles-h2-font-size: 36px;
-           --hax-base-styles-h3-font-size: inherit;
-           --hax-base-styles-h4-font-size: inherit;
-           --hax-base-styles-h5-font-size: inherit;
-           --hax-base-styles-h6-font-size: inherit;
+          --haxcms-base-styles-body-letter-spacing: normal;
+          --hax-base-styles-p-min-height: auto;
+          --hax-base-styles-list-max-width: auto;
+          --haxcms-base-styles-p-min-height: auto;
+          --hax-base-styles-list-padding-bottom: auto;
+          --hax-base-styles-h1-font-size: 36px;
+          --hax-base-styles-h2-font-size: 36px;
+          --hax-base-styles-h3-font-size: inherit;
+          --hax-base-styles-h4-font-size: inherit;
+          --hax-base-styles-h5-font-size: inherit;
+          --hax-base-styles-h6-font-size: inherit;
         }
         a {
           color: #1173ca;
@@ -95,7 +96,9 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           right: 0px;
           bottom: 40px;
           z-index: 10000;
-          --scroll-button-background-color: var(--ddd-theme-polaris-inventOrange);
+          --scroll-button-background-color: var(
+            --ddd-theme-default-inventOrange
+          );
           --simple-icon-width: 40px;
           --simple-icon-height: 40px;
           --simple-icon-button-border-radius: none;
@@ -132,7 +135,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         header:not(:empty) {
           background-color: var(--polaris-header-bg-color);
         }
-  
+
         .nav {
           background-color: var(--polaris-nav-bg-color);
           color: var(--polaris-nav-color);
@@ -145,9 +148,13 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         site-menu {
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-xs);
-          --map-menu-item-a-active-background-color: var(--polaris-header-bg-color);
+          --map-menu-item-a-active-background-color: var(
+            --polaris-header-bg-color
+          );
           --map-menu-item-button-active-color: white;
-          --map-menu-item-button-active-background-color: var(--ddd-theme-polaris-inventOrange);
+          --map-menu-item-button-active-background-color: var(
+            --ddd-theme-default-inventOrange
+          );
           margin-bottom: 20px;
           padding: 0 20px;
           width: 320px;
@@ -161,7 +168,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           margin: 0;
           display: block;
           padding: 0;
-          border-top: 2px solid #E6ECF1;
+          border-top: 2px solid #e6ecf1;
           margin-top: 16px;
           align-items: center;
           padding-top: 16px;
@@ -176,7 +183,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           display: block;
         }
 
-        @media screen and (min-width: 900px){
+        @media screen and (min-width: 900px) {
           .link-actions .inner {
             margin: 0;
             display: grid;
@@ -194,8 +201,8 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           --site-menu-button-button-hover-color: black;
           --site-menu-button-icon-fill-color: white;
           color: white;
-          background-color: var(--ddd-theme-polaris-inventOrange);
-          border: 1px solid var(--ddd-theme-polaris-inventOrange);
+          background-color: var(--ddd-theme-default-inventOrange);
+          border: 1px solid var(--ddd-theme-default-inventOrange);
           margin: 8px;
           display: block;
           padding: 0;
@@ -255,10 +262,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           overflow: hidden;
         }
         site-menu-button[type="next"] div {
-         text-align: left; 
+          text-align: left;
         }
         site-menu-button[type="prev"] div {
-         text-align: right; 
+          text-align: right;
         }
 
         .footer-secondary {
@@ -268,12 +275,12 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           padding: 40px 16px 16px;
         }
 
-        @media screen and (max-width: 400px){
+        @media screen and (max-width: 400px) {
           main {
             width: calc(100vw - 48px);
             overflow: hidden;
           }
-  
+
           footer {
             width: calc(100vw - 8px);
           }
@@ -406,7 +413,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             bottom: 0px;
             --simple-icon-width: 20px;
             --simple-icon-height: 20px;
-          } 
+          }
         }
         :host([responsive-size="xl"]) main {
           width: calc(var(--menu-size) + 70%);
@@ -452,7 +459,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
           margin: 8px 12px;
-          transition: .3s ease-in-out all;
+          transition: 0.3s ease-in-out all;
         }
 
         :host([menu-open]) .pdf-page-btn,
@@ -468,7 +475,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         :host([menu-open]) .search-modal-btn {
           margin-left: 92px;
         }
-        @media screen and (min-width: 900px){
+        @media screen and (min-width: 900px) {
           #haxcmsmobilemenubutton {
             --simple-icon-height: 40px;
             --simple-icon-width: 40px;
@@ -487,7 +494,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
           }
-
         }
       `,
     ];
@@ -640,7 +646,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         (name) => {
           let el = document.createElement(name);
           store.haxAutoloader.appendChild(el);
-        }
+        },
       );
       this.windowControllersLoaded.abort();
     }
@@ -653,34 +659,38 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
     // forcibly set things about the RPG toast for this design
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-display",
-      "none"
+      "none",
     );
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-mid-background-image",
-      "none"
+      "none",
     );
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-right-background-image",
-      "none"
+      "none",
     );
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-left-background-image",
-      "none"
+      "none",
     );
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-mid-padding",
-      0
+      0,
     );
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-height",
-      "96px"
+      "96px",
     );
     HAXCMSToastInstance.style.backgroundColor = "white";
     this.windowControllersLoaded = new AbortController();
     globalThis.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this),
-      { once: true, passive: true, signal: this.windowControllersLoaded.signal }
+      {
+        once: true,
+        passive: true,
+        signal: this.windowControllersLoaded.signal,
+      },
     );
     // @todo support injection of blocks specific to polaris
     // this way we can have blocks whos definitions only get
@@ -712,14 +722,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
     autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
-    });
-
-    autorun(() => {
-      const badDevice = toJS(store.badDevice);
-      // good device, we can inject font we use
-      if (badDevice === false) {
-        this.loadDDDFonts(DDDFonts);
-      }
     });
 
     autorun((reaction) => {

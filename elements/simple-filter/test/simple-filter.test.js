@@ -5,9 +5,9 @@ import "../simple-filter.js";
 describe("simple-filter test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-filter title="test-title"></simple-filter> `
-    );
+    element = await fixture(html`
+      <simple-filter title="test-title"></simple-filter>
+    `);
   });
 
   it("passes the a11y audit", async () => {

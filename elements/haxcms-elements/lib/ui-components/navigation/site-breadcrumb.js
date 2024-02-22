@@ -30,7 +30,7 @@ class SiteBreadcrumb extends DDD {
           gap: var(--ddd-spacing-5);
           display: flex;
           flex-flow: row;
-          color: var(--ddd-theme-polaris-link);
+          color: var(--ddd-theme-default-link);
         }
         .breadcrumb li::marker {
           color: black;
@@ -50,7 +50,7 @@ class SiteBreadcrumb extends DDD {
           );
           color: var(
             --site-breadcrumb-color,
-            var(--ddd-theme-polaris-link, #383f45)
+            var(--ddd-theme-default-link, #383f45)
           );
         }
         .breadcrumb li:first-child a {
@@ -88,7 +88,7 @@ class SiteBreadcrumb extends DDD {
             itemtype="https://schema.org/BreadcrumbList"
           >
             ${this.items.map(
-              (item) => html`<li><a href="${item.slug}">${item.title}</a></li>`
+              (item) => html`<li><a href="${item.slug}">${item.title}</a></li>`,
             )}
           </ul>
         `

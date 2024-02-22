@@ -24,7 +24,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * @extends A11yMenuButton
  */
 class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
-  cellBehaviors( DDD )
+  cellBehaviors(DDD),
 ) {
   static get styles() {
     return [
@@ -132,7 +132,7 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
           row: this.row,
           index: index,
         },
-      })
+      }),
     );
   }
   _getItem(deleteItem = false, after = false) {
@@ -148,8 +148,8 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
         @button-toggled="${deleteItem
           ? this._onDelete
           : after
-          ? this._onInsertAfter
-          : this._onInsertBefore}"
+            ? this._onInsertAfter
+            : this._onInsertBefore}"
       >
       </simple-toolbar-button>
     </simple-toolbar-menu-item>`;

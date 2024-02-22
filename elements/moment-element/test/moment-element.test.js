@@ -5,9 +5,9 @@ import "../moment-element.js";
 describe("moment-element test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <moment-element title="test-title"></moment-element> `
-    );
+    element = await fixture(html`
+      <moment-element title="test-title"></moment-element>
+    `);
   });
 
   it("passes the a11y audit", async () => {

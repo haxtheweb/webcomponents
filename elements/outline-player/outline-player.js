@@ -298,7 +298,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           app-drawer {
             --app-drawer-content-container: {
               overflow: hidden;
-            }
+            };
           }
         </style>
       </custom-style>
@@ -404,7 +404,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });

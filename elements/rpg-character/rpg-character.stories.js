@@ -16,5 +16,5 @@ export const RpgCharacterStory = () =>
   utils.makeUsageDocs(
     RpgCharacter,
     import.meta.url,
-    utils.makeElementFromHaxDemo(RpgCharacter)
+    utils.makeElementFromHaxDemo(RpgCharacter),
   );

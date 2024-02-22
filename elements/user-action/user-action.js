@@ -73,7 +73,7 @@ class UserAction extends HTMLElement {
             {
               rootMargin: "0px",
               threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
-            }
+            },
           );
           this.observer.observe(this);
           break;
@@ -138,11 +138,11 @@ class UserAction extends HTMLElement {
           localesPath:
             new URL(
               "./locales/user-action.haxProperties.es.json",
-              import.meta.url
+              import.meta.url,
             ).href + "/../",
           locales: ["es"],
         },
-      })
+      }),
     );
   }
   /**

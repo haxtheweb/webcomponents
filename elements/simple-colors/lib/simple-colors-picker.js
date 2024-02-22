@@ -20,7 +20,7 @@ See demo of "all of the colors" (`demo/colors.html`) for styling.
  * @element simple-colors-picker
  */
 class SimpleColorsPicker extends SimplePickerBehaviors(
-  SimpleColorsSuper(LitElement)
+  SimpleColorsSuper(LitElement),
 ) {
   static get styles() {
     return [
@@ -133,7 +133,7 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
    */
   _fireChangeEvent() {
     this.dispatchEvent(
-      new CustomEvent("change", { bubbles: true, detail: this })
+      new CustomEvent("change", { bubbles: true, detail: this }),
     );
   }
 }

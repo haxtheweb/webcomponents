@@ -5,9 +5,9 @@ import "../accent-card.js";
 describe("accent-card test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <accent-card title="test-title"></accent-card> `
-    );
+    element = await fixture(html`
+      <accent-card title="test-title"></accent-card>
+    `);
   });
 
   it("passes the a11y audit", async () => {

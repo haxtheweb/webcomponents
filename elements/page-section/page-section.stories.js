@@ -17,6 +17,6 @@ export const PageSectionStory = () => {
   return utils.makeUsageDocs(
     PageSection,
     import.meta.url,
-    utils.makeElementFromClass(PageSection)
+    utils.makeElementFromClass(PageSection),
   );
 };

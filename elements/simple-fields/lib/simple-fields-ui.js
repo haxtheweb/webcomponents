@@ -193,7 +193,9 @@ export const SimpleFieldsButtonStyles = [
     simple-toolbar-menu-item
       > simple-toolbar-button.danger:hover::part(button[aria-pressed="true"]),
     simple-toolbar-menu-item
-      > simple-toolbar-button.danger:focus-within::part(button[aria-pressed="true"]) {
+      > simple-toolbar-button.danger:focus-within::part(
+        button[aria-pressed="true"]
+      ) {
       background-color: var(
         --simple-fields-button-danger-color,
         var(--simple-fields-error-color, #b40000)

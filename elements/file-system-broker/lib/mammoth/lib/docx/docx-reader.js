@@ -39,7 +39,7 @@ function read(docxFile, input) {
         numbering: readNumberingFromZipFile(
           docxFile,
           result.partPaths.numbering,
-          result.styles
+          result.styles,
         ),
       };
     })
@@ -54,7 +54,7 @@ function read(docxFile, input) {
             } else {
               return new Result([]);
             }
-          }
+          },
         ),
         endnotes: readXmlFileWithBody(
           result.partPaths.endnotes,
@@ -65,7 +65,7 @@ function read(docxFile, input) {
             } else {
               return new Result([]);
             }
-          }
+          },
         ),
         comments: readXmlFileWithBody(
           result.partPaths.comments,
@@ -76,7 +76,7 @@ function read(docxFile, input) {
             } else {
               return new Result([]);
             }
-          }
+          },
         ),
       };
     })
@@ -104,57 +104,57 @@ function read(docxFile, input) {
               return reader.convertXmlToDocument(xml);
             });
           });
-        }
+        },
       );
     });
 }
 
 function findPartPaths(docxFile) {
-  return readPackageRelationships(docxFile).then(function (
-    packageRelationships
-  ) {
-    var mainDocumentPath = findPartPath({
-      docxFile: docxFile,
-      relationships: packageRelationships,
-      relationshipType:
-        "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
-      basePath: "",
-      fallbackPath: "word/document.xml",
-    });
+  return readPackageRelationships(docxFile).then(
+    function (packageRelationships) {
+      var mainDocumentPath = findPartPath({
+        docxFile: docxFile,
+        relationships: packageRelationships,
+        relationshipType:
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+        basePath: "",
+        fallbackPath: "word/document.xml",
+      });
 
-    if (!docxFile.exists(mainDocumentPath)) {
-      throw new Error(
-        "Could not find main document part. Are you sure this is a valid .docx file?"
-      );
-    }
-
-    return xmlFileReader({
-      filename: relationshipsFilename(mainDocumentPath),
-      readElement: relationshipsReader.readRelationships,
-      defaultValue: relationshipsReader.defaultValue,
-    })(docxFile).then(function (documentRelationships) {
-      function findPartRelatedToMainDocument(name) {
-        return findPartPath({
-          docxFile: docxFile,
-          relationships: documentRelationships,
-          relationshipType:
-            "http://schemas.openxmlformats.org/officeDocument/2006/relationships/" +
-            name,
-          basePath: zipfile.splitPath(mainDocumentPath).dirname,
-          fallbackPath: "word/" + name + ".xml",
-        });
+      if (!docxFile.exists(mainDocumentPath)) {
+        throw new Error(
+          "Could not find main document part. Are you sure this is a valid .docx file?",
+        );
       }
 
-      return {
-        mainDocument: mainDocumentPath,
-        comments: findPartRelatedToMainDocument("comments"),
-        endnotes: findPartRelatedToMainDocument("endnotes"),
-        footnotes: findPartRelatedToMainDocument("footnotes"),
-        numbering: findPartRelatedToMainDocument("numbering"),
-        styles: findPartRelatedToMainDocument("styles"),
-      };
-    });
-  });
+      return xmlFileReader({
+        filename: relationshipsFilename(mainDocumentPath),
+        readElement: relationshipsReader.readRelationships,
+        defaultValue: relationshipsReader.defaultValue,
+      })(docxFile).then(function (documentRelationships) {
+        function findPartRelatedToMainDocument(name) {
+          return findPartPath({
+            docxFile: docxFile,
+            relationships: documentRelationships,
+            relationshipType:
+              "http://schemas.openxmlformats.org/officeDocument/2006/relationships/" +
+              name,
+            basePath: zipfile.splitPath(mainDocumentPath).dirname,
+            fallbackPath: "word/" + name + ".xml",
+          });
+        }
+
+        return {
+          mainDocument: mainDocumentPath,
+          comments: findPartRelatedToMainDocument("comments"),
+          endnotes: findPartRelatedToMainDocument("endnotes"),
+          footnotes: findPartRelatedToMainDocument("footnotes"),
+          numbering: findPartRelatedToMainDocument("numbering"),
+          styles: findPartRelatedToMainDocument("styles"),
+        };
+      });
+    },
+  );
 }
 
 function findPartPath(options) {
@@ -188,11 +188,11 @@ function stripPrefix(value, prefix) {
 
 function xmlFileReader(options) {
   return function (zipFile) {
-    return readXmlFromZipFile(zipFile, options.filename).then(function (
-      element
-    ) {
-      return element ? options.readElement(element) : options.defaultValue;
-    });
+    return readXmlFromZipFile(zipFile, options.filename).then(
+      function (element) {
+        return element ? options.readElement(element) : options.defaultValue;
+      },
+    );
   };
 }
 
@@ -203,21 +203,23 @@ function readXmlFileWithBody(filename, options, func) {
     defaultValue: relationshipsReader.defaultValue,
   });
 
-  return readRelationshipsFromZipFile(options.docxFile).then(function (
-    relationships
-  ) {
-    var bodyReader = new createBodyReader({
-      relationships: relationships,
-      contentTypes: options.contentTypes,
-      docxFile: options.docxFile,
-      numbering: options.numbering,
-      styles: options.styles,
-      files: options.files,
-    });
-    return readXmlFromZipFile(options.docxFile, filename).then(function (xml) {
-      return func(bodyReader, xml);
-    });
-  });
+  return readRelationshipsFromZipFile(options.docxFile).then(
+    function (relationships) {
+      var bodyReader = new createBodyReader({
+        relationships: relationships,
+        contentTypes: options.contentTypes,
+        docxFile: options.docxFile,
+        numbering: options.numbering,
+        styles: options.styles,
+        files: options.files,
+      });
+      return readXmlFromZipFile(options.docxFile, filename).then(
+        function (xml) {
+          return func(bodyReader, xml);
+        },
+      );
+    },
+  );
 }
 
 function relationshipsFilename(filename) {

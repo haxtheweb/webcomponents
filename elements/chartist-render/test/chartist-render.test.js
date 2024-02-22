@@ -33,7 +33,7 @@ describe("chartist-render test", () => {
             </tr>
           </tbody>
         </table>
-      </chartist-render>`
+      </chartist-render>`,
     );
   });
 

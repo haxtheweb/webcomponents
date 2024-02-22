@@ -351,7 +351,9 @@ class SimpleSearch extends LitElement {
      * @event simple-search
      */
     this.dispatchEvent(
-      new CustomEvent("simple-search", { detail: { search: this, content: e } })
+      new CustomEvent("simple-search", {
+        detail: { search: this, content: e },
+      }),
     );
   }
 
@@ -382,8 +384,8 @@ class SimpleSearch extends LitElement {
     return count > 0 && pointer > 0
       ? pointer + "/" + count
       : count > 0
-      ? count
-      : "0";
+        ? count
+        : "0";
   }
 
   /**
@@ -397,7 +399,7 @@ class SimpleSearch extends LitElement {
     ) {
       this.resultPointer += increment;
       this.dispatchEvent(
-        new CustomEvent("goto-result", { detail: this.resultPointer })
+        new CustomEvent("goto-result", { detail: this.resultPointer }),
       );
     }
   }

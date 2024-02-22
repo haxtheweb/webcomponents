@@ -209,7 +209,7 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
     disconnectedCallback() {
@@ -224,7 +224,7 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
   };

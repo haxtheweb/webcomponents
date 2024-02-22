@@ -79,7 +79,7 @@ class VoiceRecorder extends LitElement {
       {
         wasmURL: new URL("./lib/vmsg.wasm", import.meta.url).href,
       },
-      this
+      this,
     ).then((blob) => {
       this.dispatchEvent(
         new CustomEvent("voice-recorder-recording-blob", {
@@ -89,7 +89,7 @@ class VoiceRecorder extends LitElement {
           detail: {
             value: blob,
           },
-        })
+        }),
       );
       this.recording = false;
       this.innerHTML = "";

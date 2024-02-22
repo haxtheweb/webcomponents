@@ -48,7 +48,7 @@ class SimplePopoverSelection extends LitElement {
         let style = globalThis.document.createElement("style");
         style.innerHTML = styleData.innerHTML;
         content = html`${unsafeHTML(div.innerHTML)}${unsafeHTML(
-          style.outerHTML
+          style.outerHTML,
         )}`;
       } else {
         content = html`${unsafeHTML(div.innerHTML)}`;
@@ -62,7 +62,7 @@ class SimplePopoverSelection extends LitElement {
         // walk kids in the element and apply event listeners back to here
         let children =
           globalThis.SimplePopoverManager.requestAvailability().querySelectorAll(
-            "*"
+            "*",
           );
         for (var i in children) {
           if (children[i].addEventListener) {
@@ -72,7 +72,7 @@ class SimplePopoverSelection extends LitElement {
         // select the item we were told to activate OR just the 1st element
         if (
           globalThis.SimplePopoverManager.requestAvailability().querySelector(
-            "[data-simple-popover-selection-active]"
+            "[data-simple-popover-selection-active]",
           )
         ) {
           globalThis.SimplePopoverManager.requestAvailability()
@@ -81,7 +81,7 @@ class SimplePopoverSelection extends LitElement {
         } else if (
           globalThis.SimplePopoverManager.requestAvailability() &&
           globalThis.SimplePopoverManager.requestAvailability().querySelector(
-            ":first-child"
+            ":first-child",
           )
         ) {
           globalThis.SimplePopoverManager.requestAvailability()
@@ -93,7 +93,7 @@ class SimplePopoverSelection extends LitElement {
     globalThis.SimplePopoverManager.requestAvailability().setPopover(
       this,
       this.querySelector('[slot="button"]'),
-      state
+      state,
     );
   }
   /**
@@ -112,7 +112,7 @@ class SimplePopoverSelection extends LitElement {
           this.dispatchEvent(
             new CustomEvent(`${propName}-changed`, {
               detail: this,
-            })
+            }),
           );
         }
       }
@@ -124,7 +124,7 @@ class SimplePopoverSelection extends LitElement {
       new CustomEvent("simple-popover-selection-changed", {
         bubbles: true,
         detail: e.target,
-      })
+      }),
     );
     // close after an item is selected
     this.opened = false;
@@ -132,7 +132,7 @@ class SimplePopoverSelection extends LitElement {
       globalThis.SimplePopoverManager.requestAvailability().setPopover(
         this,
         this.querySelector('[slot="button"]'),
-        false
+        false,
       );
       this.querySelector('[slot="button"]').focus();
     }, 0);

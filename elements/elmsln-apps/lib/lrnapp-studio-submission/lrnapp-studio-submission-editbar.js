@@ -21,6 +21,6 @@ class LrnappStudioSubmissionEditbar extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionEditbar.tag,
-  LrnappStudioSubmissionEditbar
+  LrnappStudioSubmissionEditbar,
 );
 export { LrnappStudioSubmissionEditbar };

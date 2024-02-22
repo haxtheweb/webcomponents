@@ -6,7 +6,7 @@ function Styles(
   paragraphStyles,
   characterStyles,
   tableStyles,
-  numberingStyles
+  numberingStyles,
 ) {
   return {
     findParagraphStyleById: function (styleId) {
@@ -54,7 +54,7 @@ function readStylesXml(root) {
     paragraphStyles,
     characterStyles,
     tableStyles,
-    numberingStyles
+    numberingStyles,
   );
 }
 

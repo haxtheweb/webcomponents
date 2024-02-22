@@ -38,7 +38,8 @@ class SimpleLogin extends SimpleColors {
             --login-form-image-bnorder-radius,
             100%
           );
-          box-shadow: 0 12px 16px 1px rgba(0, 0, 0, 0.14),
+          box-shadow:
+            0 12px 16px 1px rgba(0, 0, 0, 0.14),
             0 4px 22px 3px rgba(0, 0, 0, 0.12),
             0 6px 7px -4px rgba(0, 0, 0, 0.4);
         }
@@ -241,7 +242,7 @@ class SimpleLogin extends SimpleColors {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });
@@ -290,7 +291,7 @@ class SimpleLogin extends SimpleColors {
             u: this.shadowRoot.querySelector("#userinput").value,
             p: this.shadowRoot.querySelector("#passinput").value,
           },
-        })
+        }),
       );
     }
   }

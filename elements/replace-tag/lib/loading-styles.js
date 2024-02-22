@@ -4,7 +4,7 @@ var WCRegistryLoaderCSSDebounce;
 export function WCRegistryLoaderCSS(
   auto = false,
   parent = "*",
-  selectorBase = ":not(:defined)"
+  selectorBase = ":not(:defined)",
 ) {
   // debounce entire call automatically in case of spamming as new things get added to screen
   clearTimeout(WCRegistryLoaderCSSDebounce);

@@ -84,7 +84,7 @@ class DisqusEmbed extends LitElement {
             this.pageIdentifier,
             this.pageURL,
             this.pageTitle,
-            this.lang
+            this.lang,
           );
         }, 100);
       }
@@ -108,7 +108,7 @@ class DisqusEmbed extends LitElement {
         this.pageIdentifier,
         this.pageURL,
         this.pageTitle,
-        this.lang
+        this.lang,
       );
     }, 100);
   }
@@ -247,7 +247,7 @@ window.DisqusSingleton.requestAvailability = () => {
     window.DisqusSingleton.instance = document.createElement(DisqusBroker.tag);
     document.body.insertAdjacentElement(
       "afterbegin",
-      window.DisqusSingleton.instance
+      window.DisqusSingleton.instance,
     );
   }
   return window.DisqusSingleton.instance;

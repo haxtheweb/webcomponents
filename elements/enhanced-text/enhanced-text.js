@@ -128,7 +128,7 @@ class EnhancedText extends LitElement {
       await MicroFrontendRegistry.call(
         "@enhancedText/textVide",
         { body: body, fixationPoint: this.fixationPoint },
-        this.enahncedTextResponse.bind(this)
+        this.enahncedTextResponse.bind(this),
       );
     }
     if (this.haxcmsGlossary && (this.haxcmsSiteLocation || this.haxcmsSite)) {
@@ -141,7 +141,7 @@ class EnhancedText extends LitElement {
             site: this.haxcmsSite,
             wikipedia: this.wikipedia,
           },
-          this.applyTermFromList.bind(this)
+          this.applyTermFromList.bind(this),
         );
       } else {
         await MicroFrontendRegistry.call(
@@ -152,7 +152,7 @@ class EnhancedText extends LitElement {
             site: this.haxcmsSiteLocation,
             wikipedia: this.wikipedia,
           },
-          this.applyTermFromList.bind(this)
+          this.applyTermFromList.bind(this),
         );
       }
     }
@@ -243,7 +243,8 @@ class EnhancedText extends LitElement {
         @-webkit-keyframes load5 {
           0%,
           100% {
-            box-shadow: 0em -2.6em 0em 0em var(--enhanced-text-color, #000000),
+            box-shadow:
+              0em -2.6em 0em 0em var(--enhanced-text-color, #000000),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -253,7 +254,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
           }
           12.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
               1.8em -1.8em 0 0em var(--enhanced-text-color, #000000),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -263,7 +265,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
           }
           25% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7),
               2.5em 0em 0 0em var(--enhanced-text-color, #000000),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -273,7 +276,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           37.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.7),
               1.75em 1.75em 0 0em var(--enhanced-text-color, #000000),
@@ -283,7 +287,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           50% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.5),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7),
@@ -293,7 +298,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           62.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5),
@@ -303,7 +309,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           75% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -313,7 +320,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           87.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -326,7 +334,8 @@ class EnhancedText extends LitElement {
         @keyframes load5 {
           0%,
           100% {
-            box-shadow: 0em -2.6em 0em 0em var(--enhanced-text-color, #000000),
+            box-shadow:
+              0em -2.6em 0em 0em var(--enhanced-text-color, #000000),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -336,7 +345,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
           }
           12.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
               1.8em -1.8em 0 0em var(--enhanced-text-color, #000000),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -346,7 +356,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
           }
           25% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7),
               2.5em 0em 0 0em var(--enhanced-text-color, #000000),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -356,7 +367,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           37.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.7),
               1.75em 1.75em 0 0em var(--enhanced-text-color, #000000),
@@ -366,7 +378,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           50% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.5),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7),
@@ -376,7 +389,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           62.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5),
@@ -386,7 +400,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           75% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -396,7 +411,8 @@ class EnhancedText extends LitElement {
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           87.5% {
-            box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            box-shadow:
+              0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),

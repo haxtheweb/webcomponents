@@ -29,7 +29,7 @@ class ScrollButton extends LitElement {
           updateCallback: "render",
           locales: ["es"],
         },
-      })
+      }),
     );
     this._label = this.t.backToTop;
     this.label = "";

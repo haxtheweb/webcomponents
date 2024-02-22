@@ -27,6 +27,6 @@ export const EmbedMode = () => {
         webkitallowfullscreen="true"
         mozallowfullscreen="true"
       ></iframe>`,
-    })
+    }),
   );
 };

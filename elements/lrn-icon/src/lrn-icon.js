@@ -190,7 +190,7 @@ class LrnIcon extends PolymerElement {
           window.addEventListener(
             "lrn-iconset-added",
             this._updateIcon.bind(this),
-            { signal: this.windowControllers.signal }
+            { signal: this.windowControllers.signal },
           );
         }
       }

@@ -41,7 +41,7 @@ class EditableList extends LitElement {
             ?can-delete="${item.metadata.canDelete}"
             value="${item.title}"
           ></editable-list-item>
-        `
+        `,
       )}
     </div>`;
   }
@@ -95,7 +95,7 @@ class EditableList extends LitElement {
         .querySelector("#list")
         .addEventListener(
           "editable-list-item-delete",
-          this.triggerDeleteModal.bind(this)
+          this.triggerDeleteModal.bind(this),
         );
     }, 0);
   }
@@ -115,7 +115,7 @@ class EditableList extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });

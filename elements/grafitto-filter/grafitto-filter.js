@@ -180,7 +180,7 @@ by the regular expression engine.
 */
 class GrafittoFilter extends mixinBehaviors(
   [Templatizer, OptionalMutableDataBehavior],
-  PolymerElement
+  PolymerElement,
 ) {
   static get template() {
     return html` <div id="dom"><slot></slot></div> `;
@@ -294,7 +294,9 @@ class GrafittoFilter extends mixinBehaviors(
           if (typeof decomposed == "undefined" && where != "") {
             //Do what I know best
             console.warn(
-              "grafitto-filter was unable to find a property in '" + where + "'"
+              "grafitto-filter was unable to find a property in '" +
+                where +
+                "'",
             );
           }
           return regex.test(decomposed);
@@ -330,7 +332,7 @@ class GrafittoFilter extends mixinBehaviors(
     // if we didn't find one we need to tell devs that this is a problem
     if (!this._userTemplate) {
       console.warn(
-        "grafitto-filter requires a template to be provided in light-dom"
+        "grafitto-filter requires a template to be provided in light-dom",
       );
     }
     // process template variable areas
@@ -364,7 +366,7 @@ class GrafittoFilter extends mixinBehaviors(
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
 }

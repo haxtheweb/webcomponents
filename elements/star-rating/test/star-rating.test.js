@@ -5,9 +5,9 @@ import "../star-rating.js";
 describe("star-rating test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <star-rating title="test-title"></star-rating> `
-    );
+    element = await fixture(html`
+      <star-rating title="test-title"></star-rating>
+    `);
   });
 
   it("passes the a11y audit", async () => {

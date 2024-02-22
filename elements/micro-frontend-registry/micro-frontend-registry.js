@@ -21,7 +21,7 @@ export class MicroFrontend {
     MicroFrontendKeys.map((key) =>
       key === "params"
         ? (this[key] = values[key] || {})
-        : (this[key] = values[key] || null)
+        : (this[key] = values[key] || null),
     );
   }
 }
@@ -61,7 +61,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
   define(item) {
     if (!(item instanceof MicroFrontend)) {
       console.warn(
-        "MicroFrontendRegistry: use class MicroFrontend instance but if keys match it will register still."
+        "MicroFrontendRegistry: use class MicroFrontend instance but if keys match it will register still.",
       );
       console.warn(item);
     }
@@ -95,7 +95,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
         Object.keys(window.MicroFrontendRegistryConfig[item.name]).map(
           (key) => {
             item[key] = window.MicroFrontendRegistryConfig[item.name][key];
-          }
+          },
         );
       }
 
@@ -123,7 +123,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
     }
     if (!testOnly) {
       console.error(
-        `call for ${name} but not found in micro-frontend-registry`
+        `call for ${name} but not found in micro-frontend-registry`,
       );
     }
     return null;
@@ -169,7 +169,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
     params = {},
     callback = null,
     caller = null,
-    urlStringAddon = ""
+    urlStringAddon = "",
   ) {
     if (this.has(name)) {
       const item = this.get(name);
@@ -196,7 +196,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
               : item.endpoint + urlStringAddon,
             {
               method: method,
-            }
+            },
           )
             .then((d) => {
               return d.ok ? d.json() : { status: d.status, data: null };
@@ -268,7 +268,7 @@ window.MicroFrontendRegistryConfig = window.MicroFrontendRegistryConfig || {};
 window.MicroFrontendRegistry.requestAvailability = () => {
   if (!window.MicroFrontendRegistry.instance) {
     window.MicroFrontendRegistry.instance = document.createElement(
-      MicroFrontendRegistryEl.tag
+      MicroFrontendRegistryEl.tag,
     );
     document.body.appendChild(window.MicroFrontendRegistry.instance);
   }

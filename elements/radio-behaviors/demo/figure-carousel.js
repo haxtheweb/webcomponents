@@ -52,15 +52,14 @@ class figureCarousel extends RadioBehaviors(LitElement) {
     console.log("this.itemData", this.itemData);
     return html`
       ${(this.itemData || []).map(
-        (item) =>
-          html`
-            <button
-              id="select-${item.id}"
-              @click="${(e) => this.selectItem(`${item.id}`)}"
-            >
-              ${item.id}
-            </button>
-          `
+        (item) => html`
+          <button
+            id="select-${item.id}"
+            @click="${(e) => this.selectItem(`${item.id}`)}"
+          >
+            ${item.id}
+          </button>
+        `,
       )}<slot></slot>
     `;
   }

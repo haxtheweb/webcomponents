@@ -5,9 +5,9 @@ import "../a11y-collapse.js";
 describe("a11y-collapse test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <a11y-collapse title="test-title"></a11y-collapse> `
-    );
+    element = await fixture(html`
+      <a11y-collapse title="test-title"></a11y-collapse>
+    `);
   });
 
   it("passes the a11y audit", async () => {

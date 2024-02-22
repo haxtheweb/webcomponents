@@ -5,9 +5,9 @@ import "../simple-login.js";
 describe("simple-login test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-login title="test-title"></simple-login> `
-    );
+    element = await fixture(html`
+      <simple-login title="test-title"></simple-login>
+    `);
   });
 
   it("passes the a11y audit", async () => {

@@ -144,7 +144,7 @@ class ImgViewModal extends LitElement {
         if (this[prop]) img[prop] = this[prop];
       });
       Object.keys(imgStyles || {}).forEach((key) =>
-        img.style.setProperty(key, imgStyles[key])
+        img.style.setProperty(key, imgStyles[key]),
       );
 
       this.dispatchEvent(
@@ -153,7 +153,7 @@ class ImgViewModal extends LitElement {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
 
       evt = new CustomEvent("simple-modal-show", {

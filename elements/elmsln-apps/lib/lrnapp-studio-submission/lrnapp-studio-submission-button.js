@@ -85,7 +85,7 @@ class LrnappStudioSubmissionButton extends PolymerElement {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }
@@ -170,6 +170,6 @@ class LrnappStudioSubmissionButton extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionButton.tag,
-  LrnappStudioSubmissionButton
+  LrnappStudioSubmissionButton,
 );
 export { LrnappStudioSubmissionButton };

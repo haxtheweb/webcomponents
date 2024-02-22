@@ -23,7 +23,7 @@ import "./lib/elmsln-studio-dashboard.js";
  * @demo demo/index.html
  */
 class ElmslnStudio extends router(
-  ElmslnStudioUtilities(ElmslnStudioStyles(LitElement))
+  ElmslnStudioUtilities(ElmslnStudioStyles(LitElement)),
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -74,7 +74,7 @@ class ElmslnStudio extends router(
           .comments="${!this.discussion
             ? undefined
             : Object.keys(this.discussion || {}).map(
-                (key) => this.discussion[key]
+                (key) => this.discussion[key],
               )}"
           ?demo-mode="${this.demoMode}"
           @fetch-data="${this._handleFetch}"
@@ -273,7 +273,7 @@ class ElmslnStudio extends router(
         !lesson || !projectId
           ? []
           : (lesson.assignments || []).filter(
-              (assignment) => assignment.id === projectId
+              (assignment) => assignment.id === projectId,
             );
     return projects ? projects[0] : undefined;
   }
@@ -294,10 +294,10 @@ class ElmslnStudio extends router(
     if (this.discussion) {
       let discussions = [];
       discussions = Object.keys(this.discussion || {}).map(
-        (key) => this.discussion[key]
+        (key) => this.discussion[key],
       );
       discussions.forEach((d) =>
-        (d.replies || []).forEach((r) => discussions.push(r))
+        (d.replies || []).forEach((r) => discussions.push(r)),
       );
       return this.sortDates(discussions).slice(0, 10);
     }
@@ -343,8 +343,8 @@ class ElmslnStudio extends router(
       ? undefined
       : this.sortDates(
           Object.keys(this.completedSubmissions || {}).map(
-            (key) => this.completedSubmissions[key]
-          )
+            (key) => this.completedSubmissions[key],
+          ),
         ).slice(0, 5);
   }
 
@@ -365,7 +365,7 @@ class ElmslnStudio extends router(
     return !this.completedSubmissions || !this.query.submission
       ? undefined
       : this.completedSubmissions.filter(
-          (s) => s.assignmentId === this.query.submission.replace(/\-\w+$/, "")
+          (s) => s.assignmentId === this.query.submission.replace(/\-\w+$/, ""),
         );
   }
   /**
@@ -395,7 +395,7 @@ class ElmslnStudio extends router(
     let submissions =
       this.profile && this.profile.submissions && this.params.assignment
         ? this.profile.submissions.filter(
-            (s) => s.assignmentId === this.params.assignment
+            (s) => s.assignmentId === this.params.assignment,
           )
         : undefined;
     return submissions && submissions[0] ? submissions[0] : undefined;
@@ -414,15 +414,15 @@ class ElmslnStudio extends router(
         : Object.keys(this.discussion || {})
             .filter(
               (key) =>
-                this.discussion[key].submissionId == this.query.submission
+                this.discussion[key].submissionId == this.query.submission,
             )
-            .map((key) => this.discussion[key])
+            .map((key) => this.discussion[key]),
     );
     return !this.query.submission || !this.discussion
       ? undefined
       : Object.keys(this.discussion || {})
           .filter(
-            (key) => this.discussion[key].submissionId == this.query.submission
+            (key) => this.discussion[key].submissionId == this.query.submission,
           )
           .map((key) => this.discussion[key]);
   }
@@ -447,7 +447,7 @@ class ElmslnStudio extends router(
             source,
             data,
             this[propName],
-            this.refreshDates
+            this.refreshDates,
           );
         }
       });

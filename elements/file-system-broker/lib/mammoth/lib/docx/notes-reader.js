@@ -10,7 +10,7 @@ function createReader(noteType, bodyReader) {
       element
         .getElementsByTagName("w:" + noteType)
         .filter(isFootnoteElement)
-        .map(readFootnoteElement)
+        .map(readFootnoteElement),
     );
   }
 

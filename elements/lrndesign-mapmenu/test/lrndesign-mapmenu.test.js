@@ -5,9 +5,9 @@ import "../lrndesign-mapmenu.js";
 describe("lrndesign-mapmenu test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrndesign-mapmenu title="test-title"></lrndesign-mapmenu> `
-    );
+    element = await fixture(html`
+      <lrndesign-mapmenu title="test-title"></lrndesign-mapmenu>
+    `);
   });
 
   it("passes the a11y audit", async () => {

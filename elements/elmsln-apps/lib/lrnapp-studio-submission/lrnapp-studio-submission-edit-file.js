@@ -54,6 +54,6 @@ class LrnappStudioSubmissionEditFile extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionEditFile.tag,
-  LrnappStudioSubmissionEditFile
+  LrnappStudioSubmissionEditFile,
 );
 export { LrnappStudioSubmissionEditFile };

@@ -47,16 +47,21 @@ class CollectionItem extends DDD {
           display: inline;
           background-color: var(--simple-colors-default-theme-accent-1);
           height: fit-content;
-          --collection-row-accent-color: var(--simple-colors-default-theme-accent-10);
+          --collection-row-accent-color: var(
+            --simple-colors-default-theme-accent-10
+          );
         }
-        a.link, a.link:-webkit-any-link {
+        a.link,
+        a.link:-webkit-any-link {
           outline-color: var(--collection-row-accent-color);
           outline-offset: -1px;
           outline-width: 3px;
           color: var(--collection-row-accent-color);
           display: block;
           border: var(--ddd-border-xs);
-          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
+          transition:
+            0.3s ease-in-out opacity,
+            0.3s ease-in-out filter;
           height: 300px;
           box-shadow: var(--ddd-boxShadow-xs);
         }
@@ -129,7 +134,7 @@ class CollectionItem extends DDD {
           padding: 0 var(--ddd-spacing-1);
           display: inline-block;
           word-break: break-word;
-          word-wrap:break-word;
+          word-wrap: break-word;
         }
         .line-3 {
           padding: 0 var(--ddd-spacing-3);
@@ -177,7 +182,9 @@ class CollectionItem extends DDD {
           width: 100%;
           height: 160px;
           opacity: 0.9;
-          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
+          transition:
+            0.3s ease-in-out opacity,
+            0.3s ease-in-out filter;
           border-bottom-style: solid;
           border-bottom-color: var(--collection-row-accent-color);
           border-bottom-width: var(--ddd-border-md);
@@ -188,7 +195,12 @@ class CollectionItem extends DDD {
 
   render() {
     return html`
-      <a class="link" href="${this.url}" title="${this.alt}" @click="${this._handleClick}">
+      <a
+        class="link"
+        href="${this.url}"
+        title="${this.alt}"
+        @click="${this._handleClick}"
+      >
         <div class="wrap">
           ${this.tags
             ? html`<simple-tags

@@ -89,7 +89,7 @@ export class LrnH5p extends LitElement {
   render() {
     if (this.querySelector("iframe")) {
       const matches = /(https?:\/\/[^\/]*).*embed\/([0-9]*)/g.exec(
-        this.querySelector("iframe").src
+        this.querySelector("iframe").src,
       );
       const editUrl = `${matches[1]}/node/${matches[2]}/edit`;
       return html`

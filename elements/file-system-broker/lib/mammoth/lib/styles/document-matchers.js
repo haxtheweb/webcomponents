@@ -45,7 +45,7 @@ Matcher.prototype.matches = function (element) {
       (element.styleName &&
         this._styleName.operator(
           this._styleName.operand,
-          element.styleName
+          element.styleName,
         ))) &&
     (this._listIndex === undefined ||
       isList(element, this._listIndex, this._listIsOrdered)) &&

@@ -209,7 +209,7 @@ class OptImg extends HTMLElement {
           updateCallback: "render",
           locales: ["es"],
         },
-      })
+      }),
     );
 
     // setup the intersection observer, only if we are not visible
@@ -221,7 +221,7 @@ class OptImg extends HTMLElement {
           rootMargin: "0px",
           threshold: [0.0, 0.25, 0.5, 0.75, 1.0], // when to return records
           delay: 500, // how often to query this
-        }
+        },
       );
       this.intersectionObserver.observe(this);
     }

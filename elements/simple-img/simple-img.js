@@ -89,7 +89,7 @@ export class SimpleImg extends HTMLElement {
       };
       this.srcconverted = MicroFrontendRegistry.url(
         "@core/imgManipulate",
-        params
+        params,
       );
     }
   }

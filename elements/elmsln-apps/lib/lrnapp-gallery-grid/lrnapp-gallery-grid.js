@@ -188,7 +188,7 @@ class LrnappGalleryGrid extends PolymerElement {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }

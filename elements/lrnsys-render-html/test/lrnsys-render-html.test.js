@@ -5,9 +5,9 @@ import "../lrnsys-render-html.js";
 describe("lrnsys-render-html test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrnsys-render-html title="test-title"></lrnsys-render-html> `
-    );
+    element = await fixture(html`
+      <lrnsys-render-html title="test-title"></lrnsys-render-html>
+    `);
   });
 
   it("passes the a11y audit", async () => {

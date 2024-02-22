@@ -15,7 +15,7 @@ function DocumentConverter(options) {
     convertToHtml: function (element) {
       var comments = _.indexBy(
         element.type === documents.types.document ? element.comments : [],
-        "commentId"
+        "commentId",
       );
       var conversion = new DocumentConversion(options, comments);
       return conversion.convertToHtml(element);
@@ -247,18 +247,18 @@ function DocumentConversion(options, comments) {
       children = convertElements(
         element.children,
         messages,
-        _.extend({}, options, { isTableHeader: false })
+        _.extend({}, options, { isTableHeader: false }),
       );
     } else {
       var headRows = convertElements(
         element.children.slice(0, bodyIndex),
         messages,
-        _.extend({}, options, { isTableHeader: true })
+        _.extend({}, options, { isTableHeader: true }),
       );
       var bodyRows = convertElements(
         element.children.slice(bodyIndex),
         messages,
-        _.extend({}, options, { isTableHeader: false })
+        _.extend({}, options, { isTableHeader: false }),
       );
       children = [
         Html.freshElement("thead", {}, headRows),
@@ -288,7 +288,7 @@ function DocumentConversion(options, comments) {
       Html.freshElement(
         tagName,
         attributes,
-        [Html.forceWrite].concat(children)
+        [Html.forceWrite].concat(children),
       ),
     ];
   }
@@ -307,7 +307,7 @@ function DocumentConversion(options, comments) {
             href: "#" + referentHtmlId("comment", reference.commentId),
             id: referenceHtmlId("comment", reference.commentId),
           },
-          [Html.text(label)]
+          [Html.text(label)],
         ),
       ];
     });
@@ -324,7 +324,7 @@ function DocumentConversion(options, comments) {
         Html.freshElement(
           "a",
           { href: "#" + referenceHtmlId("comment", comment.commentId) },
-          [Html.text("↑")]
+          [Html.text("↑")],
         ),
       ]),
     ]);
@@ -333,7 +333,7 @@ function DocumentConversion(options, comments) {
       Html.freshElement(
         "dt",
         { id: referentHtmlId("comment", comment.commentId) },
-        [Html.text("Comment " + label)]
+        [Html.text("Comment " + label)],
       ),
       Html.freshElement("dd", {}, body),
     ];
@@ -361,7 +361,7 @@ function DocumentConversion(options, comments) {
       var children = convertElements(
         globalThis.document.children,
         messages,
-        options
+        options,
       );
       var notes = noteReferences.map(function (noteReference) {
         return globalThis.document.notes.resolve(noteReference);
@@ -374,7 +374,7 @@ function DocumentConversion(options, comments) {
           {},
           flatMap(referencedComments, function (referencedComment) {
             return convertComment(referencedComment, messages, options);
-          })
+          }),
         ),
       ]);
     },
@@ -402,7 +402,7 @@ function DocumentConversion(options, comments) {
         {
           id: htmlId(element.name),
         },
-        [Html.forceWrite]
+        [Html.forceWrite],
       );
       return [anchor];
     },
@@ -414,7 +414,7 @@ function DocumentConversion(options, comments) {
           href: "#" + noteHtmlId(element),
           id: noteRefHtmlId(element),
         },
-        [Html.text("[" + noteNumber++ + "]")]
+        [Html.text("[" + noteNumber++ + "]")],
       );
 
       return [Html.freshElement("sup", {}, [anchor])];
@@ -428,7 +428,7 @@ function DocumentConversion(options, comments) {
           Html.freshElement("a", { href: "#" + noteRefHtmlId(element) }, [
             Html.text("↑"),
           ]),
-        ]
+        ],
       );
       var body = children.concat([backLink]);
 
@@ -437,7 +437,7 @@ function DocumentConversion(options, comments) {
     commentReference: convertCommentReference,
     comment: convertComment,
     image: deferredConversion(
-      recoveringConvertImage(options.convertImage || images.dataUri)
+      recoveringConvertImage(options.convertImage || images.dataUri),
     ),
     table: convertTable,
     tableRow: convertTableRow,
@@ -474,7 +474,7 @@ function unrecognisedStyleWarning(type, element) {
       "'" +
       " (Style ID: " +
       element.styleId +
-      ")"
+      ")",
   );
 }
 

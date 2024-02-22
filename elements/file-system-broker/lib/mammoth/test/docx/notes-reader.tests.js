@@ -13,7 +13,7 @@ test("ID and body of footnote are read", function () {
   var footnotes = createFootnotesReader(bodyReader)(
     new XmlElement("w:footnotes", {}, [
       new XmlElement("w:footnote", { "w:id": "1" }, footnoteBody),
-    ])
+    ]),
   );
   assert.equal(footnotes.value.length, 1);
   assert.deepEqual(footnotes.value[0].body, [new documents.Paragraph([])]);
@@ -28,7 +28,7 @@ function footnoteTypeIsIgnored(type) {
     var footnotes = createFootnotesReader()(
       new XmlElement("w:footnotes", {}, [
         new XmlElement("w:footnote", { "w:id": "1", "w:type": type }, []),
-      ])
+      ]),
     );
     assert.equal(footnotes.value.length, 0);
   });

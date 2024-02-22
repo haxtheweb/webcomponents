@@ -16,7 +16,7 @@ import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
  */
 class CircleProgress extends mixinBehaviors(
   [IronResizableBehavior],
-  PolymerElement
+  PolymerElement,
 ) {
   static get template() {
     return html`

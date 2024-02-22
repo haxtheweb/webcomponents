@@ -118,7 +118,7 @@ class a11yCarouselButton extends LitElement {
             cancelable: true,
             composed: true,
             detail: this,
-          })
+          }),
         );
       }
     }

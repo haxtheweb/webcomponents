@@ -5,18 +5,16 @@ import "../lrnsys-progress.js";
 describe("lrnsys-progress test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html`
-        <lrnsys-progress
-          sound=""
-          sound-finish=""
-          title="The steps to complete this lesson"
-          id="progress"
-          progressive-unlock=""
-          size="large"
-        ></lrnsys-progress>
-      `
-    );
+    element = await fixture(html`
+      <lrnsys-progress
+        sound=""
+        sound-finish=""
+        title="The steps to complete this lesson"
+        id="progress"
+        progressive-unlock=""
+        size="large"
+      ></lrnsys-progress>
+    `);
   });
 
   it("passes the a11y audit", async () => {

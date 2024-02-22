@@ -247,7 +247,7 @@ export class HAXWiring {
       }
       globalThis.addEventListener(
         "hax-store-ready",
-        this._haxStoreReady.bind(this)
+        this._haxStoreReady.bind(this),
       );
       if (
         typeof globalThis.HaxStore !== typeof undefined &&
@@ -325,7 +325,7 @@ export class HAXWiring {
       props = {},
       tag = "",
       context = document,
-      isReady = false
+      isReady = false,
     ) => {
       // support remote loading from a string
       if (typeof props === "string") {
@@ -391,7 +391,7 @@ export class HAXWiring {
           }
           for (let i = 0; i < props.settings.configure.length; i++) {
             props.settings.configure[i] = this.validateSetting(
-              props.settings.configure[i]
+              props.settings.configure[i],
             );
             if (!props.settings.configure[i]) {
               props.settings.configure.splice(i, 1);
@@ -402,7 +402,7 @@ export class HAXWiring {
           }
           for (let i = 0; i < props.settings.advanced.length; i++) {
             props.settings.advanced[i] = this.validateSetting(
-              props.settings.advanced[i]
+              props.settings.advanced[i],
             );
             if (!props.settings.advanced[i]) {
               props.settings.advanced.splice(i, 1);
@@ -413,7 +413,7 @@ export class HAXWiring {
           }
           for (let i = 0; i < props.settings.developer.length; i++) {
             props.settings.developer[i] = this.validateSetting(
-              props.settings.developer[i]
+              props.settings.developer[i],
             );
             if (!props.settings.developer[i]) {
               props.settings.developer.splice(i, 1);
@@ -461,7 +461,7 @@ export class HAXWiring {
         // but would probably default to an iframe which is less then ideal
         // but at least wouldn't brick the AX.
         console.warn(
-          "This is't a valid usage of hax API. See hax-body-behaviors/lib/HAXWiring.js for more details on how to implement the API. https://haxtheweb.org/hax-schema for details but we will try and guess the wiring"
+          "This is't a valid usage of hax API. See hax-body-behaviors/lib/HAXWiring.js for more details on how to implement the API. https://haxtheweb.org/hax-schema for details but we will try and guess the wiring",
         );
       }
     };
@@ -513,7 +513,7 @@ export class HAXWiring {
       } else {
         console.warn(context);
         console.warn(
-          `${tag} missed our checks and has an issue in implementation with HAX`
+          `${tag} missed our checks and has an issue in implementation with HAX`,
         );
       }
     };
@@ -836,7 +836,7 @@ export class HAXWiring {
      */
     this.validHAXPropertyInputMethod = () => {
       var methods = Object.keys(
-        new SimpleFields().fieldsConversion.inputMethod
+        new SimpleFields().fieldsConversion.inputMethod,
       );
       return methods;
     };
@@ -1000,7 +1000,7 @@ export const HAXElement = function (SuperClass) {
         globalThis.addEventListener(
           "hax-store-ready",
           this._haxStoreReady.bind(this),
-          { signal: this.windowControllers.signal }
+          { signal: this.windowControllers.signal },
         );
 
         return this.HAXWiring.setHaxProperties(props, tag, context, false);
@@ -1107,7 +1107,7 @@ globalThis.HAXBehaviors.PropertiesBehaviors = {
     }
     globalThis.addEventListener(
       "hax-store-ready",
-      this._haxStoreReady.bind(this)
+      this._haxStoreReady.bind(this),
     );
     if (
       typeof globalThis.HaxStore !== typeof undefined &&

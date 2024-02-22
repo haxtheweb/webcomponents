@@ -900,7 +900,7 @@ class SimpleFields extends SimpleFieldsLite {
     //see which keys the field and the conversion have in common
     let fieldKeys = Object.keys(field || {}),
       convKeys = Object.keys(conversion || {}).filter((key) =>
-        fieldKeys.includes(key)
+        fieldKeys.includes(key),
       );
     //start with default conversion settings
     if (conversion.defaultSettings) settings = conversion.defaultSettings;
@@ -911,8 +911,8 @@ class SimpleFields extends SimpleFieldsLite {
         convVal = !convData
           ? undefined
           : Array.isArray(val)
-          ? convData[val[0]]
-          : convData[val];
+            ? convData[val[0]]
+            : convData[val];
       //if we have more specific settings get them recursively
       if (convVal)
         settings = this._convertField(field, convVal, convData, settings);
@@ -998,7 +998,7 @@ class SimpleFields extends SimpleFieldsLite {
         cancelable: true,
         composed: false,
         detail: this,
-      })
+      }),
     );
   }
   /**

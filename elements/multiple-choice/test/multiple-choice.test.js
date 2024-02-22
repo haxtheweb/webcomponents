@@ -20,7 +20,7 @@ describe("multiple-choice test", () => {
         <input value="Mickey" />
         <p slot="correct-feedback">Yay! Let's jump in the money pit.</p>
         <p slot="incorrect-feedback">You're despicable. What a quack!</p>
-      </multiple-choice>`
+      </multiple-choice>`,
     );
   });
 

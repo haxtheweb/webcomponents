@@ -11,7 +11,7 @@ function tokenise(string) {
     {
       name: "identifier",
       regex: new RegExp(
-        "(" + identifierCharacter + "(?:" + identifierCharacter + "|[0-9])*)"
+        "(" + identifierCharacter + "(?:" + identifierCharacter + "|[0-9])*)",
       ),
     },
     { name: "dot", regex: /\./ },

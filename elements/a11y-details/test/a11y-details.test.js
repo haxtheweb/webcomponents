@@ -5,9 +5,9 @@ import "../a11y-details.js";
 describe("a11y-details test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <a11y-details title="test-title"></a11y-details> `
-    );
+    element = await fixture(html`
+      <a11y-details title="test-title"></a11y-details>
+    `);
   });
 
   it("passes the a11y audit", async () => {

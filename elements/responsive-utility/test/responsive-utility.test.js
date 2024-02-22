@@ -5,9 +5,9 @@ import "../responsive-utility.js";
 describe("responsive-utility test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <responsive-utility title="test-title"></responsive-utility> `
-    );
+    element = await fixture(html`
+      <responsive-utility title="test-title"></responsive-utility>
+    `);
   });
 
   it("passes the a11y audit", async () => {

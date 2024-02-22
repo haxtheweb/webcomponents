@@ -5,9 +5,9 @@ import "../lrndesign-avatar.js";
 describe("lrndesign-avatar test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrndesign-avatar title="test-title"></lrndesign-avatar> `
-    );
+    element = await fixture(html`
+      <lrndesign-avatar title="test-title"></lrndesign-avatar>
+    `);
   });
 
   it("passes the a11y audit", async () => {

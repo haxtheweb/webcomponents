@@ -11,13 +11,7 @@
     "description": "A section of content to a website. Useful for designing in screens of material",
     "icon": "av:call-to-action",
     "color": "purple",
-    "tags": [
-      "Layout",
-      "page",
-      "section",
-      "container",
-      "cta"
-    ],
+    "tags": ["Layout", "page", "section", "container", "cta"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -106,9 +100,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "colors"
-    ]
+    "unsetAttributes": ["colors"]
   },
   "documentation": {
     "howTo": null,

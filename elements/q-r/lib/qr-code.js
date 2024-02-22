@@ -16,7 +16,7 @@ class QRCodeElement extends HTMLElement {
       this._qrLoaded.bind(this),
       {
         signal: this.windowControllers.signal,
-      }
+      },
     );
     globalThis.ESGlobalBridge.requestAvailability().load("qr", location);
   }

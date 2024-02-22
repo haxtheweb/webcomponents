@@ -347,7 +347,7 @@ class HAXCMSSiteEditor extends LitElement {
     if (e.detail.value && e.detail.value.data && e.detail.value.data.title) {
       store.toast(
         `Page deleted ${e.detail.value.data.title}, selecting another page`,
-        4000
+        4000,
       );
       store.playSound("coin");
     }
@@ -374,7 +374,7 @@ class HAXCMSSiteEditor extends LitElement {
           bubbles: true,
           cancelable: false,
           detail: e.detail.response.data,
-        })
+        }),
       );
     }
   }
@@ -402,7 +402,7 @@ class HAXCMSSiteEditor extends LitElement {
               detail: {
                 redirect: true,
               },
-            })
+            }),
           );
           break;
         case 403:
@@ -421,14 +421,14 @@ class HAXCMSSiteEditor extends LitElement {
                   params: [target],
                 },
               },
-            })
+            }),
           );
           break;
         default:
           store.toast(
             e.detail.value.status + " " + e.detail.value.statusText,
             5000,
-            { fire: true }
+            { fire: true },
           );
           store.playSound("error");
           break;
@@ -482,7 +482,7 @@ class HAXCMSSiteEditor extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     // inject cms styles for uniformity between shadowroot
     const link = globalThis.document.createElement("link");
@@ -492,7 +492,8 @@ class HAXCMSSiteEditor extends LitElement {
       .shadowRoot.querySelector("style")
       .parentNode.insertBefore(
         link,
-        this.querySelector("#hax").shadowRoot.querySelector("style").nextSibling
+        this.querySelector("#hax").shadowRoot.querySelector("style")
+          .nextSibling,
       );
   }
 
@@ -501,7 +502,7 @@ class HAXCMSSiteEditor extends LitElement {
       if (propName == "appStore") {
         this.querySelector("#hax").setAttribute(
           "app-store",
-          JSON.stringify(this[propName])
+          JSON.stringify(this[propName]),
         );
       }
       if (propName == "publishing") {
@@ -510,7 +511,7 @@ class HAXCMSSiteEditor extends LitElement {
         this.dispatchEvent(
           new CustomEvent("manifest-changed", {
             detail: this[propName],
-          })
+          }),
         );
 
         this._activeItemChanged(this[propName], oldValue);
@@ -518,7 +519,7 @@ class HAXCMSSiteEditor extends LitElement {
         this.dispatchEvent(
           new CustomEvent("manifest-changed", {
             detail: this[propName],
-          })
+          }),
         );
 
         this._manifestChanged(this[propName], oldValue);
@@ -537,7 +538,7 @@ class HAXCMSSiteEditor extends LitElement {
         detail: {
           redirect: true,
         },
-      })
+      }),
     );
   }
 
@@ -550,31 +551,31 @@ class HAXCMSSiteEditor extends LitElement {
     globalThis.addEventListener(
       "jwt-login-refresh-error",
       this._tokenRefreshFailed.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "hax-store-ready",
       this._storeReadyToGo.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "json-outline-schema-active-body-changed",
       this._bodyChanged.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "haxcms-save-outline",
       this.saveOutline.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
@@ -584,19 +585,19 @@ class HAXCMSSiteEditor extends LitElement {
     globalThis.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "haxcms-load-site-dashboard",
       this.loadSiteDashboard.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "haxcms-load-user-data",
       this.loadUserData.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
@@ -604,7 +605,7 @@ class HAXCMSSiteEditor extends LitElement {
       this.createNode.bind(this),
       {
         signal: this.windowControllers.signal,
-      }
+      },
     );
 
     globalThis.addEventListener(
@@ -612,7 +613,7 @@ class HAXCMSSiteEditor extends LitElement {
       this.deleteNode.bind(this),
       {
         signal: this.windowControllers.signal,
-      }
+      },
     );
   }
 
@@ -633,7 +634,7 @@ class HAXCMSSiteEditor extends LitElement {
   loadSiteDashboard(e) {
     if (globalThis.document.body.querySelector("haxcms-site-dashboard")) {
       this.siteDashboard = globalThis.document.body.querySelector(
-        "haxcms-site-dashboard"
+        "haxcms-site-dashboard",
       );
       this.siteDashboard.headers = {
         Authorization: `Bearer ${this.jwt}`,
@@ -713,7 +714,7 @@ class HAXCMSSiteEditor extends LitElement {
           this.setProcessingVisual();
           const response = await MicroFrontendRegistry.call(
             "@haxcms/docxToSite",
-            formData
+            formData,
           );
           store.toast("finished!", 300);
           // must be a valid response and have at least SOME html to bother attempting
@@ -763,7 +764,7 @@ class HAXCMSSiteEditor extends LitElement {
                   confirmation = true;
                 } else {
                   confirmation = globalThis.confirm(
-                    `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
+                    `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`,
                   );
                 }
                 if (confirmation) {
@@ -820,7 +821,7 @@ class HAXCMSSiteEditor extends LitElement {
                       "--simple-modal-titlebar-background": "orange",
                     },
                   },
-                })
+                }),
               );
             });
           }
@@ -847,7 +848,7 @@ class HAXCMSSiteEditor extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     this.dispatchEvent(
       new CustomEvent("haxcms-create-node-success", {
@@ -858,7 +859,7 @@ class HAXCMSSiteEditor extends LitElement {
           value: true,
           originalTarget: this._originalTarget,
         },
-      })
+      }),
     );
   }
   /**
@@ -903,7 +904,7 @@ class HAXCMSSiteEditor extends LitElement {
           composed: true,
           cancelable: false,
           detail: true,
-        })
+        }),
       );
     }, 100);
   }
@@ -987,7 +988,7 @@ class HAXCMSSiteEditor extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     ); // updates the node contents itself
 
     this.dispatchEvent(
@@ -996,7 +997,7 @@ class HAXCMSSiteEditor extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
   }
 
@@ -1011,7 +1012,7 @@ class HAXCMSSiteEditor extends LitElement {
           composed: true,
           cancelable: false,
           detail: true,
-        })
+        }),
       );
     }, 100);
   }
@@ -1026,7 +1027,7 @@ class HAXCMSSiteEditor extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     setTimeout(() => {
       globalThis.location.reload();
@@ -1047,7 +1048,7 @@ class HAXCMSSiteEditor extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
   }
   /**
@@ -1064,7 +1065,7 @@ class HAXCMSSiteEditor extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
   }
   /**
@@ -1182,7 +1183,7 @@ class HAXCMSSiteEditor extends LitElement {
           values.manifest.theme.regions[key].length > 0
         ) {
           values.manifest.theme[key] = values.manifest.theme.regions[key].map(
-            (item) => (item.node ? item.node : null)
+            (item) => (item.node ? item.node : null),
           );
         }
       });

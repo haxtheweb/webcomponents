@@ -5,9 +5,9 @@ import "../simple-toolbar.js";
 describe("simple-toolbar test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-toolbar title="test-title"></simple-toolbar> `
-    );
+    element = await fixture(html`
+      <simple-toolbar title="test-title"></simple-toolbar>
+    `);
   });
 
   it("passes the a11y audit", async () => {

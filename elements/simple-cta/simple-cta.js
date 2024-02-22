@@ -25,65 +25,75 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
           height: fit-content;
           margin: var(--ddd-spacing-4) 0 0;
           border-radius: var(--ddd-radius-xs);
-          --component-color: var(--ddd-theme-polaris-link);
+          --component-color: var(--ddd-theme-default-link);
           --component-background-color: transparent;
-          --component-border-color: var(--ddd-theme-polaris-link);
+          --component-border-color: var(--ddd-theme-default-link);
         }
 
         :host([hidden]) {
           display: none;
         }
 
-        :host([filled]){
-          --component-color: var(--ddd-theme-polaris-white);
-          --component-background-color: var(--ddd-theme-polaris-link);
+        :host([filled]) {
+          --component-color: var(--ddd-theme-default-white);
+          --component-background-color: var(--ddd-theme-default-link);
         }
-        :host([filled]:focus-within), :host([filled]) a:hover, :host([filled]) a:active {
-          --component-background-color: var(--ddd-theme-polaris-nittanyNavy);
+        :host([filled]:focus-within),
+        :host([filled]) a:hover,
+        :host([filled]) a:active {
+          --component-background-color: var(--ddd-theme-default-nittanyNavy);
           --component-border-color: var(--component-background-color);
         }
 
-        :host([light]){
-          --component-color: var(--ddd-theme-polaris-linkLight);
+        :host([light]) {
+          --component-color: var(--ddd-theme-default-linkLight);
           --component-background-color: transparent;
-          --component-border-color: var(--ddd-theme-polaris-linkLight);
+          --component-border-color: var(--ddd-theme-default-linkLight);
         }
-        :host([light]:focus-within), :host([light]) a:hover, :host([light]) a:active {
-          --component-background-color: var(--ddd-theme-polaris-linkLight);
-          --component-color: var(--ddd-theme-polaris-nittanyNavy);
+        :host([light]:focus-within),
+        :host([light]) a:hover,
+        :host([light]) a:active {
+          --component-background-color: var(--ddd-theme-default-linkLight);
+          --component-color: var(--ddd-theme-default-nittanyNavy);
           --component-border-color: var(--component-background-color);
         }
 
-        :host([light][filled]){
-          --component-color: var(--ddd-theme-polaris-nittanyNavy);
-          --component-background-color: var(--ddd-theme-polaris-linkLight);
+        :host([light][filled]) {
+          --component-color: var(--ddd-theme-default-nittanyNavy);
+          --component-background-color: var(--ddd-theme-default-linkLight);
         }
-        :host([light][filled]:focus-within), :host([light][filled]) a:hover, :host([light][filled]) a:active {
-          --component-background-color: var(--ddd-theme-polaris-white);
+        :host([light][filled]:focus-within),
+        :host([light][filled]) a:hover,
+        :host([light][filled]) a:active {
+          --component-background-color: var(--ddd-theme-default-white);
           --component-border-color: var(--component-background-color);
         }
 
-        :host([white]){
-          --component-color: var(--ddd-theme-polaris-white);
+        :host([white]) {
+          --component-color: var(--ddd-theme-default-white);
           --component-background-color: transparent;
           --component-border-color: var(--component-color);
         }
-        :host([white]:focus-within), :host([white]) a:hover, :host([white]) a:active {
-          --component-background-color: var(--ddd-theme-polaris-white);
-          --component-color: var(--ddd-theme-polaris-potentialMidnight);
+        :host([white]:focus-within),
+        :host([white]) a:hover,
+        :host([white]) a:active {
+          --component-background-color: var(--ddd-theme-default-white);
+          --component-color: var(--ddd-theme-default-potentialMidnight);
         }
 
-        :host([white][filled]){
-          --component-color: var(--ddd-theme-polaris-potentialMidnight);
-          --component-background-color: var(--ddd-theme-polaris-white);
-          --component-border-color: var(--ddd-theme-polaris-potentialMidnight);
+        :host([white][filled]) {
+          --component-color: var(--ddd-theme-default-potentialMidnight);
+          --component-background-color: var(--ddd-theme-default-white);
+          --component-border-color: var(--ddd-theme-default-potentialMidnight);
         }
-        :host([white][filled]:focus-within), :host([white][filled]) a:hover, :host([white][filled]) a:active {
-          --component-background-color: var(--ddd-theme-polaris-linkLight);
-          --component-border-color: var(--ddd-theme-polaris-potentialMidnight);
+        :host([white][filled]:focus-within),
+        :host([white][filled]) a:hover,
+        :host([white][filled]) a:active {
+          --component-background-color: var(--ddd-theme-default-linkLight);
+          --component-border-color: var(--ddd-theme-default-potentialMidnight);
         }
 
-        :host([hotline]) .btn{
+        :host([hotline]) .btn {
           text-transform: uppercase;
           font-style: italic;
           font-weight: var(--ddd-font-primary-black);
@@ -94,10 +104,12 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
           text-decoration: none;
           box-sizing: border-box;
         }
-        :host(:focus-within), a:hover, a:active {
+        :host(:focus-within),
+        a:hover,
+        a:active {
           text-decoration: none;
-          --component-background-color: var(--ddd-theme-polaris-link);
-          --component-color: var(--ddd-theme-polaris-white);
+          --component-background-color: var(--ddd-theme-default-link);
+          --component-color: var(--ddd-theme-default-white);
         }
 
         .btn {
@@ -109,20 +121,23 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
           height: fit-content;
           width: fit-content;
           border-radius: var(--ddd-radius-xs);
-          color: var(--component-color, var(--ddd-theme-polaris-link));
+          color: var(--component-color, var(--ddd-theme-default-link));
           border: var(--ddd-border-sm);
-          border-color: var(--component-border-color, var(--ddd-theme-polaris-link));
+          border-color: var(
+            --component-border-color,
+            var(--ddd-theme-default-link)
+          );
           padding: 0.75rem 0.75rem 0.75rem 1.5rem;
           transition: all 0.2s ease-out;
           background-color: var(--component-background-color, transparent);
           font-weight: var(--ddd-font-primary-medium);
         }
-        
+
         .hideIcon {
           padding: 0.75rem 1.5rem;
         }
 
-        .large{
+        .large {
           padding: 1rem 2.75rem 1rem 3.25rem;
         }
         .large.hideIcon {
@@ -132,7 +147,10 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
         .icon {
           display: inline-flex;
           --simple-icon-width: var(--simple-cta-font-size, var(--ddd-icon-3xs));
-          --simple-icon-height: var(--simple-cta-font-size, var(--ddd-icon-3xs));
+          --simple-icon-height: var(
+            --simple-cta-font-size,
+            var(--ddd-icon-3xs)
+          );
         }
       `,
     ];
@@ -146,7 +164,10 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
       part="simple-cta-link"
       @click="${this._clickCard}"
     >
-      <span class="btn ${this.large ? "large" : ""} ${this.hideIcon ? "hideIcon" : ""} "
+      <span
+        class="btn ${this.large ? "large" : ""} ${this.hideIcon
+          ? "hideIcon"
+          : ""} "
         ><span class="label">${this.label}</span><slot></slot>${!this.hideIcon
           ? html`<simple-icon-lite
               class="icon"
@@ -298,7 +319,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
     this.icon = "icons:chevron-right";
     this.hideIcon = false;
     this.label = null;
-    this.color = 'primary';
+    this.color = "primary";
     this.outlined = null;
     this.hotline = null;
     this.large = null;

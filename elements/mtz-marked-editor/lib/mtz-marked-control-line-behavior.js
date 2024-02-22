@@ -74,12 +74,12 @@ export const mtzMarkedControlLineBehaviorImpl = function (SuperClass) {
 
       // Replace all selected lines with modified content
       editor.replaceSelection(
-        selectedLines.map((line) => line.text).join(newlineChar)
+        selectedLines.map((line) => line.text).join(newlineChar),
       );
       // Re-select the new content on the lines
       editor.setSelection(
         firstLine.start,
-        lastLine.end + (!removeSyntax ? 1 : -1) * offset
+        lastLine.end + (!removeSyntax ? 1 : -1) * offset,
       );
       editor.getTextarea().focus();
     }

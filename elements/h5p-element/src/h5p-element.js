@@ -109,17 +109,17 @@ class H5PElement extends LitElement {
     this.__h5pDepsLength = this.h5pJSDeps.length - 1;
     await window.ESGlobalBridge.requestAvailability().load(
       "h5p-jquery",
-      basePath + "h5p/js/jquery.js"
+      basePath + "h5p/js/jquery.js",
     );
     window.addEventListener(
       "es-bridge-h5p-jquery-loaded",
       this.h5pJqueryReady.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     window.addEventListener(
       "es-bridge-h5p-" + this.__h5pDepsLength + "-loaded",
       this.h5pReadyCallback.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   generateUUID() {
@@ -155,7 +155,7 @@ class H5PElement extends LitElement {
     for (var i in this.h5pJSDeps) {
       await window.ESGlobalBridge.requestAvailability().load(
         "h5p-" + i,
-        this.h5pJSDeps[i]
+        this.h5pJSDeps[i],
       );
     }
   }
@@ -194,7 +194,7 @@ class H5PElement extends LitElement {
       this.querySelector('[data-content-id="wrapper-' + this.contentId + '"')
     ) {
       this.querySelector(
-        '[data-content-id="wrapper-' + this.contentId + '"'
+        '[data-content-id="wrapper-' + this.contentId + '"',
       ).appendChild(frag);
     }
 
@@ -281,7 +281,7 @@ class H5PStandalone {
   async init() {
     this.h5p = await this.getJSONPromise(`${this.path}/h5p.json`);
     this.content = JSON.stringify(
-      await this.getJSONPromise(`${this.path}/content/content.json`)
+      await this.getJSONPromise(`${this.path}/content/content.json`),
     );
     window.H5PIntegration.pathIncludesVersion = this.pathIncludesVersion =
       await this.checkIfPathIncludesVersion();
@@ -352,7 +352,7 @@ class H5PStandalone {
    */
   findMainLibrary() {
     const mainLibraryInfo = this.h5p.preloadedDependencies.find(
-      (dep) => dep.machineName === this.h5p.mainLibrary
+      (dep) => dep.machineName === this.h5p.mainLibrary,
     );
 
     this.mainLibraryPath =
@@ -364,7 +364,7 @@ class H5PStandalone {
           mainLibraryInfo.minorVersion
         : "");
     return this.getJSONPromise(
-      `${this.path}/${this.mainLibraryPath}/library.json`
+      `${this.path}/${this.mainLibraryPath}/library.json`,
     );
   }
 
@@ -374,7 +374,7 @@ class H5PStandalone {
    */
   findAllDependencies() {
     const directDependencyNames = this.h5p.preloadedDependencies.map(
-      (dependency) => this.libraryPath(dependency)
+      (dependency) => this.libraryPath(dependency),
     );
 
     return this.loadDependencies(directDependencyNames, []);
@@ -390,7 +390,7 @@ class H5PStandalone {
     let dependencies = alreadyFound;
     let findNext = [];
     let newDependencies = await Promise.all(
-      toFind.map((libraryName) => this.findLibraryDependencies(libraryName))
+      toFind.map((libraryName) => this.findLibraryDependencies(libraryName)),
     );
     // loop over newly found libraries
     newDependencies.forEach((library) => {
@@ -400,10 +400,10 @@ class H5PStandalone {
       library.dependencies.forEach((dependency) => {
         if (
           !dependencies.find(
-            (foundLibrary) => foundLibrary.libraryPath === dependency
+            (foundLibrary) => foundLibrary.libraryPath === dependency,
           ) &&
           !newDependencies.find(
-            (foundLibrary) => foundLibrary.libraryPath === dependency
+            (foundLibrary) => foundLibrary.libraryPath === dependency,
           )
         ) {
           findNext.push(dependency);
@@ -423,14 +423,14 @@ class H5PStandalone {
    */
   async findLibraryDependencies(libraryName) {
     const library = await this.getJSONPromise(
-      `${this.path}/${libraryName}/library.json`
+      `${this.path}/${libraryName}/library.json`,
     );
     const libraryPath = this.libraryPath(library);
 
     let dependencies = [];
     if (library.preloadedDependencies) {
       dependencies = library.preloadedDependencies.map((dependency) =>
-        this.libraryPath(dependency)
+        this.libraryPath(dependency),
       );
     }
 
@@ -463,7 +463,7 @@ class H5PStandalone {
           : [];
         dependency.preloadedCss.forEach((style) => {
           CSSDependencies[dependency.libraryPath].push(
-            `${this.path}/${dependency.libraryPath}/${style.path}`
+            `${this.path}/${dependency.libraryPath}/${style.path}`,
           );
         });
       }
@@ -476,7 +476,7 @@ class H5PStandalone {
           : [];
         dependency.preloadedJs.forEach((script) => {
           JSDependencies[dependency.libraryPath].push(
-            `${this.path}/${dependency.libraryPath}/${script.path}`
+            `${this.path}/${dependency.libraryPath}/${script.path}`,
           );
         });
       }
@@ -496,14 +496,14 @@ class H5PStandalone {
     Array.prototype.push.apply(
       styles,
       this.mainLibrary.preloadedCss.map(
-        (style) => `${this.path}/${this.mainLibraryPath}/${style.path}`
-      )
+        (style) => `${this.path}/${this.mainLibraryPath}/${style.path}`,
+      ),
     );
     Array.prototype.push.apply(
       scripts,
       this.mainLibrary.preloadedJs.map(
-        (script) => `${this.path}/${this.mainLibraryPath}/${script.path}`
-      )
+        (script) => `${this.path}/${this.mainLibraryPath}/${script.path}`,
+      ),
     );
 
     return { styles, scripts };
@@ -533,7 +533,7 @@ class Toposort {
       for (let dep of deps) {
         if (typeof dep !== "string" || !dep) {
           throw new TypeError(
-            "Dependency name must be given as a not empty string"
+            "Dependency name must be given as a not empty string",
           );
         }
 
@@ -576,8 +576,8 @@ class Toposort {
       if (predecessors.length !== 0 && predecessors.indexOf(node) !== -1) {
         throw new Error(
           `Cyclic dependency found. ${node} is dependent of itself.\nDependency chain: ${predecessors.join(
-            " -> "
-          )} => ${node}`
+            " -> ",
+          )} => ${node}`,
         );
       }
 

@@ -15,7 +15,7 @@ globalThis.RelativeHeadingStateManager.requestAvailability = () => {
     globalThis.RelativeHeadingStateManager.instance =
       globalThis.document.createElement("relative-heading-state-manager");
     globalThis.document.body.appendChild(
-      globalThis.RelativeHeadingStateManager.instance
+      globalThis.RelativeHeadingStateManager.instance,
     );
   }
   return globalThis.RelativeHeadingStateManager.instance;
@@ -202,7 +202,7 @@ class RelativeHeadingStateManager extends LitElement {
       if (heading.id && this.headings[heading.id]) {
         this.headings[heading.id].heading = null;
         this.headings[heading.id].subheads.forEach((subhead) =>
-          this.updateLevel(subhead)
+          this.updateLevel(subhead),
         );
       }
       this.removeSubhead(heading.parent, heading);
@@ -268,7 +268,7 @@ class RelativeHeadingStateManager extends LitElement {
   removeSubhead(id, heading) {
     if (id && this.headings[id] && this.headings[id].subheads) {
       this.headings[id].subheads = this.headings[id].subheads.filter(
-        (subhead) => subhead != heading
+        (subhead) => subhead != heading,
       );
     }
   }
@@ -304,13 +304,13 @@ class RelativeHeadingStateManager extends LitElement {
       heading._setLevel(level);
       if (this.headings[heading.id])
         this.headings[heading.id].subheads.forEach((subhead) =>
-          this.updateLevel(subhead)
+          this.updateLevel(subhead),
         );
     }
   }
 }
 customElements.define(
   RelativeHeadingStateManager.tag,
-  RelativeHeadingStateManager
+  RelativeHeadingStateManager,
 );
 export { RelativeHeadingStateManager };

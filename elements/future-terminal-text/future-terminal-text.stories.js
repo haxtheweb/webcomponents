@@ -17,6 +17,6 @@ export const FutureTerminalTextStory = () => {
   return utils.makeUsageDocs(
     FutureTerminalText,
     import.meta.url,
-    utils.makeElementFromClass(FutureTerminalText)
+    utils.makeElementFromClass(FutureTerminalText),
   );
 };

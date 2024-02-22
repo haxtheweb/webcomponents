@@ -73,7 +73,7 @@ class ImgLoader extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });

@@ -167,7 +167,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
             },
           },
         },
-      })
+      }),
     );
     // similar but this makes page addresses available as a media source
     this.dispatchEvent(
@@ -228,7 +228,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
             },
           },
         },
-      })
+      }),
     );
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
     autorun((reaction) => {
@@ -325,7 +325,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       // save this back to the system data
       globalThis.localStorage.setItem(
         "HAXCMSSystemData",
-        JSON.stringify(userData)
+        JSON.stringify(userData),
       );
     } catch (e) {}
   }

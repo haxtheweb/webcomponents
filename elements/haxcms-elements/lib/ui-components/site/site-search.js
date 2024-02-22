@@ -39,23 +39,29 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         }
         a.result {
           display: block;
-          background-color: var(--site-search-result-background-color, var(--ddd-theme-polaris-limestoneLight, #ddd));
+          background-color: var(
+            --site-search-result-background-color,
+            var(--ddd-theme-default-limestoneLight, #ddd)
+          );
           color: var(--site-search-result-color, #222222);
           padding: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-2) 0;
           font-weight: var(--ddd-font-primary-regular);
-          transition: background-color .3s ease-in-out;
+          transition: background-color 0.3s ease-in-out;
         }
 
         .result:hover,
         .result:focus {
           background-color: var(
             --site-search-result-background-color-hover,
-            var(--ddd-theme-polaris-infoLight)
+            var(--ddd-theme-default-infoLight)
           );
-          color: var(--site-search-link-color-hover, var(--ddd-theme-polaris-info, #000));
+          color: var(
+            --site-search-link-color-hover,
+            var(--ddd-theme-default-info, #000)
+          );
           text-decoration: none;
-          outline: 3px solid var(--ddd-theme-polaris-info);
+          outline: 3px solid var(--ddd-theme-default-info);
         }
         .result .title {
           font-size: var(--ddd-font-size-xs);
@@ -90,8 +96,14 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           margin-right: 4px;
           margin-bottom: 0;
           font-size: var(--ddd-font-size-xs);
-          --simple-fields-accent-color: var(--site-search-text-color, var(--ddd-theme-polaris-info, black));
-          color: var(--site-search-text-color, var(--ddd-theme-polaris-info, black));
+          --simple-fields-accent-color: var(
+            --site-search-text-color,
+            var(--ddd-theme-default-info, black)
+          );
+          color: var(
+            --site-search-text-color,
+            var(--ddd-theme-default-info, black)
+          );
         }
         .page-title-icon {
           --simple-icon-height: 32px;
@@ -178,7 +190,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
                     .split(",")
                     .map(
                       (tag) =>
-                        html`<simple-tag value="${tag.trim()}"></simple-tag>`
+                        html`<simple-tag value="${tag.trim()}"></simple-tag>`,
                     )}`
                 : ``}
             </div>
@@ -195,13 +207,13 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
                         ? html`<simple-icon-lite
                             icon="icons:chevron-right"
                           ></simple-icon-lite>`
-                        : ``}${crumb.title}`
+                        : ``}${crumb.title}`,
                   )}
                 </div>`
               : ``}
             <div>${item.description}..</div>
           </a>
-        `
+        `,
       )}
     `;
   }
@@ -211,7 +223,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         detail: {
           value: e.detail,
         },
-      })
+      }),
     );
     // hide modal if it's there
     globalThis.dispatchEvent(
@@ -219,7 +231,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
   }
   _searchValueChanged(e) {
@@ -233,7 +245,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
       globalThis.history.replaceState(
         {},
         "",
-        decodeURIComponent(`./x/search?${params}`)
+        decodeURIComponent(`./x/search?${params}`),
       );
     }
   }
@@ -247,7 +259,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         let fullItem = await store.findItemAsObject(
           item.location,
           "slug",
-          "item"
+          "item",
         );
         var breadcrumb = [
           {
@@ -258,7 +270,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         // walk back through parent tree
         while (itemBuilder && itemBuilder.parent != null) {
           itemBuilder = await store.manifest.items.find(
-            (i) => i.id == itemBuilder.parent
+            (i) => i.id == itemBuilder.parent,
           );
           // double check structure is sound
           if (itemBuilder) {

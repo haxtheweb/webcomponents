@@ -68,7 +68,7 @@ class HAXCMSUserTheme extends HAXCMSPolymerElementTheme {
     this.getHTML();
     globalThis.addEventListener(
       "haxcms-custom-theme-template-ready",
-      this.templateReady.bind(this)
+      this.templateReady.bind(this),
     );
   }
   connectedCallback() {

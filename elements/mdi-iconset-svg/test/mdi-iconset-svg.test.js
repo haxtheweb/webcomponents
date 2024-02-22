@@ -5,9 +5,9 @@ import "../mdi-iconset-svg.js";
 describe("mdi-iconset-svg test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <mdi-iconset-svg title="test-title"></mdi-iconset-svg> `
-    );
+    element = await fixture(html`
+      <mdi-iconset-svg title="test-title"></mdi-iconset-svg>
+    `);
   });
 
   it("passes the a11y audit", async () => {

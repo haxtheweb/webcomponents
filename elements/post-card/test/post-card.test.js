@@ -14,7 +14,7 @@ describe("PostCard", () => {
         to="Future"
         from="Past"
         message="To make a baby...."
-      ></post-card>`
+      ></post-card>`,
     );
   });
 
@@ -60,7 +60,7 @@ describe("PostCardPostmark", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html`<post-card-postmark locations="Europe"></post-card-postmark>`
+      html`<post-card-postmark locations="Europe"></post-card-postmark>`,
     );
   });
 

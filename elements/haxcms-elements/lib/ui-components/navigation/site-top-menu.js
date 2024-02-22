@@ -243,7 +243,7 @@ class SiteTopMenu extends LitElement {
                       </a>
                     </li>
                   `}
-            `
+            `,
           )}
           <slot name="suffix"></slot>
         </ul>
@@ -381,7 +381,7 @@ class SiteTopMenu extends LitElement {
               this.shadowRoot.querySelector('[data-id="' + tmpItem.id + '"]')
             ) {
               el = this.shadowRoot.querySelector(
-                '[data-id="' + tmpItem.id + '"]'
+                '[data-id="' + tmpItem.id + '"]',
               );
             }
           }
@@ -441,7 +441,7 @@ class SiteTopMenu extends LitElement {
       () => {
         this._activeIdChanged(this.activeId);
       },
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     setTimeout(() => {
       globalThis.dispatchEvent(new Event("resize"));

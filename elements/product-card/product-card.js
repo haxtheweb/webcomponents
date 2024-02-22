@@ -116,7 +116,7 @@ class ProductCard extends SimpleColors {
     this.dispatchEvent(
       new CustomEvent("product-card-demo-show", {
         detail: e.detail,
-      })
+      }),
     );
   }
   // properties available to the custom element for data binding

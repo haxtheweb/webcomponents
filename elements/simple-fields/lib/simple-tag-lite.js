@@ -135,7 +135,7 @@ export const SimpleTagLiteSuper = function (SuperClass) {
           detail: {
             value: this.value,
           },
-        })
+        }),
       );
     }
   };

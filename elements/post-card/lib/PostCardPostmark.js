@@ -5,7 +5,7 @@ export class PostCardPostmark extends LitElement {
     super();
     this.image = new URL(
       "./assets/postcard-postmark.svg",
-      import.meta.url
+      import.meta.url,
     ).href;
     this.alt = "";
     this.locations = "";

@@ -64,15 +64,15 @@ class HAXCMSPrintTheme extends CleanTwo {
     // support replace tag which needs to run its replacements first
     const replaceTag = Array.from(
       globalThis.document.body.querySelectorAll(
-        "haxcms-print-theme replace-tag"
-      )
+        "haxcms-print-theme replace-tag",
+      ),
     );
     for (let i = 0; i < replaceTag.length; i++) {
       replaceTag[i].runReplacement();
     }
     setTimeout(() => {
       const all = Array.from(
-        globalThis.document.body.querySelectorAll("haxcms-print-theme *")
+        globalThis.document.body.querySelectorAll("haxcms-print-theme *"),
       );
       for (let i = 0; i < all.length; i++) {
         all[i].elementVisible = true;

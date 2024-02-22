@@ -5,9 +5,9 @@ import "../lrnsys-pdf.js";
 describe("lrnsys-pdf test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrnsys-pdf title="test-title"></lrnsys-pdf> `
-    );
+    element = await fixture(html`
+      <lrnsys-pdf title="test-title"></lrnsys-pdf>
+    `);
   });
 
   it("passes the a11y audit", async () => {

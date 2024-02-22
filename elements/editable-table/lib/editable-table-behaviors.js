@@ -59,14 +59,20 @@ export const editableTableStyles = [
       border-color: var(--editable-table-border-color, #999);
       font-weight: var(--editable-table-light-weight, 200);
       color: var(--editable-table-color, #222);
-      background-color: var(--editable-table-bg-color, var(--ddd-theme-polaris-white, #fff));
+      background-color: var(
+        --editable-table-bg-color,
+        var(--ddd-theme-default-white, #fff)
+      );
     }
     .th,
     .td,
     .th-or-td .icon-container {
       font-weight: var(--editable-table-light-weight, 200);
       color: var(--editable-table-color, #222);
-      background-color: var(--editable-table-bg-color, var(--ddd-theme-polaris-white, #fff));
+      background-color: var(
+        --editable-table-bg-color,
+        var(--ddd-theme-default-white, #fff)
+      );
     }
     caption {
       font-size: var(
@@ -92,22 +98,37 @@ export const editableTableStyles = [
     }
     .thead-tr .th,
     .thead-tr .th .icon-container {
-      background-color: var(--editable-table-heading-bg-color, var(--ddd-theme-polaris-limestoneLight, #e0e0e0));
+      background-color: var(
+        --editable-table-heading-bg-color,
+        var(--ddd-theme-default-limestoneLight, #e0e0e0)
+      );
       font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(--editable-table-heading-color, var(--ddd-theme-polaris-coalyGray, #000));
+      color: var(
+        --editable-table-heading-color,
+        var(--ddd-theme-default-coalyGray, #000)
+      );
     }
     .tbody-tr .th,
     .tbody-tr .th .icon-container {
       font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(--editable-table-heading-color, var(--ddd-theme-polaris-coalyGray, #000));
-      background-color: var(--editable-table-bg-color, var(--ddd-theme-polaris-white, #fff));
+      color: var(
+        --editable-table-heading-color,
+        var(--ddd-theme-default-coalyGray, #000)
+      );
+      background-color: var(
+        --editable-table-bg-color,
+        var(--ddd-theme-default-white, #fff)
+      );
       text-align: left;
     }
     *[bordered] .th,
     *[bordered] .td {
       border-width: var(--editable-table-border-width, 1px);
       border-style: var(--editable-table-border-style, solid);
-      border-color: var(--editable-table-border-color, var(--ddd-theme-polaris-coalyGray, #999));
+      border-color: var(
+        --editable-table-border-color,
+        var(--ddd-theme-default-coalyGray, #999)
+      );
     }
     *[condensed] {
       --editable-table-cell-vertical-padding: var(
@@ -121,19 +142,28 @@ export const editableTableStyles = [
     }
     *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td,
     *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td .icon-container {
-      background-color: var(--editable-table-stripe-bg-color, var(--ddd-theme-polaris-limestoneMaxLight, #f0f0f0));
+      background-color: var(
+        --editable-table-stripe-bg-color,
+        var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
+      );
     }
     *[column-striped] .tbody-tr .th-or-td:nth-child(2n),
     *[column-striped] .tbody-tr .th-or-td:nth-child(2n) .icon-container,
     *[column-striped] .tfoot-tr .th-or-td:nth-child(2n),
     *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) .icon-container {
-      background-color: var(--editable-table-stripe-bg-color, var(--ddd-theme-polaris-limestoneMaxLight, #f0f0f0));
+      background-color: var(
+        --editable-table-stripe-bg-color,
+        var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
+      );
     }
     .tfoot-tr .th,
     .tfoot-tr .td {
       border-top: 2px solid var(--editable-table-color, #222);
       font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(--editable-table-heading-color, var(--ddd-theme-polaris-coalyGray, #000));
+      color: var(
+        --editable-table-heading-color,
+        var(--ddd-theme-default-coalyGray, #000)
+      );
     }
     caption,
     .th-or-td {
@@ -201,11 +231,18 @@ export const editableTableDisplayStyles = [
       margin-right: 0px;
       --simple-picker-border-width: 1px;
       --simple-picker-focus-border-width: 1px;
-      --simple-picker-border-color: var(--editable-table-border-color, var(--ddd-theme-polaris-coalyGray, #999));
+      --simple-picker-border-color: var(
+        --editable-table-border-color,
+        var(--ddd-theme-default-coalyGray, #999)
+      );
     }
     .th,
     .td {
-      padding: var(--editable-table-cell-vertical-padding, var(--ddd-spacing-3, 10px)) var(--editable-table-cell-horizontal-padding, var(--ddd-spacing-2, 6px));
+      padding: var(
+          --editable-table-cell-vertical-padding,
+          var(--ddd-spacing-3, 10px)
+        )
+        var(--editable-table-cell-horizontal-padding, var(--ddd-spacing-2, 6px));
     }
     span.cell {
       display: block;
@@ -537,7 +574,7 @@ export const displayBehaviors = function (SuperClass) {
     get tbody() {
       return (this.data || []).slice(
         this.columnHeader ? 1 : 0,
-        this.footer ? (this.data || []).length - 1 : (this.data || []).length
+        this.footer ? (this.data || []).length - 1 : (this.data || []).length,
       );
     }
     /**
@@ -607,7 +644,7 @@ export const displayBehaviors = function (SuperClass) {
         data = this.getTableCSV();
       a.setAttribute(
         "href",
-        "data:text/plain;charset=UTF-8," + encodeURIComponent(data)
+        "data:text/plain;charset=UTF-8," + encodeURIComponent(data),
       );
       a.setAttribute("download", filename + ".txt");
       a.style.display = "none";
@@ -629,7 +666,7 @@ export const displayBehaviors = function (SuperClass) {
             data: data,
             filename: filename,
           },
-        })
+        }),
       );
     }
 
@@ -646,7 +683,7 @@ export const displayBehaviors = function (SuperClass) {
           : globalThis.open(
               "",
               "",
-              "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status=0"
+              "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status=0",
             );
       if (print) {
         print.document.head.innerHTML += `<style>
@@ -677,7 +714,7 @@ export const displayBehaviors = function (SuperClass) {
           composed: true,
           cancelable: false,
           detail: this,
-        })
+        }),
       );
     }
 
@@ -813,7 +850,7 @@ export const displayBehaviors = function (SuperClass) {
           : "",
         body.length > 0
           ? `\n\t<tbody${!addStyleClasses ? "" : ` class="tbody"`}>${body.join(
-              ""
+              "",
             )}\n\t</tbody>`
           : "",
         footer.length > 0

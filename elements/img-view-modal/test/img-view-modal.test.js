@@ -5,9 +5,9 @@ import "../img-view-modal.js";
 describe("img-view-modal test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <img-view-modal title="test-title"></img-view-modal> `
-    );
+    element = await fixture(html`
+      <img-view-modal title="test-title"></img-view-modal>
+    `);
   });
 
   it("passes the a11y audit", async () => {

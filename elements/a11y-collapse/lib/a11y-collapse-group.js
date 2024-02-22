@@ -121,7 +121,7 @@ class A11yCollapseGroup extends LitElement {
   _attachItem(item) {
     this.__items.push(item);
     Object.keys(A11yCollapseGroup.properties || {}).forEach((propName) =>
-      this._updateItem(item, propName)
+      this._updateItem(item, propName),
     );
   }
   /**
@@ -130,7 +130,7 @@ class A11yCollapseGroup extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       this.__items.forEach((item) =>
-        this._updateItem(item, propName, oldValue)
+        this._updateItem(item, propName, oldValue),
       );
     });
   }

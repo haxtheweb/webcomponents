@@ -176,7 +176,9 @@ class LrnappStudioKanban extends PolymerElement {
         .assignment-row-button[icon="assignment"]::part(lrnsys-button-icon) {
           --simple-icon-color: black;
         }
-        .assignment-row-button[icon="assignment-late"]::part(lrnsys-button-icon) {
+        .assignment-row-button[icon="assignment-late"]::part(
+            lrnsys-button-icon
+          ) {
           --simple-icon-color: orangered;
         }
         .assignment-row-button[icon="done"]::part(lrnsys-button-icon) {
@@ -490,7 +492,7 @@ class LrnappStudioKanban extends PolymerElement {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }
@@ -571,11 +573,11 @@ class LrnappStudioKanban extends PolymerElement {
     window.dispatchEvent(new Event("resize"));
     this.addEventListener(
       "project-created",
-      this._handleProjectCreated.bind(this)
+      this._handleProjectCreated.bind(this),
     );
     this.addEventListener(
       "assignment-created",
-      this._handleAssignmentCreated.bind(this)
+      this._handleAssignmentCreated.bind(this),
     );
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
@@ -584,11 +586,11 @@ class LrnappStudioKanban extends PolymerElement {
   disconnectedCallback() {
     this.removeEventListener(
       "project-created",
-      this._handleProjectCreated.bind(this)
+      this._handleProjectCreated.bind(this),
     );
     this.removeEventListener(
       "assignment-created",
-      this._handleAssignmentCreated.bind(this)
+      this._handleAssignmentCreated.bind(this),
     );
     super.disconnectedCallback();
   }

@@ -90,7 +90,7 @@ class LrnsysDialogToolbarButton extends LitElement {
     this.dispatchEvent(
       new CustomEvent("button-initialized", {
         detail: { id: this.id },
-      })
+      }),
     );
   }
 
@@ -101,7 +101,7 @@ class LrnsysDialogToolbarButton extends LitElement {
     this.dispatchEvent(
       new CustomEvent("dialog-toolbar-button-tapped", {
         detail: { id: e.target.getAttribute("id") },
-      })
+      }),
     );
   }
 }

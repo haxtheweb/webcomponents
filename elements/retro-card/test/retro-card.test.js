@@ -5,9 +5,9 @@ import "../retro-card.js";
 describe("retro-card test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <retro-card title="test-title"></retro-card> `
-    );
+    element = await fixture(html`
+      <retro-card title="test-title"></retro-card>
+    `);
   });
 
   it("passes the a11y audit", async () => {

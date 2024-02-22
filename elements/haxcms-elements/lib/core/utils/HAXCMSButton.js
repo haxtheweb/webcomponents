@@ -7,17 +7,17 @@ import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { HAXCMSThemeParts } from "./HAXCMSThemeParts.js";
 const ButtonBGLight = new URL(
   "../../../../app-hax/lib/assets/images/ButtonBGLM.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 const ButtonBGDark = new URL(
   "../../../../app-hax/lib/assets/images/ButtonBGDM.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 
 // translation support baked in, use this class to reduce
 // complexity in adding new buttons to the HAXcms UI for editors
 export class HAXCMSButton extends HAXCMSThemeParts(
-  HAXCMSI18NMixin(LitElement)
+  HAXCMSI18NMixin(LitElement),
 ) {
   constructor() {
     super();

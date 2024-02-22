@@ -16,7 +16,7 @@ import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
  * @demo demo/dashboard.html
  */
 class ElmslnStudioAssignments extends ElmslnStudioUtilities(
-  ElmslnStudioStyles(LitElement)
+  ElmslnStudioStyles(LitElement),
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -136,14 +136,14 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
                             </span>
                             <div slot="linklist">
                               ${this.sortDates(p.assignments || [], true).map(
-                                (a) => this.renderAssignment(a)
+                                (a) => this.renderAssignment(a),
                               )}
                             </div>
                           </nav-card>
-                        `
+                        `,
                   )}
                 </div>
-              `
+              `,
             )}
       </div>
     `;
@@ -159,14 +159,14 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
               ? "grey"
               : this.getStatusColor(
                   this.getSubmission(assignment.id),
-                  assignment
+                  assignment,
                 )}"
             allow-grey
             avatar="${!this.profile
               ? undefined
               : this.getStatusIcon(
                   this.getSubmission(assignment.id),
-                  assignment
+                  assignment,
                 )}"
             invert
           >
@@ -198,7 +198,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
           <simple-tooltip for="act-${assignment.id}" position="left">
             ${this.getStatusMessage(
               this.getSubmission(assignment.id),
-              assignment
+              assignment,
             )}
           </simple-tooltip>
         `;
@@ -236,7 +236,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
     let submissions =
       this.profile && this.profile.id && this.profile.submissions
         ? this.profile.submissions.filter(
-            (s) => s.id === `${id}-${this.profile.id}`
+            (s) => s.id === `${id}-${this.profile.id}`,
           )
         : [];
     return submissions.length > 0 ? submissions[0] : undefined;

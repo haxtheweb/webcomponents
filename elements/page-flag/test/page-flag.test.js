@@ -131,7 +131,7 @@ describe("page-flag test", () => {
               <p>Here's a bunch of content</p>
             </div>
           </grid-plate>
-        </div>`
+        </div>`,
     );
   });
 

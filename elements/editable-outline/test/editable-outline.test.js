@@ -5,9 +5,9 @@ import "../editable-outline.js";
 describe("editable-outline test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <editable-outline title="test-title"></editable-outline> `
-    );
+    element = await fixture(html`
+      <editable-outline title="test-title"></editable-outline>
+    `);
   });
 
   it("passes the a11y audit", async () => {

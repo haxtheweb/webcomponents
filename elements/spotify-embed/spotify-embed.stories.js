@@ -17,6 +17,6 @@ export const SpotifyEmbedStory = () => {
   return utils.makeUsageDocs(
     SpotifyEmbed,
     import.meta.url,
-    utils.makeElementFromClass(SpotifyEmbed)
+    utils.makeElementFromClass(SpotifyEmbed),
   );
 };

@@ -5,9 +5,9 @@ import "../radio-behaviors.js";
 describe("radio-behaviors test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <radio-behaviors title="test-title"></radio-behaviors> `
-    );
+    element = await fixture(html`
+      <radio-behaviors title="test-title"></radio-behaviors>
+    `);
   });
 
   it("passes the a11y audit", async () => {

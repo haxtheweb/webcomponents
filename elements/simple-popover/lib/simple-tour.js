@@ -16,11 +16,11 @@ class SimpleTour extends LitElement {
     this.stop = -1;
     globalThis.addEventListener(
       "simple-tour-register",
-      this.registerNewTourEvent.bind(this)
+      this.registerNewTourEvent.bind(this),
     );
     globalThis.addEventListener(
       "simple-tour-create-tour-stop",
-      this.createTourStopEvent.bind(this)
+      this.createTourStopEvent.bind(this),
     );
   }
   registerNewTourEvent(e) {
@@ -44,7 +44,7 @@ class SimpleTour extends LitElement {
       e.detail.target,
       e.detail.title,
       e.detail.description,
-      e.detail.mode
+      e.detail.mode,
     );
   }
   /**
@@ -112,7 +112,7 @@ class SimpleTour extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
   stopTour(e) {
@@ -120,7 +120,7 @@ class SimpleTour extends LitElement {
       this,
       this,
       false,
-      this.orientation
+      this.orientation,
     );
     this.stop = -1;
     this.active = null;
@@ -131,7 +131,7 @@ class SimpleTour extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
   /**
@@ -215,7 +215,7 @@ class SimpleTour extends LitElement {
       ) {
         render(
           globalThis.document.createElement("div"),
-          globalThis.SimplePopoverManager.requestAvailability()
+          globalThis.SimplePopoverManager.requestAvailability(),
         );
         let title = this.stacks[this.active][this.stop].title;
         let description = this.stacks[this.active][this.stop].description;
@@ -242,7 +242,7 @@ class SimpleTour extends LitElement {
           ${unsafeHTML('<p slot="body">' + description + "</p>")}${this
             .tourInfo[this.active].style
             ? unsafeHTML(
-                "<style>" + this.tourInfo[this.active].style + "</style>"
+                "<style>" + this.tourInfo[this.active].style + "</style>",
               )
             : ""}`;
         render(content, globalThis.SimplePopoverManager.requestAvailability());
@@ -251,7 +251,7 @@ class SimpleTour extends LitElement {
           this.stacks[this.active][this.stop].target,
           true,
           this.orientation,
-          this.active
+          this.active,
         );
         this.scrollHere(this.stacks[this.active][this.stop].target);
         let target = this.stacks[this.active][this.stop].target;

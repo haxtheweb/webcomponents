@@ -57,13 +57,13 @@
                 "StartToStart",
                 a,
                 this.range,
-                !0
+                !0,
               )),
               (this.selectionEnd = r.findLength(
                 "StartToEnd",
                 a,
                 this.range,
-                !0
+                !0,
               ))
             );
           }),
@@ -254,8 +254,8 @@
                 3 === r.nodeType
                   ? h.push((o.pos += r.length))
                   : r.hasChildNodes()
-                  ? h.push(e(r, n, o))
-                  : h.push(void 0);
+                    ? h.push(e(r, n, o))
+                    : h.push(void 0);
               }
             return h;
           })(o, t, n),
@@ -347,7 +347,7 @@
               get: function () {
                 return this.intersectionRatio > 0;
               },
-            }
+            },
           );
       else {
         var t = (function (t) {
@@ -404,7 +404,7 @@
             (this._observationTargets = this._observationTargets.filter(
               function (e) {
                 return e.element != t;
-              }
+              },
             )),
               this._unmonitorIntersections(t.ownerDocument),
               0 == this._observationTargets.length &&
@@ -426,7 +426,7 @@
               e.sort().filter(function (t, e, n) {
                 if ("number" != typeof t || isNaN(t) || t < 0 || t > 1)
                   throw new Error(
-                    "threshold must be a number between 0 and 1 inclusively"
+                    "threshold must be a number between 0 and 1 inclusively",
                   );
                 return t !== n[e - 1];
               })
@@ -437,7 +437,7 @@
               var e = /^(-?\d*\.?\d+)(px|%)$/.exec(t);
               if (!e)
                 throw new Error(
-                  "rootMargin must be specified in pixels or percent"
+                  "rootMargin must be specified in pixels or percent",
                 );
               return { value: parseFloat(e[1]), unit: e[2] };
             });
@@ -711,7 +711,7 @@
             right: 0,
             width: 0,
             height: 0,
-          }
+          },
         )),
         (this.isIntersecting = !!t.intersectionRect);
       var e = this.boundingClientRect,
@@ -721,8 +721,8 @@
       this.intersectionRatio = n
         ? Number((i / n).toFixed(4))
         : this.isIntersecting
-        ? 1
-        : 0;
+          ? 1
+          : 0;
     }
     function s(t, e) {
       var n,

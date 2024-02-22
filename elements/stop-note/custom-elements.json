@@ -18,8 +18,7 @@
         },
         {
           "name": "status",
-          "type": "string",
-          "default": "\"stop\""
+          "type": "string"
         },
         {
           "name": "icon",
@@ -62,8 +61,7 @@
         {
           "name": "status",
           "attribute": "status",
-          "type": "string",
-          "default": "\"stop\""
+          "type": "string"
         },
         {
           "name": "icon",

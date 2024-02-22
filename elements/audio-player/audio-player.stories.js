@@ -17,6 +17,6 @@ export const AudioPlayerStory = () => {
   return utils.makeUsageDocs(
     AudioPlayer,
     import.meta.url,
-    utils.makeElementFromHaxDemo(AudioPlayer)
+    utils.makeElementFromHaxDemo(AudioPlayer),
   );
 };

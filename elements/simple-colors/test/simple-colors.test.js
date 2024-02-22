@@ -5,9 +5,9 @@ import "../simple-colors.js";
 describe("simple-colors test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-colors title="test-title"></simple-colors> `
-    );
+    element = await fixture(html`
+      <simple-colors title="test-title"></simple-colors>
+    `);
   });
 
   it("passes the a11y audit", async () => {

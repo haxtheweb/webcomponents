@@ -16,5 +16,5 @@ export const WorksheetDownloadStory = () =>
   utils.makeUsageDocs(
     WorksheetDownload,
     import.meta.url,
-    utils.makeElementFromHaxDemo(WorksheetDownload)
+    utils.makeElementFromHaxDemo(WorksheetDownload),
   );

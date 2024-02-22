@@ -17,6 +17,6 @@ export const MediaImageStory = () => {
   return utils.makeUsageDocs(
     MediaImage,
     import.meta.url,
-    utils.makeElementFromHaxDemo(MediaImage)
+    utils.makeElementFromHaxDemo(MediaImage),
   );
 };

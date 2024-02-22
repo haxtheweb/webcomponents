@@ -89,7 +89,7 @@ class SelectMenu extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: { value: val },
-        })
+        }),
       );
     }
   }
@@ -102,7 +102,7 @@ class SelectMenu extends PolymerElement {
       console.log(
         this.value,
         this.__items[i],
-        this.__items[i].getAttribute("value")
+        this.__items[i].getAttribute("value"),
       );
       if (this.value == this.__items[i].getAttribute("value")) {
         return i;

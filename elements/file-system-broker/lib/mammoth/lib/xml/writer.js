@@ -18,7 +18,7 @@ function writeString(root, namespaces) {
   function writeElement(builder, element) {
     var elementBuilder = builder.element(
       mapElementName(element.name),
-      element.attributes
+      element.attributes,
     );
     element.children.forEach(function (child) {
       writeNode(elementBuilder, child);

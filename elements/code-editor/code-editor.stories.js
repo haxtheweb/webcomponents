@@ -18,5 +18,5 @@ export const CodeEditorStory = () =>
   utils.makeUsageDocs(
     CodeEditor,
     import.meta.url,
-    utils.makeElementFromHaxDemo(CodeEditor)
+    utils.makeElementFromHaxDemo(CodeEditor),
   );

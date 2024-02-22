@@ -17,6 +17,6 @@ export const MarkTheWordsStory = () => {
   return utils.makeUsageDocs(
     MarkTheWords,
     import.meta.url,
-    utils.makeElementFromHaxDemo(MarkTheWords)
+    utils.makeElementFromHaxDemo(MarkTheWords),
   );
 };

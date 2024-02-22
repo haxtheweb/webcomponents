@@ -54,9 +54,9 @@ const EmailPageMixin = function (SuperClass) {
       title = title.replace(/&/g, "%26");
       globalThis.open(
         `mailto:?subject=${title}&body=${encodeURIComponent(
-          globalThis.location.href
+          globalThis.location.href,
         )}`,
-        "mail"
+        "mail",
       );
     }
   };

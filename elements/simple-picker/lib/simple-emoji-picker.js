@@ -15,7 +15,7 @@ import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-elemen
  * @demo ./demo/index.html
  */
 class SimpleEmojiPicker extends IntersectionObserverMixin(
-  SimplePickerBehaviors(LitElement)
+  SimplePickerBehaviors(LitElement),
 ) {
   //styles function
   static get styles() {
@@ -98,8 +98,8 @@ class SimpleEmojiPicker extends IntersectionObserverMixin(
         let optData = [{ alt: null, icon: this.icon, value: null }];
         this.emojiTypes.forEach((type) =>
           globalThis.SimplePickerEmojis[type].forEach((emoji) =>
-            optData.push(emoji)
-          )
+            optData.push(emoji),
+          ),
         );
         optData = this._setPickerOptions(optData);
         this.options = optData;

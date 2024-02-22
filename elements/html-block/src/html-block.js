@@ -150,11 +150,11 @@ class HtmlBlock extends HTMLElement {
     if (typeof this.innerHTML === "function") {
       this.innerHTML = this.innerHTML.replace(
         /<script[\s\S]*?>/gi,
-        "&lt;script&gt;"
+        "&lt;script&gt;",
       );
       this.innerHTML = this.innerHTML.replace(
         /<\/script>/gi,
-        "&lt;/script&gt;"
+        "&lt;/script&gt;",
       );
     }
   }

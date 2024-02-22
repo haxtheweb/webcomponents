@@ -213,7 +213,7 @@ class CMSToken extends PolymerElement {
         let template = globalThis.document.createElement("template");
         template.innerHTML = newValue.content;
         this.appendChild(
-          globalThis.document.importNode(template.content, true)
+          globalThis.document.importNode(template.content, true),
         );
         setTimeout(() => {
           if (globalThis.WCAutoload) {
@@ -302,7 +302,7 @@ class CMSToken extends PolymerElement {
     globalThis.document.addEventListener(
       "visibilitychange",
       this._windowVisibilityChanged.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   /**

@@ -295,7 +295,7 @@ class ThreadedDiscussionForm extends LitElement {
             textarea: this.shadowRoot.querySelector("textarea"),
             thread: this.thread,
           },
-        })
+        }),
       );
       return false;
     } else {
@@ -305,7 +305,7 @@ class ThreadedDiscussionForm extends LitElement {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
   }

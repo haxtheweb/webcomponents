@@ -17,5 +17,5 @@ export const EventBadgeStory = () =>
   utils.makeUsageDocs(
     EventBadge,
     import.meta.url,
-    utils.makeElementFromHaxDemo(EventBadge)
+    utils.makeElementFromHaxDemo(EventBadge),
   );

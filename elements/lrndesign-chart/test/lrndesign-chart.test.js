@@ -5,9 +5,9 @@ import "../lrndesign-chart.js";
 describe("lrndesign-chart test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrndesign-chart title="test-title"></lrndesign-chart> `
-    );
+    element = await fixture(html`
+      <lrndesign-chart title="test-title"></lrndesign-chart>
+    `);
   });
 
   it("passes the a11y audit", async () => {

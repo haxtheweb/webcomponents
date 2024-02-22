@@ -32,7 +32,7 @@ class JsonEditor extends LitElement {
           :host([error]) paper-textarea {
             --iron-autogrow-textarea: {
               background-color: #ffeeee;
-            }
+            };
           }
           paper-textarea {
             --iron-autogrow-textarea: {
@@ -50,7 +50,7 @@ class JsonEditor extends LitElement {
               border: 1px solid #ccc;
               border-radius: 4px;
               transition: 0.3s linear all;
-            }
+            };
           }
         </style>
       </custom-style>
@@ -151,7 +151,7 @@ class JsonEditor extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (propName == "value") {

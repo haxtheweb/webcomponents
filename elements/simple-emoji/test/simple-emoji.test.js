@@ -5,9 +5,9 @@ import "../simple-emoji.js";
 describe("simple-emoji test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-emoji title="test-title"></simple-emoji> `
-    );
+    element = await fixture(html`
+      <simple-emoji title="test-title"></simple-emoji>
+    `);
   });
 
   it("passes the a11y audit", async () => {

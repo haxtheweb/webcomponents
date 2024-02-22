@@ -17,6 +17,6 @@ export const FlashCardStory = () => {
   return utils.makeUsageDocs(
     FlashCard,
     import.meta.url,
-    utils.makeElementFromHaxDemo(FlashCard)
+    utils.makeElementFromHaxDemo(FlashCard),
   );
 };

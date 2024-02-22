@@ -16,5 +16,5 @@ export const BasicCodeSample = () =>
   utils.makeUsageDocs(
     CodeSample,
     import.meta.url,
-    utils.makeElementFromHaxDemo(CodeSample)
+    utils.makeElementFromHaxDemo(CodeSample),
   );

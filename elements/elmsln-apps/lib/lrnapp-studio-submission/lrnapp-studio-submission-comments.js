@@ -48,6 +48,6 @@ class LrnappStudioSubmissionComments extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionComments.tag,
-  LrnappStudioSubmissionComments
+  LrnappStudioSubmissionComments,
 );
 export { LrnappStudioSubmissionComments };

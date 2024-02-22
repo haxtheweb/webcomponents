@@ -21,7 +21,7 @@ test("styleReader.readHtmlPath", {
   "reads choice of elements": function () {
     assertHtmlPath(
       "ul|ol",
-      htmlPaths.elements([htmlPaths.element(["ul", "ol"])])
+      htmlPaths.elements([htmlPaths.element(["ul", "ol"])]),
     );
   },
 
@@ -88,7 +88,7 @@ test("styleReader.readDocumentMatcher", {
   "reads paragraph with style ID": function () {
     assertDocumentMatcher(
       "p.Heading1",
-      documentMatchers.paragraph({ styleId: "Heading1" })
+      documentMatchers.paragraph({ styleId: "Heading1" }),
     );
   },
 
@@ -97,7 +97,7 @@ test("styleReader.readDocumentMatcher", {
       "p[style-name='Heading 1']",
       documentMatchers.paragraph({
         styleName: documentMatchers.equalTo("Heading 1"),
-      })
+      }),
     );
   },
 
@@ -106,21 +106,21 @@ test("styleReader.readDocumentMatcher", {
       "p[style-name^='Heading']",
       documentMatchers.paragraph({
         styleName: documentMatchers.startsWith("Heading"),
-      })
+      }),
     );
   },
 
   "reads p:ordered-list(1) as ordered list with index of 0": function () {
     assertDocumentMatcher(
       "p:ordered-list(1)",
-      documentMatchers.paragraph({ list: { isOrdered: true, levelIndex: 0 } })
+      documentMatchers.paragraph({ list: { isOrdered: true, levelIndex: 0 } }),
     );
   },
 
   "reads p:unordered-list(1) as unordered list with index of 0": function () {
     assertDocumentMatcher(
       "p:unordered-list(1)",
-      documentMatchers.paragraph({ list: { isOrdered: false, levelIndex: 0 } })
+      documentMatchers.paragraph({ list: { isOrdered: false, levelIndex: 0 } }),
     );
   },
 
@@ -137,7 +137,7 @@ test("styleReader.readDocumentMatcher", {
       "table.TableNormal",
       documentMatchers.table({
         styleId: "TableNormal",
-      })
+      }),
     );
   },
 
@@ -146,7 +146,7 @@ test("styleReader.readDocumentMatcher", {
       "table[style-name='Normal Table']",
       documentMatchers.table({
         styleName: documentMatchers.equalTo("Normal Table"),
-      })
+      }),
     );
   },
 
@@ -177,7 +177,7 @@ test("styleReader.readDocumentMatcher", {
   "reads comment-reference": function () {
     assertDocumentMatcher(
       "comment-reference",
-      documentMatchers.commentReference
+      documentMatchers.commentReference,
     );
   },
 
@@ -218,9 +218,9 @@ test("styleReader.read", {
       readStyle("r => span a"),
       new results.Result(null, [
         results.warning(
-          "Did not understand this style mapping, so ignored it: r => span a\nError was at character number 10: Expected end but got whitespace"
+          "Did not understand this style mapping, so ignored it: r => span a\nError was at character number 10: Expected end but got whitespace",
         ),
-      ])
+      ]),
     );
   },
 });

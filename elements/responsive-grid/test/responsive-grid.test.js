@@ -5,9 +5,9 @@ import "../responsive-grid.js";
 describe("responsive-grid test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <responsive-grid title="test-title"></responsive-grid> `
-    );
+    element = await fixture(html`
+      <responsive-grid title="test-title"></responsive-grid>
+    `);
   });
 
   it("passes the a11y audit", async () => {

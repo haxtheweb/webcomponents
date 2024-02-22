@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "../d-d-d.js";
+import { DDDStyles } from "./DDDStyles.js";
 import "@lrnwebcomponents/page-section/page-section.js";
 import "@lrnwebcomponents/simple-cta/simple-cta.js";
 import "@lrnwebcomponents/video-player/video-player.js";
@@ -53,7 +54,8 @@ class DDDocs extends DDD {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
+      DDDStyles,
       css`
         /* used for demo */
         :host {
@@ -91,16 +93,16 @@ class DDDocs extends DDD {
           height: 100%;
         }
         .font-beaverBlue {
-          color: var(--ddd-theme-polaris-beaverBlue);
+          color: var(--ddd-theme-default-beaverBlue);
         }
         .bg-limestoneMaxLight {
-          background-color: var(--ddd-theme-polaris-limestoneMaxLight);
+          background-color: var(--ddd-theme-default-limestoneMaxLight);
         }
         .bg-potentialMidnight {
-          background-color: var(--ddd-theme-polaris-potentialMidnight);
+          background-color: var(--ddd-theme-default-potentialMidnight);
         }
         .bg-white {
-          background-color: var(--ddd-theme-polaris-white);
+          background-color: var(--ddd-theme-default-white);
         }
         .text-center {
           text-align: center;
@@ -115,24 +117,24 @@ class DDDocs extends DDD {
         }
 
         tr th {
-          background-color: var(--ddd-theme-polaris-pughBlue);
+          background-color: var(--ddd-theme-default-pughBlue);
           padding: 10px 50px;
           border-top: none;
         }
         tr td {
           padding: 10px 50px;
-          background-color: var(--ddd-theme-polaris-skyMaxlight);
-          border-left: 1px solid var(--ddd-theme-polaris-limestoneLight);
-          border-top: 1px solid var(--ddd-theme-polaris-limestoneLight);
+          background-color: var(--ddd-theme-default-skyMaxlight);
+          border-left: 1px solid var(--ddd-theme-default-limestoneLight);
+          border-top: 1px solid var(--ddd-theme-default-limestoneLight);
         }
         tr:nth-child(odd) {
-          background-color: var(--ddd-theme-polaris-skyMaxLight);
+          background-color: var(--ddd-theme-default-skyMaxLight);
         }
         table {
           border-collapse: collapse;
           border-radius: 0px;
           overflow: hidden;
-          border: 1px solid var(--ddd-theme-polaris-limestoneLight);
+          border: 1px solid var(--ddd-theme-default-limestoneLight);
         }
         td:first-child,
         th:first-child {
@@ -222,280 +224,280 @@ class DDDocs extends DDD {
         Available Colors from the Polaris Theme
       </h2>
       <div class="grid-2 gap-4 my-15 ml-10">
-        <h5>--ddd-theme-polaris-beaverBlue</h5>
+        <h5>--ddd-theme-default-beaverBlue</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-beaverBlue);"
+          style="background-color: var(--ddd-theme-default-beaverBlue);"
           title="#1e407c"
         ></div>
-        <h5>--ddd-theme-polaris-beaver70</h5>
+        <h5>--ddd-theme-default-beaver70</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-beaver70);"
+          style="background-color: var(--ddd-theme-default-beaver70);"
           title="rgba(30, 64, 124, 0.7)"
         ></div>
-        <h5>--ddd-theme-polaris-beaver80</h5>
+        <h5>--ddd-theme-default-beaver80</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-beaver80);"
+          style="background-color: var(--ddd-theme-default-beaver80);"
           title="rgba(30, 64, 124, 0.8)"
         ></div>
-        <h5>--ddd-theme-polaris-landgrantBrown</h5>
+        <h5>--ddd-theme-default-landgrantBrown</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-landgrantBrown);"
+          style="background-color: var(--ddd-theme-default-landgrantBrown);"
           title="#6a3028"
         ></div>
-        <h5>--ddd-theme-polaris-nittanyNavy</h5>
+        <h5>--ddd-theme-default-nittanyNavy</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-nittanyNavy);"
+          style="background-color: var(--ddd-theme-default-nittanyNavy);"
           title="#001e44"
         ></div>
-        <h5>--ddd-theme-polaris-navy40</h5>
+        <h5>--ddd-theme-default-navy40</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-navy40);"
+          style="background-color: var(--ddd-theme-default-navy40);"
           title="rgba(0, 30, 68, 0.4)"
         ></div>
-        <h5>--ddd-theme-polaris-navy60</h5>
+        <h5>--ddd-theme-default-navy60</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-navy60);"
+          style="background-color: var(--ddd-theme-default-navy60);"
           title="rgba(0, 30, 68, 0.60)"
         ></div>
-        <h5>--ddd-theme-polaris-navy65</h5>
+        <h5>--ddd-theme-default-navy65</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-navy65);"
+          style="background-color: var(--ddd-theme-default-navy65);"
           title="rgba(0, 30, 68, 0.65)"
         ></div>
-        <h5>--ddd-theme-polaris-navy70</h5>
+        <h5>--ddd-theme-default-navy70</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-navy70);"
+          style="background-color: var(--ddd-theme-default-navy70);"
           title="rgba(0, 30, 68, 0.70)"
         ></div>
-        <h5>--ddd-theme-polaris-navy80</h5>
+        <h5>--ddd-theme-default-navy80</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-navy80);"
+          style="background-color: var(--ddd-theme-default-navy80);"
           title="rgba(0, 30, 68, 0.8)"
         ></div>
-        <h5>--ddd-theme-polaris-potentialMidnight</h5>
+        <h5>--ddd-theme-default-potentialMidnight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-potentialMidnight);"
+          style="background-color: var(--ddd-theme-default-potentialMidnight);"
           title="#000321"
         ></div>
-        <h5>--ddd-theme-polaris-potential0</h5>
+        <h5>--ddd-theme-default-potential0</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-potential0);"
+          style="background-color: var(--ddd-theme-default-potential0);"
           title="rgba(0, 3, 33, 0)"
         ></div>
-        <h5>--ddd-theme-polaris-potential50</h5>
+        <h5>--ddd-theme-default-potential50</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-potential50);"
+          style="background-color: var(--ddd-theme-default-potential50);"
           title="rgba(0, 3, 33, 0.5)"
         ></div>
-        <h5>--ddd-theme-polaris-potential70</h5>
+        <h5>--ddd-theme-default-potential70</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-potential70);"
+          style="background-color: var(--ddd-theme-default-potential70);"
           title="rgba(0, 3, 33, 0.7)"
         ></div>
-        <h5>--ddd-theme-polaris-potential75</h5>
+        <h5>--ddd-theme-default-potential75</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-potential75);"
+          style="background-color: var(--ddd-theme-default-potential75);"
           title="rgba(0, 3, 33, 0.75)"
         ></div>
-        <h5>--ddd-theme-polaris-pughBlue</h5>
+        <h5>--ddd-theme-default-pughBlue</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-pughBlue);"
+          style="background-color: var(--ddd-theme-default-pughBlue);"
           title="#96bee6"
         ></div>
-        <h5>--ddd-theme-polaris-coalyGray</h5>
+        <h5>--ddd-theme-default-coalyGray</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-coalyGray);"
+          style="background-color: var(--ddd-theme-default-coalyGray);"
           title="#262626"
         ></div>
-        <h5>--ddd-theme-polaris-keystoneYellow</h5>
+        <h5>--ddd-theme-default-keystoneYellow</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-keystoneYellow);"
+          style="background-color: var(--ddd-theme-default-keystoneYellow);"
           title="#ffd100"
         ></div>
-        <h5>--ddd-theme-polaris-slateGray</h5>
+        <h5>--ddd-theme-default-slateGray</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-slateGray);"
+          style="background-color: var(--ddd-theme-default-slateGray);"
           title="#314d64"
         ></div>
-        <h5>--ddd-theme-polaris-slateLight</h5>
+        <h5>--ddd-theme-default-slateLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-slateLight);"
+          style="background-color: var(--ddd-theme-default-slateLight);"
           title="#ccdae6"
         ></div>
-        <h5>--ddd-theme-polaris-slateMaxLight</h5>
+        <h5>--ddd-theme-default-slateMaxLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-slateMaxLight);"
+          style="background-color: var(--ddd-theme-default-slateMaxLight);"
           title="#eef3f7"
         ></div>
-        <h5>--ddd-theme-polaris-skyBlue</h5>
+        <h5>--ddd-theme-default-skyBlue</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-skyBlue);"
+          style="background-color: var(--ddd-theme-default-skyBlue);"
           title="#009cde"
         ></div>
-        <h5>--ddd-theme-polaris-skyLight</h5>
+        <h5>--ddd-theme-default-skyLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-skyLight);"
+          style="background-color: var(--ddd-theme-default-skyLight);"
           title="#ccf0ff"
         ></div>
-        <h5>--ddd-theme-polaris-skyMaxLight</h5>
+        <h5>--ddd-theme-default-skyMaxLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-skyMaxLight);"
+          style="background-color: var(--ddd-theme-default-skyMaxLight);"
           title="#e6f7ff"
         ></div>
-        <h5>--ddd-theme-polaris-limestoneGray</h5>
+        <h5>--ddd-theme-default-limestoneGray</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-limestoneGray);"
+          style="background-color: var(--ddd-theme-default-limestoneGray);"
           title="#a2aaad"
         ></div>
-        <h5>--ddd-theme-polaris-limestoneLight</h5>
+        <h5>--ddd-theme-default-limestoneLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-limestoneLight);"
+          style="background-color: var(--ddd-theme-default-limestoneLight);"
           title="#e4e5e7"
         ></div>
-        <h5>--ddd-theme-polaris-limestoneMaxLight</h5>
+        <h5>--ddd-theme-default-limestoneMaxLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-limestoneMaxLight);"
+          style="background-color: var(--ddd-theme-default-limestoneMaxLight);"
           title="#f2f2f4"
         ></div>
-        <h5>--ddd-theme-polaris-white</h5>
+        <h5>--ddd-theme-default-white</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-white);"
+          style="background-color: var(--ddd-theme-default-white);"
           title="#ffffff"
         ></div>
-        <h5>--ddd-theme-polaris-shrineLight</h5>
+        <h5>--ddd-theme-default-shrineLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-shrineLight);"
+          style="background-color: var(--ddd-theme-default-shrineLight);"
           title="#f7f2ee"
         ></div>
-        <h5>--ddd-theme-polaris-shrineMaxLight</h5>
+        <h5>--ddd-theme-default-shrineMaxLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-shrineMaxLight);"
+          style="background-color: var(--ddd-theme-default-shrineMaxLight);"
           title="#fdfbf5"
         ></div>
-        <h5>--ddd-theme-polaris-creekTeal</h5>
+        <h5>--ddd-theme-default-creekTeal</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-creekTeal);"
+          style="background-color: var(--ddd-theme-default-creekTeal);"
           title="#3ea39e"
         ></div>
-        <h5>--ddd-theme-polaris-creekLight</h5>
+        <h5>--ddd-theme-default-creekLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-creekLight);"
+          style="background-color: var(--ddd-theme-default-creekLight);"
           title="#cfeceb"
         ></div>
-        <h5>--ddd-theme-polaris-creekMaxLight</h5>
+        <h5>--ddd-theme-default-creekMaxLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-creekMaxLight);"
+          style="background-color: var(--ddd-theme-default-creekMaxLight);"
           title="#edf8f7"
         ></div>
-        <h5>--ddd-theme-polaris-shrineTan</h5>
+        <h5>--ddd-theme-default-shrineTan</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-shrineTan);"
+          style="background-color: var(--ddd-theme-default-shrineTan);"
           title="#b88965"
         ></div>
-        <h5>--ddd-theme-polaris-roarGolden</h5>
+        <h5>--ddd-theme-default-roarGolden</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-roarGolden);"
+          style="background-color: var(--ddd-theme-default-roarGolden);"
           title="#bf8226"
         ></div>
-        <h5>--ddd-theme-polaris-roarLight</h5>
+        <h5>--ddd-theme-default-roarLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-roarLight);"
+          style="background-color: var(--ddd-theme-default-roarLight);"
           title="#f9eddc"
         ></div>
-        <h5>--ddd-theme-polaris-roarMaxlight</h5>
+        <h5>--ddd-theme-default-roarMaxlight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-roarMaxlight);"
+          style="background-color: var(--ddd-theme-default-roarMaxlight);"
           title="#fffaf2"
         ></div>
-        <h5>--ddd-theme-polaris-forestGreen</h5>
+        <h5>--ddd-theme-default-forestGreen</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-forestGreen);"
+          style="background-color: var(--ddd-theme-default-forestGreen);"
           title="#4a7729"
         ></div>
-        <h5>--ddd-theme-polaris-athertonViolet</h5>
+        <h5>--ddd-theme-default-athertonViolet</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-athertonViolet);"
+          style="background-color: var(--ddd-theme-default-athertonViolet);"
           title="#ac8dce"
         ></div>
-        <h5>--ddd-theme-polaris-original87Pink</h5>
+        <h5>--ddd-theme-default-original87Pink</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-original87Pink);"
+          style="background-color: var(--ddd-theme-default-original87Pink);"
           title="#bc204b"
         ></div>
-        <h5>--ddd-theme-polaris-discoveryCoral</h5>
+        <h5>--ddd-theme-default-discoveryCoral</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-discoveryCoral);"
+          style="background-color: var(--ddd-theme-default-discoveryCoral);"
           title="#f2665e"
         ></div>
-        <h5>--ddd-theme-polaris-futureLime</h5>
+        <h5>--ddd-theme-default-futureLime</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-futureLime);"
+          style="background-color: var(--ddd-theme-default-futureLime);"
           title="#99cc00"
         ></div>
-        <h5>--ddd-theme-polaris-wonderPurple</h5>
+        <h5>--ddd-theme-default-wonderPurple</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-wonderPurple);"
+          style="background-color: var(--ddd-theme-default-wonderPurple);"
           title="#491d70"
         ></div>
-        <h5>--ddd-theme-polaris-inventOrange</h5>
+        <h5>--ddd-theme-default-inventOrange</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-inventOrange);"
+          style="background-color: var(--ddd-theme-default-inventOrange);"
           title="#e98300"
         ></div>
-        <h5>--ddd-theme-polaris-opportunityGreen</h5>
+        <h5>--ddd-theme-default-opportunityGreen</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-opportunityGreen);"
+          style="background-color: var(--ddd-theme-default-opportunityGreen);"
           title="#008755"
         ></div>
-        <h5>--ddd-theme-polaris-accent</h5>
+        <h5>--ddd-theme-default-accent</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-accent);"
+          style="background-color: var(--ddd-theme-default-accent);"
           title="#96bee6"
         ></div>
       </div>
@@ -508,100 +510,100 @@ class DDDocs extends DDD {
         Available Functional Colors from the Polaris Theme
       </h2>
       <div class="grid-2 gap-4 my-15 ml-10">
-        <h5>--ddd-theme-polaris-link</h5>
+        <h5>--ddd-theme-default-link</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-link);"
+          style="background-color: var(--ddd-theme-default-link);"
           title="#005fa9"
         ></div>
-        <h5>--ddd-theme-polaris-link80</h5>
+        <h5>--ddd-theme-default-link80</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-link80);"
+          style="background-color: var(--ddd-theme-default-link80);"
           title="rgba(0, 95, 169, 0.8)"
         ></div>
-        <h5>--ddd-theme-polaris-linkLight</h5>
+        <h5>--ddd-theme-default-linkLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-linkLight);"
+          style="background-color: var(--ddd-theme-default-linkLight);"
           title="#cce9ff"
         ></div>
-        <h5>--ddd-theme-polaris-disabled</h5>
+        <h5>--ddd-theme-default-disabled</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-disabled);"
+          style="background-color: var(--ddd-theme-default-disabled);"
           title="#f4f4f4"
         ></div>
-        <h5>--ddd-theme-polaris-error</h5>
+        <h5>--ddd-theme-default-error</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-error);"
+          style="background-color: var(--ddd-theme-default-error);"
           title="#5f2120"
         ></div>
-        <h5>--ddd-theme-polaris-errorLight</h5>
+        <h5>--ddd-theme-default-errorLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-errorLight);"
+          style="background-color: var(--ddd-theme-default-errorLight);"
           title="#fdeded"
         ></div>
-        <h5>--ddd-theme-polaris-warning</h5>
+        <h5>--ddd-theme-default-warning</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-warning);"
+          style="background-color: var(--ddd-theme-default-warning);"
           title="#663c00"
         ></div>
-        <h5>--ddd-theme-polaris-warningLight</h5>
+        <h5>--ddd-theme-default-warningLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-warningLight);"
+          style="background-color: var(--ddd-theme-default-warningLight);"
           title="#fff4e5"
         ></div>
-        <h5>--ddd-theme-polaris-info</h5>
+        <h5>--ddd-theme-default-info</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-info);"
+          style="background-color: var(--ddd-theme-default-info);"
           title="#014361"
         ></div>
-        <h5>--ddd-theme-polaris-infoLight</h5>
+        <h5>--ddd-theme-default-infoLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-infoLight);"
+          style="background-color: var(--ddd-theme-default-infoLight);"
           title="#e5f6fd"
         ></div>
-        <h5>--ddd-theme-polaris-success</h5>
+        <h5>--ddd-theme-default-success</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-success);"
+          style="background-color: var(--ddd-theme-default-success);"
           title="#1e4620"
         ></div>
-        <h5>--ddd-theme-polaris-successLight</h5>
+        <h5>--ddd-theme-default-successLight</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-successLight);"
+          style="background-color: var(--ddd-theme-default-successLight);"
           title="#edf7ed"
         ></div>
-        <h5>--ddd-theme-polaris-alertImmediate</h5>
+        <h5>--ddd-theme-default-alertImmediate</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-alertImmediate);"
+          style="background-color: var(--ddd-theme-default-alertImmediate);"
           title="#f8d3de"
         ></div>
-        <h5>--ddd-theme-polaris-alertUrgent</h5>
+        <h5>--ddd-theme-default-alertUrgent</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-alertUrgent);"
+          style="background-color: var(--ddd-theme-default-alertUrgent);"
           title="#fff6cc"
         ></div>
-        <h5>--ddd-theme-polaris-alertAllClear</h5>
+        <h5>--ddd-theme-default-alertAllClear</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-alertAllClear);"
+          style="background-color: var(--ddd-theme-default-alertAllClear);"
           title="#f2ffcc"
         ></div>
-        <h5>--ddd-theme-polaris-alertNonEmergency</h5>
+        <h5>--ddd-theme-default-alertNonEmergency</h5>
         <div
           class="m-5 p-10 b-xs"
-          style="background-color: var(--ddd-theme-polaris-alertNonEmergency);"
+          style="background-color: var(--ddd-theme-default-alertNonEmergency);"
           title="#e6f7ff"
         ></div>
       </div>
@@ -614,27 +616,27 @@ class DDDocs extends DDD {
     <div class="grid-6 my-15 ml-10">
       <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-navBar"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-navBar<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-navBar</span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-navBar</span></p>
       </div>
       <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-footer"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-footer<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-footer</span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-footer</span></p>
       </div>
       <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-newsFeature"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-newsFeature<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-newsFeature</span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-newsFeature</span></p>
       </div>
       <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-buttons"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-buttons<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-buttons</span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-buttons</span></p>
       </div>
       <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-hero</span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-hero</span></p>
       </div>
       <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero2"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero2<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-polaris-gradient-hero2</span></p>
+        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-hero2</span></p>
       </div>
     </div>
       `;
@@ -1350,9 +1352,7 @@ class DDDocs extends DDD {
           <p>Details text</p>
         </details>
         <p>
-          This is an example of code:<code
-            >Console.log("Hello World!");</code
-          >
+          This is an example of code:<code>Console.log("Hello World!");</code>
           in a paragraph
         </p>
         <textarea></textarea>
@@ -1370,7 +1370,9 @@ class DDDocs extends DDD {
         </p>
         <ul class="ddd-link-list">
           <li><a href="#">All Degrees</a></li>
-          <li><a href="#">NEW: Interdisciplinary Science and Business Degree</a></li>
+          <li>
+            <a href="#">NEW: Interdisciplinary Science and Business Degree</a>
+          </li>
           <li><a href="#">NEW: Polymer Engineering and Science Degree</a></li>
           <li><a href="#">NEW: Digital Media Arts and Technology</a></li>
         </ul>
@@ -1380,54 +1382,85 @@ class DDDocs extends DDD {
 
   renderButtons() {
     return html`
-    <div class="mx-8 p-5" style="background-color: var(--ddd-theme-polaris-slateMaxLight); display: flex; flex-direction: column;">
-      <simple-cta hide-icon>Primary Outlined</simple-cta>
-      <simple-cta>Primary Outlined</simple-cta>
-      <simple-cta large hide-icon>Primary Outlined</simple-cta>
-      <simple-cta large>Primary Outlined</simple-cta>
-    </div>
-    <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-limestoneMaxLight); display: flex; flex-direction: column;">
-      <simple-cta filled hide-icon>Primary Filled</simple-cta>
-      <simple-cta filled>Primary Filled</simple-cta>
-      <simple-cta filled large hide-icon>Primary Filled</simple-cta>
-      <simple-cta filled large>Primary Filled</simple-cta>
-    </div>
-    <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-nittanyNavy); display: flex; flex-direction: column;">
-      <simple-cta light hide-icon>Light Outlined</simple-cta>
-      <simple-cta light>Light Outlined</simple-cta>
-      <simple-cta light large hide-icon>Light Outlined</simple-cta>
-      <simple-cta light large>Light Outlined</simple-cta>
-    </div>
-    <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-nittanyNavy); display: flex; flex-direction: column;">
-      <simple-cta light filled hide-icon>Light Filled</simple-cta>
-      <simple-cta light filled>Light Filled</simple-cta>
-      <simple-cta light filled large hide-icon>Light Filled</simple-cta>
-      <simple-cta light filled large>Light Filled</simple-cta>
-    </div>
-    <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-potentialMidnight); display: flex; flex-direction: column;">
-      <simple-cta white hide-icon>White Outlined</simple-cta>
-      <simple-cta white>White Outlined</simple-cta>
-      <simple-cta white large hide-icon>White Outlined</simple-cta>
-      <simple-cta white large>White Outlined</simple-cta>
-    </div>
-    <div class="mt-3 mx-8 p-5" style="background-color: var(--ddd-theme-polaris-potentialMidnight); display: flex; flex-direction: column;">
-      <simple-cta white filled hide-icon>White Filled</simple-cta>
-      <simple-cta white filled>White Filled</simple-cta>
-      <simple-cta white filled large hide-icon>White Filled</simple-cta>
-      <simple-cta white filled large>White Filled</simple-cta>
-    </div>
-    <div class="mx-8 p-5" style="background-color: var(--ddd-theme-polaris-slateMaxLight); display: flex; flex-direction: column;">
-      <simple-cta hide-icon hotline>Hotline Primary Outlined</simple-cta>
-      <simple-cta filled hotline>Hotline Primary Filled</simple-cta>
-    </div>
-    <div class="mx-8 p-5" style="background-color: var(--ddd-theme-polaris-nittanyNavy); display: flex; flex-direction: column;">
-      <simple-cta light large hide-icon hotline>Hotline Light Outlined</simple-cta>
-      <simple-cta light filled large hotline>Hotline Light Filled</simple-cta>
-    </div>
-    <div class="mx-8 p-5" style="background-color: var(--ddd-theme-polaris-potentialMidnight); display: flex; flex-direction: column;">
-      <simple-cta white large hotline>Hotline White Outlined</simple-cta>
-      <simple-cta white filled large hide-icon hotline>Hotline White Filled</simple-cta>
-    </div>
+      <div
+        class="mx-8 p-5"
+        style="background-color: var(--ddd-theme-default-slateMaxLight); display: flex; flex-direction: column;"
+      >
+        <simple-cta hide-icon>Primary Outlined</simple-cta>
+        <simple-cta>Primary Outlined</simple-cta>
+        <simple-cta large hide-icon>Primary Outlined</simple-cta>
+        <simple-cta large>Primary Outlined</simple-cta>
+      </div>
+      <div
+        class="mt-3 mx-8 p-5"
+        style="background-color: var(--ddd-theme-default-limestoneMaxLight); display: flex; flex-direction: column;"
+      >
+        <simple-cta filled hide-icon>Primary Filled</simple-cta>
+        <simple-cta filled>Primary Filled</simple-cta>
+        <simple-cta filled large hide-icon>Primary Filled</simple-cta>
+        <simple-cta filled large>Primary Filled</simple-cta>
+      </div>
+      <div
+        class="mt-3 mx-8 p-5"
+        style="background-color: var(--ddd-theme-default-nittanyNavy); display: flex; flex-direction: column;"
+      >
+        <simple-cta light hide-icon>Light Outlined</simple-cta>
+        <simple-cta light>Light Outlined</simple-cta>
+        <simple-cta light large hide-icon>Light Outlined</simple-cta>
+        <simple-cta light large>Light Outlined</simple-cta>
+      </div>
+      <div
+        class="mt-3 mx-8 p-5"
+        style="background-color: var(--ddd-theme-default-nittanyNavy); display: flex; flex-direction: column;"
+      >
+        <simple-cta light filled hide-icon>Light Filled</simple-cta>
+        <simple-cta light filled>Light Filled</simple-cta>
+        <simple-cta light filled large hide-icon>Light Filled</simple-cta>
+        <simple-cta light filled large>Light Filled</simple-cta>
+      </div>
+      <div
+        class="mt-3 mx-8 p-5"
+        style="background-color: var(--ddd-theme-default-potentialMidnight); display: flex; flex-direction: column;"
+      >
+        <simple-cta white hide-icon>White Outlined</simple-cta>
+        <simple-cta white>White Outlined</simple-cta>
+        <simple-cta white large hide-icon>White Outlined</simple-cta>
+        <simple-cta white large>White Outlined</simple-cta>
+      </div>
+      <div
+        class="mt-3 mx-8 p-5"
+        style="background-color: var(--ddd-theme-default-potentialMidnight); display: flex; flex-direction: column;"
+      >
+        <simple-cta white filled hide-icon>White Filled</simple-cta>
+        <simple-cta white filled>White Filled</simple-cta>
+        <simple-cta white filled large hide-icon>White Filled</simple-cta>
+        <simple-cta white filled large>White Filled</simple-cta>
+      </div>
+      <div
+        class="mx-8 p-5"
+        style="background-color: var(--ddd-theme-default-slateMaxLight); display: flex; flex-direction: column;"
+      >
+        <simple-cta hide-icon hotline>Hotline Primary Outlined</simple-cta>
+        <simple-cta filled hotline>Hotline Primary Filled</simple-cta>
+      </div>
+      <div
+        class="mx-8 p-5"
+        style="background-color: var(--ddd-theme-default-nittanyNavy); display: flex; flex-direction: column;"
+      >
+        <simple-cta light large hide-icon hotline
+          >Hotline Light Outlined</simple-cta
+        >
+        <simple-cta light filled large hotline>Hotline Light Filled</simple-cta>
+      </div>
+      <div
+        class="mx-8 p-5"
+        style="background-color: var(--ddd-theme-default-potentialMidnight); display: flex; flex-direction: column;"
+      >
+        <simple-cta white large hotline>Hotline White Outlined</simple-cta>
+        <simple-cta white filled large hide-icon hotline
+          >Hotline White Filled</simple-cta
+        >
+      </div>
     `;
   }
 
@@ -1556,112 +1589,182 @@ class DDDocs extends DDD {
 
   renderInstructionalComponents() {
     return html`
-    <div class="b-xs">
-      <div class="m-10">
-      <h3>figure-label</h3>
-        <figure-label accent-color="red" title="1.3" description="Default color styling (accent color enabled)"></figure-label>
-          <div style="--ddd-theme-accent-color: var(--ddd-theme-polaris-pughBlue);">
-            <figure-label title="1.3" description="Application override color set"></figure-label>
+      <div class="b-xs">
+        <div class="m-10">
+          <h3>figure-label</h3>
+          <figure-label
+            accent-color="red"
+            title="1.3"
+            description="Default color styling (accent color enabled)"
+          ></figure-label>
+          <div
+            style="--ddd-theme-accent-color: var(--ddd-theme-default-pughBlue);"
+          >
+            <figure-label
+              title="1.3"
+              description="Application override color set"
+            ></figure-label>
             <!-- application override -->
-            <div style="--ddd-component-figure-label-title: var(--ddd-theme-polaris-link80); --ddd-component-figure-label-background: var(--ddd-theme-polaris-infoLight);">
-              <figure-label title="1.3" description="Component override color set"></figure-label>
+            <div
+              style="--ddd-component-figure-label-title: var(--ddd-theme-default-link80); --ddd-component-figure-label-background: var(--ddd-theme-default-infoLight);"
+            >
+              <figure-label
+                title="1.3"
+                description="Component override color set"
+              ></figure-label>
             </div>
           </div>
-      </div>
-      <div class="m-10">
-        <h3>stop-note</h3>
-        <stop-note title="Error Message" url="https://www.google.com" status="stop">
-          <span slot="message">You can write any error message you want here.</span>
-        </stop-note>
-        <stop-note title="Warning Message" status="warning">
-          <span slot="message">You can write any warning message you want here.</span>
-        </stop-note>
-        <stop-note title="Confirmation Message" url="https://www.google.com" status="success">
-          <span slot="message">You can write any confirmation message you want here.</span>
-        </stop-note>
-        <stop-note title="Read the Textbook" status="info">
-          <span slot="message">You can write anything you want here (chapters, pages, etc.).</span>
-        </stop-note>
-      </div>
-      <div class="m-10">
-        <h3>learning-component</h3>
-        <learning-component subtitle="Step 2: Interview Potential Customers" url="https://www.google.com/" accent-color="blue" title="Learning Objectives" icon="courseicons:learning-objectives">
-        <p>This step includes three parts:</p>
-        <ul>
-          <li>
-            <a href="/step2-part1">Part 1: Figure Out What To Ask</a>
-          </li>
-          <li>
-            <a href="/step2-part2">Part 2: Find People To Interview</a>
-          </li>
-          <li>
-            <a href="/step2-part3">Part 3: Conduct Customer Interviews</a>
-          </li>
-        </ul>
-        <p>In Step 2, you will be interviewing potential customers to find out if your assumptions are correct or where they fall short. This process helps you make sure that you are building something that solves a real problem for real customers.</p>
-      </learning-component>
-      </div>
-      <div class="m-10">
-        <h3>block-quote</h3>
-          <block-quote citation="Dog" image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg">
-          <span slot="quote">
-            I was sitting in a chair in the patent office at Bern, when all of a sudden
-            a thought occurred to me: 'If a person falls freely, he will not feel his
-            own weight.
-          </span>
-        </block-quote>
-        <div style="width: 450px;" class="mt-5">
-          <block-quote citation="Dog" image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg">
+        </div>
+        <div class="m-10">
+          <h3>stop-note</h3>
+          <stop-note
+            title="Error Message"
+            url="https://www.google.com"
+            status="stop"
+          >
+            <span slot="message"
+              >You can write any error message you want here.</span
+            >
+          </stop-note>
+          <stop-note title="Warning Message" status="warning">
+            <span slot="message"
+              >You can write any warning message you want here.</span
+            >
+          </stop-note>
+          <stop-note
+            title="Confirmation Message"
+            url="https://www.google.com"
+            status="success"
+          >
+            <span slot="message"
+              >You can write any confirmation message you want here.</span
+            >
+          </stop-note>
+          <stop-note title="Read the Textbook" status="info">
+            <span slot="message"
+              >You can write anything you want here (chapters, pages,
+              etc.).</span
+            >
+          </stop-note>
+        </div>
+        <div class="m-10">
+          <h3>learning-component</h3>
+          <learning-component
+            subtitle="Step 2: Interview Potential Customers"
+            url="https://www.google.com/"
+            accent-color="blue"
+            title="Learning Objectives"
+            icon="courseicons:learning-objectives"
+          >
+            <p>This step includes three parts:</p>
+            <ul>
+              <li>
+                <a href="/step2-part1">Part 1: Figure Out What To Ask</a>
+              </li>
+              <li>
+                <a href="/step2-part2">Part 2: Find People To Interview</a>
+              </li>
+              <li>
+                <a href="/step2-part3">Part 3: Conduct Customer Interviews</a>
+              </li>
+            </ul>
+            <p>
+              In Step 2, you will be interviewing potential customers to find
+              out if your assumptions are correct or where they fall short. This
+              process helps you make sure that you are building something that
+              solves a real problem for real customers.
+            </p>
+          </learning-component>
+        </div>
+        <div class="m-10">
+          <h3>block-quote</h3>
+          <block-quote
+            citation="Dog"
+            image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg"
+          >
             <span slot="quote">
-              I was sitting in a chair in the patent office at Bern, when all of a sudden
-              a thought occurred to me: 'If a person falls freely, he will not feel his
-              own weight.
+              I was sitting in a chair in the patent office at Bern, when all of
+              a sudden a thought occurred to me: 'If a person falls freely, he
+              will not feel his own weight.
             </span>
           </block-quote>
+          <div style="width: 450px;" class="mt-5">
+            <block-quote
+              citation="Dog"
+              image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg"
+            >
+              <span slot="quote">
+                I was sitting in a chair in the patent office at Bern, when all
+                of a sudden a thought occurred to me: 'If a person falls freely,
+                he will not feel his own weight.
+              </span>
+            </block-quote>
+          </div>
+        </div>
+        <div class="m-10">
+          <h3>self-check</h3>
+          <self-check
+            accent-color="light-blue"
+            title="Sharks Self Check"
+            image="https://upload.wikimedia.org/wikipedia/commons/5/56/White_shark.jpg"
+            alt="Great White Shark"
+          >
+            <span slot="question"
+              >How large can the average great white shark grow to be?</span
+            >
+            The Great White shark can grow to be 15 ft to more than 20 ft in
+            length and weigh 2.5 tons or more.
+          </self-check>
+        </div>
+        <div class="m-10">
+          <h3>media-image</h3>
+          <media-image
+            source="http://unsplash.it/600"
+            figure-label-title="1.3"
+            figure-label-description="This is the description of the figure."
+          >
+            <div slot="citation">This is my citation.</div>
+            <div slot="caption">
+              Curabitur aliquet quam id dui posuere blandit. Praesent sapien
+              massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
+              ante ipsum primis in faucibus orci luctus et ultrices posuere
+              cubilia Curae; Donec velit neque, auctor sit amet aliquam vel,
+              ullamcorper sit amet ligula. Cras ultricies ligula sed magna
+              dictum porta. Proin eget tortor risus. Praesent sapien massa,
+              convallis a pellentesque nec, egestas non nisi. Donec sollicitudin
+              molestie malesuada. Mauris blandit aliquet elit, eget tincidunt
+              nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula
+              elementum sed sit amet dui. Vivamus suscipit tortor eget felis
+              porttitor volutpat.
+            </div>
+          </media-image>
+        </div>
+        <div class="m-10">
+          <h3>accent-card</h3>
+          <accent-card
+            dark
+            link="https://google.com"
+            accent-color="orange"
+            image-src="https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-463043655-1.jpg?resize=1200,630"
+          >
+            <h3 slot="heading">Default Orientation</h3>
+            <div slot="content">This card has the default orientation.</div>
+            <div slot="footer">Read More...</div>
+          </accent-card>
+          <accent-card
+            accent-background
+            horizontal
+            accent-color="red"
+            link="https://google.com"
+            image-width=""
+            image-src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg"
+          >
+            <h5 slot="heading">Default Orientation</h5>
+            <div slot="content">This card has the default orientation.</div>
+            <div slot="footer">Read More...</div>
+          </accent-card>
         </div>
       </div>
-      <div class="m-10">
-        <h3>self-check</h3>
-        <self-check accent-color="light-blue" title="Sharks Self Check"
-          image="https://upload.wikimedia.org/wikipedia/commons/5/56/White_shark.jpg"
-          alt="Great White Shark">
-          <span slot="question">How large can the average great white shark grow to be?</span>
-          The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.
-        </self-check>
-      </div>
-      <div class="m-10">
-        <h3>media-image</h3>
-        <media-image source="http://unsplash.it/600" figure-label-title="1.3" figure-label-description="This is the description of the figure.">
-          <div slot="citation">
-            This is my citation.
-          </div>
-          <div slot="caption">
-            Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas
-            non nisi. Vestibulum
-            ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit
-            amet
-            aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Proin eget tortor
-            risus.
-            Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada.
-            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula
-            elementum
-            sed sit amet dui. Vivamus suscipit tortor eget felis porttitor volutpat.
-          </div>
-        </media-image>
-      </div>
-      <div class="m-10">
-        <h3>accent-card</h3>
-        <accent-card dark link="https://google.com" accent-color="orange" image-src="https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-463043655-1.jpg?resize=1200,630">
-          <h3 slot="heading">Default Orientation</h3>
-          <div slot="content">This card has the default orientation.</div>
-          <div slot="footer">Read More...</div>
-        </accent-card>
-        <accent-card accent-background horizontal accent-color="red" link="https://google.com" image-width="" image-src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg">
-          <h5 slot="heading">Default Orientation</h5>
-          <div slot="content">This card has the default orientation.</div>
-          <div slot="footer">Read More...</div>
-        </accent-card>
-    </div>
     `;
   }
 

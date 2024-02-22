@@ -19,7 +19,7 @@ import "@lrnwebcomponents/accent-card/accent-card.js";
  * @demo demo/submission.html
  */
 class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
-  ElmslnStudioStyles(LitElement)
+  ElmslnStudioStyles(LitElement),
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -163,8 +163,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         accent-card [slot="content"] .feature {
           margin-top: var(--elmsln-studio-margin, 20px);
           height: calc(
-            var(--accent-card-image-height, 200px) -
-              var(--elmsln-studio-margin, 20px)
+            var(--accent-card-image-height, 200px) - var(
+                --elmsln-studio-margin,
+                20px
+              )
           );
           overflow: auto;
         }
@@ -191,8 +193,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         .feature {
           margin-top: var(--elmsln-studio-margin, 20px);
           height: calc(
-            var(--accent-card-image-height, 200px) -
-              var(--elmsln-studio-margin, 20px)
+            var(--accent-card-image-height, 200px) - var(
+                --elmsln-studio-margin,
+                20px
+              )
           );
           overflow: auto;
         }
@@ -332,10 +336,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                       .image-alt="${s.imageAlt || undefined}"
                       ?horizontal="${s.feature || this.list ? true : false}"
                       .image-align="${this._getAlign(
-                        s.imageGravity || undefined
+                        s.imageGravity || undefined,
                       )}"
                       .image-valign="${this._getValign(
-                        s.imageGravity || undefined
+                        s.imageGravity || undefined,
                       )}"
                       .gravity="${s.imageGravity || undefined}"
                       no-border
@@ -384,7 +388,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                         ></simple-icon-lite>
                       </elmsln-studio-link>
                     </accent-card>
-                  `
+                  `,
                 )}
               </div>
             `}
@@ -429,7 +433,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                             ${this.dateFormat(f.date, "long")}
                           </relative-time>
                         </nav-card-item>
-                      `
+                      `,
                     )}
                 </div>
                 <button
@@ -533,7 +537,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
       (i) =>
         this._isFilteredStudent(i.creatorId) &&
         this._isFilteredAssignment(i.assignmentId) &&
-        this._isFilteredProject(i.projectId)
+        this._isFilteredProject(i.projectId),
     );
   }
   getCoverImage(submission) {
@@ -574,7 +578,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   get studentOptions() {
     let options = { "": "All" };
     (this.submissions || []).forEach(
-      (i) => (options[i.userId] = this.fullName(i))
+      (i) => (options[i.userId] = this.fullName(i)),
     );
     return options;
   }

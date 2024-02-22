@@ -165,7 +165,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         this.dispatchEvent(
           new CustomEvent("opened-changed", {
             detail: this[propName],
-          })
+          }),
         );
       }
       if (propName == "manifestItems") {
@@ -175,7 +175,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         this.dispatchEvent(
           new CustomEvent("manifest-edit-mode-changed", {
             detail: this[propName],
-          })
+          }),
         );
       }
     });
@@ -239,7 +239,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       confirmation = true;
     } else {
       confirmation = globalThis.confirm(
-        `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
+        `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`,
       );
     }
     if (confirmation) {
@@ -248,7 +248,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           bubbles: true,
           composed: true,
           detail: data.items,
-        })
+        }),
       );
       setTimeout(() => {
         // ensure things don't conflict w/ the modal if its around
@@ -258,7 +258,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
             composed: true,
             cancelable: false,
             detail: false,
-          })
+          }),
         );
       }, 0);
     }
@@ -271,7 +271,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         composed: true,
         cancelable: false,
         detail: false,
-      })
+      }),
     );
   }
 }

@@ -15,5 +15,5 @@ export const BasicSelfCheck = () =>
   utils.makeUsageDocs(
     SelfCheck,
     import.meta.url,
-    utils.makeElementFromHaxDemo(SelfCheck)
+    utils.makeElementFromHaxDemo(SelfCheck),
   );

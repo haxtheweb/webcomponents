@@ -96,7 +96,7 @@ class DocumentationPlayer extends LitElement {
           data-string="${this.codePenData(this.label)}"
         ></code-pen-button>
         ${this.renderHAXInjectButton()}`,
-      template
+      template,
     );
     this.shadowRoot
       .querySelector("#contentplayertemplate")
@@ -134,7 +134,7 @@ class DocumentationPlayer extends LitElement {
         detail: {
           value: this.haxSchema,
         },
-      })
+      }),
     );
   }
   /**

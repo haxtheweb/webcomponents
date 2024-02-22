@@ -60,7 +60,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
             eventName: "super-daemon-element-method",
             path: "CMS/site/menu/toggle",
           },
-        })
+        }),
       );
     }
     static get styles() {

@@ -77,7 +77,7 @@ class DataViz extends LitElement {
     window.addEventListener(
       "pouch-db-show-data",
       this.showDataFunction.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 

@@ -23,6 +23,6 @@ export const RangeInput = () => {
       min: 4,
       label: "coolness factor",
       step: 4,
-    })
+    }),
   );
 };

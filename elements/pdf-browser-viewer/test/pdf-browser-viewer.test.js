@@ -5,9 +5,9 @@ import "../pdf-browser-viewer.js";
 describe("pdf-browser-viewer test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <pdf-browser-viewer title="test-title"></pdf-browser-viewer> `
-    );
+    element = await fixture(html`
+      <pdf-browser-viewer title="test-title"></pdf-browser-viewer>
+    `);
   });
 
   it("passes the a11y audit", async () => {

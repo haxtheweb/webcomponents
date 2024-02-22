@@ -404,7 +404,7 @@ class LrnappOpenStudioTable extends PolymerElement {
           data: { page: "projects" },
           queryParams: { author: author, project: project },
         },
-      })
+      }),
     );
   }
   /**

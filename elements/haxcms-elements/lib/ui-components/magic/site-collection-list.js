@@ -49,7 +49,7 @@ export class SiteCollectionList extends CollectionList {
               tags="${item.metadata.tags}"
               icon="${item.metadata.icon}"
             ></collection-item>
-          `
+          `,
         )}
       </collection-list>
     `;
@@ -109,7 +109,7 @@ export class SiteCollectionList extends CollectionList {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (

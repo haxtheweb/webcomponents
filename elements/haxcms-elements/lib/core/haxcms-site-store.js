@@ -104,7 +104,7 @@ class Store {
   /**
    * entityData is pulled out of theme info
    */
- get entityData() {
+  get entityData() {
     if (this.manifest && this.manifest.items) {
       var entityData = {};
       this.manifest.items.map((item) => {
@@ -114,7 +114,7 @@ class Store {
             title: item.title,
             color: item.metadata.color || null,
             icon: item.metadata.icon || null,
-            type: item.metadata.entityType || 'page'
+            type: item.metadata.entityType || "page",
           };
         }
       });
@@ -221,8 +221,8 @@ class Store {
             this.audio = new Audio(
               new URL(
                 `../../../app-hax/lib/assets/sounds/${sound}.mp3`,
-                import.meta.url
-              ).href
+                import.meta.url,
+              ).href,
             );
             this.audio.volume = 0.3;
             this.audio.play();
@@ -231,8 +231,8 @@ class Store {
             this.audio = new Audio(
               new URL(
                 `../../../app-hax/lib/assets/sounds/hit.mp3`,
-                import.meta.url
-              ).href
+                import.meta.url,
+              ).href,
             );
             this.audio.volume = 0.3;
             this.audio.play();
@@ -254,7 +254,7 @@ class Store {
     classStyle = "capsule",
     closeText = this.t.close,
     eventCallback = null,
-    slot = null
+    slot = null,
   ) {
     if (this.appReady) {
       // gets it all the way to the top immediately
@@ -272,7 +272,7 @@ class Store {
             slot: slot,
             ...extras,
           },
-        })
+        }),
       );
     }
   }
@@ -351,7 +351,7 @@ class Store {
       newItems.push(
         manifest.items.find((element) => {
           return element.id === correctOrder[key].id;
-        })
+        }),
       );
     }
     // support for language being defined in the manifest of the site
@@ -360,7 +360,7 @@ class Store {
       globalThis.dispatchEvent(
         new CustomEvent("languagechange", {
           detail: manifest.metadata.site.lang,
-        })
+        }),
       );
     }
     manifest.items = newItems;
@@ -371,7 +371,7 @@ class Store {
         composed: true,
         cancelable: false,
         detail: manifest,
-      })
+      }),
     );
     globalThis.dispatchEvent(
       new CustomEvent("haxcms-item-rebuild", {
@@ -379,7 +379,7 @@ class Store {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
   }
   /**
@@ -460,7 +460,7 @@ class Store {
         composed: true,
         cancelable: false,
         detail: manifest,
-      })
+      }),
     );
     if (manifest && typeof manifest.items !== "undefined") {
       let manifestItems = manifest.items.map((i) => {
@@ -521,7 +521,7 @@ class Store {
         // If the user is not logged in then we need to hide unpublished nodes items
         if (!this.isLoggedIn) {
           manifestItems = manifestItems.filter((i) =>
-            filterHiddenParentsRecursive(i)
+            filterHiddenParentsRecursive(i),
           );
         }
       }
@@ -556,7 +556,7 @@ class Store {
     // if we are on the homepage then load the first item in the manifest and set it active
     if (this.manifest) {
       const firstItem = this.manifest.items.find(
-        (i) => typeof i.id !== "undefined"
+        (i) => typeof i.id !== "undefined",
       );
       if (firstItem) {
         return firstItem.slug;
@@ -738,7 +738,7 @@ class Store {
   get parentTitle() {
     if (this.manifest && this.activeItem) {
       let tmpItem = this.manifest.items.find(
-        (d) => this.activeItem.parent === d.id
+        (d) => this.activeItem.parent === d.id,
       );
       // shift up 1 if we found something
       if (tmpItem) {
@@ -761,7 +761,7 @@ class Store {
   get ancestorTitle() {
     if (this.manifest && this.activeItem) {
       let tmpItem = this.manifest.items.find(
-        (d) => this.activeItem.parent === d.id
+        (d) => this.activeItem.parent === d.id,
       );
       // walk back up to the root
       while (tmpItem && tmpItem.parent != null) {
@@ -780,7 +780,7 @@ class Store {
   get ancestorItem() {
     if (this.manifest && this.activeItem) {
       let tmpItem = this.manifest.items.find(
-        (d) => this.activeItem.parent === d.id
+        (d) => this.activeItem.parent === d.id,
       );
       // walk back up to the root
       while (tmpItem && tmpItem.parent != null) {
@@ -835,7 +835,7 @@ class Store {
     id,
     attrLookup = "id",
     scope = "item",
-    useToJS = true
+    useToJS = true,
   ) {
     if (this.manifest && id) {
       var tmpItem = await this.manifest.items.find((item) => {
@@ -851,7 +851,7 @@ class Store {
         return tmpItem;
       } else if (scope == "parent" && tmpItem.parent) {
         return toJS(
-          await this.manifest.items.find((d) => tmpItem.parent === d.id)
+          await this.manifest.items.find((d) => tmpItem.parent === d.id),
         );
       }
     }
@@ -929,7 +929,7 @@ class Store {
       newItems.push(
         schema.items.find((element) => {
           return element.id === correctOrder[key].id;
-        })
+        }),
       );
     }
     this.manifest.items.replace(newItems);
@@ -939,7 +939,7 @@ class Store {
         composed: true,
         cancelable: false,
         detail: this.manifest,
-      })
+      }),
     );
     globalThis.dispatchEvent(
       new CustomEvent("haxcms-item-rebuild", {
@@ -947,7 +947,7 @@ class Store {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     return this.findItem(newItem.id);
   }
@@ -999,7 +999,7 @@ class Store {
             end,
             parent,
             parentFound,
-            noDynamicLevel
+            noDynamicLevel,
           );
         });
       }
@@ -1013,7 +1013,7 @@ class Store {
             end,
             parent,
             parentFound,
-            noDynamicLevel
+            noDynamicLevel,
           );
         });
       }
@@ -1039,7 +1039,7 @@ class Store {
     parent,
     dynamicMethodology,
     _routerManifest,
-    noDynamicLevel
+    noDynamicLevel,
   ) {
     if (_routerManifest) {
       let items = [];
@@ -1079,7 +1079,7 @@ class Store {
           end,
           parent,
           false,
-          noDynamicLevel
+          noDynamicLevel,
         );
       });
       return data;
@@ -1159,7 +1159,7 @@ class HAXCMSSiteStore extends HTMLElement {
             composed: true,
             cancelable: false,
             detail: foundItem,
-          })
+          }),
         );
         //change site title when page changes
         globalThis.document.title = store.activeTitle;
@@ -1182,13 +1182,13 @@ class HAXCMSSiteStore extends HTMLElement {
           UserScaffoldInstance.writeMemory(
             "versionInitial",
             store.version,
-            "long"
+            "long",
           );
         }
         UserScaffoldInstance.writeMemory(
           "versionLatest",
           store.version,
-          "long"
+          "long",
         );
       }
     });
@@ -1210,7 +1210,7 @@ class HAXCMSSiteStore extends HTMLElement {
             composed: true,
             cancelable: false,
             detail: editMode,
-          })
+          }),
         );
         globalThis.HaxStore.requestAvailability().editMode = editMode;
         globalThis.HaxStore.requestAvailability().toastShowEventName =

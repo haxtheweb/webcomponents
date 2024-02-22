@@ -6,7 +6,7 @@ import { IronButtonState } from "@polymer/iron-behaviors/iron-button-state.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 class LrndesignMapmenuHeader extends mixinBehaviors(
   [IronButtonState],
-  PolymerElement
+  PolymerElement,
 ) {
   static get template() {
     return html`

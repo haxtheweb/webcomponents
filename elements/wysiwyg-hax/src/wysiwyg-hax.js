@@ -73,7 +73,7 @@ class WysiwygHax extends LitElement {
       if (propName == "saveButtonSelector" && this[propName].tagName) {
         this.saveButtonSelector.addEventListener(
           "click",
-          this.__saveClicked.bind(this)
+          this.__saveClicked.bind(this),
         );
       }
     });
@@ -204,7 +204,7 @@ class WysiwygHax extends LitElement {
     window.addEventListener(
       "hax-save-body-value",
       this._bodyContentUpdated.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   /**
@@ -215,7 +215,7 @@ class WysiwygHax extends LitElement {
     if (this.saveButtonSelector && this.saveButtonSelector.tagName) {
       this.saveButtonSelector.removeEventListener(
         "click",
-        this.__saveClicked.bind(this)
+        this.__saveClicked.bind(this),
       );
     }
     super.disconnectedCallback();
@@ -229,14 +229,14 @@ class WysiwygHax extends LitElement {
         cancelable: true,
         composed: true,
         detail: e.detail,
-      })
+      }),
     );
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
   }
 

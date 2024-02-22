@@ -5,9 +5,9 @@ import "../dl-behavior.js";
 describe("dl-behavior test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <dl-behavior title="test-title"></dl-behavior> `
-    );
+    element = await fixture(html`
+      <dl-behavior title="test-title"></dl-behavior>
+    `);
   });
 
   it("passes the a11y audit", async () => {

@@ -24,7 +24,7 @@ import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
  * @extends LitElement
  */
 class EditableTableDisplay extends displayBehaviors(
-  ResponsiveUtilityBehaviors( DDD )
+  ResponsiveUtilityBehaviors(DDD),
 ) {
   static get styles() {
     return [
@@ -152,13 +152,13 @@ class EditableTableDisplay extends displayBehaviors(
                         >`
                     : ``}
                 </th>
-              `
+              `,
             )}
           </tr>
         </thead>
         <tbody class="tbody" part="tbody">
           ${this.sortedTbody.map((tr) =>
-            this._isRowFiltered(tr) ? "" : this._tbodyTr(tr)
+            this._isRowFiltered(tr) ? "" : this._tbodyTr(tr),
           )}
         </tbody>
         ${!this.footer
@@ -276,7 +276,7 @@ class EditableTableDisplay extends displayBehaviors(
     setTimeout(() => {
       this.addEventListener(
         "change-sort-mode",
-        this._changeSortMode.bind(this)
+        this._changeSortMode.bind(this),
       );
       this.addEventListener("toggle-filter", this.toggleFilter.bind(this));
     }, 0);
@@ -284,7 +284,7 @@ class EditableTableDisplay extends displayBehaviors(
   disconnectedCallback() {
     this.removeEventListener(
       "change-sort-mode",
-      this._changeSortMode.bind(this)
+      this._changeSortMode.bind(this),
     );
     this.removeEventListener("toggle-filter", this.toggleFilter.bind(this));
     super.disconnectedCallback();
@@ -360,7 +360,7 @@ class EditableTableDisplay extends displayBehaviors(
         cancelable: true,
         composed: true,
         detail: newValue,
-      })
+      }),
     );
   }
 
@@ -432,7 +432,7 @@ class EditableTableDisplay extends displayBehaviors(
         ${row.map((cell, index) =>
           this._isRowHeader(this.rowHeader, index)
             ? this._tbodyTh(cell, index)
-            : this._tbodyTd(cell, index, noFilter)
+            : this._tbodyTd(cell, index, noFilter),
         )}
       </tr>
     `;
@@ -483,17 +483,17 @@ class EditableTableDisplay extends displayBehaviors(
               ?toggled="${this._isCellFiltered(
                 index,
                 this.filterColumn,
-                this.filtered
+                this.filtered,
               )}"
             >
               ${this.getHTML(this._replaceBlankCell(cell))}
             </editable-table-filter>
           `
         : !noFilter
-        ? html`<span class="cell"
-            >${this.getHTML(this._replaceBlankCell(cell))}</span
-          >`
-        : this.getHTML(this._replaceBlankCell(cell))}
+          ? html`<span class="cell"
+              >${this.getHTML(this._replaceBlankCell(cell))}</span
+            >`
+          : this.getHTML(this._replaceBlankCell(cell))}
     </td>`;
   }
 

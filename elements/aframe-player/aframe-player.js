@@ -68,7 +68,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
           this.y,
           this.z,
           this.width,
-          this.height
+          this.height,
         );
       }
       if (propName == "position") {
@@ -234,7 +234,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     window.addEventListener(
       "es-bridge-aframePlayer-loaded",
       this._aframeLoaded.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     window.ESGlobalBridge.requestAvailability().load("aframePlayer", location);
   }

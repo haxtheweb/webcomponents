@@ -307,7 +307,7 @@ class CodeSample extends LitElement {
           type: list[i] === "js" ? "javascript" : list[i],
         },
         content: `<template preserve-content="preserve-content">${this.getExample(
-          list[i]
+          list[i],
         )}</template>`,
       };
     }
@@ -410,7 +410,7 @@ if ($MrTheCheat) {
     } else if (this.childNodes.length) {
       console.error(
         "<code-sample>:",
-        "content must be provided inside a <template> tag"
+        "content must be provided inside a <template> tag",
       );
     }
   }
@@ -462,7 +462,7 @@ if ($MrTheCheat) {
   // support highlighting lines now that we have line endings!
   highlightLines(start, end) {
     Array.from(
-      this.shadowRoot.querySelector("code.hljs table tbody").children
+      this.shadowRoot.querySelector("code.hljs table tbody").children,
     ).map((node, index) => {
       if (index < start - 1 || index > end - 1) {
         node.classList.remove("line-highlighted");
@@ -500,7 +500,7 @@ if ($MrTheCheat) {
     const nodes = this.children;
     return [].filter.call(
       nodes,
-      (node) => node.nodeType === Node.ELEMENT_NODE
+      (node) => node.nodeType === Node.ELEMENT_NODE,
     )[0];
   }
   _applyHighlightjs(str) {

@@ -5,9 +5,9 @@ import "../paper-fab-speed-dial.js";
 describe("paper-fab-speed-dial test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <paper-fab-speed-dial title="test-title"></paper-fab-speed-dial> `
-    );
+    element = await fixture(html`
+      <paper-fab-speed-dial title="test-title"></paper-fab-speed-dial>
+    `);
   });
 
   it("passes the a11y audit", async () => {

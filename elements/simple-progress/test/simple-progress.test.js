@@ -5,9 +5,9 @@ import "../simple-progress.js";
 describe("simple-progress test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-progress title="test-title"></simple-progress> `
-    );
+    element = await fixture(html`
+      <simple-progress title="test-title"></simple-progress>
+    `);
   });
 
   it("passes the a11y audit", async () => {

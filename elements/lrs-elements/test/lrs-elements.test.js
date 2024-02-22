@@ -11,9 +11,9 @@ import "../lrs-elements.js";
 describe("lrs-elements test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrs-elements title="test-title"></lrs-elements> `
-    );
+    element = await fixture(html`
+      <lrs-elements title="test-title"></lrs-elements>
+    `);
   });
 
   it("passes the a11y audit", async () => {

@@ -32,7 +32,7 @@ export class WCPreloadProgress extends PromiseProgress {
       if (propName === "wcList" && this.wcList.length > 0) {
         let list = [];
         this.wcList.map((item) =>
-          list.push(() => this.registry.loadDefinition(item))
+          list.push(() => this.registry.loadDefinition(item)),
         );
         this.list = list;
       }

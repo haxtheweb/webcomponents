@@ -104,7 +104,7 @@ export const HAXCMSOperationButtons = function (SuperClass) {
             composed: true,
             cancelable: false,
             detail: store.activeItem,
-          })
+          }),
         );
       }
       globalThis.dispatchEvent(
@@ -112,7 +112,7 @@ export const HAXCMSOperationButtons = function (SuperClass) {
           bubbles: true,
           cancelable: true,
           detail: {},
-        })
+        }),
       );
     }
     _cancelButtonTap(e) {
@@ -123,14 +123,14 @@ export const HAXCMSOperationButtons = function (SuperClass) {
           composed: true,
           cancelable: false,
           detail: e.detail,
-        })
+        }),
       );
       globalThis.dispatchEvent(
         new CustomEvent("simple-modal-hide", {
           bubbles: true,
           cancelable: true,
           detail: {},
-        })
+        }),
       );
     }
   };

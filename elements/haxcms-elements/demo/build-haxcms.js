@@ -9,7 +9,7 @@ if (/^h/.test(document.location)) {
     // remove fallback cause if we passed dynamic import then we are evergreen
     if (document.getElementById("haxcmsoutdatedfallback")) {
       document.body.removeChild(
-        document.getElementById("haxcmsoutdatedfallback")
+        document.getElementById("haxcmsoutdatedfallback"),
       );
     }
     if (!window.__appCustomEnv) {
@@ -33,7 +33,7 @@ if (/^h/.test(document.location)) {
       // remove fallback cause if we passed dynamic import then we are evergreen
       if (document.getElementById("haxcmsoutdatedfallback")) {
         document.body.removeChild(
-          document.getElementById("haxcmsoutdatedfallback")
+          document.getElementById("haxcmsoutdatedfallback"),
         );
       }
     } else {
@@ -42,7 +42,7 @@ if (/^h/.test(document.location)) {
       if (document.getElementById("site")) {
         document.getElementById("site").style.display = "none";
         document.getElementById(
-          "haxcmsoutdatedfallbacksuperold"
+          "haxcmsoutdatedfallbacksuperold",
         ).style.display = "block";
       }
     }

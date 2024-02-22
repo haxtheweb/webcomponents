@@ -43,12 +43,12 @@ class HAXCMSSiteRouter extends HTMLElement {
     globalThis.addEventListener(
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
       "haxcms-site-router-add",
       this.addRoutesEvent.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   /**
@@ -112,21 +112,21 @@ class HAXCMSSiteRouter extends HTMLElement {
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
     globalThis.dispatchEvent(
       new CustomEvent("haxcms-toast-hide", {
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
     globalThis.dispatchEvent(
       new CustomEvent("super-daemon-close", {
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
     // need to store this separate from location bc it's possible to hit routes that are in the system
     // while location is assuming routes within the system itself
@@ -146,17 +146,17 @@ class HAXCMSSiteRouter extends HTMLElement {
       e.detail.location.route.name === "home" &&
       e.detail.location.search.startsWith("?p=/") &&
       this.lookupRoute(
-        e.detail.location.search.replace("?p=/", "").split("&")[0]
+        e.detail.location.search.replace("?p=/", "").split("&")[0],
       )
     ) {
       let item = this.lookupRoute(
-        e.detail.location.search.replace("?p=/", "").split("&")[0]
+        e.detail.location.search.replace("?p=/", "").split("&")[0],
       )[0];
       store.activeId = item.id;
       globalThis.history.replaceState(
         {},
         null,
-        e.detail.location.search.replace("?p=/", "").split("&")[0]
+        e.detail.location.search.replace("?p=/", "").split("&")[0],
       );
     } else {
       store.location = e.detail.location;

@@ -9,7 +9,7 @@ const SpeechBubbleL = new URL("./images/SpeechBubbleL.svg", import.meta.url)
   .href;
 const SpeechBubbleMiddle = new URL(
   "./images/SpeechBubbleMiddle.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 const SpeechBubbleR = new URL("./images/SpeechBubbleR.svg", import.meta.url)
   .href;
@@ -255,12 +255,12 @@ export class SuperDaemonToast extends SimpleToastEl {
     globalThis.addEventListener(
       "super-daemon-toast-hide",
       this.hideSimpleToast.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
       "super-daemon-toast-show",
       this.showSimpleToast.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 
@@ -347,7 +347,7 @@ globalThis.SuperDaemonToast = globalThis.SuperDaemonToast || {};
 globalThis.SuperDaemonToast.requestAvailability = () => {
   if (!globalThis.SuperDaemonToast.instance) {
     globalThis.SuperDaemonToast.instance = globalThis.document.createElement(
-      SuperDaemonToast.tag
+      SuperDaemonToast.tag,
     );
     globalThis.document.body.appendChild(globalThis.SuperDaemonToast.instance);
   }

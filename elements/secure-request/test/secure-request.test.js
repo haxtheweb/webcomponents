@@ -5,9 +5,9 @@ import "../secure-request.js";
 describe("secure-request test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <secure-request title="test-title"></secure-request> `
-    );
+    element = await fixture(html`
+      <secure-request title="test-title"></secure-request>
+    `);
   });
 
   it("passes the a11y audit", async () => {

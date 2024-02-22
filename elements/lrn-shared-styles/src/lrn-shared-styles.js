@@ -29,7 +29,7 @@ const css = html`
     simple-icon-lite {
       --layout-inline: {
         display: inline-flex;
-      }
+      };
     }
     /**
       * Visible to screenreaders only.

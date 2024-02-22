@@ -167,12 +167,12 @@ class SimpleBlogHeader extends SimpleColors {
       this.image = varGet(
         manifest,
         "metadata.theme.variables.image",
-        "assets/banner.jpg"
+        "assets/banner.jpg",
       );
       this.icon = varGet(
         manifest,
         "metadata.theme.variables.icon",
-        "icons:record-voice-over"
+        "icons:record-voice-over",
       );
       this.author = varGet(manifest, "metadata.author", {});
       this.__disposer.push(reaction);

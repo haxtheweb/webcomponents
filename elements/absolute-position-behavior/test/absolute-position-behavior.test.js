@@ -5,13 +5,11 @@ import "../absolute-position-behavior.js";
 describe("absolute-position-behavior test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html`
-        <absolute-position-behavior
-          title="test-title"
-        ></absolute-position-behavior>
-      `
-    );
+    element = await fixture(html`
+      <absolute-position-behavior
+        title="test-title"
+      ></absolute-position-behavior>
+    `);
   });
 
   it("passes the a11y audit", async () => {

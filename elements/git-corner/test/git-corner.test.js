@@ -5,9 +5,9 @@ import "../git-corner.js";
 describe("git-corner test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <git-corner title="test-title"></git-corner> `
-    );
+    element = await fixture(html`
+      <git-corner title="test-title"></git-corner>
+    `);
   });
 
   it("passes the a11y audit", async () => {

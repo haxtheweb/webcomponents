@@ -259,7 +259,7 @@ class LrnsysOutlineItem extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: { item: this },
-      })
+      }),
     );
   }
   /**
@@ -277,7 +277,7 @@ class LrnsysOutlineItem extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -298,7 +298,7 @@ class LrnsysOutlineItem extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: { item: this },
-      })
+      }),
     );
   }
 
@@ -309,7 +309,7 @@ class LrnsysOutlineItem extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: { item: this, increase: amount > 0 },
-      })
+      }),
     );
   }
 
@@ -317,7 +317,7 @@ class LrnsysOutlineItem extends PolymerElement {
     let i = this.shadowRoot
         .querySelector("#input")
         .shadowRoot.querySelector(
-          "#" + this.shadowRoot.querySelector("#input")._inputId
+          "#" + this.shadowRoot.querySelector("#input")._inputId,
         ).inputElement.selectionStart,
       j = this.title;
     this.dispatchEvent(
@@ -330,7 +330,7 @@ class LrnsysOutlineItem extends PolymerElement {
           value: j.slice(0, i),
           new: j.slice(i, j.length),
         },
-      })
+      }),
     );
     this.title = j.slice(0, i);
   }
@@ -342,7 +342,7 @@ class LrnsysOutlineItem extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: { item: this, moveUp: amount < 0 },
-      })
+      }),
     );
   }
   moveUp(e) {
@@ -381,7 +381,7 @@ class LrnsysOutlineItem extends PolymerElement {
             cancelable: true,
             composed: true,
             detail: this,
-          })
+          }),
         );
       });
       this.addEventListener("mouseover", (e) => {
@@ -391,7 +391,7 @@ class LrnsysOutlineItem extends PolymerElement {
             cancelable: true,
             composed: true,
             detail: this,
-          })
+          }),
         );
       });
       this.addEventListener("blur", (e) => {
@@ -401,7 +401,7 @@ class LrnsysOutlineItem extends PolymerElement {
             cancelable: true,
             composed: true,
             detail: this,
-          })
+          }),
         );
       });
       this.addEventListener("mouseout", (e) => {
@@ -411,7 +411,7 @@ class LrnsysOutlineItem extends PolymerElement {
             cancelable: true,
             composed: true,
             detail: this,
-          })
+          }),
         );
       });
       this.addEventListener("focusin", this._focusin.bind(this));
@@ -426,7 +426,7 @@ class LrnsysOutlineItem extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: { item: this, value: this.title },
-      })
+      }),
     );
   }
   _onEsc() {
@@ -437,7 +437,7 @@ class LrnsysOutlineItem extends PolymerElement {
     let i = this.shadowRoot
         .querySelector("#input")
         .shadowRoot.querySelector(
-          "#" + this.shadowRoot.querySelector("#input")._inputId
+          "#" + this.shadowRoot.querySelector("#input")._inputId,
         ).inputElement.selectionStart,
       j = this.title;
     this.dispatchEvent(
@@ -450,7 +450,7 @@ class LrnsysOutlineItem extends PolymerElement {
           value: j.slice(0, i),
           new: j.slice(i, j.length),
         },
-      })
+      }),
     );
     this.title = j.slice(0, i);
     this._focusout();
@@ -465,13 +465,13 @@ class LrnsysOutlineItem extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: { item: this },
-        })
+        }),
       );
     } else if (
       this.shadowRoot
         .querySelector("#input")
         .shadowRoot.querySelector(
-          "#" + this.shadowRoot.querySelector("#input")._inputId
+          "#" + this.shadowRoot.querySelector("#input")._inputId,
         ).inputElement.selectionStart == 0
     ) {
       this.dispatchEvent(
@@ -480,7 +480,7 @@ class LrnsysOutlineItem extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: { item: this, increase: false },
-        })
+        }),
       );
     }
   }
@@ -507,7 +507,7 @@ class LrnsysOutlineItem extends PolymerElement {
       this.shadowRoot
         .querySelector("#input")
         .shadowRoot.querySelector(
-          "#" + this.shadowRoot.querySelector("#input")._inputId
+          "#" + this.shadowRoot.querySelector("#input")._inputId,
         ).inputElement.selectionStart == 0
     ) {
       this.dispatchEvent(
@@ -516,7 +516,7 @@ class LrnsysOutlineItem extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: { item: this, moveUp: true },
-        })
+        }),
       );
     }
   }
@@ -526,7 +526,7 @@ class LrnsysOutlineItem extends PolymerElement {
       this.shadowRoot
         .querySelector("#input")
         .shadowRoot.querySelector(
-          "#" + this.shadowRoot.querySelector("#input")._inputId
+          "#" + this.shadowRoot.querySelector("#input")._inputId,
         ).inputElement.selectionStart == this.title.length
     ) {
       this.dispatchEvent(
@@ -535,7 +535,7 @@ class LrnsysOutlineItem extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: { item: this, moveUp: false },
-        })
+        }),
       );
     }
   }
@@ -549,7 +549,7 @@ class LrnsysOutlineItem extends PolymerElement {
       this.shadowRoot
         .querySelector("#input")
         .shadowRoot.querySelector(
-          "#" + this.shadowRoot.querySelector("#input")._inputId
+          "#" + this.shadowRoot.querySelector("#input")._inputId,
         ).inputElement.selectionStart == 0
     ) {
       e.preventDefault();

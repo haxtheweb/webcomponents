@@ -8,7 +8,7 @@ describe("music-player test", () => {
     element = await fixture(
       html`<music-player
         source="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-      ></music-player> `
+      ></music-player> `,
     );
   });
 

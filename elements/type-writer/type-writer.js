@@ -237,12 +237,15 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
     this.typing = true;
     this.shadowRoot.querySelector("#text").textContent = this.text.substr(
       0,
-      this._length++
+      this._length++,
     );
     if (this._length < this.text.length + 1) {
-      this._cancel = setTimeout(() => {
-        this.type();
-      }, this.speed + ((Math.random() - 0.5) * this.speed) / 2);
+      this._cancel = setTimeout(
+        () => {
+          this.type();
+        },
+        this.speed + ((Math.random() - 0.5) * this.speed) / 2,
+      );
       return;
     }
     setTimeout(() => {
@@ -252,7 +255,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
           detail: this.text,
           bubbles: true,
           composed: true,
-        })
+        }),
       );
     }, this.cursorDuration);
   }
@@ -261,7 +264,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
     this.typing = true;
     this.shadowRoot.querySelector("#text").textContent = this._oldText.substr(
       0,
-      this._length--
+      this._length--,
     );
     if (this._length >= 0) {
       this._cancel = setTimeout(() => {

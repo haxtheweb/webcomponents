@@ -586,7 +586,7 @@ class SimpleFieldsLite extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -703,7 +703,7 @@ class SimpleFieldsLite extends LitElement {
           wrapper,
           desc,
           data.descriptionProperty,
-          data.descriptionSlot
+          data.descriptionSlot,
         );
         this._configElement(wrapper, fieldPrefix, undefined, data.prefixSlot);
         this._configElement(wrapper, fieldSuffix, undefined, data.suffixSlot);
@@ -763,11 +763,11 @@ class SimpleFieldsLite extends LitElement {
               element,
               value,
               data.setValueProperty,
-              data.valueSlot
+              data.valueSlot,
             );
           //watch field for changes
           element.addEventListener(data.valueChangedProperty, (e) =>
-            this._handleChange(element, data.valueProperty, e)
+            this._handleChange(element, data.valueProperty, e),
           );
           //update wrapper on error
           wrapper.addEventListener(data.errorChangedProperty, (e) => {
@@ -829,7 +829,7 @@ class SimpleFieldsLite extends LitElement {
       index,
       schema,
       previewBy,
-      parent
+      parent,
     );
     this._setValue(`${parent.name}.${index}`, value);
     this._addToForm(subschema, parent, `${parent.id}.`, element);
@@ -873,11 +873,11 @@ class SimpleFieldsLite extends LitElement {
         index = id.replace(`${parent.name}.`, "");
       vals.splice(parseInt(index), 1);
       this.__formElementsArray = this.__formElementsArray.filter(
-        (field) => field.id.indexOf(parent.name) === 0
+        (field) => field.id.indexOf(parent.name) === 0,
       );
       parent.innerHTML = "";
       vals.forEach((item, i) =>
-        this._insertArrayItem(schema, previewBy, element, parent, item, i)
+        this._insertArrayItem(schema, previewBy, element, parent, item, i),
       );
       this._setValue(`${parent.name}`, vals);
       parent.focus(parseInt(index) - 1);
@@ -943,7 +943,7 @@ class SimpleFieldsLite extends LitElement {
     //see which keys the property and the conversion have in common
     let propKeys = Object.keys(property || {}),
       convKeys = Object.keys(conversion).filter((key) =>
-        propKeys.includes(key)
+        propKeys.includes(key),
       );
     //start with default conversion settings
     if (conversion.defaultSettings)
@@ -956,8 +956,8 @@ class SimpleFieldsLite extends LitElement {
         convVal = !convData
           ? undefined
           : Array.isArray(val)
-          ? convData[val[0]]
-          : convData[val];
+            ? convData[val[0]]
+            : convData[val];
       //if we have more specific settings get them recursively
       if (convVal) settings = this._convertSchema(property, convVal, settings);
     });
@@ -995,7 +995,7 @@ class SimpleFieldsLite extends LitElement {
           field.field,
           message,
           data.errorMessageProperty,
-          data.errorMessageSlot
+          data.errorMessageSlot,
         );
         field.field[data.errorProperty] = error;
         field.field.setAttribute("aria-invalid", error);
@@ -1014,7 +1014,7 @@ class SimpleFieldsLite extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -1029,7 +1029,7 @@ class SimpleFieldsLite extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -1072,7 +1072,7 @@ class SimpleFieldsLite extends LitElement {
           element: element,
           value: val,
         },
-      })
+      }),
     );
     this._fireValueChanged();
   }
@@ -1094,7 +1094,7 @@ class SimpleFieldsLite extends LitElement {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
   }

@@ -8,7 +8,7 @@ describe("iframe-loader test", () => {
     element = await fixture(
       html` <iframe-loader>
         <iframe src="https://btopro.com" height="400px" width="100%"></iframe>
-      </iframe-loader>`
+      </iframe-loader>`,
     );
   });
 

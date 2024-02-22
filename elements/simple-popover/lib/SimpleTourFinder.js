@@ -60,7 +60,7 @@ export const SimpleTourFinder = function (SuperClass) {
             el,
             title,
             content,
-            "live"
+            "live",
           );
         } catch (e) {
           console.warn(e);

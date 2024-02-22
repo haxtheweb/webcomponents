@@ -4,7 +4,7 @@ import { HAXCMSButton } from "../utils/HAXCMSButton.js";
 import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import { toJS } from "mobx";
 export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
-  HAXCMSButton
+  HAXCMSButton,
 ) {
   static get tag() {
     return "haxcms-button-add";
@@ -74,7 +74,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     globalThis.addEventListener(
       "haxcms-create-node-success",
       this.HAXCMSButtonClickResponse.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 

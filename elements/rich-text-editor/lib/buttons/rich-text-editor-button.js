@@ -122,7 +122,7 @@ const RichTextToolbarStyles = [
  */
 const RichTextEditorButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorRangeBehaviors(
-    SimpleToolbarButtonBehaviors(SuperClass)
+    SimpleToolbarButtonBehaviors(SuperClass),
   ) {
     /**
      * Store the tag name to make it easier to obtain directly.
@@ -310,7 +310,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           composed: true,
           cancelable: true,
           detail: element,
-        })
+        }),
       );
     }
     /**
@@ -322,7 +322,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       this._handleCommand(
         this.operationCommand,
         this.operationCommandVal,
-        this.range
+        this.range,
       );
       // optional callback so that custom buttons can perform
       // custom toolbar and/or editor opperations
@@ -339,7 +339,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
             range: this.range,
             button: this,
           },
-        })
+        }),
       );
     }
     /**

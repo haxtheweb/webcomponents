@@ -61,7 +61,7 @@ export const A11yDetailsStory = () =>
       { css: "--a11y-details-padding" },
       { css: "--a11y-details-maxHeight" },
     ],
-    ["summary", "details"]
+    ["summary", "details"],
   );
 
 export const A11yDetailsHaxGizmo = () =>

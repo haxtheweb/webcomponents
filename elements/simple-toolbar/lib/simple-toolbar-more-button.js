@@ -60,7 +60,7 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
           button: this,
           shortcutKey: this,
         },
-      })
+      }),
     );
   }
 }

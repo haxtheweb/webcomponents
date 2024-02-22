@@ -23,7 +23,7 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
  * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
 class SimpleFieldsUpload extends I18NMixin(
-  SimpleFieldsFieldsetBehaviors(LitElement)
+  SimpleFieldsFieldsetBehaviors(LitElement),
 ) {
   static get tag() {
     return "simple-fields-upload";
@@ -416,7 +416,7 @@ class SimpleFieldsUpload extends I18NMixin(
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });
@@ -522,7 +522,7 @@ class SimpleFieldsUpload extends I18NMixin(
         cancelable: true,
         composed: false,
         detail: e.detail,
-      })
+      }),
     );
     this.dispatchEvent(
       new CustomEvent("upload-response", {
@@ -530,7 +530,7 @@ class SimpleFieldsUpload extends I18NMixin(
         cancelable: true,
         composed: false,
         detail: e.detail,
-      })
+      }),
     );
   }
   /**
@@ -564,7 +564,7 @@ class SimpleFieldsUpload extends I18NMixin(
           lg: 600,
           xl: 1200,
         },
-      })
+      }),
     );
   }
   /**
@@ -580,7 +580,7 @@ class SimpleFieldsUpload extends I18NMixin(
   __newAudioShowedUp(e) {
     let file = new File(
       [e.detail.value],
-      "voice-recording-" + e.timeStamp + ".mp3"
+      "voice-recording-" + e.timeStamp + ".mp3",
     );
     this.shadowRoot.querySelector("#fileupload")._addFile(file);
     this.voice.remove();
@@ -599,10 +599,10 @@ class SimpleFieldsUpload extends I18NMixin(
           this.camera.autoplay = true;
           this.camera.addEventListener(
             "simple-camera-snap-image",
-            this.__newPhotoShowedUp.bind(this)
+            this.__newPhotoShowedUp.bind(this),
           );
           this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
-        }
+        },
       );
     }
   }
@@ -612,7 +612,7 @@ class SimpleFieldsUpload extends I18NMixin(
         this.voice = globalThis.document.createElement("voice-recorder");
         this.voice.addEventListener(
           "voice-recorder-recording-blob",
-          this.__newAudioShowedUp.bind(this)
+          this.__newAudioShowedUp.bind(this),
         );
         this.voice.recording = true;
         this.shadowRoot.querySelector("#voicerecorder").appendChild(this.voice);

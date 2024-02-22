@@ -67,7 +67,7 @@ class HaxSchemaForm extends PolymerElement {
           );
           --paper-tabs: {
             background: transparent;
-          }
+          };
         }
 
         #modetabs paper-tab {
@@ -79,7 +79,7 @@ class HaxSchemaForm extends PolymerElement {
           );
           --paper-tab: {
             font-size: 16px;
-          }
+          };
         }
         #modetabs paper-tab button {
           min-width: unset;

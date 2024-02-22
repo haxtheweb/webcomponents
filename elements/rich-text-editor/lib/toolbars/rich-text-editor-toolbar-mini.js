@@ -18,7 +18,7 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
  * @demo ./demo/mini.html mini floating toolbar
  */
 class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.

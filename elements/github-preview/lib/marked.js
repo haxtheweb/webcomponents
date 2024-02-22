@@ -278,7 +278,7 @@ function findClosingBracket(str, b) {
 function checkSanitizeDeprecation(opt) {
   if (opt && opt.sanitize && !opt.silent) {
     console.warn(
-      "marked(): sanitize and sanitizer parameters are deprecated since version 0.7.0, should not be used and will be removed in the future. Read more here: https://marked.js.org/#/USING_ADVANCED.md#options"
+      "marked(): sanitize and sanitizer parameters are deprecated since version 0.7.0, should not be used and will be removed in the future. Read more here: https://marked.js.org/#/USING_ADVANCED.md#options",
     );
   }
 }
@@ -529,7 +529,7 @@ class Tokenizer {
 
         if (!endEarly) {
           const nextBulletRegex = new RegExp(
-            `^ {0,${Math.min(3, indent - 1)}}(?:[*+-]|\\d{1,9}[.)])`
+            `^ {0,${Math.min(3, indent - 1)}}(?:[*+-]|\\d{1,9}[.)])`,
           );
 
           // Check if following lines should be included in List Item
@@ -711,7 +711,7 @@ class Tokenizer {
           item.rows[i] = splitCells(item.rows[i], item.header.length).map(
             (c) => {
               return { text: c };
-            }
+            },
           );
         }
 
@@ -888,7 +888,7 @@ class Tokenizer {
             : title,
         },
         cap[0],
-        this.lexer
+        this.lexer,
       );
     }
   }
@@ -1168,7 +1168,7 @@ block.list = edit(block.list)
   .replace(/bull/g, block.bullet)
   .replace(
     "hr",
-    "\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))"
+    "\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))",
   )
   .replace("def", "\\n+(?=" + block.def.source + ")")
   .getRegex();
@@ -1186,7 +1186,7 @@ block.html = edit(block.html, "i")
   .replace("tag", block._tag)
   .replace(
     "attribute",
-    / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/
+    / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/,
   )
   .getRegex();
 
@@ -1200,7 +1200,7 @@ block.paragraph = edit(block._paragraph)
   .replace("list", " {0,3}(?:[*+-]|1[.)]) ") // only lists starting from 1 can interrupt
   .replace(
     "html",
-    "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)"
+    "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)",
   )
   .replace("tag", block._tag) // pars can be interrupted by type (6) html blocks
   .getRegex();
@@ -1235,7 +1235,7 @@ block.gfm.table = edit(block.gfm.table)
   .replace("list", " {0,3}(?:[*+-]|1[.)]) ") // only lists starting from 1 can interrupt
   .replace(
     "html",
-    "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)"
+    "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)",
   )
   .replace("tag", block._tag) // tables can be interrupted by type (6) html blocks
   .getRegex();
@@ -1250,7 +1250,7 @@ block.gfm.paragraph = edit(block._paragraph)
   .replace("list", " {0,3}(?:[*+-]|1[.)]) ") // only lists starting from 1 can interrupt
   .replace(
     "html",
-    "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)"
+    "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)",
   )
   .replace("tag", block._tag) // pars can be interrupted by type (6) html blocks
   .getRegex();
@@ -1262,7 +1262,7 @@ block.pedantic = merge({}, block.normal, {
   html: edit(
     "^ *(?:comment *(?:\\n|\\s*$)" +
       "|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)" + // closed tag
-      "|<tag(?:\"[^\"]*\"|'[^']*'|\\s[^'\"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))"
+      "|<tag(?:\"[^\"]*\"|'[^']*'|\\s[^'\"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))",
   )
     .replace("comment", block._comment)
     .replace(
@@ -1270,7 +1270,7 @@ block.pedantic = merge({}, block.normal, {
       "(?!(?:" +
         "a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub" +
         "|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)" +
-        "\\b)\\w+(?!:|[^\\w\\s@]*@)\\b"
+        "\\b)\\w+(?!:|[^\\w\\s@]*@)\\b",
     )
     .getRegex(),
   def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,
@@ -1796,7 +1796,7 @@ class Lexer {
               repeatString("a", match[0].length - 2) +
               "]" +
               maskedSrc.slice(
-                this.tokenizer.rules.inline.reflinkSearch.lastIndex
+                this.tokenizer.rules.inline.reflinkSearch.lastIndex,
               );
           }
         }
@@ -2204,7 +2204,7 @@ class Slugger {
         // remove unwanted chars
         .replace(
           /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g,
-          ""
+          "",
         )
         .replace(/\s/g, "-")
     );
@@ -2307,7 +2307,7 @@ class Parser {
       ) {
         ret = this.options.extensions.renderers[token.type].call(
           { parser: this },
-          token
+          token,
         );
         if (
           ret !== false ||
@@ -2342,7 +2342,7 @@ class Parser {
             this.parseInline(token.tokens),
             token.depth,
             unescape(this.parseInline(token.tokens, this.textRenderer)),
-            this.slugger
+            this.slugger,
           );
           continue;
         }
@@ -2359,7 +2359,7 @@ class Parser {
           for (j = 0; j < l2; j++) {
             cell += this.renderer.tablecell(
               this.parseInline(token.header[j].tokens),
-              { header: true, align: token.align[j] }
+              { header: true, align: token.align[j] },
             );
           }
           header += this.renderer.tablerow(cell);
@@ -2493,7 +2493,7 @@ class Parser {
       ) {
         ret = this.options.extensions.renderers[token.type].call(
           { parser: this },
-          token
+          token,
         );
         if (
           ret !== false ||
@@ -2528,7 +2528,7 @@ class Parser {
           out += renderer.link(
             token.href,
             token.title,
-            this.parseInline(token.tokens, renderer)
+            this.parseInline(token.tokens, renderer),
           );
           break;
         }
@@ -2587,7 +2587,7 @@ function marked(src, opt, callback) {
     throw new Error(
       "marked(): input parameter is of type " +
         Object.prototype.toString.call(src) +
-        ", string expected"
+        ", string expected",
     );
   }
 
@@ -2852,11 +2852,11 @@ marked.walkTokens = function (tokens, callback) {
           marked.defaults.extensions.childTokens[token.type]
         ) {
           // Walk any extensions
-          marked.defaults.extensions.childTokens[token.type].forEach(function (
-            childTokens
-          ) {
-            marked.walkTokens(token[childTokens], callback);
-          });
+          marked.defaults.extensions.childTokens[token.type].forEach(
+            function (childTokens) {
+              marked.walkTokens(token[childTokens], callback);
+            },
+          );
         } else if (token.tokens) {
           marked.walkTokens(token.tokens, callback);
         }
@@ -2872,14 +2872,14 @@ marked.parseInline = function (src, opt) {
   // throw error in case of non string input
   if (typeof src === "undefined" || src === null) {
     throw new Error(
-      "marked.parseInline(): input parameter is undefined or null"
+      "marked.parseInline(): input parameter is undefined or null",
     );
   }
   if (typeof src !== "string") {
     throw new Error(
       "marked.parseInline(): input parameter is of type " +
         Object.prototype.toString.call(src) +
-        ", string expected"
+        ", string expected",
     );
   }
 

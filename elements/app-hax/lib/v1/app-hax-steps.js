@@ -19,15 +19,15 @@ import "./app-hax-button.js";
 const homeIcon = new URL("../assets/images/Home.svg", import.meta.url).href;
 const disabledCircle = new URL(
   "../assets/images/DisabledCircle.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 const transparentCircle = new URL(
   "../assets/images/TransparentCircle.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 const enabledCircle = new URL(
   "../assets/images/EnabledCircle.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 
 const themeContext = {
@@ -62,7 +62,7 @@ export class AppHaxSteps extends SimpleColors {
         (value) =>
           contextKey &&
           themeContext[contextKey] &&
-          themeContext[contextKey].includes(value)
+          themeContext[contextKey].includes(value),
       );
     });
     autorun(() => {
@@ -168,7 +168,7 @@ export class AppHaxSteps extends SimpleColors {
         this.setProcessingVisual();
         const response = await MicroFrontendRegistry.call(
           "@haxcms/docxToSite",
-          formData
+          formData,
         );
         store.toast(`Processed!`, 300);
         // must be a valid response and have at least SOME html to bother attempting
@@ -227,7 +227,7 @@ export class AppHaxSteps extends SimpleColors {
             formData,
             null,
             null,
-            "?jwt=" + toJS(store.AppHaxAPI.jwt)
+            "?jwt=" + toJS(store.AppHaxAPI.jwt),
           );
           store.toast(`Processed!`, 300);
           // must be a valid response and have at least SOME html to bother attempting
@@ -257,7 +257,7 @@ export class AppHaxSteps extends SimpleColors {
             store.appEl.playSound("error");
             store.toast(`File did not return valid HTML structure`);
           }
-        }
+        },
       );
     }
   }
@@ -270,7 +270,7 @@ export class AppHaxSteps extends SimpleColors {
       this.setProcessingVisual();
       const response = await MicroFrontendRegistry.call(
         "@haxcms/gitbookToSite",
-        { md: gbURL }
+        { md: gbURL },
       );
       store.toast(`Processed!`, 300);
       // must be a valid response and have at least SOME html to bother attempting
@@ -352,7 +352,7 @@ export class AppHaxSteps extends SimpleColors {
       this.setProcessingVisual();
       const response = await MicroFrontendRegistry.call(
         "@haxcms/notionToSite",
-        { repoUrl: notionUrl }
+        { repoUrl: notionUrl },
       );
       store.toast(`Processed!`, 300);
       // must be a valid response and have at least SOME html to bother attempting
@@ -405,7 +405,7 @@ export class AppHaxSteps extends SimpleColors {
         this.setProcessingVisual();
         const response = await MicroFrontendRegistry.call(
           "@haxcms/pressbooksToSite",
-          formData
+          formData,
         );
         store.toast(`Processed!`, 300);
         // must be a valid response and have at least SOME html to bother attempting
@@ -491,7 +491,7 @@ export class AppHaxSteps extends SimpleColors {
       // set input field to whats in store if we have it
       if (this.step === 4 && propName === "step" && this.shadowRoot) {
         this.shadowRoot.querySelector("#sitename").value = toJS(
-          store.site.name
+          store.site.name,
         );
       }
       // progress
@@ -525,7 +525,7 @@ export class AppHaxSteps extends SimpleColors {
           (value) =>
             contextKey &&
             themeContext[contextKey] &&
-            themeContext[contextKey].includes(value)
+            themeContext[contextKey].includes(value),
         );
       }
     });
@@ -753,7 +753,9 @@ export class AppHaxSteps extends SimpleColors {
           background-size: 30px 30px;
           background-color: var(--simple-colors-default-theme-grey-1, white);
           background-image: url("${unsafeCSS(enabledCircle)}");
-          transition: 0.3s ease-in-out background, 0.3s ease-in-out color;
+          transition:
+            0.3s ease-in-out background,
+            0.3s ease-in-out color;
           transition-delay: 0.6s, 0.3s;
         }
         li a[disabled] {
@@ -1163,7 +1165,7 @@ export class AppHaxSteps extends SimpleColors {
                 <simple-tooltip for="link-${item.name}" position="bottom"
                   >Step ${index + 1}: ${item.label}</simple-tooltip
                 >
-              </li>`
+              </li>`,
           )}
         </ul>
         <scrollable-component>
@@ -1233,7 +1235,7 @@ export class AppHaxSteps extends SimpleColors {
                           />
                           <div>${this.appSettings.themes[themeKey].name}</div>
                         </button>
-                      `
+                      `,
                     )
                   : ``}
               </div>

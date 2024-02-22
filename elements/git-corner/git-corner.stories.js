@@ -20,6 +20,6 @@ export const GitHubCorner = () => {
       alt: "Our monorepo of all the things you see here",
       corner: true,
       size: "large",
-    })
+    }),
   );
 };

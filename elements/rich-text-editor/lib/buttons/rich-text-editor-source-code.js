@@ -15,7 +15,7 @@ import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
  * @demo ./demo/buttons.html
  */
 class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.

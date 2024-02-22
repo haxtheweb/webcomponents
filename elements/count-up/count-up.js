@@ -244,7 +244,7 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
     this._countUp = new CountUp(
       this.shadowRoot.querySelector("#counter"),
       this.end,
-      options
+      options,
     );
   }
   /**

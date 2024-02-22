@@ -17,7 +17,7 @@ export const MtzFileDownloadBehaviors = function (SuperClass) {
               },
             },
           },
-          super.properties
+          super.properties,
         );
       } else {
         return {

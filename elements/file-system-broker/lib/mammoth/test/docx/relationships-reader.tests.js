@@ -18,11 +18,11 @@ test("relationships can be found by ID", function () {
         Target: "http://example.net/",
         Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
       }),
-    ])
+    ]),
   );
   assert.equal(
     relationships.findTargetByRelationshipId("rId1"),
-    "http://example.com/"
+    "http://example.com/",
   );
 });
 
@@ -44,13 +44,13 @@ test("relationships can be found by type", function () {
         Target: "word/document2.xml",
         Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
       }),
-    ])
+    ]),
   );
   assert.deepEqual(
     relationships.findTargetsByType(
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument"
+      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
     ),
-    ["word/document.xml", "word/document2.xml"]
+    ["word/document.xml", "word/document2.xml"],
   );
 });
 
@@ -58,9 +58,9 @@ test("when there are no relationships of requested type then empty array is retu
   var relationships = readRelationships(relationshipsElement([]));
   assert.deepEqual(
     relationships.findTargetsByType(
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument"
+      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
     ),
-    []
+    [],
   );
 });
 
@@ -68,7 +68,7 @@ function relationshipsElement(children) {
   return xml.element(
     "{http://schemas.openxmlformats.org/package/2006/relationships}Relationships",
     {},
-    children
+    children,
   );
 }
 
@@ -76,6 +76,6 @@ function relationshipElement(attributes) {
   return xml.element(
     "{http://schemas.openxmlformats.org/package/2006/relationships}Relationship",
     attributes,
-    []
+    [],
   );
 }

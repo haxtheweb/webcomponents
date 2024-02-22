@@ -36,7 +36,7 @@
               },
               function (t) {
                 e("throw", t, i, a);
-              }
+              },
             )
           : Promise.resolve(f).then(function (t) {
               (c.value = t), i(c);
@@ -102,7 +102,7 @@
           return j;
         (e.method = "throw"),
           (e.arg = new TypeError(
-            "The iterator does not provide a 'throw' method"
+            "The iterator does not provide a 'throw' method",
           ));
       }
       return j;
@@ -323,10 +323,10 @@
             "break" === t.type || "continue" === t.type
               ? (this.next = t.arg)
               : "return" === t.type
-              ? ((this.rval = this.arg = t.arg),
-                (this.method = "return"),
-                (this.next = "end"))
-              : "normal" === t.type && e && (this.next = e),
+                ? ((this.rval = this.arg = t.arg),
+                  (this.method = "return"),
+                  (this.next = "end"))
+                : "normal" === t.type && e && (this.next = e),
             j
           );
         },
@@ -359,7 +359,7 @@
 })(
   (function () {
     return this;
-  })() || Function("return this")()
+  })() || Function("return this")(),
 ),
   (function (t) {
     function e(t) {
@@ -394,7 +394,7 @@
             },
             function (t) {
               e("throw", t);
-            }
+            },
           );
         } catch (t) {
           r("throw", t);
@@ -482,7 +482,7 @@
             try {
               return (
                 Date.prototype.toString.call(
-                  Reflect.construct(Date, [], function () {})
+                  Reflect.construct(Date, [], function () {}),
                 ),
                 !0
               );
@@ -509,13 +509,13 @@
               return p.construct(
                 t,
                 arguments,
-                p.getPrototypeOf(this).constructor
+                p.getPrototypeOf(this).constructor,
               );
             }
             if (null === t || !p.isNativeFunction(t)) return t;
             if ("function" != typeof t)
               throw new TypeError(
-                "Super expression must either be null or a function"
+                "Super expression must either be null or a function",
               );
             if (void 0 !== e) {
               if (e.has(t)) return e.get(t);
@@ -716,7 +716,7 @@
             (n = n.concat(
               Object.getOwnPropertySymbols(r).filter(function (t) {
                 return Object.getOwnPropertyDescriptor(r, t).enumerable;
-              })
+              }),
             )),
             n.forEach(function (e) {
               p.defineProperty(t, e, r[e]);
@@ -727,7 +727,7 @@
       (p.inherits = function (t, e) {
         if ("function" != typeof e && null !== e)
           throw new TypeError(
-            "Super expression must either be null or a function"
+            "Super expression must either be null or a function",
           );
         (t.prototype = Object.create(e && e.prototype, {
           constructor: { value: t, writable: !0, configurable: !0 },
@@ -800,7 +800,7 @@
       (p.assertThisInitialized = function (t) {
         if (void 0 === t)
           throw new ReferenceError(
-            "this hasn't been initialised - super() hasn't been called"
+            "this hasn't been initialised - super() hasn't been called",
           );
         return t;
       }),
@@ -827,7 +827,7 @@
         return (
           e || (e = t.slice(0)),
           Object.freeze(
-            Object.defineProperties(t, { raw: { value: Object.freeze(e) } })
+            Object.defineProperties(t, { raw: { value: Object.freeze(e) } }),
           )
         );
       }),
@@ -903,7 +903,7 @@
       }),
       (p.nonIterableRest = function () {
         throw new TypeError(
-          "Invalid attempt to destructure non-iterable instance"
+          "Invalid attempt to destructure non-iterable instance",
         );
       }),
       (p.toPropertyKey = function (t) {

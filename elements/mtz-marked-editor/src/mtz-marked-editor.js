@@ -11,7 +11,7 @@ import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
  */
 class MtzMarkedEditor extends mixinBehaviors(
   [IronFormElementBehavior, IronValidatableBehavior],
-  PolymerElement
+  PolymerElement,
 ) {
   static get template() {
     return html`
@@ -44,7 +44,7 @@ class MtzMarkedEditor extends mixinBehaviors(
     super();
     this.addEventListener(
       "register-control",
-      this.__bindControlToEditor.bind(this)
+      this.__bindControlToEditor.bind(this),
     );
   }
   connectedCallback() {
@@ -140,12 +140,12 @@ class MtzMarkedEditor extends mixinBehaviors(
   replaceSelection(
     text,
     textarea = this.getTextarea(),
-    selection = this.getSelection()
+    selection = this.getSelection(),
   ) {
     const val = textarea.value;
     textarea.value = `${val.substr(0, selection.start)}${text}${val.substr(
       selection.end,
-      val.length
+      val.length,
     )}`;
   }
   /**

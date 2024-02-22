@@ -33,8 +33,10 @@ class SimpleIconsetDemo extends LitElement {
       css`
         :host {
           display: block;
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+          box-shadow:
+            0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12),
+            0 3px 1px -2px rgba(0, 0, 0, 0.2);
           margin-bottom: 40px;
           padding: 20px 40px;
         }
@@ -104,27 +106,28 @@ class SimpleIconsetDemo extends LitElement {
     return this.iconsets.length < 1
       ? "Looking for iconsets..."
       : this.iconsets.map(
-          (iconset) => html`<div class="iconset">
-            <p><strong>${iconset.name}</strong></p>
-            <ul>
-              ${iconset.icons.map(
-                (icon) => html`
-                  <li>
-                    <div id="icon">
-                      <simple-icon-lite
-                        icon="${iconset.name}:${icon}"
-                      ></simple-icon-lite>
-                      <div id="icon-text">
-                        ${iconset.name === "icons"
-                          ? ""
-                          : `${iconset.name}:`}${icon}
+          (iconset) =>
+            html`<div class="iconset">
+              <p><strong>${iconset.name}</strong></p>
+              <ul>
+                ${iconset.icons.map(
+                  (icon) => html`
+                    <li>
+                      <div id="icon">
+                        <simple-icon-lite
+                          icon="${iconset.name}:${icon}"
+                        ></simple-icon-lite>
+                        <div id="icon-text">
+                          ${iconset.name === "icons"
+                            ? ""
+                            : `${iconset.name}:`}${icon}
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                `
-              )}
-            </ul>
-          </div> `
+                    </li>
+                  `,
+                )}
+              </ul>
+            </div> `,
         );
   }
 
@@ -184,7 +187,7 @@ class SimpleIconsetDemo extends LitElement {
       (iconset) =>
         !!iconset &&
         !excludeSets.includes(iconset) &&
-        (!this.include || includeSets.includes(iconset))
+        (!this.include || includeSets.includes(iconset)),
     );
   }
 }

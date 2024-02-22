@@ -15,9 +15,9 @@ import "../lrnsys-layout.js";
  */
 describe("Instantiation Test", () => {
   it("lrnsys-layout instantiates", async () => {
-    const el = await fixture(
-      html` <lrnsys-layout title="test-title"></lrnsys-layout> `
-    );
+    const el = await fixture(html`
+      <lrnsys-layout title="test-title"></lrnsys-layout>
+    `);
     await expect(el.getAttribute("title")).to.equal("test-title");
   });
 });
@@ -32,7 +32,7 @@ describe("A11y/chai axe tests", () => {
   });
   it("lrnsys-layout passes accessibility negation", async () => {
     const el = await fixture(
-      html`<lrnsys-layout aria-labelledby="lrnsys-layout"></lrnsys-layout>`
+      html`<lrnsys-layout aria-labelledby="lrnsys-layout"></lrnsys-layout>`,
     );
     await assert.isNotAccessible(el);
   });

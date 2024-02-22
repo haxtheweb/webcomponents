@@ -9,7 +9,7 @@ describe("a11y-media-player test", () => {
       html`<a11y-media-player
         accent-color="red"
         youtube-id="BKorP55Aqvg"
-      ></a11y-media-player>`
+      ></a11y-media-player>`,
     );
   });
 

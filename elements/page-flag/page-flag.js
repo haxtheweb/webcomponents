@@ -276,7 +276,7 @@ export class pageFlagManagerEl extends HTMLElement {
     window.addEventListener(
       "haxcms-user-data-updated",
       this.userDataUpdated.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   disconnectedCallback() {
@@ -297,7 +297,7 @@ window.pageFlagManager = window.pageFlagManager || {};
 window.pageFlagManager.requestAvailability = () => {
   if (!window.pageFlagManager.instance) {
     window.pageFlagManager.instance = document.createElement(
-      pageFlagManagerEl.tag
+      pageFlagManagerEl.tag,
     );
     document.body.appendChild(window.pageFlagManager.instance);
   }

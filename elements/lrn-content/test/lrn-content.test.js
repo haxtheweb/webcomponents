@@ -5,9 +5,9 @@ import "../lrn-content.js";
 describe("lrn-content test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrn-content title="test-title"></lrn-content> `
-    );
+    element = await fixture(html`
+      <lrn-content title="test-title"></lrn-content>
+    `);
   });
 
   it("passes the a11y audit", async () => {

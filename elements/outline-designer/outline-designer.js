@@ -216,7 +216,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           opacity: 1;
           visibility: visible;
           height: 42px;
-          transition: 0.3s padding ease-in-out, 0.3s border ease-in-out,
+          transition:
+            0.3s padding ease-in-out,
+            0.3s border ease-in-out,
             0.3s margin ease-in-out;
           overflow: hidden;
           align-items: center;
@@ -495,7 +497,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ${this.items.map((item, index) =>
           this.getItemParentsCollapsed(item) === ""
             ? this.renderItem(item, index)
-            : ``
+            : ``,
         )}
       </ul>
       <simple-popover auto for="list" hidden>
@@ -507,7 +509,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ></simple-icon-button>
         ${this.renderActiveContentItem(
           this.activePreview,
-          this.activePreviewIndex
+          this.activePreviewIndex,
         )}
       </simple-popover>`;
   }
@@ -527,7 +529,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       let item = this.items.find(
         (item) =>
           item.id ===
-          activeItemContentNode.getAttribute("data-content-parent-id")
+          activeItemContentNode.getAttribute("data-content-parent-id"),
       );
       // should have contents but verify
       if (item.contents) {
@@ -712,11 +714,11 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         modifier = 0;
         if (
           ["h1", "h2", "h3", "h4", "h5", "h6"].includes(
-            node.tagName.toLowerCase()
+            node.tagName.toLowerCase(),
           )
         ) {
           activeHeadingDepth = parseInt(
-            node.tagName.toLowerCase().replace("h", "")
+            node.tagName.toLowerCase().replace("h", ""),
           );
           // this ensures when we drop a level that the item itself is NOT
           // rendered a level below where it should be
@@ -727,8 +729,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             node,
             index,
             item,
-            parseInt(item.indent) + activeHeadingDepth + modifier
-          )
+            parseInt(item.indent) + activeHeadingDepth + modifier,
+          ),
         );
       });
     }
@@ -754,7 +756,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             @click="${this.prependNodeToContent}"
             >Add ${gizmo.title}</simple-icon-button-lite
           >
-        `
+        `,
       )}
     </li>`;
   }
@@ -926,7 +928,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
                 targetNodeIndex
               ].previousElementSibling.insertAdjacentElement(
                 "beforebegin",
-                div.childNodes[targetNodeIndex]
+                div.childNodes[targetNodeIndex],
               );
             }
             break;
@@ -936,7 +938,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
                 targetNodeIndex
               ].nextElementSibling.insertAdjacentElement(
                 "afterend",
-                div.childNodes[targetNodeIndex]
+                div.childNodes[targetNodeIndex],
               );
             }
             break;
@@ -962,7 +964,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
               case "out":
                 // heading to modify
                 let hlevel = parseInt(
-                  node.tagName.toLowerCase().replace("h", "")
+                  node.tagName.toLowerCase().replace("h", ""),
                 );
                 let h;
                 if (action === "in" && hlevel > 1) {
@@ -1003,7 +1005,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       let item = this.items.find((item) => item.id === itemId);
       let targetItemIndex;
       this.items.map((item, index) =>
-        item.id === itemId ? (targetItemIndex = index) : null
+        item.id === itemId ? (targetItemIndex = index) : null,
       );
       // should have contents but verify
       if (item.contents) {
@@ -1520,13 +1522,13 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       newItems = this.recurseCopyChildren(
         this.items[targetItemIndex].id,
         map,
-        newItems
+        newItems,
       );
     }
     // splice back into the items array just below where we issued the split
     if (this.items && this.items.length > 0) {
       newItems.forEach((spItem, spIndex) =>
-        this.items.splice(targetItemIndex + spIndex + 1, 0, spItem)
+        this.items.splice(targetItemIndex + spIndex + 1, 0, spItem),
       );
     } else {
       newItems.forEach((spItem) => this.items.push(spItem));
@@ -1596,7 +1598,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
               this.recurseAction(
                 this.items[index].id,
                 action,
-                this.items[index].metadata.locked
+                this.items[index].metadata.locked,
               );
             }
             break;
@@ -1610,7 +1612,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
               this.recurseAction(
                 this.items[index].id,
                 action,
-                this.items[index].delete
+                this.items[index].delete,
               );
             }
             break;
@@ -1642,7 +1644,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             if (this.items[index].parent !== null) {
               // move just after parent and take on it's parent
               let sibling = this.items.find(
-                (item) => this.items[index].parent === item.id
+                (item) => this.items[index].parent === item.id,
               );
               this.items[index].parent = sibling.parent;
               // @todo order needs to be more complex than this potentially
@@ -1716,7 +1718,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           this.recurseAction(
             this.items[index].id,
             action,
-            this.items[index].metadata.locked
+            this.items[index].metadata.locked,
           );
         }
       }

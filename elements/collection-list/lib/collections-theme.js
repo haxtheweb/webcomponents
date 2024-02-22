@@ -40,11 +40,11 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     PDFPageMixin(
       PrintBranchMixin(
         QRCodeMixin(
-          HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
-        )
-      )
-    )
-  )
+          HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)),
+        ),
+      ),
+    ),
+  ),
 ) {
   static get properties() {
     return {
@@ -122,27 +122,41 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           --content-bg-color: #ffffff;
           --nav-link-color: #363533;
           --icon-color: #363533;
-          --header-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
-          --nav-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
-          --footer-secondary-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
-          --footer-primary-bg-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6, #e2801e));
-          
+          --header-bg-color: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-orange-6, #e2801e)
+          );
+          --nav-bg-color: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-orange-6, #e2801e)
+          );
+          --footer-secondary-bg-color: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-orange-6, #e2801e)
+          );
+          --footer-primary-bg-color: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-orange-6, #e2801e)
+          );
+
           display: block;
           font-size: 18px;
-          font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,
+            sans-serif;
           letter-spacing: normal;
           line-height: 28.8px;
           background-color: var(--bg-color);
-          --haxcms-base-styles-body-font-size:18px;
+          --haxcms-base-styles-body-font-size: 18px;
           --hax-base-styles-a-font-size: 18px;
           --hax-base-styles-p-font-size: 18px;
           --hax-base-styles-list-font-size: 18px;
-          --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          --haxcms-base-styles-body-font-family: "Open Sans", "Helvetica Neue",
+            Helvetica, Arial, sans-serif;
           --haxcms-base-styles-body-line-height: 28.8px;
           --hax-base-styles-list-line-height: 28.8px
-          --hax-base-styles-p-line-height: 28.8px;
+            --hax-base-styles-p-line-height: 28.8px;
           --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing : normal;
+          --haxcms-base-styles-body-letter-spacing: normal;
           --hax-base-styles-p-min-height: auto;
           --hax-base-styles-list-max-width: auto;
           --haxcms-base-styles-p-min-height: auto;
@@ -158,11 +172,17 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
-          --hax-base-styles-a-color-visited:  var(--haxcms-color, var(--simple-colors-default-theme-orange-6));
-          --hax-base-styles-a-color: var(--haxcms-color, var(--simple-colors-default-theme-orange-6));
+          --hax-base-styles-a-color-visited: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-orange-6)
+          );
+          --hax-base-styles-a-color: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-orange-6)
+          );
           --hax-base-styles-a-color-active: #000000;
           --site-search-result-background-color: transparent;
-          --site-search-result-background-color-hover: #F5F5F5;
+          --site-search-result-background-color-hover: #f5f5f5;
           --site-search-link-color-hover: #252737;
           --site-search-link-text-color: #252737;
           --site-search-link-color: #252737;
@@ -219,7 +239,6 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           }
         }
 
-
         main {
           padding-top: 100px;
           font-family: "Roboto", sans-serif;
@@ -246,7 +265,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           --scroll-button-color: var(--bg-color);
           --scroll-button-active-color: var(--nav-bg-color);
           --scroll-button-background-color: var(--nav-bg-color);
-          --scroll-button-tooltip-background-color:var(--nav-link-color);
+          --scroll-button-tooltip-background-color: var(--nav-link-color);
           --scroll-button-tooltip-color: var(--bg-color);
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
@@ -272,8 +291,12 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           margin: 0;
           padding: 0;
         }
-        footer .site-region-wrapper .footer-secondary
-        footer .site-region-wrapper .footer-primary {
+        footer
+          .site-region-wrapper
+          .footer-secondary
+          footer
+          .site-region-wrapper
+          .footer-primary {
           display: flex;
         }
         .footer-primary {
@@ -337,7 +360,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           justify-content: center;
           align-items: center;
         }
-`,
+      `,
     ];
   }
 
@@ -437,7 +460,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         const link = globalThis.document.createElement("link");
         link.setAttribute(
           "href",
-          "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap"
+          "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap",
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");
@@ -451,7 +474,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       this.image = varGet(
         manifest,
         "metadata.theme.variables.image",
-        "assets/banner.jpg"
+        "assets/banner.jpg",
       );
       this.logo = varGet(manifest, "metadata.site.logo", "assets/banner.jpg");
       this.__disposer.push(reaction);
@@ -465,7 +488,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         this.image = varGet(
           manifest,
           "metadata.theme.variables.image",
-          "assets/banner.jpg"
+          "assets/banner.jpg",
         );
       }
       this.__disposer.push(reaction);

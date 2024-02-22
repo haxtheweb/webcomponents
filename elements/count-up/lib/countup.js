@@ -50,13 +50,13 @@ var __assign =
                     i,
                     s.startVal,
                     s.endVal - s.startVal,
-                    s.duration
+                    s.duration,
                   ))
               : s.countDown
-              ? (s.frameVal =
-                  s.startVal - (s.startVal - s.endVal) * (i / s.duration))
-              : (s.frameVal =
-                  s.startVal + (s.endVal - s.startVal) * (i / s.duration)),
+                ? (s.frameVal =
+                    s.startVal - (s.startVal - s.endVal) * (i / s.duration))
+                : (s.frameVal =
+                    s.startVal + (s.endVal - s.startVal) * (i / s.duration)),
             s.countDown
               ? (s.frameVal = s.frameVal < s.endVal ? s.endVal : s.frameVal)
               : (s.frameVal = s.frameVal > s.endVal ? s.endVal : s.frameVal),
@@ -66,8 +66,8 @@ var __assign =
             i < s.duration
               ? (s.rAF = requestAnimationFrame(s.count))
               : null !== s.finalEndVal
-              ? s.update(s.finalEndVal)
-              : s.callback && s.callback();
+                ? s.update(s.finalEndVal)
+                : s.callback && s.callback();
         }),
         (this.formatNumber = function (t) {
           var i,
@@ -189,8 +189,8 @@ var __assign =
         "INPUT" === this.el.tagName
           ? (this.el.value = i)
           : "text" === this.el.tagName || "tspan" === this.el.tagName
-          ? (this.el.textContent = i)
-          : (this.el.innerHTML = i);
+            ? (this.el.textContent = i)
+            : (this.el.innerHTML = i);
       }),
       (t.prototype.ensureNumber = function (t) {
         return "number" == typeof t && !isNaN(t);

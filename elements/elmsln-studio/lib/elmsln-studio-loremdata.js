@@ -334,7 +334,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
               undefined,
               ai,
               assignDate,
-              lorem
+              lorem,
             );
             assignDate = lorem.addDays(assignDate, 1);
             return assignment;
@@ -376,14 +376,14 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           i > most(Object.keys(this.assignments || {}))
             ? []
             : i > some(Object.keys(this.assignments || {}))
-            ? lorem.draw(
-                this.students,
-                some(this.students),
-                most(this.students)
-              )
-            : this.students;
+              ? lorem.draw(
+                  this.students,
+                  some(this.students),
+                  most(this.students),
+                )
+              : this.students;
       creators.forEach((creator) =>
-        this._submission(a, creator.id, topic, types, a.date, lorem)
+        this._submission(a, creator.id, topic, types, a.date, lorem),
       );
     });
     Object.keys(this.submissions).forEach((key) => {
@@ -404,7 +404,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     this.activity = lorem.sortDates(this.activity);
     this.profiles = {};
     this.students.forEach(
-      (student) => (this.profiles[student.id] = this._profile(student, lorem))
+      (student) => (this.profiles[student.id] = this._profile(student, lorem)),
     );
 
     let feedbackGiven = Object.keys(this.profiles)
@@ -424,7 +424,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
             : feedbackGiven.indexOf(score);
       if (index)
         this.profiles[key].feedbackPercentile = Math.round(
-          (index * 100) / feedbackGiven.length
+          (index * 100) / feedbackGiven.length,
         );
     });
 
@@ -436,10 +436,10 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     profile.submissions = lorem.sortDates(
       Object.keys(this.submissions)
         .filter((key) => this.submissions[key].userId === profile.id)
-        .map((key) => this.submissions[key])
+        .map((key) => this.submissions[key]),
     );
     profile.completed = profile.submissions.map(
-      (submission) => submission.assignmentId
+      (submission) => submission.assignmentId,
     );
     profile.due = Object.keys(this.assignments)
       .filter((key) => !profile.completed.includes(key))
@@ -451,16 +451,16 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       profile.submissions
         .map((submission) => submission.feedback)
         .flat()
-        .map((key) => this.discussions[key])
+        .map((key) => this.discussions[key]),
     );
     profile.given = Object.keys(this.discussions).filter(
-      (key) => this.discussions[key].userId === profile.id
+      (key) => this.discussions[key].userId === profile.id,
     );
     profile.replies = Object.keys(this.discussions)
       .map((key) =>
         this.discussions[key].replies.filter(
-          (reply) => reply.userId === profile.id
-        )
+          (reply) => reply.userId === profile.id,
+        ),
       )
       .flat()
       .map((discussion) => discussion.id);
@@ -498,8 +498,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
                 "csv",
                 "zip",
                 "zip",
-              ])
-            )
+              ]),
+            ),
           );
         } else {
           this.__imgCtr++;
@@ -507,7 +507,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
             lorem.randomAspect(200, 600, 200, 600),
             lorem.randomOption([false, false, false, false, true]),
             topic,
-            this.__imgCtr
+            this.__imgCtr,
           );
           if (this.sourcePath && this.__demoImages.length > 0)
             img.src =
@@ -538,8 +538,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
             project.id,
             i,
             lorem.addDays(date, i),
-            lorem
-          )
+            lorem,
+          ),
         ),
       };
     }
@@ -683,7 +683,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
               reply;
             date = lorem.addMinutes(
               date,
-              (i + 1) * lorem.randomNumber(1, 3000)
+              (i + 1) * lorem.randomNumber(1, 3000),
             );
             reply = {
               id: rid,
@@ -721,7 +721,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           lorem.randomAspect(400, 1200, 400, 1200),
           lorem.randomOption([false, false, false, false, true]),
           topic,
-          this.__imgCtr
+          this.__imgCtr,
         );
       if (this.sourcePath && this.__demoImages.length > 0)
         image.src = this.__demoImages[this.__imgCtr % this.__demoImages.length];
@@ -729,7 +729,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       let reviewers = lorem.draw(
           this.students.filter((s) => s.id !== creatorId),
           0,
-          5
+          5,
         ),
         instructors =
           Math.round() > 0.75 ? lorem.draw(this.instructors, 1, 1) : [],
@@ -788,7 +788,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         submissions: [],
       };
       types.forEach(
-        (type) => (submission[type] = this._assets(type, topic, lorem))
+        (type) => (submission[type] = this._assets(type, topic, lorem)),
       );
       this.activity.push({
         id: id,
@@ -803,8 +803,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
             id,
             reviewer.id,
             lorem.addMinutes(submitDate, (i + 1) * 64),
-            lorem
-          )
+            lorem,
+          ),
         );
       this.portfolios[submission.portfolioId].submissions.push(submission);
     }

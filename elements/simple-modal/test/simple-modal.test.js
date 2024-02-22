@@ -5,9 +5,9 @@ import "../simple-modal.js";
 describe("simple-modal test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-modal title="test-title"></simple-modal> `
-    );
+    element = await fixture(html`
+      <simple-modal title="test-title"></simple-modal>
+    `);
   });
 
   it("passes the a11y audit", async () => {

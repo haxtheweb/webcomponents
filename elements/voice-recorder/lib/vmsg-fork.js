@@ -20,7 +20,7 @@ function inlineWorker() {
       if (
         err.message &&
         err.message.indexOf(
-          "Argument 0 must be provided and must be a Response"
+          "Argument 0 must be provided and must be a Response",
         ) > 0
       ) {
         return fetchAndInstantiateFallback(url, imports);
@@ -166,11 +166,11 @@ export class Recorder {
     // https://stackoverflow.com/a/22582695
     this.wasmURL = new URL(
       opts.wasmURL || "/static/js/vmsg.wasm",
-      location
+      location,
     ).href;
     this.shimURL = new URL(
       opts.shimURL || "/static/js/wasm-polyfill.js",
-      location
+      location,
     ).href;
     this.onStop = onStop;
     this.pitch = opts.pitch || 0;
@@ -217,7 +217,7 @@ export class Recorder {
               navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
             if (!oldGetUserMedia) {
               return Promise.reject(
-                new Error("getUserMedia is not implemented in this browser")
+                new Error("getUserMedia is not implemented in this browser"),
               );
             }
             return new Promise(function (resolve, reject) {
@@ -398,7 +398,7 @@ export class Form {
     recordRow.appendChild(timer);
 
     const recordBtn = (this.recordBtn = globalThis.document.createElement(
-      "simple-icon-button-lite"
+      "simple-icon-button-lite",
     ));
     recordBtn.className = "vmsg-button vmsg-record-button";
     recordBtn.icon = this.hasRecording ? "refresh" : "av:fiber-smart-record";
@@ -407,7 +407,7 @@ export class Form {
     recordRow.appendChild(recordBtn);
 
     const stopBtn = (this.stopBtn = globalThis.document.createElement(
-      "simple-icon-button-lite"
+      "simple-icon-button-lite",
     ));
     stopBtn.className = "vmsg-button vmsg-stop-button";
     stopBtn.style.display = "none";
@@ -417,7 +417,7 @@ export class Form {
     recordRow.appendChild(stopBtn);
 
     const previewBtn = (this.previewBtn = globalThis.document.createElement(
-      "simple-icon-button-lite"
+      "simple-icon-button-lite",
     ));
     previewBtn.className = "vmsg-button vmsg-record-button";
     previewBtn.style.display = "none";
@@ -439,7 +439,7 @@ export class Form {
     recordRow.appendChild(previewBtn);
 
     const saveBtn = (this.saveBtn = globalThis.document.createElement(
-      "simple-icon-button-lite"
+      "simple-icon-button-lite",
     ));
     saveBtn.className = "vmsg-button vmsg-save-button";
     saveBtn.icon = "icons:save";
@@ -489,7 +489,7 @@ export class Form {
         detail: {
           value: true,
         },
-      })
+      }),
     );
   }
 
@@ -587,7 +587,7 @@ export function record(opts, target) {
     (err) => {
       shown = false;
       throw err;
-    }
+    },
   );
 }
 
@@ -708,13 +708,13 @@ function Jungle(context) {
     context,
     bufferTime,
     fadeTime,
-    false
+    false,
   );
   this.shiftUpBuffer = createDelayTimeBuffer(
     context,
     bufferTime,
     fadeTime,
-    true
+    true,
   );
   mod1.buffer = this.shiftDownBuffer;
   mod2.buffer = this.shiftDownBuffer;

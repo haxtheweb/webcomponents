@@ -5,9 +5,9 @@ import "../voice-recorder.js";
 describe("voice-recorder test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <voice-recorder title="test-title"></voice-recorder> `
-    );
+    element = await fixture(html`
+      <voice-recorder title="test-title"></voice-recorder>
+    `);
   });
 
   it("passes the a11y audit", async () => {

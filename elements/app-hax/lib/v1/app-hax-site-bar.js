@@ -9,7 +9,7 @@ import { animate } from "@lit-labs/motion";
 
 const DropDownBorder = new URL(
   "../assets/images/DropDownBorder.svg",
-  import.meta.url
+  import.meta.url,
 );
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 // which has the magic life-cycles and developer experience below added
@@ -56,7 +56,7 @@ export class AppHaxSiteBars extends SimpleColors {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });

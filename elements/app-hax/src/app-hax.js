@@ -78,9 +78,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     globalThis.open(
       `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
-        body
+        body,
       )}`,
-      "_blank"
+      "_blank",
     );
   }
   // eslint-disable-next-line class-methods-use-this
@@ -98,7 +98,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           ? sound
           : "hit";
         this.audio = new Audio(
-          new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
+          new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href,
         );
         this.audio.volume = 0.3;
         this.audio.onended = (event) => {
@@ -125,7 +125,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         bubbles: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     setTimeout(() => {
       this.reset(true);
@@ -146,7 +146,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     globalThis.addEventListener(
       "jwt-login-refresh-error",
       this._tokenRefreshFailed.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 
@@ -598,7 +598,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // only set this initially if we don't have an app state of our own
     if (localStorageGet("app-hax-darkMode", null) === null) {
       store.darkMode = globalThis.matchMedia(
-        "(prefers-color-scheme: dark)"
+        "(prefers-color-scheme: dark)",
       ).matches;
     }
     autorun(() => {
@@ -675,7 +675,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       store.appEl.playSound("coin2").then(() => {
         store.appEl.playSound("success").then(() => {
           SuperDaemonInstance.merlinSpeak(
-            "Enjoy these early 2000s table based layouts. May they remind you how never to web, again."
+            "Enjoy these early 2000s table based layouts. May they remind you how never to web, again.",
           );
         });
       });
@@ -687,7 +687,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       store.appEl.playSound("coin2").then(() => {
         store.appEl.playSound("success").then(() => {
           SuperDaemonInstance.merlinSpeak(
-            "Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!"
+            "Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!",
           );
         });
       });
@@ -701,7 +701,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         bubbles: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     this.closeMenu();
     this.__logoutUserAction = true;
@@ -722,7 +722,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       const p = document.createElement("app-hax-site-login");
       if (this.querySelector('[slot="externalproviders"]')) {
         const cloneSlot = this.querySelector(
-          '[slot="externalproviders"]'
+          '[slot="externalproviders"]',
         ).cloneNode(true);
         p.appendChild(cloneSlot);
       }
@@ -748,7 +748,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   "--simple-modal-titlebar-height": "64px",
                 },
               },
-            })
+            }),
           );
         }, 0);
       });
@@ -1065,7 +1065,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         bubbles: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     store.appReady = true;
     autorun(() => {
@@ -1274,7 +1274,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                       ${this.activeItem && this.activeItem.statement
                         ? this.activeItem.statement.replace(
                             ":structure",
-                            toJS(store.site.structure)
+                            toJS(store.site.structure),
                           )
                         : ""}
                     </div>
@@ -1354,7 +1354,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         setTimeout(() => {
           this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
         }, 0);
-      }
+      },
     );
     if (e.detail) {
       store.siteReady = true;

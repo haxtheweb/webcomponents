@@ -93,11 +93,11 @@ class TwitterEmbed extends LitElement {
           localesPath:
             new URL(
               "./locales/twitter-embed.haxProperties.es.json",
-              import.meta.url
+              import.meta.url,
             ).href + "/../",
           locales: ["es"],
         },
-      })
+      }),
     );
   }
   /**

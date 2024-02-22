@@ -23,13 +23,13 @@ export class AppHaxToast extends RPGCharacterToast {
     globalThis.addEventListener(
       "haxcms-toast-hide",
       this.hideSimpleToast.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "haxcms-toast-show",
       this.showSimpleToast.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 
@@ -51,7 +51,7 @@ globalThis.AppHaxToast = globalThis.AppHaxToast || {};
 globalThis.AppHaxToast.requestAvailability = () => {
   if (!globalThis.AppHaxToast.instance) {
     globalThis.AppHaxToast.instance = globalThis.document.createElement(
-      AppHaxToast.tag
+      AppHaxToast.tag,
     );
     globalThis.document.body.appendChild(globalThis.AppHaxToast.instance);
   }

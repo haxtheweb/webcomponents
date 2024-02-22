@@ -19,7 +19,7 @@ import "./rich-text-editor-breadcrumbs.js";
  * @demo ./demo/full.html toolbar with breadcrumb
  */
 class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.

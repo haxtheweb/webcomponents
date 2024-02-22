@@ -100,7 +100,7 @@ class SimpleColorsPolymer extends PolymerElement {
     return this.__utils.makeVariable(
       (color = "grey"),
       (shade = 1),
-      (theme = "default")
+      (theme = "default"),
     );
   }
 
@@ -134,7 +134,7 @@ class SimpleColorsPolymer extends PolymerElement {
       isLarge,
       colorName,
       colorShade,
-      contrastName
+      contrastName,
     );
   }
 
@@ -153,14 +153,14 @@ class SimpleColorsPolymer extends PolymerElement {
     colorName,
     colorShade,
     contrastName,
-    contrastShade
+    contrastShade,
   ) {
     return this.__utils.isContrastCompliant(
       isLarge,
       colorName,
       colorShade,
       contrastName,
-      contrastShade
+      contrastShade,
     );
   }
 }

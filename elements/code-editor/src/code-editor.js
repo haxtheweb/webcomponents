@@ -154,7 +154,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     setTimeout(() => {
       this.addEventListener(
         "monaco-element-ready",
-        this.editorReady.bind(this)
+        this.editorReady.bind(this),
       );
     }, 0);
   }
@@ -354,7 +354,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
         if (
           this[propName] &&
@@ -370,7 +370,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (propName === "focused") {
@@ -380,7 +380,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
             detail: {
               focused: this[propName],
             },
-          })
+          }),
         );
       }
       if (["title", "value"].includes(propName)) {

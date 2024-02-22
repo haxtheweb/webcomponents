@@ -218,7 +218,7 @@ export class SuperDaemonRow extends SimpleColors {
         bubbles: true,
         cancelable: true,
         detail: this,
-      })
+      }),
     );
     this.dispatchEvent(
       new CustomEvent(this.eventName, {
@@ -226,7 +226,7 @@ export class SuperDaemonRow extends SimpleColors {
         bubbles: true,
         cancelable: true,
         detail: this.value,
-      })
+      }),
     );
     // programs will run in the same window so we don't want to close the dialog
     // as every non-program running a single command would have to declare
@@ -239,7 +239,7 @@ export class SuperDaemonRow extends SimpleColors {
           bubbles: true,
           cancelable: true,
           detail: this,
-        })
+        }),
       );
     }
   }
@@ -291,11 +291,12 @@ export class SuperDaemonRow extends SimpleColors {
         </div>
         <div class="tags" part="tags">
           ${this.tags.map(
-            (tag, i) => html` <simple-tag
-              accent-color="${this.pickColor(i)}"
-              value="${tag}"
-              part="tag tag-${i}"
-            ></simple-tag>`
+            (tag, i) =>
+              html` <simple-tag
+                accent-color="${this.pickColor(i)}"
+                value="${tag}"
+                part="tag tag-${i}"
+              ></simple-tag>`,
           )}
         </div>
         ${this.more

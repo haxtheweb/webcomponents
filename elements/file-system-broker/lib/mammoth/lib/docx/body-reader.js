@@ -44,7 +44,7 @@ function BodyReader(options) {
         !Object.prototype.hasOwnProperty.call(ignoreElements, element.name)
       ) {
         var message = warning(
-          "An unrecognised element was ignored: " + element.name
+          "An unrecognised element was ignored: " + element.name,
         );
         return emptyResultWithMessages([message]);
       }
@@ -110,7 +110,7 @@ function BodyReader(options) {
       element,
       "w:pStyle",
       "Paragraph",
-      styles.findParagraphStyleById
+      styles.findParagraphStyleById,
     );
   }
 
@@ -140,7 +140,7 @@ function BodyReader(options) {
     }
     return elementResultWithMessages(
       { styleId: styleId, name: name },
-      messages
+      messages,
     );
   }
 
@@ -169,7 +169,7 @@ function BodyReader(options) {
     var topHyperlink = _.last(
       complexFieldStack.filter(function (complexField) {
         return complexField.type === "hyperlink";
-      })
+      }),
     );
     return topHyperlink ? topHyperlink.options : null;
   }
@@ -208,7 +208,7 @@ function BodyReader(options) {
           "A w:sym element with an unsupported character was ignored: char " +
             char +
             " in font " +
-            font
+            font,
         ),
       ]);
     } else {
@@ -223,7 +223,7 @@ function BodyReader(options) {
         new documents.NoteReference({
           noteType: noteType,
           noteId: noteId,
-        })
+        }),
       );
     };
   }
@@ -232,7 +232,7 @@ function BodyReader(options) {
     return elementResult(
       documents.commentReference({
         commentId: element.attributes["w:id"],
-      })
+      }),
     );
   }
 
@@ -247,7 +247,7 @@ function BodyReader(options) {
           var properties = _.find(children, isParagraphProperties);
           return new documents.Paragraph(
             children.filter(negate(isParagraphProperties)),
-            properties
+            properties,
           );
         })
         .insertExtra();
@@ -262,7 +262,7 @@ function BodyReader(options) {
           numbering: readNumberingProperties(
             style.styleId,
             element.firstOrEmpty("w:numPr"),
-            numbering
+            numbering,
           ),
           indent: readParagraphIndent(element.firstOrEmpty("w:ind")),
         };
@@ -306,7 +306,7 @@ function BodyReader(options) {
 
           return new documents.Hyperlink(
             children,
-            _.extend({ targetFrame: targetFrame }, options)
+            _.extend({ targetFrame: targetFrame }, options),
           );
         }
 
@@ -441,7 +441,7 @@ function BodyReader(options) {
     if (unexpectedNonRows) {
       return elementResultWithMessages(rows, [
         warning(
-          "unexpected non-row element in table, cell merging may be incorrect"
+          "unexpected non-row element in table, cell merging may be incorrect",
         ),
       ]);
     }
@@ -453,7 +453,7 @@ function BodyReader(options) {
     if (unexpectedNonCells) {
       return elementResultWithMessages(rows, [
         warning(
-          "unexpected non-cell element in table row, cell merging may be incorrect"
+          "unexpected non-cell element in table row, cell merging may be incorrect",
         ),
       ]);
     }
@@ -529,7 +529,7 @@ function BodyReader(options) {
     if (relationshipId) {
       return readImage(
         findEmbeddedImageFile(relationshipId),
-        element.attributes["o:title"]
+        element.attributes["o:title"],
       );
     } else {
       return emptyResultWithMessages([
@@ -541,7 +541,7 @@ function BodyReader(options) {
   function findEmbeddedImageFile(relationshipId) {
     var path = uris.uriToZipEntryName(
       "word",
-      relationships.findTargetByRelationshipId(relationshipId)
+      relationships.findTargetByRelationshipId(relationshipId),
     );
     return {
       path: path,
@@ -562,7 +562,7 @@ function BodyReader(options) {
       : warning(
           "Image of type " +
             contentType +
-            " is unlikely to display in web browsers"
+            " is unlikely to display in web browsers",
         );
     return elementResultWithMessages(image, warnings);
   }
@@ -572,7 +572,7 @@ function BodyReader(options) {
       type +
         " style with ID " +
         styleId +
-        " was referenced but not defined in the document"
+        " was referenced but not defined in the document",
     );
   }
 }
@@ -660,7 +660,7 @@ function ReadResult(element, extra, messages) {
       element: this.value,
       extra: extra,
     },
-    messages
+    messages,
   );
   this.messages = this._result.messages;
 }
@@ -669,7 +669,7 @@ ReadResult.prototype.toExtra = function () {
   return new ReadResult(
     null,
     joinElements(this.extra, this.value),
-    this.messages
+    this.messages,
   );
 };
 
@@ -696,7 +696,7 @@ ReadResult.prototype.flatMap = function (func) {
   return new ReadResult(
     result.value.element,
     joinElements(this.extra, result.value.extra),
-    result.messages
+    result.messages,
   );
 };
 
@@ -705,7 +705,7 @@ function combineResults(results) {
   return new ReadResult(
     _.flatten(_.pluck(result.value, "element")),
     _.filter(_.flatten(_.pluck(result.value, "extra")), identity),
-    result.messages
+    result.messages,
   );
 }
 

@@ -5,9 +5,9 @@ import "../lrnsys-outline.js";
 describe("lrnsys-outline test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrnsys-outline title="test-title"></lrnsys-outline> `
-    );
+    element = await fixture(html`
+      <lrnsys-outline title="test-title"></lrnsys-outline>
+    `);
   });
 
   it("passes the a11y audit", async () => {

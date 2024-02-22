@@ -5,9 +5,9 @@ import "../anchor-behaviors.js";
 describe("anchor-behaviors test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <anchor-behaviors title="test-title"></anchor-behaviors> `
-    );
+    element = await fixture(html`
+      <anchor-behaviors title="test-title"></anchor-behaviors>
+    `);
   });
 
   it("passes the a11y audit", async () => {

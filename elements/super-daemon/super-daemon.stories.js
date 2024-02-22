@@ -17,6 +17,6 @@ export const SuperDaemonStory = () => {
   return utils.makeUsageDocs(
     SuperDaemon,
     import.meta.url,
-    utils.makeElementFromClass(SuperDaemon)
+    utils.makeElementFromClass(SuperDaemon),
   );
 };

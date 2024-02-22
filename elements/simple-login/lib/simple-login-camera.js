@@ -29,14 +29,14 @@ class SimpleLoginCamera extends HTMLElement {
           updateCallback: "render",
           locales: ["es"],
         },
-      })
+      }),
     );
     const location = `${this.basePath}msr/MediaStreamRecorder.min.js`;
     globalThis.ESGlobalBridge.requestAvailability().load("msr", location);
     globalThis.addEventListener(
       "es-bridge-msr-loaded",
       this._msrLoaded.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     this.template = globalThis.document.createElement("template");
@@ -49,7 +49,7 @@ class SimpleLoginCamera extends HTMLElement {
     globalThis.document.addEventListener(
       "DOMContentLoaded",
       this.documentLoaded.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     if (!this.hasAttribute("record")) {
@@ -120,14 +120,14 @@ class SimpleLoginCamera extends HTMLElement {
     const type = blob.type.split("/").pop();
     this.MediaStreamRecorder.save(
       blob,
-      `my-camera-${new Date().toISOString().replace(/:|\./g, "-")}.${type}`
+      `my-camera-${new Date().toISOString().replace(/:|\./g, "-")}.${type}`,
     );
   }
 
   _cameraStream() {
     if (!navigator.mediaDevices.getUserMedia) {
       return Promise.reject(
-        new Error("getUserMedia is not implemented in this browser")
+        new Error("getUserMedia is not implemented in this browser"),
       );
     }
     return navigator.mediaDevices.getUserMedia({
@@ -178,7 +178,7 @@ class SimpleLoginCamera extends HTMLElement {
           detail: this,
           bubbles: true,
           composed: true,
-        })
+        }),
       );
     });
   }
@@ -192,7 +192,7 @@ class SimpleLoginCamera extends HTMLElement {
           this._addVideoAtributes();
           if (this.hasAttribute("record")) {
             this.MediaStreamRecorder = new MediaStreamRecorder(
-              this._video.srcObject
+              this._video.srcObject,
             );
             // this.MediaStreamRecorder.mimeType = 'video/webm';
             this.MediaStreamRecorder.ondataavailable =
@@ -204,7 +204,7 @@ class SimpleLoginCamera extends HTMLElement {
                 detail: this,
                 bubbles: true,
                 composed: true,
-              })
+              }),
             );
           }, 100);
           this._error.remove();
@@ -226,7 +226,7 @@ class SimpleLoginCamera extends HTMLElement {
           }
         }
       },
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 

@@ -19,7 +19,7 @@ import { LitElement, html, css } from "lit";
  */
 const postCardLines = new URL(
   `./lib/assets/postcard-lines.png`,
-  import.meta.url
+  import.meta.url,
 ).href;
 const entireCardBg = new URL(`./lib/assets/postcard-bg.jpg`, import.meta.url)
   .href;
@@ -37,11 +37,11 @@ export class PostCard extends LitElement {
     };
     this.photoSrc = new URL(
       `./lib/assets/postcard-photo-stock.jpg`,
-      import.meta.url
+      import.meta.url,
     ).href;
     this.stampSrc = new URL(
       `./lib/assets/postcard-stamp-stock.jpg`,
-      import.meta.url
+      import.meta.url,
     ).href;
     this.postMarkLocations = "insert - locations - here";
 
@@ -56,7 +56,7 @@ export class PostCard extends LitElement {
           updateCallback: "render",
           locales: ["es", "de", "fr", "it", "ja", "zh_CN"],
         },
-      })
+      }),
     );
 
     setTimeout(() => {

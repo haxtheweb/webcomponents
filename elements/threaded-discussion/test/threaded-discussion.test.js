@@ -5,9 +5,9 @@ import "../threaded-discussion.js";
 describe("threaded-discussion test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <threaded-discussion title="test-title"></threaded-discussion> `
-    );
+    element = await fixture(html`
+      <threaded-discussion title="test-title"></threaded-discussion>
+    `);
   });
 
   it("passes the a11y audit", async () => {

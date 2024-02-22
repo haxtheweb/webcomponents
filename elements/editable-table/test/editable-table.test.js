@@ -69,7 +69,7 @@ describe("editable-table test", () => {
             </tr>
           </tbody>
         </table>
-      </editable-table> `
+      </editable-table> `,
     );
   });
 

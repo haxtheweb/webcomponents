@@ -240,8 +240,8 @@ class ProgressDonut extends LrndesignPie {
             rx: "32%",
             ry: "32%",
           },
-          "ct-center-ellipse"
-        )
+          "ct-center-ellipse",
+        ),
       );
       data.group.append(
         new Chartist.Svg(
@@ -250,8 +250,8 @@ class ProgressDonut extends LrndesignPie {
             href: this.imageSrc,
             alt: this.imageAlt,
           },
-          "ct-center-image"
-        )
+          "ct-center-image",
+        ),
       );
     }
   }
@@ -266,7 +266,7 @@ class ProgressDonut extends LrndesignPie {
   get donutTotal() {
     return Math.max(
       this.donutData.reduce((sum, val) => sum + val),
-      this.total
+      this.total,
     );
   }
   get options() {

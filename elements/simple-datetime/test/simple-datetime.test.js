@@ -6,7 +6,7 @@ describe("simple-datetime test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html`<simple-datetime unix="" timestamp="445939200"></simple-datetime>`
+      html`<simple-datetime unix="" timestamp="445939200"></simple-datetime>`,
     );
   });
 

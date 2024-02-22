@@ -15,7 +15,7 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
  * @demo demo/index.html
  */
 class HAXCMSMinimalistTheme extends MinimalistTemplate(
-  HAXCMSPolymerElementTheme
+  HAXCMSPolymerElementTheme,
 ) {
   // render function
   static get template() {

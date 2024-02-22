@@ -66,12 +66,12 @@ class LrsBridge extends LitElement {
                     name: this.getUserName(),
                   },
                 },
-                options
+                options,
               ),
             },
           },
         },
-        "utf8"
+        "utf8",
       ),
     };
     try {

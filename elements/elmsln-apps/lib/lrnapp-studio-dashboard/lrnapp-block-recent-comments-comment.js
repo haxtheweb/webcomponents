@@ -5,7 +5,7 @@ import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 class LrnappBlockRecentCommentsComment extends mixinBehaviors(
   [IronResizableBehavior],
-  PolymerElement
+  PolymerElement,
 ) {
   static get template() {
     return html`
@@ -170,6 +170,6 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
 }
 customElements.define(
   LrnappBlockRecentCommentsComment.tag,
-  LrnappBlockRecentCommentsComment
+  LrnappBlockRecentCommentsComment,
 );
 export { LrnappBlockRecentCommentsComment };

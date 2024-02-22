@@ -66,7 +66,7 @@ class TwitterEmbedVanilla extends HTMLElement {
     }
     if (
       ["lang", "no-popups", "tweet-id", "data-width", "data-theme"].includes(
-        attr
+        attr,
       )
     ) {
       this.innerHTML = this.html;

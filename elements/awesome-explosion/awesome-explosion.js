@@ -70,7 +70,7 @@ class AwesomeExplosion extends LitElement {
     this.image = new URL("./assets/explode.gif", import.meta.url).href;
     this.sound = new URL(
       "./assets/273320__clagnut__fireworks.mp3",
-      import.meta.url
+      import.meta.url,
     ).href;
     this.size = "medium";
     this.color = "";
@@ -188,7 +188,7 @@ class AwesomeExplosion extends LitElement {
           cancelable: true,
           composed: true,
           detail: { message: "Sound stopped" },
-        })
+        }),
       );
     } else {
       this.stopped = false;
@@ -208,7 +208,7 @@ class AwesomeExplosion extends LitElement {
           cancelable: true,
           composed: true,
           detail: { message: "Sound played" },
-        })
+        }),
       );
     } else {
       this.playing = false;
@@ -228,7 +228,7 @@ class AwesomeExplosion extends LitElement {
           cancelable: true,
           composed: true,
           detail: { message: "Sound paused" },
-        })
+        }),
       );
     } else {
       this.paused = false;

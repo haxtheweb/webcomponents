@@ -100,6 +100,6 @@ class LrnappStudioSubmissionCritique extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionCritique.tag,
-  LrnappStudioSubmissionCritique
+  LrnappStudioSubmissionCritique,
 );
 export { LrnappStudioSubmissionCritique };

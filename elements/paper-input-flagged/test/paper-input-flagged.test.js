@@ -9,7 +9,7 @@ describe("paper-input-flagged test", () => {
       html`<paper-input-flagged
         value="Some content"
         label="URL"
-      ></paper-input-flagged> `
+      ></paper-input-flagged> `,
     );
   });
 

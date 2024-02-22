@@ -123,7 +123,7 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }
@@ -193,6 +193,6 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
 }
 customElements.define(
   LrnappStudioSubmissionEditVideo.tag,
-  LrnappStudioSubmissionEditVideo
+  LrnappStudioSubmissionEditVideo,
 );
 export { LrnappStudioSubmissionEditVideo };

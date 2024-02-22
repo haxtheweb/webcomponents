@@ -73,13 +73,13 @@ class I18NManager extends HTMLElement {
     globalThis.addEventListener(
       "i18n-manager-register-element",
       this.registerLocalizationEvent.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "languagechange",
       this.changeLanguageEvent.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   /**
@@ -220,7 +220,7 @@ class I18NManager extends HTMLElement {
           (response) => {
             if (response && response.json) return response.json();
             return false;
-          }
+          },
         );
       }
       return this.fetchTargets[fetchTarget];
@@ -292,7 +292,7 @@ class I18NManager extends HTMLElement {
             (response) => {
               if (response && response.json) return response.json();
               return false;
-            }
+            },
           );
           if (el.context) {
             // set values
@@ -329,7 +329,7 @@ class I18NManager extends HTMLElement {
           detail: {
             value: newValue,
           },
-        })
+        }),
       );
     }
     // we are NOT moving to the default from something

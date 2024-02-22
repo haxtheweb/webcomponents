@@ -116,7 +116,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     get setsInnerHTML() {
       let innerHTML = (this.fields || []).filter(
-        (field) => field.property === "innerHTML"
+        (field) => field.property === "innerHTML",
       );
       return innerHTML && innerHTML.length > 0;
     }
@@ -155,7 +155,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
 
@@ -183,8 +183,8 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           !val || !val[prop]
             ? false
             : val[prop].trim
-            ? val[prop].trim()
-            : val[prop];
+              ? val[prop].trim()
+              : val[prop];
 
       return rawVal && rawVal !== "" ? rawVal : false;
     }
@@ -211,7 +211,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
     /**
@@ -277,10 +277,10 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
  * @demo ./demo/buttons.html
  */
 class RichTextEditorPromptButton extends RichTextEditorPromptButtonBehaviors(
-  LitElement
+  LitElement,
 ) {}
 customElements.define(
   RichTextEditorPromptButton.tag,
-  RichTextEditorPromptButton
+  RichTextEditorPromptButton,
 );
 export { RichTextEditorPromptButton, RichTextEditorPromptButtonBehaviors };

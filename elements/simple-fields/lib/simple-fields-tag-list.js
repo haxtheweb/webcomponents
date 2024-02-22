@@ -148,7 +148,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
               accent-color="${tag.color}"
               @simple-tag-clicked="${this.removeTag}"
             ></simple-tag>
-          `
+          `,
         )}
       </slot>
     `;
@@ -299,7 +299,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
         cancelable: false,
         composed: false,
         detail: this,
-      })
+      }),
     );
   }
   /**
@@ -313,7 +313,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
   _onFocusout(e) {
@@ -345,12 +345,12 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
     globalThis.addEventListener(
       "simple-tag-dragstart",
       this._handleGlobalTagDrag.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
       "simple-tag-drop",
       this._handleGlobalTagDrop.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 

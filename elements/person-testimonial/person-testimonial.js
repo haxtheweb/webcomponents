@@ -212,7 +212,7 @@ class PersonTestimonial extends SimpleColors {
   static get haxProperties() {
     return new URL(
       "./lib/person-testimonial.haxProperties.json",
-      import.meta.url
+      import.meta.url,
     ).href;
   }
 }

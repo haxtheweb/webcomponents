@@ -5,9 +5,9 @@ import "../hax-bookmarklet.js";
 describe("hax-bookmarklet test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <hax-bookmarklet title="test-title"></hax-bookmarklet> `
-    );
+    element = await fixture(html`
+      <hax-bookmarklet title="test-title"></hax-bookmarklet>
+    `);
   });
 
   it("passes the a11y audit", async () => {

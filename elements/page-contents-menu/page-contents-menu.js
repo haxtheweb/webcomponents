@@ -20,7 +20,7 @@ class PageContentsMenu extends DDD {
           display: block;
           font-family: var(--ddd-font-navigation);
           font-weight: var(--ddd-font-navigation-light);
-          --page-contents-menu-link-color-focus: var(--ddd-theme-polaris-link);
+          --page-contents-menu-link-color-focus: var(--ddd-theme-default-link);
           --page-contents-menu-link: black;
           --page-contents-menu-link-font-size: var(--ddd-font-size-3xs);
           --page-contents-menu-link-font-size-active: var(--ddd-font-size-xxs);
@@ -65,8 +65,14 @@ class PageContentsMenu extends DDD {
         .header .label {
           align-items: center;
           display: inline-flex;
-          font-size: var(--page-contents-menu-heading-font-size, var(--ddd-font-size-4xs));
-          font-weight: var(--page-contents-menu-heading-font-weight, var(--ddd-font-navigation-bold));
+          font-size: var(
+            --page-contents-menu-heading-font-size,
+            var(--ddd-font-size-4xs)
+          );
+          font-weight: var(
+            --page-contents-menu-heading-font-weight,
+            var(--ddd-font-navigation-bold)
+          );
           padding: 0;
           margin: 0;
           line-height: 1;
@@ -104,7 +110,9 @@ class PageContentsMenu extends DDD {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-          transition: font 0.3s ease-in-out, border 0.1s ease-in-out;
+          transition:
+            font 0.3s ease-in-out,
+            border 0.1s ease-in-out;
           border-left: rgba(0, 0, 0, 0.1) 1px solid;
         }
         .link:not(.active):hover {
@@ -197,7 +205,7 @@ class PageContentsMenu extends DDD {
               >
                 <ol class="contents">
                   ${this.items.map((item, index) =>
-                    this.renderItem(item, index)
+                    this.renderItem(item, index),
                   )}
                 </ol>
               </simple-popover>
@@ -238,7 +246,7 @@ class PageContentsMenu extends DDD {
       e.stopImmediatePropagation();
       let objItem;
       objItem = this.contentContainer.querySelector(
-        "#" + this.items[parseInt(target.getAttribute("data-index"))].id
+        "#" + this.items[parseInt(target.getAttribute("data-index"))].id,
       );
       const isSafari = window.safari !== undefined;
       if (isSafari) {
@@ -429,7 +437,7 @@ class PageContentsMenu extends DDD {
                 this.shadowRoot.querySelector("simple-popover").target =
                   this.__toggleTarget;
               }, 0);
-            }
+            },
           );
           import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
         } else if (oldValue && !this[propName]) {
@@ -470,7 +478,7 @@ class PageContentsMenu extends DDD {
           item.setAttribute(
             "id",
             item.tagName.toLowerCase() +
-              item.getAttribute("resource").replace(/[^a-zA-Z0-9]/g, "")
+              item.getAttribute("resource").replace(/[^a-zA-Z0-9]/g, ""),
           );
         } else if (!item.id) {
           item.setAttribute("id", item.tagName.toLowerCase() + i);
@@ -523,7 +531,7 @@ class PageContentsMenu extends DDD {
         ) {
           try {
             let objItem = this.contentContainer.querySelector(
-              "#" + this.items[i].id
+              "#" + this.items[i].id,
             );
             if (objItem) {
               let itemTop = objItem.getBoundingClientRect().top - 100;
@@ -569,7 +577,7 @@ class PageContentsMenu extends DDD {
       ) {
         try {
           let objItem = this.contentContainer.querySelector(
-            "#" + this.items[0].id
+            "#" + this.items[0].id,
           );
           if (objItem) {
             // if we are ABOVE the 1st item, assume top; otherwise it's end

@@ -10,7 +10,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @element image-compare-slider
  */
 class ImageCompareSlider extends I18NMixin(
-  IntersectionObserverMixin(SchemaBehaviors(SimpleColors))
+  IntersectionObserverMixin(SchemaBehaviors(SimpleColors)),
 ) {
   /**
    * LitElement constructable styles enhancement

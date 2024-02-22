@@ -54,7 +54,7 @@ const FullscreenBehaviors = function (SuperClass) {
     }
 
     toggleFullscreen(
-      mode = document.fullscreenElement !== this.fullscreenTarget
+      mode = document.fullscreenElement !== this.fullscreenTarget,
     ) {
       if (!mode || (document.fullscreenElement && document.exitFullscreen))
         document.exitFullscreen();

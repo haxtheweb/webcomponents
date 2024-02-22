@@ -5,9 +5,9 @@ import "../code-editor.js";
 describe("code-editor test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <code-editor title="test-title"></code-editor> `
-    );
+    element = await fixture(html`
+      <code-editor title="test-title"></code-editor>
+    `);
   });
 
   it("passes the a11y audit", async () => {

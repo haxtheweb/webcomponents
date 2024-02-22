@@ -24,7 +24,7 @@ class ShadowStyle extends HTMLElement {
       console.error("Leave us..");
       console.warn("No, stay here. I'm in charge");
       console.error(
-        "[laying a hand on the web component] Do you feel in charge?"
+        "[laying a hand on the web component] Do you feel in charge?",
       );
       console.warn("..I've paid your APIs a small fortune.");
       console.error("And this gives you... power over me?");
@@ -32,7 +32,7 @@ class ShadowStyle extends HTMLElement {
       console.error("You APIs and web platform have been important, till now");
       console.warn("What are you..");
       console.error(
-        "I'm web standards' reckoning, here to end the ball of twine you've all been coding on."
+        "I'm web standards' reckoning, here to end the ball of twine you've all been coding on.",
       );
       console.warn("You .. you're evil.");
       console.error("I am nessecary evil");

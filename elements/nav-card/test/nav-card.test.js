@@ -77,7 +77,9 @@ describe("nav-card test", () => {
             >
           </nav-card-item>
         </div>
-        <p slot="footer">&lt;nav-card&gt;© The Pennsylvania State University</p>
+        <p slot="footer">
+          &lt;nav-card&gt;© The Pennsylvania State University
+        </p>
       </nav-card>
     `);
   });

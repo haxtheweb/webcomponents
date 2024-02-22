@@ -101,12 +101,12 @@ class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
 }
 customElements.define(
   LrnappStudioSubmissionMediaEditoverlay.tag,
-  LrnappStudioSubmissionMediaEditoverlay
+  LrnappStudioSubmissionMediaEditoverlay,
 );
 export { LrnappStudioSubmissionMediaEditoverlay };

@@ -5,9 +5,9 @@ import "../lrn-gitgraph.js";
 describe("lrn-gitgraph test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrn-gitgraph title="test-title"></lrn-gitgraph> `
-    );
+    element = await fixture(html`
+      <lrn-gitgraph title="test-title"></lrn-gitgraph>
+    `);
   });
 
   it("passes the a11y audit", async () => {

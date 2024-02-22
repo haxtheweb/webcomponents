@@ -80,7 +80,9 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
           width: 0px;
           opacity: 0;
           padding: 0;
-          transition: width ease-in-out 0.5s, opacity 0.5s ease-in-out 0s;
+          transition:
+            width ease-in-out 0.5s,
+            opacity 0.5s ease-in-out 0s;
         }
         :host([is-current-item]:not([full-display])) ::slotted(:focus) {
           width: 100px;
@@ -172,7 +174,7 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
       if (propName === "isCurrentItem" && this.focusableElement) {
         this.focusableElement.setAttribute(
           "tabindex",
-          this.isCurrentItem ? 0 : -1
+          this.isCurrentItem ? 0 : -1,
         );
       }
     });
@@ -192,7 +194,7 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
     if (this.focusableElement)
       this.focusableElement.setAttribute(
         "tabindex",
-        this.isCurrentItem ? 0 : -1
+        this.isCurrentItem ? 0 : -1,
       );
   }
 }

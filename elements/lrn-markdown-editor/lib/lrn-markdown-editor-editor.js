@@ -105,7 +105,7 @@ class LrnMarkdownEditorEditor extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });
@@ -120,7 +120,7 @@ class LrnMarkdownEditorEditor extends LitElement {
         cancelable: true,
         composed: true,
         detail: { content: this.content },
-      })
+      }),
     );
   }
 }

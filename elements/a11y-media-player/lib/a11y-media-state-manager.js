@@ -14,7 +14,7 @@ globalThis.A11yMediaStateManager.requestAvailability = () => {
     globalThis.A11yMediaStateManager.instance =
       globalThis.document.createElement("a11y-media-state-manager");
     globalThis.document.body.appendChild(
-      globalThis.A11yMediaStateManager.instance
+      globalThis.A11yMediaStateManager.instance,
     );
   }
   return globalThis.A11yMediaStateManager.instance;
@@ -108,7 +108,7 @@ class A11yMediaStateManager extends LitElement {
     let handleIntersect = (entries, observer) => {
       globalThis.A11yMediaStateManager.instance._handleIntersect(
         entries,
-        observer
+        observer,
       );
     };
     this._observer =
@@ -163,14 +163,14 @@ class A11yMediaStateManager extends LitElement {
     globalThis.addEventListener(
       "a11y-player-playing",
       this.__stickyManager.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     // listen for a player toggling fullscreen mode
     globalThis.addEventListener(
       "fullscreen-toggle",
       this._handleFullscreen.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     // listen for a players added to the page

@@ -626,11 +626,11 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return this.kbdToggled && this.kbdbutton.details
       ? this.kbdbutton.details
       : this.infoToggled &&
-        this.figures &&
-        this.figures[this.page] &&
-        this.figures[this.page].info
-      ? this.figures[this.page].info
-      : undefined;
+          this.figures &&
+          this.figures[this.page] &&
+          this.figures[this.page].info
+        ? this.figures[this.page].info
+        : undefined;
   }
   /**
    * default x of y text for toolbar
@@ -762,42 +762,42 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return !config
       ? ""
       : !config.toggleProp || !this[config.toggleProp]
-      ? html`
-          <button
-            .id="${config.id || undefined}"
-            class="${this._buttonClass(config)}"
-            @click="${(e) =>
-              this._toolbarButtonClick(
-                config.id,
-                e,
-                this._buttonDisabled(config)
-              )}"
-            controls="container"
-            ?disabled="${this._buttonDisabled(config)}"
-            ?hidden="${this._buttonHidden(config)}"
-          >
-            ${this._buttonInner(config)}
-          </button>
-          ${this._buttonTooltip(config, top)}
-        `
-      : html`
-          <button
-            .id="${config.id || undefined}"
-            aria-pressed="${this[config.toggleProp] ? "true" : "false"}"
-            class="${this._buttonClass(config)}"
-            @click="${(e) =>
-              this._toolbarButtonClick(
-                config.id,
-                e,
-                this._buttonDisabled(config)
-              )}"
-            controls="container"
-            ?disabled="${this._buttonDisabled(config)}"
-            ?hidden="${this._buttonHidden(config)}"
-          >
-            ${this._buttonInner(config)} ${this._buttonTooltip(config)}
-          </button>
-        `;
+        ? html`
+            <button
+              .id="${config.id || undefined}"
+              class="${this._buttonClass(config)}"
+              @click="${(e) =>
+                this._toolbarButtonClick(
+                  config.id,
+                  e,
+                  this._buttonDisabled(config),
+                )}"
+              controls="container"
+              ?disabled="${this._buttonDisabled(config)}"
+              ?hidden="${this._buttonHidden(config)}"
+            >
+              ${this._buttonInner(config)}
+            </button>
+            ${this._buttonTooltip(config, top)}
+          `
+        : html`
+            <button
+              .id="${config.id || undefined}"
+              aria-pressed="${this[config.toggleProp] ? "true" : "false"}"
+              class="${this._buttonClass(config)}"
+              @click="${(e) =>
+                this._toolbarButtonClick(
+                  config.id,
+                  e,
+                  this._buttonDisabled(config),
+                )}"
+              controls="container"
+              ?disabled="${this._buttonDisabled(config)}"
+              ?hidden="${this._buttonHidden(config)}"
+            >
+              ${this._buttonInner(config)} ${this._buttonTooltip(config)}
+            </button>
+          `;
   }
   _buttonDisabled(config) {
     return (
@@ -882,7 +882,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             eventType: e,
             viewer: this,
           },
-        })
+        }),
       );
       if (buttonId === "homebutton") this.resetZoom();
       if (buttonId === "panupbutton") this.pan(0, 0.2);

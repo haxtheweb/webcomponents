@@ -97,7 +97,7 @@ test("links have anchors before opening square bracket", function () {
   writer.close("a");
   return assert.equal(
     writer.asString(),
-    '<a id="start"></a>[Hello](http://example.com)'
+    '<a id="start"></a>[Hello](http://example.com)',
   );
 });
 
@@ -109,7 +109,7 @@ test("can generate images", function () {
   });
   return assert.equal(
     writer.asString(),
-    "![Alt Text](http://example.com/image.jpg)"
+    "![Alt Text](http://example.com/image.jpg)",
   );
 });
 
@@ -187,7 +187,7 @@ test("can generate a nested ordered list with correct numbering", function () {
   writer.close("ol");
   return assert.equal(
     writer.asString(),
-    "1. Outer One\n\t1. Nested One\n\t2. Nested Two\n2. Outer Two\n\n"
+    "1. Outer One\n\t1. Nested One\n\t2. Nested Two\n2. Outer Two\n\n",
   );
 });
 
@@ -214,7 +214,7 @@ test("can generate a multi-level nested ordered list", function () {
   writer.close("ol");
   return assert.equal(
     writer.asString(),
-    "1. Outer One\n\t1. Nested One\n\t\t1. Inner One\n\n"
+    "1. Outer One\n\t1. Nested One\n\t\t1. Inner One\n\n",
   );
 });
 
@@ -261,7 +261,7 @@ test("can generate a nested unordered list", function () {
   writer.close("ul");
   return assert.equal(
     writer.asString(),
-    "- Outer One\n\t- Nested One\n\t- Nested Two\n- Outer Two\n\n"
+    "- Outer One\n\t- Nested One\n\t- Nested Two\n- Outer Two\n\n",
   );
 });
 
@@ -280,7 +280,7 @@ test("can nest inline elements", function () {
   writer.close("p");
   return assert.equal(
     writer.asString(),
-    "Lorem __ipsum *dolor* sit__ amet\n\n"
+    "Lorem __ipsum *dolor* sit__ amet\n\n",
   );
 });
 
@@ -304,7 +304,7 @@ test("can emphasise list text", function () {
   writer.close("ol");
   return assert.equal(
     writer.asString(),
-    "1. Hello __Strong__ World\n2. Hello *Emphasis* World\n\n"
+    "1. Hello __Strong__ World\n2. Hello *Emphasis* World\n\n",
   );
 });
 
@@ -326,6 +326,6 @@ test("generates correct spacing between paragraphs and lists", function () {
   writer.close("p");
   return assert.equal(
     writer.asString(),
-    "Hello World\n\n- First Item\n- Second Item\n\nHello World\n\n"
+    "Hello World\n\n- First Item\n- Second Item\n\nHello World\n\n",
   );
 });

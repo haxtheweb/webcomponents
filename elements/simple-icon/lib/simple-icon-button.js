@@ -33,8 +33,8 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
         .aria-pressed="${this.toggles || this.toggled
           ? "true"
           : this.toggles
-          ? "false"
-          : undefined}"
+            ? "false"
+            : undefined}"
         controls="${this.controls}"
         part="button"
         ?disabled="${this.disabled}"

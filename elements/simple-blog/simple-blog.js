@@ -34,8 +34,13 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           -webkit-font-smoothing: antialiased;
           font-size: 14px;
           background-color: #fafafa;
-          font-family: "Open Sans", "MundoSans", helvetica neue, Arial,
-            Helvetica, sans-serif;
+          font-family:
+            "Open Sans",
+            "MundoSans",
+            helvetica neue,
+            Arial,
+            Helvetica,
+            sans-serif;
           margin: 0;
           padding: 0;
           text-rendering: optimizeLegibility;
@@ -234,7 +239,7 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         let active = this.shadowRoot
           .querySelector("simple-blog-listing")
           .shadowRoot.querySelector(
-            'simple-blog-overview[item-id="' + prevActiveItemId + '"]'
+            'simple-blog-overview[item-id="' + prevActiveItemId + '"]',
           );
         if (active) {
           active.scrollIntoView(true);

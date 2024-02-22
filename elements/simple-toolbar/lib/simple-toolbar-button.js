@@ -228,7 +228,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       return this._defaultOrToggled(
         this.label,
         this.toggledLabel,
-        this.isToggled
+        this.isToggled,
       );
     }
 
@@ -242,7 +242,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       return this._defaultOrToggled(
         this.icon,
         this.toggledIcon,
-        this.isToggled
+        this.isToggled,
       );
     }
     /**
@@ -256,7 +256,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         this._defaultOrToggled(
           this.tooltip,
           this.toggledTootip,
-          this.isToggled
+          this.isToggled,
         ) || this.currentLabel
       );
     }
@@ -283,7 +283,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
     /**
@@ -296,7 +296,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
       super.disconnectedCallback();
     }
@@ -375,7 +375,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
 
@@ -393,7 +393,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
 
@@ -544,43 +544,45 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             </button>
             ${this.tooltipTemplate}`
         : this.toggles
-        ? html` <button
-              id="button"
-              aria-pressed="${this.isToggled ? "true" : "false"}"
-              aria-describedby="${!!this.describedby && this.describedby !== ""
-                ? this.describedby
-                : undefined}"
-              class="simple-toolbar-button"
-              ?disabled="${this.disabled}"
-              ?controls="${this.controls}"
-              @click="${this._handleClick}"
-              @keypress="${this._handleKeys}"
-              @blur="${this._handleBlur}"
-              @focus="${this._handleFocus}"
-              part="button"
-              tabindex="${this.isCurrentItem ? 0 : -1}"
-            >
-              ${this.buttonInnerTemplate}
-            </button>
-            ${this.tooltipTemplate}`
-        : html` <button
-              id="button"
-              aria-describedby="${!!this.describedby && this.describedby !== ""
-                ? this.describedby
-                : undefined}"
-              class="simple-toolbar-button"
-              ?disabled="${this.disabled}"
-              ?controls="${this.controls}"
-              @click="${this._handleClick}"
-              @keypress="${this._handleKeys}"
-              @blur="${this._handleBlur}"
-              @focus="${this._handleFocus}"
-              part="button"
-              tabindex="${this.isCurrentItem ? 0 : -1}"
-            >
-              ${this.buttonInnerTemplate}
-            </button>
-            ${this.tooltipTemplate}`;
+          ? html` <button
+                id="button"
+                aria-pressed="${this.isToggled ? "true" : "false"}"
+                aria-describedby="${!!this.describedby &&
+                this.describedby !== ""
+                  ? this.describedby
+                  : undefined}"
+                class="simple-toolbar-button"
+                ?disabled="${this.disabled}"
+                ?controls="${this.controls}"
+                @click="${this._handleClick}"
+                @keypress="${this._handleKeys}"
+                @blur="${this._handleBlur}"
+                @focus="${this._handleFocus}"
+                part="button"
+                tabindex="${this.isCurrentItem ? 0 : -1}"
+              >
+                ${this.buttonInnerTemplate}
+              </button>
+              ${this.tooltipTemplate}`
+          : html` <button
+                id="button"
+                aria-describedby="${!!this.describedby &&
+                this.describedby !== ""
+                  ? this.describedby
+                  : undefined}"
+                class="simple-toolbar-button"
+                ?disabled="${this.disabled}"
+                ?controls="${this.controls}"
+                @click="${this._handleClick}"
+                @keypress="${this._handleKeys}"
+                @blur="${this._handleBlur}"
+                @focus="${this._handleFocus}"
+                part="button"
+                tabindex="${this.isCurrentItem ? 0 : -1}"
+              >
+                ${this.buttonInnerTemplate}
+              </button>
+              ${this.tooltipTemplate}`;
     }
     render() {
       return html`${this.buttonTemplate}`;

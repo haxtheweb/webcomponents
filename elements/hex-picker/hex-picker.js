@@ -280,7 +280,7 @@ class HexPicker extends LitElement {
 
   _fieldSetChange(event) {
     let colorValueLabel = this.shadowRoot.querySelector(
-      `#${event.target.id}_out`
+      `#${event.target.id}_out`,
     );
     let colorSquare = this.shadowRoot.querySelector(".color-square");
     let inputLabel = this.shadowRoot.querySelector("input");
@@ -313,7 +313,7 @@ class HexPicker extends LitElement {
         cancelable: false,
         composed: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -346,7 +346,7 @@ class HexPicker extends LitElement {
         this.shadowRoot.querySelector("input").value = this.value;
         if (this.largeDisplay) {
           this.shadowRoot.querySelector(
-            ".large-display"
+            ".large-display",
           ).style.backgroundColor = this.value;
         }
         let rgb = this._hexToRgb(this.value);

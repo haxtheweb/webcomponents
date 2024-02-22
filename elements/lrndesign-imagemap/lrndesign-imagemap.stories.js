@@ -75,7 +75,7 @@ export const LrndesignImagemapStory = () => {
     styles = `<!-- Use knobs to styles -->\n<style>${text(
       "hotspot CSS",
       css,
-      "style"
+      "style",
     )}</style>\n`,
     map = utils.makeElement(
       LrndesignImagemap,
@@ -97,7 +97,7 @@ export const LrndesignImagemapStory = () => {
       The 12-ounce is 138 calories.
     </lrndesign-imagemap-hotspot>`,
       }),
-      true
+      true,
     ),
     demo = utils.getDemo(styles + map);
   return demo;

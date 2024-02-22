@@ -7,7 +7,7 @@ import { mtzMarkedControlLineBehaviorImpl } from "./mtz-marked-control-line-beha
 import { mtzMarkedControlBehavior } from "./mtz-marked-control-behavior.js";
 
 class MtzMarkedControlGenericLine extends mtzMarkedControlBehavior(
-  mtzMarkedControlLineBehaviorImpl(PolymerElement)
+  mtzMarkedControlLineBehaviorImpl(PolymerElement),
 ) {
   static get template() {
     return html`
@@ -49,6 +49,6 @@ class MtzMarkedControlGenericLine extends mtzMarkedControlBehavior(
 }
 customElements.define(
   MtzMarkedControlGenericLine.tag,
-  MtzMarkedControlGenericLine
+  MtzMarkedControlGenericLine,
 );
 export { MtzMarkedControlGenericLine };

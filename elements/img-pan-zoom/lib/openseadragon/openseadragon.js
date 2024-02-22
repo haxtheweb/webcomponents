@@ -1421,8 +1421,8 @@ function OpenSeadragon(options) {
           doc == doc.window
             ? doc
             : doc.nodeType === 9
-            ? doc.defaultView || doc.parentWindow
-            : false;
+              ? doc.defaultView || doc.parentWindow
+              : false;
 
         return new $.Point(
           boundingRect.left +
@@ -1430,7 +1430,7 @@ function OpenSeadragon(options) {
             (docElement.clientLeft || 0),
           boundingRect.top +
             (win.pageYOffset || docElement.scrollTop) -
-            (docElement.clientTop || 0)
+            (docElement.clientTop || 0),
         );
       },
 
@@ -1627,14 +1627,14 @@ function OpenSeadragon(options) {
           $.getPageScroll = function () {
             return new $.Point(
               globalThis.document.body.scrollLeft,
-              globalThis.document.body.scrollTop
+              globalThis.document.body.scrollTop,
             );
           };
         } else if (docElement.scrollLeft || docElement.scrollTop) {
           $.getPageScroll = function () {
             return new $.Point(
               globalThis.document.documentElement.scrollLeft,
-              globalThis.document.documentElement.scrollTop
+              globalThis.document.documentElement.scrollTop,
             );
           };
         } else {
@@ -1715,14 +1715,14 @@ function OpenSeadragon(options) {
           $.getWindowSize = function () {
             return new $.Point(
               globalThis.document.documentElement.clientWidth,
-              globalThis.document.documentElement.clientHeight
+              globalThis.document.documentElement.clientHeight,
             );
           };
         } else if (body.clientWidth || body.clientHeight) {
           $.getWindowSize = function () {
             return new $.Point(
               globalThis.document.body.clientWidth,
-              globalThis.document.body.clientHeight
+              globalThis.document.body.clientHeight,
             );
           };
         } else {
@@ -2247,7 +2247,7 @@ function OpenSeadragon(options) {
               $.console.log(
                 "AJAX request returned %d: %s",
                 request.status,
-                url
+                url,
               );
 
               if ($.isFunction(onError)) {
@@ -2508,7 +2508,7 @@ function OpenSeadragon(options) {
         // eslint-disable-next-line no-use-before-define
         return !!FILEFORMATS[extension.toLowerCase()];
       },
-    }
+    },
   );
 
   //TODO: $.console is often used inside a try/catch block which generally
@@ -2579,8 +2579,8 @@ function OpenSeadragon(options) {
           $.Browser.version = parseFloat(
             ua.substring(
               ua.indexOf("MSIE") + 5,
-              ua.indexOf(";", ua.indexOf("MSIE"))
-            )
+              ua.indexOf(";", ua.indexOf("MSIE")),
+            ),
           );
         }
         break;
@@ -2589,7 +2589,7 @@ function OpenSeadragon(options) {
           if (ua.indexOf("Firefox") >= 0) {
             $.Browser.vendor = $.BROWSERS.FIREFOX;
             $.Browser.version = parseFloat(
-              ua.substring(ua.indexOf("Firefox") + 8)
+              ua.substring(ua.indexOf("Firefox") + 8),
             );
           } else if (ua.indexOf("Safari") >= 0) {
             $.Browser.vendor =
@@ -2597,8 +2597,8 @@ function OpenSeadragon(options) {
             $.Browser.version = parseFloat(
               ua.substring(
                 ua.substring(0, ua.indexOf("Safari")).lastIndexOf("/") + 1,
-                ua.indexOf("Safari")
-              )
+                ua.indexOf("Safari"),
+              ),
             );
           } else {
             regex = new RegExp("Trident/.*rv:([0-9]{1,}[.0-9]{0,})");
@@ -2635,7 +2635,7 @@ function OpenSeadragon(options) {
           $.console.error(
             "Ignoring malformed URL parameter: %s=%s",
             key,
-            value
+            value,
           );
         }
       }
@@ -2915,7 +2915,7 @@ function OpenSeadragon(options) {
   };
   fullScreenApi.cancelFullScreen = function () {
     $.console.error(
-      "cancelFullScreen is deprecated. Use exitFullScreen instead."
+      "cancelFullScreen is deprecated. Use exitFullScreen instead.",
     );
     fullScreenApi.exitFullScreen();
   };
@@ -4133,7 +4133,7 @@ function OpenSeadragon(options) {
         //   use cos()/sin() to extract the x/y velocity components.
         gPoint.direction = Math.atan2(
           gPoint.currentPos.y - trackPoint.lastPos.y,
-          gPoint.currentPos.x - trackPoint.lastPos.x
+          gPoint.currentPos.x - trackPoint.lastPos.x,
         );
         // speed = distance / elapsed time
         distance = trackPoint.lastPos.distanceTo(gPoint.currentPos);
@@ -4199,8 +4199,8 @@ function OpenSeadragon(options) {
     "onwheel" in globalThis.document.createElement("div")
       ? "wheel" // Modern browsers support 'wheel'
       : globalThis.document.onmousewheel !== undefined
-      ? "mousewheel" // Webkit and IE support at least 'mousewheel'
-      : "DOMMouseScroll"; // Assume old Firefox
+        ? "mousewheel" // Webkit and IE support at least 'mousewheel'
+        : "DOMMouseScroll"; // Assume old Firefox
 
   /**
    * Detect legacy mouse capture support.
@@ -4245,7 +4245,7 @@ function OpenSeadragon(options) {
       "pointerdown",
       "pointerup",
       "pointermove",
-      "pointercancel"
+      "pointercancel",
     );
     $.MouseTracker.unprefixedPointerEvents = true;
     if (navigator.maxTouchPoints) {
@@ -4266,7 +4266,7 @@ function OpenSeadragon(options) {
       "MSPointerDown",
       "MSPointerUp",
       "MSPointerMove",
-      "MSPointerCancel"
+      "MSPointerCancel",
     );
     $.MouseTracker.unprefixedPointerEvents = false;
     if (navigator.msMaxTouchPoints) {
@@ -4295,7 +4295,7 @@ function OpenSeadragon(options) {
         "touchstart",
         "touchend",
         "touchmove",
-        "touchcancel"
+        "touchcancel",
       );
     }
     if ("ongesturestart" in window) {
@@ -4519,13 +4519,13 @@ function OpenSeadragon(options) {
           $.MouseTracker.captureElement,
           "mousemove",
           delegate.mousemovecaptured,
-          true
+          true,
         );
         $.removeEvent(
           $.MouseTracker.captureElement,
           "mouseup",
           delegate.mouseupcaptured,
-          true
+          true,
         );
         $.removeEvent(
           $.MouseTracker.captureElement,
@@ -4533,25 +4533,25 @@ function OpenSeadragon(options) {
             ? "pointermove"
             : "MSPointerMove",
           delegate.pointermovecaptured,
-          true
+          true,
         );
         $.removeEvent(
           $.MouseTracker.captureElement,
           $.MouseTracker.unprefixedPointerEvents ? "pointerup" : "MSPointerUp",
           delegate.pointerupcaptured,
-          true
+          true,
         );
         $.removeEvent(
           $.MouseTracker.captureElement,
           "touchmove",
           delegate.touchmovecaptured,
-          true
+          true,
         );
         $.removeEvent(
           $.MouseTracker.captureElement,
           "touchend",
           delegate.touchendcaptured,
-          true
+          true,
         );
 
         delegate.activePointersLists[i].captureCount = 0;
@@ -4641,7 +4641,7 @@ function OpenSeadragon(options) {
       };
     } else {
       throw new Error(
-        "MouseTracker.getCaptureEventParams: Unknown pointer type."
+        "MouseTracker.getCaptureEventParams: Unknown pointer type.",
       );
     }
   }
@@ -4663,7 +4663,7 @@ function OpenSeadragon(options) {
       } else {
         eventParams = getCaptureEventParams(
           tracker,
-          $.MouseTracker.havePointerEvents ? "pointerevent" : pointerType
+          $.MouseTracker.havePointerEvents ? "pointerevent" : pointerType,
         );
         // We emulate mouse capture by hanging listeners on the document object.
         //    (Note we listen on the capture phase so the captured handlers will get called first)
@@ -4673,20 +4673,20 @@ function OpenSeadragon(options) {
             globalThis.top,
             eventParams.upName,
             eventParams.upHandler,
-            true
+            true,
           );
         }
         $.addEvent(
           $.MouseTracker.captureElement,
           eventParams.upName,
           eventParams.upHandler,
-          true
+          true,
         );
         $.addEvent(
           $.MouseTracker.captureElement,
           eventParams.moveName,
           eventParams.moveHandler,
-          true
+          true,
         );
       }
     }
@@ -4709,7 +4709,7 @@ function OpenSeadragon(options) {
       } else {
         eventParams = getCaptureEventParams(
           tracker,
-          $.MouseTracker.havePointerEvents ? "pointerevent" : pointerType
+          $.MouseTracker.havePointerEvents ? "pointerevent" : pointerType,
         );
         // We emulate mouse capture by hanging listeners on the document object.
         //    (Note we listen on the capture phase so the captured handlers will get called first)
@@ -4719,20 +4719,20 @@ function OpenSeadragon(options) {
             globalThis.top,
             eventParams.upName,
             eventParams.upHandler,
-            true
+            true,
           );
         }
         $.removeEvent(
           $.MouseTracker.captureElement,
           eventParams.moveName,
           eventParams.moveHandler,
-          true
+          true,
         );
         $.removeEvent(
           $.MouseTracker.captureElement,
           eventParams.upName,
           eventParams.upHandler,
-          true
+          true,
         );
       }
     }
@@ -5177,7 +5177,7 @@ function OpenSeadragon(options) {
         tracker,
         event,
         [gPoint],
-        getStandardizedButton(event.button)
+        getStandardizedButton(event.button),
       )
     ) {
       $.stopEvent(event);
@@ -5237,7 +5237,7 @@ function OpenSeadragon(options) {
         tracker,
         event,
         [gPoint],
-        getStandardizedButton(event.button)
+        getStandardizedButton(event.button),
       )
     ) {
       releasePointer(tracker, "mouse");
@@ -5328,7 +5328,7 @@ function OpenSeadragon(options) {
 
     if (pointsList.getLength() > event.touches.length - touchCount) {
       $.console.warn(
-        "Tracked touch contact count doesn't match event.touches.length. Removing all tracked touch pointers."
+        "Tracked touch contact count doesn't match event.touches.length. Removing all tracked touch pointers.",
       );
       abortContacts(tracker, event, pointsList);
     }
@@ -5821,7 +5821,7 @@ function OpenSeadragon(options) {
           pointerType: curGPoint.type,
           position: getPointRelativeToAbsolute(
             curGPoint.currentPos,
-            tracker.element
+            tracker.element,
           ),
           buttons: pointsList.buttons,
           pointers: tracker.getActivePointerCount(),
@@ -5979,7 +5979,7 @@ function OpenSeadragon(options) {
     // Some pointers may steal control from another pointer without firing the appropriate release events
     // e.g. Touching a screen while click-dragging with certain mice.
     var otherPointsLists = tracker.getActivePointersListsExceptType(
-      gPoints[0].type
+      gPoints[0].type,
     );
     for (i = 0; i < otherPointsLists.length; i++) {
       //If another pointer has contact, simulate the release
@@ -5995,7 +5995,7 @@ function OpenSeadragon(options) {
           pointerType: gPoints[0].type,
           position: getPointRelativeToAbsolute(
             gPoints[0].currentPos,
-            tracker.element
+            tracker.element,
           ),
           button: buttonChanged,
           buttons: pointsList.buttons,
@@ -6056,7 +6056,7 @@ function OpenSeadragon(options) {
             pointerType: curGPoint.type,
             position: getPointRelativeToAbsolute(
               curGPoint.contactPos,
-              tracker.element
+              tracker.element,
             ),
             buttons: pointsList.buttons,
             isTouchEvent: curGPoint.type === "touch",
@@ -6074,12 +6074,12 @@ function OpenSeadragon(options) {
           delegate.pinchGPoints = pointsList.asArray();
           delegate.lastPinchDist = delegate.currentPinchDist =
             delegate.pinchGPoints[0].currentPos.distanceTo(
-              delegate.pinchGPoints[1].currentPos
+              delegate.pinchGPoints[1].currentPos,
             );
           delegate.lastPinchCenter = delegate.currentPinchCenter =
             getCenterPoint(
               delegate.pinchGPoints[0].currentPos,
-              delegate.pinchGPoints[1].currentPos
+              delegate.pinchGPoints[1].currentPos,
             );
         }
       }
@@ -6174,7 +6174,7 @@ function OpenSeadragon(options) {
           pointerType: gPoints[0].type,
           position: getPointRelativeToAbsolute(
             gPoints[0].currentPos,
-            tracker.element
+            tracker.element,
           ),
           button: buttonChanged,
           buttons: pointsList.buttons,
@@ -6237,7 +6237,7 @@ function OpenSeadragon(options) {
           ) {
             $.MouseTracker.gesturePointVelocityTracker.removePoint(
               tracker,
-              updateGPoint
+              updateGPoint,
             );
           }
 
@@ -6249,7 +6249,7 @@ function OpenSeadragon(options) {
                 pointerType: updateGPoint.type,
                 position: getPointRelativeToAbsolute(
                   releasePoint,
-                  tracker.element
+                  tracker.element,
                 ),
                 buttons: pointsList.buttons,
                 insideElementPressed: updateGPoint.insideElementPressed,
@@ -6274,7 +6274,7 @@ function OpenSeadragon(options) {
                 pointerType: updateGPoint.type,
                 position: getPointRelativeToAbsolute(
                   updateGPoint.currentPos,
-                  tracker.element
+                  tracker.element,
                 ),
                 speed: updateGPoint.speed,
                 direction: updateGPoint.direction,
@@ -6307,7 +6307,7 @@ function OpenSeadragon(options) {
                   pointerType: updateGPoint.type,
                   position: getPointRelativeToAbsolute(
                     updateGPoint.currentPos,
-                    tracker.element
+                    tracker.element,
                   ),
                   quick: quick,
                   shift: event.shiftKey,
@@ -6343,7 +6343,7 @@ function OpenSeadragon(options) {
                       pointerType: updateGPoint.type,
                       position: getPointRelativeToAbsolute(
                         updateGPoint.currentPos,
-                        tracker.element
+                        tracker.element,
                       ),
                       shift: event.shiftKey,
                       isTouchEvent: updateGPoint.type === "touch",
@@ -6365,12 +6365,12 @@ function OpenSeadragon(options) {
               delegate.pinchGPoints = pointsList.asArray();
               delegate.lastPinchDist = delegate.currentPinchDist =
                 delegate.pinchGPoints[0].currentPos.distanceTo(
-                  delegate.pinchGPoints[1].currentPos
+                  delegate.pinchGPoints[1].currentPos,
                 );
               delegate.lastPinchCenter = delegate.currentPinchCenter =
                 getCenterPoint(
                   delegate.pinchGPoints[0].currentPos,
-                  delegate.pinchGPoints[1].currentPos
+                  delegate.pinchGPoints[1].currentPos,
                 );
             }
           }
@@ -6384,7 +6384,7 @@ function OpenSeadragon(options) {
               pointerType: updateGPoint.type,
               position: getPointRelativeToAbsolute(
                 releasePoint,
-                tracker.element
+                tracker.element,
               ),
               buttons: pointsList.buttons,
               insideElementPressed: updateGPoint.insideElementPressed,
@@ -6471,7 +6471,7 @@ function OpenSeadragon(options) {
           pointerType: gPoints[0].type,
           position: getPointRelativeToAbsolute(
             gPoints[0].currentPos,
-            tracker.element
+            tracker.element,
           ),
           buttons: pointsList.buttons,
           isTouchEvent: gPoints[0].type === "touch",
@@ -6492,7 +6492,7 @@ function OpenSeadragon(options) {
           pointerType: updateGPoint.type,
           position: getPointRelativeToAbsolute(
             updateGPoint.currentPos,
-            tracker.element
+            tracker.element,
           ),
           buttons: pointsList.buttons,
           isTouchEvent: updateGPoint.type === "touch",
@@ -6514,7 +6514,7 @@ function OpenSeadragon(options) {
           pointerType: updateGPoint.type,
           position: getPointRelativeToAbsolute(
             updateGPoint.currentPos,
-            tracker.element
+            tracker.element,
           ),
           buttons: pointsList.buttons,
           delta: delta,
@@ -6540,9 +6540,9 @@ function OpenSeadragon(options) {
           position: getPointRelativeToAbsolute(
             getCenterPoint(
               gPointArray[0].currentPos,
-              gPointArray[1].currentPos
+              gPointArray[1].currentPos,
             ),
-            tracker.element
+            tracker.element,
           ),
           buttons: pointsList.buttons,
           isTouchEvent: gPointArray[0].type === "touch",
@@ -6558,7 +6558,7 @@ function OpenSeadragon(options) {
       // Pinch
       if (tracker.pinchHandler && gPoints[0].type === "touch") {
         delta = delegate.pinchGPoints[0].currentPos.distanceTo(
-          delegate.pinchGPoints[1].currentPos
+          delegate.pinchGPoints[1].currentPos,
         );
         if (delta != delegate.currentPinchDist) {
           delegate.lastPinchDist = delegate.currentPinchDist;
@@ -6566,7 +6566,7 @@ function OpenSeadragon(options) {
           delegate.lastPinchCenter = delegate.currentPinchCenter;
           delegate.currentPinchCenter = getCenterPoint(
             delegate.pinchGPoints[0].currentPos,
-            delegate.pinchGPoints[1].currentPos
+            delegate.pinchGPoints[1].currentPos,
           );
           propagate = tracker.pinchHandler({
             eventSource: tracker,
@@ -6574,11 +6574,11 @@ function OpenSeadragon(options) {
             gesturePoints: delegate.pinchGPoints,
             lastCenter: getPointRelativeToAbsolute(
               delegate.lastPinchCenter,
-              tracker.element
+              tracker.element,
             ),
             center: getPointRelativeToAbsolute(
               delegate.currentPinchCenter,
-              tracker.element
+              tracker.element,
             ),
             lastDistance: delegate.lastPinchDist,
             distance: delegate.currentPinchDist,
@@ -6739,7 +6739,7 @@ function OpenSeadragon(options) {
       $.console.error(
         "Passing an anchor directly into the OpenSeadragon.Control constructor is deprecated; " +
           "please use an options object instead.  " +
-          "Support for this deprecated variant is scheduled for removal in December 2013"
+          "Support for this deprecated variant is scheduled for removal in December 2013",
       );
       options = { anchor: options };
     }
@@ -6925,7 +6925,7 @@ function OpenSeadragon(options) {
         container: $.makeNeutralElement("div"),
         controls: [],
       },
-      options
+      options,
     );
 
     // Disable the form's submit; otherwise button clicks and return keys
@@ -7423,12 +7423,12 @@ function OpenSeadragon(options) {
         profiler: null,
       },
       $.DEFAULT_SETTINGS,
-      options
+      options,
     );
 
     if (typeof this.hash === "undefined") {
       throw new Error(
-        "A hash must be defined, either by specifying options.id or options.hash."
+        "A hash must be defined, either by specifying options.id or options.hash.",
       );
     }
     if (typeof THIS[this.hash] !== "undefined") {
@@ -7469,7 +7469,7 @@ function OpenSeadragon(options) {
       var msg = $.getString(
         "Errors.OpenFailed",
         event.eventSource,
-        event.message
+        event.message,
       );
       _this._showMessage(msg);
     });
@@ -7596,7 +7596,7 @@ function OpenSeadragon(options) {
       if (_this.viewport) {
         _this.viewport._setContentBounds(
           _this.world.getHomeBounds(),
-          _this.world.getContentFactor()
+          _this.world.getContentFactor(),
         );
       }
     });
@@ -7629,7 +7629,7 @@ function OpenSeadragon(options) {
 
     this.viewport._setContentBounds(
       this.world.getHomeBounds(),
-      this.world.getContentFactor()
+      this.world.getContentFactor(),
     );
 
     // Create the image loader
@@ -7741,7 +7741,7 @@ function OpenSeadragon(options) {
       // deprecated
       openDzi: function (dzi) {
         $.console.error(
-          "[Viewer.openDzi] this function is deprecated; use Viewer.open() instead."
+          "[Viewer.openDzi] this function is deprecated; use Viewer.open() instead.",
         );
         return this.open(dzi);
       },
@@ -7749,7 +7749,7 @@ function OpenSeadragon(options) {
       // deprecated
       openTileSource: function (tileSource) {
         $.console.error(
-          "[Viewer.openTileSource] this function is deprecated; use Viewer.open() instead."
+          "[Viewer.openTileSource] this function is deprecated; use Viewer.open() instead.",
         );
         return this.open(tileSource);
       },
@@ -7794,7 +7794,7 @@ function OpenSeadragon(options) {
           this.tileSources = tileSources;
           this._sequenceIndex = Math.max(
             0,
-            Math.min(this.tileSources.length - 1, this.initialPage)
+            Math.min(this.tileSources.length - 1, this.initialPage),
           );
           if (this.tileSources.length) {
             this.open(this.tileSources[this._sequenceIndex]);
@@ -7843,7 +7843,7 @@ function OpenSeadragon(options) {
                 for (var i = 0; i < _this.overlays.length; i++) {
                   _this.currentOverlays[i] = getOverlayObject(
                     _this,
-                    _this.overlays[i]
+                    _this.overlays[i],
                   );
                 }
               }
@@ -7891,7 +7891,7 @@ function OpenSeadragon(options) {
 
           if (options.index !== undefined) {
             $.console.error(
-              "[Viewer.open] setting indexes here is not supported; use addTiledImage instead"
+              "[Viewer.open] setting indexes here is not supported; use addTiledImage instead",
             );
             delete options.index;
           }
@@ -8296,7 +8296,7 @@ function OpenSeadragon(options) {
           $.removeClass(this.element, "fullpage");
           THIS[this.hash].prevElementParent.insertBefore(
             this.element,
-            THIS[this.hash].prevNextSibling
+            THIS[this.hash].prevNextSibling,
           );
 
           //If we've got a toolbar, we need to enable the user to use css to
@@ -8310,7 +8310,7 @@ function OpenSeadragon(options) {
 
             this.toolbar.parentNode.insertBefore(
               this.toolbar.element,
-              this.toolbar.nextSibling
+              this.toolbar.nextSibling,
             );
             delete this.toolbar.parentNode;
             delete this.toolbar.nextSibling;
@@ -8423,12 +8423,12 @@ function OpenSeadragon(options) {
               $.removeEvent(
                 document,
                 $.fullScreenEventName,
-                onFullScreenChange
+                onFullScreenChange,
               );
               $.removeEvent(
                 document,
                 $.fullScreenErrorEventName,
-                onFullScreenChange
+                onFullScreenChange,
               );
 
               _this.setFullPage(false);
@@ -8563,12 +8563,12 @@ function OpenSeadragon(options) {
         $.console.assert(options, "[Viewer.addTiledImage] options is required");
         $.console.assert(
           options.tileSource,
-          "[Viewer.addTiledImage] options.tileSource is required"
+          "[Viewer.addTiledImage] options.tileSource is required",
         );
         $.console.assert(
           !options.replace ||
             (options.index > -1 && options.index < this.world.getItemCount()),
-          "[Viewer.addTiledImage] if options.replace is used, options.index must be a valid index in Viewer.world"
+          "[Viewer.addTiledImage] if options.replace is used, options.index must be a valid index in Viewer.world",
         );
 
         var _this = this;
@@ -8612,7 +8612,7 @@ function OpenSeadragon(options) {
           options.ajaxHeaders = $.extend(
             {},
             this.ajaxHeaders,
-            options.ajaxHeaders
+            options.ajaxHeaders,
           );
         }
 
@@ -8690,7 +8690,7 @@ function OpenSeadragon(options) {
 
             if (queueItem.options.replace) {
               var newIndex = _this.world.getIndexOfItem(
-                queueItem.options.replaceItem
+                queueItem.options.replaceItem,
               );
               if (newIndex != -1) {
                 queueItem.options.index = newIndex;
@@ -8785,7 +8785,7 @@ function OpenSeadragon(options) {
 
             // add everybody at the front of the queue that's ready to go
             processReadyItems();
-          }
+          },
         );
       },
 
@@ -8803,11 +8803,11 @@ function OpenSeadragon(options) {
       addSimpleImage: function (options) {
         $.console.assert(
           options,
-          "[Viewer.addSimpleImage] options is required"
+          "[Viewer.addSimpleImage] options is required",
         );
         $.console.assert(
           options.url,
-          "[Viewer.addSimpleImage] options.url is required"
+          "[Viewer.addSimpleImage] options.url is required",
         );
 
         var opts = $.extend({}, options, {
@@ -8825,7 +8825,7 @@ function OpenSeadragon(options) {
         var _this = this;
 
         $.console.error(
-          "[Viewer.addLayer] this function is deprecated; use Viewer.addTiledImage() instead."
+          "[Viewer.addLayer] this function is deprecated; use Viewer.addTiledImage() instead.",
         );
 
         var optionsClone = $.extend({}, options, {
@@ -8847,7 +8847,7 @@ function OpenSeadragon(options) {
       // deprecated
       getLayerAtLevel: function (level) {
         $.console.error(
-          "[Viewer.getLayerAtLevel] this function is deprecated; use World.getItemAt() instead."
+          "[Viewer.getLayerAtLevel] this function is deprecated; use World.getItemAt() instead.",
         );
         return this.world.getItemAt(level);
       },
@@ -8855,7 +8855,7 @@ function OpenSeadragon(options) {
       // deprecated
       getLevelOfLayer: function (drawer) {
         $.console.error(
-          "[Viewer.getLevelOfLayer] this function is deprecated; use World.getIndexOfItem() instead."
+          "[Viewer.getLevelOfLayer] this function is deprecated; use World.getIndexOfItem() instead.",
         );
         return this.world.getIndexOfItem(drawer);
       },
@@ -8863,7 +8863,7 @@ function OpenSeadragon(options) {
       // deprecated
       getLayersCount: function () {
         $.console.error(
-          "[Viewer.getLayersCount] this function is deprecated; use World.getItemCount() instead."
+          "[Viewer.getLayersCount] this function is deprecated; use World.getItemCount() instead.",
         );
         return this.world.getItemCount();
       },
@@ -8871,7 +8871,7 @@ function OpenSeadragon(options) {
       // deprecated
       setLayerLevel: function (drawer, level) {
         $.console.error(
-          "[Viewer.setLayerLevel] this function is deprecated; use World.setItemIndex() instead."
+          "[Viewer.setLayerLevel] this function is deprecated; use World.setItemIndex() instead.",
         );
         return this.world.setItemIndex(drawer, level);
       },
@@ -8879,7 +8879,7 @@ function OpenSeadragon(options) {
       // deprecated
       removeLayer: function (drawer) {
         $.console.error(
-          "[Viewer.removeLayer] this function is deprecated; use World.removeItem() instead."
+          "[Viewer.removeLayer] this function is deprecated; use World.removeItem() instead.",
         );
         return this.world.removeItem(drawer);
       },
@@ -9035,7 +9035,7 @@ function OpenSeadragon(options) {
                 onExit: endZoomingHandler,
                 onFocus: onFocusHandler,
                 onBlur: onBlurHandler,
-              }))
+              })),
             );
 
             buttons.push(
@@ -9057,7 +9057,7 @@ function OpenSeadragon(options) {
                 onExit: endZoomingHandler,
                 onFocus: onFocusHandler,
                 onBlur: onBlurHandler,
-              }))
+              })),
             );
           }
 
@@ -9075,7 +9075,7 @@ function OpenSeadragon(options) {
                 onRelease: onHomeHandler,
                 onFocus: onFocusHandler,
                 onBlur: onBlurHandler,
-              }))
+              })),
             );
           }
 
@@ -9095,7 +9095,7 @@ function OpenSeadragon(options) {
                 onRelease: onFullScreenHandler,
                 onFocus: onFocusHandler,
                 onBlur: onBlurHandler,
-              }))
+              })),
             );
           }
 
@@ -9111,17 +9111,17 @@ function OpenSeadragon(options) {
                 srcRest: resolveUrl(this.prefixUrl, navImages.rotateleft.REST),
                 srcGroup: resolveUrl(
                   this.prefixUrl,
-                  navImages.rotateleft.GROUP
+                  navImages.rotateleft.GROUP,
                 ),
                 srcHover: resolveUrl(
                   this.prefixUrl,
-                  navImages.rotateleft.HOVER
+                  navImages.rotateleft.HOVER,
                 ),
                 srcDown: resolveUrl(this.prefixUrl, navImages.rotateleft.DOWN),
                 onRelease: onRotateLeftHandler,
                 onFocus: onFocusHandler,
                 onBlur: onBlurHandler,
-              }))
+              })),
             );
 
             buttons.push(
@@ -9135,17 +9135,17 @@ function OpenSeadragon(options) {
                 srcRest: resolveUrl(this.prefixUrl, navImages.rotateright.REST),
                 srcGroup: resolveUrl(
                   this.prefixUrl,
-                  navImages.rotateright.GROUP
+                  navImages.rotateright.GROUP,
                 ),
                 srcHover: resolveUrl(
                   this.prefixUrl,
-                  navImages.rotateright.HOVER
+                  navImages.rotateright.HOVER,
                 ),
                 srcDown: resolveUrl(this.prefixUrl, navImages.rotateright.DOWN),
                 onRelease: onRotateRightHandler,
                 onFocus: onFocusHandler,
                 onBlur: onBlurHandler,
-              }))
+              })),
             );
           }
 
@@ -9163,7 +9163,7 @@ function OpenSeadragon(options) {
                 onRelease: onFlipHandler,
                 onFocus: onFocusHandler,
                 onBlur: onBlurHandler,
-              }))
+              })),
             );
           }
 
@@ -9517,7 +9517,7 @@ function OpenSeadragon(options) {
         for (i = 0; i < length; i++) {
           this.currentOverlays[i].drawHTML(
             this.overlaysContainer,
-            this.viewport
+            this.viewport,
           );
         }
       },
@@ -9573,11 +9573,11 @@ function OpenSeadragon(options) {
           }
         } else {
           $.console.warn(
-            'Attempting to display a reference strip while "sequenceMode" is off.'
+            'Attempting to display a reference strip while "sequenceMode" is off.',
           );
         }
       },
-    }
+    },
   );
 
   /**
@@ -9591,7 +9591,7 @@ function OpenSeadragon(options) {
 
     return new $.Point(
       oElement.clientWidth === 0 ? 1 : oElement.clientWidth,
-      oElement.clientHeight === 0 ? 1 : oElement.clientHeight
+      oElement.clientHeight === 0 ? 1 : oElement.clientHeight,
     );
   }
 
@@ -9604,7 +9604,7 @@ function OpenSeadragon(options) {
     tileSource,
     imgOptions,
     successCallback,
-    failCallback
+    failCallback,
   ) {
     var _this = viewer;
 
@@ -9725,7 +9725,7 @@ function OpenSeadragon(options) {
       element.id = id;
       $.addClass(
         element,
-        overlay.className ? overlay.className : "openseadragon-overlay"
+        overlay.className ? overlay.className : "openseadragon-overlay",
       );
     }
 
@@ -9737,7 +9737,7 @@ function OpenSeadragon(options) {
       var y = overlay.y;
       if (overlay.px !== undefined) {
         var rect = viewer.viewport.imageToViewportRectangle(
-          new $.Rect(overlay.px, overlay.py, width || 0, height || 0)
+          new $.Rect(overlay.px, overlay.py, width || 0, height || 0),
         );
         x = rect.x;
         y = rect.y;
@@ -9891,8 +9891,8 @@ function OpenSeadragon(options) {
             } else {
               this.viewport.panBy(
                 this.viewport.deltaPointsFromPixels(
-                  new $.Point(0, -this.pixelsPerArrowPress)
-                )
+                  new $.Point(0, -this.pixelsPerArrowPress),
+                ),
               );
             }
             this.viewport.applyConstraints();
@@ -9905,8 +9905,8 @@ function OpenSeadragon(options) {
             } else {
               this.viewport.panBy(
                 this.viewport.deltaPointsFromPixels(
-                  new $.Point(0, this.pixelsPerArrowPress)
-                )
+                  new $.Point(0, this.pixelsPerArrowPress),
+                ),
               );
             }
             this.viewport.applyConstraints();
@@ -9916,8 +9916,8 @@ function OpenSeadragon(options) {
           if (!canvasKeyDownEventArgs.preventHorizontalPan) {
             this.viewport.panBy(
               this.viewport.deltaPointsFromPixels(
-                new $.Point(-this.pixelsPerArrowPress, 0)
-              )
+                new $.Point(-this.pixelsPerArrowPress, 0),
+              ),
             );
             this.viewport.applyConstraints();
           }
@@ -9926,8 +9926,8 @@ function OpenSeadragon(options) {
           if (!canvasKeyDownEventArgs.preventHorizontalPan) {
             this.viewport.panBy(
               this.viewport.deltaPointsFromPixels(
-                new $.Point(this.pixelsPerArrowPress, 0)
-              )
+                new $.Point(this.pixelsPerArrowPress, 0),
+              ),
             );
             this.viewport.applyConstraints();
           }
@@ -9978,7 +9978,7 @@ function OpenSeadragon(options) {
               this.viewport.zoomBy(1.1);
             } else {
               this.viewport.panBy(
-                this.viewport.deltaPointsFromPixels(new $.Point(0, -40))
+                this.viewport.deltaPointsFromPixels(new $.Point(0, -40)),
               );
             }
             this.viewport.applyConstraints();
@@ -9991,7 +9991,7 @@ function OpenSeadragon(options) {
               this.viewport.zoomBy(0.9);
             } else {
               this.viewport.panBy(
-                this.viewport.deltaPointsFromPixels(new $.Point(0, 40))
+                this.viewport.deltaPointsFromPixels(new $.Point(0, 40)),
               );
             }
             this.viewport.applyConstraints();
@@ -10000,7 +10000,7 @@ function OpenSeadragon(options) {
         case 97: //a
           if (!canvasKeyPressEventArgs.preventHorizontalPan) {
             this.viewport.panBy(
-              this.viewport.deltaPointsFromPixels(new $.Point(-40, 0))
+              this.viewport.deltaPointsFromPixels(new $.Point(-40, 0)),
             );
             this.viewport.applyConstraints();
           }
@@ -10008,7 +10008,7 @@ function OpenSeadragon(options) {
         case 100: //d
           if (!canvasKeyPressEventArgs.preventHorizontalPan) {
             this.viewport.panBy(
-              this.viewport.deltaPointsFromPixels(new $.Point(40, 0))
+              this.viewport.deltaPointsFromPixels(new $.Point(40, 0)),
             );
             this.viewport.applyConstraints();
           }
@@ -10018,15 +10018,15 @@ function OpenSeadragon(options) {
             this.viewport.setRotation(
               $.positiveModulo(
                 this.viewport.degrees - this.rotationIncrement,
-                360
-              )
+                360,
+              ),
             );
           } else {
             this.viewport.setRotation(
               $.positiveModulo(
                 this.viewport.degrees + this.rotationIncrement,
-                360
-              )
+                360,
+              ),
             );
           }
           this.viewport.applyConstraints();
@@ -10036,15 +10036,15 @@ function OpenSeadragon(options) {
             this.viewport.setRotation(
               $.positiveModulo(
                 this.viewport.degrees + this.rotationIncrement,
-                360
-              )
+                360,
+              ),
             );
           } else {
             this.viewport.setRotation(
               $.positiveModulo(
                 this.viewport.degrees - this.rotationIncrement,
-                360
-              )
+                360,
+              ),
             );
           }
           this.viewport.applyConstraints();
@@ -10111,7 +10111,7 @@ function OpenSeadragon(options) {
           event.shift ? 1.0 / this.zoomPerClick : this.zoomPerClick,
           gestureSettings.zoomToRefPoint
             ? this.viewport.pointFromPixel(event.position, true)
-            : null
+            : null,
         );
         this.viewport.applyConstraints();
       }
@@ -10152,7 +10152,7 @@ function OpenSeadragon(options) {
           event.shift ? 1.0 / this.zoomPerClick : this.zoomPerClick,
           gestureSettings.zoomToRefPoint
             ? this.viewport.pointFromPixel(event.position, true)
-            : null
+            : null,
         );
         this.viewport.applyConstraints();
       }
@@ -10227,7 +10227,7 @@ function OpenSeadragon(options) {
 
       this.viewport.panBy(
         this.viewport.deltaPointsFromPixels(event.delta.negate()),
-        gestureSettings.flickEnabled && !this.constrainDuringPan
+        gestureSettings.flickEnabled && !this.constrainDuringPan,
       );
     }
   }
@@ -10254,10 +10254,10 @@ function OpenSeadragon(options) {
             Math.sin(event.direction);
         }
         var center = this.viewport.pixelFromPoint(
-          this.viewport.getCenter(true)
+          this.viewport.getCenter(true),
         );
         var target = this.viewport.pointFromPixel(
-          new $.Point(center.x - amplitudeX, center.y - amplitudeY)
+          new $.Point(center.x - amplitudeX, center.y - amplitudeY),
         );
         this.viewport.panTo(target, false);
       }
@@ -10478,7 +10478,7 @@ function OpenSeadragon(options) {
         this.viewport.zoomBy(
           event.distance / event.lastDistance,
           centerPt,
-          true
+          true,
         );
         if (gestureSettings.zoomToRefPoint) {
           this.viewport.panBy(panByPt, true);
@@ -10491,14 +10491,14 @@ function OpenSeadragon(options) {
           event.gesturePoints[0].currentPos.y -
             event.gesturePoints[1].currentPos.y,
           event.gesturePoints[0].currentPos.x -
-            event.gesturePoints[1].currentPos.x
+            event.gesturePoints[1].currentPos.x,
         );
         var angle2 = Math.atan2(
           event.gesturePoints[0].lastPos.y - event.gesturePoints[1].lastPos.y,
-          event.gesturePoints[0].lastPos.x - event.gesturePoints[1].lastPos.x
+          event.gesturePoints[0].lastPos.x - event.gesturePoints[1].lastPos.x,
         );
         this.viewport.setRotation(
-          this.viewport.getRotation() + (angle1 - angle2) * (180 / Math.PI)
+          this.viewport.getRotation() + (angle1 - angle2) * (180 / Math.PI),
         );
       }
     }
@@ -10557,7 +10557,7 @@ function OpenSeadragon(options) {
             factor,
             gestureSettings.zoomToRefPoint
               ? this.viewport.pointFromPixel(event.position, true)
-              : null
+              : null,
           );
           this.viewport.applyConstraints();
         }
@@ -10897,12 +10897,12 @@ function OpenSeadragon(options) {
       if (this.viewport.flipped) {
         currRotation = $.positiveModulo(
           currRotation + this.rotationIncrement,
-          360
+          360,
         );
       } else {
         currRotation = $.positiveModulo(
           currRotation - this.rotationIncrement,
-          360
+          360,
         );
       }
       this.viewport.setRotation(currRotation);
@@ -10916,12 +10916,12 @@ function OpenSeadragon(options) {
       if (this.viewport.flipped) {
         currRotation = $.positiveModulo(
           currRotation - this.rotationIncrement,
-          360
+          360,
         );
       } else {
         currRotation = $.positiveModulo(
           currRotation + this.rotationIncrement,
-          360
+          360,
         );
       }
       this.viewport.setRotation(currRotation);
@@ -11069,7 +11069,7 @@ function OpenSeadragon(options) {
         opacity: options.opacity,
         borderColor: options.borderColor,
         displayRegionColor: options.displayRegionColor,
-      }
+      },
     );
 
     options.minPixelRatio = this.minPixelRatio = viewer.minPixelRatio;
@@ -11082,7 +11082,7 @@ function OpenSeadragon(options) {
     this.fudge = new $.Point(1, 1);
     this.totalBorderWidths = new $.Point(
       this.borderWidth * 2,
-      this.borderWidth * 2
+      this.borderWidth * 2,
     ).minus(this.fudge);
 
     if (options.controlOptions.anchor != $.ControlAnchor.NONE) {
@@ -11225,7 +11225,7 @@ function OpenSeadragon(options) {
         if (this.viewport) {
           var containerSize = new $.Point(
             this.container.clientWidth === 0 ? 1 : this.container.clientWidth,
-            this.container.clientHeight === 0 ? 1 : this.container.clientHeight
+            this.container.clientHeight === 0 ? 1 : this.container.clientHeight,
           );
 
           if (!containerSize.equals(this.oldContainerSize)) {
@@ -11268,7 +11268,7 @@ function OpenSeadragon(options) {
         this.viewport.setFlip(state);
 
         this.setDisplayTransform(
-          this.viewer.viewport.getFlip() ? "scale(-1,1)" : "scale(1,1)"
+          this.viewer.viewport.getFlip() ? "scale(-1,1)" : "scale(1,1)",
         );
         return this;
       },
@@ -11301,7 +11301,7 @@ function OpenSeadragon(options) {
             newHeight = viewerSize.y * this.sizeRatio;
           } else {
             newWidth = Math.sqrt(
-              this.elementArea * (viewerSize.x / viewerSize.y)
+              this.elementArea * (viewerSize.x / viewerSize.y),
             );
             newHeight = this.elementArea / newWidth;
           }
@@ -11320,7 +11320,7 @@ function OpenSeadragon(options) {
           bounds = viewport.getBoundsNoRotate(true);
           topleft = this.viewport.pixelFromPointNoRotate(
             bounds.getTopLeft(),
-            false
+            false,
           );
           bottomright = this.viewport
             .pixelFromPointNoRotate(bounds.getBottomRight(), false)
@@ -11371,7 +11371,7 @@ function OpenSeadragon(options) {
             original.addHandler("opacity-change", matchOpacity);
             original.addHandler(
               "composite-operation-change",
-              matchCompositeOperation
+              matchCompositeOperation,
             );
           },
         });
@@ -11411,7 +11411,7 @@ function OpenSeadragon(options) {
       _matchCompositeOperation: function (myItem, theirItem) {
         myItem.setCompositeOperation(theirItem.compositeOperation);
       },
-    }
+    },
   );
 
   /**
@@ -11517,7 +11517,7 @@ function OpenSeadragon(options) {
       }
 
       this.viewer.viewport.panBy(
-        this.viewport.deltaPointsFromPixels(event.delta)
+        this.viewport.deltaPointsFromPixels(event.delta),
       );
       if (this.viewer.constrainDuringPan) {
         this.viewer.viewport.applyConstraints();
@@ -11702,7 +11702,7 @@ function OpenSeadragon(options) {
 
         container[props[i]] = value;
       },
-    }
+    },
   );
 })(OpenSeadragon);
 
@@ -11838,7 +11838,7 @@ function OpenSeadragon(options) {
      */
     distanceTo: function (point) {
       return Math.sqrt(
-        Math.pow(this.x - point.x, 2) + Math.pow(this.y - point.y, 2)
+        Math.pow(this.x - point.x, 2) + Math.pow(this.y - point.y, 2),
       );
     },
 
@@ -12033,7 +12033,7 @@ function OpenSeadragon(options) {
     tileSize,
     tileOverlap,
     minLevel,
-    maxLevel
+    maxLevel,
   ) {
     var _this = this;
 
@@ -12166,10 +12166,10 @@ function OpenSeadragon(options) {
         undefined !== options.maxLevel && null !== options.maxLevel
           ? options.maxLevel
           : options.width && options.height
-          ? Math.ceil(
-              Math.log(Math.max(options.width, options.height)) / Math.log(2)
-            )
-          : 0;
+            ? Math.ceil(
+                Math.log(Math.max(options.width, options.height)) / Math.log(2),
+              )
+            : 0;
       if (this.success && $.isFunction(this.success)) {
         this.success(this);
       }
@@ -12181,7 +12181,7 @@ function OpenSeadragon(options) {
     getTileSize: function (level) {
       $.console.error(
         "[TileSource.getTileSize] is deprecated. " +
-          "Use TileSource.getTileWidth() and TileSource.getTileHeight() instead"
+          "Use TileSource.getTileWidth() and TileSource.getTileHeight() instead",
       );
       return this._tileWidth;
     },
@@ -12289,7 +12289,7 @@ function OpenSeadragon(options) {
         point.y <= 1 / this.aspectRatio;
       $.console.assert(
         validPoint,
-        "[TileSource.getTileAtPoint] must be called with a valid point."
+        "[TileSource.getTileAtPoint] must be called with a valid point.",
       );
 
       var widthScaled = this.dimensions.x * this.getLevelScale(level);
@@ -12696,7 +12696,7 @@ function OpenSeadragon(options) {
     fileFormat,
     displayRects,
     minLevel,
-    maxLevel
+    maxLevel,
   ) {
     var i, rect, level, options;
 
@@ -12788,7 +12788,7 @@ function OpenSeadragon(options) {
         if (url && !options.tilesUrl) {
           options.tilesUrl = url.replace(
             /([^\/]+?)(\.(dzi|xml|js)?(\?[^\/]*)?)?\/?$/,
-            "$1_files/"
+            "$1_files/",
           );
 
           if (url.search(/\.(dzi|xml|js)\?/) != -1) {
@@ -12873,7 +12873,7 @@ function OpenSeadragon(options) {
 
         return false;
       },
-    }
+    },
   );
 
   /**
@@ -12923,8 +12923,8 @@ function OpenSeadragon(options) {
           throw new Error(
             $.getString(
               "Errors.ImageFormat",
-              configuration.Image.Format.toUpperCase()
-            )
+              configuration.Image.Format.toUpperCase(),
+            ),
           );
         }
 
@@ -13013,8 +13013,8 @@ function OpenSeadragon(options) {
           parseInt(rectData.Width, 10),
           parseInt(rectData.Height, 10),
           parseInt(rectData.MinLevel, 10),
-          parseInt(rectData.MaxLevel, 10)
-        )
+          parseInt(rectData.MaxLevel, 10),
+        ),
       );
     }
 
@@ -13031,7 +13031,7 @@ function OpenSeadragon(options) {
         fileFormat: fileFormat /* fileFormat */,
         displayRects: displayRects /* displayRects */,
       },
-      configuration
+      configuration,
     );
   }
 })(OpenSeadragon);
@@ -13163,14 +13163,14 @@ function OpenSeadragon(options) {
       this.levels = options.levels;
     } else {
       $.console.error(
-        "Nothing in the info.json to construct image pyramids from"
+        "Nothing in the info.json to construct image pyramids from",
       );
     }
 
     if (!options.maxLevel && !this.emulateLegacyImagePyramid) {
       if (!this.scale_factors) {
         options.maxLevel = Number(
-          Math.ceil(Math.log(Math.max(this.width, this.height), 2))
+          Math.ceil(Math.log(Math.max(this.width, this.height), 2)),
         );
       } else {
         var maxScaleFactor = Math.max.apply(null, this.scale_factors);
@@ -13211,7 +13211,7 @@ function OpenSeadragon(options) {
         } else if (
           data.profile &&
           data.profile.indexOf(
-            "http://library.stanford.edu/iiif/image-api/compliance.html"
+            "http://library.stanford.edu/iiif/image-api/compliance.html",
           ) === 0
         ) {
           return true;
@@ -13269,7 +13269,7 @@ function OpenSeadragon(options) {
                 if (
                   typeof context[i] === "string" &&
                   (/^http:\/\/iiif\.io\/api\/image\/[1-3]\/context\.json$/.test(
-                    context[i]
+                    context[i],
                   ) ||
                     context[i] ===
                       "http://library.stanford.edu/iiif/image-api/1.1/context.json")
@@ -13292,7 +13292,7 @@ function OpenSeadragon(options) {
                 break;
               default:
                 $.console.error(
-                  "Data has a @context property which contains no known IIIF context URI."
+                  "Data has a @context property which contains no known IIIF context URI.",
                 );
             }
           }
@@ -13521,7 +13521,7 @@ function OpenSeadragon(options) {
         canBeTiled: canBeTiled,
         constructLevels: constructLevels,
       },
-    }
+    },
   );
 
   /**
@@ -13766,7 +13766,7 @@ function OpenSeadragon(options) {
       getTileUrl: function (level, x, y) {
         return this.tilesUrl + (level - 8) + "/" + x + "/" + y + ".png";
       },
-    }
+    },
   );
 })(OpenSeadragon);
 
@@ -13900,7 +13900,7 @@ function OpenSeadragon(options) {
 
         return this.tilesUrl + level + "/" + x + "/" + (yTiles - y) + ".png";
       },
-    }
+    },
   );
 })(OpenSeadragon);
 
@@ -13979,8 +13979,8 @@ function OpenSeadragon(options) {
         this._getGridSize(
           currentImageSize.x,
           currentImageSize.y,
-          options.tileSize
-        )
+          options.tileSize,
+        ),
       );
     }
     options.imageSizes.reverse();
@@ -14066,7 +14066,7 @@ function OpenSeadragon(options) {
           ".jpg"
         );
       },
-    }
+    },
   );
 })(OpenSeadragon);
 
@@ -14256,7 +14256,7 @@ function OpenSeadragon(options) {
         }
         return url;
       },
-    }
+    },
   );
 
   /**
@@ -14282,7 +14282,7 @@ function OpenSeadragon(options) {
       } else {
         $.console.error(
           "Unsupported image format: %s",
-          file.url ? file.url : "<no URL>"
+          file.url ? file.url : "<no URL>",
         );
       }
     }
@@ -14422,7 +14422,7 @@ function OpenSeadragon(options) {
         ajaxWithCredentials: false,
         useCanvas: true,
       },
-      options
+      options,
     );
     $.TileSource.apply(this, [options]);
   };
@@ -14474,13 +14474,13 @@ function OpenSeadragon(options) {
           /* IE8 fix since it has no naturalWidth and naturalHeight */
           _this.width = Object.prototype.hasOwnProperty.call(
             image,
-            "naturalWidth"
+            "naturalWidth",
           )
             ? image.naturalWidth
             : image.width;
           _this.height = Object.prototype.hasOwnProperty.call(
             image,
-            "naturalHeight"
+            "naturalHeight",
           )
             ? image.naturalHeight
             : image.height;
@@ -14573,13 +14573,13 @@ function OpenSeadragon(options) {
             /* IE8 fix since it has no naturalWidth and naturalHeight */
             width: Object.prototype.hasOwnProperty.call(
               this._image,
-              "naturalWidth"
+              "naturalWidth",
             )
               ? this._image.naturalWidth
               : this._image.width,
             height: Object.prototype.hasOwnProperty.call(
               this._image,
-              "naturalHeight"
+              "naturalHeight",
             )
               ? this._image.naturalHeight
               : this._image.height,
@@ -14595,13 +14595,13 @@ function OpenSeadragon(options) {
         /* IE8 fix since it has no naturalWidth and naturalHeight */
         var currentWidth = Object.prototype.hasOwnProperty.call(
           this._image,
-          "naturalWidth"
+          "naturalWidth",
         )
           ? this._image.naturalWidth
           : this._image.width;
         var currentHeight = Object.prototype.hasOwnProperty.call(
           this._image,
-          "naturalHeight"
+          "naturalHeight",
         )
           ? this._image.naturalHeight
           : this._image.height;
@@ -14646,7 +14646,7 @@ function OpenSeadragon(options) {
         }
         return levels;
       },
-    }
+    },
   );
 })(OpenSeadragon);
 
@@ -14806,7 +14806,7 @@ function OpenSeadragon(options) {
         onFocus: null,
         onBlur: null,
       },
-      options
+      options,
     );
 
     /**
@@ -15088,7 +15088,7 @@ function OpenSeadragon(options) {
         $.setElementOpacity(this.element, 1.0, true);
         this.notifyGroupEnter();
       },
-    }
+    },
   );
 
   function scheduleFade(button) {
@@ -15260,7 +15260,7 @@ function OpenSeadragon(options) {
         clickDistThreshold: $.DEFAULT_SETTINGS.clickDistThreshold,
         labelText: "",
       },
-      options
+      options,
     );
 
     // copy the button elements  TODO: Why?
@@ -15476,7 +15476,7 @@ function OpenSeadragon(options) {
       topLeft.y,
       width,
       height,
-      (radians / Math.PI) * 180
+      (radians / Math.PI) * 180,
     );
   };
 
@@ -15520,7 +15520,7 @@ function OpenSeadragon(options) {
     getBottomRight: function () {
       return new $.Point(this.x + this.width, this.y + this.height).rotate(
         this.degrees,
-        this.getTopLeft()
+        this.getTopLeft(),
       );
     },
 
@@ -15534,7 +15534,7 @@ function OpenSeadragon(options) {
     getTopRight: function () {
       return new $.Point(this.x + this.width, this.y).rotate(
         this.degrees,
-        this.getTopLeft()
+        this.getTopLeft(),
       );
     },
 
@@ -15548,7 +15548,7 @@ function OpenSeadragon(options) {
     getBottomLeft: function () {
       return new $.Point(this.x, this.y + this.height).rotate(
         this.degrees,
-        this.getTopLeft()
+        this.getTopLeft(),
       );
     },
 
@@ -15561,7 +15561,7 @@ function OpenSeadragon(options) {
     getCenter: function () {
       return new $.Point(
         this.x + this.width / 2.0,
-        this.y + this.height / 2.0
+        this.y + this.height / 2.0,
       ).rotate(this.degrees, this.getTopLeft());
     },
 
@@ -15606,7 +15606,7 @@ function OpenSeadragon(options) {
         this.y * factor,
         this.width * factor,
         this.height * factor,
-        this.degrees
+        this.degrees,
       );
     },
 
@@ -15622,7 +15622,7 @@ function OpenSeadragon(options) {
         this.y + delta.y,
         this.width,
         this.height,
-        this.degrees
+        this.degrees,
       );
     },
 
@@ -15640,11 +15640,11 @@ function OpenSeadragon(options) {
       var top = Math.min(thisBoundingBox.y, otherBoundingBox.y);
       var right = Math.max(
         thisBoundingBox.x + thisBoundingBox.width,
-        otherBoundingBox.x + otherBoundingBox.width
+        otherBoundingBox.x + otherBoundingBox.width,
       );
       var bottom = Math.max(
         thisBoundingBox.y + thisBoundingBox.height,
-        otherBoundingBox.y + otherBoundingBox.height
+        otherBoundingBox.y + otherBoundingBox.height,
       );
 
       return new $.Rect(left, top, right - left, bottom - top);
@@ -15713,7 +15713,7 @@ function OpenSeadragon(options) {
             thisSegment[0],
             thisSegment[1],
             rectSegment[0],
-            rectSegment[1]
+            rectSegment[1],
           );
           if (intersect) {
             intersectionPoints.push(intersect);
@@ -15821,7 +15821,7 @@ function OpenSeadragon(options) {
         newTopLeft.y,
         this.width,
         this.height,
-        (radians / Math.PI) * 180
+        (radians / Math.PI) * 180,
       );
     },
 
@@ -16014,7 +16014,7 @@ function OpenSeadragon(options) {
         mouseNavEnabled: false,
         showNavigationControl: false,
         showSequenceControl: false,
-      }
+      },
     );
 
     $.extend(this, options);
@@ -16134,7 +16134,7 @@ function OpenSeadragon(options) {
     loadPanels(
       this,
       this.scroll == "vertical" ? viewerSize.y : viewerSize.x,
-      0
+      0,
     );
     this.setFocus(0);
   };
@@ -16149,7 +16149,7 @@ function OpenSeadragon(options) {
        */
       setFocus: function (page) {
         var element = this.element.querySelector(
-            "#" + this.element.id + "-" + page
+            "#" + this.element.id + "-" + page,
           ),
           viewerSize = $.getElementSize(this.viewer.canvas),
           scrollWidth = Number(this.element.style.width.replace("px", "")),
@@ -16218,7 +16218,7 @@ function OpenSeadragon(options) {
           this.element.parentNode.removeChild(this.element);
         }
       },
-    }
+    },
   );
 
   /**
@@ -16723,12 +16723,12 @@ function OpenSeadragon(options) {
     $.console.assert(
       typeof options.springStiffness === "number" &&
         options.springStiffness !== 0,
-      "[OpenSeadragon.Spring] options.springStiffness must be a non-zero number"
+      "[OpenSeadragon.Spring] options.springStiffness must be a non-zero number",
     );
 
     $.console.assert(
       typeof options.animationTime === "number" && options.animationTime >= 0,
-      "[OpenSeadragon.Spring] options.animationTime must be a number greater than or equal to 0"
+      "[OpenSeadragon.Spring] options.animationTime must be a number greater than or equal to 0",
     );
 
     if (options.exponential) {
@@ -16749,14 +16749,14 @@ function OpenSeadragon(options) {
         typeof this.initial == "number"
           ? this.initial
           : this._exponential
-          ? 0
-          : 1,
+            ? 0
+            : 1,
       time: $.now(), // always work in milliseconds
     };
 
     $.console.assert(
       !this._exponential || this.current.value !== 0,
-      "[OpenSeadragon.Spring] value must be non-zero for exponential springs"
+      "[OpenSeadragon.Spring] value must be non-zero for exponential springs",
     );
 
     /**
@@ -16797,7 +16797,7 @@ function OpenSeadragon(options) {
     resetTo: function (target) {
       $.console.assert(
         !this._exponential || target !== 0,
-        "[OpenSeadragon.Spring.resetTo] target must be non-zero for exponential springs"
+        "[OpenSeadragon.Spring.resetTo] target must be non-zero for exponential springs",
       );
 
       this.start.value = this.target.value = this.current.value = target;
@@ -16817,7 +16817,7 @@ function OpenSeadragon(options) {
     springTo: function (target) {
       $.console.assert(
         !this._exponential || target !== 0,
-        "[OpenSeadragon.Spring.springTo] target must be non-zero for exponential springs"
+        "[OpenSeadragon.Spring.springTo] target must be non-zero for exponential springs",
       );
 
       this.start.value = this.current.value;
@@ -16842,7 +16842,7 @@ function OpenSeadragon(options) {
       if (this._exponential) {
         $.console.assert(
           this.target.value !== 0 && this.start.value !== 0,
-          "[OpenSeadragon.Spring.shiftBy] spring value must be non-zero for exponential springs"
+          "[OpenSeadragon.Spring.shiftBy] spring value must be non-zero for exponential springs",
         );
 
         this.start._logValue = Math.log(this.start.value);
@@ -16858,7 +16858,7 @@ function OpenSeadragon(options) {
           this.current.value !== 0 &&
             this.target.value !== 0 &&
             this.start.value !== 0,
-          "[OpenSeadragon.Spring.setExponential] spring value must be non-zero for exponential springs"
+          "[OpenSeadragon.Spring.setExponential] spring value must be non-zero for exponential springs",
         );
 
         this.start._logValue = Math.log(this.start.value);
@@ -16891,7 +16891,7 @@ function OpenSeadragon(options) {
               transform(
                 this.springStiffness,
                 (this.current.time - this.start.time) /
-                  (this.target.time - this.start.time)
+                  (this.target.time - this.start.time),
               );
 
       var oldValue = this.current.value;
@@ -16978,7 +16978,7 @@ function OpenSeadragon(options) {
         timeout: $.DEFAULT_SETTINGS.timeout,
         jobId: null,
       },
-      options
+      options,
     );
 
     /**
@@ -17050,7 +17050,7 @@ function OpenSeadragon(options) {
             // Create a URL for the blob data and make it the source of the image object.
             // This will still trigger Image.onload to indicate a successful tile load.
             var url = (globalThis.URL || globalThis.webkitURL).createObjectURL(
-              blb
+              blb,
             );
             self.image.src = url;
           },
@@ -17111,7 +17111,7 @@ function OpenSeadragon(options) {
         jobQueue: [],
         jobsInProgress: 0,
       },
-      options
+      options,
     );
   };
 
@@ -17261,7 +17261,7 @@ function OpenSeadragon(options) {
     context2D,
     loadWithAjax,
     ajaxHeaders,
-    sourceBounds
+    sourceBounds,
   ) {
     /**
      * The zoom level this tile belongs to.
@@ -17467,7 +17467,7 @@ function OpenSeadragon(options) {
       if (!this.cacheImageRecord) {
         $.console.warn(
           "[Tile.drawHTML] attempting to draw tile %s when it's not cached",
-          this.toString()
+          this.toString(),
         );
         return;
       }
@@ -17475,7 +17475,7 @@ function OpenSeadragon(options) {
       if (!this.loaded) {
         $.console.warn(
           "Attempting to draw tile %s when it's not yet loaded.",
-          this.toString()
+          this.toString(),
         );
         return;
       }
@@ -17526,7 +17526,7 @@ function OpenSeadragon(options) {
       if (!this.context2D && !this.cacheImageRecord) {
         $.console.warn(
           "[Tile.drawCanvas] attempting to draw tile %s when it's not cached",
-          this.toString()
+          this.toString(),
         );
         return;
       }
@@ -17536,7 +17536,7 @@ function OpenSeadragon(options) {
       if (!this.loaded || !rendered) {
         $.console.warn(
           "Attempting to draw tile %s when it's not yet loaded.",
-          this.toString()
+          this.toString(),
         );
 
         return;
@@ -17576,7 +17576,7 @@ function OpenSeadragon(options) {
         sourceWidth = Math.min(this.sourceBounds.width, rendered.canvas.width);
         sourceHeight = Math.min(
           this.sourceBounds.height,
-          rendered.canvas.height
+          rendered.canvas.height,
         );
       } else {
         sourceWidth = rendered.canvas.width;
@@ -17592,7 +17592,7 @@ function OpenSeadragon(options) {
         position.x,
         position.y,
         size.x,
-        size.y
+        size.y,
       );
 
       context.restore();
@@ -17612,7 +17612,7 @@ function OpenSeadragon(options) {
       } else {
         $.console.warn(
           "[Tile.drawCanvas] attempting to get tile scale %s when tile's not cached",
-          this.toString()
+          this.toString(),
         );
         return 1;
       }
@@ -17629,7 +17629,7 @@ function OpenSeadragon(options) {
     getTranslationForEdgeSmoothing: function (
       scale,
       canvasSize,
-      sketchCanvasSize
+      sketchCanvasSize,
     ) {
       // The translation vector must have positive values, otherwise the image goes a bit off
       // the sketch canvas to the top and left and we must use negative coordinates to repaint it
@@ -17643,7 +17643,7 @@ function OpenSeadragon(options) {
           .times(scale || 1)
           .apply(function (x) {
             return x % 1;
-          })
+          }),
       );
     },
 
@@ -17835,7 +17835,7 @@ function OpenSeadragon(options) {
         this.location.x,
         this.location.y,
         this.width,
-        this.height
+        this.height,
       );
       this.position = this.location;
     },
@@ -18006,7 +18006,7 @@ function OpenSeadragon(options) {
       if (this.width !== null || this.height !== null) {
         var scaledSize = viewport.deltaPixelsFromPointsNoRotate(
           new $.Point(this.width || 0, this.height || 0),
-          true
+          true,
         );
         if (this.width !== null) {
           width = scaledSize.x;
@@ -18108,7 +18108,7 @@ function OpenSeadragon(options) {
     getBounds: function (viewport) {
       $.console.assert(
         viewport,
-        "A viewport must now be passed to Overlay.getBounds."
+        "A viewport must now be passed to Overlay.getBounds.",
       );
       var width = this.width;
       var height = this.height;
@@ -18125,7 +18125,7 @@ function OpenSeadragon(options) {
       this.adjust(location, new $.Point(width, height));
       return this._adjustBoundsForRotation(
         viewport,
-        new $.Rect(location.x, location.y, width, height)
+        new $.Rect(location.x, location.y, width, height),
       );
     },
 
@@ -18151,8 +18151,8 @@ function OpenSeadragon(options) {
             positionAndSize.position.x,
             positionAndSize.position.y,
             positionAndSize.size.x,
-            positionAndSize.size.y
-          )
+            positionAndSize.size.y,
+          ),
         );
       }
 
@@ -18227,7 +18227,7 @@ function OpenSeadragon(options) {
 
     if (options.source) {
       $.console.error(
-        "[Drawer] options.source is no longer accepted; use TiledImage instead"
+        "[Drawer] options.source is no longer accepted; use TiledImage instead",
       );
     }
 
@@ -18239,7 +18239,7 @@ function OpenSeadragon(options) {
         : options.debugGridColor || $.DEFAULT_SETTINGS.debugGridColor;
     if (options.opacity) {
       $.console.error(
-        "[Drawer] options.opacity is no longer accepted; set the opacity on the TiledImage instead"
+        "[Drawer] options.opacity is no longer accepted; set the opacity on the TiledImage instead",
       );
     }
 
@@ -18311,7 +18311,7 @@ function OpenSeadragon(options) {
     // deprecated
     addOverlay: function (element, location, placement, onDraw) {
       $.console.error(
-        "drawer.addOverlay is deprecated. Use viewer.addOverlay instead."
+        "drawer.addOverlay is deprecated. Use viewer.addOverlay instead.",
       );
       this.viewer.addOverlay(element, location, placement, onDraw);
       return this;
@@ -18320,7 +18320,7 @@ function OpenSeadragon(options) {
     // deprecated
     updateOverlay: function (element, location, placement) {
       $.console.error(
-        "drawer.updateOverlay is deprecated. Use viewer.updateOverlay instead."
+        "drawer.updateOverlay is deprecated. Use viewer.updateOverlay instead.",
       );
       this.viewer.updateOverlay(element, location, placement);
       return this;
@@ -18329,7 +18329,7 @@ function OpenSeadragon(options) {
     // deprecated
     removeOverlay: function (element) {
       $.console.error(
-        "drawer.removeOverlay is deprecated. Use viewer.removeOverlay instead."
+        "drawer.removeOverlay is deprecated. Use viewer.removeOverlay instead.",
       );
       this.viewer.removeOverlay(element);
       return this;
@@ -18338,7 +18338,7 @@ function OpenSeadragon(options) {
     // deprecated
     clearOverlays: function () {
       $.console.error(
-        "drawer.clearOverlays is deprecated. Use viewer.clearOverlays instead."
+        "drawer.clearOverlays is deprecated. Use viewer.clearOverlays instead.",
       );
       this.viewer.clearOverlays();
       return this;
@@ -18355,7 +18355,7 @@ function OpenSeadragon(options) {
       var vpPoint = this.viewport.pixelFromPointNoRotate(point, true);
       return new $.Point(
         vpPoint.x * $.pixelDensityRatio,
-        vpPoint.y * $.pixelDensityRatio
+        vpPoint.y * $.pixelDensityRatio,
       );
     },
 
@@ -18386,7 +18386,7 @@ function OpenSeadragon(options) {
      */
     setOpacity: function (opacity) {
       $.console.error(
-        "drawer.setOpacity is deprecated. Use tiledImage.setOpacity instead."
+        "drawer.setOpacity is deprecated. Use tiledImage.setOpacity instead.",
       );
       var world = this.viewer.world;
       for (var i = 0; i < world.getItemCount(); i++) {
@@ -18401,7 +18401,7 @@ function OpenSeadragon(options) {
      */
     getOpacity: function () {
       $.console.error(
-        "drawer.getOpacity is deprecated. Use tiledImage.getOpacity instead."
+        "drawer.getOpacity is deprecated. Use tiledImage.getOpacity instead.",
       );
       var world = this.viewer.world;
       var maxOpacity = 0;
@@ -18417,7 +18417,7 @@ function OpenSeadragon(options) {
     // deprecated
     needsUpdate: function () {
       $.console.error(
-        "[Drawer.needsUpdate] this function is deprecated. Use World.needsDraw instead."
+        "[Drawer.needsUpdate] this function is deprecated. Use World.needsDraw instead.",
       );
       return this.viewer.world.needsDraw();
     },
@@ -18425,7 +18425,7 @@ function OpenSeadragon(options) {
     // deprecated
     numTilesLoaded: function () {
       $.console.error(
-        "[Drawer.numTilesLoaded] this function is deprecated. Use TileCache.numTilesLoaded instead."
+        "[Drawer.numTilesLoaded] this function is deprecated. Use TileCache.numTilesLoaded instead.",
       );
       return this.viewer.tileCache.numTilesLoaded();
     },
@@ -18433,7 +18433,7 @@ function OpenSeadragon(options) {
     // deprecated
     reset: function () {
       $.console.error(
-        "[Drawer.reset] this function is deprecated. Use World.resetItems instead."
+        "[Drawer.reset] this function is deprecated. Use World.resetItems instead.",
       );
       this.viewer.world.resetItems();
       return this;
@@ -18442,7 +18442,7 @@ function OpenSeadragon(options) {
     // deprecated
     update: function () {
       $.console.error(
-        "[Drawer.update] this function is deprecated. Use Drawer.clear and World.draw instead."
+        "[Drawer.update] this function is deprecated. Use Drawer.clear and World.draw instead.",
       );
       this.clear();
       this.viewer.world.draw();
@@ -18514,18 +18514,18 @@ function OpenSeadragon(options) {
     viewportToDrawerRectangle: function (rectangle) {
       var topLeft = this.viewport.pixelFromPointNoRotate(
         rectangle.getTopLeft(),
-        true
+        true,
       );
       var size = this.viewport.deltaPixelsFromPointsNoRotate(
         rectangle.getSize(),
-        true
+        true,
       );
 
       return new $.Rect(
         topLeft.x * $.pixelDensityRatio,
         topLeft.y * $.pixelDensityRatio,
         size.x * $.pixelDensityRatio,
-        size.y * $.pixelDensityRatio
+        size.y * $.pixelDensityRatio,
       );
     },
 
@@ -18543,7 +18543,7 @@ function OpenSeadragon(options) {
       $.console.assert(tile, "[Drawer.drawTile] tile is required");
       $.console.assert(
         drawingHandler,
-        "[Drawer.drawTile] drawingHandler is required"
+        "[Drawer.drawTile] drawingHandler is required",
       );
 
       if (this.useCanvas) {
@@ -18696,7 +18696,7 @@ function OpenSeadragon(options) {
           bounds.x,
           bounds.y,
           bounds.width,
-          bounds.height
+          bounds.height,
         );
       } else {
         scale = options.scale || 1;
@@ -18721,7 +18721,7 @@ function OpenSeadragon(options) {
           -widthExt,
           -heightExt,
           this.canvas.width + 2 * widthExt,
-          this.canvas.height + 2 * heightExt
+          this.canvas.height + 2 * heightExt,
         );
       }
       this.context.restore();
@@ -18751,7 +18751,7 @@ function OpenSeadragon(options) {
           degrees: tiledImage.getRotation(true),
           point: tiledImage.viewport.pixelFromPointNoRotate(
             tiledImage._getRotationPoint(true),
-            true
+            true,
           ),
         });
       }
@@ -18768,7 +18768,7 @@ function OpenSeadragon(options) {
         tile.position.x * $.pixelDensityRatio,
         tile.position.y * $.pixelDensityRatio,
         tile.size.x * $.pixelDensityRatio,
-        tile.size.y * $.pixelDensityRatio
+        tile.size.y * $.pixelDensityRatio,
       );
 
       var tileCenterX =
@@ -18785,43 +18785,43 @@ function OpenSeadragon(options) {
         context.fillText(
           "Zoom: " + this.viewport.getZoom(),
           tile.position.x * $.pixelDensityRatio,
-          (tile.position.y - 30) * $.pixelDensityRatio
+          (tile.position.y - 30) * $.pixelDensityRatio,
         );
         context.fillText(
           "Pan: " + this.viewport.getBounds().toString(),
           tile.position.x * $.pixelDensityRatio,
-          (tile.position.y - 20) * $.pixelDensityRatio
+          (tile.position.y - 20) * $.pixelDensityRatio,
         );
       }
       context.fillText(
         "Level: " + tile.level,
         (tile.position.x + 10) * $.pixelDensityRatio,
-        (tile.position.y + 20) * $.pixelDensityRatio
+        (tile.position.y + 20) * $.pixelDensityRatio,
       );
       context.fillText(
         "Column: " + tile.x,
         (tile.position.x + 10) * $.pixelDensityRatio,
-        (tile.position.y + 30) * $.pixelDensityRatio
+        (tile.position.y + 30) * $.pixelDensityRatio,
       );
       context.fillText(
         "Row: " + tile.y,
         (tile.position.x + 10) * $.pixelDensityRatio,
-        (tile.position.y + 40) * $.pixelDensityRatio
+        (tile.position.y + 40) * $.pixelDensityRatio,
       );
       context.fillText(
         "Order: " + i + " of " + count,
         (tile.position.x + 10) * $.pixelDensityRatio,
-        (tile.position.y + 50) * $.pixelDensityRatio
+        (tile.position.y + 50) * $.pixelDensityRatio,
       );
       context.fillText(
         "Size: " + tile.size.toString(),
         (tile.position.x + 10) * $.pixelDensityRatio,
-        (tile.position.y + 60) * $.pixelDensityRatio
+        (tile.position.y + 60) * $.pixelDensityRatio,
       );
       context.fillText(
         "Position: " + tile.position.toString(),
         (tile.position.x + 10) * $.pixelDensityRatio,
-        (tile.position.y + 70) * $.pixelDensityRatio
+        (tile.position.y + 70) * $.pixelDensityRatio,
       );
 
       if (this.viewport.degrees !== 0) {
@@ -18856,7 +18856,7 @@ function OpenSeadragon(options) {
           rect.x * $.pixelDensityRatio,
           rect.y * $.pixelDensityRatio,
           rect.width * $.pixelDensityRatio,
-          rect.height * $.pixelDensityRatio
+          rect.height * $.pixelDensityRatio,
         );
 
         context.restore();
@@ -18957,7 +18957,7 @@ function OpenSeadragon(options) {
       // If the viewport is rotated, we need a larger sketch canvas in order
       // to support edge smoothing.
       var sketchCanvasSize = Math.ceil(
-        Math.sqrt(canvasSize.x * canvasSize.x + canvasSize.y * canvasSize.y)
+        Math.sqrt(canvasSize.x * canvasSize.x + canvasSize.y * canvasSize.y),
       );
       return {
         x: sketchCanvasSize,
@@ -19049,7 +19049,7 @@ function OpenSeadragon(options) {
         right: 0,
         bottom: 0,
       },
-      options.margins || {}
+      options.margins || {},
     );
 
     delete options.margins;
@@ -19081,7 +19081,7 @@ function OpenSeadragon(options) {
         flipped: $.DEFAULT_SETTINGS.flipped,
         homeFillsViewer: $.DEFAULT_SETTINGS.homeFillsViewer,
       },
-      options
+      options,
     );
 
     this._updateContainerInnerSize();
@@ -19125,24 +19125,24 @@ function OpenSeadragon(options) {
     resetContentSize: function (contentSize) {
       $.console.assert(
         contentSize,
-        "[Viewport.resetContentSize] contentSize is required"
+        "[Viewport.resetContentSize] contentSize is required",
       );
       $.console.assert(
         contentSize instanceof $.Point,
-        "[Viewport.resetContentSize] contentSize must be an OpenSeadragon.Point"
+        "[Viewport.resetContentSize] contentSize must be an OpenSeadragon.Point",
       );
       $.console.assert(
         contentSize.x > 0,
-        "[Viewport.resetContentSize] contentSize.x must be greater than 0"
+        "[Viewport.resetContentSize] contentSize.x must be greater than 0",
       );
       $.console.assert(
         contentSize.y > 0,
-        "[Viewport.resetContentSize] contentSize.y must be greater than 0"
+        "[Viewport.resetContentSize] contentSize.y must be greater than 0",
       );
 
       this._setContentBounds(
         new $.Rect(0, 0, 1, contentSize.y / contentSize.x),
-        contentSize.x
+        contentSize.x,
       );
       return this;
     },
@@ -19150,7 +19150,7 @@ function OpenSeadragon(options) {
     // deprecated
     setHomeBounds: function (bounds, contentFactor) {
       $.console.error(
-        "[Viewport.setHomeBounds] this function is deprecated; The content bounds should not be set manually."
+        "[Viewport.setHomeBounds] this function is deprecated; The content bounds should not be set manually.",
       );
       this._setContentBounds(bounds, contentFactor);
     },
@@ -19164,19 +19164,19 @@ function OpenSeadragon(options) {
     _setContentBounds: function (bounds, contentFactor) {
       $.console.assert(
         bounds,
-        "[Viewport._setContentBounds] bounds is required"
+        "[Viewport._setContentBounds] bounds is required",
       );
       $.console.assert(
         bounds instanceof $.Rect,
-        "[Viewport._setContentBounds] bounds must be an OpenSeadragon.Rect"
+        "[Viewport._setContentBounds] bounds must be an OpenSeadragon.Rect",
       );
       $.console.assert(
         bounds.width > 0,
-        "[Viewport._setContentBounds] bounds.width must be greater than 0"
+        "[Viewport._setContentBounds] bounds.width must be greater than 0",
       );
       $.console.assert(
         bounds.height > 0,
-        "[Viewport._setContentBounds] bounds.height must be greater than 0"
+        "[Viewport._setContentBounds] bounds.height must be greater than 0",
       );
 
       this._contentBoundsNoRotate = bounds.clone();
@@ -19260,7 +19260,7 @@ function OpenSeadragon(options) {
         center.x - width / 2.0,
         center.y - height / 2.0,
         width,
-        height
+        height,
       );
     },
 
@@ -19347,7 +19347,7 @@ function OpenSeadragon(options) {
     setMargins: function (margins) {
       $.console.assert(
         $.type(margins) === "object",
-        "[Viewport.setMargins] margins must be an object"
+        "[Viewport.setMargins] margins must be an object",
       );
 
       this._margins = $.extend(
@@ -19357,7 +19357,7 @@ function OpenSeadragon(options) {
           right: 0,
           bottom: 0,
         },
-        margins
+        margins,
       );
 
       this._updateContainerInnerSize();
@@ -19393,7 +19393,7 @@ function OpenSeadragon(options) {
         center.x - width / 2.0,
         center.y - height / 2.0,
         width,
-        height
+        height,
       );
     },
 
@@ -19406,7 +19406,7 @@ function OpenSeadragon(options) {
     getBoundsWithMargins: function (current) {
       return this.getBoundsNoRotateWithMargins(current).rotate(
         -this.getRotation(),
-        this.getCenter(current)
+        this.getCenter(current),
       );
     },
 
@@ -19433,11 +19433,11 @@ function OpenSeadragon(options) {
     getCenter: function (current) {
       var centerCurrent = new $.Point(
           this.centerSpringX.current.value,
-          this.centerSpringY.current.value
+          this.centerSpringY.current.value,
         ),
         centerTarget = new $.Point(
           this.centerSpringX.target.value,
-          this.centerSpringY.target.value
+          this.centerSpringY.target.value,
         ),
         oldZoomPixel,
         zoom,
@@ -19463,13 +19463,13 @@ function OpenSeadragon(options) {
         centerCurrent.x - width / 2.0,
         centerCurrent.y - height / 2.0,
         width,
-        height
+        height,
       );
 
       newZoomPixel = this._pixelFromPoint(this.zoomPoint, bounds);
       deltaZoomPixels = newZoomPixel.minus(oldZoomPixel);
       deltaZoomPoints = deltaZoomPixels.divide(
-        this._containerInnerSize.x * zoom
+        this._containerInnerSize.x * zoom,
       );
 
       return centerTarget.plus(deltaZoomPoints);
@@ -19503,7 +19503,7 @@ function OpenSeadragon(options) {
         bounds.x,
         bounds.y,
         bounds.width,
-        bounds.height
+        bounds.height,
       );
 
       if (this.wrapHorizontal) {
@@ -19601,7 +19601,7 @@ function OpenSeadragon(options) {
       ) {
         this.fitBounds(
           constrainedBounds.rotate(-this.getRotation()),
-          immediately
+          immediately,
         );
       }
       return this;
@@ -19639,7 +19639,7 @@ function OpenSeadragon(options) {
         bounds.y,
         bounds.width,
         bounds.height,
-        bounds.degrees + this.getRotation()
+        bounds.degrees + this.getRotation(),
       ).getBoundingBox();
 
       if (newBounds.getAspectRatio() >= aspect) {
@@ -19744,7 +19744,7 @@ function OpenSeadragon(options) {
         this._contentBounds.x + this._contentBounds.width / 2,
         this._contentBounds.y,
         0,
-        this._contentBounds.height
+        this._contentBounds.height,
       );
       return this.fitBounds(box, immediately);
     },
@@ -19759,7 +19759,7 @@ function OpenSeadragon(options) {
         this._contentBounds.x,
         this._contentBounds.y + this._contentBounds.height / 2,
         this._contentBounds.width,
-        0
+        0,
       );
       return this.fitBounds(box, immediately);
     },
@@ -19790,7 +19790,7 @@ function OpenSeadragon(options) {
     panBy: function (delta, immediately) {
       var center = new $.Point(
         this.centerSpringX.target.value,
-        this.centerSpringY.target.value
+        this.centerSpringY.target.value,
       );
       return this.panTo(center.plus(delta), immediately);
     },
@@ -19841,7 +19841,7 @@ function OpenSeadragon(options) {
       return this.zoomTo(
         this.zoomSpring.target.value * factor,
         refPoint,
-        immediately
+        immediately,
       );
     },
 
@@ -19907,7 +19907,7 @@ function OpenSeadragon(options) {
       this.degrees = $.positiveModulo(degrees, 360);
       this._setContentBounds(
         this.viewer.world.getHomeBounds(),
-        this.viewer.world.getContentFactor()
+        this.viewer.world.getContentFactor(),
       );
       this.viewer.forceRedraw();
 
@@ -19982,12 +19982,12 @@ function OpenSeadragon(options) {
       this._containerInnerSize = new $.Point(
         Math.max(
           1,
-          this.containerSize.x - (this._margins.left + this._margins.right)
+          this.containerSize.x - (this._margins.left + this._margins.right),
         ),
         Math.max(
           1,
-          this.containerSize.y - (this._margins.top + this._margins.bottom)
-        )
+          this.containerSize.y - (this._margins.top + this._margins.bottom),
+        ),
       );
     },
 
@@ -20048,7 +20048,7 @@ function OpenSeadragon(options) {
      */
     deltaPixelsFromPointsNoRotate: function (deltaPoints, current) {
       return deltaPoints.times(
-        this._containerInnerSize.x * this.getZoom(current)
+        this._containerInnerSize.x * this.getZoom(current),
       );
     },
 
@@ -20063,7 +20063,7 @@ function OpenSeadragon(options) {
     deltaPixelsFromPoints: function (deltaPoints, current) {
       return this.deltaPixelsFromPointsNoRotate(
         deltaPoints.rotate(this.getRotation()),
-        current
+        current,
       );
     },
 
@@ -20078,7 +20078,7 @@ function OpenSeadragon(options) {
      */
     deltaPointsFromPixelsNoRotate: function (deltaPixels, current) {
       return deltaPixels.divide(
-        this._containerInnerSize.x * this.getZoom(current)
+        this._containerInnerSize.x * this.getZoom(current),
       );
     },
 
@@ -20092,7 +20092,7 @@ function OpenSeadragon(options) {
      */
     deltaPointsFromPixels: function (deltaPixels, current) {
       return this.deltaPointsFromPixelsNoRotate(deltaPixels, current).rotate(
-        -this.getRotation()
+        -this.getRotation(),
       );
     },
 
@@ -20108,7 +20108,7 @@ function OpenSeadragon(options) {
     pixelFromPointNoRotate: function (point, current) {
       return this._pixelFromPointNoRotate(
         point,
-        this.getBoundsNoRotate(current)
+        this.getBoundsNoRotate(current),
       );
     },
 
@@ -20135,7 +20135,7 @@ function OpenSeadragon(options) {
     _pixelFromPoint: function (point, bounds) {
       return this._pixelFromPointNoRotate(
         point.rotate(this.getRotation(), this.getCenter(true)),
-        bounds
+        bounds,
       );
     },
 
@@ -20166,7 +20166,7 @@ function OpenSeadragon(options) {
     pointFromPixel: function (pixel, current) {
       return this.pointFromPixelNoRotate(pixel, current).rotate(
         -this.getRotation(),
-        this.getCenter(true)
+        this.getCenter(true),
       );
     },
 
@@ -20175,7 +20175,7 @@ function OpenSeadragon(options) {
       var scale = this._contentBoundsNoRotate.width;
       return new $.Point(
         (viewerX * this._contentSizeNoRotate.x) / scale,
-        (viewerY * this._contentSizeNoRotate.x) / scale
+        (viewerY * this._contentSizeNoRotate.x) / scale,
       );
     },
 
@@ -20201,7 +20201,7 @@ function OpenSeadragon(options) {
         if (count > 1) {
           $.console.error(
             "[Viewport.viewportToImageCoordinates] is not accurate " +
-              "with multi-image; use TiledImage.viewportToImageCoordinates instead."
+              "with multi-image; use TiledImage.viewportToImageCoordinates instead.",
           );
         } else if (count === 1) {
           // It is better to use TiledImage.viewportToImageCoordinates
@@ -20214,7 +20214,7 @@ function OpenSeadragon(options) {
 
       return this._viewportToImageDelta(
         viewerX - this._contentBoundsNoRotate.x,
-        viewerY - this._contentBoundsNoRotate.y
+        viewerY - this._contentBoundsNoRotate.y,
       );
     },
 
@@ -20223,7 +20223,7 @@ function OpenSeadragon(options) {
       var scale = this._contentBoundsNoRotate.width;
       return new $.Point(
         (imageX / this._contentSizeNoRotate.x) * scale,
-        (imageY / this._contentSizeNoRotate.x) * scale
+        (imageY / this._contentSizeNoRotate.x) * scale,
       );
     },
 
@@ -20249,7 +20249,7 @@ function OpenSeadragon(options) {
         if (count > 1) {
           $.console.error(
             "[Viewport.imageToViewportCoordinates] is not accurate " +
-              "with multi-image; use TiledImage.imageToViewportCoordinates instead."
+              "with multi-image; use TiledImage.imageToViewportCoordinates instead.",
           );
         } else if (count === 1) {
           // It is better to use TiledImage.viewportToImageCoordinates
@@ -20285,7 +20285,7 @@ function OpenSeadragon(options) {
       imageX,
       imageY,
       pixelWidth,
-      pixelHeight
+      pixelHeight,
     ) {
       var rect = imageX;
       if (!(rect instanceof $.Rect)) {
@@ -20298,7 +20298,7 @@ function OpenSeadragon(options) {
         if (count > 1) {
           $.console.error(
             "[Viewport.imageToViewportRectangle] is not accurate " +
-              "with multi-image; use TiledImage.imageToViewportRectangle instead."
+              "with multi-image; use TiledImage.imageToViewportRectangle instead.",
           );
         } else if (count === 1) {
           // It is better to use TiledImage.imageToViewportRectangle
@@ -20310,7 +20310,7 @@ function OpenSeadragon(options) {
             imageY,
             pixelWidth,
             pixelHeight,
-            true
+            true,
           );
         }
       }
@@ -20339,7 +20339,7 @@ function OpenSeadragon(options) {
       viewerX,
       viewerY,
       pointWidth,
-      pointHeight
+      pointHeight,
     ) {
       var rect = viewerX;
       if (!(rect instanceof $.Rect)) {
@@ -20352,7 +20352,7 @@ function OpenSeadragon(options) {
         if (count > 1) {
           $.console.error(
             "[Viewport.viewportToImageRectangle] is not accurate " +
-              "with multi-image; use TiledImage.viewportToImageRectangle instead."
+              "with multi-image; use TiledImage.viewportToImageRectangle instead.",
           );
         } else if (count === 1) {
           // It is better to use TiledImage.viewportToImageCoordinates
@@ -20364,7 +20364,7 @@ function OpenSeadragon(options) {
             viewerY,
             pointWidth,
             pointHeight,
-            true
+            true,
           );
         }
       }
@@ -20407,10 +20407,10 @@ function OpenSeadragon(options) {
     windowToImageCoordinates: function (pixel) {
       $.console.assert(
         this.viewer,
-        "[Viewport.windowToImageCoordinates] the viewport must have a viewer."
+        "[Viewport.windowToImageCoordinates] the viewport must have a viewer.",
       );
       var viewerCoordinates = pixel.minus(
-        $.getElementPosition(this.viewer.element)
+        $.getElementPosition(this.viewer.element),
       );
       return this.viewerElementToImageCoordinates(viewerCoordinates);
     },
@@ -20424,7 +20424,7 @@ function OpenSeadragon(options) {
     imageToWindowCoordinates: function (pixel) {
       $.console.assert(
         this.viewer,
-        "[Viewport.imageToWindowCoordinates] the viewport must have a viewer."
+        "[Viewport.imageToWindowCoordinates] the viewport must have a viewer.",
       );
       var viewerCoordinates = this.imageToViewerElementCoordinates(pixel);
       return viewerCoordinates.plus($.getElementPosition(this.viewer.element));
@@ -20460,7 +20460,7 @@ function OpenSeadragon(options) {
       return $.Rect.fromSummits(
         this.pointFromPixel(rectangle.getTopLeft(), true),
         this.pointFromPixel(rectangle.getTopRight(), true),
-        this.pointFromPixel(rectangle.getBottomLeft(), true)
+        this.pointFromPixel(rectangle.getBottomLeft(), true),
       );
     },
 
@@ -20474,7 +20474,7 @@ function OpenSeadragon(options) {
       return $.Rect.fromSummits(
         this.pixelFromPoint(rectangle.getTopLeft(), true),
         this.pixelFromPoint(rectangle.getTopRight(), true),
-        this.pixelFromPoint(rectangle.getBottomLeft(), true)
+        this.pixelFromPoint(rectangle.getBottomLeft(), true),
       );
     },
 
@@ -20486,10 +20486,10 @@ function OpenSeadragon(options) {
     windowToViewportCoordinates: function (pixel) {
       $.console.assert(
         this.viewer,
-        "[Viewport.windowToViewportCoordinates] the viewport must have a viewer."
+        "[Viewport.windowToViewportCoordinates] the viewport must have a viewer.",
       );
       var viewerCoordinates = pixel.minus(
-        $.getElementPosition(this.viewer.element)
+        $.getElementPosition(this.viewer.element),
       );
       return this.viewerElementToViewportCoordinates(viewerCoordinates);
     },
@@ -20502,7 +20502,7 @@ function OpenSeadragon(options) {
     viewportToWindowCoordinates: function (point) {
       $.console.assert(
         this.viewer,
-        "[Viewport.viewportToWindowCoordinates] the viewport must have a viewer."
+        "[Viewport.viewportToWindowCoordinates] the viewport must have a viewer.",
       );
       var viewerCoordinates = this.viewportToViewerElementCoordinates(point);
       return viewerCoordinates.plus($.getElementPosition(this.viewer.element));
@@ -20526,7 +20526,7 @@ function OpenSeadragon(options) {
         if (count > 1) {
           $.console.error(
             "[Viewport.viewportToImageZoom] is not " +
-              "accurate with multi-image."
+              "accurate with multi-image.",
           );
         } else if (count === 1) {
           // It is better to use TiledImage.viewportToImageZoom
@@ -20562,7 +20562,7 @@ function OpenSeadragon(options) {
         if (count > 1) {
           $.console.error(
             "[Viewport.imageToViewportZoom] is not accurate " +
-              "with multi-image."
+              "with multi-image.",
           );
         } else if (count === 1) {
           // It is better to use TiledImage.imageToViewportZoom
@@ -20725,18 +20725,18 @@ function OpenSeadragon(options) {
      */
     $.console.assert(
       options.tileCache,
-      "[TiledImage] options.tileCache is required"
+      "[TiledImage] options.tileCache is required",
     );
     $.console.assert(options.drawer, "[TiledImage] options.drawer is required");
     $.console.assert(options.viewer, "[TiledImage] options.viewer is required");
     $.console.assert(
       options.imageLoader,
-      "[TiledImage] options.imageLoader is required"
+      "[TiledImage] options.imageLoader is required",
     );
     $.console.assert(options.source, "[TiledImage] options.source is required");
     $.console.assert(
       !options.clip || options.clip instanceof $.Rect,
-      "[TiledImage] options.clip must be an OpenSeadragon.Rect if present"
+      "[TiledImage] options.clip must be an OpenSeadragon.Rect if present",
     );
 
     $.EventSource.call(this);
@@ -20773,7 +20773,7 @@ function OpenSeadragon(options) {
 
       if (options.height) {
         $.console.error(
-          "specifying both width and height to a tiledImage is not supported"
+          "specifying both width and height to a tiledImage is not supported",
         );
         delete options.height;
       }
@@ -20826,7 +20826,7 @@ function OpenSeadragon(options) {
         preload: $.DEFAULT_SETTINGS.preload,
         compositeOperation: $.DEFAULT_SETTINGS.compositeOperation,
       },
-      options
+      options,
     );
 
     this._preload = this.preload;
@@ -20887,8 +20887,8 @@ function OpenSeadragon(options) {
           {
             tiledImage: _this,
           },
-          args
-        )
+          args,
+        ),
       );
     };
   };
@@ -20995,7 +20995,7 @@ function OpenSeadragon(options) {
       getBounds: function (current) {
         return this.getBoundsNoRotate(current).rotate(
           this.getRotation(current),
-          this._getRotationPoint(current)
+          this._getRotationPoint(current),
         );
       },
 
@@ -21012,20 +21012,20 @@ function OpenSeadragon(options) {
               this._xSpring.current.value,
               this._ySpring.current.value,
               this._worldWidthCurrent,
-              this._worldHeightCurrent
+              this._worldHeightCurrent,
             )
           : new $.Rect(
               this._xSpring.target.value,
               this._ySpring.target.value,
               this._worldWidthTarget,
-              this._worldHeightTarget
+              this._worldHeightTarget,
             );
       },
 
       // deprecated
       getWorldBounds: function () {
         $.console.error(
-          "[TiledImage.getWorldBounds] is deprecated; use TiledImage.getBounds instead"
+          "[TiledImage.getWorldBounds] is deprecated; use TiledImage.getBounds instead",
         );
         return this.getBounds();
       },
@@ -21048,12 +21048,12 @@ function OpenSeadragon(options) {
             bounds.x + clip.x,
             bounds.y + clip.y,
             clip.width,
-            clip.height
+            clip.height,
           );
         }
         return bounds.rotate(
           this.getRotation(current),
-          this._getRotationPoint(current)
+          this._getRotationPoint(current),
         );
       },
 
@@ -21071,7 +21071,7 @@ function OpenSeadragon(options) {
           : this._scaleSpring.target.value;
         return new $.Point(
           viewerX * (this.source.dimensions.x / scale),
-          viewerY * ((this.source.dimensions.y * this.contentAspectX) / scale)
+          viewerY * ((this.source.dimensions.y * this.contentAspectX) / scale),
         );
       },
 
@@ -21095,16 +21095,16 @@ function OpenSeadragon(options) {
 
         point = point.rotate(
           -this.getRotation(current),
-          this._getRotationPoint(current)
+          this._getRotationPoint(current),
         );
         return current
           ? this._viewportToImageDelta(
               point.x - this._xSpring.current.value,
-              point.y - this._ySpring.current.value
+              point.y - this._ySpring.current.value,
             )
           : this._viewportToImageDelta(
               point.x - this._xSpring.target.value,
-              point.y - this._ySpring.target.value
+              point.y - this._ySpring.target.value,
             );
       },
 
@@ -21115,7 +21115,7 @@ function OpenSeadragon(options) {
           : this._scaleSpring.target.value;
         return new $.Point(
           (imageX / this.source.dimensions.x) * scale,
-          (imageY / this.source.dimensions.y / this.contentAspectX) * scale
+          (imageY / this.source.dimensions.y / this.contentAspectX) * scale,
         );
       },
 
@@ -21146,7 +21146,7 @@ function OpenSeadragon(options) {
 
         return point.rotate(
           this.getRotation(current),
-          this._getRotationPoint(current)
+          this._getRotationPoint(current),
         );
       },
 
@@ -21166,7 +21166,7 @@ function OpenSeadragon(options) {
         imageY,
         pixelWidth,
         pixelHeight,
-        current
+        current,
       ) {
         var rect = imageX;
         if (rect instanceof $.Rect) {
@@ -21178,12 +21178,12 @@ function OpenSeadragon(options) {
 
         var coordA = this.imageToViewportCoordinates(
           rect.getTopLeft(),
-          current
+          current,
         );
         var coordB = this._imageToViewportDelta(
           rect.width,
           rect.height,
-          current
+          current,
         );
 
         return new $.Rect(
@@ -21191,7 +21191,7 @@ function OpenSeadragon(options) {
           coordA.y,
           coordB.x,
           coordB.y,
-          rect.degrees + this.getRotation(current)
+          rect.degrees + this.getRotation(current),
         );
       },
 
@@ -21211,7 +21211,7 @@ function OpenSeadragon(options) {
         viewerY,
         pointWidth,
         pointHeight,
-        current
+        current,
       ) {
         var rect = viewerX;
         if (viewerX instanceof $.Rect) {
@@ -21223,12 +21223,12 @@ function OpenSeadragon(options) {
 
         var coordA = this.viewportToImageCoordinates(
           rect.getTopLeft(),
-          current
+          current,
         );
         var coordB = this._viewportToImageDelta(
           rect.width,
           rect.height,
-          current
+          current,
         );
 
         return new $.Rect(
@@ -21236,7 +21236,7 @@ function OpenSeadragon(options) {
           coordA.y,
           coordB.x,
           coordB.y,
-          rect.degrees - this.getRotation(current)
+          rect.degrees - this.getRotation(current),
         );
       },
 
@@ -21269,7 +21269,7 @@ function OpenSeadragon(options) {
        */
       windowToImageCoordinates: function (pixel) {
         var viewerCoordinates = pixel.minus(
-          OpenSeadragon.getElementPosition(this.viewer.element)
+          OpenSeadragon.getElementPosition(this.viewer.element),
         );
         return this.viewerElementToImageCoordinates(viewerCoordinates);
       },
@@ -21282,7 +21282,7 @@ function OpenSeadragon(options) {
       imageToWindowCoordinates: function (pixel) {
         var viewerCoordinates = this.imageToViewerElementCoordinates(pixel);
         return viewerCoordinates.plus(
-          OpenSeadragon.getElementPosition(this.viewer.element)
+          OpenSeadragon.getElementPosition(this.viewer.element),
         );
       },
 
@@ -21293,14 +21293,14 @@ function OpenSeadragon(options) {
         var scale = this._scaleSpring.current.value;
         rect = rect.rotate(
           -this.getRotation(true),
-          this._getRotationPoint(true)
+          this._getRotationPoint(true),
         );
         return new $.Rect(
           (rect.x - this._xSpring.current.value) / scale,
           (rect.y - this._ySpring.current.value) / scale,
           rect.width / scale,
           rect.height / scale,
-          rect.degrees
+          rect.degrees,
         );
       },
 
@@ -21427,7 +21427,7 @@ function OpenSeadragon(options) {
               }
             } catch (e) {
               throw new Error(
-                "A Provided cropping polygon point is not supported"
+                "A Provided cropping polygon point is not supported",
               );
             }
           });
@@ -21442,7 +21442,7 @@ function OpenSeadragon(options) {
           });
         } catch (e) {
           $.console.error(
-            "[TiledImage.setCroppingPolygons] Cropping polygon format not supported"
+            "[TiledImage.setCroppingPolygons] Cropping polygon format not supported",
           );
           $.console.error(e);
           this._croppingPolygons = null;
@@ -21500,7 +21500,7 @@ function OpenSeadragon(options) {
           }
           this.setPosition(
             new $.Point(bounds.x - xOffset + marginLeft, bounds.y - yOffset),
-            immediately
+            immediately,
           );
           this.setHeight(height, immediately);
         } else {
@@ -21514,7 +21514,7 @@ function OpenSeadragon(options) {
           }
           this.setPosition(
             new $.Point(bounds.x - xOffset, bounds.y - yOffset + marginTop),
-            immediately
+            immediately,
           );
           this.setWidth(width, immediately);
         }
@@ -21541,7 +21541,7 @@ function OpenSeadragon(options) {
       setClip: function (newClip) {
         $.console.assert(
           !newClip || newClip instanceof $.Rect,
-          "[TiledImage.setClip] newClip must be an OpenSeadragon.Rect or null"
+          "[TiledImage.setClip] newClip must be an OpenSeadragon.Rect or null",
         );
 
         if (newClip instanceof $.Rect) {
@@ -21749,20 +21749,20 @@ function OpenSeadragon(options) {
       _getLevelsInterval: function () {
         var lowestLevel = Math.max(
           this.source.minLevel,
-          Math.floor(Math.log(this.minZoomImageRatio) / Math.log(2))
+          Math.floor(Math.log(this.minZoomImageRatio) / Math.log(2)),
         );
         var currentZeroRatio =
           this.viewport.deltaPixelsFromPointsNoRotate(
             this.source.getPixelRatio(0),
-            true
+            true,
           ).x * this._scaleSpring.current.value;
         var highestLevel = Math.min(
           Math.abs(this.source.maxLevel),
           Math.abs(
             Math.floor(
-              Math.log(currentZeroRatio / this.minPixelRatio) / Math.log(2)
-            )
-          )
+              Math.log(currentZeroRatio / this.minPixelRatio) / Math.log(2),
+            ),
+          ),
         );
 
         // Calculations for the interval of levels to draw
@@ -21795,12 +21795,12 @@ function OpenSeadragon(options) {
 
         var viewport = this.viewport;
         var drawArea = this._viewportToTiledImageRectangle(
-          viewport.getBoundsWithMargins(true)
+          viewport.getBoundsWithMargins(true),
         );
 
         if (!this.wrapHorizontal && !this.wrapVertical) {
           var tiledImageBounds = this._viewportToTiledImageRectangle(
-            this.getClippedBounds(true)
+            this.getClippedBounds(true),
           );
           drawArea = drawArea.intersection(tiledImageBounds);
           if (drawArea === null) {
@@ -21823,7 +21823,7 @@ function OpenSeadragon(options) {
           var currentRenderPixelRatio =
             viewport.deltaPixelsFromPointsNoRotate(
               this.source.getPixelRatio(level),
-              true
+              true,
             ).x * this._scaleSpring.current.value;
 
           if (
@@ -21840,15 +21840,15 @@ function OpenSeadragon(options) {
           var targetRenderPixelRatio =
             viewport.deltaPixelsFromPointsNoRotate(
               this.source.getPixelRatio(level),
-              false
+              false,
             ).x * this._scaleSpring.current.value;
 
           var targetZeroRatio =
             viewport.deltaPixelsFromPointsNoRotate(
               this.source.getPixelRatio(
-                Math.max(this.source.getClosestLevel(), 0)
+                Math.max(this.source.getClosestLevel(), 0),
               ),
-              false
+              false,
             ).x * this._scaleSpring.current.value;
 
           var optimalRatio = this.immediateRender ? 1 : targetZeroRatio;
@@ -21866,7 +21866,7 @@ function OpenSeadragon(options) {
             levelVisibility,
             drawArea,
             currentTime,
-            bestTile
+            bestTile,
           );
 
           // Stop the loop if lower-res tiles would all be covered by
@@ -21913,11 +21913,11 @@ function OpenSeadragon(options) {
 
         var topLeftTile = this.source.getTileAtPoint(
           level,
-          new $.Point(leftX, topY)
+          new $.Point(leftX, topY),
         );
         var bottomRightTile = this.source.getTileAtPoint(
           level,
-          new $.Point(rightX, bottomY)
+          new $.Point(rightX, bottomY),
         );
         var numTiles = this.source.getNumTiles(level);
 
@@ -21937,7 +21937,7 @@ function OpenSeadragon(options) {
           bottomRight: bottomRightTile,
         };
       },
-    }
+    },
   );
 
   /**
@@ -21964,7 +21964,7 @@ function OpenSeadragon(options) {
     levelVisibility,
     drawArea,
     currentTime,
-    best
+    best,
   ) {
     var topLeftBound = drawArea.getBoundingBox().getTopLeft();
     var bottomRightBound = drawArea.getBoundingBox().getBottomRight();
@@ -22010,14 +22010,14 @@ function OpenSeadragon(options) {
     var cornerTiles = tiledImage._getCornerTiles(
       level,
       topLeftBound,
-      bottomRightBound
+      bottomRightBound,
     );
     var topLeftTile = cornerTiles.topLeft;
     var bottomRightTile = cornerTiles.bottomRight;
     var numberOfTiles = tiledImage.source.getNumTiles(level);
 
     var viewportCenter = tiledImage.viewport.pixelFromPoint(
-      tiledImage.viewport.getCenter()
+      tiledImage.viewport.getCenter(),
     );
     for (var x = topLeftTile.x; x <= bottomRightTile.x; x++) {
       for (var y = topLeftTile.y; y <= bottomRightTile.y; y++) {
@@ -22043,7 +22043,7 @@ function OpenSeadragon(options) {
           viewportCenter,
           numberOfTiles,
           currentTime,
-          best
+          best,
         );
       }
     }
@@ -22080,7 +22080,7 @@ function OpenSeadragon(options) {
     viewportCenter,
     numberOfTiles,
     currentTime,
-    best
+    best,
   ) {
     var tile = getTile(
         x,
@@ -22092,7 +22092,7 @@ function OpenSeadragon(options) {
         currentTime,
         numberOfTiles,
         tiledImage._worldWidthCurrent,
-        tiledImage._worldHeightCurrent
+        tiledImage._worldHeightCurrent,
       ),
       drawTile = drawLevel;
 
@@ -22144,7 +22144,7 @@ function OpenSeadragon(options) {
       tiledImage.viewport,
       viewportCenter,
       levelVisibility,
-      tiledImage
+      tiledImage,
     );
 
     if (!tile.loaded) {
@@ -22167,7 +22167,7 @@ function OpenSeadragon(options) {
         y,
         level,
         levelOpacity,
-        currentTime
+        currentTime,
       );
 
       if (needsDraw) {
@@ -22209,7 +22209,7 @@ function OpenSeadragon(options) {
     time,
     numTiles,
     worldWidth,
-    worldHeight
+    worldHeight,
   ) {
     var xMod,
       yMod,
@@ -22264,7 +22264,7 @@ function OpenSeadragon(options) {
         context2D,
         tiledImage.loadTilesWithAjax,
         ajaxHeaders,
-        sourceBounds
+        sourceBounds,
       );
 
       if (xMod === numTiles.x - 1) {
@@ -22326,7 +22326,7 @@ function OpenSeadragon(options) {
         "Tile %s failed to load: %s - error: %s",
         tile,
         tile.url,
-        errorMsg
+        errorMsg,
       );
       /**
        * Triggered when a tile fails to load.
@@ -22449,7 +22449,7 @@ function OpenSeadragon(options) {
     viewport,
     viewportCenter,
     levelVisibility,
-    tiledImage
+    tiledImage,
   ) {
     var boundsTL = tile.bounds.getTopLeft();
 
@@ -22623,7 +22623,7 @@ function OpenSeadragon(options) {
     if (!coverage[level]) {
       $.console.warn(
         "Setting coverage for a tile before its level's coverage has been reset: %s",
-        level
+        level,
       );
       return;
     }
@@ -22722,7 +22722,7 @@ function OpenSeadragon(options) {
       sketchTranslate = tile.getTranslationForEdgeSmoothing(
         sketchScale,
         tiledImage._drawer.getCanvasSize(false),
-        tiledImage._drawer.getCanvasSize(true)
+        tiledImage._drawer.getCanvasSize(true),
       );
     }
 
@@ -22765,7 +22765,7 @@ function OpenSeadragon(options) {
           degrees: tiledImage.getRotation(true),
           point: tiledImage.viewport.pixelFromPointNoRotate(
             tiledImage._getRotationPoint(true),
-            true
+            true,
           ),
           useSketch: useSketch,
         });
@@ -22788,7 +22788,7 @@ function OpenSeadragon(options) {
       var box = tiledImage.imageToViewportRectangle(tiledImage._clip, true);
       box = box.rotate(
         -tiledImage.getRotation(true),
-        tiledImage._getRotationPoint(true)
+        tiledImage._getRotationPoint(true),
       );
       var clipRect = tiledImage._drawer.viewportToDrawerRectangle(box);
       if (sketchScale) {
@@ -22811,7 +22811,7 @@ function OpenSeadragon(options) {
               .imageToViewportCoordinates(coord.x, coord.y, true)
               .rotate(
                 -tiledImage.getRotation(true),
-                tiledImage._getRotationPoint(true)
+                tiledImage._getRotationPoint(true),
               );
             var clipPoint =
               tiledImage._drawer.viewportCoordToDrawerCoord(point);
@@ -22833,7 +22833,7 @@ function OpenSeadragon(options) {
       tiledImage._hasOpaqueTile === false
     ) {
       var placeholderRect = tiledImage._drawer.viewportToDrawerRectangle(
-        tiledImage.getBounds(true)
+        tiledImage.getBounds(true),
       );
       if (sketchScale) {
         placeholderRect = placeholderRect.times(sketchScale);
@@ -22846,7 +22846,7 @@ function OpenSeadragon(options) {
       if (typeof tiledImage.placeholderFillStyle === "function") {
         fillStyle = tiledImage.placeholderFillStyle(
           tiledImage,
-          tiledImage._drawer.context
+          tiledImage._drawer.context,
         );
       } else {
         fillStyle = tiledImage.placeholderFillStyle;
@@ -22862,7 +22862,7 @@ function OpenSeadragon(options) {
         tiledImage._drawingHandler,
         useSketch,
         sketchScale,
-        sketchTranslate
+        sketchTranslate,
       );
       tile.beingDrawn = true;
 
@@ -22911,7 +22911,7 @@ function OpenSeadragon(options) {
             degrees: tiledImage.getRotation(true),
             point: tiledImage.viewport.pixelFromPointNoRotate(
               tiledImage._getRotationPoint(true),
-              true
+              true,
             ),
             useSketch: false,
           });
@@ -22964,7 +22964,7 @@ function OpenSeadragon(options) {
             tile,
             lastDrawn.length,
             i,
-            tiledImage
+            tiledImage,
           );
         } catch (e) {
           $.console.error(e);
@@ -23014,11 +23014,11 @@ function OpenSeadragon(options) {
     $.console.assert(options, "[TileCache.cacheTile] options is required");
     $.console.assert(
       options.tile,
-      "[TileCache.cacheTile] options.tile is required"
+      "[TileCache.cacheTile] options.tile is required",
     );
     $.console.assert(
       options.tiledImage,
-      "[TileCache.cacheTile] options.tiledImage is required"
+      "[TileCache.cacheTile] options.tiledImage is required",
     );
     this.tile = options.tile;
     this.tiledImage = options.tiledImage;
@@ -23061,7 +23061,7 @@ function OpenSeadragon(options) {
       $.console.error(
         "ImageRecord.setRenderedContext is deprecated. " +
           "The rendered context should be created by the ImageRecord " +
-          "itself when calling ImageRecord.getRenderedContext."
+          "itself when calling ImageRecord.getRenderedContext.",
       );
       this._renderedContext = renderedContext;
     },
@@ -23081,7 +23081,7 @@ function OpenSeadragon(options) {
 
       $.console.warn(
         "[ImageRecord.removeTile] trying to remove unknown tile",
-        tile
+        tile,
       );
     },
 
@@ -23138,15 +23138,15 @@ function OpenSeadragon(options) {
       $.console.assert(options, "[TileCache.cacheTile] options is required");
       $.console.assert(
         options.tile,
-        "[TileCache.cacheTile] options.tile is required"
+        "[TileCache.cacheTile] options.tile is required",
       );
       $.console.assert(
         options.tile.cacheKey,
-        "[TileCache.cacheTile] options.tile.cacheKey is required"
+        "[TileCache.cacheTile] options.tile.cacheKey is required",
       );
       $.console.assert(
         options.tiledImage,
-        "[TileCache.cacheTile] options.tiledImage is required"
+        "[TileCache.cacheTile] options.tiledImage is required",
       );
 
       var cutoff = options.cutoff || 0;
@@ -23156,7 +23156,7 @@ function OpenSeadragon(options) {
       if (!imageRecord) {
         $.console.assert(
           options.image,
-          "[TileCache.cacheTile] options.image is required to create an ImageRecord"
+          "[TileCache.cacheTile] options.image is required to create an ImageRecord",
         );
         imageRecord = this._imagesLoaded[options.tile.cacheKey] =
           new ImageRecord({
@@ -23229,7 +23229,7 @@ function OpenSeadragon(options) {
     clearTilesFor: function (tiledImage) {
       $.console.assert(
         tiledImage,
-        "[TileCache.clearTilesFor] tiledImage is required"
+        "[TileCache.clearTilesFor] tiledImage is required",
       );
       var tileRecord;
       for (var i = 0; i < this._tilesLoaded.length; ++i) {
@@ -23246,7 +23246,7 @@ function OpenSeadragon(options) {
     getImageRecord: function (cacheKey) {
       $.console.assert(
         cacheKey,
-        "[TileCache.getImageRecord] cacheKey is required"
+        "[TileCache.getImageRecord] cacheKey is required",
       );
       return this._imagesLoaded[cacheKey];
     },
@@ -23255,7 +23255,7 @@ function OpenSeadragon(options) {
     _unloadTile: function (tileRecord) {
       $.console.assert(
         tileRecord,
-        "[TileCache._unloadTile] tileRecord is required"
+        "[TileCache._unloadTile] tileRecord is required",
       );
       var tile = tileRecord.tile;
       var tiledImage = tileRecord.tiledImage;
@@ -23369,7 +23369,7 @@ function OpenSeadragon(options) {
         $.console.assert(item, "[World.addItem] item is required");
         $.console.assert(
           item instanceof $.TiledImage,
-          "[World.addItem] only TiledImages supported at this time"
+          "[World.addItem] only TiledImages supported at this time",
         );
 
         options = options || {};
@@ -23413,7 +23413,7 @@ function OpenSeadragon(options) {
       getItemAt: function (index) {
         $.console.assert(
           index !== undefined,
-          "[World.getItemAt] index is required"
+          "[World.getItemAt] index is required",
         );
         return this._items[index];
       },
@@ -23445,7 +23445,7 @@ function OpenSeadragon(options) {
         $.console.assert(item, "[World.setItemIndex] item is required");
         $.console.assert(
           index !== undefined,
-          "[World.setItemIndex] index is required"
+          "[World.setItemIndex] index is required",
         );
 
         var oldIndex = this.getIndexOfItem(item);
@@ -23663,7 +23663,7 @@ function OpenSeadragon(options) {
           height = width * (box.height / box.width);
           position = new $.Point(
             x + (tileSize - width) / 2,
-            y + (tileSize - height) / 2
+            y + (tileSize - height) / 2,
           );
 
           item.setPosition(position, immediately);
@@ -23704,7 +23704,7 @@ function OpenSeadragon(options) {
             bounds = item.getBounds();
             this._contentFactor = Math.max(
               this._contentFactor,
-              item.getContentSize().x / bounds.width
+              item.getContentSize().x / bounds.width,
             );
             clippedBounds = item.getClippedBounds().getBoundingBox();
             left = Math.min(left, clippedBounds.x);
@@ -23716,7 +23716,7 @@ function OpenSeadragon(options) {
           this._homeBounds = new $.Rect(left, top, right - left, bottom - top);
           this._contentSize = new $.Point(
             this._homeBounds.width * this._contentFactor,
-            this._homeBounds.height * this._contentFactor
+            this._homeBounds.height * this._contentFactor,
           );
         }
 
@@ -23750,7 +23750,7 @@ function OpenSeadragon(options) {
          */
         this.raiseEvent("remove-item", { item: item });
       },
-    }
+    },
   );
 })(OpenSeadragon);
 

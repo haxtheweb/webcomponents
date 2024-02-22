@@ -251,13 +251,13 @@ class PaperAvatar extends LitElement {
 
         window.jdenticon.update(
           this.shadowRoot.querySelector("#jdenticon"),
-          window.md5(label)
+          window.md5(label),
         );
       }
       if (!this.accentColor)
         this.style.setProperty(
           "--paper-avatar-calculated-bg",
-          this._parseColor(label)
+          this._parseColor(label),
         );
     }
   }
@@ -270,7 +270,7 @@ class PaperAvatar extends LitElement {
     window.addEventListener(
       "es-bridge-jdenticon-loaded",
       this._jdenticonLoaded.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.ESGlobalBridge.requestAvailability().load("jdenticon", location);

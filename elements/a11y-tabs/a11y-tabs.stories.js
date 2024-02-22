@@ -37,7 +37,7 @@ export const A11yTabsStory = () => {
           <p>${utils.randomParagraph(2, 7)}</p>
           <p>${utils.randomParagraph(2, 7)}</p>
           <p>${utils.randomParagraph(2, 7)}</p>
-        </a11y-tab>`
+        </a11y-tab>`,
         )
         .join(""),
     },
@@ -84,7 +84,7 @@ export const A11yTabsStory = () => {
       { css: "--a11y-tabs-horizontal-justify-tabs" },
       { css: "--a11y-tabs-vertical-justify-tabs" },
       { css: "--a11y-tabs-wrap" },
-    ]
+    ],
   );
 };
 
@@ -95,9 +95,9 @@ export const A11yTabStory = () => {
       (tab) =>
         `
   <a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.randomIcon()}">${utils.randomParagraph(
-          2,
-          7
-        )}</a11y-tab>`
+    2,
+    7,
+  )}</a11y-tab>`,
     )
     .join("");
 
@@ -113,11 +113,11 @@ export const A11yTabStory = () => {
     },
     [],
     [],
-    true
+    true,
   )}
   <!-- end tab code-->\n</a11y-tabs>`;
   return utils.getDemo(
     tabs,
-    `<p>Use the knobs below to customize the first tab.</p>`
+    `<p>Use the knobs below to customize the first tab.</p>`,
   );
 };

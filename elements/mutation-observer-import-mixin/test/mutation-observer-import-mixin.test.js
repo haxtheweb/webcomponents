@@ -5,13 +5,11 @@ import "../mutation-observer-import-mixin.js";
 describe("mutation-observer-import-mixin test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html`
-        <mutation-observer-import-mixin
-          title="test-title"
-        ></mutation-observer-import-mixin>
-      `
-    );
+    element = await fixture(html`
+      <mutation-observer-import-mixin
+        title="test-title"
+      ></mutation-observer-import-mixin>
+    `);
   });
 
   it("passes the a11y audit", async () => {

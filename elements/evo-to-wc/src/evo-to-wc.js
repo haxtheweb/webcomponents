@@ -518,7 +518,7 @@ export class EvoToWc {
     if (chart) {
       chart.scale = "ct-octave";
       [...table.childNodes].forEach((node) =>
-        newTable.append(node.cloneNode(true))
+        newTable.append(node.cloneNode(true)),
       );
       chart.append(newTable);
       if (type !== "pie") chart.showGridBackground = true;
@@ -668,7 +668,7 @@ window.EvoToWc.requestAvailability = () => {
       composed: true,
       cancelable: true,
       detail: window.EvoToWc.instance.convert,
-    })
+    }),
   );
 
   return window.EvoToWc.instance;

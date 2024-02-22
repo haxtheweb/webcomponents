@@ -5,9 +5,11 @@ import "../mark-the-words.js";
 describe("mark-the-words test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(html` <mark-the-words answers="this,is">
-      This is mark-the-words
-    </mark-the-words>`);
+    element = await fixture(
+      html` <mark-the-words answers="this,is">
+        This is mark-the-words
+      </mark-the-words>`,
+    );
   });
 
   it("passes the a11y audit", async () => {

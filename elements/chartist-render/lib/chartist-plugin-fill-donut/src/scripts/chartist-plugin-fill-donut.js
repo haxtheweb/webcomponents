@@ -35,7 +35,7 @@
             options.fillClass.split(" ").forEach(function (className) {
               $clone.setAttribute(
                 "class",
-                $clone.getAttribute("class") + " " + className
+                $clone.getAttribute("class") + " " + className,
               );
             });
 
@@ -62,14 +62,14 @@
             options = Chartist.extend(
               {},
               options,
-              chart.options.fillDonutOptions
+              chart.options.fillDonutOptions,
             );
             drawDonut(data);
           }
 
           [].forEach.call(options.items, function (thisItem) {
             var $wrapper = globalThis.document.createElement(
-              options.label.html
+              options.label.html,
             );
             options.label.class.split(" ").forEach(function (className) {
               if ($wrapper.classList) {
@@ -88,7 +88,7 @@
                 offsetY: 0, //top, bottom in px
                 offsetX: 0, //left, right in px
               },
-              thisItem
+              thisItem,
             );
 
             if (item.id.length > 0) {
@@ -100,11 +100,11 @@
 
             [].forEach.call(
               $chart.querySelectorAll(
-                '*[data-fill-index$="fdid-' + itemIndex + '"]'
+                '*[data-fill-index$="fdid-' + itemIndex + '"]',
               ),
               function (node) {
                 node.parentNode.removeChild(node);
-              }
+              },
             );
             $wrapper.setAttribute("data-fill-index", "fdid-" + itemIndex);
             itemIndex += 1;

@@ -5,7 +5,7 @@ describe("elementName test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html`<micro-frontend-registry></micro-frontend-registry>`
+      html`<micro-frontend-registry></micro-frontend-registry>`,
     );
   });
 

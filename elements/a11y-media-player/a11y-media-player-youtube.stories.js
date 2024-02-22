@@ -188,6 +188,6 @@ export const A11yMediaPlayerYoutubeStory = () => {
       hideTimestamps: utils.randomBool(),
       youtubeId: "NP0mQeLWCCo",
       emptyslot: `<iframe width="560" height="315" src="https://www.youtube.com/embed/NP0mQeLWCCo" allowfullscreen></iframe>`,
-    })
+    }),
   );
 };

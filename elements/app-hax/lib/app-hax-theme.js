@@ -34,11 +34,11 @@ class AppHaxTheme extends HAXCMSRememberRoute(
     PDFPageMixin(
       QRCodeMixin(
         HAXCMSThemeParts(
-          HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
-        )
-      )
-    )
-  )
+          HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme)),
+        ),
+      ),
+    ),
+  ),
 ) {
   //styles function
   static get styles() {
@@ -46,7 +46,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
       ...super.styles,
       css`
         :host {
-          color: #242A31;
+          color: #242a31;
           width: 100%;
           margin: 0;
           display: flex;
@@ -56,140 +56,151 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
           font-size: 18px;
-          font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,
+            sans-serif;
           letter-spacing: normal;
           line-height: 28.8px;
-          --haxcms-base-styles-body-font-size:18px;
+          --haxcms-base-styles-body-font-size: 18px;
           --hax-base-styles-a-font-size: 18px;
           --hax-base-styles-p-font-size: 18px;
           --hax-base-styles-list-font-size: 18px;
-          --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          --haxcms-base-styles-body-font-family: "Open Sans", "Helvetica Neue",
+            Helvetica, Arial, sans-serif;
           --haxcms-base-styles-body-line-height: 28.8px;
           --hax-base-styles-list-line-height: 28.8px
-          --hax-base-styles-p-line-height: 28.8px;
+            --hax-base-styles-p-line-height: 28.8px;
           --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing : normal;
-           --hax-base-styles-p-min-height: auto;
-           --hax-base-styles-list-max-width: auto;
-           --haxcms-base-styles-p-min-height: auto;
-           --hax-base-styles-list-padding-bottom: auto;
-           --hax-base-styles-h1-font-size: inherit;
-           --hax-base-styles-h2-font-size: inherit;
-           --hax-base-styles-h3-font-size: inherit;
-           --hax-base-styles-h4-font-size: inherit;
-           --hax-base-styles-h5-font-size: inherit;
-           --hax-base-styles-h6-font-size: inherit;
-           --simple-tooltip-background: #000000;
-           --simple-tooltip-opacity: 1;
-           --simple-tooltip-text-color: #ffffff;
-           --simple-tooltip-delay-in: 0;
-           --simple-tooltip-border-radius: 0;
-         }
-         #haxcmsmobilemenunav {
+          --haxcms-base-styles-body-letter-spacing: normal;
+          --hax-base-styles-p-min-height: auto;
+          --hax-base-styles-list-max-width: auto;
+          --haxcms-base-styles-p-min-height: auto;
+          --hax-base-styles-list-padding-bottom: auto;
+          --hax-base-styles-h1-font-size: inherit;
+          --hax-base-styles-h2-font-size: inherit;
+          --hax-base-styles-h3-font-size: inherit;
+          --hax-base-styles-h4-font-size: inherit;
+          --hax-base-styles-h5-font-size: inherit;
+          --hax-base-styles-h6-font-size: inherit;
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
+        }
+        #haxcmsmobilemenunav {
           height: 100vh;
           overflow-y: auto;
         }
-         scroll-button,
-         site-breadcrumb {
-           color: var(--haxcms-user-styles-color-theme-color-1);
-         }
-         * {
-           -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-           box-sizing: border-box;
-           -webkit-overflow-scrolling: touch;
-           -webkit-tap-highlight-color: transparent;
-           -webkit-text-size-adjust: none;
-           -webkit-touch-callout: none;
-           -webkit-font-smoothing: antialiased;
-         }
-         /* links */
-         
-         a {
-           text-decoration: none;
-         }
-         a:hover,
-         a:focus,
-         a:active {
-           outline: thin dotted;
-         }
-         a:-webkit-any-link {
-           color: -webkit-link;
-           cursor: pointer;
-           text-decoration: underline;
-         }
-         :host([menu-open]) .menu-outline {
-           left: 0;
-         }
-         .menu-outline {
-           font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-           position: absolute;
-           top: 0;
-           left: -300px;
-           bottom: 0;
-           z-index: 1;
-           overflow-y: hidden;
-           width: 300px;
-           color: #364149;
-           background-color: #ffffffEE;
-           border-right: 1px solid rgba(0,0,0,.07);
-           transition: left .3s ease;
-         }
-         :host([dark]) .menu-outline {
-           color: white;
-           background-color: #000000AA;
-         }
-         /* content */
-         .main-section h1 {
-           font-size: 2em;
-         }
-         :host([edit-mode]) .main-section {
-           outline: 1px solid grey;
-           outline-offset: 20px;
-         }
-         .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
-           margin-top: 1.275em;
-           margin-bottom: .85em;
-           font-weight: 700;
-         }
-         .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5 {
-           page-break-after: avoid;
-         }
-         :host([responsive-size="xs"][menu-open]) .pull-right {
-           display: none;
-         }
-         .pull-right {
-           top: 0px;
-           right: 16px;
-           position: fixed;
-         }
-         .main-content *,
-         .main-content ::slotted(*) {
-           box-sizing: border-box;
-           -webkit-box-sizing: border-box;
-           font-size: inherit;
-         }
-         @media (prefers-reduced-motion: reduce) {
-           .site-body,
-           .navigation,
-           .menu-outline {
-             transition: none !important;
-           }
-         }
- 
-         :host([menu-open]) .site-body {
-           left: 300px;
-         }
-         .site-body {
-           position: absolute;
-           top: 0;
-           right: 0;
-           left: 0;
-           bottom: 0;
-           min-width: 400px;
-           overflow-y: auto;
-           transition: left .3s ease;
-         }
+        scroll-button,
+        site-breadcrumb {
+          color: var(--haxcms-user-styles-color-theme-color-1);
+        }
+        * {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          -webkit-overflow-scrolling: touch;
+          -webkit-tap-highlight-color: transparent;
+          -webkit-text-size-adjust: none;
+          -webkit-touch-callout: none;
+          -webkit-font-smoothing: antialiased;
+        }
+        /* links */
+
+        a {
+          text-decoration: none;
+        }
+        a:hover,
+        a:focus,
+        a:active {
+          outline: thin dotted;
+        }
+        a:-webkit-any-link {
+          color: -webkit-link;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+        :host([menu-open]) .menu-outline {
+          left: 0;
+        }
+        .menu-outline {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          position: absolute;
+          top: 0;
+          left: -300px;
+          bottom: 0;
+          z-index: 1;
+          overflow-y: hidden;
+          width: 300px;
+          color: #364149;
+          background-color: #ffffffee;
+          border-right: 1px solid rgba(0, 0, 0, 0.07);
+          transition: left 0.3s ease;
+        }
+        :host([dark]) .menu-outline {
+          color: white;
+          background-color: #000000aa;
+        }
+        /* content */
+        .main-section h1 {
+          font-size: 2em;
+        }
+        :host([edit-mode]) .main-section {
+          outline: 1px solid grey;
+          outline-offset: 20px;
+        }
+        .main-content h1,
+        .main-content h2,
+        .main-content h3,
+        .main-content h4,
+        .main-content h5,
+        .main-content h6 {
+          margin-top: 1.275em;
+          margin-bottom: 0.85em;
+          font-weight: 700;
+        }
+        .main-content h1,
+        .main-content h2,
+        .main-content h3,
+        .main-content h4,
+        .main-content h5 {
+          page-break-after: avoid;
+        }
+        :host([responsive-size="xs"][menu-open]) .pull-right {
+          display: none;
+        }
+        .pull-right {
+          top: 0px;
+          right: 16px;
+          position: fixed;
+        }
+        .main-content *,
+        .main-content ::slotted(*) {
+          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          font-size: inherit;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .site-body,
+          .navigation,
+          .menu-outline {
+            transition: none !important;
+          }
+        }
+
+        :host([menu-open]) .site-body {
+          left: 300px;
+        }
+        .site-body {
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          min-width: 400px;
+          overflow-y: auto;
+          transition: left 0.3s ease;
+        }
 
         :host([responsive-size="xs"]) .page-inner,
         :host([responsive-size="sm"]) .page-inner,
@@ -200,7 +211,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
         :host([responsive-size="sm"]) .site-inner {
           padding: 0px 24px;
         }
-        
+
         :host([responsive-size="xs"]) .page-inner {
           overflow-x: auto;
         }
@@ -226,7 +237,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
         }
         h1 {
           font-size: 2em;
-          margin: .67em 0;
+          margin: 0.67em 0;
         }
         .main-content h2 {
           font-size: 1.75em;
@@ -234,215 +245,253 @@ class AppHaxTheme extends HAXCMSRememberRoute(
         .main-content h3 {
           font-size: 1.5em;
         }
-         .main-content h4 {
-           font-size: 1.25em;
-         }
-         .main-content h5 {
-           font-size: 1em;
-         }
-         .main-content h6 {
-           font-size: 1em;
-           color: #777;
-         }
-         .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
-           margin-top: 1.275em;
-           margin-bottom: .85em;
-           font-weight: 700;
-         }
- 
-         .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5 {
-           page-break-after: avoid;
-         }
-         .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content p {
-           orphans: 3;
-           widows: 3;
-         }
-         .main-content blockquote, .main-content dl, .main-content ol, .main-content p, .main-content table, .main-content ul {
-           margin-top: 0;
-           margin-bottom: .85em;
-         }
-         .main-content ol, .main-content ul {
-           padding: 0;
-           margin: 0;
-           margin-bottom: .85em;
-           padding-left: 2em;
-         }
-         .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content p {
-           orphans: 3;
-           widows: 3;
-         }
-         article, aside, details, figcaption, figure, header, hgroup, main, nav, section, summary {
-           display: block;
-         }
-         footer {
-           display: flex;
-           max-width: 860px;
-           padding-bottom: 24px;
-         }
-         .site-header {
-           overflow: visible;
-           z-index: 2;
-           background: transparent;
-           position: fixed;
-           display: block;
-           padding: 0 16px;
-         }
-         @media (max-width: 1200px) {
+        .main-content h4 {
+          font-size: 1.25em;
+        }
+        .main-content h5 {
+          font-size: 1em;
+        }
+        .main-content h6 {
+          font-size: 1em;
+          color: #777;
+        }
+        .main-content h1,
+        .main-content h2,
+        .main-content h3,
+        .main-content h4,
+        .main-content h5,
+        .main-content h6 {
+          margin-top: 1.275em;
+          margin-bottom: 0.85em;
+          font-weight: 700;
+        }
+
+        .main-content h1,
+        .main-content h2,
+        .main-content h3,
+        .main-content h4,
+        .main-content h5 {
+          page-break-after: avoid;
+        }
+        .main-content h2,
+        .main-content h3,
+        .main-content h4,
+        .main-content h5,
+        .main-content p {
+          orphans: 3;
+          widows: 3;
+        }
+        .main-content blockquote,
+        .main-content dl,
+        .main-content ol,
+        .main-content p,
+        .main-content table,
+        .main-content ul {
+          margin-top: 0;
+          margin-bottom: 0.85em;
+        }
+        .main-content ol,
+        .main-content ul {
+          padding: 0;
+          margin: 0;
+          margin-bottom: 0.85em;
+          padding-left: 2em;
+        }
+        .main-content h2,
+        .main-content h3,
+        .main-content h4,
+        .main-content h5,
+        .main-content p {
+          orphans: 3;
+          widows: 3;
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        header,
+        hgroup,
+        main,
+        nav,
+        section,
+        summary {
+          display: block;
+        }
+        footer {
+          display: flex;
+          max-width: 860px;
+          padding-bottom: 24px;
+        }
+        .site-header {
+          overflow: visible;
+          z-index: 2;
+          background: transparent;
+          position: fixed;
+          display: block;
+          padding: 0 16px;
+        }
+        @media (max-width: 1200px) {
           .site-header {
             height: 50px;
             position: fixed;
             width: 100vw;
             background-color: white;
-           }
-         }      
-         @media (max-width: 900px) {
-           footer {
-             position: fixed;
-             bottom: 0;
-             left: 0;
-             right: 0;
-           }
-           :host([menu-open]) footer {
-             left: 300px;
-           }
-         }
- 
-         @media (max-width: 700px){
-           .link-actions {
-             display: none;
-           }
-         }
-         @media (max-width: 1240px){
-           .site-body .body-inner {
-             position: static;
-             min-height: calc(100% - 98px);
-           }
-         }
-         @media (max-width: 1240px){
-           .site-body {
-             padding-bottom: 20px;
-           }
-         }
-         .site-body .site-inner {
-           position: relative;
-           top: 0;
-           right: 0;
-           left: 0;
-           bottom: 0;
-           overflow-y: auto;
-         }
-         .main-content * {
-           box-sizing: border-box;
-           -webkit-box-sizing: border-box;
-           font-size: inherit;
-         }
-         .page-wrapper {
-           position: relative;
-           outline: 0;
-         }
-         .page-inner {
-           position: relative;
-           max-width: 840px;
-           margin: 0 24px;
-           min-height: 90vh;
-           padding: 20px 15px 40px 15px;
-           background-color: #ffffffAA;
-         }
-         :host([dark]) .page-inner {
-          color: white;
-          background-color: #000000AA;
-         }
-         .main-section {
-           display: block;
-           word-wrap: break-word;
-           color: var(--haxcms-user-styles-color-theme-color-color);
-           line-height: 1.7;
-           text-size-adjust: 100%;
-           -ms-text-size-adjust: 100%;
-           -webkit-text-size-adjust: 100%;
-           -moz-text-size-adjust: 100%;
-         }
-         /* Navigation arrows */
-         site-menu-button {
-           --site-menu-button-icon-width: 48px;
-           --site-menu-button-icon-height: 48px;
-         }
-         .main-content site-active-title h1 {
-           font-size: 36px;
-           margin: 20px 0;
-           text-rendering: optimizeLegibility;
-         }
-         .navigation {
-           margin: 0 auto;
-           display: flex;
-           justify-content: center;
-           align-content: center;
-           flex-direction: column;
-           font-size: 40px;
-           color: #ccc;
-           text-align: center;
-         }
-         @media screen and (max-width: 600px) {
-            #slot ::slotted(iframe) {
-              width: auto;
-            }
-            #slot ::slotted(h1),
-            #slot ::slotted(h2),
-            #slot ::slotted(h3) {
-              font-size: 1.5em !important;
-            }
-            #slot ::slotted(h4),
-            #slot ::slotted(h5),
-            #slot ::slotted(h6) {
-              font-size: 1.2em !important;
-            }
-            #slot ::slotted(replace-tag) {
-              overflow: hidden;
-            }
           }
-         @media (max-width: 1240px) {
-           .navigation {
-             position: static;
-             margin: 0 auto;
-             display: inline-flex;
-           }
-         }
-         /* color,font,size switchers */
-           
-           .site-header .font-settings .font-enlarge {
-             line-height: 30px;
-             font-size: 1.4em;
-           }
-           .site-header .font-settings .font-reduce {
-             line-height: 30px;
-             font-size: 1em;
-           }
-           .site-header .font-settings .font-reduce {
-             line-height: 30px;
-             font-size: 1em;
-           }
- 
-           .site-body {
-             overflow-y: scroll;
-             color: var(--haxcms-user-styles-color-theme-color-color);
-           }
-           button, select {
-             text-transform: none;
-           }
-           button, input {
-             line-height: normal;
-           }
-           button, input, select, textarea {
-             font-family: inherit;
-             font-size: 100%;
-             margin: 0;
-           }
-           scroll-button {
-             position: absolute;
-             bottom: 0;
-             right: 16px;
-           }
-       `,
+        }
+        @media (max-width: 900px) {
+          footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+          :host([menu-open]) footer {
+            left: 300px;
+          }
+        }
+
+        @media (max-width: 700px) {
+          .link-actions {
+            display: none;
+          }
+        }
+        @media (max-width: 1240px) {
+          .site-body .body-inner {
+            position: static;
+            min-height: calc(100% - 98px);
+          }
+        }
+        @media (max-width: 1240px) {
+          .site-body {
+            padding-bottom: 20px;
+          }
+        }
+        .site-body .site-inner {
+          position: relative;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          overflow-y: auto;
+        }
+        .main-content * {
+          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          font-size: inherit;
+        }
+        .page-wrapper {
+          position: relative;
+          outline: 0;
+        }
+        .page-inner {
+          position: relative;
+          max-width: 840px;
+          margin: 0 24px;
+          min-height: 90vh;
+          padding: 20px 15px 40px 15px;
+          background-color: #ffffffaa;
+        }
+        :host([dark]) .page-inner {
+          color: white;
+          background-color: #000000aa;
+        }
+        .main-section {
+          display: block;
+          word-wrap: break-word;
+          color: var(--haxcms-user-styles-color-theme-color-color);
+          line-height: 1.7;
+          text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+          -webkit-text-size-adjust: 100%;
+          -moz-text-size-adjust: 100%;
+        }
+        /* Navigation arrows */
+        site-menu-button {
+          --site-menu-button-icon-width: 48px;
+          --site-menu-button-icon-height: 48px;
+        }
+        .main-content site-active-title h1 {
+          font-size: 36px;
+          margin: 20px 0;
+          text-rendering: optimizeLegibility;
+        }
+        .navigation {
+          margin: 0 auto;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          flex-direction: column;
+          font-size: 40px;
+          color: #ccc;
+          text-align: center;
+        }
+        @media screen and (max-width: 600px) {
+          #slot ::slotted(iframe) {
+            width: auto;
+          }
+          #slot ::slotted(h1),
+          #slot ::slotted(h2),
+          #slot ::slotted(h3) {
+            font-size: 1.5em !important;
+          }
+          #slot ::slotted(h4),
+          #slot ::slotted(h5),
+          #slot ::slotted(h6) {
+            font-size: 1.2em !important;
+          }
+          #slot ::slotted(replace-tag) {
+            overflow: hidden;
+          }
+        }
+        @media (max-width: 1240px) {
+          .navigation {
+            position: static;
+            margin: 0 auto;
+            display: inline-flex;
+          }
+        }
+        /* color,font,size switchers */
+
+        .site-header .font-settings .font-enlarge {
+          line-height: 30px;
+          font-size: 1.4em;
+        }
+        .site-header .font-settings .font-reduce {
+          line-height: 30px;
+          font-size: 1em;
+        }
+        .site-header .font-settings .font-reduce {
+          line-height: 30px;
+          font-size: 1em;
+        }
+
+        .site-body {
+          overflow-y: scroll;
+          color: var(--haxcms-user-styles-color-theme-color-color);
+        }
+        button,
+        select {
+          text-transform: none;
+        }
+        button,
+        input {
+          line-height: normal;
+        }
+        button,
+        input,
+        select,
+        textarea {
+          font-family: inherit;
+          font-size: 100%;
+          margin: 0;
+        }
+        scroll-button {
+          position: absolute;
+          bottom: 0;
+          right: 16px;
+        }
+      `,
     ];
   }
 
@@ -543,19 +592,19 @@ class AppHaxTheme extends HAXCMSRememberRoute(
       .href;
     const DesignLightModeLeft = new URL(
       "./assets/images/DesignLightModeLeft.svg",
-      import.meta.url
+      import.meta.url,
     ).href;
     const DesignLightModeRight = new URL(
       "./assets/images/DesignLightModeRight.svg",
-      import.meta.url
+      import.meta.url,
     ).href;
     const DesignDarkModeLeft = new URL(
       "./assets/images/DesignDarkModeLeft.svg",
-      import.meta.url
+      import.meta.url,
     ).href;
     const DesignDarkModeRight = new URL(
       "./assets/images/DesignDarkModeRight.svg",
-      import.meta.url
+      import.meta.url,
     ).href;
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
@@ -568,7 +617,10 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           background-image: url("${unsafeCSS(LMGridBox)}");
           background-repeat: repeat;
           background-position: center center;
-          background-size: auto, 20% auto, 20% auto;
+          background-size:
+            auto,
+            20% auto,
+            20% auto;
           --app-hax-accent-color: black;
           --app-hax-background-color: white;
           --simple-tooltip-background: #000000;
@@ -594,8 +646,14 @@ class AppHaxTheme extends HAXCMSRememberRoute(
             url("${unsafeCSS(DesignLightModeLeft)}"),
             url("${unsafeCSS(DesignLightModeRight)}");
           background-repeat: repeat, repeat-y, repeat-y;
-          background-position: center center, top left, top right;
-          background-size: auto, 20% auto, 20% auto;
+          background-position:
+            center center,
+            top left,
+            top right;
+          background-size:
+            auto,
+            20% auto,
+            20% auto;
           background-attachment: fixed, fixed, fixed;
         }
         div[slot="externalproviders"] {
@@ -649,31 +707,46 @@ class AppHaxTheme extends HAXCMSRememberRoute(
 
         @media (min-width: 721px) {
           :root {
-            background-size: auto, 23% auto, 23% auto;
+            background-size:
+              auto,
+              23% auto,
+              23% auto;
           }
         }
 
         @media (min-width: 601px) and (max-width: 720px) {
           :root {
-            background-size: auto, 26% auto, 26% auto;
+            background-size:
+              auto,
+              26% auto,
+              26% auto;
           }
         }
 
         @media (min-width: 481px) and (max-width: 600px) {
           :root {
-            background-size: auto, 30% auto, 30% auto;
+            background-size:
+              auto,
+              30% auto,
+              30% auto;
           }
         }
 
         @media (min-width: 371px) and (max-width: 480px) {
           :root {
-            background-size: auto, 35% auto, 35% auto;
+            background-size:
+              auto,
+              35% auto,
+              35% auto;
           }
         }
 
         @media (max-width: 370px) {
           :root {
-            background-size: auto, 37% auto, 37% auto;
+            background-size:
+              auto,
+              37% auto,
+              37% auto;
           }
         }
         .version {

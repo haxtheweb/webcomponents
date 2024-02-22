@@ -20,7 +20,7 @@ class DOCXFileSystemBroker extends FileSystemBroker {
     this.libPath += "mammoth/";
     ESGlobalBridgeStore.load(
       "mammoth",
-      this.libPath + "mammoth.browser.min.js"
+      this.libPath + "mammoth.browser.min.js",
     ).then(() => {
       if (globalThis.mammoth) {
         this.docx = globalThis.mammoth;
@@ -31,7 +31,7 @@ class DOCXFileSystemBroker extends FileSystemBroker {
             composed: true,
             cancelable: false,
             detail: this,
-          })
+          }),
         );
       }
     });
@@ -48,7 +48,7 @@ class DOCXFileSystemBroker extends FileSystemBroker {
           name: name,
           value: buffer.value,
         },
-      })
+      }),
     );
   }
   /**
@@ -100,7 +100,7 @@ globalThis.DOCXFileSystemBroker.requestAvailability = () => {
     globalThis.DOCXFileSystemBroker.instance =
       globalThis.document.createElement("docx-file-system-broker");
     globalThis.document.body.appendChild(
-      globalThis.DOCXFileSystemBroker.instance
+      globalThis.DOCXFileSystemBroker.instance,
     );
   }
   return globalThis.DOCXFileSystemBroker.instance;

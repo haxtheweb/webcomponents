@@ -5,9 +5,9 @@ import "../simple-timer.js";
 describe("simple-timer test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-timer title="test-title"></simple-timer> `
-    );
+    element = await fixture(html`
+      <simple-timer title="test-title"></simple-timer>
+    `);
   });
 
   it("passes the a11y audit", async () => {

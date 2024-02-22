@@ -55,8 +55,8 @@ export const LrndesignBarStory = () => {
         { slot: "heading", title: "Chart Heading" },
         { slot: "desc", title: "Chart Description" },
         { property: "showTable", title: "Show Table", inputMethod: "boolean" },
-      ]
-    )
+      ],
+    ),
   );
 };
 export const LrndesignLineStory = () => {
@@ -97,7 +97,7 @@ export const LrndesignLineStory = () => {
       { slot: "heading", title: "Chart Heading" },
       { slot: "desc", title: "Chart Description" },
       { property: "showTable", title: "Show Table", inputMethod: "boolean" },
-    ]
+    ],
   );
 };
 export const LrndesignPieStory = () => {
@@ -127,7 +127,7 @@ export const LrndesignPieStory = () => {
       { property: "showTable", title: "Show Table", inputMethod: "boolean" },
       { css: "width" },
       { css: "maxWidth" },
-    ]
+    ],
   );
 };
 export const LrndesignDonutStory = () => {
@@ -159,6 +159,6 @@ export const LrndesignDonutStory = () => {
       { property: "showTable", title: "Show Table", inputMethod: "boolean" },
       { css: "width" },
       { css: "maxWidth" },
-    ]
+    ],
   );
 };

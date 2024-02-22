@@ -110,7 +110,7 @@ class SimpleFieldsFormLite extends LitElement {
             composed: true,
             cancelable: false,
             detail: this.loadResponse,
-          })
+          }),
         );
       }
     });
@@ -135,7 +135,7 @@ class SimpleFieldsFormLite extends LitElement {
       this.loadEndpoint,
       this.method,
       this.headers,
-      this.body
+      this.body,
     ).then((data) => {
       this.loading = false;
       this.loadResponse = data;
@@ -148,7 +148,7 @@ class SimpleFieldsFormLite extends LitElement {
           detail: {
             value: data,
           },
-        })
+        }),
       );
     });
   }
@@ -161,7 +161,7 @@ class SimpleFieldsFormLite extends LitElement {
           Object.entries(body)
             .map(
               ([key, val]) =>
-                `${encodeURIComponent(key)}=${encodeURIComponent(val)}`
+                `${encodeURIComponent(key)}=${encodeURIComponent(val)}`,
             )
             .join("&");
       }

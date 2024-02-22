@@ -457,7 +457,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           cancelable: true,
           composed: false,
           detail: this.parentNode,
-        })
+        }),
       );
     }
   }
@@ -502,7 +502,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           cancelable: true,
           composed: false,
           detail: this,
-        })
+        }),
       );
     }, 0);
   }
@@ -525,7 +525,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           lg: 1000,
           xl: 2000,
         },
-      })
+      }),
     );
   }
   updated(changedProperties) {
@@ -561,7 +561,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         cancelable: true,
         composed: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -576,7 +576,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         cancelable: true,
         composed: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -595,7 +595,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         cancelable: true,
         composed: false,
         detail: this,
-      })
+      }),
     );
     super.disconnectedCallback();
   }

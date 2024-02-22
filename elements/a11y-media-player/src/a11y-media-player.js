@@ -796,7 +796,11 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
             left: 5px;
           }
 
-          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]):not([responsive-size="sm"]))
+          :host(
+              :not([no-height]):not([stacked-layout]):not(
+                  [responsive-size="xs"]
+                ):not([responsive-size="sm"])
+            )
             #player-and-controls.totop {
             position: absolute;
             top: 0;
@@ -937,7 +941,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               label="${this._getLocal(
                 this.localization,
                 this.__playing ? "pause" : "play",
-                "label"
+                "label",
               )}"
               @button-click="${this.togglePlay}"
               ?audio-only="${this.audioOnly}"
@@ -978,7 +982,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                             (key) =>
                               html`${this.captionCues[key].text
                                 ? this.captionCues[key].text
-                                : ""}`
+                                : ""}`,
                           )}
                     </div>
                   </div>
@@ -1009,12 +1013,12 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               icon="${this._getLocal(
                 this.localization,
                 this.__playing ? "pause" : "play",
-                "icon"
+                "icon",
               )}"
               label="${this._getLocal(
                 this.localization,
                 this.__playing ? "pause" : "play",
-                "label"
+                "label",
               )}"
               @click="${this.togglePlay}"
             ></a11y-media-button>
@@ -1067,12 +1071,12 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 icon="${this._getLocal(
                   this.localization,
                   this.muted ? "unmute" : "mute",
-                  "icon"
+                  "icon",
                 )}"
                 label="${this._getLocal(
                   this.localization,
                   this.muted ? "unmute" : "mute",
-                  "label"
+                  "label",
                 )}"
                 @click="${(e) => {
                   this.toggleMute();
@@ -1121,7 +1125,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               label="${this._getLocal(
                 this.localization,
                 "transcript",
-                "label"
+                "label",
               )}"
               ?disabled="${!this.hasCaptions || this.learningMode}"
               ?hidden="${!this.hasCaptions ||
@@ -1149,7 +1153,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               label="${this._getLocal(
                 this.localization,
                 "fullscreen",
-                "label"
+                "label",
               )}"
               ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
               ?toggle="${this.fullscreen}"
@@ -1323,32 +1327,32 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 next-button-icon="${this._getLocal(
                   this.localization,
                   "nextResult",
-                  "icon"
+                  "icon",
                 )}"
                 next-button-label="${this._getLocal(
                   this.localization,
                   "nextResult",
-                  "label"
+                  "label",
                 )}"
                 prev-button-icon="${this._getLocal(
                   this.localization,
                   "prevResult",
-                  "icon"
+                  "icon",
                 )}"
                 prev-button-label="${this._getLocal(
                   this.localization,
                   "prevResult",
-                  "label"
+                  "label",
                 )}"
                 search-input-icon="${this._getLocal(
                   this.localization,
                   "search",
-                  "icon"
+                  "icon",
                 )}"
                 search-input-label="${this._getLocal(
                   this.localization,
                   "search",
-                  "label"
+                  "label",
                 )}"
                 selector=".searchable"
                 ?disabled="${this.disableSearch}"
@@ -1365,12 +1369,12 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 icon="${this._getLocal(
                   this.localization,
                   "autoScroll",
-                  "icon"
+                  "icon",
                 )}"
                 label="${this._getLocal(
                   this.localization,
                   "autoScroll",
-                  "label"
+                  "label",
                 )}"
                 ?toggle="${!this.disableScroll}"
                 @click="${(e) => (this.disableScroll = !this.disableScroll)}"
@@ -1391,7 +1395,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 label="${this._getLocal(
                   this.localization,
                   "download",
-                  "label"
+                  "label",
                 )}"
                 @click="${this.download}"
               >
@@ -1421,13 +1425,13 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                           controls="html5"
                           end="${this._getHHMMSS(
                             cue.endTime,
-                            this.media.duration
+                            this.media.duration,
                           )}"
                           lang="${cue.track.language}"
                           role="button"
                           start="${this._getHHMMSS(
                             cue.endTime,
-                            this.media.duration
+                            this.media.duration,
                           )}"
                           tabindex="0"
                           @click="${(e) => this._handleCueSeek(cue)}"
@@ -1964,16 +1968,16 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
       !this.captionsTrack || !this.captionsTrack.cues
         ? []
         : this.isYoutube
-        ? Object.keys(this.captionsTrack.cues).map((key) => {
-            let cue = this.captionsTrack.cues[key];
-            if (
-              cue.startTime <= this.currentTime &&
-              cue.endTime >= this.currentTime
-            )
-              return cue;
-            return {};
-          })
-        : this.captionsTrack.activeCues;
+          ? Object.keys(this.captionsTrack.cues).map((key) => {
+              let cue = this.captionsTrack.cues[key];
+              if (
+                cue.startTime <= this.currentTime &&
+                cue.endTime >= this.currentTime
+              )
+                return cue;
+              return {};
+            })
+          : this.captionsTrack.activeCues;
     return cues;
   }
 
@@ -1989,7 +1993,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     Object.keys(
       this.loadedTracks && this.loadedTracks.textTracks
         ? this.loadedTracks.textTracks
-        : {}
+        : {},
     ).forEach((key) => {
       options[key] =
         this.loadedTracks.textTracks[key].label ||
@@ -2022,8 +2026,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
       this.media && this.media.duration && this.media.duration > 0
         ? this.media.duration
         : this.__preloadedDuration
-        ? this.__preloadedDuration
-        : 0;
+          ? this.__preloadedDuration
+          : 0;
     return duration;
   }
 
@@ -2324,12 +2328,12 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     let thumbnail = this.thumbnailSrc
       ? this.thumbnailSrc
       : this.media && !this.media.poster
-      ? this.media.poster
-      : false;
+        ? this.media.poster
+        : false;
     return !this.thumbnailSrc && this.youtubeId
       ? `https://img.youtube.com/vi/${this.youtubeId.replace(
           /[\?&].*/,
-          ""
+          "",
         )}/hqdefault.jpg`
       : thumbnail;
   }
@@ -2406,14 +2410,14 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     return this.duration > 0
       ? html`
           ${this._getHHMMSS(this.currentTime, this.duration)}/${this._getHHMMSS(
-            this.duration
+            this.duration,
           )}
         `
       : !this.isYoutube
-      ? this._getLocal(this.localization, "loading", "label")
-      : this.__playing
-      ? this._getLocal(this.localization, "youTubeLoading", "label")
-      : this._getLocal(this.localization, "youTubeLoading", "startLoading");
+        ? this._getLocal(this.localization, "loading", "label")
+        : this.__playing
+          ? this._getLocal(this.localization, "youTubeLoading", "label")
+          : this._getLocal(this.localization, "youTubeLoading", "startLoading");
   }
 
   /**
@@ -2431,7 +2435,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
    */
   get t() {
     let t = this._getSeconds(
-      this.anchor.params.t || this.anchor.params.start || `0s`
+      this.anchor.params.t || this.anchor.params.start || `0s`,
     );
     if (this.anchor && this.anchor.target === this) return t;
     if (this.videoData) return this.videoData.t || this.videoData.start;
@@ -2459,7 +2463,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     Object.keys(
       this.loadedTracks && this.loadedTracks.textTracks
         ? this.loadedTracks.textTracks
-        : {}
+        : {},
     ).forEach((key) => {
       options[key] =
         this.loadedTracks.textTracks[key].label ||
@@ -2556,11 +2560,11 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
       if (change(["height"])) {
         this.style.setProperty(
           "--a11y-media-player-height",
-          this.height ? this.height : "unset"
+          this.height ? this.height : "unset",
         );
         this.style.setProperty(
           "--a11y-media-transcript-max-height",
-          this.height ? "146px" : "unset"
+          this.height ? "146px" : "unset",
         );
       }
 
@@ -2579,7 +2583,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           this._setAttribute(
             "poster",
             !this.isYoutube ? this.thumbnailSrc : false,
-            this.__loadedTracks
+            this.__loadedTracks,
           );
         if (
           change(["isYoutube", "poster", "media", "audioOnly"]) &&
@@ -2596,8 +2600,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           `${propName
             .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
             .toLowerCase()}-changed`,
-          { detail: { value: this[propName] } }
-        )
+          { detail: { value: this[propName] } },
+        ),
       );
     });
   }
@@ -2645,7 +2649,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -2660,7 +2664,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           ? `${this.mediaTitle} (${this._getLocal(
               this.localization,
               "transcript",
-              "label"
+              "label",
             )})`
           : this._getLocal(this.localization, "transcript", "label"),
       filename = title.replace(/[^\w\d]/g, ""),
@@ -2669,13 +2673,14 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         .map(
           (key) =>
             `${this._getHHMMSS(cues[key].startTime)} - ${this._getHHMMSS(
-              cues[key].endTime
-            )}: \t${cues[key].text.replace(/[\n\r\s*]/g, " ")}\n`
+              cues[key].endTime,
+            )}: \t${cues[key].text.replace(/[\n\r\s*]/g, " ")}\n`,
         )
         .join("");
     a.setAttribute(
       "href",
-      "data:text/plain;charset=UTF-8," + encodeURIComponent(title + "\n" + data)
+      "data:text/plain;charset=UTF-8," +
+        encodeURIComponent(title + "\n" + data),
     );
     a.setAttribute("download", filename + ".txt");
     a.style.display = "none";
@@ -2692,7 +2697,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -2714,13 +2719,13 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           ? `${this.mediaTitle} (${this._getLocal(
               this.localization,
               "transcript",
-              "label"
+              "label",
             )})`
           : this._getLocal(this.localization, "transcript", "label"),
       print = globalThis.open(
         "",
         "",
-        "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
+        "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0",
       );
     print.document.body.innerHTML = `
      <h1>${title}</h1>
@@ -2744,7 +2749,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
          <span style="display: table-cell; line-height: 200%;">
            ${cues[key].text}
          </span>
-       </div>`
+       </div>`,
        )
        .join("")}
      `;
@@ -2765,7 +2770,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -2785,7 +2790,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
     /**
      * DEPRECATED: Fires when media plays
@@ -2797,7 +2802,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -2817,7 +2822,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -2837,7 +2842,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -2857,7 +2862,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -2878,7 +2883,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -2899,7 +2904,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -2921,7 +2926,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           composed: true,
           cancelable: false,
           detail: this,
-        })
+        }),
       );
     }
   }
@@ -2968,7 +2973,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         this.source && !this.source && this.source.match(/webm|ogv|mov|mp4$/),
       sourcesVideo =
         (this.sources || []).filter((source) =>
-          `${source.type || ""}${source.kind || ""}`.match(/video|mp4|webm|ogv/)
+          `${source.type || ""}${source.kind || ""}`.match(
+            /video|mp4|webm|ogv/,
+          ),
         ).length > 0,
       hasVideo = this.isYoutube || sourceVideo || sourcesVideo;
 
@@ -2999,7 +3006,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
       primary = globalThis.document.createElement(
         this.querySelectorAll('source[type*="audio"]').length > 0 || !hasVideo
           ? "audio"
-          : "video"
+          : "video",
       );
       if (!crossorigin) primary.setAttribute("crossorigin", this.crossorigin);
       primary.setAttribute("preload", "metadata");
@@ -3040,7 +3047,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
   _getTrack(track) {
     if (!track) {
       let defaultTracks = this.loadedTracks.textTracks.filter(
-        (track) => track.default === true
+        (track) => track.default === true,
       );
       return defaultTracks
         ? defaultTracks[0].track
@@ -3074,7 +3081,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -3097,7 +3104,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -3118,7 +3125,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
   /**
@@ -3149,7 +3156,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -3171,7 +3178,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -3195,7 +3202,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -3215,7 +3222,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
   toggleSettings(mode) {
@@ -3231,7 +3238,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -3254,7 +3261,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -3276,7 +3283,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -3288,7 +3295,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     media.style.width = "100%";
     media.style.maxWidth = "100%";
     Object.keys(media.textTracks).forEach((track) =>
-      this._onAddTrack(media.textTracks[track])
+      this._onAddTrack(media.textTracks[track]),
     );
     media.textTracks.onremovetrack = (e) => this._onRemoveTrack(e.track);
     media.textTracks.onaddtrack = (e) => this._onAddTrack(e.track);
@@ -3359,8 +3366,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     if (!this.youtubeId && this.anchor.target === this) {
       this.seek(
         this._getSeconds(
-          this.anchor.params.t || this.anchor.params.start || `0s`
-        )
+          this.anchor.params.t || this.anchor.params.start || `0s`,
+        ),
       );
     }
   }
@@ -3442,7 +3449,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
   _getTrackId(track) {
     return this.loadedTracks
       ? Object.keys(this.loadedTracks.textTracks).find(
-          (key) => this.loadedTracks.textTracks[key] === track
+          (key) => this.loadedTracks.textTracks[key] === track,
         ) || -1
       : -1;
   }
@@ -3484,7 +3491,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
   _onRemoveTrack(track) {
     if (this.loadedTracks && this.loadedTracks.textTracks)
       Object.keys(this.loadedTracks.textTracks).filter(
-        (textTrack) => this.loadedTracks.textTracks[textTrack] !== track
+        (textTrack) => this.loadedTracks.textTracks[textTrack] !== track,
       );
     this.__cues = this.cues
       ? this.cues.filter((cue) => cue.track !== track)
@@ -3496,12 +3503,12 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     }
     this.style.setProperty(
       "--a11y-media-transcript-max-height",
-      this.height ? "146px" : "unset"
+      this.height ? "146px" : "unset",
     );
     this.__loadedTracks = this.getloadedTracks();
     this._handleMediaLoaded();
     this.__loadedTracks.addEventListener("loadedmetadata", (e) =>
-      this._handleMediaLoaded(e)
+      this._handleMediaLoaded(e),
     );
     this.__loadedTracks.addEventListener("timeupdate", (e) => {
       this._handleTimeUpdate(e);
@@ -3521,7 +3528,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           lg: 1000,
           xl: 1500,
         },
-      })
+      }),
     );
     /**
      * Fires when a new player is ready for a11y-media-state-manager
@@ -3533,7 +3540,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
     this.__playerReady = true;
   }

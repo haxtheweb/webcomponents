@@ -5,9 +5,9 @@ import "../simple-icon.js";
 describe("simple-icon test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-icon title="test-title"></simple-icon> `
-    );
+    element = await fixture(html`
+      <simple-icon title="test-title"></simple-icon>
+    `);
   });
 
   it("passes the a11y audit", async () => {

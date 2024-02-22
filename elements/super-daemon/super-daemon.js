@@ -138,31 +138,31 @@ class SuperDaemon extends SimpleColors {
     window.addEventListener(
       "super-daemon-define-option",
       this.defineOptionEvent.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.addEventListener(
       "super-daemon-element-method",
       this.elementMethod.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.addEventListener(
       "super-daemon-element-click",
       this.elementClick.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.addEventListener(
       "super-daemon-run-program",
       this.runProgramEvent.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.addEventListener(
       "super-daemon-voice-command",
       this._addVoiceCommand.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     window.addEventListener("super-daemon-close", this.close.bind(this), {
       signal: this.windowControllers.signal,
@@ -201,7 +201,7 @@ class SuperDaemon extends SimpleColors {
     values = {},
     program = null,
     name = null,
-    search = ""
+    search = "",
   ) {
     this.commandContext = context;
     // resolve program as string based name vs function passed in
@@ -234,7 +234,7 @@ class SuperDaemon extends SimpleColors {
             this.loading = true;
             this.programResults = await this._programToRun(
               this.programSearch,
-              values
+              values,
             );
             this.loading = false;
           } catch (e) {
@@ -259,7 +259,7 @@ class SuperDaemon extends SimpleColors {
         this._programValues,
         data.program,
         data.name,
-        ""
+        "",
       );
     } else {
       this.runProgram("", "/");
@@ -284,7 +284,7 @@ class SuperDaemon extends SimpleColors {
           bubbles: true,
           cancelable: true,
           view: window,
-        })
+        }),
       );
     }
   }
@@ -549,7 +549,7 @@ class SuperDaemon extends SimpleColors {
             composed: true,
             cancelable: true,
             detail: true,
-          })
+          }),
         );
       }
       // we have an event, but not a close event
@@ -560,7 +560,7 @@ class SuperDaemon extends SimpleColors {
             composed: true,
             cancelable: false,
             detail: false,
-          })
+          }),
         );
       }
     }
@@ -620,7 +620,7 @@ class SuperDaemon extends SimpleColors {
     return new Promise((resolve) => {
       let playSound = ["coin2"].includes(sound) ? sound : "coin2";
       this.audio = new Audio(
-        new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
+        new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href,
       );
       this.audio.volume = 0.3;
       this.audio.onended = (event) => {
@@ -798,7 +798,7 @@ class SuperDaemon extends SimpleColors {
               @super-daemon-command-context-changed="${this
                 .commandContextChanged}"
               >${this.noResultsSlot(
-                this.like || this.programSearch
+                this.like || this.programSearch,
               )}</super-daemon-ui
             >
           </absolute-position-behavior>
@@ -834,7 +834,7 @@ class SuperDaemon extends SimpleColors {
               @super-daemon-command-context-changed="${this
                 .commandContextChanged}"
               >${this.noResultsSlot(
-                this.like || this.programSearch
+                this.like || this.programSearch,
               )}</super-daemon-ui
             >
             <simple-icon-button
@@ -888,7 +888,7 @@ class SuperDaemon extends SimpleColors {
           "What do you need?",
           "How can I help?",
         ]),
-        this.santaMode
+        this.santaMode,
       )
       .then((e) => {
         this.playSound().then((e) => {
@@ -901,7 +901,7 @@ class SuperDaemon extends SimpleColors {
     if (this.santaMode) {
       this.hal.speak(
         "Please disable Santa mode to stop listening",
-        this.santaMode
+        this.santaMode,
       );
     }
     this.setListeningStatus(false);
@@ -916,7 +916,7 @@ class SuperDaemon extends SimpleColors {
             "See you soon",
             "Till we meet again",
           ]),
-          this.santaMode
+          this.santaMode,
         )
         .then((e) => {
           this.close();
@@ -1002,7 +1002,7 @@ class SuperDaemon extends SimpleColors {
           detail: {
             value: this.commandContext,
           },
-        })
+        }),
       );
     }
     if (changedProperties.has("context")) {
@@ -1013,7 +1013,7 @@ class SuperDaemon extends SimpleColors {
           detail: {
             value: this.context,
           },
-        })
+        }),
       );
     }
     if (changedProperties.has("voiceSearch") && this.voiceSearch) {
@@ -1048,7 +1048,7 @@ class SuperDaemon extends SimpleColors {
               composed: true,
               cancelable: false,
               detail: false,
-            })
+            }),
           );
         }
       }, 100);
@@ -1061,7 +1061,7 @@ class SuperDaemon extends SimpleColors {
       this.loading = true;
       this.programResults = await this._programToRun(
         e.detail.value,
-        this._programValues
+        this._programValues,
       );
       this.loading = false;
     } else {

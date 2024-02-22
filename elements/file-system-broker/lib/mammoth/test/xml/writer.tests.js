@@ -12,7 +12,7 @@ test("can write empty child elements", function () {
   assertXmlString(
     xml.element("root", {}, [xml.element("album"), xml.element("single")]),
     {},
-    "<root><album/><single/></root>"
+    "<root><album/><single/></root>",
   );
 });
 
@@ -30,7 +30,7 @@ test("can write element attributes", function () {
   assertXmlString(
     element,
     {},
-    '<root><album title="Everything in Transit"/></root>'
+    '<root><album title="Everything in Transit"/></root>',
   );
 });
 
@@ -41,7 +41,7 @@ test("can write text nodes", function () {
   assertXmlString(
     element,
     {},
-    "<root><album>Everything in Transit</album></root>"
+    "<root><album>Everything in Transit</album></root>",
   );
 });
 
@@ -55,7 +55,7 @@ test("can write child elements with long-form prefix when URI is namespace", fun
   assertXmlString(
     element,
     { m: "music" },
-    '<root xmlns:m="music"><m:album/></root>'
+    '<root xmlns:m="music"><m:album/></root>',
   );
 });
 
@@ -64,7 +64,7 @@ test("can write child elements with short-form prefix when URI is namespace", fu
   assertXmlString(
     element,
     { m: "music" },
-    '<root xmlns:m="music"><m:album/></root>'
+    '<root xmlns:m="music"><m:album/></root>',
   );
 });
 
@@ -73,13 +73,13 @@ test("default namespace has key of empty string", function () {
   assertXmlString(
     element,
     { "": "music" },
-    '<root xmlns="music"><album/></root>'
+    '<root xmlns="music"><album/></root>',
   );
 });
 
 function assertXmlString(element, namespaces, expectedString) {
   assert.equal(
     writer.writeString(element, namespaces),
-    '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + expectedString
+    '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + expectedString,
   );
 }

@@ -119,7 +119,7 @@ const HAXCMSTheme = function (SuperClass) {
         // if we are on the homepage then load the first item in the manifest
         // and set it active
         const firstItem = store.routerManifest.items.find(
-          (i) => typeof i.id !== "undefined"
+          (i) => typeof i.id !== "undefined",
         );
         if (firstItem) {
           store.activeId = firstItem.id;
@@ -189,14 +189,14 @@ const HAXCMSTheme = function (SuperClass) {
           var color = varGet(
             __manifest,
             "metadata.theme.variables.cssVariable",
-            null
+            null,
           );
           // fallback if color wasn't set via css var
           if (color == null) {
             color = varGet(
               __manifest,
               "metadata.theme.variables.hexCode",
-              "#ff0074"
+              "#ff0074",
             );
           } else {
             color = `var(${color})`;
@@ -239,7 +239,7 @@ const HAXCMSTheme = function (SuperClass) {
           composed: true,
           cancelable: true,
           detail: {},
-        })
+        }),
       );
     }
   };
@@ -286,19 +286,19 @@ class HAXCMSThemeWiring {
     globalThis.addEventListener(
       "haxcms-active-item-changed",
       this._activeItemUpdate.bind(element),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "haxcms-edit-mode-changed",
       this._globalEditChanged.bind(element),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdate.bind(element),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     // inject the tools to allow for an authoring experience
@@ -317,7 +317,7 @@ class HAXCMSThemeWiring {
       store.cmsSiteEditor.instance.appElement = element;
       store.cmsSiteEditor.instance.appendTarget = injector;
       store.cmsSiteEditor.instance.appendTarget.appendChild(
-        store.cmsSiteEditor.instance
+        store.cmsSiteEditor.instance,
       );
     }
   }
@@ -374,7 +374,7 @@ class HAXCMSThemeWiring {
         composed: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
   }
 }

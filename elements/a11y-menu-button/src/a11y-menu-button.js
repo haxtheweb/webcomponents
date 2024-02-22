@@ -246,7 +246,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       this.addEventListener("add-a11y-menu-button-item", this._handleAddItem);
       this.addEventListener(
         "remove-a11y-menu-button-item",
-        this._handleRemoveItem
+        this._handleRemoveItem,
       );
     }
     /**
@@ -346,7 +346,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             cancelable: true,
             composed: true,
             detail: this,
-          })
+          }),
         );
       }
     }
@@ -367,7 +367,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
     /**
@@ -528,7 +528,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       let listeners = this.itemListeners;
       this.menuItems = this.menuItems || [];
       Object.keys(listeners).forEach((evt) =>
-        item.addEventListener(evt, listeners[evt].bind(this))
+        item.addEventListener(evt, listeners[evt].bind(this)),
       );
       this.menuItems.push(item);
     }
@@ -542,7 +542,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       if (this.menuItems)
         this.menuItems = [...this.menuItems.filter((i) => item !== i)];
       Object.keys(listeners).forEach((evt) =>
-        item.removeEventListener(evt, listeners[evt].bind(this))
+        item.removeEventListener(evt, listeners[evt].bind(this)),
       );
     }
     /**
@@ -585,7 +585,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: event,
-        })
+        }),
       );
       event.stopPropagation();
     }

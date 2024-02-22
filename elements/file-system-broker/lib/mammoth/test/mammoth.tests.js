@@ -118,7 +118,7 @@ test("explicit style map is combined with embedded style map", function () {
     .then(function (result) {
       assert.equal(
         result.value,
-        "<h1><strong>Walking on imported air</strong></h1>"
+        "<h1><strong>Walking on imported air</strong></h1>",
       );
       assert.deepEqual(result.messages, []);
     });
@@ -236,7 +236,7 @@ test("inline images referenced by path relative to part are included in output",
   return mammoth.convertToHtml({ path: docxPath }).then(function (result) {
     assert.equal(
       result.value,
-      '<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOvgAADr4B6kKxwAAAABNJREFUKFNj/M+ADzDhlWUYqdIAQSwBE8U+X40AAAAASUVORK5CYII=" /></p>'
+      '<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOvgAADr4B6kKxwAAAABNJREFUKFNj/M+ADzDhlWUYqdIAQSwBE8U+X40AAAAASUVORK5CYII=" /></p>',
     );
   });
 });
@@ -244,12 +244,12 @@ test("inline images referenced by path relative to part are included in output",
 test("inline images referenced by path relative to base are included in output", function () {
   var docxPath = path.join(
     __dirname,
-    "test-data/tiny-picture-target-base-relative.docx"
+    "test-data/tiny-picture-target-base-relative.docx",
   );
   return mammoth.convertToHtml({ path: docxPath }).then(function (result) {
     assert.equal(
       result.value,
-      '<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOvgAADr4B6kKxwAAAABNJREFUKFNj/M+ADzDhlWUYqdIAQSwBE8U+X40AAAAASUVORK5CYII=" /></p>'
+      '<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOvgAADr4B6kKxwAAAABNJREFUKFNj/M+ADzDhlWUYqdIAQSwBE8U+X40AAAAASUVORK5CYII=" /></p>',
     );
   });
 });
@@ -273,7 +273,7 @@ test("images stored outside of document are included in output", function () {
   return mammoth.convertToHtml({ path: docxPath }).then(function (result) {
     assert.equal(
       result.value,
-      '<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOvgAADr4B6kKxwAAAABNJREFUKFNj/M+ADzDhlWUYqdIAQSwBE8U+X40AAAAASUVORK5CYII=" /></p>'
+      '<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOvgAADr4B6kKxwAAAABNJREFUKFNj/M+ADzDhlWUYqdIAQSwBE8U+X40AAAAASUVORK5CYII=" /></p>',
     );
     assert.deepEqual(result.messages, []);
   });
@@ -286,7 +286,7 @@ test("error if images stored outside of document are specified when passing file
     assert.equal(result.value, "");
     assert.equal(
       result.messages[0].message,
-      "could not find external image 'tiny-picture.png', path of input document is unknown"
+      "could not find external image 'tiny-picture.png', path of input document is unknown",
     );
     assert.equal(result.messages[0].type, "error");
   });
@@ -411,7 +411,7 @@ test("underline can be configured with style mapping", function () {
     .then(function (result) {
       assert.equal(
         result.value,
-        "<p><strong>The <em>Sunset</em> Tree</strong></p>"
+        "<p><strong>The <em>Sunset</em> Tree</strong></p>",
       );
     });
 });
@@ -421,7 +421,7 @@ test("strikethrough is converted to <s> by default", function () {
   return mammoth.convertToHtml({ path: docxPath }).then(function (result) {
     assert.equal(
       result.value,
-      "<p><s>Today's Special: Salmon</s> Sold out</p>"
+      "<p><s>Today's Special: Salmon</s> Sold out</p>",
     );
   });
 });
@@ -433,7 +433,7 @@ test("strikethrough conversion can be configured with style mappings", function 
     .then(function (result) {
       assert.equal(
         result.value,
-        "<p><del>Today's Special: Salmon</del> Sold out</p>"
+        "<p><del>Today's Special: Salmon</del> Sold out</p>",
       );
     });
 });
@@ -454,7 +454,7 @@ test("using styleMapping throws error", function () {
   } catch (error) {
     assert.equal(
       error.message,
-      "Use a raw string instead of mammoth.styleMapping e.g. \"p[style-name='Title'] => h1\" instead of mammoth.styleMapping(\"p[style-name='Title'] => h1\")"
+      "Use a raw string instead of mammoth.styleMapping e.g. \"p[style-name='Title'] => h1\" instead of mammoth.styleMapping(\"p[style-name='Title'] => h1\")",
     );
   }
 });
@@ -496,8 +496,8 @@ test("should throw error if file is not a valid docx document", function () {
     function (error) {
       assert.equal(
         error.message,
-        "Could not find main document part. Are you sure this is a valid .docx file?"
+        "Could not find main document part. Are you sure this is a valid .docx file?",
       );
-    }
+    },
   );
 });

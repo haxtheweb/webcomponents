@@ -143,6 +143,6 @@ export const SimpleIconPickerStory = () => {
         title: "Background color for listbox",
       },
     ],
-    ["hideOptionLabels", "options", "titleAsHtml"]
+    ["hideOptionLabels", "options", "titleAsHtml"],
   );
 };

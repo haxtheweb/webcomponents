@@ -5,9 +5,9 @@ import "../scroll-button.js";
 describe("scroll-button test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <scroll-button title="test-title"></scroll-button> `
-    );
+    element = await fixture(html`
+      <scroll-button title="test-title"></scroll-button>
+    `);
   });
 
   it("passes the a11y audit", async () => {

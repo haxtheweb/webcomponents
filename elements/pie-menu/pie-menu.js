@@ -333,7 +333,7 @@ class PieMenu extends PolymerElement {
   }
   _getButtonElements(menu, button) {
     return menu.querySelectorAll(
-      '[data-button="' + button.getAttribute("data-button") + '"]'
+      '[data-button="' + button.getAttribute("data-button") + '"]',
     );
   }
   /**
@@ -357,7 +357,7 @@ class PieMenu extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: { option: localLink },
-      })
+      }),
     );
   }
 }

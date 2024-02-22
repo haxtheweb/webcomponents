@@ -5,11 +5,13 @@ import "../lrn-vocab.js";
 describe("lrn-vocab test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(html` <lrn-vocab term="breaching">
-        <video-player
-          source="https://youtu.be/4EojXTOtNTA"
-        ></video-player> </lrn-vocab
-      >like whales when attacking prey from underneath.`);
+    element = await fixture(
+      html` <lrn-vocab term="breaching">
+          <video-player
+            source="https://youtu.be/4EojXTOtNTA"
+          ></video-player> </lrn-vocab
+        >like whales when attacking prey from underneath.`,
+    );
   });
 
   it("passes the a11y audit", async () => {

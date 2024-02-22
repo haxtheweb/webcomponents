@@ -273,7 +273,7 @@ var createCacheKey = function (
   originalUrl,
   paramName,
   paramValue,
-  dontCacheBustUrlsMatching
+  dontCacheBustUrlsMatching,
 ) {
   // Create a new URL object to avoid modifying originalUrl.
   var url = new URL(originalUrl);
@@ -309,7 +309,7 @@ var isPathWhitelisted = function (whitelist, absoluteUrlString) {
 
 var stripIgnoredUrlParameters = function (
   originalUrl,
-  ignoreUrlParametersMatching
+  ignoreUrlParametersMatching,
 ) {
   var url = new URL(originalUrl);
   // Remove the hash; see https://github.com/GoogleChrome/sw-precache/issues/290
@@ -342,7 +342,7 @@ var urlsToCacheKeys = new Map(
     var absoluteUrl = new URL(relativeUrl, self.location);
     var cacheKey = createCacheKey(absoluteUrl, hashParamName, hash, false);
     return [absoluteUrl.toString(), cacheKey];
-  })
+  }),
 );
 
 function setOfCachedUrls(cache) {
@@ -380,25 +380,25 @@ self.addEventListener("install", function (event) {
                         cacheKey +
                         " returned a " +
                         "response with status " +
-                        response.status
+                        response.status,
                     );
                   }
 
-                  return cleanResponse(response).then(function (
-                    responseToCache
-                  ) {
-                    return cache.put(cacheKey, responseToCache);
-                  });
+                  return cleanResponse(response).then(
+                    function (responseToCache) {
+                      return cache.put(cacheKey, responseToCache);
+                    },
+                  );
                 });
               }
-            })
+            }),
           );
         });
       })
       .then(function () {
         // Force the SW to transition from installing -> active state
         return self.skipWaiting();
-      })
+      }),
   );
 });
 
@@ -415,13 +415,13 @@ self.addEventListener("activate", function (event) {
               if (!setOfExpectedUrls.has(existingRequest.url)) {
                 return cache.delete(existingRequest);
               }
-            })
+            }),
           );
         });
       })
       .then(function () {
         return self.clients.claim();
-      })
+      }),
   );
 });
 
@@ -436,7 +436,7 @@ self.addEventListener("fetch", function (event) {
     // have that URL in our cache. If so, great! shouldRespond will be true.
     var url = stripIgnoredUrlParameters(
       event.request.url,
-      ignoreUrlParametersMatching
+      ignoreUrlParametersMatching,
     );
     shouldRespond = urlsToCacheKeys.has(url);
 
@@ -475,7 +475,7 @@ self.addEventListener("fetch", function (event) {
                   return response;
                 }
                 throw Error(
-                  "The cached response that was expected is missing."
+                  "The cached response that was expected is missing.",
                 );
               });
           })
@@ -485,10 +485,10 @@ self.addEventListener("fetch", function (event) {
             console.warn(
               'Couldn\'t serve response for "%s" from cache: %O',
               event.request.url,
-              e
+              e,
             );
             return fetch(event.request);
-          })
+          }),
       );
     }
   }
@@ -520,10 +520,10 @@ self.addEventListener("fetch", function (event) {
       "undefined" != typeof window
         ? window
         : "undefined" != typeof global
-        ? global
-        : "undefined" != typeof self
-        ? self
-        : this),
+          ? global
+          : "undefined" != typeof self
+            ? self
+            : this),
       (t.toolbox = e());
   }
 })(function () {
@@ -549,7 +549,7 @@ self.addEventListener("fetch", function (event) {
           e,
           t,
           n,
-          r
+          r,
         );
       }
       return n[c].exports;
@@ -613,7 +613,7 @@ self.addEventListener("fetch", function (event) {
                   ". Max entries is " +
                   c +
                   ", max age is " +
-                  i
+                  i,
               ),
               g
                 .getDb(s)
@@ -653,13 +653,13 @@ self.addEventListener("fetch", function (event) {
                             return n.match(e).then(function (t) {
                               return r.put(e, t);
                             });
-                          })
+                          }),
                         );
                       })
                       .then(function () {
                         return caches.delete(e);
                       });
-                  }
+                  },
                 );
               })
             );
@@ -688,7 +688,7 @@ self.addEventListener("fetch", function (event) {
               !t)
             )
               throw new TypeError(
-                "The precache method expects either an array of strings and/or Requests or a Promise that resolves to an array of strings and/or Requests."
+                "The precache method expects either an array of strings and/or Requests or a Promise that resolves to an array of strings and/or Requests.",
               );
             return e;
           }
@@ -858,7 +858,7 @@ self.addEventListener("fetch", function (event) {
                         e.addAll(t)
                       );
                     });
-                })
+                }),
               );
           }
           e("serviceworker-cache-polyfill");
@@ -973,7 +973,7 @@ self.addEventListener("fetch", function (event) {
                 h = a.regexp || a.fullUrlRegExp;
               f.has(h.source) &&
                 i.debug(
-                  '"' + t + '" resolves to same regex as existing route.'
+                  '"' + t + '" resolves to same regex as existing route.',
                 ),
                 f.set(h.source, a);
             }),
@@ -1070,8 +1070,8 @@ self.addEventListener("fetch", function (event) {
                             new Error(
                               'Both cache and network failed: "' +
                                 a.join('", "') +
-                                '"'
-                            )
+                                '"',
+                            ),
                           )
                         : (s = !0);
                   },
@@ -1139,7 +1139,7 @@ self.addEventListener("fetch", function (event) {
                     throw (
                       (i.debug(
                         "Response was an HTTP error: " + e.statusText,
-                        n
+                        n,
                       ),
                       (a = e),
                       new Error("Bad response"))
@@ -1151,7 +1151,7 @@ self.addEventListener("fetch", function (event) {
                         "Network or response error, fallback to cache [" +
                           e.url +
                           "]",
-                        n
+                        n,
                       ),
                       t.match(e).then(function (e) {
                         if (e) return e;
@@ -1308,7 +1308,7 @@ self.addEventListener("fetch", function (event) {
                       continue;
                     }
                     throw new TypeError(
-                      'Expected "' + h.name + '" to be defined'
+                      'Expected "' + h.name + '" to be defined',
                     );
                   }
                   if (v(l)) {
@@ -1318,12 +1318,12 @@ self.addEventListener("fetch", function (event) {
                           h.name +
                           '" to not repeat, but received `' +
                           JSON.stringify(l) +
-                          "`"
+                          "`",
                       );
                     if (0 === l.length) {
                       if (h.optional) continue;
                       throw new TypeError(
-                        'Expected "' + h.name + '" to not be empty'
+                        'Expected "' + h.name + '" to not be empty',
                       );
                     }
                     for (var d = 0; d < l.length; d++) {
@@ -1335,7 +1335,7 @@ self.addEventListener("fetch", function (event) {
                             h.pattern +
                             '", but received `' +
                             JSON.stringify(p) +
-                            "`"
+                            "`",
                         );
                       o += (0 === d ? h.prefix : h.delimiter) + p;
                     }
@@ -1348,7 +1348,7 @@ self.addEventListener("fetch", function (event) {
                           h.pattern +
                           '", but received "' +
                           p +
-                          '"'
+                          '"',
                       );
                     o += h.prefix + p;
                   }
@@ -1443,7 +1443,7 @@ self.addEventListener("fetch", function (event) {
               "(\\\\.)",
               "([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))",
             ].join("|"),
-            "g"
+            "g",
           );
         },
         { isarray: 14 },
@@ -1483,7 +1483,7 @@ self.addEventListener("fetch", function (event) {
                             if ("http:" !== n && "https:" !== n)
                               throw new t("Invalid scheme");
                             return fetch(e.clone());
-                          })
+                          }),
                         )
                       );
                     })
@@ -1497,7 +1497,7 @@ self.addEventListener("fetch", function (event) {
                       return Promise.all(
                         r.map(function (t, r) {
                           return n.put(e[r], t);
-                        })
+                        }),
                       );
                     })
                     .then(function () {})
@@ -1512,7 +1512,7 @@ self.addEventListener("fetch", function (event) {
       ],
     },
     {},
-    [13]
+    [13],
   )(13);
 });
 

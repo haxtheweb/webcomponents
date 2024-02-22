@@ -371,7 +371,7 @@ class SimpleModal extends LitElement {
         composed: true,
         cancelable: false,
         detail: false,
-      })
+      }),
     );
     if (this.opened) {
       // wipe the slot of our modal
@@ -386,7 +386,7 @@ class SimpleModal extends LitElement {
           e.detail.modalClass,
           e.detail.styles,
           e.detail.clone,
-          e.detail.modal
+          e.detail.modal,
         );
       }, 0);
     } else {
@@ -399,7 +399,7 @@ class SimpleModal extends LitElement {
         e.detail.modalClass,
         e.detail.styles,
         e.detail.clone,
-        e.detail.modal
+        e.detail.modal,
       );
     }
   }
@@ -415,7 +415,7 @@ class SimpleModal extends LitElement {
     modalClass = null,
     styles = null,
     clone = false,
-    modal = false
+    modal = false,
   ) {
     this.invokedBy = invokedBy;
     this.modal = modal;

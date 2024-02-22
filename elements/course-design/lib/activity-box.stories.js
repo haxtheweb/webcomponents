@@ -17,5 +17,5 @@ export const ActivityBoxStory = () =>
   utils.makeUsageDocs(
     ActivityBox,
     import.meta.url,
-    utils.makeElementFromHaxDemo(ActivityBox)
+    utils.makeElementFromHaxDemo(ActivityBox),
   );

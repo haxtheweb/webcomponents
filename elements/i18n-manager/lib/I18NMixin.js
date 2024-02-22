@@ -48,7 +48,7 @@ export const I18NMixin = function (SuperClass) {
       if (!detail.localesPath && detail.basePath) {
         // clean up path and force adding locales. part security thing as well
         detail.localesPath = `${decodeURIComponent(
-          detail.basePath
+          detail.basePath,
         )}/../locales`;
       }
       // register the localization directly, skipping event

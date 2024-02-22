@@ -5,9 +5,9 @@ import "../github-preview.js";
 describe("github-preview test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <github-preview title="test-title"></github-preview> `
-    );
+    element = await fixture(html`
+      <github-preview title="test-title"></github-preview>
+    `);
   });
 
   it("passes the a11y audit", async () => {

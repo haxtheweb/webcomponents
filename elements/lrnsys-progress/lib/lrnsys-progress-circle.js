@@ -22,8 +22,8 @@ class LrnsysProgressCircle extends PolymerElement {
         <style is="custom-style">
           :host {
             display: block;
-            transition: box-shadow
-                var(--lrnsys-progress-circle-transition, 0.5s) linear,
+            transition:
+              box-shadow var(--lrnsys-progress-circle-transition, 0.5s) linear,
               color var(--lrnsys-progress-circle-transition, 0.5s) ease-in-out,
               background-color var(--lrnsys-progress-circle-transition, 0.5s)
                 ease-in-out;
@@ -69,7 +69,8 @@ class LrnsysProgressCircle extends PolymerElement {
             );
             --circle-progress-transition: 0.5s;
             --circle-progress-stroke-linecap: square;
-            transition: color 0.5s ease-in-out,
+            transition:
+              color 0.5s ease-in-out,
               background-color 0.5s ease-in-out;
           }
           paper-spinner {
@@ -83,7 +84,9 @@ class LrnsysProgressCircle extends PolymerElement {
             padding: 0;
             visibility: visible;
             opacity: 1;
-            transition: visibility 0.4s, opacity 0.4s ease;
+            transition:
+              visibility 0.4s,
+              opacity 0.4s ease;
           }
           paper-spinner.multi {
             --paper-spinner-layer-1-color: var(--paper-purple-500);
@@ -99,8 +102,11 @@ class LrnsysProgressCircle extends PolymerElement {
           simple-icon {
             visibility: visible;
             opacity: 1;
-            transition: width 0.1s linear, height 0.1s linear,
-              visibility 0.4s ease, opacity 0.4s ease;
+            transition:
+              width 0.1s linear,
+              height 0.1s linear,
+              visibility 0.4s ease,
+              opacity 0.4s ease;
             --simple-icon-width: var(--lrnsys-progress-icon-size, 24px);
             --simple-icon-height: var(--lrnsys-progress-icon-size, 24px);
           }
@@ -486,7 +492,7 @@ class LrnsysProgressCircle extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: { percentage: 75 },
-        })
+        }),
       );
       this._bubbleProgress["75"] = true;
     } else if (newValue / this.max >= 0.5 && !this._bubbleProgress["50"]) {
@@ -496,7 +502,7 @@ class LrnsysProgressCircle extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: { percentage: 50 },
-        })
+        }),
       );
       this._bubbleProgress["50"] = true;
     } else if (newValue / this.max >= 0.25 && !this._bubbleProgress["25"]) {
@@ -506,7 +512,7 @@ class LrnsysProgressCircle extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: { percentage: 25 },
-        })
+        }),
       );
       this._bubbleProgress["25"] = true;
     }
@@ -515,11 +521,11 @@ class LrnsysProgressCircle extends PolymerElement {
     super();
     this.completeSound = new URL(
       "./lib/assets/complete.mp3",
-      import.meta.url
+      import.meta.url,
     ).href;
     this.finishedSound = new URL(
       "./lib/assets/finished.mp3",
-      import.meta.url
+      import.meta.url,
     ).href;
     setTimeout(() => {
       this.addEventListener("click", this.tapEventOn.bind(this));
@@ -586,7 +592,7 @@ class LrnsysProgressCircle extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: { target },
-      })
+      }),
     );
   }
   /**
@@ -668,7 +674,7 @@ class LrnsysProgressCircle extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: { status: newValue },
-        })
+        }),
       );
     }
   }

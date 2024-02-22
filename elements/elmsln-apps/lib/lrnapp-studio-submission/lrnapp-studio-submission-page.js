@@ -106,7 +106,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           --vaadin-split-layout-splitter: {
             min-width: 0.4em;
             background: var(--paper-amber-200);
-          }
+          };
         }
 
         .submission-page {
@@ -353,16 +353,16 @@ class LrnappStudioSubmissionPage extends PolymerElement {
                 target.generateRequest();
                 // should be able to get comments to reup as well
                 const sourcePath = this.shadowRoot.querySelector(
-                  "lrnsys-comment-list"
+                  "lrnsys-comment-list",
                 ).sourcePath;
                 this.shadowRoot.querySelector(
-                  "lrnsys-comment-list"
+                  "lrnsys-comment-list",
                 ).sourcePath = "";
                 this.shadowRoot.querySelector(
-                  "lrnsys-comment-list"
+                  "lrnsys-comment-list",
                 ).sourcePath = sourcePath;
               }, 250);
-            }
+            },
           );
           break;
       }
@@ -450,29 +450,29 @@ class LrnappStudioSubmissionPage extends PolymerElement {
     super.connectedCallback();
     this.addEventListener(
       "submissionDeleteClicked",
-      this._submissionDeleteClicked.bind(this)
+      this._submissionDeleteClicked.bind(this),
     );
     this.addEventListener(
       "submissionPublishClicked",
-      this._submissionPublishClicked.bind(this)
+      this._submissionPublishClicked.bind(this),
     );
     this.addEventListener(
       "submissionSaveDraftClicked",
-      this._submissionSaveDraftClicked.bind(this)
+      this._submissionSaveDraftClicked.bind(this),
     );
   }
   disconnectedCallback() {
     this.removeEventListener(
       "submissionDeleteClicked",
-      this._submissionDeleteClicked.bind(this)
+      this._submissionDeleteClicked.bind(this),
     );
     this.removeEventListener(
       "submissionPublishClicked",
-      this._submissionPublishClicked.bind(this)
+      this._submissionPublishClicked.bind(this),
     );
     this.removeEventListener(
       "submissionSaveDraftClicked",
-      this._submissionSaveDraftClicked.bind(this)
+      this._submissionSaveDraftClicked.bind(this),
     );
     super.disconnectedCallback();
   }
@@ -645,6 +645,6 @@ class LrnappStudioSubmissionPage extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionPage.tag,
-  LrnappStudioSubmissionPage
+  LrnappStudioSubmissionPage,
 );
 export { LrnappStudioSubmissionPage };

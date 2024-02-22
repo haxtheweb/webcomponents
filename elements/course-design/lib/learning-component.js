@@ -208,7 +208,7 @@ class LearningComponent extends I18NMixin(DDD) {
         }
         .header {
           display: grid;
-          grid-template-columns: .1fr 1fr;
+          grid-template-columns: 0.1fr 1fr;
           align-items: center;
           background-color: var(
             --ddd-component-learning-component-title-background,
@@ -262,9 +262,9 @@ class LearningComponent extends I18NMixin(DDD) {
             var(--ddd-spacing-5) var(--ddd-spacing-6);
         }
 
-        .urlPresent{
+        .urlPresent {
           display: grid;
-          grid-template-columns: 1fr .1fr;
+          grid-template-columns: 1fr 0.1fr;
         }
 
         @media screen and (min-width: 320px) {

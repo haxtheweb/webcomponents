@@ -218,7 +218,7 @@ export class SiteView extends SimpleColors {
         this.loading = true;
         const response = await MicroFrontendRegistry.call(
           "@haxcms/views",
-          params
+          params,
         );
         if (response.data) {
           this.results = [...response.data];
@@ -267,51 +267,51 @@ export class SiteView extends SimpleColors {
   listTemplate() {
     return html` <ul class="list">
       ${this.results.map(
-        (item) => html` <li class="list-item">
-          ${this.params.displayOf === "blocks"
-            ? mediaKeys.map((key) =>
-                item.media &&
-                item.media[key] &&
-                typeof item.media[key] == "string" &&
-                this.params.blockFilter === key
-                  ? unsafeHTML(item.media[key])
-                  : nothing
-              )
-            : html`<div class="play-list-item">
-                ${this.params.displayOf === "title"
-                  ? html`<div class="list-link">
-                        <a href="${item.slug}">${item.title}</a>
-                      </div>
-                      <div class="list-breadcrumb">
-                        ${this.calculateBreadcrumb(item).map(
-                          (item) => html` <span>${item.title}</span> `
-                        )}
-                      </div>
-                      ${item.metadata.tags && item.metadata.tags != ""
-                        ? item.metadata.tags
-                            .split(",")
-                            .map(
-                              (tag) => html`<a
-                                href="x/views?tags=${tag.trim()}"
-                              >
-                                <simple-tag
-                                  auto-accent-color
-                                  value="${tag.trim()}"
-                                  accent-color="${item.accentColor}"
-                                ></simple-tag
-                              ></a>`
-                            )
-                        : nothing}`
-                  : this.params.displayOf === "full"
-                  ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
-                  : html`<site-remote-content
-                      player
-                      hide-reference
-                      uuid="${item.id}"
-                      show-title
-                    ></site-remote-content>`}
-              </div>`}
-        </li>`
+        (item) =>
+          html` <li class="list-item">
+            ${this.params.displayOf === "blocks"
+              ? mediaKeys.map((key) =>
+                  item.media &&
+                  item.media[key] &&
+                  typeof item.media[key] == "string" &&
+                  this.params.blockFilter === key
+                    ? unsafeHTML(item.media[key])
+                    : nothing,
+                )
+              : html`<div class="play-list-item">
+                  ${this.params.displayOf === "title"
+                    ? html`<div class="list-link">
+                          <a href="${item.slug}">${item.title}</a>
+                        </div>
+                        <div class="list-breadcrumb">
+                          ${this.calculateBreadcrumb(item).map(
+                            (item) => html` <span>${item.title}</span> `,
+                          )}
+                        </div>
+                        ${item.metadata.tags && item.metadata.tags != ""
+                          ? item.metadata.tags
+                              .split(",")
+                              .map(
+                                (tag) =>
+                                  html`<a href="x/views?tags=${tag.trim()}">
+                                    <simple-tag
+                                      auto-accent-color
+                                      value="${tag.trim()}"
+                                      accent-color="${item.accentColor}"
+                                    ></simple-tag
+                                  ></a>`,
+                              )
+                          : nothing}`
+                    : this.params.displayOf === "full"
+                      ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
+                      : html`<site-remote-content
+                          player
+                          hide-reference
+                          uuid="${item.id}"
+                          show-title
+                        ></site-remote-content>`}
+                </div>`}
+          </li>`,
       )}
     </ul>`;
   }
@@ -339,61 +339,65 @@ export class SiteView extends SimpleColors {
           <th>Status</th>
         </tr>
         ${this.results.map(
-          (item) => html` <tr>
-            <td>
-              ${item.metadata.pageType
-                ? html`<simple-icon
-                    ?dark="${dark}"
-                    accent-color="${accentColor}"
-                    title="${item.metadata.pageType}"
-                    icon="${iconFromPageType(item.metadata.pageType)}"
-                  ></simple-icon>`
-                : nothing}
-            </td>
-            <td>
-              ${item.metadata.pageType ? item.metadata.pageType : nothing}
-            </td>
-            <td>
-              <a href="${item.slug}" style="color:inherit">${item.title}</a>
-            </td>
-            <td>
-              ${item.metadata.tags && item.metadata.tags != ""
-                ? item.metadata.tags
-                    .split(",")
-                    .map(
-                      (tag) => html`<a
-                        part="tag-link"
-                        href="x/views?tags=${tag.trim()}"
-                      >
-                        <simple-tag
-                          auto-accent-color
-                          value="${tag.trim()}"
-                          accent-color="${item.accentColor}"
-                        ></simple-tag
-                      ></a>`
-                    )
-                : nothing}
-            </td>
-            <td>
-              <simple-datetime
-                format="m/j/y"
-                timestamp="${item.metadata.created}"
-                unix
-                class="info-date"
-              ></simple-datetime>
-            </td>
-            <td>
-              <simple-datetime
-                format="m/j/y"
-                timestamp="${item.metadata.updated}"
-                unix
-                class="info-date"
-              ></simple-datetime>
-            </td>
-            <td>
-              ${item.metadata.published !== false ? `published` : `unpublished`}
-            </td>
-          </tr>`
+          (item) =>
+            html` <tr>
+              <td>
+                ${item.metadata.pageType
+                  ? html`<simple-icon
+                      ?dark="${dark}"
+                      accent-color="${accentColor}"
+                      title="${item.metadata.pageType}"
+                      icon="${iconFromPageType(item.metadata.pageType)}"
+                    ></simple-icon>`
+                  : nothing}
+              </td>
+              <td>
+                ${item.metadata.pageType ? item.metadata.pageType : nothing}
+              </td>
+              <td>
+                <a href="${item.slug}" style="color:inherit">${item.title}</a>
+              </td>
+              <td>
+                ${item.metadata.tags && item.metadata.tags != ""
+                  ? item.metadata.tags
+                      .split(",")
+                      .map(
+                        (tag) =>
+                          html`<a
+                            part="tag-link"
+                            href="x/views?tags=${tag.trim()}"
+                          >
+                            <simple-tag
+                              auto-accent-color
+                              value="${tag.trim()}"
+                              accent-color="${item.accentColor}"
+                            ></simple-tag
+                          ></a>`,
+                      )
+                  : nothing}
+              </td>
+              <td>
+                <simple-datetime
+                  format="m/j/y"
+                  timestamp="${item.metadata.created}"
+                  unix
+                  class="info-date"
+                ></simple-datetime>
+              </td>
+              <td>
+                <simple-datetime
+                  format="m/j/y"
+                  timestamp="${item.metadata.updated}"
+                  unix
+                  class="info-date"
+                ></simple-datetime>
+              </td>
+              <td>
+                ${item.metadata.published !== false
+                  ? `published`
+                  : `unpublished`}
+              </td>
+            </tr>`,
         )}
       </table>
     </editable-table-display>`;
@@ -410,7 +414,7 @@ export class SiteView extends SimpleColors {
             detail: {
               value: this.loading,
             },
-          })
+          }),
         );
       }
       if (propName === "search") {
@@ -445,7 +449,7 @@ export class SiteView extends SimpleColors {
                 typeof item.media[key] == "string" &&
                 this.params.blockFilter === key
                   ? unsafeHTML(item.media[key])
-                  : nothing
+                  : nothing,
               )
             : html`<div class="play-list-item">
                 ${this.params.displayOf === "title"
@@ -454,20 +458,20 @@ export class SiteView extends SimpleColors {
                       </div>
                       <div class="list-breadcrumb">
                         ${this.calculateBreadcrumb(item).map(
-                          (item) => html` <span>${item.title}</span> `
+                          (item) => html` <span>${item.title}</span> `,
                         )}
                       </div>`
                   : this.params.displayOf === "full"
-                  ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
-                  : html`<site-remote-content
-                      player
-                      hide-reference
-                      uuid="${item.id}"
-                      show-title
-                    ></site-remote-content>`}
-              </div>`}`
+                    ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
+                    : html`<site-remote-content
+                        player
+                        hide-reference
+                        uuid="${item.id}"
+                        show-title
+                      ></site-remote-content>`}
+              </div>`}`,
       )}`,
-      template
+      template,
     );
     this.shadowRoot
       .querySelector("#contentplayertemplate")
@@ -476,25 +480,27 @@ export class SiteView extends SimpleColors {
 
   cardTemplate() {
     return html`${this.results.map(
-      (item) => html` <accent-card accent-color="red" horizontal accent-heading>
-        <div slot="heading">${item.title}</div>
-        <div slot="subheading">
-          ${item.metadata.tags && item.metadata.tags != ""
-            ? item.metadata.tags
-                .split(",")
-                .map(
-                  (tag) => html`<a href="x/views?tags=${tag.trim()}">
-                    <simple-tag
-                      auto-accent-color
-                      value="${tag.trim()}"
-                      accent-color="${item.accentColor}"
-                    ></simple-tag
-                  ></a>`
-                )
-            : nothing}
-        </div>
-        <div slot="content"><a href="${item.slug}">Link to content</a></div>
-      </accent-card>`
+      (item) =>
+        html` <accent-card accent-color="red" horizontal accent-heading>
+          <div slot="heading">${item.title}</div>
+          <div slot="subheading">
+            ${item.metadata.tags && item.metadata.tags != ""
+              ? item.metadata.tags
+                  .split(",")
+                  .map(
+                    (tag) =>
+                      html`<a href="x/views?tags=${tag.trim()}">
+                        <simple-tag
+                          auto-accent-color
+                          value="${tag.trim()}"
+                          accent-color="${item.accentColor}"
+                        ></simple-tag
+                      ></a>`,
+                  )
+              : nothing}
+          </div>
+          <div slot="content"><a href="${item.slug}">Link to content</a></div>
+        </accent-card>`,
     )}`;
   }
 

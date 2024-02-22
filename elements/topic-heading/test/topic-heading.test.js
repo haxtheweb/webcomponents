@@ -5,9 +5,9 @@ import "../topic-heading.js";
 describe("topic-heading test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <topic-heading title="test-title"></topic-heading> `
-    );
+    element = await fixture(html`
+      <topic-heading title="test-title"></topic-heading>
+    `);
   });
 
   it("passes the a11y audit", async () => {

@@ -24,7 +24,7 @@ test("tab element is converted to tab character", function () {
 test("paragraphs are terminated with newlines", function () {
   var element = new documents.Paragraph(
     [new documents.Text("Hello "), new documents.Text("world.")],
-    {}
+    {},
   );
 
   var result = convertElementToRawText(element);
@@ -36,7 +36,7 @@ test("children are recursively converted to text", function () {
   var element = new documents.Document([
     new documents.Paragraph(
       [new documents.Text("Hello "), new documents.Text("world.")],
-      {}
+      {},
     ),
   ]);
 

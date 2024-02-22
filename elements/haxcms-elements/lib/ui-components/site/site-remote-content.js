@@ -25,7 +25,7 @@ enableServices(["haxcms"]);
  * @demo demo/index.html
  */
 class SiteRemoteContent extends HAXCMSI18NMixin(
-  IntersectionObserverMixin(LitElement)
+  IntersectionObserverMixin(LitElement),
 ) {
   static get styles() {
     return [
@@ -160,7 +160,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
               uuid: this.uuid,
               data: true,
             },
-            this.renderContentResponse.bind(this)
+            this.renderContentResponse.bind(this),
           );
         }
         // aggressive, only run this if we actually are an author of material / have HAX tools
@@ -210,7 +210,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
               uuid: this.uuid,
               data: true,
             },
-            this.renderContentResponse.bind(this)
+            this.renderContentResponse.bind(this),
           );
         }
       }
@@ -233,7 +233,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
       // encap script just to be paranoid
       let html = response.data.content.replace(
         /<script[\s\S]*?>/gi,
-        "&lt;script&gt;"
+        "&lt;script&gt;",
       );
       html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
       div.innerHTML = html;
@@ -447,7 +447,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
             "@haxcms/siteManifest",
             {
               site: this.siteurl,
-            }
+            },
           );
           if (response.data) {
             this.itemManifest = response.data;
@@ -471,7 +471,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
           let distance = "- ";
           while (itemBuilder && itemBuilder.parent != null) {
             itemBuilder = this.itemManifest.items.find(
-              (i) => i.id == itemBuilder.parent
+              (i) => i.id == itemBuilder.parent,
             );
             // double check structure is sound
             if (itemBuilder) {

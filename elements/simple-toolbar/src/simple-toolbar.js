@@ -456,10 +456,10 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         .split(" ")
         .forEach((key) => delete this.shortcutKeys[key]);
       button.removeEventListener("blur", (e) =>
-        this._handleFocusChange(button)
+        this._handleFocusChange(button),
       );
       button.removeEventListener("focus", (e) =>
-        this._handleFocusChange(button)
+        this._handleFocusChange(button),
       );
     }
     /**
@@ -797,7 +797,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
               button: this,
               shortcutKey: this,
             },
-          })
+          }),
         );
       }
     }

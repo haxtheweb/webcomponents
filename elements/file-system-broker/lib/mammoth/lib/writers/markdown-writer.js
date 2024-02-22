@@ -82,7 +82,7 @@ var htmlToMarkdown = {
   for (var i = 1; i <= 6; i++) {
     htmlToMarkdown["h" + i] = markdownElement(
       repeatString("#", i) + " ",
-      "\n\n"
+      "\n\n",
     );
   }
 })();

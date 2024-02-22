@@ -21,7 +21,7 @@ class SimpleCameraSnap extends HTMLElement {
           updateCallback: "render",
           locales: ["es"],
         },
-      })
+      }),
     );
     this.template = globalThis.document.createElement("template");
     this.attachShadow({ mode: "open" });
@@ -144,7 +144,7 @@ class SimpleCameraSnap extends HTMLElement {
             img: img,
             raw: raw,
           },
-        })
+        }),
       );
       selfie.classList.add("has-snap");
     } else {

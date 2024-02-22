@@ -5,11 +5,9 @@ import "../lrndesign-contentblock.js";
 describe("lrndesign-contentblock test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html`
-        <lrndesign-contentblock title="test-title"></lrndesign-contentblock>
-      `
-    );
+    element = await fixture(html`
+      <lrndesign-contentblock title="test-title"></lrndesign-contentblock>
+    `);
   });
 
   it("passes the a11y audit", async () => {

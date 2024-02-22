@@ -234,7 +234,7 @@ class Store {
   get activeSite() {
     if (this.activeSiteId && this.manifest && this.manifest.items) {
       const sites = this.manifest.items.filter(
-        (item) => item.id === this.activeSiteId
+        (item) => item.id === this.activeSiteId,
       );
       if (sites.length === 1) {
         return sites.pop();
@@ -327,7 +327,7 @@ class Store {
           duration: duration,
           ...extras,
         },
-      })
+      }),
     );
   }
 }

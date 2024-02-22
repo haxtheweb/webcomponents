@@ -32,6 +32,6 @@ function isRow(options) {
 
 function isDocumentElement(type, properties) {
   return hamjest.hasProperties(
-    _.extend({ type: hamjest.equalTo(type) }, properties)
+    _.extend({ type: hamjest.equalTo(type) }, properties),
   );
 }

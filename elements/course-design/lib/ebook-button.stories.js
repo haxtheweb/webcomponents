@@ -16,5 +16,5 @@ export const EbookButtonStory = () =>
   utils.makeUsageDocs(
     EbookButton,
     import.meta.url,
-    utils.makeElementFromHaxDemo(EbookButton)
+    utils.makeElementFromHaxDemo(EbookButton),
   );

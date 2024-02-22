@@ -30,7 +30,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
     globalThis.addEventListener(
       "haxcms-site-editor-loaded",
       this.editorLoaded.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   connectedCallback() {
@@ -43,7 +43,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
   }
   disconnectedCallback() {
@@ -136,13 +136,13 @@ class HAXCMSEditorBuilder extends HTMLElement {
             if (!store.cmsSiteEditorBackend.instance) {
               store.cmsSiteEditorBackend.instance =
                 globalThis.document.createElement(
-                  store.cmsSiteEditorBackend.tag
+                  store.cmsSiteEditorBackend.tag,
                 );
               globalThis.document.body.appendChild(
-                store.cmsSiteEditorBackend.instance
+                store.cmsSiteEditorBackend.instance,
               );
             }
-          }
+          },
         );
       }
     }

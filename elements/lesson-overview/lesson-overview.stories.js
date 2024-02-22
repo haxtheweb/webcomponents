@@ -43,6 +43,6 @@ export const LessonOverviewStory = () => {
       <lesson-highlight smart="selfChecks"></lesson-highlight>
       <lesson-highlight smart="video"></lesson-highlight>
     </lesson-overview>
-    `)
+    `),
   ).innerHTML;
 };

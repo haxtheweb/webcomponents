@@ -5,9 +5,9 @@ import "../oer-schema.js";
 describe("oer-schema test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <oer-schema title="test-title"></oer-schema> `
-    );
+    element = await fixture(html`
+      <oer-schema title="test-title"></oer-schema>
+    `);
   });
 
   it("passes the a11y audit", async () => {

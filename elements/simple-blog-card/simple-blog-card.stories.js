@@ -29,6 +29,6 @@ export const BasicBlogPost = () => {
       authorimage:
         "https://cdn-images-1.medium.com/fit/c/72/72/1*S-yMO7jfYkgmFwA9840zyw.jpeg",
       authorlink: "https://hackernoon.com/@adv.mkuntawale",
-    })
+    }),
   );
 };

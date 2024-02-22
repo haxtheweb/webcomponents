@@ -5,9 +5,9 @@ import "../example-hax-element.js";
 describe("example-hax-element test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <example-hax-element title="test-title"></example-hax-element> `
-    );
+    element = await fixture(html`
+      <example-hax-element title="test-title"></example-hax-element>
+    `);
   });
 
   it("passes the a11y audit", async () => {

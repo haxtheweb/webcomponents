@@ -136,7 +136,7 @@ class SimpleIconPicker extends SimplePicker {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });

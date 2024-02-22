@@ -322,7 +322,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           composed: true,
           cancelable: true,
           detail: this.querySelector("*"),
-        })
+        }),
       );
     }
 
@@ -351,7 +351,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           composed: true,
           cancelable: true,
           detail: this,
-        })
+        }),
       );
     }
 
@@ -369,14 +369,14 @@ const RichTextEditorBehaviors = function (SuperClass) {
           filter = !this.toolbarId
             ? []
             : (window.RichTextEditorToolbars || []).filter(
-                (toolbar) => toolbar.id === this.toolbarId
+                (toolbar) => toolbar.id === this.toolbarId,
               );
         //get toolbar by type
         if (filter.length === 0) {
           filter = !this.type
             ? []
             : (window.RichTextEditorToolbars || []).filter(
-                (toolbar) => toolbar.type === this.type
+                (toolbar) => toolbar.type === this.type,
               );
         }
         //get any toolbar
@@ -386,7 +386,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
         } else if (filter.length === 0) {
           //make toolbar
           toolbar = document.createElement(
-            this.type || "rich-text-editor-toolbar"
+            this.type || "rich-text-editor-toolbar",
           );
         }
         this.__toolbar = toolbar;

@@ -5,9 +5,9 @@ import "../page-scroll-position.js";
 describe("page-scroll-position test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <page-scroll-position title="test-title"></page-scroll-position> `
-    );
+    element = await fixture(html`
+      <page-scroll-position title="test-title"></page-scroll-position>
+    `);
   });
 
   it("passes the a11y audit", async () => {

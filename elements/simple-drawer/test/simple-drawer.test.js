@@ -5,9 +5,9 @@ import "../simple-drawer.js";
 describe("simple-drawer test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-drawer title="test-title"></simple-drawer> `
-    );
+    element = await fixture(html`
+      <simple-drawer title="test-title"></simple-drawer>
+    `);
   });
 
   it("passes the a11y audit", async () => {

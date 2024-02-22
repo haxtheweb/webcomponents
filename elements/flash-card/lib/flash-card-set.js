@@ -95,7 +95,7 @@ export class FlashCardSet extends SimpleColors {
         this.questions[i],
         this.questions[i + 1],
         this.questions[i + 2],
-        this.questions[i + 3]
+        this.questions[i + 3],
       );
     }
   }

@@ -98,7 +98,7 @@ class LrndesignMapmenuSubmenu extends LitElement {
     super.connectedCallback();
     this._observer = new FlattenedNodesObserver(this, (info) => {
       var submenus = info.addedNodes.filter(
-        (item) => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
+        (item) => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU",
       );
       if (this.expandChildren) {
         for (let menu of submenus) {

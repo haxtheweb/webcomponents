@@ -13,7 +13,7 @@ import "@lrnwebcomponents/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-edit-image.js";
 class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
-  PolymerElement
+  PolymerElement,
 ) {
   static get template() {
     return html`
@@ -163,6 +163,6 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
 }
 customElements.define(
   LrnappStudioSubmissionEditImages.tag,
-  LrnappStudioSubmissionEditImages
+  LrnappStudioSubmissionEditImages,
 );
 export { LrnappStudioSubmissionEditImages };

@@ -5,9 +5,9 @@ import "../lazy-image-helpers.js";
 describe("lazy-image-helpers test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lazy-image-helpers title="test-title"></lazy-image-helpers> `
-    );
+    element = await fixture(html`
+      <lazy-image-helpers title="test-title"></lazy-image-helpers>
+    `);
   });
 
   it("passes the a11y audit", async () => {

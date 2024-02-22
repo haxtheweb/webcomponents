@@ -55,7 +55,7 @@ export const LrndesignTimelineStory = () => {
       <h3>1953 - The Pennsylvania State University</h3>
       <p>The Pennsylvania State University became official name.</p>
     </section>`,
-    })
+    }),
   );
 };
 export const LrndesignTimelineHaxGizmo = () => {

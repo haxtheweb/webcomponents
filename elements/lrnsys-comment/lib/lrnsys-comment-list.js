@@ -259,7 +259,7 @@ class LrnsysCommentList extends PolymerElement {
       this.addEventListener("comment-like", this.handleLike.bind(this));
       this.addEventListener(
         "comment-delete-dialog",
-        this.handleDeleteDialog.bind(this)
+        this.handleDeleteDialog.bind(this),
       );
     }, 0);
   }
@@ -275,7 +275,7 @@ class LrnsysCommentList extends PolymerElement {
     // content of dialog
     let c = globalThis.document.createElement("p");
     let t = globalThis.document.createTextNode(
-      "Are you sure you want to delete your comment? This cannot be undone."
+      "Are you sure you want to delete your comment? This cannot be undone.",
     );
     c.appendChild(t);
     // buttons

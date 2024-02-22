@@ -29,7 +29,7 @@ gulp.task("default", () => {
             },
           ],
         ],
-      })
+      }),
     )
     .pipe(terser())
     .pipe(gulp.dest("./build/"));

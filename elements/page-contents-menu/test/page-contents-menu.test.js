@@ -29,7 +29,7 @@ describe("page-contents-menu test", () => {
         <p>Stuff and things</p>
         <p>Stuff and things</p>
         <h2>Something else 2</h2>
-      </div>`
+      </div>`,
     );
   });
 

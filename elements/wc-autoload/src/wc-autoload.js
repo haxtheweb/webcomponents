@@ -135,7 +135,7 @@ window.WCAutoload.postLoaded = (e) => {
 // listen for new tags being registered
 window.addEventListener(
   "dynamic-import-registry--new-registration",
-  window.WCAutoload.postLoaded
+  window.WCAutoload.postLoaded,
 );
 /**
  * `wc-registry`

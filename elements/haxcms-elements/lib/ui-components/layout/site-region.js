@@ -65,7 +65,7 @@ class SiteRegion extends LitElement {
                     // css vars still based way to penetrate this
                     div.setAttribute(
                       "part",
-                      `site-region-wrapper-${this.name}`
+                      `site-region-wrapper-${this.name}`,
                     );
                     this.appendChild(div);
                   })

@@ -25,9 +25,9 @@ test("HTML is written to file if output file is set", function () {
         assert.equal(result.output, "");
         assert.equal(
           fs.readFileSync(outputPath, "utf8"),
-          "<p>Walking on imported air</p>"
+          "<p>Walking on imported air</p>",
         );
-      }
+      },
     );
   });
 });
@@ -40,7 +40,7 @@ test("inline images are included in output if writing to single file", function 
     assert.equal(result.stderrOutput, "");
     assert.equal(
       result.output,
-      '<p><img src="data:image/png;base64,' + imageBase64 + '" /></p>'
+      '<p><img src="data:image/png;base64,' + imageBase64 + '" /></p>',
     );
   });
 });
@@ -52,13 +52,13 @@ test("images are written to separate files if output dir is set", function () {
     return runMammoth(
       testPath("tiny-picture.docx"),
       "--output-dir",
-      tempDir
+      tempDir,
     ).then(function (result) {
       assert.equal(result.stderrOutput, "");
       assert.equal(result.output, "");
       assert.equal(
         fs.readFileSync(outputPath, "utf8"),
-        '<p><img src="1.png" /></p>'
+        '<p><img src="1.png" /></p>',
       );
       assert.equal(fs.readFileSync(imagePath, "base64"), imageBase64);
     });
@@ -72,7 +72,7 @@ test("style map is used if set", function () {
     return runMammoth(
       testPath("single-paragraph.docx"),
       "--style-map",
-      styleMapPath
+      styleMapPath,
     ).then(function (result) {
       assert.equal(result.stderrOutput, "");
       assert.equal(result.output, "<span>Walking on imported air</span>");
@@ -83,7 +83,7 @@ test("style map is used if set", function () {
 test("--output-format=markdown option generate markdown output", function () {
   return runMammoth(
     testPath("single-paragraph.docx"),
-    "--output-format=markdown"
+    "--output-format=markdown",
   ).then(function (result) {
     assert.equal(result.stderrOutput, "");
     assert.equal(result.output, "Walking on imported air\n\n");

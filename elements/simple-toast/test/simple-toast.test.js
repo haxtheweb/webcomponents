@@ -5,9 +5,9 @@ import "../simple-toast.js";
 describe("simple-toast test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-toast title="test-title"></simple-toast> `
-    );
+    element = await fixture(html`
+      <simple-toast title="test-title"></simple-toast>
+    `);
   });
 
   it("passes the a11y audit", async () => {

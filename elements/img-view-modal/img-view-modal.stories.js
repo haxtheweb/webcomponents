@@ -81,7 +81,7 @@ export const ImgViewViewerStory = () => {
         title: "background color (toggled buttons)",
         css: "--img-view-modal-viewer-backgroundColor",
       },
-    ]
+    ],
   );
 };
 export const ImgViewModalStory = () => {
@@ -107,6 +107,6 @@ export const ImgViewModalStory = () => {
         css: "--img-view-modal-toggled-backgroundColor",
       },
     ],
-    ["modal"]
+    ["modal"],
   );
 };

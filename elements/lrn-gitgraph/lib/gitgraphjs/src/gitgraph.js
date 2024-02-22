@@ -54,7 +54,7 @@
         this.orientation = "vertical-reverse";
         this.template.branch.labelRotation = _isNullOrUndefined(
           options,
-          "template.branch.labelRotation"
+          "template.branch.labelRotation",
         )
           ? 0
           : options.template.branch.labelRotation;
@@ -69,7 +69,7 @@
         this.orientation = "horizontal";
         this.template.branch.labelRotation = _isNullOrUndefined(
           options,
-          "template.branch.labelRotation"
+          "template.branch.labelRotation",
         )
           ? -90
           : options.template.branch.labelRotation;
@@ -85,7 +85,7 @@
         this.orientation = "horizontal-reverse";
         this.template.branch.labelRotation = _isNullOrUndefined(
           options,
-          "template.branch.labelRotation"
+          "template.branch.labelRotation",
         )
           ? 90
           : options.template.branch.labelRotation;
@@ -96,7 +96,7 @@
         this.orientation = "vertical";
         this.template.branch.labelRotation = _isNullOrUndefined(
           options,
-          "template.branch.labelRotation"
+          "template.branch.labelRotation",
         )
           ? 0
           : options.template.branch.labelRotation;
@@ -389,7 +389,7 @@
       var distanceY =
         commit.y + (this.offsetY + this.marginY) / this.scalingFactor - offsetY;
       var distanceBetweenCommitCenterAndMouse = Math.sqrt(
-        Math.pow(distanceX, 2) + Math.pow(distanceY, 2)
+        Math.pow(distanceX, 2) + Math.pow(distanceY, 2),
       );
       var isOverCommit =
         distanceBetweenCommitCenterAndMouse < this.template.commit.dot.size;
@@ -539,7 +539,7 @@
     this.lineDash = options.lineDash || this.template.branch.lineDash;
     this.showLabel = _booleanOptionOr(
       options.showLabel,
-      this.template.branch.showLabel
+      this.template.branch.showLabel,
     );
     this.spacingX = this.template.branch.spacingX;
     this.spacingY = this.template.branch.spacingY;
@@ -653,7 +653,7 @@
             point.x + this.template.commit.spacingX / 2,
             point.y + this.template.commit.spacingY / 2,
             point.x,
-            point.y
+            point.y,
           );
         } else {
           this.context.lineTo(point.x, point.y);
@@ -951,7 +951,7 @@
     var firstBranchCommit = this.commits[0];
     if (!firstBranchCommit) {
       console.log(
-        this.name + " is already up-to-date with " + targetBranch.name
+        this.name + " is already up-to-date with " + targetBranch.name,
       );
       return this;
     }
@@ -1170,19 +1170,19 @@
     this.arrowDisplay = options.arrowDisplay;
     this.messageDisplay = _booleanOptionOr(
       options.messageDisplay,
-      this.template.commit.message.display
+      this.template.commit.message.display,
     );
     this.messageAuthorDisplay = _booleanOptionOr(
       options.messageAuthorDisplay,
-      this.template.commit.message.displayAuthor
+      this.template.commit.message.displayAuthor,
     );
     this.messageBranchDisplay = _booleanOptionOr(
       options.messageBranchDisplay,
-      this.template.commit.message.displayBranch
+      this.template.commit.message.displayBranch,
     );
     this.messageHashDisplay = _booleanOptionOr(
       options.messageHashDisplay,
-      this.template.commit.message.displayHash
+      this.template.commit.message.displayHash,
     );
     this.messageColor = options.messageColor || options.color;
     this.messageFont = options.messageFont || this.template.commit.message.font;
@@ -1245,7 +1245,7 @@
           this.labelColor,
           this.labelFont,
           this.template.branch.labelRotation,
-          true
+          true,
         );
       } else {
         _drawTextBG(
@@ -1256,7 +1256,7 @@
           this.labelColor,
           this.labelFont,
           this.template.branch.labelRotation,
-          true
+          true,
         );
       }
     }
@@ -1336,7 +1336,7 @@
       this.context.fillText(
         message,
         commitOffsetLeft,
-        this.y + this.dotSize / 2
+        this.y + this.dotSize / 2,
       );
     }
   };
@@ -1360,7 +1360,7 @@
     // Angles calculation
     var alpha = rotate(
       this.parentCommit.y - this.y,
-      this.parentCommit.x - this.x
+      this.parentCommit.x - this.x,
     );
 
     // Merge & Fork case
@@ -1485,7 +1485,7 @@
       this.color,
       this.font,
       0,
-      commit.displayTagBox
+      commit.displayTagBox,
     );
 
     // Reset original context font
@@ -1604,7 +1604,7 @@
       options.commit.tooltipHTMLFormatter || null;
     this.commit.shouldDisplayTooltipsInCompactMode = _booleanOptionOr(
       options.commit.shouldDisplayTooltipsInCompactMode,
-      true
+      true,
     );
 
     // Only one color, if null message takes branch color (full commit)
@@ -1632,19 +1632,19 @@
     this.commit.message = {};
     this.commit.message.display = _booleanOptionOr(
       options.commit.message.display,
-      true
+      true,
     );
     this.commit.message.displayAuthor = _booleanOptionOr(
       options.commit.message.displayAuthor,
-      true
+      true,
     );
     this.commit.message.displayBranch = _booleanOptionOr(
       options.commit.message.displayBranch,
-      true
+      true,
     );
     this.commit.message.displayHash = _booleanOptionOr(
       options.commit.message.displayHash,
-      true
+      true,
     );
 
     // Only one color, if null message takes commit color (only message)

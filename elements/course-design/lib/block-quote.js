@@ -28,13 +28,7 @@ export class BlockQuote extends DDD {
     return html`
       <div id="wrap">
         ${this.image
-          ? html`
-              <img
-                id="image"
-                src="${this.image}"
-                alt="${this.alt}"
-              />
-            `
+          ? html` <img id="image" src="${this.image}" alt="${this.alt}" /> `
           : ""}
         <div id="quote_wrap">
           <div id="inner_wrap">
@@ -71,7 +65,7 @@ export class BlockQuote extends DDD {
         :host {
           background-color: var(
             --ddd-component-block-quote-background,
-            var(--ddd-theme-polaris-limestoneMaxLight, #f5f5f5)
+            var(--ddd-theme-default-limestoneMaxLight, #f5f5f5)
           );
           display: flex;
           align-items: start;
@@ -86,7 +80,7 @@ export class BlockQuote extends DDD {
             --ddd-component-block-quote-border-color,
             var(
               --ddd-theme-accent-color,
-              var(--ddd-theme-polaris-limestoneGray)
+              var(--ddd-theme-default-limestoneGray)
             )
           );
           padding: var(--ddd-spacing-6);
@@ -128,10 +122,7 @@ export class BlockQuote extends DDD {
           align-self: flex-start;
           color: var(
             --ddd-component-block-quote-icon,
-            var(
-              --ddd-theme-accent-color,
-              var(--ddd-theme-polaris-potential50)
-            )
+            var(--ddd-theme-accent-color, var(--ddd-theme-default-potential50))
           );
           height: var(--ddd-icon-xs);
           width: var(--ddd-icon-xs);
@@ -144,7 +135,7 @@ export class BlockQuote extends DDD {
           height: auto;
         }
 
-        @container (max-width: 499px){
+        @container (max-width: 499px) {
           #wrap {
             flex-direction: column;
             border: none;
@@ -157,7 +148,7 @@ export class BlockQuote extends DDD {
               --ddd-component-block-quote-image-border,
               var(
                 --ddd-theme-accent-color,
-                var(--ddd-theme-polaris-limestoneGray)
+                var(--ddd-theme-default-limestoneGray)
               )
             );
             border-radius: var(--ddd-radius-circle);

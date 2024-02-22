@@ -17,7 +17,7 @@ export const ProgressiveEnhancement = () => {
     import.meta.url,
     utils.makeElementFromClass(MoarSarcasm, {
       emptyslot: "whatever you want to say is really importanter here!",
-    })
+    }),
   );
 };
 

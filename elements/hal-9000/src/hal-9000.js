@@ -115,7 +115,7 @@ class Hal9000 extends LitElement {
     window.addEventListener(
       "es-bridge-annyang-loaded",
       this._annyangLoaded.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     window.ESGlobalBridge.requestAvailability().load("annyang", location);
     // check for speech synthesis API
@@ -190,7 +190,7 @@ class Hal9000 extends LitElement {
                 composed: true,
                 cancelable: false,
                 detail: false,
-              })
+              }),
             );
           }
           resolve(event);
@@ -219,7 +219,7 @@ class Hal9000 extends LitElement {
           alwaysvisible: alwaysvisible,
           awaitingMerlinInput: awaitingInput,
         },
-      })
+      }),
     );
   }
   /**

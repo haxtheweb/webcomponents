@@ -66,7 +66,7 @@ class SiteActiveTitle extends LitElement {
           this.dynamicMethodology,
           this.activeTitle,
           this.parentTitle,
-          this.ancestorTitle
+          this.ancestorTitle,
         );
       }
       if (propName == "editMode" && oldValue !== undefined) {
@@ -81,7 +81,7 @@ class SiteActiveTitle extends LitElement {
                 haxStore.activeNode =
                   haxStore.activeHaxBody.querySelector("page-break");
               },
-              { signal: this.activateController.signal }
+              { signal: this.activateController.signal },
             );
             this._inProgressPageBreak = new MutationObserver((mutationList) => {
               mutationList.forEach((mutation) => {
@@ -91,13 +91,13 @@ class SiteActiveTitle extends LitElement {
                       case "title":
                         this.activeTitle =
                           haxStore.activeHaxBody.querySelector(
-                            "page-break"
+                            "page-break",
                           ).title;
                         this.__title = this._makeTitle(
                           this.dynamicMethodology,
                           this.activeTitle,
                           this.parentTitle,
-                          this.ancestorTitle
+                          this.ancestorTitle,
                         );
                         break;
                       case "page-type":
@@ -107,7 +107,7 @@ class SiteActiveTitle extends LitElement {
                         ) {
                           this.icon = iconFromPageType(
                             haxStore.activeHaxBody.querySelector("page-break")
-                              .pageType
+                              .pageType,
                           );
                         } else {
                           this.icon = null;
@@ -123,7 +123,7 @@ class SiteActiveTitle extends LitElement {
               {
                 attributeFilter: ["title", "page-type"],
                 attributes: true,
-              }
+              },
             );
           }, 0);
         } else {
@@ -207,7 +207,7 @@ class SiteActiveTitle extends LitElement {
         this.dynamicMethodology,
         this.activeTitle,
         this.parentTitle,
-        this.ancestorTitle
+        this.ancestorTitle,
       );
       this.__disposer.push(reaction);
     });
@@ -217,7 +217,7 @@ class SiteActiveTitle extends LitElement {
         this.dynamicMethodology,
         this.activeTitle,
         this.parentTitle,
-        this.ancestorTitle
+        this.ancestorTitle,
       );
       this.__disposer.push(reaction);
     });
@@ -227,7 +227,7 @@ class SiteActiveTitle extends LitElement {
         this.dynamicMethodology,
         this.activeTitle,
         this.parentTitle,
-        this.ancestorTitle
+        this.ancestorTitle,
       );
       this.__disposer.push(reaction);
     });

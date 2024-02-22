@@ -47,6 +47,6 @@ class LrnappStudioAssignmentDisplay extends PolymerElement {
 }
 customElements.define(
   LrnappStudioAssignmentDisplay.tag,
-  LrnappStudioAssignmentDisplay
+  LrnappStudioAssignmentDisplay,
 );
 export { LrnappStudioAssignmentDisplay };

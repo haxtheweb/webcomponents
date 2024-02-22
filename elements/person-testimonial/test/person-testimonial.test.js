@@ -5,9 +5,9 @@ import "../person-testimonial.js";
 describe("person-testimonial test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <person-testimonial title="test-title"></person-testimonial> `
-    );
+    element = await fixture(html`
+      <person-testimonial title="test-title"></person-testimonial>
+    `);
   });
 
   it("passes the a11y audit", async () => {

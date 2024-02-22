@@ -91,7 +91,7 @@ class BarcodeReader extends LitElement {
     this.hideinput = false;
     window.ESGlobalBridge.requestAvailability().load(
       "ZXing",
-      decodeURIComponent(import.meta.url) + "/../lib/zxing.js"
+      decodeURIComponent(import.meta.url) + "/../lib/zxing.js",
     );
     window.addEventListener(`es-bridge-zxing-loaded`, this._control.bind(this));
   }
@@ -211,7 +211,7 @@ class BarcodeReader extends LitElement {
         0,
         0,
         imageWidth,
-        imageHeight
+        imageHeight,
       );
       var idd = imageData.data;
       var image = ZXing._resize(imageWidth, imageHeight);
@@ -313,7 +313,7 @@ class BarcodeReader extends LitElement {
         this.dispatchEvent(
           new CustomEvent("value-changed", {
             detail: this,
-          })
+          }),
         );
       }
     });
@@ -350,7 +350,7 @@ class BarcodeReader extends LitElement {
       0,
       0,
       this.width,
-      this.height
+      this.height,
     );
   }
 

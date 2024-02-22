@@ -412,13 +412,13 @@ class ImgPanZoom extends LitElement {
 
     const basePath = new URL("./img-pan-zoom.js", import.meta.url).href.replace(
       "/img-pan-zoom.js",
-      "/"
+      "/",
     );
     let location = `${basePath}lib/openseadragon/openseadragon.min.js`;
     window.addEventListener(
       "es-bridge-openseadragon-loaded",
       this._openseadragonLoaded.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.ESGlobalBridge.requestAvailability().load("openseadragon", location);
@@ -437,7 +437,7 @@ class ImgPanZoom extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (propName == "loaded") {
@@ -448,7 +448,7 @@ class ImgPanZoom extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (propName == "navigatorToggled" && this.viewer)
@@ -462,8 +462,8 @@ class ImgPanZoom extends LitElement {
         this.viewer.goToPage(
           Math.max(
             0,
-            Math.min(this.page, (this.viewer.tileSources || []).length - 1)
-          )
+            Math.min(this.page, (this.viewer.tileSources || []).length - 1),
+          ),
         );
     });
   }
@@ -578,8 +578,8 @@ class ImgPanZoom extends LitElement {
             detail: {
               value: e,
             },
-          })
-        )
+          }),
+        ),
       );
       /**
        * @event fires on page
@@ -590,8 +590,8 @@ class ImgPanZoom extends LitElement {
             detail: {
               value: e,
             },
-          })
-        )
+          }),
+        ),
       );
       /**
        * @event fires on pan
@@ -602,8 +602,8 @@ class ImgPanZoom extends LitElement {
             detail: {
               value: e,
             },
-          })
-        )
+          }),
+        ),
       );
       /**
        * @event fires on rotate
@@ -614,8 +614,8 @@ class ImgPanZoom extends LitElement {
             detail: {
               value: e,
             },
-          })
-        )
+          }),
+        ),
       );
       /**
        * @event
@@ -626,8 +626,8 @@ class ImgPanZoom extends LitElement {
             detail: {
               value: e,
             },
-          })
-        )
+          }),
+        ),
       );
       /**
        * @event fires before viewport changes
@@ -638,8 +638,8 @@ class ImgPanZoom extends LitElement {
             detail: {
               value: e,
             },
-          })
-        )
+          }),
+        ),
       );
       this.init = true;
     }, 100);

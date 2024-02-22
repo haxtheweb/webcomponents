@@ -122,7 +122,7 @@ class SimpleDrawer extends SimpleColors {
               position: fixed;
               color: var(--simple-drawer-color, #222222);
               background-color: var(--simple-drawer-background-color, #ffffff);
-            }
+            };
           }
           :host ::slotted(*) {
             @apply --simple-drawer-content;
@@ -276,7 +276,7 @@ class SimpleDrawer extends SimpleColors {
           e.detail.elements,
           e.detail.invokedBy,
           e.detail.align,
-          e.detail.clone
+          e.detail.clone,
         );
       }, 100);
     } else {
@@ -286,7 +286,7 @@ class SimpleDrawer extends SimpleColors {
         e.detail.invokedBy,
         e.detail.align,
         e.detail.size,
-        e.detail.clone
+        e.detail.clone,
       );
     }
   }
@@ -299,7 +299,7 @@ class SimpleDrawer extends SimpleColors {
     invokedBy,
     align = "left",
     size = "256px",
-    clone = false
+    clone = false,
   ) {
     this.invokedBy = invokedBy;
     this.title = title;

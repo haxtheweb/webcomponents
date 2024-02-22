@@ -33,8 +33,8 @@ const NavItem = (index) => {
       type === "label"
         ? undefined
         : type === "img"
-        ? utils.randomImage()
-        : utils.randomIcon(),
+          ? utils.randomImage()
+          : utils.randomIcon(),
     initials:
       type === "label"
         ? utils.randomOption("", label.innerHTML, utils.randomPhrase(1, 5))
@@ -42,7 +42,7 @@ const NavItem = (index) => {
     description: tag
       ? `<${tag} id="${descBy}" slot="description">${utils.randomSentence(
           1,
-          5
+          5,
         )}</${tag}>`
       : undefined,
     label: `<${nav} id ="${id}" slot="label" ${
@@ -74,7 +74,7 @@ export const NavCardStory = () => {
       footer: utils.randomBool()
         ? `<p style="font-size:80%;padding-bottom: 10px;text-align:center;">${utils.randomSentence(
             1,
-            5
+            5,
           )}</p>`
         : undefined,
       color: utils.randomColor(),
@@ -147,7 +147,7 @@ export const NavCardStory = () => {
       { css: "--nav-card-border-color", title: "Card heading text color" },
       { css: "width" },
       { css: "maxWidth" },
-    ]
+    ],
   );
 };
 
@@ -216,7 +216,7 @@ export const NavCardItemStory = () => {
         },
       ],
       [],
-      true
+      true,
     )}
     <!-- nav-card-item code-->
     ${MakeNavItem(1)}
@@ -225,13 +225,13 @@ export const NavCardItemStory = () => {
     utils.randomBool()
       ? `<p style="font-size:80%;padding-bottom: 10px;text-align:center;">${utils.randomSentence(
           1,
-          5
+          5,
         )}</p>`
       : ""
   }</div>
 </nav-card>`;
   return utils.getDemo(
     card,
-    `<p>Use the knobs below to customize the first nav-card-item.</p>`
+    `<p>Use the knobs below to customize the first nav-card-item.</p>`,
   );
 };

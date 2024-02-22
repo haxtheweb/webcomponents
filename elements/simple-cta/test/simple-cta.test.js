@@ -5,9 +5,9 @@ import "../simple-cta.js";
 describe("simple-cta test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-cta title="this is my title"></simple-cta> `
-    );
+    element = await fixture(html`
+      <simple-cta title="this is my title"></simple-cta>
+    `);
   });
 
   it("passes the a11y audit", async () => {

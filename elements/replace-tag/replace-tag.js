@@ -91,7 +91,7 @@ const ReplaceTagSuper = function (SuperClass) {
               rootMargin: "0px",
               threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
               delay: 150,
-            }
+            },
           );
           this.intersectionObserver.observe(this);
         }
@@ -128,13 +128,13 @@ const ReplaceTagSuper = function (SuperClass) {
             // the promise ensures everyting in the registry is teed up before
             // the DOM is asked to be processed w/ a definition
             window.WCAutoload.requestAvailability().registry.loadDefinition(
-              this.getAttribute("with")
+              this.getAttribute("with"),
             );
           });
         });
       } else {
         console.warn(
-          "replace-tag requires use of with attribute for what to upgrade to"
+          "replace-tag requires use of with attribute for what to upgrade to",
         );
       }
     }

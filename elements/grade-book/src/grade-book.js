@@ -121,7 +121,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     // notice that a category on the active grading area responded that it changed
     this.addEventListener(
       "simple-fields-tag-list-changed",
-      this.qualitativeFeedbackUpdate.bind(this)
+      this.qualitativeFeedbackUpdate.bind(this),
     );
     // value change within the rubric area
     this.addEventListener("value-changed", this.rubricCriteriaPointsChange);
@@ -151,11 +151,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         for (let entry of entries) {
           if (entry.contentBoxSize) {
             pixels = Math.round(
-              window.innerHeight - entry.contentBoxSize[0].blockSize - 122
+              window.innerHeight - entry.contentBoxSize[0].blockSize - 122,
             );
           } else {
             pixels = Math.round(
-              window.innerHeight - entry.contentRect.height - 122
+              window.innerHeight - entry.contentRect.height - 122,
             );
           }
         }
@@ -262,14 +262,14 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       if (
         !this.loading &&
         ["activeAssignment", "activeStudent", "database", "loading"].includes(
-          propName
+          propName,
         )
       ) {
         setTimeout(() => {
           // this will defer to whatever the "grades" db value is
           this.totalScore = this.getCurrentScore(
             this.activeStudent,
-            this.activeAssignment
+            this.activeAssignment,
           );
           this.assessmentView = this.resetAssessmentView();
           this.activeRubric = [...this.getActiveRubric()];
@@ -417,7 +417,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                 .querySelector("#studentgrid")
                 .getBoundingClientRect().height + 20,
             left: offset,
-          }
+          },
         );
         if (GradeBookStore.activeStudent === 0) {
           this.shadowRoot.querySelector("#studentgrid").scrollTop = 0;
@@ -1103,7 +1103,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   renderSubmission(data) {
     const height = parseInt(
       this.shadowRoot.querySelector("#studentgrid").getBoundingClientRect()
-        .height
+        .height,
     );
     this.shadowRoot
       .querySelector("#studentassessment")
@@ -1168,10 +1168,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       target[0].getAttribute("data-assignment")
     ) {
       GradeBookStore.activeAssignment = parseInt(
-        target[0].getAttribute("data-assignment")
+        target[0].getAttribute("data-assignment"),
       );
       GradeBookStore.activeStudent = parseInt(
-        target[0].getAttribute("data-student")
+        target[0].getAttribute("data-student"),
       );
       // if we collapsed this but then select a specific assignment / student
       // then let's focus the user on this
@@ -1191,7 +1191,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           .querySelectorAll(
             '#studentgrid .th-or-td[data-assignment="' +
               this.__activeHoverAssignment +
-              '"]'
+              '"]',
           )
           .forEach((el) => {
             el.classList.remove("col-highlight");
@@ -1202,7 +1202,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           .querySelectorAll(
             '#studentgrid .th-or-td[data-assignment="' +
               this.__activeHoverAssignment +
-              '"]'
+              '"]',
           )
           .forEach((el) => {
             el.classList.add("col-highlight");
@@ -1242,7 +1242,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     // toggle between height
     const height = parseInt(
       this.shadowRoot.querySelector("#studentgrid").getBoundingClientRect()
-        .height
+        .height,
     );
     // ensure small heights are expanded because it's impossible to leverage overwise
     if (height / window.innerHeight > 0.65) {
@@ -1252,13 +1252,13 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   studentreportClick(e) {
     ESGlobalBridgeStore.import(
       "jspdf",
-      new URL(`./lib/`, import.meta.url).href + "jspdf.min.js"
+      new URL(`./lib/`, import.meta.url).href + "jspdf.min.js",
     ).then(() => {
       var pdf = new jsPDF();
       pdf.fromHTML(
         this.shadowRoot.querySelector("#studentreport").outerHTML,
         15,
-        15
+        15,
       );
       const cd = new Date();
       const dateTime = `${cd.getFullYear()}-${cd.getMonth()}-${cd.getDate()}__${cd.getHours()}-${cd.getMinutes()}-${cd.getSeconds()}`;
@@ -1278,7 +1278,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         "studentwork",
         `left=0,top=0,width=${screen.width / 2},height=${
           screen.height / 2
-        },menubar=0,location=0,toolbar=0,status=0`
+        },menubar=0,location=0,toolbar=0,status=0`,
       );
       this.__openWindow.onbeforeunload = () => {
         this.displayMode = 0;
@@ -1296,7 +1296,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         this.database.assignments[this.activeAssignment]
           ? html`<grade-book-pop-up></grade-book-pop-up>`
           : html`${this.t.noSubmission}`}`,
-        this.__openWindow.document.body
+        this.__openWindow.document.body,
       );
     }
   }
@@ -1457,7 +1457,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                 (a, h) =>
                   html`<colgroup>
                     <col />
-                  </colgroup>`
+                  </colgroup>`,
               )}
               <thead class="thead">
                 <tr class="tr thead-tr" part="tr">
@@ -1486,68 +1486,70 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                           aria-label="${a.shortName}"
                         ></simple-fields-field> -->
                         ${a.shortName}
-                      </th>`
+                      </th>`,
                   )}
                 </tr>
               </thead>
               <tbody class="tbody">
                 ${this.database.roster.map(
-                  (s, i) => html` <tr class="tr tbody-tr">
-                    <th class="th th-or-td" data-assignment="-1">
-                      <div class="user-info">
-                        <div class="user-left">
-                          ${this.settings.photo
-                            ? html`${s.photo
-                                ? html`<img
-                                    src="${s.photo}"
-                                    loading="lazy"
-                                    class="user-photo"
-                                  />`
-                                : html`<simple-icon-lite
-                                    icon="social:person"
-                                    class="user-photo"
-                                  ></simple-icon-lite>`}`
-                            : nothing}
+                  (s, i) =>
+                    html` <tr class="tr tbody-tr">
+                      <th class="th th-or-td" data-assignment="-1">
+                        <div class="user-info">
+                          <div class="user-left">
+                            ${this.settings.photo
+                              ? html`${s.photo
+                                  ? html`<img
+                                      src="${s.photo}"
+                                      loading="lazy"
+                                      class="user-photo"
+                                    />`
+                                  : html`<simple-icon-lite
+                                      icon="social:person"
+                                      class="user-photo"
+                                    ></simple-icon-lite>`}`
+                              : nothing}
+                          </div>
+                          <div class="user-right">
+                            ${this.settings.fname
+                              ? html`<div>${s.student}</div>`
+                              : nothing}
+                            ${this.settings.surname
+                              ? html`<div>${s.student}</div>`
+                              : nothing}
+                            ${this.settings.email
+                              ? html`<div>
+                                  <a href="mailto:${s.email}" target="_blank"
+                                    >${s.email}</a
+                                  >
+                                </div>`
+                              : nothing}
+                          </div>
                         </div>
-                        <div class="user-right">
-                          ${this.settings.fname
-                            ? html`<div>${s.student}</div>`
-                            : nothing}
-                          ${this.settings.surname
-                            ? html`<div>${s.student}</div>`
-                            : nothing}
-                          ${this.settings.email
-                            ? html`<div>
-                                <a href="mailto:${s.email}" target="_blank"
-                                  >${s.email}</a
-                                >
-                              </div>`
-                            : nothing}
-                        </div>
-                      </div>
-                    </th>
-                    ${this.database.assignments.map(
-                      (a, h) => html` <td
-                        class="td th-or-td"
-                        numeric
-                        data-student="${i}"
-                        data-assignment="${h}"
-                        ?data-active="${this.activeStudent === i &&
-                        this.activeAssignment === h}"
-                      >
-                        <button
-                          aria-label="${s.student}'s assignement ${a.name}"
-                          data-student="${i}"
-                          data-assignment="${h}"
-                        >
-                          ${this.database.grades[i] &&
-                          this.database.grades[i][a.shortName]
-                            ? html`${this.database.grades[i][a.shortName]}`
-                            : `-`}
-                        </button>
-                      </td>`
-                    )}
-                  </tr>`
+                      </th>
+                      ${this.database.assignments.map(
+                        (a, h) =>
+                          html` <td
+                            class="td th-or-td"
+                            numeric
+                            data-student="${i}"
+                            data-assignment="${h}"
+                            ?data-active="${this.activeStudent === i &&
+                            this.activeAssignment === h}"
+                          >
+                            <button
+                              aria-label="${s.student}'s assignement ${a.name}"
+                              data-student="${i}"
+                              data-assignment="${h}"
+                            >
+                              ${this.database.grades[i] &&
+                              this.database.grades[i][a.shortName]
+                                ? html`${this.database.grades[i][a.shortName]}`
+                                : `-`}
+                            </button>
+                          </td>`,
+                      )}
+                    </tr>`,
                 )}
               </tbody>
             `
@@ -1603,11 +1605,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                                             accent-color="${this.pickColor(i)}"
                                             value="${term.term}"
                                             .data="${term}"
-                                          ></simple-tag>`
+                                          ></simple-tag>`,
                                       )}
                                   </div>
                                 </a11y-collapse>
-                              `
+                              `,
                             )}
                           </a11y-collapse-group>
                         `
@@ -1620,7 +1622,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                         ${this.renderRubricInfoBtn(
                           index,
                           rubric.criteria,
-                          rubric.description
+                          rubric.description,
                         )}
                         <letter-grade-picker></letter-grade-picker>
 
@@ -1637,7 +1639,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                             <tbody>
                               <tr>
                                 ${rubric.qualitative.map(
-                                  (cat) => html` <td>${cat}</td> `
+                                  (cat) => html` <td>${cat}</td> `,
                                 )}
                               </tr>
                               <tr>
@@ -1650,7 +1652,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                                         label="${cat}"
                                       ></simple-fields-tag-list>
                                     </td>
-                                  `
+                                  `,
                                 )}
                               </tr>
                             </tbody>
@@ -1662,7 +1664,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                           data-rubric-written
                           data-criteria="${rubric.criteria}"
                         ></simple-fields-field>
-                      `
+                      `,
                     )}
                     <div class="student-feedback-wrap">
                       <div class="student-feedback-text">
@@ -1771,7 +1773,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                                       (rubric.percentage / 100) *
                                         this.database.assignments[
                                           this.activeAssignment
-                                        ].points
+                                        ].points,
                                     )}
                                   </div>
                                   <h3>Criteria details</h3>
@@ -1787,34 +1789,35 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                                           ? html`${this.activeGrading[
                                               rubric.criteria
                                             ][cat].map(
-                                              (tag) => html` <li>
-                                                <span>${tag.term}</span
-                                                >${tag.description
-                                                  ? html` - ${tag.description}`
-                                                  : ``}
-                                                ${tag.associatedMaterial
-                                                  ? html`
-                                                      <ul>
-                                                        ${tag.associatedMaterial.map(
-                                                          (material) => html`
-                                                            <li>
-                                                              <a
-                                                                href="${material}"
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                >${material}</a
-                                                              >
-                                                            </li>
-                                                          `
-                                                        )}
-                                                      </ul>
-                                                    `
-                                                  : ``}
-                                              </li>`
+                                              (tag) =>
+                                                html` <li>
+                                                  <span>${tag.term}</span
+                                                  >${tag.description
+                                                    ? html` - ${tag.description}`
+                                                    : ``}
+                                                  ${tag.associatedMaterial
+                                                    ? html`
+                                                        <ul>
+                                                          ${tag.associatedMaterial.map(
+                                                            (material) => html`
+                                                              <li>
+                                                                <a
+                                                                  href="${material}"
+                                                                  target="_blank"
+                                                                  rel="noopener noreferrer"
+                                                                  >${material}</a
+                                                                >
+                                                              </li>
+                                                            `,
+                                                          )}
+                                                        </ul>
+                                                      `
+                                                    : ``}
+                                                </li>`,
                                             )}`
                                           : ``}
                                       </ul>
-                                    `
+                                    `,
                                   )}
                                 </ul>
                                 <h3>Additional Criteria feedback</h3>
@@ -1823,7 +1826,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                                 </p>
                               </div>
                             </a11y-collapse>
-                          `
+                          `,
                         )}
                       <a11y-collapse class="student-feedback-text">
                         <div slot="heading" class="heading">
@@ -1875,7 +1878,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       setTimeout(() => {
         XLSXFileSystemBrokerSingleton.processFile(
           this.prevLocalFileReference,
-          "json"
+          "json",
         );
         this.sourceData = this.prevLocalFileReference;
       }, 0);
@@ -1900,7 +1903,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     // MAY want to consider redoing how we look info up so that we don't transform it
     // into complex objects and instead use complex arrays (maybe)
     const output = XLSXFileSystemBrokerSingleton.workbookFromJSON(
-      this.database
+      this.database,
     );
     // treat as a Blob and then convert to a FileReader object
     const blob = new Blob([output], { type: "application/octet-stream" });
@@ -1932,7 +1935,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   updateTotalScore() {
     let score = 0;
     let tables = this.shadowRoot.querySelectorAll(
-      "#assessment simple-fields-field[type='number']:not(#totalpts)"
+      "#assessment simple-fields-field[type='number']:not(#totalpts)",
     );
     // add the scores up based on values of the pieces
     for (var i in Array.from(tables)) {
@@ -1978,17 +1981,17 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
    */
   getCriteriaScore(criteria) {
     let tables = this.shadowRoot.querySelectorAll(
-      "#assessment editable-table-display"
+      "#assessment editable-table-display",
     );
     // add the scores up based on values of the pieces
     for (var i in Array.from(tables)) {
       if (
         tables[i].shadowRoot.querySelector(
-          `[data-rubric-score][data-criteria="${criteria}"]`
+          `[data-rubric-score][data-criteria="${criteria}"]`,
         )
       ) {
         return tables[i].shadowRoot.querySelector(
-          `[data-rubric-score][data-criteria="${criteria}"]`
+          `[data-rubric-score][data-criteria="${criteria}"]`,
         ).value;
       }
     }
@@ -2000,11 +2003,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   getCriteriaFeedback(criteria) {
     if (
       this.shadowRoot.querySelector(
-        `#assessment [data-rubric-written][data-criteria="${criteria}"]`
+        `#assessment [data-rubric-written][data-criteria="${criteria}"]`,
       )
     ) {
       return this.shadowRoot.querySelector(
-        `#assessment [data-rubric-written][data-criteria="${criteria}"]`
+        `#assessment [data-rubric-written][data-criteria="${criteria}"]`,
       ).value;
     }
     return "";
@@ -2044,7 +2047,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         detail: {
           value: "drop",
         },
-      })
+      }),
     );
   }
   // set the drag transfer data
@@ -2054,7 +2057,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         detail: {
           value: e.target,
         },
-      })
+      }),
     );
     let data = e.target.data;
     // have to add in color

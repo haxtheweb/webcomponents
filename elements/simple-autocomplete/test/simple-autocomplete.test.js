@@ -5,9 +5,9 @@ import "../simple-autocomplete.js";
 describe("simple-autocomplete test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-autocomplete title="test-title"></simple-autocomplete> `
-    );
+    element = await fixture(html`
+      <simple-autocomplete title="test-title"></simple-autocomplete>
+    `);
   });
 
   it("passes the a11y audit", async () => {

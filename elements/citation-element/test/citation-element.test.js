@@ -5,9 +5,9 @@ import "../citation-element.js";
 describe("citation-element test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <citation-element title="test-title"></citation-element> `
-    );
+    element = await fixture(html`
+      <citation-element title="test-title"></citation-element>
+    `);
   });
 
   it("passes the a11y audit", async () => {

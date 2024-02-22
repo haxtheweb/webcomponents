@@ -5,9 +5,9 @@ import "../wikipedia-query.js";
 describe("wikipedia-query test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <wikipedia-query title="test-title"></wikipedia-query> `
-    );
+    element = await fixture(html`
+      <wikipedia-query title="test-title"></wikipedia-query>
+    `);
   });
 
   it("passes the a11y audit", async () => {

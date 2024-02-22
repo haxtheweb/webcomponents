@@ -17,6 +17,6 @@ export const EditableTableStory = () => {
   return utils.makeUsageDocs(
     sbClass,
     import.meta.url,
-    utils.makeElementFromHaxDemo(sbClass, { "edit-mode": true })
+    utils.makeElementFromHaxDemo(sbClass, { "edit-mode": true }),
   );
 };

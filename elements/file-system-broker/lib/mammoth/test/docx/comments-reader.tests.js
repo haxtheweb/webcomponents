@@ -20,7 +20,7 @@ test("ID and body of comment are read", function () {
   var comment = readComment(
     xml.element("w:comments", {}, [
       xml.element("w:comment", { "w:id": "1" }, body),
-    ])
+    ]),
   );
   assert.deepEqual(comment.body, [new documents.Paragraph([])]);
   assert.deepEqual(comment.commentId, "1");
@@ -28,7 +28,7 @@ test("ID and body of comment are read", function () {
 
 test("when optional attributes of comment are missing then they are read as null", function () {
   var comment = readComment(
-    xml.element("w:comments", {}, [xml.element("w:comment", { "w:id": "1" })])
+    xml.element("w:comments", {}, [xml.element("w:comment", { "w:id": "1" })]),
   );
   assert.strictEqual(comment.authorName, null);
   assert.strictEqual(comment.authorInitials, null);
@@ -42,7 +42,7 @@ test("when optional attributes of comment are blank then they are read as null",
         "w:author": " ",
         "w:initials": " ",
       }),
-    ])
+    ]),
   );
   assert.strictEqual(comment.authorName, null);
   assert.strictEqual(comment.authorInitials, null);
@@ -56,7 +56,7 @@ test("when optional attributes of comment are not blank then they are read", fun
         "w:author": "The Piemaker",
         "w:initials": "TP",
       }),
-    ])
+    ]),
   );
   assert.strictEqual(comment.authorName, "The Piemaker");
   assert.strictEqual(comment.authorInitials, "TP");

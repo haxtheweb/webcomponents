@@ -47,7 +47,7 @@ test("indents element if prettyPrint is true", function () {
   writer.close("ul");
   return assert.equal(
     writer.asString(),
-    "<ul>\n  <li>\n    One\n  </li>\n  <li>\n    Two\n  </li>\n</ul>"
+    "<ul>\n  <li>\n    One\n  </li>\n  <li>\n    Two\n  </li>\n</ul>",
   );
 });
 
@@ -73,7 +73,7 @@ test("indents closing element correctly when nested inside another indented elem
   writer.close("div");
   return assert.equal(
     writer.asString(),
-    "<div>\n  <div>\n    <div>\n      Hello\n    </div>\n  </div>\n</div>"
+    "<div>\n  <div>\n    <div>\n      Hello\n    </div>\n  </div>\n</div>",
   );
 });
 

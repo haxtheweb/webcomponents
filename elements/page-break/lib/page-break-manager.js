@@ -27,14 +27,14 @@ export class PageBreakManagerEl extends HTMLElement {
         // get parent
         if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
           targetNode = this.target.querySelector(
-            `page-break[path="${el.parent}"]`
+            `page-break[path="${el.parent}"]`,
           );
           // get parent of parent
           if (
             this.target.querySelector(`page-break[path="${targetNode.parent}"]`)
           ) {
             targetNode = this.target.querySelector(
-              `page-break[path="${targetNode.parent}"]`
+              `page-break[path="${targetNode.parent}"]`,
             );
           }
           {
@@ -45,7 +45,7 @@ export class PageBreakManagerEl extends HTMLElement {
         // get parent
         if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
           targetNode = this.target.querySelector(
-            `page-break[path="${el.parent}"]`
+            `page-break[path="${el.parent}"]`,
           );
         }
       }
@@ -60,7 +60,7 @@ export class PageBreakManagerEl extends HTMLElement {
     elem,
     selector = "page-break",
     filter,
-    direction = "nextElementSibling"
+    direction = "nextElementSibling",
   ) {
     // Setup siblings array
     var siblings = [];
@@ -118,7 +118,7 @@ export class PageBreakManagerEl extends HTMLElement {
             ...this.elementsBetween(
               element,
               "page-break",
-              ":not(h1,h2,h3,h4,h5,h6)"
+              ":not(h1,h2,h3,h4,h5,h6)",
             ),
           ];
         });
@@ -130,7 +130,7 @@ export class PageBreakManagerEl extends HTMLElement {
             ...this.elementsBetween(
               element,
               "page-break",
-              "[data-page-break-title]"
+              "[data-page-break-title]",
             ),
           ];
         });
@@ -142,7 +142,7 @@ export class PageBreakManagerEl extends HTMLElement {
             ...this.elementsBetween(
               element,
               "page-break",
-              ":not([data-page-break-title])"
+              ":not([data-page-break-title])",
             ),
           ];
         });
@@ -160,7 +160,7 @@ export class PageBreakManagerEl extends HTMLElement {
     globalThis.addEventListener(
       "page-break-registration",
       this.registerPageBreak.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 
@@ -193,12 +193,12 @@ export class PageBreakManagerEl extends HTMLElement {
           this.elementsBetween(
             element,
             "page-break",
-            "h1,h2,h3,h4,h5,h6"
+            "h1,h2,h3,h4,h5,h6",
           ).forEach((el) => {
             let tagNumber =
               (el.getAttribute("data-original-level")
                 ? new Number(
-                    el.getAttribute("data-original-level").replace("H", "")
+                    el.getAttribute("data-original-level").replace("H", ""),
                   )
                 : new Number(el.tagName.replace("H", ""))) + element.depth;
             tagNumber = tagNumber > 6 ? 6 : tagNumber;
@@ -207,7 +207,7 @@ export class PageBreakManagerEl extends HTMLElement {
             for (var i = 0, l = el.attributes.length; i < l; ++i) {
               newH.setAttribute(
                 el.attributes.item(i).nodeName,
-                el.attributes.item(i).nodeValue
+                el.attributes.item(i).nodeValue,
               );
             }
             newH.innerHTML = el.innerHTML;

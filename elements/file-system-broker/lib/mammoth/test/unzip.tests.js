@@ -13,7 +13,7 @@ test("unzip fails if given empty object", function () {
     },
     function (error) {
       assert.equal("Could not find file in options", error.message);
-    }
+    },
   );
 });
 

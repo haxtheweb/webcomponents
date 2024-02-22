@@ -45,7 +45,7 @@ class FigureLabel extends DDD {
               --ddd-theme-accent-color,
               var(
                 --simple-colors-default-theme-accent-2,
-                var(--ddd-theme-polaris-limestoneLight)
+                var(--ddd-theme-default-limestoneLight)
               )
             )
           ); /* is this hierarchy correct? */
@@ -53,7 +53,7 @@ class FigureLabel extends DDD {
             --ddd-component-figure-label-title-text,
             var(
               --simple-colors-default-theme-accent-11,
-              var(--ddd-theme-polaris-potentialMidnight)
+              var(--ddd-theme-default-potentialMidnight)
             )
           );
           font-size: var(--ddd-font-size-4xs);
@@ -71,7 +71,7 @@ class FigureLabel extends DDD {
               --ddd-theme-accent-color,
               var(
                 --simple-colors-default-theme-accent-2,
-                var(--ddd-theme-polaris-limestoneLight)
+                var(--ddd-theme-default-limestoneLight)
               )
             )
           );
@@ -79,7 +79,7 @@ class FigureLabel extends DDD {
           font-size: var(--ddd-font-size-4xs);
           background: var(
             --ddd-component-figure-label-background,
-            var(--ddd-theme-polaris-white)
+            var(--ddd-theme-default-white)
           );
           font-weight: var(--ddd-font-primary-regular);
         }

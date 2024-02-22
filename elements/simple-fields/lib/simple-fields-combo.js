@@ -306,7 +306,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
 
   get listboxInnerTemplate() {
     return (this.filteredOptions || []).map((option) =>
-      this.getListItem(option)
+      this.getListItem(option),
     );
   }
 
@@ -413,14 +413,14 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
           setTimeout(() => {
             this.input.setSelectionRange(
               option.value.length,
-              option.value.length
+              option.value.length,
             );
           }, 0);
         } else {
           setTimeout(() => {
             this.input.setSelectionRange(
               this.filter.length,
-              option.value.length
+              option.value.length,
             );
           }, 0);
         }
@@ -609,7 +609,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         cancelable: true,
         composed: true,
         detail: event,
-      })
+      }),
     );
 
     var flag = false,
@@ -676,7 +676,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
 
           if (
             option.textComparison.indexOf(
-              (this.input.value || "").toLowerCase()
+              (this.input.value || "").toLowerCase(),
             ) === 0
           ) {
             this.option = option;
@@ -715,12 +715,12 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    */
   get sortedOptions() {
     let sorted = (this.itemsList || []).map((item, i) =>
-      typeof item === "object" ? item : { id: i, value: item }
+      typeof item === "object" ? item : { id: i, value: item },
     );
     Object.keys(this.options || {})
       .sort((a, b) => (a > b ? 1 : -1))
       .forEach((key) =>
-        sorted.push({ id: sorted.length, value: this.options[key] })
+        sorted.push({ id: sorted.length, value: this.options[key] }),
       );
     return sorted;
   }
@@ -789,7 +789,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
       !!this.shadowRoot.querySelector(`#option${option.id}`)
     )
       this.listbox.scrollTop = this.shadowRoot.querySelector(
-        `#option${option.id}`
+        `#option${option.id}`,
       ).offsetTop;
   }
   _isSelected(option) {
@@ -877,8 +877,8 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
       this._input = this.field
         ? this.field
         : this.shadowRoot && this.shadowRoot.querySelector(`#${this.id}`)
-        ? this.shadowRoot.querySelector(`#${this.id}`)
-        : undefined;
+          ? this.shadowRoot.querySelector(`#${this.id}`)
+          : undefined;
     return this._input;
   }
   get keyCode() {

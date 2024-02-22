@@ -19,7 +19,7 @@ import {
  * LitElement Version of HAXCMSTheme
  */
 class HAXCMSLitElementTheme extends HAXCMSTheme(
-  ResponsiveUtilityBehaviors(LitElement)
+  ResponsiveUtilityBehaviors(LitElement),
 ) {
   constructor() {
     super();
@@ -54,11 +54,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             node.addEventListener("click", this.copyLink.bind(this));
             node.addEventListener(
               "pointerenter",
-              this.hoverIntentEnter.bind(this)
+              this.hoverIntentEnter.bind(this),
             );
             node.addEventListener(
               "pointerleave",
-              this.hoverIntentLeave.bind(this)
+              this.hoverIntentLeave.bind(this),
             );
           });
         }
@@ -72,7 +72,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     let iconPath = SimpleIconsetStore.getIcon("icons:link");
     this.__styleTag.innerHTML = `
     #${e.target.getAttribute(
-      "id"
+      "id",
     )} { cursor: copy; text-decoration: dotted underline}
     #${e.target.getAttribute("id")} {
       background-image: url("${iconPath}");
@@ -94,27 +94,26 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
 
   HAXCMSGlobalStyleSheetContent() {
     let styles = ["red", "blue", "green", "orange", "purple"].map(
-      (item) =>
-        css`
-          .haxcms-theme-element [data-style-decoration~="highlight"] {
-            color: var(--haxcms-style-element-color, white) !important;
-            background-color: var(
-              --haxcms-style-element-background-color,
-              black
-            ) !important;
-            font-weight: 400;
-            word-wrap: break-word;
-            padding: 4px 8px;
-            text-transform: uppercase;
-            text-decoration: none;
-          }
-          .haxcms-theme-element [data-style-decoration~="${unsafeCSS(item)}"] {
-            --haxcms-style-element-background-color: var(
-              --simple-colors-default-theme-${unsafeCSS(item)}-7,
-              ${unsafeCSS(item)}
-            );
-          }
-        `
+      (item) => css`
+        .haxcms-theme-element [data-style-decoration~="highlight"] {
+          color: var(--haxcms-style-element-color, white) !important;
+          background-color: var(
+            --haxcms-style-element-background-color,
+            black
+          ) !important;
+          font-weight: 400;
+          word-wrap: break-word;
+          padding: 4px 8px;
+          text-transform: uppercase;
+          text-decoration: none;
+        }
+        .haxcms-theme-element [data-style-decoration~="${unsafeCSS(item)}"] {
+          --haxcms-style-element-background-color: var(
+            --simple-colors-default-theme-${unsafeCSS(item)}-7,
+            ${unsafeCSS(item)}
+          );
+        }
+      `,
     );
     let instructionalStyles = Object.keys(learningComponentColors).map(
       (item) => {
@@ -149,7 +148,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           h5[data-instructional-action="${unsafeCSS(item)}"]::after,
           h6[data-instructional-action="${unsafeCSS(item)}"]::after {
             -webkit-mask-image: url("${unsafeCSS(
-              SimpleIconsetStore.getIcon(iconFromPageType(item))
+              SimpleIconsetStore.getIcon(iconFromPageType(item)),
             )}");
           }
           hr[data-instructional-action="${unsafeCSS(item)}"] {
@@ -171,11 +170,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
 
           hr[data-instructional-action="${unsafeCSS(item)}"]::after {
             -webkit-mask-image: url("${unsafeCSS(
-              SimpleIconsetStore.getIcon(iconFromPageType(item))
+              SimpleIconsetStore.getIcon(iconFromPageType(item)),
             )}");
           }
         `;
-      }
+      },
     );
     return [
       css`
@@ -419,9 +418,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           border-radius: 50%;
           left: 0px;
           top: 4px;
-          margin:0 0 -50px -64px;
+          margin: 0 0 -50px -64px;
         }
-        
+
         h1[data-instructional-action]::after,
         h2[data-instructional-action]::after,
         h3[data-instructional-action]::after,
@@ -491,7 +490,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           text: `Link copied to clipboard`,
           duration: 3000,
         },
-      })
+      }),
     );
   }
   static get properties() {
@@ -620,11 +619,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           node.addEventListener("click", this.copyLink.bind(this));
           node.addEventListener(
             "pointerenter",
-            this.hoverIntentEnter.bind(this)
+            this.hoverIntentEnter.bind(this),
           );
           node.addEventListener(
             "pointerleave",
-            this.hoverIntentLeave.bind(this)
+            this.hoverIntentLeave.bind(this),
           );
         });
       }
@@ -667,7 +666,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             cancelable: true,
             composed: true,
             detail: this[propName],
-          })
+          }),
         );
         this._contentContainerChanged(this[propName], oldValue);
       }
@@ -679,7 +678,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             cancelable: true,
             composed: true,
             detail: this[propName],
-          })
+          }),
         );
       }
       if (propName == "editMode") {
@@ -690,7 +689,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             cancelable: true,
             composed: true,
             detail: this[propName],
-          })
+          }),
         );
         this._editModeChanged(this[propName], oldValue);
         if (
@@ -710,8 +709,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             render(
               this.HAXCMSGlobalStyleSheetEditModeContent(),
               globalThis.HaxStore.requestAvailability().activeHaxBody.shadowRoot.querySelector(
-                "#hax-body-style-element"
-              )
+                "#hax-body-style-element",
+              ),
             );
           }
         }

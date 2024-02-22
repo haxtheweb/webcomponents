@@ -97,7 +97,9 @@ class A11yMediaTranscriptCue extends LitElement {
           width: 100%;
           color: var(--a11y-media-transcript-cue-color);
           background-color: var(--a11y-media-transcript-cue-bg-color);
-          transition: color 0.25s, background-color 0.25s;
+          transition:
+            color 0.25s,
+            background-color 0.25s;
           --simple-search-match-text-color: var(
             --a11y-media-transcript-match-color
           );
@@ -175,7 +177,7 @@ class A11yMediaTranscriptCue extends LitElement {
               oldValue: oldValue,
               value: this.active,
             },
-          })
+          }),
         );
     });
   }

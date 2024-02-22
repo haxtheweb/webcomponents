@@ -5,9 +5,9 @@ import "../fullscreen-behaviors.js";
 describe("fullscreen-behaviors test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <fullscreen-behaviors title="test-title"></fullscreen-behaviors> `
-    );
+    element = await fixture(html`
+      <fullscreen-behaviors title="test-title"></fullscreen-behaviors>
+    `);
   });
 
   it("passes the a11y audit", async () => {

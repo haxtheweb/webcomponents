@@ -60,8 +60,8 @@ var elementListPrototype = {
       _.flatten(
         this.map(function (element) {
           return element.getElementsByTagName(name);
-        }, true)
-      )
+        }, true),
+      ),
     );
   },
 };

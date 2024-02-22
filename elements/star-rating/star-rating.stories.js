@@ -15,5 +15,5 @@ export const StarRatingStory = () =>
   utils.makeUsageDocs(
     StarRating,
     import.meta.url,
-    utils.makeElementFromClass(StarRating)
+    utils.makeElementFromClass(StarRating),
   );

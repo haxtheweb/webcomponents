@@ -5,9 +5,9 @@ import "../portal-launcher.js";
 describe("portal-launcher test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <portal-launcher title="test-title"></portal-launcher> `
-    );
+    element = await fixture(html`
+      <portal-launcher title="test-title"></portal-launcher>
+    `);
   });
 
   it("passes the a11y audit", async () => {

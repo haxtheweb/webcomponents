@@ -5,9 +5,9 @@ import "../user-action.js";
 describe("user-action test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <user-action title="test-title"></user-action> `
-    );
+    element = await fixture(html`
+      <user-action title="test-title"></user-action>
+    `);
   });
 
   it("passes the a11y audit", async () => {

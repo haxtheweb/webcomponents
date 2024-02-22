@@ -5,9 +5,9 @@ import "../simple-search.js";
 describe("simple-search test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-search title="test-title"></simple-search> `
-    );
+    element = await fixture(html`
+      <simple-search title="test-title"></simple-search>
+    `);
   });
 
   it("passes the a11y audit", async () => {

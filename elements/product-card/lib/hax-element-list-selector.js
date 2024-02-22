@@ -62,7 +62,7 @@ class HaxElementListSelector extends LitElement {
     setTimeout(() => {
       globalThis.addEventListener(
         "a11y-tabs-active-changed",
-        this._activeTabChanged.bind(this)
+        this._activeTabChanged.bind(this),
       );
     }, 0);
     this.addEventListener("response", this._response);
@@ -184,7 +184,7 @@ class HaxElementListSelector extends LitElement {
   }
   get otherTags() {
     this._getElement(
-      "haxcore.providerdetails.haxcore-providerdetails-othertags"
+      "haxcore.providerdetails.haxcore-providerdetails-othertags",
     );
   }
   updated(changedProperties) {
@@ -364,7 +364,7 @@ class HaxElementListSelector extends LitElement {
               detail: {
                 value: this.getAppstoreValues(),
               },
-            })
+            }),
           );
         }
       }

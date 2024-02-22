@@ -20,7 +20,7 @@ describe("simple-blog-card test", () => {
       >
         There is a buzz around the word Bitcoin in recent times and people think
         that bitcoin is blockchain and blockchain is bitcoin. Here I am…
-      </simple-blog-card> `
+      </simple-blog-card> `,
     );
   });
 

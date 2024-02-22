@@ -116,7 +116,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
                 cancelable: true,
                 composed: true,
                 detail: false,
-              })
+              }),
             );
             e.preventDefault();
           } else if (
@@ -219,7 +219,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           detail: {
             value: this.focused,
           },
-        })
+        }),
       );
     }
     if (changedProperties.has("wand")) {
@@ -260,7 +260,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           detail: {
             value: this.value,
           },
-        })
+        }),
       );
     }
     if (changedProperties.has("listeningForInput")) {
@@ -270,7 +270,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           detail: {
             value: this.listeningForInput,
           },
-        })
+        }),
       );
     }
     if (changedProperties.has("commandContext")) {
@@ -280,7 +280,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           detail: {
             value: this.commandContext,
           },
-        })
+        }),
       );
     }
   }

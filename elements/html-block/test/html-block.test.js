@@ -5,9 +5,9 @@ import "../html-block.js";
 describe("html-block test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <html-block title="test-title"></html-block> `
-    );
+    element = await fixture(html`
+      <html-block title="test-title"></html-block>
+    `);
   });
 
   it("passes the a11y audit", async () => {

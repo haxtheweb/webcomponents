@@ -15,6 +15,6 @@ export const SimpleSearch = () => {
   return utils.makeUsageDocs(
     TwitterEmbed,
     import.meta.url,
-    utils.makeElementFromHaxDemo(TwitterEmbed)
+    utils.makeElementFromHaxDemo(TwitterEmbed),
   );
 };

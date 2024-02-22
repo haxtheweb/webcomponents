@@ -27,7 +27,9 @@ class ItemOverlayOps extends PolymerElement {
           display: none;
           opacity: 0;
           background-color: transparent;
-          transition: background-color 0.6s linear, visibility 0.6s linear,
+          transition:
+            background-color 0.6s linear,
+            visibility 0.6s linear,
             opacity 0.6s linear;
           visibility: hidden;
         }
@@ -404,7 +406,7 @@ class ItemOverlayOps extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: op,
-      })
+      }),
     );
   }
 
@@ -443,7 +445,7 @@ class ItemOverlayOps extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: ops,
-      })
+      }),
     );
     // don't reset for movement, just confirm / reject actions
     if (this.activeOp != "move") {

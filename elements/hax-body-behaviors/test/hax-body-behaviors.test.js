@@ -5,9 +5,9 @@ import "../hax-body-behaviors.js";
 describe("hax-body-behaviors test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <hax-body-behaviors title="test-title"></hax-body-behaviors> `
-    );
+    element = await fixture(html`
+      <hax-body-behaviors title="test-title"></hax-body-behaviors>
+    `);
   });
 
   it("passes the a11y audit", async () => {

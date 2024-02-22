@@ -24,7 +24,9 @@ class SimpleBlogPost extends SimpleColors {
           min-height: 80vh;
         }
         main {
-          transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+          transition:
+            opacity 0.2s ease-in-out,
+            visibility 0.2s ease-in-out;
           width: 100%;
           max-width: 900px;
           margin: 0 auto;
@@ -77,7 +79,12 @@ class SimpleBlogPost extends SimpleColors {
           z-index: 1;
         }
         .post-meta {
-          font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica,
+          font-family:
+            Open Sans,
+            MundoSans,
+            "Helvetica Neue",
+            Arial,
+            Helvetica,
             sans-serif;
         }
         :host([has-image]) .post-meta {
@@ -87,7 +94,12 @@ class SimpleBlogPost extends SimpleColors {
           right: 30%;
           padding-top: 60px;
           z-index: 9;
-          font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica,
+          font-family:
+            Open Sans,
+            MundoSans,
+            "Helvetica Neue",
+            Arial,
+            Helvetica,
             sans-serif;
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
@@ -128,7 +140,8 @@ class SimpleBlogPost extends SimpleColors {
             font-size: 50px;
             line-height: 1.1;
             margin-bottom: 16px;
-            text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5),
+            text-shadow:
+              0 1px 16px rgba(0, 0, 0, 0.5),
               0 0 1px rgba(0, 0, 0, 0.5);
             color: white;
           }

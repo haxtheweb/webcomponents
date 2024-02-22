@@ -17,6 +17,6 @@ export const PersonTestimonialStory = () => {
   return utils.makeUsageDocs(
     PersonTestimonial,
     import.meta.url,
-    utils.makeElementFromHaxDemo(PersonTestimonial)
+    utils.makeElementFromHaxDemo(PersonTestimonial),
   );
 };

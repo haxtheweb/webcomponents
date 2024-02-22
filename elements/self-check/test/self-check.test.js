@@ -17,7 +17,7 @@ describe("self-check test", () => {
         >
         The Great White shark can grow to be 15 ft to more than 20 ft in length
         and weigh 2.5 tons or more.
-      </self-check>`
+      </self-check>`,
     );
   });
 

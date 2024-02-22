@@ -17,6 +17,6 @@ export const HtmlBlockForHAX = () => {
     import.meta.url,
     utils.makeElementFromClass(HtmlBlock, {
       emptyslot: "<p>whatever you want, it's just a bridge for HAX</p>",
-    })
+    }),
   );
 };

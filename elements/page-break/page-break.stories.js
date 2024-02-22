@@ -16,6 +16,6 @@ export const PageBreakStory = () => {
   return utils.makeUsageDocs(
     PageBreak,
     import.meta.url,
-    utils.makeElementFromHaxDemo(PageBreak)
+    utils.makeElementFromHaxDemo(PageBreak),
   );
 };

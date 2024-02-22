@@ -1186,7 +1186,7 @@ class HAXCMSSiteListing extends PolymerElement {
         bubbles: true,
         cancelable: false,
         detail: {},
-      })
+      }),
     );
   }
   /**
@@ -1226,7 +1226,7 @@ class HAXCMSSiteListing extends PolymerElement {
       if (newValue) {
         globalThis.document.body.setAttribute(
           "data-logged-in",
-          "data-logged-in"
+          "data-logged-in",
         );
         this.__loginText = "Log out";
         this.__loginIcon = "icons:account-circle";
@@ -1254,7 +1254,7 @@ class HAXCMSSiteListing extends PolymerElement {
       if (this.__cameraBlob) {
         let file = new File(
           [this.__cameraBlob],
-          "userPhoto" + Date.now() + ".jpg"
+          "userPhoto" + Date.now() + ".jpg",
         );
         this.shadowRoot.querySelector("#fileupload").target =
           this.__setUserPhotoPath + "&jwt=" + newValue;
@@ -1304,7 +1304,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("selectedItems", []);
     this.set(
       "selectedItems",
-      this.shadowRoot.querySelector("#grid").selectedItems
+      this.shadowRoot.querySelector("#grid").selectedItems,
     );
   }
   /**
@@ -1316,7 +1316,7 @@ class HAXCMSSiteListing extends PolymerElement {
     globalThis.addEventListener(
       "jwt-login-refresh-error",
       this._tokenRefreshFailed.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener("jwt-token", this.updateJwt.bind(this), {
@@ -1332,7 +1332,7 @@ class HAXCMSSiteListing extends PolymerElement {
       .querySelector("#fileupload")
       .addEventListener(
         "upload-response",
-        this.handleSetUserPhotoResponse.bind(this)
+        this.handleSetUserPhotoResponse.bind(this),
       );
 
     if (this.jwt) {
@@ -1342,7 +1342,7 @@ class HAXCMSSiteListing extends PolymerElement {
     globalThis.addEventListener(
       "sites-listing-refresh-data",
       this.refreshData.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     setTimeout(() => {
@@ -1360,7 +1360,7 @@ class HAXCMSSiteListing extends PolymerElement {
       } else {
         console.warn("Shadow DOM missing, ALL YOUR IE R BELONG TO US");
         console.warn(
-          "HAXCMS DOES NOT LOVE YOUR OLD BROWSER FOR EDITING JUST VIEWING"
+          "HAXCMS DOES NOT LOVE YOUR OLD BROWSER FOR EDITING JUST VIEWING",
         );
         console.warn("You get no authoring experience. Good day to you!");
         const evt = new CustomEvent("simple-toast-show", {
@@ -1385,13 +1385,13 @@ class HAXCMSSiteListing extends PolymerElement {
 
       this.addEventListener(
         "simple-login-login",
-        this.loginPromptEvent.bind(this)
+        this.loginPromptEvent.bind(this),
       );
       this.shadowRoot
         .querySelector("#grid")
         .addEventListener(
           "selected-items-changed",
-          this._gridSelectedItemsChanged.bind(this)
+          this._gridSelectedItemsChanged.bind(this),
         );
       this.__loginPath = globalThis.appSettings.login;
       this.__refreshPath = globalThis.appSettings.refreshUrl;
@@ -1418,7 +1418,7 @@ class HAXCMSSiteListing extends PolymerElement {
       globalThis.document.body.addEventListener(
         "haxcms-load-site",
         this.loadActiveSite.bind(this),
-        { signal: this.windowControllers.signal }
+        { signal: this.windowControllers.signal },
       );
 
       this.permissionsListen();
@@ -1428,7 +1428,7 @@ class HAXCMSSiteListing extends PolymerElement {
             detail: this,
             bubbles: true,
             composed: true,
-          })
+          }),
         );
         this.snapPhoto.bind(this);
       });
@@ -1440,7 +1440,7 @@ class HAXCMSSiteListing extends PolymerElement {
               detail: this,
               bubbles: true,
               composed: true,
-            })
+            }),
           );
           this.clearPhoto.bind(this);
         });
@@ -1453,7 +1453,7 @@ class HAXCMSSiteListing extends PolymerElement {
       async () => {
         await this.snapPhoto();
       },
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
@@ -1461,7 +1461,7 @@ class HAXCMSSiteListing extends PolymerElement {
       async () => {
         await this.clearPhoto();
       },
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 
@@ -1504,7 +1504,7 @@ class HAXCMSSiteListing extends PolymerElement {
         bubbles: true,
         cancelable: false,
         detail: {},
-      })
+      }),
     );
   }
   _loginUserRoutine(detail) {
@@ -1514,7 +1514,7 @@ class HAXCMSSiteListing extends PolymerElement {
         bubbles: true,
         cancelable: false,
         detail: detail,
-      })
+      }),
     );
   }
   /**
@@ -1640,7 +1640,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.windowControllers.abort();
     this.removeEventListener(
       "simple-login-login",
-      this.loginPromptEvent.bind(this)
+      this.loginPromptEvent.bind(this),
     );
     this.shadowRoot
       .querySelector("#snap")
@@ -1652,7 +1652,7 @@ class HAXCMSSiteListing extends PolymerElement {
       .querySelector("#grid")
       .removeEventListener(
         "selected-items-changed",
-        this._gridSelectedItemsChanged.bind(this)
+        this._gridSelectedItemsChanged.bind(this),
       );
     this.shadowRoot
       .querySelector("#jwt")
@@ -1752,7 +1752,7 @@ class HAXCMSSiteListing extends PolymerElement {
       globalThis.open(item.slug);
     } else {
       globalThis.open(
-        this.basePath + "_sites/" + item.metadata.site.name + "/"
+        this.basePath + "_sites/" + item.metadata.site.name + "/",
       );
     }
   }
@@ -1783,7 +1783,7 @@ class HAXCMSSiteListing extends PolymerElement {
       {
         jwt: this.jwt,
       },
-      this.shadowRoot.querySelector("#createsitefields").value.manifest
+      this.shadowRoot.querySelector("#createsitefields").value.manifest,
     );
     this.set("createParams", {});
     this.set("createParams", values);
@@ -1807,7 +1807,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.set("activeItem", this.selectedItems[i]);
       this.set(
         "downloadParams.site.name",
-        this.selectedItems[i].metadata.site.name
+        this.selectedItems[i].metadata.site.name,
       );
       this.notifyPath("downloadParams.site.name");
       await this.shadowRoot.querySelector("#downloadrequest").generateRequest();
@@ -1830,7 +1830,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.set("activeItem", this.selectedItems[i]);
       this.set(
         "archiveParams.site.name",
-        this.selectedItems[i].metadata.site.name
+        this.selectedItems[i].metadata.site.name,
       );
       this.notifyPath("archiveParams.site.name");
       await this.shadowRoot.querySelector("#archiverequest").generateRequest();
@@ -1875,7 +1875,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.set("activeItem", this.selectedItems[i]);
       this.set(
         "deleteParams.site.name",
-        this.selectedItems[i].metadata.site.name
+        this.selectedItems[i].metadata.site.name,
       );
       this.notifyPath("deleteParams.site.name");
       await this.shadowRoot.querySelector("#deleterequest").generateRequest();
@@ -1898,7 +1898,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.set("activeItem", this.selectedItems[i]);
       this.set(
         "cloneParams.site.name",
-        this.selectedItems[i].metadata.site.name
+        this.selectedItems[i].metadata.site.name,
       );
       this.notifyPath("cloneParams.site.name");
       await this.shadowRoot.querySelector("#clonerequest").generateRequest();
@@ -1921,7 +1921,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.set("activeItem", this.selectedItems[i]);
       this.set(
         "publishParams.site.name",
-        this.selectedItems[i].metadata.site.name
+        this.selectedItems[i].metadata.site.name,
       );
       this.notifyPath("publishParams.site.name");
       await this.shadowRoot.querySelector("#publishrequest").generateRequest();
@@ -1944,7 +1944,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.set("activeItem", this.selectedItems[i]);
       this.set(
         "syncParams.site.name",
-        this.selectedItems[i].metadata.site.name
+        this.selectedItems[i].metadata.site.name,
       );
       this.notifyPath("syncParams.site.name");
       await this.shadowRoot.querySelector("#syncrequest").generateRequest();
@@ -1992,7 +1992,7 @@ class HAXCMSSiteListing extends PolymerElement {
           composed: true,
           cancelable: false,
           detail: true,
-        })
+        }),
       );
     }
 
@@ -2005,7 +2005,7 @@ class HAXCMSSiteListing extends PolymerElement {
           text: toast,
           duration: 2000,
         },
-      })
+      }),
     );
   }
   /**
@@ -2111,7 +2111,7 @@ class HAXCMSSiteListing extends PolymerElement {
               detail: {
                 redirect: true,
               },
-            })
+            }),
           );
           break;
         case 403:
@@ -2131,7 +2131,7 @@ class HAXCMSSiteListing extends PolymerElement {
                   params: [target],
                 },
               },
-            })
+            }),
           );
           break;
         default:

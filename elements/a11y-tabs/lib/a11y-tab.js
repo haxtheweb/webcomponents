@@ -335,7 +335,7 @@ class A11yTab extends LitElement {
         cancelable: true,
         composed: false,
         detail: this,
-      })
+      }),
     );
   }
 }

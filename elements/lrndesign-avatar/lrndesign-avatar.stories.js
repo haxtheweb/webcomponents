@@ -26,6 +26,6 @@ export const LrndesignAvatarStory = () => {
         title: "Size",
         inputMethod: "textfield",
       },
-    ]
+    ],
   );
 };

@@ -33,7 +33,7 @@ export const PDFPageMixin = function (SuperClass) {
             eventName: "super-daemon-element-method",
             path: "CMS/page/pdf",
           },
-        })
+        }),
       );
     }
 
@@ -91,7 +91,7 @@ export const PDFPageMixin = function (SuperClass) {
         // click link to download file
         // @todo this downloads but claims to be corrupt.
         link.href = globalThis.URL.createObjectURL(
-          b64toBlob(response.data, "application/pdf")
+          b64toBlob(response.data, "application/pdf"),
         );
         link.download = `${toJS(store.activeTitle)}.pdf`;
         link.target = "_blank";

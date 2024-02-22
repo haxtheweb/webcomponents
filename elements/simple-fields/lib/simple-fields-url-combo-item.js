@@ -179,8 +179,8 @@ class SimpleFieldsUrlComboItem extends LitElement {
         parts && parts[0]
           ? parts[0].replace(/^\./, "")
           : !!this.type
-          ? this.type
-          : "";
+            ? this.type
+            : "";
     return (extension || "").toLowerCase();
   }
 
@@ -277,18 +277,18 @@ class SimpleFieldsUrlComboItem extends LitElement {
     return !!this.icon && this.icon.trim() !== ""
       ? this.icon
       : this.isAnchor
-      ? this.iconTypes["anchor"]
-      : this.isLocal && this.isPage
-      ? this.iconTypes["page"]
-      : this.isPage
-      ? this.iconTypes["html"]
-      : this.isEmail
-      ? this.iconTypes["email"]
-      : this.isPhone
-      ? this.iconTypes["tel"]
-      : !!this.fileExtension && this.fileExtension !== ""
-      ? this.iconTypes[this.fileExtension]
-      : this.iconTypes["file"];
+        ? this.iconTypes["anchor"]
+        : this.isLocal && this.isPage
+          ? this.iconTypes["page"]
+          : this.isPage
+            ? this.iconTypes["html"]
+            : this.isEmail
+              ? this.iconTypes["email"]
+              : this.isPhone
+                ? this.iconTypes["tel"]
+                : !!this.fileExtension && this.fileExtension !== ""
+                  ? this.iconTypes[this.fileExtension]
+                  : this.iconTypes["file"];
   }
 
   /**
@@ -330,12 +330,12 @@ class SimpleFieldsUrlComboItem extends LitElement {
     return !!this.preview && this.preview !== ""
       ? this.imageTemplate
       : !!this.icon && this.icon !== ""
-      ? this.iconTemplate
-      : !!this.previewSrc && this.previewSrc !== ""
-      ? this.imageTemplate
-      : !!this.iconName && this.iconName !== ""
-      ? this.iconTemplate
-      : "";
+        ? this.iconTemplate
+        : !!this.previewSrc && this.previewSrc !== ""
+          ? this.imageTemplate
+          : !!this.iconName && this.iconName !== ""
+            ? this.iconTemplate
+            : "";
   }
   /**
    * label template for item
@@ -363,8 +363,8 @@ class SimpleFieldsUrlComboItem extends LitElement {
     return !!this.name && this.name.trim() !== ""
       ? html`<span part="label-primary">${this.name}</span>`
       : !!this.value && this.value.trim() !== ""
-      ? html`<span part="label-primary">${this.value}</span>`
-      : "";
+        ? html`<span part="label-primary">${this.value}</span>`
+        : "";
   }
 
   /**

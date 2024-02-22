@@ -4,7 +4,7 @@ var Result = require("../results").Result;
 function createCommentsReader(bodyReader) {
   function readCommentsXml(element) {
     return Result.combine(
-      element.getElementsByTagName("w:comment").map(readCommentElement)
+      element.getElementsByTagName("w:comment").map(readCommentElement),
     );
   }
 

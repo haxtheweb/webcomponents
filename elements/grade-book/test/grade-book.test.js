@@ -11,7 +11,7 @@ describe("grade-book test", () => {
         source="googledocs"
         source-data="2PACX-1vQWAKQNyYk6TmE6AaArXZNJY6BZxfbzVb3a1zRVYZzPO0HG-Jcjm4yVHWICVgX9jM8Ef_sKYAv3WnRq"
       >
-      </grade-book-lite>`
+      </grade-book-lite>`,
     );
   });
 

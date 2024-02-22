@@ -119,7 +119,7 @@ class SiteQuery extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (
@@ -145,7 +145,7 @@ class SiteQuery extends LitElement {
             this.limit,
             this.startIndex,
             this.random,
-            this.forceRebuild
+            this.forceRebuild,
           ),
         ];
       }
@@ -163,7 +163,7 @@ class SiteQuery extends LitElement {
     limit,
     startIndex,
     random,
-    forceRebuild
+    forceRebuild,
   ) {
     if (routerManifest && routerManifest.items) {
       // ensure no data references, clone object

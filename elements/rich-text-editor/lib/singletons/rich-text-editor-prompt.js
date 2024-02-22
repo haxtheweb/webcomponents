@@ -189,7 +189,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
     this.haxUIElement = true;
     globalThis.addEventListener(
       "rich-text-editor-prompt-open",
-      this.open.bind(this)
+      this.open.bind(this),
     );
     // sets instance to current instance
     if (!globalThis.RichTextEditorPrompt.instance) {
@@ -209,7 +209,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.__highlight.addEventListener("change", (e) =>
-      setTimeout(this._handleChange(e), 300)
+      setTimeout(this._handleChange(e), 300),
     );
     this.addEventListener("mousedown", (e) => (this.__retainFocus = true));
     this.addEventListener("mouseup", (e) => (this.__retainFocus = false));
@@ -356,7 +356,7 @@ globalThis.RichTextEditorPrompt.requestAvailability = () => {
     globalThis.RichTextEditorPrompt.instance =
       globalThis.document.createElement("rich-text-editor-prompt");
     globalThis.document.body.appendChild(
-      globalThis.RichTextEditorPrompt.instance
+      globalThis.RichTextEditorPrompt.instance,
     );
   }
   return globalThis.RichTextEditorPrompt.instance;

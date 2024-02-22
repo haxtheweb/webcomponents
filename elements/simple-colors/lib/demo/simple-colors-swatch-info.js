@@ -113,26 +113,24 @@ class simpleColorsSwatchInfo extends SimpleColors {
                 <th scope="row">${color}</th>
                 <td>
                   ${this._getAa(this.swatchId, color).map(
-                    (contrast) =>
-                      html`
-                        <span
-                          class="contrast"
-                          style="${this._getContrastBg(color, contrast)}"
-                          >${color}-${contrast}</span
-                        >
-                      `
+                    (contrast) => html`
+                      <span
+                        class="contrast"
+                        style="${this._getContrastBg(color, contrast)}"
+                        >${color}-${contrast}</span
+                      >
+                    `,
                   )}
                 </td>
                 <td>
                   ${this._getAaLarge(this.swatchId, color).map(
-                    (contrast) =>
-                      html`
-                        <span
-                          class="contrast"
-                          style="${this._getContrastBg(color, contrast)}"
-                          >${color}-${contrast}</span
-                        >
-                      `
+                    (contrast) => html`
+                      <span
+                        class="contrast"
+                        style="${this._getContrastBg(color, contrast)}"
+                        >${color}-${contrast}</span
+                      >
+                    `,
                   )}
                 </td>
               </tr>

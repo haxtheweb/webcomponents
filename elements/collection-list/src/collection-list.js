@@ -12,13 +12,13 @@ import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element collection-list
  */
-class CollectionList extends (DDD) {
+class CollectionList extends DDD {
   /**
    * HTMLElement
    */
   constructor() {
     super();
-    this.responsiveSize = 'lg';
+    this.responsiveSize = "lg";
   }
 
   static get properties() {
@@ -57,35 +57,36 @@ class CollectionList extends (DDD) {
           row-gap: 2vw;
           --cssIdealSize: 200px;
         }
-        .wrapper > * { /* Targets all direct children of the wrapper */
+        .wrapper > * {
+          /* Targets all direct children of the wrapper */
           grid-column: span 1; /* Ensures each item takes up exactly one column */
         }
 
-        @container (min-width: 480px){
+        @container (min-width: 480px) {
           .wrapper {
             grid-template-columns: repeat(2, 1fr);
           }
         }
 
-        @container (min-width: 720px){
+        @container (min-width: 720px) {
           .wrapper {
             grid-template-columns: repeat(3, 1fr);
           }
         }
 
-        @container (min-width: 960px){
+        @container (min-width: 960px) {
           .wrapper {
             grid-template-columns: repeat(4, 1fr);
           }
         }
 
-        @container (min-width: 1200px){
+        @container (min-width: 1200px) {
           .wrapper {
             grid-template-columns: repeat(5, 1fr);
           }
         }
 
-        @container (min-width: 1440px){
+        @container (min-width: 1440px) {
           .wrapper {
             grid-template-columns: repeat(6, 1fr);
           }

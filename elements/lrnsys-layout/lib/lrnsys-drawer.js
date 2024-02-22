@@ -279,7 +279,7 @@ class LrnsysDrawer extends SimpleColors {
         cancelable: true,
         composed: true,
         detail: { focus: this.focusState },
-      })
+      }),
     );
     // see if it has hover classes
     if (typeof this.hoverClass !== typeof undefined) {

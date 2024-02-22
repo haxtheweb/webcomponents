@@ -5,9 +5,9 @@ import "../file-system-broker.js";
 describe("file-system-broker test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <file-system-broker title="test-title"></file-system-broker> `
-    );
+    element = await fixture(html`
+      <file-system-broker title="test-title"></file-system-broker>
+    `);
   });
 
   it("passes the a11y audit", async () => {

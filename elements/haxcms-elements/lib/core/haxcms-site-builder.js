@@ -156,8 +156,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }. ${this.t.hereAreSomePossibleRemedies}
       <ul>
         <li><a href="x/search?search=${store.getInternalRoute()}">${
-        this.t.useSearchToLocateTheContentYouAreLookingFor
-      }</a></li>
+          this.t.useSearchToLocateTheContentYouAreLookingFor
+        }</a></li>
         <li><a href="./">${this.t.goToTheHomePage}</a></li>
         <li>${this.t.navigateToAnotherPageInTheMenu}</li>
       </ul>`;
@@ -180,12 +180,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         import(`../ui-components/routes/${store.activeItem.component}.js`).then(
           () => {
             let el = globalThis.document.createElement(
-              store.activeItem.component
+              store.activeItem.component,
             );
             frag.appendChild(el);
             wipeSlot(store.themeElement, "*");
             store.themeElement.appendChild(frag);
-          }
+          },
         );
       }
     }
@@ -308,7 +308,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             cancelable: true,
             composed: true,
             detail: this[propName],
-          })
+          }),
         );
       } else if (propName == "manifest") {
         // fire an to match notify
@@ -318,7 +318,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             cancelable: true,
             composed: true,
             detail: this[propName],
-          })
+          }),
         );
         this._manifestChanged(this[propName], oldValue);
       } else if (propName == "activeItem") {
@@ -329,7 +329,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             cancelable: true,
             composed: true,
             detail: this[propName],
-          })
+          }),
         );
         this._activeItemChanged(this[propName], oldValue);
       } else if (propName == "activeItemContent") {
@@ -338,7 +338,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           new CustomEvent("active-item-content-changed", {
             bubbles: true,
             detail: this[propName],
-          })
+          }),
         );
         this._activeItemContentChanged(this[propName], oldValue);
       }
@@ -484,7 +484,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         store.toast(
           e.detail.value.status + " " + e.detail.value.statusText,
           5000,
-          { fire: true }
+          { fire: true },
         );
       } else {
         // no detail is bad, this implies a server level connection error
@@ -521,7 +521,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       namespace: "haxcms",
       localesPath: new URL(
         "../../locales/haxcms.es.json",
-        import.meta.url
+        import.meta.url,
       ).href.replace("/haxcms.es.json", "/"),
       locales: ["es"],
     });
@@ -558,13 +558,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     globalThis.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdatedData.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     globalThis.addEventListener(
       "haxcms-trigger-update-node",
       this._triggerUpdatedNode.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window
@@ -616,7 +616,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           SuperDaemonInstance.waveWand(
             [SuperDaemonInstance.value, "/", {}, "hax-agent", "Agent"],
             null,
-            "coin2"
+            "coin2",
           );
         }
       } else if (
@@ -635,7 +635,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             "Agent",
           ],
           null,
-          "coin2"
+          "coin2",
         );
       }
     });
@@ -654,7 +654,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         composed: true,
         cancelable: false,
         detail: this,
-      })
+      }),
     );
     // dyanmcially import the editor builder which figures out if we should have one
     // prettier-ignore
@@ -740,7 +740,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       store.activeItemContent
     ) {
       globalThis.HaxStore.requestAvailability().activeHaxBody.importContent(
-        store.activeItemContent
+        store.activeItemContent,
       );
     }
   }
@@ -842,7 +842,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
                 composed: true,
                 cancelable: false,
                 detail: html,
-              })
+              }),
             );
           }
           // if there are, dynamically import them but only if we don't have a global manager
@@ -902,7 +902,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           composed: true,
           cancelable: false,
           detail: null,
-        })
+        }),
       );
     }
   }
@@ -958,7 +958,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
                 composed: true,
                 cancelable: false,
                 detail: this,
-              })
+              }),
             );
           }, 5);
         } else {
@@ -1023,7 +1023,7 @@ globalThis.HAXme = function (context = null) {
   // apply context
   if (globalThis.document.body) {
     globalThis.document.body.querySelector(
-      "haxcms-editor-builder"
+      "haxcms-editor-builder",
     ).__appliedContext = false;
     globalThis.document.body
       .querySelector("haxcms-editor-builder")

@@ -208,14 +208,14 @@ export class AppHaxSiteDetails extends SimpleColors {
     import("@lrnwebcomponents/simple-modal/simple-modal.js").then(() => {
       setTimeout(() => {
         const site = toJS(
-          store.manifest.items.filter((item) => item.id === siteID).pop()
+          store.manifest.items.filter((item) => item.id === siteID).pop(),
         );
         div.appendChild(
           globalThis.document.createTextNode(
             `Are you sure you want to ${op.replace("Site", "")} ${
               site.metadata.site.name
-            }?`
-          )
+            }?`,
+          ),
         );
         // gitlist opens in a new window
         if (op === "gitList") {
@@ -223,7 +223,7 @@ export class AppHaxSiteDetails extends SimpleColors {
           globalThis.open(
             `gitlist/${site.metadata.site.name}`,
             "_blank",
-            "noopener noreferrer"
+            "noopener noreferrer",
           );
         } else {
           const bcontainer = globalThis.document.createElement("div");
@@ -258,7 +258,7 @@ export class AppHaxSiteDetails extends SimpleColors {
                   "--simple-modal-titlebar-height": "80px",
                 },
               },
-            })
+            }),
           );
         }
       }, 0);
@@ -292,12 +292,12 @@ export class AppHaxSiteDetails extends SimpleColors {
           // cheat to download a file path
           globalThis.open(
             store.AppHaxAPI.lastResponse.downloadSite.data.link,
-            "_blank"
+            "_blank",
           );
         } else {
           store.refreshSiteListing();
         }
-      }
+      },
     );
     globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
     store.appEl.playSound("success");
@@ -306,7 +306,7 @@ export class AppHaxSiteDetails extends SimpleColors {
       3000,
       {
         hat: "random",
-      }
+      },
     );
   }
 
@@ -364,7 +364,7 @@ export class AppHaxSiteDetails extends SimpleColors {
                   ${item.op != "gitList" ? "Site" : "source"}</simple-tooltip
                 >
               </div>
-            `
+            `,
           )}
         </div>
       </div>

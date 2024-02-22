@@ -49,7 +49,7 @@ describe("relative-heading test", () => {
         <p>
           In et volutpat nisi. Suspendisse vel nibh eu magna posuere
           sollicitudin. Praesent ac ex varius, facilisis urna et, cursus tellus.
-        </p> `
+        </p> `,
     );
   });
 

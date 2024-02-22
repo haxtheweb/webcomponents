@@ -10,7 +10,7 @@ window.DynamicImportRegistry = window.DynamicImportRegistry || {};
 window.DynamicImportRegistry.requestAvailability = () => {
   if (!window.DynamicImportRegistry.instance) {
     window.DynamicImportRegistry.instance = document.createElement(
-      "dynamic-import-registry"
+      "dynamic-import-registry",
     );
     document.body.appendChild(window.DynamicImportRegistry.instance);
   }
@@ -43,7 +43,7 @@ class DynamicImportRegistry extends HTMLElement {
     window.addEventListener(
       "dynamic-import-registry--register",
       this.registerDefinitionEvent.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   disconnectedCallback() {
@@ -57,7 +57,7 @@ class DynamicImportRegistry extends HTMLElement {
       }
     } else {
       console.warn(
-        "DynamicImportRegistry: registration requires tag and path be set"
+        "DynamicImportRegistry: registration requires tag and path be set",
       );
     }
   }
@@ -103,9 +103,9 @@ class DynamicImportRegistry extends HTMLElement {
                   path: this.list[tag],
                   module: module,
                 },
-              })
+              }),
             );
-          }
+          },
         );
       } catch (e) {
         console.warn(`${this.basePath}${this.list[tag]}`);
@@ -118,7 +118,7 @@ class DynamicImportRegistry extends HTMLElement {
               path: this.list[tag],
               module: null,
             },
-          })
+          }),
         );
         return false;
       }

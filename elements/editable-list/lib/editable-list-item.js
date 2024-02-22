@@ -106,7 +106,7 @@ class EditableListItem extends SimpleColors {
               height: 40px;
               padding: 0;
               margin: 0;
-            }
+            };
           }
         </style>
       </custom-style>
@@ -154,7 +154,7 @@ class EditableListItem extends SimpleColors {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (propName == "editing") {

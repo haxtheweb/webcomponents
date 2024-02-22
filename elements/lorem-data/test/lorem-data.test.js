@@ -5,9 +5,9 @@ import "../lorem-data.js";
 describe("lorem-data test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lorem-data title="test-title"></lorem-data> `
-    );
+    element = await fixture(html`
+      <lorem-data title="test-title"></lorem-data>
+    `);
   });
 
   it("passes the a11y audit", async () => {

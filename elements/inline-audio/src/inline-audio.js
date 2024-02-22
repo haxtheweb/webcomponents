@@ -224,7 +224,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
         if (this[propName]) {
           this.icon = "av:pause";

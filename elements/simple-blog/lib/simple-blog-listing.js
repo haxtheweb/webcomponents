@@ -73,7 +73,7 @@ class SimpleBlogListing extends SimpleColors {
               link="${item.slug}"
               changed="${item.metadata.created}"
             ></simple-blog-overview>
-          `
+          `,
         )}
       </div>
     `;

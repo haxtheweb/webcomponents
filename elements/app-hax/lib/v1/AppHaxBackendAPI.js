@@ -115,7 +115,7 @@ export class AppHaxBackendAPI extends LitElement {
                 bubbles: true,
                 cancelable: false,
                 detail: true,
-              })
+              }),
             );
           }
           // we got a miss, logout cause something is wrong
@@ -127,7 +127,7 @@ export class AppHaxBackendAPI extends LitElement {
                 bubbles: true,
                 cancelable: false,
                 detail: true,
-              })
+              }),
             );
           } else if (response.status === 403) {
             // if this was a 403 it should be because of a bad jwt
@@ -146,11 +146,11 @@ export class AppHaxBackendAPI extends LitElement {
                     params: [call, data, save, callback],
                   },
                 },
-              })
+              }),
             );
           }
           return {};
-        }
+        },
       );
       // ability to save the output if this is being done as a bg task
       // that way we can get access to the result later on
@@ -219,7 +219,7 @@ export class AppHaxBackendAPI extends LitElement {
         icon: `${SimpleIconIconsetsManifest[0].name}:${
           SimpleIconIconsetsManifest[0].icons[
             Math.floor(
-              Math.random() * SimpleIconIconsetsManifest[0].icons.length
+              Math.random() * SimpleIconIconsetsManifest[0].icons.length,
             )
           ]
         }`,
@@ -248,7 +248,7 @@ globalThis.AppHaxAPI = globalThis.AppHaxAPI || {};
 globalThis.AppHaxAPI.requestAvailability = () => {
   if (!globalThis.AppHaxAPI.instance) {
     globalThis.AppHaxAPI.instance = globalThis.document.createElement(
-      AppHaxBackendAPI.tag
+      AppHaxBackendAPI.tag,
     );
     globalThis.document.body.appendChild(globalThis.AppHaxAPI.instance);
   }

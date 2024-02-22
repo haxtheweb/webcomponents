@@ -5,7 +5,7 @@ describe("elementName test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html`<documentation-player></documentation-player>`
+      html`<documentation-player></documentation-player>`,
     );
   });
 

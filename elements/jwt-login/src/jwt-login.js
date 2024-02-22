@@ -33,7 +33,7 @@ class JwtLogin extends LitElement {
           detail: {
             value: e,
           },
-        })
+        }),
       );
     }
   }
@@ -131,7 +131,7 @@ class JwtLogin extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });
@@ -150,7 +150,7 @@ class JwtLogin extends LitElement {
           cancelable: true,
           composed: true,
           detail: false,
-        })
+        }),
       );
     } else if (newValue) {
       // set the jwt into local storage so we can reference later
@@ -163,7 +163,7 @@ class JwtLogin extends LitElement {
           cancelable: true,
           composed: true,
           detail: newValue,
-        })
+        }),
       );
       this.dispatchEvent(
         new CustomEvent("jwt-logged-in", {
@@ -171,7 +171,7 @@ class JwtLogin extends LitElement {
           cancelable: true,
           composed: true,
           detail: true,
-        })
+        }),
       );
     }
   }
@@ -183,7 +183,7 @@ class JwtLogin extends LitElement {
     window.addEventListener(
       "jwt-login-refresh-token",
       this.requestRefreshToken.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.addEventListener("jwt-login-toggle", this.toggleLogin.bind(this), {
@@ -264,7 +264,7 @@ class JwtLogin extends LitElement {
                 cancelable: true,
                 composed: true,
                 detail: true,
-              })
+              }),
             );
           }
           this.lastErrorChanged(response);
@@ -330,7 +330,7 @@ class JwtLogin extends LitElement {
         if (this.__element) {
           this.__element.obj[this.__element.callback](
             this.jwt,
-            ...this.__element.params
+            ...this.__element.params,
           );
           this.__element = false;
         }

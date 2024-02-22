@@ -16,7 +16,7 @@ describe("progress-donut test", () => {
         style="width:300px"
         total="50"
       >
-      </progress-donut>`
+      </progress-donut>`,
     );
   });
 

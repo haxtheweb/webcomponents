@@ -17,5 +17,5 @@ export const VocabTermStory = () =>
   utils.makeUsageDocs(
     VocabTerm,
     import.meta.url,
-    utils.makeElementFromHaxDemo(VocabTerm)
+    utils.makeElementFromHaxDemo(VocabTerm),
   );

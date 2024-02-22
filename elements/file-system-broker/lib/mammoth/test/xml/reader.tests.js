@@ -7,7 +7,7 @@ test("should read self-closing element", function () {
   return xmlreader.readString("<body/>").then(function (result) {
     assert.deepEqual(
       { type: "element", name: "body", attributes: {}, children: [] },
-      result
+      result,
     );
   });
 });
@@ -16,7 +16,7 @@ test("should read empty element with separate closing tag", function () {
   return xmlreader.readString("<body></body>").then(function (result) {
     assert.deepEqual(
       { type: "element", name: "body", attributes: {}, children: [] },
-      result
+      result,
     );
   });
 });
@@ -96,6 +96,6 @@ test("error if XML is badly formed", function () {
     function (error) {
       assert.ok(error);
       return 1;
-    }
+    },
   );
 });

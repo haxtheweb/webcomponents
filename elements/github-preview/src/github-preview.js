@@ -521,7 +521,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     rawUrl,
     apiUrl,
     readMe,
-    extended
+    extended,
   ) {
     if (extended) {
       fetch(`${rawUrl}/${org}/${repo}/${branch}/${readMe}`, headers)
@@ -605,7 +605,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           composed: false,
           cancelable: false,
           detail: this.haxAppDetails,
-        })
+        }),
       );
     }
   }
@@ -668,7 +668,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
             this.rawUrl,
             this.apiUrl,
             this.readMe,
-            this.extended
+            this.extended,
           );
         }, 0);
       }
@@ -683,7 +683,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         propName === "elementVisible"
       ) {
         this.wcmarkdown = this.shadowRoot.querySelector(
-          "div > div.readme-container > wc-markdown"
+          "div > div.readme-container > wc-markdown",
         );
       }
     });

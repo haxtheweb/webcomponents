@@ -55,7 +55,7 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
           new CustomEvent("flash-card-status-change", {
             detail: this.status,
             bubbles: true,
-          })
+          }),
         );
       }
       if (propName === "back") {
@@ -72,7 +72,7 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
         undefined,
         {
           sensitivity: "base",
-        }
+        },
       ) === 0
     );
   }

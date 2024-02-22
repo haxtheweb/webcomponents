@@ -5,9 +5,9 @@ import "../md-extra-icons.js";
 describe("md-extra-icons test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <md-extra-icons title="test-title"></md-extra-icons> `
-    );
+    element = await fixture(html`
+      <md-extra-icons title="test-title"></md-extra-icons>
+    `);
   });
 
   it("passes the a11y audit", async () => {

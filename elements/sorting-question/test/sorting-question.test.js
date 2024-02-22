@@ -5,9 +5,9 @@ import "../sorting-question.js";
 describe("sorting-question test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <sorting-question title="test-title"></sorting-question> `
-    );
+    element = await fixture(html`
+      <sorting-question title="test-title"></sorting-question>
+    `);
   });
 
   it("passes the a11y audit", async () => {

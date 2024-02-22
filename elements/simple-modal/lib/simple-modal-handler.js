@@ -17,7 +17,7 @@ export const SimpleModalHandler = function (SuperClass) {
         globalThis.SimpleModal.requestAvailability();
         this.addEventListener(
           "click",
-          this.__SimpleModalHandlerClick.bind(this)
+          this.__SimpleModalHandlerClick.bind(this),
         );
         this.addEventListener("keypress", this._keyPress.bind(this));
       }, 0);

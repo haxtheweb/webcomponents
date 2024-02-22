@@ -76,7 +76,7 @@ class LrnappStudioProjectButton extends PolymerElement {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }
@@ -147,7 +147,7 @@ class LrnappStudioProjectButton extends PolymerElement {
             cancelable: true,
             composed: true,
             detail: { project: project },
-          })
+          }),
         );
       }
     }

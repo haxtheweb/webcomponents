@@ -335,7 +335,7 @@ class LrndesignTimeline extends SimpleColors {
                 </div>
                 <div class="details">${event.details}</div>
               </section>
-            `
+            `,
           )}
         </div>
       </div>
@@ -551,7 +551,7 @@ class LrndesignTimeline extends SimpleColors {
           lg: 1200,
           xl: 1600,
         },
-      })
+      }),
     );
 
     this.updateTimeline();
@@ -684,7 +684,7 @@ class LrndesignTimeline extends SimpleColors {
 
         //get details
         Object.keys(clone.children || []).forEach((child) =>
-          details.append(clone.children[child])
+          details.append(clone.children[child]),
         );
         details.classList.add("details");
 

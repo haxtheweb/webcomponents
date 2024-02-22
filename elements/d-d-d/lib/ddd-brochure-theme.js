@@ -17,7 +17,6 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
   constructor() {
     super();
     this.sectionLoad = false;
-    this.loadDDDFonts(DDDFonts);
     this._observer = new MutationObserver((mutations) => {
       this.sectionLoad = true;
     });
@@ -39,7 +38,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
         label: section.anchor,
       });
     });
-    return items; 
+    return items;
   }
   render() {
     return html`
@@ -54,7 +53,10 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
         >
           ${this.getSections(this.sectionLoad).map(
             (section) => html`
-              <a href="${this.activePathName}#${section.id}" tabindex="-1" class="menu-item"
+              <a
+                href="${this.activePathName}#${section.id}"
+                tabindex="-1"
+                class="menu-item"
                 ><button data-target="${section.id}">
                   ${section.label}
                 </button></a
@@ -93,8 +95,8 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
   static get properties() {
     return {
       ...super.properties,
-      sectionLoad: { type: Boolean},
-    }
+      sectionLoad: { type: Boolean },
+    };
   }
 
   updated(changedProperties) {
@@ -102,7 +104,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
       super.updated(changedProperties);
     }
     // flag that just forces menu to reprocess
-    if (changedProperties.has('sectionLoad') && this.sectionLoad) {
+    if (changedProperties.has("sectionLoad") && this.sectionLoad) {
       this.sectionLoad = false;
     }
   }

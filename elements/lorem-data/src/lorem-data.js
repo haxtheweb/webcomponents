@@ -64,7 +64,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
               <textarea>${this.getJson(this.schemas[key])}</textarea>
             </label>
           </p>
-        `
+        `,
       )}
       <button @click="${this.saveAll}">Save All</button>
     `;
@@ -109,7 +109,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
   get data() {
     let data = {};
     Object.keys(this.schemas || []).forEach(
-      (key) => (data[key] = this.randomType(this.schemas[key]))
+      (key) => (data[key] = this.randomType(this.schemas[key])),
     );
     return data;
   }
@@ -191,19 +191,19 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     return !d
       ? ""
       : format === "long"
-      ? d.toLocaleDateString(undefined, {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })
-      : format === "short"
-      ? d.toLocaleDateString(undefined, { month: "long", day: "numeric" })
-      : d.toLocaleDateString(undefined, {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
+        ? d.toLocaleDateString(undefined, {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        : format === "short"
+          ? d.toLocaleDateString(undefined, { month: "long", day: "numeric" })
+          : d.toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            });
   }
 
   /**
@@ -251,7 +251,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     minwidth = 200,
     maxwidth = 1000,
     minheight = 200,
-    maxheight = 1000
+    maxheight = 1000,
   ) {
     let w = this.randomNumber(minwidth, maxwidth, 1),
       h = this.randomNumber(minheight, maxheight, 1);
@@ -283,16 +283,16 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       units === "milliseconds"
         ? this.randomNumber(min, max)
         : units === "seconds"
-        ? this.randomNumber(min * 1000, max * 1000)
-        : units === "minutes"
-        ? this.randomNumber(min * 60000, max * 60000)
-        : units === "hours"
-        ? this.randomNumber(min * 3600000, max * 3600000)
-        : units === "days"
-        ? this.randomNumber(min * 86400000, max * 86400000)
-        : units === "weeks"
-        ? this.randomNumber(min * 604800000, max * 604800000)
-        : this.randomNumber(min * 31536000000, max * 31536000000);
+          ? this.randomNumber(min * 1000, max * 1000)
+          : units === "minutes"
+            ? this.randomNumber(min * 60000, max * 60000)
+            : units === "hours"
+              ? this.randomNumber(min * 3600000, max * 3600000)
+              : units === "days"
+                ? this.randomNumber(min * 86400000, max * 86400000)
+                : units === "weeks"
+                  ? this.randomNumber(min * 604800000, max * 604800000)
+                  : this.randomNumber(min * 31536000000, max * 31536000000);
     return start + amt;
   }
 
@@ -415,10 +415,10 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     return topic && ["man", "woman", "person"].includes(topic)
       ? this.randomProfileImage(aspect, topic)
       : typeof multiple === typeof undefined
-      ? this.randomPlaceImg(aspect, greyscale, topic)
-      : topic === "any"
-      ? this.randomPicsum(aspect, greyscale, undefined, multiple)
-      : this.randomFlickr(aspect, [topic], false, multiple);
+        ? this.randomPlaceImg(aspect, greyscale, topic)
+        : topic === "any"
+          ? this.randomPicsum(aspect, greyscale, undefined, multiple)
+          : this.randomFlickr(aspect, [topic], false, multiple);
   }
   /**
    * generates object with randome image src, alt, and longdesc
@@ -501,7 +501,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
   randomObject(schema = {}) {
     let obj = {};
     Object.keys(schema).forEach(
-      (key) => (obj[key] = this.randomType(schema[key]))
+      (key) => (obj[key] = this.randomType(schema[key])),
     );
     return obj;
   }
@@ -584,7 +584,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
             schema.start,
             schema.units,
             schema.min,
-            schema.max
+            schema.max,
           );
           break;
         case "hex":
@@ -598,7 +598,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
             schema.aspect || this.randomAspect(),
             schema.greyscale,
             schema.topic,
-            schema.multiple
+            schema.multiple,
           );
           break;
         case "imageData":
@@ -606,7 +606,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
             schema.aspect,
             schema.greyscale,
             schema.topic,
-            schema.multiple
+            schema.multiple,
           );
           break;
         case "letter":
@@ -616,7 +616,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
           val = this.randomLink(
             schema.filetype,
             schema.minPath,
-            schema.maxPath
+            schema.maxPath,
           );
           break;
         case "number":
@@ -635,7 +635,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
             schema.min,
             schema.max,
             schema.wordMinPerSent,
-            schema.wordMaxPerSent
+            schema.wordMaxPerSent,
           );
           break;
         case "sentence":
@@ -667,7 +667,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
           }
           return arr2;
         })
-        .flat()
+        .flat(),
     );
   }
   /**

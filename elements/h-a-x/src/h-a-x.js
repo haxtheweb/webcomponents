@@ -42,7 +42,7 @@ class HAX extends HTMLElement {
         [data-style-decoration~="${item}"] {
           --haxcms-style-element-background-color: var(--simple-colors-default-theme-${item}-7, ${item});
         }
-        `
+        `,
     );
     let instructionalStyles = Object.keys(learningComponentColors).map(
       (item) => {
@@ -66,7 +66,7 @@ class HAX extends HTMLElement {
         h5[data-instructional-action="${item}"]::after,
         h6[data-instructional-action="${item}"]::after {
           -webkit-mask-image: url("${SimpleIconsetStore.getIcon(
-            iconFromPageType(item)
+            iconFromPageType(item),
           )}");
         }
         
@@ -79,11 +79,11 @@ class HAX extends HTMLElement {
         
         hr[data-instructional-action="${item}"]::after {
           -webkit-mask-image: url("${SimpleIconsetStore.getIcon(
-            iconFromPageType(item)
+            iconFromPageType(item),
           )}");
         }
         `;
-      }
+      },
     );
     return `
     <style>
@@ -489,7 +489,11 @@ class HAX extends HTMLElement {
     window.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this),
-      { once: true, passive: true, signal: this.windowControllersLoaded.signal }
+      {
+        once: true,
+        passive: true,
+        signal: this.windowControllersLoaded.signal,
+      },
     );
     // map events from tray
     window.addEventListener("hax-cancel", this.cancelEvent.bind(this), {
@@ -513,7 +517,7 @@ class HAX extends HTMLElement {
         detail: {
           value: body,
         },
-      })
+      }),
     );
   }
   /**

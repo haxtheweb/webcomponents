@@ -109,13 +109,13 @@ class SiteQueryMenuSlice extends LitElement {
           this.parent,
           this.dynamicMethodology,
           this._routerManifest,
-          this.noDynamicLevel
+          this.noDynamicLevel,
         );
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("result-changed", {
             detail: this.result,
-          })
+          }),
         );
       }
     });
@@ -129,7 +129,7 @@ class SiteQueryMenuSlice extends LitElement {
     parent,
     dynamicMethodology,
     _routerManifest,
-    noDynamicLevel
+    noDynamicLevel,
   ) {
     if (_routerManifest) {
       return store.computeItems(
@@ -138,7 +138,7 @@ class SiteQueryMenuSlice extends LitElement {
         parent,
         dynamicMethodology,
         _routerManifest,
-        noDynamicLevel
+        noDynamicLevel,
       );
     }
   }

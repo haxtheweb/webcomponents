@@ -88,7 +88,9 @@ class SimpleBlogFooter extends SimpleColors {
           line-height: 50px;
           word-break: break-word;
           color: white;
-          text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
+          text-shadow:
+            0 1px 16px rgba(0, 0, 0, 0.5),
+            0 0 1px rgba(0, 0, 0, 0.5);
         }
         .blog-description {
           margin: 0 0 50px;
@@ -98,7 +100,9 @@ class SimpleBlogFooter extends SimpleColors {
           color: white;
           text-align: center;
           font-weight: 400;
-          text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
+          text-shadow:
+            0 1px 16px rgba(0, 0, 0, 0.5),
+            0 0 1px rgba(0, 0, 0, 0.5);
         }
         button,
         site-menu-button:not([disabled]) {
@@ -158,7 +162,7 @@ class SimpleBlogFooter extends SimpleColors {
             --site-menu-button-button: {
               height: 44px;
               width: 100%;
-            }
+            };
           }
         </style>
       </custom-style>
@@ -167,7 +171,7 @@ class SimpleBlogFooter extends SimpleColors {
           class="background-closer-image"
           style="background-image: url(${varExists(
             this.manifest,
-            "metadata.theme.variables.image"
+            "metadata.theme.variables.image",
           )
             ? this.manifest.metadata.theme.variables.image
             : ""})"

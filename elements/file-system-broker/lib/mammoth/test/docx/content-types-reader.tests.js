@@ -12,7 +12,7 @@ test("reads default-per-extension from XML", function () {
         Extension: "png",
         ContentType: "image/png",
       }),
-    ])
+    ]),
   );
   assert.equal(contentTypes.findContentType("word/media/hat.png"), "image/png");
 });
@@ -28,39 +28,39 @@ test("reads overrides in preference to defaults", function () {
         PartName: "/word/media/hat.png",
         ContentType: "image/hat",
       }),
-    ])
+    ]),
   );
   assert.equal(contentTypes.findContentType("word/media/hat.png"), "image/hat");
 });
 
 test("fallback content types have common image types", function () {
   var contentTypes = readContentTypesFromXml(
-    new XmlElement("content-types:Types", {}, [])
+    new XmlElement("content-types:Types", {}, []),
   );
   assert.equal(contentTypes.findContentType("word/media/hat.png"), "image/png");
   assert.equal(contentTypes.findContentType("word/media/hat.gif"), "image/gif");
   assert.equal(
     contentTypes.findContentType("word/media/hat.jpg"),
-    "image/jpeg"
+    "image/jpeg",
   );
   assert.equal(
     contentTypes.findContentType("word/media/hat.jpeg"),
-    "image/jpeg"
+    "image/jpeg",
   );
   assert.equal(contentTypes.findContentType("word/media/hat.bmp"), "image/bmp");
   assert.equal(
     contentTypes.findContentType("word/media/hat.tif"),
-    "image/tiff"
+    "image/tiff",
   );
   assert.equal(
     contentTypes.findContentType("word/media/hat.tiff"),
-    "image/tiff"
+    "image/tiff",
   );
 });
 
 test("fallback content types are case insensitive on extension", function () {
   var contentTypes = readContentTypesFromXml(
-    new XmlElement("content-types:Types", {}, [])
+    new XmlElement("content-types:Types", {}, []),
   );
   assert.equal(contentTypes.findContentType("word/media/hat.PnG"), "image/png");
 });

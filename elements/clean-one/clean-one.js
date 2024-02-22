@@ -64,8 +64,8 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           -webkit-box-direction: normal;
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
           background: white;
-          --simple-tooltip-background: var(--ddd-theme-polaris-info);
-          --simple-tooltip-text-color: var(--ddd-theme-polaris-infoLight);
+          --simple-tooltip-background: var(--ddd-theme-default-info);
+          --simple-tooltip-text-color: var(--ddd-theme-default-infoLight);
           --simple-tooltip-opacity: 1;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
@@ -101,8 +101,8 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
             --simple-colors-default-theme-light-blue-1,
             rgba(100, 100, 255, 0.1)
           );
-          --haxcms-tooltip-color: var(--ddd-theme-polaris-infoLight);
-          --haxcms-tooltip-background-color: var(--ddd-theme-polaris-info);
+          --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
+          --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
           --map-menu-item-a-active-background-color: var(
             --simple-colors-default-theme-grey-1,
             rgba(200, 200, 200, 0.1)
@@ -137,8 +137,8 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           --simple-icon-fill-color: var(
             --haxcms-user-styles-color-theme-color-1
           );
-          --haxcms-tooltip-color: var(--ddd-theme-polaris-infoLight);
-          --haxcms-tooltip-background-color: var(--ddd-theme-polaris-info);
+          --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
+          --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
         }
         .pdf-page-btn,
         .print-branch-btn {
@@ -154,12 +154,14 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           );
           --site-menu-button-link-decoration: none;
           --site-menu-button-button-hover-color: var(
-            --ddd-theme-polaris-info,
+            --ddd-theme-default-info,
             #383f45
           );
-          --haxcms-tooltip-color: var(--ddd-theme-polaris-infoLight);
-          --haxcms-tooltip-background-color: var(--ddd-theme-polaris-info);
-          --site-menu-button-button-hover-background-color: var(--ddd-theme-polaris-limestoneLight);
+          --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
+          --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
+          --site-menu-button-button-hover-background-color: var(
+            --ddd-theme-default-limestoneLight
+          );
         }
         scroll-button,
         site-breadcrumb {
@@ -193,7 +195,7 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           overflow-y: hidden;
           width: 300px;
           color: black;
-          background: var(--ddd-theme-polaris-shrineMaxLight);
+          background: var(--ddd-theme-default-shrineMaxLight);
           border-right: var(--ddd-border-xs);
           transition: left 0.3s ease;
         }
@@ -892,7 +894,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
    */
   constructor() {
     super();
-    this.loadDDDFonts(DDDFonts);
     this.searchTerm = "";
     this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore

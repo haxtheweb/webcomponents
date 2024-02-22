@@ -63,7 +63,7 @@ class AppEditorHax extends LitElement {
         cancelable: true,
         composed: true,
         detail: content,
-      })
+      }),
     );
   }
 
@@ -80,7 +80,7 @@ class AppEditorHax extends LitElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
 }

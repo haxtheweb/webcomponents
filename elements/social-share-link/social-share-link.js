@@ -231,7 +231,7 @@ class SocialShareLink extends LitElement {
           this.image,
           this.message,
           this.type,
-          this.url
+          this.url,
         );
       }
       if (propName == "mode") {

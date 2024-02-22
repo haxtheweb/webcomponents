@@ -282,7 +282,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
             cancelable: true,
             composed: true,
             detail: true,
-          })
+          }),
         );
       }
       this.dispatchEvent(
@@ -291,7 +291,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
   }
@@ -316,7 +316,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           cancelable: true,
           composed: true,
           detail: true,
-        })
+        }),
       );
     }
   }

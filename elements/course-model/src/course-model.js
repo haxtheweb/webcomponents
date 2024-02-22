@@ -130,7 +130,7 @@ class CourseModel extends LitElement {
             },
           ],
         },
-        "model-viewer"
+        "model-viewer",
       );
     }
 

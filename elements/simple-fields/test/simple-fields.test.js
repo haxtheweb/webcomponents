@@ -5,9 +5,9 @@ import "../simple-fields.js";
 describe("simple-fields test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-fields title="test-title"></simple-fields> `
-    );
+    element = await fixture(html`
+      <simple-fields title="test-title"></simple-fields>
+    `);
   });
 
   it("passes the a11y audit", async () => {

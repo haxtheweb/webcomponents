@@ -5,9 +5,9 @@ import "../social-share-link.js";
 describe("social-share-link test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <social-share-link title="test-title"></social-share-link> `
-    );
+    element = await fixture(html`
+      <social-share-link title="test-title"></social-share-link>
+    `);
   });
 
   it("passes the a11y audit", async () => {

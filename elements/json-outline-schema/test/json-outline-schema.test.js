@@ -5,9 +5,9 @@ import "../json-outline-schema.js";
 describe("json-outline-schema test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <json-outline-schema title="test-title"></json-outline-schema> `
-    );
+    element = await fixture(html`
+      <json-outline-schema title="test-title"></json-outline-schema>
+    `);
   });
 
   it("passes the a11y audit", async () => {

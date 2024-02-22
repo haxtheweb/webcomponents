@@ -31,7 +31,7 @@ export class UserActionBroker {
         composed: true,
         cancelable: true,
         detail: details,
-      })
+      }),
     );
     if (demo) {
       context.innerHTML = `<pre>${JSON.stringify(details, null, 2)}</pre>`;

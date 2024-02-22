@@ -6,7 +6,7 @@ import("@lrnwebcomponents/simple-icon/lib/simple-iconset.js").then(() => {
   ) {
     globalThis.SimpleIconset.requestAvailability().registerIconset(
       "elmsln-custom-icons",
-      `${Drupal.settings.basePath}sites/all/libraries/_my_libraries/elmsln-custom-icons/`
+      `${Drupal.settings.basePath}sites/all/libraries/_my_libraries/elmsln-custom-icons/`,
     );
   }
 });

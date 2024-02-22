@@ -20,11 +20,11 @@ export const a11yCompareImageStory = () => {
       opacity: utils.randomBool(),
       top: `<img aria-describedBy="cloudy" src="${new URL(
         `./demo/images/Matterhorn01.png`,
-        import.meta.url
+        import.meta.url,
       )}" alt="Matterhorn without snow">`,
       bottom: `<img aria-describedBy="snowy" src="${new URL(
         `./demo/images/Matterhorn02.png`,
-        import.meta.url
+        import.meta.url,
       )}" alt="Matterhorn with snow">`,
       heading: `<h2>A11y Compare Image</h2>`,
       description: `<p>
@@ -46,6 +46,6 @@ export const a11yCompareImageStory = () => {
       { css: "width" },
       { css: "maxWidth" },
     ],
-    ["activeLayer"]
+    ["activeLayer"],
   );
 };

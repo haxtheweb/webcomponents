@@ -353,7 +353,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     globalThis.addEventListener(
       "hax-store-ready",
       this._fireDefinitions.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   disconnectedCallback() {

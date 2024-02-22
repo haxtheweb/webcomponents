@@ -48,7 +48,7 @@ class GradeBookTable extends LitElement {
                   <td>${scale.highRange}</td>
                   <td>${scale.lowRange}</td>
                 </tr>
-              `
+              `,
             )}
           </tbody>
         </table>

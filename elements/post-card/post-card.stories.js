@@ -17,6 +17,6 @@ export const PostCardStory = () => {
   return utils.makeUsageDocs(
     PostCard,
     import.meta.url,
-    utils.makeElementFromHaxDemo(PostCard)
+    utils.makeElementFromHaxDemo(PostCard),
   );
 };

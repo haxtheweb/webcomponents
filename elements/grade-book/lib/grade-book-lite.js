@@ -42,7 +42,7 @@ import "./letter-grade-picker.js";
  * @element grade-book
  */
 class GradeBookLite extends UIRenderPieces(
-  I18NMixin(SimpleFilterMixin(SimpleColors))
+  I18NMixin(SimpleFilterMixin(SimpleColors)),
 ) {
   constructor() {
     super();
@@ -127,7 +127,7 @@ class GradeBookLite extends UIRenderPieces(
     // notice that a category on the active grading area responded that it changed
     this.addEventListener(
       "simple-fields-tag-list-changed",
-      this.qualitativeFeedbackUpdate.bind(this)
+      this.qualitativeFeedbackUpdate.bind(this),
     );
     // value change within the rubric area
     this.addEventListener("value-changed", this.rubricCriteriaPointsChange);
@@ -157,11 +157,11 @@ class GradeBookLite extends UIRenderPieces(
         for (let entry of entries) {
           if (entry.contentBoxSize) {
             pixels = Math.round(
-              globalThis.innerHeight - entry.contentBoxSize[0].blockSize - 122
+              globalThis.innerHeight - entry.contentBoxSize[0].blockSize - 122,
             );
           } else {
             pixels = Math.round(
-              globalThis.innerHeight - entry.contentRect.height - 122
+              globalThis.innerHeight - entry.contentRect.height - 122,
             );
           }
         }
@@ -267,14 +267,14 @@ class GradeBookLite extends UIRenderPieces(
       if (
         !this.loading &&
         ["activeAssignment", "activeStudent", "database", "loading"].includes(
-          propName
+          propName,
         )
       ) {
         setTimeout(() => {
           // this will defer to whatever the "grades" db value is
           this.totalScore = this.getCurrentScore(
             this.activeStudent,
-            this.activeAssignment
+            this.activeAssignment,
           );
           this.assessmentView = this.resetAssessmentView();
           this.activeRubric = [...this.getActiveRubric()];
@@ -961,10 +961,10 @@ class GradeBookLite extends UIRenderPieces(
       target[0].getAttribute("data-assignment")
     ) {
       GradeBookStore.activeAssignment = parseInt(
-        target[0].getAttribute("data-assignment")
+        target[0].getAttribute("data-assignment"),
       );
       GradeBookStore.activeStudent = parseInt(
-        target[0].getAttribute("data-student")
+        target[0].getAttribute("data-student"),
       );
     }
   }
@@ -1042,7 +1042,7 @@ class GradeBookLite extends UIRenderPieces(
       // click link to download file
       // @todo this downloads but claims to be corrupt.
       link.href = globalThis.URL.createObjectURL(
-        b64toBlob(response.data, "application/pdf")
+        b64toBlob(response.data, "application/pdf"),
       );
       link.download = `StudentReport.pdf`;
       link.target = "_blank";
@@ -1070,7 +1070,7 @@ class GradeBookLite extends UIRenderPieces(
     if (response.status == 200 && response.data) {
       globalThis.open(
         `https://secure-feedback.vercel.app/?message=${response.data}`,
-        "_blank"
+        "_blank",
       );
     }
     this.__hashLoading = false;
@@ -1085,7 +1085,7 @@ class GradeBookLite extends UIRenderPieces(
         "studentwork",
         `left=0,top=0,width=${screen.width / 2},height=${
           screen.height / 2
-        },menubar=0,location=0,toolbar=0,status=0`
+        },menubar=0,location=0,toolbar=0,status=0`,
       );
       this.__openWindow.onbeforeunload = () => {
         this.displayMode = 0;
@@ -1274,11 +1274,11 @@ class GradeBookLite extends UIRenderPieces(
                                             accent-color="${this.pickColor(i)}"
                                             value="${term.term}"
                                             .data="${term}"
-                                          ></simple-tag>`
+                                          ></simple-tag>`,
                                       )}
                                   </div>
                                 </a11y-collapse>
-                              `
+                              `,
                             )}
                           </a11y-collapse-group>
                         `
@@ -1304,7 +1304,7 @@ class GradeBookLite extends UIRenderPieces(
                             <tbody>
                               <tr>
                                 ${rubric.qualitative.map(
-                                  (cat) => html` <td>${cat}</td> `
+                                  (cat) => html` <td>${cat}</td> `,
                                 )}
                               </tr>
                               <tr>
@@ -1317,7 +1317,7 @@ class GradeBookLite extends UIRenderPieces(
                                         label="${cat}"
                                       ></simple-fields-tag-list>
                                     </td>
-                                  `
+                                  `,
                                 )}
                               </tr>
                             </tbody>
@@ -1329,7 +1329,7 @@ class GradeBookLite extends UIRenderPieces(
                           data-rubric-written
                           data-criteria="${rubric.criteria}"
                         ></simple-fields-field>
-                      `
+                      `,
                     )}
                     <div class="student-feedback-wrap">
                       <div class="student-feedback-text">
@@ -1419,7 +1419,7 @@ class GradeBookLite extends UIRenderPieces(
                                       (rubric.percentage / 100) *
                                         this.database.assignments[
                                           this.activeAssignment
-                                        ].points
+                                        ].points,
                                     )}
                                   </div>
                                   <h3>Criteria details</h3>
@@ -1435,34 +1435,35 @@ class GradeBookLite extends UIRenderPieces(
                                           ? html`${this.activeGrading[
                                               rubric.criteria
                                             ][cat].map(
-                                              (tag) => html` <li>
-                                                <span>${tag.term}</span
-                                                >${tag.description
-                                                  ? html` - ${tag.description}`
-                                                  : ``}
-                                                ${tag.associatedMaterial
-                                                  ? html`
-                                                      <ul>
-                                                        ${tag.associatedMaterial.map(
-                                                          (material) => html`
-                                                            <li>
-                                                              <a
-                                                                href="${material}"
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                >${material}</a
-                                                              >
-                                                            </li>
-                                                          `
-                                                        )}
-                                                      </ul>
-                                                    `
-                                                  : ``}
-                                              </li>`
+                                              (tag) =>
+                                                html` <li>
+                                                  <span>${tag.term}</span
+                                                  >${tag.description
+                                                    ? html` - ${tag.description}`
+                                                    : ``}
+                                                  ${tag.associatedMaterial
+                                                    ? html`
+                                                        <ul>
+                                                          ${tag.associatedMaterial.map(
+                                                            (material) => html`
+                                                              <li>
+                                                                <a
+                                                                  href="${material}"
+                                                                  target="_blank"
+                                                                  rel="noopener noreferrer"
+                                                                  >${material}</a
+                                                                >
+                                                              </li>
+                                                            `,
+                                                          )}
+                                                        </ul>
+                                                      `
+                                                    : ``}
+                                                </li>`,
                                             )}`
                                           : ``}
                                       </ul>
-                                    `
+                                    `,
                                   )}
                                 </ul>
                                 <h3>Additional Criteria feedback</h3>
@@ -1471,7 +1472,7 @@ class GradeBookLite extends UIRenderPieces(
                                 </p>
                               </div>
                             </a11y-collapse>
-                          `
+                          `,
                         )}
                       <a11y-collapse class="student-feedback-text">
                         <div slot="heading" class="heading">
@@ -1543,7 +1544,7 @@ class GradeBookLite extends UIRenderPieces(
       setTimeout(() => {
         XLSXFileSystemBrokerSingleton.processFile(
           this.prevLocalFileReference,
-          "json"
+          "json",
         );
         this.sourceData = this.prevLocalFileReference;
       }, 0);
@@ -1568,7 +1569,7 @@ class GradeBookLite extends UIRenderPieces(
     // MAY want to consider redoing how we look info up so that we don't transform it
     // into complex objects and instead use complex arrays (maybe)
     const output = XLSXFileSystemBrokerSingleton.workbookFromJSON(
-      this.database
+      this.database,
     );
     // treat as a Blob and then convert to a FileReader object
     const blob = new Blob([output], { type: "application/octet-stream" });
@@ -1600,7 +1601,7 @@ class GradeBookLite extends UIRenderPieces(
   updateTotalScore() {
     let score = 0;
     let tables = this.shadowRoot.querySelectorAll(
-      "#assessment simple-fields-field[type='number']:not(#totalpts)"
+      "#assessment simple-fields-field[type='number']:not(#totalpts)",
     );
     // add the scores up based on values of the pieces
     for (var i in Array.from(tables)) {
@@ -1646,17 +1647,17 @@ class GradeBookLite extends UIRenderPieces(
    */
   getCriteriaScore(criteria) {
     let tables = this.shadowRoot.querySelectorAll(
-      "#assessment editable-table-display"
+      "#assessment editable-table-display",
     );
     // add the scores up based on values of the pieces
     for (var i in Array.from(tables)) {
       if (
         tables[i].shadowRoot.querySelector(
-          `[data-rubric-score][data-criteria="${criteria}"]`
+          `[data-rubric-score][data-criteria="${criteria}"]`,
         )
       ) {
         return tables[i].shadowRoot.querySelector(
-          `[data-rubric-score][data-criteria="${criteria}"]`
+          `[data-rubric-score][data-criteria="${criteria}"]`,
         ).value;
       }
     }
@@ -1668,11 +1669,11 @@ class GradeBookLite extends UIRenderPieces(
   getCriteriaFeedback(criteria) {
     if (
       this.shadowRoot.querySelector(
-        `#assessment [data-rubric-written][data-criteria="${criteria}"]`
+        `#assessment [data-rubric-written][data-criteria="${criteria}"]`,
       )
     ) {
       return this.shadowRoot.querySelector(
-        `#assessment [data-rubric-written][data-criteria="${criteria}"]`
+        `#assessment [data-rubric-written][data-criteria="${criteria}"]`,
       ).value;
     }
     return "";
@@ -1712,7 +1713,7 @@ class GradeBookLite extends UIRenderPieces(
         detail: {
           value: "drop",
         },
-      })
+      }),
     );
   }
   // set the drag transfer data
@@ -1722,7 +1723,7 @@ class GradeBookLite extends UIRenderPieces(
         detail: {
           value: e.target,
         },
-      })
+      }),
     );
     let data = e.target.data;
     // have to add in color

@@ -93,21 +93,21 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
     super.connectedCallback();
     this.addEventListener(
       "submissionDeleted",
-      this._handleSubmissionDeletion.bind(this)
+      this._handleSubmissionDeletion.bind(this),
     );
     this.addEventListener(
       "displaymessage",
-      this._handleDisplayMessage.bind(this)
+      this._handleDisplayMessage.bind(this),
     );
   }
   disconnectedCallback() {
     this.removeEventListener(
       "submissionDeleted",
-      this._handleSubmissionDeletion.bind(this)
+      this._handleSubmissionDeletion.bind(this),
     );
     this.removeEventListener(
       "displaymessage",
-      this._handleDisplayMessage.bind(this)
+      this._handleDisplayMessage.bind(this),
     );
     super.disconnectedCallback();
   }

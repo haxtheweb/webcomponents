@@ -5,9 +5,9 @@ import "../item-overlay-ops.js";
 describe("item-overlay-ops test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <item-overlay-ops title="test-title"></item-overlay-ops> `
-    );
+    element = await fixture(html`
+      <item-overlay-ops title="test-title"></item-overlay-ops>
+    `);
   });
 
   it("passes the a11y audit", async () => {

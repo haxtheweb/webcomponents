@@ -5,9 +5,9 @@ import "../filtered-image.js";
 describe("filtered-image test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <filtered-image title="test-title"></filtered-image> `
-    );
+    element = await fixture(html`
+      <filtered-image title="test-title"></filtered-image>
+    `);
   });
 
   it("passes the a11y audit", async () => {

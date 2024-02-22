@@ -12,7 +12,7 @@ window.JSONOutlineSchema.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
   if (!window.JSONOutlineSchema.instance) {
     window.JSONOutlineSchema.instance = document.createElement(
-      "json-outline-schema"
+      "json-outline-schema",
     );
     document.body.appendChild(window.JSONOutlineSchema.instance);
   }
@@ -89,7 +89,7 @@ class JsonOutlineSchema extends HTMLElement {
     window.addEventListener(
       "json-outline-schema-debug-toggle",
       this._toggleDebug.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     const evt = new CustomEvent("json-outline-schema-ready", {
@@ -548,7 +548,7 @@ class JsonOutlineSchema extends HTMLElement {
       appendTarget.appendChild(li);
       if (tree[i].children && tree[i].children.length > 0) {
         appendTarget.appendChild(
-          this.treeToNodes(tree[i].children, document.createElement("ul"))
+          this.treeToNodes(tree[i].children, document.createElement("ul")),
         );
       }
     }
@@ -654,7 +654,7 @@ class JsonOutlineSchema extends HTMLElement {
           // recursive; dive in using the current child as the starting point
           // and merge in everything we dig up from there
           items = items.concat(
-            this.getChildOutline(child, 0, indent + 1, parentPassdown)
+            this.getChildOutline(child, 0, indent + 1, parentPassdown),
           );
         } else {
           item = new JSONOutlineSchemaItem();

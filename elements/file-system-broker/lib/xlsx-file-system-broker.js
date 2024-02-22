@@ -22,7 +22,7 @@ class XLSXFileSystemBroker extends FileSystemBroker {
     this.libPath += "xlsx/";
     ESGlobalBridgeStore.load(
       "xlsx",
-      this.libPath + "dist/xlsx.full.min.js"
+      this.libPath + "dist/xlsx.full.min.js",
     ).then(() => {
       if (globalThis.XLSX) {
         this.XLSX = globalThis.XLSX;
@@ -33,7 +33,7 @@ class XLSXFileSystemBroker extends FileSystemBroker {
             composed: true,
             cancelable: false,
             detail: this,
-          })
+          }),
         );
       }
     });
@@ -171,10 +171,10 @@ class XLSXFileSystemBroker extends FileSystemBroker {
                 data: this.processWorker(
                   JSON.parse(e.data.d),
                   format,
-                  filename
+                  filename,
                 ),
               },
-            })
+            }),
           );
           break;
       }
@@ -192,7 +192,7 @@ globalThis.XLSXFileSystemBroker.requestAvailability = () => {
     globalThis.XLSXFileSystemBroker.instance =
       globalThis.document.createElement("xlsx-file-system-broker");
     globalThis.document.body.appendChild(
-      globalThis.XLSXFileSystemBroker.instance
+      globalThis.XLSXFileSystemBroker.instance,
     );
   }
   return globalThis.XLSXFileSystemBroker.instance;

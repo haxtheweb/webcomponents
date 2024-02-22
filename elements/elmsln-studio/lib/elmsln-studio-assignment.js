@@ -19,7 +19,7 @@ import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar
  * @demo demo/portfolio.html
  */
 class ElmslnStudioAssignment extends ElmslnStudioUtilities(
-  ElmslnStudioStyles(LitElement)
+  ElmslnStudioStyles(LitElement),
 ) {
   static get styles() {
     return [
@@ -465,11 +465,11 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                     id="alert-avatar"
                     accent-color="${this.getStatusColor(
                       this.submission,
-                      this.assignment || {}
+                      this.assignment || {},
                     )}"
                     icon="${this.getStatusIcon(
                       this.submission,
-                      this.assignment || {}
+                      this.assignment || {},
                     )}"
                   >
                   </simple-icon-lite>
@@ -502,7 +502,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         this.tooLate
           ? getAlert(
               "Assignment closed for submission on ",
-              this.assignment.hideDate
+              this.assignment.hideDate,
             )
           : getAlert("Assignment is overdue!"),
         getAlert("Assignment submitted late on ", (this.submission || {}).date),
@@ -511,9 +511,9 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           ? getAlert(
               "Assignment will open for submission on",
               this.assignment.showDate,
-              false
+              false,
             )
-          : ""
+          : "",
       );
     return alertMessage;
   }
@@ -592,7 +592,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                           </button>
                         `}
                   </li>
-                `
+                `,
               )}
               ${!this.editable
                 ? ``
@@ -683,7 +683,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                           <simple-icon-lite icon="delete"></simple-icon-lite>
                         </button>`}
                   </li>
-                `
+                `,
               )}
               ${!this.editable
                 ? html`<div></div>`

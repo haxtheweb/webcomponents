@@ -17,6 +17,6 @@ export const CollectionListStory = () => {
   return utils.makeUsageDocs(
     CollectionList,
     import.meta.url,
-    utils.makeElementFromClass(CollectionList)
+    utils.makeElementFromClass(CollectionList),
   );
 };

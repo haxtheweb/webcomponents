@@ -125,7 +125,7 @@ class StarRating extends SimpleColors {
             contrast="${this.contrast}"
             class="star"
             data-value="${Number(count + 1)}"
-          ></simple-icon-button>`
+          ></simple-icon-button>`,
         );
       } else {
         content.push(
@@ -135,7 +135,7 @@ class StarRating extends SimpleColors {
             ?dark="${this.dark}"
             contrast="${this.contrast}"
             class="star"
-          ></simple-icon>`
+          ></simple-icon>`,
         );
       }
       count++;
@@ -151,7 +151,7 @@ class StarRating extends SimpleColors {
         detail: {
           value: e.target.getAttribute("data-value"),
         },
-      })
+      }),
     );
   }
   updated(changedProperties) {

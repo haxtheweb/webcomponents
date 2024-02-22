@@ -102,7 +102,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       });
       const response = await MicroFrontendRegistry.call(
         "@haxcms/courseStats",
-        params
+        params,
       );
       if (response.status === 200) {
         this.updateSmartHighlightElements(response.data);

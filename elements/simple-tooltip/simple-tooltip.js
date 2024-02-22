@@ -305,7 +305,7 @@ class SimpleTooltip extends LitElement {
     setTimeout(() => {
       this.addEventListener(
         "webkitAnimationEnd",
-        this._onAnimationEnd.bind(this)
+        this._onAnimationEnd.bind(this),
       );
       this.addEventListener("mouseenter", this.hide.bind(this));
     }, 0);
@@ -573,12 +573,12 @@ class SimpleTooltip extends LitElement {
         if (type === "entry") {
           document.documentElement.style.setProperty(
             "--simple-tooltip-delay-in",
-            timingDelay + "ms"
+            timingDelay + "ms",
           );
         } else if (type === "exit") {
           document.documentElement.style.setProperty(
             "--simple-tooltip-delay-out",
-            timingDelay + "ms"
+            timingDelay + "ms",
           );
         }
       }
@@ -624,7 +624,7 @@ class SimpleTooltip extends LitElement {
     if (newValue !== 500) {
       document.documentElement.style.setProperty(
         "--simple-tooltip-delay-in",
-        newValue + "ms"
+        newValue + "ms",
       );
     }
   }

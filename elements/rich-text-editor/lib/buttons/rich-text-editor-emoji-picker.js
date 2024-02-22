@@ -18,7 +18,7 @@ import "@lrnwebcomponents/simple-picker/lib/simple-emoji-picker.js";
  * @demo ./demo/buttons.html
  */
 class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.

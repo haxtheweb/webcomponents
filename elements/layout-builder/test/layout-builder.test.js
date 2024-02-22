@@ -5,9 +5,9 @@ import "../layout-builder.js";
 describe("layout-builder test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <layout-builder title="test-title"></layout-builder> `
-    );
+    element = await fixture(html`
+      <layout-builder title="test-title"></layout-builder>
+    `);
   });
 
   it("passes the a11y audit", async () => {

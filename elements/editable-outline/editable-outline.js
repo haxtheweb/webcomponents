@@ -350,7 +350,7 @@ class EditableOutline extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });
@@ -395,7 +395,7 @@ class EditableOutline extends LitElement {
   disconnectedCallback() {
     this.__outlineNode.removeEventListener(
       "keydown",
-      this._onKeyDown.bind(this)
+      this._onKeyDown.bind(this),
     );
     this._observer.disconnect();
     super.disconnectedCallback();
@@ -453,20 +453,20 @@ class EditableOutline extends LitElement {
           const clone2 = activeItem.nextElementSibling.cloneNode(true);
           activeItem.parentNode.insertBefore(
             clone2,
-            activeItem.nextElementSibling.nextElementSibling
+            activeItem.nextElementSibling.nextElementSibling,
           );
           // clone the LI, placing it before the UL we just made
           const clone = activeItem.cloneNode(true);
           activeItem.parentNode.insertBefore(
             clone,
-            activeItem.nextElementSibling.nextElementSibling
+            activeItem.nextElementSibling.nextElementSibling,
           );
         } else {
           const clone = activeItem.cloneNode(true);
           // insert the clone AFTER the current selection
           activeItem.parentNode.insertBefore(
             clone,
-            activeItem.nextElementSibling
+            activeItem.nextElementSibling,
           );
         }
       }
@@ -511,14 +511,14 @@ class EditableOutline extends LitElement {
                 // insert the element currently above us, just before 2 places back; so behind our UL
                 activeItem.parentNode.insertBefore(
                   activeItem.previousElementSibling,
-                  activeItem.nextElementSibling.nextElementSibling
+                  activeItem.nextElementSibling.nextElementSibling,
                 );
               }
               this.__blockScrub = true;
               // now insert the LI above us, 2 places back so it is in front of the UL
               activeItem.parentNode.insertBefore(
                 activeItem.previousElementSibling,
-                activeItem.nextElementSibling.nextElementSibling
+                activeItem.nextElementSibling.nextElementSibling,
               );
               activeItem.focus();
             } else {
@@ -528,14 +528,14 @@ class EditableOutline extends LitElement {
                 // move the UL after us
                 activeItem.parentNode.insertBefore(
                   activeItem.previousElementSibling,
-                  activeItem.nextElementSibling
+                  activeItem.nextElementSibling,
                 );
               }
               this.__blockScrub = true;
               // now move the LI after us
               activeItem.parentNode.insertBefore(
                 activeItem.previousElementSibling,
-                activeItem.nextElementSibling
+                activeItem.nextElementSibling,
               );
               activeItem.focus();
             }
@@ -562,14 +562,14 @@ class EditableOutline extends LitElement {
                 // move the thing 2 down to just before us; so the UL
                 activeItem.parentNode.insertBefore(
                   activeItem.nextElementSibling.nextElementSibling,
-                  activeItem
+                  activeItem,
                 );
               }
               this.__blockScrub = true;
               // now move the LI that is 2 below us just above us
               activeItem.parentNode.insertBefore(
                 activeItem.nextElementSibling.nextElementSibling,
-                activeItem
+                activeItem,
               );
               activeItem.focus();
             } else if (activeItem.nextElementSibling.tagName === "LI") {
@@ -582,14 +582,14 @@ class EditableOutline extends LitElement {
                 this.__blockScrub = true;
                 activeItem.parentNode.insertBefore(
                   activeItem.nextElementSibling,
-                  activeItem
+                  activeItem,
                 );
               }
               this.__blockScrub = true;
               // work on the LI
               activeItem.parentNode.insertBefore(
                 activeItem.nextElementSibling,
-                activeItem
+                activeItem,
               );
               activeItem.focus();
             }
@@ -762,7 +762,7 @@ class EditableOutline extends LitElement {
       ) {
         node.parentNode.parentNode.insertBefore(
           node,
-          node.parentNode.nextSibling
+          node.parentNode.nextSibling,
         );
         if (parent.children.length == 0) {
           parent.remove();

@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 const postCardStampBg = new URL(
   "./assets/postcard-stamp-bg.png",
-  import.meta.url
+  import.meta.url,
 ).href;
 export class PostCardStamp extends LitElement {
   constructor() {

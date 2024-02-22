@@ -218,7 +218,7 @@ globalThis.SimplePopoverManager.requestAvailability = () => {
     globalThis.SimplePopoverManager.instance =
       globalThis.document.createElement("simple-popover-manager");
     globalThis.document.body.appendChild(
-      globalThis.SimplePopoverManager.instance
+      globalThis.SimplePopoverManager.instance,
     );
   }
   return globalThis.SimplePopoverManager.instance;

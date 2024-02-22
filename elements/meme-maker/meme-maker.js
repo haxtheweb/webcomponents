@@ -48,7 +48,10 @@ class MemeMaker extends LitElement {
           line-height: 1.2;
           font-size: var(--meme-maker-font-size, 36px);
           color: white;
-          text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+          text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
             1px 1px 0 #000;
           letter-spacing: 2px;
         }
@@ -155,7 +158,7 @@ class MemeMaker extends LitElement {
           localesPath: new URL(`./locales`, import.meta.url).href,
           locales: ["es", "fr"],
         },
-      })
+      }),
     );
   }
   /**
@@ -166,8 +169,8 @@ class MemeMaker extends LitElement {
     return `
     ${this.topText ? `<div>${this.topText}</div>` : ""}
       <img src="${this.imageUrl}" alt="${
-      this.alt
-    }" preload="lazy" aria-describedby="${this.describedBy || ""}"/>
+        this.alt
+      }" preload="lazy" aria-describedby="${this.describedBy || ""}"/>
     ${this.bottomText ? `<div>${this.bottomText}</div>` : ""}`;
   }
   /**

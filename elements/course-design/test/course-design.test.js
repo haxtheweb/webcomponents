@@ -5,9 +5,9 @@ import "../course-design.js";
 describe("course-design test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <course-design title="test-title"></course-design> `
-    );
+    element = await fixture(html`
+      <course-design title="test-title"></course-design>
+    `);
   });
 
   it("passes the a11y audit", async () => {

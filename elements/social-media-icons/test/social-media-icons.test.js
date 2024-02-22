@@ -5,9 +5,9 @@ import "../social-media-icons.js";
 describe("social-media-icons test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <social-media-icons title="test-title"></social-media-icons> `
-    );
+    element = await fixture(html`
+      <social-media-icons title="test-title"></social-media-icons>
+    `);
   });
 
   it("passes the a11y audit", async () => {

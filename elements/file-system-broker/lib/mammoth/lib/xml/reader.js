@@ -25,7 +25,7 @@ function readString(xmlString, namespaceMap) {
       function (attribute) {
         return attribute.value;
       },
-      mapName
+      mapName,
     );
 
     var element = new Element(mapName(node), attributes);
@@ -86,6 +86,6 @@ function mapObject(input, valueFunc, keyFunc) {
       result[mappedKey] = valueFunc(value, key, input);
       return result;
     },
-    {}
+    {},
   );
 }

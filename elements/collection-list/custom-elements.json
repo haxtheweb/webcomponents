@@ -3,35 +3,20 @@
   "tags": [
     {
       "name": "collection-list",
-      "description": "`collection-list`\n`listing and display elements for collections of items`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - \n\nAttributes:\n\n  * `responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `items-per-row` {`string`} - \n\n  * `breakpoint-sm` {`number`} - Custom small breakpoint for the layouts; only updated on attached\n\n  * `breakpoint-md` {`number`} - Custom medium breakpoint for the layouts; only updated on attached\n\n  * `breakpoint-lg` {`number`} - Custom large breakpoint for the layouts; only updated on attached\n\n  * `breakpoint-xl` {`number`} - Custom extra-large breakpoint for the layouts; only updated on attached\n\nProperties:\n\n  * `responsiveSize` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `itemsPerRow` {`string`} - \n\n  * `breakpointSm` {`number`} - Custom small breakpoint for the layouts; only updated on attached\n\n  * `breakpointMd` {`number`} - Custom medium breakpoint for the layouts; only updated on attached\n\n  * `breakpointLg` {`number`} - Custom large breakpoint for the layouts; only updated on attached\n\n  * `breakpointXl` {`number`} - Custom extra-large breakpoint for the layouts; only updated on attached",
+      "description": "`collection-list`\n`listing and display elements for collections of items`\n\nAttributes:\n\n  * `responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `responsiveSize` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\nProperty: responsiveSize"
+          "description": "`responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\nProperty: responsiveSize\n\nDefault: lg"
         },
         {
-          "name": "items-per-row",
-          "description": "`items-per-row` {`string`} - \n\nProperty: itemsPerRow\n\nDefault: null"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "breakpoint-sm",
-          "description": "`breakpoint-sm` {`number`} - Custom small breakpoint for the layouts; only updated on attached\n\nProperty: breakpointSm\n\nDefault: 900"
-        },
-        {
-          "name": "breakpoint-md",
-          "description": "`breakpoint-md` {`number`} - Custom medium breakpoint for the layouts; only updated on attached\n\nProperty: breakpointMd\n\nDefault: 1200"
-        },
-        {
-          "name": "breakpoint-lg",
-          "description": "`breakpoint-lg` {`number`} - Custom large breakpoint for the layouts; only updated on attached\n\nProperty: breakpointLg\n\nDefault: 1500"
-        },
-        {
-          "name": "breakpoint-xl",
-          "description": "`breakpoint-xl` {`number`} - Custom extra-large breakpoint for the layouts; only updated on attached\n\nProperty: breakpointXl\n\nDefault: 1800"
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - "
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
@@ -75,6 +60,54 @@
         {
           "name": "line3",
           "description": "`line3` {`string`} - \n\nProperty: line3\n\nDefault: null"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: null"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "collection-row",
+      "description": "Attributes:\n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "tags",
+          "description": "`tags` {`string`} - \n\nProperty: tags\n\nDefault: null"
+        },
+        {
+          "name": "saturate",
+          "description": "`saturate` {`boolean`} - \n\nProperty: saturate\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "url",
+          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: null"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: null"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: null"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
+        },
+        {
+          "name": "line1",
+          "description": "`line1` {`string`} - \n\nProperty: line1\n\nDefault: null"
+        },
+        {
+          "name": "line2",
+          "description": "`line2` {`string`} - \n\nProperty: line2\n\nDefault: null"
         },
         {
           "name": "accent-color",

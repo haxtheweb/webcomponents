@@ -253,7 +253,7 @@ class EditableTable extends editBehaviors(DDD) {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 }

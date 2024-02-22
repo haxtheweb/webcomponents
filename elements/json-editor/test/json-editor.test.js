@@ -5,9 +5,9 @@ import "../json-editor.js";
 describe("json-editor test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <json-editor title="test-title"></json-editor> `
-    );
+    element = await fixture(html`
+      <json-editor title="test-title"></json-editor>
+    `);
   });
 
   it("passes the a11y audit", async () => {

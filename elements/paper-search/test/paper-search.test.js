@@ -5,9 +5,9 @@ import "../paper-search.js";
 describe("paper-search test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <paper-search title="test-title"></paper-search> `
-    );
+    element = await fixture(html`
+      <paper-search title="test-title"></paper-search>
+    `);
   });
 
   it("passes the a11y audit", async () => {

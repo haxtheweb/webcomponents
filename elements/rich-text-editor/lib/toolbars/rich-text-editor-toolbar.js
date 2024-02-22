@@ -36,7 +36,7 @@ globalThis.RichTextEditorToolbars = globalThis.RichTextEditorToolbars || [];
  */
 const RichTextEditorToolbarBehaviors = function (SuperClass) {
   return class extends RichTextEditorRangeBehaviors(
-    SimpleToolbarBehaviors(SuperClass)
+    SimpleToolbarBehaviors(SuperClass),
   ) {
     /**
      * Store tag name to make it easier to obtain directly.
@@ -908,7 +908,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       globalThis.document.addEventListener(
         shadow.eventName,
         this._handleTargetSelection.bind(this.__toolbar),
-        { signal: this.windowControllers.signal }
+        { signal: this.windowControllers.signal },
       );
 
       //stops mousedown from bubbling up and triggering HAX focus logic
@@ -981,8 +981,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return this.show == "always"
         ? false
         : this.show != "selection"
-        ? !this.target
-        : this.noSelection;
+          ? !this.target
+          : this.noSelection;
     }
     /**
      * determines if the toolbar has an extive selection
@@ -1030,7 +1030,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
     /**
@@ -1049,7 +1049,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
 
@@ -1064,7 +1064,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
 
@@ -1115,7 +1115,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           composed: true,
           cancelable: true,
           detail: this,
-        })
+        }),
       );
     }
 
@@ -1140,7 +1140,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     deregisterButton(button) {
       if (super.deregisterButton) super.deregisterButton(button);
       (button.tagsArray || []).forEach(
-        (tag) => delete this.clickableElements[tag]
+        (tag) => delete this.clickableElements[tag],
       );
     }
     /**
@@ -1169,7 +1169,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     _addBreadcrumbs() {
       if (!this.breadcrumbs) {
         this.breadcrumbs = globalThis.document.createElement(
-          "rich-text-editor-breadcrumbs"
+          "rich-text-editor-breadcrumbs",
         );
         globalThis.document.body.appendChild(this.breadcrumbs);
       }
@@ -1278,7 +1278,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.breadcrumbs = this.breadcrumbs || this._addBreadcrumbs();
           this.target.parentNode.insertBefore(
             this.breadcrumbs,
-            this.target.nextSibling
+            this.target.nextSibling,
           );
           this.breadcrumbs.slot = target.slot;
         }
@@ -1308,7 +1308,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         }
 
         Object.keys(handlers).forEach((handler) =>
-          target.removeEventListener(handler, handlers[handler])
+          target.removeEventListener(handler, handlers[handler]),
         );
 
         this.setCanceledEdits();
@@ -1327,7 +1327,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             detail: (this.target.innerHTML || "")
               .replace(/<!--[^(-->)]*-->/g, "")
               .trim(),
-          })
+          }),
         );
       }
     }
@@ -1346,7 +1346,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         }
 
         Object.keys(handlers).forEach((handler) =>
-          target.removeEventListener(handler, handlers[handler])
+          target.removeEventListener(handler, handlers[handler]),
         );
 
         if (target.makeSticky) target.makeSticky(false);
@@ -1358,7 +1358,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             detail: (this.target.innerHTML || "")
               .replace(/<!--[^(-->)]*-->/g, "")
               .trim(),
-          })
+          }),
         );
       }
     }
@@ -1424,8 +1424,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.__canceledEdits = html
         ? html
         : this.target && this.target.innerHTML
-        ? this.target.innerHTML
-        : "";
+          ? this.target.innerHTML
+          : "";
     }
     setTarget(target) {
       let handlers = this.targetHandlers(target),
@@ -1444,7 +1444,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (oldTarget !== target) {
           if (!!oldTarget) this.unsetTarget(oldTarget);
           Object.keys(handlers).forEach((handler) =>
-            target.addEventListener(handler, handlers[handler])
+            target.addEventListener(handler, handlers[handler]),
           );
           this.getRoot(target).onselectionchange = (e) => {
             if (!this.__promptOpen) this.updateRange(target, this.getRange());
@@ -1467,7 +1467,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       let handlers = this.targetHandlers(target);
       this.disableEditing(target);
       Object.keys(handlers).forEach((handler) =>
-        target.removeEventListener(handler, handlers[handler])
+        target.removeEventListener(handler, handlers[handler]),
       );
       this.target = undefined;
     }
@@ -1646,7 +1646,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
   * @demo ./demo/toolbar.html
   */
 class RichTextEditorToolbar extends RichTextEditorToolbarBehaviors(
-  LitElement
+  LitElement,
 ) {}
 customElements.define(RichTextEditorToolbar.tag, RichTextEditorToolbar);
 export { RichTextEditorToolbar, RichTextEditorToolbarBehaviors };

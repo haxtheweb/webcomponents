@@ -120,7 +120,7 @@ setTimeout(() => {
         if (response.status == 200 && response.data) {
           window.open(
             `https://secure-feedback.vercel.app/?message=${response.data}`,
-            "_blank"
+            "_blank",
           );
         }
       });
@@ -131,7 +131,7 @@ setTimeout(() => {
 const getRenderString = (data) => {
   const { strings, values } = data;
   const v = [...values, ""].map((e) =>
-    typeof e === "object" ? getRenderString(e) : e
+    typeof e === "object" ? getRenderString(e) : e,
   );
   return strings.reduce((acc, s, i) => acc + s + v[i], "");
 };

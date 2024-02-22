@@ -105,7 +105,7 @@ export const UIRenderPieces = function (SuperClass) {
                     >
                     </letter-grade>
                   </button>
-                `
+                `,
               )}
             </div>
           </div>
@@ -158,7 +158,7 @@ export const UIRenderPieces = function (SuperClass) {
                       <td>${scale.highRange}</td>
                       <td>${scale.lowRange}</td>
                     </tr>
-                  `
+                  `,
                 )}
               </tbody>
             </table>
@@ -311,7 +311,7 @@ export const UIRenderPieces = function (SuperClass) {
           >
             <span class="hide-900" data-id="${i}">${value.label}</span>
           </simple-icon-button-lite>
-        `
+        `,
       )}`;
     }
     displayModeData() {

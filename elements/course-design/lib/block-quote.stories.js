@@ -16,5 +16,5 @@ export const BlockQuoteStory = () =>
   utils.makeUsageDocs(
     BlockQuote,
     import.meta.url,
-    utils.makeElementFromHaxDemo(BlockQuote)
+    utils.makeElementFromHaxDemo(BlockQuote),
   );

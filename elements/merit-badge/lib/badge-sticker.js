@@ -203,7 +203,7 @@ class BadgeSticker extends SimpleColors {
             <ul>
               <li>${item}</li>
             </ul>
-          `
+          `,
         )}
       </absolute-position-behavior>
     `;

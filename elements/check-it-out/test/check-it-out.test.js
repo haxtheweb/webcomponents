@@ -15,7 +15,7 @@ describe("check-it-out test", () => {
         source="https://stackblitz.com/edit/react-brwwcr?embed=1&file=src/App.js"
       >
         Click me
-      </check-it-out>`
+      </check-it-out>`,
     );
   });
 

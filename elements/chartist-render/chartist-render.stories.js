@@ -103,8 +103,8 @@ export const ChartistRenderBarStory = () => {
         scale: "ct-double-octave",
         type: "bar",
         maxWidth: "600px",
-      })
-    )
+      }),
+    ),
   );
 };
 export const ChartistRenderLineStory = () => {
@@ -118,7 +118,7 @@ export const ChartistRenderLineStory = () => {
       scale: "ct-double-octave",
       type: "line",
       maxWidth: "600px",
-    })
+    }),
   );
 };
 export const ChartistRenderPieStory = () => {
@@ -131,7 +131,7 @@ export const ChartistRenderPieStory = () => {
       scale: "ct-square",
       type: "pie",
       maxWidth: "300px",
-    })
+    }),
   );
 };
 export const ChartistRenderDonutStory = () => {
@@ -145,7 +145,7 @@ export const ChartistRenderDonutStory = () => {
       type: "pie",
       options: { donut: true },
       maxWidth: "300px",
-    })
+    }),
   );
 };
 export const ChartistWithSlots = () => {
@@ -157,7 +157,7 @@ export const ChartistWithSlots = () => {
         { slot: "desc", inputMethod: "textarea", name: "desc" },
         { slot: "", inputMethod: "textarea", name: "" },
         ...props.filter(
-          (prop) => !["chartTitle", "chartDesc", "data"].includes(prop.name)
+          (prop) => !["chartTitle", "chartDesc", "data"].includes(prop.name),
         ),
       ],
       {
@@ -169,7 +169,7 @@ export const ChartistWithSlots = () => {
         emptyslot:
           '<table><thead><tr><th scope="col">Banana</th><th scope="col">Apple</th><th scope="col">Pumpkin</th></tr></thead><tbody><tr><td>20</td><td>15</td><td>40</td></tr></tbody></table>',
         maxWidth: "300px",
-      }
-    )
+      },
+    ),
   );
 };

@@ -94,8 +94,7 @@ class ThreadedDiscussion extends LitElement {
         .reply-form {
           margin: 0;
           width: calc(
-            100% -
-              var(
+            100% - var(
                 --threaded-discussion-reply-indent,
                 calc(2 * var(--threaded-discussion-comment-Padding, 10px))
               )
@@ -194,7 +193,7 @@ class ThreadedDiscussion extends LitElement {
             <div class="thread">
               ${this.getComment(thread)}
               ${(thread.replies || []).map((reply) =>
-                this.getComment(reply, thread.id)
+                this.getComment(reply, thread.id),
               )}
               <threaded-discussion-form
                 button-label="${this.replyButtonLabel || "Reply"}"
@@ -208,14 +207,14 @@ class ThreadedDiscussion extends LitElement {
                 .icon="${this.replyIcon}"
                 .submit="${this._getPath(
                   this.submit,
-                  this._getThreadParams(thread.id)
+                  this._getThreadParams(thread.id),
                 )}"
                 textarea-label="${this.replyTextareaLabel || "Enter reply"}"
                 .thread="${thread.id}"
               >
               </threaded-discussion-form>
             </div>
-          `
+          `,
         )}
       </div>
     `;
@@ -486,7 +485,8 @@ class ThreadedDiscussion extends LitElement {
           replies =
             this._getMap(thread, "replies") ||
             (data || []).filter(
-              (comment) => this._getMap(comment, "thread", "replyThread") === id
+              (comment) =>
+                this._getMap(comment, "thread", "replyThread") === id,
             );
         return {
           //gets all threads and comments if they are not mapped as nested array of thread

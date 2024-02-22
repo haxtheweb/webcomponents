@@ -5,9 +5,9 @@ import "../media-behaviors.js";
 describe("media-behaviors test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <media-behaviors title="test-title"></media-behaviors> `
-    );
+    element = await fixture(html`
+      <media-behaviors title="test-title"></media-behaviors>
+    `);
   });
 
   it("passes the a11y audit", async () => {

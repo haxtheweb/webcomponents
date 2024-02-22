@@ -28,7 +28,7 @@ export const ProgressDonutStory = () => {
         width: "300px",
         total: 50,
       },
-      [{ css: "width" }, { css: "maxWidth" }]
-    )
+      [{ css: "width" }, { css: "maxWidth" }],
+    ),
   );
 };

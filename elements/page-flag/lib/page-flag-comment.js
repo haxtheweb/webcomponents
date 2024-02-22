@@ -62,7 +62,7 @@ export class PageFlagComment extends LitElement {
         bubbles: true,
         cancelable: true,
         detail: this,
-      })
+      }),
     );
   }
   replyOp() {
@@ -71,7 +71,7 @@ export class PageFlagComment extends LitElement {
         bubbles: true,
         cancelable: true,
         detail: this,
-      })
+      }),
     );
   }
   editOp() {
@@ -80,7 +80,7 @@ export class PageFlagComment extends LitElement {
         bubbles: true,
         cancelable: true,
         detail: this,
-      })
+      }),
     );
   }
   render() {
@@ -168,7 +168,7 @@ export class PageFlagComment extends LitElement {
           }, 0);
         } else {
           this.innerHTML = this.shadowRoot.querySelector(
-            "simple-fields-field"
+            "simple-fields-field",
           ).value;
         }
       }

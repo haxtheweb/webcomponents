@@ -64,21 +64,21 @@ class PageSection extends DDD {
         :host([preset="antihero"]) section div.text ::slotted(h1),
         :host([preset="antihero"]) section div.text ::slotted(h2),
         :host([preset="antihero"]) section div.text ::slotted(h3) {
-          color: var(--ddd-theme-polaris-beaverBlue);
+          color: var(--ddd-theme-default-beaverBlue);
         }
         :host([image][preset="antihero"]) .scroller,
         :host([image][preset="antihero"]) section div ::slotted(p) {
-          color: var(--ddd-theme-polaris-beaverBlue);
+          color: var(--ddd-theme-default-beaverBlue);
         }
         /** lines add texture to blank bg */
         :host([preset="lines"]) section div.text ::slotted(h1),
         :host([preset="lines"]) section div.text ::slotted(h2),
         :host([preset="lines"]) section div.text ::slotted(h3) {
-          color: var(--ddd-theme-polaris-lines);
+          color: var(--ddd-theme-default-lines);
         }
         :host([image][preset="lines"]) .scroller,
         :host([image][preset="lines"]) section div ::slotted(p) {
-          color: var(--ddd-theme-polaris-lines);
+          color: var(--ddd-theme-default-lines);
         }
         /** video can allow visualization to go beyond readability limit bc its watching */
 
@@ -87,18 +87,18 @@ class PageSection extends DDD {
         }
 
         :host([preset="video"]) section div.text ::slotted(video-player) {
-          --video-player-color: var(--ddd-theme-polaris-white);
-          --video-player-bg-color: var(--ddd-theme-polaris-nittanyNavy);
-          --video-player-border-color: var(--ddd-theme-polaris-limestoneLight);
-          --video-player-caption-color: var(--ddd-theme-polaris-white);
-          --video-player-hover-color: var(--ddd-theme-polaris-white);
-          --video-player-hover-bg-color: var(--ddd-theme-polaris-beaver70);
+          --video-player-color: var(--ddd-theme-default-white);
+          --video-player-bg-color: var(--ddd-theme-default-nittanyNavy);
+          --video-player-border-color: var(--ddd-theme-default-limestoneLight);
+          --video-player-caption-color: var(--ddd-theme-default-white);
+          --video-player-hover-color: var(--ddd-theme-default-white);
+          --video-player-hover-bg-color: var(--ddd-theme-default-beaver70);
 
-          --video-player-accent-color: var(--ddd-theme-polaris-beaverBlue);
-          --video-player-faded-accent-color: var(--ddd-theme-polaris-beaver80);
-          --video-player-disabled-color: var(--ddd-theme-polaris-navy40);
+          --video-player-accent-color: var(--ddd-theme-default-beaverBlue);
+          --video-player-faded-accent-color: var(--ddd-theme-default-beaver80);
+          --video-player-disabled-color: var(--ddd-theme-default-navy40);
 
-          color: var(--ddd-theme-polaris-beaverBlue);
+          color: var(--ddd-theme-default-beaverBlue);
           font-family: var(--ddd-font-navigation);
         }
 
@@ -144,13 +144,13 @@ class PageSection extends DDD {
           display: flex;
           width: var(--ddd-icon-xl);
           height: var(--ddd-icon-xl);
-          margin-top: calc(var(--ddd-icon-xl) *-1);
+          margin-top: calc(var(--ddd-icon-xl) * -1);
           z-index: 11;
         }
         .scroller:focus-within::part(icon),
         .scroller:focus::part(icon),
         .scroller:hover::part(icon) {
-          transition: .3s all ease-in-out;
+          transition: 0.3s all ease-in-out;
           --simple-icon-width: var(--ddd-icon-xl);
           --simple-icon-height: var(--ddd-icon-xl);
         }
@@ -228,12 +228,12 @@ class PageSection extends DDD {
           margin: 0;
           padding: 0;
         }
-        
+
         :host section div ::slotted(p) {
           font-size: var(--ddd-font-size-s) !important;
         }
         :host section div ::slotted(hr) {
-          border-top-color: var(--ddd-theme-polaris-skyBlue) !important;
+          border-top-color: var(--ddd-theme-default-skyBlue) !important;
           width: var(--ddd-spacing-21) !important;
         }
         :host section div ::slotted(h1),
@@ -312,13 +312,13 @@ class PageSection extends DDD {
           :host section div ::slotted(h3) {
             font-size: var(--ddd-font-size-m) !important;
           }
-          
+
           :host section div ::slotted(p) {
             font-size: var(--ddd-font-size-xs) !important;
           }
 
           :host section div ::slotted(hr) {
-            border-top-color: var(--ddd-theme-polaris-skyBlue) !important;
+            border-top-color: var(--ddd-theme-default-skyBlue) !important;
             width: var(--ddd-spacing-10) !important;
           }
         }
@@ -331,7 +331,7 @@ class PageSection extends DDD {
             --simple-icon-height: var(--ddd-icon-sm);
             width: var(--ddd-icon-md);
             height: var(--ddd-icon-md);
-            margin-top: calc(var(--ddd-icon-md) *-1);
+            margin-top: calc(var(--ddd-icon-md) * -1);
           }
           .scroller:focus-within::part(icon),
           .scroller:focus::part(icon),
@@ -343,46 +343,56 @@ class PageSection extends DDD {
             margin-top: calc(var(--ddd-spacing-20) * -1);
           }
         }
-        
       `,
     ];
   }
 
   cleanAnchor(anchor) {
-    return anchor ? anchor.replace(/[^a-zA-Z]+/g, '').toLowerCase() : '';
+    return anchor ? anchor.replace(/[^a-zA-Z]+/g, "").toLowerCase() : "";
   }
 
   updated(changedProperties) {
     // presets force certain design consistency
-    if (changedProperties.has('preset') && this.preset) {
+    if (changedProperties.has("preset") && this.preset) {
       switch (this.preset) {
         case "antihero":
-          this.bg = "var(--ddd-theme-polaris-limestoneLight)";
-          this.image = new URL("./lib/assets/geo-bkg.png", import.meta.url).href;
-        break;
+          this.bg = "var(--ddd-theme-default-limestoneLight)";
+          this.image = new URL(
+            "./lib/assets/geo-bkg.png",
+            import.meta.url,
+          ).href;
+          break;
         case "video":
-          this.bg = "var(--ddd-theme-polaris-limestoneLight)";
+          this.bg = "var(--ddd-theme-default-limestoneLight)";
           this.image = null;
-        break;
+          break;
         case "antihero-light":
-          this.bg = "var(--ddd-theme-polaris-slateMaxLight)";
+          this.bg = "var(--ddd-theme-default-slateMaxLight)";
           this.image = null;
-        break;
+          break;
         case "lines":
-          this.bg = "var(--ddd-theme-polaris-white)";
-          this.image = new URL("./lib/assets/texture-lines.svg", import.meta.url).href;
-        break;
+          this.bg = "var(--ddd-theme-default-white)";
+          this.image = new URL(
+            "./lib/assets/texture-lines.svg",
+            import.meta.url,
+          ).href;
+          break;
       }
     }
     // support for setting ID via an anchor prop which can be used in some designs
-    if (changedProperties.has('anchor') && this.anchor && this.shadowRoot && !this.getAttribute('id')) {
-      this.setAttribute('id', this.cleanAnchor(this.anchor));
+    if (
+      changedProperties.has("anchor") &&
+      this.anchor &&
+      this.shadowRoot &&
+      !this.getAttribute("id")
+    ) {
+      this.setAttribute("id", this.cleanAnchor(this.anchor));
     }
   }
 
   bgStyle(bg, filter, image) {
     if (filter) {
-      return `background-color: ${bg};background-image:var(--ddd-theme-polaris-gradient-antihero),url("${image}");`;
+      return `background-color: ${bg};background-image:var(--ddd-theme-default-gradient-antihero),url("${image}");`;
     } else {
       return `background-color: ${bg};background-image: url("${image}");`;
     }

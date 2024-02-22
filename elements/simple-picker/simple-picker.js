@@ -504,7 +504,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               ${cache(
                 this.expanded && this.__options
                   ? this._renderOptions(this.__options)
-                  : nothing
+                  : nothing,
               )}
             </div>
           </div>
@@ -778,7 +778,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             value="${option.value}"
           >
           </simple-picker-option>
-        `
+        `,
       )}`;
     }
     updated(changedProperties) {
@@ -809,7 +809,7 @@ const SimplePickerBehaviors = function (SuperClass) {
                 [...virtualizer.querySelectorAll(".row")].map((item) =>
                   item.getBoundingClientRect().width > rowData.width
                     ? (rowData = item.getBoundingClientRect())
-                    : (rowData = rowData)
+                    : (rowData = rowData),
                 );
               }
               // if 1st item is null, we need to account for that when having multiple
@@ -817,7 +817,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               if (
                 !this.allowNull &&
                 ["SIMPLE-SYMBOL-PICKER", "SIMPLE-EMOJI-PICKER"].includes(
-                  this.tagName
+                  this.tagName,
                 )
               ) {
                 gutter =
@@ -837,15 +837,15 @@ const SimplePickerBehaviors = function (SuperClass) {
               ) {
                 virtualizer.style.minHeight =
                   parseInt(
-                    (rowData.height *
-                      virtualizer.querySelectorAll(".row").length) +
-                      2
+                    rowData.height *
+                      virtualizer.querySelectorAll(".row").length +
+                      2,
                   ) + "px";
               }
               // apply row style so it fills the container when it can
               requestAnimationFrame(() => {
                 [...virtualizer.querySelectorAll(".row")].map(
-                  (item) => (item.style.width = "-webkit-fill-available")
+                  (item) => (item.style.width = "-webkit-fill-available"),
                 );
               });
               requestAnimationFrame(() => {
@@ -863,7 +863,7 @@ const SimplePickerBehaviors = function (SuperClass) {
       this.dispatchEvent(
         new CustomEvent("changed", {
           detail: this,
-        })
+        }),
       );
     }
 
@@ -1020,7 +1020,7 @@ const SimplePickerBehaviors = function (SuperClass) {
       this.dispatchEvent(
         new CustomEvent("value-changed", {
           detail: this,
-        })
+        }),
       );
     }
 
@@ -1080,7 +1080,7 @@ const SimplePickerBehaviors = function (SuperClass) {
        * @event change
        */
       this.dispatchEvent(
-        new CustomEvent("change", { bubbles: true, detail: this })
+        new CustomEvent("change", { bubbles: true, detail: this }),
       );
     }
 

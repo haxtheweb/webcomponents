@@ -80,7 +80,7 @@ class DateTitle extends LitElement {
       -170,
       -100,
       "font-size: 20px; color: black;",
-      "transform: scaleY(-1) scaleX(-1); position:absolute"
+      "transform: scaleY(-1) scaleX(-1); position:absolute",
     );
     this.generateCircularText(
       "circTxt2",
@@ -89,7 +89,7 @@ class DateTitle extends LitElement {
       90,
       -40,
       "font-size: 20px; color: black;",
-      ""
+      "",
     );
   }
 
@@ -100,7 +100,7 @@ class DateTitle extends LitElement {
     range,
     startPos,
     css,
-    bottomCss
+    bottomCss,
   ) {
     const textArr = text.split("");
     const container = this.shadowRoot.querySelector(".container");

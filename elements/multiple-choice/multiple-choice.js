@@ -27,7 +27,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
           border: var(--ddd-border-md);
           background-color: var(--simple-colors-default-theme-accent-1);
           border-radius: var(--ddd-radius-xs);
-          transition: all .3s ease-in-out;
+          transition: all 0.3s ease-in-out;
           color: var(--simple-colors-default-theme-grey-12);
           --simple-toolbar-button-border-color: var(
             --simple-colors-default-theme-grey-4
@@ -104,7 +104,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
         }
         simple-fields-field {
           padding: var(--ddd-spacing-4);
-          transition: all .3s ease-in-out;
+          transition: all 0.3s ease-in-out;
           margin: 0;
           border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-xs);
@@ -119,7 +119,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
         simple-toolbar-button {
           font-size: var(--ddd-font-size-xs);
           font-family: var(--ddd-font-navigation);
-          transition: all .3s ease-in-out;
+          transition: all 0.3s ease-in-out;
         }
         :host simple-toolbar-button:hover::part(button),
         :host simple-toolbar-button:focus::part(button),
@@ -135,7 +135,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
           border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-xs);
           padding: var(--ddd-spacing-2);
-          transition: all .3s ease-in-out;
+          transition: all 0.3s ease-in-out;
         }
         simple-toolbar-button::part(label) {
           font-size: var(--ddd-font-size-xs);
@@ -153,7 +153,8 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
           padding: 0px;
           margin: 0px;
         }
-        ul, ol {
+        ul,
+        ol {
           gap: var(--ddd-spacing-4);
         }
         simple-icon {
@@ -167,7 +168,6 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
   }
   constructor() {
     super();
-    this.loadDDDFonts(DDDFonts);
     this.shadowRootOptions = {
       ...LitElement.shadowRootOptions,
       delegatesFocus: true,
@@ -203,7 +203,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (propName == "answers" && this.answers && this.answers.length > 0) {
@@ -234,7 +234,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
                       @value-changed="${this.checkedEvent}"
                       label="${answer && answer.label ? answer.label : ""}"
                     ></simple-fields-field>
-                  `
+                  `,
                 )}
               </fieldset>
             `
@@ -253,7 +253,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
                         @value-changed="${this.checkedEvent}"
                       ></simple-fields-field>
                     </li>
-                  `
+                  `,
                 )}
               </ul>
             `}
@@ -403,13 +403,13 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
    * Reset user answers and shuffle the board again.
    */
   resetAnswers(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
         bubbles: true,
         composed: true,
         cancelable: false,
         detail: false,
-      })
+      }),
     );
     this.displayedAnswers = [];
     this.answers.forEach((el) => {
@@ -451,19 +451,19 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
    * that they want to see how they did.
    */
   _verifyAnswers(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
         bubbles: true,
         composed: true,
         cancelable: false,
         detail: false,
-      })
+      }),
     );
     let si = document.createElement("simple-icon-lite");
     let extras = {};
     let toastShowEventName = "simple-toast-show";
     // support for haxcms toast
-    if (window.HAXCMSToast) {
+    if (globalThis.HAXCMSToast) {
       toastShowEventName = "haxcms-toast-show";
       si.style.setProperty("--simple-icon-height", "40px");
       si.style.setProperty("--simple-icon-width", "40px");
@@ -494,7 +494,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
     si.accentColor = this.__toastColor;
     si.dark = true;
     // gets it all the way to the top immediately
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent(toastShowEventName, {
         bubbles: true,
         composed: true,
@@ -506,7 +506,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
           slot: si,
           ...extras,
         },
-      })
+      }),
     );
     // start of data passing, this is a prototype atm
     let eventData = {
@@ -520,7 +520,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
         composed: true,
         cancelable: false,
         detail: eventData,
-      })
+      }),
     );
   }
 
@@ -685,5 +685,5 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
     }
   }
 }
-window.customElements.define(MultipleChoice.tag, MultipleChoice);
+globalThis.customElements.define(MultipleChoice.tag, MultipleChoice);
 export { MultipleChoice };

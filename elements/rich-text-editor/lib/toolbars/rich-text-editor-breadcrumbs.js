@@ -23,7 +23,7 @@ simple-toolbar/simple-toolbar-button variables.
  *  @element rich-text-editor-breadcrumbs
  */
 class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store tag name to make it easier to )obtain directly.
@@ -108,7 +108,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
               ${i + 1 >= (this.selectionAncestors || []).length
                 ? ""
                 : html` <span class="divider"> &gt; </span> `}
-            `
+            `,
           )}
     `;
   }

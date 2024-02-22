@@ -142,7 +142,7 @@ class HaxschemaBuilder extends LitElement {
         this.dispatchEvent(
           new CustomEvent("hax-schema-changed", {
             value: this[propName],
-          })
+          }),
         );
         this._haxSchemaChanged(this[propName], oldValue);
       }
@@ -157,7 +157,7 @@ class HaxschemaBuilder extends LitElement {
         this.haxSchema = JSON.stringify(
           this.HAXWiring.prototypeHaxProperties(),
           null,
-          2
+          2,
         );
       }
     }, 0);
@@ -186,7 +186,7 @@ class HaxschemaBuilder extends LitElement {
       let schema = this.HAXWiring.getHaxJSONSchema(key, hs);
       this.shadowRoot.querySelector("#form")[key + "Schema"] = Object.assign(
         {},
-        schema
+        schema,
       );
     }
   }
@@ -205,7 +205,7 @@ class HaxschemaBuilder extends LitElement {
       let schema = this.HAXWiring.getHaxJSONSchema(key, hs);
       this.shadowRoot.querySelector("#form")[key + "Schema"] = Object.assign(
         {},
-        schema
+        schema,
       );
     }
     this.haxSchema = JSON.stringify(hs);

@@ -5,9 +5,9 @@ import "../simple-icon-picker.js";
 describe("simple-icon-picker test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-icon-picker title="test-title"></simple-icon-picker> `
-    );
+    element = await fixture(html`
+      <simple-icon-picker title="test-title"></simple-icon-picker>
+    `);
   });
 
   it("passes the a11y audit", async () => {

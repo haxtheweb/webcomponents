@@ -251,7 +251,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
   }
@@ -263,7 +263,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
         cancelable: true,
         composed: true,
         detail: { id: this.id },
-      })
+      }),
     );
   }
 }

@@ -96,7 +96,7 @@ export class PromiseProgressLite extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       // ensure we are allowed to load things
@@ -137,7 +137,7 @@ export class PromiseProgressLite extends LitElement {
               detail: {
                 value: true,
               },
-            })
+            }),
           );
         }, 100);
       });

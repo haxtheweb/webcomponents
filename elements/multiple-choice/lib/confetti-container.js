@@ -34,13 +34,13 @@
         // canvas.width / 2 - button.offsetWidth / 4,
         // canvas.width / 2 + button.offsetWidth / 4
         canvas.width / 2,
-        canvas.width / 2
+        canvas.width / 2,
       ),
       y: randomRange(
         // canvas.height / 2 + button.offsetHeight / 2 + 8,
         // canvas.height / 2 + 1.5 * button.offsetHeight - 8
         canvas.height / 2,
-        canvas.height / 2
+        canvas.height / 2,
       ),
     };
     this.rotation = randomRange(0, 2 * Math.PI);
@@ -55,7 +55,7 @@
     this.velocity.x -= this.velocity.x * this.options.dragConfetti;
     this.velocity.y = Math.min(
       this.velocity.y + this.options.gravityConfetti,
-      this.options.terminalVelocity
+      this.options.terminalVelocity,
     );
     this.velocity.x += Math.random() > 0.5 ? Math.random() : -Math.random();
 
@@ -77,13 +77,13 @@
           // canvas.width / 2 - button.offsetWidth / 3,
           // canvas.width / 2 + button.offsetWidth / 3
           canvas.width / 2,
-          canvas.width / 2
+          canvas.width / 2,
         ),
         y: randomRange(
           // canvas.height / 2 + button.offsetHeight / 2 + 8,
           // canvas.height / 2 + 1.5 * button.offsetHeight - 8
           canvas.height / 2,
-          canvas.height / 2
+          canvas.height / 2,
         ),
       }),
       (this.velocity = {

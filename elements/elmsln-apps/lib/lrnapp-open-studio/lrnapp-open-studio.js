@@ -331,7 +331,7 @@ class LrnappOpenStudio extends PolymerElement {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }

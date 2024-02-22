@@ -58,7 +58,7 @@ var t, e, n, o, r;
               "StartToStart",
               a,
               this.range,
-              !0
+              !0,
             )),
             (this.selectionEnd = r.findLength("StartToEnd", a, this.range, !0))
           );
@@ -241,8 +241,8 @@ var t, e, n, o, r;
                 3 === r.nodeType
                   ? h.push((o.pos += r.length))
                   : r.hasChildNodes()
-                  ? h.push(e(r, n, o))
-                  : h.push(void 0);
+                    ? h.push(e(r, n, o))
+                    : h.push(void 0);
               }
             return h;
           })(o, t, n),
@@ -338,7 +338,7 @@ var t, e, n, o, r;
               get: function () {
                 return this.intersectionRatio > 0;
               },
-            }
+            },
           );
       else {
         var document = (function (startDoc) {
@@ -361,13 +361,13 @@ var t, e, n, o, r;
               crossOriginUpdater ||
                 (crossOriginUpdater = function (
                   boundingClientRect,
-                  intersectionRect
+                  intersectionRect,
                 ) {
                   (crossOriginRect =
                     boundingClientRect && intersectionRect
                       ? convertFromParentRect(
                           boundingClientRect,
-                          intersectionRect
+                          intersectionRect,
                         )
                       : {
                           top: 0,
@@ -405,7 +405,7 @@ var t, e, n, o, r;
             (this._observationTargets = this._observationTargets.filter(
               function (item) {
                 return item.element != target;
-              }
+              },
             )),
               this._unmonitorIntersections(target.ownerDocument),
               0 == this._observationTargets.length &&
@@ -421,7 +421,7 @@ var t, e, n, o, r;
             return (this._queuedEntries = []), records;
           }),
           (IntersectionObserver.prototype._initThresholds = function (
-            opt_threshold
+            opt_threshold,
           ) {
             var threshold = opt_threshold || [0];
             return (
@@ -429,14 +429,14 @@ var t, e, n, o, r;
               threshold.sort().filter(function (t, i, a) {
                 if ("number" != typeof t || isNaN(t) || t < 0 || t > 1)
                   throw new Error(
-                    "threshold must be a number between 0 and 1 inclusively"
+                    "threshold must be a number between 0 and 1 inclusively",
                   );
                 return t !== a[i - 1];
               })
             );
           }),
           (IntersectionObserver.prototype._parseRootMargin = function (
-            opt_rootMargin
+            opt_rootMargin,
           ) {
             var margins = (opt_rootMargin || "0px")
               .split(/\s+/)
@@ -444,7 +444,7 @@ var t, e, n, o, r;
                 var parts = /^(-?\d*\.?\d+)(px|%)$/.exec(margin);
                 if (!parts)
                   throw new Error(
-                    "rootMargin must be specified in pixels or percent"
+                    "rootMargin must be specified in pixels or percent",
                   );
                 return { value: parseFloat(parts[1]), unit: parts[2] };
               });
@@ -456,7 +456,7 @@ var t, e, n, o, r;
             );
           }),
           (IntersectionObserver.prototype._monitorIntersections = function (
-            doc
+            doc,
           ) {
             var win = doc.defaultView;
             if (win && -1 == this._monitoringDocuments.indexOf(doc)) {
@@ -466,7 +466,7 @@ var t, e, n, o, r;
               this.POLL_INTERVAL
                 ? (monitoringInterval = win.setInterval(
                     callback,
-                    this.POLL_INTERVAL
+                    this.POLL_INTERVAL,
                   ))
                 : (addEvent(win, "resize", callback, !0),
                   addEvent(doc, "scroll", callback, !0),
@@ -479,7 +479,7 @@ var t, e, n, o, r;
                         childList: !0,
                         characterData: !0,
                         subtree: !0,
-                      }
+                      },
                     )),
                 this._monitoringDocuments.push(doc),
                 this._monitoringUnsubscribes.push(function () {
@@ -501,7 +501,7 @@ var t, e, n, o, r;
             }
           }),
           (IntersectionObserver.prototype._unmonitorIntersections = function (
-            doc
+            doc,
           ) {
             var index = this._monitoringDocuments.indexOf(doc);
             if (-1 != index) {
@@ -564,7 +564,7 @@ var t, e, n, o, r;
                     this._computeTargetAndRootIntersection(
                       target,
                       targetRect,
-                      rootRect
+                      rootRect,
                     ),
                   rootBounds = null;
                 this._rootContainsTarget(target)
@@ -644,13 +644,13 @@ var t, e, n, o, r;
                           this._computeTargetAndRootIntersection(
                             frame,
                             frameRect,
-                            rootRect
+                            rootRect,
                           );
                       frameRect && frameIntersect
                         ? ((parent = frame),
                           (parentRect = convertFromParentRect(
                             frameRect,
-                            frameIntersect
+                            frameIntersect,
                           )))
                         : ((parent = null), (intersectionRect = null));
                     }
@@ -715,7 +715,7 @@ var t, e, n, o, r;
             return this._expandRectByRootMargin(rootRect);
           }),
           (IntersectionObserver.prototype._expandRectByRootMargin = function (
-            rect
+            rect,
           ) {
             var margins = this._rootMarginValues.map(function (margin, i) {
                 return "px" == margin.unit
@@ -736,7 +736,7 @@ var t, e, n, o, r;
           }),
           (IntersectionObserver.prototype._hasCrossedThreshold = function (
             oldEntry,
-            newEntry
+            newEntry,
           ) {
             var oldRatio =
                 oldEntry && oldEntry.isIntersecting
@@ -760,7 +760,7 @@ var t, e, n, o, r;
             return !this.root || containsDeep(document, this.root);
           }),
           (IntersectionObserver.prototype._rootContainsTarget = function (
-            target
+            target,
           ) {
             var rootDoc =
               (this.root && (this.root.ownerDocument || this.root)) || document;
@@ -799,7 +799,7 @@ var t, e, n, o, r;
             right: 0,
             width: 0,
             height: 0,
-          }
+          },
         )),
         (this.isIntersecting = !!entry.intersectionRect);
       var targetRect = this.boundingClientRect,
@@ -809,8 +809,8 @@ var t, e, n, o, r;
       this.intersectionRatio = targetArea
         ? Number((intersectionArea / targetArea).toFixed(4))
         : this.isIntersecting
-        ? 1
-        : 0;
+          ? 1
+          : 0;
     }
     function IntersectionObserver(callback, opt_options) {
       var options = opt_options || {};

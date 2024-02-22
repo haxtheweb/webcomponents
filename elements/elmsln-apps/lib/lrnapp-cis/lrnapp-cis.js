@@ -486,7 +486,7 @@ class LrnappCis extends PolymerElement {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }
@@ -734,7 +734,7 @@ class LrnappCis extends PolymerElement {
     } // convert to array after keys in place for the object
 
     courseObject.topology.Network = this._toArray(
-      courseObject.topology.Network
+      courseObject.topology.Network,
     ); // sort items based on weight of the things in the network
     // so we have a consistent order to things
 

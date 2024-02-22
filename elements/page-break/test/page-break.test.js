@@ -5,9 +5,9 @@ import "../page-break.js";
 describe("page-break test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <page-break title="test-title"></page-break> `
-    );
+    element = await fixture(html`
+      <page-break title="test-title"></page-break>
+    `);
   });
 
   it("passes the a11y audit", async () => {

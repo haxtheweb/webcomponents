@@ -52,7 +52,7 @@ export const RichTextEditorStory = () => {
     utils.getKnobs([...props, { slot: "", title: "Content" }], {
       emptyslot: emptyslot,
       type: utils.randomOption(toolbars),
-    })
+    }),
   );
 };
 const configs = [
@@ -416,8 +416,8 @@ export const RichTextEditorToolbarStory = () => {
   return utils.getDemo(
     `${utils.makeElement(RichTextEditorToolbar, knobs, true)}${editor(
       knobs.props.id.knob,
-      knobs.props.config ? knobs.props.config.knob : []
-    )}`
+      knobs.props.config ? knobs.props.config.knob : [],
+    )}`,
   );
 };
 export const RichTextEditorToolbarFullStory = () => {
@@ -429,8 +429,8 @@ export const RichTextEditorToolbarFullStory = () => {
   return utils.getDemo(
     `${utils.makeElement(RichTextEditorToolbarFull, knobs, true)}${editor(
       knobs.props.id.knob,
-      knobs.props.config ? knobs.props.config.knob : []
-    )}`
+      knobs.props.config ? knobs.props.config.knob : [],
+    )}`,
   );
 };
 export const RichTextEditorToolbarMiniStory = () => {
@@ -529,7 +529,7 @@ export const RichTextEditorToolbarMiniStory = () => {
   return utils.getDemo(`${utils.makeElement(
     RichTextEditorToolbarMini,
     knobs,
-    true
+    true,
   )}
 <figure style="max-width: 300px; border: 1px solid black;">
   <img src="//placekitten.com/300/300">

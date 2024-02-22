@@ -25,7 +25,7 @@ describe("media-image test", () => {
           diam sit amet quam vehicula elementum sed sit amet dui. Vivamus
           suscipit tortor eget felis porttitor volutpat.
         </div>
-      </media-image>`
+      </media-image>`,
     );
   });
 

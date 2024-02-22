@@ -10,10 +10,10 @@
   "object" == typeof exports && "object" == typeof module
     ? (module.exports = e())
     : "function" == typeof define && define.amd
-    ? define([], e)
-    : "object" == typeof exports
-    ? (exports.Tone = e())
-    : (t.Tone = e());
+      ? define([], e)
+      : "object" == typeof exports
+        ? (exports.Tone = e())
+        : (t.Tone = e());
 })("undefined" != typeof self ? self : this, function () {
   return (function (t) {
     var e = {};
@@ -62,7 +62,7 @@
             n = function () {
               if (!(this instanceof n))
                 throw new Error(
-                  "constructor needs to be called with the 'new' keyword"
+                  "constructor needs to be called with the 'new' keyword",
                 );
             };
           /**
@@ -105,12 +105,12 @@
                   (n.Param && u instanceof n.Param)
                     ? u.value !== e && (u.value = e)
                     : u instanceof AudioParam
-                    ? u.value !== e && (u.value = e)
-                    : n.TimeBase && u instanceof n.TimeBase
-                    ? (o[s] = e)
-                    : u instanceof n
-                    ? u.set(e)
-                    : u !== e && (o[s] = e));
+                      ? u.value !== e && (u.value = e)
+                      : n.TimeBase && u instanceof n.TimeBase
+                        ? (o[s] = e)
+                        : u instanceof n
+                          ? u.set(e)
+                          : u !== e && (o[s] = e));
               }
               return this;
             }),
@@ -133,14 +133,14 @@
                 n.isObject(t[s])
                   ? (a[s] = d.get())
                   : n.Signal && d instanceof n.Signal
-                  ? (a[s] = d.value)
-                  : n.Param && d instanceof n.Param
-                  ? (a[s] = d.value)
-                  : d instanceof AudioParam
-                  ? (a[s] = d.value)
-                  : d instanceof n
-                  ? (a[s] = d.get())
-                  : !n.isFunction(d) && n.isDefined(d) && (a[s] = d);
+                    ? (a[s] = d.value)
+                    : n.Param && d instanceof n.Param
+                      ? (a[s] = d.value)
+                      : d instanceof AudioParam
+                        ? (a[s] = d.value)
+                        : d instanceof n
+                          ? (a[s] = d.get())
+                          : !n.isFunction(d) && n.isDefined(d) && (a[s] = d);
               }
               return e;
             }),
@@ -165,8 +165,8 @@
               return n.isDefined(i.defaults)
                 ? n.defaultArg(s, i.defaults)
                 : n.isObject(i)
-                ? n.defaultArg(s, i)
-                : s;
+                  ? n.defaultArg(s, i)
+                  : s;
             }),
             (n.defaultArg = function (t, e) {
               if (n.isObject(t) && n.isObject(e)) {
@@ -218,8 +218,8 @@
                           }),
                       (o = !0))
                     : e.input
-                    ? (e = e.input)
-                    : (o = !0);
+                      ? (e = e.input)
+                      : (o = !0);
                 e instanceof AudioParam
                   ? t.disconnect(e, i)
                   : e instanceof AudioNode && t.disconnect(e, i, s);
@@ -428,7 +428,7 @@
             set: function (t) {
               return (this.output.channelCountMode = t);
             },
-          }
+          },
         ),
         Object.defineProperty(
           s.default.AudioNode.prototype,
@@ -440,7 +440,7 @@
             set: function (t) {
               return (this.output.channelInterpretation = t);
             },
-          }
+          },
         ),
         Object.defineProperty(s.default.AudioNode.prototype, "numberOfInputs", {
           get: function () {
@@ -462,7 +462,7 @@
                   : 1
                 : 0;
             },
-          }
+          },
         ),
         (s.default.AudioNode.prototype.connect = function (t, e, i) {
           return (
@@ -556,7 +556,7 @@
         var t = s.default.defaults(
           arguments,
           ["value", "units"],
-          s.default.Signal
+          s.default.Signal,
         );
         s.default.Param.call(this, t),
           (this._constantSource = this.context.createConstantSource()),
@@ -601,7 +601,7 @@
         var t = s.default.defaults(
           arguments,
           ["gain", "units"],
-          s.default.Gain
+          s.default.Gain,
         );
         s.default.AudioNode.call(this, t),
           (this.input =
@@ -661,23 +661,23 @@
           return s.default.isNumber(t)
             ? t
             : s.default.isUndef(t)
-            ? this.now()
-            : s.default.isString(t) || s.default.isObject(t)
-            ? new s.default.Time(t).toSeconds()
-            : t instanceof s.default.TimeBase
-            ? t.toSeconds()
-            : void 0;
+              ? this.now()
+              : s.default.isString(t) || s.default.isObject(t)
+                ? new s.default.Time(t).toSeconds()
+                : t instanceof s.default.TimeBase
+                  ? t.toSeconds()
+                  : void 0;
         }),
         (s.default.prototype.toFrequency = function (t) {
           return s.default.isNumber(t)
             ? t
             : s.default.isString(t) ||
-              s.default.isUndef(t) ||
-              s.default.isObject(t)
-            ? new s.default.Frequency(t).valueOf()
-            : t instanceof s.default.TimeBase
-            ? t.toFrequency()
-            : void 0;
+                s.default.isUndef(t) ||
+                s.default.isObject(t)
+              ? new s.default.Frequency(t).valueOf()
+              : t instanceof s.default.TimeBase
+                ? t.toFrequency()
+                : void 0;
         }),
         (s.default.prototype.toTicks = function (t) {
           return s.default.isNumber(t) ||
@@ -685,10 +685,10 @@
             s.default.isObject(t)
             ? new s.default.TransportTime(t).toTicks()
             : s.default.isUndef(t)
-            ? s.default.Transport.ticks
-            : t instanceof s.default.TimeBase
-            ? t.toTicks()
-            : void 0;
+              ? s.default.Transport.ticks
+              : t instanceof s.default.TimeBase
+                ? t.toTicks()
+                : void 0;
         }),
         (e.default = s.default);
     },
@@ -778,7 +778,7 @@
               function (t) {
                 this._start(t, e, i);
               }.bind(this),
-              t
+              t,
             );
             this._scheduled.push(o),
               s.default.Transport.state === s.default.State.Started &&
@@ -819,7 +819,7 @@
             }.bind(this)),
             (this._syncedStop = function (t) {
               var e = s.default.Transport.getSecondsAtTime(
-                Math.max(t - this.sampleTime, 0)
+                Math.max(t - this.sampleTime, 0),
               );
               this._state.getValueAtTime(e) === s.default.State.Started &&
                 this._stop(t);
@@ -912,10 +912,12 @@
           Array.isArray(t)
             ? (this.curve = t)
             : isFinite(t) || s.default.isUndef(t)
-            ? (this._curve = new Float32Array(s.default.defaultArg(t, 1024)))
-            : s.default.isFunction(t) &&
-              ((this._curve = new Float32Array(s.default.defaultArg(e, 1024))),
-              this.setMap(t));
+              ? (this._curve = new Float32Array(s.default.defaultArg(t, 1024)))
+              : s.default.isFunction(t) &&
+                ((this._curve = new Float32Array(
+                  s.default.defaultArg(e, 1024),
+                )),
+                this.setMap(t));
       }),
         s.default.extend(s.default.WaveShaper, s.default.SignalBase),
         (s.default.WaveShaper.prototype.setMap = function (t) {
@@ -947,7 +949,7 @@
           set: function (t) {
             if (!["none", "2x", "4x"].includes(t))
               throw new RangeError(
-                "Tone.WaveShaper: oversampling must be either 'none', '2x', or '4x'"
+                "Tone.WaveShaper: oversampling must be either 'none', '2x', or '4x'",
               );
             this._shaper.oversample = t;
           },
@@ -1012,14 +1014,14 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "rolloff"],
-          s.default.Filter
+          s.default.Filter,
         );
         s.default.AudioNode.call(this),
           this.createInsOuts(1, 1),
           (this._filters = []),
           (this.frequency = new s.default.Signal(
             t.frequency,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.detune = new s.default.Signal(0, s.default.Type.Cents)),
           (this.gain = new s.default.Signal({
@@ -1074,7 +1076,7 @@
             var e = [-12, -24, -48, -96].indexOf(t);
             if (-1 === e)
               throw new RangeError(
-                "Tone.Filter: rolloff can only be -12, -24, -48 or -96"
+                "Tone.Filter: rolloff can only be -12, -24, -48 or -96",
               );
             (e += 1), (this._rolloff = t), this.input.disconnect();
             for (var i = 0; i < this._filters.length; i++)
@@ -1121,7 +1123,7 @@
                   a.forEach(function (t, i) {
                     e[i] *= t;
                   });
-              }.bind(this)
+              }.bind(this),
             ),
             e
           );
@@ -1200,7 +1202,7 @@
           var t = s.default.defaults(
             arguments,
             ["url", "onload", "onerror"],
-            s.default.Buffer
+            s.default.Buffer,
           );
           s.default.call(this),
             (this._buffer = null),
@@ -1249,9 +1251,9 @@
                 }.bind(this),
                 function (t) {
                   (this._xhr = null), o(t), i && i(t);
-                }.bind(this)
+                }.bind(this),
               );
-            }.bind(this)
+            }.bind(this),
           );
         }),
         (s.default.Buffer.prototype.dispose = function () {
@@ -1395,7 +1397,7 @@
               t += s.default.Buffer._downloadQueue[e].progress;
             s.default.Buffer.emit(
               "progress",
-              t / s.default.Buffer._downloadQueue.length
+              t / s.default.Buffer._downloadQueue.length,
             );
           }
           var d = new XMLHttpRequest();
@@ -1480,7 +1482,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "min", "max"],
-          s.default.LFO
+          s.default.LFO,
         );
         s.default.AudioNode.call(this),
           (this._oscillator = new s.default.Oscillator({
@@ -1493,7 +1495,7 @@
           (this.amplitude.value = t.amplitude),
           (this._stoppedSignal = new s.default.Signal(
             0,
-            s.default.Type.AudioRange
+            s.default.Type.AudioRange,
           )),
           (this._zeros = new s.default.Zero()),
           (this._stoppedValue = 0),
@@ -1662,7 +1664,7 @@
         var t = s.default.defaults(
           arguments,
           ["param", "units", "convert"],
-          s.default.Param
+          s.default.Param,
         );
         s.default.AudioNode.call(this, t),
           (this._param = this.input = t.param),
@@ -1700,10 +1702,10 @@
               this.units === s.default.Type.BPM
               ? 0
               : this.units === s.default.Type.AudioRange
-              ? -1
-              : this.units === s.default.Type.Decibels
-              ? -1 / 0
-              : this._param.minValue;
+                ? -1
+                : this.units === s.default.Type.Decibels
+                  ? -1 / 0
+                  : this._param.minValue;
           },
         }),
         Object.defineProperty(s.default.Param.prototype, "maxValue", {
@@ -1774,7 +1776,7 @@
             i = this._events.get(t),
             n = s.default.defaultArg(
               this._initialValue,
-              this._param.defaultValue
+              this._param.defaultValue,
             ),
             o = n;
           if (null === i) o = n;
@@ -1787,23 +1789,23 @@
                 a,
                 i.value,
                 i.constant,
-                t
+                t,
               ));
           } else
             o =
               null === e
                 ? i.value
                 : e.type === s.default.Param.AutomationType.Linear
-                ? this._linearInterpolate(i.time, i.value, e.time, e.value, t)
-                : e.type === s.default.Param.AutomationType.Exponential
-                ? this._exponentialInterpolate(
-                    i.time,
-                    i.value,
-                    e.time,
-                    e.value,
-                    t
-                  )
-                : i.value;
+                  ? this._linearInterpolate(i.time, i.value, e.time, e.value, t)
+                  : e.type === s.default.Param.AutomationType.Exponential
+                    ? this._exponentialInterpolate(
+                        i.time,
+                        i.value,
+                        e.time,
+                        e.value,
+                        t,
+                      )
+                    : i.value;
           return o;
         }),
         (s.default.Param.prototype.setRampPoint = function (t) {
@@ -1832,7 +1834,7 @@
         }),
         (s.default.Param.prototype.exponentialRampToValueAtTime = function (
           t,
-          e
+          e,
         ) {
           return (
             (t = this._fromUnits(t)),
@@ -1875,7 +1877,7 @@
         (s.default.Param.prototype.exponentialApproachValueAtTime = function (
           t,
           e,
-          i
+          i,
         ) {
           var s = Math.log(this.toSeconds(i) + 1) / Math.log(200);
           return (
@@ -1963,7 +1965,7 @@
           e,
           i,
           s,
-          n
+          n,
         ) {
           return i + (e - i) * Math.exp(-(n - t) / s);
         }),
@@ -1972,7 +1974,7 @@
           e,
           i,
           s,
-          n
+          n,
         ) {
           return e + ((n - t) / (i - t)) * (s - e);
         }),
@@ -1981,7 +1983,7 @@
           e,
           i,
           s,
-          n
+          n,
         ) {
           return e * Math.pow(s / e, (n - t) / (i - t));
         }),
@@ -2071,7 +2073,7 @@
                 (this._swingTicks = n.defaults.PPQ / 2),
                 (this._swingAmount = 0),
                 (this.context.transport = this);
-            }.bind(this)
+            }.bind(this),
           );
       }),
         s.default.extend(s.default.Transport, s.default.Emitter),
@@ -2157,13 +2159,13 @@
               t,
               function (t) {
                 this.clear(t.id);
-              }.bind(this)
+              }.bind(this),
             ),
             this._repeatedEvents.forEachFrom(
               t,
               function (t) {
                 this.clear(t.id);
-              }.bind(this)
+              }.bind(this),
             ),
             this
           );
@@ -2173,19 +2175,19 @@
             "start",
             function (t, e) {
               (e = s.default.Ticks(e).toSeconds()), this.emit("start", t, e);
-            }.bind(this)
+            }.bind(this),
           ),
             this._clock.on(
               "stop",
               function (t) {
                 this.emit("stop", t);
-              }.bind(this)
+              }.bind(this),
             ),
             this._clock.on(
               "pause",
               function (t) {
                 this.emit("pause", t);
-              }.bind(this)
+              }.bind(this),
             );
         }),
         Object.defineProperty(s.default.Transport.prototype, "state", {
@@ -2261,7 +2263,7 @@
             set: function (t) {
               this._swingTicks = this.toTicks(t);
             },
-          }
+          },
         ),
         Object.defineProperty(s.default.Transport.prototype, "position", {
           get: function () {
@@ -2400,13 +2402,13 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "type"],
-          s.default.Oscillator
+          s.default.Oscillator,
         );
         s.default.Source.call(this, t),
           (this._oscillator = null),
           (this.frequency = new s.default.Signal(
             t.frequency,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.detune = new s.default.Signal(t.detune, s.default.Type.Cents)),
           (this._wave = null),
@@ -2635,12 +2637,12 @@
         var t = s.default.defaults(
           arguments,
           ["delayTime", "maxDelay"],
-          s.default.Delay
+          s.default.Delay,
         );
         s.default.AudioNode.call(this, t),
           (this._maxDelay = Math.max(
             this.toSeconds(t.maxDelay),
-            this.toSeconds(t.delayTime)
+            this.toSeconds(t.delayTime),
           )),
           (this._delayNode =
             this.input =
@@ -2758,19 +2760,19 @@
           ((t.context = new s.default.global.AudioContext()), !t.context)
         )
           throw new Error(
-            "could not create AudioContext. Possibly too many AudioContexts running already."
+            "could not create AudioContext. Possibly too many AudioContexts running already.",
           );
         for (this._context = t.context; this._context.rawContext; )
           this._context = this._context.rawContext;
         n.forEach(
           function (t) {
             this._defineProperty(this._context, t);
-          }.bind(this)
+          }.bind(this),
         ),
           o.forEach(
             function (t) {
               this._defineMethod(this._context, t);
-            }.bind(this)
+            }.bind(this),
           ),
           (this._latencyHint = t.latencyHint),
           (this._constants = {}),
@@ -2779,7 +2781,7 @@
           (this._ticker = new a(
             this.emit.bind(this, "tick"),
             t.clockSource,
-            t.updateInterval
+            t.updateInterval,
           )),
           (this._timeouts = new s.default.Timeline()),
           (this._timeoutIds = 0),
@@ -2838,7 +2840,7 @@
             t.then(
               function () {
                 s.default.Context.emit("close", this);
-              }.bind(this)
+              }.bind(this),
             )
           );
         }),
@@ -2848,7 +2850,7 @@
             var e = this._context.createBuffer(
                 1,
                 128,
-                this._context.sampleRate
+                this._context.sampleRate,
               ),
               i = e.getChannelData(0),
               s = 0;
@@ -2952,7 +2954,7 @@
               this._constants))
                 this._constants[t].disconnect();
               this._constants = null;
-            }.bind(this)
+            }.bind(this),
           );
         });
       var a = function (t, e, i) {
@@ -2984,7 +2986,7 @@
             function () {
               this._createTimeout(), this._callback();
             }.bind(this),
-            1e3 * this._updateInterval
+            1e3 * this._updateInterval,
           );
         }),
         (a.prototype._createClock = function () {
@@ -3077,7 +3079,7 @@
                 function (s) {
                   (t[e] = s), i.apply(this, t);
                 }.bind(this),
-                n
+                n,
               );
             this._scheduledEvents.push(o);
           }.bind(this);
@@ -3098,7 +3100,7 @@
           t,
           e,
           i,
-          s
+          s,
         ) {
           return (
             (i = this.toSeconds(i)),
@@ -3159,7 +3161,7 @@
           (this.b = this.input[1] = new s.default.Gain()),
           (this.fade = new s.default.Signal(
             s.default.defaultArg(t, 0.5),
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           (this._equalPowerA = new s.default.EqualPowerGain()),
           (this._equalPowerB = new s.default.EqualPowerGain()),
@@ -3302,7 +3304,7 @@
             this._timeline.slice(e, i + 1).forEach(
               function (e) {
                 t.call(this, e);
-              }.bind(this)
+              }.bind(this),
             );
         }),
         (s.default.Timeline.prototype.forEach = function (t) {
@@ -3342,7 +3344,7 @@
                   i.time === t && e.call(this, i);
                 },
                 0,
-                i
+                i,
               ),
             this
           );
@@ -3588,7 +3590,7 @@
         var t = s.default.defaults(
           arguments,
           ["buffer", "onload"],
-          s.default.BufferSource
+          s.default.BufferSource,
         );
         s.default.AudioNode.call(this, t),
           (this.onended = t.onended),
@@ -3647,7 +3649,7 @@
             this.assert(-1 === this._startTime, "can only be started once"),
             this.assert(
               this.buffer.loaded,
-              "buffer is either not set or not loaded"
+              "buffer is either not set or not loaded",
             ),
             this.assert(!this._sourceStopped, "source is already stopped"),
             (t = this.toSeconds(t)),
@@ -3688,7 +3690,7 @@
           this.log("stop", t),
             this.assert(
               this.buffer.loaded,
-              "buffer is either not set or not loaded"
+              "buffer is either not set or not loaded",
             ),
             this.assert(!this._sourceStopped, "source is already stopped"),
             (t = this.toSeconds(t)),
@@ -3705,7 +3707,7 @@
             s.default.context.clearTimeout(this._onendedTimeout),
             (this._onendedTimeout = s.default.context.setTimeout(
               this._onended.bind(this),
-              this._stopTime - this.now()
+              this._stopTime - this.now(),
             )),
             this
           );
@@ -3714,7 +3716,7 @@
           if (-1 !== this._startTime && !this._sourceStopped) {
             var t = this.toSeconds(this.fadeIn);
             this._gainNode.gain.cancelScheduledValues(
-              this._startTime + t + this.sampleTime
+              this._startTime + t + this.sampleTime,
             ),
               this.context.clearTimeout(this._onendedTimeout),
               (this._stopTime = -1);
@@ -3734,7 +3736,7 @@
                   this._source &&
                     (this._source.disconnect(), this._gainNode.disconnect());
                 }.bind(this),
-                1e3 * t + 100
+                1e3 * t + 100,
               );
           }
         }),
@@ -3800,12 +3802,12 @@
         var t = s.default.defaults(
           arguments,
           ["feedback"],
-          s.default.FeedbackEffect
+          s.default.FeedbackEffect,
         );
         s.default.Effect.call(this, t),
           (this._feedbackGain = new s.default.Gain(
             t.feedback,
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           (this.feedback = this._feedbackGain.gain),
           this.effectReturn.chain(this._feedbackGain, this.effectSend),
@@ -3936,7 +3938,7 @@
           var t = s.default.defaults(
             arguments,
             ["type", "size"],
-            s.default.Analyser
+            s.default.Analyser,
           );
           s.default.AudioNode.call(this),
             (this._analyser =
@@ -4011,12 +4013,12 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "type"],
-          s.default.OmniOscillator
+          s.default.OmniOscillator,
         );
         s.default.Source.call(this, t),
           (this.frequency = new s.default.Signal(
             t.frequency,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.detune = new s.default.Signal(t.detune, s.default.Type.Cents)),
           (this._sourceType = void 0),
@@ -4054,8 +4056,8 @@
               this._sourceType === r
                 ? (t = "fm")
                 : this._sourceType === l
-                ? (t = "am")
-                : this._sourceType === u && (t = "fat"),
+                  ? (t = "am")
+                  : this._sourceType === u && (t = "fat"),
               t + this._oscillator.type
             );
           },
@@ -4064,16 +4066,17 @@
               ? (this._createNewOscillator(r),
                 (this._oscillator.type = t.substr(2)))
               : "am" === t.substr(0, 2)
-              ? (this._createNewOscillator(l),
-                (this._oscillator.type = t.substr(2)))
-              : "fat" === t.substr(0, 3)
-              ? (this._createNewOscillator(u),
-                (this._oscillator.type = t.substr(3)))
-              : "pwm" === t
-              ? this._createNewOscillator(o)
-              : "pulse" === t
-              ? this._createNewOscillator(n)
-              : (this._createNewOscillator(a), (this._oscillator.type = t));
+                ? (this._createNewOscillator(l),
+                  (this._oscillator.type = t.substr(2)))
+                : "fat" === t.substr(0, 3)
+                  ? (this._createNewOscillator(u),
+                    (this._oscillator.type = t.substr(3)))
+                  : "pwm" === t
+                    ? this._createNewOscillator(o)
+                    : "pulse" === t
+                      ? this._createNewOscillator(n)
+                      : (this._createNewOscillator(a),
+                        (this._oscillator.type = t));
           },
         }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "partials", {
@@ -4094,7 +4097,7 @@
             set: function (t) {
               this._oscillator.partialCount = t;
             },
-          }
+          },
         ),
         (s.default.OmniOscillator.prototype.set = function (t, e) {
           return (
@@ -4112,7 +4115,7 @@
           return (e.type = this.type), e;
         }),
         (s.default.OmniOscillator.prototype._createNewOscillator = function (
-          t
+          t,
         ) {
           if (t !== this._sourceType) {
             this._sourceType = t;
@@ -4161,14 +4164,14 @@
             t === d.FMOscillator
               ? (this.type = "fm" + e)
               : t === d.AMOscillator
-              ? (this.type = "am" + e)
-              : t === d.FatOscillator
-              ? (this.type = "fat" + e)
-              : t === d.Oscillator
-              ? (this.type = e)
-              : t === d.PulseOscillator
-              ? (this.type = "pulse")
-              : t === d.PWMOscillator && (this.type = "pwm");
+                ? (this.type = "am" + e)
+                : t === d.FatOscillator
+                  ? (this.type = "fat" + e)
+                  : t === d.Oscillator
+                    ? (this.type = e)
+                    : t === d.PulseOscillator
+                      ? (this.type = "pulse")
+                      : t === d.PWMOscillator && (this.type = "pwm");
         },
       }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "baseType", {
@@ -4215,7 +4218,7 @@
               (this._sourceType !== r && this._sourceType !== l) ||
                 (this._oscillator.modulationType = t);
             },
-          }
+          },
         ),
         Object.defineProperty(
           s.default.OmniOscillator.prototype,
@@ -4226,7 +4229,7 @@
                 ? this._oscillator.modulationIndex
                 : void 0;
             },
-          }
+          },
         ),
         Object.defineProperty(
           s.default.OmniOscillator.prototype,
@@ -4237,7 +4240,7 @@
                 ? this._oscillator.harmonicity
                 : void 0;
             },
-          }
+          },
         ),
         Object.defineProperty(
           s.default.OmniOscillator.prototype,
@@ -4248,7 +4251,7 @@
                 ? this._oscillator.modulationFrequency
                 : void 0;
             },
-          }
+          },
         ),
         (s.default.OmniOscillator.prototype.dispose = function () {
           return (
@@ -4294,7 +4297,7 @@
               this.oscillator.stop(
                 t +
                   this.toSeconds(this.envelope.attack) +
-                  this.toSeconds(this.envelope.decay)
+                  this.toSeconds(this.envelope.decay),
               ),
             this
           );
@@ -4367,7 +4370,7 @@
             (this._source.playbackRate.value = this._playbackRate),
             this._source.start(
               this.toSeconds(t),
-              Math.random() * (e.duration - 0.001)
+              Math.random() * (e.duration - 0.001),
             );
         }),
         (s.default.Noise.prototype._stop = function (t) {
@@ -4466,10 +4469,10 @@
                 s.default.connectSeries(
                   this.input,
                   this.output,
-                  this.context.destination
+                  this.context.destination,
                 ),
                 (this.context.master = this);
-            }.bind(this)
+            }.bind(this),
           );
       }),
         s.default.extend(s.default.Master, s.default.AudioNode),
@@ -4521,7 +4524,7 @@
         var t = s.default.defaults(
           arguments,
           ["attack", "decay", "sustain", "release"],
-          s.default.Envelope
+          s.default.Envelope,
         );
         (t = s.default.defaultArg(t, s.default.FrequencyEnvelope.defaults)),
           s.default.ScaledEnvelope.call(this, t),
@@ -4547,7 +4550,7 @@
               (this._scale.min = this.toFrequency(t)),
                 (this.octaves = this._octaves);
             },
-          }
+          },
         ),
         Object.defineProperty(
           s.default.FrequencyEnvelope.prototype,
@@ -4560,7 +4563,7 @@
               (this._octaves = t),
                 (this._scale.max = this.baseFrequency * Math.pow(2, t));
             },
-          }
+          },
         ),
         Object.defineProperty(
           s.default.FrequencyEnvelope.prototype,
@@ -4572,7 +4575,7 @@
             set: function (t) {
               this._exp.value = t;
             },
-          }
+          },
         ),
         (s.default.FrequencyEnvelope.prototype.dispose = function () {
           return s.default.ScaledEnvelope.prototype.dispose.call(this), this;
@@ -4637,7 +4640,7 @@
         var t = s.default.defaults(
           arguments,
           ["threshold", "ratio"],
-          s.default.Compressor
+          s.default.Compressor,
         );
         s.default.AudioNode.call(this),
           (this._compressor =
@@ -4651,11 +4654,11 @@
           })),
           (this.attack = new s.default.Param(
             this._compressor.attack,
-            s.default.Type.Time
+            s.default.Type.Time,
           )),
           (this.release = new s.default.Param(
             this._compressor.release,
-            s.default.Type.Time
+            s.default.Type.Time,
           )),
           (this.knee = new s.default.Param({
             param: this._compressor.knee,
@@ -4751,7 +4754,7 @@
             return new Promise(
               function (e, i) {
                 this._native_decodeAudioData(t, e, i);
-              }.bind(this)
+              }.bind(this),
             );
           }));
       }
@@ -4812,7 +4815,7 @@
                   t &&
                     "0" !== t &&
                     (s *= this._beatsToUnits(
-                      this._getTimeSignature() * parseFloat(t)
+                      this._getTimeSignature() * parseFloat(t),
                     )),
                   e && "0" !== e && (s *= this._beatsToUnits(parseFloat(e))),
                   i &&
@@ -4822,18 +4825,18 @@
                 );
               },
             },
-          }
+          },
         )),
         (s.default.Frequency.prototype.transpose = function (t) {
           return new this.constructor(
-            this.valueOf() * s.default.intervalToFrequencyRatio(t)
+            this.valueOf() * s.default.intervalToFrequencyRatio(t),
           );
         }),
         (s.default.Frequency.prototype.harmonize = function (t) {
           return t.map(
             function (t) {
               return this.transpose(t);
-            }.bind(this)
+            }.bind(this),
           );
         }),
         (s.default.Frequency.prototype.toMidi = function () {
@@ -4933,7 +4936,7 @@
         var t = s.default.defaults(
           arguments,
           ["attack", "decay", "sustain", "release"],
-          s.default.Envelope
+          s.default.Envelope,
         );
         s.default.AudioNode.call(this),
           (this.attack = t.attack),
@@ -5060,7 +5063,7 @@
         (s.default.Envelope.prototype.triggerAttackRelease = function (
           t,
           e,
-          i
+          i,
         ) {
           return (
             (e = this.toSeconds(e)),
@@ -5203,13 +5206,13 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "modulationType"],
-          s.default.FMOscillator
+          s.default.FMOscillator,
         );
         s.default.Source.call(this, t),
           (this._carrier = new s.default.Oscillator(t.frequency, t.type)),
           (this.frequency = new s.default.Signal(
             t.frequency,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.detune = this._carrier.detune),
           (this.detune.value = t.detune),
@@ -5217,7 +5220,7 @@
           (this.modulationIndex.units = s.default.Type.Positive),
           (this._modulator = new s.default.Oscillator(
             t.frequency,
-            t.modulationType
+            t.modulationType,
           )),
           (this.harmonicity = new s.default.Multiply(t.harmonicity)),
           (this.harmonicity.units = s.default.Type.Positive),
@@ -5282,7 +5285,7 @@
             set: function (t) {
               this._carrier.partialCount = t;
             },
-          }
+          },
         ),
         Object.defineProperty(
           s.default.FMOscillator.prototype,
@@ -5294,7 +5297,7 @@
             set: function (t) {
               this._modulator.type = t;
             },
-          }
+          },
         ),
         Object.defineProperty(s.default.FMOscillator.prototype, "phase", {
           get: function () {
@@ -5348,12 +5351,12 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "width"],
-          s.default.Oscillator
+          s.default.Oscillator,
         );
         s.default.Source.call(this, t),
           (this.width = new s.default.Signal(
             t.width,
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           (this._widthGate = new s.default.Gain(0)),
           (this._sawtooth = new s.default.Oscillator({
@@ -5444,7 +5447,7 @@
         var t = s.default.defaults(
           arguments,
           ["callback", "value"],
-          s.default.Event
+          s.default.Event,
         );
         s.default.call(this),
           (this._loop = t.loop),
@@ -5495,7 +5498,7 @@
                       e !== 1 / 0 &&
                         (this._state.setStateAtTime(
                           s.default.State.Stopped,
-                          i + e + 1
+                          i + e + 1,
                         ),
                         (e = s.default.Ticks(e)));
                     var o = s.default.Ticks(this._getLoopDuration());
@@ -5503,15 +5506,15 @@
                       this._tick.bind(this),
                       o,
                       s.default.Ticks(i),
-                      e
+                      e,
                     );
                   } else
                     t.id = s.default.Transport.schedule(
                       this._tick.bind(this),
-                      s.default.Ticks(i)
+                      s.default.Ticks(i),
                     );
                 }
-              }.bind(this)
+              }.bind(this),
             ),
             this
           );
@@ -5601,7 +5604,7 @@
         }),
         (s.default.Event.prototype._getLoopDuration = function () {
           return Math.round(
-            (this._loopEnd - this._loopStart) / this._playbackRate
+            (this._loopEnd - this._loopStart) / this._playbackRate,
           );
         }),
         Object.defineProperty(s.default.Event.prototype, "loop", {
@@ -5756,7 +5759,7 @@
         var t = s.default.defaults(
           arguments,
           ["delayTime", "resonance", "dampening"],
-          s.default.LowpassCombFilter
+          s.default.LowpassCombFilter,
         );
         s.default.AudioNode.call(this),
           (this._combFilter = this.output =
@@ -5873,7 +5876,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency"],
-          s.default.TickSource
+          s.default.TickSource,
         );
         (this.frequency = new s.default.TickSignal(t.frequency)),
           this._readOnly("frequency"),
@@ -5951,7 +5954,7 @@
                       this.frequency.getTicksAtTime(t.time) -
                       this.frequency.getTicksAtTime(e)),
                   (n = t);
-              }.bind(this)
+              }.bind(this),
             ),
             this._state.remove(i),
             o
@@ -5994,7 +5997,7 @@
                     t.state !== s.default.State.Started &&
                     (o += t.time - e),
                   (n = t);
-              }.bind(this)
+              }.bind(this),
             ),
             this._state.remove(i),
             o
@@ -6026,7 +6029,7 @@
         (s.default.TickSource.prototype.forEachTickBetween = function (
           t,
           e,
-          i
+          i,
         ) {
           var n = this._state.get(t);
           if (
@@ -6039,10 +6042,10 @@
                   this.forEachTickBetween(
                     Math.max(n.time, t),
                     e.time - this.sampleTime,
-                    i
+                    i,
                   ),
                   (n = e);
-              }.bind(this)
+              }.bind(this),
             ),
             (t = Math.max(n.time, t)),
             n.state === s.default.State.Started && this._state)
@@ -6091,7 +6094,7 @@
         var t = s.default.defaults(
           arguments,
           ["smoothing"],
-          s.default.Follower
+          s.default.Follower,
         );
         s.default.AudioNode.call(this),
           this.createInsOuts(1, 1),
@@ -6147,7 +6150,7 @@
         var t = s.default.defaults(
           arguments,
           ["delayTime", "resonance"],
-          s.default.FeedbackCombFilter
+          s.default.FeedbackCombFilter,
         );
         s.default.AudioNode.call(this),
           (this._delay =
@@ -6157,7 +6160,7 @@
           (this.delayTime = this._delay.delayTime),
           (this._feedback = new s.default.Gain(
             t.resonance,
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           (this.resonance = this._feedback.gain),
           this._delay.chain(this._feedback, this._delay),
@@ -6192,7 +6195,7 @@
         var t = s.default.defaults(
           arguments,
           ["lowFrequency", "highFrequency"],
-          s.default.MultibandSplit
+          s.default.MultibandSplit,
         );
         s.default.AudioNode.call(this),
           (this.input = new s.default.Gain()),
@@ -6203,11 +6206,11 @@
           (this.high = this.output[2] = new s.default.Filter(0, "highpass")),
           (this.lowFrequency = new s.default.Signal(
             t.lowFrequency,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.highFrequency = new s.default.Signal(
             t.highFrequency,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.Q = new s.default.Signal(t.Q)),
           this.input.fan(this.low, this.high),
@@ -6335,7 +6338,7 @@
               break;
             default:
               throw new Error(
-                "Unrecognized default units " + this._defaultUnits
+                "Unrecognized default units " + this._defaultUnits,
               );
           }
       }),
@@ -6385,7 +6388,7 @@
                 t &&
                   "0" !== t &&
                   (s += this._beatsToUnits(
-                    this._getTimeSignature() * parseFloat(t)
+                    this._getTimeSignature() * parseFloat(t),
                   )),
                 e && "0" !== e && (s += this._beatsToUnits(parseFloat(e))),
                 i && "0" !== i && (s += this._beatsToUnits(parseFloat(i) / 4)),
@@ -6502,7 +6505,7 @@
                 if (s.default.Transport) {
                   var e = new this.constructor(t);
                   return this._secondsToUnits(
-                    s.default.Transport.nextSubdivision(e)
+                    s.default.Transport.nextSubdivision(e),
                   );
                 }
                 return 0;
@@ -6514,7 +6517,7 @@
                 return this._now() + new this.constructor(t);
               },
             },
-          }
+          },
         )),
         (s.default.Time.prototype.quantize = function (t, e) {
           e = s.default.defaultArg(e, 1);
@@ -6580,7 +6583,7 @@
           var t = s.default.defaults(
             arguments,
             ["frequency", "type"],
-            s.default.OscillatorNode
+            s.default.OscillatorNode,
           );
           s.default.AudioNode.call(this, t),
             (this.onended = t.onended),
@@ -6631,7 +6634,7 @@
             (this._startTime = this.toSeconds(t)),
             (this._startTime = Math.max(
               this._startTime,
-              this.context.currentTime
+              this.context.currentTime,
             )),
             this._oscillator.start(this._startTime),
             this._gainNode.gain.setValueAtTime(1, this._startTime),
@@ -6646,13 +6649,13 @@
             this.log("stop", t),
             this.assert(
               -1 !== this._startTime,
-              "'start' must be called before 'stop'"
+              "'start' must be called before 'stop'",
             ),
             this.cancelStop(),
             (this._stopTime = this.toSeconds(t)),
             (this._stopTime = Math.max(
               this._stopTime,
-              this.context.currentTime
+              this.context.currentTime,
             )),
             this._stopTime > this._startTime
               ? (this._gainNode.gain.setValueAtTime(0, this._stopTime),
@@ -6667,10 +6670,10 @@
                             (this._oscillator.disconnect(),
                             this._gainNode.disconnect());
                         }.bind(this),
-                        100
+                        100,
                       );
                   }.bind(this),
-                  this._stopTime - this.context.currentTime
+                  this._stopTime - this.context.currentTime,
                 )))
               : this._gainNode.gain.cancelScheduledValues(this._startTime),
             this
@@ -6680,7 +6683,7 @@
           return (
             -1 !== this._startTime &&
               (this._gainNode.gain.cancelScheduledValues(
-                this._startTime + this.sampleTime
+                this._startTime + this.sampleTime,
               ),
               this.context.clearTimeout(this._timeout),
               (this._stopTime = -1)),
@@ -6727,7 +6730,7 @@
           : (e = s.default.defaults(
               arguments,
               ["url", "onload"],
-              s.default.Player
+              s.default.Player,
             )),
           s.default.Source.call(this, e),
           (this.autostart = e.autostart),
@@ -6771,7 +6774,7 @@
               this._synced ||
               this._state.setStateAtTime(
                 s.default.State.Stopped,
-                s.default.now()
+                s.default.now(),
               );
         }),
         (s.default.Player.prototype._start = function (t, e, i) {
@@ -6782,7 +6785,7 @@
             this._synced && (e *= this._playbackRate);
           var n = s.default.defaultArg(
             i,
-            Math.max(this._buffer.duration - e, 0)
+            Math.max(this._buffer.duration - e, 0),
           );
           (n = this.toSeconds(n)),
             (n /= this._playbackRate),
@@ -6876,7 +6879,7 @@
             ) {
               var e = this._state.getNextState(
                 s.default.State.Stopped,
-                this.now()
+                this.now(),
               );
               e && this._state.cancel(e.time);
             }
@@ -6937,7 +6940,7 @@
           (this.filter = new s.default.Filter(t.filter)),
           (this.filter.frequency.value = 5e3),
           (this.filterEnvelope = new s.default.FrequencyEnvelope(
-            t.filterEnvelope
+            t.filterEnvelope,
           )),
           (this.envelope = new s.default.AmplitudeEnvelope(t.envelope)),
           this.oscillator.chain(this.filter, this.envelope, this.output),
@@ -6970,7 +6973,7 @@
         }),
         (s.default.MonoSynth.prototype._triggerEnvelopeAttack = function (
           t,
-          e
+          e,
         ) {
           return (
             (t = this.toSeconds(t)),
@@ -6979,7 +6982,7 @@
             this.oscillator.start(t),
             0 === this.envelope.sustain &&
               this.oscillator.stop(
-                t + this.envelope.attack + this.envelope.decay
+                t + this.envelope.attack + this.envelope.decay,
               ),
             this
           );
@@ -7027,12 +7030,12 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "spread"],
-          s.default.FatOscillator
+          s.default.FatOscillator,
         );
         s.default.Source.call(this, t),
           (this.frequency = new s.default.Signal(
             t.frequency,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.detune = new s.default.Signal(t.detune, s.default.Type.Cents)),
           (this._oscillators = []),
@@ -7181,7 +7184,7 @@
                 }),
                 (this._type = this._oscillators[0].type);
             },
-          }
+          },
         ),
         (s.default.FatOscillator.prototype.dispose = function () {
           return (
@@ -7210,7 +7213,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "modulationType"],
-          s.default.AMOscillator
+          s.default.AMOscillator,
         );
         s.default.Source.call(this, t),
           (this._carrier = new s.default.Oscillator(t.frequency, t.type)),
@@ -7219,7 +7222,7 @@
           (this.detune.value = t.detune),
           (this._modulator = new s.default.Oscillator(
             t.frequency,
-            t.modulationType
+            t.modulationType,
           )),
           (this._modulationScale = new s.default.AudioToGain()),
           (this.harmonicity = new s.default.Multiply(t.harmonicity)),
@@ -7229,7 +7232,7 @@
           this.detune.connect(this._modulator.detune),
           this._modulator.chain(
             this._modulationScale,
-            this._modulationNode.gain
+            this._modulationNode.gain,
           ),
           this._carrier.chain(this._modulationNode, this.output),
           (this.phase = t.phase),
@@ -7279,7 +7282,7 @@
             set: function (t) {
               this._carrier.partialCount = t;
             },
-          }
+          },
         ),
         Object.defineProperty(
           s.default.AMOscillator.prototype,
@@ -7291,7 +7294,7 @@
             set: function (t) {
               this._modulator.type = t;
             },
-          }
+          },
         ),
         Object.defineProperty(s.default.AMOscillator.prototype, "phase", {
           get: function () {
@@ -7339,7 +7342,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "modulationFrequency"],
-          s.default.PWMOscillator
+          s.default.PWMOscillator,
         );
         s.default.Source.call(this, t),
           (this._pulse = new s.default.PulseOscillator(t.modulationFrequency)),
@@ -7425,7 +7428,7 @@
         var t = s.default.defaults(
           arguments,
           ["callback", "events"],
-          s.default.Part
+          s.default.Part,
         );
         s.default.Event.call(this, t), (this._events = []);
         for (var e = 0; e < t.events.length; e++)
@@ -7544,7 +7547,7 @@
               e.state === s.default.State.Started
                 ? this._startNote(t, e.time, e.offset)
                 : t.stop(s.default.Ticks(e.time));
-            }.bind(this)
+            }.bind(this),
           );
         }),
         (s.default.Part.prototype.remove = function (t, e) {
@@ -7687,7 +7690,7 @@
         var t = s.default.defaults(
           arguments,
           ["callback", "interval"],
-          s.default.Loop
+          s.default.Loop,
         );
         s.default.call(this),
           (this._event = new s.default.Event({
@@ -7793,12 +7796,12 @@
         var t = s.default.defaults(
           arguments,
           ["feedback"],
-          s.default.FeedbackEffect
+          s.default.FeedbackEffect,
         );
         s.default.StereoEffect.call(this, t),
           (this.feedback = new s.default.Signal(
             t.feedback,
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           (this._feedbackLR = new s.default.Gain()),
           (this._feedbackRL = new s.default.Gain()),
@@ -7809,7 +7812,7 @@
       }),
         s.default.extend(
           s.default.StereoXFeedbackEffect,
-          s.default.StereoEffect
+          s.default.StereoEffect,
         ),
         (s.default.StereoXFeedbackEffect.prototype.dispose = function () {
           return (
@@ -7868,7 +7871,7 @@
         var t = s.default.defaults(
           arguments,
           ["url", "onload"],
-          s.default.Convolver
+          s.default.Convolver,
         );
         s.default.Effect.call(this, t),
           (this._convolver = this.context.createConvolver()),
@@ -7876,7 +7879,7 @@
             t.url,
             function (e) {
               (this.buffer = e.get()), t.onload();
-            }.bind(this)
+            }.bind(this),
           )),
           this._buffer.loaded && (this.buffer = this._buffer),
           (this.normalize = t.normalize),
@@ -7914,7 +7917,7 @@
             t,
             function (t) {
               (this.buffer = t), e && e();
-            }.bind(this)
+            }.bind(this),
           );
         }),
         (s.default.Convolver.prototype.dispose = function () {
@@ -8083,9 +8086,12 @@
             e instanceof s.default.Buffer
               ? ((this._buffers[t] = e), i(this))
               : e instanceof AudioBuffer
-              ? ((this._buffers[t] = new s.default.Buffer(e)), i(this))
-              : s.default.isString(e) &&
-                (this._buffers[t] = new s.default.Buffer(this.baseUrl + e, i)),
+                ? ((this._buffers[t] = new s.default.Buffer(e)), i(this))
+                : s.default.isString(e) &&
+                  (this._buffers[t] = new s.default.Buffer(
+                    this.baseUrl + e,
+                    i,
+                  )),
             this
           );
         }),
@@ -8104,7 +8110,7 @@
         var t = s.default.defaults(
           arguments,
           ["values", "type"],
-          s.default.CtrlPattern
+          s.default.CtrlPattern,
         );
         s.default.call(this),
           (this.values = t.values),
@@ -8181,48 +8187,59 @@
               ? (this.index++,
                 this.index >= this.values.length && (this.index = 0))
               : t === s.default.CtrlPattern.Type.Down
-              ? (this.index--,
-                this.index < 0 && (this.index = this.values.length - 1))
-              : t === s.default.CtrlPattern.Type.UpDown ||
-                t === s.default.CtrlPattern.Type.DownUp
-              ? (this._direction === s.default.CtrlPattern.Type.Up
-                  ? this.index++
-                  : this.index--,
-                this.index < 0
-                  ? ((this.index = 1),
-                    (this._direction = s.default.CtrlPattern.Type.Up))
-                  : this.index >= this.values.length &&
-                    ((this.index = this.values.length - 2),
-                    (this._direction = s.default.CtrlPattern.Type.Down)))
-              : t === s.default.CtrlPattern.Type.Random
-              ? (this.index = Math.floor(Math.random() * this.values.length))
-              : t === s.default.CtrlPattern.Type.RandomWalk
-              ? Math.random() < 0.5
-                ? (this.index--, (this.index = Math.max(this.index, 0)))
-                : (this.index++,
-                  (this.index = Math.min(this.index, this.values.length - 1)))
-              : t === s.default.CtrlPattern.Type.RandomOnce
-              ? (this.index++,
-                this.index >= this.values.length &&
-                  ((this.index = 0), this._shuffleValues()))
-              : t === s.default.CtrlPattern.Type.AlternateUp
-              ? (this._direction === s.default.CtrlPattern.Type.Up
-                  ? ((this.index += 2),
-                    (this._direction = s.default.CtrlPattern.Type.Down))
-                  : ((this.index -= 1),
-                    (this._direction = s.default.CtrlPattern.Type.Up)),
-                this.index >= this.values.length &&
-                  ((this.index = 0),
-                  (this._direction = s.default.CtrlPattern.Type.Up)))
-              : t === s.default.CtrlPattern.Type.AlternateDown &&
-                (this._direction === s.default.CtrlPattern.Type.Up
-                  ? ((this.index += 1),
-                    (this._direction = s.default.CtrlPattern.Type.Down))
-                  : ((this.index -= 2),
-                    (this._direction = s.default.CtrlPattern.Type.Up)),
-                this.index < 0 &&
-                  ((this.index = this.values.length - 1),
-                  (this._direction = s.default.CtrlPattern.Type.Down))),
+                ? (this.index--,
+                  this.index < 0 && (this.index = this.values.length - 1))
+                : t === s.default.CtrlPattern.Type.UpDown ||
+                    t === s.default.CtrlPattern.Type.DownUp
+                  ? (this._direction === s.default.CtrlPattern.Type.Up
+                      ? this.index++
+                      : this.index--,
+                    this.index < 0
+                      ? ((this.index = 1),
+                        (this._direction = s.default.CtrlPattern.Type.Up))
+                      : this.index >= this.values.length &&
+                        ((this.index = this.values.length - 2),
+                        (this._direction = s.default.CtrlPattern.Type.Down)))
+                  : t === s.default.CtrlPattern.Type.Random
+                    ? (this.index = Math.floor(
+                        Math.random() * this.values.length,
+                      ))
+                    : t === s.default.CtrlPattern.Type.RandomWalk
+                      ? Math.random() < 0.5
+                        ? (this.index--, (this.index = Math.max(this.index, 0)))
+                        : (this.index++,
+                          (this.index = Math.min(
+                            this.index,
+                            this.values.length - 1,
+                          )))
+                      : t === s.default.CtrlPattern.Type.RandomOnce
+                        ? (this.index++,
+                          this.index >= this.values.length &&
+                            ((this.index = 0), this._shuffleValues()))
+                        : t === s.default.CtrlPattern.Type.AlternateUp
+                          ? (this._direction === s.default.CtrlPattern.Type.Up
+                              ? ((this.index += 2),
+                                (this._direction =
+                                  s.default.CtrlPattern.Type.Down))
+                              : ((this.index -= 1),
+                                (this._direction =
+                                  s.default.CtrlPattern.Type.Up)),
+                            this.index >= this.values.length &&
+                              ((this.index = 0),
+                              (this._direction =
+                                s.default.CtrlPattern.Type.Up)))
+                          : t === s.default.CtrlPattern.Type.AlternateDown &&
+                            (this._direction === s.default.CtrlPattern.Type.Up
+                              ? ((this.index += 1),
+                                (this._direction =
+                                  s.default.CtrlPattern.Type.Down))
+                              : ((this.index -= 2),
+                                (this._direction =
+                                  s.default.CtrlPattern.Type.Up)),
+                            this.index < 0 &&
+                              ((this.index = this.values.length - 1),
+                              (this._direction =
+                                s.default.CtrlPattern.Type.Down))),
             this.value
           );
         }),
@@ -8249,7 +8266,7 @@
         s.default.TransportEvent.call(this, t, e),
           (e = s.default.defaultArg(
             e,
-            s.default.TransportRepeatEvent.defaults
+            s.default.TransportRepeatEvent.defaults,
           )),
           (this.duration = s.default.Ticks(e.duration)),
           (this._interval = s.default.Ticks(e.interval)),
@@ -8262,7 +8279,7 @@
       }),
         s.default.extend(
           s.default.TransportRepeatEvent,
-          s.default.TransportEvent
+          s.default.TransportEvent,
         ),
         (s.default.TransportRepeatEvent.defaults = {
           duration: 1 / 0,
@@ -8281,7 +8298,7 @@
             (this._currentId = this._nextId),
             (this._nextId = this.Transport.scheduleOnce(
               this.invoke.bind(this),
-              s.default.Ticks(this._nextTick)
+              s.default.Ticks(this._nextTick),
             )));
         }),
         (s.default.TransportRepeatEvent.prototype._restart = function (t) {
@@ -8295,12 +8312,12 @@
               Math.ceil((e - this.time) / this._interval) * this._interval),
             (this._currentId = this.Transport.scheduleOnce(
               this.invoke.bind(this),
-              s.default.Ticks(this._nextTick)
+              s.default.Ticks(this._nextTick),
             )),
             (this._nextTick += this._interval),
             (this._nextId = this.Transport.scheduleOnce(
               this.invoke.bind(this),
-              s.default.Ticks(this._nextTick)
+              s.default.Ticks(this._nextTick),
             ));
         }),
         (s.default.TransportRepeatEvent.prototype.dispose = function () {
@@ -8329,7 +8346,7 @@
         (s.default.IntervalTimeline.prototype.add = function (t) {
           if (s.default.isUndef(t.time) || s.default.isUndef(t.duration))
             throw new Error(
-              "Tone.IntervalTimeline: events must have time and duration parameters"
+              "Tone.IntervalTimeline: events must have time and duration parameters",
             );
           t.time = t.time.valueOf();
           var e = new n(t.time, t.time + t.duration, t);
@@ -8367,7 +8384,7 @@
               t,
               function (t) {
                 this.remove(t);
-              }.bind(this)
+              }.bind(this),
             ),
             this
           );
@@ -8377,7 +8394,7 @@
         }),
         (s.default.IntervalTimeline.prototype._replaceNodeInParent = function (
           t,
-          e
+          e,
         ) {
           null !== t.parent
             ? (t.isLeftChild() ? (t.parent.left = e) : (t.parent.right = e),
@@ -8516,8 +8533,8 @@
             ? (this.left = t)
             : this.left.insert(t)
           : null === this.right
-          ? (this.right = t)
-          : this.right.insert(t);
+            ? (this.right = t)
+            : this.right.insert(t);
       }),
         (n.prototype.search = function (t, e) {
           t > this.max ||
@@ -8539,10 +8556,10 @@
           null !== this.left && null !== this.right
             ? (this.height = Math.max(this.left.height, this.right.height) + 1)
             : null !== this.right
-            ? (this.height = this.right.height + 1)
-            : null !== this.left
-            ? (this.height = this.left.height + 1)
-            : (this.height = 0);
+              ? (this.height = this.right.height + 1)
+              : null !== this.left
+                ? (this.height = this.left.height + 1)
+                : (this.height = 0);
         }),
         (n.prototype.updateMax = function () {
           (this.max = this.high),
@@ -8557,8 +8574,8 @@
             null !== this.left && null !== this.right
               ? (t = this.left.height - this.right.height)
               : null !== this.left
-              ? (t = this.left.height + 1)
-              : null !== this.right && (t = -(this.right.height + 1)),
+                ? (t = this.left.height + 1)
+                : null !== this.right && (t = -(this.right.height + 1)),
             t
           );
         }),
@@ -8625,10 +8642,10 @@
       }),
         s.default.extend(s.default.TickSignal, s.default.Signal),
         (s.default.TickSignal.prototype.setValueAtTime = n(
-          s.default.Signal.prototype.setValueAtTime
+          s.default.Signal.prototype.setValueAtTime,
         )),
         (s.default.TickSignal.prototype.linearRampToValueAtTime = n(
-          s.default.Signal.prototype.linearRampToValueAtTime
+          s.default.Signal.prototype.linearRampToValueAtTime,
         )),
         (s.default.TickSignal.prototype.setTargetAtTime = function (t, e, i) {
           (e = this.toSeconds(e)),
@@ -8735,7 +8752,7 @@
         var t = s.default.defaults(
           arguments,
           ["callback", "frequency"],
-          s.default.Clock
+          s.default.Clock,
         );
         s.default.Emitter.call(this),
           (this.callback = t.callback),
@@ -8837,14 +8854,14 @@
                     case s.default.State.Paused:
                       this.emit("pause", t.time);
                   }
-                }.bind(this)
+                }.bind(this),
               ),
               this._tickSource.forEachTickBetween(
                 t,
                 e,
                 function (t, e) {
                   this.callback(t, e);
-                }.bind(this)
+                }.bind(this),
               ));
         }),
         (s.default.Clock.prototype.getStateAtTime = function (t) {
@@ -8925,7 +8942,7 @@
         var t = s.default.defaults(
           arguments,
           ["attack", "decay", "sustain", "release"],
-          s.default.Envelope
+          s.default.Envelope,
         );
         s.default.Envelope.call(this, t),
           (t = s.default.defaultArg(t, s.default.ScaledEnvelope.defaults)),
@@ -9053,8 +9070,8 @@
           this._isSoloed()
             ? (this.input.gain.value = 1)
             : this._noSolos()
-            ? (this.input.gain.value = 1)
-            : (this.input.gain.value = 0);
+              ? (this.input.gain.value = 1)
+              : (this.input.gain.value = 0);
         }),
         (s.default.Solo.prototype.dispose = function () {
           return (
@@ -9081,7 +9098,7 @@
                 function (t) {
                   return Math.abs(t) < 0.001 ? 0 : s.default.equalPowerScale(t);
                 }.bind(this),
-                4096
+                4096,
               ));
       }),
         s.default.extend(s.default.EqualPowerGain, s.default.SignalBase),
@@ -9127,7 +9144,7 @@
         var t = s.default.defaults(
           arguments,
           ["pan", "volume"],
-          s.default.PanVol
+          s.default.PanVol,
         );
         s.default.AudioNode.call(this),
           (this._panner = this.input = new s.default.Panner(t.pan)),
@@ -9182,7 +9199,7 @@
                   t(e.renderedBuffer);
                 }),
                   this._native_startRendering();
-              }.bind(this)
+              }.bind(this),
             );
           }));
       }
@@ -9204,22 +9221,22 @@
         (s.default.Midi.prototype._defaultUnits = "midi"),
         (s.default.Midi.prototype._frequencyToUnits = function (t) {
           return s.default.Frequency.ftom(
-            s.default.Frequency.prototype._frequencyToUnits.call(this, t)
+            s.default.Frequency.prototype._frequencyToUnits.call(this, t),
           );
         }),
         (s.default.Midi.prototype._ticksToUnits = function (t) {
           return s.default.Frequency.ftom(
-            s.default.Frequency.prototype._ticksToUnits.call(this, t)
+            s.default.Frequency.prototype._ticksToUnits.call(this, t),
           );
         }),
         (s.default.Midi.prototype._beatsToUnits = function (t) {
           return s.default.Frequency.ftom(
-            s.default.Frequency.prototype._beatsToUnits.call(this, t)
+            s.default.Frequency.prototype._beatsToUnits.call(this, t),
           );
         }),
         (s.default.Midi.prototype._secondsToUnits = function (t) {
           return s.default.Frequency.ftom(
-            s.default.Frequency.prototype._secondsToUnits.call(this, t)
+            s.default.Frequency.prototype._secondsToUnits.call(this, t),
           );
         }),
         (s.default.Midi.prototype.toMidi = function () {
@@ -9288,10 +9305,10 @@
                           s.default.connect(this._mediaStream, this.output)),
                         this
                       );
-                    }.bind(this)
+                    }.bind(this),
                   )
                 );
-              }.bind(this)
+              }.bind(this),
             )
           );
         }),
@@ -9467,7 +9484,7 @@
         (s.default.Players.prototype.add = function (t, e, i) {
           return (
             (this._players[t] = new s.default.Player(e, i).connect(
-              this.output
+              this.output,
             )),
             (this._players[t].fadeIn = this._fadeIn),
             (this._players[t].fadeOut = this._fadeOut),
@@ -9505,16 +9522,16 @@
         var t = s.default.defaults(
           arguments,
           ["url", "onload"],
-          s.default.GrainPlayer
+          s.default.GrainPlayer,
         );
         s.default.Source.call(this, t),
           (this.buffer = new s.default.Buffer(
             t.url,
-            t.onload.bind(void 0, this)
+            t.onload.bind(void 0, this),
           )),
           (this._clock = new s.default.Clock(
             this._tick.bind(this),
-            t.grainSize
+            t.grainSize,
           )),
           (this._loopStart = 0),
           (this._loopEnd = 0),
@@ -9572,7 +9589,7 @@
                 loopStart: this._loopStart,
                 loopEnd: this._loopEnd,
                 playbackRate: s.default.intervalToFrequencyRatio(
-                  this.detune / 100
+                  this.detune / 100,
                 ),
               }).connect(this.output);
             i.start(t, this._offset),
@@ -9668,7 +9685,7 @@
           (this._lastVal = this.value),
           (this._synced = s.default.Transport.scheduleRepeat(
             this._onTick.bind(this),
-            "1i"
+            "1i",
           )),
           (this._bindAnchorValue = this._anchorValue.bind(this)),
           s.default.Transport.on("start stop pause", this._bindAnchorValue),
@@ -9682,7 +9699,7 @@
             this._outputSig.linearRampToValueAtTime(e, t));
         }),
         (s.default.TransportTimelineSignal.prototype._anchorValue = function (
-          t
+          t,
         ) {
           var e = this.getValueAtTime(s.default.Transport.seconds);
           return (
@@ -9693,7 +9710,7 @@
           );
         }),
         (s.default.TransportTimelineSignal.prototype.getValueAtTime = function (
-          t
+          t,
         ) {
           return (
             (t = s.default.TransportTime(t)),
@@ -9702,7 +9719,7 @@
         }),
         (s.default.TransportTimelineSignal.prototype.setValueAtTime = function (
           t,
-          e
+          e,
         ) {
           return (
             (e = s.default.TransportTime(e)),
@@ -9717,7 +9734,7 @@
               s.default.Signal.prototype.linearRampToValueAtTime.call(
                 this,
                 t,
-                e
+                e,
               ),
               this
             );
@@ -9729,7 +9746,7 @@
               s.default.Signal.prototype.exponentialRampToValueAtTime.call(
                 this,
                 t,
-                e
+                e,
               ),
               this
             );
@@ -9760,7 +9777,7 @@
                 t,
                 e,
                 i,
-                n
+                n,
               ),
               this
             );
@@ -9769,7 +9786,7 @@
           function (t) {
             return s.default.Signal.prototype.cancelAndHoldAtTime.call(
               this,
-              s.default.TransportTime(t)
+              s.default.TransportTime(t),
             );
           }),
         (s.default.TransportTimelineSignal.prototype.dispose = function () {
@@ -9871,7 +9888,7 @@
           } else {
             if (isNaN(parseFloat(o)))
               throw new Error(
-                "Tone.Sampler: url keys must be the note's pitch"
+                "Tone.Sampler: url keys must be the note's pitch",
               );
             n[o] = t[o];
           }
@@ -9957,7 +9974,7 @@
           t,
           e,
           i,
-          n
+          n,
         ) {
           if (
             ((i = this.toSeconds(i)),
@@ -9978,7 +9995,7 @@
           } else {
             if (isNaN(parseFloat(t)))
               throw new Error(
-                "Tone.Sampler: note must be the note's pitch. Instead got " + t
+                "Tone.Sampler: note must be the note's pitch. Instead got " + t,
               );
             this._buffers.add(t, e, i);
           }
@@ -10009,15 +10026,15 @@
         var t = s.default.defaults(
           arguments,
           ["polyphony", "voice"],
-          s.default.PolySynth
+          s.default.PolySynth,
         );
         s.default.Instrument.call(this, t),
           ((t = s.default.defaultArg(
             t,
-            s.default.Instrument.defaults
+            s.default.Instrument.defaults,
           )).polyphony = Math.min(
             s.default.PolySynth.MAX_POLYPHONY,
-            t.polyphony
+            t.polyphony,
           )),
           (this.voices = new Array(t.polyphony)),
           this.assert(t.polyphony > 0, "polyphony must be greater than 0"),
@@ -10027,7 +10044,7 @@
           var i = new t.voice(arguments[2], arguments[3]);
           if (!(i instanceof s.default.Monophonic))
             throw new Error(
-              "Synth constructor must be instance of Tone.Monophonic"
+              "Synth constructor must be instance of Tone.Monophonic",
             );
           (this.voices[e] = i),
             (i.index = e),
@@ -10058,7 +10075,7 @@
                 var s = e.getLevelAtTime(t + this.blockTime),
                   n = i.getLevelAtTime(t + this.blockTime);
                 return s < 1e-5 && (s = 0), n < 1e-5 && (n = 0), s - n;
-              }.bind(this)
+              }.bind(this),
             )[0]
           );
         }),
@@ -10070,7 +10087,7 @@
               function (t) {
                 var s = this._getClosestVoice(e, t);
                 s.triggerAttack(t, e, i), this.log("triggerAttack", s.index, t);
-              }.bind(this)
+              }.bind(this),
             ),
             this
           );
@@ -10083,7 +10100,7 @@
               function (t) {
                 var i = this._getClosestVoice(e, t);
                 this.log("triggerRelease", i.index, t), i.triggerRelease(e);
-              }.bind(this)
+              }.bind(this),
             ),
             this
           );
@@ -10092,7 +10109,7 @@
           t,
           e,
           i,
-          n
+          n,
         ) {
           if (
             ((i = this.toSeconds(i)),
@@ -10243,7 +10260,7 @@
         (s.default.NoiseSynth.prototype.triggerAttackRelease = function (
           t,
           e,
-          i
+          i,
         ) {
           return (
             (e = this.toSeconds(e)),
@@ -10285,7 +10302,7 @@
           s.default.Instrument.call(this, t),
           (this.frequency = new s.default.Signal(
             t.frequency,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this._oscillators = []),
           (this._freqMultipliers = []),
@@ -10338,7 +10355,7 @@
               this._oscillators.forEach(
                 function (e) {
                   e.stop(t + this.envelope.attack + this.envelope.decay);
-                }.bind(this)
+                }.bind(this),
               ),
             this
           );
@@ -10350,7 +10367,7 @@
             this._oscillators.forEach(
               function (e) {
                 e.stop(t + this.envelope.release);
-              }.bind(this)
+              }.bind(this),
             ),
             this
           );
@@ -10365,7 +10382,7 @@
         (s.default.MetalSynth.prototype.triggerAttackRelease = function (
           t,
           e,
-          i
+          i,
         ) {
           return (
             (e = this.toSeconds(e)),
@@ -10386,7 +10403,7 @@
               for (var e = 0; e < this._oscillators.length; e++)
                 this._oscillators[e].modulationIndex.value = t;
             },
-          }
+          },
         ),
         Object.defineProperty(s.default.MetalSynth.prototype, "harmonicity", {
           get: function () {
@@ -10469,13 +10486,13 @@
             this.oscillator.frequency.setValueAtTime(s, e),
             this.oscillator.frequency.exponentialRampToValueAtTime(
               t,
-              e + this.toSeconds(this.pitchDecay)
+              e + this.toSeconds(this.pitchDecay),
             ),
             this.envelope.triggerAttack(e, i),
             this.oscillator.start(e),
             0 === this.envelope.sustain &&
               this.oscillator.stop(
-                e + this.envelope.attack + this.envelope.decay
+                e + this.envelope.attack + this.envelope.decay,
               ),
             this
           );
@@ -10517,11 +10534,11 @@
           (this._modulator.volume.value = -10),
           (this.modulation = this._modulator.oscillator.set(t.modulation)),
           (this.modulationEnvelope = this._modulator.envelope.set(
-            t.modulationEnvelope
+            t.modulationEnvelope,
           )),
           (this.frequency = new s.default.Signal(
             440,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.detune = new s.default.Signal(t.detune, s.default.Type.Cents)),
           (this.harmonicity = new s.default.Multiply(t.harmonicity)),
@@ -10631,12 +10648,12 @@
           (this.vibratoRate = this._vibrato.frequency),
           (this._vibratoGain = new s.default.Gain(
             t.vibratoAmount,
-            s.default.Type.Positive
+            s.default.Type.Positive,
           )),
           (this.vibratoAmount = this._vibratoGain.gain),
           (this.frequency = new s.default.Signal(
             440,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.harmonicity = new s.default.Multiply(t.harmonicity)),
           (this.harmonicity.units = s.default.Type.Positive),
@@ -10749,11 +10766,11 @@
           (this._modulator.volume.value = -10),
           (this.modulation = this._modulator.oscillator.set(t.modulation)),
           (this.modulationEnvelope = this._modulator.envelope.set(
-            t.modulationEnvelope
+            t.modulationEnvelope,
           )),
           (this.frequency = new s.default.Signal(
             440,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.detune = new s.default.Signal(t.detune, s.default.Type.Cents)),
           (this.harmonicity = new s.default.Multiply(t.harmonicity)),
@@ -10765,7 +10782,7 @@
           this.detune.fan(this._carrier.detune, this._modulator.detune),
           this._modulator.chain(
             this._modulationScale,
-            this._modulationNode.gain
+            this._modulationNode.gain,
           ),
           this._carrier.chain(this._modulationNode, this.output),
           this._readOnly([
@@ -10851,7 +10868,7 @@
         var t = s.default.defaults(
             arguments,
             ["callback", "events", "subdivision"],
-            s.default.Sequence
+            s.default.Sequence,
           ),
           e = t.events;
         if (
@@ -10886,7 +10903,7 @@
             e = new s.default.Sequence(
               this._tick.bind(this),
               e,
-              s.default.Ticks(i)
+              s.default.Ticks(i),
             );
           }
           return (
@@ -10920,7 +10937,7 @@
         var t = s.default.defaults(
           arguments,
           ["callback", "values", "pattern"],
-          s.default.Pattern
+          s.default.Pattern,
         );
         s.default.Loop.call(this, t),
           (this._pattern = new s.default.CtrlPattern({
@@ -10983,7 +11000,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "depth"],
-          s.default.Vibrato
+          s.default.Vibrato,
         );
         s.default.Effect.call(this, t),
           (this._delayNode = new s.default.Delay(0, t.maxDelay)),
@@ -11038,7 +11055,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "depth"],
-          s.default.Tremolo
+          s.default.Tremolo,
         );
         s.default.StereoEffect.call(this, t),
           (this._lfoL = new s.default.LFO({ phase: t.spread, min: 1, max: 0 })),
@@ -11047,11 +11064,11 @@
           (this._amplitudeR = new s.default.Gain()),
           (this.frequency = new s.default.Signal(
             t.frequency,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this.depth = new s.default.Signal(
             t.depth,
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           this._readOnly(["frequency", "depth"]),
           this.effectSendL.chain(this._amplitudeL, this.effectReturnL),
@@ -11136,12 +11153,12 @@
         var t = s.default.defaults(
           arguments,
           ["width"],
-          s.default.StereoWidener
+          s.default.StereoWidener,
         );
         s.default.MidSideEffect.call(this, t),
           (this.width = new s.default.Signal(
             t.width,
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           this._readOnly(["width"]),
           (this._twoTimesWidthMid = new s.default.Multiply(2)),
@@ -11155,7 +11172,7 @@
             this.context.getConstant(1),
             this._oneMinusWidth,
             0,
-            0
+            0,
           ),
           this.width.connect(this._oneMinusWidth, 0, 1),
           (this._sideMult = new s.default.Multiply()),
@@ -11195,12 +11212,12 @@
         var t = s.default.defaults(
           arguments,
           ["feedback"],
-          s.default.FeedbackEffect
+          s.default.FeedbackEffect,
         );
         s.default.StereoEffect.call(this, t),
           (this.feedback = new s.default.Signal(
             t.feedback,
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           (this._feedbackL = new s.default.Gain()),
           (this._feedbackR = new s.default.Gain()),
@@ -11211,7 +11228,7 @@
       }),
         s.default.extend(
           s.default.StereoFeedbackEffect,
-          s.default.StereoEffect
+          s.default.StereoEffect,
         ),
         (s.default.StereoFeedbackEffect.prototype.dispose = function () {
           return (
@@ -11260,15 +11277,15 @@
                   n.gain.exponentialApproachValueAtTime(
                     0,
                     this.preDelay,
-                    this.decay + this.preDelay
+                    this.decay + this.preDelay,
                   );
               }.bind(this),
-              this.decay + this.preDelay
+              this.decay + this.preDelay,
             )
             .then(
               function (t) {
                 return (this._convolver.buffer = t.get()), this;
-              }.bind(this)
+              }.bind(this),
             );
         }),
         (s.default.Reverb.prototype.dispose = function () {
@@ -11320,7 +11337,7 @@
           this._frequency.fan(
             this._lfoA.frequency,
             this._lfoB.frequency,
-            this._crossFadeLFO.frequency
+            this._crossFadeLFO.frequency,
           ),
           this.effectSend.fan(this._delayA, this._delayB),
           this._crossFade.chain(this._feedbackDelay, this.effectReturn);
@@ -11401,7 +11418,7 @@
         var t = s.default.defaults(
           arguments,
           ["delayTime", "feedback"],
-          s.default.PingPongDelay
+          s.default.PingPongDelay,
         );
         s.default.StereoXFeedbackEffect.call(this, t),
           (this._leftDelay = new s.default.Delay(0, t.maxDelayTime)),
@@ -11409,18 +11426,18 @@
           (this._rightPreDelay = new s.default.Delay(0, t.maxDelayTime)),
           (this.delayTime = new s.default.Signal(
             t.delayTime,
-            s.default.Type.Time
+            s.default.Type.Time,
           )),
           this.effectSendL.chain(this._leftDelay, this.effectReturnL),
           this.effectSendR.chain(
             this._rightPreDelay,
             this._rightDelay,
-            this.effectReturnR
+            this.effectReturnR,
           ),
           this.delayTime.fan(
             this._leftDelay.delayTime,
             this._rightDelay.delayTime,
-            this._rightPreDelay.delayTime
+            this._rightPreDelay.delayTime,
           ),
           this._feedbackLR.disconnect(),
           this._feedbackLR.connect(this._rightDelay),
@@ -11428,7 +11445,7 @@
       }),
         s.default.extend(
           s.default.PingPongDelay,
-          s.default.StereoXFeedbackEffect
+          s.default.StereoXFeedbackEffect,
         ),
         (s.default.PingPongDelay.defaults = {
           delayTime: 0.25,
@@ -11460,7 +11477,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "octaves", "baseFrequency"],
-          s.default.Phaser
+          s.default.Phaser,
         );
         s.default.StereoEffect.call(this, t),
           (this._lfoL = new s.default.LFO(t.frequency, 0, 1)),
@@ -11553,7 +11570,7 @@
         s.default.StereoEffect.call(this, t),
           (this.roomSize = new s.default.Signal(
             t.roomSize,
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           (this._scaleRoomSize = new s.default.Scale(-0.733, 0.197)),
           (this._allpassFilters = []),
@@ -11570,7 +11587,7 @@
             (l.resonance.value = o[r]),
             s.default.connect(
               this._allpassFilters[this._allpassFilters.length - 1],
-              l
+              l,
             ),
             r < n.length / 2
               ? l.connect(this.effectReturnL)
@@ -11632,16 +11649,16 @@
         var t = s.default.defaults(
           arguments,
           ["roomSize", "dampening"],
-          s.default.Freeverb
+          s.default.Freeverb,
         );
         s.default.StereoEffect.call(this, t),
           (this.roomSize = new s.default.Signal(
             t.roomSize,
-            s.default.Type.NormalRange
+            s.default.Type.NormalRange,
           )),
           (this.dampening = new s.default.Signal(
             t.dampening,
-            s.default.Type.Frequency
+            s.default.Type.Frequency,
           )),
           (this._combFilters = []),
           (this._allpassFiltersL = []),
@@ -11671,11 +11688,11 @@
           s.default.connectSeries.apply(s.default, this._allpassFiltersR),
           s.default.connect(
             this._allpassFiltersL[this._allpassFiltersL.length - 1],
-            this.effectReturnL
+            this.effectReturnL,
           ),
           s.default.connect(
             this._allpassFiltersR[this._allpassFiltersR.length - 1],
-            this.effectReturnR
+            this.effectReturnR,
           ),
           this._readOnly(["roomSize", "dampening"]);
       }),
@@ -11714,7 +11731,7 @@
         var t = s.default.defaults(
           arguments,
           ["delayTime", "feedback"],
-          s.default.FeedbackDelay
+          s.default.FeedbackDelay,
         );
         s.default.FeedbackEffect.call(this, t),
           (this._delayNode = new s.default.Delay(t.delayTime, t.maxDelay)),
@@ -11745,7 +11762,7 @@
         var t = s.default.defaults(
           arguments,
           ["distortion"],
-          s.default.Distortion
+          s.default.Distortion,
         );
         s.default.Effect.call(this, t),
           (this._shaper = new s.default.WaveShaper(4096)),
@@ -11801,7 +11818,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "delayTime", "depth"],
-          s.default.Chorus
+          s.default.Chorus,
         );
         s.default.StereoEffect.call(this, t),
           (this._depth = t.depth),
@@ -11921,9 +11938,9 @@
                 0 === e
                   ? 0
                   : 1 === e
-                  ? t
-                  : 2 * t * this._getCoefficient(t, e - 1, i) -
-                    this._getCoefficient(t, e - 2, i)),
+                    ? t
+                    : 2 * t * this._getCoefficient(t, e - 1, i) -
+                      this._getCoefficient(t, e - 2, i)),
               i[e]);
         }),
         Object.defineProperty(s.default.Chebyshev.prototype, "order", {
@@ -12006,7 +12023,7 @@
         var t = s.default.defaults(
           arguments,
           ["baseFrequency", "octaves", "sensitivity"],
-          s.default.AutoWah
+          s.default.AutoWah,
         );
         s.default.Effect.call(this, t),
           (this.follower = new s.default.Follower(t.follower)),
@@ -12026,14 +12043,14 @@
           this.effectSend.chain(
             this._inputBoost,
             this.follower,
-            this._sweepRange
+            this._sweepRange,
           ),
           this._sweepRange.connect(this._bandpass.frequency),
           this._sweepRange.connect(this._peaking.frequency),
           this.effectSend.chain(
             this._bandpass,
             this._peaking,
-            this.effectReturn
+            this.effectReturn,
           ),
           this._setSweepRange(),
           (this.sensitivity = t.sensitivity),
@@ -12076,7 +12093,7 @@
           (this._sweepRange.min = this._baseFrequency),
             (this._sweepRange.max = Math.min(
               this._baseFrequency * Math.pow(2, this._octaves),
-              this.context.sampleRate / 2
+              this.context.sampleRate / 2,
             ));
         }),
         (s.default.AutoWah.prototype.dispose = function () {
@@ -12109,7 +12126,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency"],
-          s.default.AutoPanner
+          s.default.AutoPanner,
         );
         s.default.Effect.call(this, t),
           (this._lfo = new s.default.LFO({
@@ -12176,7 +12193,7 @@
         var t = s.default.defaults(
           arguments,
           ["frequency", "baseFrequency", "octaves"],
-          s.default.AutoFilter
+          s.default.AutoFilter,
         );
         s.default.Effect.call(this, t),
           (this._lfo = new s.default.LFO({
@@ -12268,7 +12285,7 @@
           s.default.getContext(
             function () {
               this.set(n.defaults);
-            }.bind(this)
+            }.bind(this),
           );
       }),
         s.default.extend(s.default.Listener),
@@ -12291,17 +12308,17 @@
             this.context.rawContext.listener.positionX.setTargetAtTime(
               t,
               s,
-              this._rampTimeConstant
+              this._rampTimeConstant,
             ),
               this.context.rawContext.listener.positionY.setTargetAtTime(
                 e,
                 s,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               ),
               this.context.rawContext.listener.positionZ.setTargetAtTime(
                 i,
                 s,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               );
           } else this.context.rawContext.listener.setPosition(t, e, i);
           return (this._position = Array.prototype.slice.call(arguments)), this;
@@ -12312,39 +12329,39 @@
           i,
           s,
           n,
-          o
+          o,
         ) {
           if (this.context.rawContext.listener.forwardX) {
             var a = this.now();
             this.context.rawContext.listener.forwardX.setTargetAtTime(
               t,
               a,
-              this._rampTimeConstant
+              this._rampTimeConstant,
             ),
               this.context.rawContext.listener.forwardY.setTargetAtTime(
                 e,
                 a,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               ),
               this.context.rawContext.listener.forwardZ.setTargetAtTime(
                 i,
                 a,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               ),
               this.context.rawContext.listener.upX.setTargetAtTime(
                 s,
                 a,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               ),
               this.context.rawContext.listener.upY.setTargetAtTime(
                 n,
                 a,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               ),
               this.context.rawContext.listener.upZ.setTargetAtTime(
                 o,
                 a,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               );
           } else
             this.context.rawContext.listener.setOrientation(t, e, i, s, n, o);
@@ -12516,7 +12533,7 @@
         var t = s.default.defaults(
           arguments,
           ["min", "max"],
-          s.default.CtrlRandom
+          s.default.CtrlRandom,
         );
         s.default.call(this),
           (this.min = t.min),
@@ -12596,7 +12613,7 @@
         var t = s.default.defaults(
           arguments,
           ["values", "index"],
-          s.default.CtrlInterpolate
+          s.default.CtrlInterpolate,
         );
         s.default.call(this), (this.values = t.values), (this.index = t.index);
       }),
@@ -12678,7 +12695,7 @@
         var t = s.default.defaults(
           arguments,
           ["positionX", "positionY", "positionZ"],
-          s.default.Panner3D
+          s.default.Panner3D,
         );
         s.default.AudioNode.call(this),
           (this._panner =
@@ -12730,17 +12747,17 @@
             this._panner.positionX.setTargetAtTime(
               t,
               s,
-              this._rampTimeConstant
+              this._rampTimeConstant,
             ),
               this._panner.positionY.setTargetAtTime(
                 e,
                 s,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               ),
               this._panner.positionZ.setTargetAtTime(
                 i,
                 s,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               );
           } else this._panner.setPosition(t, e, i);
           return (this._position = Array.prototype.slice.call(arguments)), this;
@@ -12751,17 +12768,17 @@
             this._panner.orientationX.setTargetAtTime(
               t,
               s,
-              this._rampTimeConstant
+              this._rampTimeConstant,
             ),
               this._panner.orientationY.setTargetAtTime(
                 e,
                 s,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               ),
               this._panner.orientationZ.setTargetAtTime(
                 i,
                 s,
-                this._rampTimeConstant
+                this._rampTimeConstant,
               );
           } else this._panner.setOrientation(t, e, i);
           return (
@@ -12861,7 +12878,7 @@
         s.default.AudioNode.call(this),
           (t = s.default.defaultArg(
             arguments,
-            s.default.MultibandCompressor.defaults
+            s.default.MultibandCompressor.defaults,
           )),
           (this._splitter = this.input =
             new s.default.MultibandSplit({
@@ -13078,20 +13095,20 @@
         var t = s.default.defaults(
           arguments,
           ["threshold", "smoothing"],
-          s.default.Gate
+          s.default.Gate,
         );
         s.default.AudioNode.call(this),
           this.createInsOuts(1, 1),
           (this._follower = new s.default.Follower(t.smoothing)),
           (this._gt = new s.default.GreaterThan(
-            s.default.dbToGain(t.threshold)
+            s.default.dbToGain(t.threshold),
           )),
           s.default.connect(this.input, this.output),
           s.default.connectSeries(
             this.input,
             this._follower,
             this._gt,
-            this.output.gain
+            this.output.gain,
           );
       }),
         s.default.extend(s.default.Gate, s.default.AudioNode),
@@ -13167,7 +13184,7 @@
         var t = s.default.defaults(
           arguments,
           ["low", "mid", "high"],
-          s.default.EQ3
+          s.default.EQ3,
         );
         s.default.AudioNode.call(this),
           (this.output = new s.default.Gain()),
@@ -13180,7 +13197,7 @@
           (this._midGain = new s.default.Gain(t.mid, s.default.Type.Decibels)),
           (this._highGain = new s.default.Gain(
             t.high,
-            s.default.Type.Decibels
+            s.default.Type.Decibels,
           )),
           (this.low = this._lowGain.gain),
           (this.mid = this._midGain.gain),
@@ -13245,7 +13262,7 @@
         var t = s.default.defaults(
           arguments,
           ["volume", "pan"],
-          s.default.PanVol
+          s.default.PanVol,
         );
         s.default.AudioNode.call(this, t),
           (this._solo = this.input = new s.default.Solo(t.solo)),
@@ -13467,10 +13484,10 @@
   "object" == typeof exports && "object" == typeof module
     ? (module.exports = e(require("@tensorflow/tfjs"), require("tone")))
     : "function" == typeof define && define.amd
-    ? define(["tf", "Tone"], e)
-    : "object" == typeof exports
-    ? (exports.core = e(require("@tensorflow/tfjs"), require("tone")))
-    : (t.core = e(t.tf, t.Tone));
+      ? define(["tf", "Tone"], e)
+      : "object" == typeof exports
+        ? (exports.core = e(require("@tensorflow/tfjs"), require("tone")))
+        : (t.core = e(t.tf, t.Tone));
 })(
   self,
   function (__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__3__) {
@@ -13508,7 +13525,7 @@
                 i,
                 function (e) {
                   return t[e];
-                }.bind(null, i)
+                }.bind(null, i),
               );
           return r;
         }),
@@ -13690,7 +13707,7 @@
             (5 === n ? console.warn : console.log)(
               `%c ${e} `,
               "background:magenta; color:white",
-              t
+              t,
             );
           }
         }
@@ -13728,12 +13745,12 @@
           function u(t) {
             if (((t = s ? 44100 : t), a))
               throw new Error(
-                "Cannot use offline audio context in a web worker."
+                "Cannot use offline audio context in a web worker.",
               );
             const e = r.webkitOfflineAudioContext;
             return s ? new e(1, t, t) : new r.OfflineAudioContext(1, t, t);
           }
-        }.call(this, n(9)));
+        }).call(this, n(9));
       },
       function (t, e, n) {
         "use strict";
@@ -13858,12 +13875,12 @@
                 "NoteSequence has an implicit tempo change from initial " +
                   i.DEFAULT_QUARTERS_PER_MINUTE +
                   " qpm to " +
-                  `${t.tempos[0].qpm} qpm at ${t.tempos[0].time} seconds.`
+                  `${t.tempos[0].qpm} qpm at ${t.tempos[0].time} seconds.`,
               );
             for (let e = 1; e < t.tempos.length; e++)
               if (t.tempos[e].qpm !== t.tempos[0].qpm)
                 throw new u(
-                  `NoteSequence has at least one tempo change from ${t.tempos[0].qpm} qpm to ${t.tempos[e].qpm}qpm at ${t.tempos[e].time} seconds.`
+                  `NoteSequence has at least one tempo change from ${t.tempos[0].qpm} qpm to ${t.tempos[e].qpm}qpm at ${t.tempos[e].time} seconds.`,
                 );
           }
         }
@@ -13886,7 +13903,7 @@
                   n.timeSignatures[0].denominator +
                   " at " +
                   n.timeSignatures[0].time +
-                  " seconds."
+                  " seconds.",
               );
             for (let t = 1; t < n.timeSignatures.length; t++) {
               const e = n.timeSignatures[t];
@@ -13901,7 +13918,7 @@
                     n.timeSignatures[0].denominator +
                     " to " +
                     `${e.numerator}/${e.denominator} ` +
-                    `at ${e.time} seconds`
+                    `at ${e.time} seconds`,
                 );
             }
             (n.timeSignatures[0].time = 0),
@@ -13917,12 +13934,12 @@
           const u = n.timeSignatures[0];
           if (!(c = u.denominator) || 0 != (c & (c - 1)))
             throw new s(
-              `Denominator is not a power of 2. Time signature: ${u.numerator}/${u.denominator}`
+              `Denominator is not a power of 2. Time signature: ${u.numerator}/${u.denominator}`,
             );
           var c;
           if (0 === u.numerator)
             throw new s(
-              `Numerator is 0. Time signature: ${u.numerator}/${u.denominator}`
+              `Numerator is 0. Time signature: ${u.numerator}/${u.denominator}`,
             );
           if (n.tempos.length > 0)
             m(n), (n.tempos[0].time = 0), (n.tempos = [n.tempos[0]]);
@@ -13949,7 +13966,7 @@
                     "Got negative note time: start_step = " +
                       n.quantizedStartStep +
                       ", end_step = " +
-                      n.quantizedEndStep
+                      n.quantizedEndStep,
                   );
                 n.quantizedEndStep > t.totalQuantizedSteps &&
                   (t.totalQuantizedSteps = n.quantizedEndStep);
@@ -13957,7 +13974,7 @@
               f(t).forEach((t) => {
                 if (((t.quantizedStep = p(t.time, e)), t.quantizedStep < 0))
                   throw new a(
-                    "Got negative event time: step = " + t.quantizedStep
+                    "Got negative event time: step = " + t.quantizedStep,
                   );
               });
             })(n, d),
@@ -13974,7 +13991,7 @@
         function S(t) {
           if (!g(t))
             throw new c(
-              `NoteSequence ${t.id} is not quantized (missing quantizationInfo)`
+              `NoteSequence ${t.id} is not quantized (missing quantizationInfo)`,
             );
         }
         function y(t) {
@@ -13983,7 +14000,7 @@
         function b(t) {
           if (!y(t))
             throw new c(
-              `NoteSequence ${t.id} is not quantized or is quantized based on absolute timing`
+              `NoteSequence ${t.id} is not quantized or is quantized based on absolute timing`,
             );
         }
         function w(t) {
@@ -13992,7 +14009,7 @@
         function P(t) {
           if (!w(t))
             throw new c(
-              `NoteSequence ${t.id} is not quantized or is quantized based on relative timing`
+              `NoteSequence ${t.id} is not quantized or is quantized based on relative timing`,
             );
         }
         function v(t, e) {
@@ -14026,7 +14043,7 @@
         }
         function N(
           t = i.DEFAULT_STEPS_PER_QUARTER,
-          e = i.DEFAULT_QUARTERS_PER_MINUTE
+          e = i.DEFAULT_QUARTERS_PER_MINUTE,
         ) {
           return r.a.create({
             quantizationInfo: { stepsPerQuarter: t },
@@ -14037,7 +14054,7 @@
           const e = l(t),
             n = e.notes.concat(e.pitchBends).concat(e.controlChanges),
             r = Array.from(
-              new Set(n.filter((t) => !t.isDrum).map((t) => t.program))
+              new Set(n.filter((t) => !t.isDrum).map((t) => t.program)),
             );
           return (
             n.forEach((t) => {
@@ -14108,7 +14125,7 @@
         function M(t, e) {
           if (e && e.length !== t.length)
             throw new Error(
-              "Number of sequences to concatenate and their individual\n durations does not match."
+              "Number of sequences to concatenate and their individual\n durations does not match.",
             );
           if (g(t[0])) {
             for (let e = 0; e < t.length; ++e)
@@ -14118,14 +14135,14 @@
                   t[0].quantizationInfo.stepsPerQuarter)
               )
                 throw new Error(
-                  "Not all sequences have the same quantizationInfo"
+                  "Not all sequences have the same quantizationInfo",
                 );
             return k(
               t,
               "totalQuantizedSteps",
               "quantizedStartStep",
               "quantizedEndStep",
-              e
+              e,
             );
           }
           return k(t, "totalTime", "startTime", "endTime", e);
@@ -14139,7 +14156,7 @@
                 "totalQuantizedSteps",
                 "quantizedStartStep",
                 "quantizedEndStep",
-                r
+                r,
               )
             : q(t, e, n, "totalTime", "startTime", "endTime", r);
         }
@@ -14150,7 +14167,7 @@
             const c = o ? o[u] : t[u][e];
             if (0 === c)
               throw Error(
-                `Sequence ${t[u].id} has no ${e}, and no individual duration was provided.`
+                `Sequence ${t[u].id} has no ${e}, and no individual duration was provided.`,
               );
             0 === u
               ? (s = l(t[0]))
@@ -14159,7 +14176,7 @@
                   t[u].notes.map((t) => {
                     const e = r.a.Note.create(t);
                     return (e[n] += a), (e[i] += a), e;
-                  })
+                  }),
                 ),
               (a += c);
           }
@@ -14169,7 +14186,7 @@
           const a = l(t);
           (a[r] = n),
             (a.notes = a.notes.filter(
-              (t) => t[i] >= e && t[i] <= n && (s || t[o] <= n)
+              (t) => t[i] >= e && t[i] <= n && (s || t[o] <= n),
             )),
             (a[r] -= e);
           for (let t = 0; t < a.notes.length; t++)
@@ -14182,7 +14199,7 @@
           S(t);
           const n = l(t),
             i = n.notes.sort(
-              (t, e) => t.quantizedStartStep - e.quantizedStartStep
+              (t, e) => t.quantizedStartStep - e.quantizedStartStep,
             ),
             o = [];
           let s = 0,
@@ -14274,7 +14291,7 @@
                 t &&
                 t.process &&
                 t.process.versions &&
-                t.process.versions.node
+                t.process.versions.node,
             )),
             (r.global =
               (r.isNode && t) ||
@@ -14321,10 +14338,10 @@
                   ? r._Buffer_allocUnsafe(t)
                   : new r.Array(t)
                 : r.Buffer
-                ? r._Buffer_from(t)
-                : "undefined" == typeof Uint8Array
-                ? t
-                : new Uint8Array(t);
+                  ? r._Buffer_from(t)
+                  : "undefined" == typeof Uint8Array
+                    ? t
+                    : new Uint8Array(t);
             }),
             (r.Array = "undefined" != typeof Uint8Array ? Uint8Array : Array),
             (r.Long =
@@ -14388,7 +14405,7 @@
                     }))
                 : (r._Buffer_from = r._Buffer_allocUnsafe = null);
             });
-        }.call(this, n(9)));
+        }).call(this, n(9));
       },
       function (t, e) {
         var n;
@@ -14437,7 +14454,7 @@
             const s = t.notes.sort((t, e) =>
                 t.quantizedStartStep === e.quantizedStartStep
                   ? e.pitch - t.pitch
-                  : t.quantizedStartStep - e.quantizedStartStep
+                  : t.quantizedStartStep - e.quantizedStartStep,
               ),
               c = new Int32Array(i || t.totalQuantizedSteps);
             let l = -1;
@@ -14450,7 +14467,7 @@
                 if (t.pitch < e || t.pitch > n)
                   throw Error(
                     "`NoteSequence` has a pitch outside of the valid range: " +
-                      t.pitch
+                      t.pitch,
                   );
                 (c[t.quantizedStartStep] = t.pitch - e + 2),
                   (c[t.quantizedEndStep] = a),
@@ -14693,7 +14710,7 @@
                       quantizedStartStep: t,
                       quantizedEndStep: t + 1,
                       isDrum: !0,
-                    })
+                    }),
                   );
             return (r.totalQuantizedSteps = s.length), r;
           }
@@ -14705,7 +14722,7 @@
             for (let e = 0; e < t.shape[0]; ++e) {
               const t = o.slice(
                 e * this.pitchClasses.length,
-                (e + 1) * this.pitchClasses.length
+                (e + 1) * this.pitchClasses.length,
               );
               for (let n = 0; n < t.length; ++n)
                 t[n] &&
@@ -14715,7 +14732,7 @@
                       quantizedStartStep: e,
                       quantizedEndStep: e + 1,
                       isDrum: !0,
-                    })
+                    }),
                   );
             }
             return (r.totalQuantizedSteps = t.shape[0]), r;
@@ -14750,13 +14767,13 @@
               this.minPitch,
               this.maxPitch,
               this.ignorePolyphony,
-              this.numSteps
+              this.numSteps,
             );
             return r.tidy(() =>
               r.oneHot(
                 r.tensor(e.events, [e.events.length], "int32"),
-                this.depth
-              )
+                this.depth,
+              ),
             );
           }
           async toNoteSequence(t, e, n) {
@@ -14765,7 +14782,7 @@
             r.dispose();
             return new a.Melody(i, this.minPitch, this.maxPitch).toNoteSequence(
               e,
-              n
+              n,
             );
           }
         }
@@ -14784,7 +14801,7 @@
               this.minPitch,
               this.maxPitch,
               this.ignorePolyphony,
-              this.numSteps
+              this.numSteps,
             );
             return this.melodyControl.extract(e);
           }
@@ -14804,7 +14821,7 @@
                     quantizedStartStep: t,
                     quantizedEndStep: t + 1,
                     isDrum: !0,
-                  })
+                  }),
                 );
             return (r.totalQuantizedSteps = o.length), r;
           }
@@ -14827,7 +14844,7 @@
                       ((u = this.minPitch),
                       s.log(
                         "Pitch range exceeded when creating NoteSequence from shape.",
-                        "MelodyShapeConverter"
+                        "MelodyShapeConverter",
                       ));
                   break;
                 case 2:
@@ -14836,7 +14853,7 @@
                       ((u = this.maxPitch),
                       s.log(
                         "Pitch range exceeded when creating NoteSequence from shape.",
-                        "MelodyShapeConverter"
+                        "MelodyShapeConverter",
                       ));
               }
               r.notes.push(
@@ -14844,7 +14861,7 @@
                   pitch: u,
                   quantizedStartStep: t,
                   quantizedEndStep: t + 1,
-                })
+                }),
               );
             }
             return (r.totalQuantizedSteps = a.length), r;
@@ -14877,13 +14894,13 @@
                 (t) =>
                   !t.isDrum &&
                   t.program >= this.MEL_PROG_RANGE[0] &&
-                  t.program <= this.MEL_PROG_RANGE[1]
+                  t.program <= this.MEL_PROG_RANGE[1],
               )),
               (n.notes = t.notes.filter(
                 (t) =>
                   !t.isDrum &&
                   t.program >= this.BASS_PROG_RANGE[0] &&
-                  t.program <= this.BASS_PROG_RANGE[1]
+                  t.program <= this.BASS_PROG_RANGE[1],
               )),
               (i.notes = t.notes.filter((t) => t.isDrum)),
               r.tidy(() =>
@@ -14893,8 +14910,8 @@
                     this.bassConverter.toTensor(n),
                     this.drumsConverter.toTensor(i),
                   ],
-                  -1
-                )
+                  -1,
+                ),
               )
             );
           }
@@ -14906,7 +14923,7 @@
                   this.bassConverter.depth,
                   this.drumsConverter.depth,
                 ],
-                -1
+                -1,
               ),
               o = await this.melConverter.toNoteSequence(i[0], e, n);
             o.notes.forEach((t) => {
@@ -14917,8 +14934,8 @@
               ...s.notes.map(
                 (t) => (
                   (t.instrument = 1), (t.program = this.BASS_PROG_RANGE[0]), t
-                )
-              )
+                ),
+              ),
             );
             const a = await this.drumsConverter.toNoteSequence(i[2], e, n);
             return (
@@ -14946,7 +14963,7 @@
               (this.endTensor = r.tidy(() =>
                 r
                   .oneHot(r.tensor1d([this.endToken], "int32"), this.depth)
-                  .as1D()
+                  .as1D(),
               ));
           }
           trackToTensor(t) {
@@ -14958,7 +14975,7 @@
                 n.set(
                   this.performanceEventDepth +
                     (t.isDrum ? this.numPrograms - 1 : t.program),
-                  0
+                  0,
                 ),
                 t.events.forEach((t, e) => {
                   switch (t.type) {
@@ -14977,7 +14994,7 @@
                           this.totalSteps +
                           t.velocityBin -
                           1,
-                        e + 1
+                        e + 1,
                       );
                       break;
                     default:
@@ -15000,11 +15017,11 @@
               t.quantizationInfo.stepsPerQuarter !== this.stepsPerQuarter)
             )
               throw new Error(
-                `Steps per quarter note mismatch: ${t.quantizationInfo.stepsPerQuarter} != ${this.stepsPerQuarter}`
+                `Steps per quarter note mismatch: ${t.quantizationInfo.stepsPerQuarter} != ${this.stepsPerQuarter}`,
               );
             const e = c.clone(t);
             e.notes = t.notes.filter(
-              (t) => t.pitch >= this.minPitch && t.pitch <= this.maxPitch
+              (t) => t.pitch >= this.minPitch && t.pitch <= this.maxPitch,
             );
             const n = new Set(e.notes.map((t) => t.instrument)),
               i = Array.from(n)
@@ -15013,11 +15030,11 @@
                     e,
                     this.totalSteps,
                     this.numVelocityBins,
-                    t
-                  )
+                    t,
+                  ),
                 )
                 .sort((t, e) =>
-                  e.isDrum ? -1 : t.isDrum ? 1 : t.program - e.program
+                  e.isDrum ? -1 : t.isDrum ? 1 : t.program - e.program,
                 );
             for (; i.length > this.numSegments; ) i.pop();
             for (
@@ -15029,8 +15046,8 @@
             return r.tidy(() =>
               r.concat(
                 i.map((t) => this.trackToTensor(t)),
-                0
-              )
+                0,
+              ),
             );
           }
           tokensToTrack(t) {
@@ -15072,7 +15089,7 @@
               this.totalSteps,
               this.numVelocityBins,
               s,
-              a
+              a,
             );
           }
           async toNoteSequence(t, e = this.stepsPerQuarter, n) {
@@ -15086,7 +15103,7 @@
                     const e = await t.data(),
                       n = this.tokensToTrack(e);
                     return t.dispose(), n;
-                  })
+                  }),
                 )
               ).forEach((t, e) => {
                 t.setNumSteps(this.totalSteps),
@@ -15132,7 +15149,7 @@
                 throw Error(
                   `Model does not support sequences with more than ${n} steps (${
                     n * s
-                  } seconds at qpm ${i}).`
+                  } seconds at qpm ${i}).`,
                 );
               const r = this.tapify
                 ? this.TAPIFY_CHANNEL
@@ -15190,7 +15207,7 @@
                   const e = c(
                       Math.round(u * o.MAX_MIDI_VELOCITY),
                       o.MIN_MIDI_VELOCITY,
-                      o.MAX_MIDI_VELOCITY
+                      o.MAX_MIDI_VELOCITY,
                     ),
                     r = c(h / 2, -0.5, 0.5);
                   a.notes.push(
@@ -15200,7 +15217,7 @@
                       endTime: (t - r + 1) * s,
                       velocity: e,
                       isDrum: !0,
-                    })
+                    }),
                   );
                 }
               }
@@ -15230,12 +15247,12 @@
           static fromNoteSequence(t, e, n, r) {
             o.assertIsQuantizedSequence(t);
             const s = t.notes.filter(
-                (t, e) => void 0 === r || t.instrument === r
+                (t, e) => void 0 === r || t.instrument === r,
               ),
               u = s.sort((t, e) =>
                 t.startTime === e.startTime
                   ? t.pitch - e.pitch
-                  : t.startTime - e.startTime
+                  : t.startTime - e.startTime,
               ),
               c = u.map((t, e) => ({
                 step: t.quantizedStartStep,
@@ -15254,7 +15271,7 @@
                     ? t.index === e.index
                       ? t.isOffset - e.isOffset
                       : t.index - e.index
-                    : t.step - e.step
+                    : t.step - e.step,
                 ),
               p = n ? Math.ceil((i.MIDI_VELOCITIES - 1) / n) : void 0,
               f = [];
@@ -15272,7 +15289,7 @@
                 if (p) {
                   const e =
                     Math.floor(
-                      (u[t.index].velocity - i.MIN_MIDI_VELOCITY - 1) / p
+                      (u[t.index].velocity - i.MIN_MIDI_VELOCITY - 1) / p,
                     ) + 1;
                   e !== d &&
                     (f.push({ type: "velocity-change", velocityBin: e }),
@@ -15353,16 +15370,16 @@
                             quantizedEndStep: o,
                             program: this.program,
                             isDrum: this.isDrum,
-                          })
+                          }),
                         )
                       : s.log(
                           `Ignoring zero-length note: (pitch = ${c.pitch}, step = ${o})`,
-                          "Performance"
+                          "Performance",
                         );
                   } else
                     s.log(
                       `Ignoring note-off with no previous note-on:(pitch = ${c.pitch}, step = ${o})`,
-                      "Performance"
+                      "Performance",
                     );
                   break;
                 case "time-shift":
@@ -15389,11 +15406,11 @@
                           quantizedEndStep: o,
                           program: this.program,
                           isDrum: this.isDrum,
-                        })
+                        }),
                       )
                     : s.log(
                         `Ignoring zero-length note: (pitch = ${i}, step = ${o})`,
-                        "Performance"
+                        "Performance",
                       );
               }),
               (n.totalQuantizedSteps = o),
@@ -15483,13 +15500,13 @@
                   (t >>>= 0) < 128
                     ? 1
                     : t < 16384
-                    ? 2
-                    : t < 2097152
-                    ? 3
-                    : t < 268435456
-                    ? 4
-                    : 5,
-                  t
+                      ? 2
+                      : t < 2097152
+                        ? 3
+                        : t < 268435456
+                          ? 4
+                          : 5,
+                  t,
                 )).len),
               this
             );
@@ -15603,7 +15620,7 @@
           s = i.utf8;
         function a(t, e) {
           return RangeError(
-            "index out of range: " + t.pos + " + " + (e || 1) + " > " + t.len
+            "index out of range: " + t.pos + " + " + (e || 1) + " > " + t.len,
           );
         }
         function u(t) {
@@ -15693,7 +15710,7 @@
           if (this.pos + 8 > this.len) throw a(this, 8);
           return new o(
             f(this.buf, (this.pos += 4)),
-            f(this.buf, (this.pos += 4))
+            f(this.buf, (this.pos += 4)),
           );
         }
         (u.create = h()),
@@ -15769,8 +15786,8 @@
               Array.isArray(this.buf)
                 ? this.buf.slice(e, n)
                 : e === n
-                ? new this.buf.constructor(0)
-                : this._slice.call(this.buf, e, n)
+                  ? new this.buf.constructor(0)
+                  : this._slice.call(this.buf, e, n)
             );
           }),
           (u.prototype.string = function () {
@@ -15806,7 +15823,7 @@
                 break;
               default:
                 throw Error(
-                  "invalid wire type " + t + " at offset " + this.pos
+                  "invalid wire type " + t + " at offset " + this.pos,
                 );
             }
             return this;
@@ -15912,25 +15929,25 @@
                     for (var n = 0; n < t.timeSignatures.length; ++n)
                       c.tensorflow.magenta.NoteSequence.TimeSignature.encode(
                         t.timeSignatures[n],
-                        e.uint32(42).fork()
+                        e.uint32(42).fork(),
                       ).ldelim();
                   if (null != t.keySignatures && t.keySignatures.length)
                     for (n = 0; n < t.keySignatures.length; ++n)
                       c.tensorflow.magenta.NoteSequence.KeySignature.encode(
                         t.keySignatures[n],
-                        e.uint32(50).fork()
+                        e.uint32(50).fork(),
                       ).ldelim();
                   if (null != t.tempos && t.tempos.length)
                     for (n = 0; n < t.tempos.length; ++n)
                       c.tensorflow.magenta.NoteSequence.Tempo.encode(
                         t.tempos[n],
-                        e.uint32(58).fork()
+                        e.uint32(58).fork(),
                       ).ldelim();
                   if (null != t.notes && t.notes.length)
                     for (n = 0; n < t.notes.length; ++n)
                       c.tensorflow.magenta.NoteSequence.Note.encode(
                         t.notes[n],
-                        e.uint32(66).fork()
+                        e.uint32(66).fork(),
                       ).ldelim();
                   if (
                     (null != t.totalTime &&
@@ -15941,40 +15958,40 @@
                     for (n = 0; n < t.pitchBends.length; ++n)
                       c.tensorflow.magenta.NoteSequence.PitchBend.encode(
                         t.pitchBends[n],
-                        e.uint32(82).fork()
+                        e.uint32(82).fork(),
                       ).ldelim();
                   if (null != t.controlChanges && t.controlChanges.length)
                     for (n = 0; n < t.controlChanges.length; ++n)
                       c.tensorflow.magenta.NoteSequence.ControlChange.encode(
                         t.controlChanges[n],
-                        e.uint32(90).fork()
+                        e.uint32(90).fork(),
                       ).ldelim();
                   if (null != t.partInfos && t.partInfos.length)
                     for (n = 0; n < t.partInfos.length; ++n)
                       c.tensorflow.magenta.NoteSequence.PartInfo.encode(
                         t.partInfos[n],
-                        e.uint32(98).fork()
+                        e.uint32(98).fork(),
                       ).ldelim();
                   if (
                     (null != t.sourceInfo &&
                       t.hasOwnProperty("sourceInfo") &&
                       c.tensorflow.magenta.NoteSequence.SourceInfo.encode(
                         t.sourceInfo,
-                        e.uint32(106).fork()
+                        e.uint32(106).fork(),
                       ).ldelim(),
                     null != t.textAnnotations && t.textAnnotations.length)
                   )
                     for (n = 0; n < t.textAnnotations.length; ++n)
                       c.tensorflow.magenta.NoteSequence.TextAnnotation.encode(
                         t.textAnnotations[n],
-                        e.uint32(114).fork()
+                        e.uint32(114).fork(),
                       ).ldelim();
                   if (
                     (null != t.quantizationInfo &&
                       t.hasOwnProperty("quantizationInfo") &&
                       c.tensorflow.magenta.NoteSequence.QuantizationInfo.encode(
                         t.quantizationInfo,
-                        e.uint32(122).fork()
+                        e.uint32(122).fork(),
                       ).ldelim(),
                     null != t.totalQuantizedSteps &&
                       t.hasOwnProperty("totalQuantizedSteps") &&
@@ -15983,7 +16000,7 @@
                       t.hasOwnProperty("subsequenceInfo") &&
                       c.tensorflow.magenta.NoteSequence.SubsequenceInfo.encode(
                         t.subsequenceInfo,
-                        e.uint32(138).fork()
+                        e.uint32(138).fork(),
                       ).ldelim(),
                     null != t.referenceNumber &&
                       t.hasOwnProperty("referenceNumber") &&
@@ -15992,20 +16009,20 @@
                       t.hasOwnProperty("sequenceMetadata") &&
                       c.tensorflow.magenta.SequenceMetadata.encode(
                         t.sequenceMetadata,
-                        e.uint32(154).fork()
+                        e.uint32(154).fork(),
                       ).ldelim(),
                     null != t.sectionAnnotations && t.sectionAnnotations.length)
                   )
                     for (n = 0; n < t.sectionAnnotations.length; ++n)
                       c.tensorflow.magenta.NoteSequence.SectionAnnotation.encode(
                         t.sectionAnnotations[n],
-                        e.uint32(162).fork()
+                        e.uint32(162).fork(),
                       ).ldelim();
                   if (null != t.sectionGroups && t.sectionGroups.length)
                     for (n = 0; n < t.sectionGroups.length; ++n)
                       c.tensorflow.magenta.NoteSequence.SectionGroup.encode(
                         t.sectionGroups[n],
-                        e.uint32(170).fork()
+                        e.uint32(170).fork(),
                       ).ldelim();
                   return e;
                 }),
@@ -16045,8 +16062,8 @@
                           r.timeSignatures.push(
                             c.tensorflow.magenta.NoteSequence.TimeSignature.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 6:
@@ -16055,8 +16072,8 @@
                           r.keySignatures.push(
                             c.tensorflow.magenta.NoteSequence.KeySignature.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 7:
@@ -16064,8 +16081,8 @@
                           r.tempos.push(
                             c.tensorflow.magenta.NoteSequence.Tempo.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 8:
@@ -16073,8 +16090,8 @@
                           r.notes.push(
                             c.tensorflow.magenta.NoteSequence.Note.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 9:
@@ -16091,8 +16108,8 @@
                           r.pitchBends.push(
                             c.tensorflow.magenta.NoteSequence.PitchBend.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 11:
@@ -16101,8 +16118,8 @@
                           r.controlChanges.push(
                             c.tensorflow.magenta.NoteSequence.ControlChange.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 12:
@@ -16111,15 +16128,15 @@
                           r.partInfos.push(
                             c.tensorflow.magenta.NoteSequence.PartInfo.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 13:
                         r.sourceInfo =
                           c.tensorflow.magenta.NoteSequence.SourceInfo.decode(
                             t,
-                            t.uint32()
+                            t.uint32(),
                           );
                         break;
                       case 14:
@@ -16128,8 +16145,8 @@
                           r.textAnnotations.push(
                             c.tensorflow.magenta.NoteSequence.TextAnnotation.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 20:
@@ -16138,8 +16155,8 @@
                           r.sectionAnnotations.push(
                             c.tensorflow.magenta.NoteSequence.SectionAnnotation.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 21:
@@ -16148,29 +16165,29 @@
                           r.sectionGroups.push(
                             c.tensorflow.magenta.NoteSequence.SectionGroup.decode(
                               t,
-                              t.uint32()
-                            )
+                              t.uint32(),
+                            ),
                           );
                         break;
                       case 15:
                         r.quantizationInfo =
                           c.tensorflow.magenta.NoteSequence.QuantizationInfo.decode(
                             t,
-                            t.uint32()
+                            t.uint32(),
                           );
                         break;
                       case 17:
                         r.subsequenceInfo =
                           c.tensorflow.magenta.NoteSequence.SubsequenceInfo.decode(
                             t,
-                            t.uint32()
+                            t.uint32(),
                           );
                         break;
                       case 19:
                         r.sequenceMetadata =
                           c.tensorflow.magenta.SequenceMetadata.decode(
                             t,
-                            t.uint32()
+                            t.uint32(),
                           );
                         break;
                       default:
@@ -16232,7 +16249,7 @@
                       if (
                         (n =
                           c.tensorflow.magenta.NoteSequence.TimeSignature.verify(
-                            t.timeSignatures[e]
+                            t.timeSignatures[e],
                           ))
                       )
                         return "timeSignatures." + n;
@@ -16247,7 +16264,7 @@
                       if (
                         (n =
                           c.tensorflow.magenta.NoteSequence.KeySignature.verify(
-                            t.keySignatures[e]
+                            t.keySignatures[e],
                           ))
                       )
                         return "keySignatures." + n;
@@ -16258,7 +16275,7 @@
                     for (e = 0; e < t.tempos.length; ++e)
                       if (
                         (n = c.tensorflow.magenta.NoteSequence.Tempo.verify(
-                          t.tempos[e]
+                          t.tempos[e],
                         ))
                       )
                         return "tempos." + n;
@@ -16268,7 +16285,7 @@
                     for (e = 0; e < t.notes.length; ++e)
                       if (
                         (n = c.tensorflow.magenta.NoteSequence.Note.verify(
-                          t.notes[e]
+                          t.notes[e],
                         ))
                       )
                         return "notes." + n;
@@ -16296,7 +16313,7 @@
                     for (e = 0; e < t.pitchBends.length; ++e)
                       if (
                         (n = c.tensorflow.magenta.NoteSequence.PitchBend.verify(
-                          t.pitchBends[e]
+                          t.pitchBends[e],
                         ))
                       )
                         return "pitchBends." + n;
@@ -16311,7 +16328,7 @@
                       if (
                         (n =
                           c.tensorflow.magenta.NoteSequence.ControlChange.verify(
-                            t.controlChanges[e]
+                            t.controlChanges[e],
                           ))
                       )
                         return "controlChanges." + n;
@@ -16322,7 +16339,7 @@
                     for (e = 0; e < t.partInfos.length; ++e)
                       if (
                         (n = c.tensorflow.magenta.NoteSequence.PartInfo.verify(
-                          t.partInfos[e]
+                          t.partInfos[e],
                         ))
                       )
                         return "partInfos." + n;
@@ -16331,7 +16348,7 @@
                     null != t.sourceInfo &&
                     t.hasOwnProperty("sourceInfo") &&
                     (n = c.tensorflow.magenta.NoteSequence.SourceInfo.verify(
-                      t.sourceInfo
+                      t.sourceInfo,
                     ))
                   )
                     return "sourceInfo." + n;
@@ -16345,7 +16362,7 @@
                       if (
                         (n =
                           c.tensorflow.magenta.NoteSequence.TextAnnotation.verify(
-                            t.textAnnotations[e]
+                            t.textAnnotations[e],
                           ))
                       )
                         return "textAnnotations." + n;
@@ -16360,7 +16377,7 @@
                       if (
                         (n =
                           c.tensorflow.magenta.NoteSequence.SectionAnnotation.verify(
-                            t.sectionAnnotations[e]
+                            t.sectionAnnotations[e],
                           ))
                       )
                         return "sectionAnnotations." + n;
@@ -16376,7 +16393,7 @@
                       if (
                         (n =
                           c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
-                            t.sectionGroups[e]
+                            t.sectionGroups[e],
                           ))
                       )
                         return "sectionGroups." + n;
@@ -16386,23 +16403,23 @@
                     t.hasOwnProperty("quantizationInfo") &&
                     (n =
                       c.tensorflow.magenta.NoteSequence.QuantizationInfo.verify(
-                        t.quantizationInfo
+                        t.quantizationInfo,
                       ))
                     ? "quantizationInfo." + n
                     : null != t.subsequenceInfo &&
-                      t.hasOwnProperty("subsequenceInfo") &&
-                      (n =
-                        c.tensorflow.magenta.NoteSequence.SubsequenceInfo.verify(
-                          t.subsequenceInfo
-                        ))
-                    ? "subsequenceInfo." + n
-                    : null != t.sequenceMetadata &&
-                      t.hasOwnProperty("sequenceMetadata") &&
-                      (n = c.tensorflow.magenta.SequenceMetadata.verify(
-                        t.sequenceMetadata
-                      ))
-                    ? "sequenceMetadata." + n
-                    : null;
+                        t.hasOwnProperty("subsequenceInfo") &&
+                        (n =
+                          c.tensorflow.magenta.NoteSequence.SubsequenceInfo.verify(
+                            t.subsequenceInfo,
+                          ))
+                      ? "subsequenceInfo." + n
+                      : null != t.sequenceMetadata &&
+                          t.hasOwnProperty("sequenceMetadata") &&
+                          (n = c.tensorflow.magenta.SequenceMetadata.verify(
+                            t.sequenceMetadata,
+                          ))
+                        ? "sequenceMetadata." + n
+                        : null;
                 }),
                 (t.fromObject = function (t) {
                   if (t instanceof c.tensorflow.magenta.NoteSequence) return t;
@@ -16413,17 +16430,20 @@
                     null != t.referenceNumber &&
                       (u.Long
                         ? ((e.referenceNumber = u.Long.fromValue(
-                            t.referenceNumber
+                            t.referenceNumber,
                           )).unsigned = !1)
                         : "string" == typeof t.referenceNumber
-                        ? (e.referenceNumber = parseInt(t.referenceNumber, 10))
-                        : "number" == typeof t.referenceNumber
-                        ? (e.referenceNumber = t.referenceNumber)
-                        : "object" == typeof t.referenceNumber &&
-                          (e.referenceNumber = new u.LongBits(
-                            t.referenceNumber.low >>> 0,
-                            t.referenceNumber.high >>> 0
-                          ).toNumber())),
+                          ? (e.referenceNumber = parseInt(
+                              t.referenceNumber,
+                              10,
+                            ))
+                          : "number" == typeof t.referenceNumber
+                            ? (e.referenceNumber = t.referenceNumber)
+                            : "object" == typeof t.referenceNumber &&
+                              (e.referenceNumber = new u.LongBits(
+                                t.referenceNumber.low >>> 0,
+                                t.referenceNumber.high >>> 0,
+                              ).toNumber())),
                     null != t.collectionName &&
                       (e.collectionName = String(t.collectionName)),
                     null != t.ticksPerQuarter &&
@@ -16432,24 +16452,24 @@
                   ) {
                     if (!Array.isArray(t.timeSignatures))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.timeSignatures: array expected"
+                        ".tensorflow.magenta.NoteSequence.timeSignatures: array expected",
                       );
                     e.timeSignatures = [];
                     for (var n = 0; n < t.timeSignatures.length; ++n) {
                       if ("object" != typeof t.timeSignatures[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.timeSignatures: object expected"
+                          ".tensorflow.magenta.NoteSequence.timeSignatures: object expected",
                         );
                       e.timeSignatures[n] =
                         c.tensorflow.magenta.NoteSequence.TimeSignature.fromObject(
-                          t.timeSignatures[n]
+                          t.timeSignatures[n],
                         );
                     }
                   }
                   if (t.keySignatures) {
                     if (!Array.isArray(t.keySignatures))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.keySignatures: array expected"
+                        ".tensorflow.magenta.NoteSequence.keySignatures: array expected",
                       );
                     for (
                       e.keySignatures = [], n = 0;
@@ -16458,43 +16478,43 @@
                     ) {
                       if ("object" != typeof t.keySignatures[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.keySignatures: object expected"
+                          ".tensorflow.magenta.NoteSequence.keySignatures: object expected",
                         );
                       e.keySignatures[n] =
                         c.tensorflow.magenta.NoteSequence.KeySignature.fromObject(
-                          t.keySignatures[n]
+                          t.keySignatures[n],
                         );
                     }
                   }
                   if (t.tempos) {
                     if (!Array.isArray(t.tempos))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.tempos: array expected"
+                        ".tensorflow.magenta.NoteSequence.tempos: array expected",
                       );
                     for (e.tempos = [], n = 0; n < t.tempos.length; ++n) {
                       if ("object" != typeof t.tempos[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.tempos: object expected"
+                          ".tensorflow.magenta.NoteSequence.tempos: object expected",
                         );
                       e.tempos[n] =
                         c.tensorflow.magenta.NoteSequence.Tempo.fromObject(
-                          t.tempos[n]
+                          t.tempos[n],
                         );
                     }
                   }
                   if (t.notes) {
                     if (!Array.isArray(t.notes))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.notes: array expected"
+                        ".tensorflow.magenta.NoteSequence.notes: array expected",
                       );
                     for (e.notes = [], n = 0; n < t.notes.length; ++n) {
                       if ("object" != typeof t.notes[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.notes: object expected"
+                          ".tensorflow.magenta.NoteSequence.notes: object expected",
                         );
                       e.notes[n] =
                         c.tensorflow.magenta.NoteSequence.Note.fromObject(
-                          t.notes[n]
+                          t.notes[n],
                         );
                     }
                   }
@@ -16503,25 +16523,25 @@
                     null != t.totalQuantizedSteps &&
                       (u.Long
                         ? ((e.totalQuantizedSteps = u.Long.fromValue(
-                            t.totalQuantizedSteps
+                            t.totalQuantizedSteps,
                           )).unsigned = !1)
                         : "string" == typeof t.totalQuantizedSteps
-                        ? (e.totalQuantizedSteps = parseInt(
-                            t.totalQuantizedSteps,
-                            10
-                          ))
-                        : "number" == typeof t.totalQuantizedSteps
-                        ? (e.totalQuantizedSteps = t.totalQuantizedSteps)
-                        : "object" == typeof t.totalQuantizedSteps &&
-                          (e.totalQuantizedSteps = new u.LongBits(
-                            t.totalQuantizedSteps.low >>> 0,
-                            t.totalQuantizedSteps.high >>> 0
-                          ).toNumber())),
+                          ? (e.totalQuantizedSteps = parseInt(
+                              t.totalQuantizedSteps,
+                              10,
+                            ))
+                          : "number" == typeof t.totalQuantizedSteps
+                            ? (e.totalQuantizedSteps = t.totalQuantizedSteps)
+                            : "object" == typeof t.totalQuantizedSteps &&
+                              (e.totalQuantizedSteps = new u.LongBits(
+                                t.totalQuantizedSteps.low >>> 0,
+                                t.totalQuantizedSteps.high >>> 0,
+                              ).toNumber())),
                     t.pitchBends)
                   ) {
                     if (!Array.isArray(t.pitchBends))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.pitchBends: array expected"
+                        ".tensorflow.magenta.NoteSequence.pitchBends: array expected",
                       );
                     for (
                       e.pitchBends = [], n = 0;
@@ -16530,18 +16550,18 @@
                     ) {
                       if ("object" != typeof t.pitchBends[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.pitchBends: object expected"
+                          ".tensorflow.magenta.NoteSequence.pitchBends: object expected",
                         );
                       e.pitchBends[n] =
                         c.tensorflow.magenta.NoteSequence.PitchBend.fromObject(
-                          t.pitchBends[n]
+                          t.pitchBends[n],
                         );
                     }
                   }
                   if (t.controlChanges) {
                     if (!Array.isArray(t.controlChanges))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.controlChanges: array expected"
+                        ".tensorflow.magenta.NoteSequence.controlChanges: array expected",
                       );
                     for (
                       e.controlChanges = [], n = 0;
@@ -16550,44 +16570,44 @@
                     ) {
                       if ("object" != typeof t.controlChanges[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.controlChanges: object expected"
+                          ".tensorflow.magenta.NoteSequence.controlChanges: object expected",
                         );
                       e.controlChanges[n] =
                         c.tensorflow.magenta.NoteSequence.ControlChange.fromObject(
-                          t.controlChanges[n]
+                          t.controlChanges[n],
                         );
                     }
                   }
                   if (t.partInfos) {
                     if (!Array.isArray(t.partInfos))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.partInfos: array expected"
+                        ".tensorflow.magenta.NoteSequence.partInfos: array expected",
                       );
                     for (e.partInfos = [], n = 0; n < t.partInfos.length; ++n) {
                       if ("object" != typeof t.partInfos[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.partInfos: object expected"
+                          ".tensorflow.magenta.NoteSequence.partInfos: object expected",
                         );
                       e.partInfos[n] =
                         c.tensorflow.magenta.NoteSequence.PartInfo.fromObject(
-                          t.partInfos[n]
+                          t.partInfos[n],
                         );
                     }
                   }
                   if (null != t.sourceInfo) {
                     if ("object" != typeof t.sourceInfo)
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.sourceInfo: object expected"
+                        ".tensorflow.magenta.NoteSequence.sourceInfo: object expected",
                       );
                     e.sourceInfo =
                       c.tensorflow.magenta.NoteSequence.SourceInfo.fromObject(
-                        t.sourceInfo
+                        t.sourceInfo,
                       );
                   }
                   if (t.textAnnotations) {
                     if (!Array.isArray(t.textAnnotations))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.textAnnotations: array expected"
+                        ".tensorflow.magenta.NoteSequence.textAnnotations: array expected",
                       );
                     for (
                       e.textAnnotations = [], n = 0;
@@ -16596,18 +16616,18 @@
                     ) {
                       if ("object" != typeof t.textAnnotations[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.textAnnotations: object expected"
+                          ".tensorflow.magenta.NoteSequence.textAnnotations: object expected",
                         );
                       e.textAnnotations[n] =
                         c.tensorflow.magenta.NoteSequence.TextAnnotation.fromObject(
-                          t.textAnnotations[n]
+                          t.textAnnotations[n],
                         );
                     }
                   }
                   if (t.sectionAnnotations) {
                     if (!Array.isArray(t.sectionAnnotations))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.sectionAnnotations: array expected"
+                        ".tensorflow.magenta.NoteSequence.sectionAnnotations: array expected",
                       );
                     for (
                       e.sectionAnnotations = [], n = 0;
@@ -16616,18 +16636,18 @@
                     ) {
                       if ("object" != typeof t.sectionAnnotations[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.sectionAnnotations: object expected"
+                          ".tensorflow.magenta.NoteSequence.sectionAnnotations: object expected",
                         );
                       e.sectionAnnotations[n] =
                         c.tensorflow.magenta.NoteSequence.SectionAnnotation.fromObject(
-                          t.sectionAnnotations[n]
+                          t.sectionAnnotations[n],
                         );
                     }
                   }
                   if (t.sectionGroups) {
                     if (!Array.isArray(t.sectionGroups))
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.sectionGroups: array expected"
+                        ".tensorflow.magenta.NoteSequence.sectionGroups: array expected",
                       );
                     for (
                       e.sectionGroups = [], n = 0;
@@ -16636,42 +16656,42 @@
                     ) {
                       if ("object" != typeof t.sectionGroups[n])
                         throw TypeError(
-                          ".tensorflow.magenta.NoteSequence.sectionGroups: object expected"
+                          ".tensorflow.magenta.NoteSequence.sectionGroups: object expected",
                         );
                       e.sectionGroups[n] =
                         c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
-                          t.sectionGroups[n]
+                          t.sectionGroups[n],
                         );
                     }
                   }
                   if (null != t.quantizationInfo) {
                     if ("object" != typeof t.quantizationInfo)
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.quantizationInfo: object expected"
+                        ".tensorflow.magenta.NoteSequence.quantizationInfo: object expected",
                       );
                     e.quantizationInfo =
                       c.tensorflow.magenta.NoteSequence.QuantizationInfo.fromObject(
-                        t.quantizationInfo
+                        t.quantizationInfo,
                       );
                   }
                   if (null != t.subsequenceInfo) {
                     if ("object" != typeof t.subsequenceInfo)
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.subsequenceInfo: object expected"
+                        ".tensorflow.magenta.NoteSequence.subsequenceInfo: object expected",
                       );
                     e.subsequenceInfo =
                       c.tensorflow.magenta.NoteSequence.SubsequenceInfo.fromObject(
-                        t.subsequenceInfo
+                        t.subsequenceInfo,
                       );
                   }
                   if (null != t.sequenceMetadata) {
                     if ("object" != typeof t.sequenceMetadata)
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.sequenceMetadata: object expected"
+                        ".tensorflow.magenta.NoteSequence.sequenceMetadata: object expected",
                       );
                     e.sequenceMetadata =
                       c.tensorflow.magenta.SequenceMetadata.fromObject(
-                        t.sequenceMetadata
+                        t.sequenceMetadata,
                       );
                   }
                   return e;
@@ -16708,8 +16728,8 @@
                         e.longs === String
                           ? r.toString()
                           : e.longs === Number
-                          ? r.toNumber()
-                          : r;
+                            ? r.toNumber()
+                            : r;
                     } else n.totalQuantizedSteps = e.longs === String ? "0" : 0;
                     (n.subsequenceInfo = null),
                       u.Long
@@ -16718,8 +16738,8 @@
                             e.longs === String
                               ? r.toString()
                               : e.longs === Number
-                              ? r.toNumber()
-                              : r))
+                                ? r.toNumber()
+                                : r))
                         : (n.referenceNumber = e.longs === String ? "0" : 0),
                       (n.sequenceMetadata = null);
                   }
@@ -16741,7 +16761,7 @@
                       n.timeSignatures[i] =
                         c.tensorflow.magenta.NoteSequence.TimeSignature.toObject(
                           t.timeSignatures[i],
-                          e
+                          e,
                         );
                   }
                   if (t.keySignatures && t.keySignatures.length)
@@ -16753,21 +16773,21 @@
                       n.keySignatures[i] =
                         c.tensorflow.magenta.NoteSequence.KeySignature.toObject(
                           t.keySignatures[i],
-                          e
+                          e,
                         );
                   if (t.tempos && t.tempos.length)
                     for (n.tempos = [], i = 0; i < t.tempos.length; ++i)
                       n.tempos[i] =
                         c.tensorflow.magenta.NoteSequence.Tempo.toObject(
                           t.tempos[i],
-                          e
+                          e,
                         );
                   if (t.notes && t.notes.length)
                     for (n.notes = [], i = 0; i < t.notes.length; ++i)
                       n.notes[i] =
                         c.tensorflow.magenta.NoteSequence.Note.toObject(
                           t.notes[i],
-                          e
+                          e,
                         );
                   if (
                     (null != t.totalTime &&
@@ -16782,7 +16802,7 @@
                       n.pitchBends[i] =
                         c.tensorflow.magenta.NoteSequence.PitchBend.toObject(
                           t.pitchBends[i],
-                          e
+                          e,
                         );
                   if (t.controlChanges && t.controlChanges.length)
                     for (
@@ -16793,14 +16813,14 @@
                       n.controlChanges[i] =
                         c.tensorflow.magenta.NoteSequence.ControlChange.toObject(
                           t.controlChanges[i],
-                          e
+                          e,
                         );
                   if (t.partInfos && t.partInfos.length)
                     for (n.partInfos = [], i = 0; i < t.partInfos.length; ++i)
                       n.partInfos[i] =
                         c.tensorflow.magenta.NoteSequence.PartInfo.toObject(
                           t.partInfos[i],
-                          e
+                          e,
                         );
                   if (
                     (null != t.sourceInfo &&
@@ -16808,7 +16828,7 @@
                       (n.sourceInfo =
                         c.tensorflow.magenta.NoteSequence.SourceInfo.toObject(
                           t.sourceInfo,
-                          e
+                          e,
                         )),
                     t.textAnnotations && t.textAnnotations.length)
                   )
@@ -16820,7 +16840,7 @@
                       n.textAnnotations[i] =
                         c.tensorflow.magenta.NoteSequence.TextAnnotation.toObject(
                           t.textAnnotations[i],
-                          e
+                          e,
                         );
                   if (
                     (null != t.quantizationInfo &&
@@ -16828,7 +16848,7 @@
                       (n.quantizationInfo =
                         c.tensorflow.magenta.NoteSequence.QuantizationInfo.toObject(
                           t.quantizationInfo,
-                          e
+                          e,
                         )),
                     null != t.totalQuantizedSteps &&
                       t.hasOwnProperty("totalQuantizedSteps") &&
@@ -16840,20 +16860,20 @@
                         : (n.totalQuantizedSteps =
                             e.longs === String
                               ? u.Long.prototype.toString.call(
-                                  t.totalQuantizedSteps
+                                  t.totalQuantizedSteps,
                                 )
                               : e.longs === Number
-                              ? new u.LongBits(
-                                  t.totalQuantizedSteps.low >>> 0,
-                                  t.totalQuantizedSteps.high >>> 0
-                                ).toNumber()
-                              : t.totalQuantizedSteps)),
+                                ? new u.LongBits(
+                                    t.totalQuantizedSteps.low >>> 0,
+                                    t.totalQuantizedSteps.high >>> 0,
+                                  ).toNumber()
+                                : t.totalQuantizedSteps)),
                     null != t.subsequenceInfo &&
                       t.hasOwnProperty("subsequenceInfo") &&
                       (n.subsequenceInfo =
                         c.tensorflow.magenta.NoteSequence.SubsequenceInfo.toObject(
                           t.subsequenceInfo,
-                          e
+                          e,
                         )),
                     null != t.referenceNumber &&
                       t.hasOwnProperty("referenceNumber") &&
@@ -16865,20 +16885,20 @@
                         : (n.referenceNumber =
                             e.longs === String
                               ? u.Long.prototype.toString.call(
-                                  t.referenceNumber
+                                  t.referenceNumber,
                                 )
                               : e.longs === Number
-                              ? new u.LongBits(
-                                  t.referenceNumber.low >>> 0,
-                                  t.referenceNumber.high >>> 0
-                                ).toNumber()
-                              : t.referenceNumber)),
+                                ? new u.LongBits(
+                                    t.referenceNumber.low >>> 0,
+                                    t.referenceNumber.high >>> 0,
+                                  ).toNumber()
+                                : t.referenceNumber)),
                     null != t.sequenceMetadata &&
                       t.hasOwnProperty("sequenceMetadata") &&
                       (n.sequenceMetadata =
                         c.tensorflow.magenta.SequenceMetadata.toObject(
                           t.sequenceMetadata,
-                          e
+                          e,
                         )),
                     t.sectionAnnotations && t.sectionAnnotations.length)
                   )
@@ -16890,7 +16910,7 @@
                       n.sectionAnnotations[i] =
                         c.tensorflow.magenta.NoteSequence.SectionAnnotation.toObject(
                           t.sectionAnnotations[i],
-                          e
+                          e,
                         );
                   if (t.sectionGroups && t.sectionGroups.length)
                     for (
@@ -16901,7 +16921,7 @@
                       n.sectionGroups[i] =
                         c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
                           t.sectionGroups[i],
-                          e
+                          e,
                         );
                   return n;
                 }),
@@ -17110,60 +17130,60 @@
                         !u.isInteger(t.velocity)
                         ? "velocity: integer expected"
                         : null != t.startTime &&
-                          t.hasOwnProperty("startTime") &&
-                          "number" != typeof t.startTime
-                        ? "startTime: number expected"
-                        : null != t.quantizedStartStep &&
-                          t.hasOwnProperty("quantizedStartStep") &&
-                          !(
-                            u.isInteger(t.quantizedStartStep) ||
-                            (t.quantizedStartStep &&
-                              u.isInteger(t.quantizedStartStep.low) &&
-                              u.isInteger(t.quantizedStartStep.high))
-                          )
-                        ? "quantizedStartStep: integer|Long expected"
-                        : null != t.endTime &&
-                          t.hasOwnProperty("endTime") &&
-                          "number" != typeof t.endTime
-                        ? "endTime: number expected"
-                        : null != t.quantizedEndStep &&
-                          t.hasOwnProperty("quantizedEndStep") &&
-                          !(
-                            u.isInteger(t.quantizedEndStep) ||
-                            (t.quantizedEndStep &&
-                              u.isInteger(t.quantizedEndStep.low) &&
-                              u.isInteger(t.quantizedEndStep.high))
-                          )
-                        ? "quantizedEndStep: integer|Long expected"
-                        : null != t.numerator &&
-                          t.hasOwnProperty("numerator") &&
-                          !u.isInteger(t.numerator)
-                        ? "numerator: integer expected"
-                        : null != t.denominator &&
-                          t.hasOwnProperty("denominator") &&
-                          !u.isInteger(t.denominator)
-                        ? "denominator: integer expected"
-                        : null != t.instrument &&
-                          t.hasOwnProperty("instrument") &&
-                          !u.isInteger(t.instrument)
-                        ? "instrument: integer expected"
-                        : null != t.program &&
-                          t.hasOwnProperty("program") &&
-                          !u.isInteger(t.program)
-                        ? "program: integer expected"
-                        : null != t.isDrum &&
-                          t.hasOwnProperty("isDrum") &&
-                          "boolean" != typeof t.isDrum
-                        ? "isDrum: boolean expected"
-                        : null != t.part &&
-                          t.hasOwnProperty("part") &&
-                          !u.isInteger(t.part)
-                        ? "part: integer expected"
-                        : null != t.voice &&
-                          t.hasOwnProperty("voice") &&
-                          !u.isInteger(t.voice)
-                        ? "voice: integer expected"
-                        : null;
+                            t.hasOwnProperty("startTime") &&
+                            "number" != typeof t.startTime
+                          ? "startTime: number expected"
+                          : null != t.quantizedStartStep &&
+                              t.hasOwnProperty("quantizedStartStep") &&
+                              !(
+                                u.isInteger(t.quantizedStartStep) ||
+                                (t.quantizedStartStep &&
+                                  u.isInteger(t.quantizedStartStep.low) &&
+                                  u.isInteger(t.quantizedStartStep.high))
+                              )
+                            ? "quantizedStartStep: integer|Long expected"
+                            : null != t.endTime &&
+                                t.hasOwnProperty("endTime") &&
+                                "number" != typeof t.endTime
+                              ? "endTime: number expected"
+                              : null != t.quantizedEndStep &&
+                                  t.hasOwnProperty("quantizedEndStep") &&
+                                  !(
+                                    u.isInteger(t.quantizedEndStep) ||
+                                    (t.quantizedEndStep &&
+                                      u.isInteger(t.quantizedEndStep.low) &&
+                                      u.isInteger(t.quantizedEndStep.high))
+                                  )
+                                ? "quantizedEndStep: integer|Long expected"
+                                : null != t.numerator &&
+                                    t.hasOwnProperty("numerator") &&
+                                    !u.isInteger(t.numerator)
+                                  ? "numerator: integer expected"
+                                  : null != t.denominator &&
+                                      t.hasOwnProperty("denominator") &&
+                                      !u.isInteger(t.denominator)
+                                    ? "denominator: integer expected"
+                                    : null != t.instrument &&
+                                        t.hasOwnProperty("instrument") &&
+                                        !u.isInteger(t.instrument)
+                                      ? "instrument: integer expected"
+                                      : null != t.program &&
+                                          t.hasOwnProperty("program") &&
+                                          !u.isInteger(t.program)
+                                        ? "program: integer expected"
+                                        : null != t.isDrum &&
+                                            t.hasOwnProperty("isDrum") &&
+                                            "boolean" != typeof t.isDrum
+                                          ? "isDrum: boolean expected"
+                                          : null != t.part &&
+                                              t.hasOwnProperty("part") &&
+                                              !u.isInteger(t.part)
+                                            ? "part: integer expected"
+                                            : null != t.voice &&
+                                                t.hasOwnProperty("voice") &&
+                                                !u.isInteger(t.voice)
+                                              ? "voice: integer expected"
+                                              : null;
                     }),
                     (t.fromObject = function (t) {
                       if (t instanceof c.tensorflow.magenta.NoteSequence.Note)
@@ -17324,38 +17344,38 @@
                         null != t.quantizedStartStep &&
                           (u.Long
                             ? ((e.quantizedStartStep = u.Long.fromValue(
-                                t.quantizedStartStep
+                                t.quantizedStartStep,
                               )).unsigned = !1)
                             : "string" == typeof t.quantizedStartStep
-                            ? (e.quantizedStartStep = parseInt(
-                                t.quantizedStartStep,
-                                10
-                              ))
-                            : "number" == typeof t.quantizedStartStep
-                            ? (e.quantizedStartStep = t.quantizedStartStep)
-                            : "object" == typeof t.quantizedStartStep &&
-                              (e.quantizedStartStep = new u.LongBits(
-                                t.quantizedStartStep.low >>> 0,
-                                t.quantizedStartStep.high >>> 0
-                              ).toNumber())),
+                              ? (e.quantizedStartStep = parseInt(
+                                  t.quantizedStartStep,
+                                  10,
+                                ))
+                              : "number" == typeof t.quantizedStartStep
+                                ? (e.quantizedStartStep = t.quantizedStartStep)
+                                : "object" == typeof t.quantizedStartStep &&
+                                  (e.quantizedStartStep = new u.LongBits(
+                                    t.quantizedStartStep.low >>> 0,
+                                    t.quantizedStartStep.high >>> 0,
+                                  ).toNumber())),
                         null != t.endTime && (e.endTime = Number(t.endTime)),
                         null != t.quantizedEndStep &&
                           (u.Long
                             ? ((e.quantizedEndStep = u.Long.fromValue(
-                                t.quantizedEndStep
+                                t.quantizedEndStep,
                               )).unsigned = !1)
                             : "string" == typeof t.quantizedEndStep
-                            ? (e.quantizedEndStep = parseInt(
-                                t.quantizedEndStep,
-                                10
-                              ))
-                            : "number" == typeof t.quantizedEndStep
-                            ? (e.quantizedEndStep = t.quantizedEndStep)
-                            : "object" == typeof t.quantizedEndStep &&
-                              (e.quantizedEndStep = new u.LongBits(
-                                t.quantizedEndStep.low >>> 0,
-                                t.quantizedEndStep.high >>> 0
-                              ).toNumber())),
+                              ? (e.quantizedEndStep = parseInt(
+                                  t.quantizedEndStep,
+                                  10,
+                                ))
+                              : "number" == typeof t.quantizedEndStep
+                                ? (e.quantizedEndStep = t.quantizedEndStep)
+                                : "object" == typeof t.quantizedEndStep &&
+                                  (e.quantizedEndStep = new u.LongBits(
+                                    t.quantizedEndStep.low >>> 0,
+                                    t.quantizedEndStep.high >>> 0,
+                                  ).toNumber())),
                         null != t.numerator && (e.numerator = 0 | t.numerator),
                         null != t.denominator &&
                           (e.denominator = 0 | t.denominator),
@@ -17393,8 +17413,8 @@
                             e.longs === String
                               ? r.toString()
                               : e.longs === Number
-                              ? r.toNumber()
-                              : r;
+                                ? r.toNumber()
+                                : r;
                         } else
                           n.quantizedStartStep = e.longs === String ? "0" : 0;
                         u.Long
@@ -17403,8 +17423,8 @@
                               e.longs === String
                                 ? r.toString()
                                 : e.longs === Number
-                                ? r.toNumber()
-                                : r))
+                                  ? r.toNumber()
+                                  : r))
                           : (n.quantizedEndStep = e.longs === String ? "0" : 0);
                       }
                       return (
@@ -17465,14 +17485,14 @@
                             : (n.quantizedStartStep =
                                 e.longs === String
                                   ? u.Long.prototype.toString.call(
-                                      t.quantizedStartStep
+                                      t.quantizedStartStep,
                                     )
                                   : e.longs === Number
-                                  ? new u.LongBits(
-                                      t.quantizedStartStep.low >>> 0,
-                                      t.quantizedStartStep.high >>> 0
-                                    ).toNumber()
-                                  : t.quantizedStartStep)),
+                                    ? new u.LongBits(
+                                        t.quantizedStartStep.low >>> 0,
+                                        t.quantizedStartStep.high >>> 0,
+                                      ).toNumber()
+                                    : t.quantizedStartStep)),
                         null != t.quantizedEndStep &&
                           t.hasOwnProperty("quantizedEndStep") &&
                           ("number" == typeof t.quantizedEndStep
@@ -17483,21 +17503,21 @@
                             : (n.quantizedEndStep =
                                 e.longs === String
                                   ? u.Long.prototype.toString.call(
-                                      t.quantizedEndStep
+                                      t.quantizedEndStep,
                                     )
                                   : e.longs === Number
-                                  ? new u.LongBits(
-                                      t.quantizedEndStep.low >>> 0,
-                                      t.quantizedEndStep.high >>> 0
-                                    ).toNumber()
-                                  : t.quantizedEndStep)),
+                                    ? new u.LongBits(
+                                        t.quantizedEndStep.low >>> 0,
+                                        t.quantizedEndStep.high >>> 0,
+                                      ).toNumber()
+                                    : t.quantizedEndStep)),
                         n
                       );
                     }),
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -17609,18 +17629,18 @@
                       return "object" != typeof t || null === t
                         ? "object expected"
                         : null != t.time &&
-                          t.hasOwnProperty("time") &&
-                          "number" != typeof t.time
-                        ? "time: number expected"
-                        : null != t.numerator &&
-                          t.hasOwnProperty("numerator") &&
-                          !u.isInteger(t.numerator)
-                        ? "numerator: integer expected"
-                        : null != t.denominator &&
-                          t.hasOwnProperty("denominator") &&
-                          !u.isInteger(t.denominator)
-                        ? "denominator: integer expected"
-                        : null;
+                            t.hasOwnProperty("time") &&
+                            "number" != typeof t.time
+                          ? "time: number expected"
+                          : null != t.numerator &&
+                              t.hasOwnProperty("numerator") &&
+                              !u.isInteger(t.numerator)
+                            ? "numerator: integer expected"
+                            : null != t.denominator &&
+                                t.hasOwnProperty("denominator") &&
+                                !u.isInteger(t.denominator)
+                              ? "denominator: integer expected"
+                              : null;
                     }),
                     (t.fromObject = function (t) {
                       if (
@@ -17664,7 +17684,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -17927,7 +17947,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     (t.Key = (function () {
@@ -18031,14 +18051,14 @@
                       return "object" != typeof t || null === t
                         ? "object expected"
                         : null != t.time &&
-                          t.hasOwnProperty("time") &&
-                          "number" != typeof t.time
-                        ? "time: number expected"
-                        : null != t.qpm &&
-                          t.hasOwnProperty("qpm") &&
-                          "number" != typeof t.qpm
-                        ? "qpm: number expected"
-                        : null;
+                            t.hasOwnProperty("time") &&
+                            "number" != typeof t.time
+                          ? "time: number expected"
+                          : null != t.qpm &&
+                              t.hasOwnProperty("qpm") &&
+                              "number" != typeof t.qpm
+                            ? "qpm: number expected"
+                            : null;
                     }),
                     (t.fromObject = function (t) {
                       if (t instanceof c.tensorflow.magenta.NoteSequence.Tempo)
@@ -18071,7 +18091,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -18157,26 +18177,26 @@
                       return "object" != typeof t || null === t
                         ? "object expected"
                         : null != t.time &&
-                          t.hasOwnProperty("time") &&
-                          "number" != typeof t.time
-                        ? "time: number expected"
-                        : null != t.bend &&
-                          t.hasOwnProperty("bend") &&
-                          !u.isInteger(t.bend)
-                        ? "bend: integer expected"
-                        : null != t.instrument &&
-                          t.hasOwnProperty("instrument") &&
-                          !u.isInteger(t.instrument)
-                        ? "instrument: integer expected"
-                        : null != t.program &&
-                          t.hasOwnProperty("program") &&
-                          !u.isInteger(t.program)
-                        ? "program: integer expected"
-                        : null != t.isDrum &&
-                          t.hasOwnProperty("isDrum") &&
-                          "boolean" != typeof t.isDrum
-                        ? "isDrum: boolean expected"
-                        : null;
+                            t.hasOwnProperty("time") &&
+                            "number" != typeof t.time
+                          ? "time: number expected"
+                          : null != t.bend &&
+                              t.hasOwnProperty("bend") &&
+                              !u.isInteger(t.bend)
+                            ? "bend: integer expected"
+                            : null != t.instrument &&
+                                t.hasOwnProperty("instrument") &&
+                                !u.isInteger(t.instrument)
+                              ? "instrument: integer expected"
+                              : null != t.program &&
+                                  t.hasOwnProperty("program") &&
+                                  !u.isInteger(t.program)
+                                ? "program: integer expected"
+                                : null != t.isDrum &&
+                                    t.hasOwnProperty("isDrum") &&
+                                    "boolean" != typeof t.isDrum
+                                  ? "isDrum: boolean expected"
+                                  : null;
                     }),
                     (t.fromObject = function (t) {
                       if (
@@ -18228,7 +18248,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -18333,39 +18353,39 @@
                       return "object" != typeof t || null === t
                         ? "object expected"
                         : null != t.time &&
-                          t.hasOwnProperty("time") &&
-                          "number" != typeof t.time
-                        ? "time: number expected"
-                        : null != t.quantizedStep &&
-                          t.hasOwnProperty("quantizedStep") &&
-                          !(
-                            u.isInteger(t.quantizedStep) ||
-                            (t.quantizedStep &&
-                              u.isInteger(t.quantizedStep.low) &&
-                              u.isInteger(t.quantizedStep.high))
-                          )
-                        ? "quantizedStep: integer|Long expected"
-                        : null != t.controlNumber &&
-                          t.hasOwnProperty("controlNumber") &&
-                          !u.isInteger(t.controlNumber)
-                        ? "controlNumber: integer expected"
-                        : null != t.controlValue &&
-                          t.hasOwnProperty("controlValue") &&
-                          !u.isInteger(t.controlValue)
-                        ? "controlValue: integer expected"
-                        : null != t.instrument &&
-                          t.hasOwnProperty("instrument") &&
-                          !u.isInteger(t.instrument)
-                        ? "instrument: integer expected"
-                        : null != t.program &&
-                          t.hasOwnProperty("program") &&
-                          !u.isInteger(t.program)
-                        ? "program: integer expected"
-                        : null != t.isDrum &&
-                          t.hasOwnProperty("isDrum") &&
-                          "boolean" != typeof t.isDrum
-                        ? "isDrum: boolean expected"
-                        : null;
+                            t.hasOwnProperty("time") &&
+                            "number" != typeof t.time
+                          ? "time: number expected"
+                          : null != t.quantizedStep &&
+                              t.hasOwnProperty("quantizedStep") &&
+                              !(
+                                u.isInteger(t.quantizedStep) ||
+                                (t.quantizedStep &&
+                                  u.isInteger(t.quantizedStep.low) &&
+                                  u.isInteger(t.quantizedStep.high))
+                              )
+                            ? "quantizedStep: integer|Long expected"
+                            : null != t.controlNumber &&
+                                t.hasOwnProperty("controlNumber") &&
+                                !u.isInteger(t.controlNumber)
+                              ? "controlNumber: integer expected"
+                              : null != t.controlValue &&
+                                  t.hasOwnProperty("controlValue") &&
+                                  !u.isInteger(t.controlValue)
+                                ? "controlValue: integer expected"
+                                : null != t.instrument &&
+                                    t.hasOwnProperty("instrument") &&
+                                    !u.isInteger(t.instrument)
+                                  ? "instrument: integer expected"
+                                  : null != t.program &&
+                                      t.hasOwnProperty("program") &&
+                                      !u.isInteger(t.program)
+                                    ? "program: integer expected"
+                                    : null != t.isDrum &&
+                                        t.hasOwnProperty("isDrum") &&
+                                        "boolean" != typeof t.isDrum
+                                      ? "isDrum: boolean expected"
+                                      : null;
                     }),
                     (t.fromObject = function (t) {
                       if (
@@ -18380,17 +18400,20 @@
                         null != t.quantizedStep &&
                           (u.Long
                             ? ((e.quantizedStep = u.Long.fromValue(
-                                t.quantizedStep
+                                t.quantizedStep,
                               )).unsigned = !1)
                             : "string" == typeof t.quantizedStep
-                            ? (e.quantizedStep = parseInt(t.quantizedStep, 10))
-                            : "number" == typeof t.quantizedStep
-                            ? (e.quantizedStep = t.quantizedStep)
-                            : "object" == typeof t.quantizedStep &&
-                              (e.quantizedStep = new u.LongBits(
-                                t.quantizedStep.low >>> 0,
-                                t.quantizedStep.high >>> 0
-                              ).toNumber())),
+                              ? (e.quantizedStep = parseInt(
+                                  t.quantizedStep,
+                                  10,
+                                ))
+                              : "number" == typeof t.quantizedStep
+                                ? (e.quantizedStep = t.quantizedStep)
+                                : "object" == typeof t.quantizedStep &&
+                                  (e.quantizedStep = new u.LongBits(
+                                    t.quantizedStep.low >>> 0,
+                                    t.quantizedStep.high >>> 0,
+                                  ).toNumber())),
                         null != t.controlNumber &&
                           (e.controlNumber = 0 | t.controlNumber),
                         null != t.controlValue &&
@@ -18420,8 +18443,8 @@
                             e.longs === String
                               ? r.toString()
                               : e.longs === Number
-                              ? r.toNumber()
-                              : r;
+                                ? r.toNumber()
+                                : r;
                         } else n.quantizedStep = e.longs === String ? "0" : 0;
                       return (
                         null != t.time &&
@@ -18455,21 +18478,21 @@
                             : (n.quantizedStep =
                                 e.longs === String
                                   ? u.Long.prototype.toString.call(
-                                      t.quantizedStep
+                                      t.quantizedStep,
                                     )
                                   : e.longs === Number
-                                  ? new u.LongBits(
-                                      t.quantizedStep.low >>> 0,
-                                      t.quantizedStep.high >>> 0
-                                    ).toNumber()
-                                  : t.quantizedStep)),
+                                    ? new u.LongBits(
+                                        t.quantizedStep.low >>> 0,
+                                        t.quantizedStep.high >>> 0,
+                                      ).toNumber()
+                                    : t.quantizedStep)),
                         n
                       );
                     }),
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -18534,14 +18557,14 @@
                       return "object" != typeof t || null === t
                         ? "object expected"
                         : null != t.part &&
-                          t.hasOwnProperty("part") &&
-                          !u.isInteger(t.part)
-                        ? "part: integer expected"
-                        : null != t.name &&
-                          t.hasOwnProperty("name") &&
-                          !u.isString(t.name)
-                        ? "name: string expected"
-                        : null;
+                            t.hasOwnProperty("part") &&
+                            !u.isInteger(t.part)
+                          ? "part: integer expected"
+                          : null != t.name &&
+                              t.hasOwnProperty("name") &&
+                              !u.isString(t.name)
+                            ? "name: string expected"
+                            : null;
                     }),
                     (t.fromObject = function (t) {
                       if (
@@ -18572,7 +18595,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -18793,7 +18816,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     (t.SourceType = (function () {
@@ -18961,17 +18984,20 @@
                         null != t.quantizedStep &&
                           (u.Long
                             ? ((e.quantizedStep = u.Long.fromValue(
-                                t.quantizedStep
+                                t.quantizedStep,
                               )).unsigned = !1)
                             : "string" == typeof t.quantizedStep
-                            ? (e.quantizedStep = parseInt(t.quantizedStep, 10))
-                            : "number" == typeof t.quantizedStep
-                            ? (e.quantizedStep = t.quantizedStep)
-                            : "object" == typeof t.quantizedStep &&
-                              (e.quantizedStep = new u.LongBits(
-                                t.quantizedStep.low >>> 0,
-                                t.quantizedStep.high >>> 0
-                              ).toNumber())),
+                              ? (e.quantizedStep = parseInt(
+                                  t.quantizedStep,
+                                  10,
+                                ))
+                              : "number" == typeof t.quantizedStep
+                                ? (e.quantizedStep = t.quantizedStep)
+                                : "object" == typeof t.quantizedStep &&
+                                  (e.quantizedStep = new u.LongBits(
+                                    t.quantizedStep.low >>> 0,
+                                    t.quantizedStep.high >>> 0,
+                                  ).toNumber())),
                         null != t.text && (e.text = String(t.text)),
                         t.annotationType)
                       ) {
@@ -19005,8 +19031,8 @@
                             e.longs === String
                               ? r.toString()
                               : e.longs === Number
-                              ? r.toNumber()
-                              : r;
+                                ? r.toNumber()
+                                : r;
                         } else n.quantizedStep = e.longs === String ? "0" : 0;
                       return (
                         null != t.time &&
@@ -19035,21 +19061,21 @@
                             : (n.quantizedStep =
                                 e.longs === String
                                   ? u.Long.prototype.toString.call(
-                                      t.quantizedStep
+                                      t.quantizedStep,
                                     )
                                   : e.longs === Number
-                                  ? new u.LongBits(
-                                      t.quantizedStep.low >>> 0,
-                                      t.quantizedStep.high >>> 0
-                                    ).toNumber()
-                                  : t.quantizedStep)),
+                                    ? new u.LongBits(
+                                        t.quantizedStep.low >>> 0,
+                                        t.quantizedStep.high >>> 0,
+                                      ).toNumber()
+                                    : t.quantizedStep)),
                         n
                       );
                     }),
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     (t.TextAnnotationType = (function () {
@@ -19077,7 +19103,7 @@
                     (t.prototype.stepsPerSecond = 0),
                     Object.defineProperty(t.prototype, "resolution", {
                       get: u.oneOfGetter(
-                        (e = ["stepsPerQuarter", "stepsPerSecond"])
+                        (e = ["stepsPerQuarter", "stepsPerSecond"]),
                       ),
                       set: u.oneOfSetter(e),
                     }),
@@ -19185,7 +19211,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -19251,14 +19277,14 @@
                       return "object" != typeof t || null === t
                         ? "object expected"
                         : null != t.startTimeOffset &&
-                          t.hasOwnProperty("startTimeOffset") &&
-                          "number" != typeof t.startTimeOffset
-                        ? "startTimeOffset: number expected"
-                        : null != t.endTimeOffset &&
-                          t.hasOwnProperty("endTimeOffset") &&
-                          "number" != typeof t.endTimeOffset
-                        ? "endTimeOffset: number expected"
-                        : null;
+                            t.hasOwnProperty("startTimeOffset") &&
+                            "number" != typeof t.startTimeOffset
+                          ? "startTimeOffset: number expected"
+                          : null != t.endTimeOffset &&
+                              t.hasOwnProperty("endTimeOffset") &&
+                              "number" != typeof t.endTimeOffset
+                            ? "endTimeOffset: number expected"
+                            : null;
                     }),
                     (t.fromObject = function (t) {
                       if (
@@ -19300,7 +19326,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -19370,19 +19396,19 @@
                       return "object" != typeof t || null === t
                         ? "object expected"
                         : null != t.time &&
-                          t.hasOwnProperty("time") &&
-                          "number" != typeof t.time
-                        ? "time: number expected"
-                        : null != t.sectionId &&
-                          t.hasOwnProperty("sectionId") &&
-                          !(
-                            u.isInteger(t.sectionId) ||
-                            (t.sectionId &&
-                              u.isInteger(t.sectionId.low) &&
-                              u.isInteger(t.sectionId.high))
-                          )
-                        ? "sectionId: integer|Long expected"
-                        : null;
+                            t.hasOwnProperty("time") &&
+                            "number" != typeof t.time
+                          ? "time: number expected"
+                          : null != t.sectionId &&
+                              t.hasOwnProperty("sectionId") &&
+                              !(
+                                u.isInteger(t.sectionId) ||
+                                (t.sectionId &&
+                                  u.isInteger(t.sectionId.low) &&
+                                  u.isInteger(t.sectionId.high))
+                              )
+                            ? "sectionId: integer|Long expected"
+                            : null;
                     }),
                     (t.fromObject = function (t) {
                       if (
@@ -19397,17 +19423,17 @@
                         null != t.sectionId &&
                           (u.Long
                             ? ((e.sectionId = u.Long.fromValue(
-                                t.sectionId
+                                t.sectionId,
                               )).unsigned = !1)
                             : "string" == typeof t.sectionId
-                            ? (e.sectionId = parseInt(t.sectionId, 10))
-                            : "number" == typeof t.sectionId
-                            ? (e.sectionId = t.sectionId)
-                            : "object" == typeof t.sectionId &&
-                              (e.sectionId = new u.LongBits(
-                                t.sectionId.low >>> 0,
-                                t.sectionId.high >>> 0
-                              ).toNumber())),
+                              ? (e.sectionId = parseInt(t.sectionId, 10))
+                              : "number" == typeof t.sectionId
+                                ? (e.sectionId = t.sectionId)
+                                : "object" == typeof t.sectionId &&
+                                  (e.sectionId = new u.LongBits(
+                                    t.sectionId.low >>> 0,
+                                    t.sectionId.high >>> 0,
+                                  ).toNumber())),
                         e
                       );
                     }),
@@ -19421,8 +19447,8 @@
                             e.longs === String
                               ? r.toString()
                               : e.longs === Number
-                              ? r.toNumber()
-                              : r;
+                                ? r.toNumber()
+                                : r;
                         } else n.sectionId = e.longs === String ? "0" : 0;
                       return (
                         null != t.time &&
@@ -19442,18 +19468,18 @@
                                 e.longs === String
                                   ? u.Long.prototype.toString.call(t.sectionId)
                                   : e.longs === Number
-                                  ? new u.LongBits(
-                                      t.sectionId.low >>> 0,
-                                      t.sectionId.high >>> 0
-                                    ).toNumber()
-                                  : t.sectionId)),
+                                    ? new u.LongBits(
+                                        t.sectionId.low >>> 0,
+                                        t.sectionId.high >>> 0,
+                                      ).toNumber()
+                                    : t.sectionId)),
                         n
                       );
                     }),
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -19488,7 +19514,7 @@
                           t.hasOwnProperty("sectionGroup") &&
                           c.tensorflow.magenta.NoteSequence.SectionGroup.encode(
                             t.sectionGroup,
-                            e.uint32(18).fork()
+                            e.uint32(18).fork(),
                           ).ldelim(),
                         e
                       );
@@ -19515,7 +19541,7 @@
                             r.sectionGroup =
                               c.tensorflow.magenta.NoteSequence.SectionGroup.decode(
                                 t,
-                                t.uint32()
+                                t.uint32(),
                               );
                             break;
                           default:
@@ -19555,7 +19581,7 @@
                         e.sectionType = 1;
                         var n =
                           c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
-                            t.sectionGroup
+                            t.sectionGroup,
                           );
                         if (n) return "sectionGroup." + n;
                       }
@@ -19571,26 +19597,26 @@
                         (null != t.sectionId &&
                           (u.Long
                             ? ((e.sectionId = u.Long.fromValue(
-                                t.sectionId
+                                t.sectionId,
                               )).unsigned = !1)
                             : "string" == typeof t.sectionId
-                            ? (e.sectionId = parseInt(t.sectionId, 10))
-                            : "number" == typeof t.sectionId
-                            ? (e.sectionId = t.sectionId)
-                            : "object" == typeof t.sectionId &&
-                              (e.sectionId = new u.LongBits(
-                                t.sectionId.low >>> 0,
-                                t.sectionId.high >>> 0
-                              ).toNumber())),
+                              ? (e.sectionId = parseInt(t.sectionId, 10))
+                              : "number" == typeof t.sectionId
+                                ? (e.sectionId = t.sectionId)
+                                : "object" == typeof t.sectionId &&
+                                  (e.sectionId = new u.LongBits(
+                                    t.sectionId.low >>> 0,
+                                    t.sectionId.high >>> 0,
+                                  ).toNumber())),
                         null != t.sectionGroup)
                       ) {
                         if ("object" != typeof t.sectionGroup)
                           throw TypeError(
-                            ".tensorflow.magenta.NoteSequence.Section.sectionGroup: object expected"
+                            ".tensorflow.magenta.NoteSequence.Section.sectionGroup: object expected",
                           );
                         e.sectionGroup =
                           c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
-                            t.sectionGroup
+                            t.sectionGroup,
                           );
                       }
                       return e;
@@ -19610,18 +19636,18 @@
                                 e.longs === String
                                   ? u.Long.prototype.toString.call(t.sectionId)
                                   : e.longs === Number
-                                  ? new u.LongBits(
-                                      t.sectionId.low >>> 0,
-                                      t.sectionId.high >>> 0
-                                    ).toNumber()
-                                  : t.sectionId),
+                                    ? new u.LongBits(
+                                        t.sectionId.low >>> 0,
+                                        t.sectionId.high >>> 0,
+                                      ).toNumber()
+                                    : t.sectionId),
                           e.oneofs && (n.sectionType = "sectionId")),
                         null != t.sectionGroup &&
                           t.hasOwnProperty("sectionGroup") &&
                           ((n.sectionGroup =
                             c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
                               t.sectionGroup,
-                              e
+                              e,
                             )),
                           e.oneofs && (n.sectionType = "sectionGroup")),
                         n
@@ -19630,7 +19656,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -19656,7 +19682,7 @@
                         for (var n = 0; n < t.sections.length; ++n)
                           c.tensorflow.magenta.NoteSequence.Section.encode(
                             t.sections[n],
-                            e.uint32(10).fork()
+                            e.uint32(10).fork(),
                           ).ldelim();
                       return (
                         null != t.numTimes &&
@@ -19685,8 +19711,8 @@
                               r.sections.push(
                                 c.tensorflow.magenta.NoteSequence.Section.decode(
                                   t,
-                                  t.uint32()
-                                )
+                                  t.uint32(),
+                                ),
                               );
                             break;
                           case 2:
@@ -19713,7 +19739,7 @@
                         for (var e = 0; e < t.sections.length; ++e) {
                           var n =
                             c.tensorflow.magenta.NoteSequence.Section.verify(
-                              t.sections[e]
+                              t.sections[e],
                             );
                           if (n) return "sections." + n;
                         }
@@ -19735,17 +19761,17 @@
                       if (t.sections) {
                         if (!Array.isArray(t.sections))
                           throw TypeError(
-                            ".tensorflow.magenta.NoteSequence.SectionGroup.sections: array expected"
+                            ".tensorflow.magenta.NoteSequence.SectionGroup.sections: array expected",
                           );
                         e.sections = [];
                         for (var n = 0; n < t.sections.length; ++n) {
                           if ("object" != typeof t.sections[n])
                             throw TypeError(
-                              ".tensorflow.magenta.NoteSequence.SectionGroup.sections: object expected"
+                              ".tensorflow.magenta.NoteSequence.SectionGroup.sections: object expected",
                             );
                           e.sections[n] =
                             c.tensorflow.magenta.NoteSequence.Section.fromObject(
-                              t.sections[n]
+                              t.sections[n],
                             );
                         }
                       }
@@ -19766,7 +19792,7 @@
                           n.sections[r] =
                             c.tensorflow.magenta.NoteSequence.Section.toObject(
                               t.sections[r],
-                              e
+                              e,
                             );
                       }
                       return (
@@ -19779,7 +19805,7 @@
                     (t.prototype.toJSON = function () {
                       return this.constructor.toObject(
                         this,
-                        o.util.toJSONOptions
+                        o.util.toJSONOptions,
                       );
                     }),
                     t
@@ -19900,7 +19926,7 @@
                   ) {
                     if (!Array.isArray(t.genre))
                       throw TypeError(
-                        ".tensorflow.magenta.SequenceMetadata.genre: array expected"
+                        ".tensorflow.magenta.SequenceMetadata.genre: array expected",
                       );
                     e.genre = [];
                     for (var n = 0; n < t.genre.length; ++n)
@@ -19909,7 +19935,7 @@
                   if (t.composers) {
                     if (!Array.isArray(t.composers))
                       throw TypeError(
-                        ".tensorflow.magenta.SequenceMetadata.composers: array expected"
+                        ".tensorflow.magenta.SequenceMetadata.composers: array expected",
                       );
                     for (e.composers = [], n = 0; n < t.composers.length; ++n)
                       e.composers[n] = String(t.composers[n]);
@@ -20004,14 +20030,14 @@
                   return "object" != typeof t || null === t
                     ? "object expected"
                     : null != t.min &&
-                      t.hasOwnProperty("min") &&
-                      !u.isInteger(t.min)
-                    ? "min: integer expected"
-                    : null != t.max &&
-                      t.hasOwnProperty("max") &&
-                      !u.isInteger(t.max)
-                    ? "max: integer expected"
-                    : null;
+                        t.hasOwnProperty("min") &&
+                        !u.isInteger(t.min)
+                      ? "min: integer expected"
+                      : null != t.max &&
+                          t.hasOwnProperty("max") &&
+                          !u.isInteger(t.max)
+                        ? "max: integer expected"
+                        : null;
                 }),
                 (t.fromObject = function (t) {
                   if (t instanceof c.tensorflow.magenta.VelocityRange) return t;
@@ -20300,7 +20326,7 @@
             return E(t, !1);
           };
         var x = new RegExp(
-            "^([-+]?\\d+)(d{1,4}|m|M|P|A{1,4})|(AA|A|P|M|m|d|dd)([-+]?\\d+)$"
+            "^([-+]?\\d+)(d{1,4}|m|M|P|A{1,4})|(AA|A|P|M|m|d|dd)([-+]?\\d+)$",
           ),
           C = [0, 2, 4, 5, 7, 9, 11],
           z =
@@ -20359,14 +20385,14 @@
                     ("M" === (r = i.q) && "M" === n) || ("P" === r && "P" === n)
                       ? 0
                       : "m" === r && "M" === n
-                      ? -1
-                      : /^A+$/.test(r)
-                      ? r.length
-                      : /^d+$/.test(r)
-                      ? "P" === n
-                        ? -r.length
-                        : -r.length - 1
-                      : null)),
+                        ? -1
+                        : /^A+$/.test(r)
+                          ? r.length
+                          : /^d+$/.test(r)
+                            ? "P" === n
+                              ? -r.length
+                              : -r.length - 1
+                            : null)),
                   (i.oct = Math.floor((Math.abs(i.num) - 1) / 7)),
                   (i.semitones = i.dir * (C[i.step] + i.alt + 12 * i.oct)),
                   (i.chroma = (((i.dir * (C[i.step] + i.alt)) % 12) + 12) % 12),
@@ -20589,10 +20615,10 @@
           return "" === e[0]
             ? ["", t]
             : "A" === e[0] && "ug" === e[3]
-            ? ["", "aug"]
-            : yt.test(e[2])
-            ? [e[0] + e[1], e[2] + e[3]]
-            : [e[0] + e[1] + e[2], e[3]];
+              ? ["", "aug"]
+              : yt.test(e[2])
+                ? [e[0] + e[1], e[2] + e[3]]
+                : [e[0] + e[1] + e[2], e[3]];
         }
         var wt = n(1);
         const Pt = [
@@ -20643,7 +20669,7 @@
           encodeProgression(t, e) {
             const n = t.map((t) => this.encode(t)),
               r = Array.from(Array(e).keys()).map((t) =>
-                Math.floor((t * n.length) / e)
+                Math.floor((t * n.length) / e),
               );
             return o.stack(r.map((t) => n[t]));
           }
@@ -20674,7 +20700,7 @@
           }
           encode(t) {
             return o.tidy(() =>
-              o.oneHot(o.tensor1d([this.index(t)], "int32"), this.depth).as1D()
+              o.oneHot(o.tensor1d([this.index(t)], "int32"), this.depth).as1D(),
             );
           }
         }
@@ -20692,7 +20718,7 @@
           }
           encode(t) {
             return o.tidy(() =>
-              o.oneHot(o.tensor1d([this.index(t)], "int32"), this.depth).as1D()
+              o.oneHot(o.tensor1d([this.index(t)], "int32"), this.depth).as1D(),
             );
           }
         }
@@ -20786,10 +20812,10 @@
               s < 26
                 ? s + 65
                 : s < 52
-                ? s + 71
-                : s < 62
-                ? s - 4
-                : (s - 59) | 43)
+                  ? s + 71
+                  : s < 62
+                    ? s - 4
+                    : (s - 59) | 43)
           ] = s++;
         r.encode = function (t, e, n) {
           for (var r, o = null, s = [], a = 0, u = 0; e < n; ) {
@@ -20840,7 +20866,7 @@
         }),
           (r.test = function (t) {
             return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(
-              t
+              t,
             );
           });
       },
@@ -20936,7 +20962,7 @@
                         ((i << 31) | Math.round(e / 1401298464324817e-60)) >>>
                           0,
                         n,
-                        r
+                        r,
                       );
                     else {
                       var o = Math.floor(Math.log(e) / Math.LN2);
@@ -20947,7 +20973,7 @@
                             Math.round(e * Math.pow(2, -o) * 8388608))) >>>
                           0,
                         n,
-                        r
+                        r,
                       );
                     }
                   }
@@ -20961,8 +20987,8 @@
                         ? NaN
                         : i * (1 / 0)
                       : 0 === o
-                      ? 1401298464324817e-60 * i * s
-                      : i * Math.pow(2, o - 150) * (s + 8388608);
+                        ? 1401298464324817e-60 * i * s
+                        : i * Math.pow(2, o - 150) * (s + 8388608);
                   }
                   (t.writeFloatLE = e.bind(null, i)),
                     (t.writeFloatBE = e.bind(null, o)),
@@ -21048,7 +21074,7 @@
                             (4503599627370496 * (a = r * Math.pow(2, -u))) >>>
                               0,
                             i,
-                            o + e
+                            o + e,
                           ),
                           t(
                             ((s << 31) |
@@ -21056,7 +21082,7 @@
                               ((1048576 * a) & 1048575)) >>>
                               0,
                             i,
-                            o + n
+                            o + n,
                           );
                       }
                     }
@@ -21072,8 +21098,8 @@
                         ? NaN
                         : a * (1 / 0)
                       : 0 === u
-                      ? 5e-324 * a * c
-                      : a * Math.pow(2, u - 1075) * (c + 4503599627370496);
+                        ? 5e-324 * a * c
+                        : a * Math.pow(2, u - 1075) * (c + 4503599627370496);
                   }
                   (t.writeDoubleLE = e.bind(null, i, 0, 4)),
                     (t.writeDoubleBE = e.bind(null, o, 4, 0)),
@@ -21126,10 +21152,10 @@
             (n = t.charCodeAt(r)) < 128
               ? (e += 1)
               : n < 2048
-              ? (e += 2)
-              : 55296 == (64512 & n) && 56320 == (64512 & t.charCodeAt(r + 1))
-              ? (++r, (e += 4))
-              : (e += 3);
+                ? (e += 2)
+                : 55296 == (64512 & n) && 56320 == (64512 & t.charCodeAt(r + 1))
+                  ? (++r, (e += 4))
+                  : (e += 3);
           return e;
         }),
           (r.read = function (t, e, n) {
@@ -21138,18 +21164,20 @@
               (r = t[e++]) < 128
                 ? (o[s++] = r)
                 : r > 191 && r < 224
-                ? (o[s++] = ((31 & r) << 6) | (63 & t[e++]))
-                : r > 239 && r < 365
-                ? ((r =
-                    (((7 & r) << 18) |
-                      ((63 & t[e++]) << 12) |
-                      ((63 & t[e++]) << 6) |
-                      (63 & t[e++])) -
-                    65536),
-                  (o[s++] = 55296 + (r >> 10)),
-                  (o[s++] = 56320 + (1023 & r)))
-                : (o[s++] =
-                    ((15 & r) << 12) | ((63 & t[e++]) << 6) | (63 & t[e++])),
+                  ? (o[s++] = ((31 & r) << 6) | (63 & t[e++]))
+                  : r > 239 && r < 365
+                    ? ((r =
+                        (((7 & r) << 18) |
+                          ((63 & t[e++]) << 12) |
+                          ((63 & t[e++]) << 6) |
+                          (63 & t[e++])) -
+                        65536),
+                      (o[s++] = 55296 + (r >> 10)),
+                      (o[s++] = 56320 + (1023 & r)))
+                    : (o[s++] =
+                        ((15 & r) << 12) |
+                        ((63 & t[e++]) << 6) |
+                        (63 & t[e++])),
                 s > 8191 &&
                   ((i || (i = [])).push(String.fromCharCode.apply(String, o)),
                   (s = 0));
@@ -21163,18 +21191,18 @@
               (r = t.charCodeAt(s)) < 128
                 ? (e[n++] = r)
                 : r < 2048
-                ? ((e[n++] = (r >> 6) | 192), (e[n++] = (63 & r) | 128))
-                : 55296 == (64512 & r) &&
-                  56320 == (64512 & (i = t.charCodeAt(s + 1)))
-                ? ((r = 65536 + ((1023 & r) << 10) + (1023 & i)),
-                  ++s,
-                  (e[n++] = (r >> 18) | 240),
-                  (e[n++] = ((r >> 12) & 63) | 128),
-                  (e[n++] = ((r >> 6) & 63) | 128),
-                  (e[n++] = (63 & r) | 128))
-                : ((e[n++] = (r >> 12) | 224),
-                  (e[n++] = ((r >> 6) & 63) | 128),
-                  (e[n++] = (63 & r) | 128));
+                  ? ((e[n++] = (r >> 6) | 192), (e[n++] = (63 & r) | 128))
+                  : 55296 == (64512 & r) &&
+                      56320 == (64512 & (i = t.charCodeAt(s + 1)))
+                    ? ((r = 65536 + ((1023 & r) << 10) + (1023 & i)),
+                      ++s,
+                      (e[n++] = (r >> 18) | 240),
+                      (e[n++] = ((r >> 12) & 63) | 128),
+                      (e[n++] = ((r >> 6) & 63) | 128),
+                      (e[n++] = (63 & r) | 128))
+                    : ((e[n++] = (r >> 12) | 224),
+                      (e[n++] = ((r >> 6) & 63) | 128),
+                      (e[n++] = (63 & r) | 128));
             return n - o;
           });
       },
@@ -21261,7 +21289,7 @@
                   (a.call(t, 5) << 8) |
                   (a.call(t, 6) << 16) |
                   (a.call(t, 7) << 24)) >>>
-                  0
+                  0,
               );
         }),
           (i.prototype.toHash = function () {
@@ -21273,7 +21301,7 @@
               255 & this.hi,
               (this.hi >>> 8) & 255,
               (this.hi >>> 16) & 255,
-              this.hi >>> 24
+              this.hi >>> 24,
             );
           }),
           (i.prototype.zzEncode = function () {
@@ -21303,18 +21331,18 @@
                     ? 1
                     : 2
                   : t < 2097152
-                  ? 3
-                  : 4
+                    ? 3
+                    : 4
                 : e < 16384
-                ? e < 128
-                  ? 5
-                  : 6
-                : e < 2097152
-                ? 7
-                : 8
+                  ? e < 128
+                    ? 5
+                    : 6
+                  : e < 2097152
+                    ? 7
+                    : 8
               : n < 128
-              ? 9
-              : 10;
+                ? 9
+                : 10;
           });
       },
       function (t, e, n) {
@@ -21330,8 +21358,8 @@
           t.length < 40
             ? i.utf8.write(t, e, n)
             : e.utf8Write
-            ? e.utf8Write(t, n)
-            : e.write(t, n);
+              ? e.utf8Write(t, n)
+              : e.write(t, n);
         }
         (o._configure = function () {
           (o.alloc = i._Buffer_allocUnsafe),
@@ -21377,12 +21405,12 @@
             return this.buf.utf8Slice
               ? this.buf.utf8Slice(
                   this.pos,
-                  (this.pos = Math.min(this.pos + t, this.len))
+                  (this.pos = Math.min(this.pos + t, this.len)),
                 )
               : this.buf.toString(
                   "utf-8",
                   this.pos,
-                  (this.pos = Math.min(this.pos + t, this.len))
+                  (this.pos = Math.min(this.pos + t, this.len)),
                 );
           }),
           o._configure();
@@ -21414,7 +21442,7 @@
                 return a.rpcImpl(
                   e,
                   n[a.requestDelimited ? "encodeDelimited" : "encode"](
-                    o
+                    o,
                   ).finish(),
                   function (t, n) {
                     if (t) return a.emit("error", t, e), s(t);
@@ -21431,7 +21459,7 @@
                       return a.emit("data", n, e), s(null, n);
                     }
                     a.end(!0);
-                  }
+                  },
                 );
               } catch (t) {
                 return (
@@ -21502,12 +21530,12 @@
       },
       function (t) {
         t.exports = JSON.parse(
-          '{"chromatic":["1P 2m 2M 3m 3M 4P 4A 5P 6m 6M 7m 7M"],"lydian":["1P 2M 3M 4A 5P 6M 7M"],"major":["1P 2M 3M 4P 5P 6M 7M",["ionian"]],"mixolydian":["1P 2M 3M 4P 5P 6M 7m",["dominant"]],"dorian":["1P 2M 3m 4P 5P 6M 7m"],"aeolian":["1P 2M 3m 4P 5P 6m 7m",["minor"]],"phrygian":["1P 2m 3m 4P 5P 6m 7m"],"locrian":["1P 2m 3m 4P 5d 6m 7m"],"melodic minor":["1P 2M 3m 4P 5P 6M 7M"],"melodic minor second mode":["1P 2m 3m 4P 5P 6M 7m"],"lydian augmented":["1P 2M 3M 4A 5A 6M 7M"],"lydian dominant":["1P 2M 3M 4A 5P 6M 7m",["lydian b7"]],"melodic minor fifth mode":["1P 2M 3M 4P 5P 6m 7m",["hindu","mixolydian b6M"]],"locrian #2":["1P 2M 3m 4P 5d 6m 7m",["half-diminished"]],"altered":["1P 2m 3m 3M 5d 6m 7m",["super locrian","diminished whole tone","pomeroy"]],"harmonic minor":["1P 2M 3m 4P 5P 6m 7M"],"phrygian dominant":["1P 2m 3M 4P 5P 6m 7m",["spanish","phrygian major"]],"half-whole diminished":["1P 2m 3m 3M 4A 5P 6M 7m",["dominant diminished"]],"diminished":["1P 2M 3m 4P 5d 6m 6M 7M",["whole-half diminished"]],"major pentatonic":["1P 2M 3M 5P 6M",["pentatonic"]],"lydian pentatonic":["1P 3M 4A 5P 7M",["chinese"]],"mixolydian pentatonic":["1P 3M 4P 5P 7m",["indian"]],"locrian pentatonic":["1P 3m 4P 5d 7m",["minor seven flat five pentatonic"]],"minor pentatonic":["1P 3m 4P 5P 7m"],"minor six pentatonic":["1P 3m 4P 5P 6M"],"minor hexatonic":["1P 2M 3m 4P 5P 7M"],"flat three pentatonic":["1P 2M 3m 5P 6M",["kumoi"]],"flat six pentatonic":["1P 2M 3M 5P 6m"],"major flat two pentatonic":["1P 2m 3M 5P 6M"],"whole tone pentatonic":["1P 3M 5d 6m 7m"],"ionian pentatonic":["1P 3M 4P 5P 7M"],"lydian #5P pentatonic":["1P 3M 4A 5A 7M"],"lydian dominant pentatonic":["1P 3M 4A 5P 7m"],"minor #7M pentatonic":["1P 3m 4P 5P 7M"],"super locrian pentatonic":["1P 3m 4d 5d 7m"],"in-sen":["1P 2m 4P 5P 7m"],"iwato":["1P 2m 4P 5d 7m"],"hirajoshi":["1P 2M 3m 5P 6m"],"kumoijoshi":["1P 2m 4P 5P 6m"],"pelog":["1P 2m 3m 5P 6m"],"vietnamese 1":["1P 3m 4P 5P 6m"],"vietnamese 2":["1P 3m 4P 5P 7m"],"prometheus":["1P 2M 3M 4A 6M 7m"],"prometheus neopolitan":["1P 2m 3M 4A 6M 7m"],"ritusen":["1P 2M 4P 5P 6M"],"scriabin":["1P 2m 3M 5P 6M"],"piongio":["1P 2M 4P 5P 6M 7m"],"major blues":["1P 2M 3m 3M 5P 6M"],"minor blues":["1P 3m 4P 5d 5P 7m",["blues"]],"composite blues":["1P 2M 3m 3M 4P 5d 5P 6M 7m"],"augmented":["1P 2A 3M 5P 5A 7M"],"augmented heptatonic":["1P 2A 3M 4P 5P 5A 7M"],"dorian #4":["1P 2M 3m 4A 5P 6M 7m"],"lydian diminished":["1P 2M 3m 4A 5P 6M 7M"],"whole tone":["1P 2M 3M 4A 5A 7m"],"leading whole tone":["1P 2M 3M 4A 5A 7m 7M"],"lydian minor":["1P 2M 3M 4A 5P 6m 7m"],"locrian major":["1P 2M 3M 4P 5d 6m 7m",["arabian"]],"neopolitan":["1P 2m 3m 4P 5P 6m 7M"],"neopolitan minor":["1P 2m 3m 4P 5P 6m 7M"],"neopolitan major":["1P 2m 3m 4P 5P 6M 7M",["dorian b2"]],"neopolitan major pentatonic":["1P 3M 4P 5d 7m"],"romanian minor":["1P 2M 3m 5d 5P 6M 7m"],"double harmonic lydian":["1P 2m 3M 4A 5P 6m 7M"],"harmonic major":["1P 2M 3M 4P 5P 6m 7M"],"double harmonic major":["1P 2m 3M 4P 5P 6m 7M",["gypsy"]],"egyptian":["1P 2M 4P 5P 7m"],"hungarian minor":["1P 2M 3m 4A 5P 6m 7M"],"hungarian major":["1P 2A 3M 4A 5P 6M 7m"],"oriental":["1P 2m 3M 4P 5d 6M 7m"],"spanish heptatonic":["1P 2m 3m 3M 4P 5P 6m 7m"],"flamenco":["1P 2m 3m 3M 4A 5P 7m"],"balinese":["1P 2m 3m 4P 5P 6m 7M"],"todi raga":["1P 2m 3m 4A 5P 6m 7M"],"malkos raga":["1P 3m 4P 6m 7m"],"kafi raga":["1P 3m 3M 4P 5P 6M 7m 7M"],"purvi raga":["1P 2m 3M 4P 4A 5P 6m 7M"],"persian":["1P 2m 3M 4P 5d 6m 7M"],"bebop":["1P 2M 3M 4P 5P 6M 7m 7M"],"bebop dominant":["1P 2M 3M 4P 5P 6M 7m 7M"],"bebop minor":["1P 2M 3m 3M 4P 5P 6M 7m"],"bebop major":["1P 2M 3M 4P 5P 5A 6M 7M"],"bebop locrian":["1P 2m 3m 4P 5d 5P 6m 7m"],"minor bebop":["1P 2M 3m 4P 5P 6m 7m 7M"],"mystery #1":["1P 2m 3M 5d 6m 7m"],"enigmatic":["1P 2m 3M 5d 6m 7m 7M"],"minor six diminished":["1P 2M 3m 4P 5P 6m 6M 7M"],"ionian augmented":["1P 2M 3M 4P 5A 6M 7M"],"lydian #9":["1P 2m 3M 4A 5P 6M 7M"],"ichikosucho":["1P 2M 3M 4P 5d 5P 6M 7M"],"six tone symmetric":["1P 2m 3M 4P 5A 6M"]}'
+          '{"chromatic":["1P 2m 2M 3m 3M 4P 4A 5P 6m 6M 7m 7M"],"lydian":["1P 2M 3M 4A 5P 6M 7M"],"major":["1P 2M 3M 4P 5P 6M 7M",["ionian"]],"mixolydian":["1P 2M 3M 4P 5P 6M 7m",["dominant"]],"dorian":["1P 2M 3m 4P 5P 6M 7m"],"aeolian":["1P 2M 3m 4P 5P 6m 7m",["minor"]],"phrygian":["1P 2m 3m 4P 5P 6m 7m"],"locrian":["1P 2m 3m 4P 5d 6m 7m"],"melodic minor":["1P 2M 3m 4P 5P 6M 7M"],"melodic minor second mode":["1P 2m 3m 4P 5P 6M 7m"],"lydian augmented":["1P 2M 3M 4A 5A 6M 7M"],"lydian dominant":["1P 2M 3M 4A 5P 6M 7m",["lydian b7"]],"melodic minor fifth mode":["1P 2M 3M 4P 5P 6m 7m",["hindu","mixolydian b6M"]],"locrian #2":["1P 2M 3m 4P 5d 6m 7m",["half-diminished"]],"altered":["1P 2m 3m 3M 5d 6m 7m",["super locrian","diminished whole tone","pomeroy"]],"harmonic minor":["1P 2M 3m 4P 5P 6m 7M"],"phrygian dominant":["1P 2m 3M 4P 5P 6m 7m",["spanish","phrygian major"]],"half-whole diminished":["1P 2m 3m 3M 4A 5P 6M 7m",["dominant diminished"]],"diminished":["1P 2M 3m 4P 5d 6m 6M 7M",["whole-half diminished"]],"major pentatonic":["1P 2M 3M 5P 6M",["pentatonic"]],"lydian pentatonic":["1P 3M 4A 5P 7M",["chinese"]],"mixolydian pentatonic":["1P 3M 4P 5P 7m",["indian"]],"locrian pentatonic":["1P 3m 4P 5d 7m",["minor seven flat five pentatonic"]],"minor pentatonic":["1P 3m 4P 5P 7m"],"minor six pentatonic":["1P 3m 4P 5P 6M"],"minor hexatonic":["1P 2M 3m 4P 5P 7M"],"flat three pentatonic":["1P 2M 3m 5P 6M",["kumoi"]],"flat six pentatonic":["1P 2M 3M 5P 6m"],"major flat two pentatonic":["1P 2m 3M 5P 6M"],"whole tone pentatonic":["1P 3M 5d 6m 7m"],"ionian pentatonic":["1P 3M 4P 5P 7M"],"lydian #5P pentatonic":["1P 3M 4A 5A 7M"],"lydian dominant pentatonic":["1P 3M 4A 5P 7m"],"minor #7M pentatonic":["1P 3m 4P 5P 7M"],"super locrian pentatonic":["1P 3m 4d 5d 7m"],"in-sen":["1P 2m 4P 5P 7m"],"iwato":["1P 2m 4P 5d 7m"],"hirajoshi":["1P 2M 3m 5P 6m"],"kumoijoshi":["1P 2m 4P 5P 6m"],"pelog":["1P 2m 3m 5P 6m"],"vietnamese 1":["1P 3m 4P 5P 6m"],"vietnamese 2":["1P 3m 4P 5P 7m"],"prometheus":["1P 2M 3M 4A 6M 7m"],"prometheus neopolitan":["1P 2m 3M 4A 6M 7m"],"ritusen":["1P 2M 4P 5P 6M"],"scriabin":["1P 2m 3M 5P 6M"],"piongio":["1P 2M 4P 5P 6M 7m"],"major blues":["1P 2M 3m 3M 5P 6M"],"minor blues":["1P 3m 4P 5d 5P 7m",["blues"]],"composite blues":["1P 2M 3m 3M 4P 5d 5P 6M 7m"],"augmented":["1P 2A 3M 5P 5A 7M"],"augmented heptatonic":["1P 2A 3M 4P 5P 5A 7M"],"dorian #4":["1P 2M 3m 4A 5P 6M 7m"],"lydian diminished":["1P 2M 3m 4A 5P 6M 7M"],"whole tone":["1P 2M 3M 4A 5A 7m"],"leading whole tone":["1P 2M 3M 4A 5A 7m 7M"],"lydian minor":["1P 2M 3M 4A 5P 6m 7m"],"locrian major":["1P 2M 3M 4P 5d 6m 7m",["arabian"]],"neopolitan":["1P 2m 3m 4P 5P 6m 7M"],"neopolitan minor":["1P 2m 3m 4P 5P 6m 7M"],"neopolitan major":["1P 2m 3m 4P 5P 6M 7M",["dorian b2"]],"neopolitan major pentatonic":["1P 3M 4P 5d 7m"],"romanian minor":["1P 2M 3m 5d 5P 6M 7m"],"double harmonic lydian":["1P 2m 3M 4A 5P 6m 7M"],"harmonic major":["1P 2M 3M 4P 5P 6m 7M"],"double harmonic major":["1P 2m 3M 4P 5P 6m 7M",["gypsy"]],"egyptian":["1P 2M 4P 5P 7m"],"hungarian minor":["1P 2M 3m 4A 5P 6m 7M"],"hungarian major":["1P 2A 3M 4A 5P 6M 7m"],"oriental":["1P 2m 3M 4P 5d 6M 7m"],"spanish heptatonic":["1P 2m 3m 3M 4P 5P 6m 7m"],"flamenco":["1P 2m 3m 3M 4A 5P 7m"],"balinese":["1P 2m 3m 4P 5P 6m 7M"],"todi raga":["1P 2m 3m 4A 5P 6m 7M"],"malkos raga":["1P 3m 4P 6m 7m"],"kafi raga":["1P 3m 3M 4P 5P 6M 7m 7M"],"purvi raga":["1P 2m 3M 4P 4A 5P 6m 7M"],"persian":["1P 2m 3M 4P 5d 6m 7M"],"bebop":["1P 2M 3M 4P 5P 6M 7m 7M"],"bebop dominant":["1P 2M 3M 4P 5P 6M 7m 7M"],"bebop minor":["1P 2M 3m 3M 4P 5P 6M 7m"],"bebop major":["1P 2M 3M 4P 5P 5A 6M 7M"],"bebop locrian":["1P 2m 3m 4P 5d 5P 6m 7m"],"minor bebop":["1P 2M 3m 4P 5P 6m 7m 7M"],"mystery #1":["1P 2m 3M 5d 6m 7m"],"enigmatic":["1P 2m 3M 5d 6m 7m 7M"],"minor six diminished":["1P 2M 3m 4P 5P 6m 6M 7M"],"ionian augmented":["1P 2M 3M 4P 5A 6M 7M"],"lydian #9":["1P 2m 3M 4A 5P 6M 7M"],"ichikosucho":["1P 2M 3M 4P 5d 5P 6M 7M"],"six tone symmetric":["1P 2m 3M 4P 5A 6M"]}',
         );
       },
       function (t) {
         t.exports = JSON.parse(
-          '{"4":["1P 4P 7m 10m",["quartal"]],"5":["1P 5P"],"7":["1P 3M 5P 7m",["Dominant","Dom"]],"9":["1P 3M 5P 7m 9M",["79"]],"11":["1P 5P 7m 9M 11P"],"13":["1P 3M 5P 7m 9M 13M",["13_"]],"64":["5P 8P 10M"],"M":["1P 3M 5P",["Major",""]],"M#5":["1P 3M 5A",["augmented","maj#5","Maj#5","+","aug"]],"M#5add9":["1P 3M 5A 9M",["+add9"]],"M13":["1P 3M 5P 7M 9M 13M",["maj13","Maj13"]],"M13#11":["1P 3M 5P 7M 9M 11A 13M",["maj13#11","Maj13#11","M13+4","M13#4"]],"M6":["1P 3M 5P 13M",["6"]],"M6#11":["1P 3M 5P 6M 11A",["M6b5","6#11","6b5"]],"M69":["1P 3M 5P 6M 9M",["69"]],"M69#11":["1P 3M 5P 6M 9M 11A"],"M7#11":["1P 3M 5P 7M 11A",["maj7#11","Maj7#11","M7+4","M7#4"]],"M7#5":["1P 3M 5A 7M",["maj7#5","Maj7#5","maj9#5","M7+"]],"M7#5sus4":["1P 4P 5A 7M"],"M7#9#11":["1P 3M 5P 7M 9A 11A"],"M7add13":["1P 3M 5P 6M 7M 9M"],"M7b5":["1P 3M 5d 7M"],"M7b6":["1P 3M 6m 7M"],"M7b9":["1P 3M 5P 7M 9m"],"M7sus4":["1P 4P 5P 7M"],"M9":["1P 3M 5P 7M 9M",["maj9","Maj9"]],"M9#11":["1P 3M 5P 7M 9M 11A",["maj9#11","Maj9#11","M9+4","M9#4"]],"M9#5":["1P 3M 5A 7M 9M",["Maj9#5"]],"M9#5sus4":["1P 4P 5A 7M 9M"],"M9b5":["1P 3M 5d 7M 9M"],"M9sus4":["1P 4P 5P 7M 9M"],"Madd9":["1P 3M 5P 9M",["2","add9","add2"]],"Maj7":["1P 3M 5P 7M",["maj7","M7"]],"Mb5":["1P 3M 5d"],"Mb6":["1P 3M 13m"],"Msus2":["1P 2M 5P",["add9no3","sus2"]],"Msus4":["1P 4P 5P",["sus","sus4"]],"Maddb9":["1P 3M 5P 9m"],"11b9":["1P 5P 7m 9m 11P"],"13#11":["1P 3M 5P 7m 9M 11A 13M",["13+4","13#4"]],"13#9":["1P 3M 5P 7m 9A 13M",["13#9_"]],"13#9#11":["1P 3M 5P 7m 9A 11A 13M"],"13b5":["1P 3M 5d 6M 7m 9M"],"13b9":["1P 3M 5P 7m 9m 13M"],"13b9#11":["1P 3M 5P 7m 9m 11A 13M"],"13no5":["1P 3M 7m 9M 13M"],"13sus4":["1P 4P 5P 7m 9M 13M",["13sus"]],"69#11":["1P 3M 5P 6M 9M 11A"],"7#11":["1P 3M 5P 7m 11A",["7+4","7#4","7#11_","7#4_"]],"7#11b13":["1P 3M 5P 7m 11A 13m",["7b5b13"]],"7#5":["1P 3M 5A 7m",["+7","7aug","aug7"]],"7#5#9":["1P 3M 5A 7m 9A",["7alt","7#5#9_","7#9b13_"]],"7#5b9":["1P 3M 5A 7m 9m"],"7#5b9#11":["1P 3M 5A 7m 9m 11A"],"7#5sus4":["1P 4P 5A 7m"],"7#9":["1P 3M 5P 7m 9A",["7#9_"]],"7#9#11":["1P 3M 5P 7m 9A 11A",["7b5#9"]],"7#9#11b13":["1P 3M 5P 7m 9A 11A 13m"],"7#9b13":["1P 3M 5P 7m 9A 13m"],"7add6":["1P 3M 5P 7m 13M",["67","7add13"]],"7b13":["1P 3M 7m 13m"],"7b5":["1P 3M 5d 7m"],"7b6":["1P 3M 5P 6m 7m"],"7b9":["1P 3M 5P 7m 9m"],"7b9#11":["1P 3M 5P 7m 9m 11A",["7b5b9"]],"7b9#9":["1P 3M 5P 7m 9m 9A"],"7b9b13":["1P 3M 5P 7m 9m 13m"],"7b9b13#11":["1P 3M 5P 7m 9m 11A 13m",["7b9#11b13","7b5b9b13"]],"7no5":["1P 3M 7m"],"7sus4":["1P 4P 5P 7m",["7sus"]],"7sus4b9":["1P 4P 5P 7m 9m",["susb9","7susb9","7b9sus","7b9sus4","phryg"]],"7sus4b9b13":["1P 4P 5P 7m 9m 13m",["7b9b13sus4"]],"9#11":["1P 3M 5P 7m 9M 11A",["9+4","9#4","9#11_","9#4_"]],"9#11b13":["1P 3M 5P 7m 9M 11A 13m",["9b5b13"]],"9#5":["1P 3M 5A 7m 9M",["9+"]],"9#5#11":["1P 3M 5A 7m 9M 11A"],"9b13":["1P 3M 7m 9M 13m"],"9b5":["1P 3M 5d 7m 9M"],"9no5":["1P 3M 7m 9M"],"9sus4":["1P 4P 5P 7m 9M",["9sus"]],"m":["1P 3m 5P"],"m#5":["1P 3m 5A",["m+","mb6"]],"m11":["1P 3m 5P 7m 9M 11P",["_11"]],"m11A 5":["1P 3m 6m 7m 9M 11P"],"m11b5":["1P 3m 7m 12d 2M 4P",["h11","_11b5"]],"m13":["1P 3m 5P 7m 9M 11P 13M",["_13"]],"m6":["1P 3m 4P 5P 13M",["_6"]],"m69":["1P 3m 5P 6M 9M",["_69"]],"m7":["1P 3m 5P 7m",["minor7","_","_7"]],"m7#5":["1P 3m 6m 7m"],"m7add11":["1P 3m 5P 7m 11P",["m7add4"]],"m7b5":["1P 3m 5d 7m",["half-diminished","h7","_7b5"]],"m9":["1P 3m 5P 7m 9M",["_9"]],"m9#5":["1P 3m 6m 7m 9M"],"m9b5":["1P 3m 7m 12d 2M",["h9","-9b5"]],"mMaj7":["1P 3m 5P 7M",["mM7","_M7"]],"mMaj7b6":["1P 3m 5P 6m 7M",["mM7b6"]],"mM9":["1P 3m 5P 7M 9M",["mMaj9","-M9"]],"mM9b6":["1P 3m 5P 6m 7M 9M",["mMaj9b6"]],"mb6M7":["1P 3m 6m 7M"],"mb6b9":["1P 3m 6m 9m"],"o":["1P 3m 5d",["mb5","dim"]],"o7":["1P 3m 5d 13M",["diminished","m6b5","dim7"]],"o7M7":["1P 3m 5d 6M 7M"],"oM7":["1P 3m 5d 7M"],"sus24":["1P 2M 4P 5P",["sus4add9"]],"+add#9":["1P 3M 5A 9A"],"madd4":["1P 3m 4P 5P"],"madd9":["1P 3m 5P 9M"]}'
+          '{"4":["1P 4P 7m 10m",["quartal"]],"5":["1P 5P"],"7":["1P 3M 5P 7m",["Dominant","Dom"]],"9":["1P 3M 5P 7m 9M",["79"]],"11":["1P 5P 7m 9M 11P"],"13":["1P 3M 5P 7m 9M 13M",["13_"]],"64":["5P 8P 10M"],"M":["1P 3M 5P",["Major",""]],"M#5":["1P 3M 5A",["augmented","maj#5","Maj#5","+","aug"]],"M#5add9":["1P 3M 5A 9M",["+add9"]],"M13":["1P 3M 5P 7M 9M 13M",["maj13","Maj13"]],"M13#11":["1P 3M 5P 7M 9M 11A 13M",["maj13#11","Maj13#11","M13+4","M13#4"]],"M6":["1P 3M 5P 13M",["6"]],"M6#11":["1P 3M 5P 6M 11A",["M6b5","6#11","6b5"]],"M69":["1P 3M 5P 6M 9M",["69"]],"M69#11":["1P 3M 5P 6M 9M 11A"],"M7#11":["1P 3M 5P 7M 11A",["maj7#11","Maj7#11","M7+4","M7#4"]],"M7#5":["1P 3M 5A 7M",["maj7#5","Maj7#5","maj9#5","M7+"]],"M7#5sus4":["1P 4P 5A 7M"],"M7#9#11":["1P 3M 5P 7M 9A 11A"],"M7add13":["1P 3M 5P 6M 7M 9M"],"M7b5":["1P 3M 5d 7M"],"M7b6":["1P 3M 6m 7M"],"M7b9":["1P 3M 5P 7M 9m"],"M7sus4":["1P 4P 5P 7M"],"M9":["1P 3M 5P 7M 9M",["maj9","Maj9"]],"M9#11":["1P 3M 5P 7M 9M 11A",["maj9#11","Maj9#11","M9+4","M9#4"]],"M9#5":["1P 3M 5A 7M 9M",["Maj9#5"]],"M9#5sus4":["1P 4P 5A 7M 9M"],"M9b5":["1P 3M 5d 7M 9M"],"M9sus4":["1P 4P 5P 7M 9M"],"Madd9":["1P 3M 5P 9M",["2","add9","add2"]],"Maj7":["1P 3M 5P 7M",["maj7","M7"]],"Mb5":["1P 3M 5d"],"Mb6":["1P 3M 13m"],"Msus2":["1P 2M 5P",["add9no3","sus2"]],"Msus4":["1P 4P 5P",["sus","sus4"]],"Maddb9":["1P 3M 5P 9m"],"11b9":["1P 5P 7m 9m 11P"],"13#11":["1P 3M 5P 7m 9M 11A 13M",["13+4","13#4"]],"13#9":["1P 3M 5P 7m 9A 13M",["13#9_"]],"13#9#11":["1P 3M 5P 7m 9A 11A 13M"],"13b5":["1P 3M 5d 6M 7m 9M"],"13b9":["1P 3M 5P 7m 9m 13M"],"13b9#11":["1P 3M 5P 7m 9m 11A 13M"],"13no5":["1P 3M 7m 9M 13M"],"13sus4":["1P 4P 5P 7m 9M 13M",["13sus"]],"69#11":["1P 3M 5P 6M 9M 11A"],"7#11":["1P 3M 5P 7m 11A",["7+4","7#4","7#11_","7#4_"]],"7#11b13":["1P 3M 5P 7m 11A 13m",["7b5b13"]],"7#5":["1P 3M 5A 7m",["+7","7aug","aug7"]],"7#5#9":["1P 3M 5A 7m 9A",["7alt","7#5#9_","7#9b13_"]],"7#5b9":["1P 3M 5A 7m 9m"],"7#5b9#11":["1P 3M 5A 7m 9m 11A"],"7#5sus4":["1P 4P 5A 7m"],"7#9":["1P 3M 5P 7m 9A",["7#9_"]],"7#9#11":["1P 3M 5P 7m 9A 11A",["7b5#9"]],"7#9#11b13":["1P 3M 5P 7m 9A 11A 13m"],"7#9b13":["1P 3M 5P 7m 9A 13m"],"7add6":["1P 3M 5P 7m 13M",["67","7add13"]],"7b13":["1P 3M 7m 13m"],"7b5":["1P 3M 5d 7m"],"7b6":["1P 3M 5P 6m 7m"],"7b9":["1P 3M 5P 7m 9m"],"7b9#11":["1P 3M 5P 7m 9m 11A",["7b5b9"]],"7b9#9":["1P 3M 5P 7m 9m 9A"],"7b9b13":["1P 3M 5P 7m 9m 13m"],"7b9b13#11":["1P 3M 5P 7m 9m 11A 13m",["7b9#11b13","7b5b9b13"]],"7no5":["1P 3M 7m"],"7sus4":["1P 4P 5P 7m",["7sus"]],"7sus4b9":["1P 4P 5P 7m 9m",["susb9","7susb9","7b9sus","7b9sus4","phryg"]],"7sus4b9b13":["1P 4P 5P 7m 9m 13m",["7b9b13sus4"]],"9#11":["1P 3M 5P 7m 9M 11A",["9+4","9#4","9#11_","9#4_"]],"9#11b13":["1P 3M 5P 7m 9M 11A 13m",["9b5b13"]],"9#5":["1P 3M 5A 7m 9M",["9+"]],"9#5#11":["1P 3M 5A 7m 9M 11A"],"9b13":["1P 3M 7m 9M 13m"],"9b5":["1P 3M 5d 7m 9M"],"9no5":["1P 3M 7m 9M"],"9sus4":["1P 4P 5P 7m 9M",["9sus"]],"m":["1P 3m 5P"],"m#5":["1P 3m 5A",["m+","mb6"]],"m11":["1P 3m 5P 7m 9M 11P",["_11"]],"m11A 5":["1P 3m 6m 7m 9M 11P"],"m11b5":["1P 3m 7m 12d 2M 4P",["h11","_11b5"]],"m13":["1P 3m 5P 7m 9M 11P 13M",["_13"]],"m6":["1P 3m 4P 5P 13M",["_6"]],"m69":["1P 3m 5P 6M 9M",["_69"]],"m7":["1P 3m 5P 7m",["minor7","_","_7"]],"m7#5":["1P 3m 6m 7m"],"m7add11":["1P 3m 5P 7m 11P",["m7add4"]],"m7b5":["1P 3m 5d 7m",["half-diminished","h7","_7b5"]],"m9":["1P 3m 5P 7m 9M",["_9"]],"m9#5":["1P 3m 6m 7m 9M"],"m9b5":["1P 3m 7m 12d 2M",["h9","-9b5"]],"mMaj7":["1P 3m 5P 7M",["mM7","_M7"]],"mMaj7b6":["1P 3m 5P 6m 7M",["mM7b6"]],"mM9":["1P 3m 5P 7M 9M",["mMaj9","-M9"]],"mM9b6":["1P 3m 5P 6m 7M 9M",["mMaj9b6"]],"mb6M7":["1P 3m 6m 7M"],"mb6b9":["1P 3m 6m 9m"],"o":["1P 3m 5d",["mb5","dim"]],"o7":["1P 3m 5d 13M",["diminished","m6b5","dim7"]],"o7M7":["1P 3m 5d 6M 7M"],"oM7":["1P 3m 5d 7M"],"sus24":["1P 2M 4P 5P",["sus4add9"]],"+add#9":["1P 3M 5A 9A"],"madd4":["1P 3m 4P 5P"],"madd9":["1P 3m 5P 9M"]}',
         );
       },
       ,
@@ -21552,24 +21580,24 @@
                           timeSignature: [t.numerator, t.denominator],
                         })
                       : "setTempo" === t.type
-                      ? n.tempos.push({
-                          bpm: 6e7 / t.microsecondsPerBeat,
-                          ticks: t.absoluteTime,
-                        })
-                      : "keySignature" === t.type
-                      ? n.keySignatures.push({
-                          key: e.keySignatureKeys[t.key + 7],
-                          scale: 0 === t.scale ? "major" : "minor",
-                          ticks: t.absoluteTime,
-                        })
-                      : "trackName" === t.type
-                      ? (n.name = t.text)
-                      : "endOfTrack" !== t.type &&
-                        n.meta.push({
-                          text: t.text,
-                          ticks: t.absoluteTime,
-                          type: t.type,
-                        }));
+                        ? n.tempos.push({
+                            bpm: 6e7 / t.microsecondsPerBeat,
+                            ticks: t.absoluteTime,
+                          })
+                        : "keySignature" === t.type
+                          ? n.keySignatures.push({
+                              key: e.keySignatureKeys[t.key + 7],
+                              scale: 0 === t.scale ? "major" : "minor",
+                              ticks: t.absoluteTime,
+                            })
+                          : "trackName" === t.type
+                            ? (n.name = t.text)
+                            : "endOfTrack" !== t.type &&
+                              n.meta.push({
+                                text: t.text,
+                                ticks: t.absoluteTime,
+                                type: t.type,
+                              }));
                 }),
                 this.update());
           }
@@ -21752,8 +21780,8 @@
                               2 & o[0]
                                 ? r.return
                                 : o[0]
-                                ? r.throw || ((i = r.return) && i.call(r), 0)
-                                : r.next) &&
+                                  ? r.throw || ((i = r.return) && i.call(r), 0)
+                                  : r.next) &&
                             !(i = i.call(r, o[1])).done)
                         )
                           return i;
@@ -22081,7 +22109,7 @@
                   n = new u.Note(
                     { midi: 0, ticks: 0, velocity: 1 },
                     { ticks: 0, velocity: 0 },
-                    e
+                    e,
                   );
                 return (
                   Object.assign(n, t), r.insert(this.notes, n, "ticks"), this
@@ -22216,7 +22244,7 @@
             function (t, n) {
               return (t[e.controlChangeNames[n]] = n), t;
             },
-            {}
+            {},
           ));
         var r = new WeakMap(),
           i = new WeakMap(),
@@ -22313,7 +22341,7 @@
                       i,
                       function (e) {
                         return t[e];
-                      }.bind(null, i)
+                      }.bind(null, i),
                     );
                 return r;
               }),
@@ -22361,7 +22389,7 @@
                   u.setAttributeNS(
                     null,
                     "transform",
-                    `translate(${n}, ${i}) scale(${o}, ${s})`
+                    `translate(${n}, ${i}) scale(${o}, ${s})`,
                   ),
                   u.setAttributeNS(null, "opacity", "" + a),
                   t.appendChild(u),
@@ -22376,7 +22404,7 @@
                   c.setAttributeNS(
                     null,
                     "transform",
-                    `translate(${n}, ${i}) scale(${a}, ${u})`
+                    `translate(${n}, ${i}) scale(${a}, ${u})`,
                   );
                 const l = globalThis.document.createTextNode(e);
                 return c.appendChild(l), t.appendChild(c), c;
@@ -22390,7 +22418,7 @@
                 if (!o) {
                   (o = globalThis.document.createElementNS(
                     r,
-                    "animate"
+                    "animate",
                   )).setAttributeNS(null, "attributeName", "opacity"),
                     o.setAttributeNS(null, "dur", "4s"),
                     o.setAttributeNS(null, "fill", "freeze"),
@@ -22399,7 +22427,7 @@
                   o.setAttributeNS(
                     null,
                     "values",
-                    `${n}; ${t}; ${i}; ${t}; ${n}`
+                    `${n}; ${t}; ${i}; ${t}; ${n}`,
                   );
                 }
                 return (
@@ -22661,7 +22689,7 @@
                       this.ticking ||
                         globalThis.requestAnimationFrame(() => {
                           this.changeAndDrawSignaturesIfNeeded(
-                            this.lastKnownScrollLeft
+                            this.lastKnownScrollLeft,
                           ),
                             (this.ticking = !1);
                         }),
@@ -22696,13 +22724,13 @@
                     (this.div.style.position = "relative"),
                     (this.overlaySVG = globalThis.document.createElementNS(
                       i.SVGNS,
-                      "svg"
+                      "svg",
                     )),
                     (this.overlaySVG.style.position = "absolute"),
                     this.div.appendChild(this.overlaySVG),
                     (this.overlayG = Object(i.createSVGGroupChild)(
                       this.overlaySVG,
-                      "overlay"
+                      "overlay",
                     )),
                     (this.signaturesBlinking = !1),
                     (this.signaturesQuarters = 0),
@@ -22714,33 +22742,33 @@
                     (this.lastKnownScrollLeft = 0),
                     this.parentElement.addEventListener(
                       "scroll",
-                      this.handleScrollEvent
+                      this.handleScrollEvent,
                     ),
                     (this.staffSVG = globalThis.document.createElementNS(
                       i.SVGNS,
-                      "svg"
+                      "svg",
                     )),
                     this.parentElement.appendChild(this.staffSVG),
                     (this.staffG = Object(i.createSVGGroupChild)(
                       this.staffSVG,
-                      "staff"
+                      "staff",
                     )),
                     (this.linesG = Object(i.createSVGGroupChild)(
                       this.staffSVG,
-                      "lines"
+                      "lines",
                     )),
                     this.setStroke(this.linesG),
                     this.staffG.appendChild(this.linesG),
                     (this.musicG = Object(i.createSVGGroupChild)(
                       this.staffSVG,
-                      "music"
+                      "music",
                     )),
                     this.setFill(this.musicG),
                     this.setStroke(this.musicG, 0),
                     this.staffG.appendChild(this.musicG),
                     (this.signaturesG = Object(i.createSVGGroupChild)(
                       this.staffSVG,
-                      "signatures"
+                      "signatures",
                     )),
                     this.staffG.appendChild(this.signaturesG);
                   let t = 0,
@@ -22801,7 +22829,7 @@
                           ((this.signaturesBlinking = !1),
                           Object(i.setFade)(
                             this.overlayG,
-                            this.signaturesBlinking
+                            this.signaturesBlinking,
                           ));
                     }
                   } else {
@@ -22815,7 +22843,7 @@
                           e,
                           !0,
                           !0,
-                          !0
+                          !0,
                         )),
                         r && ((this.width = 0), (n += this.config.noteSpacing)),
                         (n += this.drawRests(this.initialRest, e + n)))
@@ -22833,7 +22861,7 @@
                     if (
                       (this.updateVerticalBoundaries(
                         o.top - i.top,
-                        o.bottom - i.top
+                        o.bottom - i.top,
                       ),
                       r)
                     )
@@ -22846,7 +22874,7 @@
                     this.staffSVG.setAttributeNS(
                       null,
                       "width",
-                      "" + this.width
+                      "" + this.width,
                     ),
                       this.redrawStaff(this.linesG, 0, this.width);
                   }
@@ -22869,7 +22897,7 @@
                       "background:orange; color:white",
                       `StaffRender does not handle notes shorther than 1/${
                         4 / r.MIN_RESOLUTION
-                      }th, and this score tries to draw a 1/${e}th. Shortest possible note will be drawn instead.`
+                      }th, and this score tries to draw a 1/${e}th. Shortest possible note will be drawn instead.`,
                     ),
                       (a = r.MIN_RESOLUTION);
                   }
@@ -22893,14 +22921,14 @@
                           e + s,
                           t * this.vStepSize,
                           this.scale,
-                          1
+                          1,
                         );
                       if (
                         ((n.g = n.tiedFrom
                           ? n.tiedFrom.g
                           : Object(i.createSVGGroupChild)(
                               this.musicG,
-                              `${n.start}-${n.pitch}`
+                              `${n.start}-${n.pitch}`,
                             )),
                         t.isBarBeginning &&
                           n.g.setAttribute("data-is-bar-beginning", "true"),
@@ -22914,7 +22942,7 @@
                           r,
                           t / o.PATH_SCALE,
                           this.scale * (n.vSteps < 0 ? -1 : 1),
-                          n.opacity
+                          n.opacity,
                         );
                       }
                       Object(i.drawSVGPath)(
@@ -22924,7 +22952,7 @@
                         r,
                         this.scale,
                         this.scale,
-                        n.opacity
+                        n.opacity,
                       ),
                         (n.xHeadRight = e + s + u.width * this.scale),
                         1.5 * a <= n.length &&
@@ -22935,7 +22963,7 @@
                             r - this.vStepSize / 2,
                             this.scale,
                             this.scale,
-                            n.opacity
+                            n.opacity,
                           ),
                         0 !== n.accidental &&
                           Object(i.drawSVGPath)(
@@ -22945,7 +22973,7 @@
                             r,
                             this.scale,
                             this.scale,
-                            n.opacity
+                            n.opacity,
                           );
                     }),
                     u.stemAnchor)
@@ -22969,7 +22997,7 @@
                         l,
                         n,
                         this.scale,
-                        (a - n) / o.PATH_SCALE
+                        (a - n) / o.PATH_SCALE,
                       ),
                       1 === u.flags)
                     )
@@ -22980,7 +23008,7 @@
                         a,
                         this.scale,
                         this.scale * (p ? -1 : 1),
-                        1
+                        1,
                       );
                     else if (u.flags > 1)
                       for (let t = 0; t < u.flags; ++t)
@@ -22991,7 +23019,7 @@
                           a,
                           this.scale,
                           this.scale * (p ? -1 : 1),
-                          1
+                          1,
                         ),
                           (a += (p ? -2 : 2) * this.vStepSize);
                   }
@@ -23018,7 +23046,7 @@
                         e,
                         0,
                         1,
-                        this.scale
+                        this.scale,
                       ),
                       (this.lastBar = r)),
                     n
@@ -23052,7 +23080,7 @@
                           e + n,
                           0,
                           this.scale,
-                          this.scale
+                          this.scale,
                         );
                         this.config.pixelsPerTimeStep > 0
                           ? (e += this.quartersToTime(h) * this.hStepSize)
@@ -23082,7 +23110,7 @@
                     r.setAttributeNS(
                       null,
                       "transform",
-                      `scale(${n / o.PATH_SCALE}, 1)`
+                      `scale(${n / o.PATH_SCALE}, 1)`,
                     );
                   else {
                     r = Object(i.createSVGGroupChild)(t, "staff-five-lines");
@@ -23094,7 +23122,7 @@
                         e,
                         s + t * this.vStepSize,
                         n / o.PATH_SCALE,
-                        1
+                        1,
                       );
                   }
                   return r;
@@ -23118,7 +23146,7 @@
                       t > 0
                         ? Object(i.createSVGGroupChild)(
                             this.signaturesG,
-                            "signatures"
+                            "signatures",
                           )
                         : this.overlayG;
                     n += this.drawSignatures(u, e + n, !1, o, s);
@@ -23134,7 +23162,7 @@
                   if (p) {
                     (l = globalThis.document.createElementNS(
                       i.SVGNS,
-                      "rect"
+                      "rect",
                     )).setAttributeNS(null, "x", "" + e),
                       l.setAttributeNS(null, "y", "0"),
                       l.setAttributeNS(null, "width", "1"),
@@ -23142,12 +23170,12 @@
                       l.setAttribute("data-id", "background"),
                       t.appendChild(l);
                     const n = globalThis.document.defaultView.getComputedStyle(
-                      this.div.parentElement
+                      this.div.parentElement,
                     );
                     l.setAttributeNS(
                       null,
                       "fill",
-                      n.getPropertyValue("background-color")
+                      n.getPropertyValue("background-color"),
                     );
                   }
                   if (n) {
@@ -23157,7 +23185,7 @@
                       e + h,
                       0,
                       this.scale,
-                      this.scale
+                      this.scale,
                     );
                     this.setFill(n), (h += 3 * c);
                   }
@@ -23172,7 +23200,7 @@
                           e + h,
                           (r + a) * this.vStepSize,
                           this.scale,
-                          this.scale
+                          this.scale,
                         );
                       this.setFill(u), (h += u.getBoundingClientRect().width);
                     });
@@ -23186,7 +23214,7 @@
                       e + h,
                       -0.5,
                       r,
-                      !0
+                      !0,
                     ),
                       Object(i.drawSVGText)(
                         n,
@@ -23194,7 +23222,7 @@
                         e + h,
                         4 * this.vStepSize - 0.5,
                         r,
-                        !0
+                        !0,
                       ),
                       this.setFill(n),
                       (h += n.getBoundingClientRect().width + c);
@@ -23206,7 +23234,7 @@
                   if (
                     (this.updateVerticalBoundaries(
                       d.top - m.top,
-                      d.bottom - m.top
+                      d.bottom - m.top,
                     ),
                     p &&
                       (l.setAttributeNS(null, "y", "" + -this.staffOffset),
@@ -23223,7 +23251,7 @@
                         e * e - this.staffOffset,
                         1 / r.STEM_WIDTH,
                         (this.height - 2 * e * e) / o.PATH_SCALE,
-                        ((e - 5) * (e - 5) * 2) / o.PATH_SCALE
+                        ((e - 5) * (e - 5) * 2) / o.PATH_SCALE,
                       );
                       this.setFill(n);
                     }
@@ -23233,7 +23261,7 @@
                     return (
                       n &&
                         (this.signaturesQuarters = this.timeToQuarters(
-                          h / this.hStepSize
+                          h / this.hStepSize,
                         )),
                       (n || e > 0) &&
                         ((this.signaturesBlinking = !0),
@@ -23348,15 +23376,15 @@
                       this.overlaySVG.setAttributeNS(
                         null,
                         "height",
-                        "" + this.height
+                        "" + this.height,
                       ),
                       this.staffSVG.setAttributeNS(
                         null,
                         "height",
-                        "" + this.height
+                        "" + this.height,
                       );
                     const t = this.div.querySelectorAll(
-                      'rect[data-id="background"]'
+                      'rect[data-id="background"]',
                     );
                     for (let e = 0; e < t.length; ++e) {
                       const n = t[e];
@@ -23785,7 +23813,7 @@
                 time: e.header.ticksToSeconds(t.ticks),
                 numerator: t.timeSignature[0],
                 denominator: t.timeSignature[1],
-              })
+              }),
             );
           n.timeSignatures.length ||
             n.timeSignatures.push(
@@ -23793,7 +23821,7 @@
                 time: 0,
                 numerator: 4,
                 denominator: 4,
-              })
+              }),
             );
           for (const t of e.header.tempos)
             n.tempos.push(g.a.Tempo.create({ time: t.time, qpm: t.bpm }));
@@ -23812,7 +23840,7 @@
                   pitch: e.midi,
                   velocity: Math.floor(e.velocity * o.MIDI_VELOCITIES),
                   isDrum: t.instrument.percussion,
-                })
+                }),
               ),
                 s > n.totalTime && (n.totalTime = s);
             }
@@ -23963,15 +23991,15 @@
                     !(t.pitch < this.minPitch || t.pitch > this.maxPitch) ||
                     (a.log(
                       `Pitch ${t.pitch} is outside the valid range for ${this.name}, ignoring.`,
-                      "SoundFont"
+                      "SoundFont",
                     ),
-                    !1)
+                    !1),
                 )
                 .map((t) =>
                   this.sampleInfoToName({
                     pitch: t.pitch,
                     velocity: this.nearestVelocity(t.velocity),
-                  })
+                  }),
                 ),
               n = Array.from(new Set(e))
                 .filter((t) => !this.buffers.has(t))
@@ -23986,7 +24014,7 @@
             r > this.durationSeconds &&
               a.log(
                 `Requested note duration longer than sample duration: ${r} > ${this.durationSeconds}`,
-                "SoundFont"
+                "SoundFont",
               );
             const s = new h.BufferSource({
               buffer: o,
@@ -24003,7 +24031,7 @@
                   this.durationSeconds,
                   void 0,
                   1,
-                  this.FADE_SECONDS
+                  this.FADE_SECONDS,
                 );
             }
           }
@@ -24034,7 +24062,7 @@
             if (t < this.minPitch || t > this.maxPitch)
               return void a.log(
                 `Pitch ${t} is outside the valid range for ${this.name} (${this.minPitch}-${this.maxPitch})`,
-                "SoundFont"
+                "SoundFont",
               );
             const n = this.sampleInfoToName({
               pitch: t,
@@ -24076,16 +24104,16 @@
               e.has(n)
                 ? e.get(n).push(r)
                 : this.instruments.has(n)
-                ? e.set(n, [r])
-                : a.log(
-                    `No instrument in ${this.name} for: program=${t.program}, isDrum=${t.isDrum}`,
-                    "SoundFont"
-                  );
+                  ? e.set(n, [r])
+                  : a.log(
+                      `No instrument in ${this.name} for: program=${t.program}, isDrum=${t.isDrum}`,
+                      "SoundFont",
+                    );
             }),
               await Promise.all(
                 Array.from(e.keys()).map((t) =>
-                  this.instruments.get(t).loadSamples(e.get(t))
-                )
+                  this.instruments.get(t).loadSamples(e.get(t)),
+                ),
               );
           }
           playNote(t, e, n, r, i = 0, o = !1, s) {
@@ -24096,7 +24124,7 @@
               ? this.instruments.get(u).playNote(t, e, n, r, s)
               : a.log(
                   `No instrument in ${this.name} for: program=${i}, isDrum=${o}`,
-                  "SoundFont"
+                  "SoundFont",
                 );
           }
           playNoteDown(t, e, n = 0, r = !1, i) {
@@ -24107,7 +24135,7 @@
               ? this.instruments.get(o).playNoteDown(t, e, i)
               : a.log(
                   `No instrument in ${this.name} for: program=${n}, isDrum=${r}`,
-                  "SoundFont"
+                  "SoundFont",
                 );
           }
           playNoteUp(t, e, n = 0, r = !1, i) {
@@ -24118,7 +24146,7 @@
               ? this.instruments.get(o).playNoteUp(t, e, i)
               : a.log(
                   `No instrument in ${this.name} for: program=${n}, isDrum=${r}`,
-                  "SoundFont"
+                  "SoundFont",
                 );
           }
         }
@@ -24126,10 +24154,10 @@
           return t.quantizedStartStep < e.quantizedStartStep
             ? -1
             : t.quantizedStartStep > e.quantizedStartStep
-            ? 1
-            : t.pitch < e.pitch
-            ? -1
-            : 1;
+              ? 1
+              : t.pitch < e.pitch
+                ? -1
+                : 1;
         }
         class I {}
         class M {
@@ -24163,15 +24191,15 @@
           start(t, e) {
             if ("started" === this.getPlayState())
               throw new Error(
-                "Cannot start playback; player is already playing."
+                "Cannot start playback; player is already playing.",
               );
             if ("paused" === this.getPlayState())
               throw new Error(
-                "Cannot `start()` a paused player; use `resume()`."
+                "Cannot `start()` a paused player; use `resume()`.",
               );
             if ("stopped" !== h.Transport.state)
               throw new Error(
-                "Cannot start playback while `Tone.Transport` is in use."
+                "Cannot start playback while `Tone.Transport` is in use.",
               );
             this.resumeContext();
             const n = l.isQuantizedSequence(t);
@@ -24180,14 +24208,14 @@
               e
                 ? (h.Transport.bpm.value = e)
                 : t.tempos && t.tempos.length > 0 && t.tempos[0].qpm > 0
-                ? (h.Transport.bpm.value = t.tempos[0].qpm)
-                : (h.Transport.bpm.value = o.DEFAULT_QUARTERS_PER_MINUTE),
+                  ? (h.Transport.bpm.value = t.tempos[0].qpm)
+                  : (h.Transport.bpm.value = o.DEFAULT_QUARTERS_PER_MINUTE),
               n)
             )
               t = l.unquantizeSequence(t, e);
             else if (e)
               throw new Error(
-                "Cannot specify a `qpm` for a non-quantized sequence."
+                "Cannot specify a `qpm` for a non-quantized sequence.",
               );
             const r = new h.Part(
               (t, e) => {
@@ -24201,7 +24229,7 @@
                       this.callbackObject.run(e, t);
                     }, t));
               },
-              t.notes.map((t) => [t.startTime, t])
+              t.notes.map((t) => [t.startTime, t]),
             );
             return (
               (this.currentPart = r),
@@ -24229,14 +24257,14 @@
           pause() {
             if (!this.isPlaying())
               throw new Error(
-                "Cannot pause playback while the player is stopped."
+                "Cannot pause playback while the player is stopped.",
               );
             h.Transport.pause();
           }
           resume() {
             if ("paused" !== this.getPlayState())
               throw new Error(
-                `Cannot resume playback while "${this.getPlayState()}".`
+                `Cannot resume playback while "${this.getPlayState()}".`,
               );
             h.Transport.start();
           }
@@ -24364,7 +24392,7 @@
                 r,
                 i,
                 t,
-                n
+                n,
               );
             }
           }
@@ -24390,7 +24418,7 @@
                 velocity: t.velocity,
                 program: t.program || 0,
                 isDrum: t.isDrum || !1,
-              }))
+              })),
             );
           }
           async loadAllSamples(t = 0, e = !1) {
@@ -24419,7 +24447,7 @@
               e.endTime - e.startTime,
               e.program,
               e.isDrum,
-              this.getAudioNodeOutput(e)
+              this.getAudioNodeOutput(e),
             );
           }
           playNoteDown(t) {
@@ -24428,7 +24456,7 @@
               t.velocity,
               t.program,
               t.isDrum,
-              this.getAudioNodeOutput(t)
+              this.getAudioNodeOutput(t),
             );
           }
           playNoteUp(t) {
@@ -24437,7 +24465,7 @@
               t.velocity,
               t.program,
               t.isDrum,
-              this.getAudioNodeOutput(t)
+              this.getAudioNodeOutput(t),
             );
           }
           getAudioNodeOutput(t) {
@@ -24474,11 +24502,11 @@
                   navigator.requestMIDIAccess().then(
                     (e) => {
                       e.addEventListener("statechange", (t) =>
-                        this.initOutputs(e)
+                        this.initOutputs(e),
                       ),
                         t(this.initOutputs(e));
                     },
-                    (t) => console.log("Something went wrong", e(t))
+                    (t) => console.log("Something went wrong", e(t)),
                   );
                 })
               : null;
@@ -24541,7 +24569,7 @@
           async initialize() {
             await navigator.requestMIDIAccess().then(
               (t) => this.midiReady(t),
-              (t) => console.log("Something went wrong", t)
+              (t) => console.log("Something went wrong", t),
             );
           }
           midiReady(t) {
@@ -24677,7 +24705,7 @@
           constructor(t, e = {}) {
             (this.noteSequence = t),
               (this.sequenceIsQuantized = l.isQuantizedSequence(
-                this.noteSequence
+                this.noteSequence,
               ));
             if (
               ((this.config = {
@@ -24708,11 +24736,11 @@
               for (const t of this.noteSequence.notes)
                 (this.config.minPitch = Math.min(
                   t.pitch,
-                  this.config.minPitch
+                  this.config.minPitch,
                 )),
                   (this.config.maxPitch = Math.max(
                     t.pitch,
-                    this.config.maxPitch
+                    this.config.maxPitch,
                   ));
               t || ((this.config.minPitch -= 2), (this.config.maxPitch += 2));
             }
@@ -24731,7 +24759,7 @@
                   (this.sequenceIsQuantized
                     ? "totalQuantizedSteps"
                     : "totalTime") +
-                  " field set, so the visualizer can't be horizontally sized correctly."
+                  " field set, so the visualizer can't be horizontally sized correctly.",
               );
             return { width: e * this.config.pixelsPerTimeStep, height: t };
           }
@@ -24740,7 +24768,7 @@
               r = this.getNoteStartTime(t) * this.config.pixelsPerTimeStep,
               i = Math.max(
                 this.config.pixelsPerTimeStep * n - this.config.noteSpacing,
-                1
+                1,
               );
             return {
               x: r,
@@ -24811,7 +24839,7 @@
               0,
               0,
               this.ctx.canvas.width,
-              this.ctx.canvas.height
+              this.ctx.canvas.height,
             );
           }
           clearActiveNotes() {
@@ -24823,7 +24851,7 @@
                 Math.round(t),
                 Math.round(e),
                 Math.round(n),
-                Math.round(r)
+                Math.round(r),
               );
           }
         }
@@ -24833,7 +24861,7 @@
               a.log(
                 "mm.Visualizer is deprecated, and will be removed in a future          version. Please use mm.PianoRollCanvasVisualizer instead",
                 "mm.Visualizer",
-                5
+                5,
               );
           }
         }
@@ -24866,7 +24894,7 @@
                   this.noteSequence.notes[
                     parseInt(n.getAttribute("data-index"), 10)
                   ],
-                  !1
+                  !1,
                 );
               n.setAttribute("fill", r), n.classList.remove("active");
             }
@@ -24903,7 +24931,7 @@
             if (!this.svg) return;
             const a = globalThis.document.createElementNS(
               "http://www.w3.org/2000/svg",
-              "rect"
+              "rect",
             );
             a.classList.add("note"),
               a.setAttribute("fill", i),
@@ -24930,7 +24958,7 @@
           constructor(t, e, n = {}) {
             if ((super(t, n), !(e instanceof SVGSVGElement)))
               throw new Error(
-                "This visualizer requires an <svg> element to display the visualization"
+                "This visualizer requires an <svg> element to display the visualization",
               );
             (this.svg = e), (this.parentElement = e.parentElement);
             const r = this.getSize();
@@ -24954,7 +24982,7 @@
               !(e instanceof HTMLDivElement))
             )
               throw new Error(
-                "This visualizer requires a <div> element to display the visualization"
+                "This visualizer requires a <div> element to display the visualization",
               );
             (this.config.whiteNoteWidth = n.whiteNoteWidth || 20),
               (this.config.blackNoteWidth =
@@ -24990,11 +25018,11 @@
               (this.parentElement.style.overflowY = "auto"),
               (this.svg = globalThis.document.createElementNS(
                 "http://www.w3.org/2000/svg",
-                "svg"
+                "svg",
               )),
               (this.svgPiano = globalThis.document.createElementNS(
                 "http://www.w3.org/2000/svg",
-                "svg"
+                "svg",
               )),
               this.svg.classList.add("waterfall-notes"),
               this.svgPiano.classList.add("waterfall-piano"),
@@ -25014,7 +25042,7 @@
               const r = this.svg.querySelector(`rect[data-index="${e}"]`);
               this.fillActiveRect(r, n);
               const i = this.svgPiano.querySelector(
-                `rect[data-pitch="${n.pitch}"]`
+                `rect[data-pitch="${n.pitch}"]`,
               );
               if ((this.fillActiveRect(i, n), n === t)) {
                 const t = parseFloat(r.getAttribute("y")),
@@ -25057,7 +25085,7 @@
                   (this.sequenceIsQuantized
                     ? "totalQuantizedSteps"
                     : "totalTime") +
-                  " field set, so the visualizer can't be horizontally sized correctly."
+                  " field set, so the visualizer can't be horizontally sized correctly.",
               );
             return {
               width: e,
@@ -25066,7 +25094,7 @@
           }
           getNotePosition(t, e) {
             const n = this.svgPiano.querySelector(
-              `rect[data-pitch="${t.pitch}"]`
+              `rect[data-pitch="${t.pitch}"]`,
             );
             if (!n) return null;
             const r = this.getNoteEndTime(t) - this.getNoteStartTime(t),
@@ -25074,7 +25102,7 @@
               o = Number(n.getAttribute("width")),
               s = Math.max(
                 this.config.pixelsPerTimeStep * r - this.config.noteSpacing,
-                1
+                1,
               );
             return {
               x: i,
@@ -25124,7 +25152,7 @@
           drawWhiteKey(t, e) {
             const n = globalThis.document.createElementNS(
               "http://www.w3.org/2000/svg",
-              "rect"
+              "rect",
             );
             return (
               (n.dataset.pitch = String(t)),
@@ -25144,7 +25172,7 @@
           drawBlackKey(t, e) {
             const n = globalThis.document.createElementNS(
               "http://www.w3.org/2000/svg",
-              "rect"
+              "rect",
             );
             return (
               (n.dataset.pitch = String(t)),
@@ -25194,7 +25222,7 @@
                   defaultKey: n.defaultKey || 0,
                   scrollType: n.scrollType || G.PAGE,
                 },
-                e
+                e,
               )),
               (this.drawnNotes = t.notes.length),
               this.clear(),
@@ -25797,10 +25825,10 @@
                 e.timeDivision
                   ? (o = e.timeDivision)
                   : e.ticksPerFrame && e.framesPerSecond
-                  ? (o =
-                      (-(255 & e.framesPerSecond) << 8) |
-                      (255 & e.ticksPerFrame))
-                  : e.ticksPerBeat && (o = 32767 & e.ticksPerBeat);
+                    ? (o =
+                        (-(255 & e.framesPerSecond) << 8) |
+                        (255 & e.ticksPerFrame))
+                    : e.ticksPerBeat && (o = 32767 & e.ticksPerBeat);
                 var s = new i();
                 s.writeUInt16(r),
                   s.writeUInt16(n),
@@ -25861,7 +25889,7 @@
                   },
                 ];
               })(e, t.channel);
-            })
+            }),
           );
         }
         function c(t, e) {
@@ -25949,7 +25977,7 @@
                         type: "timeSignature",
                       };
                     })(t);
-                  })
+                  }),
                 ),
               ],
               t.tracks.map(function (t) {
@@ -25987,15 +26015,15 @@
                               type: "pitchBend",
                               value: t.value,
                             };
-                          })(n, t.channel)
+                          })(n, t.channel),
                         );
                       }),
                       e
                     );
-                  })(t)
+                  })(t),
                 );
                 var e;
-              })
+              }),
             ),
           };
           return (
@@ -26066,8 +26094,8 @@
                 return t[e]
                   ? t[e]
                   : r.controlChangeIds.hasOwnProperty(e)
-                  ? t[r.controlChangeIds[e]]
-                  : void 0;
+                    ? t[r.controlChangeIds[e]]
+                    : void 0;
               },
               set: function (t, e, n) {
                 return (
@@ -26077,7 +26105,7 @@
                   !0
                 );
               },
-            }
+            },
           );
         };
       },
@@ -26515,15 +26543,15 @@
         e.Note = u;
       },
     ]);
-  }
+  },
 );
 
 !(function (e, t) {
   "object" == typeof exports && "undefined" != typeof module
     ? t()
     : "function" == typeof define && define.amd
-    ? define(t)
-    : t();
+      ? define(t)
+      : t();
 })(0, function () {
   "use strict";
   function e(e) {
@@ -26595,7 +26623,7 @@
           n.ctrlKey ||
           (i(e.activeElement) && s(e.activeElement), (t = !0));
       },
-      !0
+      !0,
     ),
       globalThis.document.addEventListener("mousedown", u, !0),
       globalThis.document.addEventListener("pointerdown", u, !0),
@@ -26606,7 +26634,7 @@
           "hidden" === globalThis.document.visibilityState &&
             (n && (t = !0), a());
         },
-        !0
+        !0,
       ),
       a(),
       e.addEventListener(
@@ -26622,7 +26650,7 @@
                 n.isContentEditable)) &&
             s(e.target);
         },
-        !0
+        !0,
       ),
       e.addEventListener(
         "blur",
@@ -26640,17 +26668,17 @@
               (t.classList.remove("focus-visible"),
               t.removeAttribute("data-focus-visible-added")));
         },
-        !0
+        !0,
       ),
       e.nodeType === Node.DOCUMENT_FRAGMENT_NODE && e.host
         ? e.host.setAttribute("data-js-focus-visible", "")
         : e.nodeType === Node.DOCUMENT_NODE &&
           (globalThis.document.documentElement.classList.add(
-            "js-focus-visible"
+            "js-focus-visible",
           ),
           globalThis.document.documentElement.setAttribute(
             "data-js-focus-visible",
-            ""
+            "",
           ));
   }
   if ("undefined" != typeof window && "undefined" != typeof document) {
@@ -26663,7 +26691,7 @@
         "focus-visible-polyfill-ready",
         !1,
         !1,
-        {}
+        {},
       );
     }
     globalThis.dispatchEvent(t);
@@ -26681,14 +26709,14 @@
   "object" == typeof exports && "undefined" != typeof module
     ? e(exports, require("@magenta/music/es6/core"))
     : "function" == typeof define && define.amd
-    ? define(["exports", "@magenta/music/es6/core"], e)
-    : e(
-        ((t =
-          "undefined" != typeof globalThis
-            ? globalThis
-            : t || self).midiPlayer = {}),
-        t.core
-      );
+      ? define(["exports", "@magenta/music/es6/core"], e)
+      : e(
+          ((t =
+            "undefined" != typeof globalThis
+              ? globalThis
+              : t || self).midiPlayer = {}),
+          t.core,
+        );
 })(this, function (t, e) {
   "use strict";
   function i(t, e, i, n, s, r, a) {
@@ -26729,15 +26757,15 @@
   s.innerHTML = "\n<style>\n"
     .concat(
       ":host {\n  display: inline-block;\n  width: 300px;\n  margin: 3px;\n  vertical-align: bottom;\n  font-family: sans-serif;\n  font-size: 14px;\n}\n\n:focus:not(.focus-visible) {\n  outline: none;\n}\n\n.controls {\n  width: inherit;\n  height: inherit;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  border-radius: 100px;\n  background: #f2f5f6;\n  padding: 0 0.2rem;\n  user-select: none;\n}\n.controls > * {\n  margin: 0.7rem 0.4rem;\n}\n.controls input, .controls button {\n  cursor: pointer;\n}\n.controls input:disabled, .controls button:disabled {\n  cursor: inherit;\n}\n.controls button {\n  text-align: center;\n  background: rgba(204, 204, 204, 0);\n  border: none;\n  width: 32px;\n  height: 32px;\n  border-radius: 100%;\n  transition: background-color 0.25s ease 0s;\n  padding: 0;\n}\n.controls button:not(:disabled):hover {\n  background: rgba(204, 204, 204, 0.3);\n}\n.controls button:active {\n  background: rgba(204, 204, 204, 0.6);\n}\n.controls .seek-bar {\n  flex: 1;\n  min-width: 0;\n  margin-right: 1rem;\n  background: transparent;\n}\n.controls .seek-bar::-moz-range-track {\n  background-color: #555;\n}\n.controls.playing .play-icon, .controls.stopped .stop-icon {\n  display: none;\n}\n.controls.frozen > div, .controls > button:disabled .icon {\n  opacity: 0.5;\n}",
-      '\n</style>\n<div class="controls stopped frozen" part="control-panel">\n  <button class="play" part="play-button" disabled>\n    <img src="'
+      '\n</style>\n<div class="controls stopped frozen" part="control-panel">\n  <button class="play" part="play-button" disabled>\n    <img src="',
     )
     .concat(
       "data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20version%3D%221.1%22%20viewBox%3D%220%200%206.35%206.35%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cpath%20d%3D%22m4.4979%203.175-2.1167%201.5875v-3.175z%22%20stroke-width%3D%22.70201%22%2F%3E%3C%2Fsvg%3E",
-      '" class="icon play-icon">\n    <img src="'
+      '" class="icon play-icon">\n    <img src="',
     )
     .concat(
       "data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20version%3D%221.1%22%20viewBox%3D%220%200%206.35%206.35%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cpath%20d%3D%22m1.5875%201.5875h3.175v3.175h-3.175z%22%20stroke-width%3D%22.75001%22%2F%3E%3C%2Fsvg%3E",
-      '" class="icon stop-icon">\n  </button>\n  <div part="time"><span class="current-time" part="current-time">0:00</span> / <span class="total-time" part="total-time">0:00</span></div>\n  <input type="range" min="0" max="0" value="0" step="any" class="seek-bar" part="seek-bar" disabled>\n</div>\n'
+      '" class="icon stop-icon">\n  </button>\n  <div part="time"><span class="current-time" part="current-time">0:00</span> / <span class="total-time" part="total-time">0:00</span></div>\n  <input type="range" min="0" max="0" value="0" step="any" class="seek-bar" part="seek-bar" disabled>\n</div>\n',
     );
   var a = ["piano-roll", "waterfall", "staff"];
   class o extends HTMLElement {
@@ -26763,7 +26791,7 @@
     initVisualizer() {
       null == this.initTimeout &&
         (this.initTimeout = globalThis.setTimeout(() =>
-          this.initVisualizerNow()
+          this.initVisualizerNow(),
         ));
     }
     initVisualizerNow() {
@@ -26781,7 +26809,7 @@
             t.wrapper.classList.add("piano-roll-visualizer");
             var i = globalThis.document.createElementNS(
               "http://www.w3.org/2000/svg",
-              "svg"
+              "svg",
             );
             t.wrapper.appendChild(i),
               (t.visualizer = new e.PianoRollSVGVisualizer(t.ns, i, t._config));
@@ -26790,7 +26818,7 @@
               (t.visualizer = new e.WaterfallSVGVisualizer(
                 t.ns,
                 t.wrapper,
-                t._config
+                t._config,
               ));
           else if ("staff" === t.type) {
             t.wrapper.classList.add("staff-visualizer");
@@ -26829,7 +26857,7 @@
         throw new Error(
           "Unknown visualizer type "
             .concat(t, ". Allowed values: ")
-            .concat(a.join(", "))
+            .concat(a.join(", ")),
         );
       this.setOrRemoveAttribute("type", t);
     }
@@ -26910,7 +26938,7 @@
           (this.stop(),
           this.freeze(),
           (this.initTimeout = globalThis.setTimeout(() =>
-            this.initPlayerNow(this.needInitNs)
+            this.initPlayerNow(this.needInitNs),
           )));
     }
     initPlayerNow(t = !0) {
@@ -27002,7 +27030,7 @@
         this._playing &&
           ((this._playing = !1),
           this.dispatchEvent(
-            new CustomEvent("stop", { detail: { finished: t } })
+            new CustomEvent("stop", { detail: { finished: t } }),
           ));
     }
     setVisualizerSelector(t) {
@@ -27014,7 +27042,7 @@
             ? this.addVisualizer(n)
             : console.warn(
                 "Selector ".concat(t, " matched non-visualizer element"),
-                n
+                n,
               );
     }
     freeze() {

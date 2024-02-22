@@ -79,7 +79,7 @@ export class AppHaxHatProgress extends SimpleColors {
               setTimeout(() => {
                 globalThis.location = createResponse.slug.replace(
                   "index.html",
-                  ""
+                  "",
                 );
               }, 0);
             });
@@ -92,10 +92,10 @@ export class AppHaxHatProgress extends SimpleColors {
               1500,
               {
                 hat: "random",
-              }
+              },
             );
             store.setPageTitle(
-              `${createResponse.title ? createResponse.title : ""} ready!`
+              `${createResponse.title ? createResponse.title : ""} ready!`,
             );
             setTimeout(() => {
               store.toast(`redirecting in 3..`, 10000, {
@@ -120,7 +120,7 @@ export class AppHaxHatProgress extends SimpleColors {
                     store.setPageTitle(`Enjoy!`);
                     globalThis.location = createResponse.slug.replace(
                       "index.html",
-                      ""
+                      "",
                     );
                   }, 1000);
                 }, 1000);
@@ -132,7 +132,7 @@ export class AppHaxHatProgress extends SimpleColors {
                 bubbles: true,
                 cancelable: true,
                 detail: true,
-              })
+              }),
             );
           }
         });

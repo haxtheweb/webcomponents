@@ -59,22 +59,22 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
     /** search for all combos of id and resource id */
     globalThis.AnchorBehaviors.target =
       globalThis.document.getElementById(
-        globalThis.AnchorBehaviors.params.id
+        globalThis.AnchorBehaviors.params.id,
       ) ||
       globalThis.document.getElementById(
-        `#${globalThis.AnchorBehaviors.params.id}`
+        `#${globalThis.AnchorBehaviors.params.id}`,
       ) ||
       globalThis.document.querySelector(
         `[resource="#${
           globalThis.AnchorBehaviors.params.id ||
           globalThis.AnchorBehaviors.params.resource
-        }"]`
+        }"]`,
       ) ||
       globalThis.document.querySelector(
         `[resource="${
           globalThis.AnchorBehaviors.params.id ||
           globalThis.AnchorBehaviors.params.resource
-        }"]`
+        }"]`,
       ) ||
       testElement(element, globalThis.AnchorBehaviors.params) ||
       null;

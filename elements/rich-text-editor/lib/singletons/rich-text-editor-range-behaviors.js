@@ -204,7 +204,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this.target,
-        })
+        }),
       );
       let target = this.__toolbar.target;
       if (target) {
@@ -212,7 +212,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           div = globalThis.document.createElement("div"),
           parent = range.commonAncestorContainer.parentNode,
           closest = parent.closest(
-            "[contenteditable=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])"
+            "[contenteditable=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])",
           );
         if ((target = closest)) {
           div.innerHTML = sanitize
@@ -263,8 +263,8 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       return !node || node === document
         ? document
         : node.parentNode
-        ? this.getRoot(node.parentNode)
-        : node;
+          ? this.getRoot(node.parentNode)
+          : node;
     }
     debugRange(range = this.getRange()) {
       let contents =
@@ -288,7 +288,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     commandToggledForRange(
       range = this.range || this.getRange(),
       command = this.command,
-      commandVal = this.commandVal
+      commandVal = this.commandVal,
     ) {
       let query =
           !!range && !!command
@@ -299,8 +299,8 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           command === "underline"
             ? !!this.rangeOrMatchingAncestor("u")
             : command === "wrapRange"
-            ? !!this.rangeOrMatchingAncestor(commandVal)
-            : query;
+              ? !!this.rangeOrMatchingAncestor(commandVal)
+              : query;
       return !!block ? true : false;
     }
     /**
@@ -325,15 +325,15 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      */
     rangeOrMatchingAncestor(
       cssQuery = this.tagsList || "",
-      range = this.range || this.getRange()
+      range = this.range || this.getRange(),
     ) {
       let start = this.rangeElementOrParentElement(range);
 
       return !start || cssQuery == ""
         ? undefined
         : start.matches(cssQuery)
-        ? start
-        : start.closest(cssQuery);
+          ? start
+          : start.closest(cssQuery);
     }
     /**
      * returns elmement that includes range
@@ -412,8 +412,8 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       return !common
         ? undefined
         : common.nodeType == 1
-        ? common
-        : common.parentElement;
+          ? common
+          : common.parentElement;
     }
     /**
      * gets parent node of range
@@ -562,7 +562,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
             element: this,
             range: range,
           },
-        })
+        }),
       );
     }
     /**
@@ -593,7 +593,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           let toggled = this.commandToggledForRange(
               range,
               "wrapRange",
-              commandVal
+              commandVal,
             ),
             node = this.rangeOrMatchingAncestor(commandVal);
           if (!toggled) {

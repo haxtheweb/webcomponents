@@ -116,7 +116,7 @@ test("warning is emitted if paragraph style is unrecognised", function () {
   return converter.convertToHtml(document).then(function (result) {
     assert.deepEqual(result.messages, [
       results.warning(
-        "Unrecognised paragraph style: 'Heading 1' (Style ID: Heading1)"
+        "Unrecognised paragraph style: 'Heading 1' (Style ID: Heading1)",
       ),
     ]);
   });
@@ -366,7 +366,7 @@ test("warning is emitted if run style is unrecognised", function () {
   return converter.convertToHtml(run).then(function (result) {
     assert.deepEqual(result.messages, [
       results.warning(
-        "Unrecognised run style: 'Heading 1 Char' (Style ID: Heading1Char)"
+        "Unrecognised run style: 'Heading 1 Char' (Style ID: Heading1Char)",
       ),
     ]);
   });
@@ -395,7 +395,7 @@ test("docx hyperlink can be collapsed", function () {
   return converter.convertToHtml(hyperlink).then(function (result) {
     assert.equal(
       result.value,
-      '<a href="http://www.example.com">Hello world</a>'
+      '<a href="http://www.example.com">Hello world</a>',
     );
   });
 });
@@ -630,7 +630,7 @@ test("footnote reference is converted to superscript intra-page link", function 
   return converter.convertToHtml(footnoteReference).then(function (result) {
     assert.equal(
       result.value,
-      '<sup><a href="#doc-42-footnote-4" id="doc-42-footnote-ref-4">[1]</a></sup>'
+      '<sup><a href="#doc-42-footnote-4" id="doc-42-footnote-ref-4">[1]</a></sup>',
     );
   });
 });
@@ -655,7 +655,7 @@ test("footnotes are included after the main body", function () {
           body: [paragraphOfText("Who's there?")],
         }),
       }),
-    }
+    },
   );
 
   var converter = new DocumentConverter({
@@ -682,7 +682,7 @@ test("comments are ignored by default", function () {
         documents.run([reference]),
       ]),
     ],
-    { comments: [comment] }
+    { comments: [comment] },
   );
 
   var converter = new DocumentConverter({});
@@ -707,7 +707,7 @@ test("comment references are linked to comment after main body", function () {
         documents.run([reference]),
       ]),
     ],
-    { comments: [comment] }
+    { comments: [comment] },
   );
 
   var converter = new DocumentConverter({
@@ -739,7 +739,7 @@ test("images are written with data URIs", function () {
       result.value,
       '<img src="data:image/png;base64,' +
         imageBuffer.toString("base64") +
-        '" />'
+        '" />',
     );
   });
 });

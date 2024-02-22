@@ -156,7 +156,7 @@ export class MfHtmlExample extends LitElement {
           MicroFrontendRegistry.call(
             "@core/mdToHtml",
             params,
-            this.mdToHtmlCallback.bind(this)
+            this.mdToHtmlCallback.bind(this),
           );
         });
     }
@@ -171,7 +171,7 @@ export class MfHtmlExample extends LitElement {
           MicroFrontendRegistry.call(
             "@core/htmlToMd",
             params,
-            this.htmlToMdCallback.bind(this)
+            this.htmlToMdCallback.bind(this),
           );
         });
     }
@@ -186,7 +186,7 @@ export class MfHtmlExample extends LitElement {
           MicroFrontendRegistry.call(
             "@experiments/hydrateSsr",
             params,
-            this.hydrateCallback.bind(this)
+            this.hydrateCallback.bind(this),
           );
         });
     }
@@ -204,7 +204,7 @@ export class MfHtmlExample extends LitElement {
         MicroFrontendRegistry.call(
           "@haxcms/siteToHtml",
           params,
-          this.haxcmsCallback.bind(this)
+          this.haxcmsCallback.bind(this),
         );
       });
     }
@@ -217,7 +217,7 @@ export class MfHtmlExample extends LitElement {
         MicroFrontendRegistry.call(
           "@haxcms/siteToEpub",
           params,
-          this.haxcmsepubCallback.bind(this)
+          this.haxcmsepubCallback.bind(this),
         );
       });
     }
@@ -231,7 +231,7 @@ export class MfHtmlExample extends LitElement {
           MicroFrontendRegistry.call(
             "@core/duckDuckGo",
             params,
-            this.ddgCallback.bind(this)
+            this.ddgCallback.bind(this),
           );
         });
     }

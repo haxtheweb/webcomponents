@@ -212,7 +212,7 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
   _onFocusChange(e) {
@@ -257,7 +257,7 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
       /s/g,
       Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
-        .substring(1)
+        .substring(1),
     );
   }
 }

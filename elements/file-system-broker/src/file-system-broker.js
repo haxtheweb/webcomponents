@@ -130,7 +130,7 @@ class FileSystemBroker extends HTMLElement {
       this.dirHandler,
       recursive,
       this.dirHandler.name || "",
-      this.dirHandler
+      this.dirHandler,
     );
     return this.files;
   }
@@ -165,7 +165,7 @@ class FileSystemBroker extends HTMLElement {
           entry.name === fileName
         ) {
           var FileSystemFileHandle = await this.dirHandler.getFileHandle(
-            entry.name
+            entry.name,
           );
           const writable = await FileSystemFileHandle.createWritable();
           // Write the contents of the file to the stream.
@@ -195,8 +195,8 @@ class FileSystemBroker extends HTMLElement {
               handle,
               recursive,
               folder + "/" + name,
-              handle
-            ))
+              handle,
+            )),
           );
         }
       } else {

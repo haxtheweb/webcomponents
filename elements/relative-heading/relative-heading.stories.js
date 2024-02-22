@@ -63,7 +63,7 @@ export const RelativeHeadingStory = () => {
 </relative-heading>
 <style>h1,h2,h3,h4,h5,h6 { margin: 0.3rem 0 }</style>   
     `,
-    `<p>Use the knobs to alter the fourth heading (Change me!!!!):</p>`
+    `<p>Use the knobs to alter the fourth heading (Change me!!!!):</p>`,
   );
 };
 
@@ -98,6 +98,6 @@ export const RelativeHeadingLiteStory = () => {
 </relative-heading-lite>
 <style>h1,h2,h3,h4,h5,h6 { margin: 0.3rem 0 }</style>     
     `,
-    `<p>Use the knobs to alter the fourth heading (Change me!!!!):</p>`
+    `<p>Use the knobs to alter the fourth heading (Change me!!!!):</p>`,
   );
 };

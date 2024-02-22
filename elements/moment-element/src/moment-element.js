@@ -61,7 +61,7 @@ class MomentElement extends LitElement {
     window.addEventListener(
       "es-bridge-moment-loaded",
       this._momentLoaded.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.ESGlobalBridge.requestAvailability().load("moment", location);
@@ -79,7 +79,7 @@ class MomentElement extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (
@@ -98,7 +98,7 @@ class MomentElement extends LitElement {
           this.outputFormat,
           this.from,
           this.to,
-          this.libraryLoaded
+          this.libraryLoaded,
         );
       }
     });

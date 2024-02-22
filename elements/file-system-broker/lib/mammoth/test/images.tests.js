@@ -32,8 +32,8 @@ test("mammoth.images.dataUri() encodes images in base64", function () {
           tag: hasProperties({
             attributes: { src: "data:image/jpeg;base64,YWJj" },
           }),
-        })
-      )
+        }),
+      ),
     );
   });
 });

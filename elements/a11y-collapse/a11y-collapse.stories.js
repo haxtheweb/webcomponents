@@ -16,7 +16,7 @@ const utils = new StorybookUtilities();
 export const A11yCollapseGroupStory = () => {
   let props = utils.getElementProperties(
     A11yCollapseGroup.properties,
-    A11yCollapseGroup.haxProperties
+    A11yCollapseGroup.haxProperties,
   );
   return utils.makeElementFromClass(
     A11yCollapseGroup,
@@ -28,14 +28,14 @@ export const A11yCollapseGroupStory = () => {
             `<a11y-collapse id="Item ${i}">
           <p slot="heading">${utils.randomPhrase(1, 5)}</p>
           <div slot="content">${utils.randomParagraph(2, 7)}</div>
-          </a11y-collapse>`
+          </a11y-collapse>`,
         )
         .join(""),
     },
     [
       { css: "--a11y-collapse-group-margin", title: "Collapse group's margin" },
       { css: "--a11y-collapse-margin", title: "Collapse item's margin" },
-    ]
+    ],
   );
 };
 export const a11yCollapse = () => {
@@ -70,6 +70,6 @@ export const a11yCollapse = () => {
       { css: "--a11y-collapse-heading-background-color" },
       { css: "--a11y-collapse-overflow-y" },
       { css: "--a11y-collapse-max-height" },
-    ]
+    ],
   );
 };

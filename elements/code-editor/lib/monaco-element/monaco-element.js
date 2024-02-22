@@ -176,7 +176,7 @@ class MonacoElement extends LitElement {
       (message) => {
         this.handleMessage(message);
       },
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 
@@ -381,7 +381,7 @@ class MonacoElement extends LitElement {
         composed: true,
         cancelable: true,
         detail: true,
-      })
+      }),
     );
   }
   onIFrameBlur() {
@@ -391,7 +391,7 @@ class MonacoElement extends LitElement {
         composed: true,
         cancelable: true,
         detail: true,
-      })
+      }),
     );
   }
 
@@ -407,7 +407,7 @@ class MonacoElement extends LitElement {
           composed: true,
           cancelable: true,
           detail: true,
-        })
+        }),
       );
     }, 10);
   }
@@ -431,7 +431,7 @@ class MonacoElement extends LitElement {
     if (this.iframe.contentWindow != null) {
       this.iframe.contentWindow.postMessage(
         JSON.stringify({ event, payload }),
-        globalThis.location.href
+        globalThis.location.href,
       );
     }
   }

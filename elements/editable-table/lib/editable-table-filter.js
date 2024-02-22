@@ -20,7 +20,7 @@ import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/l
  * @customElement
  * @extends LitElement
  */
-class EditableTableFilter extends SimpleToolbarButtonBehaviors( DDD ) {
+class EditableTableFilter extends SimpleToolbarButtonBehaviors(DDD) {
   static get styles() {
     return [
       ...(super.styles || []),
@@ -107,7 +107,7 @@ class EditableTableFilter extends SimpleToolbarButtonBehaviors( DDD ) {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 }

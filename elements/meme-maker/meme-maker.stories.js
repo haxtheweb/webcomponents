@@ -17,6 +17,6 @@ export const BasicMeme = () => {
   return utils.makeUsageDocs(
     MemeMaker,
     import.meta.url,
-    utils.makeElementFromHaxDemo(MemeMaker)
+    utils.makeElementFromHaxDemo(MemeMaker),
   );
 };

@@ -383,7 +383,7 @@ class NavCardItem extends LitElement {
         "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
         "(data:image)?" + // base64 image
         "(\\#[-a-z\\d_]*)?$",
-      "i"
+      "i",
     ); // fragment locator
     return !!pattern.test(str);
   }

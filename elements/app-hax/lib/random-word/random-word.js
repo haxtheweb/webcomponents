@@ -31,7 +31,7 @@ export class RandomWord extends LitElement {
         this.innerHTML = this.word;
         // inform others if they want to tap into events
         this.dispatchEvent(
-          new CustomEvent("word-changed", { detail: this.word })
+          new CustomEvent("word-changed", { detail: this.word }),
         );
       }
     });

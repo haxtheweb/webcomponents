@@ -3,7 +3,7 @@ var htmlPaths = require("../styles/html-paths");
 function nonFreshElement(tagName, attributes, children) {
   return elementWithTag(
     htmlPaths.element(tagName, attributes, { fresh: false }),
-    children
+    children,
   );
 }
 

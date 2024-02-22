@@ -5,13 +5,11 @@ import "../simple-colors-shared-styles.js";
 describe("simple-colors-shared-styles test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html`
-        <simple-colors-shared-styles
-          title="test-title"
-        ></simple-colors-shared-styles>
-      `
-    );
+    element = await fixture(html`
+      <simple-colors-shared-styles
+        title="test-title"
+      ></simple-colors-shared-styles>
+    `);
   });
 
   it("passes the a11y audit", async () => {

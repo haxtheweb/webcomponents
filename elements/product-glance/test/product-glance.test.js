@@ -5,9 +5,9 @@ import "../product-glance.js";
 describe("product-glance test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <product-glance title="test-title"></product-glance> `
-    );
+    element = await fixture(html`
+      <product-glance title="test-title"></product-glance>
+    `);
   });
 
   it("passes the a11y audit", async () => {

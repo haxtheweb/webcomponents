@@ -5,9 +5,9 @@ import "../fluid-type.js";
 describe("fluid-type test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <fluid-type title="test-title"></fluid-type> `
-    );
+    element = await fixture(html`
+      <fluid-type title="test-title"></fluid-type>
+    `);
   });
 
   it("passes the a11y audit", async () => {

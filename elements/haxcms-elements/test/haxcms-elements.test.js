@@ -8,7 +8,7 @@ describe("haxcms-elements test", () => {
       html`<haxcms-site-builder
         id="site"
         file="${new URL("../demo/site.json", import.meta.url).href}"
-      ></haxcms-site-builder>`
+      ></haxcms-site-builder>`,
     );
   });
 

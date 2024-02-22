@@ -95,8 +95,8 @@ export const SimpleColorsStory = () => {
     <p>
       With simple colors, you can easily create a dark mode version of 
       your interfaces, and/or swap accent colors on the fly.
-    </p>`
-    )
+    </p>`,
+    ),
   );
 };
 

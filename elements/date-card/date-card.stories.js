@@ -16,5 +16,5 @@ export const BasicDateCard = () =>
   utils.makeUsageDocs(
     DateCard,
     import.meta.url,
-    utils.makeElementFromHaxDemo(DateCard)
+    utils.makeElementFromHaxDemo(DateCard),
   );

@@ -7,7 +7,7 @@ import { mtzMarkedControlWrapperBehaviorImpl } from "./mtz-marked-control-wrappe
 import { mtzMarkedControlBehavior } from "./mtz-marked-control-behavior.js";
 
 class MtzMarkedControlGenericWrap extends mtzMarkedControlBehavior(
-  mtzMarkedControlWrapperBehaviorImpl(PolymerElement)
+  mtzMarkedControlWrapperBehaviorImpl(PolymerElement),
 ) {
   static get template() {
     return html`
@@ -48,6 +48,6 @@ class MtzMarkedControlGenericWrap extends mtzMarkedControlBehavior(
 }
 customElements.define(
   MtzMarkedControlGenericWrap.tag,
-  MtzMarkedControlGenericWrap
+  MtzMarkedControlGenericWrap,
 );
 export { MtzMarkedControlGenericWrap };

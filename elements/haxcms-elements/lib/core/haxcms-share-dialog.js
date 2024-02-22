@@ -79,7 +79,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                   value="${item}"
                   @change="${this.calculateShareCode}"
                 /><label for="${item}">${item.replace("-", " ")}</label><br />
-              `
+              `,
             )}
           </div>
         </details>
@@ -116,7 +116,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
     this.link = `${globalThis.location.href.replace(
       "iam.",
-      `${form.access}.`
+      `${form.access}.`,
     )}${
       form["disable-features"]
         ? `?disable-features=${form["disable-features"]}`

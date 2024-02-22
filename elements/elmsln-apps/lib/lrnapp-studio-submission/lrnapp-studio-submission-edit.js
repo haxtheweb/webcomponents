@@ -166,7 +166,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
 
@@ -179,7 +179,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
 
@@ -190,7 +190,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
 
@@ -208,6 +208,6 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionEdit.tag,
-  LrnappStudioSubmissionEdit
+  LrnappStudioSubmissionEdit,
 );
 export { LrnappStudioSubmissionEdit };

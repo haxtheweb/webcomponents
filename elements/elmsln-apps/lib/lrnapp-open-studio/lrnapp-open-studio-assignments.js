@@ -231,6 +231,6 @@ class LrnappOpenStudioAssignments extends PolymerElement {
 }
 customElements.define(
   LrnappOpenStudioAssignments.tag,
-  LrnappOpenStudioAssignments
+  LrnappOpenStudioAssignments,
 );
 export { LrnappOpenStudioAssignments };

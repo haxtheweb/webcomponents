@@ -83,7 +83,7 @@ class SiteModal extends HAXCMSThemeParts(LitElement) {
     this.dispatchEvent(
       new CustomEvent("site-modal-click", {
         detail: { value: true },
-      })
+      }),
     );
   }
   static get properties() {

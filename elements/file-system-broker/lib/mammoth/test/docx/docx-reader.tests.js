@@ -25,7 +25,7 @@ test("hyperlink hrefs are read from relationships file", function () {
   var docxFile = createFakeDocxFile({
     "word/document.xml": testData("hyperlinks/word/document.xml"),
     "word/_rels/document.xml.rels": testData(
-      "hyperlinks/word/_rels/document.xml.rels"
+      "hyperlinks/word/_rels/document.xml.rels",
     ),
   });
   return docxReader.read(docxFile).then(function (result) {
@@ -79,9 +79,9 @@ test("error is thrown when main document part does not exist", function () {
     function (error) {
       assert.equal(
         error.message,
-        "Could not find main document part. Are you sure this is a valid .docx file?"
+        "Could not find main document part. Are you sure this is a valid .docx file?",
       );
-    }
+    },
   );
 });
 
@@ -149,14 +149,14 @@ test("part paths", {
               Target: "target-path.xml",
             }),
           ]),
-          relationshipNamespaces
+          relationshipNamespaces,
         ),
         "word/target-path.xml": " ",
       });
       return docxReader._findPartPaths(docxFile).then(function (partPaths) {
         assert.equal(partPaths[options.name], "word/target-path.xml");
       });
-    }
+    },
   );
 
   test(
@@ -175,7 +175,7 @@ test("part paths", {
       return docxReader._findPartPaths(docxFile).then(function (partPaths) {
         assert.equal(partPaths[options.name], "word/" + options.name + ".xml");
       });
-    }
+    },
   );
 });
 
@@ -187,6 +187,6 @@ function createPackageRelationships(mainDocumentPath) {
         Target: mainDocumentPath,
       }),
     ]),
-    relationshipNamespaces
+    relationshipNamespaces,
   );
 }

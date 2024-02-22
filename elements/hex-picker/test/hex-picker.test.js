@@ -5,9 +5,9 @@ import "../hex-picker.js";
 describe("hex-picker test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <hex-picker title="test-title"></hex-picker> `
-    );
+    element = await fixture(html`
+      <hex-picker title="test-title"></hex-picker>
+    `);
   });
 
   it("passes the a11y audit", async () => {

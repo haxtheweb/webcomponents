@@ -70,13 +70,13 @@ function convertDocumentToHtml(documentResult, options) {
 }
 
 function parseStyleMap(styleMap) {
-  return Result.combine((styleMap || []).map(readStyle)).map(function (
-    styleMap
-  ) {
-    return styleMap.filter(function (styleMapping) {
-      return !!styleMapping;
-    });
-  });
+  return Result.combine((styleMap || []).map(readStyle)).map(
+    function (styleMap) {
+      return styleMap.filter(function (styleMapping) {
+        return !!styleMapping;
+      });
+    },
+  );
 }
 
 function extractRawText(input) {
@@ -108,6 +108,6 @@ function embedStyleMap(input, styleMap) {
 
 exports.styleMapping = function () {
   throw new Error(
-    "Use a raw string instead of mammoth.styleMapping e.g. \"p[style-name='Title'] => h1\" instead of mammoth.styleMapping(\"p[style-name='Title'] => h1\")"
+    "Use a raw string instead of mammoth.styleMapping e.g. \"p[style-name='Title'] => h1\" instead of mammoth.styleMapping(\"p[style-name='Title'] => h1\")",
   );
 };

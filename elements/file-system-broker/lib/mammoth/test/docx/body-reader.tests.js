@@ -89,7 +89,7 @@ test("warning is emitted when paragraph style cannot be found", function () {
   assert.deepEqual(paragraph.styleName, null);
   assert.deepEqual(result.messages, [
     warning(
-      "Paragraph style with ID Heading1 was referenced but not defined in the document"
+      "Paragraph style with ID Heading1 was referenced but not defined in the document",
     ),
   ]);
 });
@@ -212,7 +212,7 @@ test("numbering properties are converted to numbering at specified level", funct
   var numberingLevel = _readNumberingProperties(
     null,
     numberingPropertiesXml,
-    numbering
+    numbering,
   );
   assert.deepEqual(numberingLevel, { level: "1", isOrdered: true });
 });
@@ -229,7 +229,7 @@ test("numbering properties are ignored if w:ilvl is missing", function () {
   var numberingLevel = _readNumberingProperties(
     null,
     numberingPropertiesXml,
-    numbering
+    numbering,
   );
   assert.equal(numberingLevel, null);
 });
@@ -246,7 +246,7 @@ test("numbering properties are ignored if w:numId is missing", function () {
   var numberingLevel = _readNumberingProperties(
     null,
     numberingPropertiesXml,
-    numbering
+    numbering,
   );
   assert.equal(numberingLevel, null);
 });
@@ -304,8 +304,8 @@ test(
                 href: uri,
                 children: contains(isText("this is a hyperlink")),
               }),
-              isEmptyRun
-            )
+              isEmptyRun,
+            ),
           );
         },
 
@@ -332,8 +332,8 @@ test(
                 anchor: "InternalLink",
                 children: contains(isText("this is a hyperlink")),
               }),
-              isEmptyRun
-            )
+              isEmptyRun,
+            ),
           );
         },
 
@@ -357,8 +357,8 @@ test(
               isEmptyRun,
               isRun({
                 children: contains(isText("this will not be a hyperlink")),
-              })
-            )
+              }),
+            ),
           );
         },
 
@@ -388,8 +388,8 @@ test(
               href: uri,
               children: contains(isText("this is a hyperlink")),
             }),
-            isEmptyRun
-          )
+            isEmptyRun,
+          ),
         );
       },
 
@@ -422,8 +422,8 @@ test(
               href: uri,
               children: contains(isText("this is a hyperlink")),
             }),
-            isEmptyRun
-          )
+            isEmptyRun,
+          ),
         );
       },
 
@@ -457,8 +457,8 @@ test(
                 children: contains(isText("John Doe")),
               }),
               isEmptyHyperlinkedRun,
-              isEmptyRun
-            )
+              isEmptyRun,
+            ),
           );
         },
 
@@ -486,12 +486,12 @@ test(
               href: uri,
               children: contains(isText("this is a hyperlink")),
             }),
-            isEmptyRun
-          )
+            isEmptyRun,
+          ),
         );
       },
     };
-  })()
+  })(),
 );
 
 test("run has no style if it has no properties", function () {
@@ -523,7 +523,7 @@ test("warning is emitted when run style cannot be found", function () {
   assert.deepEqual(run.styleName, null);
   assert.deepEqual(result.messages, [
     warning(
-      "Run style with ID Heading1Char was referenced but not defined in the document"
+      "Run style with ID Heading1Char was referenced but not defined in the document",
     ),
   ]);
 });
@@ -650,7 +650,7 @@ booleanRunProperties.forEach(function (runProperty) {
       var runXml = runWithProperties([propertyXml]);
       var run = readXmlElementValue(runXml);
       assert.equal(run[runProperty.name], false);
-    }
+    },
   );
 
   test(
@@ -663,7 +663,7 @@ booleanRunProperties.forEach(function (runProperty) {
       var runXml = runWithProperties([propertyXml]);
       var run = readXmlElementValue(runXml);
       assert.equal(run[runProperty.name], false);
-    }
+    },
   );
 
   test(
@@ -678,7 +678,7 @@ booleanRunProperties.forEach(function (runProperty) {
       var runXml = runWithProperties([propertyXml]);
       var run = readXmlElementValue(runXml);
       assert.equal(run[runProperty.name], true);
-    }
+    },
   );
 
   test(
@@ -691,7 +691,7 @@ booleanRunProperties.forEach(function (runProperty) {
       var runXml = runWithProperties([propertyXml]);
       var run = readXmlElementValue(runXml);
       assert.equal(run[runProperty.name], true);
-    }
+    },
   );
 });
 
@@ -710,7 +710,7 @@ test("run has vertical alignment read from properties", function () {
   var run = readXmlElementValue(runXml);
   assert.deepEqual(
     run.verticalAlignment,
-    documents.verticalAlignment.superscript
+    documents.verticalAlignment.superscript,
   );
 });
 
@@ -782,7 +782,7 @@ test("w:sym with supported font and supported code point in ASCII range is conve
   var element = new XmlElement(
     "w:sym",
     { "w:font": "Wingdings", "w:char": "28" },
-    []
+    [],
   );
   var text = readXmlElementValue(element);
   assert.deepEqual(text, new documents.Text("🕿"));
@@ -792,7 +792,7 @@ test("w:sym with supported font and supported code point in private use area is 
   var element = new XmlElement(
     "w:sym",
     { "w:font": "Wingdings", "w:char": "F028" },
-    []
+    [],
   );
   var text = readXmlElementValue(element);
   assert.deepEqual(text, new documents.Text("🕿"));
@@ -802,7 +802,7 @@ test("w:sym with unsupported font and code point produces empty result with warn
   var element = new XmlElement(
     "w:sym",
     { "w:font": "Dingwings", "w:char": "28" },
-    []
+    [],
   );
 
   var result = readXmlElement(element);
@@ -810,7 +810,7 @@ test("w:sym with unsupported font and code point produces empty result with warn
   assert.deepEqual(result.value, []);
   assert.deepEqual(result.messages, [
     warning(
-      "A w:sym element with an unsupported character was ignored: char 28 in font Dingwings"
+      "A w:sym element with an unsupported character was ignored: char 28 in font Dingwings",
     ),
   ]);
 });
@@ -828,7 +828,7 @@ test("w:tbl is read as document table element", function () {
       new documents.TableRow([
         new documents.TableCell([new documents.Paragraph([])]),
       ]),
-    ])
+    ]),
   );
 });
 
@@ -861,7 +861,7 @@ test("warning is emitted when table style cannot be found", function () {
   assert.deepEqual(table.styleName, null);
   assert.deepEqual(result.messages, [
     warning(
-      "Table style with ID TableNormal was referenced but not defined in the document"
+      "Table style with ID TableNormal was referenced but not defined in the document",
     ),
   ]);
 });
@@ -878,7 +878,7 @@ test("w:tblHeader marks table row as header", function () {
     result,
     isTable({
       children: contains(isRow({ isHeader: true }), isRow({ isHeader: false })),
-    })
+    }),
   );
 });
 
@@ -900,7 +900,7 @@ test("w:gridSpan is read as colSpan for table cell", function () {
       new documents.TableRow([
         new documents.TableCell([new documents.Paragraph([])], { colSpan: 2 }),
       ]),
-    ])
+    ]),
   );
 });
 
@@ -921,7 +921,7 @@ test("w:vMerge is read as rowSpan for table cell", function () {
       docRow([]),
       docRow([]),
       docRow([docEmptyCell()]),
-    ])
+    ]),
   );
 });
 
@@ -933,7 +933,7 @@ test("w:vMerge without val is treated as continue", function () {
   var result = readXmlElement(tableXml);
   assert.deepEqual(
     result.value,
-    new documents.Table([docRow([docEmptyCell({ rowSpan: 2 })]), docRow([])])
+    new documents.Table([docRow([docEmptyCell({ rowSpan: 2 })]), docRow([])]),
   );
 });
 
@@ -952,7 +952,7 @@ test("w:vMerge accounts for cells spanning columns", function () {
       docRow([docEmptyCell({ colSpan: 2 })]),
       docRow([docEmptyCell(), docEmptyCell()]),
       docRow([docEmptyCell(), docEmptyCell(), docEmptyCell()]),
-    ])
+    ]),
   );
 });
 
@@ -967,7 +967,7 @@ test("no vertical cell merging if merged cells do not line up", function () {
     new documents.Table([
       docRow([docEmptyCell({ colSpan: 2 })]),
       docRow([docEmptyCell(), docEmptyCell()]),
-    ])
+    ]),
   );
 });
 
@@ -976,7 +976,7 @@ test("warning if non-row in table", function () {
   var result = readXmlElement(tableXml);
   assert.deepEqual(result.messages, [
     warning(
-      "unexpected non-row element in table, cell merging may be incorrect"
+      "unexpected non-row element in table, cell merging may be incorrect",
     ),
   ]);
 });
@@ -986,7 +986,7 @@ test("warning if non-cell in table row", function () {
   var result = readXmlElement(tableXml);
   assert.deepEqual(result.messages, [
     warning(
-      "unexpected non-cell element in table row, cell merging may be incorrect"
+      "unexpected non-cell element in table row, cell merging may be incorrect",
     ),
   ]);
 });
@@ -1047,16 +1047,16 @@ function isSuccess(valueMatcher) {
 
 function isImage(options) {
   var matcher = hasProperties(
-    _.extend({ type: "image" }, _.omit(options, "buffer"))
+    _.extend({ type: "image" }, _.omit(options, "buffer")),
   );
   if (options.buffer) {
     return allOf(
       matcher,
       new FeatureMatcher(willBe(options.buffer), "buffer", "buffer", function (
-        element
+        element,
       ) {
         return element.read();
-      })
+      }),
     );
   } else {
     return matcher;
@@ -1090,8 +1090,8 @@ test("can read imagedata elements with r:id attribute", function () {
         altText: "It's a hat",
         contentType: "image/png",
         buffer: IMAGE_BUFFER,
-      })
-    )
+      }),
+    ),
   );
 });
 
@@ -1122,9 +1122,9 @@ test("can read inline pictures", function () {
           altText: "It's a hat",
           contentType: "image/png",
           buffer: IMAGE_BUFFER,
-        })
-      )
-    )
+        }),
+      ),
+    ),
   );
 });
 
@@ -1142,9 +1142,9 @@ test("alt text title is used if alt text description is missing", function () {
       contains(
         isImage({
           altText: "It's a hat",
-        })
-      )
-    )
+        }),
+      ),
+    ),
   );
 });
 
@@ -1163,9 +1163,9 @@ test("alt text title is used if alt text description is blank", function () {
       contains(
         isImage({
           altText: "It's a hat",
-        })
-      )
-    )
+        }),
+      ),
+    ),
   );
 });
 
@@ -1184,9 +1184,9 @@ test("alt text description is preferred to alt text title", function () {
       contains(
         isImage({
           altText: "It's a hat",
-        })
-      )
-    )
+        }),
+      ),
+    ),
   );
 });
 
@@ -1216,9 +1216,9 @@ test("can read anchored pictures", function () {
           altText: "It's a hat",
           contentType: "image/png",
           buffer: IMAGE_BUFFER,
-        })
-      )
-    )
+        }),
+      ),
+    ),
   );
 });
 
@@ -1237,7 +1237,7 @@ test("can read linked pictures", function () {
       files: testing.createFakeFiles({
         "file:///media/hat.png": IMAGE_BUFFER,
       }),
-    })
+    }),
   );
   return promiseThat(
     element,
@@ -1245,7 +1245,7 @@ test("can read linked pictures", function () {
       altText: "It's a hat",
       contentType: "image/png",
       buffer: IMAGE_BUFFER,
-    })
+    }),
   );
 });
 
@@ -1333,7 +1333,7 @@ test("w:hyperlink", {
       var hyperlinkXml = new XmlElement(
         "w:hyperlink",
         { "r:id": "r42", "w:anchor": "fragment" },
-        [runXml]
+        [runXml],
       );
       var relationships = new Relationships([
         hyperlinkRelationship("r42", "http://example.com/"),
@@ -1351,7 +1351,7 @@ test("w:hyperlink", {
       var hyperlinkXml = new XmlElement(
         "w:hyperlink",
         { "r:id": "r42", "w:anchor": "fragment" },
-        [runXml]
+        [runXml],
       );
       var relationships = new Relationships([
         hyperlinkRelationship("r42", "http://example.com/#previous"),
@@ -1437,7 +1437,7 @@ test("w:footnoteReference has ID read", function () {
   var result = readXmlElement(referenceXml);
   assert.deepEqual(
     result.value,
-    documents.noteReference({ noteType: "footnote", noteId: "4" })
+    documents.noteReference({ noteType: "footnote", noteId: "4" }),
   );
   assert.deepEqual(result.messages, []);
 });
@@ -1447,7 +1447,7 @@ test("w:commentReference has ID read", function () {
   var result = readXmlElement(referenceXml);
   assert.deepEqual(
     result.value,
-    documents.commentReference({ commentId: "4" })
+    documents.commentReference({ commentId: "4" }),
   );
   assert.deepEqual(result.messages, []);
 });
@@ -1491,7 +1491,7 @@ test("text boxes have content appended after containing paragraph", function () 
 test("mc:Fallback is used when mc:AlternateContent is read", function () {
   var styles = new Styles(
     { first: { name: "First" }, second: { name: "Second" } },
-    {}
+    {},
   );
   var textbox = new XmlElement("mc:AlternateContent", {}, [
     new XmlElement("mc:Choice", { Requires: "wps" }, [

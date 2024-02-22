@@ -78,7 +78,7 @@ class AbsolutePositionStateManager extends LitElement {
     this.elements = [];
     this.__timeout = false;
     this.__observer = new MutationObserver((mutations) =>
-      this.checkMutations(mutations)
+      this.checkMutations(mutations),
     );
   }
 
@@ -102,7 +102,7 @@ class AbsolutePositionStateManager extends LitElement {
         this.updateElements.bind(this),
         {
           signal: this.windowControllers.signal,
-        }
+        },
       );
       globalThis.addEventListener("resize", this._handleResize.bind(this), {
         signal: this.windowControllers.signal,
@@ -132,7 +132,7 @@ class AbsolutePositionStateManager extends LitElement {
     if (this.__timeout2) clearTimeout(this.__timeout2);
     this.__timeout2 = setTimeout(
       globalThis.AbsolutePositionStateManager.instance.updateStickyElements(),
-      1000
+      1000,
     );
   }
 
@@ -143,7 +143,7 @@ class AbsolutePositionStateManager extends LitElement {
     if (this.__timeout) clearTimeout(this.__timeout);
     this.__timeout = setTimeout(
       globalThis.AbsolutePositionStateManager.instance.updateElements(),
-      250
+      250,
     );
   }
 
@@ -173,7 +173,7 @@ class AbsolutePositionStateManager extends LitElement {
       if (this.__timeout) clearTimeout(this.__timeout);
       this.__timeout = setTimeout(
         globalThis.AbsolutePositionStateManager.instance.updateElements(),
-        250
+        250,
       );
     }
   }
@@ -366,8 +366,8 @@ class AbsolutePositionStateManager extends LitElement {
           pos === "top"
             ? t.top + adjust - eh - offset
             : pos === "left"
-            ? t.left + adjust - ew - offset
-            : t[pos] + adjust + offset;
+              ? t.left + adjust - ew - offset
+              : t[pos] + adjust + offset;
         return coord;
       },
       //determines if element fits on screen in the desired position
@@ -444,6 +444,6 @@ class AbsolutePositionStateManager extends LitElement {
 }
 customElements.define(
   AbsolutePositionStateManager.tag,
-  AbsolutePositionStateManager
+  AbsolutePositionStateManager,
 );
 export { AbsolutePositionStateManager };

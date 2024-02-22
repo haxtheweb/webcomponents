@@ -24,7 +24,7 @@ class SimpleSearchContent extends LitElement {
    */
   enableSearch(searchObject) {
     searchObject.addEventListener("simple-search", (e) =>
-      this._searchContent(searchObject)
+      this._searchContent(searchObject),
     );
     searchObject.addEventListener("goto-result", (e) => this.focus(e.detail));
   }

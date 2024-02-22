@@ -19,27 +19,27 @@ describe("a11y-menu-button test", () => {
   it("basic setup for testing the link case", async () => {
     // case 1 of the menu item
     const item = element.querySelector(
-      "a11y-menu-button a11y-menu-button-item[href='../']"
+      "a11y-menu-button a11y-menu-button-item[href='../']",
     );
     expect(element).to.exist;
     expect(item.shadowRoot.querySelector("a[role='menuitem']")).to.exist;
     expect(
       item.shadowRoot.querySelector("slot").assignedNodes({ flatten: true })[0]
-        .textContent
+        .textContent,
     ).to.equal("Link");
     expect(item.href).to.equal("../");
   });
   it("basic setup for testing the button case", async () => {
     // case 2 with a button
     const button = element.querySelector(
-      "a11y-menu-button a11y-menu-button-item#button"
+      "a11y-menu-button a11y-menu-button-item#button",
     );
     expect(element).to.exist;
     expect(button.shadowRoot.querySelector("button[role='menuitem']")).to.exist;
     expect(
       button.shadowRoot
         .querySelector("slot")
-        .assignedNodes({ flatten: true })[0].textContent
+        .assignedNodes({ flatten: true })[0].textContent,
     ).to.equal("Button");
     expect(button.disabled).to.equal(true);
   });

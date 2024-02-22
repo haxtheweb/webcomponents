@@ -8,8 +8,8 @@ function Files() {
       new Error(
         "could not open external image: '" +
           uri +
-          "'\ncannot open linked files from a web browser"
-      )
+          "'\ncannot open linked files from a web browser",
+      ),
     );
   }
 

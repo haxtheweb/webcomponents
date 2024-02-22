@@ -205,7 +205,7 @@ class SiteChildrenBlock extends LitElement {
                       </button>
                     </a>
                   </li>
-                `} `
+                `} `,
         )}
       </ul>
     `;
@@ -287,7 +287,7 @@ class SiteChildrenBlock extends LitElement {
             this.shadowRoot.querySelector('[data-id="' + tmpItem.id + '"]')
           ) {
             el = this.shadowRoot.querySelector(
-              '[data-id="' + tmpItem.id + '"]'
+              '[data-id="' + tmpItem.id + '"]',
             );
           }
         }
@@ -314,7 +314,7 @@ class SiteChildrenBlock extends LitElement {
         this.dispatchEvent(
           new CustomEvent(`${this[propName]}-changed`, {
             detail: this[propName],
-          })
+          }),
         );
       }
       if (propName === "_activeId" && this.shadowRoot) {

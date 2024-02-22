@@ -5,9 +5,9 @@ import "../select-menu.js";
 describe("select-menu test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <select-menu title="test-title"></select-menu> `
-    );
+    element = await fixture(html`
+      <select-menu title="test-title"></select-menu>
+    `);
   });
 
   it("passes the a11y audit", async () => {

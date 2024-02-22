@@ -48,7 +48,7 @@ export class PageAnchor extends DDD {
   // scroll related item into view and initialize
   clickHandler(e) {
     console.log(e.type);
-    if (this._haxState && e.type === 'click') {
+    if (this._haxState && e.type === "click") {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
@@ -57,10 +57,11 @@ export class PageAnchor extends DDD {
     // verify el exist
     let node;
     if (this._haxState) {
-      node = globalThis.document.querySelector('.haxcms-theme-element ' + this.target);
-    }
-    else {
-      node =  HAXStore.activeHaxBody.querySelector(this.target);
+      node = globalThis.document.querySelector(
+        ".haxcms-theme-element " + this.target,
+      );
+    } else {
+      node = HAXStore.activeHaxBody.querySelector(this.target);
     }
     if (node) {
       node.scrollIntoView();
@@ -70,8 +71,7 @@ export class PageAnchor extends DDD {
           case "audio-player":
             if (this.value) {
               node.seek(parseInt(this.value));
-            }
-            else {
+            } else {
               node.play();
             }
             break;
@@ -99,10 +99,11 @@ export class PageAnchor extends DDD {
     // the taxonomy provided color
     let node;
     if (this._haxState) {
-      node = globalThis.document.querySelector('.haxcms-theme-element ' + target);
-    }
-    else {
-      node =  HAXStore.activeHaxBody.querySelector(target);
+      node = globalThis.document.querySelector(
+        ".haxcms-theme-element " + target,
+      );
+    } else {
+      node = HAXStore.activeHaxBody.querySelector(target);
     }
     if (node && target) {
       let schema = HAXStore.haxSchemaFromTag(node.tagName);
@@ -117,15 +118,23 @@ export class PageAnchor extends DDD {
     return html`<mark
       @click="${this.clickHandler}"
       style="background-color: var(${this.getMatchFromFields(
-        this.entityId, this.target, "color"
+        this.entityId,
+        this.target,
+        "color",
       )
         ? `${this.getMatchFromFields(this.entityId, this.target, "color")}, `
         : ``}initial)"
-      >${this.getMatchFromFields(this.entityId, this.target, "icon") ? html`<simple-icon-lite
-        icon="${this.getMatchFromFields(this.entityId, this.target, "icon")}"
-      ></simple-icon-lite>` : ``}
+      >${this.getMatchFromFields(this.entityId, this.target, "icon")
+        ? html`<simple-icon-lite
+            icon="${this.getMatchFromFields(
+              this.entityId,
+              this.target,
+              "icon",
+            )}"
+          ></simple-icon-lite>`
+        : ``}
       <slot></slot>
-      </mark>`;
+    </mark>`;
   }
   static get tag() {
     return "page-anchor";
@@ -135,90 +144,97 @@ export class PageAnchor extends DDD {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 
   haxHooks() {
     return {
       editModeChanged: "haxeditModeChanged",
       setupActiveElementForm: "haxsetupActiveElementForm",
-    }
+    };
   }
-    /**
+  /**
    * ensure that when we flip states here that we are actively switching the original level var
    */
-    haxeditModeChanged(value) {
-      this._haxState = value;
-    }
+  haxeditModeChanged(value) {
+    this._haxState = value;
+  }
 
-    /**
+  /**
    * Allow for dynamic setting of the parent field if we have the store around
    * with values to do so
    */
-    haxsetupActiveElementForm(props) {
-      var relatedDomNode = [
-        {
-          text: `-- No association --`,
-          value: null,
-        },
-      ];
-      HAXStore.activeHaxBody.querySelectorAll('[id],[resource]').forEach((node) => {
+  haxsetupActiveElementForm(props) {
+    var relatedDomNode = [
+      {
+        text: `-- No association --`,
+        value: null,
+      },
+    ];
+    HAXStore.activeHaxBody
+      .querySelectorAll("[id],[resource]")
+      .forEach((node) => {
         // test for a happy label
-        if (!['PAGE-BREAK','PAGE-ANCHOR', 'RICH-TEXT-EDITOR-HIGHLIGHT'].includes(node.tagName)) {
+        if (
+          !["PAGE-BREAK", "PAGE-ANCHOR", "RICH-TEXT-EDITOR-HIGHLIGHT"].includes(
+            node.tagName,
+          )
+        ) {
           let schema = HAXStore.haxSchemaFromTag(node.tagName);
-          let label = node.gizmo ? node.gizmo.title : '';
+          let label = node.gizmo ? node.gizmo.title : "";
           let selector = node.tagName.toLowerCase();
-          if (schema.gizmo && schema.gizmo.metadata && schema.gizmo.metadata.anchorLabel) {
+          if (
+            schema.gizmo &&
+            schema.gizmo.metadata &&
+            schema.gizmo.metadata.anchorLabel
+          ) {
             label = node[schema.gizmo.metadata.anchorLabel];
-          }
-          else {
-            if (node.innerText != '') {
+          } else {
+            if (node.innerText != "") {
               label = node.innerText;
             }
-            if (node.getAttribute('id')) {
-              label += ` (${node.getAttribute('id')})`;
-              selector = `#${node.getAttribute('id')}`;
-            }
-            else if (node.getAttribute('resource')) {
-              label += ` (${node.getAttribute('resource')})`;
-              selector = `[resource="${node.getAttribute('resource')}"]`;
+            if (node.getAttribute("id")) {
+              label += ` (${node.getAttribute("id")})`;
+              selector = `#${node.getAttribute("id")}`;
+            } else if (node.getAttribute("resource")) {
+              label += ` (${node.getAttribute("resource")})`;
+              selector = `[resource="${node.getAttribute("resource")}"]`;
             }
           }
           relatedDomNode.push({
             text: label,
-            value: selector
-          });          
+            value: selector,
+          });
         }
       });
 
-      const entityData = toJS(store.entityData);
-      // default to null parent as the whole site
-      var items = [
-        {
-          text: `-- No association --`,
-          value: null,
-        },
-      ];
-      Object.keys(entityData).map((key) => {
-        items.push({
-          text: entityData[key].title,
-          value: entityData[key].id,
-        });
+    const entityData = toJS(store.entityData);
+    // default to null parent as the whole site
+    var items = [
+      {
+        text: `-- No association --`,
+        value: null,
+      },
+    ];
+    Object.keys(entityData).map((key) => {
+      items.push({
+        text: entityData[key].title,
+        value: entityData[key].id,
       });
-      // apply same logic of the items in the active site to
-      // parent and related items
-      props.settings.configure.forEach((attr, index) => {
-        if (attr.property === "target") {
-          props.settings.configure[index].inputMethod = "select";
-          props.settings.configure[index].itemsList = relatedDomNode;
-        }
-        if (attr.property === "entityId") {
-          props.settings.configure[index].inputMethod = "select";
-          props.settings.configure[index].itemsList = items;
-        }
-      });
-    }
+    });
+    // apply same logic of the items in the active site to
+    // parent and related items
+    props.settings.configure.forEach((attr, index) => {
+      if (attr.property === "target") {
+        props.settings.configure[index].inputMethod = "select";
+        props.settings.configure[index].itemsList = relatedDomNode;
+      }
+      if (attr.property === "entityId") {
+        props.settings.configure[index].inputMethod = "select";
+        props.settings.configure[index].itemsList = items;
+      }
+    });
+  }
 }
 
 globalThis.customElements.define(PageAnchor.tag, PageAnchor);

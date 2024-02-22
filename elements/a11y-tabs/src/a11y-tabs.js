@@ -376,7 +376,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         ${this.tabs.map(
           (tab, i) => html`
             <li part="tablist-item">${this._tabButton(tab, i)}</li>
-          `
+          `,
         )}
       </ul>
       <div id="content" part="content">
@@ -664,13 +664,13 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       new CustomEvent("a11y-tabs-active-changed", {
         cancelable: true,
         detail: this,
-      })
+      }),
     );
     // local event response
     this.dispatchEvent(
       new CustomEvent("a11y-tabs-active-changed", {
         detail: this,
-      })
+      }),
     );
   }
   /**
@@ -682,7 +682,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       /s/g,
       Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
-        .substring(1)
+        .substring(1),
     );
   }
   /**
@@ -755,8 +755,8 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         part="${tab.id === this.activeTab && !this.disabled
           ? "tab-active"
           : this.disabled || tab.disabled
-          ? "tab-disabled"
-          : ""} tab tab-${tab.id}"
+            ? "tab-disabled"
+            : ""} tab tab-${tab.id}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}

@@ -199,10 +199,10 @@ class RichTextEditorSource extends LitElement {
     ) {
       [
         ...document.querySelectorAll(
-          "[data-rich-text-editor-view-source-mode]"
+          "[data-rich-text-editor-view-source-mode]",
         ),
       ].forEach((node) =>
-        node.removeAttribute("data-rich-text-editor-view-source-mode")
+        node.removeAttribute("data-rich-text-editor-view-source-mode"),
       );
       if (this.__target) this.__target.focus();
       this.hidden = true;
@@ -218,7 +218,7 @@ class RichTextEditorSource extends LitElement {
       this.disabled = this.__target.disabled;
       this.__target.setAttribute(
         "data-rich-text-editor-view-source-mode",
-        true
+        true,
       );
       this.__target.parentNode.insertBefore(this, this.__target);
       this.__codeEditorValue = this.__toolbar.targetHTML;
@@ -266,10 +266,10 @@ globalThis.RichTextEditorSource.requestAvailability = () => {
       globalThis.document.createElement("style");
     globalThis.RichTextEditorSource.stylesheet.innerHTML = `rich-text-editor-source + [data-rich-text-editor-view-source-mode] { display: none }`;
     globalThis.document.body.appendChild(
-      globalThis.RichTextEditorSource.instance
+      globalThis.RichTextEditorSource.instance,
     );
     globalThis.document.head.appendChild(
-      globalThis.RichTextEditorSource.stylesheet
+      globalThis.RichTextEditorSource.stylesheet,
     );
   }
   return globalThis.RichTextEditorSource.instance;

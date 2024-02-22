@@ -45,7 +45,9 @@ class CollectionRow extends DDD {
           display: block;
           border-top: 1px solid black;
           padding: var(--ddd-spacing-6) 0 var(--ddd-spacing-5);
-          --collection-row-accent-color: var(--simple-colors-default-theme-accent-10);
+          --collection-row-accent-color: var(
+            --simple-colors-default-theme-accent-10
+          );
         }
 
         a {
@@ -64,7 +66,9 @@ class CollectionRow extends DDD {
         .image-wrap {
           max-width: 250px;
           width: 100%;
-          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
+          transition:
+            0.3s ease-in-out opacity,
+            0.3s ease-in-out filter;
         }
 
         p {
@@ -139,7 +143,9 @@ class CollectionRow extends DDD {
           background-position: right center;
           width: 100%;
           opacity: 0.9;
-          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
+          transition:
+            0.3s ease-in-out opacity,
+            0.3s ease-in-out filter;
           border-bottom-style: solid;
           border-bottom-color: var(--collection-row-accent-color);
           border-bottom-width: var(--ddd-border-md);
@@ -169,31 +175,41 @@ class CollectionRow extends DDD {
 
   render() {
     return html`
-    <div class="wrap">
-      <div class="image-wrap">
-      ${this.image ? html`<img
-          class="image bg-gradient-hero"
-          src="${this.image}" alt="${this.alt}" />`: ``}
+      <div class="wrap">
+        <div class="image-wrap">
+          ${this.image
+            ? html`<img
+                class="image bg-gradient-hero"
+                src="${this.image}"
+                alt="${this.alt}"
+              />`
+            : ``}
+        </div>
+        <div>
+          <p class="text">
+            <a href="${this.url}" @click="${this._handleClick}"
+              >${this.line1}</a
+            >
+            ${this.line2}
+            <slot></slot>
+          </p>
+        </div>
       </div>
-      <div>
-        <p class="text">
-          <a href="${this.url}" @click="${this._handleClick}">${this.line1}</a> 
-          ${this.line2}
-          <slot></slot>
-        </p>
-      </div>
-    </div>
-    <div class="footer">
-      ${this.icon ? html`<simple-icon icon="${this.icon}" accent-color="${this.accentColor}"
-></simple-icon>`: ``}
-      ${this.tags
+      <div class="footer">
+        ${this.icon
+          ? html`<simple-icon
+              icon="${this.icon}"
+              accent-color="${this.accentColor}"
+            ></simple-icon>`
+          : ``}
+        ${this.tags
           ? html`<simple-tags
               tags="${this.tags}"
               accent-color="${this.accentColor}"
               auto-accent-color
             ></simple-tags>`
           : ``}
-        </div>
+      </div>
     `;
   }
 

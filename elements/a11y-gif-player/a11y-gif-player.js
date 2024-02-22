@@ -35,7 +35,7 @@ Custom property | Description | Default
  * @element a11y-gif-player
  */
 class A11yGifPlayer extends I18NMixin(
-  IntersectionObserverMixin(SchemaBehaviors(LitElement))
+  IntersectionObserverMixin(SchemaBehaviors(LitElement)),
 ) {
   constructor() {
     super();
@@ -328,14 +328,14 @@ class A11yGifPlayer extends I18NMixin(
       (event) => {
         this.shadowRoot.querySelector("#longdesc").toggleOpen();
       },
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     window.addEventListener(
       "afterprint",
       (event) => {
         this.shadowRoot.querySelector("#longdesc").toggleOpen();
       },
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   disconnectedCallback() {

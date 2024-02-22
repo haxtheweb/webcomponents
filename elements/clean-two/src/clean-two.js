@@ -59,9 +59,9 @@ class CleanTwo extends HAXCMSOperationButtons(
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
           display: block;
           background-color: white;
-          --simple-tooltip-background: var(--ddd-theme-polaris-info);
+          --simple-tooltip-background: var(--ddd-theme-default-info);
           --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: var(--ddd-theme-polaris-infoLight);
+          --simple-tooltip-text-color: var(--ddd-theme-default-infoLight);
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
           --hax-base-styles-a-color-active: #000000;
@@ -94,7 +94,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         site-menu-button {
           --site-menu-button-link-decoration: none;
           --site-menu-button-button-hover-color: var(
-            --ddd-theme-polaris-info,
+            --ddd-theme-default-info,
             #383f45
           );
           transition: all 0.3s ease-in-out;
@@ -186,8 +186,8 @@ class CleanTwo extends HAXCMSOperationButtons(
         site-menu-button:focus,
         site-menu-button:focus-within,
         site-menu-button:hover {
-          color: var(--ddd-theme-polaris-info);
-          background-color: var(--ddd-theme-polaris-infoLight);
+          color: var(--ddd-theme-default-info);
+          background-color: var(--ddd-theme-default-infoLight);
         }
         site-menu-button[type="next"] div {
           text-align: left;
@@ -292,7 +292,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           --site-menu-color: #000000;
           --site-menu-active-color: #e6ecf1;
           --site-menu-item-active-item-color: var(
-            --ddd-theme-polaris-infoLight
+            --ddd-theme-default-infoLight
           );
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-xs);
@@ -776,7 +776,6 @@ class CleanTwo extends HAXCMSOperationButtons(
    */
   constructor() {
     super();
-    this.loadDDDFonts(DDDFonts);
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];

@@ -103,7 +103,7 @@ export class UserScaffold extends HTMLElement {
       ) {
         this.incrementWriteMemory(
           "interactionDelay",
-          MEMORYINTERVALPOLLING * 2
+          MEMORYINTERVALPOLLING * 2,
         );
       }
     }, MEMORYINTERVALPOLLING);
@@ -154,7 +154,7 @@ export class UserScaffold extends HTMLElement {
       // intercept paste event
       if (e.clipboardData || e.originalEvent.clipboardData) {
         pasteContent = (e.originalEvent || e).clipboardData.getData(
-          "text/html"
+          "text/html",
         );
         // if it is purely plain text it could fail to come across as HTML and be empty
         if (pasteContent == "") {
@@ -172,7 +172,7 @@ export class UserScaffold extends HTMLElement {
       //remove styling
       pasteContent = pasteContent.replace(
         /(?:style="(\S+:\s*[^;"]+;\s*)*)+"/g,
-        ""
+        "",
       );
       // clean up div tags that can come in from contenteditable pastes
       // p tags make more sense in the content area

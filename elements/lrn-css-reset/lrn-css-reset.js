@@ -258,7 +258,7 @@ const LrnCssResetStyles = [
 ];
 const AttachStylesToHead = (
   styles = LrnCssResetStyles,
-  id = "LrnCssResetStyles"
+  id = "LrnCssResetStyles",
 ) => {
   if (!window.LrnCssResetStyles) {
     window[id] = document.createElement("div");

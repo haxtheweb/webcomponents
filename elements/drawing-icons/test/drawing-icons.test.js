@@ -5,9 +5,9 @@ import "../drawing-icons.js";
 describe("drawing-icons test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <drawing-icons title="test-title"></drawing-icons> `
-    );
+    element = await fixture(html`
+      <drawing-icons title="test-title"></drawing-icons>
+    `);
   });
 
   it("passes the a11y audit", async () => {

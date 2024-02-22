@@ -5,9 +5,9 @@ import "../undo-manager.js";
 describe("undo-manager test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <undo-manager title="test-title"></undo-manager> `
-    );
+    element = await fixture(html`
+      <undo-manager title="test-title"></undo-manager>
+    `);
   });
 
   it("passes the a11y audit", async () => {

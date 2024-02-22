@@ -20,6 +20,6 @@ export const TypeWriterText = () => {
       text: "This is how it goes when we type everything out like so",
       speed: 100,
       "cursor-duration": 100,
-    })
+    }),
   );
 };

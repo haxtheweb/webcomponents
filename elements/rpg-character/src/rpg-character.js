@@ -60,7 +60,7 @@ class RpgCharacter extends SimpleColors {
     this.fire = false;
     if (globalThis.matchMedia) {
       this.reduceMotion = globalThis.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+        "(prefers-reduced-motion: reduce)",
       ).matches;
     }
   }
@@ -154,17 +154,17 @@ class RpgCharacter extends SimpleColors {
   render() {
     const accessories = new URL(
       `./lib/accessories/${this.accessories}.svg`,
-      import.meta.url
+      import.meta.url,
     ).href;
     const base = new URL(
       `./lib/base/${this.base}${this.leg}.svg`,
-      import.meta.url
+      import.meta.url,
     ).href;
     const leg = new URL(`./lib/base/${this.leg}.svg`, import.meta.url).href;
     const face = new URL(`./lib/face/${this.face}.svg`, import.meta.url).href;
     const faceItem = new URL(
       `./lib/faceItem/${this.faceItem}.svg`,
-      import.meta.url
+      import.meta.url,
     ).href;
     const hair = new URL(`./lib/hair/${this.hair}.svg`, import.meta.url).href;
     const pants = new URL(`./lib/pants/${this.pants}.svg`, import.meta.url)
@@ -182,7 +182,7 @@ class RpgCharacter extends SimpleColors {
     const hat = new URL(`./lib/hat/${hatFileName}.svg`, import.meta.url).href;
     const hatColor = new URL(
       `./lib/hatColor/${this.hatColor}.svg`,
-      import.meta.url
+      import.meta.url,
     ).href;
     const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;
     const circle = new URL(`./lib/circle.svg`, import.meta.url).href;
@@ -309,7 +309,7 @@ class RpgCharacter extends SimpleColors {
               this[trait] =
                 charBuilder[trait][
                   Math.floor(
-                    Math.random() * Object.keys(charBuilder[trait]).length
+                    Math.random() * Object.keys(charBuilder[trait]).length,
                   )
                 ];
             }

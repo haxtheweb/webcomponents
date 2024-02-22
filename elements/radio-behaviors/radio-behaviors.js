@@ -122,8 +122,8 @@ const RadioBehaviors = function (SuperClass) {
         typeof item === "string" && item.trim().length > 0
           ? this._getItemById(item)
           : typeof item === "integer"
-          ? this._getItemByIndex(item)
-          : item;
+            ? this._getItemByIndex(item)
+            : item;
 
       //make sure an item is selected if null is unallowed
       if (!this.__allowNull && (!item || item.disabled)) {
@@ -131,8 +131,8 @@ const RadioBehaviors = function (SuperClass) {
           this.selection && this._getItemByQuery(`#${this.selection}`)
             ? this._getItemByQuery(`#${this.selection}`)
             : this.__selected && this._getItemByQuery(`[${this.__selected}]`)
-            ? this._getItemByQuery(`[${this.__selected}]`)
-            : this._getItemByQuery();
+              ? this._getItemByQuery(`[${this.__selected}]`)
+              : this._getItemByQuery();
       }
 
       //only update if item isn't already selected
@@ -155,7 +155,7 @@ const RadioBehaviors = function (SuperClass) {
     _getDataFromItems() {
       let slotted = this.querySelectorAll(`${this.__query}`);
       return Object.keys(slotted || {}).map((key) =>
-        this._getDataFromItem(slotted[key], key, this.__selected)
+        this._getDataFromItem(slotted[key], key, this.__selected),
       );
     }
     /**
@@ -182,7 +182,7 @@ const RadioBehaviors = function (SuperClass) {
         /s/g,
         Math.floor((1 + Math.random()) * 0x10000)
           .toString(16)
-          .substring(1)
+          .substring(1),
       );
     }
 
@@ -232,7 +232,7 @@ const RadioBehaviors = function (SuperClass) {
           removed =
             m.type === "childList" && m.removedNodes.length > 0
               ? Object.keys(m.removedNodes || {}).filter(
-                  (n) => m.removedNodes[n].id === this.selection
+                  (n) => m.removedNodes[n].id === this.selection,
                 ).length > 0
               : false,
           id = m.type === "attributes" && m.attributeName === "id";
@@ -259,7 +259,7 @@ const RadioBehaviors = function (SuperClass) {
      */
     _handleSelectionChange() {
       this.querySelectorAll(`${this.__query}`).forEach((i) =>
-        this._setItemSelected(i)
+        this._setItemSelected(i),
       );
       /**
        * Fires when selection update, so that parent radio group can listen for it.
@@ -271,7 +271,7 @@ const RadioBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
     /**

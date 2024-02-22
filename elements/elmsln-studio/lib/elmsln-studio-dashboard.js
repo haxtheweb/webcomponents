@@ -18,7 +18,7 @@ import "./elmsln-studio-button.js";
  * @demo demo/dashboard.html
  */
 class ElmslnStudioDashboard extends ElmslnStudioUtilities(
-  ElmslnStudioStyles(LitElement)
+  ElmslnStudioStyles(LitElement),
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -329,7 +329,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                         <simple-tooltip for="due-${a.id}-item" position="left">
                           ${this.isLate(a.date) ? "Overdue" : "Not Submitted"}
                         </simple-tooltip>
-                      `
+                      `,
                     )}
                   </div>
                 `}
@@ -387,7 +387,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           ? "Submitted Late"
                           : "Submitted"}
                       </simple-tooltip>
-                    `
+                    `,
                   )}
                 </div>`}
           </nav-card>
@@ -404,7 +404,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                     (f) => html`
                       <nav-card-item
                         accent-color="${this.accentColor(
-                          [f.firstName, f.lastName].join(" ")
+                          [f.firstName, f.lastName].join(" "),
                         )}"
                         .avatar="${f.avatar}"
                         .initials="${[f.firstName, f.lastName].join(" ")}"
@@ -426,7 +426,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           ${this.dateFormat(f.date)}
                         </relative-time>
                       </nav-card-item>
-                    `
+                    `,
                   )}
                 </div>`}
           </nav-card>
@@ -447,7 +447,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                     (s) => html`
                       <nav-card-item
                         accent-color="${this.accentColor(
-                          [s.firstName, s.lastName].join(" ")
+                          [s.firstName, s.lastName].join(" "),
                         )}"
                         .avatar="${s.avatar}"
                         .initials="${[s.firstName, s.lastName].join(" ")}"
@@ -468,7 +468,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           ${this.dateFormat(s.date)}
                         </relative-time>
                       </nav-card-item>
-                    `
+                    `,
                   )}
                 </div>`}
           </nav-card>
@@ -482,7 +482,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                       (d) => html`
                         <nav-card-item
                           accent-color="${this.accentColor(
-                            [d.firstName, d.lastName].join(" ")
+                            [d.firstName, d.lastName].join(" "),
                           )}"
                           .avatar="${d.avatar}"
                           .initials="${[d.firstName, d.lastName].join(" ")}"
@@ -503,7 +503,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                             ${this.dateFormat(d.date)}
                           </relative-time>
                         </nav-card-item>
-                      `
+                      `,
                     )}
                   </div>
                 `}

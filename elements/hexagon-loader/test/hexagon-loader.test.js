@@ -5,9 +5,9 @@ import "../hexagon-loader.js";
 describe("hexagon-loader test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <hexagon-loader title="test-title"></hexagon-loader> `
-    );
+    element = await fixture(html`
+      <hexagon-loader title="test-title"></hexagon-loader>
+    `);
   });
 
   it("passes the a11y audit", async () => {

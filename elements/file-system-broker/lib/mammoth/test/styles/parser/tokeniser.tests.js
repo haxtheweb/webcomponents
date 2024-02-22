@@ -100,7 +100,7 @@ test("can tokenise multiple tokens", function () {
 function assertTokens(input, expectedTokens) {
   assertThat(
     tokenise(input),
-    contains.apply(null, expectedTokens.concat([isToken("end", null)]))
+    contains.apply(null, expectedTokens.concat([isToken("end", null)])),
   );
 }
 

@@ -18,7 +18,7 @@ import { SimpleIconPicker } from "@lrnwebcomponents/simple-icon-picker/simple-ic
  * @demo ./demo/buttons.html
  */
 class RichTextEditorIconPicker extends RichTextEditorPickerBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.

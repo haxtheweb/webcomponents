@@ -167,7 +167,7 @@ class A11yMediaYoutube extends LitElement {
     // The iframe document and most of its subresources come right off youtube.com
     A11yMediaYoutube.addPrefetch(
       "preconnect",
-      "https://www.youtube-nocookie.com"
+      "https://www.youtube-nocookie.com",
     );
     // The botguard script is fetched off from google.com
     A11yMediaYoutube.addPrefetch("preconnect", "https://www.google.com");
@@ -175,11 +175,11 @@ class A11yMediaYoutube extends LitElement {
     // Not certain if these ad related domains are in the critical path. Could verify with domain-specific throttling.
     A11yMediaYoutube.addPrefetch(
       "preconnect",
-      "https://googleads.g.doubleclick.net"
+      "https://googleads.g.doubleclick.net",
     );
     A11yMediaYoutube.addPrefetch(
       "preconnect",
-      "https://static.doubleclick.net"
+      "https://static.doubleclick.net",
     );
 
     A11yMediaYoutube.preconnected = true;
@@ -434,7 +434,7 @@ class A11yMediaYoutube extends LitElement {
         cancelable: true,
         composed: true,
         detail: e,
-      })
+      }),
     );
   }
   /**
@@ -448,7 +448,7 @@ class A11yMediaYoutube extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -463,7 +463,7 @@ class A11yMediaYoutube extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 
@@ -519,9 +519,9 @@ class A11yMediaYoutube extends LitElement {
         "preload",
         `https://img.youtube.com/vi/${this.videoId.replace(
           /[\?&].*/,
-          ""
+          "",
         )}/hqdefault.jpg`,
-        "image"
+        "image",
       );
       let setYT = (e) => (this.__video = e.target),
         port = globalThis.location.port ? `:${globalThis.location.port}` : ``,

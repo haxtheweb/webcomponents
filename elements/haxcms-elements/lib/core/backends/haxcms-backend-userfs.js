@@ -76,12 +76,12 @@ class HAXCMSBackendUserfs extends LitElement {
     globalThis.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
       "haxcms-save-outline",
       this.saveOutline.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
       signal: this.windowControllers.signal,
@@ -91,20 +91,20 @@ class HAXCMSBackendUserfs extends LitElement {
       this.deleteNode.bind(this),
       {
         signal: this.windowControllers.signal,
-      }
+      },
     );
     globalThis.addEventListener(
       "haxcms-create-node",
       this.createNode.bind(this),
       {
         signal: this.windowControllers.signal,
-      }
+      },
     );
     // listen for app being selected
     globalThis.addEventListener(
       "hax-app-picker-selection",
       this._appPicked.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   // hook into the site builder and load the file system
@@ -115,7 +115,7 @@ class HAXCMSBackendUserfs extends LitElement {
       this.fileRoot + "/" + this.activeItem.location.replace("/index.html", "");
     let fileHandler = await this.fileObjects.filter(
       (f) =>
-        f.kind === "file" && f.name === "index.html" && f.folder === pathTest
+        f.kind === "file" && f.name === "index.html" && f.folder === pathTest,
     );
     // if we found a match then load include the HTML
     if (fileHandler.length > 0) {
@@ -132,14 +132,14 @@ class HAXCMSBackendUserfs extends LitElement {
     htmlContent = htmlContent.replace(/<page-break(.*?)><\/page-break>/gm, "");
     // @todo need to parse HAXStore.activeHaxBody.children[0] and ensure it's saved into the manifest
     let pageBreak = await HAXStore.nodeToContent(
-      HAXStore.activeHaxBody.children[0]
+      HAXStore.activeHaxBody.children[0],
     );
     // find the file handler that matches the current item based on location match
     let pathTest =
       this.fileRoot + "/" + this.activeItem.location.replace("/index.html", "");
     let fileHandler = await this.fileObjects.filter(
       (f) =>
-        f.kind === "file" && f.name === "index.html" && f.folder === pathTest
+        f.kind === "file" && f.name === "index.html" && f.folder === pathTest,
     );
     // if we found a match then load include the HTML
     if (fileHandler.length > 0) {
@@ -173,7 +173,7 @@ class HAXCMSBackendUserfs extends LitElement {
           .newAssetConfigure();
       };
       reader.readAsArrayBuffer(
-        HAXStore.haxTray.shadowRoot.querySelector("#fileupload").files[0]
+        HAXStore.haxTray.shadowRoot.querySelector("#fileupload").files[0],
       );
     }
   }
@@ -183,7 +183,7 @@ class HAXCMSBackendUserfs extends LitElement {
   async saveNode(e) {
     if (
       await this.writeActiveItemContent(
-        await HAXStore.activeHaxBody.haxToContent()
+        await HAXStore.activeHaxBody.haxToContent(),
       )
     ) {
       store.toast("Page updated!");
@@ -193,7 +193,7 @@ class HAXCMSBackendUserfs extends LitElement {
           composed: true,
           cancelable: false,
           detail: true,
-        })
+        }),
       );
       store.cmsSiteEditor.instance.dispatchEvent(
         new CustomEvent("haxcms-trigger-update-node", {
@@ -201,7 +201,7 @@ class HAXCMSBackendUserfs extends LitElement {
           composed: true,
           cancelable: false,
           detail: true,
-        })
+        }),
       );
     }
   }
@@ -222,7 +222,7 @@ class HAXCMSBackendUserfs extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
@@ -230,7 +230,7 @@ class HAXCMSBackendUserfs extends LitElement {
         composed: true,
         cancelable: false,
         detail: this.manifest,
-      })
+      }),
     );
   }
   /**
@@ -258,7 +258,7 @@ class HAXCMSBackendUserfs extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
@@ -266,7 +266,7 @@ class HAXCMSBackendUserfs extends LitElement {
         composed: true,
         cancelable: false,
         detail: this.manifest,
-      })
+      }),
     );
   }
   /**
@@ -315,7 +315,7 @@ class HAXCMSBackendUserfs extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
@@ -323,7 +323,7 @@ class HAXCMSBackendUserfs extends LitElement {
         composed: true,
         cancelable: false,
         detail: this.manifest,
-      })
+      }),
     );
   }
   /**
@@ -365,7 +365,7 @@ class HAXCMSBackendUserfs extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
@@ -373,7 +373,7 @@ class HAXCMSBackendUserfs extends LitElement {
         composed: true,
         cancelable: false,
         detail: this.manifest,
-      })
+      }),
     );
   }
   /**
@@ -404,7 +404,7 @@ class HAXCMSBackendUserfs extends LitElement {
     // @todo need to ensure we have a local file folder selected via hax-cloud
     // @todo read in the appstore.json file from the repo itself
     let appstore = await fetch(
-      new URL("../../../../hax-cloud/lib/appstore.json", import.meta.url).href
+      new URL("../../../../hax-cloud/lib/appstore.json", import.meta.url).href,
     ).then((response) => {
       return response.json();
     });

@@ -3,7 +3,7 @@ import { IronOverlayBehavior } from "@polymer/iron-overlay-behavior/iron-overlay
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 class PaperFabSpeedDialOverlay extends mixinBehaviors(
   [IronOverlayBehavior],
-  PolymerElement
+  PolymerElement,
 ) {
   static get template() {
     return html` <slot></slot> `;

@@ -5,9 +5,9 @@ import "../word-count.js";
 describe("word-count test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <word-count title="test-title"></word-count> `
-    );
+    element = await fixture(html`
+      <word-count title="test-title"></word-count>
+    `);
   });
 
   it("passes the a11y audit", async () => {

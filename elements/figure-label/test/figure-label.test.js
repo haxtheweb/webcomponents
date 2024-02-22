@@ -5,9 +5,9 @@ import "../figure-label.js";
 describe("figure-label test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <figure-label title="test-title"></figure-label> `
-    );
+    element = await fixture(html`
+      <figure-label title="test-title"></figure-label>
+    `);
   });
 
   it("passes the a11y audit", async () => {

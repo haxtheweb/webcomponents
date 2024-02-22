@@ -145,13 +145,13 @@ class LrndesignImagemap extends LitElement {
     console.log(
       this.querySelector("[slot=src]")
         ? this.querySelector("[slot=src]")
-        : this.src
+        : this.src,
     );
 
     this._fetchSvg(
       this.querySelector("[slot=src]")
         ? this.querySelector("[slot=src]")
-        : this.src
+        : this.src,
     );
   }
 
@@ -236,7 +236,7 @@ class LrndesignImagemap extends LitElement {
         /s/g,
         Math.floor((1 + Math.random()) * 0x10000)
           .toString(16)
-          .substring(1)
+          .substring(1),
       );
       el.setAttribute("id", id);
     }

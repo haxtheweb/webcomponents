@@ -5,9 +5,9 @@ import "../lrn-shared-styles.js";
 describe("lrn-shared-styles test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrn-shared-styles title="test-title"></lrn-shared-styles> `
-    );
+    element = await fixture(html`
+      <lrn-shared-styles title="test-title"></lrn-shared-styles>
+    `);
   });
 
   it("passes the a11y audit", async () => {

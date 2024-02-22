@@ -65,10 +65,10 @@
       return S % 10 === 1 && S !== 11
         ? "st"
         : S % 10 === 2 && S !== 12
-        ? "nd"
-        : S % 10 === 3 && S !== 13
-        ? "rd"
-        : "th";
+          ? "nd"
+          : S % 10 === 3 && S !== 13
+            ? "rd"
+            : "th";
     },
     w: function () {
       return this.getDay();
@@ -143,7 +143,7 @@
           this.getUTCMinutes() / 60 +
           this.getUTCSeconds() / 3600) *
           1000) /
-          24
+          24,
       );
     },
     g: function () {
@@ -243,4 +243,4 @@
         : chr;
     });
   };
-}.call(this));
+}).call(this);

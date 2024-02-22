@@ -4,20 +4,22 @@ import "../h-a-x.js";
 describe("h-a-x test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(html` <h-a-x
-      app-store='{"url": "${new URL("../demo/appstore.json", import.meta.url)
-        .href}"}'
-      offset-margin="0px 0px 0px 48px"
-      element-align="right"
-    >
-      <p>This is h-a-x</p>
-      <ul>
-        <li>You'll love this because...</li>
-        <li>You'll love this because...</li>
-      </ul>
-      <p>This is h-a-x</p>
-      <p>This is h-a-x</p>
-    </h-a-x>`);
+    element = await fixture(
+      html` <h-a-x
+        app-store='{"url": "${new URL("../demo/appstore.json", import.meta.url)
+          .href}"}'
+        offset-margin="0px 0px 0px 48px"
+        element-align="right"
+      >
+        <p>This is h-a-x</p>
+        <ul>
+          <li>You'll love this because...</li>
+          <li>You'll love this because...</li>
+        </ul>
+        <p>This is h-a-x</p>
+        <p>This is h-a-x</p>
+      </h-a-x>`,
+    );
   });
 
   it("passes the a11y audit", async () => {

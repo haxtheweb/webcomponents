@@ -99,7 +99,7 @@ class SiteRenderQuery extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
         this.__items = [...newValue];
       }

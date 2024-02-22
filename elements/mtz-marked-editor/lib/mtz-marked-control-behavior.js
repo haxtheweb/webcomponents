@@ -20,7 +20,7 @@ export const mtzMarkedControlBehavior = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: true,
-        })
+        }),
       );
     }
   };

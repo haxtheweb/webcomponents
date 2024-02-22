@@ -77,8 +77,8 @@ class SimpleSymbolPicker extends SimplePickerBehaviors(LitElement) {
     let optData = [{ alt: null, icon: this.icon, value: null }];
     this.symbolTypes.forEach((type) =>
       globalThis.SimplePickerSymbols[type].forEach((symbol) =>
-        optData.push(symbol)
-      )
+        optData.push(symbol),
+      ),
     );
     optData = this._setPickerOptions(optData);
     this.options = optData;

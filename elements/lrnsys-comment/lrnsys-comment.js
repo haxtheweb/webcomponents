@@ -494,7 +494,7 @@ class LrnsysComment extends PolymerElement {
             cancelable: true,
             composed: true,
             detail: { comment: this.comment, target: target },
-          })
+          }),
         );
       } else if (target.id == "like") {
         this.shadowRoot
@@ -506,7 +506,7 @@ class LrnsysComment extends PolymerElement {
             cancelable: true,
             composed: true,
             detail: { comment: this.comment, target: target },
-          })
+          }),
         );
       } else if (target.id == "edit") {
         // toggle edit, allow edit state handle itself via observer
@@ -521,7 +521,7 @@ class LrnsysComment extends PolymerElement {
               comment: this.comment,
               target: target,
             },
-          })
+          }),
         );
       }
     }
@@ -550,7 +550,7 @@ class LrnsysComment extends PolymerElement {
               cancelable: true,
               composed: true,
               detail: { comment: this.comment },
-            })
+            }),
           );
           this.blockFirstState = false;
         } else {
@@ -561,7 +561,7 @@ class LrnsysComment extends PolymerElement {
                 cancelable: true,
                 composed: true,
                 detail: { comment: this.comment },
-              })
+              }),
             );
           } else {
             this.blockFirstState = false;

@@ -80,7 +80,7 @@ try {
                   function () {
                     t && t.apply(null, s);
                   },
-                  i
+                  i,
                 );
               });
           else r.push(e.exports);
@@ -105,7 +105,7 @@ try {
             },
             function (e) {
               return r(t, e);
-            }
+            },
           ),
           t
         );
@@ -124,34 +124,34 @@ try {
         return void 0 === o
           ? void (n && n())
           : "WaitingOnDeps" === o.state
-          ? void a(e, n, t)
-          : void (function e(n, t, o) {
-              switch (n.state) {
-                case "WaitingForTurn":
-                  return i(n), void e(n, t, o);
-                case "Failed":
-                  return void (o && o(n.stateData));
-                case "Executed":
-                  return void t();
-                case "Loading":
-                case "WaitingOnDeps":
-                  return void n.onNextStateChange.push(function () {
-                    return e(n, t, o);
-                  });
-                case "Initialized":
-                  throw new Error(
-                    "All dependencies should be loading already before pressureDependencyToExecute is called."
-                  );
-                default:
-                  throw new Error("Impossible module state: " + n.state);
-              }
-            })(
-              o,
-              function () {
-                a(e, n, t);
-              },
-              t
-            );
+            ? void a(e, n, t)
+            : void (function e(n, t, o) {
+                switch (n.state) {
+                  case "WaitingForTurn":
+                    return i(n), void e(n, t, o);
+                  case "Failed":
+                    return void (o && o(n.stateData));
+                  case "Executed":
+                    return void t();
+                  case "Loading":
+                  case "WaitingOnDeps":
+                    return void n.onNextStateChange.push(function () {
+                      return e(n, t, o);
+                    });
+                  case "Initialized":
+                    throw new Error(
+                      "All dependencies should be loading already before pressureDependencyToExecute is called.",
+                    );
+                  default:
+                    throw new Error("Impossible module state: " + n.state);
+                }
+              })(
+                o,
+                function () {
+                  a(e, n, t);
+                },
+                t,
+              );
       }
       function s(e, n) {
         void 0 === n && (n = "anonymous");
@@ -175,7 +175,7 @@ try {
       function d(e) {
         return (e = (e = e.split("?")[0]).split("#")[0]).substring(
           0,
-          e.lastIndexOf("/") + 1
+          e.lastIndexOf("/") + 1,
         );
       }
       function u(e, n) {

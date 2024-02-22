@@ -125,7 +125,7 @@ export function createSWC(swc) {
               detail: {
                 value: this[name],
               },
-            })
+            }),
           );
         }
       });
@@ -139,7 +139,7 @@ export function createSWC(swc) {
         for (let eName in swc.events.window) {
           window[`${status ? "add" : "remove"}EventListener`](
             eName,
-            swc.callbacks[swc.events.window[eName]].bind(this)
+            swc.callbacks[swc.events.window[eName]].bind(this),
           );
         }
       }
@@ -155,7 +155,7 @@ export function createSWC(swc) {
               .querySelector(target)
               .addEventListener(
                 eName,
-                swc.callbacks[swc.events.shadow[target][eName]].bind(this)
+                swc.callbacks[swc.events.shadow[target][eName]].bind(this),
               );
           }
         }

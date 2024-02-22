@@ -374,7 +374,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           "@haxcms/insights",
           params,
           this._insightResponse.bind(this),
-          this
+          this,
         );
         break;
       case "linkchecker":
@@ -382,7 +382,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           "@haxcms/linkChecker",
           params,
           this._insightResponse.bind(this),
-          this
+          this,
         );
         break;
       case "contentbrowser":
@@ -390,7 +390,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           "@haxcms/contentBrowser",
           params,
           this._insightResponse.bind(this),
-          this
+          this,
         );
         break;
       case "mediabrowser":
@@ -398,7 +398,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           "@haxcms/mediaBrowser",
           params,
           this._insightResponse.bind(this),
-          this
+          this,
         );
         break;
       // bad selection
@@ -611,8 +611,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             <li>
             <lesson-highlight icon="editor:insert-drive-file">
               <p slot="title">${data.pages ? data.pages : html`0`} ${
-                      this.t.pages
-                    }</p>
+                this.t.pages
+              }</p>
               <p>${data.objectives} ${this.t.learningObjectives},
               ${data.authorNotes} ${this.t.authorNotes},
               ${data.specialTags} ${this.t.specialElements},
@@ -660,8 +660,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             <li>
             <lesson-highlight icon="communication:import-contacts">
               <p slot="title">${this.getReadingTime(data.readTime)} ${
-                      this.t.ofReading
-                    }</p>
+                this.t.ofReading
+              }</p>
             </lesson-highlight>
             </li>
             ${
@@ -689,15 +689,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             <li>
             <lesson-highlight icon="device:access-time">
               <p slot="title">${this.t.created}: <relative-time datetime="${
-                      data.created
-                    }"></relative-time></p>
+                data.created
+              }"></relative-time></p>
             </lesson-highlight>
             </li>
             <li>
             <lesson-highlight icon="device:access-time">
               <p slot="title">${this.t.lastUpdated}: <relative-time datetime="${
-                      data.updated
-                    }"></relative-time></p>
+                data.updated
+              }"></relative-time></p>
             </lesson-highlight>
             </li>
             <li>
@@ -707,14 +707,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                 ${
                   data.updatedItems
                     ? data.updatedItems.map(
-                        (item) => html` <li>
-                          <a @click="${this.closeModal}" href="${item.slug}"
-                            >${item.title}
-                            <relative-time
-                              datetime="${item.metadata.updated}"
-                            ></relative-time
-                          ></a>
-                        </li>`
+                        (item) =>
+                          html` <li>
+                            <a @click="${this.closeModal}" href="${item.slug}"
+                              >${item.title}
+                              <relative-time
+                                datetime="${item.metadata.updated}"
+                              ></relative-time
+                            ></a>
+                          </li>`,
                       )
                     : ``
                 }
@@ -754,7 +755,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                         <ul class="link-list">
                           ${data.linkData
                             ? Object.keys(data.linkData).map((key) =>
-                                this.renderLinkCheck(data.linkData, key)
+                                this.renderLinkCheck(data.linkData, key),
                               )
                             : html`${this.t.noLinksInSelectedPages}`}
                         </ul>
@@ -805,7 +806,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                 <simple-icon-lite
                                                   title="${item.pageType}"
                                                   icon="${iconFromPageType(
-                                                    item.pageType
+                                                    item.pageType,
                                                   )}"
                                                 ></simple-icon-lite>
                                               `
@@ -929,7 +930,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                   icon="icons:chrome-reader-mode"
                                                 ></simple-icon
                                                 >${this.getReadingTime(
-                                                  item.readTime
+                                                  item.readTime,
                                                 )}
                                                 ${this.t.ofReading}
                                               </li>`
@@ -938,7 +939,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                       </div>
                                     </accent-card>
                                   </li>
-                                `
+                                `,
                               )
                             : ``}
                         </ul>
@@ -979,7 +980,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                       nosource
                                       class="${item.locType} ${item.type}"
                                       accent-color="${this.accentColorFromType(
-                                        item.type
+                                        item.type,
                                       )}"
                                       title="${item.name} ${item.title}"
                                       tags="${item.locType}, ${item.type}"
@@ -1029,14 +1030,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                         <div>
                                           ${item.itemId
                                             ? this.renderItemLinkById(
-                                                item.itemId
+                                                item.itemId,
                                               )
                                             : ``}
                                         </div>
                                       </div>
                                     </retro-card>
                                   </li>
-                                `
+                                `,
                               )
                             : `${this.t.noMediaInSelectedPages}`}
                         </ul>
@@ -1113,7 +1114,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       MicroFrontendRegistry.call(
         "@core/linkValidator",
         { links: key },
-        this.linkValidationResponse.bind(this)
+        this.linkValidationResponse.bind(this),
       );
     }
     return html`
@@ -1150,7 +1151,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           (linkUsage) => html`
             <strong>${linkUsage.linkTitle}</strong> ${this.t.onPage}
             ${linkUsage.itemId ? this.renderItemLinkById(linkUsage.itemId) : ``}
-          `
+          `,
         )})
       </li>
     `;
@@ -1303,7 +1304,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             >
               ${item.text}
             </option>
-          `
+          `,
         )}
       </select>
       <button

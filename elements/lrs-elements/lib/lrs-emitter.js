@@ -98,7 +98,7 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
           verb: this.verb,
           object: this.object,
         },
-      })
+      }),
     );
   }
 
@@ -111,7 +111,7 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
           verb: this.verb,
           object: this.object,
         },
-      })
+      }),
     );
   }
 

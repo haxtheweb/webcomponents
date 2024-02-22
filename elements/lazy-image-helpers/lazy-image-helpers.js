@@ -30,7 +30,7 @@ export const lazyImageLoader = function (SuperClass) {
           if (this.shadowRoot.querySelector("image")) {
             const loadingImg = SimpleIconsetStore.getIcon(
               this.loadingImg,
-              this
+              this,
             );
             this.shadowRoot
               .querySelector("image")

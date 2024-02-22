@@ -5,9 +5,9 @@ import "../simple-tooltip.js";
 describe("simple-tooltip test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-tooltip title="test-title"></simple-tooltip> `
-    );
+    element = await fixture(html`
+      <simple-tooltip title="test-title"></simple-tooltip>
+    `);
   });
 
   it("passes the a11y audit", async () => {

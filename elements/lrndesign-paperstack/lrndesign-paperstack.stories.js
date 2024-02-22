@@ -15,7 +15,7 @@ const utils = new StorybookUtilities();
 export const LrndesignPaperstackStory = () => {
   let props = utils.getElementProperties(
     LrndesignPaperstack.properties,
-    LrndesignPaperstack.haxProperties
+    LrndesignPaperstack.haxProperties,
   );
 
   return utils.makeUsageDocs(
@@ -64,7 +64,7 @@ export const LrndesignPaperstackStory = () => {
           title: "Override Box Shadow Color",
         },
         { slot: "", title: "Content" },
-      ]
-    )
+      ],
+    ),
   );
 };

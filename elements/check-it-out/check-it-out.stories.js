@@ -17,5 +17,5 @@ export const CheckItOutStory = () =>
   utils.makeUsageDocs(
     CheckItOut,
     import.meta.url,
-    utils.makeElementFromHaxDemo(CheckItOut)
+    utils.makeElementFromHaxDemo(CheckItOut),
   );

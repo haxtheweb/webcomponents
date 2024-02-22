@@ -104,7 +104,7 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
               lg: this.lg,
               xl: this.xl,
             },
-          })
+          }),
         );
       }
     }
@@ -119,7 +119,7 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
             cancelable: true,
             composed: true,
             detail: this,
-          })
+          }),
         );
       }
       super.disconnectedCallback();

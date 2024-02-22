@@ -156,7 +156,7 @@ export const SimplePickerStory = () => {
       ],
     },
     css,
-    []
+    [],
   );
 };
 export const SimpleSymbolPickerStory = () => {
@@ -178,7 +178,7 @@ export const SimpleSymbolPickerStory = () => {
         "greek",
         "misc",
       ]),
-    })
+    }),
   );
 };
 export const SimpleEmojiPickerStory = () => {
@@ -214,6 +214,6 @@ export const SimpleEmojiPickerStory = () => {
         "symbols",
         "flags",
       ]),
-    })
+    }),
   );
 };

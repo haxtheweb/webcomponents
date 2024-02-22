@@ -14,14 +14,14 @@ export const FutureTerminalTextLiteSuper = function (SuperClass) {
     async _doGlitch() {
       // a11y -- check for reduced motion and DO NOT glitch if that is the case
       const motionMQ = globalThis.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+        "(prefers-reduced-motion: reduce)",
       );
       const prefersReducedMotion = motionMQ.matches;
       if (!prefersReducedMotion) {
         const text = this.innerHTML;
         const scrambleCount =
           Math.floor(
-            Math.floor((Math.random() * text.length) / 10) + text.length / 20
+            Math.floor((Math.random() * text.length) / 10) + text.length / 20,
           ) + 1;
         const scrambleIterationCount =
           Math.floor(Math.random() * this.glitchMax) + 10;

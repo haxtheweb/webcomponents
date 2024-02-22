@@ -68,13 +68,13 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
         this.setTargetValue(
           old.substring(0, this._triggerStart - 1) +
             this.value +
-            old.substring(this._triggerEnd)
+            old.substring(this._triggerEnd),
         );
         // set cursor for better UX
         if (["TEXTAREA", "INPUT"].includes(this.target.tagName)) {
           this.target.setSelectionRange(
             this._triggerStart - 1 + this.value.length,
-            this._triggerStart - 1 + this.value.length
+            this._triggerStart - 1 + this.value.length,
           );
         } else if (this.target.getAttribute("contenteditable") != null) {
           // set range appropriately for cursor placement
@@ -82,7 +82,7 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
           var sel = this.getSelection();
           range.setStart(
             this.target.childNodes[0],
-            this._triggerStart - 1 + this.value.length
+            this._triggerStart - 1 + this.value.length,
           );
           range.collapse(true);
           sel.removeAllRanges();
@@ -105,7 +105,7 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
         this.targetKeyDownMonitor.bind(this),
         {
           signal: this.windowControllers.signal,
-        }
+        },
       );
       globalThis.addEventListener("keyup", this.targetKeyMonitor.bind(this), {
         signal: this.windowControllers.signal,
@@ -191,7 +191,7 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
       // delay so the range can be set
       setTimeout(() => {
         this.$autocomplete.setValue(
-          this.getTargetValue().substring(this._triggerStart, this._triggerEnd)
+          this.getTargetValue().substring(this._triggerStart, this._triggerEnd),
         );
       }, 1);
     }
@@ -251,5 +251,5 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
 }
 customElements.define(
   SimpleAutocompleteTextTrigger.tag,
-  SimpleAutocompleteTextTrigger
+  SimpleAutocompleteTextTrigger,
 );

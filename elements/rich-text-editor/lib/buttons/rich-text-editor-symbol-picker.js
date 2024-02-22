@@ -18,7 +18,7 @@ import "@lrnwebcomponents/simple-picker/lib/simple-symbol-picker.js";
  * @demo ./demo/buttons.html
  */
 class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
-  LitElement
+  LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -87,6 +87,6 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
 }
 customElements.define(
   RichTextEditorSymbolPicker.tag,
-  RichTextEditorSymbolPicker
+  RichTextEditorSymbolPicker,
 );
 export { RichTextEditorSymbolPicker };

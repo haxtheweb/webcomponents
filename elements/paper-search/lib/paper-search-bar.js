@@ -4,7 +4,7 @@ import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y
 
 class PaperSearchBar extends mixinBehaviors(
   [IronA11yKeysBehavior],
-  PolymerElement
+  PolymerElement,
 ) {
   static get tag() {
     return "paper-search-bar";
@@ -84,7 +84,7 @@ class PaperSearchBar extends mixinBehaviors(
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
   constructor() {
@@ -102,7 +102,7 @@ class PaperSearchBar extends mixinBehaviors(
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
   _search(e) {
@@ -114,7 +114,7 @@ class PaperSearchBar extends mixinBehaviors(
           cancelable: true,
           composed: true,
           detail: true,
-        })
+        }),
       );
       return false;
     }

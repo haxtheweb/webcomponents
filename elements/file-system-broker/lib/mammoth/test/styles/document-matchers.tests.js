@@ -34,18 +34,18 @@ test("ordered-list(index) matches an ordered list with specified level index", f
   assert.ok(!matcher.matches(new Paragraph()));
   assert.ok(
     matcher.matches(
-      new Paragraph([], { numbering: { level: 1, isOrdered: true } })
-    )
+      new Paragraph([], { numbering: { level: 1, isOrdered: true } }),
+    ),
   );
   assert.ok(
     !matcher.matches(
-      new Paragraph([], { numbering: { level: 0, isOrdered: true } })
-    )
+      new Paragraph([], { numbering: { level: 0, isOrdered: true } }),
+    ),
   );
   assert.ok(
     !matcher.matches(
-      new Paragraph([], { numbering: { level: 1, isOrdered: false } })
-    )
+      new Paragraph([], { numbering: { level: 1, isOrdered: false } }),
+    ),
   );
 });
 
@@ -56,13 +56,13 @@ test("unordered-list(index) matches an unordered list with specified level index
   assert.ok(!matcher.matches(new Paragraph()));
   assert.ok(
     matcher.matches(
-      new Paragraph([], { numbering: { level: 1, isOrdered: false } })
-    )
+      new Paragraph([], { numbering: { level: 1, isOrdered: false } }),
+    ),
   );
   assert.ok(
     !matcher.matches(
-      new Paragraph([], { numbering: { level: 1, isOrdered: true } })
-    )
+      new Paragraph([], { numbering: { level: 1, isOrdered: true } }),
+    ),
   );
 });
 

@@ -118,7 +118,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
       if (["relatedResource", "licenseLink"].includes(propName)) {
         this._aboutLink = this._generateAboutLink(
           this.relatedResource,
-          this.licenseLink
+          this.licenseLink,
         );
       }
       if (propName == "source") {
@@ -246,7 +246,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
       // set prefix on the main element itself
       this.previousElementSibling.setAttribute(
         "prefix",
-        this.getAttribute("prefix")
+        this.getAttribute("prefix"),
       );
     } else if (newValue === "parent") {
       // find the parent and associate to it's resource ID, if it doesn't have one

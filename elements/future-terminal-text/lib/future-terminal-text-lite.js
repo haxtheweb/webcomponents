@@ -40,7 +40,8 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
           text-shadow: 0 0 4px #b35b5a;
         }
         :host([fadein]) span {
-          animation: fade-in var(--fade-in-duration),
+          animation:
+            fade-in var(--fade-in-duration),
             flicker 300ms var(--flicker-easing)
               calc(var(--fade-in-duration) * 0.8);
           transform: translate(0, 0);

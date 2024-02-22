@@ -25,7 +25,7 @@ class CourseIntroLessonPlans extends LitElement {
         let link = globalThis.document.createElement("link");
         link.setAttribute(
           "href",
-          "https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+          "https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap",
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");
@@ -89,7 +89,7 @@ class CourseIntroLessonPlans extends LitElement {
             html`<course-intro-lesson-plan
               title="${plan.title}"
               link=${plan.slug}
-            ></course-intro-lesson-plan>`
+            ></course-intro-lesson-plan>`,
         )}
       </div>
     `;

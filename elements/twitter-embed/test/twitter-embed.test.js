@@ -5,9 +5,9 @@ import "../twitter-embed.js";
 describe("twitter-embed test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <twitter-embed title="test-title"></twitter-embed> `
-    );
+    element = await fixture(html`
+      <twitter-embed title="test-title"></twitter-embed>
+    `);
   });
 
   it("passes the a11y audit", async () => {

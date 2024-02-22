@@ -5,11 +5,9 @@ import "../dynamic-import-registry.js";
 describe("dynamic-import-registry test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html`
-        <dynamic-import-registry title="test-title"></dynamic-import-registry>
-      `
-    );
+    element = await fixture(html`
+      <dynamic-import-registry title="test-title"></dynamic-import-registry>
+    `);
   });
 
   it("passes the a11y audit", async () => {

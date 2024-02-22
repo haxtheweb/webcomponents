@@ -5,9 +5,9 @@ import "../lrndesign-paperstack.js";
 describe("lrndesign-paperstack test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrndesign-paperstack title="test-title"></lrndesign-paperstack> `
-    );
+    element = await fixture(html`
+      <lrndesign-paperstack title="test-title"></lrndesign-paperstack>
+    `);
   });
 
   it("passes the a11y audit", async () => {

@@ -5,16 +5,14 @@ import "../lrn-button.js";
 describe("lrn-button test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html`
-        <lrn-button
-          label="Stuff"
-          href="https://google.com/"
-          color="yellow"
-          icon="check"
-        ></lrn-button>
-      `
-    );
+    element = await fixture(html`
+      <lrn-button
+        label="Stuff"
+        href="https://google.com/"
+        color="yellow"
+        icon="check"
+      ></lrn-button>
+    `);
   });
 
   it("passes the a11y audit", async () => {

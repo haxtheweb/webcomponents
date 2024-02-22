@@ -192,13 +192,13 @@ export const A11yMediaPlayerAudio = () => {
           <audio controls>
               <source src="${new URL(
                 `demo/samples/bueller.mp3`,
-                import.meta.url
+                import.meta.url,
               )}" type="audio/mp3">
               <track label="English" kind="subtitles" srclang="en" src="${new URL(
                 `demo/samples/bueller.vtt`,
-                import.meta.url
+                import.meta.url,
               )}" default>
           </audio>`,
-    })
+    }),
   );
 };

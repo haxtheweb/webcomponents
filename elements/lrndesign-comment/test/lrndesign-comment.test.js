@@ -5,9 +5,9 @@ import "../lrndesign-comment.js";
 describe("lrndesign-comment test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrndesign-comment title="test-title"></lrndesign-comment> `
-    );
+    element = await fixture(html`
+      <lrndesign-comment title="test-title"></lrndesign-comment>
+    `);
   });
 
   it("passes the a11y audit", async () => {

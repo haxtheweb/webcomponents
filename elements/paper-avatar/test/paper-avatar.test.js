@@ -5,9 +5,9 @@ import "../paper-avatar.js";
 describe("paper-avatar test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <paper-avatar title="test-title"></paper-avatar> `
-    );
+    element = await fixture(html`
+      <paper-avatar title="test-title"></paper-avatar>
+    `);
   });
 
   it("passes the a11y audit", async () => {

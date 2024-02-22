@@ -25,12 +25,12 @@ function createStyleRule() {
           lop.rules
             .sequence(
               lop.rules.tokenOfType("whitespace"),
-              lop.rules.sequence.capture(htmlPathRule())
+              lop.rules.sequence.capture(htmlPathRule()),
             )
-            .head()
-        )
+            .head(),
+        ),
       ),
-      lop.rules.tokenOfType("end")
+      lop.rules.tokenOfType("end"),
     )
     .map(function (documentMatcher, htmlPath) {
       return {
@@ -52,7 +52,7 @@ function documentMatcherRule() {
       lop.rules.token("identifier", identifier),
       function () {
         return constant;
-      }
+      },
     );
   };
 
@@ -62,7 +62,7 @@ function documentMatcherRule() {
   var elementTypeRule = lop.rules.firstOf(
     "p or r or table",
     paragraphRule,
-    runRule
+    runRule,
   );
 
   var styleIdRule = lop.rules.then(classRule, function (styleId) {
@@ -76,25 +76,25 @@ function documentMatcherRule() {
         .sequence(
           lop.rules.tokenOfType("equals"),
           lop.rules.sequence.cut(),
-          lop.rules.sequence.capture(stringRule)
+          lop.rules.sequence.capture(stringRule),
         )
         .head(),
       function (styleName) {
         return { styleName: documentMatchers.equalTo(styleName) };
-      }
+      },
     ),
     lop.rules.then(
       lop.rules
         .sequence(
           lop.rules.tokenOfType("startsWith"),
           lop.rules.sequence.cut(),
-          lop.rules.sequence.capture(stringRule)
+          lop.rules.sequence.capture(stringRule),
         )
         .head(),
       function (styleName) {
         return { styleName: documentMatchers.startsWith(styleName) };
-      }
-    )
+      },
+    ),
   );
 
   var styleNameRule = lop.rules
@@ -103,14 +103,14 @@ function documentMatcherRule() {
       lop.rules.sequence.cut(),
       lop.rules.token("identifier", "style-name"),
       lop.rules.sequence.capture(styleNameMatcherRule),
-      lop.rules.tokenOfType("close-square-bracket")
+      lop.rules.tokenOfType("close-square-bracket"),
     )
     .head();
 
   var listTypeRule = lop.rules.firstOf(
     "list type",
     identifierToConstant("ordered-list", { isOrdered: true }),
-    identifierToConstant("unordered-list", { isOrdered: false })
+    identifierToConstant("unordered-list", { isOrdered: false }),
   );
   var listRule = sequence(
     lop.rules.tokenOfType("colon"),
@@ -118,7 +118,7 @@ function documentMatcherRule() {
     sequence.cut(),
     lop.rules.tokenOfType("open-paren"),
     sequence.capture(integerRule),
-    lop.rules.tokenOfType("close-paren")
+    lop.rules.tokenOfType("close-paren"),
   ).map(function (listType, levelNumber) {
     return {
       list: {
@@ -131,7 +131,7 @@ function documentMatcherRule() {
   function createMatcherSuffixesRule(rules) {
     var matcherSuffix = lop.rules.firstOf.apply(
       lop.rules.firstOf,
-      ["matcher suffix"].concat(rules)
+      ["matcher suffix"].concat(rules),
     );
     var matcherSuffixes = lop.rules.zeroOrMore(matcherSuffix);
     return lop.rules.then(matcherSuffixes, function (suffixes) {
@@ -146,15 +146,15 @@ function documentMatcherRule() {
   var paragraphOrRun = sequence(
     sequence.capture(elementTypeRule),
     sequence.capture(
-      createMatcherSuffixesRule([styleIdRule, styleNameRule, listRule])
-    )
+      createMatcherSuffixesRule([styleIdRule, styleNameRule, listRule]),
+    ),
   ).map(function (createMatcher, matcherOptions) {
     return createMatcher(matcherOptions);
   });
 
   var table = sequence(
     lop.rules.token("identifier", "table"),
-    sequence.capture(createMatcherSuffixesRule([styleIdRule, styleNameRule]))
+    sequence.capture(createMatcherSuffixesRule([styleIdRule, styleNameRule])),
   ).map(function (options) {
     return documentMatchers.table(options);
   });
@@ -164,16 +164,16 @@ function documentMatcherRule() {
   var underline = identifierToConstant("u", documentMatchers.underline);
   var strikethrough = identifierToConstant(
     "strike",
-    documentMatchers.strikethrough
+    documentMatchers.strikethrough,
   );
   var allCaps = identifierToConstant("all-caps", documentMatchers.allCaps);
   var smallCaps = identifierToConstant(
     "small-caps",
-    documentMatchers.smallCaps
+    documentMatchers.smallCaps,
   );
   var commentReference = identifierToConstant(
     "comment-reference",
-    documentMatchers.commentReference
+    documentMatchers.commentReference,
   );
 
   var breakMatcher = sequence(
@@ -183,7 +183,7 @@ function documentMatcherRule() {
     lop.rules.token("identifier", "type"),
     lop.rules.tokenOfType("equals"),
     sequence.capture(stringRule),
-    lop.rules.tokenOfType("close-square-bracket")
+    lop.rules.tokenOfType("close-square-bracket"),
   ).map(function (breakType) {
     switch (breakType) {
       case "line":
@@ -208,7 +208,7 @@ function documentMatcherRule() {
     allCaps,
     smallCaps,
     commentReference,
-    breakMatcher
+    breakMatcher,
   );
 }
 
@@ -223,8 +223,8 @@ function htmlPathRule() {
     lop.rules.optional(
       lop.rules.sequence(
         lop.rules.tokenOfType("colon"),
-        lop.rules.token("identifier", "fresh")
-      )
+        lop.rules.token("identifier", "fresh"),
+      ),
     ),
     function (option) {
       return option
@@ -232,7 +232,7 @@ function htmlPathRule() {
           return true;
         })
         .valueOrElse(false);
-    }
+    },
   );
 
   var separatorRule = lop.rules.then(
@@ -243,18 +243,18 @@ function htmlPathRule() {
           lop.rules.token("identifier", "separator"),
           lop.rules.tokenOfType("open-paren"),
           capture(stringRule),
-          lop.rules.tokenOfType("close-paren")
+          lop.rules.tokenOfType("close-paren"),
         )
-        .head()
+        .head(),
     ),
     function (option) {
       return option.valueOrElse("");
-    }
+    },
   );
 
   var tagNamesRule = lop.rules.oneOrMoreWithSeparator(
     identifierRule,
-    lop.rules.tokenOfType("choice")
+    lop.rules.tokenOfType("choice"),
   );
 
   var styleElementRule = lop.rules
@@ -262,7 +262,7 @@ function htmlPathRule() {
       capture(tagNamesRule),
       capture(lop.rules.zeroOrMore(classRule)),
       capture(freshRule),
-      capture(separatorRule)
+      capture(separatorRule),
     )
     .map(function (tagName, classNames, fresh, separator) {
       var attributes = {};
@@ -290,23 +290,23 @@ function htmlPathRule() {
         lop.rules.sequence(
           whitespaceRule,
           lop.rules.tokenOfType("gt"),
-          whitespaceRule
-        )
+          whitespaceRule,
+        ),
       ),
-      htmlPaths.elements
-    )
+      htmlPaths.elements,
+    ),
   );
 }
 
 var identifierRule = lop.rules.then(
   lop.rules.tokenOfType("identifier"),
-  decodeEscapeSequences
+  decodeEscapeSequences,
 );
 var integerRule = lop.rules.tokenOfType("integer");
 
 var stringRule = lop.rules.then(
   lop.rules.tokenOfType("string"),
-  decodeEscapeSequences
+  decodeEscapeSequences,
 );
 
 var escapeSequences = {
@@ -325,7 +325,7 @@ var classRule = lop.rules
   .sequence(
     lop.rules.tokenOfType("dot"),
     lop.rules.sequence.cut(),
-    lop.rules.sequence.capture(identifierRule)
+    lop.rules.sequence.capture(identifierRule),
   )
   .head();
 

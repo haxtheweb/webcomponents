@@ -41,7 +41,9 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         button {
           display: flex;
           cursor: pointer;
-          transition: color, outline 0.2s ease;
+          transition:
+            color,
+            outline 0.2s ease;
           outline: 2px transparent;
           min-width: unset;
           background-color: var(
@@ -227,24 +229,24 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (
         ["type", "activeRouterManifestIndex", "routerManifest"].includes(
-          propName
+          propName,
         ) &&
         this.routerManifest
       ) {
         this.link = this.pageLink(
           this.type,
           this.activeRouterManifestIndex,
-          this.routerManifest.items
+          this.routerManifest.items,
         );
         this.label = this.pageLinkLabel(
           this.type,
           this.activeRouterManifestIndex,
-          this.routerManifest.items
+          this.routerManifest.items,
         );
       }
       if (
@@ -262,7 +264,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
           this.activeRouterManifestIndex,
           this.routerManifest.items,
           this.editMode,
-          this.link
+          this.link,
         );
       }
     });
@@ -312,7 +314,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
           eventName: "super-daemon-element-method",
           path: "CMS/navigation/page/next",
         },
-      })
+      }),
     );
   }
   clickLink(e) {

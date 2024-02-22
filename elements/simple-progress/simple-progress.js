@@ -149,7 +149,7 @@ class SimpleProgress extends HTMLElement {
       progress.addEventListener(
         "animationiteration",
         this._iterationCallback.bind(this),
-        { once: true, passive: true }
+        { once: true, passive: true },
       );
     else progress.classList.remove("finished");
   }

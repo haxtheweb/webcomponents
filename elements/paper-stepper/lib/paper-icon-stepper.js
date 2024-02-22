@@ -27,7 +27,7 @@ class PaperIconStepper extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });

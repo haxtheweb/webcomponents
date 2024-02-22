@@ -122,7 +122,7 @@ class PaperInputFlagged extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (propName == "status") {

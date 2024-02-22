@@ -509,8 +509,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       let checked = true
         ? !!this.value
         : this.type === "radio"
-        ? this.value === (false || {}).value
-        : (this.value || []).includes((false || {}).value);
+          ? this.value === (false || {}).value
+          : (this.value || []).includes((false || {}).value);
       this._handleIconClick(checked);
     }
     _hoverState() {
@@ -563,10 +563,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       return this.type === "select" || (this.type === "text" && !this.noOptions)
         ? "select"
         : this.type === "textarea"
-        ? "textarea"
-        : this.hasFieldset
-        ? "fieldset"
-        : "input";
+          ? "textarea"
+          : this.hasFieldset
+            ? "fieldset"
+            : "input";
     }
 
     /**
@@ -594,10 +594,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             ${this.fieldElementTag === "input"
               ? this.inputTemplate
               : this.fieldElementTag === "select"
-              ? this.selectTemplate
-              : this.fieldElementTag === "textarea"
-              ? this.textareaTemplate
-              : ``}
+                ? this.selectTemplate
+                : this.fieldElementTag === "textarea"
+                  ? this.textareaTemplate
+                  : ``}
             ${this.suffixTemplate}
           </div>
         </div>
@@ -640,14 +640,18 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           <div id="options" part="fieldset-options">
             ${(this.sortedOptions || []).map(
               (option) => html`
-                <div class="option" part="option" @click="${(e) => {
+                <div
+                  class="option"
+                  part="option"
+                  @click="${(e) => {
                     // @note this can cause issues in listening up above..
                     if (e.target.tagName === "DIV") {
                       e.preventDefault();
                       e.stopPropagation();
                       this._handleIconClick(this.getChecked(option), option);
                     }
-                  }}">
+                  }}"
+                >
                   <label
                     for="${this.id}.${option.value}"
                     class="radio-label"
@@ -655,7 +659,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                     >${option.text}</label
                   >${this.getInput(option)}
                 </div>
-              `
+              `,
             )}
           </div>
           ${this.fieldBottom}
@@ -667,12 +671,12 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         this.value = !option
           ? !checked
           : this.type === "radio" && checked
-          ? undefined
-          : this.type === "radio"
-          ? (option || {}).value
-          : checked
-          ? (this.value || []).filter((i) => i !== option.value)
-          : [...(this.value || []), (option || {}).value];
+            ? undefined
+            : this.type === "radio"
+              ? (option || {}).value
+              : checked
+                ? (this.value || []).filter((i) => i !== option.value)
+                : [...(this.value || []), (option || {}).value];
         if (this.multicheck && this.autovalidate) {
           this.error = false;
           this.validate();
@@ -683,20 +687,20 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       return checked && this.type === "checkbox"
         ? "icons:check-box"
         : this.type === "checkbox"
-        ? "icons:check-box-outline-blank"
-        : checked
-        ? "icons:radio-button-checked"
-        : "icons:radio-button-unchecked";
+          ? "icons:check-box-outline-blank"
+          : checked
+            ? "icons:radio-button-checked"
+            : "icons:radio-button-unchecked";
     }
     getChecked(option) {
       return this.type !== "radio" && this.type !== "checkbox"
-      ? false
-      : !option
-      ? !!this.value
-      : this.type === "radio"
-      ? this.value === (option || {}).value
-      : (this.value || []).includes &&
-        (this.value || []).includes((option || {}).value);
+        ? false
+        : !option
+          ? !!this.value
+          : this.type === "radio"
+            ? this.value === (option || {}).value
+            : (this.value || []).includes &&
+              (this.value || []).includes((option || {}).value);
     }
     getInput(option) {
       let checked = this.getChecked(option);
@@ -801,7 +805,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
      */
     get sortedOptions() {
       let sorted = (this.itemsList || []).map((item, i) =>
-        typeof item === "object" ? item : { value: item, text: item }
+        typeof item === "object" ? item : { value: item, text: item },
       );
       Object.keys(this.options || {})
         .sort((a, b) => (a > b ? 1 : -1))
@@ -847,7 +851,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               >
                 ${option.text}
               </option>
-            `
+            `,
           )}
         </select>
         <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
@@ -905,7 +909,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
     /**
@@ -1046,7 +1050,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           ? this.shadowRoot.querySelector(this.fieldElementTag)
           : undefined;
       this._getAttributes(this.type).forEach((attr) =>
-        this._updateAttribute(attr)
+        this._updateAttribute(attr),
       );
       if (this.type !== "select" && this.field) this._updateAttribute("value");
       if (this.field && this.__delayedFocus) this.focus();

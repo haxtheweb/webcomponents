@@ -27,6 +27,6 @@ export const HaxIconsetStory = () => {
     SimpleIconsetDemo,
     { imports: [HaxIconsetManifest] },
     [],
-    ["exclude", "include", "iconsets"]
+    ["exclude", "include", "iconsets"],
   );
 };

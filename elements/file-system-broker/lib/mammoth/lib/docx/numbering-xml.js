@@ -8,14 +8,14 @@ function Numbering(nums, abstractNums, styles) {
   var allLevels = _.flatten(
     _.values(abstractNums).map(function (abstractNum) {
       return _.values(abstractNum.levels);
-    })
+    }),
   );
 
   var levelsByParagraphStyleId = _.indexBy(
     allLevels.filter(function (level) {
       return level.paragraphStyleId != null;
     }),
-    "paragraphStyleId"
+    "paragraphStyleId",
   );
 
   function findLevel(numId, level) {

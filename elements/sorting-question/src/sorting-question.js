@@ -57,7 +57,7 @@ export class SortingQuestion extends I18NMixin(LitElement) {
 
     for (var i = 0; i < this.numberOfOptions; i++) {
       var randomIndex1 = Math.floor(
-        Math.random() * (this.numberOfOptions - 0) + 0
+        Math.random() * (this.numberOfOptions - 0) + 0,
       );
       if (randomIndex1 === undefined) {
         randomIndex1 = 0;
@@ -66,7 +66,7 @@ export class SortingQuestion extends I18NMixin(LitElement) {
       let targetChild = this.children[indexValues[randomIndex1]];
 
       var randomIndex2 = Math.floor(
-        Math.random() * (indexValues.length - 0) + 0
+        Math.random() * (indexValues.length - 0) + 0,
       );
       if (randomIndex2 === undefined) {
         randomIndex2 = 0;
@@ -86,10 +86,10 @@ export class SortingQuestion extends I18NMixin(LitElement) {
 
         //add correct icon
         this.children[i].shadowRoot.querySelector(
-          "#correct-icon"
+          "#correct-icon",
         ).style.display = "flex";
         this.children[i].shadowRoot.querySelector(
-          "#incorrect-icon"
+          "#incorrect-icon",
         ).style.display = "none";
       } else {
         this.children[i].removeAttribute("correct");
@@ -97,10 +97,10 @@ export class SortingQuestion extends I18NMixin(LitElement) {
 
         //add incorrect icon
         this.children[i].shadowRoot.querySelector(
-          "#incorrect-icon"
+          "#incorrect-icon",
         ).style.display = "flex";
         this.children[i].shadowRoot.querySelector(
-          "#correct-icon"
+          "#correct-icon",
         ).style.display = "none";
       }
     }

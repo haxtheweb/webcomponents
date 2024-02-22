@@ -190,14 +190,14 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
     haxProps.settings.configure = haxProps.settings.configure.concat(
       lineBar.gridBackground,
       barConfig,
-      lineBar.padding
+      lineBar.padding,
     );
     haxProps.settings.advanced = haxProps.settings.advanced.concat(
       lineBar.minMax,
       lineBar.xAxis,
       barX,
       lineBar.yAxis,
-      barY
+      barY,
     );
     return haxProps;
   }

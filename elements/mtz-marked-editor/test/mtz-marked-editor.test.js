@@ -5,9 +5,9 @@ import "../mtz-marked-editor.js";
 describe("mtz-marked-editor test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <mtz-marked-editor title="test-title"></mtz-marked-editor> `
-    );
+    element = await fixture(html`
+      <mtz-marked-editor title="test-title"></mtz-marked-editor>
+    `);
   });
 
   it("passes the a11y audit", async () => {

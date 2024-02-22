@@ -16,5 +16,5 @@ export const BasicCitationElement = () =>
   utils.makeUsageDocs(
     CitationElement,
     import.meta.url,
-    utils.makeElementFromHaxDemo(CitationElement)
+    utils.makeElementFromHaxDemo(CitationElement),
   );

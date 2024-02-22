@@ -160,7 +160,7 @@ class MoocContent extends PolymerElement {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }
@@ -442,7 +442,7 @@ class MoocContent extends PolymerElement {
                 bubbles: true,
                 cancelable: true,
                 detail: {},
-              })
+              }),
             );
           }
           return;
@@ -463,7 +463,7 @@ class MoocContent extends PolymerElement {
               bubbles: true,
               cancelable: true,
               detail: {},
-            })
+            }),
           );
         }
         return;

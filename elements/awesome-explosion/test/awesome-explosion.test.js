@@ -5,9 +5,9 @@ import "../awesome-explosion.js";
 describe("awesome-explosion test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <awesome-explosion title="test-title"></awesome-explosion> `
-    );
+    element = await fixture(html`
+      <awesome-explosion title="test-title"></awesome-explosion>
+    `);
   });
 
   it("passes the a11y audit", async () => {

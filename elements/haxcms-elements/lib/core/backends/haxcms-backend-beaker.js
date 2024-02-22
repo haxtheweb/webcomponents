@@ -69,12 +69,12 @@ class HAXCMSBackendBeaker extends LitElement {
     globalThis.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
       "haxcms-save-outline",
       this.saveOutline.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
       signal: this.windowControllers.signal,
@@ -84,20 +84,20 @@ class HAXCMSBackendBeaker extends LitElement {
       this.deleteNode.bind(this),
       {
         signal: this.windowControllers.signal,
-      }
+      },
     );
     globalThis.addEventListener(
       "haxcms-create-node",
       this.createNode.bind(this),
       {
         signal: this.windowControllers.signal,
-      }
+      },
     );
     // listen for app being selected
     globalThis.addEventListener(
       "hax-app-picker-selection",
       this._appPicked.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   /**
@@ -126,7 +126,7 @@ class HAXCMSBackendBeaker extends LitElement {
           .newAssetConfigure();
       };
       reader.readAsArrayBuffer(
-        HAXStore.haxTray.shadowRoot.querySelector("#fileupload").files[0]
+        HAXStore.haxTray.shadowRoot.querySelector("#fileupload").files[0],
       );
     }
   }
@@ -140,7 +140,7 @@ class HAXCMSBackendBeaker extends LitElement {
       .querySelector("#beaker")
       .write(
         this.activeItem.location,
-        await HAXStore.activeHaxBody.haxToContent()
+        await HAXStore.activeHaxBody.haxToContent(),
       );
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
@@ -196,7 +196,7 @@ class HAXCMSBackendBeaker extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
@@ -204,7 +204,7 @@ class HAXCMSBackendBeaker extends LitElement {
         composed: true,
         cancelable: false,
         detail: this.manifest,
-      })
+      }),
     );
   }
   /**
@@ -235,7 +235,7 @@ class HAXCMSBackendBeaker extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
@@ -243,7 +243,7 @@ class HAXCMSBackendBeaker extends LitElement {
         composed: true,
         cancelable: false,
         detail: this.manifest,
-      })
+      }),
     );
   }
   /**
@@ -297,7 +297,7 @@ class HAXCMSBackendBeaker extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
@@ -305,7 +305,7 @@ class HAXCMSBackendBeaker extends LitElement {
         composed: true,
         cancelable: false,
         detail: this.manifest,
-      })
+      }),
     );
   }
   /**
@@ -350,7 +350,7 @@ class HAXCMSBackendBeaker extends LitElement {
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
@@ -358,7 +358,7 @@ class HAXCMSBackendBeaker extends LitElement {
         composed: true,
         cancelable: false,
         detail: this.manifest,
-      })
+      }),
     );
   }
   /**
@@ -422,7 +422,7 @@ class HAXCMSBackendBeaker extends LitElement {
           composed: true,
           cancelable: false,
           detail: this,
-        })
+        }),
       );
     }
   }

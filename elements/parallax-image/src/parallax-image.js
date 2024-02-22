@@ -112,7 +112,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
       if (propName == "imageBg") {
         this.style.setProperty(
           "--parallax-image-background",
-          `url(${this.imageBg})`
+          `url(${this.imageBg})`,
         );
       }
     });

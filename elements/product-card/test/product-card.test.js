@@ -5,9 +5,9 @@ import "../product-card.js";
 describe("product-card test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <product-card title="test-title"></product-card> `
-    );
+    element = await fixture(html`
+      <product-card title="test-title"></product-card>
+    `);
   });
 
   it("passes the a11y audit", async () => {

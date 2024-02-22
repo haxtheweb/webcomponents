@@ -36,8 +36,8 @@ function Files(base) {
         new Error(
           "could not find external image '" +
             uri +
-            "', path of input document is unknown"
-        )
+            "', path of input document is unknown",
+        ),
       );
     }
   }

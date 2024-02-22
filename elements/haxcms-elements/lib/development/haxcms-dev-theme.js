@@ -134,7 +134,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
               #37474f
             );
             color: #ffffff;
-          }
+          };
         }
       </style>
       <site-top-menu noink indicator="arrow" arrow-size="8">

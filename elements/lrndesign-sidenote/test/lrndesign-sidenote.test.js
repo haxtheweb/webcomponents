@@ -5,9 +5,9 @@ import "../lrndesign-sidenote.js";
 describe("lrndesign-sidenote test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrndesign-sidenote title="test-title"></lrndesign-sidenote> `
-    );
+    element = await fixture(html`
+      <lrndesign-sidenote title="test-title"></lrndesign-sidenote>
+    `);
   });
 
   it("passes the a11y audit", async () => {

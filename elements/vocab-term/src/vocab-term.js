@@ -142,7 +142,7 @@ class VocabTerm extends LitElement {
                             >${el.title}</a
                           >
                         </li>
-                      `
+                      `,
                     )}
                   </ul>`
                 : ``}
@@ -169,7 +169,7 @@ class VocabTerm extends LitElement {
                                   >${el.title}</a
                                 >
                               </li>
-                            `
+                            `,
                           )}
                         </ul>
                       `

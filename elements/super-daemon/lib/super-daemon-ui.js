@@ -311,7 +311,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (propName == "like") {
@@ -320,7 +320,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });
@@ -481,7 +481,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
               cancelable: true,
               composed: true,
               detail: false,
-            })
+            }),
           );
           e.preventDefault();
         } else if (
@@ -507,7 +507,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     sdi.waveWand(
       ["", "/", e, "hax-agent", "Agent"],
       this.shadowRoot.querySelector("#merlin"),
-      "coin2"
+      "coin2",
     );
   }
   dragenterEvent(e) {

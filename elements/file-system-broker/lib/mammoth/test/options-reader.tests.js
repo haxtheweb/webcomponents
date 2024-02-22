@@ -11,7 +11,7 @@ test("standard options are used if options is undefined", function () {
   var options = readOptions(undefined);
   assert.deepEqual(
     standardOptions,
-    _.omit(options, "customStyleMap", "readStyleMap")
+    _.omit(options, "customStyleMap", "readStyleMap"),
   );
   assert.deepEqual(options.customStyleMap, []);
 });
@@ -20,7 +20,7 @@ test("standard options are used if options is empty", function () {
   var options = readOptions({});
   assert.deepEqual(
     standardOptions,
-    _.omit(options, "customStyleMap", "readStyleMap")
+    _.omit(options, "customStyleMap", "readStyleMap"),
   );
   assert.deepEqual(options.customStyleMap, []);
 });

@@ -19,7 +19,7 @@ import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/l
  * @extends LitElement
  * @extends editableTableCellStyles
  */
-class EditableTableSort extends SimpleToolbarButtonBehaviors( DDD ) {
+class EditableTableSort extends SimpleToolbarButtonBehaviors(DDD) {
   static get styles() {
     return [
       ...(super.styles || []),
@@ -114,8 +114,8 @@ class EditableTableSort extends SimpleToolbarButtonBehaviors( DDD ) {
           this.sortMode == "asc"
             ? "arrow-drop-up"
             : this.sortMode == "desc"
-            ? "arrow-drop-down"
-            : "editable-table:sortable";
+              ? "arrow-drop-down"
+              : "editable-table:sortable";
       }
     });
   }
@@ -131,7 +131,7 @@ class EditableTableSort extends SimpleToolbarButtonBehaviors( DDD ) {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
   }
 }

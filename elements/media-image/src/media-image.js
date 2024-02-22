@@ -34,7 +34,7 @@ class MediaImage extends DDD {
         :host([card]) {
           box-shadow: var(--ddd-boxShadow-xs);
           border: var(--ddd-border-xs);
-          border-color: var(--ddd-theme-polaris-limestoneLight);
+          border-color: var(--ddd-theme-default-limestoneLight);
           padding: var(--ddd-spacing-5);
           background-color: var(
             --ddd-component-media-image-card-color,
@@ -92,7 +92,7 @@ class MediaImage extends DDD {
             --ddd-component-figure-label-title,
             var(
               --ddd-theme-accent-color,
-              var(--ddd-theme-polaris-limestoneLight)
+              var(--ddd-theme-default-limestoneLight)
             )
           );
           background: var(--ddd-component-figure-label-background, transparent);
@@ -121,7 +121,7 @@ class MediaImage extends DDD {
     this.card = false;
     this.box = false;
     this.offset = "none";
-    this.cardColor = "var(--ddd-theme-polaris-white)";
+    this.cardColor = "var(--ddd-theme-default-white)";
   }
   firstUpdated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -138,7 +138,7 @@ class MediaImage extends DDD {
       if (["figureLabelTitle", "figureLabelDescription"].includes(propName)) {
         this.__figureLabel = this._hasFigureLabel(
           this.figureLabelTitle,
-          this.figureLabelDescription
+          this.figureLabelDescription,
         );
       }
       if (["figureLabelTitle", "caption"].includes(propName)) {
@@ -516,7 +516,7 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
     this.modalTitle = "";
     this.addEventListener(
       "simple-modal-show",
-      this.__modalShowEvent.bind(this)
+      this.__modalShowEvent.bind(this),
     );
   }
   /**
@@ -591,7 +591,7 @@ class MediaImageCitation extends DDD {
         .citation {
           line-height: var(--ddd-lh-140);
           font-style: italic;
-          color: var(--ddd-theme-polaris-limestoneGray);
+          color: var(--ddd-theme-default-limestoneGray);
           margin: var(--ddd-spacing-2) 0;
         }
       `,

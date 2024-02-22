@@ -10,9 +10,9 @@
   --haxcms-system-danger-color: var(--simple-colors-default-theme-red-7, #FF7777);
   --paper-toast-color: #FFFFFF;
   --paper-toast-background-color: var(--haxcms-system-bg, #000000);
-  --simple-modal-titlebar-color: var(--ddd-theme-polaris-infoLight);
+  --simple-modal-titlebar-color: var(--ddd-theme-default-infoLight);
   --simple-modal-z-index: 10000000;
-  --simple-modal-titlebar-background: var(--ddd-theme-polaris-info);
+  --simple-modal-titlebar-background: var(--ddd-theme-default-info);
   --simple-modal-header-color: #FFFFFF;
   --simple-modal-header-background: var(--haxcms-system-bg);
   --simple-modal-button-color: #FFFFFF;
@@ -106,7 +106,7 @@ simple-modal::part(title) {
   margin: 0;
   text-align: center;
   font-size: var(--ddd-font-size-ms);
-  color: var(--ddd-theme-polaris-infoLight);
+  color: var(--ddd-theme-default-infoLight);
   font-family: var(--ddd-font-navigation, sans-serif);
   padding: 4px;
 }

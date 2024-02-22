@@ -5,9 +5,9 @@ import "../i18n-manager.js";
 describe("i18n-manager test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <i18n-manager title="test-title"></i18n-manager> `
-    );
+    element = await fixture(html`
+      <i18n-manager title="test-title"></i18n-manager>
+    `);
   });
 
   it("passes the a11y audit", async () => {

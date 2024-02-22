@@ -36,10 +36,10 @@ class PolarisTheme extends HAXCMSOperationButtons(
   PDFPageMixin(
     PrintBranchMixin(
       QRCodeMixin(
-        HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
-      )
-    )
-  )
+        HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)),
+      ),
+    ),
+  ),
 ) {
   //styles function
   static get styles() {
@@ -55,26 +55,27 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --polaris-footer-secondary-bg-color: #262c3a;
           --polaris-footer-primary-bg-color: #141720;
           background-color: var(--polaris-bg-color);
-          --haxcms-base-styles-body-font-size:16px;
+          --haxcms-base-styles-body-font-size: 16px;
           --hax-base-styles-a-font-size: 16px;
           --hax-base-styles-p-font-size: 16px;
           --hax-base-styles-list-font-size: 16px;
-          --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          --haxcms-base-styles-body-font-family: "Open Sans", "Helvetica Neue",
+            Helvetica, Arial, sans-serif;
           --haxcms-base-styles-body-line-height: 32px;
           --hax-base-styles-list-line-height: 28.8px
-          --hax-base-styles-p-line-height: 28.8px;
+            --hax-base-styles-p-line-height: 28.8px;
           --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing : normal;
-           --hax-base-styles-p-min-height: auto;
-           --hax-base-styles-list-max-width: auto;
-           --haxcms-base-styles-p-min-height: auto;
-           --hax-base-styles-list-padding-bottom: auto;
-           --hax-base-styles-h1-font-size: 36px;
-           --hax-base-styles-h2-font-size: 36px;
-           --hax-base-styles-h3-font-size: inherit;
-           --hax-base-styles-h4-font-size: inherit;
-           --hax-base-styles-h5-font-size: inherit;
-           --hax-base-styles-h6-font-size: inherit;
+          --haxcms-base-styles-body-letter-spacing: normal;
+          --hax-base-styles-p-min-height: auto;
+          --hax-base-styles-list-max-width: auto;
+          --haxcms-base-styles-p-min-height: auto;
+          --hax-base-styles-list-padding-bottom: auto;
+          --hax-base-styles-h1-font-size: 36px;
+          --hax-base-styles-h2-font-size: 36px;
+          --hax-base-styles-h3-font-size: inherit;
+          --hax-base-styles-h4-font-size: inherit;
+          --hax-base-styles-h5-font-size: inherit;
+          --hax-base-styles-h6-font-size: inherit;
         }
         h1,
         h2,
@@ -542,7 +543,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
         (name) => {
           let el = document.createElement(name);
           store.haxAutoloader.appendChild(el);
-        }
+        },
       );
       this.windowControllersLoaded.abort();
     }
@@ -556,7 +557,11 @@ class PolarisTheme extends HAXCMSOperationButtons(
     window.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this),
-      { once: true, passive: true, signal: this.windowControllersLoaded.signal }
+      {
+        once: true,
+        passive: true,
+        signal: this.windowControllersLoaded.signal,
+      },
     );
     // @todo support injection of blocks specific to polaris
     // this way we can have blocks whos definitions only get
@@ -597,7 +602,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
         const link = document.createElement("link");
         link.setAttribute(
           "href",
-          "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+          "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap",
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");

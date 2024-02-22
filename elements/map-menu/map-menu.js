@@ -148,13 +148,13 @@ class MapMenu extends LitElement {
     setTimeout(() => {
       this.addEventListener(
         "link-clicked",
-        this.__linkClickedHandler.bind(this)
+        this.__linkClickedHandler.bind(this),
       );
       this.addEventListener("toggle-updated", this.__toggleUpdated.bind(this));
       this.addEventListener("active-item", this.__activeItemHandler.bind(this));
       this.addEventListener(
         "map-meu-item-hidden-check",
-        this._mapMeuItemHiddenCheckHandler.bind(this)
+        this._mapMeuItemHiddenCheckHandler.bind(this),
       );
     }, 0);
   }
@@ -248,7 +248,7 @@ class MapMenu extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });
@@ -421,7 +421,7 @@ class MapMenu extends LitElement {
         cancelable: true,
         composed: true,
         detail: e.detail.id,
-      })
+      }),
     );
   }
 
@@ -445,9 +445,9 @@ class MapMenu extends LitElement {
             {
               action: action,
               target: target,
-            }
+            },
           ),
-        })
+        }),
       );
     }
   }

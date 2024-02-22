@@ -214,7 +214,9 @@ export class MarkTheWords extends I18NMixin(LitElement) {
       for (var i = 0; i < this.wordList.length; i++) {
         if (
           this.correctAnswers.includes(
-            this.wordList[i].replace(/[&#^,+()$~%.":*?<>{}]/g, "").toUpperCase()
+            this.wordList[i]
+              .replace(/[&#^,+()$~%.":*?<>{}]/g, "")
+              .toUpperCase(),
           )
         ) {
           this.numberCorrect++;
@@ -222,14 +224,14 @@ export class MarkTheWords extends I18NMixin(LitElement) {
       }
 
       const selected = this.shadowRoot.querySelectorAll(
-        ".text button[data-selected]"
+        ".text button[data-selected]",
       );
       for (var i = 0; i < selected.length; i++) {
         const el = selected[i];
 
         if (
           this.correctAnswers.includes(
-            el.innerText.replace(/[&#^,+()$~%.":*?<>{}]/g, "").toUpperCase()
+            el.innerText.replace(/[&#^,+()$~%.":*?<>{}]/g, "").toUpperCase(),
           )
         ) {
           el.setAttribute("data-status", "correct");
@@ -252,7 +254,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
       this.numberGuessed = 0;
       this.numberCorrect = 0;
       const selected = this.shadowRoot.querySelectorAll(
-        ".text button[data-selected]"
+        ".text button[data-selected]",
       );
       for (var i = 0; i < selected.length; i++) {
         const el = selected[i];
@@ -294,7 +296,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
               ? ``
               : html`${this.numberGuessed}/${this.numberCorrect}
                 ${Math.round(
-                  10 * ((this.numberGuessed / this.numberCorrect) * 100)
+                  10 * ((this.numberGuessed / this.numberCorrect) * 100),
                 ) / 10}%`}
           </span>
           ${this._haxstate

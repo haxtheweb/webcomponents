@@ -18,7 +18,7 @@ function elements(elementStyles) {
       } else {
         return elementStyle;
       }
-    })
+    }),
   );
 }
 

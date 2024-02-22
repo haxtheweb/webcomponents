@@ -5,13 +5,12 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
-
 // register the iconset
 SimpleIconsetStore.registerIconset(
   "stopnoteicons",
   `${
     new URL("./stop-note.js", import.meta.url).href
-  }/../lib/svgs/stopnoteicons/`
+  }/../lib/svgs/stopnoteicons/`,
 );
 
 /**
@@ -41,11 +40,11 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
           width: auto;
           --background-color: var(
             --ddd-component-stop-note-icon-background,
-            var(--ddd-theme-polaris-errorLight)
+            var(--ddd-theme-default-errorLight)
           );
           --accent-color: var(
             --ddd-component-stop-note-text-background,
-            var(--ddd-theme-polaris-error)
+            var(--ddd-theme-default-error)
           );
           margin: var(--ddd-spacing-5) 0;
           color: var(--simple-colors-fixed-theme-accent-12);
@@ -57,39 +56,39 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         }
 
         :host([icon="stopnoteicons:stop-icon"]) {
-          --accent-color: var(--ddd-theme-polaris-original87Pink);
-          --background-color: var(--ddd-theme-polaris-errorLight);
+          --accent-color: var(--ddd-theme-default-original87Pink);
+          --background-color: var(--ddd-theme-default-errorLight);
         }
         :host([status="stop"]) {
-          --accent-color: var(--ddd-theme-polaris-original87Pink);
-          --background-color: var(--ddd-theme-polaris-errorLight);
+          --accent-color: var(--ddd-theme-default-original87Pink);
+          --background-color: var(--ddd-theme-default-errorLight);
         }
 
         :host([icon="stopnoteicons:warning-icon"]) {
-          --accent-color: var(--ddd-theme-polaris-keystoneYellow);
-          --background-color: var(--ddd-theme-polaris-warningLight);
+          --accent-color: var(--ddd-theme-default-keystoneYellow);
+          --background-color: var(--ddd-theme-default-warningLight);
         }
         :host([status="warning"]) {
-          --accent-color: var(--ddd-theme-polaris-keystoneYellow);
-          --background-color: var(--ddd-theme-polaris-warningLight);
+          --accent-color: var(--ddd-theme-default-keystoneYellow);
+          --background-color: var(--ddd-theme-default-warningLight);
         }
 
         :host([icon="stopnoteicons:confirm-icon"]) {
-          --accent-color: var(--ddd-theme-polaris-success);
-          --background-color: var(--ddd-theme-polaris-successLight);
+          --accent-color: var(--ddd-theme-default-success);
+          --background-color: var(--ddd-theme-default-successLight);
         }
         :host([status="success"]) {
-          --accent-color: var(--ddd-theme-polaris-success);
-          --background-color: var(--ddd-theme-polaris-successLight);
+          --accent-color: var(--ddd-theme-default-success);
+          --background-color: var(--ddd-theme-default-successLight);
         }
 
         :host([icon="stopnoteicons:book-icon"]) {
-          --accent-color: var(--ddd-theme-polaris-info);
-          --background-color: var(--ddd-theme-polaris-infoLight);
+          --accent-color: var(--ddd-theme-default-info);
+          --background-color: var(--ddd-theme-default-infoLight);
         }
         :host([status="info"]) {
-          --accent-color: var(--ddd-theme-polaris-info);
-          --background-color: var(--ddd-theme-polaris-infoLight);
+          --accent-color: var(--ddd-theme-default-info);
+          --background-color: var(--ddd-theme-default-infoLight);
         }
 
         .container {
@@ -243,7 +242,11 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
       if (propName == "url") {
         this.remoteLinkURL = this[propName];
       }
-      if (propName == "status" && this[propName] && StopNoteIconList[this[propName]]) {
+      if (
+        propName == "status" &&
+        this[propName] &&
+        StopNoteIconList[this[propName]]
+      ) {
         this.icon = StopNoteIconList[this[propName]];
       }
     });
@@ -257,7 +260,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
     // if we have no status BUT icon was supplied; this is to support legacy implementations
     // where the icon was the thing dictating the status
     if (this.status === null && this.icon) {
-      Object.keys(StopNoteIconList).map(value => {
+      Object.keys(StopNoteIconList).map((value) => {
         if (StopNoteIconList[value] === this.icon) {
           this.status = value;
         }

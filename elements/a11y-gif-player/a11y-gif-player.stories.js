@@ -17,6 +17,6 @@ export const A11yGifPlayerStory = () => {
   return utils.makeUsageDocs(
     A11yGifPlayer,
     import.meta.url,
-    utils.makeElementFromHaxDemo(A11yGifPlayer)
+    utils.makeElementFromHaxDemo(A11yGifPlayer),
   );
 };

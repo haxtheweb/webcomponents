@@ -35,7 +35,7 @@ export const PrintBranchMixin = function (SuperClass) {
             eventName: "super-daemon-element-method",
             path: "CMS/page/print",
           },
-        })
+        }),
       );
     }
 
@@ -106,7 +106,7 @@ export const PrintBranchMixin = function (SuperClass) {
       };
       const response = await MicroFrontendRegistry.call(
         "@haxcms/siteToHtml",
-        params
+        params,
       );
       if (response.status == 200 && response.data) {
         const link = globalThis.document.createElement("a");
@@ -115,8 +115,8 @@ export const PrintBranchMixin = function (SuperClass) {
         link.href = globalThis.URL.createObjectURL(
           b64toBlob(
             btoa(unescape(encodeURIComponent(response.data))),
-            "text/html"
-          )
+            "text/html",
+          ),
         );
         /*link.download = `${toJS(store.activeTitle)}.html`;
         link.target = "_blank";
@@ -128,18 +128,18 @@ export const PrintBranchMixin = function (SuperClass) {
           globalThis.URL.createObjectURL(
             b64toBlob(
               btoa(unescape(encodeURIComponent(response.data))),
-              "text/html"
-            )
+              "text/html",
+            ),
           ),
           "",
-          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1"
+          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
         );
       } else {
         // fallback in case the service fails
         globalThis.open(
           globalThis.location.href + "?format=print-page",
           "",
-          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1"
+          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
         );
       }
       this.__printBranchLoading = false;

@@ -5,9 +5,9 @@ import "../vocab-term.js";
 describe("vocab-term test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <vocab-term title="test-title"></vocab-term> `
-    );
+    element = await fixture(html`
+      <vocab-term title="test-title"></vocab-term>
+    `);
   });
 
   it("passes the a11y audit", async () => {

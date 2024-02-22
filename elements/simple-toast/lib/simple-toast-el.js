@@ -135,7 +135,7 @@ class SimpleToastEl extends SimpleColors {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
         if (this[propName]) {
           this.show(this.text);

@@ -64,7 +64,7 @@ export class IframeLoader extends LitElement {
       this.__iframe = this.querySelector("iframe");
       this.__iframe.addEventListener(
         "load",
-        this.iframeLoadingCallback.bind(this)
+        this.iframeLoadingCallback.bind(this),
       );
       // ensure source matches iframe source
       if (this.__iframe.getAttribute("src")) {
@@ -92,7 +92,7 @@ export class IframeLoader extends LitElement {
         // Listen for new
         this.__iframe.addEventListener(
           "load",
-          this.iframeLoadingCallback.bind(this)
+          this.iframeLoadingCallback.bind(this),
         );
         this.__mutationObserver.observe(this.__iframe, {
           attributes: true,
@@ -168,7 +168,7 @@ export class IframeLoader extends LitElement {
     if (this.__iframe) {
       this.__iframe.removeEventListener(
         "load",
-        this.iframeLoadingCallback.bind(this)
+        this.iframeLoadingCallback.bind(this),
       );
     }
     this.__observer.disconnect();

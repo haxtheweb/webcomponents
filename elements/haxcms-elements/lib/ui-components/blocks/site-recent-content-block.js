@@ -177,7 +177,7 @@ class SiteRecentContentBlock extends PolymerElement {
             this.shadowRoot.querySelector('[data-id="' + tmpItem.id + '"]')
           ) {
             el = this.shadowRoot.querySelector(
-              '[data-id="' + tmpItem.id + '"]'
+              '[data-id="' + tmpItem.id + '"]',
             );
           }
         }

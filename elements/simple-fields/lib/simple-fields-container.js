@@ -428,7 +428,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         if (propName === "error" && this.field) {
           this.field.setAttribute(
             "aria-invalid",
-            this.error ? "true" : "false"
+            this.error ? "true" : "false",
           );
         }
       });
@@ -589,14 +589,14 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           this.type === "select"
             ? this.min
             : this.multicheck
-            ? this.minchecked
-            : false,
+              ? this.minchecked
+              : false,
         max =
           this.type === "select"
             ? this.max
             : this.multicheck
-            ? this.maxchecked
-            : false;
+              ? this.maxchecked
+              : false;
       let more = min && items && min > items ? min - items : false,
         less = max && items && max < items ? max - items : more;
       return less;
@@ -743,7 +743,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         this.field.setSelectionRange(
           selectionStart,
           selectionEnd,
-          selectionDirection
+          selectionDirection,
         );
     }
     /**
@@ -789,7 +789,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       if (this.hasFieldset && legend) {
         legend.innerHTML = legend.innerHTML.replace(
           /\**\s*$/,
-          this.error ? "*" : ""
+          this.error ? "*" : "",
         );
         legend.style.color = this.error
           ? "var(--simple-fields-error-color, #b40000)"
@@ -811,7 +811,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
     /**
@@ -823,7 +823,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         /s/g,
         Math.floor((1 + Math.random()) * 0x10000)
           .toString(16)
-          .substring(1)
+          .substring(1),
       );
     }
 
@@ -857,7 +857,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         } else if (this.type === "select") {
           value = this.multiple
             ? Object.keys(this.field.selectedOptions).map(
-                (option) => this.field.selectedOptions[option].value
+                (option) => this.field.selectedOptions[option].value,
               )
             : this.field.selectedOptions[0].value;
         } else {
@@ -977,12 +977,13 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             legend.style.paddingInlineEnd = 0;
           }
           this.querySelectorAll("label, input").forEach(
-            (el) => (el.style.marginRight = "var(--simple-fields-margin, 16px)")
+            (el) =>
+              (el.style.marginRight = "var(--simple-fields-margin, 16px)"),
           );
           this.querySelectorAll("label input").forEach(
             (el) =>
               (el.style.marginLeft =
-                "calc(0 - var(--simple-fields-margin, 16px))")
+                "calc(0 - var(--simple-fields-margin, 16px))"),
           );
         }
       } else {
@@ -1060,7 +1061,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
  * @extends {SimpleFieldsContainerBehaviors(LitElement)}
  */
 class SimpleFieldsContainer extends SimpleFieldsContainerBehaviors(
-  LitElement
+  LitElement,
 ) {}
 customElements.define(SimpleFieldsContainer.tag, SimpleFieldsContainer);
 export { SimpleFieldsContainer, SimpleFieldsContainerBehaviors };

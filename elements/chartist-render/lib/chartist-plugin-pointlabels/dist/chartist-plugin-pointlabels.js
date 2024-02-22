@@ -80,7 +80,7 @@
               y: position.y + options.labelOffset.y,
               style: "text-anchor: " + options.textAnchor,
             },
-            options.labelClass
+            options.labelClass,
           )
           .text(options.labelInterpolationFnc(value));
       }

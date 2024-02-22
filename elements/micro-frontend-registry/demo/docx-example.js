@@ -60,7 +60,7 @@ export class DocxExample extends LitElement {
     MicroFrontendRegistry.call(
       "@core/imgToAscii",
       formData,
-      this.toAsciiResponse.bind(this)
+      this.toAsciiResponse.bind(this),
     );
   }
 
@@ -88,7 +88,7 @@ export class DocxExample extends LitElement {
     MicroFrontendRegistry.call(
       "@core/docxToHtml",
       formData,
-      this.docxToHtmlResponse.bind(this)
+      this.docxToHtmlResponse.bind(this),
     );
   }
 
@@ -118,15 +118,14 @@ export class DocxExample extends LitElement {
     MicroFrontendRegistry.call(
       "@core/docxToPdf",
       formData,
-      this.docxToPdfResponse.bind(this)
+      this.docxToPdfResponse.bind(this),
     );
   }
 
   docxToPdfResponse(data) {
     console.log(data);
-    this.shadowRoot.querySelector(
-      "#pdfframe"
-    ).src = `data:application/pdf;base64,${data.data.pdf}`;
+    this.shadowRoot.querySelector("#pdfframe").src =
+      `data:application/pdf;base64,${data.data.pdf}`;
     this.shadowRoot.querySelector("#response").value = JSON.stringify(data);
   }
 
@@ -147,17 +146,15 @@ export class DocxExample extends LitElement {
     MicroFrontendRegistry.call(
       "@core/screenshotUrl",
       { urlToCapture: urlToCapture, quality: 80 },
-      this.screenshotUrlResponse.bind(this)
+      this.screenshotUrlResponse.bind(this),
     );
   }
 
   screenshotUrlResponse(data) {
-    this.shadowRoot.querySelector(
-      "#replaceimg"
-    ).src = `data:image/jpeg;base64, ${data.data.image}`;
-    this.shadowRoot.querySelector(
-      "#replaceimg"
-    ).alt = `screenshot of ${data.data.url}`;
+    this.shadowRoot.querySelector("#replaceimg").src =
+      `data:image/jpeg;base64, ${data.data.image}`;
+    this.shadowRoot.querySelector("#replaceimg").alt =
+      `screenshot of ${data.data.url}`;
   }
 
   render() {

@@ -5,9 +5,9 @@ import "../outline-designer.js";
 describe("outline-designer test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <outline-designer title="test-title"></outline-designer> `
-    );
+    element = await fixture(html`
+      <outline-designer title="test-title"></outline-designer>
+    `);
   });
 
   it("passes the a11y audit", async () => {

@@ -61,7 +61,7 @@ class ActiveWhenVisible extends LitElement {
         this.dispatchEvent(
           new CustomEvent("is-visible-changed", {
             detail: this[propName],
-          })
+          }),
         );
       }
     });
@@ -104,7 +104,7 @@ class ActiveWhenVisible extends LitElement {
       {
         rootMargin: this.rootMargin,
         threshold: this.thresholds,
-      }
+      },
     );
     this.observer.observe(this);
   }

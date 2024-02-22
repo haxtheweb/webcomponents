@@ -242,7 +242,7 @@ class ResponsiveGridRow extends LitElement {
           attribute: "screen",
           relativeToParent: this.responsiveToParent,
         },
-      })
+      }),
     );
   }
   /**
@@ -257,7 +257,7 @@ class ResponsiveGridRow extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });

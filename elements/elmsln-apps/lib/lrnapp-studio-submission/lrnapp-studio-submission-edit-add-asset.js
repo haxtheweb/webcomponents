@@ -67,6 +67,6 @@ class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionEditAddAsset.tag,
-  LrnappStudioSubmissionEditAddAsset
+  LrnappStudioSubmissionEditAddAsset,
 );
 export { LrnappStudioSubmissionEditAddAsset };

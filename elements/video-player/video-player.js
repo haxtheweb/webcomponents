@@ -207,7 +207,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         meta: {
           author: "HAXTheWeb core team",
           outlineDesigner: true,
-          anchorLabel: "mediaTitle"
+          anchorLabel: "mediaTitle",
         },
       },
       settings: {
@@ -904,7 +904,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         icon: "hax:anchor",
         callback: "haxClickTimeCode",
         label: "Copy current timecode",
-      }
+      },
     ];
   }
   haxClickTimeCode(e) {
@@ -1018,9 +1018,7 @@ class VideoPlayer extends IntersectionObserverMixin(
    * mapping down into the shadowRoot element bc these are common things to want to know
    */
   get currentTime() {
-    if (
-      this.shadowRoot
-    ) {
+    if (this.shadowRoot) {
       return this.shadowRoot.querySelector("a11y-media-player").currentTime;
     }
     return 0;

@@ -160,7 +160,7 @@ class HAXElementCardList extends LitElement {
                     <ul>
                       <li>
                         <strong>Tags:</strong> ${el.schema.gizmo.tags.map(
-                          (group) => html` ${group}, `
+                          (group) => html` ${group}, `,
                         )}
                       </li>
                       <li><strong>Tag name:</strong> <code>${el.tag}</code></li>
@@ -176,7 +176,7 @@ class HAXElementCardList extends LitElement {
                                   <strong>${this.capFirst(mel)}:</strong>
                                   <span>${el.schema.gizmo.meta[mel]}</span>
                                 </li>
-                              `
+                              `,
                             )}
                           `
                         : ``}
@@ -203,13 +203,13 @@ class HAXElementCardList extends LitElement {
                                   ${this._haxElementToNode(demoItem)}
                                 </template>
                               </code-sample>
-                            `
+                            `,
                           )}
                         `
                       : ``}
                   </div>
                 </product-card>
-              `
+              `,
             )}
           </div>
         `;
@@ -253,7 +253,7 @@ class HAXElementCardList extends LitElement {
             clone: true,
             modal: true,
           },
-        })
+        }),
       );
     }
   }
@@ -285,7 +285,7 @@ class HAXElementCardList extends LitElement {
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         detail: this,
-      })
+      }),
     );
     this.requestUpdate();
   }
@@ -315,7 +315,7 @@ class HAXElementCardList extends LitElement {
               bubbles: true,
               value: this[propName],
             },
-          })
+          }),
         );
       if (propName == "cols") {
         switch (this[propName]) {

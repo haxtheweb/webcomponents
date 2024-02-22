@@ -17,9 +17,9 @@ test("element matches if attributes are the same", function () {
     !pathPart.matchesElement({
       tagName: "p",
       attributes: { class: "tip help" },
-    })
+    }),
   );
   assert.ok(
-    pathPart.matchesElement({ tagName: "p", attributes: { class: "tip" } })
+    pathPart.matchesElement({ tagName: "p", attributes: { class: "tip" } }),
   );
 });

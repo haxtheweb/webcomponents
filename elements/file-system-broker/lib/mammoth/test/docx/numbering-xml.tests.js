@@ -21,19 +21,19 @@ test("w:num element inherits levels from w:abstractNum", function () {
         new XmlElement("w:abstractNumId", { "w:val": "42" }),
       ]),
     ]),
-    { styles: stylesReader.defaultStyles }
+    { styles: stylesReader.defaultStyles },
   );
   duck.assertThat(
     numbering.findLevel("47", "0"),
     duck.hasProperties({
       isOrdered: false,
-    })
+    }),
   );
   duck.assertThat(
     numbering.findLevel("47", "1"),
     duck.hasProperties({
       isOrdered: true,
-    })
+    }),
   );
 });
 
@@ -44,7 +44,7 @@ test("w:num element referencing non-existent w:abstractNumId is ignored", functi
         new XmlElement("w:abstractNumId", { "w:val": "42" }),
       ]),
     ]),
-    { styles: stylesReader.defaultStyles }
+    { styles: stylesReader.defaultStyles },
   );
   duck.assertThat(numbering.findLevel("47", "0"), duck.equalTo(null));
 });
@@ -67,13 +67,15 @@ test("when w:abstractNum has w:numStyleLink then style is used to find w:num", f
         new XmlElement("w:abstractNumId", { "w:val": "101" }),
       ]),
     ]),
-    { styles: new stylesReader.Styles({}, {}, {}, { List1: { numId: "200" } }) }
+    {
+      styles: new stylesReader.Styles({}, {}, {}, { List1: { numId: "200" } }),
+    },
   );
   duck.assertThat(
     numbering.findLevel("201", "0"),
     duck.hasProperties({
       isOrdered: true,
-    })
+    }),
   );
 });
 
@@ -93,17 +95,17 @@ test("numbering level can be found by paragraph style ID", function () {
         ]),
       ]),
     ]),
-    { styles: stylesReader.defaultStyles }
+    { styles: stylesReader.defaultStyles },
   );
   duck.assertThat(
     numbering.findLevelByParagraphStyleId("List"),
     duck.hasProperties({
       isOrdered: true,
-    })
+    }),
   );
   duck.assertThat(
     numbering.findLevelByParagraphStyleId("Paragraph"),
-    duck.equalTo(null)
+    duck.equalTo(null),
   );
 });
 

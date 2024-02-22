@@ -5,9 +5,9 @@ import "../micro-copy-heading.js";
 describe("micro-copy-heading test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <micro-copy-heading title="test-title"></micro-copy-heading> `
-    );
+    element = await fixture(html`
+      <micro-copy-heading title="test-title"></micro-copy-heading>
+    `);
   });
 
   it("passes the a11y audit", async () => {

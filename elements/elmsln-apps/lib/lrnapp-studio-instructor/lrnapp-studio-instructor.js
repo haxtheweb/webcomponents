@@ -394,7 +394,7 @@ class LrnappStudioInstructor extends PolymerElement {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }
@@ -603,7 +603,7 @@ class LrnappStudioInstructor extends PolymerElement {
       this.notifyPath("activeChart.title");
       this.set(
         "activeChart.description",
-        "Chart of values relative to " + e.detail.value
+        "Chart of values relative to " + e.detail.value,
       );
       this.notifyPath("activeChart.description");
       // calculate the valid charting options relative to selected chart style
@@ -745,24 +745,24 @@ class LrnappStudioInstructor extends PolymerElement {
     super.connectedCallback();
     this.$.statsdialogbutton.addEventListener(
       "click",
-      this._openStatsDialog.bind(this)
+      this._openStatsDialog.bind(this),
     );
     // listen for focus event to have fired
     this.$.statsdialog.addEventListener(
       "opened-changed",
-      this._accessibleFocus.bind(this)
+      this._accessibleFocus.bind(this),
     );
     this.$.dialog.addEventListener(
       "opened-changed",
-      this._accessibleFocus.bind(this)
+      this._accessibleFocus.bind(this),
     );
     this.$.selectedproject.addEventListener(
       "dropdown-select-changed",
-      this._projectChanged.bind(this)
+      this._projectChanged.bind(this),
     );
     this.$.selectedchart.addEventListener(
       "value-changed",
-      this._chartChanged.bind(this)
+      this._chartChanged.bind(this),
     );
   }
   /**
@@ -771,24 +771,24 @@ class LrnappStudioInstructor extends PolymerElement {
   disconnectedCallback() {
     this.$.statsdialogbutton.removeEventListener(
       "click",
-      this._openStatsDialog.bind(this)
+      this._openStatsDialog.bind(this),
     );
     // listen for focus event to have fired
     this.$.statsdialog.removeEventListener(
       "opened-changed",
-      this._accessibleFocus.bind(this)
+      this._accessibleFocus.bind(this),
     );
     this.$.dialog.removeEventListener(
       "opened-changed",
-      this._accessibleFocus.bind(this)
+      this._accessibleFocus.bind(this),
     );
     this.$.selectedproject.removeEventListener(
       "dropdown-select-changed",
-      this._projectChanged.bind(this)
+      this._projectChanged.bind(this),
     );
     this.$.selectedchart.removeEventListener(
       "value-changed",
-      this._chartChanged.bind(this)
+      this._chartChanged.bind(this),
     );
     super.disconnectedCallback();
   }
@@ -822,7 +822,7 @@ class LrnappStudioInstructor extends PolymerElement {
     this.set(
       "stats.header",
       "Statistics for " +
-        this.projects["project-" + this.activeProject].attributes.title
+        this.projects["project-" + this.activeProject].attributes.title,
     );
     // make sure default is asc data
     setTimeout(() => {
@@ -844,7 +844,7 @@ class LrnappStudioInstructor extends PolymerElement {
         newstudent = this._getObjectByPosition(
           this.students,
           this.activeData.student.id,
-          -1
+          -1,
         );
         if (
           newstudent != -1 &&
@@ -856,11 +856,11 @@ class LrnappStudioInstructor extends PolymerElement {
           this.set("activeData.submission", {});
           this.set(
             "activeData.submission",
-            newstudent.assignments[this.activeData.assignment.id]
+            newstudent.assignments[this.activeData.assignment.id],
           );
           this.set(
             "route.path",
-            this.endPoint + "/submissions/" + this.activeData.submission.id
+            this.endPoint + "/submissions/" + this.activeData.submission.id,
           );
         }
         break;
@@ -868,7 +868,7 @@ class LrnappStudioInstructor extends PolymerElement {
         newstudent = this._getObjectByPosition(
           this.students,
           this.activeData.student.id,
-          1
+          1,
         );
         if (
           newstudent != -1 &&
@@ -880,11 +880,11 @@ class LrnappStudioInstructor extends PolymerElement {
           this.set("activeData.submission", {});
           this.set(
             "activeData.submission",
-            newstudent.assignments[this.activeData.assignment.id]
+            newstudent.assignments[this.activeData.assignment.id],
           );
           this.set(
             "route.path",
-            this.endPoint + "/submissions/" + this.activeData.submission.id
+            this.endPoint + "/submissions/" + this.activeData.submission.id,
           );
         }
         break;
@@ -892,7 +892,7 @@ class LrnappStudioInstructor extends PolymerElement {
         newassignment = this._getObjectByPosition(
           this.assignments,
           this.activeData.assignment.id,
-          -1
+          -1,
         );
         if (newassignment != -1) {
           this.set("activeData.assignment", {});
@@ -904,13 +904,13 @@ class LrnappStudioInstructor extends PolymerElement {
             this.set("activeData.submission", {});
             this.set(
               "activeData.submission",
-              this.activeData.student.assignments[newassignment.id]
+              this.activeData.student.assignments[newassignment.id],
             );
             this.set(
               "route.path",
               this.endPoint +
                 "/submissions/" +
-                this.activeData.student.assignments[newassignment.id].id
+                this.activeData.student.assignments[newassignment.id].id,
             );
           } else {
             this.set("activeData.submission", false);
@@ -921,7 +921,7 @@ class LrnappStudioInstructor extends PolymerElement {
         newassignment = this._getObjectByPosition(
           this.assignments,
           this.activeData.assignment.id,
-          1
+          1,
         );
         if (newassignment != -1) {
           this.set("activeData.assignment", {});
@@ -933,13 +933,13 @@ class LrnappStudioInstructor extends PolymerElement {
             this.set("activeData.submission", {});
             this.set(
               "activeData.submission",
-              this.activeData.student.assignments[newassignment.id]
+              this.activeData.student.assignments[newassignment.id],
             );
             this.set(
               "route.path",
               this.endPoint +
                 "/submissions/" +
-                this.activeData.student.assignments[newassignment.id].id
+                this.activeData.student.assignments[newassignment.id].id,
             );
           } else {
             this.set("activeData.submission", false);
@@ -1072,11 +1072,11 @@ class LrnappStudioInstructor extends PolymerElement {
     this.set("activeData.assignment", this.assignments[item[3]]);
     this.set(
       "activeData.submission",
-      this.students[item[1]].assignments[item[3]]
+      this.students[item[1]].assignments[item[3]],
     );
     this.set(
       "route.path",
-      this.endPoint + "/submissions/" + item[item.length - 1]
+      this.endPoint + "/submissions/" + item[item.length - 1],
     );
     document.body.classList.add("scroll-disabled");
     this.$.dialog.toggle();
@@ -1099,11 +1099,11 @@ class LrnappStudioInstructor extends PolymerElement {
     this.set("activeData.assignment", this.assignments[item[3]]);
     this.set(
       "activeData.submission",
-      this.students[item[1]].assignments[item[3]]
+      this.students[item[1]].assignments[item[3]],
     );
     this.set(
       "route.path",
-      this.endPoint + "/submissions/" + item[item.length - 1]
+      this.endPoint + "/submissions/" + item[item.length - 1],
     );
     document.body.classList.add("scroll-disabled");
     this.$.dialog.toggle();

@@ -35,7 +35,7 @@ export class PageBreakOutline extends HTMLElement {
         this.rerender.bind(this),
         {
           signal: this.windowControllers.signal,
-        }
+        },
       );
     }, 0);
     // render on initial paint

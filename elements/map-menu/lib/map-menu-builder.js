@@ -69,7 +69,7 @@ class MapMenuBuilder extends LitElement {
                       status="${item.metadata.status}"
                     ></map-menu-item>
                   `}
-            `
+            `,
           )
         : ""}
     `;

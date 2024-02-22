@@ -91,7 +91,7 @@ class RelativeHeadingLite extends LitElement {
     this.checkId();
     this.__level = this.querySelector("h1,h2,h3,h4,h5,h6")
       ? parseInt(
-          this.querySelector("h1,h2,h3,h4,h5,h6").tagName.replace(/\D/, "")
+          this.querySelector("h1,h2,h3,h4,h5,h6").tagName.replace(/\D/, ""),
         )
       : 1;
     this.defaultLevel = 1;
@@ -189,7 +189,7 @@ class RelativeHeadingLite extends LitElement {
       /s/g,
       Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
-        .substring(1)
+        .substring(1),
     );
   }
 

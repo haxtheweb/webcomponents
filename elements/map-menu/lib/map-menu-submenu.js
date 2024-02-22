@@ -61,11 +61,11 @@ class MapMenuSubmenu extends LitElement {
       this.addEventListener("toggle-header", this.__toggleHeader.bind(this));
       this.addEventListener(
         "link-clicked",
-        this._headerClickHandler.bind(this)
+        this._headerClickHandler.bind(this),
       );
       this.addEventListener(
         "map-menu-item-hidden-check",
-        this._mapMenuItemHiddenCheckHandler.bind(this)
+        this._mapMenuItemHiddenCheckHandler.bind(this),
       );
     }, 0);
   }
@@ -194,7 +194,7 @@ class MapMenuSubmenu extends LitElement {
         cancelable: true,
         composed: true,
         detail: detail,
-      })
+      }),
     );
   }
   __toggleHeader(e) {
@@ -207,7 +207,7 @@ class MapMenuSubmenu extends LitElement {
         cancelable: true,
         composed: true,
         detail: { opened: this.opened },
-      })
+      }),
     );
   }
   __activeChanged(e) {

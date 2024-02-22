@@ -172,7 +172,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
                             : ``}${item.label}
                         </button>
                       </li>`
-                    : ``}`
+                    : ``}`,
               )}
             </ul>`
           : html`<div class="no-results" part="no-result">No results</div>`}
@@ -393,7 +393,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         detail: {
           value: this.value,
         },
-      })
+      }),
     );
     // ensure the _clicking lock is removed as we need to close popover
     this._clicking = false;
@@ -448,7 +448,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       // when we open, force popover to position correctly

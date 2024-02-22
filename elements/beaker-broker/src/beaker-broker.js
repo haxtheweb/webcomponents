@@ -63,7 +63,7 @@ class BeakerBroker extends LitElement {
   firstUpdated() {
     if (typeof DatArchive === typeof undefined) {
       console.warn(
-        "Beaker is not available from this site loading methodology"
+        "Beaker is not available from this site loading methodology",
       );
     }
   }
@@ -86,7 +86,7 @@ class BeakerBroker extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
       if (propName == "datUrl") {
@@ -97,7 +97,7 @@ class BeakerBroker extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
       }
     });

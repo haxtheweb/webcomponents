@@ -78,7 +78,7 @@ export const SimpleFilterMixin = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (
           ["items", "where", "like", "caseSensitive", "multiMatch"].includes(
-            propName
+            propName,
           ) &&
           this.shadowRoot
         ) {
@@ -89,7 +89,7 @@ export const SimpleFilterMixin = function (SuperClass) {
               this.where,
               this.like,
               this.caseSensitive,
-              this.multiMatch
+              this.multiMatch,
             );
           }, 250);
         }
@@ -100,7 +100,7 @@ export const SimpleFilterMixin = function (SuperClass) {
               cancelable: true,
               composed: true,
               detail: true,
-            })
+            }),
           );
           this.dispatchEvent(
             new CustomEvent("filtered-changed", {
@@ -110,7 +110,7 @@ export const SimpleFilterMixin = function (SuperClass) {
               detail: {
                 value: this.filtered,
               },
-            })
+            }),
           );
         }
       });
@@ -180,7 +180,7 @@ export const SimpleFilterMixin = function (SuperClass) {
           if (typeof decomposed == "undefined" && where != "") {
             //Do what I know best
             console.warn(
-              "simple-filter was unable to find a property in '" + where + "'"
+              "simple-filter was unable to find a property in '" + where + "'",
             );
           }
           // every call to .test will iterate against the same regex

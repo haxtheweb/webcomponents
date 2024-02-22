@@ -15,6 +15,6 @@ export const VoiceRecorderInput = () => {
   return utils.makeUsageDocs(
     VoiceRecorder,
     import.meta.url,
-    utils.makeElementFromClass(VoiceRecorder)
+    utils.makeElementFromClass(VoiceRecorder),
   );
 };

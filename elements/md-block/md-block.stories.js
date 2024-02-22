@@ -17,6 +17,6 @@ export const MdBlockStory = () => {
   return utils.makeUsageDocs(
     sbClass,
     import.meta.url,
-    utils.makeElementFromHaxDemo(sbClass)
+    utils.makeElementFromHaxDemo(sbClass),
   );
 };

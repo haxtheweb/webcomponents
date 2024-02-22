@@ -5,9 +5,9 @@ import "../lrn-assignment.js";
 describe("lrn-assignment test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <lrn-assignment title="test-title"></lrn-assignment> `
-    );
+    element = await fixture(html`
+      <lrn-assignment title="test-title"></lrn-assignment>
+    `);
   });
 
   it("passes the a11y audit", async () => {

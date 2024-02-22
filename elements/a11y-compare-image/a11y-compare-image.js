@@ -119,14 +119,13 @@ class a11yCompareImage extends SimpleColors {
       </div>
       <div id="input">
         ${this.__markers.map(
-          (marker) =>
-            html`
-              <div
-                class="marker"
-                .style="left: ${marker}%;"
-                ?hidden="${marker == 100}"
-              ></div>
-            `
+          (marker) => html`
+            <div
+              class="marker"
+              .style="left: ${marker}%;"
+              ?hidden="${marker == 100}"
+            ></div>
+          `,
         )}
         <simple-range-input
           accent-color="${this.accentColor}"
@@ -219,8 +218,8 @@ class a11yCompareImage extends SimpleColors {
     this.__upper = layers[active + 1]
       ? layers[active + 1].src
       : layers[active]
-      ? layers[active].src
-      : "";
+        ? layers[active].src
+        : "";
     this.__lower = layers[active] ? layers[active].src : "";
     // Adding Fake markers behind the slider.
     if (total - 1 != this.__markers.length) {
@@ -229,14 +228,14 @@ class a11yCompareImage extends SimpleColors {
     if (container && this.opacity === false) {
       container.style.setProperty(
         "--a11y-compare-image-width",
-        this.position + "%"
+        this.position + "%",
       );
       container.style.setProperty("--a11y-compare-image-opacity", 1);
     } else if (container) {
       container.style.setProperty("--a11y-compare-image-width", "100%");
       container.style.setProperty(
         "--a11y-compare-image-opacity",
-        this.position / 100
+        this.position / 100,
       );
     }
   }

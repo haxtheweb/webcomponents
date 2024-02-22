@@ -161,7 +161,7 @@ class PaperSearchPanel extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
   _onFilter() {
@@ -174,7 +174,7 @@ class PaperSearchPanel extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
   // Counts the selected filters

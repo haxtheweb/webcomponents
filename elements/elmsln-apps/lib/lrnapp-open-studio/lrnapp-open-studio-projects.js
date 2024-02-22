@@ -183,7 +183,7 @@ class LrnappOpenStudioProjects extends PolymerElement {
     let renderSubmissions = [];
     // make an array of parent assignment ids
     const parentAssignments = activeProject.attributes.steps.map(
-      (step) => step.id
+      (step) => step.id,
     );
     // filter the submissions by if they are listed in the active projects steps
     renderSubmissions = submissions.filter((submission) => {

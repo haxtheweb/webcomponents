@@ -190,18 +190,18 @@ export const BasicA11yMediaPlayer = () => {
         <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
         <track label="English" kind="subtitles" srclang="en" src="${new URL(
           `demo/samples/sintel-en.vtt`,
-          import.meta.url
+          import.meta.url,
         )}" default>
         <track label="Deutsch" kind="subtitles" srclang="de" src="${new URL(
           `demo/samples/sintel-de.vtt`,
-          import.meta.url
+          import.meta.url,
         )}">
         <track label="Español" kind="subtitles" srclang="es" src="${new URL(
           `demo/samples/sintel-es.vtt`,
-          import.meta.url
+          import.meta.url,
         )}">
       </video>`,
-      })
-    )
+      }),
+    ),
   );
 };

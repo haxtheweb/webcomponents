@@ -17,6 +17,6 @@ export const CourseModelStory = () => {
   return utils.makeUsageDocs(
     CourseModel,
     import.meta.url,
-    utils.makeElementFromHaxDemo(CourseModel)
+    utils.makeElementFromHaxDemo(CourseModel),
   );
 };

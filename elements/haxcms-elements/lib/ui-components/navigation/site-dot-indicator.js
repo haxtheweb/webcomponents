@@ -122,7 +122,7 @@ class SiteDotIndicator extends LitElement {
       }
       if (oldValue) {
         let tmp = this.shadowRoot.querySelector(
-          '[data-item="' + oldValue + '"'
+          '[data-item="' + oldValue + '"',
         );
         if (tmp) {
           tmp.classList.remove("active");

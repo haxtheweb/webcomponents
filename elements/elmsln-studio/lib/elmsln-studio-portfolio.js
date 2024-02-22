@@ -19,7 +19,7 @@ import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
  * @demo demo/portfolio.html
  */
 class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
-  ElmslnStudioStyles(LitElement)
+  ElmslnStudioStyles(LitElement),
 ) {
   static get styles() {
     return [
@@ -386,7 +386,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                       : this.getFeedbackIcon(s.feedback.length)}"
                     path="${this.getActivityLink(
                       s,
-                      this.submissionFilter === s.id && this.comment
+                      this.submissionFilter === s.id && this.comment,
                     )}"
                   >
                     <span class="sr-only"
@@ -423,19 +423,19 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                                   ${link.text || link.url}
                                 </elmsln-studio-link>
                               </li>
-                            `
+                            `,
                           )}
                         </ul>
                       `
                     : !s.sources || s.sources.length === 0
-                    ? html` ${s.body} `
-                    : this.getThumnailGrid(
-                        s,
-                        this.submissionFilter !== s.id && this.comment
-                      )}
+                      ? html` ${s.body} `
+                      : this.getThumnailGrid(
+                          s,
+                          this.submissionFilter !== s.id && this.comment,
+                        )}
                 </div>
               </section>
-            `
+            `,
           )}
         </article>
       </div>
@@ -571,14 +571,14 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         : this.getActivityLink(
             this.navigation.prev,
             !this.comment,
-            this.sortLatest
+            this.sortLatest,
           ),
       nextHref = !this.navigation.next
         ? undefined
         : this.getActivityLink(
             this.navigation.next,
             !this.comment,
-            this.sortLatest
+            this.sortLatest,
           );
     return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
   }
@@ -592,7 +592,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       !this.portfolio || !this.portfolio.submissions
         ? []
         : this.portfolio.submissions.filter(
-            (s) => !this.submissionFilter || s.id === this.submissionFilter
+            (s) => !this.submissionFilter || s.id === this.submissionFilter,
           );
     return !filter ? false : filter[0];
   }

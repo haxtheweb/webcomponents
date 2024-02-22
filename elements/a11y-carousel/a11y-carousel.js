@@ -141,7 +141,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
                   <a11y-carousel-button class="button" controls="${item.id}">
                     <span class="sr-only">${item.index + 1}</span>
                   </a11y-carousel-button>
-                `
+                `,
               )}
             </div>
           `}
@@ -277,7 +277,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
     let buttons = this.querySelectorAll(`a11y-carousel-button`);
     this.style.setProperty(
       "--a11y-carousel-background-image",
-      this._getImage()
+      this._getImage(),
     );
     Object.keys(buttons || {}).forEach((key) => {
       let button = buttons[key];

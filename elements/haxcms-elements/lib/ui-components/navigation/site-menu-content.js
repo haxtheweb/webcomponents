@@ -38,7 +38,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
       ) {
         this.contentContainer.HAXCMSThemeSettings.scrollTarget.addEventListener(
           "scroll",
-          this._applyScrollDetect.bind(this)
+          this._applyScrollDetect.bind(this),
         );
       }
       setTimeout(() => {
@@ -92,7 +92,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
         }
         simple-icon-button-lite:focus,
         simple-icon-button-lite:hover {
-          color: var(--ddd-theme-polaris-link);
+          color: var(--ddd-theme-default-link);
         }
         .contents {
           max-height: 80vh;

@@ -63,6 +63,6 @@ class LrnappStudioSubmissionEditImage extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionEditImage.tag,
-  LrnappStudioSubmissionEditImage
+  LrnappStudioSubmissionEditImage,
 );
 export { LrnappStudioSubmissionEditImage };

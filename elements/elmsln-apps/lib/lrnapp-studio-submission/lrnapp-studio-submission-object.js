@@ -91,6 +91,6 @@ class LrnappStudioSubmissionObject extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionObject.tag,
-  LrnappStudioSubmissionObject
+  LrnappStudioSubmissionObject,
 );
 export { LrnappStudioSubmissionObject };

@@ -31,7 +31,7 @@ class LrsBridgeHaxcms extends LrsBridge {
     // trim slash from begining and end
     const trimSlash = (string) => string.replace(/(^\/|\/$)/, "");
     const url = `${trimSlash(location.baseUrl)}/${trimSlash(
-      location.pathname
+      location.pathname,
     )}`;
     this.recordStatement({
       verb: {

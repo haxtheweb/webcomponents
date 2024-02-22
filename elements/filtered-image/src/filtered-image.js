@@ -167,7 +167,7 @@ class FilteredImage extends SimpleColors {
         this.__matrix = this._getMatrix(
           this.color,
           this.contrast,
-          this.strength
+          this.strength,
         );
       }
     });
@@ -242,7 +242,7 @@ class FilteredImage extends SimpleColors {
 
     matrix.setAttribute(
       "values",
-      JSON.stringify(values).replace(/[,\[\]]/g, " ")
+      JSON.stringify(values).replace(/[,\[\]]/g, " "),
     );
     return values;
   }

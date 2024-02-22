@@ -11,7 +11,7 @@ import { generateStyleLinkEls } from "./lib/SLStyleManager.js";
 import {
   haxElementToNode,
   nodeToHaxElement,
-  copyToClipboard
+  copyToClipboard,
 } from "@lrnwebcomponents/utils/utils.js";
 
 /**
@@ -58,7 +58,7 @@ class PlayList extends LitElement {
       await Promise.all(
         items.map(async (item) => {
           return await nodeToHaxElement(item);
-        })
+        }),
       ).then((items) => {
         this.items = items;
       });
@@ -208,7 +208,7 @@ class PlayList extends LitElement {
                   <sl-carousel-item class="item">
                     ${this.renderHAXItem(item)}
                   </sl-carousel-item>
-                `
+                `,
               )}
             </sl-carousel>
           `
@@ -257,7 +257,7 @@ class PlayList extends LitElement {
             detail: {
               value: this[propName],
             },
-          })
+          }),
         );
         if (
           this.shadowRoot.querySelector(".carousel") &&
@@ -298,7 +298,7 @@ class PlayList extends LitElement {
         icon: "hax:anchor",
         callback: "haxClickSlideIndex",
         label: "Copy slide index",
-      }
+      },
     ];
   }
   haxToggleEdit(e) {

@@ -10,7 +10,7 @@ import { MutationObserverImportMixin } from "./lib/MutationObserverImportMixin.j
  * @element mutation-observer-import-mixin
  */
 class MutationObserverImportElement extends MutationObserverImportMixin(
-  HTMLElement
+  HTMLElement,
 ) {
   static get tag() {
     return "mutation-observer-import";
@@ -22,6 +22,6 @@ class MutationObserverImportElement extends MutationObserverImportMixin(
 }
 customElements.define(
   MutationObserverImportElement.tag,
-  MutationObserverImportElement
+  MutationObserverImportElement,
 );
 export { MutationObserverImportElement };

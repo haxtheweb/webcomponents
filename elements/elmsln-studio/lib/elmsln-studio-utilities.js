@@ -125,10 +125,10 @@ const ElmslnStudioUtilities = function (SuperClass) {
       return overdue
         ? ifOverdue
         : late
-        ? ifLate
-        : submission
-        ? ifSubmitted
-        : ifElse;
+          ? ifLate
+          : submission
+            ? ifSubmitted
+            : ifElse;
     }
     getStatusIcon(submission, assignment) {
       return this.getStatus(
@@ -137,7 +137,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
         "report-problem",
         "assignment-late",
         "assignment-turned-in",
-        "assignment"
+        "assignment",
       );
     }
     getStatusColor(submission, assignment) {
@@ -147,7 +147,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
         "red",
         "amber",
         "green",
-        "grey"
+        "grey",
       );
     }
     getStatusMessage(submission, assignment) {
@@ -157,7 +157,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
         "Overdue",
         "Submitted Late",
         "Submitted",
-        "Not Submitted"
+        "Not Submitted",
       );
     }
     /**
@@ -190,7 +190,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
       src = "src",
       alt = "alt",
       full = "full",
-      longdesc = "longdesc"
+      longdesc = "longdesc",
     ) {
       //console.log('getFigures',sources);
       let images = (sources || []).map((source) => {
@@ -203,8 +203,8 @@ const ElmslnStudioUtilities = function (SuperClass) {
                   <div>${source[longdesc]}</div>
                 `
               : source[alt]
-              ? html` ${source[alt]} `
-              : html` ${source[longdesc]} `,
+                ? html` ${source[alt]} `
+                : html` ${source[longdesc]} `,
         };
       });
       return images.filter((s) => !!s.src);
@@ -239,7 +239,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
                   >View Thumbnail</simple-tooltip
                 >
               </img-view-modal>
-            `
+            `,
           )}
         </div>
       `;
@@ -257,8 +257,8 @@ const ElmslnStudioUtilities = function (SuperClass) {
       return user && !sortable
         ? `${user.firstName} ${user.lastName}`
         : user
-        ? `${user.lastName}, ${user.firstName}`
-        : ``;
+          ? `${user.lastName}, ${user.firstName}`
+          : ``;
     }
     /**
      * gets formatted date
@@ -271,19 +271,19 @@ const ElmslnStudioUtilities = function (SuperClass) {
       return !d
         ? ""
         : format === "long"
-        ? d.toLocaleDateString(undefined, {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })
-        : format === "short"
-        ? d.toLocaleDateString(undefined, { month: "long", day: "numeric" })
-        : d.toLocaleDateString(undefined, {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          });
+          ? d.toLocaleDateString(undefined, {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          : format === "short"
+            ? d.toLocaleDateString(undefined, { month: "long", day: "numeric" })
+            : d.toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              });
     }
 
     /**
@@ -311,16 +311,20 @@ const ElmslnStudioUtilities = function (SuperClass) {
             nocomment
               ? ""
               : activity.portfolioId
-              ? `&comment=true&sort-latest=${sort}`
-              : `?comment=true&sort-latest=${sort}`
+                ? `&comment=true&sort-latest=${sort}`
+                : `?comment=true&sort-latest=${sort}`
           }`
         : activity.activity === "discussion"
-        ? `project/${activity.projectId || activity.submissionId}${
-            activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
-          }comment=${activity.id}`
-        : `project/${activity.projectId || activity.submissionId}${
-            activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
-          }comment=${activity.feedbackId}`;
+          ? `project/${activity.projectId || activity.submissionId}${
+              activity.portfolioId
+                ? `?submission=${activity.submissionId}&`
+                : "?"
+            }comment=${activity.id}`
+          : `project/${activity.projectId || activity.submissionId}${
+              activity.portfolioId
+                ? `?submission=${activity.submissionId}&`
+                : "?"
+            }comment=${activity.feedbackId}`;
     }
 
     getActivityTitle(activity) {
@@ -330,16 +334,16 @@ const ElmslnStudioUtilities = function (SuperClass) {
               activity.assignment
             }`
           : activity.activity === "discussion"
-          ? `${[activity.firstName, activity.lastName].join(
-              " "
-            )}'s feedback on ${[
-              activity.creatorFirstName,
-              activity.creatorLastName,
-            ].join(" ")}'s ${activity.assignment}`
-          : `${[activity.firstName, activity.lastName].join(" ")} replied to ${[
-              activity.reviewerFirstName,
-              activity.reviewerLastName,
-            ].join(" ")}`}
+            ? `${[activity.firstName, activity.lastName].join(
+                " ",
+              )}'s feedback on ${[
+                activity.creatorFirstName,
+                activity.creatorLastName,
+              ].join(" ")}'s ${activity.assignment}`
+            : `${[activity.firstName, activity.lastName].join(" ")} replied to ${[
+                activity.reviewerFirstName,
+                activity.reviewerLastName,
+              ].join(" ")}`}
       `;
     }
     /**
@@ -450,25 +454,25 @@ const ElmslnStudioUtilities = function (SuperClass) {
                     <thead>
                       <th scope="col">Criteria</th>
                       ${rubric.key.map(
-                        (col) => html`<th scope="col">
-                          ${col.description && (col.points || col.points > -1)
-                            ? `${col.description} (${col.points})`
-                            : col.description || col.points}
-                        </th>`
+                        (col) =>
+                          html`<th scope="col">
+                            ${col.description && (col.points || col.points > -1)
+                              ? `${col.description} (${col.points})`
+                              : col.description || col.points}
+                          </th>`,
                       )}
                     </thead>
                   `}
               <tbody>
                 ${Object.keys(rubric.values || {}).map(
-                  (key) =>
-                    html`
-                      <tr>
-                        <th scope="row">${key}</th>
-                        ${(rubric.values[key] || []).map(
-                          (col) => html`<td>${col}</td>`
-                        )}
-                      </tr>
-                    `
+                  (key) => html`
+                    <tr>
+                      <th scope="row">${key}</th>
+                      ${(rubric.values[key] || []).map(
+                        (col) => html`<td>${col}</td>`,
+                      )}
+                    </tr>
+                  `,
                 )}
               </tbody>
             </table>
@@ -479,16 +483,16 @@ const ElmslnStudioUtilities = function (SuperClass) {
       return gravity && gravity.indexOf("top") > -1
         ? "top"
         : gravity && gravity.indexOf("bottom") > -1
-        ? "bottom"
-        : "center";
+          ? "bottom"
+          : "center";
     }
 
     _getAlign(gravity) {
       return gravity && gravity.indexOf("left") > -1
         ? "left"
         : gravity && gravity.indexOf("right") > -1
-        ? "right"
-        : "center";
+          ? "right"
+          : "center";
     }
     message404(type, backLabel, backHref) {
       return html` <div id="primary" class="primary-404">
@@ -567,7 +571,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
             type: type,
             data: data,
           },
-        })
+        }),
       );
     }
     /**
@@ -591,7 +595,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
             type: type,
             refresh: refresh,
           },
-        })
+        }),
       );
     }
     /**
@@ -613,7 +617,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: path,
-        })
+        }),
       );
     }
   };

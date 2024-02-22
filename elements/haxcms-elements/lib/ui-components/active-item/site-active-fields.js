@@ -38,7 +38,7 @@ class SiteActiveFields extends LitElement {
         this.dispatchEvent(
           new CustomEvent("fields-changed", {
             detail: this[propName],
-          })
+          }),
         );
       }
     });

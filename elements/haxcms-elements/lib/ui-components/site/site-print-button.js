@@ -154,7 +154,7 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     globalThis.open(
       globalThis.location.href + "?format=print-" + this.type,
       "",
-      "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1"
+      "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
     );
   }
 }

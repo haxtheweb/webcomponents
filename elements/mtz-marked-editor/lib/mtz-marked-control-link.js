@@ -68,7 +68,7 @@ class MtzMarkedControlLink extends mtzMarkedControlBehavior(PolymerElement) {
       editor.replaceSelection(match);
       editor.setSelection(
         selection.start,
-        selection.end - (selection.length - match.length)
+        selection.end - (selection.length - match.length),
       );
     } else {
       if (this._isLink(selection)) {
@@ -90,7 +90,7 @@ class MtzMarkedControlLink extends mtzMarkedControlBehavior(PolymerElement) {
       editor.replaceSelection(newLink);
       editor.setSelection(
         selection.start,
-        selection.end + (newLink.length - selection.length)
+        selection.end + (newLink.length - selection.length),
       );
     }
   }

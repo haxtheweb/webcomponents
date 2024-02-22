@@ -277,7 +277,7 @@ export const SimpleFieldsStory = () => {
       fields: fields,
       value: value,
     },
-    css
+    css,
   );
 };
 export const SimpleFieldsFormStory = () => {
@@ -288,7 +288,7 @@ export const SimpleFieldsFormStory = () => {
       method: "GET",
       autoload: true,
     },
-    css
+    css,
   );
 };
 export const SimpleFieldsLiteStory = () => {
@@ -489,7 +489,7 @@ export const SimpleFieldsLiteStory = () => {
       schema: schema,
       value: value,
     },
-    css
+    css,
   );
 };
 export const SimpleFieldsFormLiteStory = () => {
@@ -500,7 +500,7 @@ export const SimpleFieldsFormLiteStory = () => {
       method: "GET",
       autoload: true,
     },
-    css
+    css,
   );
 };
 export const SimpleFieldsFieldStory = () => {

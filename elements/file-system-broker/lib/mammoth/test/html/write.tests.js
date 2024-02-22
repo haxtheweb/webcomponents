@@ -15,21 +15,21 @@ test("double quotes outside of attributes are not escaped", function () {
 test("element attributes are HTML escaped", function () {
   assert.equal(
     generateString(html.freshElement("p", { x: "<" })),
-    '<p x="&lt;"></p>'
+    '<p x="&lt;"></p>',
   );
 });
 
 test("double quotes inside attributes are escaped", function () {
   assert.equal(
     generateString(html.freshElement("p", { x: '"' })),
-    '<p x="&quot;"></p>'
+    '<p x="&quot;"></p>',
   );
 });
 
 test("element children are written", function () {
   assert.equal(
     generateString(html.freshElement("p", {}, [html.text("Hello")])),
-    "<p>Hello</p>"
+    "<p>Hello</p>",
   );
 });
 

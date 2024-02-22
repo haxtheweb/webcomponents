@@ -20,7 +20,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
           if (activePathName && this.__evaluateRoute) {
             localStorageSet(
               `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
-              activePathName
+              activePathName,
             );
           }
         }
@@ -36,18 +36,18 @@ const HAXCMSRememberRoute = function (SuperClass) {
           store.location &&
           store.location.pathname &&
           localStorageGet(
-            `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
+            `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
           ) &&
           localStorageGet(
-            `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
+            `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
           ) != toJS(store.location.pathname)
         ) {
           let btn = globalThis.document.createElement("a");
           btn.setAttribute(
             "href",
             localStorageGet(
-              `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
-            )
+              `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
+            ),
           );
           btn.addEventListener("click", this.resumeLastRoute.bind(this));
           btn.innerHTML = `<button style="padding:4px;font-weight:bold;background-color: black; color: white; border: 4px solid black; border-radius:none;margin-left:4px;cursor: pointer;">${this.t.resume}</button>`;
@@ -62,7 +62,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
               "capsule",
               null,
               null,
-              btn
+              btn,
             );
           }
         }
@@ -79,7 +79,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
           composed: true,
           cancelable: false,
           detail: false,
-        })
+        }),
       );
     }
   };

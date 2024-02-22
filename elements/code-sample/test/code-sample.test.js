@@ -5,9 +5,9 @@ import "../code-sample.js";
 describe("code-sample test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <code-sample title="test-title"></code-sample> `
-    );
+    element = await fixture(html`
+      <code-sample title="test-title"></code-sample>
+    `);
   });
 
   it("passes the a11y audit", async () => {

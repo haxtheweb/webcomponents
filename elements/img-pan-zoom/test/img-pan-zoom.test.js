@@ -5,9 +5,9 @@ import "../img-pan-zoom.js";
 describe("img-pan-zoom test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <img-pan-zoom title="test-title"></img-pan-zoom> `
-    );
+    element = await fixture(html`
+      <img-pan-zoom title="test-title"></img-pan-zoom>
+    `);
   });
 
   it("passes the a11y audit", async () => {

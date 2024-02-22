@@ -115,6 +115,6 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
 }
 customElements.define(
   LrnappBlockRecentSubmissions.tag,
-  LrnappBlockRecentSubmissions
+  LrnappBlockRecentSubmissions,
 );
 export { LrnappBlockRecentSubmissions };

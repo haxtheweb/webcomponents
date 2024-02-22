@@ -5,9 +5,9 @@ import "../parallax-image.js";
 describe("parallax-image test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <parallax-image title="test-title"></parallax-image> `
-    );
+    element = await fixture(html`
+      <parallax-image title="test-title"></parallax-image>
+    `);
   });
 
   it("passes the a11y audit", async () => {

@@ -130,12 +130,12 @@ export const AccentCardStory = () => {
       { css: "--accent-card-border-color", title: "Card heading text color" },
       { css: "width" },
       { css: "maxWidth" },
-    ]
+    ],
   );
 };
 export const AccentCardHaxStory = () =>
   utils.makeUsageDocs(
     AccentCard,
     import.meta.url,
-    utils.makeElementFromHaxDemo(AccentCard)
+    utils.makeElementFromHaxDemo(AccentCard),
   );

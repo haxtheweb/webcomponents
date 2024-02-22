@@ -17,5 +17,5 @@ export const AppHaxStory = () =>
   utils.makeUsageDocs(
     AppHax,
     import.meta.url,
-    utils.makeElementFromHaxDemo(AppHax)
+    utils.makeElementFromHaxDemo(AppHax),
   );

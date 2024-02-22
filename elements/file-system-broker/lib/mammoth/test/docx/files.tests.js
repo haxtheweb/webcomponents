@@ -42,9 +42,9 @@ test("Files", {
         function (err) {
           assert.equal(
             err.message,
-            "could not find external image 'not-a-real-file.png', path of input document is unknown"
+            "could not find external image 'not-a-real-file.png', path of input document is unknown",
           );
-        }
+        },
       );
     },
 
@@ -55,9 +55,9 @@ test("Files", {
       function (err) {
         assertRegex(
           err.message,
-          /could not open external image: 'not-a-real-file.png' \(document directory: '\/tmp'\)\nENOENT.*\/tmp\/not-a-real-file.png.*/
+          /could not open external image: 'not-a-real-file.png' \(document directory: '\/tmp'\)\nENOENT.*\/tmp\/not-a-real-file.png.*/,
         );
-      }
+      },
     );
   },
 });
@@ -71,7 +71,7 @@ function assertError(promise, func) {
 function assertRegex(actual, expected) {
   assert.ok(
     expected.test(actual),
-    "Expected regex: " + expected + "\nbut was: " + actual
+    "Expected regex: " + expected + "\nbut was: " + actual,
   );
 }
 

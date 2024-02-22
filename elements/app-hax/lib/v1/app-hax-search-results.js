@@ -135,7 +135,7 @@ export class AppHaxSearchResults extends SimpleColors {
                     accent-color="${varGet(
                       item,
                       "metadata.theme.variables.cssVariable",
-                      "orange"
+                      "orange",
                     )
                       .replace("--simple-colors-default-theme-", "")
                       .replace("-7", "")}"
@@ -143,7 +143,7 @@ export class AppHaxSearchResults extends SimpleColors {
                     icon="${varGet(
                       item,
                       "metadata.theme.variables.icon",
-                      "link"
+                      "link",
                     )}"
                   >
                     <a href="${item.slug}" slot="heading">${item.title}</a>
@@ -158,7 +158,7 @@ export class AppHaxSearchResults extends SimpleColors {
                       </div>
                     </app-hax-site-details>
                   </app-hax-site-bar>
-                </li>`
+                </li>`,
             )
           : html`<div id="noResult">
               No results for

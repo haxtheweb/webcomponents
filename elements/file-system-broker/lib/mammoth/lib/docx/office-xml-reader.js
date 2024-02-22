@@ -44,7 +44,7 @@ function collapseAlternateContent(node) {
       return node.first("mc:Fallback").children;
     } else {
       node.children = _.flatten(
-        node.children.map(collapseAlternateContent, true)
+        node.children.map(collapseAlternateContent, true),
       );
       return [node];
     }

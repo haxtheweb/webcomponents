@@ -10,7 +10,7 @@ describe("circle-progress test", () => {
 
         <circle-progress value="30" angle="90" stroke-width="8">
           <b>30s</b>
-        </circle-progress>`
+        </circle-progress>`,
     );
   });
 

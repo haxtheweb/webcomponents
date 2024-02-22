@@ -30,20 +30,20 @@ export const mtzMarkedControlWrapperBehaviorImpl = function (SuperClass) {
       if (
         content.substr(
           selected.start - this.syntaxPrefix.length,
-          this.syntaxPrefix.length
+          this.syntaxPrefix.length,
         ) === this.syntaxPrefix &&
         content.substr(selected.end, this.syntaxSuffix.length) ===
           this.syntaxSuffix
       ) {
         editor.setSelection(
           selected.start - this.syntaxPrefix.length,
-          selected.end + this.syntaxSuffix.length
+          selected.end + this.syntaxSuffix.length,
         );
         editor.replaceSelection(selected.text);
         cursor = selected.start - this.syntaxPrefix.length;
       } else {
         editor.replaceSelection(
-          `${this.syntaxPrefix}${selected.text}${this.syntaxSuffix}`
+          `${this.syntaxPrefix}${selected.text}${this.syntaxSuffix}`,
         );
         cursor = selected.start + this.syntaxSuffix.length;
       }

@@ -19,14 +19,14 @@ function createUnityInstance(e, t, n) {
         ? (e =
             "An exception has occurred, but exception handling has been disabled in this build. If you are the developer of this content, enable exceptions in your project WebGL player settings to be able to catch the exception or see the stack trace.")
         : e.indexOf("Cannot enlarge memory arrays") != -1
-        ? (e =
-            "Out of memory. If you are the developer of this content, try allocating more memory to your WebGL build in the WebGL player settings.")
-        : (e.indexOf("Invalid array buffer length") == -1 &&
-            e.indexOf("Invalid typed array length") == -1 &&
-            e.indexOf("out of memory") == -1 &&
-            e.indexOf("could not allocate memory") == -1) ||
-          (e =
-            "The browser could not allocate enough memory for the WebGL content. If you are the developer of this content, try allocating less memory to your WebGL build in the WebGL player settings."),
+          ? (e =
+              "Out of memory. If you are the developer of this content, try allocating more memory to your WebGL build in the WebGL player settings.")
+          : (e.indexOf("Invalid array buffer length") == -1 &&
+              e.indexOf("Invalid typed array length") == -1 &&
+              e.indexOf("out of memory") == -1 &&
+              e.indexOf("could not allocate memory") == -1) ||
+            (e =
+              "The browser could not allocate enough memory for the WebGL content. If you are the developer of this content, try allocating less memory to your WebGL build in the WebGL player settings."),
         alert(e),
         (r.didShowErrorMessage = !0);
     }
@@ -36,15 +36,15 @@ function createUnityInstance(e, t, n) {
         "unhandledrejection" == e.type && "object" == typeof e.reason
           ? e.reason
           : "object" == typeof e.error
-          ? e.error
-          : null,
+            ? e.error
+            : null,
       n = t
         ? t.toString()
         : "string" == typeof e.message
-        ? e.message
-        : "string" == typeof e.reason
-        ? e.reason
-        : "";
+          ? e.message
+          : "string" == typeof e.reason
+            ? e.reason
+            : "";
     if (
       (t &&
         "string" == typeof t.stack &&
@@ -59,18 +59,18 @@ function createUnityInstance(e, t, n) {
           e instanceof ErrorEvent
             ? e.filename
             : t && "string" == typeof t.fileName
-            ? t.fileName
-            : t && "string" == typeof t.sourceURL
-            ? t.sourceURL
-            : "",
+              ? t.fileName
+              : t && "string" == typeof t.sourceURL
+                ? t.sourceURL
+                : "",
         i =
           e instanceof ErrorEvent
             ? e.lineno
             : t && "number" == typeof t.lineNumber
-            ? t.lineNumber
-            : t && "number" == typeof t.line
-            ? t.line
-            : 0;
+              ? t.lineNumber
+              : t && "number" == typeof t.line
+                ? t.line
+                : 0;
       r(n, a, i);
     }
   }
@@ -120,7 +120,7 @@ function createUnityInstance(e, t, n) {
               r +
               '" response header when serving "' +
               t +
-              '" file.'
+              '" file.',
           );
         var a = h[r];
         if (!a.worker) {
@@ -141,8 +141,8 @@ function createUnityInstance(e, t, n) {
                 }.toString(),
                 "; postMessage({ ready: true });",
               ],
-              { type: "application/javascript" }
-            )
+              { type: "application/javascript" },
+            ),
           );
           (a.worker = new Worker(i)),
             (a.worker.onmessage = function (e) {
@@ -187,7 +187,7 @@ function createUnityInstance(e, t, n) {
   function d() {
     return o("frameworkUrl").then(function (e) {
       var t = URL.createObjectURL(
-        new Blob([e], { type: "application/javascript" })
+        new Blob([e], { type: "application/javascript" }),
       );
       return new Promise(function (e, n) {
         var r = document.createElement("script");
@@ -311,24 +311,25 @@ function createUnityInstance(e, t, n) {
         (o = i.substring(t + 6)),
         (t = i.indexOf("Version")) != -1 && (o = i.substring(t + 8)))
       : (t = i.indexOf("MSIE")) != -1
-      ? ((s = "Microsoft Internet Explorer"), (o = i.substring(t + 5)))
-      : (t = i.indexOf("Edge")) != -1
-      ? ((s = "Edge"), (o = i.substring(t + 5)))
-      : (t = i.indexOf("Chrome")) != -1
-      ? ((s = "Chrome"), (o = i.substring(t + 7)))
-      : (t = i.indexOf("Safari")) != -1
-      ? ((s = "Safari"),
-        (o = i.substring(t + 7)),
-        (t = i.indexOf("Version")) != -1 && (o = i.substring(t + 8)))
-      : (t = i.indexOf("Firefox")) != -1
-      ? ((s = "Firefox"), (o = i.substring(t + 8)))
-      : i.indexOf("Trident/") != -1
-      ? ((s = "Microsoft Internet Explorer"),
-        (o = i.substring(i.indexOf("rv:") + 3)))
-      : (e = i.lastIndexOf(" ") + 1) < (t = i.lastIndexOf("/")) &&
-        ((s = i.substring(e, t)),
-        (o = i.substring(t + 1)),
-        s.toLowerCase() == s.toUpperCase() && (s = navigator.appName)),
+        ? ((s = "Microsoft Internet Explorer"), (o = i.substring(t + 5)))
+        : (t = i.indexOf("Edge")) != -1
+          ? ((s = "Edge"), (o = i.substring(t + 5)))
+          : (t = i.indexOf("Chrome")) != -1
+            ? ((s = "Chrome"), (o = i.substring(t + 7)))
+            : (t = i.indexOf("Safari")) != -1
+              ? ((s = "Safari"),
+                (o = i.substring(t + 7)),
+                (t = i.indexOf("Version")) != -1 && (o = i.substring(t + 8)))
+              : (t = i.indexOf("Firefox")) != -1
+                ? ((s = "Firefox"), (o = i.substring(t + 8)))
+                : i.indexOf("Trident/") != -1
+                  ? ((s = "Microsoft Internet Explorer"),
+                    (o = i.substring(i.indexOf("rv:") + 3)))
+                  : (e = i.lastIndexOf(" ") + 1) < (t = i.lastIndexOf("/")) &&
+                    ((s = i.substring(e, t)),
+                    (o = i.substring(t + 1)),
+                    s.toLowerCase() == s.toUpperCase() &&
+                      (s = navigator.appName)),
       (n = o.indexOf(";")) != -1 && (o = o.substring(0, n)),
       (n = o.indexOf(" ")) != -1 && (o = o.substring(0, n)),
       (n = o.indexOf(")")) != -1 && (o = o.substring(0, n)),
@@ -564,7 +565,7 @@ function createUnityInstance(e, t, n) {
             ["responseURL", "status", "statusText", "response"].forEach(
               function (e) {
                 i.xhr[e] = a[e];
-              }
+              },
             )),
           i
         );
@@ -590,46 +591,46 @@ function createUnityInstance(e, t, n) {
                     e(
                       "'" +
                         n.result.url +
-                        "' successfully revalidated and served from the indexedDB cache"
+                        "' successfully revalidated and served from the indexedDB cache",
                     ))
                   : 200 == t.status
-                  ? ((n.result = a(
-                      n.result.url,
-                      n.company,
-                      n.product,
-                      n.result.accessed,
-                      t
-                    )),
-                    (n.revalidated = !0),
-                    l.execute(
-                      o.name,
-                      "put",
-                      [n.result],
-                      function (t) {
-                        e(
-                          "'" +
-                            n.result.url +
-                            "' successfully downloaded and stored in the indexedDB cache"
-                        );
-                      },
-                      function (t) {
-                        e(
-                          "'" +
-                            n.result.url +
-                            "' successfully downloaded but not stored in the indexedDB cache due to the error: " +
-                            t
-                        );
-                      }
-                    ))
-                  : e(
-                      "'" +
-                        n.result.url +
-                        "' request failed with status: " +
-                        t.status +
-                        " " +
-                        t.statusText
-                    ));
-            }.bind(this)
+                    ? ((n.result = a(
+                        n.result.url,
+                        n.company,
+                        n.product,
+                        n.result.accessed,
+                        t,
+                      )),
+                      (n.revalidated = !0),
+                      l.execute(
+                        o.name,
+                        "put",
+                        [n.result],
+                        function (t) {
+                          e(
+                            "'" +
+                              n.result.url +
+                              "' successfully downloaded and stored in the indexedDB cache",
+                          );
+                        },
+                        function (t) {
+                          e(
+                            "'" +
+                              n.result.url +
+                              "' successfully downloaded but not stored in the indexedDB cache due to the error: " +
+                              t,
+                          );
+                        },
+                      ))
+                    : e(
+                        "'" +
+                          n.result.url +
+                          "' request failed with status: " +
+                          t.status +
+                          " " +
+                          t.statusText,
+                      ));
+            }.bind(this),
           );
       }
       var s = { name: "UnityCache", version: 2 },
@@ -643,7 +644,7 @@ function createUnityInstance(e, t, n) {
                 [e],
                 ["put", "delete", "clear"].indexOf(t) != -1
                   ? "readwrite"
-                  : "readonly"
+                  : "readonly",
               )
               .objectStore(e);
             "openKeyCursor" == t && ((i = i.index(n[0])), (n = n.slice(1)));
@@ -687,7 +688,7 @@ function createUnityInstance(e, t, n) {
                       e(
                         "'" +
                           a.result.url +
-                          "' served from the indexedDB cache without revalidation"
+                          "' served from the indexedDB cache without revalidation",
                       );
                   else if (
                     n(a.result.url) &&
@@ -704,7 +705,7 @@ function createUnityInstance(e, t, n) {
                               a.result.responseHeaders[e] ==
                                 s.getResponseHeader(e)
                             );
-                          }
+                          },
                         )),
                           a.revalidated
                             ? ((a.result.revalidated = a.result.accessed),
@@ -713,7 +714,7 @@ function createUnityInstance(e, t, n) {
                               e(
                                 "'" +
                                   a.result.url +
-                                  "' successfully revalidated and served from the indexedDB cache"
+                                  "' successfully revalidated and served from the indexedDB cache",
                               ))
                             : r.send.apply(r, i);
                       }),
@@ -722,20 +723,20 @@ function createUnityInstance(e, t, n) {
                     a.result.responseHeaders["Last-Modified"]
                       ? (r.setRequestHeader(
                           "If-Modified-Since",
-                          a.result.responseHeaders["Last-Modified"]
+                          a.result.responseHeaders["Last-Modified"],
                         ),
                         r.setRequestHeader("Cache-Control", "no-cache"))
                       : a.result.responseHeaders.ETag &&
                         (r.setRequestHeader(
                           "If-None-Match",
-                          a.result.responseHeaders.ETag
+                          a.result.responseHeaders.ETag,
                         ),
                         r.setRequestHeader("Cache-Control", "no-cache")),
                       r.send.apply(r, i);
                 },
                 function (e) {
                   r.send.apply(r, i);
-                }
+                },
               )
             : r.send.apply(r, i)
         );
@@ -746,7 +747,7 @@ function createUnityInstance(e, t, n) {
               t(n),
               this.cache.company,
               this.cache.product,
-              Date.now()
+              Date.now(),
             )),
             (this.cache.enabled =
               ["must-revalidate", "immutable"].indexOf(this.cache.control) !=
@@ -789,7 +790,7 @@ function createUnityInstance(e, t, n) {
                     set: function (t) {
                       this.xhr[e] = t;
                     },
-                  }
+                  },
             );
           })(c);
       return i;
@@ -804,7 +805,7 @@ function createUnityInstance(e, t, n) {
               if (!(this instanceof r)) return new r(e);
               this.options = o.assign(
                 { chunkSize: 16384, windowBits: 0, to: "" },
-                e || {}
+                e || {},
               );
               var t = this.options;
               t.raw &&
@@ -862,8 +863,8 @@ function createUnityInstance(e, t, n) {
                 "string" == typeof e
                   ? (f.input = d.binstring2buf(e))
                   : "[object ArrayBuffer]" === h.call(e)
-                  ? (f.input = new Uint8Array(e))
-                  : (f.input = e),
+                    ? (f.input = new Uint8Array(e))
+                    : (f.input = e),
                 (f.next_in = 0),
                 (f.avail_in = f.input.length);
               do {
@@ -879,8 +880,8 @@ function createUnityInstance(e, t, n) {
                       "string" == typeof b
                         ? d.string2buf(b)
                         : "[object ArrayBuffer]" === h.call(b)
-                        ? new Uint8Array(b)
-                        : b),
+                          ? new Uint8Array(b)
+                          : b),
                     (n = s.inflateSetDictionary(this.strm, c))),
                   n === l.Z_BUF_ERROR && m === !0 && ((n = l.Z_OK), (m = !1)),
                   n !== l.Z_STREAM_END && n !== l.Z_OK)
@@ -958,8 +959,8 @@ function createUnityInstance(e, t, n) {
                 return e.length === t
                   ? e
                   : e.subarray
-                  ? e.subarray(0, t)
-                  : ((e.length = t), e);
+                    ? e.subarray(0, t)
+                    : ((e.length = t), e);
               });
             var a = {
                 arraySet: function (e, t, n, r, a) {
@@ -1027,14 +1028,14 @@ function createUnityInstance(e, t, n) {
                 d >= 252
                   ? 6
                   : d >= 248
-                  ? 5
-                  : d >= 240
-                  ? 4
-                  : d >= 224
-                  ? 3
-                  : d >= 192
-                  ? 2
-                  : 1;
+                    ? 5
+                    : d >= 240
+                      ? 4
+                      : d >= 224
+                        ? 3
+                        : d >= 192
+                          ? 2
+                          : 1;
             (o[254] = o[254] = 1),
               (n.string2buf = function (e) {
                 var t,
@@ -1062,15 +1063,16 @@ function createUnityInstance(e, t, n) {
                     n < 128
                       ? (t[s++] = n)
                       : n < 2048
-                      ? ((t[s++] = 192 | (n >>> 6)), (t[s++] = 128 | (63 & n)))
-                      : n < 65536
-                      ? ((t[s++] = 224 | (n >>> 12)),
-                        (t[s++] = 128 | ((n >>> 6) & 63)),
-                        (t[s++] = 128 | (63 & n)))
-                      : ((t[s++] = 240 | (n >>> 18)),
-                        (t[s++] = 128 | ((n >>> 12) & 63)),
-                        (t[s++] = 128 | ((n >>> 6) & 63)),
-                        (t[s++] = 128 | (63 & n)));
+                        ? ((t[s++] = 192 | (n >>> 6)),
+                          (t[s++] = 128 | (63 & n)))
+                        : n < 65536
+                          ? ((t[s++] = 224 | (n >>> 12)),
+                            (t[s++] = 128 | ((n >>> 6) & 63)),
+                            (t[s++] = 128 | (63 & n)))
+                          : ((t[s++] = 240 | (n >>> 18)),
+                            (t[s++] = 128 | ((n >>> 12) & 63)),
+                            (t[s++] = 128 | ((n >>> 6) & 63)),
+                            (t[s++] = 128 | (63 & n)));
                 return t;
               }),
               (n.buf2binstring = function (e) {
@@ -1101,10 +1103,10 @@ function createUnityInstance(e, t, n) {
                     s > 1
                       ? (l[a++] = 65533)
                       : i < 65536
-                      ? (l[a++] = i)
-                      : ((i -= 65536),
-                        (l[a++] = 55296 | ((i >> 10) & 1023)),
-                        (l[a++] = 56320 | (1023 & i)));
+                        ? (l[a++] = i)
+                        : ((i -= 65536),
+                          (l[a++] = 55296 | ((i >> 10) & 1023)),
+                          (l[a++] = 56320 | (1023 & i)));
                   }
                 return r(l, a);
               }),
@@ -1724,7 +1726,7 @@ function createUnityInstance(e, t, n) {
                         n.distcode,
                         0,
                         n.work,
-                        Ee
+                        Ee,
                       )),
                       (n.distbits = Ee.bits),
                       _e)
@@ -1993,11 +1995,11 @@ function createUnityInstance(e, t, n) {
                   0 !== n.wrap && n.mode !== X
                     ? N
                     : n.mode === X &&
-                      ((r = 1), (r = v(r, t, i, 0)), r !== n.check)
-                    ? A
-                    : (a = c(e, t, i, i))
-                    ? ((n.mode = he), I)
-                    : ((n.havedict = 1), L))
+                        ((r = 1), (r = v(r, t, i, 0)), r !== n.check)
+                      ? A
+                      : (a = c(e, t, i, i))
+                        ? ((n.mode = he), I)
+                        : ((n.havedict = 1), L))
                 : N;
             }
             var m,
@@ -2438,8 +2440,8 @@ function createUnityInstance(e, t, n) {
                 (e === o
                   ? ((D = j = w), (E = 19))
                   : e === d
-                  ? ((D = u), (Z -= 257), (j = c), (P -= 257), (E = 256))
-                  : ((D = f), (j = h), (E = -1)),
+                    ? ((D = u), (Z -= 257), (j = c), (P -= 257), (E = 256))
+                    : ((D = f), (j = h), (E = -1)),
                 (H = 0),
                 (W = 0),
                 (L = B),
@@ -2457,8 +2459,8 @@ function createUnityInstance(e, t, n) {
                   w[W] < E
                     ? ((O = 0), (C = w[W]))
                     : w[W] > E
-                    ? ((O = j[P + w[W]]), (C = D[Z + w[W]]))
-                    : ((O = 96), (C = 0)),
+                      ? ((O = j[P + w[W]]), (C = D[Z + w[W]]))
+                      : ((O = 96), (C = 0)),
                   (v = 1 << (L - U)),
                   (y = 1 << I),
                   (B = y);
@@ -2516,10 +2518,10 @@ function createUnityInstance(e, t, n) {
             var n = t.match(/^\//)
               ? null
               : e
-              ? t.match(/^\.\.?\//)
-                ? r(e.folder + t)
-                : a(e, t)
-              : r(t);
+                ? t.match(/^\.\.?\//)
+                  ? r(e.folder + t)
+                  : a(e, t)
+                : r(t);
             if (!n) throw "module not found: " + t;
             return (
               n.exports ||
@@ -2562,7 +2564,7 @@ function createUnityInstance(e, t, n) {
       ? u.SystemInfo.hasWasm
         ? (1 == u.SystemInfo.hasWebGL &&
             u.print(
-              'Warning: Your browser does not support "WebGL 2.0" Graphics API, switching to "WebGL 1.0"'
+              'Warning: Your browser does not support "WebGL 2.0" Graphics API, switching to "WebGL 1.0"',
             ),
           (u.startupErrorHandler = t),
           n(0),

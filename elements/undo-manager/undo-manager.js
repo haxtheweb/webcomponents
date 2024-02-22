@@ -118,7 +118,7 @@ const UndoManagerBehaviors = function (SuperClass) {
         this.undoStackInitialValue != newValue
       ) {
         this.undoStack.execute(
-          new UndoManagerCommand(this, this.undoStackPrevValue, newValue)
+          new UndoManagerCommand(this, this.undoStackPrevValue, newValue),
         );
         this.undoStackPrevValue = newValue;
         // we only notify there WAS a change
@@ -129,7 +129,7 @@ const UndoManagerBehaviors = function (SuperClass) {
             },
             bubbles: true,
             composed: true,
-          })
+          }),
         );
       }
     }
@@ -178,7 +178,7 @@ const UndoManagerBehaviors = function (SuperClass) {
               },
               bubbles: true,
               composed: true,
-            })
+            }),
           );
         }
         if (propName == "canRedo") {
@@ -190,7 +190,7 @@ const UndoManagerBehaviors = function (SuperClass) {
               },
               bubbles: true,
               composed: true,
-            })
+            }),
           );
         }
       });

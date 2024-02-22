@@ -186,7 +186,7 @@ const utils = new StorybookUtilities(),
 export const SimpleIconsetStory = () => {
   return utils.getDemo(
     `<simple-iconset-demo></simple-iconset-demo>`,
-    `<p>The following is a full list of simple-iconset:</p>`
+    `<p>The following is a full list of simple-iconset:</p>`,
   );
 };
 
@@ -197,7 +197,7 @@ export const SimpleIconLiteStory = () => {
 export const SimpleIconButtonLiteStory = () => {
   return utils.makeElement(
     SimpleIconButtonLite,
-    utils.getKnobs(buttonliteprops, defaultslite)
+    utils.getKnobs(buttonliteprops, defaultslite),
   );
 };
 
@@ -208,6 +208,6 @@ export const SimpleIconStory = () => {
 export const SimpleIconButtonStory = () => {
   return utils.makeElement(
     SimpleIconButton,
-    utils.getKnobs(buttonprops, defaults)
+    utils.getKnobs(buttonprops, defaults),
   );
 };

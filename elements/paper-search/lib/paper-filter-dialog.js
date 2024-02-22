@@ -81,7 +81,7 @@ class PaperFilterDialog extends PolymerElement {
         // Clone selected filters, so it can be changed without touching the external property
         this._selectedFilters = Object.assign({}, this.selectedFilters);
       }.bind(this),
-      1
+      1,
     );
   }
 
@@ -109,13 +109,13 @@ class PaperFilterDialog extends PolymerElement {
         Boolean(selectedValueIds) && selectedValueIds.indexOf(value.id) >= 0
       );
     };
-    this._selectedFilterValues = this._selectedFilter.values.map(function (
-      value
-    ) {
-      return Object.assign({}, value, {
-        selected: isSelected(value),
-      });
-    });
+    this._selectedFilterValues = this._selectedFilter.values.map(
+      function (value) {
+        return Object.assign({}, value, {
+          selected: isSelected(value),
+        });
+      },
+    );
   }
   _tapReset(e) {
     this._selectedFilters = {};
@@ -129,7 +129,7 @@ class PaperFilterDialog extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
   _tapSelectValues(e) {

@@ -363,6 +363,6 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionDisplay.tag,
-  LrnappStudioSubmissionDisplay
+  LrnappStudioSubmissionDisplay,
 );
 export { LrnappStudioSubmissionDisplay };

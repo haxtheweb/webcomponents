@@ -335,7 +335,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
         globalThis.history.pushState(
           {},
           "",
-          decodeURIComponent(`./x/views?${params}`)
+          decodeURIComponent(`./x/views?${params}`),
         );
         this.search = `?${decodeURIComponent(params)}`;
       }
@@ -440,7 +440,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
           globalThis.history.replaceState(
             {},
             "",
-            decodeURIComponent(`./x/views?${rawParams}`)
+            decodeURIComponent(`./x/views?${rawParams}`),
           );
         }
       }

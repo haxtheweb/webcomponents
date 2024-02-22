@@ -10,7 +10,7 @@ describe("lunr-search test", () => {
         data-source="${new URL("../demo/lunrSearchIndex.json", import.meta.url)
           .href}"
         demo
-      ></lunr-search>`
+      ></lunr-search>`,
     );
   });
 

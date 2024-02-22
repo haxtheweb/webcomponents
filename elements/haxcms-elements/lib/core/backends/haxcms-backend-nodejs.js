@@ -106,7 +106,7 @@ class HAXCMSBackendNodeJS extends LitElement {
             composed: true,
             cancelable: false,
             detail: this,
-          })
+          }),
         );
       }
     }, 500);

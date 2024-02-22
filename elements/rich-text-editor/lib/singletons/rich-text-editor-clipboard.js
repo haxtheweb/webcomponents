@@ -92,7 +92,7 @@ globalThis.RichTextEditorClipboard.requestAvailability = () => {
     globalThis.RichTextEditorClipboard.instance =
       globalThis.document.createElement("rich-text-editor-clipboard");
     globalThis.document.body.appendChild(
-      globalThis.RichTextEditorClipboard.instance
+      globalThis.RichTextEditorClipboard.instance,
     );
   }
   return globalThis.RichTextEditorClipboard.instance;

@@ -48,13 +48,13 @@ class PouchDb extends HTMLElement {
     window.addEventListener(
       "user-engagement",
       this.userEngagmentFunction.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
 
     window.addEventListener(
       "pouch-db-get-data",
       this.getDataFunction.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 
@@ -161,7 +161,7 @@ class PouchDb extends HTMLElement {
       { include_docs: true, descending: true },
       function (err, doc) {
         console.log(doc.rows);
-      }
+      },
     );
     //display for testing only - move to own elements
   }
@@ -249,17 +249,17 @@ class PouchDb extends HTMLElement {
                     composed: true,
                     cancelable: false,
                     detail: queryData,
-                  })
+                  }),
                 );
-              }
+              },
               // end of display function
             );
             //end of processItems
-          }
+          },
           // end of displayxAPI function
         );
         //end of processxAPI
-      }
+      },
     );
     //end of this.db.allDocs
   }

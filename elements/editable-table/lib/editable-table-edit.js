@@ -92,12 +92,15 @@ class EditableTableEdit extends editBehaviors(DDD) {
         caption,
         .th-or-td {
           border: var(--ddd-border-xs);
-          border-color: var(--ddd-theme-polaris-limestoneGray);
+          border-color: var(--ddd-theme-default-limestoneGray);
         }
         label,
         .label {
           color: var(--editable-table-secondary-text-color, #444);
-          font-size: var(--editable-table-secondary-font-size, var(--ddd-font-size-4xs));
+          font-size: var(
+            --editable-table-secondary-font-size,
+            var(--ddd-font-size-4xs)
+          );
           font-family: var(
             --editable-table-secondary-font-family,
             var(--ddd-font-primary)
@@ -181,7 +184,10 @@ class EditableTableEdit extends editBehaviors(DDD) {
         }
         rich-text-editor {
           margin-bottom: 1px;
-          padding: var(--editable-table-cell-vertical-padding, var(--ddd-spacing-3))
+          padding: var(
+              --editable-table-cell-vertical-padding,
+              var(--ddd-spacing-3)
+            )
             var(--editable-table-cell-horizontal-padding, var(--ddd-spacing-2));
           border: none !important;
           margin-right: var(--ddd-spacing-6);
@@ -591,12 +597,12 @@ class EditableTableEdit extends editBehaviors(DDD) {
         class="tr ${rowIndex == 0 && this.columnHeader
           ? "thead-tr"
           : rowIndex == this.data.length - 1 && this.footer
-          ? "tfoot-tr"
-          : "tbody-tr"}"
+            ? "tfoot-tr"
+            : "tbody-tr"}"
       >
         <th scope="row">${this.rowMenuButton(rowIndex)}</th>
         ${(rowData || []).map((cellData, colIndex) =>
-          this.editableCell(rowIndex, colIndex, cellData)
+          this.editableCell(rowIndex, colIndex, cellData),
         )}
       </tr>
     `;
@@ -758,7 +764,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         detail: {
           editor: this,
         },
-      })
+      }),
     );
   }
 
@@ -832,7 +838,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
           data: this.data,
           colNum: index,
         },
-      })
+      }),
     );
   }
 
@@ -861,7 +867,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
           data: this.data,
           rowNum: index,
         },
-      })
+      }),
     );
   }
   /**
@@ -890,7 +896,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
           data: this.data,
           colNum: index,
         },
-      })
+      }),
     );
   }
 
@@ -922,7 +928,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
           data: this.data,
           rowNum: index,
         },
-      })
+      }),
     );
   }
 
@@ -948,7 +954,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
           rowNum: row,
           colNum: col,
         },
-      })
+      }),
     );
   }
 
@@ -997,7 +1003,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
           editor: this,
           caption: this.caption,
         },
-      })
+      }),
     );
   }
 
@@ -1035,7 +1041,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         composed: true,
         cancelable: false,
         detail: prop,
-      })
+      }),
     );
   }
 

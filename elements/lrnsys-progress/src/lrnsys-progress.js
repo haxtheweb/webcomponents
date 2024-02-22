@@ -23,11 +23,11 @@ class LrnsysProgress extends PolymerElement {
     super();
     this.completeSound = new URL(
       "./lib/assets/complete.mp3",
-      import.meta.url
+      import.meta.url,
     ).href;
     this.finishedSound = new URL(
       "./lib/assets/finished.mp3",
-      import.meta.url
+      import.meta.url,
     ).href;
   }
   static get template() {
@@ -160,18 +160,18 @@ class LrnsysProgress extends PolymerElement {
     super.connectedCallback();
     this.addEventListener(
       "node-is-active",
-      this._bubbleUpChangeActive.bind(this)
+      this._bubbleUpChangeActive.bind(this),
     );
     this.addEventListener("node-status-change", this._statusChanged.bind(this));
   }
   disconnectedCallback() {
     this.removeEventListener(
       "node-is-active",
-      this._bubbleUpChangeActive.bind(this)
+      this._bubbleUpChangeActive.bind(this),
     );
     this.removeEventListener(
       "node-status-change",
-      this._statusChanged.bind(this)
+      this._statusChanged.bind(this),
     );
     super.disconnectedCallback();
   }
@@ -382,7 +382,7 @@ class LrnsysProgress extends PolymerElement {
             state: this.state,
             active: this.items[this.active],
           },
-        })
+        }),
       );
     }
   }
@@ -442,7 +442,7 @@ class LrnsysProgress extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: { response: value },
-      })
+      }),
     );
   }
 
@@ -460,7 +460,7 @@ class LrnsysProgress extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: this.items[this.active],
-      })
+      }),
     );
   }
   /**
@@ -617,7 +617,7 @@ class LrnsysProgress extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: this.items[this.active],
-        })
+        }),
       );
     }
   }
@@ -662,7 +662,7 @@ class LrnsysProgress extends PolymerElement {
           this.items[this.active].metadata.max;
         this.set(
           "items." + this.active + ".metadata.value",
-          this.items[this.active].metadata.max
+          this.items[this.active].metadata.max,
         );
         this.notifyPath("items." + this.active + ".metadata.value");
       } else {
@@ -671,7 +671,7 @@ class LrnsysProgress extends PolymerElement {
           this.items[this.active].metadata.max;
         this.set(
           "items." + this.active + ".metadata.value",
-          this.items[this.active].metadata.max
+          this.items[this.active].metadata.max,
         );
         this.notifyPath("items." + this.active + ".metadata.value");
       }
@@ -690,7 +690,7 @@ class LrnsysProgress extends PolymerElement {
           this.items[this.active + 1].metadata.status = "loading";
           this.set(
             "items." + (this.active + 1) + ".metadata.status",
-            "loading"
+            "loading",
           );
           this.notifyPath("items." + (this.active + 1) + ".metadata.status");
         }

@@ -179,12 +179,12 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
    */
   get sortedOptions() {
     let sorted = (this.itemsList || []).map((item, i) =>
-      typeof item === "object" ? item : this.getOptionData(item, i)
+      typeof item === "object" ? item : this.getOptionData(item, i),
     );
     Object.keys(this.options || {})
       .sort((a, b) => (a > b ? 1 : -1))
       .forEach((key) =>
-        sorted.push(this.getOptionData(this.options[key], sorted.length))
+        sorted.push(this.getOptionData(this.options[key], sorted.length)),
       );
     return sorted;
   }
@@ -208,7 +208,7 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
    */
   possiblePhone(text) {
     return text.match(
-      /^(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e][X|x][T|t][\:|\.|]?)|x|X)(\s?\d+))?$/
+      /^(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e][X|x][T|t][\:|\.|]?)|x|X)(\s?\d+))?$/,
     );
   }
   /**

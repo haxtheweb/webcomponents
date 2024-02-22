@@ -5,9 +5,9 @@ import "../moar-sarcasm.js";
 describe("moar-sarcasm test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <moar-sarcasm title="test-title"></moar-sarcasm> `
-    );
+    element = await fixture(html`
+      <moar-sarcasm title="test-title"></moar-sarcasm>
+    `);
   });
 
   it("passes the a11y audit", async () => {

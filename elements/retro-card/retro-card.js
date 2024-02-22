@@ -63,8 +63,10 @@ class RetroCard extends SimpleColors {
           padding: 1.25rem;
           border: 16px var(--retro-card-level-1) solid;
           box-shadow: 16px 16px 0px 0px var(--retro-card-shadow);
-          transition: background-color 0.2s ease-in-out 0s,
-            padding 0.4s ease-in-out 0s, border 0.4s ease-in-out 0s,
+          transition:
+            background-color 0.2s ease-in-out 0s,
+            padding 0.4s ease-in-out 0s,
+            border 0.4s ease-in-out 0s,
             box-shadow 0.2s ease-in-out 0s;
         }
 
@@ -80,7 +82,9 @@ class RetroCard extends SimpleColors {
           border: 4px var(--retro-card-level-1) solid;
           padding: var(--retro-card-padding, 2rem);
           box-shadow: 8px 8px 0px 0px var(--retro-card-level-1);
-          transition: padding 0.4s ease-in-out 0s, border 0.4s ease-in-out 0s,
+          transition:
+            padding 0.4s ease-in-out 0s,
+            border 0.4s ease-in-out 0s,
             box-shadow 0.2s ease-in-out 0s;
           text-align: center;
           color: var(--retro-card-dark-color);
@@ -159,8 +163,8 @@ class RetroCard extends SimpleColors {
     return html` ${!this.nosource
       ? html`
    <a tabindex="-1" class="link ${this.color}" href="${this.url}" @click="${
-          this._clickCard
-        }">
+     this._clickCard
+   }">
      ${
        this.__source
          ? html`<img
@@ -186,7 +190,7 @@ class RetroCard extends SimpleColors {
                  (tag) =>
                    html`<span class="project-tag" part="project-tag"
                      >${tag.trim()}</span
-                   >`
+                   >`,
                )}
              </div>`
          : ``
@@ -215,7 +219,7 @@ class RetroCard extends SimpleColors {
                (tag) =>
                  html`<span class="project-tag" part="project-tag"
                    >${tag.trim()}</span
-                 >`
+                 >`,
              )}
            </div>`
        : ``

@@ -172,15 +172,15 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             containers.forEach((container) => {
               container.addEventListener(
                 "dragenter",
-                this._dragEnter.bind(this)
+                this._dragEnter.bind(this),
               );
               container.addEventListener(
                 "dragleave",
-                this._dragLeave.bind(this)
+                this._dragLeave.bind(this),
               );
             });
             slots.forEach((slot) =>
-              slot.addEventListener("slotchange", this._slotMonitor.bind(this))
+              slot.addEventListener("slotchange", this._slotMonitor.bind(this)),
             );
             this.observer = new MutationObserver((mutations) => {
               if (!this.__sorting) {
@@ -226,25 +226,25 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             containers.forEach((container) => {
               container.removeEventListener(
                 "dragenter",
-                this._dragEnter.bind(this)
+                this._dragEnter.bind(this),
               );
               container.removeEventListener(
                 "dragleave",
-                this._dragLeave.bind(this)
+                this._dragLeave.bind(this),
               );
             });
             slots.forEach((slot) =>
               slot.removeEventListener(
                 "slotchange",
-                this._slotMonitor.bind(this)
-              )
+                this._slotMonitor.bind(this),
+              ),
             );
           }
         }
         // if any of these changed, update col widths
         if (
           ["responsiveSize", "layout", "layouts", "disableResponsive"].includes(
-            propName
+            propName,
           )
         ) {
           clearTimeout(this.__calcWidthLock);
@@ -253,7 +253,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
               this.responsiveSize,
               this.layout,
               this.layouts,
-              this.disableResponsive
+              this.disableResponsive,
             );
           }, 0);
         }
@@ -269,7 +269,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             this.dispatchEvent(
               new CustomEvent("disable-responsive-changed", {
                 detail: this[propName],
-              })
+              }),
             );
             break;
         }
@@ -350,7 +350,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
           ...this.shadowRoot.querySelectorAll("[data-layout-order]"),
         ]
           .map((container) =>
-            parseInt(container.getAttribute("data-layout-order") || -1)
+            parseInt(container.getAttribute("data-layout-order") || -1),
           )
           .sort((a, b) => a - b),
         dest = order[1] + dir;
@@ -367,7 +367,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
         order = this.this._getSlotOrder(item),
         dest = order[1] + dir,
         container = this.shadowRoot.querySelector(
-          `[data-layout-order=${dest}]`
+          `[data-layout-order=${dest}]`,
         ),
         slot = container.getAttribute("data-layout-slotname");
       item.setAttribute("slot", slot);
@@ -382,7 +382,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
     validElementSlots() {
       return this.shadowRoot
         ? [...this.shadowRoot.querySelectorAll("[data-layout-order]")].map(
-            (container) => container.getAttribute("data-layout-slotname")
+            (container) => container.getAttribute("data-layout-slotname"),
           )
         : [];
     }
@@ -398,7 +398,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
           function (acc, e) {
             return acc;
           },
-          []
+          [],
         );
         // sort the children by slot id being low to high
         children = children.sort(function (a, b) {

@@ -20,8 +20,8 @@ export const SimpleSearch = () => {
       search: "Drupal",
       "data-source": `${import.meta.url.replace(
         "lunr-search.stories.js?storybook-story",
-        ""
+        "",
       )}demo/lunrSearchIndex.json`,
-    })
+    }),
   );
 };

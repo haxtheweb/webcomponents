@@ -5,9 +5,9 @@ import "../shadow-style.js";
 describe("shadow-style test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <shadow-style title="test-title"></shadow-style> `
-    );
+    element = await fixture(html`
+      <shadow-style title="test-title"></shadow-style>
+    `);
   });
 
   it("passes the a11y audit", async () => {

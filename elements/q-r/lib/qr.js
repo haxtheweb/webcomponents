@@ -445,14 +445,14 @@
               newdata.push(
                 0xe0 | (ch >> 12),
                 0x80 | ((ch >> 6) & 0x3f),
-                0x80 | (ch & 0x3f)
+                0x80 | (ch & 0x3f),
               );
             } else {
               newdata.push(
                 0xf0 | (ch >> 18),
                 0x80 | ((ch >> 12) & 0x3f),
                 0x80 | ((ch >> 6) & 0x3f),
-                0x80 | (ch & 0x3f)
+                0x80 | (ch & 0x3f),
               );
             }
           }
@@ -500,7 +500,7 @@
           pack(
             ALPHANUMERIC_MAP[data.charAt(i - 1)] * 45 +
               ALPHANUMERIC_MAP[data.charAt(i)],
-            11
+            11,
           );
         }
         if (datalen % 2 == 1) {
@@ -577,7 +577,7 @@
     var eccs = [];
     for (var i = 0; i < nblocks; ++i) {
       eccs.push(
-        calculateecc(poly.slice(subsizes[i], subsizes[i + 1]), genpoly)
+        calculateecc(poly.slice(subsizes[i], subsizes[i + 1]), genpoly),
       );
     }
 
@@ -649,7 +649,7 @@
       n - 8,
       9,
       8,
-      [0xfe, 0x82, 0xba, 0xba, 0xba, 0x82, 0xfe, 0x00, 0x00]
+      [0xfe, 0x82, 0xba, 0xba, 0xba, 0x82, 0xfe, 0x00, 0x00],
     );
 
     // the rest of timing patterns
@@ -1003,7 +1003,7 @@
               modsize +
               "px" +
               (matrix[i][j] ? ";background:#000" : "") +
-              '"></td>'
+              '"></td>',
           );
         }
         html.push("</tr>");
@@ -1026,7 +1026,7 @@
 
       var e = globalThis.document.createElementNS(
         "http://www.w3.org/2000/svg",
-        "svg"
+        "svg",
       );
       e.setAttribute("viewBox", "0 0 " + size + " " + size);
       e.setAttribute("style", "shape-rendering:crispEdges");
@@ -1079,7 +1079,7 @@
               modsize * (margin + j),
               modsize * (margin + i),
               modsize,
-              modsize
+              modsize,
             );
           }
         }

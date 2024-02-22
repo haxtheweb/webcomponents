@@ -50,9 +50,9 @@ class ResponsiveUtility extends LitElement {
           detail,
           e.contentBoxSize || e.borderBoxSize || e.contentRect || e.target
             ? e.target.offsetWidth
-            : 0
-        )
-      )
+            : 0,
+        ),
+      ),
     );
   }
   /**
@@ -87,13 +87,13 @@ class ResponsiveUtility extends LitElement {
     this.details = [];
     globalThis.addEventListener(
       "responsive-element",
-      this.responiveElementEvent.bind(this)
+      this.responiveElementEvent.bind(this),
     );
 
     /* handle element deregistration */
     globalThis.addEventListener(
       "delete-responsive-element",
-      this.deleteResponiveElementEvent.bind(this)
+      this.deleteResponiveElementEvent.bind(this),
     );
     if (globalThis.ResponsiveUtility.instance == null)
       globalThis.ResponsiveUtility.instance = this;

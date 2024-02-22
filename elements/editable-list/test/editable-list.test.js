@@ -5,9 +5,9 @@ import "../editable-list.js";
 describe("editable-list test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <editable-list title="test-title"></editable-list> `
-    );
+    element = await fixture(html`
+      <editable-list title="test-title"></editable-list>
+    `);
   });
 
   it("passes the a11y audit", async () => {

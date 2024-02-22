@@ -89,8 +89,10 @@ class ElmslnStudioSubmissionCard extends LitElement {
         [slot="feature"] {
           margin-top: var(--elmsln-studio-margin, 20px);
           height: calc(
-            var(--accent-card-image-height, 200px) -
-              var(--elmsln-studio-margin, 20px)
+            var(--accent-card-image-height, 200px) - var(
+                --elmsln-studio-margin,
+                20px
+              )
           );
           overflow: auto;
         }
@@ -190,6 +192,6 @@ class ElmslnStudioSubmissionCard extends LitElement {
 }
 customElements.define(
   "elmsln-studio-submission-card",
-  ElmslnStudioSubmissionCard
+  ElmslnStudioSubmissionCard,
 );
 export { ElmslnStudioSubmissionCard };

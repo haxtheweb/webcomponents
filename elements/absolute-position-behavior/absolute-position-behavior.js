@@ -196,7 +196,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
     setPosition() {
       this.__observe = true;
       window.AbsolutePositionStateManager.requestAvailability().loadElement(
-        this
+        this,
       );
     }
 
@@ -207,7 +207,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
     unsetPosition() {
       this.__observe = false;
       window.AbsolutePositionStateManager.requestAvailability().unloadElement(
-        this
+        this,
       );
     }
 
@@ -218,12 +218,12 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
     updatePosition() {
       if (!this.hidden && this.auto && this.__observe == false) {
         window.AbsolutePositionStateManager.requestAvailability().loadElement(
-          this
+          this,
         );
       }
       if (!this.auto || this.__observe === true) {
         window.AbsolutePositionStateManager.requestAvailability().positionElement(
-          this
+          this,
         );
       }
     }
@@ -245,7 +245,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
  * @element absolute-position-behavior
  */
 class AbsolutePositionBehavior extends AbsolutePositionBehaviorClass(
-  LitElement
+  LitElement,
 ) {}
 customElements.define(AbsolutePositionBehavior.tag, AbsolutePositionBehavior);
 export { AbsolutePositionBehaviorClass, AbsolutePositionBehavior };

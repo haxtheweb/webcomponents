@@ -16,7 +16,7 @@ describe("a11y-gif-player test", () => {
           src="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg"
           alt="It's Always Sunny in Philadelphia GIF Meme"
         />
-      </a11y-gif-player>`
+      </a11y-gif-player>`,
     );
   });
 

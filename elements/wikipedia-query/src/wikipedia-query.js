@@ -82,7 +82,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   updateArticle(search, headers, language) {
     fetch(
       `https://${language}.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`,
-      headers
+      headers,
     )
       .then((response) => {
         if (response.ok) return response.json();
@@ -102,7 +102,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
       }
       if (
         ["elementVisible", "search", "headers", "language"].includes(
-          propName
+          propName,
         ) &&
         this.search &&
         this.headers &&
@@ -214,7 +214,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
           localesPath: new URL(`./locales`, import.meta.url).href,
           locales: ["es", "fr"],
         },
-      })
+      }),
     );
     // ensure that this is a valid type of gizmo for endpoints
     // this is nessecary because wikipedia-query wants to be the sole
@@ -235,7 +235,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
           composed: false,
           cancelable: false,
           detail: this.haxAppDetails,
-        })
+        }),
       );
     }
   }

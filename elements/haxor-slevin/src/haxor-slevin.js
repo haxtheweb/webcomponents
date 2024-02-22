@@ -28,7 +28,7 @@ import "@polymer/iron-pages/iron-pages.js";
  * @element haxor-slevin
  */
 class HaxorSlevin extends HAXCMSRememberRoute(
-  HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementTheme))
+  HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementTheme)),
 ) {
   static get styles() {
     return [
@@ -38,7 +38,9 @@ class HaxorSlevin extends HAXCMSRememberRoute(
           display: block;
           background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
-          transition: 0.6s ease-in-out color, 0.6s ease-in-out background-color;
+          transition:
+            0.6s ease-in-out color,
+            0.6s ease-in-out background-color;
           --hax-base-styles-a-color: var(--haxcms-color, #2196f3);
           --hax-base-styles-a-color-visited: var(--haxcms-color, #2196f3);
           --hax-base-styles-a-color-active: var(--haxcms-color, #2196f3);
@@ -116,7 +118,9 @@ class HaxorSlevin extends HAXCMSRememberRoute(
           opacity: 0.9;
           -webkit-filter: saturate(30%);
           filter: saturate(30%);
-          transition: 0.3s ease-in-out opacity, 0.3s ease-in-out filter;
+          transition:
+            0.3s ease-in-out opacity,
+            0.3s ease-in-out filter;
           cursor: pointer;
         }
         .article-link:nth-of-type(1) {
@@ -343,29 +347,30 @@ class HaxorSlevin extends HAXCMSRememberRoute(
               sort='{"created": "ASC"}'
             ></site-query>
             ${this.__mainPosts.map(
-              (post) => html` <a class="article-link" href="${post.slug}">
-                <accent-card
-                  image-align="center"
-                  image-valign="top"
-                  accent-background
-                  accent-color="${this.color}"
-                  accent-heading
-                  horizontal
-                  image-src="${post.metadata && post.metadata.image
-                    ? post.metadata.image
-                    : this.image}"
-                >
-                  <div slot="heading"><span>${post.title}</span></div>
-                  <p slot="content">
-                    <date-chip
-                      unix
-                      timestamp="${post.metadata.created}"
-                      accent-color="${this.color}"
-                    ></date-chip>
-                    ${post.description}
-                  </p>
-                </accent-card></a
-              >`
+              (post) =>
+                html` <a class="article-link" href="${post.slug}">
+                  <accent-card
+                    image-align="center"
+                    image-valign="top"
+                    accent-background
+                    accent-color="${this.color}"
+                    accent-heading
+                    horizontal
+                    image-src="${post.metadata && post.metadata.image
+                      ? post.metadata.image
+                      : this.image}"
+                  >
+                    <div slot="heading"><span>${post.title}</span></div>
+                    <p slot="content">
+                      <date-chip
+                        unix
+                        timestamp="${post.metadata.created}"
+                        accent-color="${this.color}"
+                      ></date-chip>
+                      ${post.description}
+                    </p>
+                  </accent-card></a
+                >`,
             )}
             <site-region name="footerPrimary"></site-region>
           </div>
@@ -421,7 +426,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
                     </div>
                   </accent-card></a
                 >
-              `
+              `,
             )}
             <nav class="social-float hide-small ${this.stateClass}">
               <ul>
@@ -664,12 +669,12 @@ class HaxorSlevin extends HAXCMSRememberRoute(
       this.image = varGet(
         manifest,
         "metadata.theme.variables.image",
-        "assets/banner.jpg"
+        "assets/banner.jpg",
       );
       this.icon = varGet(
         manifest,
         "metadata.theme.variables.icon",
-        "icons:record-voice-over"
+        "icons:record-voice-over",
       );
       this.author = varGet(manifest, "metadata.author", {});
       this.__disposer.push(reaction);

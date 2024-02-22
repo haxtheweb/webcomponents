@@ -1264,7 +1264,7 @@ const ChartistRenderSuper = function (SuperClass) {
       this._loadScripts(
         "chartistLib",
         "lib/chartist/dist/chartist.min.js",
-        this._chartistLoaded
+        this._chartistLoaded,
       );
       this._updateData();
       this.observer.observe(this, {
@@ -1284,7 +1284,7 @@ const ChartistRenderSuper = function (SuperClass) {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
       if (typeof Chartist === "object") this._chartistLoaded.bind(this);
     }
@@ -1344,7 +1344,7 @@ const ChartistRenderSuper = function (SuperClass) {
           this.dispatchEvent(
             new CustomEvent("chart-data-changed", {
               detail: this,
-            })
+            }),
           );
           this._getChart();
         } else if (propName === "dataSource" && this.dataSource !== oldValue) {
@@ -1355,7 +1355,7 @@ const ChartistRenderSuper = function (SuperClass) {
           this.dispatchEvent(
             new CustomEvent("data-source-changed", {
               detail: this,
-            })
+            }),
           );
           if (this.dataSource !== "")
             fetch(this.dataSource)
@@ -1372,7 +1372,7 @@ const ChartistRenderSuper = function (SuperClass) {
           this.dispatchEvent(
             new CustomEvent("data-changed", {
               detail: this,
-            })
+            }),
           );
           this._renderTable();
           this._updateChartData();
@@ -1465,7 +1465,7 @@ const ChartistRenderSuper = function (SuperClass) {
           Chartist.plugins.ctAxisTitle
         ) {
           options.plugins.push(
-            Chartist.plugins.ctAxisTitle(this.pluginAxisTitle)
+            Chartist.plugins.ctAxisTitle(this.pluginAxisTitle),
           );
         }
         if (
@@ -1476,7 +1476,7 @@ const ChartistRenderSuper = function (SuperClass) {
           if (!this.pluginPointLabels.labelInterpolationFnc)
             this.pluginPointLabels.labelInterpolationFnc = Chartist.noop;
           options.plugins.push(
-            Chartist.plugins.ctPointLabels(this.pluginPointLabels)
+            Chartist.plugins.ctPointLabels(this.pluginPointLabels),
           );
         }
         if (
@@ -1486,7 +1486,7 @@ const ChartistRenderSuper = function (SuperClass) {
           Chartist.plugins.fillDonut
         ) {
           options.plugins.push(
-            Chartist.plugins.fillDonut({ items: this.pluginFillDonutItems })
+            Chartist.plugins.fillDonut({ items: this.pluginFillDonutItems }),
           );
         }
       }
@@ -1527,14 +1527,14 @@ const ChartistRenderSuper = function (SuperClass) {
             target,
             this.chartData,
             this.fullOptions,
-            this.responsiveOptions
+            this.responsiveOptions,
           );
         } else if (this.type === "line") {
           chart = Chartist.Line(
             target,
             this.chartData,
             this.fullOptions,
-            this.responsiveOptions
+            this.responsiveOptions,
           );
         } else if (this.type === "pie") {
           chart = Chartist.Pie(
@@ -1544,7 +1544,7 @@ const ChartistRenderSuper = function (SuperClass) {
               series: this.chartData.series || [],
             },
             this.fullOptions,
-            this.responsiveOptions
+            this.responsiveOptions,
           );
         }
         /**
@@ -1559,7 +1559,7 @@ const ChartistRenderSuper = function (SuperClass) {
             cancelable: true,
             composed: true,
             detail: chart,
-          })
+          }),
         );
         if (chart) {
           chart.on("created", (e) => {
@@ -1575,7 +1575,7 @@ const ChartistRenderSuper = function (SuperClass) {
                 cancelable: true,
                 composed: true,
                 detail: e,
-              })
+              }),
             );
           });
           chart.on("draw", (e) => {
@@ -1591,7 +1591,7 @@ const ChartistRenderSuper = function (SuperClass) {
                 cancelable: true,
                 composed: true,
                 detail: e,
-              })
+              }),
             );
           });
           this.chart = chart;
@@ -1644,7 +1644,7 @@ const ChartistRenderSuper = function (SuperClass) {
                 .map((row) =>
                   rowHeads
                     ? { th: row[0], td: row.slice(1, row.length) }
-                    : { td: row }
+                    : { td: row },
                 );
         if (!thead && data.labels) {
           thead = data.labels;
@@ -1670,7 +1670,7 @@ const ChartistRenderSuper = function (SuperClass) {
                  ${tr.th ? `<th scope="row">${tr.th}</th>` : ``}
                  ${tr.td ? tr.td.map((td) => `<td>${td}</td>`).join("") : ``}
                </tr>
-             `
+             `,
                )
                .join("")}
            </tbody>`;

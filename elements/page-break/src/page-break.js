@@ -20,7 +20,7 @@ import { pageBreakManager } from "./lib/page-break-manager.js";
  * @element page-break
  */
 export class PageBreak extends IntersectionObserverMixin(
-  I18NMixin(SchemaBehaviors(DDD))
+  I18NMixin(SchemaBehaviors(DDD)),
 ) {
   static get tag() {
     return "page-break";
@@ -30,7 +30,7 @@ export class PageBreak extends IntersectionObserverMixin(
     this.relatedItems = null;
     this.icon = null;
     this.color = null;
-    this.entityType = 'page';
+    this.entityType = "page";
     this.status = "";
     this.t = {
       newPage: "New page",
@@ -118,7 +118,7 @@ export class PageBreak extends IntersectionObserverMixin(
         this.nextElementSibling &&
         this.nextElementSibling.tagName &&
         ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
-          this.nextElementSibling.tagName
+          this.nextElementSibling.tagName,
         )
       ) {
         this.title = this.nextElementSibling.innerText;
@@ -134,7 +134,7 @@ export class PageBreak extends IntersectionObserverMixin(
               this.nextElementSibling &&
               this.nextElementSibling.tagName &&
               ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
-                this.nextElementSibling.tagName
+                this.nextElementSibling.tagName,
               )
             ) {
               this.title = this.nextElementSibling.innerText;
@@ -164,7 +164,7 @@ export class PageBreak extends IntersectionObserverMixin(
           value: this,
           action: "add",
         },
-      })
+      }),
     );
     window.dispatchEvent(
       new CustomEvent("page-break-change", {
@@ -174,7 +174,7 @@ export class PageBreak extends IntersectionObserverMixin(
         detail: {
           value: this,
         },
-      })
+      }),
     );
   }
   disconnectedCallback() {
@@ -184,7 +184,7 @@ export class PageBreak extends IntersectionObserverMixin(
           value: this,
           action: "remove",
         },
-      })
+      }),
     );
     window.dispatchEvent(
       new CustomEvent("page-break-change", {
@@ -194,7 +194,7 @@ export class PageBreak extends IntersectionObserverMixin(
         detail: {
           value: this,
         },
-      })
+      }),
     );
     this.remoteHeadingobserver.disconnect();
     super.disconnectedCallback();
@@ -269,7 +269,7 @@ export class PageBreak extends IntersectionObserverMixin(
             detail: {
               value: this,
             },
-          })
+          }),
         );
       }
       // while the most common, only do these when we have a target
@@ -293,7 +293,7 @@ export class PageBreak extends IntersectionObserverMixin(
               let tagNumber =
                 (el.getAttribute("data-original-level")
                   ? new Number(
-                      el.getAttribute("data-original-level").replace("H", "")
+                      el.getAttribute("data-original-level").replace("H", ""),
                     )
                   : new Number(el.tagName.replace("H", ""))) + this.depth;
               tagNumber = tagNumber > 6 ? 6 : tagNumber;
@@ -302,7 +302,7 @@ export class PageBreak extends IntersectionObserverMixin(
               for (var i = 0, l = el.attributes.length; i < l; ++i) {
                 newH.setAttribute(
                   el.attributes.item(i).nodeName,
-                  el.attributes.item(i).nodeValue
+                  el.attributes.item(i).nodeValue,
                 );
               }
               newH.innerHTML = el.innerHTML;
@@ -319,13 +319,13 @@ export class PageBreak extends IntersectionObserverMixin(
               .forEach((el) => {
                 if (el.getAttribute("data-original-level")) {
                   let tagNumber = new Number(
-                    el.getAttribute("data-original-level").replace("H", "")
+                    el.getAttribute("data-original-level").replace("H", ""),
                   );
                   const newH = document.createElement(`h${tagNumber}`);
                   for (var i = 0, l = el.attributes.length; i < l; ++i) {
                     newH.setAttribute(
                       el.attributes.item(i).nodeName,
-                      el.attributes.item(i).nodeValue
+                      el.attributes.item(i).nodeValue,
                     );
                   }
                   newH.innerHTML = el.innerHTML;
@@ -340,7 +340,7 @@ export class PageBreak extends IntersectionObserverMixin(
                 let tagNumber =
                   (el.getAttribute("data-original-level")
                     ? new Number(
-                        el.getAttribute("data-original-level").replace("H", "")
+                        el.getAttribute("data-original-level").replace("H", ""),
                       )
                     : new Number(el.tagName.replace("H", ""))) + this.depth;
                 tagNumber = tagNumber > 6 ? 6 : tagNumber;
@@ -349,7 +349,7 @@ export class PageBreak extends IntersectionObserverMixin(
                 for (var i = 0, l = el.attributes.length; i < l; ++i) {
                   newH.setAttribute(
                     el.attributes.item(i).nodeName,
-                    el.attributes.item(i).nodeValue
+                    el.attributes.item(i).nodeValue,
                   );
                 }
                 newH.innerHTML = el.innerHTML;
@@ -397,7 +397,9 @@ export class PageBreak extends IntersectionObserverMixin(
           opacity: 0.2;
           background-position: center;
           background-repeat: no-repeat;
-          transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+          transition:
+            opacity 0.3s ease-in-out,
+            visibility 0.3s ease-in-out;
         }
         .mid {
           border: none;

@@ -118,7 +118,7 @@
           e,
           t,
           n,
-          r
+          r,
         );
       }
       return n[o].exports;
@@ -140,8 +140,8 @@
                 new Error(
                   "could not open external image: '" +
                     uri +
-                    "'\ncannot open linked files from a web browser"
-                )
+                    "'\ncannot open linked files from a web browser",
+                ),
               );
             }
 
@@ -162,11 +162,11 @@
           function openZip(options) {
             if (options.arrayBuffer) {
               return promises.resolve(
-                zipfile.openArrayBuffer(options.arrayBuffer)
+                zipfile.openArrayBuffer(options.arrayBuffer),
               );
             } else {
               return promises.reject(
-                new Error("Could not find file in options")
+                new Error("Could not find file in options"),
               );
             }
           }
@@ -194,7 +194,7 @@
                   element.type === documents.types.document
                     ? element.comments
                     : [],
-                  "commentId"
+                  "commentId",
                 );
                 var conversion = new DocumentConversion(options, comments);
                 return conversion.convertToHtml(element);
@@ -284,7 +284,7 @@
                 var content = convertElements(
                   element.children,
                   messages,
-                  options
+                  options,
                 );
                 if (ignoreEmptyParagraphs) {
                   return content;
@@ -438,18 +438,18 @@
                 children = convertElements(
                   element.children,
                   messages,
-                  _.extend({}, options, { isTableHeader: false })
+                  _.extend({}, options, { isTableHeader: false }),
                 );
               } else {
                 var headRows = convertElements(
                   element.children.slice(0, bodyIndex),
                   messages,
-                  _.extend({}, options, { isTableHeader: true })
+                  _.extend({}, options, { isTableHeader: true }),
                 );
                 var bodyRows = convertElements(
                   element.children.slice(bodyIndex),
                   messages,
-                  _.extend({}, options, { isTableHeader: false })
+                  _.extend({}, options, { isTableHeader: false }),
                 );
                 children = [
                   Html.freshElement("thead", {}, headRows),
@@ -463,7 +463,7 @@
               var children = convertElements(
                 element.children,
                 messages,
-                options
+                options,
               );
               return [
                 Html.freshElement("tr", {}, [Html.forceWrite].concat(children)),
@@ -475,7 +475,7 @@
               var children = convertElements(
                 element.children,
                 messages,
-                options
+                options,
               );
               var attributes = {};
               if (element.colSpan !== 1) {
@@ -489,7 +489,7 @@
                 Html.freshElement(
                   tagName,
                   attributes,
-                  [Html.forceWrite].concat(children)
+                  [Html.forceWrite].concat(children),
                 ),
               ];
             }
@@ -510,10 +510,10 @@
                           "#" + referentHtmlId("comment", reference.commentId),
                         id: referenceHtmlId("comment", reference.commentId),
                       },
-                      [Html.text(label)]
+                      [Html.text(label)],
                     ),
                   ];
-                }
+                },
               );
             }
 
@@ -525,7 +525,7 @@
               var body = convertElements(
                 comment.body,
                 messages,
-                options
+                options,
               ).concat([
                 Html.nonFreshElement("p", {}, [
                   Html.text(" "),
@@ -534,7 +534,7 @@
                     {
                       href: "#" + referenceHtmlId("comment", comment.commentId),
                     },
-                    [Html.text("↑")]
+                    [Html.text("↑")],
                   ),
                 ]),
               ]);
@@ -543,7 +543,7 @@
                 Html.freshElement(
                   "dt",
                   { id: referentHtmlId("comment", comment.commentId) },
-                  [Html.text("Comment " + label)]
+                  [Html.text("Comment " + label)],
                 ),
                 Html.freshElement("dd", {}, body),
               ];
@@ -571,7 +571,7 @@
                 var children = convertElements(
                   globalThis.document.children,
                   messages,
-                  options
+                  options,
                 );
                 var notes = noteReferences.map(function (noteReference) {
                   return globalThis.document.notes.resolve(noteReference);
@@ -586,9 +586,9 @@
                       return convertComment(
                         referencedComment,
                         messages,
-                        options
+                        options,
                       );
-                    })
+                    }),
                   ),
                 ]);
               },
@@ -612,7 +612,7 @@
                 var children = convertElements(
                   element.children,
                   messages,
-                  options
+                  options,
                 );
                 return [Html.nonFreshElement("a", attributes, children)];
               },
@@ -622,7 +622,7 @@
                   {
                     id: htmlId(element.name),
                   },
-                  [Html.forceWrite]
+                  [Html.forceWrite],
                 );
                 return [anchor];
               },
@@ -634,7 +634,7 @@
                     href: "#" + noteHtmlId(element),
                     id: noteRefHtmlId(element),
                   },
-                  [Html.text("[" + noteNumber++ + "]")]
+                  [Html.text("[" + noteNumber++ + "]")],
                 );
 
                 return [Html.freshElement("sup", {}, [anchor])];
@@ -648,22 +648,22 @@
                     Html.freshElement(
                       "a",
                       { href: "#" + noteRefHtmlId(element) },
-                      [Html.text("↑")]
+                      [Html.text("↑")],
                     ),
-                  ]
+                  ],
                 );
                 var body = children.concat([backLink]);
 
                 return Html.freshElement(
                   "li",
                   { id: noteHtmlId(element) },
-                  body
+                  body,
                 );
               },
               commentReference: convertCommentReference,
               comment: convertComment,
               image: deferredConversion(
-                recoveringConvertImage(options.convertImage || images.dataUri)
+                recoveringConvertImage(options.convertImage || images.dataUri),
               ),
               table: convertTable,
               tableRow: convertTableRow,
@@ -700,7 +700,7 @@
                 "'" +
                 " (Style ID: " +
                 element.styleId +
-                ")"
+                ")",
             );
           }
 
@@ -850,7 +850,7 @@
 
           Notes.prototype.resolve = function (reference) {
             return this.findNoteByKey(
-              noteKey(reference.noteType, reference.noteId)
+              noteKey(reference.noteType, reference.noteId),
             );
           };
 
@@ -1011,11 +1011,11 @@
                 } else if (
                   !Object.prototype.hasOwnProperty.call(
                     ignoreElements,
-                    element.name
+                    element.name,
                   )
                 ) {
                   var message = warning(
-                    "An unrecognised element was ignored: " + element.name
+                    "An unrecognised element was ignored: " + element.name,
                   );
                   return emptyResultWithMessages([message]);
                 }
@@ -1055,7 +1055,7 @@
                   isUnderline: readUnderline(element.first("w:u")),
                   isItalic: readBooleanElement(element.first("w:i")),
                   isStrikethrough: readBooleanElement(
-                    element.first("w:strike")
+                    element.first("w:strike"),
                   ),
                   isAllCaps: readBooleanElement(element.first("w:caps")),
                   isSmallCaps: readBooleanElement(element.first("w:smallCaps")),
@@ -1086,7 +1086,7 @@
                 element,
                 "w:pStyle",
                 "Paragraph",
-                styles.findParagraphStyleById
+                styles.findParagraphStyleById,
               );
             }
 
@@ -1095,7 +1095,7 @@
                 element,
                 "w:rStyle",
                 "Run",
-                styles.findCharacterStyleById
+                styles.findCharacterStyleById,
               );
             }
 
@@ -1104,7 +1104,7 @@
                 element,
                 "w:tblStyle",
                 "Table",
-                styles.findTableStyleById
+                styles.findTableStyleById,
               );
             }
 
@@ -1112,7 +1112,7 @@
               element,
               styleTagName,
               styleType,
-              findStyleById
+              findStyleById,
             ) {
               var messages = [];
               var styleElement = element.first(styleTagName);
@@ -1131,7 +1131,7 @@
               }
               return elementResultWithMessages(
                 { styleId: styleId, name: name },
-                messages
+                messages,
               );
             }
 
@@ -1146,7 +1146,7 @@
                 complexFieldStack.pop();
               } else if (type === "separate") {
                 var hyperlinkOptions = parseHyperlinkFieldCode(
-                  currentInstrText.join("")
+                  currentInstrText.join(""),
                 );
                 var complexField =
                   hyperlinkOptions === null
@@ -1162,7 +1162,7 @@
               var topHyperlink = _.last(
                 complexFieldStack.filter(function (complexField) {
                   return complexField.type === "hyperlink";
-                })
+                }),
               );
               return topHyperlink ? topHyperlink.options : null;
             }
@@ -1194,7 +1194,7 @@
               if (unicodeCharacter == null && /^F0..$/.test(char)) {
                 unicodeCharacter = dingbatToUnicode.hex(
                   font,
-                  char.substring(2)
+                  char.substring(2),
                 );
               }
 
@@ -1204,12 +1204,12 @@
                     "A w:sym element with an unsupported character was ignored: char " +
                       char +
                       " in font " +
-                      font
+                      font,
                   ),
                 ]);
               } else {
                 return elementResult(
-                  new documents.Text(unicodeCharacter.string)
+                  new documents.Text(unicodeCharacter.string),
                 );
               }
             }
@@ -1221,7 +1221,7 @@
                   new documents.NoteReference({
                     noteType: noteType,
                     noteId: noteId,
-                  })
+                  }),
                 );
               };
             }
@@ -1230,7 +1230,7 @@
               return elementResult(
                 documents.commentReference({
                   commentId: element.attributes["w:id"],
-                })
+                }),
               );
             }
 
@@ -1245,7 +1245,7 @@
                     var properties = _.find(children, isParagraphProperties);
                     return new documents.Paragraph(
                       children.filter(negate(isParagraphProperties)),
-                      properties
+                      properties,
                     );
                   })
                   .insertExtra();
@@ -1260,28 +1260,28 @@
                     numbering: readNumberingProperties(
                       style.styleId,
                       element.firstOrEmpty("w:numPr"),
-                      numbering
+                      numbering,
                     ),
                     indent: readParagraphIndent(element.firstOrEmpty("w:ind")),
                   };
                 });
               },
               "w:r": function (element) {
-                return readXmlElements(element.children).map(function (
-                  children
-                ) {
-                  var properties = _.find(children, isRunProperties);
-                  children = children.filter(negate(isRunProperties));
+                return readXmlElements(element.children).map(
+                  function (children) {
+                    var properties = _.find(children, isRunProperties);
+                    children = children.filter(negate(isRunProperties));
 
-                  var hyperlinkOptions = currentHyperlinkOptions();
-                  if (hyperlinkOptions !== null) {
-                    children = [
-                      new documents.Hyperlink(children, hyperlinkOptions),
-                    ];
-                  }
+                    var hyperlinkOptions = currentHyperlinkOptions();
+                    if (hyperlinkOptions !== null) {
+                      children = [
+                        new documents.Hyperlink(children, hyperlinkOptions),
+                      ];
+                    }
 
-                  return new documents.Run(children, properties);
-                });
+                    return new documents.Run(children, properties);
+                  },
+                );
               },
               "w:rPr": readRunProperties,
               "w:fldChar": readFldChar,
@@ -1302,31 +1302,34 @@
               "w:hyperlink": function (element) {
                 var relationshipId = element.attributes["r:id"];
                 var anchor = element.attributes["w:anchor"];
-                return readXmlElements(element.children).map(function (
-                  children
-                ) {
-                  function create(options) {
-                    var targetFrame = element.attributes["w:tgtFrame"] || null;
+                return readXmlElements(element.children).map(
+                  function (children) {
+                    function create(options) {
+                      var targetFrame =
+                        element.attributes["w:tgtFrame"] || null;
 
-                    return new documents.Hyperlink(
-                      children,
-                      _.extend({ targetFrame: targetFrame }, options)
-                    );
-                  }
-
-                  if (relationshipId) {
-                    var href =
-                      relationships.findTargetByRelationshipId(relationshipId);
-                    if (anchor) {
-                      href = uris.replaceFragment(href, anchor);
+                      return new documents.Hyperlink(
+                        children,
+                        _.extend({ targetFrame: targetFrame }, options),
+                      );
                     }
-                    return create({ href: href });
-                  } else if (anchor) {
-                    return create({ anchor: anchor });
-                  } else {
-                    return children;
-                  }
-                });
+
+                    if (relationshipId) {
+                      var href =
+                        relationships.findTargetByRelationshipId(
+                          relationshipId,
+                        );
+                      if (anchor) {
+                        href = uris.replaceFragment(href, anchor);
+                      }
+                      return create({ href: href });
+                    } else if (anchor) {
+                      return create({ anchor: anchor });
+                    } else {
+                      return children;
+                    }
+                  },
+                );
               },
               "w:tbl": readTable,
               "w:tr": readTableRow,
@@ -1354,7 +1357,7 @@
                   return emptyResult();
                 } else {
                   return elementResult(
-                    new documents.BookmarkStart({ name: name })
+                    new documents.BookmarkStart({ name: name }),
                   );
                 }
               },
@@ -1365,7 +1368,7 @@
 
               "w:sdt": function (element) {
                 return readXmlElements(
-                  element.firstOrEmpty("w:sdtContent").children
+                  element.firstOrEmpty("w:sdtContent").children,
                 );
               },
 
@@ -1394,7 +1397,7 @@
 
             function readTable(element) {
               var propertiesResult = readTableProperties(
-                element.firstOrEmpty("w:tblPr")
+                element.firstOrEmpty("w:tblPr"),
               );
               return readXmlElements(element.children)
                 .flatMap(calculateRowSpans)
@@ -1453,7 +1456,7 @@
               if (unexpectedNonRows) {
                 return elementResultWithMessages(rows, [
                   warning(
-                    "unexpected non-row element in table, cell merging may be incorrect"
+                    "unexpected non-row element in table, cell merging may be incorrect",
                   ),
                 ]);
               }
@@ -1465,7 +1468,7 @@
               if (unexpectedNonCells) {
                 return elementResultWithMessages(rows, [
                   warning(
-                    "unexpected non-cell element in table row, cell merging may be incorrect"
+                    "unexpected non-cell element in table row, cell merging may be incorrect",
                   ),
                 ]);
               }
@@ -1541,12 +1544,12 @@
               if (relationshipId) {
                 return readImage(
                   findEmbeddedImageFile(relationshipId),
-                  element.attributes["o:title"]
+                  element.attributes["o:title"],
                 );
               } else {
                 return emptyResultWithMessages([
                   warning(
-                    "A v:imagedata element without a relationship ID was ignored"
+                    "A v:imagedata element without a relationship ID was ignored",
                   ),
                 ]);
               }
@@ -1555,7 +1558,7 @@
             function findEmbeddedImageFile(relationshipId) {
               var path = uris.uriToZipEntryName(
                 "word",
-                relationships.findTargetByRelationshipId(relationshipId)
+                relationships.findTargetByRelationshipId(relationshipId),
               );
               return {
                 path: path,
@@ -1576,7 +1579,7 @@
                 : warning(
                     "Image of type " +
                       contentType +
-                      " is unlikely to display in web browsers"
+                      " is unlikely to display in web browsers",
                   );
               return elementResultWithMessages(image, warnings);
             }
@@ -1586,7 +1589,7 @@
                 type +
                   " style with ID " +
                   styleId +
-                  " was referenced but not defined in the document"
+                  " was referenced but not defined in the document",
               );
             }
           }
@@ -1675,7 +1678,7 @@
                 element: this.value,
                 extra: extra,
               },
-              messages
+              messages,
             );
             this.messages = this._result.messages;
           }
@@ -1684,7 +1687,7 @@
             return new ReadResult(
               null,
               joinElements(this.extra, this.value),
-              this.messages
+              this.messages,
             );
           };
 
@@ -1694,7 +1697,7 @@
               return new ReadResult(
                 joinElements(this.value, extra),
                 null,
-                this.messages
+                this.messages,
               );
             } else {
               return this;
@@ -1715,7 +1718,7 @@
             return new ReadResult(
               result.value.element,
               joinElements(this.extra, result.value.extra),
-              result.messages
+              result.messages,
             );
           };
 
@@ -1724,7 +1727,7 @@
             return new ReadResult(
               _.flatten(_.pluck(result.value, "element")),
               _.filter(_.flatten(_.pluck(result.value, "extra")), identity),
-              result.messages
+              result.messages,
             );
           }
 
@@ -1754,7 +1757,7 @@
               return Result.combine(
                 element
                   .getElementsByTagName("w:comment")
-                  .map(readCommentElement)
+                  .map(readCommentElement),
               );
             }
 
@@ -1917,7 +1920,7 @@
                 return {
                   styles: readStylesFromZipFile(
                     docxFile,
-                    result.partPaths.styles
+                    result.partPaths.styles,
                   ),
                 };
               })
@@ -1926,7 +1929,7 @@
                   numbering: readNumberingFromZipFile(
                     docxFile,
                     result.partPaths.numbering,
-                    result.styles
+                    result.styles,
                   ),
                 };
               })
@@ -1938,12 +1941,12 @@
                     function (bodyReader, xml) {
                       if (xml) {
                         return notesReader.createFootnotesReader(bodyReader)(
-                          xml
+                          xml,
                         );
                       } else {
                         return new Result([]);
                       }
-                    }
+                    },
                   ),
                   endnotes: readXmlFileWithBody(
                     result.partPaths.endnotes,
@@ -1951,12 +1954,12 @@
                     function (bodyReader, xml) {
                       if (xml) {
                         return notesReader.createEndnotesReader(bodyReader)(
-                          xml
+                          xml,
                         );
                       } else {
                         return new Result([]);
                       }
-                    }
+                    },
                   ),
                   comments: readXmlFileWithBody(
                     result.partPaths.comments,
@@ -1964,12 +1967,12 @@
                     function (bodyReader, xml) {
                       if (xml) {
                         return commentsReader.createCommentsReader(bodyReader)(
-                          xml
+                          xml,
                         );
                       } else {
                         return new Result([]);
                       }
-                    }
+                    },
                   ),
                 };
               })
@@ -1997,57 +2000,57 @@
                         return reader.convertXmlToDocument(xml);
                       });
                     });
-                  }
+                  },
                 );
               });
           }
 
           function findPartPaths(docxFile) {
-            return readPackageRelationships(docxFile).then(function (
-              packageRelationships
-            ) {
-              var mainDocumentPath = findPartPath({
-                docxFile: docxFile,
-                relationships: packageRelationships,
-                relationshipType:
-                  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
-                basePath: "",
-                fallbackPath: "word/document.xml",
-              });
+            return readPackageRelationships(docxFile).then(
+              function (packageRelationships) {
+                var mainDocumentPath = findPartPath({
+                  docxFile: docxFile,
+                  relationships: packageRelationships,
+                  relationshipType:
+                    "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+                  basePath: "",
+                  fallbackPath: "word/document.xml",
+                });
 
-              if (!docxFile.exists(mainDocumentPath)) {
-                throw new Error(
-                  "Could not find main document part. Are you sure this is a valid .docx file?"
-                );
-              }
-
-              return xmlFileReader({
-                filename: relationshipsFilename(mainDocumentPath),
-                readElement: relationshipsReader.readRelationships,
-                defaultValue: relationshipsReader.defaultValue,
-              })(docxFile).then(function (documentRelationships) {
-                function findPartRelatedToMainDocument(name) {
-                  return findPartPath({
-                    docxFile: docxFile,
-                    relationships: documentRelationships,
-                    relationshipType:
-                      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/" +
-                      name,
-                    basePath: zipfile.splitPath(mainDocumentPath).dirname,
-                    fallbackPath: "word/" + name + ".xml",
-                  });
+                if (!docxFile.exists(mainDocumentPath)) {
+                  throw new Error(
+                    "Could not find main document part. Are you sure this is a valid .docx file?",
+                  );
                 }
 
-                return {
-                  mainDocument: mainDocumentPath,
-                  comments: findPartRelatedToMainDocument("comments"),
-                  endnotes: findPartRelatedToMainDocument("endnotes"),
-                  footnotes: findPartRelatedToMainDocument("footnotes"),
-                  numbering: findPartRelatedToMainDocument("numbering"),
-                  styles: findPartRelatedToMainDocument("styles"),
-                };
-              });
-            });
+                return xmlFileReader({
+                  filename: relationshipsFilename(mainDocumentPath),
+                  readElement: relationshipsReader.readRelationships,
+                  defaultValue: relationshipsReader.defaultValue,
+                })(docxFile).then(function (documentRelationships) {
+                  function findPartRelatedToMainDocument(name) {
+                    return findPartPath({
+                      docxFile: docxFile,
+                      relationships: documentRelationships,
+                      relationshipType:
+                        "http://schemas.openxmlformats.org/officeDocument/2006/relationships/" +
+                        name,
+                      basePath: zipfile.splitPath(mainDocumentPath).dirname,
+                      fallbackPath: "word/" + name + ".xml",
+                    });
+                  }
+
+                  return {
+                    mainDocument: mainDocumentPath,
+                    comments: findPartRelatedToMainDocument("comments"),
+                    endnotes: findPartRelatedToMainDocument("endnotes"),
+                    footnotes: findPartRelatedToMainDocument("footnotes"),
+                    numbering: findPartRelatedToMainDocument("numbering"),
+                    styles: findPartRelatedToMainDocument("styles"),
+                  };
+                });
+              },
+            );
           }
 
           function findPartPath(options) {
@@ -2086,7 +2089,7 @@
                   return element
                     ? options.readElement(element)
                     : options.defaultValue;
-                }
+                },
               );
             };
           }
@@ -2111,9 +2114,9 @@
                 return readXmlFromZipFile(options.docxFile, filename).then(
                   function (xml) {
                     return func(bodyReader, xml);
-                  }
+                  },
                 );
-              }
+              },
             );
           }
 
@@ -2122,7 +2125,7 @@
             return zipfile.joinPath(
               split.dirname,
               "_rels",
-              split.basename + ".rels"
+              split.basename + ".rels",
             );
           }
 
@@ -2190,7 +2193,7 @@
                 element
                   .getElementsByTagName("w:" + noteType)
                   .filter(isFootnoteElement)
-                  .map(readFootnoteElement)
+                  .map(readFootnoteElement),
               );
             }
 
@@ -2229,14 +2232,14 @@
             var allLevels = _.flatten(
               _.values(abstractNums).map(function (abstractNum) {
                 return _.values(abstractNum.levels);
-              })
+              }),
             );
 
             var levelsByParagraphStyleId = _.indexBy(
               allLevels.filter(function (level) {
                 return level.paragraphStyleId != null;
               }),
-              "paragraphStyleId"
+              "paragraphStyleId",
             );
 
             function findLevel(numId, level) {
@@ -2249,7 +2252,7 @@
                   return abstractNums[num.abstractNumId].levels[level];
                 } else {
                   var style = styles.findNumberingStyleById(
-                    abstractNum.numStyleLink
+                    abstractNum.numStyleLink,
                   );
                   return findLevel(style.numId, level);
                 }
@@ -2376,7 +2379,7 @@
                 return node.first("mc:Fallback").children;
               } else {
                 node.children = _.flatten(
-                  node.children.map(collapseAlternateContent, true)
+                  node.children.map(collapseAlternateContent, true),
                 );
                 return [node];
               }
@@ -2478,13 +2481,13 @@
                     Id: "rMammothStyleMap",
                     Type: schema,
                     Target: styleMapAbsolutePath,
-                  }
+                  },
                 );
 
                 var namespaces = { "": relationshipsUri };
                 return docxFile.write(
                   path,
-                  xml.writeString(relationshipsContainer, namespaces)
+                  xml.writeString(relationshipsContainer, namespaces),
                 );
               });
           }
@@ -2506,7 +2509,7 @@
                 var namespaces = { "": contentTypesUri };
                 return docxFile.write(
                   path,
-                  xml.writeString(typesElement, namespaces)
+                  xml.writeString(typesElement, namespaces),
                 );
               });
           }
@@ -2515,7 +2518,7 @@
             elements,
             name,
             identifyingAttribute,
-            attributes
+            attributes,
           ) {
             var existingElement = _.find(elements, function (element) {
               return (
@@ -2551,7 +2554,7 @@
             paragraphStyles,
             characterStyles,
             tableStyles,
-            numberingStyles
+            numberingStyles,
           ) {
             return {
               findParagraphStyleById: function (styleId) {
@@ -2602,7 +2605,7 @@
               paragraphStyles,
               characterStyles,
               tableStyles,
-              numberingStyles
+              numberingStyles,
             );
           }
 
@@ -2660,7 +2663,7 @@
           function nonFreshElement(tagName, attributes, children) {
             return elementWithTag(
               htmlPaths.element(tagName, attributes, { fresh: false }),
-              children
+              children,
             );
           }
 
@@ -2970,7 +2973,7 @@
                 return styleMap.filter(function (styleMapping) {
                   return !!styleMapping;
                 });
-              }
+              },
             );
           }
 
@@ -3003,7 +3006,7 @@
 
           exports.styleMapping = function () {
             throw new Error(
-              "Use a raw string instead of mammoth.styleMapping e.g. \"p[style-name='Title'] => h1\" instead of mammoth.styleMapping(\"p[style-name='Title'] => h1\")"
+              "Use a raw string instead of mammoth.styleMapping e.g. \"p[style-name='Title'] => h1\" instead of mammoth.styleMapping(\"p[style-name='Title'] => h1\")",
             );
           };
         },
@@ -3093,7 +3096,7 @@
                 var styleMap = this.customStyleMap;
                 if (this.includeEmbeddedStyleMap) {
                   styleMap = styleMap.concat(
-                    readStyleMap(this.embeddedStyleMap)
+                    readStyleMap(this.embeddedStyleMap),
                   );
                 }
                 if (this.includeDefaultStyleMap) {
@@ -3162,7 +3165,7 @@
             var reject;
             var promise = new bluebird.Promise(function (
               resolveArg,
-              rejectArg
+              rejectArg,
             ) {
               resolve = resolveArg;
               reject = rejectArg;
@@ -3221,7 +3224,7 @@
             var funcResult = func(this.value);
             return new Result(
               funcResult.value,
-              combineMessages([this, funcResult])
+              combineMessages([this, funcResult]),
             );
           };
 
@@ -3230,7 +3233,7 @@
             return func(this.value).then(function (otherResult) {
               return new Result(
                 otherResult.value,
-                combineMessages([that, otherResult])
+                combineMessages([that, otherResult]),
               );
             });
           };
@@ -3262,13 +3265,13 @@
 
           function combineMessages(results) {
             var messages = [];
-            _.flatten(_.pluck(results, "messages"), true).forEach(function (
-              message
-            ) {
-              if (!containsMessage(messages, message)) {
-                messages.push(message);
-              }
-            });
+            _.flatten(_.pluck(results, "messages"), true).forEach(
+              function (message) {
+                if (!containsMessage(messages, message)) {
+                  messages.push(message);
+                }
+              },
+            );
             return messages;
           }
 
@@ -3315,12 +3318,12 @@
                     lop.rules
                       .sequence(
                         lop.rules.tokenOfType("whitespace"),
-                        lop.rules.sequence.capture(htmlPathRule())
+                        lop.rules.sequence.capture(htmlPathRule()),
                       )
-                      .head()
-                  )
+                      .head(),
+                  ),
                 ),
-                lop.rules.tokenOfType("end")
+                lop.rules.tokenOfType("end"),
               )
               .map(function (documentMatcher, htmlPath) {
                 return {
@@ -3342,20 +3345,20 @@
                 lop.rules.token("identifier", identifier),
                 function () {
                   return constant;
-                }
+                },
               );
             };
 
             var paragraphRule = identifierToConstant(
               "p",
-              documentMatchers.paragraph
+              documentMatchers.paragraph,
             );
             var runRule = identifierToConstant("r", documentMatchers.run);
 
             var elementTypeRule = lop.rules.firstOf(
               "p or r or table",
               paragraphRule,
-              runRule
+              runRule,
             );
 
             var styleIdRule = lop.rules.then(classRule, function (styleId) {
@@ -3369,25 +3372,25 @@
                   .sequence(
                     lop.rules.tokenOfType("equals"),
                     lop.rules.sequence.cut(),
-                    lop.rules.sequence.capture(stringRule)
+                    lop.rules.sequence.capture(stringRule),
                   )
                   .head(),
                 function (styleName) {
                   return { styleName: documentMatchers.equalTo(styleName) };
-                }
+                },
               ),
               lop.rules.then(
                 lop.rules
                   .sequence(
                     lop.rules.tokenOfType("startsWith"),
                     lop.rules.sequence.cut(),
-                    lop.rules.sequence.capture(stringRule)
+                    lop.rules.sequence.capture(stringRule),
                   )
                   .head(),
                 function (styleName) {
                   return { styleName: documentMatchers.startsWith(styleName) };
-                }
-              )
+                },
+              ),
             );
 
             var styleNameRule = lop.rules
@@ -3396,14 +3399,14 @@
                 lop.rules.sequence.cut(),
                 lop.rules.token("identifier", "style-name"),
                 lop.rules.sequence.capture(styleNameMatcherRule),
-                lop.rules.tokenOfType("close-square-bracket")
+                lop.rules.tokenOfType("close-square-bracket"),
               )
               .head();
 
             var listTypeRule = lop.rules.firstOf(
               "list type",
               identifierToConstant("ordered-list", { isOrdered: true }),
-              identifierToConstant("unordered-list", { isOrdered: false })
+              identifierToConstant("unordered-list", { isOrdered: false }),
             );
             var listRule = sequence(
               lop.rules.tokenOfType("colon"),
@@ -3411,7 +3414,7 @@
               sequence.cut(),
               lop.rules.tokenOfType("open-paren"),
               sequence.capture(integerRule),
-              lop.rules.tokenOfType("close-paren")
+              lop.rules.tokenOfType("close-paren"),
             ).map(function (listType, levelNumber) {
               return {
                 list: {
@@ -3424,7 +3427,7 @@
             function createMatcherSuffixesRule(rules) {
               var matcherSuffix = lop.rules.firstOf.apply(
                 lop.rules.firstOf,
-                ["matcher suffix"].concat(rules)
+                ["matcher suffix"].concat(rules),
               );
               var matcherSuffixes = lop.rules.zeroOrMore(matcherSuffix);
               return lop.rules.then(matcherSuffixes, function (suffixes) {
@@ -3443,8 +3446,8 @@
                   styleIdRule,
                   styleNameRule,
                   listRule,
-                ])
-              )
+                ]),
+              ),
             ).map(function (createMatcher, matcherOptions) {
               return createMatcher(matcherOptions);
             });
@@ -3452,8 +3455,8 @@
             var table = sequence(
               lop.rules.token("identifier", "table"),
               sequence.capture(
-                createMatcherSuffixesRule([styleIdRule, styleNameRule])
-              )
+                createMatcherSuffixesRule([styleIdRule, styleNameRule]),
+              ),
             ).map(function (options) {
               return documentMatchers.table(options);
             });
@@ -3462,23 +3465,23 @@
             var italic = identifierToConstant("i", documentMatchers.italic);
             var underline = identifierToConstant(
               "u",
-              documentMatchers.underline
+              documentMatchers.underline,
             );
             var strikethrough = identifierToConstant(
               "strike",
-              documentMatchers.strikethrough
+              documentMatchers.strikethrough,
             );
             var allCaps = identifierToConstant(
               "all-caps",
-              documentMatchers.allCaps
+              documentMatchers.allCaps,
             );
             var smallCaps = identifierToConstant(
               "small-caps",
-              documentMatchers.smallCaps
+              documentMatchers.smallCaps,
             );
             var commentReference = identifierToConstant(
               "comment-reference",
-              documentMatchers.commentReference
+              documentMatchers.commentReference,
             );
 
             var breakMatcher = sequence(
@@ -3488,7 +3491,7 @@
               lop.rules.token("identifier", "type"),
               lop.rules.tokenOfType("equals"),
               sequence.capture(stringRule),
-              lop.rules.tokenOfType("close-square-bracket")
+              lop.rules.tokenOfType("close-square-bracket"),
             ).map(function (breakType) {
               switch (breakType) {
                 case "line":
@@ -3513,7 +3516,7 @@
               allCaps,
               smallCaps,
               commentReference,
-              breakMatcher
+              breakMatcher,
             );
           }
 
@@ -3528,8 +3531,8 @@
               lop.rules.optional(
                 lop.rules.sequence(
                   lop.rules.tokenOfType("colon"),
-                  lop.rules.token("identifier", "fresh")
-                )
+                  lop.rules.token("identifier", "fresh"),
+                ),
               ),
               function (option) {
                 return option
@@ -3537,7 +3540,7 @@
                     return true;
                   })
                   .valueOrElse(false);
-              }
+              },
             );
 
             var separatorRule = lop.rules.then(
@@ -3548,18 +3551,18 @@
                     lop.rules.token("identifier", "separator"),
                     lop.rules.tokenOfType("open-paren"),
                     capture(stringRule),
-                    lop.rules.tokenOfType("close-paren")
+                    lop.rules.tokenOfType("close-paren"),
                   )
-                  .head()
+                  .head(),
               ),
               function (option) {
                 return option.valueOrElse("");
-              }
+              },
             );
 
             var tagNamesRule = lop.rules.oneOrMoreWithSeparator(
               identifierRule,
-              lop.rules.tokenOfType("choice")
+              lop.rules.tokenOfType("choice"),
             );
 
             var styleElementRule = lop.rules
@@ -3567,7 +3570,7 @@
                 capture(tagNamesRule),
                 capture(lop.rules.zeroOrMore(classRule)),
                 capture(freshRule),
-                capture(separatorRule)
+                capture(separatorRule),
               )
               .map(function (tagName, classNames, fresh, separator) {
                 var attributes = {};
@@ -3595,23 +3598,23 @@
                   lop.rules.sequence(
                     whitespaceRule,
                     lop.rules.tokenOfType("gt"),
-                    whitespaceRule
-                  )
+                    whitespaceRule,
+                  ),
                 ),
-                htmlPaths.elements
-              )
+                htmlPaths.elements,
+              ),
             );
           }
 
           var identifierRule = lop.rules.then(
             lop.rules.tokenOfType("identifier"),
-            decodeEscapeSequences
+            decodeEscapeSequences,
           );
           var integerRule = lop.rules.tokenOfType("integer");
 
           var stringRule = lop.rules.then(
             lop.rules.tokenOfType("string"),
-            decodeEscapeSequences
+            decodeEscapeSequences,
           );
 
           var escapeSequences = {
@@ -3630,7 +3633,7 @@
             .sequence(
               lop.rules.tokenOfType("dot"),
               lop.rules.sequence.cut(),
-              lop.rules.sequence.capture(identifierRule)
+              lop.rules.sequence.capture(identifierRule),
             )
             .head();
 
@@ -3729,7 +3732,7 @@
                 (element.styleName &&
                   this._styleName.operator(
                     this._styleName.operand,
-                    element.styleName
+                    element.styleName,
                   ))) &&
               (this._listIndex === undefined ||
                 isList(element, this._listIndex, this._listIsOrdered)) &&
@@ -3792,7 +3795,7 @@
                 } else {
                   return elementStyle;
                 }
-              })
+              }),
             );
           }
 
@@ -3874,7 +3877,7 @@
                     identifierCharacter +
                     "(?:" +
                     identifierCharacter +
-                    "|[0-9])*)"
+                    "|[0-9])*)",
                 ),
               },
               { name: "dot", regex: /\./ },
@@ -4249,7 +4252,7 @@
             for (var i = 1; i <= 6; i++) {
               htmlToMarkdown["h" + i] = markdownElement(
                 repeatString("#", i) + " ",
-                "\n\n"
+                "\n\n",
               );
             }
           })();
@@ -4414,8 +4417,8 @@
                 _.flatten(
                   this.map(function (element) {
                     return element.getElementsByTagName(name);
-                  }, true)
-                )
+                  }, true),
+                ),
               );
             },
           };
@@ -4455,7 +4458,7 @@
                 function (attribute) {
                   return attribute.value;
                 },
-                mapName
+                mapName,
               );
 
               var element = new Element(mapName(node), attributes);
@@ -4516,7 +4519,7 @@
                 result[mappedKey] = valueFunc(value, key, input);
                 return result;
               },
-              {}
+              {},
             );
           }
         },
@@ -4544,7 +4547,7 @@
             function writeElement(builder, element) {
               var elementBuilder = builder.element(
                 mapElementName(element.name),
-                element.attributes
+                element.attributes,
               );
               element.children.forEach(function (child) {
                 writeNode(elementBuilder, child);
@@ -4659,7 +4662,7 @@
                 arguments,
                 function (path) {
                   return path;
-                }
+                },
               );
 
               var relevantPaths = [];
@@ -4674,7 +4677,7 @@
 
               return relevantPaths.join("/");
             }
-          }.call(this, require("buffer").Buffer));
+          }).call(this, require("buffer").Buffer);
         },
         { buffer: 78, jszip: 87 },
       ],
@@ -4796,8 +4799,8 @@
                 encodeChunk(
                   uint8,
                   i,
-                  i + maxChunkLength > len2 ? len2 : i + maxChunkLength
-                )
+                  i + maxChunkLength > len2 ? len2 : i + maxChunkLength,
+                ),
               );
             }
 
@@ -4903,7 +4906,7 @@
             Async.prototype.fatalError = function (e, isNode) {
               if (isNode) {
                 process.stderr.write(
-                  "Fatal " + (e instanceof Error ? e.stack : e) + "\n"
+                  "Fatal " + (e instanceof Error ? e.stack : e) + "\n",
                 );
                 process.exit(2);
               } else {
@@ -4929,7 +4932,7 @@
                   });
                 } catch (e) {
                   throw new Error(
-                    "No async scheduler available\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                    "No async scheduler available\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                   );
                 }
             };
@@ -5020,7 +5023,7 @@
 
             module.exports = Async;
             module.exports.firstLineError = firstLineError;
-          }.call(this, require("_process")));
+          }).call(this, require("_process"));
         },
         { "./queue": 65, "./schedule": 68, "./util": 75, _process: 102 },
       ],
@@ -5031,7 +5034,7 @@
             Promise,
             INTERNAL,
             tryConvertToPromise,
-            debug
+            debug,
           ) {
             var calledBind = false;
             var rejectThis = function (_, e) {
@@ -5045,7 +5048,7 @@
                 rejectThis,
                 null,
                 this,
-                e
+                e,
               );
             };
 
@@ -5084,7 +5087,7 @@
                   bindingRejected,
                   undefined,
                   ret,
-                  context
+                  context,
                 );
                 ret._setOnCancel(maybePromise);
               } else {
@@ -5148,10 +5151,7 @@
                     return obj.methodName.apply(obj, this);                  \n\
             }                                                                \n\
         };                                                                   \n\
-        ".replace(
-                    /methodName/g,
-                    methodName
-                  )
+        ".replace(/methodName/g, methodName),
                 )(ensureMethod);
               };
 
@@ -5161,10 +5161,7 @@
                   "                                             \n\
         'use strict';                                                        \n\
         return obj.propertyName;                                             \n\
-        ".replace(
-                    "propertyName",
-                    propertyName
-                  )
+        ".replace("propertyName", propertyName),
                 );
               };
 
@@ -5230,7 +5227,7 @@
                       undefined,
                       undefined,
                       args,
-                      undefined
+                      undefined,
                     );
                   }
                 }
@@ -5265,7 +5262,7 @@
                 undefined,
                 undefined,
                 propertyName,
-                undefined
+                undefined,
               );
             };
           };
@@ -5279,7 +5276,7 @@
             Promise,
             PromiseArray,
             apiRejection,
-            debug
+            debug,
           ) {
             var util = require("./util");
             var tryCatch = util.tryCatch;
@@ -5376,7 +5373,7 @@
 
             Promise.prototype._doInvokeOnCancel = function (
               onCancelCallback,
-              internalOnly
+              internalOnly,
             ) {
               if (util.isArray(onCancelCallback)) {
                 for (var i = 0; i < onCancelCallback.length; ++i) {
@@ -5597,7 +5594,7 @@
                 async.invokeLater(
                   this._notifyUnhandledRejection,
                   this,
-                  undefined
+                  undefined,
                 );
               };
 
@@ -5607,7 +5604,7 @@
                     "rejectionHandled",
                     unhandledRejectionHandled,
                     undefined,
-                    this
+                    this,
                   );
                 };
 
@@ -5627,7 +5624,7 @@
                     "unhandledRejection",
                     possiblyUnhandledRejection,
                     reason,
-                    this
+                    this,
                   );
                 }
               };
@@ -5664,7 +5661,7 @@
               Promise.prototype._warn = function (
                 message,
                 shouldUseOwnTrace,
-                promise
+                promise,
               ) {
                 return warn(message, shouldUseOwnTrace, promise || this);
               };
@@ -5693,7 +5690,7 @@
               Promise.longStackTraces = function () {
                 if (async.haveItemsQueued() && !config.longStackTraces) {
                   throw new Error(
-                    "cannot enable long stack traces after promises have been created\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                    "cannot enable long stack traces after promises have been created\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                   );
                 }
                 if (!config.longStackTraces && longStackTracesIsSupported()) {
@@ -5705,7 +5702,7 @@
                   disableLongStackTraces = function () {
                     if (async.haveItemsQueued() && !config.longStackTraces) {
                       throw new Error(
-                        "cannot enable long stack traces after promises have been created\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                        "cannot enable long stack traces after promises have been created\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                       );
                     }
                     Promise.prototype._captureStackTrace =
@@ -5762,7 +5759,7 @@
                         name.toLowerCase(),
                         false,
                         true,
-                        event
+                        event,
                       );
                       return !util.global.dispatchEvent(domEvent);
                     };
@@ -5829,7 +5826,7 @@
                 try {
                   domEventFired = fireDomEvent(
                     name,
-                    eventToObjectGenerator[name].apply(null, arguments)
+                    eventToObjectGenerator[name].apply(null, arguments),
                   );
                 } catch (e) {
                   async.throwLater(e);
@@ -5869,7 +5866,7 @@
                 ) {
                   if (async.haveItemsQueued()) {
                     throw new Error(
-                      "cannot enable cancellation after promises are in use"
+                      "cannot enable cancellation after promises are in use",
                     );
                   }
                   Promise.prototype._clearCancellationData =
@@ -5903,7 +5900,7 @@
               Promise.prototype._execute = function (
                 executor,
                 resolve,
-                reject
+                reject,
               ) {
                 try {
                   executor(resolve, reject);
@@ -5914,7 +5911,7 @@
               Promise.prototype._onCancel = function () {};
               Promise.prototype._setOnCancel = function (handler) {};
               Promise.prototype._attachCancellationCallback = function (
-                onCancel
+                onCancel,
               ) {};
               Promise.prototype._captureStackTrace = function () {};
               Promise.prototype._attachExtraTrace = function () {};
@@ -5928,7 +5925,7 @@
                     if (typeof onCancel !== "function") {
                       throw new TypeError(
                         "onCancel must be a function, got: " +
-                          util.toString(onCancel)
+                          util.toString(onCancel),
                       );
                     }
                     promise._attachCancellationCallback(onCancel);
@@ -6020,7 +6017,7 @@
                     util.notEnumerableProp(
                       error,
                       "stack",
-                      parsed.message + "\n" + parsed.stack.join("\n")
+                      parsed.message + "\n" + parsed.stack.join("\n"),
                     );
                     util.notEnumerableProp(error, "__stackCleaned__", true);
                   }
@@ -6032,7 +6029,7 @@
                 promiseCreated,
                 name,
                 promise,
-                parent
+                parent,
               ) {
                 if (
                   returnValue === undefined &&
@@ -6443,7 +6440,7 @@
                 util.notEnumerableProp(
                   error,
                   "stack",
-                  reconstructStack(message, stacks)
+                  reconstructStack(message, stacks),
                 );
                 util.notEnumerableProp(error, "__stackCleaned__", true);
               };
@@ -6551,7 +6548,7 @@
                   printWarning = function (message, isSoft) {
                     console.warn(
                       "%c" + message,
-                      isSoft ? "color: darkorange" : "color: red"
+                      isSoft ? "color: darkorange" : "color: red",
                     );
                   };
                 }
@@ -6594,7 +6591,7 @@
                 fireGlobalEvent: fireGlobalEvent,
               };
             };
-          }.call(this, require("_process")));
+          }).call(this, require("_process"));
         },
         { "./errors": 51, "./util": 75, _process: 102 },
       ],
@@ -6618,7 +6615,7 @@
                   undefined,
                   undefined,
                   { value: value },
-                  undefined
+                  undefined,
                 );
               };
 
@@ -6629,7 +6626,7 @@
                   undefined,
                   undefined,
                   { reason: reason },
-                  undefined
+                  undefined,
                 );
               };
 
@@ -6640,7 +6637,7 @@
                   thrower,
                   undefined,
                   { reason: reason },
-                  undefined
+                  undefined,
                 );
               } else {
                 var _reason = arguments[1];
@@ -6660,7 +6657,7 @@
                   returner,
                   undefined,
                   { value: value },
-                  undefined
+                  undefined,
                 );
               } else {
                 var _value = arguments[1];
@@ -6697,7 +6694,7 @@
                 undefined,
                 undefined,
                 this,
-                undefined
+                undefined,
               );
             };
 
@@ -6711,7 +6708,7 @@
                 undefined,
                 undefined,
                 promises,
-                undefined
+                undefined,
               );
             };
 
@@ -6735,7 +6732,7 @@
               notEnumerableProp(
                 this,
                 "message",
-                typeof message === "string" ? message : defaultMessage
+                typeof message === "string" ? message : defaultMessage,
               );
               notEnumerableProp(this, "name", nameProperty);
               if (Error.captureStackTrace) {
@@ -6752,7 +6749,7 @@
           var Warning = subError("Warning", "warning");
           var CancellationError = subError(
             "CancellationError",
-            "cancellation error"
+            "cancellation error",
           );
           var TimeoutError = subError("TimeoutError", "timeout error");
           var AggregateError = subError("AggregateError", "aggregate error");
@@ -6995,7 +6992,7 @@
             function succeed() {
               return finallyHandler.call(
                 this,
-                this.promise._target()._settledValue()
+                this.promise._target()._settledValue(),
               );
             }
             function fail(reason) {
@@ -7019,14 +7016,14 @@
                     if (this.cancelPromise != null) {
                       if (maybePromise._isCancelled()) {
                         var reason = new CancellationError(
-                          "late cancellation observer"
+                          "late cancellation observer",
                         );
                         promise._attachExtraTrace(reason);
                         errorObj.e = reason;
                         return errorObj;
                       } else if (maybePromise.isPending()) {
                         maybePromise._attachCancellationCallback(
-                          new FinallyHandlerCancelReaction(this)
+                          new FinallyHandlerCancelReaction(this),
                         );
                       }
                     }
@@ -7035,7 +7032,7 @@
                       fail,
                       undefined,
                       this,
-                      undefined
+                      undefined,
                     );
                   }
                 }
@@ -7055,7 +7052,7 @@
               handler,
               type,
               success,
-              fail
+              fail,
             ) {
               if (typeof handler !== "function") return this.then();
               return this._then(
@@ -7063,18 +7060,18 @@
                 fail,
                 undefined,
                 new PassThroughHandlerContext(this, type, handler),
-                undefined
+                undefined,
               );
             };
 
             Promise.prototype.lastly = Promise.prototype["finally"] = function (
-              handler
+              handler,
             ) {
               return this._passThrough(
                 handler,
                 0,
                 finallyHandler,
-                finallyHandler
+                finallyHandler,
               );
             };
 
@@ -7096,7 +7093,7 @@
             INTERNAL,
             tryConvertToPromise,
             Proxyable,
-            debug
+            debug,
           ) {
             var errors = require("./errors");
             var TypeError = errors.TypeError;
@@ -7108,7 +7105,7 @@
             function promiseFromYieldHandler(
               value,
               yieldHandlers,
-              traceParent
+              traceParent,
             ) {
               for (var i = 0; i < yieldHandlers.length; ++i) {
                 traceParent._pushContext();
@@ -7130,12 +7127,12 @@
               generatorFunction,
               receiver,
               yieldHandler,
-              stack
+              stack,
             ) {
               if (debug.cancellation()) {
                 var internal = new Promise(INTERNAL);
                 var _finallyPromise = (this._finallyPromise = new Promise(
-                  INTERNAL
+                  INTERNAL,
                 ));
                 this._promise = internal.lastly(function () {
                   return _finallyPromise;
@@ -7179,21 +7176,21 @@
               var result;
               if (!implementsReturn) {
                 var reason = new Promise.CancellationError(
-                  "generator .return() sentinel"
+                  "generator .return() sentinel",
                 );
                 Promise.coroutine.returnSentinel = reason;
                 this._promise._attachExtraTrace(reason);
                 this._promise._pushContext();
                 result = tryCatch(this._generator["throw"]).call(
                   this._generator,
-                  reason
+                  reason,
                 );
                 this._promise._popContext();
               } else {
                 this._promise._pushContext();
                 result = tryCatch(this._generator["return"]).call(
                   this._generator,
-                  undefined
+                  undefined,
                 );
                 this._promise._popContext();
               }
@@ -7207,7 +7204,7 @@
               this._promise._pushContext();
               var result = tryCatch(this._generator.next).call(
                 this._generator,
-                value
+                value,
               );
               this._promise._popContext();
               this._continue(result);
@@ -7219,7 +7216,7 @@
               this._promise._pushContext();
               var result = tryCatch(this._generator["throw"]).call(
                 this._generator,
-                reason
+                reason,
               );
               this._promise._popContext();
               this._continue(result);
@@ -7268,18 +7265,18 @@
                   maybePromise = promiseFromYieldHandler(
                     maybePromise,
                     this._yieldHandlers,
-                    this._promise
+                    this._promise,
                   );
                   if (maybePromise === null) {
                     this._promiseRejected(
                       new TypeError(
                         "A value %s was yielded that could not be treated as a promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a\u000a".replace(
                           "%s",
-                          value
+                          value,
                         ) +
                           "From coroutine:\u000a" +
-                          this._stack.split("\n").slice(1, -7).join("\n")
-                      )
+                          this._stack.split("\n").slice(1, -7).join("\n"),
+                      ),
                     );
                     return;
                   }
@@ -7293,13 +7290,13 @@
                   Promise._async.invoke(
                     this._promiseFulfilled,
                     this,
-                    maybePromise._value()
+                    maybePromise._value(),
                   );
                 } else if ((bitField & 16777216) !== 0) {
                   Promise._async.invoke(
                     this._promiseRejected,
                     this,
-                    maybePromise._reason()
+                    maybePromise._reason(),
                   );
                 } else {
                   this._promiseCancelled();
@@ -7310,7 +7307,7 @@
             Promise.coroutine = function (generatorFunction, options) {
               if (typeof generatorFunction !== "function") {
                 throw new TypeError(
-                  "generatorFunction must be a function\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                  "generatorFunction must be a function\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                 );
               }
               var yieldHandler = Object(options).yieldHandler;
@@ -7322,7 +7319,7 @@
                   undefined,
                   undefined,
                   yieldHandler,
-                  stack
+                  stack,
                 );
                 var ret = spawn.promise();
                 spawn._generator = generator;
@@ -7334,7 +7331,7 @@
             Promise.coroutine.addYieldHandler = function (fn) {
               if (typeof fn !== "function") {
                 throw new TypeError(
-                  "expecting a function but got " + util.classString(fn)
+                  "expecting a function but got " + util.classString(fn),
                 );
               }
               yieldHandlers.push(fn);
@@ -7344,7 +7341,7 @@
               debug.deprecated("Promise.spawn()", "Promise.coroutine()");
               if (typeof generatorFunction !== "function") {
                 return apiRejection(
-                  "generatorFunction must be a function\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                  "generatorFunction must be a function\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                 );
               }
               var spawn = new PromiseSpawn(generatorFunction, this);
@@ -7365,7 +7362,7 @@
             tryConvertToPromise,
             INTERNAL,
             async,
-            getDomain
+            getDomain,
           ) {
             var util = require("./util");
             var canEvaluate = util.canEvaluate;
@@ -7383,10 +7380,7 @@
             'use strict';                                                    \n\
             holder.pIndex = value;                                           \n\
             holder.checkFulfillment(this);                                   \n\
-            ".replace(
-                      /Index/g,
-                      i
-                    )
+            ".replace(/Index/g, i),
                   );
                 };
 
@@ -7397,10 +7391,7 @@
                     "                           \n\
             'use strict';                                                    \n\
             holder.pIndex = promise;                                         \n\
-            ".replace(
-                      /Index/g,
-                      i
-                    )
+            ".replace(/Index/g, i),
                   );
                 };
 
@@ -7482,7 +7473,7 @@
                     "errorObj",
                     "Promise",
                     "async",
-                    code
+                    code,
                   )(tryCatch, errorObj, Promise, async);
                 };
 
@@ -7526,7 +7517,7 @@
                             reject,
                             undefined,
                             ret,
-                            holder
+                            holder,
                           );
                           promiseSetters[i](maybePromise, holder);
                           holder.asyncNeeded = false;
@@ -7578,7 +7569,7 @@
             apiRejection,
             tryConvertToPromise,
             INTERNAL,
-            debug
+            debug,
           ) {
             var getDomain = Promise._getDomain;
             var util = require("./util");
@@ -7609,7 +7600,7 @@
 
             MappingPromiseArray.prototype._promiseFulfilled = function (
               value,
-              index
+              index,
             ) {
               var values = this._values;
               var length = this.length();
@@ -7640,14 +7631,14 @@
                   receiver,
                   value,
                   index,
-                  length
+                  length,
                 );
                 var promiseCreated = promise._popContext();
                 debug.checkForgottenReturns(
                   ret,
                   promiseCreated,
                   preservedValues !== null ? "Promise.filter" : "Promise.map",
-                  promise
+                  promise,
                 );
                 if (ret === errorObj) {
                   this._reject(ret.e);
@@ -7700,7 +7691,7 @@
 
             MappingPromiseArray.prototype._filter = function (
               booleans,
-              values
+              values,
             ) {
               var len = values.length;
               var ret = new Array(len);
@@ -7719,7 +7710,7 @@
             function map(promises, fn, options, _filter) {
               if (typeof fn !== "function") {
                 return apiRejection(
-                  "expecting a function but got " + util.classString(fn)
+                  "expecting a function but got " + util.classString(fn),
                 );
               }
 
@@ -7730,8 +7721,8 @@
                     return Promise.reject(
                       new TypeError(
                         "'concurrency' must be a number but it is " +
-                          util.classString(options.concurrency)
-                      )
+                          util.classString(options.concurrency),
+                      ),
                     );
                   }
                   limit = options.concurrency;
@@ -7739,8 +7730,8 @@
                   return Promise.reject(
                     new TypeError(
                       "options argument must be an object but it is " +
-                        util.classString(options)
-                    )
+                        util.classString(options),
+                    ),
                   );
                 }
               }
@@ -7752,7 +7743,7 @@
                 promises,
                 fn,
                 limit,
-                _filter
+                _filter,
               ).promise();
             }
 
@@ -7775,7 +7766,7 @@
             INTERNAL,
             tryConvertToPromise,
             apiRejection,
-            debug
+            debug,
           ) {
             var util = require("./util");
             var tryCatch = util.tryCatch;
@@ -7783,7 +7774,7 @@
             Promise.method = function (fn) {
               if (typeof fn !== "function") {
                 throw new Promise.TypeError(
-                  "expecting a function but got " + util.classString(fn)
+                  "expecting a function but got " + util.classString(fn),
                 );
               }
               return function () {
@@ -7796,7 +7787,7 @@
                   value,
                   promiseCreated,
                   "Promise.method",
-                  ret
+                  ret,
                 );
                 ret._resolveFromSyncValue(value);
                 return ret;
@@ -7806,7 +7797,7 @@
             Promise.attempt = Promise["try"] = function (fn) {
               if (typeof fn !== "function") {
                 return apiRejection(
-                  "expecting a function but got " + util.classString(fn)
+                  "expecting a function but got " + util.classString(fn),
                 );
               }
               var ret = new Promise(INTERNAL);
@@ -7815,7 +7806,7 @@
               var value;
               if (arguments.length > 1) {
                 debug.deprecated(
-                  "calling Promise.try with more than 1 argument"
+                  "calling Promise.try with more than 1 argument",
                 );
                 var arg = arguments[1];
                 var ctx = arguments[2];
@@ -7830,7 +7821,7 @@
                 value,
                 promiseCreated,
                 "Promise.try",
-                ret
+                ret,
               );
               ret._resolveFromSyncValue(value);
               return ret;
@@ -7924,7 +7915,7 @@
                 return successAdapter.call(promise, val, nodeback);
               var ret = tryCatch(nodeback).apply(
                 promise._boundValue(),
-                [null].concat(val)
+                [null].concat(val),
               );
               if (ret === errorObj) {
                 async.throwLater(ret.e);
@@ -7977,7 +7968,7 @@
             module.exports = function () {
               var makeSelfResolutionError = function () {
                 return new TypeError(
-                  "circular promise resolution chain\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                  "circular promise resolution chain\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                 );
               };
               var reflectHandler = function () {
@@ -8022,14 +8013,14 @@
               var NEXT_FILTER = {};
               var tryConvertToPromise = require("./thenables")(
                 Promise,
-                INTERNAL
+                INTERNAL,
               );
               var PromiseArray = require("./promise_array")(
                 Promise,
                 INTERNAL,
                 tryConvertToPromise,
                 apiRejection,
-                Proxyable
+                Proxyable,
               );
               var Context = require("./context")(Promise);
               /*jshint unused:false*/
@@ -8038,7 +8029,7 @@
               var CapturedTrace = debug.CapturedTrace;
               var PassThroughHandlerContext = require("./finally")(
                 Promise,
-                tryConvertToPromise
+                tryConvertToPromise,
               );
               var catchFilter = require("./catch_filter")(NEXT_FILTER);
               var nodebackForPromise = require("./nodeback");
@@ -8047,12 +8038,13 @@
               function check(self, executor) {
                 if (typeof executor !== "function") {
                   throw new TypeError(
-                    "expecting a function but got " + util.classString(executor)
+                    "expecting a function but got " +
+                      util.classString(executor),
                   );
                 }
                 if (self.constructor !== Promise) {
                   throw new TypeError(
-                    "the promise constructor cannot be invoked directly\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                    "the promise constructor cannot be invoked directly\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                   );
                 }
               }
@@ -8076,7 +8068,7 @@
               };
 
               Promise.prototype.caught = Promise.prototype["catch"] = function (
-                fn
+                fn,
               ) {
                 var len = arguments.length;
                 if (len > 1) {
@@ -8091,7 +8083,7 @@
                       return apiRejection(
                         "expecting an object but got " +
                           "A catch statement predicate " +
-                          util.classString(item)
+                          util.classString(item),
                       );
                     }
                   }
@@ -8099,7 +8091,7 @@
                   fn = arguments[i];
                   return this.then(
                     undefined,
-                    catchFilter(catchInstances, fn, this)
+                    catchFilter(catchInstances, fn, this),
                   );
                 }
                 return this.then(undefined, fn);
@@ -8111,7 +8103,7 @@
                   reflectHandler,
                   undefined,
                   this,
-                  undefined
+                  undefined,
                 );
               };
 
@@ -8135,7 +8127,7 @@
                   didReject,
                   undefined,
                   undefined,
-                  undefined
+                  undefined,
                 );
               };
 
@@ -8145,7 +8137,7 @@
                   didReject,
                   undefined,
                   undefined,
-                  undefined
+                  undefined,
                 );
                 promise._setIsFinal();
               };
@@ -8153,7 +8145,7 @@
               Promise.prototype.spread = function (fn) {
                 if (typeof fn !== "function") {
                   return apiRejection(
-                    "expecting a function but got " + util.classString(fn)
+                    "expecting a function but got " + util.classString(fn),
                   );
                 }
                 return this.all()._then(
@@ -8161,7 +8153,7 @@
                   undefined,
                   undefined,
                   APPLY,
-                  undefined
+                  undefined,
                 );
               };
 
@@ -8185,7 +8177,7 @@
               Promise.prototype.all = function () {
                 if (arguments.length > 0) {
                   this._warn(
-                    ".all() was passed arguments but it does not take any"
+                    ".all() was passed arguments but it does not take any",
                   );
                 }
                 return new PromiseArray(this).promise();
@@ -8243,7 +8235,7 @@
               Promise.setScheduler = function (fn) {
                 if (typeof fn !== "function") {
                   throw new TypeError(
-                    "expecting a function but got " + util.classString(fn)
+                    "expecting a function but got " + util.classString(fn),
                   );
                 }
                 return async.setScheduler(fn);
@@ -8254,7 +8246,7 @@
                 didReject,
                 _,
                 receiver,
-                internalData
+                internalData,
               ) {
                 var haveInternalData = internalData !== undefined;
                 var promise = haveInternalData
@@ -8314,7 +8306,7 @@
                     didReject,
                     promise,
                     receiver,
-                    domain
+                    domain,
                   );
                 }
 
@@ -8415,7 +8407,7 @@
 
               Promise.prototype._migrateCallbackAt = function (
                 follower,
-                index
+                index,
               ) {
                 var fulfill = follower._fulfillmentHandlerAt(index);
                 var reject = follower._rejectionHandlerAt(index);
@@ -8430,7 +8422,7 @@
                 reject,
                 promise,
                 receiver,
-                domain
+                domain,
               ) {
                 var index = this._length();
 
@@ -8481,7 +8473,7 @@
 
               Promise.prototype._resolveCallback = function (
                 value,
-                shouldBind
+                shouldBind,
               ) {
                 if ((this._bitField & 117506048) !== 0) return;
                 if (value === this)
@@ -8515,7 +8507,7 @@
                   this._reject(promise._reason());
                 } else {
                   var reason = new CancellationError(
-                    "late cancellation observer"
+                    "late cancellation observer",
                   );
                   promise._attachExtraTrace(reason);
                   this._reject(reason);
@@ -8525,7 +8517,7 @@
               Promise.prototype._rejectCallback = function (
                 reason,
                 synchronous,
-                ignoreNonErrorWarnings
+                ignoreNonErrorWarnings,
               ) {
                 var trace = util.ensureErrorObject(reason);
                 var hasStack = trace === reason;
@@ -8551,7 +8543,7 @@
                   },
                   function (reason) {
                     promise._rejectCallback(reason, synchronous);
-                  }
+                  },
                 );
                 synchronous = false;
                 this._popContext();
@@ -8565,7 +8557,7 @@
                 handler,
                 receiver,
                 value,
-                promise
+                promise,
               ) {
                 var bitField = promise._bitField;
                 if ((bitField & 65536) !== 0) return;
@@ -8575,7 +8567,8 @@
                   if (!value || typeof value.length !== "number") {
                     x = errorObj;
                     x.e = new TypeError(
-                      "cannot .spread() a non-array: " + util.classString(value)
+                      "cannot .spread() a non-array: " +
+                        util.classString(value),
                     );
                   } else {
                     x = tryCatch(handler).apply(this._boundValue(), value);
@@ -8597,7 +8590,7 @@
                     promiseCreated,
                     "",
                     promise,
-                    this
+                    this,
                   );
                   promise._resolveCallback(x);
                 }
@@ -8621,7 +8614,7 @@
                 promise,
                 handler,
                 receiver,
-                value
+                value,
               ) {
                 var isPromise = promise instanceof Promise;
                 var bitField = this._bitField;
@@ -8655,7 +8648,7 @@
                       handler,
                       receiver,
                       value,
-                      promise
+                      promise,
                     );
                   }
                 } else if (receiver instanceof Proxyable) {
@@ -8690,7 +8683,7 @@
                         handler,
                         receiver,
                         value,
-                        promise
+                        promise,
                       );
                     }
                   } else if (promise instanceof Promise) {
@@ -8703,14 +8696,14 @@
                   ctx.promise,
                   ctx.handler,
                   ctx.receiver,
-                  ctx.value
+                  ctx.value,
                 );
               };
 
               Promise.prototype._settlePromise0 = function (
                 handler,
                 value,
-                bitField
+                bitField,
               ) {
                 var promise = this._promise0;
                 var receiver = this._receiverAt(0);
@@ -8795,7 +8788,7 @@
                     this._settlePromise0(
                       this._rejectionHandler0,
                       reason,
-                      bitField
+                      bitField,
                     );
                     this._rejectPromises(len, reason);
                   } else {
@@ -8803,7 +8796,7 @@
                     this._settlePromise0(
                       this._fulfillmentHandler0,
                       value,
-                      bitField
+                      bitField,
                     );
                     this._fulfillPromises(len, value);
                   }
@@ -8841,7 +8834,7 @@
               util.notEnumerableProp(
                 Promise,
                 "_makeSelfResolutionError",
-                makeSelfResolutionError
+                makeSelfResolutionError,
               );
 
               require("./method")(
@@ -8849,7 +8842,7 @@
                 INTERNAL,
                 tryConvertToPromise,
                 apiRejection,
-                debug
+                debug,
               );
               require("./bind")(Promise, INTERNAL, tryConvertToPromise, debug);
               require("./cancel")(Promise, PromiseArray, apiRejection, debug);
@@ -8861,7 +8854,7 @@
                 tryConvertToPromise,
                 INTERNAL,
                 async,
-                getDomain
+                getDomain,
               );
               Promise.Promise = Promise;
               Promise.version = "3.4.7";
@@ -8871,7 +8864,7 @@
                 apiRejection,
                 tryConvertToPromise,
                 INTERNAL,
-                debug
+                debug,
               );
               require("./call_get.js")(Promise);
               require("./using.js")(
@@ -8880,7 +8873,7 @@
                 tryConvertToPromise,
                 createContext,
                 INTERNAL,
-                debug
+                debug,
               );
               require("./timers.js")(Promise, INTERNAL, debug);
               require("./generators.js")(
@@ -8889,7 +8882,7 @@
                 INTERNAL,
                 tryConvertToPromise,
                 Proxyable,
-                debug
+                debug,
               );
               require("./nodeify.js")(Promise);
               require("./promisify.js")(Promise, INTERNAL);
@@ -8897,13 +8890,13 @@
                 Promise,
                 PromiseArray,
                 tryConvertToPromise,
-                apiRejection
+                apiRejection,
               );
               require("./race.js")(
                 Promise,
                 INTERNAL,
                 tryConvertToPromise,
-                apiRejection
+                apiRejection,
               );
               require("./reduce.js")(
                 Promise,
@@ -8911,7 +8904,7 @@
                 apiRejection,
                 tryConvertToPromise,
                 INTERNAL,
-                debug
+                debug,
               );
               require("./settle.js")(Promise, PromiseArray, debug);
               require("./some.js")(Promise, PromiseArray, apiRejection);
@@ -8941,7 +8934,7 @@
               debug.setBounds(Async.firstLineError, util.lastLineError);
               return Promise;
             };
-          }.call(this, require("_process")));
+          }).call(this, require("_process"));
         },
         {
           "./any.js": 41,
@@ -8987,7 +8980,7 @@
             INTERNAL,
             tryConvertToPromise,
             apiRejection,
-            Proxyable
+            Proxyable,
           ) {
             var util = require("./util");
             var isArray = util.isArray;
@@ -9024,7 +9017,7 @@
 
             PromiseArray.prototype._init = function init(
               _,
-              resolveValueIfEmpty
+              resolveValueIfEmpty,
             ) {
               var values = tryConvertToPromise(this._values, this._promise);
               if (values instanceof Promise) {
@@ -9039,7 +9032,7 @@
                     this._reject,
                     undefined,
                     this,
-                    resolveValueIfEmpty
+                    resolveValueIfEmpty,
                   );
                 } else if ((bitField & 33554432) !== 0) {
                   values = values._value();
@@ -9053,7 +9046,7 @@
               if (values === null) {
                 var err = apiRejection(
                   "expecting an array or an iterable object but got " +
-                    util.classString(values)
+                    util.classString(values),
                 ).reason();
                 this._promise._rejectCallback(err, false);
                 return;
@@ -9100,12 +9093,12 @@
                   } else if ((bitField & 33554432) !== 0) {
                     isResolved = this._promiseFulfilled(
                       maybePromise._value(),
-                      i
+                      i,
                     );
                   } else if ((bitField & 16777216) !== 0) {
                     isResolved = this._promiseRejected(
                       maybePromise._reason(),
-                      i
+                      i,
                     );
                   } else {
                     isResolved = this._promiseCancelled(i);
@@ -9210,7 +9203,7 @@
               "__isPromisified__",
             ];
             var noCopyPropsPattern = new RegExp(
-              "^(?:" + noCopyProps.join("|") + ")$"
+              "^(?:" + noCopyProps.join("|") + ")$",
             );
 
             var defaultFilter = function (name) {
@@ -9237,7 +9230,7 @@
               var val = util.getDataPropertyOrDefault(
                 obj,
                 key + suffix,
-                defaultPromisified
+                defaultPromisified,
               );
               return val ? isPromisified(val) : false;
             }
@@ -9251,8 +9244,8 @@
                       throw new TypeError(
                         "Cannot promisify an API that has normal methods with '%s'-suffix\u000a\u000a    See http://goo.gl/MqrFmX\u000a".replace(
                           "%s",
-                          suffix
-                        )
+                          suffix,
+                        ),
                       );
                     }
                   }
@@ -9309,7 +9302,7 @@
                 return util.filledRange(
                   Math.max(parameterCount, 3),
                   "_arg",
-                  ""
+                  "",
                 );
               };
 
@@ -9326,7 +9319,7 @@
                 originalName,
                 fn,
                 _,
-                multiArgs
+                multiArgs,
               ) {
                 var newParameterCount = Math.max(0, parameterCount(fn) - 1);
                 var argumentOrder = switchCaseArgumentOrder(newParameterCount);
@@ -9374,7 +9367,7 @@
                       "[CodeForCall]",
                       shouldProxyThis
                         ? "ret = callback.apply(this, args);\n"
-                        : "ret = callback.apply(receiver, args);\n"
+                        : "ret = callback.apply(receiver, args);\n",
                     );
                   return ret;
                 }
@@ -9409,12 +9402,12 @@
     "
                     .replace(
                       "[CodeForSwitchCase]",
-                      generateArgumentSwitchCase()
+                      generateArgumentSwitchCase(),
                     )
                     .replace("[GetFunctionCode]", getFunctionCode);
                 body = body.replace(
                   "Parameters",
-                  parameterDeclaration(newParameterCount)
+                  parameterDeclaration(newParameterCount),
                 );
                 return new Function(
                   "Promise",
@@ -9427,7 +9420,7 @@
                   "errorObj",
                   "notEnumerableProp",
                   "INTERNAL",
-                  body
+                  body,
                 )(
                   Promise,
                   fn,
@@ -9438,7 +9431,7 @@
                   util.tryCatch,
                   util.errorObj,
                   util.notEnumerableProp,
-                  INTERNAL
+                  INTERNAL,
                 );
               };
             }
@@ -9449,7 +9442,7 @@
               _,
               fn,
               __,
-              multiArgs
+              multiArgs,
             ) {
               var defaultThis = (function () {
                 return this;
@@ -9490,7 +9483,7 @@
                 obj,
                 suffix,
                 suffixRegexp,
-                filter
+                filter,
               );
 
               for (var i = 0, len = methods.length; i < len; i += 2) {
@@ -9504,7 +9497,7 @@
                     key,
                     fn,
                     suffix,
-                    multiArgs
+                    multiArgs,
                   );
                 } else {
                   var promisified = promisifier(fn, function () {
@@ -9514,13 +9507,13 @@
                       key,
                       fn,
                       suffix,
-                      multiArgs
+                      multiArgs,
                     );
                   });
                   util.notEnumerableProp(
                     promisified,
                     "__isPromisified__",
-                    true
+                    true,
                   );
                   obj[promisifiedKey] = promisified;
                 }
@@ -9536,14 +9529,14 @@
                 undefined,
                 callback,
                 null,
-                multiArgs
+                multiArgs,
               );
             }
 
             Promise.promisify = function (fn, options) {
               if (typeof fn !== "function") {
                 throw new TypeError(
-                  "expecting a function but got " + util.classString(fn)
+                  "expecting a function but got " + util.classString(fn),
                 );
               }
               if (isPromisified(fn)) {
@@ -9561,7 +9554,7 @@
             Promise.promisifyAll = function (target, options) {
               if (typeof target !== "function" && typeof target !== "object") {
                 throw new TypeError(
-                  "the target of promisifyAll must be an object or a function\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                  "the target of promisifyAll must be an object or a function\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                 );
               }
               options = Object(options);
@@ -9576,7 +9569,7 @@
 
               if (!util.isIdentifier(suffix)) {
                 throw new RangeError(
-                  "suffix must be a valid identifier\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                  "suffix must be a valid identifier\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                 );
               }
 
@@ -9589,7 +9582,7 @@
                     suffix,
                     filter,
                     promisifier,
-                    multiArgs
+                    multiArgs,
                   );
                   promisifyAll(value, suffix, filter, promisifier, multiArgs);
                 }
@@ -9600,7 +9593,7 @@
                 suffix,
                 filter,
                 promisifier,
-                multiArgs
+                multiArgs,
               );
             };
           };
@@ -9614,7 +9607,7 @@
             Promise,
             PromiseArray,
             tryConvertToPromise,
-            apiRejection
+            apiRejection,
           ) {
             var util = require("./util");
             var isObject = util.isObject;
@@ -9678,7 +9671,7 @@
 
             PropertiesPromiseArray.prototype._promiseFulfilled = function (
               value,
-              index
+              index,
             ) {
               this._values[index] = value;
               var totalResolved = ++this._totalResolved;
@@ -9713,7 +9706,7 @@
 
               if (!isObject(castValue)) {
                 return apiRejection(
-                  "cannot await properties of a non-object\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                  "cannot await properties of a non-object\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                 );
               } else if (castValue instanceof Promise) {
                 ret = castValue._then(
@@ -9721,7 +9714,7 @@
                   undefined,
                   undefined,
                   undefined,
-                  undefined
+                  undefined,
                 );
               } else {
                 ret = new PropertiesPromiseArray(castValue).promise();
@@ -9829,7 +9822,7 @@
             Promise,
             INTERNAL,
             tryConvertToPromise,
-            apiRejection
+            apiRejection,
           ) {
             var util = require("./util");
 
@@ -9849,7 +9842,7 @@
                 if (promises === null)
                   return apiRejection(
                     "expecting an array or an iterable object but got " +
-                      util.classString(promises)
+                      util.classString(promises),
                   );
               }
 
@@ -9891,7 +9884,7 @@
             apiRejection,
             tryConvertToPromise,
             INTERNAL,
-            debug
+            debug,
           ) {
             var getDomain = Promise._getDomain;
             var util = require("./util");
@@ -9942,7 +9935,7 @@
               this._resolve(
                 this._eachValues !== undefined
                   ? this._eachValues
-                  : this._initialValue
+                  : this._initialValue,
               );
             };
 
@@ -9956,7 +9949,7 @@
             };
 
             ReductionPromiseArray.prototype._resultCancelled = function (
-              sender
+              sender,
             ) {
               if (sender === this._initialValue) return this._cancel();
               if (this._isResolved()) return;
@@ -9998,7 +9991,7 @@
                     undefined,
                     undefined,
                     ctx,
-                    undefined
+                    undefined,
                   );
                 }
               }
@@ -10009,7 +10002,7 @@
                   undefined,
                   undefined,
                   this,
-                  undefined
+                  undefined,
                 );
               }
               value._then(completed, completed, undefined, value, this);
@@ -10034,14 +10027,14 @@
             function reduce(promises, fn, initialValue, _each) {
               if (typeof fn !== "function") {
                 return apiRejection(
-                  "expecting a function but got " + util.classString(fn)
+                  "expecting a function but got " + util.classString(fn),
                 );
               }
               var array = new ReductionPromiseArray(
                 promises,
                 fn,
                 initialValue,
-                _each
+                _each,
               );
               return array.promise();
             }
@@ -10057,7 +10050,7 @@
                   undefined,
                   undefined,
                   this,
-                  undefined
+                  undefined,
                 );
               } else {
                 return gotValue.call(this, value);
@@ -10075,7 +10068,7 @@
                   promise._boundValue(),
                   value,
                   this.index,
-                  this.length
+                  this.length,
                 );
               } else {
                 ret = fn.call(
@@ -10083,7 +10076,7 @@
                   this.accum,
                   value,
                   this.index,
-                  this.length
+                  this.length,
                 );
               }
               if (ret instanceof Promise) {
@@ -10096,7 +10089,7 @@
                 array._eachValues !== undefined
                   ? "Promise.each"
                   : "Promise.reduce",
-                promise
+                promise,
               );
               return ret;
             }
@@ -10112,7 +10105,7 @@
             var schedule;
             var noAsyncScheduler = function () {
               throw new Error(
-                "No async scheduler available\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                "No async scheduler available\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
               );
             };
             var NativePromise = util.getNativePromise();
@@ -10180,17 +10173,17 @@
               schedule = noAsyncScheduler;
             }
             module.exports = schedule;
-          }.call(
+          }).call(
             this,
             require("_process"),
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-              ? self
-              : typeof window !== "undefined"
-              ? window
-              : {}
-          ));
+                ? self
+                : typeof window !== "undefined"
+                  ? window
+                  : {},
+          );
         },
         { "./util": 75, _process: 102 },
       ],
@@ -10208,7 +10201,7 @@
 
             SettledPromiseArray.prototype._promiseResolved = function (
               index,
-              inspection
+              inspection,
             ) {
               this._values[index] = inspection;
               var totalResolved = ++this._totalResolved;
@@ -10221,7 +10214,7 @@
 
             SettledPromiseArray.prototype._promiseFulfilled = function (
               value,
-              index
+              index,
             ) {
               var ret = new PromiseInspection();
               ret._bitField = 33554432;
@@ -10230,7 +10223,7 @@
             };
             SettledPromiseArray.prototype._promiseRejected = function (
               reason,
-              index
+              index,
             ) {
               var ret = new PromiseInspection();
               ret._bitField = 16777216;
@@ -10385,7 +10378,7 @@
             function some(promises, howMany) {
               if ((howMany | 0) !== howMany || howMany < 0) {
                 return apiRejection(
-                  "expecting a positive integer\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                  "expecting a positive integer\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                 );
               }
               var ret = new SomePromiseArray(promises);
@@ -10432,7 +10425,7 @@
             var value = (PromiseInspection.prototype.value = function () {
               if (!this.isFulfilled()) {
                 throw new TypeError(
-                  "cannot get fulfillment value of a non-fulfilled promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                  "cannot get fulfillment value of a non-fulfilled promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                 );
               }
               return this._settledValue();
@@ -10444,7 +10437,7 @@
                 function () {
                   if (!this.isRejected()) {
                     throw new TypeError(
-                      "cannot get rejection reason of a non-rejected promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                      "cannot get rejection reason of a non-rejected promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a",
                     );
                   }
                   return this._settledValue();
@@ -10638,7 +10631,7 @@
                   null,
                   null,
                   ms,
-                  undefined
+                  undefined,
                 );
                 if (debug.cancellation() && value instanceof Promise) {
                   ret._setOnCancel(value);
@@ -10700,7 +10693,7 @@
                   if (ret.isPending()) {
                     afterTimeout(ret, message, parent);
                   }
-                }, ms)
+                }, ms),
               );
 
               if (debug.cancellation()) {
@@ -10710,7 +10703,7 @@
                   failureClear,
                   undefined,
                   handleWrapper,
-                  undefined
+                  undefined,
                 );
                 ret._setOnCancel(handleWrapper);
               } else {
@@ -10719,7 +10712,7 @@
                   failureClear,
                   undefined,
                   handleWrapper,
-                  undefined
+                  undefined,
                 );
               }
 
@@ -10738,7 +10731,7 @@
             tryConvertToPromise,
             createContext,
             INTERNAL,
-            debug
+            debug,
           ) {
             var util = require("./util");
             var TypeError = require("./errors").TypeError;
@@ -10779,7 +10772,7 @@
                   try {
                     maybePromise = tryConvertToPromise(
                       maybePromise._getDisposer().tryDispose(inspection),
-                      resources.promise
+                      resources.promise,
                     );
                   } catch (e) {
                     return thrower(e);
@@ -10790,7 +10783,7 @@
                       thrower,
                       null,
                       null,
-                      null
+                      null,
                     );
                   }
                 }
@@ -10848,7 +10841,7 @@
 
             FunctionDisposer.prototype.doDispose = function (
               resource,
-              inspection
+              inspection,
             ) {
               var fn = this.data();
               return fn.call(resource, resource, inspection);
@@ -10882,12 +10875,12 @@
               var len = arguments.length;
               if (len < 2)
                 return apiRejection(
-                  "you must pass at least 2 arguments to Promise.using"
+                  "you must pass at least 2 arguments to Promise.using",
                 );
               var fn = arguments[len - 1];
               if (typeof fn !== "function") {
                 return apiRejection(
-                  "expecting a function but got " + util.classString(fn)
+                  "expecting a function but got " + util.classString(fn),
                 );
               }
               var input;
@@ -10918,7 +10911,7 @@
                         resources: resources,
                         index: i,
                       },
-                      undefined
+                      undefined,
                     );
                   }
                 }
@@ -10954,10 +10947,10 @@
                     ret,
                     promiseCreated,
                     "Promise.using",
-                    promise
+                    promise,
                   );
                   return ret;
-                }
+                },
               );
 
               var promise = resultPromise.lastly(function () {
@@ -11010,12 +11003,12 @@
               typeof self !== "undefined"
                 ? self
                 : typeof window !== "undefined"
-                ? window
-                : typeof global !== "undefined"
-                ? global
-                : this !== undefined
-                ? this
-                : null;
+                  ? window
+                  : typeof global !== "undefined"
+                    ? global
+                    : this !== undefined
+                      ? this
+                      : null;
 
             function tryCatcher() {
               try {
@@ -11421,17 +11414,17 @@
               ret.lastLineError = e;
             }
             module.exports = ret;
-          }.call(
+          }).call(
             this,
             require("_process"),
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-              ? self
-              : typeof window !== "undefined"
-              ? window
-              : {}
-          ));
+                ? self
+                : typeof window !== "undefined"
+                  ? window
+                  : {},
+          );
         },
         { "./es5": 52, _process: 102 },
       ],
@@ -11546,7 +11539,7 @@
 
               throw new TypeError(
                 "First argument must be a string, Buffer, " +
-                  "ArrayBuffer, Array, or array-like object."
+                  "ArrayBuffer, Array, or array-like object.",
               );
             };
             exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
@@ -11561,16 +11554,16 @@
               }
               return new SlowBuffer(size);
             };
-          }.call(
+          }).call(
             this,
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-              ? self
-              : typeof window !== "undefined"
-              ? window
-              : {}
-          ));
+                ? self
+                : typeof window !== "undefined"
+                  ? window
+                  : {},
+          );
         },
         { buffer: 78 },
       ],
@@ -11690,7 +11683,7 @@
               if (typeof arg === "number") {
                 if (typeof encodingOrOffset === "string") {
                   throw new Error(
-                    "If encoding is specified then the first argument must be a string"
+                    "If encoding is specified then the first argument must be a string",
                   );
                 }
                 return allocUnsafe(this, arg);
@@ -11816,7 +11809,7 @@
 
               if (!Buffer.isEncoding(encoding)) {
                 throw new TypeError(
-                  '"encoding" must be a valid string encoding'
+                  '"encoding" must be a valid string encoding',
                 );
               }
 
@@ -11905,7 +11898,7 @@
               }
 
               throw new TypeError(
-                "First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object."
+                "First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object.",
               );
             }
 
@@ -11917,7 +11910,7 @@
                   "Attempt to allocate Buffer larger than maximum " +
                     "size: 0x" +
                     kMaxLength().toString(16) +
-                    " bytes"
+                    " bytes",
                 );
               }
               return length | 0;
@@ -11980,7 +11973,7 @@
             Buffer.concat = function concat(list, length) {
               if (!isArray(list)) {
                 throw new TypeError(
-                  '"list" argument must be an Array of Buffers'
+                  '"list" argument must be an Array of Buffers',
                 );
               }
 
@@ -12002,7 +11995,7 @@
                 var buf = list[i];
                 if (!Buffer.isBuffer(buf)) {
                   throw new TypeError(
-                    '"list" argument must be an Array of Buffers'
+                    '"list" argument must be an Array of Buffers',
                   );
                 }
                 buf.copy(buffer, pos);
@@ -12144,7 +12137,7 @@
               var len = this.length;
               if (len % 2 !== 0) {
                 throw new RangeError(
-                  "Buffer size must be a multiple of 16-bits"
+                  "Buffer size must be a multiple of 16-bits",
                 );
               }
               for (var i = 0; i < len; i += 2) {
@@ -12157,7 +12150,7 @@
               var len = this.length;
               if (len % 4 !== 0) {
                 throw new RangeError(
-                  "Buffer size must be a multiple of 32-bits"
+                  "Buffer size must be a multiple of 32-bits",
                 );
               }
               for (var i = 0; i < len; i += 4) {
@@ -12171,7 +12164,7 @@
               var len = this.length;
               if (len % 8 !== 0) {
                 throw new RangeError(
-                  "Buffer size must be a multiple of 64-bits"
+                  "Buffer size must be a multiple of 64-bits",
                 );
               }
               for (var i = 0; i < len; i += 8) {
@@ -12212,7 +12205,7 @@
               start,
               end,
               thisStart,
-              thisEnd
+              thisEnd,
             ) {
               if (!Buffer.isBuffer(target)) {
                 throw new TypeError("Argument must be a Buffer");
@@ -12291,7 +12284,7 @@
               val,
               byteOffset,
               encoding,
-              dir
+              dir,
             ) {
               // Empty buffer means no match
               if (buffer.length === 0) return -1;
@@ -12343,13 +12336,13 @@
                     return Uint8Array.prototype.indexOf.call(
                       buffer,
                       val,
-                      byteOffset
+                      byteOffset,
                     );
                   } else {
                     return Uint8Array.prototype.lastIndexOf.call(
                       buffer,
                       val,
-                      byteOffset
+                      byteOffset,
                     );
                   }
                 }
@@ -12427,7 +12420,7 @@
             Buffer.prototype.includes = function includes(
               val,
               byteOffset,
-              encoding
+              encoding,
             ) {
               return this.indexOf(val, byteOffset, encoding) !== -1;
             };
@@ -12435,28 +12428,28 @@
             Buffer.prototype.indexOf = function indexOf(
               val,
               byteOffset,
-              encoding
+              encoding,
             ) {
               return bidirectionalIndexOf(
                 this,
                 val,
                 byteOffset,
                 encoding,
-                true
+                true,
               );
             };
 
             Buffer.prototype.lastIndexOf = function lastIndexOf(
               val,
               byteOffset,
-              encoding
+              encoding,
             ) {
               return bidirectionalIndexOf(
                 this,
                 val,
                 byteOffset,
                 encoding,
-                false
+                false,
               );
             };
 
@@ -12492,7 +12485,7 @@
                 utf8ToBytes(string, buf.length - offset),
                 buf,
                 offset,
-                length
+                length,
               );
             }
 
@@ -12513,7 +12506,7 @@
                 utf16leToBytes(string, buf.length - offset),
                 buf,
                 offset,
-                length
+                length,
               );
             }
 
@@ -12521,7 +12514,7 @@
               string,
               offset,
               length,
-              encoding
+              encoding,
             ) {
               // Buffer#write(string)
               if (offset === undefined) {
@@ -12546,7 +12539,7 @@
                 // legacy write(string, encoding, offset, length) - remove in v0.13
               } else {
                 throw new Error(
-                  "Buffer.write(string, encoding, offset[, length]) is no longer supported"
+                  "Buffer.write(string, encoding, offset[, length]) is no longer supported",
                 );
               }
 
@@ -12626,10 +12619,10 @@
                   firstByte > 0xef
                     ? 4
                     : firstByte > 0xdf
-                    ? 3
-                    : firstByte > 0xbf
-                    ? 2
-                    : 1;
+                      ? 3
+                      : firstByte > 0xbf
+                        ? 2
+                        : 1;
 
                 if (i + bytesPerSequence <= end) {
                   var secondByte, thirdByte, fourthByte, tempCodePoint;
@@ -12729,7 +12722,7 @@
               while (i < len) {
                 res += String.fromCharCode.apply(
                   String,
-                  codePoints.slice(i, (i += MAX_ARGUMENTS_LENGTH))
+                  codePoints.slice(i, (i += MAX_ARGUMENTS_LENGTH)),
                 );
               }
               return res;
@@ -12826,7 +12819,7 @@
             Buffer.prototype.readUIntLE = function readUIntLE(
               offset,
               byteLength,
-              noAssert
+              noAssert,
             ) {
               offset = offset | 0;
               byteLength = byteLength | 0;
@@ -12845,7 +12838,7 @@
             Buffer.prototype.readUIntBE = function readUIntBE(
               offset,
               byteLength,
-              noAssert
+              noAssert,
             ) {
               offset = offset | 0;
               byteLength = byteLength | 0;
@@ -12869,7 +12862,7 @@
 
             Buffer.prototype.readUInt16LE = function readUInt16LE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 2, this.length);
               return this[offset] | (this[offset + 1] << 8);
@@ -12877,7 +12870,7 @@
 
             Buffer.prototype.readUInt16BE = function readUInt16BE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 2, this.length);
               return (this[offset] << 8) | this[offset + 1];
@@ -12885,7 +12878,7 @@
 
             Buffer.prototype.readUInt32LE = function readUInt32LE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 4, this.length);
 
@@ -12899,7 +12892,7 @@
 
             Buffer.prototype.readUInt32BE = function readUInt32BE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 4, this.length);
 
@@ -12914,7 +12907,7 @@
             Buffer.prototype.readIntLE = function readIntLE(
               offset,
               byteLength,
-              noAssert
+              noAssert,
             ) {
               offset = offset | 0;
               byteLength = byteLength | 0;
@@ -12936,7 +12929,7 @@
             Buffer.prototype.readIntBE = function readIntBE(
               offset,
               byteLength,
-              noAssert
+              noAssert,
             ) {
               offset = offset | 0;
               byteLength = byteLength | 0;
@@ -12963,7 +12956,7 @@
 
             Buffer.prototype.readInt16LE = function readInt16LE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 2, this.length);
               var val = this[offset] | (this[offset + 1] << 8);
@@ -12972,7 +12965,7 @@
 
             Buffer.prototype.readInt16BE = function readInt16BE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 2, this.length);
               var val = this[offset + 1] | (this[offset] << 8);
@@ -12981,7 +12974,7 @@
 
             Buffer.prototype.readInt32LE = function readInt32LE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 4, this.length);
 
@@ -12995,7 +12988,7 @@
 
             Buffer.prototype.readInt32BE = function readInt32BE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 4, this.length);
 
@@ -13009,7 +13002,7 @@
 
             Buffer.prototype.readFloatLE = function readFloatLE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 4, this.length);
               return ieee754.read(this, offset, true, 23, 4);
@@ -13017,7 +13010,7 @@
 
             Buffer.prototype.readFloatBE = function readFloatBE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 4, this.length);
               return ieee754.read(this, offset, false, 23, 4);
@@ -13025,7 +13018,7 @@
 
             Buffer.prototype.readDoubleLE = function readDoubleLE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 8, this.length);
               return ieee754.read(this, offset, true, 52, 8);
@@ -13033,7 +13026,7 @@
 
             Buffer.prototype.readDoubleBE = function readDoubleBE(
               offset,
-              noAssert
+              noAssert,
             ) {
               if (!noAssert) checkOffset(offset, 8, this.length);
               return ieee754.read(this, offset, false, 52, 8);
@@ -13042,7 +13035,7 @@
             function checkInt(buf, value, offset, ext, max, min) {
               if (!Buffer.isBuffer(buf))
                 throw new TypeError(
-                  '"buffer" argument must be a Buffer instance'
+                  '"buffer" argument must be a Buffer instance',
                 );
               if (value > max || value < min)
                 throw new RangeError('"value" argument is out of bounds');
@@ -13054,7 +13047,7 @@
               value,
               offset,
               byteLength,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13078,7 +13071,7 @@
               value,
               offset,
               byteLength,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13101,7 +13094,7 @@
             Buffer.prototype.writeUInt8 = function writeUInt8(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13127,7 +13120,7 @@
             Buffer.prototype.writeUInt16LE = function writeUInt16LE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13144,7 +13137,7 @@
             Buffer.prototype.writeUInt16BE = function writeUInt16BE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13173,7 +13166,7 @@
             Buffer.prototype.writeUInt32LE = function writeUInt32LE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13192,7 +13185,7 @@
             Buffer.prototype.writeUInt32BE = function writeUInt32BE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13212,7 +13205,7 @@
               value,
               offset,
               byteLength,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13240,7 +13233,7 @@
               value,
               offset,
               byteLength,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13267,7 +13260,7 @@
             Buffer.prototype.writeInt8 = function writeInt8(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13281,7 +13274,7 @@
             Buffer.prototype.writeInt16LE = function writeInt16LE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13298,7 +13291,7 @@
             Buffer.prototype.writeInt16BE = function writeInt16BE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13315,7 +13308,7 @@
             Buffer.prototype.writeInt32LE = function writeInt32LE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13335,7 +13328,7 @@
             Buffer.prototype.writeInt32BE = function writeInt32BE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               value = +value;
               offset = offset | 0;
@@ -13367,7 +13360,7 @@
                   offset,
                   4,
                   3.4028234663852886e38,
-                  -3.4028234663852886e38
+                  -3.4028234663852886e38,
                 );
               }
               ieee754.write(buf, value, offset, littleEndian, 23, 4);
@@ -13377,7 +13370,7 @@
             Buffer.prototype.writeFloatLE = function writeFloatLE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               return writeFloat(this, value, offset, true, noAssert);
             };
@@ -13385,7 +13378,7 @@
             Buffer.prototype.writeFloatBE = function writeFloatBE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               return writeFloat(this, value, offset, false, noAssert);
             };
@@ -13398,7 +13391,7 @@
                   offset,
                   8,
                   1.7976931348623157e308,
-                  -1.7976931348623157e308
+                  -1.7976931348623157e308,
                 );
               }
               ieee754.write(buf, value, offset, littleEndian, 52, 8);
@@ -13408,7 +13401,7 @@
             Buffer.prototype.writeDoubleLE = function writeDoubleLE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               return writeDouble(this, value, offset, true, noAssert);
             };
@@ -13416,7 +13409,7 @@
             Buffer.prototype.writeDoubleBE = function writeDoubleBE(
               value,
               offset,
-              noAssert
+              noAssert,
             ) {
               return writeDouble(this, value, offset, false, noAssert);
             };
@@ -13426,7 +13419,7 @@
               target,
               targetStart,
               start,
-              end
+              end,
             ) {
               if (!start) start = 0;
               if (!end && end !== 0) end = this.length;
@@ -13469,7 +13462,7 @@
                 Uint8Array.prototype.set.call(
                   target,
                   this.subarray(start, start + len),
-                  targetStart
+                  targetStart,
                 );
               }
 
@@ -13626,14 +13619,14 @@
                   if ((units -= 2) < 0) break;
                   bytes.push(
                     (codePoint >> 0x6) | 0xc0,
-                    (codePoint & 0x3f) | 0x80
+                    (codePoint & 0x3f) | 0x80,
                   );
                 } else if (codePoint < 0x10000) {
                   if ((units -= 3) < 0) break;
                   bytes.push(
                     (codePoint >> 0xc) | 0xe0,
                     ((codePoint >> 0x6) & 0x3f) | 0x80,
-                    (codePoint & 0x3f) | 0x80
+                    (codePoint & 0x3f) | 0x80,
                   );
                 } else if (codePoint < 0x110000) {
                   if ((units -= 4) < 0) break;
@@ -13641,7 +13634,7 @@
                     (codePoint >> 0x12) | 0xf0,
                     ((codePoint >> 0xc) & 0x3f) | 0x80,
                     ((codePoint >> 0x6) & 0x3f) | 0x80,
-                    (codePoint & 0x3f) | 0x80
+                    (codePoint & 0x3f) | 0x80,
                   );
                 } else {
                   throw new Error("Invalid code point");
@@ -13691,16 +13684,16 @@
             function isnan(val) {
               return val !== val; // eslint-disable-line no-self-compare
             }
-          }.call(
+          }).call(
             this,
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-              ? self
-              : typeof window !== "undefined"
-              ? window
-              : {}
-          ));
+                ? self
+                : typeof window !== "undefined"
+                  ? window
+                  : {},
+          );
         },
         { "base64-js": 40, ieee754: 83, isarray: 86 },
       ],
@@ -13818,7 +13811,7 @@
             function objectToString(o) {
               return Object.prototype.toString.call(o);
             }
-          }.call(this, { isBuffer: require("../../is-buffer/index.js") }));
+          }).call(this, { isBuffer: require("../../is-buffer/index.js") });
         },
         { "../../is-buffer/index.js": 85 },
       ],
@@ -21386,7 +21379,7 @@
                 } else {
                   // At least give some kind of context to the user
                   var err = new Error(
-                    'Uncaught, unspecified "error" event. (' + er + ")"
+                    'Uncaught, unspecified "error" event. (' + er + ")",
                   );
                   err.context = er;
                   throw err;
@@ -21439,7 +21432,7 @@
               this.emit(
                 "newListener",
                 type,
-                isFunction(listener.listener) ? listener.listener : listener
+                isFunction(listener.listener) ? listener.listener : listener,
               );
 
             if (!this._events[type])
@@ -21465,7 +21458,7 @@
                   "(node) warning: possible EventEmitter memory " +
                     "leak detected. %d listeners added. " +
                     "Use emitter.setMaxListeners() to increase limit.",
-                  this._events[type].length
+                  this._events[type].length,
                 );
                 if (typeof console.trace === "function") {
                   // not supported in IE 10
@@ -21829,10 +21822,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 ("undefined" != typeof window
                   ? window
                   : "undefined" != typeof global
-                  ? global
-                  : "undefined" != typeof self
-                  ? self
-                  : this
+                    ? global
+                    : "undefined" != typeof self
+                      ? self
+                      : this
                 ).JSZip = t();
               }
             })(function () {
@@ -21858,7 +21851,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                       s,
                       a,
                       o,
-                      h
+                      h,
                     );
                   }
                   return o[r].exports;
@@ -21912,7 +21905,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               p.charAt(n) +
                                 p.charAt(s) +
                                 p.charAt(a) +
-                                p.charAt(o)
+                                p.charAt(o),
                             );
                         return h.join("");
                       }),
@@ -21928,7 +21921,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             u = "data:";
                           if (t.substr(0, u.length) === u)
                             throw new Error(
-                              "Invalid base64 input, it looks like a data url."
+                              "Invalid base64 input, it looks like a data url.",
                             );
                           var l,
                             f =
@@ -21942,7 +21935,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             f % 1 != 0)
                           )
                             throw new Error(
-                              "Invalid base64 input, bad content length."
+                              "Invalid base64 input, bad content length.",
                             );
                           for (
                             l = d.uint8array
@@ -21985,7 +21978,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                       (o.prototype = {
                         getContentWorker: function () {
                           var t = new n(
-                              i.Promise.resolve(this.compressedContent)
+                              i.Promise.resolve(this.compressedContent),
                             )
                               .pipe(this.compression.uncompressWorker())
                               .pipe(new a("data_length")),
@@ -21997,7 +21990,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 e.uncompressedSize
                               )
                                 throw new Error(
-                                  "Bug : uncompressed data size mismatch"
+                                  "Bug : uncompressed data size mismatch",
                                 );
                             }),
                             t
@@ -22005,15 +21998,15 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         },
                         getCompressedWorker: function () {
                           return new n(
-                            i.Promise.resolve(this.compressedContent)
+                            i.Promise.resolve(this.compressedContent),
                           )
                             .withStreamInfo(
                               "compressedSize",
-                              this.compressedSize
+                              this.compressedSize,
                             )
                             .withStreamInfo(
                               "uncompressedSize",
-                              this.uncompressedSize
+                              this.uncompressedSize,
                             )
                             .withStreamInfo("crc32", this.crc32)
                             .withStreamInfo("compression", this.compression);
@@ -22316,7 +22309,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               !1,
                               this.currentSourceOffset,
                               this.zipPlatform,
-                              this.encodeFileName
+                              this.encodeFileName,
                             );
                             this.push({
                               data: r.fileRecord,
@@ -22333,7 +22326,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               !0,
                               this.currentSourceOffset,
                               this.zipPlatform,
-                              this.encodeFileName
+                              this.encodeFileName,
                             );
                           if ((this.dirRecords.push(r.dirRecord), e))
                             this.push({
@@ -22387,7 +22380,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               r,
                               t,
                               this.zipComment,
-                              this.encodeFileName
+                              this.encodeFileName,
                             );
                           this.push({ data: i, meta: { percent: 100 } });
                         }),
@@ -22423,10 +22416,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             (!this.previous && this._sources.length
                               ? (this.prepareNextSource(), !0)
                               : this.previous ||
-                                this._sources.length ||
-                                this.generatedError
-                              ? void 0
-                              : (this.end(), !0))
+                                  this._sources.length ||
+                                  this.generatedError
+                                ? void 0
+                                : (this.end(), !0))
                           );
                         }),
                         (s.prototype.error = function (t) {
@@ -22463,7 +22456,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             a.streamFiles,
                             e,
                             a.platform,
-                            a.encodeFileName
+                            a.encodeFileName,
                           ),
                           h = 0;
                         try {
@@ -22474,7 +22467,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                   i = u[r];
                                 if (!i)
                                   throw new Error(
-                                    r + " is not a valid compression method !"
+                                    r + " is not a valid compression method !",
                                   );
                                 return i;
                               })(e.options.compression, a.compression),
@@ -22511,7 +22504,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         if (!(this instanceof i)) return new i();
                         if (arguments.length)
                           throw new Error(
-                            "The constructor with parameters has been removed in JSZip 3.0, please check the upgrade guide."
+                            "The constructor with parameters has been removed in JSZip 3.0, please check the upgrade guide.",
                           );
                         (this.files = Object.create(null)),
                           (this.comment = null),
@@ -22579,8 +22572,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           u.isNode && u.isStream(t)
                             ? n.Promise.reject(
                                 new Error(
-                                  "JSZip can't accept a stream when loading a zip file."
-                                )
+                                  "JSZip can't accept a stream when loading a zip file.",
+                                ),
                               )
                             : i
                                 .prepareContent(
@@ -22588,7 +22581,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                   t,
                                   !0,
                                   s.optimizedBinaryString,
-                                  s.base64
+                                  s.base64,
                                 )
                                 .then(function (t) {
                                   var e = new h(s);
@@ -22721,7 +22714,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             return Buffer.from(t, e);
                           if ("number" == typeof t)
                             throw new Error(
-                              'The "data" argument must not be a number'
+                              'The "data" argument must not be a number',
                             );
                           return new Buffer(t, e);
                         },
@@ -22758,7 +22751,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           "string" == typeof s.unixPermissions &&
                             (s.unixPermissions = parseInt(
                               s.unixPermissions,
-                              8
+                              8,
                             )),
                           s.unixPermissions &&
                             16384 & s.unixPermissions &&
@@ -22785,14 +22778,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           e instanceof d || e instanceof l
                             ? e
                             : p.isNode && p.isStream(e)
-                            ? new m(t, e)
-                            : u.prepareContent(
-                                t,
-                                e,
-                                s.binary,
-                                s.optimizedBinaryString,
-                                s.base64
-                              );
+                              ? new m(t, e)
+                              : u.prepareContent(
+                                  t,
+                                  e,
+                                  s.binary,
+                                  s.optimizedBinaryString,
+                                  s.base64,
+                                );
                         var h = new c(t, o, s);
                         this.files[t] = h;
                       }
@@ -22836,7 +22829,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                       var i = {
                         load: function () {
                           throw new Error(
-                            "This method has been removed in JSZip 3.0, please check the upgrade guide."
+                            "This method has been removed in JSZip 3.0, please check the upgrade guide.",
                           );
                         },
                         forEach: function (t) {
@@ -22905,7 +22898,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         },
                         generate: function (t) {
                           throw new Error(
-                            "This method has been removed in JSZip 3.0, please check the upgrade guide."
+                            "This method has been removed in JSZip 3.0, please check the upgrade guide.",
                           );
                         },
                         generateInternalStream: function (t) {
@@ -23019,7 +23012,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           if ((this.checkOffset(t), 0 === t)) return [];
                           var e = this.data.slice(
                             this.zero + this.index,
-                            this.zero + this.index + t
+                            this.zero + this.index + t,
                           );
                           return (this.index += t), e;
                         }),
@@ -23048,7 +23041,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 this.length +
                                 ", asked index = " +
                                 t +
-                                "). Corrupted zip ?"
+                                "). Corrupted zip ?",
                             );
                         },
                         setIndex: function (t) {
@@ -23084,8 +23077,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               (t >> 16) & 31,
                               (t >> 11) & 31,
                               (t >> 5) & 63,
-                              (31 & t) << 1
-                            )
+                              (31 & t) << 1,
+                            ),
                           );
                         },
                       }),
@@ -23105,7 +23098,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           this.checkOffset(t);
                           var e = this.data.slice(
                             this.zero + this.index,
-                            this.zero + this.index + t
+                            this.zero + this.index + t,
                           );
                           return (this.index += t), e;
                         }),
@@ -23134,7 +23127,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           this.checkOffset(t);
                           var e = this.data.slice(
                             this.zero + this.index,
-                            this.zero + this.index + t
+                            this.zero + this.index + t,
                           );
                           return (this.index += t), e;
                         }),
@@ -23155,7 +23148,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             return new Uint8Array(0);
                           var e = this.data.subarray(
                             this.zero + this.index,
-                            this.zero + this.index + t
+                            this.zero + this.index + t,
                           );
                           return (this.index += t), e;
                         }),
@@ -23180,8 +23173,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             ? "nodebuffer" === e
                               ? new o(t)
                               : n.uint8array
-                              ? new h(i.transformTo("uint8array", t))
-                              : new s(i.transformTo("array", t))
+                                ? new h(i.transformTo("uint8array", t))
+                                : new s(i.transformTo("array", t))
                             : new a(t)
                         );
                       };
@@ -23240,7 +23233,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         (s.prototype.processChunk = function (t) {
                           (this.streamInfo.crc32 = n(
                             t.data,
-                            this.streamInfo.crc32 || 0
+                            this.streamInfo.crc32 || 0,
                           )),
                             this.push(t);
                         }),
@@ -23294,7 +23287,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             },
                             function (t) {
                               e.error(t);
-                            }
+                            },
                           );
                       }
                       i.inherits(s, n),
@@ -23415,7 +23408,9 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         registerPrevious: function (t) {
                           if (this.isLocked)
                             throw new Error(
-                              "The stream '" + this + "' has already been used."
+                              "The stream '" +
+                                this +
+                                "' has already been used.",
                             );
                           (this.streamInfo = t.streamInfo),
                             this.mergeStreamInfo(),
@@ -23472,7 +23467,9 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         lock: function () {
                           if (this.isLocked)
                             throw new Error(
-                              "The stream '" + this + "' has already been used."
+                              "The stream '" +
+                                this +
+                                "' has already been used.",
                             );
                           (this.isLocked = !0),
                             this.previous && this.previous.lock();
@@ -23519,7 +23516,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                     case "blob":
                                       return h.newBlob(
                                         h.transformTo("arraybuffer", e),
-                                        r
+                                        r,
                                       );
                                     case "base64":
                                       return u.encode(e);
@@ -23541,7 +23538,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                       case "array":
                                         return Array.prototype.concat.apply(
                                           [],
-                                          e
+                                          e,
                                         );
                                       case "uint8array":
                                         for (
@@ -23557,11 +23554,11 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                         throw new Error(
                                           "concat : unsupported type '" +
                                             t +
-                                            "'"
+                                            "'",
                                         );
                                     }
                                   })(n, i),
-                                  a
+                                  a,
                                 );
                                 e(t);
                               } catch (t) {
@@ -23626,12 +23623,12 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           )
                             throw new Error(
                               this._outputType +
-                                " is not supported by this method"
+                                " is not supported by this method",
                             );
                           return new o(
                             this,
                             { objectMode: "nodebuffer" !== this._outputType },
-                            t
+                            t,
                           );
                         },
                       }),
@@ -23707,14 +23704,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           252 <= n
                             ? 6
                             : 248 <= n
-                            ? 5
-                            : 240 <= n
-                            ? 4
-                            : 224 <= n
-                            ? 3
-                            : 192 <= n
-                            ? 2
-                            : 1;
+                              ? 5
+                              : 240 <= n
+                                ? 4
+                                : 224 <= n
+                                  ? 3
+                                  : 192 <= n
+                                    ? 2
+                                    : 1;
                       u[254] = u[254] = 1;
                       function a() {
                         i.call(this, "utf-8 decode"), (this.leftOver = null);
@@ -23745,10 +23742,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                     r < 128
                                       ? 1
                                       : r < 2048
-                                      ? 2
-                                      : r < 65536
-                                      ? 3
-                                      : 4);
+                                        ? 2
+                                        : r < 65536
+                                          ? 3
+                                          : 4);
                               for (
                                 e = h.uint8array
                                   ? new Uint8Array(o)
@@ -23802,10 +23799,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                     1 < n
                                       ? (a[r++] = 65533)
                                       : i < 65536
-                                      ? (a[r++] = i)
-                                      : ((i -= 65536),
-                                        (a[r++] = 55296 | ((i >> 10) & 1023)),
-                                        (a[r++] = 56320 | (1023 & i)));
+                                        ? (a[r++] = i)
+                                        : ((i -= 65536),
+                                          (a[r++] = 55296 | ((i >> 10) & 1023)),
+                                          (a[r++] = 56320 | (1023 & i)));
                                   }
                                 return (
                                   a.length !== r &&
@@ -23817,21 +23814,21 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               })(
                                 (t = o.transformTo(
                                   h.uint8array ? "uint8array" : "array",
-                                  t
-                                ))
+                                  t,
+                                )),
                               );
                         }),
                         o.inherits(a, i),
                         (a.prototype.processChunk = function (t) {
                           var e = o.transformTo(
                             h.uint8array ? "uint8array" : "array",
-                            t.data
+                            t.data,
                           );
                           if (this.leftOver && this.leftOver.length) {
                             if (h.uint8array) {
                               var r = e;
                               (e = new Uint8Array(
-                                r.length + this.leftOver.length
+                                r.length + this.leftOver.length,
                               )).set(this.leftOver, 0),
                                 e.set(r, this.leftOver.length);
                             } else e = this.leftOver.concat(e);
@@ -23850,10 +23847,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               return r < 0
                                 ? e
                                 : 0 === r
-                                ? e
-                                : r + u[t[r]] > e
-                                ? r
-                                : e;
+                                  ? e
+                                  : r + u[t[r]] > e
+                                    ? r
+                                    : e;
                             })(e),
                             n = e;
                           i !== e.length &&
@@ -23933,14 +23930,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               ? i.push(
                                   String.fromCharCode.apply(
                                     null,
-                                    t.slice(n, Math.min(n + r, s))
-                                  )
+                                    t.slice(n, Math.min(n + r, s)),
+                                  ),
                                 )
                               : i.push(
                                   String.fromCharCode.apply(
                                     null,
-                                    t.subarray(n, Math.min(n + r, s))
-                                  )
+                                    t.subarray(n, Math.min(n + r, s)),
+                                  ),
                                 ),
                               (n += r);
                           return i.join("");
@@ -23958,7 +23955,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 1 ===
                                   String.fromCharCode.apply(
                                     null,
-                                    new Uint8Array(1)
+                                    new Uint8Array(1),
                                   ).length
                               );
                             } catch (t) {
@@ -23972,7 +23969,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 1 ===
                                   String.fromCharCode.apply(
                                     null,
-                                    r.allocBuffer(1)
+                                    r.allocBuffer(1),
                                   ).length
                               );
                             } catch (t) {
@@ -24041,7 +24038,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           array: function (t) {
                             return d(
                               new Uint8Array(t),
-                              new Array(t.byteLength)
+                              new Array(t.byteLength),
                             );
                           },
                           arraybuffer: n,
@@ -24088,20 +24085,20 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           return "string" == typeof t
                             ? "string"
                             : "[object Array]" ===
-                              Object.prototype.toString.call(t)
-                            ? "array"
-                            : o.nodebuffer && r.isBuffer(t)
-                            ? "nodebuffer"
-                            : o.uint8array && t instanceof Uint8Array
-                            ? "uint8array"
-                            : o.arraybuffer && t instanceof ArrayBuffer
-                            ? "arraybuffer"
-                            : void 0;
+                                Object.prototype.toString.call(t)
+                              ? "array"
+                              : o.nodebuffer && r.isBuffer(t)
+                                ? "nodebuffer"
+                                : o.uint8array && t instanceof Uint8Array
+                                  ? "uint8array"
+                                  : o.arraybuffer && t instanceof ArrayBuffer
+                                    ? "arraybuffer"
+                                    : void 0;
                         }),
                         (a.checkSupport = function (t) {
                           if (!o[t.toLowerCase()])
                             throw new Error(
-                              t + " is not supported by this platform"
+                              t + " is not supported by this platform",
                             );
                         }),
                         (a.MAX_VALUE_16BITS = 65535),
@@ -24144,7 +24141,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 (i instanceof Blob ||
                                   -1 !==
                                     ["[object File]", "[object Blob]"].indexOf(
-                                      Object.prototype.toString.call(i)
+                                      Object.prototype.toString.call(i),
                                     )) &&
                                 "undefined" != typeof FileReader
                                 ? new u.Promise(function (e, r) {
@@ -24174,7 +24171,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                               t,
                                               o.uint8array
                                                 ? new Uint8Array(t.length)
-                                                : new Array(t.length)
+                                                : new Array(t.length),
                                             );
                                           })(t))),
                                   t)
@@ -24182,8 +24179,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                     new Error(
                                       "Can't read the data of '" +
                                         r +
-                                        "'. Is it in a supported JavaScript type (String, Blob, ArrayBuffer, etc) ?"
-                                    )
+                                        "'. Is it in a supported JavaScript type (String, Blob, ArrayBuffer, etc) ?",
+                                    ),
                                   );
                             });
                         });
@@ -24217,7 +24214,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 n.pretty(e) +
                                 ", expected " +
                                 n.pretty(t) +
-                                ")"
+                                ")",
                             );
                           }
                         },
@@ -24278,7 +24275,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             1 < this.disksCount)
                           )
                             throw new Error(
-                              "Multi-volumes zip are not supported"
+                              "Multi-volumes zip are not supported",
                             );
                         },
                         readLocalFiles: function () {
@@ -24296,13 +24293,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           for (
                             this.reader.setIndex(this.centralDirOffset);
                             this.reader.readAndCheckSignature(
-                              s.CENTRAL_FILE_HEADER
+                              s.CENTRAL_FILE_HEADER,
                             );
 
                           )
                             (t = new a(
                               { zip64: this.zip64 },
-                              this.loadOptions
+                              this.loadOptions,
                             )).readCentralPart(this.reader),
                               this.files.push(t);
                           if (
@@ -24314,20 +24311,20 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               "Corrupted zip or bug: expected " +
                                 this.centralDirRecords +
                                 " records in central dir, got " +
-                                this.files.length
+                                this.files.length,
                             );
                         },
                         readEndOfCentral: function () {
                           var t = this.reader.lastIndexOfSignature(
-                            s.CENTRAL_DIRECTORY_END
+                            s.CENTRAL_DIRECTORY_END,
                           );
                           if (t < 0)
                             throw !this.isSignature(0, s.LOCAL_FILE_HEADER)
                               ? new Error(
-                                  "Can't find end of central directory : is this a zip file ? If it is, see https://stuk.github.io/jszip/documentation/howto/read_zip.html"
+                                  "Can't find end of central directory : is this a zip file ? If it is, see https://stuk.github.io/jszip/documentation/howto/read_zip.html",
                                 )
                               : new Error(
-                                  "Corrupted zip: can't find end of central directory"
+                                  "Corrupted zip: can't find end of central directory",
                                 );
                           this.reader.setIndex(t);
                           var e = t;
@@ -24346,36 +24343,36 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             if (
                               ((this.zip64 = !0),
                               (t = this.reader.lastIndexOfSignature(
-                                s.ZIP64_CENTRAL_DIRECTORY_LOCATOR
+                                s.ZIP64_CENTRAL_DIRECTORY_LOCATOR,
                               )) < 0)
                             )
                               throw new Error(
-                                "Corrupted zip: can't find the ZIP64 end of central directory locator"
+                                "Corrupted zip: can't find the ZIP64 end of central directory locator",
                               );
                             if (
                               (this.reader.setIndex(t),
                               this.checkSignature(
-                                s.ZIP64_CENTRAL_DIRECTORY_LOCATOR
+                                s.ZIP64_CENTRAL_DIRECTORY_LOCATOR,
                               ),
                               this.readBlockZip64EndOfCentralLocator(),
                               !this.isSignature(
                                 this.relativeOffsetEndOfZip64CentralDir,
-                                s.ZIP64_CENTRAL_DIRECTORY_END
+                                s.ZIP64_CENTRAL_DIRECTORY_END,
                               ) &&
                                 ((this.relativeOffsetEndOfZip64CentralDir =
                                   this.reader.lastIndexOfSignature(
-                                    s.ZIP64_CENTRAL_DIRECTORY_END
+                                    s.ZIP64_CENTRAL_DIRECTORY_END,
                                   )),
                                 this.relativeOffsetEndOfZip64CentralDir < 0))
                             )
                               throw new Error(
-                                "Corrupted zip: can't find the ZIP64 end of central directory"
+                                "Corrupted zip: can't find the ZIP64 end of central directory",
                               );
                             this.reader.setIndex(
-                              this.relativeOffsetEndOfZip64CentralDir
+                              this.relativeOffsetEndOfZip64CentralDir,
                             ),
                               this.checkSignature(
-                                s.ZIP64_CENTRAL_DIRECTORY_END
+                                s.ZIP64_CENTRAL_DIRECTORY_END,
                               ),
                               this.readBlockZip64EndOfCentral();
                           }
@@ -24390,7 +24387,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             throw new Error(
                               "Corrupted zip: missing " +
                                 Math.abs(i) +
-                                " bytes."
+                                " bytes.",
                             );
                         },
                         prepareReader: function (t) {
@@ -24446,7 +24443,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               -1 === this.uncompressedSize)
                           )
                             throw new Error(
-                              "Bug or corrupted zip : didn't get enough information from the central directory (compressedSize === -1 || uncompressedSize === -1)"
+                              "Bug or corrupted zip : didn't get enough information from the central directory (compressedSize === -1 || uncompressedSize === -1)",
                             );
                           if (
                             null ===
@@ -24462,14 +24459,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 s.pretty(this.compressionMethod) +
                                 " unknown (inner file : " +
                                 s.transformTo("string", this.fileName) +
-                                ")"
+                                ")",
                             );
                           this.decompressed = new n(
                             this.compressedSize,
                             this.uncompressedSize,
                             this.crc32,
                             e,
-                            t.readData(this.compressedSize)
+                            t.readData(this.compressedSize),
                           );
                         },
                         readCentralPart: function (t) {
@@ -24496,7 +24493,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             this.readExtraFields(t),
                             this.parseZIP64ExtraField(t),
                             (this.fileComment = t.readData(
-                              this.fileCommentLength
+                              this.fileCommentLength,
                             ));
                         },
                         processAttributes: function () {
@@ -24552,7 +24549,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           if (this.useUTF8())
                             (this.fileNameStr = o.utf8decode(this.fileName)),
                               (this.fileCommentStr = o.utf8decode(
-                                this.fileComment
+                                this.fileComment,
                               ));
                           else {
                             var e = this.findExtraFieldUnicodePath();
@@ -24578,8 +24575,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             return 1 !== e.readInt(1)
                               ? null
                               : a(this.fileName) !== e.readInt(4)
-                              ? null
-                              : o.utf8decode(e.readData(t.length - 5));
+                                ? null
+                                : o.utf8decode(e.readData(t.length - 5));
                           }
                           return null;
                         },
@@ -24590,8 +24587,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             return 1 !== e.readInt(1)
                               ? null
                               : a(this.fileComment) !== e.readInt(4)
-                              ? null
-                              : o.utf8decode(e.readData(t.length - 5));
+                                ? null
+                                : o.utf8decode(e.readData(t.length - 5));
                           }
                           return null;
                         },
@@ -24656,7 +24653,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         },
                         nodeStream: function (t, e) {
                           return this.internalStream(
-                            t || "nodebuffer"
+                            t || "nodebuffer",
                           ).toNodejsStream(e);
                         },
                         _compressWorker: function (t, e) {
@@ -24676,8 +24673,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           return this._data instanceof o
                             ? this._data.getContentWorker()
                             : this._data instanceof h
-                            ? this._data
-                            : new n(this._data);
+                              ? this._data
+                              : new n(this._data);
                         },
                       };
                       for (
@@ -24690,7 +24687,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           ],
                           l = function () {
                             throw new Error(
-                              "This method has been removed in JSZip 3.0, please check the upgrade guide."
+                              "This method has been removed in JSZip 3.0, please check the upgrade guide.",
                             );
                           },
                           f = 0;
@@ -24764,16 +24761,16 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         l.exports = function (t) {
                           1 !== h.push(t) || i || r();
                         };
-                      }.call(
+                      }).call(
                         this,
                         "undefined" != typeof global
                           ? global
                           : "undefined" != typeof self
-                          ? self
-                          : "undefined" != typeof window
-                          ? window
-                          : {}
-                      ));
+                            ? self
+                            : "undefined" != typeof window
+                              ? window
+                              : {},
+                      );
                     },
                     {},
                   ],
@@ -24815,8 +24812,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             ? l.reject(
                                 e,
                                 new TypeError(
-                                  "Cannot resolve promise with itself"
-                                )
+                                  "Cannot resolve promise with itself",
+                                ),
                               )
                             : l.resolve(e, t);
                         });
@@ -24867,7 +24864,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             return r.resolve(e()).then(function () {
                               throw t;
                             });
-                          }
+                          },
                         );
                       }),
                         (o.prototype.catch = function (t) {
@@ -24930,7 +24927,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             Object.prototype.toString.call(t)
                           )
                             return this.reject(
-                              new TypeError("must be an array")
+                              new TypeError("must be an array"),
                             );
                           var i = t.length,
                             n = !1;
@@ -24949,7 +24946,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               },
                               function (t) {
                                 n || ((n = !0), l.reject(o, t));
-                              }
+                              },
                             );
                           }
                         }),
@@ -24960,7 +24957,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             Object.prototype.toString.call(t)
                           )
                             return this.reject(
-                              new TypeError("must be an array")
+                              new TypeError("must be an array"),
                             );
                           var r = t.length,
                             i = !1;
@@ -24975,7 +24972,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 },
                                 function (t) {
                                   i || ((i = !0), l.reject(s, t));
-                                }
+                                },
                               );
                           var a;
                           return s;
@@ -24991,7 +24988,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         i,
                         t("./lib/deflate"),
                         t("./lib/inflate"),
-                        t("./lib/zlib/constants")
+                        t("./lib/zlib/constants"),
                       ),
                         (e.exports = i);
                     },
@@ -25027,7 +25024,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             strategy: d,
                             to: "",
                           },
-                          t || {}
+                          t || {},
                         );
                         var e = this.options;
                         e.raw && 0 < e.windowBits
@@ -25048,7 +25045,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           e.method,
                           e.windowBits,
                           e.memLevel,
-                          e.strategy
+                          e.strategy,
                         );
                         if (r !== l) throw new Error(n[r]);
                         if (
@@ -25061,9 +25058,9 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               "string" == typeof e.dictionary
                                 ? h.string2buf(e.dictionary)
                                 : "[object ArrayBuffer]" ===
-                                  u.call(e.dictionary)
-                                ? new Uint8Array(e.dictionary)
-                                : e.dictionary),
+                                    u.call(e.dictionary)
+                                  ? new Uint8Array(e.dictionary)
+                                  : e.dictionary),
                             (r = a.deflateSetDictionary(this.strm, i)) !== l)
                           )
                             throw new Error(n[r]);
@@ -25085,8 +25082,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           "string" == typeof t
                             ? (n.input = h.string2buf(t))
                             : "[object ArrayBuffer]" === u.call(t)
-                            ? (n.input = new Uint8Array(t))
-                            : (n.input = t),
+                              ? (n.input = new Uint8Array(t))
+                              : (n.input = t),
                           (n.next_in = 0),
                           (n.avail_in = n.input.length);
                         do {
@@ -25103,8 +25100,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             ("string" === this.options.to
                               ? this.onData(
                                   h.buf2binstring(
-                                    o.shrinkBuf(n.output, n.next_out)
-                                  )
+                                    o.shrinkBuf(n.output, n.next_out),
+                                  ),
                                 )
                               : this.onData(o.shrinkBuf(n.output, n.next_out)));
                         } while (
@@ -25162,7 +25159,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         if (!(this instanceof a)) return new a(t);
                         this.options = c.assign(
                           { chunkSize: 16384, windowBits: 0, to: "" },
-                          t || {}
+                          t || {},
                         );
                         var e = this.options;
                         e.raw &&
@@ -25210,8 +25207,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           "string" == typeof t
                             ? (h.input = p.binstring2buf(t))
                             : "[object ArrayBuffer]" === _.call(t)
-                            ? (h.input = new Uint8Array(t))
-                            : (h.input = t),
+                              ? (h.input = new Uint8Array(t))
+                              : (h.input = t),
                           (h.next_in = 0),
                           (h.avail_in = h.input.length);
                         do {
@@ -25227,8 +25224,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 "string" == typeof l
                                   ? p.string2buf(l)
                                   : "[object ArrayBuffer]" === _.call(l)
-                                  ? new Uint8Array(l)
-                                  : l),
+                                    ? new Uint8Array(l)
+                                    : l),
                               (r = d.inflateSetDictionary(this.strm, o))),
                             r === m.Z_BUF_ERROR &&
                               !0 === f &&
@@ -25250,7 +25247,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                   s && c.arraySet(h.output, h.output, n, s, 0),
                                   this.onData(a))
                                 : this.onData(
-                                    c.shrinkBuf(h.output, h.next_out)
+                                    c.shrinkBuf(h.output, h.next_out),
                                   ))),
                             0 === h.avail_in && 0 === h.avail_out && (f = !0);
                         } while (
@@ -25324,8 +25321,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           return t.length === e
                             ? t
                             : t.subarray
-                            ? t.subarray(0, e)
-                            : ((t.length = e), t);
+                              ? t.subarray(0, e)
+                              : ((t.length = e), t);
                         });
                       var n = {
                           arraySet: function (t, e, r, i, n) {
@@ -25391,14 +25388,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           252 <= i
                             ? 6
                             : 248 <= i
-                            ? 5
-                            : 240 <= i
-                            ? 4
-                            : 224 <= i
-                            ? 3
-                            : 192 <= i
-                            ? 2
-                            : 1;
+                              ? 5
+                              : 240 <= i
+                                ? 4
+                                : 224 <= i
+                                  ? 3
+                                  : 192 <= i
+                                    ? 2
+                                    : 1;
                       function l(t, e) {
                         if (
                           e < 65537 &&
@@ -25406,7 +25403,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         )
                           return String.fromCharCode.apply(
                             null,
-                            h.shrinkBuf(t, e)
+                            h.shrinkBuf(t, e),
                           );
                         for (var r = "", i = 0; i < e; i++)
                           r += String.fromCharCode(t[i]);
@@ -25480,10 +25477,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               1 < s
                                 ? (o[i++] = 65533)
                                 : n < 65536
-                                ? (o[i++] = n)
-                                : ((n -= 65536),
-                                  (o[i++] = 55296 | ((n >> 10) & 1023)),
-                                  (o[i++] = 56320 | (1023 & n)));
+                                  ? (o[i++] = n)
+                                  : ((n -= 65536),
+                                    (o[i++] = 55296 | ((n >> 10) & 1023)),
+                                    (o[i++] = 56320 | (1023 & n)));
                             }
                           return l(o, i);
                         }),
@@ -25499,10 +25496,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           return r < 0
                             ? e
                             : 0 === r
-                            ? e
-                            : r + u[t[r]] > e
-                            ? r
-                            : e;
+                              ? e
+                              : r + u[t[r]] > e
+                                ? r
+                                : e;
                         });
                     },
                     { "./common": 41 },
@@ -25639,7 +25636,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               e.pending_buf,
                               e.pending_out,
                               r,
-                              t.next_out
+                              t.next_out,
                             ),
                             (t.next_out += r),
                             (e.pending_out += r),
@@ -25653,7 +25650,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           t,
                           0 <= t.block_start ? t.block_start : -1,
                           t.strstart - t.block_start,
-                          e
+                          e,
                         ),
                           (t.block_start = t.strstart),
                           F(t.strm);
@@ -25818,7 +25815,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               ((i = u._tr_tally(
                                 t,
                                 t.strstart - t.match_start,
-                                t.match_length - x
+                                t.match_length - x,
                               )),
                               (t.lookahead -= t.match_length),
                               t.match_length <= t.max_lazy_match &&
@@ -25857,8 +25854,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           e === f
                             ? (N(t, !0), 0 === t.strm.avail_out ? O : B)
                             : t.last_lit && (N(t, !1), 0 === t.strm.avail_out)
-                            ? A
-                            : I
+                              ? A
+                              : I
                         );
                       }
                       function W(t, e) {
@@ -25897,7 +25894,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 i = u._tr_tally(
                                   t,
                                   t.strstart - 1 - t.prev_match,
-                                  t.prev_length - x
+                                  t.prev_length - x,
                                 ),
                                 t.lookahead -= t.prev_length - 1,
                                 t.prev_length -= 2;
@@ -25924,7 +25921,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               ((i = u._tr_tally(
                                 t,
                                 0,
-                                t.window[t.strstart - 1]
+                                t.window[t.strstart - 1],
                               )) && N(t, !1),
                               t.strstart++,
                               t.lookahead--,
@@ -25944,8 +25941,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           e === f
                             ? (N(t, !0), 0 === t.strm.avail_out ? O : B)
                             : t.last_lit && (N(t, !1), 0 === t.strm.avail_out)
-                            ? A
-                            : I
+                              ? A
+                              : I
                         );
                       }
                       function M(t, e, r, i, n) {
@@ -26194,7 +26191,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                         (i.gzhead.hcrc ? 2 : 0) +
                                         (i.gzhead.extra ? 4 : 0) +
                                         (i.gzhead.name ? 8 : 0) +
-                                        (i.gzhead.comment ? 16 : 0)
+                                        (i.gzhead.comment ? 16 : 0),
                                     ),
                                     U(i, 255 & i.gzhead.time),
                                     U(i, (i.gzhead.time >> 8) & 255),
@@ -26205,8 +26202,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                       9 === i.level
                                         ? 2
                                         : 2 <= i.strategy || i.level < 2
-                                        ? 4
-                                        : 0
+                                          ? 4
+                                          : 0,
                                     ),
                                     U(i, 255 & i.gzhead.os),
                                     i.gzhead.extra &&
@@ -26218,7 +26215,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                         t.adler,
                                         i.pending_buf,
                                         i.pending,
-                                        0
+                                        0,
                                       )),
                                     (i.gzindex = 0),
                                     (i.status = 69))
@@ -26232,8 +26229,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                       9 === i.level
                                         ? 2
                                         : 2 <= i.strategy || i.level < 2
-                                        ? 4
-                                        : 0
+                                          ? 4
+                                          : 0,
                                     ),
                                     U(i, 3),
                                     (i.status = E));
@@ -26243,10 +26240,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 (2 <= i.strategy || i.level < 2
                                   ? 0
                                   : i.level < 6
-                                  ? 1
-                                  : 6 === i.level
-                                  ? 2
-                                  : 3) << 6),
+                                    ? 1
+                                    : 6 === i.level
+                                      ? 2
+                                      : 3) << 6),
                                 0 !== i.strstart && (a |= 32),
                                 (a += 31 - (a % 31)),
                                 (i.status = E),
@@ -26267,7 +26264,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                       t.adler,
                                       i.pending_buf,
                                       i.pending - n,
-                                      n
+                                      n,
                                     )),
                                   F(t),
                                   (n = i.pending),
@@ -26282,7 +26279,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                   t.adler,
                                   i.pending_buf,
                                   i.pending - n,
-                                  n
+                                  n,
                                 )),
                                 i.gzindex === i.gzhead.extra.length &&
                                   ((i.gzindex = 0), (i.status = 73));
@@ -26299,7 +26296,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                       t.adler,
                                       i.pending_buf,
                                       i.pending - n,
-                                      n
+                                      n,
                                     )),
                                   F(t),
                                   (n = i.pending),
@@ -26321,7 +26318,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                   t.adler,
                                   i.pending_buf,
                                   i.pending - n,
-                                  n
+                                  n,
                                 )),
                                 0 === s && ((i.gzindex = 0), (i.status = 91));
                             } else i.status = 91;
@@ -26337,7 +26334,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                       t.adler,
                                       i.pending_buf,
                                       i.pending - n,
-                                      n
+                                      n,
                                     )),
                                   F(t),
                                   (n = i.pending),
@@ -26359,7 +26356,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                   t.adler,
                                   i.pending_buf,
                                   i.pending - n,
-                                  n
+                                  n,
                                 )),
                                 0 === s && (i.status = 103);
                             } else i.status = 103;
@@ -26406,7 +26403,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                         (r = u._tr_tally(
                                           t,
                                           0,
-                                          t.window[t.strstart]
+                                          t.window[t.strstart],
                                         )),
                                         t.lookahead--,
                                         t.strstart++,
@@ -26420,77 +26417,80 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                         ? (N(t, !0),
                                           0 === t.strm.avail_out ? O : B)
                                         : t.last_lit &&
-                                          (N(t, !1), 0 === t.strm.avail_out)
-                                        ? A
-                                        : I
+                                            (N(t, !1), 0 === t.strm.avail_out)
+                                          ? A
+                                          : I
                                     );
                                   })(i, e)
                                 : 3 === i.strategy
-                                ? (function (t, e) {
-                                    for (var r, i, n, s, a = t.window; ; ) {
-                                      if (t.lookahead <= S) {
-                                        if ((j(t), t.lookahead <= S && e === l))
+                                  ? (function (t, e) {
+                                      for (var r, i, n, s, a = t.window; ; ) {
+                                        if (t.lookahead <= S) {
+                                          if (
+                                            (j(t), t.lookahead <= S && e === l)
+                                          )
+                                            return A;
+                                          if (0 === t.lookahead) break;
+                                        }
+                                        if (
+                                          ((t.match_length = 0),
+                                          t.lookahead >= x &&
+                                            0 < t.strstart &&
+                                            (i = a[(n = t.strstart - 1)]) ===
+                                              a[++n] &&
+                                            i === a[++n] &&
+                                            i === a[++n])
+                                        ) {
+                                          s = t.strstart + S;
+                                          do {} while (
+                                            i === a[++n] &&
+                                            i === a[++n] &&
+                                            i === a[++n] &&
+                                            i === a[++n] &&
+                                            i === a[++n] &&
+                                            i === a[++n] &&
+                                            i === a[++n] &&
+                                            i === a[++n] &&
+                                            n < s
+                                          );
+                                          (t.match_length = S - (s - n)),
+                                            t.match_length > t.lookahead &&
+                                              (t.match_length = t.lookahead);
+                                        }
+                                        if (
+                                          (t.match_length >= x
+                                            ? ((r = u._tr_tally(
+                                                t,
+                                                1,
+                                                t.match_length - x,
+                                              )),
+                                              (t.lookahead -= t.match_length),
+                                              (t.strstart += t.match_length),
+                                              (t.match_length = 0))
+                                            : ((r = u._tr_tally(
+                                                t,
+                                                0,
+                                                t.window[t.strstart],
+                                              )),
+                                              t.lookahead--,
+                                              t.strstart++),
+                                          r &&
+                                            (N(t, !1), 0 === t.strm.avail_out))
+                                        )
                                           return A;
-                                        if (0 === t.lookahead) break;
                                       }
-                                      if (
-                                        ((t.match_length = 0),
-                                        t.lookahead >= x &&
-                                          0 < t.strstart &&
-                                          (i = a[(n = t.strstart - 1)]) ===
-                                            a[++n] &&
-                                          i === a[++n] &&
-                                          i === a[++n])
-                                      ) {
-                                        s = t.strstart + S;
-                                        do {} while (
-                                          i === a[++n] &&
-                                          i === a[++n] &&
-                                          i === a[++n] &&
-                                          i === a[++n] &&
-                                          i === a[++n] &&
-                                          i === a[++n] &&
-                                          i === a[++n] &&
-                                          i === a[++n] &&
-                                          n < s
-                                        );
-                                        (t.match_length = S - (s - n)),
-                                          t.match_length > t.lookahead &&
-                                            (t.match_length = t.lookahead);
-                                      }
-                                      if (
-                                        (t.match_length >= x
-                                          ? ((r = u._tr_tally(
-                                              t,
-                                              1,
-                                              t.match_length - x
-                                            )),
-                                            (t.lookahead -= t.match_length),
-                                            (t.strstart += t.match_length),
-                                            (t.match_length = 0))
-                                          : ((r = u._tr_tally(
-                                              t,
-                                              0,
-                                              t.window[t.strstart]
-                                            )),
-                                            t.lookahead--,
-                                            t.strstart++),
-                                        r && (N(t, !1), 0 === t.strm.avail_out))
-                                      )
-                                        return A;
-                                    }
-                                    return (
-                                      (t.insert = 0),
-                                      e === f
-                                        ? (N(t, !0),
-                                          0 === t.strm.avail_out ? O : B)
-                                        : t.last_lit &&
-                                          (N(t, !1), 0 === t.strm.avail_out)
-                                        ? A
-                                        : I
-                                    );
-                                  })(i, e)
-                                : h[i.level].func(i, e);
+                                      return (
+                                        (t.insert = 0),
+                                        e === f
+                                          ? (N(t, !0),
+                                            0 === t.strm.avail_out ? O : B)
+                                          : t.last_lit &&
+                                              (N(t, !1), 0 === t.strm.avail_out)
+                                            ? A
+                                            : I
+                                      );
+                                    })(i, e)
+                                  : h[i.level].func(i, e);
                             if (
                               ((o !== O && o !== B) || (i.status = 666),
                               o === A || o === O)
@@ -26518,20 +26518,21 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           return e !== f
                             ? m
                             : i.wrap <= 0
-                            ? 1
-                            : (2 === i.wrap
-                                ? (U(i, 255 & t.adler),
-                                  U(i, (t.adler >> 8) & 255),
-                                  U(i, (t.adler >> 16) & 255),
-                                  U(i, (t.adler >> 24) & 255),
-                                  U(i, 255 & t.total_in),
-                                  U(i, (t.total_in >> 8) & 255),
-                                  U(i, (t.total_in >> 16) & 255),
-                                  U(i, (t.total_in >> 24) & 255))
-                                : (P(i, t.adler >>> 16), P(i, 65535 & t.adler)),
-                              F(t),
-                              0 < i.wrap && (i.wrap = -i.wrap),
-                              0 !== i.pending ? m : 1);
+                              ? 1
+                              : (2 === i.wrap
+                                  ? (U(i, 255 & t.adler),
+                                    U(i, (t.adler >> 8) & 255),
+                                    U(i, (t.adler >> 16) & 255),
+                                    U(i, (t.adler >> 24) & 255),
+                                    U(i, 255 & t.total_in),
+                                    U(i, (t.total_in >> 8) & 255),
+                                    U(i, (t.total_in >> 16) & 255),
+                                    U(i, (t.total_in >> 24) & 255))
+                                  : (P(i, t.adler >>> 16),
+                                    P(i, 65535 & t.adler)),
+                                F(t),
+                                0 < i.wrap && (i.wrap = -i.wrap),
+                                0 !== i.pending ? m : 1);
                         }),
                         (r.deflateEnd = function (t) {
                           var e;
@@ -27175,7 +27176,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                       ((k = r.head.extra_len - r.length),
                                       r.head.extra ||
                                         (r.head.extra = new Array(
-                                          r.head.extra_len
+                                          r.head.extra_len,
                                         )),
                                       I.arraySet(r.head.extra, i, s, c, k)),
                                     512 & r.flags &&
@@ -27386,7 +27387,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                     r.lencode,
                                     0,
                                     r.work,
-                                    S
+                                    S,
                                   )),
                                   (r.lenbits = S.bits),
                                   x)
@@ -27482,7 +27483,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                     r.lencode,
                                     0,
                                     r.work,
-                                    S
+                                    S,
                                   )),
                                   (r.lenbits = S.bits),
                                   x)
@@ -27503,7 +27504,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                     r.distcode,
                                     0,
                                     r.work,
-                                    S
+                                    S,
                                   )),
                                   (r.distbits = S.bits),
                                   x)
@@ -27798,10 +27799,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             ? 0 !== (r = t.state).wrap && 11 !== r.mode
                               ? U
                               : 11 === r.mode && O(1, e, i, 0) !== r.check
-                              ? -3
-                              : Z(t, e, i, i)
-                              ? ((r.mode = 31), -4)
-                              : ((r.havedict = 1), N)
+                                ? -3
+                                : Z(t, e, i, i)
+                                  ? ((r.mode = 31), -4)
+                                  : ((r.havedict = 1), N)
                             : U;
                         }),
                         (r.inflateInfo = "pako inflate (from Nodeca project)");
@@ -27888,8 +27889,12 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             0 === t
                               ? ((A = R = a), 19)
                               : 1 === t
-                              ? ((A = F), (I -= 257), (R = N), (T -= 257), 256)
-                              : ((A = U), (R = P), -1)),
+                                ? ((A = F),
+                                  (I -= 257),
+                                  (R = N),
+                                  (T -= 257),
+                                  256)
+                                : ((A = U), (R = P), -1)),
                           (b = y),
                           (d = s),
                           (S = v = E = 0),
@@ -27905,8 +27910,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 a[v] < c
                                   ? ((m = 0), a[v])
                                   : a[v] > c
-                                  ? ((m = R[T + a[v]]), A[I + a[v]])
-                                  : ((m = 96), 0),
+                                    ? ((m = R[T + a[v]]), A[I + a[v]])
+                                    : ((m = 96), 0),
                               h = 1 << (b - S),
                               y = u = 1 << x;
                             (n[d + (E >> S) + (u -= h)] =
@@ -28144,9 +28149,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             ? ((t.heap[++t.heap_len] = u = r), (t.depth[r] = 0))
                             : (s[2 * r + 1] = 0);
                         for (; t.heap_len < 2; )
-                          (s[
-                            2 * (n = t.heap[++t.heap_len] = u < 2 ? ++u : 0)
-                          ] = 1),
+                          (s[2 * (n = t.heap[++t.heap_len] = u < 2 ? ++u : 0)] =
+                            1),
                             (t.depth[n] = 0),
                             t.opt_len--,
                             o && (t.static_len -= a[2 * n + 1]);
@@ -28248,18 +28252,18 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                               (o < u
                                 ? (t.bl_tree[2 * n] += o)
                                 : 0 !== n
-                                ? (n !== s && t.bl_tree[2 * n]++,
-                                  t.bl_tree[2 * b]++)
-                                : o <= 10
-                                ? t.bl_tree[2 * v]++
-                                : t.bl_tree[2 * y]++,
+                                  ? (n !== s && t.bl_tree[2 * n]++,
+                                    t.bl_tree[2 * b]++)
+                                  : o <= 10
+                                    ? t.bl_tree[2 * v]++
+                                    : t.bl_tree[2 * y]++,
                               (s = n),
                               (u =
                                 (o = 0) === a
                                   ? ((h = 138), 3)
                                   : n === a
-                                  ? ((h = 6), 3)
-                                  : ((h = 7), 4)));
+                                    ? ((h = 6), 3)
+                                    : ((h = 7), 4)));
                       }
                       function V(t, e, r) {
                         var i,
@@ -28286,15 +28290,15 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                   L(t, b, t.bl_tree),
                                   P(t, o - 3, 2))
                                 : o <= 10
-                                ? (L(t, v, t.bl_tree), P(t, o - 3, 3))
-                                : (L(t, y, t.bl_tree), P(t, o - 11, 7));
+                                  ? (L(t, v, t.bl_tree), P(t, o - 3, 3))
+                                  : (L(t, y, t.bl_tree), P(t, o - 11, 7));
                             (s = n),
                               (u =
                                 (o = 0) === a
                                   ? ((h = 138), 3)
                                   : n === a
-                                  ? ((h = 6), 3)
-                                  : ((h = 7), 4));
+                                    ? ((h = 6), 3)
+                                    : ((h = 7), 4));
                           }
                       }
                       i(T);
@@ -28309,7 +28313,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 t.window,
                                 e,
                                 r,
-                                t.pending
+                                t.pending,
                               ),
                               (t.pending += r);
                           })(t, e, r, !0);
@@ -28402,28 +28406,28 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             r + 4 <= n && -1 !== e
                               ? J(t, e, r, i)
                               : 4 === t.strategy || s === n
-                              ? (P(t, 2 + (i ? 1 : 0), 3), K(t, z, C))
-                              : (P(t, 4 + (i ? 1 : 0), 3),
-                                (function (t, e, r, i) {
-                                  var n;
-                                  for (
-                                    P(t, e - 257, 5),
-                                      P(t, r - 1, 5),
-                                      P(t, i - 4, 4),
-                                      n = 0;
-                                    n < i;
-                                    n++
-                                  )
-                                    P(t, t.bl_tree[2 * S[n] + 1], 3);
-                                  V(t, t.dyn_ltree, e - 1),
-                                    V(t, t.dyn_dtree, r - 1);
-                                })(
-                                  t,
-                                  t.l_desc.max_code + 1,
-                                  t.d_desc.max_code + 1,
-                                  a + 1
-                                ),
-                                K(t, t.dyn_ltree, t.dyn_dtree)),
+                                ? (P(t, 2 + (i ? 1 : 0), 3), K(t, z, C))
+                                : (P(t, 4 + (i ? 1 : 0), 3),
+                                  (function (t, e, r, i) {
+                                    var n;
+                                    for (
+                                      P(t, e - 257, 5),
+                                        P(t, r - 1, 5),
+                                        P(t, i - 4, 4),
+                                        n = 0;
+                                      n < i;
+                                      n++
+                                    )
+                                      P(t, t.bl_tree[2 * S[n] + 1], 3);
+                                    V(t, t.dyn_ltree, e - 1),
+                                      V(t, t.dyn_dtree, r - 1);
+                                  })(
+                                    t,
+                                    t.l_desc.max_code + 1,
+                                    t.d_desc.max_code + 1,
+                                    a + 1,
+                                  ),
+                                  K(t, t.dyn_ltree, t.dyn_dtree)),
                             W(t),
                             i && M(t);
                         }),
@@ -28497,20 +28501,20 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   ],
                 },
                 {},
-                [10]
+                [10],
               )(10);
             });
-          }.call(
+          }).call(
             this,
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-              ? self
-              : typeof window !== "undefined"
-              ? window
-              : {},
-            require("buffer").Buffer
-          ));
+                ? self
+                : typeof window !== "undefined"
+                  ? window
+                  : {},
+            require("buffer").Buffer,
+          );
         },
         { buffer: 78 },
       ],
@@ -28561,7 +28565,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   string,
                   description,
                   startIndex,
-                  endIndex
+                  endIndex,
                 );
               },
             };
@@ -28572,7 +28576,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
             string,
             description,
             startIndex,
-            endIndex
+            endIndex,
           ) {
             this._string = string;
             this._description = description;
@@ -28586,7 +28590,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               this._string,
               this._description,
               this._startIndex,
-              otherRange._endIndex
+              otherRange._endIndex,
             );
           };
 
@@ -28597,7 +28601,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               "%sLine number: %s\nCharacter number: %s",
               description,
               position.lineNumber,
-              position.characterNumber
+              position.characterNumber,
             );
           };
 
@@ -28685,7 +28689,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
             };
 
             var infixRules = new InfixRules(
-              infixRuleBuilders.map(createInfixRule)
+              infixRuleBuilders.map(createInfixRule),
             );
             var prefixRule = rules.firstOf(name, prefixRules);
 
@@ -28727,13 +28731,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
           function InfixRules(infixRules) {
             function untilExclusive(name) {
               return new InfixRules(
-                infixRules.slice(0, ruleNames().indexOf(name))
+                infixRules.slice(0, ruleNames().indexOf(name)),
               );
             }
 
             function untilInclusive(name) {
               return new InfixRules(
-                infixRules.slice(0, ruleNames().indexOf(name) + 1)
+                infixRules.slice(0, ruleNames().indexOf(name) + 1),
               );
             }
 
@@ -28753,7 +28757,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   leftResult = results.success(
                     currentResult.value()(leftResult.value(), source),
                     currentResult.remaining(),
-                    source
+                    source,
                   );
                 } else if (currentResult.isFailure()) {
                   return leftResult;
@@ -28768,7 +28772,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 "infix",
                 infixRules.map(function (infix) {
                   return infix.rule;
-                })
+                }),
               )(tokens);
             }
 
@@ -29102,7 +29106,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     var token = new Token(
                       rules[i].name,
                       value,
-                      source.range(startIndex, endIndex)
+                      source.range(startIndex, endIndex),
                     );
                     return { token: token, endIndex: endIndex };
                   }
@@ -29112,7 +29116,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               var token = new Token(
                 "unrecognisedCharacter",
                 string.substring(startIndex, endIndex),
-                source.range(startIndex, endIndex)
+                source.range(startIndex, endIndex),
               );
               return { token: token, endIndex: endIndex };
             }
@@ -29121,7 +29125,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               return new Token(
                 "end",
                 null,
-                source.range(input.length, input.length)
+                source.range(input.length, input.length),
               );
             }
 
@@ -29223,7 +29227,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     return {
                       result: results.error(
                         subResult.errors(),
-                        subResult.remaining()
+                        subResult.remaining(),
                       ),
                       hasCut: hasCut,
                     };
@@ -29234,7 +29238,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 {
                   result: results.success(new SequenceValues(), input),
                   hasCut: false,
-                }
+                },
               ).result;
               var source = input.to(result.remaining());
               return result.map(function (values) {
@@ -29266,7 +29270,9 @@ https://github.com/nodeca/pako/blob/master/LICENSE
           SequenceValues.prototype.withValue = function (rule, value) {
             if (rule.captureName && rule.captureName in this._values) {
               throw new Error(
-                'Cannot add second value for capture "' + rule.captureName + '"'
+                'Cannot add second value for capture "' +
+                  rule.captureName +
+                  '"',
               );
             } else {
               var newValues = _.clone(this._values);
@@ -29281,7 +29287,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               return this._values[rule.captureName];
             } else {
               throw new Error(
-                'No value for capture "' + rule.captureName + '"'
+                'No value for capture "' + rule.captureName + '"',
               );
             }
           };
@@ -29379,13 +29385,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 var remainingRule = zeroOrMore(
                   exports.then(
                     exports.sequence(separator, mainRule),
-                    exports.sequence.extract(mainRule)
-                  )
+                    exports.sequence.extract(mainRule),
+                  ),
                 );
                 var remainingResult = remainingRule(result.remaining());
                 return results.success(
                   [result.value()].concat(remainingResult.value()),
-                  remainingResult.remaining()
+                  remainingResult.remaining(),
                 );
               } else if (isOneOrMore || result.isError()) {
                 return result;
@@ -29411,7 +29417,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
             });
             var repeatedRule = exports.firstOf.apply(
               null,
-              ["rules"].concat(rights)
+              ["rules"].concat(rights),
             );
 
             return function (input) {
@@ -29428,7 +29434,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 leftResult = results.success(
                   right(leftResult.value(), source),
                   remaining,
-                  source
+                  source,
                 );
                 repeatedResult = repeatedRule(leftResult.remaining());
               }
@@ -29654,7 +29660,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 // Skip empty and invalid entries
                 if (typeof path !== "string") {
                   throw new TypeError(
-                    "Arguments to path.resolve must be strings"
+                    "Arguments to path.resolve must be strings",
                   );
                 } else if (!path) {
                   continue;
@@ -29672,7 +29678,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 filter(resolvedPath.split("/"), function (p) {
                   return !!p;
                 }),
-                !resolvedAbsolute
+                !resolvedAbsolute,
               ).join("/");
 
               return (resolvedAbsolute ? "/" : "") + resolvedPath || ".";
@@ -29689,7 +29695,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 filter(path.split("/"), function (p) {
                   return !!p;
                 }),
-                !isAbsolute
+                !isAbsolute,
               ).join("/");
 
               if (!path && !isAbsolute) {
@@ -29714,11 +29720,11 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 filter(paths, function (p, index) {
                   if (typeof p !== "string") {
                     throw new TypeError(
-                      "Arguments to path.join must be strings"
+                      "Arguments to path.join must be strings",
                     );
                   }
                   return p;
-                }).join("/")
+                }).join("/"),
               );
             };
 
@@ -29818,7 +29824,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     if (start < 0) start = str.length + start;
                     return str.substr(start, len);
                   };
-          }.call(this, require("_process")));
+          }).call(this, require("_process"));
         },
         { _process: 102 },
       ],
@@ -29871,7 +29877,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   });
               }
             }
-          }.call(this, require("_process")));
+          }).call(this, require("_process"));
         },
         { _process: 102 },
       ],
@@ -30399,7 +30405,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               state,
               chunk,
               encoding,
-              addToFront
+              addToFront,
             ) {
               var er = chunkInvalid(state, chunk);
               if (er) {
@@ -30811,7 +30817,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   ) {
                     debug(
                       "false write response, pause",
-                      src._readableState.awaitDrain
+                      src._readableState.awaitDrain,
                     );
                     src._readableState.awaitDrain++;
                     increasedAwaitDrain = true;
@@ -31215,7 +31221,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               }
               return -1;
             }
-          }.call(this, require("_process")));
+          }).call(this, require("_process"));
         },
         {
           "./_stream_duplex": 104,
@@ -31310,7 +31316,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
             if (!cb)
               return stream.emit(
                 "error",
-                new Error("no writecb in Transform class")
+                new Error("no writecb in Transform class"),
               );
 
             ts.writechunk = null;
@@ -31408,7 +31414,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               this._transform(
                 ts.writechunk,
                 ts.writeencoding,
-                ts.afterTransform
+                ts.afterTransform,
               );
             } else {
               // mark that we need a transform, so that any data that comes in
@@ -31619,8 +31625,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 Object.defineProperty(WritableState.prototype, "buffer", {
                   get: internalUtil.deprecate(function () {
                     return this.getBuffer();
-                  }, "_writableState.buffer is deprecated. Use _writableState.getBuffer " +
-                    "instead."),
+                  }, "_writableState.buffer is deprecated. Use _writableState.getBuffer " + "instead."),
                 });
               } catch (_) {}
             })();
@@ -31766,7 +31771,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
             };
 
             Writable.prototype.setDefaultEncoding = function setDefaultEncoding(
-              encoding
+              encoding,
             ) {
               // node::ParseEncoding() requires lower case.
               if (typeof encoding === "string")
@@ -31936,7 +31941,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   state.length,
                   buffer,
                   "",
-                  holder.finish
+                  holder.finish,
                 );
 
                 // doWrite is almost always async, defer these to save a bit of time
@@ -32073,7 +32078,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 }
               };
             }
-          }.call(this, require("_process")));
+          }).call(this, require("_process"));
         },
         {
           "./_stream_duplex": 104,
@@ -32188,7 +32193,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
             ) {
               module.exports = Stream;
             }
-          }.call(this, require("_process")));
+          }).call(this, require("_process"));
         },
         {
           "./lib/_stream_duplex.js": 104,
@@ -32356,7 +32361,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                       default:
                         error(
                           parser,
-                          "Max buffer length exceeded: " + buffers[i]
+                          "Max buffer length exceeded: " + buffers[i],
                         );
                     }
                   }
@@ -33021,7 +33026,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           XML_NAMESPACE +
                           "\n" +
                           "Actual: " +
-                          parser.attribValue
+                          parser.attribValue,
                       );
                     } else if (
                       local === "xmlns" &&
@@ -33033,7 +33038,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           XMLNS_NAMESPACE +
                           "\n" +
                           "Actual: " +
-                          parser.attribValue
+                          parser.attribValue,
                       );
                     } else {
                       var tag = parser.tag;
@@ -33080,7 +33085,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     strictFail(
                       parser,
                       "Unbound namespace prefix: " +
-                        JSON.stringify(parser.tagName)
+                        JSON.stringify(parser.tagName),
                     );
                     tag.uri = qn.prefix;
                   }
@@ -33119,7 +33124,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     if (prefix && prefix !== "xmlns" && !uri) {
                       strictFail(
                         parser,
-                        "Unbound namespace prefix: " + JSON.stringify(prefix)
+                        "Unbound namespace prefix: " + JSON.stringify(prefix),
                       );
                       a.uri = prefix;
                     }
@@ -33193,7 +33198,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 if (t < 0) {
                   strictFail(
                     parser,
-                    "Unmatched closing tag: " + parser.tagName
+                    "Unmatched closing tag: " + parser.tagName,
                   );
                   parser.textNode += "</" + parser.tagName + ">";
                   parser.state = S.TEXT;
@@ -33291,7 +33296,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 if (parser.closed) {
                   return error(
                     parser,
-                    "Cannot write after close. Assign an onready handler."
+                    "Cannot write after close. Assign an onready handler.",
                   );
                 }
                 if (chunk === null) {
@@ -33431,7 +33436,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         if (parser.doctype || parser.sawRoot) {
                           strictFail(
                             parser,
-                            "Inappropriately located doctype declaration"
+                            "Inappropriately located doctype declaration",
                           );
                         }
                         parser.doctype = "";
@@ -33624,7 +33629,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                       } else {
                         strictFail(
                           parser,
-                          "Forward-slash in opening tag not followed by >"
+                          "Forward-slash in opening tag not followed by >",
                         );
                         parser.state = S.ATTRIB;
                       }
@@ -33762,7 +33767,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           } else {
                             strictFail(
                               parser,
-                              "Invalid tagname in closing tag."
+                              "Invalid tagname in closing tag.",
                             );
                           }
                         } else {
@@ -33901,7 +33906,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 })();
               }
             })(typeof exports === "undefined" ? (this.sax = {}) : exports);
-          }.call(this, require("buffer").Buffer));
+          }).call(this, require("buffer").Buffer);
         },
         { buffer: 78, stream: 115, string_decoder: 116 },
       ],
@@ -34199,7 +34204,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 this.charBuffer,
                 0,
                 buffer.length - this.charReceived,
-                end
+                end,
               );
               end -= this.charReceived;
             }
@@ -34295,19 +34300,19 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               typeof exports === "object" && typeof module !== "undefined"
                 ? (module.exports = factory())
                 : typeof define === "function" && define.amd
-                ? define("underscore", factory)
-                : ((global =
-                    typeof globalThis !== "undefined"
-                      ? globalThis
-                      : global || self),
-                  (function () {
-                    var current = global._;
-                    var exports = (global._ = factory());
-                    exports.noConflict = function () {
-                      global._ = current;
-                      return exports;
-                    };
-                  })());
+                  ? define("underscore", factory)
+                  : ((global =
+                      typeof globalThis !== "undefined"
+                        ? globalThis
+                        : global || self),
+                    (function () {
+                      var current = global._;
+                      var exports = (global._ = factory());
+                      exports.noConflict = function () {
+                        global._ = current;
+                        return exports;
+                      };
+                    })());
             })(this, function () {
               //     Underscore.js 1.13.1
               //     https://underscorejs.org
@@ -34357,7 +34362,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               // Keys in IE < 9 that won't be iterated by `for key in ...` and thus missed.
               var hasEnumBug = !{ toString: null }.propertyIsEnumerable(
-                "toString"
+                "toString",
               );
               var nonEnumerableProps = [
                 "valueOf",
@@ -34699,7 +34704,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 return new Uint8Array(
                   bufferSource.buffer || bufferSource,
                   bufferSource.byteOffset || 0,
-                  getByteLength(bufferSource)
+                  getByteLength(bufferSource),
                 );
               }
 
@@ -34775,7 +34780,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                       toBufferView(a),
                       toBufferView(b),
                       aStack,
-                      bStack
+                      bStack,
                     );
                 }
 
@@ -35125,7 +35130,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         accumulator,
                         value,
                         index,
-                        collection
+                        collection,
                       );
                     };
                 }
@@ -35173,7 +35178,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   results[currentKey] = iteratee(
                     obj[currentKey],
                     currentKey,
-                    obj
+                    obj,
                   );
                 }
                 return results;
@@ -35303,7 +35308,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     (settings.interpolate || noMatch).source,
                     (settings.evaluate || noMatch).source,
                   ].join("|") + "|$",
-                  "g"
+                  "g",
                 );
 
                 // Compile the template source, escaping string literals appropriately.
@@ -35331,7 +35336,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
                     // Adobe VMs need the match returned to produce the correct offset.
                     return match;
-                  }
+                  },
                 );
                 source += "';\n";
 
@@ -35340,7 +35345,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   // Insure against third-party code injection. (CVE-2021-23358)
                   if (!bareIdentifier.test(argument))
                     throw new Error(
-                      "variable is not a bare identifier: " + argument
+                      "variable is not a bare identifier: " + argument,
                     );
                 } else {
                   // If a variable is not specified, place data values in local scope.
@@ -35416,7 +35421,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 boundFunc,
                 context,
                 callingContext,
-                args
+                args,
               ) {
                 if (!(callingContext instanceof boundFunc))
                   return sourceFunc.apply(context, args);
@@ -35462,7 +35467,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     bound,
                     context,
                     this,
-                    args.concat(callArgs)
+                    args.concat(callArgs),
                   );
                 });
                 return bound;
@@ -35840,7 +35845,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     obj,
                     optimizeCb(iteratee, context, 4),
                     memo,
-                    initial
+                    initial,
                   );
                 };
               }
@@ -36050,7 +36055,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     }
                     return left.index - right.index;
                   }),
-                  "value"
+                  "value",
                 );
               }
 
@@ -36164,7 +36169,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 return slice.call(
                   array,
                   0,
-                  Math.max(0, array.length - (n == null || guard ? 1 : n))
+                  Math.max(0, array.length - (n == null || guard ? 1 : n)),
                 );
               }
 
@@ -36383,7 +36388,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     }
                     return chainResult(this, obj);
                   };
-                }
+                },
               );
 
               // Add all accessor `Array` functions to the wrapper.
@@ -36557,16 +36562,16 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return _;
             });
-          }.call(
+          }).call(
             this,
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-              ? self
-              : typeof window !== "undefined"
-              ? window
-              : {}
-          ));
+                ? self
+                : typeof window !== "undefined"
+                  ? window
+                  : {},
+          );
         },
         {},
       ],
@@ -36639,16 +36644,16 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               if (null == val) return false;
               return String(val).toLowerCase() === "true";
             }
-          }.call(
+          }).call(
             this,
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-              ? self
-              : typeof window !== "undefined"
-              ? window
-              : {}
-          ));
+                ? self
+                : typeof window !== "undefined"
+                  ? window
+                  : {},
+          );
         },
         {},
       ],
@@ -36938,13 +36943,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 if (isRegExp(value)) {
                   return ctx.stylize(
                     RegExp.prototype.toString.call(value),
-                    "regexp"
+                    "regexp",
                   );
                 }
                 if (isDate(value)) {
                   return ctx.stylize(
                     Date.prototype.toString.call(value),
-                    "date"
+                    "date",
                   );
                 }
                 if (isError(value)) {
@@ -36991,7 +36996,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 if (isRegExp(value)) {
                   return ctx.stylize(
                     RegExp.prototype.toString.call(value),
-                    "regexp"
+                    "regexp",
                   );
                 } else {
                   return ctx.stylize("[Object]", "special");
@@ -37007,7 +37012,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   value,
                   recurseTimes,
                   visibleKeys,
-                  keys
+                  keys,
                 );
               } else {
                 output = keys.map(function (key) {
@@ -37017,7 +37022,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     recurseTimes,
                     visibleKeys,
                     key,
-                    array
+                    array,
                   );
                 });
               }
@@ -37061,8 +37066,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                       recurseTimes,
                       visibleKeys,
                       String(i),
-                      true
-                    )
+                      true,
+                    ),
                   );
                 } else {
                   output.push("");
@@ -37077,8 +37082,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                       recurseTimes,
                       visibleKeys,
                       key,
-                      true
-                    )
+                      true,
+                    ),
                   );
                 }
               });
@@ -37091,7 +37096,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               recurseTimes,
               visibleKeys,
               key,
-              array
+              array,
             ) {
               var name, str, desc;
               desc = Object.getOwnPropertyDescriptor(value, key) || {
@@ -37309,7 +37314,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               console.log(
                 "%s - %s",
                 timestamp(),
-                exports.format.apply(exports, arguments)
+                exports.format.apply(exports, arguments),
               );
             };
 
@@ -37343,17 +37348,17 @@ https://github.com/nodeca/pako/blob/master/LICENSE
             function hasOwnProperty(obj, prop) {
               return Object.prototype.hasOwnProperty.call(obj, prop);
             }
-          }.call(
+          }).call(
             this,
             require("_process"),
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-              ? self
-              : typeof window !== "undefined"
-              ? window
-              : {}
-          ));
+                ? self
+                : typeof window !== "undefined"
+                  ? window
+                  : {},
+          );
         },
         { "./support/isBuffer": 120, _process: 102, inherits: 119 },
       ],
@@ -37461,7 +37466,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
             module.exports.isPlainObject = isPlainObject;
 
             module.exports.getValue = getValue;
-          }.call(this));
+          }).call(this);
         },
         {},
       ],
@@ -37478,12 +37483,12 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 this.parent = parent;
                 if (name == null) {
                   throw new Error(
-                    "Missing attribute name. " + this.debugInfo(name)
+                    "Missing attribute name. " + this.debugInfo(name),
                   );
                 }
                 if (value == null) {
                   throw new Error(
-                    "Missing attribute value. " + this.debugInfo(name)
+                    "Missing attribute value. " + this.debugInfo(name),
                   );
                 }
                 this.name = this.stringify.attName(name);
@@ -37525,7 +37530,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLAttribute;
             })();
-          }.call(this));
+          }).call(this);
         },
         {},
       ],
@@ -37572,7 +37577,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLCData;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./XMLNode": 135 },
       ],
@@ -37619,7 +37624,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLComment;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./XMLNode": 135 },
       ],
@@ -37654,28 +37659,30 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 attributeName,
                 attributeType,
                 defaultValueType,
-                defaultValue
+                defaultValue,
               ) {
                 XMLDTDAttList.__super__.constructor.call(this, parent);
                 if (elementName == null) {
                   throw new Error(
-                    "Missing DTD element name. " + this.debugInfo()
+                    "Missing DTD element name. " + this.debugInfo(),
                   );
                 }
                 if (attributeName == null) {
                   throw new Error(
-                    "Missing DTD attribute name. " + this.debugInfo(elementName)
+                    "Missing DTD attribute name. " +
+                      this.debugInfo(elementName),
                   );
                 }
                 if (!attributeType) {
                   throw new Error(
-                    "Missing DTD attribute type. " + this.debugInfo(elementName)
+                    "Missing DTD attribute type. " +
+                      this.debugInfo(elementName),
                   );
                 }
                 if (!defaultValueType) {
                   throw new Error(
                     "Missing DTD attribute default. " +
-                      this.debugInfo(elementName)
+                      this.debugInfo(elementName),
                   );
                 }
                 if (defaultValueType.indexOf("#") !== 0) {
@@ -37683,12 +37690,12 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 }
                 if (
                   !defaultValueType.match(
-                    /^(#REQUIRED|#IMPLIED|#FIXED|#DEFAULT)$/
+                    /^(#REQUIRED|#IMPLIED|#FIXED|#DEFAULT)$/,
                   )
                 ) {
                   throw new Error(
                     "Invalid default value type; expected: #REQUIRED, #IMPLIED, #FIXED or #DEFAULT. " +
-                      this.debugInfo(elementName)
+                      this.debugInfo(elementName),
                   );
                 }
                 if (
@@ -37697,7 +37704,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 ) {
                   throw new Error(
                     "Default value only applies to #FIXED or #DEFAULT. " +
-                      this.debugInfo(elementName)
+                      this.debugInfo(elementName),
                   );
                 }
                 this.elementName = this.stringify.eleName(elementName);
@@ -37713,7 +37720,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLDTDAttList;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./XMLNode": 135 },
       ],
@@ -37746,7 +37753,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 XMLDTDElement.__super__.constructor.call(this, parent);
                 if (name == null) {
                   throw new Error(
-                    "Missing DTD element name. " + this.debugInfo()
+                    "Missing DTD element name. " + this.debugInfo(),
                   );
                 }
                 if (!value) {
@@ -37765,7 +37772,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLDTDElement;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./XMLNode": 135 },
       ],
@@ -37801,12 +37808,12 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 XMLDTDEntity.__super__.constructor.call(this, parent);
                 if (name == null) {
                   throw new Error(
-                    "Missing DTD entity name. " + this.debugInfo(name)
+                    "Missing DTD entity name. " + this.debugInfo(name),
                   );
                 }
                 if (value == null) {
                   throw new Error(
-                    "Missing DTD entity value. " + this.debugInfo(name)
+                    "Missing DTD entity value. " + this.debugInfo(name),
                   );
                 }
                 this.pe = !!pe;
@@ -37817,13 +37824,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   if (!value.pubID && !value.sysID) {
                     throw new Error(
                       "Public and/or system identifiers are required for an external entity. " +
-                        this.debugInfo(name)
+                        this.debugInfo(name),
                     );
                   }
                   if (value.pubID && !value.sysID) {
                     throw new Error(
                       "System identifier is required for a public external entity. " +
-                        this.debugInfo(name)
+                        this.debugInfo(name),
                     );
                   }
                   if (value.pubID != null) {
@@ -37838,7 +37845,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   if (this.pe && this.nData) {
                     throw new Error(
                       "Notation declaration is not allowed in a parameter entity. " +
-                        this.debugInfo(name)
+                        this.debugInfo(name),
                     );
                   }
                 }
@@ -37850,7 +37857,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLDTDEntity;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./Utility": 122, "./XMLNode": 135 },
       ],
@@ -37883,13 +37890,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 XMLDTDNotation.__super__.constructor.call(this, parent);
                 if (name == null) {
                   throw new Error(
-                    "Missing DTD notation name. " + this.debugInfo(name)
+                    "Missing DTD notation name. " + this.debugInfo(name),
                   );
                 }
                 if (!value.pubID && !value.sysID) {
                   throw new Error(
                     "Public or system identifiers are required for an external entity. " +
-                      this.debugInfo(name)
+                      this.debugInfo(name),
                   );
                 }
                 this.name = this.stringify.eleName(name);
@@ -37907,7 +37914,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLDTDNotation;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./XMLNode": 135 },
       ],
@@ -37966,7 +37973,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLDeclaration;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./Utility": 122, "./XMLNode": 135 },
       ],
@@ -38041,7 +38048,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 attributeName,
                 attributeType,
                 defaultValueType,
-                defaultValue
+                defaultValue,
               ) {
                 var child;
                 child = new XMLDTDAttList(
@@ -38050,7 +38057,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   attributeName,
                   attributeType,
                   defaultValueType,
-                  defaultValue
+                  defaultValue,
                 );
                 this.children.push(child);
                 return this;
@@ -38090,14 +38097,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 attributeName,
                 attributeType,
                 defaultValueType,
-                defaultValue
+                defaultValue,
               ) {
                 return this.attList(
                   elementName,
                   attributeName,
                   attributeType,
                   defaultValueType,
-                  defaultValue
+                  defaultValue,
                 );
               };
 
@@ -38119,7 +38126,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLDocType;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         {
           "./Utility": 122,
@@ -38193,7 +38200,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLDocument;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         {
           "./Utility": 122,
@@ -38297,7 +38304,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 if (this.root && this.currentLevel === -1) {
                   throw new Error(
                     "Document can only have one root node. " +
-                      this.debugInfo(name)
+                      this.debugInfo(name),
                   );
                 }
                 this.openCurrent();
@@ -38324,7 +38331,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               XMLDocumentCB.prototype.element = function (
                 name,
                 attributes,
-                text
+                text,
               ) {
                 if (
                   this.currentNode &&
@@ -38341,7 +38348,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 if (!this.currentNode || this.currentNode.children) {
                   throw new Error(
                     "att() can only be used immediately after an ele() call in callback mode. " +
-                      this.debugInfo(name)
+                      this.debugInfo(name),
                   );
                 }
                 if (name != null) {
@@ -38361,7 +38368,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     this.currentNode.attributes[name] = new XMLAttribute(
                       this,
                       name,
-                      value
+                      value,
                     );
                   }
                 }
@@ -38374,7 +38381,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 node = new XMLText(this, value);
                 this.onData(
                   this.writer.text(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38385,7 +38392,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 node = new XMLCData(this, value);
                 this.onData(
                   this.writer.cdata(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38396,7 +38403,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 node = new XMLComment(this, value);
                 this.onData(
                   this.writer.comment(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38407,7 +38414,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 node = new XMLRaw(this, value);
                 this.onData(
                   this.writer.raw(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38440,9 +38447,9 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   this.onData(
                     this.writer.processingInstruction(
                       node,
-                      this.currentLevel + 1
+                      this.currentLevel + 1,
                     ),
-                    this.currentLevel + 1
+                    this.currentLevel + 1,
                   );
                 }
                 return this;
@@ -38451,7 +38458,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               XMLDocumentCB.prototype.declaration = function (
                 version,
                 encoding,
-                standalone
+                standalone,
               ) {
                 var node;
                 this.openCurrent();
@@ -38461,7 +38468,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 node = new XMLDeclaration(this, version, encoding, standalone);
                 this.onData(
                   this.writer.declaration(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38488,7 +38495,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 node = new XMLDTDElement(this, name, value);
                 this.onData(
                   this.writer.dtdElement(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38498,7 +38505,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 attributeName,
                 attributeType,
                 defaultValueType,
-                defaultValue
+                defaultValue,
               ) {
                 var node;
                 this.openCurrent();
@@ -38508,11 +38515,11 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   attributeName,
                   attributeType,
                   defaultValueType,
-                  defaultValue
+                  defaultValue,
                 );
                 this.onData(
                   this.writer.dtdAttList(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38523,7 +38530,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 node = new XMLDTDEntity(this, false, name, value);
                 this.onData(
                   this.writer.dtdEntity(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38534,7 +38541,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 node = new XMLDTDEntity(this, true, name, value);
                 this.onData(
                   this.writer.dtdEntity(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38545,7 +38552,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 node = new XMLDTDNotation(this, name, value);
                 this.onData(
                   this.writer.dtdNotation(node, this.currentLevel + 1),
-                  this.currentLevel + 1
+                  this.currentLevel + 1,
                 );
                 return this;
               };
@@ -38594,7 +38601,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   }
                   this.onData(
                     this.writer.openNode(node, this.currentLevel),
-                    this.currentLevel
+                    this.currentLevel,
                   );
                   return (node.isOpen = true);
                 }
@@ -38604,7 +38611,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 if (!node.isClosed) {
                   this.onData(
                     this.writer.closeNode(node, this.currentLevel),
-                    this.currentLevel
+                    this.currentLevel,
                   );
                   return (node.isClosed = true);
                 }
@@ -38655,7 +38662,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               XMLDocumentCB.prototype.dec = function (
                 version,
                 encoding,
-                standalone
+                standalone,
               ) {
                 return this.declaration(version, encoding, standalone);
               };
@@ -38728,7 +38735,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLDocumentCB;
             })();
-          }.call(this));
+          }).call(this);
         },
         {
           "./Utility": 122,
@@ -38852,7 +38859,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 var attName, i, len;
                 if (name == null) {
                   throw new Error(
-                    "Missing attribute name. " + this.debugInfo()
+                    "Missing attribute name. " + this.debugInfo(),
                   );
                 }
                 name = getValue(name);
@@ -38881,7 +38888,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLElement;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./Utility": 122, "./XMLAttribute": 123, "./XMLNode": 135 },
       ],
@@ -38986,7 +38993,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     ) {
                       lastChild = this.attribute(
                         key.substr(this.stringify.convertAttKey.length),
-                        val
+                        val,
                       );
                     } else if (
                       !this.options.separateArrayItems &&
@@ -39037,7 +39044,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   ) {
                     lastChild = this.instruction(
                       name.substr(this.stringify.convertPIKey.length),
-                      text
+                      text,
                     );
                   } else {
                     lastChild = this.node(name, attributes, text);
@@ -39048,7 +39055,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     "Could not create any elements with: " +
                       name +
                       ". " +
-                      this.debugInfo()
+                      this.debugInfo(),
                   );
                 }
                 return lastChild;
@@ -39057,13 +39064,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               XMLNode.prototype.insertBefore = function (
                 name,
                 attributes,
-                text
+                text,
               ) {
                 var child, i, removed;
                 if (this.isRoot) {
                   throw new Error(
                     "Cannot insert elements at root level. " +
-                      this.debugInfo(name)
+                      this.debugInfo(name),
                   );
                 }
                 i = this.parent.children.indexOf(this);
@@ -39076,13 +39083,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               XMLNode.prototype.insertAfter = function (
                 name,
                 attributes,
-                text
+                text,
               ) {
                 var child, i, removed;
                 if (this.isRoot) {
                   throw new Error(
                     "Cannot insert elements at root level. " +
-                      this.debugInfo(name)
+                      this.debugInfo(name),
                   );
                 }
                 i = this.parent.children.indexOf(this);
@@ -39096,13 +39103,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 var i, ref1;
                 if (this.isRoot) {
                   throw new Error(
-                    "Cannot remove the root element. " + this.debugInfo()
+                    "Cannot remove the root element. " + this.debugInfo(),
                   );
                 }
                 i = this.parent.children.indexOf(this);
                 [].splice.apply(
                   this.parent.children,
-                  [i, i - i + 1].concat((ref1 = []))
+                  [i, i - i + 1].concat((ref1 = [])),
                 ),
                   ref1;
                 return this.parent;
@@ -39200,7 +39207,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   instruction = new XMLProcessingInstruction(
                     this,
                     target,
-                    value
+                    value,
                   );
                   this.children.push(instruction);
                 }
@@ -39228,7 +39235,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               XMLNode.prototype.declaration = function (
                 version,
                 encoding,
-                standalone
+                standalone,
               ) {
                 var doc, xmldec;
                 doc = this.document();
@@ -39268,7 +39275,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               XMLNode.prototype.up = function () {
                 if (this.isRoot) {
                   throw new Error(
-                    "The root node has no parent. Use doc() if you need to get the document object."
+                    "The root node has no parent. Use doc() if you need to get the document object.",
                   );
                 }
                 return this.parent;
@@ -39309,7 +39316,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 i = this.parent.children.indexOf(this);
                 if (i < 1) {
                   throw new Error(
-                    "Already at the first node. " + this.debugInfo()
+                    "Already at the first node. " + this.debugInfo(),
                   );
                 }
                 return this.parent.children[i - 1];
@@ -39320,7 +39327,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 i = this.parent.children.indexOf(this);
                 if (i === -1 || i === this.parent.children.length - 1) {
                   throw new Error(
-                    "Already at the last node. " + this.debugInfo()
+                    "Already at the last node. " + this.debugInfo(),
                   );
                 }
                 return this.parent.children[i + 1];
@@ -39430,7 +39437,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLNode;
             })();
-          }.call(this));
+          }).call(this);
         },
         {
           "./Utility": 122,
@@ -39472,11 +39479,11 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               function XMLProcessingInstruction(parent, target, value) {
                 XMLProcessingInstruction.__super__.constructor.call(
                   this,
-                  parent
+                  parent,
                 );
                 if (target == null) {
                   throw new Error(
-                    "Missing instruction target. " + this.debugInfo()
+                    "Missing instruction target. " + this.debugInfo(),
                   );
                 }
                 this.target = this.stringify.insTarget(target);
@@ -39497,7 +39504,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLProcessingInstruction;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./XMLNode": 135 },
       ],
@@ -39544,7 +39551,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLRaw;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./XMLNode": 135 },
       ],
@@ -39648,7 +39655,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               XMLStreamWriter.prototype.attribute = function (att) {
                 return this.stream.write(
-                  " " + att.name + '="' + att.value + '"'
+                  " " + att.name + '="' + att.value + '"',
                 );
               };
 
@@ -39658,7 +39665,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     "<![CDATA[" +
                     node.text +
                     "]]>" +
-                    this.endline(node)
+                    this.endline(node),
                 );
               };
 
@@ -39668,7 +39675,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     "<!-- " +
                     node.text +
                     " -->" +
-                    this.endline(node)
+                    this.endline(node),
                 );
               };
 
@@ -39692,7 +39699,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 this.stream.write("<!DOCTYPE " + node.root().name);
                 if (node.pubID && node.sysID) {
                   this.stream.write(
-                    ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"'
+                    ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"',
                   );
                 } else if (node.sysID) {
                   this.stream.write(' SYSTEM "' + node.sysID + '"');
@@ -39727,7 +39734,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         break;
                       default:
                         throw new Error(
-                          "Unknown DTD node type: " + child.constructor.name
+                          "Unknown DTD node type: " + child.constructor.name,
                         );
                     }
                   }
@@ -39793,7 +39800,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         break;
                       default:
                         throw new Error(
-                          "Unknown XML node type: " + child.constructor.name
+                          "Unknown XML node type: " + child.constructor.name,
                         );
                     }
                   }
@@ -39804,26 +39811,26 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               XMLStreamWriter.prototype.processingInstruction = function (
                 node,
-                level
+                level,
               ) {
                 this.stream.write(this.space(level) + "<?" + node.target);
                 if (node.value) {
                   this.stream.write(" " + node.value);
                 }
                 return this.stream.write(
-                  this.spacebeforeslash + "?>" + this.endline(node)
+                  this.spacebeforeslash + "?>" + this.endline(node),
                 );
               };
 
               XMLStreamWriter.prototype.raw = function (node, level) {
                 return this.stream.write(
-                  this.space(level) + node.value + this.endline(node)
+                  this.space(level) + node.value + this.endline(node),
                 );
               };
 
               XMLStreamWriter.prototype.text = function (node, level) {
                 return this.stream.write(
-                  this.space(level) + node.value + this.endline(node)
+                  this.space(level) + node.value + this.endline(node),
                 );
               };
 
@@ -39835,7 +39842,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     " " +
                     node.attributeName +
                     " " +
-                    node.attributeType
+                    node.attributeType,
                 );
                 if (node.defaultValueType !== "#DEFAULT") {
                   this.stream.write(" " + node.defaultValueType);
@@ -39844,7 +39851,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   this.stream.write(' "' + node.defaultValue + '"');
                 }
                 return this.stream.write(
-                  this.spacebeforeslash + ">" + this.endline(node)
+                  this.spacebeforeslash + ">" + this.endline(node),
                 );
               };
 
@@ -39854,10 +39861,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                     "<!ELEMENT " +
                     node.name +
                     " " +
-                    node.value
+                    node.value,
                 );
                 return this.stream.write(
-                  this.spacebeforeslash + ">" + this.endline(node)
+                  this.spacebeforeslash + ">" + this.endline(node),
                 );
               };
 
@@ -39872,7 +39879,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 } else {
                   if (node.pubID && node.sysID) {
                     this.stream.write(
-                      ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"'
+                      ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"',
                     );
                   } else if (node.sysID) {
                     this.stream.write(' SYSTEM "' + node.sysID + '"');
@@ -39882,17 +39889,17 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   }
                 }
                 return this.stream.write(
-                  this.spacebeforeslash + ">" + this.endline(node)
+                  this.spacebeforeslash + ">" + this.endline(node),
                 );
               };
 
               XMLStreamWriter.prototype.dtdNotation = function (node, level) {
                 this.stream.write(
-                  this.space(level) + "<!NOTATION " + node.name
+                  this.space(level) + "<!NOTATION " + node.name,
                 );
                 if (node.pubID && node.sysID) {
                   this.stream.write(
-                    ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"'
+                    ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"',
                   );
                 } else if (node.pubID) {
                   this.stream.write(' PUBLIC "' + node.pubID + '"');
@@ -39900,7 +39907,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                   this.stream.write(' SYSTEM "' + node.sysID + '"');
                 }
                 return this.stream.write(
-                  this.spacebeforeslash + ">" + this.endline(node)
+                  this.spacebeforeslash + ">" + this.endline(node),
                 );
               };
 
@@ -39914,7 +39921,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLStreamWriter;
             })(XMLWriterBase);
-          }.call(this));
+          }).call(this);
         },
         {
           "./XMLCData": 124,
@@ -40101,7 +40108,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           return this.processingInstruction(child, level + 1);
                         default:
                           throw new Error(
-                            "Unknown DTD node type: " + child.constructor.name
+                            "Unknown DTD node type: " + child.constructor.name,
                           );
                       }
                     }.call(this);
@@ -40201,7 +40208,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           return this.processingInstruction(child, level + 1);
                         default:
                           throw new Error(
-                            "Unknown XML node type: " + child.constructor.name
+                            "Unknown XML node type: " + child.constructor.name,
                           );
                       }
                     }.call(this);
@@ -40220,7 +40227,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               XMLStringWriter.prototype.processingInstruction = function (
                 node,
-                level
+                level,
               ) {
                 var r;
                 r = this.space(level) + "<?" + node.target;
@@ -40348,7 +40355,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLStringWriter;
             })(XMLWriterBase);
-          }.call(this));
+          }).call(this);
         },
         {
           "./XMLCData": 124,
@@ -40412,7 +40419,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 val = "" + val || "";
                 if (val.match(/--/)) {
                   throw new Error(
-                    "Comment text cannot contain double-hypen: " + val
+                    "Comment text cannot contain double-hypen: " + val,
                   );
                 }
                 return this.assertLegalChar(val);
@@ -40439,7 +40446,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                 val = "" + val || "";
                 if (val.match(/\?>/)) {
                   throw new Error(
-                    "Invalid processing instruction value: " + val
+                    "Invalid processing instruction value: " + val,
                   );
                 }
                 return val;
@@ -40516,14 +40523,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               XMLStringifier.prototype.assertLegalChar = function (str) {
                 var res;
                 res = str.match(
-                  /[\0\uFFFE\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/
+                  /[\0\uFFFE\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/,
                 );
                 if (res) {
                   throw new Error(
                     "Invalid character in string: " +
                       str +
                       " at index " +
-                      res.index
+                      res.index,
                   );
                 }
                 return str;
@@ -40553,7 +40560,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLStringifier;
             })();
-          }.call(this));
+          }).call(this);
         },
         {},
       ],
@@ -40600,7 +40607,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLText;
             })(XMLNode);
-          }.call(this));
+          }).call(this);
         },
         { "./XMLNode": 135 },
       ],
@@ -40700,7 +40707,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
               return XMLWriterBase;
             })();
-          }.call(this));
+          }).call(this);
         },
         {},
       ],
@@ -40767,7 +40774,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
             module.exports.streamWriter = function (stream, options) {
               return new XMLStreamWriter(stream, options);
             };
-          }.call(this));
+          }).call(this);
         },
         {
           "./Utility": 122,
@@ -40779,6 +40786,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
       ],
     },
     {},
-    [21]
+    [21],
   )(21);
 });

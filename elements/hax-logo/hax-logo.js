@@ -123,7 +123,7 @@ class HaxLogo extends HTMLElement {
       let link = document.createElement("link");
       link.setAttribute(
         "href",
-        "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap"
+        "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap",
       );
       link.setAttribute("rel", "stylesheet");
       document.head.appendChild(link);

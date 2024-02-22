@@ -111,7 +111,7 @@ class LetterGradePicker extends LitElement {
                 mini
               ></letter-grade>
             </button>
-          `
+          `,
         )}
         ${this.input
           ? html`
@@ -147,7 +147,7 @@ class LetterGradePicker extends LitElement {
     const scaleItem = toJS(
       GradeBookStore.gradeScale.find((item) => {
         return this.value === item.letter;
-      })
+      }),
     );
     // forces it to be 2 decimal max
     this.score =
@@ -160,7 +160,7 @@ class LetterGradePicker extends LitElement {
     const scaleItem = toJS(
       GradeBookStore.gradeScale.find((item) => {
         return item.highRange >= newScore && newScore >= item.lowRange;
-      })
+      }),
     );
     this.value = scaleItem.letter;
   }
@@ -178,7 +178,7 @@ class LetterGradePicker extends LitElement {
             bubbles: false,
             cancelable: true,
             detail: this,
-          })
+          }),
         );
       }
     });

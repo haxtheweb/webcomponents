@@ -289,7 +289,7 @@ class A11yFigure extends A11yDetails {
       figcaption = figure ? figure.querySelector("* > figcaption") : undefined;
     if (image) {
       (this.querySelectorAll("[slot=image]") || []).forEach((image) =>
-        image.remove()
+        image.remove(),
       );
       image.cloneNode();
       image.slot = "image";

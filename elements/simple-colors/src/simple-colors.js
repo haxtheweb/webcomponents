@@ -1164,7 +1164,7 @@ const SimpleColorsSuper = function (SuperClass) {
       return SimpleColorsSharedStylesGlobal.makeVariable(
         (color = "grey"),
         (shade = 1),
-        (theme = "default")
+        (theme = "default"),
       );
     }
 
@@ -1182,7 +1182,7 @@ const SimpleColorsSuper = function (SuperClass) {
       return SimpleColorsSharedStylesGlobal.getContrastingColors(
         colorName,
         colorShade,
-        isLarge
+        isLarge,
       );
     }
 
@@ -1202,7 +1202,7 @@ const SimpleColorsSuper = function (SuperClass) {
         isLarge,
         colorName,
         colorShade,
-        contrastName
+        contrastName,
       );
     }
 
@@ -1221,14 +1221,14 @@ const SimpleColorsSuper = function (SuperClass) {
       colorName,
       colorShade,
       contrastName,
-      contrastShade
+      contrastShade,
     ) {
       return SimpleColorsSharedStylesGlobal.isContrastCompliant(
         isLarge,
         colorName,
         colorShade,
         contrastName,
-        contrastShade
+        contrastShade,
       );
     }
   };

@@ -50,7 +50,7 @@ export class AppHaxRouter extends HTMLElement {
     globalThis.addEventListener(
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
   /**

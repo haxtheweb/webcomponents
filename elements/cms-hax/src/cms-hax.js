@@ -57,7 +57,7 @@ class CmsHax extends LitElement {
     for (var i = 0, max = entities.length; i < max; ++i)
       text = text.replace(
         new RegExp("&" + entities[i][0] + ";", "g"),
-        entities[i][1]
+        entities[i][1],
       );
 
     return text;
@@ -235,7 +235,7 @@ class CmsHax extends LitElement {
         this.allowedTags,
         this.hidePanelOps,
         this.offsetMargin,
-        this.elementAlign
+        this.elementAlign,
       );
       this.__applyMO();
       this.windowControllersReady.abort();
@@ -266,7 +266,11 @@ class CmsHax extends LitElement {
     window.addEventListener(
       "hax-store-app-store-loaded",
       this._appstoreLoaded.bind(this),
-      { once: true, passive: true, signal: this.windowControllersLoaded.signal }
+      {
+        once: true,
+        passive: true,
+        signal: this.windowControllersLoaded.signal,
+      },
     );
     window.addEventListener("hax-save-body-value", this._saveFired.bind(this), {
       signal: this.windowControllers.signal,
@@ -322,7 +326,7 @@ class CmsHax extends LitElement {
           this.allowedTags,
           this.hidePanelOps,
           this.offsetMargin,
-          this.elementAlign
+          this.elementAlign,
         );
       }
     });
@@ -351,7 +355,7 @@ class CmsHax extends LitElement {
               cancelable: true,
               composed: true,
               detail: await HAXStore.activeHaxBody.haxToContent(),
-            })
+            }),
           );
           setTimeout(() => {
             this.__lock = false;
@@ -418,7 +422,7 @@ class CmsHax extends LitElement {
           cancelable: true,
           composed: true,
           detail: true,
-        })
+        }),
       );
       // support auto redirecting on save if that's been requested
       // in the integration point

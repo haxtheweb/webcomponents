@@ -2,21 +2,6 @@
   "version": 1,
   "tags": [
     {
-      "name": "d-d-d",
-      "description": "Attributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
       "name": "d-d-docs",
       "description": "Attributes:\n\n  * `option` {`string`} - \n\n  * `options` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `option` {`string`} - \n\n  * `options` {`any[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [

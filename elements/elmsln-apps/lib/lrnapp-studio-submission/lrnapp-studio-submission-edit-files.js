@@ -165,6 +165,6 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
 }
 customElements.define(
   LrnappStudioSubmissionEditFiles.tag,
-  LrnappStudioSubmissionEditFiles
+  LrnappStudioSubmissionEditFiles,
 );
 export { LrnappStudioSubmissionEditFiles };

@@ -120,7 +120,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
   _saveDraftClicked(e) {
@@ -132,7 +132,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
   _deleteClicked(e) {
@@ -142,12 +142,12 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: true,
-      })
+      }),
     );
   }
 }
 customElements.define(
   LrnappStudioSubmissionCritiquePanel.tag,
-  LrnappStudioSubmissionCritiquePanel
+  LrnappStudioSubmissionCritiquePanel,
 );
 export { LrnappStudioSubmissionCritiquePanel };

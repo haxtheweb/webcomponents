@@ -2358,10 +2358,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   async _richTextEditorPromptOpen(e) {
     if (e.detail.element && e.detail.element.gizmo.tag) {
-      const fakeNode = globalThis.document.createElement(e.detail.element.gizmo.tag);
+      const fakeNode = globalThis.document.createElement(
+        e.detail.element.gizmo.tag,
+      );
       // @see haxHook: setupActiveElementForm - allow elements to modify the properties to be rendered
       if (HAXStore.testHook(fakeNode, "setupActiveElementForm")) {
-        await HAXStore.runHook(fakeNode, "setupActiveElementForm", [e.detail.element]);
+        await HAXStore.runHook(fakeNode, "setupActiveElementForm", [
+          e.detail.element,
+        ]);
       }
     }
     // support contextual hax hooks for active item form overwrites

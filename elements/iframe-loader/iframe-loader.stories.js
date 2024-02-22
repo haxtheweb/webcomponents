@@ -24,6 +24,6 @@ export const IframeLoadingIndicator = () => {
         webkitallowfullscreen="true"
         mozallowfullscreen="true"
         src="https://haxtheweb.org"></iframe>`,
-    })
+    }),
   );
 };

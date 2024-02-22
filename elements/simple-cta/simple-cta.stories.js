@@ -15,6 +15,6 @@ export const Button = () => {
   return utils.makeUsageDocs(
     SimpleCta,
     import.meta.url,
-    utils.makeElementFromHaxDemo(SimpleCta)
+    utils.makeElementFromHaxDemo(SimpleCta),
   );
 };

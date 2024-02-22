@@ -5,9 +5,9 @@ import "../lib/simple-emoji-picker.js";
 describe("simple-picker test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <simple-emoji-picker></simple-emoji-picker> `
-    );
+    element = await fixture(html`
+      <simple-emoji-picker></simple-emoji-picker>
+    `);
   });
 
   it("passes the a11y audit", async () => {

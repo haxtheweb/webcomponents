@@ -25,6 +25,6 @@ class LrnappStudioSubmissionEditTextArea extends PolymerElement {
 }
 customElements.define(
   LrnappStudioSubmissionEditTextArea.tag,
-  LrnappStudioSubmissionEditTextArea
+  LrnappStudioSubmissionEditTextArea,
 );
 export { LrnappStudioSubmissionEditTextArea };

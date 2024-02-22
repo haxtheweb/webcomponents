@@ -120,7 +120,7 @@ class SimpleTimer extends PolymerElement {
           cancelable: true,
           composed: true,
           detail: true,
-        })
+        }),
       );
       return;
     }

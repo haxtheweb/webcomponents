@@ -155,7 +155,7 @@ export class AppHaxSiteLogin extends SimpleColors {
           username: this.username,
           password: value,
         },
-      })
+      }),
     );
   }
 
@@ -179,7 +179,7 @@ export class AppHaxSiteLogin extends SimpleColors {
     globalThis.addEventListener(
       "jwt-login-login-failed",
       this._jwtLoginFailed.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 
@@ -204,7 +204,7 @@ export class AppHaxSiteLogin extends SimpleColors {
           bubbles: true,
           cancelable: true,
           detail: {},
-        })
+        }),
       );
       store.toast(`Welcome ${this.username}! Let's go!`, 5000, {
         hat: "construction",

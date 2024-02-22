@@ -5,9 +5,9 @@ import "../schema-behaviors.js";
 describe("schema-behaviors test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <schema-behaviors title="test-title"></schema-behaviors> `
-    );
+    element = await fixture(html`
+      <schema-behaviors title="test-title"></schema-behaviors>
+    `);
   });
 
   it("passes the a11y audit", async () => {

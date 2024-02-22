@@ -224,7 +224,7 @@ function compileLanguage(language) {
   function langRe(value, global) {
     return new RegExp(
       reStr(value),
-      "m" + (language.case_insensitive ? "i" : "") + (global ? "g" : "")
+      "m" + (language.case_insensitive ? "i" : "") + (global ? "g" : ""),
     );
   }
 
@@ -324,7 +324,7 @@ function compileLanguage(language) {
       [],
       mode.contains.map(function (c) {
         return expand_mode(c === "self" ? mode : c);
-      })
+      }),
     );
     mode.contains.forEach(function (c) {
       compileMode(c, mode);
@@ -374,7 +374,7 @@ function highlight(name, value, ignore_illegals, continuation) {
       if (testRe(mode.contains[i].beginRe, lexeme)) {
         if (mode.contains[i].endSameAsBegin) {
           mode.contains[i].endRe = escapeRe(
-            mode.contains[i].beginRe.exec(lexeme)[0]
+            mode.contains[i].beginRe.exec(lexeme)[0],
           );
         }
         return mode.contains[i];
@@ -451,11 +451,11 @@ function highlight(name, value, ignore_illegals, continuation) {
           top.subLanguage,
           mode_buffer,
           true,
-          continuations[top.subLanguage]
+          continuations[top.subLanguage],
         )
       : highlightAuto(
           mode_buffer,
-          top.subLanguage.length ? top.subLanguage : undefined
+          top.subLanguage.length ? top.subLanguage : undefined,
         );
 
     // Counting embedded language score towards the host language may be disabled
@@ -545,7 +545,7 @@ function highlight(name, value, ignore_illegals, continuation) {
           lexeme +
           '" for mode "' +
           (top.className || "<unnamed>") +
-          '"'
+          '"',
       );
 
     /*
@@ -696,7 +696,7 @@ function highlightBlock(block) {
   if (options.useBR) {
     node = globalThis.document.createElementNS(
       "http://www.w3.org/1999/xhtml",
-      "div"
+      "div",
     );
     node.innerHTML = block.innerHTML
       .replace(/\n/g, "")
@@ -711,7 +711,7 @@ function highlightBlock(block) {
   if (originalStream.length) {
     resultNode = globalThis.document.createElementNS(
       "http://www.w3.org/1999/xhtml",
-      "div"
+      "div",
     );
     resultNode.innerHTML = result.value;
     result.value = mergeStreams(originalStream, nodeStream(resultNode), text);
@@ -837,7 +837,7 @@ hljs.COMMENT = function (begin, end, inherits) {
       end: end,
       contains: [],
     },
-    inherits || {}
+    inherits || {},
   );
   mode.contains.push(hljs.PHRASAL_WORDS_MODE);
   mode.contains.push({
@@ -1069,12 +1069,12 @@ export function highlightjs_line_numbers() {
           if (blocks.hasOwnProperty(i)) {
             if (
               !isPluginDisabledForBlock(
-                blocks[i].shadowRoot.querySelector("code")
+                blocks[i].shadowRoot.querySelector("code"),
               )
             ) {
               lineNumbersBlock(
                 blocks[i].shadowRoot.querySelector("code"),
-                options
+                options,
               );
             }
           }
@@ -1143,7 +1143,7 @@ export function highlightjs_line_numbers() {
             CODE_BLOCK_NAME,
             i + options.startFrom,
             lines[i].length > 0 ? lines[i] : " ",
-          ]
+          ],
         );
       }
 

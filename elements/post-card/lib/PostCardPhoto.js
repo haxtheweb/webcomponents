@@ -5,7 +5,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
 const tape = new URL("./assets/postcard-tape.png", import.meta.url).href;
 const PostCardPhotoShadow = new URL(
   "./assets/postcard-photo-shadow.png",
-  import.meta.url
+  import.meta.url,
 ).href;
 export class PostCardPhoto extends SimpleColors {
   constructor() {

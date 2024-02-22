@@ -81,7 +81,7 @@ class DiscordEmbed extends LitElement {
         if (this.source.includes("https://discord.com/channels")) {
           this.source = this.source.replace(
             "https://discord.com/channels/",
-            "https://e.widgetbot.io/channels/"
+            "https://e.widgetbot.io/channels/",
           );
         }
       }

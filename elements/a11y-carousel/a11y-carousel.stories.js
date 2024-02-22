@@ -42,7 +42,7 @@ export const a11yCarouselStory = () => {
       { title: "Below Carousel", slot: "below" },
       { css: "width" },
       { css: "maxWidth" },
-    ]
+    ],
   );
 };
 
@@ -60,7 +60,7 @@ export const a11yCarouselButtonStory = () => {
         },
         [{ title: "Content", slot: "" }],
         ["active", "disabled"],
-        true
+        true,
       )}
       <!-- end customizable button code-->
     </div>

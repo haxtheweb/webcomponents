@@ -147,7 +147,9 @@ class A11yCollapse extends LitElement {
             border-top: 0px solid;
             border-color: var(--a11y-collapse-border-color, inherit);
             max-height: 0;
-            transition: visibility 0.75s ease, opacity 0.75s ease,
+            transition:
+              visibility 0.75s ease,
+              opacity 0.75s ease,
               max-height 0.75s ease;
             overflow-y: hidden;
             opacity: 1;
@@ -337,7 +339,7 @@ class A11yCollapse extends LitElement {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }, 0);
   }
@@ -357,7 +359,7 @@ class A11yCollapse extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
     super.disconnectedCallback();
   }
@@ -399,7 +401,7 @@ class A11yCollapse extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
     /**
      * Fires when toggled. @deprecated Use `toggle` instead
@@ -412,7 +414,7 @@ class A11yCollapse extends LitElement {
         cancelable: true,
         composed: true,
         detail: this,
-      })
+      }),
     );
     if (this.expanded) {
       /**
@@ -426,7 +428,7 @@ class A11yCollapse extends LitElement {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
       this.label = "collapse";
       this.tooltip = "collapse";
@@ -442,7 +444,7 @@ class A11yCollapse extends LitElement {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
       this.label = "expand";
       this.tooltip = "expand";
@@ -476,7 +478,7 @@ class A11yCollapse extends LitElement {
           .label="${this._getExpanded(
             this.label,
             this.labelExpanded,
-            this.expanded
+            this.expanded,
           )}"
         >
           <div id="text">
@@ -490,7 +492,7 @@ class A11yCollapse extends LitElement {
             .icon="${this._getExpanded(
               this.icon || "icons:expand-more",
               this.iconExpanded,
-              this.expanded
+              this.expanded,
             )}"
             aria-hidden="true"
           >
@@ -501,7 +503,7 @@ class A11yCollapse extends LitElement {
         >${this._getExpanded(
           this.tooltip,
           this.tooltipExpanded,
-          this.expanded
+          this.expanded,
         )}</simple-tooltip
       >
     `;
@@ -526,12 +528,12 @@ class A11yCollapse extends LitElement {
           .label="${this._getExpanded(
             this.label,
             this.labelExpanded,
-            this.expanded
+            this.expanded,
           )}"
           .icon="${this._getExpanded(
             this.icon || "icons:expand-more",
             this.iconExpanded,
-            this.expanded
+            this.expanded,
           )}"
           aria-controls="content"
           aria-expanded="${this.expanded ? "true" : "false"}"
@@ -541,7 +543,7 @@ class A11yCollapse extends LitElement {
           >${this._getExpanded(
             this.tooltip,
             this.tooltipExpanded,
-            this.expanded
+            this.expanded,
           )}</simple-tooltip
         >
       </div>
@@ -565,7 +567,7 @@ class A11yCollapse extends LitElement {
           cancelable: true,
           composed: true,
           detail: this,
-        })
+        }),
       );
     }
   }

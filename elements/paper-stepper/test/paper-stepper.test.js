@@ -5,9 +5,9 @@ import "../paper-stepper.js";
 describe("paper-stepper test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(
-      html` <paper-stepper title="test-title"></paper-stepper> `
-    );
+    element = await fixture(html`
+      <paper-stepper title="test-title"></paper-stepper>
+    `);
   });
 
   it("passes the a11y audit", async () => {

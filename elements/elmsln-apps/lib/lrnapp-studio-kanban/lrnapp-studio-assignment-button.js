@@ -73,7 +73,7 @@ class LrnappStudioAssignmentButton extends PolymerElement {
               setTimeout(() => {
                 target.generateRequest();
               }, 250);
-            }
+            },
           );
           break;
       }
@@ -155,7 +155,7 @@ class LrnappStudioAssignmentButton extends PolymerElement {
             cancelable: true,
             composed: true,
             detail: { assignment: assignment },
-          })
+          }),
         );
       }
     }
@@ -172,6 +172,6 @@ class LrnappStudioAssignmentButton extends PolymerElement {
 }
 customElements.define(
   LrnappStudioAssignmentButton.tag,
-  LrnappStudioAssignmentButton
+  LrnappStudioAssignmentButton,
 );
 export { LrnappStudioAssignmentButton };

@@ -37,15 +37,15 @@ import "wired-elements/lib/wired-button.js";
 
 const ButtonBGLight = new URL(
   "../../../app-hax/lib/assets/images/ButtonBGLM.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 const ButtonBGDark = new URL(
   "../../../app-hax/lib/assets/images/ButtonBGDM.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 const LogOut = new URL(
   "../../../app-hax/lib/assets/images/Logout.svg",
-  import.meta.url
+  import.meta.url,
 ).href;
 /**
  * `haxcms-site-editor-ui`
@@ -55,7 +55,7 @@ const LogOut = new URL(
  * @microcopy - the mental model for this element
  */
 class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
-  HAXCMSI18NMixin(winEventsElement(ResponsiveUtilityBehaviors(SimpleColors)))
+  HAXCMSI18NMixin(winEventsElement(ResponsiveUtilityBehaviors(SimpleColors))),
 ) {
   static get styles() {
     return [
@@ -475,9 +475,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "Agent",
           ],
           this.shadowRoot.querySelector("#merlin"),
-          "coin2"
+          "coin2",
         );
-      }
+      },
     );
   }
 
@@ -522,7 +522,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 placeHolderElement: null,
                 operationType: operationType,
               },
-            })
+            }),
           );
         } else if (mode === "link") {
           if (store.editMode === false) {
@@ -545,7 +545,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   placeHolderElement: p,
                   operationType: operationType,
                 },
-              })
+              }),
             );
           }, 300);
         } else {
@@ -570,7 +570,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   placeHolderElement: p,
                   operationType: operationType,
                 },
-              })
+              }),
             );
           }, 300);
         }
@@ -616,25 +616,25 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           if (mode === "insert-html") {
             response = await MicroFrontendRegistry.call(
               endpointCall,
-              dataToPost
+              dataToPost,
             );
             if (response.status == 200) {
               // fake file event from built in method for same ux
               this.insertElementsFromContentBlob(
-                response.data.contents || response.data
+                response.data.contents || response.data,
               );
             }
           } else {
             response = await MicroFrontendRegistry.call(
               endpointCall,
-              dataToPost
+              dataToPost,
             );
             if (response.status == 200) {
               if (["create-sibling", "create-child"].includes(mode)) {
                 this.createNewNode(
                   mode.replace("create-", ""),
                   values.data.name,
-                  response.data.contents || response.data
+                  response.data.contents || response.data,
                 );
               } else {
                 // must be a valid response and have at least SOME html to bother attempting
@@ -693,7 +693,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                         confirmation = true;
                       } else {
                         confirmation = globalThis.confirm(
-                          `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
+                          `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`,
                         );
                       }
                       if (confirmation) {
@@ -759,7 +759,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                             "--simple-modal-titlebar-background": "orange",
                           },
                         },
-                      })
+                      }),
                     );
                   });
                 }
@@ -777,7 +777,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             this.createNewNode(
               mode.replace("create-", ""),
               values.data.name,
-              values.contents
+              values.contents,
             );
           }
         }
@@ -833,7 +833,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           originalTarget: this,
           values: payload,
         },
-      })
+      }),
     );
   }
 
@@ -861,7 +861,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         this.activeNode.parentNode.insertBefore(
           div.children[i],
-          this.activeNode.nextSibling
+          this.activeNode.nextSibling,
         );
       }
     } else {
@@ -948,7 +948,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "POP,enhancement",
               SuperDaemonInstance.commandContext +
                 " " +
-                SuperDaemonInstance.value
+                SuperDaemonInstance.value,
             );
           }}"
           >Make a suggestion to improve results</a
@@ -1148,7 +1148,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 "Agent",
               ],
               this.shadowRoot.querySelector("#merlin"),
-              "coin2"
+              "coin2",
             );
           }
           // default actions when we have no context
@@ -1240,7 +1240,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             let distance = "- ";
             while (itemBuilder && itemBuilder.parent != null) {
               itemBuilder = itemManifest.find(
-                (i) => i.id == itemBuilder.parent
+                (i) => i.id == itemBuilder.parent,
               );
               // double check structure is sound
               if (itemBuilder) {
@@ -1361,7 +1361,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         const link = globalThis.document.createElement("link");
         link.setAttribute(
           "href",
-          "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+          "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap",
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");
@@ -1387,11 +1387,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.soundIcon = toJS(store.soundStatus)
         ? new URL(
             "../../../app-hax/lib/assets/images/FullVolume.svg",
-            import.meta.url
+            import.meta.url,
           ).href
         : new URL(
             "../../../app-hax/lib/assets/images/Silence.svg",
-            import.meta.url
+            import.meta.url,
           ).href;
     });
     setTimeout(() => {
@@ -1847,7 +1847,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.activeType = null;
     SuperDaemonInstance.waveWand(
       ["", "/", e, "hax-agent", "Agent"],
-      this.shadowRoot.querySelector("#merlin")
+      this.shadowRoot.querySelector("#merlin"),
     );
   }
   dragenterEvent(e) {
@@ -1887,14 +1887,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               SuperDaemonInstance.waveWand(
                 [value, "*"],
                 this.shadowRoot.querySelector("#merlin"),
-                null
+                null,
               );
             }
           } else {
             SuperDaemonInstance.waveWand(
               [value, "*"],
               this.shadowRoot.querySelector("#merlin"),
-              null
+              null,
             );
           }
           // this will reset UX expectation but also trigger this to run again so need to
@@ -1952,7 +1952,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         bubbles: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
     this.__logoutUserAction = true;
   }
@@ -1971,12 +1971,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (
       !this.editMode &&
       this.shadowRoot.querySelector(
-        "simple-toolbar-menu-item haxcms-button-add:not([hidden])"
+        "simple-toolbar-menu-item haxcms-button-add:not([hidden])",
       )
     ) {
       this.shadowRoot
         .querySelector(
-          "simple-toolbar-menu-item haxcms-button-add:not([hidden])"
+          "simple-toolbar-menu-item haxcms-button-add:not([hidden])",
         )
         .HAXCMSButtonClick();
     }
@@ -2435,7 +2435,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         composed: true,
         cancelable: false,
         detail: true,
-      })
+      }),
     );
   }
 
@@ -2495,7 +2495,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this.dispatchEvent(
           new CustomEvent("edit-mode-changed", {
             detail: this[propName],
-          })
+          }),
         );
       }
       if (propName == "manifestEditMode") {
@@ -2505,7 +2505,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this.dispatchEvent(
           new CustomEvent("manifest-edit-mode-changed", {
             detail: this[propName],
-          })
+          }),
         );
       }
     });
@@ -2675,7 +2675,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           composed: true,
           cancelable: false,
           detail: store.activeItem,
-        })
+        }),
       );
     }
     globalThis.dispatchEvent(
@@ -2683,7 +2683,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
   }
   _insightsButtonTap(e) {
@@ -2718,7 +2718,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (
       body != this._originalContent &&
       !globalThis.confirm(
-        this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure
+        this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure,
       )
     ) {
       return false;
@@ -2731,14 +2731,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         composed: true,
         cancelable: false,
         detail: e.detail,
-      })
+      }),
     );
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
   }
   /**
@@ -2854,7 +2854,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
         elements: {
           content: globalThis.document.createElement(
-            "haxcms-outline-editor-dialog"
+            "haxcms-outline-editor-dialog",
           ),
         },
         invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
@@ -2880,7 +2880,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         bubbles: true,
         cancelable: true,
         detail: {},
-      })
+      }),
     );
     // prettier-ignore
     import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js").then(() => {
@@ -2959,7 +2959,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         composed: true,
         cancelable: false,
         detail: newValue,
-      })
+      }),
     );
   }
   /**
@@ -2972,7 +2972,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         composed: true,
         cancelable: false,
         detail: newValue,
-      })
+      }),
     );
   }
 }
