@@ -28,7 +28,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

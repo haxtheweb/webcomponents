@@ -41,30 +41,12 @@ const LrnCssResetStyles = [
     }
 
     h1 {
-      font-family: var(
-        --hax-base-styles-h1-font-family,
-        var(--hax-base-styles-accent-font-family, "Playfair Display", serif)
-      );
-      font-size: var(
-        --hax-base-styles-h1-font-size,
-        calc(2.66666667 * var(--haxcms-base-styles-body-font-size, 18px))
-      );
-      line-height: var(--hax-base-styles-h1-line-height, unset);
       text-align: left;
       margin-bottom: 8px;
       letter-spacing: unset;
     }
 
     h2 {
-      font-family: var(
-        --hax-base-styles-h2-font-family,
-        var(--hax-base-styles-heading-font-family, "Lato", sans-serif)
-      );
-      font-size: var(
-        --hax-base-styles-h2-font-size,
-        calc(1.66666667 * var(--haxcms-base-styles-body-font-size, 18px))
-      );
-      line-height: var(--hax-base-styles-h2-line-height, 34.5px);
       font-weight: 900;
       padding: 0;
       margin: 56px 0 -13px -1.883px;
@@ -73,60 +55,24 @@ const LrnCssResetStyles = [
     }
 
     h3 {
-      font-family: var(
-        --hax-base-styles-h3-font-family,
-        var(--hax-base-styles-heading-font-family, "Lato", sans-serif)
-      );
-      font-size: var(
-        --hax-base-styles-h3-font-size,
-        calc(1.44444444 * var(--haxcms-base-styles-body-font-size, 18px))
-      );
-      line-height: var(--hax-base-styles-h3-line-height);
       font-weight: 700;
       margin: 56px 0 -13px -1.883px;
       color: #555;
     }
 
     h4 {
-      font-family: var(
-        --hax-base-styles-h4-font-family,
-        var(--hax-base-styles-heading-font-family, "Lato", sans-serif)
-      );
-      font-size: var(
-        --hax-base-styles-h4-font-size,
-        calc(1.22222222 * var(--haxcms-base-styles-body-font-size, 18px))
-      );
-      line-height: var(--hax-base-styles-h4-line-height);
       font-weight: 700;
       margin: 46px 0 -13px -1.883px;
       color: #777;
     }
 
     h5 {
-      font-family: var(
-        --hax-base-styles-h5-font-family,
-        var(--hax-base-styles-heading-font-family, "Lato", sans-serif)
-      );
-      font-size: var(
-        --hax-base-styles-h5-font-size,
-        calc(1.11111111 * var(--haxcms-base-styles-body-font-size, 18px))
-      );
-      line-height: var(--hax-base-styles-h5-line-height);
       font-weight: 700;
       margin: 36px 0 -13px -1.883px;
       color: #333;
     }
 
     h6 {
-      font-family: var(
-        --hax-base-styles-h5-font-family,
-        var(--hax-base-styles-heading-font-family, "Lato", sans-serif)
-      );
-      font-size: var(
-        --hax-base-styles-h5-font-size,
-        var(--haxcms-base-styles-body-font-size, 18px)
-      );
-      line-height: var(--hax-base-styles-h5-line-height);
       font-weight: 700;
       margin: 26px 0 -13px -1.883px;
       color: #777;

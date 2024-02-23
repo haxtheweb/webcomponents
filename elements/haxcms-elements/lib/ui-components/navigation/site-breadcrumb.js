@@ -8,6 +8,8 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDBreadcrumb } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
+
 /**
  * `site-breadcrumb`
  * `A basic breadcrumb of links based on the active state in HAXcms on JSON Outline Schema`
@@ -17,6 +19,8 @@ import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 class SiteBreadcrumb extends DDD {
   static get styles() {
     return [
+      super.styles,
+      DDDBreadcrumb,
       css`
         :host {
           display: block;
@@ -31,13 +35,6 @@ class SiteBreadcrumb extends DDD {
           display: flex;
           flex-flow: row;
           color: var(--ddd-theme-default-link);
-        }
-        .breadcrumb li::marker {
-          color: black;
-          font-weight: var(--ddd-font-primary-regular);
-        }
-        .breadcrumb li:first-child {
-          list-style: none;
         }
         .breadcrumb li a {
           padding-left: var(--ddd-spacing-1);
@@ -59,10 +56,6 @@ class SiteBreadcrumb extends DDD {
         .breadcrumb li:last-child a {
           color: var(--site-breadcrumb-color, black);
           pointer-events: none;
-        }
-        .breadcrumb li a:hover {
-          text-decoration: underline;
-          pointer-events: auto;
         }
       `,
     ];
@@ -88,7 +81,14 @@ class SiteBreadcrumb extends DDD {
             itemtype="https://schema.org/BreadcrumbList"
           >
             ${this.items.map(
-              (item) => html`<li><a href="${item.slug}">${item.title}</a></li>`,
+              (item) =>
+                html`<li
+                  itemprop="itemListElement"
+                  itemscope
+                  itemtype="https://schema.org/ListItem"
+                >
+                  <a itemprop="item" href="${item.slug}">${item.title}</a>
+                </li>`,
             )}
           </ul>
         `

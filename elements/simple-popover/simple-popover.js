@@ -30,7 +30,7 @@ class SimplePopover extends AbsolutePositionBehavior {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host([hidden]) {
           display: none;

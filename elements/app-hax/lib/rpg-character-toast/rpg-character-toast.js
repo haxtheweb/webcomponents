@@ -37,7 +37,7 @@ export class RPGCharacterToast extends SimpleToastEl {
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host([opened]) {
           display: flex;

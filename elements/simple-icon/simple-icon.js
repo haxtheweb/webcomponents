@@ -37,7 +37,7 @@ class SimpleIcon extends SimpleIconBehaviors(SimpleColors) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         feFlood {
           flood-color: var(

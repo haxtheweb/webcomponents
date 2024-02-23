@@ -17,7 +17,7 @@ class SimpleSymbolPicker extends SimplePickerBehaviors(LitElement) {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         simple-picker-option {
           justify-content: space-around;

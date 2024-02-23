@@ -20,7 +20,7 @@ class SimpleEmojiPicker extends IntersectionObserverMixin(
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         simple-picker-option {
           justify-content: space-around;

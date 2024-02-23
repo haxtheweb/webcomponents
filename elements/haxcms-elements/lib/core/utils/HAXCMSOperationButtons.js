@@ -26,7 +26,7 @@ export const HAXCMSOperationButtons = function (SuperClass) {
         styles = super.styles;
       }
       return [
-        ...styles,
+        styles,
         css`
           .operation-buttons-wrapper {
             display: flex;

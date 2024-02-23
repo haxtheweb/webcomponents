@@ -26,7 +26,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
 
     static get styles() {
       return [
-        ...super.styles,
+        super.styles,
         css`
           :host {
             align-items: center;

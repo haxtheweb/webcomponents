@@ -66,7 +66,7 @@ export class AppHaxSiteDetails extends SimpleColors {
   // CSS - specific to Lit
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: flex;

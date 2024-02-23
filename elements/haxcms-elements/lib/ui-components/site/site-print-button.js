@@ -20,7 +20,7 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: inline-flex;

@@ -422,7 +422,7 @@ class SuperDaemon extends SimpleColors {
       styles = super.styles;
     }
     return [
-      ...styles,
+      styles,
       css`
         :host {
           display: none;

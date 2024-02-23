@@ -123,7 +123,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
 
     static get styles() {
       return [
-        ...super.styles,
+        super.styles,
         css`
           :host(:hover),
           :host(:focus-within) {

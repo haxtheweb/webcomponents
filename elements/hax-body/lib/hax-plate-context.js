@@ -68,7 +68,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           width: calc(100% - 2px);

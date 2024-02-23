@@ -17,7 +17,7 @@ import "@lrnwebcomponents/accent-card/accent-card.js";
 class ProductCard extends SimpleColors {
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: flex;

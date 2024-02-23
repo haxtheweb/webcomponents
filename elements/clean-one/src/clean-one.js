@@ -20,7 +20,7 @@ import "./lib/clean-one-search-box.js";
 import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
-import { DDDSuper, DDDFonts } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 /**
  * `clean-one`
@@ -51,7 +51,7 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           width: 100%;
@@ -69,7 +69,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           --simple-tooltip-opacity: 1;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
-          --hax-base-styles-a-color-active: #000000;
         }
         site-git-corner {
           --site-git-corner-background: black;
@@ -952,16 +951,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
         }, 0);
       });
     }
-  }
-  HAXCMSGlobalStyleSheetContent() {
-    return [
-      ...super.HAXCMSGlobalStyleSheetContent(),
-      css`
-        clean-one a {
-          text-decoration-thickness: 3px;
-        }
-      `,
-    ];
   }
   /**
    * life cycle, element is removed from the DOM

@@ -19,7 +19,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host([expanded]) {
           overflow: visible;

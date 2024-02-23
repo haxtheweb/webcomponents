@@ -24,7 +24,7 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host([hidden]) {
           display: none !important;

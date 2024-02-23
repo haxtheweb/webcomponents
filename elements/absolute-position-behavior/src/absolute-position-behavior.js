@@ -17,7 +17,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
         styles = super.styles;
       }
       return [
-        ...styles,
+        styles,
         css`
           :host {
             display: inline-block;

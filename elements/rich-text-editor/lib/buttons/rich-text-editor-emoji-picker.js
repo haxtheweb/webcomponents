@@ -29,7 +29,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
   }
 
   static get styles() {
-    return [...super.styles, css``];
+    return [super.styles, css``];
   }
 
   // render function for template

@@ -21,6 +21,8 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
 import "@lrnwebcomponents/date-card/lib/date-chip.js";
 import "@lrnwebcomponents/accent-card/accent-card.js";
 import "@polymer/iron-pages/iron-pages.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
@@ -28,11 +30,11 @@ import "@polymer/iron-pages/iron-pages.js";
  * @element haxor-slevin
  */
 class HaxorSlevin extends HAXCMSRememberRoute(
-  HAXCMSThemeParts(SimpleColorsSuper(HAXCMSLitElementTheme)),
+  HAXCMSThemeParts(SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme))),
 ) {
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;
@@ -41,9 +43,6 @@ class HaxorSlevin extends HAXCMSRememberRoute(
           transition:
             0.6s ease-in-out color,
             0.6s ease-in-out background-color;
-          --hax-base-styles-a-color: var(--haxcms-color, #2196f3);
-          --hax-base-styles-a-color-visited: var(--haxcms-color, #2196f3);
-          --hax-base-styles-a-color-active: var(--haxcms-color, #2196f3);
         }
         site-modal:not(:defined),
         site-rss-button:not(:defined),

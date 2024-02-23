@@ -39,7 +39,7 @@ class CollectionRow extends DDD {
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

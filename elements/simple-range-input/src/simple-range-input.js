@@ -65,7 +65,7 @@ class SimpleRangeInput extends SimpleColors {
   // Template return function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: flex;

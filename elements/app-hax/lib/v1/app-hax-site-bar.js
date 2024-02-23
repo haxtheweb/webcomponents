@@ -65,7 +65,7 @@ export class AppHaxSiteBars extends SimpleColors {
   // CSS - specific to Lit
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           --main-banner-width: 513px;

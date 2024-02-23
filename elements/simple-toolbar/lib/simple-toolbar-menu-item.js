@@ -14,7 +14,7 @@ import { A11yMenuButtonItemBehaviors } from "@lrnwebcomponents/a11y-menu-button/
 class SimpleToolbarMenuItem extends A11yMenuButtonItemBehaviors(LitElement) {
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           --simple-toolbar-button-min-width: 100% !important;

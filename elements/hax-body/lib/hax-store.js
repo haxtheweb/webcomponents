@@ -2175,14 +2175,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         margin: 0px 2px;
       }
       simple-popover-manager p {
-        --hax-base-styles-p-font-size: 14px;
         padding: 0;
         margin: 0;
         font-size: 14px;
         line-height: 20px;
       }
       simple-popover-manager h3 {
-        --hax-base-styles-h3-font-size: 18px;
         margin: 8px 2px;
       }`,
     });

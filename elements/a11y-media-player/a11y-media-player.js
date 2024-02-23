@@ -109,7 +109,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

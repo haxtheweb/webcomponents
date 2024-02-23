@@ -23,7 +23,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
 ) {
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

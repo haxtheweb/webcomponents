@@ -48,74 +48,8 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
         styles = super.styles;
       }
       return [
-        ...styles,
+        styles,
         css`
-          :host([font-family="0"]) {
-            font-family: Georgia, serif;
-          }
-          :host([font-family="1"]) {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-          }
-          :host([font-size="0"]) {
-            --haxcms-base-styles-body-font-size: 1.2rem;
-            --hax-base-styles-p-font-size: 1.2rem;
-            --hax-base-styles-list-font-size: 1.2rem;
-            --hax-base-styles-a-font-size: 1.2rem;
-            --hax-base-styles-h1-font-size: 2.2rem;
-            --hax-base-styles-h2-font-size: 2rem;
-            --hax-base-styles-h3-font-size: 1.8rem;
-            --hax-base-styles-h4-font-size: 1.6rem;
-            --hax-base-styles-h5-font-size: 1.4rem;
-            --hax-base-styles-h6-font-size: 1.2rem;
-          }
-          :host([font-size="1"]) {
-            --haxcms-base-styles-body-font-size: 1.4rem;
-            --hax-base-styles-p-font-size: 1.4rem;
-            --hax-base-styles-list-font-size: 1.4rem;
-            --hax-base-styles-a-font-size: 1.4rem;
-            --hax-base-styles-h1-font-size: 2.4rem;
-            --hax-base-styles-h2-font-size: 2.2rem;
-            --hax-base-styles-h3-font-size: 2rem;
-            --hax-base-styles-h4-font-size: 1.8rem;
-            --hax-base-styles-h5-font-size: 1.6rem;
-            --hax-base-styles-h6-font-size: 1.4rem;
-          }
-          :host([font-size="2"]) {
-            --haxcms-base-styles-body-font-size: 1.6rem;
-            --hax-base-styles-p-font-size: 1.6rem;
-            --hax-base-styles-list-font-size: 1.6rem;
-            --hax-base-styles-a-font-size: 1.6rem;
-            --hax-base-styles-h1-font-size: 2.6rem;
-            --hax-base-styles-h2-font-size: 2.4rem;
-            --hax-base-styles-h3-font-size: 2.2rem;
-            --hax-base-styles-h4-font-size: 2rem;
-            --hax-base-styles-h5-font-size: 1.8rem;
-            --hax-base-styles-h6-font-size: 1.6rem;
-          }
-          :host([font-size="3"]) {
-            --haxcms-base-styles-body-font-size: 1.8rem;
-            --hax-base-styles-p-font-size: 1.8rem;
-            --hax-base-styles-list-font-size: 1.8rem;
-            --hax-base-styles-a-font-size: 1.8rem;
-            --hax-base-styles-h1-font-size: 2.8rem;
-            --hax-base-styles-h2-font-size: 2.6rem;
-            --hax-base-styles-h3-font-size: 2.4rem;
-            --hax-base-styles-h4-font-size: 2.2rem;
-            --hax-base-styles-h5-font-size: 2rem;
-            --hax-base-styles-h6-font-size: 1.8rem;
-          }
-          :host([font-size="4"]) {
-            --haxcms-base-styles-body-font-size: 2rem;
-            --hax-base-styles-p-font-size: 2rem;
-            --hax-base-styles-list-font-size: 2rem;
-            --hax-base-styles-a-font-size: 2rem;
-            --hax-base-styles-h1-font-size: 3rem;
-            --hax-base-styles-h2-font-size: 2.8rem;
-            --hax-base-styles-h3-font-size: 2.6rem;
-            --hax-base-styles-h4-font-size: 2.4rem;
-            --hax-base-styles-h5-font-size: 2.2rem;
-            --hax-base-styles-h6-font-size: 2rem;
-          }
           :host([color-theme="0"]) {
             --haxcms-user-styles-color-theme-color-color: #000000;
             --haxcms-user-styles-color-theme-color-background: #ffffff;
@@ -126,15 +60,6 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
               --simple-colors-default-theme-blue-8,
               #4183c4
             );
-            --hax-base-styles-a-color-visited: var(
-              --simple-colors-default-theme-blue-7,
-              #4183c4
-            );
-            --hax-base-styles-a-color: var(
-              --simple-colors-default-theme-blue-7,
-              #4183c4
-            );
-            --hax-base-styles-a-color-active: #000000;
           }
           :host([color-theme="1"]) {
             --haxcms-user-styles-color-theme-color-color: #704214;
@@ -143,9 +68,6 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
             --haxcms-user-styles-color-theme-color-2: #f3eacb;
             --haxcms-user-styles-color-theme-color-3: #1c1c1c;
             --haxcms-user-styles-color-theme-color-4: #eee8e0;
-            --hax-base-styles-a-color-visited: #704214;
-            --hax-base-styles-a-color: #704214;
-            --hax-base-styles-a-color-active: #000000;
           }
           :host([color-theme="2"]) {
             --haxcms-user-styles-color-theme-color-color: #cfd4e3;
@@ -154,15 +76,6 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
             --haxcms-user-styles-color-theme-color-2: #252737;
             --haxcms-user-styles-color-theme-color-3: #252737;
             --haxcms-user-styles-color-theme-color-4: #f4f4f5;
-            --hax-base-styles-a-color-visited: var(
-              --simple-colors-default-theme-light-blue-10,
-              #3eb1d0
-            );
-            --hax-base-styles-a-color: var(
-              --simple-colors-default-theme-light-blue-10,
-              #3eb1d0
-            );
-            --hax-base-styles-a-color-active: #ffffff;
           }
           :host([color-theme="0"]) .hcusm {
             border-color: #222222;
@@ -172,7 +85,6 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
             --simple-popover-background-color: #fafafa;
           }
           #slot ::slotted(*) {
-            font-size: var(--haxcms-base-styles-body-font-size, 1em);
             color: var(--haxcms-user-styles-color-theme-color-color);
           }
           simple-icon-button-lite:not(:defined),

@@ -30,7 +30,6 @@ class HAXCMSBlankTheme extends CleanTwo {
     return css`
       :host([edit-mode]) {
         opacity: 1;
-        --hax-base-styles-p-min-height: 38px;
       }
       :host([hidden]) {
         display: none;

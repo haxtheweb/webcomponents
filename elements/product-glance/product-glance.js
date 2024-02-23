@@ -4,7 +4,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 export class ProductGlance extends SimpleColors {
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: inline-block;

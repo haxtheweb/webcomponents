@@ -2,15 +2,15 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, LitElement } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
+import { DDDExtra } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 
 /**
  * `page-break`
@@ -20,7 +20,7 @@ import { pageBreakManager } from "./lib/page-break-manager.js";
  * @element page-break
  */
 export class PageBreak extends IntersectionObserverMixin(
-  I18NMixin(SchemaBehaviors(DDD)),
+  I18NMixin(SchemaBehaviors(LitElement)),
 ) {
   static get tag() {
     return "page-break";
@@ -383,7 +383,7 @@ export class PageBreak extends IntersectionObserverMixin(
   }
   static get styles() {
     return [
-      ...super.styles,
+      DDDExtra,
       css`
         :host {
           display: block;

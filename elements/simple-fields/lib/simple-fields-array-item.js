@@ -42,7 +42,7 @@ Custom property | Description | Default
 class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       ...SimpleFieldsButtonStyles,
       css`
         :host {

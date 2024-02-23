@@ -2,7 +2,7 @@
  * Copyright 2023 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css, render } from "lit";
+import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
@@ -23,6 +23,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.j
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "./collections-theme-banner.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 /**
  * `collections-theme`
@@ -40,7 +41,9 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     PDFPageMixin(
       PrintBranchMixin(
         QRCodeMixin(
-          HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)),
+          HAXCMSThemeParts(
+            HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+          ),
         ),
       ),
     ),
@@ -56,66 +59,11 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       activeTitle: { type: String },
     };
   }
-  HAXCMSGlobalStyleSheetEditModeContent() {
-    return [
-      ...super.HAXCMSGlobalStyleSheetEditModeContent(),
-      css`
-        #bodycontainer ::slotted(*) {
-          font-family: "Roboto", sans-serif;
-          font-weight: 300;
-        }
-        #bodycontainer ::slotted(h1),
-        #bodycontainer ::slotted(h2),
-        #bodycontainer ::slotted(h3),
-        #bodycontainer ::slotted(h4),
-        #bodycontainer ::slotted(h5),
-        #bodycontainer ::slotted(h6) {
-          font-family: "Roboto", sans-serif;
-          font-weight: 400;
-        }
-        #bodycontainer ::slotted(p),
-        #bodycontainer ::slotted(ul),
-        #bodycontainer ::slotted(ol),
-        #bodycontainer ::slotted(blockquote) {
-          font-size: 18px;
-          margin-block-start: 16px;
-          margin-block-end: 16px;
-        }
-      `,
-    ];
-  }
-  HAXCMSGlobalStyleSheetContent() {
-    return [
-      ...super.HAXCMSGlobalStyleSheetContent(),
-      css`
-        collections-theme {
-          font-family: "Roboto", sans-serif;
-          font-weight: 300;
-        }
-        collections-theme h1,
-        collections-theme h2,
-        collections-theme h3,
-        collections-theme h4,
-        collections-theme h5,
-        collections-theme h6 {
-          font-family: "Roboto", sans-serif;
-          font-weight: 400;
-        }
-        collections-theme p,
-        collections-theme ul,
-        collections-theme ol,
-        collections-theme blockquote {
-          font-size: 18px;
-          margin-block-start: 16px;
-          margin-block-end: 16px;
-        }
-      `,
-    ];
-  }
+
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           --bg-color: #ffffff;
@@ -140,47 +88,13 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           );
 
           display: block;
-          font-size: 18px;
-          font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,
-            sans-serif;
           letter-spacing: normal;
-          line-height: 28.8px;
           background-color: var(--bg-color);
-          --haxcms-base-styles-body-font-size: 18px;
-          --hax-base-styles-a-font-size: 18px;
-          --hax-base-styles-p-font-size: 18px;
-          --hax-base-styles-list-font-size: 18px;
-          --haxcms-base-styles-body-font-family: "Open Sans", "Helvetica Neue",
-            Helvetica, Arial, sans-serif;
-          --haxcms-base-styles-body-line-height: 28.8px;
-          --hax-base-styles-list-line-height: 28.8px
-            --hax-base-styles-p-line-height: 28.8px;
-          --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing: normal;
-          --hax-base-styles-p-min-height: auto;
-          --hax-base-styles-list-max-width: auto;
-          --haxcms-base-styles-p-min-height: auto;
-          --hax-base-styles-list-padding-bottom: auto;
-          --hax-base-styles-h1-font-size: inherit;
-          --hax-base-styles-h2-font-size: inherit;
-          --hax-base-styles-h3-font-size: inherit;
-          --hax-base-styles-h4-font-size: inherit;
-          --hax-base-styles-h5-font-size: inherit;
-          --hax-base-styles-h6-font-size: inherit;
           --simple-tooltip-background: #000000;
           --simple-tooltip-opacity: 1;
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
-          --hax-base-styles-a-color-visited: var(
-            --haxcms-color,
-            var(--simple-colors-default-theme-orange-6)
-          );
-          --hax-base-styles-a-color: var(
-            --haxcms-color,
-            var(--simple-colors-default-theme-orange-6)
-          );
-          --hax-base-styles-a-color-active: #000000;
           --site-search-result-background-color: transparent;
           --site-search-result-background-color-hover: #f5f5f5;
           --site-search-link-color-hover: #252737;

@@ -60,7 +60,7 @@ export class BlockQuote extends DDD {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           background-color: var(

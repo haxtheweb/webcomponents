@@ -160,7 +160,7 @@ class lazyImage extends LoadingHelper(lazyImageLoader(LitElement)) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

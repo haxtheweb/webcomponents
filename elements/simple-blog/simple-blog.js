@@ -9,6 +9,7 @@ import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 /**
  * `simple-blog`
@@ -16,13 +17,13 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
  * @demo demo/index.html
  * @element simple-blog
  */
-class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
+class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         html,
         body {

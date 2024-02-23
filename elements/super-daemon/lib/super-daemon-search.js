@@ -312,7 +312,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       styles = super.styles;
     }
     return [
-      ...styles,
+      styles,
       css`
         :host {
           display: flex;

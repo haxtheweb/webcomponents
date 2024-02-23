@@ -22,7 +22,7 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         #options {
           display: var(--simple-fields-radio-option-display, block);

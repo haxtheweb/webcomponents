@@ -16,7 +16,7 @@ class SimpleBlogOverview extends SimpleColors {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

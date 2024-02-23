@@ -67,8 +67,6 @@ class A11yCollapse extends LitElement {
           margin: 0;
           width: 100%;
           text-align: left;
-          line-height: var(--haxcms-base-styles-body-line-height, 1.8);
-          letter-spacing: var(--haxcms-base-styles-body-letter-spacing, 0.5px);
         }
         #heading {
           display: flex;

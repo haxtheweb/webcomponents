@@ -104,7 +104,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       styles = super.styles;
     }
     return [
-      ...styles,
+      styles,
       css`
         :host {
           display: block;

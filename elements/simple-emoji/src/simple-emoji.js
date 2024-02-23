@@ -26,7 +26,7 @@ class SimpleEmoji extends LitElement {
       styles = super.styles;
     }
     return [
-      ...styles,
+      styles,
       css`
         :host {
           display: block;

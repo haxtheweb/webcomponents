@@ -31,7 +31,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       ...this.iconStyles,
       ...this.labelStyles,
       ...this.tooltipStyles,

@@ -59,7 +59,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 ) {
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host *:not(:defined) {
           display: none;

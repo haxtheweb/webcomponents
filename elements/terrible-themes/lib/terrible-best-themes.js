@@ -50,7 +50,7 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
       styles = super.styles;
     }
     return [
-      ...styles,
+      styles,
       css`
         :host {
           display: block;

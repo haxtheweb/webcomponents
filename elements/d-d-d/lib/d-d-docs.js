@@ -4,7 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "../d-d-d.js";
-import { DDDStyles } from "./DDDStyles.js";
+import { DDDAllStyles } from "./DDDStyles.js";
 import "@lrnwebcomponents/page-section/page-section.js";
 import "@lrnwebcomponents/simple-cta/simple-cta.js";
 import "@lrnwebcomponents/video-player/video-player.js";
@@ -24,8 +24,8 @@ import "@lrnwebcomponents/accent-card/accent-card.js";
 export const styleGuideTopics = {
   Borders: "Borders",
   Breakpoints: "Breakpoints",
-  PolarisColors: "PolarisColors",
-  PolarisFunctionalColors: "PolarisFunctionalColors",
+  DefaultColors: "DefaultColors",
+  DefaultFunctionalColors: "DefaultFunctionalColors",
   Gradients: "Gradients",
   Radius: "Radius",
   Shadows: "Shadows",
@@ -55,16 +55,23 @@ class DDDocs extends DDD {
   static get styles() {
     return [
       super.styles,
-      DDDStyles,
+      DDDAllStyles,
       css`
         /* used for demo */
         :host {
         }
-
+        /** some specific hacks for presenting things nicer */
         .radius div p.b-sm {
           height: var(--ddd-spacing-10);
         }
         details div div {
+          font-size: var(--ddd-font-size-4xs);
+        }
+
+        .DefaultColors h5,
+        .DefaultFunctionalColors h5 {
+          margin: var(--ddd-spacing-8) 0 0 0;
+          padding: 0;
           font-size: var(--ddd-font-size-4xs);
         }
 
@@ -81,7 +88,7 @@ class DDDocs extends DDD {
         }
         .grid-2 {
           display: grid;
-          grid-template-columns: 0.5fr 1.5fr;
+          grid-template-columns: 0.75fr 1.25fr;
         }
         .grid-2-narrow {
           display: grid;
@@ -158,7 +165,7 @@ class DDDocs extends DDD {
   renderBorders() {
     return html`
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Borders</h2>
-      <div class="grid-4 gap-10 mx-10 my-15">
+      <div class="grid-4 gap-10 mx-5 my-15">
         <div class="p-10 b-xs bs-sm">
           <p class="bb-xs mb-5"></p>
           <p>Class: <span class="fw-3">b-xs</span></p>
@@ -194,7 +201,7 @@ class DDDocs extends DDD {
   renderBreakpoints() {
     return html`
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Breakpoints</h2>
-      <table class="my-15 mx-10">
+      <table class="my-15 mx-5">
         <thead>
           <tr>
             <th>Breakpoint</th>
@@ -225,12 +232,12 @@ class DDDocs extends DDD {
     `;
   }
 
-  renderPolarisColors() {
+  renderDefaultColors() {
     return html`
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
         Available Colors from the Polaris Theme
       </h2>
-      <div class="grid-2 gap-4 my-15 ml-10">
+      <div class="grid-2 gap-1 my-5">
         <h5>--ddd-theme-default-beaverBlue</h5>
         <div
           class="m-5 p-10 b-xs"
@@ -511,12 +518,12 @@ class DDDocs extends DDD {
     `;
   }
 
-  renderPolarisFunctionalColors() {
+  renderDefaultFunctionalColors() {
     return html`
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
         Available Functional Colors from the Polaris Theme
       </h2>
-      <div class="grid-2 gap-4 my-15 ml-10">
+      <div class="grid-2 gap-1 my-5">
         <h5>--ddd-theme-default-link</h5>
         <div
           class="m-5 p-10 b-xs"
@@ -621,27 +628,27 @@ class DDDocs extends DDD {
     return html`
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Gradients from the Polaris Theme</h2>
     <div class="grid-6 my-15 ml-10">
-      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-navBar"></p>
+      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-navBar"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-navBar<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-navBar</span></p>
       </div>
-      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-footer"></p>
+      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-footer"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-footer<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-footer</span></p>
       </div>
-      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-newsFeature"></p>
+      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-newsFeature"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-newsFeature<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-newsFeature</span></p>
       </div>
-      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-buttons"></p>
+      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-buttons"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-buttons<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-buttons</span></p>
       </div>
-      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-hero"></p>
+      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-hero</span></p>
       </div>
-      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-hero2"></p>
+      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero2"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero2<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-hero2</span></p>
       </div>
@@ -652,7 +659,7 @@ class DDDocs extends DDD {
   renderRadius() {
     return html`
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Radius classes</h2>
-    <div class="grid-7 my-15 mx-10 gap-2 radius">
+    <div class="grid-7 my-15 mx-5 gap-2 radius">
     <div><p class="p-20 r-xs b-sm bs-sm"></p>
       <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xs<span></p>
       <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-xs</span></p>
@@ -688,7 +695,7 @@ class DDDocs extends DDD {
   renderShadows() {
     return html`
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Shadow classes</h2>
-    <div class="grid-4 my-15 mx-30 gap-30">
+    <div class="grid-4 my-15 mx-30 gap-10">
     <div><p class="py-20 b-sm bs-xs"></p>
       <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-xs<span></p>
       <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-boxShadow-xs</span></p>
@@ -909,7 +916,7 @@ class DDDocs extends DDD {
   renderTypography() {
     return html`
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Typefaces</h2>
-      <div class="mx-10">
+      <div class="mx-5">
         <p>
           Primary Font:
           <span class="fw-3"
@@ -981,7 +988,7 @@ class DDDocs extends DDD {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
       </div>
-      <div class="mx-10">
+      <div class="mx-5">
         <p>
           Primary Font:
           <span class="fw-3"
@@ -1049,7 +1056,7 @@ class DDDocs extends DDD {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
       </div>
-      <div class="mx-10">
+      <div class="mx-5">
         <p>
           Primary Font:
           <span class="fw-3"
@@ -1119,7 +1126,7 @@ class DDDocs extends DDD {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
       </div>
-      <div class="mx-10">
+      <div class="mx-5">
         <h2 class="mt-0 mb-5 pb-5 ">Letter Spacing</h2>
         <h6>CSS Variable is same as class name, with '--ddd-' prefix</h6>
         <table class="my-10">
@@ -1810,7 +1817,7 @@ class DDDocs extends DDD {
         ${this.options.map((option) => {
           const renderMethod = this[`render${option}`];
           if (typeof renderMethod === "function") {
-            return html`<details style="max-width: 100%;">
+            return html`<details style="max-width: 100%;" class="${option}">
               <summary>${option}</summary>
               ${renderMethod.call(this)}
             </details>`;

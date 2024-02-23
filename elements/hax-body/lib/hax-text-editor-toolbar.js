@@ -25,7 +25,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   //styles function
   static get styles() {
     return [
-      //...super.styles,
+      //super.styles,
       ...super.baseStyles,
       ...super.stickyStyles,
       css`

@@ -30,7 +30,7 @@ class SimpleFieldsUpload extends I18NMixin(
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       ...SimpleFieldsButtonStyles,
       css`
         :host {

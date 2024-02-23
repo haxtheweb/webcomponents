@@ -9,13 +9,16 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `haxcms-slide-theme`
  * `A simple slide playing theme`
  *
  * @demo demo/index.html
  */
-class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
+class HAXCMSSlideTheme extends DDDSuper(
+  SimpleColorsSuper(HAXCMSLitElementTheme),
+) {
   constructor() {
     super();
     this.__disposer = [];
@@ -51,7 +54,7 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

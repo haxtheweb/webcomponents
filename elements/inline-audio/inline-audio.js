@@ -53,7 +53,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: inline-flex;

@@ -19,94 +19,9 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         styles = super.styles;
       }
       return [
-        ...styles,
+        styles,
         css`
-          /* bootstrap defaults */
-          :host([font-family="0"]) {
-            font-family: var(--font-family-sans-serif);
-          }
-          :host([font-family="1"]) {
-            font-family: var(--font-family-monospace);
-          }
-          :host([font-size="0"]) {
-            --haxcms-base-styles-body-font-size: 1.2rem;
-            --hax-base-styles-p-font-size: 1.2rem;
-            --hax-base-styles-list-font-size: 1.2rem;
-            --hax-base-styles-a-font-size: 1.2rem;
-            --hax-base-styles-h1-font-size: 2.2rem;
-            --hax-base-styles-h2-font-size: 2rem;
-            --hax-base-styles-h3-font-size: 1.8rem;
-            --hax-base-styles-h4-font-size: 1.6rem;
-            --hax-base-styles-h5-font-size: 1.4rem;
-            --hax-base-styles-h6-font-size: 1.2rem;
-          }
-          :host([font-size="1"]) {
-            --haxcms-base-styles-body-font-size: 1.4rem;
-            --hax-base-styles-p-font-size: 1.4rem;
-            --hax-base-styles-list-font-size: 1.4rem;
-            --hax-base-styles-a-font-size: 1.4rem;
-            --hax-base-styles-h1-font-size: 2.4rem;
-            --hax-base-styles-h2-font-size: 2.2rem;
-            --hax-base-styles-h3-font-size: 2rem;
-            --hax-base-styles-h4-font-size: 1.8rem;
-            --hax-base-styles-h5-font-size: 1.6rem;
-            --hax-base-styles-h6-font-size: 1.4rem;
-          }
-          :host([font-size="2"]) {
-            --haxcms-base-styles-body-font-size: 1.6rem;
-            --hax-base-styles-p-font-size: 1.6rem;
-            --hax-base-styles-list-font-size: 1.6rem;
-            --hax-base-styles-a-font-size: 1.6rem;
-            --hax-base-styles-h1-font-size: 2.6rem;
-            --hax-base-styles-h2-font-size: 2.4rem;
-            --hax-base-styles-h3-font-size: 2.2rem;
-            --hax-base-styles-h4-font-size: 2rem;
-            --hax-base-styles-h5-font-size: 1.8rem;
-            --hax-base-styles-h6-font-size: 1.6rem;
-          }
-          :host([font-size="3"]) {
-            --haxcms-base-styles-body-font-size: 1.8rem;
-            --hax-base-styles-p-font-size: 1.8rem;
-            --hax-base-styles-list-font-size: 1.8rem;
-            --hax-base-styles-a-font-size: 1.8rem;
-            --hax-base-styles-h1-font-size: 2.8rem;
-            --hax-base-styles-h2-font-size: 2.6rem;
-            --hax-base-styles-h3-font-size: 2.4rem;
-            --hax-base-styles-h4-font-size: 2.2rem;
-            --hax-base-styles-h5-font-size: 2rem;
-            --hax-base-styles-h6-font-size: 1.8rem;
-          }
-          :host([font-size="4"]) {
-            --haxcms-base-styles-body-font-size: 2rem;
-            --hax-base-styles-p-font-size: 2rem;
-            --hax-base-styles-list-font-size: 2rem;
-            --hax-base-styles-a-font-size: 2rem;
-            --hax-base-styles-h1-font-size: 3rem;
-            --hax-base-styles-h2-font-size: 2.8rem;
-            --hax-base-styles-h3-font-size: 2.6rem;
-            --hax-base-styles-h4-font-size: 2.4rem;
-            --hax-base-styles-h5-font-size: 2.2rem;
-            --hax-base-styles-h6-font-size: 2rem;
-          }
           :host([color-theme="0"]) {
-            --haxcms-user-styles-color-theme-color-color: #000000;
-            --haxcms-user-styles-color-theme-color-background: #ffffff;
-            --haxcms-user-styles-color-theme-color-1: #252737;
-            --haxcms-user-styles-color-theme-color-2: #f5f5f5;
-            --haxcms-user-styles-color-theme-color-3: #f5f5f5;
-            --haxcms-user-styles-color-theme-color-4: var(
-              --simple-colors-default-theme-blue-8,
-              #4183c4
-            );
-            --hax-base-styles-a-color-visited: var(
-              --simple-colors-default-theme-blue-7,
-              #4183c4
-            );
-            --hax-base-styles-a-color: var(
-              --simple-colors-default-theme-blue-7,
-              #4183c4
-            );
-            --hax-base-styles-a-color-active: #000000;
           }
 
           :host([color-theme="0"]) .hcusm {
@@ -117,7 +32,6 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
             --simple-popover-background-color: #fafafa;
           }
           #slot ::slotted(*) {
-            font-size: var(--haxcms-base-styles-body-font-size, 1em);
             color: var(--haxcms-user-styles-color-theme-color-color);
           }
           simple-icon-button-lite:not(:defined),
@@ -181,15 +95,6 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           */
 
           :host([color-theme="1"]) {
-            --haxcms-user-styles-color-theme-color-color: #ffffff;
-            --haxcms-user-styles-color-theme-color-background: #343a40;
-            --haxcms-user-styles-color-theme-color-1: #ffffff;
-            --haxcms-user-styles-color-theme-color-2: #343a40;
-            --haxcms-user-styles-color-theme-color-3: #1c1c1c;
-            --haxcms-user-styles-color-theme-color-4: #eee8e0;
-            --hax-base-styles-a-color-visited: #551a8b;
-            --hax-base-styles-a-color: #704214;
-            --hax-base-styles-a-color-active: #000000;
           }
 
           :host([color-theme="1"]) .hcusm {
@@ -234,20 +139,6 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               --simple-colors-default-theme-light-blue-1,
               #cfd4e3
             );
-            --haxcms-user-styles-color-theme-color-background: #1c1f2b;
-            --haxcms-user-styles-color-theme-color-1: #a6a6a6;
-            --haxcms-user-styles-color-theme-color-2: #252737;
-            --haxcms-user-styles-color-theme-color-3: #252737;
-            --haxcms-user-styles-color-theme-color-4: #f4f4f5;
-            --hax-base-styles-a-color-visited: var(
-              --simple-colors-default-theme-light-blue-2,
-              #3eb1d0
-            );
-            --hax-base-styles-a-color: var(
-              --simple-colors-default-theme-light-blue-2,
-              #3eb1d0
-            );
-            --hax-base-styles-a-color-active: #ffffff;
           }
 
           :host([color-theme="2"]) .hcusm {

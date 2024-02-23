@@ -2,7 +2,10 @@ import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { DDDFontSizing, DDDLineHeight } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
+import {
+  DDDFontSizing,
+  DDDLineHeight,
+} from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 
 class CollectionItem extends DDD {
   static get properties() {
@@ -44,10 +47,11 @@ class CollectionItem extends DDD {
   static get styles() {
     return [
       super.styles,
-      DDDFontSizing, DDDLineHeight,
+      DDDFontSizing,
+      DDDLineHeight,
       css`
         :host {
-          display: inline;
+          display: block;
           background-color: var(--simple-colors-default-theme-accent-1);
           height: fit-content;
           --collection-row-accent-color: var(
@@ -67,6 +71,7 @@ class CollectionItem extends DDD {
             0.3s ease-in-out filter;
           height: 300px;
           box-shadow: var(--ddd-boxShadow-xs);
+          overflow: hidden;
         }
         :host([saturate]) a.link {
           -webkit-filter: saturate(30%);

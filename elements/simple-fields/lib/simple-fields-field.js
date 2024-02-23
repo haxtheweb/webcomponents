@@ -14,7 +14,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
     }
     static get styles() {
       return [
-        ...super.styles,
+        super.styles,
         css`
           fieldset {
             margin: 0;

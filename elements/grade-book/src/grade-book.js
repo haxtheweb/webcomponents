@@ -559,7 +559,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

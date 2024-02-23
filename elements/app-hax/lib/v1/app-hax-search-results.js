@@ -70,7 +70,7 @@ export class AppHaxSearchResults extends SimpleColors {
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           overflow: hidden;

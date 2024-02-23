@@ -24,7 +24,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       ...HaxTrayDetailHeadings,
       css`
         :host {

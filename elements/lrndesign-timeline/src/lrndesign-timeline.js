@@ -20,7 +20,7 @@ class LrndesignTimeline extends SimpleColors {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           font-size: 14px;

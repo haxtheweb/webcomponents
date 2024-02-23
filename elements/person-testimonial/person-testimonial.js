@@ -9,7 +9,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 class PersonTestimonial extends SimpleColors {
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

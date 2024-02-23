@@ -12,7 +12,7 @@ const HaxToolbarBehaviors = function (SuperClass) {
      */
     static get styles() {
       return [
-        ...super.styles,
+        super.styles,
         css`
           :host {
             --hax-ui-border-radius: 0px;

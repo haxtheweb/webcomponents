@@ -5,20 +5,18 @@ import { css } from "lit";
   gradients need to be rotated (sometimes?)
   When to use // after headers?
 */
+// fonts used
+export const DDDFonts = [
+  "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap",
+  "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap",
+  "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap",
+];
+// CSS variables which is most of the system needed
 export const DDDVariables = css`
   :root,
   html,
   body,
   :host {
-    /* global override font styles for light-dom content */
-    --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
-    --ddd-theme-h1-font-size: var(--ddd-font-size-l);
-    --ddd-theme-h2-font-size: var(--ddd-font-size-m);
-    --ddd-theme-h3-font-size: var(--ddd-font-size-ms);
-    --ddd-theme-h4-font-size: var(--ddd-font-size-s);
-    --ddd-theme-h5-font-size: var(--ddd-font-size-xs);
-    --ddd-theme-h6-font-size: var(--ddd-font-size-xxs);
-
     /* base polaris colors */
     --ddd-theme-default-beaverBlue: #1e407c;
     --ddd-theme-default-beaver70: rgba(30, 64, 124, 0.7);
@@ -133,6 +131,15 @@ Come back to grid in style guide - > decide number of columns based on container
     --ddd-font-size-type1-s: 80px;
     --ddd-font-size-type1-m: 150px;
     --ddd-font-size-type1-l: 200px;
+
+    /* global override font styles for light-dom content */
+    --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
+    --ddd-theme-h1-font-size: var(--ddd-font-size-l);
+    --ddd-theme-h2-font-size: var(--ddd-font-size-m);
+    --ddd-theme-h3-font-size: var(--ddd-font-size-ms);
+    --ddd-theme-h4-font-size: var(--ddd-font-size-s);
+    --ddd-theme-h5-font-size: var(--ddd-font-size-xs);
+    --ddd-theme-h6-font-size: var(--ddd-font-size-xxs);
 
     /* letter spacing */
     --ddd-ls-16-sm: 0.08px;
@@ -367,6 +374,10 @@ export const DDDReset = css`
   p {
     margin: var(--ddd-spacing-6) 0;
   }
+  /* p uniformity but ignore if either is in a slot */
+  p:not([slot]) + p:not([slot]) {
+    margin-top: 0;
+  }
 
   /* heading presets */
   h1.type1 {
@@ -434,7 +445,7 @@ export const DDDReset = css`
     flex-flow: column;
     gap: var(--ddd-spacing-3);
     font-family: var(--ddd-font-primary);
-    margin: .var(--ddd-spacing-6) 0;
+    margin: 0 0 var(--ddd-spacing-6) 0;
   }
   ul.link-list {
     list-style: none;
@@ -550,7 +561,7 @@ export const DDDReset = css`
     font-size: calc(var(--ddd-theme-body-font-size) - var(--ddd-spacing-1));
     background-color: var(
       --ddd-theme-default-limestoneLight,
-      var(--hax-base-styles-code-background-color, rgba(175, 184, 193, 0.2))
+      rgba(175, 184, 193, 0.2)
     );
     line-height: 1;
     border-radius: var(--ddd-radius-xs);
@@ -579,7 +590,7 @@ export const DDDReset = css`
     overflow: auto;
     background-color: var(
       --ddd-theme-default-limestoneMaxLight,
-      var(--hax-base-styles-pre-background-color, rgba(175, 184, 193, 0.2))
+      rgba(175, 184, 193, 0.2)
     );
     border-radius: var(--ddd-radius-sm);
     margin: var(--ddd-spacing-1) 0;
@@ -600,20 +611,14 @@ export const DDDReset = css`
     text-decoration: underline;
     pointer-events: auto;
     cursor: pointer;
-    outline-color: var(
-      --ddd-theme-default-info,
-      var(--hax-base-styles-abbr-outline, #ffff33)
-    );
+    outline-color: var(--ddd-theme-default-info, #ffff33);
     position: relative;
   }
   abbr:focus,
   abbr:active,
   abbr:hover {
     text-decoration: none;
-    background-color: var(
-      --ddd-theme-default-infoLight,
-      var(--hax-base-styles-abbr-outline, #ffff33)
-    );
+    background-color: var(--ddd-theme-default-infoLight, #ffff33);
     outline-offset: 2px;
     outline-style: dotted;
     outline-width: 2px;
@@ -664,6 +669,9 @@ export const DDDReset = css`
     border-radius: var(--ddd-radius-xs);
     border-color: var(--ddd-theme-default-potential50);
   }
+  hax-body p,
+  hax-body ul,
+  hax-body ol,
   .haxcms-theme-element p,
   .haxcms-theme-element ul,
   .haxcms-theme-element ol {
@@ -2633,7 +2641,7 @@ export const DDDExtra = css`
   }
 `;
 // export that has all of them for easy stamping as a single sheet
-export const DDDStyles = [
+export const DDDAllStyles = [
   DDDVariables,
   DDDReset,
   DDDBreadcrumb,

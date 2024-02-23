@@ -133,7 +133,7 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

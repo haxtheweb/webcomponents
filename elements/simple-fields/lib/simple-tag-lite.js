@@ -61,7 +61,7 @@ export const SimpleTagLiteSuper = function (SuperClass) {
         styles = super.styles;
       }
       return [
-        ...styles,
+        styles,
         css`
           :host {
             display: inline-flex;

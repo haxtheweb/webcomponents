@@ -19,7 +19,7 @@ class MediaImage extends DDD {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;
@@ -488,7 +488,7 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;
@@ -577,7 +577,7 @@ class MediaImageCitation extends DDD {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;
@@ -618,7 +618,7 @@ class MediaImageCaption extends DDD {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

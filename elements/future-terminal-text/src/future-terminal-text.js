@@ -18,7 +18,7 @@ class FutureTerminalText extends SimpleColorsSuper(FutureTerminalTextLite) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         span {
           color: var(

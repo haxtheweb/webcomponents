@@ -30,7 +30,7 @@ class RichTextEditorIconPicker extends RichTextEditorPickerBehaviors(
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         #button.show-label::part(label) {
           padding: 0;

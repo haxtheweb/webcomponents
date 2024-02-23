@@ -33,7 +33,7 @@ const QRCodeMixin = function (SuperClass) {
         styles = super.styles;
       }
       return [
-        ...styles,
+        styles,
         css`
           simple-popover:not(:defined) {
             display: none;

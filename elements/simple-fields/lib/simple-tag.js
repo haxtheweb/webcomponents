@@ -80,7 +80,7 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       SimpleFieldsButtonStyles,
       SimpleFieldsTooltipStyles,
       css`

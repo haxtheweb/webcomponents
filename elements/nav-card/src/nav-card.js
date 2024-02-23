@@ -20,7 +20,7 @@ class NavCard extends AccentCard {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

@@ -38,7 +38,7 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
   // LitElement convention for applying styles JUST to our element
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

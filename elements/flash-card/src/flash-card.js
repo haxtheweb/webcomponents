@@ -29,7 +29,7 @@ export class FlashCard extends SimpleColors {
   // CSS - specific to Lit
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

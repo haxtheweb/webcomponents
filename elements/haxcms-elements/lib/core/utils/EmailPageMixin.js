@@ -18,7 +18,7 @@ const EmailPageMixin = function (SuperClass) {
         styles = super.styles;
       }
       return [
-        ...styles,
+        styles,
         css`
           .email-btn {
             color: inherit;

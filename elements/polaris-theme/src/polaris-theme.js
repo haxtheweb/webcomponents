@@ -21,6 +21,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
 import { autorun, toJS } from "mobx";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `polaris-theme`
  * `A 2nd polaris theme`
@@ -36,7 +37,9 @@ class PolarisTheme extends HAXCMSOperationButtons(
   PDFPageMixin(
     PrintBranchMixin(
       QRCodeMixin(
-        HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)),
+        HAXCMSThemeParts(
+          HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+        ),
       ),
     ),
   ),
@@ -44,7 +47,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;
@@ -55,42 +58,8 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --polaris-footer-secondary-bg-color: #262c3a;
           --polaris-footer-primary-bg-color: #141720;
           background-color: var(--polaris-bg-color);
-          --haxcms-base-styles-body-font-size: 16px;
-          --hax-base-styles-a-font-size: 16px;
-          --hax-base-styles-p-font-size: 16px;
-          --hax-base-styles-list-font-size: 16px;
-          --haxcms-base-styles-body-font-family: "Open Sans", "Helvetica Neue",
-            Helvetica, Arial, sans-serif;
-          --haxcms-base-styles-body-line-height: 32px;
-          --hax-base-styles-list-line-height: 28.8px
-            --hax-base-styles-p-line-height: 28.8px;
-          --hax-base-styles-p-letter-spacing: normal;
-          --haxcms-base-styles-body-letter-spacing: normal;
-          --hax-base-styles-p-min-height: auto;
-          --hax-base-styles-list-max-width: auto;
-          --haxcms-base-styles-p-min-height: auto;
-          --hax-base-styles-list-padding-bottom: auto;
-          --hax-base-styles-h1-font-size: 36px;
-          --hax-base-styles-h2-font-size: 36px;
-          --hax-base-styles-h3-font-size: inherit;
-          --hax-base-styles-h4-font-size: inherit;
-          --hax-base-styles-h5-font-size: inherit;
-          --hax-base-styles-h6-font-size: inherit;
-        }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          font-family: "Open Sans", sans-serif;
-          font-weight: 300;
         }
 
-        a {
-          color: #1173ca;
-          text-decoration: none;
-        }
         .search-modal-btn {
           --simple-icon-width: 36px;
           --simple-icon-height: 36px;

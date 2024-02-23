@@ -31,7 +31,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           flex-wrap: wrap;

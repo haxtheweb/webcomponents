@@ -250,7 +250,7 @@ export class SiteCollectionList extends CollectionList {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

@@ -24,7 +24,7 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
 ) {
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: inline-block;

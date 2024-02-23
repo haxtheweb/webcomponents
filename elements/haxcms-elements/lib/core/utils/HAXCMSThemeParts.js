@@ -23,7 +23,7 @@ const HAXCMSThemeParts = function (SuperClass) {
         styles = super.styles;
       }
       return [
-        ...styles,
+        styles,
         css`
           [part="edit-mode-active"],
           [part*="edit-mode-active"] {

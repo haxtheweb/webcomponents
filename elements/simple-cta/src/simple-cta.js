@@ -17,7 +17,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: inline-block;

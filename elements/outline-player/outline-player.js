@@ -6,6 +6,8 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -17,17 +19,16 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  *
  * @demo demo/index.html
  */
-class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
+class OutlinePlayer extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
   /**
    * LitElement style render
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;
-          font-family: libre baskerville;
           position: relative;
           overflow: hidden;
           --outline-player-min-height: 100vh;
@@ -70,44 +71,6 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         :host li,
         :host * ::slotted(li) {
           margin-bottom: 6px;
-        }
-
-        h1 {
-          font-size: 36px;
-        }
-
-        h2 {
-          font-size: 32px;
-        }
-
-        h3 {
-          font-size: 28px;
-        }
-
-        p {
-          line-height: 26px;
-          min-height: 26px;
-        }
-
-        a,
-        a:visited,
-        a:active {
-          color: #000;
-        }
-
-        a:hover {
-          color: #2196f3;
-        }
-
-        ul li {
-          padding-bottom: 24px;
-          line-height: 1.5;
-          color: #424242;
-          max-width: 448px;
-        }
-
-        ul li:last-child {
-          padding-bottom: 16px;
         }
 
         app-drawer-layout {

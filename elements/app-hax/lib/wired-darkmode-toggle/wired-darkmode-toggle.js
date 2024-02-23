@@ -73,7 +73,7 @@ export class WiredDarkmodeToggle extends WiredToggle {
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           opacity: 1;

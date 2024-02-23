@@ -132,7 +132,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     }
 
     static get styles() {
-      return [...super.styles, ...RichTextToolbarStyles];
+      return [super.styles, ...RichTextToolbarStyles];
     }
     render() {
       return super.render();

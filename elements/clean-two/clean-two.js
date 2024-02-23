@@ -23,7 +23,7 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
-import { DDDSuper, DDDFonts } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `clean-two`
  * `A 2nd clean theme`
@@ -53,7 +53,7 @@ class CleanTwo extends HAXCMSOperationButtons(
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
@@ -64,7 +64,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           --simple-tooltip-text-color: var(--ddd-theme-default-infoLight);
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
-          --hax-base-styles-a-color-active: #000000;
         }
         .link-actions {
           margin: 0;

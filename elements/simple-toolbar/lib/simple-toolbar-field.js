@@ -24,7 +24,7 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host([full-display]) {
           min-width: 100px;

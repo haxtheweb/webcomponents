@@ -24,7 +24,7 @@ class ElmslnLoading extends SimpleColors {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         @-moz-keyframes spin {
           100% {

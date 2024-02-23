@@ -14,6 +14,7 @@ import {
   learningComponentColors,
   iconFromPageType,
 } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+import { copyToClipboard } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * LitElement Version of HAXCMSTheme
@@ -68,28 +69,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   }
 
   hoverIntentEnter(e) {
-    this.__styleTag = globalThis.document.createElement("style");
-    let iconPath = SimpleIconsetStore.getIcon("icons:link");
-    this.__styleTag.innerHTML = `
-    #${e.target.getAttribute(
-      "id",
-    )} { cursor: copy; text-decoration: dotted underline}
-    #${e.target.getAttribute("id")} {
-      background-image: url("${iconPath}");
-      background-position: right;
-      background-repeat: no-repeat;
-      background-size: 36px;
-    }`;
-    e.target.appendChild(this.__styleTag);
+    e.target.classList.add('haxcms-copyable');
   }
   hoverIntentLeave(e) {
-    if (this.__styleTag) {
-      this.__styleTag.remove();
-    }
-  }
-
-  HAXCMSGlobalStyleSheetEditModeContent() {
-    return [css``];
+    e.target.classList.remove('haxcms-copyable');
   }
 
   HAXCMSGlobalStyleSheetContent() {
@@ -178,6 +161,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     );
     return [
       css`
+        .haxcms-copyable {
+          background-image: url("${unsafeCSS(SimpleIconsetStore.getIcon("icons:link"))}");
+          background-position: right;
+          background-repeat: no-repeat;
+          background-size: 36px;
+        }
         [data-style-decoration] {
           --mark-red-bg: #fbe4e4;
           --mark-pink-bg: #f4dfeb;
@@ -447,7 +436,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           color: white;
         }
       `,
-      ...styles,
+      styles,
       ...instructionalStyles,
       editableTableDisplayStyles,
     ];
@@ -470,28 +459,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         inline: "nearest",
       });
     }
-    let el = globalThis.document.createElement("textarea");
-    el.value =
-      globalThis.location.origin +
-      globalThis.location.pathname +
-      "#" +
-      target.getAttribute("id");
     // alter URL state
-    globalThis.history.pushState({}, null, el.value);
+    let headingLink = globalThis.location.origin + globalThis.location.pathname +
+    "#" + target.getAttribute("id");
+    globalThis.history.pushState({}, null, headingLink);
     globalThis.dispatchEvent(new PopStateEvent("popstate"));
-    globalThis.document.body.appendChild(el);
-    el.select();
-    globalThis.document.execCommand("copy");
-    globalThis.document.body.removeChild(el);
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-toast-show", {
-        cancelable: true,
-        detail: {
-          text: `Link copied to clipboard`,
-          duration: 3000,
-        },
-      }),
-    );
+    copyToClipboard(headingLink, "Anchor link copied!");
   }
   static get properties() {
     let props = {};
@@ -550,11 +523,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       styles = super.styles;
     }
     return [
-      ...styles,
+      styles,
       css`
         :host([edit-mode]) {
           opacity: 1;
-          --hax-base-styles-p-min-height: 38px;
         }
         :host([hidden]) {
           display: none;
@@ -692,28 +664,6 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           }),
         );
         this._editModeChanged(this[propName], oldValue);
-        if (
-          !this.__themeStylesAppliedToHaxBody &&
-          this.HAXCMSGlobalStyleSheetEditModeContent
-        ) {
-          this.__themeStylesAppliedToHaxBody = true;
-          // inject's theme's specific style sheet criteria into hax body
-          // this should ensure that low level css is the same if in shadowRoot for hax-body or
-          // primary design
-          if (
-            globalThis.HaxStore &&
-            globalThis.HaxStore.requestAvailability() &&
-            globalThis.HaxStore.requestAvailability().activeHaxBody &&
-            globalThis.HaxStore.requestAvailability().activeHaxBody.shadowRoot
-          ) {
-            render(
-              this.HAXCMSGlobalStyleSheetEditModeContent(),
-              globalThis.HaxStore.requestAvailability().activeHaxBody.shadowRoot.querySelector(
-                "#hax-body-style-element",
-              ),
-            );
-          }
-        }
       }
     });
   }

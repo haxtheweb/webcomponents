@@ -37,7 +37,7 @@ export class SuperDaemonToast extends SimpleToastEl {
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           --simple-toast-z-index: 100000002;

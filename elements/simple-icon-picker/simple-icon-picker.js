@@ -20,7 +20,7 @@ class SimpleIconPicker extends SimplePicker {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         simple-picker-option {
           --simple-picker-option-size: 32px;

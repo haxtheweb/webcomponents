@@ -62,10 +62,6 @@ for styling:
 
 Custom property | Description | Default
 ----------------|-------------|--------
---haxcms-base-styles-body-font-size |   | 16px
---haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif
---haxcms-base-styles-body-line-height |   | 1.8
---haxcms-base-styles-body-letter-spacing |   | .5px
 --hax-ui-headings |   | #d4ff77;
 --hax-color-text | default text color | #000
 --hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1
@@ -81,40 +77,6 @@ Custom property | Description | Default
 --hax-body-active-outline-hover: 1px solid --hax-contextual-action-color
 --hax-body-active-outline: 3px solid  --hax-contextual-action-color
 
-####Headings
-Custom property | Description | Default
-----------------|-------------|--------
---hax-base-styles-h1-font-size |   | 2.5em
---hax-base-styles-h1-line-height |   | 2.5em
---hax-base-styles-h2-font-size |   | 2em
---hax-base-styles-h3-font-size |   | 1.75em
---hax-base-styles-h4-font-size |   | 1.5em
---hax-base-styles-h5-font-size |   | 1.25em
---hax-base-styles-h6-font-size |   | 1.25em
---hax-base-styles-p-min-height |   | 43px
---hax-base-styles-p-font-size |   | 24px
---hax-base-styles-p-line-height |   | 1.8
---hax-base-styles-p-letter-spacing |   | 0.5px
-
-####Links
-Custom property | Description | Default
-----------------|-------------|--------
---hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12
---hax-base-styles-a-font-size |   | 24px
---hax-base-styles-a-font-weight |   | normal
---hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue
---hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue
---hax-base-styles-a-font-weight-active |   | normal
-
-####Lists
-Custom property | Description | Default
-----------------|-------------|--------
---hax-base-styles-list-padding-bottom |   | 1.5em
---hax-base-styles-list-line-height |   | 40px
---hax-base-styles-list-font-size |   | 24px
---hax-base-styles-list-last-child-padding-bottom |   | 1em
---hax-base-styles-list-padding-left |   | 20px
---hax-base-styles-list-margin-left |   | 20px
  * 
  * @microcopy - the mental model for this element
  *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.
@@ -134,59 +96,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host([edit-mode]),
         :host([edit-mode]) * ::slotted(*) {
           caret-color: var(--hax-ui-caret-color, auto);
-          line-height: 1.8;
         }
-        :host([edit-mode]) ul,
-        :host([edit-mode]) ol {
-          padding-left: 20px;
-          margin-left: 20px;
-        }
-        :host([edit-mode]) ul {
-          list-style-type: disc;
-        }
-        :host([edit-mode]) code {
-          padding: 0.2em 0.4em;
-          margin: 0;
-          font-size: 12px;
-          background-color: var(
-            --hax-base-styles-code-background-color,
-            rgba(175, 184, 193, 0.2)
-          );
-          border-radius: 6px;
-          font-family: var(
-            --hax-base-styles-code-font-family,
-            ui-monospace,
-            monospace
-          );
-        }
-        :host([edit-mode]) pre {
-          padding: 16px;
-          overflow: auto;
-          line-height: 1.45;
-          background-color: var(
-            --hax-base-styles-pre-background-color,
-            rgba(175, 184, 193, 0.2)
-          );
-          border-radius: 6px;
-          margin-bottom: 0;
-          word-break: normal;
-          word-wrap: normal;
-          margin-top: 0;
-          font-family: var(
-            --hax-base-styles-pre-font-family,
-            ui-monospace,
-            monospace
-          );
-          font-size: 12px;
-        }
-        :host([edit-mode]) li {
-          margin-bottom: 6px;
-        }
+
         hax-text-editor-toolbar {
           background-color: var(--hax-ui-background-color);
           --simple-toolbar-button-bg: var(--hax-ui-background-color);
@@ -294,7 +210,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           )::before {
           content: "Type '/' for Merlin";
           opacity: 0.4;
-          font-size: 18px;
         }
 
         :host([edit-mode])
@@ -317,49 +232,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           )::before {
           content: "";
         }
-        :host([edit-mode]) #bodycontainer ::slotted(p) {
-          min-height: var(--hax-base-styles-p-min-height, 1rem);
-          font-size: var(--hax-base-styles-p-font-size);
-          line-height: var(--hax-base-styles-p-line-height);
-          letter-spacing: var(--hax-base-styles-p-letter-spacing);
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(a) {
-          color: var(--hax-base-styles-a-color);
-          font-size: var(
-            --hax-base-styles-a-font-size,
-            var(--hax-base-styles-p-font-size)
-          );
-          font-weight: var(--hax-base-styles-a-font-weight);
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(a:visited) {
-          color: var(--hax-base-styles-a-color-visited);
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(a:active),
-        :host([edit-mode]) #bodycontainer ::slotted(a:focus),
-        :host([edit-mode]) #bodycontainer ::slotted(a:hover) {
-          color: var(--hax-base-styles-a-color-active);
-          font-weight: var(--hax-base-styles-a-font-weight-active);
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(ol),
-        :host([edit-mode]) #bodycontainer ::slotted(ul),
-        :host([edit-mode]) #bodycontainer ::slotted(li) {
-          padding-bottom: var(--hax-base-styles-list-padding-bottom);
-          line-height: var(
-            --hax-base-styles-list-line-height,
-            var(--hax-base-styles-p-line-height)
-          );
-          font-size: var(
-            --hax-base-styles-list-font-size,
-            var(--hax-base-styles-p-font-size)
-          );
-        }
+
         :host([edit-mode]) #bodycontainer ::slotted([data-hax-active]),
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
           outline-offset: 8px;
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(ol > li:last-child),
-        :host([edit-mode]) #bodycontainer ::slotted(ul > li:last-child) {
-          padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom);
         }
         :host([edit-mode]) #bodycontainer ::slotted(img[contenteditable]) {
           max-width: 100%;
@@ -411,11 +287,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           cursor: text !important;
           caret-color: var(--hax-ui-caret-color, auto);
           outline: var(--hax-body-active-outline-hover);
-        }
-        :host([edit-mode])
-          #bodycontainer
-          ::slotted(code[data-hax-active][contenteditable]) {
-          display: block;
         }
         :host([edit-mode])
           #bodycontainer

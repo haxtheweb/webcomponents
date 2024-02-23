@@ -17,6 +17,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-act
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { autorun, toJS } from "mobx";
 
 import "./lib/training-button.js";
@@ -33,7 +34,9 @@ class TrainingTheme extends HAXCMSOperationButtons(
     PDFPageMixin(
       PrintBranchMixin(
         QRCodeMixin(
-          HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)),
+          HAXCMSThemeParts(
+            HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+          ),
         ),
       ),
     ),
@@ -91,7 +94,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
   // LitElement convention for applying styles JUST to our element
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;

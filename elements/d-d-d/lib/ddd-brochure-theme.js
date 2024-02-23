@@ -5,7 +5,7 @@
 import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
-import { DDDSuper, DDDFonts } from "../d-d-d.js";
+import { DDDSuper } from "../d-d-d.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
@@ -118,116 +118,119 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     globalThis.document.body.style.overflow = "auto";
   }
   static get styles() {
-    return css`
-      :host([edit-mode]) {
-        opacity: 1;
-        margin: 0px 350px; /** helps when editing to see spacing */
-      }
-      :host([hidden]) {
-        display: none;
-      }
-      [hidden] {
-        display: none !important;
-      }
-
-      .menu {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        width: 100%;
-        margin-right: var(--ddd-spacing-25);
-        margin-top: var(--ddd-spacing-2);
-      }
-
-      .menu .menu-item {
-        display: flex;
-        text-decoration: none;
-        height: fit-content;
-        transition: all 0.3s ease-in-out;
-      }
-
-      .menu .menu-item button {
-        margin: 0 var(--ddd-spacing-4);
-        cursor: pointer;
-        text-decoration: none;
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-        font-size: var(--ddd-font-size-xs);
-        background-color: transparent;
-        color: var(--primary-color-3);
-        border: 0;
-        height: var(--ddd-spacing-16);
-        transition: all 0.3s ease-in-out;
-      }
-
-      .menu .menu-item button:hover,
-      .menu .menu-item button:focus {
-        color: var(--secondary-color-1);
-        background-color: var(--primary-color-1);
-        text-decoration: underline;
-      }
-
-      #top {
-        position: fixed;
-        right: 0;
-        bottom: var(--ddd-spacing-30);
-        z-index: 10000;
-        --simple-icon-width: var(--ddd-icon-md);
-        --simple-icon-height: var(--ddd-icon-md);
-        --simple-icon-button-border-radius: none;
-      }
-
-      @media (max-width: 1400px) {
-        .menu {
-          margin-right: 0px;
-          margin-top: var(--ddd-spacing-1);
+    return [
+      super.styles,
+      css`
+        :host([edit-mode]) {
+          opacity: 1;
+          margin: 0px 350px; /** helps when editing to see spacing */
         }
-        .menu .menu-item button {
-          margin: 0px var(--ddd-spacing-1);
-        }
-      }
-
-      @media (max-width: 1200px) {
-        .menu .menu-item button {
-          font-size: var(--ddd-font-size-3xs);
-        }
-      }
-
-      @media (max-width: 1000px) {
-        .menu .menu-item button {
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-        }
-      }
-
-      @media (max-width: 768px) {
-        #top {
+        :host([hidden]) {
           display: none;
         }
+        [hidden] {
+          display: none !important;
+        }
+
+        .menu {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          width: 100%;
+          margin-right: var(--ddd-spacing-25);
+          margin-top: var(--ddd-spacing-2);
+        }
+
+        .menu .menu-item {
+          display: flex;
+          text-decoration: none;
+          height: fit-content;
+          transition: all 0.3s ease-in-out;
+        }
+
         .menu .menu-item button {
-          margin: 0px var(--ddd-spacing-1);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-4xs);
-          height: var(--ddd-spacing-12);
+          margin: 0 var(--ddd-spacing-4);
+          cursor: pointer;
+          text-decoration: none;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          font-size: var(--ddd-font-size-xs);
+          background-color: transparent;
+          color: var(--primary-color-3);
+          border: 0;
+          height: var(--ddd-spacing-16);
+          transition: all 0.3s ease-in-out;
         }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
+
+        .menu .menu-item button:hover,
+        .menu .menu-item button:focus {
+          color: var(--secondary-color-1);
+          background-color: var(--primary-color-1);
+          text-decoration: underline;
         }
-      }
-      /**
+
+        #top {
+          position: fixed;
+          right: 0;
+          bottom: var(--ddd-spacing-30);
+          z-index: 10000;
+          --simple-icon-width: var(--ddd-icon-md);
+          --simple-icon-height: var(--ddd-icon-md);
+          --simple-icon-button-border-radius: none;
+        }
+
+        @media (max-width: 1400px) {
+          .menu {
+            margin-right: 0px;
+            margin-top: var(--ddd-spacing-1);
+          }
+          .menu .menu-item button {
+            margin: 0px var(--ddd-spacing-1);
+          }
+        }
+
+        @media (max-width: 1200px) {
+          .menu .menu-item button {
+            font-size: var(--ddd-font-size-3xs);
+          }
+        }
+
+        @media (max-width: 1000px) {
+          .menu .menu-item button {
+            padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          }
+        }
+
+        @media (max-width: 768px) {
+          #top {
+            display: none;
+          }
+          .menu .menu-item button {
+            margin: 0px var(--ddd-spacing-1);
+            padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+            font-size: var(--ddd-font-size-4xs);
+            height: var(--ddd-spacing-12);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            transition: none !important;
+          }
+        }
+        /**
         * Hide the slotted content during edit mode. This must be here to work.
         */
-      :host([edit-mode]) #slot {
-        display: none;
-      }
-      #slot {
-        min-height: 50vh;
-      }
-      :host {
-        display: block;
-        margin: 0px;
-      }
-    `;
+        :host([edit-mode]) #slot {
+          display: none;
+        }
+        #slot {
+          min-height: 50vh;
+        }
+        :host {
+          display: block;
+          margin: 0px;
+        }
+      `,
+    ];
   }
   static get tag() {
     return "ddd-brochure-theme";

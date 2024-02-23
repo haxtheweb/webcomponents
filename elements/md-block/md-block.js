@@ -3,16 +3,18 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `md-block`
  * `a markdown block`
  * @demo demo/index.html
  * @element md-block
  */
-class MdBlock extends LitElement {
+class MdBlock extends DDD {
   //styles function
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: block;
@@ -20,118 +22,6 @@ class MdBlock extends LitElement {
 
         :host([hidden]) {
           display: none;
-        }
-        img {
-          max-width: 100%;
-        }
-
-        h1 {
-          font-size: var(--hax-base-styles-h1-font-size);
-          line-height: var(--hax-base-styles-h1-line-height);
-        }
-
-        h2 {
-          font-size: var(--hax-base-styles-h2-font-size);
-        }
-
-        h3 {
-          font-size: var(--hax-base-styles-h3-font-size);
-        }
-
-        h4 {
-          font-size: var(--hax-base-styles-h4-font-size);
-        }
-
-        h5 {
-          font-size: var(--hax-base-styles-h5-font-size);
-        }
-
-        h6 {
-          font-size: var(--hax-base-styles-h6-font-size);
-        }
-
-        p {
-          min-height: var(--hax-base-styles-p-min-height);
-          font-size: var(--hax-base-styles-p-font-size);
-          line-height: var(--hax-base-styles-p-line-height);
-          letter-spacing: var(--hax-base-styles-p-letter-spacing);
-        }
-
-        a,
-        a:-webkit-any-link {
-          color: var(--hax-base-styles-a-color);
-          font-weight: var(--hax-base-styles-a-font-weight);
-        }
-
-        a:visited {
-          color: var(--hax-base-styles-a-color-visited);
-        }
-
-        a:active,
-        a:focus,
-        a:hover {
-          color: var(--hax-base-styles-a-color-active);
-          font-weight: var(--hax-base-styles-a-font-weight-active);
-        }
-
-        ol,
-        ul ol li,
-        ul li {
-          padding-bottom: var(--hax-base-styles-list-padding-bottom);
-          line-height: var(--hax-base-styles-list-line-height);
-          font-size: var(--hax-base-styles-list-font-size);
-          max-width: var(--hax-base-styles-list-max-width);
-        }
-
-        ol li:last-child,
-        ul li:last-child {
-          padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom);
-        }
-
-        ul,
-        ol {
-          padding-left: var(--hax-base-styles-list-padding-left);
-          padding-left: var(--hax-base-styles-list-margin-left);
-        }
-
-        code {
-          padding: 0.2em 0.4em;
-          margin: 0;
-          font-size: 12px;
-          background-color: var(
-            --hax-base-styles-code-background-color,
-            rgba(175, 184, 193, 0.2)
-          );
-          border-radius: 6px;
-          font-family: var(
-            --hax-base-styles-code-font-family,
-            ui-monospace,
-            monospace
-          );
-        }
-
-        pre {
-          padding: 16px;
-          overflow: auto;
-          line-height: 1.45;
-          background-color: var(
-            --hax-base-styles-pre-background-color,
-            rgba(175, 184, 193, 0.2)
-          );
-          border-radius: 6px;
-          margin-bottom: 0;
-          word-break: normal;
-          word-wrap: normal;
-          margin-top: 0;
-          font-family: var(
-            --hax-base-styles-pre-font-family,
-            ui-monospace,
-            monospace
-          );
-          font-size: 12px;
-        }
-        pre code {
-          background-color: transparent;
         }
       `,
     ];

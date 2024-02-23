@@ -22,7 +22,7 @@ class ProgressDonut extends LrndesignPie {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         .ct-center-image {
           width: 100%;

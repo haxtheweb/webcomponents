@@ -80,7 +80,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         span {
           font-family: var(--ddd-font-navigation);

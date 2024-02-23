@@ -18,7 +18,7 @@ const LrndesignChart = function (SuperClass) {
     //styles function
     static get styles() {
       return [
-        ...super.styles,
+        super.styles,
         ...SimpleColors.styles,
         css`
           :host {

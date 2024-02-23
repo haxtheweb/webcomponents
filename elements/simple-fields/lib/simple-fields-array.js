@@ -23,7 +23,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       ...SimpleFieldsButtonStyles,
       css`
         :host([expanded]) #expand::part(icon) {

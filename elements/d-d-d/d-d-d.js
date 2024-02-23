@@ -4,19 +4,13 @@
  */
 import { LitElement } from "lit";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { DDDReset, DDDStyles } from "./lib/DDDStyles.js";
+import { DDDReset, DDDAllStyles, DDDFonts } from "./lib/DDDStyles.js";
 
 /**
  * `d-d-d`
  * `design, develop, destroy the competition`
  * @demo demo/index.html
  */
-
-export const DDDFonts = [
-  "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap",
-  "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap",
-  "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap",
-];
 
 // call this to load all the fonts that are official
 export function loadDDDFonts() {
@@ -76,22 +70,24 @@ export { DDD };
  */
 globalThis.DDDSharedStyles = globalThis.DDDSharedStyles || {};
 globalThis.DDDSharedStyles.requestAvailability = () => {
-  if (globalThis.document && globalThis.document.body && globalThis.DDDSharedStyles.instance == null && globalThis.document) {
+  if (globalThis.DDDSharedStyles.instance == null) {
     // convert css into text content of arrays mashed together
     // this way we can inject it into a global style sheet
-    let globalStyles = DDDStyles
-      .map((st) => (st.cssText ? st.cssText : ""))
-      .join("");
-    globalThis.DDDSharedStyles.instance =
-      globalThis.document.createElement("style");
-    // marker for debugging to make it easier to find
-    globalThis.DDDSharedStyles.instance.setAttribute(
-      "data-ddd",
-      "global-styles",
-    );
-    globalThis.DDDSharedStyles.instance.innerHTML = `${globalStyles}`;
+    let globalStyles = DDDAllStyles.map((st) =>
+      st.cssText ? st.cssText : "",
+    ).join("");
+    const adoptableDDD = new CSSStyleSheet();
+    adoptableDDD.replaceSync(globalStyles);
+    // THIS FLAG MAKES HAX LOAD IT IN ITS SHADOW ROOT!!!!
+    adoptableDDD.hax = true;
+    // Combine the existing adopted sheets if we need to but these will work everywhere
+    // and are very fast
+    globalThis.document.adoptedStyleSheets = [
+      ...globalThis.document.adoptedStyleSheets,
+      adoptableDDD,
+    ];
     loadDDDFonts();
-    globalThis.document.body.appendChild(globalThis.DDDSharedStyles.instance);
+    globalThis.DDDSharedStyles.instance = adoptableDDD;
   }
   return globalThis.DDDSharedStyles.instance;
 };

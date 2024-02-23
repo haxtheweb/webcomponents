@@ -69,7 +69,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         styles = super.styles;
       }
       return [
-        ...styles,
+        styles,
         css`
           site-menu:not(:defined) {
             display: none;

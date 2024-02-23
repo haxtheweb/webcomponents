@@ -36,7 +36,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         /* var declaration and default styles */
         :host {
@@ -289,7 +289,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --haxcms-user-styles-color-theme-color-color: var(
             --bootstrap-theme-dark-color
           );
-          --hax-base-styles-a-color: var(--bootstrap-theme-link-color);
           --haxcms-tooltip-background-color: var(--bootstrap-theme-dark-color);
           --haxcms-tooltip-color: var(--bootstrap-theme-dark-background-color);
           --site-menu-background-color: var(
@@ -373,7 +372,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --haxcms-user-styles-color-theme-color-color: var(
             --bootstrap-theme-palenight-color
           );
-          --hax-base-styles-a-color: var(--bootstrap-theme-link-color);
           --haxcms-tooltip-background-color: var(
             --bootstrap-theme-palenight-color
           );

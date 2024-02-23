@@ -11,6 +11,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -23,7 +24,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  
   * @demo demo/index.html
   */
-class LearnTwoTheme extends HAXCMSLitElementTheme {
+class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
   //styles function
   static get styles() {
     let styles = [];
@@ -31,22 +32,14 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
       styles = super.styles;
     }
     return [
-      ...styles,
+      styles,
       css`
         :host {
-          --__learn-two-theme-default-font-family: var(
-            --learn-two-theme-default-font-family,
-            "Muli, Helvetica, Tahoma, Geneva, Arial, sans-serif"
-          );
           --__learn-two-theme-default-background: var(
             --learn-two-theme-default-background,
             #ffffff
           );
           display: block;
-          font-family: var(
-            --learn-two-theme-font-family,
-            var(--__learn-two-theme-default-font-family)
-          );
           letter-spacing: var(--learn-two-theme-letter-spacing, -0.03rem);
           font-weight: var(--learn-two-theme-font-weight, 400);
           background: var(

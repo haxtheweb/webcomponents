@@ -21,7 +21,7 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host([display-as="grid"]) {
           --simple-fields-url-combo-preview-size: var(
