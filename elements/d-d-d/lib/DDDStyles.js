@@ -2632,10 +2632,12 @@ export const DDDExtra = css`
     overflow: hidden;
   }
 `;
-// export that has all of them
+// export that has all of them for easy stamping as a single sheet
 export const DDDStyles = [
   DDDVariables,
   DDDReset,
+  DDDBreadcrumb,
+  DDDExtra,
   DDDBorders,
   DDDMarginPadding,
   DDDLetterSpacing,
@@ -2647,6 +2649,4 @@ export const DDDStyles = [
   DDDFontClasses,
   DDDFontWeight,
   DDDFontSizing,
-  DDDBreadcrumb,
-  DDDExtra,
 ];

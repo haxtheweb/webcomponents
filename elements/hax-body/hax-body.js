@@ -555,7 +555,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       namespace: "hax",
     });
     if (!window.HaxUiStyles) {
-      window.HaxUiStyles = document.createElement("div");
+      globalThis.HaxUiStyles = document.createElement("div");
       let s = document.createElement("style"),
         css = HaxUiBaseStyles.map((st) => st.cssText).join("");
       s.setAttribute("data-hax", true);
@@ -567,7 +567,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // the world
         s.appendChild(document.createTextNode(css));
       }
-      document.getElementsByTagName("head")[0].appendChild(s);
+      globalThis.document.body.appendChild(s);
     }
     this.polyfillSafe = HAXStore.computePolyfillSafe();
     this.addEventListener(

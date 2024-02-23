@@ -61,6 +61,13 @@ class DDDocs extends DDD {
         :host {
         }
 
+        .radius div p.b-sm {
+          height: var(--ddd-spacing-10);
+        }
+        details div div {
+          font-size: var(--ddd-font-size-4xs);
+        }
+
         .flex {
           display: flex;
         }
@@ -614,27 +621,27 @@ class DDDocs extends DDD {
     return html`
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Gradients from the Polaris Theme</h2>
     <div class="grid-6 my-15 ml-10">
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-navBar"></p>
+      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-navBar"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-navBar<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-navBar</span></p>
       </div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-footer"></p>
+      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-footer"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-footer<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-footer</span></p>
       </div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-newsFeature"></p>
+      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-newsFeature"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-newsFeature<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-newsFeature</span></p>
       </div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-buttons"></p>
+      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-buttons"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-buttons<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-buttons</span></p>
       </div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero"></p>
+      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-hero"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-hero</span></p>
       </div>
-      <div><p class="mx-2 py-24 px-18 r-md b-xs bs-lg bg-gradient-hero2"></p>
+      <div><p class="mx-2 p-24 px-18 r-md b-xs bs-lg bg-gradient-hero2"></p>
         <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero2<span></p>
         <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-hero2</span></p>
       </div>
@@ -645,32 +652,32 @@ class DDDocs extends DDD {
   renderRadius() {
     return html`
     <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Radius classes</h2>
-    <div class="grid-7 my-15 mx-10 gap-2">
-    <div><p class="py-20 r-xs b-sm bs-sm"></p>
+    <div class="grid-7 my-15 mx-10 gap-2 radius">
+    <div><p class="p-20 r-xs b-sm bs-sm"></p>
       <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xs<span></p>
       <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-xs</span></p>
     </div>
-    <div><p class="py-20 r-sm b-sm bs-sm"></p>
+    <div><p class="p-20 r-sm b-sm bs-sm"></p>
       <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-sm<span></p>
       <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-sm</span></p>
     </div>
-    <div><p class="py-20 r-md b-sm bs-sm"></p>
+    <div><p class="p-20 r-md b-sm bs-sm"></p>
       <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-md<span></p>
       <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-md</span></p>
     </div>
-    <div><p class="py-20 r-lg b-sm bs-sm"></p>
+    <div><p class="p-20 r-lg b-sm bs-sm"></p>
       <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-lg<span></p>
       <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-lg</span></p>
     </div>
-    <div><p class="py-20 r-xl b-sm bs-sm"></p>
+    <div><p class="p-20 r-xl b-sm bs-sm"></p>
       <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xl<span></p>
       <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-xl</span></p>
     </div>
-    <div><p class="py-20 r-rounded b-sm bs-sm"></p>
+    <div><p class="p-20 r-rounded b-sm bs-sm"></p>
       <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-rounded<span></p>
       <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-rounded</span></p>
     </div>
-    <div><div class="my-4 py-20 r-circle b-sm bs-sm"></div>
+    <div><p class="my-4 p-20 r-circle b-sm bs-sm"></p>
       <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-circle<span></p>
       <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-circle</span></p>
     </div>

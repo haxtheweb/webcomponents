@@ -2,6 +2,8 @@ import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDFontSizing, DDDLineHeight } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
+
 class CollectionItem extends DDD {
   static get properties() {
     return {
@@ -41,7 +43,8 @@ class CollectionItem extends DDD {
 
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
+      DDDFontSizing, DDDLineHeight,
       css`
         :host {
           display: inline;

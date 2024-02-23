@@ -6,6 +6,7 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDBorders } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 /**
  * `self-check`
  * 
@@ -55,7 +56,8 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   }
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
+      DDDBorders,
       css`
         :host {
           display: block;

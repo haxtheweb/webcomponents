@@ -20,7 +20,7 @@ class FigureLabel extends DDD {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
+      super.styles,
       css`
         :host {
           display: block;
@@ -65,6 +65,7 @@ class FigureLabel extends DDD {
           display: flex;
           align-items: center;
           font-family: var(--ddd-font-primary);
+          border: var(--ddd-border-sm);
           border-color: var(
             --ddd-component-figure-label-title,
             var(
@@ -75,6 +76,7 @@ class FigureLabel extends DDD {
               )
             )
           );
+          border-left: none;
           padding: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-4xs);
           background: var(
@@ -89,9 +91,9 @@ class FigureLabel extends DDD {
 
   // render function
   render() {
-    return html` <div id="wrap">
+    return html`<div id="wrap">
       <div id="title">${this.title}</div>
-      <div id="description" class="b-sm bl-0">${this.description}</div>
+      <div id="description">${this.description}</div>
     </div>`;
   }
 

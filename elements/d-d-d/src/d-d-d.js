@@ -2,9 +2,9 @@
  * Copyright 2024
  * @license Apache-2.0, see License.md for full details.
  */
-import { LitElement, css } from "lit";
+import { LitElement } from "lit";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { DDDReset, DDDVariables } from "./lib/DDDStyles.js";
+import { DDDReset, DDDStyles } from "./lib/DDDStyles.js";
 
 /**
  * `d-d-d`
@@ -38,9 +38,10 @@ export function loadDDDFonts() {
 
 // super class so we can mix styles into other things more easily
 export const DDDSuper = function (SuperClass) {
-  return class extends SimpleColorsSuper(SuperClass) {
+  return class extends SuperClass {
     constructor() {
       super();
+      globalThis.DDDSharedStyles.requestAvailability();
     }
     /**
      * LitElement style callback
@@ -51,13 +52,13 @@ export const DDDSuper = function (SuperClass) {
       if (super.styles) {
         styles = super.styles;
       }
-      return [styles, DDDVariables, DDDReset];
+      return [styles, DDDReset];
     }
   };
 };
 
 // autoloads fonts and gives it a tag name; this is useful
-class DDD extends DDDSuper(LitElement) {
+class DDD extends DDDSuper(SimpleColorsSuper(LitElement)) {
   constructor() {
     super();
   }
@@ -75,10 +76,10 @@ export { DDD };
  */
 globalThis.DDDSharedStyles = globalThis.DDDSharedStyles || {};
 globalThis.DDDSharedStyles.requestAvailability = () => {
-  if (globalThis.DDDSharedStyles.instance == null && globalThis.document) {
+  if (globalThis.document && globalThis.document.body && globalThis.DDDSharedStyles.instance == null && globalThis.document) {
     // convert css into text content of arrays mashed together
     // this way we can inject it into a global style sheet
-    let globalStyles = DDD.styles
+    let globalStyles = DDDStyles
       .map((st) => (st.cssText ? st.cssText : ""))
       .join("");
     globalThis.DDDSharedStyles.instance =
