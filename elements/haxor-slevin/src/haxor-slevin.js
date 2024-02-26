@@ -69,6 +69,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
         }
         accent-card {
           overflow: hidden;
+          font-weight: normal;
         }
         #slot {
           min-height: 50vh;
@@ -359,7 +360,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
                       ? post.metadata.image
                       : this.image}"
                   >
-                    <div slot="heading"><span>${post.title}</span></div>
+                    <div slot="heading"><h3>${post.title}</h3></div>
                     <p slot="content">
                       <date-chip
                         unix
@@ -413,7 +414,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
                       ? post.metadata.image
                       : this.image}"
                   >
-                    <div slot="heading">${post.title}</div>
+                  <div slot="heading"><h3>${post.title}</h3></div>
                     <div slot="subheading">
                       <simple-datetime
                         unix

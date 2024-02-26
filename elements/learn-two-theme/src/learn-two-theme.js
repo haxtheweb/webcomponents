@@ -127,10 +127,10 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
         site-print-button {
           color: var(--site-print-button-color, white);
-          margin: 4px;
+          margin: var(--ddd-spacing-1);
         }
         site-modal {
-          margin: 4px;
+          margin: var(--ddd-spacing-1);
           display: inline-flex;
         }
 
@@ -182,14 +182,14 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
         app-drawer-layout[narrow] #menubutton {
           display: inline-flex;
-          margin: 12px;
+          margin: var(--ddd-spacing-3);
         }
 
         app-drawer-layout[narrow] #menubutton2 {
           display: inline-flex;
           position: absolute;
           z-index: 1;
-          margin: 12px;
+          margin: var(--ddd-spacing-3);
         }
 
         site-menu-button:not([disabled]):hover,
@@ -250,16 +250,25 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
           color: #ffffff;
           padding: 0;
           height: calc(100vh - 98px);
-          --site-menu-font-size: 15px;
           --site-menu-color: #ffffff;
+          --map-menu-item-a-active-color: black;
+          overflow: auto;
+
+          --site-menu-active-color: var(
+            --haxcms-user-styles-color-theme-color-3
+          );
           --site-menu-item-active-item-color: var(
             --simple-colors-default-theme-light-blue-1,
             rgba(100, 100, 255, 0.1)
           );
-          --map-menu-item-a-active-color: white;
-          --map-menu-item-a-active-background-color: rgba(0, 0, 250, 0.1);
-          --site-menu-item-active-item-color: rgba(0, 0, 250, 0.1);
-          overflow: auto;
+          --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
+          --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
+          --map-menu-item-a-active-background-color: var(
+            --simple-colors-default-theme-grey-1,
+            rgba(200, 200, 200, 0.1)
+          );
+          font-family: var(--ddd-font-navigation);
+          --site-menu-font-size: var(--ddd-font-size-xs);
         }
 
         :host([is-logged-in]) site-menu {
@@ -302,6 +311,7 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
         }
 
         site-title {
+          padding: var(--ddd-spacing-4);
           color: #fafafa;
           --site-title-link-display: inline-block;
           --site-title-link-h1-display: inline-block;
@@ -309,7 +319,7 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
           --site-title-heading-font-family: var(
             --__learn-two-theme-default-font-family
           );
-          --site-title-heading-font-size: 28px;
+          --site-title-heading-font-size: var(--ddd-font-size-ms);
           --site-title-heading-margin: 0;
           --site-title-heading-padding: 0;
           --site-title-heading-text-align: center;
@@ -324,9 +334,9 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
           display: block;
         }
         site-active-title h1 {
-          margin: 16px 0;
+          margin: var(--ddd-spacing-4) 0;
           padding: 0;
-          font-size: 36px;
+          font-size: var(--ddd-font-size-ml);
         }
       `,
     ];
@@ -463,7 +473,7 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
                <slot></slot>
              </section>
            </article>
-           <site-menu-button type="next"></site-menu-button>
+           <site-menu-button type="next" position="left"></site-menu-button>
          </main>
       </app-drawer-layout>`;
   }

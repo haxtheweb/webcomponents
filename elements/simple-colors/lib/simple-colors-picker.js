@@ -32,6 +32,9 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
         :host([hidden]) {
           display: none;
         }
+        .row {
+          width: 100%;
+        }
       `,
     ];
   }

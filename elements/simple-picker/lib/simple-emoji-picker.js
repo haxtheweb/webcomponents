@@ -29,6 +29,9 @@ class SimpleEmojiPicker extends IntersectionObserverMixin(
           line-height: 30px;
           width: 30px;
         }
+        .row {
+          width: auto;
+        }
         simple-picker-option[part="sample-option"] {
           --simple-picker-option-size: unset;
         }

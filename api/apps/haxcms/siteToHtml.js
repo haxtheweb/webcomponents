@@ -111,6 +111,10 @@ export default async function handler(req, res) {
       <script src="${magic}build.js"></script>
 
     </html>`;
+    // support magic option to send back full site as HTML
+    if (body.magic === 'html') {
+      options.type = "text/html";
+    }
   }
   res = stdResponse(res, content, options);
 }
