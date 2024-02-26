@@ -9,7 +9,6 @@ import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/
 import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { EmailPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/EmailPageMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
-import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
@@ -33,20 +32,19 @@ import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element clean-one
  */
-class CleanOne extends HAXCMSUserStylesMenuMixin(
+class CleanOne extends
   PrintBranchMixin(
     PDFPageMixin(
       EmailPageMixin(
         QRCodeMixin(
           HAXCMSThemeParts(
             HAXCMSMobileMenuMixin(
-              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
-            ),
-          ),
-        ),
-      ),
-    ),
-  ),
+              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme))
+            )
+          )
+        )
+      )
+    )
 ) {
   //styles function
   static get styles() {
@@ -772,7 +770,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
               <div class="btn-container">
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
-                  ${this.HAXCMSUserStylesMenu()}
                   ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
                     ? this.PrintBranchButton("bottom")
                     : html`

@@ -64,7 +64,17 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           --polaris-nav-bg-color: #009cde;
           --polaris-footer-secondary-bg-color: #1e407c;
           --polaris-footer-primary-bg-color: #001e44;
-          background-color: var(--polaris-bg-color);
+
+          --video-player-color: var(--ddd-theme-default-white);
+          --video-player-bg-color: var(--ddd-theme-default-nittanyNavy);
+          --video-player-border-color: var(--ddd-theme-default-limestoneLight);
+          --video-player-caption-color: var(--ddd-theme-default-white);
+          --video-player-hover-color: var(--ddd-theme-default-inventOrange);
+          --video-player-hover-bg-color: var(--ddd-theme-default-beaver80);
+          --video-player-accent-color: var(--ddd-theme-default-inventOrange);
+          --video-player-faded-accent-color: var(--ddd-theme-default-beaver80);
+          --video-player-disabled-color: var(--ddd-theme-default-disabled);
+          
         }
 
         scroll-button {
