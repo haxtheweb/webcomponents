@@ -56,6 +56,7 @@ export default async function handler(req, res) {
   if (body.magic) {
     const isDev = process.env.NODE_ENV === 'development';
     const magic = body.magic;
+    options.type = "text/html";
     // local vercel development needs special paths but output should be the same
     content = isDev ? `
     <!DOCTYPE html>
@@ -111,10 +112,6 @@ export default async function handler(req, res) {
       <script src="${magic}build.js"></script>
 
     </html>`;
-    // support magic option to send back full site as HTML
-    if (body.magic === 'html') {
-      options.type = "text/html";
-    }
   }
   res = stdResponse(res, content, options);
 }
