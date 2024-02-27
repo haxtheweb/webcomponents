@@ -143,8 +143,8 @@
         "inputMethod": "iconpicker"
       },
       {
-        "property": "color",
-        "title": "Color",
+        "property": "accentColor",
+        "title": "Accent color",
         "description": "Color associated with this item in the site",
         "inputMethod": "colorpicker"
       },

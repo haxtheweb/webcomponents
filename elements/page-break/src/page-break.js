@@ -29,7 +29,7 @@ export class PageBreak extends IntersectionObserverMixin(
     super();
     this.relatedItems = null;
     this.icon = null;
-    this.color = null;
+    this.accentColor = null;
     this.entityType = "page";
     this.status = "";
     this.t = {
@@ -90,7 +90,7 @@ export class PageBreak extends IntersectionObserverMixin(
         attribute: "related-items",
       },
       icon: { type: String },
-      color: { type: String },
+      accentColor: { type: String, attribute: "accent-color" },
       entityType: { type: String, attribute: "entity-type" },
       description: { type: String },
       order: { type: Number },

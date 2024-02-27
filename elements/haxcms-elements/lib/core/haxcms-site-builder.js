@@ -815,6 +815,16 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             : ``
         }
         ${
+          store.activeItem.metadata.icon
+            ? `icon="${store.activeItem.metadata.icon}"`
+            : ``
+        }
+        ${
+          store.activeItem.metadata.accentColor
+            ? `accent-color="${store.activeItem.metadata.accentColor}"`
+            : ``
+        }
+        ${
           store.activeItem.metadata.theme && store.activeItem.metadata.theme.key
             ? `developer-theme="${store.activeItem.metadata.theme.key}"`
             : ``
