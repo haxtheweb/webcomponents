@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "Start of relative-heading",
   "repository": {
     "type": "git",
@@ -42,16 +42,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/anchor-behaviors": "^8.0.0",
-    "@lrnwebcomponents/hax-iconset": "^8.0.0",
-    "@lrnwebcomponents/simple-icon": "^8.0.0",
-    "@lrnwebcomponents/simple-toast": "^8.0.0",
+    "@lrnwebcomponents/anchor-behaviors": "^8.0.1",
+    "@lrnwebcomponents/hax-iconset": "^8.0.1",
+    "@lrnwebcomponents/simple-icon": "^8.0.1",
+    "@lrnwebcomponents/simple-toast": "^8.0.1",
     "@polymer/paper-toast": "^3.0.1",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.0",
+    "@lrnwebcomponents/deduping-fix": "^8.0.1",
+    "@lrnwebcomponents/storybook-utilities": "^8.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "Mark desired words in a sentence",
   "repository": {
     "type": "git",
@@ -45,13 +45,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/i18n-manager": "^8.0.0",
-    "@lrnwebcomponents/multiple-choice": "^8.0.0",
-    "@lrnwebcomponents/simple-toolbar": "^8.0.0",
+    "@lrnwebcomponents/i18n-manager": "^8.0.1",
+    "@lrnwebcomponents/multiple-choice": "^8.0.1",
+    "@lrnwebcomponents/simple-toolbar": "^8.0.1",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.0",
+    "@lrnwebcomponents/deduping-fix": "^8.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

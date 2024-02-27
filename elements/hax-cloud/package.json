@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "Turn any website into authorware with one tag and a computer",
   "repository": {
     "type": "git",
@@ -45,14 +45,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/file-system-broker": "^8.0.0",
-    "@lrnwebcomponents/hax-iconset": "^8.0.0",
-    "@lrnwebcomponents/haxcms-elements": "^8.0.0",
-    "@lrnwebcomponents/simple-icon": "^8.0.0",
+    "@lrnwebcomponents/file-system-broker": "^8.0.1",
+    "@lrnwebcomponents/hax-iconset": "^8.0.1",
+    "@lrnwebcomponents/haxcms-elements": "^8.0.1",
+    "@lrnwebcomponents/simple-icon": "^8.0.1",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.0",
+    "@lrnwebcomponents/deduping-fix": "^8.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

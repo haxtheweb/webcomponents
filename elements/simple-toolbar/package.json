@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "a customizable toolbar",
   "repository": {
     "type": "git",
@@ -44,14 +44,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-menu-button": "^8.0.0",
-    "@lrnwebcomponents/radio-behaviors": "^8.0.0",
-    "@lrnwebcomponents/simple-icon": "^8.0.0",
-    "@lrnwebcomponents/simple-tooltip": "^8.0.0",
+    "@lrnwebcomponents/a11y-menu-button": "^8.0.1",
+    "@lrnwebcomponents/radio-behaviors": "^8.0.1",
+    "@lrnwebcomponents/simple-icon": "^8.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^8.0.1",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.0",
+    "@lrnwebcomponents/deduping-fix": "^8.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
