@@ -48,6 +48,7 @@ export class SiteCollectionList extends CollectionList {
               image="${item.metadata.image}"
               tags="${item.metadata.tags}"
               icon="${item.metadata.icon}"
+              accent-color="${item.metadata.accentColor}"
             ></collection-item>
           `,
         )}
