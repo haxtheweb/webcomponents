@@ -388,6 +388,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           padding-left: 72px;
           line-height: 50px;
           min-height: 64px;
+          position: relative;
         }
 
         h1[data-instructional-action]::before,
