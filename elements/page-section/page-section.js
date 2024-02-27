@@ -91,12 +91,11 @@ class PageSection extends DDD {
           --video-player-bg-color: var(--ddd-theme-default-nittanyNavy);
           --video-player-border-color: var(--ddd-theme-default-limestoneLight);
           --video-player-caption-color: var(--ddd-theme-default-white);
-          --video-player-hover-color: var(--ddd-theme-default-white);
-          --video-player-hover-bg-color: var(--ddd-theme-default-beaver70);
-
-          --video-player-accent-color: var(--ddd-theme-default-beaverBlue);
+          --video-player-hover-color: var(--ddd-theme-default-inventOrange);
+          --video-player-hover-bg-color: var(--ddd-theme-default-beaver80);
+          --video-player-accent-color: var(--ddd-theme-default-inventOrange);
           --video-player-faded-accent-color: var(--ddd-theme-default-beaver80);
-          --video-player-disabled-color: var(--ddd-theme-default-navy40);
+          --video-player-disabled-color: var(--ddd-theme-default-disabled);
 
           color: var(--ddd-theme-default-beaverBlue);
           font-family: var(--ddd-font-navigation);
