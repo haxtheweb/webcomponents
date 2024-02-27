@@ -11,9 +11,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import {
-  DDDBorderRadius,
-  DDDBorders,
-  DDDLineHeight,
+  DDDAllStyles,
 } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 
 // Defines the type options available in the HAX wiring, "Learning Objectives" is the default.
@@ -206,9 +204,7 @@ class LearningComponent extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      DDDBorders,
-      DDDLineHeight,
-      DDDBorderRadius,
+      DDDAllStyles,
       css`
         :host {
           display: block;
@@ -304,10 +300,10 @@ class LearningComponent extends I18NMixin(DDD) {
             font-size: var(--ddd-font-size-s);
           }
           simple-icon-lite {
-            --simple-icon-width: var(--ddd-icon-sm);
-            --simple-icon-height: var(--ddd-icon-sm);
-            height: var(--ddd-icon-xl);
-            width: var(--ddd-icon-xl);
+            --simple-icon-width: var(--ddd-icon-xs);
+            --simple-icon-height: var(--ddd-icon-xs);
+            height: var(--ddd-icon-sm);
+            width: var(--ddd-icon-sm);
           }
           simple-icon-button-lite {
             --simple-icon-width: var(--ddd-icon-md);

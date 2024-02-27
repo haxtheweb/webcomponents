@@ -94,43 +94,6 @@ class GridPlateLayoutOptions {
         lg: ["25%", "25%", "25%", "25%"],
         xl: ["25%", "25%", "25%", "25%"],
       },
-      "1-1-1-1-1": {
-        columnLayout: "5: equal width",
-        xs: ["100%", "100%", "100%", "100%", "100%"],
-        sm: ["50%", "50%", "50%", "50%", "50%"],
-        md: ["20%", "20%", "20%", "20%", "20%"],
-        lg: ["20%", "20%", "20%", "20%", "20%"],
-        xl: ["20%", "20%", "20%", "20%", "20%"],
-      },
-      "1-1-1-1-1-1": {
-        columnLayout: "6: equal width",
-        xs: ["100%", "100%", "100%", "100%", "100%", "100%"],
-        sm: ["50%", "50%", "50%", "50%", "50%", "50%"],
-        md: [
-          "33.3333333%",
-          "33.3333333%",
-          "33.3333333%",
-          "33.3333333%",
-          "33.3333333%",
-          "33.3333333%",
-        ],
-        lg: [
-          "16.6666667%",
-          "16.6666667%",
-          "16.6666667%",
-          "16.6666667%",
-          "16.6666667%",
-          "16.6666667%",
-        ],
-        xl: [
-          "16.6666667%",
-          "16.6666667%",
-          "16.6666667%",
-          "16.6666667%",
-          "16.6666667%",
-          "16.6666667%",
-        ],
-      },
     };
     this.options = {};
     let layoutFlip = Object.keys(this.layouts);
@@ -499,8 +462,8 @@ class GridPlate extends LitElement {
             property: "itemPadding",
             title: "Item Padding",
             description: "Padding inside each item",
-            step: 8,
-            max: 128,
+            step: 4,
+            max: 120,
             min: 0,
             inputMethod: "slider",
             suffix: "px",
@@ -509,8 +472,8 @@ class GridPlate extends LitElement {
             property: "itemMargin",
             title: "Item margins",
             description: "Margin between items",
-            step: 8,
-            max: 64,
+            step: 4,
+            max: 120,
             min: 0,
             inputMethod: "slider",
             suffix: "px",
@@ -532,7 +495,6 @@ class GridPlate extends LitElement {
         {
           tag: "grid-plate",
           properties: {
-            disableResponsive: true,
             itemMargin: 16,
             itemPadding: 16,
           },

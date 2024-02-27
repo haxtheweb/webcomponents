@@ -257,52 +257,56 @@ class HAX extends HTMLElement {
       padding: 18px;
       top: -64px;
     }
-    h1[data-instructional-action],
-    h2[data-instructional-action],
-    h3[data-instructional-action],
-    h4[data-instructional-action],
-    h5[data-instructional-action],    
-    h6[data-instructional-action] {
-      padding-left: 72px;
-    }
-    h1[data-instructional-action]::before,
-    h2[data-instructional-action]::before,
-    h3[data-instructional-action]::before,
-    h4[data-instructional-action]::before,
-    h5[data-instructional-action]::before,    
-    h6[data-instructional-action]::before {
-      background-color: var(--hax-action-accent-color, #aaa);
-      height: 50px;
-      width: 50px;
-      background-position: center;
-      content: '';
-      display: block;
-      position: absolute;
-      z-index: 1;
-      border: var(--hax-action-border , 3px solid black);
-      border-radius: 50%;
-      left: 0px;
-      margin: 4px;
-    }
-    h1[data-instructional-action]::after,
-    h2[data-instructional-action]::after,
-    h3[data-instructional-action]::after,
-    h4[data-instructional-action]::after,
-    h5[data-instructional-action]::after,    
-    h6[data-instructional-action]::after {
-      content: '';
-      position: relative;
-      z-index: 2;
-      background-color: var(--hax-action-color, blue);
-      mask-repeat: no-repeat;
-      mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-size: contain;
-      padding: 22px;
-      margin: 10px;
-      position: absolute;
-      left: 0px;
-    }
+        h1[data-instructional-action],
+        h2[data-instructional-action],
+        h3[data-instructional-action],
+        h4[data-instructional-action],
+        h5[data-instructional-action],
+        h6[data-instructional-action] {
+          padding-left: 72px;
+          line-height: 50px;
+          min-height: 64px;
+        }
+
+        h1[data-instructional-action]::before,
+        h2[data-instructional-action]::before,
+        h3[data-instructional-action]::before,
+        h4[data-instructional-action]::before,
+        h5[data-instructional-action]::before,    
+        h6[data-instructional-action]::before {
+          background-color: var(--hax-action-accent-color, #aaa);
+          background-position: center;
+          content: '';
+          display: block;
+          position: absolute;
+          z-index: 1;
+          border: var(--hax-action-border , 3px solid black);
+          border-radius: 50%;
+          left: 0px;
+          margin: 5px;
+          height: 40px;
+          width: 40px;
+        }        
+
+        h1[data-instructional-action]::after,
+        h2[data-instructional-action]::after,
+        h3[data-instructional-action]::after,
+        h4[data-instructional-action]::after,
+        h5[data-instructional-action]::after,    
+        h6[data-instructional-action]::after {
+          content: '';
+          position: relative;
+          z-index: 2;
+          background-color: var(--hax-action-color, blue);
+          mask-repeat: no-repeat;
+          mask-size: contain;
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-size: contain;
+          padding: 12px;
+          margin: 15px;
+          position: absolute;
+          left: 0px;
+        }
     [data-instructional-action][data-id-emphasize] {
       background-color: var(--hax-action-color) !important;
       color: white;
