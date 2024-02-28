@@ -6,7 +6,6 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { DDDBorders } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 /**
  * `self-check`
  * 
@@ -57,12 +56,10 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   static get styles() {
     return [
       super.styles,
-      DDDBorders,
       css`
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
-          width: 60%;
         }
         :host([hidden]),
         *[hidden] {
@@ -73,6 +70,9 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           overflow: hidden;
           container-type: inline-size;
           container-name: card;
+          border: var(--ddd-border-xs);
+          border-radius: var(--ddd-radius-lg);
+          box-shadow: var(--ddd-boxShadow-sm);
         }
 
         simple-icon-button {
@@ -138,8 +138,8 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           );
           display: flex;
           align-items: center;
-          margin: calc(var(--ddd-spacing-6) * -1) 0 0;
-          padding: var(--ddd-spacing-3);
+          margin: calc(var(--ddd-spacing-7) * -1) 0 0;
+          padding: 0 var(--ddd-spacing-3);
         }
 
         #question_wrap {
@@ -172,16 +172,16 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           opacity: 0;
           color: var(
             --ddd-component-self-check-answer-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
+            var(--simple-colors-default-theme-grey-12, #000)
           );
           background-color: var(
             --ddd-component-self-check-answer-background,
-            var(--simple-colors-default-theme-light-green-7, #00762e)
+            var(--ddd-theme-default-successLight, #00762e)
           );
           width: 100%;
           top: 0;
           left: calc(100%);
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           position: absolute;
         }
 
@@ -232,19 +232,13 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           display: inline;
         }
 
-        .more_info a {
-          color: var(
-            --self-check-answer-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
-        }
-
         .more_info a:hover {
           text-decoration: none;
         }
         .image-wrap {
           max-height: 400px;
           overflow: hidden;
+          min-height: 20px;
         }
         ::slotted([slot="heading"]) {
           margin: 0;
@@ -274,15 +268,16 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   }
   render() {
     return html`
-      <div class="card bs-lg b-sm">
+      <div class="card">
         <div class="image-wrap">
+        ${this.image ? html`
           ${this.renderSVGLoader()}
           <img
             src="${this.image}"
             alt="${this.alt}"
             aria-describedby="${this.describedBy || ""}"
             loading="lazy"
-          />
+          />` : ``}
         </div>
         <div class="triangle"></div>
         <div id="header_wrap">
@@ -310,7 +305,6 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
                 id="checkBtn"
                 class="check-btn"
                 icon="image:remove-red-eye"
-                ?dark="${this.dark}"
                 @click="${this.openAnswer}"
               ></simple-icon-button>
               <simple-tooltip aria-hidden="true" for="checkBtn" position="left">
@@ -331,7 +325,6 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
                 <simple-icon-button
                   label="${this.t.close}"
                   id="closeBtn"
-                  ?dark="${!this.dark}"
                   icon="icons:close"
                   @click="${this.openAnswer}"
                 >
@@ -349,7 +342,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
                     <div class="more_info">
                       <user-action track="click" every="every"
                         ><a href="${this.link}" target="_blank" rel="noopener"
-                          >${this.t.moreInformation}...</a
+                          >${this.t.moreInformation}..</a
                         ></user-action
                       >
                     </div>

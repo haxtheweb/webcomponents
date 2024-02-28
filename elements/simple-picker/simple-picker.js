@@ -285,7 +285,6 @@ const SimplePickerBehaviors = function (SuperClass) {
 
           #collapse {
             display: none;
-            width: 100%;
             position: absolute;
             top: var(--simple-picker-options-top);
             z-index: 2;
@@ -294,7 +293,7 @@ const SimplePickerBehaviors = function (SuperClass) {
 
           :host([expanded]:not([disabled])) #collapse {
             display: block;
-            position: var(--simple-picker-expanded-display, unset);
+            position: var(--simple-picker-expanded-display, absolute);
             background-color: var(
               --simple-picker-options-background-color,
               #fff
@@ -303,8 +302,6 @@ const SimplePickerBehaviors = function (SuperClass) {
 
           .rows {
             display: block;
-            position: absolute;
-            z-index: 1000;
             top: calc(
               var(--simple-picker-option-size, 24px) + 2 *
                 var(--simple-picker-options-border-width)

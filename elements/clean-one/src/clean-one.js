@@ -258,7 +258,7 @@ class CleanOne extends
           right: 0;
           left: 0;
           bottom: 0;
-          min-width: 400px;
+          min-width: 375px;
           overflow-y: auto;
           transition: left 0.3s ease;
         }
@@ -267,10 +267,10 @@ class CleanOne extends
         :host([responsive-size="sm"]) .page-inner,
         :host([responsive-size="md"]) .page-inner,
         :host([responsive-size="lg"]) .page-inner {
-          padding: 48px 15px;
+          padding: 48px 16px;
         }
         :host([responsive-size="sm"]) .site-inner {
-          padding: 0px 24px;
+          padding: 0 24px;
         }
 
         :host([responsive-size="xs"]) .page-inner {
@@ -288,12 +288,11 @@ class CleanOne extends
           }
           .main-content site-active-title h1 {
             height: 48px;
+            margin: 0;
             overflow: hidden;
-            margin-top: 64px;
             text-overflow: ellipsis;
             word-break: break-all;
-            margin-top: 64px;
-            margin-bottom: 8px;
+            font-size: var(--ddd-font-size-xs);
           }
         }
         h1 {
@@ -488,6 +487,9 @@ class CleanOne extends
           text-align: center;
         }
         @media screen and (max-width: 600px) {
+          .page-wrapper {
+            width: 100vw;
+          }
           #slot ::slotted(iframe) {
             width: auto;
           }

@@ -65,19 +65,21 @@ export const lazyImageLoader = function (SuperClass) {
       }
       // check if it completed ahead of time for really fast connections
       var img = this.shadowRoot.querySelector('img[loading="lazy"]');
-      if (img.complete) {
-        this._lazyImageLoadComplete();
-      } else {
-        img.addEventListener("load", this._lazyImageLoadComplete.bind(this));
-        img.addEventListener("error", () => {
-          this._lazyImageLoadComplete.bind(this);
-        });
+      if (img) {
+        if (img.complete) {
+          this._lazyImageLoadComplete();
+        } else {
+          img.addEventListener("load", this._lazyImageLoadComplete.bind(this));
+          img.addEventListener("error", () => {
+            this._lazyImageLoadComplete.bind(this);
+          });
+        }
       }
     }
     static get styles() {
       let styles = [];
       if (super.styles) {
-        styles = [...super.styles];
+        styles = super.styles;
       }
       return [
         styles,
