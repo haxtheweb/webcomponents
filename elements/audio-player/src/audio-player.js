@@ -16,6 +16,9 @@ class AudioPlayer extends VideoPlayer {
   constructor() {
     super();
   }
+  get audioOnly() {
+    return true;
+  }
   /**
    * Convention we use
    */

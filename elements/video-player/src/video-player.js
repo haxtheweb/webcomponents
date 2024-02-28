@@ -30,6 +30,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       css`
         :host {
           display: block;
+          margin: var(--ddd-spacing-4) 0;
         }
 
         .video-caption {
