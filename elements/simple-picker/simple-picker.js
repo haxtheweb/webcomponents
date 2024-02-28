@@ -797,7 +797,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               virtualizer.style.width == ""
             ) {
               // gutter accounts for the scrollbar
-              let gutter = 24;
+              let gutter = 40;
               let rowData = virtualizer
                 .querySelector(".row")
                 .getBoundingClientRect();
@@ -825,7 +825,7 @@ const SimplePickerBehaviors = function (SuperClass) {
                     .getBoundingClientRect().width;
               }
               // width is what a common row is
-              virtualizer.style.width = parseInt(rowData.width) + "px";
+              virtualizer.style.width = parseInt(rowData.width + gutter) + "px";
               // test if height is smaller than our lowest value is it doesn't look odd
               // but if we're going to scroll then allow it to scroll
               if (
