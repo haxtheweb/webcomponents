@@ -48,13 +48,15 @@ export class PageAnchor extends DDD {
   // scroll related item into view and initialize
   clickHandler(e) {
     console.log(e.type);
+    // @todo make sure that we can highlight concepts that are NOT connected to anything in the current page.
+    // this could be a good way of reinforcing concepts or having a button that allows jumping to that concept (or loading the content of that concept short form in a tooltip like a definition)
     if (this._haxState && e.type === "click") {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
       return false;
     }
-    // verify el exist
+    // verify node exists and change targetting system if we are in edit mode of HAX
     let node;
     if (this._haxState) {
       node = globalThis.document.querySelector(
@@ -63,6 +65,7 @@ export class PageAnchor extends DDD {
     } else {
       node = HAXStore.activeHaxBody.querySelector(this.target);
     }
+    // ensure node exists in selection; may get deleted after being set
     if (node) {
       node.scrollIntoView();
       setTimeout(() => {
@@ -86,12 +89,22 @@ export class PageAnchor extends DDD {
         }
       }, 100);
     }
+    else {
+      // unset the node because we didn't find it
+      this.target = null;
+    }
   }
   // load field from entity id, or target based on who is closer to match
-  getMatchFromFields(id, target, field = "color") {
+  getMatchFromFields(id, target, field = "accentColor") {
     const entityData = toJS(store.entityData);
+    // support entity defining the field to use, which color is a possible option asked for
     if (entityData[id] && entityData[id][field]) {
-      return entityData[id][field];
+      if (field == 'accentColor') {
+        return `--simple-colors-default-theme-${entityData[id][field]}-3`;
+      }
+      else {
+        return entityData[id][field];
+      }
     }
     // defer to the entity resource but fallback to the target itself
     // this way we can have an entity NOT supplying the value and we defer to the
@@ -105,34 +118,27 @@ export class PageAnchor extends DDD {
     } else {
       node = HAXStore.activeHaxBody.querySelector(target);
     }
-    if (node && target) {
+    // ensure we have a target and field value
+    if (node && target && field == "accentColor") {
       let schema = HAXStore.haxSchemaFromTag(node.tagName);
-      if (schema && schema.gizmo && schema.gizmo[field]) {
-        return `--simple-colors-theme-default-${schema.gizmo[field]}-3`;
+      // check for color
+      if (schema && schema.gizmo && schema.gizmo.color) {
+        return `--simple-colors-default-theme-${schema.gizmo.color}-3`;
       }
     }
     return null;
   }
 
   render() {
+    let color = this.getMatchFromFields(
+      this.entityId, this.target, "accentColor",
+    );
+    let icon = this.getMatchFromFields(this.entityId, this.target, "icon");
     return html`<mark
       @click="${this.clickHandler}"
-      style="background-color: var(${this.getMatchFromFields(
-        this.entityId,
-        this.target,
-        "color",
-      )
-        ? `${this.getMatchFromFields(this.entityId, this.target, "color")}, `
-        : ``}initial)"
-      >${this.getMatchFromFields(this.entityId, this.target, "icon")
-        ? html`<simple-icon-lite
-            icon="${this.getMatchFromFields(
-              this.entityId,
-              this.target,
-              "icon",
-            )}"
-          ></simple-icon-lite>`
-        : ``}
+      style="${color ? `background-color: var(${color})` : ``}"
+      >
+      ${icon ? html`<simple-icon-lite icon="${icon}"></simple-icon-lite>` : ``}
       <slot></slot>
     </mark>`;
   }

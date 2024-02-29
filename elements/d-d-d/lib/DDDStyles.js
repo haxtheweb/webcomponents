@@ -531,7 +531,6 @@ export const DDDReset = css`
   details {
     transition: max-height 4s ease-out;
     overflow: hidden;
-    max-height: 50px;
     display: flex;
     border-bottom: 2px solid var(--ddd-theme-default-slateMaxLight);
     position: relative;
