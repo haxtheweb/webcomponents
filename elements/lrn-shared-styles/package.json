@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "a shared set of styles for all @lrnwebcomponents",
   "repository": {
     "type": "git",

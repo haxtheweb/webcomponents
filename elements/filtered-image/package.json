@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "An image using an SVG filter. Can be used to make background images have more contrast with text.",
   "repository": {
     "type": "git",
@@ -44,11 +44,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^8.0.1",
+    "@lrnwebcomponents/simple-colors": "^8.0.2",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.1",
+    "@lrnwebcomponents/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

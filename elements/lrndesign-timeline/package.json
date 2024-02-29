@@ -22,7 +22,7 @@
       "...super.properties"
     ]
   },
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "an element that displays events on a timeline",
   "repository": {
     "type": "git",
@@ -47,13 +47,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/responsive-utility": "^8.0.1",
-    "@lrnwebcomponents/schema-behaviors": "^8.0.1",
-    "@lrnwebcomponents/simple-colors": "^8.0.1",
+    "@lrnwebcomponents/responsive-utility": "^8.0.2",
+    "@lrnwebcomponents/schema-behaviors": "^8.0.2",
+    "@lrnwebcomponents/simple-colors": "^8.0.2",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.1",
+    "@lrnwebcomponents/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Disqus service integration",
   "repository": {
     "type": "git",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "playlist like element but for documenting web components in the context of hax",
   "repository": {
     "type": "git",
@@ -45,12 +45,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/play-list": "^8.0.1",
-    "@lrnwebcomponents/simple-img": "^8.0.1",
+    "@lrnwebcomponents/play-list": "^8.0.2",
+    "@lrnwebcomponents/simple-img": "^8.0.2",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.1",
+    "@lrnwebcomponents/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

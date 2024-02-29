@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Figure label element to mark media assets within content.",
   "repository": {
     "type": "git",
