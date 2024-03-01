@@ -99,7 +99,11 @@
     {
       "tag": "play-list",
       "content": "<img src=\"https://cdn2.thecatapi.com/images/9j5.jpg\" /><img src=\"https://cdn2.thecatapi.com/images/12.jpg\" />",
-      "properties": {}
+      "properties": {
+        "pagination": true,
+        "navigation": true,
+        "loop": true
+      }
     }
   ]
 }

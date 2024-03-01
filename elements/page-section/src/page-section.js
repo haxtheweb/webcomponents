@@ -147,6 +147,7 @@ class PageSection extends DDD {
           height: var(--ddd-icon-xl);
           margin-top: calc(var(--ddd-icon-xl) * -1);
           z-index: 11;
+          animation: fullwidth-header-bounce 2.8s ease-out infinite;
         }
         .scroller:focus-within::part(icon),
         .scroller:focus::part(icon),
@@ -155,6 +156,19 @@ class PageSection extends DDD {
           --simple-icon-width: var(--ddd-icon-xl);
           --simple-icon-height: var(--ddd-icon-xl);
         }
+
+        @keyframes fullwidth-header-bounce {
+          0% {
+            transform: translateY(0%);
+          }
+          12.5% {
+              transform: translateY(20%);
+          }
+          25% {
+              transform: translateY(0%);
+          }
+        }
+
         simple-tooltip {
           --simple-tooltip-font-size: var(
             --page-section-tooltip-font-size,
