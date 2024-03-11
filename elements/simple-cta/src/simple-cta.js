@@ -127,7 +127,10 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
             --component-border-color,
             var(--ddd-theme-default-link)
           );
-          padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+          padding: var(
+            --simple-cta-button-padding,
+            0.75rem 0.75rem 0.75rem 1.5rem
+          );
           transition: all 0.2s ease-out;
           background-color: var(--component-background-color, transparent);
           font-weight: var(--ddd-font-primary-medium);

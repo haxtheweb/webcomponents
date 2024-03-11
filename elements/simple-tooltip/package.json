@@ -16,7 +16,7 @@
       "hax": "src/simple-tooltip-hax.json"
     }
   },
-  "version": "8.0.0",
+  "version": "8.0.2",
   "description": "a simple tooltip forked from paper-tooltip with the same api",
   "repository": {
     "type": "git",
@@ -44,8 +44,8 @@
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.0",
-    "@lrnwebcomponents/simple-icon": "^8.0.0",
+    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@lrnwebcomponents/simple-icon": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
@@ -60,5 +60,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "2791492ff7ab40c7d4c827c4b305e33c0a971230"
+  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
 }

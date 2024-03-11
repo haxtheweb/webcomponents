@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "8.0.0",
+  "version": "8.0.2",
   "description": "Provides state management when only one child can be selected at a time.",
   "repository": {
     "type": "git",
@@ -37,8 +37,8 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.0",
+    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -55,5 +55,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "2791492ff7ab40c7d4c827c4b305e33c0a971230"
+  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
 }

@@ -6,7 +6,7 @@ import { LitElement, html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "@shoelace-style/shoelace/dist/components/carousel/carousel.js";
 import "@shoelace-style/shoelace/dist/components/carousel-item/carousel-item.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import { generateStyleLinkEls } from "./lib/SLStyleManager.js";
 import {
   haxElementToNode,
@@ -31,8 +31,8 @@ class PlayList extends LitElement {
     this.items = [];
     this.loop = false;
     this.edit = false;
-    this.navigation = true;
-    this.pagination = true;
+    this.navigation = false;
+    this.pagination = false;
     this.aspectRatio = "16:9";
     this.slide = 0;
     this.orientation = "horizontal";

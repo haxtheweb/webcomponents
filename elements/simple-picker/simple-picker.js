@@ -285,7 +285,6 @@ const SimplePickerBehaviors = function (SuperClass) {
 
           #collapse {
             display: none;
-            width: 100%;
             position: absolute;
             top: var(--simple-picker-options-top);
             z-index: 2;
@@ -294,7 +293,7 @@ const SimplePickerBehaviors = function (SuperClass) {
 
           :host([expanded]:not([disabled])) #collapse {
             display: block;
-            position: var(--simple-picker-expanded-display, unset);
+            position: var(--simple-picker-expanded-display, absolute);
             background-color: var(
               --simple-picker-options-background-color,
               #fff
@@ -303,8 +302,6 @@ const SimplePickerBehaviors = function (SuperClass) {
 
           .rows {
             display: block;
-            position: absolute;
-            z-index: 1000;
             top: calc(
               var(--simple-picker-option-size, 24px) + 2 *
                 var(--simple-picker-options-border-width)
@@ -800,7 +797,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               virtualizer.style.width == ""
             ) {
               // gutter accounts for the scrollbar
-              let gutter = 24;
+              let gutter = 40;
               let rowData = virtualizer
                 .querySelector(".row")
                 .getBoundingClientRect();
@@ -828,7 +825,7 @@ const SimplePickerBehaviors = function (SuperClass) {
                     .getBoundingClientRect().width;
               }
               // width is what a common row is
-              virtualizer.style.width = parseInt(rowData.width) + "px";
+              virtualizer.style.width = parseInt(rowData.width + gutter) + "px";
               // test if height is smaller than our lowest value is it doesn't look odd
               // but if we're going to scroll then allow it to scroll
               if (

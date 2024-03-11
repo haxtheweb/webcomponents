@@ -94,3 +94,5 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
 // self-appending on call
 export const DDDSharedStylesGlobal =
   globalThis.DDDSharedStyles.requestAvailability();
+
+export { DDDFonts };

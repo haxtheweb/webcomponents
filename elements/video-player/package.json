@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "8.0.0",
+  "version": "8.0.2",
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",
@@ -44,18 +44,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-media-player": "^8.0.0",
-    "@lrnwebcomponents/i18n-manager": "^8.0.0",
-    "@lrnwebcomponents/intersection-element": "^8.0.0",
-    "@lrnwebcomponents/media-behaviors": "^8.0.0",
-    "@lrnwebcomponents/schema-behaviors": "^8.0.0",
-    "@lrnwebcomponents/d-d-d": "^8.0.0",
-    "@lrnwebcomponents/utils": "^8.0.0",
+    "@lrnwebcomponents/a11y-media-player": "^8.0.2",
+    "@lrnwebcomponents/d-d-d": "^8.0.2",
+    "@lrnwebcomponents/i18n-manager": "^8.0.2",
+    "@lrnwebcomponents/intersection-element": "^8.0.2",
+    "@lrnwebcomponents/media-behaviors": "^8.0.2",
+    "@lrnwebcomponents/schema-behaviors": "^8.0.2",
+    "@lrnwebcomponents/utils": "^8.0.2",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.0",
+    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -73,5 +73,5 @@
     "html",
     "haxtheweb"
   ],
-  "gitHead": "2791492ff7ab40c7d4c827c4b305e33c0a971230"
+  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
 }

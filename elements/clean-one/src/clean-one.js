@@ -9,7 +9,6 @@ import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/
 import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { EmailPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/EmailPageMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
-import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
@@ -33,20 +32,19 @@ import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element clean-one
  */
-class CleanOne extends HAXCMSUserStylesMenuMixin(
+class CleanOne extends
   PrintBranchMixin(
     PDFPageMixin(
       EmailPageMixin(
         QRCodeMixin(
           HAXCMSThemeParts(
             HAXCMSMobileMenuMixin(
-              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
-            ),
-          ),
-        ),
-      ),
-    ),
-  ),
+              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme))
+            )
+          )
+        )
+      )
+    )
 ) {
   //styles function
   static get styles() {
@@ -260,7 +258,7 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           right: 0;
           left: 0;
           bottom: 0;
-          min-width: 400px;
+          min-width: 375px;
           overflow-y: auto;
           transition: left 0.3s ease;
         }
@@ -269,10 +267,10 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
         :host([responsive-size="sm"]) .page-inner,
         :host([responsive-size="md"]) .page-inner,
         :host([responsive-size="lg"]) .page-inner {
-          padding: 48px 15px;
+          padding: 48px 16px;
         }
         :host([responsive-size="sm"]) .site-inner {
-          padding: 0px 24px;
+          padding: 0 24px;
         }
 
         :host([responsive-size="xs"]) .page-inner {
@@ -290,12 +288,11 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           }
           .main-content site-active-title h1 {
             height: 48px;
+            margin: 0;
             overflow: hidden;
-            margin-top: 64px;
             text-overflow: ellipsis;
             word-break: break-all;
-            margin-top: 64px;
-            margin-bottom: 8px;
+            font-size: var(--ddd-font-size-xs);
           }
         }
         h1 {
@@ -490,6 +487,9 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
           text-align: center;
         }
         @media screen and (max-width: 600px) {
+          .page-wrapper {
+            width: 100vw;
+          }
           #slot ::slotted(iframe) {
             width: auto;
           }
@@ -772,7 +772,6 @@ class CleanOne extends HAXCMSUserStylesMenuMixin(
               <div class="btn-container">
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
-                  ${this.HAXCMSUserStylesMenu()}
                   ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
                     ? this.PrintBranchButton("bottom")
                     : html`

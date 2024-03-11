@@ -18,6 +18,7 @@ class PageSection extends DDD {
    */
   constructor() {
     super();
+    this.AbortControllers = new AbortController();
     this.filter = false;
     this.fold = false;
     this.full = false;
@@ -91,12 +92,11 @@ class PageSection extends DDD {
           --video-player-bg-color: var(--ddd-theme-default-nittanyNavy);
           --video-player-border-color: var(--ddd-theme-default-limestoneLight);
           --video-player-caption-color: var(--ddd-theme-default-white);
-          --video-player-hover-color: var(--ddd-theme-default-white);
-          --video-player-hover-bg-color: var(--ddd-theme-default-beaver70);
-
-          --video-player-accent-color: var(--ddd-theme-default-beaverBlue);
+          --video-player-hover-color: var(--ddd-theme-default-inventOrange);
+          --video-player-hover-bg-color: var(--ddd-theme-default-beaver80);
+          --video-player-accent-color: var(--ddd-theme-default-inventOrange);
           --video-player-faded-accent-color: var(--ddd-theme-default-beaver80);
-          --video-player-disabled-color: var(--ddd-theme-default-navy40);
+          --video-player-disabled-color: var(--ddd-theme-default-disabled);
 
           color: var(--ddd-theme-default-beaverBlue);
           font-family: var(--ddd-font-navigation);
@@ -108,6 +108,7 @@ class PageSection extends DDD {
           position: relative;
           background-position: 50%;
           background-size: cover;
+          transition: background-color 1s linear;
         }
         :host([full]) .section {
           height: 100vh;
@@ -133,7 +134,7 @@ class PageSection extends DDD {
           color: var(--simple-colors-default-theme-accent-12);
         }
         :host([fold]) .scroller {
-          margin-top: calc(var(--ddd-spacing-25) * -1);
+          margin-top: calc(var(--ddd-spacing-20) * -1);
         }
         .scroller {
           position: relative;
@@ -146,6 +147,7 @@ class PageSection extends DDD {
           height: var(--ddd-icon-xl);
           margin-top: calc(var(--ddd-icon-xl) * -1);
           z-index: 11;
+          animation: fullwidth-header-bounce 2.8s ease-out infinite;
         }
         .scroller:focus-within::part(icon),
         .scroller:focus::part(icon),
@@ -154,6 +156,19 @@ class PageSection extends DDD {
           --simple-icon-width: var(--ddd-icon-xl);
           --simple-icon-height: var(--ddd-icon-xl);
         }
+
+        @keyframes fullwidth-header-bounce {
+          0% {
+            transform: translateY(0%);
+          }
+          12.5% {
+              transform: translateY(20%);
+          }
+          25% {
+              transform: translateY(0%);
+          }
+        }
+
         simple-tooltip {
           --simple-tooltip-font-size: var(
             --page-section-tooltip-font-size,
@@ -321,8 +336,14 @@ class PageSection extends DDD {
             border-top-color: var(--ddd-theme-default-skyBlue) !important;
             width: var(--ddd-spacing-10) !important;
           }
+          :host([fold]:not([full])) .section {
+            padding-bottom: var(--ddd-spacing-20);
+          }
+          :host([scroller]:not([full])) .content {
+            padding-bottom: var(--ddd-spacing-20);
+          }
         }
-        @media (max-width: 768px) and (orientation: landscape) {
+        @media (max-width: 900px) and (orientation: landscape) {
           .fold {
             height: var(--ddd-spacing-22);
           }
@@ -340,7 +361,7 @@ class PageSection extends DDD {
             --simple-icon-height: var(--ddd-icon-md);
           }
           :host([fold]) .scroller {
-            margin-top: calc(var(--ddd-spacing-20) * -1);
+            margin-top: calc(var(--ddd-spacing-15) * -1);
           }
         }
       `,
@@ -349,6 +370,14 @@ class PageSection extends DDD {
 
   cleanAnchor(anchor) {
     return anchor ? anchor.replace(/[^a-zA-Z]+/g, "").toLowerCase() : "";
+  }
+
+  videoPlay(e) {
+    this.bg = 'var(--ddd-theme-default-coalyGray)';
+  }
+
+  videoPause(e) {
+    this.bg = "var(--ddd-theme-default-limestoneLight)";
   }
 
   updated(changedProperties) {
@@ -365,6 +394,15 @@ class PageSection extends DDD {
         case "video":
           this.bg = "var(--ddd-theme-default-limestoneLight)";
           this.image = null;
+          // force all previous to be lost if set
+          this.AbortControllers.abort();
+          this.AbortControllers = new AbortController();
+          this.addEventListener('play', this.videoPlay.bind(this),{
+            signal: this.AbortControllers.signal,
+          });
+          this.addEventListener('pause', this.videoPause.bind(this),{
+            signal: this.AbortControllers.signal,
+          });
           break;
         case "antihero-light":
           this.bg = "var(--ddd-theme-default-slateMaxLight)";

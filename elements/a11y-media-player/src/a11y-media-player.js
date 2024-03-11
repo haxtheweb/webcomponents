@@ -2309,7 +2309,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
   get playerStyle() {
     let height = this.audioNoThumb ? "60px" : "unset",
       paddingTop =
-        this.fullscreen || this.audioNoThumb || this.height
+        this.fullscreen || this.audioNoThumb || this.audioOnly || this.height
           ? `unset`
           : `${100 / this.aspect}%`,
       thumbnail =
