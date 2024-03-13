@@ -531,6 +531,12 @@ class DDDocs extends DDD {
           style="background-color: var(--ddd-theme-default-opportunityGreen);"
           title="#008755"
         ></div>
+        <h5>--ddd-theme-default-globalNeon</h5>
+        <div
+          class="m-5 p-10 b-xs"
+          style="background-color: var(--ddd-theme-default-globalNeon);"
+          title="#00a99d"
+        ></div>
         <h5>--ddd-theme-default-accent</h5>
         <div
           class="m-5 p-10 b-xs"

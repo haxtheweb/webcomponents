@@ -162,7 +162,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
   // Template return function
   render() {
     return html` <a
-      href="${this.link}"
+      href="${this.link ? this.link : "#"}"
       role="button"
       part="simple-cta-link"
       @click="${this._clickCard}"

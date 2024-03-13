@@ -67,7 +67,9 @@ export const DDDVariables = css`
     --ddd-theme-default-wonderPurple: #491d70;
     --ddd-theme-default-inventOrange: #e98300;
     --ddd-theme-default-opportunityGreen: #008755;
+    --ddd-theme-default-globalNeon: #ebff00;
     --ddd-theme-default-accent: #96bee6;
+
     /* 
   base colors, cannot be modified by user; SimpleColors hijacks this
   
@@ -94,9 +96,30 @@ export const DDDVariables = css`
     --ddd-theme-default-alertAllClear: #f2ffcc;
     --ddd-theme-default-alertNonEmergency: #e6f7ff;
     --ddd-theme-default-background: #eff2f5;
-    /* 
-Come back to grid in style guide - > decide number of columns based on container breakpoints
-*/
+
+    /* accent colors */
+    --ddd-accent-0: var(--ddd-theme-default-nittanyNavy);
+    --ddd-accent-1: var(--ddd-theme-default-beaverBlue);
+    --ddd-accent-2: var(--ddd-theme-default-pughBlue);
+    --ddd-accent-3: var(--ddd-theme-default-potentialMidnight);
+    --ddd-accent-4: var(--ddd-theme-default-coalyGray);
+    --ddd-accent-5: var(--ddd-theme-default-limestoneGray);
+    --ddd-accent-6: var(--ddd-theme-default-slateGray);
+    --ddd-accent-7: var(--ddd-theme-default-creekTeal);
+    --ddd-accent-8: var(--ddd-theme-default-skyBlue);
+    --ddd-accent-9: var(--ddd-theme-default-shrineTan);
+    --ddd-accent-10: var(--ddd-theme-default-roarGolden);
+    --ddd-accent-11: var(--ddd-theme-default-original87Pink);
+    --ddd-accent-12: var(--ddd-theme-default-discoveryCoral);
+    --ddd-accent-13: var(--ddd-theme-default-wonderPurple);
+    --ddd-accent-14: var(--ddd-theme-default-athertonViolet);
+    --ddd-accent-15: var(--ddd-theme-default-inventOrange);
+    --ddd-accent-16: var(--ddd-theme-default-keystoneYellow);
+    --ddd-accent-17: var(--ddd-theme-default-opportunityGreen);
+    --ddd-accent-18: var(--ddd-theme-default-futureLime);
+    --ddd-accent-19: var(--ddd-theme-default-forestGreen);
+    --ddd-accent-20: var(--ddd-theme-default-landgrantBrown);
+    --ddd-accent-21: var(--ddd-theme-default-globalNeon);
 
     /*fonts*/
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
@@ -308,6 +331,41 @@ Come back to grid in style guide - > decide number of columns based on container
     font-weight: var(--ddd-font-primary-regular);
     letter-spacing: normal;
   }
+
+  .ddd-accent-orange{--ddd-accent: var(--ddd-accent-orange);}
+  .ddd-accent-blue{--ddd-accent: var(--ddd-accent-blue);}
+  .ddd-accent-green{--ddd-accent: var(--ddd-accent-green);}
+  .ddd-accent-red{--ddd-accent: var(--ddd-accent-red);}
+  .ddd-accent-purple{--ddd-accent: var(--ddd-accent-purple);}
+  .ddd-accent-yellow{--ddd-accent: var(--ddd-accent-yellow);}
+  .ddd-accent-pink{--ddd-accent: var(--ddd-accent-pink);}
+
+
+  .ddd-accent-0{--ddd-accent:var(--ddd-accent-0);}
+  .ddd-accent-1{--ddd-accent:var(--ddd-accent-1);}
+  .ddd-accent-2{--ddd-accent:var(--ddd-accent-2);}
+  .ddd-accent-3{--ddd-accent:var(--ddd-accent-3);}
+  .ddd-accent-4{--ddd-accent:var(--ddd-accent-4);}
+  .ddd-accent-5{--ddd-accent:var(--ddd-accent-5);}
+  .ddd-accent-6{--ddd-accent:var(--ddd-accent-6);}
+  .ddd-accent-7{--ddd-accent:var(--ddd-accent-7);}
+  .ddd-accent-8{--ddd-accent:var(--ddd-accent-8);}
+  .ddd-accent-9{--ddd-accent:var(--ddd-accent-9);}
+  .ddd-accent-10{--ddd-accent:var(--ddd-accent-10);}
+  .ddd-accent-11{--ddd-accent:var(--ddd-accent-11);}
+  .ddd-accent-12{--ddd-accent:var(--ddd-accent-12);}
+  .ddd-accent-13{--ddd-accent:var(--ddd-accent-13);}
+  .ddd-accent-14{--ddd-accent:var(--ddd-accent-14);}
+  .ddd-accent-15{--ddd-accent:var(--ddd-accent-15);}
+  .ddd-accent-16{--ddd-accent:var(--ddd-accent-16);}
+  .ddd-accent-17{--ddd-accent:var(--ddd-accent-17);}
+  .ddd-accent-18{--ddd-accent:var(--ddd-accent-18);}
+  .ddd-accent-19{--ddd-accent:var(--ddd-accent-19);}
+  .ddd-accent-20{--ddd-accent:var(--ddd-accent-20);}
+  .ddd-accent-21{--ddd-accent:var(--ddd-accent-21);}
+
+  /* subtlySalmon */
+
 `;
 /* Tag based application */
 export const DDDReset = css`
