@@ -90,7 +90,7 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
                 />${this.licenseName}</a
               >`
           : ``}.
-        Accessed <span class=".license-link">${this.date}</span>.</cite
+        Accessed <span class="license-link">${this.date}</span>.</cite
       >
     `;
   }

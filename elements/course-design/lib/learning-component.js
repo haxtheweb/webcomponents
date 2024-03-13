@@ -10,9 +10,6 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import {
-  DDDAllStyles,
-} from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 
 // Defines the type options available in the HAX wiring, "Learning Objectives" is the default.
 export const learningComponentNouns = {
@@ -204,7 +201,6 @@ class LearningComponent extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      DDDAllStyles,
       css`
         :host {
           display: block;
@@ -311,6 +307,22 @@ class LearningComponent extends I18NMixin(DDD) {
             height: var(--ddd-icon-xl);
             width: var(--ddd-icon-xl);
           }
+        }
+
+        .b-sm {
+          border: var(--ddd-border-sm);
+        }
+        .r-circle {
+          border-radius: var(--ddd-radius-circle);
+        }
+        .lh-120 {
+          line-height: var(--ddd-lh-120);
+        }
+        .bt-0 {
+          border-top: none;
+        }
+        .bs-lg {
+          box-shadow: var(--ddd-boxShadow-lg);
         }
       `,
     ];
