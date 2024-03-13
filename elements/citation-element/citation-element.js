@@ -2,6 +2,8 @@ import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { licenseList } from "@lrnwebcomponents/license-element/license-element.js";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDReset } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 /**
  * `citation-element`
  * An element dedicated to presenting and managing a correct citation on the web
@@ -9,7 +11,7 @@ import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
  * @demo demo/index.html
  * @element citation-element
  */
-class CitationElement extends SchemaBehaviors(LitElement) {
+class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -18,7 +20,6 @@ class CitationElement extends SchemaBehaviors(LitElement) {
       css`
         :host {
           display: block;
-          color: var(--license-text-color);
         }
         :host([display-method="footnote"]) {
           visibility: hidden;
@@ -28,17 +29,20 @@ class CitationElement extends SchemaBehaviors(LitElement) {
           display: block;
         }
         .license-link {
-          font-size: 16px;
-          line-height: 16px;
-          font-style: italic;
-        }
-        .citation-date {
-          font-size: 16px;
-          line-height: 16px;
           font-style: italic;
         }
         .license-link img {
-          margin-right: 8px;
+          margin-right: var(--ddd-spacing-2);
+        }
+        cite{
+          display: block;
+          font-style: normal;
+          margin-bottom: var(--ddd-spacing-2);
+        }
+
+        a{
+          color: var(--ddd-theme-default-link);
+          font-weight: var(--ddd-font-primary-bold);
         }
       `,
     ];
@@ -65,7 +69,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
         content="License: ${this.licenseName}"
       />
       <cite
-        ><a target="_blank" rel="noopener noreferrer" href="${this.source}"
+        ><a target="_blank" rel="noopener noreferrer" class="license-link" href="${this.source}"
           >${this.title}</a
         >
         by
@@ -86,7 +90,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
                 />${this.licenseName}</a
               >`
           : ``}.
-        Accessed <span class="citation-date">${this.date}</span>.</cite
+        Accessed <span class="license-link">${this.date}</span>.</cite
       >
     `;
   }

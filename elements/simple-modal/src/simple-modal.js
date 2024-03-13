@@ -7,6 +7,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "web-dialog/index.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 const SimpleModalCssVars = [
   "--simple-modal-resize",
@@ -88,67 +89,46 @@ class SimpleModal extends LitElement {
           display: none;
         }
 
-        :host web-dialog ::slotted(*) {
-          font-size: 14px;
-        }
-
         #titlebar {
           margin-top: 0;
-          padding: var(--simple-modal-titlebar-padding, 0px 16px);
+          padding: var(--simple-modal-titlebar-padding, 0px var(--ddd-spacing-4));
           display: flex;
           align-items: center;
           justify-content: space-between;
-          color: var(--simple-modal-titlebar-color, #444);
-          background-color: var(--simple-modal-titlebar-background, #ddd);
-          border-radius: 0;
+          background-color: var(--simple-modal-titlebar-background, var(--ddd-theme-default-limestoneLight));
           height: var(--simple-modal-titlebar-height, unset);
           line-height: var(--simple-modal-titlebar-line-height, unset);
         }
 
         #headerbar {
           margin: 0;
-          padding: var(--simple-modal-header-padding, 0px 16px);
-          color: var(--simple-modal-header-color, #222);
-          background-color: var(--simple-modal-header-background, #ccc);
-        }
-
-        h2 {
-          margin-right: 8px;
-          padding: 0;
-          margin: 0;
-          flex: auto;
-          font-size: 18px;
-          line-height: 18px;
+          padding: var(--simple-modal-header-padding, 0px var(--ddd-spacing-4));
+          color: var(--simple-modal-header-color);
+          background-color: var(--simple-modal-header-background, var(--ddd-theme-default-limestoneMaxLight));
         }
 
         #close {
           top: 0;
           border: var(--simple-modal-titlebar-button-border, none);
-          padding: var(--simple-modal-titlebar-button-padding, 10px 0);
+          padding: var(--simple-modal-titlebar-button-padding, var(--ddd-spacing-3) 0);
           min-width: unset;
           text-transform: none;
-          color: var(--simple-modal-titlebar-color, #444);
           background-color: transparent;
+          color: var(--ddd-theme-default-original87Pink);
         }
 
         #close:focus {
           opacity: 0.7;
-          outline: var(--simple-modal-titlebar-button-outline, 2px dotted grey);
-          outline-offset: var(
-            --simple-modal-titlebar-button-outline-offset,
-            2px
-          );
         }
 
         #close simple-icon-lite {
-          --simple-icon-height: var(--simple-modal-titlebar-icon-height, 16px);
-          --simple-icon-width: var(--simple-modal-titlebar-icon-width, 16px);
-          color: var(--simple-modal-titlebar-color, #444);
+          --simple-icon-height: var(--simple-modal-titlebar-icon-height, --ddd-icon-3xs);
+          --simple-icon-width: var(--simple-modal-titlebar-icon-width, --ddd-icon-3xs);
         }
 
         #simple-modal-content {
           flex-grow: 1;
-          padding: var(--simple-modal-content-padding, 8px 16px);
+          padding: var(--simple-modal-content-padding, var(--ddd-spacing-2) var(--ddd-spacing-4) var(--ddd-spacing-4));
           margin: 0;
           color: var(--simple-modal-content-container-color, #222);
           background-color: var(
@@ -161,12 +141,11 @@ class SimpleModal extends LitElement {
           padding: 0;
           padding: var(--simple-modal-buttons-padding, 0);
           margin: 0;
-          color: var(--simple-modal-buttons-color, blue);
-          background-color: var(--simple-modal-buttons-background, #fff);
+          background-color: var(--simple-modal-buttons-background, --ddd-theme-default-limestoneLight);
         }
 
         .buttons ::slotted(*) {
-          padding: 0;
+          padding: 0 var(--ddd-spacing-4) var(--ddd-spacing-4);
           margin: 0;
           color: var(--simple-modal-button-color, --simple-modal-buttons-color);
           background-color: var(
@@ -175,12 +154,11 @@ class SimpleModal extends LitElement {
           );
         }
         web-dialog {
-          --dialog-border-radius: var(--simple-modal-border-radius, 2px);
+          --dialog-border-radius: var(--ddd-radius-sm);
           z-index: var(--simple-modal-z-index, 1) !important;
           padding: 0;
         }
         web-dialog::part(dialog) {
-          border: 1px solid var(--simple-modal-border-color, #222);
           min-height: var(--simple-modal-min-height, unset);
           min-width: var(--simple-modal-min-width, unset);
           z-index: var(--simple-modal-z-index, 1000);
@@ -225,7 +203,7 @@ class SimpleModal extends LitElement {
       @close="${this.close}"
     >
       <div id="titlebar" part="titlebar">
-        <h2 id="simple-modal-title" ?hidden="${!this.title}" part="title">
+        <h3 id="simple-modal-title" ?hidden="${!this.title}" part="title">
           ${this.title}
         </h2>
         <div></div>
@@ -241,10 +219,10 @@ class SimpleModal extends LitElement {
             </simple-icon-button-lite>`
           : ``}
       </div>
-      <div id="headerbar" part="headerbar"><slot name="header"></slot></div>
-      <div id="simple-modal-content" part="content">
+      <h4 id="headerbar" part="headerbar"><slot name="header"></slot></h4>
+      <p id="simple-modal-content" part="content">
         <slot name="content"></slot>
-      </div>
+      </p>
       <slot name="custom" part="custom"></slot>
       <div class="buttons" part="buttons">
         <slot name="buttons"></slot>
@@ -326,6 +304,13 @@ class SimpleModal extends LitElement {
   /**
    * LitElement
    */
+  firstUpdated(){
+    this.shadowRoot
+    .querySelector("web-dialog")
+    .shadowRoot.querySelector("#backdrop").style.backgroundColor = "var(--ddd-theme-default-coaly60)";
+  }
+
+
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "opened") {

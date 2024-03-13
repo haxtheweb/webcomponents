@@ -50,13 +50,14 @@ export class licenseList {
 
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import {DDDSuper} from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `license-element`
  * `A simple way of applying a semantically accurate license to work.`
  * @demo demo/index.html
  * @element license-element
  */
-class LicenseElement extends SchemaBehaviors(LitElement) {
+class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -65,27 +66,22 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
       css`
         :host {
           display: block;
-          font-size: 16px;
-          line-height: 32px;
-          --license-text-color: #222222;
-          --license-background-color: #f2f2f2;
+          line-height: var(--ddd-line-height-140);
           background-color: var(--license-background-color);
         }
         :host:after {
           content: "License";
           position: relative;
           float: right;
-          bottom: 36px;
-          right: 8px;
-          font-size: 28px;
-          color: #dddddd;
+          bottom: var(--ddd-spacing-9);
+          right: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-ms);
+          color: var(--ddd-theme-default-limestoneGray);
           font-style: italic;
         }
         .license-body {
-          padding: 32px;
-          font-style: italic;
-          background-color: var(--license-background-color);
-          color: var(--license-text-color);
+          padding: var(--ddd-spacing-8);
+          background-color: var(--ddd-theme-default-limestoneMaxLight);
         }
 
         :host([display-method="footnote"]) {
@@ -98,11 +94,14 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
         .license-link {
           font-style: italic;
         }
+        a{
+          color: var(--ddd-theme-default-link);
+          font-weight: var(--ddd-font-primary-bold);
+        }
         .big-license-link img {
-          margin-right: 8px;
-          margin-bottom: 8px;
-          width: 88px;
-          height: 31px;
+          margin-right: 0 var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
+          width: var(--ddd-icon-3xl);
+          height: var(--ddd-icon-xs);
           vertical-align: middle;
         }
         .work-title {
@@ -137,19 +136,18 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
               /></a>
             `
           : ``}
-        <span
-          class="work-title"
+        <a
+          class="work-title license-link"
           rel="dc:type"
-          href="http://purl.org/dc/dcmitype/Text"
+          href="${this.source}"
           property="dc:title"
-          >${this.title}</span
+          >${this.title}</a
         >
         by
-        <a
+        <span
           rel="cc:attributionURL"
           property="cc:attributionName"
-          href="${this.source}"
-          >${this.creator}</a
+          >${this.creator}</span
         >
         ${this.license
           ? html`is licensed under a

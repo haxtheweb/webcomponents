@@ -12,6 +12,7 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@lrnwebcomponents/simple-fields/lib/simple-fields-container.js';
       import { SimpleModalStore } from '../simple-modal.js';
+      import '@lrnwebcomponents/simple-cta/simple-cta.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -25,7 +26,7 @@
         <option value="infinite-scroll">Infinite scroll</option>
       </select>
     </simple-fields-container>
-    <div id="somediv"><p>This is to illustrate the notion of some DIV being handed off to the modal but just a clone, not the real thing.</p></div>
+    <div id="somediv"><p>This is to illustrate the notion of some <code>div</code> being handed off to the modal but just a clone, not the real thing.</p></div>
     <div class="vertical-section-container centered">
       <h3>Basic simple-modal demo</h3>
       <demo-snippet>
@@ -116,6 +117,52 @@
               }
             });
             document.getElementById('button4').dispatchEvent(evt);
+          });
+        </script>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <button id="button5">Open 1</button>
+          <style>
+            simple-modal {
+              --simple-modal-resize: both;
+              --simple-modal-width: 300px;
+              --simple-modal-height: 400px;
+              --simple-modal-min-width: 300px;
+              --simple-modal-min-height: 300px;
+            }
+            h3{
+              text-align: center;
+            }
+            .login{
+              display:flex;
+              flex-direction:column;
+              justify-content: center;
+              align-items: center;
+            }
+          </style>
+        <script>
+          document.getElementById('button5').addEventListener('click', () => {
+            let p = document.createElement("div");
+            p.innerHTML = `
+            <h3>Login</h3>
+            <div class="login">
+            <input style="padding: var(--ddd-spacing-3); font-size: 16px; margin-bottom: 8px; width: 50%" type="text" placeholder="username" />
+            <input style="padding: var(--ddd-spacing-3); font-size: 16px; margin-bottom: 8px; width: 50%" type="password" placeholder="password" />
+            <simple-cta>Submit</simple-cta>
+            </div>
+            `;
+            const evt = new CustomEvent("simple-modal-show", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                title: 'Some stuff pulled in',
+                elements: { content: p },
+                invokedBy: document.getElementById('button5'),
+              }
+            });
+            document.getElementById('button5').dispatchEvent(evt);
           });
         </script>
         </template>

@@ -100,16 +100,25 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         }
 
         .message_wrap {
-          border-color: var(
-            --ddd-component-stop-note-border,
-            var(--accent-color)
-          );
           padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
           flex: 1 1 auto;
           background-color: var(
             --ddd-component-stop-note-text-background,
             var(--background-color)
           );
+          border-right: var(--ddd-border-lg);
+          border-color: var(
+            --ddd-component-stop-note-border,
+            var(--accent-color)
+          );
+        }
+
+        .message_wrap > * {
+          margin-bottom: var(--ddd-spacing-2);
+        }
+
+        .main_message {
+          padding-bottom: 0;
         }
 
         :host([title=""]) .secondary_message {
@@ -154,6 +163,18 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         .secondary_message ::slotted(*) {
           color: black;
         }
+
+        .mt-2{
+          margin-top: var(--ddd-spacing-2);
+        }
+
+        .mt-5{
+          margin-top: var(--ddd-spacing-5);
+        }
+
+        .link{
+          margin-bottom: var(--ddd-spacing-1);
+        }
       `,
     ];
   }
@@ -165,20 +186,20 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
             <simple-icon icon="${this.icon}" no-colorize></simple-icon>
           </div>
         </div>
-        <div class="message_wrap br-lg">
+        <div class="message_wrap">
           <h3
-            class="main_message ${this.url ? "mt-2" : "mt-5"} mb-2 pb-0"
+            class="main_message ${this.url ? "mt-2" : "mt-5"}"
             id="title"
           >
             ${this.title}
           </h3>
-          <div class="secondary_message mb-2">
+          <div class="secondary_message">
             <slot></slot>
             <slot name="message"></slot>
           </div>
           ${this.url
             ? html`
-                <div class="link mb-1">
+                <div class="link">
                   <a href="${this.url}" id="link">
                     ${this.t.moreInformation} &gt;
                   </a>
