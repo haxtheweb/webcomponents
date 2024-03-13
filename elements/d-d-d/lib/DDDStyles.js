@@ -96,30 +96,39 @@ export const DDDVariables = css`
     --ddd-theme-default-alertAllClear: #f2ffcc;
     --ddd-theme-default-alertNonEmergency: #e6f7ff;
     --ddd-theme-default-background: #eff2f5;
+    --ddd-theme-default-disabled: #f4f4f4;
+
+    /* primary colors */
+    --ddd-primary-0: var(--ddd-theme-default-nittanyNavy);
+    --ddd-primary-1: var(--ddd-theme-default-beaverBlue);
+    --ddd-primary-2: var(--ddd-theme-default-pughBlue);
+    --ddd-primary-3: var(--ddd-theme-default-potentialMidnight);
+    --ddd-primary-4: var(--ddd-theme-default-coalyGray);
+    --ddd-primary-5: var(--ddd-theme-default-limestoneGray);
+    --ddd-primary-6: var(--ddd-theme-default-slateGray);
+    --ddd-primary-7: var(--ddd-theme-default-creekTeal);
+    --ddd-primary-8: var(--ddd-theme-default-skyBlue);
+    --ddd-primary-9: var(--ddd-theme-default-shrineTan);
+    --ddd-primary-10: var(--ddd-theme-default-roarGolden);
+    --ddd-primary-11: var(--ddd-theme-default-original87Pink);
+    --ddd-primary-12: var(--ddd-theme-default-discoveryCoral);
+    --ddd-primary-13: var(--ddd-theme-default-wonderPurple);
+    --ddd-primary-14: var(--ddd-theme-default-athertonViolet);
+    --ddd-primary-15: var(--ddd-theme-default-inventOrange);
+    --ddd-primary-16: var(--ddd-theme-default-keystoneYellow);
+    --ddd-primary-17: var(--ddd-theme-default-opportunityGreen);
+    --ddd-primary-18: var(--ddd-theme-default-futureLime);
+    --ddd-primary-19: var(--ddd-theme-default-forestGreen);
+    --ddd-primary-20: var(--ddd-theme-default-landgrantBrown);
+    --ddd-primary-21: var(--ddd-theme-default-globalNeon);
 
     /* accent colors */
-    --ddd-accent-0: var(--ddd-theme-default-nittanyNavy);
-    --ddd-accent-1: var(--ddd-theme-default-beaverBlue);
-    --ddd-accent-2: var(--ddd-theme-default-pughBlue);
-    --ddd-accent-3: var(--ddd-theme-default-potentialMidnight);
-    --ddd-accent-4: var(--ddd-theme-default-coalyGray);
-    --ddd-accent-5: var(--ddd-theme-default-limestoneGray);
-    --ddd-accent-6: var(--ddd-theme-default-slateGray);
-    --ddd-accent-7: var(--ddd-theme-default-creekTeal);
-    --ddd-accent-8: var(--ddd-theme-default-skyBlue);
-    --ddd-accent-9: var(--ddd-theme-default-shrineTan);
-    --ddd-accent-10: var(--ddd-theme-default-roarGolden);
-    --ddd-accent-11: var(--ddd-theme-default-original87Pink);
-    --ddd-accent-12: var(--ddd-theme-default-discoveryCoral);
-    --ddd-accent-13: var(--ddd-theme-default-wonderPurple);
-    --ddd-accent-14: var(--ddd-theme-default-athertonViolet);
-    --ddd-accent-15: var(--ddd-theme-default-inventOrange);
-    --ddd-accent-16: var(--ddd-theme-default-keystoneYellow);
-    --ddd-accent-17: var(--ddd-theme-default-opportunityGreen);
-    --ddd-accent-18: var(--ddd-theme-default-futureLime);
-    --ddd-accent-19: var(--ddd-theme-default-forestGreen);
-    --ddd-accent-20: var(--ddd-theme-default-landgrantBrown);
-    --ddd-accent-21: var(--ddd-theme-default-globalNeon);
+    --ddd-accent-0: var(--ddd-theme-limestoneMaxLight);
+    --ddd-accent-1: var(--ddd-theme-slateMaxLight);
+    --ddd-accent-2: var(--ddd-theme-skyMaxLight);
+    --ddd-accent-3: var(--ddd-theme-shrineMaxLight);
+    --ddd-accent-4: var(--ddd-theme-roarMaxlight);
+    --ddd-accent-5: var(--ddd-theme-creekMaxLight);
 
     /*fonts*/
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
@@ -332,37 +341,28 @@ export const DDDVariables = css`
     letter-spacing: normal;
   }
 
-  .ddd-accent-orange{--ddd-accent: var(--ddd-accent-orange);}
-  .ddd-accent-blue{--ddd-accent: var(--ddd-accent-blue);}
-  .ddd-accent-green{--ddd-accent: var(--ddd-accent-green);}
-  .ddd-accent-red{--ddd-accent: var(--ddd-accent-red);}
-  .ddd-accent-purple{--ddd-accent: var(--ddd-accent-purple);}
-  .ddd-accent-yellow{--ddd-accent: var(--ddd-accent-yellow);}
-  .ddd-accent-pink{--ddd-accent: var(--ddd-accent-pink);}
-
-
-  .ddd-accent-0{--ddd-accent:var(--ddd-accent-0);}
-  .ddd-accent-1{--ddd-accent:var(--ddd-accent-1);}
-  .ddd-accent-2{--ddd-accent:var(--ddd-accent-2);}
-  .ddd-accent-3{--ddd-accent:var(--ddd-accent-3);}
-  .ddd-accent-4{--ddd-accent:var(--ddd-accent-4);}
-  .ddd-accent-5{--ddd-accent:var(--ddd-accent-5);}
-  .ddd-accent-6{--ddd-accent:var(--ddd-accent-6);}
-  .ddd-accent-7{--ddd-accent:var(--ddd-accent-7);}
-  .ddd-accent-8{--ddd-accent:var(--ddd-accent-8);}
-  .ddd-accent-9{--ddd-accent:var(--ddd-accent-9);}
-  .ddd-accent-10{--ddd-accent:var(--ddd-accent-10);}
-  .ddd-accent-11{--ddd-accent:var(--ddd-accent-11);}
-  .ddd-accent-12{--ddd-accent:var(--ddd-accent-12);}
-  .ddd-accent-13{--ddd-accent:var(--ddd-accent-13);}
-  .ddd-accent-14{--ddd-accent:var(--ddd-accent-14);}
-  .ddd-accent-15{--ddd-accent:var(--ddd-accent-15);}
-  .ddd-accent-16{--ddd-accent:var(--ddd-accent-16);}
-  .ddd-accent-17{--ddd-accent:var(--ddd-accent-17);}
-  .ddd-accent-18{--ddd-accent:var(--ddd-accent-18);}
-  .ddd-accent-19{--ddd-accent:var(--ddd-accent-19);}
-  .ddd-accent-20{--ddd-accent:var(--ddd-accent-20);}
-  .ddd-accent-21{--ddd-accent:var(--ddd-accent-21);}
+  .ddd-primary-0{--ddd-accent:var(--ddd-primary-0);}
+  .ddd-primary-1{--ddd-accent:var(--ddd-primary-1);}
+  .ddd-primary-2{--ddd-accent:var(--ddd-primary-2);}
+  .ddd-primary-3{--ddd-accent:var(--ddd-primary-3);}
+  .ddd-primary-4{--ddd-accent:var(--ddd-primary-4);}
+  .ddd-primary-5{--ddd-accent:var(--ddd-primary-5);}
+  .ddd-primary-6{--ddd-accent:var(--ddd-primary-6);}
+  .ddd-primary-7{--ddd-accent:var(--ddd-primary-7);}
+  .ddd-primary-8{--ddd-accent:var(--ddd-primary-8);}
+  .ddd-primary-9{--ddd-accent:var(--ddd-primary-9);}
+  .ddd-primary-10{--ddd-accent:var(--ddd-primary-10);}
+  .ddd-primary-11{--ddd-accent:var(--ddd-primary-11);}
+  .ddd-primary-12{--ddd-accent:var(--ddd-primary-12);}
+  .ddd-primary-13{--ddd-accent:var(--ddd-primary-13);}
+  .ddd-primary-14{--ddd-accent:var(--ddd-primary-14);}
+  .ddd-primary-15{--ddd-accent:var(--ddd-primary-15);}
+  .ddd-primary-16{--ddd-accent:var(--ddd-primary-16);}
+  .ddd-primary-17{--ddd-accent:var(--ddd-primary-17);}
+  .ddd-primary-18{--ddd-accent:var(--ddd-primary-18);}
+  .ddd-primary-19{--ddd-accent:var(--ddd-primary-19);}
+  .ddd-primary-20{--ddd-accent:var(--ddd-primary-20);}
+  .ddd-primary-21{--ddd-accent:var(--ddd-primary-21);}
 
   /* subtlySalmon */
 
