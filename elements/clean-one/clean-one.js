@@ -32,19 +32,18 @@ import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element clean-one
  */
-class CleanOne extends
-  PrintBranchMixin(
-    PDFPageMixin(
-      EmailPageMixin(
-        QRCodeMixin(
-          HAXCMSThemeParts(
-            HAXCMSMobileMenuMixin(
-              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme))
-            )
-          )
-        )
-      )
-    )
+class CleanOne extends PrintBranchMixin(
+  PDFPageMixin(
+    EmailPageMixin(
+      QRCodeMixin(
+        HAXCMSThemeParts(
+          HAXCMSMobileMenuMixin(
+            HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+          ),
+        ),
+      ),
+    ),
+  ),
 ) {
   //styles function
   static get styles() {

@@ -91,11 +91,17 @@ class SimpleModal extends LitElement {
 
         #titlebar {
           margin-top: 0;
-          padding: var(--simple-modal-titlebar-padding, 0px var(--ddd-spacing-4));
+          padding: var(
+            --simple-modal-titlebar-padding,
+            0px var(--ddd-spacing-4)
+          );
           display: flex;
           align-items: center;
           justify-content: space-between;
-          background-color: var(--simple-modal-titlebar-background, var(--ddd-theme-default-limestoneLight));
+          background-color: var(
+            --simple-modal-titlebar-background,
+            var(--ddd-theme-default-limestoneLight)
+          );
           height: var(--simple-modal-titlebar-height, unset);
           line-height: var(--simple-modal-titlebar-line-height, unset);
         }
@@ -104,13 +110,19 @@ class SimpleModal extends LitElement {
           margin: 0;
           padding: var(--simple-modal-header-padding, 0px var(--ddd-spacing-4));
           color: var(--simple-modal-header-color);
-          background-color: var(--simple-modal-header-background, var(--ddd-theme-default-limestoneMaxLight));
+          background-color: var(
+            --simple-modal-header-background,
+            var(--ddd-theme-default-limestoneMaxLight)
+          );
         }
 
         #close {
           top: 0;
           border: var(--simple-modal-titlebar-button-border, none);
-          padding: var(--simple-modal-titlebar-button-padding, var(--ddd-spacing-3) 0);
+          padding: var(
+            --simple-modal-titlebar-button-padding,
+            var(--ddd-spacing-3) 0
+          );
           min-width: unset;
           text-transform: none;
           background-color: transparent;
@@ -122,13 +134,22 @@ class SimpleModal extends LitElement {
         }
 
         #close simple-icon-lite {
-          --simple-icon-height: var(--simple-modal-titlebar-icon-height, --ddd-icon-3xs);
-          --simple-icon-width: var(--simple-modal-titlebar-icon-width, --ddd-icon-3xs);
+          --simple-icon-height: var(
+            --simple-modal-titlebar-icon-height,
+            --ddd-icon-3xs
+          );
+          --simple-icon-width: var(
+            --simple-modal-titlebar-icon-width,
+            --ddd-icon-3xs
+          );
         }
 
         #simple-modal-content {
           flex-grow: 1;
-          padding: var(--simple-modal-content-padding, var(--ddd-spacing-2) var(--ddd-spacing-4) var(--ddd-spacing-4));
+          padding: var(
+            --simple-modal-content-padding,
+            var(--ddd-spacing-2) var(--ddd-spacing-4) var(--ddd-spacing-4)
+          );
           margin: 0;
           color: var(--simple-modal-content-container-color, #222);
           background-color: var(
@@ -141,7 +162,10 @@ class SimpleModal extends LitElement {
           padding: 0;
           padding: var(--simple-modal-buttons-padding, 0);
           margin: 0;
-          background-color: var(--simple-modal-buttons-background, --ddd-theme-default-limestoneLight);
+          background-color: var(
+            --simple-modal-buttons-background,
+            --ddd-theme-default-limestoneLight
+          );
         }
 
         .buttons ::slotted(*) {
@@ -207,17 +231,19 @@ class SimpleModal extends LitElement {
           ${this.title}
         </h2>
         <div></div>
-        ${!this.modal
-          ? html`<simple-icon-button-lite
-              id="close"
-              dark
-              icon="${this.closeIcon}"
-              @click="${this.close}"
-              label="${this.closeLabel}"
-              part="close"
-            >
-            </simple-icon-button-lite>`
-          : ``}
+        ${
+          !this.modal
+            ? html`<simple-icon-button-lite
+                id="close"
+                dark
+                icon="${this.closeIcon}"
+                @click="${this.close}"
+                label="${this.closeLabel}"
+                part="close"
+              >
+              </simple-icon-button-lite>`
+            : ``
+        }
       </div>
       <h4 id="headerbar" part="headerbar"><slot name="header"></slot></h4>
       <p id="simple-modal-content" part="content">
@@ -304,12 +330,12 @@ class SimpleModal extends LitElement {
   /**
    * LitElement
    */
-  firstUpdated(){
+  firstUpdated() {
     this.shadowRoot
-    .querySelector("web-dialog")
-    .shadowRoot.querySelector("#backdrop").style.backgroundColor = "var(--ddd-theme-default-coaly60)";
+      .querySelector("web-dialog")
+      .shadowRoot.querySelector("#backdrop").style.backgroundColor =
+      "var(--ddd-theme-default-coaly60)";
   }
-
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

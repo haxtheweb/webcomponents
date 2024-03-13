@@ -414,7 +414,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
                       ? post.metadata.image
                       : this.image}"
                   >
-                  <div slot="heading"><h3>${post.title}</h3></div>
+                    <div slot="heading"><h3>${post.title}</h3></div>
                     <div slot="subheading">
                       <simple-datetime
                         unix

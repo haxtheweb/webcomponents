@@ -50,7 +50,7 @@ export class licenseList {
 
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import {DDDSuper} from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 /**
  * `license-element`
  * `A simple way of applying a semantically accurate license to work.`
@@ -94,7 +94,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         .license-link {
           font-style: italic;
         }
-        a{
+        a {
           color: var(--ddd-theme-default-link);
           font-weight: var(--ddd-font-primary-bold);
         }
@@ -144,9 +144,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           >${this.title}</a
         >
         by
-        <span
-          rel="cc:attributionURL"
-          property="cc:attributionName"
+        <span rel="cc:attributionURL" property="cc:attributionName"
           >${this.creator}</span
         >
         ${this.license

@@ -162,10 +162,10 @@ class PageSection extends DDD {
             transform: translateY(0%);
           }
           12.5% {
-              transform: translateY(20%);
+            transform: translateY(20%);
           }
           25% {
-              transform: translateY(0%);
+            transform: translateY(0%);
           }
         }
 
@@ -373,7 +373,7 @@ class PageSection extends DDD {
   }
 
   videoPlay(e) {
-    this.bg = 'var(--ddd-theme-default-coalyGray)';
+    this.bg = "var(--ddd-theme-default-coalyGray)";
   }
 
   videoPause(e) {
@@ -397,10 +397,10 @@ class PageSection extends DDD {
           // force all previous to be lost if set
           this.AbortControllers.abort();
           this.AbortControllers = new AbortController();
-          this.addEventListener('play', this.videoPlay.bind(this),{
+          this.addEventListener("play", this.videoPlay.bind(this), {
             signal: this.AbortControllers.signal,
           });
-          this.addEventListener('pause', this.videoPause.bind(this),{
+          this.addEventListener("pause", this.videoPause.bind(this), {
             signal: this.AbortControllers.signal,
           });
           break;
