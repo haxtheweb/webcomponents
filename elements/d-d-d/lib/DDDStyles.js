@@ -35,10 +35,6 @@ export const DDDVariables = css`
     --ddd-theme-default-potential75: rgba(0, 3, 33, 0.75);
     --ddd-theme-default-pughBlue: #96bee6;
     --ddd-theme-default-coalyGray: #262626;
-    --ddd-theme-default-coaly45: rgba(38, 38, 38, 0.45);
-    --ddd-theme-default-coaly60: rgba(38, 38, 38, 0.6);
-    --ddd-theme-default-coaly75: rgba(38, 38, 38, 0.75);
-    --ddd-theme-default-coaly90: rgba(38, 38, 38, 0.9);
     --ddd-theme-default-keystoneYellow: #ffd100;
     --ddd-theme-default-slateGray: #314d64;
     --ddd-theme-default-slateLight: #ccdae6;
@@ -67,7 +63,11 @@ export const DDDVariables = css`
     --ddd-theme-default-wonderPurple: #491d70;
     --ddd-theme-default-inventOrange: #e98300;
     --ddd-theme-default-opportunityGreen: #008755;
+    --ddd-theme-default-globalNeon: #ebff00;
     --ddd-theme-default-accent: #96bee6;
+    --ddd-theme-default-white85: rgba(255, 255, 255, 0.85);
+    --ddd-theme-default-white65: rgba(255, 255, 255, 0.65);
+
     /* 
   base colors, cannot be modified by user; SimpleColors hijacks this
   
@@ -94,9 +94,41 @@ export const DDDVariables = css`
     --ddd-theme-default-alertAllClear: #f2ffcc;
     --ddd-theme-default-alertNonEmergency: #e6f7ff;
     --ddd-theme-default-background: #eff2f5;
-    /* 
-Come back to grid in style guide - > decide number of columns based on container breakpoints
-*/
+    --ddd-theme-default-disabled: #f4f4f4;
+
+    /* primary colors */
+    --ddd-primary-0: var(--ddd-theme-default-pughBlue);
+    --ddd-primary-1: var(--ddd-theme-default-beaverBlue);
+    --ddd-primary-2: var(--ddd-theme-default-nittanyNavy);
+    --ddd-primary-3: var(--ddd-theme-default-potentialMidnight);
+    --ddd-primary-4: var(--ddd-theme-default-coalyGray);
+    --ddd-primary-5: var(--ddd-theme-default-limestoneGray);
+    --ddd-primary-6: var(--ddd-theme-default-slateGray);
+    --ddd-primary-7: var(--ddd-theme-default-creekTeal);
+    --ddd-primary-8: var(--ddd-theme-default-skyBlue);
+    --ddd-primary-9: var(--ddd-theme-default-shrineTan);
+    --ddd-primary-10: var(--ddd-theme-default-roarGolden);
+    --ddd-primary-11: var(--ddd-theme-default-original87Pink);
+    --ddd-primary-12: var(--ddd-theme-default-discoveryCoral);
+    --ddd-primary-13: var(--ddd-theme-default-wonderPurple);
+    --ddd-primary-14: var(--ddd-theme-default-athertonViolet);
+    --ddd-primary-15: var(--ddd-theme-default-inventOrange);
+    --ddd-primary-16: var(--ddd-theme-default-keystoneYellow);
+    --ddd-primary-17: var(--ddd-theme-default-opportunityGreen);
+    --ddd-primary-18: var(--ddd-theme-default-futureLime);
+    --ddd-primary-19: var(--ddd-theme-default-forestGreen);
+    --ddd-primary-20: var(--ddd-theme-default-landgrantBrown);
+    --ddd-primary-21: var(--ddd-theme-default-globalNeon);
+
+    /* accent colors */
+
+    --ddd-accent-0: var(--ddd-theme-default-skyMaxLight);
+    --ddd-accent-1: var(--ddd-theme-default-slateMaxLight);
+    --ddd-accent-2: var(--ddd-theme-default-limestoneMaxLight);
+    --ddd-accent-3: var(--ddd-theme-default-shrineMaxLight);
+    --ddd-accent-4: var(--ddd-theme-default-roarMaxlight);
+    --ddd-accent-5: var(--ddd-theme-default-creekMaxLight);
+    --ddd-accent-6: var(--ddd-theme-default-white);
 
     /*fonts*/
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
@@ -308,6 +340,41 @@ Come back to grid in style guide - > decide number of columns based on container
     font-weight: var(--ddd-font-primary-regular);
     letter-spacing: normal;
   }
+
+  .ddd-primary-0{--ddd-theme-primary:var(--ddd-primary-0);}
+  .ddd-primary-1{--ddd-theme-primary:var(--ddd-primary-1);}
+  .ddd-primary-2{--ddd-theme-primary:var(--ddd-primary-2);}
+  .ddd-primary-3{--ddd-theme-primary:var(--ddd-primary-3);}
+  .ddd-primary-4{--ddd-theme-primary:var(--ddd-primary-4);}
+  .ddd-primary-5{--ddd-theme-primary:var(--ddd-primary-5);}
+  .ddd-primary-6{--ddd-theme-primary:var(--ddd-primary-6);}
+  .ddd-primary-7{--ddd-theme-primary:var(--ddd-primary-7);}
+  .ddd-primary-8{--ddd-theme-primary:var(--ddd-primary-8);}
+  .ddd-primary-9{--ddd-theme-primary:var(--ddd-primary-9);}
+  .ddd-primary-10{--ddd-theme-primary:var(--ddd-primary-10);}
+  .ddd-primary-11{--ddd-theme-primary:var(--ddd-primary-11);}
+  .ddd-primary-12{--ddd-theme-primary:var(--ddd-primary-12);}
+  .ddd-primary-13{--ddd-theme-primary:var(--ddd-primary-13);}
+  .ddd-primary-14{--ddd-theme-primary:var(--ddd-primary-14);}
+  .ddd-primary-15{--ddd-theme-primary:var(--ddd-primary-15);}
+  .ddd-primary-16{--ddd-theme-primary:var(--ddd-primary-16);}
+  .ddd-primary-17{--ddd-theme-primary:var(--ddd-primary-17);}
+  .ddd-primary-18{--ddd-theme-primary:var(--ddd-primary-18);}
+  .ddd-primary-19{--ddd-theme-primary:var(--ddd-primary-19);}
+  .ddd-primary-20{--ddd-theme-primary:var(--ddd-primary-20);}
+  .ddd-primary-21{--ddd-theme-primary:var(--ddd-primary-21);}
+
+  /* subtlySalmon */
+
+  .ddd--accent0{--ddd-theme-accent:var(--ddd-accent-0);}
+  .ddd--accent1{--ddd-theme-accent:var(--ddd-accent-1);}
+  .ddd--accent2{--ddd-theme-accent:var(--ddd-accent-2);}
+  .ddd--accent3{--ddd-theme-accent:var(--ddd-accent-3);}
+  .ddd--accent4{--ddd-theme-accent:var(--ddd-accent-4);}
+  .ddd--accent5{--ddd-theme-accent:var(--ddd-accent-5);}
+  .ddd--accent6{--ddd-theme-accent:var(--ddd-accent-6);}
+  .ddd--accent7{--ddd-theme-accent:var(--ddd-accent-7);}
+
 `;
 /* Tag based application */
 export const DDDReset = css`

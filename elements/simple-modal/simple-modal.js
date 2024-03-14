@@ -104,6 +104,8 @@ class SimpleModal extends LitElement {
           );
           height: var(--simple-modal-titlebar-height, unset);
           line-height: var(--simple-modal-titlebar-line-height, unset);
+          color: var(--ddd-theme-default-nittanyNavy);
+          font-size: var(--ddd-theme-h3-font-size);
         }
 
         #headerbar {
@@ -161,11 +163,8 @@ class SimpleModal extends LitElement {
         .buttons {
           padding: 0;
           padding: var(--simple-modal-buttons-padding, 0);
-          margin: 0;
-          background-color: var(
-            --simple-modal-buttons-background,
-            --ddd-theme-default-limestoneLight
-          );
+          margin: var(--ddd-spacing-2);
+          background-color: var(--simple-modal-buttons-background, --ddd-theme-default-limestoneLight);
         }
 
         .buttons ::slotted(*) {
@@ -209,6 +208,14 @@ class SimpleModal extends LitElement {
         :host([resize="vertical"]) web-dialog[open].style-scope.simple-modal {
           left: calc(50% - var(--simple-modal-width, 75vw) / 2);
         }
+
+        .full{
+          background-color: var(--ddd-theme-default-limestoneLight);
+        }
+
+        div.empty{
+          background-color: var(--ddd-theme-default-limestoneMaxLight);
+        }
       `,
     ];
   }
@@ -226,10 +233,10 @@ class SimpleModal extends LitElement {
       @open="${this.open}"
       @close="${this.close}"
     >
-      <div id="titlebar" part="titlebar">
-        <h3 id="simple-modal-title" ?hidden="${!this.title}" part="title">
+      <div id="titlebar" part="titlebar" class=${this.title ? "full" : "empty"}>
+        <h3 id="simple-modal-title" ?hidden="${!this.title}" part="title" class=${this.title ? "hr-vert" : ""}>
           ${this.title}
-        </h2>
+        </h3>
         <div></div>
         ${
           !this.modal
@@ -245,7 +252,7 @@ class SimpleModal extends LitElement {
             : ``
         }
       </div>
-      <h4 id="headerbar" part="headerbar"><slot name="header"></slot></h4>
+      <h5 id="headerbar" part="headerbar"><slot name="header"></slot></h4>
       <p id="simple-modal-content" part="content">
         <slot name="content"></slot>
       </p>
