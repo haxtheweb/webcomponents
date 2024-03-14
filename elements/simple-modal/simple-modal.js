@@ -164,7 +164,10 @@ class SimpleModal extends LitElement {
           padding: 0;
           padding: var(--simple-modal-buttons-padding, 0);
           margin: var(--ddd-spacing-2);
-          background-color: var(--simple-modal-buttons-background, --ddd-theme-default-limestoneLight);
+          background-color: var(
+            --simple-modal-buttons-background,
+            --ddd-theme-default-limestoneLight
+          );
         }
 
         .buttons ::slotted(*) {
@@ -341,7 +344,7 @@ class SimpleModal extends LitElement {
     this.shadowRoot
       .querySelector("web-dialog")
       .shadowRoot.querySelector("#backdrop").style.backgroundColor =
-      "var(--ddd-theme-default-coaly60)";
+      "var(--ddd-theme-default-potential70)";
   }
 
   updated(changedProperties) {
