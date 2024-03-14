@@ -539,7 +539,6 @@ export const displayBehaviors = function (SuperClass) {
 
     connectedCallback() {
       super.connectedCallback();
-      this.fetchData();
       setTimeout(() => {
         if (!this.dataCsv) this.loadSlottedTable();
         this.__ready = true;
@@ -554,7 +553,7 @@ export const displayBehaviors = function (SuperClass) {
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "dataCsv") this.fetchData();
+        if (propName === "dataCsv" && this[propName]) this.fetchData();
         if (propName === "csvData") this._loadExternalData();
         if (propName === "striped" && this.striped) this.columnStriped = false;
         if (propName === "columnStriped" && this.columnStriped)
@@ -729,6 +728,9 @@ export const displayBehaviors = function (SuperClass) {
           .then((response) => response.text())
           .then((data) => {
             this.csvData = data;
+            // unset the fetch so that we don't continually do this. This is a more advanced quick backdoor as opposed to data
+            // that we should be storing for any reason
+            this.dataCsv = null;
           })
           .catch((err) => {
             this.loadSlottedTable();

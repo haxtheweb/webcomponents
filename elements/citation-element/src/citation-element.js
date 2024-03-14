@@ -34,13 +34,13 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         .license-link img {
           margin-right: var(--ddd-spacing-2);
         }
-        cite{
+        cite {
           display: block;
           font-style: normal;
           margin-bottom: var(--ddd-spacing-2);
         }
 
-        a{
+        a {
           color: var(--ddd-theme-default-link);
           font-weight: var(--ddd-font-primary-bold);
         }
@@ -69,7 +69,11 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         content="License: ${this.licenseName}"
       />
       <cite
-        ><a target="_blank" rel="noopener noreferrer" class="license-link" href="${this.source}"
+        ><a
+          target="_blank"
+          rel="noopener noreferrer"
+          class="license-link"
+          href="${this.source}"
           >${this.title}</a
         >
         by

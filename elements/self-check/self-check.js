@@ -250,6 +250,10 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           margin-top: 0;
         }
 
+        .r-circle {
+          border-radius: var(--ddd-radius-circle);
+        }
+
         @container card (width < 585px) {
           #header_wrap {
             margin: calc(var(--ddd-spacing-9) * -1) 0 0;
@@ -270,14 +274,15 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     return html`
       <div class="card">
         <div class="image-wrap">
-        ${this.image ? html`
-          ${this.renderSVGLoader()}
-          <img
-            src="${this.image}"
-            alt="${this.alt}"
-            aria-describedby="${this.describedBy || ""}"
-            loading="lazy"
-          />` : ``}
+          ${this.image
+            ? html` ${this.renderSVGLoader()}
+                <img
+                  src="${this.image}"
+                  alt="${this.alt}"
+                  aria-describedby="${this.describedBy || ""}"
+                  loading="lazy"
+                />`
+            : ``}
         </div>
         <div class="triangle"></div>
         <div id="header_wrap">

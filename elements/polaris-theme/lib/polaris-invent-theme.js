@@ -74,7 +74,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           --video-player-accent-color: var(--ddd-theme-default-inventOrange);
           --video-player-faded-accent-color: var(--ddd-theme-default-beaver80);
           --video-player-disabled-color: var(--ddd-theme-default-disabled);
-          
         }
 
         scroll-button {

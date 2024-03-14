@@ -120,7 +120,15 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__utils", "editMode", "data", "config"]
+    "unsetAttributes": [
+      "__utils",
+      "edit-mode",
+      "editMode",
+      "data",
+      "config",
+      "dataCsv",
+      "data-csv"
+    ]
   },
   "demoSchema": [
     {

@@ -196,9 +196,6 @@
           "name": "popstate"
         },
         {
-          "name": "haxcms-toast-show"
-        },
-        {
           "name": "content-container-changed"
         },
         {
@@ -417,9 +414,6 @@
           "name": "popstate"
         },
         {
-          "name": "haxcms-toast-show"
-        },
-        {
           "name": "content-container-changed"
         },
         {
@@ -636,9 +630,6 @@
         },
         {
           "name": "popstate"
-        },
-        {
-          "name": "haxcms-toast-show"
         },
         {
           "name": "content-container-changed"
@@ -879,9 +870,6 @@
         },
         {
           "name": "popstate"
-        },
-        {
-          "name": "haxcms-toast-show"
         },
         {
           "name": "content-container-changed"
@@ -1124,9 +1112,6 @@
           "name": "popstate"
         },
         {
-          "name": "haxcms-toast-show"
-        },
-        {
           "name": "content-container-changed"
         },
         {
@@ -1343,9 +1328,6 @@
         },
         {
           "name": "popstate"
-        },
-        {
-          "name": "haxcms-toast-show"
         },
         {
           "name": "content-container-changed"
@@ -1566,9 +1548,6 @@
           "name": "popstate"
         },
         {
-          "name": "haxcms-toast-show"
-        },
-        {
           "name": "content-container-changed"
         },
         {
@@ -1787,9 +1766,6 @@
           "name": "popstate"
         },
         {
-          "name": "haxcms-toast-show"
-        },
-        {
           "name": "content-container-changed"
         },
         {
@@ -2006,9 +1982,6 @@
         },
         {
           "name": "popstate"
-        },
-        {
-          "name": "haxcms-toast-show"
         },
         {
           "name": "content-container-changed"
