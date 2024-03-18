@@ -213,11 +213,18 @@ class DDDocs extends DDD {
       <div class="bg-accent-${x}">
         <h2>Discover Penn State</h2>
         <hr class="ddd-primary-${i} hr-horz">
-        <p>Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.</p>
+        <p>ddd-primary-${i}</p>
       </div>
       `);
       x++;
     };
+    for( let z = 0; z < 5; z++){
+      headers.push(html`
+      <div class="bg-accent-${z}">
+        <p class="ddd-primary-${z+11} dropCap">Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.</p>
+      </div>
+      `);
+    }
     return headers;
   }
 

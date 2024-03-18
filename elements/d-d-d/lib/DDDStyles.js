@@ -395,22 +395,6 @@ export const DDDVariables = css`
   .ddd--accent4{--ddd-theme-accent:var(--ddd-accent-4);}
   .ddd--accent5{--ddd-theme-accent:var(--ddd-accent-5);}
   .ddd--accent6{--ddd-theme-accent:var(--ddd-accent-6);}
-
-  .ddd-theme-header-border-thickness-0{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-0);}
-  .ddd-theme-header-border-thickness-xs{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-xs);}
-  .ddd-theme-header-border-thickness-sm{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-sm);}
-  .ddd-theme-header-border-thickness-md{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-md);}
-  .ddd-theme-header-border-thickness-lg{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-lg);}
-
-  .ddd-theme-header-border-treatment-0{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-0);}
-  .ddd-theme-header-border-treatment-sm{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-sm);}
-  .ddd-theme-header-border-treatment-md{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-md);}
-  .ddd-theme-header-border-treatment-lg{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-lg);}
-  .ddd-theme-header-border-treatment-10p{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-10p);}
-  .ddd-theme-header-border-treatment-25p{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-25p);}
-  .ddd-theme-header-border-treatment-50p{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-50p);}
-  .ddd-theme-header-border-treatment-75p{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-75p);}
-  .ddd-theme-header-border-treatment-full{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-full);}
   `;
 /* Tag based application */
 export const DDDReset = css`
@@ -611,6 +595,21 @@ export const DDDReset = css`
   h2 > hr {
     margin-top: var(--ddd-spacing-4);
   }
+  .ddd-theme-header-border-thickness-0{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-0);}
+  .ddd-theme-header-border-thickness-xs{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-xs);}
+  .ddd-theme-header-border-thickness-sm{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-sm);}
+  .ddd-theme-header-border-thickness-md{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-md);}
+  .ddd-theme-header-border-thickness-lg{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-lg);}
+
+  .ddd-theme-header-border-treatment-0{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-0);}
+  .ddd-theme-header-border-treatment-sm{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-sm);}
+  .ddd-theme-header-border-treatment-md{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-md);}
+  .ddd-theme-header-border-treatment-lg{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-lg);}
+  .ddd-theme-header-border-treatment-10p{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-10p);}
+  .ddd-theme-header-border-treatment-25p{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-25p);}
+  .ddd-theme-header-border-treatment-50p{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-50p);}
+  .ddd-theme-header-border-treatment-75p{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-75p);}
+  .ddd-theme-header-border-treatment-full{--ddd-theme-header-border-treatment:var(--ddd-theme-header-border-treatment-full);}
 
   summary {
     display: flex;
@@ -786,6 +785,67 @@ export const DDDReset = css`
     font-family: var(--ddd-font-primary);
     letter-spacing: normal;
     text-align: justify;
+  }
+
+  .dropCap::first-letter{
+    --initialLetter: 6;
+    -webkit-initial-letter: var(--initialLetter);
+    initial-letter: var(--initialLetter);
+    color: var(--ddd-theme-primary);
+    font-weight: 700;
+    margin-right: 12px;
+    padding: 0 4px 0 0;
+  }
+
+  .ddd-dropCap-xs::first-letter {
+    --initialLetter: 2;
+    margin-right: var(--ddd-spacing-1);
+  }
+
+  .ddd-dropCap-sm::first-letter {
+    --initialLetter: 4;
+    margin-right: var(--ddd-spacing-2);
+  }
+
+  .ddd-dropCap-md::first-letter {
+    --initialLetter: 6;
+    margin-right: var(--ddd-spacing-3);
+  }
+
+  .ddd-dropCap-lg::first-letter {
+    --initialLetter: 8;
+    margin-right: var(--ddd-spacing-4);
+  }
+
+  .ddd-dropCap-xl::first-letter {
+    --initialLetter: 10;
+    margin-right: var(--ddd-spacing-5);
+  }
+
+  .dropCap-noSupport .dropCap::first-letter{
+    font-size: 168px;
+    margin-bottom: var(--ddd-spacing-1);
+    float: left;
+  }
+
+  .dropCap-noSupport .ddd-dropCap-xs::first-letter{
+    font-size: 56px;
+  }
+
+  .dropCap-noSupport .ddd-dropCap-sm::first-letter{
+    font-size: 112px;
+  }
+
+  .dropCap-noSupport .ddd-dropCap-md::first-letter{
+    font-size: 168px;
+  }
+
+  .dropCap-noSupport .ddd-dropCap-lg::first-letter{
+    font-size: 230px;
+  }
+  
+  .dropCap-noSupport .ddd-dropCap-xl::first-letter{
+    font-size: 300px;
   }
 `;
 /* border & shadows */
