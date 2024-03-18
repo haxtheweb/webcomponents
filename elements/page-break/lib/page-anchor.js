@@ -88,8 +88,7 @@ export class PageAnchor extends DDD {
             break;
         }
       }, 100);
-    }
-    else {
+    } else {
       // unset the node because we didn't find it
       this.target = null;
     }
@@ -99,10 +98,9 @@ export class PageAnchor extends DDD {
     const entityData = toJS(store.entityData);
     // support entity defining the field to use, which color is a possible option asked for
     if (entityData[id] && entityData[id][field]) {
-      if (field == 'accentColor') {
+      if (field == "accentColor") {
         return `--simple-colors-default-theme-${entityData[id][field]}-3`;
-      }
-      else {
+      } else {
         return entityData[id][field];
       }
     }
@@ -131,13 +129,15 @@ export class PageAnchor extends DDD {
 
   render() {
     let color = this.getMatchFromFields(
-      this.entityId, this.target, "accentColor",
+      this.entityId,
+      this.target,
+      "accentColor",
     );
     let icon = this.getMatchFromFields(this.entityId, this.target, "icon");
     return html`<mark
       @click="${this.clickHandler}"
       style="${color ? `background-color: var(${color})` : ``}"
-      >
+    >
       ${icon ? html`<simple-icon-lite icon="${icon}"></simple-icon-lite>` : ``}
       <slot></slot>
     </mark>`;

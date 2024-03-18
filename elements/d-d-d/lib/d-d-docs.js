@@ -223,24 +223,24 @@ class DDDocs extends DDD {
 
   renderDDDelementsList() {
     return html`
-    <h2>DDD Enabled Elements</h2>
-    <ul>
-      <li>DDD</li>
-      <li>figure-label</li>
-      <li>stop-note</li>
-      <li>learning-component</li>
-      <li>block-quote</li>
-      <li>self-check</li>
-      <li>media-image</li>
-      <li>accent-card</li>
-      <li>page-section</li>
-      <li>simple-cta</li>
-      <li>video-player</li>
-      <li>citation-element</li>
-      <li>license-element</li>
-      <li>simple-modal</li>
-    </ul>
-    `
+      <h2>DDD Enabled Elements</h2>
+      <ul>
+        <li>DDD</li>
+        <li>figure-label</li>
+        <li>stop-note</li>
+        <li>learning-component</li>
+        <li>block-quote</li>
+        <li>self-check</li>
+        <li>media-image</li>
+        <li>accent-card</li>
+        <li>page-section</li>
+        <li>simple-cta</li>
+        <li>video-player</li>
+        <li>citation-element</li>
+        <li>license-element</li>
+        <li>simple-modal</li>
+      </ul>
+    `;
   }
 
   renderBorders() {

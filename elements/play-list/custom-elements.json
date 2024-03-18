@@ -21,12 +21,12 @@
         },
         {
           "name": "navigation",
-          "description": "`navigation` {`boolean`} - \n\nProperty: navigation\n\nDefault: true",
+          "description": "`navigation` {`boolean`} - \n\nProperty: navigation\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "pagination",
-          "description": "`pagination` {`boolean`} - \n\nProperty: pagination\n\nDefault: true",
+          "description": "`pagination` {`boolean`} - \n\nProperty: pagination\n\nDefault: false",
           "valueSet": "v"
         },
         {

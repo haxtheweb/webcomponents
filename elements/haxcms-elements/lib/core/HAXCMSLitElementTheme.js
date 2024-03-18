@@ -69,10 +69,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   }
 
   hoverIntentEnter(e) {
-    e.target.classList.add('haxcms-copyable');
+    e.target.classList.add("haxcms-copyable");
   }
   hoverIntentLeave(e) {
-    e.target.classList.remove('haxcms-copyable');
+    e.target.classList.remove("haxcms-copyable");
   }
 
   HAXCMSGlobalStyleSheetContent() {
@@ -162,7 +162,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     return [
       css`
         .haxcms-copyable {
-          background-image: url("${unsafeCSS(SimpleIconsetStore.getIcon("icons:link"))}");
+          background-image: url("${unsafeCSS(
+            SimpleIconsetStore.getIcon("icons:link"),
+          )}");
           background-position: right;
           background-repeat: no-repeat;
           background-size: 36px;
@@ -395,15 +397,15 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         h2[data-instructional-action]::before,
         h3[data-instructional-action]::before,
         h4[data-instructional-action]::before,
-        h5[data-instructional-action]::before,    
+        h5[data-instructional-action]::before,
         h6[data-instructional-action]::before {
           background-color: var(--hax-action-accent-color, #aaa);
           background-position: center;
-          content: '';
+          content: "";
           display: block;
           position: absolute;
           z-index: 1;
-          border: var(--hax-action-border , 3px solid black);
+          border: var(--hax-action-border, 3px solid black);
           border-radius: 50%;
           left: 0px;
           margin: 5px;
@@ -415,9 +417,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         h2[data-instructional-action]::after,
         h3[data-instructional-action]::after,
         h4[data-instructional-action]::after,
-        h5[data-instructional-action]::after,    
+        h5[data-instructional-action]::after,
         h6[data-instructional-action]::after {
-          content: '';
+          content: "";
           position: relative;
           z-index: 2;
           background-color: var(--hax-action-color, blue);
@@ -459,8 +461,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       });
     }
     // alter URL state
-    let headingLink = globalThis.location.origin + globalThis.location.pathname +
-    "#" + target.getAttribute("id");
+    let headingLink =
+      globalThis.location.origin +
+      globalThis.location.pathname +
+      "#" +
+      target.getAttribute("id");
     globalThis.history.pushState({}, null, headingLink);
     globalThis.dispatchEvent(new PopStateEvent("popstate"));
     copyToClipboard(headingLink, "Anchor link copied!");
