@@ -23,6 +23,7 @@ import "@lrnwebcomponents/accent-card/accent-card.js";
  */
 export const styleGuideTopics = {
   DDDelementsList: "DDDelementsList",
+  HeaderSample: "HeaderSample",
   Borders: "Borders",
   Breakpoints: "Breakpoints",
   DefaultColors: "DefaultColors",
@@ -159,8 +160,65 @@ class DDDocs extends DDD {
         simple-cta + simple-cta {
           margin-left: 0 var(--ddd-spacing-4);
         }
+
+        h2:has(+hr) {
+          font-size: var(--ddd-font-size-xl);
+        }
+
+        .bg-accent-0 {
+          background-color: var(--ddd-accent-0);
+          padding: var(--ddd-spacing-10);
+          margin: var(--ddd-spacing-10) 0;
+        }
+        .bg-accent-1 {
+          background-color: var(--ddd-accent-1);
+          padding: var(--ddd-spacing-10);
+          margin: var(--ddd-spacing-10) 0;
+        }
+        .bg-accent-2 {
+          background-color: var(--ddd-accent-2);
+          padding: var(--ddd-spacing-10);
+          margin: var(--ddd-spacing-10) 0;
+        }
+        .bg-accent-3 {
+          background-color: var(--ddd-accent-3);
+          padding: var(--ddd-spacing-10);
+          margin: var(--ddd-spacing-10) 0;
+        }
+        .bg-accent-4 {
+          background-color: var(--ddd-accent-4);
+          padding: var(--ddd-spacing-10);
+          margin: var(--ddd-spacing-10) 0;
+        }
+        .bg-accent-5 {
+          background-color: var(--ddd-accent-5);
+          padding: var(--ddd-spacing-10);
+          margin: var(--ddd-spacing-10) 0;
+        }
+        .bg-accent-6 {
+          background-color: var(--ddd-accent-6);
+          padding: var(--ddd-spacing-10);
+          margin: var(--ddd-spacing-10) 0;
+        }
       `,
     ];
+  }
+
+  renderHeaderSample(){
+    let headers = [];
+    var x = 0;
+    for (let i = 0; i < 22; i++) {
+      x = x > 6 ? 0 : x;
+      headers.push(html`
+      <div class="bg-accent-${x}">
+        <h2>Discover Penn State</h2>
+        <hr class="ddd-primary-${i} hr-horz">
+        <p>Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.</p>
+      </div>
+      `);
+      x++;
+    };
+    return headers;
   }
 
   renderDDDelementsList() {
@@ -1384,7 +1442,7 @@ class DDDocs extends DDD {
           programs of teaching, research, and service.
         </blockquote>
         <h2 class="hr-vert">Sample Text</h2>
-        <hr />
+        <hr class="hr-horz">
         <ul class="breadcrumb">
           <li><a href="#">Home</a></li>
           <li><a href="#">Departments</a></li>
