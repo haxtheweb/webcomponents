@@ -63,34 +63,51 @@ function sessionStorageSet(name, newItem) {
 /**
  * @todo need some way of defining these as far as the application bringing these in as opposed to hard coded here
  */
-const DataStyleDecoration = {
-  attribute: "data-style-decoration",
-  title: "Decoration",
-  description: "Some built in styles to highlight material",
+const DataStylePrimary = {
+  attribute: "data-primary",
+  title: "Primary color",
+  description: "Primary color to apply color, often for meaning or aesthetic",
   inputMethod: "select",
   options: {
     "": "",
-    "mark-blue": "Marker - blue",
-    "mark-brown": "Marker - gray",
-    "mark-pink": "Marker - pink",
-    "mark-red": "Marker - purple",
-    "mark-teal": "Marker - green",
-    "mark-yellow": "Marker - yellow",
+    "0": "Pugh blue",
+    "1": "Beaver blue",
+    "2": "Nittany navy",
+    "3": "Potential midnight",
+    "4": "Coaly gray",
+    "5": "Limestone gray",
+    "6": "Slate gray",
+    "7": "Creek teal",
+    "8": "Sky blue",
+    "9": "Shrine tan",
+    "10": "Roar golden",
+    "11": "Original 87 pink",
+    "12": "Discovery coral",
+    "13": "Wonder purple",
+    "14": "Artherton violet",
+    "15": "Invent orange",
+    "16": "Keystone yellow",
+    "17": "Opportunity green",
+    "18": "Future lime",
+    "19": "Forest green",
+    "20": "Landgrant brown",
+    "21": "Global Neon",
   },
 };
-const DataStyleBlockDecoration = {
-  attribute: "data-style-block-decoration",
-  title: "Block Decoration",
-  description: "Some built in styles to offset material",
+const DataStyleAccent = {
+  attribute: "data-accent",
+  title: "Accent color",
+  description: "Accent color to apply color, often for meaning or aesthetic",
   inputMethod: "select",
   options: {
     "": "",
-    "callout-blue": "Callout - blue",
-    "callout-brown": "Callout - brown",
-    "callout-pink": "Callout - pink",
-    "callout-red": "Callout - purple",
-    "callout-teal": "Callout - green",
-    "callout-yellow": "Callout - yellow",
+    "0": "Sky Max",
+    "1": "Slate Max",
+    "2": "Limestone Max",
+    "3": "Shrine Max",
+    "4": "Roar Max",
+    "5": "Creek Max",
+    "6": "White",
   },
 };
 
@@ -2527,7 +2544,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleBlockDecoration],
+        configure: [DataStyleAccent],
       },
       demoSchema: [
         {
@@ -2569,7 +2586,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             description: "Caption for the figure",
             inputMethod: "code-editor",
           },
-          DataStyleBlockDecoration,
+          DataStyleAccent,
         ],
       },
       demoSchema: [
@@ -2609,7 +2626,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          DataStyleDecoration,
+          DataStyleAccent,
         ],
         advanced: [],
         developer: [],
@@ -2658,7 +2675,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          DataStyleDecoration,
+          DataStyleAccent,
         ],
         advanced: [],
         developer: [],
@@ -2730,7 +2747,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               _parent: "Parent window - _parent",
             },
           },
-          DataStyleDecoration,
         ],
         advanced: [],
         developer: [
@@ -2800,7 +2816,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleBlockDecoration],
+        configure: [DataStyleAccent],
         advanced: [],
       },
       demoSchema: [
@@ -3070,8 +3086,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           },
           settings: {
             configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
-              ? [DataStyleDecoration, ...DataInstructionalAction]
-              : [DataStyleDecoration],
+              ? [DataStylePrimary, ...DataInstructionalAction]
+              : [DataStylePrimary],
             advanced: [],
           },
           demoSchema: [
@@ -3103,7 +3119,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [...DataInstructionalAction],
+        configure: [DataStylePrimary,...DataInstructionalAction],
         advanced: [],
       },
       demoSchema: [
