@@ -858,7 +858,9 @@ export const DDDReset = css`
     margin-right: var(--ddd-spacing-5);
   }
 
-  .dropCap-noSupport .dropCap::first-letter{
+  .dropCap-noSupport .dropCap::first-letter{ 
+    /* Fallback for browsers that don't support initial-letter */
+    /* Will not work in shadowRoots because of cascade off body class="dropCap-noSupport" */
     font-size: 168px;
     margin-bottom: var(--ddd-spacing-1);
     float: left;
