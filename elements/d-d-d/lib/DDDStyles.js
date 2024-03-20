@@ -640,6 +640,21 @@ export const DDDReset = css`
     color: var(--ddd-theme-bgContrast);
   }
 
+  [data-design-treatment="dropCap"] {
+    --initialLetter: 6;
+    min-height: calc((var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5) + 20px);
+  }
+
+  [data-design-treatment="dropCap"]::first-letter{
+    -webkit-initial-letter: var(--initialLetter);
+    text-transform: uppercase;
+    initial-letter: var(--initialLetter);
+    color: var(--ddd-theme-primary);
+    font-weight: 700;
+    margin-right: 12px;
+    padding: 0 4px 0 0;
+  }
+
   h2 > hr {
     margin-top: var(--ddd-spacing-4);
   }

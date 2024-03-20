@@ -123,6 +123,20 @@ const DataHeadingDesignTreatment = {
   },
 };
 
+const DataTextDesignTreatment = {
+  attribute: "data-design-treatment",
+  title: "Design treatment",
+  description: "Minor design treatment leveraging Primary color value",
+  inputMethod: "select",
+  options: {
+    "": "",
+    "dropCap": "Drop Cap",
+    "callout": "Call out box",
+  },
+};
+
+
+
 const DataInstructionalAction = {
   attribute: "data-instructional-action",
   title: "Type",
@@ -2547,7 +2561,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleAccent],
+        configure: [DataStylePrimary],
       },
       demoSchema: [
         {
@@ -2589,7 +2603,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             description: "Caption for the figure",
             inputMethod: "code-editor",
           },
-          DataStyleAccent,
+          DataStylePrimary,
         ],
       },
       demoSchema: [
@@ -2629,7 +2643,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          DataStyleAccent,
+          DataStylePrimary,
         ],
         advanced: [],
         developer: [],
@@ -2678,7 +2692,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          DataStyleAccent,
+          DataStylePrimary,
         ],
         advanced: [],
         developer: [],
@@ -2819,7 +2833,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleAccent],
+        configure: [DataStyleAccent, DataTextDesignTreatment],
         advanced: [],
       },
       demoSchema: [
