@@ -1,4 +1,5 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -34,15 +35,15 @@ Custom property | Description | Default
  * @demo demo/index.html
  * @demo ./demo/group.html collapse groups
  */
-class A11yCollapse extends LitElement {
+class A11yCollapse extends (DDD) {
   static get styles() {
     return [
       css`
         :host {
           display: block;
-          margin: var(--a11y-collapse-margin, 15px 0);
-          border: var(--a11y-collapse-border, 1px solid);
-          border-color: var(--a11y-collapse-border-color, inherit);
+          margin: var(--a11y-collapse-margin, var(--ddd-spacing-4) 0);
+          border: var(--a11y-collapse-border, var(--ddd-border-sm));
+          border-color: var(--a11y-collapse-border-color, var(--ddd-theme-default-coalyGray));
           transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         :host([heading-button]) #heading {
@@ -51,7 +52,7 @@ class A11yCollapse extends LitElement {
         :host(:not(:first-of-type)) {
           border-top: var(
             --a11y-collapse-border-between,
-            var(--a11y-collapse-border, 1px solid)
+            var(--a11y-collapse-border, var(--ddd-border-xs))
           );
         }
         :host([disabled]) {
@@ -67,6 +68,8 @@ class A11yCollapse extends LitElement {
           margin: 0;
           width: 100%;
           text-align: left;
+          font-size: var(--ddd-theme-body-font-size);
+          font-family:  var(--ddd-font-primary);
         }
         #heading {
           display: flex;
@@ -75,26 +78,24 @@ class A11yCollapse extends LitElement {
           padding: 0
             var(
               --a11y-collapse-padding-right,
-              var(--a11y-collapse-horizontal-padding, 16px)
+              var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             )
             0
             var(
               --a11y-collapse-padding-left,
-              var(--a11y-collapse-horizontal-padding, 16px)
+              var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             );
-          font-weight: var(--a11y-collapse-heading-font-weight, bold);
-          margin: var(--a11y-collapse-margin, unset);
-          color: var(--a11y-collapse-heading-color, unset);
+          font-weight: var(--a11y-collapse-heading-font-weight, var(--ddd-font-primary-bold));
+          margin: var(--a11y-collapse-margin);
+          color: var(--a11y-collapse-heading-color);
           background-color: var(
-            --a11y-collapse-heading-background-color,
-            unset
+            --a11y-collapse-heading-background-color
           );
         }
         :host([disabled]) #heading {
-          color: var(--a11y-collapse-disabled-heading-color, unset);
+          color: var(--a11y-collapse-disabled-heading-color);
           background-color: var(
-            --a11y-collapse-heading-disabled-background-color,
-            unset
+            --a11y-collapse-heading-disabled-background-color
           );
         }
         #text {
@@ -104,27 +105,26 @@ class A11yCollapse extends LitElement {
         #expand {
           transform: rotate(0deg);
           transition: transform 0.75s ease;
-          padding: (--a11y-collapse-icon-padding, unset);
         }
         #content {
           padding: var(
               --a11y-collapse-padding-top,
-              var(--a11y-collapse-vertical-padding, 16px)
+              var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
             )
             var(
               --a11y-collapse-padding-right,
-              var(--a11y-collapse-horizontal-padding, 16px)
+              var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             )
             var(
               --a11y-collapse-padding-bottom,
-              var(--a11y-collapse-vertical-padding, 16px)
+              var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
             )
             var(
               --a11y-collapse-padding-left,
-              var(--a11y-collapse-horizontal-padding, 16px)
+              var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             );
-          border-top: var(--a11y-collapse-border, 1px solid);
-          border-color: var(--a11y-collapse-border-color, inherit);
+          border-top: var(--a11y-collapse-border, var(--ddd-border-xs));
+          border-color: var(--a11y-collapse-border-color, var(--ddd-theme-default-coalyGray));
         }
         @media screen {
           #expand.rotated {
@@ -135,15 +135,15 @@ class A11yCollapse extends LitElement {
             padding: 0
               var(
                 --a11y-collapse-padding-right,
-                var(--a11y-collapse-horizontal-padding, 16px)
+                var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
               )
               0
               var(
                 --a11y-collapse-padding-left,
-                var(--a11y-collapse-horizontal-padding, 16px)
+                var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
               );
-            border-top: 0px solid;
-            border-color: var(--a11y-collapse-border-color, inherit);
+            border-top: none;
+            border-color: var(--a11y-collapse-border-color);
             max-height: 0;
             transition:
               visibility 0.75s ease,
@@ -160,23 +160,23 @@ class A11yCollapse extends LitElement {
           :host([expanded]) #content {
             padding: var(
                 --a11y-collapse-padding-top,
-                var(--a11y-collapse-vertical-padding, 16px)
+                var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
               )
               var(
                 --a11y-collapse-padding-right,
-                var(--a11y-collapse-horizontal-padding, 16px)
+                var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
               )
               var(
                 --a11y-collapse-padding-bottom,
-                var(--a11y-collapse-vertical-padding, 16px)
+                var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
               )
               var(
                 --a11y-collapse-padding-left,
-                var(--a11y-collapse-horizontal-padding, 16px)
+                var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
               );
-            border-top: var(--a11y-collapse-border, 1px solid);
-            border-color: var(--a11y-collapse-border-color, inherit);
-            max-height: 200000000000vh;
+            border-top: var(--a11y-collapse-border, var(--ddd-border-xs));
+            border-color: var(--a11y-collapse-border-color, var(--ddd-theme-default-coalyGray));
+            max-height: 200000000000vh; /* why is this needed? */
           }
           :host([expanded]) #content-inner {
             max-height: var(--a11y-collapse-max-height, 200000000000vh);
