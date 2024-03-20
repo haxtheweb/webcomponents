@@ -110,26 +110,29 @@ const DataStyleAccent = {
     "6": "White",
   },
 };
+const DataHeadingDesignTreatment = {
+  attribute: "data-design-treatment",
+  title: "Design treatment",
+  description: "Minor design treatment leveraging Primary color value",
+  inputMethod: "select",
+  options: {
+    "": "",
+    "vert": "Vertical line",
+    "horz": "Horizontal line",
+    "bg": "Background color",
+  },
+};
 
-const DataInstructionalAction = [
-  {
-    attribute: "data-instructional-action",
-    title: "Type",
-    description: "Indicates instructional context to users visually",
-    inputMethod: "select",
-    options: {
-      "": "-- none --",
-      ...learningComponentTypes,
-    },
+const DataInstructionalAction = {
+  attribute: "data-instructional-action",
+  title: "Type",
+  description: "Indicates instructional context to users visually",
+  inputMethod: "select",
+  options: {
+    "": "-- none --",
+    ...learningComponentTypes,
   },
-  {
-    attribute: "data-id-emphasize",
-    title: "Alternate visual treatment",
-    description:
-      "Apply a different visual treatment to the element but with same meaning",
-    inputMethod: "boolean",
-  },
-];
+};
 
 /**
  * @element hax-store
@@ -3086,7 +3089,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           },
           settings: {
             configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
-              ? [DataStylePrimary, ...DataInstructionalAction]
+              ? [DataStylePrimary, DataHeadingDesignTreatment, DataInstructionalAction]
               : [DataStylePrimary],
             advanced: [],
           },
@@ -3119,7 +3122,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStylePrimary,...DataInstructionalAction],
+        configure: [DataStylePrimary, DataInstructionalAction],
         advanced: [],
       },
       demoSchema: [
