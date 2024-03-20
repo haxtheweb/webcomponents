@@ -386,16 +386,47 @@ export const DDDVariables = css`
   .ddd-primary-20{--ddd-theme-primary:var(--ddd-primary-20);}
   .ddd-primary-21{--ddd-theme-primary:var(--ddd-primary-21);}
 
+  [data-primary="0"]{--ddd-theme-primary:var(--ddd-primary-0);}
+  [data-primary="1"]{--ddd-theme-primary:var(--ddd-primary-1);}
+  [data-primary="2"]{--ddd-theme-primary:var(--ddd-primary-2);}
+  [data-primary="3"]{--ddd-theme-primary:var(--ddd-primary-3);}
+  [data-primary="4"]{--ddd-theme-primary:var(--ddd-primary-4);}
+  [data-primary="5"]{--ddd-theme-primary:var(--ddd-primary-5);}
+  [data-primary="6"]{--ddd-theme-primary:var(--ddd-primary-6);}
+  [data-primary="7"]{--ddd-theme-primary:var(--ddd-primary-7);}
+  [data-primary="8"]{--ddd-theme-primary:var(--ddd-primary-8);}
+  [data-primary="9"]{--ddd-theme-primary:var(--ddd-primary-9);}
+  [data-primary="10"]{--ddd-theme-primary:var(--ddd-primary-10);}
+  [data-primary="11"]{--ddd-theme-primary:var(--ddd-primary-11);}
+  [data-primary="12"]{--ddd-theme-primary:var(--ddd-primary-12);}
+  [data-primary="13"]{--ddd-theme-primary:var(--ddd-primary-13);}
+  [data-primary="14"]{--ddd-theme-primary:var(--ddd-primary-14);}
+  [data-primary="15"]{--ddd-theme-primary:var(--ddd-primary-15);}
+  [data-primary="16"]{--ddd-theme-primary:var(--ddd-primary-16);}
+  [data-primary="17"]{--ddd-theme-primary:var(--ddd-primary-17);}
+  [data-primary="18"]{--ddd-theme-primary:var(--ddd-primary-18);}
+  [data-primary="19"]{--ddd-theme-primary:var(--ddd-primary-19);}
+  [data-primary="20"]{--ddd-theme-primary:var(--ddd-primary-20);}
+  [data-primary="21"]{--ddd-theme-primary:var(--ddd-primary-21);}
+
   /* subtlySalmon */
 
-  .ddd--accent0{--ddd-theme-accent:var(--ddd-accent-0);}
-  .ddd--accent1{--ddd-theme-accent:var(--ddd-accent-1);}
-  .ddd--accent2{--ddd-theme-accent:var(--ddd-accent-2);}
-  .ddd--accent3{--ddd-theme-accent:var(--ddd-accent-3);}
-  .ddd--accent4{--ddd-theme-accent:var(--ddd-accent-4);}
-  .ddd--accent5{--ddd-theme-accent:var(--ddd-accent-5);}
-  .ddd--accent6{--ddd-theme-accent:var(--ddd-accent-6);}
-  `;
+  .ddd-accent-0{--ddd-theme-accent:var(--ddd-accent-0);}
+  .ddd-accent-1{--ddd-theme-accent:var(--ddd-accent-1);}
+  .ddd-accent-2{--ddd-theme-accent:var(--ddd-accent-2);}
+  .ddd-accent-3{--ddd-theme-accent:var(--ddd-accent-3);}
+  .ddd-accent-4{--ddd-theme-accent:var(--ddd-accent-4);}
+  .ddd-accent-5{--ddd-theme-accent:var(--ddd-accent-5);}
+  .ddd-accent-6{--ddd-theme-accent:var(--ddd-accent-6);}
+
+  [data-accent="0"]{--ddd-theme-accent:var(--ddd-accent-0);}
+  [data-accent="1"]{--ddd-theme-accent:var(--ddd-accent-1);}
+  [data-accent="2"]{--ddd-theme-accent:var(--ddd-accent-2);}
+  [data-accent="3"]{--ddd-theme-accent:var(--ddd-accent-3);}
+  [data-accent="4"]{--ddd-theme-accent:var(--ddd-accent-4);}
+  [data-accent="5"]{--ddd-theme-accent:var(--ddd-accent-5);}
+  [data-accent="6"]{--ddd-theme-accent:var(--ddd-accent-6);}
+`;
 /* Tag based application */
 export const DDDReset = css`
   h1,
@@ -460,6 +491,10 @@ export const DDDReset = css`
   }
   p {
     margin: var(--ddd-spacing-6) 0;
+  }
+  p[data-accent] {
+    background-color: var(--ddd-theme-accent);
+    padding: var(--ddd-spacing-6);
   }
   /* p uniformity but ignore if either is in a slot */
   p:not([slot]) + p:not([slot]) {
@@ -563,7 +598,7 @@ export const DDDReset = css`
     list-style: square;
   }
   ul li::marker {
-    color: var(--ddd-theme-default-skyBlue);
+    color: var(--ddd-theme-primary, var(--ddd-theme-default-skyBlue));
   }
   blockquote {
     font-family: var(--ddd-font-primary);
@@ -707,23 +742,24 @@ export const DDDReset = css`
     font-weight: var(--ddd-font-primary-medium);
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     border-radius: var(--ddd-radius-xs);
-    background-color: var(--ddd-theme-default-keystoneYellow);
+    background-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
   }
   abbr {
+    background-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
     transition: all 0.2s ease 0s;
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     font-style: italic;
     text-decoration: underline;
     pointer-events: auto;
     cursor: pointer;
-    outline-color: var(--ddd-theme-default-info, #ffff33);
+    outline-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
     position: relative;
   }
   abbr:focus,
   abbr:active,
   abbr:hover {
     text-decoration: none;
-    background-color: var(--ddd-theme-default-infoLight, #ffff33);
+    background-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
     outline-offset: 2px;
     outline-style: dotted;
     outline-width: 2px;

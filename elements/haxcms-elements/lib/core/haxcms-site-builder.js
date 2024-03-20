@@ -525,6 +525,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       ).href.replace("/haxcms.es.json", "/"),
       locales: ["es"],
     });
+    this._timeStamp = Math.floor(Date.now() / 1000);
     this.disableFeatures = "";
     this.isLoggedIn = false;
     this.__disposer = [];
@@ -587,6 +588,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       const tstamp = Math.floor(Date.now() / 1000);
       if (this.isLoggedIn && !this.loggedInTime) {
         this.loggedInTime = tstamp;
+        this._timeStamp = this.loggedInTime;
         var ll = UserScaffoldInstance.readMemory("recentLogins");
         if (!ll) {
           UserScaffoldInstance.writeMemory("recentLogins", [tstamp], "long");
@@ -922,7 +924,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   _triggerUpdatedData(e) {
     // get fresh data if not published
-    if (this.editorBuilder) {
+    if (this.isLoggedIn) {
       this._timeStamp = Math.floor(Date.now() / 1000);
     } else {
       this._timeStamp = "";
