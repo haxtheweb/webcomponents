@@ -640,19 +640,61 @@ export const DDDReset = css`
     color: var(--ddd-theme-bgContrast);
   }
 
-  [data-design-treatment="dropCap"] {
-    --initialLetter: 6;
+  [data-design-treatment] {
+    transition: 0.3s ease-in-out margin, 0.3s ease-in-out background-color, 0.3s ease-in-out padding, 0.3s ease-in-out border;
+  }
+
+  [data-design-treatment^="dropCap"] {
     min-height: calc((var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5) + 20px);
   }
 
-  [data-design-treatment="dropCap"]::first-letter{
+  [data-design-treatment^="dropCap"]::first-letter{
     -webkit-initial-letter: var(--initialLetter);
     text-transform: uppercase;
     initial-letter: var(--initialLetter);
     color: var(--ddd-theme-primary);
-    font-weight: 700;
-    margin-right: 12px;
-    padding: 0 4px 0 0;
+    font-weight: var(--ddd-font-primary-bold);
+    margin-right: var(--ddd-spacing-3);
+    padding: 0 var(--ddd-spacing-1) 0 0;
+  }
+  [data-design-treatment="dropCap-xs"]{
+    --initialLetter: 2;
+  }
+
+  [data-design-treatment="dropCap-sm"]{
+    --initialLetter: 4;
+  }
+
+  [data-design-treatment="dropCap-md"] {
+    --initialLetter: 6;
+  }
+
+  [data-design-treatment="dropCap-lg"] {
+    --initialLetter: 8;
+  }
+
+  [data-design-treatment="dropCap-xl"] {
+    --initialLetter: 10;
+  }
+
+  [data-design-treatment="dropCap-xs"]::first-letter {
+    margin-right: var(--ddd-spacing-1);
+  }
+
+  [data-design-treatment="dropCap-sm"]::first-letter {
+    margin-right: var(--ddd-spacing-2);
+  }
+
+  [data-design-treatment="dropCap-md"]::first-letter {
+    margin-right: var(--ddd-spacing-3);
+  }
+
+  [data-design-treatment="dropCap-lg"]::first-letter {
+    margin-right: var(--ddd-spacing-4);
+  }
+
+  [data-design-treatment="dropCap-xl"]::first-letter {
+    margin-right: var(--ddd-spacing-5);
   }
 
   h2 > hr {
@@ -856,9 +898,9 @@ export const DDDReset = css`
     -webkit-initial-letter: var(--initialLetter);
     initial-letter: var(--initialLetter);
     color: var(--ddd-theme-primary);
-    font-weight: 700;
-    margin-right: 12px;
-    padding: 0 4px 0 0;
+    font-weight: var(--ddd-font-primary-bold);
+    margin-right: var(--ddd-spacing-3);
+    padding: 0 var(--ddd-spacing-1) 0 0;
   }
 
   .ddd-dropCap-xs::first-letter {
@@ -885,6 +927,8 @@ export const DDDReset = css`
     --initialLetter: 10;
     margin-right: var(--ddd-spacing-5);
   }
+
+  /** These are for Firefox / browsers not supporting dropcap in order to fake support */
 
   .dropCap-noSupport .dropCap::first-letter{
     font-size: 168px;

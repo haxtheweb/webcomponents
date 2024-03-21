@@ -130,7 +130,11 @@ const DataTextDesignTreatment = {
   inputMethod: "select",
   options: {
     "": "",
-    "dropCap": "Drop Cap",
+    "dropCap-xs": "Drop Cap xs",
+    "dropCap-sm": "Drop Cap sm",
+    "dropCap-md": "Drop Cap md",
+    "dropCap-lg": "Drop Cap lg",
+    "dropCap-xl": "Drop Cap xl",
     "callout": "Call out box",
   },
 };
@@ -2833,7 +2837,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleAccent, DataTextDesignTreatment],
+        configure: [DataStyleAccent, DataTextDesignTreatment, DataStylePrimary],
         advanced: [],
       },
       demoSchema: [
