@@ -119,7 +119,6 @@ export const DDDVariables = css`
     --ddd-primary-19: var(--ddd-theme-default-forestGreen);
     --ddd-primary-20: var(--ddd-theme-default-landgrantBrown);
     --ddd-primary-21: var(--ddd-theme-default-globalNeon);
-    --ddd-theme-primary: var(--ddd-primary-0);
 
     /* accent colors */
 
@@ -130,7 +129,6 @@ export const DDDVariables = css`
     --ddd-accent-4: var(--ddd-theme-default-roarMaxlight);
     --ddd-accent-5: var(--ddd-theme-default-creekMaxLight);
     --ddd-accent-6: var(--ddd-theme-default-white);
-    --ddd-theme-accent: var(--ddd-accent-0);
 
     /*fonts*/
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
@@ -387,7 +385,7 @@ export const DDDVariables = css`
   .ddd-primary-21{--ddd-theme-primary:var(--ddd-primary-21);}
 
   [data-primary="0"]{--ddd-theme-primary:var(--ddd-primary-0);}
-  [data-primary="1"]{--ddd-theme-primary:var(--ddd-primary-1);}
+  [data-primary="1"]{--ddd-theme-primary:var(--ddd-primary-1);--ddd-theme-bgContrast: white;}
   [data-primary="2"]{--ddd-theme-primary:var(--ddd-primary-2);}
   [data-primary="3"]{--ddd-theme-primary:var(--ddd-primary-3);}
   [data-primary="4"]{--ddd-theme-primary:var(--ddd-primary-4);}
@@ -633,6 +631,82 @@ export const DDDReset = css`
     padding-top: var(--ddd-spacing-2);
   }
 
+  .h-invert {
+    background-color: var(--ddd-theme-primary);
+    color: var(--ddd-theme-bgContrast);
+  }
+
+  [data-design-treatment="vert"] {
+    border-bottom: none;
+    border-left: 3px solid var(--ddd-theme-primary, var(--ddd-primary-0));
+    padding-left: var(--ddd-spacing-3);
+  }
+  [data-design-treatment="bg"] {
+    background-color: var(--ddd-theme-primary, var(--ddd-primary-0));
+    color: var(--ddd-theme-bgContrast);
+  }
+
+  [data-design-treatment] {
+    transition: 0.3s ease-in-out margin, 0.3s ease-in-out background-color, 0.3s ease-in-out padding, 0.3s ease-in-out border;
+  }
+
+  [data-design-treatment^="dropCap"] {
+    min-height: calc((var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5) + 20px);
+  }
+
+  [data-design-treatment^="dropCap"]::first-letter{
+    -webkit-initial-letter: var(--initialLetter);
+    text-transform: uppercase;
+    initial-letter: var(--initialLetter);
+    color: var(--ddd-theme-primary);
+    font-weight: var(--ddd-font-primary-bold);
+    margin-right: var(--ddd-spacing-3);
+    padding: 0 var(--ddd-spacing-1) 0 0;
+  }
+  [data-design-treatment="dropCap-xs"]{
+    --initialLetter: 2;
+  }
+
+  [data-design-treatment="dropCap-sm"]{
+    --initialLetter: 4;
+  }
+
+  [data-design-treatment="dropCap-md"] {
+    --initialLetter: 6;
+  }
+
+  [data-design-treatment="dropCap-lg"] {
+    --initialLetter: 8;
+  }
+
+  [data-design-treatment="dropCap-xl"] {
+    --initialLetter: 10;
+  }
+
+  [data-design-treatment="dropCap-xs"]::first-letter {
+    margin-right: var(--ddd-spacing-1);
+  }
+
+  [data-design-treatment="dropCap-sm"]::first-letter {
+    margin-right: var(--ddd-spacing-2);
+  }
+
+  [data-design-treatment="dropCap-md"]::first-letter {
+    margin-right: var(--ddd-spacing-3);
+  }
+
+  [data-design-treatment="dropCap-lg"]::first-letter {
+    margin-right: var(--ddd-spacing-4);
+  }
+
+  [data-design-treatment="dropCap-xl"]::first-letter {
+    margin-right: var(--ddd-spacing-5);
+  }
+
+  h2 > hr {
+    margin-top: var(--ddd-spacing-4);
+  }
+
   .ddd-theme-header-border-thickness-0{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-0);}
   .ddd-theme-header-border-thickness-xs{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-xs);}
   .ddd-theme-header-border-thickness-sm{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-sm);}
@@ -831,9 +905,9 @@ export const DDDReset = css`
     -webkit-initial-letter: var(--initialLetter);
     initial-letter: var(--initialLetter);
     color: var(--ddd-theme-primary);
-    font-weight: 700;
-    margin-right: 12px;
-    padding: 0 4px 0 0;
+    font-weight: var(--ddd-font-primary-bold);
+    margin-right: var(--ddd-spacing-3);
+    padding: 0 var(--ddd-spacing-1) 0 0;
   }
 
   .ddd-dropCap-xs::first-letter {
@@ -861,9 +935,10 @@ export const DDDReset = css`
     margin-right: var(--ddd-spacing-5);
   }
 
-  .dropCap-noSupport .dropCap::first-letter{ 
-    /* Fallback for browsers that don't support initial-letter */
-    /* Will not work in shadowRoots because of cascade off body class="dropCap-noSupport" */
+
+  /** These are for Firefox / browsers not supporting dropcap in order to fake support */
+
+  .dropCap-noSupport .dropCap::first-letter{
     font-size: 168px;
     margin-bottom: var(--ddd-spacing-1);
     float: left;

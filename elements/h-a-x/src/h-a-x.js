@@ -308,10 +308,6 @@ class HAX extends HTMLElement {
           position: absolute;
           left: 0px;
         }
-    [data-instructional-action][data-id-emphasize] {
-      background-color: var(--hax-action-color) !important;
-      color: white;
-    }
 
     :host,h-a-x {
       display: block;

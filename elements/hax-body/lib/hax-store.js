@@ -110,26 +110,47 @@ const DataStyleAccent = {
     "6": "White",
   },
 };
+const DataHeadingDesignTreatment = {
+  attribute: "data-design-treatment",
+  title: "Design treatment",
+  description: "Minor design treatment leveraging Primary color value",
+  inputMethod: "select",
+  options: {
+    "": "",
+    "vert": "Vertical line",
+    "horz": "Horizontal line",
+    "bg": "Background color",
+  },
+};
 
-const DataInstructionalAction = [
-  {
-    attribute: "data-instructional-action",
-    title: "Type",
-    description: "Indicates instructional context to users visually",
-    inputMethod: "select",
-    options: {
-      "": "-- none --",
-      ...learningComponentTypes,
-    },
+const DataTextDesignTreatment = {
+  attribute: "data-design-treatment",
+  title: "Design treatment",
+  description: "Minor design treatment leveraging Primary color value",
+  inputMethod: "select",
+  options: {
+    "": "",
+    "dropCap-xs": "Drop Cap xs",
+    "dropCap-sm": "Drop Cap sm",
+    "dropCap-md": "Drop Cap md",
+    "dropCap-lg": "Drop Cap lg",
+    "dropCap-xl": "Drop Cap xl",
+    "callout": "Call out box",
   },
-  {
-    attribute: "data-id-emphasize",
-    title: "Alternate visual treatment",
-    description:
-      "Apply a different visual treatment to the element but with same meaning",
-    inputMethod: "boolean",
+};
+
+
+
+const DataInstructionalAction = {
+  attribute: "data-instructional-action",
+  title: "Type",
+  description: "Indicates instructional context to users visually",
+  inputMethod: "select",
+  options: {
+    "": "-- none --",
+    ...learningComponentTypes,
   },
-];
+};
 
 /**
  * @element hax-store
@@ -2544,7 +2565,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleAccent],
+        configure: [DataStylePrimary],
       },
       demoSchema: [
         {
@@ -2586,7 +2607,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             description: "Caption for the figure",
             inputMethod: "code-editor",
           },
-          DataStyleAccent,
+          DataStylePrimary,
         ],
       },
       demoSchema: [
@@ -2626,7 +2647,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          DataStyleAccent,
+          DataStylePrimary,
         ],
         advanced: [],
         developer: [],
@@ -2675,7 +2696,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          DataStyleAccent,
+          DataStylePrimary,
         ],
         advanced: [],
         developer: [],
@@ -2816,7 +2837,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleAccent],
+        configure: [DataStyleAccent, DataTextDesignTreatment, DataStylePrimary],
         advanced: [],
       },
       demoSchema: [
@@ -3086,7 +3107,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           },
           settings: {
             configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
-              ? [DataStylePrimary, ...DataInstructionalAction]
+              ? [DataStylePrimary, DataHeadingDesignTreatment, DataInstructionalAction]
               : [DataStylePrimary],
             advanced: [],
           },
@@ -3119,7 +3140,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStylePrimary,...DataInstructionalAction],
+        configure: [DataStylePrimary, DataInstructionalAction],
         advanced: [],
       },
       demoSchema: [

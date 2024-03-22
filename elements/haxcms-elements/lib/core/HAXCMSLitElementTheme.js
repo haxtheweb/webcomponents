@@ -432,10 +432,6 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           position: absolute;
           left: 0px;
         }
-        [data-instructional-action][data-id-emphasize] {
-          background-color: var(--hax-action-color) !important;
-          color: white;
-        }
       `,
       styles,
       ...instructionalStyles,
