@@ -653,10 +653,17 @@ export const DDDReset = css`
   [data-design-treatment="bg"] {
     background-color: var(--ddd-theme-primary, var(--ddd-primary-0));
     color: var(--ddd-theme-bgContrast);
+    padding: var(--ddd-spacing-3);
+  }
+
+  [data-instructional-action][data-design-treatment="bg"]{
+    padding: var(--ddd-spacing-2);
   }
 
   [data-instructional-action][data-design-treatment="bg"]::before {
     background-color: var(--ddd-theme-bgContrast);
+    color: var(--ddd-theme-primary, white);
+    margin-right: var(--ddd-spacing-3);
     margin-left: var(--ddd-spacing-1);
   }
 
