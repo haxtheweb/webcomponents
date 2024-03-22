@@ -1448,8 +1448,8 @@ class DDDocs extends DDD {
           world and supports individuals and communities through integrated
           programs of teaching, research, and service.
         </blockquote>
+        <h2 class="hr-horz">Sample Text</h2>
         <h2 class="hr-vert">Sample Text</h2>
-        <hr class="hr-horz">
         <ul class="breadcrumb">
           <li><a href="#">Home</a></li>
           <li><a href="#">Departments</a></li>

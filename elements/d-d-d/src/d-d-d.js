@@ -33,7 +33,7 @@ export function loadDDDFonts() {
 export function dddCSSFeatureDetection() {
   // check for css feature support
   console.log("Checking for CSS feature support");
-  if(!CSS.supports('initial-letter')){
+  if(!CSS.supports('initial-letter', '1')){
     console.log("CSS feature: initial-letter not supported");
     document.body.classList.add("dropCap-noSupport");
     console.log("Adding dropCap-noSupport class");
@@ -97,7 +97,7 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
       adoptableDDD,
     ];
     loadDDDFonts();
-    globalThis.document.addEventListener("DOMContentLoaded", dddCSSFeatureDetection);
+    globalThis.document.onload =  dddCSSFeatureDetection();
     globalThis.DDDSharedStyles.instance = adoptableDDD;
   }
   return globalThis.DDDSharedStyles.instance;

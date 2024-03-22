@@ -619,12 +619,18 @@ export const DDDReset = css`
   }
   .hr-vert {
     border-bottom: none;
-    border-left: 3px solid var(--ddd-theme-primary);
+    border-left: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary);
     padding-left: var(--ddd-spacing-3);
   }
-  .hr-horz {
+  .hr-horz::after {
+    content: "";
     width: var(--ddd-theme-header-border-treatment);
+    border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary);
+    height: 0;
+    display: block;
+    padding-top: var(--ddd-spacing-2);
   }
+
   .h-invert {
     background-color: var(--ddd-theme-primary);
     color: var(--ddd-theme-bgContrast);
@@ -717,6 +723,7 @@ export const DDDReset = css`
   h2 > hr {
     margin-top: var(--ddd-spacing-4);
   }
+
   .ddd-theme-header-border-thickness-0{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-0);}
   .ddd-theme-header-border-thickness-xs{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-xs);}
   .ddd-theme-header-border-thickness-sm{--ddd-theme-header-border-thickness:var(--ddd-theme-header-border-thickness-sm);}
@@ -944,6 +951,7 @@ export const DDDReset = css`
     --initialLetter: 10;
     margin-right: var(--ddd-spacing-5);
   }
+
 
   /** These are for Firefox / browsers not supporting dropcap in order to fake support */
 
