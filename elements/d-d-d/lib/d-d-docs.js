@@ -172,10 +172,10 @@ class DDDocs extends DDD {
     let headers = [];
     for (let i = 0; i < 22; i++) {
       headers.push(html` 
-        <details  style="max-width: 100%; margin: 0 64px;"><summary class="ddd-primary-${i}" style="color: var(--ddd-theme-primary);">Header Sample ${i}</summary>
+        <details  style="max-width: 100%; margin: 0 64px;"><summary data-primary="${i}" style="color: var(--ddd-theme-primary);">Header Sample ${i}</summary>
         ${Array(6).fill().map((_, y) => html`
-          <div class="ddd-primary-${i} my-16" data-accent style="--ddd-theme-accent: var(--ddd-accent-${y}); border: var(--ddd-border-sm); border-color: var(--ddd-theme-primary);">
-            <h2 class="hr-horz">Discover Penn State</h2>
+          <div class="my-16" data-accent data-primary="${i}" style="--ddd-theme-accent: var(--ddd-accent-${y}); border: var(--ddd-border-sm); border-color: var(--ddd-theme-primary);">
+            <h2 data-primary="${i}" data-design-treatment="horz">Discover Penn State</h2>
             <p>ddd-primary-${i}</p>
             <p>ddd-accent-${y}</p>
           </div>
