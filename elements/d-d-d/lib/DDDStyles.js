@@ -625,14 +625,14 @@ export const DDDReset = css`
 
   [data-design-treatment="vert"] {
     border-bottom: none;
-    border-left: 3px solid var(--ddd-theme-primary, var(--ddd-primary-0));
+    border-left: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary, var(--ddd-primary-0));
     padding-left: var(--ddd-spacing-3);
   }
 
   [data-design-treatment="horz"]::after {
     content: "";
     width: var(--ddd-theme-header-border-treatment);
-    border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary);
+    border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary, var(--ddd-primary-0));
     height: 0;
     display: block;
     padding-top: var(--ddd-spacing-2);
@@ -641,7 +641,7 @@ export const DDDReset = css`
   [data-instructional-action][data-design-treatment="horz"]::after{
     content: "";
     width: var(--ddd-theme-header-border-treatment);
-    border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary);
+    border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary, var(--ddd-primary-0));
     height: 0;
     display: block;
     position: relative;
