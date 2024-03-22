@@ -70,28 +70,28 @@ const DataStylePrimary = {
   inputMethod: "select",
   options: {
     "": "",
-    "0": "Pugh blue",
-    "1": "Beaver blue",
-    "2": "Nittany navy",
-    "3": "Potential midnight",
-    "4": "Coaly gray",
-    "5": "Limestone gray",
-    "6": "Slate gray",
-    "7": "Creek teal",
-    "8": "Sky blue",
-    "9": "Shrine tan",
-    "10": "Roar golden",
-    "11": "Original 87 pink",
-    "12": "Discovery coral",
-    "13": "Wonder purple",
-    "14": "Artherton violet",
-    "15": "Invent orange",
-    "16": "Keystone yellow",
-    "17": "Opportunity green",
-    "18": "Future lime",
-    "19": "Forest green",
-    "20": "Landgrant brown",
-    "21": "Global Neon",
+    0: "Pugh blue",
+    1: "Beaver blue",
+    2: "Nittany navy",
+    3: "Potential midnight",
+    4: "Coaly gray",
+    5: "Limestone gray",
+    6: "Slate gray",
+    7: "Creek teal",
+    8: "Sky blue",
+    9: "Shrine tan",
+    10: "Roar golden",
+    11: "Original 87 pink",
+    12: "Discovery coral",
+    13: "Wonder purple",
+    14: "Artherton violet",
+    15: "Invent orange",
+    16: "Keystone yellow",
+    17: "Opportunity green",
+    18: "Future lime",
+    19: "Forest green",
+    20: "Landgrant brown",
+    21: "Global Neon",
   },
 };
 const DataStyleAccent = {
@@ -101,13 +101,13 @@ const DataStyleAccent = {
   inputMethod: "select",
   options: {
     "": "",
-    "0": "Sky Max",
-    "1": "Slate Max",
-    "2": "Limestone Max",
-    "3": "Shrine Max",
-    "4": "Roar Max",
-    "5": "Creek Max",
-    "6": "White",
+    0: "Sky Max",
+    1: "Slate Max",
+    2: "Limestone Max",
+    3: "Shrine Max",
+    4: "Roar Max",
+    5: "Creek Max",
+    6: "White",
   },
 };
 const DataHeadingDesignTreatment = {
@@ -117,9 +117,9 @@ const DataHeadingDesignTreatment = {
   inputMethod: "select",
   options: {
     "": "",
-    "vert": "Vertical line",
-    "horz": "Horizontal line",
-    "bg": "Background color",
+    vert: "Vertical line",
+    horz: "Horizontal line",
+    bg: "Background color",
   },
 };
 
@@ -135,11 +135,9 @@ const DataTextDesignTreatment = {
     "dropCap-md": "Drop Cap md",
     "dropCap-lg": "Drop Cap lg",
     "dropCap-xl": "Drop Cap xl",
-    "callout": "Call out box",
+    callout: "Call out box",
   },
 };
-
-
 
 const DataInstructionalAction = {
   attribute: "data-instructional-action",
@@ -3107,7 +3105,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           },
           settings: {
             configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
-              ? [DataStylePrimary, DataHeadingDesignTreatment, DataInstructionalAction]
+              ? [
+                  DataStylePrimary,
+                  DataHeadingDesignTreatment,
+                  DataInstructionalAction,
+                ]
               : [DataStylePrimary],
             advanced: [],
           },

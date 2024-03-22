@@ -697,6 +697,23 @@ export const DDDReset = css`
     margin-right: var(--ddd-spacing-5);
   }
 
+
+  [data-instructional-action]::before {
+    content: '';
+    position: relative;
+    z-index: 2;
+    background-color: var(--ddd-theme-primary, var(--hax-action-color, blue));
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    margin: 8px 12px 0 0;
+    position: relative;
+    float: left;
+    height: 40px;
+    width: 40px;
+  }
+
   h2 > hr {
     margin-top: var(--ddd-spacing-4);
   }
