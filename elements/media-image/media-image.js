@@ -108,6 +108,7 @@ class MediaImage extends DDD {
   }
   constructor() {
     super();
+    this.link = null;
     this.disableZoom = false;
     this.modalTitle = "";
     this.source = "";
@@ -124,6 +125,9 @@ class MediaImage extends DDD {
     this.cardColor = "var(--ddd-theme-default-white)";
   }
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "cardColor") {
         this.style.setProperty("--card-background-color", this.cardColor);
@@ -131,10 +135,17 @@ class MediaImage extends DDD {
     });
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "caption") {
         this._computeHasCaption(this[propName]);
       }
+      // if we have a link, we disable zoom automatically
+      if (propName === "link" &&  this.link) {
+        this.disableZoom = true;
+      }      
       if (["figureLabelTitle", "figureLabelDescription"].includes(propName)) {
         this.__figureLabel = this._hasFigureLabel(
           this.figureLabelTitle,
@@ -161,7 +172,7 @@ class MediaImage extends DDD {
             ></figure-label>
           `
         : ``}
-      <media-image-image
+      ${this.link ? html`<a href="${this.link}"><media-image-image
         ?round="${this.round}"
         resource="${this.schemaResourceID}-image"
         source="${this.source}"
@@ -169,7 +180,15 @@ class MediaImage extends DDD {
         alt="${this.alt}"
         tabindex="${!this.disableZoom ? "0" : "-1"}"
         @click="${this._handleClick}"
-      ></media-image-image>
+      ></media-image-image></a>` : html`<media-image-image
+        ?round="${this.round}"
+        resource="${this.schemaResourceID}-image"
+        source="${this.source}"
+        modal-title="${this.modalTitle}"
+        alt="${this.alt}"
+        tabindex="${!this.disableZoom ? "0" : "-1"}"
+        @click="${this._handleClick}"
+      ></media-image-image>`}
       <media-image-citation>
         <slot class="citation" name="citation">${this.citation}</slot>
       </media-image-citation>
@@ -180,7 +199,6 @@ class MediaImage extends DDD {
             </media-image-caption>
           `
         : ``}
-      ${this.link ? html`<a href="${this.link}"></a>` : ``}
     `;
   }
   haxHooks() {
@@ -194,6 +212,11 @@ class MediaImage extends DDD {
       event.preventDefault();
       event.stopPropagation();
       event.stopImmediatePropagation();
+    }
+    // not editing, and we have a link, and disabled zoom
+    // click the link
+    if (!this._haxState && this.link && this.disableZoom) {
+      this.shadowRoot.querySelector('a').click();
     }
   }
   haxEditModeChanged(value) {
@@ -213,6 +236,9 @@ class MediaImage extends DDD {
       cardColor: {
         type: String,
         reflect: true,
+      },
+      link: {
+        type: String,
       },
       __figureLabel: {
         type: Boolean,
@@ -390,6 +416,15 @@ class MediaImage extends DDD {
             required: true,
           },
           {
+            property: "link",
+            title: "Link",
+            description: "Link the image to a URL",
+            inputMethod: "haxupload",
+            noVoiceRecord: true,
+            noCamera: true,
+            required: false,
+          },
+          {
             property: "card",
             title: "Card",
             description:
@@ -497,6 +532,9 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
           overflow: hidden;
           height: fit-content;
         }
+        :host([round]) .image-wrap {
+          overflow: unset;
+        }
         .image-wrap img {
           width: 100%;
         }
@@ -504,6 +542,17 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
           border-radius: var(--ddd-radius-circle);
           height: fit-content;
           overflow: show;
+          border: var(--ddd-border-sm);
+          border-color: var(
+            --ddd-component-figure-label-title,
+            var(
+              --ddd-theme-accent-color,
+              var(
+                --simple-colors-default-theme-accent-2,
+                var(--ddd-theme-default-limestoneLight)
+              )
+            )
+          );
         }
       `,
     ];

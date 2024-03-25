@@ -128,7 +128,9 @@ class SimpleModal extends LitElement {
           min-width: unset;
           text-transform: none;
           background-color: transparent;
-          color: var(--ddd-theme-default-original87Pink);
+          color: var(--ddd-theme-default-nittanyNavy);
+          --simple-icon-width: var(--ddd-icon-sm);
+          --simple-icon-height: var(--ddd-icon-sm);
         }
 
         #close:focus {
