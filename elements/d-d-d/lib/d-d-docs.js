@@ -180,39 +180,25 @@ class DDDocs extends DDD {
             <p>ddd-accent-${y}</p>
           </div>
         `)}
-        </details>
-      `);
-    }
-
-        headers.push(html`
-          <details  style="max-width: 100%; margin: 0 32px;"><summary>DropCap Samples</summary>
-          ${Array(6).fill().map((_, z) => html`
-            <div class="ddd-accent-${z} my-16" data-accent>
-              <p class="ddd-primary-${z + 11}" data-design-treatment="dropCap">Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.</p>
-            </div>
-          `)}
-        `);
-
-        headers.push(html`
-        <details  style="max-width: 100%; margin: 0 32px;"><summary>data-instructional-action samples</summary>
+        <p data-primary="${i}" data-design-treatment="dropCap" data-accent="2"> Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.</p>
         ${Array(6).fill().map((_, n) => {
           if (n === 0) {
-            return html`<h2 data-primary="1" data-design-treatment="vert">Sample Header</h2>`;
+            return html`<h2 data-primary="${i}" data-design-treatment="vert">Sample Header</h2>`;
           } else if (n === 1) {
-            return html`<h2 data-primary="1" data-design-treatment="horz">Sample Header</h2>`;
+            return html`<h2 data-primary="${i}" data-design-treatment="horz">Sample Header</h2>`;
           } else if (n === 2) {
-            return html`<h2 data-primary="1" data-design-treatment="bg">Sample Header</h2>`;
+            return html`<h2 data-primary="${i}" data-design-treatment="bg">Sample Header</h2>`;
           } else if (n === 3) {
-            return html`<h2 data-primary="1" data-instructional-action>Sample Header</h2>`;
+            return html`<h2 data-primary="${i}" data-instructional-action>Sample Header</h2>`;
           } else if (n === 4) {
-            return html`<h2 data-primary="1" data-instructional-action data-design-treatment="horz">Sample Header</h2>`;
+            return html`<h2 data-primary="${i}" data-instructional-action data-design-treatment="horz">Sample Header</h2>`;
           } else if (n === 5) {
-            return html`<h2 data-primary="1" data-instructional-action data-design-treatment="bg">Sample Header</h2>`;
+            return html`<h2 data-primary="${i}" data-instructional-action data-design-treatment="bg">Sample Header</h2>`;
           }
         })}
-        `);
-
-
+        </details>
+      `);
+    };
     return headers;
   }
 
