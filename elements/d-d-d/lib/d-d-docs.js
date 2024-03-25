@@ -161,44 +161,8 @@ class DDDocs extends DDD {
           margin-left: 0 var(--ddd-spacing-4);
         }
 
-        h2:has(+hr) {
-          font-size: var(--ddd-font-size-xl);
-        }
-
-        .bg-accent-0 {
-          background-color: var(--ddd-accent-0);
-          padding: var(--ddd-spacing-10);
-          margin: var(--ddd-spacing-10) 0;
-        }
-        .bg-accent-1 {
-          background-color: var(--ddd-accent-1);
-          padding: var(--ddd-spacing-10);
-          margin: var(--ddd-spacing-10) 0;
-        }
-        .bg-accent-2 {
-          background-color: var(--ddd-accent-2);
-          padding: var(--ddd-spacing-10);
-          margin: var(--ddd-spacing-10) 0;
-        }
-        .bg-accent-3 {
-          background-color: var(--ddd-accent-3);
-          padding: var(--ddd-spacing-10);
-          margin: var(--ddd-spacing-10) 0;
-        }
-        .bg-accent-4 {
-          background-color: var(--ddd-accent-4);
-          padding: var(--ddd-spacing-10);
-          margin: var(--ddd-spacing-10) 0;
-        }
-        .bg-accent-5 {
-          background-color: var(--ddd-accent-5);
-          padding: var(--ddd-spacing-10);
-          margin: var(--ddd-spacing-10) 0;
-        }
-        .bg-accent-6 {
-          background-color: var(--ddd-accent-6);
-          padding: var(--ddd-spacing-10);
-          margin: var(--ddd-spacing-10) 0;
+        .my-16{
+          margin: var(--ddd-spacing-4) 0;
         }
       `,
     ];
@@ -206,25 +170,49 @@ class DDDocs extends DDD {
 
   renderHeaderSample(){
     let headers = [];
-    var x = 0;
     for (let i = 0; i < 22; i++) {
-      x = x > 6 ? 0 : x;
-      headers.push(html`
-      <div class="bg-accent-${x}">
-        <h2>Discover Penn State</h2>
-        <hr class="ddd-primary-${i} hr-horz">
-        <p>ddd-primary-${i}</p>
-      </div>
-      `);
-      x++;
-    };
-    for( let z = 0; z < 5; z++){
-      headers.push(html`
-      <div class="bg-accent-${z}">
-        <p class="ddd-primary-${z+11} dropCap">Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.</p>
-      </div>
+      headers.push(html` 
+        <details  style="max-width: 100%; margin: 0 64px;"><summary data-primary="${i}" style="color: var(--ddd-theme-primary);">Header Sample ${i}</summary>
+        ${Array(6).fill().map((_, y) => html`
+          <div class="my-16" data-accent data-primary="${i}" style="--ddd-theme-accent: var(--ddd-accent-${y}); border: var(--ddd-border-sm); border-color: var(--ddd-theme-primary);">
+            <h2 data-primary="${i}" data-design-treatment="horz">Discover Penn State</h2>
+            <p>ddd-primary-${i}</p>
+            <p>ddd-accent-${y}</p>
+          </div>
+        `)}
+        </details>
       `);
     }
+
+        headers.push(html`
+          <details  style="max-width: 100%; margin: 0 32px;"><summary>DropCap Samples</summary>
+          ${Array(6).fill().map((_, z) => html`
+            <div class="ddd-accent-${z} my-16" data-accent>
+              <p class="ddd-primary-${z + 11}" data-design-treatment="dropCap">Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.</p>
+            </div>
+          `)}
+        `);
+
+        headers.push(html`
+        <details  style="max-width: 100%; margin: 0 32px;"><summary>data-instructional-action samples</summary>
+        ${Array(6).fill().map((_, n) => {
+          if (n === 0) {
+            return html`<h2 data-primary="1" data-design-treatment="vert">Sample Header</h2>`;
+          } else if (n === 1) {
+            return html`<h2 data-primary="1" data-design-treatment="horz">Sample Header</h2>`;
+          } else if (n === 2) {
+            return html`<h2 data-primary="1" data-design-treatment="bg">Sample Header</h2>`;
+          } else if (n === 3) {
+            return html`<h2 data-primary="1" data-instructional-action>Sample Header</h2>`;
+          } else if (n === 4) {
+            return html`<h2 data-primary="1" data-instructional-action data-design-treatment="horz">Sample Header</h2>`;
+          } else if (n === 5) {
+            return html`<h2 data-primary="1" data-instructional-action data-design-treatment="bg">Sample Header</h2>`;
+          }
+        })}
+        `);
+
+
     return headers;
   }
 

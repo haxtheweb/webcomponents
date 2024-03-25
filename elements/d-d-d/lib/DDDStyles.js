@@ -490,7 +490,7 @@ export const DDDReset = css`
   p {
     margin: var(--ddd-spacing-6) 0;
   }
-  p[data-accent] {
+  p[data-accent], div[data-accent] {
     background-color: var(--ddd-theme-accent);
     padding: var(--ddd-spacing-6);
   }
@@ -617,19 +617,6 @@ export const DDDReset = css`
     margin: 0;
     padding: 0;
   }
-  .hr-vert {
-    border-bottom: none;
-    border-left: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary);
-    padding-left: var(--ddd-spacing-3);
-  }
-  .hr-horz::after {
-    content: "";
-    width: var(--ddd-theme-header-border-treatment);
-    border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary);
-    height: 0;
-    display: block;
-    padding-top: var(--ddd-spacing-2);
-  }
 
   .h-invert {
     background-color: var(--ddd-theme-primary);
@@ -638,19 +625,78 @@ export const DDDReset = css`
 
   [data-design-treatment="vert"] {
     border-bottom: none;
-    border-left: 3px solid var(--ddd-theme-primary, var(--ddd-primary-0));
+    border-left: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary, var(--ddd-primary-0));
     padding-left: var(--ddd-spacing-3);
   }
+
+  [data-design-treatment="horz"]::after {
+    content: "";
+    width: var(--ddd-theme-header-border-treatment);
+    border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary, var(--ddd-primary-0));
+    height: 0;
+    display: block;
+    padding-top: var(--ddd-spacing-2);
+  }
+
+  [data-instructional-action][data-design-treatment="horz"]::after{
+    content: "";
+    width: var(--ddd-theme-header-border-treatment);
+    border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary, var(--ddd-primary-0));
+    height: 0;
+    display: block;
+    position: relative;
+    bottom: 12px;
+    left: 32px;
+    margin-left: var(--ddd-spacing-3);
+  }
+
   [data-design-treatment="bg"] {
     background-color: var(--ddd-theme-primary, var(--ddd-primary-0));
     color: var(--ddd-theme-bgContrast);
+    padding: var(--ddd-spacing-3);
+  }
+
+  [data-instructional-action][data-design-treatment="bg"]{
+    padding: var(--ddd-spacing-2);
+  }
+
+  [data-instructional-action][data-design-treatment="bg"]::before {
+    background-color: var(--ddd-theme-bgContrast);
+    color: var(--ddd-theme-primary, white);
+    margin-right: var(--ddd-spacing-3);
+    margin-left: var(--ddd-spacing-1);
+  }
+
+  [data-instructional-action]::before {
+    content: '';
+    -webkit-mask-image: url(https://hax.psu.edu/cdn/1.x.x/build/es6/node_modules/@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js/../svgs/courseicons/chem-connection.svg);
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0 0;
+    margin: 8px 4px 0 0;
+    z-index: 2;
+    background-color: var(--ddd-theme-primary, var(--hax-action-color, blue));
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    height: var(--ddd-icon-sm);
+    width: var(--ddd-icon-sm);
   }
 
   [data-design-treatment] {
     transition: 0.3s ease-in-out margin, 0.3s ease-in-out background-color, 0.3s ease-in-out padding, 0.3s ease-in-out border;
   }
 
+  [data-accent] [data-design-treatment^="dropCap"]{
+    min-height: calc((var(--initialLetter) * var(--ddd-theme-body-font-size) + 20px));
+  }
+
   [data-design-treatment^="dropCap"] {
+    --initialLetter: 6;
     min-height: calc((var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5) + 20px);
   }
 
@@ -703,21 +749,42 @@ export const DDDReset = css`
     margin-right: var(--ddd-spacing-5);
   }
 
+  /** These are for Firefox / browsers not supporting dropcap in order to fake support */
 
-  [data-instructional-action]::before {
-    content: '';
-    position: relative;
-    z-index: 2;
-    background-color: var(--ddd-theme-primary, var(--hax-action-color, blue));
-    mask-repeat: no-repeat;
-    mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: contain;
-    margin: 8px 12px 0 0;
-    position: relative;
+  .dropCap-noSupport [data-design-treatment^="dropCap"]::first-letter{
+    font-size: 180px;
     float: left;
-    height: 40px;
-    width: 40px;
+    padding:  8px 0px 0px 0px;
+  }
+
+  .dropCap-noSupport [data-design-treatment^="dropCap-xs"]::first-letter{
+    font-size: 56px;
+    float: left;
+    padding: 4px 0px 0px 0px;
+  }
+
+  .dropCap-noSupport [data-design-treatment^="dropCap-sm"]::first-letter{
+    font-size: 112px;
+    float: left;
+    padding: 4px 0px 0px 0px;
+  }
+
+  .dropCap-noSupport [data-design-treatment^="dropCap-md"]::first-letter{
+    font-size: 168px;
+    float: left;
+    padding: 8px 0px 0px 0px;
+  }
+
+  .dropCap-noSupport [data-design-treatment^="dropCap-lg"]::first-letter{
+    font-size: 230px;
+    float: left;
+    padding:  12px 0px 0px 0px;
+  }
+  
+  .dropCap-noSupport [data-design-treatment^="dropCap-xl"]::first-letter{
+    font-size: 300px;
+    float: left;
+    padding:  12px 0px 0px 0px;
   }
 
   h2 > hr {
@@ -764,7 +831,6 @@ export const DDDReset = css`
     line-height: 1;
   }
   details {
-    transition: max-height 4s ease-out;
     overflow: hidden;
     display: flex;
     border-bottom: 2px solid var(--ddd-theme-default-slateMaxLight);
@@ -773,9 +839,6 @@ export const DDDReset = css`
     padding: 0;
     color: black;
     margin: var(--ddd-spacing-6) 0;
-  }
-  details[open] {
-    max-height: 10000px; /* Adjust this value to fit your content */
   }
   details[open] > summary {
     color: var(--ddd-theme-default-link);
@@ -915,70 +978,6 @@ export const DDDReset = css`
     font-family: var(--ddd-font-primary);
     letter-spacing: normal;
     text-align: justify;
-  }
-
-  .dropCap::first-letter{
-    --initialLetter: 6;
-    -webkit-initial-letter: var(--initialLetter);
-    initial-letter: var(--initialLetter);
-    color: var(--ddd-theme-primary);
-    font-weight: var(--ddd-font-primary-bold);
-    margin-right: var(--ddd-spacing-3);
-    padding: 0 var(--ddd-spacing-1) 0 0;
-  }
-
-  .ddd-dropCap-xs::first-letter {
-    --initialLetter: 2;
-    margin-right: var(--ddd-spacing-1);
-  }
-
-  .ddd-dropCap-sm::first-letter {
-    --initialLetter: 4;
-    margin-right: var(--ddd-spacing-2);
-  }
-
-  .ddd-dropCap-md::first-letter {
-    --initialLetter: 6;
-    margin-right: var(--ddd-spacing-3);
-  }
-
-  .ddd-dropCap-lg::first-letter {
-    --initialLetter: 8;
-    margin-right: var(--ddd-spacing-4);
-  }
-
-  .ddd-dropCap-xl::first-letter {
-    --initialLetter: 10;
-    margin-right: var(--ddd-spacing-5);
-  }
-
-
-  /** These are for Firefox / browsers not supporting dropcap in order to fake support */
-
-  .dropCap-noSupport .dropCap::first-letter{
-    font-size: 168px;
-    margin-bottom: var(--ddd-spacing-1);
-    float: left;
-  }
-
-  .dropCap-noSupport .ddd-dropCap-xs::first-letter{
-    font-size: 56px;
-  }
-
-  .dropCap-noSupport .ddd-dropCap-sm::first-letter{
-    font-size: 112px;
-  }
-
-  .dropCap-noSupport .ddd-dropCap-md::first-letter{
-    font-size: 168px;
-  }
-
-  .dropCap-noSupport .ddd-dropCap-lg::first-letter{
-    font-size: 230px;
-  }
-  
-  .dropCap-noSupport .ddd-dropCap-xl::first-letter{
-    font-size: 300px;
   }
 `;
 /* border & shadows */
