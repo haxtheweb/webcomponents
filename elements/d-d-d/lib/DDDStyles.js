@@ -97,28 +97,28 @@ export const DDDVariables = css`
     --ddd-theme-default-disabled: #f4f4f4;
 
     /* primary colors */
-    --ddd-primary-0: var(--ddd-theme-default-pughBlue);
-    --ddd-primary-1: var(--ddd-theme-default-beaverBlue);
-    --ddd-primary-2: var(--ddd-theme-default-nittanyNavy);
-    --ddd-primary-3: var(--ddd-theme-default-potentialMidnight);
-    --ddd-primary-4: var(--ddd-theme-default-coalyGray);
-    --ddd-primary-5: var(--ddd-theme-default-limestoneGray);
-    --ddd-primary-6: var(--ddd-theme-default-slateGray);
-    --ddd-primary-7: var(--ddd-theme-default-creekTeal);
-    --ddd-primary-8: var(--ddd-theme-default-skyBlue);
-    --ddd-primary-9: var(--ddd-theme-default-shrineTan);
-    --ddd-primary-10: var(--ddd-theme-default-roarGolden);
+    --ddd-primary-0: var(--ddd-theme-default-pughBlue); /* not enough contrast to white, accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
+    --ddd-primary-1: var(--ddd-theme-default-beaverBlue); /* not enough contrast to black */
+    --ddd-primary-2: var(--ddd-theme-default-nittanyNavy); /* not enough contrast to black */
+    --ddd-primary-3: var(--ddd-theme-default-potentialMidnight); /* not enough contrast to black */
+    --ddd-primary-4: var(--ddd-theme-default-coalyGray); /* not enough contrast to black */
+    --ddd-primary-5: var(--ddd-theme-default-limestoneGray); /* not enough contrast to white, accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
+    --ddd-primary-6: var(--ddd-theme-default-slateGray); /* not enough contrast to black */
+    --ddd-primary-7: var(--ddd-theme-default-creekTeal); /* not enough contrast to accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
+    --ddd-primary-8: var(--ddd-theme-default-skyBlue); /* not enough contrast to accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
+    --ddd-primary-9: var(--ddd-theme-default-shrineTan); /* not enough contrast to accent-5 3, 1*/
+    --ddd-primary-10: var(--ddd-theme-default-roarGolden); /* not enough contrast to accent-0, accent-1, accent-2 */
     --ddd-primary-11: var(--ddd-theme-default-original87Pink);
-    --ddd-primary-12: var(--ddd-theme-default-discoveryCoral);
-    --ddd-primary-13: var(--ddd-theme-default-wonderPurple);
-    --ddd-primary-14: var(--ddd-theme-default-athertonViolet);
-    --ddd-primary-15: var(--ddd-theme-default-inventOrange);
-    --ddd-primary-16: var(--ddd-theme-default-keystoneYellow);
+    --ddd-primary-12: var(--ddd-theme-default-discoveryCoral); /* not enough contrast to accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
+    --ddd-primary-13: var(--ddd-theme-default-wonderPurple); /* not enough contrast to black */
+    --ddd-primary-14: var(--ddd-theme-default-athertonViolet); /* not enough contrast to white, accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
+    --ddd-primary-15: var(--ddd-theme-default-inventOrange); /* not enough contrast to white, accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
+    --ddd-primary-16: var(--ddd-theme-default-keystoneYellow); /* not enough contrast to white, accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
     --ddd-primary-17: var(--ddd-theme-default-opportunityGreen);
-    --ddd-primary-18: var(--ddd-theme-default-futureLime);
+    --ddd-primary-18: var(--ddd-theme-default-futureLime); /* not enough contrast to white, accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
     --ddd-primary-19: var(--ddd-theme-default-forestGreen);
-    --ddd-primary-20: var(--ddd-theme-default-landgrantBrown);
-    --ddd-primary-21: var(--ddd-theme-default-globalNeon);
+    --ddd-primary-20: var(--ddd-theme-default-landgrantBrown); /* not enough contrast to black */
+    --ddd-primary-21: var(--ddd-theme-default-globalNeon); /* not enough contrast to white, accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
 
     /* accent colors */
 
@@ -361,50 +361,27 @@ export const DDDVariables = css`
     letter-spacing: normal;
   }
 
-  .ddd-primary-0{--ddd-theme-primary:var(--ddd-primary-0);}
-  .ddd-primary-1{--ddd-theme-primary:var(--ddd-primary-1);}
-  .ddd-primary-2{--ddd-theme-primary:var(--ddd-primary-2);}
-  .ddd-primary-3{--ddd-theme-primary:var(--ddd-primary-3);}
-  .ddd-primary-4{--ddd-theme-primary:var(--ddd-primary-4);}
-  .ddd-primary-5{--ddd-theme-primary:var(--ddd-primary-5);}
-  .ddd-primary-6{--ddd-theme-primary:var(--ddd-primary-6);}
-  .ddd-primary-7{--ddd-theme-primary:var(--ddd-primary-7);}
-  .ddd-primary-8{--ddd-theme-primary:var(--ddd-primary-8);}
-  .ddd-primary-9{--ddd-theme-primary:var(--ddd-primary-9);}
-  .ddd-primary-10{--ddd-theme-primary:var(--ddd-primary-10);}
-  .ddd-primary-11{--ddd-theme-primary:var(--ddd-primary-11);}
-  .ddd-primary-12{--ddd-theme-primary:var(--ddd-primary-12);}
-  .ddd-primary-13{--ddd-theme-primary:var(--ddd-primary-13);}
-  .ddd-primary-14{--ddd-theme-primary:var(--ddd-primary-14);}
-  .ddd-primary-15{--ddd-theme-primary:var(--ddd-primary-15);}
-  .ddd-primary-16{--ddd-theme-primary:var(--ddd-primary-16);}
-  .ddd-primary-17{--ddd-theme-primary:var(--ddd-primary-17);}
-  .ddd-primary-18{--ddd-theme-primary:var(--ddd-primary-18);}
-  .ddd-primary-19{--ddd-theme-primary:var(--ddd-primary-19);}
-  .ddd-primary-20{--ddd-theme-primary:var(--ddd-primary-20);}
-  .ddd-primary-21{--ddd-theme-primary:var(--ddd-primary-21);}
-
   [data-primary="0"]{--ddd-theme-primary:var(--ddd-primary-0);}
-  [data-primary="1"]{--ddd-theme-primary:var(--ddd-primary-1);--ddd-theme-bgContrast: white;}
-  [data-primary="2"]{--ddd-theme-primary:var(--ddd-primary-2);}
-  [data-primary="3"]{--ddd-theme-primary:var(--ddd-primary-3);}
-  [data-primary="4"]{--ddd-theme-primary:var(--ddd-primary-4);}
+  [data-primary="1"]{--ddd-theme-primary:var(--ddd-primary-1); --ddd-theme-bgContrast: white;}
+  [data-primary="2"]{--ddd-theme-primary:var(--ddd-primary-2); --ddd-theme-bgContrast: white;}
+  [data-primary="3"]{--ddd-theme-primary:var(--ddd-primary-3); --ddd-theme-bgContrast: white;}
+  [data-primary="4"]{--ddd-theme-primary:var(--ddd-primary-4); --ddd-theme-bgContrast: white;}
   [data-primary="5"]{--ddd-theme-primary:var(--ddd-primary-5);}
-  [data-primary="6"]{--ddd-theme-primary:var(--ddd-primary-6);}
+  [data-primary="6"]{--ddd-theme-primary:var(--ddd-primary-6); --ddd-theme-bgContrast: white;}
   [data-primary="7"]{--ddd-theme-primary:var(--ddd-primary-7);}
   [data-primary="8"]{--ddd-theme-primary:var(--ddd-primary-8);}
   [data-primary="9"]{--ddd-theme-primary:var(--ddd-primary-9);}
   [data-primary="10"]{--ddd-theme-primary:var(--ddd-primary-10);}
-  [data-primary="11"]{--ddd-theme-primary:var(--ddd-primary-11);}
+  [data-primary="11"]{--ddd-theme-primary:var(--ddd-primary-11); --ddd-theme-bgContrast: white;}
   [data-primary="12"]{--ddd-theme-primary:var(--ddd-primary-12);}
-  [data-primary="13"]{--ddd-theme-primary:var(--ddd-primary-13);}
+  [data-primary="13"]{--ddd-theme-primary:var(--ddd-primary-13); --ddd-theme-bgContrast: white;}
   [data-primary="14"]{--ddd-theme-primary:var(--ddd-primary-14);}
   [data-primary="15"]{--ddd-theme-primary:var(--ddd-primary-15);}
   [data-primary="16"]{--ddd-theme-primary:var(--ddd-primary-16);}
   [data-primary="17"]{--ddd-theme-primary:var(--ddd-primary-17);}
   [data-primary="18"]{--ddd-theme-primary:var(--ddd-primary-18);}
-  [data-primary="19"]{--ddd-theme-primary:var(--ddd-primary-19);}
-  [data-primary="20"]{--ddd-theme-primary:var(--ddd-primary-20);}
+  [data-primary="19"]{--ddd-theme-primary:var(--ddd-primary-19); --ddd-theme-bgContrast: white;}
+  [data-primary="20"]{--ddd-theme-primary:var(--ddd-primary-20); --ddd-theme-bgContrast: white;}
   [data-primary="21"]{--ddd-theme-primary:var(--ddd-primary-21);}
 
   /* subtlySalmon */
@@ -661,8 +638,7 @@ export const DDDReset = css`
   }
 
   [data-instructional-action][data-design-treatment="bg"]::before {
-    background-color: var(--ddd-theme-bgContrast);
-    color: var(--ddd-theme-primary, white);
+    background-color: var(--ddd-theme-bgContrast, black);
     margin-right: var(--ddd-spacing-3);
     margin-left: var(--ddd-spacing-1);
   }
@@ -746,6 +722,32 @@ export const DDDReset = css`
 
   [data-design-treatment="dropCap-xl"]::first-letter {
     margin-right: var(--ddd-spacing-5);
+  }
+
+  /* dropCap outline for low contrasting colors */
+  [data-design-treatment^="dropCap"][data-primary="0"]::first-letter,
+  [data-design-treatment^="dropCap"][data-primary="5"]::first-letter,
+  [data-design-treatment^="dropCap"][data-accent][data-primary="7"]::first-letter,
+  [data-design-treatment^="dropCap"][data-accent][data-primary="8"]::first-letter,
+  [data-design-treatment^="dropCap"][data-accent][data-primary="9"]::first-letter,
+  [data-design-treatment^="dropCap"][data-accent][data-primary="10"]::first-letter,
+  [data-design-treatment^="dropCap"][data-accent][data-primary="12"]::first-letter,
+  [data-design-treatment^="dropCap"][data-primary="14"]::first-letter,
+  [data-design-treatment^="dropCap"][data-primary="15"]::first-letter,
+  [data-design-treatment^="dropCap"][data-primary="16"]::first-letter,
+  [data-design-treatment^="dropCap"][data-primary="18"]::first-letter,
+  [data-design-treatment^="dropCap"][data-primary="21"]::first-letter
+  {
+    padding-left: var(--ddd-spacing-1);
+    text-shadow: 
+      -3px -3px 0 #000,  
+      3px -3px 0 #000,
+      -3px  3px 0 #000,
+      3px  3px 0 #000,
+      -3px 0 0 #000,
+      3px 0 0 #000,
+      0 -3px 0 #000,
+      0  3px 0 #000;
   }
 
   /** These are for Firefox / browsers not supporting dropcap in order to fake support */
