@@ -410,8 +410,16 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           width: calc(var(--menu-size) + 65%);
         }
         :host([responsive-size="sm"]) main {
-          width: calc(var(--menu-size) + 60%);
+          width: calc(var(--menu-size) + 40%);
         }
+        :host([responsive-size="xs"]) main {
+          width: calc(var(--menu-size) + 20%);
+        }
+        /* ensure iframe content doesn't get bigger than the main area */
+        :host([responsive-size]) main ::slotted(iframe) {
+          max-width: 100%;
+        }
+
         .left-col {
           display: -webkit-box;
           display: -moz-box;

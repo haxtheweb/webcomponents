@@ -70,6 +70,10 @@ class DDDocs extends DDD {
           font-size: var(--ddd-font-size-4xs);
         }
 
+        [data-instructional-action]::before {
+          -webkit-mask-image: url(https://hax.psu.edu/cdn/1.x.x/build/es6/node_modules/@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js/../svgs/courseicons/chem-connection.svg);
+        }
+
         .DefaultColors h5,
         .DefaultFunctionalColors h5 {
           margin: var(--ddd-spacing-8) 0 0 0;
