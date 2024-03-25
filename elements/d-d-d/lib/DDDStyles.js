@@ -467,9 +467,14 @@ export const DDDReset = css`
   p {
     margin: var(--ddd-spacing-6) 0;
   }
-  p[data-accent], div[data-accent] {
-    background-color: var(--ddd-theme-accent);
+  p[data-accent], ol[data-accent], ul[data-accent], div[data-accent] {
     padding: var(--ddd-spacing-6);
+    border: var(--ddd-border-sm);
+    border-color: var(--ddd-theme-primary);
+    background-color: var(--ddd-theme-accent);
+  }
+  ol[data-accent], ul[data-accent] {
+    padding-left: var(--ddd-spacing-9);
   }
   /* p uniformity but ignore if either is in a slot */
   p:not([slot]) + p:not([slot]) {
@@ -606,8 +611,31 @@ export const DDDReset = css`
     padding-left: var(--ddd-spacing-3);
   }
 
-  [data-design-treatment="horz"]::after {
+  [data-design-treatment="horz-10p"] {
+    --ddd-theme-header-border-treatment: var(--ddd-theme-header-border-treatment-10p);
+  }
+  [data-design-treatment="horz-25p"] {
+    --ddd-theme-header-border-treatment: var(--ddd-theme-header-border-treatment-25p);
+  }
+  [data-design-treatment="horz-50p"] {
+    --ddd-theme-header-border-treatment: var(--ddd-theme-header-border-treatment-50p);
+  }
+  [data-design-treatment="horz-full"] {
+    --ddd-theme-header-border-treatment: calc(var(--ddd-theme-header-border-treatment-full) - 32px);
+  }
+  [data-instructional-action][data-design-treatment="horz-full"] {
+    --ddd-theme-header-border-treatment: calc(var(--ddd-theme-header-border-treatment-full) - 32px - 40px);
+  }
+  [data-design-treatment="horz-md"] {
+    --ddd-theme-header-border-treatment: var(--ddd-theme-header-border-treatment-md);
+  }
+  [data-design-treatment="horz-lg"] {
+    --ddd-theme-header-border-treatment: var(--ddd-theme-header-border-treatment-lg);
+  }
+
+  [data-design-treatment^="horz"]::after {
     content: "";
+    transition: width 0.3s ease-in-out;
     width: var(--ddd-theme-header-border-treatment);
     border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary, var(--ddd-primary-0));
     height: 0;
@@ -615,7 +643,7 @@ export const DDDReset = css`
     padding-top: var(--ddd-spacing-2);
   }
 
-  [data-instructional-action][data-design-treatment="horz"]::after{
+  [data-instructional-action][data-design-treatment^="horz"]::after{
     content: "";
     width: var(--ddd-theme-header-border-treatment);
     border-bottom: var(--ddd-theme-header-border-thickness) solid var(--ddd-theme-primary, var(--ddd-primary-0));

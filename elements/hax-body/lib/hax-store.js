@@ -117,9 +117,15 @@ const DataHeadingDesignTreatment = {
   inputMethod: "select",
   options: {
     "": "",
-    vert: "Vertical line",
-    horz: "Horizontal line",
-    bg: "Background color",
+    "vert": "Vertical line",
+    "horz-10p": "Horizontal line 10%",
+    "horz-25p": "Horizontal line 25%",
+    "horz-50p": "Horizontal line 50%",
+    "horz-full": "Horizontal line 100%",
+    "horz-md": "Horizontal line Medium",
+    "horz-lg": "Horizontal line Large",
+    "horz": "Horizontal line",
+    "bg": "Background color",
   },
 };
 
@@ -130,12 +136,11 @@ const DataTextDesignTreatment = {
   inputMethod: "select",
   options: {
     "": "",
-    "dropCap-xs": "Drop Cap xs",
-    "dropCap-sm": "Drop Cap sm",
-    "dropCap-md": "Drop Cap md",
-    "dropCap-lg": "Drop Cap lg",
-    "dropCap-xl": "Drop Cap xl",
-    callout: "Call out box",
+    "dropCap-xs": "Drop Cap - xs",
+    "dropCap-sm": "Drop Cap - sm",
+    "dropCap-md": "Drop Cap - md",
+    "dropCap-lg": "Drop Cap - lg",
+    "dropCap-xl": "Drop Cap - xl",
   },
 };
 
@@ -3110,7 +3115,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   DataHeadingDesignTreatment,
                   DataInstructionalAction,
                 ]
-              : [DataStylePrimary],
+              : [DataStylePrimary, DataStyleAccent],
             advanced: [],
           },
           demoSchema: [
