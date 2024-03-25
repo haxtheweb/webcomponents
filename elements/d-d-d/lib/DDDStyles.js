@@ -682,7 +682,16 @@ export const DDDReset = css`
     color: var(--ddd-theme-primary);
     font-weight: var(--ddd-font-primary-bold);
     margin-right: var(--ddd-spacing-3);
-    padding: 0 var(--ddd-spacing-1) 0 0;
+    padding: 0 var(--ddd-spacing-1);
+    text-shadow: 
+      -3px -3px 0 #000,  
+      3px -3px 0 #000,
+      -3px  3px 0 #000,
+      3px  3px 0 #000,
+      -3px 0 0 #000,
+      3px 0 0 #000,
+      0 -3px 0 #000,
+      0  3px 0 #000;
   }
   [data-design-treatment="dropCap-xs"]{
     --initialLetter: 2;
@@ -724,7 +733,7 @@ export const DDDReset = css`
     margin-right: var(--ddd-spacing-5);
   }
 
-  /* dropCap outline for low contrasting colors */
+  /* dropCap outline for low contrasting colors 
   [data-design-treatment^="dropCap"][data-primary="0"]::first-letter,
   [data-design-treatment^="dropCap"][data-primary="5"]::first-letter,
   [data-design-treatment^="dropCap"][data-accent][data-primary="7"]::first-letter,
@@ -737,18 +746,7 @@ export const DDDReset = css`
   [data-design-treatment^="dropCap"][data-primary="16"]::first-letter,
   [data-design-treatment^="dropCap"][data-primary="18"]::first-letter,
   [data-design-treatment^="dropCap"][data-primary="21"]::first-letter
-  {
-    padding-left: var(--ddd-spacing-1);
-    text-shadow: 
-      -3px -3px 0 #000,  
-      3px -3px 0 #000,
-      -3px  3px 0 #000,
-      3px  3px 0 #000,
-      -3px 0 0 #000,
-      3px 0 0 #000,
-      0 -3px 0 #000,
-      0  3px 0 #000;
-  }
+  */
 
   /** These are for Firefox / browsers not supporting dropcap in order to fake support */
 
