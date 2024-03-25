@@ -80,11 +80,6 @@ class ImageInspector extends LitElement {
           @click="${this.rotateRight}"
         ></simple-icon-button>
         <simple-icon-button
-          label="Rotate left"
-          icon="image:rotate-left"
-          @click="${this.rotateLeft}"
-        ></simple-icon-button>
-        <simple-icon-button
           label="Mirror image"
           icon="image:flip"
           @click="${this.mirrorImage}"
@@ -146,20 +141,6 @@ class ImageInspector extends LitElement {
   rotateRight() {
     // spin 90
     this.degrees += 90;
-    this.__img.style.transform = "rotate(" + this.degrees + "deg)";
-    if (this.__img.classList.contains("top-rotated")) {
-      this.__img.classList.remove("top-rotated");
-    } else {
-      this.__img.classList.add("top-rotated");
-    }
-  }
-
-  /**
-   * Rotate the image to the left.
-   */
-  rotateLeft() {
-    // go back 90
-    this.degrees += -90;
     this.__img.style.transform = "rotate(" + this.degrees + "deg)";
     if (this.__img.classList.contains("top-rotated")) {
       this.__img.classList.remove("top-rotated");

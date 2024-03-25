@@ -645,7 +645,6 @@ export const DDDReset = css`
 
   [data-instructional-action]::before {
     content: '';
-    -webkit-mask-image: url(https://hax.psu.edu/cdn/1.x.x/build/es6/node_modules/@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js/../svgs/courseicons/chem-connection.svg);
     display: inline-flex;
     position: relative;
     flex-direction: column;

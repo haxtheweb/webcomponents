@@ -645,7 +645,7 @@ export const displayBehaviors = function (SuperClass) {
         "href",
         "data:text/plain;charset=UTF-8," + encodeURIComponent(data),
       );
-      a.setAttribute("download", filename + ".txt");
+      a.setAttribute("download", filename + ".csv");
       a.style.display = "none";
       globalThis.document.body.appendChild(a);
       a.click();
