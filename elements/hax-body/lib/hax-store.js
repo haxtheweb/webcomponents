@@ -63,7 +63,7 @@ function sessionStorageSet(name, newItem) {
 /**
  * @todo need some way of defining these as far as the application bringing these in as opposed to hard coded here
  */
-const DataStylePrimary = {
+export const DataStylePrimary = {
   attribute: "data-primary",
   title: "Primary color",
   description: "Primary color to apply color, often for meaning or aesthetic",

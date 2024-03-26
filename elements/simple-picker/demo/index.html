@@ -4,12 +4,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>SimplePicker: simple-picker Demo</title>
-    
+    <script>
+      window.process = {
+        env : {
+        NODE_ENV: "development"
+        }
+      };
+    </script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-picker.js';
       import '../lib/simple-symbol-picker.js';
       import '../lib/simple-emoji-picker.js';
+      import { DataStylePrimary } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+      let options = []
+      for (let option in DataStylePrimary.options) {
+        if (option != '') {
+          options.push({
+            style: `background-color: var(--ddd-primary-${option})`, alt: DataStylePrimary.options[option], value: option
+          })
+        }
+      }
+      setTimeout(() => {
+        console.log(options);
+        document.getElementById('ddd').options = [options]; 
+      }, 1000);
+
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       #icondemo {
@@ -36,6 +56,11 @@
               [ {alt:"cursive",style:"font-family: cursive",value:"cursive" } ] 
             ];
           </script>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <simple-picker allow-null id="ddd" hide-option-labels label="DDD"></simple-picker>
         </template>
       </demo-snippet>
       <h3>simple-picker as a Color-Picker</h3>
