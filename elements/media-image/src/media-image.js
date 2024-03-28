@@ -90,10 +90,7 @@ class MediaImage extends DDD {
           border: var(--ddd-border-sm);
           border-color: var(
             --ddd-component-figure-label-title,
-            var(
-              --ddd-theme-accent-color,
-              var(--ddd-theme-default-limestoneLight)
-            )
+            var(--ddd-theme-accent, var(--ddd-theme-default-limestoneLight))
           );
           background: var(--ddd-component-figure-label-background, transparent);
           padding: var(--ddd-spacing-2);
@@ -143,9 +140,9 @@ class MediaImage extends DDD {
         this._computeHasCaption(this[propName]);
       }
       // if we have a link, we disable zoom automatically
-      if (propName === "link" &&  this.link) {
+      if (propName === "link" && this.link) {
         this.disableZoom = true;
-      }      
+      }
       if (["figureLabelTitle", "figureLabelDescription"].includes(propName)) {
         this.__figureLabel = this._hasFigureLabel(
           this.figureLabelTitle,
@@ -172,23 +169,27 @@ class MediaImage extends DDD {
             ></figure-label>
           `
         : ``}
-      ${this.link ? html`<a href="${this.link}"><media-image-image
-        ?round="${this.round}"
-        resource="${this.schemaResourceID}-image"
-        source="${this.source}"
-        modal-title="${this.modalTitle}"
-        alt="${this.alt}"
-        tabindex="${!this.disableZoom ? "0" : "-1"}"
-        @click="${this._handleClick}"
-      ></media-image-image></a>` : html`<media-image-image
-        ?round="${this.round}"
-        resource="${this.schemaResourceID}-image"
-        source="${this.source}"
-        modal-title="${this.modalTitle}"
-        alt="${this.alt}"
-        tabindex="${!this.disableZoom ? "0" : "-1"}"
-        @click="${this._handleClick}"
-      ></media-image-image>`}
+      ${this.link
+        ? html`<a href="${this.link}"
+            ><media-image-image
+              ?round="${this.round}"
+              resource="${this.schemaResourceID}-image"
+              source="${this.source}"
+              modal-title="${this.modalTitle}"
+              alt="${this.alt}"
+              tabindex="${!this.disableZoom ? "0" : "-1"}"
+              @click="${this._handleClick}"
+            ></media-image-image
+          ></a>`
+        : html`<media-image-image
+            ?round="${this.round}"
+            resource="${this.schemaResourceID}-image"
+            source="${this.source}"
+            modal-title="${this.modalTitle}"
+            alt="${this.alt}"
+            tabindex="${!this.disableZoom ? "0" : "-1"}"
+            @click="${this._handleClick}"
+          ></media-image-image>`}
       <media-image-citation>
         <slot class="citation" name="citation">${this.citation}</slot>
       </media-image-citation>
@@ -216,7 +217,7 @@ class MediaImage extends DDD {
     // not editing, and we have a link, and disabled zoom
     // click the link
     if (!this._haxState && this.link && this.disableZoom) {
-      this.shadowRoot.querySelector('a').click();
+      this.shadowRoot.querySelector("a").click();
     }
   }
   haxEditModeChanged(value) {
@@ -546,7 +547,7 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
           border-color: var(
             --ddd-component-figure-label-title,
             var(
-              --ddd-theme-accent-color,
+              --ddd-theme-accent,
               var(
                 --simple-colors-default-theme-accent-2,
                 var(--ddd-theme-default-limestoneLight)

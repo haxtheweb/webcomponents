@@ -1162,16 +1162,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             if (!key.startsWith("__")) {
               // EVERYTHING is removed THEN added a microtask later to avoid sticking in style attribute
               this.activeNode.style.removeProperty(key);
-              if (key === "background-color") {
-                this.activeNode.style.removeProperty("color");
-              }
               setTimeout(() => {
-                if (key === "background-color") {
-                  this.activeNode.style[key] =
-                    `var(--simple-colors-default-theme-${detail.value[key]}-1)`;
-                  this.activeNode.style["color"] =
-                    `var(--simple-colors-default-theme-${detail.value[key]}-12)`;
-                } else if (key === "text-align") {
+                if (key === "text-align") {
                   this.activeNode.style[key] = detail.value[key];
                 } else if (key === "font-size") {
                   switch (detail.value[key]) {

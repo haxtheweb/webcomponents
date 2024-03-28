@@ -543,13 +543,6 @@ export class HAXWiring {
           },
         });
         props.settings.advanced.push({
-          attribute: "background-color",
-          title: "Background color",
-          description: "Accessible background colors for accenting content.",
-          inputMethod: "colorpicker",
-          required: false,
-        });
-        props.settings.advanced.push({
           attribute: "font-size",
           title: "Font size",
           description: "Pre-selected font variation",

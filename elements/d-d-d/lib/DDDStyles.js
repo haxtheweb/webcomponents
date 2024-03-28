@@ -520,6 +520,7 @@ export const DDDReset = css`
   }
 
   a,
+  a:any-link,
   a:-webkit-any-link {
     line-break: auto;
     color: var(--ddd-theme-default-link);
@@ -964,10 +965,7 @@ export const DDDReset = css`
     height: fit-content;
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     color: var(--ddd-theme-font-color, var(--ddd-theme-default-white, #fff));
-    background-color: var(
-      --ddd-theme-primary,
-      var(--ddd-theme-default-info, rgba(175, 184, 193, 0.2))
-    );
+    background-color: var(--ddd-theme-default-info, rgba(175, 184, 193, 0.2));
     font-size: var(--ddd-theme-body-font-size);
     font-weight: var(--ddd-font-primary-regular);
     border-radius: var(--ddd-radius-xs);

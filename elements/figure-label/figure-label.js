@@ -42,7 +42,7 @@ class FigureLabel extends DDD {
           background-color: var(
             --ddd-component-figure-label-title,
             var(
-              --ddd-theme-accent-color,
+              --ddd-theme-accent,
               var(
                 --simple-colors-default-theme-accent-2,
                 var(--ddd-theme-default-limestoneLight)
@@ -69,7 +69,7 @@ class FigureLabel extends DDD {
           border-color: var(
             --ddd-component-figure-label-title,
             var(
-              --ddd-theme-accent-color,
+              --ddd-theme-accent,
               var(
                 --simple-colors-default-theme-accent-2,
                 var(--ddd-theme-default-limestoneLight)

@@ -132,7 +132,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           background-color: var(
             --ddd-component-self-check-title-background,
             var(
-              --ddd-theme-accent-color,
+              --ddd-theme-accent,
               var(--simple-colors-default-theme-accent-8, #fff)
             )
           );
@@ -219,7 +219,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
             var(
               --ddd-component-self-check-title-background,
               var(
-                --ddd-theme-accent-color,
+                --ddd-theme-accent,
                 var(--simple-colors-default-theme-accent-8, #fff)
               )
             );
