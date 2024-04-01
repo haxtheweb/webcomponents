@@ -61,101 +61,6 @@ function sessionStorageSet(name, newItem) {
 }
 
 /**
- * @todo need some way of defining these as far as the application bringing these in as opposed to hard coded here
- */
-export const DataStylePrimary = {
-  attribute: "data-primary",
-  title: "Primary color",
-  description: "Primary color to apply color, often for meaning or aesthetic",
-  inputMethod: "select",
-  options: {
-    "": "",
-    0: "Pugh blue",
-    1: "Beaver blue",
-    2: "Nittany navy",
-    3: "Potential midnight",
-    4: "Coaly gray",
-    5: "Limestone gray",
-    6: "Slate gray",
-    7: "Creek teal",
-    8: "Sky blue",
-    9: "Shrine tan",
-    10: "Roar golden",
-    11: "Original 87 pink",
-    12: "Discovery coral",
-    13: "Wonder purple",
-    14: "Artherton violet",
-    15: "Invent orange",
-    16: "Keystone yellow",
-    17: "Opportunity green",
-    18: "Future lime",
-    19: "Forest green",
-    20: "Landgrant brown",
-    21: "Global Neon",
-  },
-};
-const DataStyleAccent = {
-  attribute: "data-accent",
-  title: "Accent color",
-  description: "Accent color to apply color, often for meaning or aesthetic",
-  inputMethod: "select",
-  options: {
-    "": "",
-    0: "Sky Max",
-    1: "Slate Max",
-    2: "Limestone Max",
-    3: "Shrine Max",
-    4: "Roar Max",
-    5: "Creek Max",
-    6: "White",
-  },
-};
-const DataHeadingDesignTreatment = {
-  attribute: "data-design-treatment",
-  title: "Design treatment",
-  description: "Minor design treatment leveraging Primary color value",
-  inputMethod: "select",
-  options: {
-    "": "",
-    "vert": "Vertical line",
-    "horz-10p": "Horizontal line 10%",
-    "horz-25p": "Horizontal line 25%",
-    "horz-50p": "Horizontal line 50%",
-    "horz-full": "Horizontal line 100%",
-    "horz-md": "Horizontal line Medium",
-    "horz-lg": "Horizontal line Large",
-    "horz": "Horizontal line",
-    "bg": "Background color",
-  },
-};
-
-const DataTextDesignTreatment = {
-  attribute: "data-design-treatment",
-  title: "Design treatment",
-  description: "Minor design treatment leveraging Primary color value",
-  inputMethod: "select",
-  options: {
-    "": "",
-    "dropCap-xs": "Drop Cap - xs",
-    "dropCap-sm": "Drop Cap - sm",
-    "dropCap-md": "Drop Cap - md",
-    "dropCap-lg": "Drop Cap - lg",
-    "dropCap-xl": "Drop Cap - xl",
-  },
-};
-
-const DataInstructionalAction = {
-  attribute: "data-instructional-action",
-  title: "Type",
-  description: "Indicates instructional context to users visually",
-  inputMethod: "select",
-  options: {
-    "": "-- none --",
-    ...learningComponentTypes,
-  },
-};
-
-/**
  * @element hax-store
  */
 class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
@@ -1147,47 +1052,44 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           this.activeNode.style.display = "block";
           changed = true;
           break;
-        case "hax-size-change":
-          if (detail.value == 100) {
-            this.activeNode.style.width = null;
-          } else if (detail.value > 100) {
-            this.activeNode.style.width = null;
-          } else {
-            this.activeNode.style.width = detail.value + "%";
-          }
-          changed = true;
-          break;
         case "hax-style-setting-change":
           Object.keys(detail.value).forEach((key) => {
-            if (!key.startsWith("__")) {
-              // EVERYTHING is removed THEN added a microtask later to avoid sticking in style attribute
-              this.activeNode.style.removeProperty(key);
-              setTimeout(() => {
-                if (key === "text-align") {
-                  this.activeNode.style[key] = detail.value[key];
-                } else if (key === "font-size") {
-                  switch (detail.value[key]) {
-                    case "x-small":
-                      this.activeNode.style[key] = "0.8em";
-                      break;
-                    case "small":
-                      this.activeNode.style[key] = "0.9em";
-                      break;
-                    case "large":
-                      this.activeNode.style[key] = "1.2em";
-                      break;
-                    case "x-large":
-                      this.activeNode.style[key] = "1.4em";
-                      break;
-                    case "xx-large":
-                      this.activeNode.style[key] = "2em";
-                      break;
-                  }
+            // EVERYTHING is removed THEN added a microtask later to avoid sticking in style attribute
+            this.activeNode.style.removeProperty(key);
+            requestAnimationFrame(() => {
+              if (key === "__scale") {
+                if (detail.value[key] == 100) {
+                  this.activeNode.style.width = null;
+                } else if (detail.value[key] > 100) {
+                  this.activeNode.style.width = null;
                 } else {
-                  this.activeNode.style[key] = detail.value[key] + "px";
+                  this.activeNode.style.width = detail.value[key] + "%";
                 }
-              }, 0);
-            }
+              }
+              else if (key === "text-align") {
+                this.activeNode.style[key] = detail.value[key];
+              } else if (key === "font-size") {
+                switch (detail.value[key]) {
+                  case "x-small":
+                    this.activeNode.style[key] = "0.8em";
+                    break;
+                  case "small":
+                    this.activeNode.style[key] = "0.9em";
+                    break;
+                  case "large":
+                    this.activeNode.style[key] = "1.2em";
+                    break;
+                  case "x-large":
+                    this.activeNode.style[key] = "1.4em";
+                    break;
+                  case "xx-large":
+                    this.activeNode.style[key] = "2em";
+                    break;
+                }
+              } else {
+                this.activeNode.style[key] = detail.value[key] + "px";
+              }
+            });
           });
           changed = true;
           break;
@@ -1954,6 +1856,97 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   constructor() {
     super();
+    this.DataStylePrimary = {
+      attribute: "data-primary",
+      title: "Primary color",
+      description: "Primary color to apply color, often for meaning or aesthetic",
+      inputMethod: "select",
+      options: {
+        "": "",
+        0: "Pugh blue",
+        1: "Beaver blue",
+        2: "Nittany navy",
+        3: "Potential midnight",
+        4: "Coaly gray",
+        5: "Limestone gray",
+        6: "Slate gray",
+        7: "Creek teal",
+        8: "Sky blue",
+        9: "Shrine tan",
+        10: "Roar golden",
+        11: "Original 87 pink",
+        12: "Discovery coral",
+        13: "Wonder purple",
+        14: "Artherton violet",
+        15: "Invent orange",
+        16: "Keystone yellow",
+        17: "Opportunity green",
+        18: "Future lime",
+        19: "Forest green",
+        20: "Landgrant brown",
+        21: "Global Neon",
+      },
+    };
+    this.DataStyleAccent = {
+      attribute: "data-accent",
+      title: "Accent color",
+      description: "Accent color to apply color, often for meaning or aesthetic",
+      inputMethod: "select",
+      options: {
+        "": "",
+        0: "Sky Max",
+        1: "Slate Max",
+        2: "Limestone Max",
+        3: "Shrine Max",
+        4: "Roar Max",
+        5: "Creek Max",
+        6: "White",
+      },
+    };
+    this.DataHeadingDesignTreatment = {
+      attribute: "data-design-treatment",
+      title: "Design treatment",
+      description: "Minor design treatment leveraging Primary color value",
+      inputMethod: "select",
+      options: {
+        "": "",
+        "vert": "Vertical line",
+        "horz-10p": "Horizontal line 10%",
+        "horz-25p": "Horizontal line 25%",
+        "horz-50p": "Horizontal line 50%",
+        "horz-full": "Horizontal line 100%",
+        "horz-md": "Horizontal line Medium",
+        "horz-lg": "Horizontal line Large",
+        "horz": "Horizontal line",
+        "bg": "Background color",
+      },
+    };
+    
+    this.DataTextDesignTreatment = {
+      attribute: "data-design-treatment",
+      title: "Design treatment",
+      description: "Minor design treatment leveraging Primary color value",
+      inputMethod: "select",
+      options: {
+        "": "",
+        "dropCap-xs": "Drop Cap - xs",
+        "dropCap-sm": "Drop Cap - sm",
+        "dropCap-md": "Drop Cap - md",
+        "dropCap-lg": "Drop Cap - lg",
+        "dropCap-xl": "Drop Cap - xl",
+      },
+    };
+    
+    this.DataInstructionalAction = {
+      attribute: "data-instructional-action",
+      title: "Type",
+      description: "Indicates instructional context to users visually",
+      inputMethod: "select",
+      options: {
+        "": "-- none --",
+        ...learningComponentTypes,
+      },
+    };
     enableServices(["core"]);
     this.toastShowEventName = globalThis.HAXCMS
       ? "haxcms-toast-show"
@@ -2560,7 +2553,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStylePrimary],
+        configure: [this.DataStylePrimary],
       },
       demoSchema: [
         {
@@ -2602,7 +2595,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             description: "Caption for the figure",
             inputMethod: "code-editor",
           },
-          DataStylePrimary,
+          this.DataStylePrimary,
         ],
       },
       demoSchema: [
@@ -2642,7 +2635,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          DataStylePrimary,
+          this.DataStylePrimary,
         ],
         advanced: [],
         developer: [],
@@ -2691,7 +2684,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          DataStylePrimary,
+          this.DataStylePrimary,
         ],
         advanced: [],
         developer: [],
@@ -2832,7 +2825,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleAccent, DataTextDesignTreatment, DataStylePrimary],
+        configure: [this.DataStyleAccent, this.DataTextDesignTreatment, this.DataStylePrimary],
         advanced: [],
       },
       demoSchema: [
@@ -3103,11 +3096,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           settings: {
             configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
               ? [
-                  DataStylePrimary,
-                  DataHeadingDesignTreatment,
-                  DataInstructionalAction,
+                this.DataStylePrimary,
+                  this.DataHeadingDesignTreatment,
+                  this.DataInstructionalAction,
                 ]
-              : [DataStylePrimary, DataStyleAccent],
+              : [this.DataStylePrimary, this.DataStyleAccent],
             advanced: [],
           },
           demoSchema: [
@@ -3139,7 +3132,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [DataStylePrimary, DataInstructionalAction],
+        configure: [this.DataStylePrimary, this.DataInstructionalAction],
         advanced: [],
       },
       demoSchema: [

@@ -130,6 +130,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
             z-index: var(--hax-ui-focus-z-index, 1001) !important;
           }
           :host {
+            font-family: var(--ddd-font-navigation);
             --simple-toolbar-button-width: 26px;
             --simple-toolbar-button-height: 26px;
           }

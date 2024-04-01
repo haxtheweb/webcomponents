@@ -44,6 +44,7 @@ class MediaImage extends DDD {
 
         :host([box]) {
           padding: var(--ddd-spacing-5);
+          background-color: var(--ddd-theme-accent, var(--ddd-accent-2))
         }
         @media screen and (min-width: 650px) {
           :host([size="small"]) {
@@ -119,17 +120,6 @@ class MediaImage extends DDD {
     this.card = false;
     this.box = false;
     this.offset = "none";
-    this.cardColor = "var(--ddd-theme-default-white)";
-  }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "cardColor") {
-        this.style.setProperty("--card-background-color", this.cardColor);
-      }
-    });
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -234,10 +224,6 @@ class MediaImage extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      cardColor: {
-        type: String,
-        reflect: true,
-      },
       link: {
         type: String,
       },

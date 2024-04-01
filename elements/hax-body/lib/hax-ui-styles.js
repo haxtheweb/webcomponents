@@ -3,7 +3,7 @@ import { css, html, LitElement } from "lit";
 export const HaxUiText = [
   css`
     body {
-      --hax-ui-font-family: sans-serif;
+      --hax-ui-font-family: var(--ddd-font-navigation);
       --hax-ui-font-size: 14px;
       --hax-ui-font-size-sm: 12px;
       --hax-ui-font-size-xs: 11px;

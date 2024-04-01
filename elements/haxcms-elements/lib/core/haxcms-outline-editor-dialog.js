@@ -28,6 +28,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           padding-bottom: 40px;
           padding-top: 16px;
           min-width: 70vw;
+          font-family: var(--ddd-font-navigation);
         }
         .buttons {
           position: absolute;

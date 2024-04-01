@@ -2050,20 +2050,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
       }
     } else {
-      // make a new grid plate, default to 2 col and disable
-      // responsive by default as this is what many will expect
+      // make a new grid plate, default to 3 columns and put this in the middle
+      // that way they get a common expectation of offsetting material visually
       let grid = document.createElement("grid-plate");
-      grid.layout = "1-1";
+      grid.layout = "1-2-1";
       grid.disableResponsive = true;
       if (node.getAttribute("slot")) {
         grid.setAttribute("slot", node.getAttribute("slot"));
       }
-      let col = "2";
-      if (side == "right") {
-        col = "1";
-      }
       let tmp = node.cloneNode(true);
-      tmp.setAttribute("slot", "col-" + col);
+      tmp.setAttribute("slot", "col-2");
       grid.appendChild(tmp);
       node.parentNode.insertBefore(grid, node);
       setTimeout(() => {
