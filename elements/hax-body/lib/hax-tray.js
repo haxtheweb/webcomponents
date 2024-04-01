@@ -1774,7 +1774,6 @@ class HaxTray extends I18NMixin(
                 }
               } else if (
                 (key === "advanced" && prop === "font-size") ||
-                prop === "background-color" ||
                 prop === "text-align" ||
                 prop === "padding-top" ||
                 prop === "padding-bottom" ||

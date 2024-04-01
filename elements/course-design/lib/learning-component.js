@@ -213,7 +213,7 @@ class LearningComponent extends I18NMixin(DDD) {
           background-color: var(
             --ddd-component-learning-component-title-background,
             var(
-              --ddd-theme-accent-color,
+              --ddd-theme-accent,
               var(--simple-colors-default-theme-accent-8, #dc7927)
             )
           );

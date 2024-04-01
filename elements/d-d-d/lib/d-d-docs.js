@@ -1688,7 +1688,7 @@ class DDDocs extends DDD {
             description="Default color styling (accent color enabled)"
           ></figure-label>
           <div
-            style="--ddd-theme-accent-color: var(--ddd-theme-default-pughBlue);"
+            style="--ddd-theme-accent: var(--ddd-theme-default-pughBlue);"
           >
             <figure-label
               title="1.3"

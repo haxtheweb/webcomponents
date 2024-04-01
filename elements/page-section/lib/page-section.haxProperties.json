@@ -22,7 +22,7 @@
       {
         "property": "preset",
         "inputMethod": "radio",
-        "title": "Preset",
+        "title": "Design treatment",
         "description": "Well designed preset which toggles other settings",
         "options": {
           "custom": "Custom",

@@ -520,6 +520,7 @@ export const DDDReset = css`
   }
 
   a,
+  a:any-link,
   a:-webkit-any-link {
     line-break: auto;
     color: var(--ddd-theme-default-link);
@@ -926,24 +927,26 @@ export const DDDReset = css`
     font-weight: var(--ddd-font-primary-medium);
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     border-radius: var(--ddd-radius-xs);
-    background-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
+    background-color: var(--ddd-theme-primary, var(--ddd-theme-default-keystoneYellow));
+    color: var(--ddd-theme-bgContrast);
   }
   abbr {
-    background-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
+    background-color: var(--ddd-theme-primary, var(--ddd-theme-default-keystoneYellow));
     transition: all 0.2s ease 0s;
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     font-style: italic;
     text-decoration: underline;
     pointer-events: auto;
     cursor: pointer;
-    outline-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
+    outline-color: var(--ddd-theme-primary, var(--ddd-theme-default-keystoneYellow));
+    color: var(--ddd-theme-bgContrast);
     position: relative;
   }
   abbr:focus,
   abbr:active,
   abbr:hover {
     text-decoration: none;
-    background-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
+    background-color: var(--ddd-theme-primary, var(--ddd-theme-default-keystoneYellow));
     outline-offset: 2px;
     outline-style: dotted;
     outline-width: 2px;
@@ -962,10 +965,7 @@ export const DDDReset = css`
     height: fit-content;
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     color: var(--ddd-theme-font-color, var(--ddd-theme-default-white, #fff));
-    background-color: var(
-      --ddd-theme-accent-color,
-      var(--ddd-theme-default-info, rgba(175, 184, 193, 0.2))
-    );
+    background-color: var(--ddd-theme-default-info, rgba(175, 184, 193, 0.2));
     font-size: var(--ddd-theme-body-font-size);
     font-weight: var(--ddd-font-primary-regular);
     border-radius: var(--ddd-radius-xs);
