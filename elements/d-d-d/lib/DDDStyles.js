@@ -2884,21 +2884,18 @@ export const DDDBackground = css`
 /* Font weight */
 export const DDDFontWeight = css`
   .fw-0 {
-    font-weight: var(--ddd-font-primary-light); /* available for navigation */
+    font-weight: var(--ddd-font-primary-regular); /* available for navigation */
   }
   .fw-1 {
-    font-weight: var(--ddd-font-primary-regular); /* available for headers */
+    font-weight: var(--ddd-font-primary-medium); /* available for headers */
   }
   .fw-2 {
-    font-weight: var(--ddd-font-primary-medium); /* available for headers */
+    font-weight: var(--ddd-font-primary-bold); /* available for headers */
   }
   .fw-3 {
     font-weight: var(
-      --ddd-font-primary-bold
+      --ddd-font-primary-black
     ); /* default for headers, body & navigation */
-  }
-  .fw-4 {
-    font-weight: var(--ddd-font-primary-black); /* available for headers */
   }
 `;
 /* Font classes */

@@ -26,9 +26,9 @@ class MediaImage extends DDD {
           width: auto;
           margin: auto;
           max-width: 600px;
-          font-family: var(--ddd-font-primary);
-          font-weight: var(--ddd-font-primary-bold);
-          font-size: var(--ddd-font-size-3xs);
+          font-family: var(--ddd-font-secondary);
+          font-weight: var(--ddd-font-secondary-light);
+          font-size: var(--ddd-font-size-4xs);
         }
 
         :host([card]) {
@@ -634,15 +634,12 @@ class MediaImageCitation extends DDD {
           overflow: auto;
         }
 
-        .citation ::slotted(*[slot="citation"]) {
-          font-size: var(--ddd-font-size-4xs);
-        }
-
         .citation {
-          line-height: var(--ddd-lh-140);
-          font-style: italic;
-          color: var(--ddd-theme-default-limestoneGray);
-          margin: var(--ddd-spacing-2) 0;
+          line-height: var(--ddd-lh-120);
+          margin: var(--ddd-spacing-1) 0;
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-navigation-bold);
+          font-family: var(--ddd-font-navigation);
         }
       `,
     ];
@@ -674,6 +671,9 @@ class MediaImageCaption extends DDD {
           display: block;
           overflow: auto;
           margin-top: var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-primary-regular);
+          font-family: var(--ddd-font-primary);
         }
 
         .caption ::slotted(*) {

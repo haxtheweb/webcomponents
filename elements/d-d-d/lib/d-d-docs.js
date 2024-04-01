@@ -293,7 +293,7 @@ class DDDocs extends DDD {
       </table>
       <p class="fw-2 ml-10 mb-15">
         Accessible via css variables:
-        <span class="fw-4">--ddd-breakpoint-x</span>
+        <span class="fw-3">--ddd-breakpoint-x</span>
       </p>
     `;
   }
@@ -810,7 +810,7 @@ class DDDocs extends DDD {
     return html`
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Spacing classes</h2>
       <h6 class="fw-2 ml-10 mb-15">
-        CSS Variable:<span class="fw-4">--ddd-spacing-x</span> (1-30)
+        CSS Variable:<span class="fw-3">--ddd-spacing-x</span> (1-30)
       </h6>
       <div class="grid-3 gap-4 mt-10 mb-5 mx-20">
         <h4>Class Name</h4>
@@ -974,13 +974,13 @@ class DDDocs extends DDD {
       </div>
       <h6 class="fw-2 ml-10 my-0">
         Accessible using format:
-        <span class="fw-4">(m or p)(side [optional])-x</span>
+        <span class="fw-3">(m or p)(side [optional])-x</span>
       </h6>
       <h6 class="fw-2 ml-10">
         Sides: Top (t), Right (r), Bottom (b), Left (l), X (x), Y (y)
       </h6>
       <h6 class="fw-2 ml-10 mb-15">
-        Example: <span class="fw-4">mt-1</span> = margin-top: 4px
+        Example: <span class="fw-3">mt-1</span> = margin-top: 4px
       </h6>
     `;
   }
@@ -1001,7 +1001,7 @@ class DDDocs extends DDD {
           <span class="fw-3"
             ><< Default >> 700 (fw-3) [--ddd-font-primary-bold],</span
           >
-          <span class="fw-4">900 (fw-4) [--ddd-font-primary-black]</span>
+          <span class="fw-3">900 (fw-3) [--ddd-font-primary-black]</span>
         </p>
       </div>
       <div
