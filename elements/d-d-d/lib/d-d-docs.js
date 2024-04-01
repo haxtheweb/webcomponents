@@ -225,6 +225,10 @@ class DDDocs extends DDD {
         <li>license-element</li>
         <li>simple-modal</li>
       </ul>
+    <h3>Testing</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut <span style="color: var(--ddd-theme-default-opportunityGreen); text-decoration: underline; padding: 4px; cursor: pointer;"><simple-icon-lite icon="icons:language" style="--simple-icon-color: var(--ddd-theme-default-opportunityGreen);"></simple-icon-lite>aliquip</span> ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
     `;
   }
 
