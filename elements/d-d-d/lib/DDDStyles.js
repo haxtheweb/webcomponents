@@ -412,12 +412,12 @@ export const DDDReset = css`
   h6 {
     font-family: var(--ddd-font-primary);
     font-weight: var(--ddd-font-primary-bold);
+    line-height: auto;
+    letter-spacing: auto;
   }
 
   h1 {
     margin: var(--ddd-spacing-12) 0 var(--ddd-spacing-8);
-    line-height: auto;
-    letter-spacing: auto;
   }
   h2,
   h3,
@@ -426,8 +426,6 @@ export const DDDReset = css`
   h6 {
     margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-4);
     padding: 0;
-    line-height: auto;
-    letter-spacing: auto;
   }
   h1 + h2,
   h1 + h3,
@@ -463,6 +461,14 @@ export const DDDReset = css`
   }
   h6 {
     font-size: var(--ddd-theme-h6-font-size);
+  }
+  h1 + p,
+  h2 + p,
+  h3 + p,
+  h4 + p,
+  h5 + p,
+  h6 + p {
+    margin-top: 0;
   }
   p {
     margin: var(--ddd-spacing-6) 0;
