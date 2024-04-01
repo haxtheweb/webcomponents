@@ -16,12 +16,12 @@
       import '../simple-picker.js';
       import '../lib/simple-symbol-picker.js';
       import '../lib/simple-emoji-picker.js';
-      import { DataStylePrimary } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+      import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
       let options = []
-      for (let option in DataStylePrimary.options) {
+      for (let option in HAXStore.DataStylePrimary.options) {
         if (option != '') {
           options.push({
-            style: `background-color: var(--ddd-primary-${option})`, alt: DataStylePrimary.options[option], value: option
+            style: `background-color: var(--ddd-primary-${option})`, alt: HAXStore.DataStylePrimary.options[option], value: option
           })
         }
       }

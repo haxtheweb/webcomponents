@@ -189,6 +189,8 @@ class HaxTray extends I18NMixin(
       ...HaxComponentStyles,
       css`
         :host {
+          --simple-fields-detail-font-family: var(--hax-ui-font-family);
+          --simple-fields-font-family: var(--hax-ui-font-family);
           z-index: var(--hax-ui-focus-z-index - 1);
           top: 0;
           font-family: var(--hax-ui-font-family);
@@ -1758,23 +1760,10 @@ class HaxTray extends I18NMixin(
                 }
               }
               // this is a special internal held "property" for layout stuff
-              else if (key === "advanced" && prop === "__scale") {
-                setAhead = true;
-                if (!this._initial) {
-                  this.dispatchEvent(
-                    new CustomEvent("hax-context-item-selected", {
-                      bubbles: true,
-                      composed: true,
-                      detail: {
-                        eventName: "hax-size-change",
-                        value: settings[key][prop],
-                      },
-                    }),
-                  );
-                }
-              } else if (
+              else if (
                 (key === "advanced" && prop === "font-size") ||
                 prop === "text-align" ||
+                prop === "__scale" ||
                 prop === "padding-top" ||
                 prop === "padding-bottom" ||
                 prop === "padding-left" ||

@@ -31,6 +31,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       css`
         :host {
           display: block;
+          font-family: var(--ddd-font-navigation);
         }
         simple-icon-button[hidden] {
           visibility: hidden !important;

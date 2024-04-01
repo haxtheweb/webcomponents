@@ -26,9 +26,9 @@ class MediaImage extends DDD {
           width: auto;
           margin: auto;
           max-width: 600px;
-          font-family: var(--ddd-font-primary);
-          font-weight: var(--ddd-font-primary-bold);
-          font-size: var(--ddd-font-size-3xs);
+          font-family: var(--ddd-font-secondary);
+          font-weight: var(--ddd-font-secondary-light);
+          font-size: var(--ddd-font-size-4xs);
         }
 
         :host([card]) {
@@ -44,6 +44,7 @@ class MediaImage extends DDD {
 
         :host([box]) {
           padding: var(--ddd-spacing-5);
+          background-color: var(--ddd-theme-accent, var(--ddd-accent-2))
         }
         @media screen and (min-width: 650px) {
           :host([size="small"]) {
@@ -119,17 +120,6 @@ class MediaImage extends DDD {
     this.card = false;
     this.box = false;
     this.offset = "none";
-    this.cardColor = "var(--ddd-theme-default-white)";
-  }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "cardColor") {
-        this.style.setProperty("--card-background-color", this.cardColor);
-      }
-    });
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -234,10 +224,6 @@ class MediaImage extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      cardColor: {
-        type: String,
-        reflect: true,
-      },
       link: {
         type: String,
       },
@@ -634,15 +620,12 @@ class MediaImageCitation extends DDD {
           overflow: auto;
         }
 
-        .citation ::slotted(*[slot="citation"]) {
-          font-size: var(--ddd-font-size-4xs);
-        }
-
         .citation {
-          line-height: var(--ddd-lh-140);
-          font-style: italic;
-          color: var(--ddd-theme-default-limestoneGray);
-          margin: var(--ddd-spacing-2) 0;
+          line-height: var(--ddd-lh-120);
+          margin: var(--ddd-spacing-1) 0;
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-navigation-bold);
+          font-family: var(--ddd-font-navigation);
         }
       `,
     ];
@@ -674,6 +657,9 @@ class MediaImageCaption extends DDD {
           display: block;
           overflow: auto;
           margin-top: var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-primary-regular);
+          font-family: var(--ddd-font-primary);
         }
 
         .caption ::slotted(*) {

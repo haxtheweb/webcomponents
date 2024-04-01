@@ -707,7 +707,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       return [
         css`
           :host {
-            font-family: sans-serif;
+            font-family: var(--ddd-font-navigation, sans-serif);
             font-size: 13px;
             flex: 0 1 auto;
             min-width: var(

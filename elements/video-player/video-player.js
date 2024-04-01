@@ -171,7 +171,10 @@ class VideoPlayer extends IntersectionObserverMixin(
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: false,
+      canScale: {
+        min: 50,
+        step: 25,
+      },
       canPosition: false,
       canEditSource: true,
       gizmo: {
@@ -234,12 +237,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             title: "Accent color",
             description: "Select the accent color for the player.",
             inputMethod: "colorpicker",
-          },
-          {
-            property: "dark",
-            title: "Dark theme",
-            description: "Enable dark theme for the player.",
-            inputMethod: "boolean",
           },
           {
             property: "track",
