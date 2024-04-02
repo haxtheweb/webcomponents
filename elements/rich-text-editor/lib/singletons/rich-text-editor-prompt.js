@@ -339,8 +339,11 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
    */
   _confirm(e) {
     e.preventDefault();
+    this.value = this.shadowRoot.querySelector("#formfields").value;
     this.button.confirm(this.value);
-    this.close();
+    setTimeout(() => {
+      this.close();      
+    }, 10);
   }
 }
 customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);

@@ -55,7 +55,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   constructor() {
     super();
     if (super.fields) {
-      this.fields = [...super.fields, , hrefField];
+      this.fields = [...super.fields, hrefField];
     } else {
       this.fields = [
         hrefField,
@@ -159,9 +159,9 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       target:
         !!this.allowTarget &&
         !!this.targetedNode &&
-        this.targetedNode.getAttribute
+        this.targetedNode.getAttribute && this.targetedNode.getAttribute("target")
           ? this.targetedNode.getAttribute("target")
-          : undefined,
+          : "_blank",
       href:
         !!this.targetedNode && this.targetedNode.getAttribute
           ? this.targetedNode.getAttribute("href")

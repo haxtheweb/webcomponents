@@ -161,9 +161,18 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
 
     /**
      * updates insertion based on fields
+     * @event rich-text-editor-prompt-confirm
      */
     confirm(val) {
       this.value = val;
+      this.dispatchEvent(
+        new CustomEvent("rich-text-editor-prompt-confirm", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        }),
+      );
       //this.update();
       this.setToggled();
       this.updateSelection();
@@ -241,7 +250,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       } else {
         this.selectNode(this.targetedNode);
       }
-      this._handleCommand(command, commandVal, this.range);
+      this._handleCommand(command, commandVal, this.range, this.value);
     }
 
     /**

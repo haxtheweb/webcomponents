@@ -2177,7 +2177,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-refresh-tray-form": "refreshActiveNodeForm",
       "rich-text-editor-prompt-open": "_richTextEditorPromptOpen",
-      "rich-text-editor-prompt-close": "_richTextEditorPromptClose",
+      "rich-text-editor-prompt-confirm": "_richTextEditorPromptConfirm",
     };
     // prevent leaving if we are in editMode
     globalThis.onbeforeunload = (e) => {
@@ -2401,9 +2401,28 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       this.__overflowHiddenOnOpen = compStyles.getPropertyValue("overflow");
       globalThis.document.body.style.overflow = "auto";
     }
+    setTimeout(() => {
+      const actions = globalThis.document.querySelector('rich-text-editor-prompt').shadowRoot.querySelector('.actions');
+      if (typeof actions.scrollIntoViewIfNeeded === "function") {
+        actions.scrollIntoViewIfNeeded(true);
+      } else {
+        actions.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+        });
+      }
+    }, 100);
   }
   // set things back on close event
-  _richTextEditorPromptClose() {
+  _richTextEditorPromptConfirm(e) {
+    const target = e.detail.value && e.detail.value.target ? e.detail.value.target : null;
+    setTimeout(() => {
+      // hack for newly created links
+      if (this.activeNode.tagName === 'A' && target) {
+        this.activeNode.setAttribute('target', target);
+        this.refreshActiveNodeForm();
+      }
+    }, 0);
     if (this.__overflowHiddenOnOpen) {
       globalThis.document.body.style.overflow = this.__overflowHiddenOnOpen;
       this.__overflowHiddenOnOpen = null;
