@@ -106,6 +106,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .del {
           margin-left: 32px !important;
         }
+        .goto {
+          margin-left: 32px !important;
+        }
         .add {
           margin-left: 16px !important;
         }
@@ -683,6 +686,13 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
                   @click="${(e) => this.itemOp(index, "delete")}"
                   title="${!item.delete ? "Delete" : "Restore"}"
                   ?disabled="${this.isLocked(index)}"
+                ></simple-icon-button>
+                <simple-icon-button
+                  class="operation goto"
+                  icon="open-in-browser"
+                  accent-color="blue"
+                  @click="${(e) => this.itemOp(index, "goto")}"
+                  title="Go to page"
                 ></simple-icon-button>
               `
             : ``}
@@ -1593,6 +1603,17 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       // verify this is not locked
       if (!this.items[index].metadata.locked) {
         switch (action) {
+          // @note this will force reload which is not ideal but not that big a deal
+          case "goto":
+            this.dispatchEvent(
+              new CustomEvent("simple-modal-hide", {
+                bubbles: true,
+                cancelable: true,
+                detail: {},
+              }),
+            );
+            let href = this.items[index].slug || this.items[index].location;
+            globalThis.location.href = href;
           case "lock":
             this.items[index].metadata.locked = true;
             if (this.hasChildren(this.items[index].id)) {
