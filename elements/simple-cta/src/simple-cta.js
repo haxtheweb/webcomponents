@@ -231,12 +231,6 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
             icon: "editor:format-color-fill",
           },
           {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "boolean",
-          },
-          {
             property: "hideIcon",
             title: "Hide icon",
             description: "Hide the icon used to accent text",

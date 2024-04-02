@@ -63,6 +63,9 @@ class DDDocs extends DDD {
         :host {
         }
         /** some specific hacks for presenting things nicer */
+        .radius {
+          overflow-x: auto;
+        }
         .radius div p.b-sm {
           height: var(--ddd-spacing-10);
         }

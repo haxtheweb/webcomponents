@@ -24,12 +24,12 @@
         "inputMethod": "radio",
         "title": "Design treatment",
         "description": "Well designed preset which toggles other settings",
-        "options": {
-          "custom": "Custom",
-          "antihero": "Anti-hero",
-          "antihero-light": "Anti-hero: Light",
-          "video": "Video"
-        }
+        "itemsList": [
+          { "value": "custom", "text": "Custom" },
+          { "value": "antihero", "text": "Anti-hero" },
+          { "value": "antihero-light", "text": "Anti-hero: Light" },
+          { "value": "video", "text": "Video" }
+        ]
       },
       {
         "property": "image",
