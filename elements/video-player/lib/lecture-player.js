@@ -5,15 +5,21 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 
 class LecturePlayer extends (DDD) {
   static get styles() {
     return [
       super.styles,
       css`
-      :host{
+      simple-modal{
+        --simple-modal-width: 95%;
+        --simple-modal-height: 95%;
+      }
+
+      .modal-content{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr;
         width: calc(100% - 32px);
         height: 100%;
         gap: 16px;
@@ -114,14 +120,19 @@ class LecturePlayer extends (DDD) {
   }
 
   firstUpdated() {
-    this.scan();
+    
   }
 
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === 'activeIndex') {
+        if(!this.shadowRoot.querySelector('video-player').playing){
+          this.play();
+        }
+        this.seek(document.querySelector('#' + this.activeIndex).timestamp);
         this.updateJumbotron();
+        this.updatePlaylist();
       }
     });
   }
@@ -172,12 +183,7 @@ class LecturePlayer extends (DDD) {
         anchor.setAttribute('jumbotronContent', parent.outerHTML);
       }
     });
-    this.activeIndex = 'slide-1';
     this.updatePlaylist();
-  }
-
-  updateVideoPlayer(){
-    this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player").seek(document.querySelector('#' + this.activeIndex).timestamp);
   }
 
   updateJumbotron(){
@@ -230,19 +236,51 @@ class LecturePlayer extends (DDD) {
     return anchors;
   }
 
+  seek(timestamp){
+    console.log('seek');
+    console.log(timestamp);
+    console.log(this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player"));
+    this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+  }
+
+  play(){
+    this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player").play();
+  }
+
+  showModal(){
+    console.log('showModal');
+    let c = document.createElement('div');
+    c.classList.add('modal-content');
+    c.innerHTML = `
+      <div class="videoSection">
+          <video-player source="${this.source}" source-type="${this.sourceType}"></video-player>
+          <div class="playlist">
+            <button class="timestamp-navigation-button"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
+            <div class="timestampList">
+            </div>
+            <button class="timestamp-navigation-button"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
+          </div>
+        </div>
+        <div class="jumbotron">
+      </div>
+    `;
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        elements: { content: c },
+        invokedBy: document.getElementById('lectureActivation'),
+      }
+    });
+    dispatchEvent(evt);
+    this.scan();
+  }
+
   render() {
     return html`
-    <div class="videoSection">
-      <video-player source="${this.source}" source-type="${this.sourceType}"></video-player>
-      <div class="playlist">
-        <button class="timestamp-navigation-button"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
-        <div class="timestampList">
-        </div>
-        <button class="timestamp-navigation-button"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
-      </div>
-    </div>
-    <div class="jumbotron">
-    </div>
+    <button id="lectureActivation" @click="${this.showModal}">Show Modal</button>
+    <simple-modal>
+    </simple-modal>
     `;
   }
 }
