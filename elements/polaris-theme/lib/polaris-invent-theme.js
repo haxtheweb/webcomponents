@@ -530,7 +530,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
                 part="print-btn"
               ></replace-tag>`}
           ${this.QRCodeButton("right")} ${this.EmailPageButton("right")}
-          <div class="left-col ddd-font-nav" part="left-col">
+          <div class="left-col ddd-font-navigation" part="left-col">
             ${this.HAXCMSMobileMenu()}
           </div>
         </div>

@@ -491,6 +491,26 @@ class PageSection extends DDD {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }
+  // implement haxHook to be able to inject the style guide things needed
+  // if we can do this on the visualized preset selector then this means
+  // we can create a pattern in core for the other core attributes
+  /*haxHooks() {
+    return {
+      setupActiveElementForm: "haxsetupActiveElementForm",
+    };
+  }*/
+  /**
+   * @note if we ever wanted to show a preview of the preset, this code would
+   * help make that possible
+   */
+/*  haxsetupActiveElementForm(props) {
+      // get the index of the preset key
+      let presetKey = props.settings.configure.findIndex(j => j.property === "preset");
+      props.settings.configure[presetKey].itemsList.map(item => {
+        item.html = html`<strong>${item.text}</strong>`;
+      })
+    }
+  */
 }
 customElements.define(PageSection.tag, PageSection);
 export { PageSection };

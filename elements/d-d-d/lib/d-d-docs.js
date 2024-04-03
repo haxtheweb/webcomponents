@@ -168,44 +168,95 @@ class DDDocs extends DDD {
           margin-left: 0 var(--ddd-spacing-4);
         }
 
-        .my-16{
+        .my-16 {
           margin: var(--ddd-spacing-4) 0;
         }
       `,
     ];
   }
 
-  renderHeaderSample(){
+  renderHeaderSample() {
     let headers = [];
     for (let i = 0; i < 22; i++) {
-      headers.push(html` 
-        <details  style="max-width: 100%; margin: 0 64px;"><summary data-primary="${i}" style="color: var(--ddd-theme-primary);">Header Sample ${i}</summary>
-        ${Array(6).fill().map((_, y) => html`
-          <div class="my-16" data-accent data-primary="${i}" style="--ddd-theme-accent: var(--ddd-accent-${y}); border: var(--ddd-border-sm); border-color: var(--ddd-theme-primary);">
-            <h2 data-primary="${i}" data-design-treatment="horz">Discover Penn State</h2>
-            <p>ddd-primary-${i}</p>
-            <p>ddd-accent-${y}</p>
-          </div>
-        `)}
-        <p data-primary="${i}" data-design-treatment="dropCap" data-accent="2"> Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.</p>
-        ${Array(6).fill().map((_, n) => {
-          if (n === 0) {
-            return html`<h2 data-primary="${i}" data-design-treatment="vert">Sample Header</h2>`;
-          } else if (n === 1) {
-            return html`<h2 data-primary="${i}" data-design-treatment="horz">Sample Header</h2>`;
-          } else if (n === 2) {
-            return html`<h2 data-primary="${i}" data-design-treatment="bg">Sample Header</h2>`;
-          } else if (n === 3) {
-            return html`<h2 data-primary="${i}" data-instructional-action>Sample Header</h2>`;
-          } else if (n === 4) {
-            return html`<h2 data-primary="${i}" data-instructional-action data-design-treatment="horz">Sample Header</h2>`;
-          } else if (n === 5) {
-            return html`<h2 data-primary="${i}" data-instructional-action data-design-treatment="bg">Sample Header</h2>`;
-          }
-        })}
+      headers.push(html`
+        <details style="max-width: 100%; margin: 0 64px;">
+          <summary data-primary="${i}" style="color: var(--ddd-theme-primary);">
+            Header Sample ${i}
+          </summary>
+          ${Array(6)
+            .fill()
+            .map(
+              (_, y) => html`
+                <div
+                  class="my-16"
+                  data-accent
+                  data-primary="${i}"
+                  style="--ddd-theme-accent: var(--ddd-accent-${y}); border: var(--ddd-border-sm); border-color: var(--ddd-theme-primary);"
+                >
+                  <h2 data-primary="${i}" data-design-treatment="horz">
+                    Discover Penn State
+                  </h2>
+                  <p>ddd-primary-${i}</p>
+                  <p>ddd-accent-${y}</p>
+                </div>
+              `,
+            )}
+          <p
+            data-primary="${i}"
+            data-design-treatment="dropCap"
+            data-accent="2"
+          >
+            Penn State is a top-ranked research university and Pennsylvania's
+            sole land-grant institution, founded with a mission of high-quality
+            teaching, expert research, and global service. Discover a
+            community—more than 775,000 strong—driven to make a difference.
+          </p>
+          ${Array(6)
+            .fill()
+            .map((_, n) => {
+              if (n === 0) {
+                return html`<h2
+                  data-primary="${i}"
+                  data-design-treatment="vert"
+                >
+                  Sample Header
+                </h2>`;
+              } else if (n === 1) {
+                return html`<h2
+                  data-primary="${i}"
+                  data-design-treatment="horz"
+                >
+                  Sample Header
+                </h2>`;
+              } else if (n === 2) {
+                return html`<h2 data-primary="${i}" data-design-treatment="bg">
+                  Sample Header
+                </h2>`;
+              } else if (n === 3) {
+                return html`<h2 data-primary="${i}" data-instructional-action>
+                  Sample Header
+                </h2>`;
+              } else if (n === 4) {
+                return html`<h2
+                  data-primary="${i}"
+                  data-instructional-action
+                  data-design-treatment="horz"
+                >
+                  Sample Header
+                </h2>`;
+              } else if (n === 5) {
+                return html`<h2
+                  data-primary="${i}"
+                  data-instructional-action
+                  data-design-treatment="bg"
+                >
+                  Sample Header
+                </h2>`;
+              }
+            })}
         </details>
       `);
-    };
+    }
     return headers;
   }
 
@@ -228,9 +279,23 @@ class DDDocs extends DDD {
         <li>license-element</li>
         <li>simple-modal</li>
       </ul>
-    <h3>Testing</h3>
+      <h3>Testing</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut <span style="color: var(--ddd-theme-default-opportunityGreen); text-decoration: underline; padding: 4px; cursor: pointer;"><simple-icon-lite icon="icons:language" style="--simple-icon-color: var(--ddd-theme-default-opportunityGreen);"></simple-icon-lite>aliquip</span> ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut
+        <span
+          style="color: var(--ddd-theme-default-opportunityGreen); text-decoration: underline; padding: 4px; cursor: pointer;"
+          ><simple-icon-lite
+            icon="icons:language"
+            style="--simple-icon-color: var(--ddd-theme-default-opportunityGreen);"
+          ></simple-icon-lite
+          >aliquip</span
+        >
+        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
       </p>
     `;
   }
@@ -1153,55 +1218,55 @@ class DDDocs extends DDD {
         class="b-1 grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
         <p>16</p>
-        <h3 class="ddd-font-nav fs-4xs my-1 mx-0">
+        <h3 class="ddd-font-navigation fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>18</p>
-        <h3 class="ddd-font-nav fs-3xs my-1 mx-0">
+        <h3 class="ddd-font-navigation fs-3xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>20</p>
-        <h3 class="ddd-font-nav fs-xxs m-0">
+        <h3 class="ddd-font-navigation fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>24</p>
-        <h3 class="ddd-font-nav fs-xs m-0">
+        <h3 class="ddd-font-navigation fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>28</p>
-        <h3 class="ddd-font-nav fs-s m-0">
+        <h3 class="ddd-font-navigation fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>32</p>
-        <h3 class="ddd-font-nav fs-ms m-0">
+        <h3 class="ddd-font-navigation fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>36</p>
-        <h3 class="ddd-font-nav fs-m m-0">
+        <h3 class="ddd-font-navigation fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>40</p>
-        <h3 class="ddd-font-nav fs-ml m-0">
+        <h3 class="ddd-font-navigation fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>44</p>
-        <h3 class="ddd-font-nav fs-l m-0">
+        <h3 class="ddd-font-navigation fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>48</p>
-        <h3 class="ddd-font-nav fs-xl m-0">
+        <h3 class="ddd-font-navigation fs-xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>56</p>
-        <h3 class="ddd-font-nav fs-xxl m-0">
+        <h3 class="ddd-font-navigation fs-xxl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>64</p>
-        <h3 class="ddd-font-nav fs-3xl m-0">
+        <h3 class="ddd-font-navigation fs-3xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
         <p>72</p>
-        <h3 class="ddd-font-nav fs-4xl m-0">
+        <h3 class="ddd-font-navigation fs-4xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
       </div>
@@ -1690,9 +1755,7 @@ class DDDocs extends DDD {
             title="1.3"
             description="Default color styling (accent color enabled)"
           ></figure-label>
-          <div
-            style="--ddd-theme-accent: var(--ddd-theme-default-pughBlue);"
-          >
+          <div style="--ddd-theme-accent: var(--ddd-theme-default-pughBlue);">
             <figure-label
               title="1.3"
               description="Application override color set"

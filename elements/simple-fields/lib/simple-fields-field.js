@@ -652,23 +652,11 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                     }
                   }}"
                 >
-                <!-- NEED SOME WAY OF ACCESSING THIS TO MODIFY HOW THE OPTION IS PRESENTED
-                BUT JUST FOR THESE SPECIAL OPTIONS IN A RADIO LIST
-                BUT WITHOUT APPLYING SOME HACKY WAY OF DOING SO
-                Possibly with css variables, or with some kind of option.unsafeHTML flag
-                which then wraps the .text param so that it can process HTML template data.
-                or... could I just have a return which is an html object so it'll sanitize
-                appropriately. Really I just need the ability to place some kind of ddd-sample
-                tag which shows a sample representation of what it will do in context of the text
-                label. Like the letter T really big, or bold, or a color square or line thickness
-                just like in our docs, but then the user can glance and see what it'll do and then
-                select accordingly.
-                -->
                   <label
                     for="${this.id}.${option.value}"
                     class="radio-label"
                     part="option-label"
-                    >${option.text}</label
+                    >${option.html ? html`${option.html}` : option.text}</label
                   >${this.getInput(option)}
                 </div>
               `,
@@ -861,7 +849,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                   : this.value === option.value}"
                 .value="${option.value}"
               >
-                ${option.text}
+                ${option.html ? html`${option.html}` : option.text}
               </option>
             `,
           )}
