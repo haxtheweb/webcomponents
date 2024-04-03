@@ -6,11 +6,6 @@ import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "./lib/h-a-x-dependencies.js";
 import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 import { editableTableDisplayStyles } from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import {
-  learningComponentColors,
-  iconFromPageType,
-} from "@lrnwebcomponents/course-design/lib/learning-component.js";
 
 /**
  * `h-a-x`
@@ -27,176 +22,11 @@ import {
 class HAX extends HTMLElement {
   // render function
   get html() {
-    let decorationStyles = ["red", "blue", "green", "orange", "purple"].map(
-      (item) =>
-        `
-        [data-style-decoration~="highlight"] {
-          color: var(--haxcms-style-element-color, white) !important;
-          background-color: var(--haxcms-style-element-background-color, black) !important;
-          font-weight: 400;
-          word-wrap: break-word;
-          padding: 4px 8px;
-          text-transform: uppercase;
-          text-decoration: none;
-        }
-        [data-style-decoration~="${item}"] {
-          --haxcms-style-element-background-color: var(--simple-colors-default-theme-${item}-7, ${item});
-        }
-        `,
-    );
-    let instructionalStyles = Object.keys(learningComponentColors).map(
-      (item) => {
-        let color = learningComponentColors[item];
-        return `
-        [data-instructional-action="${item}"] {
-          --hax-action-color: var(--simple-colors-default-theme-${color}-8, ${color});
-          --hax-action-line-color: var(--simple-colors-default-theme-${color}-8, ${color});
-          --hax-action-accent-color: #eeeeee;
-          --hax-action-border: var(--simple-colors-default-theme-${color}-8, ${color}) solid 3px;
-        }
-        [data-instructional-action="${item}"]::before {
-          -webkit-mask-image: url("${SimpleIconsetStore.getIcon(
-            iconFromPageType(item),
-          )}");
-        }
-        `;
-      },
-    );
     return `
     <style>
-    ${decorationStyles.join("\n")}
-    ${instructionalStyles.join("\n")}
     ${editableTableDisplayStyles
       .map((s) => s.cssText.replace(/:host/g, "hax-body table"))
       .join(" ")}
-    [data-style-decoration] {
-      --mark-red-bg: #fbe4e4;
-      --mark-pink-bg: #f4dfeb;
-      --mark-blue-bg: #ddebf1;
-      --mark-purple-bg: #eae4f2;
-      --mark-teal-bg: #ddedea;
-      --mark-yellow-bg: #fbf3db;
-      --mark-orange-bg: #faebdd;
-      --mark-brown-bg: #e9e5e3;
-      --mark-gray-bg: #ebeced;
-    }
-    [data-style-block-decoration] {
-      --mark-red-bg-callout: hsla(0,74%,94%,.3);
-      --mark-pink-bg-callout: rgba(244,223,235,.3);
-      --mark-blue-bg-callout: rgba(221,235,241,.3);
-      --mark-purple-bg-callout: rgba(234,228,242,.3);
-      --mark-teal-bg-callout: rgba(221,237,234,.3);
-      --mark-yellow-bg-callout: hsla(45,80%,92%,.3);
-      --mark-orange-bg-callout: hsla(29,74%,92%,.3);
-      --mark-brown-bg-callout: hsla(20,12%,90%,.3);
-      --mark-gray-bg-callout: hsla(210,5%,93%,.3);
-      padding: 16px 16px 16px 12px;
-      border-radius: 3px;
-      align-items: center;
-      box-sizing: border-box;
-      margin: 0.75em 0;
-      border: 2px solid rgba(55,53,47,.09);
-    }
-    [data-style-block-decoration="callout-red"]{
-      background-color: var(--mark-red-bg-callout);
-    }
-    
-    [data-style-block-decoration="callout-pink"]{
-        background-color: var(--mark-pink-bg-callout);
-    }
-    
-    [data-style-block-decoration="callout-blue"]{
-        background-color: var(--mark-blue-bg-callout);
-    }
-    
-    [data-style-block-decoration="callout-purple"]{
-        background-color: var(--mark-purple-bg-callout);
-    }
-    
-    [data-style-block-decoration="callout-teal"]{
-        background-color: var(--mark-teal-bg-callout);
-    }
-    
-    [data-style-block-decoration="callout-yellow"]{
-        background-color: var(--mark-yellow-bg-callout);
-    }
-    
-    [data-style-block-decoration="callout-orange"]{
-        background-color: var(--mark-orange-bg-callout);
-    }
-    
-    [data-style-block-decoration="callout-brown"]{
-        background-color: var(--mark-brown-bg-callout);
-    }
-    [data-style-block-decoration="callout-gray"]{
-        background-color: var(--mark-gray-bg-callout);
-    }
-    [data-style-decoration="mark-blue"],[data-style-decoration="mark-brown"],[data-style-decoration="mark-gray"],[data-style-decoration="mark-orange"],[data-style-decoration="mark-pink"],[data-style-decoration="mark-purple"],[data-style-decoration="mark-red"],[data-style-decoration="mark-teal"],[data-style-decoration="mark-yellow"] {
-      --bg-color: transparent;  
-      padding: 0 .5rem;
-      margin: 0 -.5rem 0 -.25rem;
-      border-radius: .5rem;
-      border-bottom-left-radius: .125rem;
-      -webkit-box-decoration-break: clone;
-      box-decoration-break: clone;
-      background-color: transparent;
-      background-image: linear-gradient(119deg,var(--bg-color),#fff697 10.5%,#fdf59d 85.29%,var(--bg-color));
-    }
-
-    [data-style-decoration="mark-pink"],[data-style-decoration="mark-purple"] {
-        background-image: linear-gradient(119deg,var(--bg-color),#f5b8d1 10.5%,#f9bcd3 85.29%,var(--bg-color))
-    }
-
-    [data-style-decoration="mark-blue"],[data-style-decoration="mark-gray"] {
-        background-image: linear-gradient(119deg,var(--bg-color),#adedfc 10.5%,#adebfd 85.29%,var(--bg-color));
-    }
-
-    [data-style-decoration="mark-orange"],[data-style-decoration="mark-red"] {
-        background-image: linear-gradient(119deg,var(--bg-color),#f5c4ff 10.5%,#e7a8fc 85.29%,var(--bg-color))
-    }
-
-    [data-style-decoration="mark-teal"] {
-        background-image: linear-gradient(119deg,var(--bg-color),#d4eabc 10.5%,#d2eabc 85.29%,var(--bg-color))
-    }
-
-    [data-style-decoration="mark-brown"] {
-        background-image: linear-gradient(119deg,var(--bg-color),#96b8ec 10.5%,#a6c3f0 85.29%,var(--bg-color))
-    }
-    [data-style-decoration="mark-red"] {
-        background-color: var(--mark-red-bg)
-    }
-
-    [data-style-decoration="mark-pink"] {
-        background-color: var(--mark-pink-bg)
-    }
-
-    [data-style-decoration="mark-blue"] {
-        background-color: var(--mark-blue-bg)
-    }
-
-    [data-style-decoration="mark-purple"] {
-        background-color: var(--mark-purple-bg)
-    }
-
-    [data-style-decoration="mark-teal"] {
-        background-color: var(--mark-teal-bg)
-    }
-
-    [data-style-decoration="mark-yellow"] {
-        background-color: var(--mark-yellow-bg)
-    }
-
-    [data-style-decoration="mark-orange"] {
-        background-color: var(--mark-orange-bg)
-    }
-
-    [data-style-decoration="mark-brown"] {
-        background-color: var(--mark-brown-bg)
-    }
-
-    [data-style-decoration="mark-gray"] {
-        background-color: var(--mark-gray-bg)
-    }
 
     :host,h-a-x {
       display: block;
