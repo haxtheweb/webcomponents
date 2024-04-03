@@ -409,8 +409,10 @@ export const DDDVariables = css`
     font-weight: var(--ddd-font-primary-regular);
     letter-spacing: normal;
   }
-
-  [data-primary="0"] {
+`;
+/* Data Attributes used by HAX */
+export const DDDDataAttributes = css`
+[data-primary="0"] {
     --ddd-theme-primary: var(--ddd-primary-0);
     --lowContrast-override: black;
   }
@@ -574,10 +576,7 @@ export const DDDVariables = css`
   }
   [data-font-size="m"] {
     font-size: var(--ddd-font-size-m);
-  }
-  [data-font-size="ml"] {
-    font-size: var(--ddd-font-size-ml);
-  }
+  }s
   [data-font-size="l"] {
     font-size: var(--ddd-font-size-l);
   }
@@ -593,7 +592,17 @@ export const DDDVariables = css`
   [data-font-size="4xl"] {
     font-size: var(--ddd-font-size-4xl);
   }
+  [data-font-size="type1-s"] {
+    font-size: var(--ddd-font-size-type1-s);
+  }
+  [data-font-size="type1-m"] {
+    font-size: var(--ddd-font-size-type1-m);
+  }
+  [data-font-size="type1-l"] {
+    font-size: var(--ddd-font-size-type1-l);
+  }
 `;
+
 /* Tag based application */
 export const DDDReset = css`
   h1,
@@ -3266,6 +3275,7 @@ export const DDDExtra = css`
 // export that has all of them for easy stamping as a single sheet
 export const DDDAllStyles = [
   DDDVariables,
+  DDDDataAttributes,
   DDDReset,
   DDDBreadcrumb,
   DDDExtra,

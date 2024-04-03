@@ -1,7 +1,12 @@
-import { DDD } from "../d-d-d.js";
-import { html, css } from "lit";
+import { DDDSuper } from "../d-d-d.js";
+import { DDDDataAttributes } from "./DDDStyles.js";
 
-export class DDDSample extends DDD {
+import { html, css, LitElement } from "lit";
+
+// REFACTOR TO NOT COME FROM HERE
+import { learningComponentTypes } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+
+export class DDDSample extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.type = null;
@@ -11,6 +16,7 @@ export class DDDSample extends DDD {
 
   static get styles() {
     return [
+      DDDDataAttributes,
       super.styles,
       css`
         :host {
@@ -52,12 +58,12 @@ export class DDDSample extends DDD {
       let span;
       // accent, primary, spacing
       if (['accent','primary', 'spacing'].includes(this.type)) {
-        span = this.shadow.querySelector('span.sample');
+        span = this.shadowRoot.querySelector('span.sample');
       }
       else {
-        span = this.shadow.querySelector('span.label');
+        span = this.shadowRoot.querySelector('span.label');
       }
-      for (let i in SampleData) {
+      for (let i in DDDAttributeData) {
         span.removeAttribute(`data-${i}`);
       }
       // delay to ensure prev executes in order
@@ -65,11 +71,17 @@ export class DDDSample extends DDD {
         span.setAttribute(`data-${this.type}`, this.option);
       }, 0);
     }
+    if (changedProperties.has('option') && this.shadowRoot && this.type) {
+      let span = this.shadowRoot.querySelector(`span[data-${this.type}]`);
+      if (span) {
+        span.setAttribute(`data-${this.type}`, this.option);
+      }
+    }
   }
 
   render() {
     return html`
-      <span class="sample" style="${this.type === "spacing" ? 'width: var(--ddd-spacing-${this.option});' : ''}"></span><span class="label">${SampleData[this.type][this.option]}<slot></slot></span>
+      <span class="sample" style="${this.type === "spacing" ? 'width: var(--ddd-spacing-${this.option});' : ''}"></span><span class="label">${DDDAttributeData[this.type][this.option]}<slot></slot></span>
     `;
   }
 
@@ -80,11 +92,15 @@ export class DDDSample extends DDD {
       display: { type: String, reflect: true },
     }
   }
+
+  static get tag() {
+    return "d-d-d-sample";
+  }
 }
 
 globalThis.customElements.define(DDDSample.tag, DDDSample);
 
-export const SampleData = {
+export const DDDAttributeData = {
   "font-family": {
     primary: "Primary",
     secondary: "Secondary",
@@ -114,97 +130,57 @@ export const SampleData = {
     "type1-s": "TypeS",
     "type1-m": "TypeM",
     "type1-l": "TypeL",
-  }
+  },
+  primary: {
+    0: "Pugh blue",
+    1: "Beaver blue",
+    2: "Nittany navy",
+    3: "Potential midnight",
+    4: "Coaly gray",
+    5: "Limestone gray",
+    6: "Slate gray",
+    7: "Creek teal",
+    8: "Sky blue",
+    9: "Shrine tan",
+    10: "Roar golden",
+    11: "Original 87 pink",
+    12: "Discovery coral",
+    13: "Wonder purple",
+    14: "Artherton violet",
+    15: "Invent orange",
+    16: "Keystone yellow",
+    17: "Opportunity green",
+    18: "Future lime",
+    19: "Forest green",
+    20: "Landgrant brown",
+    21: "Global Neon",
+  },
+  accent: {
+    0: "Sky Max",
+    1: "Slate Max",
+    2: "Limestone Max",
+    3: "Shrine Max",
+    4: "Roar Max",
+    5: "Creek Max",
+    6: "White",
+  },
+  "design-treatment": {
+    // heading treatments
+    "vert": "Vertical line",
+    "horz-10p": "Horizontal line 10%",
+    "horz-25p": "Horizontal line 25%",
+    "horz-50p": "Horizontal line 50%",
+    "horz-full": "Horizontal line 100%",
+    "horz-md": "Horizontal line Medium",
+    "horz-lg": "Horizontal line Large",
+    "horz": "Horizontal line",
+    "bg": "Background color",
+    // text treatment
+    "dropCap-xs": "Drop Cap - xs",
+    "dropCap-sm": "Drop Cap - sm",
+    "dropCap-md": "Drop Cap - md",
+    "dropCap-lg": "Drop Cap - lg",
+    "dropCap-xl": "Drop Cap - xl",
+  },
+  "instructional-action": learningComponentTypes
 };
-
-const DataStylePrimary = {
-      attribute: "data-primary",
-      title: "Primary color",
-      description: "Primary color to apply color, often for meaning or aesthetic",
-      inputMethod: "select",
-      options: {
-        "": "",
-        0: "Pugh blue",
-        1: "Beaver blue",
-        2: "Nittany navy",
-        3: "Potential midnight",
-        4: "Coaly gray",
-        5: "Limestone gray",
-        6: "Slate gray",
-        7: "Creek teal",
-        8: "Sky blue",
-        9: "Shrine tan",
-        10: "Roar golden",
-        11: "Original 87 pink",
-        12: "Discovery coral",
-        13: "Wonder purple",
-        14: "Artherton violet",
-        15: "Invent orange",
-        16: "Keystone yellow",
-        17: "Opportunity green",
-        18: "Future lime",
-        19: "Forest green",
-        20: "Landgrant brown",
-        21: "Global Neon",
-      },
-    };
-    const DataStyleAccent = {
-      attribute: "data-accent",
-      title: "Accent color",
-      description: "Accent color to apply color, often for meaning or aesthetic",
-      inputMethod: "select",
-      options: {
-        "": "",
-        0: "Sky Max",
-        1: "Slate Max",
-        2: "Limestone Max",
-        3: "Shrine Max",
-        4: "Roar Max",
-        5: "Creek Max",
-        6: "White",
-      },
-    };
-    const DataHeadingDesignTreatment = {
-      attribute: "data-design-treatment",
-      title: "Design treatment",
-      description: "Minor design treatment leveraging Primary color value",
-      inputMethod: "select",
-      options: {
-        "": "",
-        "vert": "Vertical line",
-        "horz-10p": "Horizontal line 10%",
-        "horz-25p": "Horizontal line 25%",
-        "horz-50p": "Horizontal line 50%",
-        "horz-full": "Horizontal line 100%",
-        "horz-md": "Horizontal line Medium",
-        "horz-lg": "Horizontal line Large",
-        "horz": "Horizontal line",
-        "bg": "Background color",
-      },
-    };
-    
-    const DataTextDesignTreatment = {
-      attribute: "data-design-treatment",
-      title: "Design treatment",
-      description: "Minor design treatment leveraging Primary color value",
-      inputMethod: "select",
-      options: {
-        "": "",
-        "dropCap-xs": "Drop Cap - xs",
-        "dropCap-sm": "Drop Cap - sm",
-        "dropCap-md": "Drop Cap - md",
-        "dropCap-lg": "Drop Cap - lg",
-        "dropCap-xl": "Drop Cap - xl",
-      },
-    };
-    
-    const DataInstructionalAction = {
-      attribute: "data-instructional-action",
-      title: "Type",
-      description: "Indicates instructional context to users visually",
-      inputMethod: "select",
-      options: {
-        "": "-- none --",
-        ...learningComponentTypes,
-      },
-    };

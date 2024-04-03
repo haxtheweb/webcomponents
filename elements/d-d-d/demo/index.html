@@ -7,16 +7,31 @@
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lib/d-d-docs.js';
-      import "../lib/d-d-d-sample.ks";
+      import { DDDAttributeData } from "../lib/d-d-d-sample.js";
+      import { render, html } from "lit";
+
+      const area = html`
+      
+      ${Object.keys(DDDAttributeData).map((key) => html`
+        <h2>${key}</h2>
+        <div>
+        ${Object.keys(DDDAttributeData[key]).map((key2) => html`
+          <d-d-d-sample type="${key}" option="${key2}"></d-d-d-sample>          
+          `)}
+        </div>
+      `)}
+      `;
+      render(area, globalThis.document.querySelector('#samples'));
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      d-d-d-sample {
+        display: block;
+      }
+    </style>
   </head>
   <body>
-    <d-d-d-sample type="font-family" option="primary"></d-d-d-sample>
-    <d-d-d-sample type="font-weight" option="bold"></d-d-d-sample>
+    <div id="samples"></div>
     <d-d-docs></d-d-docs>
 
     <p data-design-treatment="dropCap">Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.Penn State is a top-ranked research university and Pennsylvania's sole land-grant institution, founded with a mission of high-quality teaching, expert research, and global service. Discover a community—more than 775,000 strong—driven to make a difference.</p>
