@@ -5,15 +5,21 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 
 class LecturePlayer extends (DDD) {
   static get styles() {
     return [
       super.styles,
       css`
-      :host{
+      simple-modal{
+        --simple-modal-width: 95%;
+        --simple-modal-height: 95%;
+      }
+
+      .modal-content{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr;
         width: calc(100% - 32px);
         height: 100%;
         gap: 16px;
@@ -51,6 +57,7 @@ class LecturePlayer extends (DDD) {
         display: flex;
         border: 1px solid black;
         background: #bab8b8;
+        overflow-x: scroll;
       }
 
       .timestampBtn{
@@ -113,15 +120,16 @@ class LecturePlayer extends (DDD) {
     };
   }
 
-  firstUpdated() {
-    this.scan();
-  }
-
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === 'activeIndex') {
+        if(!this.shadowRoot.querySelector('video-player').playing){
+          this.play();
+        }
+        this.seek(document.querySelector('#' + this.activeIndex).timestamp);
         this.updateJumbotron();
+        this.updatePlaylist();
       }
     });
   }
@@ -172,12 +180,26 @@ class LecturePlayer extends (DDD) {
         anchor.setAttribute('jumbotronContent', parent.outerHTML);
       }
     });
-    this.activeIndex = 'slide-1';
+    this.addPrevNextListeners();
     this.updatePlaylist();
   }
 
-  updateVideoPlayer(){
-    this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player").seek(document.querySelector('#' + this.activeIndex).timestamp);
+  addPrevNextListeners(){
+    console.log('addPrevNextListeners');
+    const prevSlideBtn = this.shadowRoot.querySelector('#prevSlideBtn');
+    const nextSlideBtn = this.shadowRoot.querySelector('#nextSlideBtn');
+    prevSlideBtn.addEventListener('click', () => {
+      const prevSlide = this.activeIndex.split('-')[1] > 1 ? this.activeIndex.split('-')[1] - 1 : null;
+      if (prevSlide) {
+        this.activeIndex = 'slide-' + prevSlide;
+      }
+    });
+    nextSlideBtn.addEventListener('click', () => {
+      const nextSlide = this.activeIndex.split('-')[1] < document.querySelectorAll('lecture-anchor').length ? parseInt(this.activeIndex.split('-')[1]) + 1 : null;
+      if (nextSlide) {
+        this.activeIndex = 'slide-' + nextSlide;
+      }
+    });
   }
 
   updateJumbotron(){
@@ -218,7 +240,9 @@ class LecturePlayer extends (DDD) {
     });
   }
 
-  getSortedAnchors() {
+  getSortedAnchors() { 
+    // Returns an array of all the lecture-anchor elements sorted by timestamp, to assing their IDs in order
+    // May need to support the option for sorting by how the tags appear in the content order
     let anchors = [];
     let i = 1;
     let anchor = document.querySelector(`#slide-${i}`);
@@ -230,19 +254,51 @@ class LecturePlayer extends (DDD) {
     return anchors;
   }
 
+  seek(timestamp){
+    console.log('seek');
+    console.log(timestamp);
+    console.log(this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player"));
+    this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+  }
+
+  play(){
+    this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player").play();
+  }
+
+  showModal(){
+    console.log('showModal');
+    let c = document.createElement('div');
+    c.classList.add('modal-content');
+    c.innerHTML = `
+      <div class="videoSection">
+          <video-player source="${this.source}" source-type="${this.sourceType}"></video-player>
+          <div class="playlist">
+            <button class="timestamp-navigation-button" id="prevSlideBtn"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
+            <div class="timestampList">
+            </div>
+            <button class="timestamp-navigation-button" id="nextSlideBtn"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
+          </div>
+        </div>
+        <div class="jumbotron">
+      </div>
+    `;
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        elements: { content: c },
+        invokedBy: document.getElementById('lectureActivation'),
+      }
+    });
+    dispatchEvent(evt);
+    this.scan();
+  }
+
   render() {
     return html`
-    <div class="videoSection">
-      <video-player source="${this.source}" source-type="${this.sourceType}"></video-player>
-      <div class="playlist">
-        <button class="timestamp-navigation-button"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
-        <div class="timestampList">
-        </div>
-        <button class="timestamp-navigation-button"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
-      </div>
-    </div>
-    <div class="jumbotron">
-    </div>
+    <button id="lectureActivation" @click="${this.showModal}">Show Modal</button>
+    <simple-modal>
+    </simple-modal>
     `;
   }
 }
