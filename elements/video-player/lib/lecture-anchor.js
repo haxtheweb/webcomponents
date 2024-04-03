@@ -28,22 +28,26 @@ class LectureAnchor extends (DDD) {
     this.jumbotronContent = "";
   }
 
-  static styles = css`
-    :host{
-      cursor: pointer;
-    }
+  static get styles() {
+    return [
+      super.styles,
+      css`
+      :host{
+        cursor: pointer;
+      }
 
-    simple-icon-lite{
-      padding-bottom: var(--ddd-spacing-1);
-      --simple-icon-color: var(--ddd-theme-primary, black);
-    }
+      simple-icon-lite{
+        padding-bottom: var(--ddd-spacing-1);
+        --simple-icon-color: var(--ddd-theme-primary, black);
+      }
 
-    mark{
-      background-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
-      color: var(--ddd-theme-primary, black);
-      padding: var(--ddd-spacing-1);
-    }
-  `;
+      mark{
+        background-color: var(--ddd-theme-accent, var(--ddd-theme-default-keystoneYellow));
+        color: var(--ddd-theme-primary, black);
+        padding: var(--ddd-spacing-1);
+      }`
+    ];
+  }
 
   clickHandler(e) {
     console.log(e.type);
