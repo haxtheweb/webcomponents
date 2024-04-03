@@ -57,6 +57,7 @@ class LecturePlayer extends (DDD) {
         display: flex;
         border: 1px solid black;
         background: #bab8b8;
+        overflow-x: scroll;
       }
 
       .timestampBtn{
@@ -119,10 +120,6 @@ class LecturePlayer extends (DDD) {
     };
   }
 
-  firstUpdated() {
-    
-  }
-
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
@@ -183,7 +180,26 @@ class LecturePlayer extends (DDD) {
         anchor.setAttribute('jumbotronContent', parent.outerHTML);
       }
     });
+    this.addPrevNextListeners();
     this.updatePlaylist();
+  }
+
+  addPrevNextListeners(){
+    console.log('addPrevNextListeners');
+    const prevSlideBtn = this.shadowRoot.querySelector('#prevSlideBtn');
+    const nextSlideBtn = this.shadowRoot.querySelector('#nextSlideBtn');
+    prevSlideBtn.addEventListener('click', () => {
+      const prevSlide = this.activeIndex.split('-')[1] > 1 ? this.activeIndex.split('-')[1] - 1 : null;
+      if (prevSlide) {
+        this.activeIndex = 'slide-' + prevSlide;
+      }
+    });
+    nextSlideBtn.addEventListener('click', () => {
+      const nextSlide = this.activeIndex.split('-')[1] < document.querySelectorAll('lecture-anchor').length ? parseInt(this.activeIndex.split('-')[1]) + 1 : null;
+      if (nextSlide) {
+        this.activeIndex = 'slide-' + nextSlide;
+      }
+    });
   }
 
   updateJumbotron(){
@@ -224,7 +240,9 @@ class LecturePlayer extends (DDD) {
     });
   }
 
-  getSortedAnchors() {
+  getSortedAnchors() { 
+    // Returns an array of all the lecture-anchor elements sorted by timestamp, to assing their IDs in order
+    // May need to support the option for sorting by how the tags appear in the content order
     let anchors = [];
     let i = 1;
     let anchor = document.querySelector(`#slide-${i}`);
@@ -255,10 +273,10 @@ class LecturePlayer extends (DDD) {
       <div class="videoSection">
           <video-player source="${this.source}" source-type="${this.sourceType}"></video-player>
           <div class="playlist">
-            <button class="timestamp-navigation-button"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
+            <button class="timestamp-navigation-button" id="prevSlideBtn"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
             <div class="timestampList">
             </div>
-            <button class="timestamp-navigation-button"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
+            <button class="timestamp-navigation-button" id="nextSlideBtn"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
           </div>
         </div>
         <div class="jumbotron">
