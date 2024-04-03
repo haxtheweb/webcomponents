@@ -18,6 +18,18 @@ class LecturePlayer extends DDDSuper(LitElement) {
         font-family: var(--ddd-font-primary, sans-serif);
       }
 
+      #lectureActivation{
+        font-family: var(--ddd-font-primary, sans-serif);
+        font-size: var(--ddd-theme-body-font-size, 16px);
+        background: var(--ddd-theme-primary);
+        color: var(--ddd-theme-bgContrast, black);
+        cursor: pointer;
+        padding: var(--ddd-spacing-4);
+        height: fit-content;
+        margin: auto;
+        border-radius: var(--ddd-radius-sm);
+      }
+
       simple-modal{
         --simple-modal-width: 95%;
         --simple-modal-height: 95%;
