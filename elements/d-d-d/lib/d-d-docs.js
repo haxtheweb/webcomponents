@@ -1620,6 +1620,7 @@ class DDDocs extends DDD {
         >
       </div>
     `;
+    //TODO: Look up signals for a entice button 
   }
 
   renderPageSections() {
