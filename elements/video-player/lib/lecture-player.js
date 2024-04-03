@@ -1,5 +1,6 @@
-import { css, html } from "lit";
-import { DDD } from '@lrnwebcomponents/d-d-d/d-d-d.js';
+import { css, html, LitElement } from "lit";
+import { DDDSuper } from '@lrnwebcomponents/d-d-d/d-d-d.js';
+import { DDDDataAttributes } from '@lrnwebcomponents/d-d-d/lib/DDDStyles.js';
 import "@lrnwebcomponents/video-player/video-player.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -7,14 +8,20 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 
-class LecturePlayer extends (DDD) {
+class LecturePlayer extends DDDSuper(LitElement) {
   static get styles() {
     return [
       super.styles,
+      DDDDataAttributes,
       css`
+      :host{
+        font-family: var(--ddd-font-primary, sans-serif);
+      }
+
       simple-modal{
         --simple-modal-width: 95%;
         --simple-modal-height: 95%;
+        font-family: var(--ddd-font-primary, sans-serif);
       }
 
       .modal-content{
@@ -22,7 +29,7 @@ class LecturePlayer extends (DDD) {
         grid-template-columns: 1.5fr 1fr;
         width: calc(100% - 32px);
         height: 100%;
-        gap: 16px;
+        gap: var(--ddd-spacing-4);
       }
 
       video-player{
@@ -31,15 +38,16 @@ class LecturePlayer extends (DDD) {
       }
 
       .videoSection{
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
+        display: grid;
+        grid-template-rows: 1fr auto;
         max-width: 100%;
+        max-height: 80vh;
       }
 
       .playlist{
-        display: flex;
-        gap: 8px;
+        display: grid;
+        grid-template-columns: .5fr 5fr .5fr;
+        gap: var(--ddd-spacing-2);
         max-width: 100%;
       }
 
@@ -53,23 +61,30 @@ class LecturePlayer extends (DDD) {
         word-break: break-word;
       }
 
-      .timestampList{
-        display: flex;
-        border: 1px solid black;
+      .timestampList {
+        display: flex; /* Use flexbox to layout items in a row */
+        flex-wrap: nowrap; /* Prevent wrapping of items */
+        border: var(--ddd-border-xs);
+        border-color: var(--ddd-theme-default-coalyGray, black);
         background: #bab8b8;
-        overflow-x: scroll;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        overflow-y: hidden; /* Hide vertical overflow */
       }
-
-      .timestampBtn{
-        display: flex;
-        align-items: start;
-        justify-content: center;
+      
+      .timestampBtn {
+        flex-shrink: 0; /* Prevent buttons from shrinking */
         background: white;
         border: none;
-        border-bottom: 1px solid black;
+        border-right: 1px solid black; /* Keep the border-right */
         cursor: pointer;
         font-size: 24px;
+        padding: 16px; /* Add padding to space out the buttons */
+        height: 75px;
+        width: 200px;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: var(--ddd-font-primary, sans-serif);
       }
 
       .timestampBtn:not(:last-child){
@@ -99,6 +114,46 @@ class LecturePlayer extends (DDD) {
       .timestampBtn.active{
         background: #dfedf5;
       }
+
+      .endBtnContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: auto;
+      }
+
+      .endBtn{
+        font-family: var(--ddd-font-primary, sans-serif);
+        font-size: var(--ddd-theme-body-font-size, 16px);
+        background: var(--ddd-theme-primary);
+        color: var(--ddd-theme-bgContrast, black);
+        cursor: pointer;
+        padding: var(--ddd-spacing-4);
+        height: fit-content;
+        margin: auto;
+        border-radius: var(--ddd-radius-sm);
+        box-shadow: none;
+        animation: pulse 1.2s ease infinite;
+      }
+
+      .endBtn:hover{
+        animation: none;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(188, 32, 75, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(188, 32, 75, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(188, 32, 75, 0);
+        }
+      }
+
 
       @media (max-width: 1200px) {
         :host{
@@ -130,6 +185,7 @@ class LecturePlayer extends (DDD) {
         this.seek(document.querySelector('#' + this.activeIndex).timestamp);
         this.updateJumbotron();
         this.updatePlaylist();
+        this.checkDisabledButtons();
       }
     });
   }
@@ -150,6 +206,7 @@ class LecturePlayer extends (DDD) {
       });
     });
     this.setJumbotronAttributes();
+    this.activeIndex = 'slide-1';
   };
 
   setJumbotronAttributes() {
@@ -188,6 +245,9 @@ class LecturePlayer extends (DDD) {
     console.log('addPrevNextListeners');
     const prevSlideBtn = this.shadowRoot.querySelector('#prevSlideBtn');
     const nextSlideBtn = this.shadowRoot.querySelector('#nextSlideBtn');
+    if(!this.activeIndex){
+      this.activeIndex = 'slide-1';
+    }
     prevSlideBtn.addEventListener('click', () => {
       const prevSlide = this.activeIndex.split('-')[1] > 1 ? this.activeIndex.split('-')[1] - 1 : null;
       if (prevSlide) {
@@ -198,6 +258,9 @@ class LecturePlayer extends (DDD) {
       const nextSlide = this.activeIndex.split('-')[1] < document.querySelectorAll('lecture-anchor').length ? parseInt(this.activeIndex.split('-')[1]) + 1 : null;
       if (nextSlide) {
         this.activeIndex = 'slide-' + nextSlide;
+      }
+      else{
+        this.endVideo();
       }
     });
   }
@@ -238,6 +301,7 @@ class LecturePlayer extends (DDD) {
       }
       timestampList.appendChild(timestampBtn);
     });
+    this.shadowRoot.querySelector('.timestampList').scrollTo({ left: this.shadowRoot.querySelector('.timestampBtn.active').offsetLeft - 125, behavior: 'smooth' });
   }
 
   getSortedAnchors() { 
@@ -263,6 +327,35 @@ class LecturePlayer extends (DDD) {
 
   play(){
     this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player").play();
+  }
+
+  checkDisabledButtons(){
+    console.log('checkDisabledButtons');
+    const prevSlideBtn = this.shadowRoot.querySelector('#prevSlideBtn');
+    const activeIndex = parseInt(this.activeIndex.split('-')[1]);
+    if (activeIndex === 1) {
+      prevSlideBtn.setAttribute('disabled', 'true');
+    } else {
+      prevSlideBtn.removeAttribute('disabled');
+    }
+    if (activeIndex !== document.querySelectorAll('lecture-anchor').length) {
+      this.shadowRoot.querySelector('#nextSlideBtn').removeAttribute('disabled');
+    }
+  }
+
+  endVideo(){
+    console.log('endVideo');
+    this.shadowRoot.querySelector('video-player').shadowRoot.querySelector("a11y-media-player").pause();
+    this.shadowRoot.querySelector('#nextSlideBtn').setAttribute('disabled', 'true');
+    let endBtnDiv = document.createElement('div');
+    endBtnDiv.setAttribute('data-primary', '11');
+    endBtnDiv.innerHTML = `<button class="endBtn">Close Lecture Player</button>`;
+    endBtnDiv.classList.add('endBtnContainer');
+    this.shadowRoot.querySelector('.jumbotron').appendChild(endBtnDiv);
+    this.shadowRoot.querySelector('.endBtn').addEventListener('click', () => {
+      this.shadowRoot.querySelector('simple-modal').close();
+    });
+    this.shadowRoot.querySelector('.endBtn').scrollIntoView({behavior: "smooth"});
   }
 
   showModal(){
