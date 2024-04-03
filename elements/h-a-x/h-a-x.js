@@ -6,11 +6,6 @@ import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "./lib/h-a-x-dependencies.js";
 import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 import { editableTableDisplayStyles } from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import {
-  learningComponentColors,
-  iconFromPageType,
-} from "@lrnwebcomponents/course-design/lib/learning-component.js";
 
 /**
  * `h-a-x`
@@ -44,28 +39,9 @@ class HAX extends HTMLElement {
         }
         `,
     );
-    let instructionalStyles = Object.keys(learningComponentColors).map(
-      (item) => {
-        let color = learningComponentColors[item];
-        return `
-        [data-instructional-action="${item}"] {
-          --hax-action-color: var(--simple-colors-default-theme-${color}-8, ${color});
-          --hax-action-line-color: var(--simple-colors-default-theme-${color}-8, ${color});
-          --hax-action-accent-color: #eeeeee;
-          --hax-action-border: var(--simple-colors-default-theme-${color}-8, ${color}) solid 3px;
-        }
-        [data-instructional-action="${item}"]::before {
-          -webkit-mask-image: url("${SimpleIconsetStore.getIcon(
-            iconFromPageType(item),
-          )}");
-        }
-        `;
-      },
-    );
     return `
     <style>
     ${decorationStyles.join("\n")}
-    ${instructionalStyles.join("\n")}
     ${editableTableDisplayStyles
       .map((s) => s.cssText.replace(/:host/g, "hax-body table"))
       .join(" ")}

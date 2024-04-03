@@ -1,4 +1,167 @@
-import { css } from "lit";
+import { css, unsafeCSS } from "lit";
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+
+/**
+ * Instructional design meshing with styles. What we use to represent concepts
+ */
+
+
+export const learningComponentNouns = {
+  content: "Content",
+  assessment: "Assessment",
+  quiz: "Quiz",
+  submission: "Submission",
+  lesson: "Lesson",
+  module: "Module",
+  task: "Task",
+  activity: "Activity",
+  project: "Project",
+  practice: "Practice",
+  unit: "Unit",
+  objectives: "Learning Objectives",
+};
+
+export const learningComponentVerbs = {
+  connection: "Connection",
+  knowledge: "Did You Know?",
+  strategy: "Learning Strategy",
+  discuss: "Discuss",
+  listen: "Listen",
+  make: "Make",
+  observe: "Observe",
+  present: "Present",
+  read: "Read",
+  reflect: "Reflect",
+  research: "Research",
+  watch: "Watch",
+  write: "Write",
+};
+
+export const learningComponentTypes = {
+  ...learningComponentVerbs,
+  ...learningComponentNouns,
+};
+
+export const learningComponentColors = {
+  content: "blue-grey",
+  assessment: "red",
+  quiz: "blue",
+  submission: "deep-purple",
+  lesson: "purple",
+  module: "red",
+  task: "blue-grey",
+  activity: "orange",
+  project: "deep-orange",
+  practice: "brown",
+  unit: "light-green",
+  objectives: "indigo",
+  connection: "green",
+  knowledge: "cyan",
+  strategy: "teal",
+  discuss: "blue",
+  listen: "purple",
+  make: "orange",
+  observe: "yellow",
+  present: "light-blue",
+  read: "lime",
+  reflect: "amber",
+  research: "deep-orange",
+  watch: "pink",
+  write: "deep-purple",
+};
+
+export function iconFromPageType(type) {
+  switch (type) {
+    case "content":
+      return "lrn:page";
+    case "assessment":
+      return "lrn:assessment";
+    case "quiz":
+      return "lrn:quiz";
+    case "submission":
+      return "icons:move-to-inbox";
+    case "lesson":
+      return "hax:lesson";
+    case "module":
+      return "hax:module";
+    case "unit":
+      return "hax:unit";
+    case "task":
+      return "hax:task";
+    case "activity":
+      return "hax:ticket";
+    case "project":
+      return "hax:bulletin-board";
+    case "practice":
+      return "hax:shovel";
+    case "connection":
+      return "courseicons:chem-connection";
+      break;
+    case "knowledge":
+      return "courseicons:knowledge";
+      break;
+    case "strategy":
+      return "courseicons:strategy";
+      break;
+    case "discuss":
+      return "courseicons:strategy";
+      break;
+    case "listen":
+      return "courseicons:listen";
+      break;
+    case "make":
+      return "courseicons:strategy";
+      break;
+    case "observe":
+      return "courseicons:strategy";
+      break;
+    case "present":
+      return "courseicons:strategy";
+      break;
+    case "read":
+      return "courseicons:strategy";
+      break;
+    case "reflect":
+      return "courseicons:strategy";
+      break;
+    case "research":
+      return "courseicons:strategy";
+      break;
+    case "watch":
+      return "courseicons:strategy";
+      break;
+    case "write":
+      return "lrn:write";
+      break;
+  }
+  return "courseicons:learning-objectives";
+}
+
+// attributes need to be driven from a cannonical list
+// @note this may need ways of overriding it in the future but at least
+// we've consolidated everything into one place for these small design mods
+export const instructionalStyles = Object.keys(learningComponentColors).map(
+  (item) => {
+    let color = learningComponentColors[item];
+    return css`
+      [data-instructional-action="${unsafeCSS(item)}"] {
+        --instructional-action-color: var(
+          --simple-colors-default-theme-${unsafeCSS(color)}-8,
+          ${unsafeCSS(color)}
+        );
+      }
+
+      [data-instructional-action="${unsafeCSS(item)}"]::before {
+        -webkit-mask-image: url("${unsafeCSS(
+          SimpleIconsetStore.getIcon(iconFromPageType(item)),
+        )}");
+      }
+    `;
+  },
+);
+
 /* Logical Gaps:
   Heading colors; sizes; letter spacing; line height
   When to use chevron > with links?
@@ -411,8 +574,8 @@ export const DDDVariables = css`
   }
 `;
 /* Data Attributes used by HAX */
-export const DDDDataAttributes = css`
-[data-primary="0"] {
+export const DDDDataAttributes = [css`
+  [data-primary="0"] {
     --ddd-theme-primary: var(--ddd-primary-0);
     --lowContrast-override: black;
   }
@@ -526,13 +689,13 @@ export const DDDDataAttributes = css`
 
   /* font family */
 
-  [data-font="primary"] {
+  [data-font-family="primary"] {
     font-family: var(--ddd-font-primary);
   }
-  [data-font="secondary"] {
+  [data-font-family="secondary"] {
     font-family: var(--ddd-font-secondary);
   }
-  [data-font="navigation"] {
+  [data-font-family="navigation"] {
     font-family: var(--ddd-font-navigation);
   }
 
@@ -601,7 +764,40 @@ export const DDDDataAttributes = css`
   [data-font-size="type1-l"] {
     font-size: var(--ddd-font-size-type1-l);
   }
-`;
+  /* padding spacing */
+  [data-padding="xs"] {
+    padding: var(--ddd-spacing-2);
+  }
+  [data-padding="s"] {
+    padding: var(--ddd-spacing-4);
+  }
+  [data-padding="m"] {
+    padding: var(--ddd-spacing-8);
+  }
+  [data-padding="l"] {
+    padding: var(--ddd-spacing-12);
+  }
+  [data-padding="xl"] {
+    padding: var(--ddd-spacing-16);
+  }
+  /* margin spacing */
+  [data-margin="xs"] {
+    margin: var(--ddd-spacing-2);
+  }
+  [data-margin="s"] {
+    margin: var(--ddd-spacing-4);
+  }
+  [data-margin="m"] {
+    margin: var(--ddd-spacing-8);
+  }
+  [data-margin="l"] {
+    margin: var(--ddd-spacing-12);
+  }
+  [data-margin="xl"] {
+    margin: var(--ddd-spacing-16);
+  }`,
+  ...instructionalStyles
+];
 
 /* Tag based application */
 export const DDDReset = css`
@@ -915,7 +1111,7 @@ export const DDDReset = css`
     z-index: 2;
     background-color: var(
       --lowContrast-override,
-      var(--ddd-theme-primary, var(--hax-action-color, blue))
+      var(--ddd-theme-primary, var(--instructional-action-color, blue))
     );
     mask-repeat: no-repeat;
     mask-size: contain;
@@ -3275,7 +3471,7 @@ export const DDDExtra = css`
 // export that has all of them for easy stamping as a single sheet
 export const DDDAllStyles = [
   DDDVariables,
-  DDDDataAttributes,
+  ...DDDDataAttributes,
   DDDReset,
   DDDBreadcrumb,
   DDDExtra,

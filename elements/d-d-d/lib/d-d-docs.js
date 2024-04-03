@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "../d-d-d.js";
+import { DDDAttributeData } from "./d-d-d-sample.js";
 import { DDDAllStyles } from "./DDDStyles.js";
 import "@lrnwebcomponents/page-section/page-section.js";
 import "@lrnwebcomponents/simple-cta/simple-cta.js";
@@ -25,6 +26,7 @@ export const styleGuideTopics = {
   DDDelementsList: "DDDelementsList",
   HeaderSample: "HeaderSample",
   Borders: "Borders",
+  DataAttributes: "DataAttributes",
   Breakpoints: "Breakpoints",
   DefaultColors: "DefaultColors",
   DefaultFunctionalColors: "DefaultFunctionalColors",
@@ -61,6 +63,9 @@ class DDDocs extends DDD {
       css`
         /* used for demo */
         :host {
+        }
+        d-d-d-sample {
+          display: block;
         }
         /** some specific hacks for presenting things nicer */
         .radius {
@@ -174,6 +179,19 @@ class DDDocs extends DDD {
       `,
     ];
   }
+
+  renderDataAttributes() {
+    return html`${Object.keys(DDDAttributeData).map((key) => html`
+    <h2>${key}</h2>
+    <div>
+    ${Object.keys(DDDAttributeData[key]).map((key2) => html`
+      <d-d-d-sample type="${key}" option="${key2}"><strong style="margin-left:12px;"><em>[data-${key}="${key2}"]</em></strong></d-d-d-sample>          
+      `)}
+    </div>
+  `)}
+  `;
+  }
+
 
   renderHeaderSample() {
     let headers = [];

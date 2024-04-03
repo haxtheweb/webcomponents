@@ -10,6 +10,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import "@lrnwebcomponents/d-d-d/lib/d-d-d-sample.js";
 
 // Defines the type options available in the HAX wiring, "Learning Objectives" is the default.
 export const learningComponentNouns = {
