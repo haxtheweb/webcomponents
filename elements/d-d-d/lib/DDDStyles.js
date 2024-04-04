@@ -3,11 +3,59 @@ import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-ico
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
+globalThis.addEventListener(
+  "hax-store-ready", (e) => {
+    if (globalThis.HaxStore) {
+      const HAXStore = globalThis.HaxStore.requestAvailability();
+      HAXStore.designSystemProps = (props, tag) => {
+        if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
+
+          /**
+           * @note DISCUSSION WITH BILL TO THEN IMPLEMENT HERE
+           * - Gut all design settings 
+           * DataStyleAccent
+           * DataHeadingDesignTreatment
+           * DataStylePrimary
+           * DataTextDesignTreatment
+           * 
+           * under standardAdvancedProps
+           * review what should be removed but just about everything
+           * also many of these generate events which can be removed as well!!!
+           * this is core gutting, but we'll have to implement them in a uniform way
+           * so that if hideDefaultSettings is there we should still respect that
+           * Possibly changing it hideDesignLayoutSettings: [] which is an array
+           * of keys to hide from this specific element. If the entire thing is there
+           * then it'll remove all of them
+           * 
+           * still teasing this out
+           * Also review, do we actually have "advanced" or... do we have but that would be hard
+           * to really adopt fully without A LOT of work in cleaning things up and detection
+           * since those 3 are baked in. Advanced we've moved away from but still...
+           * 
+           * Properties ... Settings something here. Mabe it's still configure
+           * Design
+           * Developer
+           */
+          //
+          props.settings.configure.push({
+            attribute: "data-instructional-action",
+            title: "Type",
+            description: "Indicates instructional context to users visually",
+            inputMethod: "select",
+            options: {
+              "": "-- none --",
+              ...learningComponentTypes,
+            },
+          });
+        }        
+        return props;
+      };
+    }  },
+  { once: true}
+  );
 /**
  * Instructional design meshing with styles. What we use to represent concepts
  */
-
-
 export const learningComponentNouns = {
   content: "Content",
   assessment: "Assessment",
@@ -138,6 +186,105 @@ export function iconFromPageType(type) {
   }
   return "courseicons:learning-objectives";
 }
+
+export const ApplicationAttributeData = {
+  "font-family": {
+    primary: "Primary",
+    secondary: "Secondary",
+    navigation: "Navigation",
+  },
+  "font-weight": {
+    light: "Light",
+    regular: "Regular",
+    medium: "Medium",
+    bold: "Bold",
+    black: "Black",
+  },
+  "font-size": {
+    "4xs": "4XS",
+    "3xs": "3XS",
+    xxs: "2XS",
+    xs: "XS",
+    s: "S",
+    ms: "MS",
+    m: "M",
+    ml: "ML",
+    l: "L",
+    xl: "XL",
+    xxl: "2XL",
+    "3xl": "3XL",
+    "4xl": "4XL",
+    "type1-s": "TypeS",
+    "type1-m": "TypeM",
+    "type1-l": "TypeL",
+  },
+  primary: {
+    0: "Pugh blue",
+    1: "Beaver blue",
+    2: "Nittany navy",
+    3: "Potential midnight",
+    4: "Coaly gray",
+    5: "Limestone gray",
+    6: "Slate gray",
+    7: "Creek teal",
+    8: "Sky blue",
+    9: "Shrine tan",
+    10: "Roar golden",
+    11: "Original 87 pink",
+    12: "Discovery coral",
+    13: "Wonder purple",
+    14: "Artherton violet",
+    15: "Invent orange",
+    16: "Keystone yellow",
+    17: "Opportunity green",
+    18: "Future lime",
+    19: "Forest green",
+    20: "Landgrant brown",
+    21: "Global Neon",
+  },
+  accent: {
+    0: "Sky Max",
+    1: "Slate Max",
+    2: "Limestone Max",
+    3: "Shrine Max",
+    4: "Roar Max",
+    5: "Creek Max",
+    6: "White",
+  },
+  margin: {
+    xs: "XS",
+    s: "S",
+    m: "M",
+    l: "L",
+    xl: "XL",
+  },
+  padding: {
+    xs: "XS",
+    s: "S",
+    m: "M",
+    l: "L",
+    xl: "XL",
+  },
+  "design-treatment": {
+    // heading treatments
+    "vert": "Vertical line",
+    "horz-10p": "Horizontal line 10%",
+    "horz-25p": "Horizontal line 25%",
+    "horz-50p": "Horizontal line 50%",
+    "horz-full": "Horizontal line 100%",
+    "horz-md": "Horizontal line Medium",
+    "horz-lg": "Horizontal line Large",
+    "horz": "Horizontal line",
+    "bg": "Background color",
+    // text treatment
+    "dropCap-xs": "Drop Cap - xs",
+    "dropCap-sm": "Drop Cap - sm",
+    "dropCap-md": "Drop Cap - md",
+    "dropCap-lg": "Drop Cap - lg",
+    "dropCap-xl": "Drop Cap - xl",
+  },
+  "instructional-action": learningComponentTypes
+};
 
 // attributes need to be driven from a cannonical list
 // @note this may need ways of overriding it in the future but at least

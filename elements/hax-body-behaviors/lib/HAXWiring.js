@@ -419,7 +419,11 @@ export class HAXWiring {
               props.settings.developer.splice(i, 1);
             }
           }
-          // apply standard set of props
+          // support design systems supplying their own property definitions
+          if (globalThis.HaxStore) {
+            props = globalThis.HaxStore.requestAvailability().designSystemProps(props, tag);
+          }
+          // apply standard set of props that the system wires in
           props = this.standardAdvancedProps(props, tag);
         }
         // support for advanced save options
@@ -962,6 +966,18 @@ export const HAXElement = function (SuperClass) {
       super();
       this.windowControllers = new AbortController();
       this.HAXWiring = new HAXWiring();
+    }
+
+    /**
+     * 
+     * @param {Object} props - HAX properties being set for the schema for an element
+     * @param {String} tag - tagName of the element 
+     * @returns props object
+     */
+    designSystemProps(props, tag) {
+      // design systems can implement this in order to inject options into elements in a pervasive way
+      // this does nothing but ensure that HAX works without a design system
+      return props;
     }
     static get properties() {
       return {

@@ -1,5 +1,5 @@
 import { DDDSuper } from "../d-d-d.js";
-import { DDDDataAttributes, learningComponentTypes } from "./DDDStyles.js";
+import { DDDDataAttributes, ApplicationAttributeData } from "./DDDStyles.js";
 
 import { html, css, LitElement } from "lit";
 
@@ -117,7 +117,7 @@ export class DDDSample extends DDDSuper(LitElement) {
       else {
         span = this.shadowRoot.querySelector('span.label');
       }
-      for (let i in DDDAttributeData) {
+      for (let i in ApplicationAttributeData) {
         span.removeAttribute(`data-${i}`);
       }
       // delay to ensure prev executes in order
@@ -135,7 +135,7 @@ export class DDDSample extends DDDSuper(LitElement) {
 
   render() {
     return html`
-      <span class="sample"></span><span class="label">${DDDAttributeData[this.type][this.option]}<slot></slot></span>
+      <span class="sample"></span><span class="label">${ApplicationAttributeData[this.type][this.option]}<slot></slot></span>
     `;
   }
 
@@ -152,102 +152,3 @@ export class DDDSample extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(DDDSample.tag, DDDSample);
-
-export const DDDAttributeData = {
-  "font-family": {
-    primary: "Primary",
-    secondary: "Secondary",
-    navigation: "Navigation",
-  },
-  "font-weight": {
-    light: "Light",
-    regular: "Regular",
-    medium: "Medium",
-    bold: "Bold",
-    black: "Black",
-  },
-  "font-size": {
-    "4xs": "4XS",
-    "3xs": "3XS",
-    xxs: "2XS",
-    xs: "XS",
-    s: "S",
-    ms: "MS",
-    m: "M",
-    ml: "ML",
-    l: "L",
-    xl: "XL",
-    xxl: "2XL",
-    "3xl": "3XL",
-    "4xl": "4XL",
-    "type1-s": "TypeS",
-    "type1-m": "TypeM",
-    "type1-l": "TypeL",
-  },
-  primary: {
-    0: "Pugh blue",
-    1: "Beaver blue",
-    2: "Nittany navy",
-    3: "Potential midnight",
-    4: "Coaly gray",
-    5: "Limestone gray",
-    6: "Slate gray",
-    7: "Creek teal",
-    8: "Sky blue",
-    9: "Shrine tan",
-    10: "Roar golden",
-    11: "Original 87 pink",
-    12: "Discovery coral",
-    13: "Wonder purple",
-    14: "Artherton violet",
-    15: "Invent orange",
-    16: "Keystone yellow",
-    17: "Opportunity green",
-    18: "Future lime",
-    19: "Forest green",
-    20: "Landgrant brown",
-    21: "Global Neon",
-  },
-  accent: {
-    0: "Sky Max",
-    1: "Slate Max",
-    2: "Limestone Max",
-    3: "Shrine Max",
-    4: "Roar Max",
-    5: "Creek Max",
-    6: "White",
-  },
-  margin: {
-    xs: "XS",
-    s: "S",
-    m: "M",
-    l: "L",
-    xl: "XL",
-  },
-  padding: {
-    xs: "XS",
-    s: "S",
-    m: "M",
-    l: "L",
-    xl: "XL",
-  },
-  "design-treatment": {
-    // heading treatments
-    "vert": "Vertical line",
-    "horz-10p": "Horizontal line 10%",
-    "horz-25p": "Horizontal line 25%",
-    "horz-50p": "Horizontal line 50%",
-    "horz-full": "Horizontal line 100%",
-    "horz-md": "Horizontal line Medium",
-    "horz-lg": "Horizontal line Large",
-    "horz": "Horizontal line",
-    "bg": "Background color",
-    // text treatment
-    "dropCap-xs": "Drop Cap - xs",
-    "dropCap-sm": "Drop Cap - sm",
-    "dropCap-md": "Drop Cap - md",
-    "dropCap-lg": "Drop Cap - lg",
-    "dropCap-xl": "Drop Cap - xl",
-  },
-  "instructional-action": learningComponentTypes
-};

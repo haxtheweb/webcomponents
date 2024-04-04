@@ -4,8 +4,8 @@
  */
 import { html, css } from "lit";
 import { DDD } from "../d-d-d.js";
-import { DDDAttributeData } from "./d-d-d-sample.js";
-import { DDDAllStyles } from "./DDDStyles.js";
+import { DDDAllStyles, ApplicationAttributeData } from "./DDDStyles.js";
+import "./d-d-d-sample.js";
 import "@lrnwebcomponents/page-section/page-section.js";
 import "@lrnwebcomponents/simple-cta/simple-cta.js";
 import "@lrnwebcomponents/video-player/video-player.js";
@@ -181,10 +181,10 @@ class DDDocs extends DDD {
   }
 
   renderDataAttributes() {
-    return html`${Object.keys(DDDAttributeData).map((key) => html`
+    return html`${Object.keys(ApplicationAttributeData).map((key) => html`
     <h2>${key}</h2>
     <div>
-    ${Object.keys(DDDAttributeData[key]).map((key2) => html`
+    ${Object.keys(ApplicationAttributeData[key]).map((key2) => html`
       <d-d-d-sample type="${key}" option="${key2}"><strong style="margin-left:12px;"><em>[data-${key}="${key2}"]</em></strong></d-d-d-sample>          
       `)}
     </div>

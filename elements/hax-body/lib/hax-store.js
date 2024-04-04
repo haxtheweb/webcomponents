@@ -37,7 +37,6 @@ import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/editable-table/editable-table.js";
 import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
-import { learningComponentTypes } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 import "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
 import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
 import "./hax-app.js";
@@ -1856,6 +1855,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   constructor() {
     super();
+    // @note REFACTOR ALL THIS SO IT IS AUTOMATICALLY GENERATED JUST LIKE THE DOCS
+    // we should be able to loop over values here
+    // all HAX should do initially is set that this exists
+    // DDD jumps in and leverages the available data attributes to supply it's own values
+    // this way other design systems could be injected (in theory)
+    
     this.DataStylePrimary = {
       attribute: "data-primary",
       title: "Primary color",
@@ -1921,8 +1926,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         { value: "horz", html: html`<d-d-d-sample type="design-treatment" option="horz"></d-d-d-sample>`},
         { value: "bg", html: html`<d-d-d-sample type="design-treatment" option="bg"></d-d-d-sample>`},
       ]
-    };
-    
+    };  
     this.DataTextDesignTreatment = {
       attribute: "data-design-treatment",
       title: "Design treatment",
@@ -1936,17 +1940,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         { value: "dropCap-lg", html: html`<d-d-d-sample type="design-treatment" option="dropCap-lg"></d-d-d-sample>`},
         { value: "dropCap-xl", html: html`<d-d-d-sample type="design-treatment" option="dropCap-xl"></d-d-d-sample>`},
       ]
-    };
-    
-    this.DataInstructionalAction = {
-      attribute: "data-instructional-action",
-      title: "Type",
-      description: "Indicates instructional context to users visually",
-      inputMethod: "select",
-      options: {
-        "": "-- none --",
-        ...learningComponentTypes,
-      },
     };
     enableServices(["core"]);
     this.toastShowEventName = globalThis.HAXCMS
@@ -2573,7 +2566,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [this.DataStylePrimary],
+        configure: [],
       },
       demoSchema: [
         {
@@ -2615,7 +2608,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             description: "Caption for the figure",
             inputMethod: "code-editor",
           },
-          this.DataStylePrimary,
         ],
       },
       demoSchema: [
@@ -3118,7 +3110,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               ? [
                 this.DataStylePrimary,
                   this.DataHeadingDesignTreatment,
-                  this.DataInstructionalAction,
                 ]
               : [this.DataStylePrimary, this.DataStyleAccent],
             advanced: [],
@@ -3152,7 +3143,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [this.DataStylePrimary, this.DataInstructionalAction],
+        configure: [this.DataStylePrimary],
         advanced: [],
       },
       demoSchema: [
