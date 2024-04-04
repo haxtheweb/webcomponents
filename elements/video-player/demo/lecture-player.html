@@ -10,6 +10,7 @@
     <script type="module">
       import '../lib/lecture-player.js';
       import '../lib/lecture-anchor.js';
+      import '@lrnwebcomponents/self-check/self-check.js';
     </script>
   </head>
   <body>
@@ -23,8 +24,13 @@
       <p>Lorem ipsum dolor sit amet consectetur adipiscing. Diam ut venenatis tellus in metus. Et netus et malesuada fames ac turpis egestas. Commodo quis imperdiet massa tincidunt nunc. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. <lecture-anchor timestamp=213 icon="image:palette" color="blue" text="Index JS" data-primary="20" data-accent="2" target="lecture-player"></lecture-anchor> enim facilisis gravida neque convallis. Amet volutpat consequat mauris nunc congue nisi vitae suscipit. Turpis nunc eget lorem dolor sed. Mattis enim ut tellus elementum sagittis vitae et leo. Lacus sed viverra tellus in hac habitasse platea. Luctus venenatis lectus magna fringilla. A diam sollicitudin tempor id. Congue nisi vitae suscipit tellus mauris. Et malesuada fames ac turpis egestas sed.</p>
       <h2>Final timestamp section goes here</h2>
       <p>Enim ut tellus elementum sagittis. Suspendisse interdum consectetur libero id faucibus nisl tincidunt eget nullam. Arcu felis bibendum ut tristique et egestas. Pharetra pharetra massa massa ultricies mi quis hendrerit. A cras semper auctor <lecture-anchor color="green" icon="icons:language" timestamp=253 text="Run the API" data-primary="17" data-accent="5" target="lecture-player"></lecture-anchor> vitae tempus quam pellentesque. Tincidunt vitae semper quis lectus nulla at volutpat. Semper viverra nam libero justo laoreet sit amet cursus. Nisl rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Dignissim suspendisse in est ante in nibh mauris cursus mattis. Enim nulla aliquet porttitor lacus luctus accumsan tortor posuere. Dui id ornare arcu odio ut sem nulla pharetra. Maecenas accumsan lacus vel facilisis volutpat est velit. At lectus urna duis convallis convallis tellus id interdum velit. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo. Mauris vitae ultricies leo integer. Eget velit aliquet sagittis id consectetur purus ut faucibus.</p>
-      <lecture-anchor data-primary="11" data-accent="1" timestamp=42 text="Install Express" header target="lecture-player"></lecture-anchor>
-      <lecture-anchor data-primary="11" data-accent="1" timestamp=12 text="Install Express" header target="lecture-player"></lecture-anchor>
+      <h2><lecture-anchor data-primary="11" data-accent="1" timestamp=322 text="Self Check" header target="lecture-player"></lecture-anchor></h2>
+        <self-check accent-color="light-blue" title="Sharks Self Check" image="https://upload.wikimedia.org/wikipedia/commons/5/56/White_shark.jpg"
+        alt="Great White Shark">
+        <span slot="question">How large can the average great white shark grow to be?</span>
+        The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.
+        </self-check>
+      <h2><lecture-anchor data-primary="11" data-accent="1" timestamp=12 text="Install Express" header target="lecture-player"></lecture-anchor></h2>
       <lecture-anchor data-primary="11" data-accent="1" timestamp=462 text="Install Express" header target="lecture-player"></lecture-anchor>
     </div>
   </body>
