@@ -257,7 +257,7 @@ class CMSEntity extends PolymerElement {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "CMS Entity",

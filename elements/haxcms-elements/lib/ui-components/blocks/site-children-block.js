@@ -21,7 +21,7 @@ class SiteChildrenBlock extends LitElement {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: true,
       gizmo: {
         title: "HAXcms: child block",

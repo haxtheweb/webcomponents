@@ -379,7 +379,7 @@ class LearningComponent extends I18NMixin(DDD) {
     return {
       type: "grid",
       canScale: false,
-      canPosition: false,
+
       hideDefaultSettings: true,
       gizmo: {
         title: "Learning Component",

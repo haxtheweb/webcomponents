@@ -647,6 +647,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     } else if (node != null && node.tag) {
       tag = node.tag.toLowerCase();
     }
+    else if (typeof node === "string") {
+      tag = node;
+    }
     if (tag && this.validTagList.includes(tag)) {
       if (
         (this.haxSchemaFromTag(tag) &&
@@ -1019,85 +1022,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             }
           });
         }, 100);
-      }
-    }
-  }
-  /**
-   * A handful of context operations need to bubble up to the top
-   * because we don't know where they originate from
-   */
-  _haxContextOperation(e) {
-    let detail = e.detail;
-    if (this.activeNode) {
-      let changed = false;
-      // support a simple insert event to bubble up or everything else
-      switch (detail.eventName) {
-        // directional / proportion operations
-        case "hax-align-left":
-          this.activeNode.style.float = null;
-          this.activeNode.style.margin = null;
-          this.activeNode.style.display = null;
-          changed = true;
-          break;
-        case "hax-align-center":
-          this.activeNode.style.float = null;
-          this.activeNode.style.margin = "0 auto";
-          this.activeNode.style.display = "block";
-          changed = true;
-          break;
-        case "hax-align-right":
-          this.activeNode.style.float = "right";
-          this.activeNode.style.margin = "0 auto";
-          this.activeNode.style.display = "block";
-          changed = true;
-          break;
-        case "hax-style-setting-change":
-          Object.keys(detail.value).forEach((key) => {
-            // EVERYTHING is removed THEN added a microtask later to avoid sticking in style attribute
-            this.activeNode.style.removeProperty(key);
-            requestAnimationFrame(() => {
-              if (key === "__scale") {
-                if (detail.value[key] == 100) {
-                  this.activeNode.style.width = null;
-                } else if (detail.value[key] > 100) {
-                  this.activeNode.style.width = null;
-                } else {
-                  this.activeNode.style.width = detail.value[key] + "%";
-                }
-              }
-              else if (key === "text-align") {
-                this.activeNode.style[key] = detail.value[key];
-              } else if (key === "font-size") {
-                switch (detail.value[key]) {
-                  case "x-small":
-                    this.activeNode.style[key] = "0.8em";
-                    break;
-                  case "small":
-                    this.activeNode.style[key] = "0.9em";
-                    break;
-                  case "large":
-                    this.activeNode.style[key] = "1.2em";
-                    break;
-                  case "x-large":
-                    this.activeNode.style[key] = "1.4em";
-                    break;
-                  case "xx-large":
-                    this.activeNode.style[key] = "2em";
-                    break;
-                }
-              } else {
-                this.activeNode.style[key] = detail.value[key] + "px";
-              }
-            });
-          });
-          changed = true;
-          break;
-      }
-      if (changed) {
-        clearTimeout(this.__repositionMenu);
-        this.__repositionMenu = setTimeout(() => {
-          this.activeHaxBody.positionContextMenus();
-        }, 0);
       }
     }
   }
@@ -1855,92 +1779,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   constructor() {
     super();
-    // @note REFACTOR ALL THIS SO IT IS AUTOMATICALLY GENERATED JUST LIKE THE DOCS
-    // we should be able to loop over values here
-    // all HAX should do initially is set that this exists
-    // DDD jumps in and leverages the available data attributes to supply it's own values
-    // this way other design systems could be injected (in theory)
-    
-    this.DataStylePrimary = {
-      attribute: "data-primary",
-      title: "Primary color",
-      description: "Primary color to apply color, often for meaning or aesthetic",
-      inputMethod: "radio",
-      itemsList: [
-        { value: "", text: ""},
-        { value: 0, html: html`<d-d-d-sample type="primary" option="0"></d-d-d-sample>`},
-        { value: 1, html: html`<d-d-d-sample type="primary" option="1"></d-d-d-sample>`},
-        { value: 2, html: html`<d-d-d-sample type="primary" option="2"></d-d-d-sample>`},
-        { value: 3, html: html`<d-d-d-sample type="primary" option="3"></d-d-d-sample>`},
-        { value: 4, html: html`<d-d-d-sample type="primary" option="4"></d-d-d-sample>`},
-        { value: 5, html: html`<d-d-d-sample type="primary" option="5"></d-d-d-sample>`},
-        { value: 6, html: html`<d-d-d-sample type="primary" option="6"></d-d-d-sample>`},
-        { value: 7, html: html`<d-d-d-sample type="primary" option="7"></d-d-d-sample>`},
-        { value: 8, html: html`<d-d-d-sample type="primary" option="8"></d-d-d-sample>`},
-        { value: 9, html: html`<d-d-d-sample type="primary" option="9"></d-d-d-sample>`},
-        { value: 10, html: html`<d-d-d-sample type="primary" option="10"></d-d-d-sample>`},
-        { value: 11, html: html`<d-d-d-sample type="primary" option="11"></d-d-d-sample>`},
-        { value: 12, html: html`<d-d-d-sample type="primary" option="12"></d-d-d-sample>`},
-        { value: 13, html: html`<d-d-d-sample type="primary" option="13"></d-d-d-sample>`},
-        { value: 14, html: html`<d-d-d-sample type="primary" option="14"></d-d-d-sample>`},
-        { value: 15, html: html`<d-d-d-sample type="primary" option="15"></d-d-d-sample>`},
-        { value: 16, html: html`<d-d-d-sample type="primary" option="16"></d-d-d-sample>`},
-        { value: 17, html: html`<d-d-d-sample type="primary" option="17"></d-d-d-sample>`},
-        { value: 18, html: html`<d-d-d-sample type="primary" option="18"></d-d-d-sample>`},
-        { value: 19, html: html`<d-d-d-sample type="primary" option="19"></d-d-d-sample>`},
-        { value: 20, html: html`<d-d-d-sample type="primary" option="20"></d-d-d-sample>`},
-        { value: 21, html: html`<d-d-d-sample type="primary" option="21"></d-d-d-sample>`},
-      ]
-    };
-    this.DataStyleAccent = {
-      attribute: "data-accent",
-      title: "Accent color",
-      description: "Accent color to apply color, often for meaning or aesthetic",
-      inputMethod: "select",
-      inputMethod: "radio",
-      itemsList: [
-        { value: "", text: ""},
-        { value: 0, html: html`<d-d-d-sample type="accent" option="0"></d-d-d-sample>`},
-        { value: 1, html: html`<d-d-d-sample type="accent" option="1"></d-d-d-sample>`},
-        { value: 2, html: html`<d-d-d-sample type="accent" option="2"></d-d-d-sample>`},
-        { value: 3, html: html`<d-d-d-sample type="accent" option="3"></d-d-d-sample>`},
-        { value: 4, html: html`<d-d-d-sample type="accent" option="4"></d-d-d-sample>`},
-        { value: 5, html: html`<d-d-d-sample type="accent" option="5"></d-d-d-sample>`},
-        { value: 6, html: html`<d-d-d-sample type="accent" option="6"></d-d-d-sample>`},
-      ]
-    };
-    this.DataHeadingDesignTreatment = {
-      attribute: "data-design-treatment",
-      title: "Design treatment",
-      description: "Minor design treatment leveraging Primary color value",
-      inputMethod: "radio",
-      itemsList: [
-        { value: "", text: ""},
-        { value: "vert", html: html`<d-d-d-sample type="design-treatment" option="vert"></d-d-d-sample>`},
-        { value: "horz-10p", html: html`<d-d-d-sample type="design-treatment" option="horz-10p"></d-d-d-sample>`},
-        { value: "horz-25p", html: html`<d-d-d-sample type="design-treatment" option="horz-25p"></d-d-d-sample>`},
-        { value: "horz-50p", html: html`<d-d-d-sample type="design-treatment" option="horz-50p"></d-d-d-sample>`},
-        { value: "horz-full", html: html`<d-d-d-sample type="design-treatment" option="horz-full"></d-d-d-sample>`},
-        { value: "horz-md", html: html`<d-d-d-sample type="design-treatment" option="horz-md"></d-d-d-sample>`},
-        { value: "horz-lg", html: html`<d-d-d-sample type="design-treatment" option="horz-lg"></d-d-d-sample>`},
-        { value: "horz", html: html`<d-d-d-sample type="design-treatment" option="horz"></d-d-d-sample>`},
-        { value: "bg", html: html`<d-d-d-sample type="design-treatment" option="bg"></d-d-d-sample>`},
-      ]
-    };  
-    this.DataTextDesignTreatment = {
-      attribute: "data-design-treatment",
-      title: "Design treatment",
-      description: "Minor design treatment leveraging Primary color value",
-      inputMethod: "radio",
-      itemsList: [
-        { value: "", text: ""},
-        { value: "dropCap-xs", html: html`<d-d-d-sample type="design-treatment" option="dropCap-xs"></d-d-d-sample>`},
-        { value: "dropCap-sm", html: html`<d-d-d-sample type="design-treatment" option="dropCap-sm"></d-d-d-sample>`},
-        { value: "dropCap-md", html: html`<d-d-d-sample type="design-treatment" option="dropCap-md"></d-d-d-sample>`},
-        { value: "dropCap-lg", html: html`<d-d-d-sample type="design-treatment" option="dropCap-lg"></d-d-d-sample>`},
-        { value: "dropCap-xl", html: html`<d-d-d-sample type="design-treatment" option="dropCap-xl"></d-d-d-sample>`},
-      ]
-    };
     enableServices(["core"]);
     this.toastShowEventName = globalThis.HAXCMS
       ? "haxcms-toast-show"
@@ -2160,7 +1998,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-super-daemon-insert-tag": "_superDaemonInsert",
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
-      "hax-context-item-selected": "_haxContextOperation",
       onbeforeunload: "_onBeforeUnload",
       paste: "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
@@ -2260,6 +2097,132 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ___: { tag: "hr" },
       "```": { tag: "code", content: "" },
       ">": { tag: "blockquote", content: "" },
+    };
+    // used for helping to build out the primitives schemas
+    this.__primsBuilder = {
+      caption: {
+        title: "Caption",
+        icon: "av:call-to-action",
+      },
+      video: {
+        title: "Video",
+        icon: "av:play-circle-filled",
+      },
+      audio: {
+        title: "Audio",
+        icon: "image:music-note",
+      },
+      section: {
+        title: "Section",
+        icon: "image:crop-landscape",
+      },
+      dl: {
+        title: "Data list",
+        icon: "editor:format-list-bulleted",
+      },
+      dt: {
+        title: "Data term",
+        icon: "editor:format-list-bulleted",
+      },
+      dd: {
+        title: "Data definition",
+        icon: "editor:format-list-bulleted",
+      },
+      ol: {
+        title: "Numbered list",
+        icon: "editor:format-list-numbered",
+      },
+      ul: {
+        title: "Bulleted list",
+        icon: "editor:format-list-bulleted",
+      },
+      li: {
+        title: "List item",
+        icon: "editor:format-list-bulleted",
+      },
+      h1: {
+        title: "Heading",
+        icon: "hax:h1",
+      },
+      h2: {
+        title: "Heading",
+        icon: "hax:h2",
+        tags: ["Text", "h2", "html", "text", "heading", "header"],
+      },
+      h3: {
+        title: "Heading",
+        icon: "hax:h3",
+      },
+      h4: {
+        title: "Heading",
+        icon: "hax:h4",
+      },
+      h5: {
+        title: "Heading",
+        icon: "hax:h5",
+      },
+      h6: {
+        title: "Heading",
+        icon: "hax:h6",
+      },
+      strike: {
+        title: "Cross out",
+        icon: "editor:format-strikethrough",
+      },
+      u: {
+        title: "Underline",
+        icon: "editor:format-underlined",
+      },
+      sub: {
+        title: "Subscript",
+        icon: "mdextra:subscript",
+      },
+      sup: {
+        title: "Superscript",
+        icon: "mdextra:superscript",
+      },
+      div: {
+        title: "DIV",
+        icon: "image:crop-landscape",
+      },
+      span: {
+        title: "SPAN",
+        icon: "editor:short-text",
+        handles: [
+          {
+            type: "inline",
+            text: "text",
+          },
+        ],
+      },
+      i: {
+        title: "Italic",
+        icon: "editor:format-italic",
+      },
+      em: {
+        title: "Emphasis",
+        icon: "editor:format-italic",
+      },
+      strong: {
+        title: "Bold",
+        icon: "editor:format-bold",
+      },
+      b: {
+        title: "Bold",
+        icon: "editor:format-bold",
+      },
+      blockquote: {
+        title: "Block quote",
+        icon: "editor:format-quote",
+      },
+      code: {
+        title: "Code",
+        icon: "icons:code",
+      },
+      embed: {
+        title: "Embedded object",
+        icon: "icons:fullscreen",
+      },
     };
     this.validTagList = this.__validTags();
     this.validGridTagList = this.__validGridTags();
@@ -2396,7 +2359,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       globalThis.document.body.style.overflow = "auto";
     }
     setTimeout(() => {
-      const actions = globalThis.document.querySelector('rich-text-editor-prompt').shadowRoot.querySelector('.actions');
+      const actions = globalThis.document
+        .querySelector("rich-text-editor-prompt")
+        .shadowRoot.querySelector(".actions");
       if (typeof actions.scrollIntoViewIfNeeded === "function") {
         actions.scrollIntoViewIfNeeded(true);
       } else {
@@ -2409,11 +2374,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
   // set things back on close event
   _richTextEditorPromptConfirm(e) {
-    const target = e.detail.value && e.detail.value.target ? e.detail.value.target : null;
+    const target =
+      e.detail.value && e.detail.value.target ? e.detail.value.target : null;
     setTimeout(() => {
       // hack for newly created links
-      if (this.activeNode.tagName === 'A' && target) {
-        this.activeNode.setAttribute('target', target);
+      if (this.activeNode.tagName === "A" && target) {
+        this.activeNode.setAttribute("target", target);
         this.refreshActiveNodeForm();
       }
     }, 0);
@@ -2446,7 +2412,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         type: "element",
         editingElement: "core",
         canScale: true,
-        canPosition: true,
+        designSystem: {
+          card: true,
+          primary: true,
+        },
         canEditSource: true,
         settings: {
           configure: [
@@ -2466,13 +2435,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       this.setHaxProperties(webview, "webview");
     }
     let img = {
-      canScale: {
-        min: 10,
-        step: 5,
-      },
+      canScale: true,
       type: "element",
+      designSystem: {
+        card: true,
+        primary: true,
+      },
       editingElement: "core",
-      canPosition: true,
       canEditSource: true,
       gizmo: {
         title: "Image",
@@ -2545,12 +2514,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     };
     this.setHaxProperties(img, "img");
     let figure = {
-      canScale: {
-        min: 10,
-        step: 5,
-      },
+      canScale: true,
       type: "grid",
-      canPosition: true,
       canEditSource: true,
       gizmo: {
         title: "Figure",
@@ -2579,13 +2544,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     };
     this.setHaxProperties(figure, "figure");
     let figcaption = {
-      canScale: {
-        min: 10,
-        step: 5,
-      },
+      canScale: true,
       type: "grid",
       editingElement: "core",
-      canPosition: true,
       canEditSource: true,
       gizmo: {
         title: "Figure caption",
@@ -2623,7 +2584,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       type: "element",
       editingElement: "core",
       canScale: false,
-      canPosition: false,
+      designSystem: {
+        primary: true,
+      },
       canEditSource: true,
       contentEditable: true,
       gizmo: {
@@ -2647,7 +2610,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          this.DataStylePrimary,
         ],
         advanced: [],
         developer: [],
@@ -2665,7 +2627,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       type: "element",
       editingElement: "core",
       canScale: false,
-      canPosition: false,
+      designSystem: {
+        primary: true,
+      },
       canEditSource: true,
       contentEditable: true,
       gizmo: {
@@ -2696,7 +2660,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             inputMethod: "textfield",
             required: true,
           },
-          this.DataStylePrimary,
         ],
         advanced: [],
         developer: [],
@@ -2716,7 +2679,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       type: "element",
       editingElement: "core",
       canScale: false,
-      canPosition: false,
+      designSystem: {
+        accent: true,
+      },
       canEditSource: true,
       contentEditable: true,
       gizmo: {
@@ -2815,7 +2780,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       type: "element",
       editingElement: "core",
       canScale: false,
-      canPosition: false,
+      designSystem: true,
       canEditSource: true,
       contentEditable: true,
       gizmo: {
@@ -2837,7 +2802,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [this.DataTextDesignTreatment, this.DataStylePrimary, this.DataStyleAccent],
+        configure: [],
         advanced: [],
       },
       demoSchema: [
@@ -2858,7 +2823,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         callback: this.setupEditableTable.bind(this),
       },
       canScale: true,
-      canPosition: true,
       canEditSource: true,
       gizmo: {
         title: "Table",
@@ -2899,7 +2863,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         callback: this.setupIframeLoader.bind(this),
       },
       canScale: false,
-      canPosition: true,
+      designSystem: {
+        card: true,
+        primary: true,
+      },
       canEditSource: false,
       gizmo: {
         title: "iFrame",
@@ -2941,132 +2908,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // gets the definition in by force as if iframes don't exist
     let iframeLoader = globalThis.document.createElement("iframe-loader");
     this.haxAutoloader.appendChild(iframeLoader);
-    let prims = {
-      caption: {
-        title: "Caption",
-        icon: "av:call-to-action",
-      },
-      video: {
-        title: "Video",
-        icon: "av:play-circle-filled",
-      },
-      audio: {
-        title: "Audio",
-        icon: "image:music-note",
-      },
-      section: {
-        title: "Section",
-        icon: "image:crop-landscape",
-      },
-      dl: {
-        title: "Data list",
-        icon: "editor:format-list-bulleted",
-      },
-      dt: {
-        title: "Data term",
-        icon: "editor:format-list-bulleted",
-      },
-      dd: {
-        title: "Data definition",
-        icon: "editor:format-list-bulleted",
-      },
-      ol: {
-        title: "Numbered list",
-        icon: "editor:format-list-numbered",
-      },
-      ul: {
-        title: "Bulleted list",
-        icon: "editor:format-list-bulleted",
-      },
-      li: {
-        title: "List item",
-        icon: "editor:format-list-bulleted",
-      },
-      h1: {
-        title: "Heading",
-        icon: "hax:h1",
-      },
-      h2: {
-        title: "Heading",
-        icon: "hax:h2",
-        tags: ["Text", "h2", "html", "text", "heading", "header"],
-      },
-      h3: {
-        title: "Heading",
-        icon: "hax:h3",
-      },
-      h4: {
-        title: "Heading",
-        icon: "hax:h4",
-      },
-      h5: {
-        title: "Heading",
-        icon: "hax:h5",
-      },
-      h6: {
-        title: "Heading",
-        icon: "hax:h6",
-      },
-      strike: {
-        title: "Cross out",
-        icon: "editor:format-strikethrough",
-      },
-      u: {
-        title: "Underline",
-        icon: "editor:format-underlined",
-      },
-      sub: {
-        title: "Subscript",
-        icon: "mdextra:subscript",
-      },
-      sup: {
-        title: "Superscript",
-        icon: "mdextra:superscript",
-      },
-      div: {
-        title: "DIV",
-        icon: "image:crop-landscape",
-      },
-      span: {
-        title: "SPAN",
-        icon: "editor:short-text",
-        handles: [
-          {
-            type: "inline",
-            text: "text",
-          },
-        ],
-      },
-      i: {
-        title: "Italic",
-        icon: "editor:format-italic",
-      },
-      em: {
-        title: "Emphasis",
-        icon: "editor:format-italic",
-      },
-      strong: {
-        title: "Bold",
-        icon: "editor:format-bold",
-      },
-      b: {
-        title: "Bold",
-        icon: "editor:format-bold",
-      },
-      blockquote: {
-        title: "Block quote",
-        icon: "editor:format-quote",
-      },
-      code: {
-        title: "Code",
-        icon: "icons:code",
-      },
-      embed: {
-        title: "Embedded object",
-        icon: "icons:fullscreen",
-      },
-    };
-    for (let tag in prims) {
+    for (let tag in this.__primsBuilder) {
       let primContentDemo = "";
       if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
         primContentDemo = "Heading";
@@ -3078,14 +2920,29 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           type: "element",
           editingElement: "core",
           canScale: false,
-          canPosition: false,
+          designSystem: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag) ? {
+            text: true,
+            card: true,
+            primary: true,
+            designTreatment: true,
+          } : ["ol", "ul"].includes(tag) ? {
+            text: true,
+            card: true,
+            accent: true,
+            primary: true,
+          } : false,
           canEditSource: true,
           contentEditable: true,
           gizmo: {
-            title: prims[tag].title,
-            icon: prims[tag].icon,
-            tags: prims[tag].tags || ["Text", tag, "html", "text"],
-            handles: prims[tag].handles || [],
+            title: this.__primsBuilder[tag].title,
+            icon: this.__primsBuilder[tag].icon,
+            tags: this.__primsBuilder[tag].tags || [
+              "Text",
+              tag,
+              "html",
+              "text",
+            ],
+            handles: this.__primsBuilder[tag].handles || [],
             meta: {
               author: "W3C",
               inlineOnly: [
@@ -3106,12 +2963,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             },
           },
           settings: {
-            configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
-              ? [
-                this.DataStylePrimary,
-                  this.DataHeadingDesignTreatment,
-                ]
-              : [this.DataStylePrimary, this.DataStyleAccent],
+            configure: [],
             advanced: [],
           },
           demoSchema: [
@@ -3126,13 +2978,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       );
     }
     let hr = {
-      canScale: {
-        min: 25,
-        step: 25,
-      },
+      canScale: true,
       type: "element",
       editingElement: "core",
-      canPosition: false,
+      designSystem: {
+        primary: true,
+      },
       canEditSource: false,
       contentEditable: true,
       gizmo: {
@@ -3143,7 +2994,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         },
       },
       settings: {
-        configure: [this.DataStylePrimary],
+        configure: [],
         advanced: [],
       },
       demoSchema: [

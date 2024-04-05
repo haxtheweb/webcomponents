@@ -186,7 +186,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
     return {
       type: "element",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Call to action",

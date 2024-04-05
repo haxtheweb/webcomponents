@@ -500,7 +500,7 @@ const LrndesignChart = function (SuperClass) {
     static get haxProperties() {
       return {
         canScale: true,
-        canPosition: true,
+
         canEditSource: true,
         gizmo: {
           description: "Creates an accessible chart based on a CSV.",

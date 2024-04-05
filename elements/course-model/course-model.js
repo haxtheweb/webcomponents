@@ -44,7 +44,7 @@ class CourseModel extends LitElement {
         {
           api: "1",
           canScale: true,
-          canPosition: true,
+
           canEditSource: true,
           contentEditable: false,
           gizmo: {

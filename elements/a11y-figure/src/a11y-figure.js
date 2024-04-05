@@ -131,7 +131,7 @@ class A11yFigure extends A11yDetails {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       type: "grid",
       gizmo: {

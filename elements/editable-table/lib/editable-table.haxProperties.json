@@ -1,6 +1,6 @@
 {
   "canScale": false,
-  "canPosition": false,
+
   "canEditSource": true,
   "editElement": "editMode",
   "type": "grid",

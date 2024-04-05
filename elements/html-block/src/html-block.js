@@ -27,7 +27,7 @@ class HtmlBlock extends HTMLElement {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Html block",

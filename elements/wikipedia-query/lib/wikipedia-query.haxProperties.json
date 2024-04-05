@@ -1,6 +1,6 @@
 {
   "canScale": true,
-  "canPosition": true,
+
   "canEditSource": true,
   "gizmo": {
     "title": "Wikipedia article",

@@ -1,7 +1,7 @@
 {
   "type": "grid",
   "canScale": false,
-  "canPosition": false,
+
   "canEditSource": true,
   "gizmo": {
     "title": "Mark the words",

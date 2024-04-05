@@ -8,7 +8,7 @@
     "step": 10,
     "max": 100
   },
-  "canPosition": true,
+
   "canEditSource": true,
   "contentEditable": true,
   "gizmo": {

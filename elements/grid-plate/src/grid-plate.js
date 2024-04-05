@@ -418,7 +418,7 @@ class GridPlate extends LitElement {
     return {
       type: "grid",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       contentEditable: false,
       gizmo: {

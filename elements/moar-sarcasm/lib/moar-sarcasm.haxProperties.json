@@ -3,7 +3,7 @@
   "type": "element",
   "editingElement": "core",
   "canScale": false,
-  "canPosition": false,
+
   "canEditSource": true,
   "contentEditable": true,
   "gizmo": {

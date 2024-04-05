@@ -159,7 +159,8 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       target:
         !!this.allowTarget &&
         !!this.targetedNode &&
-        this.targetedNode.getAttribute && this.targetedNode.getAttribute("target")
+        this.targetedNode.getAttribute &&
+        this.targetedNode.getAttribute("target")
           ? this.targetedNode.getAttribute("target")
           : "_blank",
       href:

@@ -1,58 +1,255 @@
-import { css, unsafeCSS } from "lit";
+import { css, html, unsafeCSS } from "lit";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
+/**
+ * @note Gut all design settings in HAX core. this allows for design systems to hook in
+ * by overriding the way the designSystemHAXProperties returns property definitions
+ *
+ * under standardAdvancedProps
+ * review what should be removed but just about everything
+ * also many of these generate events which can be removed as well!!!
+ * this is core gutting, but we'll have to implement them in a uniform way
+ * so that if hideDefaultSettings is there we should still respect that
+ * Possibly changing it hideDesignLayoutSettings: [] which is an array
+ * of keys to hide from this specific element. If the entire thing is there
+ * then it'll remove all of them
+ */
 globalThis.addEventListener(
-  "hax-store-ready", (e) => {
+  "hax-store-ready",
+  (e) => {
     if (globalThis.HaxStore) {
       const HAXStore = globalThis.HaxStore.requestAvailability();
-      HAXStore.designSystemProps = (props, tag) => {
-        if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
-
-          /**
-           * @note DISCUSSION WITH BILL TO THEN IMPLEMENT HERE
-           * - Gut all design settings 
-           * DataStyleAccent
-           * DataHeadingDesignTreatment
-           * DataStylePrimary
-           * DataTextDesignTreatment
-           * 
-           * under standardAdvancedProps
-           * review what should be removed but just about everything
-           * also many of these generate events which can be removed as well!!!
-           * this is core gutting, but we'll have to implement them in a uniform way
-           * so that if hideDefaultSettings is there we should still respect that
-           * Possibly changing it hideDesignLayoutSettings: [] which is an array
-           * of keys to hide from this specific element. If the entire thing is there
-           * then it'll remove all of them
-           * 
-           * still teasing this out
-           * Also review, do we actually have "advanced" or... do we have but that would be hard
-           * to really adopt fully without A LOT of work in cleaning things up and detection
-           * since those 3 are baked in. Advanced we've moved away from but still...
-           * 
-           * Properties ... Settings something here. Mabe it's still configure
-           * Design
-           * Developer
-           */
-          //
-          props.settings.configure.push({
-            attribute: "data-instructional-action",
-            title: "Type",
-            description: "Indicates instructional context to users visually",
+      HAXStore.designSystemHAXProperties = (props, tag) => {
+        // test if this element can be scaled
+        if (props.canScale) {
+          props.settings.developer.unshift({
+            attribute: "data-width",
+            title: "Width",
+            description: "Scaled relative to width of container",
+            inputMethod: "slider",
+            min: props.canScale.min ? props.canScale.min : 25,
+            max: props.canScale.max ? props.canScale.max : 100,
+            step: props.canScale.step ? props.canScale.step : 25,
+          });
+        }
+        // will catch prims and MIGHT catch tag
+        let inline = HAXStore.isInlineElement(tag);
+        // test for inline bc we are so early in bootstrap we might miss it
+        if (props.gizmo && props.gizmo.meta && props.gizmo.meta.inlineOnly) {
+          inline = true;
+        }
+        // everything that allows for advacned should be able to apply spacing
+        if (!props.hideDefaultSettings && !inline) {
+          props.settings.advanced.push({
+            attribute: "data-text-align",
+            title: "Text align",
+            description: "Horizontal alignment of text",
             inputMethod: "select",
             options: {
-              "": "-- none --",
-              ...learningComponentTypes,
+              "": "-- default --",
+              left: "Left",
+              center: "Center",
+              right: "Right",
+              justify: "Justify",
             },
           });
-        }        
+          props.settings.advanced.push({
+            attribute: "data-padding",
+            title: "Padding",
+            description: "Padding for added aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("padding"),
+            ],
+          });
+          props.settings.advanced.push({
+            attribute: "data-margin",
+            title: "Margin",
+            description: "Margin for added aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("margin"),
+            ],
+          });
+        }
+        // things allowed to have primary
+       /* if (
+          [
+            "p",
+            "blockquote",
+            "ol",
+            "ul",
+            "hr",
+            "abbr",
+            "mark",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+          ].includes(tag)
+        ) {*/
+        if (props.designSystem === true || props.designSystem.primary === true) {
+          props.settings.configure.push({
+            attribute: "data-primary",
+            title: "Primary color",
+            description:
+              "Primary color to apply color, often for meaning or aesthetic",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("primary"),
+            ],
+          });
+        }
+        // block elements can get accents which effectively implies that they
+        // can get the other 'card' like configuration pieces
+        if (props.designSystem === true || props.designSystem.accent === true) {
+          //        if (["p", "blockquote", "ol", "ul"].includes(tag)) {
+          props.settings.configure.push({
+            attribute: "data-accent",
+            title: "Accent color",
+            description: "Accent color to apply color for aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("accent"),
+            ],
+          });
+        }
+        // textual controls
+        if (props.designSystem === true || props.designSystem.text === true) {
+          props.settings.advanced.push({
+            attribute: "data-font-family",
+            title: "Font family",
+            description: "Font family to apply for aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("font-family"),
+            ],
+          });
+
+          props.settings.advanced.push({
+            attribute: "data-font-weight",
+            title: "Font weight",
+            description:
+              "Font weight to apply, ensure it is only for aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("font-weight"),
+            ],
+          });
+
+          props.settings.advanced.push({
+            attribute: "data-font-size",
+            title: "Font size",
+            description: "Font size to apply, ensure it is only for aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("font-size"),
+            ],
+          });
+        }
+        // things that would give a card appearance
+        if (props.designSystem === true || props.designSystem.card === true) {
+          props.settings.advanced.push({
+            attribute: "data-border",
+            title: "Border",
+            description: "Border size to apply for aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("border"),
+            ],
+          });
+          props.settings.advanced.push({
+            attribute: "data-border-radius",
+            title: "Border radius",
+            description: "Border radius to apply for aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("border-radius"),
+            ],
+          });
+          props.settings.advanced.push({
+            attribute: "data-box-shadow",
+            title: "Box shadow",
+            description: "Level of shadow to apply for aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("box-shadow"),
+            ],
+          });
+        }
+        // design treatments are rather open ended
+        if (props.designSystem === true || props.designSystem.designTreatment === true) {
+          if (["p", "blockquote"].includes(tag)) {
+            props.settings.configure.push({
+              attribute: "data-design-treatment",
+              title: "Design treatment",
+              description:
+                "Minor design treatment leveraging Primary color value",
+              inputMethod: "radio",
+              itemsList: [
+                { value: "", text: "-- default --" },
+                ...HAXOptionSampleFactory("design-treatment").filter((item) =>
+                  item && item.value.startsWith("dropCap") ? true : false,
+                ),
+              ],
+            });
+          } else if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
+            // filter options to only NON-dropCap options
+            props.settings.configure.push({
+              attribute: "data-design-treatment",
+              title: "Design treatment",
+              description:
+                "Minor design treatment leveraging Primary color value",
+              inputMethod: "radio",
+              itemsList: [
+                { value: "", text: "-- default --" },
+                ...HAXOptionSampleFactory("design-treatment").filter((item) =>
+                  item && !item.value.startsWith("dropCap") ? true : false,
+                ),
+              ],
+            });
+            // headings can pick up instructional meaning
+            props.settings.configure.push({
+              attribute: "data-instructional-action",
+              title: "Instructional Type",
+              description: "Indicates instructional context to users visually",
+              inputMethod: "radio",
+              itemsList: [
+                { value: "", text: "-- default --" },
+                ...HAXOptionSampleFactory("instructional-action"),
+              ],
+            });
+          }
+        }
         return props;
       };
-    }  },
-  { once: true}
-  );
+    }
+  },
+  { once: true },
+);
 /**
  * Instructional design meshing with styles. What we use to represent concepts
  */
@@ -188,36 +385,6 @@ export function iconFromPageType(type) {
 }
 
 export const ApplicationAttributeData = {
-  "font-family": {
-    primary: "Primary",
-    secondary: "Secondary",
-    navigation: "Navigation",
-  },
-  "font-weight": {
-    light: "Light",
-    regular: "Regular",
-    medium: "Medium",
-    bold: "Bold",
-    black: "Black",
-  },
-  "font-size": {
-    "4xs": "4XS",
-    "3xs": "3XS",
-    xxs: "2XS",
-    xs: "XS",
-    s: "S",
-    ms: "MS",
-    m: "M",
-    ml: "ML",
-    l: "L",
-    xl: "XL",
-    xxl: "2XL",
-    "3xl": "3XL",
-    "4xl": "4XL",
-    "type1-s": "TypeS",
-    "type1-m": "TypeM",
-    "type1-l": "TypeL",
-  },
   primary: {
     0: "Pugh blue",
     1: "Beaver blue",
@@ -249,7 +416,6 @@ export const ApplicationAttributeData = {
     3: "Shrine Max",
     4: "Roar Max",
     5: "Creek Max",
-    6: "White",
   },
   margin: {
     xs: "XS",
@@ -265,17 +431,36 @@ export const ApplicationAttributeData = {
     l: "L",
     xl: "XL",
   },
+  border: {
+    xs: "XS",
+    sm: "S",
+    md: "M",
+    lg: "L",
+  },
+  "border-radius": {
+    xs: "XS",
+    sm: "S",
+    md: "M",
+    lg: "L",
+    xl: "XL",
+  },
+  "box-shadow": {
+    sm: "S",
+    md: "M",
+    lg: "L",
+    xl: "XL",
+  },
   "design-treatment": {
     // heading treatments
-    "vert": "Vertical line",
+    vert: "Vertical line",
     "horz-10p": "Horizontal line 10%",
     "horz-25p": "Horizontal line 25%",
     "horz-50p": "Horizontal line 50%",
     "horz-full": "Horizontal line 100%",
     "horz-md": "Horizontal line Medium",
     "horz-lg": "Horizontal line Large",
-    "horz": "Horizontal line",
-    "bg": "Background color",
+    horz: "Horizontal line",
+    bg: "Background color",
     // text treatment
     "dropCap-xs": "Drop Cap - xs",
     "dropCap-sm": "Drop Cap - sm",
@@ -283,8 +468,48 @@ export const ApplicationAttributeData = {
     "dropCap-lg": "Drop Cap - lg",
     "dropCap-xl": "Drop Cap - xl",
   },
-  "instructional-action": learningComponentTypes
+  "font-family": {
+    primary: "Primary",
+    secondary: "Secondary",
+    navigation: "Navigation",
+  },
+  "font-weight": {
+    light: "Light",
+    regular: "Regular",
+    medium: "Medium",
+    bold: "Bold",
+    black: "Black",
+  },
+  "font-size": {
+    "4xs": "4XS",
+    "3xs": "3XS",
+    xxs: "2XS",
+    xs: "XS",
+    s: "S",
+    ms: "MS",
+    m: "M",
+    ml: "ML",
+    l: "L",
+    xl: "XL",
+    xxl: "2XL",
+    "3xl": "3XL",
+    "4xl": "4XL",
+    "type1-s": "TypeS",
+    "type1-m": "TypeM",
+    "type1-l": "TypeL",
+  },
+  "instructional-action": learningComponentTypes,
 };
+
+// ensure we get keys back in the right format
+export function HAXOptionSampleFactory(type) {
+  return Object.keys(ApplicationAttributeData[type]).map((key) => {
+    return {
+      value: key,
+      html: html`<d-d-d-sample type="${type}" option="${key}"></d-d-d-sample>`,
+    };
+  });
+}
 
 // attributes need to be driven from a cannonical list
 // @note this may need ways of overriding it in the future but at least
@@ -600,6 +825,11 @@ export const DDDVariables = css`
     --ddd-border-md: 3px solid var(--ddd-theme-default-limestoneLight);
     --ddd-border-lg: 4px solid var(--ddd-theme-default-limestoneLight);
 
+    --ddd-border-size-xs: 1px;
+    --ddd-border-size-sm: 2px;
+    --ddd-border-size-md: 3px;
+    --ddd-border-size-lg: 4px;
+
     --ddd-theme-header-border-thickness-0: 0px;
     --ddd-theme-header-border-thickness-xs: 1px;
     --ddd-theme-header-border-thickness-sm: 2px;
@@ -626,16 +856,10 @@ export const DDDVariables = css`
 
     /* shadows */
     --ddd-boxShadow-0: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-    --ddd-boxShadow-xs: rgba(0, 3, 33, 0.063) 0px 4px 8px 0px;
-    --ddd-boxShadow-sm: rgba(0, 3, 33, 0.063) 0px 8px 16px 0px;
-    --ddd-boxShadow-md: rgba(0, 3, 33, 0.063) 0px 12px 24px 0px;
-    --ddd-boxShadow-lg: rgba(0, 3, 33, 0.063) 0px 16px 32px 0px;
-
-    --ddd-textShadow-0: 0px 0px 0px rgba(0, 0, 0, 0); /* No shadow */
-    --ddd-textShadow-xs: rgba(0, 3, 33, 0.063) 0px 2px 4px;
-    --ddd-textShadow-sm: rgba(0, 3, 33, 0.063) 0px 4px 8px;
-    --ddd-textShadow-md: rgba(0, 3, 33, 0.063) 0px 6px 12px;
-    --ddd-textShadow-lg: rgba(0, 3, 33, 0.063) 0px 8px 16px;
+    --ddd-boxShadow-sm: rgba(0, 3, 33, 0.063) 0px 4px 8px 0px;
+    --ddd-boxShadow-md: rgba(0, 3, 33, 0.063) 0px 8px 16px 0px;
+    --ddd-boxShadow-lg: rgba(0, 3, 33, 0.063) 0px 12px 24px 0px;
+    --ddd-boxShadow-xl: rgba(0, 3, 33, 0.063) 0px 16px 32px 0px;
 
     /* breakpoints */
     --ddd-breakpoint-sm: 360px;
@@ -721,229 +945,319 @@ export const DDDVariables = css`
   }
 `;
 /* Data Attributes used by HAX */
-export const DDDDataAttributes = [css`
-  [data-primary="0"] {
-    --ddd-theme-primary: var(--ddd-primary-0);
-    --lowContrast-override: black;
-  }
-  [data-primary="1"] {
-    --ddd-theme-primary: var(--ddd-primary-1);
-    --ddd-theme-bgContrast: white;
-  }
-  [data-primary="2"] {
-    --ddd-theme-primary: var(--ddd-primary-2);
-    --ddd-theme-bgContrast: white;
-  }
-  [data-primary="3"] {
-    --ddd-theme-primary: var(--ddd-primary-3);
-    --ddd-theme-bgContrast: white;
-  }
-  [data-primary="4"] {
-    --ddd-theme-primary: var(--ddd-primary-4);
-    --ddd-theme-bgContrast: white;
-  }
-  [data-primary="5"] {
-    --ddd-theme-primary: var(--ddd-primary-5);
-    --lowContrast-override: black;
-  }
-  [data-primary="6"] {
-    --ddd-theme-primary: var(--ddd-primary-6);
-    --ddd-theme-bgContrast: white;
-  }
-  [data-primary="7"] {
-    --ddd-theme-primary: var(--ddd-primary-7);
-    --lowContrast-override: black;
-  }
-  [data-primary="8"] {
-    --ddd-theme-primary: var(--ddd-primary-8);
-    --lowContrast-override: black;
-  }
-  [data-primary="9"] {
-    --ddd-theme-primary: var(--ddd-primary-9);
-    --lowContrast-override: black;
-  }
-  [data-primary="10"] {
-    --ddd-theme-primary: var(--ddd-primary-10);
-    --lowContrast-override: black;
-  }
-  [data-primary="11"] {
-    --ddd-theme-primary: var(--ddd-primary-11);
-    --ddd-theme-bgContrast: white;
-  }
-  [data-primary="12"] {
-    --ddd-theme-primary: var(--ddd-primary-12);
-    --lowContrast-override: black;
-  }
-  [data-primary="13"] {
-    --ddd-theme-primary: var(--ddd-primary-13);
-    --ddd-theme-bgContrast: white;
-  }
-  [data-primary="14"] {
-    --ddd-theme-primary: var(--ddd-primary-14);
-    --lowContrast-override: black;
-  }
-  [data-primary="15"] {
-    --ddd-theme-primary: var(--ddd-primary-15);
-    --lowContrast-override: black;
-  }
-  [data-primary="16"] {
-    --ddd-theme-primary: var(--ddd-primary-16);
-    --lowContrast-override: black;
-  }
-  [data-primary="17"] {
-    --ddd-theme-primary: var(--ddd-primary-17);
-  }
-  [data-primary="18"] {
-    --ddd-theme-primary: var(--ddd-primary-18);
-    --lowContrast-override: black;
-  }
-  [data-primary="19"] {
-    --ddd-theme-primary: var(--ddd-primary-19);
-    --ddd-theme-bgContrast: white;
-  }
-  [data-primary="20"] {
-    --ddd-theme-primary: var(--ddd-primary-20);
-    --ddd-theme-bgContrast: white;
-  }
-  [data-primary="21"] {
-    --ddd-theme-primary: var(--ddd-primary-21);
-    --lowContrast-override: black;
-  }
+export const DDDDataAttributes = [
+  css`
+    /* basic width operation, not great but not terrible */
+    [data-width="25"] {
+      width: 25%;
+    }
+    [data-width="50"] {
+      width: 50%;
+    }
+    [data-width="75"] {
+      width: 75%;
+    }
 
-  /* subtlySalmon */
+    /* basic text operations, not DDD specific persay */
+    [data-text-align="left"] {
+      text-align: left;
+    }
+    [data-text-align="center"] {
+      text-align: center;
+    }
+    [data-text-align="right"] {
+      text-align: right;
+    }
+    [data-text-align="justify"] {
+      text-align: justify;
+    }
 
-  [data-accent="0"] {
-    --ddd-theme-accent: var(--ddd-accent-0);
-  }
-  [data-accent="1"] {
-    --ddd-theme-accent: var(--ddd-accent-1);
-  }
-  [data-accent="2"] {
-    --ddd-theme-accent: var(--ddd-accent-2);
-  }
-  [data-accent="3"] {
-    --ddd-theme-accent: var(--ddd-accent-3);
-  }
-  [data-accent="4"] {
-    --ddd-theme-accent: var(--ddd-accent-4);
-  }
-  [data-accent="5"] {
-    --ddd-theme-accent: var(--ddd-accent-5);
-  }
-  [data-accent="6"] {
-    --ddd-theme-accent: var(--ddd-accent-6);
-  }
+    /* primary color */
+    [data-primary="0"] {
+      --ddd-theme-primary: var(--ddd-primary-0);
+      --lowContrast-override: black;
+    }
+    [data-primary="1"] {
+      --ddd-theme-primary: var(--ddd-primary-1);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="2"] {
+      --ddd-theme-primary: var(--ddd-primary-2);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="3"] {
+      --ddd-theme-primary: var(--ddd-primary-3);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="4"] {
+      --ddd-theme-primary: var(--ddd-primary-4);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="5"] {
+      --ddd-theme-primary: var(--ddd-primary-5);
+      --lowContrast-override: black;
+    }
+    [data-primary="6"] {
+      --ddd-theme-primary: var(--ddd-primary-6);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="7"] {
+      --ddd-theme-primary: var(--ddd-primary-7);
+      --lowContrast-override: black;
+    }
+    [data-primary="8"] {
+      --ddd-theme-primary: var(--ddd-primary-8);
+      --lowContrast-override: black;
+    }
+    [data-primary="9"] {
+      --ddd-theme-primary: var(--ddd-primary-9);
+      --lowContrast-override: black;
+    }
+    [data-primary="10"] {
+      --ddd-theme-primary: var(--ddd-primary-10);
+      --lowContrast-override: black;
+    }
+    [data-primary="11"] {
+      --ddd-theme-primary: var(--ddd-primary-11);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="12"] {
+      --ddd-theme-primary: var(--ddd-primary-12);
+      --lowContrast-override: black;
+    }
+    [data-primary="13"] {
+      --ddd-theme-primary: var(--ddd-primary-13);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="14"] {
+      --ddd-theme-primary: var(--ddd-primary-14);
+      --lowContrast-override: black;
+    }
+    [data-primary="15"] {
+      --ddd-theme-primary: var(--ddd-primary-15);
+      --lowContrast-override: black;
+    }
+    [data-primary="16"] {
+      --ddd-theme-primary: var(--ddd-primary-16);
+      --lowContrast-override: black;
+    }
+    [data-primary="17"] {
+      --ddd-theme-primary: var(--ddd-primary-17);
+    }
+    [data-primary="18"] {
+      --ddd-theme-primary: var(--ddd-primary-18);
+      --lowContrast-override: black;
+    }
+    [data-primary="19"] {
+      --ddd-theme-primary: var(--ddd-primary-19);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="20"] {
+      --ddd-theme-primary: var(--ddd-primary-20);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="21"] {
+      --ddd-theme-primary: var(--ddd-primary-21);
+      --lowContrast-override: black;
+    }
 
-  /* font family */
+    /* accent color */
 
-  [data-font-family="primary"] {
-    font-family: var(--ddd-font-primary);
-  }
-  [data-font-family="secondary"] {
-    font-family: var(--ddd-font-secondary);
-  }
-  [data-font-family="navigation"] {
-    font-family: var(--ddd-font-navigation);
-  }
+    [data-accent="0"] {
+      --ddd-theme-accent: var(--ddd-accent-0);
+    }
+    [data-accent="1"] {
+      --ddd-theme-accent: var(--ddd-accent-1);
+    }
+    [data-accent="2"] {
+      --ddd-theme-accent: var(--ddd-accent-2);
+    }
+    [data-accent="3"] {
+      --ddd-theme-accent: var(--ddd-accent-3);
+    }
+    [data-accent="4"] {
+      --ddd-theme-accent: var(--ddd-accent-4);
+    }
+    [data-accent="5"] {
+      --ddd-theme-accent: var(--ddd-accent-5);
+    }
+    [data-accent="6"] {
+      --ddd-theme-accent: var(--ddd-accent-6);
+    }
 
-  /* font weight */
+    /* font family */
 
-  [data-font-weight="light"] {
-    font-weight: var(--ddd-font-weight-light);
-  }
-  [data-font-weight="regular"] {
-    font-weight: var(--ddd-font-weight-regular);
-  }
-  [data-font-weight="medium"] {
-    font-weight: var(--ddd-font-weight-medium);
-  }
-  [data-font-weight="bold"] {
-    font-weight: var(--ddd-font-weight-bold);
-  }
-  [data-font-weight="black"] {
-    font-weight: var(--ddd-font-weight-black);
-  }
+    [data-font-family="primary"] {
+      font-family: var(--ddd-font-primary);
+    }
+    [data-font-family="secondary"] {
+      font-family: var(--ddd-font-secondary);
+    }
+    [data-font-family="navigation"] {
+      font-family: var(--ddd-font-navigation);
+    }
 
-  /* font size */
+    /* font weight */
 
-  [data-font-size="4xs"] {
-    font-size: var(--ddd-font-size-4xs);
-  }
-  [data-font-size="3xs"] {
-    font-size: var(--ddd-font-size-3xs);
-  }
-  [data-font-size="xxs"] {
-    font-size: var(--ddd-font-size-xxs);
-  }
-  [data-font-size="xs"] {
-    font-size: var(--ddd-font-size-xs);
-  }
-  [data-font-size="s"] {
-    font-size: var(--ddd-font-size-s);
-  }
-  [data-font-size="ms"] {
-    font-size: var(--ddd-font-size-ms);
-  }
-  [data-font-size="m"] {
-    font-size: var(--ddd-font-size-m);
-  }s
-  [data-font-size="l"] {
-    font-size: var(--ddd-font-size-l);
-  }
-  [data-font-size="xl"] {
-    font-size: var(--ddd-font-size-xl);
-  }
-  [data-font-size="xxl"] {
-    font-size: var(--ddd-font-size-xxl);
-  }
-  [data-font-size="3xl"] {
-    font-size: var(--ddd-font-size-3xl);
-  }
-  [data-font-size="4xl"] {
-    font-size: var(--ddd-font-size-4xl);
-  }
-  [data-font-size="type1-s"] {
-    font-size: var(--ddd-font-size-type1-s);
-  }
-  [data-font-size="type1-m"] {
-    font-size: var(--ddd-font-size-type1-m);
-  }
-  [data-font-size="type1-l"] {
-    font-size: var(--ddd-font-size-type1-l);
-  }
-  /* padding spacing */
-  [data-padding="xs"] {
-    padding: var(--ddd-spacing-2);
-  }
-  [data-padding="s"] {
-    padding: var(--ddd-spacing-4);
-  }
-  [data-padding="m"] {
-    padding: var(--ddd-spacing-8);
-  }
-  [data-padding="l"] {
-    padding: var(--ddd-spacing-12);
-  }
-  [data-padding="xl"] {
-    padding: var(--ddd-spacing-16);
-  }
-  /* margin spacing */
-  [data-margin="xs"] {
-    margin: var(--ddd-spacing-2);
-  }
-  [data-margin="s"] {
-    margin: var(--ddd-spacing-4);
-  }
-  [data-margin="m"] {
-    margin: var(--ddd-spacing-8);
-  }
-  [data-margin="l"] {
-    margin: var(--ddd-spacing-12);
-  }
-  [data-margin="xl"] {
-    margin: var(--ddd-spacing-16);
-  }`,
-  ...instructionalStyles
+    [data-font-weight="light"] {
+      font-weight: var(--ddd-font-weight-light);
+    }
+    [data-font-weight="regular"] {
+      font-weight: var(--ddd-font-weight-regular);
+    }
+    [data-font-weight="medium"] {
+      font-weight: var(--ddd-font-weight-medium);
+    }
+    [data-font-weight="bold"] {
+      font-weight: var(--ddd-font-weight-bold);
+    }
+    [data-font-weight="black"] {
+      font-weight: var(--ddd-font-weight-black);
+    }
+
+    /* font size */
+
+    [data-font-size="4xs"] {
+      font-size: var(--ddd-font-size-4xs);
+    }
+    [data-font-size="3xs"] {
+      font-size: var(--ddd-font-size-3xs);
+    }
+    [data-font-size="xxs"] {
+      font-size: var(--ddd-font-size-xxs);
+    }
+    [data-font-size="xs"] {
+      font-size: var(--ddd-font-size-xs);
+    }
+    [data-font-size="s"] {
+      font-size: var(--ddd-font-size-s);
+    }
+    [data-font-size="ms"] {
+      font-size: var(--ddd-font-size-ms);
+    }
+    [data-font-size="m"] {
+      font-size: var(--ddd-font-size-m);
+    }
+    s [data-font-size="l"] {
+      font-size: var(--ddd-font-size-l);
+    }
+    [data-font-size="xl"] {
+      font-size: var(--ddd-font-size-xl);
+    }
+    [data-font-size="xxl"] {
+      font-size: var(--ddd-font-size-xxl);
+    }
+    [data-font-size="3xl"] {
+      font-size: var(--ddd-font-size-3xl);
+    }
+    [data-font-size="4xl"] {
+      font-size: var(--ddd-font-size-4xl);
+    }
+    [data-font-size="type1-s"] {
+      font-size: var(--ddd-font-size-type1-s);
+    }
+    [data-font-size="type1-m"] {
+      font-size: var(--ddd-font-size-type1-m);
+    }
+    [data-font-size="type1-l"] {
+      font-size: var(--ddd-font-size-type1-l);
+    }
+    /* padding spacing */
+    [data-accent][data-padding="xs"],
+    [data-padding="xs"] {
+      padding: var(--ddd-spacing-2);
+    }
+    [data-accent][data-padding="s"],
+    [data-padding="s"] {
+      padding: var(--ddd-spacing-4);
+    }
+    [data-accent][data-padding="m"],
+    [data-padding="m"] {
+      padding: var(--ddd-spacing-8);
+    }
+    [data-accent][data-padding="l"],
+    [data-padding="l"] {
+      padding: var(--ddd-spacing-12);
+    }
+    [data-accent][data-padding="xl"],
+    [data-padding="xl"] {
+      padding: var(--ddd-spacing-16);
+    }
+    /* margin spacing */
+    [data-margin="xs"] {
+      margin: var(--ddd-spacing-2);
+    }
+    [data-margin="s"] {
+      margin: var(--ddd-spacing-4);
+    }
+    [data-margin="m"] {
+      margin: var(--ddd-spacing-8);
+    }
+    [data-margin="l"] {
+      margin: var(--ddd-spacing-12);
+    }
+    [data-margin="xl"] {
+      margin: var(--ddd-spacing-16);
+    }
+
+    /* border width */
+    p[data-border],
+    blockquote[data-border],
+    ol[data-border],
+    ul[data-border],
+    div[data-border]
+    [data-border] {
+      border-color: var(--ddd-theme-primary);
+    }
+    [data-border="xs"] {
+      border: var(--ddd-border-xs);
+      --ddd-theme-border-size: var(--ddd-border-size-xs);
+    }
+    [data-border="sm"] {
+      border: var(--ddd-border-sm);
+      --ddd-theme-border-size: var(--ddd-border-size-sm);
+    }
+    [data-border="md"] {
+      border: var(--ddd-border-md);
+      --ddd-theme-border-size: var(--ddd-border-size-md);
+    }
+    [data-border="lg"] {
+      border: var(--ddd-border-lg);
+      --ddd-theme-border-size: var(--ddd-border-size-lg);
+    }
+
+    /* border-radius */
+    [data-border-radius="xs"] {
+      border-radius: var(--ddd-radius-xs);
+    }
+    [data-border-radius="sm"] {
+      border-radius: var(--ddd-radius-sm);
+    }
+    [data-border-radius="md"] {
+      border-radius: var(--ddd-radius-md);
+    }
+    [data-border-radius="lg"] {
+      border-radius: var(--ddd-radius-lg);
+    }
+    [data-border-radius="xl"] {
+      border-radius: var(--ddd-radius-xl);
+    }
+
+    /* box-shadow */
+    [data-box-shadow="sm"] {
+      box-shadow: var(--ddd-boxShadow-sm);
+    }
+    [data-box-shadow="md"] {
+      box-shadow: var(--ddd-boxShadow-md);
+    }
+    [data-box-shadow="lg"] {
+      box-shadow: var(--ddd-boxShadow-lg);
+    }
+    [data-box-shadow="xl"] {
+      box-shadow: var(--ddd-boxShadow-xl);
+    }
+  `,
+  ...instructionalStyles,
 ];
 
 /* Tag based application */
@@ -1018,12 +1332,14 @@ export const DDDReset = css`
     margin: var(--ddd-spacing-6) 0;
   }
   p[data-accent],
+  blockquote[data-accent],
   ol[data-accent],
   ul[data-accent],
   div[data-accent] {
     padding: var(--ddd-spacing-6);
     border: var(--ddd-border-sm);
     border-color: var(--ddd-theme-primary);
+    border-width: var(--ddd-theme-border-size);
     background-color: var(--ddd-theme-accent);
   }
   ol[data-accent],
@@ -1080,6 +1396,7 @@ export const DDDReset = css`
     color: var(--ddd-theme-default-link);
     font-weight: var(--ddd-font-primary-bold);
     text-decoration: none;
+    background-color: var(--ddd-theme-accent);
   }
   a:hover {
     text-decoration: underline;
@@ -1572,7 +1889,7 @@ export const DDDReset = css`
       --ddd-theme-primary,
       var(--ddd-theme-default-keystoneYellow)
     );
-    color: var(--ddd-theme-bgContrast);
+    color: var(--ddd-theme-bgContrast, black);
   }
   abbr {
     background-color: var(
@@ -1589,7 +1906,7 @@ export const DDDReset = css`
       --ddd-theme-primary,
       var(--ddd-theme-default-keystoneYellow)
     );
-    color: var(--ddd-theme-bgContrast);
+    color: var(--ddd-theme-bgContrast, black);
     position: relative;
   }
   abbr:focus,
@@ -3450,7 +3767,7 @@ export const DDDBoxShadow = css`
     box-shadow: none;
   }
   .bs-xs {
-    box-shadow: var(--ddd-boxShadow-xs);
+    box-shadow: var(--ddd-boxShadow-sm);
   }
   .bs-sm {
     box-shadow: var(--ddd-boxShadow-sm);
@@ -3461,23 +3778,8 @@ export const DDDBoxShadow = css`
   .bs-lg {
     box-shadow: var(--ddd-boxShadow-lg);
   }
-`;
-/* Text shadows */
-export const DDDTextShadow = css`
-  .textShadow-0 {
-    text-shadow: none;
-  }
-  .textshadow-1 {
-    text-shadow: var(--ddd-textShadow-xs);
-  }
-  .textShadow-2 {
-    text-shadow: var(--ddd-textShadow-sm);
-  }
-  .textShadow-3 {
-    text-shadow: var(--ddd-textShadow-md);
-  }
-  .textShadow-4 {
-    text-shadow: var(--ddd-textShadow-lg);
+  .bs-xl {
+    box-shadow: var(--ddd-boxShadow-xl);
   }
 `;
 /* Border Radius */
@@ -3627,7 +3929,6 @@ export const DDDAllStyles = [
   DDDLetterSpacing,
   DDDLineHeight,
   DDDBoxShadow,
-  DDDTextShadow,
   DDDBorderRadius,
   DDDBackground,
   DDDFontClasses,

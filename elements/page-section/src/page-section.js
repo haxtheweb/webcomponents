@@ -503,7 +503,7 @@ class PageSection extends DDD {
    * @note if we ever wanted to show a preview of the preset, this code would
    * help make that possible
    */
-/*  haxsetupActiveElementForm(props) {
+  /*  haxsetupActiveElementForm(props) {
       // get the index of the preset key
       let presetKey = props.settings.configure.findIndex(j => j.property === "preset");
       props.settings.configure[presetKey].itemsList.map(item => {

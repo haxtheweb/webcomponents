@@ -25,7 +25,7 @@
  *    // can this be scaled in its width
  *    "canScale": true,
  *    // can this be rough positioned left/right/center
- *    "canPosition": true,
+ *
  *    // can you edit the source of this element directly? (allows code editor option)
  *    "canEditSource": true,
  *    // should the entire element be contenteditable? (allows editing slot via contenteditable operations)
@@ -227,7 +227,7 @@ export class HAXWiring {
       editingElement: "core",
       hideDefaultSettings: false,
       canScale: false,
-      canPosition: false,
+
       canEditSource: true,
       settings: {
         configure: [],
@@ -349,17 +349,25 @@ export class HAXWiring {
         if (typeof props.editingElement === typeof undefined) {
           props.editingElement = "core";
         }
-        if (typeof props.canPosition === typeof undefined) {
-          props.canPosition = true;
-        }
         // @note really just for page-break but could see
         // elements that are to LITERALLY be what is defined
-        // instead of mixing in our common settings
+        // instead of mixing in our common settings collection-list
+        // manages it's own spacing for example
         if (typeof props.hideDefaultSettings === typeof undefined) {
           props.hideDefaultSettings = false;
         }
+        // can this be scaled via a simple 25/50/75/100 sizing
         if (typeof props.canScale === typeof undefined) {
           props.canScale = true;
+        }
+        if (typeof props.designSystem === typeof undefined) {
+          props.designSystem = {
+            primary: false,
+            accent: false,
+            text: false,
+            card: false,
+            designTreatment: false,
+          };
         }
         if (typeof props.canEditSource === typeof undefined) {
           props.canEditSource = false;
@@ -421,7 +429,10 @@ export class HAXWiring {
           }
           // support design systems supplying their own property definitions
           if (globalThis.HaxStore) {
-            props = globalThis.HaxStore.requestAvailability().designSystemProps(props, tag);
+            props = globalThis.HaxStore.requestAvailability().designSystemHAXProperties(
+              props,
+              tag,
+            );
           }
           // apply standard set of props that the system wires in
           props = this.standardAdvancedProps(props, tag);
@@ -532,106 +543,6 @@ export class HAXWiring {
           title: "Lock editing",
           description: "Prevent changes to this element and all its content",
           inputMethod: "boolean",
-        });
-        props.settings.advanced.push({
-          attribute: "text-align",
-          title: "Text align",
-          description: "Horizontal alignment of text in the element.",
-          inputMethod: "select",
-          options: {
-            "": "",
-            left: "left",
-            center: "center",
-            right: "right",
-            justify: "justify",
-          },
-        });
-        props.settings.advanced.push({
-          attribute: "font-size",
-          title: "Font size",
-          description: "Pre-selected font variation",
-          inputMethod: "select",
-          options: {
-            "x-small": "x-small",
-            small: "small",
-            "": "normal",
-            large: "large",
-            "x-large": "x-large",
-            "xx-large": "xx-large",
-          },
-        });
-        // allow styles to be modified this way
-        props.settings.advanced.push({
-          attribute: "padding-top",
-          title: "Padding top",
-          step: 8,
-          max: 128,
-          min: 0,
-          inputMethod: "slider",
-          suffix: "px",
-        });
-        props.settings.advanced.push({
-          attribute: "padding-right",
-          title: "Padding right",
-          step: 8,
-          max: 128,
-          min: 0,
-          inputMethod: "slider",
-          suffix: "px",
-        });
-        props.settings.advanced.push({
-          attribute: "padding-bottom",
-          title: "Padding bottom",
-          step: 8,
-          max: 128,
-          min: 0,
-          inputMethod: "slider",
-          suffix: "px",
-        });
-        props.settings.advanced.push({
-          attribute: "padding-left",
-          title: "Padding left",
-          step: 8,
-          max: 128,
-          min: 0,
-          inputMethod: "slider",
-          suffix: "px",
-        });
-        props.settings.advanced.push({
-          attribute: "margin-top",
-          title: "Margin top",
-          step: 8,
-          max: 128,
-          min: 0,
-          inputMethod: "slider",
-          suffix: "px",
-        });
-        props.settings.advanced.push({
-          attribute: "margin-right",
-          title: "Margin right",
-          step: 8,
-          max: 128,
-          min: 0,
-          inputMethod: "slider",
-          suffix: "px",
-        });
-        props.settings.advanced.push({
-          attribute: "margin-bottom",
-          title: "Margin bottom",
-          step: 8,
-          max: 128,
-          min: 0,
-          inputMethod: "slider",
-          suffix: "px",
-        });
-        props.settings.advanced.push({
-          attribute: "margin-left",
-          title: "Margin left",
-          step: 8,
-          max: 128,
-          min: 0,
-          inputMethod: "slider",
-          suffix: "px",
         });
         // allow classes to be modified this way
         props.settings.developer.push({
@@ -848,7 +759,7 @@ export class HAXWiring {
         editingElement: "core",
         hideDefaultSettings: false,
         canScale: true,
-        canPosition: true,
+
         canEditSource: true,
         contentEditable: false,
         gizmo: {
@@ -969,12 +880,12 @@ export const HAXElement = function (SuperClass) {
     }
 
     /**
-     * 
+     *
      * @param {Object} props - HAX properties being set for the schema for an element
-     * @param {String} tag - tagName of the element 
+     * @param {String} tag - tagName of the element
      * @returns props object
      */
-    designSystemProps(props, tag) {
+    designSystemHAXProperties(props, tag) {
       // design systems can implement this in order to inject options into elements in a pervasive way
       // this does nothing but ensure that HAX works without a design system
       return props;

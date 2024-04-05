@@ -273,7 +273,7 @@ class PlaceHolder extends SimpleColors {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: false,
       gizmo: {
         title: "Placeholder",

@@ -1,7 +1,10 @@
 {
   "type": "element",
   "canScale": false,
-  "canPosition": false,
+  "designSystem": {
+    "card": true,
+    "primary": true
+  },
   "canEditSource": false,
   "gizmo": {
     "title": "iFrame",

@@ -100,7 +100,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Type writer",

@@ -62,7 +62,7 @@ class MicroCopyHeading extends LitElement {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Micro copy-heading",

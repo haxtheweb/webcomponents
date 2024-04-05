@@ -231,7 +231,7 @@ class RetroCard extends SimpleColors {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: true,
       gizmo: {
         title: "Retro card",

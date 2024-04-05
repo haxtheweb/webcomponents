@@ -147,6 +147,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           :host([type="checkbox"]) label.checkbox-label,
           :host([type="radio"]) label.radio-label {
             flex: 0 0 auto;
+            width: 80%;
           }
           :host([type="checkbox"]) input,
           :host([type="radio"]) input,
@@ -644,7 +645,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                   class="option"
                   part="option"
                   @click="${(e) => {
-                    // @note this can cause issues in listening up above..
+                    /** @note this can cause issues in listening up above.. */
                     if (e.target.tagName === "DIV") {
                       e.preventDefault();
                       e.stopPropagation();
@@ -656,7 +657,21 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                     for="${this.id}.${option.value}"
                     class="radio-label"
                     part="option-label"
-                    >${option.html ? html`${option.html}` : option.text}</label
+                    >${option.html
+                      ? html`<div
+                          @click="${(e) => {
+                            // @note this can cause issues in listening up above..
+                            e.preventDefault();
+                            e.stopPropagation();
+                            this._handleIconClick(
+                              this.getChecked(option),
+                              option,
+                            );
+                          }}"
+                        >
+                          ${option.html}
+                        </div>`
+                      : option.text}</label
                   >${this.getInput(option)}
                 </div>
               `,

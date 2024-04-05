@@ -16,39 +16,81 @@ export class DDDSample extends DDDSuper(LitElement) {
       ...DDDDataAttributes,
       css`
         :host {
-          display: inline-block;
-          min-height: 30px;
+          display: flex;
+          min-height: var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-2);
+          margin: 0;
         }
-        :host([type="accent"]:hover) .label,
-        :host([type="primary"]:hover) .label {
-          text-decoration: underline;
+        :host([type="accent"]:hover),
+        :host([type="primary"]:hover) {
+          background-color: var(--ddd-theme-default-limestoneMaxLight);
         }
 
         :host([type="accent"]) .sample,
         :host([type="primary"]) .sample {
-          height: var(--ddd-font-size-s);
-          width: var(--ddd-font-size-s);
-          display: inline-block;
-          border: var(--ddd-border-xs);
+          border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-xs);
-          box-shadow: var(--ddd-boxShadow-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
+          height: var(--ddd-spacing-4);
+          width: var(--ddd-spacing-8);
+          display: inline-block;
+        }
+
+        :host([type="border"]) .sample,
+        :host([type="border-radius"]) .sample,
+        :host([type="box-shadow"]) .sample {
+          --ddd-theme-primary: var(--ddd-primary-16);
+          background-color: var(--ddd-theme-primary);
+          border-color: black;
+          height: var(--ddd-spacing-4);
+          width: var(--ddd-spacing-8);
+          display: inline-block;
+        }
+        :host([type="border"]) .sample {
+          height: calc(var(--ddd-spacing-4) - var(--ddd-theme-border-size));
+          width: calc(var(--ddd-spacing-8) - var(--ddd-theme-border-size));
+        }
+        :host([type="border-radius"]) .sample {
+          border: var(--ddd-border-lg);
+          height: var(--ddd-spacing-8);
+          width: var(--ddd-spacing-8);
+          border-color: black;
+          clip-path: polygon(50% 0, 0 50%, 0 0, 0 0);
+          transform: scale(4);
+          padding: 0;
+          margin-left: 64px;
+          margin-top: 64px;
+        }
+        :host([type="box-shadow"]) .sample {
+          border: var(--ddd-border-sm);
+          border-color: black;
+          margin: 0 12px 12px 12px;
         }
 
         :host([type="accent"]:hover) .sample,
         :host([type="primary"]:hover) .sample {
-          box-shadow: var(--ddd-boxShadow-sm);
           border-color: black;
         }
-
+        :host([type="border"]) .label,
+        :host([type="box-shadow"]) .label,
         :host([type="accent"]) .label,
         :host([type="primary"]) .label,
         :host([type="margin"]) .label,
         :host([type="padding"]) .label {
-          font-size: var(--ddd-font-size-s);
+          font-size: var(--ddd-font-size-4xs);
           margin-left: var(--ddd-spacing-3);
           display: inline-block;
           vertical-align: top;
         }
+        :host([type="border-radius"]) .label {
+          font-size: var(--ddd-font-size-l);
+          margin-left: calc(-1 * var(--ddd-spacing-5));
+          display: inline-block;
+          vertical-align: top;
+          height: var(--ddd-spacing-20);
+          line-height: var(--ddd-spacing-20);
+        }
+
         :host([type="margin"]) .label,
         :host([type="padding"]) .label {
           font-weight: var(--ddd-font-weight-bold);
@@ -59,7 +101,35 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host([type="primary"]) .sample {
           background-color: var(--ddd-theme-primary);
         }
-        /* hack just for the docs bc we can't visualize margins */
+
+        :host([type="margin"]) .sample[data-margin],
+        :host([type="padding"]) .sample {
+          display: inline-block;
+          height: var(--ddd-spacing-6);
+          padding-top: 0;
+          padding-bottom: 0;
+          padding-left: 0;
+          background-color: var(--ddd-primary-2);
+          margin: 0;
+        }
+
+        /* design treatments may require display block */
+        :host([type="design-treatment"]) .label {
+          display: block;
+          font-weight: bold;
+          --ddd-theme-primary: var(--ddd-primary-16);
+          min-height: calc(
+            (var(--initialLetter) / 3 * var(--ddd-theme-body-font-size) * 1.5) +
+              20px
+          );
+        }
+
+        :host([type="font-weight"]) .label,
+        :host([type="font-family"]) .label {
+          font-size: var(--ddd-font-size-s);
+        }
+
+        /* @hack just for the docs bc we can't visualize margins */
         [data-margin="xs"] {
           padding: var(--ddd-spacing-2);
         }
@@ -76,31 +146,33 @@ export class DDDSample extends DDDSuper(LitElement) {
           padding: var(--ddd-spacing-16);
         }
 
-        :host([type="margin"]) .sample[data-margin],
-        :host([type="padding"]) .sample {
-          display: inline-block;
-          height: var(--ddd-font-size-s);
-          padding-top: 0;
-          padding-bottom: 0;
-          padding-left: 0;
-          background-color: var(--ddd-primary-2);
-          margin: 0;
+        /* @hack from normal presentation so that it renders nicely here */
+        [data-instructional-action]::before {
+          padding: 6px 0 0;
+          margin: 8px 16px 0 0;
         }
 
-        /* some treatments require block */
-        :host([type="design-treatment"]) .label {
-          display: block;
-          --ddd-theme-primary: var(--ddd-primary-7);
-          min-height: calc(
-          (var(--initialLetter) / 2 * var(--ddd-theme-body-font-size) * 1.5) + 20px
-        );
+        /* @hack so that we reduce the size of the drop cap or it'll be ridiculous */
+        :host([type="design-treatment"])
+          .label[data-design-treatment^="dropCap"]::first-letter {
+          -webkit-initial-letter: calc(var(--initialLetter) / 3);
+          initial-letter: calc(var(--initialLetter) / 3);
         }
-        /** hack so that we reduce the size of the drop cap or it'll be ridiculous */
-        :host([type="design-treatment"]) .label[data-design-treatment^="dropCap"]::first-letter {
-          -webkit-initial-letter: calc(var(--initialLetter)/2);
-          initial-letter: calc(var(--initialLetter)/2);
+        /* @hack so we can see fonts relative to each other, not exact size */
+        :host([type="font-size"]) span ::slotted(*) {
+          font-size: var(--ddd-font-size-xs);
         }
-      `
+        :host([type="font-size"]) .label {
+          font-size: 0.8em;
+        }
+        :host([option^="type"]) .label {
+          font-size: 0.5em;
+        }
+        :host([option^="type"]) .label::after {
+          content: " (50% scale)";
+          font-size: var(--ddd-font-size-4xs);
+        }
+      `,
     ];
   }
 
@@ -108,14 +180,25 @@ export class DDDSample extends DDDSuper(LitElement) {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    if (changedProperties.has('type') && this.shadowRoot) {
+    if (changedProperties.has("type") && this.shadowRoot) {
       let span;
       // accent, primary, spacing
-      if (['accent','primary', 'padding', 'margin'].includes(this.type)) {
-        span = this.shadowRoot.querySelector('span.sample');
-      }
-      else {
-        span = this.shadowRoot.querySelector('span.label');
+      if (
+        [
+          "accent",
+          "primary",
+          "padding",
+          "margin",
+          "border-radius",
+          "box-shadow",
+          "border",
+        ].includes(this.type)
+      ) {
+        span = this.shadowRoot.querySelector("span.sample");
+      } else if (this.type === "font-size") {
+        span = this.shadowRoot.querySelector("div.wrapper");
+      } else {
+        span = this.shadowRoot.querySelector("span.label");
       }
       for (let i in ApplicationAttributeData) {
         span.removeAttribute(`data-${i}`);
@@ -125,7 +208,7 @@ export class DDDSample extends DDDSuper(LitElement) {
         span.setAttribute(`data-${this.type}`, this.option);
       }, 0);
     }
-    if (changedProperties.has('option') && this.shadowRoot && this.type) {
+    if (changedProperties.has("option") && this.shadowRoot && this.type) {
       let span = this.shadowRoot.querySelector(`span[data-${this.type}]`);
       if (span) {
         span.setAttribute(`data-${this.type}`, this.option);
@@ -135,7 +218,12 @@ export class DDDSample extends DDDSuper(LitElement) {
 
   render() {
     return html`
-      <span class="sample"></span><span class="label">${ApplicationAttributeData[this.type][this.option]}<slot></slot></span>
+    <div class="wrapper">
+      <span class="sample"></span
+      ><span class="label"
+        >${ApplicationAttributeData[this.type][this.option]}<slot></slot
+      ></span>
+    </div>
     `;
   }
 
@@ -143,7 +231,7 @@ export class DDDSample extends DDDSuper(LitElement) {
     return {
       type: { type: String, reflect: true },
       option: { type: String },
-    }
+    };
   }
 
   static get tag() {

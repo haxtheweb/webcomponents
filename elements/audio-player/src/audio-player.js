@@ -28,11 +28,8 @@ class AudioPlayer extends VideoPlayer {
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: {
-        min: 50,
-        step: 25,
-      },
-      canPosition: false,
+      canScale: true,
+
       canEditSource: true,
       gizmo: {
         title: "Audio",

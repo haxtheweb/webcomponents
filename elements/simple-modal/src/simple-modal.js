@@ -214,11 +214,11 @@ class SimpleModal extends LitElement {
           left: calc(50% - var(--simple-modal-width, 75vw) / 2);
         }
 
-        .full{
+        .full {
           background-color: var(--ddd-theme-default-limestoneLight);
         }
 
-        div.empty{
+        div.empty {
           background-color: var(--ddd-theme-default-limestoneMaxLight);
         }
       `,

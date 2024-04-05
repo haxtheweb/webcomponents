@@ -215,7 +215,7 @@ class LrndesignPaperstack extends SimpleColors {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Paper stack",

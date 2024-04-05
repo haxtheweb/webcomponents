@@ -26,7 +26,7 @@ class ResponsiveIframe extends LitElement {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Responsive iframe",

@@ -1,6 +1,6 @@
 {
   "canScale": false,
-  "canPosition": true,
+
   "canEditSource": true,
   "gizmo": {
     "title": "Tabs",

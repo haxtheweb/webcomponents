@@ -76,7 +76,7 @@ class LrndesignAvatar extends SimpleColors {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: true,
       gizmo: {
         title: "Avatar",

@@ -32,7 +32,7 @@ export class LrnH5p extends LitElement {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "H5P Element",

@@ -349,7 +349,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
     return {
       type: "grid",
       canScale: false,
-      canPosition: false,
+
       canEditSource: false,
       gizmo: {
         title: "Remote Content",

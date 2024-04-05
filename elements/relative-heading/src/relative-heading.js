@@ -93,7 +93,7 @@ class RelativeHeading extends RelativeHeadingLite {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Relative heading",

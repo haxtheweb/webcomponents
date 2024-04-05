@@ -51,7 +51,7 @@ class FilteredImage extends SimpleColors {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Filtered image",

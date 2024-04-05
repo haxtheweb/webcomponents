@@ -82,7 +82,7 @@ class SiteUuidLink extends LitElement {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: false,
       gizmo: {
         title: "HAX link",

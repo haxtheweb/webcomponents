@@ -104,7 +104,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           padding: 0;
           position: relative;
           align-self: stretch;
-          box-shadow: var(--ddd-boxShadow-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
           transition: border 0.3s ease;
           align-items: center;
           justify-self: stretch;

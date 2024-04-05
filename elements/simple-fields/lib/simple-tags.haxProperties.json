@@ -1,6 +1,6 @@
 {
   "canScale": true,
-  "canPosition": false,
+
   "canEditSource": true,
   "gizmo": {
     "title": "Tags",

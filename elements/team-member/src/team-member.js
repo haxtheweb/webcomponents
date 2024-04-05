@@ -104,7 +104,7 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Team Member",

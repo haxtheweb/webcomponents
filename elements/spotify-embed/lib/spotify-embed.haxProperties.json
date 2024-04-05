@@ -1,7 +1,7 @@
 {
   "api": "1",
   "canScale": true,
-  "canPosition": false,
+
   "canEditSource": false,
   "contentEditable": false,
   "gizmo": {

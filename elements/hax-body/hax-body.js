@@ -2564,9 +2564,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         HAXStore.activeNode = this.haxChangeTagName(this.activeNode, "ol");
         this.positionContextMenus();
         break;
-      case "text-align-left":
-        this.activeNode.style.textAlign = null;
-        break;
       // grid plate based operations
       // allow for transforming this haxElement into another one
       case "hax-transform-node":

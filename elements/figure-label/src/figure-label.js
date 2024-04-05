@@ -101,7 +101,7 @@ class FigureLabel extends DDD {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Figure label",

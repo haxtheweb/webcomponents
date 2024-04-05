@@ -24,20 +24,20 @@ import "@lrnwebcomponents/accent-card/accent-card.js";
  */
 export const styleGuideTopics = {
   DDDelementsList: "DDDelementsList",
-  HeaderSample: "HeaderSample",
-  Borders: "Borders",
-  DataAttributes: "DataAttributes",
   Breakpoints: "Breakpoints",
+  DataAttributes: "DataAttributes",
+  Borders: "Borders",
   DefaultColors: "DefaultColors",
   DefaultFunctionalColors: "DefaultFunctionalColors",
   Gradients: "Gradients",
   Radius: "Radius",
   Shadows: "Shadows",
   Spacing: "Spacing",
+  HeaderSample: "HeaderSample",
   Typography: "Typography",
   RichText: "RichText",
-  Buttons: "Buttons",
   InstructionalComponents: "InstructionalComponents",
+  Buttons: "Buttons",
   PageSections: "PageSections",
 };
 
@@ -63,8 +63,6 @@ class DDDocs extends DDD {
       css`
         /* used for demo */
         :host {
-        }
-        d-d-d-sample {
           display: block;
         }
         /** some specific hacks for presenting things nicer */
@@ -76,10 +74,6 @@ class DDDocs extends DDD {
         }
         details div div {
           font-size: var(--ddd-font-size-4xs);
-        }
-
-        [data-instructional-action]::before {
-          -webkit-mask-image: url(https://hax.psu.edu/cdn/1.x.x/build/es6/node_modules/@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js/../svgs/courseicons/chem-connection.svg);
         }
 
         .DefaultColors h5,
@@ -181,17 +175,23 @@ class DDDocs extends DDD {
   }
 
   renderDataAttributes() {
-    return html`${Object.keys(ApplicationAttributeData).map((key) => html`
-    <h2>${key}</h2>
-    <div>
-    ${Object.keys(ApplicationAttributeData[key]).map((key2) => html`
-      <d-d-d-sample type="${key}" option="${key2}"><strong style="margin-left:12px;"><em>[data-${key}="${key2}"]</em></strong></d-d-d-sample>          
-      `)}
-    </div>
-  `)}
-  `;
+    return html`${Object.keys(ApplicationAttributeData).map(
+      (key) => html`
+        <h2>${key}</h2>
+        <div>
+          ${Object.keys(ApplicationAttributeData[key]).map(
+            (key2) => html`
+              <d-d-d-sample type="${key}" option="${key2}"
+                ><em style="margin-left:12px;"
+                  >data-${key}="${key2}"</em
+                ></d-d-d-sample
+              >
+            `,
+          )}
+        </div>
+      `,
+    )} `;
   }
-
 
   renderHeaderSample() {
     let headers = [];
@@ -788,111 +788,188 @@ class DDDocs extends DDD {
 
   renderGradients() {
     return html`
-    <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Gradients from the Polaris Theme</h2>
-    <div class="grid-6 my-15 ml-10">
-      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-navBar"></p>
-        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-navBar<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-navBar</span></p>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
+        Available Gradients from the Polaris Theme
+      </h2>
+      <div class="grid-6 my-15 ml-10">
+        <div>
+          <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-navBar"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bg-gradient-navBar</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable:
+            <span class="fw-3">--ddd-theme-default-gradient-navBar</span>
+          </p>
+        </div>
+        <div>
+          <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-footer"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bg-gradient-footer</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable:
+            <span class="fw-3">--ddd-theme-default-gradient-footer</span>
+          </p>
+        </div>
+        <div>
+          <p
+            class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-newsFeature"
+          ></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bg-gradient-newsFeature</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable:
+            <span class="fw-3">--ddd-theme-default-gradient-newsFeature</span>
+          </p>
+        </div>
+        <div>
+          <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-buttons"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bg-gradient-buttons</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable:
+            <span class="fw-3">--ddd-theme-default-gradient-buttons</span>
+          </p>
+        </div>
+        <div>
+          <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bg-gradient-hero</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable:
+            <span class="fw-3">--ddd-theme-default-gradient-hero</span>
+          </p>
+        </div>
+        <div>
+          <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero2"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bg-gradient-hero2</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable:
+            <span class="fw-3">--ddd-theme-default-gradient-hero2</span>
+          </p>
+        </div>
       </div>
-      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-footer"></p>
-        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-footer<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-footer</span></p>
-      </div>
-      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-newsFeature"></p>
-        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-newsFeature<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-newsFeature</span></p>
-      </div>
-      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-buttons"></p>
-        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-buttons<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-buttons</span></p>
-      </div>
-      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero"></p>
-        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-hero</span></p>
-      </div>
-      <div><p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero2"></p>
-        <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bg-gradient-hero2<span></p>
-        <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-theme-default-gradient-hero2</span></p>
-      </div>
-    </div>
-      `;
+    `;
   }
 
   renderRadius() {
     return html`
-    <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Radius classes</h2>
-    <div class="grid-7 my-15 mx-5 gap-2 radius">
-    <div><p class="p-20 r-xs b-sm bs-sm"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xs<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-xs</span></p>
-    </div>
-    <div><p class="p-20 r-sm b-sm bs-sm"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-sm<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-sm</span></p>
-    </div>
-    <div><p class="p-20 r-md b-sm bs-sm"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-md<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-md</span></p>
-    </div>
-    <div><p class="p-20 r-lg b-sm bs-sm"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-lg<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-lg</span></p>
-    </div>
-    <div><p class="p-20 r-xl b-sm bs-sm"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-xl<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-xl</span></p>
-    </div>
-    <div><p class="p-20 r-rounded b-sm bs-sm"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-rounded<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-rounded</span></p>
-    </div>
-    <div><p class="my-4 p-20 r-circle b-sm bs-sm"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">r-circle<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-radius-circle</span></p>
-    </div>
-    </div>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Radius classes</h2>
+      <div class="grid-7 my-15 mx-5 gap-2 radius">
+        <div>
+          <p class="p-20 r-xs b-sm bs-sm"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">r-xs</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-radius-xs</span>
+          </p>
+        </div>
+        <div>
+          <p class="p-20 r-sm b-sm bs-sm"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">r-sm</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-radius-sm</span>
+          </p>
+        </div>
+        <div>
+          <p class="p-20 r-md b-sm bs-sm"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">r-md</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-radius-md</span>
+          </p>
+        </div>
+        <div>
+          <p class="p-20 r-lg b-sm bs-sm"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">r-lg</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-radius-lg</span>
+          </p>
+        </div>
+        <div>
+          <p class="p-20 r-xl b-sm bs-sm"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">r-xl</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-radius-xl</span>
+          </p>
+        </div>
+        <div>
+          <p class="p-20 r-rounded b-sm bs-sm"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">r-rounded</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-radius-rounded</span>
+          </p>
+        </div>
+        <div>
+          <p class="my-4 p-20 r-circle b-sm bs-sm"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">r-circle</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-radius-circle</span>
+          </p>
+        </div>
+      </div>
     `;
   }
 
   renderShadows() {
     return html`
-    <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Shadow classes</h2>
-    <div class="grid-4 my-15 mx-30 gap-10">
-    <div><p class="py-20 b-sm bs-xs"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-xs<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-boxShadow-xs</span></p>
-    </div>
-    <div><p class="py-20 b-sm bs-sm"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-sm<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-boxShadow-sm</span></p>
-    </div>
-    <div><p class="py-20 b-sm bs-md"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-md<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-boxShadow-md</span></p>
-    </div>
-    <div><p class="py-20 b-sm bs-lg"></p>
-      <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-lg<span></p>
-      <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-boxShadow-lg</span></p>
-    </div>
-    </div>
-    <div class="grid-4 mt-10 mx-15">
-    <div><h3 class="py-20 m-auto text-center textShadow-1">Text Shadow</h3>
-    <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-xs<span></p>
-    <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-textShadow-xs</span></p>
-    </div>
-    <div><h3 class="py-20 m-auto text-center textShadow-2">Text Shadow</h3>
-    <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-sm<span></p>
-    <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-textShadow-sm</span></p>
-    </div>
-    <div><h3 class="py-20 m-auto text-center textShadow-3">Text Shadow</h3>
-    <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-md<span></p>
-    <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-textShadow-md</span></p>
-    </div>
-    <div><h3 class="py-20 m-auto text-center textShadow-4">Text Shadow</h3>
-    <p class="mt-5 mx-auto text-center">class: <span class="fw-3">bs-lg<span></p>
-    <p class="mb-5 mx-auto text-center">css variable: <span class="fw-3">--ddd-textShadow-lg</span></p>
-    </div>
-    </div>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Shadow classes</h2>
+      <div class="grid-4 my-15 mx-30 gap-10">
+        <div>
+          <p class="py-20 b-sm bs-sm"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bs-sm</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-boxShadow-sm</span>
+          </p>
+        </div>
+        <div>
+          <p class="py-20 b-sm bs-md"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bs-md</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-boxShadow-md</span>
+          </p>
+        </div>
+        <div>
+          <p class="py-20 b-sm bs-lg"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bs-lg</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-boxShadow-lg</span>
+          </p>
+        </div>
+        <div>
+          <p class="py-20 b-sm bs-xl"></p>
+          <p class="mt-5 mx-auto text-center">
+            class: <span class="fw-3">bs-xl</span>
+          </p>
+          <p class="mb-5 mx-auto text-center">
+            css variable: <span class="fw-3">--ddd-boxShadow-xl</span>
+          </p>
+        </div>
+      </div>
     `;
   }
 
@@ -1638,130 +1715,191 @@ class DDDocs extends DDD {
         >
       </div>
     `;
-    //TODO: Look up signals for a entice button 
+    //TODO: Look up signals for a entice button
   }
 
   renderPageSections() {
     return html`
       <div class="b-xs">
-      <page-section large full filter bg="blue" fold scroller 
-      image="http://staging-static.vmhost.psu.edu/components/img/homepage-hero/homepage-hero-test-0.jpg">
-        <h1>We'll meet you where you are.</h1>
-        <hr />
-        <p>
-          We're ready for you, future Nittany Lions! From virtual tours, online orientation experiences to connecting with current students, staff, and faculty in real time.
-        </p>
-      </page-section>
-      <page-section large id="section-1" full="" class="section top" filter="" accent-color="blue" fold scroller="" scroller-label="Let's learn about HAX" image="https://hax.psu.edu/assets/images/splash.jpg">
-        <h1>
-          Create <future-terminal-text white="" glitch="" class="create" accent-color="green">ANYTHING</future-terminal-text> easily with 
-          <future-terminal-text glitch="" class="hax" accent-color="green">HAX</future-terminal-text>
-        </h1>
-        <p slot="entice">Part of <strong>Penn State</strong>?</p>
-        <simple-cta hotline filled outlined slot="buttons" link="https://haxtheweb.org/">Log in</simple-cta>
-        <simple-cta hide-icon  filled white slot="buttons" link="https://haxtheweb.org/">Learn HAX</simple-cta>
-      </page-section>
-      <page-section fold id="section-2" class="section" scroller="" scroller-label="By the numbers" accent-color="blue">
-        <h2>What is HAX?</h2> 
-        <hr/> 
-        <p><strong>A radically simple approach to <em>web authoring</em> and <em>content ownership</em>.</strong></p> 
-        <p>HAX is built on the premise that any and everyone should be able to create rich, engaging content without the need for complex platforms,
-          installations or vendor lock-in. The HAX block system allows for sustainable content creation that is easy to click and build for 
-          novices while outputting clean, semantic HTML for experts.</p>
-      </page-section>
-      <page-section preset="lines" scroller>
-        <h1>This is University Text</h1>
-        <hr/> 
-        <p>
-          There's a reason University consistently ranks among the top one percent 
-          of the world's universities. 
-          Across University campuses, our University students and University faculty and staff know the 
-          real measure of success goes beyond the classroom—it's 
-          the positive impact made on communities across the world.
-        </p>
-      </page-section>
-      <page-section preset="antihero" scroller>
-        <h1>This is University Text</h1>
-        <hr/> 
-        <p>
-          There’s a reason University consistently ranks among the top one percent 
-          of the world’s universities. 
-          Across University campuses, our University students and University faculty and staff know the 
-          real measure of success goes beyond the classroom—it’s 
-          the positive impact made on communities across the world.
-        </p>
-      </page-section>
-      <page-section preset="antihero-light" id="section-6" class="section" fold="" accent-color="blue">
-        <grid-plate layout="1-1"> 
-          <div slot="col-1"> 
-            <h3>About</h3> <p> HAX is a service provided through a collaboration between Penn State College of Arts and Architecture,
-              Eberly College of Science, College of Information Sciences and Technology, and University libraries. The platform
-              is powered by HAXcms, originally developed to power 100s of high scale online courses. Interested in collabora
-              ting? Contact <a href="mailto:bmr1@psu.edu">Bill Rose, Product Owner</a>. 
+        <page-section
+          large
+          full
+          filter
+          bg="blue"
+          fold
+          scroller
+          image="http://staging-static.vmhost.psu.edu/components/img/homepage-hero/homepage-hero-test-0.jpg"
+        >
+          <h1>We'll meet you where you are.</h1>
+          <hr />
+          <p>
+            We're ready for you, future Nittany Lions! From virtual tours,
+            online orientation experiences to connecting with current students,
+            staff, and faculty in real time.
+          </p>
+        </page-section>
+        <page-section
+          large
+          id="section-1"
+          full=""
+          class="section top"
+          filter=""
+          accent-color="blue"
+          fold
+          scroller=""
+          scroller-label="Let's learn about HAX"
+          image="https://hax.psu.edu/assets/images/splash.jpg"
+        >
+          <h1>
+            Create
+            <future-terminal-text
+              white=""
+              glitch=""
+              class="create"
+              accent-color="green"
+              >ANYTHING</future-terminal-text
+            >
+            easily with
+            <future-terminal-text glitch="" class="hax" accent-color="green"
+              >HAX</future-terminal-text
+            >
+          </h1>
+          <p slot="entice">Part of <strong>Penn State</strong>?</p>
+          <simple-cta
+            hotline
+            filled
+            outlined
+            slot="buttons"
+            link="https://haxtheweb.org/"
+            >Log in</simple-cta
+          >
+          <simple-cta
+            hide-icon
+            filled
+            white
+            slot="buttons"
+            link="https://haxtheweb.org/"
+            >Learn HAX</simple-cta
+          >
+        </page-section>
+        <page-section
+          fold
+          id="section-2"
+          class="section"
+          scroller=""
+          scroller-label="By the numbers"
+          accent-color="blue"
+        >
+          <h2>What is HAX?</h2>
+          <hr />
+          <p>
+            <strong
+              >A radically simple approach to <em>web authoring</em> and
+              <em>content ownership</em>.</strong
+            >
+          </p>
+          <p>
+            HAX is built on the premise that any and everyone should be able to
+            create rich, engaging content without the need for complex
+            platforms, installations or vendor lock-in. The HAX block system
+            allows for sustainable content creation that is easy to click and
+            build for novices while outputting clean, semantic HTML for experts.
+          </p>
+        </page-section>
+        <page-section preset="lines" scroller>
+          <h1>This is University Text</h1>
+          <hr />
+          <p>
+            There's a reason University consistently ranks among the top one
+            percent of the world's universities. Across University campuses, our
+            University students and University faculty and staff know the real
+            measure of success goes beyond the classroom—it's the positive
+            impact made on communities across the world.
+          </p>
+        </page-section>
+        <page-section preset="antihero" scroller>
+          <h1>This is University Text</h1>
+          <hr />
+          <p>
+            There’s a reason University consistently ranks among the top one
+            percent of the world’s universities. Across University campuses, our
+            University students and University faculty and staff know the real
+            measure of success goes beyond the classroom—it’s the positive
+            impact made on communities across the world.
+          </p>
+        </page-section>
+        <page-section
+          preset="antihero-light"
+          id="section-6"
+          class="section"
+          fold=""
+          accent-color="blue"
+        >
+          <grid-plate layout="1-1">
+            <div slot="col-1">
+              <h3>About</h3>
+              <p>
+                HAX is a service provided through a collaboration between Penn
+                State College of Arts and Architecture, Eberly College of
+                Science, College of Information Sciences and Technology, and
+                University libraries. The platform is powered by HAXcms,
+                originally developed to power 100s of high scale online courses.
+                Interested in collabora ting? Contact
+                <a href="mailto:bmr1@psu.edu">Bill Rose, Product Owner</a>.
+              </p>
+            </div>
+            <div slot="col-2">
+              <h3>Privacy policy</h3>
+              <p>
+                Penn State IT does not monitor websites and does not assume
+                responsibility for any published content. The content authors
+                are responsible for the content of their websites. Use of this
+                service is governed by
+                <a
+                  href="https://security.psu.edu/awareness/psu-policies/"
+                  target="_blank"
+                  rel="nofollow noopener"
+                  >Penn State policies and guidelines</a
+                >, including
+                <a
+                  href="https://policy.psu.edu/policies/ad54"
+                  target="_blank"
+                  rel="nofollow noopener"
+                  >Penn State IT Web Services Policy</a
+                >. All pages must be compliant with
+                <a
+                  href="https://policies.psu.edu/policies/ad69"
+                  target="_blank"
+                  rel="noopener"
+                  >Accessibility Standards, Policy AD69</a
+                >.
+              </p>
+            </div>
+          </grid-plate>
+        </page-section>
+        <page-section id="section-7" class="section" accent-color="blue">
+          <h3>Frequently Asked Questions</h3>
+          <hr />
+          <details>
+            <summary>Who can use HAX?</summary>
+            <p>
+              Anyone, anywhere! Thanks to HAX being open source, all you need is
+              a web server and a domain name to get s tarted. We also support
+              publishing directly to GitHub pages and other static publishing
+              tools for advanced developer use-cases. If you are part of Penn
+              State though you can just click
+              <a href="https://iam.hax.psu.edu/login.php">log in</a> t
             </p>
-          </div> 
-          <div slot="col-2"> 
-            <h3>Privacy policy</h3> 
-            <p> Penn State IT does not monitor websites and does not assume responsibility for any published content. 
-              The content authors are responsible for the content of their websites. Use of this service is governed
-                by <a href="https://security.psu.edu/awareness/psu-policies/" target="_blank" rel="nofollow noopener">Penn State 
-                policies and guidelines</a>, including
-                  <a href="https://policy.psu.edu/policies/ad54" target="_blank" rel="nofollow noopener">Penn State IT Web Services Policy</a>.
-                  All pages must be compliant with <a href="https://policies.psu.edu/policies/ad69" target="_blank" rel="noopener">Accessibility 
-                    Standards, Policy AD69</a>.
-            </p>
-          </div>
-        </grid-plate>
-      </page-section>
-      <page-section id="section-7" class="section" accent-color="blue">
-        <h3>Frequently Asked Questions</h3>
-          <hr> 
-        <details> <summary> Who can use HAX? </summary> 
-          <p> Anyone, anywhere! Thanks to HAX being open source, all you need is a web server and a domain name to get s
-            tarted. We also support publishing directly to GitHub pages and other static publishing tools for advanced developer
-            use-cases. If you are part of Penn State though you can just click <a href="https://iam.hax.psu.edu/login.php">log in</a> t
-            o get started immediately! </p> </details> <details> <summary> Who supports HAX? </summary> <p> The HAX user community is su
-              pported internal to Penn State by a collaboration between several units including the College of Arts and Architecture, Eber
-              ly College of Science, College of Information Sciences and Technology, and University Libraries. HAX also receives contribut
-              ions from groups outside of Penn State including Buttercups LLC and community members at large. </p> </details> <details> <summary> 
-                How do I join the community? </summary> <p> Join our community Discord channel to get support from the community and
-                  the HAX team. <a href="https://bit.ly/hax-discord">Join the HAX Discord</a> </p> </details> <details> <summary> Why 
-                    was HAX created? </summary> <div> <p> HAX is a response to a lack of products existing to meet the needs of producing 
-                      accessible and engaging web content in online course environments. The university has a rich history of building a mi
-                      x of custom, open source and buying repurposed commercial products with varying success. </p> <p> HAX was born out of
-                        a university Request For Information (RFI) that sought to build a custom Drupal Instructional Content manage
-                        ment System (iCMS). After requirements were gathered by stakeholders across the university, it was determin
-                        ed that the best path forward was to build a new kind of solution as the system requirements described wer
-                        e far beyond what any commercial product was offering, and no vendors responded to the Request for proposal 
-                        after initial RFI process. </p> </div> </details> <details> <summary> How are decisions made? </summary> <p> D
-                          ecisions about the platform are influenced by a mix of needs from students, faculty and staff either taking cou
-                          rses delivered via the platform or actively building material with the platform. The direction of HAX is steered
-                          by the <em>Core Product Development team</em> which meets monthly and is made up of representatives from any g
-                          roup contributing development, design, or other skillsets toward the platform's development and sustainment. If 
-                          you would like to join the <em>Core Product Development team</em> please co
-                          ntact <a href="mailto:bmr1@psu.edu">Bill Rose, Product Owner</a>. </p> </details> <details> <summary> What's 
-                            with the 8-bit RPG administration design? </summary> <div> <p>Our 8-bit vibe was a design challenge pre
-                              sented to four College of IST students in the Spring of 2022. They were tasked with creating
-                              an over-world design that was fun, inviting, creative, and unique. The team took these requiremen
-                              ts and built an experience that is playful, easy to use, and feels more like playing a video game than
-                                building a websi
-                                te. </p> <div class="rpg-container"> <rpg-character accent-color="orange" seed="tdgpqm6u1n"></rpg-character>
-                                  <rpg-character accent-color="orange" seed="cv6u5ms29n"></rpg-character> 
-                                  <rpg-character accent-color="orange" seed="jgpxs50ngd"></rpg-character>
-                                    <rpg-character accent-color="orange" seed="c2eedydyq2"></rpg-character> 
-                                    <rpg-character accent-color="orange" seed="lvf7xdcw2o"></rpg-character>
-                                    <rpg-character accent-color="orange" seed="tb9cplwx63"></rpg-character> 
-                                    </div> <p>Each RPG style character is unique to the user logging in and helps 
-                                      provide a humanizing and playful element to other aspects of what otherwise would be 
-                                      a mundane administrative interface. Websites produced by HAX can be a mix of professi
-                                      onal and playful but the 8-bit design helps you designate between the admin task and wh
-                                      at end-users see. </p> </div> </details> </div>
-      </page-section>
-      <page-section full preset="video">
-        <video-player source="https://www.youtube.com/watch?v=BlLoHvqiIzg" media-title="A walk through time"></video-player>
-      </page-section>
-        </div>
-      `;
+          </details>
+        </page-section>
+        <page-section full preset="video">
+          <video-player
+            source="https://www.youtube.com/watch?v=BlLoHvqiIzg"
+            media-title="A walk through time"
+          ></video-player>
+        </page-section>
+      </div>
+    `;
   }
 
   renderInstructionalComponents() {
@@ -2007,7 +2145,7 @@ class DDDocs extends DDD {
       editingElement: "core",
       hideDefaultSettings: false,
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       contentEditable: false,
       gizmo: {

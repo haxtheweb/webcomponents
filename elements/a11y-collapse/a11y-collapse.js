@@ -35,7 +35,7 @@ Custom property | Description | Default
  * @demo demo/index.html
  * @demo ./demo/group.html collapse groups
  */
-class A11yCollapse extends (DDD) {
+class A11yCollapse extends DDD {
   static get styles() {
     return [
       css`
@@ -43,7 +43,10 @@ class A11yCollapse extends (DDD) {
           display: block;
           margin: var(--a11y-collapse-margin, var(--ddd-spacing-4) 0);
           border: var(--a11y-collapse-border, var(--ddd-border-sm));
-          border-color: var(--a11y-collapse-border-color, var(--ddd-theme-default-coalyGray));
+          border-color: var(
+            --a11y-collapse-border-color,
+            var(--ddd-theme-default-coalyGray)
+          );
           transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         :host([heading-button]) #heading {
@@ -69,7 +72,7 @@ class A11yCollapse extends (DDD) {
           width: 100%;
           text-align: left;
           font-size: var(--ddd-theme-body-font-size);
-          font-family:  var(--ddd-font-primary);
+          font-family: var(--ddd-font-primary);
         }
         #heading {
           display: flex;
@@ -85,12 +88,13 @@ class A11yCollapse extends (DDD) {
               --a11y-collapse-padding-left,
               var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             );
-          font-weight: var(--a11y-collapse-heading-font-weight, var(--ddd-font-primary-bold));
+          font-weight: var(
+            --a11y-collapse-heading-font-weight,
+            var(--ddd-font-primary-bold)
+          );
           margin: var(--a11y-collapse-margin);
           color: var(--a11y-collapse-heading-color);
-          background-color: var(
-            --a11y-collapse-heading-background-color
-          );
+          background-color: var(--a11y-collapse-heading-background-color);
         }
         :host([disabled]) #heading {
           color: var(--a11y-collapse-disabled-heading-color);
@@ -124,7 +128,10 @@ class A11yCollapse extends (DDD) {
               var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             );
           border-top: var(--a11y-collapse-border, var(--ddd-border-xs));
-          border-color: var(--a11y-collapse-border-color, var(--ddd-theme-default-coalyGray));
+          border-color: var(
+            --a11y-collapse-border-color,
+            var(--ddd-theme-default-coalyGray)
+          );
         }
         @media screen {
           #expand.rotated {
@@ -175,7 +182,10 @@ class A11yCollapse extends (DDD) {
                 var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
               );
             border-top: var(--a11y-collapse-border, var(--ddd-border-xs));
-            border-color: var(--a11y-collapse-border-color, var(--ddd-theme-default-coalyGray));
+            border-color: var(
+              --a11y-collapse-border-color,
+              var(--ddd-theme-default-coalyGray)
+            );
             max-height: 200000000000vh; /* why is this needed? */
           }
           :host([expanded]) #content-inner {

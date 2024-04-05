@@ -2,7 +2,11 @@
   "api": "1",
   "type": "grid",
   "canScale": false,
-  "canPosition": false,
+  "designSystem": {
+    "card": true,
+    "primary": true,
+    "accent": true
+  },
   "canEditSource": true,
   "contentEditable": true,
   "gizmo": {
@@ -98,7 +102,7 @@
   "demoSchema": [
     {
       "tag": "play-list",
-      "content": "<img src=\"https://cdn2.thecatapi.com/images/9j5.jpg\" /><img src=\"https://cdn2.thecatapi.com/images/12.jpg\" />",
+      "content": "<media-image source=\"https://cdn2.thecatapi.com/images/9j5.jpg\"></media-image><media-image source=\"https://cdn2.thecatapi.com/images/12.jpg\"></media-image>",
       "properties": {
         "pagination": true,
         "navigation": true,

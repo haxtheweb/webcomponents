@@ -153,7 +153,7 @@ export class SiteView extends SimpleColors {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: false,
       gizmo: {
         title: "Site View",

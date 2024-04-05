@@ -70,7 +70,7 @@ class CollectionItem extends DDD {
             0.3s ease-in-out opacity,
             0.3s ease-in-out filter;
           height: 300px;
-          box-shadow: var(--ddd-boxShadow-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
           overflow: hidden;
         }
         :host([saturate]) a.link {

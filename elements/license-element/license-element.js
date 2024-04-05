@@ -262,7 +262,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: true,
       gizmo: {
         title: "License",

@@ -286,7 +286,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: true,
       gizmo: {
         title: "Github Preview",

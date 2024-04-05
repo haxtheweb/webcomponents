@@ -56,7 +56,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
   _fireDefinitions(e) {
     let props = {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "HAXcms active title",
@@ -82,7 +82,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       type: "element",
       editingElement: "core",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "HAXcms breadcrumb",
@@ -108,7 +108,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       type: "element",
       editingElement: "core",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "HAXcms menu",
@@ -149,7 +149,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       type: "element",
       editingElement: "core",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "HAXcms menu button",
@@ -222,7 +222,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       type: "element",
       editingElement: "core",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "HAXcms RSS button",
@@ -259,7 +259,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       type: "element",
       editingElement: "core",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "HAXcms title",
@@ -285,7 +285,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       type: "element",
       editingElement: "core",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "HAXcms query",

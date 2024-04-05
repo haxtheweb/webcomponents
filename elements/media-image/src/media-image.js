@@ -32,7 +32,7 @@ class MediaImage extends DDD {
         }
 
         :host([card]) {
-          box-shadow: var(--ddd-boxShadow-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
           border: var(--ddd-border-xs);
           border-color: var(--ddd-theme-default-limestoneLight);
           padding: var(--ddd-spacing-5);
@@ -44,7 +44,7 @@ class MediaImage extends DDD {
 
         :host([box]) {
           padding: var(--ddd-spacing-5);
-          background-color: var(--ddd-theme-accent, var(--ddd-accent-2))
+          background-color: var(--ddd-theme-accent, var(--ddd-accent-2));
         }
         @media screen and (min-width: 650px) {
           :host([size="small"]) {
@@ -352,7 +352,7 @@ class MediaImage extends DDD {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: false,
+
       canEditSource: true,
       gizmo: {
         title: "Image",

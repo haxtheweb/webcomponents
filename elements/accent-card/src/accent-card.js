@@ -375,7 +375,7 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
     return {
       type: "grid",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       contentEditable: true,
       gizmo: {

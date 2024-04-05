@@ -102,7 +102,7 @@ class NavCardItem extends LitElement {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Nav card",

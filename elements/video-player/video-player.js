@@ -175,7 +175,10 @@ class VideoPlayer extends IntersectionObserverMixin(
         min: 50,
         step: 25,
       },
-      canPosition: false,
+      designSystem: {
+        primary: true,
+        card: true,
+      },
       canEditSource: true,
       gizmo: {
         title: "Video",

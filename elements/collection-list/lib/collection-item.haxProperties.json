@@ -4,7 +4,7 @@
   "editingElement": "core",
   "hideDefaultSettings": true,
   "canScale": false,
-  "canPosition": false,
+
   "canEditSource": true,
   "contentEditable": false,
   "gizmo": {

@@ -141,7 +141,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Parallax image",

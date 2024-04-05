@@ -248,7 +248,7 @@ class LrnMath extends HTMLElement {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: true,
       gizmo: {
         title: "Math",

@@ -337,7 +337,7 @@ class CMSToken extends PolymerElement {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "CMS Token",

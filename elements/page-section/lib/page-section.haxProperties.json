@@ -1,7 +1,7 @@
 {
   "api": "1",
   "canScale": false,
-  "canPosition": false,
+
   "canEditSource": true,
   "contentEditable": false,
   "hideDefaultSettings": true,

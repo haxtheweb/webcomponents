@@ -83,7 +83,7 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
     let oerSchema = new OERSchema();
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: true,
       gizmo: {
         title: "Schema",

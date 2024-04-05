@@ -168,7 +168,7 @@ class UnityWebgl extends HTMLElement {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Unity Player",

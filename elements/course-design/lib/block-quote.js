@@ -78,10 +78,7 @@ export class BlockQuote extends DDD {
           border-left: var(--ddd-border-lg);
           border-color: var(
             --ddd-component-block-quote-border-color,
-            var(
-              --ddd-theme-accent,
-              var(--ddd-theme-default-limestoneGray)
-            )
+            var(--ddd-theme-accent, var(--ddd-theme-default-limestoneGray))
           );
           padding: var(--ddd-spacing-6);
           text-align: center;
@@ -146,10 +143,7 @@ export class BlockQuote extends DDD {
             border: var(--ddd-border-lg);
             border-color: var(
               --ddd-component-block-quote-image-border,
-              var(
-                --ddd-theme-accent,
-                var(--ddd-theme-default-limestoneGray)
-              )
+              var(--ddd-theme-accent, var(--ddd-theme-default-limestoneGray))
             );
             border-radius: var(--ddd-radius-circle);
           }

@@ -118,10 +118,7 @@ class HaxTray extends I18NMixin(
     this.activeValue = {
       settings: {
         configure: {},
-        advanced: {
-          __position: "hax-align-left",
-          __scale: 100,
-        },
+        advanced: {},
         developer: {},
       },
     };
@@ -490,20 +487,6 @@ class HaxTray extends I18NMixin(
         }
         #button:hover {
           opacity: 1;
-        }
-        /** specific rendering of padding items to be next to each other */
-        simple-fields-field[name="settings.advanced.margin-top"],
-        simple-fields-field[name="settings.advanced.margin-bottom"],
-        simple-fields-field[name="settings.advanced.margin-left"],
-        simple-fields-field[name="settings.advanced.margin-right"],
-        simple-fields-field[name="settings.advanced.padding-top"],
-        simple-fields-field[name="settings.advanced.padding-bottom"],
-        simple-fields-field[name="settings.advanced.padding-left"],
-        simple-fields-field[name="settings.advanced.padding-right"] {
-          width: 50%;
-          text-align: center;
-          display: inline-block;
-          padding: 10px;
         }
         /** This is mobile layout for controls */
         @media screen and (max-width: 800px) {
@@ -1377,10 +1360,7 @@ class HaxTray extends I18NMixin(
     this.activeValue = {
       settings: {
         configure: {},
-        advanced: {
-          __position: "hax-align-left",
-          __scale: 100,
-        },
+        advanced: {},
         developer: {},
       },
     };
@@ -1496,31 +1476,6 @@ class HaxTray extends I18NMixin(
           });
         }
       });
-      // then we need to work on the layout piece
-      if (activeNode.style.width != "") {
-        this.activeValue.settings.advanced.__scale =
-          activeNode.style.width.replace("%", "");
-      } else {
-        this.activeValue.settings.advanced.__scale = 100;
-      }
-      if (
-        activeNode.style.display == "block" &&
-        activeNode.style.margin == "0px auto" &&
-        activeNode.style.float == "right"
-      ) {
-        this.activeValue.settings.advanced.__position = "hax-align-right";
-      } else if (
-        activeNode.style.display == "block" &&
-        activeNode.style.margin == "0px auto"
-      ) {
-        this.activeValue.settings.advanced.__position = "hax-align-center";
-      } else {
-        this.activeValue.settings.advanced.__position = "hax-align-left";
-      }
-      this.activeHaxElement.properties.__scale =
-        this.activeValue.settings.advanced.__scale;
-      this.activeHaxElement.properties.__position =
-        this.activeValue.settings.advanced.__position;
       // tabs / deep objects require us to preview the value w/ the path correctly
       let isGrid = !!props.type && props.type === "grid";
       props.settings.configure.forEach((val, key) => {
@@ -1553,32 +1508,6 @@ class HaxTray extends I18NMixin(
             props.settings.developer[key].slot;
         }
       });
-      // test if this element can be aligned
-      if (props.canPosition) {
-        props.settings.advanced.unshift({
-          property: "__position",
-          title: this.t.alignment,
-          inputMethod: "select",
-          value: this.activeValue.settings.advanced.__position,
-          options: {
-            "hax-align-left": this.t.left,
-            "hax-align-center": this.t.center,
-            "hax-align-right": this.t.right,
-          },
-        });
-      }
-      // test if this element can be scaled
-      if (props.canScale) {
-        props.settings.advanced.unshift({
-          property: "__scale",
-          title: this.t.width,
-          inputMethod: "slider",
-          value: this.activeValue.settings.advanced.__scale,
-          min: props.canScale.min ? props.canScale.min : 12.5,
-          max: props.canScale.max ? props.canScale.max : 100,
-          step: props.canScale.step ? props.canScale.step : 12.5,
-        });
-      }
 
       // establish tabs container
       this.activeSchema = [
@@ -1742,49 +1671,6 @@ class HaxTray extends I18NMixin(
               else if (prop === "innerText") {
                 this.activeNode.innerText = settings[key][prop];
                 setAhead = true;
-              }
-              // this is a special internal held "property" for layout stuff
-              else if (key === "advanced" && prop === "__position") {
-                setAhead = true;
-                if (!this._initial) {
-                  this.dispatchEvent(
-                    new CustomEvent("hax-context-item-selected", {
-                      bubbles: true,
-                      composed: true,
-                      detail: {
-                        eventName: settings[key][prop],
-                        value: settings[key][prop],
-                      },
-                    }),
-                  );
-                }
-              }
-              // this is a special internal held "property" for layout stuff
-              else if (
-                (key === "advanced" && prop === "font-size") ||
-                prop === "text-align" ||
-                prop === "__scale" ||
-                prop === "padding-top" ||
-                prop === "padding-bottom" ||
-                prop === "padding-left" ||
-                prop === "padding-right" ||
-                prop === "margin-top" ||
-                prop === "margin-bottom" ||
-                prop === "margin-left" ||
-                prop === "margin-right"
-              ) {
-                if (!this._initial) {
-                  this.dispatchEvent(
-                    new CustomEvent("hax-context-item-selected", {
-                      bubbles: true,
-                      composed: true,
-                      detail: {
-                        eventName: "hax-style-setting-change",
-                        value: settings[key],
-                      },
-                    }),
-                  );
-                }
               }
               // try and set the pop directly if it is a prop already set
               // check on prototype, then in properties object if it has one

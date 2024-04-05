@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "outline-designer",
-      "description": "`outline-designer`\n\nAttributes:\n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hide-content-ops` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - \n\nProperties:\n\n  * `_blurBlock` {`boolean`} - \n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hideContentOps` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activeId` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - ",
+      "description": "`outline-designer`\n\nEvents:\n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hide-content-ops` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - \n\nProperties:\n\n  * `_blurBlock` {`boolean`} - \n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hideContentOps` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activeId` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "fidelity",
@@ -56,6 +56,10 @@
         {
           "name": "t",
           "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onsimple-modal-hide",
+          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
         }
       ]
     }

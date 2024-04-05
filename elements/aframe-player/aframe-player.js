@@ -146,7 +146,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
+
       canEditSource: true,
       gizmo: {
         title: "3D player",

@@ -47,7 +47,7 @@ class ProgressDonut extends LrndesignPie {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Progress Donut",

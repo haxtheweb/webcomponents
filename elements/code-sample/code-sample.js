@@ -153,7 +153,7 @@ class CodeSample extends LitElement {
     return {
       type: "element",
       canScale: true,
-      canPosition: true,
+
       canEditSource: true,
       gizmo: {
         title: "Code sample",
