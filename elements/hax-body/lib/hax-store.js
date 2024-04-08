@@ -1270,6 +1270,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }
   }
+
+  // normalize this functionality with what we preovide in the View Source based method
+  _onCommand(e) {
+    if (e.detail.command && e.detail.command === "removeFormat") {
+      this.activeNode.innerHTML = stripMSWord(this.activeNode.innerHTML);
+    }
+  }
   /**
    * Intercept paste event and clean it up before inserting the contents
    */
@@ -2000,6 +2007,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-consent-tap": "_haxConsentTap",
       onbeforeunload: "_onBeforeUnload",
       paste: "_onPaste",
+      command: "_onCommand",
       "hax-register-app": "_haxStoreRegisterApp",
       "hax-register-stax": "_haxStoreRegisterStax",
       "hax-register-core-piece": "_haxStorePieceRegistrationManager",

@@ -1652,7 +1652,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     var content = "";
     for (var i = 0; i < children.length; i++) {
       // some mild front-end sanitization
-      if (this._validElementTest(children[i])) {
+      if (this._validElementTest(children[i], true)) {
         this.__applyDragDropState(children[i], false);
         // remove some of the protected classes though they shouldn't leak through
         children[i].classList.remove("hax-hovered");
@@ -2959,7 +2959,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.shadowRoot
         ) {
           mutations.forEach((mutation) => {
-            //move toolbar when active Node is deleted
+            // move toolbar when active Node is deleted
             if (mutation.removedNodes.length > 0)
               for (var node of mutation.removedNodes) {
                 if (mutation.previousSibling && this.activeNode == node) {
@@ -3098,7 +3098,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     let grandKids = node.querySelectorAll("*");
                     for (var j = 0; j < grandKids.length; j++) {
                       // sanity check for being a valid element / not a "hax" element
-                      if (this._validElementTest(grandKids[j])) {
+                      if (this._validElementTest(grandKids[j], true)) {
                         // correctly add or remove listeners
                         this.__applyNodeEditableState(
                           grandKids[j],
@@ -3211,7 +3211,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             if (mutation.addedNodes.length > 0) {
               mutation.addedNodes.forEach((node) => {
                 // valid element to apply state to
-                if (this._validElementTest(node)) {
+                if (this._validElementTest(node, true)) {
                   // make it editable / drag/drop capable
                   setTimeout(() => {
                     this.__applyNodeEditableState(node, this.editMode);
@@ -3256,7 +3256,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * true means its a valid element for selection
    * We have special support for the hax-logo because it's hax.
    */
-  _validElementTest(node) {
+  _validElementTest(node, allowInline = false) {
     // ignore hax internal tags
     // search results can be drag'ed from their panel for exact placement
     // special place holder in drag and drop
@@ -3269,6 +3269,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // being the thing that should grad actual block level focus
       // this would be like a B or I tag grabbing focus as well
       if (
+        !allowInline &&
         this._HTMLInlineTextDecorationTest(node) &&
         node.parentNode != "HAX-BODY"
       ) {
@@ -3317,7 +3318,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     for (var i = 0; i < children.length; i++) {
       // sanity check for being a valid element / not a "hax" element
-      if (this._validElementTest(children[i])) {
+      if (this._validElementTest(children[i], true)) {
         // correctly add or remove listeners
         if (
           !status ||
@@ -3335,7 +3336,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         let grandKids = children[i].querySelectorAll("*");
         for (var j = 0; j < grandKids.length; j++) {
           // sanity check for being a valid element / not a "hax" element
-          if (this._validElementTest(grandKids[j])) {
+          if (this._validElementTest(grandKids[j], true)) {
             // correctly add or remove listeners
             this.__applyNodeEditableState(grandKids[j], status);
           }
