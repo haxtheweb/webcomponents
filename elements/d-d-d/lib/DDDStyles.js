@@ -448,7 +448,6 @@ export const ApplicationAttributeData = {
     sm: "S",
     md: "M",
     lg: "L",
-    xl: "XL",
   },
   "design-treatment": {
     // heading treatments
@@ -475,28 +474,14 @@ export const ApplicationAttributeData = {
   },
   "font-weight": {
     light: "Light",
-    regular: "Regular",
     medium: "Medium",
     bold: "Bold",
-    black: "Black",
   },
   "font-size": {
-    "4xs": "4XS",
-    "3xs": "3XS",
-    xxs: "2XS",
-    xs: "XS",
-    s: "S",
-    ms: "MS",
-    m: "M",
-    ml: "ML",
-    l: "L",
-    xl: "XL",
-    xxl: "2XL",
-    "3xl": "3XL",
-    "4xl": "4XL",
-    "type1-s": "TypeS",
-    "type1-m": "TypeM",
-    "type1-l": "TypeL",
+    "3xs": "Smaller",
+    s: "Large",
+    m: "Larger",
+    l: "Largest",
   },
   "instructional-action": learningComponentTypes,
 };
@@ -1116,7 +1101,10 @@ export const DDDDataAttributes = [
     }
 
     /* font size */
-
+    /* normal line height if we are letting use mess w/ font size */
+    [data-font-size] {
+      line-height: normal;
+    }
     [data-font-size="4xs"] {
       font-size: var(--ddd-font-size-4xs);
     }
@@ -1138,7 +1126,10 @@ export const DDDDataAttributes = [
     [data-font-size="m"] {
       font-size: var(--ddd-font-size-m);
     }
-    s [data-font-size="l"] {
+    [data-font-size="ml"] {
+      font-size: var(--ddd-font-size-ml);
+    }
+    [data-font-size="l"] {
       font-size: var(--ddd-font-size-l);
     }
     [data-font-size="xl"] {
@@ -1335,12 +1326,24 @@ export const DDDReset = css`
   blockquote[data-accent],
   ol[data-accent],
   ul[data-accent],
-  div[data-accent] {
-    padding: var(--ddd-spacing-6);
+  div[data-accent]
+   {
     border: var(--ddd-border-sm);
     border-color: var(--ddd-theme-primary);
     border-width: var(--ddd-theme-border-size);
     background-color: var(--ddd-theme-accent);
+  }
+  p[data-accent]:not([data-padding]),
+  blockquote[data-accent]:not([data-padding]),
+  ol[data-accent]:not([data-padding]),
+  ul[data-accent]:not([data-padding]),
+  div[data-accent]:not([data-padding]),
+  p[data-border]:not([data-padding]),
+  blockquote[data-border]:not([data-padding]),
+  ol[data-border]:not([data-padding]),
+  ul[data-border]:not([data-padding]),
+  div[data-border]:not([data-padding]) {
+    padding: var(--ddd-spacing-6);
   }
   ol[data-accent],
   ul[data-accent] {
@@ -1964,12 +1967,8 @@ export const DDDReset = css`
     border-radius: var(--ddd-radius-xs);
     border-color: var(--ddd-theme-default-potential50);
   }
-  hax-body p,
-  hax-body ul,
-  hax-body ol,
-  .haxcms-theme-element p,
-  .haxcms-theme-element ul,
-  .haxcms-theme-element ol {
+  hax-body,
+  .haxcms-theme-element {
     line-height: var(--ddd-lh-150);
     font-size: var(--ddd-theme-body-font-size);
     font-family: var(--ddd-font-primary);

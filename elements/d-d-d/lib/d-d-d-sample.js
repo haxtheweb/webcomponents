@@ -18,8 +18,10 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host {
           display: flex;
           min-height: var(--ddd-spacing-4);
-          padding: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-1) 0;
           margin: 0;
+          font-size: var(--ddd-font-size-4xs);
+          line-height: normal;
         }
         :host([type="accent"]:hover),
         :host([type="primary"]:hover) {
