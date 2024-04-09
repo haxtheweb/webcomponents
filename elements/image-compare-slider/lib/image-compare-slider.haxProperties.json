@@ -98,9 +98,9 @@
       "tag": "image-compare-slider",
       "properties": {
         "opacity": true,
-        "topSrc": "https://placekitten.com/400/200",
+        "topSrc": "https://cdn2.thecatapi.com/images/bjj.jpg",
         "topAlt": "",
-        "bottomSrc": "https://placekitten.com/400/201",
+        "bottomSrc": "https://cdn2.thecatapi.com/images/9j5.jpg",
         "bottomAlt": ""
       },
       "content": ""
