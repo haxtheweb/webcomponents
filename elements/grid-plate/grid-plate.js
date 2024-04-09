@@ -186,31 +186,6 @@ class GridPlate extends LitElement {
             0.5s margin ease-in-out
           );
         }
-        :host([data-hax-ray]) [data-layout-slotname].not-shown {
-          display: block;
-          opacity: 0.4;
-          width: 0;
-        }
-        :host([data-hax-ray]) [data-layout-slotname].not-shown.has-nodes {
-          width: 100%;
-          transition: none;
-        }
-        :host([data-hax-ray]) .not-shown:hover {
-          opacity: 1;
-        }
-        :host([data-hax-ray]) .not-shown:hover::before {
-          content: "Hidden bylayout";
-          position: sticky;
-          display: inline-flex;
-          background-color: black;
-          color: white;
-          padding: 0px 8px;
-          font-size: 12px;
-          line-height: 16px;
-          margin: 12px 13px;
-          float: right;
-          width: 124px;
-        }
         /** this implies hax editing state is available **/
         :host([data-hax-ray]) div ::slotted(*) {
           border: var(
@@ -327,7 +302,7 @@ class GridPlate extends LitElement {
     this.breakpointMd = 1200;
     this.breakpointLg = 1500;
     this.breakpointXl = 1800;
-    this.columns = 6;
+    this.columns = 4;
     this.disableResponsive = false;
     this.layout = "1-1";
     this.layouts = new GridPlateLayoutOptions().layouts;

@@ -23,31 +23,6 @@ export const HaxLayoutBehaviors = function (SuperClass) {
               0.5s margin ease-in-out
             );
           }
-          :host([data-hax-ray]) [data-layout-slotname].not-shown {
-            display: block;
-            opacity: 0.4;
-            width: 0;
-          }
-          :host([data-hax-ray]) [data-layout-slotname].not-shown.has-nodes {
-            width: 100%;
-            transition: none;
-          }
-          :host([data-hax-ray]) .not-shown:hover {
-            opacity: 1;
-          }
-          :host([data-hax-ray]) .not-shown:hover::before {
-            content: "Hidden by layout";
-            position: sticky;
-            display: inline-flex;
-            background-color: black;
-            color: white;
-            padding: 0px 8px;
-            font-size: 12px;
-            line-height: 16px;
-            margin: 12px 13px;
-            float: right;
-            width: 124px;
-          }
           /** this implies hax editing state is available **/
           :host([data-hax-ray]) ::slotted(*) {
             outline: var(--hax-layout-slotted-outline-width, 0px)
