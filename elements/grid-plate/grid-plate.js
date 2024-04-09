@@ -391,7 +391,7 @@ class GridPlate extends LitElement {
       this.ready = true;
     }, 100);
     this.resize();
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
           element: this,
@@ -418,7 +418,11 @@ class GridPlate extends LitElement {
     return {
       type: "grid",
       canScale: true,
-
+      designSystem: {
+        card: true,
+        accent: true,
+        primary: true,
+      },
       canEditSource: true,
       contentEditable: false,
       gizmo: {
@@ -672,7 +676,7 @@ class GridPlate extends LitElement {
     });
   }
   resize() {
-    window.dispatchEvent(new Event("resize"));
+    globalThis.dispatchEvent(new Event("resize"));
   }
   /**
    * gets the column widths based on selected layout and current responsive width

@@ -1965,6 +1965,28 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (node.tagName === "GRID-PLATE") {
       if (add) {
         switch (node.layout) {
+          case "2-1":
+            node.layout = "2-1-1";
+            changed = true;
+          break;
+          case "1-2":
+            node.layout = "1-2-1";
+            changed = true;
+          break;
+          case "3-1":
+            node.layout = "2-1-1";
+            changed = true;
+          break;
+          case "1-3":
+            node.layout = "1-1-2";
+            changed = true;
+          break;
+          case "2-1-1":
+          case "1-2-1":
+          case "1-1-2":
+            node.layout = "1-1-1-1";
+            changed = true;
+          break;
           case "1":
             node.layout = "1-1";
             changed = true;
@@ -1977,17 +1999,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             node.layout = "1-1-1-1";
             changed = true;
             break;
-          case "1-1-1-1":
-            node.layout = "1-1-1-1-1";
-            changed = true;
-            break;
-          case "1-1-1-1-1":
-            node.layout = "1-1-1-1-1-1";
-            changed = true;
-            break;
         }
       } else {
         switch (node.layout) {
+          case "2-1":
+          case "1-2":
+          case "1-3":
+          case "3-1":
           case "1-1":
             // implies we are removing the grid plate
             let cloneEl;
@@ -2019,14 +2037,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             node.layout = "1-1-1";
             changed = true;
             break;
-          case "1-1-1-1-1":
-            node.layout = "1-1-1-1";
+          case "2-1-1":
+            node.layout = "2-1";
             changed = true;
-            break;
-          case "1-1-1-1-1-1":
-            node.layout = "1-1-1-1-1";
+          break;
+          case "1-2-1":
+          case "1-1-2":
+            node.layout = "1-2";
             changed = true;
-            break;
+          break;
         }
       }
       // if left, nudge everything over 1, right simple
@@ -2036,7 +2055,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.contextMenus.plate.shadowRoot.querySelector("#rightremove");
         right.disabled = false;
         rightremove.disabled = false;
-        if (node.layout == "1-1-1-1-1-1") {
+        if (node.layout == "1-1-1-1") {
           right.disabled = true;
         }
         if (side == "left") {

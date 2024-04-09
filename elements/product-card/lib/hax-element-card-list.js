@@ -325,12 +325,6 @@ class HAXElementCardList extends LitElement {
           case 4:
             this._layout = "1-1-1-1";
             break;
-          case 5:
-            this._layout = "1-1-1-1-1";
-            break;
-          case 6:
-            this._layout = "1-1-1-1-1-1";
-            break;
           default:
             this._layout = "1-1";
             break;
