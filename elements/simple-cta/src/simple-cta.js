@@ -19,6 +19,14 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
     return [
       super.styles,
       css`
+
+        /* With data-primary & data-accent applied, abstract to just
+        * hidden (display: none)
+        * transparent (no background) 
+        * light (invert primary & accent)
+        * hotline (uppercase, italic)
+        */
+      
         :host {
           display: inline-block;
           width: fit-content;
@@ -34,63 +42,30 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
           display: none;
         }
 
-        :host([filled]) {
-          --component-color: var(--ddd-theme-default-white);
-          --component-background-color: var(--ddd-theme-default-link);
-        }
-        :host([filled]:focus-within),
-        :host([filled]) a:hover,
-        :host([filled]) a:active {
-          --component-background-color: var(--ddd-theme-default-nittanyNavy);
-          --component-border-color: var(--component-background-color);
-        }
-
-        :host([light]) {
-          --component-color: var(--ddd-theme-default-linkLight);
-          --component-background-color: transparent;
-          --component-border-color: var(--ddd-theme-default-linkLight);
-        }
-        :host([light]:focus-within),
-        :host([light]) a:hover,
-        :host([light]) a:active {
-          --component-background-color: var(--ddd-theme-default-linkLight);
-          --component-color: var(--ddd-theme-default-nittanyNavy);
-          --component-border-color: var(--component-background-color);
-        }
-
-        :host([light][filled]) {
-          --component-color: var(--ddd-theme-default-nittanyNavy);
-          --component-background-color: var(--ddd-theme-default-linkLight);
-        }
-        :host([light][filled]:focus-within),
-        :host([light][filled]) a:hover,
-        :host([light][filled]) a:active {
-          --component-background-color: var(--ddd-theme-default-white);
-          --component-border-color: var(--component-background-color);
-        }
-
-        :host([white]) {
-          --component-color: var(--ddd-theme-default-white);
-          --component-background-color: transparent;
+        :host([data-primary]) {
+          --component-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast)));
           --component-border-color: var(--component-color);
+          --component-background-color: var(--ddd-theme-primary);
         }
-        :host([white]:focus-within),
-        :host([white]) a:hover,
-        :host([white]) a:active {
-          --component-background-color: var(--ddd-theme-default-white);
-          --component-color: var(--ddd-theme-default-potentialMidnight);
+        :host([data-primary]:focus-within),
+        :host([data-primary]) a:hover,
+        :host([data-primary]) a:active {
+          --component-color: var(--ddd-theme-primary);
+          --component-border-color: var(--component-color);
+          --component-background-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast)));
         }
 
-        :host([white][filled]) {
-          --component-color: var(--ddd-theme-default-potentialMidnight);
-          --component-background-color: var(--ddd-theme-default-white);
-          --component-border-color: var(--ddd-theme-default-potentialMidnight);
+        :host([light][data-primary]) {
+          --component-color: var(--ddd-theme-primary);
+          --component-border-color: var(--component-color);
+          --component-background-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast)));
         }
-        :host([white][filled]:focus-within),
-        :host([white][filled]) a:hover,
-        :host([white][filled]) a:active {
-          --component-background-color: var(--ddd-theme-default-linkLight);
-          --component-border-color: var(--ddd-theme-default-potentialMidnight);
+        :host([light][data-primary]:focus-within),
+        :host([light][data-primary]) a:hover,
+        :host([light][data-primary]) a:active {
+          --component-background-color: var(--ddd-theme-primary);
+          --component-border-color: var(--component-background-color);
+          --component-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast)));
         }
 
         :host([hotline]) .btn {
@@ -99,17 +74,16 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
           font-weight: var(--ddd-font-primary-black);
         }
 
-        a {
+        a, a:any-link, a:link, a:visited{
           display: block;
           text-decoration: none;
           box-sizing: border-box;
         }
+
         :host(:focus-within),
         a:hover,
         a:active {
           text-decoration: none;
-          --component-background-color: var(--ddd-theme-default-link);
-          --component-color: var(--ddd-theme-default-white);
         }
 
         .btn {
@@ -119,7 +93,7 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
           display: flex;
           text-decoration: none;
           height: fit-content;
-          width: fit-content;
+          width: max-content;
           border-radius: var(--ddd-radius-xs);
           color: var(--component-color, var(--ddd-theme-default-link));
           border: var(--ddd-border-sm);
@@ -131,9 +105,10 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
             --simple-cta-button-padding,
             0.75rem 0.75rem 0.75rem 1.5rem
           );
-          transition: all 0.2s ease-out;
+          transition: all 0.3s ease-in-out;
+          transition-delay: .1s;
           background-color: var(--component-background-color, transparent);
-          font-weight: var(--ddd-font-primary-medium);
+          font-weight: var(--ddd-font-primary-black);
         }
 
         .hideIcon {
@@ -154,6 +129,10 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
             --simple-cta-font-size,
             var(--ddd-icon-3xs)
           );
+        }
+
+        label{
+          font-weight: var(--ddd-font-primary-black);
         }
       `,
     ];
