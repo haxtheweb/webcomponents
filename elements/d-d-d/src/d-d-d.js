@@ -65,7 +65,7 @@ export const DDDPulseEffectSuper = function (SuperClass) {
       if (super.styles) {
         styles = super.styles;
       }
-      return [styles];
+      return [styles, DDDPulseEffect];
     }
 
     removePulseEffect(e) {

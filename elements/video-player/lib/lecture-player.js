@@ -1,6 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { DDDDataAttributes } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
+import { DDDDataAttributes, DDDPulseEffect } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 import "@lrnwebcomponents/video-player/video-player.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -121,6 +121,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       contentElement.innerHTML = anchor.getAttribute("jumbotronContent");
       contentElement.querySelectorAll("lecture-anchor").forEach((el) => {
         el.removeAttribute("id");
+        el.classList.add("no-pointer-events");
       });
       anchor.setAttribute("jumbotronContent", contentElement.innerHTML);
     });
@@ -172,6 +173,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
     console.log(activeAnchor);
     if (activeAnchor) {
       const jumbotronHeading = document.createElement("h2");
+      jumbotronHeading.id = "jumbotron-heading";
       jumbotronHeading.innerText =
         activeAnchor.getAttribute("jumbotronHeading");
       jumbotron.appendChild(jumbotronHeading);
@@ -279,7 +281,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
     document.querySelector("#nextSlideBtn").setAttribute("disabled", "true");
     let endBtnDiv = document.createElement("div");
     endBtnDiv.setAttribute("data-primary", "11");
-    endBtnDiv.innerHTML = `<button class="endBtn">Close Lecture Player</button>`;
+    endBtnDiv.innerHTML = `<simple-cta class="endBtn" data-pulse data-primary="11">Close Lecture Player</simple-cta>`;
     endBtnDiv.classList.add("endBtnContainer");
     document.querySelector(".jumbotron").appendChild(endBtnDiv);
     document.querySelector(".endBtn").addEventListener("click", () => {
@@ -302,9 +304,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
       .modal-content{
         display: grid;
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-rows: 1.5fr auto;
         width: calc(100% - 32px);
-        height: 100%;
+        height: fit-content;
         gap: var(--ddd-spacing-4);
       }
 
@@ -315,9 +317,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
       .videoSection{
         display: grid;
-        grid-template-rows: 1fr auto;
+        grid-template-columns: 1.3fr 1fr;
         max-width: 100%;
-        max-height: 80vh;
+        height: 68vh;
       }
 
       .playlist{
@@ -325,6 +327,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         grid-template-columns: .5fr 5fr .5fr;
         gap: var(--ddd-spacing-2);
         max-width: 100%;
+        height: fit-content;
       }
 
       .overflow-ellipsis{
@@ -372,11 +375,20 @@ class LecturePlayer extends DDDSuper(LitElement) {
         flex-direction: column;
         justify-content: start;
         align-items: start;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: show;
+      }
+
+      #jumbotron-heading{
+        padding: 8px;
+        width: calc(100% - 16px);
+        margin: 8px 0;
       }
 
       #jumbotron-desc{
         padding: 8px;
-        width: 100%;
+        width: calc(100% - 16px);
       }
 
       .timestamp-navigation-button{
@@ -397,7 +409,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         justify-content: center;
         align-items: center;
         height: 100%;
-        margin: auto;
+        margin: 64px auto;
       }
 
       .endBtn{
@@ -411,35 +423,25 @@ class LecturePlayer extends DDDSuper(LitElement) {
         margin: auto;
         border-radius: var(--ddd-radius-sm);
         box-shadow: none;
-        animation: pulse 1.2s ease infinite;
       }
 
       .endBtn:hover{
         animation: none;
       }
 
-      @keyframes pulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(188, 32, 75, 0.7);
-        }
-        70% {
-          box-shadow: 0 0 0 10px rgba(188, 32, 75, 0);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(188, 32, 75, 0);
-        }
+      .no-pointer-events{
+        pointer-events: none;
       }
     </style>
       <div class="videoSection">
           <video-player source="${this.source}" source-type="${this.sourceType}"></video-player>
-          <div class="playlist">
-            <button class="timestamp-navigation-button" id="prevSlideBtn"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
-            <div class="timestampList">
-            </div>
-            <button class="timestamp-navigation-button" id="nextSlideBtn"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
-          </div>
+        <div class="jumbotron"></div>
+      </div>
+      <div class="playlist">
+        <button class="timestamp-navigation-button" id="prevSlideBtn"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
+        <div class="timestampList">
         </div>
-        <div class="jumbotron">
+        <button class="timestamp-navigation-button" id="nextSlideBtn"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
       </div>
     `;
     const evnt = new CustomEvent("simple-modal-show", {
