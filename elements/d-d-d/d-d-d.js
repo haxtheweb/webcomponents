@@ -52,8 +52,8 @@ export const DDDPulseEffectSuper = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
-        dataPulse: { type: Boolean, reflect: true, attribute: "data-pulse"},
-      }
+        dataPulse: { type: Boolean, reflect: true, attribute: "data-pulse" },
+      };
     }
 
     /**
@@ -65,7 +65,7 @@ export const DDDPulseEffectSuper = function (SuperClass) {
       if (super.styles) {
         styles = super.styles;
       }
-      return [styles];
+      return [styles, DDDPulseEffect];
     }
 
     removePulseEffect(e) {
@@ -76,20 +76,11 @@ export const DDDPulseEffectSuper = function (SuperClass) {
       // apply the effect or whatever
       if (status) {
         this.__abortController = new AbortController();
-        this.addEventListener(
-          'mouseenter', 
-          this.removePulseEffect,
-          { 
-            signal: this.__abortController.signal
-          }
-        );
-
-      }
-      else {
-        this.removeEventListener(
-          'mouseenter',
-          this.removePulseEffect,
-        );
+        this.addEventListener("mouseenter", this.removePulseEffect, {
+          signal: this.__abortController.signal,
+        });
+      } else {
+        this.removeEventListener("mouseenter", this.removePulseEffect);
         this.__abortController.abort();
       }
     }
@@ -98,17 +89,16 @@ export const DDDPulseEffectSuper = function (SuperClass) {
       if (super.updated) {
         super.updated(changedProperties);
       }
-      if (changedProperties.has('dataPulse')) {
+      if (changedProperties.has("dataPulse")) {
         if (this.dataPulse) {
           this.togglePulseEffect(true);
-        }
-        else {
+        } else {
           this.togglePulseEffect(false);
         }
       }
     }
-  }
-}
+  };
+};
 
 // super class so we can mix styles into other things more easily
 export const DDDSuper = function (SuperClass) {
