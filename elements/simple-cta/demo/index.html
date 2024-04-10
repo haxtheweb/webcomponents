@@ -14,6 +14,11 @@
       import '../simple-cta.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      simple-cta[data-pulse] {
+        border: 10px solid black;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
@@ -21,7 +26,7 @@
       <demo-snippet>
         <template>
           <div class="mx-8 p-5" style="background-color: var(--ddd-theme-default-slateMaxLight); display: flex; flex-direction: column;">
-            <simple-cta hide-icon link="https://google.com">Primary Outlined</simple-cta>
+            <simple-cta data-pulse hide-icon link="https://google.com">Primary Outlined</simple-cta>
             <simple-cta>Primary Outlined</simple-cta>
             <simple-cta large hide-icon>Primary Outlined</simple-cta>
             <simple-cta large>Primary Outlined</simple-cta>

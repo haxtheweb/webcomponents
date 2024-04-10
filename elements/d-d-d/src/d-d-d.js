@@ -39,6 +39,77 @@ export function dddCSSFeatureDetection() {
   }
 }
 
+// will have just pulse effect
+
+export const DDDPulseEffectSuper = function (SuperClass) {
+  return class extends SuperClass {
+    constructor() {
+      super();
+      this.dataPulse = false;
+      this.__abortController = new AbortController();
+    }
+
+    static get properties() {
+      return {
+        ...super.properties,
+        dataPulse: { type: Boolean, reflect: true, attribute: "data-pulse"},
+      }
+    }
+
+    /**
+     * LitElement style callback
+     */
+    static get styles() {
+      // support for using in other classes
+      let styles = [];
+      if (super.styles) {
+        styles = super.styles;
+      }
+      return [styles];
+    }
+
+    removePulseEffect(e) {
+      this.dataPulse = false;
+    }
+
+    togglePulseEffect(status) {
+      // apply the effect or whatever
+      if (status) {
+        this.__abortController = new AbortController();
+        this.addEventListener(
+          'mouseenter', 
+          this.removePulseEffect,
+          { 
+            signal: this.__abortController.signal
+          }
+        );
+
+      }
+      else {
+        this.removeEventListener(
+          'mouseenter',
+          this.removePulseEffect,
+        );
+        this.__abortController.abort();
+      }
+    }
+
+    updated(changedProperties) {
+      if (super.updated) {
+        super.updated(changedProperties);
+      }
+      if (changedProperties.has('dataPulse')) {
+        if (this.dataPulse) {
+          this.togglePulseEffect(true);
+        }
+        else {
+          this.togglePulseEffect(false);
+        }
+      }
+    }
+  }
+}
+
 // super class so we can mix styles into other things more easily
 export const DDDSuper = function (SuperClass) {
   return class extends SuperClass {

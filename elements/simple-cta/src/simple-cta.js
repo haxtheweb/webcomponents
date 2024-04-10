@@ -5,7 +5,7 @@
 import { html, css } from "lit";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
 import { activeStateBehavior } from "@lrnwebcomponents/utils/lib/activeStateBehavior.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDD, DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 /**
  * `simple-cta`
@@ -13,7 +13,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
  * @demo demo/index.html
  * @element simple-cta
  */
-class SimpleCta extends activeStateBehavior(remoteLinkBehavior(DDD)) {
+class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavior(DDD))) {
   //styles function
   static get styles() {
     return [
