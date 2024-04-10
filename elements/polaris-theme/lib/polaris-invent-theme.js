@@ -552,6 +552,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
                   type="prev"
                   position="right"
                   class="navigation"
+                  data-primary="4"
                 >
                   <div slot="suffix" class="wrapper">
                     <div class="top">Go back</div>
@@ -562,6 +563,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
                   type="next"
                   position="left"
                   class="navigation"
+                  data-primary="4"
                 >
                   <div slot="prefix" class="wrapper">
                     <div class="top">Continue</div>

@@ -604,7 +604,18 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     });
     // user scaffolding wired up to superDaemon
     autorun(() => {
+      const memory = toJS(UserScaffoldInstance.memory);
       const usAction = toJS(UserScaffoldInstance.action);
+      // try to pulse edit / merlin if they are here and don't do anything...
+      if (
+        memory.editMode === false &&
+        memory.interactionDelay > 3600 &&
+        usAction.type === null &&
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement
+      ) {
+        const editbtn = store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector("#editbutton");
+        editbtn.dataPulse = "1";
+      }
       // try to evaluate typing in merlin
       if (
         UserScaffoldInstance.active &&

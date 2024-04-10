@@ -20,7 +20,7 @@ import "@lrnwebcomponents/rpg-character/rpg-character.js";
 import "@lrnwebcomponents/app-hax/lib/v1/app-hax-top-bar.js";
 import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu.js";
 import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu-button.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 import "@lrnwebcomponents/super-daemon/lib/super-daemon-search.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
@@ -55,7 +55,7 @@ const LogOut = new URL(
  * @microcopy - the mental model for this element
  */
 class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
-  HAXCMSI18NMixin(winEventsElement(ResponsiveUtilityBehaviors(SimpleColors))),
+  HAXCMSI18NMixin(winEventsElement(ResponsiveUtilityBehaviors(DDD))),
 ) {
   static get styles() {
     return [
@@ -1463,6 +1463,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             @click="${this._editButtonTap}"
             label="${this.__editText}"
             show-text-label
+            data-primary="4"
             voice-command="edit (this) page"
           ></simple-toolbar-button>
            <simple-toolbar-button

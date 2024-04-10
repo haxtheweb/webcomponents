@@ -4,7 +4,7 @@
  */
 import { LitElement } from "lit";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { DDDReset, DDDAllStyles, DDDFonts, DDDPulseEffect } from "./lib/DDDStyles.js";
+import { DDDReset, DDDAllStyles, DDDFonts, DDDPulseEffect, DDDAnimations } from "./lib/DDDStyles.js";
 
 /**
  * `d-d-d`
@@ -45,14 +45,14 @@ export const DDDPulseEffectSuper = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
-      this.dataPulse = false;
+      this.dataPulse = null;
       this.__abortController = new AbortController();
     }
 
     static get properties() {
       return {
         ...super.properties,
-        dataPulse: { type: Boolean, reflect: true, attribute: "data-pulse" },
+        dataPulse: { type: String, reflect: true, attribute: "data-pulse" },
       };
     }
 
@@ -65,11 +65,11 @@ export const DDDPulseEffectSuper = function (SuperClass) {
       if (super.styles) {
         styles = super.styles;
       }
-      return [styles, DDDPulseEffect];
+      return [styles, DDDPulseEffect, DDDAnimations];
     }
 
     removePulseEffect(e) {
-      this.dataPulse = false;
+      this.dataPulse = null;
     }
 
     togglePulseEffect(status) {
@@ -90,7 +90,7 @@ export const DDDPulseEffectSuper = function (SuperClass) {
         super.updated(changedProperties);
       }
       if (changedProperties.has("dataPulse")) {
-        if (this.dataPulse) {
+        if (this.dataPulse !== null) {
           this.togglePulseEffect(true);
         } else {
           this.togglePulseEffect(false);

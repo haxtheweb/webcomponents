@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -15,7 +16,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
  *
  * @demo demo/index.html
  */
-class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
+class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(DDDPulseEffectSuper(LitElement))) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -176,7 +177,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
        * acitvely selected item
        */
       activeRouterManifestIndex: {
-        type: String,
+        type: Number,
       },
       routerManifest: {
         type: Object,
@@ -215,6 +216,16 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
+    }
+    // if type or router changes and we are the next button, it means prev isn't shown
+    // make us pulse
+    if (changedProperties.has('type') || changedProperties.has('activeRouterManifestIndex')) {
+      if (this.type === "next" && this.activeRouterManifestIndex === 0) {
+        this.dataPulse = "1";
+      }
+      else {
+        this.dataPulse = null;
+      }
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "type") {

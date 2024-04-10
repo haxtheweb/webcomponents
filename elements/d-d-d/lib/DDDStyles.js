@@ -543,7 +543,7 @@ export const DDDVariables = css`
   html,
   body,
   :host {
-    /* base polaris colors */
+    /* base colors */
     --ddd-theme-default-beaverBlue: #1e407c;
     --ddd-theme-default-beaver70: rgba(30, 64, 124, 0.7);
     --ddd-theme-default-beaver80: rgba(30, 64, 124, 0.8);
@@ -621,6 +621,30 @@ export const DDDVariables = css`
     --ddd-theme-default-alertNonEmergency: #e6f7ff;
     --ddd-theme-default-background: #eff2f5;
     --ddd-theme-default-disabled: #f4f4f4;
+
+    /* DDDSpecific: Define primary colors in RGB for use in rgba() */
+    --ddd-primary-0-rgb: 150, 190, 230, 0.7; /* Pugh Blue */
+    --ddd-primary-1-rgb: 30, 64, 124; /* Beaver Blue */
+    --ddd-primary-2-rgb: 0, 30, 68; /* Nittany Navy */
+    --ddd-primary-3-rgb: 0, 3, 33; /* Potential Midnight */
+    --ddd-primary-4-rgb: 38, 38, 38; /* Coaly Gray */
+    --ddd-primary-5-rgb: 162, 170, 173; /* Limestone Gray */
+    --ddd-primary-6-rgb: 49, 77, 100; /* Slate Gray */
+    --ddd-primary-7-rgb: 62, 163, 158; /* Creek Teal */
+    --ddd-primary-8-rgb: 0, 156, 222; /* Sky Blue */
+    --ddd-primary-9-rgb: 184, 137, 101; /* Shrine Tan */
+    --ddd-primary-10-rgb: 191, 130, 38; /* Roar Golden */
+    --ddd-primary-11-rgb: 188, 32, 75, 0.7; /* Original 87 Pink */
+    --ddd-primary-12-rgb: 242, 102, 94; /* Discovery Coral */
+    --ddd-primary-13-rgb: 73, 29, 112; /* Wonder Purple */
+    --ddd-primary-14-rgb: 172, 141, 206; /* Atherton Violet */
+    --ddd-primary-15-rgb: 233, 131, 0; /* Invent Orange */
+    --ddd-primary-16-rgb: 255, 209, 0; /* Keystone Yellow */
+    --ddd-primary-17-rgb: 0, 135, 85; /* Opportunity Green */
+    --ddd-primary-18-rgb: 153, 204, 0; /* Future Lime */
+    --ddd-primary-19-rgb: 74, 119, 41; /* Forest Green */
+    --ddd-primary-20-rgb: 106, 48, 40; /* Landgrant Brown */
+    --ddd-primary-21-rgb: 235, 255, 0; /* Global Neon */
 
     /* primary colors */
     --ddd-primary-0: var(
@@ -3922,110 +3946,101 @@ export const DDDExtra = css`
 `;
 
 export const DDDPulseEffect = css`
-  /* Define primary colors in RGB for use in rgba() */
-  :root {
-    --ddd-primary-0-rgb: 150, 190, 230, 0.7; /* Pugh Blue */
-    --ddd-primary-1-rgb: 30, 64, 124; /* Beaver Blue */
-    --ddd-primary-2-rgb: 0, 30, 68; /* Nittany Navy */
-    --ddd-primary-3-rgb: 0, 3, 33; /* Potential Midnight */
-    --ddd-primary-4-rgb: 38, 38, 38; /* Coaly Gray */
-    --ddd-primary-5-rgb: 162, 170, 173; /* Limestone Gray */
-    --ddd-primary-6-rgb: 49, 77, 100; /* Slate Gray */
-    --ddd-primary-7-rgb: 62, 163, 158; /* Creek Teal */
-    --ddd-primary-8-rgb: 0, 156, 222; /* Sky Blue */
-    --ddd-primary-9-rgb: 184, 137, 101; /* Shrine Tan */
-    --ddd-primary-10-rgb: 191, 130, 38; /* Roar Golden */
-    --ddd-primary-11-rgb: 188, 32, 75, 0.7; /* Original 87 Pink */
-    --ddd-primary-12-rgb: 242, 102, 94; /* Discovery Coral */
-    --ddd-primary-13-rgb: 73, 29, 112; /* Wonder Purple */
-    --ddd-primary-14-rgb: 172, 141, 206; /* Atherton Violet */
-    --ddd-primary-15-rgb: 233, 131, 0; /* Invent Orange */
-    --ddd-primary-16-rgb: 255, 209, 0; /* Keystone Yellow */
-    --ddd-primary-17-rgb: 0, 135, 85; /* Opportunity Green */
-    --ddd-primary-18-rgb: 153, 204, 0; /* Future Lime */
-    --ddd-primary-19-rgb: 74, 119, 41; /* Forest Green */
-    --ddd-primary-20-rgb: 106, 48, 40; /* Landgrant Brown */
-    --ddd-primary-21-rgb: 235, 255, 0; /* Global Neon */
-  }
 
   /* Apply primary color as pulse effect using CSS variable */
-  [data-primary="0"] {
-    --pulse-color: var(--ddd-primary-0-rgb);
+  :host([data-primary="0"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-0-rgb);
   }
-  [data-primary="1"] {
-    --pulse-color: var(--ddd-primary-1-rgb);
+  :host([data-primary="1"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-1-rgb);
   }
-  [data-primary="2"] {
-    --pulse-color: var(--ddd-primary-2-rgb);
+  :host([data-primary="2"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-2-rgb);
   }
-  [data-primary="3"] {
-    --pulse-color: var(--ddd-primary-3-rgb);
+  :host([data-primary="3"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-3-rgb);
   }
-  [data-primary="4"] {
-    --pulse-color: var(--ddd-primary-4-rgb);
+  :host([data-primary="4"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-4-rgb);
   }
-  [data-primary="5"] {
-    --pulse-color: var(--ddd-primary-5-rgb);
+  :host([data-primary="5"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-5-rgb);
   }
-  [data-primary="6"] {
-    --pulse-color: var(--ddd-primary-6-rgb);
+  :host([data-primary="6"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-6-rgb);
   }
-  [data-primary="7"] {
-    --pulse-color: var(--ddd-primary-7-rgb);
+  :host([data-primary="7"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-7-rgb);
   }
-  [data-primary="8"] {
-    --pulse-color: var(--ddd-primary-8-rgb);
+  :host([data-primary="8"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-8-rgb);
   }
-  [data-primary="9"] {
-    --pulse-color: var(--ddd-primary-9-rgb);
+  :host([data-primary="9"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-9-rgb);
   }
-  [data-primary="10"] {
-    --pulse-color: var(--ddd-primary-10-rgb);
+  :host([data-primary="10"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-10-rgb);
   }
-  [data-primary="11"] {
-    --pulse-color: var(--ddd-primary-11-rgb);
+  :host([data-primary="11"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-11-rgb);
   }
-  [data-primary="12"] {
-    --pulse-color: var(--ddd-primary-12-rgb);
+  :host([data-primary="12"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-12-rgb);
   }
-  [data-primary="13"] {
-    --pulse-color: var(--ddd-primary-13-rgb);
+  :host([data-primary="13"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-13-rgb);
   }
-  [data-primary="14"] {
-    --pulse-color: var(--ddd-primary-14-rgb);
+  :host([data-primary="14"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-14-rgb);
   }
-  [data-primary="15"] {
-    --pulse-color: var(--ddd-primary-15-rgb);
+  :host([data-primary="15"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-15-rgb);
   }
-  [data-primary="16"] {
-    --pulse-color: var(--ddd-primary-16-rgb);
+  :host([data-primary="16"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-16-rgb);
   }
-  [data-primary="17"] {
-    --pulse-color: var(--ddd-primary-17-rgb);
+  :host([data-primary="17"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-17-rgb);
   }
-  [data-primary="18"] {
-    --pulse-color: var(--ddd-primary-18-rgb);
+  :host([data-primary="18"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-18-rgb);
   }
-  [data-primary="19"] {
-    --pulse-color: var(--ddd-primary-19-rgb);
+  :host([data-primary="19"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-19-rgb);
   }
-  [data-primary="20"] {
-    --pulse-color: var(--ddd-primary-20-rgb);
+  :host([data-primary="20"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-20-rgb);
   }
-  [data-primary="21"] {
-    --pulse-color: var(--ddd-primary-21-rgb);
-  }
-
-  [data-pulse] {
-    animation: pulse 1.5s infinite;
+  :host([data-primary="21"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-21-rgb);
   }
 
+  :host([data-pulse]) {
+    --ddd-animation-pulse-size: var(--ddd-spacing-4);
+    animation-delay: 2.8s;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    z-index: 10000;
+  }
+  :host([data-pulse="1"]) {
+    --ddd-animation-pulse-size: var(--ddd-spacing-6);
+  }
+  :host([data-pulse="2"]) {
+    --ddd-animation-pulse-size: var(--ddd-spacing-10);
+  }
+  :host([data-pulse]:not([data-primary])) {
+    --ddd-animation-pulse-color: var(--ddd-primary-1-rgb);
+  }
+`;
+
+export const DDDAnimations = css`  
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 rgba(var(--pulse-color));
+      box-shadow: 0 0 0 0 rgba(var(--ddd-animation-pulse-color));
     }
     70% {
-      box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); /* Use a transparent color derived from the original color */
+      box-shadow: 0 0 0 var(--ddd-animation-pulse-size) rgba(0, 0, 0, 0); /* Use a transparent color derived from the original color */
     }
     100% {
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); /* Same here */
@@ -4050,5 +4065,5 @@ export const DDDAllStyles = [
   DDDFontClasses,
   DDDFontWeight,
   DDDFontSizing,
-  DDDPulseEffect,
+  DDDAnimations,
 ];

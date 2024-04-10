@@ -1176,6 +1176,8 @@ class HAXCMSSiteStore extends HTMLElement {
     });
     autorun(() => {
       const memVersion = UserScaffoldInstance.readMemory("versionLatest");
+      // @todo COMPARE CURRENT TO INITIAL AND IF IT IS NEW THEN WE PULSE MERLIN
+      // AS WELL AS INDICATE THAT HE HAS NEW THINGS AND THAT OPTION FLOWS TO THE TOP
       if (store.version && memVersion != store.version) {
         // store the initial version
         if (memVersion == null) {
