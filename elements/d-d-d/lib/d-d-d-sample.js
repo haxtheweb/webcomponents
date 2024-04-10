@@ -220,12 +220,12 @@ export class DDDSample extends DDDSuper(LitElement) {
 
   render() {
     return html`
-    <div class="wrapper">
-      <span class="sample"></span
-      ><span class="label"
-        >${ApplicationAttributeData[this.type][this.option]}<slot></slot
-      ></span>
-    </div>
+      <div class="wrapper">
+        <span class="sample"></span
+        ><span class="label"
+          >${ApplicationAttributeData[this.type][this.option]}<slot></slot
+        ></span>
+      </div>
     `;
   }
 
