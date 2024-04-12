@@ -414,6 +414,10 @@ export const ApplicationAttributeData = {
     19: "Forest green",
     20: "Landgrant brown",
     21: "Global Neon",
+    22: "Error",
+    23: "Warning",
+    24: "Info",
+    25: "Success",
   },
   accent: {
     0: "Sky Max",
@@ -422,6 +426,15 @@ export const ApplicationAttributeData = {
     3: "Shrine Max",
     4: "Roar Max",
     5: "Creek Max",
+    6: "White",
+    7: "Error Light",
+    8: "Warning Light",
+    9: "Info Light",
+    10: "Success Light",
+    11: "Alert Immediate",
+    12: "Alert Urgent",
+    13: "Alert All Clear",
+    14: "Alert Non Emergency",
   },
   margin: {
     xs: "XS",
@@ -707,6 +720,10 @@ export const DDDVariables = css`
     --ddd-primary-21: var(
       --ddd-theme-default-globalNeon
     ); /* not enough contrast to white, accent-0, accent-1, accent-2, accent-3, accent-4, accent-5 */
+    --ddd-primary-22: var(--ddd-theme-default-error);
+    --ddd-primary-23: var(--ddd-theme-default-warning);
+    --ddd-primary-24: var(--ddd-theme-default-info);
+    --ddd-primary-25: var(--ddd-theme-default-success);
 
     /* accent colors */
 
@@ -717,6 +734,14 @@ export const DDDVariables = css`
     --ddd-accent-4: var(--ddd-theme-default-roarMaxlight);
     --ddd-accent-5: var(--ddd-theme-default-creekMaxLight);
     --ddd-accent-6: var(--ddd-theme-default-white);
+    --ddd-accent-7: var(--ddd-theme-default-errorLight);
+    --ddd-accent-8: var(--ddd-theme-default-warningLight);
+    --ddd-accent-9: var(--ddd-theme-default-infoLight);
+    --ddd-accent-10: var(--ddd-theme-default-successLight);
+    --ddd-accent-11: var(--ddd-theme-default-alertImmediate);
+    --ddd-accent-12: var(--ddd-theme-default-alertUrgent);
+    --ddd-accent-13: var(--ddd-theme-default-alertAllClear);
+    --ddd-accent-14: var(--ddd-theme-default-alertNonEmergency);
 
     /*fonts*/
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
@@ -1075,6 +1100,22 @@ export const DDDDataAttributes = [
       --ddd-theme-primary: var(--ddd-primary-21);
       --lowContrast-override: black;
     }
+    [data-primary="22"] {
+      --ddd-theme-primary: var(--ddd-primary-22);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="23"] {
+      --ddd-theme-primary: var(--ddd-primary-23);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="24"] {
+      --ddd-theme-primary: var(--ddd-primary-24);
+      --ddd-theme-bgContrast: white;
+    }
+    [data-primary="25"] {
+      --ddd-theme-primary: var(--ddd-primary-25);
+      --ddd-theme-bgContrast: white;
+    }
 
     /* accent color */
 
@@ -1098,6 +1139,30 @@ export const DDDDataAttributes = [
     }
     [data-accent="6"] {
       --ddd-theme-accent: var(--ddd-accent-6);
+    }
+    [data-accent="7"] {
+      --ddd-theme-accent: var(--ddd-accent-7);
+    }
+    [data-accent="8"] {
+      --ddd-theme-accent: var(--ddd-accent-8);
+    }
+    [data-accent="9"] {
+      --ddd-theme-accent: var(--ddd-accent-9);
+    }
+    [data-accent="10"] {
+      --ddd-theme-accent: var(--ddd-accent-10);
+    }
+    [data-accent="11"] {
+      --ddd-theme-accent: var(--ddd-accent-11);
+    }
+    [data-accent="12"] {
+      --ddd-theme-accent: var(--ddd-accent-12);
+    }
+    [data-accent="13"] {
+      --ddd-theme-accent: var(--ddd-accent-13);
+    }
+    [data-accent="14"] {
+      --ddd-theme-accent: var(--ddd-accent-14);
     }
 
     /* font family */

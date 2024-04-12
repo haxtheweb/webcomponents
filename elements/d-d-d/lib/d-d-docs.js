@@ -102,6 +102,10 @@ class DDDocs extends DDD {
           display: grid;
           grid-template-columns: 0.1fr 5fr;
         }
+        .grid-5 {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+        }
         .grid-6 {
           display: grid;
           grid-template-columns: repeat(6, 1fr);
@@ -169,6 +173,24 @@ class DDDocs extends DDD {
 
         .my-16 {
           margin: var(--ddd-spacing-4) 0;
+        }
+
+        .buttonContainer{
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          width: 60%;
+          gap: 10px;
+          border: 1px solid var(--ddd-theme-default-limestoneLight);
+          padding: 10px;          
+        }
+        .buttonContainer:first-of-type{
+          border-bottom: none;
+        }
+        .buttonContainer:not(:first-of-type){
+          border-top: none;
+        }
+        .buttonContainer:not(:last-of-type){
+          border-bottom: none;
         }
       `,
     ];
@@ -1634,88 +1656,45 @@ class DDDocs extends DDD {
   }
 
   renderButtons() {
-    return html`
-      <div
-        class="mx-8 p-5"
-        style="background-color: var(--ddd-theme-default-slateMaxLight); display: flex; flex-direction: column;"
-      >
-        <simple-cta hide-icon>Primary Outlined</simple-cta>
-        <simple-cta>Primary Outlined</simple-cta>
-        <simple-cta large hide-icon>Primary Outlined</simple-cta>
-        <simple-cta large>Primary Outlined</simple-cta>
+    let headers = [];
+    for (let i = 0; i < 22; i++) {
+      let random = Math.floor(Math.random() * 14);
+      headers.push(html`
+        <div class="grid-3 " >
+          <simple-cta data-primary="${i}">Primary-${i}</simple-cta>
+          <simple-cta data-primary="${i}" light>Primary-${i} Light</simple-cta>
+          <simple-cta data-primary="${i}" Hotline>Primary-${i} Hotline</simple-cta>
+          <simple-cta data-primary="${i}" large>Primary-${i} large</simple-cta>
+          <simple-cta data-primary="${i}" hide-icon>Primary-${i} hide-icon</simple-cta>
+          <simple-cta data-primary="${i}" saturate>Primary-${i} saturate</simple-cta>
+        </div>
+      `);
+    }
+    headers.push(html`
+      <div style="display: inline-flex; width: fit-content; align-items: center;">
+        <simple-cta>Default</simple-cta>
+        <simple-cta light>Default Light</simple-cta>
+        <simple-cta Hotline>Default Hotline</simple-cta>
+        <simple-cta large>Default large</simple-cta>
+        <simple-cta hide-icon>Default hide-icon</simple-cta>
+        <simple-cta light saturate>Default saturate</simple-cta>
       </div>
-      <div
-        class="mt-3 mx-8 p-5"
-        style="background-color: var(--ddd-theme-default-limestoneMaxLight); display: flex; flex-direction: column;"
-      >
-        <simple-cta filled hide-icon>Primary Filled</simple-cta>
-        <simple-cta filled>Primary Filled</simple-cta>
-        <simple-cta filled large hide-icon>Primary Filled</simple-cta>
-        <simple-cta filled large>Primary Filled</simple-cta>
+      <h3>Buttons also support data-accent!</h3>
+      <div style="display: inline-flex; width: fit-content; align-items: center;">
+        <simple-cta data-primary="11" data-accent="11" light>Accent-11</simple-cta>
+        <simple-cta data-primary="11" data-accent="7" light>Accent-7</simple-cta>
+        <simple-cta data-primary="1" data-accent="9" light>Accent-9</simple-cta>
+        <simple-cta data-primary="1" data-accent="14" light>Accent-14</simple-cta>
+        <simple-cta data-primary="19" data-accent="10" light>Accent-10</simple-cta>
+        <simple-cta data-primary="19" data-accent="13" light>Accent-13</simple-cta>
       </div>
-      <div
-        class="mt-3 mx-8 p-5"
-        style="background-color: var(--ddd-theme-default-nittanyNavy); display: flex; flex-direction: column;"
-      >
-        <simple-cta light hide-icon>Light Outlined</simple-cta>
-        <simple-cta light>Light Outlined</simple-cta>
-        <simple-cta light large hide-icon>Light Outlined</simple-cta>
-        <simple-cta light large>Light Outlined</simple-cta>
+      <h5>Note: Accent color will not be applied if the primary color does not meet constrast requirements</h5>
+      <div style="display: inline-flex; width: fit-content; align-items: center; margin-bottom: 64px;">
+        <simple-cta data-primary="15" data-accent="10" light>Accent-10</simple-cta>
+        <simple-cta data-primary="8" data-accent="7" light>Accent-7</simple-cta>
       </div>
-      <div
-        class="mt-3 mx-8 p-5"
-        style="background-color: var(--ddd-theme-default-nittanyNavy); display: flex; flex-direction: column;"
-      >
-        <simple-cta light filled hide-icon>Light Filled</simple-cta>
-        <simple-cta light filled>Light Filled</simple-cta>
-        <simple-cta light filled large hide-icon>Light Filled</simple-cta>
-        <simple-cta light filled large>Light Filled</simple-cta>
-      </div>
-      <div
-        class="mt-3 mx-8 p-5"
-        style="background-color: var(--ddd-theme-default-potentialMidnight); display: flex; flex-direction: column;"
-      >
-        <simple-cta white hide-icon>White Outlined</simple-cta>
-        <simple-cta white>White Outlined</simple-cta>
-        <simple-cta white large hide-icon>White Outlined</simple-cta>
-        <simple-cta white large>White Outlined</simple-cta>
-      </div>
-      <div
-        class="mt-3 mx-8 p-5"
-        style="background-color: var(--ddd-theme-default-potentialMidnight); display: flex; flex-direction: column;"
-      >
-        <simple-cta white filled hide-icon>White Filled</simple-cta>
-        <simple-cta white filled>White Filled</simple-cta>
-        <simple-cta white filled large hide-icon>White Filled</simple-cta>
-        <simple-cta white filled large>White Filled</simple-cta>
-      </div>
-      <div
-        class="mx-8 p-5"
-        style="background-color: var(--ddd-theme-default-slateMaxLight); display: flex; flex-direction: column;"
-      >
-        <simple-cta hide-icon hotline>Hotline Primary Outlined</simple-cta>
-        <simple-cta filled hotline>Hotline Primary Filled</simple-cta>
-      </div>
-      <div
-        class="mx-8 p-5"
-        style="background-color: var(--ddd-theme-default-nittanyNavy); display: flex; flex-direction: column;"
-      >
-        <simple-cta light large hide-icon hotline
-          >Hotline Light Outlined</simple-cta
-        >
-        <simple-cta light filled large hotline>Hotline Light Filled</simple-cta>
-      </div>
-      <div
-        class="mx-8 p-5"
-        style="background-color: var(--ddd-theme-default-potentialMidnight); display: flex; flex-direction: column;"
-      >
-        <simple-cta white large hotline>Hotline White Outlined</simple-cta>
-        <simple-cta white filled large hide-icon hotline
-          >Hotline White Filled</simple-cta
-        >
-      </div>
-    `;
-    //TODO: Look up signals for a entice button
+    `);
+    return headers;
   }
 
   renderPageSections() {
