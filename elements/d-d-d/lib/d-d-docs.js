@@ -39,7 +39,6 @@ export const styleGuideTopics = {
   InstructionalComponents: "InstructionalComponents",
   Buttons: "Buttons",
   PageSections: "PageSections",
-  Contrast: "Contrast",
 };
 
 class DDDocs extends DDD {
@@ -213,8 +212,18 @@ class DDDocs extends DDD {
           )}
         </div>
       `,
-    )} `;
-  }
+    )}
+    <h5 style="margin-top: 64px;">Note: Pointer events are disabled so the pulsing will not self-remove on hover</h5>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 32px 64px 64px; row-gap: 32px; pointer-events: none;">
+      ${Object.keys(ApplicationAttributeData.primary).map(
+        (key) => html`
+            <simple-cta data-primary="${key}" data-pulse>Primary-${key}</simple-cta>
+            <simple-cta data-primary="${key}" data-pulse light>Primary-${key}</simple-cta>
+        `,
+      )}
+    </div>
+    `;
+  } 
 
   renderHeaderSample() {
     let headers = [];
@@ -1682,7 +1691,6 @@ class DDDocs extends DDD {
       </div>
       <h3>Buttons also support data-accent!</h3>
       <div style="display: inline-flex; width: fit-content; align-items: center;">
-        <simple-cta data-primary="11" data-accent="11" light>Accent-11</simple-cta>
         <simple-cta data-primary="11" data-accent="7" light>Accent-7</simple-cta>
         <simple-cta data-primary="1" data-accent="9" light>Accent-9</simple-cta>
         <simple-cta data-primary="1" data-accent="14" light>Accent-14</simple-cta>
@@ -1693,6 +1701,7 @@ class DDDocs extends DDD {
       <div style="display: inline-flex; width: fit-content; align-items: center; margin-bottom: 64px;">
         <simple-cta data-primary="15" data-accent="10" light>Accent-10</simple-cta>
         <simple-cta data-primary="8" data-accent="7" light>Accent-7</simple-cta>
+        <simple-cta data-primary="11" data-accent="11" light>Accent-11</simple-cta>
       </div>
     `);
     return headers;
@@ -2059,21 +2068,6 @@ class DDDocs extends DDD {
         </div>
       </div>
     `;
-  }
-
-  renderContrast(){
-    let text = [];
-    let exceptions = [0, 5, 7, 8, 9, 10, 12, 14, 15, 16, 17, 18, 21]
-    for (var i = 0; i<26; i++){
-      for(var j = 0; j<15; j++){
-        if(!exceptions.includes(i)){
-          text.push(html`
-            <p data-accent="${j}" data-primary="${i}" style="color: var(--ddd-theme-primary);">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          `);
-        }
-      }
-    }
-    return text;
   }
 
   selectOption() {

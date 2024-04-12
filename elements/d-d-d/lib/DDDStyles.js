@@ -658,6 +658,10 @@ export const DDDVariables = css`
     --ddd-primary-19-rgb: 74, 119, 41; /* Forest Green */
     --ddd-primary-20-rgb: 106, 48, 40; /* Landgrant Brown */
     --ddd-primary-21-rgb: 235, 255, 0; /* Global Neon */
+    --ddd-primary-22-rgb: 95, 33, 32; /* Error */
+    --ddd-primary-23-rgb: 102, 60, 0; /* Warning */
+    --ddd-primary-24-rgb: 1, 67, 97; /* Info */
+    --ddd-primary-25-rgb: 30, 70, 32; /* Success */
 
     /* primary colors */
     --ddd-primary-0: var(
@@ -4084,6 +4088,18 @@ export const DDDPulseEffect = css`
   }
   :host([data-primary="21"]) {
     --ddd-animation-pulse-color: var(--ddd-primary-21-rgb);
+  }
+  :host([data-primary="22"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-22-rgb);
+  }
+  :host([data-primary="23"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-23-rgb);
+  }
+  :host([data-primary="24"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-24-rgb);
+  }
+  :host([data-primary="25"]) {
+    --ddd-animation-pulse-color: var(--ddd-primary-25-rgb);
   }
 
   :host([data-pulse]) {
