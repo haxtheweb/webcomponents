@@ -131,6 +131,11 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
         :host([saturate]:hover) .btn, :host([saturate]:focus-within) .btn, :host([saturate]:active) .btn {
           filter: saturate(200%);
         }
+
+        :host([data-primary="19"][data-accent="11"]) .btn, 
+        :host([data-primary="11"][data-accent="11"]) .btn {
+          --ddd-theme-accent: black;
+        }
       `,
     ];
   }
