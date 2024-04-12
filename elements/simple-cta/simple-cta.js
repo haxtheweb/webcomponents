@@ -33,39 +33,32 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
           height: fit-content;
           margin: var(--ddd-spacing-4) 0 0;
           border-radius: var(--ddd-radius-xs);
-          --component-color: var(--ddd-theme-default-link);
-          --component-background-color: transparent;
-          --component-border-color: var(--ddd-theme-default-link);
+          --component-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))));
+          --component-background-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
+          --component-border-color: var(--component-color);
+        }
+
+        :host(:not([saturate]):hover), :host(:not([saturate]):focus-within), :host(:not([saturate]):active) {
+          --component-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
+          --component-border-color: var(--component-color);
+          --component-background-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast, white)));
         }
 
         :host([hidden]) {
           display: none;
         }
-
-        :host([data-primary]) {
-          --component-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast)));
+        
+        :host([light]){
+          --component-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
           --component-border-color: var(--component-color);
-          --component-background-color: var(--ddd-theme-primary);
+          --component-background-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))));
         }
-        :host([data-primary]:focus-within),
-        :host([data-primary]) a:hover,
-        :host([data-primary]) a:active {
-          --component-color: var(--ddd-theme-primary);
+        :host([light]:focus-within), 
+        :host([light]) a:hover,
+        :host([light]) a:active {
+          --component-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast, white)));
           --component-border-color: var(--component-color);
-          --component-background-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast)));
-        }
-
-        :host([light][data-primary]) {
-          --component-color: var(--ddd-theme-primary);
-          --component-border-color: var(--component-color);
-          --component-background-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast)));
-        }
-        :host([light][data-primary]:focus-within),
-        :host([light][data-primary]) a:hover,
-        :host([light][data-primary]) a:active {
-          --component-background-color: var(--ddd-theme-primary);
-          --component-border-color: var(--component-background-color);
-          --component-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast)));
+          --component-background-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
         }
 
         :host([hotline]) .btn {
@@ -133,6 +126,10 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
 
         label{
           font-weight: var(--ddd-font-primary-black);
+        }
+
+        :host([saturate]:hover) .btn, :host([saturate]:focus-within) .btn, :host([saturate]:active) .btn {
+          filter: saturate(200%);
         }
       `,
     ];
@@ -264,15 +261,15 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
         type: Boolean,
         reflect: true,
       },
-      filled: {
-        type: Boolean,
-        reflect: true,
-      },
       light: {
         type: Boolean,
         reflect: true,
       },
       hotline: {
+        type: Boolean,
+        reflect: true,
+      },
+      saturate: {
         type: Boolean,
         reflect: true,
       },
@@ -295,10 +292,10 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
     this.icon = "icons:chevron-right";
     this.hideIcon = false;
     this.label = null;
-    this.color = "primary";
-    this.outlined = null;
     this.hotline = null;
     this.large = null;
+    this.light = null;
+    this.saturate = null;
     // progressive enhancement support
     if (this.querySelector("a")) {
       this.link = this.querySelector("a").getAttribute("href");
