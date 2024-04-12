@@ -39,6 +39,7 @@ export const styleGuideTopics = {
   InstructionalComponents: "InstructionalComponents",
   Buttons: "Buttons",
   PageSections: "PageSections",
+  Contrast: "Contrast",
 };
 
 class DDDocs extends DDD {
@@ -2058,6 +2059,21 @@ class DDDocs extends DDD {
         </div>
       </div>
     `;
+  }
+
+  renderContrast(){
+    let text = [];
+    let exceptions = [0, 5, 7, 8, 9, 10, 12, 14, 15, 16, 17, 18, 21]
+    for (var i = 0; i<26; i++){
+      for(var j = 0; j<15; j++){
+        if(!exceptions.includes(i)){
+          text.push(html`
+            <p data-accent="${j}" data-primary="${i}" style="color: var(--ddd-theme-primary);">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          `);
+        }
+      }
+    }
+    return text;
   }
 
   selectOption() {

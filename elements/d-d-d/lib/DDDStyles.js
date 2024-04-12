@@ -1083,6 +1083,7 @@ export const DDDDataAttributes = [
     }
     [data-primary="17"] {
       --ddd-theme-primary: var(--ddd-primary-17);
+      --lowContrast-override: black;
     }
     [data-primary="18"] {
       --ddd-theme-primary: var(--ddd-primary-18);
@@ -1163,6 +1164,11 @@ export const DDDDataAttributes = [
     }
     [data-accent="14"] {
       --ddd-theme-accent: var(--ddd-accent-14);
+    }
+
+    [data-primary="19"][data-accent="11"], 
+    [data-primary="11"][data-accent="11"] {
+      --lowContrast-override: black;
     }
 
     /* font family */
