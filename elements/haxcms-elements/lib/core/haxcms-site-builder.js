@@ -609,7 +609,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // try to pulse edit / merlin if they are here and don't do anything...
       if (
         memory.editMode === false &&
-        memory.interactionDelay > 3600 &&
+        memory.interactionDelay >= 3600 &&
         usAction.type === null &&
         store.cmsSiteEditor.haxCmsSiteEditorUIElement
       ) {

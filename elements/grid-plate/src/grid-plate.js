@@ -242,7 +242,7 @@ class GridPlate extends LitElement {
           outline-style: dotted;
         }
         /* drag and drop */
-        :host([data-hax-ray]) .column ::slotted(*)::before {
+        :host([data-hax-ray]) .column ::slotted(*.hax-hovered)::before {
           content: " ";
           width: calc(100% + 32px);
           display: block;
@@ -252,8 +252,6 @@ class GridPlate extends LitElement {
           height: 12px;
           border: none !important;
           transition: 0.3s all ease-in-out;
-        }
-        :host([data-hax-ray]) .column ::slotted(*.hax-hovered)::before {
           background-color: var(--hax-body-target-background-color) !important;
         }
         :host([data-hax-ray]) .column ::slotted(img.hax-hovered) {
