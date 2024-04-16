@@ -19,7 +19,7 @@ class PageContentsMenu extends DDD {
         :host {
           display: block;
           font-family: var(--ddd-font-navigation);
-          font-weight: var(--ddd-font-navigation-light);
+          font-weight: var(--ddd-font-weight-light);
           --page-contents-menu-link-color-focus: var(--ddd-theme-default-link);
           --page-contents-menu-link: black;
           --page-contents-menu-link-font-size: var(--ddd-font-size-3xs);
@@ -71,7 +71,7 @@ class PageContentsMenu extends DDD {
           );
           font-weight: var(
             --page-contents-menu-heading-font-weight,
-            var(--ddd-font-navigation-bold)
+            var(--ddd-font-weight-bold)
           );
           padding: 0;
           margin: 0;

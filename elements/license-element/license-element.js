@@ -96,7 +96,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         }
         a {
           color: var(--ddd-theme-default-link);
-          font-weight: var(--ddd-font-primary-bold);
+          font-weight: var(--ddd-font-weight-bold);
         }
         .big-license-link img {
           margin-right: 0 var(--ddd-spacing-2) var(--ddd-spacing-2) 0;

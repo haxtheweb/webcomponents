@@ -165,19 +165,19 @@ class CleanTwo extends HAXCMSOperationButtons(
           padding: 16px;
           text-overflow: ellipsis;
           text-decoration: none;
-          font-weight: var(--ddd-font-navigation-bold);
+          font-weight: var(--ddd-font-weight-bold);
           text-transform: none;
         }
         site-menu-button div .top {
           font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-navigation-regular);
+          font-weight: var(--ddd-font-weight-regular);
         }
         simple-datetime {
           color: black;
         }
         site-menu-button div .bottom {
           font-size: var(--ddd-font-size-xxs);
-          font-weight: var(--ddd-font-navigation-bold);
+          font-weight: var(--ddd-font-weight-bold);
           margin-top: var(--ddd-spacing-2);
           max-height: 50px;
           overflow: hidden;

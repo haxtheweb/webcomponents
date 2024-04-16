@@ -1,6 +1,9 @@
 import { css, html, LitElement } from "lit";
 import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { DDDDataAttributes, DDDPulseEffect } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
+import {
+  DDDDataAttributes,
+  DDDPulseEffect,
+} from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 import "@lrnwebcomponents/video-player/video-player.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -203,12 +206,10 @@ class LecturePlayer extends DDDSuper(LitElement) {
       }
       timestampList.appendChild(timestampBtn);
     });
-    document
-      .querySelector(".timestampList")
-      .scrollTo({
-        left: document.querySelector(".timestampBtn.active").offsetLeft - 125,
-        behavior: "smooth",
-      });
+    document.querySelector(".timestampList").scrollTo({
+      left: document.querySelector(".timestampBtn.active").offsetLeft - 125,
+      behavior: "smooth",
+    });
   }
 
   getSortedAnchors() {

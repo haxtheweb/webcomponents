@@ -646,8 +646,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       tag = node.tagName.toLowerCase();
     } else if (node != null && node.tag) {
       tag = node.tag.toLowerCase();
-    }
-    else if (typeof node === "string") {
+    } else if (typeof node === "string") {
       tag = node;
     }
     if (tag && this.validTagList.includes(tag)) {
@@ -1279,7 +1278,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // @todo this will help with keeping styling and slot in some situation
     // there's still something odd w/ ul/ol in grids that will need explored.
     if (e.detail.command && e.detail.command === "formatBlock") {
-      let dataset = {...this.activeNode.dataset};
+      let dataset = { ...this.activeNode.dataset };
       let slot = this.activeNode.slot;
       // the delay allows HAX to switch the element and insert where it used to be
       // after which point we can quickly set these prims that get lost otherwise
@@ -1287,13 +1286,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // as opposed to HAX directly like web components get :)
       setTimeout(() => {
         for (var i in dataset) {
-          if (!i.startsWith('hax')) {
+          if (!i.startsWith("hax")) {
             this.activeNode.dataset[i] = dataset[i];
           }
         }
         // if it had a slot, ensure we maintain that
         if (slot) {
-          this.activeNode.setAttribute('slot', slot);
+          this.activeNode.setAttribute("slot", slot);
         }
       }, 0);
     }
@@ -2949,17 +2948,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           type: "element",
           editingElement: "core",
           canScale: false,
-          designSystem: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag) ? {
-            text: true,
-            card: true,
-            primary: true,
-            designTreatment: true,
-          } : ["ol", "ul"].includes(tag) ? {
-            text: true,
-            card: true,
-            accent: true,
-            primary: true,
-          } : false,
+          designSystem: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
+            ? {
+                text: true,
+                card: true,
+                primary: true,
+                designTreatment: true,
+              }
+            : ["ol", "ul"].includes(tag)
+              ? {
+                  text: true,
+                  card: true,
+                  accent: true,
+                  primary: true,
+                }
+              : false,
           canEditSource: true,
           contentEditable: true,
           gizmo: {

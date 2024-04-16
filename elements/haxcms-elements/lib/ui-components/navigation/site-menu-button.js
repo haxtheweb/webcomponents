@@ -16,7 +16,9 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
  *
  * @demo demo/index.html
  */
-class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(DDDPulseEffectSuper(LitElement))) {
+class SiteMenuButton extends HAXCMSI18NMixin(
+  HAXCMSThemeParts(DDDPulseEffectSuper(LitElement)),
+) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -219,11 +221,13 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(DDDPulseEffectSupe
     }
     // if type or router changes and we are the next button, it means prev isn't shown
     // make us pulse
-    if (changedProperties.has('type') || changedProperties.has('activeRouterManifestIndex')) {
+    if (
+      changedProperties.has("type") ||
+      changedProperties.has("activeRouterManifestIndex")
+    ) {
       if (this.type === "next" && this.activeRouterManifestIndex === 0) {
         this.dataPulse = "1";
-      }
-      else {
+      } else {
         this.dataPulse = null;
       }
     }

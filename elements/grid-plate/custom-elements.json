@@ -44,7 +44,7 @@
         },
         {
           "name": "columns",
-          "description": "`columns` {`number`} - number of columns at this layout / responsive size\n\nProperty: columns\n\nDefault: 6"
+          "description": "`columns` {`number`} - number of columns at this layout / responsive size\n\nProperty: columns\n\nDefault: 4"
         },
         {
           "name": "disable-responsive",

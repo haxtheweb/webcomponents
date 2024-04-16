@@ -429,10 +429,11 @@ export class HAXWiring {
           }
           // support design systems supplying their own property definitions
           if (globalThis.HaxStore) {
-            props = globalThis.HaxStore.requestAvailability().designSystemHAXProperties(
-              props,
-              tag,
-            );
+            props =
+              globalThis.HaxStore.requestAvailability().designSystemHAXProperties(
+                props,
+                tag,
+              );
           }
           // apply standard set of props that the system wires in
           props = this.standardAdvancedProps(props, tag);

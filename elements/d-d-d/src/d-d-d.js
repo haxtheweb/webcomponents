@@ -4,7 +4,13 @@
  */
 import { LitElement } from "lit";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { DDDReset, DDDAllStyles, DDDFonts, DDDPulseEffect, DDDAnimations } from "./lib/DDDStyles.js";
+import {
+  DDDReset,
+  DDDAllStyles,
+  DDDFonts,
+  DDDPulseEffect,
+  DDDAnimations,
+} from "./lib/DDDStyles.js";
 
 /**
  * `d-d-d`

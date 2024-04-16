@@ -1968,25 +1968,25 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           case "2-1":
             node.layout = "2-1-1";
             changed = true;
-          break;
+            break;
           case "1-2":
             node.layout = "1-2-1";
             changed = true;
-          break;
+            break;
           case "3-1":
             node.layout = "2-1-1";
             changed = true;
-          break;
+            break;
           case "1-3":
             node.layout = "1-1-2";
             changed = true;
-          break;
+            break;
           case "2-1-1":
           case "1-2-1":
           case "1-1-2":
             node.layout = "1-1-1-1";
             changed = true;
-          break;
+            break;
           case "1":
             node.layout = "1-1";
             changed = true;
@@ -2040,12 +2040,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           case "2-1-1":
             node.layout = "2-1";
             changed = true;
-          break;
+            break;
           case "1-2-1":
           case "1-1-2":
             node.layout = "1-2";
             changed = true;
-          break;
+            break;
         }
       }
       // if left, nudge everything over 1, right simple

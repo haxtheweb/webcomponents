@@ -6,7 +6,10 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import { DDDSuper, DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import {
+  DDDSuper,
+  DDDPulseEffectSuper,
+} from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 export const SimpleToolbarGlobalProperties = {
   /**
@@ -917,6 +920,8 @@ Custom property | Description | Default
  * @lit-element
  * @demo ./demo/buttons.html
  */
-class SimpleToolbarButton extends SimpleToolbarButtonBehaviors(DDDPulseEffectSuper(LitElement)) {}
+class SimpleToolbarButton extends SimpleToolbarButtonBehaviors(
+  DDDPulseEffectSuper(LitElement),
+) {}
 customElements.define(SimpleToolbarButton.tag, SimpleToolbarButton);
 export { SimpleToolbarButton, SimpleToolbarButtonBehaviors };

@@ -13,61 +13,97 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
  * @demo demo/index.html
  * @element simple-cta
  */
-class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavior(DDD))) {
+class SimpleCta extends DDDPulseEffectSuper(
+  activeStateBehavior(remoteLinkBehavior(DDD)),
+) {
   //styles function
   static get styles() {
     return [
       super.styles,
       css`
-
         /* With data-primary & data-accent applied, abstract to just
         * hidden (display: none)
         * transparent (no background) 
         * light (invert primary & accent)
         * hotline (uppercase, italic)
         */
-      
+
         :host {
           display: inline-block;
           width: fit-content;
           height: fit-content;
           margin: var(--ddd-spacing-4) 0 0;
           border-radius: var(--ddd-radius-xs);
-          --component-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))));
-          --component-background-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
+          --component-color: var(
+            --lowContrast-override,
+            var(
+              --ddd-theme-accent,
+              var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+            )
+          );
+          --component-background-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
           --component-border-color: var(--component-color);
         }
 
-        :host(:not([saturate]):hover), :host(:not([saturate]):focus-within), :host(:not([saturate]):active) {
-          --component-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
+        :host(:not([saturate]):hover),
+        :host(:not([saturate]):focus-within),
+        :host(:not([saturate]):active) {
+          --component-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
           --component-border-color: var(--component-color);
-          --component-background-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast, white)));
+          --component-background-color: var(
+            --lowContrast-override,
+            var(--ddd-theme-accent, var(--ddd-theme-bgContrast, white))
+          );
         }
 
         :host([hidden]) {
           display: none;
         }
-        
-        :host([light]){
-          --component-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
+
+        :host([light]) {
+          --component-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
           --component-border-color: var(--component-color);
-          --component-background-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))));
+          --component-background-color: var(
+            --lowContrast-override,
+            var(
+              --ddd-theme-accent,
+              var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+            )
+          );
         }
-        :host([light]:focus-within), 
+        :host([light]:focus-within),
         :host([light]) a:hover,
         :host([light]) a:active {
-          --component-color: var(--lowContrast-override, var(--ddd-theme-accent, var(--ddd-theme-bgContrast, white)));
+          --component-color: var(
+            --lowContrast-override,
+            var(--ddd-theme-accent, var(--ddd-theme-bgContrast, white))
+          );
           --component-border-color: var(--component-color);
-          --component-background-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
+          --component-background-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
         }
 
         :host([hotline]) .btn {
           text-transform: uppercase;
           font-style: italic;
-          font-weight: var(--ddd-font-primary-black);
+          font-weight: var(--ddd-font-weight-black);
         }
 
-        a, a:any-link, a:link, a:visited{
+        a,
+        a:any-link,
+        a:link,
+        a:visited {
           display: block;
           text-decoration: none;
           box-sizing: border-box;
@@ -99,9 +135,9 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
             0.75rem 0.75rem 0.75rem 1.5rem
           );
           transition: all 0.3s ease-in-out;
-          transition-delay: .1s;
+          transition-delay: 0.1s;
           background-color: var(--component-background-color, transparent);
-          font-weight: var(--ddd-font-primary-black);
+          font-weight: var(--ddd-font-weight-black);
         }
 
         .hideIcon {
@@ -124,15 +160,17 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
           );
         }
 
-        label{
-          font-weight: var(--ddd-font-primary-black);
+        label {
+          font-weight: var(--ddd-font-weight-black);
         }
 
-        :host([saturate]:hover) .btn, :host([saturate]:focus-within) .btn, :host([saturate]:active) .btn {
+        :host([saturate]:hover) .btn,
+        :host([saturate]:focus-within) .btn,
+        :host([saturate]:active) .btn {
           filter: saturate(200%);
         }
 
-        :host([data-primary="19"][data-accent="11"]) .btn, 
+        :host([data-primary="19"][data-accent="11"]) .btn,
         :host([data-primary="11"][data-accent="11"]) .btn {
           --ddd-theme-accent: black;
         }

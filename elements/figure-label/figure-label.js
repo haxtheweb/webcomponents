@@ -58,7 +58,7 @@ class FigureLabel extends DDD {
           );
           font-size: var(--ddd-font-size-4xs);
           padding: var(--ddd-spacing-3);
-          font-weight: var(--ddd-font-primary-bold);
+          font-weight: var(--ddd-font-weight-bold);
         }
 
         #description {
@@ -83,7 +83,7 @@ class FigureLabel extends DDD {
             --ddd-component-figure-label-background,
             var(--ddd-theme-default-white)
           );
-          font-weight: var(--ddd-font-primary-regular);
+          font-weight: var(--ddd-font-weight-regular);
         }
       `,
     ];

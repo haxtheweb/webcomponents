@@ -1160,7 +1160,7 @@ export const DDDDataAttributes = [
       --ddd-theme-accent: var(--ddd-accent-14);
     }
 
-    [data-primary="19"][data-accent="11"], 
+    [data-primary="19"][data-accent="11"],
     [data-primary="11"][data-accent="11"] {
       --lowContrast-override: black;
     }
@@ -4011,7 +4011,6 @@ export const DDDExtra = css`
 `;
 
 export const DDDPulseEffect = css`
-
   /* Apply primary color as pulse effect using CSS variable */
   :host([data-primary="0"]) {
     --ddd-animation-pulse-color: var(--ddd-primary-0-rgb);
@@ -4111,7 +4110,7 @@ export const DDDPulseEffect = css`
   }
 `;
 
-export const DDDAnimations = css`  
+export const DDDAnimations = css`
   @keyframes pulse {
     0% {
       box-shadow: 0 0 0 0 rgba(var(--ddd-animation-pulse-color));

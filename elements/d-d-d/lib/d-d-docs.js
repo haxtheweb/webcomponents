@@ -175,21 +175,21 @@ class DDDocs extends DDD {
           margin: var(--ddd-spacing-4) 0;
         }
 
-        .buttonContainer{
+        .buttonContainer {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           width: 60%;
           gap: 10px;
           border: 1px solid var(--ddd-theme-default-limestoneLight);
-          padding: 10px;          
+          padding: 10px;
         }
-        .buttonContainer:first-of-type{
+        .buttonContainer:first-of-type {
           border-bottom: none;
         }
-        .buttonContainer:not(:first-of-type){
+        .buttonContainer:not(:first-of-type) {
           border-top: none;
         }
-        .buttonContainer:not(:last-of-type){
+        .buttonContainer:not(:last-of-type) {
           border-bottom: none;
         }
       `,
@@ -198,32 +198,40 @@ class DDDocs extends DDD {
 
   renderDataAttributes() {
     return html`${Object.keys(ApplicationAttributeData).map(
-      (key) => html`
-        <h2>${key}</h2>
-        <div>
-          ${Object.keys(ApplicationAttributeData[key]).map(
-            (key2) => html`
-              <d-d-d-sample type="${key}" option="${key2}"
-                ><em style="margin-left:12px;"
-                  >data-${key}="${key2}"</em
-                ></d-d-d-sample
-              >
-            `,
-          )}
-        </div>
-      `,
-    )}
-    <h5 style="margin-top: 64px;">Note: Pointer events are disabled so the pulsing will not self-remove on hover</h5>
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 32px 64px 64px; row-gap: 32px; pointer-events: none;">
-      ${Object.keys(ApplicationAttributeData.primary).map(
         (key) => html`
-            <simple-cta data-primary="${key}" data-pulse>Primary-${key}</simple-cta>
-            <simple-cta data-primary="${key}" data-pulse light>Primary-${key}</simple-cta>
+          <h2>${key}</h2>
+          <div>
+            ${Object.keys(ApplicationAttributeData[key]).map(
+              (key2) => html`
+                <d-d-d-sample type="${key}" option="${key2}"
+                  ><em style="margin-left:12px;"
+                    >data-${key}="${key2}"</em
+                  ></d-d-d-sample
+                >
+              `,
+            )}
+          </div>
         `,
       )}
-    </div>
-    `;
-  } 
+      <h5 style="margin-top: 64px;">
+        Note: Pointer events are disabled so the pulsing will not self-remove on
+        hover
+      </h5>
+      <div
+        style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 32px 64px 64px; row-gap: 32px; pointer-events: none;"
+      >
+        ${Object.keys(ApplicationAttributeData.primary).map(
+          (key) => html`
+            <simple-cta data-primary="${key}" data-pulse
+              >Primary-${key}</simple-cta
+            >
+            <simple-cta data-primary="${key}" data-pulse light
+              >Primary-${key}</simple-cta
+            >
+          `,
+        )}
+      </div> `;
+  }
 
   renderHeaderSample() {
     let headers = [];
@@ -1670,18 +1678,26 @@ class DDDocs extends DDD {
     for (let i = 0; i < 22; i++) {
       let random = Math.floor(Math.random() * 14);
       headers.push(html`
-        <div class="grid-3 " >
+        <div class="grid-3 ">
           <simple-cta data-primary="${i}">Primary-${i}</simple-cta>
           <simple-cta data-primary="${i}" light>Primary-${i} Light</simple-cta>
-          <simple-cta data-primary="${i}" Hotline>Primary-${i} Hotline</simple-cta>
+          <simple-cta data-primary="${i}" Hotline
+            >Primary-${i} Hotline</simple-cta
+          >
           <simple-cta data-primary="${i}" large>Primary-${i} large</simple-cta>
-          <simple-cta data-primary="${i}" hide-icon>Primary-${i} hide-icon</simple-cta>
-          <simple-cta data-primary="${i}" saturate>Primary-${i} saturate</simple-cta>
+          <simple-cta data-primary="${i}" hide-icon
+            >Primary-${i} hide-icon</simple-cta
+          >
+          <simple-cta data-primary="${i}" saturate
+            >Primary-${i} saturate</simple-cta
+          >
         </div>
       `);
     }
     headers.push(html`
-      <div style="display: inline-flex; width: fit-content; align-items: center;">
+      <div
+        style="display: inline-flex; width: fit-content; align-items: center;"
+      >
         <simple-cta>Default</simple-cta>
         <simple-cta light>Default Light</simple-cta>
         <simple-cta Hotline>Default Hotline</simple-cta>
@@ -1690,18 +1706,37 @@ class DDDocs extends DDD {
         <simple-cta light saturate>Default saturate</simple-cta>
       </div>
       <h3>Buttons also support data-accent!</h3>
-      <div style="display: inline-flex; width: fit-content; align-items: center;">
-        <simple-cta data-primary="11" data-accent="7" light>Accent-7</simple-cta>
+      <div
+        style="display: inline-flex; width: fit-content; align-items: center;"
+      >
+        <simple-cta data-primary="11" data-accent="7" light
+          >Accent-7</simple-cta
+        >
         <simple-cta data-primary="1" data-accent="9" light>Accent-9</simple-cta>
-        <simple-cta data-primary="1" data-accent="14" light>Accent-14</simple-cta>
-        <simple-cta data-primary="19" data-accent="10" light>Accent-10</simple-cta>
-        <simple-cta data-primary="19" data-accent="13" light>Accent-13</simple-cta>
+        <simple-cta data-primary="1" data-accent="14" light
+          >Accent-14</simple-cta
+        >
+        <simple-cta data-primary="19" data-accent="10" light
+          >Accent-10</simple-cta
+        >
+        <simple-cta data-primary="19" data-accent="13" light
+          >Accent-13</simple-cta
+        >
       </div>
-      <h5>Note: Accent color will not be applied if the primary color does not meet constrast requirements</h5>
-      <div style="display: inline-flex; width: fit-content; align-items: center; margin-bottom: 64px;">
-        <simple-cta data-primary="15" data-accent="10" light>Accent-10</simple-cta>
+      <h5>
+        Note: Accent color will not be applied if the primary color does not
+        meet constrast requirements
+      </h5>
+      <div
+        style="display: inline-flex; width: fit-content; align-items: center; margin-bottom: 64px;"
+      >
+        <simple-cta data-primary="15" data-accent="10" light
+          >Accent-10</simple-cta
+        >
         <simple-cta data-primary="8" data-accent="7" light>Accent-7</simple-cta>
-        <simple-cta data-primary="11" data-accent="11" light>Accent-11</simple-cta>
+        <simple-cta data-primary="11" data-accent="11" light
+          >Accent-11</simple-cta
+        >
       </div>
     `);
     return headers;

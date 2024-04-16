@@ -613,7 +613,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         usAction.type === null &&
         store.cmsSiteEditor.haxCmsSiteEditorUIElement
       ) {
-        const editbtn = store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector("#editbutton");
+        const editbtn =
+          store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector(
+            "#editbutton",
+          );
         editbtn.dataPulse = "1";
       }
       // try to evaluate typing in merlin
