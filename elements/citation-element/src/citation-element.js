@@ -42,7 +42,7 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
 
         a {
           color: var(--ddd-theme-default-link);
-          font-weight: var(--ddd-font-primary-bold);
+          font-weight: var(--ddd-font-weight-bold);
         }
       `,
     ];

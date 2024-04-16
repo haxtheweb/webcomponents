@@ -1195,12 +1195,12 @@ class DDDocs extends DDD {
           >
         </p>
         <p class="mb-10">
-          Weights: 400 (fw-1) [--ddd-font-primary-regular],
-          <span class="fw-2">500 (fw-2) [--ddd-font-primary-medium],</span>
+          Weights: 400 (fw-1) [--ddd-font-weight-regular],
+          <span class="fw-2">500 (fw-2) [--ddd-font-weight-medium],</span>
           <span class="fw-3"
-            ><< Default >> 700 (fw-3) [--ddd-font-primary-bold],</span
+            ><< Default >> 700 (fw-3) [--ddd-font-weight-bold],</span
           >
-          <span class="fw-3">900 (fw-3) [--ddd-font-primary-black]</span>
+          <span class="fw-3">900 (fw-3) [--ddd-font-weight-black]</span>
         </p>
       </div>
       <div
@@ -1268,7 +1268,7 @@ class DDDocs extends DDD {
         </p>
         <p class="mb-10">
           Weights:
-          <span class="fw-3">700 (fw-3) [--ddd-font-secondary-bold]</span>
+          <span class="fw-3">700 (fw-3) [--ddd-font-weight-bold]</span>
         </p>
       </div>
       <div
@@ -1336,9 +1336,9 @@ class DDDocs extends DDD {
         </p>
         <p class="mb-10">
           Weights:
-          <span class="fw-0">300 (fw-0) [--ddd-font-navigation-light],</span>
-          <span class="fw-1">400 (fw-1) [--ddd-font-navigation-regular],</span>
-          <span class="fw-3">700 (fw-3) [--ddd-font-navigation-bold]</span>
+          <span class="fw-0">300 (fw-0) [--ddd-font-weight-light],</span>
+          <span class="fw-1">400 (fw-1) [--ddd-font-weight-regular],</span>
+          <span class="fw-3">700 (fw-3) [--ddd-font-weight-bold]</span>
         </p>
       </div>
       <div

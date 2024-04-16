@@ -624,7 +624,7 @@ class MediaImageCitation extends DDD {
           line-height: var(--ddd-lh-120);
           margin: var(--ddd-spacing-1) 0;
           font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-navigation-bold);
+          font-weight: var(--ddd-font-weight-bold);
           font-family: var(--ddd-font-navigation);
         }
       `,
@@ -658,7 +658,7 @@ class MediaImageCaption extends DDD {
           overflow: auto;
           margin-top: var(--ddd-spacing-1);
           font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-primary-regular);
+          font-weight: var(--ddd-font-weight-regular);
           font-family: var(--ddd-font-primary);
         }
 

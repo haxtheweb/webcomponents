@@ -90,7 +90,7 @@ class A11yCollapse extends DDD {
             );
           font-weight: var(
             --a11y-collapse-heading-font-weight,
-            var(--ddd-font-primary-bold)
+            var(--ddd-font-weight-bold)
           );
           margin: var(--a11y-collapse-margin);
           color: var(--a11y-collapse-heading-color);

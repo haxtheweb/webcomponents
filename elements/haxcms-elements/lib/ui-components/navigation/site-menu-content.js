@@ -84,7 +84,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
       css`
         span {
           font-family: var(--ddd-font-navigation);
-          font-weight: var(--ddd-font-navigation-bold);
+          font-weight: var(--ddd-font-weight-bold);
         }
         simple-icon-button-lite {
           color: inherit;

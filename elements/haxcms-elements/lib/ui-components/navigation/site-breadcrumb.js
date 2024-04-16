@@ -26,7 +26,7 @@ class SiteBreadcrumb extends DDD {
           display: block;
         }
         .breadcrumb {
-          font-weight: var(--ddd-font-navigation-light);
+          font-weight: var(--ddd-font-weight-light);
           margin: var(--site-breadcrumb-margin, var(--ddd-spacing-6) 0);
           padding: 0;
           pointer-events: auto;
@@ -39,7 +39,7 @@ class SiteBreadcrumb extends DDD {
         .breadcrumb li a {
           padding-left: var(--ddd-spacing-1);
           font-family: var(--ddd-font-navigation);
-          font-weight: var(--ddd-font-navigation-regular);
+          font-weight: var(--ddd-font-weight-regular);
           text-decoration: none;
           font-size: var(
             --site-breadcrumb-font-size,

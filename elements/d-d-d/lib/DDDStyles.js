@@ -487,9 +487,9 @@ export const ApplicationAttributeData = {
     "dropCap-xl": "Drop Cap - xl",
   },
   "font-family": {
-    primary: "Primary",
-    secondary: "Secondary",
-    navigation: "Navigation",
+    primary: "Roboto",
+    secondary: "Roboto Slab",
+    navigation: "Roboto Condensed",
   },
   "font-weight": {
     light: "Light",
@@ -546,9 +546,9 @@ export const instructionalStyles = Object.keys(learningComponentColors).map(
 */
 // fonts used
 export const DDDFonts = [
-  "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap",
-  "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap",
-  "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap",
+  "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap",
+  "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700;900&display=swap",
+  "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;700;900&display=swap",
 ];
 // CSS variables which is most of the system needed
 export const DDDVariables = css`
@@ -749,18 +749,8 @@ export const DDDVariables = css`
 
     /*fonts*/
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
-    --ddd-font-primary-regular: 400; /* default weight for body */
-    --ddd-font-primary-medium: 500;
-    --ddd-font-primary-bold: 700; /* default weight for headers */
-    --ddd-font-primary-black: 900;
-
     --ddd-font-secondary: "Roboto Slab", serif;
-    --ddd-font-secondary-bold: 700;
-
     --ddd-font-navigation: "Roboto Condensed", sans-serif; /* navigation font */
-    --ddd-font-navigation-light: 300;
-    --ddd-font-navigation-regular: 400;
-    --ddd-font-navigation-bold: 700;
 
     /* font weights - generalized */
     --ddd-font-weight-light: 300;
@@ -984,7 +974,7 @@ export const DDDVariables = css`
     scroll-behavior: smooth;
     font-family: var(--ddd-font-primary);
     font-size: var(--ddd-theme-body-font-size);
-    font-weight: var(--ddd-font-primary-regular);
+    font-weight: var(--ddd-font-weight-regular);
     letter-spacing: normal;
   }
 `;
@@ -1364,7 +1354,7 @@ export const DDDReset = css`
   h5,
   h6 {
     font-family: var(--ddd-font-primary);
-    font-weight: var(--ddd-font-primary-bold);
+    font-weight: var(--ddd-font-weight-bold);
     line-height: auto;
     letter-spacing: auto;
   }
@@ -1460,7 +1450,7 @@ export const DDDReset = css`
   /* heading presets */
   h1.type1 {
     font-size: var(--ddd-font-size-type1-s);
-    font-weight: var(--ddd-font-primary-black);
+    font-weight: var(--ddd-font-weight-black);
     display: flex;
     text-align: center;
     justify-content: center;
@@ -1500,7 +1490,7 @@ export const DDDReset = css`
   a:-webkit-any-link {
     line-break: auto;
     color: var(--ddd-theme-default-link);
-    font-weight: var(--ddd-font-primary-bold);
+    font-weight: var(--ddd-font-weight-bold);
     text-decoration: none;
     background-color: var(--ddd-theme-accent);
   }
@@ -1717,7 +1707,7 @@ export const DDDReset = css`
     text-transform: uppercase;
     initial-letter: var(--initialLetter);
     color: var(--ddd-theme-primary);
-    font-weight: var(--ddd-font-primary-bold);
+    font-weight: var(--ddd-font-weight-bold);
     margin-right: var(--ddd-spacing-3);
     padding: 0 var(--ddd-spacing-1);
     text-shadow:
@@ -1902,7 +1892,7 @@ export const DDDReset = css`
   summary {
     display: flex;
     font-size: var(--ddd-theme-h4-font-size);
-    font-weight: var(--ddd-font-primary-bold);
+    font-weight: var(--ddd-font-weight-bold);
     color: var(--ddd-theme-default-nittanyNavy);
     cursor: pointer;
     text-wrap: wrap;
@@ -1918,7 +1908,7 @@ export const DDDReset = css`
     margin-left: auto;
     text-align: right;
     color: var(--ddd-theme-default-link);
-    font-weight: var(--ddd-font-primary-regular);
+    font-weight: var(--ddd-font-weight-regular);
     font-size: var(--ddd-font-size-m);
     line-height: 1;
   }
@@ -1988,7 +1978,7 @@ export const DDDReset = css`
     font-size: var(--ddd-theme-body-font-size);
   }
   mark {
-    font-weight: var(--ddd-font-primary-medium);
+    font-weight: var(--ddd-font-weight-medium);
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     border-radius: var(--ddd-radius-xs);
     background-color: var(
@@ -2043,7 +2033,7 @@ export const DDDReset = css`
     color: var(--ddd-theme-font-color, var(--ddd-theme-default-white, #fff));
     background-color: var(--ddd-theme-default-info, rgba(175, 184, 193, 0.2));
     font-size: var(--ddd-theme-body-font-size);
-    font-weight: var(--ddd-font-primary-regular);
+    font-weight: var(--ddd-font-weight-regular);
     border-radius: var(--ddd-radius-xs);
   }
   div[slot="citation"] {
@@ -2062,7 +2052,7 @@ export const DDDReset = css`
     border: var(--ddd-border-xs);
     background-color: var(--ddd-theme-default-white);
     font-family: var(--ddd-font-primary);
-    font-weight: var(--ddd-font-primary-regular);
+    font-weight: var(--ddd-font-weight-regular);
     font-size: var(--ddd-theme-body-font-size);
     line-height: 150%;
     letter-spacing: normal;
@@ -3960,7 +3950,7 @@ export const DDDFontClasses = css`
   .ddd-font-navigation {
     font-family: var(--ddd-font-navigation);
     font-size: var(--ddd-theme-h4-font-size);
-    font-weight: var(--ddd-font-navigation-bold);
+    font-weight: var(--ddd-font-weight-bold);
   }
   .ddd-font-primary {
     font-family: var(--ddd-font-primary);
@@ -3973,7 +3963,7 @@ export const DDDFontClasses = css`
 /* Breadcrumb */
 export const DDDBreadcrumb = css`
   .breadcrumb {
-    font-weight: var(--ddd-font-navigation-light);
+    font-weight: var(--ddd-font-weight-light);
     margin: var(--ddd-spacing-6) 0;
     padding: 0;
     pointer-events: auto;
@@ -3985,7 +3975,7 @@ export const DDDBreadcrumb = css`
   }
   .breadcrumb li::marker {
     color: black;
-    font-weight: var(--ddd-font-primary-regular);
+    font-weight: var(--ddd-font-weight-regular);
   }
   .breadcrumb li:first-child {
     list-style: none;
@@ -3997,7 +3987,7 @@ export const DDDBreadcrumb = css`
   .breadcrumb li a {
     padding-left: var(--ddd-spacing-1);
     font-family: var(--ddd-font-navigation);
-    font-weight: var(--ddd-font-navigation-regular);
+    font-weight: var(--ddd-font-weight-regular);
     text-decoration: none;
   }
   .breadcrumb li a:hover {

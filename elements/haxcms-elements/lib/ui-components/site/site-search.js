@@ -46,7 +46,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           color: var(--site-search-result-color, #222222);
           padding: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-2) 0;
-          font-weight: var(--ddd-font-primary-regular);
+          font-weight: var(--ddd-font-weight-regular);
           transition: background-color 0.3s ease-in-out;
         }
 
@@ -66,7 +66,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         .result .title {
           font-size: var(--ddd-font-size-xs);
           margin: 0 0 var(--ddd-spacing-4) 0;
-          font-weight: var(--ddd-font-primary-medium);
+          font-weight: var(--ddd-font-weight-medium);
         }
         .result {
           color: var(--site-search-link-color, #444444);

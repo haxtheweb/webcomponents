@@ -118,7 +118,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           align-items: center;
           text-transform: uppercase;
           font-size: var(--ddd-font-size-ms);
-          font-weight: var(--ddd-font-primary-medium);
+          font-weight: var(--ddd-font-weight-medium);
           color: var(
             --ddd-component-self-check-title-color,
             var(

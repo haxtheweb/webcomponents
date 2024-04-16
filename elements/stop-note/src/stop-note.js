@@ -131,12 +131,12 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
           margin-top: auto;
           font-size: var(--ddd-font-size-s);
           width: 100%;
-          font-weight: var(--ddd-font-primary-bold);
+          font-weight: var(--ddd-font-weight-bold);
         }
 
         .secondary_message {
           width: 100%;
-          font-weight: var(--ddd-font-primary-regular);
+          font-weight: var(--ddd-font-weight-regular);
         }
 
         a:-webkit-any-link {

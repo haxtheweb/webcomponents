@@ -64,7 +64,7 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
         :host([hotline]) .btn {
           text-transform: uppercase;
           font-style: italic;
-          font-weight: var(--ddd-font-primary-black);
+          font-weight: var(--ddd-font-weight-black);
         }
 
         a, a:any-link, a:link, a:visited{
@@ -101,7 +101,7 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
           transition: all 0.3s ease-in-out;
           transition-delay: .1s;
           background-color: var(--component-background-color, transparent);
-          font-weight: var(--ddd-font-primary-black);
+          font-weight: var(--ddd-font-weight-black);
         }
 
         .hideIcon {
@@ -125,7 +125,7 @@ class SimpleCta extends DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavi
         }
 
         label{
-          font-weight: var(--ddd-font-primary-black);
+          font-weight: var(--ddd-font-weight-black);
         }
 
         :host([saturate]:hover) .btn, :host([saturate]:focus-within) .btn, :host([saturate]:active) .btn {

@@ -227,11 +227,11 @@ class LearningComponent extends I18NMixin(DDD) {
         .title {
           margin: var(--ddd-spacing-0);
           padding: var(--ddd-spacing-0);
-          font-weight: var(--ddd-font-primary-bold);
+          font-weight: var(--ddd-font-weight-bold);
           text-transform: uppercase;
         }
         .sub-title {
-          font-weight: var(--ddd-font-primary-regular);
+          font-weight: var(--ddd-font-weight-regular);
           text-transform: uppercase;
         }
         .icon {
