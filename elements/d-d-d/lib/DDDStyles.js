@@ -63,7 +63,6 @@ globalThis.addEventListener(
             inputMethod: "select",
             inputMethod: "radio",
             itemsList: [
-              { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("padding"),
             ],
           });
@@ -74,7 +73,6 @@ globalThis.addEventListener(
             inputMethod: "select",
             inputMethod: "radio",
             itemsList: [
-              { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("margin"),
             ],
           });
@@ -89,25 +87,45 @@ globalThis.addEventListener(
               attribute: "data-design-treatment",
               title: "Design treatment",
               description:
-                "Minor design treatment leveraging Primary color value",
+              "Minor aesthetic treatments for emphasis",
               inputMethod: "radio",
               itemsList: [
-                { value: "", text: "-- default --" },
                 ...HAXOptionSampleFactory("design-treatment").filter((item) =>
                   item && item.value.startsWith("dropCap") ? true : false,
                 ),
               ],
             });
+            /**
+             *  props.settings.configure.push({
+              attribute: "data-design-treatment",
+              title: "Design Treatment",
+              description:
+              "Minor design treatment leveraging Primary color value",
+              inputMethod: "fieldset",
+              collapsible: true,
+              collapsed: true,
+              properties: [
+                {
+                  attribute: "data-design-treatment",
+                  inputMethod: "radio",
+                  itemsList: [
+                    ...HAXOptionSampleFactory("design-treatment").filter((item) =>
+                      item && item.value.startsWith("dropCap") ? true : false,
+                    ),
+                  ],
+                }
+              ]
+            });
+             */
           } else if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
             // filter options to only NON-dropCap options
             props.settings.configure.push({
               attribute: "data-design-treatment",
               title: "Design treatment",
               description:
-                "Minor design treatment leveraging Primary color value",
+                "Minor aesthetic treatments for emphasis",
               inputMethod: "radio",
               itemsList: [
-                { value: "", text: "-- default --" },
                 ...HAXOptionSampleFactory("design-treatment").filter((item) =>
                   item && !item.value.startsWith("dropCap") ? true : false,
                 ),
@@ -116,11 +134,10 @@ globalThis.addEventListener(
             // headings can pick up instructional meaning
             props.settings.configure.push({
               attribute: "data-instructional-action",
-              title: "Instructional Type",
-              description: "Indicates instructional context to users visually",
+              title: "Instructional Context",
+              description: "Indicated to users visually",
               inputMethod: "radio",
               itemsList: [
-                { value: "", text: "-- default --" },
                 ...HAXOptionSampleFactory("instructional-action"),
               ],
             });
@@ -132,12 +149,10 @@ globalThis.addEventListener(
           props.settings.configure.push({
             attribute: "data-accent",
             title: "Accent color",
-            description: "Accent color to apply color for aesthetics",
+            description: "Offset items visually for aesthetic purposes",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [
-              { value: "", text: "-- default --" },
-              ...HAXOptionSampleFactory("accent"),
+            itemsList: [              ...HAXOptionSampleFactory("accent"),
             ],
           });
         }
@@ -170,7 +185,6 @@ globalThis.addEventListener(
               "Primary color to apply color, often for meaning or aesthetic",
             inputMethod: "radio",
             itemsList: [
-              { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("primary"),
             ],
           });
@@ -180,11 +194,9 @@ globalThis.addEventListener(
           props.settings.advanced.push({
             attribute: "data-font-family",
             title: "Font family",
-            description: "Font family to apply for aesthetics",
             inputMethod: "select",
             inputMethod: "radio",
             itemsList: [
-              { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("font-family"),
             ],
           });
@@ -193,11 +205,10 @@ globalThis.addEventListener(
             attribute: "data-font-weight",
             title: "Font weight",
             description:
-              "Font weight to apply, ensure it is only for aesthetics",
+              "Ensure it is only for aesthetic purposes",
             inputMethod: "select",
             inputMethod: "radio",
             itemsList: [
-              { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("font-weight"),
             ],
           });
@@ -205,11 +216,10 @@ globalThis.addEventListener(
           props.settings.advanced.push({
             attribute: "data-font-size",
             title: "Font size",
-            description: "Font size to apply, ensure it is only for aesthetics",
+            description: "Ensure sizing is only for aesthetic purposes",
             inputMethod: "select",
             inputMethod: "radio",
             itemsList: [
-              { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("font-size"),
             ],
           });
@@ -219,33 +229,30 @@ globalThis.addEventListener(
           props.settings.advanced.push({
             attribute: "data-border-radius",
             title: "Border radius",
-            description: "Border radius to apply for aesthetics",
+            description: "Border radius to apply",
             inputMethod: "select",
             inputMethod: "radio",
             itemsList: [
-              { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("border-radius"),
             ],
           });
           props.settings.advanced.push({
             attribute: "data-border",
             title: "Border",
-            description: "Border size to apply for aesthetics",
+            description: "Thickness of the border",
             inputMethod: "select",
             inputMethod: "radio",
             itemsList: [
-              { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("border"),
             ],
           });
           props.settings.advanced.push({
             attribute: "data-box-shadow",
             title: "Box shadow",
-            description: "Level of shadow to apply for aesthetics",
+            description: "Subtly raises off the page",
             inputMethod: "select",
             inputMethod: "radio",
             itemsList: [
-              { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("box-shadow"),
             ],
           });
@@ -437,36 +444,32 @@ export const ApplicationAttributeData = {
     14: "Alert Non Emergency",
   },
   margin: {
-    xs: "XS",
-    s: "S",
-    m: "M",
-    l: "L",
-    xl: "XL",
+    xs: "X-Small",
+    s: "Small",
+    m: "Medium",
+    l: "Large",
+    xl: "X-Large",
   },
   padding: {
-    xs: "XS",
-    s: "S",
-    m: "M",
-    l: "L",
-    xl: "XL",
+    xs: "X-Small",
+    s: "Small",
+    m: "Medium",
+    l: "Large",
+    xl: "X-Large",
   },
   border: {
-    xs: "XS",
-    sm: "S",
-    md: "M",
-    lg: "L",
+    xs: "X-Small",
+    sm: "Small",
+    md: "Medium",
+    lg: "Large",
   },
   "border-radius": {
-    xs: "XS",
-    sm: "S",
-    md: "M",
-    lg: "L",
-    xl: "XL",
+    xs: "X-Small",
+    md: "Medium",
+    xl: "X-Large",
   },
   "box-shadow": {
-    sm: "S",
-    md: "M",
-    lg: "L",
+    sm: "Drop shadow",
   },
   "design-treatment": {
     // heading treatments
@@ -480,11 +483,9 @@ export const ApplicationAttributeData = {
     horz: "Horizontal line",
     bg: "Background color",
     // text treatment
-    "dropCap-xs": "Drop Cap - xs",
-    "dropCap-sm": "Drop Cap - sm",
-    "dropCap-md": "Drop Cap - md",
-    "dropCap-lg": "Drop Cap - lg",
-    "dropCap-xl": "Drop Cap - xl",
+    "dropCap-sm": "Drop Cap - Small",
+    "dropCap-md": "Drop Cap - Medium",
+    "dropCap-lg": "Drop Cap - Large",
   },
   "font-family": {
     primary: "Roboto",
@@ -1574,6 +1575,21 @@ export const DDDReset = css`
   .h-invert {
     background-color: var(--ddd-theme-primary);
     color: var(--ddd-theme-bgContrast);
+  }
+
+  /** smooth transitions in hax when applying these design system attributes */
+  [data-hax-ray][data-design-treatment],
+  [data-hax-ray][data-accent],
+  [data-hax-ray][data-primary],
+  [data-hax-ray][data-padding],
+  [data-hax-ray][data-margin] {
+    transition: padding .3s ease-in-out,
+    margin .3s ease-in-out,
+    border .3s ease-in-out,
+    color .3s ease-in-out,
+    box-shadow .3s ease-in-out,
+    border-radius .3s ease-in-out,
+    background-color .3s ease-in-out;
   }
 
   [data-design-treatment="vert"] {
