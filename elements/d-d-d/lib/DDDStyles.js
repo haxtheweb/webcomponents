@@ -41,6 +41,7 @@ globalThis.addEventListener(
           inline = true;
         }
         // everything that allows for advacned should be able to apply spacing
+        // this stuff floats to the top of those options
         if (!props.hideDefaultSettings && !inline) {
           props.settings.advanced.push({
             attribute: "data-text-align",
@@ -78,6 +79,68 @@ globalThis.addEventListener(
             ],
           });
         }
+        // design treatments are rather open ended but should be high up for things that have them
+        if (
+          props.designSystem === true ||
+          props.designSystem.designTreatment === true
+        ) {
+          if (["p", "blockquote"].includes(tag)) {
+            props.settings.configure.push({
+              attribute: "data-design-treatment",
+              title: "Design treatment",
+              description:
+                "Minor design treatment leveraging Primary color value",
+              inputMethod: "radio",
+              itemsList: [
+                { value: "", text: "-- default --" },
+                ...HAXOptionSampleFactory("design-treatment").filter((item) =>
+                  item && item.value.startsWith("dropCap") ? true : false,
+                ),
+              ],
+            });
+          } else if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
+            // filter options to only NON-dropCap options
+            props.settings.configure.push({
+              attribute: "data-design-treatment",
+              title: "Design treatment",
+              description:
+                "Minor design treatment leveraging Primary color value",
+              inputMethod: "radio",
+              itemsList: [
+                { value: "", text: "-- default --" },
+                ...HAXOptionSampleFactory("design-treatment").filter((item) =>
+                  item && !item.value.startsWith("dropCap") ? true : false,
+                ),
+              ],
+            });
+            // headings can pick up instructional meaning
+            props.settings.configure.push({
+              attribute: "data-instructional-action",
+              title: "Instructional Type",
+              description: "Indicates instructional context to users visually",
+              inputMethod: "radio",
+              itemsList: [
+                { value: "", text: "-- default --" },
+                ...HAXOptionSampleFactory("instructional-action"),
+              ],
+            });
+          }
+        }
+        // block elements can get accents which effectively implies that they
+        // can get the other 'card' like configuration pieces
+        if (props.designSystem === true || props.designSystem.accent === true) {
+          props.settings.configure.push({
+            attribute: "data-accent",
+            title: "Accent color",
+            description: "Accent color to apply color for aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("accent"),
+            ],
+          });
+        }
         // things allowed to have primary
         /* if (
           [
@@ -109,22 +172,6 @@ globalThis.addEventListener(
             itemsList: [
               { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("primary"),
-            ],
-          });
-        }
-        // block elements can get accents which effectively implies that they
-        // can get the other 'card' like configuration pieces
-        if (props.designSystem === true || props.designSystem.accent === true) {
-          //        if (["p", "blockquote", "ol", "ul"].includes(tag)) {
-          props.settings.configure.push({
-            attribute: "data-accent",
-            title: "Accent color",
-            description: "Accent color to apply color for aesthetics",
-            inputMethod: "select",
-            inputMethod: "radio",
-            itemsList: [
-              { value: "", text: "-- default --" },
-              ...HAXOptionSampleFactory("accent"),
             ],
           });
         }
@@ -202,53 +249,6 @@ globalThis.addEventListener(
               ...HAXOptionSampleFactory("box-shadow"),
             ],
           });
-        }
-        // design treatments are rather open ended
-        if (
-          props.designSystem === true ||
-          props.designSystem.designTreatment === true
-        ) {
-          if (["p", "blockquote"].includes(tag)) {
-            props.settings.configure.push({
-              attribute: "data-design-treatment",
-              title: "Design treatment",
-              description:
-                "Minor design treatment leveraging Primary color value",
-              inputMethod: "radio",
-              itemsList: [
-                { value: "", text: "-- default --" },
-                ...HAXOptionSampleFactory("design-treatment").filter((item) =>
-                  item && item.value.startsWith("dropCap") ? true : false,
-                ),
-              ],
-            });
-          } else if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
-            // filter options to only NON-dropCap options
-            props.settings.configure.push({
-              attribute: "data-design-treatment",
-              title: "Design treatment",
-              description:
-                "Minor design treatment leveraging Primary color value",
-              inputMethod: "radio",
-              itemsList: [
-                { value: "", text: "-- default --" },
-                ...HAXOptionSampleFactory("design-treatment").filter((item) =>
-                  item && !item.value.startsWith("dropCap") ? true : false,
-                ),
-              ],
-            });
-            // headings can pick up instructional meaning
-            props.settings.configure.push({
-              attribute: "data-instructional-action",
-              title: "Instructional Type",
-              description: "Indicates instructional context to users visually",
-              inputMethod: "radio",
-              itemsList: [
-                { value: "", text: "-- default --" },
-                ...HAXOptionSampleFactory("instructional-action"),
-              ],
-            });
-          }
         }
         return props;
       };
