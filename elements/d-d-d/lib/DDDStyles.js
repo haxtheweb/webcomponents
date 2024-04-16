@@ -464,9 +464,9 @@ export const ApplicationAttributeData = {
     lg: "Large",
   },
   "border-radius": {
-    xs: "X-Small",
-    md: "Medium",
-    xl: "X-Large",
+    xs: "Rounded",
+    md: "Rounder",
+    xl: "Roundest",
   },
   "box-shadow": {
     sm: "Drop shadow",
@@ -511,10 +511,16 @@ export function HAXOptionSampleFactory(type) {
   return Object.keys(ApplicationAttributeData[type]).map((key) => {
     return {
       value: key,
-      html: html`<d-d-d-sample type="${type}" option="${key}"></d-d-d-sample>`,
+      html: ["primary","accent"].includes(type) ? html`<d-d-d-sample @click="${updatePreviewColorVar}" type="${type}" option="${key}"></d-d-d-sample>` : html`<d-d-d-sample type="${type}" option="${key}"></d-d-d-sample>`,
     };
   });
 }
+
+function updatePreviewColorVar(e) {
+  let target = e.target;
+  globalThis.document.body.style.setProperty(`--ddd-sample-theme-${target.type}`, `var(--ddd-${target.type}-${target.option})`);
+}
+
 
 // attributes need to be driven from a cannonical list
 // @note this may need ways of overriding it in the future but at least
@@ -1250,22 +1256,27 @@ export const DDDDataAttributes = [
       font-size: var(--ddd-font-size-type1-l);
     }
     /* padding spacing */
+    [data-design-treatment="bg"][data-padding="xs"],
     [data-accent][data-padding="xs"],
     [data-padding="xs"] {
       padding: var(--ddd-spacing-2);
     }
+    [data-design-treatment="bg"][data-padding="s"],
     [data-accent][data-padding="s"],
     [data-padding="s"] {
       padding: var(--ddd-spacing-4);
     }
+    [data-design-treatment="bg"][data-padding="m"],
     [data-accent][data-padding="m"],
     [data-padding="m"] {
       padding: var(--ddd-spacing-8);
     }
+    [data-design-treatment="bg"][data-padding="l"],
     [data-accent][data-padding="l"],
     [data-padding="l"] {
       padding: var(--ddd-spacing-12);
     }
+    [data-design-treatment="bg"][data-padding="xl"],
     [data-accent][data-padding="xl"],
     [data-padding="xl"] {
       padding: var(--ddd-spacing-16);

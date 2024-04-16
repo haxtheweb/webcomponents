@@ -41,9 +41,10 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host([type="border"]) .sample,
         :host([type="border-radius"]) .sample,
         :host([type="box-shadow"]) .sample {
-          --ddd-theme-primary: var(--ddd-primary-16);
-          background-color: var(--ddd-theme-primary);
-          border-color: black;
+          --ddd-theme-primary: var(--ddd-sample-theme-primary, black);
+          --ddd-theme-accent: var(--ddd-sample-theme-accent, var(--ddd-accent-3));
+          background-color: var(--ddd-theme-accent);
+          border-color: var(--ddd-theme-primary);
           height: var(--ddd-spacing-4);
           width: var(--ddd-spacing-8);
           display: inline-block;
@@ -56,7 +57,7 @@ export class DDDSample extends DDDSuper(LitElement) {
           border: var(--ddd-border-lg);
           height: var(--ddd-spacing-8);
           width: var(--ddd-spacing-8);
-          border-color: black;
+          border-color: var(--ddd-theme-primary);
           clip-path: polygon(50% 0, 0 50%, 0 0, 0 0);
           transform: scale(4);
           padding: 0;
@@ -65,7 +66,7 @@ export class DDDSample extends DDDSuper(LitElement) {
         }
         :host([type="box-shadow"]) .sample {
           border: var(--ddd-border-sm);
-          border-color: black;
+          border-color: var(--ddd-theme-primary);
           margin: 0 12px 12px 12px;
         }
 
@@ -119,11 +120,16 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host([type="design-treatment"]) .label {
           display: block;
           font-weight: bold;
-          --ddd-theme-primary: var(--ddd-primary-16);
+          --ddd-theme-primary: var(--ddd-sample-theme-primary, var(--ddd-primary-16));
           min-height: calc(
             (var(--initialLetter) / 3 * var(--ddd-theme-body-font-size) * 1.5) +
               20px
           );
+        }
+
+        /** TODO this needs to be set via some kind of similar ddd-samples global in order to work for the bg option */
+        :host([type="design-treatment"][option="bg"]) .label {
+          color: var(--ddd-theme-bgContrast);
         }
 
         :host([type="font-weight"]) .label,
