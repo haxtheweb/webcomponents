@@ -170,17 +170,6 @@ globalThis.addEventListener(
         // things that would give a card appearance
         if (props.designSystem === true || props.designSystem.card === true) {
           props.settings.advanced.push({
-            attribute: "data-border",
-            title: "Border",
-            description: "Border size to apply for aesthetics",
-            inputMethod: "select",
-            inputMethod: "radio",
-            itemsList: [
-              { value: "", text: "-- default --" },
-              ...HAXOptionSampleFactory("border"),
-            ],
-          });
-          props.settings.advanced.push({
             attribute: "data-border-radius",
             title: "Border radius",
             description: "Border radius to apply for aesthetics",
@@ -189,6 +178,17 @@ globalThis.addEventListener(
             itemsList: [
               { value: "", text: "-- default --" },
               ...HAXOptionSampleFactory("border-radius"),
+            ],
+          });
+          props.settings.advanced.push({
+            attribute: "data-border",
+            title: "Border",
+            description: "Border size to apply for aesthetics",
+            inputMethod: "select",
+            inputMethod: "radio",
+            itemsList: [
+              { value: "", text: "-- default --" },
+              ...HAXOptionSampleFactory("border"),
             ],
           });
           props.settings.advanced.push({
