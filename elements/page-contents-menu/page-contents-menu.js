@@ -248,7 +248,7 @@ class PageContentsMenu extends DDD {
       objItem = this.contentContainer.querySelector(
         "#" + this.items[parseInt(target.getAttribute("data-index"))].id,
       );
-      const isSafari = window.safari !== undefined;
+      const isSafari = globalThis.safari !== undefined;
       if (isSafari) {
         objItem.scrollIntoView();
       } else {
@@ -259,8 +259,8 @@ class PageContentsMenu extends DDD {
         });
       }
       // keep state in history
-      window.history.pushState({}, null, target.getAttribute("href"));
-      window.dispatchEvent(new PopStateEvent("popstate"));
+      globalThis.history.pushState({}, null, target.getAttribute("href"));
+      globalThis.dispatchEvent(new PopStateEvent("popstate"));
       // close menu
       this.hideSettings = true;
     }
@@ -364,25 +364,11 @@ class PageContentsMenu extends DDD {
     // only useful with mobile
     this.hideSettings = true;
     this.label = "Contents";
-    // so we can close the menu
-    window.addEventListener("click", this.checkMenuOpen.bind(this));
     // default to all hierarchy tags to obtain mini-menu
     // opens the door for us adding OTHER tags in the future
     this.hierarchyTags = ["h1", "h2", "h3", "h4", "h5", "h6"];
   }
 
-  checkMenuOpen(e) {
-    var target = normalizeEventPath(e)[0];
-    if (
-      this.mobile &&
-      !this.hideSettings &&
-      target.includes &&
-      !target.includes(this.__toggleTarget) &&
-      !target.includes(this.shadowRoot.querySelector("simple-popover"))
-    ) {
-      this.hideSettings = true;
-    }
-  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -610,7 +596,7 @@ class PageContentsMenu extends DDD {
     if (super.connectedCallback) {
       super.connectedCallback();
     }
-    window.addEventListener("scroll", this._applyScrollDetect.bind(this), {
+    globalThis.addEventListener("scroll", this._applyScrollDetect.bind(this), {
       signal: this.windowControllers.signal,
     });
   }

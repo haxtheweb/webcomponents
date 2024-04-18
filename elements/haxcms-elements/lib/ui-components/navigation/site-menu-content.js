@@ -57,11 +57,21 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
   }
 
   backToTop() {
-    this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    if (
+      this.contentContainer.HAXCMSThemeSettings.scrollTarget &&
+      this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollIntoView
+    ) {
+      const isSafari = globalThis.safari !== undefined;
+      if (isSafari) {
+        this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
+      } else {
+        this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollIntoView({
+          behavior: "instant",
+          block: "start",
+          inline: "nearest",
+        });
+      }
+    }
   }
   /**
    * wrap the base render function in a part that demonstrates edit mode

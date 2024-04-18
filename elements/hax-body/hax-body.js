@@ -4036,7 +4036,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       nextScrollY = Math.max(0, Math.min(maxScrollY, nextScrollY));
 
       if (nextScrollX !== currentScrollX || nextScrollY !== currentScrollY) {
-        window.scrollTo(nextScrollX, nextScrollY);
+        globalThis.scrollTo(nextScrollX, nextScrollY);
         return true;
       } else {
         return false;

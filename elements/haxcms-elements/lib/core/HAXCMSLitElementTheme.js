@@ -36,11 +36,16 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         this.HAXCMSThemeSettings.scrollTarget &&
         this.HAXCMSThemeSettings.scrollTarget.scrollIntoView
       ) {
-        this.HAXCMSThemeSettings.scrollTarget.scrollIntoView({
-          block: "start",
-          inline: "nearest",
-          behavior: "smooth",
-        });
+        const isSafari = globalThis.safari !== undefined;
+        if (isSafari) {
+          this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
+        } else {
+          this.HAXCMSThemeSettings.scrollTarget.scrollIntoView({
+            behavior: "instant",
+            block: "start",
+            inline: "nearest",
+          });
+        }
       }
       // delay bc this shouldn't block page load in any way
       setTimeout(() => {
@@ -99,7 +104,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       target.scrollIntoView();
     } else {
       target.scrollIntoView({
-        behavior: "smooth",
+        behavior: "instant",
         block: "start",
         inline: "nearest",
       });
@@ -224,7 +229,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
               target.scrollIntoView();
             } else {
               target.scrollIntoView({
-                behavior: "smooth",
+                behavior: "instant",
                 block: "start",
                 inline: "nearest",
               });
@@ -266,7 +271,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
                 target.scrollIntoView();
               } else {
                 target.scrollIntoView({
-                  behavior: "smooth",
+                  behavior: "instant",
                   block: "start",
                   inline: "nearest",
                 });
