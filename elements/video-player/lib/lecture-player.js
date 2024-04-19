@@ -33,8 +33,8 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   constructor() {
     super();
-    this.associatedNodes ={};
-
+    this.associatedNodes = new Object();
+    this.videoPlayer = this.querySelector("video-player").outerHTML;
     window.onload = () => {
       const flags = this.querySelectorAll("lecture-anchor");
       flags.forEach((flag) => {
@@ -45,9 +45,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       for (const [key, value] of Object.entries(this.associatedNodes)) {
         console.log(`${key}: ${value}`);
       }
-    }
-
-    this.videoPlayer = this.querySelector("video-player").outerHTML;
+    };
   }
 
   static get properties() {
@@ -55,6 +53,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       activeIndex: { type: String, reflect: true },
       source: { type: String, reflect: true },
       associatedNodes: { type: Object, reflect: true },
+      open: { type: Boolean, reflect: true },
     };
   }
 
@@ -284,11 +283,13 @@ class LecturePlayer extends DDDSuper(LitElement) {
     document.querySelector(".jumbotron").appendChild(endBtnDiv);
     document.querySelector(".endBtn").addEventListener("click", () => {
       document.querySelector("simple-modal").close();
+      this.open = false;
     });
     document.querySelector(".endBtn").scrollIntoView({ behavior: "smooth" });
   }
 
   showModal(event) {
+    let videoSectionColumns = "1fr 1fr";
     console.log("showModal");
     let c = document.createElement("div");
     c.classList.add("modal-content");
@@ -303,9 +304,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
       .modal-content{
         display: grid;
         grid-template-rows: 1.5fr auto;
-        width: calc(100% - 32px);
         height: fit-content;
-        gap: var(--ddd-spacing-4);
+        gap: var(--ddd-spacing-6);
+        padding: var(--ddd-spacing-4);
       }
 
       video-player{
@@ -315,9 +316,18 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
       .videoSection{
         display: grid;
-        grid-template-columns: 1.3fr 1fr;
+        grid-template-columns: 1fr 1fr;
         max-width: 100%;
         height: 68vh;
+        gap: var(--ddd-spacing-4);
+      }
+
+      .videoSection.small{
+        grid-template-columns: .7fr 1.3fr;
+      }
+
+      .videoSection.large{
+        grid-template-columns: 1.3fr .7fr;
       }
 
       .playlist{
@@ -386,7 +396,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
       #jumbotron-desc{
         padding: 8px;
-        width: calc(100% - 16px);
+        width: calc(100% - 32px);
       }
 
       .value-navigation-button{
@@ -427,13 +437,37 @@ class LecturePlayer extends DDDSuper(LitElement) {
         animation: none;
       }
 
+      .lecture-control.active, .lecture-control:focus, .lecture-control:hover, .lecture-control:active{
+        color: var(--ddd-theme-default-beaverBlue, black);
+      }
+
       .no-pointer-events{
         pointer-events: none;
       }
+      .lecture-mode-controls {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--ddd-spacing-3);
+        padding: var(--ddd-spacing-2);
+        top: var(--ddd-spacing-2);
+        right: var(--ddd-spacing-20);
+      }
+      .lecture-mode-controls simple-icon-button-lite {
+        cursor: pointer;
+        --simple-icon-height: var(--ddd-icon-xs);
+        --simple-icon-width: var(--ddd-icon-xs);
+      }
     </style>
-      <div class="videoSection">
+      <div class="videoSection normal">
           ${this.videoPlayer}
         <div class="jumbotron"></div>
+        <div class="lecture-mode-controls">
+        <simple-icon-button-lite class="lecture-control" id="lecture-size-small" icon="image:photo-size-select-large"></simple-icon-button-lite>
+        <simple-icon-button-lite class="lecture-control" id="lecture-size-normal" icon="image:switch-video"></simple-icon-button-lite>
+        <simple-icon-button-lite class="lecture-control" id="lecture-size-large" icon="image:photo-size-select-actual"></simple-icon-button-lite>
+      </div>
       </div>
       <div class="playlist">
         <button class="value-navigation-button" id="prevSlideBtn"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
@@ -450,14 +484,42 @@ class LecturePlayer extends DDDSuper(LitElement) {
         elements: { content: c },
       },
     });
+    this.open = true;
     dispatchEvent(evnt);
+    document.querySelector("#lecture-size-large").addEventListener("click", (e) => {
+      document.querySelectorAll(".lecture-control").forEach((control) => {
+        control.classList.remove("active");
+      });
+      e.target.classList.toggle("active");
+      document.querySelector(".videoSection").classList.add("large");
+      document.querySelector(".videoSection").classList.remove("small");
+      document.querySelector(".videoSection").classList.remove("normal");
+    });
+    document.querySelector("#lecture-size-normal").addEventListener("click", (e) => {
+      document.querySelectorAll(".lecture-control").forEach((control) => {
+        control.classList.remove("active");
+      });
+      e.target.classList.toggle("active");
+      document.querySelector(".videoSection").classList.add("normal");
+      document.querySelector(".videoSection").classList.remove("small");
+      document.querySelector(".videoSection").classList.remove("large");
+    });
+    document.querySelector("#lecture-size-small").addEventListener("click", (e) => {
+      document.querySelectorAll(".lecture-control").forEach((control) => {
+        control.classList.remove("active");
+      });
+      e.target.classList.toggle("active");
+      document.querySelector(".videoSection").classList.add("small");
+      document.querySelector(".videoSection").classList.remove("normal");
+      document.querySelector(".videoSection").classList.remove("large");
+    });
     this.scan();
   }
 
   render() {
     return html`
     <simple-cta id="lectureActivation" @click="${this.showModal}">Open Lecture Player</simple-cta>
-    <slot></slot>
+    ${!this.open ? html`<slot></slot>` : html``}
     `;
   }
 }
