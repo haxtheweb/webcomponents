@@ -102,7 +102,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
         }
         simple-icon-button-lite:focus,
         simple-icon-button-lite:hover {
-          color: var(--ddd-theme-default-link);
+          color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
         }
         .contents {
           max-height: 80vh;

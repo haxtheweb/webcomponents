@@ -75,7 +75,6 @@ class MapMenuItem extends I18NMixin(LitElement) {
           text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
           background-color: var(
             --map-menu-item-a-active-background-color,
-            var(--simple-colors-default-theme-light-grey-2, #dddddd)
           );
         }
         button {

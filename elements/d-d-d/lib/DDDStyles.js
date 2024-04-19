@@ -559,11 +559,13 @@ export const DDDFonts = [
 ];
 // CSS variables which is most of the system needed
 export const DDDVariables = css`
+:root {
+  color-scheme: light dark;
+}
   :root,
   html,
   body,
   :host {
-    color-scheme: light dark;
     /* base colors */
     --ddd-theme-default-beaverBlue: #1e407c;
     --ddd-theme-default-beaver70: rgba(30, 64, 124, 0.7);
@@ -984,6 +986,8 @@ export const DDDVariables = css`
     font-size: var(--ddd-theme-body-font-size);
     font-weight: var(--ddd-font-weight-regular);
     letter-spacing: normal;
+    --simple-modal-content-container-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+    --simple-modal-content-container-background: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
   }
   /* basic dark mode support */
   body:not(.dark-mode) {
@@ -1129,7 +1133,9 @@ export const DDDDataAttributes = [
     }
 
     /* accent color */
-
+    [data-accent] {
+      --ddd-theme-colorContrast: black;
+    }
     [data-accent="0"] {
       --ddd-theme-accent: var(--ddd-accent-0);
     }
@@ -1436,12 +1442,13 @@ export const DDDReset = css`
   }
   p {
     margin: var(--ddd-spacing-6) 0;
-  }
+  } 
   p[data-accent],
   blockquote[data-accent],
   ol[data-accent],
   ul[data-accent],
   div[data-accent] {
+    color: light-dark(currentcolor, var(--ddd-theme-colorContrast));
     border: var(--ddd-border-sm);
     border-color: var(--ddd-theme-primary);
     border-width: var(--ddd-theme-border-size);
@@ -1510,7 +1517,7 @@ export const DDDReset = css`
   a:any-link,
   a:-webkit-any-link {
     line-break: auto;
-    color: var(--ddd-theme-default-link);
+    color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
     font-weight: var(--ddd-font-weight-bold);
     text-decoration: none;
     background-color: var(--ddd-theme-accent);
@@ -1929,7 +1936,7 @@ export const DDDReset = css`
     display: flex;
     font-size: var(--ddd-theme-h4-font-size);
     font-weight: var(--ddd-font-weight-bold);
-    color: var(--ddd-theme-default-nittanyNavy);
+    color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
     cursor: pointer;
     text-wrap: wrap;
     align-items: center;
@@ -1943,7 +1950,7 @@ export const DDDReset = css`
     content: "+";
     margin-left: auto;
     text-align: right;
-    color: var(--ddd-theme-default-link);
+    color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
     font-weight: var(--ddd-font-weight-regular);
     font-size: var(--ddd-font-size-m);
     line-height: 1;
@@ -1959,7 +1966,7 @@ export const DDDReset = css`
     margin: var(--ddd-spacing-6) 0;
   }
   details[open] > summary {
-    color: var(--ddd-theme-default-link);
+    color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
   }
   details[open] > summary::after {
     content: "--";
@@ -4007,7 +4014,7 @@ export const DDDBreadcrumb = css`
     gap: var(--ddd-spacing-5);
     display: flex;
     flex-flow: row;
-    color: var(--ddd-theme-default-link);
+    color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
   }
   .breadcrumb li::marker {
     color: black;

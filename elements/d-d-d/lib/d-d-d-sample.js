@@ -25,7 +25,8 @@ export class DDDSample extends DDDSuper(LitElement) {
         }
         :host([type="accent"]:hover),
         :host([type="primary"]:hover) {
-          background-color: var(--ddd-theme-default-limestoneMaxLight);
+          color: black;
+          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-limestoneGray));
         }
 
         :host([type="accent"]) .sample,

@@ -32,7 +32,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
       css`
         :host {
           display: block;
-          color: var(--site-search-color, #383f45);
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
         [hidden] {
           display: none;
@@ -96,14 +96,6 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           margin-right: 4px;
           margin-bottom: 0;
           font-size: var(--ddd-font-size-xs);
-          --simple-fields-accent-color: var(
-            --site-search-text-color,
-            var(--ddd-theme-default-info, black)
-          );
-          color: var(
-            --site-search-text-color,
-            var(--ddd-theme-default-info, black)
-          );
         }
         .page-title-icon {
           --simple-icon-height: 32px;

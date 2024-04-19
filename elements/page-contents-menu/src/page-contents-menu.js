@@ -20,8 +20,8 @@ class PageContentsMenu extends DDD {
           display: block;
           font-family: var(--ddd-font-navigation);
           font-weight: var(--ddd-font-weight-light);
-          --page-contents-menu-link-color-focus: var(--ddd-theme-default-link);
-          --page-contents-menu-link: black;
+          --page-contents-menu-link-color-focus: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+          --page-contents-menu-link: light-dark(black, var(--ddd-accent-6));
           --page-contents-menu-link-font-size: var(--ddd-font-size-3xs);
           --page-contents-menu-link-font-size-active: var(--ddd-font-size-xxs);
           --page-contents-menu-link-font-size-focus: var(--ddd-font-size-3xs);
@@ -48,7 +48,6 @@ class PageContentsMenu extends DDD {
         }
         .header {
           display: flex;
-          color: var(--page-contents-menu-heading-color, black);
           padding: 0 24px 0 0;
           margin: 0 0 8px 0;
         }
@@ -141,12 +140,12 @@ class PageContentsMenu extends DDD {
         .link:active,
         .active {
           font-weight: bold;
-          border-left: black 3px solid;
+          border-left: var(--page-contents-menu-link, black) 3px solid;
           font-size: var(--page-contents-menu-link-font-size-active, 12px);
         }
         :host([mobile]) .link:active,
         :host([mobile]) .active {
-          border-left: black 2px solid;
+          border-left: var(--page-contents-menu-link, black) 2px solid;
         }
       `,
     ];
