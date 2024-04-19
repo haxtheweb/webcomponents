@@ -563,6 +563,7 @@ export const DDDVariables = css`
   html,
   body,
   :host {
+    color-scheme: light dark;
     /* base colors */
     --ddd-theme-default-beaverBlue: #1e407c;
     --ddd-theme-default-beaver70: rgba(30, 64, 124, 0.7);
@@ -983,6 +984,14 @@ export const DDDVariables = css`
     font-size: var(--ddd-theme-body-font-size);
     font-weight: var(--ddd-font-weight-regular);
     letter-spacing: normal;
+  }
+  /* basic dark mode support */
+  body:not(.dark-mode) {
+    color-scheme: only light;
+  }
+
+  body.dark-mode {
+    color-scheme: only dark;
   }
 `;
 /* Data Attributes used by HAX */
