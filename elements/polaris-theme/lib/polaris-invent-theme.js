@@ -534,7 +534,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             ${this.HAXCMSMobileMenu()}
           </div>
         </div>
-        <main>
+        <main id="main">
           <article id="contentcontainer">
             <site-active-title part="page-title"></site-active-title>
             <site-active-tags
@@ -691,7 +691,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
     // this way we can have blocks whos definitions only get
     // loaded in when we have a theme that intentionally
     // has been designed around them
-    this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
     this.imageAlt = "";
     this.image = "";
@@ -730,6 +729,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       this.__disposer.push(reaction);
     });
   }
+
   /**
    * Delay importing site-search until we click to open it directly
    */

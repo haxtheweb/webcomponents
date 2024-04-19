@@ -892,7 +892,6 @@ class CleanOne extends PrintBranchMixin(
   constructor() {
     super();
     this.searchTerm = "";
-    this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore
     import(
        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
@@ -927,13 +926,12 @@ class CleanOne extends PrintBranchMixin(
     // only way to hit this
     document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector("#body");
-    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+      this.shadowRoot.querySelector("main");
+    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
-
     // hook up the scroll target
     this.shadowRoot.querySelector("scroll-button").target =
-      this.shadowRoot.querySelector("#haxcms-theme-top");
+    this.shadowRoot.querySelector("main");
 
     const params = new URLSearchParams(store.currentRouterLocation.search);
     // if we have a search param already, set it to the field on open

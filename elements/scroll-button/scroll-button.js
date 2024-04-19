@@ -18,7 +18,7 @@ class ScrollButton extends LitElement {
     this.t = {
       backToTop: "Back to top",
     };
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           context: this,
@@ -144,11 +144,11 @@ class ScrollButton extends LitElement {
     if (this.target) {
       this.target.scrollIntoView({
         behavior: "smooth",
-        block: "end",
+        block: "start",
         inline: "nearest",
       });
     } else {
-      window.scrollTo({
+      globalThis.scrollTo({
         top: 0,
         left: 0,
         behavior: "smooth",

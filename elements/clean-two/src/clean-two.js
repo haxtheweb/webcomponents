@@ -562,8 +562,8 @@ class CleanTwo extends HAXCMSOperationButtons(
     }
     document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector(".body-wrapper");
-    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+      this.shadowRoot.querySelector("main");
+    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
     // shadow ready which means we should be able to open this even on a slow load
     // if we are the route in question

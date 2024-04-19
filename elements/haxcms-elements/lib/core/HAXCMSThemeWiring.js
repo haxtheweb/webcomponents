@@ -36,7 +36,7 @@ const HAXCMSTheme = function (SuperClass) {
         // should we scroll to the top when a new page
         // is selected
         autoScroll: false,
-        scrollTarget: window,
+        scrollTarget: globalThis,
       };
       this.__disposer = this.__disposer ? this.__disposer : [];
       this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);
@@ -144,18 +144,6 @@ const HAXCMSTheme = function (SuperClass) {
       // keep activeItemContent in sync globally
       autorun((reaction) => {
         this.activeItemContent = toJS(store.activeItemContent);
-        setTimeout(() => {
-          if (
-            this.HAXCMSThemeSettings.autoScroll &&
-            this.shadowRoot &&
-            this.HAXCMSThemeSettings.scrollTarget
-          ) {
-            this.HAXCMSThemeSettings.scrollTarget.scrollTo({
-              top: 0,
-              left: 0,
-            });
-          }
-        }, 10);
         this.__disposer.push(reaction);
       });
       // keep editMode in sync globally
