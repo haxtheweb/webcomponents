@@ -9,23 +9,20 @@ class LectureAnchor extends DDD {
   static get properties() {
     return {
       icon: { type: String, reflect: true },
-      header: { type: Boolean, reflect: true },
-      color: { type: String, reflect: true },
       timestamp: { type: Number, reflect: true },
-      text: { type: String, reflect: true },
-      headingText: { type: String, reflect: true },
       target: { type: String, reflect: true },
+      associatedID : { type: String, reflect: true },
     };
   }
 
   constructor() {
     super();
     this.icon = "icons:flag";
-    this.color = "var(--ddd-theme-default-original87Pink);";
     this.timestamp = 0;
-    this.text = "Lecture Anchor";
     this.jumbotronHeading = "";
     this.jumbotronContent = "";
+    this.target = "video-player";
+    this.associatedID = "";
   }
 
   static get styles() {
@@ -55,7 +52,7 @@ class LectureAnchor extends DDD {
 
   clickHandler(e) {
     console.log(e.type);
-    // @todo make sure that we can highlight concepts that are NOT connected to anything in the current page.
+    // @TODO: make sure that we can highlight concepts that are NOT connected to anything in the current page.
     // this could be a good way of reinforcing concepts or having a button that allows jumping to that concept (or loading the content of that concept short form in a tooltip like a definition)
     if (this._haxState && e.type === "click") {
       e.preventDefault();
@@ -81,7 +78,7 @@ class LectureAnchor extends DDD {
           case "lecture-player":
           case "video-player":
           case "audio-player":
-            if (this.value) {
+            if (this.timestamp) {
               node.seek(parseInt(this.timestamp));
             } else {
               node.play();
@@ -107,7 +104,7 @@ class LectureAnchor extends DDD {
     return html`
       <mark @click="${this.clickHandler}">
         <simple-icon-lite icon="${this.icon}" dir="ltr"></simple-icon-lite>
-        <span>${this.text}</span>
+        <slot></slot>
       </mark>
     `;
   }

@@ -10,6 +10,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/simple-cta/simple-cta.js";
 
 class LecturePlayer extends DDDSuper(LitElement) {
   static get styles() {
@@ -19,18 +20,6 @@ class LecturePlayer extends DDDSuper(LitElement) {
       css`
         :host {
           font-family: var(--ddd-font-primary, sans-serif);
-        }
-
-        #lectureActivation {
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-theme-body-font-size, 16px);
-          background: var(--ddd-theme-primary);
-          color: var(--ddd-theme-bgContrast, black);
-          cursor: pointer;
-          padding: var(--ddd-spacing-4);
-          height: fit-content;
-          margin: auto;
-          border-radius: var(--ddd-radius-sm);
         }
 
         @media (max-width: 1200px) {
@@ -44,13 +33,26 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   constructor() {
     super();
-    //implementation
+    this.associatedNodes ={};
+
+    window.onload = () => {
+      const flags = document.querySelectorAll("lecture-anchor");
+      flags.forEach((flag) => {
+        console.log(flag.associatedID);
+        this.associatedNodes[flag.timestamp] = flag.associatedID;
+      });
+      console.log(this.associatedNodes);
+      for (const [key, value] of Object.entries(this.associatedNodes)) {
+        console.log(`${key}: ${value}`);
+      }
+    }
   }
 
   static get properties() {
     return {
       activeIndex: { type: String, reflect: true },
       source: { type: String, reflect: true },
+      associatedNodes: { type: Object, reflect: true },
     };
   }
 
@@ -92,33 +94,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
   setJumbotronAttributes() {
     console.log("setJumbotronAttributes");
     document.querySelectorAll("lecture-anchor").forEach((anchor) => {
-      let parent = anchor.parentElement;
-      if (parent && parent.tagName.startsWith("H")) {
-        // Parent is a heading
-        anchor.setAttribute("jumbotronHeading", anchor.text);
-        let sibling = parent.nextElementSibling;
-        let content = "";
-        while (sibling && !sibling.tagName.startsWith("H")) {
-          content += sibling.outerHTML;
-          sibling = sibling.nextElementSibling;
-        }
-        anchor.setAttribute("jumbotronContent", content);
-      } else {
-        // parent is not a heading
-        let sibling = parent.previousElementSibling;
-        while (sibling && !sibling.tagName.startsWith("H")) {
-          sibling = sibling.previousElementSibling;
-        }
-        if (sibling) {
-          // Found a heading sibling
-          anchor.setAttribute("jumbotronHeading", sibling.textContent);
-        } else {
-          // No heading sibling found, use the text attribute
-          anchor.setAttribute("jumbotronHeading", anchor.getAttribute("text"));
-        }
-        anchor.setAttribute("jumbotronContent", parent.outerHTML);
-      }
-
+      let header = document.getElementById(anchor.getAttribute("associatedID"));
+      anchor.setAttribute("jumbotronHeading", header.textContent);
+      anchor.setAttribute("jumbotronContent", this.getNextSiblingHTML(header));
       // Scrub the ids from the lecture-anchor elements in the content
       let contentElement = document.createElement("div");
       contentElement.innerHTML = anchor.getAttribute("jumbotronContent");
@@ -130,6 +108,23 @@ class LecturePlayer extends DDDSuper(LitElement) {
     });
     this.addPrevNextListeners();
     this.updatePlaylist();
+  }
+
+  getNextSiblingHTML(element) {
+    let siblingHTML = '';
+    let nextSibling = element.nextSibling;
+    let stopIDs = Object.values(this.associatedNodes);
+  
+    while (nextSibling) {
+      if (nextSibling.id && stopIDs.includes(nextSibling.id)) {
+        break;
+      }
+  
+      siblingHTML += nextSibling.outerHTML || '';
+      nextSibling = nextSibling.nextSibling;
+    }
+  
+    return siblingHTML;
   }
 
   addPrevNextListeners() {
@@ -458,9 +453,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   render() {
     return html`
-      <button id="lectureActivation" @click="${this.showModal}">
-        Show Modal
-      </button>
+    <simple-cta id="lectureActivation" @click="${this.showModal}">Open Lecture Player</simple-cta>
     `;
   }
 }
