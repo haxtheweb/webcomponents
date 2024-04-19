@@ -107,6 +107,54 @@ class SiteActiveTags extends LitElement {
       this.__disposer.push(reaction);
     });
   }
+    /**
+   * LitElement life cycle - property changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "editMode" && oldValue !== undefined) {
+        if (this.editMode) {
+          // micro-task so slotted children are inhjected correctly
+          setTimeout(() => {
+            const haxStore = globalThis.HaxStore.requestAvailability();
+            this.activateController = new AbortController();
+            this.addEventListener(
+              "click",
+              (e) => {
+                haxStore.activeNode =
+                  haxStore.activeHaxBody.querySelector("page-break");
+              },
+              { signal: this.activateController.signal },
+            );
+            this._inProgressPageBreak = new MutationObserver((mutationList) => {
+              mutationList.forEach((mutation) => {
+                switch (mutation.type) {
+                  case "attributes":
+                    switch (mutation.attributeName) {
+                      case "tags":
+                        this.tags = haxStore.activeHaxBody.querySelector("page-break").tags;
+                      break;
+                    }
+                  break;
+                }
+              });
+            });
+            this._inProgressPageBreak.observe(
+              haxStore.activeHaxBody.querySelector("page-break"),
+              {
+                attributeFilter: ["tags"],
+                attributes: true,
+              },
+            );
+          }, 0);
+        } else {
+          this.noFallback = false;
+          this.activateController.abort();
+          this._inProgressPageBreak.disconnect();
+        }
+      }
+    });
+  }
   /**
    * HTMLElement
    */

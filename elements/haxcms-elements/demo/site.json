@@ -31,7 +31,7 @@
       }
     },
     "theme": {
-      "element": "clean-two",
+      "element": "polaris-invent-theme",
       "path": "@lrnwebcomponents/polaris-theme/lib/polaris-invent-theme.js",
       "name": "Polaris - Invent",
       "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",

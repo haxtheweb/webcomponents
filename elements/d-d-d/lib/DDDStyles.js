@@ -1981,15 +1981,13 @@ export const DDDReset = css`
     padding: 2px var(--ddd-spacing-1); /* breaking DDD spacing sys on purpose for code */
     margin: 0 var(--ddd-spacing-1);
     font-size: calc(var(--ddd-theme-body-font-size) - var(--ddd-spacing-1));
-    background-color: var(
-      --ddd-theme-default-limestoneLight,
-      rgba(175, 184, 193, 0.2)
-    );
+    background-color: var(--ddd-theme-code-background-color, light-dark(var(--ddd-theme-default-limestoneLight), black));
+    color: var(--ddd-theme-code-color, light-dark(black , var(--ddd-theme-default-limestoneLight)));
     line-height: 1;
     border-radius: var(--ddd-radius-xs);
     border: var(--ddd-border-md);
     border-style: groove;
-    border-color: var(--ddd-theme-default-limestoneMaxLight);
+    border-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), black);
     font-family: monospace;
     letter-spacing: var(--ddd-ls-16-lg);
     pointer-events: auto;
