@@ -36,16 +36,18 @@ class LecturePlayer extends DDDSuper(LitElement) {
     this.associatedNodes ={};
 
     window.onload = () => {
-      const flags = document.querySelectorAll("lecture-anchor");
+      const flags = this.querySelectorAll("lecture-anchor");
       flags.forEach((flag) => {
         console.log(flag.associatedID);
-        this.associatedNodes[flag.timestamp] = flag.associatedID;
+        this.associatedNodes[flag.value] = flag.associatedID;
       });
       console.log(this.associatedNodes);
       for (const [key, value] of Object.entries(this.associatedNodes)) {
         console.log(`${key}: ${value}`);
       }
     }
+
+    this.videoPlayer = this.querySelector("video-player").outerHTML;
   }
 
   static get properties() {
@@ -60,12 +62,12 @@ class LecturePlayer extends DDDSuper(LitElement) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "activeIndex") {
-        if (!document.querySelector("video-player").playing) {
+        if (!this.querySelector("video-player").playing) {
           this.play();
         }
         console.log("activeIndex changed to: ", this.activeIndex);
-        console.log(document.querySelector("#" + this.activeIndex));
-        this.seek(document.querySelector("#" + this.activeIndex).timestamp);
+        console.log(this.querySelector("#" + this.activeIndex));
+        this.seek(this.querySelector("#" + this.activeIndex).value);
         this.updateJumbotron();
         this.updatePlaylist();
         this.checkDisabledButtons();
@@ -74,12 +76,12 @@ class LecturePlayer extends DDDSuper(LitElement) {
   }
 
   scan() {
-    const lectureAnchors = document.querySelectorAll("lecture-anchor");
+    const lectureAnchors = this.querySelectorAll("lecture-anchor");
     console.log(lectureAnchors);
     const anchorsArray = Array.from(lectureAnchors);
     anchorsArray.sort((a, b) => {
-      const timeA = parseInt(a.getAttribute("timestamp"), 10);
-      const timeB = parseInt(b.getAttribute("timestamp"), 10);
+      const timeA = parseInt(a.getAttribute("value"), 10);
+      const timeB = parseInt(b.getAttribute("value"), 10);
       return timeA - timeB;
     });
     anchorsArray.forEach((anchor, index) => {
@@ -93,8 +95,8 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   setJumbotronAttributes() {
     console.log("setJumbotronAttributes");
-    document.querySelectorAll("lecture-anchor").forEach((anchor) => {
-      let header = document.getElementById(anchor.getAttribute("associatedID"));
+    this.querySelectorAll("lecture-anchor").forEach((anchor) => {
+      let header = this.querySelector(`#${anchor.getAttribute("associatedID")}`);
       anchor.setAttribute("jumbotronHeading", header.textContent);
       anchor.setAttribute("jumbotronContent", this.getNextSiblingHTML(header));
       // Scrub the ids from the lecture-anchor elements in the content
@@ -185,30 +187,30 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   updatePlaylist() {
     console.log("updatePlaylist");
-    const timestampList = document.querySelector(".timestampList");
-    timestampList.innerHTML = "";
+    const valueList = document.querySelector(".valueList");
+    valueList.innerHTML = "";
     const listOfAnchorElements = this.getSortedAnchors();
     listOfAnchorElements.forEach((anchor) => {
-      const timestampBtn = document.createElement("button");
-      timestampBtn.classList.add("timestampBtn");
-      timestampBtn.innerText = anchor.getAttribute("jumbotronHeading");
-      timestampBtn.timestamp = anchor.getAttribute("timestamp");
-      timestampBtn.addEventListener("click", () => {
+      const valueBtn = document.createElement("button");
+      valueBtn.classList.add("valueBtn");
+      valueBtn.innerText = anchor.getAttribute("jumbotronHeading");
+      valueBtn.value = anchor.getAttribute("value");
+      valueBtn.addEventListener("click", () => {
         this.activeIndex = anchor.id;
       });
       if (anchor.id === this.activeIndex) {
-        timestampBtn.classList.add("active");
+        valueBtn.classList.add("active");
       }
-      timestampList.appendChild(timestampBtn);
+      valueList.appendChild(valueBtn);
     });
-    document.querySelector(".timestampList").scrollTo({
-      left: document.querySelector(".timestampBtn.active").offsetLeft - 125,
+    document.querySelector(".valueList").scrollTo({
+      left: document.querySelector(".valueBtn.active").offsetLeft - 125,
       behavior: "smooth",
     });
   }
 
   getSortedAnchors() {
-    // Returns an array of all the lecture-anchor elements sorted by timestamp, to assing their IDs in order
+    // Returns an array of all the lecture-anchor elements sorted by value, to assing their IDs in order
     // May need to support the option for sorting by how the tags appear in the content order
     let anchors = [];
     let i = 1;
@@ -221,9 +223,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
     return anchors;
   }
 
-  seek(timestamp) {
+  seek(value) {
     console.log("seek");
-    console.log(timestamp);
+    console.log(value);
     console.log(
       document
         .querySelector("video-player")
@@ -237,7 +239,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       document
         .querySelector("video-player")
         .shadowRoot.querySelector("a11y-media-player")
-        .seek(timestamp);
+        .seek(value);
     }
   }
 
@@ -336,7 +338,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         word-break: break-word;
       }
 
-      .timestampList {
+      .valueList {
         display: flex; /* Use flexbox to layout items in a row */
         flex-wrap: nowrap; /* Prevent wrapping of items */
         border: var(--ddd-border-xs);
@@ -346,7 +348,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         overflow-y: hidden; /* Hide vertical overflow */
       }
       
-      .timestampBtn {
+      .valueBtn {
         flex-shrink: 0; /* Prevent buttons from shrinking */
         background: white;
         border: none;
@@ -362,7 +364,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         font-family: var(--ddd-font-primary, sans-serif);
       }
 
-      .timestampBtn:not(:last-child){
+      .valueBtn:not(:last-child){
         border-right: 1px solid black;
       }
 
@@ -387,7 +389,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         width: calc(100% - 16px);
       }
 
-      .timestamp-navigation-button{
+      .value-navigation-button{
         background: white;
         cursor: pointer;
         padding: 4px;
@@ -395,7 +397,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         margin: auto;
       }
       
-      .timestampBtn.active{
+      .valueBtn.active{
         background: #dfedf5;
       }
 
@@ -430,16 +432,17 @@ class LecturePlayer extends DDDSuper(LitElement) {
       }
     </style>
       <div class="videoSection">
-          <video-player source="${this.source}" source-type="${this.sourceType}"></video-player>
+          ${this.videoPlayer}
         <div class="jumbotron"></div>
       </div>
       <div class="playlist">
-        <button class="timestamp-navigation-button" id="prevSlideBtn"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
-        <div class="timestampList">
+        <button class="value-navigation-button" id="prevSlideBtn"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
+        <div class="valueList">
         </div>
-        <button class="timestamp-navigation-button" id="nextSlideBtn"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
+        <button class="value-navigation-button" id="nextSlideBtn"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
       </div>
     `;
+    this.querySelector("video-player").setAttribute("hidden", true);
     const evnt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: true,
@@ -454,6 +457,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
   render() {
     return html`
     <simple-cta id="lectureActivation" @click="${this.showModal}">Open Lecture Player</simple-cta>
+    <slot></slot>
     `;
   }
 }
