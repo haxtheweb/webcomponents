@@ -9,7 +9,7 @@ class LectureAnchor extends DDD {
   static get properties() {
     return {
       icon: { type: String, reflect: true },
-      timestamp: { type: Number, reflect: true },
+      value: { type: Number, reflect: true },
       target: { type: String, reflect: true },
       associatedID : { type: String, reflect: true },
     };
@@ -18,7 +18,7 @@ class LectureAnchor extends DDD {
   constructor() {
     super();
     this.icon = "icons:flag";
-    this.timestamp = 0;
+    this.value = 0;
     this.jumbotronHeading = "";
     this.jumbotronContent = "";
     this.target = "video-player";
@@ -78,8 +78,8 @@ class LectureAnchor extends DDD {
           case "lecture-player":
           case "video-player":
           case "audio-player":
-            if (this.timestamp) {
-              node.seek(parseInt(this.timestamp));
+            if (this.value) {
+              node.seek(parseInt(this.value));
             } else {
               node.play();
             }
@@ -113,8 +113,8 @@ class LectureAnchor extends DDD {
     return "video-player-flag";
   }
 
-  static get timestamp() {
-    return this.timestamp;
+  static get value() {
+    return this.value;
   }
 
   static get jumbotronHeading() {
