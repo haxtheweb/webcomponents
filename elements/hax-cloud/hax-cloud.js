@@ -4,13 +4,14 @@
  * @demo demo/index.html
  * @element hax-cloud
  */
-import { LitElement, html } from "lit";
+import { html } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { FileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-broker/file-system-broker.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js";
-class HaxCloud extends LitElement {
+class HaxCloud extends DDD {
   createRenderRoot() {
     return this;
   }
@@ -20,16 +21,10 @@ class HaxCloud extends LitElement {
   static get tag() {
     return "hax-cloud";
   }
-  static get properties() {
-    return {
-      step: { type: Number },
-    };
-  }
 
   constructor() {
     super();
     this.windowControllers = new AbortController();
-    this.step = 1;
     this.fileRoot = "";
     this.fileObjects = [];
     if (!window.__haxLogoFontLoaded) {
@@ -64,8 +59,8 @@ class HaxCloud extends LitElement {
           padding: 16px;
           margin: 0;
           --simple-icon-button-border-radius: 0;
-          --simple-icon-width: 200px;
-          --simple-icon-height: 200px;
+          --simple-icon-width: 100px;
+          --simple-icon-height: 100px;
         }
         simple-icon-button-lite::part(button) {
           font-size: 20px;
@@ -116,8 +111,8 @@ class HaxCloud extends LitElement {
           margin: 16px;
         }
         .name-icon {
-          --simple-icon-width: 64px;
-          --simple-icon-height: 64px;
+          --simple-icon-width: 100px;
+          --simple-icon-height: 100px;
           display: inline-flex;
           padding: 16px;
         }
@@ -148,7 +143,8 @@ class HaxCloud extends LitElement {
               <li>Click Download HAX site (if needed)</li>
               <li>Unzip folder where you manage files on your computer</li>
               <li>Click Select HAX site</li>
-              <li>Select a HAX site (what you just unzipped)</li>
+              <li>Select The HAX site that you just unzipped in Step 2</li>
+              <li>Start editing HAX pages on your local machine!!</li>
             </ol>
           </details>
           <div class="step">
@@ -160,9 +156,8 @@ class HaxCloud extends LitElement {
             >
           </div>
           <div class="step">
-            <h2>Step 2</h2>
+            <h2>Step 3</h2>
             <simple-icon-button-lite
-              ?disabled="${this.step < 1}"
               icon="folder-open"
               @click="${this.findLocalHaxCopy}"
               >Select HAX site</simple-icon-button-lite
@@ -174,7 +169,6 @@ class HaxCloud extends LitElement {
   }
 
   async downloadHAXLatest() {
-    this.step = 1;
     let a = document.createElement("a");
     a.href =
       "https://github.com/elmsln/hax-single-site/archive/refs/heads/main.zip";
@@ -183,27 +177,20 @@ class HaxCloud extends LitElement {
   }
 
   async findLocalHaxCopy() {
-    if (this.step > 0) {
-      const broker = FileSystemBrokerSingleton;
-      // this allows confirmation that all file objects in this directory are open for read and write
-      this.fileObjects = await broker.openDir(true, { mode: "readwrite" });
-      await this.fileObjects.forEach(async (fileRecord) => {
-        if (fileRecord.kind === "file" && fileRecord.name === "site.json") {
-          let file = await fileRecord.handle.getFile();
-          let manifest = JSON.parse(await file.text());
-          this.fileRoot = fileRecord.folder;
-          console.log(manifest);
-          if (manifest && manifest.items.length > 0) {
-            document.querySelector("haxcms-site-builder").manifest = manifest;
-          }
+    const broker = FileSystemBrokerSingleton;
+    // this allows confirmation that all file objects in this directory are open for read and write
+    this.fileObjects = await broker.openDir(true, { mode: "readwrite" });
+    await this.fileObjects.forEach(async (fileRecord) => {
+      if (fileRecord.kind === "file" && fileRecord.name === "site.json") {
+        let file = await fileRecord.handle.getFile();
+        let manifest = JSON.parse(await file.text());
+        this.fileRoot = fileRecord.folder;
+        console.log(manifest);
+        if (manifest && manifest.items.length > 0) {
+          document.querySelector("haxcms-site-builder").manifest = manifest;
         }
-      });
-      setTimeout(() => {
-        if (this.step === 1) {
-          alert("You must select a valid HAXcms site folder");
-        }
-      }, 10);
-    }
+      }
+    });
   }
 
   loadLocalHax() {
@@ -234,7 +221,6 @@ class HaxCloud extends LitElement {
         },
       },
     };
-    this.step = 2;
     // inject the file object / directory root into the user file system backend handler
     // this way we can intercept failed page requests and redirect them to the local file system
     // and keep all logic inside the userfs handler and remove this element
