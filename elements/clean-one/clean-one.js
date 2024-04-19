@@ -60,7 +60,8 @@ class CleanOne extends PrintBranchMixin(
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
-          background: white;
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          color: light-dark(black, var(--ddd-accent-6));
           --simple-tooltip-background: var(--ddd-theme-default-info);
           --simple-tooltip-text-color: var(--ddd-theme-default-infoLight);
           --simple-tooltip-opacity: 1;
