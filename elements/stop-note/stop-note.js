@@ -53,7 +53,6 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
             var(--ddd-theme-default-error)
           );
           margin: var(--ddd-spacing-5) 0;
-          color: var(--simple-colors-fixed-theme-accent-12);
         }
 
         simple-icon {
@@ -63,38 +62,38 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
 
         :host([icon="stopnoteicons:stop-icon"]) {
           --accent-color: var(--ddd-theme-default-original87Pink);
-          --background-color: var(--ddd-theme-default-errorLight);
+          --background-color: light-dark(var(--ddd-theme-default-errorLight), var(--ddd-theme-default-error));
         }
         :host([status="stop"]) {
           --accent-color: var(--ddd-theme-default-original87Pink);
-          --background-color: var(--ddd-theme-default-errorLight);
+          --background-color: light-dark(var(--ddd-theme-default-errorLight), var(--ddd-theme-default-error));
         }
 
         :host([icon="stopnoteicons:warning-icon"]) {
           --accent-color: var(--ddd-theme-default-keystoneYellow);
-          --background-color: var(--ddd-theme-default-warningLight);
+          --background-color: light-dark(var(--ddd-theme-default-warningLight), var(--ddd-theme-default-warning));
         }
         :host([status="warning"]) {
           --accent-color: var(--ddd-theme-default-keystoneYellow);
-          --background-color: var(--ddd-theme-default-warningLight);
+          --background-color: light-dark(var(--ddd-theme-default-warningLight), var(--ddd-theme-default-warning));
         }
 
         :host([icon="stopnoteicons:confirm-icon"]) {
-          --accent-color: var(--ddd-theme-default-success);
-          --background-color: var(--ddd-theme-default-successLight);
+          --accent-color: light-dark(var(--ddd-theme-default-success), var(--ddd-theme-default-opportunityGreen));
+          --background-color: light-dark(var(--ddd-theme-default-successLight), var(--ddd-theme-default-success));
         }
         :host([status="success"]) {
-          --accent-color: var(--ddd-theme-default-success);
-          --background-color: var(--ddd-theme-default-successLight);
+          --accent-color: light-dark(var(--ddd-theme-default-success), var(--ddd-theme-default-opportunityGreen));
+          --background-color: light-dark(var(--ddd-theme-default-successLight), var(--ddd-theme-default-success));
         }
 
         :host([icon="stopnoteicons:book-icon"]) {
-          --accent-color: var(--ddd-theme-default-info);
-          --background-color: var(--ddd-theme-default-infoLight);
+          --accent-color: light-dark(var(--ddd-theme-default-info), var(--ddd-theme-default-skyBlue));
+          --background-color: light-dark(var(--ddd-theme-default-infoLight), var(--ddd-theme-default-info));
         }
         :host([status="info"]) {
-          --accent-color: var(--ddd-theme-default-info);
-          --background-color: var(--ddd-theme-default-infoLight);
+          --accent-color: light-dark(var(--ddd-theme-default-info), var(--ddd-theme-default-skyBlue));
+          --background-color: light-dark(var(--ddd-theme-default-infoLight), var(--ddd-theme-default-info));
         }
 
         .container {
@@ -105,6 +104,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         .message_wrap {
           padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
           flex: 1 1 auto;
+          transition: background-color .3s ease-in-out;
           background-color: var(
             --ddd-component-stop-note-text-background,
             var(--background-color)
@@ -155,16 +155,13 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
           display: flex;
           align-items: center;
           justify-content: center;
+          transition: background-color .3s ease-in-out;
           background-color: var(
             --ddd-component-stop-note-icon-background,
             var(--accent-color)
           );
           padding: var(--ddd-spacing-2);
           width: auto;
-        }
-        .main_message,
-        .secondary_message ::slotted(*) {
-          color: black;
         }
 
         .mt-2 {

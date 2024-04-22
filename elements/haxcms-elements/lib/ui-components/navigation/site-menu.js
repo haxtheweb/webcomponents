@@ -22,8 +22,6 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       css`
         :host {
           display: block;
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
-          color: light-dark(black, var(--ddd-accent-6));
         }
         map-menu {
           padding: var(--site-menu-padding);

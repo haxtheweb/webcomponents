@@ -58,7 +58,8 @@ class CleanTwo extends HAXCMSOperationButtons(
         :host {
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
           display: block;
-          background-color: white;
+          color: light-dark(black, var(--ddd-accent-6));
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           --simple-tooltip-background: var(--ddd-theme-default-info);
           --simple-tooltip-opacity: 1;
           --simple-tooltip-text-color: var(--ddd-theme-default-infoLight);
@@ -97,7 +98,7 @@ class CleanTwo extends HAXCMSOperationButtons(
             #383f45
           );
           transition: all 0.3s ease-in-out;
-          color: black;
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           border: var(--ddd-border-sm);
           margin: 0;
           display: block;
@@ -112,7 +113,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           border-radius: 3px;
           flex-direction: row;
           text-decoration: none;
-          background-color: #ffffff;
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           -webkit-box-align: center;
           page-break-inside: avoid;
           -ms-grid-row-align: stretch;
@@ -127,10 +128,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin-left: -66px;
           padding: 0;
           --github-corner-size: 40px;
-          --site-git-corner-color: black;
+          --site-git-corner-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           --site-git-corner-background: transparent;
           background-color: transparent;
-          color: black;
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           padding: 8px;
           display: block;
           float: unset;
@@ -140,7 +141,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         .pdf-page-btn simple-icon-button-lite {
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
-          color: black;
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           padding: 8px;
           display: block;
           width: 36px;
@@ -173,7 +174,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           font-weight: var(--ddd-font-weight-regular);
         }
         simple-datetime {
-          color: black;
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
         site-menu-button div .bottom {
           font-size: var(--ddd-font-size-xxs);
@@ -185,8 +186,8 @@ class CleanTwo extends HAXCMSOperationButtons(
         site-menu-button:focus,
         site-menu-button:focus-within,
         site-menu-button:hover {
-          color: var(--ddd-theme-default-info);
-          background-color: var(--ddd-theme-default-infoLight);
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
         }
         site-menu-button[type="next"] div {
           text-align: left;
@@ -206,7 +207,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           -webkit-box-direction: normal;
           flex: auto;
           margin: 0;
-          background-color: white;
         }
         site-active-title h1 {
           margin: 0 0 var(--ddd-spacing-4) 0;
@@ -221,6 +221,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           width: 100%;
           margin: 0 auto;
           display: flex;
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           padding: 0;
           transition: margin-bottom 0.3s ease;
           align-items: stretch;
@@ -251,9 +252,9 @@ class CleanTwo extends HAXCMSOperationButtons(
           display: flex;
           z-index: 15;
           min-width: 332px;
-          background: #f5f7f9;
+          background: light-dark(var(--ddd-accent-6),var(--ddd-primary-4));
           align-items: stretch;
-          border-right: 1px solid #e6ecf1;
+          border-right: 1px solid light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           flex-direction: column;
           -webkit-box-align: stretch;
           -webkit-box-orient: vertical;
@@ -269,7 +270,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0;
           padding: 0;
           margin-left: -332px;
-          background-color: #f5f7f9;
           transition: margin 0.3s ease;
           height: fit-content;
         }
@@ -280,7 +280,6 @@ class CleanTwo extends HAXCMSOperationButtons(
             z-index: 15;
             width: 332px;
             align-items: stretch;
-            border-right: 1px solid #e6ecf1;
             flex-direction: column;
             -webkit-box-align: stretch;
             -webkit-box-orient: vertical;
@@ -288,12 +287,15 @@ class CleanTwo extends HAXCMSOperationButtons(
           }
         }
         site-menu {
-          --site-menu-color: #000000;
-          --site-menu-active-color: #e6ecf1;
-          --site-menu-item-active-item-color: var(
-            --ddd-theme-default-infoLight
-          );
+          --site-menu-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          --site-menu-active-color: light-dark(var(--ddd-accent-6),var(--ddd-primary-4));
+          --site-menu-item-active-item-color: light-dark(var(--ddd-accent-6),var(--ddd-primary-4))
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          color: light-dark(black, var(--ddd-accent-6));
+          --map-menu-item-a-active-background-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          --map-menu-item-a-active-color:  light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-light);
           --site-menu-font-size: var(--ddd-font-size-xs);
           overflow-y: auto;
           flex: 1 1 auto;
@@ -343,7 +345,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0;
           display: flex;
           padding: 0;
-          background-color: #ffffff;
           flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
@@ -359,15 +360,17 @@ class CleanTwo extends HAXCMSOperationButtons(
         .header #haxcmsmobilemenubutton {
           margin-left: -52px;
           padding: 4px;
-          color: black;
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
         }
         .header site-menu-content {
           display: inline-flex;
           float: right;
-          color: black;
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           margin-right: -52px;
+          --simple-popover-background-color: light-dark(var(--ddd-accent-6),var(--ddd-primary-4));
+          --page-contents-menu-link: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
         :host([responsive-size="xs"]) site-menu-content[mobile] {
           right: 24px;
@@ -386,7 +389,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           height: 32px;
           margin-right: 0px;
           display: block;
-          background-color: var(--hax-ui-background-color, #ffffff);
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
         }
         .content {
           flex: 1 1 auto;
@@ -493,7 +496,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0;
           display: flex;
           padding: 0;
-          background-color: #ffffff;
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           overflow: hidden;
           position: fixed;
           counter-reset: toc;
@@ -527,14 +530,13 @@ class CleanTwo extends HAXCMSOperationButtons(
           display: block;
           padding: 0;
           font-size: 12px;
-          color: #444444;
         }
         simple-icon-button,
         site-rss-button,
         replace-tag[with="site-rss-button"],
         replace-tag[with="site-print-button"],
         site-print-button {
-          color: black;
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
         site-rss-button,
         site-print-button,
@@ -548,6 +550,9 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         site-breadcrumb {
           --site-breadcrumb-margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-7);
+          color: light-dark(black, var(--ddd-accent-6));
+          --site-breadcrumb-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+          --site-breadcrumb-last-color: light-dark(black , var(--ddd-accent-6));
         }
         .search-modal-btn {
           margin-top: 16px;

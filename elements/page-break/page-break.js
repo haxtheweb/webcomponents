@@ -7,6 +7,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
@@ -35,7 +36,7 @@ export class PageBreak extends IntersectionObserverMixin(
     this.t = {
       newPage: "New page",
       pageBreak: "Page break",
-      pageDetails: "Page details",
+      selectToEditPageDetails: "Select to edit Page details",
       clickToUnlock: "Click to unlock",
       noParent: "No parent",
       toggleLock: "Toggle lock",
@@ -73,6 +74,7 @@ export class PageBreak extends IntersectionObserverMixin(
         this.title = this.target.innerText;
       }
     });
+    this.iconType = "editor:format-page-break";
     // default break type for the vast majority of situations
     this.breakType = "node";
   }
@@ -81,6 +83,7 @@ export class PageBreak extends IntersectionObserverMixin(
     let props = super.properties || {};
     return {
       ...props,
+      iconType: { type: String },
       noderefs: {
         type: Array,
         attribute: false,
@@ -361,23 +364,12 @@ export class PageBreak extends IntersectionObserverMixin(
       }
       // allow for haxcms page style association to allow users to edit the
       // current page's details
-      if (propName === "breakType" || propName === "t") {
-        var iconPath;
+      if (propName === "breakType") {
         if (this[propName] === "node") {
-          iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
-          this.shadowRoot.querySelector("style").innerHTML = `
-          :host([data-hax-ray]) .mid::before {
-            content: "${this.t.pageBreak}";
-          }`;
+          this.iconType = "editor:format-page-break";
         } else {
-          iconPath = SimpleIconsetStore.getIcon("hax:page-details");
-          this.shadowRoot.querySelector("style").innerHTML = `
-          :host([data-hax-ray]) .mid::before {
-            content: "${this.t.pageDetails}";
-          }`;
+          this.iconType = "hax:page-details";
         }
-        // set background of the tag itself to the icon based on mode
-        this.style.backgroundImage = `url("${iconPath}")`;
       }
     });
   }
@@ -388,22 +380,20 @@ export class PageBreak extends IntersectionObserverMixin(
         :host {
           display: block;
           opacity: 0;
-          height: var(--ddd-spacing-1);
         }
         :host([data-hax-ray]) {
           display: block;
-          margin: var(--ddd-spacing-5) 0;
-          padding: var(--ddd-spacing-5);
+          margin: 0 0 var(--ddd-spacing-1) 0;
           opacity: 0.2;
-          background-position: center;
-          background-repeat: no-repeat;
+          background-color: light-dark(black, white);
           transition:
             opacity 0.3s ease-in-out,
             visibility 0.3s ease-in-out;
         }
         .mid {
           border: none;
-          border-top: var(--ddd-border-sm);
+          border-top: var(--ddd-border-md);
+          border-color: var(--ddd-primary-0);
           overflow: visible;
           margin: var(--ddd-spacing-1) 0 0 0;
           padding: 0;
@@ -415,20 +405,19 @@ export class PageBreak extends IntersectionObserverMixin(
         :host([data-hax-active]) {
           opacity: 1;
         }
-        :host([data-hax-ray]) .mid::before {
+        .text {
           font-weight: bold;
-          color: #000000;
-          background-color: #ffffff;
+          color: light-dark(black, white);
+          background-color: light-dark(white, black);
           font-size: var(--ddd-font-size-4xs);
-          left: calc(50% - 3em);
-          top: calc(-1 * var(--ddd-spacing-2));
-          position: relative;
-          height: 0;
-          line-height: var(--ddd-spacing-9);
+          margin: 0 auto;
+        }
+        simple-icon-lite {
+          margin-right: var(--ddd-spacing-2);
         }
         simple-icon-button-lite {
           float: right;
-          color: #000000;
+          color: light-dark(black, white);
           --simple-icon-width: var(--ddd-icon-sm);
           --simple-icon-height: var(--ddd-icon-sm);
           margin-top: -28px;
@@ -461,6 +450,7 @@ export class PageBreak extends IntersectionObserverMixin(
         >${this.title}</a
       >
       <hr class="mid" />
+      <div class="text"><simple-icon-lite icon="${this.iconType}"></simple-icon-lite>${this.t.selectToEditPageDetails}</div>
       ${this.locked
         ? html`<simple-icon-button-lite
             @click="${this.haxClickLockInPage}"

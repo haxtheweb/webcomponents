@@ -54,7 +54,7 @@ class SiteBreadcrumb extends DDD {
           padding-left: 0;
         }
         .breadcrumb li:last-child a {
-          color: var(--site-breadcrumb-color, black);
+          color: var(--site-breadcrumb-last-color, black);
           pointer-events: none;
         }
       `,

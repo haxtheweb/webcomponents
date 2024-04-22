@@ -423,12 +423,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         attribute: "theme-loaded",
       },
       /**
-       * Active item which is in JSON Outline Schema
-       */
-      activeItem: {
-        type: Object,
-      },
-      /**
        * Active item content
        */
       activeItemContent: {
@@ -729,9 +723,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         this.__disposer.push(reaction);
       });
       autorun((reaction) => {
-        this.activeItem = toJS(store.activeItem);
-        if (this.activeItem && this.activeItem.location) {
-          this.activeItemLocation = this.activeItem.location;
+        const activeItem = toJS(store.activeItem);
+        if (activeItem && activeItem.location) {
+          this.activeItemLocation = activeItem.location;
         }
         this.__disposer.push(reaction);
       });

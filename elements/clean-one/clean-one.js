@@ -90,6 +90,8 @@ class CleanOne extends PrintBranchMixin(
           padding: 8px 4px;
         }
         site-menu {
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          color: light-dark(black, var(--ddd-accent-6));
           height: var(--clean-one-site-menu-height, calc(100vh - 60px));
           --site-menu-active-color: var(
             --haxcms-user-styles-color-theme-color-3
@@ -100,10 +102,8 @@ class CleanOne extends PrintBranchMixin(
           );
           --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
           --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
-          --map-menu-item-a-active-background-color: var(
-            --simple-colors-default-theme-grey-1,
-            rgba(200, 200, 200, 0.1)
-          );
+          --map-menu-item-a-active-background-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          --map-menu-item-a-active-color:  light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-xs);
         }
@@ -124,7 +124,7 @@ class CleanOne extends PrintBranchMixin(
         site-rss-button,
         site-print-button,
         site-git-corner {
-          color: var(--site-print-button-color, black);
+          color: light-dark(var(--site-print-button-color, black), var(--ddd-accent-6));
           --site-git-corner-background: var(
             --haxcms-user-styles-color-theme-color-1
           );
@@ -150,10 +150,7 @@ class CleanOne extends PrintBranchMixin(
             --haxcms-user-styles-color-theme-color-1
           );
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: var(
-            --ddd-theme-default-info,
-            #383f45
-          );
+          --site-menu-button-button-hover-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));          
           --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
           --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
           --site-menu-button-button-hover-background-color: var(
@@ -162,10 +159,9 @@ class CleanOne extends PrintBranchMixin(
         }
         scroll-button,
         site-breadcrumb {
-          color: var(--haxcms-user-styles-color-theme-color-1);
-          --site-breadcrumb-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
+          color: light-dark(black, var(--ddd-accent-6));
+          --site-breadcrumb-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+          --site-breadcrumb-last-color: light-dark(black , var(--ddd-accent-6));
         }
 
         * {
@@ -191,8 +187,8 @@ class CleanOne extends PrintBranchMixin(
           z-index: 1;
           overflow-y: hidden;
           width: 300px;
-          color: black;
-          background: var(--ddd-theme-default-shrineMaxLight);
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          color: light-dark(black, var(--ddd-accent-6));
           border-right: var(--ddd-border-xs);
           transition: left 0.3s ease;
         }
@@ -534,142 +530,8 @@ class CleanOne extends PrintBranchMixin(
           color: var(--haxcms-user-styles-color-theme-color-color);
           background: var(--haxcms-user-styles-color-theme-color-background);
         }
-        :host([color-theme="1"]) .site-header {
-          color: #afa790;
-          background: transparent;
-        }
-        :host([color-theme="1"]) .site-header .btn {
-          color: black;
-        }
-        :host([color-theme="1"]) .site-header .btn:hover,
-        :host([color-theme="1"]) .site-header .btn:focus,
-        :host([color-theme="1"]) .site-header .btn:active {
-          color: #704214;
-          background: none;
-        }
-        :host([color-theme="0"]) site-menu {
-          --map-menu-item-a-active-background-color: #4152a945;
-        }
-        :host([color-theme="1"]) site-menu {
-          --map-menu-item-a-active-color: white;
-          --map-menu-item-a-active-background-color: #70421445;
-          --site-menu-item-active-item-color: #70421410;
-          --map-menu-expanded-color-depth-1: rgba(200, 150, 100, 0.1);
-          --map-menu-expanded-color-depth-2: rgba(200, 150, 100, 0.15);
-          --map-menu-expanded-color-depth-3: rgba(200, 150, 100, 0.2);
-          --map-menu-expanded-color-depth-4: rgba(200, 150, 100, 0.25);
-        }
-        :host([color-theme="2"]) site-menu {
-          --map-menu-item-a-active-color: white;
-          --map-menu-item-a-active-background-color: rgba(0, 0, 250, 0.1);
-          --site-menu-item-active-item-color: rgba(0, 0, 250, 0.1);
-          --map-menu-expanded-color-depth-1: rgba(0, 0, 100, 0.15);
-          --map-menu-expanded-color-depth-2: rgba(0, 0, 100, 0.2);
-          --map-menu-expanded-color-depth-3: rgba(0, 0, 100, 0.25);
-          --map-menu-expanded-color-depth-4: rgba(0, 0, 100, 0.3);
-        }
-        :host([color-theme="1"]) site-active-title {
-          color: #704214;
-        }
-        :host([color-theme="2"]) .site-header {
-          color: #7e888b;
-          background: transparent;
-        }
-        :host([color-theme="2"]) .site-header .btn {
-          color: white;
-        }
-        :host([color-theme="2"]) .site-header .btn:hover,
-        :host([color-theme="2"]) .site-header .btn:focus,
-        :host([color-theme="2"]) .site-header .btn:active {
-          color: #fffff5;
-          background: none;
-        }
-        :host([color-theme="2"]) site-active-title {
-          color: #cfd4e3;
-        }
-        :host([color-theme="1"]) .site-body .navigation {
-          color: #afa790;
-        }
-        :host([color-theme="1"]) .site-body .navigation:hover,
-        :host([color-theme="1"]) .site-body .navigation:focus,
-        :host([color-theme="1"]) .site-body .navigation:active {
-          color: #eee8e0;
-        }
-        :host([color-theme="2"]) .site-body .navigation {
-          color: #383f52;
-        }
-        :host([color-theme="2"]) .site-body .navigation:hover,
-        :host([color-theme="2"]) .site-body .navigation:focus,
-        :host([color-theme="2"]) .site-body .navigation:active {
-          color: #fffff5;
-        }
-        :host([color-theme="2"]) #site-search-input {
-          color: #fffff5;
-          background-color: #383f52;
-        }
 
-        /*
-           * Theme 1
-           */
-        :host([color-theme="1"]) .menu-outline {
-          color: #afa790;
-          background: #111111;
-          border-right: 1px solid rgba(0, 0, 0, 0.07);
-        }
-        :host([color-theme="1"]) .menu-outline ul.summary li.divider {
-          background: #7e888b;
-          box-shadow: none;
-        }
-        :host([color-theme="1"]) .menu-outline ul.summary li.done > a {
-          color: #877f6a;
-        }
-        :host([color-theme="1"]) .menu-outline ul.summary li a,
-        :host([color-theme="1"]) .menu-outline ul.summary li span {
-          color: #877f6a;
-          background: transparent;
-          font-weight: normal;
-        }
-        :host([color-theme="1"]) .menu-outline ul.summary li.active > a,
-        :host([color-theme="1"]) .menu-outline ul.summary li a:hover,
-        :host([color-theme="1"]) .menu-outline ul.summary li a:focus,
-        :host([color-theme="1"]) .menu-outline ul.summary li a:active {
-          color: #704214;
-          background: transparent;
-          font-weight: normal;
-        }
-        :host([color-theme="1"]) #site-search-input {
-          color: #afa790;
-          background-color: #111111;
-        }
-        /*
-           * Theme 2
-           */
-        :host([color-theme="2"]) .menu-outline {
-          color: #bcc1d2;
-          background: #2d3143;
-          border-right: none;
-        }
-        :host([color-theme="2"]) .menu-outline ul.summary li.divider {
-          background: #272a3a;
-          box-shadow: none;
-        }
-        :host([color-theme="2"]) .menu-outline ul.summary li.done > a {
-          color: #62687f;
-        }
-        :host([color-theme="2"]) .menu-outline ul.summary li a,
-        :host([color-theme="2"]) .menu-outline ul.summary li span {
-          color: #c1c6d7;
-          background: transparent;
-          font-weight: 600;
-        }
-        :host([color-theme="2"]) .menu-outline ul.summary li.active > a,
-        :host([color-theme="2"]) .menu-outline ul.summary li a:hover,
-        :host([color-theme="2"]) .menu-outline ul.summary li a:focus,
-        :host([color-theme="2"]) .menu-outline ul.summary li a:active {
-          color: #f4f4f5;
-          background: #252737;
-          font-weight: 600;
-        }
+        
         button,
         select {
           text-transform: none;
@@ -695,7 +557,6 @@ class CleanOne extends PrintBranchMixin(
           padding: 6px;
           background: 0 0;
           transition: top 0.5s ease;
-          background: #fff;
           border-bottom: 1px solid rgba(0, 0, 0, 0.07);
           border-top: 1px solid rgba(0, 0, 0, 0.07);
           margin-bottom: 10px;
@@ -705,48 +566,8 @@ class CleanOne extends PrintBranchMixin(
           height: auto;
           width: auto;
           font-size: inherit;
-        }
-        :host([color-theme="0"]) #site-search-input {
-          color: #252737;
-        }
-        :host([color-theme="0"]) site-search {
-          color: #252737;
-          --site-search-result-background-color: transparent;
-          --site-search-result-background-color-hover: #f5f5f5;
-          --site-search-link-color-hover: #252737;
-          --site-search-link-text-color: #252737;
-          --site-search-link-color: #252737;
-          --site-search-result-color: #252737;
-        }
-        :host([color-theme="1"]) site-search {
-          color: #704214;
-          --site-search-result-background-color: transparent;
-          --site-search-result-background-color-hover: transparent;
-          --site-search-link-color-hover: #704214;
-          --site-search-link-text-color: #704214;
-          --site-search-link-color: #704214;
-          --site-search-result-color: #704214;
-        }
-        :host([color-theme="2"]) site-search {
-          color: var(--simple-colors-default-theme-light-blue-1, #cfd4e3);
-          --site-search-result-background-color: transparent;
-          --site-search-result-background-color-hover: transparent;
-          --site-search-link-color-hover: var(
-            --simple-colors-default-theme-light-blue-1,
-            #cfd4e3
-          );
-          --site-search-link-text-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            #cfd4e3
-          );
-          --site-search-link-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            #cfd4e3
-          );
-          --site-search-result-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            #cfd4e3
-          );
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          color: light-dark(black, var(--ddd-accent-6));
         }
       `,
     ];

@@ -100,8 +100,12 @@ class SiteActiveTitle extends LitElement {
                           this.ancestorTitle,
                         );
                         break;
+                      case "icon":
                       case "page-type":
-                        if (
+                        if (haxStore.activeHaxBody.querySelector("page-break").icon) {
+                          this.icon = haxStore.activeHaxBody.querySelector("page-break").icon;
+                        }
+                        else if (
                           haxStore.activeHaxBody.querySelector("page-break")
                             .pageType
                         ) {
@@ -121,7 +125,7 @@ class SiteActiveTitle extends LitElement {
             this._inProgressPageBreak.observe(
               haxStore.activeHaxBody.querySelector("page-break"),
               {
-                attributeFilter: ["title", "page-type"],
+                attributeFilter: ["title", "page-type", "icon"],
                 attributes: true,
               },
             );

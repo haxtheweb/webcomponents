@@ -166,10 +166,7 @@ class SimpleModal extends LitElement {
           padding: 0;
           padding: var(--simple-modal-buttons-padding, 0);
           margin: var(--ddd-spacing-2);
-          background-color: var(
-            --simple-modal-buttons-background,
-            --ddd-theme-default-limestoneLight
-          );
+          background-color: var(--simple-modal-buttons-background);
         }
 
         .buttons ::slotted(*) {
@@ -187,6 +184,7 @@ class SimpleModal extends LitElement {
           padding: 0;
         }
         web-dialog::part(dialog) {
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           min-height: var(--simple-modal-min-height, unset);
           min-width: var(--simple-modal-min-width, unset);
           z-index: var(--simple-modal-z-index, 1000);
@@ -219,7 +217,7 @@ class SimpleModal extends LitElement {
         }
 
         div.empty {
-          background-color: var(--ddd-theme-default-limestoneMaxLight);
+          background-color: transparent;
         }
       `,
     ];
