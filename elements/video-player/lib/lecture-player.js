@@ -17,6 +17,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
     return [
       super.styles,
       DDDDataAttributes,
+      DDDPulseEffect,
       css`
         :host {
           font-family: var(--ddd-font-primary, sans-serif);
@@ -47,7 +48,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       }
     });
      this.videoInterval = null;
-     this.activeIndex = 0;
+     this.activeIndex = null;
   }
 
   static get properties() {
@@ -62,46 +63,19 @@ class LecturePlayer extends DDDSuper(LitElement) {
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "activeIndex" && this.open === true) {
+      if (propName === "activeIndex" && oldValue !== this.activeIndex && this.activeIndex) {
+        if (!document.querySelector("video-player").playing) {
+          this.play;
+        }
+        console.log("activeIndex changed to: ", this.activeIndex);
+        console.log(document.querySelector("#" + this.activeIndex));
+        this.seek(this.querySelector("#" + this.activeIndex).value);
         this.updateJumbotron();
         this.updatePlaylist();
         this.checkDisabledButtons();
       }
-      if(propName === "open"){
-        if(this.open){
-          document.querySelector("video-player").addEventListener('a11y-player-playing', () => {
-            this.timeListener();
-          })
-        }
-        else{
-          clearInterval(this.videoInterval);
-        }
-      }
     });
   }
-
-  timeListener() {
-    if (this.videoInterval) {
-      clearInterval(this.videoInterval);
-      this.videoInterval = null;
-    }
-    this.videoInterval = setInterval(() => {
-      const currentTime = this.querySelector("video-player").currentTime;
-      const anchors = this.querySelectorAll("lecture-anchor");
-      let nextActiveIndex;
-      anchors.forEach((anchor) => {
-        if (currentTime >= anchor.value) {
-          nextActiveIndex = anchor.id;
-        }
-      });
-      // Update only if different to prevent unnecessary DOM manipulations
-      if (nextActiveIndex !== this.activeIndex) {
-        this.activeIndex = nextActiveIndex;
-      }
-    }, 1000);
-      
-  }
-
 
   scan() {
     const lectureAnchors = this.querySelectorAll("lecture-anchor");
@@ -115,7 +89,6 @@ class LecturePlayer extends DDDSuper(LitElement) {
     anchorsArray.forEach((anchor, index) => {
       anchor.id = `slide-${index + 1}`;
       anchor.addEventListener("click", () => {
-        console.log(anchor.id);
         this.activeIndex = anchor.id;
         this.seek(anchor.value);
         console.log(anchor.value);
@@ -225,12 +198,10 @@ class LecturePlayer extends DDDSuper(LitElement) {
       const valueBtn = document.createElement("button");
       valueBtn.classList.add("valueBtn");
       valueBtn.innerText = anchor.getAttribute("jumbotronHeading");
-      valueBtn.value = anchor.getAttribute("value");
+      valueBtn.setAttribute("value", anchor.value);
       valueBtn.addEventListener("click", () => {
-        console.log(anchor.id);
         this.activeIndex = anchor.id;
-        this.seek(anchor.value);
-        console.log(anchor.value);
+        this.seek(document.querySelector(`#${this.activeIndex}`).value);
       });
       if (anchor.id === this.activeIndex) {
         valueBtn.classList.add("active");
@@ -257,26 +228,29 @@ class LecturePlayer extends DDDSuper(LitElement) {
     return anchors;
   }
 
-  seek(value) {
-    console.log("seek");
-    this.play();
-    console.log(value);
-    console.log(
-      document
-        .querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player"),
-    );
-    document
-      .querySelector("video-player")
-      .shadowRoot.querySelector("a11y-media-player")
-      .seek(value);
+  seek(timestamp) {
+    if (document.querySelector('#lecture-player-video')) {
+      document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+    }
+    else{
+      this.querySelector("video-player").shadowRoot.querySelector("a11y-media-player").play();
+      this.querySelector("video-player").shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+    }
   }
 
   play() {
-    document
+    console.log(document.querySelector("video-player").shadowRoot.querySelector("a11y-media-player"));
+    if(document.querySelector("video-player").shadowRoot.querySelector("a11y-media-player")){
+      document
       .querySelector("video-player")
       .shadowRoot.querySelector("a11y-media-player")
       .play();
+    }
+    else{
+      this.querySelector("video-player")
+      .shadowRoot.querySelector("a11y-media-player")
+      .play();
+    }
   }
 
   checkDisabledButtons() {
@@ -344,6 +318,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         max-width: 100%;
         height: 100%;
         gap: var(--ddd-spacing-4);
+        max-height: 68vh;
       }
 
       .videoSection.small{
@@ -353,6 +328,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       .videoSection.large{
         grid-template-columns: 1.3fr .7fr;
         height: 100%;
+        max-height: none;
       }
 
       .playlist{
@@ -445,23 +421,6 @@ class LecturePlayer extends DDDSuper(LitElement) {
         margin: 64px auto;
       }
 
-      .endBtn{
-        font-family: var(--ddd-font-primary, sans-serif);
-        font-size: var(--ddd-theme-body-font-size, 16px);
-        background: var(--ddd-theme-primary);
-        color: var(--ddd-theme-bgContrast, black);
-        cursor: pointer;
-        padding: var(--ddd-spacing-4);
-        height: fit-content;
-        margin: auto;
-        border-radius: var(--ddd-radius-sm);
-        box-shadow: none;
-      }
-
-      .endBtn:hover{
-        animation: none;
-      }
-
       .lecture-control.active, .lecture-control:focus, .lecture-control:hover, .lecture-control:active{
         color: var(--ddd-theme-default-beaverBlue, black);
       }
@@ -544,6 +503,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       document.querySelector(".videoSection").classList.remove("normal");
       document.querySelector(".videoSection").classList.remove("large");
     });
+    document.querySelector('simple-modal .modal-content .videoSection video-player').setAttribute('id', 'lecture-player-video');
     this.scan();
     window.addEventListener("simple-modal-closed", () => {
       this.querySelector("video-player").removeAttribute("hidden");
