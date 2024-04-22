@@ -2796,7 +2796,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
      * DEPRECATED: Fires when media plays
      * @event a11y-player-playing
      */
-    globalThis.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("a11y-player-playing", {
         bubbles: true,
         composed: true,
@@ -2836,7 +2836,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
      * Fires when media stops
      * @event stop
      */
-    globalThis.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("stop", {
         bubbles: true,
         composed: true,
@@ -2856,7 +2856,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
      * Fires when media retarts
      * @event restart
      */
-    globalThis.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("restart", {
         bubbles: true,
         composed: true,
@@ -2877,7 +2877,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
      * Fires when media moves backward
      * @event backward
      */
-    globalThis.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("backward", {
         bubbles: true,
         composed: true,
@@ -2898,7 +2898,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
      * Fires when media moves forward
      * @event forward
      */
-    globalThis.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("forward", {
         bubbles: true,
         composed: true,
@@ -2920,7 +2920,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
        * Fires when media seeks
        * @event seek
        */
-      globalThis.dispatchEvent(
+      this.dispatchEvent(
         new CustomEvent("seek", {
           bubbles: true,
           composed: true,
