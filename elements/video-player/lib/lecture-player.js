@@ -28,6 +28,10 @@ class LecturePlayer extends DDDSuper(LitElement) {
             grid-template-columns: 1fr;
           }
         }
+        lecture-player{
+          width: 100%;
+          height: 100%;
+        }
       `,
     ];
   }

@@ -561,6 +561,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.stickyCorner = "none";
     this.tracks = [];
     this.source = "";
+    this.stopRefresh = false;
     this.observer.observe(this, {
       childList: true,
       subtree: false,
@@ -691,6 +692,29 @@ class VideoPlayer extends IntersectionObserverMixin(
       }
     }
     return false;
+  }
+  connectedCallback(){
+    console.log(window.location);
+    if(this.id){
+      window.location.hash = this.id;
+    }
+    else{
+      return;
+    }
+    var url = new URL(window.location.href);
+    let hash = url.hash;
+    console.log(hash);
+    if (hash) {
+      var videoID = hash.substring(1);
+      if (videoID === this.id) {
+        this.scrollIntoView();
+        var timestamp = hash.split("--")[1];
+        console.log(timestamp);
+        if(timestamp !== undefined){
+          this.querySelector("a11y-media-player").seek(timestamp);
+        }
+      }
+    }
   }
 
   /**
