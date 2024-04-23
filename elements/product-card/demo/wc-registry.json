@@ -135,7 +135,6 @@
   "hax-app-search": "@lrnwebcomponents/hax-body/lib/hax-app-search.js",
   "hax-app": "@lrnwebcomponents/hax-body/lib/hax-app.js",
   "hax-autoloader": "@lrnwebcomponents/hax-body/lib/hax-autoloader.js",
-  "hax-blox-browser": "@lrnwebcomponents/hax-body/lib/hax-blox-browser.js",
   "hax-ce-context": "@lrnwebcomponents/hax-body/lib/hax-ce-context.js",
   "hax-context-item-menu": "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js",
   "hax-context-item-textop": "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js",
