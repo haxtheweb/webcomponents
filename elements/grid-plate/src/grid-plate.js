@@ -407,10 +407,6 @@ class GridPlate extends LitElement {
           "Layout",
           "content",
           "grid",
-          "column",
-          "row",
-          "responsive",
-          "gridplate",
         ],
         handles: [],
         meta: {
@@ -466,6 +462,11 @@ class GridPlate extends LitElement {
           "columns",
           "options",
           "responsive-width",
+          "responsive-size",
+          "breakpoint-sm",
+          "breakpoint-md",
+          "breakpoint-lg",
+          "breakpoint-xl",
         ],
       },
       demoSchema: [

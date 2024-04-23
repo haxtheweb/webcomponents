@@ -1699,17 +1699,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     content = content.replace(/\scontenteditable=\"false\"/g, "");
     content = content.replace(/\scontenteditable/g, "");
     content = content.replace(/\sdraggable/g, "");
-    // clean up stray hax-ray leftovers
-    content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
-    // hax-grid marker as well
-    content = content.replace(/\sdata-hax-grid/g, "");
-    // spacing niceness for output readability
-    content = content.replace(/&nbsp;/gm, " ");
     // target and remove hax specific things from output if they slipped through
-    content = content.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
-    content = content.replace(/ data-hax-active="(\s|.)*?"/gim, "");
+    content = content.replace(/\sdata-hax-ray="(\s|.)*?"/gim, "");
+    content = content.replace(/\sdata-hax-grid="(\s|.)*?"/gim, "");
+    // slips through with no value at times
+    content = content.replace(/\sdata-hax-layout="(\s|.)*?"/gim, "");
+    content = content.replace(/\sdata-hax-active="(\s|.)*?"/gim, "");
     content = content.replace(/ class=""/gim, "");
     content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
+    // spacing niceness for output readability
+    content = content.replace(/&nbsp;/gm, " ");
     // remove HAX specific classes / scoping classes
     if (this.parentNode.tagName) {
       let parentTag = this.parentNode.tagName.toLowerCase();
