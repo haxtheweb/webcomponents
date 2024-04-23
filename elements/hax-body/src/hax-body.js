@@ -2006,6 +2006,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           case "1-3":
           case "3-1":
           case "1-1":
+          case "1":
             // implies we are removing the grid plate
             let cloneEl;
             await node.childNodes.forEach((el) => {

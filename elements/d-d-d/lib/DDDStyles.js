@@ -1051,7 +1051,13 @@ export const DDDDataAttributes = [
         font-weight: var(--ddd-font-weight-regular);
         border-radius: var(--ddd-radius-xs);
         right: var(--ddd-spacing-4);
+        left: unset;
         margin-top: -16px;
+      }
+      [data-hax-ray][data-float-position="left"]:focus-within::after,
+      [data-hax-ray][data-float-position="left"]:hover::after {
+        left: var(--ddd-spacing-4);
+        right: unset;
       }
     }
 
