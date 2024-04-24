@@ -17,15 +17,20 @@ class LecturePlayer extends DDDSuper(LitElement) {
     return [
       super.styles,
       DDDDataAttributes,
+      DDDPulseEffect,
       css`
         :host {
           font-family: var(--ddd-font-primary, sans-serif);
         }
 
         @media (max-width: 1200px) {
-          :host {
+          .videoSection {
             grid-template-columns: 1fr;
           }
+        }
+        lecture-player{
+          width: 100%;
+          height: 100%;
         }
       `,
     ];
@@ -33,9 +38,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   constructor() {
     super();
-    this.associatedNodes ={};
-
-    window.onload = () => {
+    this.associatedNodes = new Object();
+    this.videoPlayer = this.querySelector("video-player").outerHTML;
+    window.addEventListener("DOMContentLoaded", () => {
       const flags = this.querySelectorAll("lecture-anchor");
       flags.forEach((flag) => {
         console.log(flag.associatedID);
@@ -45,9 +50,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
       for (const [key, value] of Object.entries(this.associatedNodes)) {
         console.log(`${key}: ${value}`);
       }
-    }
-
-    this.videoPlayer = this.querySelector("video-player").outerHTML;
+    });
+     this.videoInterval = null;
+     this.activeIndex = null;
   }
 
   static get properties() {
@@ -55,18 +60,19 @@ class LecturePlayer extends DDDSuper(LitElement) {
       activeIndex: { type: String, reflect: true },
       source: { type: String, reflect: true },
       associatedNodes: { type: Object, reflect: true },
+      open: { type: Boolean, reflect: true },
     };
   }
 
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "activeIndex") {
-        if (!this.querySelector("video-player").playing) {
-          this.play();
+      if (propName === "activeIndex" && oldValue !== this.activeIndex && this.activeIndex) {
+        if (!document.querySelector("video-player").playing) {
+          this.play;
         }
         console.log("activeIndex changed to: ", this.activeIndex);
-        console.log(this.querySelector("#" + this.activeIndex));
+        console.log(document.querySelector("#" + this.activeIndex));
         this.seek(this.querySelector("#" + this.activeIndex).value);
         this.updateJumbotron();
         this.updatePlaylist();
@@ -88,6 +94,8 @@ class LecturePlayer extends DDDSuper(LitElement) {
       anchor.id = `slide-${index + 1}`;
       anchor.addEventListener("click", () => {
         this.activeIndex = anchor.id;
+        this.seek(anchor.value);
+        console.log(anchor.value);
       });
     });
     this.setJumbotronAttributes();
@@ -194,9 +202,10 @@ class LecturePlayer extends DDDSuper(LitElement) {
       const valueBtn = document.createElement("button");
       valueBtn.classList.add("valueBtn");
       valueBtn.innerText = anchor.getAttribute("jumbotronHeading");
-      valueBtn.value = anchor.getAttribute("value");
+      valueBtn.setAttribute("value", anchor.value);
       valueBtn.addEventListener("click", () => {
         this.activeIndex = anchor.id;
+        this.seek(document.querySelector(`#${this.activeIndex}`).value);
       });
       if (anchor.id === this.activeIndex) {
         valueBtn.classList.add("active");
@@ -223,36 +232,38 @@ class LecturePlayer extends DDDSuper(LitElement) {
     return anchors;
   }
 
-  seek(value) {
-    console.log("seek");
-    console.log(value);
-    console.log(
-      document
-        .querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player"),
-    );
-    if (
-      document
-        .querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player")
-    ) {
-      document
-        .querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player")
-        .seek(value);
+  seek(timestamp) {
+    let lectureVideo = document.querySelector('#lecture-player-video');
+    if (lectureVideo) {
+      if(lectureVideo.hasAttribute('element-visible')){
+        document.querySelector('#lecture-player-video').shadowRoot.querySelector('a11y-media-player').play();
+        document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+      }
+      else{
+        setTimeout(() => {
+          document.querySelector('#lecture-player-video').shadowRoot.querySelector('a11y-media-player').play();
+          document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+        }, 1000);
+      }
+    }
+    else{
+      this.querySelector("video-player").shadowRoot.querySelector("a11y-media-player").play();
+      this.querySelector("video-player").shadowRoot.querySelector("a11y-media-player").seek(timestamp);
     }
   }
 
   play() {
-    if (
+    console.log(document.querySelector("video-player").shadowRoot.querySelector("a11y-media-player"));
+    if(document.querySelector("video-player").shadowRoot.querySelector("a11y-media-player")){
       document
-        .querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player")
-    ) {
-      document
-        .querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player")
-        .play();
+      .querySelector("video-player")
+      .shadowRoot.querySelector("a11y-media-player")
+      .play();
+    }
+    else{
+      this.querySelector("video-player")
+      .shadowRoot.querySelector("a11y-media-player")
+      .play();
     }
   }
 
@@ -272,10 +283,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   endVideo() {
     console.log("endVideo");
-    document
-      .querySelector("video-player")
-      .shadowRoot.querySelector("a11y-media-player")
-      .pause();
+    document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").pause();
     document.querySelector("#nextSlideBtn").setAttribute("disabled", "true");
     let endBtnDiv = document.createElement("div");
     endBtnDiv.setAttribute("data-primary", "11");
@@ -284,11 +292,14 @@ class LecturePlayer extends DDDSuper(LitElement) {
     document.querySelector(".jumbotron").appendChild(endBtnDiv);
     document.querySelector(".endBtn").addEventListener("click", () => {
       document.querySelector("simple-modal").close();
+      this.open = false;
     });
-    document.querySelector(".endBtn").scrollIntoView({ behavior: "smooth" });
+    let jumbotron = document.querySelector(".jumbotron");
+    jumbotron.scrollTop = jumbotron.scrollHeight + 500;
   }
 
   showModal(event) {
+    let videoSectionColumns = "1fr 1fr";
     console.log("showModal");
     let c = document.createElement("div");
     c.classList.add("modal-content");
@@ -303,9 +314,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
       .modal-content{
         display: grid;
         grid-template-rows: 1.5fr auto;
-        width: calc(100% - 32px);
         height: fit-content;
-        gap: var(--ddd-spacing-4);
+        gap: var(--ddd-spacing-6);
+        padding: var(--ddd-spacing-4);
       }
 
       video-player{
@@ -315,9 +326,21 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
       .videoSection{
         display: grid;
-        grid-template-columns: 1.3fr 1fr;
+        grid-template-columns: 1fr 1fr;
         max-width: 100%;
-        height: 68vh;
+        height: 100%;
+        gap: var(--ddd-spacing-4);
+        max-height: 68vh;
+      }
+
+      .videoSection.small{
+        grid-template-columns: .7fr 1.3fr;
+      }
+
+      .videoSection.large{
+        grid-template-columns: 1.3fr .7fr;
+        height: 100%;
+        max-height: none;
       }
 
       .playlist{
@@ -386,7 +409,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
       #jumbotron-desc{
         padding: 8px;
-        width: calc(100% - 16px);
+        width: calc(100% - 32px);
       }
 
       .value-navigation-button{
@@ -410,30 +433,43 @@ class LecturePlayer extends DDDSuper(LitElement) {
         margin: 64px auto;
       }
 
-      .endBtn{
-        font-family: var(--ddd-font-primary, sans-serif);
-        font-size: var(--ddd-theme-body-font-size, 16px);
-        background: var(--ddd-theme-primary);
-        color: var(--ddd-theme-bgContrast, black);
-        cursor: pointer;
-        padding: var(--ddd-spacing-4);
-        height: fit-content;
-        margin: auto;
-        border-radius: var(--ddd-radius-sm);
-        box-shadow: none;
-      }
-
-      .endBtn:hover{
-        animation: none;
+      .lecture-control.active, .lecture-control:focus, .lecture-control:hover, .lecture-control:active{
+        color: var(--ddd-theme-default-beaverBlue, black);
       }
 
       .no-pointer-events{
         pointer-events: none;
       }
+      .lecture-mode-controls {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--ddd-spacing-3);
+        padding: var(--ddd-spacing-2);
+        top: var(--ddd-spacing-2);
+        right: var(--ddd-spacing-20);
+      }
+      .lecture-mode-controls simple-icon-button-lite {
+        cursor: pointer;
+        --simple-icon-height: var(--ddd-icon-xs);
+        --simple-icon-width: var(--ddd-icon-xs);
+      }
+      @media (max-width: 1200px) {
+        .videoSection {
+          display: flex;
+          flex-direction: column;
+        }
+      }
     </style>
-      <div class="videoSection">
+      <div class="videoSection normal">
           ${this.videoPlayer}
         <div class="jumbotron"></div>
+        <div class="lecture-mode-controls">
+        <simple-icon-button-lite class="lecture-control" id="lecture-size-small" icon="image:photo-size-select-large"></simple-icon-button-lite>
+        <simple-icon-button-lite class="lecture-control" id="lecture-size-normal" icon="image:switch-video"></simple-icon-button-lite>
+        <simple-icon-button-lite class="lecture-control" id="lecture-size-large" icon="image:photo-size-select-actual"></simple-icon-button-lite>
+      </div>
       </div>
       <div class="playlist">
         <button class="value-navigation-button" id="prevSlideBtn"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
@@ -450,14 +486,48 @@ class LecturePlayer extends DDDSuper(LitElement) {
         elements: { content: c },
       },
     });
+    this.open = true;
     dispatchEvent(evnt);
+    document.querySelector("#lecture-size-large").addEventListener("click", (e) => {
+      document.querySelectorAll(".lecture-control").forEach((control) => {
+        control.classList.remove("active");
+      });
+      e.target.classList.toggle("active");
+      document.querySelector(".videoSection").classList.add("large");
+      document.querySelector(".videoSection").classList.remove("small");
+      document.querySelector(".videoSection").classList.remove("normal");
+    });
+    document.querySelector("#lecture-size-normal").addEventListener("click", (e) => {
+      document.querySelectorAll(".lecture-control").forEach((control) => {
+        control.classList.remove("active");
+      });
+      e.target.classList.toggle("active");
+      document.querySelector(".videoSection").classList.add("normal");
+      document.querySelector(".videoSection").classList.remove("small");
+      document.querySelector(".videoSection").classList.remove("large");
+    });
+    document.querySelector("#lecture-size-small").addEventListener("click", (e) => {
+      document.querySelectorAll(".lecture-control").forEach((control) => {
+        control.classList.remove("active");
+      });
+      e.target.classList.toggle("active");
+      document.querySelector(".videoSection").classList.add("small");
+      document.querySelector(".videoSection").classList.remove("normal");
+      document.querySelector(".videoSection").classList.remove("large");
+    });
+    document.querySelector('simple-modal .modal-content .videoSection video-player').setAttribute('id', 'lecture-player-video');
     this.scan();
+    window.addEventListener("simple-modal-closed", () => {
+      this.querySelector("video-player").removeAttribute("hidden");
+      this.open = false;
+    }
+    );
   }
 
   render() {
     return html`
     <simple-cta id="lectureActivation" @click="${this.showModal}">Open Lecture Player</simple-cta>
-    <slot></slot>
+    ${!this.open ? html`<slot></slot>` : html``}
     `;
   }
 }

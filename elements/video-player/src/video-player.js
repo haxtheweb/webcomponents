@@ -692,7 +692,6 @@ class VideoPlayer extends IntersectionObserverMixin(
     }
     return false;
   }
-
   /**
    * Gets cleaned source list from source and sources properties
    * @readonly
