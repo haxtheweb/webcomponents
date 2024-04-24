@@ -1,6 +1,7 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
-class CourseIntroLessonPlan extends LitElement {
+class CourseIntroLessonPlan extends DDD {
   static get properties() {
     return {
       title: { type: String },
@@ -21,12 +22,13 @@ class CourseIntroLessonPlan extends LitElement {
         }
 
         a {
-          color: inherit;
+          color: light-dark(black, white);
           text-decoration: inherit;
         }
-
+        a:focus,
         a:hover {
-          background-color: #f5f5f5;
+          background-color: var(--ddd-accent-2);
+          color: light-dark(black, black);
         }
 
         #container {
@@ -35,9 +37,7 @@ class CourseIntroLessonPlan extends LitElement {
           align-items: center;
           justify-content: center;
           text-align: center;
-          font-weight: 100;
           cursor: pointer;
-          font-family: "Lato";
         }
 
         @media screen and (min-width: 320px) {
@@ -61,13 +61,12 @@ class CourseIntroLessonPlan extends LitElement {
         @media screen and (min-width: 320px) {
           #title {
             font-size: 20px;
-            color: rgb(77, 87, 104);
           }
         }
 
         @media screen and (min-width: 620px) {
           #title {
-            font-size: 24px;
+            font-size: var(--ddd-font-size-s);
           }
         }
 

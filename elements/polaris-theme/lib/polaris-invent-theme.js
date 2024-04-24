@@ -57,14 +57,27 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       css`
         :host {
           display: block;
-          --polaris-content-bg-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          --polaris-content-bg-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           --polaris-header-bg-color: #1e417b;
           --polaris-nav-color: var(--ddd-accent-6);
-          --polaris-nav-bg-color: light-dark(var(--ddd-theme-default-skyBlue), var(--ddd-theme-default-nittanyNavy));
-          --polaris-footer-secondary-bg-color: var(--ddd-theme-default-beaverBlue);
-          --polaris-footer-primary-bg-color: var(--ddd-theme-default-nittanyNavy);
+          --polaris-nav-bg-color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          --polaris-footer-secondary-bg-color: var(
+            --ddd-theme-default-beaverBlue
+          );
+          --polaris-footer-primary-bg-color: var(
+            --ddd-theme-default-nittanyNavy
+          );
 
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           color: light-dark(black, var(--ddd-accent-6));
 
           --video-player-color: var(--ddd-theme-default-white);
@@ -678,7 +691,8 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       "--rpg-character-toast-height",
       "96px",
     );
-    HAXCMSToastInstance.style.backgroundColor = "light-dark(var(--ddd-accent-6), var(--ddd-primary-4))";
+    HAXCMSToastInstance.style.backgroundColor =
+      "light-dark(var(--ddd-accent-6), var(--ddd-primary-4))";
     this.windowControllersLoaded = new AbortController();
     globalThis.addEventListener(
       "hax-store-app-store-loaded",

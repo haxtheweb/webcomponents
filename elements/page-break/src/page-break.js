@@ -9,7 +9,6 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
 import { DDDExtra } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
 
@@ -390,7 +389,12 @@ export class PageBreak extends IntersectionObserverMixin(
             opacity 0.3s ease-in-out,
             visibility 0.3s ease-in-out;
         }
+        :host([data-hax-ray]) .mid,
+        :host([data-hax-ray]) .text {
+          display: block;
+        }
         .mid {
+          display: none;
           border: none;
           border-top: var(--ddd-border-md);
           border-color: var(--ddd-primary-0);
@@ -406,6 +410,7 @@ export class PageBreak extends IntersectionObserverMixin(
           opacity: 1;
         }
         .text {
+          display: none;
           font-weight: bold;
           color: light-dark(black, white);
           background-color: light-dark(white, black);
