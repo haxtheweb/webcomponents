@@ -561,7 +561,6 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.stickyCorner = "none";
     this.tracks = [];
     this.source = "";
-    this.stopRefresh = false;
     this.observer.observe(this, {
       childList: true,
       subtree: false,
@@ -692,22 +691,6 @@ class VideoPlayer extends IntersectionObserverMixin(
       }
     }
     return false;
-  }
-  connectedCallback(){
-    console.log(window.location);
-    var url = new URL(window.location.href);
-    let hash = url.hash;
-    var videoID = hash.split("--")[0];
-    if (hash) {
-      if (videoID === this.id) {
-        this.scrollIntoView();
-        var timestamp = hash.split("--")[1];
-        console.log(timestamp);
-        if(typeof timestamp === 'number'){
-          this.querySelector("a11y-media-player").seek(timestamp);
-        }
-      }
-    }
   }
   /**
    * Gets cleaned source list from source and sources properties

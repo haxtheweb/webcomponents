@@ -233,8 +233,18 @@ class LecturePlayer extends DDDSuper(LitElement) {
   }
 
   seek(timestamp) {
-    if (document.querySelector('#lecture-player-video')) {
-      document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+    let lectureVideo = document.querySelector('#lecture-player-video');
+    if (lectureVideo) {
+      if(lectureVideo.hasAttribute('element-visible')){
+        document.querySelector('#lecture-player-video').shadowRoot.querySelector('a11y-media-player').play();
+        document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+      }
+      else{
+        setTimeout(() => {
+          document.querySelector('#lecture-player-video').shadowRoot.querySelector('a11y-media-player').play();
+          document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+        }, 1000);
+      }
     }
     else{
       this.querySelector("video-player").shadowRoot.querySelector("a11y-media-player").play();
@@ -273,10 +283,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   endVideo() {
     console.log("endVideo");
-    document
-      .querySelector("video-player")
-      .shadowRoot.querySelector("a11y-media-player")
-      .pause();
+    document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").pause();
     document.querySelector("#nextSlideBtn").setAttribute("disabled", "true");
     let endBtnDiv = document.createElement("div");
     endBtnDiv.setAttribute("data-primary", "11");
@@ -287,7 +294,8 @@ class LecturePlayer extends DDDSuper(LitElement) {
       document.querySelector("simple-modal").close();
       this.open = false;
     });
-    document.querySelector(".endBtn").scrollIntoView({ behavior: "smooth" });
+    let jumbotron = document.querySelector(".jumbotron");
+    jumbotron.scrollTop = jumbotron.scrollHeight + 500;
   }
 
   showModal(event) {
