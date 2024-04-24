@@ -75,44 +75,38 @@
   });
 
   seekBtn.addEventListener('click', async () => {
-    const video = document.querySelector(window.location.hash.split('--')[0]);
+    const video = document.querySelector(globalThis.location.hash.split('--')[0]);
     video.setAttribute('element-visible', true);
-    console.log(window.location.hash.split('--')[1]);
+    console.log(globalThis.location.hash.split('--')[1]);
     await video.scrollIntoView();
-    video.shadowRoot.querySelector('a11y-media-player').play();
-    window.location.hash.split('--')[1] !== 'undefined' ? video.shadowRoot.querySelector('a11y-media-player').seek(window.location.hash.split('--')[1]) : '';
+    video.play();
+    globalThis.location.hash.split('--')[1] !== 'undefined' ? video.seek(globalThis.location.hash.split('--')[1]) : '';
   });
 
   lectureBtn.addEventListener('click', () => {
-    window.location.hash = 'video-player-1--300--lecture-player';
+    globalThis.location.hash = 'video-player-1--300--lecture-player';
 
   });
 
-  window.addEventListener('hashchange', () => {
-    console.log(window.location.hash);
+  globalThis.addEventListener('hashchange', () => {
+    console.log(globalThis.location.hash);
   });
 
-  window.addEventListener('DOMContentLoaded', async () => {
-    const hash = window.location.hash;
+  globalThis.addEventListener('DOMContentLoaded', async () => {
+    const hash = globalThis.location.hash;
     var [id, timestamp, lectureMode] = hash.split('--');
-    video = document.querySelector(id);
-    if(!lectureMode){
-      console.log('no lecture');
-      setTimeout(async () => {
-        console.log('preloading video')
-        video.setAttribute('element-visible', true);
-        console.log(window.location.hash.split('--')[1]);
-        await video.scrollIntoView();
-        console.log('scrolling into view');
-        setTimeout(() => {
-          video.scrollIntoView();
-        }, 1000);
-        setTimeout(() => {
-          console.log('playing video');
-          video.shadowRoot.querySelector('a11y-media-player').play();
-          window.location.hash.split('--')[1] !== 'undefined' ? video.shadowRoot.querySelector('a11y-media-player').seek(window.location.hash.split('--')[1]) : '';
-        }, 3000);
-      }, 1000);
-    }
+    if (id) {
+      let video = document.querySelector(id);
+      video.elementVisible = true;
+      setTimeout(() => {
+        if(!lectureMode){
+      console.log(globalThis.location.hash.split('--')[1]);
+      video.scrollIntoView();
+      setTimeout(() => {
+        globalThis.location.hash.split('--')[1] !== 'undefined' ? video.seek(globalThis.location.hash.split('--')[1]) : '';
+      }, 2000);
+    }      
+    }, 1000);
+  }
   });
 </script>
