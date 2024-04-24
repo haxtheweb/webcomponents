@@ -3668,6 +3668,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     delete propvals.role;
     delete propvals["data-hax-ray"];
     delete propvals["data-hax-layout"];
+    delete propvals["data-hax-grid"];
     delete propvals["data-hax-active"];
     if (propvals.class == "") {
       delete propvals.class;
