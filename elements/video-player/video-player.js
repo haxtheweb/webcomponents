@@ -695,28 +695,20 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   connectedCallback(){
     console.log(window.location);
-    if(this.id){
-      window.location.hash = this.id;
-    }
-    else{
-      return;
-    }
     var url = new URL(window.location.href);
     let hash = url.hash;
-    console.log(hash);
+    var videoID = hash.split("--")[0];
     if (hash) {
-      var videoID = hash.substring(1);
       if (videoID === this.id) {
         this.scrollIntoView();
         var timestamp = hash.split("--")[1];
         console.log(timestamp);
-        if(timestamp !== undefined){
+        if(typeof timestamp === 'number'){
           this.querySelector("a11y-media-player").seek(timestamp);
         }
       }
     }
   }
-
   /**
    * Gets cleaned source list from source and sources properties
    * @readonly
