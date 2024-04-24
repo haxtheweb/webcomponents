@@ -68,6 +68,10 @@ class LecturePlayer extends DDDSuper(LitElement) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "activeIndex" && oldValue !== this.activeIndex && this.activeIndex) {
+        if(this.linked){
+          this.linked = false;
+          return;
+        }
         if (!document.querySelector("video-player").playing) {
           this.play;
         }
@@ -526,6 +530,40 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   render() {
     return html`
+    ${ 
+      globalThis.addEventListener("DOMContentLoaded", () => {
+        console.log(globalThis.location.hash);
+        if(globalThis.location.hash){
+          var [id, timestamp] = globalThis.location.hash.split('--');
+          console.log(id, timestamp);
+          if(id === '#lecture-player-video'){
+            this.linked = true;
+            console.log('lecture player link')
+            setTimeout(() => {
+              this.showModal();
+              console.log('show modal')
+              setTimeout(() => {
+                let activeSlide = null;
+                for (let i = 0; i < this.associatedNodes.length; i++) {
+                    let currentTimestamp = this.associatedNodes[i][0];
+                    console.log(currentTimestamp);
+                    let nextTimestamp = i < this.associatedNodes.length - 1 ? this.associatedNodes[i + 1][0] : Infinity;
+            
+                    if (timestamp > currentTimestamp && timestamp < nextTimestamp) {
+                        activeSlide = this.associatedNodes[i][1];
+                        console.log(activeSlide);
+                        break;
+                    }
+                    @TODO: Find the current slide based on timestamp & set it
+                }
+                setTimeout(() => {
+                  this.seek(timestamp);
+                }, 10000);
+              }, 2000);
+            }, 2000);
+          }
+        }})}
+      ${globalThis.addEventListener("hashChange", () => {})}
     <simple-cta id="lectureActivation" @click="${this.showModal}">Open Lecture Player</simple-cta>
     ${!this.open ? html`<slot></slot>` : html``}
     `;

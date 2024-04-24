@@ -94,19 +94,36 @@
 
   globalThis.addEventListener('DOMContentLoaded', async () => {
     const hash = globalThis.location.hash;
-    var [id, timestamp, lectureMode] = hash.split('--');
+    console.log(hash);
+    var [id, timestamp] = hash.split('--');
+    console.log(id, timestamp);
     if (id) {
       let video = document.querySelector(id);
       video.elementVisible = true;
       setTimeout(() => {
-        if(!lectureMode){
-      console.log(globalThis.location.hash.split('--')[1]);
-      video.scrollIntoView();
-      setTimeout(() => {
-        globalThis.location.hash.split('--')[1] !== 'undefined' ? video.seek(globalThis.location.hash.split('--')[1]) : '';
-      }, 2000);
-    }      
-    }, 1000);
-  }
+        if(id !== '#lecture-player-video'){
+          console.log(globalThis.location.hash.split('--')[1]);
+          video.scrollIntoView();
+          setTimeout(() => {
+            video.scrollIntoView();
+            globalThis.location.hash.split('--')[1] !== 'undefined' ? video.seek(globalThis.location.hash.split('--')[1]) : '';
+          }, 2000);
+        }      
+      }, 1000);
+    }
   });
+
+  globalThis.addEventListener('pause', (e) => {
+    let id = e.detail.getRootNode().host.id;
+    globalThis.location.hash = `${id}--${Math.floor(e.detail.media.currentTime)}`;
+  });
+  globalThis.addEventListener('play', (e) => {
+    let id = e.detail.getRootNode().host.id;
+    globalThis.location.hash = `${id}--${Math.floor(e.detail.media.currentTime)}`;
+  });
+  globalThis.addEventListener('seek', (e) => {
+    let id = e.detail.getRootNode().host.id;
+    globalThis.location.hash = `${id}--${Math.floor(e.detail.media.currentTime)}`;
+  });
+
 </script>
