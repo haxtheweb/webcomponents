@@ -67,10 +67,6 @@ var precacheConfig = [
     "pJGvifIFd9uCxillmeoYVA",
   ],
   ["pages/integrations-1/wordpress/index.html", "2RHDEPqfrcIhokRcg8gdg"],
-  [
-    "pages/documentation-1/hax-development/hax-app-store/blox/index.html",
-    "zW9NtwyON8L1EmhhuBw",
-  ],
   ["pages/welcome/solutions/index.html", "ObC0pyRkdR327PpUAZikjQ"],
   [
     "pages/documentation-1/haxcms/installation/index.html",

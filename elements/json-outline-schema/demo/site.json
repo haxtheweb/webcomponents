@@ -349,19 +349,6 @@
       }
     },
     {
-      "id": "item-a91393ea-31f8-30bd-888f-275a05e08e0a",
-      "indent": 3,
-      "location": "pages/hax-appstore-blox/index.html",
-      "order": 1,
-      "parent": "item-4de60a5f-98ab-a602-edfc-0cf024e83755",
-      "title": "blox",
-      "description": "",
-      "metadata": {
-        "created": 1548826475,
-        "updated": 1563972324
-      }
-    },
-    {
       "id": "item-faaa1198-10c7-ff30-ece6-01b30a9c0f85",
       "indent": 3,
       "location": "pages/hax-appstore-stax/index.html",

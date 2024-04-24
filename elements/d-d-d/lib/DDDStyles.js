@@ -43,19 +43,34 @@ globalThis.addEventListener(
         // everything that allows for advacned should be able to apply spacing
         // this stuff floats to the top of those options
         if (!props.hideDefaultSettings && !inline) {
-          props.settings.advanced.push({
-            attribute: "data-text-align",
-            title: "Text align",
-            description: "Horizontal alignment of text",
-            inputMethod: "select",
-            options: {
-              "": "-- default --",
-              left: "Left",
-              center: "Center",
-              right: "Right",
-              justify: "Justify",
-            },
-          });
+          if (['media-image', 'img'].includes(tag)) {
+            props.settings.advanced.push({
+              attribute: "data-float-position",
+              title: "Float Position",
+              description: "Alignment relative to other items on large screens",
+              inputMethod: "select",
+              options: {
+                "": "-- default --",
+                left: "Left",
+                right: "Right",
+              },
+            });
+          }
+          else {
+            props.settings.advanced.push({
+              attribute: "data-text-align",
+              title: "Text align",
+              description: "Horizontal alignment of text",
+              inputMethod: "select",
+              options: {
+                "": "-- default --",
+                left: "Left",
+                center: "Center",
+                right: "Right",
+                justify: "Justify",
+              },
+            });
+          }
           props.settings.advanced.push({
             attribute: "data-padding",
             title: "Padding",
@@ -1010,6 +1025,40 @@ export const DDDDataAttributes = [
     }
     [data-width="75"] {
       width: 75%;
+    }
+
+    /* Float positioning for larger devices */
+    @media (min-width:1440px) {
+      [data-float-position="left"] {
+        float: left;
+        margin: var(--ddd-spacing-8) var(--ddd-spacing-8) 0 var(--ddd-spacing-4);
+      }
+      [data-float-position="right"] {
+        float: right;
+        margin: var(--ddd-spacing-8) var(--ddd-spacing-4) 0 var(--ddd-spacing-8);
+      }
+      [data-hax-ray][data-float-position]:focus-within::after,
+      [data-hax-ray][data-float-position]:hover::after {
+        content: "Floating item";
+        position: absolute;
+        white-space: nowrap;
+        font-style: normal;
+        position: absolute;
+        padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+        color: var(--ddd-theme-font-color, var(--ddd-theme-default-white, #fff));
+        background-color: var(--ddd-theme-default-info, rgba(175, 184, 193, 0.2));
+        font-size: var(--ddd-theme-body-font-size);
+        font-weight: var(--ddd-font-weight-regular);
+        border-radius: var(--ddd-radius-xs);
+        right: var(--ddd-spacing-4);
+        left: unset;
+        margin-top: -16px;
+      }
+      [data-hax-ray][data-float-position="left"]:focus-within::after,
+      [data-hax-ray][data-float-position="left"]:hover::after {
+        left: var(--ddd-spacing-4);
+        right: unset;
+      }
     }
 
     /* basic text operations, not DDD specific persay */

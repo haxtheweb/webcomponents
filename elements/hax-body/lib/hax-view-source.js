@@ -453,9 +453,9 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
    * HTML to HAX Elements
    */
   async htmlToHaxElements(e) {
-    let elements = await HAXStore.htmlToHaxElements(
-      this.shadowRoot.querySelector("#textarea").value,
-    );
+    let body = await HAXStore.activeHaxBody.haxToContent();
+    let elements = await HAXStore.htmlToHaxElements(body);
+    elements.shift();
     var str = JSON.stringify(elements, null, 2);
     let val = this.shadowRoot.querySelector("#textarea").value;
     let hiddenarea = this.shadowRoot.querySelector("#hiddentextarea");
