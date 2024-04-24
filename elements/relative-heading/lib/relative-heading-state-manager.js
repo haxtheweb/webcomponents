@@ -147,7 +147,6 @@ class RelativeHeadingStateManager extends LitElement {
       this.usesCopyLink = true;
       import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
       import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
-      import("@lrnwebcomponents/simple-toast/simple-toast.js");
     }
   }
 

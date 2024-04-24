@@ -146,7 +146,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
     constructor() {
       super();
       this._ticking = false;
-      this.scrollTarget = window;
+      this.scrollTarget = globalThis;
       this.auto = false;
       this.fitToVisibleBounds = false;
       this.for = null;

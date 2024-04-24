@@ -11,7 +11,7 @@ class LectureAnchor extends DDD {
       icon: { type: String, reflect: true },
       value: { type: Number, reflect: true },
       target: { type: String, reflect: true },
-      associatedID : { type: String, reflect: true },
+      associatedID: { type: String, reflect: true },
     };
   }
 

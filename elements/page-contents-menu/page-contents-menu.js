@@ -20,7 +20,10 @@ class PageContentsMenu extends DDD {
           display: block;
           font-family: var(--ddd-font-navigation);
           font-weight: var(--ddd-font-weight-light);
-          --page-contents-menu-link-color-focus: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+          --page-contents-menu-link-color-focus: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
           --page-contents-menu-link: light-dark(black, var(--ddd-accent-6));
           --page-contents-menu-link-font-size: var(--ddd-font-size-3xs);
           --page-contents-menu-link-font-size-active: var(--ddd-font-size-xxs);

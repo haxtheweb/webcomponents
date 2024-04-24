@@ -58,14 +58,14 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
 
   backToTop() {
     if (
-      this.contentContainer.HAXCMSThemeSettings.scrollTarget &&
-      this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollIntoView
+      this.contentContainer.HAXCMSThemeSettings.themeTop &&
+      this.contentContainer.HAXCMSThemeSettings.themeTop.scrollIntoView
     ) {
       const isSafari = globalThis.safari !== undefined;
       if (isSafari) {
-        this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
+        this.contentContainer.HAXCMSThemeSettings.themeTop.scrollIntoView();
       } else {
-        this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollIntoView({
+        this.contentContainer.HAXCMSThemeSettings.themeTop.scrollIntoView({
           behavior: "instant",
           block: "start",
           inline: "nearest",
@@ -102,7 +102,10 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
         }
         simple-icon-button-lite:focus,
         simple-icon-button-lite:hover {
-          color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
         }
         .contents {
           max-height: 80vh;

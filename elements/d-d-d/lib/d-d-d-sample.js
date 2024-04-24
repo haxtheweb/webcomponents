@@ -26,7 +26,10 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host([type="accent"]:hover),
         :host([type="primary"]:hover) {
           color: black;
-          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-limestoneGray));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-limestoneGray)
+          );
         }
 
         :host([type="accent"]) .sample,
@@ -43,7 +46,10 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host([type="border-radius"]) .sample,
         :host([type="box-shadow"]) .sample {
           --ddd-theme-primary: var(--ddd-sample-theme-primary, black);
-          --ddd-theme-accent: var(--ddd-sample-theme-accent, var(--ddd-accent-3));
+          --ddd-theme-accent: var(
+            --ddd-sample-theme-accent,
+            var(--ddd-accent-3)
+          );
           background-color: var(--ddd-theme-accent);
           border-color: var(--ddd-theme-primary);
           height: var(--ddd-spacing-4);
@@ -121,7 +127,10 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host([type="design-treatment"]) .label {
           display: block;
           font-weight: bold;
-          --ddd-theme-primary: var(--ddd-sample-theme-primary, var(--ddd-primary-16));
+          --ddd-theme-primary: var(
+            --ddd-sample-theme-primary,
+            var(--ddd-primary-16)
+          );
           min-height: calc(
             (var(--initialLetter) / 3 * var(--ddd-theme-body-font-size) * 1.5) +
               20px

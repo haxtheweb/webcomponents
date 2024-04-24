@@ -59,7 +59,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
           display: block;
           color: light-dark(black, var(--ddd-accent-6));
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           --simple-tooltip-background: var(--ddd-theme-default-info);
           --simple-tooltip-opacity: 1;
           --simple-tooltip-text-color: var(--ddd-theme-default-infoLight);
@@ -113,7 +116,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           border-radius: 3px;
           flex-direction: row;
           text-decoration: none;
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           -webkit-box-align: center;
           page-break-inside: avoid;
           -ms-grid-row-align: stretch;
@@ -128,7 +134,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin-left: -66px;
           padding: 0;
           --github-corner-size: 40px;
-          --site-git-corner-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          --site-git-corner-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
           --site-git-corner-background: transparent;
           background-color: transparent;
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
@@ -187,7 +196,10 @@ class CleanTwo extends HAXCMSOperationButtons(
         site-menu-button:focus-within,
         site-menu-button:hover {
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
         }
         site-menu-button[type="next"] div {
           text-align: left;
@@ -221,7 +233,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           width: 100%;
           margin: 0 auto;
           display: flex;
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           padding: 0;
           transition: margin-bottom 0.3s ease;
           align-items: stretch;
@@ -252,9 +267,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           display: flex;
           z-index: 15;
           min-width: 332px;
-          background: light-dark(var(--ddd-accent-6),var(--ddd-primary-4));
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           align-items: stretch;
-          border-right: 1px solid light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border-right: 1px solid
+            light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           flex-direction: column;
           -webkit-box-align: stretch;
           -webkit-box-orient: vertical;
@@ -287,13 +303,29 @@ class CleanTwo extends HAXCMSOperationButtons(
           }
         }
         site-menu {
-          --site-menu-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          --site-menu-active-color: light-dark(var(--ddd-accent-6),var(--ddd-primary-4));
-          --site-menu-item-active-item-color: light-dark(var(--ddd-accent-6),var(--ddd-primary-4))
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          --site-menu-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+          --site-menu-active-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          --site-menu-item-active-item-color: light-dark(
+              var(--ddd-accent-6),
+              var(--ddd-primary-4)
+            )
+            background-color:
+            light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           color: light-dark(black, var(--ddd-accent-6));
-          --map-menu-item-a-active-background-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          --map-menu-item-a-active-color:  light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          --map-menu-item-a-active-background-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+          --map-menu-item-a-active-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           font-family: var(--ddd-font-navigation);
           font-weight: var(--ddd-font-weight-light);
           --site-menu-font-size: var(--ddd-font-size-xs);
@@ -369,8 +401,14 @@ class CleanTwo extends HAXCMSOperationButtons(
           float: right;
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           margin-right: -52px;
-          --simple-popover-background-color: light-dark(var(--ddd-accent-6),var(--ddd-primary-4));
-          --page-contents-menu-link: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          --simple-popover-background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          --page-contents-menu-link: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
         }
         :host([responsive-size="xs"]) site-menu-content[mobile] {
           right: 24px;
@@ -389,7 +427,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           height: 32px;
           margin-right: 0px;
           display: block;
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
         }
         .content {
           flex: 1 1 auto;
@@ -496,7 +537,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0;
           display: flex;
           padding: 0;
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           overflow: hidden;
           position: fixed;
           counter-reset: toc;
@@ -551,8 +595,11 @@ class CleanTwo extends HAXCMSOperationButtons(
         site-breadcrumb {
           --site-breadcrumb-margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-7);
           color: light-dark(black, var(--ddd-accent-6));
-          --site-breadcrumb-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
-          --site-breadcrumb-last-color: light-dark(black , var(--ddd-accent-6));
+          --site-breadcrumb-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          --site-breadcrumb-last-color: light-dark(black, var(--ddd-accent-6));
         }
         .search-modal-btn {
           margin-top: 16px;
@@ -566,8 +613,9 @@ class CleanTwo extends HAXCMSOperationButtons(
       super.firstUpdated(changedProperties);
     }
     document.body.style.overflow = "hidden";
+    this.HAXCMSThemeSettings.themeTop = this.shadowRoot.querySelector('#haxcms-theme-top');
     this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector("main");
+      this.shadowRoot.querySelector(".body-wrapper");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
     // shadow ready which means we should be able to open this even on a slow load

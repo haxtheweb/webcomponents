@@ -28,7 +28,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
             grid-template-columns: 1fr;
           }
         }
-        lecture-player{
+        lecture-player {
           width: 100%;
           height: 100%;
         }
@@ -51,8 +51,8 @@ class LecturePlayer extends DDDSuper(LitElement) {
         console.log(`${key}: ${value}`);
       }
     });
-     this.videoInterval = null;
-     this.activeIndex = null;
+    this.videoInterval = null;
+    this.activeIndex = null;
   }
 
   static get properties() {
@@ -108,7 +108,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
   setJumbotronAttributes() {
     console.log("setJumbotronAttributes");
     this.querySelectorAll("lecture-anchor").forEach((anchor) => {
-      let header = this.querySelector(`#${anchor.getAttribute("associatedID")}`);
+      let header = this.querySelector(
+        `#${anchor.getAttribute("associatedID")}`,
+      );
       anchor.setAttribute("jumbotronHeading", header.textContent);
       anchor.setAttribute("jumbotronContent", this.getNextSiblingHTML(header));
       // Scrub the ids from the lecture-anchor elements in the content
@@ -125,19 +127,19 @@ class LecturePlayer extends DDDSuper(LitElement) {
   }
 
   getNextSiblingHTML(element) {
-    let siblingHTML = '';
+    let siblingHTML = "";
     let nextSibling = element.nextSibling;
     let stopIDs = Object.values(this.associatedNodes);
-  
+
     while (nextSibling) {
       if (nextSibling.id && stopIDs.includes(nextSibling.id)) {
         break;
       }
-  
-      siblingHTML += nextSibling.outerHTML || '';
+
+      siblingHTML += nextSibling.outerHTML || "";
       nextSibling = nextSibling.nextSibling;
     }
-  
+
     return siblingHTML;
   }
 
@@ -237,37 +239,58 @@ class LecturePlayer extends DDDSuper(LitElement) {
   }
 
   seek(timestamp) {
-    let lectureVideo = document.querySelector('#lecture-player-video');
+    let lectureVideo = document.querySelector("#lecture-player-video");
     if (lectureVideo) {
-      if(lectureVideo.hasAttribute('element-visible')){
-        document.querySelector('#lecture-player-video').shadowRoot.querySelector('a11y-media-player').play();
-        document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
-      }
-      else{
+      if (lectureVideo.hasAttribute("element-visible")) {
+        document
+          .querySelector("#lecture-player-video")
+          .shadowRoot.querySelector("a11y-media-player")
+          .play();
+        document
+          .querySelector("#lecture-player-video")
+          .shadowRoot.querySelector("a11y-media-player")
+          .seek(timestamp);
+      } else {
         setTimeout(() => {
-          document.querySelector('#lecture-player-video').shadowRoot.querySelector('a11y-media-player').play();
-          document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+          document
+            .querySelector("#lecture-player-video")
+            .shadowRoot.querySelector("a11y-media-player")
+            .play();
+          document
+            .querySelector("#lecture-player-video")
+            .shadowRoot.querySelector("a11y-media-player")
+            .seek(timestamp);
         }, 1000);
       }
-    }
-    else{
-      this.querySelector("video-player").shadowRoot.querySelector("a11y-media-player").play();
-      this.querySelector("video-player").shadowRoot.querySelector("a11y-media-player").seek(timestamp);
+    } else {
+      this.querySelector("video-player")
+        .shadowRoot.querySelector("a11y-media-player")
+        .play();
+      this.querySelector("video-player")
+        .shadowRoot.querySelector("a11y-media-player")
+        .seek(timestamp);
     }
   }
 
   play() {
-    console.log(document.querySelector("video-player").shadowRoot.querySelector("a11y-media-player"));
-    if(document.querySelector("video-player").shadowRoot.querySelector("a11y-media-player")){
+    console.log(
       document
-      .querySelector("video-player")
-      .shadowRoot.querySelector("a11y-media-player")
-      .play();
-    }
-    else{
+        .querySelector("video-player")
+        .shadowRoot.querySelector("a11y-media-player"),
+    );
+    if (
+      document
+        .querySelector("video-player")
+        .shadowRoot.querySelector("a11y-media-player")
+    ) {
+      document
+        .querySelector("video-player")
+        .shadowRoot.querySelector("a11y-media-player")
+        .play();
+    } else {
       this.querySelector("video-player")
-      .shadowRoot.querySelector("a11y-media-player")
-      .play();
+        .shadowRoot.querySelector("a11y-media-player")
+        .play();
     }
   }
 
@@ -287,7 +310,10 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   endVideo() {
     console.log("endVideo");
-    document.querySelector('#lecture-player-video').shadowRoot.querySelector("a11y-media-player").pause();
+    document
+      .querySelector("#lecture-player-video")
+      .shadowRoot.querySelector("a11y-media-player")
+      .pause();
     document.querySelector("#nextSlideBtn").setAttribute("disabled", "true");
     let endBtnDiv = document.createElement("div");
     endBtnDiv.setAttribute("data-primary", "11");
@@ -492,40 +518,47 @@ class LecturePlayer extends DDDSuper(LitElement) {
     });
     this.open = true;
     dispatchEvent(evnt);
-    document.querySelector("#lecture-size-large").addEventListener("click", (e) => {
-      document.querySelectorAll(".lecture-control").forEach((control) => {
-        control.classList.remove("active");
+    document
+      .querySelector("#lecture-size-large")
+      .addEventListener("click", (e) => {
+        document.querySelectorAll(".lecture-control").forEach((control) => {
+          control.classList.remove("active");
+        });
+        e.target.classList.toggle("active");
+        document.querySelector(".videoSection").classList.add("large");
+        document.querySelector(".videoSection").classList.remove("small");
+        document.querySelector(".videoSection").classList.remove("normal");
       });
-      e.target.classList.toggle("active");
-      document.querySelector(".videoSection").classList.add("large");
-      document.querySelector(".videoSection").classList.remove("small");
-      document.querySelector(".videoSection").classList.remove("normal");
-    });
-    document.querySelector("#lecture-size-normal").addEventListener("click", (e) => {
-      document.querySelectorAll(".lecture-control").forEach((control) => {
-        control.classList.remove("active");
+    document
+      .querySelector("#lecture-size-normal")
+      .addEventListener("click", (e) => {
+        document.querySelectorAll(".lecture-control").forEach((control) => {
+          control.classList.remove("active");
+        });
+        e.target.classList.toggle("active");
+        document.querySelector(".videoSection").classList.add("normal");
+        document.querySelector(".videoSection").classList.remove("small");
+        document.querySelector(".videoSection").classList.remove("large");
       });
-      e.target.classList.toggle("active");
-      document.querySelector(".videoSection").classList.add("normal");
-      document.querySelector(".videoSection").classList.remove("small");
-      document.querySelector(".videoSection").classList.remove("large");
-    });
-    document.querySelector("#lecture-size-small").addEventListener("click", (e) => {
-      document.querySelectorAll(".lecture-control").forEach((control) => {
-        control.classList.remove("active");
+    document
+      .querySelector("#lecture-size-small")
+      .addEventListener("click", (e) => {
+        document.querySelectorAll(".lecture-control").forEach((control) => {
+          control.classList.remove("active");
+        });
+        e.target.classList.toggle("active");
+        document.querySelector(".videoSection").classList.add("small");
+        document.querySelector(".videoSection").classList.remove("normal");
+        document.querySelector(".videoSection").classList.remove("large");
       });
-      e.target.classList.toggle("active");
-      document.querySelector(".videoSection").classList.add("small");
-      document.querySelector(".videoSection").classList.remove("normal");
-      document.querySelector(".videoSection").classList.remove("large");
-    });
-    document.querySelector('simple-modal .modal-content .videoSection video-player').setAttribute('id', 'lecture-player-video');
+    document
+      .querySelector("simple-modal .modal-content .videoSection video-player")
+      .setAttribute("id", "lecture-player-video");
     this.scan();
     window.addEventListener("simple-modal-closed", () => {
       this.querySelector("video-player").removeAttribute("hidden");
       this.open = false;
-    }
-    );
+    });
   }
 
   render() {

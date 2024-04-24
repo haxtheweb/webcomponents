@@ -28,7 +28,9 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/flash-card-answer-box.es.json", import.meta.url)
+          .href + "/../",
       locales: ["es", "fr", "ja"],
     });
   }

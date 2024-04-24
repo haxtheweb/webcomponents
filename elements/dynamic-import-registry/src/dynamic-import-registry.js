@@ -32,7 +32,9 @@ class DynamicImportRegistry extends HTMLElement {
     // object for tracking what the registry is
     this.list = {};
     this.__loaded = {};
-    this.basePath = new URL("./../../", import.meta.url).href;
+    this.basePath =
+      new URL("./dynamic-import-registry.js", import.meta.url).href +
+      "/../../../";
     if (window.WCAutoloadBasePath) {
       this.basePath = window.WCAutoloadBasePath;
     } else if (window.WCGlobalBasePath) {

@@ -1252,7 +1252,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   studentreportClick(e) {
     ESGlobalBridgeStore.import(
       "jspdf",
-      new URL(`./lib/`, import.meta.url).href + "jspdf.min.js",
+      new URL(`./lib/grade-book.js`, import.meta.url).href + "/../jspdf.min.js",
     ).then(() => {
       var pdf = new jsPDF();
       pdf.fromHTML(

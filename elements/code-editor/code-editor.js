@@ -133,6 +133,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.codePenData = null;
     this.haxUIElement = true;
     this.showCodePen = false;
     this.readOnly = false;
@@ -148,7 +149,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     if (globalThis.WCGlobalBasePath) {
       this.libPath = globalThis.WCGlobalBasePath;
     } else {
-      this.libPath = new URL("./../../", import.meta.url).href;
+      this.libPath =
+        new URL("./code-editor.js", import.meta.url).href + "/../../../";
     }
     this.libPath += "monaco-editor/min/vs";
     setTimeout(() => {

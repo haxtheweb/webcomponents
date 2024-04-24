@@ -106,7 +106,8 @@ class LunrSearch extends LitElement {
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
-      this.basePath = new URL("./../../", import.meta.url).href;
+      this.basePath =
+        new URL("./lunr-search.js", import.meta.url).href + "/../../../";
     }
     const location = `${this.basePath}lunr/lunr.js`;
     window.addEventListener(

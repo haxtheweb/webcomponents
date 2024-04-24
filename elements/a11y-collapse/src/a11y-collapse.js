@@ -94,7 +94,7 @@ class A11yCollapse extends DDD {
           );
           margin: var(--a11y-collapse-margin);
           color: var(--a11y-collapse-heading-color);
-          
+
           background-color: var(--a11y-collapse-heading-background-color);
         }
         :host([disabled]) #heading {

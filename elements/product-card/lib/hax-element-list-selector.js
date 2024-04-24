@@ -51,7 +51,9 @@ class HaxElementListSelector extends LitElement {
     if (globalThis.WCGlobalBasePath) {
       this.basePath = globalThis.WCGlobalBasePath;
     } else {
-      this.basePath = new URL("./../../../", import.meta.url).href;
+      this.basePath =
+        new URL("./hax-element-list-selector.js", import.meta.url).href +
+        "/../../../../";
     }
     // allow global definition of wc-registry for custom ones
     if (globalThis.WCGlobalRegistryFileName) {

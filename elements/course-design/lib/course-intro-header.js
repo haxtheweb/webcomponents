@@ -40,7 +40,8 @@ class CourseIntroHeader extends DDD {
   }
 
   static get styles() {
-    return [super.styles,
+    return [
+      super.styles,
       css`
         :host {
           display: block;
@@ -49,7 +50,10 @@ class CourseIntroHeader extends DDD {
         h1,
         h2,
         h3 {
-          font-family: var(--course-intro-header-font-family, var(--ddd-font-navigation));
+          font-family: var(
+            --course-intro-header-font-family,
+            var(--ddd-font-navigation)
+          );
           font-weight: var(--ddd-font-weight-light);
           color: #ffffff;
         }
@@ -94,57 +98,57 @@ class CourseIntroHeader extends DDD {
           min-height: var(--course-intro-header-min-height, 20vw);
         }
 
-          #header-icon {
-            background-color: light-dark(white, black);
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 6px solid
-              var(--course-intro-header--header--background-color, #1e1e1e);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            bottom: 64px;
-            margin-left: auto;
-            margin-right: auto;
-          }
-                  
-          #info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 42px 0 18px 0;
-            text-transform: uppercase;
-            margin-top: -154px;
-            text-align: center;
-          }
+        #header-icon {
+          background-color: light-dark(white, black);
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          border: 6px solid
+            var(--course-intro-header--header--background-color, #1e1e1e);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          bottom: 64px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 42px 0 18px 0;
+          text-transform: uppercase;
+          margin-top: -154px;
+          text-align: center;
+        }
+        simple-icon#course-icon {
+          --simple-icon-width: 80px;
+          --simple-icon-height: 80px;
+          --simple-icon-color: light-dark(
+            var(--course-intro-header--icon--color, #1e1e1e),
+            white
+          );
+        }
+
+        #header-icon {
+          width: 125px;
+          height: 125px;
+          bottom: 100px;
+        }
+
+        @media (max-width: 720px) {
           simple-icon#course-icon {
-            --simple-icon-width: 80px;
-            --simple-icon-height: 80px;
-            --simple-icon-color: light-dark(var(
-              --course-intro-header--icon--color,
-              #1e1e1e
-            ), white);
+            --simple-icon-width: 64px;
+            --simple-icon-height: 64px;
           }
 
           #header-icon {
-            width: 125px;
-            height: 125px;
-            bottom: 100px;
+            width: 80px;
+            height: 80px;
           }
-
-          @media (max-width: 720px) {
-            simple-icon#course-icon {
-              --simple-icon-width: 64px;
-              --simple-icon-height: 64px;
-            }
-
-            #header-icon {
-              width: 80px;
-              height: 80px;
-            }
-          }
+        }
 
         #outline-title {
           margin: 0;

@@ -36,7 +36,6 @@ class HAXCMSSiteEditor extends LitElement {
     this.__disposer = [];
     this.method = "POST";
     this.editMode = false;
-    globalThis.SimpleToast.requestAvailability();
     globalThis.SimpleModal.requestAvailability();
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);

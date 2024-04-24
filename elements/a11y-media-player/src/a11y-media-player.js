@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
@@ -3339,7 +3338,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     globalThis.document.execCommand("copy");
 
     globalThis.document.body.removeChild(el);
-    SimpleToastStore.showSimpleToast({
+    globalThis.SimpleToast.requestAvailability().showSimpleToast({
       detail: {
         duration: 3000,
         text: `Copied to clipboard: ${this.shareLink}`,

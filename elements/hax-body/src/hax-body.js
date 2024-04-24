@@ -4261,7 +4261,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       ) {
         // support having to import the definition; this is typical
         if (newSchema.editingElement.import) {
-          let basePath = new URL("./../../", import.meta.url).href;
+          let basePath =
+            new URL("./hax-body.js", import.meta.url).href + "/../../../";
           // support base path global override
           if (window.WCGlobalBasePath) {
             basePath = window.WCGlobalBasePath;

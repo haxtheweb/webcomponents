@@ -94,7 +94,8 @@ class H5PElement extends LitElement {
    */
   async H5PDepsLoader() {
     this.windowControllers = new AbortController();
-    const basePath = new URL("./lib/", import.meta.url).href;
+    const basePath =
+      new URL("./lib/h5p-resizer.js", import.meta.url).href + "/../";
     this.h5pJSDeps = [
       basePath + "h5p-resizer.js",
       basePath + "h5p/js/jquery.js",
@@ -176,7 +177,8 @@ class H5PElement extends LitElement {
       icon: (displayOptions.icon = false),
       export: (displayOptions.export = false),
     });
-    const basePath = new URL("./lib/", import.meta.url).href;
+    const basePath =
+      new URL("./lib/h5p-element.js", import.meta.url).href + "/../";
     H5PIntegration.core = {
       styles: [
         basePath + "h5p/styles/h5p.css",

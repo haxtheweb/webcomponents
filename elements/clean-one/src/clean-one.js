@@ -60,7 +60,10 @@ class CleanOne extends PrintBranchMixin(
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           color: light-dark(black, var(--ddd-accent-6));
           --simple-tooltip-background: var(--ddd-theme-default-info);
           --simple-tooltip-text-color: var(--ddd-theme-default-infoLight);
@@ -90,7 +93,10 @@ class CleanOne extends PrintBranchMixin(
           padding: 8px 4px;
         }
         site-menu {
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           color: light-dark(black, var(--ddd-accent-6));
           height: var(--clean-one-site-menu-height, calc(100vh - 60px));
           --site-menu-active-color: var(
@@ -102,8 +108,14 @@ class CleanOne extends PrintBranchMixin(
           );
           --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
           --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
-          --map-menu-item-a-active-background-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          --map-menu-item-a-active-color:  light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          --map-menu-item-a-active-background-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+          --map-menu-item-a-active-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-xs);
         }
@@ -124,7 +136,10 @@ class CleanOne extends PrintBranchMixin(
         site-rss-button,
         site-print-button,
         site-git-corner {
-          color: light-dark(var(--site-print-button-color, black), var(--ddd-accent-6));
+          color: light-dark(
+            var(--site-print-button-color, black),
+            var(--ddd-accent-6)
+          );
           --site-git-corner-background: var(
             --haxcms-user-styles-color-theme-color-1
           );
@@ -150,7 +165,10 @@ class CleanOne extends PrintBranchMixin(
             --haxcms-user-styles-color-theme-color-1
           );
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));          
+          --site-menu-button-button-hover-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
           --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
           --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
           --site-menu-button-button-hover-background-color: var(
@@ -160,8 +178,11 @@ class CleanOne extends PrintBranchMixin(
         scroll-button,
         site-breadcrumb {
           color: light-dark(black, var(--ddd-accent-6));
-          --site-breadcrumb-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
-          --site-breadcrumb-last-color: light-dark(black , var(--ddd-accent-6));
+          --site-breadcrumb-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          --site-breadcrumb-last-color: light-dark(black, var(--ddd-accent-6));
         }
 
         * {
@@ -187,7 +208,10 @@ class CleanOne extends PrintBranchMixin(
           z-index: 1;
           overflow-y: hidden;
           width: 300px;
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           color: light-dark(black, var(--ddd-accent-6));
           border-right: var(--ddd-border-xs);
           transition: left 0.3s ease;
@@ -531,7 +555,6 @@ class CleanOne extends PrintBranchMixin(
           background: var(--haxcms-user-styles-color-theme-color-background);
         }
 
-        
         button,
         select {
           text-transform: none;
@@ -566,7 +589,10 @@ class CleanOne extends PrintBranchMixin(
           height: auto;
           width: auto;
           font-size: inherit;
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           color: light-dark(black, var(--ddd-accent-6));
         }
       `,
@@ -753,7 +779,7 @@ class CleanOne extends PrintBranchMixin(
       this.HAXCMSThemeSettings.scrollTarget;
     // hook up the scroll target
     this.shadowRoot.querySelector("scroll-button").target =
-    this.shadowRoot.querySelector("main");
+      this.shadowRoot.querySelector("main");
 
     const params = new URLSearchParams(store.currentRouterLocation.search);
     // if we have a search param already, set it to the field on open

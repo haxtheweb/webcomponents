@@ -111,7 +111,6 @@ export class RPGCharacterToast extends SimpleToastEl {
         .bubble {
           height: var(--rpg-character-toast-height, 142px);
           display: inline-flex;
-          margin-top: 6px;
         }
         .mid {
           line-height: var(--rpg-character-toast-height, 142px);
@@ -170,15 +169,16 @@ export class RPGCharacterToast extends SimpleToastEl {
         }
         .progress {
           width: 100%;
-          border: 1px solid #05e35e;
-          height: 3px;
+          border: 2px solid var(--ddd-theme-default-keystoneYellow);
+          height: 6px;
+          margin-bottom: 4px;
         }
 
         .progress .progress__bar {
           height: 100%;
           width: 0%;
-          background-color: #05e35e;
-          animation-delay: .300s;
+          background-color: var(--ddd-theme-default-keystoneYellow);
+          animation-delay: 0.3s;
           animation-name: fill-bar;
           animation-duration: 3s;
           animation-iteration-count: 1;
@@ -186,8 +186,12 @@ export class RPGCharacterToast extends SimpleToastEl {
         }
 
         @keyframes fill-bar {
-          from {width: 0%;}
-          to {width: 100%;}
+          from {
+            width: 0%;
+          }
+          to {
+            width: 100%;
+          }
         }
       `,
     ];
@@ -252,56 +256,59 @@ export class RPGCharacterToast extends SimpleToastEl {
   }
 
   render() {
-    return html`  <div class="progress"> 
-    <div class="progress__bar" style="animation-duration:${this.duration}ms;"></div>
-  </div>
-  <div class="bubble" part="bubble-wrapper">
-  <span class="bubble leftedge" part="bubble-left"></span>
-      <span class="bubble mid" part="bubble-mid">
-        <slot name="pre"></slot>
-        ${this.future
-          ? html` <future-terminal-text
-              fadein
-              glitch
-              glitch-max="3"
-              glitch-duration="40"
-            ></future-terminal-text>`
-          : html`<div class="message">${this.text}</div>`}
-        ${this.awaitingMerlinInput
-          ? html`<simple-icon-lite
-              class="awaiting-input"
-              icon="hax:loading"
-            ></simple-icon-lite>`
-          : ``}
-        ${!this.merlin
-          ? html`<div class="buttons">
-              <slot></slot
-              ><button class="dismiss" @click="${this.hide}">
-                ${this.closeText}
-              </button>
-            </div>`
-          : ``}
-      </span>
-      <span class="bubble rightedge" part="bubble-right"></span>
-      ${this.merlin
-        ? html` <simple-icon
-            class="merlin"
-            icon="hax:wizard-hat"
-            accent-color="purple"
-          ></simple-icon>`
-        : html`
-            <rpg-character
-              height="180"
-              width="64"
-              seed="${this.userName}"
-              ?fire="${this.fire}"
-              hat="${this.hat}"
-              speed="${this.speed}"
-              part="rpg-character"
-              ?walking="${this.walking}"
-            ></rpg-character>
-          `}
-    </div>`;
+    return html` <div class="progress">
+        <div
+          class="progress__bar"
+          style="animation-duration:${this.duration}ms;"
+        ></div>
+      </div>
+      <div class="bubble" part="bubble-wrapper">
+        <span class="bubble leftedge" part="bubble-left"></span>
+        <span class="bubble mid" part="bubble-mid">
+          <slot name="pre"></slot>
+          ${this.future
+            ? html` <future-terminal-text
+                fadein
+                glitch
+                glitch-max="3"
+                glitch-duration="40"
+              ></future-terminal-text>`
+            : html`<div class="message">${this.text}</div>`}
+          ${this.awaitingMerlinInput
+            ? html`<simple-icon-lite
+                class="awaiting-input"
+                icon="hax:loading"
+              ></simple-icon-lite>`
+            : ``}
+          ${!this.merlin
+            ? html`<div class="buttons">
+                <slot></slot
+                ><button class="dismiss" @click="${this.hide}">
+                  ${this.closeText}
+                </button>
+              </div>`
+            : ``}
+        </span>
+        <span class="bubble rightedge" part="bubble-right"></span>
+        ${this.merlin
+          ? html` <simple-icon
+              class="merlin"
+              icon="hax:wizard-hat"
+              accent-color="purple"
+            ></simple-icon>`
+          : html`
+              <rpg-character
+                height="180"
+                width="64"
+                seed="${this.userName}"
+                ?fire="${this.fire}"
+                hat="${this.hat}"
+                speed="${this.speed}"
+                part="rpg-character"
+                ?walking="${this.walking}"
+              ></rpg-character>
+            `}
+      </div>`;
   }
 
   updated(changedProperties) {

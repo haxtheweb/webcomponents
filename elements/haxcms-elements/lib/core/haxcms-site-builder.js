@@ -605,7 +605,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         memory.editMode === false &&
         memory.interactionDelay >= 3600 &&
         usAction.type === null &&
-        store.cmsSiteEditor.haxCmsSiteEditorUIElement
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot
       ) {
         const editbtn =
           store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector(

@@ -107,7 +107,7 @@ class SiteActiveTags extends LitElement {
       this.__disposer.push(reaction);
     });
   }
-    /**
+  /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
@@ -132,10 +132,13 @@ class SiteActiveTags extends LitElement {
                   case "attributes":
                     switch (mutation.attributeName) {
                       case "tags":
-                        this.tags = haxStore.activeHaxBody.querySelector("page-break").tags;
-                      break;
+                        this.tags =
+                          haxStore.activeHaxBody.querySelector(
+                            "page-break",
+                          ).tags;
+                        break;
                     }
-                  break;
+                    break;
                 }
               });
             });

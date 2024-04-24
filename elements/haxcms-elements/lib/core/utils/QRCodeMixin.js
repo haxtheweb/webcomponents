@@ -86,7 +86,12 @@ const QRCodeMixin = function (SuperClass) {
                       modulesize="4"
                       margin="0"
                       title="${store.activeTitle}"
-                      data="${globalThis.location.href.replace('https://iam', "https://oer") /* @hack needs to be from a registry! */}"
+                      data="${
+                        globalThis.location.href.replace(
+                          "https://iam",
+                          "https://oer",
+                        ) /* @hack needs to be from a registry! */
+                      }"
                     ></q-r>
                   </div>
                 `

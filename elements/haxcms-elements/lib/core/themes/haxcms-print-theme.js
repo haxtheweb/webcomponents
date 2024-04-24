@@ -6,7 +6,6 @@ import { html, css } from "lit";
 import { CleanTwo } from "@lrnwebcomponents/clean-two/clean-two.js";
 import "../../ui-components/layout/site-footer.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
 // a print theme that extends the conventions of CleanTwo bootstrap but can output a very clean print document
 class HAXCMSPrintTheme extends CleanTwo {
   render() {
