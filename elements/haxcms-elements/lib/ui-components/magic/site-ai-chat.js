@@ -32,13 +32,15 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
     if (changedProperties.has("question") && this.question) {
       fetch(this.aiChatSource, {
         method: "POST",
-        mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
+        cache: "no-cache",
+        mode: "no-cors",
+        redirect: "follow",
         body: JSON.stringify({
-          question: this.question,
-          course: this.context,
+          "question": this.question,
+          "course": this.context,
         }),
       })
         .then((d) => (d.ok ? d.json() : null))
