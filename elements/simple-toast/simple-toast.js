@@ -19,7 +19,6 @@ globalThis.SimpleToast.requestAvailability = () => {
   }
   return globalThis.SimpleToast.instance;
 };
-export const SimpleToastStore = globalThis.SimpleToast.requestAvailability();
 
 /**
  * `simple-toast`

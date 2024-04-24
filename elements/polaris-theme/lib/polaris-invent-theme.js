@@ -21,6 +21,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-act
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-ai-chat.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { HAXCMSToastInstance } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-toast.js";

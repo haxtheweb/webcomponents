@@ -109,7 +109,6 @@ export class SuperDaemonToast extends SimpleToastEl {
         .bubble {
           height: 142px;
           display: inline-flex;
-          margin-top: 6px;
         }
         .mid {
           line-height: 142px;

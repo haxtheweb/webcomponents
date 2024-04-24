@@ -17,7 +17,7 @@
   <body>
     <script>
       setTimeout(() => {
-      window.SimpleToast.requestAvailability();
+      globalThis.SimpleToast.requestAvailability();
       let content = document.createElement("span");
       content.innerHTML = '<em>This came from the slot</em>';
       const evt = new CustomEvent("simple-toast-show", {

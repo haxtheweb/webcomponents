@@ -1675,7 +1675,6 @@ class HAXCMSSiteListing extends PolymerElement {
     }, 0);
     globalThis.JSONOutlineSchema.requestAvailability();
     globalThis.SimpleModal.requestAvailability();
-    globalThis.SimpleToast.requestAvailability();
     const jos = this.shadowRoot.querySelector("jos-render");
     jos.map = {
       tag: "course-card",

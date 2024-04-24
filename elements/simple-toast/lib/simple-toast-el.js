@@ -1,7 +1,7 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
-class SimpleToastEl extends SimpleColors {
+class SimpleToastEl extends DDD {
   static get tag() {
     return "simple-toast-el";
   }

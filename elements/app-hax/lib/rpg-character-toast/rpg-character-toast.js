@@ -111,7 +111,6 @@ export class RPGCharacterToast extends SimpleToastEl {
         .bubble {
           height: var(--rpg-character-toast-height, 142px);
           display: inline-flex;
-          margin-top: 6px;
         }
         .mid {
           line-height: var(--rpg-character-toast-height, 142px);
@@ -170,14 +169,17 @@ export class RPGCharacterToast extends SimpleToastEl {
         }
         .progress {
           width: 100%;
-          border: 1px solid #05e35e;
-          height: 3px;
+          border: 2px solid var(--ddd-theme-default-keystoneYellow
+);
+          height: 6px;
+          margin-bottom: 4px;
         }
 
         .progress .progress__bar {
           height: 100%;
           width: 0%;
-          background-color: #05e35e;
+          background-color: var(--ddd-theme-default-keystoneYellow
+);
           animation-delay: .300s;
           animation-name: fill-bar;
           animation-duration: 3s;

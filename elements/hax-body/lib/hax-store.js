@@ -32,9 +32,7 @@ import {
 } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
 import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
-
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/editable-table/editable-table.js";
 import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
 import "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
@@ -2258,7 +2256,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // test for sandboxed env
     let test = globalThis.document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
-    globalThis.SimpleToast.requestAvailability();
     globalThis.document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
     this.revisionHistoryLink = null;
     // mobx
