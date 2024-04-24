@@ -613,8 +613,9 @@ class CleanTwo extends HAXCMSOperationButtons(
       super.firstUpdated(changedProperties);
     }
     document.body.style.overflow = "hidden";
+    this.HAXCMSThemeSettings.themeTop = this.shadowRoot.querySelector('#haxcms-theme-top');
     this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector("main");
+      this.shadowRoot.querySelector(".body-wrapper");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
     // shadow ready which means we should be able to open this even on a slow load

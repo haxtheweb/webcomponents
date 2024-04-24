@@ -58,14 +58,14 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
 
   backToTop() {
     if (
-      this.contentContainer.HAXCMSThemeSettings.scrollTarget &&
-      this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollIntoView
+      this.contentContainer.HAXCMSThemeSettings.themeTop &&
+      this.contentContainer.HAXCMSThemeSettings.themeTop.scrollIntoView
     ) {
       const isSafari = globalThis.safari !== undefined;
       if (isSafari) {
-        this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
+        this.contentContainer.HAXCMSThemeSettings.themeTop.scrollIntoView();
       } else {
-        this.contentContainer.HAXCMSThemeSettings.scrollTarget.scrollIntoView({
+        this.contentContainer.HAXCMSThemeSettings.themeTop.scrollIntoView({
           behavior: "instant",
           block: "start",
           inline: "nearest",
