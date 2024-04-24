@@ -40,7 +40,7 @@ export class RPGCharacterToast extends SimpleToastEl {
       super.styles,
       css`
         :host([opened]) {
-          display: flex;
+          display: block;
         }
 
         future-terminal-text {
@@ -168,6 +168,27 @@ export class RPGCharacterToast extends SimpleToastEl {
         :host([dark-mode]) .rightedge {
           filter: invert(1);
         }
+        .progress {
+          width: 100%;
+          border: 1px solid #05e35e;
+          height: 3px;
+        }
+
+        .progress .progress__bar {
+          height: 100%;
+          width: 0%;
+          background-color: #05e35e;
+          animation-delay: .300s;
+          animation-name: fill-bar;
+          animation-duration: 3s;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
+        }
+
+        @keyframes fill-bar {
+          from {width: 0%;}
+          to {width: 100%;}
+        }
       `,
     ];
   }
@@ -231,8 +252,11 @@ export class RPGCharacterToast extends SimpleToastEl {
   }
 
   render() {
-    return html` <div class="bubble" part="bubble-wrapper">
-      <span class="bubble leftedge" part="bubble-left"></span>
+    return html`  <div class="progress"> 
+    <div class="progress__bar" style="animation-duration:${this.duration}ms;"></div>
+  </div>
+  <div class="bubble" part="bubble-wrapper">
+  <span class="bubble leftedge" part="bubble-left"></span>
       <span class="bubble mid" part="bubble-mid">
         <slot name="pre"></slot>
         ${this.future
