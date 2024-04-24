@@ -285,11 +285,6 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.__link = globalThis.document.createElement("link");
-    this.__link.rel = "stylesheet";
-    this.__link.href =
-      "https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;700&family=Open+Sans&display=swap";
-    globalThis.document.head.appendChild(this.__link);
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector("#contentcontainer");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =

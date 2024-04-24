@@ -36,7 +36,7 @@
       "name": "Polaris - Invent",
       "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
-        "image": "",
+        "image": "assets/banner.jpg",
         "imageAlt": "",
         "imageLink": "",
         "hexCode": "#aeff00",
@@ -73,6 +73,13 @@
         "updated": 1706298962,
         "published": true,
         "locked": false,
+        "theme": {
+          "element": "haxcms-blank-theme",
+          "path": "lrnwebcomponents/elements/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
+          "name": "Blank theme",
+          "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/GreyStyle.svg",
+          "key": "haxcms-blank-theme"
+        },
         "readtime": 1,
         "contentDetails": {
           "headings": "0",
