@@ -1,5 +1,6 @@
-import { LitElement, html, css } from "lit";
+import { html, css, LitElement } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { autorun, toJS } from "mobx";
 import "./course-intro-header.js";
 import "./course-intro-lesson-plans.js";
@@ -20,7 +21,7 @@ export class CourseIntro extends LitElement {
           display: flex;
           justify-content: space-between;
           background: #000;
-          padding: 25px;
+          padding: var(--ddd-spacing-6);
           min-height: 300px;
           align-items: center;
         }

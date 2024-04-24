@@ -1,10 +1,11 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { autorun, toJS } from "mobx";
-class CourseIntroHeader extends LitElement {
+class CourseIntroHeader extends DDD {
   static get properties() {
     return {
       title: { type: String },
@@ -39,7 +40,7 @@ class CourseIntroHeader extends LitElement {
   }
 
   static get styles() {
-    return [
+    return [super.styles,
       css`
         :host {
           display: block;
@@ -48,60 +49,18 @@ class CourseIntroHeader extends LitElement {
         h1,
         h2,
         h3 {
-          font-family: var(--course-intro-header-font-family, "Roboto");
-          margin: 0;
-          color: #fff;
+          font-family: var(--course-intro-header-font-family, var(--ddd-font-navigation));
+          font-weight: var(--ddd-font-weight-light);
+          color: #ffffff;
         }
-
-        @media screen and (min-width: 320px) {
-          h1 {
-            font-size: 2.5em;
-            font-weight: 300;
-          }
+        h1 {
+          font-size: var(--ddd-font-size-3xl);
         }
-
-        @media screen and (min-width: 620px) {
-          h1 {
-            font-size: 3em;
-          }
+        h2 {
+          font-size: var(--ddd-font-size-m);
         }
-
-        @media screen and (min-width: 920px) {
-          h1 {
-            font-size: 5em;
-          }
-        }
-
-        @media screen and (min-width: 320px) {
-          h2 {
-            font-size: 1.5em;
-            font-weight: 300;
-          }
-        }
-
-        @media screen and (min-width: 620px) {
-          h2 {
-            font-size: 2em;
-          }
-        }
-
-        @media screen and (min-width: 920px) {
-          h2 {
-            font-size: 2.5em;
-          }
-        }
-
-        @media screen and (min-width: 320px) {
-          h3 {
-            font-size: 1.2em;
-            font-weight: 300;
-          }
-        }
-
-        @media screen and (min-width: 620px) {
-          h3 {
-            font-size: 1.5em;
-          }
+        h3 {
+          font-size: var(--ddd-font-size-xs);
         }
 
         #header-container {
@@ -132,12 +91,11 @@ class CourseIntroHeader extends LitElement {
             --course-intro-header--header--background-position,
             top center
           );
-          min-height: var(--course-intro-header-min-height, 28vw);
+          min-height: var(--course-intro-header-min-height, 20vw);
         }
 
-        @media screen and (min-width: 320px) {
           #header-icon {
-            background-color: #fff;
+            background-color: light-dark(white, black);
             width: 100px;
             height: 100px;
             border-radius: 50%;
@@ -151,118 +109,45 @@ class CourseIntroHeader extends LitElement {
             margin-left: auto;
             margin-right: auto;
           }
-        }
-
-        @media screen and (min-width: 320px) {
-          simple-icon#course-icon {
-            --simple-icon-width: 90px;
-            --simple-icon-height: 90px;
-            --simple-icon-color: var(
-              --course-intro-header--icon--color,
-              #1e1e1e
-            );
-          }
-        }
-
-        @media screen and (min-width: 620px) {
-          #header-icon {
-            width: 140px;
-            height: 140px;
-            bottom: 86px;
-          }
-        }
-
-        @media screen and (min-width: 620px) {
-          simple-icon#course-icon {
-            --simple-icon-width: 110px;
-            --simple-icon-height: 110px;
-          }
-        }
-
-        @media screen and (min-width: 920px) {
-          #header-icon {
-            width: 210px;
-            height: 210px;
-            border: 8px solid
-              var(--course-intro-header--icon--border-color, #1e1e1e);
-            bottom: 128px;
-          }
-        }
-
-        @media screen and (min-width: 920px) {
-          simple-icon#course-icon {
-            --simple-icon-width: 190px;
-            --simple-icon-height: 190px;
-          }
-        }
-
-        @media screen and (min-width: 1220px) {
-          #header-icon {
-            width: 250px;
-            height: 250px;
-            bottom: 150px;
-          }
-        }
-
-        @media screen and (min-width: 1220px) {
-          simple-icon#course-icon {
-            --simple-icon-width: 200px;
-            --simple-icon-height: 200px;
-          }
-        }
-
-        @media screen and (min-width: 320px) {
+                  
           #info {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 0;
+            padding: 42px 0 18px 0;
             text-transform: uppercase;
-            font-family: Open Sans;
-            margin-top: -110px;
+            margin-top: -154px;
             text-align: center;
           }
-        }
-
-        @media screen and (min-width: 620px) {
-          #info {
-            margin-top: -130px;
+          simple-icon#course-icon {
+            --simple-icon-width: 80px;
+            --simple-icon-height: 80px;
+            --simple-icon-color: light-dark(var(
+              --course-intro-header--icon--color,
+              #1e1e1e
+            ), white);
           }
-        }
 
-        @media screen and (min-width: 920px) {
-          #info {
-            margin-top: -160px;
+          #header-icon {
+            width: 125px;
+            height: 125px;
+            bottom: 100px;
           }
-        }
 
-        @media screen and (min-width: 1220px) {
-          #info {
-            margin-top: -190px;
-          }
-        }
+          @media (max-width: 720px) {
+            simple-icon#course-icon {
+              --simple-icon-width: 64px;
+              --simple-icon-height: 64px;
+            }
 
-        @media screen and (min-width: 320px) {
-          #sub-heading {
-            margin-top: -20px;
+            #header-icon {
+              width: 80px;
+              height: 80px;
+            }
           }
-        }
-
-        @media screen and (min-width: 620px) {
-          #sub-heading {
-            margin-top: -30px;
-          }
-        }
-
-        @media screen and (min-width: 920px) {
-          #sub-heading {
-            margin-top: -40px;
-          }
-        }
 
         #outline-title {
-          padding: 10px 0 0;
-          margin-bottom: -15px;
+          margin: 0;
         }
 
         #header-branding {

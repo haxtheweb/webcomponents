@@ -615,19 +615,6 @@ class PolarisTheme extends HAXCMSOperationButtons(
     });
   }
   /**
-   * life cycle, element is afixed to the DOM
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.__link = document.createElement("link");
-    this.__link.rel = "stylesheet";
-    this.__link.href =
-      "https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;700&family=Open+Sans&family=Press+Start+2P&display=swap";
-    document.head.appendChild(this.__link);
-  }
-  /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {

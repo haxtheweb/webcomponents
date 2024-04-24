@@ -1,9 +1,10 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { autorun, toJS } from "mobx";
 import "./course-intro-lesson-plan.js";
 
-class CourseIntroLessonPlans extends LitElement {
+class CourseIntroLessonPlans extends DDD {
   static get properties() {
     return {
       items: { type: Array },
@@ -15,21 +16,6 @@ class CourseIntroLessonPlans extends LitElement {
     autorun(() => {
       if (store.routerManifest && store.routerManifest.items) {
         this._itemsChanged(toJS(store.routerManifest.items));
-      }
-    });
-    autorun(() => {
-      const badDevice = toJS(store.badDevice);
-      // good device, we can inject font we use
-      if (badDevice === false) {
-        // Add the included Lato font-family
-        let link = globalThis.document.createElement("link");
-        link.setAttribute(
-          "href",
-          "https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap",
-        );
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("fetchpriority", "low");
-        globalThis.document.head.appendChild(link);
       }
     });
   }
@@ -51,11 +37,13 @@ class CourseIntroLessonPlans extends LitElement {
           );
           padding-bottom: 40px;
           min-height: 60vh;
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-light);
         }
 
         @media screen and (min-width: 320px) {
           #plans-container {
-            background: white;
+            background: light-dark(white, black);
             margin: 0 auto;
             max-width: 400px;
           }
