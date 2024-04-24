@@ -328,7 +328,9 @@ class SimpleFieldsLite extends LitElement {
     if (globalThis.WCGlobalBasePath) {
       this.basePath = globalThis.WCGlobalBasePath;
     } else {
-      this.basePath = new URL("./../../../", import.meta.url).href;
+      this.basePath =
+        new URL("./simple-fields-lite.js", import.meta.url).href +
+        "/../../../../";
     }
     this.disableAutofocus = false;
     this.language = "en";

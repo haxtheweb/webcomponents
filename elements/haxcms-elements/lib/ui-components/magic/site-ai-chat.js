@@ -1,4 +1,3 @@
-
 /*
 curl -X POST http://ec2-44-205-57-53.compute-1.amazonaws.com/handle-query \
      -H "Content-Type: application/json" \
@@ -19,39 +18,49 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
     this.question = null;
     this.answer = null;
     this.context = "phys211";
-    this.aiChatSource = "http://ec2-44-205-57-53.compute-1.amazonaws.com/handle-query";
+    this.aiChatSource =
+      "http://ec2-44-205-57-53.compute-1.amazonaws.com/handle-query";
     this.dataPulse = "1";
   }
 
   askQuestion() {
     this.question = this.shadowRoot.querySelector("#question").value;
-    this.shadowRoot.querySelector("#question").value = "..."
+    this.shadowRoot.querySelector("#question").value = "...";
   }
 
   updated(changedProperties) {
-    if (changedProperties.has('question') && this.question) {
+    if (changedProperties.has("question") && this.question) {
       fetch(this.aiChatSource, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        question: this.question,
-        course: this.context
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question: this.question,
+          course: this.context,
+        }),
       })
-      }).then((d) => d.ok ? d.json() : null).then((response) => {
-        console.log(response);
-        this.answer = response;
-      });
+        .then((d) => (d.ok ? d.json() : null))
+        .then((response) => {
+          console.log(response);
+          this.answer = response;
+        });
     }
   }
-  
+
   render() {
     return html`
-    <simple-icon-button-lite icon="hax:wizard-hat" @click="${this.openChat}">Ask a question</simple-icon-button-lite>
+      <simple-icon-button-lite icon="hax:wizard-hat" @click="${this.openChat}"
+        >Ask a question</simple-icon-button-lite
+      >
       <div class="chat">
-        <input id="question" type="text"><button id="submit" @click="${this.askQuestion}">Ask question</button>
+        <input id="question" type="text" /><button
+          id="submit"
+          @click="${this.askQuestion}"
+        >
+          Ask question
+        </button>
         <div>${this.answer}</div>
       </div>
     `;
@@ -68,7 +77,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
           display: block;
           position: absolute;
           bottom: 10px;
-          right:10px;
+          right: 10px;
         }
         :host([opened]) {
           background-color: orange;
@@ -79,7 +88,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
           bottom: 100px;
           z-index: 10000000;
         }
-        .chat{
+        .chat {
           display: none;
         }
         :host([opened]) .chat {
@@ -91,17 +100,17 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
           --simple-icon-width: 48px;
           color: var(--ddd-primary-13);
         }
-      `
-    ]
+      `,
+    ];
   }
-  
+
   static get properties() {
     return {
       question: { type: String },
       aiChatSource: { type: String },
       context: { type: String },
-      opened: { type: Boolean, reflect: true},
-    }
+      opened: { type: Boolean, reflect: true },
+    };
   }
 }
 

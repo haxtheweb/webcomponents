@@ -16,7 +16,8 @@ class DOCXFileSystemBroker extends FileSystemBroker {
   }
   constructor() {
     super();
-    this.libPath = new URL(`./`, import.meta.url).href;
+    this.libPath =
+      new URL("./docx-file-system-broker.js", import.meta.url).href + "/../";
     this.libPath += "mammoth/";
     ESGlobalBridgeStore.load(
       "mammoth",

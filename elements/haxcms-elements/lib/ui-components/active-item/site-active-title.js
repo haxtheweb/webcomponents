@@ -102,10 +102,15 @@ class SiteActiveTitle extends LitElement {
                         break;
                       case "icon":
                       case "page-type":
-                        if (haxStore.activeHaxBody.querySelector("page-break").icon) {
-                          this.icon = haxStore.activeHaxBody.querySelector("page-break").icon;
-                        }
-                        else if (
+                        if (
+                          haxStore.activeHaxBody.querySelector("page-break")
+                            .icon
+                        ) {
+                          this.icon =
+                            haxStore.activeHaxBody.querySelector(
+                              "page-break",
+                            ).icon;
+                        } else if (
                           haxStore.activeHaxBody.querySelector("page-break")
                             .pageType
                         ) {

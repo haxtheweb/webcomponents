@@ -31,7 +31,9 @@ export class SortingQuestion extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/sorting-question.es.json", import.meta.url).href +
+        "/../",
       locales: ["he", "ja", "es"],
     });
     //set order to be orginal order then scramble the options

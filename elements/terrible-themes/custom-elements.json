@@ -135,7 +135,7 @@
         {
           "name": "HAXCMSThemeSettings",
           "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
         },
         {
           "name": "HAXCMSThemeWiring"
@@ -353,7 +353,7 @@
         {
           "name": "HAXCMSThemeSettings",
           "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
         },
         {
           "name": "HAXCMSThemeWiring"
@@ -571,7 +571,7 @@
         {
           "name": "HAXCMSThemeSettings",
           "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
         },
         {
           "name": "HAXCMSThemeWiring"
@@ -811,7 +811,7 @@
         {
           "name": "HAXCMSThemeSettings",
           "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
         },
         {
           "name": "HAXCMSThemeWiring"
@@ -1051,7 +1051,7 @@
         {
           "name": "HAXCMSThemeSettings",
           "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
         },
         {
           "name": "HAXCMSThemeWiring"
@@ -1269,7 +1269,7 @@
         {
           "name": "HAXCMSThemeSettings",
           "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
         },
         {
           "name": "HAXCMSThemeWiring"
@@ -1487,7 +1487,7 @@
         {
           "name": "HAXCMSThemeSettings",
           "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
         },
         {
           "name": "HAXCMSThemeWiring"
@@ -1705,7 +1705,7 @@
         {
           "name": "HAXCMSThemeSettings",
           "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
         },
         {
           "name": "HAXCMSThemeWiring"
@@ -1923,7 +1923,7 @@
         {
           "name": "HAXCMSThemeSettings",
           "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
         },
         {
           "name": "HAXCMSThemeWiring"

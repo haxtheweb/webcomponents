@@ -155,7 +155,8 @@ class HaxAutoloader extends HAXElement(LitElement) {
                   ),
                 );
                 fileLocation = `${
-                  new URL("./../../../", import.meta.url).href
+                  new URL("./hax-autoloader.js", import.meta.url).href +
+                  "/../../../../"
                 }${nameLocation}`;
               }
               import(fileLocation)

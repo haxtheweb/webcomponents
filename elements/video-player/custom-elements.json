@@ -3,36 +3,23 @@
   "tags": [
     {
       "name": "lecture-anchor",
-      "description": "Attributes:\n\n  * `header` {`boolean`} - \n\n  * `headingText` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `color` {`string`} - \n\n  * `timestamp` {`number`} - \n\n  * `text` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `header` {`boolean`} - \n\n  * `headingText` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `color` {`string`} - \n\n  * `timestamp` {`number`} - \n\n  * `text` {`string`} - \n\n  * `jumbotronHeading` {`string`} - \n\n  * `jumbotronContent` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `icon` {`string`} - \n\n  * `value` {`number`} - \n\n  * `target` {`string`} - \n\n  * `associatedID` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `value` {`number`} - \n\n  * `jumbotronHeading` {`string`} - \n\n  * `jumbotronContent` {`string`} - \n\n  * `target` {`string`} - \n\n  * `associatedID` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
-        {
-          "name": "header",
-          "description": "`header` {`boolean`} - \n\nProperty: header",
-          "valueSet": "v"
-        },
-        {
-          "name": "headingText",
-          "description": "`headingText` {`string`} - \n\nProperty: headingText"
-        },
-        {
-          "name": "target",
-          "description": "`target` {`string`} - \n\nProperty: target"
-        },
         {
           "name": "icon",
           "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: icons:flag"
         },
         {
-          "name": "color",
-          "description": "`color` {`string`} - \n\nProperty: color\n\nDefault: var(--ddd-theme-default-original87Pink);"
+          "name": "value",
+          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
         },
         {
-          "name": "timestamp",
-          "description": "`timestamp` {`number`} - \n\nProperty: timestamp\n\nDefault: 0"
+          "name": "target",
+          "description": "`target` {`string`} - \n\nProperty: target\n\nDefault: video-player"
         },
         {
-          "name": "text",
-          "description": "`text` {`string`} - \n\nProperty: text\n\nDefault: Lecture Anchor"
+          "name": "associatedID",
+          "description": "`associatedID` {`string`} - \n\nProperty: associatedID\n\nDefault: "
         },
         {
           "name": "accent-color",
@@ -47,15 +34,24 @@
     },
     {
       "name": "lecture-player",
-      "description": "Events:\n\n  * `simple-modal-show` {`CustomEvent<{ elements: { content: HTMLDivElement; }; }>`} - \n\nAttributes:\n\n  * `activeIndex` {`string`} - \n\n  * `source` {`string`} - \n\nProperties:\n\n  * `activeIndex` {`string`} - \n\n  * `source` {`string`} - ",
+      "description": "Events:\n\n  * `simple-modal-show` {`CustomEvent<{ elements: { content: HTMLDivElement; }; }>`} - \n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `open` {`boolean`} - \n\n  * `associatedNodes` - \n\n  * `activeIndex` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `open` {`boolean`} - \n\n  * `associatedNodes` - \n\n  * `videoPlayer` - \n\n  * `videoInterval` - \n\n  * `activeIndex` {`string`} - ",
       "attributes": [
-        {
-          "name": "activeIndex",
-          "description": "`activeIndex` {`string`} - \n\nProperty: activeIndex"
-        },
         {
           "name": "source",
           "description": "`source` {`string`} - \n\nProperty: source"
+        },
+        {
+          "name": "open",
+          "description": "`open` {`boolean`} - \n\nProperty: open",
+          "valueSet": "v"
+        },
+        {
+          "name": "associatedNodes",
+          "description": "`associatedNodes` - \n\nProperty: associatedNodes"
+        },
+        {
+          "name": "activeIndex",
+          "description": "`activeIndex` {`string`} - \n\nProperty: activeIndex\n\nDefault: null"
         },
         {
           "name": "onsimple-modal-show",

@@ -909,7 +909,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * it came from.
    */
   async _handleDynamicImports(items, haxAutoloader) {
-    let basePath = new URL("./../../../", import.meta.url).href;
+    let basePath =
+      new URL("./hax-store.js", import.meta.url).href + "/../../../../";
     if (globalThis.WCGlobalBasePath) {
       basePath = globalThis.WCGlobalBasePath;
     }

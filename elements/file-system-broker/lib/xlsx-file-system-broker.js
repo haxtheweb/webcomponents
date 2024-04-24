@@ -18,7 +18,8 @@ class XLSXFileSystemBroker extends FileSystemBroker {
     super();
     this.XLSX = null;
     // support global path value we use for resolving these on CDNs
-    this.libPath = new URL(`./`, import.meta.url).href;
+    this.libPath =
+      new URL("./xlsx-file-system-broker.js", import.meta.url).href + "/../";
     this.libPath += "xlsx/";
     ESGlobalBridgeStore.load(
       "xlsx",

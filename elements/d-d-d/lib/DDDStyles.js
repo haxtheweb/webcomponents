@@ -43,7 +43,7 @@ globalThis.addEventListener(
         // everything that allows for advacned should be able to apply spacing
         // this stuff floats to the top of those options
         if (!props.hideDefaultSettings && !inline) {
-          if (['media-image', 'img'].includes(tag)) {
+          if (["media-image", "img"].includes(tag)) {
             props.settings.advanced.push({
               attribute: "data-float-position",
               title: "Float Position",
@@ -55,8 +55,7 @@ globalThis.addEventListener(
                 right: "Right",
               },
             });
-          }
-          else {
+          } else {
             props.settings.advanced.push({
               attribute: "data-text-align",
               title: "Text align",
@@ -77,9 +76,7 @@ globalThis.addEventListener(
             description: "Padding for added aesthetics",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [
-              ...HAXOptionSampleFactory("padding"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("padding")],
           });
           props.settings.advanced.push({
             attribute: "data-margin",
@@ -87,9 +84,7 @@ globalThis.addEventListener(
             description: "Margin for added aesthetics",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [
-              ...HAXOptionSampleFactory("margin"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("margin")],
           });
         }
         // design treatments are rather open ended but should be high up for things that have them
@@ -101,8 +96,7 @@ globalThis.addEventListener(
             props.settings.configure.push({
               attribute: "data-design-treatment",
               title: "Design treatment",
-              description:
-              "Minor aesthetic treatments for emphasis",
+              description: "Minor aesthetic treatments for emphasis",
               inputMethod: "radio",
               itemsList: [
                 ...HAXOptionSampleFactory("design-treatment").filter((item) =>
@@ -137,8 +131,7 @@ globalThis.addEventListener(
             props.settings.configure.push({
               attribute: "data-design-treatment",
               title: "Design treatment",
-              description:
-                "Minor aesthetic treatments for emphasis",
+              description: "Minor aesthetic treatments for emphasis",
               inputMethod: "radio",
               itemsList: [
                 ...HAXOptionSampleFactory("design-treatment").filter((item) =>
@@ -152,9 +145,7 @@ globalThis.addEventListener(
               title: "Instructional Context",
               description: "Indicated to users visually",
               inputMethod: "radio",
-              itemsList: [
-                ...HAXOptionSampleFactory("instructional-action"),
-              ],
+              itemsList: [...HAXOptionSampleFactory("instructional-action")],
             });
           }
         }
@@ -167,8 +158,7 @@ globalThis.addEventListener(
             description: "Offset items visually for aesthetic purposes",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [              ...HAXOptionSampleFactory("accent"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("accent")],
           });
         }
         // things allowed to have primary
@@ -199,9 +189,7 @@ globalThis.addEventListener(
             description:
               "Primary color to apply color, often for meaning or aesthetic",
             inputMethod: "radio",
-            itemsList: [
-              ...HAXOptionSampleFactory("primary"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("primary")],
           });
         }
         // textual controls
@@ -211,21 +199,16 @@ globalThis.addEventListener(
             title: "Font family",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [
-              ...HAXOptionSampleFactory("font-family"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("font-family")],
           });
 
           props.settings.advanced.push({
             attribute: "data-font-weight",
             title: "Font weight",
-            description:
-              "Ensure it is only for aesthetic purposes",
+            description: "Ensure it is only for aesthetic purposes",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [
-              ...HAXOptionSampleFactory("font-weight"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("font-weight")],
           });
 
           props.settings.advanced.push({
@@ -234,9 +217,7 @@ globalThis.addEventListener(
             description: "Ensure sizing is only for aesthetic purposes",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [
-              ...HAXOptionSampleFactory("font-size"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("font-size")],
           });
         }
         // things that would give a card appearance
@@ -247,9 +228,7 @@ globalThis.addEventListener(
             description: "Border radius to apply",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [
-              ...HAXOptionSampleFactory("border-radius"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("border-radius")],
           });
           props.settings.advanced.push({
             attribute: "data-border",
@@ -257,9 +236,7 @@ globalThis.addEventListener(
             description: "Thickness of the border",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [
-              ...HAXOptionSampleFactory("border"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("border")],
           });
           props.settings.advanced.push({
             attribute: "data-box-shadow",
@@ -267,9 +244,7 @@ globalThis.addEventListener(
             description: "Subtly raises off the page",
             inputMethod: "select",
             inputMethod: "radio",
-            itemsList: [
-              ...HAXOptionSampleFactory("box-shadow"),
-            ],
+            itemsList: [...HAXOptionSampleFactory("box-shadow")],
           });
         }
         return props;
@@ -526,16 +501,24 @@ export function HAXOptionSampleFactory(type) {
   return Object.keys(ApplicationAttributeData[type]).map((key) => {
     return {
       value: key,
-      html: ["primary","accent"].includes(type) ? html`<d-d-d-sample @click="${updatePreviewColorVar}" type="${type}" option="${key}"></d-d-d-sample>` : html`<d-d-d-sample type="${type}" option="${key}"></d-d-d-sample>`,
+      html: ["primary", "accent"].includes(type)
+        ? html`<d-d-d-sample
+            @click="${updatePreviewColorVar}"
+            type="${type}"
+            option="${key}"
+          ></d-d-d-sample>`
+        : html`<d-d-d-sample type="${type}" option="${key}"></d-d-d-sample>`,
     };
   });
 }
 
 function updatePreviewColorVar(e) {
   let target = e.target;
-  globalThis.document.body.style.setProperty(`--ddd-sample-theme-${target.type}`, `var(--ddd-${target.type}-${target.option})`);
+  globalThis.document.body.style.setProperty(
+    `--ddd-sample-theme-${target.type}`,
+    `var(--ddd-${target.type}-${target.option})`,
+  );
 }
-
 
 // attributes need to be driven from a cannonical list
 // @note this may need ways of overriding it in the future but at least
@@ -574,9 +557,9 @@ export const DDDFonts = [
 ];
 // CSS variables which is most of the system needed
 export const DDDVariables = css`
-:root {
-  color-scheme: light dark;
-}
+  :root {
+    color-scheme: light dark;
+  }
   :root,
   html,
   body,
@@ -1001,8 +984,14 @@ export const DDDVariables = css`
     font-size: var(--ddd-theme-body-font-size);
     font-weight: var(--ddd-font-weight-regular);
     letter-spacing: normal;
-    --simple-modal-content-container-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-    --simple-modal-content-container-background: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+    --simple-modal-content-container-color: light-dark(
+      var(--ddd-primary-4),
+      var(--ddd-accent-6)
+    );
+    --simple-modal-content-container-background: light-dark(
+      var(--ddd-accent-6),
+      var(--ddd-primary-4)
+    );
   }
   /* basic dark mode support */
   body:not(.dark-mode) {
@@ -1028,7 +1017,7 @@ export const DDDDataAttributes = [
     }
 
     /* Float positioning for larger devices */
-    @media (min-width:1440px) {
+    @media (min-width: 1440px) {
       [data-float-position="left"] {
         float: left;
         margin: var(--ddd-spacing-8) var(--ddd-spacing-8) 0 var(--ddd-spacing-4);
@@ -1045,8 +1034,14 @@ export const DDDDataAttributes = [
         font-style: normal;
         position: absolute;
         padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-        color: var(--ddd-theme-font-color, var(--ddd-theme-default-white, #fff));
-        background-color: var(--ddd-theme-default-info, rgba(175, 184, 193, 0.2));
+        color: var(
+          --ddd-theme-font-color,
+          var(--ddd-theme-default-white, #fff)
+        );
+        background-color: var(
+          --ddd-theme-default-info,
+          rgba(175, 184, 193, 0.2)
+        );
         font-size: var(--ddd-theme-body-font-size);
         font-weight: var(--ddd-font-weight-regular);
         border-radius: var(--ddd-radius-xs);
@@ -1491,7 +1486,7 @@ export const DDDReset = css`
   }
   p {
     margin: var(--ddd-spacing-6) 0;
-  } 
+  }
   p[data-accent],
   blockquote[data-accent],
   ol[data-accent],
@@ -1566,7 +1561,10 @@ export const DDDReset = css`
   a:any-link,
   a:-webkit-any-link {
     line-break: auto;
-    color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+    color: light-dark(
+      var(--ddd-theme-default-link),
+      var(--ddd-theme-default-linkLight)
+    );
     font-weight: var(--ddd-font-weight-bold);
     text-decoration: none;
     background-color: var(--ddd-theme-accent);
@@ -1659,13 +1657,14 @@ export const DDDReset = css`
   [data-hax-ray][data-primary],
   [data-hax-ray][data-padding],
   [data-hax-ray][data-margin] {
-    transition: padding .3s ease-in-out,
-    margin .3s ease-in-out,
-    border .3s ease-in-out,
-    color .3s ease-in-out,
-    box-shadow .3s ease-in-out,
-    border-radius .3s ease-in-out,
-    background-color .3s ease-in-out;
+    transition:
+      padding 0.3s ease-in-out,
+      margin 0.3s ease-in-out,
+      border 0.3s ease-in-out,
+      color 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out,
+      border-radius 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
   }
 
   [data-design-treatment="vert"] {
@@ -1985,7 +1984,10 @@ export const DDDReset = css`
     display: flex;
     font-size: var(--ddd-theme-h4-font-size);
     font-weight: var(--ddd-font-weight-bold);
-    color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+    color: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-theme-default-linkLight)
+    );
     cursor: pointer;
     text-wrap: wrap;
     align-items: center;
@@ -1999,7 +2001,10 @@ export const DDDReset = css`
     content: "+";
     margin-left: auto;
     text-align: right;
-    color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+    color: light-dark(
+      var(--ddd-theme-default-link),
+      var(--ddd-theme-default-linkLight)
+    );
     font-weight: var(--ddd-font-weight-regular);
     font-size: var(--ddd-font-size-m);
     line-height: 1;
@@ -2015,7 +2020,10 @@ export const DDDReset = css`
     margin: var(--ddd-spacing-6) 0;
   }
   details[open] > summary {
-    color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+    color: light-dark(
+      var(--ddd-theme-default-link),
+      var(--ddd-theme-default-linkLight)
+    );
   }
   details[open] > summary::after {
     content: "--";
@@ -2030,8 +2038,14 @@ export const DDDReset = css`
     padding: 2px var(--ddd-spacing-1); /* breaking DDD spacing sys on purpose for code */
     margin: 0 var(--ddd-spacing-1);
     font-size: calc(var(--ddd-theme-body-font-size) - var(--ddd-spacing-1));
-    background-color: var(--ddd-theme-code-background-color, light-dark(var(--ddd-theme-default-limestoneLight), black));
-    color: var(--ddd-theme-code-color, light-dark(black , var(--ddd-theme-default-limestoneLight)));
+    background-color: var(
+      --ddd-theme-code-background-color,
+      light-dark(var(--ddd-theme-default-limestoneLight), black)
+    );
+    color: var(
+      --ddd-theme-code-color,
+      light-dark(black, var(--ddd-theme-default-limestoneLight))
+    );
     line-height: 1;
     border-radius: var(--ddd-radius-xs);
     border: var(--ddd-border-md);
@@ -4061,7 +4075,10 @@ export const DDDBreadcrumb = css`
     gap: var(--ddd-spacing-5);
     display: flex;
     flex-flow: row;
-    color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+    color: light-dark(
+      var(--ddd-theme-default-link),
+      var(--ddd-theme-default-linkLight)
+    );
   }
   .breadcrumb li::marker {
     color: black;

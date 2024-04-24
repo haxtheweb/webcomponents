@@ -3,11 +3,16 @@
   "tags": [
     {
       "name": "hax-cloud",
-      "description": "Attributes:\n\n  * `step` {`number`} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `step` {`number`} - \n\n  * `fileRoot` {`string`} - \n\n  * `fileObjects` {`never[]`} - ",
+      "description": "Attributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `windowControllers` - \n\n  * `fileRoot` {`string`} - \n\n  * `fileObjects` {`never[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "step",
-          "description": "`step` {`number`} - \n\nProperty: step\n\nDefault: 1"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }

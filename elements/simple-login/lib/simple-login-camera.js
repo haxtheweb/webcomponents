@@ -12,7 +12,9 @@ class SimpleLoginCamera extends HTMLElement {
     if (globalThis.WCGlobalBasePath) {
       this.basePath = globalThis.WCGlobalBasePath;
     } else {
-      this.basePath = new URL("./../../../", import.meta.url).href;
+      this.basePath =
+        new URL("./simple-login-camera.js", import.meta.url).href +
+        "/../../../../";
     }
     this.t = {
       record: "Record",
@@ -25,7 +27,9 @@ class SimpleLoginCamera extends HTMLElement {
         detail: {
           context: this,
           namespace: "simple-login",
-          localesPath: new URL("../locales", import.meta.url).href,
+          localesPath:
+            new URL("../locales/simple-login.es.json", import.meta.url).href +
+            "/../",
           updateCallback: "render",
           locales: ["es"],
         },

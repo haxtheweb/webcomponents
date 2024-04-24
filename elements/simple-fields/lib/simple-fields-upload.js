@@ -206,7 +206,9 @@ class SimpleFieldsUpload extends I18NMixin(
     this.registerLocalization({
       context: this,
       namespace: "simple-fields",
-      localesPath: new URL("../locales", import.meta.url).href,
+      localesPath:
+        new URL("../locales/simple-fields.es.json", import.meta.url).href +
+        "/../",
       locales: ["es"],
     });
     this.hideInput = false;

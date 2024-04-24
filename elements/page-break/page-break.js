@@ -455,7 +455,10 @@ export class PageBreak extends IntersectionObserverMixin(
         >${this.title}</a
       >
       <hr class="mid" />
-      <div class="text"><simple-icon-lite icon="${this.iconType}"></simple-icon-lite>${this.t.selectToEditPageDetails}</div>
+      <div class="text">
+        <simple-icon-lite icon="${this.iconType}"></simple-icon-lite>${this.t
+          .selectToEditPageDetails}
+      </div>
       ${this.locked
         ? html`<simple-icon-button-lite
             @click="${this.haxClickLockInPage}"

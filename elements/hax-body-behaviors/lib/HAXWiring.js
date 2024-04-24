@@ -385,7 +385,9 @@ export class HAXWiring {
             if (globalThis.WCGlobalBasePath) {
               basePath = globalThis.WCGlobalBasePath;
             } else {
-              basePath = new URL("./../../../", import.meta.url).href;
+              basePath =
+                new URL("./HAXWiring.js", import.meta.url).href +
+                "/../../../../";
             }
             import(`${basePath}${props.gizmo.iconLib}`);
           }

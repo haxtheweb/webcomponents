@@ -42,8 +42,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
             var(--map-menu-item-a-color, inherit)
           );
           text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
-          background-color: var(
-            --map-menu-item-a-active-background-color          );
+          background-color: var(--map-menu-item-a-active-background-color);
         }
 
         #link {
@@ -182,7 +181,8 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "map-menu",
-      localesPath: new URL("../locales", import.meta.url).href,
+      localesPath:
+        new URL("../locales/map-menu.es.json", import.meta.url).href + "/../",
       locales: ["es"],
     });
     setTimeout(() => {

@@ -6,7 +6,7 @@ class GridPlateLayoutOptions {
   constructor() {
     this.resizeTimer = null;
     this.layouts = {
-      "1": {
+      1: {
         columnLayout: "1: full width",
         xs: ["100%"],
         sm: ["100%"],
@@ -403,11 +403,7 @@ class GridPlate extends LitElement {
         description: "Layout material in simple columns",
         icon: "hax:3-3-3-3",
         color: "grey",
-        tags: [
-          "Layout",
-          "content",
-          "grid",
-        ],
+        tags: ["Layout", "content", "grid"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
