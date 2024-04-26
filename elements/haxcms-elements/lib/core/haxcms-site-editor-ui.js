@@ -2372,6 +2372,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+    SuperDaemonInstance.defineOption({
+      title: "HAX Labs",
+      icon: "hax:hax2022",
+      tags: ["Developer", "labs", "experiments"],
+      eventName: "super-daemon-element-method",
+      path: ">hax/labs",
+      context: [">"],
+      value: {
+        target: this,
+        method: "enableLabExperiments",
+        args: [],
+      },
+    });
     // force item to load schema
     SuperDaemonInstance.defineOption({
       title: "Go to site",
@@ -2438,6 +2451,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: true,
       }),
     );
+  }
+  // enable lab experiments
+  enableLabExperiments() {
+    // lecture player
+    import("@lrnwebcomponents/video-player/lib/lecture-player.js");
+    // AI chat bot
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-ai-chat.js")
   }
 
   goToLocation(location) {

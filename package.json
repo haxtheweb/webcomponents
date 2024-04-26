@@ -2,9 +2,9 @@
   "name": "lrnwebcomponents",
   "description": "ELMSLN produced web components for any project",
   "wcfactory": {
-    "askSASS": true,
-    "askProps": true,
-    "askHAX": true,
+    "askSASS": false,
+    "askProps": false,
+    "askHAX": false,
     "monorepo": "lrnwebcomponents",
     "orgNpm": "@lrnwebcomponents",
     "orgGit": "elmsln",
@@ -13,7 +13,8 @@
       "name": "rh-sass",
       "pkg": "@rhelements/rh-sass",
       "path": "rh-sass/rh-sass"
-    }
+    },
+    "license": "Apache-2.0"
   },
   "author": {
     "name": "haxtheweb",

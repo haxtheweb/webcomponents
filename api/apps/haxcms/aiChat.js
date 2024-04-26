@@ -77,9 +77,9 @@ export default async function handler(req, res) {
       return {answer: "Offline", question: body.question, status: 500};
     });
     let options = {};
-    // 15 minute cache default
+    // 1 hour cache default
     if (!body.cacheBuster) {
-      options.cache = 900;
+      options.cache = 3600;
     }
     res = stdResponse(res, data, options);
   }

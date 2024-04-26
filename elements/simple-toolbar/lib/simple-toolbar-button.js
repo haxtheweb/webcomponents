@@ -6,11 +6,7 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import {
-  DDDSuper,
-  DDDPulseEffectSuper,
-} from "@lrnwebcomponents/d-d-d/d-d-d.js";
-
+import { DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 export const SimpleToolbarGlobalProperties = {
   /**
    * override default centered alignment of button: "left" or "right" default center

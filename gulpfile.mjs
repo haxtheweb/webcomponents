@@ -1,8 +1,6 @@
 // kittens cry but really really really crude HTML DOM polyfill for nodejs
 import "@lrnwebcomponents/utils/lib/nodejs-fake-dom-polyfill.cjs";
 // load our wiring class
-import { HAXWiring } from './elements/hax-body-behaviors/lib/HAXWiring.js';
-
 import * as tmp from 'gulp';
 const gulp = tmp.default;
 import * as tmp2 from 'gulp-concat-util';
@@ -11,6 +9,129 @@ import * as tmp3 from "fs";
 const fs = tmp3.default;
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
+
+// fake class
+
+class HAXWiring {
+  /**
+ * Return a haxProperties prototype / example structure
+ */
+  prototypeHaxProperties = () => {
+    // example properties valid for HAX context menu.
+    let props = {
+      api: "1",
+      type: "element",
+      editingElement: "core",
+      hideDefaultSettings: false,
+      canScale: true,
+
+      canEditSource: true,
+      contentEditable: false,
+      gizmo: {
+        title: "Tag name",
+        description: "",
+        icon: "icons:android",
+        color: "purple",
+        tags: ["Other"],
+        handles: [
+          {
+            type: "data",
+            type_exclusive: false,
+            url: "src",
+          },
+        ],
+        meta: {
+          author: "auto",
+        },
+        requiresChildren: false,
+        requiresParent: false,
+      },
+      settings: {
+        configure: [
+          {
+            slot: "",
+            title: "Inner content",
+            description: "The slotted content that lives inside the tag",
+            inputMethod: "textfield",
+            icon: "android",
+            required: true,
+            validationType: "text",
+          },
+          {
+            slot: "button",
+            title: "Button content",
+            description: "The content that can override the button",
+            inputMethod: "textfield",
+            icon: "android",
+            required: true,
+            validationType: "text",
+          },
+          {
+            property: "title",
+            title: "Title",
+            description: "",
+            inputMethod: "textfield",
+            icon: "android",
+            required: true,
+            validationType: "text",
+          },
+          {
+            property: "primaryColor",
+            title: "Title",
+            description: "",
+            inputMethod: "textfield",
+            icon: "android",
+            required: false,
+            validation: ".*",
+            validationType: "text",
+          },
+        ],
+        advanced: [
+          {
+            property: "secondaryColor",
+            title: "Secondary color",
+            description:
+              "An optional secondary color used in certain edge cases.",
+            inputMethod: "colorpicker",
+            icon: "color",
+          },
+          {
+            property: "endPoint",
+            title: "API endpoint",
+            description:
+              "An optional endpoint to hit and load in more data dymaically.",
+            inputMethod: "textfield",
+            icon: "android",
+            validation: "[a-z0-9]",
+            validationType: "url",
+          },
+        ],
+        developer: [],
+      },
+      saveOptions: {
+        wipeSlot: false,
+        unsetAttributes: ["end-point", "secondary-color"],
+      },
+      documentation: {
+        howTo: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
+        purpose: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
+      },
+      demoSchema: [
+        {
+          tag: "my-tag",
+          content: "<p>inner html</p>",
+          properties: {
+            endPoint: "https://cdn2.thecatapi.com/images/9j5.jpg",
+            primaryColor: "yellow",
+            title: "A cat",
+          },
+        },
+      ],
+    };
+    return props;
+  };
+}
+
 // merge the web component factory libraries the user has installed 
 gulp.task("default", () => {
   return gulp
