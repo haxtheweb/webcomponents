@@ -40,17 +40,6 @@ class LecturePlayer extends DDDSuper(LitElement) {
     super();
     this.associatedNodes = new Object();
     this.videoPlayer = this.querySelector("video-player").outerHTML;
-    window.addEventListener("DOMContentLoaded", () => {
-      const flags = this.querySelectorAll("lecture-anchor");
-      flags.forEach((flag) => {
-        console.log(flag.associatedID);
-        this.associatedNodes[flag.value] = flag.associatedID;
-      });
-      console.log(this.associatedNodes);
-      for (const [key, value] of Object.entries(this.associatedNodes)) {
-        console.log(`${key}: ${value}`);
-      }
-    });
     this.videoInterval = null;
     this.activeIndex = null;
   }
@@ -64,6 +53,26 @@ class LecturePlayer extends DDDSuper(LitElement) {
     };
   }
 
+  firstUpdated(){
+    const lectureAnchors = this.querySelectorAll("[data-lecture-slide]");
+    console.log(lectureAnchors);
+    const anchorsArray = Array.from(lectureAnchors);
+    anchorsArray.sort((a, b) => {
+      const timeA = parseInt(a.getAttribute("data-value"), 10);
+      const timeB = parseInt(b.getAttribute("data-value"), 10);
+      return timeA - timeB;
+    });
+    anchorsArray.forEach((anchor, index) => {
+      anchor.id = `slide-${index + 1}`;
+      this.associatedNodes[anchor.id] = anchor.getAttribute("data-value");
+      console.log(anchor.id, anchor.getAttribute("data-value"));
+      anchor.addEventListener("click", () => {
+        this.activeIndex = anchor.id;
+      });
+    });
+    this.setJumbotronAttributes();
+  }
+
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
@@ -75,9 +84,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
         if (!document.querySelector("video-player").playing) {
           this.play;
         }
-        console.log("activeIndex changed to: ", this.activeIndex);
+        console.log("activeIndex changed to:", this.activeIndex);
         console.log(document.querySelector("#" + this.activeIndex));
-        this.seek(this.querySelector("#" + this.activeIndex).value);
+        this.seek(this.associatedNodes[this.activeIndex]);
         this.updateJumbotron();
         this.updatePlaylist();
         this.checkDisabledButtons();
@@ -85,57 +94,45 @@ class LecturePlayer extends DDDSuper(LitElement) {
     });
   }
 
-  scan() {
-    const lectureAnchors = this.querySelectorAll("lecture-anchor");
-    console.log(lectureAnchors);
-    const anchorsArray = Array.from(lectureAnchors);
-    anchorsArray.sort((a, b) => {
-      const timeA = parseInt(a.getAttribute("value"), 10);
-      const timeB = parseInt(b.getAttribute("value"), 10);
-      return timeA - timeB;
-    });
-    anchorsArray.forEach((anchor, index) => {
-      anchor.id = `slide-${index + 1}`;
-      anchor.addEventListener("click", () => {
-        this.activeIndex = anchor.id;
-        this.seek(anchor.value);
-        console.log(anchor.value);
-      });
-    });
-    this.setJumbotronAttributes();
-  }
-
   setJumbotronAttributes() {
     console.log("setJumbotronAttributes");
-    this.querySelectorAll("lecture-anchor").forEach((anchor) => {
+    this.querySelectorAll("[data-lecture-slide]").forEach((anchor) => {
       let header = this.querySelector(
-        `#${anchor.getAttribute("associatedID")}`,
+        `#${anchor.getAttribute("data-associatedID")}`,
       );
-      anchor.setAttribute("jumbotronHeading", header.textContent);
-      anchor.setAttribute("jumbotronContent", this.getNextSiblingHTML(header));
+      console.log(header);
+      anchor.setAttribute("data-lecture-heading", header.textContent);
+      anchor.setAttribute("data-lecture-content", this.getNextSiblingHTML(header));
       // Scrub the ids from the lecture-anchor elements in the content
       let contentElement = document.createElement("div");
-      contentElement.innerHTML = anchor.getAttribute("jumbotronContent");
-      contentElement.querySelectorAll("lecture-anchor").forEach((el) => {
+      contentElement.innerHTML = anchor.getAttribute("data-lecture-content");
+      contentElement.querySelectorAll("[data-lecture-slide]").forEach((el) => {
         el.removeAttribute("id");
         el.classList.add("no-pointer-events");
       });
-      anchor.setAttribute("jumbotronContent", contentElement.innerHTML);
+      anchor.setAttribute("data-lecture-content", contentElement.innerHTML);
     });
-    this.addPrevNextListeners();
-    this.updatePlaylist();
   }
 
   getNextSiblingHTML(element) {
+    console.log(element);
     let siblingHTML = "";
     let nextSibling = element.nextSibling;
-    let stopIDs = Object.values(this.associatedNodes);
-
+    console.log(nextSibling.nextSibling);
+    let stopIDs = [];
+    Object.keys(this.associatedNodes).forEach((key) => {
+      console.log(key);
+      stopIDs.push(key);
+      stopIDs.push(this.querySelector(`#${key}`).getAttribute("data-associatedID"));
+    });
+    stopIDs = stopIDs.filter((item) => item !== element.id && item !== document.querySelector(`[data-associatedID="${element.id}"]`).id);
+    console.log(stopIDs);
     while (nextSibling) {
-      if (nextSibling.id && stopIDs.includes(nextSibling.id)) {
+      if (nextSibling && nextSibling.nodeType === Node.ELEMENT_NODE && (nextSibling.id && stopIDs.includes(nextSibling.id))) {
+        console.log("broke chain at " + nextSibling.id)
         break;
       }
-
+      console.log(nextSibling);
       siblingHTML += nextSibling.outerHTML || "";
       nextSibling = nextSibling.nextSibling;
     }
@@ -147,9 +144,6 @@ class LecturePlayer extends DDDSuper(LitElement) {
     console.log("addPrevNextListeners");
     const prevSlideBtn = document.querySelector("#prevSlideBtn");
     const nextSlideBtn = document.querySelector("#nextSlideBtn");
-    if (!this.activeIndex) {
-      this.activeIndex = "slide-1";
-    }
     prevSlideBtn.addEventListener("click", () => {
       const prevSlide =
         this.activeIndex.split("-")[1] > 1
@@ -161,7 +155,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
     });
     nextSlideBtn.addEventListener("click", () => {
       const anchorsWithId =
-        document.querySelectorAll("lecture-anchor[id]").length;
+        document.querySelectorAll("[data-lecture-slide][id]").length;
       console.log(anchorsWithId);
       console.log(this.activeIndex.split("-")[1]);
       console.log(parseInt(this.activeIndex.split("-")[1]) + 1);
@@ -182,19 +176,20 @@ class LecturePlayer extends DDDSuper(LitElement) {
     console.log("updateJumbotron");
     const jumbotron = document.querySelector(".jumbotron");
     console.log(jumbotron);
-    jumbotron.innerHTML = "";
+    jumbotron ? jumbotron.innerHTML = "" : "";
+    console.log(this.activeIndex);
     const activeAnchor = document.querySelector(`#${this.activeIndex}`);
     console.log(activeAnchor);
     if (activeAnchor) {
       const jumbotronHeading = document.createElement("h2");
       jumbotronHeading.id = "jumbotron-heading";
       jumbotronHeading.innerText =
-        activeAnchor.getAttribute("jumbotronHeading");
+        activeAnchor.getAttribute("data-lecture-heading");
       jumbotron.appendChild(jumbotronHeading);
       const jumbotronContent = document.createElement("div");
       jumbotronContent.id = "jumbotron-desc";
       jumbotronContent.innerHTML =
-        activeAnchor.getAttribute("jumbotronContent");
+        activeAnchor.getAttribute("data-lecture-content");
       jumbotron.appendChild(jumbotronContent);
     }
   }
@@ -202,67 +197,49 @@ class LecturePlayer extends DDDSuper(LitElement) {
   updatePlaylist() {
     console.log("updatePlaylist");
     const valueList = document.querySelector(".valueList");
-    valueList.innerHTML = "";
-    const listOfAnchorElements = this.getSortedAnchors();
-    listOfAnchorElements.forEach((anchor) => {
+    if (!valueList) {
+        console.error("ValueList element not found");
+        return;
+    }
+    valueList.innerHTML = ''; // Clear previous buttons
+    
+    Object.keys(this.associatedNodes).forEach((key) => {
+      console.log(key, this.associatedNodes[key]);
+      const timestamp = this.associatedNodes[key];
+      const slideAnchor = document.querySelector(`#${key}`);
       const valueBtn = document.createElement("button");
       valueBtn.classList.add("valueBtn");
-      valueBtn.innerText = anchor.getAttribute("jumbotronHeading");
-      valueBtn.setAttribute("value", anchor.value);
-      valueBtn.addEventListener("click", () => {
-        this.activeIndex = anchor.id;
-        this.seek(document.querySelector(`#${this.activeIndex}`).value);
-      });
-      if (anchor.id === this.activeIndex) {
-        valueBtn.classList.add("active");
-      }
-      valueList.appendChild(valueBtn);
+      valueBtn.textContent = slideAnchor ? slideAnchor.getAttribute("data-lecture-heading") : "Missing Title";
+        valueBtn.addEventListener("click", () => {
+            this.activeIndex = key;
+        });
+        if (key === this.activeIndex) {
+            valueBtn.classList.add("active");
+        }
+        valueList.appendChild(valueBtn);
     });
-    document.querySelector(".valueList").scrollTo({
-      left: document.querySelector(".valueBtn.active").offsetLeft - 125,
-      behavior: "smooth",
-    });
-  }
 
-  getSortedAnchors() {
-    // Returns an array of all the lecture-anchor elements sorted by value, to assing their IDs in order
-    // May need to support the option for sorting by how the tags appear in the content order
-    let anchors = [];
-    let i = 1;
-    let anchor = document.querySelector(`#slide-${i}`);
-    while (anchor) {
-      anchors.push(anchor);
-      i++;
-      anchor = document.querySelector(`#slide-${i}`);
+
+    // Auto-scroll to active button
+    const activeBtn = valueList.querySelector(".active");
+    if (activeBtn) {
+        valueList.scrollTo({
+            left: activeBtn.offsetLeft - 125,
+            behavior: "smooth"
+        });
     }
-    return anchors;
   }
 
   seek(timestamp) {
-    let lectureVideo = document.querySelector("#lecture-player-video");
-    if (lectureVideo) {
-      if (lectureVideo.hasAttribute("element-visible")) {
-        document
-          .querySelector("#lecture-player-video")
-          .shadowRoot.querySelector("a11y-media-player")
-          .play();
-        document
-          .querySelector("#lecture-player-video")
-          .shadowRoot.querySelector("a11y-media-player")
-          .seek(timestamp);
-      } else {
+    console.log("seek to timestamp: ", timestamp);
+    if (this.open) {
         setTimeout(() => {
-          document
-            .querySelector("#lecture-player-video")
-            .shadowRoot.querySelector("a11y-media-player")
-            .play();
-          document
-            .querySelector("#lecture-player-video")
-            .shadowRoot.querySelector("a11y-media-player")
-            .seek(timestamp);
-        }, 1000);
-      }
+          document.querySelector("#lecture-player-video").seek(timestamp);
+          document.querySelector("#lecture-player-video").play();
+          console.log(timestamp);
+        }, 3000);
     } else {
+      console.log('seeking to video player');
       this.querySelector("video-player")
         .shadowRoot.querySelector("a11y-media-player")
         .play();
@@ -303,7 +280,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
     } else {
       prevSlideBtn.removeAttribute("disabled");
     }
-    if (activeIndex !== document.querySelectorAll("lecture-anchor").length) {
+    if (activeIndex !== document.querySelectorAll("[data-lecture-slide]").length) {
       document.querySelector("#nextSlideBtn").removeAttribute("disabled");
     }
   }
@@ -328,7 +305,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
     jumbotron.scrollTop = jumbotron.scrollHeight + 500;
   }
 
-  showModal(event) {
+  showModal() {
     let videoSectionColumns = "1fr 1fr";
     console.log("showModal");
     let c = document.createElement("div");
@@ -360,7 +337,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         max-width: 100%;
         height: 100%;
         gap: var(--ddd-spacing-4);
-        max-height: 68vh;
+        height: 68vh;
       }
 
       .videoSection.small{
@@ -518,47 +495,47 @@ class LecturePlayer extends DDDSuper(LitElement) {
     });
     this.open = true;
     dispatchEvent(evnt);
-    document
-      .querySelector("#lecture-size-large")
-      .addEventListener("click", (e) => {
-        document.querySelectorAll(".lecture-control").forEach((control) => {
-          control.classList.remove("active");
+    setTimeout(() => {
+      document
+        .querySelector("#lecture-size-large")
+        .addEventListener("click", (e) => {
+          document.querySelectorAll(".lecture-control").forEach((control) => {
+            control.classList.remove("active");
+          });
+          e.target.classList.toggle("active");
+          document.querySelector(".videoSection").classList.add("large");
+          document.querySelector(".videoSection").classList.remove("small");
+          document.querySelector(".videoSection").classList.remove("normal");
         });
-        e.target.classList.toggle("active");
-        document.querySelector(".videoSection").classList.add("large");
-        document.querySelector(".videoSection").classList.remove("small");
-        document.querySelector(".videoSection").classList.remove("normal");
-      });
-    document
-      .querySelector("#lecture-size-normal")
-      .addEventListener("click", (e) => {
-        document.querySelectorAll(".lecture-control").forEach((control) => {
-          control.classList.remove("active");
+      document
+        .querySelector("#lecture-size-normal")
+        .addEventListener("click", (e) => {
+          document.querySelectorAll(".lecture-control").forEach((control) => {
+            control.classList.remove("active");
+          });
+          e.target.classList.toggle("active");
+          document.querySelector(".videoSection").classList.add("normal");
+          document.querySelector(".videoSection").classList.remove("small");
+          document.querySelector(".videoSection").classList.remove("large");
         });
-        e.target.classList.toggle("active");
-        document.querySelector(".videoSection").classList.add("normal");
-        document.querySelector(".videoSection").classList.remove("small");
-        document.querySelector(".videoSection").classList.remove("large");
-      });
-    document
-      .querySelector("#lecture-size-small")
-      .addEventListener("click", (e) => {
-        document.querySelectorAll(".lecture-control").forEach((control) => {
-          control.classList.remove("active");
+      document
+        .querySelector("#lecture-size-small")
+        .addEventListener("click", (e) => {
+          document.querySelectorAll(".lecture-control").forEach((control) => {
+            control.classList.remove("active");
+          });
+          e.target.classList.toggle("active");
+          document.querySelector(".videoSection").classList.add("small");
+          document.querySelector(".videoSection").classList.remove("normal");
+          document.querySelector(".videoSection").classList.remove("large");
         });
-        e.target.classList.toggle("active");
-        document.querySelector(".videoSection").classList.add("small");
-        document.querySelector(".videoSection").classList.remove("normal");
-        document.querySelector(".videoSection").classList.remove("large");
-      });
-    document
-      .querySelector("simple-modal .modal-content .videoSection video-player")
-      .setAttribute("id", "lecture-player-video");
-    this.scan();
-    window.addEventListener("simple-modal-closed", () => {
-      this.querySelector("video-player").removeAttribute("hidden");
-      this.open = false;
-    });
+      document
+        .querySelector("simple-modal .modal-content .videoSection video-player")
+        .setAttribute("id", "lecture-player-video");
+      window.addEventListener("simple-modal-closed", () => {
+        this.querySelector("video-player").removeAttribute("hidden");
+        this.open = false;
+      });}, 3000);
   }
 
   render() {
@@ -567,37 +544,54 @@ class LecturePlayer extends DDDSuper(LitElement) {
       globalThis.addEventListener("DOMContentLoaded", () => {
         console.log(globalThis.location.hash);
         if(globalThis.location.hash){
-          var [id, timestamp] = globalThis.location.hash.split('--');
+          var id  = globalThis.location.hash.split('--')[0];
+          var timestamp = globalThis.location.hash.split('--')[1] || this.associatedNodes['slide-1'];
           console.log(id, timestamp);
           if(id === '#lecture-player-video'){
-            this.linked = true;
             console.log('lecture player link')
             setTimeout(() => {
               this.showModal();
-              console.log('show modal')
-              setTimeout(() => {
-                let activeSlide = null;
-                for (let i = 0; i < this.associatedNodes.length; i++) {
-                    let currentTimestamp = this.associatedNodes[i][0];
-                    console.log(currentTimestamp);
-                    let nextTimestamp = i < this.associatedNodes.length - 1 ? this.associatedNodes[i + 1][0] : Infinity;
-            
-                    if (timestamp > currentTimestamp && timestamp < nextTimestamp) {
-                        activeSlide = this.associatedNodes[i][1];
-                        console.log(activeSlide);
-                        break;
-                    }
-                    @TODO: Find the current slide based on timestamp & set it
+              console.log('show modal');
+              let activeSlide = null;
+              let associatedNodesValues = Object.values(this.associatedNodes);
+              console.log(associatedNodesValues.length);
+              for (let i = 0; i < associatedNodesValues.length; i++) {
+                let currentTimestamp = associatedNodesValues[i];
+                console.log(currentTimestamp);
+                let nextTimestamp = i <= (associatedNodesValues.length - 1) ? associatedNodesValues[i + 1] : Infinity;
+
+                if (timestamp >= currentTimestamp && timestamp < nextTimestamp) {
+                  console.log('found current slide' + currentTimestamp + ' ' + nextTimestamp + ' ' + timestamp);
+                  activeSlide = Object.keys(this.associatedNodes)[i];
+                  console.log(activeSlide);
+                  setTimeout(() => {
+                    this.activeIndex = activeSlide;
+                  }, 3000);
+                  break;
                 }
-                setTimeout(() => {
-                  this.seek(timestamp);
-                }, 10000);
-              }, 2000);
+                if (i == associatedNodesValues.length - 1 && this.activeIndex === null) {
+                  console.log('last slide');
+                  this.activeIndex = Object.keys(this.associatedNodes)[0];
+                  break;
+                }
+                //@TODO: Find the current slide based on timestamp & set it
+              }
             }, 2000);
-          }
-        }})}
-      ${globalThis.addEventListener("hashChange", () => {})}
-    <simple-cta id="lectureActivation" @click="${this.showModal}">Open Lecture Player</simple-cta>
+          };
+          
+        }
+      })}
+      ${globalThis.addEventListener("hashChange", () => {
+        var [id, timestamp] = globalThis.location.hash.split('--');
+        if(id=== '#lecture-player-video' && !timestamp){
+          console.log('no timestamp');
+          this.showModal();
+          setTimeout(() => {
+            this.activeIndex = 'slide-1';
+          }, 1000);
+        }
+      })}
+    <simple-cta id="lectureActivation" >Open Lecture Player</simple-cta>
     ${!this.open ? html`<slot></slot>` : html``}
     `;
   }
