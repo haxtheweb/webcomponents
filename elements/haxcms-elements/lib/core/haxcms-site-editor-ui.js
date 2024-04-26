@@ -2458,6 +2458,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     import("@lrnwebcomponents/video-player/lib/lecture-player.js");
     // AI chat bot
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-ai-chat.js")
+    // runkit embed
+    import("@lrnwebcomponents/runkit-embed/runkit-embed.js")
   }
 
   goToLocation(location) {
