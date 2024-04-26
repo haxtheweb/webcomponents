@@ -509,7 +509,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
-      <site-ai-chat></site-ai-chat>
       <div id="haxcms-theme-top"></div>
       <header itemtype="http://schema.org/WPHeader">
         <div class="wrap">
