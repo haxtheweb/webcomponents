@@ -45,7 +45,7 @@ export default async function handler(req, res) {
       context = siteManifest.metadata.site.name;
     }
     // @todo don't hardcode, leverage site that was requested for context assignment
-    context = "phys211";
+    context = "haxcellence";
     let data = await fetch(aiChatSource, {
       method: "POST",
       headers: {
