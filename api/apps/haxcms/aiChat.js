@@ -9,7 +9,7 @@ curl -X POST http://ec2-44-205-57-53.compute-1.amazonaws.com/handle-query \
 import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/requestHelpers.js";
 import { resolveSiteData } from "./lib/JOSHelpers.js";
 
-const aiChatSource = "http://ec2-44-205-57-53.compute-1.amazonaws.com/handle-query";
+const aiChatSource = "https://askalfred.vercel.app/api/query";
 
 // site object to validate response from passed in url
 export default async function handler(req, res) {
@@ -64,13 +64,13 @@ export default async function handler(req, res) {
     })
     .then((response) => {
       if (response && response.data) {
-        console.log(response.data);
         return {
-          answers: response.data.answers,
+          answers: [response.data.answers],
           question: response.data.question,
           status: 200
         }
       }
+      console.log(response);
       return {answer: "Offline", question: body.question, status: 500};
     }).catch((error) => {
       console.error(error);
