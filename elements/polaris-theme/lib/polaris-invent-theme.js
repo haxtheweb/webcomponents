@@ -111,6 +111,8 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           font-size: var(--ddd-font-size-l);
           padding: 0;
           margin: 0 0 var(--ddd-spacing-5) 0;
+          text-align: left;
+          line-height: normal;
         }
 
         header .wrap {
@@ -127,9 +129,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
 
         article {
-          padding: 0px 40px 20px 20px;
+          padding: 16px 40px 16px 16px;
           background-color: var(--polaris-content-bg-color);
           font-family: var(--ddd-font-primary);
+          min-width: 280px;
         }
 
         header:not(:empty) {
@@ -139,6 +142,8 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         .nav {
           background-color: var(--polaris-nav-bg-color);
           color: var(--polaris-nav-color);
+          padding-top: 4px;
+          padding-left: 0px;
         }
 
         #slot {
@@ -155,9 +160,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           --map-menu-item-button-active-background-color: var(
             --ddd-theme-default-inventOrange
           );
-          margin-bottom: 20px;
-          padding: 0 20px;
+          --map-menu-overflow: visible;
           width: 320px;
+          margin-bottom: 16px;
+          padding: 0 16px 0 0;
         }
 
         site-modal {
@@ -184,6 +190,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
 
         @media screen and (min-width: 900px) {
+          .nav {
+            padding-top: 8px;
+            padding-left: 4px;
+          }
           .link-actions .inner {
             margin: 0;
             display: grid;
@@ -397,8 +407,8 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
         #haxcmsmobilemenubutton {
           padding: 4px;
-          --simple-icon-height: 28px;
-          --simple-icon-width: 28px;
+          --simple-icon-height: 30px;
+          --simple-icon-width: 36px;
         }
         @media only screen and (max-width: 1139px) {
           .wrap {
@@ -406,6 +416,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           }
         }
         @media only screen and (max-width: 1023px) {
+          site-active-title h1 {
+            font-size: var(--ddd-font-size-xs);
+            margin: 0 0 var(--ddd-spacing-2) 0;
+          }
           header .wrap {
             padding: 20px 0;
           }

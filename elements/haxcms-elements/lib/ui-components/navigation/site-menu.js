@@ -36,8 +36,8 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
             --site-menu-item-active-item-color
           );
           --map-menu-font-size: var(--site-menu-font-size);
-          overflow-y: auto;
-          overflow-x: hidden;
+          overflow-y: var(--map-menu-overflow, var(--map-menu-overflow-y, auto));
+          overflow-x: var(--map-menu-overflow, var(--map-menu-overflow-x, hidden));
           scrollbar-color: var(--site-menu-scrollbar-color, #252737);
           scrollbar-width: thick;
         }

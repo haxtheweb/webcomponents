@@ -61,7 +61,7 @@ export class AppHaxTopBar extends LitElement {
       }
 
       :host([edit-mode]) .topBar {
-        border-bottom: 6px solid var(--hax-ui-color-accent);
+        border-bottom: 6px solid black;
       }
 
       /* .topBar > div {

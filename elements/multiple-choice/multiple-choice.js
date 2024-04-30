@@ -218,45 +218,23 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
       <confetti-container id="confetti">
         <meta property="oer:assessing" content="${this.relatedResource}" />
         <h3 property="oer:name">${this.question}</h3>
-        ${this.singleOption
-          ? html`
-              <fieldset id="answers">
-                ${this.displayedAnswers.map(
-                  (answer, index) => html`
-                    <simple-fields-field
-                      ?disabled="${this.disabled}"
-                      property="oer:answer"
-                      type="radio"
-                      name="${index}"
-                      @mousedown="${this.clickSingle}"
-                      @keydown="${this.clickSingle}"
-                      .value="${answer ? answer.userGuess : ""}"
-                      @value-changed="${this.checkedEvent}"
-                      label="${answer && answer.label ? answer.label : ""}"
-                    ></simple-fields-field>
-                  `,
-                )}
-              </fieldset>
-            `
-          : html`
-              <ul>
-                ${this.displayedAnswers.map(
-                  (answer, index) => html`
-                    <li>
-                      <simple-fields-field
-                        ?disabled="${this.disabled}"
-                        property="oer:answer"
-                        name="${index}"
-                        type="checkbox"
-                        label="${answer && answer.label ? answer.label : ""}"
-                        .value="${answer ? answer.userGuess : ""}"
-                        @value-changed="${this.checkedEvent}"
-                      ></simple-fields-field>
-                    </li>
-                  `,
-                )}
-              </ul>
-            `}
+          <fieldset id="answers">
+            ${this.displayedAnswers.map(
+              (answer, index) => html`
+                <simple-fields-field
+                  type="${this.singleOption ? "radio" : "checkbox"}"
+                  ?disabled="${this.disabled}"
+                  property="oer:answer"
+                  name="${index}"
+                  @mousedown="${this.clickSingle}"
+                  @keydown="${this.clickSingle}"
+                  .value="${answer ? answer.userGuess : ""}"
+                  @value-changed="${this.checkedEvent}"
+                  label="${answer && answer.label ? answer.label : ""}"
+                ></simple-fields-field>
+              `,
+            )}
+          </fieldset>
         ${!this.hideButtons
           ? html`
               <div id="buttons">
@@ -280,17 +258,88 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
       </confetti-container>
     `;
   }
-  clickSingle(e) {
+  clickSingle(e) {  
+    // single option shortcut only bc we have to wipe all others
     if (this.singleOption) {
-      this.displayedAnswers.forEach((el, i) => {
-        this.displayedAnswers[i].userGuess = false;
-      });
+      let proceed = false;
+      // ensure if it's a keyboard it was enter or space
+      if (e.key) {
+        if (e.key === " " || e.key === "Enter") {
+          proceed = true;
+        }
+        else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          if (e.target.previousElementSibling) {
+            e.target.previousElementSibling.focus();
+          }
+          else {
+            e.target.parentNode.lastElementChild.focus();
+          }
+        }
+        else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          if (e.target.nextElementSibling) {
+            e.target.nextElementSibling.focus();
+          }
+          else {
+            e.target.parentNode.firstElementChild.focus();
+          }
+        }
+      }
+      // if click then we process regardless
+      else {
+        proceed = true;
+      }
+      // wipe answer data, THEN update will happen later when all the values change
+      if (proceed) {
+        for (let i in this.displayedAnswers) {
+          if (i === e.target.name) {
+            if (e.key) {
+              if (this.displayedAnswers[i].userGuess) {
+                this.displayedAnswers[i].userGuess = "";
+              }
+              else {
+                this.displayedAnswers[i].userGuess = true;
+              }
+            }
+          }
+          else {
+            this.displayedAnswers[i].userGuess = (i === e.target.name) ? true : "";
+          }
+        }
+      }
     }
+    else {
+      if (e.key) {
+        if (e.key === "ArrowUp") {
+          e.preventDefault();
+          if (e.target.previousElementSibling) {
+            e.target.previousElementSibling.focus();
+          }
+          else {
+            e.target.parentNode.lastElementChild.focus();
+          }
+        }
+        else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          if (e.target.nextElementSibling) {
+            e.target.nextElementSibling.focus();
+          }
+          else {
+            e.target.parentNode.firstElementChild.focus();
+          }
+        }
+        else if (e.key === "Enter") {
+          this.displayedAnswers[e.target.name].userGuess = (this.displayedAnswers[e.target.name].userGuess) ? "" : true;
+        }
+      }
+    }
+    this.requestUpdate();
   }
   checkedEvent(e) {
-    let attr = this.displayedAnswers;
-    attr[e.target.name].userGuess = e.detail.value;
-    this.displayedAnswers = [...attr];
+    // ensure there's a match w/ the event data
+    this.displayedAnswers[e.target.name].userGuess = e.detail.value;
+    this.requestUpdate();
   }
   static get properties() {
     return {
@@ -413,7 +462,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
     );
     this.displayedAnswers = [];
     this.answers.forEach((el) => {
-      el.userGuess = false;
+      el.userGuess = "";
     });
     const answers = JSON.parse(JSON.stringify(this.answers));
     this.answers = [...answers];

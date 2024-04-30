@@ -4,11 +4,11 @@ export const HaxUiText = [
   css`
     body {
       --hax-ui-font-family: var(--ddd-font-navigation);
-      --hax-ui-font-size: 14px;
-      --hax-ui-font-size-sm: 12px;
       --hax-ui-font-size-xs: 11px;
-      --hax-ui-font-size-lg: calc(1.05 * var(--hax-ui-font-size, 14px));
-      --hax-ui-font-size-xl: calc(1.25 * var(--hax-ui-font-size, 14px));
+      --hax-ui-font-size-sm: 13px;
+      --hax-ui-font-size: 16px;
+      --hax-ui-font-size-lg: 16px;
+      --hax-ui-font-size-xl: 20px;
     }
   `,
 ];
@@ -118,7 +118,7 @@ export const HaxUiFields = [
       --simple-fields-font-family: var(--hax-ui-font-family);
       --simple-fields-font-size: var(--hax-ui-font-size);
       --simple-fields-line-height: 135%;
-      --simple-fields-detail-font-size: var(--hax-ui-font-size-xs);
+      --simple-fields-detail-font-size: var(--hax-ui-font-size-sm);
       --simple-fields-detail-line-height: 120%;
       --simple-fields-margin: var(--hax-ui-spacing);
       --simple-fields-background-color: var(--hax-ui-background-color);
@@ -480,17 +480,24 @@ export const HaxTrayDetail = [
     }
     #tray-detail h4 {
       text-transform: var(--hax-tray-detail-heading-text-transform);
-      color: var(--hax-ui-background-color);
+      color: white;
       font-size: var(--hax-tray-detail-title-font-size);
       font-weight: bold;
-      margin: 0 var(--hax-ui-spacing-sm) 0 0;
       font-family: var(--hax-ui-font-family);
-      padding: 0;
-      height: 64px;
       overflow: hidden;
       word-break: break-all;
       text-overflow: ellipsis;
-      line-height: 64px;
+      margin: 0 -8px;
+      padding: var(--ddd-spacing-3);
+      padding-top: var(--ddd-spacing-4);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      height: 36px;
+      top: 0;
+      z-index: 3;
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);

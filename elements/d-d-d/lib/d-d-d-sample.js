@@ -93,7 +93,6 @@ export class DDDSample extends DDDSuper(LitElement) {
           vertical-align: top;
         }
         :host([type="border-radius"]) .label {
-          font-size: var(--ddd-font-size-l);
           margin-left: calc(-1 * var(--ddd-spacing-5));
           display: inline-block;
           vertical-align: top;

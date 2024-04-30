@@ -58,7 +58,7 @@ class CourseIntroHeader extends DDD {
           color: #ffffff;
         }
         h1 {
-          font-size: var(--ddd-font-size-3xl);
+          font-size: var(--ddd-font-size-xxl);
         }
         h2 {
           font-size: var(--ddd-font-size-m);

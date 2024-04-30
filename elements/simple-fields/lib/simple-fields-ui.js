@@ -79,6 +79,10 @@ export const SimpleFieldsLabelStyles = [
     :host(:focus-within) .label-main {
       color: var(--simple-fields-accent-color, #3f51b5);
       transition: color 0.3s ease-in-out;
+      font-weight: var(--ddd-font-weight-bold);
+    }
+    .label-main {
+      font-weight: var(--ddd-font-weight-medium);
     }
     .inline {
       --simple-fields-radio-option-display: flex;

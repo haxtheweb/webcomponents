@@ -2719,7 +2719,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: this.t.insights,
         styles: {
-          "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+          "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
           "--simple-modal-width": "94vw",
           "--simple-modal-min-width": "300px",
@@ -2791,7 +2791,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: "Are you sure you want to delete this page?",
         styles: {
-          "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+          "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
           "--simple-modal-width": "25vw",
           "--simple-modal-min-width": "300px",
@@ -2835,7 +2835,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: this.t.shareSite,
         styles: {
-          "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+          "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
           "--simple-modal-width": "55vw",
           "--simple-modal-min-width": "300px",
@@ -2866,7 +2866,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: this.t.outlineDesigner,
         styles: {
-          "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+          "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
           "--simple-modal-z-index": "100000000",
           "--simple-modal-titlebar-height": "80px",
@@ -2914,7 +2914,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: {
           title: this.t.editSettings,
           styles: {
-            "--simple-modal-titlebar-background": "var(--hax-ui-color-accent)",
+            "--simple-modal-titlebar-background": "black",
             "--simple-modal-titlebar-color": "var(--hax-ui-background-color)",
             "--simple-modal-z-index": "100000000",
             "--simple-modal-titlebar-height": "80px",

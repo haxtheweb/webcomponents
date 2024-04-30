@@ -196,9 +196,8 @@ class HaxTray extends I18NMixin(
         }
 
         .tray-detail-titlebar-icon {
-          --simple-icon-height: 40px;
-          --simple-icon-width: 40px;
-          width: 8%;
+          --simple-icon-height: 36px;
+          --simple-icon-width: 36px;
         }
         .wrapper {
           position: fixed;
@@ -247,7 +246,7 @@ class HaxTray extends I18NMixin(
           cursor: col-resize;
         }
         #resize .resize-visual {
-          background-color: var(--hax-ui-color-accent);
+          background-color: black;
           height: 100%;
           width: 6px;
         }
@@ -342,13 +341,6 @@ class HaxTray extends I18NMixin(
           height: 24px;
           width: 24px;
         }
-        .detail,
-        #tray-detail {
-          flex: 1 1 auto;
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
-        }
         .detail {
           resize: horizontal;
           visibility: visible;
@@ -359,8 +351,25 @@ class HaxTray extends I18NMixin(
             var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
           );
           max-width: 70vw;
+          min-width: 200px;
           overflow-x: auto;
           opacity: 1;
+        }
+        .detail::-webkit-scrollbar-track {
+          border-radius: 0;
+          background-color: var(--ddd-theme-default-coalyGray);
+        }
+
+        .detail::-webkit-scrollbar {
+          width: 8px;
+          background-color: var(--ddd-theme-default-coalyGray);
+        }
+        .detail::-webkit-scrollbar-thumb {
+          border-radius: 4px;
+          -webkit-box-shadow: inset 0 0 4px var(--ddd-theme-default-limestoneGray);
+
+          box-shadow: inset 0 0 4px var(--ddd-theme-default-limestoneGray);
+          background-color: var(--ddd-theme-default-limestoneGray);
         }
         :host([collapsed]) .detail {
           width: 0px;
@@ -375,7 +384,7 @@ class HaxTray extends I18NMixin(
           width: auto;
           padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);
           transition: opacity 0.3s ease-in-out;
-          opacity: 0.7;
+          opacity:1;
           overflow: hidden;
         }
         .wrapper:focus #tray-detail,
@@ -390,30 +399,13 @@ class HaxTray extends I18NMixin(
           display: none;
         }
         .tray-detail-titlebar {
-          background-color: var(--hax-ui-color-accent);
-          padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing);
-          margin: 0 calc(0px - var(--hax-ui-spacing)) var(--hax-ui-spacing);
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: var(--simple-modal-titlebar-height, unset);
-          line-height: var(--simple-modal-titlebar-line-height, unset);
-          position: sticky;
-          z-index: 2;
-          top: 0;
-        }
-        .tray-detail-titlebar h4 {
-          flex: 1 1 auto;
+          background-color: black;
         }
         .tray-detail-titlebar .tray-detail-titlebar-label {
           display: inline-flex;
-          max-width: 160px;
-        }
-        .tray-detail-titlebar .tray-detail-titlebar-actions {
-          display: inline-flex;
         }
         #settingsform {
-          margin: -8px -8px 0;
+          margin: 0 -8px 0 -8px;
           --a11y-collapse-padding-bottom: 100px;
           --simple-fields-field-margin: 12px;
           --a11y-collapse-heading-color: var(
@@ -436,10 +428,11 @@ class HaxTray extends I18NMixin(
           ) !important;
         }
         simple-fields-field::part(label) {
-          font-size: 11px;
+          font-size: var(--hax-ui-font-size-sm);
+          font-weight: var(--ddd-font-weight-medium);
         }
         simple-fields-field:hover::part(label) {
-          font-weight: bold;
+          font-weight: var(--ddd-font-weight-bold);
         }
         a11y-collapse span[slot="heading"] {
           line-height: 24px;
@@ -911,18 +904,16 @@ class HaxTray extends I18NMixin(
       tabindex="${this.collapsed ? "-1" : "0"}"
       selected-detail="${this.trayDetail}"
     >
-      <div class="tray-detail-titlebar">
-        <h4>
-          <simple-icon-lite
-            class="tray-detail-titlebar-icon"
-            icon="${this.trayIcon}"
-          ></simple-icon-lite>
-          <div class="tray-detail-titlebar-label">
-            ${this.trayLabel || `${this.activeTagName}`}
-          </div>
-          <div class="tray-detail-titlebar-actions">${this.menuButtons}</div>
-        </h4>
-      </div>
+      <h4 class="tray-detail-titlebar">
+        <simple-icon-lite
+          class="tray-detail-titlebar-icon"
+          icon="${this.trayIcon}"
+        ></simple-icon-lite>
+        <div class="tray-detail-titlebar-label">
+          ${this.trayLabel || `${this.activeTagName}`}
+        </div>
+        <div class="tray-detail-titlebar-actions">${this.menuButtons}</div>
+      </h4>
       ${this.viewSourceTemplate} ${this.contentMapTemplate}
       ${this.contentEditTemplate} ${this.contentAddTemplate}
     </div>`;
