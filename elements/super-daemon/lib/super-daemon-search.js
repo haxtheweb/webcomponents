@@ -134,19 +134,41 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   // feed results to the program as opposed to the global context based on program running
   inputfilterChanged(e) {
-    if (!this.disabled) {
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-      this.value = e.target.value;
+    switch (e.target.value) {
+      case "!":
+      case "/":
+      case "\\":
+      case ">":
+      case "<":
+        // support variations on "slash" and developer commands that should interpret as same thing
+        if (e.target.value === "\\" && this.value == "") {
+          this.commandContext = "/";
+          e.preventDefault();
+        } else if (e.target.value === "!" && this.value == "") {
+          this.commandContext = "/";
+          e.preventDefault();
+        } else if (e.target.value === "<" && this.value == "") {
+          this.commandContext = ">";
+          e.preventDefault();
+        }
+        else if (this.value == "") {
+          this.commandContext = e.target.value;
+          e.preventDefault();
+        }
+        e.target.value = '';
+        break;
+      default:
+        if (!this.disabled) {
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          this.value = e.target.value;
+        }    
+      break;
     }
   }
 
   render() {
-    return html` <!--  <simple-icon
-        icon="${this.icon}"
-        class="icon"
-        accent-color="${this.listeningForInput ? this.iconAccent : "grey"}"
-      ></simple-icon> -->
+    return html`
       ${this.commandContext != "*"
         ? html`<simple-icon-lite
             title="${this.getActiveTitle(this.commandContext)}"
