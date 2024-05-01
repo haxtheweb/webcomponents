@@ -1,10 +1,6 @@
 {
   "functions": {
     "api/apps/haxcms/**.js": {
-      "memory": 1024,
-      "maxDuration": 60
-    },
-    "api/apps/haxcms/siteToHtml.js": {
       "memory": 3008,
       "maxDuration": 300
     },
