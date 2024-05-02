@@ -29,16 +29,16 @@
         "inputMethod": "textfield"
       },
       {
-        "property": "tfAnswer",
+        "property": "_tfanswer",
         "title": "Correct Answer",
         "inputMethod": "radio",
         "itemsList": [
           {
-            "value": true,
+            "value": "true",
             "text": "True"
           },
           {
-            "value": false,
+            "value": "false",
             "text": "False"
           }
         ]
@@ -80,13 +80,12 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers", "tfAnswer"]
+    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers", "_tfanswer"]
   },
   "demoSchema": [
     {
       "tag": "true-false-question",
       "properties": {
-        "answer": true,
         "question": "HAX is game changing."
       },
       "content": "<input type=\"checkbox\" value=\"True\" correct>\n<input type=\"checkbox\" value=\"False\">"
