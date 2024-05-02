@@ -9,6 +9,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../multiple-choice.js';
+      import '../lib/true-false-question.js';
       import "@lrnwebcomponents/simple-toast/simple-toast.js";
 
       globalThis.SimpleToast.requestAvailability()
@@ -20,12 +21,18 @@
       <h3>Basic multiple-choice progressive enhancement</h3>
       <demo-snippet>
         <template>
+          <true-false-question
+          question="Ducks have wings.">
+            <input correct value="True"/>
+            <input value="False"/>
+            <p slot="correct-feedback">Yay! Let's jump in the money pit.</p>
+              <p slot="incorrect-feedback">You're despicable. What a quack!</p>
+          </true-false-question>
           <multiple-choice
           id="basic"
           name="basic"
-          title="Which are ducks????"
-          randomize
-          question="Which are ducks?">
+          question="Which are ducks????"
+          randomize>
             <input correct value="Huey"/>
             <input correct value="Duey"/>
             <input correct value="Daffy"/>
@@ -105,7 +112,7 @@
         <template>
           <multiple-choice
           id="deprecated"
-          title="Which are ducks?"
+          question="Which are ducks?"
           correct-text="Yay! Let's jump in the money pit."
           incorrect-text="You're despicable. What a quack!"
           randomize>
@@ -118,7 +125,7 @@
           <multiple-choice
           id="deprecated2"
           edit-mode
-          title="Which are ducks?"
+          question="Which are ducks?"
           correct-text="Yay! Let's jump in the money pit."
           incorrect-text="You're despicable. What a quack!"
           randomize>
@@ -138,15 +145,15 @@
           <multiple-choice
           id="deprecated3"
           edit-mode
-          title="Which are ducks?"
+          question="Which are ducks?"
           correct-text="Yay! Let's jump in the money pit."
           incorrect-text="You're despicable. What a quack!"
           randomize>
           <ul>
-            <li value=">Huey</li>
-            <li value=">Duey</li>
-            <li value=">Daffy</li>
-            <li value=">Donald</li>
+            <li correct>Huey</li>
+            <li correct>Duey</li>
+            <li correct>Daffy</li>
+            <li correct>Donald</li>
             <li>Mickey</li>
           </ul>
           </multiple-choice>

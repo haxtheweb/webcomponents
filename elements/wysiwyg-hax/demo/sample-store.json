@@ -618,6 +618,7 @@
     "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
     "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+    "true-false-question": "@lrnwebcomponents/multiple-choice/lib/true-false-question.js",
     "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
     "q-r": "@lrnwebcomponents/q-r/q-r.js",

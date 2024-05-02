@@ -606,6 +606,7 @@
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
     "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+    "true-false-question": "@lrnwebcomponents/multiple-choice/lib/true-false-question.js",
     "accent-card": "@lrnwebcomponents/accent-card/accent-card.js",
     "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
     "page-break": "@lrnwebcomponents/page-break/page-break.js",

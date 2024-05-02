@@ -66,8 +66,10 @@
   });
 
   scrollBtn.addEventListener('click', () => {
-    const video = document.querySelector(window.location.hash.split('--')[0]);
-    video.scrollIntoView();
+    if (window.location.hash && window.location.hash.split('--')) {
+      const video = document.querySelector(window.location.hash.split('--')[0]);
+    video.scrollIntoView();      
+    }
   });
 
   seekBtn.addEventListener('click', async () => {

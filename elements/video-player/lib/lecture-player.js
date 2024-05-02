@@ -42,6 +42,51 @@ class LecturePlayer extends DDDSuper(LitElement) {
     this.videoPlayer = this.querySelector("video-player").outerHTML;
     this.videoInterval = null;
     this.activeIndex = null;
+    console.log(globalThis.location.hash);
+    if(globalThis.location.hash){
+      var id  = globalThis.location.hash.split('--')[0];
+      var timestamp = globalThis.location.hash.split('--')[1] || this.associatedNodes['slide-1'];
+      console.log(id, timestamp);
+      setTimeout(() => {
+        this.showModal();
+        console.log('show modal');
+        let activeSlide = null;
+        let associatedNodesValues = Object.values(this.associatedNodes);
+        console.log(associatedNodesValues.length);
+        for (let i = 0; i < associatedNodesValues.length; i++) {
+          let currentTimestamp = associatedNodesValues[i];
+          console.log(currentTimestamp);
+          let nextTimestamp = i <= (associatedNodesValues.length - 1) ? associatedNodesValues[i + 1] : Infinity;
+
+          if (timestamp >= currentTimestamp && timestamp < nextTimestamp) {
+            console.log('found current slide' + currentTimestamp + ' ' + nextTimestamp + ' ' + timestamp);
+            activeSlide = Object.keys(this.associatedNodes)[i];
+            console.log(activeSlide);
+            setTimeout(() => {
+              this.activeIndex = activeSlide;
+            }, 3000);
+            break;
+          }
+          if (i == associatedNodesValues.length - 1 && this.activeIndex === null) {
+            console.log('last slide');
+            this.activeIndex = Object.keys(this.associatedNodes)[0];
+            break;
+          }
+          //@TODO: Find the current slide based on timestamp & set it
+        }
+      }, 2000);
+      
+    }
+    globalThis.addEventListener("hashChange", () => {
+      var [id, timestamp] = globalThis.location.hash.split('--');
+      if(id=== '#lecture-player-video' && !timestamp){
+        console.log('no timestamp');
+        this.showModal();
+        setTimeout(() => {
+          this.activeIndex = 'slide-1';
+        }, 1000);
+      }
+    });
   }
 
   static get properties() {
@@ -240,34 +285,22 @@ class LecturePlayer extends DDDSuper(LitElement) {
         }, 3000);
     } else {
       console.log('seeking to video player');
-      this.querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player")
-        .play();
-      this.querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player")
-        .seek(timestamp);
+      this.querySelector("video-player").play();
+      this.querySelector("video-player").seek(timestamp);
     }
   }
 
   play() {
-    console.log(
       document
         .querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player"),
-    );
     if (
       document
         .querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player")
     ) {
       document
-        .querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player")
-        .play();
+        .querySelector("video-player").play();
     } else {
-      this.querySelector("video-player")
-        .shadowRoot.querySelector("a11y-media-player")
-        .play();
+      this.querySelector("video-player").play();
     }
   }
 
@@ -288,9 +321,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
   endVideo() {
     console.log("endVideo");
     document
-      .querySelector("#lecture-player-video")
-      .shadowRoot.querySelector("a11y-media-player")
-      .pause();
+      .querySelector("#lecture-player-video")      .pause();
     document.querySelector("#nextSlideBtn").setAttribute("disabled", "true");
     let endBtnDiv = document.createElement("div");
     endBtnDiv.setAttribute("data-primary", "11");
@@ -540,58 +571,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   render() {
     return html`
-    ${ 
-      globalThis.addEventListener("DOMContentLoaded", () => {
-        console.log(globalThis.location.hash);
-        if(globalThis.location.hash){
-          var id  = globalThis.location.hash.split('--')[0];
-          var timestamp = globalThis.location.hash.split('--')[1] || this.associatedNodes['slide-1'];
-          console.log(id, timestamp);
-          if(id === '#lecture-player-video'){
-            console.log('lecture player link')
-            setTimeout(() => {
-              this.showModal();
-              console.log('show modal');
-              let activeSlide = null;
-              let associatedNodesValues = Object.values(this.associatedNodes);
-              console.log(associatedNodesValues.length);
-              for (let i = 0; i < associatedNodesValues.length; i++) {
-                let currentTimestamp = associatedNodesValues[i];
-                console.log(currentTimestamp);
-                let nextTimestamp = i <= (associatedNodesValues.length - 1) ? associatedNodesValues[i + 1] : Infinity;
-
-                if (timestamp >= currentTimestamp && timestamp < nextTimestamp) {
-                  console.log('found current slide' + currentTimestamp + ' ' + nextTimestamp + ' ' + timestamp);
-                  activeSlide = Object.keys(this.associatedNodes)[i];
-                  console.log(activeSlide);
-                  setTimeout(() => {
-                    this.activeIndex = activeSlide;
-                  }, 3000);
-                  break;
-                }
-                if (i == associatedNodesValues.length - 1 && this.activeIndex === null) {
-                  console.log('last slide');
-                  this.activeIndex = Object.keys(this.associatedNodes)[0];
-                  break;
-                }
-                //@TODO: Find the current slide based on timestamp & set it
-              }
-            }, 2000);
-          };
-          
-        }
-      })}
-      ${globalThis.addEventListener("hashChange", () => {
-        var [id, timestamp] = globalThis.location.hash.split('--');
-        if(id=== '#lecture-player-video' && !timestamp){
-          console.log('no timestamp');
-          this.showModal();
-          setTimeout(() => {
-            this.activeIndex = 'slide-1';
-          }, 1000);
-        }
-      })}
-    <simple-cta id="lectureActivation" >Open Lecture Player</simple-cta>
+    <simple-cta id="lectureActivation">Open Lecture Player</simple-cta>
     ${!this.open ? html`<slot></slot>` : html``}
     `;
   }

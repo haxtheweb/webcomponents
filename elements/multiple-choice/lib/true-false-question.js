@@ -1,26 +1,22 @@
-import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import {  html } from "lit";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import { QuestionElement } from "./lib/QuestionElement.js";
+import { QuestionElement } from "./QuestionElement.js";
 /**
- * `multiple-choice`
+ * `true-false-question`
  * `Ask the user a question from a set of possible answers.`
  * @demo demo/index.html
- * @element multiple-choice
+ * @element true-false-question
  */
-class MultipleChoice extends QuestionElement {
+class TrueFalseQuestion extends QuestionElement {
 
   static get tag() {
-    return "multiple-choice";
+    return "true-false-question";
   }
   constructor() {
     super();
-
+    this.tfAnswer = null;
+    this.singleOption = true;
+    this.randomize = false;
   }
   render() {
     return html`
@@ -149,52 +145,44 @@ class MultipleChoice extends QuestionElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }
-  /**
-   * Implements haxHooks to tie into life-cycle if hax exists.
-   */
-  haxHooks() {
+
+  static get properties() {
     return {
-      ...super.haxHooks,
-      inlineContextMenu: "haxinlineContextMenu",
+      ...super.properties,
+      tfAnswer: { type: Boolean, }
     };
   }
 
-  /**
-   * add buttons when it is in context
-   */
-  haxinlineContextMenu(ceMenu) {
-    ceMenu.ceButtons = [
-      {
-        icon: "icons:add",
-        callback: "haxClickInlineAdd",
-        label: "Add answer",
-      },
-      {
-        icon: "icons:remove",
-        callback: "haxClickInlineRemove",
-        label: "Remove answer",
-      },
-    ];
-  }
-  haxClickInlineAdd(e) {
-    this.resetAnswers();
-    let d = this.answers;
-    d.push({ label: "New answer", correct: false });
-    this.answers = [...d];
-    return true;
-  }
-  haxClickInlineRemove(e) {
-    if (this.answers.length > 0) {
-      this.resetAnswers();
-      let d = this.answers;
-      d.pop();
-      this.answers = [...d];
-      return true;
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has('tfAnswer')) {
+      // initial setting when answers updates just prior
+      if (this.answers.length > 0 && this.tfAnswer === null) {
+        let index = this.answers.findIndex((item) => item.correct === true );
+        if (index === 0) {
+          this.tfAnswer = true;
+        }
+        else if (index === 1) {
+          this.tfAnswer = false;
+        }
+      }
+      if (this.tfAnswer !== null) {
+        console.log('ensure normalization');
+        if (this.tfAnswer) {
+          this.answers[0].correct = true;
+          this.answers[1].correct = false;
+        }
+        else {
+          this.answers[0].correct = false;
+          this.answers[1].correct = true;
+        }
+      }
     }
   }
+
 }
-globalThis.customElements.define(MultipleChoice.tag, MultipleChoice);
-export { MultipleChoice };
+globalThis.customElements.define(TrueFalseQuestion.tag, TrueFalseQuestion);
+export { TrueFalseQuestion };

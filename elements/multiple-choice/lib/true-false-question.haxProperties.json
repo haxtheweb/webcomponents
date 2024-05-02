@@ -1,0 +1,95 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "type": "grid",
+  "editMode": {
+    "editMode": true
+  },
+  "gizmo": {
+    "title": "True / False",
+    "description": "True false question",
+    "icon": "hax:multiple-choice",
+    "color": "purple",
+    "tags": [
+      "Instructional",
+      "quiz",
+      "true false"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question for users to respond to.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "tfAnswer",
+        "title": "Correct Answer",
+        "inputMethod": "radio",
+        "itemsList": [
+          {
+            "value": true,
+            "text": "True"
+          },
+          {
+            "value": false,
+            "text": "False"
+          }
+        ]
+      },
+      {
+        "property": "correctText",
+        "title": "Correct feedback",
+        "description": "Feedback when they get it right",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "incorrectText",
+        "title": "Incorrect feedback",
+        "description": "Feedback when they get it wrong",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "checkLabel",
+        "title": "Check answers label",
+        "description": "Label for getting solution feedback",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "resetLabel",
+        "title": "Reset label",
+        "description": "label for the reset button",
+        "inputMethod": "textfield"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers", "tfAnswer"]
+  },
+  "demoSchema": [
+    {
+      "tag": "true-false-question",
+      "properties": {
+        "answer": true,
+        "question": "HAX is game changing."
+      },
+      "content": "<input type=\"checkbox\" value=\"True\" correct>\n<input type=\"checkbox\" value=\"False\">"
+    }
+  ]
+}
