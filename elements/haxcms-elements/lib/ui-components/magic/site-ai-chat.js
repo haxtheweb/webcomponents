@@ -18,6 +18,7 @@ MicroFrontendRegistry.add({
     site: "location of the HAXcms site OR site.json data",
     type: "site for site.json or link for remote loading",
     question: "Question to ask of the AI",
+    engine: "which engine to use as we test multiple",
   },
 });
 
@@ -31,11 +32,13 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
     this.question = null;
     this.answers = [];
     this.loading = false;
+    this.engine = "alfred";
     this.dataPulse = "1";
   }
 
   askQuestion(e) {
     e.preventDefault();
+    this.engine = e.target.getAttribute('name');
     this.question = this.shadowRoot.querySelector("#question").value;
   }
 
@@ -51,19 +54,20 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
         this.shadowRoot.querySelector("dialog").close();
       }
     }
-    if (changedProperties.has("question") && this.question) {
+    if (changedProperties.has("question") && this.question && this.engine) {
       const site = toJS(store.manifest);
       var base = "";
       if (globalThis.document.querySelector("base")) {
         base = globalThis.document.querySelector("base").href;
       }
       const params = {
-        type: "site",
         site: {
           file: base + "site.json",
           metadata: site.metadata,
         },
+        type: "site",
         question: this.question,
+        engine: this.engine,
       };
       this.loading = true;
       MicroFrontendRegistry.call(
@@ -88,12 +92,23 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
         >Close</simple-icon-button-lite>
       <form action="#">
       <simple-icon-lite class="hat" icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}"></simple-icon-lite>
-        <input id="question" type="text" placeholder="Ask your question.." /><button
+        <input id="question" type="text" placeholder="Ask your question.." />
+        
+        <button
           id="submit"
           type="submit"
+          name="alfred"
           @click="${this.askQuestion}"
         >
-          Ask question
+          Ask Alfred
+        </button>
+        <button
+          id="submit2"
+          type="submit"
+          name="robin"
+          @click="${this.askQuestion}"
+        >
+          Ask Robin
         </button>
       </form>
         ${this.question ? html`
@@ -199,6 +214,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
   static get properties() {
     return {
       ...super.properties,
+      engine: { type: String },
       question: { type: String },
       answers: { type: Array },
       opened: { type: Boolean, reflect: true },

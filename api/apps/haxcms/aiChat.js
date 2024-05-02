@@ -9,7 +9,11 @@ curl -X POST http://ec2-44-205-57-53.compute-1.amazonaws.com/handle-query \
 import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/requestHelpers.js";
 import { resolveSiteData } from "./lib/JOSHelpers.js";
 
-const aiChatSource = "https://askalfred.vercel.app/api/query";
+// LLM response agents
+const engines = {
+  alfred: "https://askalfred.vercel.app/api/query",
+  robin: "http://ec2-44-205-57-53.compute-1.amazonaws.com/embed-and-store",
+};
 
 // site object to validate response from passed in url
 export default async function handler(req, res) {
@@ -46,7 +50,8 @@ export default async function handler(req, res) {
     }
     // @todo don't hardcode, leverage site that was requested for context assignment
     context = "haxcellence";
-    let data = await fetch(aiChatSource, {
+    let engine = body.engine || "alfred";
+    let data = await fetch(engines[engine], {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -57,6 +62,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         "question": body.question,
         "course": context,
+        "engine": engine,
       }),
     })
     .then((d) => {
