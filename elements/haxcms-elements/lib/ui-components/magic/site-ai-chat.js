@@ -1,5 +1,5 @@
-import { DDD, DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { html, css } from "lit";
+import { DDDSuper, DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { html, css, LitElement } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
@@ -19,10 +19,11 @@ MicroFrontendRegistry.add({
     type: "site for site.json or link for remote loading",
     question: "Question to ask of the AI",
     engine: "which engine to use as we test multiple",
+    context: "context to query based on. Course typical"
   },
 });
 
-export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
+export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
   static get tag() {
     return "site-ai-chat";
   }
@@ -32,6 +33,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
     this.question = null;
     this.answers = [];
     this.loading = false;
+    this.context = toJS(store.manifest.metadata.site.name);
     this.engine = "alfred";
     this.dataPulse = "1";
   }
@@ -39,7 +41,9 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
   askQuestion(e) {
     e.preventDefault();
     this.engine = e.target.getAttribute('name');
+    this.context = this.shadowRoot.querySelector("#context").value;
     this.question = this.shadowRoot.querySelector("#question").value;
+    this.requestAIFeedback();
   }
 
   updated(changedProperties) {
@@ -54,33 +58,39 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
         this.shadowRoot.querySelector("dialog").close();
       }
     }
-    if (changedProperties.has("question") && this.question && this.engine) {
-      const site = toJS(store.manifest);
-      var base = "";
-      if (globalThis.document.querySelector("base")) {
-        base = globalThis.document.querySelector("base").href;
-      }
-      const params = {
-        site: {
-          file: base + "site.json",
-          metadata: site.metadata,
-        },
-        type: "site",
-        question: this.question,
-        engine: this.engine,
-      };
-      this.loading = true;
-      MicroFrontendRegistry.call(
-        "@haxcms/aiChat",
-        params,
-      ).then((d) => {
-        if (d.status == 200) {
-          this.answers = [...d.data.answers];
-          this.question = d.data.question;
-          this.loading = false;
-        }
-      });
+  }
+
+  requestAIFeedback() {
+    const site = toJS(store.manifest);
+    var base = "";
+    if (globalThis.document.querySelector("base")) {
+      base = globalThis.document.querySelector("base").href;
     }
+    const params = {
+      site: {
+        file: base + "site.json",
+        metadata: site.metadata,
+      },
+      type: "site",
+      question: this.question,
+      engine: this.engine,
+      context: this.context,
+    };
+    this.loading = true;
+    MicroFrontendRegistry.call(
+      "@haxcms/aiChat",
+      params,
+    ).then((d) => {
+      if (d.status == 200) {
+        this.answers = [...d.data.answers];
+        this.question = d.data.question;
+      }
+      this.loading = false;
+    })
+    .catch((error) => {
+      this.loading = false;
+      console.error(error);
+    });
   }
 
   render() {
@@ -92,6 +102,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
         >Close</simple-icon-button-lite>
       <form action="#">
       <simple-icon-lite class="hat" icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}"></simple-icon-lite>
+        <input id="context" value="${this.context}" type="text" />
         <input id="question" type="text" placeholder="Ask your question.." />
         
         <button
@@ -216,6 +227,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDD) {
       ...super.properties,
       engine: { type: String },
       question: { type: String },
+      context: { type: String },
       answers: { type: Array },
       opened: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },

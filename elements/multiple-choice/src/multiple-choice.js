@@ -717,6 +717,7 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
     this.setAttribute("typeof", "oer:Assessment");
     // check lightdom on setup for answers to be read in
     // this only happens on initial paint
+    console.log(this.children);
     if (this.children.length > 0) {
       let inputs = Array.from(this.querySelectorAll("input"));
       let answers = [];
@@ -728,9 +729,18 @@ class MultipleChoice extends SchemaBehaviors(DDDSuper(LitElement)) {
         answers.push(answer);
       }
       this.answers = answers;
+      // look for light dom slot markers
+      const correctLD = this.querySelector('[slot="correct-feedback"]');
+      const incorrectLD = this.querySelector('[slot="correct-feedback"]');
+      const questionLD = this.querySelector('[slot="correct-feedback"]');
+      if (this.querySelector('[slot="correct-feedback"]')) {
+        this.correctText = this.querySelector('[slot="correct-feedback"]')
+      }
+      question
       // wipe lightdom after reading it in for data. This makes it harder for someone
       // to just inspect the document and get at the underlying data
-      this.innerHTML = "";
+
+      //this.innerHTML = "";
     }
   }
 }

@@ -12,7 +12,7 @@ import { resolveSiteData } from "./lib/JOSHelpers.js";
 // LLM response agents
 const engines = {
   alfred: "https://askalfred.vercel.app/api/query",
-  robin: "http://ec2-44-205-57-53.compute-1.amazonaws.com/embed-and-store",
+  robin: "http://ec2-44-205-57-53.compute-1.amazonaws.com/handle-query",
 };
 
 // site object to validate response from passed in url
@@ -48,8 +48,12 @@ export default async function handler(req, res) {
       const siteManifest = await resolveSiteData(base);
       context = siteManifest.metadata.site.name;
     }
-    // @todo don't hardcode, leverage site that was requested for context assignment
-    context = "haxcellence";
+    // support definition in post
+    if (body.context) {
+      context = body.context;
+    }
+    // hard code to switch context on the fly
+    //context = "haxcellence";
     let engine = body.engine || "alfred";
     let data = await fetch(engines[engine], {
       method: "POST",
@@ -61,8 +65,7 @@ export default async function handler(req, res) {
       redirect: "follow",
       body: JSON.stringify({
         "question": body.question,
-        "course": context,
-        "engine": engine,
+        "course": context
       }),
     })
     .then((d) => {
