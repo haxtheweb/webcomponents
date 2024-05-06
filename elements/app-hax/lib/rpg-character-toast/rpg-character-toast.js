@@ -41,6 +41,9 @@ export class RPGCharacterToast extends SimpleToastEl {
       css`
         :host([opened]) {
           display: block;
+          padding: 0;
+          margin: 0;
+          background-color: #22222222;
         }
 
         future-terminal-text {
@@ -84,14 +87,13 @@ export class RPGCharacterToast extends SimpleToastEl {
           height: var(--rpg-character-toast-height, 142px);
           display: none;
           width: var(--simple-toast-width, auto);
+          min-width: var(--simple-toast-min-width, 200px);
           color: var(
             --simple-toast-color,
             var(--simple-colors-default-theme-accent-12, black)
           );
           background-color: transparent;
           top: var(--simple-toast-top);
-          margin: var(--simple-toast-margin, 4px);
-          padding: var(--simple-toast-padding, 4px);
           bottom: var(--simple-toast-bottom, 36px);
           right: var(--simple-toast-right, 0px);
           border: var(--simple-toast-border);
@@ -108,11 +110,16 @@ export class RPGCharacterToast extends SimpleToastEl {
           padding: 0;
           display: var(--rpg-character-toast-display);
         }
+        .bubble-wrapper {
+          min-width: var(--simple-toast-min-width, 200px);
+          display: block;
+        }
         .bubble {
           height: var(--rpg-character-toast-height, 142px);
           display: inline-flex;
         }
         .mid {
+          min-width: 100px;
           line-height: var(--rpg-character-toast-height, 142px);
           background-color: white;
           background-repeat: repeat-x;
@@ -125,9 +132,10 @@ export class RPGCharacterToast extends SimpleToastEl {
         }
         .message {
           line-height: 16px;
-          font-size: 16px;
+          font-size: 14px;
           height: 16px;
           display: block;
+          margin-top: 16px;
           margin-bottom: 16px;
         }
         .buttons {
@@ -168,10 +176,10 @@ export class RPGCharacterToast extends SimpleToastEl {
           filter: invert(1);
         }
         .progress {
-          width: 100%;
+          width: calc(100% + 6px);
           border: 2px solid var(--ddd-theme-default-keystoneYellow);
-          height: 6px;
-          margin-bottom: 4px;
+          height: 8px;
+          margin: -4px 0px 0px 0px;
         }
 
         .progress .progress__bar {
@@ -256,13 +264,14 @@ export class RPGCharacterToast extends SimpleToastEl {
   }
 
   render() {
-    return html` <div class="progress">
+    return html`
+      <div class="progress">
         <div
           class="progress__bar"
           style="animation-duration:${this.duration}ms;"
         ></div>
       </div>
-      <div class="bubble" part="bubble-wrapper">
+      <div class="bubble bubble-wrapper" part="bubble-wrapper">
         <span class="bubble leftedge" part="bubble-left"></span>
         <span class="bubble mid" part="bubble-mid">
           <slot name="pre"></slot>

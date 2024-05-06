@@ -1,8 +1,9 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 
-export class SortingOption extends LitElement {
+export class SortingOption extends DDDSuper(LitElement) {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "sorting-option";
@@ -11,7 +12,11 @@ export class SortingOption extends LitElement {
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
   static get properties() {
     return {
+      ...super.properties,
       disabled: { type: Boolean },
+      correct: { type: Boolean, reflect: true },
+      incorrect: { type: Boolean, reflect: true },
+      option: { type: String },
     };
   }
 
@@ -28,9 +33,9 @@ export class SortingOption extends LitElement {
 
   getCurrentPosition(e) {
     if (!this.disabled) {
-      this.style.backgroundColor = "darkgray";
-      this.removeAttribute("correct");
-      this.removeAttribute("incorrect");
+      this.style.backgroundColor = 'var(--ddd-theme-default-infoLight)';
+      this.correct = null;
+      this.incorrect = null;
       var posY = e.clientY;
       this.currentPosition = posY;
     }
@@ -88,32 +93,32 @@ export class SortingOption extends LitElement {
   }
   dragEnd() {
     if (!this.disabled) {
-      this.style.backgroundColor = "white";
+      this.style.backgroundColor = "";
     }
   }
 
   //To Do: change color of up arrowed otption to see which one moved better
   // then reset the color of all other options
 
-  upArrowSort(element) {
+  upArrowSort() {
     if (!this.disabled) {
-      var parent = element.parentNode;
+      var parent = this.parentNode;
       parent.childNodes.forEach((child) => {
         if (child.tagName === "SORTING-OPTION") {
-          child.style.backgroundColor = "white";
+          child.style.backgroundColor = "";
         }
       });
-      this.style.backgroundColor = "darkgray";
+      this.style.backgroundColor = "var(--ddd-theme-default-infoLight)";
       //find old index
       var oldIndex;
       for (var i = 0; i < parent.children.length; i++) {
-        if (parent.children[i].isEqualNode(element)) {
+        if (parent.children[i].isEqualNode(this)) {
           oldIndex = i;
         }
       }
       //set new index
       if (oldIndex != 0) {
-        parent.insertBefore(element, parent.children[oldIndex - 1]);
+        parent.insertBefore(this, parent.children[oldIndex - 1]);
         this.shadowRoot.querySelector("#upArrow").focus();
         return;
       }
@@ -121,99 +126,77 @@ export class SortingOption extends LitElement {
     }
   }
 
-  downArrowSort(element) {
+  downArrowSort() {
     if (!this.disabled) {
-      var parent = element.parentNode;
+      var parent = this.parentNode;
       parent.childNodes.forEach((child) => {
         if (child.tagName === "SORTING-OPTION") {
-          child.style.backgroundColor = "white";
+          child.style.backgroundColor = "";
         }
       });
-      this.style.backgroundColor = "darkgray";
+      this.style.backgroundColor = "var(--ddd-theme-default-infoLight)";
       //find old index
       var oldIndex;
       for (var i = 0; i < parent.children.length; i++) {
-        if (parent.children[i].isEqualNode(element)) {
+        if (parent.children[i].isEqualNode(this)) {
           oldIndex = i;
         }
       }
       //set new index
       if (oldIndex != parent.children.length - 1) {
-        parent.insertBefore(parent.children[oldIndex + 1], element);
+        parent.insertBefore(parent.children[oldIndex + 1], this);
         return;
       }
     }
   }
 
-  // Lit life-cycle; this fires the 1st time the element is rendered on the screen
-  // this is a sign it is safe to make calls to this.shadowRoot
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    var el = this;
-    this.shadowRoot
-      .querySelector("#upArrow")
-      .addEventListener("click", function () {
-        el.upArrowSort(el);
-      });
-    //add same event listener for enter key
-    this.shadowRoot
-      .querySelector("#upArrow")
-      .addEventListener("keypress", function (e) {
-        if (e.key === "Enter") {
-          el.upArrowSort(el);
-        }
-      });
-    this.shadowRoot
-      .querySelector("#downArrow")
-      .addEventListener("click", function () {
-        el.downArrowSort(el);
-      });
-    //add same event listener for enter key
-    this.shadowRoot
-      .querySelector("#downArrow")
-      .addEventListener("keypress", function (e) {
-        if (e.key === "Enter") {
-          el.downArrowSort(el);
-        }
-      });
-  }
 
   // CSS - specific to Lit
   static get styles() {
-    return css`
+    return [super.styles,
+    css`
       :host {
-        border: 2px black solid;
-        border-radius: 5px;
         width: 95%;
-        margin-top: 5px;
-        margin-bottom: 5px;
         height: 100%;
         min-height: 25px;
         display: flex;
         align-items: center;
-        box-shadow: 1px 1px 1px;
         cursor: grab;
         z-index: 1;
-        background-color: var(--option-background-color, white);
         overflow: hidden;
+        padding: var(--ddd-spacing-4);
+        transition: all 0.3s ease-in-out 0s;
+        margin: 0px;
+        border: var(--ddd-border-md);
+        border-radius: var(--ddd-radius-xs);
+        color: var(--simple-colors-default-theme-accent-10);
+        background-color: var(--simple-colors-default-theme-accent-2);
+        font-family: var(--ddd-font-navigation);
+        font-size: var(--ddd-font-size-xs);
+        line-height: var(--ddd-font-size-xs);
+        --simple-icon-height: var(--ddd-icon-xs);
+        --simple-icon-width: var(--ddd-icon-xs);
       }
 
       :host([correct]) {
-        transition: background-color 0.7s linear;
         background-color: var(
           --option-background-color-correct,
-          #3deb3dcc
+          var(--ddd-theme-default-successLight)
         ) !important;
       }
 
       :host([incorrect]) {
-        transition: background-color 0.7s linear;
         background-color: var(
           --option-background-color-incorrect,
-          #f94343f7
+          var(--ddd-theme-default-alertImmediate)
         ) !important;
+      }
+
+      :host([incorrect]) #incorrect-icon {
+        display: block;
+      }
+      :host([correct]) #correct-icon {
+        display: block;
       }
 
       .option-slot-wrapper {
@@ -275,28 +258,19 @@ export class SortingOption extends LitElement {
       .feedback-container {
         width: fit-content;
         display: flex;
-        height: 100%;
         align-items: center;
-        padding-left: 5px;
+        margin-right: var(--ddd-spacing-3);
         background-color: transparent;
       }
 
       #correct-icon {
         display: none;
-        height: 15px;
-        width: 15px;
-        border-radius: 2px;
-        box-shadow: 0px 1px 1px 0px;
       }
 
       #incorrect-icon {
         display: none;
-        height: 15px;
-        width: 15px;
-        border-radius: 2px;
-        box-shadow: 0px 1px 1px 0px;
       }
-    `;
+    `];
   }
 
   // HTML - specific to Lit
@@ -306,27 +280,27 @@ export class SortingOption extends LitElement {
         <simple-icon-lite
           id="correct-icon"
           icon="check"
-          alt="correct answer"
+          title="Answer is correct"
         ></simple-icon-lite>
         <simple-icon-lite
           id="incorrect-icon"
           icon="clear"
-          alt="incorrect answer"
+          title="Answer is incorrect"
         ></simple-icon-lite>
       </div>
-      <button tabindex="-1" class="option-slot-wrapper"><slot></slot></button>
+      <div class="option-slot-wrapper"><slot></slot></div>
       <div class="arrow-container">
         <simple-icon-button-lite
           id="upArrow"
           icon="arrow-upward"
           @click="${this.upArrowSort}"
-          alt="up arrow click me to move the option up"
+          title="Select to move option up in order"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
           id="downArrow"
           icon="arrow-downward"
           @click="${this.downArrowSort}"
-          alt="down arrow click me to move the option down"
+          title="Select to move option down in order"
         ></simple-icon-button-lite>
       </div>
     `;
