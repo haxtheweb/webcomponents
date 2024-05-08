@@ -1,0 +1,41 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "tagging question",
+    "description": "",
+    "icon": "icons:android",
+    "color": "purple",
+    "tags": [
+      "Other"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "tagging-question",
+      "content": "",
+      "properties": {}
+    }
+  ]
+}

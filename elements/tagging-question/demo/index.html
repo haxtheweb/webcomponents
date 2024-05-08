@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>TaggingQuestion: tagging-question Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../tagging-question.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic tagging-question demo</h3>
+      <demo-snippet>
+        <template>
+          <tagging-question question="How would you describe... this..?">
+            <img src="https://btopro.com/files/i-developed.jpg" />
+            <input value="Huey" data-unselected="Good job reading, some people would have missed this!" data-selected="This name does not start with an D, it starts with H silly Goose">
+            <input correct value="Duey" data-selected="Pretty easy there, obviously has a D in it" data-unselected="4 letters, focus on the 1st one">
+            <input correct value="Daffy" data-selected="You knew it" data-unselected="Are you serious... look at the letter!">
+            <input correct value="Donald" data-selected="The OP duck in disney">
+            <input  value="dfsdfs" data-selected="The OP duck in disney">
+            <input  value="h4" data-selected="The OP duck in disney">
+            <input  value="ghj" data-selected="The OP duck in disney">
+            <input  value="hgj" data-selected="The OP duck in disney">
+            <input  value="Donghfhald" data-selected="The OP duck in disney">
+            <input  value="df" data-selected="The OP duck in disney">
+            <input  value="jkjhkhjk" data-selected="The OP duck in disney">
+          </tagging-question>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

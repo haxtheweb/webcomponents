@@ -8,6 +8,14 @@ import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "./lib/sorting-option.js";
 
+// @TODO
+// - area for feedback just like the ones in class
+// - add feedback area to multiple choice
+// - on save / convert to store in HAX, we need to use a hook to that we put things in the correct order for saving
+// - overall feedback for all right or all wrong feedback; do this on all question types
+// - whole or item based feedback
+// - Max attempts setting that SHOWS # of attempts remaining with a disabled "Reveal answer" button
+// - Evidence is AFTER finishing it
 
 export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -15,18 +23,32 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     return "sorting-question";
   }
 
+  getOptions(flag = '') {
+    if (flag) {
+      return this.querySelectorAll(`sorting-option[${flag}]`);
+    }
+    else {
+      return this.querySelectorAll('sorting-option');
+    }
+  }
+
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
-    this.numberOfOptions = this.children.length;
+    this.numberOfOptions = this.getOptions().length;
     this.numberCorrrect = 0;
     this.correctOrder = [];
-    this.question = "Sort the following in order!";
+    this.hasHint = this.querySelector('[slot="hint"]');
+    this.correctText = "Great job!";
+    this.correctIcon = "icons:thumb-up";
+    this.incorrectIcon = "icons:thumb-down";
+    this.quizName = "default";
+    this.question = "Put the following in order";
     this.t = {
       numCorrectLeft: "You Have",
       numCorrectRight: "Correct.",
       checkAnswer: "Check answer",
-      reset: "Reset",
+      tryAgain: "Try again",
     };
     this.registerLocalization({
       context: this,
@@ -41,10 +63,8 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
   }
 
   getCorrectOrder() {
-    this.childNodes.forEach((child) => {
-      if (child.tagName == "SORTING-OPTION") {
-        this.correctOrder.push(child);
-      }
+    this.getOptions().forEach((child) => {
+      this.correctOrder.push(child);
     });
   }
 
@@ -63,7 +83,7 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         randomIndex1 = 0;
       }
 
-      let targetChild = this.children[indexValues[randomIndex1]];
+      let targetChild = this.getOptions()[indexValues[randomIndex1]];
 
       var randomIndex2 = Math.floor(
         Math.random() * (indexValues.length - 0) + 0,
@@ -72,14 +92,22 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         randomIndex2 = 0;
       }
 
-      this.insertBefore(targetChild, this.children[indexValues[randomIndex2]]);
+      this.insertBefore(targetChild, this.getOptions()[indexValues[randomIndex2]]);
     }
   }
 
-  _verifyAnswers() {
+  checkAnswer() {
     this.showAnswer = true;
   }
-  resetAnswers() {
+  resetAnswer() {
+    if (this.getOptions('incorrect')) {
+      const firstWrong = this.getOptions('incorrect')[0];
+      if (firstWrong) {
+        setTimeout(() => {
+          firstWrong.shadowRoot.querySelector('#downArrow').shadowRoot.querySelector('button').focus();
+        }, 0);  
+      }
+    }
     this.showAnswer = false;
     globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
@@ -90,23 +118,24 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       }),
     );
     //reset appearance of all options
-    this.childNodes.forEach(function (child) {
-      if (child.tagName == "SORTING-OPTION") {
-        child.shadowRoot.querySelector("#incorrect-icon").style.display =
-          "none";
-        child.shadowRoot.querySelector("#correct-icon").style.display = "none";
-        child.incorrect = null;
-        child.correct = null;
-      }
+    this.getOptions().forEach((child) => {
+      child.disabled = false;
+      child.incorrect = null;
+      child.correct = null;
     });
+    let gotRight = (this.numberCorrrect === this.numberOfOptions);
+    // if we got it right, reset the whole interaction in case they want to take it again
+    if (gotRight) {
+      this.randomizeOptions();
+    }
     this.numberCorrrect = 0;
-    this.randomizeOptions();
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
   static get properties() {
     return {
       ...super.properties,
+      hasHint: { type: Boolean },
       showAnswer: { type: Boolean},
       question: { type: String },
       correctOrder: { type: Array },
@@ -123,51 +152,111 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "showAnswer" && this.showAnswer) {
-        var numCorrect = 0;
-        for (var i = 0; i < this.numberOfOptions; i++) {
-          if (this.children[i].isEqualNode(this.correctOrder[i])) {
-            numCorrect += 1;
-            this.children[i].correct = true;
-            this.children[i].incorrect = null;
-          } else {
-            this.children[i].correct = null;
-            this.children[i].incorrect = true;
+      if (propName === "showAnswer") {
+        if (this.showAnswer) {
+          var numCorrect = 0;
+          let children = this.getOptions();
+          for (var i = 0; i < this.numberOfOptions; i++) {
+            if (children[i].isEqualNode(this.correctOrder[i])) {
+              numCorrect += 1;
+              children[i].correct = true;
+              children[i].incorrect = null;
+            } else {
+              children[i].correct = null;
+              children[i].incorrect = true;
+            }
+            children[i].disabled = true;
           }
-        }
-        this.numberCorrrect = numCorrect;
-        if (this.numberCorrrect === this.numberOfOptions) {
-          import(
-            "@lrnwebcomponents/multiple-choice/lib/confetti-container.js"
-          ).then((module) => {
+          this.numberCorrrect = numCorrect;
+          let si = document.createElement("simple-icon-lite");
+          let extras = {};
+          let toastShowEventName = "simple-toast-show";
+          // support for haxcms toast
+          if (globalThis.HAXCMSToast) {
+            toastShowEventName = "haxcms-toast-show";
+            si.style.setProperty("--simple-icon-height", "40px");
+            si.style.setProperty("--simple-icon-width", "40px");
+            si.style.height = "150px";
+            si.style.marginLeft = "8px";
+          }
+          // regardless, focus the other button since this one will disable
+          // @todo max attempts can come into play here
+          if (!this.maxAttempts) {
             setTimeout(() => {
-              this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+              this.shadowRoot.querySelector("#reset").focus();        
             }, 0);
+          }
+          let gotRight = (this.numberCorrrect === this.numberOfOptions);
+          // see if they got this correct based on their answers
+          if (gotRight) {
+            this.__toastColor = "green";
+            this.__toastIcon = this.correctIcon;
+            this.__toastText = this.correctText;
+            // make it fun... and performant!
+            import(
+              "@lrnwebcomponents/multiple-choice/lib/confetti-container.js"
+            ).then((module) => {
+              setTimeout(() => {
+                this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+              }, 0);
+            });
+            extras.hat = "party";
+          } else {
+            this.__toastColor = "red";
+            this.__toastIcon = this.incorrectIcon;
+            this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrrect} of ${this.numberOfOptions} ${this.t.numCorrectRight}`;
+            extras.fire = true;
+          }
+          si.icon = this.__toastIcon;
+          si.style.marginLeft = "16px";
+          si.accentColor = this.__toastColor;
+          si.dark = true;
+          // gets it all the way to the top immediately
+          globalThis.dispatchEvent(
+            new CustomEvent(toastShowEventName, {
+              bubbles: true,
+              composed: true,
+              cancelable: true,
+              detail: {
+                text: this.__toastText,
+                accentColor: this.__toastColor,
+                duration: 3000,
+                slot: si,
+                ...extras,
+              },
+            }),
+          );
+          // start of data passing, this is a prototype atm
+          let eventData = {
+            activityDisplay: "answered",
+            objectName: this.quizName,
+            resultSuccess: gotRight,
+          };
+          this.dispatchEvent(
+            new CustomEvent("user-engagement", {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: eventData,
+            }),
+          );
+        }
+        else {
+          this.getOptions().forEach((child) => {
+            child.disabled = false;
           });
         }
       }
       if (propName === "disabled" && this.shadowRoot) {
         if (this.disabled) {
-          this.childNodes.forEach((child) => {
-            if (child.tagName == "SORTING-OPTION") {
-              child.setAttribute("disabled", true);
-              child.setAttribute("draggable", false);
-              child.removeAttribute("correct");
-              child.removeAttribute("incorrect");
-              child.shadowRoot.querySelector("#incorrect-icon").style.display =
-                "none";
-              child.shadowRoot.querySelector("#correct-icon").style.display =
-                "none";
-              child.style.opacity = "0.5";
-            }
+          this.getOptions().forEach((child) => {
+            child.disabled = true;
+            child.correct = null;
+            child.incorrect = null;
           });
         } else {
-          this.childNodes.forEach((child) => {
-            if (child.tagName == "SORTING-OPTION") {
-              child.removeAttribute("disabled");
-              child.setAttribute("draggable", true);
-              child.style.opacity = "1";
-            }
+          this.getOptions().forEach((child) => {
+            child.disabled = false;
           });
         }  
       }
@@ -184,10 +273,8 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         min-width: 160px;
         padding: var(--ddd-spacing-8);
         border: var(--ddd-border-md);
-        background-color: var(--simple-colors-default-theme-accent-1);
         border-radius: var(--ddd-radius-xs);
         transition: all 0.3s ease-in-out;
-        color: var(--simple-colors-default-theme-grey-12);
       }
       :host(:focus),
       :host(:focus-within),
@@ -195,10 +282,6 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         border-color: var(--simple-colors-default-theme-accent-12);
       }
 
-      :host button {
-        background-color: var(--simple-colors-default-theme-grey-1);
-        color: var(--simple-colors-default-theme-grey-12);
-      }
       simple-toolbar-button {
         font-size: var(--ddd-font-size-xs);
         font-family: var(--ddd-font-navigation);
@@ -209,8 +292,6 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       :host simple-toolbar-button:focus-within::part(button),
       :host simple-toolbar-button:active::part(button) {
         cursor: pointer;
-        background-color: var(--simple-colors-default-theme-accent-3);
-        color: var(--simple-colors-default-theme-accent-12);
         box-shadow: var(--ddd-boxShadow-sm);
         border-color: black;
       }
@@ -226,12 +307,6 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         padding: 0;
         margin: 0;
       }
-      .sorting-question-header {
-        text-align: center;
-        font-size: var(--ddd-font-size-xs);
-        font-family: revert;
-        margin-bottom: 10px;
-      }
       #check {
         margin-right: var(--ddd-spacing-4);
       }
@@ -244,6 +319,7 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         justify-content: space-between;
         font-size: var(--ddd-font-size-xs);
         font-family: revert;
+        padding: var(--ddd-spacing-4) 0;
       }
 
       .button-container {
@@ -251,36 +327,49 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         justify-content: center;
         align-items: center;
       }
+      h3 {
+        padding: 0;
+        margin: 0 0 var(--ddd-spacing-8) 0;
+        font-family: var(--ddd-font-navigation);
+      }
+      h4.feedback {
+        margin: 0;
+        padding-top: 8px;
+      }
     `
     ];
   }
-
-  //To Do: add reset option this resets the option color, the score, and randomizes the options
 
   // HTML - specific to Lit
   render() {
     return html`
       <confetti-container id="confetti">
       <meta property="oer:assessing" content="${this.relatedResource}" />
-        <h3 property="oer:name" class="sorting-question-header">${this.question}</h3>
+        <h3 property="oer:name">${this.question}</h3>
         <fieldset class="options"><slot></slot></fieldset>
+        ${this.hasHint ? html`
+        <details>
+          <summary>Need a hint?</summary>
+          <div>
+            <slot name="hint"></slot>
+          </div>
+        </details>` : ``}
         <div class="sorting-controls">
-          <h4
-            >${this.t.numCorrectLeft}
+          ${this.showAnswer ? html`<h4 class="feedback">${this.t.numCorrectLeft}
             ${this.numberCorrrect}/${this.numberOfOptions}
-            ${this.t.numCorrectRight}</h4>
+            ${this.t.numCorrectRight}</h4>` : html`<div></div>`}
           <div class="button-container">
             <simple-toolbar-button
               id="check"
               ?disabled="${this.disabled || this.showAnswer}"
-              @click="${this._verifyAnswers}"
+              @click="${this.checkAnswer}"
               label="${this.t.checkAnswer}">
             </simple-toolbar-button>
             <simple-toolbar-button
               id="reset"
               ?disabled="${this.disabled}"
-              @click="${this.resetAnswers}"
-              label="${this.t.reset}">
+              @click="${this.resetAnswer}"
+              label="${this.t.tryAgain}">
             </simple-toolbar-button>
           </div>
         </div>
@@ -288,8 +377,6 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     `;
   }
 
-  // HAX specific callback
-  // This teaches HAX how to edit and work with your web component
   /**
    * haxProperties integration via file reference
    */
@@ -299,4 +386,4 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
   }
 }
 
-window.customElements.define(SortingQuestion.tag, SortingQuestion);
+globalThis.customElements.define(SortingQuestion.tag, SortingQuestion);

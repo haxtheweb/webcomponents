@@ -13,18 +13,37 @@ export class SortingOption extends DDDSuper(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-      disabled: { type: Boolean },
+      disabled: { type: Boolean, reflect: true },
+      dragging: { type: Boolean, reflect: true },
       correct: { type: Boolean, reflect: true },
       incorrect: { type: Boolean, reflect: true },
-      option: { type: String },
     };
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // align disable w/ draggable
+    if (changedProperties.has('disabled')) {
+      if (this.disabled) {
+        this.removeAttribute("draggable");
+      }
+      else {
+        this.setAttribute("draggable", true);
+      }
+    }
   }
 
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
-    this.option = "option";
-    this.setAttribute("draggable", true);
+    this.shadowRootOptions = {
+      ...LitElement.shadowRootOptions,
+      delegatesFocus: true,
+    };
+    this.dragging = false;
+    this.disabled = false;
     this.addEventListener("mousedown", this.getCurrentPosition);
     this.addEventListener("drag", this.dragStart);
     this.addEventListener("dragend", this.dragEnd);
@@ -33,7 +52,6 @@ export class SortingOption extends DDDSuper(LitElement) {
 
   getCurrentPosition(e) {
     if (!this.disabled) {
-      this.style.backgroundColor = 'var(--ddd-theme-default-infoLight)';
       this.correct = null;
       this.incorrect = null;
       var posY = e.clientY;
@@ -43,13 +61,13 @@ export class SortingOption extends DDDSuper(LitElement) {
 
   dragStart(e) {
     if (!this.disabled) {
-      //distance above or below current pos to switch index
-      var changeBuffer = 30;
+      this.dragging = true;
+      // distance above or below current pos to switch index
+      var changeBuffer = 64;
       //if slottted images increase change buffer size
       if (this.querySelectorAll("img").length > 0) {
-        changeBuffer = 70;
+        changeBuffer = 92;
       }
-      // this.style.visibility = "hidden";
       var posY = e.clientY;
       //drag stop counts as drag for some reason so make sure not to set drag pos to zero
       if (posY != 0 && posY > 0) {
@@ -93,80 +111,55 @@ export class SortingOption extends DDDSuper(LitElement) {
   }
   dragEnd() {
     if (!this.disabled) {
-      this.style.backgroundColor = "";
+      this.dragging = false;
     }
   }
 
-  //To Do: change color of up arrowed otption to see which one moved better
-  // then reset the color of all other options
-
-  upArrowSort() {
+  arrowSort(e) {
     if (!this.disabled) {
-      var parent = this.parentNode;
-      parent.childNodes.forEach((child) => {
-        if (child.tagName === "SORTING-OPTION") {
-          child.style.backgroundColor = "";
-        }
-      });
-      this.style.backgroundColor = "var(--ddd-theme-default-infoLight)";
+      let parent = this.parentNode;
       //find old index
-      var oldIndex;
+      let oldIndex;
       for (var i = 0; i < parent.children.length; i++) {
         if (parent.children[i].isEqualNode(this)) {
           oldIndex = i;
         }
       }
       //set new index
-      if (oldIndex != 0) {
-        parent.insertBefore(this, parent.children[oldIndex - 1]);
-        this.shadowRoot.querySelector("#upArrow").focus();
-        return;
-      }
-      //keep focus on up-sort
-    }
-  }
-
-  downArrowSort() {
-    if (!this.disabled) {
-      var parent = this.parentNode;
-      parent.childNodes.forEach((child) => {
-        if (child.tagName === "SORTING-OPTION") {
-          child.style.backgroundColor = "";
-        }
-      });
-      this.style.backgroundColor = "var(--ddd-theme-default-infoLight)";
-      //find old index
-      var oldIndex;
-      for (var i = 0; i < parent.children.length; i++) {
-        if (parent.children[i].isEqualNode(this)) {
-          oldIndex = i;
+      if (e.target.getAttribute('id') === 'downArrow') {
+        if (oldIndex != parent.children.length - 1) {
+          let ref = parent.insertBefore(this.nextElementSibling, this);
+          ref.shadowRoot.querySelector("#downArrow").focus();
         }
       }
-      //set new index
-      if (oldIndex != parent.children.length - 1) {
-        parent.insertBefore(parent.children[oldIndex + 1], this);
-        return;
+      else {
+        if (oldIndex != 0) {
+          let ref = parent.insertBefore(this, this.previousElementSibling);
+          ref.shadowRoot.querySelector("#upArrow").shadowRoot.querySelector('button').focus();            
+        }
       }
+      // give a ghosting effect on move
+      this.style.backgroundColor = "var(--ddd-theme-default-linkLight)";
+      setTimeout(() => {
+        this.style.backgroundColor = "";
+      }, 500);
     }
   }
-
 
   // CSS - specific to Lit
   static get styles() {
     return [super.styles,
     css`
       :host {
-        width: 95%;
+        padding: var(--ddd-spacing-4);
+        min-height: var(--ddd-spacing-8);
+        margin: var(--ddd-spacing-4);
         height: 100%;
-        min-height: 25px;
         display: flex;
         align-items: center;
-        cursor: grab;
         z-index: 1;
         overflow: hidden;
-        padding: var(--ddd-spacing-4);
         transition: all 0.3s ease-in-out 0s;
-        margin: 0px;
         border: var(--ddd-border-md);
         border-radius: var(--ddd-radius-xs);
         color: var(--simple-colors-default-theme-accent-10);
@@ -176,6 +169,9 @@ export class SortingOption extends DDDSuper(LitElement) {
         line-height: var(--ddd-font-size-xs);
         --simple-icon-height: var(--ddd-icon-xs);
         --simple-icon-width: var(--ddd-icon-xs);
+      }
+      :host(:not([disabled])) {
+        cursor: grab;
       }
 
       :host([correct]) {
@@ -188,71 +184,40 @@ export class SortingOption extends DDDSuper(LitElement) {
       :host([incorrect]) {
         background-color: var(
           --option-background-color-incorrect,
-          var(--ddd-theme-default-alertImmediate)
+          var(--ddd-theme-default-errorLight)
         ) !important;
-      }
-
-      :host([incorrect]) #incorrect-icon {
-        display: block;
       }
       :host([correct]) #correct-icon {
         display: block;
+        color: var(--ddd-theme-default-success);
       }
-
+      :host([incorrect]) #incorrect-icon {
+        display: block;
+        color: var(--ddd-theme-default-error);
+      }
       .option-slot-wrapper {
         display: flex;
         align-items: center;
         z-index: 2;
         width: 100%;
-        height: 100%;
         background-color: transparent;
         border: none;
         text-align: inherit;
         font-weight: bold;
       }
-      :host button {
-        cursor: grab;
-        font-weight: bold;
+      div ::slotted(*) {
+        height: 64px;
+        min-width: 113px;
+        pointer-events: none;
       }
-      :host button:active {
-        cursor: grabbing;
-      }
-
-      ::slotted(*) {
-        max-height: 75px;
-      }
-
       .arrow-container {
         display: flex;
         justify-content: flex-end;
-        padding-right: 5px;
+        padding-right: var(--ddd-spacing-2);
         position: relative;
         right: 0px;
-        width: 20%;
-        height: 100%;
         background-color: transparent;
         align-items: center;
-      }
-
-      .arrow {
-        height: 15px;
-        width: 15px;
-        border-style: solid;
-        border-width: 1px;
-        border-color: black;
-        cursor: pointer;
-        margin-left: 1px;
-        margin-right: 1px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 1px 0px;
-      }
-
-      .up-arrow {
-        transform: rotate(270deg);
-      }
-
-      .down-arrow {
-        transform: rotate(90deg);
       }
 
       .feedback-container {
@@ -270,6 +235,27 @@ export class SortingOption extends DDDSuper(LitElement) {
       #incorrect-icon {
         display: none;
       }
+      
+      :host([dragging]) {
+        background-color: var(--ddd-theme-default-infoLight);
+      }
+      :host(:focus-within:not([disabled])),
+      :host(:hover:not([disabled])) {
+        background-color: var(--simple-colors-default-theme-accent-3);
+        color: var(--simple-colors-default-theme-accent-12);
+        box-shadow: var(--ddd-boxShadow-sm);
+        border-color: black;
+      }
+
+      :host(:not([disabled])) simple-icon-button-lite {
+        background-color: var(--simple-colors-default-theme-accent-3);
+      }
+      :host(:not([disabled])) simple-icon-button-lite:hover,
+      :host(:not([disabled])) simple-icon-button-lite:focus,
+      :host(:not([disabled])) simple-icon-button-lite:focus-within
+       {
+        background-color: var(--simple-colors-default-theme-accent-1);
+      }
     `];
   }
 
@@ -280,26 +266,30 @@ export class SortingOption extends DDDSuper(LitElement) {
         <simple-icon-lite
           id="correct-icon"
           icon="check"
-          title="Answer is correct"
+          title="Answer is in correct order"
         ></simple-icon-lite>
         <simple-icon-lite
           id="incorrect-icon"
           icon="clear"
-          title="Answer is incorrect"
+          title="Answer is not in correct order"
         ></simple-icon-lite>
       </div>
       <div class="option-slot-wrapper"><slot></slot></div>
       <div class="arrow-container">
         <simple-icon-button-lite
           id="upArrow"
+          ?disabled="${this.disabled}"
+          ?hidden="${this.disabled}"
           icon="arrow-upward"
-          @click="${this.upArrowSort}"
+          @click="${this.arrowSort}"
           title="Select to move option up in order"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
           id="downArrow"
+          ?disabled="${this.disabled}"
+          ?hidden="${this.disabled}"
           icon="arrow-downward"
-          @click="${this.downArrowSort}"
+          @click="${this.arrowSort}"
           title="Select to move option down in order"
         ></simple-icon-button-lite>
       </div>

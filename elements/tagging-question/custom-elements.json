@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "tagging-question",
+      "description": "`tagging-question`\n`Answer question by applying related tags`\n\n",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

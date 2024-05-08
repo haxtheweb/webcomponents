@@ -13,19 +13,23 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
 
   constructor() {
     super();
+    // default method of storing guess data
+    this.__primaryGuess = "display";
     this.shadowRootOptions = {
       ...LitElement.shadowRootOptions,
       delegatesFocus: true,
     };
+    this.showAnswer = false;
     this.randomize = false;
     this.hideButtons = false;
     this.disabled = false;
     this.singleOption = false;
     this.checkLabel = "Check answer";
-    this.resetLabel = "Reset";
+    this.resetLabel = "Try again";
     this.question = "";
     this.answers = [];
     this.displayedAnswers = [];
+    this.selectedAnswers = [];
     this.correctText = "Great job!";
     this.correctIcon = "icons:thumb-up";
     this.incorrectText = "Better luck next time!";
@@ -58,6 +62,20 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       }
     });
   }
+  // return array of all guesses
+  getGuess() {
+    if (this.__primaryGuess == "display") {
+      return this.displayedAnswers.filter(item => item.userGuess === true);
+    }
+    // see if we have another key that can be used as alternative for where this data is stored
+    else if (this[this.__primaryGuess]) {
+      return this[this.__primaryGuess];
+    }
+  }
+  // count of all guesses
+  guessCount() {
+    return this.getGuess().length;
+  }
 
   checkedEvent(e) {
     // ensure there's a match w/ the event data
@@ -68,7 +86,8 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   /**
    * Reset user answers and shuffle the board again.
    */
-  resetAnswers(e) {
+  resetAnswer(e) {
+    this.showAnswer = false;
     globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
         bubbles: true,
@@ -88,7 +107,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   /**
    * Return if the current answers are correct
    */
-  checkAnswers() {
+  __checkAnswerCorrectness() {
     let gotRight = true;
     // see that they got them all right
     for (var i in this.displayedAnswers) {
@@ -116,7 +135,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
    * Verify the answers of the user based on their saying
    * that they want to see how they did.
    */
-  _verifyAnswers(e) {
+  checkAnswer(e) {
     globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
         bubbles: true,
@@ -136,7 +155,15 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       si.style.height = "150px";
       si.style.marginLeft = "8px";
     }
-    let gotRight = this.checkAnswers();
+    this.showAnswer = true;
+    let gotRight = this.__checkAnswerCorrectness();
+    // regardless, focus the other button since this one will disable
+    // @todo max attempts can come into play here
+    if (!this.maxAttempts) {
+      setTimeout(() => {
+        this.shadowRoot.querySelector("#reset").focus();        
+      }, 0);
+    }
     // see if they got this correct based on their answers
     if (gotRight) {
       this.__toastColor = "green";
@@ -226,6 +253,10 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
+      // show the solution feedback to the user
+      showAnswer: { type: Boolean, reflect: true, attribute: "show-answer" },
+      // questions that require generation of multiple arrays of data
+      selectedAnswers: { type: Array },
       /**
        * Support disabling interaction with the entire board
        */
@@ -420,8 +451,9 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         }
         simple-fields-field {
           padding: var(--ddd-spacing-4);
+          min-height: var(--ddd-spacing-8);
+          margin: var(--ddd-spacing-4);
           transition: all 0.3s ease-in-out;
-          margin: 0;
           border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-xs);
           color: var(--simple-colors-default-theme-accent-10);
@@ -436,6 +468,12 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           font-size: var(--ddd-font-size-xs);
           font-family: var(--ddd-font-navigation);
           transition: all 0.3s ease-in-out;
+        }
+        simple-toolbar-button[disabled] {
+          opacity: 0.6;
+        }
+        button[disabled]:not(.correct) {
+          opacity: 0.6;
         }
         :host simple-toolbar-button:hover::part(button),
         :host simple-toolbar-button:focus::part(button),
@@ -554,29 +592,32 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
               `,
             )}
           </fieldset>
-        ${!this.hideButtons
-          ? html`
-              <div id="buttons">
-                <simple-toolbar-button
-                  id="check"
-                  ?disabled="${this.disabled}"
-                  @click="${this._verifyAnswers}"
-                  label="${this.checkLabel}"
-                >
-                </simple-toolbar-button>
-                <simple-toolbar-button
-                  id="reset"
-                  ?disabled="${this.disabled}"
-                  @click="${this.resetAnswers}"
-                  label="${this.resetLabel}"
-                >
-                </simple-toolbar-button>
-              </div>
-            `
-          : ``}
+        ${!this.hideButtons ? this.renderButtons() : ``}
       </confetti-container>
     `;
   }
+
+  renderButtons() {
+    return html`
+    <div id="buttons">
+      <simple-toolbar-button
+        id="check"
+        ?disabled="${this.disabled || this.guessCount() === 0 || this.showAnswer}"
+        @click="${this.checkAnswer}"
+        label="${this.checkLabel}"
+      >
+      </simple-toolbar-button>
+      <simple-toolbar-button
+        id="reset"
+        ?disabled="${this.disabled || this.guessCount() === 0 || (this.guessCount() !== 0 && !this.showAnswer)}"
+        @click="${this.resetAnswer}"
+        label="${this.resetLabel}"
+      >
+      </simple-toolbar-button>
+    </div>
+  `;
+  }
+
   clickSingle(e) {  
     // single option shortcut only bc we have to wipe all others
     if (this.singleOption) {
@@ -664,6 +705,8 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         let answer = {
           label: inputs[i].value || inputs[i].innerText,
           correct: inputs[i].getAttribute("correct") == null ? false : true,
+          selectedFeedback: inputs[i].getAttribute("data-selected") || null,
+          unselectedFeedback: inputs[i].getAttribute("data-unselected") || null,
         };
         answers.push(answer);
       }

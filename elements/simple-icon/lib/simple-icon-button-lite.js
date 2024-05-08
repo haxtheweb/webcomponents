@@ -111,6 +111,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
         `,
       ];
     }
+
     // render function
     render() {
       return html`

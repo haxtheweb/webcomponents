@@ -9,29 +9,32 @@
 
     <script type="module">
       import '../sorting-question.js';
+      import "@lrnwebcomponents/simple-toast/simple-toast.js";
+      globalThis.SimpleToast.requestAvailability()
     </script>
   </head>
   <body>
-    <sorting-question celebrate shame no-background question="Sort The Following In Order">
+    <sorting-question question="Sort The Following In Order">
+      <p slot="hint">You <button>Something to gain focus</button>generally wake up before you fall asleep so..</p>
       <sorting-option>You woke up this morning.</sorting-option>
       <sorting-option>You brushed your teeth.</sorting-option>
       <sorting-option>You went to class.</sorting-option>
       <sorting-option>You go to bed.</sorting-option>
     </sorting-question>
 
-    <sorting-question class="middle" disabled celebrate shame question="Sort The Following In Order">
+    <sorting-question class="middle" question="Sort The Following In Order">
       <sorting-option>This</sorting-option>
       <sorting-option>Is</sorting-option>
       <sorting-option>Disabled</sorting-option>
     </sorting-question>
 
-    <sorting-question class="middle" dark disabled celebrate shame question="Sort The Following In Order">
+    <sorting-question class="middle" question="Sort The Following In Order">
       <sorting-option>This</sorting-option>
       <sorting-option>Is</sorting-option>
       <sorting-option>Disabled</sorting-option>
     </sorting-question>
 
-    <sorting-question class="middle" celebrate shame question="Sort The Following In Order">
+    <sorting-question class="middle" question="Sort The Following In Order">
       <sorting-option> <img src="https://cdn.britannica.com/03/114903-050-502CFE8D/Cutaway-drawing-cell.jpg" alt="cells"> </sorting-option>
       <sorting-option> <img src="https://static01.nyt.com/images/2019/05/21/science/15SCI-GENOME2/15SCI-GENOME2-jumbo.jpg" alt=""> </sorting-option>
       <sorting-option><img src="https://www.visiblebody.com/hs-fs/hub/189659/file-2122072719-jpg/Learn_Articles/Skeleton_System/Set_1_Bone_Types/1-Five-Types-Of-Bones-1232W.jpg" alt="bones"> </sorting-option>

@@ -56,7 +56,7 @@ class MultipleChoice extends QuestionElement {
     ];
   }
   haxClickInlineAdd(e) {
-    this.resetAnswers();
+    this.resetAnswer();
     let d = this.answers;
     d.push({ label: "New answer", correct: false });
     this.answers = [...d];
@@ -64,7 +64,7 @@ class MultipleChoice extends QuestionElement {
   }
   haxClickInlineRemove(e) {
     if (this.answers.length > 0) {
-      this.resetAnswers();
+      this.resetAnswer();
       let d = this.answers;
       d.pop();
       this.answers = [...d];
