@@ -1,4 +1,3 @@
-import {  html } from "lit";
 import { QuestionElement } from "./QuestionElement.js";
 /**
  * `true-false-question`

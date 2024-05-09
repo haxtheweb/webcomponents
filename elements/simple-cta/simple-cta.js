@@ -316,6 +316,10 @@ class SimpleCta extends DDDPulseEffectSuper(
         type: Boolean,
         reflect: true,
       },
+      disabled: {
+        type: Boolean,
+        reflect: true,
+      }
     };
   }
 
@@ -338,6 +342,7 @@ class SimpleCta extends DDDPulseEffectSuper(
     this.hotline = null;
     this.large = null;
     this.light = null;
+    this.disabled = false;
     this.saturate = null;
     // progressive enhancement support
     if (this.querySelector("a")) {

@@ -118,22 +118,15 @@ export class SortingOption extends DDDSuper(LitElement) {
   arrowSort(e) {
     if (!this.disabled) {
       let parent = this.parentNode;
-      //find old index
-      let oldIndex;
-      for (var i = 0; i < parent.children.length; i++) {
-        if (parent.children[i].isEqualNode(this)) {
-          oldIndex = i;
-        }
-      }
       //set new index
       if (e.target.getAttribute('id') === 'downArrow') {
-        if (oldIndex != parent.children.length - 1) {
+        if (this.nextElementSibling && this.nextElementSibling.tagName === "SORTING-OPTION") {
           let ref = parent.insertBefore(this.nextElementSibling, this);
           ref.shadowRoot.querySelector("#downArrow").focus();
         }
       }
       else {
-        if (oldIndex != 0) {
+        if (this.previousElementSibling && this.previousElementSibling.tagName === "SORTING-OPTION") {
           let ref = parent.insertBefore(this, this.previousElementSibling);
           ref.shadowRoot.querySelector("#upArrow").shadowRoot.querySelector('button').focus();            
         }
@@ -160,10 +153,10 @@ export class SortingOption extends DDDSuper(LitElement) {
         z-index: 1;
         overflow: hidden;
         transition: all 0.3s ease-in-out 0s;
-        border: var(--ddd-border-md);
+        border: var(--ddd-border-sm);
         border-radius: var(--ddd-radius-xs);
-        color: var(--simple-colors-default-theme-accent-10);
-        background-color: var(--simple-colors-default-theme-accent-2);
+        color: light-dark(var(--simple-colors-default-theme-accent-10), var(--simple-colors-default-theme-accent-2));
+        background-color: light-dark(var(--simple-colors-default-theme-accent-2), var(--simple-colors-default-theme-accent-10));
         font-family: var(--ddd-font-navigation);
         font-size: var(--ddd-font-size-xs);
         line-height: var(--ddd-font-size-xs);
@@ -179,6 +172,7 @@ export class SortingOption extends DDDSuper(LitElement) {
           --option-background-color-correct,
           var(--ddd-theme-default-successLight)
         ) !important;
+        color: black;
       }
 
       :host([incorrect]) {
@@ -186,13 +180,19 @@ export class SortingOption extends DDDSuper(LitElement) {
           --option-background-color-incorrect,
           var(--ddd-theme-default-errorLight)
         ) !important;
+        color: black;
       }
-      :host([correct]) #correct-icon {
+
+      .icon {
         display: block;
+        height: 32px;
+        width: 32px;
+      }
+
+      :host([correct]) .icon {
         color: var(--ddd-theme-default-success);
       }
-      :host([incorrect]) #incorrect-icon {
-        display: block;
+      :host([incorrect]) .icon {
         color: var(--ddd-theme-default-error);
       }
       .option-slot-wrapper {
@@ -221,19 +221,11 @@ export class SortingOption extends DDDSuper(LitElement) {
       }
 
       .feedback-container {
-        width: fit-content;
+        width: 32px;
+        height: 32px;
         display: flex;
-        align-items: center;
-        margin-right: var(--ddd-spacing-3);
+        margin-right: var(--ddd-spacing-4);
         background-color: transparent;
-      }
-
-      #correct-icon {
-        display: none;
-      }
-
-      #incorrect-icon {
-        display: none;
       }
       
       :host([dragging]) {
@@ -247,14 +239,32 @@ export class SortingOption extends DDDSuper(LitElement) {
         border-color: black;
       }
 
+      simple-icon-button-lite {
+        margin: var(--ddd-spacing-1);
+        border-radius: var(--ddd-radius-xs);
+        border: var(--ddd-border-sm);
+      }
+      simple-icon-button-lite::part(button) {
+        border: none;
+        border-radius: var(--ddd-radius-xs);
+        outline-offset: 2px;
+      }
+
       :host(:not([disabled])) simple-icon-button-lite {
-        background-color: var(--simple-colors-default-theme-accent-3);
+        background-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+        color: light-dark(white, black);
+      }
+      :host(:hover:not([disabled])) simple-icon-button-lite {
+        border-color: black;
       }
       :host(:not([disabled])) simple-icon-button-lite:hover,
       :host(:not([disabled])) simple-icon-button-lite:focus,
       :host(:not([disabled])) simple-icon-button-lite:focus-within
        {
-        background-color: var(--simple-colors-default-theme-accent-1);
+        background-color: light-dark(var(--ddd-theme-default-info), var(--ddd-theme-default-infoLight));
+        color: light-dark(white, black);
+
+        border-color: black;
       }
     `];
   }
@@ -263,23 +273,18 @@ export class SortingOption extends DDDSuper(LitElement) {
   render() {
     return html`
       <div class="feedback-container">
-        <simple-icon-lite
-          id="correct-icon"
-          icon="check"
-          title="Answer is in correct order"
-        ></simple-icon-lite>
-        <simple-icon-lite
-          id="incorrect-icon"
-          icon="clear"
-          title="Answer is not in correct order"
-        ></simple-icon-lite>
+        ${this.correct || this.incorrect ? html`<simple-icon-lite
+          class="icon"
+          icon="${this.correct ? "check" : "clear"}"
+          title="Answer is in ${this.correct ? "correct" : "incorrect"} order"
+        ></simple-icon-lite>`
+         : html`<div class="icon"></div>`}
       </div>
       <div class="option-slot-wrapper"><slot></slot></div>
       <div class="arrow-container">
         <simple-icon-button-lite
           id="upArrow"
           ?disabled="${this.disabled}"
-          ?hidden="${this.disabled}"
           icon="arrow-upward"
           @click="${this.arrowSort}"
           title="Select to move option up in order"
@@ -287,7 +292,6 @@ export class SortingOption extends DDDSuper(LitElement) {
         <simple-icon-button-lite
           id="downArrow"
           ?disabled="${this.disabled}"
-          ?hidden="${this.disabled}"
           icon="arrow-downward"
           @click="${this.arrowSort}"
           title="Select to move option down in order"

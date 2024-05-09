@@ -7,7 +7,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
-
+import "@lrnwebcomponents/grid-plate/grid-plate.js";
 
 export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
 
@@ -35,6 +35,12 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     this.incorrectText = "Better luck next time!";
     this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
+    this.t = {
+      numCorrectLeft: "You have",
+      numCorrectRight: "correct",
+      checkAnswer: "Check answer",
+      tryAgain: "Try again",
+    };
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -107,7 +113,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   /**
    * Return if the current answers are correct
    */
-  __checkAnswerCorrectness() {
+  isCorrect() {
     let gotRight = true;
     // see that they got them all right
     for (var i in this.displayedAnswers) {
@@ -156,7 +162,6 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       si.style.marginLeft = "8px";
     }
     this.showAnswer = true;
-    let gotRight = this.__checkAnswerCorrectness();
     // regardless, focus the other button since this one will disable
     // @todo max attempts can come into play here
     if (!this.maxAttempts) {
@@ -165,7 +170,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       }, 0);
     }
     // see if they got this correct based on their answers
-    if (gotRight) {
+    if (this.isCorrect()) {
       this.__toastColor = "green";
       this.__toastIcon = this.correctIcon;
       this.__toastText = this.correctText;
@@ -205,7 +210,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     let eventData = {
       activityDisplay: "answered",
       objectName: this.quizName,
-      resultSuccess: gotRight,
+      resultSuccess: this.isCorrect(),
     };
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
@@ -244,7 +249,6 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         random[currentIndex] = random[randomIndex];
         random[randomIndex] = temporaryValue;
       }
-      // @todo apply a random sort to the answers array
       return random;
     } else {
       return answers;
@@ -255,6 +259,12 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       ...super.properties,
       // show the solution feedback to the user
       showAnswer: { type: Boolean, reflect: true, attribute: "show-answer" },
+      hasHint: { type: Boolean },
+      hasContent: { type: Boolean },
+      hasFeedbackIncorrect: { type: Boolean },
+      hasFeedbackCorrect: { type: Boolean },
+      hasEvidence: { type: Boolean },
+      
       // questions that require generation of multiple arrays of data
       selectedAnswers: { type: Array },
       /**
@@ -452,10 +462,10 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         simple-fields-field {
           padding: var(--ddd-spacing-4);
           min-height: var(--ddd-spacing-8);
-          margin: var(--ddd-spacing-4);
           transition: all 0.3s ease-in-out;
-          border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-xs);
+          margin-bottom: var(--ddd-spacing-6);
+          border: var(--ddd-border-xs);
           color: var(--simple-colors-default-theme-accent-10);
           background-color: var(--simple-colors-default-theme-accent-2);
           --simple-fields-font-family: var(--ddd-font-navigation);
@@ -465,54 +475,63 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           --simple-icon-width: var(--ddd-icon-xs);
         }
         simple-toolbar-button {
-          font-size: var(--ddd-font-size-xs);
-          font-family: var(--ddd-font-navigation);
-          transition: all 0.3s ease-in-out;
-        }
-        simple-toolbar-button[disabled] {
-          opacity: 0.6;
-        }
-        button[disabled]:not(.correct) {
-          opacity: 0.6;
-        }
-        :host simple-toolbar-button:hover::part(button),
-        :host simple-toolbar-button:focus::part(button),
-        :host simple-toolbar-button:focus-within::part(button),
-        :host simple-toolbar-button:active::part(button) {
-          cursor: pointer;
-          background-color: var(--simple-colors-default-theme-accent-3);
-          color: var(--simple-colors-default-theme-accent-12);
-          box-shadow: var(--ddd-boxShadow-sm);
-          border-color: black;
-        }
-        simple-toolbar-button::part(button) {
-          border: var(--ddd-border-md);
-          border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-2);
-          transition: all 0.3s ease-in-out;
-        }
-        simple-toolbar-button::part(label) {
-          font-size: var(--ddd-font-size-xs);
-          font-family: var(--ddd-font-navigation);
-          padding: 0;
-          margin: 0;
-        }
-        simple-fields-field::part(option-inner) {
-          position: absolute;
-          right: 0px;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-xs);
-          bottom: 50%;
-          top: 50%;
-          padding: 0px;
-          margin: 0px;
-        }
+        font-size: var(--ddd-font-size-xs);
+        font-family: var(--ddd-font-navigation);
+        transition: all 0.3s ease-in-out;
+        border: none;
+        border-radius: var(--ddd-radius-xs);
+      }
+      simple-toolbar-button {
+        background-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+        color: light-dark(white, black);
+      }
+      simple-toolbar-button[disabled] {
+        background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-slateGray));
+        color: light-dark(black, white);
+        opacity: .5;
+      }
+      :host simple-toolbar-button:hover::part(button),
+      :host simple-toolbar-button:focus::part(button),
+      :host simple-toolbar-button:focus-within::part(button),
+      :host simple-toolbar-button:active::part(button) {
+        cursor: pointer;
+        box-shadow: var(--ddd-boxShadow-sm);
+        border-color: black;
+      }
+      simple-toolbar-button::part(button) {
+        border: var(--ddd-border-sm);
+        border-radius: var(--ddd-radius-xs);
+        padding: var(--ddd-spacing-2);
+      }
+      simple-toolbar-button::part(label) {
+        font-size: var(--ddd-font-size-s);
+        font-family: var(--ddd-font-navigation);
+        padding: 0;
+        margin: 0;
+      }
+      simple-fields-field::part(option-inner) {
+        position: absolute;
+        right: 0px;
+        color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+        font-family: var(--ddd-font-navigation);
+        font-size: var(--ddd-font-size-xs);
+        bottom: 50%;
+        top: 50%;
+        padding: 0px;
+        margin: 0px;
+      }
         ul,
         ol {
           gap: var(--ddd-spacing-4);
         }
         simple-icon {
           display: inline-flex;
+        }
+        .feedback {
+          margin: var(--ddd-spacing-3) 0;
+          font-size: var(--ddd-font-size-m);
+          font-weight: bold;
+          text-align: center;
         }
       `,
     ];
@@ -572,27 +591,76 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
 
   render() {
     return html`
+      <meta property="oer:assessing" content="${this.relatedResource}" />
       <confetti-container id="confetti">
-        <meta property="oer:assessing" content="${this.relatedResource}" />
-        <h3 property="oer:name">${this.question}</h3>
-          <fieldset id="answers">
-            ${this.displayedAnswers.map(
-              (answer, index) => html`
-                <simple-fields-field
-                  type="${this.singleOption ? "radio" : "checkbox"}"
-                  ?disabled="${this.disabled}"
-                  property="oer:answer"
-                  name="${index}"
-                  @mousedown="${this.clickSingle}"
-                  @keydown="${this.clickSingle}"
-                  .value="${answer ? answer.userGuess : ""}"
-                  @value-changed="${this.checkedEvent}"
-                  label="${answer && answer.label ? answer.label : ""}"
-                ></simple-fields-field>
-              `,
-            )}
-          </fieldset>
-        ${!this.hideButtons ? this.renderButtons() : ``}
+        <grid-plate layout="1-1">
+          <div slot="col-1">
+            <h3 property="oer:name">${this.question}</h3>
+            <fieldset class="options">
+              ${this.displayedAnswers.map(
+                (answer, index) => html`
+                  <simple-fields-field
+                    type="${this.singleOption ? "radio" : "checkbox"}"
+                    ?disabled="${this.disabled}"
+                    property="oer:answer"
+                    name="${index}"
+                    @mousedown="${this.clickSingle}"
+                    @keydown="${this.clickSingle}"
+                    .value="${answer ? answer.userGuess : ""}"
+                    @value-changed="${this.checkedEvent}"
+                    label="${answer && answer.label ? answer.label : ""}"
+                  ></simple-fields-field>
+                `,
+              )}
+            </fieldset>
+            ${!this.hideButtons ? this.renderButtons() : ``}
+          </div>
+          <div slot="col-2">
+            <details ?open="${!this.hasContent}" id="directions">
+              <summary>Directions</summary>
+              <div>
+                <p>Select the answers you feel satsisfy the question. When you are done, select <strong>${this.t.checkAnswer}</strong>.
+                  You will get feedback just below here indicating correctness of your answer and how to proceed.
+                </p>
+              </div>
+            </details>
+            ${this.hasContent ? html`
+            <details ?open="${!this.showAnswer}" id="related">
+              <summary>Related content</summary>
+              <div>
+                <slot name="content"></slot>
+              </div>
+            </details>` : ``}
+            <details tabindex="${!this.showAnswer ? "-1" : ""}" ?disabled="${!this.showAnswer}" ?open="${this.showAnswer}">
+              <summary id="feedback">Feedback</summary>
+              <div>
+                ${this.showAnswer && !this.isCorrect() ? html`
+                <p class="feedback">${this.incorrectText}</p>
+                ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
+                ${this.showAnswer && this.isCorrect() ? html`
+                <p class="feedback">${this.correctText}</p>
+                ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
+                  ${this.hasHint && this.showAnswer && !this.isCorrect() ? html`
+                    <h4>Need a hint?</h4>
+                    <div>
+                      <slot name="hint"></slot>
+                    </div>
+                  ` : ``}
+                  ${this.hasEvidence && this.showAnswer && this.isCorrect()  ? html`
+                    <h4>Evidence</h4>
+                    <div>
+                      <slot name="evidence"></slot>
+                    </div>
+                  ` : ``}
+                  <simple-toolbar-button
+                    ?disabled="${this.disabled || !this.showAnswer}"
+                    @click="${this.resetAnswer}"
+                    label="${this.t.tryAgain}">
+                  </simple-toolbar-button>
+              </div>
+            </details>
+          </div>
+        </grid-plate>
       </confetti-container>
     `;
   }
@@ -699,7 +767,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
 
   loadLightDomData() {
     if (this.children.length > 0) {
-      let inputs = Array.from(this.querySelectorAll("input,li"));
+      let inputs = Array.from(this.querySelectorAll("input"));
       let answers = [];
       for (var i in inputs) {
         let answer = {
@@ -712,22 +780,15 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       }
       this.answers = answers;
       // look for light dom slot markers
-      const correctLD = this.querySelector('[slot="correct-feedback"]');
-      const incorrectLD = this.querySelector('[slot="incorrect-feedback"]');
-      const questionLD = this.querySelector('[slot="question"]');
-      if (correctLD) {
-        this.correctText = correctLD.innerText;
-      }
-      if (incorrectLD) {
-        this.incorrectText = incorrectLD.innerText;
-      }
-      if (questionLD) {
-        this.question = questionLD.innerText;
-      }
+      this.hasHint = this.querySelector('[slot="hint"]');
+      this.hasContent = this.querySelector('[slot="content"]');
+      this.hasFeedbackCorrect = this.querySelector('[slot="feedbackCorrect"]');
+      this.hasFeedbackIncorrect = this.querySelector('[slot="feedbackIncorrect"]');
+      this.hasEvidence = this.querySelector('[slot="evidence"]');
       // wipe lightdom after reading it in for data. This makes it harder for someone
       // to just inspect the document and get at the underlying data
-
-      this.innerHTML = "";
+      // @TODO need to figure this one out with above since it has to have this data now
+      //this.innerHTML = "";
     }
   }
 

@@ -993,10 +993,6 @@ export const DDDVariables = css`
       var(--ddd-primary-4)
     );
   }
-  /* basic dark mode support */
-  body:not(.dark-mode) {
-    color-scheme: only light;
-  }
 
   body.dark-mode {
     color-scheme: only dark;
@@ -1979,7 +1975,6 @@ export const DDDReset = css`
       --ddd-theme-header-border-treatment-full
     );
   }
-
   summary {
     display: flex;
     font-size: var(--ddd-theme-h4-font-size);
@@ -1991,8 +1986,9 @@ export const DDDReset = css`
     cursor: pointer;
     text-wrap: wrap;
     align-items: center;
-    padding: 0 var(--ddd-spacing-5) var(--ddd-spacing-5) 0;
+    padding: var(--ddd-spacing-5) var(--ddd-spacing-4);
     user-select: none;
+    transition: all 0.3s ease-in-out;
   }
   summary::marker {
     content: "";
@@ -2012,18 +2008,27 @@ export const DDDReset = css`
   details {
     overflow: hidden;
     display: flex;
-    border-bottom: 2px solid var(--ddd-theme-default-slateMaxLight);
     position: relative;
     max-width: 650px;
     padding: 0;
-    color: black;
-    margin: var(--ddd-spacing-6) 0;
+    color: light-dark(black, white);
+    margin: 0;
+  }
+  details[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
   }
   details[open] > summary {
     color: light-dark(
       var(--ddd-theme-default-link),
       var(--ddd-theme-default-linkLight)
     );
+  }
+  summary:focus,
+  summary:hover,
+  details[open] > summary {
+    background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-nittanyNavy));
   }
   details[open] > summary::after {
     content: "--";
@@ -2096,7 +2101,7 @@ export const DDDReset = css`
       --ddd-theme-primary,
       var(--ddd-theme-default-keystoneYellow)
     );
-    transition: all 0.2s ease 0s;
+    transition: all 0.3s ease 0s;
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     font-style: italic;
     text-decoration: underline;
@@ -2149,7 +2154,7 @@ export const DDDReset = css`
   select {
     display: flex;
     box-sizing: border-box;
-    transition: all 0.2s ease 0s;
+    transition: all 0.3s ease 0s;
     cursor: pointer;
     color: var(--ddd-theme-default-coalyGray);
     width: fit-content;
@@ -4081,14 +4086,14 @@ export const DDDBreadcrumb = css`
     );
   }
   .breadcrumb li::marker {
-    color: black;
+    color: light-dark(black, white);
     font-weight: var(--ddd-font-weight-regular);
   }
   .breadcrumb li:first-child {
     list-style: none;
   }
   .breadcrumb li:last-child a {
-    color: black;
+    color: light-dark(black, white);
     pointer-events: none;
   }
   .breadcrumb li a {

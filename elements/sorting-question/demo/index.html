@@ -9,13 +9,37 @@
 
     <script type="module">
       import '../sorting-question.js';
+      import "@lrnwebcomponents/video-player/video-player.js";
       import "@lrnwebcomponents/simple-toast/simple-toast.js";
       globalThis.SimpleToast.requestAvailability()
     </script>
   </head>
   <body>
-    <sorting-question question="Sort The Following In Order">
-      <p slot="hint">You <button>Something to gain focus</button>generally wake up before you fall asleep so..</p>
+    <sorting-question question="Put the following in order">
+      <div slot="feedbackIncorrect">
+        <p>Remember... focus... you've got this. It's not always easy getting to class but I believe in you!</p>
+      </div>
+      <div slot="feedbackCorrect">
+        <p>You are master of the universe! Congrats on knowing when to wake up and go to class!</p>
+      </div>
+      <div slot="content">
+        <p>Think back on last evening. You fell asleep. Well, here are some other tips to get there faster potentially. Here's a video about the importance of sleep. Watch this to gain perspective about the question.
+        </p>
+        <video-player source="https://www.youtube.com/watch?v=t0kACis_dJE"></video-player>
+      </div>
+      <div slot="hint">You generally wake up before you fall asleep so..
+        <ul>
+          <li>You had to do something prior to waking up... what... could it be the night before</li>
+          <li>Then, hopefully if you are on campus, you are.... doing something hygenic prior to...</li>
+          <li>The after whatever it is you did.. you would assume it is late and...</li>
+        </ul>
+      </div>
+      <div slot="evidence">
+        <p>In chapter 4, we talked about the importance of sleep. Later on, you were asked to reflect on your day and the
+          times in your life when you were given enough rest and how that affected class. Hopefully you learned at a young age
+          to brush your teeth. Waking up and going to bed always end the progression.
+        </p>
+      </div>
       <sorting-option>You woke up this morning.</sorting-option>
       <sorting-option>You brushed your teeth.</sorting-option>
       <sorting-option>You went to class.</sorting-option>
@@ -23,6 +47,10 @@
     </sorting-question>
 
     <sorting-question class="middle" question="Sort The Following In Order">
+      <p slot="evidence">
+        Think back on last evening. You fell asleep. Well, here are some other tips to get there faster potentially
+        <video-player source="https://www.youtube.com/watch?v=t0kACis_dJE"></video-player>
+      </p>
       <sorting-option>This</sorting-option>
       <sorting-option>Is</sorting-option>
       <sorting-option>Disabled</sorting-option>
@@ -35,7 +63,7 @@
     </sorting-question>
 
     <sorting-question class="middle" question="Sort The Following In Order">
-      <sorting-option> <img src="https://cdn.britannica.com/03/114903-050-502CFE8D/Cutaway-drawing-cell.jpg" alt="cells"> </sorting-option>
+      <sorting-option> <img src="https://cdn.britannica.com/03/114903-050-502CFE8D/Cutaway-drawing-cell.jpg" alt="cells"> <span>Cool stuff</span></sorting-option>
       <sorting-option> <img src="https://static01.nyt.com/images/2019/05/21/science/15SCI-GENOME2/15SCI-GENOME2-jumbo.jpg" alt=""> </sorting-option>
       <sorting-option><img src="https://www.visiblebody.com/hs-fs/hub/189659/file-2122072719-jpg/Learn_Articles/Skeleton_System/Set_1_Bone_Types/1-Five-Types-Of-Bones-1232W.jpg" alt="bones"> </sorting-option>
       <sorting-option> <img src="https://th-thumbnailer.cdn-si-edu.com/rDqS7CQVfpWAjgPXuiKR34oc4Rg=/1000x750/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/a5/a5/a5a5cfff-a4e7-454f-bae2-cfc6c1fed66a/19991130_jab_cs9_163.jpg" alt=""> </sorting-option>

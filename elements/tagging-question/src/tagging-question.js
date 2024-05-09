@@ -6,13 +6,8 @@ import { html, css } from "lit";
 import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
 
 // @TODO
-// - fix drag event visuals
-// - align with spacing and sizing in the rest of HAX
-// - align visual of a tag with the buttons for seleexection in multiple choice as far as font and spacing
 // - work feedback for there or not there into multiple choice beyond just initial data load
-// - need support in multiple choice for loading slot data that isn't the normal stuff
 // - support video / image for loading in place. this is via HAX settings in all of multiple choice
-
 
 /**
  * `tagging-question`
