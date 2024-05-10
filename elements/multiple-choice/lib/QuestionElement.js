@@ -137,6 +137,14 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     }
     return gotRight;
   }
+
+  makeItRain() {
+    import("./confetti-container.js").then((module) => {
+      setTimeout(() => {
+        this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+      }, 0);
+    });
+  }
   /**
    * Verify the answers of the user based on their saying
    * that they want to see how they did.
@@ -174,12 +182,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       this.__toastColor = "green";
       this.__toastIcon = this.correctIcon;
       this.__toastText = this.correctText;
-      // make it fun... and performant!
-      import("./confetti-container.js").then((module) => {
-        setTimeout(() => {
-          this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
-        }, 0);
-      });
+      this.makeItRain();
       extras.hat = "party";
     } else {
       this.__toastColor = "red";
@@ -548,7 +551,10 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     if (node.answers) {
       // ensure this is null before generating new answers
       // otherwise page to page saves we could lose statefulness
-      this.innerHTML = "";
+      let inputs = Array.from(this.querySelectorAll("input:not([slot])"));
+      for (var i in inputs) {
+        inputs[i].remove();
+      }
       for (var i in node.answers) {
         if (node.answers[i]) {
           let answer = document.createElement("input");
@@ -596,32 +602,14 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         <grid-plate layout="1-1">
           <div slot="col-1">
             <h3 property="oer:name">${this.question}</h3>
-            <fieldset class="options">
-              ${this.displayedAnswers.map(
-                (answer, index) => html`
-                  <simple-fields-field
-                    type="${this.singleOption ? "radio" : "checkbox"}"
-                    ?disabled="${this.disabled}"
-                    property="oer:answer"
-                    name="${index}"
-                    @mousedown="${this.clickSingle}"
-                    @keydown="${this.clickSingle}"
-                    .value="${answer ? answer.userGuess : ""}"
-                    @value-changed="${this.checkedEvent}"
-                    label="${answer && answer.label ? answer.label : ""}"
-                  ></simple-fields-field>
-                `,
-              )}
-            </fieldset>
+            ${this.renderInteraction()}
             ${!this.hideButtons ? this.renderButtons() : ``}
           </div>
           <div slot="col-2">
             <details ?open="${!this.hasContent}" id="directions">
               <summary>Directions</summary>
               <div>
-                <p>Select the answers you feel satsisfy the question. When you are done, select <strong>${this.t.checkAnswer}</strong>.
-                  You will get feedback just below here indicating correctness of your answer and how to proceed.
-                </p>
+                ${this.renderDirections()}
               </div>
             </details>
             ${this.hasContent ? html`
@@ -634,34 +622,34 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
             <details tabindex="${!this.showAnswer ? "-1" : ""}" ?disabled="${!this.showAnswer}" ?open="${this.showAnswer}">
               <summary id="feedback">Feedback</summary>
               <div>
-                ${this.showAnswer && !this.isCorrect() ? html`
-                <p class="feedback">${this.incorrectText}</p>
-                ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
-                ${this.showAnswer && this.isCorrect() ? html`
-                <p class="feedback">${this.correctText}</p>
-                ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
-                  ${this.hasHint && this.showAnswer && !this.isCorrect() ? html`
-                    <h4>Need a hint?</h4>
-                    <div>
-                      <slot name="hint"></slot>
-                    </div>
-                  ` : ``}
-                  ${this.hasEvidence && this.showAnswer && this.isCorrect()  ? html`
-                    <h4>Evidence</h4>
-                    <div>
-                      <slot name="evidence"></slot>
-                    </div>
-                  ` : ``}
-                  <simple-toolbar-button
-                    ?disabled="${this.disabled || !this.showAnswer}"
-                    @click="${this.resetAnswer}"
-                    label="${this.t.tryAgain}">
-                  </simple-toolbar-button>
+                ${this.renderFeedback()}
               </div>
             </details>
           </div>
         </grid-plate>
       </confetti-container>
+    `;
+  }
+
+  renderInteraction() {
+    return html`
+    <fieldset class="options">
+    ${this.displayedAnswers.map(
+      (answer, index) => html`
+        <simple-fields-field
+          type="${this.singleOption ? "radio" : "checkbox"}"
+          ?disabled="${this.disabled}"
+          property="oer:answer"
+          name="${index}"
+          @mousedown="${this.clickSingle}"
+          @keydown="${this.clickSingle}"
+          .value="${answer ? answer.userGuess : ""}"
+          @value-changed="${this.checkedEvent}"
+          label="${answer && answer.label ? answer.label : ""}"
+        ></simple-fields-field>
+      `,
+    )}
+  </fieldset>
     `;
   }
 
@@ -684,6 +672,40 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       </simple-toolbar-button>
     </div>
   `;
+  }
+
+  renderDirections() {
+    return html`<p>Select the answers you feel satsisfy the question. When you are done, select <strong>${this.t.checkAnswer}</strong>.
+      You will get feedback just below here indicating correctness of your answer and how to proceed.
+    </p>`;
+  }
+
+  renderFeedback() {
+    return html`
+    ${this.showAnswer && !this.isCorrect() ? html`
+    <p class="feedback">${this.incorrectText}</p>
+    ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
+    ${this.showAnswer && this.isCorrect() ? html`
+    <p class="feedback">${this.correctText}</p>
+    ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
+      ${this.hasHint && this.showAnswer && !this.isCorrect() ? html`
+        <h4>Need a hint?</h4>
+        <div>
+          <slot name="hint"></slot>
+        </div>
+      ` : ``}
+      ${this.hasEvidence && this.showAnswer && this.isCorrect()  ? html`
+        <h4>Evidence</h4>
+        <div>
+          <slot name="evidence"></slot>
+        </div>
+      ` : ``}
+      <simple-toolbar-button
+        ?disabled="${this.disabled || !this.showAnswer}"
+        @click="${this.resetAnswer}"
+        label="${this.t.tryAgain}">
+      </simple-toolbar-button>
+    `;
   }
 
   clickSingle(e) {  
@@ -767,7 +789,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
 
   loadLightDomData() {
     if (this.children.length > 0) {
-      let inputs = Array.from(this.querySelectorAll("input"));
+      let inputs = Array.from(this.querySelectorAll("input:not([slot])"));
       let answers = [];
       for (var i in inputs) {
         let answer = {
@@ -787,8 +809,10 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       this.hasEvidence = this.querySelector('[slot="evidence"]');
       // wipe lightdom after reading it in for data. This makes it harder for someone
       // to just inspect the document and get at the underlying data
-      // @TODO need to figure this one out with above since it has to have this data now
-      //this.innerHTML = "";
+      // remove just the inputs we found
+      for (var i in inputs) {
+        inputs[i].remove();
+      }
     }
   }
 

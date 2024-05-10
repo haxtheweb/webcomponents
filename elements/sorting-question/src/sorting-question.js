@@ -298,7 +298,6 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         transition: all 0.3s ease-in-out;
         border: none;
         border-radius: var(--ddd-radius-xs);
-
       }
       simple-toolbar-button {
         background-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
