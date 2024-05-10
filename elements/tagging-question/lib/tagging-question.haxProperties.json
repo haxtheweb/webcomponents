@@ -6,14 +6,17 @@
   "canScale": true,
   "canEditSource": true,
   "contentEditable": false,
+  "designSystem": {
+    "card": true,
+    "primary": true,
+    "accent": true
+  },
   "gizmo": {
-    "title": "tagging question",
-    "description": "",
-    "icon": "icons:android",
+    "title": "Tagging question",
+    "description": "Select tags to answer the question",
+    "icon": "icons:line-style",
     "color": "purple",
-    "tags": [
-      "Other"
-    ],
+    "tags": ["Instructional", "self check", "assessment", "tag"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -34,8 +37,11 @@
   "demoSchema": [
     {
       "tag": "tagging-question",
-      "content": "",
-      "properties": {}
+      "content": "<input correct value=\"DingDingDing\"/><input correct value=\"PaPaPower\"/><input value=\"Moo\"/>",
+      "properties": {
+        "question": "What does the fox say?",
+        "data-accent": "2"
+      }
     }
   ]
 }

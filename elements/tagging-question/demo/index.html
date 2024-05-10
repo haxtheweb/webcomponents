@@ -15,11 +15,25 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
+    <tagging-question question="How would you describe... this..?" data-primary="20" data-accent="3">
+      <img slot="content" src="https://btopro.com/files/i-developed.jpg" />
+      <input value="Huey" data-unselected="Good job reading, some people would have missed this!" data-selected="This name does not start with an D, it starts with H silly Goose">
+      <input correct value="Duey" data-selected="Pretty easy there, obviously has a D in it" data-unselected="4 letters, focus on the 1st one">
+      <input correct value="Daffy" data-selected="You knew it" data-unselected="Are you serious... look at the letter!">
+      <input correct value="Donald" data-selected="The OP duck in disney">
+      <input value="dfsdfs" data-selected="The OP duck in disney">
+      <input value="h4" data-selected="The OP duck in disney">
+      <input value="ghj" data-selected="The OP duck in disney">
+      <input value="hgj" data-selected="The OP duck in disney">
+      <input value="Donghfhald" data-selected="The OP duck in disney">
+      <input value="df" data-selected="The OP duck in disney">
+      <input value="jkjhkhjk" data-selected="The OP duck in disney">
+    </tagging-question>
     <div class="vertical-section-container centered">
       <h3>Basic tagging-question demo</h3>
       <demo-snippet>
         <template>
-          <tagging-question question="How would you describe... this..?">
+          <tagging-question question="How would you describe... this..?" data-primary="1" data-accent="4">
             <img slot="content" src="https://btopro.com/files/i-developed.jpg" />
             <input value="Huey" data-unselected="Good job reading, some people would have missed this!" data-selected="This name does not start with an D, it starts with H silly Goose">
             <input correct value="Duey" data-selected="Pretty easy there, obviously has a D in it" data-unselected="4 letters, focus on the 1st one">

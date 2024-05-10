@@ -609,11 +609,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
         store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot
       ) {
-        const editbtn =
+        // delay since it slides in
+        setTimeout(() => {
+          const editbtn =
           store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector(
-            "#editbutton",
+            "#editbutton"
           );
-        editbtn.dataPulse = "1";
+          editbtn.dataPulse = "1";          
+        }, 300);
       }
       // try to evaluate typing in merlin
       if (

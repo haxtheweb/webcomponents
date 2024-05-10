@@ -30,8 +30,6 @@ class TaggingQuestion extends QuestionElement {
       css`
         :host {
           display: block;
-          border-radius: var(--ddd-radius-sm);
-          box-shadow: var(--ddd-boxShadow-sm);
         }
         .tag-container {
           position: relative;
@@ -58,23 +56,24 @@ class TaggingQuestion extends QuestionElement {
           flex-wrap: wrap;
           justify-content: center;
           overflow-y: auto;
-          gap: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-4);
           min-height: var(--ddd-spacing-18);
           margin-bottom: var(--ddd-spacing-5);
           padding: var(--ddd-spacing-15);
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
           box-sizing: border-box;
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color: light-dark(var(--simple-colors-default-theme-grey-2),var(--simple-colors-default-theme-grey-10));
         }
 
         #possible-container {
           display: flex;
           padding: var(--ddd-spacing-3);
+          border-radius: var(--ddd-radius-sm);
           border: var(--ddd-border-xs);
           flex-wrap: wrap;
           justify-content: center;
-          gap: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-4);
           min-height: var(--ddd-spacing-12);
         }
 
@@ -88,16 +87,13 @@ class TaggingQuestion extends QuestionElement {
         }
 
         .tag-option.correct {
-          outline: 2px solid var(--simple-colors-default-theme-green-7);
+          outline: 4px solid var(--ddd-theme-default-opportunityGreen);
         }
 
         .tag-option.incorrect {
-          outline: 2px solid var(--simple-colors-default-theme-red-7);;
+          outline: 4px solid var(--ddd-theme-default-original87Pink);
         }
 
-        .tag-slot ::slotted(img) {
-          max-height: 200px;
-        }
         :host([dragging]) #user-choice-container {
           border-style: dashed;
           border-color: gray;
@@ -105,12 +101,12 @@ class TaggingQuestion extends QuestionElement {
         :host([drag-enter-answer][dragging]) #user-choice-container {
           border-style: dashed;
           border-color: black;
-          background-color: var(--simple-colors-default-theme-grey-3);
+          background-color: light-dark(var(--simple-colors-default-theme-grey-3),var(--simple-colors-default-theme-grey-9));
         }
         :host([drag-enter][dragging]) #possible-container {
           border-color: black;
           border-style: dashed;
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color: light-dark(var(--simple-colors-default-theme-grey-2),var(--simple-colors-default-theme-grey-8));
         }
 
         .tag-option {
@@ -154,19 +150,21 @@ class TaggingQuestion extends QuestionElement {
     <p class="feedback">${this.correctText}</p>
     ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
     ${this.showAnswer ? html`
-      <h3>Answers selected</h3>
       <p>${this.selectedAnswers.filter(answer => answer.correct).length} out of ${this.answers.filter(answer => answer.correct).length} correct options selected</p>
-      <ul>
+      <h4>Answers selected</h4>
+      <dl>
       ${this.selectedAnswers.map(answer => html`
-        <li class="feedback ${answer.correct ? 'correct' : 'incorrect'}"><strong>${answer.label}:</strong> ${answer.selectedFeedback}</li>              
+        <dt class="${answer.correct ? 'correct' : 'incorrect'}">${answer.label}</dt>
+        <dd>${answer.selectedFeedback}</dd>
       `)}
-      </ul>
-      <h3>Answers not selected</h3>
-      <ul>
+      </dl>
+      <h4>Answers not selected</h4>
+      <dl>
       ${this.displayedAnswers.map(answer => html`
-        ${answer.unselectedFeedback ? html`<li class="feedback ${!answer.correct ? 'correct' : 'incorrect'}">${answer.unselectedFeedback}</li>` : ``}
+        <dt class="${!answer.correct ? 'correct' : 'incorrect'}">${answer.label}</dt>
+        <dd>${answer.selectedFeedback}</dd>
       `)}
-      </ul>
+      </dl>
     </div>
   ` : ''}
       ${this.hasHint && this.showAnswer && !this.isCorrect() ? html`

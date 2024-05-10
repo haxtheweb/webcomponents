@@ -647,6 +647,7 @@
     "simple-tags": "@lrnwebcomponents/simple-fields/lib/simple-tags.js",
     "flash-card": "@lrnwebcomponents/flash-card/flash-card.js",
     "sorting-question": "@lrnwebcomponents/sorting-question/sorting-question.js",
+    "tagging-question": "@lrnwebcomponents/tagging-question/tagging-question.js",
     "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "course-model": "@lrnwebcomponents/course-model/course-model.js",

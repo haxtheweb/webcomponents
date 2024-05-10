@@ -385,10 +385,10 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           min-width: 160px;
           padding: var(--ddd-spacing-8);
           border: var(--ddd-border-md);
-          background-color: var(--simple-colors-default-theme-accent-1);
-          border-radius: var(--ddd-radius-xs);
+          border-radius: var(--ddd-radius-sm);
+          box-shadow: var(--ddd-boxShadow-sm);
+          background-color: light-dark(var(--ddd-theme-accent), transparent);
           transition: all 0.3s ease-in-out;
-          color: var(--simple-colors-default-theme-grey-12);
           --simple-toolbar-button-border-color: var(
             --simple-colors-default-theme-grey-4
           );
@@ -436,6 +436,13 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           color: var(--simple-colors-default-theme-accent-12);
           box-shadow: var(--ddd-boxShadow-sm);
           border-color: black;
+        }
+        p {
+          padding: 0;
+          margin: 0;
+        }
+        details p {
+          padding: var(--ddd-spacing-4);
         }
         ul {
           list-style: none;
@@ -485,8 +492,8 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         border-radius: var(--ddd-radius-xs);
       }
       simple-toolbar-button {
-        background-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
-        color: light-dark(white, black);
+        background-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
+        color: var(--lowContrast-override, var(--ddd-theme-bgContrast, black));
       }
       simple-toolbar-button[disabled] {
         background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-slateGray));
@@ -515,7 +522,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       simple-fields-field::part(option-inner) {
         position: absolute;
         right: 0px;
-        color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+        color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
         font-family: var(--ddd-font-navigation);
         font-size: var(--ddd-font-size-xs);
         bottom: 50%;
@@ -523,19 +530,19 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         padding: 0px;
         margin: 0px;
       }
-        ul,
-        ol {
-          gap: var(--ddd-spacing-4);
-        }
-        simple-icon {
-          display: inline-flex;
-        }
-        .feedback {
-          margin: var(--ddd-spacing-3) 0;
-          font-size: var(--ddd-font-size-m);
-          font-weight: bold;
-          text-align: center;
-        }
+
+      h4 {
+        color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
+      }
+      simple-icon {
+        display: inline-flex;
+      }
+      .feedback {
+        margin: var(--ddd-spacing-3) 0;
+        font-size: var(--ddd-font-size-sm);
+        font-weight: bold;
+        text-align: center;
+      }
       `,
     ];
   }

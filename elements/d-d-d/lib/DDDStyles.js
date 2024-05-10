@@ -1483,6 +1483,20 @@ export const DDDReset = css`
   p {
     margin: var(--ddd-spacing-6) 0;
   }
+  dl {
+    padding: var(--ddd-spacing-6);
+    margin: 0;
+    border: var(--ddd-border-sm);
+  }
+  dt {
+    font-weight: var(--ddd-font-weight-bold);
+    font-size: var(--ddd-theme-h6-font-size);
+  }
+  dd {
+    margin-bottom: var(--ddd-spacing-4);
+    margin-inline-start: var(--ddd-spacing-8);
+  }
+
   p[data-accent],
   blockquote[data-accent],
   ol[data-accent],
@@ -1979,10 +1993,7 @@ export const DDDReset = css`
     display: flex;
     font-size: var(--ddd-theme-h4-font-size);
     font-weight: var(--ddd-font-weight-bold);
-    color: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
-    );
+    color: light-dark(var(--lowContrast-override, var(--ddd-theme-primary,var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight));
     cursor: pointer;
     text-wrap: wrap;
     align-items: center;
@@ -1997,10 +2008,7 @@ export const DDDReset = css`
     content: "+";
     margin-left: auto;
     text-align: right;
-    color: light-dark(
-      var(--ddd-theme-default-link),
-      var(--ddd-theme-default-linkLight)
-    );
+    color: light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight));
     font-weight: var(--ddd-font-weight-regular);
     font-size: var(--ddd-font-size-m);
     line-height: 1;
@@ -2020,23 +2028,17 @@ export const DDDReset = css`
     opacity: 0.5;
   }
   details[open] > summary {
-    color: light-dark(
-      var(--ddd-theme-default-link),
-      var(--ddd-theme-default-linkLight)
-    );
+    color: light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight));
+    filter: saturate(1.5);
   }
-  summary:focus,
-  summary:hover,
   details[open] > summary {
-    background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-nittanyNavy));
+    background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-potentialMidnight));
   }
-  details[open] > summary::after {
-    content: "--";
-    text-wrap: nowrap;
-    font-size: var(--ddd-font-size-m);
-    letter-spacing: -1.8px;
-    padding-right: 2px;
+  details summary:focus,
+  details summary:hover {
+    background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-nittanyNavy));
   }
+
   code {
     transition: all 0.3s ease 0s;
     display: inline-block;
