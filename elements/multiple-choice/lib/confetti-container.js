@@ -139,9 +139,13 @@
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
+      const reduceMotion = globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const poppedAttrAdded = name === "popped" && oldValue === null;
-      if (poppedAttrAdded) {
+      if (poppedAttrAdded && !reduceMotion) {
         this.popConfetti();
+      }
+      else if (reduceMotion) {
+        this.removeAttribute("popped");
       }
     }
 
