@@ -1122,6 +1122,7 @@ class HAXCMSSiteStore extends HTMLElement {
     this.store = store;
     // source for reading in the store if different than default site.json
     this.source = "";
+    globalThis.addEventListener('playaudio', this.playSoundEvent.bind(this));
     /**
      * When location changes update activeItem
      */
@@ -1219,6 +1220,10 @@ class HAXCMSSiteStore extends HTMLElement {
           "haxcms-toast-show";
       }
     });
+  }
+  // play sound on event
+  playSoundEvent(e) {
+    this.store.playSound(e.detail.sound);
   }
   connectedCallback() {
     globalThis.document.body.appendChild(this.store.themeStyleElement);

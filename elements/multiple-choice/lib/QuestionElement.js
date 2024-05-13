@@ -183,12 +183,14 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       this.__toastIcon = this.correctIcon;
       this.__toastText = this.correctText;
       this.makeItRain();
+      this.playSound('success');
       extras.hat = "party";
     } else {
       this.__toastColor = "red";
       this.__toastIcon = this.incorrectIcon;
       this.__toastText = this.incorrectText;
       extras.fire = true;
+      this.playSound('error');
     }
     si.icon = this.__toastIcon;
     si.style.marginLeft = "16px";
@@ -476,7 +478,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           border-radius: var(--ddd-radius-xs);
           margin-bottom: var(--ddd-spacing-6);
           border: var(--ddd-border-xs);
-          color: var(--simple-colors-default-theme-accent-10);
+          color: var(--simple-colors-default-theme-accent-12);
           background-color: var(--simple-colors-default-theme-accent-2);
           --simple-fields-font-family: var(--ddd-font-navigation);
           --simple-fields-font-size: var(--ddd-font-size-xs);
@@ -493,7 +495,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       }
       simple-toolbar-button {
         background-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
-        color: var(--lowContrast-override, var(--ddd-theme-bgContrast, black));
+        color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
       }
       simple-toolbar-button[disabled] {
         background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-slateGray));
@@ -522,7 +524,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       simple-fields-field::part(option-inner) {
         position: absolute;
         right: 0px;
-        color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
+        color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-link));
         font-family: var(--ddd-font-navigation);
         font-size: var(--ddd-font-size-xs);
         bottom: 50%;
@@ -545,6 +547,16 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       }
       `,
     ];
+  }
+
+
+  // fire event about wanting to play a sound
+  playSound(sound) {
+    globalThis.dispatchEvent(new CustomEvent('playaudio', {
+      detail: {
+        sound: sound
+      }
+    }));
   }
 
   /**
