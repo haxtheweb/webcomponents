@@ -10,6 +10,7 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../multiple-choice.js';
       import '../lib/true-false-question.js';
+      import '../lib/short-answer-question.js';
       import "@lrnwebcomponents/simple-toast/simple-toast.js";
 
       globalThis.SimpleToast.requestAvailability()
@@ -21,6 +22,16 @@
       <h3>Basic multiple-choice progressive enhancement</h3>
       <demo-snippet>
         <template>
+          <short-answer-question
+          question="Which direction on a compass rose is always pointing up?">
+          <div slot="feedbackCorrect">
+            <p>Unless the axis below the compass is spinning and then north is relative to the direction of the arrow!</p>
+          </div>
+          <div slot="hint">
+            Think. When we look up at the ___ star, it points us..
+          </div>
+            <input correct value="North"/>
+          </short-answer-question>
           <true-false-question
           question="Ducks have wings.">
           <div slot="feedbackIncorrect">

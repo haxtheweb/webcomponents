@@ -1,0 +1,80 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "type": "grid",
+  "editMode": {
+    "editMode": true
+  },
+  "gizmo": {
+    "title": "Short Answer",
+    "description": "Question",
+    "icon": "hax:multiple-choice",
+    "color": "purple",
+    "tags": [
+      "Instructional",
+      "question",
+      "quiz",
+      "short answer"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question for users to respond to.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "correctText",
+        "title": "Correct feedback",
+        "description": "Feedback when they get it right",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "incorrectText",
+        "title": "Incorrect feedback",
+        "description": "Feedback when they get it wrong",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "checkLabel",
+        "title": "Check answers label",
+        "description": "Label for getting solution feedback",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "resetLabel",
+        "title": "Reset label",
+        "description": "label for the reset button",
+        "inputMethod": "textfield"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers", "shortanswer"]
+  },
+  "demoSchema": [
+    {
+      "tag": "short-answer-question",
+      "properties": {
+        "question": "Which direction on a compass rose is always pointing up?"
+      },
+      "content": "<input type=\"checkbox\" value=\"North\" correct>"
+    }
+  ]
+}
