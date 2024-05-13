@@ -24,7 +24,15 @@ class MediaQuote extends DDD {
    */
   constructor() {
     super();
+    
+    // Media Item (Img)
     mediaSrc = '';
+    mediaAlt = '';
+    caption = '';
+    
+    // Citation
+    author = '';
+    authorProfession = '';
   }
 
   static get styles() {
@@ -39,8 +47,17 @@ class MediaQuote extends DDD {
     return html`
         <div class='media-quote-container'>
           <div class='text-overlay'> 
-          
+            <p class='quote'><slot></slot></p>
+            ${this.author !== '' ? html`
+              <div class='citation'>
+                <p><span class='author'>${this.author}</span><span class='author-profession'>, ${this.authorProfession}</span></p>
+              </div>
+            ` : ''}
           </div>
+          <figure>
+            <img src="${this.mediaSrc}" alt="${this.mediaAlt}">
+            ${this.caption !== '' ? html`<figcaption>${this.caption}</figcaption>` : ''}
+          </figure>
         </div>
         
     `
@@ -48,7 +65,27 @@ class MediaQuote extends DDD {
 
   static get properties() {
     return {
-      ...super.properties
+      ...super.properties,
+      mediaSrc: {
+        type: String,
+        attribute: "media-src",
+      },
+      mediaAlt: {
+        type: String,
+        attribute: "media-alt",
+      },
+      caption: {
+        type: String,
+        attribute: "caption",
+      },
+      author: {
+        type: String,
+        attribute: "author",
+      },
+      authorProfession: {
+        type: String,
+        attribute: "author-profession",
+      }
     }
   }
 
