@@ -18,7 +18,7 @@ class TaggingQuestion extends QuestionElement {
 
   constructor() {
     super();
-    this.__primaryGuess = "selectedAnswers";
+    this.guessDataValue = "selectedAnswers";
     this.dragEnter = false;
     this.dragEnterAnswer = false;
     this.dragging = false;
@@ -130,12 +130,12 @@ class TaggingQuestion extends QuestionElement {
     return html`<div class="tag-option-container">
     <div id="user-choice-container" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswer}">
       ${this.selectedAnswers.map(answer => html`
-        <button ?disabled="${this.showAnswer}" class="tag-option ${this.showAnswer ? (answer.correct ? 'correct' : 'incorrect') : ''}" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(answer)}">${answer.label}</button>
+        <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option ${this.showAnswer ? (answer.correct ? 'correct' : 'incorrect') : ''}" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(answer)}">${answer.label}</button>
       `)}
     </div>
     <div id="possible-container" @drop="${this.handleDrop}" @dragover="${this.allowDrop}">
       ${this.displayedAnswers.map(tagOption => html`
-        <button ?disabled="${this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
+        <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
       `)}
     </div>
   </div>`;

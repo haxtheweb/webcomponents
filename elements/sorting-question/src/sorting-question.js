@@ -155,6 +155,14 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     };
   }
 
+  // fire event about wanting to play a sound
+  playSound(sound) {
+    globalThis.dispatchEvent(new CustomEvent('playaudio', {
+      detail: {
+        sound: sound
+      }
+    }));
+  }
   // updated fires every time a property defined above changes
   // this allows you to react to variables changing and use javascript to perform logic
   updated(changedProperties) {
@@ -199,6 +207,7 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           let gotRight = (this.numberCorrrect === this.numberOfOptions);
           // see if they got this correct based on their answers
           if (gotRight) {
+            this.playSound('success');
             this.__toastColor = "green";
             this.__toastIcon = this.correctIcon;
             this.__toastText = this.correctText;
@@ -212,6 +221,7 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
             });
             extras.hat = "party";
           } else {
+            this.playSound('error');
             this.__toastColor = "red";
             this.__toastIcon = this.incorrectIcon;
             this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrrect} of ${this.numberOfOptions} ${this.t.numCorrectRight}`;

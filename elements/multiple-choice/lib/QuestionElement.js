@@ -14,7 +14,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   constructor() {
     super();
     // default method of storing guess data
-    this.__primaryGuess = "display";
+    this.guessDataValue = "display";
     this.shadowRootOptions = {
       ...LitElement.shadowRootOptions,
       delegatesFocus: true,
@@ -70,12 +70,12 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   }
   // return array of all guesses
   getGuess() {
-    if (this.__primaryGuess == "display") {
+    if (this.guessDataValue == "display") {
       return this.displayedAnswers.filter(item => item.userGuess === true);
     }
     // see if we have another key that can be used as alternative for where this data is stored
-    else if (this[this.__primaryGuess]) {
-      return this[this.__primaryGuess];
+    else if (this[this.guessDataValue]) {
+      return this[this.guessDataValue];
     }
   }
   // count of all guesses
@@ -183,12 +183,14 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       this.__toastIcon = this.correctIcon;
       this.__toastText = this.correctText;
       this.makeItRain();
+      this.playSound('success');
       extras.hat = "party";
     } else {
       this.__toastColor = "red";
       this.__toastIcon = this.incorrectIcon;
       this.__toastText = this.incorrectText;
       extras.fire = true;
+      this.playSound('error');
     }
     si.icon = this.__toastIcon;
     si.style.marginLeft = "16px";
@@ -476,7 +478,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           border-radius: var(--ddd-radius-xs);
           margin-bottom: var(--ddd-spacing-6);
           border: var(--ddd-border-xs);
-          color: var(--simple-colors-default-theme-accent-10);
+          color: var(--simple-colors-default-theme-accent-12);
           background-color: var(--simple-colors-default-theme-accent-2);
           --simple-fields-font-family: var(--ddd-font-navigation);
           --simple-fields-font-size: var(--ddd-font-size-xs);
@@ -485,66 +487,76 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           --simple-icon-width: var(--ddd-icon-xs);
         }
         simple-toolbar-button {
-        font-size: var(--ddd-font-size-xs);
-        font-family: var(--ddd-font-navigation);
-        transition: all 0.3s ease-in-out;
-        border: none;
-        border-radius: var(--ddd-radius-xs);
-      }
-      simple-toolbar-button {
-        background-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
-        color: var(--lowContrast-override, var(--ddd-theme-bgContrast, black));
-      }
-      simple-toolbar-button[disabled] {
-        background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-slateGray));
-        color: light-dark(black, white);
-        opacity: .5;
-      }
-      :host simple-toolbar-button:hover::part(button),
-      :host simple-toolbar-button:focus::part(button),
-      :host simple-toolbar-button:focus-within::part(button),
-      :host simple-toolbar-button:active::part(button) {
-        cursor: pointer;
-        box-shadow: var(--ddd-boxShadow-sm);
-        border-color: black;
-      }
-      simple-toolbar-button::part(button) {
-        border: var(--ddd-border-sm);
-        border-radius: var(--ddd-radius-xs);
-        padding: var(--ddd-spacing-2);
-      }
-      simple-toolbar-button::part(label) {
-        font-size: var(--ddd-font-size-s);
-        font-family: var(--ddd-font-navigation);
-        padding: 0;
-        margin: 0;
-      }
-      simple-fields-field::part(option-inner) {
-        position: absolute;
-        right: 0px;
-        color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
-        font-family: var(--ddd-font-navigation);
-        font-size: var(--ddd-font-size-xs);
-        bottom: 50%;
-        top: 50%;
-        padding: 0px;
-        margin: 0px;
-      }
+          font-size: var(--ddd-font-size-xs);
+          font-family: var(--ddd-font-navigation);
+          transition: all 0.3s ease-in-out;
+          border: none;
+          border-radius: var(--ddd-radius-xs);
+        }
+        simple-toolbar-button {
+          background-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
+          color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
+        }
+        simple-toolbar-button[disabled] {
+          background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-slateGray));
+          color: light-dark(black, white);
+          opacity: .5;
+        }
+        :host simple-toolbar-button:hover::part(button),
+        :host simple-toolbar-button:focus::part(button),
+        :host simple-toolbar-button:focus-within::part(button),
+        :host simple-toolbar-button:active::part(button) {
+          cursor: pointer;
+          box-shadow: var(--ddd-boxShadow-sm);
+          border-color: black;
+        }
+        simple-toolbar-button::part(button) {
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-2);
+        }
+        simple-toolbar-button::part(label) {
+          font-size: var(--ddd-font-size-s);
+          font-family: var(--ddd-font-navigation);
+          padding: 0;
+          margin: 0;
+        }
+        simple-fields-field:not([type="textfield"])::part(option-inner) {
+          position: absolute;
+          right: 0px;
+          color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-link));
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-xs);
+          bottom: 50%;
+          top: 50%;
+          padding: 0px;
+          margin: 0px;
+        }
 
-      h4 {
-        color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
-      }
-      simple-icon {
-        display: inline-flex;
-      }
-      .feedback {
-        margin: var(--ddd-spacing-3) 0;
-        font-size: var(--ddd-font-size-sm);
-        font-weight: bold;
-        text-align: center;
-      }
+        h4 {
+          color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
+        }
+        simple-icon {
+          display: inline-flex;
+        }
+        .feedback {
+          margin: var(--ddd-spacing-3) 0;
+          font-size: var(--ddd-font-size-sm);
+          font-weight: bold;
+          text-align: center;
+        }
       `,
     ];
+  }
+
+
+  // fire event about wanting to play a sound
+  playSound(sound) {
+    globalThis.dispatchEvent(new CustomEvent('playaudio', {
+      detail: {
+        sound: sound
+      }
+    }));
   }
 
   /**
@@ -638,6 +650,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     `;
   }
 
+  // render the area the user will interact with the question
   renderInteraction() {
     return html`
     <fieldset class="options">
@@ -659,20 +672,24 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   </fieldset>
     `;
   }
+  // the case for whether or not this is inactive based on user input
+  inactiveCase() {
+    return this.guessCount() !== 0;
+  }
 
   renderButtons() {
     return html`
     <div id="buttons">
       <simple-toolbar-button
         id="check"
-        ?disabled="${this.disabled || this.guessCount() === 0 || this.showAnswer}"
+        ?disabled="${this.disabled || !this.inactiveCase() || this.showAnswer}"
         @click="${this.checkAnswer}"
         label="${this.checkLabel}"
       >
       </simple-toolbar-button>
       <simple-toolbar-button
         id="reset"
-        ?disabled="${this.disabled || this.guessCount() === 0 || (this.guessCount() !== 0 && !this.showAnswer)}"
+        ?disabled="${this.disabled || !this.inactiveCase() || (this.inactiveCase() && !this.showAnswer)}"
         @click="${this.resetAnswer}"
         label="${this.resetLabel}"
       >
@@ -681,12 +698,14 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   `;
   }
 
+  // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>Select the answers you feel satsisfy the question. When you are done, select <strong>${this.t.checkAnswer}</strong>.
       You will get feedback just below here indicating correctness of your answer and how to proceed.
     </p>`;
   }
 
+  // this manages the output of the feedback area
   renderFeedback() {
     return html`
     ${this.showAnswer && !this.isCorrect() ? html`
@@ -834,8 +853,8 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   }
 
     /**
-   * Implements haxHooks to tie into life-cycle if hax exists.
-   */
+     * Implements haxHooks to tie into life-cycle if hax exists.
+     */
     haxHooks() {
       return {
         editModeChanged: "haxeditModeChanged",
