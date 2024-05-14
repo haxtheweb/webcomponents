@@ -33,6 +33,9 @@ class MediaQuote extends DDD {
     // Citation
     this.author = '';
     this.authorProfession = '';
+
+    // Color
+    this.dataPrimary;
   }
 
   static get styles() {
@@ -54,12 +57,12 @@ class MediaQuote extends DDD {
             display: inline-block;
             padding: var(--ddd-spacing-0) var(--ddd-spacing-3);
             font-style: italic;
-            width: 35%;
+            width: 30%;
             box-decoration-break: clone;
             font-size: var(--ddd-font-size-ms);
             position: absolute;
             top: 20%;
-            right: 50%;
+            left: 15%
           }
 
           .content {
@@ -115,9 +118,9 @@ class MediaQuote extends DDD {
                     <span class='author'>${this.author}</span> 
                       ${this.authorProfession !== '' ? html`
                         <span class='author-profession'>, ${this.authorProfession}</span>
-                    ` : ''}
+                      ` : ''}
                   </span>
-              ` : ''}
+                ` : ''}
               </p>  
             </div>
             <img src="${this.mediaSrc}" alt="${this.mediaAlt}">
@@ -150,6 +153,10 @@ class MediaQuote extends DDD {
         type: String,
         attribute: "author-profession",
       },
+      dataPrimary: {
+        type: Number, // may need to change to string
+        attribute: "data-primary",
+      }
     }
   }
 
