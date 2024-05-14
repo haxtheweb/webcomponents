@@ -32,7 +32,6 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     this.question = "";
     this.answers = [];
     this.displayedAnswers = [];
-    this.selectedAnswers = [];
     this.correctText = "Great job!";
     this.incorrectText = "Better luck next time!";
     this.incorrectIcon = "icons:thumb-down";
@@ -279,8 +278,6 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       maxAttempts: { type: Number, reflect: true, attribute: "max-attempts"},
       // track how many times they've tried the interaction
       attempts: { type: Number, reflect: true},
-      // questions that require generation of multiple arrays of data
-      selectedAnswers: { type: Array },
       /**
        * Support disabling interaction with the entire board
        */
@@ -808,21 +805,27 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     }
     this.requestUpdate();
   }
-
+  // convert the input to data
+  processInput(index, inputs, answers) {
+    let input = inputs[index];
+    return {
+      order: parseInt(index), // stores the original order this was in for things that leverage this piece of data
+      label: input.value,
+      correct: input.getAttribute("correct") == null ? false : true,
+      image: input.getAttribute("data-image") || null, // support for image prop in questions that want it
+      alt: input.getAttribute("data-image-alt") || "", // support for image alt w/ prop question, "" for default to ignore
+      selectedFeedback: input.getAttribute("data-selected") || null,
+      unselectedFeedback: input.getAttribute("data-unselected") || null,
+    };
+  }
+  // load data off the light dom so that we don't show the answer
+  // this also makes it a lot more portable / readable and have better SEO (in theory)
   loadLightDomData() {
     if (this.children.length > 0) {
       let inputs = Array.from(this.querySelectorAll("input:not([slot])"));
       let answers = [];
       for (var i in inputs) {
-        let answer = {
-          order: parseInt(i), // stores the original order this was in for things that leverage this piece of data
-          label: inputs[i].value,
-          correct: inputs[i].getAttribute("correct") == null ? false : true,
-          image: inputs[i].getAttribute("data-image") || null, // support for image prop in questions that want it
-          alt: inputs[i].getAttribute("data-image-alt") || "", // support for image alt w/ prop question
-          selectedFeedback: inputs[i].getAttribute("data-selected") || null,
-          unselectedFeedback: inputs[i].getAttribute("data-unselected") || null,
-        };
+        let answer = this.processInput(i, inputs, answers);
         answers.push(answer);
       }
       this.answers = answers;

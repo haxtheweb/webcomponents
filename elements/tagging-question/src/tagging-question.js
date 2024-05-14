@@ -22,6 +22,7 @@ class TaggingQuestion extends QuestionElement {
     this.dragEnter = false;
     this.dragEnterAnswer = false;
     this.dragging = false;
+    this.selectedAnswers = [];
   }
 
   static get styles() {
@@ -305,6 +306,7 @@ class TaggingQuestion extends QuestionElement {
       dragging: { type: Boolean, reflect: true },
       dragEnter: { type: Boolean, reflect: true, attribute: "drag-enter"},
       dragEnterAnswer: { type: Boolean, reflect: true, attribute: "drag-enter-answer"},
+      selectedAnswers: { type: Array },
     };
   }
   /**
