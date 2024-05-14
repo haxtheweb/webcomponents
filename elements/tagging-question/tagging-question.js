@@ -18,7 +18,7 @@ class TaggingQuestion extends QuestionElement {
 
   constructor() {
     super();
-    this.__primaryGuess = "selectedAnswers";
+    this.guessDataValue = "selectedAnswers";
     this.dragEnter = false;
     this.dragEnterAnswer = false;
     this.dragging = false;
@@ -59,7 +59,7 @@ class TaggingQuestion extends QuestionElement {
           gap: var(--ddd-spacing-4);
           min-height: var(--ddd-spacing-18);
           margin-bottom: var(--ddd-spacing-5);
-          padding: var(--ddd-spacing-15);
+          padding: var(--ddd-spacing-5);
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
           box-sizing: border-box;
@@ -130,15 +130,19 @@ class TaggingQuestion extends QuestionElement {
     return html`<div class="tag-option-container">
     <div id="user-choice-container" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswer}">
       ${this.selectedAnswers.map(answer => html`
-        <button ?disabled="${this.showAnswer}" class="tag-option ${this.showAnswer ? (answer.correct ? 'correct' : 'incorrect') : ''}" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(answer)}">${answer.label}</button>
+        <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option ${this.showAnswer ? (answer.correct ? 'correct' : 'incorrect') : ''}" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(answer)}">${answer.label}</button>
       `)}
     </div>
     <div id="possible-container" @drop="${this.handleDrop}" @dragover="${this.allowDrop}">
       ${this.displayedAnswers.map(tagOption => html`
-        <button ?disabled="${this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
+        <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
       `)}
     </div>
   </div>`;
+  }
+
+  isCorrect() {
+    return this.answers.filter(answer => answer.correct).length === this.selectedAnswers.filter(answer => answer.correct).length && this.selectedAnswers.filter(answer => answer.correct).length === this.selectedAnswers.length;
   }
 
   renderFeedback() {
@@ -150,7 +154,7 @@ class TaggingQuestion extends QuestionElement {
     <p class="feedback">${this.correctText}</p>
     ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
     ${this.showAnswer ? html`
-      <p>${this.selectedAnswers.filter(answer => answer.correct).length} out of ${this.answers.filter(answer => answer.correct).length} correct options selected</p>
+      <p>${this.selectedAnswers.filter(answer => answer.correct).length} out of ${this.answers.filter(answer => answer.correct).length} correct options selected${this.selectedAnswers.length > this.answers.filter(answer => answer.correct).length && this.selectedAnswers.length > this.selectedAnswers.filter(answer => answer.correct).length ? html`, <strong>but too many options present!</strong>` : '.'}</p>
       <h4>Answers selected</h4>
       <dl>
       ${this.selectedAnswers.map(answer => html`

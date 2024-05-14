@@ -59,7 +59,7 @@ class TaggingQuestion extends QuestionElement {
           gap: var(--ddd-spacing-4);
           min-height: var(--ddd-spacing-18);
           margin-bottom: var(--ddd-spacing-5);
-          padding: var(--ddd-spacing-15);
+          padding: var(--ddd-spacing-5);
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
           box-sizing: border-box;
@@ -141,6 +141,10 @@ class TaggingQuestion extends QuestionElement {
   </div>`;
   }
 
+  isCorrect() {
+    return this.answers.filter(answer => answer.correct).length === this.selectedAnswers.filter(answer => answer.correct).length && this.selectedAnswers.filter(answer => answer.correct).length === this.selectedAnswers.length;
+  }
+
   renderFeedback() {
     return html`
     ${this.showAnswer && !this.isCorrect() ? html`
@@ -150,7 +154,7 @@ class TaggingQuestion extends QuestionElement {
     <p class="feedback">${this.correctText}</p>
     ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
     ${this.showAnswer ? html`
-      <p>${this.selectedAnswers.filter(answer => answer.correct).length} out of ${this.answers.filter(answer => answer.correct).length} correct options selected</p>
+      <p>${this.selectedAnswers.filter(answer => answer.correct).length} out of ${this.answers.filter(answer => answer.correct).length} correct options selected${this.selectedAnswers.length > this.answers.filter(answer => answer.correct).length && this.selectedAnswers.length > this.selectedAnswers.filter(answer => answer.correct).length ? html`, <strong>but too many options present!</strong>` : '.'}</p>
       <h4>Answers selected</h4>
       <dl>
       ${this.selectedAnswers.map(answer => html`
