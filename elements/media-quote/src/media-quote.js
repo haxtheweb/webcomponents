@@ -26,21 +26,67 @@ class MediaQuote extends DDD {
     super();
     
     // Media Item (Img)
-    mediaSrc = '';
-    mediaAlt = '';
-    caption = '';
+    this.mediaSrc = '';
+    this.mediaAlt = '';
+    this.caption = '';
     
     // Citation
-    author = '';
-    authorProfession = '';
+    this.author = '';
+    this.authorProfession = '';
   }
 
   static get styles() {
     return [
       super.styles,
-      css`
-        
-    `];
+        css`
+          /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
+          .media-quote-container {
+            font-family: var(--ddd-font-primary);
+          }
+          
+          .text-overlay {
+            z-index: 2;
+          }
+
+          .quote {
+            background-color: var(--ddd-theme-default-beaverBlue);
+            display: inline-block;
+            padding: var(--ddd-spacing-0) var(--ddd-spacing-3);
+            font-style: italic;
+            width: 50%;
+            box-decoration-break: clone;
+          }
+
+          .citation {
+            color: var(--ddd-theme-default-beaverBlue);
+            font-style: italic;
+            font-size: 0;
+          }
+            .author {
+              font-weight: bold; /* var(--ddd-font-primary-bold) */
+            }
+            .author, .author-profession {
+              font-size: var(--ddd-font-size-xxs);
+            }
+
+          figure {
+            width: 75%;
+          }
+
+          img {
+            width: 100%;
+          }
+
+          figcaption {
+            color: var(--ddd-theme-default-beaverBlue);
+            width: 100%;
+            border-top: solid;
+            border-color: var(--ddd-theme-default-beaverBlue);
+            margin-top: var(--ddd-spacing-1);
+            padding-top: var(--ddd-spacing-1);
+          }
+            
+      `,];
   }
 
   render() {
@@ -48,9 +94,15 @@ class MediaQuote extends DDD {
         <div class='media-quote-container'>
           <div class='text-overlay'> 
             <p class='quote'><slot></slot></p>
+            </div>
             ${this.author !== '' ? html`
               <div class='citation'>
-                <p><span class='author'>${this.author}</span><span class='author-profession'>, ${this.authorProfession}</span></p>
+                <p>
+                  <span class='author'>${this.author}</span> 
+                  ${this.authorProfession !== '' ? html`
+                    <span class='author-profession'>, ${this.authorProfession}</span>
+                  ` : ''}
+                </p>
               </div>
             ` : ''}
           </div>
@@ -59,7 +111,6 @@ class MediaQuote extends DDD {
             ${this.caption !== '' ? html`<figcaption>${this.caption}</figcaption>` : ''}
           </figure>
         </div>
-        
     `
   }
 
@@ -85,7 +136,7 @@ class MediaQuote extends DDD {
       authorProfession: {
         type: String,
         attribute: "author-profession",
-      }
+      },
     }
   }
 
