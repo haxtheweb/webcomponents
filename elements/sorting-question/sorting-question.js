@@ -10,14 +10,10 @@ import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "./lib/sorting-option.js";
 
 // @TODO
-// - use user scaffolding to automatically open directions first if you have not tried this activity before
-//   otherwise it will default to the related content being open if that's there
 // - pull in input elements, use their data just like in questionElement and conform it here
 //   .map in custom render that writes the sorting options to the page; they are unique and required
 // - on save / convert to store in HAX, we need to use a hook to that we put things in the correct order for saving
 // - on other question types, ensure feedback flows back there if individual per response
-// - Max attempts setting that SHOWS # of attempts remaining with a disabled "Reveal answer" button
-// - normalize feedback into QuestionElement
 
 export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -56,6 +52,9 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       checkAnswer: "Check answer",
       tryAgain: "Try again",
     };
+    // @todo this needs refactored when we move to QuestionElement
+    this.checkLabel = "Check answer";
+    this.resetLabel = "Try again";
     this.registerLocalization({
       context: this,
       localesPath:
@@ -366,7 +365,9 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     ];
   }
 
-  // HTML - specific to Lit
+  renderInteraction() {
+    return html`<fieldset class="options"><slot></slot></fieldset>`;
+  }
   render() {
     return html`
       <meta property="oer:assessing" content="${this.relatedResource}" />
@@ -374,30 +375,14 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         <grid-plate layout="1-1">
           <div slot="col-1">
             <h3 property="oer:name">${this.question}</h3>
-            <fieldset class="options"><slot></slot></fieldset>
-            <div id="buttons">
-              <simple-toolbar-button
-                id="check"
-                ?disabled="${this.disabled || this.showAnswer}"
-                @click="${this.checkAnswer}"
-                label="${this.t.checkAnswer}">
-              </simple-toolbar-button>
-              <simple-toolbar-button
-                id="reset"
-                ?disabled="${this.disabled || !this.showAnswer}"
-                @click="${this.resetAnswer}"
-                label="${this.t.tryAgain}">
-              </simple-toolbar-button>
-            </div>
+            ${this.renderInteraction()}
+            ${!this.hideButtons ? this.renderButtons() : ``}
           </div>
           <div slot="col-2">
             <details ?open="${!this.hasContent}" id="directions">
               <summary>Directions</summary>
               <div>
-                <p>Place the items in the correct order either by clicking the up and down arrows or drag and drop.
-                  When you believe you have them in the correct order, test your answer by selecting <strong>${this.t.checkAnswer}</strong>.
-                  You will get feedback just below here indicating correctness of your answer.
-                </p>
+                ${this.renderDirections()}
               </div>
             </details>
             ${this.hasContent ? html`
@@ -410,34 +395,76 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
             <details tabindex="${!this.showAnswer ? "-1" : ""}" ?disabled="${!this.showAnswer}" ?open="${this.showAnswer}">
               <summary id="feedback">Feedback</summary>
               <div>
-                ${this.showAnswer && this.numberCorrrect !== this.numberOfOptions ? html`
-                <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrrect}/${this.numberOfOptions} ${this.t.numCorrectRight}</p>
-                ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
-                ${this.showAnswer && this.numberCorrrect === this.numberOfOptions ? html`
-                <p class="feedback">${this.correctText}</p>
-                ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
-                  ${this.hasHint && this.showAnswer && this.numberCorrrect !== this.numberOfOptions ? html`
-                    <h4>Need a hint?</h4>
-                    <div>
-                      <slot name="hint"></slot>
-                    </div>
-                  ` : ``}
-                  ${this.hasEvidence && this.showAnswer && this.numberCorrrect === this.numberOfOptions  ? html`
-                    <h4>Evidence</h4>
-                    <div>
-                      <slot name="evidence"></slot>
-                    </div>
-                  ` : ``}
-                  <simple-toolbar-button
-                    ?disabled="${this.disabled || !this.showAnswer}"
-                    @click="${this.resetAnswer}"
-                    label="${this.t.tryAgain}">
-                  </simple-toolbar-button>
+                ${this.renderFeedback()}
               </div>
             </details>
           </div>
         </grid-plate>
       </confetti-container>
+    `;
+  }
+  // the case for whether or not this is inactive based on user input
+  inactiveCase() {
+    // due to the odd nature of this, the 1st supplies option COULD be in the right order
+    // as a result we ALWAYS want to be active case
+    return true;
+  }
+
+  renderButtons() {
+    return html`
+    <div id="buttons">
+      <simple-toolbar-button
+        id="check"
+        ?disabled="${this.disabled || !this.inactiveCase() || this.showAnswer}"
+        @click="${this.checkAnswer}"
+        label="${this.checkLabel}"
+      >
+      </simple-toolbar-button>
+      <simple-toolbar-button
+        id="reset"
+        ?disabled="${this.disabled || !this.inactiveCase() || (this.inactiveCase() && !this.showAnswer)}"
+        @click="${this.resetAnswer}"
+        label="${this.resetLabel}"
+      >
+      </simple-toolbar-button>
+    </div>
+  `;
+  }
+
+  // this manages the directions that are rendered and hard coded for the interaction
+  renderDirections() {
+    return html`<p>Place the items in the correct order either by clicking the up and down arrows or drag and drop.
+    When you believe you have them in the correct order, test your answer by selecting <strong>${this.t.checkAnswer}</strong>.
+    You will get feedback just below here indicating correctness of your answer.
+  </p>`;
+  }
+
+  // this manages the output of the feedback area
+  renderFeedback() {
+    return html`
+    ${this.showAnswer && this.numberCorrrect !== this.numberOfOptions ? html`
+    <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrrect}/${this.numberOfOptions} ${this.t.numCorrectRight}</p>
+    ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
+    ${this.showAnswer && this.numberCorrrect === this.numberOfOptions ? html`
+    <p class="feedback">${this.correctText}</p>
+    ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
+      ${this.hasHint && this.showAnswer && this.numberCorrrect !== this.numberOfOptions ? html`
+        <h4>Need a hint?</h4>
+        <div>
+          <slot name="hint"></slot>
+        </div>
+      ` : ``}
+      ${this.hasEvidence && this.showAnswer && this.numberCorrrect === this.numberOfOptions  ? html`
+        <h4>Evidence</h4>
+        <div>
+          <slot name="evidence"></slot>
+        </div>
+      ` : ``}
+      <simple-toolbar-button
+        ?disabled="${this.disabled || !this.showAnswer}"
+        @click="${this.resetAnswer}"
+        label="${this.t.tryAgain}">
+      </simple-toolbar-button>
     `;
   }
 
