@@ -163,6 +163,9 @@ export class SortingOption extends DDDSuper(LitElement) {
         --simple-icon-height: var(--ddd-icon-xs);
         --simple-icon-width: var(--ddd-icon-xs);
       }
+      :host([disabled]) {
+        opacity: .8;
+      }
       :host(:not([disabled])) {
         cursor: grab;
       }

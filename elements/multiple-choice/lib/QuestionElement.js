@@ -2,6 +2,7 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
@@ -9,7 +10,7 @@ import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 
-export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
+export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
 
   constructor() {
     super();
@@ -19,6 +20,8 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       ...LitElement.shadowRootOptions,
       delegatesFocus: true,
     };
+    this.maxAttempts = 0; // 0 implies unlimited
+    this.attempts = 0;
     this.showAnswer = false;
     this.randomize = false;
     this.hideButtons = false;
@@ -31,7 +34,6 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     this.displayedAnswers = [];
     this.selectedAnswers = [];
     this.correctText = "Great job!";
-    this.correctIcon = "icons:thumb-up";
     this.incorrectText = "Better luck next time!";
     this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
@@ -63,7 +65,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       }
       if (propName == "answers" && this.answers && this.answers.length > 0) {
         this.displayedAnswers = [
-          ...this._computeDisplayedAnswers(this.answers, this.randomize),
+          ...this._computeDisplayedAnswers([...this.answers], this.randomize),
         ];
       }
     });
@@ -171,30 +173,31 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     }
     this.showAnswer = true;
     // regardless, focus the other button since this one will disable
-    // @todo max attempts can come into play here
-    if (!this.maxAttempts) {
+    // @todo max attempts can come into play here tho im not positive it happens here or on the other side of disabling..
+    if (this.maxAttempts === 0 || this.maxAttempts > this.attempts) {
       setTimeout(() => {
         this.shadowRoot.querySelector("#reset").focus();        
       }, 0);
     }
     // see if they got this correct based on their answers
+    let toastColor, toastIcon, toastText;
     if (this.isCorrect()) {
-      this.__toastColor = "green";
-      this.__toastIcon = this.correctIcon;
-      this.__toastText = this.correctText;
+      toastColor = "green";
+      toastIcon = "icons:thumb-up";
+      toastText = this.correctText;
       this.makeItRain();
       this.playSound('success');
       extras.hat = "party";
     } else {
-      this.__toastColor = "red";
-      this.__toastIcon = this.incorrectIcon;
-      this.__toastText = this.incorrectText;
+      toastColor = "red";
+      toastIcon = "icons:thumb-down";
+      toastText = this.incorrectText;
       extras.fire = true;
       this.playSound('error');
     }
-    si.icon = this.__toastIcon;
+    si.icon = toastIcon;
     si.style.marginLeft = "16px";
-    si.accentColor = this.__toastColor;
+    si.accentColor = toastColor;
     si.dark = true;
     // gets it all the way to the top immediately
     globalThis.dispatchEvent(
@@ -203,8 +206,8 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         composed: true,
         cancelable: true,
         detail: {
-          text: this.__toastText,
-          accentColor: this.__toastColor,
+          text: toastText,
+          accentColor: toastColor,
           duration: 3000,
           slot: si,
           ...extras,
@@ -225,6 +228,8 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         detail: eventData,
       }),
     );
+    // add to the attempts but AFTER everything runs so we can process if no more attempts exist
+    this.attempts++;
   }
 
   /**
@@ -269,7 +274,11 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       hasFeedbackIncorrect: { type: Boolean },
       hasFeedbackCorrect: { type: Boolean },
       hasEvidence: { type: Boolean },
-      
+
+      // support for max attempts, default is unlimited
+      maxAttempts: { type: Number, reflect: true, attribute: "max-attempts"},
+      // track how many times they've tried the interaction
+      attempts: { type: Number, reflect: true},
       // questions that require generation of multiple arrays of data
       selectedAnswers: { type: Array },
       /**
@@ -277,6 +286,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
        */
       disabled: {
         type: Boolean,
+        reflect: true,
       },
       /**
        * Simple option, otherwise allow multiple via checkbox
@@ -284,20 +294,6 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       singleOption: {
         type: Boolean,
         attribute: "single-option",
-      },
-      /**
-       * Text of the label to check your answer
-       */
-      checkLabel: {
-        type: String,
-        attribute: "check-label",
-      },
-      /**
-       * Text of the reset button
-       */
-      resetLabel: {
-        type: String,
-        attribute: "reset-label",
       },
       /**
        * Related Resource ID
@@ -337,20 +333,6 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       incorrectText: {
         type: String,
         attribute: "incorrect-text",
-      },
-      /**
-       * Correct answer text to display
-       */
-      correctIcon: {
-        type: String,
-        attribute: "correct-icon",
-      },
-      /**
-       * Incorrect answer text to display
-       */
-      incorrectIcon: {
-        type: String,
-        attribute: "incorrect-icon",
       },
       /**
        * Name of the quiz - hardcoded for now from HTML
@@ -570,6 +552,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     if (node.answers) {
       // ensure this is null before generating new answers
       // otherwise page to page saves we could lose statefulness
+      // these should not actually exist..
       let inputs = Array.from(this.querySelectorAll("input:not([slot])"));
       for (var i in inputs) {
         inputs[i].remove();
@@ -581,6 +564,18 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           answer.value = node.answers[i].label;
           if (node.answers[i].correct) {
             answer.setAttribute("correct", "correct");
+          }
+          if (node.answers[i].image) {
+            answer.setAttribute("data-image", node.answers[i].image);
+          }
+          if (node.answers[i].alt) {
+            answer.setAttribute("data-image-alt", node.answers[i].alt);
+          }
+          if (node.answers[i].selectedFeedback) {
+            answer.setAttribute("data-selected", node.answers[i].selectedFeedback);
+          }
+          if (node.answers[i].unselectedFeedback) {
+            answer.setAttribute("data-unselected", node.answers[i].unselectedFeedback);
           }
           node.appendChild(answer);
         }
@@ -651,6 +646,7 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   }
 
   // render the area the user will interact with the question
+  // our default implementation is a multiple-choice element
   renderInteraction() {
     return html`
     <fieldset class="options">
@@ -819,8 +815,11 @@ export class QuestionElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       let answers = [];
       for (var i in inputs) {
         let answer = {
-          label: inputs[i].value || inputs[i].innerText,
+          order: parseInt(i), // stores the original order this was in for things that leverage this piece of data
+          label: inputs[i].value,
           correct: inputs[i].getAttribute("correct") == null ? false : true,
+          image: inputs[i].getAttribute("data-image") || null, // support for image prop in questions that want it
+          alt: inputs[i].getAttribute("data-image-alt") || "", // support for image alt w/ prop question
           selectedFeedback: inputs[i].getAttribute("data-selected") || null,
           unselectedFeedback: inputs[i].getAttribute("data-unselected") || null,
         };
