@@ -7,7 +7,7 @@ import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 
 /**
  * `media-quote`
- * `A quote focused around a piece of media with citation`
+ * `A quote focused around a piece of media with citation and optional caption`
  * @demo demo/index.html
  * @element media-quote
  */
@@ -42,6 +42,8 @@ class MediaQuote extends DDD {
           /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
           .media-quote-container {
             font-family: var(--ddd-font-primary);
+            display: flex;
+            justify-content: center;
           }
           
           .text-overlay {
@@ -49,16 +51,28 @@ class MediaQuote extends DDD {
           }
 
           .quote {
-            background-color: var(--ddd-theme-default-beaverBlue);
             display: inline-block;
             padding: var(--ddd-spacing-0) var(--ddd-spacing-3);
             font-style: italic;
-            width: 50%;
+            width: 35%;
+            box-decoration-break: clone;
+            font-size: var(--ddd-font-size-ms);
+            position: absolute;
+            top: 20%;
+            right: 50%;
+          }
+
+          .content {
             box-decoration-break: clone;
           }
 
+          .content, .citation {
+            background-color: var(--ddd-theme-default-beaverBlue);
+            padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
+          }
+
           .citation {
-            color: var(--ddd-theme-default-beaverBlue);
+            display: inline-block;
             font-style: italic;
             font-size: 0;
           }
@@ -70,7 +84,8 @@ class MediaQuote extends DDD {
             }
 
           figure {
-            width: 75%;
+            width: 60%;
+            z-index: 0;
           }
 
           img {
@@ -85,28 +100,26 @@ class MediaQuote extends DDD {
             margin-top: var(--ddd-spacing-1);
             padding-top: var(--ddd-spacing-1);
           }
-            
       `,];
   }
 
   render() {
     return html`
         <div class='media-quote-container'>
-          <div class='text-overlay'> 
-            <p class='quote'><slot></slot></p>
-            </div>
-            ${this.author !== '' ? html`
-              <div class='citation'>
-                <p>
-                  <span class='author'>${this.author}</span> 
-                  ${this.authorProfession !== '' ? html`
-                    <span class='author-profession'>, ${this.authorProfession}</span>
-                  ` : ''}
-                </p>
-              </div>
-            ` : ''}
-          </div>
           <figure>
+            <div class='text-overlay'> 
+              <p class='quote'>
+                <span class='content'><slot></slot></span> <br> <br>
+                ${this.author !== '' ? html`
+                  <span class='citation'>
+                    <span class='author'>${this.author}</span> 
+                      ${this.authorProfession !== '' ? html`
+                        <span class='author-profession'>, ${this.authorProfession}</span>
+                    ` : ''}
+                  </span>
+              ` : ''}
+              </p>  
+            </div>
             <img src="${this.mediaSrc}" alt="${this.mediaAlt}">
             ${this.caption !== '' ? html`<figcaption>${this.caption}</figcaption>` : ''}
           </figure>
