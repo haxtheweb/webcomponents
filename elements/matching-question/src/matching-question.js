@@ -23,58 +23,31 @@ class MatchingQuestion extends QuestionElement {
     return [
       super.styles,
       css`
-
-      .option-container {
-        display: grid; 
-        grid-template-columns: 1fr; 
-        grid-template-rows: 1fr 1fr; 
-        gap: 0px 0px; 
-        grid-template-areas: 
-          "."
-          "possible"; 
-      }
-      .top {
-        display: grid; 
-        grid-template-columns: 1fr 1fr; 
-        grid-template-rows: 1fr; 
-        gap: 0px 0px; 
-        grid-template-areas: 
-          "targets matches"; 
-      }
-      .matches { grid-area: matches; }
-      .targets { grid-area: targets; }
-      .possible { grid-area: possible; }
       
       #target-container {
         transition: all .3s ease-in-out;
         justify-content: center;
         overflow-y: auto;
-        gap: var(--ddd-spacing-4);
-        min-height: var(--ddd-spacing-18);
-        margin-bottom: var(--ddd-spacing-5);
-        padding: var(--ddd-spacing-5);
-        border: var(--ddd-border-sm);
-        border-radius: var(--ddd-radius-sm);
-        box-sizing: border-box;
         background-color: light-dark(var(--simple-colors-default-theme-grey-2),var(--simple-colors-default-theme-grey-10));
+      }
+
+      .targets .target {
+        height: 100px;
+      }
+      .matches .match {
+        min-height: 100px;
       }
 
       #matches-container {
         transition: all .3s ease-in-out;
         justify-content: center;
         overflow-y: auto;
-        gap: var(--ddd-spacing-4);
-        min-height: var(--ddd-spacing-18);
-        margin-bottom: var(--ddd-spacing-5);
-        padding: var(--ddd-spacing-5);
-        border: var(--ddd-border-sm);
-        border-radius: var(--ddd-radius-sm);
-        box-sizing: border-box;
         background-color: light-dark(var(--simple-colors-default-theme-grey-2),var(--simple-colors-default-theme-grey-10));
       }
 
       #possible-container {
         display: flex;
+        justify-content: start;
         padding: var(--ddd-spacing-3);
         border-radius: var(--ddd-radius-sm);
         border: var(--ddd-border-xs);
@@ -85,54 +58,67 @@ class MatchingQuestion extends QuestionElement {
       }
 
       :host([show-answer]) .tag-option {
-          cursor: unset;
-        }
+        cursor: unset;
+      }
 
-        :host(:not([show-answer])) .tag-option:hover, :host(:not([show-answer])) .tag-option:focus {
-          background-color: var(--simple-colors-default-theme-grey-3);
-        }
+      :host(:not([show-answer])) .tag-option:hover, :host(:not([show-answer])) .tag-option:focus {
+        background-color: var(--simple-colors-default-theme-grey-3);
+      }
 
-        .tag-option.correct {
-          outline: 4px solid var(--ddd-theme-default-opportunityGreen);
-        }
+      .tag-option.correct {
+        outline: 4px solid var(--ddd-theme-default-opportunityGreen);
+      }
 
-        .tag-option.incorrect {
-          outline: 4px solid var(--ddd-theme-default-original87Pink);
-        }
+      .tag-option.incorrect {
+        outline: 4px solid var(--ddd-theme-default-original87Pink);
+      }
 
-        :host([dragging]) #user-choice-container {
-          border-style: dashed;
-          border-color: gray;
-        }
-        :host([drag-enter-matches][dragging]) #matches-container {
-          border-style: dashed;
-          border-color: black;
-          background-color: light-dark(var(--simple-colors-default-theme-grey-3),var(--simple-colors-default-theme-grey-9));
-        }
-        :host([drag-enter-target][dragging]) #target-container {
-          border-style: dashed;
-          border-color: black;
-          background-color: light-dark(var(--simple-colors-default-theme-grey-3),var(--simple-colors-default-theme-grey-9));
-        }
-        :host([drag-enter][dragging]) #possible-container {
-          border-color: black;
-          border-style: dashed;
-          background-color: light-dark(var(--simple-colors-default-theme-grey-2),var(--simple-colors-default-theme-grey-8));
-        }
+      :host([dragging]) #user-choice-container {
+        border-style: dashed;
+        border-color: gray;
+      }
+      :host([drag-enter-matches][dragging]) #matches-container {
+        border-style: dashed;
+        border-color: black;
+        background-color: light-dark(var(--simple-colors-default-theme-grey-3),var(--simple-colors-default-theme-grey-9));
+      }
+      :host([drag-enter-target][dragging]) #target-container {
+        border-style: dashed;
+        border-color: black;
+        background-color: light-dark(var(--simple-colors-default-theme-grey-3),var(--simple-colors-default-theme-grey-9));
+      }
+      :host([drag-enter][dragging]) #possible-container {
+        border-color: black;
+        border-style: dashed;
+        background-color: light-dark(var(--simple-colors-default-theme-grey-2),var(--simple-colors-default-theme-grey-8));
+      }
 
-        .tag-option {
-          font-size: var(--ddd-font-size-s);
-          height: auto;
-          display: inline-block;
-          font-family: var(--ddd-font-navigation);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-sm);
-          background-color: var(--simple-colors-default-theme-grey-2);
-          cursor: pointer;
-          user-select: none;
-          transition: background-color 0.3s ease;
-        }
+      .tag-option {
+        font-size: var(--ddd-font-size-s);
+        height: fit-content;
+        display: inline-block;
+        font-family: var(--ddd-font-navigation);
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+        border: var(--ddd-border-sm);
+        border-radius: var(--ddd-radius-sm);
+        background-color: var(--simple-colors-default-theme-grey-2);
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.3s ease;
+      }
+      table {
+        width: 100%;
+        border: var(--ddd-border-sm);
+      }
+      td,th {
+        padding: var(--ddd-spacing-2);
+        border: var(--ddd-border-sm);
+        margin: 0;
+      }
+      tr {
+        margin: 0;
+        border: var(--ddd-border-sm);
+      }
       `]
   }
 
@@ -141,12 +127,15 @@ class MatchingQuestion extends QuestionElement {
    */
   constructor() {
     super();
+    this.guessDataValue = "matchesAnswers";
     this.dragEnter = false;
     this.dragEnterMatches = false;
     this.dragEnterTarget = false;
     this.dragging = false;
     this.matchesAnswers = [];
     this.targetAnswers = [];
+    // allow for requiring the user to place the targets in the right place as well
+    this.matchTarget = false;
   }
 
   processInput(index, inputs, priorData) {
@@ -169,21 +158,26 @@ class MatchingQuestion extends QuestionElement {
   renderInteraction() {
     return html`
     <div class="option-container">
-      <div class="top">
-        <div id="target-container" class="targets" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswerTarget}">
-          ${this.targetAnswers.map(answer => html`
-          <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option ${this.showAnswer ? (answer.correct ? 'correct' : 'incorrect') : ''}" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(answer)}">${answer.label}</button>
-        `)}
-        </div>
-        <div id="matches-container" class="matches" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswerMatches}">
-          ${this.matchesAnswers.map(tagOption => html`
+      <table class="top">
+        <thead>
+          <th>Target</th>
+          <th>Matches</th>
+        </thead>
+        <tbody>
+      ${this.answers.filter(answer => answer.target).map(answer => html`
+      <tr class="matches-container">
+        <td class="target">${answer.label}</td>
+        <td class="match" id="match-${answer.order}" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswerMatches}">
+        ${this.matchesAnswers.filter(tag => tag.guess === answer.order).map(tagOption => html`
           <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
         `)}
-        </div>
-
-      </div>
+        </td>
+      </tr>
+      `)}
+      </tbody>
+        </table>
       <div id="possible-container" class="possible" @drop="${this.handleDrop}" @dragover="${this.allowDrop}">
-      ${this.displayedAnswers.map(tagOption => html`
+      ${this.displayedAnswers.filter(answer => !this.matchTarget ? answer.match : true).map(tagOption => html`
         <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
       `)}
     </div>
@@ -234,34 +228,9 @@ class MatchingQuestion extends QuestionElement {
     const text = e.dataTransfer.getData("text/plain");
     let tagOption = this.answers.find(answer => answer.label === text);
     if (e.target && e.target.getAttribute && e.target.getAttribute('id')) {
-      switch (e.target.getAttribute('id')) {
-        case "target-container":
-          if (this.targetAnswers.findIndex(answer => answer.label === text) === -1) {
-            this.targetAnswers.push(tagOption);
-            let index = this.displayedAnswers.findIndex(answer => answer.label === text);
-            if (index > -1) {
-              this.displayedAnswers.splice(index, 1); // Remove one item only
-            }
-            index = this.matchesAnswers.findIndex(answer => answer.label === text);
-            if (index > -1) {
-              this.matchesAnswers.splice(index, 1); // Remove one item only
-            }
-          }
-        break;
-        case "matches-container":
-          if (this.matchesAnswers.findIndex(answer => answer.label === text) === -1) {
-            this.matchesAnswers.push(tagOption);
-            let index = this.displayedAnswers.findIndex(answer => answer.label === text);
-            if (index > -1) {
-              this.displayedAnswers.splice(index, 1); // Remove one item only
-            }
-            index = this.targetAnswers.findIndex(answer => answer.label === text);
-            if (index > -1) {
-              this.targetAnswers.splice(index, 1); // Remove one item only
-            }
-          }
-        break;
-        case "possible-container":
+      console.log(e.target.getAttribute('id').split('-')[0]);
+      switch (e.target.getAttribute('id').split('-')[0]) {
+        case "possible":
           if (this.displayedAnswers.findIndex(answer => answer.label === text) === -1) {
             this.displayedAnswers.push(tagOption);
             let index = this.targetAnswers.findIndex(answer => answer.label === text);
@@ -273,6 +242,28 @@ class MatchingQuestion extends QuestionElement {
               this.matchesAnswers.splice(index, 1); // Remove one item only
             }
           }
+        break;
+        case "match":
+          // we have a drop event on a match. put it in the right listing
+          let guess = e.target.getAttribute('id').split('-')[1];
+          tagOption.guess = parseInt(guess);
+          let index = this.targetAnswers.findIndex(answer => answer.label === text);
+          if (index > -1) {
+            this.targetAnswers.splice(index, 1); // Remove one item only
+          }
+          index = this.displayedAnswers.findIndex(answer => answer.label === text);
+          if (index > -1) {
+            this.displayedAnswers.splice(index, 1); // Remove one item only
+          }
+          index = this.matchesAnswers.findIndex(answer => answer.label === text);
+          if (index > -1) {
+            this.matchesAnswers.splice(index, 1); // Remove one item only
+          }
+          this.matchesAnswers.push(tagOption);
+        break;
+        
+        case "target":
+
         break;
       }
       this.requestUpdate();
@@ -288,9 +279,10 @@ class MatchingQuestion extends QuestionElement {
     return {
       ...super.properties,
       dragging: { type: Boolean, reflect: true },
-      dragEnter: { type: Boolean, reflect: true, attribute: "drag-enter"},
-      dragEnterMatches: { type: Boolean, reflect: true, attribute: "drag-enter-matches"},
-      dragEnterTarget: { type: Boolean, reflect: true, attribute: "drag-enter-target"},
+      dragEnter: { type: Boolean, reflect: true, attribute: "drag-enter" },
+      dragEnterMatches: { type: Boolean, reflect: true, attribute: "drag-enter-matches" },
+      dragEnterTarget: { type: Boolean, reflect: true, attribute: "drag-enter-target" },
+      matchTarget: { type: Boolean, reflect: true, attribute: "match-target" },
       matchesAnswers: { type: Array },
       targetAnswers: { type: Array },
     }
