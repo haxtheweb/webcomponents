@@ -26,16 +26,13 @@ class MediaQuote extends DDD {
     super();
     
     // Media Item (Img)
-    this.mediaSrc = '';
-    this.mediaAlt = '';
+    this.src = '';
+    this.alt = '';
     this.caption = '';
     
     // Citation
     this.author = '';
-    this.authorProfession = '';
-
-    // Color
-    this.dataPrimary;
+    this.authorDetail = '';
   }
 
   static get styles() {
@@ -43,6 +40,10 @@ class MediaQuote extends DDD {
       super.styles,
         css`
           /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
+          :host {
+            display: block;
+          }
+          
           .media-quote-container {
             font-family: var(--ddd-font-primary);
             display: flex;
@@ -58,7 +59,6 @@ class MediaQuote extends DDD {
             padding: var(--ddd-spacing-0) var(--ddd-spacing-3);
             font-style: italic;
             width: 30%;
-            box-decoration-break: clone;
             font-size: var(--ddd-font-size-ms);
             position: absolute;
             top: 20%;
@@ -70,19 +70,21 @@ class MediaQuote extends DDD {
           }
 
           .content, .citation {
-            background-color: var(--ddd-theme-default-beaverBlue);
             padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
+            background-color: var(--ddd-theme-default-beaverBlue);
           }
 
           .citation {
+            margin-top: var(--ddd-spacing-4);
             display: inline-block;
             font-style: italic;
-            font-size: 0;
+            font-size: 0; /* Prevents a space between author and authorDetail comma on both sides */
+            box-decoration-break: clone;
           }
             .author {
-              font-weight: bold; /* var(--ddd-font-primary-bold) */
+              font-weight: var(--ddd-font-weight-bold);
             }
-            .author, .author-profession {
+            .author, .author-detail {
               font-size: var(--ddd-font-size-xxs);
             }
 
@@ -98,32 +100,50 @@ class MediaQuote extends DDD {
           figcaption {
             color: var(--ddd-theme-default-beaverBlue);
             width: 100%;
-            border-top: solid;
-            border-color: var(--ddd-theme-default-beaverBlue);
+            border-top: var(--ddd-border-lg);
             margin-top: var(--ddd-spacing-1);
             padding-top: var(--ddd-spacing-1);
           }
+
+          /* @media screen and (max-width: 1550px) and (min-width: 1350px) {
+            .quote {
+              font-size: var(--ddd-font-size-xs);
+            }
+
+            .author, .author-detail {
+              font-size: var(--ddd-font-size-xxs);
+            }
+          }
+
+          @media screen and (max-width: 1349px) and (min-width: 1000px) {
+            .quote {
+              position: relative;
+              width: 100%;
+              top: 0%;
+              left: 0%;
+            }
+          } */
       `,];
   }
 
   render() {
     return html`
-        <div class='media-quote-container'>
+        <div class="media-quote-container">
           <figure>
-            <div class='text-overlay'> 
-              <p class='quote'>
-                <span class='content'><slot></slot></span> <br> <br>
+            <div class="text-overlay"> 
+              <p class="quote">
+                <span class="content"><slot></slot></span>
                 ${this.author !== '' ? html`
-                  <span class='citation'>
-                    <span class='author'>${this.author}</span> 
-                      ${this.authorProfession !== '' ? html`
-                        <span class='author-profession'>, ${this.authorProfession}</span>
+                  <span class="citation">
+                    <span class="author">- ${this.author}</span> 
+                      ${this.authorDetail !== '' ? html`
+                        <span class="author-detail">, ${this.authorDetail}</span>
                       ` : ''}
                   </span>
                 ` : ''}
               </p>  
             </div>
-            <img src="${this.mediaSrc}" alt="${this.mediaAlt}">
+            <img src="${this.src}" alt="${this.alt}">
             ${this.caption !== '' ? html`<figcaption>${this.caption}</figcaption>` : ''}
           </figure>
         </div>
@@ -133,30 +153,22 @@ class MediaQuote extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      mediaSrc: {
+      src: {
         type: String,
-        attribute: "media-src",
       },
-      mediaAlt: {
+      alt: {
         type: String,
-        attribute: "media-alt",
       },
       caption: {
         type: String,
-        attribute: "caption",
       },
       author: {
         type: String,
-        attribute: "author",
       },
-      authorProfession: {
+      authorDetail: {
         type: String,
-        attribute: "author-profession",
+        attribute: "author-detail",
       },
-      dataPrimary: {
-        type: Number, // may need to change to string
-        attribute: "data-primary",
-      }
     }
   }
 
