@@ -142,6 +142,7 @@ class MatchingQuestion extends QuestionElement {
     let data = super.processInput(index, inputs);
     // implies previous index is the matching target
     if (data.correct === false) {
+      data.matchOption = true;
       // look back until we find a target
       for (let i=priorData.length; i>=0; i--) {
         if (!data.match && priorData[i] && priorData[i].target === true) {
@@ -166,7 +167,12 @@ class MatchingQuestion extends QuestionElement {
         <tbody>
       ${this.answers.filter(answer => answer.target).map(answer => html`
       <tr class="matches-container">
-        <td class="target">${answer.label}</td>
+        ${!this.matchTarget ? html`<td class="target">${answer.label}</td>` : html`
+        <td class="target" id="target-${answer.order}" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswerMatches}">
+        ${this.matchesAnswers.filter(tag => tag.guess === answer.order).map(tagOption => html`
+          <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
+        `)}
+        </td>`}
         <td class="match" id="match-${answer.order}" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswerMatches}">
         ${this.matchesAnswers.filter(tag => tag.guess === answer.order).map(tagOption => html`
           <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
@@ -177,7 +183,7 @@ class MatchingQuestion extends QuestionElement {
       </tbody>
         </table>
       <div id="possible-container" class="possible" @drop="${this.handleDrop}" @dragover="${this.allowDrop}">
-      ${this.displayedAnswers.filter(answer => !this.matchTarget ? answer.match : true).map(tagOption => html`
+      ${this.displayedAnswers.filter(answer => !this.matchTarget ? answer.matchOption : true).map(tagOption => html`
         <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
       `)}
     </div>
