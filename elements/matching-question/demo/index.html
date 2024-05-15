@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>MatchingQuestion: matching-question Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../matching-question.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic matching-question demo</h3>
+      <demo-snippet>
+        <template>
+          <matching-question question="Name the heavenly bodies">
+            <input correct value="Planet" />
+            <input value="Mars" />
+            <input value="Earth" />
+            <input value="Mercury" />
+            <input value="Venus" />
+            <input correct value="Star" />
+            <input value="Sun" />
+            <input value="Alpha Sentary" />
+            <input correct value="Space junk" />
+            <input value="Tesla" />
+            <input value="Tesla2" />
+          </matching-question>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

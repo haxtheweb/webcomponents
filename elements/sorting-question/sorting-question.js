@@ -1,45 +1,38 @@
 // dependencies / things imported
-import { LitElement, html, css } from "lit";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { html, css, nothing } from "lit";
+import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "./lib/sorting-option.js";
 
-// @TODO
-// - use user scaffolding to automatically open directions first if you have not tried this activity before
-//   otherwise it will default to the related content being open if that's there
-// - pull in input elements, use their data just like in questionElement and conform it here
-//   .map in custom render that writes the sorting options to the page; they are unique and required
-// - on save / convert to store in HAX, we need to use a hook to that we put things in the correct order for saving
-// - on other question types, ensure feedback flows back there if individual per response
-// - Max attempts setting that SHOWS # of attempts remaining with a disabled "Reveal answer" button
-// - normalize feedback into QuestionElement
-
-export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
+export class SortingQuestion extends QuestionElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "sorting-question";
   }
 
+  // get the options directly off the UI. This will help in providing them in the correct order as well
+  // this is definitely an anti pattern for us but displayedAnswers is effectively just setting the INITIAL
+  // display order while the user then actively manipulates the shadow rendered data.
   getOptions(flag = '') {
-    if (flag) {
-      return this.querySelectorAll(`sorting-option[${flag}]`);
-    }
-    else {
-      return this.querySelectorAll('sorting-option');
+    if (this.shadowRoot) {
+      if (flag) {
+        return this.shadowRoot.querySelectorAll(`sorting-option[${flag}]`);
+      }
+      else {
+        return this.shadowRoot.querySelectorAll('sorting-option');
+      }
     }
   }
 
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
-    this.numberOfOptions = this.getOptions().length;
+    // inputs which will show up in answers but sorting question is a bit odd
+    this.randomize = true;
     this.numberCorrrect = 0;
-    this.correctOrder = [];
     this.hasHint = this.querySelector('[slot="hint"]');
     this.hasContent = this.querySelector('[slot="content"]');
     this.hasFeedbackCorrect = this.querySelector('[slot="feedbackCorrect"]');
@@ -56,6 +49,9 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       checkAnswer: "Check answer",
       tryAgain: "Try again",
     };
+    // @todo this needs refactored when we move to QuestionElement
+    this.checkLabel = "Check answer";
+    this.resetLabel = "Try again";
     this.registerLocalization({
       context: this,
       localesPath:
@@ -63,43 +59,6 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         "/../",
       locales: ["he", "ja", "es"],
     });
-    //set order to be orginal order then scramble the options
-    this.getCorrectOrder();
-    setTimeout(this.randomizeOptions(), 0);
-  }
-
-  getCorrectOrder() {
-    this.getOptions().forEach((child) => {
-      this.correctOrder.push(child);
-    });
-  }
-
-  randomizeOptions() {
-    //loop through number of options and randomize their indexes
-    let indexValues = [];
-    for (var i = 0; i < this.numberOfOptions; i++) {
-      indexValues.push(i);
-    }
-
-    for (var i = 0; i < this.numberOfOptions; i++) {
-      var randomIndex1 = Math.floor(
-        Math.random() * (this.numberOfOptions - 0) + 0,
-      );
-      if (randomIndex1 === undefined) {
-        randomIndex1 = 0;
-      }
-
-      let targetChild = this.getOptions()[indexValues[randomIndex1]];
-
-      var randomIndex2 = Math.floor(
-        Math.random() * (indexValues.length - 0) + 0,
-      );
-      if (randomIndex2 === undefined) {
-        randomIndex2 = 0;
-      }
-
-      this.insertBefore(targetChild, this.getOptions()[indexValues[randomIndex2]]);
-    }
   }
 
   checkAnswer() {
@@ -129,10 +88,15 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       child.incorrect = null;
       child.correct = null;
     });
-    let gotRight = (this.numberCorrrect === this.numberOfOptions);
+    let gotRight = (this.numberCorrrect === this.answers.length);
     // if we got it right, reset the whole interaction in case they want to take it again
     if (gotRight) {
-      this.randomizeOptions();
+      this.displayedAnswers = [];
+      this.answers.forEach((el) => {
+        el.userGuess = "";
+      });
+      const answers = JSON.parse(JSON.stringify(this.answers));
+      this.answers = [...answers];
     }
     this.numberCorrrect = 0;
   }
@@ -141,28 +105,10 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
   static get properties() {
     return {
       ...super.properties,
-      hasHint: { type: Boolean },
-      hasContent: { type: Boolean },
-      hasFeedbackIncorrect: { type: Boolean },
-      hasFeedbackCorrect: { type: Boolean },
-      hasEvidence: { type: Boolean },
-      showAnswer: { type: Boolean},
-      question: { type: String },
-      correctOrder: { type: Array },
-      numberOfOptions: { type: Number },
       numberCorrrect: { type: Number },
-      disabled: { type: Boolean },
     };
   }
 
-  // fire event about wanting to play a sound
-  playSound(sound) {
-    globalThis.dispatchEvent(new CustomEvent('playaudio', {
-      detail: {
-        sound: sound
-      }
-    }));
-  }
   // updated fires every time a property defined above changes
   // this allows you to react to variables changing and use javascript to perform logic
   updated(changedProperties) {
@@ -174,8 +120,8 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         if (this.showAnswer) {
           var numCorrect = 0;
           let children = this.getOptions();
-          for (var i = 0; i < this.numberOfOptions; i++) {
-            if (children[i].isEqualNode(this.correctOrder[i])) {
+          for (var i = 0; i < this.answers.length; i++) {
+            if (children[i].innerText === this.answers[i].label && i === this.answers[i].order) {
               numCorrect += 1;
               children[i].correct = true;
               children[i].incorrect = null;
@@ -204,27 +150,20 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
               this.shadowRoot.querySelector("#feedback").focus();
             }, 0);
           }
-          let gotRight = (this.numberCorrrect === this.numberOfOptions);
+          let gotRight = (this.numberCorrrect === this.answers.length);
           // see if they got this correct based on their answers
           if (gotRight) {
             this.playSound('success');
             this.__toastColor = "green";
             this.__toastIcon = this.correctIcon;
             this.__toastText = this.correctText;
-            // make it fun... and performant!
-            import(
-              "@lrnwebcomponents/multiple-choice/lib/confetti-container.js"
-            ).then((module) => {
-              setTimeout(() => {
-                this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
-              }, 0);
-            });
+            this.makeItRain();
             extras.hat = "party";
           } else {
             this.playSound('error');
             this.__toastColor = "red";
             this.__toastIcon = this.incorrectIcon;
-            this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrrect} of ${this.numberOfOptions} ${this.t.numCorrectRight}`;
+            this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrrect} of ${this.answers.length} ${this.t.numCorrectRight}`;
             extras.fire = true;
           }
           si.icon = this.__toastIcon;
@@ -362,11 +301,26 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         font-weight: bold;
         text-align: center;
       }
+      sorting-option img {
+        border: var(--ddd-border-sm);
+        border-radius: var(--ddd-radius-sm);
+        box-shadow: var(--ddd-boxShadow-sm);
+        margin-right: var(--ddd-spacing-4);
+      }
     `
     ];
   }
-
-  // HTML - specific to Lit
+  // render the area the user will interact with the question
+  // our default implementation is a multiple-choice element
+  renderInteraction() {
+    return html`
+      <fieldset class="options">
+      ${this.displayedAnswers.map(
+        (answer) => html`<sorting-option ?disabled="${this.disabled}">${answer.image ? html`<img src="${answer.image}" alt="${answer.alt}"/>` : nothing}${answer.label}</sorting-option>`
+      )}
+    </fieldset>
+    `;
+  }
   render() {
     return html`
       <meta property="oer:assessing" content="${this.relatedResource}" />
@@ -374,70 +328,96 @@ export class SortingQuestion extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         <grid-plate layout="1-1">
           <div slot="col-1">
             <h3 property="oer:name">${this.question}</h3>
-            <fieldset class="options"><slot></slot></fieldset>
-            <div id="buttons">
-              <simple-toolbar-button
-                id="check"
-                ?disabled="${this.disabled || this.showAnswer}"
-                @click="${this.checkAnswer}"
-                label="${this.t.checkAnswer}">
-              </simple-toolbar-button>
-              <simple-toolbar-button
-                id="reset"
-                ?disabled="${this.disabled || !this.showAnswer}"
-                @click="${this.resetAnswer}"
-                label="${this.t.tryAgain}">
-              </simple-toolbar-button>
-            </div>
+            ${this.renderInteraction()}
+            ${!this.hideButtons ? this.renderButtons() : ``}
           </div>
           <div slot="col-2">
-            <details ?open="${!this.hasContent}" id="directions">
+            <details tabindex="${this.disabled ? "-1" : ""}" ?disabled="${this.disabled}" ?open="${!this.hasContent}" id="directions">
               <summary>Directions</summary>
               <div>
-                <p>Place the items in the correct order either by clicking the up and down arrows or drag and drop.
-                  When you believe you have them in the correct order, test your answer by selecting <strong>${this.t.checkAnswer}</strong>.
-                  You will get feedback just below here indicating correctness of your answer.
-                </p>
+                ${this.renderDirections()}
               </div>
             </details>
             ${this.hasContent ? html`
-            <details ?open="${!this.showAnswer}" id="related">
+            <details tabindex="${this.disabled ? "-1" : ""}" ?disabled="${this.disabled}" ?open="${!this.showAnswer}" id="related">
               <summary>Related content</summary>
               <div>
                 <slot name="content"></slot>
               </div>
             </details>` : ``}
-            <details tabindex="${!this.showAnswer ? "-1" : ""}" ?disabled="${!this.showAnswer}" ?open="${this.showAnswer}">
+            <details tabindex="${!this.showAnswer || this.disabled ? "-1" : ""}" ?disabled="${!this.showAnswer || this.disabled}" ?open="${this.showAnswer}">
               <summary id="feedback">Feedback</summary>
               <div>
-                ${this.showAnswer && this.numberCorrrect !== this.numberOfOptions ? html`
-                <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrrect}/${this.numberOfOptions} ${this.t.numCorrectRight}</p>
-                ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
-                ${this.showAnswer && this.numberCorrrect === this.numberOfOptions ? html`
-                <p class="feedback">${this.correctText}</p>
-                ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
-                  ${this.hasHint && this.showAnswer && this.numberCorrrect !== this.numberOfOptions ? html`
-                    <h4>Need a hint?</h4>
-                    <div>
-                      <slot name="hint"></slot>
-                    </div>
-                  ` : ``}
-                  ${this.hasEvidence && this.showAnswer && this.numberCorrrect === this.numberOfOptions  ? html`
-                    <h4>Evidence</h4>
-                    <div>
-                      <slot name="evidence"></slot>
-                    </div>
-                  ` : ``}
-                  <simple-toolbar-button
-                    ?disabled="${this.disabled || !this.showAnswer}"
-                    @click="${this.resetAnswer}"
-                    label="${this.t.tryAgain}">
-                  </simple-toolbar-button>
+                ${this.renderFeedback()}
               </div>
             </details>
           </div>
         </grid-plate>
       </confetti-container>
+    `;
+  }
+  // the case for whether or not this is inactive based on user input
+  inactiveCase() {
+    // due to the odd nature of this, the 1st supplies option COULD be in the right order
+    // as a result we ALWAYS want to be active case
+    return true;
+  }
+
+  renderButtons() {
+    return html`
+    <div id="buttons">
+      <simple-toolbar-button
+        id="check"
+        ?disabled="${this.disabled || !this.inactiveCase() || this.showAnswer}"
+        @click="${this.checkAnswer}"
+        label="${this.checkLabel}"
+      >
+      </simple-toolbar-button>
+      <simple-toolbar-button
+        id="reset"
+        ?disabled="${this.disabled || !this.inactiveCase() || (this.inactiveCase() && !this.showAnswer)}"
+        @click="${this.resetAnswer}"
+        label="${this.resetLabel}"
+      >
+      </simple-toolbar-button>
+    </div>
+  `;
+  }
+
+  // this manages the directions that are rendered and hard coded for the interaction
+  renderDirections() {
+    return html`<p>Place the items in the correct order either by clicking the up and down arrows or drag and drop.
+    When you believe you have them in the correct order, test your answer by selecting <strong>${this.t.checkAnswer}</strong>.
+    You will get feedback just below here indicating correctness of your answer.
+  </p>`;
+  }
+
+  // this manages the output of the feedback area
+  renderFeedback() {
+    return html`
+    ${this.showAnswer && this.numberCorrrect !== this.answers.length ? html`
+    <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrrect}/${this.answers.length} ${this.t.numCorrectRight}</p>
+    ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
+    ${this.showAnswer && this.numberCorrrect === this.answers.length ? html`
+    <p class="feedback">${this.correctText}</p>
+    ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
+      ${this.hasHint && this.showAnswer && this.numberCorrrect !== this.answers.length ? html`
+        <h4>Need a hint?</h4>
+        <div>
+          <slot name="hint"></slot>
+        </div>
+      ` : ``}
+      ${this.hasEvidence && this.showAnswer && this.numberCorrrect === this.answers.length  ? html`
+        <h4>Evidence</h4>
+        <div>
+          <slot name="evidence"></slot>
+        </div>
+      ` : ``}
+      <simple-toolbar-button
+        ?disabled="${this.disabled || !this.showAnswer}"
+        @click="${this.resetAnswer}"
+        label="${this.t.tryAgain}">
+      </simple-toolbar-button>
     `;
   }
 
