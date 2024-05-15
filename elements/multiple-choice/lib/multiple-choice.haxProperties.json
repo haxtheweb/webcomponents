@@ -83,18 +83,6 @@
     ],
     "advanced": [
       {
-        "property": "checkLabel",
-        "title": "Check answers label",
-        "description": "Label for getting solution feedback",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "resetLabel",
-        "title": "Reset label",
-        "description": "label for the reset button",
-        "inputMethod": "textfield"
-      },
-      {
         "property": "quizName",
         "title": "Name of the quiz",
         "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",

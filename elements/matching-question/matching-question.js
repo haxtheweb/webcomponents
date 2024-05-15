@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
  * `matching-question`
@@ -23,6 +24,23 @@ class MatchingQuestion extends QuestionElement {
     return [
       super.styles,
       css`
+
+      :host {
+        display: block;
+      }
+
+      simple-icon-button-lite {
+        right: 0;
+        top: 0;
+        display: block;
+        position: absolute;
+        padding: var(--ddd-spacing-2);
+      }
+      label {
+        margin-top: var(--ddd-spacing-6);
+        margin-bottom: var(--ddd-spacing-4);
+        display: block;
+      }
       
       #target-container {
         transition: all .3s ease-in-out;
@@ -31,11 +49,17 @@ class MatchingQuestion extends QuestionElement {
         background-color: light-dark(var(--simple-colors-default-theme-grey-2),var(--simple-colors-default-theme-grey-10));
       }
 
-      .targets .target {
+      .target {
         height: 100px;
+        padding: 4px;
       }
-      .matches .match {
+      .match {
         min-height: 100px;
+        padding: 4px;
+      }
+
+      .tag-option {
+        margin: 4px;
       }
 
       #matches-container {
@@ -58,8 +82,8 @@ class MatchingQuestion extends QuestionElement {
       }
 
       :host([show-answer]) .tag-option {
-        cursor: unset;
-      }
+          cursor: unset;
+        }
 
       :host(:not([show-answer])) .tag-option:hover, :host(:not([show-answer])) .tag-option:focus {
         background-color: var(--simple-colors-default-theme-grey-3);
@@ -71,6 +95,10 @@ class MatchingQuestion extends QuestionElement {
 
       .tag-option.incorrect {
         outline: 4px solid var(--ddd-theme-default-original87Pink);
+      }
+
+      :host([show-answer]) .tag-option {
+        cursor: unset;
       }
 
       :host([dragging]) #user-choice-container {
@@ -114,6 +142,7 @@ class MatchingQuestion extends QuestionElement {
         padding: var(--ddd-spacing-2);
         border: var(--ddd-border-sm);
         margin: 0;
+        width: 50%;
       }
       tr {
         margin: 0;
@@ -127,12 +156,13 @@ class MatchingQuestion extends QuestionElement {
    */
   constructor() {
     super();
-    this.guessDataValue = "matchesAnswers";
+    this.guessDataValue = "matchAnswers";
+    this.__tagOption = {};
     this.dragEnter = false;
     this.dragEnterMatches = false;
     this.dragEnterTarget = false;
     this.dragging = false;
-    this.matchesAnswers = [];
+    this.matchAnswers = [];
     this.targetAnswers = [];
     // allow for requiring the user to place the targets in the right place as well
     this.matchTarget = false;
@@ -146,7 +176,7 @@ class MatchingQuestion extends QuestionElement {
       // look back until we find a target
       for (let i=priorData.length; i>=0; i--) {
         if (!data.match && priorData[i] && priorData[i].target === true) {
-          data.match = inputs[i].value;
+          data.match = priorData[i].order;
         }
       }
     }
@@ -156,8 +186,86 @@ class MatchingQuestion extends QuestionElement {
     return data;
   }
 
+  resetAnswer() {
+    this.showAnswer = false;
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-toast-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: false,
+      }),
+    );
+    if (this.isCorrect()) {
+      this.displayedAnswers = [];
+      this.matchAnswers = [];
+      const answers = JSON.parse(JSON.stringify(this.answers));
+      this.answers = [...answers];
+    }
+  }
+
+  isCorrect() {
+    let gotRight = true;
+    for (var i=0; i< this.matchAnswers.length; i++) {
+      // if the match index does not line up with the guess index we got it wrong
+      if (this.matchAnswers[i].guess !== this.matchAnswers[i].match) {
+        gotRight = false;
+        this.matchAnswers[i].correct = false;
+      }
+      else {
+        this.matchAnswers[i].correct = true;
+      }
+    }
+    // this implies we left correct answers off the table
+    // we don't show correctness though when not in matchAnswers tho
+    for (var i=0; i< this.displayedAnswers.length; i++) {
+      if (this.displayedAnswers[i].match) {
+        gotRight = false;
+      }
+    }
+    return gotRight;
+  }
+
+  selectTargetChange(e) {
+    let order = parseInt(e.target.value);
+    this.__tagOption.guess = order;
+    let index = this.matchAnswers.findIndex(answer => answer.order === this.__tagOption.order);
+    if (index > -1) {
+      this.matchAnswers.splice(index, 1); // Remove one item only
+    }
+    index = this.displayedAnswers.findIndex(answer => answer.order === this.__tagOption.order);
+    if (index > -1) {
+      this.displayedAnswers.splice(index, 1); // Remove one item only
+    }
+    if (e.target.value === '') {
+      this.__tagOption.guess = null;
+      this.displayedAnswers.push(this.__tagOption);
+    }
+    else {
+      this.matchAnswers.push(this.__tagOption);
+    }
+    this.__tagOption = {guess: null};
+    let options = Array.from(this.shadowRoot.querySelectorAll("#selecttarget option"));
+    for (var i in options) {
+      options[i].removeAttribute('selected');
+    }
+    setTimeout(() => {
+      this.shadowRoot.querySelector(`#selecttarget option[value=""]`).setAttribute('selected', 'selected');
+    }, 0);
+    this.shadowRoot.querySelector('#selecttarget').close();
+    this.requestUpdate();
+  }
+
   renderInteraction() {
     return html`
+    <dialog id="selecttarget">
+      <simple-icon-button-lite icon="close" @click="${() => {this.shadowRoot.querySelector('#selecttarget').close()}}">Close</simple-icon-button-lite>
+      <label>Match <em>${this.__tagOption.label}</em> to:</label>
+      <select @change="${this.selectTargetChange}" autofocus>
+        <option value="">-- Possible options --</option>
+        ${this.answers.filter(answer => answer.target).map(answer => html`<option value="${answer.order}">${answer.label}</option>`)}
+      </select>
+    </dialog>
     <div class="option-container">
       <table class="top">
         <thead>
@@ -169,13 +277,13 @@ class MatchingQuestion extends QuestionElement {
       <tr class="matches-container">
         ${!this.matchTarget ? html`<td class="target">${answer.label}</td>` : html`
         <td class="target" id="target-${answer.order}" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswerMatches}">
-        ${this.matchesAnswers.filter(tag => tag.guess === answer.order).map(tagOption => html`
-          <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
+        ${this.matchAnswers.filter(tag => tag.guess === answer.order).map(tagOption => html`
+          <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option ${this.showAnswer ? (tagOption.correct ? 'correct' : 'incorrect') : ''}" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${(e) => this.handleTagClick(tagOption, e)}">${tagOption.label}</button>
         `)}
         </td>`}
         <td class="match" id="match-${answer.order}" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswerMatches}">
-        ${this.matchesAnswers.filter(tag => tag.guess === answer.order).map(tagOption => html`
-          <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
+        ${this.matchAnswers.filter(tag => tag.guess === answer.order).map(tagOption => html`
+          <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option ${this.showAnswer ? (tagOption.correct ? 'correct' : 'incorrect') : ''}" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${(e) => this.handleTagClick(tagOption, e)}">${tagOption.label}</button>
         `)}
         </td>
       </tr>
@@ -184,7 +292,7 @@ class MatchingQuestion extends QuestionElement {
         </table>
       <div id="possible-container" class="possible" @drop="${this.handleDrop}" @dragover="${this.allowDrop}">
       ${this.displayedAnswers.filter(answer => !this.matchTarget ? answer.matchOption : true).map(tagOption => html`
-        <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>
+        <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${(e) => this.handleTagClick(tagOption, e)}">${tagOption.label}</button>
       `)}
     </div>
   </div>`;
@@ -233,43 +341,40 @@ class MatchingQuestion extends QuestionElement {
     this.dragEnterMatches = false;
     const text = e.dataTransfer.getData("text/plain");
     let tagOption = this.answers.find(answer => answer.label === text);
-    if (e.target && e.target.getAttribute && e.target.getAttribute('id')) {
-      console.log(e.target.getAttribute('id').split('-')[0]);
-      switch (e.target.getAttribute('id').split('-')[0]) {
+    let guess, index;
+    let target = e.target;
+    // resolve drop onto a button element in the listing already
+    if (target.tagName === "BUTTON") {
+      target = target.parentNode;
+    }
+    if (target && target.getAttribute && target.getAttribute('id')) {
+      switch (target.getAttribute('id').split('-')[0]) {
         case "possible":
-          if (this.displayedAnswers.findIndex(answer => answer.label === text) === -1) {
-            this.displayedAnswers.push(tagOption);
-            let index = this.targetAnswers.findIndex(answer => answer.label === text);
-            if (index > -1) {
-              this.targetAnswers.splice(index, 1); // Remove one item only
-            }
-            index = this.matchesAnswers.findIndex(answer => answer.label === text);
-            if (index > -1) {
-              this.matchesAnswers.splice(index, 1); // Remove one item only
-            }
-          }
-        break;
-        case "match":
           // we have a drop event on a match. put it in the right listing
-          let guess = e.target.getAttribute('id').split('-')[1];
-          tagOption.guess = parseInt(guess);
-          let index = this.targetAnswers.findIndex(answer => answer.label === text);
-          if (index > -1) {
-            this.targetAnswers.splice(index, 1); // Remove one item only
-          }
+          tagOption.guess = null;
           index = this.displayedAnswers.findIndex(answer => answer.label === text);
           if (index > -1) {
             this.displayedAnswers.splice(index, 1); // Remove one item only
           }
-          index = this.matchesAnswers.findIndex(answer => answer.label === text);
+          index = this.matchAnswers.findIndex(answer => answer.label === text);
           if (index > -1) {
-            this.matchesAnswers.splice(index, 1); // Remove one item only
+            this.matchAnswers.splice(index, 1); // Remove one item only
           }
-          this.matchesAnswers.push(tagOption);
+          this.displayedAnswers.push(tagOption);
         break;
-        
-        case "target":
-
+        case "match":
+          // we have a drop event on a match. put it in the right listing
+          guess = target.getAttribute('id').split('-')[1];
+          tagOption.guess = parseInt(guess);
+          index = this.displayedAnswers.findIndex(answer => answer.label === text);
+          if (index > -1) {
+            this.displayedAnswers.splice(index, 1); // Remove one item only
+          }
+          index = this.matchAnswers.findIndex(answer => answer.label === text);
+          if (index > -1) {
+            this.matchAnswers.splice(index, 1); // Remove one item only
+          }
+          this.matchAnswers.push(tagOption);
         break;
       }
       this.requestUpdate();
@@ -277,8 +382,21 @@ class MatchingQuestion extends QuestionElement {
   }
   
   
-  handleTagClick(targetTag) {
-    alert('need to do a popover menu up');
+  handleTagClick(tagOption, e) {
+    this.__tagOption = {...tagOption};
+    let options = Array.from(this.shadowRoot.querySelectorAll("#selecttarget option"));
+    for (var i in options) {
+      options[i].removeAttribute('selected');
+    }
+    // buggy assessment of selected so we have to manually build it
+    // @todo need to switch this to use .selectedIndex
+    if (tagOption.guess) {
+      this.shadowRoot.querySelector(`#selecttarget option[value="${tagOption.guess}"]`).setAttribute('selected', 'selected');
+    }
+    else {
+      this.shadowRoot.querySelector(`#selecttarget option[value=""]`).setAttribute('selected', 'selected');
+    }
+    this.shadowRoot.querySelector('#selecttarget').showModal();
   }
 
   static get properties() {
@@ -289,8 +407,9 @@ class MatchingQuestion extends QuestionElement {
       dragEnterMatches: { type: Boolean, reflect: true, attribute: "drag-enter-matches" },
       dragEnterTarget: { type: Boolean, reflect: true, attribute: "drag-enter-target" },
       matchTarget: { type: Boolean, reflect: true, attribute: "match-target" },
-      matchesAnswers: { type: Array },
+      matchAnswers: { type: Array },
       targetAnswers: { type: Array },
+      __tagOption: { type: Object },
     }
   }
 
