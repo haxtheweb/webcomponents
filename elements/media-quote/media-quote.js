@@ -28,11 +28,6 @@ class MediaQuote extends DDD {
     // Media Item (Img)
     this.src = '';
     this.alt = '';
-    this.caption = '';
-    
-    // Citation
-    this.author = '';
-    this.authorDetail = '';
   }
 
   static get styles() {
@@ -71,7 +66,7 @@ class MediaQuote extends DDD {
 
           .content, .citation {
             padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
-            background-color: var(--ddd-theme-default-beaverBlue);
+            background-color: var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue, var(--ddd-primary-1)));
           }
 
           .citation {
@@ -123,6 +118,8 @@ class MediaQuote extends DDD {
               left: 0%;
             }
           } */
+
+          /* Attempt using @container instead of @media, which I saw in accent-card.js */
       `,];
   }
 
@@ -132,19 +129,19 @@ class MediaQuote extends DDD {
           <figure>
             <div class="text-overlay"> 
               <p class="quote">
-                <span class="content"><slot></slot></span>
-                ${this.author !== '' ? html`
-                  <span class="citation">
-                    <span class="author">- ${this.author}</span> 
-                      ${this.authorDetail !== '' ? html`
-                        <span class="author-detail">, ${this.authorDetail}</span>
+                <span class="content"><slot name="quote"></slot></span>
+                  ${this.querySelector('[slot="author"]') && this.querySelector('[slot="author"]').textContent.trim().length > 0 ? html`
+                    <span class="citation">
+                      <span class="author">- <slot name="author"></slot></span> 
+                      ${this.querySelector('[slot="author-detail"]') && this.querySelector('[slot="author-detail"]').textContent.trim().length > 0 ? html`
+                        <span class="author-detail">, <slot name="author-detail"></slot></span>
                       ` : ''}
-                  </span>
-                ` : ''}
+                    </span>
+                  ` : ''}
               </p>  
             </div>
             <img src="${this.src}" alt="${this.alt}">
-            ${this.caption !== '' ? html`<figcaption>${this.caption}</figcaption>` : ''}
+            ${this.querySelector('[slot="caption"]') && this.querySelector('[slot="caption"]').textContent.trim().length > 0 ? html`<figcaption><slot name="caption"></slot></figcaption>` : ''}
           </figure>
         </div>
     `
@@ -158,16 +155,6 @@ class MediaQuote extends DDD {
       },
       alt: {
         type: String,
-      },
-      caption: {
-        type: String,
-      },
-      author: {
-        type: String,
-      },
-      authorDetail: {
-        type: String,
-        attribute: "author-detail",
       },
     }
   }
