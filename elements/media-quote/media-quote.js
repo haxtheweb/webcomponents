@@ -38,6 +38,7 @@ class MediaQuote extends DDD {
           :host {
             display: block;
             container-name: media-quote;
+            container-type: inline-size;
           }
           
           .media-quote-container {
@@ -57,7 +58,7 @@ class MediaQuote extends DDD {
             width: 30%;
             font-size: var(--ddd-font-size-ms);
             position: absolute;
-            top: 20%;
+            top: 10%;
             left: 15%
           }
 
@@ -122,14 +123,37 @@ class MediaQuote extends DDD {
             }
           } */
 
-          @container media-quote (max-width: 740px) {
+          @container media-quote (max-width: 1261px) and (min-width: 1000px) {
+            .quote {
+              font-size: var(--ddd-font-size-xs);
+            }
+
+            .author, .author-detail {
+              font-size: var(--ddd-font-size-xxs);
+            }
+          }
+
+          @container media-quote (max-width: 999px) {
             .quote {
               position: relative;
-              width: 100%;
+              width: 90%;
               top: 0%;
               left: 0%;
+              font-size: var(--ddd-font-size-xs);
             }
-          } /* Adding change to hopefully fix git */
+
+            .text-overlay {
+              text-align: center;
+            }
+
+            .author, .author-detail {
+              font-size: var(--ddd-font-size-xxs);
+            }
+
+            figure {
+              width: 100%;
+            }
+          }
 
           /* Attempt using @container instead of @media, which I saw in accent-card.js */
       `,];
