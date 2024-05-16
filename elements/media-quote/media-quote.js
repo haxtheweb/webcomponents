@@ -76,7 +76,7 @@ class MediaQuote extends DDD {
             margin-top: var(--ddd-spacing-4);
             display: inline-block;
             font-style: italic;
-            font-size: 0; /* Prevents a space between author and authorDetail comma on both sides */
+            font-size: 0; /* Prevents a space between author and author detail comma on both sides  */
             box-decoration-break: clone;
           }
             .author {
@@ -103,25 +103,6 @@ class MediaQuote extends DDD {
             margin-top: var(--ddd-spacing-1);
             padding-top: var(--ddd-spacing-1);
           }
-
-          /* @media screen and (max-width: 1550px) and (min-width: 1350px) {
-            .quote {
-              font-size: var(--ddd-font-size-xs);
-            }
-
-            .author, .author-detail {
-              font-size: var(--ddd-font-size-xxs);
-            }
-          } */
-
-          /* @media screen and (max-width: 1349px) and (min-width: 1000px) {
-            .quote {
-              position: relative;
-              width: 100%;
-              top: 0%;
-              left: 0%;
-            }
-          } */
 
           @container media-quote (max-width: 1261px) and (min-width: 1000px) {
             .quote {
@@ -154,8 +135,6 @@ class MediaQuote extends DDD {
               width: 100%;
             }
           }
-
-          /* Attempt using @container instead of @media, which I saw in accent-card.js */
       `,];
   }
 
@@ -203,5 +182,6 @@ class MediaQuote extends DDD {
       .href;
   }
 }
+
 globalThis.customElements.define(MediaQuote.tag, MediaQuote);
 export { MediaQuote };
