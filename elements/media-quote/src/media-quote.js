@@ -37,6 +37,7 @@ class MediaQuote extends DDD {
           /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
           :host {
             display: block;
+            container-name: media-quote;
           }
           
           .media-quote-container {
@@ -110,9 +111,9 @@ class MediaQuote extends DDD {
             .author, .author-detail {
               font-size: var(--ddd-font-size-xxs);
             }
-          }
+          } */
 
-          @media screen and (max-width: 1349px) and (min-width: 1000px) {
+          /* @media screen and (max-width: 1349px) and (min-width: 1000px) {
             .quote {
               position: relative;
               width: 100%;
@@ -120,6 +121,15 @@ class MediaQuote extends DDD {
               left: 0%;
             }
           } */
+
+          @container media-quote (max-width: 740px) {
+            .quote {
+              position: relative;
+              width: 100%;
+              top: 0%;
+              left: 0%;
+            }
+          }
 
           /* Attempt using @container instead of @media, which I saw in accent-card.js */
       `,];
