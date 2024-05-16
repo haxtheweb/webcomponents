@@ -169,13 +169,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       si.style.marginLeft = "8px";
     }
     this.showAnswer = true;
-    // regardless, focus the other button since this one will disable
-    // @todo max attempts can come into play here tho im not positive it happens here or on the other side of disabling..
-    if (this.maxAttempts === 0 || this.maxAttempts > this.attempts) {
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#reset").focus();        
-      }, 0);
-    }
+    this.shadowRoot.querySelector("#feedback").focus();
     // see if they got this correct based on their answers
     let toastColor, toastIcon, toastText;
     if (this.isCorrect()) {

@@ -143,13 +143,8 @@ export class SortingQuestion extends QuestionElement {
             si.style.height = "150px";
             si.style.marginLeft = "8px";
           }
-          // regardless, focus the other button since this one will disable
-          // @todo max attempts can come into play here
-          if (!this.maxAttempts) {
-            setTimeout(() => {
-              this.shadowRoot.querySelector("#feedback").focus();
-            }, 0);
-          }
+          // focus feedback when we're done
+          this.shadowRoot.querySelector("#feedback").focus();
           let gotRight = (this.numberCorrrect === this.answers.length);
           // see if they got this correct based on their answers
           if (gotRight) {
