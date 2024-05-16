@@ -849,15 +849,15 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     this._haxstate = value;
   }
 
-    /**
-     * Implements haxHooks to tie into life-cycle if hax exists.
-     */
-    haxHooks() {
-      return {
-        editModeChanged: "haxeditModeChanged",
-        activeElementChanged: "haxactiveElementChanged",
-        preProcessNodeToContent: "haxpreProcessNodeToContent",
-        preProcessInsertContent: "haxpreProcessInsertContent",
-      };
-    }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+      preProcessNodeToContent: "haxpreProcessNodeToContent",
+      preProcessInsertContent: "haxpreProcessInsertContent",
+    };
+  }
 }

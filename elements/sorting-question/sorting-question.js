@@ -32,7 +32,7 @@ export class SortingQuestion extends QuestionElement {
     super();
     // inputs which will show up in answers but sorting question is a bit odd
     this.randomize = true;
-    this.numberCorrrect = 0;
+    this.numberCorrect = 0;
     this.hasHint = this.querySelector('[slot="hint"]');
     this.hasContent = this.querySelector('[slot="content"]');
     this.hasFeedbackCorrect = this.querySelector('[slot="feedbackCorrect"]');
@@ -88,7 +88,7 @@ export class SortingQuestion extends QuestionElement {
       child.incorrect = null;
       child.correct = null;
     });
-    let gotRight = (this.numberCorrrect === this.answers.length);
+    let gotRight = (this.numberCorrect === this.answers.length);
     // if we got it right, reset the whole interaction in case they want to take it again
     if (gotRight) {
       this.displayedAnswers = [];
@@ -98,14 +98,14 @@ export class SortingQuestion extends QuestionElement {
       const answers = JSON.parse(JSON.stringify(this.answers));
       this.answers = [...answers];
     }
-    this.numberCorrrect = 0;
+    this.numberCorrect = 0;
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
   static get properties() {
     return {
       ...super.properties,
-      numberCorrrect: { type: Number },
+      numberCorrect: { type: Number },
     };
   }
 
@@ -131,7 +131,7 @@ export class SortingQuestion extends QuestionElement {
             }
             children[i].disabled = true;
           }
-          this.numberCorrrect = numCorrect;
+          this.numberCorrect = numCorrect;
           let si = document.createElement("simple-icon-lite");
           let extras = {};
           let toastShowEventName = "simple-toast-show";
@@ -145,7 +145,7 @@ export class SortingQuestion extends QuestionElement {
           }
           // focus feedback when we're done
           this.shadowRoot.querySelector("#feedback").focus();
-          let gotRight = (this.numberCorrrect === this.answers.length);
+          let gotRight = (this.numberCorrect === this.answers.length);
           // see if they got this correct based on their answers
           if (gotRight) {
             this.playSound('success');
@@ -158,7 +158,7 @@ export class SortingQuestion extends QuestionElement {
             this.playSound('error');
             this.__toastColor = "red";
             this.__toastIcon = this.incorrectIcon;
-            this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrrect} of ${this.answers.length} ${this.t.numCorrectRight}`;
+            this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrect} of ${this.answers.length} ${this.t.numCorrectRight}`;
             extras.fire = true;
           }
           si.icon = this.__toastIcon;
@@ -390,19 +390,19 @@ export class SortingQuestion extends QuestionElement {
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
-    ${this.showAnswer && this.numberCorrrect !== this.answers.length ? html`
-    <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrrect}/${this.answers.length} ${this.t.numCorrectRight}</p>
+    ${this.showAnswer && this.numberCorrect !== this.answers.length ? html`
+    <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrect}/${this.answers.length} ${this.t.numCorrectRight}</p>
     ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
-    ${this.showAnswer && this.numberCorrrect === this.answers.length ? html`
+    ${this.showAnswer && this.numberCorrect === this.answers.length ? html`
     <p class="feedback">${this.correctText}</p>
     ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
-      ${this.hasHint && this.showAnswer && this.numberCorrrect !== this.answers.length ? html`
+      ${this.hasHint && this.showAnswer && this.numberCorrect !== this.answers.length ? html`
         <h4>Need a hint?</h4>
         <div>
           <slot name="hint"></slot>
         </div>
       ` : ``}
-      ${this.hasEvidence && this.showAnswer && this.numberCorrrect === this.answers.length  ? html`
+      ${this.hasEvidence && this.showAnswer && this.numberCorrect === this.answers.length  ? html`
         <h4>Evidence</h4>
         <div>
           <slot name="evidence"></slot>
