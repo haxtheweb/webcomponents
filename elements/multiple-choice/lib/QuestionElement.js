@@ -27,8 +27,6 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     this.hideButtons = false;
     this.disabled = false;
     this.singleOption = false;
-    this.checkLabel = "Check answer";
-    this.resetLabel = "Try again";
     this.question = "";
     this.answers = [];
     this.displayedAnswers = [];
@@ -511,6 +509,9 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           padding: 0px;
           margin: 0px;
         }
+        button[disabled] {
+          opacity: .5;
+        }
 
         h4 {
           color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
@@ -677,14 +678,14 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         id="check"
         ?disabled="${this.disabled || !this.inactiveCase() || this.showAnswer}"
         @click="${this.checkAnswer}"
-        label="${this.checkLabel}"
+        label="${this.t.checkAnswer}"
       >
       </simple-toolbar-button>
       <simple-toolbar-button
         id="reset"
         ?disabled="${this.disabled || !this.inactiveCase() || (this.inactiveCase() && !this.showAnswer)}"
         @click="${this.resetAnswer}"
-        label="${this.resetLabel}"
+        label="${this.t.tryAgain}"
       >
       </simple-toolbar-button>
     </div>

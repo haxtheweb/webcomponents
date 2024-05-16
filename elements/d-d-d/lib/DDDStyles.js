@@ -2027,6 +2027,9 @@ export const DDDReset = css`
     pointer-events: none;
     opacity: 0.5;
   }
+  details[open] > summary::after {
+    content: "-";
+  }
   details[open] > summary {
     color: light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight));
     filter: saturate(1.5);

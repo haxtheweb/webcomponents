@@ -57,18 +57,6 @@
       }
     ],
     "advanced": [
-      {
-        "property": "checkLabel",
-        "title": "Check answers label",
-        "description": "Label for getting solution feedback",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "resetLabel",
-        "title": "Reset label",
-        "description": "label for the reset button",
-        "inputMethod": "textfield"
-      }
     ],
     "developer": [
       {
