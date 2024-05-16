@@ -66,7 +66,7 @@ class MediaQuote extends DDD {
 
           .content, .citation {
             padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
-            background-color: var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue, var(--ddd-primary-1)));
+            background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
           }
 
           .citation {
@@ -93,9 +93,10 @@ class MediaQuote extends DDD {
           }
 
           figcaption {
-            color: var(--ddd-theme-default-beaverBlue);
+            color: var(--ddd-theme-default-beaverBlue); // TODO needs to contrast background color since this is text color
             width: 100%;
             border-top: var(--ddd-border-lg);
+            border-color: var(--ddd-theme-primary, var(--ddd-primary-1));
             margin-top: var(--ddd-spacing-1);
             padding-top: var(--ddd-spacing-1);
           }
