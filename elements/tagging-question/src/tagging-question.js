@@ -276,6 +276,7 @@ class TaggingQuestion extends QuestionElement {
 
   checkAnswer() {
     this.showAnswer = true;
+    this.shadowRoot.querySelector("#feedback").focus();
     const allCorrect = this.answers.filter(answer => answer.correct).length === this.selectedAnswers.filter(answer => answer.correct).length && this.selectedAnswers.filter(answer => answer.correct).length === this.selectedAnswers.length;
     if (allCorrect) {
       this.makeItRain();

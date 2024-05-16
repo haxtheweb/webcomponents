@@ -52,6 +52,7 @@ class MatchingQuestion extends QuestionElement {
       .target {
         height: 100px;
         padding: 4px;
+        font-weight: var(--ddd-font-weight-bold);
       }
       .match {
         min-height: 100px;
@@ -73,7 +74,6 @@ class MatchingQuestion extends QuestionElement {
         display: flex;
         justify-content: start;
         padding: var(--ddd-spacing-3);
-        border-radius: var(--ddd-radius-sm);
         border: var(--ddd-border-xs);
         flex-wrap: wrap;
         justify-content: center;
@@ -101,24 +101,16 @@ class MatchingQuestion extends QuestionElement {
         cursor: unset;
       }
 
-      :host([dragging]) #user-choice-container {
+      :host([dragging]) .match,
+      :host([dragging]) #possible-container {
+        border: var(--ddd-border-md);
         border-style: dashed;
-        border-color: gray;
       }
-      :host([drag-enter-matches][dragging]) #matches-container {
+      :host([drag-enter][dragging]) #possible-container.drag-enter,
+      :host([drag-enter][dragging]) .drag-enter {
         border-style: dashed;
         border-color: black;
         background-color: light-dark(var(--simple-colors-default-theme-grey-3),var(--simple-colors-default-theme-grey-9));
-      }
-      :host([drag-enter-target][dragging]) #target-container {
-        border-style: dashed;
-        border-color: black;
-        background-color: light-dark(var(--simple-colors-default-theme-grey-3),var(--simple-colors-default-theme-grey-9));
-      }
-      :host([drag-enter][dragging]) #possible-container {
-        border-color: black;
-        border-style: dashed;
-        background-color: light-dark(var(--simple-colors-default-theme-grey-2),var(--simple-colors-default-theme-grey-8));
       }
 
       .tag-option {
@@ -157,10 +149,8 @@ class MatchingQuestion extends QuestionElement {
   constructor() {
     super();
     this.guessDataValue = "matchAnswers";
-    this.__tagOption = {};
+    this.__activeOption = {};
     this.dragEnter = false;
-    this.dragEnterMatches = false;
-    this.dragEnterTarget = false;
     this.dragging = false;
     this.matchAnswers = [];
     this.targetAnswers = [];
@@ -226,41 +216,11 @@ class MatchingQuestion extends QuestionElement {
     return gotRight;
   }
 
-  selectTargetChange(e) {
-    let order = parseInt(e.target.value);
-    this.__tagOption.guess = order;
-    let index = this.matchAnswers.findIndex(answer => answer.order === this.__tagOption.order);
-    if (index > -1) {
-      this.matchAnswers.splice(index, 1); // Remove one item only
-    }
-    index = this.displayedAnswers.findIndex(answer => answer.order === this.__tagOption.order);
-    if (index > -1) {
-      this.displayedAnswers.splice(index, 1); // Remove one item only
-    }
-    if (e.target.value === '') {
-      this.__tagOption.guess = null;
-      this.displayedAnswers.push(this.__tagOption);
-    }
-    else {
-      this.matchAnswers.push(this.__tagOption);
-    }
-    this.__tagOption = {guess: null};
-    let options = Array.from(this.shadowRoot.querySelectorAll("#selecttarget option"));
-    for (var i in options) {
-      options[i].removeAttribute('selected');
-    }
-    setTimeout(() => {
-      this.shadowRoot.querySelector(`#selecttarget option[value=""]`).setAttribute('selected', 'selected');
-    }, 0);
-    this.shadowRoot.querySelector('#selecttarget').close();
-    this.requestUpdate();
-  }
-
   renderInteraction() {
     return html`
     <dialog id="selecttarget">
-      <simple-icon-button-lite icon="close" @click="${() => {this.shadowRoot.querySelector('#selecttarget').close()}}">Close</simple-icon-button-lite>
-      <label>Match <em>${this.__tagOption.label}</em> to:</label>
+      <simple-icon-button-lite icon="close" @click="${() => {this.shadowRoot.querySelector('dialog').close()}}">Close</simple-icon-button-lite>
+      <label>Match <em>${this.__activeOption.label}</em> to:</label>
       <select @change="${this.selectTargetChange}" autofocus>
         <option value="">-- Possible options --</option>
         ${this.answers.filter(answer => answer.target).map(answer => html`<option value="${answer.order}">${answer.label}</option>`)}
@@ -270,32 +230,42 @@ class MatchingQuestion extends QuestionElement {
       <table class="top">
         <thead>
           <th>Target</th>
-          <th>Matches</th>
+          <th>Match</th>
         </thead>
         <tbody>
       ${this.answers.filter(answer => answer.target).map(answer => html`
       <tr class="matches-container">
         ${!this.matchTarget ? html`<td class="target">${answer.label}</td>` : html`
-        <td class="target" id="target-${answer.order}" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswerMatches}">
+        <td class="target" id="target-${answer.order}" @drop="${this.handleDrop}" @dragleave="${this.dragTargetLeave}" @dragover="${this.dragTargetOver}">
         ${this.matchAnswers.filter(tag => tag.guess === answer.order).map(tagOption => html`
-          <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option ${this.showAnswer ? (tagOption.correct ? 'correct' : 'incorrect') : ''}" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${(e) => this.handleTagClick(tagOption, e)}">${tagOption.label}</button>
+        ${this.renderOption(tagOption, 'target')}
         `)}
         </td>`}
-        <td class="match" id="match-${answer.order}" @drop="${this.handleDrop}" @dragover="${this.allowDropAnswerMatches}">
+        <td class="match" id="match-${answer.order}" @drop="${this.handleDrop}" @dragleave="${this.dragTargetLeave}" @dragover="${this.dragTargetOver}">
         ${this.matchAnswers.filter(tag => tag.guess === answer.order).map(tagOption => html`
-          <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option ${this.showAnswer ? (tagOption.correct ? 'correct' : 'incorrect') : ''}" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${(e) => this.handleTagClick(tagOption, e)}">${tagOption.label}</button>
+        ${this.renderOption(tagOption, 'match')}
         `)}
         </td>
       </tr>
       `)}
       </tbody>
         </table>
-      <div id="possible-container" class="possible" @drop="${this.handleDrop}" @dragover="${this.allowDrop}">
+      <div id="possible-container" class="possible" @drop="${this.handleDrop}" @dragover="${this.dragTargetOver}" @dragleave="${this.dragTargetLeave}">
       ${this.displayedAnswers.filter(answer => !this.matchTarget ? answer.matchOption : true).map(tagOption => html`
-        <button ?disabled="${this.disabled || this.showAnswer}" class="tag-option" draggable="${this.showAnswer ? "false" : "true"}" @dragstart="${this.handleDrag}" @dragend="${this.handleDragEnd}" @click="${(e) => this.handleTagClick(tagOption, e)}">${tagOption.label}</button>
+        ${this.renderOption(tagOption, 'possible')}
       `)}
     </div>
   </div>`;
+  }
+
+  renderOption(tagOption, container) {
+    return html`<button ?disabled="${this.disabled || this.showAnswer}"
+     class="tag-option ${container != 'possible' && this.showAnswer ? (tagOption.correct ? 'correct' : 'incorrect') : ''}"
+     draggable="${this.showAnswer ? "false" : "true"}"
+     @dragstart="${this.handleDrag}"
+     @dragend="${this.handleDragEnd}"
+     data-label="${tagOption.label}"
+     @click="${() => this.handleTagClick(tagOption)}">${tagOption.label}</button>`
   }
 
   handleDrag(e) {
@@ -309,36 +279,27 @@ class MatchingQuestion extends QuestionElement {
     e.dataTransfer.setData("text/plain", tagOption);
     this.dragging = false;
     this.dragEnter = false;
-    this.dragEnterTarget = false;
-    this.dragEnterMatches = false;
   }
 
-  allowDrop(e) {
+  dragTargetOver(e) {
     e.preventDefault();
+    e.target.classList.add('drag-enter');
     this.dragEnter = true;
-    this.dragEnterTarget = false;
-    this.dragEnterMatches = false;
-  }
-  allowDropAnswerMatches(e) {
-    e.preventDefault();
-    this.dragEnterTarget = false;
-    this.dragEnterMatches = true;
-    this.dragEnter = false;
   }
 
-  allowDropAnswerTarget(e) {
+  dragTargetLeave(e) {
     e.preventDefault();
-    this.dragEnterTarget = true;
-    this.dragEnterMatches = false;
-    this.dragEnter = false;
+    e.target.classList.remove('drag-enter');
   }
 
   handleDrop(e) {
     e.preventDefault();
     this.dragging = false;
     this.dragEnter = false;
-    this.dragEnterTarget = false;
-    this.dragEnterMatches = false;
+    let dragNodes = Array.from(this.shadowRoot.querySelectorAll(".drag-enter"));
+    for (var i in dragNodes) {
+      dragNodes[i].classList.remove('drag-enter');
+    }
     const text = e.dataTransfer.getData("text/plain");
     let tagOption = this.answers.find(answer => answer.label === text);
     let guess, index;
@@ -378,25 +339,55 @@ class MatchingQuestion extends QuestionElement {
         break;
       }
       this.requestUpdate();
+      setTimeout(() => {
+        this.focusActive(tagOption);        
+      }, 0);
     }
   }
-  
-  
-  handleTagClick(tagOption, e) {
-    this.__tagOption = {...tagOption};
-    let options = Array.from(this.shadowRoot.querySelectorAll("#selecttarget option"));
+
+  focusActive(tagOption) {
+    this.shadowRoot.querySelector(`button[data-label="${tagOption.label}"]`).focus();
+  }
+  // support clicking the tag to invoke a menu to make the change
+  handleTagClick(tagOption) {
+    let active = 0;
+    this.__activeOption = {...tagOption};
+    let options = Array.from(this.shadowRoot.querySelectorAll("dialog option"));
     for (var i in options) {
-      options[i].removeAttribute('selected');
+      if (parseInt(options[i].value) === tagOption.guess) {
+        active = i;
+      }
     }
-    // buggy assessment of selected so we have to manually build it
-    // @todo need to switch this to use .selectedIndex
-    if (tagOption.guess) {
-      this.shadowRoot.querySelector(`#selecttarget option[value="${tagOption.guess}"]`).setAttribute('selected', 'selected');
+    this.shadowRoot.querySelector('dialog select').selectedIndex = active;
+    this.shadowRoot.querySelector('dialog').showModal();
+  }
+  // target selected from dialog based selection menu
+  selectTargetChange(e) {
+    let order = parseInt(e.target.value);
+    this.__activeOption.guess = order;
+    let index = this.matchAnswers.findIndex(answer => answer.order === this.__activeOption.order);
+    if (index > -1) {
+      this.matchAnswers.splice(index, 1); // Remove one item only
+    }
+    index = this.displayedAnswers.findIndex(answer => answer.order === this.__activeOption.order);
+    if (index > -1) {
+      this.displayedAnswers.splice(index, 1); // Remove one item only
+    }
+    if (e.target.value === '') {
+      this.__activeOption.guess = null;
+      this.displayedAnswers.push(this.__activeOption);
     }
     else {
-      this.shadowRoot.querySelector(`#selecttarget option[value=""]`).setAttribute('selected', 'selected');
+      this.matchAnswers.push(this.__activeOption);
     }
-    this.shadowRoot.querySelector('#selecttarget').showModal();
+    this.shadowRoot.querySelector('dialog select').selectedIndex = 0;
+    this.shadowRoot.querySelector('dialog').close();
+    this.requestUpdate();
+    // need to delay this one because tag option needs set to nothing after selection
+    setTimeout(() => {
+      this.focusActive(this.__activeOption);
+      this.__activeOption = {guess: null};
+    }, 0);
   }
 
   static get properties() {
@@ -404,12 +395,10 @@ class MatchingQuestion extends QuestionElement {
       ...super.properties,
       dragging: { type: Boolean, reflect: true },
       dragEnter: { type: Boolean, reflect: true, attribute: "drag-enter" },
-      dragEnterMatches: { type: Boolean, reflect: true, attribute: "drag-enter-matches" },
-      dragEnterTarget: { type: Boolean, reflect: true, attribute: "drag-enter-target" },
       matchTarget: { type: Boolean, reflect: true, attribute: "match-target" },
       matchAnswers: { type: Array },
       targetAnswers: { type: Array },
-      __tagOption: { type: Object },
+      __activeOption: { type: Object },
     }
   }
 
