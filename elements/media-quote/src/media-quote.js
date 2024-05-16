@@ -94,7 +94,7 @@ class MediaQuote extends DDD {
           }
 
           figcaption {
-            color: var(--ddd-theme-default-beaverBlue); // TODO needs to contrast background color in dark mode
+            color: var(--ddd-theme-default-potentialMidnight); // TODO needs to contrast background color in dark mode
             width: 100%;
             border-top: var(--ddd-border-lg);
             border-color: var(--ddd-theme-primary, var(--ddd-primary-1));
