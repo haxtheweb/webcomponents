@@ -129,7 +129,7 @@ class MediaQuote extends DDD {
               top: 0%;
               left: 0%;
             }
-          }
+          } /* Adding change to hopefully fix git */
 
           /* Attempt using @container instead of @media, which I saw in accent-card.js */
       `,];
