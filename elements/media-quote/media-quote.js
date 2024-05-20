@@ -43,7 +43,6 @@ class MediaQuote extends DDD {
           /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
           :host {
             display: block;
-            container-name: media-quote;
             container-type: inline-size;
           }
 
@@ -138,12 +137,12 @@ class MediaQuote extends DDD {
           }
 
           figcaption {
-            color: var(--ddd-theme-default-potentialMidnight); /* TODO needs to contrast background color in dark mode */
+            color: var(--ddd-theme-default-potentialMidnight); 
             width: 98%;
             padding: var(--ddd-spacing-2);
           }
 
-          @container media-quote (max-width: 1261px) and (min-width: 1000px) {
+          @container (max-width: 1261px) and (min-width: 1000px) {
             .quote {
               font-size: var(--ddd-font-size-xs);
             }
@@ -153,7 +152,7 @@ class MediaQuote extends DDD {
             }
           }
 
-          @container media-quote (max-width: 999px) { /* Mobile devices */
+          @container (max-width: 999px) { /* Mobile devices */
             .text-overlay {
               position: relative;
               width: 90%;
