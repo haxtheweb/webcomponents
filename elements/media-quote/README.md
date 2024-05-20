@@ -1,7 +1,7 @@
 # &lt;media-quote&gt;
 
 Quote
-> A quote focused around a piece of media with citation
+> A quote focused around a piece of media with citation with an optional caption.
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
