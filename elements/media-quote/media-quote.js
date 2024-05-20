@@ -30,10 +30,10 @@ class MediaQuote extends DDD {
     this.alt = '';
 
     // Design
-    this.filter = false;
+    this.hasFilter = false;
 
     // Logic
-    this.captionOpen = false; // not set by user
+    this._isCaptionOpen = false; // not set by user
   }
 
   static get styles() {
@@ -139,7 +139,7 @@ class MediaQuote extends DDD {
 
           figcaption {
             color: var(--ddd-theme-default-potentialMidnight); /* TODO needs to contrast background color in dark mode */
-            width: 99%;
+            width: 98%;
             padding: var(--ddd-spacing-2);
           }
 
@@ -230,20 +230,20 @@ class MediaQuote extends DDD {
   }
 
   controlCaption() {
-    const controllerText = this.shadowRoot.querySelector('.show-hide');
-    const triangle = this.shadowRoot.querySelector('.triangle');
-    const captionContent = this.shadowRoot.querySelector('.caption-content');
+    const CONTROLLER_TEXT = this.shadowRoot.querySelector('.show-hide');
+    const TRIANGLE = this.shadowRoot.querySelector('.triangle');
+    const CAPTION_CONTENT = this.shadowRoot.querySelector('.caption-content');
 
-    if (this.captionOpen) {
-      controllerText.textContent = 'Show Caption';
-      triangle.innerHTML = '&#9660;';
-      captionContent.style.display = 'none';
-      this.captionOpen = false;
+    if (this._isCaptionOpen) {
+      CONTROLLER_TEXT.textContent = 'Show Caption';
+      TRIANGLE.innerHTML = '&#9660;';
+      CAPTION_CONTENT.style.display = 'none';
+      this._isCaptionOpen = false;
     } else {
-      controllerText.textContent = 'Hide Caption';
-      triangle.innerHTML = '&#9650;';
-      captionContent.style.display = 'block';
-      this.captionOpen = true;
+      CONTROLLER_TEXT.textContent = 'Hide Caption';
+      TRIANGLE.innerHTML = '&#9650;';
+      CAPTION_CONTENT.style.display = 'block';
+      this._isCaptionOpen = true;
     }
   }
 
@@ -256,12 +256,9 @@ class MediaQuote extends DDD {
       alt: {
         type: String,
       },
-      filter: {
+      hasFilter: {
         type: Boolean,
       },
-      captionOpen: {
-        type: Boolean,
-      }
     }
   }
 
