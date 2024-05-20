@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { MatchingQuestion } from "@lrnwebcomponents/matching-question/matching-question.js";
 
 /**
  * `fill-in-the-blanks`
@@ -10,7 +11,7 @@ import { LitElement, html, css } from "lit";
  * @demo demo/index.html
  * @element fill-in-the-blanks
  */
-class FillInTheBlanks extends LitElement {
+class FillInTheBlanks extends MatchingQuestion {
   /**
    * Convention we use
    */
