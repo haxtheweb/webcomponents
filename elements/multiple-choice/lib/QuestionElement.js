@@ -509,7 +509,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         }
 
         h4 {
-          color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
+          color: light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight))
         }
         simple-icon {
           display: inline-flex;
