@@ -40,6 +40,10 @@ class MediaQuote extends DDD {
 
     // Logic
     this._isCaptionOpen = false; // not set by user
+    this.hasAuthor = this.querySelector('[slot="author"]') && this.querySelector('[slot="author"]').textContent.trim().length > 0;
+    this.hasAuthorDetail = this.querySelector('[slot="author-detail"]') && this.querySelector('[slot="author-detail"]').textContent.trim().length > 0;
+    this.hasCaption = this.querySelector('[slot="caption"]') && this.querySelector('[slot="caption"]').textContent.trim().length > 0;
+
   }
 
   static get styles() {
@@ -83,23 +87,37 @@ class MediaQuote extends DDD {
           }
 
           .content, .citation {
+            display: inline;
             padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
             background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
-            color: var(--lowContrast-override, var(--ddd-theme-bgContrast));
+            color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
+          }
+
+          .content ::slotted(*) {
+            display: inline;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            padding: var(--ddd-spacing-4);
           }
 
           .citation {
-            margin-top: var(--ddd-spacing-4);
+            margin-top: var(--ddd-spacing-3);
             display: inline-block;
             font-style: italic;
             font-size: 0; /* Prevents a space between author and author detail comma on both sides  */
           }
-            .author {
-              font-weight: var(--ddd-font-weight-bold);
-            }
-            .author, .author-detail {
-              font-size: var(--ddd-font-size-xxs);
-            }
+          .author {
+            display: inline;
+            font-weight: var(--ddd-font-weight-bold);
+          }
+          .author, .author-detail {
+            display: inline;
+            font-size: var(--ddd-font-size-xxs);
+          }
+
+          .author ::slotted(*) {
+            display: inline;
+          }
 
           figure {
             width: 60%;
@@ -118,30 +136,43 @@ class MediaQuote extends DDD {
 
           details {
             width: 100%;
+            max-width: unset;
             border: var(--ddd-border-lg);
             border-color: var(--ddd-theme-primary, var(--ddd-primary-1));
           }
 
           figcaption {
-            color: var(--ddd-theme-default-potentialMidnight); 
-            width: 95%;
-            padding: var(--ddd-spacing-2);
+            padding: var(--ddd-spacing-4);
+            font-size: var(--ddd-font-size-4xs);
           }
+          summary {
+            font-size: var(--ddd-font-size-4xs);
+            padding: 0 var(--ddd-spacing-2);;
+          }
+          p {
+              margin: 0;
+            }
 
           @container (max-width: 1261px) and (min-width: 1000px) {
+            .text-overlay {
+              font-size: var(--ddd-font-size-xs);
+            }
             .quote {
               font-size: var(--ddd-font-size-xs);
             }
 
             .author, .author-detail {
-              font-size: var(--ddd-font-size-xxs);
+              font-size: var(--ddd-font-size-4xs);
             }
           }
 
           @container (max-width: 999px) { /* Mobile devices */
+            .quote {
+              padding: 0;
+            }
             .text-overlay {
               position: relative;
-              width: 90%;
+              width: 100%;
               top: 0%;
               left: 0%;
               font-size: var(--ddd-font-size-xs);
@@ -149,6 +180,7 @@ class MediaQuote extends DDD {
 
             .text-overlay {
               text-align: center;
+              padding: 0;
             }
 
             .author, .author-detail {
@@ -165,42 +197,42 @@ class MediaQuote extends DDD {
             }
 
             .content, .citation {
-              padding: var(--ddd-spacing-2) var(--ddd-spacing-2);
+              padding: var(--ddd-spacing-2) 0;
+            }
+            .citation {
+              width: 100%;
+              margin-top: 0;
             }
           }
       `,
     ];
   }
 
-  render() {
-    const HAS_AUTHOR = this.querySelector('[slot="author"]') && this.querySelector('[slot="author"]').textContent.trim().length > 0;
-    const HAS_AUTHOR_DETAIL = this.querySelector('[slot="author-detail"]') && this.querySelector('[slot="author-detail"]').textContent.trim().length > 0;
-    const HAS_CAPTION = this.querySelector('[slot="caption"]') && this.querySelector('[slot="caption"]').textContent.trim().length > 0;
-    
+  render() {    
     return html`
         <div class="media-quote-container">
           <figure>
             <div class="top-content">
               <div class="text-overlay"> 
                 <p class="quote">
-                  <span class="content"><slot name="quote">${this.quote}</slot></span>
-                    ${HAS_AUTHOR ? html`
-                      <span class="citation">
-                        <span class="author">- <slot name="author">${this.author}</slot></span> 
-                        ${HAS_AUTHOR_DETAIL ? html`
-                          <span class="author-detail">, <slot name="author-detail"></slot></span>
+                  <div class="content"><slot name="quote">${this.quote}</slot></div>
+                    ${this.hasAuthor ? html`
+                      <div class="citation">
+                        <div class="author">- <slot name="author">${this.author}</slot></div> 
+                        ${this.hasAuthorDetail || this.authorDetail ? html`
+                          <div class="author-detail">, <slot name="author-detail">${this.authorDetail}</slot></div>
                         ` : ''}
-                      </span>
+                      </div>
                     ` : ''}
                 </p>  
               </div>
               <img src="${this.src}" alt="${this.alt}">
             </div>
-            ${HAS_CAPTION ? html`
+            ${this.hasCaption ? html`
               <div class="caption">
                 <details>
                   <summary>
-                    <span class='show-hide'>Show Caption</span>
+                    Show Caption
                   </summary>
                   <figcaption><slot name="caption">${this.caption}</slot></figcaption>
                 </details>
