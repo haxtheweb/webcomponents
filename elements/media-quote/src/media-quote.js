@@ -26,8 +26,14 @@ class MediaQuote extends DDD {
     super();
     
     // Media Item (Img)
-    this.src = '';
-    this.alt = '';
+    this.src = "";
+    this.alt = "";
+
+    // Surrounding Elements
+    this.quote = "";
+    this.author = "";
+    this.authorDetail = "";
+    this.caption = "";
 
     // Design
     this.hasFilter = false;
@@ -177,7 +183,7 @@ class MediaQuote extends DDD {
             <div class="top-content">
               <div class="text-overlay"> 
                 <p class="quote">
-                  <span class="content"><slot name="quote"></slot></span>
+                  <span class="content"><slot name="quote">${this.quote}</slot></span>
                     ${HAS_AUTHOR ? html`
                       <span class="citation">
                         <span class="author">- <slot name="author">${this.author}</slot></span> 
@@ -196,7 +202,7 @@ class MediaQuote extends DDD {
                   <summary>
                     <span class='show-hide'>Show Caption</span>
                   </summary>
-                  <figcaption><slot name="caption"></slot></figcaption>
+                  <figcaption><slot name="caption">${this.caption}</slot></figcaption>
                 </details>
               </div>
             ` : ''}
@@ -216,6 +222,20 @@ class MediaQuote extends DDD {
       },
       hasFilter: {
         type: Boolean,
+        attribute: "filter",
+      },
+      quote: {
+        type: String,
+      },
+      author: {
+        type: String,
+      },
+      authorDetail: {
+        type: String,
+        attribute: "author-detail",
+      },
+      caption: {
+        type: String,
       },
     }
   }
