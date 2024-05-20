@@ -57,19 +57,20 @@ class MediaQuote extends DDD {
             justify-content: center;
           }
           
-          .text-overlay {
-            z-index: 2;
+          .top-content {
+            position: relative;
           }
 
-          .quote {
+          .text-overlay {
             display: inline-block;
             padding: var(--ddd-spacing-0) var(--ddd-spacing-3);
             font-style: italic;
-            width: 30%;
+            width: 40%;
             font-size: var(--ddd-font-size-ms);
             position: absolute;
             top: 10%;
-            left: 15%
+            left: -15%;
+            z-index: 2;
           }
 
           .content {
@@ -87,7 +88,6 @@ class MediaQuote extends DDD {
             display: inline-block;
             font-style: italic;
             font-size: 0; /* Prevents a space between author and author detail comma on both sides  */
-            box-decoration-break: clone;
           }
             .author {
               font-weight: var(--ddd-font-weight-bold);
@@ -106,16 +106,9 @@ class MediaQuote extends DDD {
             z-index: 1;
           }
 
-          .closed, .opened {
+          .caption {
             border: var(--ddd-border-lg);
             border-color: var(--ddd-theme-primary, var(--ddd-primary-1));
-          }
-
-          .closed:hover .controller-text, 
-          .opened:hover .controller-text, 
-          .closed:focus .controller-text, 
-          .opened:focus .controller-text {
-            text-decoration: underline;
           }
 
           .controller:hover {
@@ -126,9 +119,18 @@ class MediaQuote extends DDD {
             background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
             color: var(--lowContrast-override, var(--ddd-theme-bgContrast));
             display: flex;
-            justify-content: space-between;
             align-items: center;
             padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
+          }
+
+          .controller-text {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+          }
+
+          .controller:hover .show-hide, .controller:focus .show-hide {
+            text-decoration: underline;
           }
 
           .caption-content {
@@ -152,7 +154,7 @@ class MediaQuote extends DDD {
           }
 
           @container media-quote (max-width: 999px) {
-            .quote {
+            .text-overlay {
               position: relative;
               width: 90%;
               top: 0%;
@@ -181,7 +183,8 @@ class MediaQuote extends DDD {
               padding: var(--ddd-spacing-2) var(--ddd-spacing-2);
             }
           }
-      `,];
+      `,
+    ];
   }
 
   render() {
@@ -202,13 +205,15 @@ class MediaQuote extends DDD {
                     ` : ''}
                 </p>  
               </div>
+              <img src="${this.src}" alt="${this.alt}">
             </div>
-            <img src="${this.src}" alt="${this.alt}">
             ${this.querySelector('[slot="caption"]') && this.querySelector('[slot="caption"]').textContent.trim().length > 0 ? html`
-              <div class="closed">
+              <div class="caption">
                 <div class='controller' @click=${this.controlCaption}>
-                  <p class="controller-text">Show Caption</p>
-                  <p class="triangle">&#9660;</p>
+                  <p class="controller-text">
+                    <span class='show-hide'>Show Caption</span>
+                    <span class="triangle">&#9660;</span>
+                  </p>
                 </div>
                 <div class="caption-content">
                   <figcaption><slot name="caption"></slot></figcaption>
@@ -221,7 +226,7 @@ class MediaQuote extends DDD {
   }
 
   controlCaption() {
-    const controllerText = this.shadowRoot.querySelector('.controller-text');
+    const controllerText = this.shadowRoot.querySelector('.show-hide');
     const triangle = this.shadowRoot.querySelector('.triangle');
     const captionContent = this.shadowRoot.querySelector('.caption-content');
 
