@@ -98,6 +98,7 @@ export class MarkTheWords extends QuestionElement {
           border: var(--ddd-border-sm);
           line-height: 2.2;
         }
+
         .tag-option {
           font-size: var(--ddd-font-size-s);
           height: auto;
@@ -113,6 +114,7 @@ export class MarkTheWords extends QuestionElement {
 
         :host([show-answer]) .tag-option {
           cursor: unset;
+          pointer-events: none;
         }
 
         :host(:not([show-answer])) .tag-option:hover, :host(:not([show-answer])) .tag-option:focus {
@@ -183,6 +185,7 @@ export class MarkTheWords extends QuestionElement {
     return html`<div class="text-wrap"><div class="text">
       ${this.wordList.map(word => html`
       <button
+        ?disabled="${this.showAnswer}"
         class="tag-option ${word.selected ? 'selected': ''} ${this.showAnswer && word.selected ? (word.correct ? 'correct' : 'incorrect') : ''}"
         @click="${this.selectWord}"
       >${word.text}</button>
@@ -199,7 +202,7 @@ export class MarkTheWords extends QuestionElement {
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
-    ${this.showAnswer && this.numberCorrect !== this.displayedAnswers.filter(answer => answer.correct).length ? html`
+    ${this.showAnswer && (this.numberCorrect !== this.displayedAnswers.filter(answer => answer.correct).length || this.numberCorrect !== this.numberGuessed) ? html`
     <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrect}/${this.displayedAnswers.filter(answer => answer.correct).length} ${this.t.numCorrectRight} (${this.numberGuessed} guessed)</p>
     ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
     ${this.showAnswer && this.numberCorrect === this.displayedAnswers.filter(answer => answer.correct).length ? html`
