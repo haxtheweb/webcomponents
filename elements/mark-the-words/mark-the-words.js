@@ -74,12 +74,12 @@ export class MarkTheWords extends QuestionElement {
         button.selected:focus,
         button.selected:hover
          {
-          outline: 2px solid light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight))
+          outline: 2px solid light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-link))
 
         }
         button:focus,
         button:hover {
-          outline: 1px solid light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight))
+          outline: 1px solid light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-link))
         }
 
         button {
