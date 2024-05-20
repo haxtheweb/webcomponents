@@ -106,39 +106,19 @@ class MediaQuote extends DDD {
           }
 
           .caption {
+            display: flex;
+            justify-content: center;
+          }
+
+          details {
+            width: 100%;
             border: var(--ddd-border-lg);
             border-color: var(--ddd-theme-primary, var(--ddd-primary-1));
           }
 
-          .controller:hover {
-            cursor: pointer;
-          }
-
-          .controller {
-            background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
-            color: var(--lowContrast-override, var(--ddd-theme-bgContrast));
-            display: flex;
-            align-items: center;
-            padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
-          }
-
-          .controller-text {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-          }
-
-          .controller:hover .show-hide, .controller:focus .show-hide {
-            text-decoration: underline;
-          }
-
-          .caption-content {
-            display: none;
-          }
-
           figcaption {
             color: var(--ddd-theme-default-potentialMidnight); 
-            width: 98%;
+            width: 95%;
             padding: var(--ddd-spacing-2);
           }
 
@@ -181,16 +161,16 @@ class MediaQuote extends DDD {
             .content, .citation {
               padding: var(--ddd-spacing-2) var(--ddd-spacing-2);
             }
-
-            figcaption {
-              width: 95%;
-            }
           }
       `,
     ];
   }
 
   render() {
+    const HAS_AUTHOR = this.querySelector('[slot="author"]') && this.querySelector('[slot="author"]').textContent.trim().length > 0;
+    const HAS_AUTHOR_DETAIL = this.querySelector('[slot="author-detail"]') && this.querySelector('[slot="author-detail"]').textContent.trim().length > 0;
+    const HAS_CAPTION = this.querySelector('[slot="caption"]') && this.querySelector('[slot="caption"]').textContent.trim().length > 0;
+    
     return html`
         <div class="media-quote-container">
           <figure>
@@ -198,10 +178,10 @@ class MediaQuote extends DDD {
               <div class="text-overlay"> 
                 <p class="quote">
                   <span class="content"><slot name="quote"></slot></span>
-                    ${this.querySelector('[slot="author"]') && this.querySelector('[slot="author"]').textContent.trim().length > 0 ? html`
+                    ${HAS_AUTHOR ? html`
                       <span class="citation">
-                        <span class="author">- <slot name="author"></slot></span> 
-                        ${this.querySelector('[slot="author-detail"]') && this.querySelector('[slot="author-detail"]').textContent.trim().length > 0 ? html`
+                        <span class="author">- <slot name="author">${this.author}</slot></span> 
+                        ${HAS_AUTHOR_DETAIL ? html`
                           <span class="author-detail">, <slot name="author-detail"></slot></span>
                         ` : ''}
                       </span>
@@ -210,40 +190,19 @@ class MediaQuote extends DDD {
               </div>
               <img src="${this.src}" alt="${this.alt}">
             </div>
-            ${this.querySelector('[slot="caption"]') && this.querySelector('[slot="caption"]').textContent.trim().length > 0 ? html`
+            ${HAS_CAPTION ? html`
               <div class="caption">
-                <div class='controller' @click=${this.controlCaption}>
-                  <p class="controller-text">
+                <details>
+                  <summary>
                     <span class='show-hide'>Show Caption</span>
-                    <span class="triangle">&#9660;</span>
-                  </p>
-                </div>
-                <div class="caption-content">
+                  </summary>
                   <figcaption><slot name="caption"></slot></figcaption>
-                </div>
+                </details>
               </div>
             ` : ''}
           </figure>
         </div>
     `
-  }
-
-  controlCaption() {
-    const CONTROLLER_TEXT = this.shadowRoot.querySelector('.show-hide');
-    const TRIANGLE = this.shadowRoot.querySelector('.triangle');
-    const CAPTION_CONTENT = this.shadowRoot.querySelector('.caption-content');
-
-    if (this._isCaptionOpen) {
-      CONTROLLER_TEXT.textContent = 'Show Caption';
-      TRIANGLE.innerHTML = '&#9660;';
-      CAPTION_CONTENT.style.display = 'none';
-      this._isCaptionOpen = false;
-    } else {
-      CONTROLLER_TEXT.textContent = 'Hide Caption';
-      TRIANGLE.innerHTML = '&#9650;';
-      CAPTION_CONTENT.style.display = 'block';
-      this._isCaptionOpen = true;
-    }
   }
 
   static get properties() {
