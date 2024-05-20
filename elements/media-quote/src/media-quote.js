@@ -139,7 +139,7 @@ class MediaQuote extends DDD {
 
           figcaption {
             color: var(--ddd-theme-default-potentialMidnight); /* TODO needs to contrast background color in dark mode */
-            width: 100%;
+            width: 99%;
             padding: var(--ddd-spacing-2);
           }
 
@@ -153,7 +153,7 @@ class MediaQuote extends DDD {
             }
           }
 
-          @container media-quote (max-width: 999px) {
+          @container media-quote (max-width: 999px) { /* Mobile devices */
             .text-overlay {
               position: relative;
               width: 90%;
@@ -181,6 +181,10 @@ class MediaQuote extends DDD {
 
             .content, .citation {
               padding: var(--ddd-spacing-2) var(--ddd-spacing-2);
+            }
+
+            figcaption {
+              width: 95%;
             }
           }
       `,
