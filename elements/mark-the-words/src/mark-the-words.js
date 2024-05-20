@@ -4,45 +4,36 @@
  * @demo demo/index.html
  */
 // dependencies / things imported
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
 
-export class MarkTheWords extends I18NMixin(LitElement) {
+export class MarkTheWords extends QuestionElement {
   static get tag() {
     return "mark-the-words";
   }
 
   constructor() {
     super();
-    this.answers = null;
-    this.correctAnswers = [];
-    this.wordList = this.innerText.trim().split(/\s+/g);
+    this.guessDataValue = "displayedAnswers";
+    this.displayedAnswers = [];
+    this.wordList = [];
     this.question = "Mark the words that are correct";
-    this.isEnabled = true;
+    this.statement = "";
     this.numberCorrect = 0;
     this.numberGuessed = 0;
-    this._haxstate = false;
-    this.demoMode = false;
-    this.t = {
-      check: "Check",
-      tryAgain: "Try Again",
-      editMode: "Edit Mode",
-      tryMode: "Try Mode",
-    };
+  }
+
+  getGuess() {
+    return this.displayedAnswers.length > 0;
   }
 
   static get properties() {
     return {
       ...super.properties,
       wordList: { type: Array },
-      demoMode: { type: Boolean },
-      answers: { type: String },
-      correctAnswers: { type: Array },
+      statement: { type: String },
       missedAnswers: { type: Array },
-      question: { type: String },
-      isEnabled: { type: Boolean },
-      _haxstate: { type: Boolean },
       numberCorrect: { type: Number },
       numberGuessed: { type: Number },
     };
@@ -50,294 +41,188 @@ export class MarkTheWords extends I18NMixin(LitElement) {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "wordList") {
-        this.rebuildContents(this[propName]);
-      }
-      if (propName === "answers" && this[propName]) {
-        this.correctAnswers = this[propName].split(",");
-        for (var i = 0; i < this.correctAnswers.length; i++) {
-          this.correctAnswers[i] = this.correctAnswers[i].trim().toUpperCase();
-        }
-      }
-      if (
-        propName === "numberCorrect" &&
-        this.numberCorrect === this.numberGuessed &&
-        this.numberCorrect !== 0 &&
-        this.numberGuessed !== 0
-      ) {
-        import(
-          "@lrnwebcomponents/multiple-choice/lib/confetti-container.js"
-        ).then((module) => {
-          setTimeout(() => {
-            this.shadowRoot
-              .querySelector("#confetti")
-              .setAttribute("popped", "");
-          }, 0);
-        });
-      }
-    });
+    if (changedProperties.has('statement')) {
+      this.rebuildWordList(this.statement);
+    }
   }
 
-  rebuildContents(ary) {
-    //wipe out inner
-    this.shadowRoot.querySelector(".text").innerHTML = "";
-    ary.forEach((word) => {
-      let button = document.createElement("button");
-      button.innerText = word;
-      button.addEventListener("click", this.selectWord.bind(this));
-      this.shadowRoot.querySelector(".text").appendChild(button);
-    });
+  rebuildWordList(statement) {
+    const wordList = statement.trim().split(/\s+/g);
+    for (var i in wordList) {
+      this.wordList.push({
+        text: wordList[i],
+        selected: false,
+        correct: null,
+      });
+    }
+    this.requestUpdate();
   }
 
   // CSS - specific to Lit
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
-          display: grid;
-          padding: 8px;
-          margin: 0px;
-          border: 2px solid black;
+          display: block;
         }
-        simple-toolbar-button {
-          font-size: 24px;
+        
+        button.selected,
+        button.selected:focus,
+        button.selected:hover
+         {
+          outline: 2px solid light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-link));
         }
-        button {
-          display: inline-flex;
-          font-size: var(--x-ample-font-size, 20px);
-          padding: 4px 8px;
-          margin: 0px 2px;
-          border-radius: none;
-          transition: outline 0.2s ease-in-out;
-        }
-        button:active,
-        button:hover,
-        button:focus {
-          outline: 3px dashed blue;
-          cursor: pointer;
-        }
-        button[data-selected] {
-          outline: 3px solid orange;
-        }
-        button[data-selected]:hover,
-        button[data-selected]:focus {
-          outline: 3px solid blue;
-        }
-        button[data-status="correct"] {
-          outline: 3px solid green;
-        }
-        button[data-status="correct"]::after {
-          content: "+1";
-          color: green;
-          font-size: 12px;
-          border-radius: 50%;
-          border: 1px solid green;
-          padding: 3px;
-          margin-left: 4px;
-          line-height: 16px;
-          height: 16px;
-          width: 16px;
-        }
-        button[data-status="incorrect"] {
-          outline: 3px solid purple;
-        }
-        button[data-status="incorrect"]::after {
-          content: "-1";
-          color: purple;
-          font-size: 12px;
-          border-radius: 50%;
-          border: 1px solid purple;
-          padding: 3px;
-          margin-left: 4px;
-          line-height: 16px;
-          height: 16px;
-          width: 16px;
-        }
-        button[check-mode="active"] {
-          pointer-events: none;
-        }
-        .buttons {
-          grid-column: 1;
-          grid-row: 3;
-          margin: 8px;
-          display: flex;
-        }
-        .correct {
-          grid-column: 1;
-          grid-row: 3;
-          margin-top: 20px;
-        }
-        .question {
-          margin-bottom: 0px;
-          margin-top: 0px;
-          grid-column: 1;
-          grid-row: 1;
-          font-size: 32px;
-        }
-        .text {
-          grid-column: 1;
-          grid-row: 2;
-          margin: 16px;
-          border: 2px solid black;
-          padding: 16px;
-        }
-        .scoreExp {
-          margin-top: 1px;
-          margin-bottom: 1px;
-          text-decoration: underline;
+        button:focus,
+        button:hover {
+          outline: 1px solid light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-link));
         }
 
-        .score {
-          margin: 0 16px;
-          font-size: 22px;
-          font-weight: bold;
-          line-height: 30px;
+        button {
+          outline: none;
+          border: none;
+          margin: 0 4px;
+          padding: 0 4px;
+        }
+
+        button[data-status="correct"] {
+          outline: 2px solid green;
+        }
+        button[data-status="incorrect"] {
+          outline: 2px solid purple;
+        }
+
+        .text {
+          margin: var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-4);
+          border: var(--ddd-border-sm);
+          line-height: 2.2;
+        }
+        .tag-option {
+          font-size: var(--ddd-font-size-s);
+          height: auto;
           display: inline-block;
-          vertical-align: middle;
+          font-family: var(--ddd-font-navigation);
+          border-radius: var(--ddd-radius-md);
+          background-color: var(--simple-colors-default-theme-grey-2);
+          margin: 0;
+          cursor: pointer;
+          user-select: none;
+          transition: background-color 0.3s ease;
+        }
+
+        :host([show-answer]) .tag-option {
+          cursor: unset;
+        }
+
+        :host(:not([show-answer])) .tag-option:hover, :host(:not([show-answer])) .tag-option:focus {
+          background-color: var(--simple-colors-default-theme-grey-3);
+        }
+
+        .tag-option.correct {
+          outline: 4px solid var(--ddd-theme-default-opportunityGreen);
+        }
+
+        .tag-option.incorrect {
+          outline: 4px solid var(--ddd-theme-default-original87Pink);
         }
       `,
     ];
   }
 
   selectWord(e) {
-    if (e.target.getAttribute("data-selected")) {
-      e.target.removeAttribute("data-selected");
-    } else {
-      e.target.setAttribute("data-selected", "data-selected");
-    }
+    let i = this.wordList.findIndex(word => e.target.innerText === word.text);
+    this.wordList[i].selected = !this.wordList[i].selected;
+    this.requestUpdate();
   }
 
-  checkAnswer(e) {
-    if (this.isEnabled) {
-      this.isEnabled = false;
-      for (var i = 0; i < this.wordList.length; i++) {
-        if (
-          this.correctAnswers.includes(
-            this.wordList[i]
-              .replace(/[&#^,+()$~%.":*?<>{}]/g, "")
-              .toUpperCase(),
-          )
-        ) {
+  isCorrect() {
+    this.numberGuessed = 0;
+    this.numberCorrect = 0;
+    let gotRight = true;
+
+    for (var i in this.wordList) {
+      for (var j in this.displayedAnswers) {
+        if (this.wordList[i].selected && this.displayedAnswers[j].correct && this.displayedAnswers[j].label.toLowerCase() === this.wordList[i].text.toLowerCase()) {
+          this.wordList[i].correct = true;
           this.numberCorrect++;
+          console.log();
         }
       }
-
-      const selected = this.shadowRoot.querySelectorAll(
-        ".text button[data-selected]",
-      );
-      for (var i = 0; i < selected.length; i++) {
-        const el = selected[i];
-
-        if (
-          this.correctAnswers.includes(
-            el.innerText.replace(/[&#^,+()$~%.":*?<>{}]/g, "").toUpperCase(),
-          )
-        ) {
-          el.setAttribute("data-status", "correct");
-          this.numberGuessed++;
-        } else {
-          el.setAttribute("data-status", "incorrect");
-          if (this.numberGuessed > 0) {
-            this.numberGuessed--;
-          }
+      // we selected something
+      if (this.wordList[i].selected) {
+        // it wasn't correct though
+        if (!this.wordList[i].correct) {
+          gotRight = false;
         }
-      }
-      const allWords = this.shadowRoot.querySelectorAll(".text button");
-      for (var i = 0; i < allWords.length; i++) {
-        const el = allWords[i];
-
-        el.setAttribute("check-mode", "active");
-      }
-    } else {
-      this.isEnabled = true;
-      this.numberGuessed = 0;
-      this.numberCorrect = 0;
-      const selected = this.shadowRoot.querySelectorAll(
-        ".text button[data-selected]",
-      );
-      for (var i = 0; i < selected.length; i++) {
-        const el = selected[i];
-
-        if (el.getAttribute("data-status")) {
-          el.removeAttribute("data-status");
-          el.removeAttribute("data-selected");
-        }
-      }
-      const allWords = this.shadowRoot.querySelectorAll(".text button");
-      for (var i = 0; i < allWords.length; i++) {
-        const el = allWords[i];
-
-        el.setAttribute("check-mode", "inactive");
+        this.numberGuessed++;
       }
     }
+    if (gotRight && this.numberCorrect !== this.numberGuessed) {
+      gotRight = false;
+    }
+    if (this.numberCorrect !== this.displayedAnswers.filter(answer => answer.correct).length) {
+      gotRight = false;
+    }
+    return gotRight;
+    // evaluate all the wordList selected vs if they are the correct answer
   }
 
-  // HTML - specific to Lit
-  render() {
+  /**
+   * Reset user answers and shuffle the board again.
+   */
+  resetAnswer(e) {
+    if (this.isCorrect()) {
+      this.wordList = [];
+      this.rebuildWordList(this.statement);
+    }
+    super.resetAnswer(e);
+  }
+
+  renderInteraction() {
+    return html`<div class="text-wrap"><div class="text">
+      ${this.wordList.map(word => html`
+      <button
+        class="tag-option ${word.selected ? 'selected': ''} ${this.showAnswer && word.selected ? (word.correct ? 'correct' : 'incorrect') : ''}"
+        @click="${this.selectWord}"
+      >${word.text}</button>
+      `)}</div></div>`;
+  }
+
+  // this manages the directions that are rendered and hard coded for the interaction
+  renderDirections() {
+    return html`<p>Select the words that match the criteria of the question. Then select <strong>${this.t.checkAnswer}</strong> to test your answers.
+    You will get feedback just below here indicating correctness of your answer.
+  </p>`;
+  }
+
+  // this manages the output of the feedback area
+  renderFeedback() {
     return html`
-      <confetti-container id="confetti">
-        <p class="question">${this.question}</p>
-        ${this._haxstate && this.demoMode
-          ? html`<slot></slot>`
-          : html`<div class="text"></div>`}
-        <div class="buttons">
-          <simple-toolbar-button
-            @click="${this.checkAnswer}"
-            icon="${this.isEnabled ? "check" : "refresh"}"
-            label="${this.isEnabled ? this.t.check : this.t.tryAgain}"
-            show-text-label
-            icon-position="left"
-            align-vertical="center"
-            align-horizontal="center"
-          ></simple-toolbar-button>
-          <span class="score">
-            ${this.isEnabled
-              ? ``
-              : html`${this.numberGuessed}/${this.numberCorrect}
-                ${Math.round(
-                  10 * ((this.numberGuessed / this.numberCorrect) * 100),
-                ) / 10}%`}
-          </span>
-          ${this._haxstate
-            ? html`<simple-toolbar-button
-                @click="${this.toggleDemo}"
-                icon="${this.demoMode ? "av:play-circle-filled" : "image:edit"}"
-                label="${this.demoMode ? this.t.tryMode : this.t.editMode}"
-                show-text-label
-                icon-position="left"
-                align-vertical="center"
-                align-horizontal="center"
-              ></simple-toolbar-button>`
-            : ``}
+    ${this.showAnswer && this.numberCorrect !== this.displayedAnswers.filter(answer => answer.correct).length ? html`
+    <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrect}/${this.displayedAnswers.filter(answer => answer.correct).length} ${this.t.numCorrectRight} (${this.numberGuessed} guessed)</p>
+    ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
+    ${this.showAnswer && this.numberCorrect === this.displayedAnswers.filter(answer => answer.correct).length ? html`
+    <p class="feedback">${this.correctText}</p>
+    ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
+      ${this.hasHint && this.showAnswer && this.numberCorrect !== this.displayedAnswers.filter(answer => answer.correct).length ? html`
+        <h4>Need a hint?</h4>
+        <div>
+          <slot name="hint"></slot>
         </div>
-      </confetti-container>
+      ` : ``}
+      ${this.hasEvidence && this.showAnswer && this.numberCorrect === this.displayedAnswers.filter(answer => answer.correct).length  ? html`
+        <h4>Evidence</h4>
+        <div>
+          <slot name="evidence"></slot>
+        </div>
+      ` : ``}
+      <simple-toolbar-button
+        ?disabled="${this.disabled || !this.showAnswer}"
+        @click="${this.resetAnswer}"
+        label="${this.t.tryAgain}">
+      </simple-toolbar-button>
     `;
-  }
-
-  toggleDemo() {
-    this.demoMode = !this.demoMode;
-    // rebuild wordList when we go OUT of demo mode
-    if (!this.demoMode) {
-      this.wordList = this.innerText.trim().split(/\s+/g);
-    }
-  }
-
-  haxHooks() {
-    return {
-      editModeChanged: "haxeditModeChanged",
-      activeElementChanged: "haxactiveElementChanged",
-    };
-  }
-
-  haxactiveElementChanged(element, value) {
-    if (value) {
-      this._haxstate = value;
-    }
-  }
-
-  haxeditModeChanged(value) {
-    this._haxstate = value;
   }
 
   // HAX specific callback

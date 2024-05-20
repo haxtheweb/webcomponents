@@ -43,8 +43,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-iconset": "^8.0.2",
+    "@lrnwebcomponents/d-d-d": "^8.0.2",
+    "@lrnwebcomponents/i18n-manager": "^8.0.2",
     "@lrnwebcomponents/schema-behaviors": "^8.0.2",
-    "@lrnwebcomponents/simple-colors": "^8.0.2",
     "@lrnwebcomponents/simple-fields": "^8.0.2",
     "@lrnwebcomponents/simple-icon": "^8.0.2",
     "@lrnwebcomponents/simple-toast": "^8.0.2",

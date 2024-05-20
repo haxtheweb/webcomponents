@@ -27,28 +27,15 @@
         "title": "Question",
         "description": "Prompting for the user to answer the question",
         "inputMethod": "textfield"
-      },
-      {
-        "property": "answers",
-        "title": "Answers",
-        "description": "comma separated possible answers",
-        "inputMethod": "textfield"
-      },
-      {
-        "slot": "",
-        "title": "Contents"
       }
     ],
     "advanced": []
   },
   "saveOptions": {
     "unsetAttributes": [
-      "correctAnswers",
       "wordList",
-      "isEnabled",
       "numberCorrect",
-      "numberGuessed",
-      "demoMode"
+      "numberGuessed"
     ]
   },
   "demoSchema": [
