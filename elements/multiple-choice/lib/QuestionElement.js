@@ -173,7 +173,8 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     this.shadowRoot.querySelector("#feedback").focus();
     // see if they got this correct based on their answers
     let toastColor, toastIcon, toastText;
-    if (this.isCorrect()) {
+    let correctness = this.isCorrect();
+    if (correctness) {
       toastColor = "green";
       toastIcon = "icons:thumb-up";
       toastText = this.correctText;
@@ -210,7 +211,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     let eventData = {
       activityDisplay: "answered",
       objectName: this.quizName,
-      resultSuccess: this.isCorrect(),
+      resultSuccess: correctness,
     };
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
