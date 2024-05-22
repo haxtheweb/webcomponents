@@ -44,14 +44,14 @@
   "dependencies": {
     "@polymer/marked-element": "3.0.1",
     "lit": "^3.1.2",
-    "marked": "5.1.0"
+    "marked": "12.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.4.2",
+    "@web/dev-server": "0.4.5",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",
     "wct-browser-legacy": "1.0.2"

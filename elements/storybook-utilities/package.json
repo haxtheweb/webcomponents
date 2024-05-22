@@ -17,7 +17,7 @@
     "@lrnwebcomponents/es-global-bridge": "^8.0.2",
     "@lrnwebcomponents/lorem-data": "^8.0.2",
     "@lrnwebcomponents/simple-colors": "^8.0.2",
-    "@storybook/addon-knobs": "6.4.0",
+    "@storybook/addon-knobs": "7.0.2",
     "@storybook/polymer": "5.3.21",
     "lorem-ipsum": "^2.0.3"
   },

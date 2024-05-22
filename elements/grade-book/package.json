@@ -45,7 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@github/time-elements": "3.1.4",
+    "@github/time-elements": "4.0.0",
     "@lrnwebcomponents/a11y-collapse": "^8.0.2",
     "@lrnwebcomponents/a11y-tabs": "^8.0.2",
     "@lrnwebcomponents/editable-table": "^8.0.2",
@@ -57,16 +57,16 @@
     "@lrnwebcomponents/simple-colors": "^8.0.2",
     "@lrnwebcomponents/simple-fields": "^8.0.2",
     "@lrnwebcomponents/utils": "^8.0.2",
-    "idb-keyval": "6.1.0",
+    "idb-keyval": "6.2.1",
     "lit": "^3.1.2",
-    "mobx": "6.12.0"
+    "mobx": "6.12.3"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.4.2",
+    "@web/dev-server": "0.4.5",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",
     "wct-browser-legacy": "1.0.2"

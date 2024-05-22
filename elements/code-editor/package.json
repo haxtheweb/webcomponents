@@ -45,7 +45,7 @@
     "@lrnwebcomponents/schema-behaviors": "^8.0.2",
     "@lrnwebcomponents/utils": "^8.0.2",
     "lit": "^3.1.2",
-    "monaco-editor": "0.32.1"
+    "monaco-editor": "0.48.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^8.0.2",
@@ -53,7 +53,7 @@
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.4.2",
+    "@web/dev-server": "0.4.5",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",
     "wct-browser-legacy": "1.0.2"

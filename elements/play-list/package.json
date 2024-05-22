@@ -46,7 +46,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/utils": "^8.0.2",
-    "@shoelace-style/shoelace": "2.8.0",
+    "@shoelace-style/shoelace": "2.15.1",
     "lit": "^3.1.2"
   },
   "devDependencies": {
@@ -55,8 +55,8 @@
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@wcfactory/rollup-umd-build": "^0.12.1",
-    "@web/dev-server": "0.4.2",
+    "@wcfactory/rollup-umd-build": "^0.13.0",
+    "@web/dev-server": "0.4.5",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",
     "gulp-babel": "8.0.0",

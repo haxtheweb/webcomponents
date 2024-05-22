@@ -42,7 +42,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@github/time-elements": "3.1.4",
+    "@github/time-elements": "4.0.0",
     "@lrnwebcomponents/anchor-behaviors": "^8.0.2",
     "@lrnwebcomponents/app-hax": "^8.0.2",
     "@lrnwebcomponents/beaker-broker": "^8.0.2",
@@ -106,8 +106,8 @@
     "@polymer/polymer": "^3.5.1",
     "@vaadin/router": "^1.7.5",
     "@vaadin/vaadin-grid": "^5.2.5",
-    "mobx": "6.12.0",
-    "web-social-share": "8.0.1",
+    "mobx": "6.12.3",
+    "web-social-share": "10.0.0",
     "wired-elements": "3.0.0-rc.6"
   },
   "devDependencies": {
@@ -116,7 +116,7 @@
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.4.2",
+    "@web/dev-server": "0.4.5",
     "@web/dev-server-esbuild": "1.0.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",
