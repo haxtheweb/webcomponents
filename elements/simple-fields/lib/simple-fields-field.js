@@ -114,9 +114,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
+            cursor: pointer;
+          }
+          :host([type="select"]) {
+            cursor: pointer;
           }
           :host([type="select"]) simple-icon-lite {
             position: absolute;
+            pointer-events: none;
             right: 0px;
           }
           select:focus,
@@ -505,6 +510,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         this.addEventListener("focusout", this._hoverStateOff.bind(this));
         this.addEventListener("mouseout", this._hoverStateOff.bind(this));
       }
+      // normalize select to focus the select field so we don't miss edges w/ padding
+      if (this.type === "select") {
+        this.addEventListener("click", this._focusSelect.bind(this));
+      }
+    }
+    _focusSelect(e) {
+      console.log(this.shadowRoot.querySelector('select'));
+      this.shadowRoot.querySelector('select').focus();
     }
     _selectionShortCut(e) {
       let checked = true
@@ -740,6 +753,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               : "box-input"}"
             ?disabled="${this.disabled}"
             @focus="${this._onFocusin}"
+            @click="${this._onFocusin}"
             ?hidden="${this.hidden}"
             id="${this.id}.${!option ? "" : option.value}"
             @input="${this._handleFieldChange}"

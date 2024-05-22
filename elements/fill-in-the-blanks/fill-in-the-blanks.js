@@ -24,11 +24,14 @@ class FillInTheBlanks extends MarkTheWords {
     
     simple-fields-field {
       display: inline-block;
-      width: 120px;
       margin-bottom: 0;
       vertical-align: middle;
+    }
+    simple-fields-field[type="textfield"] {
+      width: 140px;
       padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-    }`];
+    }
+    `];
   }
 
   /**
@@ -66,7 +69,7 @@ class FillInTheBlanks extends MarkTheWords {
     }
     else {
       return html`
-      <simple-fields-field type="text"></simple-fields-field>`;
+      <simple-fields-field type="textfield"></simple-fields-field>`;
   
     }
   }

@@ -444,8 +444,6 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           margin-right: var(--ddd-spacing-4);
         }
         simple-fields-field {
-          padding: var(--ddd-spacing-4);
-          min-height: var(--ddd-spacing-8);
           transition: all 0.3s ease-in-out;
           border-radius: var(--ddd-radius-xs);
           margin-bottom: var(--ddd-spacing-6);
@@ -457,6 +455,17 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           --simple-fields-line-height: var(--ddd-font-size-xs);
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
+        }
+        simple-fields-field[type="textfield"] {
+          padding: var(--ddd-spacing-4);        
+          min-height: var(--ddd-spacing-8);
+        }
+        simple-fields-field::part(select) {
+          padding-top: var(--ddd-spacing-1);
+          padding-bottom: var(--ddd-spacing-1);
+          padding-left: var(--ddd-spacing-1);
+          min-height: var(--ddd-spacing-8);
+          line-height: 1.1;
         }
         simple-toolbar-button {
           font-size: var(--ddd-font-size-xs);
