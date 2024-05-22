@@ -7,12 +7,15 @@
   "canEditSource": true,
   "contentEditable": false,
   "gizmo": {
-    "title": "matching question",
+    "title": "Matching question",
     "description": "",
-    "icon": "icons:android",
+    "icon": "editor:drag-handle",
     "color": "purple",
     "tags": [
-      "Other"
+      "Instructional",
+      "matching",
+      "drag and drop",
+      "question"
     ],
     "handles": [],
     "meta": {
