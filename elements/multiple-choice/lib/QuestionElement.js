@@ -1,5 +1,5 @@
 // superclass that can be used to more rapidly build question based components
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
@@ -27,6 +27,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     this.hideButtons = false;
     this.disabled = false;
     this.singleOption = false;
+    this.media = null;
     this.question = "";
     this.answers = [];
     this.displayedAnswers = [];
@@ -265,7 +266,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       hasFeedbackIncorrect: { type: Boolean },
       hasFeedbackCorrect: { type: Boolean },
       hasEvidence: { type: Boolean },
-
+      media: { type: String },
       // support for max attempts, default is unlimited
       maxAttempts: { type: Number, reflect: true, attribute: "max-attempts"},
       // track how many times they've tried the interaction
@@ -508,7 +509,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         }
 
         h4 {
-          color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
+          color: light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight))
         }
         simple-icon {
           display: inline-flex;
@@ -609,7 +610,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           <div slot="col-1">
             <h3 property="oer:name">${this.question}</h3>
             ${this.renderInteraction()}
-            ${!this.hideButtons ? this.renderButtons() : ``}
+            ${!this.hideButtons ? this.renderButtons() : nothing}
           </div>
           <div slot="col-2">
             <details ?open="${!this.hasContent}" id="directions">
@@ -624,7 +625,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
               <div>
                 <slot name="content"></slot>
               </div>
-            </details>` : ``}
+            </details>` : nothing}
             <details tabindex="${!this.showAnswer ? "-1" : ""}" ?disabled="${!this.showAnswer}" ?open="${this.showAnswer}">
               <summary id="feedback">Feedback</summary>
               <div>
@@ -698,22 +699,22 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     return html`
     ${this.showAnswer && !this.isCorrect() ? html`
     <p class="feedback">${this.incorrectText}</p>
-    ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
+    ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : nothing}` : nothing}
     ${this.showAnswer && this.isCorrect() ? html`
     <p class="feedback">${this.correctText}</p>
-    ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
+    ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : nothing}` : nothing}
       ${this.hasHint && this.showAnswer && !this.isCorrect() ? html`
         <h4>Need a hint?</h4>
         <div>
           <slot name="hint"></slot>
         </div>
-      ` : ``}
+      ` : nothing}
       ${this.hasEvidence && this.showAnswer && this.isCorrect()  ? html`
         <h4>Evidence</h4>
         <div>
           <slot name="evidence"></slot>
         </div>
-      ` : ``}
+      ` : nothing}
       <simple-toolbar-button
         ?disabled="${this.disabled || !this.showAnswer}"
         @click="${this.resetAnswer}"

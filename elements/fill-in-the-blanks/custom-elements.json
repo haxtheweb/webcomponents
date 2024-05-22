@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "fill-in-the-blanks",
+      "description": "`fill-in-the-blanks`\n`Fill in the blanks question`\n\n",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

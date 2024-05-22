@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../fill-in-the-blanks.js"></script>
+  </head>
+  <body>
+
+    <fill-in-the-blanks>
+      This is the element content.
+    </fill-in-the-blanks>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <fill-in-the-blanks></fill-in-the-blanks>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <fill-in-the-blanks></fill-in-the-blanks>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<fill-in-the-blanks>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('fill-in-the-blanks'), customElements.get("fill-in-the-blanks", 'fill-in-the-blanks should be an instance of fillInTheBlanks'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

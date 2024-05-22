@@ -46,9 +46,8 @@ const HAXCMSTheme = function (SuperClass) {
      * to define a contentcontainer and a slot id wrapper. this allows HAXcms
      * to correctly target the area that will display the HAXeditor when in
      * edit-mode and correctly hide the editor when in normal content presentation.
-     * static get template() {
      *  return html`
-     *  <style include="simple-colors-shared-styles-polymer">
+     *  <style>
      *   :host {
      *     display: block;
      *     background-color: var(--haxcms-color, white);

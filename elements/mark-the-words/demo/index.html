@@ -8,21 +8,27 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../mark-the-words.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      body {
+        background-color: light-dark(white, black);
+      }
+      demo-snippet * {
+        background-color: light-dark(transparent, black);
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic mark-the-words demo</h3>
       <demo-snippet>
         <template>
-          <mark-the-words question="Mark the fruits but not the berries" statement="Apples mostly come from up north where we have cold weather. Pears and Raspberries are more southern.">
+          <mark-the-words media="https://www.youtube.com/watch?v=t0kACis_dJE" question="Mark the fruits but not the berries" statement="Apples mostly come from up north where we have cold weather. Pears and Raspberries are more southern.">
             <input correct value="Apples" />
-            <input correct value="Pears" />
-            <input value="Raspberries" />
+            <input correct value="Pears" data-unselected="It's all gone Pear shaped hasn't it inspector.." />
+            <input value="Raspberries" data-selected="Close, but this isn't actually a fruit its a berry!" />
             <div slot="feedbackIncorrect">
               <p>Remember... focus... you've got this. It's not always easy getting to class but I believe in you!</p>
             </div>
@@ -50,8 +56,9 @@
           </mark-the-words>
         </template>
       </demo-snippet>
-      <mark-the-words answers="it'll">
-        <p>It'll be a great day at the farm and you should come too.</p>
+      <mark-the-words question="Mark the fruits but not the berries" statement="It'll be a great day at the farm and you should come too.">
+        <input correct value="it'll" />
+        <input value="great" />
       </mark-the-words>
     </div>
   </body>

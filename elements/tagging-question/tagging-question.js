@@ -123,6 +123,15 @@ class TaggingQuestion extends QuestionElement {
           user-select: none;
           transition: background-color 0.3s ease;
         }
+        
+        dl .correct {
+          border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
+          padding-left: 8px;
+        }
+        dl .incorrect {
+          border-left: 4px solid var(--ddd-theme-default-original87Pink);
+          padding-left: 8px;
+        }
       `
     ];
   }
@@ -167,7 +176,7 @@ class TaggingQuestion extends QuestionElement {
       <dl>
       ${this.displayedAnswers.map(answer => html`
         <dt class="${!answer.correct ? 'correct' : 'incorrect'}">${answer.label}</dt>
-        <dd>${answer.selectedFeedback}</dd>
+        <dd>${answer.unselectedFeedback}</dd>
       `)}
       </dl>
     </div>
@@ -276,6 +285,7 @@ class TaggingQuestion extends QuestionElement {
 
   checkAnswer() {
     this.showAnswer = true;
+    this.shadowRoot.querySelector("#feedback").focus();
     const allCorrect = this.answers.filter(answer => answer.correct).length === this.selectedAnswers.filter(answer => answer.correct).length && this.selectedAnswers.filter(answer => answer.correct).length === this.selectedAnswers.length;
     if (allCorrect) {
       this.makeItRain();
