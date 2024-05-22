@@ -510,14 +510,6 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         this.addEventListener("focusout", this._hoverStateOff.bind(this));
         this.addEventListener("mouseout", this._hoverStateOff.bind(this));
       }
-      // normalize select to focus the select field so we don't miss edges w/ padding
-      if (this.type === "select") {
-        this.addEventListener("click", this._focusSelect.bind(this));
-      }
-    }
-    _focusSelect(e) {
-      console.log(this.shadowRoot.querySelector('select'));
-      this.shadowRoot.querySelector('select').focus();
     }
     _selectionShortCut(e) {
       let checked = true
