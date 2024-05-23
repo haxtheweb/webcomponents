@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/lrndesign-avatar/lrndesign-avatar.js";
 /**
  * `nav-card-item`
  * links fr the nav card

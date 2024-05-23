@@ -111,7 +111,7 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertAccordions(accordions = []) {
-    import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
+    import("@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js");
 
     accordions.forEach((accordion) => {
       let group = document.createElement("a11y-collapse-group"),
@@ -142,7 +142,7 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertCards(nodes = [], target) {
-    import("@lrnwebcomponents/accent-card/accent-card.js");
+    import("@haxtheweb/accent-card/accent-card.js");
 
     this.convertIfNeeded(target, [
       { selector: ".newcolorbox", function: "convertNewcolorboxes" },
@@ -177,7 +177,7 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertCollapses(nodes = [], target) {
-    import("@lrnwebcomponents/a11y-collapse/a11y-collapse.js");
+    import("@haxtheweb/a11y-collapse/a11y-collapse.js");
     this.convertIfNeeded(target, [
       { selector: ".expandable", function: "convertExpandables" },
       { selector: ".accordion-interface", function: "convertAccordions" },
@@ -232,7 +232,7 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertFigures(figures = []) {
-    import("@lrnwebcomponents/a11y-figure/a11y-figure.js");
+    import("@haxtheweb/a11y-figure/a11y-figure.js");
 
     figures.forEach((figure) => {
       let figcaption = figure.querySelector("figcaption"),
@@ -263,7 +263,7 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertGifs(gifs = []) {
-    import("@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js");
+    import("@haxtheweb/a11y-gif-player/a11y-gif-player.js");
 
     gifs.forEach((image) => {
       let player = document.createElement("a11y-gif-player"),
@@ -284,7 +284,7 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertGalleries(nodes = [], target) {
-    import("@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js");
+    import("@haxtheweb/lrndesign-gallery/lrndesign-gallery.js");
     this.convertIfNeeded(target, [
       { selector: ".image-thumbnail", function: "convertThumbnails" },
       {
@@ -301,9 +301,9 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertGraphmes(graphmes = []) {
-    import("@lrnwebcomponents/lrndesign-chart/lib/lrndesign-bar.js");
-    import("@lrnwebcomponents/lrndesign-chart/lib/lrndesign-line.js");
-    import("@lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js");
+    import("@haxtheweb/lrndesign-chart/lib/lrndesign-bar.js");
+    import("@haxtheweb/lrndesign-chart/lib/lrndesign-line.js");
+    import("@haxtheweb/lrndesign-chart/lib/lrndesign-pie.js");
 
     graphmes.forEach((graphme) => {
       ["bar", "line", "pie"].forEach((type) => this.insertChart(graphme, type));
@@ -318,9 +318,9 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertIcons(nodes, target) {
-    import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
-    import("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
-    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+    import("@haxtheweb/hax-iconset/lib/simple-hax-iconset.js");
+    import("@haxtheweb/simple-icon/lib/simple-icon-lite.js");
+    import("@haxtheweb/simple-icon/lib/simple-icons.js");
 
     Object.keys(this.courseicons).forEach((key) => {
       target.querySelectorAll(`.coursework.${key}`).forEach((evoicon) => {
@@ -411,7 +411,7 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertTabs(tabbed = []) {
-    import("@lrnwebcomponents/a11y-tabs/a11y-tabs.js");
+    import("@haxtheweb/a11y-tabs/a11y-tabs.js");
 
     tabbed.forEach((tabs) => {
       let a11ytabs = document.createElement("a11y-tabs");
@@ -426,7 +426,7 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertTablestyles(tablestyles) {
-    import("@lrnwebcomponents/editable-table/editable-table.js");
+    import("@haxtheweb/editable-table/editable-table.js");
 
     tablestyles.forEach((table) => {
       let editable = document.createElement("editable-table");

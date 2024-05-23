@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 export class SortingOption extends DDDSuper(LitElement) {
   // a convention I enjoy so you can change the tag name in 1 place

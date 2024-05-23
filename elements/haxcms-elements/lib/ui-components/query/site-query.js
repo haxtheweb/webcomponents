@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { objectValFromStringPos } from "@lrnwebcomponents/utils/utils.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { objectValFromStringPos } from "@haxtheweb/utils/utils.js";
 import { autorun, toJS } from "mobx";
 /**
  * `site-query`

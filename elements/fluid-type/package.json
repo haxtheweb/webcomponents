@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/fluid-type",
+  "name": "@haxtheweb/fluid-type",
   "wcfactory": {
     "className": "FluidType",
     "customElementClass": "HTMLElement",
@@ -21,7 +21,7 @@
   "description": "A simple fluid-type sizing wrapper element to apply to anything",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "fluid-type.js",
@@ -42,7 +42,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

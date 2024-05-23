@@ -1,9 +1,9 @@
 import { html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 class LectureAnchor extends DDD {
   static get properties() {

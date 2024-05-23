@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SimplePickerBehaviors } from "@lrnwebcomponents/simple-picker/simple-picker.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { SimplePickerBehaviors } from "@haxtheweb/simple-picker/simple-picker.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 
 /**
  * `simple-emoji-picker`

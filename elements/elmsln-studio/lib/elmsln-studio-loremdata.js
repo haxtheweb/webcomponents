@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
-import "@lrnwebcomponents/lorem-data/lorem-data.js";
+import "@haxtheweb/lorem-data/lorem-data.js";
 
 /**
  * `elmsln-studio-loremdata`

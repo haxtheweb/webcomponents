@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
+import { SecureRequestXhr } from "@haxtheweb/secure-request/secure-request.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/polymer/lib/elements/dom-if.js";

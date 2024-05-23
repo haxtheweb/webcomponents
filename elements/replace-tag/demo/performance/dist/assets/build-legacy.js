@@ -269,12 +269,12 @@ try {
         ]),
     (window.WCAutoloadPolyfillEntryPoint =
       cdn +
-      "build/es5-amd/node_modules/@lrnwebcomponents/wc-autoload/wc-autoload.js"),
+      "build/es5-amd/node_modules/@haxtheweb/wc-autoload/wc-autoload.js"),
     define(defs, function () {
       "use strict";
       define([
         cdn +
-          "build/es5-amd/node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js",
+          "build/es5-amd/node_modules/@haxtheweb/deduping-fix/deduping-fix.js",
         window.WCAutoloadPolyfillEntryPoint,
       ], function () {
         window.WCAutoload.process();

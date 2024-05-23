@@ -3,36 +3,36 @@ import { store } from "./haxcms-site-store.js";
 import {
   HaxStore,
   HAXStore,
-} from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+} from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-view.js";
-import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-view.js";
+import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import {
   localStorageSet,
   winEventsElement,
   mimeTypeToName,
-} from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+} from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
-import "@lrnwebcomponents/rpg-character/rpg-character.js";
-import "@lrnwebcomponents/app-hax/lib/v1/app-hax-top-bar.js";
-import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu.js";
-import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu-button.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
-import "@lrnwebcomponents/super-daemon/lib/super-daemon-search.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
-import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@haxtheweb/rpg-character/rpg-character.js";
+import "@haxtheweb/app-hax/lib/v1/app-hax-top-bar.js";
+import "@haxtheweb/app-hax/lib/v1/app-hax-user-menu.js";
+import "@haxtheweb/app-hax/lib/v1/app-hax-user-menu-button.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
+import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
 import "./haxcms-site-insights.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./micros/haxcms-button-add.js";
 import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
-import "@lrnwebcomponents/page-flag/page-flag.js";
+import "@haxtheweb/page-flag/page-flag.js";
 import "wired-elements/lib/wired-button.js";
 
 const ButtonBGLight = new URL(
@@ -449,7 +449,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   // a file needs to be selected via the program and then sub-program options presented
   selectFileToProcess() {
-    import("@lrnwebcomponents/file-system-broker/file-system-broker.js").then(
+    import("@haxtheweb/file-system-broker/file-system-broker.js").then(
       async (e) => {
         const broker = globalThis.FileSystemBroker.requestAvailability();
         const contents = await broker.getFileContents("*");
@@ -645,7 +645,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   let reqBody = {};
                   reqBody.items = response.data.items;
                   await import(
-                    "@lrnwebcomponents/outline-designer/outline-designer.js"
+                    "@haxtheweb/outline-designer/outline-designer.js"
                   ).then(async (e) => {
                     reqBody.jwt = toJS(store.jwt);
                     reqBody.site = {
@@ -1397,11 +1397,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     setTimeout(() => {
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js"
+        "@haxtheweb/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-share-dialog.js"
+        "@haxtheweb/haxcms-elements/lib/core/haxcms-share-dialog.js"
       );
     }, 0);
   }
@@ -2455,11 +2455,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // enable lab experiments
   enableLabExperiments() {
     // lecture player
-    import("@lrnwebcomponents/video-player/lib/lecture-player.js");
+    import("@haxtheweb/video-player/lib/lecture-player.js");
     // AI chat bot
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-ai-chat.js")
+    import("@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js")
     // runkit embed
-    import("@lrnwebcomponents/runkit-embed/runkit-embed.js")
+    import("@haxtheweb/runkit-embed/runkit-embed.js")
   }
 
   goToLocation(location) {
@@ -2906,7 +2906,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
     // prettier-ignore
-    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js").then(() => {
+    import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-dashboard.js").then(() => {
       globalThis.dispatchEvent(new CustomEvent("simple-modal-show", {
         bubbles: true,
         composed: true,

@@ -1,8 +1,8 @@
 import { css, html } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 
 const QRCodeMixin = function (SuperClass) {
@@ -54,8 +54,8 @@ const QRCodeMixin = function (SuperClass) {
     }
 
     QRCodeButton(direction = "left") {
-      import("@lrnwebcomponents/simple-popover/simple-popover.js");
-      import("@lrnwebcomponents/q-r/q-r.js");
+      import("@haxtheweb/simple-popover/simple-popover.js");
+      import("@haxtheweb/q-r/q-r.js");
       return html`
         <div
           id="qrcodebtnwrapper"

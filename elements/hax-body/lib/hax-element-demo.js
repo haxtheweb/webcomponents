@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { HAXStore } from "./hax-store.js";
-import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { haxElementToNode } from "@haxtheweb/utils/utils.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
   static get tag() {
     return "hax-element-demo";

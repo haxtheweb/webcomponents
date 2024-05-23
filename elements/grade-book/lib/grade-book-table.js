@@ -1,5 +1,5 @@
 import { html, css, LitElement } from "lit";
-import "@lrnwebcomponents/editable-table/editable-table.js";
+import "@haxtheweb/editable-table/editable-table.js";
 
 class GradeBookTable extends LitElement {
   static get tag() {

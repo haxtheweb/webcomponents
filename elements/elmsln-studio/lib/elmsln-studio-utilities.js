@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@haxtheweb/accent-card/accent-card.js";
 import "@github/time-elements";
-import "@lrnwebcomponents/nav-card/nav-card.js";
-import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/nav-card/nav-card.js";
+import "@haxtheweb/hexagon-loader/hexagon-loader.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
 
@@ -28,8 +28,8 @@ const ElmslnStudioUtilities = function (SuperClass) {
     constructor() {
       super();
       this.demoMode = false;
-      import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@haxtheweb/lrndesign-avatar/lrndesign-avatar.js");
+      import("@haxtheweb/simple-tooltip/simple-tooltip.js");
     }
     /**
      * default toolbar config object,

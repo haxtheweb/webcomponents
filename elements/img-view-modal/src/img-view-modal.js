@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
 import { ImgViewViewer } from "./lib/img-view-viewer.js";
-import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
+import { ImgPanZoom } from "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
 /**
  * `img-view-modal`
  * Combines img-pan-zoom and simple-modal for an easy image zoom solution

@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/materializecss-styles/materializecss-styles.js";
 /*
  `lrnapp-cis-course-card`
  Present a course card

@@ -48,7 +48,7 @@ class LazyImportDiscover extends HTMLElement {
     }
     document.querySelectorAll(":not(:defined)").forEach((el, index) => {
       let t = el.tagName.toLowerCase();
-      let path = `@lrnwebcomponents/${t}/${t}.js`;
+      let path = `@haxtheweb/${t}/${t}.js`;
       if (el.getAttribute("data-wc-def") != null) {
         path = el.getAttribute("data-wc-def");
       }

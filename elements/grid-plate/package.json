@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/grid-plate",
+  "name": "@haxtheweb/grid-plate",
   "wcfactory": {
     "className": "GridPlate",
     "customElementClass": "PolymerElement",
@@ -16,7 +16,7 @@
   "description": "a grid element with 1 to 4 columns via slots",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "grid-plate.js",
@@ -37,14 +37,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^8.0.2",
-    "@lrnwebcomponents/responsive-grid": "^8.0.2",
-    "@lrnwebcomponents/utils": "^8.0.2",
+    "@haxtheweb/hax-body-behaviors": "^8.0.2",
+    "@haxtheweb/responsive-grid": "^8.0.2",
+    "@haxtheweb/utils": "^8.0.2",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

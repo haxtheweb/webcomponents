@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { HAXStore } from "./hax-store.js";
-import { RichTextEditorButtonBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
+import { RichTextEditorButtonBehaviors } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-button.js";
 /**
  * `hax-text-editor-paste-button`
  * a link button for rich text editor

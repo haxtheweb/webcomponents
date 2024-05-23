@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/hax-cloud",
+  "name": "@haxtheweb/hax-cloud",
   "wcfactory": {
     "className": "HaxCloud",
     "customElementClass": "LitElement",
@@ -24,7 +24,7 @@
   "description": "Turn any website into authorware with one tag and a computer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "main": "hax-cloud.js",
   "module": "hax-cloud.js",
@@ -45,14 +45,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/file-system-broker": "^8.0.2",
-    "@lrnwebcomponents/hax-iconset": "^8.0.2",
-    "@lrnwebcomponents/haxcms-elements": "^8.0.2",
-    "@lrnwebcomponents/simple-icon": "^8.0.2",
+    "@haxtheweb/file-system-broker": "^8.0.2",
+    "@haxtheweb/hax-iconset": "^8.0.2",
+    "@haxtheweb/haxcms-elements": "^8.0.2",
+    "@haxtheweb/simple-icon": "^8.0.2",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

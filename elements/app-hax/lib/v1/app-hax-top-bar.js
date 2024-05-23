@@ -1,7 +1,7 @@
 // dependencies / things imported
 import { LitElement, html, css } from "lit";
 import "./app-hax-wired-toggle.js";
-import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder.js";
+import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 
 // top bar of the UI
 export class AppHaxTopBar extends LitElement {

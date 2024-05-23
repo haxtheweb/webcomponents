@@ -6,8 +6,8 @@ import { LitElement, html, css } from "lit";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "./elmsln-studio-submission-card.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/accent-card/accent-card.js";
 
 /**
  * `elmsln-studio-submissions`

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
-import { SimpleIconPicker } from "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
+import { SimpleIconPicker } from "@haxtheweb/simple-icon-picker/simple-icon-picker.js";
 /**
  * `rich-text-editor-icon-picker`
  * an icon picker for the rich-text-editor

@@ -2,10 +2,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/lrndesign-avatar/lrndesign-avatar.js";
+import "@haxtheweb/materializecss-styles/materializecss-styles.js";
+import "@haxtheweb/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
 class LrnappOpenStudioAssignments extends PolymerElement {
   static get template() {
     return html`

@@ -4,7 +4,7 @@ import {
   setCustomElements,
   withA11y
 } from "@open-wc/demoing-storybook";
-import "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 addDecorator(withA11y);
 
@@ -49,7 +49,7 @@ addParameters({
       inputBorderRadius: 4,
 
       brandTitle: "ELMS:LN lrnwebcompomnents",
-      brandUrl: "https://github.com/elmsln/lrnwebcomponents",
+      brandUrl: "https://github.com/haxtheweb/webcomponents",
     },
   },
   a11y: {

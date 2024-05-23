@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>JOS render Demo</title>
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
       import "@polymer/iron-icons/device-icons.js";
       import "@polymer/iron-icons/iron-icons.js";
       import "@polymer/iron-icons/communication-icons.js";
       import "@polymer/iron-icons/maps-icons.js";
-      import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
+      import "@haxtheweb/lrn-icons/lrn-icons.js";
       import '../lib/jos-render.js';
     </script>
     <script defer>
@@ -24,7 +24,7 @@
       jos.source = "./siteList.json";
       jos.map = {
         tag: "course-card",
-        path: "@lrnwebcomponents/product-card/lib/course-card.js",
+        path: "@haxtheweb/product-card/lib/course-card.js",
         properties: {
           name: 'slug',
           number: 'title',

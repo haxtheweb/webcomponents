@@ -1,15 +1,15 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
+import { SecureRequestXhr } from "@haxtheweb/secure-request/secure-request.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/secure-request/secure-request.js";
+import "@haxtheweb/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
   static get template() {

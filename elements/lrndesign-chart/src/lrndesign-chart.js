@@ -3,15 +3,15 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { ChartistRenderSuper } from "@lrnwebcomponents/chartist-render/chartist-render.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { ChartistRenderSuper } from "@haxtheweb/chartist-render/chartist-render.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 /**
  * `lrndesign-chart`
  * common properties and behaviors for lrndesign chart types
  *
  * @extends ChartistRenderSuper
- * @see @lrnwebcomponents/chartist-render/chartist-render.js
- * @see @lrnwebcomponents/simple-colors/simple-colors.js
+ * @see @haxtheweb/chartist-render/chartist-render.js
+ * @see @haxtheweb/simple-colors/simple-colors.js
  */
 const LrndesignChart = function (SuperClass) {
   return class extends ChartistRenderSuper(SuperClass) {

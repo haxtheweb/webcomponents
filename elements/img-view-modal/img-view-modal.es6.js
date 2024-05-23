@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 /**
  * `img-view-modal`
  * Layers images over each other with a slider interface to compare them
@@ -40,7 +40,7 @@ class imgViewModal extends SchemaBehaviors(LitElement) {
   constructor() {
     super();
     this.opacity = false;
-    import("@lrnwebcomponents/user-action/user-action.js");
+    import("@haxtheweb/user-action/user-action.js");
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/paper-slider/paper-slider.js");
   }

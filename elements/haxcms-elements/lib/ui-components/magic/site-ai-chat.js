@@ -1,10 +1,10 @@
-import { DDDSuper, DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper, DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css, LitElement } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 // enable services for glossary enhancement
 enableServices(["haxcms"]);

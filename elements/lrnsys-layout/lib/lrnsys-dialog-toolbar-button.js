@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 class LrnsysDialogToolbarButton extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -55,7 +55,7 @@ class LrnsysDialogToolbarButton extends LitElement {
    */
   constructor() {
     super();
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    import("@haxtheweb/simple-tooltip/simple-tooltip.js");
   }
   /**
    * LitElement / popular convention

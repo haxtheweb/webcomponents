@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
+import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
 import "./hax-picker.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 /**

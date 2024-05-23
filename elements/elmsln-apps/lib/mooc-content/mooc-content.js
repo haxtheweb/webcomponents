@@ -4,21 +4,21 @@ import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/paper-styles/color.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
-import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
-import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@haxtheweb/grid-plate/grid-plate.js";
+import "@haxtheweb/responsive-grid/lib/responsive-grid-row.js";
+import "@haxtheweb/responsive-grid/lib/responsive-grid-col.js";
+import "@haxtheweb/materializecss-styles/materializecss-styles.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
 import "../elmsln-base-deps.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 /**
  * `lrnapp-book`

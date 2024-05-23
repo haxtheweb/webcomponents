@@ -12,12 +12,12 @@ import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-toast/paper-toast.js";
-import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "@haxtheweb/lrndesign-gallerycard/lrndesign-gallerycard.js";
+import "@haxtheweb/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-open-studio-table.js";
 import "./lrnapp-open-studio-projects.js";
 import "./lrnapp-open-studio-assignments.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 class LrnappOpenStudio extends PolymerElement {
   static get template() {

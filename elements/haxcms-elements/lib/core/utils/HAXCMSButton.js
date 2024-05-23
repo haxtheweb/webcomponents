@@ -1,8 +1,8 @@
 import { LitElement, html, css, unsafeCSS } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { HAXCMSThemeParts } from "./HAXCMSThemeParts.js";
 const ButtonBGLight = new URL(

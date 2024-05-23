@@ -3,19 +3,19 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import {
   wipeSlot,
   lightChildrenToShadowRootSelector,
   unwrap,
-} from "@lrnwebcomponents/utils/utils.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import "@lrnwebcomponents/citation-element/citation-element.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+} from "@haxtheweb/utils/utils.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import "@haxtheweb/citation-element/citation-element.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 enableServices(["haxcms"]);
 /**

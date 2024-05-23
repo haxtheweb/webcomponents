@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/responsive-utility/responsive-utility.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 /**
  * `lrndesign-timeline`

@@ -1,9 +1,9 @@
 import { html } from "lit-html";
-import { CodeEditor } from "@lrnwebcomponents/code-editor/code-editor.js";
-import "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js";
-import "@lrnwebcomponents/code-editor/lib/code-pen-button.js";
+import { CodeEditor } from "@haxtheweb/code-editor/code-editor.js";
+import "@haxtheweb/code-editor/lib/monaco-element/monaco-element.js";
+import "@haxtheweb/code-editor/lib/code-pen-button.js";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Other|Code editor",

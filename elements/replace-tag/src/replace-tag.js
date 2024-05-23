@@ -121,7 +121,7 @@ const ReplaceTagSuper = function (SuperClass) {
       // ensure we have something to replace this with
       if (this.getAttribute("with")) {
         // inject autoload tag which self appends
-        import("@lrnwebcomponents/wc-autoload/wc-autoload.js").then(() => {
+        import("@haxtheweb/wc-autoload/wc-autoload.js").then(() => {
           // force a process to occur if this is the 1st time
           window.WCAutoload.process().then(() => {
             // kicks off the definition to load from the registry if its in there

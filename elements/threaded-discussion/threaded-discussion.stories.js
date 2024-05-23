@@ -1,7 +1,7 @@
 import { html } from "lit-html";
-import { ThreadedDiscussion } from "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
+import { ThreadedDiscussion } from "@haxtheweb/threaded-discussion/threaded-discussion.js";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Apps|Discussion",

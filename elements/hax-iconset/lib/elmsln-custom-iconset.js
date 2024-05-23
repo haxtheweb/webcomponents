@@ -1,4 +1,4 @@
-import("@lrnwebcomponents/simple-icon/lib/simple-iconset.js").then(() => {
+import("@haxtheweb/simple-icon/lib/simple-iconset.js").then(() => {
   if (
     globalThis.Drupal &&
     globalThis.Drupal.settings &&

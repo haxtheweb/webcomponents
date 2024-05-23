@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/map-menu/lib/map-menu-header.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "@haxtheweb/map-menu/lib/map-menu-header.js";
+import "@haxtheweb/a11y-collapse/a11y-collapse.js";
 class MapMenuSubmenu extends LitElement {
   /**
    * LitElement constructable styles enhancement

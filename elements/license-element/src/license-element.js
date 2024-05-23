@@ -49,8 +49,8 @@ export class licenseList {
 }
 
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `license-element`
  * `A simple way of applying a semantically accurate license to work.`

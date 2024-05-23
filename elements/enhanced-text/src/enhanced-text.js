@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 // enable services for glossary enhancement
 enableServices(["haxcms"]);
 MicroFrontendRegistry.add({
@@ -51,7 +51,7 @@ class EnhancedText extends LitElement {
   // apply terms from whatever came back
   applyTermFromList(data) {
     if (data.status && data.data && data.data.length) {
-      import("@lrnwebcomponents/vocab-term/vocab-term.js");
+      import("@haxtheweb/vocab-term/vocab-term.js");
       // loop through and apply terms that were found w/ the vocab-term element
       // get all text nodes internally
       let textNodes = [...this.childNodes] // has childNodes inside, including text ones

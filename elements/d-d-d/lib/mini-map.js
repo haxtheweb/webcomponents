@@ -1,6 +1,6 @@
 import { css, html } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
 
 export class MiniMap extends DDD {
   static properties = {

@@ -1,7 +1,7 @@
 import { css, html, unsafeCSS } from "lit";
-import { SimpleToastEl } from "@lrnwebcomponents/simple-toast/lib/simple-toast-el.js";
-import "@lrnwebcomponents/rpg-character/rpg-character.js";
-import "@lrnwebcomponents/future-terminal-text/future-terminal-text.js";
+import { SimpleToastEl } from "@haxtheweb/simple-toast/lib/simple-toast-el.js";
+import "@haxtheweb/rpg-character/rpg-character.js";
+import "@haxtheweb/future-terminal-text/future-terminal-text.js";
 
 const SpeechBubbleL = new URL("./images/SpeechBubbleL.svg", import.meta.url)
   .href;

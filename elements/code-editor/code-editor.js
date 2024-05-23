@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import "@haxtheweb/code-editor/lib/monaco-element/monaco-element.js";
 import {
   formatHTML,
   ReplaceWithPolyfill,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 if (!Element.prototype.replaceWith) {
   Element.prototype.replaceWith = ReplaceWithPolyfill;
 }
@@ -362,7 +362,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           this[propName] &&
           !globalThis.customElements.get("code-pen-button")
         ) {
-          import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
+          import("@haxtheweb/code-editor/lib/code-pen-button.js");
         }
       }
       if (propName === "value") {

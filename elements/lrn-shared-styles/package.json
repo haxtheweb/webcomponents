@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/lrn-shared-styles",
+  "name": "@haxtheweb/lrn-shared-styles",
   "wcfactory": {
     "className": "LrnSharedStyles",
     "customElementClass": "PolymerElement",
@@ -18,10 +18,10 @@
     "sharedStyles": []
   },
   "version": "8.0.2",
-  "description": "a shared set of styles for all @lrnwebcomponents",
+  "description": "a shared set of styles for all @haxtheweb",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "lrn-shared-styles.js",

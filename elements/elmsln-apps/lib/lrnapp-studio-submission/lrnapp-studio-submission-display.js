@@ -1,14 +1,14 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-import "@lrnwebcomponents/image-inspector/image-inspector.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@lrnwebcomponents/word-count/word-count.js";
+import "@haxtheweb/image-inspector/image-inspector.js";
+import "@haxtheweb/lrndesign-avatar/lrndesign-avatar.js";
+import "@haxtheweb/word-count/word-count.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/lrndesign-contentblock/lrndesign-contentblock.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/lrndesign-contentblock/lrndesign-contentblock.js";
+import "@haxtheweb/lrnsys-layout/lib/lrnsys-dialog.js";
+import { wipeSlot } from "@haxtheweb/utils/utils.js";
 
 class LrnappStudioSubmissionDisplay extends PolymerElement {
   static get template() {

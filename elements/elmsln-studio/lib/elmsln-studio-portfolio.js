@@ -5,9 +5,9 @@
 import { LitElement, html, css } from "lit";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
-import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
-import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
-import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
+import "@haxtheweb/img-view-modal/img-view-modal.js";
+import "@haxtheweb/hax-iconset/hax-iconset.js";
+import "@haxtheweb/threaded-discussion/threaded-discussion.js";
 
 /**
  * `elmsln-studio-portfolio`

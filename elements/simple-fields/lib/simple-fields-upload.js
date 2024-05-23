@@ -1,15 +1,15 @@
 import { html, css, LitElement } from "lit";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import "./simple-fields-url-combo.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-toolbar/simple-toolbar.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/responsive-utility/responsive-utility.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
@@ -595,7 +595,7 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   _takeSelfie(e) {
     if (!this.camera) {
-      import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js").then(
+      import("@haxtheweb/simple-login/lib/simple-camera-snap.js").then(
         () => {
           this.camera = globalThis.document.createElement("simple-camera-snap");
           this.camera.autoplay = true;
@@ -610,7 +610,7 @@ class SimpleFieldsUpload extends I18NMixin(
   }
   _voiceRecorder(e) {
     if (!this.voice) {
-      import("@lrnwebcomponents/voice-recorder/voice-recorder.js").then(() => {
+      import("@haxtheweb/voice-recorder/voice-recorder.js").then(() => {
         this.voice = globalThis.document.createElement("voice-recorder");
         this.voice.addEventListener(
           "voice-recorder-recording-blob",

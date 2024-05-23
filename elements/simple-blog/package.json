@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/simple-blog",
+  "name": "@haxtheweb/simple-blog",
   "wcfactory": {
     "className": "SimpleBlog",
     "customElementClass": "PolymerElement",
@@ -21,7 +21,7 @@
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "simple-blog.js",
@@ -43,18 +43,18 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@github/time-elements": "3.1.4",
-    "@lrnwebcomponents/hax-iconset": "^8.0.2",
-    "@lrnwebcomponents/schema-behaviors": "^8.0.2",
-    "@lrnwebcomponents/simple-colors": "^8.0.2",
-    "@lrnwebcomponents/simple-datetime": "^8.0.2",
-    "@lrnwebcomponents/simple-icon": "^8.0.2",
+    "@haxtheweb/hax-iconset": "^8.0.2",
+    "@haxtheweb/schema-behaviors": "^8.0.2",
+    "@haxtheweb/simple-colors": "^8.0.2",
+    "@haxtheweb/simple-datetime": "^8.0.2",
+    "@haxtheweb/simple-icon": "^8.0.2",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

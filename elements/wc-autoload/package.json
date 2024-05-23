@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/wc-autoload",
+  "name": "@haxtheweb/wc-autoload",
   "wcfactory": {
     "className": "WcAutoload",
     "customElementClass": "HTMLElement",
@@ -20,7 +20,7 @@
   "description": "automatically load new tags in the dom",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "wc-autoload.js",
@@ -41,10 +41,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/dynamic-import-registry": "^8.0.2"
+    "@haxtheweb/dynamic-import-registry": "^8.0.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

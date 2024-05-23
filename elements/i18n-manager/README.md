@@ -8,19 +8,19 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/i18n-manager/i18n-manager.js';
+import '@haxtheweb/i18n-manager/i18n-manager.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/i18n-manager/i18n-manager.js"></script>
+<script type="module" src="@haxtheweb/i18n-manager/i18n-manager.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/i18n-manager/i18n-manager.js';
+  import '@haxtheweb/i18n-manager/i18n-manager.js';
   // imperative form
-  import {I18NManager} from '@lrnwebcomponents/i18n-manager';
+  import {I18NManager} from '@haxtheweb/i18n-manager';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/i18n-manager/i18n-manager.js';
+  import './node_modules/@haxtheweb/i18n-manager/i18n-manager.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/i18n-manager/i18n-manager.js"></script>
+<script type="module" src="https://unpkg.com/@haxtheweb/i18n-manager/i18n-manager.js"></script>
 ```
 
 ## Develop / Demo
@@ -44,7 +44,7 @@ $ yarn run build
 
 ## Contributing
 
-1. Fork it! `git clone https://github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone https://github.com/haxtheweb/webcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
@@ -52,7 +52,7 @@ $ yarn run build
 
 ## Code style
 
-18 (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+18  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

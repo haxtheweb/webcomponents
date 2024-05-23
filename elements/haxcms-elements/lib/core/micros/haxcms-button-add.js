@@ -1,7 +1,7 @@
 import { store } from "../haxcms-site-store.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { HAXCMSButton } from "../utils/HAXCMSButton.js";
-import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
+import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { toJS } from "mobx";
 export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
   HAXCMSButton,
@@ -131,7 +131,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
         // force hax tray to open
         HAXStore.haxTray.collapsed = false;
         // @todo this implies a timing issue on response and the wiping of material
-        // see https://github.com/elmsln/issues/issues/938
+        // see https://github.com/haxtheweb/issues/issues/938
         setTimeout(() => {
           // force into edit mode
           store.editMode = true;

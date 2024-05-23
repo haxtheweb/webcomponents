@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit";
 import "./lib/a11y-menu-button-item.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 const A11yMenuButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {

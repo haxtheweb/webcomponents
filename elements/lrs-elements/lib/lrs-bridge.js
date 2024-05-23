@@ -6,7 +6,7 @@ import { LitElement } from "lit";
 import {
   localStorageSet,
   localStorageGet,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 
 /**
  * `lrs-bridge`

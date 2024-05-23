@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@haxtheweb/accent-card/accent-card.js";
 
 /**
  * `elmsln-studio-submission-card`

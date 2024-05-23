@@ -3,9 +3,9 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `github-preview`
  * `A simple element that displays information about a github repository.`
@@ -334,8 +334,8 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         {
           tag: "github-preview",
           properties: {
-            org: "elmsln",
-            repo: "lrnwebcomponents",
+            org: "haxtheweb",
+            repo: "webcomponents",
           },
           content: "",
         },

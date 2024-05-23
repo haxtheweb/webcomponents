@@ -4,14 +4,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable class-methods-use-this */
 import { html, css, unsafeCSS } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { autorun, toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
-import { localStorageSet } from "@lrnwebcomponents/utils/utils.js";
+import { localStorageSet } from "@haxtheweb/utils/utils.js";
 import "scrollable-component/index.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import "./app-hax-site-button.js";
 import "./app-hax-hat-progress.js";
 import "./app-hax-button.js";
@@ -153,7 +153,7 @@ export class AppHaxSteps extends SimpleColors {
     if (!e.target.comingSoon) {
       const { type } = e.target;
       import(
-        "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+        "@haxtheweb/file-system-broker/lib/docx-file-system-broker.js"
       ).then(async (e) => {
         // enable core services
         enableServices(["haxcms"]);
@@ -208,7 +208,7 @@ export class AppHaxSteps extends SimpleColors {
   async evoImport(e) {
     if (!e.target.comingSoon) {
       const { type } = e.target;
-      import("@lrnwebcomponents/file-system-broker/file-system-broker.js").then(
+      import("@haxtheweb/file-system-broker/file-system-broker.js").then(
         async (e) => {
           // enable core services
           enableServices(["haxcms"]);
@@ -390,7 +390,7 @@ export class AppHaxSteps extends SimpleColors {
     if (!e.target.comingSoon) {
       const { type } = e.target;
       import(
-        "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+        "@haxtheweb/file-system-broker/lib/docx-file-system-broker.js"
       ).then(async (e) => {
         // enable core services
         enableServices(["haxcms"]);

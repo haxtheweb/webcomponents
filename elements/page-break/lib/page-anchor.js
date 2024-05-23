@@ -1,7 +1,7 @@
 import { html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { toJS } from "mobx";
 
 export class PageAnchor extends DDD {

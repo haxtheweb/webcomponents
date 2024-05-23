@@ -1,9 +1,9 @@
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { licenseList } from "@lrnwebcomponents/license-element/license-element.js";
-import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { DDDReset } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { licenseList } from "@haxtheweb/license-element/license-element.js";
+import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDReset } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 /**
  * `citation-element`
  * An element dedicated to presenting and managing a correct citation on the web

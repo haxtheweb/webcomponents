@@ -5,9 +5,9 @@ import "@vaadin/vaadin-grid/vaadin-grid.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/materializecss-styles/materializecss-styles.js";
+import "@haxtheweb/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
 class LrnappOpenStudioTable extends PolymerElement {
   static get template() {
     return html`

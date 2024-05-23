@@ -3,8 +3,8 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "../elmsln-base-deps.js";
-import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "@haxtheweb/lrndesign-gallerycard/lrndesign-gallerycard.js";
+import "@haxtheweb/elmsln-loading/elmsln-loading.js";
 class LrnappBlockRecentSubmissions extends PolymerElement {
   static get template() {
     return html`

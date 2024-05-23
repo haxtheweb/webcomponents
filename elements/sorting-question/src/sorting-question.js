@@ -1,10 +1,10 @@
 // dependencies / things imported
 import { html, css, nothing } from "lit";
-import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
+import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-toast/simple-toast.js";
+import "@haxtheweb/grid-plate/grid-plate.js";
 import "./lib/sorting-option.js";
 
 export class SortingQuestion extends QuestionElement {

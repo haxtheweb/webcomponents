@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
-import "@lrnwebcomponents/code-sample/code-sample.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/code-sample/code-sample.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`

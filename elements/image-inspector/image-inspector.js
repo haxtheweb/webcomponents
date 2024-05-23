@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
 /**
  * `image-inspector`
  * `Zoom, Rotate, Mirror, Download, and View image`

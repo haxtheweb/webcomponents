@@ -11,12 +11,12 @@ import { LitElement, html, css } from "lit";
 class LrndesignImagemap extends LitElement {
   constructor() {
     super();
-    import("@lrnwebcomponents/relative-heading/relative-heading.js");
+    import("@haxtheweb/relative-heading/relative-heading.js");
     // prettier-ignore
     import(
-      "@lrnwebcomponents/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js"
+      "@haxtheweb/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js"
     );
-    import("@lrnwebcomponents/simple-popover/simple-popover.js");
+    import("@haxtheweb/simple-popover/simple-popover.js");
   }
   static get styles() {
     return [

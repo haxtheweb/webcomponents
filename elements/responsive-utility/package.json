@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/responsive-utility",
+  "name": "@haxtheweb/responsive-utility",
   "wcfactory": {
     "className": "ResponsiveUtility",
     "customElementClass": "PolymerElement",
@@ -16,7 +16,7 @@
   "description": "Automated conversion of responsive-utility/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "responsive-utility.js",
@@ -41,8 +41,8 @@
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

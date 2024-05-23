@@ -1,8 +1,8 @@
 /* eslint-disable no-return-assign */
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { html, css } from "lit";
 import { autorun, toJS } from "mobx";
-import { varGet } from "@lrnwebcomponents/utils/utils.js";
+import { varGet } from "@haxtheweb/utils/utils.js";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-site-bar.js";
 import "./app-hax-site-details.js";

@@ -1,8 +1,8 @@
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { css, html, LitElement } from "lit";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
+import "@haxtheweb/iframe-loader/iframe-loader.js";
 
 // wrapped implementation of h5p which is an iframe on the page
 // if we use this method then we can try and see if HAXcms is around

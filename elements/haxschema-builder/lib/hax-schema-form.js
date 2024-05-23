@@ -2,10 +2,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import {
   HaxSchematizer,
   HaxElementizer,
-} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 /**
  * `hax-schema-form`
  * @element hax-schema-form
@@ -19,13 +19,13 @@ class HaxSchemaForm extends PolymerElement {
     super();
     import("@polymer/paper-tabs/paper-tabs.js");
     import("@polymer/paper-tabs/paper-tab.js");
-    import("@lrnwebcomponents/simple-fields/simple-fields.js");
-    import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
-    import("@lrnwebcomponents/code-editor/code-editor.js");
-    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-    import("@lrnwebcomponents/simple-picker/simple-picker.js");
-    import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
-    import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
+    import("@haxtheweb/simple-fields/simple-fields.js");
+    import("@haxtheweb/simple-fields/lib/simple-fields-form.js");
+    import("@haxtheweb/code-editor/code-editor.js");
+    import("@haxtheweb/simple-fields/lib/simple-fields-field.js");
+    import("@haxtheweb/simple-picker/simple-picker.js");
+    import("@haxtheweb/simple-icon-picker/simple-icon-picker.js");
+    import("@haxtheweb/simple-colors/lib/simple-colors-picker.js");
   }
   static get template() {
     return html`

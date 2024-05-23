@@ -1,9 +1,9 @@
 import "./simple-login-avatar.js";
 import "./simple-login-camera.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 class SimpleCameraSnap extends HTMLElement {
   constructor(delayRender = false) {

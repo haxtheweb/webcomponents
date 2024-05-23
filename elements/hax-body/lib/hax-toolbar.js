@@ -1,9 +1,9 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
-import { SimpleToolbarBehaviors } from "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
+import "@haxtheweb/hax-body/lib/hax-toolbar-item.js";
+import "@haxtheweb/hax-body/lib/hax-context-item.js";
+import "@haxtheweb/hax-body/lib/hax-toolbar-menu.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
+import { SimpleToolbarBehaviors } from "@haxtheweb/simple-toolbar/simple-toolbar.js";
 
 const HaxToolbarBehaviors = function (SuperClass) {
   return class extends SimpleToolbarBehaviors(SuperClass) {

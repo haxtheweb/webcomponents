@@ -2,7 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "@haxtheweb/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-block-recent-comments-comment.js";
 class LrnappBlockRecentComments extends PolymerElement {
   static get template() {

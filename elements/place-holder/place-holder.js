@@ -1,7 +1,7 @@
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `place-holder`
  * @element place-holder

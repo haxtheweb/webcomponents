@@ -3,7 +3,7 @@ import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nod
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-spinner/paper-spinner.js";
-import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+import { wipeSlot } from "@haxtheweb/utils/utils.js";
 /**
 `cms-token`
 Render and process a shortcode / token from a content management system.

@@ -2,16 +2,16 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import {
   varExists,
   varGet,
   localStorageGet,
   localStorageSet,
-} from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
-import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+} from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 
 /**
  * `HAXCMSTheme` mixin class to automatically apply HAXcms theme state

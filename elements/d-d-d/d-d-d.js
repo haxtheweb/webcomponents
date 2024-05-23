@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full details.
  */
 import { LitElement } from "lit";
-import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
 import {
   DDDReset,
   DDDAllStyles,

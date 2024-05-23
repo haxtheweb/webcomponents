@@ -1,8 +1,8 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { varGet } from "@lrnwebcomponents/utils/utils.js";
+import { varGet } from "@haxtheweb/utils/utils.js";
 /**
  * `simple-blog-header`
  * `A simple blog header to the front of the site`
@@ -106,11 +106,11 @@ class SimpleBlogHeader extends SimpleColors {
     super();
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
     );
   }
   // render function

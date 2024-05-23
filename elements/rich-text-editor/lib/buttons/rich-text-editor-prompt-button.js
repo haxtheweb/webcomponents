@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
-import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
+import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 
 /**
  * RichTextEditorPromptButtonBehaviors

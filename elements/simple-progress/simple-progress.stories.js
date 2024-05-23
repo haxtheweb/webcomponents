@@ -1,6 +1,6 @@
 import { SimpleProgress } from "./simple-progress.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "System|Progress bar",

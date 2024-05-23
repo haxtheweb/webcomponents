@@ -1,9 +1,9 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-drawer/simple-drawer.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-drawer/simple-drawer.js";
 import "./lrnsys-button-inner.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `lrnsys-drawer`
  * @element lrnsys-drawer
@@ -59,7 +59,7 @@ class LrnsysDrawer extends SimpleColors {
     this.icon = "";
     this.text = "";
     setTimeout(() => {
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@haxtheweb/simple-tooltip/simple-tooltip.js");
     }, 0);
     this.__modal = globalThis.SimpleDrawer.requestAvailability();
   }

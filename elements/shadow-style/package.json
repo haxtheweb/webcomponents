@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/shadow-style",
+  "name": "@haxtheweb/shadow-style",
   "wcfactory": {
     "className": "ShadowStyle",
     "customElementClass": "HTMLElement",
@@ -24,7 +24,7 @@
   "description": "write css that is for piercing shadow roots and applying CSS automatically",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "shadow-style.js",
@@ -45,8 +45,8 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/meme-maker": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/meme-maker": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

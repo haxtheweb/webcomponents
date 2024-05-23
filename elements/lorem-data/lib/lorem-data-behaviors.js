@@ -1,9 +1,9 @@
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { SimpleIconsetDemo } from "@lrnwebcomponents/simple-icon/lib/simple-iconset-demo.js";
-import { SimpleIcon } from "@lrnwebcomponents/simple-icon/simple-icon.js";
-import { SimpleIconLite } from "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import { SimpleIconIconsetsManifest } from "@lrnwebcomponents/simple-icon/lib/simple-iconset-manifest.js";
-import { HaxIconsetManifest } from "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { SimpleIconsetDemo } from "@haxtheweb/simple-icon/lib/simple-iconset-demo.js";
+import { SimpleIcon } from "@haxtheweb/simple-icon/simple-icon.js";
+import { SimpleIconLite } from "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { SimpleIconIconsetsManifest } from "@haxtheweb/simple-icon/lib/simple-iconset-manifest.js";
+import { HaxIconsetManifest } from "@haxtheweb/hax-iconset/lib/hax-iconset-manifest.js";
 
 export const LoremDataBehaviors = function (SuperClass) {
   return class extends SuperClass {

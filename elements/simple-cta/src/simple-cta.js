@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
-import { activeStateBehavior } from "@lrnwebcomponents/utils/lib/activeStateBehavior.js";
-import { DDD, DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import { remoteLinkBehavior } from "@haxtheweb/utils/lib/remoteLinkBehavior.js";
+import { activeStateBehavior } from "@haxtheweb/utils/lib/activeStateBehavior.js";
+import { DDD, DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 /**
  * `simple-cta`
  * `Simple call to action button`

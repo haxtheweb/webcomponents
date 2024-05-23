@@ -4,10 +4,10 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 /**
  * `lrnsys-outline`
  * @element lrnsys-outline
@@ -21,7 +21,7 @@ class LrnsysOutline extends PolymerElement {
   constructor() {
     super();
     import("@polymer/paper-input/paper-input.js");
-    import("@lrnwebcomponents/lrnsys-outline/lib/lrnsys-outline-item.js");
+    import("@haxtheweb/lrnsys-outline/lib/lrnsys-outline-item.js");
   }
   static get template() {
     return html`

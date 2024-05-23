@@ -8,20 +8,20 @@ import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-item/paper-item.js";
 import "../elmsln-base-deps.js";
 import "@polymer/paper-input/paper-input.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sort-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column-group.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
-import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "@haxtheweb/simple-datetime/simple-datetime.js";
+import "@haxtheweb/elmsln-loading/elmsln-loading.js";
+import "@haxtheweb/simple-picker/simple-picker.js";
+import "@haxtheweb/lrndesign-avatar/lrndesign-avatar.js";
 
 class GameShowScoreboard extends PolymerElement {
   static get template() {

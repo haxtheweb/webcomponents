@@ -3,13 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { css, html } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { copyToClipboard } from "@lrnwebcomponents/utils/utils.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/a11y-media-player/a11y-media-player.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import { MediaBehaviorsVideo } from "@haxtheweb/media-behaviors/media-behaviors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { copyToClipboard } from "@haxtheweb/utils/utils.js";
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`

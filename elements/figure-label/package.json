@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/figure-label",
+  "name": "@haxtheweb/figure-label",
   "wcfactory": {
     "className": "FigureLabel",
     "customElementClass": "LitElement",
@@ -21,7 +21,7 @@
   "description": "Figure label element to mark media assets within content.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "figure-label.js",

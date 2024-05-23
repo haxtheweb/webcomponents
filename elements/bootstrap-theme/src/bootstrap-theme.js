@@ -3,20 +3,20 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
-import { BootstrapUserStylesMenuMixin } from "@lrnwebcomponents/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js";
-import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
-import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@lrnwebcomponents/map-menu/map-menu.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { BootstrapUserStylesMenuMixin } from "@haxtheweb/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js";
+import { HAXCMSUserStylesMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
+import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import "@haxtheweb/es-global-bridge/es-global-bridge.js";
+import "@haxtheweb/map-menu/map-menu.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 // bootstrap elements imports
-import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapBreadcrumb.js";
-import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapFooter.js";
-import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapSearch.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/bootstrap-theme/lib/BootstrapBreadcrumb.js";
+import "@haxtheweb/bootstrap-theme/lib/BootstrapFooter.js";
+import "@haxtheweb/bootstrap-theme/lib/BootstrapSearch.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 /**
  * `bootstrap-theme`
@@ -489,7 +489,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this.__siteImage = "";
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
     );
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
@@ -580,7 +580,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
   searchChanged(evt) {
     if (evt.detail.searchText) {
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
       ).then(() => {
         this.searchTerm = evt.detail.searchText;
       });
@@ -672,7 +672,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
   }
 
   getBasePath(url) {
-    return url.substring(0, url.lastIndexOf("/@lrnwebcomponents/") + 1);
+    return url.substring(0, url.lastIndexOf("/@haxtheweb/") + 1);
   }
 
   /**

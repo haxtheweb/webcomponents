@@ -1,8 +1,8 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { autorun, toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
-import "@lrnwebcomponents/promise-progress/promise-progress.js";
+import "@haxtheweb/promise-progress/promise-progress.js";
 
 export class AppHaxHatProgress extends SimpleColors {
   static get tag() {

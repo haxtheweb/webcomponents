@@ -1,11 +1,11 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/word-count/word-count.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/word-count/word-count.js";
+import "@haxtheweb/lrndesign-avatar/lrndesign-avatar.js";
 class LrnappStudioSubmissionComment extends PolymerElement {
   static get template() {
     return html`

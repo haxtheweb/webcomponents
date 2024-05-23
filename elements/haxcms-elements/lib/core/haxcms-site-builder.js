@@ -6,15 +6,15 @@ import {
   varExists,
   localStorageSet,
   validURL,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
-import "@lrnwebcomponents/simple-progress/simple-progress.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
-import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
-import "@lrnwebcomponents/replace-tag/replace-tag.js";
+import "@haxtheweb/simple-progress/simple-progress.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
+import "@haxtheweb/replace-tag/replace-tag.js";
 // toggle store darkmode
 function darkToggle(e) {
   if (e.matches) {
@@ -674,7 +674,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     // dyanmcially import the editor builder which figures out if we should have one
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js"
+      "@haxtheweb/haxcms-elements/lib/core/haxcms-editor-builder.js"
     )
       .then((response) => {
         import("./haxcms-toast.js");
@@ -1036,7 +1036,7 @@ globalThis.HAXme = function (context = null) {
       themes: {
         "haxcms-dev-theme": {
           element: "haxcms-dev-theme",
-          path: "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js",
+          path: "@haxtheweb/haxcms-elements/lib/haxcms-dev-theme.js",
           name: "Developer theme",
         },
       },

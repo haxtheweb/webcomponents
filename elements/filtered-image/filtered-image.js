@@ -4,7 +4,7 @@
  */
 import { html, css } from "lit";
 
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 /**
  * `filtered-image`
  * `An image using an SVG filter. Can be used to make background images have more contrast with text.`

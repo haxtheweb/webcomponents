@@ -1,8 +1,8 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
 `lrnsys-dialog`
 
@@ -62,7 +62,7 @@ class LrnsysDialog extends SimpleColors {
     this.text = "";
     this.headingClass = "white-text black";
     setTimeout(() => {
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@haxtheweb/simple-tooltip/simple-tooltip.js");
       import("./lrnsys-button-inner.js");
     }, 0);
     this.__modal = globalThis.SimpleModal.requestAvailability();

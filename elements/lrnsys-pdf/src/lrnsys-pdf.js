@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 /**
  * `lrnsys-pdf`
  * @element lrnsys-pdf
@@ -12,7 +12,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 class LrnsysPdf extends SchemaBehaviors(PolymerElement) {
   constructor() {
     super();
-    import("@lrnwebcomponents/pdf-browser-viewer/pdf-browser-viewer.js");
+    import("@haxtheweb/pdf-browser-viewer/pdf-browser-viewer.js");
   }
   static get template() {
     return html`

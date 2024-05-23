@@ -1,5 +1,5 @@
 // kittens cry but really really really crude HTML DOM polyfill for nodejs
-import "@lrnwebcomponents/utils/lib/nodejs-fake-dom-polyfill.cjs";
+import "@haxtheweb/utils/lib/nodejs-fake-dom-polyfill.cjs";
 // load our wiring class
 import * as tmp from 'gulp';
 const gulp = tmp.default;

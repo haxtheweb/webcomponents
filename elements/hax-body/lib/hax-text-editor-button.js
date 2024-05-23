@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { RichTextEditorPromptButtonBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { RichTextEditorPromptButtonBehaviors } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `hax-text-editor-button`

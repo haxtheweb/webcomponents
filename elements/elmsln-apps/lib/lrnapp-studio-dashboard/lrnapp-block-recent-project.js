@@ -1,15 +1,15 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-item/paper-item-shared-styles.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/elmsln-loading/elmsln-loading.js";
+import "@haxtheweb/materializecss-styles/materializecss-styles.js";
 class LrnappBlockRecentProject extends PolymerElement {
   static get template() {
     return html`

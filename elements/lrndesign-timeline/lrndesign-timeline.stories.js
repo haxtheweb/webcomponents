@@ -1,6 +1,6 @@
-import { LrndesignTimeline } from "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js";
+import { LrndesignTimeline } from "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Education|Timeline",

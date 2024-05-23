@@ -64,7 +64,7 @@ if (window.__appCDN) {
 var link = document.createElement("link");
 link.rel = "stylesheet";
 link.href =
-  cdn + "build/es6/node_modules/@lrnwebcomponents/haxcms-elements/lib/base.css";
+  cdn + "build/es6/node_modules/@haxtheweb/haxcms-elements/lib/base.css";
 link.type = "text/css";
 def.parentNode.insertBefore(link, def);
 if (!window.__appCustomEnv) {

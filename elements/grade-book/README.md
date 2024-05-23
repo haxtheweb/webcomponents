@@ -8,19 +8,19 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/grade-book/grade-book.js';
+import '@haxtheweb/grade-book/grade-book.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/grade-book/grade-book.js"></script>
+<script type="module" src="@haxtheweb/grade-book/grade-book.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/grade-book/grade-book.js';
+  import '@haxtheweb/grade-book/grade-book.js';
   // imperative form
-  import {GradeBook} from '@lrnwebcomponents/grade-book';
+  import {GradeBook} from '@haxtheweb/grade-book';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/grade-book/grade-book.js';
+  import './node_modules/@haxtheweb/grade-book/grade-book.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/grade-book/grade-book.js"></script>
+<script type="module" src="https://unpkg.com/@haxtheweb/grade-book/grade-book.js"></script>
 ```
 
 ## Develop / Demo
@@ -44,7 +44,7 @@ $ yarn run build
 
 ## Contributing
 
-1. Fork it! `git clone https://github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone https://github.com/haxtheweb/webcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
@@ -52,7 +52,7 @@ $ yarn run build
 
 ## Code style
 
-Book (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Book  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

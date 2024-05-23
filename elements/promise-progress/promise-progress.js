@@ -4,7 +4,7 @@
  */
 import { html } from "lit";
 import { PromiseProgressLite } from "./lib/promise-progress-lite.js";
-import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
 /**
  * `promise-progress`
  * `An element to display the progress visually of forfilling an array of JS Promise objects`

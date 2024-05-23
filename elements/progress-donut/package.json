@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/progress-donut",
+  "name": "@haxtheweb/progress-donut",
   "wcfactory": {
     "className": "ProgressDonut",
     "customElementClass": "LitElement",
@@ -23,7 +23,7 @@
   "description": "Start of progress-donut",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "progress-donut.js",
@@ -44,15 +44,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^8.0.2",
-    "@lrnwebcomponents/lrndesign-chart": "^8.0.2",
-    "@lrnwebcomponents/schema-behaviors": "^8.0.2",
-    "@lrnwebcomponents/simple-colors": "^8.0.2",
+    "@haxtheweb/chartist-render": "^8.0.2",
+    "@haxtheweb/lrndesign-chart": "^8.0.2",
+    "@haxtheweb/schema-behaviors": "^8.0.2",
+    "@haxtheweb/simple-colors": "^8.0.2",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

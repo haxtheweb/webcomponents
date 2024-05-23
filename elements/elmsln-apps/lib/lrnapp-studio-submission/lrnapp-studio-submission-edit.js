@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
 import "./lrnapp-studio-submission-edit-images.js";
 import "./lrnapp-studio-submission-edit-files.js";

@@ -1,7 +1,7 @@
 import { css, html, unsafeCSS } from "lit";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * @note Gut all design settings in HAX core. this allows for design systems to hook in

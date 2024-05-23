@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/lrnsys-pdf",
+  "name": "@haxtheweb/lrnsys-pdf",
   "wcfactory": {
     "className": "LrnsysPdf",
     "customElementClass": "PolymerElement",
@@ -21,7 +21,7 @@
   "description": "Automated conversion of lrnsys-pdf/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "lrnsys-pdf.js",
@@ -42,13 +42,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/pdf-browser-viewer": "^8.0.2",
-    "@lrnwebcomponents/schema-behaviors": "^8.0.2",
+    "@haxtheweb/pdf-browser-viewer": "^8.0.2",
+    "@haxtheweb/schema-behaviors": "^8.0.2",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

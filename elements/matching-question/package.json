@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/matching-question",
+  "name": "@haxtheweb/matching-question",
   "wcfactory": {
     "className": "MatchingQuestion",
     "customElementClass": "LitElement",
@@ -10,13 +10,13 @@
   "description": "Match concepts question type",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "main": "matching-question.js",
   "module": "matching-question.js",
   "umd": "matching-question.umd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/matching-question/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@haxtheweb/matching-question/test/",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"*.js|lib/**.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@wcfactory/rollup-umd-build": "^0.12.1",
-    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@haxtheweb/deduping-fix": "^7.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",

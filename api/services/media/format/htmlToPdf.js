@@ -24,11 +24,11 @@ export default async function handler(req, res) {
         <link rel="preconnect" crossorigin href="https://fonts.googleapis.com">
         <link rel="preload" href="${magic}build.js" as="script" />
         <link rel="preload" href="${magic}wc-registry.json" as="fetch" crossorigin="anonymous" />
-        <link rel="preload" href="${magic}build/es6/node_modules/@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js" as="script" crossorigin="anonymous" />
-        <link rel="modulepreload" href="${magic}build/es6/node_modules/@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js" />
-        <link rel="preload" href="${magic}build/es6/node_modules/@lrnwebcomponents/wc-autoload/wc-autoload.js" as="script" crossorigin="anonymous" />
-        <link rel="modulepreload" href="${magic}build/es6/node_modules/@lrnwebcomponents/wc-autoload/wc-autoload.js" />
-        <link rel="stylesheet" href="${magic}build/es6/node_modules/@lrnwebcomponents/haxcms-elements/lib/base.css" />
+        <link rel="preload" href="${magic}build/es6/node_modules/@haxtheweb/dynamic-import-registry/dynamic-import-registry.js" as="script" crossorigin="anonymous" />
+        <link rel="modulepreload" href="${magic}build/es6/node_modules/@haxtheweb/dynamic-import-registry/dynamic-import-registry.js" />
+        <link rel="preload" href="${magic}build/es6/node_modules/@haxtheweb/wc-autoload/wc-autoload.js" as="script" crossorigin="anonymous" />
+        <link rel="modulepreload" href="${magic}build/es6/node_modules/@haxtheweb/wc-autoload/wc-autoload.js" />
+        <link rel="stylesheet" href="${magic}build/es6/node_modules/@haxtheweb/haxcms-elements/lib/base.css" />
         <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
         <style>
         body {

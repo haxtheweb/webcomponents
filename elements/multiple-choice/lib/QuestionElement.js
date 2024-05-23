@@ -1,14 +1,14 @@
 // superclass that can be used to more rapidly build question based components
 import { LitElement, html, css, nothing } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-toast/simple-toast.js";
+import "@haxtheweb/grid-plate/grid-plate.js";
 
 export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
 

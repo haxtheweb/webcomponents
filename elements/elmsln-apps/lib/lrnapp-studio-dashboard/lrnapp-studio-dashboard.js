@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "@haxtheweb/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-block-recent-project.js";
 import "./lrnapp-block-recent-submissions.js";
 import "./lrnapp-block-recent-comments.js";

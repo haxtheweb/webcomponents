@@ -1,6 +1,6 @@
 import { MicroFrontendRegistry } from "../micro-frontend-registry.js";
 
-// integrate the core services of our lrnwebcomponents API layer
+// integrate the core services of our webcomponents API layer
 // While not required, this is the home for non-visual aspects of
 // our ecosystem that can be leveraged independent of other things
 // Examples of a platform specific implementation would be HAXcms

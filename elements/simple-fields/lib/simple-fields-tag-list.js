@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "./simple-tag.js";
 
 /**

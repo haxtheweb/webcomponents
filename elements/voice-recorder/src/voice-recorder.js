@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit";
 import { record } from "./lib/vmsg-fork.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `voice-recorder`
  * `LAME bridge`

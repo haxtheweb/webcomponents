@@ -10,7 +10,7 @@ esac
 # where am i? move to where I am. This ensures source is properly sourced
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
-cd ../node_modules/@lrnwebcomponents/
+cd ../node_modules/@haxtheweb/
 # ensure our node modules are not nested in _deprecated dependencies
 for project in */ ; do
   cd ${project}
@@ -25,9 +25,9 @@ for project in */ ; do
   p="$(basename -- $project)"
   rm -rf node_modules
   # drop symlink but NOT actual directories
-  unlink ../../node_modules/@lrnwebcomponents/${p}
+  unlink ../../node_modules/@haxtheweb/${p}
   # if it was a folder, then this will just fail without an issue
-  mkdir ../../node_modules/@lrnwebcomponents/${p}
+  mkdir ../../node_modules/@haxtheweb/${p}
   if [ "${machine}" == "MinGw" ]; then
     # Check and create symlink function for Windows Git Bash
     create_symlink_win() {
@@ -41,53 +41,53 @@ for project in */ ; do
       fi
     }
     if [ -f "${p}.js" ]; then
-      create_symlink_win ../../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
+      create_symlink_win ../../../elements/${p}/${p}.js ../../node_modules/@haxtheweb/${p}/${p}.js
     fi
     if [ -f "package.json" ]; then
-      create_symlink_win ../../../elements/${p}/package.json ../../node_modules/@lrnwebcomponents/${p}/package.json
+      create_symlink_win ../../../elements/${p}/package.json ../../node_modules/@haxtheweb/${p}/package.json
     fi
     if [ -d "lib" ]; then
-      create_symlink_win ../../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
+      create_symlink_win ../../../elements/${p}/lib ../../node_modules/@haxtheweb/${p}/lib
     fi
     if [ -d "locales" ]; then
-      create_symlink_win ../../../elements/${p}/locales ../../node_modules/@lrnwebcomponents/${p}/locales
+      create_symlink_win ../../../elements/${p}/locales ../../node_modules/@haxtheweb/${p}/locales
     fi
     if [ -d "server" ]; then
-      create_symlink_win ../../../elements/${p}/server ../../node_modules/@lrnwebcomponents/${p}/server
+      create_symlink_win ../../../elements/${p}/server ../../node_modules/@haxtheweb/${p}/server
     fi
     if [ -d "build" ]; then
-      create_symlink_win ../../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
+      create_symlink_win ../../../elements/${p}/build ../../node_modules/@haxtheweb/${p}/build
     fi
     if [ -d "src" ]; then
-      create_symlink_win ../../../elements/${p}/src ../../node_modules/@lrnwebcomponents/${p}/src
+      create_symlink_win ../../../elements/${p}/src ../../node_modules/@haxtheweb/${p}/src
     fi
     if [ -d "dist" ]; then
-      create_symlink_win ../../../elements/${p}/dist ../../node_modules/@lrnwebcomponents/${p}/dist
+      create_symlink_win ../../../elements/${p}/dist ../../node_modules/@haxtheweb/${p}/dist
     fi
   else
     if [ -f "${p}.js" ]; then
-     ln -s ../../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
+     ln -s ../../../elements/${p}/${p}.js ../../node_modules/@haxtheweb/${p}/${p}.js
     fi
     if [ -f "package.json" ]; then
-      ln -s ../../../elements/${p}/package.json ../../node_modules/@lrnwebcomponents/${p}/package.json
+      ln -s ../../../elements/${p}/package.json ../../node_modules/@haxtheweb/${p}/package.json
     fi
     if [ -d "lib" ]; then
-       ln -s ../../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
+       ln -s ../../../elements/${p}/lib ../../node_modules/@haxtheweb/${p}/lib
     fi
     if [ -d "locales" ]; then
-      ln -s ../../../elements/${p}/locales ../../node_modules/@lrnwebcomponents/${p}/locales
+      ln -s ../../../elements/${p}/locales ../../node_modules/@haxtheweb/${p}/locales
     fi
     if [ -d "server" ]; then
-      ln -s ../../../elements/${p}/server ../../node_modules/@lrnwebcomponents/${p}/server
+      ln -s ../../../elements/${p}/server ../../node_modules/@haxtheweb/${p}/server
     fi
     if [ -d "build" ]; then
-       ln -s ../../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
+       ln -s ../../../elements/${p}/build ../../node_modules/@haxtheweb/${p}/build
     fi
     if [ -d "src" ]; then
-       ln -s ../../../elements/${p}/src ../../node_modules/@lrnwebcomponents/${p}/src
+       ln -s ../../../elements/${p}/src ../../node_modules/@haxtheweb/${p}/src
     fi
     if [ -d "dist" ]; then
-       ln -s ../../../elements/${p}/dist ../../node_modules/@lrnwebcomponents/${p}/dist
+       ln -s ../../../elements/${p}/dist ../../node_modules/@haxtheweb/${p}/dist
     fi
   fi
   if [ -d "src/src" ]; then

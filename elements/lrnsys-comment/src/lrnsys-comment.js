@@ -5,20 +5,20 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-input/paper-textarea.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-import "@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
-import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
-import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
-import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-link.js";
-import "@lrnwebcomponents/word-count/word-count.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/materializecss-styles/lib/colors.js";
+import "@haxtheweb/mtz-marked-editor/mtz-marked-editor.js";
+import "@haxtheweb/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
+import "@haxtheweb/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
+import "@haxtheweb/mtz-marked-editor/lib/mtz-marked-control-link.js";
+import "@haxtheweb/word-count/word-count.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/lrndesign-avatar/lrndesign-avatar.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/paper-badge/paper-badge.js";
-import "@lrnwebcomponents/moment-element/moment-element.js";
+import "@haxtheweb/moment-element/moment-element.js";
 /**
  `lrnsys-comment`
  A well styled comment for a user with markdown support.

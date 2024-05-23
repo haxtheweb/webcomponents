@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { navigator } from "lit-element-router";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
 /**
  * `elmsln-studio-button`

@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 /**
  * `a11y-compare-image`
@@ -99,7 +99,7 @@ class a11yCompareImage extends SimpleColors {
     this.accentColor = "blue";
     this.__markers = [];
     this.label = "Compare images";
-    import("@lrnwebcomponents/simple-range-input/simple-range-input.js");
+    import("@haxtheweb/simple-range-input/simple-range-input.js");
   }
   render() {
     return html` <figure>

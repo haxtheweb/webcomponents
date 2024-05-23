@@ -4,10 +4,10 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-route/app-location.js";
 import "../elmsln-base-deps.js";
 import "@polymer/app-route/app-route.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -15,15 +15,15 @@ import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@lrnwebcomponents/lrnsys-render-html/lrnsys-render-html.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "@haxtheweb/lrnsys-render-html/lrnsys-render-html.js";
+import "@haxtheweb/lrnsys-layout/lib/lrnsys-dialog.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/elmsln-loading/elmsln-loading.js";
+import "@haxtheweb/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-studio-project-button.js";
 import "./lrnapp-studio-assignment-button.js";
 import "../lrnapp-studio-submission/lrnapp-studio-submission-button.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 class LrnappStudioKanban extends PolymerElement {
   static get template() {

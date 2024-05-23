@@ -3,9 +3,9 @@
  * @license , see License.md for full text.
  */
 import { html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 /**
  * `page-section`
  * `A well designed section of a page with many options for marketing purposes`

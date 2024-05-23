@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
+import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 
 /**
  * `tagging-question`

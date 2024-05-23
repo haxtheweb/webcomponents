@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import { AbsolutePositionBehavior } from "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 /**
   * `simple-popover`
   * a popover alertdialog that is positioned next to a target element

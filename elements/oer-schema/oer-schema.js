@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { OERSchema } from "@lrnwebcomponents/oer-schema/lib/oerschema.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { OERSchema } from "@haxtheweb/oer-schema/lib/oerschema.js";
 /**
  * `oer-schema`
  * `A LRN element to wrap an oer schema prefix onto materials.`

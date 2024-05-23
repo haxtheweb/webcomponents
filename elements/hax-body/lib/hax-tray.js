@@ -5,22 +5,22 @@ import {
   wipeSlot,
   normalizeEventPath,
   localStorageSet,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 import {
   HaxSchematizer,
   HaxElementizer,
-} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder.js";
+} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
+import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import {
   HaxComponentStyles,
   HaxTrayDetail,
-} from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
-import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-tab.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import "@haxtheweb/simple-fields/simple-fields.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-tab.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "./hax-tray-upload.js";
 import "./hax-app-search.js";
 import "./hax-gizmo-browser.js";
@@ -30,12 +30,12 @@ import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-tray-button.js";
 import "./hax-toolbar-menu.js";
-import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
-import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { Undo } from "@haxtheweb/undo-manager/undo-manager.js";
+import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 /**
  * `hax-tray`

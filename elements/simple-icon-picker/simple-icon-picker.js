@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { css } from "lit";
-import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import { SimplePicker } from "@haxtheweb/simple-picker/simple-picker.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 
 /**
  * `simple-icon-picker`

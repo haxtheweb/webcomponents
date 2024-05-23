@@ -20,4 +20,4 @@ import "./lib/mooc-content/mooc-content.js";
 import "./lib/elmsln-base.js";
 import "./lib/elmsln-base-deps.js";
 import "@polymer/paper-input/paper-input.js";
-import "@lrnwebcomponents/grade-book/lib/grade-book-lite.js";
+import "@haxtheweb/grade-book/lib/grade-book-lite.js";

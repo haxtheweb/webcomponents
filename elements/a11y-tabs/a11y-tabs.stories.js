@@ -1,8 +1,8 @@
 import { html } from "lit-html";
-import { A11yTabs } from "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
-import { A11yTab } from "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
+import { A11yTabs } from "@haxtheweb/a11y-tabs/a11y-tabs.js";
+import { A11yTab } from "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Navigation|Tabs",

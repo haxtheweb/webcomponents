@@ -3,23 +3,23 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   displayBehaviors,
   editBehaviors,
   editableTableStyles,
 } from "./editable-table-behaviors.js";
-import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
-import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/rich-text-editor/rich-text-editor.js";
+import "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
+import "@haxtheweb/simple-toolbar/simple-toolbar.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "./editable-table-editor-rowcol.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button-group.js";
-import { ReplaceWithPolyfill } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button-group.js";
+import { ReplaceWithPolyfill } from "@haxtheweb/utils/utils.js";
 
 if (!Element.prototype.replaceWith) {
   Element.prototype.replaceWith = ReplaceWithPolyfill;

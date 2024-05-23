@@ -514,7 +514,7 @@ Page
 # &lt;lrn-shared-styles&gt;
 
 Shared
-> a shared set of styles for all @lrnwebcomponents
+> a shared set of styles for all @haxtheweb
 # &lt;lrnsys-button&gt;
 
 Button

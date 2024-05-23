@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsBaseStyles } from "./simple-fields-ui.js";
-import { encapScript, wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+import { encapScript, wipeSlot } from "@haxtheweb/utils/utils.js";
 
 class SimpleFieldsHtmlBlock extends LitElement {
   /**

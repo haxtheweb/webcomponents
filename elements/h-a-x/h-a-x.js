@@ -2,10 +2,10 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import "./lib/h-a-x-dependencies.js";
-import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
-import { editableTableDisplayStyles } from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
+import { localStorageGet } from "@haxtheweb/utils/utils.js";
+import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editable-table-behaviors.js";
 
 /**
  * `h-a-x`

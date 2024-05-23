@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/lrn-icons",
+  "name": "@haxtheweb/lrn-icons",
   "wcfactory": {
     "className": "LrnIcons",
     "customElementClass": "PolymerElement",
@@ -21,7 +21,7 @@
   "description": "Some icons related to education concepts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "lrn-icons.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/lrn-icon",
+  "name": "@haxtheweb/lrn-icon",
   "wcfactory": {
     "className": "LrnIcon",
     "customElementClass": "PolymerElement",
@@ -21,7 +21,7 @@
   "description": "Some icons related to education concepts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "lrn-icon.js",
@@ -42,17 +42,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-icons": "^8.0.2",
-    "@lrnwebcomponents/lrn-shared-styles": "^8.0.2",
+    "@haxtheweb/lrn-icons": "^8.0.2",
+    "@haxtheweb/lrn-shared-styles": "^8.0.2",
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-iconset": "^3.0.0",
     "@polymer/iron-meta": "^3.0.0",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/lrn-icons": "^0.0.30",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/lrn-icons": "^0.0.30",
+    "@haxtheweb/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

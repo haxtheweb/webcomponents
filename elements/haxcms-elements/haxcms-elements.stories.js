@@ -1,7 +1,7 @@
 import { html } from "lit-html";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
-import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-insights.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-insights.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 // need to account for polymer goofiness when webpack rolls this up
 const base = "https://haxtheweb.org/";
 setTimeout(async () => {

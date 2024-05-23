@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
  * `matching-question`

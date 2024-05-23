@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/video-player",
+  "name": "@haxtheweb/video-player",
   "wcfactory": {
     "className": "VideoPlayer",
     "customElementClass": "LitElement",
@@ -23,7 +23,7 @@
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "video-player.js",
@@ -44,18 +44,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-media-player": "^8.0.2",
-    "@lrnwebcomponents/d-d-d": "^8.0.2",
-    "@lrnwebcomponents/i18n-manager": "^8.0.2",
-    "@lrnwebcomponents/intersection-element": "^8.0.2",
-    "@lrnwebcomponents/media-behaviors": "^8.0.2",
-    "@lrnwebcomponents/schema-behaviors": "^8.0.2",
-    "@lrnwebcomponents/utils": "^8.0.2",
+    "@haxtheweb/a11y-media-player": "^8.0.2",
+    "@haxtheweb/d-d-d": "^8.0.2",
+    "@haxtheweb/i18n-manager": "^8.0.2",
+    "@haxtheweb/intersection-element": "^8.0.2",
+    "@haxtheweb/media-behaviors": "^8.0.2",
+    "@haxtheweb/schema-behaviors": "^8.0.2",
+    "@haxtheweb/utils": "^8.0.2",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

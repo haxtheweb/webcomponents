@@ -44,7 +44,7 @@ export default {
               "themes": { 
                 "haxcms-dev-theme": { 
                   "element": "haxcms-dev-theme", 
-                  "path": "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js", 
+                  "path": "@haxtheweb/haxcms-elements/lib/haxcms-dev-theme.js", 
                   "name": "Developer theme"
                 }
               }

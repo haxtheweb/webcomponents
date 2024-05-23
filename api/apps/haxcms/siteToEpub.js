@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       author: 'btopro',
       publisher: 'btopro',
       cover: "https://oer.hax.psu.edu/bto108/sites/edtechjoker/assets/banner.jpg",
-      output: `/home/bto108a/lrnwebcomponents/${site.title}.epub`,
+      output: `/home/bto108a/haxtheweb/${site.title}.epub`,
       content: items
     };
     new Epub(options).promise.then(() => console.log('Done'));    

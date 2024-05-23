@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 class MapMenuHeader extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement

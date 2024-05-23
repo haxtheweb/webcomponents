@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/circle-progress/circle-progress.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/circle-progress/circle-progress.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/paper-spinner/paper-spinner.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `lrnsys-progress-circle`
  * @element lrnsys-progress-circle

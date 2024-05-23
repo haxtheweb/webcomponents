@@ -1,7 +1,7 @@
 import { html, css, LitElement } from "lit";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
-import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
+import { localStorageGet } from "@haxtheweb/utils/utils.js";
 
 /**
  * `hax-app-search`

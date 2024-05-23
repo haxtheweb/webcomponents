@@ -1,6 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/marked-element/marked-element.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "./lrnapp-studio-block.js";
 import "./lrnapp-studio-submission-edit-textarea.js";

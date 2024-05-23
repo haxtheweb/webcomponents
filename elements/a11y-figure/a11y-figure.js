@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
+import { A11yDetails } from "@haxtheweb/a11y-details/a11y-details.js";
 /**
  * `a11y-figure`
  * accessible progressive disclosure with detail and summary

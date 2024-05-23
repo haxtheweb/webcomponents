@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder.js";
+import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import { autorun, toJS } from "mobx";
 import { HAXStore } from "./hax-store.js";
 /**

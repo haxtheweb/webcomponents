@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/iframe-loader",
+  "name": "@haxtheweb/iframe-loader",
   "wcfactory": {
     "className": "IframeLoader",
     "customElementClass": "LitElement",
@@ -15,7 +15,7 @@
   "description": "Adds a loading indicator for iframes.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "iframe-loader.js",

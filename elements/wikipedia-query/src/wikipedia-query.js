@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `wikipedia-query`
  * `Query and present information from wikipedia.`
@@ -98,7 +98,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       // element is visible, now we can search
       if (propName == "elementVisible" && this[propName]) {
-        import("@lrnwebcomponents/citation-element/citation-element.js");
+        import("@haxtheweb/citation-element/citation-element.js");
       }
       if (
         ["elementVisible", "search", "headers", "language"].includes(

@@ -3,18 +3,18 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { LrndesignPie } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js";
+import "@haxtheweb/simple-colors/simple-colors.js";
+import { LrndesignPie } from "@haxtheweb/lrndesign-chart/lib/lrndesign-pie.js";
 /**
  * `progress-donut`
  * @element progress-donut
  * shows progress in as a rounded shape w/ hollow middle
  *
  * @extends LrndesignPie
- * @see @lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js
- * @see @lrnwebcomponents/lrndesign-chart/lrndesign-chart.js
- * @see @lrnwebcomponents/chartist-render/chartist-render.js
- * @see @lrnwebcomponents/simple-colors/simple-colors.js
+ * @see @haxtheweb/lrndesign-chart/lib/lrndesign-pie.js
+ * @see @haxtheweb/lrndesign-chart/lrndesign-chart.js
+ * @see @haxtheweb/chartist-render/chartist-render.js
+ * @see @haxtheweb/simple-colors/simple-colors.js
  *
  * @demo demo/index.html
  */

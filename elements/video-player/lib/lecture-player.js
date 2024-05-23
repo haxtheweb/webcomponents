@@ -1,16 +1,16 @@
 import { css, html, LitElement } from "lit";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   DDDDataAttributes,
   DDDPulseEffect,
-} from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
-import "@lrnwebcomponents/video-player/video-player.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@lrnwebcomponents/simple-cta/simple-cta.js";
+} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import "@haxtheweb/video-player/video-player.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-cta/simple-cta.js";
 
 class LecturePlayer extends DDDSuper(LitElement) {
   static get styles() {

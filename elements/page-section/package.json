@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/page-section",
+  "name": "@haxtheweb/page-section",
   "wcfactory": {
     "className": "PageSection",
     "customElementClass": "LitElement",
@@ -24,7 +24,7 @@
   "description": "A well designed section of a page with many options for marketing purposes",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "main": "page-section.js",
   "module": "page-section.js",
@@ -45,15 +45,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/media-image": "^8.0.2",
-    "@lrnwebcomponents/simple-colors": "^8.0.2",
-    "@lrnwebcomponents/simple-icon": "^8.0.2",
-    "@lrnwebcomponents/simple-tooltip": "^8.0.2",
+    "@haxtheweb/media-image": "^8.0.2",
+    "@haxtheweb/simple-colors": "^8.0.2",
+    "@haxtheweb/simple-icon": "^8.0.2",
+    "@haxtheweb/simple-tooltip": "^8.0.2",
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/simple-cta": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/simple-cta": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

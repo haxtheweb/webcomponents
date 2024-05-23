@@ -4,9 +4,9 @@
  */
 import { LitElement, html, css } from "lit";
 import { RelativeHeadingLite } from "./lib/relative-heading-lite.js";
-import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
  * `relative-heading`

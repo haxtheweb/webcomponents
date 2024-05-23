@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 /**
  * @license
  * Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.

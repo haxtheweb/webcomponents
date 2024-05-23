@@ -6,7 +6,7 @@
  * @element social-media-iconset is a iconset for the Material Design Icons collection
  *
  * Example:
- *   <script>import "@lrnwebcomponents/social-media-icons/social-media-iconset.js";</script>
+ *   <script>import "@haxtheweb/social-media-icons/social-media-iconset.js";</script>
  *   <simple-icon icon="social-media:twitter"></simple-icon>
  *
  * @group LRN Elements

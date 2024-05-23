@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, LitElement } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 /**
  * `lrndesign-paperstack`
  * @element lrndesign-paperstack

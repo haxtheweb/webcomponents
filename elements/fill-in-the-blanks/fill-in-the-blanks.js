@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { MarkTheWords } from "@lrnwebcomponents/mark-the-words/mark-the-words.js";
+import { MarkTheWords } from "@haxtheweb/mark-the-words/mark-the-words.js";
 
 /**
  * `fill-in-the-blanks`

@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { RichTextToolbarStyles } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
-import { RichTextEditorRangeBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
+import { RichTextToolbarStyles } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-button.js";
+import { RichTextEditorRangeBehaviors } from "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
 
 /**
  * `rich-text-editor-breadcrumbs`

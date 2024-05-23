@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>MutationObserverImportMixin: mutation-observer-import-mixin Demo</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
@@ -37,16 +37,16 @@
             registry.basePath = '/node_modules/';
             registry.register({
               tag: "wikipedia-query",
-              path: "@lrnwebcomponents/wikipedia-query/wikipedia-query.js"
+              path: "@haxtheweb/wikipedia-query/wikipedia-query.js"
             });
             registry.register({
               tag: "grid-plate",
-              path: "@lrnwebcomponents/grid-plate/grid-plate.js"
+              path: "@haxtheweb/grid-plate/grid-plate.js"
             });
             window.dispatchEvent(new CustomEvent("dynamic-import-registry--register", {
               detail: {
                 tag: 'meme-maker',
-                path: '@lrnwebcomponents/meme-maker/meme-maker.js'
+                path: '@haxtheweb/meme-maker/meme-maker.js'
               }
             }));
           </script>

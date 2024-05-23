@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/simple-wc",
+  "name": "@haxtheweb/simple-wc",
   "wcfactory": {
     "className": "SimpleWc",
     "customElementClass": "HTMLElement",
@@ -20,7 +20,7 @@
   "description": "A simple web component wrapper to simplify consistent patterns of element creation",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "simple-wc.js",
@@ -44,7 +44,7 @@
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",

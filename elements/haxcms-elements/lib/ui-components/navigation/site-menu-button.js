@@ -3,13 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `site-menu-button`
  * `Menu button based on the hierarchy`
@@ -130,7 +130,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    import("@haxtheweb/simple-tooltip/simple-tooltip.js");
   }
   // render function
   render() {

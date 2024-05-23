@@ -3,14 +3,14 @@
  * @license , see License.md for full text.
  */
 import { html, css } from "lit";
-import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
-import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
-import "@lrnwebcomponents/scroll-button/scroll-button.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
+import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
+import "@haxtheweb/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
  * `terrible-themes`

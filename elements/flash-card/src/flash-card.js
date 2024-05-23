@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "./lib/flash-card-answer-box.js";
 import "./lib/flash-card-prompt-img.js";
 
@@ -55,7 +55,7 @@ export class FlashCard extends SimpleColors {
     this.status = e.detail;
     if (this.status === "correct") {
       import(
-        "@lrnwebcomponents/multiple-choice/lib/confetti-container.js"
+        "@haxtheweb/multiple-choice/lib/confetti-container.js"
       ).then((module) => {
         setTimeout(() => {
           this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");

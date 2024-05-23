@@ -1,7 +1,7 @@
 import { html } from "lit-html";
-import { ElmslnStudio } from "@lrnwebcomponents/elmsln-studio/elmsln-studio.js";
+import { ElmslnStudio } from "@haxtheweb/elmsln-studio/elmsln-studio.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Apps|ELMS:LN Studio",

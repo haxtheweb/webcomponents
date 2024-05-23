@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/random-image/random-image.js";
+import "@haxtheweb/random-image/random-image.js";
 /**
  * `lrnsys-randomimage`
  * @element lrnsys-randomimage

@@ -302,7 +302,7 @@ class SimpleFields extends SimpleFieldsLite {
           },
           "simple-picker": {
             defaultSettings: {
-              import: "@lrnwebcomponents/simple-picker/simple-picker.js",
+              import: "@haxtheweb/simple-picker/simple-picker.js",
               element: "simple-picker",
               attributes: {
                 autofocus: true,
@@ -375,7 +375,7 @@ class SimpleFields extends SimpleFieldsLite {
           "html-block": {
             defaultSettings: {
               import:
-                "@lrnwebcomponents/simple-fields/lib/simple-fields-html-block.js",
+                "@haxtheweb/simple-fields/lib/simple-fields-html-block.js",
               element: "simple-fields-html-block",
               noWrap: true,
               attributes: {
@@ -387,7 +387,7 @@ class SimpleFields extends SimpleFieldsLite {
           markup: {
             defaultSettings: {
               import:
-                "@lrnwebcomponents/simple-fields/lib/simple-fields-code.js",
+                "@haxtheweb/simple-fields/lib/simple-fields-code.js",
               element: "simple-fields-code",
               setValueProperty: "editorValue",
               noWrap: true,
@@ -430,12 +430,12 @@ class SimpleFields extends SimpleFieldsLite {
               tabs: {
                 defaultSettings: {
                   import:
-                    "@lrnwebcomponents/simple-fields/lib/simple-fields-tabs.js",
+                    "@haxtheweb/simple-fields/lib/simple-fields-tabs.js",
                   element: "simple-fields-tabs",
                   noWrap: true,
                   child: {
                     import:
-                      "@lrnwebcomponents/simple-fields/lib/simple-fields-tab.js",
+                      "@haxtheweb/simple-fields/lib/simple-fields-tab.js",
                     element: "simple-fields-tab",
                     noWrap: true,
                     labelSlot: "label",
@@ -452,11 +452,11 @@ class SimpleFields extends SimpleFieldsLite {
               collapse: {
                 defaultSettings: {
                   import:
-                    "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
+                    "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js",
                   element: "a11y-collapse-group",
                   noWrap: true,
                   child: {
-                    import: "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
+                    import: "@haxtheweb/a11y-collapse/a11y-collapse.js",
                     element: "a11y-collapse",
                     noWrap: true,
                     labelSlot: "heading",
@@ -504,7 +504,7 @@ class SimpleFields extends SimpleFieldsLite {
               colorpicker: {
                 defaultSettings: {
                   import:
-                    "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js",
+                    "@haxtheweb/simple-colors/lib/simple-colors-picker.js",
                   element: "simple-colors-picker",
                   attributes: {
                     autofocus: true,
@@ -514,7 +514,7 @@ class SimpleFields extends SimpleFieldsLite {
               combo: {
                 defaultSettings: {
                   import:
-                    "@lrnwebcomponents/simple-fields/lib/simple-fields-combo.js",
+                    "@haxtheweb/simple-fields/lib/simple-fields-combo.js",
                   element: "simple-fields-combo",
                   noWrap: true,
                   attributes: {
@@ -570,7 +570,7 @@ class SimpleFields extends SimpleFieldsLite {
               fileupload: {
                 defaultSettings: {
                   import:
-                    "@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js",
+                    "@haxtheweb/simple-fields/lib/simple-fields-upload.js",
                   element: "simple-fields-upload",
                   noWrap: true,
                   attributes: {
@@ -584,7 +584,7 @@ class SimpleFields extends SimpleFieldsLite {
               iconpicker: {
                 defaultSettings: {
                   import:
-                    "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js",
+                    "@haxtheweb/simple-icon-picker/simple-icon-picker.js",
                   element: "simple-icon-picker",
                   attributes: {
                     autofocus: true,
@@ -640,7 +640,7 @@ class SimpleFields extends SimpleFieldsLite {
               url: {
                 defaultSettings: {
                   import:
-                    "@lrnwebcomponents/simple-fields/lib/simple-fields-url-combo.js",
+                    "@haxtheweb/simple-fields/lib/simple-fields-url-combo.js",
                   element: "simple-fields-url-combo",
                   noWrap: true,
                   attributes: {

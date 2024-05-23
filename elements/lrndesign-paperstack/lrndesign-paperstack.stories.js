@@ -1,6 +1,6 @@
-import { LrndesignPaperstack } from "@lrnwebcomponents/lrndesign-paperstack/lrndesign-paperstack.js";
+import { LrndesignPaperstack } from "@haxtheweb/lrndesign-paperstack/lrndesign-paperstack.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Education|Callout",

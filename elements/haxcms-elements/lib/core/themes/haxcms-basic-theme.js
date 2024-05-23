@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-import { BasicTemplate } from "@lrnwebcomponents/haxcms-elements/lib/ui-components/templates/basic-template.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { HAXCMSPolymerElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
+import { BasicTemplate } from "@haxtheweb/haxcms-elements/lib/ui-components/templates/basic-template.js";
+import "@haxtheweb/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `haxcms-basic-theme`
  * `An incredibly basic theme. Great starting point for new site discussions.

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-progress/simple-progress.js";
+import "@haxtheweb/simple-progress/simple-progress.js";
 import "./lib/lrnsys-progress-circle.js";
 /**
  * `lrnsys-progress`

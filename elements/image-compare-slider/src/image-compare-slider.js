@@ -1,8 +1,8 @@
 import { html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 /**
  * `image-compare-slider`
  * hax-wired a11y-compare-image
@@ -159,7 +159,7 @@ class ImageCompareSlider extends I18NMixin(
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "elementVisible" && this[propName]) {
-        import("@lrnwebcomponents/a11y-compare-image/a11y-compare-image.js");
+        import("@haxtheweb/a11y-compare-image/a11y-compare-image.js");
       }
     });
   }

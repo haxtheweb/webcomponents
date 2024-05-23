@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-import "@lrnwebcomponents/elmsln-apps/lib/elmsln-base-deps.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import { materialCssStyles } from "@haxtheweb/materializecss-styles/lib/colors.js";
+import "@haxtheweb/elmsln-apps/lib/elmsln-base-deps.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 /**
  * `lrnsys-button`
  * `A simple button for use in systems`

@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/simple-filter",
+  "name": "@haxtheweb/simple-filter",
   "wcfactory": {
     "className": "SimpleFilter",
     "customElementClass": "HTMLElement",
@@ -23,7 +23,7 @@
   "description": "a super class element to provide filtering capabilities",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "simple-filter.js",
@@ -47,7 +47,7 @@
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

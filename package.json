@@ -1,14 +1,14 @@
 {
-  "name": "lrnwebcomponents",
-  "description": "ELMSLN produced web components for any project",
+  "name": "@haxtheweb/webcomponents",
+  "description": "HAXTheWeb core web components",
   "wcfactory": {
     "askSASS": false,
     "askProps": false,
     "askHAX": false,
-    "monorepo": "lrnwebcomponents",
-    "orgNpm": "@lrnwebcomponents",
-    "orgGit": "elmsln",
-    "gitRepo": "https://github.com/elmsln/lrnwebcomponents.git",
+    "monorepo": "webcomponents",
+    "orgNpm": "@haxtheweb",
+    "orgGit": "haxtheweb",
+    "gitRepo": "https://github.com/haxtheweb/webcomponents.git",
     "sass": {
       "name": "rh-sass",
       "pkg": "@rhelements/rh-sass",
@@ -21,7 +21,7 @@
     "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
-  "repository": "git@github.com/elmsln/lrnwebcomponents.git",
+  "repository": "git@github.com/haxtheweb/webcomponents.git",
   "scripts": {
     "prepare": "husky install",
     "start": "bash scripts/preinstall.sh && yarn run storybook",

@@ -2,17 +2,17 @@ import { html, css, LitElement } from "lit";
 import {
   HaxSchematizer,
   HaxElementizer,
-} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/simple-fields/simple-fields.js";
+} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import {
   I18NMixin,
   I18NManagerStore,
-} from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+} from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-preferences-dialog`

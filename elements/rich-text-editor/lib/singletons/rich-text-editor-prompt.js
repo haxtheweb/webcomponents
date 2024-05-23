@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { RichTextToolbarStyles } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
-import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import { RichTextToolbarStyles } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-button.js";
+import "@haxtheweb/simple-popover/simple-popover.js";
+import "@haxtheweb/simple-fields/simple-fields.js";
 import "./rich-text-editor-highlight.js";
 import { RichTextEditorRangeBehaviors } from "./rich-text-editor-range-behaviors.js";
 /**

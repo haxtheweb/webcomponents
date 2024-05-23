@@ -3,15 +3,15 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
 import "@polymer/polymer/lib/elements/custom-style.js";
 
 import "@polymer/app-layout/app-drawer/app-drawer.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 // register globally so we can make sure there is only one
 window.SimpleDrawer = window.SimpleDrawer || {};
 // request if this exists. This helps invoke the element existing in the dom

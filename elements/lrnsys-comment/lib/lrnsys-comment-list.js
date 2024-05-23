@@ -3,13 +3,13 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-toast/simple-toast.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-listbox/paper-listbox.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-container.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/grafitto-filter/grafitto-filter.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-container.js";
 import "../lrnsys-comment.js";
 
 /**

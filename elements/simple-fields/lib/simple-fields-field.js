@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsContainerBehaviors } from "./simple-fields-container.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
 
 /**
  * @class SimpleFieldsFieldBehaviors

@@ -16,8 +16,8 @@ if ! command -v node;then
 fi
 
 clone_and_install () {
-  git clone https://github.com/elmsln/lrnwebcomponents.git
-  cd lrnwebcomponents
+  git clone https://github.com/haxtheweb/webcomponents.git
+  cd webcomponents
   yarn global add symlink-dir
   yarn global add @wcfactory/cli
   yarn global add polymer-cli

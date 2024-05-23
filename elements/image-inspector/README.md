@@ -8,14 +8,14 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/image-inspector/image-inspector.js';
+import '@haxtheweb/image-inspector/image-inspector.js';
 /* At top of an application */
-<script type="module" src="node_modules/@lrnwebcomponents/image-inspector/image-inspector.js"></script>
+<script type="module" src="node_modules/@haxtheweb/image-inspector/image-inspector.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/image-inspector/image-inspector.js';
+  import '@haxtheweb/image-inspector/image-inspector.js';
 
-  import {ImageInspector} from '@lrnwebcomponents/image-inspector/image-inspector.js';
+  import {ImageInspector} from '@haxtheweb/image-inspector/image-inspector.js';
 </script>
 ```
 
@@ -40,7 +40,7 @@ $ yarn run build
 
 ## Contributing
 
-1. Fork it! `git clone git@github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone git@github.com/haxtheweb/webcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
@@ -48,7 +48,7 @@ $ yarn run build
 
 ## Code style
 
-Inspector (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Inspector  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

@@ -3,9 +3,9 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "../elmsln-base-deps.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/elmsln-loading/elmsln-loading.js";
+import "@haxtheweb/materializecss-styles/materializecss-styles.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 class LrnappGalleryGrid extends PolymerElement {
   connectedCallback() {

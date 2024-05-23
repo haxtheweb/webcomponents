@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { SimpleModalHandler } from "@lrnwebcomponents/simple-modal/lib/simple-modal-handler.js";
-import "@lrnwebcomponents/figure-label/figure-label.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { SimpleModalHandler } from "@haxtheweb/simple-modal/lib/simple-modal-handler.js";
+import "@haxtheweb/figure-label/figure-label.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `media-image`
  * `A simple image presentaiton with minor documented options`
@@ -560,7 +560,7 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
    * heavy library tree
    */
   __modalShowEvent(e) {
-    import("@lrnwebcomponents/image-inspector/image-inspector.js");
+    import("@haxtheweb/image-inspector/image-inspector.js");
   }
   render() {
     return html`

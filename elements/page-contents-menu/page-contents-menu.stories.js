@@ -1,6 +1,6 @@
 import { PageContentsMenu } from "./page-contents-menu.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Navigation|Page contents menu",

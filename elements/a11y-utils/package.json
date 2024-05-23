@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/a11y-utils",
+  "name": "@haxtheweb/a11y-utils",
   "wcfactory": {
     "className": "A11yUtils",
     "customElementClass": "LitElement",
@@ -19,7 +19,7 @@
   "description": "a collection of accessibility patterns and styles",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "a11y-utils.js",
@@ -43,7 +43,7 @@
     "lit": "^3.1.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",

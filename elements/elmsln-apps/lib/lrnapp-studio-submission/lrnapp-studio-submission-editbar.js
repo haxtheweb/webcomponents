@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "./lrnapp-studio-submission-editbar-message.js";
 class LrnappStudioSubmissionEditbar extends PolymerElement {
   static get template() {

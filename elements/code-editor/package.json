@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/code-editor",
+  "name": "@haxtheweb/code-editor",
   "wcfactory": {
     "className": "CodeEditor",
     "customElementClass": "PolymerElement",
@@ -21,7 +21,7 @@
   "description": "Data binding wrapped on top of a popular code editor",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "code-editor.js",
@@ -42,14 +42,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/schema-behaviors": "^8.0.2",
-    "@lrnwebcomponents/utils": "^8.0.2",
+    "@haxtheweb/schema-behaviors": "^8.0.2",
+    "@haxtheweb/utils": "^8.0.2",
     "lit": "^3.1.2",
     "monaco-editor": "0.32.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/storybook-utilities": "^8.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

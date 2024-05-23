@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 import "../json-outline-schema.js";
-import { wipeSlot, valueMapTransform } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js";
+import { wipeSlot, valueMapTransform } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/dynamic-import-registry/dynamic-import-registry.js";
 
 class JosRender extends LitElement {
   static get tag() {

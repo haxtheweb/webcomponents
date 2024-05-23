@@ -1,7 +1,7 @@
 import { html } from "lit-html";
-import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
+import { A11yDetails } from "@haxtheweb/a11y-details/a11y-details.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Navigation|Details",

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@haxtheweb/simple-picker/simple-picker.js";
 
 /**
  * RichTextEditorPickerBehaviors

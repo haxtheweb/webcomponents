@@ -3,23 +3,23 @@ import "@polymer/app-route/app-route.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/marked-element/marked-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/lrnsys-comment/lib/lrnsys-comment-list.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "@haxtheweb/lrnsys-layout/lib/lrnsys-dialog.js";
+import "@haxtheweb/lrnsys-button/lrnsys-button.js";
+import "@haxtheweb/lrnsys-comment/lib/lrnsys-comment-list.js";
+import "@haxtheweb/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-studio-submission-object.js";
 import "./lrnapp-studio-submission-comments.js";
 import "./lrnapp-studio-submission-comment.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 class LrnappStudioSubmissionPage extends PolymerElement {
   static get template() {

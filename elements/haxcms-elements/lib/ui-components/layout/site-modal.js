@@ -3,13 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
+import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 /**
  * `site-modal`
  * `A basic site dialog`

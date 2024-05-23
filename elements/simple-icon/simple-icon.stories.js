@@ -1,10 +1,10 @@
 import { html } from "lit-html";
-import { SimpleIconsetDemo } from "@lrnwebcomponents/simple-icon/lib/simple-iconset-demo.js";
-import { SimpleIcon } from "@lrnwebcomponents/simple-icon/simple-icon.js";
-import { SimpleIconLite } from "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import { SimpleIconButton } from "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import { SimpleIconButtonLite } from "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetDemo } from "@haxtheweb/simple-icon/lib/simple-iconset-demo.js";
+import { SimpleIcon } from "@haxtheweb/simple-icon/simple-icon.js";
+import { SimpleIconLite } from "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { SimpleIconButton } from "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import { SimpleIconButtonLite } from "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import {
   withKnobs,
   select,
@@ -12,7 +12,7 @@ import {
   boolean,
   text,
 } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Media|Icons",

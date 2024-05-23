@@ -1,5 +1,5 @@
 import { html, css, LitElement } from "lit";
-import { HaxToolbarItemBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
+import { HaxToolbarItemBehaviors } from "@haxtheweb/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-tray-button`
  * `A button in the tray`

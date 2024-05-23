@@ -1,6 +1,6 @@
 import { html } from "lit-html";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 import { MicroFrontendRegistry } from "./micro-frontend-registry.js";
 import "./demo/mf-htmlmd-example.js";
 import "./demo/docx-example.js";

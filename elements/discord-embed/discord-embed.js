@@ -3,7 +3,7 @@
  * @license , see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
+import "@haxtheweb/iframe-loader/iframe-loader.js";
 /**
  * `discord-embed`
  * `widgetbot.io based embed widget for discord threads and channels`

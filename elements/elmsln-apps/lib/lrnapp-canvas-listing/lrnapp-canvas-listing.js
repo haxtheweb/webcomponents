@@ -2,7 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column-group.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
@@ -11,10 +11,10 @@ import "../elmsln-base-deps.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/lrnsys-layout/lib/lrnsys-dialog.js";
+import "@haxtheweb/elmsln-loading/elmsln-loading.js";
+import "@haxtheweb/lrndesign-avatar/lrndesign-avatar.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 class LrnappCanvasListing extends PolymerElement {
   static get template() {

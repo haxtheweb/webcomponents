@@ -1,10 +1,10 @@
 import { html } from "lit-html";
-import { RichTextEditor } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import { RichTextEditorToolbar } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
-import { RichTextEditorToolbarFull } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js";
-import { RichTextEditorToolbarMini } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
+import { RichTextEditor } from "@haxtheweb/rich-text-editor/rich-text-editor.js";
+import { RichTextEditorToolbar } from "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
+import { RichTextEditorToolbarFull } from "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js";
+import { RichTextEditorToolbarMini } from "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Forms|Rich Text",

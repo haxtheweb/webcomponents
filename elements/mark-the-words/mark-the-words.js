@@ -5,8 +5,8 @@
  */
 // dependencies / things imported
 import { html, css, nothing } from "lit";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 
 export class MarkTheWords extends QuestionElement {
   static get tag() {

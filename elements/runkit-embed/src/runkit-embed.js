@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridge.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `runkit-embed`

@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "@haxtheweb/simple-toolbar/lib/simple-button-grid.js";
+import "@haxtheweb/a11y-collapse/a11y-collapse.js";
 /**
  * `hax-stax-browser`
  * @element hax-stax-browser

@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/map-menu/map-menu.js";
-import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/map-menu/map-menu.js";
+import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 /**
  * `site-menu`

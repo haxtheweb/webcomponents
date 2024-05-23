@@ -1,4 +1,4 @@
-import { CSVtoArray } from "@lrnwebcomponents/utils/utils.js";
+import { CSVtoArray } from "@haxtheweb/utils/utils.js";
 
 export class gSheetInterface {
   constructor(target = null, sheet = null, sheetGids = {}) {

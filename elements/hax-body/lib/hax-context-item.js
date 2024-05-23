@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import { HaxToolbarItemBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import { HaxToolbarItemBehaviors } from "@haxtheweb/hax-body/lib/hax-toolbar-item.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { HAXStore } from "./hax-store.js";
 /**
  * `hax-context-item`

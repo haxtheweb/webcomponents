@@ -163,7 +163,7 @@ class simpleColorsSwatches extends SimpleColors {
     this.swatchId = "grey_0";
     this.swatchName = "grey-1";
     import("./simple-colors-swatch-info.js");
-    import("@lrnwebcomponents/simple-modal/lib/simple-modal-template.js");
+    import("@haxtheweb/simple-modal/lib/simple-modal-template.js");
   }
 
   /**

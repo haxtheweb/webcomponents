@@ -1,13 +1,13 @@
 import { html, css } from "lit";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { mimeTypeToName } from "@lrnwebcomponents/utils/utils.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { mimeTypeToName } from "@haxtheweb/utils/utils.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
 export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   static get tag() {

@@ -4,7 +4,7 @@
  */
 
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 
 /**
  * `lrn-table`
@@ -19,7 +19,7 @@ class LrnTable extends SchemaBehaviors(LitElement) {
   constructor() {
     super();
     setTimeout(() => {
-      import("@lrnwebcomponents/csv-render/csv-render.js");
+      import("@haxtheweb/csv-render/csv-render.js");
     }, 0);
   }
   static get styles() {

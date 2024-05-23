@@ -5,9 +5,9 @@
 import { LitElement, html, css } from "lit";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js";
+import "@haxtheweb/lrndesign-avatar/lrndesign-avatar.js";
+import "@haxtheweb/rich-text-editor/rich-text-editor.js";
+import "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js";
 
 /**
  * `elmsln-studio-assignment`

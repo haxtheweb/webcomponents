@@ -3,11 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/json-editor/json-editor.js";
-import "@lrnwebcomponents/code-editor/code-editor.js";
+import "@haxtheweb/json-editor/json-editor.js";
+import "@haxtheweb/code-editor/code-editor.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import "./lib/hax-schema-form.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
+import { HAXWiring } from "@haxtheweb/hax-body-behaviors/hax-body-behaviors.js";
 /**
  * `haxschema-builder`
  * `dynamically build and visualize HAXschema`

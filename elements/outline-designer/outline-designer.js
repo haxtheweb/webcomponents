@@ -3,22 +3,22 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, css, html } from "lit";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { JSONOutlineSchemaItem } from "@lrnwebcomponents/json-outline-schema/lib/json-outline-schema-item.js";
-import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import { JSONOutlineSchemaItem } from "@haxtheweb/json-outline-schema/lib/json-outline-schema-item.js";
+import { JsonOutlineSchema } from "@haxtheweb/json-outline-schema/json-outline-schema.js";
+import "@haxtheweb/simple-popover/simple-popover.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import {
   encapScript,
   haxElementToNode,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 /**
  * `outline-designer`
  * @element outline-designer
