@@ -174,9 +174,9 @@
                 "type": "string",
                 "value": "1",
                 "component": {
-                  "name": "dropdown-select",
+                  "name": "select",
                   "valueProperty": "value",
-                  "slot": "<paper-item value='1'>Safe</paper-item><paper-item value='2'>Moderate</paper-item><paper-item value='3'>Restricted</paper-item>"
+                  "slot": "<option value='1'>Safe</option><option value='2'>Moderate</option><option value='3'>Restricted</option>"
                 }
               },
               "license": {
@@ -184,9 +184,9 @@
                 "type": "string",
                 "value": "",
                 "component": {
-                  "name": "dropdown-select",
+                  "name": "select",
                   "valueProperty": "value",
-                  "slot": "<paper-item value=''>Any</paper-item><paper-item value='0'>All Rights Reserved</paper-item><paper-item value='4'>Attribution License</paper-item><paper-item value='6'>Attribution-NoDerivs License</paper-item><paper-item value='3'>Attribution-NonCommercial-NoDerivs License</paper-item><paper-item value='2'>Attribution-NonCommercial License</paper-item><paper-item value='1'>Attribution-NonCommercial-ShareAlike License</paper-item><paper-item value='5'>Attribution-ShareAlike License</paper-item><paper-item value='7'>No known copyright restrictions</paper-item><paper-item value='8'>United States Government Work</paper-item><paper-item value='9'>Public Domain Dedication (CC0)</paper-item><paper-item value='10'>Public Domain Mark</paper-item>"
+                  "slot": "<option value=''>Any</option><option value='0'>All Rights Reserved</option><option value='4'>Attribution License</option><option value='6'>Attribution-NoDerivs License</option><option value='3'>Attribution-NonCommercial-NoDerivs License</option><option value='2'>Attribution-NonCommercial License</option><option value='1'>Attribution-NonCommercial-ShareAlike License</option><option value='5'>Attribution-ShareAlike License</option><option value='7'>No known copyright restrictions</option><option value='8'>United States Government Work</option><option value='9'>Public Domain Dedication (CC0)</option><option value='10'>Public Domain Mark</option>"
                 }
               }
             },
@@ -309,16 +309,16 @@
                 "title": "Rating",
                 "type": "string",
                 "component": {
-                  "name": "dropdown-select",
-                  "slot": "<paper-item value='Y'>Y</paper-item><paper-item value='G'>G</paper-item><paper-item value='PG'>PG</paper-item><paper-item value='PG-13'>PG-13</paper-item><paper-item value='R'>R</paper-item>"
+                  "name": "select",
+                  "slot": "<option value='Y'>Y</option><option value='G'>G</option><option value='PG'>PG</option><option value='PG-13'>PG-13</option><option value='R'>R</option>"
                 }
               },
               "lang": {
                 "title": "Language",
                 "type": "string",
                 "component": {
-                  "name": "dropdown-select",
-                  "slot": "<paper-item value='en'>en</paper-item><paper-item value='es'>es</paper-item><paper-item value='pt'>pt</paper-item><paper-item value='id'>id</paper-item><paper-item value='fr'>fr</paper-item><paper-item value='ar'>ar</paper-item><paper-item value='tr'>tr</paper-item><paper-item value='th'>th</paper-item><paper-item value='vi'>vi</paper-item><paper-item value='de'>de</paper-item><paper-item value='it'>it</paper-item><paper-item value='ja'>ja</paper-item><paper-item value='zh-CN'>zh-CN</paper-item><paper-item value='zh-TW'>zh-TW</paper-item><paper-item value='ru'>ru</paper-item><paper-item value='ko'>ko</paper-item><paper-item value='pl'>pl</paper-item><paper-item value='nl'>nl</paper-item><paper-item value='ro'>ro</paper-item><paper-item value='hu'>hu</paper-item><paper-item value='sv'>sv</paper-item><paper-item value='cs'>cs</paper-item><paper-item value='hi'>hi</paper-item><paper-item value='bn'>bn</paper-item><paper-item value='da'>da</paper-item><paper-item value='fa'>fa</paper-item><paper-item value='tl'>tl</paper-item><paper-item value='fi'>fi</paper-item><paper-item value='iw'>iw</paper-item><paper-item value='ms'>ms</paper-item><paper-item value='no'>no</paper-item><paper-item value='uk'>uk</paper-item>"
+                  "name": "select",
+                  "slot": "<option value='en'>en</option><option value='es'>es</option><option value='pt'>pt</option><option value='id'>id</option><option value='fr'>fr</option><option value='ar'>ar</option><option value='tr'>tr</option><option value='th'>th</option><option value='vi'>vi</option><option value='de'>de</option><option value='it'>it</option><option value='ja'>ja</option><option value='zh-CN'>zh-CN</option><option value='zh-TW'>zh-TW</option><option value='ru'>ru</option><option value='ko'>ko</option><option value='pl'>pl</option><option value='nl'>nl</option><option value='ro'>ro</option><option value='hu'>hu</option><option value='sv'>sv</option><option value='cs'>cs</option><option value='hi'>hi</option><option value='bn'>bn</option><option value='da'>da</option><option value='fa'>fa</option><option value='tl'>tl</option><option value='fi'>fi</option><option value='iw'>iw</option><option value='ms'>ms</option><option value='no'>no</option><option value='uk'>uk</option>"
                 }
               }
             },
@@ -388,9 +388,9 @@
                 "type": "string",
                 "value": "",
                 "component": {
-                  "name": "dropdown-select",
+                  "name": "select",
                   "valueProperty": "value",
-                  "slot": "<paper-item value=''>Any</paper-item><paper-item value='by'>Attribution</paper-item><paper-item value='by-sa'>Attribution ShareAlike</paper-item><paper-item value='by-nd'>Attribution NoDerivatives</paper-item><paper-item value='by-nc'>Attribution-NonCommercial</paper-item><paper-item value='by-nc-sa'>Attribution NonCommercial ShareAlike</paper-item><paper-item value='by-nc-nd'>Attribution NonCommercial NoDerivatives</paper-item><paper-item value='cc0'>Public Domain Dedication (CC0)</paper-item>"
+                  "slot": "<option value=''>Any</option><option value='by'>Attribution</option><option value='by-sa'>Attribution ShareAlike</option><option value='by-nd'>Attribution NoDerivatives</option><option value='by-nc'>Attribution-NonCommercial</option><option value='by-nc-sa'>Attribution NonCommercial ShareAlike</option><option value='by-nc-nd'>Attribution NonCommercial NoDerivatives</option><option value='cc0'>Public Domain Dedication (CC0)</option>"
                 }
               }
             },
@@ -628,46 +628,46 @@
     }
   ],
   "autoloader": {
-    "spotify-embed": "@lrnwebcomponents/spotify-embed/spotify-embed.js",
-    "media-image": "@lrnwebcomponents/media-image/media-image.js",
-    "simple-icon": "@lrnwebcomponents/simple-icon/simple-icon.js",
-    "inline-audio": "@lrnwebcomponents/inline-audio/inline-audio.js",
-    "audio-player": "@lrnwebcomponents/audio-player/audio-player.js",
-    "moar-sarcasm": "@lrnwebcomponents/moar-sarcasm/moar-sarcasm.js",
-    "learning-component": "@lrnwebcomponents/course-design/lib/learning-component.js",
-    "mark-the-words": "@lrnwebcomponents/mark-the-words/mark-the-words.js",
-    "simple-tags": "@lrnwebcomponents/simple-fields/lib/simple-tags.js",
-    "flash-card": "@lrnwebcomponents/flash-card/flash-card.js",
-    "sorting-question": "@lrnwebcomponents/sorting-question/sorting-question.js",
-    "tagging-question": "@lrnwebcomponents/tagging-question/tagging-question.js",
-    "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
-    "self-check": "@lrnwebcomponents/self-check/self-check.js",
-    "course-model": "@lrnwebcomponents/course-model/course-model.js",
-    "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-    "video-player": "@lrnwebcomponents/video-player/video-player.js",
-    "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
-    "true-false-question": "@lrnwebcomponents/multiple-choice/lib/true-false-question.js",
-    "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
-    "accent-card": "@lrnwebcomponents/accent-card/accent-card.js",
-    "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
-    "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
-    "ebook-button": "@lrnwebcomponents/course-design/lib/ebook-button.js",
-    "worksheet-download": "@lrnwebcomponents/course-design/lib/worksheet-download.js",
-    "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
-    "license-element": "@lrnwebcomponents/license-element/license-element.js",
-    "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
-    "vocab-term": "@lrnwebcomponents/vocab-term/vocab-term.js",
-    "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
-    "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
-    "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
-    "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
-    "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
-    "q-r": "@lrnwebcomponents/q-r/q-r.js",
-    "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
-    "date-card": "@lrnwebcomponents/date-card/date-card.js",
-    "h5p-element": "@lrnwebcomponents/h5p-element/h5p-element.js",
-    "md-block": "@lrnwebcomponents/md-block/md-block.js",
-    "page-break": "@lrnwebcomponents/page-break/page-break.js",
-    "rpg-character": "@lrnwebcomponents/rpg-character/rpg-character.js"
+    "spotify-embed": "@haxtheweb/spotify-embed/spotify-embed.js",
+    "media-image": "@haxtheweb/media-image/media-image.js",
+    "simple-icon": "@haxtheweb/simple-icon/simple-icon.js",
+    "inline-audio": "@haxtheweb/inline-audio/inline-audio.js",
+    "audio-player": "@haxtheweb/audio-player/audio-player.js",
+    "moar-sarcasm": "@haxtheweb/moar-sarcasm/moar-sarcasm.js",
+    "learning-component": "@haxtheweb/course-design/lib/learning-component.js",
+    "mark-the-words": "@haxtheweb/mark-the-words/mark-the-words.js",
+    "simple-tags": "@haxtheweb/simple-fields/lib/simple-tags.js",
+    "flash-card": "@haxtheweb/flash-card/flash-card.js",
+    "sorting-question": "@haxtheweb/sorting-question/sorting-question.js",
+    "tagging-question": "@haxtheweb/tagging-question/tagging-question.js",
+    "twitter-embed": "@haxtheweb/twitter-embed/twitter-embed.js",
+    "self-check": "@haxtheweb/self-check/self-check.js",
+    "course-model": "@haxtheweb/course-model/course-model.js",
+    "stop-note": "@haxtheweb/stop-note/stop-note.js",
+    "video-player": "@haxtheweb/video-player/video-player.js",
+    "multiple-choice": "@haxtheweb/multiple-choice/multiple-choice.js",
+    "true-false-question": "@haxtheweb/multiple-choice/lib/true-false-question.js",
+    "a11y-collapse": "@haxtheweb/a11y-collapse/a11y-collapse.js",
+    "accent-card": "@haxtheweb/accent-card/accent-card.js",
+    "a11y-gif-player": "@haxtheweb/a11y-gif-player/a11y-gif-player.js",
+    "code-sample": "@haxtheweb/code-sample/code-sample.js",
+    "ebook-button": "@haxtheweb/course-design/lib/ebook-button.js",
+    "worksheet-download": "@haxtheweb/course-design/lib/worksheet-download.js",
+    "image-compare-slider": "@haxtheweb/image-compare-slider/image-compare-slider.js",
+    "license-element": "@haxtheweb/license-element/license-element.js",
+    "lrn-math": "@haxtheweb/lrn-math/lrn-math.js",
+    "vocab-term": "@haxtheweb/vocab-term/vocab-term.js",
+    "meme-maker": "@haxtheweb/meme-maker/meme-maker.js",
+    "grid-plate": "@haxtheweb/grid-plate/grid-plate.js",
+    "lrndesign-timeline": "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js",
+    "person-testimonial": "@haxtheweb/person-testimonial/person-testimonial.js",
+    "place-holder": "@haxtheweb/place-holder/place-holder.js",
+    "q-r": "@haxtheweb/q-r/q-r.js",
+    "wikipedia-query": "@haxtheweb/wikipedia-query/wikipedia-query.js",
+    "date-card": "@haxtheweb/date-card/date-card.js",
+    "h5p-element": "@haxtheweb/h5p-element/h5p-element.js",
+    "md-block": "@haxtheweb/md-block/md-block.js",
+    "page-break": "@haxtheweb/page-break/page-break.js",
+    "rpg-character": "@haxtheweb/rpg-character/rpg-character.js"
   }
 }

@@ -1,11 +1,11 @@
 import { LitElement, html, css, svg } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { lazyImageLoader } from "@lrnwebcomponents/lazy-image-helpers/lazy-image-helpers.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { lazyImageLoader } from "@haxtheweb/lazy-image-helpers/lazy-image-helpers.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `self-check`
  * 
@@ -368,8 +368,8 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "elementVisible" && this.elementVisible) {
-        import("@lrnwebcomponents/user-action/user-action.js");
-        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+        import("@haxtheweb/user-action/user-action.js");
+        import("@haxtheweb/simple-tooltip/simple-tooltip.js");
       }
     });
   }

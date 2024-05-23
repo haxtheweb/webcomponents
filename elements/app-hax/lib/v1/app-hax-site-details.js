@@ -1,9 +1,9 @@
 // dependencies / things imported
 import { html, css } from "lit";
-import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
+import "@haxtheweb/simple-datetime/simple-datetime.js";
 import { toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 // wrapper to simplify the slug if it has additional values on it
 function makeSlug(url) {
@@ -205,7 +205,7 @@ export class AppHaxSiteDetails extends SimpleColors {
     const siteID = target.getAttribute("data-site");
     store.activeSiteOp = op;
     store.activeSiteId = siteID;
-    import("@lrnwebcomponents/simple-modal/simple-modal.js").then(() => {
+    import("@haxtheweb/simple-modal/simple-modal.js").then(() => {
       setTimeout(() => {
         const site = toJS(
           store.manifest.items.filter((item) => item.id === siteID).pop(),

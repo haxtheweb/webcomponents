@@ -52,7 +52,7 @@
         },
         "theme": {
           "element": "learn-two-theme",
-          "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
+          "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
           "name": "Learn",
           "variables": {
             "image": "assets/banner.jpg",
@@ -109,7 +109,7 @@
         },
         "theme": {
           "element": "outline-player",
-          "path": "@lrnwebcomponents/outline-player/outline-player.js",
+          "path": "@haxtheweb/outline-player/outline-player.js",
           "name": "Documentation",
           "variables": {
             "image": "files/jX75z6re_400x400.jpg",
@@ -177,7 +177,7 @@
         },
         "theme": {
           "element": "learn-two-theme",
-          "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
+          "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
           "name": "Learn",
           "variables": {
             "image": "assets/banner.jpg",
@@ -237,7 +237,7 @@
         },
         "theme": {
           "element": "haxcms-basic-theme",
-          "path": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
+          "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
           "name": "Learn",
           "variables": {
             "image": "assets/banner.jpg",
@@ -299,7 +299,7 @@
         },
         "theme": {
           "element": "learn-two-theme",
-          "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
+          "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
           "name": "Learn",
           "variables": {
             "image": "assets/banner.jpg",
@@ -371,7 +371,7 @@
         },
         "theme": {
           "element": "learn-two-theme",
-          "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
+          "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
           "name": "Learn",
           "variables": {
             "image": "",
@@ -412,8 +412,8 @@
             "vendor": "github",
             "branch": "master",
             "staticBranch": "gh-pages",
-            "url": "git@github.com:elmsln/wcfactory.js.org.git",
-            "publicRepoUrl": "https://github.com/elmsln/wcfactory.js.org/tree/master/",
+            "url": "git@github.com:haxtheweb/wcfactory.js.org.git",
+            "publicRepoUrl": "https://github.com/haxtheweb/wcfactory.js.org/tree/master/",
             "autoPush": false
           },
           "static": {
@@ -433,7 +433,7 @@
         },
         "theme": {
           "element": "outline-player",
-          "path": "@lrnwebcomponents/outline-player/outline-player.js",
+          "path": "@haxtheweb/outline-player/outline-player.js",
           "name": "Documentation",
           "variables": {
             "image": "assets/banner.jpg",
@@ -487,7 +487,7 @@
         },
         "theme": {
           "element": "outline-player",
-          "path": "@lrnwebcomponents/outline-player/outline-player.js",
+          "path": "@haxtheweb/outline-player/outline-player.js",
           "name": "Documentation",
           "variables": {
             "image": "",
@@ -512,7 +512,7 @@
     {
       "id": "95f2b045-cfdb-4e35-b29b-e7f71c859987",
       "title": "hax-the-web",
-      "author": "elmsln",
+      "author": "HAXTheWeb",
       "indent": 0,
       "order": 0,
       "parent": null,
@@ -555,7 +555,7 @@
         },
         "theme": {
           "element": "learn-two-theme",
-          "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
+          "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
           "name": "Learn",
           "variables": {
             "image": "assets/banner.jpg",
@@ -617,7 +617,7 @@
         },
         "theme": {
           "element": "haxor-slevin",
-          "path": "@lrnwebcomponents/haxor-slevin/haxor-slevin.js",
+          "path": "@haxtheweb/haxor-slevin/haxor-slevin.js",
           "name": "Coder blog",
           "variables": {
             "image": "assets/banner.jpg",
@@ -647,7 +647,7 @@
         "image": "assets/banner.jpg",
         "theme": {
           "element": "odl-haxtheme",
-          "path": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
+          "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
           "name": "Eberly ODL",
           "variables": {
             "image": "",

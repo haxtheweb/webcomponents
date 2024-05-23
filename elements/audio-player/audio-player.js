@@ -2,7 +2,7 @@
  * Copyright 2023 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { VideoPlayer } from "@lrnwebcomponents/video-player/video-player.js";
+import { VideoPlayer } from "@haxtheweb/video-player/video-player.js";
 /**
  * `audio-player`
  * `simple audio web component to match video`

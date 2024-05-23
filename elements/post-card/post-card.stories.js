@@ -1,7 +1,7 @@
 import { html } from "lit-html";
-import { PostCard } from "@lrnwebcomponents/post-card/post-card.js";
+import { PostCard } from "@haxtheweb/post-card/post-card.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Cards|Post Card",

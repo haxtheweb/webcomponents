@@ -1,22 +1,19 @@
 import { css, html, unsafeCSS } from "lit";
 import { toJS, autorun } from "mobx";
-import {
-  localStorageSet,
-  localStorageGet,
-} from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "./lib/v1/AppHaxStore.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { AppHaxAPI } from "./lib/v1/AppHaxBackendAPI.js";
-import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
-import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import { SimpleTourManager } from "@haxtheweb/simple-popover/lib/simple-tour.js";
+import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "./lib/v1/AppHaxRouter.js";
 import "./lib/v1/app-hax-label.js";
 import "./lib/v1/app-hax-top-bar.js";
-import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder.js";
+import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -77,7 +74,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
     }
     globalThis.open(
-      `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
+      `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
         body,
       )}`,
       "_blank",
@@ -473,7 +470,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     autorun(() => {
       const badDevice = toJS(store.badDevice);
       if (badDevice === false) {
-        import("@lrnwebcomponents/rpg-character/rpg-character.js");
+        import("@haxtheweb/rpg-character/rpg-character.js");
         import("./lib/random-word/random-word.js");
       } else if (badDevice === true) {
         document.body.classList.add("bad-device");
@@ -726,7 +723,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         ).cloneNode(true);
         p.appendChild(cloneSlot);
       }
-      import("@lrnwebcomponents/simple-modal/simple-modal.js").then(() => {
+      import("@haxtheweb/simple-modal/simple-modal.js").then(() => {
         setTimeout(() => {
           this.dispatchEvent(
             new CustomEvent("simple-modal-show", {
@@ -1349,7 +1346,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   siteReadyToGo(e) {
-    import("@lrnwebcomponents/multiple-choice/lib/confetti-container.js").then(
+    import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(
       (module) => {
         setTimeout(() => {
           this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");

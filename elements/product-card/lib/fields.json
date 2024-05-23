@@ -194,7 +194,7 @@
           "haxcore-search-hasdemo": false,
           "haxcore-search-columns": "",
           "haxcore-search-autoloader": {
-            "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js"
+            "a11y-collapse": "@haxtheweb/a11y-collapse/a11y-collapse.js"
           }
         },
         "templates": {
@@ -214,7 +214,7 @@
           "haxcore-providerdetails-othertags": ""
         },
         "help": {
-          "haxcore-help-docs": "https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"
+          "haxcore-help-docs": "https://raw.githubusercontent.com/haxtheweb/haxcms/master/HAXDocs.md"
         }
       }
     }

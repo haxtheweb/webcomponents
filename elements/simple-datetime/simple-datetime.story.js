@@ -1,5 +1,5 @@
 import { SimpleDatetime } from "./simple-datetime.js";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
 

@@ -444,7 +444,7 @@ class ThreadedDiscussion extends LitElement {
     this.__data = [];
     this.__loading = false;
     setTimeout(() => {
-      import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
+      import("@haxtheweb/lrndesign-avatar/lrndesign-avatar.js");
     }, 0);
   }
   updated(changedProperties) {

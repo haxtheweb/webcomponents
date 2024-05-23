@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 /**
- * CSS reset and additional base styles for lrnwebcomponents and apps
+ * CSS reset and additional base styles for webcomponents and apps
  */
 const LrnCssResetStyles = [
   css`

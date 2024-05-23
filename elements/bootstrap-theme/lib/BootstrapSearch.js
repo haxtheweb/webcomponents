@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { autorun, toJS } from "mobx";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 
 class BootstrapSearch extends LitElement {
   constructor() {
@@ -68,7 +68,7 @@ class BootstrapSearch extends LitElement {
   }
 
   getBasePath(url) {
-    return url.substring(0, url.lastIndexOf("/@lrnwebcomponents/") + 1);
+    return url.substring(0, url.lastIndexOf("/@haxtheweb/") + 1);
   }
 }
 customElements.define(BootstrapSearch.tag, BootstrapSearch);

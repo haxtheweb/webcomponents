@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { AccentCard } from "@haxtheweb/accent-card/accent-card.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./lib/nav-card-item.js";
 /**
  * `nav-card`

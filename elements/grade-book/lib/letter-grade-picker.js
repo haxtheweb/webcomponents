@@ -167,7 +167,7 @@ class LetterGradePicker extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "input" && this[propName]) {
-        import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
+        import("@haxtheweb/simple-fields/lib/simple-fields-field.js");
       }
       if (propName === "reveal" && this[propName]) {
       }

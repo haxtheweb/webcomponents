@@ -3,19 +3,19 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
 import {
   store,
   HAXcmsStore,
-} from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
-import "@lrnwebcomponents/lunr-search/lunr-search.js";
-import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
+} from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-fields/lib/simple-tag.js";
+import "@haxtheweb/lunr-search/lunr-search.js";
+import "@haxtheweb/simple-datetime/simple-datetime.js";
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`

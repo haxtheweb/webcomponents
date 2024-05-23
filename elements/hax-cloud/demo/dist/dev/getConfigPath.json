@@ -138,22 +138,22 @@
     "themes": {
       "haxcms-dev-theme": {
         "element": "haxcms-dev-theme",
-        "path": "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js",
+        "path": "@haxtheweb/haxcms-elements/lib/haxcms-dev-theme.js",
         "name": "Developer theme"
       },
       "outline-player": {
         "element": "outline-player",
-        "path": "@lrnwebcomponents/outline-player/outline-player.js",
+        "path": "@haxtheweb/outline-player/outline-player.js",
         "name": "Outline player"
       },
       "simple-blog": {
         "element": "simple-blog",
-        "path": "@lrnwebcomponents/simple-blog/simple-blog.js",
+        "path": "@haxtheweb/simple-blog/simple-blog.js",
         "name": "Simple blog"
       },
       "haxcms-slide-theme": {
         "element": "haxcms-slide-theme",
-        "path": "@lrnwebcomponents/haxcms-elements/lib/haxcms-slide-theme.js",
+        "path": "@haxtheweb/haxcms-elements/lib/haxcms-slide-theme.js",
         "name": "Slide player"
       }
     },

@@ -23,7 +23,7 @@ function testPathRel(prefix) {
     return path.join(
       prefix,
       "node_modules",
-      "@lrnwebcomponents",
+      "@haxtheweb",
       element,
       "test",
       "index.html"

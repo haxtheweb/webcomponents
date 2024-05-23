@@ -1,5 +1,5 @@
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { enableCoreServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableCoreServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 
 export class SimpleImg extends HTMLElement {
   static get tag() {

@@ -1,10 +1,10 @@
 // dependencies / things imported
 import { html, css, nothing } from "lit";
-import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
+import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-toast/simple-toast.js";
+import "@haxtheweb/grid-plate/grid-plate.js";
 import "./lib/sorting-option.js";
 
 export class SortingQuestion extends QuestionElement {
@@ -16,13 +16,12 @@ export class SortingQuestion extends QuestionElement {
   // get the options directly off the UI. This will help in providing them in the correct order as well
   // this is definitely an anti pattern for us but displayedAnswers is effectively just setting the INITIAL
   // display order while the user then actively manipulates the shadow rendered data.
-  getOptions(flag = '') {
+  getOptions(flag = "") {
     if (this.shadowRoot) {
       if (flag) {
         return this.shadowRoot.querySelectorAll(`sorting-option[${flag}]`);
-      }
-      else {
-        return this.shadowRoot.querySelectorAll('sorting-option');
+      } else {
+        return this.shadowRoot.querySelectorAll("sorting-option");
       }
     }
   }
@@ -36,7 +35,9 @@ export class SortingQuestion extends QuestionElement {
     this.hasHint = this.querySelector('[slot="hint"]');
     this.hasContent = this.querySelector('[slot="content"]');
     this.hasFeedbackCorrect = this.querySelector('[slot="feedbackCorrect"]');
-    this.hasFeedbackIncorrect = this.querySelector('[slot="feedbackIncorrect"]');
+    this.hasFeedbackIncorrect = this.querySelector(
+      '[slot="feedbackIncorrect"]',
+    );
     this.hasEvidence = this.querySelector('[slot="evidence"]');
     this.correctText = "That is correct, Great job!";
     this.correctIcon = "icons:thumb-up";
@@ -65,12 +66,15 @@ export class SortingQuestion extends QuestionElement {
     this.showAnswer = true;
   }
   resetAnswer() {
-    if (this.getOptions('incorrect')) {
-      const firstWrong = this.getOptions('incorrect')[0];
+    if (this.getOptions("incorrect")) {
+      const firstWrong = this.getOptions("incorrect")[0];
       if (firstWrong) {
         setTimeout(() => {
-          firstWrong.shadowRoot.querySelector('#downArrow').shadowRoot.querySelector('button').focus();
-        }, 0);  
+          firstWrong.shadowRoot
+            .querySelector("#downArrow")
+            .shadowRoot.querySelector("button")
+            .focus();
+        }, 0);
       }
     }
     this.showAnswer = false;
@@ -88,7 +92,7 @@ export class SortingQuestion extends QuestionElement {
       child.incorrect = null;
       child.correct = null;
     });
-    let gotRight = (this.numberCorrect === this.answers.length);
+    let gotRight = this.numberCorrect === this.answers.length;
     // if we got it right, reset the whole interaction in case they want to take it again
     if (gotRight) {
       this.displayedAnswers = [];
@@ -121,7 +125,10 @@ export class SortingQuestion extends QuestionElement {
           var numCorrect = 0;
           let children = this.getOptions();
           for (var i = 0; i < this.answers.length; i++) {
-            if (children[i].innerText === this.answers[i].label && i === this.answers[i].order) {
+            if (
+              children[i].innerText === this.answers[i].label &&
+              i === this.answers[i].order
+            ) {
               numCorrect += 1;
               children[i].correct = true;
               children[i].incorrect = null;
@@ -145,17 +152,17 @@ export class SortingQuestion extends QuestionElement {
           }
           // focus feedback when we're done
           this.shadowRoot.querySelector("#feedback").focus();
-          let gotRight = (this.numberCorrect === this.answers.length);
+          let gotRight = this.numberCorrect === this.answers.length;
           // see if they got this correct based on their answers
           if (gotRight) {
-            this.playSound('success');
+            this.playSound("success");
             this.__toastColor = "green";
             this.__toastIcon = this.correctIcon;
             this.__toastText = this.correctText;
             this.makeItRain();
             extras.hat = "party";
           } else {
-            this.playSound('error');
+            this.playSound("error");
             this.__toastColor = "red";
             this.__toastIcon = this.incorrectIcon;
             this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrect} of ${this.answers.length} ${this.t.numCorrectRight}`;
@@ -194,8 +201,7 @@ export class SortingQuestion extends QuestionElement {
               detail: eventData,
             }),
           );
-        }
-        else {
+        } else {
           this.getOptions().forEach((child) => {
             child.disabled = false;
           });
@@ -212,7 +218,7 @@ export class SortingQuestion extends QuestionElement {
           this.getOptions().forEach((child) => {
             child.disabled = false;
           });
-        }  
+        }
       }
     });
   }
@@ -222,87 +228,93 @@ export class SortingQuestion extends QuestionElement {
     return [
       super.styles,
       css`
-      :host {
-        display: block;
-        min-width: 160px;
-        padding: var(--ddd-spacing-8);
-        border: var(--ddd-border-md);
-        border-radius: var(--ddd-radius-xs);
-        transition: all 0.3s ease-in-out;
-      }
-      :host(:focus),
-      :host(:focus-within),
-      :host(:hover) {
-        border-color: var(--simple-colors-default-theme-accent-12);
-      }
+        :host {
+          display: block;
+          min-width: 160px;
+          padding: var(--ddd-spacing-8);
+          border: var(--ddd-border-md);
+          border-radius: var(--ddd-radius-xs);
+          transition: all 0.3s ease-in-out;
+        }
+        :host(:focus),
+        :host(:focus-within),
+        :host(:hover) {
+          border-color: var(--simple-colors-default-theme-accent-12);
+        }
 
-      simple-toolbar-button {
-        font-size: var(--ddd-font-size-xs);
-        font-family: var(--ddd-font-navigation);
-        transition: all 0.3s ease-in-out;
-        border: none;
-        border-radius: var(--ddd-radius-xs);
-      }
-      simple-toolbar-button {
-        background-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
-        color: light-dark(white, black);
-      }
-      simple-toolbar-button[disabled] {
-        background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-slateGray));
-        color: light-dark(black, white);
-        opacity: .5;
-      }
-      :host simple-toolbar-button:hover::part(button),
-      :host simple-toolbar-button:focus::part(button),
-      :host simple-toolbar-button:focus-within::part(button),
-      :host simple-toolbar-button:active::part(button) {
-        cursor: pointer;
-        box-shadow: var(--ddd-boxShadow-sm);
-        border-color: black;
-      }
-      simple-toolbar-button::part(button) {
-        border: var(--ddd-border-sm);
-        border-radius: var(--ddd-radius-xs);
-        padding: var(--ddd-spacing-2);
-      }
-      simple-toolbar-button::part(label) {
-        font-size: var(--ddd-font-size-s);
-        font-family: var(--ddd-font-navigation);
-        padding: 0;
-        margin: 0;
-      }
-      #check {
-        margin-right: var(--ddd-spacing-4);
-      }
-      .options {
-        margin-bottom: var(--ddd-spacing-6);
-        border-radius: var(--ddd-radius-xs);
-        border: var(--ddd-border-xs);
-      }
+        simple-toolbar-button {
+          font-size: var(--ddd-font-size-xs);
+          font-family: var(--ddd-font-navigation);
+          transition: all 0.3s ease-in-out;
+          border: none;
+          border-radius: var(--ddd-radius-xs);
+        }
+        simple-toolbar-button {
+          background-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          color: light-dark(white, black);
+        }
+        simple-toolbar-button[disabled] {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          color: light-dark(black, white);
+          opacity: 0.5;
+        }
+        :host simple-toolbar-button:hover::part(button),
+        :host simple-toolbar-button:focus::part(button),
+        :host simple-toolbar-button:focus-within::part(button),
+        :host simple-toolbar-button:active::part(button) {
+          cursor: pointer;
+          box-shadow: var(--ddd-boxShadow-sm);
+          border-color: black;
+        }
+        simple-toolbar-button::part(button) {
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-2);
+        }
+        simple-toolbar-button::part(label) {
+          font-size: var(--ddd-font-size-s);
+          font-family: var(--ddd-font-navigation);
+          padding: 0;
+          margin: 0;
+        }
+        #check {
+          margin-right: var(--ddd-spacing-4);
+        }
+        .options {
+          margin-bottom: var(--ddd-spacing-6);
+          border-radius: var(--ddd-radius-xs);
+          border: var(--ddd-border-xs);
+        }
 
-      #buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      h3 {
-        padding: 0;
-        margin: 0 0 var(--ddd-spacing-8) 0;
-        font-family: var(--ddd-font-navigation);
-      }
-      .feedback {
-        margin: var(--ddd-spacing-3) 0;
-        font-size: var(--ddd-font-size-m);
-        font-weight: bold;
-        text-align: center;
-      }
-      sorting-option img {
-        border: var(--ddd-border-sm);
-        border-radius: var(--ddd-radius-sm);
-        box-shadow: var(--ddd-boxShadow-sm);
-        margin-right: var(--ddd-spacing-4);
-      }
-    `
+        #buttons {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        h3 {
+          padding: 0;
+          margin: 0 0 var(--ddd-spacing-8) 0;
+          font-family: var(--ddd-font-navigation);
+        }
+        .feedback {
+          margin: var(--ddd-spacing-3) 0;
+          font-size: var(--ddd-font-size-m);
+          font-weight: bold;
+          text-align: center;
+        }
+        sorting-option img {
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-sm);
+          box-shadow: var(--ddd-boxShadow-sm);
+          margin-right: var(--ddd-spacing-4);
+        }
+      `,
     ];
   }
   // render the area the user will interact with the question
@@ -310,10 +322,15 @@ export class SortingQuestion extends QuestionElement {
   renderInteraction() {
     return html`
       <fieldset class="options">
-      ${this.displayedAnswers.map(
-        (answer) => html`<sorting-option ?disabled="${this.disabled}">${answer.image ? html`<img src="${answer.image}" alt="${answer.alt}"/>` : nothing}${answer.label}</sorting-option>`
-      )}
-    </fieldset>
+        ${this.displayedAnswers.map(
+          (answer) =>
+            html`<sorting-option ?disabled="${this.disabled}"
+              >${answer.image
+                ? html`<img src="${answer.image}" alt="${answer.alt}" />`
+                : nothing}${answer.label}</sorting-option
+            >`,
+        )}
+      </fieldset>
     `;
   }
   render() {
@@ -327,24 +344,35 @@ export class SortingQuestion extends QuestionElement {
             ${!this.hideButtons ? this.renderButtons() : ``}
           </div>
           <div slot="col-2">
-            <details tabindex="${this.disabled ? "-1" : ""}" ?disabled="${this.disabled}" ?open="${!this.hasContent}" id="directions">
+            <details
+              tabindex="${this.disabled ? "-1" : ""}"
+              ?disabled="${this.disabled}"
+              ?open="${!this.hasContent}"
+              id="directions"
+            >
               <summary>Directions</summary>
-              <div>
-                ${this.renderDirections()}
-              </div>
+              <div>${this.renderDirections()}</div>
             </details>
-            ${this.hasContent ? html`
-            <details tabindex="${this.disabled ? "-1" : ""}" ?disabled="${this.disabled}" ?open="${!this.showAnswer}" id="related">
-              <summary>Related content</summary>
-              <div>
-                <slot name="content"></slot>
-              </div>
-            </details>` : ``}
-            <details tabindex="${!this.showAnswer || this.disabled ? "-1" : ""}" ?disabled="${!this.showAnswer || this.disabled}" ?open="${this.showAnswer}">
+            ${this.hasContent
+              ? html` <details
+                  tabindex="${this.disabled ? "-1" : ""}"
+                  ?disabled="${this.disabled}"
+                  ?open="${!this.showAnswer}"
+                  id="related"
+                >
+                  <summary>Related content</summary>
+                  <div>
+                    <slot name="content"></slot>
+                  </div>
+                </details>`
+              : ``}
+            <details
+              tabindex="${!this.showAnswer || this.disabled ? "-1" : ""}"
+              ?disabled="${!this.showAnswer || this.disabled}"
+              ?open="${this.showAnswer}"
+            >
               <summary id="feedback">Feedback</summary>
-              <div>
-                ${this.renderFeedback()}
-              </div>
+              <div>${this.renderFeedback()}</div>
             </details>
           </div>
         </grid-plate>
@@ -360,58 +388,84 @@ export class SortingQuestion extends QuestionElement {
 
   renderButtons() {
     return html`
-    <div id="buttons">
-      <simple-toolbar-button
-        id="check"
-        ?disabled="${this.disabled || !this.inactiveCase() || this.showAnswer}"
-        @click="${this.checkAnswer}"
-        label="${this.checkLabel}"
-      >
-      </simple-toolbar-button>
-      <simple-toolbar-button
-        id="reset"
-        ?disabled="${this.disabled || !this.inactiveCase() || (this.inactiveCase() && !this.showAnswer)}"
-        @click="${this.resetAnswer}"
-        label="${this.resetLabel}"
-      >
-      </simple-toolbar-button>
-    </div>
-  `;
+      <div id="buttons">
+        <simple-toolbar-button
+          id="check"
+          ?disabled="${this.disabled ||
+          !this.inactiveCase() ||
+          this.showAnswer}"
+          @click="${this.checkAnswer}"
+          label="${this.checkLabel}"
+        >
+        </simple-toolbar-button>
+        <simple-toolbar-button
+          id="reset"
+          ?disabled="${this.disabled ||
+          !this.inactiveCase() ||
+          (this.inactiveCase() && !this.showAnswer)}"
+          @click="${this.resetAnswer}"
+          label="${this.resetLabel}"
+        >
+        </simple-toolbar-button>
+      </div>
+    `;
   }
 
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
-    return html`<p>Place the items in the correct order either by clicking the up and down arrows or drag and drop.
-    When you believe you have them in the correct order, test your answer by selecting <strong>${this.t.checkAnswer}</strong>.
-    You will get feedback just below here indicating correctness of your answer.
-  </p>`;
+    return html`<p>
+      Place the items in the correct order either by clicking the up and down
+      arrows or drag and drop. When you believe you have them in the correct
+      order, test your answer by selecting
+      <strong>${this.t.checkAnswer}</strong>. You will get feedback just below
+      here indicating correctness of your answer.
+    </p>`;
   }
 
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
-    ${this.showAnswer && this.numberCorrect !== this.answers.length ? html`
-    <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrect}/${this.answers.length} ${this.t.numCorrectRight}</p>
-    ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
-    ${this.showAnswer && this.numberCorrect === this.answers.length ? html`
-    <p class="feedback">${this.correctText}</p>
-    ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
-      ${this.hasHint && this.showAnswer && this.numberCorrect !== this.answers.length ? html`
-        <h4>Need a hint?</h4>
-        <div>
-          <slot name="hint"></slot>
-        </div>
-      ` : ``}
-      ${this.hasEvidence && this.showAnswer && this.numberCorrect === this.answers.length  ? html`
-        <h4>Evidence</h4>
-        <div>
-          <slot name="evidence"></slot>
-        </div>
-      ` : ``}
+      ${this.showAnswer && this.numberCorrect !== this.answers.length
+        ? html` <p class="feedback">
+              ${this.t.numCorrectLeft}
+              ${this.numberCorrect}/${this.answers.length}
+              ${this.t.numCorrectRight}
+            </p>
+            ${this.hasFeedbackIncorrect
+              ? html`<slot name="feedbackIncorrect"></slot>`
+              : ``}`
+        : ``}
+      ${this.showAnswer && this.numberCorrect === this.answers.length
+        ? html` <p class="feedback">${this.correctText}</p>
+            ${this.hasFeedbackCorrect
+              ? html`<slot name="feedbackCorrect"></slot>`
+              : ``}`
+        : ``}
+      ${this.hasHint &&
+      this.showAnswer &&
+      this.numberCorrect !== this.answers.length
+        ? html`
+            <h4>Need a hint?</h4>
+            <div>
+              <slot name="hint"></slot>
+            </div>
+          `
+        : ``}
+      ${this.hasEvidence &&
+      this.showAnswer &&
+      this.numberCorrect === this.answers.length
+        ? html`
+            <h4>Evidence</h4>
+            <div>
+              <slot name="evidence"></slot>
+            </div>
+          `
+        : ``}
       <simple-toolbar-button
         ?disabled="${this.disabled || !this.showAnswer}"
         @click="${this.resetAnswer}"
-        label="${this.t.tryAgain}">
+        label="${this.t.tryAgain}"
+      >
       </simple-toolbar-button>
     `;
   }

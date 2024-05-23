@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/h-a-x/h-a-x.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "@haxtheweb/h-a-x/h-a-x.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 /**
  * `cms-hax`
  * @element cms-hax
@@ -291,10 +291,10 @@ class CmsHax extends LitElement {
     this.hideMessage = false;
     this.__imported = false;
     setTimeout(() => {
-      import("@lrnwebcomponents/cms-hax/lib/cms-token.js");
-      import("@lrnwebcomponents/cms-hax/lib/cms-block.js");
-      import("@lrnwebcomponents/cms-hax/lib/cms-views.js");
-      import("@lrnwebcomponents/cms-hax/lib/cms-entity.js");
+      import("@haxtheweb/cms-hax/lib/cms-token.js");
+      import("@haxtheweb/cms-hax/lib/cms-block.js");
+      import("@haxtheweb/cms-hax/lib/cms-views.js");
+      import("@haxtheweb/cms-hax/lib/cms-entity.js");
     }, 0);
   }
   _makeAppStore(val) {

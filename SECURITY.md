@@ -7,4 +7,4 @@ If we get a security issue in a specific version, we are going to fix it in a ne
 
 ## Reporting a Vulnerability
 
-Security related issues should be filed in our general issue queue https://github.com/elmsln/issues/issues
+Security related issues should be filed in our general issue queue https://github.com/haxtheweb/issues/issues

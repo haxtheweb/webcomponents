@@ -1,7 +1,7 @@
 import { css, html, unsafeCSS } from "lit";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * @note Gut all design settings in HAX core. this allows for design systems to hook in
@@ -1993,7 +1993,13 @@ export const DDDReset = css`
     display: flex;
     font-size: var(--ddd-theme-h4-font-size);
     font-weight: var(--ddd-font-weight-bold);
-    color: light-dark(var(--lowContrast-override, var(--ddd-theme-primary,var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight));
+    color: light-dark(
+      var(
+        --lowContrast-override,
+        var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
+      ),
+      var(--ddd-theme-default-linkLight)
+    );
     cursor: pointer;
     text-wrap: wrap;
     align-items: center;
@@ -2008,7 +2014,13 @@ export const DDDReset = css`
     content: "+";
     margin-left: auto;
     text-align: right;
-    color: light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight));
+    color: light-dark(
+      var(
+        --lowContrast-override,
+        var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
+      ),
+      var(--ddd-theme-default-linkLight)
+    );
     font-weight: var(--ddd-font-weight-regular);
     font-size: var(--ddd-font-size-m);
     line-height: 1;
@@ -2031,15 +2043,27 @@ export const DDDReset = css`
     content: "-";
   }
   details[open] > summary {
-    color: light-dark(var(--lowContrast-override, var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))), var(--ddd-theme-default-linkLight));
+    color: light-dark(
+      var(
+        --lowContrast-override,
+        var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
+      ),
+      var(--ddd-theme-default-linkLight)
+    );
     filter: saturate(1.5);
   }
   details[open] > summary {
-    background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-potentialMidnight));
+    background-color: light-dark(
+      var(--ddd-theme-default-limestoneMaxLight),
+      var(--ddd-theme-default-potentialMidnight)
+    );
   }
   details summary:focus,
   details summary:hover {
-    background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-nittanyNavy));
+    background-color: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-nittanyNavy)
+    );
   }
 
   code {

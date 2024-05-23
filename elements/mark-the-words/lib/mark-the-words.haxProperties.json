@@ -32,11 +32,7 @@
     "advanced": []
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "wordList",
-      "numberCorrect",
-      "numberGuessed"
-    ]
+    "unsetAttributes": ["wordList", "numberCorrect", "numberGuessed"]
   },
   "demoSchema": [
     {

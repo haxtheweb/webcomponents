@@ -3,13 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `haxcms-slide-theme`
  * `A simple slide playing theme`
@@ -25,25 +25,25 @@ class HAXCMSSlideTheme extends DDDSuper(
     setTimeout(() => {
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator"
+        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-dot-indicator"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
       );
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@haxtheweb/simple-tooltip/simple-tooltip.js");
     }, 0);
   }
   /**

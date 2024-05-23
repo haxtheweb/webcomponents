@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
+import "@haxtheweb/deduping-fix/deduping-fix.js";
 import "@polymer/iron-demo-helpers/demo-snippet.js";
 import { LoremDataBehaviors } from "../lorem-data/lib/lorem-data-behaviors.js";
 
@@ -619,7 +619,7 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
   makeUsageDocs(el, path, demo, packageName = null) {
     const url = new URL(path);
     let entryFile = el.tag;
-    let importPath = url.pathname.replace('/elements/','@lrnwebcomponents/').replace('.stories.js','.js');
+    let importPath = url.pathname.replace('/elements/','@haxtheweb/').replace('.stories.js','.js');
     packageName = packageName || `${importPath.split('/')[0]}/${importPath.split('/')[1]}`;
     var description = window.localStorage.getItem(`${entryFile}-description`);
     setTimeout( async () => {
@@ -685,7 +685,7 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     <h3>Additional links</h3>
     <ul>
       <li><a target="_blank" href="https://www.npmjs.com/package/${packageName}">NPM Project page</a></li>
-      <li><a target="_blank" href="https://github.com/elmsln/lrnwebcomponents/tree/master/elements/${entryFile}/">GitHub source code</a></li>
+      <li><a target="_blank" href="https://github.com/haxtheweb/webcomponents/tree/master/elements/${entryFile}/">GitHub source code</a></li>
     </ul>`;
     return div;
 

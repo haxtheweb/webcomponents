@@ -3,19 +3,19 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import { HaxUiBaseStyles } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import { HaxUiBaseStyles } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import {
   HaxSchematizer,
   HaxElementizer,
-} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 /**
  * `haxcms-site-dashboard`

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
-import "@lrnwebcomponents/simple-picker/lib/simple-symbol-picker.js";
+import "@haxtheweb/simple-picker/lib/simple-symbol-picker.js";
 /**
  * `rich-text-editor-symbol-picker`
  * a symbol picker for the rich-text-editor

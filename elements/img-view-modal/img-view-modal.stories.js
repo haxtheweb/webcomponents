@@ -1,9 +1,9 @@
 import { html } from "lit-html";
-import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
-import { ImgViewModal } from "@lrnwebcomponents/img-view-modal/img-view-modal.js";
-import { ImgViewViewer } from "@lrnwebcomponents/img-view-modal/lib/img-view-viewer.js";
+import { ImgPanZoom } from "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
+import { ImgViewModal } from "@haxtheweb/img-view-modal/img-view-modal.js";
+import { ImgViewViewer } from "@haxtheweb/img-view-modal/lib/img-view-viewer.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Media|Image View Modal",

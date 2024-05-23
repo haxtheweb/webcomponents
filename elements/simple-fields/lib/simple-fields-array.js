@@ -1,11 +1,11 @@
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./simple-fields-array-item.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@haxtheweb/responsive-utility/responsive-utility.js";
 /**
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.

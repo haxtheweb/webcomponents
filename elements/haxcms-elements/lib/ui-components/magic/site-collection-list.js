@@ -1,8 +1,8 @@
 import { css, html } from "lit";
-import { CollectionList } from "@lrnwebcomponents/collection-list/collection-list.js";
-import "@lrnwebcomponents/collection-list/lib/collection-item.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { CollectionList } from "@haxtheweb/collection-list/collection-list.js";
+import "@haxtheweb/collection-list/lib/collection-item.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 
 // site-collection-list that automatically renders based on criteria from the sitee.json
 export class SiteCollectionList extends CollectionList {

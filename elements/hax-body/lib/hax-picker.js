@@ -2,8 +2,8 @@ import { LitElement, html, css } from "lit";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-element-demo.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
-import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
+import "@haxtheweb/simple-toolbar/lib/simple-button-grid.js";
+import "@haxtheweb/simple-popover/lib/simple-popover-selection.js";
 /**
  `hax-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require

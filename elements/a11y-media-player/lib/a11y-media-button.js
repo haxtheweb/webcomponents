@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `a11y-media-button`
  * a button used in a11y-media-controls and a11y-media-transcript-controls.
@@ -94,7 +94,7 @@ class A11yMediaButton extends LitElement {
     this.disabled = false;
     this.toggle = false;
     this.tooltipPosition = "bottom";
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    import("@haxtheweb/simple-tooltip/simple-tooltip.js");
   }
 
   static get styles() {

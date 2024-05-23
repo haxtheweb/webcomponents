@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "web-dialog/index.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "./lib/super-daemon-ui.js";
 import { SuperDaemonToastInstance } from "./lib/super-daemon-toast.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 /**
  * `super-daemon`
@@ -54,27 +54,19 @@ class SuperDaemon extends SimpleColors {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // change theme program
+    // add Santa program
     SuperDaemonInstance.defineOption({
       title: "Toggle Santa Mode",
       textCharacter: "🎅",
-      tags: [
-        "Developer",
-        "government",
-        "merlin",
-        "big-tech",
-        "overlord",
-        "santa",
-        "all-seeing-eye",
-      ],
+      tags: ["Developer", "big-tech", "santa", "all-seeing-eye"],
       eventName: "super-daemon-element-method",
-      path: ">settings/voice",
+      path: ">settings/hohoho",
       voice: "(toggle) santa (mode)",
       context: [">"],
       more: html`<span
         >He sees you when your sleeping, he knows when your awake, and with this
         command active he is always listening for input ready to respond. He's..
-        Santa Merlin. Ho..Ho....Ho.</span
+        Santa Merlin. Ho..Ho...Ho.</span
       >`,
       value: {
         target: this,
@@ -1017,7 +1009,7 @@ class SuperDaemon extends SimpleColors {
       );
     }
     if (changedProperties.has("voiceSearch") && this.voiceSearch) {
-      import("@lrnwebcomponents/hal-9000/hal-9000.js").then(() => {
+      import("@haxtheweb/hal-9000/hal-9000.js").then(() => {
         this.hal = window.Hal9000.requestAvailability();
         this.hal.debug = false; // enable to see all available commands in console
         this.hal.toast = true;

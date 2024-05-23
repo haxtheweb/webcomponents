@@ -5,7 +5,7 @@ import { LrndesignBar } from "./lib/lrndesign-bar.js";
 import * as BarCSV from "./demo/bar.csv";
 import * as PieCSV from "./demo/pie.csv";
 import * as LineCSV from "./demo/line.csv";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
 /**

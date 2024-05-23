@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
-import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
+import "@haxtheweb/a11y-tabs/a11y-tabs.js";
+import "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
 import "@polymer/marked-element/marked-element.js";
 import "./lib/lrn-markdown-editor-editor.js";
 /**

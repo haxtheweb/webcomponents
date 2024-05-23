@@ -4,19 +4,19 @@
  */
 import { html, css, render, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/editable-table/lib/editable-table-display.js";
-import "@lrnwebcomponents/play-list/play-list.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-remote-content.js";
-import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import "@haxtheweb/simple-fields/lib/simple-tags.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/editable-table/lib/editable-table-display.js";
+import "@haxtheweb/play-list/play-list.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-remote-content.js";
+import { iconFromPageType } from "@haxtheweb/course-design/lib/learning-component.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { autorun, toJS } from "mobx";
 
 export const mediaKeys = [

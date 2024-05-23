@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
 /**
 `lrn-vocab`
 Vocabulary term with visual treatment and semantic meaning.

@@ -1,5 +1,5 @@
 import { css, html } from "lit";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 const BootstrapUserStylesMenuMixin = function (SuperClass) {
   return class extends SuperClass {
@@ -203,11 +203,11 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       ];
     }
     BootstrapUserStylesMenu() {
-      import("@lrnwebcomponents/simple-icon/simple-icon.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
-      import("@lrnwebcomponents/simple-popover/simple-popover.js");
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@haxtheweb/simple-icon/simple-icon.js");
+      import("@haxtheweb/simple-icon/lib/simple-icons.js");
+      import("@haxtheweb/simple-icon/lib/simple-icon-button-lite.js");
+      import("@haxtheweb/simple-popover/simple-popover.js");
+      import("@haxtheweb/simple-tooltip/simple-tooltip.js");
       return html`
         <link rel="stylesheet" href="${this._bootstrapPath}" />
         <simple-icon-button-lite

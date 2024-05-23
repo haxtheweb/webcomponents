@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/map-menu/lib/map-menu-builder.js";
-import "@lrnwebcomponents/map-menu/lib/map-menu-container.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/map-menu/lib/map-menu-builder.js";
+import "@haxtheweb/map-menu/lib/map-menu-container.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 /**
  * `map-menu`

@@ -1,8 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
-import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@haxtheweb/lrn-shared-styles/lrn-shared-styles.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
 
 /**
 This is a fork of https://github.com/PolymerElements/lrn-icon

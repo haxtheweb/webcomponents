@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 export class Hal9000UI extends SimpleColors {
   static get styles() {

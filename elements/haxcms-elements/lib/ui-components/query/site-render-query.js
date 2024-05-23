@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import "@polymer/iron-list/iron-list.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
 /**
  * `site-render-query`
  * `Render a query result as an iron-list`

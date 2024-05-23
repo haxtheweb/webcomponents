@@ -2,9 +2,9 @@ import { LitElement, html, css } from "lit";
 import {
   HAXElement,
   HAXWiring,
-} from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
-import { varGet } from "@lrnwebcomponents/utils/utils.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+} from "@haxtheweb/hax-body-behaviors/hax-body-behaviors.js";
+import { varGet } from "@haxtheweb/utils/utils.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 
 /**
  * `hax-autoloader`
@@ -127,7 +127,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
             // @todo support CDN failover or a flag of some kind to ensure
             // this delivers locally or from remote
             // @todo need to support name spacing of packages so that we
-            // don't assume they are all relative to lrnwebcomponents
+            // don't assume they are all relative to webcomponents
             if (!globalThis.customElements.get(name)) {
               let fileLocation;
               // attempt to load via dynamic import registry if we have one available
@@ -151,7 +151,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                   varGet(
                     HAXStore,
                     `__appStoreData.autoloader.${name}`,
-                    `@lrnwebcomponents/${name}/${name}.js`,
+                    `@haxtheweb/${name}/${name}.js`,
                   ),
                 );
                 fileLocation = `${

@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
 /**
  * `lesson-highlight`
  * `Clean presentation of what to expect in an upcoming lesson of instruction`

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { RadioBehaviors } from "@lrnwebcomponents/radio-behaviors/radio-behaviors.js";
+import { RadioBehaviors } from "@haxtheweb/radio-behaviors/radio-behaviors.js";
 
 /**
  * `simple-toolbar-button-group`

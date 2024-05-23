@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import { SimpleToolbarMenuBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
-import { HaxButton } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
+import { SimpleToolbarMenuBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
+import { HaxButton } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 /**
  * `hax-toolbar-menu`
  * `An icon / button that has support for multiple options via drop down.`

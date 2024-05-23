@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
-import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
+import "@haxtheweb/simple-popover/simple-popover.js";
+import "@haxtheweb/paper-avatar/paper-avatar.js";
 import "@github/time-elements";
 /**
  * `simple-blog-card`

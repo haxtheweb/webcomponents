@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js";
+import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/accent-card/accent-card.js";
 /**
  * `product-card`
  * `basic display of a product with advanced data driven helpers`

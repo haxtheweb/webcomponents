@@ -6,7 +6,7 @@
  * @element hax-iconset is a iconset for HAX
  *
  * Example:
- *   <script>import "@lrnwebcomponents/hax-iconset/hax-iconset.js";</script>
+ *   <script>import "@haxtheweb/hax-iconset/hax-iconset.js";</script>
  *   <simple-icon icon="hax:vocab"></simple-icon>
  *
  * @pseudoElement hax-iconset

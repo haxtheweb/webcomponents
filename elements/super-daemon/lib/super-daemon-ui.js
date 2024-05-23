@@ -1,8 +1,8 @@
 import { html, css, nothing } from "lit";
-import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
+import { SimpleFilterMixin } from "@haxtheweb/simple-filter/simple-filter.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import { autorun, toJS } from "mobx";
 import "@lit-labs/virtualizer";
 import "./super-daemon-row.js";

@@ -1,5 +1,5 @@
 import { css, html } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 
 export const HAXCMSOperationButtons = function (SuperClass) {
   return class extends SuperClass {
@@ -66,9 +66,9 @@ export const HAXCMSOperationButtons = function (SuperClass) {
     // and is intended to be used just above the content container
     // though not required for usage
     HAXCMSRenderOperationButtons() {
-      import("@lrnwebcomponents/simple-icon/simple-icon.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
+      import("@haxtheweb/simple-icon/simple-icon.js");
+      import("@haxtheweb/simple-icon/lib/simple-icons.js");
+      import("@haxtheweb/simple-icon/lib/simple-icon-button-lite.js");
       return html`
         <div class="operation-buttons-wrapper">
           <simple-icon-button-lite

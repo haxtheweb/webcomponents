@@ -1,13 +1,13 @@
 import { html, css } from "lit";
-import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { remoteLinkBehavior } from "@haxtheweb/utils/lib/remoteLinkBehavior.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   DDDMarginPadding,
   DDDBorders,
-} from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
+} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
 // register the iconset
 SimpleIconsetStore.registerIconset(

@@ -1,6 +1,6 @@
-import { A11yFigure } from "@lrnwebcomponents/a11y-figure/a11y-figure.js";
+import { A11yFigure } from "@haxtheweb/a11y-figure/a11y-figure.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Media|Figure",

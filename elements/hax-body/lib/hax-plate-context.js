@@ -1,15 +1,15 @@
 import { LitElement, css, html } from "lit";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
+import "@haxtheweb/hax-body/lib/hax-toolbar.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar-menu.js";
 import "./hax-toolbar.js";
 import "./hax-context-item.js";
-import { wipeSlot } from "@lrnwebcomponents/utils/utils";
+import { wipeSlot } from "@haxtheweb/utils/utils";
 import { autorun, toJS } from "mobx";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-plate-context`

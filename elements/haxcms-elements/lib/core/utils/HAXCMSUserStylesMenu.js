@@ -3,7 +3,7 @@ import {
   normalizeEventPath,
   localStorageGet,
   localStorageSet,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { toJS, autorun } from "mobx";
 import { store } from "../haxcms-site-store.js";
@@ -230,11 +230,11 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       ];
     }
     HAXCMSUserStylesMenu() {
-      import("@lrnwebcomponents/simple-icon/simple-icon.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
-      import("@lrnwebcomponents/simple-popover/simple-popover.js");
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@haxtheweb/simple-icon/simple-icon.js");
+      import("@haxtheweb/simple-icon/lib/simple-icons.js");
+      import("@haxtheweb/simple-icon/lib/simple-icon-button-lite.js");
+      import("@haxtheweb/simple-popover/simple-popover.js");
+      import("@haxtheweb/simple-tooltip/simple-tooltip.js");
       return html`
         <simple-icon-button-lite
           .part="${this.editMode ? `edit-mode-active` : ``}"

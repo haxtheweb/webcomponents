@@ -4,13 +4,13 @@
  */
 import { css, LitElement, render, unsafeCSS } from "lit";
 import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
-import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import { editableTableDisplayStyles } from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
-import { copyToClipboard } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editable-table-behaviors.js";
+import { copyToClipboard } from "@haxtheweb/utils/utils.js";
 
 /**
  * LitElement Version of HAXCMSTheme

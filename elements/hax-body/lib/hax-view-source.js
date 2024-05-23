@@ -1,19 +1,15 @@
 import { LitElement, html, css } from "lit";
-import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
-import {
-  stripMSWord,
-  formatHTML,
-  b64toBlob,
-} from "@lrnwebcomponents/utils/utils.js";
+import { MtzFileDownloadBehaviors } from "@haxtheweb/dl-behavior/dl-behavior.js";
+import { stripMSWord, formatHTML, b64toBlob } from "@haxtheweb/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { autorun, toJS } from "mobx";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "./hax-tray-button.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 
 /**
  * `hax-eview-source`
@@ -244,17 +240,17 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
    * Download DOCX.
    */
   async downloadDOCX(e) {
-    import(
-      "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
-    ).then(async (e) => {
-      let body = await HAXStore.activeHaxBody.haxToContent();
-      globalThis.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
-        body,
-        globalThis.document.title,
-      );
-      HAXStore.toast(this.t.fileDownloaded);
-      this.close();
-    });
+    import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js").then(
+      async (e) => {
+        let body = await HAXStore.activeHaxBody.haxToContent();
+        globalThis.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
+          body,
+          globalThis.document.title,
+        );
+        HAXStore.toast(this.t.fileDownloaded);
+        this.close();
+      },
+    );
   }
 
   /**
@@ -412,7 +408,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     // import at this time so we can delay as long as possible
     // from needing to pull in monaco
     if (!globalThis.customElements.get("code-editor")) {
-      import("@lrnwebcomponents/code-editor/code-editor.js").then(() => {
+      import("@haxtheweb/code-editor/code-editor.js").then(() => {
         this.updateEditor();
         // delay is because we conditionally render the entire treee
         // to reduce memory usage bc of how large the monoco window is

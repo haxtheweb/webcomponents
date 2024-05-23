@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SimpleColorsSharedStylesGlobal } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import { SimpleColorsSharedStylesGlobal } from "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 const SimpleColorsSuper = function (SuperClass) {
   return class extends SuperClass {
     //styles function
@@ -1235,7 +1235,7 @@ const SimpleColorsSuper = function (SuperClass) {
 };
 /**
   * `simple-colors`
-  * a shared set of styles for `@lrnwebcomponents`
+  * a shared set of styles for `@haxtheweb`
  ### Styling
  See demo of "all of the colors" (`demo/colors.html`) for styling.
   *

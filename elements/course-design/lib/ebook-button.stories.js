@@ -1,5 +1,5 @@
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 import { EbookButton } from "./ebook-button.js";
 // need to account for polymer goofiness when webpack rolls this up
 

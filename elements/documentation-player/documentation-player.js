@@ -3,12 +3,12 @@
  * @license , see License.md for full text.
  */
 import { LitElement, html, css, render, nothing } from "lit";
-import "@lrnwebcomponents/simple-img/simple-img.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/play-list/play-list.js";
-import "@lrnwebcomponents/code-sample/code-sample.js";
-import "@lrnwebcomponents/code-editor/lib/code-pen-button.js";
-import { nodeToHaxElement } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/simple-img/simple-img.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/play-list/play-list.js";
+import "@haxtheweb/code-sample/code-sample.js";
+import "@haxtheweb/code-editor/lib/code-pen-button.js";
+import { nodeToHaxElement } from "@haxtheweb/utils/utils.js";
 
 /**
  * `documentation-player`
@@ -83,7 +83,7 @@ class DocumentationPlayer extends LitElement {
             loading="lazy"
             fetchpriority="low"
             decoding="async"
-            src="https://screenshoturl.elmsln.vercel.app/api/screenshotUrl?quality=10&amp;render=img&amp;urlToCapture=${this
+            src="https://screenshoturl-haxtheweb.vercel.app/api/screenshotUrl?quality=10&amp;render=img&amp;urlToCapture=${this
               .imageUrl}"
             alt=""
             width="300"

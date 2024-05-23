@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@haxtheweb/responsive-utility/responsive-utility.js";
 
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {

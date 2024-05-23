@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
       import '../promise-progress.js';
@@ -83,19 +83,19 @@
     <script type="module" async defer>
       let ary = [
         () => import("lit"),
-        () => import("@lrnwebcomponents/simple-colors/simple-colors.js"),
-        () => import("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js"),
-        () => import("@lrnwebcomponents/wc-autoload/wc-autoload.js"),
-        () => import("@lrnwebcomponents/replace-tag/replace-tag.js"),
-        () => import("@lrnwebcomponents/utils/utils.js"),
+        () => import("@haxtheweb/simple-colors/simple-colors.js"),
+        () => import("@haxtheweb/i18n-manager/lib/I18NMixin.js"),
+        () => import("@haxtheweb/wc-autoload/wc-autoload.js"),
+        () => import("@haxtheweb/replace-tag/replace-tag.js"),
+        () => import("@haxtheweb/utils/utils.js"),
         () => import("mobx/dist/mobx.esm.js"),
-        () => import("@lrnwebcomponents/grid-plate/grid-plate.js"),
-        () => import("@lrnwebcomponents/simple-fields/simple-fields.js"),
-        () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js"),
-        () => import("@lrnwebcomponents/clean-one/clean-one.js"), // theme in question
+        () => import("@haxtheweb/grid-plate/grid-plate.js"),
+        () => import("@haxtheweb/simple-fields/simple-fields.js"),
+        () => import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js"),
+        () => import("@haxtheweb/clean-one/clean-one.js"), // theme in question
         () => fetch("../../haxcms-elements/lib/base.css"), // base.css via the injected preload statement
         () => fetch("../../haxcms-elements/demo/buid.js"), // build.js via the injected preload Promise concept
-        () => import("@lrnwebcomponents/h-a-x/h-a-x.js"),
+        () => import("@haxtheweb/h-a-x/h-a-x.js"),
       ];
       document.querySelector("#progress2").list = ary;
       document.querySelector("#b2").addEventListener("click", async (e) => {

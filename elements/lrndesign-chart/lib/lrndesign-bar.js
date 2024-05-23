@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { LrndesignChart } from "../lrndesign-chart.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 /**
  * `lrndesign-bar`

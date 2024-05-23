@@ -1,4 +1,4 @@
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
 /**
  * SuperClass to add in accessible clicking capabilities to anything
  * to pop passed in items up via...

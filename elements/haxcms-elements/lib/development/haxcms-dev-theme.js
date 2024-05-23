@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { HAXCMSPolymerElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
+import "@haxtheweb/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/iron-list/iron-list.js";
 /**
  * `haxcms-dev-theme`
@@ -24,52 +24,52 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/simple-icon/simple-icon.js");
-    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    import("@haxtheweb/simple-icon/simple-icon.js");
+    import("@haxtheweb/simple-icon/lib/simple-icons.js");
+    import("@haxtheweb/simple-tooltip/simple-tooltip.js");
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-query.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/query/site-render-query.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js"
     );
   }
   // render function
@@ -143,7 +143,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
             rel="noopener noreferrer"
             target="_blank"
             tabindex="-1"
-            href="https://github.com/elmsln/HAXcms"
+            href="https://github.com/haxtheweb/haxcms"
             data-title="Get it. Got it? Good."
           >
             <button noink>Get HAXcms</button>

@@ -1,8 +1,8 @@
 import { html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-fields/lib/simple-tag.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 export class SuperDaemonRow extends SimpleColors {
   constructor() {

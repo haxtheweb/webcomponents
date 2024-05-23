@@ -1,7 +1,7 @@
 import { css } from "lit";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 
 export const HaxLayoutBehaviors = function (SuperClass) {
   return class extends SchemaBehaviors(SuperClass) {

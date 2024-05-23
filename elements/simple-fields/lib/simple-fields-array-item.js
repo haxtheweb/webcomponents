@@ -1,12 +1,12 @@
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
+import "@haxtheweb/responsive-utility/responsive-utility.js";
 /**
  * `simple-fields-array-item`
  * an accessible expand collapse

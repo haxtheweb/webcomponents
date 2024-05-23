@@ -41,7 +41,7 @@
       },
       "theme": {
         "element": "clean-one",
-        "path": "@lrnwebcomponents/clean-one/clean-one.js",
+        "path": "@haxtheweb/clean-one/clean-one.js",
         "name": "Course theme",
         "variables": {
           "image": "assets/banner.jpg",

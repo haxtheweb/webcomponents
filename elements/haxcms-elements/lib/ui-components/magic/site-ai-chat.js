@@ -1,10 +1,10 @@
-import { DDDSuper, DDDPulseEffectSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper, DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css, LitElement } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 // enable services for glossary enhancement
 enableServices(["haxcms"]);
@@ -12,14 +12,13 @@ MicroFrontendRegistry.add({
   endpoint: "/api/apps/haxcms/aiChat",
   name: "@haxcms/aiChat",
   title: "AI Chat",
-  description:
-    "AI based chat agent that can answer questions about a site",
+  description: "AI based chat agent that can answer questions about a site",
   params: {
     site: "location of the HAXcms site OR site.json data",
     type: "site for site.json or link for remote loading",
     question: "Question to ask of the AI",
     engine: "which engine to use as we test multiple",
-    context: "context to query based on. Course typical"
+    context: "context to query based on. Course typical",
   },
 });
 
@@ -40,7 +39,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
 
   askQuestion(e) {
     e.preventDefault();
-    this.engine = e.target.getAttribute('name');
+    this.engine = e.target.getAttribute("name");
     this.context = this.shadowRoot.querySelector("#context").value;
     this.question = this.shadowRoot.querySelector("#question").value;
     this.requestAIFeedback();
@@ -50,11 +49,10 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    if (changedProperties.has('opened')) {
+    if (changedProperties.has("opened")) {
       if (this.opened) {
         this.shadowRoot.querySelector("dialog").showModal();
-      }
-      else {
+      } else {
         this.shadowRoot.querySelector("dialog").close();
       }
     }
@@ -77,55 +75,72 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       context: this.context,
     };
     this.loading = true;
-    MicroFrontendRegistry.call(
-      "@haxcms/aiChat",
-      params,
-    ).then((d) => {
-      if (d.status == 200) {
-        this.answers = [...d.data.answers];
-        this.question = d.data.question;
-      }
-      this.loading = false;
-    })
-    .catch((error) => {
-      this.loading = false;
-      console.error(error);
-    });
+    MicroFrontendRegistry.call("@haxcms/aiChat", params)
+      .then((d) => {
+        if (d.status == 200) {
+          this.answers = [...d.data.answers];
+          this.question = d.data.question;
+        }
+        this.loading = false;
+      })
+      .catch((error) => {
+        this.loading = false;
+        console.error(error);
+      });
   }
 
   render() {
     return html`
       <simple-icon-button-lite icon="hax:wizard-hat" @click="${this.openChat}"
-        >Ask a question</simple-icon-button-lite>
+        >Ask a question</simple-icon-button-lite
+      >
       <dialog class="chat">
-      <simple-icon-button-lite class="close" icon="close" @click="${this.closeChat}"
-        >Close</simple-icon-button-lite>
-      <form action="#">
-      <simple-icon-lite class="hat" icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}"></simple-icon-lite>
-        <input id="context" value="${this.context}" type="text" />
-        <input id="question" type="text" placeholder="Ask your question.." />
-        
-        <button
-          id="submit"
-          type="submit"
-          name="alfred"
-          @click="${this.askQuestion}"
+        <simple-icon-button-lite
+          class="close"
+          icon="close"
+          @click="${this.closeChat}"
+          >Close</simple-icon-button-lite
         >
-          Ask Alfred
-        </button>
-        <button
-          id="submit2"
-          type="submit"
-          name="robin"
-          @click="${this.askQuestion}"
-        >
-          Ask Robin
-        </button>
-      </form>
-        ${this.question ? html`
-        ${this.loading ? `` : html`
-        <div>${this.answers.map((answer, i) => html`<h3 data-primary="13" data-design-treatment="vert">Answer ${i+1}</h3><p>${answer}</p>`)}</div>
-        `}` : ``}
+        <form action="#">
+          <simple-icon-lite
+            class="hat"
+            icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}"
+          ></simple-icon-lite>
+          <input id="context" value="${this.context}" type="text" />
+          <input id="question" type="text" placeholder="Ask your question.." />
+
+          <button
+            id="submit"
+            type="submit"
+            name="alfred"
+            @click="${this.askQuestion}"
+          >
+            Ask Alfred
+          </button>
+          <button
+            id="submit2"
+            type="submit"
+            name="robin"
+            @click="${this.askQuestion}"
+          >
+            Ask Robin
+          </button>
+        </form>
+        ${this.question
+          ? html` ${this.loading
+              ? ``
+              : html`
+                  <div>
+                    ${this.answers.map(
+                      (answer, i) =>
+                        html`<h3 data-primary="13" data-design-treatment="vert">
+                            Answer ${i + 1}
+                          </h3>
+                          <p>${answer}</p>`,
+                    )}
+                  </div>
+                `}`
+          : ``}
       </dialog>
     `;
   }
@@ -136,8 +151,8 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
   openChat() {
     this.opened = true;
     setTimeout(() => {
-      this.shadowRoot.querySelector('#question').focus();
-      this.shadowRoot.querySelector('#question').select();        
+      this.shadowRoot.querySelector("#question").focus();
+      this.shadowRoot.querySelector("#question").select();
     }, 300);
   }
   static get styles() {
@@ -191,7 +206,8 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
             overlay 0.7s ease-out allow-discrete,
             display 0.7s ease-out allow-discrete;
         }
-        input, button {
+        input,
+        button {
           font-size: var(--ddd-font-size-ms);
         }
         @starting-style {
@@ -217,7 +233,6 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
             background-color: rgb(0 0 0 / 0%);
           }
         }
-
       `,
     ];
   }

@@ -1,7 +1,7 @@
 {
   "id": "95f2b045-cfdb-4e35-b29b-e7f71c859987",
   "title": "HAX-the-web",
-  "author": "elmsln",
+  "author": "HAXTheWeb",
   "description": "Documentation and learning about how we HAX the web",
   "license": "by-sa",
   "metadata": {
@@ -9,7 +9,7 @@
     "image": "assets/banner.jpg",
     "theme": {
       "element": "learn-two-theme",
-      "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
+      "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
       "name": "Learn"
     },
     "icon": "lrn:network",
@@ -388,7 +388,7 @@
         "updated": 1563972327,
         "theme": {
           "element": "haxcms-basic-theme",
-          "path": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
+          "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
           "name": "Basic site",
           "key": "haxcms-basic-theme"
         }
@@ -443,7 +443,7 @@
         "updated": 1563972327,
         "theme": {
           "element": "haxcms-minimalist-theme",
-          "path": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-minimalist-theme.js",
+          "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-minimalist-theme.js",
           "name": "Minimalist site",
           "key": "haxcms-minimalist-theme"
         }
@@ -933,7 +933,7 @@
         ],
         "theme": {
           "element": "simple-blog",
-          "path": "@lrnwebcomponents/simple-blog/simple-blog.js",
+          "path": "@haxtheweb/simple-blog/simple-blog.js",
           "name": "Simple blog",
           "key": "simple-blog"
         }
@@ -1027,7 +1027,7 @@
         "updated": 1563972327,
         "theme": {
           "element": "haxor-slevin",
-          "path": "@lrnwebcomponents/haxor-slevin/haxor-slevin.js",
+          "path": "@haxtheweb/haxor-slevin/haxor-slevin.js",
           "name": "Coder blog",
           "key": "haxor-slevin"
         },
@@ -1074,7 +1074,7 @@
         "updated": 1563972327,
         "theme": {
           "element": "haxcms-slide-theme",
-          "path": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-slide-theme.js",
+          "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-slide-theme.js",
           "name": "Slide deck",
           "key": "haxcms-slide-theme"
         },
@@ -1103,7 +1103,7 @@
         "updated": 1563972327,
         "theme": {
           "element": "outline-player",
-          "path": "@lrnwebcomponents/outline-player/outline-player.js",
+          "path": "@haxtheweb/outline-player/outline-player.js",
           "name": "Documentation",
           "key": "outline-player"
         }
@@ -1122,7 +1122,7 @@
         "updated": 1563972327,
         "theme": {
           "element": "haxcms-dev-theme",
-          "path": "@lrnwebcomponents/haxcms-elements/lib/development/haxcms-dev-theme.js",
+          "path": "@haxtheweb/haxcms-elements/lib/development/haxcms-dev-theme.js",
           "name": "DEVELOPER: Test theme",
           "key": "haxcms-dev-theme"
         }

@@ -1,5 +1,5 @@
 import { css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SimpleTagLiteSuper } from "./simple-tag-lite.js";
 import {
   SimpleFieldsButtonStyles,

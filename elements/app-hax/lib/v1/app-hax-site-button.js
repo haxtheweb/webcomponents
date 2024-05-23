@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 // dependencies / things imported
 import { html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "wired-elements/lib/wired-button.js";
 
 const postIt = new URL("../assets/images/PostIt.svg", import.meta.url).href;

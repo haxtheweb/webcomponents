@@ -11,12 +11,7 @@
     "description": "",
     "icon": "editor:drag-handle",
     "color": "purple",
-    "tags": [
-      "Instructional",
-      "matching",
-      "drag and drop",
-      "question"
-    ],
+    "tags": ["Instructional", "matching", "drag and drop", "question"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

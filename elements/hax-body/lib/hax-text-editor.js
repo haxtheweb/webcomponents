@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { RichTextEditorBehaviors } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
+import { RichTextEditorBehaviors } from "@haxtheweb/rich-text-editor/rich-text-editor.js";
 import "./hax-text-editor-toolbar.js";
 
 /**

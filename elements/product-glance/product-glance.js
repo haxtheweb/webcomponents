@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 export class ProductGlance extends SimpleColors {
   static get styles() {
@@ -81,7 +81,7 @@ export class ProductGlance extends SimpleColors {
   }
   updated() {
     if (this.icon) {
-      import("@lrnwebcomponents/simple-icon/simple-icon.js");
+      import("@haxtheweb/simple-icon/simple-icon.js");
     }
   }
 

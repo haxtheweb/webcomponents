@@ -3,23 +3,23 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
-import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
-import { EmailPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/EmailPageMixin.js";
-import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
+import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
+import { EmailPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js";
+import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/scroll-button/scroll-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
+import "@haxtheweb/scroll-button/scroll-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "./lib/clean-one-search-box.js";
-import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `clean-one`
@@ -706,7 +706,7 @@ class CleanOne extends PrintBranchMixin(
     if (e.detail.value) {
       // prettier-ignore
       import(
-         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+         "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
        ).then(() => {
         if (store.getInternalRoute() !== 'search') {
           window.history.replaceState({}, null, "x/search");
@@ -742,19 +742,19 @@ class CleanOne extends PrintBranchMixin(
     this.searchTerm = "";
     // prettier-ignore
     import(
-       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+       "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
      );
     // prettier-ignore
     import(
-       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
      );
     // prettier-ignore
     import(
-       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
      );
     // prettier-ignore
     import(
-       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
+       "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
      );
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
@@ -785,7 +785,7 @@ class CleanOne extends PrintBranchMixin(
     // if we have a search param already, set it to the field on open
     if (store.getInternalRoute() === "search" && params.get("search")) {
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
       ).then(() => {
         this.searchTerm = params.get("search");
         this.shadowRoot.querySelector("clean-one-search-box").focus();

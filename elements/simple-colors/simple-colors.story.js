@@ -1,7 +1,7 @@
 import { SimpleColors } from "./simple-colors.js";
 import { SimpleColorsPicker } from "./lib/simple-colors-picker.js";
 import { SimpleColorsSwatches } from "./lib/demo/simple-colors-swatches.js";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
 

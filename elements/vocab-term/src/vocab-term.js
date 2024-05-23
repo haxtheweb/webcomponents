@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
+import "@haxtheweb/simple-popover/simple-popover.js";
+import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
 
 /**
  * `vocab-term`

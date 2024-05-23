@@ -17,10 +17,10 @@
  *    // which is simplistic operations / text based
  *    "editingElement": "core",
  *    // ADVANCED IMPLEMENTATION
- *    // @see @lrnwebcomponents/editable-table/lib/editable-table-display.js
+ *    // @see @haxtheweb/editable-table/lib/editable-table-display.js
  *    "editingElement": {
  *      "tag": "editable-table",
- *      "import" : "@lrnwebcomponents/editable-table/editable-table.js"
+ *      "import" : "@haxtheweb/editable-table/editable-table.js"
  *    },
  *    // can this be scaled in its width
  *    "canScale": true,
@@ -64,7 +64,7 @@
  *    'title': 'CSV Table',
  *    'descrption': 'This can generate a table from a CSV file no matter where it is located.',
  *     'icon': 'editor:border-all',
- *     'iconLib': '@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js', // optional ability to import custom icon libraries
+ *     'iconLib': '@haxtheweb/hax-iconset/lib/simple-hax-iconset.js', // optional ability to import custom icon libraries
  *     'color': 'green',
  *     'groups': ['Presentation', 'Table', 'Data'],
  *     'handles': [
@@ -76,7 +76,7 @@
  *     ],
  *    'tags': ['Content', 'csv'],
  *     'meta': {
- *       'author': 'LRNWebComponents'
+ *       'author': 'HAXTheWeb'
  *     }
  *   },
  *
@@ -169,23 +169,23 @@
  * and can be whatever you want though for consistency we have named ours
  * hax + the name of the hook
  * {
- *   // @see @lrnwebcomponents/editable-table/editable-table.js (example of a haxUIElement implementing these hooks)
- *   // @see @lrnwebcomponents/retro-card/retro-card.js
+ *   // @see @haxtheweb/editable-table/editable-table.js (example of a haxUIElement implementing these hooks)
+ *   // @see @haxtheweb/retro-card/retro-card.js
  *   activeElementChanged : "haxactiveElementChanged", // input (activeElement, value) where value is if the element is active
- *   // @see @lrnwebcomponents/retro-card/retro-card.js
+ *   // @see @haxtheweb/retro-card/retro-card.js
  *   editModeChanged : "haxeditModeChanged", // input (value) where value is state of body being in editMode
- *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
+ *   // @see @haxtheweb/multiple-choice/multiple-choice.js
  *   inlineContextMenu: "haxinlineContextMenu", // this allows for adding buttons dynamically to the editor in context
- *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
+ *   // @see @haxtheweb/multiple-choice/multiple-choice.js
  *   gizmoRegistration: "haxgizmoRegistration", // this lets you rewrite the store when the element is exposed to HAX
- *   // @see @lrnwebcomponents/code-editor/code-editor.js
- *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
+ *   // @see @haxtheweb/code-editor/code-editor.js
+ *   // @see @haxtheweb/multiple-choice/multiple-choice.js
  *   preProcessNodeToContent : "haxpreProcessNodeToContent", // input (node) where node is the item about to be converted to content for export
- *   // @see @lrnwebcomponents/meme-maker/meme-maker.js
+ *   // @see @haxtheweb/meme-maker/meme-maker.js
  *   progressiveEnhancement : "haxprogressiveEnhancement", // works on the element ONLY in the slotted / innerHTML area. Must return content but can work against the node to generate that text
- *   // @see @lrnwebcomponents/video-player/video-player.js
+ *   // @see @haxtheweb/video-player/video-player.js
  *   postProcessNodeToContent : "haxpostProcessNodeToContent", // input (content) where content is an HTML blob about to be returned for export
- *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
+ *   // @see @haxtheweb/multiple-choice/multiple-choice.js
  *   preProcessInsertContent : "haxpreProcessInsertContent", // input (node) where node is item about to be inserted into the content
  * }
  *
@@ -211,7 +211,7 @@
  *   return el;
  * }
  */
-import { SimpleFields } from "@lrnwebcomponents/simple-fields/simple-fields.js";
+import { SimpleFields } from "@haxtheweb/simple-fields/simple-fields.js";
 import "./HAXFields.js";
 
 /**

@@ -1,12 +1,12 @@
 import { html } from "lit-html";
-import { SimpleFields } from "@lrnwebcomponents/simple-fields/simple-fields.js";
-import { SimpleFieldsLite } from "@lrnwebcomponents/simple-fields/lib/simple-fields-lite.js";
-import { SimpleFieldsForm } from "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
-import { SimpleFieldsFormLite } from "@lrnwebcomponents/simple-fields/lib/simple-fields-form-lite.js";
-import { SimpleFieldsField } from "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import { SimpleFieldsContainer } from "@lrnwebcomponents/simple-fields/lib/simple-fields-container.js";
+import { SimpleFields } from "@haxtheweb/simple-fields/simple-fields.js";
+import { SimpleFieldsLite } from "@haxtheweb/simple-fields/lib/simple-fields-lite.js";
+import { SimpleFieldsForm } from "@haxtheweb/simple-fields/lib/simple-fields-form.js";
+import { SimpleFieldsFormLite } from "@haxtheweb/simple-fields/lib/simple-fields-form-lite.js";
+import { SimpleFieldsField } from "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import { SimpleFieldsContainer } from "@haxtheweb/simple-fields/lib/simple-fields-container.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Forms|Fields",

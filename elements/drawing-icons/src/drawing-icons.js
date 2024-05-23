@@ -6,7 +6,7 @@
  * @element drawing-icons is a iconset for the Material Design Icons collection
  *
  * Example:
- *   <script>import "@lrnwebcomponents/drawing-icons/drawing-icons.js";</script>
+ *   <script>import "@haxtheweb/drawing-icons/drawing-icons.js";</script>
  *   <simple-icon icon="drawing:draw-rect"></simple-icon>
  *
  * @group LRN Elements

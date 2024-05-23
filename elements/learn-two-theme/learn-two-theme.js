@@ -3,15 +3,15 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -347,31 +347,31 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore
     import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
       );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
     );
     // prettier-ignore
     import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
       );
     // prettier-ignore
     import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
       );
     // prettier-ignore
     import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
       );
     // prettier-ignore
     import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js"
       );
     // prettier-ignore
     import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
       );
   }
   /**
@@ -380,7 +380,7 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
   siteModalClick(e) {
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
       // weird looking but forces focus when it opens the search form
       window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();

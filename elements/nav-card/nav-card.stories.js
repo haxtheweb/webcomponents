@@ -1,8 +1,8 @@
 import { html } from "lit-html";
-import { NavCard } from "@lrnwebcomponents/nav-card/nav-card.js";
-import { NavCardItem } from "@lrnwebcomponents/nav-card/lib/nav-card-item.js";
+import { NavCard } from "@haxtheweb/nav-card/nav-card.js";
+import { NavCardItem } from "@haxtheweb/nav-card/lib/nav-card-item.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Cards| Navigation Card",

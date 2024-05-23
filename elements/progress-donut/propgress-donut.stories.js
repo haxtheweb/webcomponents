@@ -1,6 +1,6 @@
-import { ProgressDonut } from "@lrnwebcomponents/progress-donut/progress-donut.js";
+import { ProgressDonut } from "@haxtheweb/progress-donut/progress-donut.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "System|Progress Donut",

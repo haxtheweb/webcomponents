@@ -4,7 +4,7 @@
  *
  * `lrn-shared-styles`
  * @element lrn-shared-styles
- * `a shared set of styles for @lrnwebcomponents`
+ * `a shared set of styles for @haxtheweb`
  *
  * @microcopy - language worth noting:
  *  -

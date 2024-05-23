@@ -1,4 +1,4 @@
-import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridge.js";
 import {
   FileSystemBroker,
   FileSystemBrokerSingleton,

@@ -142,7 +142,7 @@ gulp.task("iconset", (done) => {
     const manifestPath = iconset.manifestPath || `./lib`;
     const exportName = iconset.exportName || `${packageJson.wcfactory.className}IconsetsManifest`;
     const jsonContent = JSON.stringify(dirTree(path).icons, null, 2);
-    const iconVar =  `import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+    const iconVar =  `import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 
 /**
  * @const ${exportName} 

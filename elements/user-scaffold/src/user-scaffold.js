@@ -7,7 +7,7 @@ import {
   localStorageGet,
   localStorageDelete,
   validURL,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 import {
   observable,
   makeObservable,

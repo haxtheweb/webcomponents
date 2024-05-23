@@ -5,9 +5,9 @@
 // html to handle template variable binding
 import { html } from "@polymer/polymer/polymer-element.js";
 // this is the PolymerElement base theme
-import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
+import { HAXCMSPolymerElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 // our store implements Mobx and ensures that we maintain state across the application
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 // While not needing to directly implement mobx classes this can let you do more advanced
 // integrations with the store and listening for updates to properties elsewhere in the application
 import { autorun, toJS } from "mobx";
@@ -111,23 +111,23 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
     // content prior to all assets loading.
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     );
     // create a blank array to store mobx reactions
     // this allows us to nicely clean up state after the theme

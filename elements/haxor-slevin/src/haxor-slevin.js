@@ -3,25 +3,25 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
-import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
+import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import "@lrnwebcomponents/disqus-embed/lib/haxcms-site-disqus.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
-import "@lrnwebcomponents/full-width-image/full-width-image.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
-import "@lrnwebcomponents/date-card/lib/date-chip.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import { varExists, varGet } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
+import "@haxtheweb/disqus-embed/lib/haxcms-site-disqus.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
+import "@haxtheweb/full-width-image/full-width-image.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
+import "@haxtheweb/date-card/lib/date-chip.js";
+import "@haxtheweb/accent-card/accent-card.js";
 import "@polymer/iron-pages/iron-pages.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `haxor-slevin`
@@ -578,7 +578,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
   siteModalClick(e) {
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     );
   }
   constructor() {
@@ -601,24 +601,24 @@ class HaxorSlevin extends HAXCMSRememberRoute(
     }
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-share-widget.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
     );
-    import("@lrnwebcomponents/social-share-link/social-share-link.js");
+    import("@haxtheweb/social-share-link/social-share-link.js");
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js"
     );
   }
   updated(changedProperties) {

@@ -44,7 +44,7 @@ class LrndesignImagemapHotspot extends LitElement {
    */
   constructor() {
     super();
-    import("@lrnwebcomponents/relative-heading/relative-heading.js");
+    import("@haxtheweb/relative-heading/relative-heading.js");
   }
   static get tag() {
     return "lrndesign-imagemap-hotspot";

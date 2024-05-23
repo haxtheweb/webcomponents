@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
+import { HAXCMSPolymerElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import { stylesFromTemplate } from "@polymer/polymer/lib/utils/style-gather.js";
 // @todo load the elements this theme needs dynamically
 // we reference this but pull nothing in to get the dependency tree loaded in full
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/templates/basic-template.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/templates/basic-template.js";
+import "@haxtheweb/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `haxcms-custom-theme`
  * `This is a custom theme. Don't edit this file, edit yoursite/theme/theme.css and yoursite/theme/theme.html`

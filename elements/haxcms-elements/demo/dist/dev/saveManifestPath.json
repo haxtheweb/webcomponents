@@ -12,7 +12,7 @@
     "updated": 1554206147,
     "theme": {
       "element": "learn-two-theme",
-      "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
+      "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
       "name": "Learn"
     },
     "image": "assets/banner.jpg",

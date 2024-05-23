@@ -1,6 +1,6 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -211,7 +211,7 @@ class SimpleBlogPost extends SimpleColors {
     this.editMode = false;
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
     );
   }
   connectedCallback() {

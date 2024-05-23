@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { css, html } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-progress/simple-progress.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-progress/simple-progress.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 /**
  * `simple-login`
  * @element simple-login

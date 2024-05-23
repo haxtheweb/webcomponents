@@ -8,19 +8,19 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/b-r/b-r.js';
+import '@haxtheweb/b-r/b-r.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/b-r/b-r.js"></script>
+<script type="module" src="@haxtheweb/b-r/b-r.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/b-r/b-r.js';
+  import '@haxtheweb/b-r/b-r.js';
   // imperative form
-  import {BR} from '@lrnwebcomponents/b-r';
+  import {BR} from '@haxtheweb/b-r';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/b-r/b-r.js';
+  import './node_modules/@haxtheweb/b-r/b-r.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/b-r/b-r.js"></script>
+<script type="module" src="https://unpkg.com/@haxtheweb/b-r/b-r.js"></script>
 ```
 # Tag Properties
 `amount="number"` Specify the number of br tags to be inserted. No value or 0 will use the screen height to generate br tags.
@@ -46,7 +46,7 @@ $ yarn run build
 
 ## Contributing
 
-1. Fork it! `git clone https://github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone https://github.com/haxtheweb/webcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
@@ -54,7 +54,7 @@ $ yarn run build
 
 ## Code style
 
-R (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+R  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

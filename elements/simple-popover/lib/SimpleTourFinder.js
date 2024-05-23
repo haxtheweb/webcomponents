@@ -1,4 +1,4 @@
-import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
+import { SimpleTourManager } from "@haxtheweb/simple-popover/lib/simple-tour.js";
 
 export const SimpleTourFinder = function (SuperClass) {
   return class extends SuperClass {

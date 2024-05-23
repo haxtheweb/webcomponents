@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
-import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
+import { haxElementToNode } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
+import "@haxtheweb/hexagon-loader/hexagon-loader.js";
 import "../product-card.js";
 class HAXElementCardList extends LitElement {
   constructor() {
@@ -269,7 +269,7 @@ class HAXElementCardList extends LitElement {
    */
   _haxElementToNode(schema) {
     if (schema && schema.tag) {
-      import("@lrnwebcomponents/code-sample/code-sample.js");
+      import("@haxtheweb/code-sample/code-sample.js");
       return haxElementToNode(schema);
     }
     return "";

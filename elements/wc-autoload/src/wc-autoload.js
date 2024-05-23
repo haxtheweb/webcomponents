@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  *
  */
-import "@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js";
+import "@haxtheweb/dynamic-import-registry/dynamic-import-registry.js";
 // register globally so we can make sure there is only one
 window.WCAutoload = window.WCAutoload || {};
 window.WCAutoloadRegistry = window.WCAutoloadRegistry || {};

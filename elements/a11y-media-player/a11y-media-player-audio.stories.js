@@ -1,16 +1,16 @@
 import { html } from "lit-html";
-import { A11yMediaPlayer } from "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
+import { A11yMediaPlayer } from "@haxtheweb/a11y-media-player/a11y-media-player.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import "@lrnwebcomponents/simple-search/simple-search.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
+import "@haxtheweb/simple-search/simple-search.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/paper-toast/paper-toast.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/a11y-media-player/lib/a11y-media-play-button.js";
+import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 
 export default {
   title: "Media|Audio",

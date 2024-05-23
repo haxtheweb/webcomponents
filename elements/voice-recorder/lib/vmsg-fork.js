@@ -1,4 +1,4 @@
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 /* eslint-disable */
 
 function pad2(n) {

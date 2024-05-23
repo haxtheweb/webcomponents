@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "./simple-colors-shared-styles-polymer.js";
 
 /**
  * `simple-colors-polymer`
- * shared set of styles for Polymer @lrnwebcomponents
+ * shared set of styles for Polymer @haxtheweb
  *
  * @polymer
  * @element simple-colors-polymer

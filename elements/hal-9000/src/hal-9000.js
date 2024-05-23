@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement } from "lit";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@lrnwebcomponents/super-daemon/lib/super-daemon-toast.js";
+import "@haxtheweb/es-global-bridge/es-global-bridge.js";
+import "@haxtheweb/super-daemon/lib/super-daemon-toast.js";
 
 /**
  * `hal-9000`
