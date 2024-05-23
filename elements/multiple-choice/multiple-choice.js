@@ -14,7 +14,6 @@ import { QuestionElement } from "./lib/QuestionElement.js";
  * @element multiple-choice
  */
 class MultipleChoice extends QuestionElement {
-
   static get tag() {
     return "multiple-choice";
   }

@@ -150,26 +150,24 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         } else if (e.target.value === "<" && this.value == "") {
           this.commandContext = ">";
           e.preventDefault();
-        }
-        else if (this.value == "") {
+        } else if (this.value == "") {
           this.commandContext = e.target.value;
           e.preventDefault();
         }
-        e.target.value = '';
+        e.target.value = "";
         break;
       default:
         if (!this.disabled) {
           e.stopPropagation();
           e.stopImmediatePropagation();
           this.value = e.target.value;
-        }    
-      break;
+        }
+        break;
     }
   }
 
   render() {
-    return html`
-      ${this.commandContext != "*"
+    return html` ${this.commandContext != "*"
         ? html`<simple-icon-lite
             title="${this.getActiveTitle(this.commandContext)}"
             icon="${this.getActiveIcon(this.commandContext)}"

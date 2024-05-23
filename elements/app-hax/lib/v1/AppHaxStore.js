@@ -1,8 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import {
-  localStorageGet,
-  localStorageSet,
-} from "@haxtheweb/utils/utils.js";
+import { localStorageGet, localStorageSet } from "@haxtheweb/utils/utils.js";
 import { observable, makeObservable, computed, configure } from "mobx";
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 configure({ enforceActions: false }); // strict mode off
@@ -38,34 +35,17 @@ class Store {
       () => import("@haxtheweb/simple-fields/simple-fields.js"),
       () => import("mobx/dist/mobx.esm.js"),
       () => import("@haxtheweb/h-a-x/h-a-x.js"),
+      () => import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"),
+      () => import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-router.js"),
       () =>
-        import(
-          "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
-        ),
+        import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js"),
       () =>
-        import(
-          "@haxtheweb/haxcms-elements/lib/core/haxcms-site-router.js"
-        ),
+        import("@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"),
+      () => import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"),
       () =>
-        import(
-          "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js"
-        ),
+        import("@haxtheweb/haxcms-elements/lib/core/haxcms-editor-builder.js"),
       () =>
-        import(
-          "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
-        ),
-      () =>
-        import(
-          "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
-        ),
-      () =>
-        import(
-          "@haxtheweb/haxcms-elements/lib/core/haxcms-editor-builder.js"
-        ),
-      () =>
-        import(
-          "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js"
-        ),
+        import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js"),
     ];
     this.appEl = null;
     this.appReady = false;

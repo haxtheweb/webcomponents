@@ -595,17 +595,15 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   _takeSelfie(e) {
     if (!this.camera) {
-      import("@haxtheweb/simple-login/lib/simple-camera-snap.js").then(
-        () => {
-          this.camera = globalThis.document.createElement("simple-camera-snap");
-          this.camera.autoplay = true;
-          this.camera.addEventListener(
-            "simple-camera-snap-image",
-            this.__newPhotoShowedUp.bind(this),
-          );
-          this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
-        },
-      );
+      import("@haxtheweb/simple-login/lib/simple-camera-snap.js").then(() => {
+        this.camera = globalThis.document.createElement("simple-camera-snap");
+        this.camera.autoplay = true;
+        this.camera.addEventListener(
+          "simple-camera-snap-image",
+          this.__newPhotoShowedUp.bind(this),
+        );
+        this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
+      });
     }
   }
   _voiceRecorder(e) {

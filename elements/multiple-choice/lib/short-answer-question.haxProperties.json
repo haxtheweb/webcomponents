@@ -10,12 +10,7 @@
     "description": "Question",
     "icon": "hax:multiple-choice",
     "color": "purple",
-    "tags": [
-      "Instructional",
-      "question",
-      "quiz",
-      "short answer"
-    ],
+    "tags": ["Instructional", "question", "quiz", "short answer"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -42,8 +37,7 @@
         "inputMethod": "textfield"
       }
     ],
-    "advanced": [
-    ],
+    "advanced": [],
     "developer": [
       {
         "property": "quizName",
@@ -54,7 +48,13 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers", "shortanswer"]
+    "unsetAttributes": [
+      "__utils",
+      "displayed-answers",
+      "colors",
+      "answers",
+      "shortanswer"
+    ]
   },
   "demoSchema": [
     {

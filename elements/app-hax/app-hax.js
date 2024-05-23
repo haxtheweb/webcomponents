@@ -1,9 +1,6 @@
 import { css, html, unsafeCSS } from "lit";
 import { toJS, autorun } from "mobx";
-import {
-  localStorageSet,
-  localStorageGet,
-} from "@haxtheweb/utils/utils.js";
+import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "./lib/v1/AppHaxStore.js";

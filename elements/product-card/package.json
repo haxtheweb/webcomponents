@@ -47,7 +47,7 @@
     "@haxtheweb/grid-plate": "^9.0.0-alpha.0",
     "@haxtheweb/simple-colors": "^9.0.0-alpha.0",
     "@haxtheweb/utils": "^9.0.0-alpha.0",
-    "lit": "^3.1.2"
+    "lit": "^3.1.3"
   },
   "devDependencies": {
     "@haxtheweb/a11y-gif-player": "^9.0.0-alpha.0",
@@ -62,7 +62,7 @@
     "@haxtheweb/lrn-math": "^9.0.0-alpha.0",
     "@haxtheweb/lrn-table": "^9.0.0-alpha.0",
     "@haxtheweb/lrn-vocab": "^9.0.0-alpha.0",
-    "@haxtheweb/lrndesign-gallery": "^7.0.11",
+    "@lrnwebcomponents/lrndesign-gallery": "^7.0.11",
     "@haxtheweb/lrndesign-timeline": "^9.0.0-alpha.0",
     "@haxtheweb/md-block": "^9.0.0-alpha.0",
     "@haxtheweb/mdi-iconset-svg": "^9.0.0-alpha.0",
@@ -96,5 +96,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
+  "gitHead": "4d0f1a05892352c5639fd091187b2973c73545e2"
 }

@@ -1,9 +1,6 @@
 import { html, css, unsafeCSS } from "lit";
 import { store } from "./haxcms-site-store.js";
-import {
-  HaxStore,
-  HAXStore,
-} from "@haxtheweb/hax-body/lib/hax-store.js";
+import { HaxStore, HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-view.js";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
@@ -2457,9 +2454,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // lecture player
     import("@haxtheweb/video-player/lib/lecture-player.js");
     // AI chat bot
-    import("@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js")
+    import(
+      "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js"
+    );
     // runkit embed
-    import("@haxtheweb/runkit-embed/runkit-embed.js")
+    import("@haxtheweb/runkit-embed/runkit-embed.js");
   }
 
   goToLocation(location) {

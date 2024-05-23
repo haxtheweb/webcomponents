@@ -1,9 +1,6 @@
 import { html, css } from "lit";
 import { SimpleFieldsUpload } from "@haxtheweb/simple-fields/lib/simple-fields-upload.js";
-import {
-  winEventsElement,
-  localStorageGet,
-} from "@haxtheweb/utils/utils.js";
+import { winEventsElement, localStorageGet } from "@haxtheweb/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";

@@ -54,13 +54,15 @@ export class FlashCard extends SimpleColors {
   statusChanged(e) {
     this.status = e.detail;
     if (this.status === "correct") {
-      import(
-        "@haxtheweb/multiple-choice/lib/confetti-container.js"
-      ).then((module) => {
-        setTimeout(() => {
-          this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
-        }, 0);
-      });
+      import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(
+        (module) => {
+          setTimeout(() => {
+            this.shadowRoot
+              .querySelector("#confetti")
+              .setAttribute("popped", "");
+          }, 0);
+        },
+      );
     }
   }
 

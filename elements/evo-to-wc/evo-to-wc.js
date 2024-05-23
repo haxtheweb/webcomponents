@@ -284,7 +284,6 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   convertGalleries(nodes = [], target) {
-    import("@haxtheweb/lrndesign-gallery/lrndesign-gallery.js");
     this.convertIfNeeded(target, [
       { selector: ".image-thumbnail", function: "convertThumbnails" },
       {

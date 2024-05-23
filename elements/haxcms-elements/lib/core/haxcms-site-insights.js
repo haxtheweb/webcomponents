@@ -793,7 +793,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                 (item) => html`
                                   <li>
                                     <accent-card
-                                      image-src="https://screenshoturl.elmsln.vercel.app/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
+                                      image-src="https://screenshoturl-haxtheweb.vercel.app/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
                                       horizontal
                                     >
                                       <div slot="heading">

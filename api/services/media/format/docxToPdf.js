@@ -30,7 +30,7 @@ export default async function handler(req, res) {
         .then(async (result) => {
               // need to outsource this endpoint from vercel 1 to 2 for scale reasons
             let html = `<html><body>${result.value}</body></html>`;
-            const response = await fetch(`https://pdf-from.elmsln.vercel.app/api/pdfFrom`,
+            const response = await fetch(`https://pdffrom-haxtheweb.vercel.app/api/pdfFrom`,
               {
                 method: 'POST',
                 body: JSON.stringify({

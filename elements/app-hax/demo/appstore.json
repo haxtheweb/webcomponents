@@ -14,7 +14,7 @@
       "meme-maker": "@haxtheweb/meme-maker/meme-maker.js",
       "grid-plate": "@haxtheweb/grid-plate/grid-plate.js",
       "multiple-choice": "@haxtheweb/multiple-choice/multiple-choice.js",
-    "true-false-question": "@haxtheweb/multiple-choice/lib/true-false-question.js",
+      "true-false-question": "@haxtheweb/multiple-choice/lib/true-false-question.js",
       "person-testimonial": "@haxtheweb/person-testimonial/person-testimonial.js",
       "place-holder": "@haxtheweb/place-holder/place-holder.js",
       "q-r": "@haxtheweb/q-r/q-r.js",

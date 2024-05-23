@@ -366,7 +366,8 @@ class HaxTray extends I18NMixin(
         }
         .detail::-webkit-scrollbar-thumb {
           border-radius: 4px;
-          -webkit-box-shadow: inset 0 0 4px var(--ddd-theme-default-limestoneGray);
+          -webkit-box-shadow: inset 0 0 4px
+            var(--ddd-theme-default-limestoneGray);
 
           box-shadow: inset 0 0 4px var(--ddd-theme-default-limestoneGray);
           background-color: var(--ddd-theme-default-limestoneGray);
@@ -384,7 +385,7 @@ class HaxTray extends I18NMixin(
           width: auto;
           padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);
           transition: opacity 0.3s ease-in-out;
-          opacity:1;
+          opacity: 1;
           overflow: hidden;
         }
         .wrapper:focus #tray-detail,

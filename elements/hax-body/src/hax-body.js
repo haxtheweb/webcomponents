@@ -2492,30 +2492,28 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         if (!this.activeNode.__haxSourceView) {
           this.activeNode.__haxSourceView = true;
           // could be 1st time this shows up so ensure we import
-          import("@haxtheweb/rich-text-editor/rich-text-editor.js").then(
-            () => {
-              HAXStore.activeEditingElement =
-                document.createElement("rich-text-editor");
-              HAXStore.activeEditingElement.type =
-                "rich-text-editor-toolbar-full";
-              // test for slots to match to ensure this is maintained
-              if (
-                this.activeNode.getAttribute &&
-                this.activeNode.getAttribute("slot") != null
-              ) {
-                HAXStore.activeEditingElement.setAttribute(
-                  "slot",
-                  this.activeNode.getAttribute("slot"),
-                );
-              }
-              this.__ignoreActive = true;
-              this.activeNode.removeAttribute("contenteditable");
-              this.__applyDragDropState(this.activeNode, false);
-              this.activeNode.removeAttribute("data-hax-active");
-              wrap(this.activeNode, HAXStore.activeEditingElement);
-              this.viewSourceElement = HAXStore.activeEditingElement;
-            },
-          );
+          import("@haxtheweb/rich-text-editor/rich-text-editor.js").then(() => {
+            HAXStore.activeEditingElement =
+              document.createElement("rich-text-editor");
+            HAXStore.activeEditingElement.type =
+              "rich-text-editor-toolbar-full";
+            // test for slots to match to ensure this is maintained
+            if (
+              this.activeNode.getAttribute &&
+              this.activeNode.getAttribute("slot") != null
+            ) {
+              HAXStore.activeEditingElement.setAttribute(
+                "slot",
+                this.activeNode.getAttribute("slot"),
+              );
+            }
+            this.__ignoreActive = true;
+            this.activeNode.removeAttribute("contenteditable");
+            this.__applyDragDropState(this.activeNode, false);
+            this.activeNode.removeAttribute("data-hax-active");
+            wrap(this.activeNode, HAXStore.activeEditingElement);
+            this.viewSourceElement = HAXStore.activeEditingElement;
+          });
         } else {
           this.activeNode.__haxSourceView = false;
           // run internal state hook if it exist and if we get a response

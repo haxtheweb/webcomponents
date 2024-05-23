@@ -43,7 +43,7 @@ export default async function handler(req, res) {
       <script src="${magic}build.js"></script>
       <script src="${magic}build-haxcms.js"></script>
     </html>`;
-    const response = await fetch(`https://pdf-from.elmsln.vercel.app/api/pdfFrom`,
+    const response = await fetch(`https://pdffrom-haxtheweb.vercel.app/api/pdfFrom`,
       {
         method: 'POST',
         body: JSON.stringify({

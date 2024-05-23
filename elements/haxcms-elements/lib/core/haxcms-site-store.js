@@ -6,11 +6,7 @@ import {
   toJS,
   configure,
 } from "mobx";
-import {
-  varExists,
-  varGet,
-  localStorageGet,
-} from "@haxtheweb/utils/utils.js";
+import { varExists, varGet, localStorageGet } from "@haxtheweb/utils/utils.js";
 import { JsonOutlineSchema } from "@haxtheweb/json-outline-schema/json-outline-schema.js";
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 import { iconFromPageType } from "@haxtheweb/course-design/lib/learning-component.js";
@@ -1122,7 +1118,7 @@ class HAXCMSSiteStore extends HTMLElement {
     this.store = store;
     // source for reading in the store if different than default site.json
     this.source = "";
-    globalThis.addEventListener('playaudio', this.playSoundEvent.bind(this));
+    globalThis.addEventListener("playaudio", this.playSoundEvent.bind(this));
     /**
      * When location changes update activeItem
      */

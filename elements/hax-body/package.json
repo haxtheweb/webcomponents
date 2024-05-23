@@ -70,7 +70,7 @@
     "@haxtheweb/user-scaffold": "^9.0.0-alpha.0",
     "@haxtheweb/utils": "^9.0.0-alpha.0",
     "@vaadin/vaadin-upload": "^4.4.1",
-    "lit": "^3.1.2",
+    "lit": "^3.1.3",
     "mobx": "6.12.0"
   },
   "devDependencies": {
@@ -113,5 +113,5 @@
     "html",
     "haxtheweb"
   ],
-  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
+  "gitHead": "4d0f1a05892352c5639fd091187b2973c73545e2"
 }

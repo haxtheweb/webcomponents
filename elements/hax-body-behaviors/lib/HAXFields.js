@@ -344,8 +344,7 @@ export const HaxElementizer = {
             element: "simple-fields-tabs",
             noWrap: true,
             child: {
-              import:
-                "@haxtheweb/simple-fields/lib/simple-fields-tab.js",
+              import: "@haxtheweb/simple-fields/lib/simple-fields-tab.js",
               element: "simple-fields-tab",
               noWrap: true,
               labelSlot: "label",
@@ -360,8 +359,7 @@ export const HaxElementizer = {
         },
         collapse: {
           defaultSettings: {
-            import:
-              "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js",
+            import: "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js",
             element: "div",
             noWrap: true,
             child: {
@@ -409,8 +407,7 @@ export const HaxElementizer = {
         },
         colorpicker: {
           defaultSettings: {
-            import:
-              "@haxtheweb/simple-colors/lib/simple-colors-picker.js",
+            import: "@haxtheweb/simple-colors/lib/simple-colors-picker.js",
             element: "simple-colors-picker",
             attributes: {
               autofocus: true,
@@ -473,8 +470,7 @@ export const HaxElementizer = {
         },
         iconpicker: {
           defaultSettings: {
-            import:
-              "@haxtheweb/simple-icon-picker/simple-icon-picker.js",
+            import: "@haxtheweb/simple-icon-picker/simple-icon-picker.js",
             element: "simple-icon-picker",
             attributes: {
               autofocus: true,

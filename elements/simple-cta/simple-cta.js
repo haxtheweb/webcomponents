@@ -319,7 +319,7 @@ class SimpleCta extends DDDPulseEffectSuper(
       disabled: {
         type: Boolean,
         reflect: true,
-      }
+      },
     };
   }
 

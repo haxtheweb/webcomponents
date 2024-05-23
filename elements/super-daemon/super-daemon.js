@@ -54,27 +54,19 @@ class SuperDaemon extends SimpleColors {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // change theme program
+    // add Santa program
     SuperDaemonInstance.defineOption({
       title: "Toggle Santa Mode",
       textCharacter: "🎅",
-      tags: [
-        "Developer",
-        "government",
-        "merlin",
-        "big-tech",
-        "overlord",
-        "santa",
-        "all-seeing-eye",
-      ],
+      tags: ["Developer", "big-tech", "santa", "all-seeing-eye"],
       eventName: "super-daemon-element-method",
-      path: ">settings/voice",
+      path: ">settings/hohoho",
       voice: "(toggle) santa (mode)",
       context: [">"],
       more: html`<span
         >He sees you when your sleeping, he knows when your awake, and with this
         command active he is always listening for input ready to respond. He's..
-        Santa Merlin. Ho..Ho....Ho.</span
+        Santa Merlin. Ho..Ho...Ho.</span
       >`,
       value: {
         target: this,

@@ -264,8 +264,7 @@ export class RPGCharacterToast extends SimpleToastEl {
   }
 
   render() {
-    return html`
-      <div class="progress">
+    return html` <div class="progress">
         <div
           class="progress__bar"
           style="animation-duration:${this.duration}ms;"

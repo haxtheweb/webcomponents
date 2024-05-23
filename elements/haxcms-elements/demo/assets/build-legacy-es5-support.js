@@ -270,8 +270,7 @@ try {
             "build/es5-amd/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
         ]),
     (window.WCAutoloadPolyfillEntryPoint =
-      cdn +
-      "build/es5-amd/node_modules/@haxtheweb/wc-autoload/wc-autoload.js"),
+      cdn + "build/es5-amd/node_modules/@haxtheweb/wc-autoload/wc-autoload.js"),
     define(defs, function () {
       define([
         cdn +

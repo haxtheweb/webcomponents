@@ -1,10 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { MtzFileDownloadBehaviors } from "@haxtheweb/dl-behavior/dl-behavior.js";
-import {
-  stripMSWord,
-  formatHTML,
-  b64toBlob,
-} from "@haxtheweb/utils/utils.js";
+import { stripMSWord, formatHTML, b64toBlob } from "@haxtheweb/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
@@ -244,17 +240,17 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
    * Download DOCX.
    */
   async downloadDOCX(e) {
-    import(
-      "@haxtheweb/file-system-broker/lib/docx-file-system-broker.js"
-    ).then(async (e) => {
-      let body = await HAXStore.activeHaxBody.haxToContent();
-      globalThis.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
-        body,
-        globalThis.document.title,
-      );
-      HAXStore.toast(this.t.fileDownloaded);
-      this.close();
-    });
+    import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js").then(
+      async (e) => {
+        let body = await HAXStore.activeHaxBody.haxToContent();
+        globalThis.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
+          body,
+          globalThis.document.title,
+        );
+        HAXStore.toast(this.t.fileDownloaded);
+        this.close();
+      },
+    );
   }
 
   /**

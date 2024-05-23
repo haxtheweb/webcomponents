@@ -11,10 +11,7 @@
     "description": "",
     "icon": "icons:android",
     "color": "purple",
-    "tags": [
-      "Instructional",
-      "question"
-    ],
+    "tags": ["Instructional", "question"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

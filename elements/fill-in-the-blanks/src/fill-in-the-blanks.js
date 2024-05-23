@@ -21,25 +21,29 @@ class FillInTheBlanks extends MarkTheWords {
 
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
-    return html`<p>Read the sentance and type or select the answer at each input. Once you set all your answers you can press <strong>${this.t.checkAnswer}</strong> to test your answers.
-    You will get feedback just below here indicating correctness of your answer.
-  </p>`;
+    return html`<p>
+      Read the sentance and type or select the answer at each input. Once you
+      set all your answers you can press
+      <strong>${this.t.checkAnswer}</strong> to test your answers. You will get
+      feedback just below here indicating correctness of your answer.
+    </p>`;
   }
-  
 
   static get styles() {
-    return [super.styles, css`
-    
-    simple-fields-field {
-      display: inline-block;
-      margin-bottom: 0;
-      vertical-align: middle;
-    }
-    simple-fields-field[type="textfield"] {
-      width: 140px;
-      padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-    }
-    `];
+    return [
+      super.styles,
+      css`
+        simple-fields-field {
+          display: inline-block;
+          margin-bottom: 0;
+          vertical-align: middle;
+        }
+        simple-fields-field[type="textfield"] {
+          width: 140px;
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+        }
+      `,
+    ];
   }
 
   isCorrect() {
@@ -48,17 +52,31 @@ class FillInTheBlanks extends MarkTheWords {
     this.numberGuessed = 0;
     for (var i in this.answers) {
       let input = this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
-      if (typeof this.answers[i].answer === "object" && input && typeof input.value !== "undefined" && input.value !== "") {
+      if (
+        typeof this.answers[i].answer === "object" &&
+        input &&
+        typeof input.value !== "undefined" &&
+        input.value !== ""
+      ) {
         this.numberGuessed++;
         for (var j in this.answers[i].answer) {
-          if (input.value.toLowerCase().trim() === this.answers[i].answer[j].toLowerCase().trim()) {
+          if (
+            input.value.toLowerCase().trim() ===
+            this.answers[i].answer[j].toLowerCase().trim()
+          ) {
             this.numberCorrect++;
           }
         }
-      }
-      else if (input &&  typeof input.value !== "undefined" && input.value !== "") {
+      } else if (
+        input &&
+        typeof input.value !== "undefined" &&
+        input.value !== ""
+      ) {
         this.numberGuessed++;
-        if (input.value.toLowerCase().trim() === this.answers[i].answer.toLowerCase().trim()) {
+        if (
+          input.value.toLowerCase().trim() ===
+          this.answers[i].answer.toLowerCase().trim()
+        ) {
           this.numberCorrect++;
         }
       }
@@ -75,9 +93,11 @@ class FillInTheBlanks extends MarkTheWords {
   resetAnswer(e) {
     if (this.isCorrect()) {
       this.rebuildWordList(this.statement);
-      let inputs = Array.from(this.shadowRoot.querySelectorAll('[data-answer-index]'));
+      let inputs = Array.from(
+        this.shadowRoot.querySelectorAll("[data-answer-index]"),
+      );
       for (var i in inputs) {
-        inputs[i].value = '';
+        inputs[i].value = "";
         if (inputs[i].selectedIndex) {
           inputs[i].selectedIndex = 0;
         }
@@ -90,21 +110,23 @@ class FillInTheBlanks extends MarkTheWords {
     this.answers = [];
     this.wordList = [];
     const wordList = statement.trim().split(/\s+/g);
-    const answerList = wordList.filter(word => word.startsWith('[') && word.endsWith(']'));
+    const answerList = wordList.filter(
+      (word) => word.startsWith("[") && word.endsWith("]"),
+    );
     for (var i in answerList) {
       let answer = {
         text: answerList[i],
-        correct: true // all answers are correct in this setup
+        correct: true, // all answers are correct in this setup
       };
-      let word = answerList[i].replace('[','').replace(']','');
+      let word = answerList[i].replace("[", "").replace("]", "");
       // implies we have synonyms
-      if (word.split('~').length > 1) {
-        answer.answer = word.split('~');
+      if (word.split("~").length > 1) {
+        answer.answer = word.split("~");
       }
       // implies we have multiple options, 1st option is the correct answer
       else {
-        answer.answer = word.split('|')[0];
-        answer.possible = word.split('|');
+        answer.answer = word.split("|")[0];
+        answer.possible = word.split("|");
         // shuffle happens in place
         this.shuffleArray(answer.possible);
       }
@@ -127,11 +149,17 @@ class FillInTheBlanks extends MarkTheWords {
   }
 
   renderInteraction() {
-    return html`<div class="text-wrap"><div class="text">
-      ${this.wordList.map(word => html`
-      ${word.text.startsWith('[') && word.text.endsWith(']') ? this.renderFillInBlankField(word) : html`${word.text} `}
-      `)}
-      </div></div>`;
+    return html`<div class="text-wrap">
+      <div class="text">
+        ${this.wordList.map(
+          (word) => html`
+            ${word.text.startsWith("[") && word.text.endsWith("]")
+              ? this.renderFillInBlankField(word)
+              : html`${word.text} `}
+          `,
+        )}
+      </div>
+    </div>`;
   }
 
   shuffleArray(arr) {
@@ -142,22 +170,30 @@ class FillInTheBlanks extends MarkTheWords {
   }
 
   renderFillInBlankField(word) {
-    const index = this.answers.findIndex(answer => word.text === answer.text);
+    const index = this.answers.findIndex((answer) => word.text === answer.text);
     if (this.answers[index].possible) {
-      let selectItems = [{
-        text: "",
-        value: "",
-      }, ...this.answers[index].possible.map((item) => {
-        return {
-          text: item,
-          value: item
-        };
-      })];
-      return html`<simple-fields-field data-answer-index="${index}" type="select" .itemsList="${selectItems}"></simple-fields-field>`;
-    }
-    else {
-      return html`
-      <simple-fields-field type="textfield" data-answer-index="${index}"></simple-fields-field>`;
+      let selectItems = [
+        {
+          text: "",
+          value: "",
+        },
+        ...this.answers[index].possible.map((item) => {
+          return {
+            text: item,
+            value: item,
+          };
+        }),
+      ];
+      return html`<simple-fields-field
+        data-answer-index="${index}"
+        type="select"
+        .itemsList="${selectItems}"
+      ></simple-fields-field>`;
+    } else {
+      return html` <simple-fields-field
+        type="textfield"
+        data-answer-index="${index}"
+      ></simple-fields-field>`;
     }
   }
 

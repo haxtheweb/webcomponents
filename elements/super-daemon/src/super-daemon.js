@@ -58,12 +58,7 @@ class SuperDaemon extends SimpleColors {
     SuperDaemonInstance.defineOption({
       title: "Toggle Santa Mode",
       textCharacter: "🎅",
-      tags: [
-        "Developer",
-        "big-tech",
-        "santa",
-        "all-seeing-eye",
-      ],
+      tags: ["Developer", "big-tech", "santa", "all-seeing-eye"],
       eventName: "super-daemon-element-method",
       path: ">settings/hohoho",
       voice: "(toggle) santa (mode)",

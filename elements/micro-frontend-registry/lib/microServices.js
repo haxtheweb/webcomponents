@@ -145,7 +145,7 @@ export function enableCoreServices() {
 
   // screenshot - kept by itself bc of size of getBrowserInstance
   MicroFrontendRegistry.add({
-    endpoint: "https://screenshoturl.elmsln.vercel.app/api/screenshotUrl",
+    endpoint: "https://screenshoturl-haxtheweb.vercel.app/api/screenshotUrl",
     name: "@core/screenshotUrl",
     method: "GET",
     title: "Screenshot page",

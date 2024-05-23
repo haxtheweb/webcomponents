@@ -25,11 +25,10 @@ export class SortingOption extends DDDSuper(LitElement) {
       super.updated(changedProperties);
     }
     // align disable w/ draggable
-    if (changedProperties.has('disabled')) {
+    if (changedProperties.has("disabled")) {
       if (this.disabled) {
         this.removeAttribute("draggable");
-      }
-      else {
+      } else {
         this.setAttribute("draggable", true);
       }
     }
@@ -119,16 +118,24 @@ export class SortingOption extends DDDSuper(LitElement) {
     if (!this.disabled) {
       let parent = this.parentNode;
       //set new index
-      if (e.target.getAttribute('id') === 'downArrow') {
-        if (this.nextElementSibling && this.nextElementSibling.tagName === "SORTING-OPTION") {
+      if (e.target.getAttribute("id") === "downArrow") {
+        if (
+          this.nextElementSibling &&
+          this.nextElementSibling.tagName === "SORTING-OPTION"
+        ) {
           let ref = parent.insertBefore(this.nextElementSibling, this);
           ref.shadowRoot.querySelector("#downArrow").focus();
         }
-      }
-      else {
-        if (this.previousElementSibling && this.previousElementSibling.tagName === "SORTING-OPTION") {
+      } else {
+        if (
+          this.previousElementSibling &&
+          this.previousElementSibling.tagName === "SORTING-OPTION"
+        ) {
           let ref = parent.insertBefore(this, this.previousElementSibling);
-          ref.shadowRoot.querySelector("#upArrow").shadowRoot.querySelector('button').focus();            
+          ref.shadowRoot
+            .querySelector("#upArrow")
+            .shadowRoot.querySelector("button")
+            .focus();
         }
       }
       // give a ghosting effect on move
@@ -141,147 +148,163 @@ export class SortingOption extends DDDSuper(LitElement) {
 
   // CSS - specific to Lit
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        padding: var(--ddd-spacing-4);
-        min-height: var(--ddd-spacing-8);
-        margin: var(--ddd-spacing-4);
-        height: 100%;
-        display: flex;
-        align-items: center;
-        z-index: 1;
-        overflow: hidden;
-        transition: all 0.3s ease-in-out 0s;
-        border: var(--ddd-border-sm);
-        border-radius: var(--ddd-radius-xs);
-        color: light-dark(var(--simple-colors-default-theme-accent-10), var(--simple-colors-default-theme-accent-2));
-        background-color: light-dark(var(--simple-colors-default-theme-accent-2), var(--simple-colors-default-theme-accent-10));
-        font-family: var(--ddd-font-navigation);
-        font-size: var(--ddd-font-size-xs);
-        line-height: var(--ddd-font-size-xs);
-        --simple-icon-height: var(--ddd-icon-xs);
-        --simple-icon-width: var(--ddd-icon-xs);
-      }
-      :host([disabled]) {
-        opacity: .8;
-      }
-      :host(:not([disabled])) {
-        cursor: grab;
-      }
+    return [
+      super.styles,
+      css`
+        :host {
+          padding: var(--ddd-spacing-4);
+          min-height: var(--ddd-spacing-8);
+          margin: var(--ddd-spacing-4);
+          height: 100%;
+          display: flex;
+          align-items: center;
+          z-index: 1;
+          overflow: hidden;
+          transition: all 0.3s ease-in-out 0s;
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-xs);
+          color: light-dark(
+            var(--simple-colors-default-theme-accent-10),
+            var(--simple-colors-default-theme-accent-2)
+          );
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-2),
+            var(--simple-colors-default-theme-accent-10)
+          );
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-xs);
+          line-height: var(--ddd-font-size-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+        }
+        :host([disabled]) {
+          opacity: 0.8;
+        }
+        :host(:not([disabled])) {
+          cursor: grab;
+        }
 
-      :host([correct]) {
-        background-color: var(
-          --option-background-color-correct,
-          var(--ddd-theme-default-successLight)
-        ) !important;
-        color: black;
-      }
+        :host([correct]) {
+          background-color: var(
+            --option-background-color-correct,
+            var(--ddd-theme-default-successLight)
+          ) !important;
+          color: black;
+        }
 
-      :host([incorrect]) {
-        background-color: var(
-          --option-background-color-incorrect,
-          var(--ddd-theme-default-errorLight)
-        ) !important;
-        color: black;
-      }
+        :host([incorrect]) {
+          background-color: var(
+            --option-background-color-incorrect,
+            var(--ddd-theme-default-errorLight)
+          ) !important;
+          color: black;
+        }
 
-      .icon {
-        display: block;
-        height: 32px;
-        width: 32px;
-      }
+        .icon {
+          display: block;
+          height: 32px;
+          width: 32px;
+        }
 
-      :host([correct]) .icon {
-        color: var(--ddd-theme-default-success);
-      }
-      :host([incorrect]) .icon {
-        color: var(--ddd-theme-default-error);
-      }
-      .option-slot-wrapper {
-        display: flex;
-        align-items: center;
-        z-index: 2;
-        width: 100%;
-        background-color: transparent;
-        border: none;
-        text-align: inherit;
-        font-weight: bold;
-      }
-      div ::slotted(*) {
-        height: 64px;
-        min-width: 113px;
-        pointer-events: none;
-      }
-      .arrow-container {
-        display: flex;
-        justify-content: flex-end;
-        padding-right: var(--ddd-spacing-2);
-        position: relative;
-        right: 0px;
-        background-color: transparent;
-        align-items: center;
-      }
+        :host([correct]) .icon {
+          color: var(--ddd-theme-default-success);
+        }
+        :host([incorrect]) .icon {
+          color: var(--ddd-theme-default-error);
+        }
+        .option-slot-wrapper {
+          display: flex;
+          align-items: center;
+          z-index: 2;
+          width: 100%;
+          background-color: transparent;
+          border: none;
+          text-align: inherit;
+          font-weight: bold;
+        }
+        div ::slotted(*) {
+          height: 64px;
+          min-width: 113px;
+          pointer-events: none;
+        }
+        .arrow-container {
+          display: flex;
+          justify-content: flex-end;
+          padding-right: var(--ddd-spacing-2);
+          position: relative;
+          right: 0px;
+          background-color: transparent;
+          align-items: center;
+        }
 
-      .feedback-container {
-        width: 32px;
-        height: 32px;
-        display: flex;
-        margin-right: var(--ddd-spacing-4);
-        background-color: transparent;
-      }
-      
-      :host([dragging]) {
-        background-color: var(--ddd-theme-default-infoLight);
-      }
-      :host(:focus-within:not([disabled])),
-      :host(:hover:not([disabled])) {
-        background-color: var(--simple-colors-default-theme-accent-3);
-        color: var(--simple-colors-default-theme-accent-12);
-        box-shadow: var(--ddd-boxShadow-sm);
-        border-color: black;
-      }
+        .feedback-container {
+          width: 32px;
+          height: 32px;
+          display: flex;
+          margin-right: var(--ddd-spacing-4);
+          background-color: transparent;
+        }
 
-      simple-icon-button-lite {
-        margin: var(--ddd-spacing-1);
-        border-radius: var(--ddd-radius-xs);
-        border: var(--ddd-border-sm);
-      }
-      simple-icon-button-lite::part(button) {
-        border: none;
-        border-radius: var(--ddd-radius-xs);
-        outline-offset: 2px;
-      }
+        :host([dragging]) {
+          background-color: var(--ddd-theme-default-infoLight);
+        }
+        :host(:focus-within:not([disabled])),
+        :host(:hover:not([disabled])) {
+          background-color: var(--simple-colors-default-theme-accent-3);
+          color: var(--simple-colors-default-theme-accent-12);
+          box-shadow: var(--ddd-boxShadow-sm);
+          border-color: black;
+        }
 
-      :host(:not([disabled])) simple-icon-button-lite {
-        background-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
-        color: light-dark(white, black);
-      }
-      :host(:hover:not([disabled])) simple-icon-button-lite {
-        border-color: black;
-      }
-      :host(:not([disabled])) simple-icon-button-lite:hover,
-      :host(:not([disabled])) simple-icon-button-lite:focus,
-      :host(:not([disabled])) simple-icon-button-lite:focus-within
-       {
-        background-color: light-dark(var(--ddd-theme-default-info), var(--ddd-theme-default-infoLight));
-        color: light-dark(white, black);
+        simple-icon-button-lite {
+          margin: var(--ddd-spacing-1);
+          border-radius: var(--ddd-radius-xs);
+          border: var(--ddd-border-sm);
+        }
+        simple-icon-button-lite::part(button) {
+          border: none;
+          border-radius: var(--ddd-radius-xs);
+          outline-offset: 2px;
+        }
 
-        border-color: black;
-      }
-    `];
+        :host(:not([disabled])) simple-icon-button-lite {
+          background-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          color: light-dark(white, black);
+        }
+        :host(:hover:not([disabled])) simple-icon-button-lite {
+          border-color: black;
+        }
+        :host(:not([disabled])) simple-icon-button-lite:hover,
+        :host(:not([disabled])) simple-icon-button-lite:focus,
+        :host(:not([disabled])) simple-icon-button-lite:focus-within {
+          background-color: light-dark(
+            var(--ddd-theme-default-info),
+            var(--ddd-theme-default-infoLight)
+          );
+          color: light-dark(white, black);
+
+          border-color: black;
+        }
+      `,
+    ];
   }
 
   // HTML - specific to Lit
   render() {
     return html`
       <div class="feedback-container">
-        ${this.correct || this.incorrect ? html`<simple-icon-lite
-          class="icon"
-          icon="${this.correct ? "check" : "clear"}"
-          title="Answer is in ${this.correct ? "correct" : "incorrect"} order"
-        ></simple-icon-lite>`
-         : html`<div class="icon"></div>`}
+        ${this.correct || this.incorrect
+          ? html`<simple-icon-lite
+              class="icon"
+              icon="${this.correct ? "check" : "clear"}"
+              title="Answer is in ${this.correct
+                ? "correct"
+                : "incorrect"} order"
+            ></simple-icon-lite>`
+          : html`<div class="icon"></div>`}
       </div>
       <div class="option-slot-wrapper"><slot></slot></div>
       <div class="arrow-container">

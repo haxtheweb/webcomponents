@@ -15,10 +15,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
-import {
-  encapScript,
-  haxElementToNode,
-} from "@haxtheweb/utils/utils.js";
+import { encapScript, haxElementToNode } from "@haxtheweb/utils/utils.js";
 /**
  * `outline-designer`
  * @element outline-designer

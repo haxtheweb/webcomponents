@@ -523,10 +523,7 @@ Button
 
 Chartjs
 > Automated conversion of lrnsys-chartjs/
-# &lt;lrnsys-comment&gt;
 
-Comment
-> Automated conversion of lrnsys-comment/
 # &lt;lrnsys-layout&gt;
 
 Layout

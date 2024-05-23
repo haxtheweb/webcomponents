@@ -6,10 +6,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { autorun, toJS } from "mobx";
-import {
-  localStorageSet,
-  localStorageGet,
-} from "@haxtheweb/utils/utils.js";
+import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
 
 const HAXCMSMobileMenuMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {

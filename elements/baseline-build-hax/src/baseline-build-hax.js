@@ -32,21 +32,18 @@ import "@haxtheweb/lrn-math/lrn-math.js";
 import "@haxtheweb/lrn-table/lrn-table.js";
 import "@haxtheweb/lrn-vocab/lrn-vocab.js";
 import "@haxtheweb/oer-schema/oer-schema.js";
-import "@haxtheweb/magazine-cover/magazine-cover.js";
+
 import "@haxtheweb/media-behaviors/media-behaviors.js";
 import "@haxtheweb/media-image/media-image.js";
 import "@haxtheweb/meme-maker/meme-maker.js";
 import "@haxtheweb/multiple-choice/multiple-choice.js";
-import "@haxtheweb/paper-audio-player/paper-audio-player.js";
 import "@haxtheweb/person-testimonial/person-testimonial.js";
 import "@haxtheweb/place-holder/place-holder.js";
 import "@haxtheweb/q-r/q-r.js";
 import "@haxtheweb/self-check/self-check.js";
 import "@haxtheweb/simple-colors/lib/simple-colors-polymer.js";
-import "@haxtheweb/simple-concept-network/simple-concept-network.js";
+
 import "@haxtheweb/stop-note/stop-note.js";
-import "@haxtheweb/task-list/task-list.js";
 import "@haxtheweb/video-player/video-player.js";
-import "@haxtheweb/wave-player/wave-player.js";
 import "@haxtheweb/wikipedia-query/wikipedia-query.js";
 import "@haxtheweb/grid-plate/grid-plate.js";
