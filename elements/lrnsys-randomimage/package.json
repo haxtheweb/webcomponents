@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "8.0.2",
+  "version": "9.0.0-alpha.0",
   "description": "Automated conversion of lrnsys-randomimage/",
   "repository": {
     "type": "git",
@@ -43,13 +43,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/random-image": "4.0.4",
-    "@haxtheweb/simple-tooltip": "^8.0.2",
+    "@haxtheweb/simple-tooltip": "^9.0.0-alpha.0",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^8.0.2",
-    "@haxtheweb/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+    "@haxtheweb/storybook-utilities": "^9.0.0-alpha.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

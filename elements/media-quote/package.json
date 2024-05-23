@@ -6,7 +6,7 @@
     "elementName": "media-quote",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "8.0.2",
+  "version": "9.0.0-alpha.0",
   "description": "A quote focused around a piece of media with citation",
   "repository": {
     "type": "git",
@@ -32,19 +32,19 @@
     "lit": "^3.1.3"
   },
   "devDependencies": {
-    "@wcfactory/rollup-umd-build": "^0.12.1",
     "@haxtheweb/deduping-fix": "^7.0.4",
+    "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@web/dev-server": "0.1.28",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.21",
     "polymer-build": "3.1.4",
-    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2",
-    "@open-wc/testing": "2.5.32"
+    "web-animations-js": "2.3.2"
   },
   "private": false,
   "publishConfig": {

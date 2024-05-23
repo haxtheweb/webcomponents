@@ -11,7 +11,7 @@
       "js": "src/elmsln-studio.js"
     }
   },
-  "version": "8.0.2",
+  "version": "9.0.0-alpha.0",
   "description": "Studio App for ELMS:LN",
   "repository": {
     "type": "git",
@@ -36,23 +36,23 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-collapse": "^8.0.2",
-    "@haxtheweb/accent-card": "^8.0.2",
-    "@haxtheweb/hax-iconset": "^8.0.2",
-    "@haxtheweb/img-view-modal": "^8.0.2",
-    "@haxtheweb/lrndesign-avatar": "^8.0.2",
+    "@haxtheweb/a11y-collapse": "^9.0.0-alpha.0",
+    "@haxtheweb/accent-card": "^9.0.0-alpha.0",
+    "@haxtheweb/hax-iconset": "^9.0.0-alpha.0",
+    "@haxtheweb/img-view-modal": "^9.0.0-alpha.0",
+    "@haxtheweb/lrndesign-avatar": "^9.0.0-alpha.0",
     "@haxtheweb/lrndesign-gallery": "^7.0.11",
-    "@haxtheweb/nav-card": "^8.0.2",
-    "@haxtheweb/simple-colors": "^8.0.2",
-    "@haxtheweb/simple-fields": "^8.0.2",
-    "@haxtheweb/simple-icon": "^8.0.2",
-    "@haxtheweb/simple-modal": "^8.0.2",
+    "@haxtheweb/nav-card": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-colors": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-fields": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-icon": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-modal": "^9.0.0-alpha.0",
     "lit": "^3.1.2",
     "lit-element-router": "2.0.3"
   },
   "devDependencies": {
     "@github/time-elements": "3.1.4",
-    "@haxtheweb/deduping-fix": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
