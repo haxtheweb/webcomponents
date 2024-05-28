@@ -44,6 +44,9 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
     
     // Functional variables
       this.engine = "alfred";
+      this._messageID = 0;
+      this._merlinMessageIndex;
+      this._userMessageIndex;
   }
 
   askQuestion(e) {
@@ -290,7 +293,29 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
    * @param {string} message - message outputted by author
    */
   writeToLog(author, message) {
+    const DATE = this.createDate();
+    let authorMessageIndex;
 
+    switch (author) {
+      case "user": {
+        authorMessageIndex = this._userMessageIndex;
+        this.incrementValues("user");
+        break;
+      }
+      case "merlin": {
+        authorMessageIndex = this._merlinMessageIndex;
+        this.incrementValues("merlin");
+        break;
+      }
+    }
+
+    const message = {
+      "messageID": this._messageID,
+      "author": author,
+      "message": message,
+      "authorMessageIndex": authorMessageIndex,
+      "date": DATE,
+    };
   }
 
   /**
@@ -298,25 +323,35 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
    * @param {string} author - "merlin" or "user"
    */
   incrementValues(author) {
-
+    switch (author) {
+      case "merlin":
+        this._merlinMessageIndex++;
+        break;
+      case "user":
+        this._userMessageIndex++;
+        break;
+    }
   }
 
   /**
    * @description creates date for chat log
-   * @returns {string} DATE_TO_STRING - date in string format
+   * @returns {string} date - date in string format
    */
-  createDate() {
-    const DATE = new Date();
-    const DATE_TO_STRING = DATE.toString().replace(/\s/g, "-");
+  createDate(isFileName) {
+    let date = new Date();
+
+    if (isFileName) {
+      date = date.toString().replace(/\s/g, "-");
+    }
     
-    return DATE_TO_STRING;
+    return date;
   }
 
   /**
    * @description downloads chat log as .json file
    */
   downloadChatLog() {
-    const FILENAME = "Merlin-AI-chat-log-" + this.createDate() + ".json";
+    const FILENAME = "Merlin-AI-chat-log-" + this.createDate(true) + ".json";
   }
 
     // ! Developer Mode Functions
