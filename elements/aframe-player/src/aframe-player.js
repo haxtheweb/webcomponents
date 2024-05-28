@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 /**
  * `aframe-player`
  * `A wrapper to do data binding into aframe`

@@ -15,7 +15,7 @@ class PaperFabSpeedDial extends PolymerElement {
     super();
     // prettier-ignore
     import(
-      "@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js"
+      "@haxtheweb/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js"
     );
   }
   static get tag() {

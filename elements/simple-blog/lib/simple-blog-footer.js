@@ -1,7 +1,7 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { varExists } from "@lrnwebcomponents/utils/utils.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { varExists } from "@haxtheweb/utils/utils.js";
 import { autorun, toJS } from "mobx";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -283,9 +283,9 @@ class SimpleBlogFooter extends SimpleColors {
     this.nextChanged = "";
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
     );
-    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
+    import("@haxtheweb/simple-datetime/simple-datetime.js");
   }
   connectedCallback() {
     super.connectedCallback();

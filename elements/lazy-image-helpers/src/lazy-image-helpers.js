@@ -2,11 +2,11 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { LitElement, html, css, svg } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import { LoadingHelper } from "@lrnwebcomponents/replace-tag/lib/LoadingHelper.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import { LoadingHelper } from "@haxtheweb/replace-tag/lib/LoadingHelper.js";
 // lazy image loading part of an element
 export const lazyImageLoader = function (SuperClass) {
   return class extends IntersectionObserverMixin(SuperClass) {

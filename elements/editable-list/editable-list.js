@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
 /**
  * `editable-list`
  * `a listing of items that can be edited in place with operations`

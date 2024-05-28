@@ -1,7 +1,7 @@
 import { html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 export class BlockQuote extends DDD {
   static get properties() {

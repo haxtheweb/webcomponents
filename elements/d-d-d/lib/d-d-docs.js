@@ -6,16 +6,16 @@ import { html, css } from "lit";
 import { DDD } from "../d-d-d.js";
 import { DDDAllStyles, ApplicationAttributeData } from "./DDDStyles.js";
 import "./d-d-d-sample.js";
-import "@lrnwebcomponents/page-section/page-section.js";
-import "@lrnwebcomponents/simple-cta/simple-cta.js";
-import "@lrnwebcomponents/video-player/video-player.js";
-import "@lrnwebcomponents/figure-label/figure-label.js";
-import "@lrnwebcomponents/stop-note/stop-note.js";
-import "@lrnwebcomponents/course-design/lib/learning-component.js";
-import "@lrnwebcomponents/course-design/lib/block-quote.js";
-import "@lrnwebcomponents/self-check/self-check.js";
-import "@lrnwebcomponents/media-image/media-image.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@haxtheweb/page-section/page-section.js";
+import "@haxtheweb/simple-cta/simple-cta.js";
+import "@haxtheweb/video-player/video-player.js";
+import "@haxtheweb/figure-label/figure-label.js";
+import "@haxtheweb/stop-note/stop-note.js";
+import "@haxtheweb/course-design/lib/learning-component.js";
+import "@haxtheweb/course-design/lib/block-quote.js";
+import "@haxtheweb/self-check/self-check.js";
+import "@haxtheweb/media-image/media-image.js";
+import "@haxtheweb/accent-card/accent-card.js";
 /**
  * `d-d-docs`
  * `design, develop, destroy the competition, documentation`

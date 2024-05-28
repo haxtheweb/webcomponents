@@ -1,10 +1,10 @@
 import { LitElement, css, html } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/rpg-character/rpg-character.js";
-import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-picker/lib/simple-emoji-picker.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/rpg-character/rpg-character.js";
+import "@haxtheweb/simple-datetime/simple-datetime.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-picker/lib/simple-emoji-picker.js";
 
 export class PageFlagComment extends LitElement {
   static get tag() {

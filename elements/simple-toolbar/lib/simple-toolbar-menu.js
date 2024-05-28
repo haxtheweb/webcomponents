@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
-import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
+import { A11yMenuButtonBehaviors } from "@haxtheweb/a11y-menu-button/a11y-menu-button.js";
 import { SimpleToolbarButtonBehaviors } from "./simple-toolbar-button.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 import "./simple-toolbar-menu-item.js";
 /**
  * `simple-toolbar-menu`

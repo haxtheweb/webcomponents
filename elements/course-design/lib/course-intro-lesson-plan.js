@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 class CourseIntroLessonPlan extends DDD {
   static get properties() {

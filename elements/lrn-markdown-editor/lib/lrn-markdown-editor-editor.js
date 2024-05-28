@@ -1,10 +1,10 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
-import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
-import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
-import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-link.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/mtz-marked-editor/mtz-marked-editor.js";
+import "@haxtheweb/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
+import "@haxtheweb/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
+import "@haxtheweb/mtz-marked-editor/lib/mtz-marked-control-link.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-input/paper-input.js";
 class LrnMarkdownEditorEditor extends LitElement {

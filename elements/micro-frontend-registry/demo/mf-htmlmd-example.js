@@ -1,7 +1,7 @@
 import { LitElement, css, html } from "lit";
 import { MicroFrontendRegistry } from "../micro-frontend-registry.js";
 import { enableServices } from "../lib/microServices.js";
-import "@lrnwebcomponents/simple-img/simple-img.js";
+import "@haxtheweb/simple-img/simple-img.js";
 
 export class MfHtmlExample extends LitElement {
   static get tag() {

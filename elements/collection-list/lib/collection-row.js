@@ -1,7 +1,7 @@
 import { html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-fields/lib/simple-tags.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 class CollectionRow extends DDD {
   static get properties() {
     return {

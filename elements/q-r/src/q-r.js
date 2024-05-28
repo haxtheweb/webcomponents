@@ -35,7 +35,7 @@ class QR extends LitElement {
     this.modulesize = 4;
     this.margin = 2;
     this.format = "png";
-    import("@lrnwebcomponents/q-r/lib/qr-code.js");
+    import("@haxtheweb/q-r/lib/qr-code.js");
   }
   render() {
     return html`

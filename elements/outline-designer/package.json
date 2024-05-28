@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/outline-designer",
+  "name": "@haxtheweb/outline-designer",
   "wcfactory": {
     "className": "OutlineDesigner",
     "customElementClass": "PolymerElement",
@@ -17,11 +17,11 @@
     },
     "sharedStyles": []
   },
-  "version": "8.0.2",
+  "version": "9.0.0-alpha.0",
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "outline-designer.js",
@@ -42,17 +42,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^8.0.2",
-    "@lrnwebcomponents/i18n-manager": "^8.0.2",
-    "@lrnwebcomponents/simple-fields": "^8.0.2",
-    "@lrnwebcomponents/simple-icon": "^8.0.2",
-    "@lrnwebcomponents/simple-popover": "^8.0.2",
-    "lit": "^3.1.2",
+    "@haxtheweb/hax-iconset": "^9.0.0-alpha.0",
+    "@haxtheweb/i18n-manager": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-fields": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-icon": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-popover": "^9.0.0-alpha.0",
+    "lit": "^3.1.3",
     "mobx": "6.12.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/storybook-utilities": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+    "@haxtheweb/storybook-utilities": "^9.0.0-alpha.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
@@ -67,5 +67,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
+  "gitHead": "4d0f1a05892352c5639fd091187b2973c73545e2"
 }

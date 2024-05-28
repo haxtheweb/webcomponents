@@ -10,11 +10,7 @@
     "description": "True false question",
     "icon": "hax:multiple-choice",
     "color": "purple",
-    "tags": [
-      "Instructional",
-      "quiz",
-      "true false"
-    ],
+    "tags": ["Instructional", "quiz", "true false"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -56,8 +52,7 @@
         "inputMethod": "textfield"
       }
     ],
-    "advanced": [
-    ],
+    "advanced": [],
     "developer": [
       {
         "property": "quizName",
@@ -68,7 +63,13 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers", "_tfanswer"]
+    "unsetAttributes": [
+      "__utils",
+      "displayed-answers",
+      "colors",
+      "answers",
+      "_tfanswer"
+    ]
   },
   "demoSchema": [
     {

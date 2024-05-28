@@ -1,6 +1,6 @@
 /* eslint-disable no-return-assign */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { store } from "./AppHaxStore.js";
 
 export class AppHaxSearchBar extends LitElement {

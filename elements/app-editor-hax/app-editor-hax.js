@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/h-a-x/h-a-x.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "@haxtheweb/h-a-x/h-a-x.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 
 /**
 `app-editor-hax`

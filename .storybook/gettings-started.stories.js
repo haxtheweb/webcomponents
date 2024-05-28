@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "About|Getting Started",
@@ -54,7 +54,7 @@ export const UsingYourOwnCopy = () => {
     >
       <p>
         Use the
-        <a href="https://github.com/elmsln/unbundled-webcomponents"
+        <a href="https://github.com/haxtheweb/unbundled-webcomponents"
           >unbundled-webcomponents repository</a
         >
         to create your own custom collection of components.

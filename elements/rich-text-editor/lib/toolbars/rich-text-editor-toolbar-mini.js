@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { RichTextEditorToolbarBehaviors } from "./rich-text-editor-toolbar.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `rich-text-editor-toolbar-mini`
  * `a mini floating toolbar for the rich text editor`

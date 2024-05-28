@@ -3,18 +3,18 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/jwt-login/jwt-login.js";
-import "@lrnwebcomponents/h-a-x/h-a-x.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
+import "@haxtheweb/jwt-login/jwt-login.js";
+import "@haxtheweb/h-a-x/h-a-x.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-site-dashboard.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 /**
  * `haxcms-site-editor`
@@ -690,7 +690,7 @@ class HAXCMSSiteEditor extends LitElement {
       // docxImport use the routine from app-hax
       if (reqBody.docximport) {
         await import(
-          "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+          "@haxtheweb/file-system-broker/lib/docx-file-system-broker.js"
         ).then(async (e) => {
           // enable core services
           enableServices(["haxcms"]);
@@ -727,7 +727,7 @@ class HAXCMSSiteEditor extends LitElement {
             // using our outline / hierarchy visualization
             reqBody.items = response.data.items;
             await import(
-              "@lrnwebcomponents/outline-designer/outline-designer.js"
+              "@haxtheweb/outline-designer/outline-designer.js"
             ).then(async (e) => {
               const outline =
                 globalThis.document.createElement("outline-designer");

@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 /**
  * `scroll-button`
  * `button to scroll to an area or back to top`
@@ -34,7 +34,7 @@ class ScrollButton extends LitElement {
     this._label = this.t.backToTop;
     this.label = "";
     this.position = "top";
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    import("@haxtheweb/simple-tooltip/simple-tooltip.js");
   }
   /**
    * Store the tag name to make it easier to obtain directly.

@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 
 const ChartistRenderSuper = function (SuperClass) {
   return class extends SuperClass {

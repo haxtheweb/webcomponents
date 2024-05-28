@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `a11y-gif-player`
  * plays gifs in an accessible way by having the user click to play their animation
@@ -273,12 +273,12 @@ class A11yGifPlayer extends I18NMixin(
     changedProperties.forEach((oldValue, propName) => {
       // import on visibility
       if (propName === "elementVisible" && this[propName]) {
-        import("@lrnwebcomponents/a11y-details/a11y-details.js");
+        import("@haxtheweb/a11y-details/a11y-details.js");
         // support for automatic web service scrape of the gif for a still image
         if (this.shadowRoot && !this.srcWithoutAnimation && this.src) {
           // import registry
           import(
-            "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js"
+            "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"
           ).then(() => {
             this._automaticStill = true;
             this.srcWithoutAnimation = this.generateStill(this.src);

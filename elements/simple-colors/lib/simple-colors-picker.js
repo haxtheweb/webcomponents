@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleColorsSuper } from "../simple-colors.js";
-import { SimplePickerBehaviors } from "@lrnwebcomponents/simple-picker/simple-picker.js";
+import { SimplePickerBehaviors } from "@haxtheweb/simple-picker/simple-picker.js";
 
 /**
  * `simple-colors-picker`

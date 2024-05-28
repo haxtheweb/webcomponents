@@ -3,8 +3,8 @@
  * @license , see License.md for full text.
  */
 import { html, css } from "lit";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import "@haxtheweb/responsive-utility/responsive-utility.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `collection-list`

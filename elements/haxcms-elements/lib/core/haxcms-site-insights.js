@@ -2,20 +2,20 @@ import { store } from "./haxcms-site-store.js";
 import { toJS } from "mobx";
 import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
-import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
-import "@lrnwebcomponents/retro-card/retro-card.js";
-import "@lrnwebcomponents/simple-img/simple-img.js";
-import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "@lrnwebcomponents/lesson-overview/lib/lesson-highlight.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import "@haxtheweb/a11y-tabs/a11y-tabs.js";
+import "@haxtheweb/accent-card/accent-card.js";
+import "@haxtheweb/retro-card/retro-card.js";
+import "@haxtheweb/simple-img/simple-img.js";
+import "@haxtheweb/simple-fields/simple-fields.js";
+import "@haxtheweb/lesson-overview/lib/lesson-highlight.js";
 import "@github/time-elements/dist/relative-time-element.js";
-import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
+import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
 import {
   learningComponentTypes,
   iconFromPageType,
-} from "@lrnwebcomponents/course-design/lib/learning-component.js";
+} from "@haxtheweb/course-design/lib/learning-component.js";
 enableServices(["haxcms", "core"]);
 
 /**
@@ -793,7 +793,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                 (item) => html`
                                   <li>
                                     <accent-card
-                                      image-src="https://screenshoturl.elmsln.vercel.app/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
+                                      image-src="https://screenshoturl-haxtheweb.vercel.app/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
                                       horizontal
                                     >
                                       <div slot="heading">

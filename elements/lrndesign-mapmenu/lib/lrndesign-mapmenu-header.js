@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/lrndesign-avatar/lrndesign-avatar.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { IronButtonState } from "@polymer/iron-behaviors/iron-button-state.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 class LrndesignMapmenuHeader extends mixinBehaviors(

@@ -3,16 +3,16 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-tags.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
-import { mediaKeys } from "@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/site-view.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
+import "@haxtheweb/simple-fields/lib/simple-tags.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/grid-plate/grid-plate.js";
+import { mediaKeys } from "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-view.js";
 import { autorun } from "mobx";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 // simple fields schema for our filter and display capabilities
 export function loadViewsForm() {

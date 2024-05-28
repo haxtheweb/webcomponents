@@ -1,5 +1,5 @@
 import { DisqusEmbed } from "../disqus-embed";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
 class HAXCMSSiteDisqus extends DisqusEmbed {

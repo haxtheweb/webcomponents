@@ -1,7 +1,7 @@
 import { html } from "lit-html";
-import { LrndesignImagemap } from "@lrnwebcomponents/lrndesign-imagemap/lrndesign-imagemap.js";
+import { LrndesignImagemap } from "@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js";
 import { text, withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Media|Image Map",

@@ -1,8 +1,8 @@
 import { html, LitElement } from "lit";
 import { GradeBookStore } from "./grade-book-store.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { autorun, toJS } from "mobx";
-import { validURL, cleanVideoSource } from "@lrnwebcomponents/utils/utils.js";
+import { validURL, cleanVideoSource } from "@haxtheweb/utils/utils.js";
 
 class GradeBookPopUp extends I18NMixin(LitElement) {
   constructor() {
@@ -123,7 +123,7 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
         </div>`;
     } else {
       // see if we can just present this as data
-      import("@lrnwebcomponents/md-block/md-block.js");
+      import("@haxtheweb/md-block/md-block.js");
       return html`${pre}
         <div class="active-submission">
           <md-block .markdown="${data}"></md-block>

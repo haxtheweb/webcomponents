@@ -1,6 +1,6 @@
 import { html, css } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS } from "mobx";
 import "./course-intro-lesson-plan.js";
 

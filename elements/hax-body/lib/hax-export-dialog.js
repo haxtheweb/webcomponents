@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
+import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
 import "./hax-view-source.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `hax-export-dialog`
  * @element hax-export-dialog

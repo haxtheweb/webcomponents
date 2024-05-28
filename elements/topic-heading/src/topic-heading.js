@@ -111,13 +111,13 @@ class TopicHeading extends LitElement {
     super();
     this.icon = "";
     this.title = "";
-    import("@lrnwebcomponents/relative-heading/relative-heading.js");
+    import("@haxtheweb/relative-heading/relative-heading.js");
   }
   firstUpdated() {
     if (this.icon) {
-      import("@lrnwebcomponents/simple-icon/simple-icon.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
+      import("@haxtheweb/simple-icon/simple-icon.js");
+      import("@haxtheweb/simple-icon/lib/simple-icons.js");
+      import("@haxtheweb/simple-icon/lib/simple-icon-button.js");
     }
   }
   /**

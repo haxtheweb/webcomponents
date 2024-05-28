@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/paper-avatar/paper-avatar.js";
 /**
   * `lrndesign-avatar`
   * Visualize a user account either with an image, icon, initials, or as abstract art.

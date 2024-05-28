@@ -1,15 +1,15 @@
 import { html, css } from "lit";
-import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
+import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-blog/lib/simple-blog-post.js";
 import "@polymer/iron-pages/iron-pages.js";
-import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `simple-blog`
@@ -157,9 +157,9 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     this.__disposer = [];
     this.selectedPage = 0;
     setTimeout(() => {
-      import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
-      import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
-      import("@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js");
+      import("@haxtheweb/simple-blog/lib/simple-blog-header.js");
+      import("@haxtheweb/simple-blog/lib/simple-blog-footer.js");
+      import("@haxtheweb/simple-blog/lib/simple-blog-listing.js");
     }, 0);
   }
   /**

@@ -1,8 +1,0 @@
-{
-  "name": "@polymer/lrnapp-studio-submission",
-  "version": "",
-  "description": "A LRN app",
-  "main": "lrnapp-studio-submission.html",
-  "dependencies": {},
-  "devDependencies": {}
-}

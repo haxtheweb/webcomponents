@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsContainerBehaviors } from "./simple-fields-container.js";
-import "@lrnwebcomponents/code-editor/code-editor.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import "@haxtheweb/code-editor/code-editor.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 /**
  *`simple-fields-code`

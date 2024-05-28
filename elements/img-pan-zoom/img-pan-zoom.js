@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 /**
  * `img-pan-zoom` Image pan zoom element
  * Images are preloaded by `img-loader` and a spinner is shown until loaded
@@ -422,7 +422,7 @@ class ImgPanZoom extends LitElement {
     );
 
     window.ESGlobalBridge.requestAvailability().load("openseadragon", location);
-    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+    import("@haxtheweb/hexagon-loader/hexagon-loader.js");
     import("./lib/img-loader.js");
   }
   /**

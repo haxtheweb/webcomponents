@@ -5,12 +5,12 @@
  * @element hax-cloud
  */
 import { html } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { FileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-broker/file-system-broker.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { FileSystemBrokerSingleton } from "@haxtheweb/file-system-broker/file-system-broker.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
 class HaxCloud extends DDD {
   createRenderRoot() {
     return this;
@@ -216,7 +216,7 @@ class HaxCloud extends DDD {
       themes: {
         "haxcms-dev-theme": {
           element: "haxcms-dev-theme",
-          path: "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js",
+          path: "@haxtheweb/haxcms-elements/lib/haxcms-dev-theme.js",
           name: "Developer theme",
         },
       },

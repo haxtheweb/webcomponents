@@ -1,9 +1,9 @@
 import { css, html, unsafeCSS } from "lit";
-import { SimpleToastEl } from "@lrnwebcomponents/simple-toast/lib/simple-toast-el.js";
-import "@lrnwebcomponents/future-terminal-text/future-terminal-text.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons";
-import "@lrnwebcomponents/simple-icon/simple-icon";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { SimpleToastEl } from "@haxtheweb/simple-toast/lib/simple-toast-el.js";
+import "@haxtheweb/future-terminal-text/future-terminal-text.js";
+import "@haxtheweb/simple-icon/lib/simple-icons";
+import "@haxtheweb/simple-icon/simple-icon";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 const SpeechBubbleL = new URL("./images/SpeechBubbleL.svg", import.meta.url)
   .href;

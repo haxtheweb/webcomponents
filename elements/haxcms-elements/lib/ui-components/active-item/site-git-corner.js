@@ -1,9 +1,9 @@
 import { LitElement, html, css } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { varGet } from "@lrnwebcomponents/utils/utils.js";
-import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
+import { varGet } from "@haxtheweb/utils/utils.js";
+import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 
 class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   static get tag() {
@@ -59,7 +59,7 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
         !globalThis.customElements.get("git-corner")
       ) {
-        import("@lrnwebcomponents/git-corner/git-corner.js");
+        import("@haxtheweb/git-corner/git-corner.js");
       }
       this.__disposer.push(reaction);
     });

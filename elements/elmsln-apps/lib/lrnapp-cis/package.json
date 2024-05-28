@@ -1,8 +1,0 @@
-{
-  "name": "@polymer/lrnapp-cis",
-  "version": "",
-  "description": "A LRN app",
-  "main": "lrnapp-cis.html",
-  "dependencies": {},
-  "devDependencies": {}
-}

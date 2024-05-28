@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, LitElement } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 /**
  * `site-top-menu`
  * `Menu on top of the site typically a bar of options`

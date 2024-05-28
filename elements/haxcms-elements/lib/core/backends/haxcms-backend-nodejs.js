@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/jwt-login/jwt-login.js";
+import "@haxtheweb/jwt-login/jwt-login.js";
 /**
  * `haxcms-backend-nodejs`
  * `a simple element to check for and fetch JWTs`
@@ -134,7 +134,7 @@ class HAXCMSBackendNodeJS extends LitElement {
     try {
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"
+        "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
       ).then(
         (e) => {
           // if we don't have appSettings by this point

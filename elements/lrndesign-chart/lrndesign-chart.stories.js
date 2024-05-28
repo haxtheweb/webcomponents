@@ -1,10 +1,10 @@
-import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
-import { LrndesignChart } from "@lrnwebcomponents/lrndesign-chart/lrndesign-chart.js";
-import { LrndesignBar } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-bar.js";
-import { LrndesignLine } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-line.js";
-import { LrndesignPie } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js";
+import { ChartistRender } from "@haxtheweb/chartist-render/chartist-render.js";
+import { LrndesignChart } from "@haxtheweb/lrndesign-chart/lrndesign-chart.js";
+import { LrndesignBar } from "@haxtheweb/lrndesign-chart/lib/lrndesign-bar.js";
+import { LrndesignLine } from "@haxtheweb/lrndesign-chart/lib/lrndesign-line.js";
+import { LrndesignPie } from "@haxtheweb/lrndesign-chart/lib/lrndesign-pie.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Charts|Lrndesign Chart",

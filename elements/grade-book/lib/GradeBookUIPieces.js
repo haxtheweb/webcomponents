@@ -8,7 +8,7 @@ export const UIRenderPieces = function (SuperClass) {
       this.hideActiveAssignment = true;
       this.hideSettings = true;
       this.hideRubricInfo = [];
-      import("@lrnwebcomponents/simple-popover/simple-popover.js");
+      import("@haxtheweb/simple-popover/simple-popover.js");
       import("./grade-book-student-block.js");
     }
     static get properties() {

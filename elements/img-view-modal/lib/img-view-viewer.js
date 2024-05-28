@@ -1,9 +1,9 @@
 import { LitElement, html, css } from "lit";
-import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
-import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { ImgPanZoom } from "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
+import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 /**
  * `img-view-viewer`
@@ -192,7 +192,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     this.minZoomImageRatio = 1;
     this.maxZoomPixelRatio = 3;
     this.__screenfullLoaded = false;
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    import("@haxtheweb/simple-tooltip/simple-tooltip.js");
   }
 
   render() {

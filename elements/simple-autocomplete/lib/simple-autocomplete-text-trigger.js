@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { getRange } from "@lrnwebcomponents/utils/utils.js";
+import { getRange } from "@haxtheweb/utils/utils.js";
 import "../simple-autocomplete.js";
 
 export class SimpleAutocompleteTextTrigger extends LitElement {

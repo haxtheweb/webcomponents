@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { DDDSuper } from "../d-d-d.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-region.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 
 // a "blank" theme that allows for production of a brochure design by reading off of the page-sections used
 class DDDBrochureTheme extends HAXCMSRememberRoute(

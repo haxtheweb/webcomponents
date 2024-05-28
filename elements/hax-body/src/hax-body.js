@@ -1,6 +1,6 @@
 import { html, css, render, unsafeCSS } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { UndoManagerBehaviors } from "@haxtheweb/undo-manager/undo-manager.js";
 import { HAXStore } from "./lib/hax-store.js";
 import { autorun, toJS } from "mobx";
 import "./lib/hax-text-editor-toolbar.js";
@@ -15,19 +15,19 @@ import {
   unwrap,
   ReplaceWithPolyfill,
   normalizeEventPath,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import "./lib/hax-context-behaviors.js";
 import "./lib/hax-plate-context.js";
 // our default way of handing grids
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
+import "@haxtheweb/grid-plate/grid-plate.js";
 // our default image in core
-import "@lrnwebcomponents/media-image/media-image.js";
-import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
+import "@haxtheweb/media-image/media-image.js";
+import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -2405,7 +2405,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           HAXStore.activeEditingElement.wordWrap = true;
           this.viewSourceToggle = true;
           // could be 1st time this shows up so ensure we import
-          import("@lrnwebcomponents/code-editor/code-editor.js");
+          import("@haxtheweb/code-editor/code-editor.js");
           // test for slots to match to ensure this is maintained
           if (
             this.activeNode.getAttribute &&
@@ -2492,30 +2492,28 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         if (!this.activeNode.__haxSourceView) {
           this.activeNode.__haxSourceView = true;
           // could be 1st time this shows up so ensure we import
-          import("@lrnwebcomponents/rich-text-editor/rich-text-editor.js").then(
-            () => {
-              HAXStore.activeEditingElement =
-                document.createElement("rich-text-editor");
-              HAXStore.activeEditingElement.type =
-                "rich-text-editor-toolbar-full";
-              // test for slots to match to ensure this is maintained
-              if (
-                this.activeNode.getAttribute &&
-                this.activeNode.getAttribute("slot") != null
-              ) {
-                HAXStore.activeEditingElement.setAttribute(
-                  "slot",
-                  this.activeNode.getAttribute("slot"),
-                );
-              }
-              this.__ignoreActive = true;
-              this.activeNode.removeAttribute("contenteditable");
-              this.__applyDragDropState(this.activeNode, false);
-              this.activeNode.removeAttribute("data-hax-active");
-              wrap(this.activeNode, HAXStore.activeEditingElement);
-              this.viewSourceElement = HAXStore.activeEditingElement;
-            },
-          );
+          import("@haxtheweb/rich-text-editor/rich-text-editor.js").then(() => {
+            HAXStore.activeEditingElement =
+              document.createElement("rich-text-editor");
+            HAXStore.activeEditingElement.type =
+              "rich-text-editor-toolbar-full";
+            // test for slots to match to ensure this is maintained
+            if (
+              this.activeNode.getAttribute &&
+              this.activeNode.getAttribute("slot") != null
+            ) {
+              HAXStore.activeEditingElement.setAttribute(
+                "slot",
+                this.activeNode.getAttribute("slot"),
+              );
+            }
+            this.__ignoreActive = true;
+            this.activeNode.removeAttribute("contenteditable");
+            this.__applyDragDropState(this.activeNode, false);
+            this.activeNode.removeAttribute("data-hax-active");
+            wrap(this.activeNode, HAXStore.activeEditingElement);
+            this.viewSourceElement = HAXStore.activeEditingElement;
+          });
         } else {
           this.activeNode.__haxSourceView = false;
           // run internal state hook if it exist and if we get a response

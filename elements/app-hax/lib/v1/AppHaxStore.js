@@ -1,10 +1,7 @@
 /* eslint-disable max-classes-per-file */
-import {
-  localStorageGet,
-  localStorageSet,
-} from "@lrnwebcomponents/utils/utils.js";
+import { localStorageGet, localStorageSet } from "@haxtheweb/utils/utils.js";
 import { observable, makeObservable, computed, configure } from "mobx";
-import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
+import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 configure({ enforceActions: false }); // strict mode off
 
 class Store {
@@ -30,42 +27,25 @@ class Store {
     // placeholder for when the actual API Backend gets plugged in here
     this.AppHaxAPI = {};
     this.newSitePromiseList = [
-      () => import("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js"),
-      () => import("@lrnwebcomponents/wc-autoload/wc-autoload.js"),
-      () => import("@lrnwebcomponents/replace-tag/replace-tag.js"),
-      () => import("@lrnwebcomponents/utils/utils.js"),
-      () => import("@lrnwebcomponents/grid-plate/grid-plate.js"),
-      () => import("@lrnwebcomponents/simple-fields/simple-fields.js"),
+      () => import("@haxtheweb/i18n-manager/lib/I18NMixin.js"),
+      () => import("@haxtheweb/wc-autoload/wc-autoload.js"),
+      () => import("@haxtheweb/replace-tag/replace-tag.js"),
+      () => import("@haxtheweb/utils/utils.js"),
+      () => import("@haxtheweb/grid-plate/grid-plate.js"),
+      () => import("@haxtheweb/simple-fields/simple-fields.js"),
       () => import("mobx/dist/mobx.esm.js"),
-      () => import("@lrnwebcomponents/h-a-x/h-a-x.js"),
+      () => import("@haxtheweb/h-a-x/h-a-x.js"),
+      () => import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"),
+      () => import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-router.js"),
       () =>
-        import(
-          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js"
-        ),
+        import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js"),
       () =>
-        import(
-          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-router.js"
-        ),
+        import("@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"),
+      () => import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"),
       () =>
-        import(
-          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js"
-        ),
+        import("@haxtheweb/haxcms-elements/lib/core/haxcms-editor-builder.js"),
       () =>
-        import(
-          "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
-        ),
-      () =>
-        import(
-          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"
-        ),
-      () =>
-        import(
-          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js"
-        ),
-      () =>
-        import(
-          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js"
-        ),
+        import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js"),
     ];
     this.appEl = null;
     this.appReady = false;

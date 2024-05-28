@@ -1,6 +1,6 @@
 import { GitCorner } from "./git-corner.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Other|Git",
@@ -16,7 +16,7 @@ export const GitHubCorner = () => {
     GitCorner,
     import.meta.url,
     utils.makeElementFromClass(GitCorner, {
-      source: "https://github.com/elmsln/lrnwebcomponents",
+      source: "https://github.com/haxtheweb/webcomponents",
       alt: "Our monorepo of all the things you see here",
       corner: true,
       size: "large",

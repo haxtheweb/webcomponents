@@ -4,9 +4,9 @@
  * @demo demo/index.html
  */
 // dependencies / things imported
-import { html, css } from "lit";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import { QuestionElement } from "@lrnwebcomponents/multiple-choice/lib/QuestionElement.js";
+import { html, css, nothing } from "lit";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 
 export class MarkTheWords extends QuestionElement {
   static get tag() {
@@ -41,7 +41,7 @@ export class MarkTheWords extends QuestionElement {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has('statement')) {
+    if (changedProperties.has("statement")) {
       this.rebuildWordList(this.statement);
     }
   }
@@ -49,10 +49,15 @@ export class MarkTheWords extends QuestionElement {
   rebuildWordList(statement) {
     const wordList = statement.trim().split(/\s+/g);
     for (var i in wordList) {
+      let answerMatch = this.displayedAnswers.find(
+        (answer) => wordList[i].toLowerCase() === answer.label.toLowerCase(),
+      );
       this.wordList.push({
         text: wordList[i],
         selected: false,
         correct: null,
+        selectedFeedback: answerMatch ? answerMatch.selectedFeedback : null,
+        unselectedFeedback: answerMatch ? answerMatch.unselectedFeedback : null,
       });
     }
     this.requestUpdate();
@@ -66,16 +71,29 @@ export class MarkTheWords extends QuestionElement {
         :host {
           display: block;
         }
-        
+
         button.selected,
         button.selected:focus,
-        button.selected:hover
-         {
-          outline: 2px solid light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-link));
+        button.selected:hover {
+          outline: 2px solid
+            light-dark(
+              var(
+                --lowContrast-override,
+                var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
+              ),
+              var(--ddd-theme-default-link)
+            );
         }
         button:focus,
         button:hover {
-          outline: 1px solid light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-link));
+          outline: 1px solid
+            light-dark(
+              var(
+                --lowContrast-override,
+                var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
+              ),
+              var(--ddd-theme-default-link)
+            );
         }
 
         button {
@@ -85,19 +103,13 @@ export class MarkTheWords extends QuestionElement {
           padding: 0 4px;
         }
 
-        button[data-status="correct"] {
-          outline: 2px solid green;
-        }
-        button[data-status="incorrect"] {
-          outline: 2px solid purple;
-        }
-
         .text {
           margin: var(--ddd-spacing-4);
           padding: var(--ddd-spacing-4);
           border: var(--ddd-border-sm);
           line-height: 2.2;
         }
+
         .tag-option {
           font-size: var(--ddd-font-size-s);
           height: auto;
@@ -113,9 +125,11 @@ export class MarkTheWords extends QuestionElement {
 
         :host([show-answer]) .tag-option {
           cursor: unset;
+          pointer-events: none;
         }
 
-        :host(:not([show-answer])) .tag-option:hover, :host(:not([show-answer])) .tag-option:focus {
+        :host(:not([show-answer])) .tag-option:hover,
+        :host(:not([show-answer])) .tag-option:focus {
           background-color: var(--simple-colors-default-theme-grey-3);
         }
 
@@ -126,12 +140,21 @@ export class MarkTheWords extends QuestionElement {
         .tag-option.incorrect {
           outline: 4px solid var(--ddd-theme-default-original87Pink);
         }
+
+        dl .correct {
+          border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
+          padding-left: 8px;
+        }
+        dl .incorrect {
+          border-left: 4px solid var(--ddd-theme-default-original87Pink);
+          padding-left: 8px;
+        }
       `,
     ];
   }
 
   selectWord(e) {
-    let i = this.wordList.findIndex(word => e.target.innerText === word.text);
+    let i = this.wordList.findIndex((word) => e.target.innerText === word.text);
     this.wordList[i].selected = !this.wordList[i].selected;
     this.requestUpdate();
   }
@@ -143,10 +166,14 @@ export class MarkTheWords extends QuestionElement {
 
     for (var i in this.wordList) {
       for (var j in this.displayedAnswers) {
-        if (this.wordList[i].selected && this.displayedAnswers[j].correct && this.displayedAnswers[j].label.toLowerCase() === this.wordList[i].text.toLowerCase()) {
+        if (
+          this.wordList[i].selected &&
+          this.displayedAnswers[j].correct &&
+          this.displayedAnswers[j].label.toLowerCase() ===
+            this.wordList[i].text.toLowerCase()
+        ) {
           this.wordList[i].correct = true;
           this.numberCorrect++;
-          console.log();
         }
       }
       // we selected something
@@ -161,7 +188,10 @@ export class MarkTheWords extends QuestionElement {
     if (gotRight && this.numberCorrect !== this.numberGuessed) {
       gotRight = false;
     }
-    if (this.numberCorrect !== this.displayedAnswers.filter(answer => answer.correct).length) {
+    if (
+      this.numberCorrect !==
+      this.displayedAnswers.filter((answer) => answer.correct).length
+    ) {
       gotRight = false;
     }
     return gotRight;
@@ -180,47 +210,127 @@ export class MarkTheWords extends QuestionElement {
   }
 
   renderInteraction() {
-    return html`<div class="text-wrap"><div class="text">
-      ${this.wordList.map(word => html`
-      <button
-        class="tag-option ${word.selected ? 'selected': ''} ${this.showAnswer && word.selected ? (word.correct ? 'correct' : 'incorrect') : ''}"
-        @click="${this.selectWord}"
-      >${word.text}</button>
-      `)}</div></div>`;
+    return html`<div class="text-wrap">
+      <div class="text">
+        ${this.wordList.map(
+          (word) => html`
+            <button
+              ?disabled="${this.showAnswer}"
+              class="tag-option ${word.selected ? "selected" : ""} ${this
+                .showAnswer && word.selected
+                ? word.correct
+                  ? "correct"
+                  : "incorrect"
+                : ""}"
+              @click="${this.selectWord}"
+            >
+              ${word.text}
+            </button>
+          `,
+        )}
+      </div>
+    </div>`;
   }
 
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
-    return html`<p>Select the words that match the criteria of the question. Then select <strong>${this.t.checkAnswer}</strong> to test your answers.
-    You will get feedback just below here indicating correctness of your answer.
-  </p>`;
+    return html`<p>
+      Select the words that match the criteria of the question. Then select
+      <strong>${this.t.checkAnswer}</strong> to test your answers. You will get
+      feedback just below here indicating correctness of your answer.
+    </p>`;
   }
 
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
-    ${this.showAnswer && this.numberCorrect !== this.displayedAnswers.filter(answer => answer.correct).length ? html`
-    <p class="feedback">${this.t.numCorrectLeft} ${this.numberCorrect}/${this.displayedAnswers.filter(answer => answer.correct).length} ${this.t.numCorrectRight} (${this.numberGuessed} guessed)</p>
-    ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
-    ${this.showAnswer && this.numberCorrect === this.displayedAnswers.filter(answer => answer.correct).length ? html`
-    <p class="feedback">${this.correctText}</p>
-    ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
-      ${this.hasHint && this.showAnswer && this.numberCorrect !== this.displayedAnswers.filter(answer => answer.correct).length ? html`
-        <h4>Need a hint?</h4>
-        <div>
-          <slot name="hint"></slot>
-        </div>
-      ` : ``}
-      ${this.hasEvidence && this.showAnswer && this.numberCorrect === this.displayedAnswers.filter(answer => answer.correct).length  ? html`
-        <h4>Evidence</h4>
-        <div>
-          <slot name="evidence"></slot>
-        </div>
-      ` : ``}
+      ${this.showAnswer &&
+      (this.numberCorrect !==
+        this.displayedAnswers.filter((answer) => answer.correct).length ||
+        this.numberCorrect !== this.numberGuessed)
+        ? html` <p class="feedback">
+              ${this.t.numCorrectLeft}
+              ${this.numberCorrect}/${this.displayedAnswers.filter(
+                (answer) => answer.correct,
+              ).length}
+              ${this.t.numCorrectRight} (${this.numberGuessed} guessed)
+            </p>
+            ${this.wordList.filter((word) => word.selected).length > 0
+              ? html`
+                  <h4>Words selected feedback</h4>
+                  <dl>
+                    ${this.wordList
+                      .filter((word) => word.selected)
+                      .map(
+                        (answer) => html`
+                          <dt
+                            class="${answer.correct ? "correct" : "incorrect"}"
+                          >
+                            ${answer.text}
+                          </dt>
+                          <dd>${answer.selectedFeedback}</dd>
+                        `,
+                      )}
+                  </dl>
+                `
+              : nothing}
+            ${this.wordList.filter(
+              (word) => !word.selected && word.unselectedFeedback,
+            ).length > 0
+              ? html`
+                  <h4>Words not selected feedback</h4>
+                  <dl>
+                    ${this.wordList
+                      .filter(
+                        (word) => !word.selected && word.unselectedFeedback,
+                      )
+                      .map(
+                        (answer) => html`
+                          <dd>${answer.unselectedFeedback}</dd>
+                        `,
+                      )}
+                  </dl>
+                `
+              : nothing}
+            ${this.hasFeedbackIncorrect
+              ? html`<slot name="feedbackIncorrect"></slot>`
+              : ``}`
+        : ``}
+      ${this.showAnswer &&
+      this.numberCorrect ===
+        this.displayedAnswers.filter((answer) => answer.correct).length
+        ? html` <p class="feedback">${this.correctText}</p>
+            ${this.hasFeedbackCorrect
+              ? html`<slot name="feedbackCorrect"></slot>`
+              : ``}`
+        : ``}
+      ${this.hasHint &&
+      this.showAnswer &&
+      this.numberCorrect !==
+        this.displayedAnswers.filter((answer) => answer.correct).length
+        ? html`
+            <h4>Need a hint?</h4>
+            <div>
+              <slot name="hint"></slot>
+            </div>
+          `
+        : ``}
+      ${this.hasEvidence &&
+      this.showAnswer &&
+      this.numberCorrect ===
+        this.displayedAnswers.filter((answer) => answer.correct).length
+        ? html`
+            <h4>Evidence</h4>
+            <div>
+              <slot name="evidence"></slot>
+            </div>
+          `
+        : ``}
       <simple-toolbar-button
         ?disabled="${this.disabled || !this.showAnswer}"
         @click="${this.resetAnswer}"
-        label="${this.t.tryAgain}">
+        label="${this.t.tryAgain}"
+      >
       </simple-toolbar-button>
     `;
   }

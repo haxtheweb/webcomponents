@@ -3,16 +3,16 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   cellBehaviors,
   editableTableCellStyles,
 } from "./editable-table-behaviors.js";
-import "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js";
-import { SimpleToolbarMenuBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/a11y-menu-button/lib/a11y-menu-button-item.js";
+import { SimpleToolbarMenuBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-rowcol`

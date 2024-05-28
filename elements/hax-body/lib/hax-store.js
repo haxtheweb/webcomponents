@@ -1,9 +1,9 @@
 import { LitElement, html, nothing } from "lit";
-import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
+import { SimpleTourManager } from "@haxtheweb/simple-popover/lib/simple-tour.js";
 import {
   HaxSchematizer,
   HaxElementizer,
-} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
 import {
   winEventsElement,
   getRange,
@@ -15,7 +15,7 @@ import {
   htmlEntities,
   localStorageGet,
   localStorageSet,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 import {
   observable,
   makeObservable,
@@ -25,18 +25,18 @@ import {
   toJS,
 } from "mobx";
 configure({ enforceActions: false }); // strict mode off
-import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
+import { HAXElement } from "@haxtheweb/hax-body-behaviors/hax-body-behaviors.js";
 import {
   I18NMixin,
   I18NManagerStore,
-} from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
-import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
-import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
-import "@lrnwebcomponents/editable-table/editable-table.js";
-import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
-import "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
-import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
+} from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
+import "@haxtheweb/media-behaviors/media-behaviors.js";
+import "@haxtheweb/editable-table/editable-table.js";
+import "@haxtheweb/iframe-loader/iframe-loader.js";
+import "@haxtheweb/hax-iconset/lib/hax-iconset-manifest.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "./hax-app.js";
 
 const FALLBACK_LANG = "en";
@@ -850,7 +850,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           // array was originally in the standard so this lets us support both
           if (!isNaN(CEname)) {
             CEname = appDataResponse.autoloader[i];
-            CEimport = `@lrnwebcomponents/${CEname}/${CEname}.js`;
+            CEimport = `@haxtheweb/${CEname}/${CEname}.js`;
           }
           // support for element response shipping w/ the UI for the element
           // this allows backends to define haxSchema at run time!
@@ -2356,7 +2356,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
     }
     globalThis.open(
-      `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
+      `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
         body,
       )}`,
       "_blank",
@@ -2845,7 +2845,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       type: "element",
       editingElement: {
         tag: "editable-table",
-        import: "@lrnwebcomponents/editable-table/editable-table.js",
+        import: "@haxtheweb/editable-table/editable-table.js",
         callback: this.setupEditableTable.bind(this),
       },
       canScale: true,
@@ -2885,7 +2885,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       type: "element",
       editingElement: {
         tag: "iframe-loader",
-        import: "@lrnwebcomponents/iframe-loader/iframe-loader.js",
+        import: "@haxtheweb/iframe-loader/iframe-loader.js",
         callback: this.setupIframeLoader.bind(this),
       },
       canScale: false,

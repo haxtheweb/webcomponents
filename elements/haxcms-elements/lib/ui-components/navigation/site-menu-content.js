@@ -1,7 +1,7 @@
-import { PageContentsMenu } from "@lrnwebcomponents/page-contents-menu/page-contents-menu.js";
-import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import { PageContentsMenu } from "@haxtheweb/page-contents-menu/page-contents-menu.js";
+import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { autorun, toJS } from "mobx";
 import { css, html } from "lit";
 

@@ -3,14 +3,14 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit";
-import { FileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-broker/file-system-broker.js";
+import { FileSystemBrokerSingleton } from "@haxtheweb/file-system-broker/file-system-broker.js";
 import {
   store,
   HAXcmsStore,
-} from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+} from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 
 /**
  * `haxcms-backend-userfs`
@@ -336,17 +336,17 @@ class HAXCMSBackendUserfs extends LitElement {
       const themeData = {
         "haxcms-dev-theme": {
           element: "haxcms-dev-theme",
-          path: "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js",
+          path: "@haxtheweb/haxcms-elements/lib/haxcms-dev-theme.js",
           name: "Developer theme",
         },
         "outline-player": {
           element: "outline-player",
-          path: "@lrnwebcomponents/outline-player/outline-player.js",
+          path: "@haxtheweb/outline-player/outline-player.js",
           name: "Outline player",
         },
         "simple-blog": {
           element: "simple-blog",
-          path: "@lrnwebcomponents/simple-blog/simple-blog.js",
+          path: "@haxtheweb/simple-blog/simple-blog.js",
           name: "Simple blog",
         },
       };
@@ -414,7 +414,7 @@ class HAXCMSBackendUserfs extends LitElement {
     try {
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"
+        "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
       ).then(
         (e) => {
           store.cmsSiteEditorAvailability();

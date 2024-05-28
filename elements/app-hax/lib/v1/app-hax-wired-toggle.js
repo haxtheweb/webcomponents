@@ -2,7 +2,7 @@ import { autorun, toJS } from "mobx";
 import { html } from "lit";
 import { store } from "./AppHaxStore.js";
 import { WiredDarkmodeToggle } from "../wired-darkmode-toggle/wired-darkmode-toggle.js";
-import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder.js";
+import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 
 export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
   constructor() {

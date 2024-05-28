@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { DDDBreadcrumb } from "@lrnwebcomponents/d-d-d/lib/DDDStyles.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBreadcrumb } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
 /**
  * `site-breadcrumb`

@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/polymer";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 import { WordCount } from "./word-count.js";
 
 window.StorybookUtilities.requestAvailability();

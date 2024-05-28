@@ -7,7 +7,6 @@ import { html } from "lit";
  * @element short-answer-question
  */
 class ShortAnswerQuestion extends QuestionElement {
-
   static get tag() {
     return "short-answer-question";
   }
@@ -23,14 +22,13 @@ class ShortAnswerQuestion extends QuestionElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 
   static get properties() {
     return {
       ...super.properties,
-      shortanswer: { type: String, }
+      shortanswer: { type: String },
     };
   }
 
@@ -39,8 +37,10 @@ class ShortAnswerQuestion extends QuestionElement {
   }
 
   renderDirections() {
-    return html`<p>Type the answer you feel satsisfies the question. When you are done, select <strong>${this.t.checkAnswer}</strong>.
-      You will get feedback just below here indicating correctness of your answer.
+    return html`<p>
+      Type the answer you feel satsisfies the question. When you are done,
+      select <strong>${this.t.checkAnswer}</strong>. You will get feedback just
+      below here indicating correctness of your answer.
     </p>`;
   }
 
@@ -51,7 +51,9 @@ class ShortAnswerQuestion extends QuestionElement {
         ?disabled="${this.disabled || this.showAnswer}"
         property="oer:answer"
         name="0"
-        @keydown="${(e) => {e.key === "Enter" ? this.checkAnswer() : null}}"
+        @keydown="${(e) => {
+          e.key === "Enter" ? this.checkAnswer() : null;
+        }}"
         @value-changed="${this.valueUpdate}"
         .value="${this.shortanswer}"
         aria-label="Your answer"
@@ -65,11 +67,11 @@ class ShortAnswerQuestion extends QuestionElement {
     if (this.isCorrect()) {
       this.shortanswer = null;
     }
-    
+
     super.resetAnswer(e);
     setTimeout(() => {
       this.shadowRoot.querySelector('simple-fields-field[name="0"]').focus();
-      this.shadowRoot.querySelector('simple-fields-field[name="0"]').select();        
+      this.shadowRoot.querySelector('simple-fields-field[name="0"]').select();
     }, 0);
   }
 
@@ -81,7 +83,10 @@ class ShortAnswerQuestion extends QuestionElement {
    * Return if the current answers are correct
    */
   isCorrect() {
-    return this.displayedAnswers[0].label.toLowerCase() == this.shortanswer.toLowerCase();
+    return (
+      this.displayedAnswers[0].label.toLowerCase() ==
+      this.shortanswer.toLowerCase()
+    );
   }
 }
 globalThis.customElements.define(ShortAnswerQuestion.tag, ShortAnswerQuestion);

@@ -3,47 +3,47 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/hax-logo/hax-logo.js";
+import "@haxtheweb/hax-logo/hax-logo.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/jwt-login/jwt-login.js";
-import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
-import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
-import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import "@haxtheweb/jwt-login/jwt-login.js";
+import "@haxtheweb/hexagon-loader/hexagon-loader.js";
+import "@haxtheweb/json-outline-schema/json-outline-schema.js";
+import "@haxtheweb/simple-toast/simple-toast.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-datetime/simple-datetime.js";
+import "@haxtheweb/simple-fields/simple-fields.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
+import { SimpleColorsPolymer } from "@haxtheweb/simple-colors/lib/simple-colors-polymer.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sort-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
-import "@lrnwebcomponents/simple-login/simple-login.js";
-import "@lrnwebcomponents/simple-login/lib/simple-login-avatar.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
+import "@haxtheweb/simple-login/simple-login.js";
+import "@haxtheweb/simple-login/lib/simple-login-avatar.js";
+import "@haxtheweb/simple-colors/lib/simple-colors-picker.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@lrnwebcomponents/md-block/md-block.js";
-import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/portal-launcher/portal-launcher.js";
-import "@lrnwebcomponents/json-outline-schema/lib/jos-render.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/md-block/md-block.js";
+import "@haxtheweb/simple-fields/simple-fields.js";
+import "@haxtheweb/simple-picker/simple-picker.js";
+import "@haxtheweb/simple-icon-picker/simple-icon-picker.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/portal-launcher/portal-launcher.js";
+import "@haxtheweb/json-outline-schema/lib/jos-render.js";
+import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+import "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "../haxcms-site-store.js";
 import {
   HaxSchematizer,
   HaxElementizer,
-} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
 
 /**
  * `haxcms-site-listing`
@@ -816,7 +816,7 @@ class HAXCMSSiteListing extends PolymerElement {
         <p slot="content">
           <md-block
             style="overflow:auto;max-height: 50vh;font-size:12px;"
-            source="https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"
+            source="https://raw.githubusercontent.com/haxtheweb/haxcms/master/HAXDocs.md"
           ></md-block>
         </p>
       </simple-modal-template>
@@ -1380,7 +1380,7 @@ class HAXCMSSiteListing extends PolymerElement {
         this.shadowRoot.querySelector("#snap").classList.add("hide-camera");
         this.shadowRoot.querySelector("#camera").classList.add("hide-camera");
       } else {
-        import("@lrnwebcomponents/simple-login/lib/simple-login-camera.js");
+        import("@haxtheweb/simple-login/lib/simple-login-camera.js");
       }
 
       this.addEventListener(
@@ -1678,7 +1678,7 @@ class HAXCMSSiteListing extends PolymerElement {
     const jos = this.shadowRoot.querySelector("jos-render");
     jos.map = {
       tag: "course-card",
-      path: "@lrnwebcomponents/product-card/lib/course-card.js",
+      path: "@haxtheweb/product-card/lib/course-card.js",
       properties: {
         number: "title",
         name: function (item) {

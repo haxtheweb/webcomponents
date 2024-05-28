@@ -1,7 +1,7 @@
-import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
+import { ChartistRender } from "@haxtheweb/chartist-render/chartist-render.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors";
 
 export default {
   title: "Charts|Chartist",

@@ -1,9 +1,9 @@
 import { html } from "lit-html";
-import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
-import { SimpleSymbolPicker } from "@lrnwebcomponents/simple-picker/lib/simple-symbol-picker.js";
-import { SimpleEmojiPicker } from "@lrnwebcomponents/simple-picker/lib/simple-emoji-picker.js";
+import { SimplePicker } from "@haxtheweb/simple-picker/simple-picker.js";
+import { SimpleSymbolPicker } from "@haxtheweb/simple-picker/lib/simple-symbol-picker.js";
+import { SimpleEmojiPicker } from "@haxtheweb/simple-picker/lib/simple-emoji-picker.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Forms|Picker",

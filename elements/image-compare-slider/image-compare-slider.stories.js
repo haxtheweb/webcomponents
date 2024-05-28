@@ -1,7 +1,7 @@
 import { html } from "lit-html";
-import { ImageCompareSlider } from "@lrnwebcomponents/image-compare-slider/image-compare-slider.js";
+import { ImageCompareSlider } from "@haxtheweb/image-compare-slider/image-compare-slider.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Media|Image Compare",

@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/html-block",
+  "name": "@haxtheweb/html-block",
   "wcfactory": {
     "className": "HtmlBlock",
     "customElementClass": "HTMLElement",
@@ -12,11 +12,11 @@
     },
     "sharedStyles": []
   },
-  "version": "8.0.2",
+  "version": "9.0.0-alpha.0",
   "description": "A basic HTML block that provides HAXschema wiring",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "html-block.js",
@@ -37,7 +37,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -55,5 +55,5 @@
     "html",
     "haxtheweb"
   ],
-  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
+  "gitHead": "4d0f1a05892352c5639fd091187b2973c73545e2"
 }

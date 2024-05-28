@@ -3,11 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 
 /**
  * `csv-render`
@@ -129,8 +129,8 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "elementVisible" && this.elementVisible) {
-        import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
-        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+        import("@haxtheweb/hexagon-loader/hexagon-loader.js");
+        import("@haxtheweb/simple-tooltip/simple-tooltip.js");
       }
       if (
         ["dataSource", "elementVisible"].includes(propName) &&

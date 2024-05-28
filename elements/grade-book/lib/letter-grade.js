@@ -156,7 +156,7 @@ class LetterGrade extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "mini" && this[propName] && this.label) {
-        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+        import("@haxtheweb/simple-tooltip/simple-tooltip.js");
       }
       if (
         ["total", "score", "gradeScale"].includes(propName) &&

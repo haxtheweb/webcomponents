@@ -3,10 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement } from "lit";
-import {
-  localStorageSet,
-  localStorageGet,
-} from "@lrnwebcomponents/utils/utils.js";
+import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
 
 /**
  * `lrs-bridge`

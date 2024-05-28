@@ -1,6 +1,6 @@
 // import stuff
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 
 export class TrainingTop extends LitElement {
   // defaults

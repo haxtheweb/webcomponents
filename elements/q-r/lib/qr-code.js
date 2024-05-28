@@ -1,4 +1,4 @@
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 
 class QRCodeElement extends HTMLElement {
   constructor() {

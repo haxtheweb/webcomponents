@@ -1,8 +1,8 @@
 import { LitElement, html, render } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-toolbar/simple-toolbar.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "./simple-popover-manager.js";
 
 class SimpleTour extends LitElement {

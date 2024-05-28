@@ -1,7 +1,7 @@
 import { html } from "lit-html";
-import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
+import { AccentCard } from "@haxtheweb/accent-card/accent-card.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Cards|Accent card",

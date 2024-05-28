@@ -4,7 +4,7 @@
  */
 import { html, css } from "lit";
 import { FutureTerminalTextLite } from "./lib/future-terminal-text-lite.js";
-import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
 
 /**
  * `future-terminal-text`

@@ -3,16 +3,16 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   HaxSchematizer,
   HaxElementizer,
-} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import { SimpleFieldsForm } from "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
+} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
+import "@haxtheweb/simple-fields/simple-fields.js";
+import { SimpleFieldsForm } from "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./hax-element-card-list.js";
 /**
  * `hax-element-list-selector`

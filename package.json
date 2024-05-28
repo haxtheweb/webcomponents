@@ -1,14 +1,14 @@
 {
-  "name": "lrnwebcomponents",
-  "description": "ELMSLN produced web components for any project",
+  "name": "@haxtheweb/webcomponents",
+  "description": "HAXTheWeb core web components",
   "wcfactory": {
     "askSASS": false,
     "askProps": false,
     "askHAX": false,
-    "monorepo": "lrnwebcomponents",
-    "orgNpm": "@lrnwebcomponents",
-    "orgGit": "elmsln",
-    "gitRepo": "https://github.com/elmsln/lrnwebcomponents.git",
+    "monorepo": "webcomponents",
+    "orgNpm": "@haxtheweb",
+    "orgGit": "haxtheweb",
+    "gitRepo": "https://github.com/haxtheweb/webcomponents.git",
     "sass": {
       "name": "rh-sass",
       "pkg": "@rhelements/rh-sass",
@@ -21,7 +21,7 @@
     "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
-  "repository": "git@github.com/elmsln/lrnwebcomponents.git",
+  "repository": "git@github.com/haxtheweb/webcomponents.git",
   "scripts": {
     "prepare": "husky install",
     "start": "bash scripts/preinstall.sh && yarn run storybook",
@@ -178,8 +178,8 @@
     "yo": "4.3.0",
     "@wcfactory/rollup-umd-build": "^0.13.0",
     "rollup-plugin-copy": "3.4.0",
-    "lit-html": "^3.1.2",
-    "lit": "^3.1.2",
+    "lit-html": "^3.1.3",
+    "lit": "^3.1.3",
     "@lit-labs/virtualizer": "2.0.12"
   },
   "resolutions": {
@@ -187,9 +187,9 @@
     "@google/model-viewer": "3.2.1",
     "webpack": "5.87.0",
     "roughjs": "4.4.5",
-    "lit": "3.1.2",
-    "lit-html": "3.1.2",
-    "lit-element": "4.0.4",
+    "lit": "3.1.3",
+    "lit-html": "3.1.3",
+    "lit-element": "4.0.5",
     "@lit-labs/virtualizer": "2.0.12",
     "polymer-cli": "1.9.11",
     "polymer-build": "3.1.4"
@@ -201,16 +201,9 @@
     "*.scss": "stylelint --syntax=scss --fix"
   },
   "keywords": [
-    "yeoman-generator",
     "custom-elements",
-    "web-components",
     "webcomponents",
-    "polymer",
-    "lit-element",
-    "skate-js",
-    "slim-js",
-    "twig",
-    "lit-html",
+    "li",
     "vanillajs"
   ],
   "private": true,

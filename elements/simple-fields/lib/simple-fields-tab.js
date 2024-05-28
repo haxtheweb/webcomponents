@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
-import { A11yTab } from "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
+import { A11yTab } from "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
 /**
  * `simple-fields-tab` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.

@@ -1,10 +1,10 @@
 import { LitElement, html } from "lit";
-import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/jwt-login/jwt-login.js";
+import { localStorageGet } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/jwt-login/jwt-login.js";
 import { toJS, autorun } from "mobx";
 import { store } from "./AppHaxStore.js";
-import { SimpleColorsSharedStylesGlobal } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
-import { SimpleIconIconsetsManifest } from "@lrnwebcomponents/simple-icon/lib/simple-iconset-manifest.js";
+import { SimpleColorsSharedStylesGlobal } from "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import { SimpleIconIconsetsManifest } from "@haxtheweb/simple-icon/lib/simple-iconset-manifest.js";
 // this element will manage all connectivity to the backend
 // this way everything is forced to request through calls to this
 // so that it doesn't get messy down below in state

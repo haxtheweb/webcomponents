@@ -6,7 +6,7 @@ HAXcms primary audience is people doing things entirely through the UI. It is ho
 
 - leveraging the included package.json
 - removing the symlinks to dist / node_modules / build
-- copying the dist directory from the project root into your local setup: https://github.com/elmsln/haxcms/tree/master/dist
+- copying the dist directory from the project root into your local setup: https://github.com/haxtheweb/haxcms/tree/master/dist
 
 Using this approach you'll have to manage dependencies on your own but you'll be able to utilize custom themes / elements that you can to show up. If you do add any new elements or themes you'll need to ship this repo with the `polymer build` command executed in order to bundle / compile everything together for usage.
 

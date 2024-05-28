@@ -3,25 +3,25 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SimpleToolbarBehaviors } from "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
-import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
+import { SimpleToolbarBehaviors } from "@haxtheweb/simple-toolbar/simple-toolbar.js";
+import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import {
   RichTextStyles,
   RichTextToolbarStyles,
-} from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
-import { RichTextEditorRangeBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
-import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+} from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-button.js";
+import { RichTextEditorRangeBehaviors } from "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
+import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
+import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import * as shadow from "shadow-selection-polyfill/shadow.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-source-code.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-emoji-picker.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underline.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-unlink.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-source-code.js";
+import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js";
+import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js";
+import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-emoji-picker.js";
+import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-underline.js";
+import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-image.js";
+import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-link.js";
+import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-unlink.js";
 
 globalThis.RichTextEditorToolbars = globalThis.RichTextEditorToolbars || [];
 /**

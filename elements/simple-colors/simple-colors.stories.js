@@ -1,8 +1,8 @@
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { SimpleColorsPicker } from "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
-import "@lrnwebcomponents/simple-colors/lib/demo/simple-colors-swatches.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { SimpleColorsPicker } from "@haxtheweb/simple-colors/lib/simple-colors-picker.js";
+import "@haxtheweb/simple-colors/lib/demo/simple-colors-swatches.js";
 
 export default {
   title: "System|Simple Colors",

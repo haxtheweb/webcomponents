@@ -169,7 +169,7 @@ class RichTextEditorSource extends LitElement {
   constructor() {
     super();
     this.id = "";
-    import("@lrnwebcomponents/code-editor/code-editor.js");
+    import("@haxtheweb/code-editor/code-editor.js");
     // sets instance to current instance
     if (!globalThis.RichTextEditorSource.instance) {
       globalThis.RichTextEditorSource.instance = this;

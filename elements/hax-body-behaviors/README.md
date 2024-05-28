@@ -11,10 +11,10 @@ HAX body behaviors provide a consistent way to rapidly wire Polymer elements up 
 The major is in HAX Schema defintion which can be translated to JSON Schema with a single function. This allows for rapidly building out headless "forms" in HAX while the elements themselves just define the JSON blob as to how it should function and what should be wired where. It's more complicated then it sounds.
 
 ## Examples
-For full documentation just open the `lib/HAXWiring.js` file as it's got a lot of documentation but here's the relevent parts from [example-hax-element](https://github.com/elmsln/lrnwebcomponents/tree/master/elements/example-hax-element/example-hax-element.js).
+For full documentation just open the `lib/HAXWiring.js` file as it's got a lot of documentation but here's the relevent parts from [example-hax-element](https://github.com/haxtheweb/webcomponents/tree/master/elements/example-hax-element/example-hax-element.js).
 ```js
 
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { HAXWiring } from "@haxtheweb/hax-body-behaviors/lib/HAXWiring.js";
 
 class ExampleHaxElement extends HTMLElement {
 ...
@@ -122,7 +122,7 @@ Here's a much more complex example from a Polymer Legacy style element who calls
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "HAXTheWeb"
         }
       },
       settings: {
@@ -346,7 +346,7 @@ Run `yarn start` will start a local development server, open your default browse
 
 ## Contributing
 
-1. Fork it! `git clone git@github.com:elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone git@github.com:haxtheweb/webcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
@@ -354,7 +354,7 @@ Run `yarn start` will start a local development server, open your default browse
 
 ## Code style
 
-Body (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Body  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

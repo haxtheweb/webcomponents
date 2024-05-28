@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
-import { getRange } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
+import { SimpleFilterMixin } from "@haxtheweb/simple-filter/simple-filter.js";
+import { getRange } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/simple-popover/simple-popover.js";
 
 /**
  * `simple-autocomplete`
@@ -484,8 +484,8 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
           }
           // if we have an icon, inject icon loading imports
           if (this.items[i].icon) {
-            import("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
-            import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+            import("@haxtheweb/simple-icon/lib/simple-icon-lite.js");
+            import("@haxtheweb/simple-icon/lib/simple-icons.js");
           }
         }
         this._ignore = false;

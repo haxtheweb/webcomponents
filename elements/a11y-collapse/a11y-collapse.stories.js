@@ -1,8 +1,8 @@
 import { html } from "lit-html";
-import { A11yCollapseGroup } from "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import { A11yCollapse } from "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import { A11yCollapseGroup } from "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js";
+import { A11yCollapse } from "@haxtheweb/a11y-collapse/a11y-collapse.js";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Navigation|Collapse",

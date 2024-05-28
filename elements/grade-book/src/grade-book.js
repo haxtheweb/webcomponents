@@ -3,24 +3,24 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, render, nothing } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   validURL,
   cleanVideoSource,
   isElementInViewport,
-} from "@lrnwebcomponents/utils/utils.js";
-import { gSheetInterface } from "@lrnwebcomponents/utils/lib/gSheetsInterface.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-tag-list.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import "@lrnwebcomponents/editable-table/lib/editable-table-display.js";
-import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
-import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
-import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
+} from "@haxtheweb/utils/utils.js";
+import { gSheetInterface } from "@haxtheweb/utils/lib/gSheetsInterface.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-tag-list.js";
+import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+import "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js";
+import "@haxtheweb/editable-table/lib/editable-table-display.js";
+import "@haxtheweb/a11y-tabs/a11y-tabs.js";
+import "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
+import "@haxtheweb/grid-plate/grid-plate.js";
+import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
 import "./lib/letter-grade.js";
 import "./lib/letter-grade-picker.js";
 import "@github/time-elements";
@@ -29,8 +29,8 @@ import { GradeBookStore } from "./lib/grade-book-store.js";
 import "./lib/grade-book-pop-up.js";
 import { autorun, toJS } from "mobx";
 import { get, set } from "idb-keyval";
-import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { XLSXFileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-broker/lib/xlsx-file-system-broker.js";
+import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridge.js";
+import { XLSXFileSystemBrokerSingleton } from "@haxtheweb/file-system-broker/lib/xlsx-file-system-broker.js";
 /**
  * `grade-book`
  * `A headless gradebook that supports multiple backends with rubrics`
@@ -1130,7 +1130,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       // see if this is a video we know about
       if (data != cleanVideoSource(data)) {
         // implies it was able to clean it up in some way
-        import("@lrnwebcomponents/video-player/video-player.js");
+        import("@haxtheweb/video-player/video-player.js");
         return html`${pre}<video-player
             class="active-submission"
             source="${data}"
@@ -1149,7 +1149,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       }
     } else {
       // see if we can just present this as data
-      import("@lrnwebcomponents/md-block/md-block.js");
+      import("@haxtheweb/md-block/md-block.js");
       return html`${pre}
         <div class="active-submission">
           <md-block .markdown="${data}"></md-block>

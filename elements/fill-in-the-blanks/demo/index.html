@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>FillInTheBlanks: fill-in-the-blanks Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../fill-in-the-blanks.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic fill-in-the-blanks demo</h3>
+      <demo-snippet>
+        <template>
+          <fill-in-the-blanks statement="People tend to put [milk~milky] on their cereal though it's not always the case. Some people do not eat a traditional breakfast because they are [weird|funny|young] .">
+            <div slot="feedbackIncorrect">
+              <p>You are terrible</p>
+            </div>
+
+            <div slot="feedbackCorrect">
+              <p>Unless the axis below the compass is spinning and then north is relative to the direction of the arrow!</p>
+            </div>
+            <div slot="hint">
+              Think. When we look up at the ___ star, it points us..
+            </div>
+          </fill-in-the-blanks>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

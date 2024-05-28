@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsContainerBehaviors } from "./simple-fields-container.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
 
 /**
  * @class SimpleFieldsFieldBehaviors
@@ -114,9 +114,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
+            cursor: pointer;
+          }
+          :host([type="select"]) {
+            cursor: pointer;
           }
           :host([type="select"]) simple-icon-lite {
             position: absolute;
+            pointer-events: none;
             right: 0px;
           }
           select:focus,
@@ -740,6 +745,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               : "box-input"}"
             ?disabled="${this.disabled}"
             @focus="${this._onFocusin}"
+            @click="${this._onFocusin}"
             ?hidden="${this.hidden}"
             id="${this.id}.${!option ? "" : option.value}"
             @input="${this._handleFieldChange}"

@@ -1,10 +1,10 @@
 {
-  "name": "@lrnwebcomponents/storybook-utilities",
-  "version": "8.0.2",
+  "name": "@haxtheweb/storybook-utilities",
+  "version": "9.0.0-alpha.0",
   "description": "A series of utilities for `story.js` files",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "storybook-utilities.js",
@@ -14,9 +14,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^8.0.2",
-    "@lrnwebcomponents/lorem-data": "^8.0.2",
-    "@lrnwebcomponents/simple-colors": "^8.0.2",
+    "@haxtheweb/es-global-bridge": "^9.0.0-alpha.0",
+    "@haxtheweb/lorem-data": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-colors": "^9.0.0-alpha.0",
     "@storybook/addon-knobs": "6.4.0",
     "@storybook/polymer": "5.3.21",
     "lorem-ipsum": "^2.0.3"
@@ -31,5 +31,5 @@
     "demo",
     "html"
   ],
-  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
+  "gitHead": "4d0f1a05892352c5639fd091187b2973c73545e2"
 }

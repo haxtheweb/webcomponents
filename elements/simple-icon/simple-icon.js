@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { svg, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SimpleIconBehaviors } from "./lib/simple-icon-lite.js";
 /**
  * `simple-icon`

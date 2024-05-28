@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css, nothing } from "lit";
 import { cache } from "lit/directives/cache.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@lit-labs/virtualizer";
 import "./lib/simple-picker-option.js";
 /**

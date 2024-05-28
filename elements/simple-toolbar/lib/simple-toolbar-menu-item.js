@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { A11yMenuButtonItemBehaviors } from "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js";
+import { A11yMenuButtonItemBehaviors } from "@haxtheweb/a11y-menu-button/lib/a11y-menu-button-item.js";
 /**
  * `simple-toolbar-menu`
  * `An icon / button that has support for multiple options via drop down.`

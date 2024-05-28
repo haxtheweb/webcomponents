@@ -1,7 +1,7 @@
 import { html } from "lit-html";
 import { withKnobs } from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { SimpleColorsPicker } from "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
+import { StorybookUtilities } from "@haxtheweb/storybook-utilities/storybook-utilities.js";
+import { SimpleColorsPicker } from "@haxtheweb/simple-colors/lib/simple-colors-picker.js";
 
 export default {
   title: "Forms|Picker",

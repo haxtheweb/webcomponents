@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 // singleton for youtube frames
 globalThis.A11yMediaYoutubeManager = globalThis.A11yMediaYoutubeManager || {

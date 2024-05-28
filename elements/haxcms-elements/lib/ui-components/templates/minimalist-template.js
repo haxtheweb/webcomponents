@@ -12,54 +12,54 @@ let MinimalistTemplate = (superclass) =>
   class extends superclass {
     constructor() {
       super();
-      import("@lrnwebcomponents/scroll-button/scroll-button.js");
+      import("@haxtheweb/scroll-button/scroll-button.js");
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-fields.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-fields.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-footer.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
       );
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js"
       );
     }
     // render function

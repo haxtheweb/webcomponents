@@ -1,8 +1,0 @@
-{
-  "name": "@polymer/lrnapp-studio-kanban",
-  "version": "",
-  "description": "studio kanban board",
-  "main": "index.html",
-  "dependencies": {},
-  "devDependencies": {}
-}

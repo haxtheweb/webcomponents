@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/cms-hax/cms-hax.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "@haxtheweb/cms-hax/cms-hax.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 /**
  * `wysiwyg-hax`
  * `Integration of wysiwyg edit form for a page with HAX.`

@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>ShadowStyle: shadow-style Demo</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '@lrnwebcomponents/meme-maker/meme-maker.js';
+      import '@haxtheweb/meme-maker/meme-maker.js';
       // this will still style correctly!
       setTimeout(() => {
-        import('@lrnwebcomponents/github-preview/github-preview.js');        
+        import('@haxtheweb/github-preview/github-preview.js');        
       }, 500);
       import '../shadow-style.js';
     </script>
@@ -24,7 +24,7 @@
       <h3>Basic shadow-style demo</h3>
       <demo-snippet>
         <template>
-          <github-preview repo="haxcms" org="elmsln"></github-preview>
+          <github-preview repo="haxcms" org="haxtheweb"></github-preview>
           <shadow-style>
             github-preview::shadow(.stats-container) {
               padding: 16px;

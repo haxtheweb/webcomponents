@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "vercel-api-lrnwebcomponents",
+  "name": "vercel-api-webcomponents",
   "dependencies": {
     "@lit-labs/ssr": "3.2.2",
     "jsdom": "24.0.0",

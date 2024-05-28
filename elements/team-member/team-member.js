@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 /**
  * `team-member`
  * @element team-member

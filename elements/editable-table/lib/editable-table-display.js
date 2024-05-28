@@ -3,14 +3,14 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   displayBehaviors,
   editableTableDisplayStyles,
 } from "./editable-table-behaviors.js";
-import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
+import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
+import "@haxtheweb/simple-picker/simple-picker.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 
 /**
  * `editable-table-display`

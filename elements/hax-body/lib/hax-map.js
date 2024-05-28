@@ -1,17 +1,17 @@
 import { html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-body/lib/hax-toolbar-item.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import {
   normalizeEventPath,
   nodeToHaxElement,
-} from "@lrnwebcomponents/utils/utils.js";
-import { HaxTrayDetailHeadings } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+} from "@haxtheweb/utils/utils.js";
+import { HaxTrayDetailHeadings } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { autorun, toJS } from "mobx";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 /**
  * `hax-map`

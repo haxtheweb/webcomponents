@@ -21,7 +21,7 @@ class LrnPage extends LitElement {
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/oer-schema/oer-schema.js");
+    import("@haxtheweb/oer-schema/oer-schema.js");
   }
   render() {
     return html` <oer-schema><slot></slot></oer-schema> `;

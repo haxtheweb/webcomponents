@@ -1,6 +1,6 @@
 // local development and mobx
 import { fixture, expect, html } from "@open-wc/testing";
-import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js";
+import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
 describe("haxcms-elements test", () => {
   let element;
   beforeEach(async () => {

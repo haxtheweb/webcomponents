@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 /**
  * `simple-blog-overview`
  * @element simple-blog-overview
@@ -88,7 +88,7 @@ class SimpleBlogOverview extends SimpleColors {
   constructor() {
     super();
     this.elevation = 0;
-    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
+    import("@haxtheweb/simple-datetime/simple-datetime.js");
     setTimeout(() => {
       this.addEventListener("mousedown", this.tapEventOn.bind(this));
       this.addEventListener("mouseover", this.tapEventOn.bind(this));

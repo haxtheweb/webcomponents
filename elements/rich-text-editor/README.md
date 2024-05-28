@@ -8,19 +8,19 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/rich-text-editor/rich-text-editor.js';
+import '@haxtheweb/rich-text-editor/rich-text-editor.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/rich-text-editor/rich-text-editor.js"></script>
+<script type="module" src="@haxtheweb/rich-text-editor/rich-text-editor.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/rich-text-editor/rich-text-editor.js';
+  import '@haxtheweb/rich-text-editor/rich-text-editor.js';
   // imperative form
-  import {RichTextEditor} from '@lrnwebcomponents/rich-text-editor';
+  import {RichTextEditor} from '@haxtheweb/rich-text-editor';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/rich-text-editor/rich-text-editor.js';
+  import './node_modules/@haxtheweb/rich-text-editor/rich-text-editor.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/rich-text-editor/rich-text-editor.js"></script>
+<script type="module" src="https://unpkg.com/@haxtheweb/rich-text-editor/rich-text-editor.js"></script>
 ```
 
 ## Develop / Demo
@@ -44,7 +44,7 @@ $ yarn run build
 
 ## Contributing
 
-1. Fork it! `git clone https://github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone https://github.com/haxtheweb/webcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
@@ -52,7 +52,7 @@ $ yarn run build
 
 ## Code style
 
-Text (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Text  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

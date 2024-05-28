@@ -3,9 +3,9 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
 /**
@@ -212,7 +212,7 @@ class BootstrapBreadcrumb extends LitElement {
   }
 
   getBasePath(url) {
-    return url.substring(0, url.lastIndexOf("/@lrnwebcomponents/") + 1);
+    return url.substring(0, url.lastIndexOf("/@haxtheweb/") + 1);
   }
 
   // gets parents item by the items id

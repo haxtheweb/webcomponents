@@ -3,16 +3,16 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
-import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-search/simple-search.js";
-import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";
+import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
+import "@haxtheweb/responsive-utility/responsive-utility.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-search/simple-search.js";
+import "@haxtheweb/simple-range-input/simple-range-input.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";

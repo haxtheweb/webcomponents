@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/simple-range-input",
+  "name": "@haxtheweb/simple-range-input",
   "wcfactory": {
     "className": "SimpleRangeInput",
     "customElementClass": "HTMLElement",
@@ -19,11 +19,11 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "8.0.2",
+  "version": "9.0.0-alpha.0",
   "description": "simple styling on a range input",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "simple-range-input.js",
@@ -44,11 +44,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^8.0.2",
-    "lit": "^3.1.2"
+    "@haxtheweb/simple-colors": "^9.0.0-alpha.0",
+    "lit": "^3.1.3"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -65,5 +65,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
+  "gitHead": "4d0f1a05892352c5639fd091187b2973c73545e2"
 }

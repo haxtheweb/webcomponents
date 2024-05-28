@@ -1,0 +1,147 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "fill-in-the-blanks",
+      "description": "`fill-in-the-blanks`\n`Fill in the blanks question`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "attributes": [
+        {
+          "name": "missedAnswers",
+          "description": "`missedAnswers` {`any[]`} - \n\nProperty: missedAnswers"
+        },
+        {
+          "name": "wordList",
+          "description": "`wordList` {`any[]`} - \n\nProperty: wordList\n\nDefault: "
+        },
+        {
+          "name": "statement",
+          "description": "`statement` {`string`} - \n\nProperty: statement\n\nDefault: "
+        },
+        {
+          "name": "numberCorrect",
+          "description": "`numberCorrect` {`number`} - \n\nProperty: numberCorrect\n\nDefault: 0"
+        },
+        {
+          "name": "numberGuessed",
+          "description": "`numberGuessed` {`number`} - \n\nProperty: numberGuessed\n\nDefault: 0"
+        },
+        {
+          "name": "hasHint",
+          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
+          "valueSet": "v"
+        },
+        {
+          "name": "hasContent",
+          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
+          "valueSet": "v"
+        },
+        {
+          "name": "hasFeedbackIncorrect",
+          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
+          "valueSet": "v"
+        },
+        {
+          "name": "hasFeedbackCorrect",
+          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
+          "valueSet": "v"
+        },
+        {
+          "name": "hasEvidence",
+          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
+          "valueSet": "v"
+        },
+        {
+          "name": "related-resource",
+          "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
+        },
+        {
+          "name": "max-attempts",
+          "description": "`max-attempts` {`number`} - \n\nProperty: maxAttempts\n\nDefault: 0"
+        },
+        {
+          "name": "attempts",
+          "description": "`attempts` {`number`} - \n\nProperty: attempts\n\nDefault: 0"
+        },
+        {
+          "name": "show-answer",
+          "description": "`show-answer` {`boolean`} - \n\nProperty: showAnswer\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "randomize",
+          "description": "`randomize` {`boolean`} - Randomize the display of the answers\n\nProperty: randomize\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-buttons",
+          "description": "`hide-buttons` {`boolean`} - flag to hide buttons\n\nProperty: hideButtons\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Support disabling interaction with the entire board\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "single-option",
+          "description": "`single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\nProperty: singleOption\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "media",
+          "description": "`media` {`string`} - \n\nProperty: media\n\nDefault: null"
+        },
+        {
+          "name": "question",
+          "description": "`question` {`string`} - Question to ask\n\nProperty: question\n\nDefault: Fill in the blanks"
+        },
+        {
+          "name": "answers",
+          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers\n\nDefault: "
+        },
+        {
+          "name": "displayedAnswers",
+          "description": "`displayedAnswers` {`never[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
+        },
+        {
+          "name": "correct-text",
+          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
+        },
+        {
+          "name": "incorrect-text",
+          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
+        },
+        {
+          "name": "quiz-name",
+          "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onsimple-toast-hide",
+          "description": "`simple-toast-hide` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onsimple-toast-show",
+          "description": "`simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - "
+        },
+        {
+          "name": "onuser-engagement",
+          "description": "`user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - "
+        },
+        {
+          "name": "onplayaudio",
+          "description": "`playaudio` {`CustomEvent<{ sound: any; }>`} - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

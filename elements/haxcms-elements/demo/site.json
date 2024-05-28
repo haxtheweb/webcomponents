@@ -32,9 +32,9 @@
     },
     "theme": {
       "element": "polaris-invent-theme",
-      "path": "@lrnwebcomponents/polaris-theme/lib/polaris-invent-theme.js",
+      "path": "@haxtheweb/polaris-theme/lib/polaris-invent-theme.js",
       "name": "Polaris - Invent",
-      "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/PartyStyle.svg",
+      "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
         "image": "assets/banner.jpg",
         "imageAlt": "",
@@ -75,9 +75,9 @@
         "locked": false,
         "theme": {
           "element": "haxcms-blank-theme",
-          "path": "lrnwebcomponents/elements/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
+          "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
           "name": "Blank theme",
-          "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/GreyStyle.svg",
+          "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg",
           "key": "haxcms-blank-theme"
         },
         "readtime": 1,
@@ -1308,9 +1308,9 @@
         "readtime": "1",
         "theme": {
           "element": "haxcms-blank-theme",
-          "path": "lrnwebcomponents/elements/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
+          "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
           "name": "Blank theme",
-          "thumbnail": "build/es6/node_modules/@lrnwebcomponents/app-hax/lib/assets/images/GreyStyle.svg",
+          "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg",
           "key": "haxcms-blank-theme"
         },
         "pageType": "connection",

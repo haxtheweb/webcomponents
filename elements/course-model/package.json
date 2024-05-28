@@ -1,5 +1,5 @@
 {
-  "name": "@lrnwebcomponents/course-model",
+  "name": "@haxtheweb/course-model",
   "wcfactory": {
     "className": "CourseModel",
     "customElementClass": "LitElement",
@@ -20,11 +20,11 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "8.0.2",
+  "version": "9.0.0-alpha.0",
   "description": "view 3d models with multiple angel rotation for a course experience",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "main": "course-model.js",
   "module": "course-model.js",
@@ -46,12 +46,12 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@google/model-viewer": "3.2.1",
-    "lit": "^3.1.2"
+    "lit": "^3.1.3"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^8.0.2",
-    "@lrnwebcomponents/media-image": "^8.0.2",
-    "@lrnwebcomponents/video-player": "^8.0.2",
+    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+    "@haxtheweb/media-image": "^9.0.0-alpha.0",
+    "@haxtheweb/video-player": "^9.0.0-alpha.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -76,5 +76,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
+  "gitHead": "4d0f1a05892352c5639fd091187b2973c73545e2"
 }

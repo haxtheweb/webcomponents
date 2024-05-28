@@ -3,12 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { RichTextEditorToolbarBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
+import { RichTextEditorToolbarBehaviors } from "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
 import { HaxTextEditorButton } from "./hax-text-editor-button.js";
 import { HAXStore } from "./hax-store.js";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import "./hax-text-editor-paste-button.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-text-editor-toolbar`

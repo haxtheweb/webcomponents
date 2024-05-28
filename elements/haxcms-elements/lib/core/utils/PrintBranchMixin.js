@@ -1,13 +1,13 @@
 import { html } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import { b64toBlob } from "@lrnwebcomponents/utils/utils.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { b64toBlob } from "@haxtheweb/utils/utils.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { toJS } from "mobx";
-import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 
 export const PrintBranchMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {

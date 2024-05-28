@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-search/lib/simple-search-content.js";
+import "@haxtheweb/simple-search/lib/simple-search-content.js";
 
 /**
  * `a11y-media-transcript-cue`

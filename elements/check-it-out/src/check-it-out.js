@@ -3,9 +3,9 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 
 /**
  * `check-it-out`
@@ -349,7 +349,7 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       sourceStr.includes("youtube.com")
     ) {
       this.type = "video";
-      import("@lrnwebcomponents/video-player/video-player.js");
+      import("@haxtheweb/video-player/video-player.js");
     } else if (sourceStr.endsWith(".pdf")) {
       this.type = "pdf";
     } else if (sourceStr.includes("stackblitz.com")) {
@@ -369,7 +369,7 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       }
     }
     if (this.type != "video") {
-      import("@lrnwebcomponents/iframe-loader/iframe-loader.js");
+      import("@haxtheweb/iframe-loader/iframe-loader.js");
     }
     return sourceStr;
   }
@@ -402,7 +402,7 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       // import modal if we need it only when we actually leverage it
       if (propName === "modal" && this[propName] && this.elementVisible) {
         // prettier-ignore
-        import("@lrnwebcomponents/simple-modal/lib/simple-modal-template.js").then(() => {
+        import("@haxtheweb/simple-modal/lib/simple-modal-template.js").then(() => {
           if (this.shadowRoot) {
             this.shadowRoot
               .querySelector('[modal-id="m1"]')

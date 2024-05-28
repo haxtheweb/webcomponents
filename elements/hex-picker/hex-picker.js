@@ -55,8 +55,8 @@ class HexPicker extends LitElement {
         {
           tag: "hex-picker",
           properties: {
-            org: "elmsln",
-            repo: "lrnwebcomponents",
+            org: "haxtheweb",
+            repo: "webcomponents",
           },
           content: "",
         },

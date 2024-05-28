@@ -1,0 +1,39 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Fill in the blanks",
+    "description": "",
+    "icon": "icons:android",
+    "color": "purple",
+    "tags": ["Instructional", "question"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "fill-in-the-blanks",
+      "content": "",
+      "properties": {}
+    }
+  ]
+}

@@ -6,16 +6,12 @@ import {
   toJS,
   configure,
 } from "mobx";
-import {
-  varExists,
-  varGet,
-  localStorageGet,
-} from "@lrnwebcomponents/utils/utils.js";
-import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
-import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import { UserScaffoldInstance } from "@lrnwebcomponents/user-scaffold/user-scaffold.js";
+import { varExists, varGet, localStorageGet } from "@haxtheweb/utils/utils.js";
+import { JsonOutlineSchema } from "@haxtheweb/json-outline-schema/json-outline-schema.js";
+import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
+import { iconFromPageType } from "@haxtheweb/course-design/lib/learning-component.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 configure({ enforceActions: false }); // strict mode off
 class Store {
   constructor() {
@@ -648,7 +644,7 @@ class Store {
         themeData = {
           "haxcms-basic-theme": {
             element: "haxcms-basic-theme",
-            path: "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
+            path: "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
             name: "Basic theme",
             variables: {
               icon: "icons:record-voice-over",
@@ -1122,7 +1118,7 @@ class HAXCMSSiteStore extends HTMLElement {
     this.store = store;
     // source for reading in the store if different than default site.json
     this.source = "";
-    globalThis.addEventListener('playaudio', this.playSoundEvent.bind(this));
+    globalThis.addEventListener("playaudio", this.playSoundEvent.bind(this));
     /**
      * When location changes update activeItem
      */

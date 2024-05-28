@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SimplePickerBehaviors } from "@lrnwebcomponents/simple-picker/simple-picker.js";
+import { SimplePickerBehaviors } from "@haxtheweb/simple-picker/simple-picker.js";
 
 /**
  * `simple-symbol-picker`

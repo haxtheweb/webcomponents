@@ -6,13 +6,13 @@ import { LitElement, html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "@shoelace-style/shoelace/dist/components/carousel/carousel.js";
 import "@shoelace-style/shoelace/dist/components/carousel-item/carousel-item.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { generateStyleLinkEls } from "./lib/SLStyleManager.js";
 import {
   haxElementToNode,
   nodeToHaxElement,
   copyToClipboard,
-} from "@lrnwebcomponents/utils/utils.js";
+} from "@haxtheweb/utils/utils.js";
 
 /**
  * `play-list`

@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 /**
  *
  * @customElement

@@ -16,8 +16,8 @@ There's lots of documentation in this file and examples of integrations and you 
 ### Deeper developer dive into how HAX works
 - initial deep dive - https://www.youtube.com/watch?v=eGV1XWzUko8&list=PLJQupiji7J5eTqv8JFiW8SZpSeKouZACH&index=10
 - State management and pluggability - https://www.youtube.com/watch?v=Pehb3s5JBTw&list=PLJQupiji7J5eTqv8JFiW8SZpSeKouZACH&index=1
-- HAX Element Schema - https://github.com/elmsln/lrnwebcomponents/blob/master/elements/hax-body-behaviors/lib/HAXWiring.js
-- HAX App Schema - https://github.com/elmsln/lrnwebcomponents/blob/master/elements/hax-body/lib/hax-app.js#L14
+- HAX Element Schema - https://github.com/haxtheweb/webcomponents/blob/master/elements/hax-body-behaviors/lib/HAXWiring.js
+- HAX App Schema - https://github.com/haxtheweb/webcomponents/blob/master/elements/hax-body/lib/hax-app.js#L14
 
 An application that uses HAX is made up of several custom elements working together. Some of the primary elements to make this happen are:
 ```
@@ -43,15 +43,15 @@ These elements all live at the "app level" that you will create in order to util
 - Your system! (see next step)
 
 ## Can I build my own elements for HAX?
-YES! HAX's "gizmo" and "app store" systems are 100% pluggable. The app store concept has it's own API for creation which can best be modeled by looking at the example appstore.json from the demo (all the CMSs that integrate with HAX also can serve up this store data). [See example here](https://github.com/elmsln/lrnwebcomponents/blob/master/elements/hax-body/demo/appstore.json#L61-L124).
+YES! HAX's "gizmo" and "app store" systems are 100% pluggable. The app store concept has it's own API for creation which can best be modeled by looking at the example appstore.json from the demo (all the CMSs that integrate with HAX also can serve up this store data). [See example here](https://github.com/haxtheweb/webcomponents/blob/master/elements/hax-body/demo/appstore.json#L61-L124).
 
 ### What about Gizmo's tho...
-Gizmo's are just a silly word for Custom Elements (so we don't use that word over and over again). To make a Gizmo you just make a custom element. The HAX playlist has tons of examples of doing this across the many elements we demonstrate in the demo. To build your own it's probably best to see the integration in one of those videos or you can read the integration specification from [hax-body-behaviors](https://github.com/elmsln/lrnwebcomponents/blob/master/elements/hax-body-behaviors/lib/HAXWiring.js). HAX can talk to anything and your implementation of HAX can specify exactly the custom tags you want it to understand.
+Gizmo's are just a silly word for Custom Elements (so we don't use that word over and over again). To make a Gizmo you just make a custom element. The HAX playlist has tons of examples of doing this across the many elements we demonstrate in the demo. To build your own it's probably best to see the integration in one of those videos or you can read the integration specification from [hax-body-behaviors](https://github.com/haxtheweb/webcomponents/blob/master/elements/hax-body-behaviors/lib/HAXWiring.js). HAX can talk to anything and your implementation of HAX can specify exactly the custom tags you want it to understand.
 
-For all full "hello-world" style hAX element, see the [example-hax-element](https://github.com/elmsln/lrnwebcomponents/blob/master/elements/example-hax-element/example-hax-element.js) (the source of this is in its src directory).
+For all full "hello-world" style hAX element, see the [example-hax-element](https://github.com/haxtheweb/webcomponents/blob/master/elements/example-hax-element/example-hax-element.js) (the source of this is in its src directory).
 
 ### Polymer, helpful but not required
-While extremely useful for web component development, you are able to wire ANY web component up to HAX with or without Polymer. See [WCFactory](https://github.com/elmsln/wcfactory/) mono-repo tooling for a methodology of managing all of your elements across libraries (and it comes with HAX support out of the box!). If you want to learn Polymer (or it's successor LitElement) check out the [Polymer Project homepage](https://www.polymer-project.org/).
+While extremely useful for web component development, you are able to wire ANY web component up to HAX with or without Polymer. See [WCFactory](https://github.com/haxtheweb/wcfactory/) mono-repo tooling for a methodology of managing all of your elements across libraries (and it comes with HAX support out of the box!). If you want to learn Polymer (or it's successor LitElement) check out the [Polymer Project homepage](https://www.polymer-project.org/).
 
 ### What do I need to integrate with hax?
 HAX is designed to integrate with any system by being about authoring HTML that any end user could have hit "view source" and done themselves. It manipulates the DOM in a targetted area and then bubbles up what the change was without all the HAX cruft attached. If you want to get more integrations listed above, here's what the system needs:
@@ -59,12 +59,12 @@ HAX is designed to integrate with any system by being about authoring HTML that 
 - ability to render webcomponents - hax is built on webcomponents so your system has to be able to load them with somelike like the following:
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/hax-body/hax-body.js';
+import '@haxtheweb/hax-body/hax-body.js';
 /* At top of an application */
-<script type="module" src="@lrnwebcomponents/hax-body/hax-body.js"></script>
+<script type="module" src="@haxtheweb/hax-body/hax-body.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/hax-body/hax-body.js';
+  import '@haxtheweb/hax-body/hax-body.js';
 </script>
 ```
 - end point / API location to save the data (if building your own HAX integration not the cms or wysiwyg option)
@@ -73,13 +73,13 @@ import '@lrnwebcomponents/hax-body/hax-body.js';
 If you think you can use HAX, try one of the methods below of integration. HAX is a pretty deep dive into Polymer / Webcomponents so these areas might be good starting points and then working down from there if you find it useful.
 
 #### Drop in integrations
-- Working on a desktop or mobile app? Use the `app-editor-hax` tag - https://github.com/LRNWebComponents/app-editor-hax
-- Faster HAX integration into a CMS setting. Use the `cms-hax` tag - https://github.com/LRNWebComponents/cms-hax
-- Want CKEditor style replacement (integration wise). Use `wysiwyg-hax` tag - https://github.com/LRNWebComponents/wysiwyg-hax
+- Working on a desktop or mobile app? Use the `app-editor-hax` tag - https://github.com/haxtheweb/app-editor-hax
+- Faster HAX integration into a CMS setting. Use the `cms-hax` tag - https://github.com/haxtheweb/cms-hax
+- Want CKEditor style replacement (integration wise). Use `wysiwyg-hax` tag - https://github.com/haxtheweb/wysiwyg-hax
 
 ### Why the difference in integration methodologies?
 `hax-body` is a collection of tags for building your own HAX editor. You don't like our `hax-panel` tag? Well, if you implement the registration function for your own `much-better-hax-panel` tag then it'll act like it's part of HAX. This isn't for everyone though so we have some simplified integrations that are much less flexible (they define and implement the standard tags of hax). ELMS:LN for example implements `hax-body` and associated tags directly but the other integrations listed utilize `cms-hax`. For a complex example integrating with the tags directly into an existing application, check out
-[LRNApp Book](https://github.com/elmsln/lrnwebcomponents/blob/master/elements/lrnapp-book/lrnapp-book.js).
+[LRNApp Book](https://github.com/haxtheweb/webcomponents/blob/master/elements/lrnapp-book/lrnapp-book.js).
 
 ## Definitions
 - *HAX* - Headless Authoring eXperience or HAX, will always and must always be system agnostic. It needs to be able to interface with HTML primatives as well as custom-element tags which provide a haxProperties object to the specification of a haxElement.
@@ -174,7 +174,7 @@ $ yarn run build
 
 ## Contributing
 
-1. Fork it! `git clone git@github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone git@github.com/haxtheweb/webcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
@@ -182,7 +182,7 @@ $ yarn run build
 
 ## Code style
 
-Body (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Body  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

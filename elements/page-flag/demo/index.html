@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>PageFlag: page-flag Demo</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <style>
       page-flag:not(:defined) {
@@ -19,7 +19,7 @@
     </style>
     <script type="module">
       import { pageFlagManager } from '../page-flag.js';
-      import "@lrnwebcomponents/grid-plate/grid-plate.js";
+      import "@haxtheweb/grid-plate/grid-plate.js";
       // most common way to access registry
       pageFlagManager.activeUser = "Bryan";
     </script>

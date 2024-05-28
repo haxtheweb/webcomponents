@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `page-contents-menu`
  * `Links that jump you to the right place in the page's content`
@@ -415,7 +415,7 @@ class PageContentsMenu extends DDD {
       // dynamic import pop over if we go mobile mode
       if (propName == "mobile") {
         if (this[propName]) {
-          import("@lrnwebcomponents/simple-popover/simple-popover.js").then(
+          import("@haxtheweb/simple-popover/simple-popover.js").then(
             (module) => {
               setTimeout(() => {
                 // hook up the pop over menu
@@ -427,7 +427,7 @@ class PageContentsMenu extends DDD {
               }, 0);
             },
           );
-          import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+          import("@haxtheweb/simple-tooltip/simple-tooltip.js");
         } else if (oldValue && !this[propName]) {
           this.__toggleTarget.removeAttribute("tabindex");
         }

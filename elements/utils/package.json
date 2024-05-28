@@ -1,10 +1,10 @@
 {
-  "name": "@lrnwebcomponents/utils",
-  "version": "8.0.2",
+  "name": "@haxtheweb/utils",
+  "version": "9.0.0-alpha.0",
   "description": "Helper functions to clean up web component data handling.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
   "main": "utils.js",
@@ -18,5 +18,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "6e322873c1da195972880b7c146cbadb1e7e84c7"
+  "gitHead": "4d0f1a05892352c5639fd091187b2973c73545e2"
 }

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
-import "@lrnwebcomponents/simple-picker/lib/simple-emoji-picker.js";
+import "@haxtheweb/simple-picker/lib/simple-emoji-picker.js";
 /**
  * `rich-text-editor-emoji-picker`
  * an emoji picker for the rich-text-editor

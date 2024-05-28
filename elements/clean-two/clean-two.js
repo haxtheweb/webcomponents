@@ -3,27 +3,27 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
-import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
-import { EmailPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/EmailPageMixin.js";
-import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
-import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
-import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
-import { HAXCMSOperationButtons } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
+import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
+import { EmailPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js";
+import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
+import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
+import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { HAXCMSOperationButtons } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `clean-two`
  * `A 2nd clean theme`
@@ -613,7 +613,8 @@ class CleanTwo extends HAXCMSOperationButtons(
       super.firstUpdated(changedProperties);
     }
     document.body.style.overflow = "hidden";
-    this.HAXCMSThemeSettings.themeTop = this.shadowRoot.querySelector('#haxcms-theme-top');
+    this.HAXCMSThemeSettings.themeTop =
+      this.shadowRoot.querySelector("#haxcms-theme-top");
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".body-wrapper");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
@@ -632,7 +633,7 @@ class CleanTwo extends HAXCMSOperationButtons(
     if (target.value) {
       // prettier-ignore
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
       ).then(() => {
         this.searchTerm = target.value;
       });
@@ -873,7 +874,7 @@ class CleanTwo extends HAXCMSOperationButtons(
   siteModalClick(e) {
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
       if (store.getInternalRoute() !== 'search') {
         window.history.replaceState({}, null, "x/search");

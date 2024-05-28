@@ -3,17 +3,17 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-query.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import { HAXCMSPolymerElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-render-query.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 /**
  * `haxcms-dev-theme`
  * `This is a theme used to make new themes (wwaaaaaaa?)

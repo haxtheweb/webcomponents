@@ -1,9 +1,9 @@
 import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/place-holder/place-holder.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/place-holder/place-holder.js";
 
 /**
  * `haxcms-outline-editor-dialog`

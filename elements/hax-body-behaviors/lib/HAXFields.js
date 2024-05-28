@@ -264,7 +264,7 @@ export const HaxElementizer = {
     },
     file: {
       defaultSettings: {
-        import: "@lrnwebcomponents/hax-body/lib/hax-upload-field.js",
+        import: "@haxtheweb/hax-body/lib/hax-upload-field.js",
         element: "hax-upload-field",
         noWrap: true,
         attributes: {
@@ -295,7 +295,7 @@ export const HaxElementizer = {
     },
     markup: {
       defaultSettings: {
-        import: "@lrnwebcomponents/simple-fields/lib/simple-fields-code.js",
+        import: "@haxtheweb/simple-fields/lib/simple-fields-code.js",
         element: "simple-fields-code",
         setValueProperty: "editorValue",
         noWrap: true,
@@ -340,12 +340,11 @@ export const HaxElementizer = {
         },
         tabs: {
           defaultSettings: {
-            import: "@lrnwebcomponents/simple-fields/lib/simple-fields-tabs.js",
+            import: "@haxtheweb/simple-fields/lib/simple-fields-tabs.js",
             element: "simple-fields-tabs",
             noWrap: true,
             child: {
-              import:
-                "@lrnwebcomponents/simple-fields/lib/simple-fields-tab.js",
+              import: "@haxtheweb/simple-fields/lib/simple-fields-tab.js",
               element: "simple-fields-tab",
               noWrap: true,
               labelSlot: "label",
@@ -360,12 +359,11 @@ export const HaxElementizer = {
         },
         collapse: {
           defaultSettings: {
-            import:
-              "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
+            import: "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js",
             element: "div",
             noWrap: true,
             child: {
-              import: "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
+              import: "@haxtheweb/a11y-collapse/a11y-collapse.js",
               element: "a11y-collapse",
               noWrap: true,
               labelSlot: "heading",
@@ -409,8 +407,7 @@ export const HaxElementizer = {
         },
         colorpicker: {
           defaultSettings: {
-            import:
-              "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js",
+            import: "@haxtheweb/simple-colors/lib/simple-colors-picker.js",
             element: "simple-colors-picker",
             attributes: {
               autofocus: true,
@@ -459,7 +456,7 @@ export const HaxElementizer = {
         },
         fileupload: {
           defaultSettings: {
-            import: "@lrnwebcomponents/hax-body/lib/hax-upload-field.js",
+            import: "@haxtheweb/hax-body/lib/hax-upload-field.js",
             element: "hax-upload-field",
             noWrap: true,
             attributes: {
@@ -473,8 +470,7 @@ export const HaxElementizer = {
         },
         iconpicker: {
           defaultSettings: {
-            import:
-              "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js",
+            import: "@haxtheweb/simple-icon-picker/simple-icon-picker.js",
             element: "simple-icon-picker",
             attributes: {
               autofocus: true,

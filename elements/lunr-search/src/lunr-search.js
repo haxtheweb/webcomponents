@@ -4,7 +4,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 /**
  * `lunr-search`
  * `LunrJS search element`

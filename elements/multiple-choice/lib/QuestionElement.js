@@ -1,17 +1,18 @@
 // superclass that can be used to more rapidly build question based components
-import { LitElement, html, css } from "lit";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { DDDSuper } from "@lrnwebcomponents/d-d-d/d-d-d.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
+import { LitElement, html, css, nothing } from "lit";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-toast/simple-toast.js";
+import "@haxtheweb/grid-plate/grid-plate.js";
 
-export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
-
+export class QuestionElement extends SchemaBehaviors(
+  I18NMixin(DDDSuper(LitElement)),
+) {
   constructor() {
     super();
     // default method of storing guess data
@@ -27,6 +28,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     this.hideButtons = false;
     this.disabled = false;
     this.singleOption = false;
+    this.media = null;
     this.question = "";
     this.answers = [];
     this.displayedAnswers = [];
@@ -70,7 +72,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
   // return array of all guesses
   getGuess() {
     if (this.guessDataValue == "display") {
-      return this.displayedAnswers.filter(item => item.userGuess === true);
+      return this.displayedAnswers.filter((item) => item.userGuess === true);
     }
     // see if we have another key that can be used as alternative for where this data is stored
     else if (this[this.guessDataValue]) {
@@ -172,19 +174,20 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     this.shadowRoot.querySelector("#feedback").focus();
     // see if they got this correct based on their answers
     let toastColor, toastIcon, toastText;
-    if (this.isCorrect()) {
+    let correctness = this.isCorrect();
+    if (correctness) {
       toastColor = "green";
       toastIcon = "icons:thumb-up";
       toastText = this.correctText;
       this.makeItRain();
-      this.playSound('success');
+      this.playSound("success");
       extras.hat = "party";
     } else {
       toastColor = "red";
       toastIcon = "icons:thumb-down";
       toastText = this.incorrectText;
       extras.fire = true;
-      this.playSound('error');
+      this.playSound("error");
     }
     si.icon = toastIcon;
     si.style.marginLeft = "16px";
@@ -209,7 +212,7 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     let eventData = {
       activityDisplay: "answered",
       objectName: this.quizName,
-      resultSuccess: this.isCorrect(),
+      resultSuccess: correctness,
     };
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
@@ -265,11 +268,11 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       hasFeedbackIncorrect: { type: Boolean },
       hasFeedbackCorrect: { type: Boolean },
       hasEvidence: { type: Boolean },
-
+      media: { type: String },
       // support for max attempts, default is unlimited
-      maxAttempts: { type: Number, reflect: true, attribute: "max-attempts"},
+      maxAttempts: { type: Number, reflect: true, attribute: "max-attempts" },
       // track how many times they've tried the interaction
-      attempts: { type: Number, reflect: true},
+      attempts: { type: Number, reflect: true },
       /**
        * Support disabling interaction with the entire board
        */
@@ -443,8 +446,6 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           margin-right: var(--ddd-spacing-4);
         }
         simple-fields-field {
-          padding: var(--ddd-spacing-4);
-          min-height: var(--ddd-spacing-8);
           transition: all 0.3s ease-in-out;
           border-radius: var(--ddd-radius-xs);
           margin-bottom: var(--ddd-spacing-6);
@@ -457,6 +458,17 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
         }
+        simple-fields-field[type="textfield"] {
+          padding: var(--ddd-spacing-4);
+          min-height: var(--ddd-spacing-8);
+        }
+        simple-fields-field::part(select) {
+          padding-top: var(--ddd-spacing-1);
+          padding-bottom: var(--ddd-spacing-1);
+          padding-left: var(--ddd-spacing-1);
+          min-height: var(--ddd-spacing-8);
+          line-height: 1.1;
+        }
         simple-toolbar-button {
           font-size: var(--ddd-font-size-xs);
           font-family: var(--ddd-font-navigation);
@@ -465,13 +477,22 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           border-radius: var(--ddd-radius-xs);
         }
         simple-toolbar-button {
-          background-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
-          color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
+          background-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
+          color: var(
+            --lowContrast-override,
+            var(--ddd-theme-bgContrast, white)
+          );
         }
         simple-toolbar-button[disabled] {
-          background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-slateGray));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
           color: light-dark(black, white);
-          opacity: .5;
+          opacity: 0.5;
         }
         :host simple-toolbar-button:hover::part(button),
         :host simple-toolbar-button:focus::part(button),
@@ -495,7 +516,10 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
         simple-fields-field:not([type="textfield"])::part(option-inner) {
           position: absolute;
           right: 0px;
-          color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-link));
+          color: light-dark(
+            var(--ddd-theme-primary, var(--ddd-theme-default-link)),
+            var(--ddd-theme-default-link)
+          );
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-xs);
           bottom: 50%;
@@ -504,11 +528,17 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           margin: 0px;
         }
         button[disabled] {
-          opacity: .5;
+          opacity: 0.5;
         }
 
         h4 {
-          color: light-dark(var(--ddd-theme-primary, var(--ddd-theme-default-link)), var(--ddd-theme-default-linkLight));
+          color: light-dark(
+            var(
+              --lowContrast-override,
+              var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
+            ),
+            var(--ddd-theme-default-linkLight)
+          );
         }
         simple-icon {
           display: inline-flex;
@@ -523,14 +553,15 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
     ];
   }
 
-
   // fire event about wanting to play a sound
   playSound(sound) {
-    globalThis.dispatchEvent(new CustomEvent('playaudio', {
-      detail: {
-        sound: sound
-      }
-    }));
+    globalThis.dispatchEvent(
+      new CustomEvent("playaudio", {
+        detail: {
+          sound: sound,
+        },
+      }),
+    );
   }
 
   /**
@@ -564,10 +595,16 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
             answer.setAttribute("data-image-alt", node.answers[i].alt);
           }
           if (node.answers[i].selectedFeedback) {
-            answer.setAttribute("data-selected", node.answers[i].selectedFeedback);
+            answer.setAttribute(
+              "data-selected",
+              node.answers[i].selectedFeedback,
+            );
           }
           if (node.answers[i].unselectedFeedback) {
-            answer.setAttribute("data-unselected", node.answers[i].unselectedFeedback);
+            answer.setAttribute(
+              "data-unselected",
+              node.answers[i].unselectedFeedback,
+            );
           }
           node.appendChild(answer);
         }
@@ -609,27 +646,28 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
           <div slot="col-1">
             <h3 property="oer:name">${this.question}</h3>
             ${this.renderInteraction()}
-            ${!this.hideButtons ? this.renderButtons() : ``}
+            ${!this.hideButtons ? this.renderButtons() : nothing}
           </div>
           <div slot="col-2">
             <details ?open="${!this.hasContent}" id="directions">
               <summary>Directions</summary>
-              <div>
-                ${this.renderDirections()}
-              </div>
+              <div>${this.renderDirections()}</div>
             </details>
-            ${this.hasContent ? html`
-            <details ?open="${!this.showAnswer}" id="related">
-              <summary>Related content</summary>
-              <div>
-                <slot name="content"></slot>
-              </div>
-            </details>` : ``}
-            <details tabindex="${!this.showAnswer ? "-1" : ""}" ?disabled="${!this.showAnswer}" ?open="${this.showAnswer}">
+            ${this.hasContent
+              ? html` <details ?open="${!this.showAnswer}" id="related">
+                  <summary>Related content</summary>
+                  <div>
+                    <slot name="content"></slot>
+                  </div>
+                </details>`
+              : nothing}
+            <details
+              tabindex="${!this.showAnswer ? "-1" : ""}"
+              ?disabled="${!this.showAnswer}"
+              ?open="${this.showAnswer}"
+            >
               <summary id="feedback">Feedback</summary>
-              <div>
-                ${this.renderFeedback()}
-              </div>
+              <div>${this.renderFeedback()}</div>
             </details>
           </div>
         </grid-plate>
@@ -641,23 +679,23 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
   // our default implementation is a multiple-choice element
   renderInteraction() {
     return html`
-    <fieldset class="options">
-    ${this.displayedAnswers.map(
-      (answer, index) => html`
-        <simple-fields-field
-          type="${this.singleOption ? "radio" : "checkbox"}"
-          ?disabled="${this.disabled}"
-          property="oer:answer"
-          name="${index}"
-          @mousedown="${this.clickSingle}"
-          @keydown="${this.clickSingle}"
-          .value="${answer ? answer.userGuess : ""}"
-          @value-changed="${this.checkedEvent}"
-          label="${answer && answer.label ? answer.label : ""}"
-        ></simple-fields-field>
-      `,
-    )}
-  </fieldset>
+      <fieldset class="options">
+        ${this.displayedAnswers.map(
+          (answer, index) => html`
+            <simple-fields-field
+              type="${this.singleOption ? "radio" : "checkbox"}"
+              ?disabled="${this.disabled}"
+              property="oer:answer"
+              name="${index}"
+              @mousedown="${this.clickSingle}"
+              @keydown="${this.clickSingle}"
+              .value="${answer ? answer.userGuess : ""}"
+              @value-changed="${this.checkedEvent}"
+              label="${answer && answer.label ? answer.label : ""}"
+            ></simple-fields-field>
+          `,
+        )}
+      </fieldset>
     `;
   }
   // the case for whether or not this is inactive based on user input
@@ -667,62 +705,79 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
 
   renderButtons() {
     return html`
-    <div id="buttons">
-      <simple-toolbar-button
-        id="check"
-        ?disabled="${this.disabled || !this.inactiveCase() || this.showAnswer}"
-        @click="${this.checkAnswer}"
-        label="${this.t.checkAnswer}"
-      >
-      </simple-toolbar-button>
-      <simple-toolbar-button
-        id="reset"
-        ?disabled="${this.disabled || !this.inactiveCase() || (this.inactiveCase() && !this.showAnswer)}"
-        @click="${this.resetAnswer}"
-        label="${this.t.tryAgain}"
-      >
-      </simple-toolbar-button>
-    </div>
-  `;
+      <div id="buttons">
+        <simple-toolbar-button
+          id="check"
+          ?disabled="${this.disabled ||
+          !this.inactiveCase() ||
+          this.showAnswer}"
+          @click="${this.checkAnswer}"
+          label="${this.t.checkAnswer}"
+        >
+        </simple-toolbar-button>
+        <simple-toolbar-button
+          id="reset"
+          ?disabled="${this.disabled ||
+          !this.inactiveCase() ||
+          (this.inactiveCase() && !this.showAnswer)}"
+          @click="${this.resetAnswer}"
+          label="${this.t.tryAgain}"
+        >
+        </simple-toolbar-button>
+      </div>
+    `;
   }
 
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
-    return html`<p>Select the answers you feel satsisfy the question. When you are done, select <strong>${this.t.checkAnswer}</strong>.
-      You will get feedback just below here indicating correctness of your answer and how to proceed.
+    return html`<p>
+      Select the answers you feel satsisfy the question. When you are done,
+      select <strong>${this.t.checkAnswer}</strong>. You will get feedback just
+      below here indicating correctness of your answer and how to proceed.
     </p>`;
   }
 
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
-    ${this.showAnswer && !this.isCorrect() ? html`
-    <p class="feedback">${this.incorrectText}</p>
-    ${this.hasFeedbackIncorrect ? html`<slot name="feedbackIncorrect"></slot>` : ``}` : ``}
-    ${this.showAnswer && this.isCorrect() ? html`
-    <p class="feedback">${this.correctText}</p>
-    ${this.hasFeedbackCorrect ? html`<slot name="feedbackCorrect"></slot>` : ``}` : ``}
-      ${this.hasHint && this.showAnswer && !this.isCorrect() ? html`
-        <h4>Need a hint?</h4>
-        <div>
-          <slot name="hint"></slot>
-        </div>
-      ` : ``}
-      ${this.hasEvidence && this.showAnswer && this.isCorrect()  ? html`
-        <h4>Evidence</h4>
-        <div>
-          <slot name="evidence"></slot>
-        </div>
-      ` : ``}
+      ${this.showAnswer && !this.isCorrect()
+        ? html` <p class="feedback">${this.incorrectText}</p>
+            ${this.hasFeedbackIncorrect
+              ? html`<slot name="feedbackIncorrect"></slot>`
+              : nothing}`
+        : nothing}
+      ${this.showAnswer && this.isCorrect()
+        ? html` <p class="feedback">${this.correctText}</p>
+            ${this.hasFeedbackCorrect
+              ? html`<slot name="feedbackCorrect"></slot>`
+              : nothing}`
+        : nothing}
+      ${this.hasHint && this.showAnswer && !this.isCorrect()
+        ? html`
+            <h4>Need a hint?</h4>
+            <div>
+              <slot name="hint"></slot>
+            </div>
+          `
+        : nothing}
+      ${this.hasEvidence && this.showAnswer && this.isCorrect()
+        ? html`
+            <h4>Evidence</h4>
+            <div>
+              <slot name="evidence"></slot>
+            </div>
+          `
+        : nothing}
       <simple-toolbar-button
         ?disabled="${this.disabled || !this.showAnswer}"
         @click="${this.resetAnswer}"
-        label="${this.t.tryAgain}">
+        label="${this.t.tryAgain}"
+      >
       </simple-toolbar-button>
     `;
   }
 
-  clickSingle(e) {  
+  clickSingle(e) {
     // single option shortcut only bc we have to wipe all others
     if (this.singleOption) {
       let proceed = false;
@@ -730,22 +785,18 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       if (e.key) {
         if (e.key === " " || e.key === "Enter") {
           proceed = true;
-        }
-        else if (e.key === "ArrowUp") {
+        } else if (e.key === "ArrowUp") {
           e.preventDefault();
           if (e.target.previousElementSibling) {
             e.target.previousElementSibling.focus();
-          }
-          else {
+          } else {
             e.target.parentNode.lastElementChild.focus();
           }
-        }
-        else if (e.key === "ArrowDown") {
+        } else if (e.key === "ArrowDown") {
           e.preventDefault();
           if (e.target.nextElementSibling) {
             e.target.nextElementSibling.focus();
-          }
-          else {
+          } else {
             e.target.parentNode.firstElementChild.focus();
           }
         }
@@ -761,40 +812,37 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
             if (e.key) {
               if (this.displayedAnswers[i].userGuess) {
                 this.displayedAnswers[i].userGuess = "";
-              }
-              else {
+              } else {
                 this.displayedAnswers[i].userGuess = true;
               }
             }
-          }
-          else {
-            this.displayedAnswers[i].userGuess = (i === e.target.name) ? true : "";
+          } else {
+            this.displayedAnswers[i].userGuess =
+              i === e.target.name ? true : "";
           }
         }
       }
-    }
-    else {
+    } else {
       if (e.key) {
         if (e.key === "ArrowUp") {
           e.preventDefault();
           if (e.target.previousElementSibling) {
             e.target.previousElementSibling.focus();
-          }
-          else {
+          } else {
             e.target.parentNode.lastElementChild.focus();
           }
-        }
-        else if (e.key === "ArrowDown") {
+        } else if (e.key === "ArrowDown") {
           e.preventDefault();
           if (e.target.nextElementSibling) {
             e.target.nextElementSibling.focus();
-          }
-          else {
+          } else {
             e.target.parentNode.firstElementChild.focus();
           }
-        }
-        else if (e.key === "Enter") {
-          this.displayedAnswers[e.target.name].userGuess = (this.displayedAnswers[e.target.name].userGuess) ? "" : true;
+        } else if (e.key === "Enter") {
+          this.displayedAnswers[e.target.name].userGuess = this
+            .displayedAnswers[e.target.name].userGuess
+            ? ""
+            : true;
         }
       }
     }
@@ -828,7 +876,9 @@ export class QuestionElement extends SchemaBehaviors(I18NMixin(DDDSuper(LitEleme
       this.hasHint = this.querySelector('[slot="hint"]');
       this.hasContent = this.querySelector('[slot="content"]');
       this.hasFeedbackCorrect = this.querySelector('[slot="feedbackCorrect"]');
-      this.hasFeedbackIncorrect = this.querySelector('[slot="feedbackIncorrect"]');
+      this.hasFeedbackIncorrect = this.querySelector(
+        '[slot="feedbackIncorrect"]',
+      );
       this.hasEvidence = this.querySelector('[slot="evidence"]');
       // wipe lightdom after reading it in for data. This makes it harder for someone
       // to just inspect the document and get at the underlying data

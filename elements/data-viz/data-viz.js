@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/chartist-render/chartist-render.js";
+import "@haxtheweb/chartist-render/chartist-render.js";
 
 // register globally so we can make sure there is only one
 window.DataViz = window.DataViz || {};

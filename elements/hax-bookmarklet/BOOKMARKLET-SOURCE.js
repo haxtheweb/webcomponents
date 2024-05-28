@@ -2,7 +2,7 @@ var link = document.createElement("script");
 link.type = "module";
 window.__appliedHax = false;
 link.src =
-  "https://cdn.waxam.io/build/es6/node_modules/@lrnwebcomponents/h-a-x/h-a-x.js";
+  "https://cdn.waxam.io/build/es6/node_modules/@haxtheweb/h-a-x/h-a-x.js";
 document.body.appendChild(link);
 var style = document.createElement("style");
 style.innerHTML = `.hax-injected-highlighter {
