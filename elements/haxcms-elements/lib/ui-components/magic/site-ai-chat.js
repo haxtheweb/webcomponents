@@ -47,6 +47,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       this._messageID = 0;
       this._merlinMessageIndex;
       this._userMessageIndex;
+      this._chatLog = [];
   }
 
   askQuestion(e) {
@@ -175,35 +176,69 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
    * @description handles the pressing of the Merlin AI button.
    */
   handleAIButton() {
-
+    if (!this.isOpen) { // if not open
+      this.handleOpen();
+    } else if (this.isOpen) { // if open
+      this.handleMinimize();
+    }
   }
 
   /**
    * @description handles the pressing of the minimize button or called by handleAIButton() when the interface is shown in standard mode.
    */
   handleMinimize() {
+    this.isOpen = false;
+  }
 
+  /**
+   * @description uses the variable `this._wasOpenedFirstTime` to determine if the interface should load for the first time, or if it can just open regularly without loading.
+   */
+  handleOpen() {
+    this.isOpen = true;
+
+    if (!this._wasOpenedFirstTime) {
+      this._wasOpenedFirstTime = true;
+      this.loadAI();
+    } else {
+      // TODO change CSS so interface is opened instead of closed
+    }
   }
 
   /**
    * @description uses the variable `this._isFullView` to determine if interface should switch to full view or standard view.
    */
   handleResizeButton() {
-
+    switch (this._isFullView) {
+      case true:
+        this._isFullView = false;
+        break;
+      case false:
+        this._isFullView = true;
+        break;
+    }
   }
 
   /**
-   * @description uses the variable `this._isFullView` to determine if interface should switch to full view or standard view.
+   * @description will prompt user to ask if they would like to download chat log, then resets AI
    */
   handleResetButton() {
-
+    this.handleResetPromptButtons();
+    this.resetAI();
   }
 
   /**
    * @description handles download chat buttons when the chat is about to be reset.
    */
-  handleResetPromptButtons() {
-
+  handleResetPromptButtons(e) {
+    switch (e.target.value) {
+      case "yes": {
+        this.downloadChatLog();
+        break;
+      }
+      case "no": {
+        break;
+      }
+    }
   }
 
   /**
@@ -224,14 +259,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
    * @description handles download chat buttons.
    */
   handleChatDownloadButton() {
-
-  }
-
-  /**
-   * @description uses the variable `this._wasOpenedFirstTime` to determine if the interface should load for the first time, or if it can just open regularly without loading.
-   */
-  handleOpen() {
-
+    this.downloadChatLog();
   }
 
     // ! Developer Mode Handlers
@@ -247,6 +275,17 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
      * @description utilizes `this.engine` to other AI engine, either Alfred or Robin 
      */
     handleAISwitch() {
+      switch (this.engine) {
+        case "alfred": {
+          this.engine = "robin";
+          break;
+        }
+        case "robin": {
+          this.engine = "alfred";
+          break;
+        }
+      }
+      
       console.log("Switched to: " + this.engine);
     }
 
@@ -299,12 +338,10 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
     switch (author) {
       case "user": {
         authorMessageIndex = this._userMessageIndex;
-        this.incrementValues("user");
         break;
       }
       case "merlin": {
         authorMessageIndex = this._merlinMessageIndex;
-        this.incrementValues("merlin");
         break;
       }
     }
@@ -316,6 +353,19 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       "authorMessageIndex": authorMessageIndex,
       "date": DATE,
     };
+
+    this._chatLog.push(message);
+
+    switch (author) {
+      case "user": {
+        this.incrementValues("user");
+        break;
+      }
+      case "merlin": {
+        this.incrementValues("merlin");
+        break;
+      }
+    }
   }
 
   /**
@@ -335,6 +385,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
 
   /**
    * @description creates date for chat log
+   * @param {boolean} isFileName - if true, will replace spaces with dashes for better file name
    * @returns {string} date - date in string format
    */
   createDate(isFileName) {
