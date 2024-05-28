@@ -24,18 +24,27 @@ MicroFrontendRegistry.add({
 });
 
 export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
+  
   static get tag() {
     return "site-ai-chat";
   }
+
   constructor() {
     super();
-    this.opened = false;
     this.question = null;
     this.answers = [];
     this.loading = false;
     this.context = toJS(store.manifest.metadata.site.name);
-    this.engine = "alfred";
     this.dataPulse = "1";
+    
+    // Interface variables
+      this.isOpen = false;
+      this._wasOpenedFirstTime = false;
+      this._isFullView = false;
+      this._isDeveloperModeEnabled = true;
+    
+    // Functional variables
+      this.engine = "alfred";
   }
 
   askQuestion(e) {
@@ -50,8 +59,8 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    if (changedProperties.has('opened')) {
-      if (this.opened) {
+    if (changedProperties.has('isOpen')) {
+      if (this.isOpen) {
         this.shadowRoot.querySelector("dialog").showModal();
       }
       else {
@@ -131,15 +140,184 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
   }
 
   closeChat() {
-    this.opened = false;
+    this.isOpen = false;
   }
+
   openChat() {
-    this.opened = true;
+    this.isOpen = true;
     setTimeout(() => {
       this.shadowRoot.querySelector('#question').focus();
       this.shadowRoot.querySelector('#question').select();        
     }, 300);
   }
+
+  // Handlers
+  
+  /**
+   * @description handles the pressing of the Merlin AI button.
+   */
+  handleAIButton() {
+
+  }
+
+  /**
+   * @description handles the pressing of the minimize button or called by handleAIButton() when the interface is shown in standard mode.
+   */
+  handleMinimize() {
+
+  }
+
+  /**
+   * @description uses the variable `this._isFullView` to determine if interface should switch to full view or standard view.
+   */
+  handleResizeButton() {
+
+  }
+
+  /**
+   * @description uses the variable `this._isFullView` to determine if interface should switch to full view or standard view.
+   */
+  handleResetButton() {
+
+  }
+
+  /**
+   * @description handles download chat buttons when the chat is about to be reset.
+   */
+  handleResetPromptButtons() {
+
+  }
+
+  /**
+   * @description handles the pressing of a suggested prompt
+   */
+  handleSuggestedPrompt() {
+
+  }
+
+  /**
+   * @description handles the pressing of the send prompt button
+   */
+  handleSendButton() {
+
+  }
+
+  /**
+   * @description handles download chat buttons.
+   */
+  handleChatDownloadButton() {
+
+  }
+
+  /**
+   * @description uses the variable `this._wasOpenedFirstTime` to determine if the interface should load for the first time, or if it can just open regularly without loading.
+   */
+  handleOpen() {
+
+  }
+
+    // ! Developer Mode Handlers
+
+    /**
+     * @description will output chat log of user, Merlin, or both to console.table()
+     */
+    handleConsoleTableButtons() {
+
+    }
+
+    /**
+     * @description utilizes `this.engine` to other AI engine, either Alfred or Robin 
+     */
+    handleAISwitch() {
+      console.log("Switched to: " + this.engine);
+    }
+
+  // Logic Functions
+
+  /**
+   * @description loads the AI
+   */
+  loadAI() {
+    
+  }
+
+  /**
+   * @description resets the AI
+   */
+  resetAI() {
+
+  }
+
+  /**
+   * @description loads the suggested prompts
+   */
+  loadSuggestedPrompts() {
+    
+  }
+
+  /**
+   * @description loads merlin's response to submitted prompt
+   */
+  merlinResponse() {
+    
+  }
+
+  /**
+   * @description sends user inputted prompt or suggested prompt
+   */
+  sendPrompt() {
+
+  }
+
+  /**
+   * @description writes message by author to chat log
+   * @param {string} author - "merlin" or "user"
+   * @param {string} message - message outputted by author
+   */
+  writeToLog(author, message) {
+
+  }
+
+  /**
+   * @description increments values of author in chat log
+   * @param {string} author - "merlin" or "user"
+   */
+  incrementValues(author) {
+
+  }
+
+  /**
+   * @description creates date for chat log
+   * @returns {string} DATE_TO_STRING - date in string format
+   */
+  createDate() {
+    const DATE = new Date();
+    const DATE_TO_STRING = DATE.toString().replace(/\s/g, "-");
+    
+    return DATE_TO_STRING;
+  }
+
+  /**
+   * @description downloads chat log as .json file
+   */
+  downloadChatLog() {
+    const FILENAME = "Merlin-AI-chat-log-" + this.createDate() + ".json";
+  }
+
+    // ! Developer Mode Functions
+
+    loadDeveloperMode() {
+
+    }
+
+    /**
+     * @description will output chat log of user, Merlin, or both to console.table()
+     * @param {string} author - "merlin", "user", or "both"
+     */
+    consoleTableChatLog(author) {
+      
+    }
+
   static get styles() {
     return [
       super.styles,
@@ -150,7 +328,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           bottom: 10px;
           right: 10px;
         }
-        :host([opened]) {
+        :host([isOpen]) {
           z-index: 100000;
         }
         :host([loading]) .loading {
@@ -229,7 +407,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       question: { type: String },
       context: { type: String },
       answers: { type: Array },
-      opened: { type: Boolean, reflect: true },
+      isOpen: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
     };
   }
