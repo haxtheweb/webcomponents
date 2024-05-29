@@ -104,8 +104,8 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
 
   render() {
     return html`
-      <div class="button-wrapper">
-        <simple-icon-button-lite icon="hax:wizard-hat" @click="${this.openChat}">
+      <div class="button-wrapper" @click="${this.openChat}">
+        <simple-icon-button-lite icon="hax:wizard-hat">
           <div class="button-text">
             Merlin-AI
           </div>
@@ -125,9 +125,12 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
             icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}"
           ></simple-icon-lite>
           <input id="context" value="${this.context}" type="text" />
-          <input id="question" type="text" placeholder="Ask your question.." />
+          <div class=user-input-wrapper>
+            <input id="question" type="text" placeholder="Enter Prompt Here..." />
+            <button id="send-prompt" type="submit"></button>
+          </div>
 
-          <button
+          <!-- <button
             id="submit"
             type="submit"
             name="alfred"
@@ -142,7 +145,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
             @click="${this.askQuestion}"
           >
             Ask Robin
-          </button>
+          </button> -->
         </form>
         ${this.question
           ? html` ${this.loading
@@ -451,15 +454,17 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           align-items: center;
           justify-content: center;
           background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
-          width: 56px;
-          height: 56px;
-          border-radius: 5%;
+          width: 72px;
+          height: 72px;
+          border-radius: 15%;
           padding: var(--ddd-spacing-2);
+          cursor: pointer;
         }
 
         .button-text {
           background-color: white;
-          border-radius: 5%;
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
+          margin-top: var(--ddd-spacing-1);
         }
 
         simple-icon-lite,
