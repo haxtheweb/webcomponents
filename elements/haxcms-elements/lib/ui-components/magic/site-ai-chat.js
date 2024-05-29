@@ -346,7 +346,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       }
     }
 
-    const message = {
+    const logMessage = { // may need to remove quotes around object item names, but quotes are in place for json file
       "messageID": this._messageID,
       "author": author,
       "message": message,
@@ -354,7 +354,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       "date": DATE,
     };
 
-    this._chatLog.push(message);
+    this._chatLog.push(logMessage);
 
     switch (author) {
       case "user": {
