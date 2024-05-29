@@ -104,9 +104,14 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
 
   render() {
     return html`
-      <simple-icon-button-lite icon="hax:wizard-hat" @click="${this.openChat}"
-        >Ask a question</simple-icon-button-lite
-      >
+      <div class="button-wrapper">
+        <simple-icon-button-lite icon="hax:wizard-hat" @click="${this.openChat}">
+          <div class="button-text">
+            Merlin-AI
+          </div>
+        </simple-icon-button-lite>
+      </div>
+
       <dialog class="chat">
         <simple-icon-button-lite
           class="close"
@@ -423,27 +428,51 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
     return [
       super.styles,
       css`
+        /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
+        
         :host {
           display: block;
-          position: absolute;
+          position: fixed;
           bottom: 10px;
           right: 10px;
         }
+
         :host([isOpen]) {
           z-index: 100000;
         }
+
         :host([loading]) .loading {
           display: block;
         }
+
+        .button-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
+          width: 56px;
+          height: 56px;
+          border-radius: 5%;
+          padding: var(--ddd-spacing-2);
+        }
+
+        .button-text {
+          background-color: white;
+          border-radius: 5%;
+        }
+
         simple-icon-lite,
         simple-icon-button-lite {
           --simple-icon-height: 48px;
           --simple-icon-width: 48px;
           color: var(--ddd-primary-13);
         }
+
         .hat {
           margin: 0 var(--ddd-spacing-4);
         }
+        
         .close {
           position: absolute;
           top: 0;
@@ -451,6 +480,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
         }
+
         dialog[open] {
           opacity: 1;
           position: fixed;
@@ -460,6 +490,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           bottom: 25%;
           transform: scaleY(1);
         }
+
         dialog {
           opacity: 0;
           padding: var(--ddd-spacing-10);
@@ -470,10 +501,12 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
             overlay 0.7s ease-out allow-discrete,
             display 0.7s ease-out allow-discrete;
         }
+
         input,
         button {
           font-size: var(--ddd-font-size-ms);
         }
+
         @starting-style {
           dialog[open] {
             opacity: 0;
@@ -492,6 +525,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
         dialog[open]::backdrop {
           background-color: rgb(0 0 0 / 25%);
         }
+
         @starting-style {
           dialog[open]::backdrop {
             background-color: rgb(0 0 0 / 0%);
