@@ -119,34 +119,19 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           @click="${this.closeChat}"
           >Close</simple-icon-button-lite
         >
-        <form action="#">
-          <simple-icon-lite
-            class="hat"
-            icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}"
-          ></simple-icon-lite>
-          <input id="context" value="${this.context}" type="text" />
-          <div class=user-input-wrapper>
-            <input id="question" type="text" placeholder="Enter Prompt Here..." />
-            <button id="send-prompt" type="submit"></button>
-          </div>
+        <simple-icon-lite
+          class="hat"
+          icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}"
+        ></simple-icon-lite>
 
-          <!-- <button
-            id="submit"
-            type="submit"
-            name="alfred"
-            @click="${this.askQuestion}"
-          >
-            Ask Alfred
-          </button>
-          <button
-            id="submit2"
-            type="submit"
-            name="robin"
-            @click="${this.askQuestion}"
-          >
-            Ask Robin
-          </button> -->
+        <form action="#" @submit="${this.handleSendButton}">
+          <input id="context" value="${this.context}" type="text" />
+          <div class="user-input-wrapper">
+            <input id="question" type="text" placeholder="Enter Prompt Here..." />
+            <input id="send-prompt" type="submit"></input>
+          </div>
         </form>
+        
         ${this.question
           ? html` ${this.loading
               ? ``
@@ -257,10 +242,10 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
   }
 
   /**
-   * @description handles the pressing of the send prompt button
+   * @description handles the pressing of the send prompt button / submission using enter key
    */
   handleSendButton() {
-
+    this.sendPrompt();
   }
 
   /**
@@ -330,7 +315,9 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
   /**
    * @description sends user inputted prompt or suggested prompt
    */
-  sendPrompt() {
+  sendPrompt(e) {
+    e.preventDefault();
+
 
   }
 
