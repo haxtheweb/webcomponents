@@ -3,18 +3,31 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "./lib/chat-button.js";
 /**
  * `chat-agent`
  * `chatbot agent style chat widget`
  * @demo demo/index.html
  * @element chat-agent
  */
-class ChatAgent extends LitElement {
+class ChatAgent extends DDD {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+
+    // button
+    this.buttonLabel = "Chat";
+
+    // control bar
+
+
+    // input
+
+
+    // message
   }
   /**
    * LitElement style callback
@@ -40,7 +53,9 @@ class ChatAgent extends LitElement {
   render() {
     return html`
       <div>
-        <slot></slot>
+        <chat-button>
+          <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
+        </chat-button>
       </div>
     `;
   }
@@ -89,6 +104,16 @@ class ChatAgent extends LitElement {
       }
       */
     });
+  }
+
+  static get properties() {
+    return {
+      ...super.properties,
+      buttonLabel: {
+        type: String,
+        attribute: "button-label",
+      },
+    }
   }
 }
 customElements.define(ChatAgent.tag, ChatAgent);
