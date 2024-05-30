@@ -61,7 +61,7 @@ class ChatInterface extends DDD {
         <div class="chat-wrapper">
           <chat-control-bar></chat-control-bar>
           <div class="chat-container">
-            <!-- chat-message -->
+            <chat-message author="merlin-ai">Hello! My name is Merlin. How can I help you today?</chat-message>
             <chat-input placeholder="${this.textAreaPlaceholder}"></chat-input>
           </div>
         </div>
