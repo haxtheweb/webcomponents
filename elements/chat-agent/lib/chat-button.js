@@ -30,7 +30,7 @@ class ChatButton extends DDD {
           position: fixed;
           bottom: 24px;
           right: 24px;
-          z-index: 1000;
+          z-index: 999998;
         }
 
         .chat-button-wrapper {
