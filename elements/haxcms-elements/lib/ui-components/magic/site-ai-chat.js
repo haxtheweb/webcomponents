@@ -102,8 +102,122 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       });
   }
 
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
+        
+        :host {
+          display: block;
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+        }
+
+        :host([isOpen]) {
+          z-index: 100000;
+        }
+
+        :host([loading]) .loading {
+          display: block;
+        }
+
+        .button-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
+          width: 72px;
+          height: 72px;
+          border-radius: 15%;
+          padding: var(--ddd-spacing-2);
+          cursor: pointer;
+        }
+
+        .button-text {
+          background-color: white;
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
+          margin-top: var(--ddd-spacing-1);
+        }
+
+        simple-icon-lite,
+        simple-icon-button-lite {
+          --simple-icon-height: 48px;
+          --simple-icon-width: 48px;
+          color: var(--ddd-primary-13);
+        }
+
+        .hat {
+          margin: 0 var(--ddd-spacing-4);
+        }
+        
+        .close {
+          position: absolute;
+          top: 0;
+          right: 0;
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+        }
+
+        dialog[open] {
+          opacity: 1;
+          position: fixed;
+          left: 25%;
+          right: 25%;
+          top: 25%;
+          bottom: 25%;
+          transform: scaleY(1);
+        }
+
+        dialog {
+          opacity: 0;
+          padding: var(--ddd-spacing-10);
+          transform: scaleY(0);
+          transition:
+            opacity 0.7s ease-out,
+            transform 0.7s ease-out,
+            overlay 0.7s ease-out allow-discrete,
+            display 0.7s ease-out allow-discrete;
+        }
+
+        input,
+        button {
+          font-size: var(--ddd-font-size-ms);
+        }
+
+        @starting-style {
+          dialog[open] {
+            opacity: 0;
+            transform: scaleY(0);
+          }
+        }
+
+        dialog::backdrop {
+          background-color: rgb(0 0 0 / 0%);
+          transition:
+            display 0.7s allow-discrete,
+            overlay 0.7s allow-discrete,
+            background-color 0.7s;
+        }
+
+        dialog[open]::backdrop {
+          background-color: rgb(0 0 0 / 25%);
+        }
+
+        @starting-style {
+          dialog[open]::backdrop {
+            background-color: rgb(0 0 0 / 0%);
+          }
+        }
+      `,
+    ];
+  }
+
   render() {
     return html`
+      <!-- Button -->
       <div class="button-wrapper" @click="${this.openChat}">
         <simple-icon-button-lite icon="hax:wizard-hat">
           <div class="button-text">
@@ -112,7 +226,9 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
         </simple-icon-button-lite>
       </div>
 
-      <dialog class="chat">
+      <!-- Interface -->
+      <dialog class="interface-wrapper">
+        <div class="chat">
         <simple-icon-button-lite
           class="close"
           icon="close"
@@ -125,7 +241,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
         ></simple-icon-lite>
 
         <form action="#" @submit="${this.handleSendButton}" id="user-prompt-form">
-          <input id="context" value="${this.context}" type="text" />
+          <!-- <input id="context" value="${this.context}" type="text" /> -->
           <input id="user-prompt" type="text" placeholder="Enter Prompt Here..." />
           <input id="send-prompt" type="submit"></input>
 
@@ -161,6 +277,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
                   </div>
                 `}`
           : ``}
+        </div>
       </dialog>
     `;
   }
@@ -177,7 +294,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
     }, 300);
   }
 
-  // Handlers
+  // Interface Handlers
   
   /**
    * @description handles the pressing of the Merlin AI button.
@@ -449,119 +566,6 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
     consoleTableChatLog(author) {
       
     }
-
-  static get styles() {
-    return [
-      super.styles,
-      css`
-        /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-        
-        :host {
-          display: block;
-          position: fixed;
-          bottom: 10px;
-          right: 10px;
-        }
-
-        :host([isOpen]) {
-          z-index: 100000;
-        }
-
-        :host([loading]) .loading {
-          display: block;
-        }
-
-        .button-wrapper {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
-          width: 72px;
-          height: 72px;
-          border-radius: 15%;
-          padding: var(--ddd-spacing-2);
-          cursor: pointer;
-        }
-
-        .button-text {
-          background-color: white;
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
-          margin-top: var(--ddd-spacing-1);
-        }
-
-        simple-icon-lite,
-        simple-icon-button-lite {
-          --simple-icon-height: 48px;
-          --simple-icon-width: 48px;
-          color: var(--ddd-primary-13);
-        }
-
-        .hat {
-          margin: 0 var(--ddd-spacing-4);
-        }
-        
-        .close {
-          position: absolute;
-          top: 0;
-          right: 0;
-          --simple-icon-height: 24px;
-          --simple-icon-width: 24px;
-        }
-
-        dialog[open] {
-          opacity: 1;
-          position: fixed;
-          left: 25%;
-          right: 25%;
-          top: 25%;
-          bottom: 25%;
-          transform: scaleY(1);
-        }
-
-        dialog {
-          opacity: 0;
-          padding: var(--ddd-spacing-10);
-          transform: scaleY(0);
-          transition:
-            opacity 0.7s ease-out,
-            transform 0.7s ease-out,
-            overlay 0.7s ease-out allow-discrete,
-            display 0.7s ease-out allow-discrete;
-        }
-
-        input,
-        button {
-          font-size: var(--ddd-font-size-ms);
-        }
-
-        @starting-style {
-          dialog[open] {
-            opacity: 0;
-            transform: scaleY(0);
-          }
-        }
-
-        dialog::backdrop {
-          background-color: rgb(0 0 0 / 0%);
-          transition:
-            display 0.7s allow-discrete,
-            overlay 0.7s allow-discrete,
-            background-color 0.7s;
-        }
-
-        dialog[open]::backdrop {
-          background-color: rgb(0 0 0 / 25%);
-        }
-
-        @starting-style {
-          dialog[open]::backdrop {
-            background-color: rgb(0 0 0 / 0%);
-          }
-        }
-      `,
-    ];
-  }
 
   static get properties() {
     return {
