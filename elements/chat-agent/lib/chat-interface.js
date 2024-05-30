@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/chat-agent/lib/chat-input.js";
 
 class ChatInterface extends DDD {
 
@@ -13,7 +14,9 @@ class ChatInterface extends DDD {
 
   constructor() {
     super();
-
+    this.isOpen = false;
+    this._isFullView = false;
+    this.textAreaPlaceholder = "Type a message...";
   }
 
   static get styles() {
@@ -24,16 +27,42 @@ class ChatInterface extends DDD {
         
         :host {
           display: block;
+          /* position: fixed; */
         }
 
+        :host([_isFullView]) .chat-interface-wrapper {
+          background-color: var(--ddd-theme-default-potentialMidnight);
+        }
+
+        .chat-interface-wrapper {
+          width: 25%;
+          height: 25%;
+          background-color: transparent;
+        }
+
+        .chat-wrapper {
+          background-color: var(--data-theme-primary, var(--ddd-primary-1));
+          padding: var(--ddd-spacing-2)
+        }
+
+        .chat-container {
+          width: 100%;
+          height: 100%;
+          background-color: var(--ddd-theme-default-white);
+        }
       `
     ];
   }
 
   render() {
     return html`
-      <div class="chat-control-bar-wrapper">
-
+      <div class="chat-interface-wrapper">
+        <div class="chat-wrapper">
+          <div class="chat-container">
+            <!-- chat-message -->
+            <chat-input placeholder="${this.textAreaPlaceholder}"></chat-input>
+          </div>
+        </div>
       </div>
     `;
   }
@@ -41,7 +70,10 @@ class ChatInterface extends DDD {
   static get properties() {
     return {
       ...super.properties,
-
+      textAreaPlaceholder: {
+        type: String,
+        attribute: "placeholder",
+      },
     };
   }
 
