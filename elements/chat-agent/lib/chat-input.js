@@ -13,7 +13,7 @@ class ChatInput extends DDD {
 
   constructor() {
     super();
-
+    this.placeholder = "Type text here...";
   }
 
   static get styles() {
@@ -26,6 +26,21 @@ class ChatInput extends DDD {
           display: block;
         }
 
+        .chat-input-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        #user-input {
+          border-radius: 15px;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          background-color: var(--ddd-theme-default-white);
+          color: #000;
+          resize: none;
+          scrollbar-width: none;
+          width: 75%;
+        }
       `
     ];
   }
@@ -33,7 +48,7 @@ class ChatInput extends DDD {
   render() {
     return html`
       <div class="chat-input-wrapper">
-
+        <textarea name="" id="user-input" placeholder="${this.placeholder}"></textarea>
       </div>
     `;
   }
@@ -41,7 +56,9 @@ class ChatInput extends DDD {
   static get properties() {
     return {
       ...super.properties,
-
+      placeholder: {
+        type: String,
+      }
     };
   }
 
