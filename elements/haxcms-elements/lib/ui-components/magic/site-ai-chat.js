@@ -165,8 +165,8 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
         }
 
         #user-prompt {
-          border-radius: 25px;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-5);
+          border-radius: 15px;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           background-color: var(--ddd-theme-default-white);
           color: #000;
           resize: none;
@@ -268,9 +268,9 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           </div>
           <div class="chat">
             <simple-icon-lite class="hat" icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}" ></simple-icon-lite>
-            <form action="#" @submit="${this.handleSendButton}" id="user-prompt-form">
+            <form action="#" @submit="${this.handleFormSubmit}" id="user-prompt-form">
               <!-- <input id="context" value="${this.context}" type="text" /> -->
-              <textarea id="user-prompt" type="text" placeholder="Enter Prompt Here..."></textarea>
+              <textarea id="user-prompt" type="text" placeholder="Enter Prompt Here..." @keydown="${this.textAreaKeydown}"></textarea>
               <input id="send-prompt" type="submit" value="Send">
 
               <!-- <button
@@ -401,14 +401,24 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
 
   }
 
+  textAreaKeydown(e) {
+    if (e.key === "Enter" && e.shiftKey) {
+      e.preventDefault();
+      this.handleFormSubmit(e);
+    }
+  }
+
   /**
    * @description handles the pressing of the send prompt button / submission using enter key
    */
-  handleSendButton(e) {    
+  handleFormSubmit(e) {    
+    let prompt = this.shadowRoot.querySelector("#user-prompt").value;
+
     console.log('send button pressed');
     console.log('target id: ' + e.target.id);
     console.log('Prompt to send: ' + this.shadowRoot.querySelector("#user-prompt").value);
-    this.sendPrompt(e, this.shadowRoot.querySelector("#user-prompt").value, e.target.id);
+    this.sendPrompt(e, prompt, e.target.id);
+    this.shadowRoot.querySelector("#user-prompt").value = "";
   }
 
   /**
