@@ -124,14 +124,28 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}"
         ></simple-icon-lite>
 
-        <form action="#" @submit="${this.handleSendButton}">
+        <form action="#" @submit="${this.handleSendButton}" id="user-prompt-form">
           <input id="context" value="${this.context}" type="text" />
-          <div class="user-input-wrapper">
-            <input id="question" type="text" placeholder="Enter Prompt Here..." />
-            <input id="send-prompt" type="submit"></input>
-          </div>
+          <input id="user-prompt" type="text" placeholder="Enter Prompt Here..." />
+          <input id="send-prompt" type="submit"></input>
+
+          <!-- <button
+            id="submit"
+            type="submit"
+            name="alfred"
+            @click="${this.askQuestion}"
+          >
+            Ask Alfred
+          </button>
+          <button
+            id="submit2"
+            type="submit"
+            name="robin"
+            @click="${this.askQuestion}"
+          >
+            Ask Robin
+          </button> -->
         </form>
-        
         ${this.question
           ? html` ${this.loading
               ? ``
@@ -244,8 +258,10 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
   /**
    * @description handles the pressing of the send prompt button / submission using enter key
    */
-  handleSendButton() {
-    this.sendPrompt();
+  handleSendButton(e) {    
+    console.log('send button pressed');
+    console.log('target id: ' + e.target.id);
+    this.sendPrompt(e, this.shadowRoot.querySelector("#user-prompt").value, e.target.id);
   }
 
   /**
@@ -314,11 +330,23 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
 
   /**
    * @description sends user inputted prompt or suggested prompt
+   * TODO add parameters for content of prompt so it can be sent to AI and written to log
    */
-  sendPrompt(e) {
+  sendPrompt(e, prompt, targetID) {
     e.preventDefault();
+    console.log('sendPrompt() called')
 
-
+    switch (targetID) {
+      case "user-prompt-form": {
+        this.writeToLog("user", prompt);
+        // TODO will send prompt to AI, will also write to log
+        break;
+      }
+      case "suggested-prompt-form": {
+        console.log('suggested prompt');
+        break;
+      }
+    }
   }
 
   /**
@@ -398,6 +426,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
    */
   downloadChatLog() {
     const FILENAME = "Merlin-AI-chat-log-" + this.createDate(true) + ".json";
+    const CHAT_LOG = JSON.stringify(this._chatLog); // changes chatlog array to JSON
   }
 
     // ! Developer Mode Functions
