@@ -45,9 +45,9 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
     // Functional variables
       this.engine = "alfred";
       this._messageID = 0;
-      this._merlinMessageIndex;
-      this._userMessageIndex;
-      this._chatLog = [];
+      this._merlinMessageIndex = 0;
+      this._userMessageIndex = 0;
+      this._chatLog = []; // TODO make this JSON instead of object array
   }
 
   askQuestion(e) {
@@ -261,6 +261,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
   handleSendButton(e) {    
     console.log('send button pressed');
     console.log('target id: ' + e.target.id);
+    console.log('Prompt to send: ' + this.shadowRoot.querySelector("#user-prompt").value);
     this.sendPrompt(e, this.shadowRoot.querySelector("#user-prompt").value, e.target.id);
   }
 
@@ -335,9 +336,12 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
   sendPrompt(e, prompt, targetID) {
     e.preventDefault();
     console.log('sendPrompt() called')
+    console.log('target id: ' + targetID);
+    console.log('Prompt to send: ' + prompt);
 
     switch (targetID) {
       case "user-prompt-form": {
+        console.log('Prompt sent to AI: ' + prompt);
         this.writeToLog("user", prompt);
         // TODO will send prompt to AI, will also write to log
         break;
@@ -374,7 +378,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       "author": author,
       "message": message,
       "authorMessageIndex": authorMessageIndex,
-      "date": DATE,
+      "date": DATE
     };
 
     this._chatLog.push(logMessage);
@@ -389,6 +393,9 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
         break;
       }
     }
+
+    this._messageID++;
+    console.table(this._chatLog);
   }
 
   /**
