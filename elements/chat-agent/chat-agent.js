@@ -5,6 +5,10 @@
 import { LitElement, html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "./lib/chat-button.js";
+import "./lib/chat-control-bar.js";
+import "./lib/chat-input.js";
+import "./lib/chat-interface.js";
+import "./lib/chat-message.js";
 /**
  * `chat-agent`
  * `chatbot agent style chat widget`
@@ -25,7 +29,7 @@ class ChatAgent extends DDD {
 
 
     // input
-
+    this.promptPlaceholder = "Enter your prompt here...";
 
     // message
   }
@@ -53,6 +57,7 @@ class ChatAgent extends DDD {
   render() {
     return html`
       <div>
+        <chat-interface placeholder="${this.promptPlaceholder}"></chat-interface>
         <chat-button>
           <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
         </chat-button>
@@ -112,6 +117,10 @@ class ChatAgent extends DDD {
       buttonLabel: {
         type: String,
         attribute: "button-label",
+      },
+      promptPlaceholder: {
+        type: String,
+        attribute: "placeholder",
       },
     }
   }
