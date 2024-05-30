@@ -27,7 +27,7 @@ class ChatInterface extends DDD {
         
         :host {
           display: block;
-          /* position: fixed; */
+          z-index: 999999;
         }
 
         :host([_isFullView]) .chat-interface-wrapper {
@@ -42,13 +42,15 @@ class ChatInterface extends DDD {
 
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          padding: var(--ddd-spacing-2)
+          padding: var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-sm);
         }
 
         .chat-container {
           width: 100%;
           height: 100%;
           background-color: var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-sm);
         }
       `
     ];
