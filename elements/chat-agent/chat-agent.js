@@ -2,13 +2,15 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "./lib/chat-button.js";
 import "./lib/chat-control-bar.js";
 import "./lib/chat-input.js";
 import "./lib/chat-interface.js";
 import "./lib/chat-message.js";
+import '@haxtheweb/simple-icon/simple-icon.js';
+import '@haxtheweb/rpg-character/rpg-character.js';
 /**
  * `chat-agent`
  * `chatbot agent style chat widget`
