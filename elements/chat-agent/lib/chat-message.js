@@ -15,6 +15,10 @@ class ChatMessage extends DDD {
     super();
     // TODO suggested prompt disable state
 
+    this.author = "guest";
+    this.message = "";
+    this.isSentMessage = false;
+
   }
 
   static get styles() {
@@ -32,9 +36,39 @@ class ChatMessage extends DDD {
   }
 
   render() {
+    if (this.author === "merlin-ai") {
+      this.receivedMessage();
+    } else {
+      this.sentMessage();
+    }
+  }
+
+  receivedMessage() {
     return html`
       <div class="chat-message-wrapper">
+        <div class="received-chat-message">
+          <div class="author-icon">
+            <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
+          </div>
+          <p class="message-content">
+            <slot name="message">${this.message}</slot>
+          </p>
+        </div>
+      </div>
+    `;
+  }
 
+  sentMessage() {
+    return html`
+      <div class="chat-message-wrapper">
+        <div class="sent-chat-message">
+          <p class="message-content">
+            <slot name="message">${this.message}</slot>
+          </p>
+          <div class="author-icon">
+            <rpg-character seed="${this.author}"></rpg-character>
+          </div>
+        </div>
       </div>
     `;
   }
