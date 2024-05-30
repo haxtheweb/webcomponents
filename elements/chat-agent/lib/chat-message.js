@@ -13,6 +13,7 @@ class ChatMessage extends DDD {
 
   constructor() {
     super();
+    // TODO suggested prompt disable state
 
   }
 
