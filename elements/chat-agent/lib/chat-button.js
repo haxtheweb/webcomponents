@@ -4,7 +4,6 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import '@haxtheweb/simple-icon/simple-icon.js';
 
 class ChatButton extends DDD {
 

@@ -4,7 +4,6 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import "@haxtheweb/chat-agent/lib/chat-input.js";
 
 class ChatInterface extends DDD {
 
@@ -60,6 +59,7 @@ class ChatInterface extends DDD {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
+          <chat-control-bar></chat-control-bar>
           <div class="chat-container">
             <!-- chat-message -->
             <chat-input placeholder="${this.textAreaPlaceholder}"></chat-input>
