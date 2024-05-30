@@ -45,8 +45,8 @@ class ChatButton extends DDD {
         }
 
         .icon-wrapper {
-          width: 48px;
-          height: 48px;
+          width: 56px;
+          height: 56px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -57,8 +57,8 @@ class ChatButton extends DDD {
 
         simple-icon-lite {
           color: var(--data-theme-primary, var(--ddd-primary-13));
-          --simple-icon-height: 36px;
-          --simple-icon-width: 36px;
+          --simple-icon-height: 48px;
+          --simple-icon-width: 48px;
         }
 
         .label-wrapper {
@@ -67,8 +67,12 @@ class ChatButton extends DDD {
           color: var(--ddd-theme-default-potentialMidnight);
           border-radius: 4px;
           font-size: var(--ddd-font-size-4xs);
-          font-weight: 500;
+          font-weight: var(--ddd-font-weight-medium);
+          max-width: 76px;
           text-align: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       `
     ];
