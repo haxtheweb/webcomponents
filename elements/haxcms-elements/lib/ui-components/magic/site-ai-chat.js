@@ -108,6 +108,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
         
+        /* Host */
         :host {
           display: block;
           position: fixed;
@@ -123,6 +124,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           display: block;
         }
 
+        /* Button */
         .button-wrapper {
           display: flex;
           flex-direction: column;
@@ -140,6 +142,25 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           background-color: white;
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
           margin-top: var(--ddd-spacing-1);
+        }
+
+        /* Interface */
+        .interface-wrapper {
+          background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
+          border-radius: 25px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: var(--ddd-spacing-2);
+          width: 25%;
+          height: 25%;
+        }
+
+        .chat {
+          background-color: var(--ddd-theme-default-white);
+          padding: var(--ddd-spacing-2);
+          border-radius: 25px;
         }
 
         simple-icon-lite,
@@ -228,55 +249,48 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
 
       <!-- Interface -->
       <dialog class="interface-wrapper">
+        <div class="controls">
+          <simple-icon-button-lite class="close" icon="close" @click="${this.closeChat}"> Close </simple-icon-button-lite>
+        </div>
         <div class="chat">
-        <simple-icon-button-lite
-          class="close"
-          icon="close"
-          @click="${this.closeChat}"
-          >Close</simple-icon-button-lite
-        >
-        <simple-icon-lite
-          class="hat"
-          icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}"
-        ></simple-icon-lite>
+          <simple-icon-lite class="hat" icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}" ></simple-icon-lite>
+          <form action="#" @submit="${this.handleSendButton}" id="user-prompt-form">
+            <!-- <input id="context" value="${this.context}" type="text" /> -->
+            <input id="user-prompt" type="text" placeholder="Enter Prompt Here..." />
+            <input id="send-prompt" type="submit"></input>
 
-        <form action="#" @submit="${this.handleSendButton}" id="user-prompt-form">
-          <!-- <input id="context" value="${this.context}" type="text" /> -->
-          <input id="user-prompt" type="text" placeholder="Enter Prompt Here..." />
-          <input id="send-prompt" type="submit"></input>
-
-          <!-- <button
-            id="submit"
-            type="submit"
-            name="alfred"
-            @click="${this.askQuestion}"
-          >
-            Ask Alfred
-          </button>
-          <button
-            id="submit2"
-            type="submit"
-            name="robin"
-            @click="${this.askQuestion}"
-          >
-            Ask Robin
-          </button> -->
-        </form>
-        ${this.question
-          ? html` ${this.loading
-              ? ``
-              : html`
-                  <div>
-                    ${this.answers.map(
-                      (answer, i) =>
-                        html`<h3 data-primary="13" data-design-treatment="vert">
-                            Answer ${i + 1}
-                          </h3>
-                          <p>${answer}</p>`,
-                    )}
-                  </div>
-                `}`
-          : ``}
+            <!-- <button
+              id="submit"
+              type="submit"
+              name="alfred"
+              @click="${this.askQuestion}"
+            >
+              Ask Alfred
+            </button>
+            <button
+              id="submit2"
+              type="submit"
+              name="robin"
+              @click="${this.askQuestion}"
+            >
+              Ask Robin
+            </button> -->
+          </form>
+          ${this.question
+            ? html` ${this.loading
+                ? ``
+                : html`
+                    <div>
+                      ${this.answers.map(
+                        (answer, i) =>
+                          html`<h3 data-primary="13" data-design-treatment="vert">
+                              Answer ${i + 1}
+                            </h3>
+                            <p>${answer}</p>`,
+                      )}
+                    </div>
+                  `}`
+            : ``}
         </div>
       </dialog>
     `;
