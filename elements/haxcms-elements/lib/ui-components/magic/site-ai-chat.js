@@ -152,15 +152,26 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: var(--ddd-spacing-2);
-          width: 25%;
-          height: 25%;
+          width: 95%;
+          height: 95%;
         }
 
         .chat {
           background-color: var(--ddd-theme-default-white);
           padding: var(--ddd-spacing-2);
           border-radius: 25px;
+          width: 90%;
+          height: 80%;
+        }
+
+        #user-prompt {
+          border-radius: 25px;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-5);
+          background-color: var(--ddd-theme-default-white);
+          color: #000;
+          resize: none;
+          scrollbar-width: none;
+          width: 75%;
         }
 
         simple-icon-lite,
@@ -175,32 +186,34 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
         }
         
         .close {
-          position: absolute;
-          top: 0;
-          right: 0;
-          --simple-icon-height: 24px;
-          --simple-icon-width: 24px;
+          --simple-icon-height: 12px;
+          --simple-icon-width: 12px;
         }
 
         dialog[open] {
           opacity: 1;
           position: fixed;
-          left: 25%;
-          right: 25%;
-          top: 25%;
-          bottom: 25%;
-          transform: scaleY(1);
+          left: 75.5%;
+          top: 65%;
+          
+          /* transform: scaleY(1); */
         }
 
         dialog {
           opacity: 0;
-          padding: var(--ddd-spacing-10);
-          transform: scaleY(0);
+          padding: var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-0);
+          /* transform: scaleY(0); */
           transition:
             opacity 0.7s ease-out,
             transform 0.7s ease-out,
             overlay 0.7s ease-out allow-discrete,
             display 0.7s ease-out allow-discrete;
+          width: 25%;
+          height: 25%;
+          background-color: transparent;
+          border: none;
+          overflow: hidden;
         }
 
         input,
@@ -211,7 +224,7 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
         @starting-style {
           dialog[open] {
             opacity: 0;
-            transform: scaleY(0);
+            /* transform: scaleY(0); */
           }
         }
 
@@ -239,8 +252,8 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
   render() {
     return html`
       <!-- Button -->
-      <div class="button-wrapper" @click="${this.openChat}">
-        <simple-icon-button-lite icon="hax:wizard-hat">
+      <div class="button-wrapper">
+        <simple-icon-button-lite icon="hax:wizard-hat" @click="${this.openChat}">
           <div class="button-text">
             Merlin-AI
           </div>
@@ -248,49 +261,51 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       </div>
 
       <!-- Interface -->
-      <dialog class="interface-wrapper">
-        <div class="controls">
-          <simple-icon-button-lite class="close" icon="close" @click="${this.closeChat}"> Close </simple-icon-button-lite>
-        </div>
-        <div class="chat">
-          <simple-icon-lite class="hat" icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}" ></simple-icon-lite>
-          <form action="#" @submit="${this.handleSendButton}" id="user-prompt-form">
-            <!-- <input id="context" value="${this.context}" type="text" /> -->
-            <input id="user-prompt" type="text" placeholder="Enter Prompt Here..." />
-            <input id="send-prompt" type="submit"></input>
+      <dialog>
+        <div class="interface-wrapper">
+          <div class="controls">
+            <simple-icon-button-lite class="close" icon="close" @click="${this.closeChat}"></simple-icon-button-lite>
+          </div>
+          <div class="chat">
+            <simple-icon-lite class="hat" icon="${this.loading ? "hax:loading" : "hax:wizard-hat"}" ></simple-icon-lite>
+            <form action="#" @submit="${this.handleSendButton}" id="user-prompt-form">
+              <!-- <input id="context" value="${this.context}" type="text" /> -->
+              <textarea id="user-prompt" type="text" placeholder="Enter Prompt Here..."></textarea>
+              <input id="send-prompt" type="submit" value="Send">
 
-            <!-- <button
-              id="submit"
-              type="submit"
-              name="alfred"
-              @click="${this.askQuestion}"
-            >
-              Ask Alfred
-            </button>
-            <button
-              id="submit2"
-              type="submit"
-              name="robin"
-              @click="${this.askQuestion}"
-            >
-              Ask Robin
-            </button> -->
-          </form>
-          ${this.question
-            ? html` ${this.loading
-                ? ``
-                : html`
-                    <div>
-                      ${this.answers.map(
-                        (answer, i) =>
-                          html`<h3 data-primary="13" data-design-treatment="vert">
-                              Answer ${i + 1}
-                            </h3>
-                            <p>${answer}</p>`,
-                      )}
-                    </div>
-                  `}`
-            : ``}
+              <!-- <button
+                id="submit"
+                type="submit"
+                name="alfred"
+                @click="${this.askQuestion}"
+              >
+                Ask Alfred
+              </button>
+              <button
+                id="submit2"
+                type="submit"
+                name="robin"
+                @click="${this.askQuestion}"
+              >
+                Ask Robin
+              </button> -->
+            </form>
+            ${this.question
+              ? html` ${this.loading
+                  ? ``
+                  : html`
+                      <div>
+                        ${this.answers.map(
+                          (answer, i) =>
+                            html`<h3 data-primary="13" data-design-treatment="vert">
+                                Answer ${i + 1}
+                              </h3>
+                              <p>${answer}</p>`,
+                        )}
+                      </div>
+                    `}`
+              : ``}
+          </div>
         </div>
       </dialog>
     `;
