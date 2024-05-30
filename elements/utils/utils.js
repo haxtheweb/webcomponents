@@ -827,6 +827,7 @@ function camelToDash(str) {
     .replace(/([a-z\d])([A-Z])/g, "$1-$2")
     .toLowerCase();
 }
+
 /**
  * Helper to convert dash to camel; important when reading attributes.
  */

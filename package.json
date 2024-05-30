@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/webcomponents",
-  "description": "HAXTheWeb core web components",
+  "description": "HAXTheWeb web component library",
   "wcfactory": {
     "askSASS": false,
     "askProps": false,
