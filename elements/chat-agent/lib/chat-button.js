@@ -16,6 +16,7 @@ class ChatButton extends DDD {
     super();
     this.icon = "hax:wizard-hat";
     this.label = "Chat";
+    this.isHiding = false; // TODO needs functionality added for this. Becomes true when user enters full mode, and when user is in standard mode
   }
 
   static get styles() {
@@ -96,6 +97,10 @@ class ChatButton extends DDD {
       ...super.properties,
       label: {
         type: String,
+      },
+      isHiding: {
+        type: Boolean,
+        attribute: "hide",
       }
     };
   }
