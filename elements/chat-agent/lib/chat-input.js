@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import '@haxtheweb/simple-icon/simple-icon.js';
 
 class ChatInput extends DDD {
 
@@ -30,6 +31,8 @@ class ChatInput extends DDD {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          gap: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
         }
 
         #user-input {
@@ -41,6 +44,24 @@ class ChatInput extends DDD {
           scrollbar-width: none;
           width: 75%;
         }
+
+        .send-button {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: var(--data-theme-primary, var(--ddd-primary-1));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        simple-icon-lite {
+          color: var(
+            --lowContrast-override,
+            var(--ddd-theme-bgContrast, white)
+          );
+        }
       `
     ];
   }
@@ -49,6 +70,9 @@ class ChatInput extends DDD {
     return html`
       <div class="chat-input-wrapper">
         <textarea name="" id="user-input" placeholder="${this.placeholder}"></textarea>
+        <div class="send-button">
+          <simple-icon-lite icon="icons:send"></simple-icon-lite>
+        </div>
       </div>
     `;
   }
