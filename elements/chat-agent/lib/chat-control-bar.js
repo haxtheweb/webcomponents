@@ -14,6 +14,7 @@ class ChatControlBar extends DDD {
   constructor() {
     super();
 
+    this._isFullView = false;
   }
 
   static get styles() {
@@ -26,14 +27,42 @@ class ChatControlBar extends DDD {
           display: block;
         }
 
+        .chat-control-bar-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
       `
     ];
   }
 
   render() {
     return html`
+      <!-- https://haxapi.vercel.app/?path=/story/media-icons--hax-iconset-story -->
+      
       <div class="chat-control-bar-wrapper">
-
+        <div class="left-side">
+          <button id="download-button">
+            <simple-icon-lite icon="icons:file-download"></simple-icon-lite> 
+          </button>
+          <button id="reset-button">
+            <simple-icon-lite icon="icons:refresh"></simple-icon-lite>
+          </button>
+        </div>
+        <div class="right-side">
+          ${this._isFullView ? html`
+            <button id="minimize-button">
+              <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
+            </button>
+          ` : ''}
+          <button id="view-button">
+            <simple-icon-lite icon="${this._isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
+          </button>
+          <button id="close-button">
+            <simple-icon-lite icon="icons:close"></simple-icon-lite>
+          </button>
+        </div>
       </div>
     `;
   }
@@ -42,6 +71,10 @@ class ChatControlBar extends DDD {
     return {
       ...super.properties,
 
+      _isFullView: {
+        type: Boolean,
+        attribute: "full-view",
+      },
     };
   }
 
