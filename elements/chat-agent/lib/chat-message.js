@@ -55,8 +55,8 @@ class ChatMessage extends DDD {
 
         simple-icon-lite {
           color: var(--data-theme-primary, var(--ddd-primary-13));
-          --simple-icon-height: var(--ddd-spacing-12);
-          --simple-icon-width: var(--ddd-spacing-12);
+          --simple-icon-height: var(--ddd-icon-md);
+          --simple-icon-width: var(--ddd-icon-md);
         }
 
         rpg-character {

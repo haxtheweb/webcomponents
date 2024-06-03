@@ -36,7 +36,7 @@ class ChatInput extends DDD {
         }
 
         #user-input {
-          border-radius: 15px;
+          border-radius: var(--ddd-radius-lg);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           background-color: var(--ddd-theme-default-white);
           color: #000;
