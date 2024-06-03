@@ -80,6 +80,9 @@ class ChatMessage extends DDD {
     ];
   }
 
+  /**
+   * Render chat message
+   */
   render() {
     return html`
       <div class="chat-message-wrapper">
@@ -88,6 +91,9 @@ class ChatMessage extends DDD {
     `;
   }
 
+  /**
+   * Renders a message recevied from Merlin-AI
+   */
   renderReceivedMessage() {
     return html`
       <div class="received-chat-message">
@@ -99,6 +105,9 @@ class ChatMessage extends DDD {
     `;
   }
 
+  /**
+   * Renders a message sent by the end user
+   */
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">

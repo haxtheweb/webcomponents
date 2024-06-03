@@ -68,6 +68,9 @@ class ChatControlBar extends DDD {
     `;
   }
 
+  /**
+   * Toggles the view of chat-interface to full or minimized
+   */
   handleViewButton() {
     this._isFullView = !this._isFullView;
   }
