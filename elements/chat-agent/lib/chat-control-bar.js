@@ -57,15 +57,19 @@ class ChatControlBar extends DDD {
               <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
             </button>
           ` : ''}
-          <button id="view-button">
+          <button id="view-button" @click=${this.handleViewButton}>
             <simple-icon-lite icon="${this._isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
           <button id="close-button">
-            <simple-icon-lite icon="icons:close"></simple-icon-lite>
+            <simple-icon-lite icon="icons:close"></simple-icon-lite> <!-- TODO might want to change to just be minimize button, since there shouldn't be a way to shut down AI without refreshing page -->
           </button>
         </div>
       </div>
     `;
+  }
+
+  handleViewButton() {
+    this._isFullView = !this._isFullView;
   }
 
   static get properties() {
