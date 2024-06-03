@@ -24,6 +24,7 @@ class ChatInput extends DDD {
         
         :host {
           display: block;
+          font-family: var(--ddd-font-primary);
         }
 
         .chat-input-wrapper {
@@ -47,7 +48,7 @@ class ChatInput extends DDD {
         .send-button {
           width: var(--ddd-spacing-13);
           height: var(--ddd-spacing-13);
-          border-radius: 50%;
+          border-radius: var(--ddd-radius-circle);
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           display: flex;
           align-items: center;
