@@ -19,6 +19,7 @@ class ChatMessage extends DDD {
     this.author = "guest";
     this.message = "";
     this.isSentMessage = false;
+    this.hasSuggestedPrompts = false;
 
   }
 
@@ -102,6 +103,11 @@ class ChatMessage extends DDD {
         </div>
         <type-writer class="message-content" text="${this.message}" speed="30"></type-writer>
       </div>
+      ${this.hasSuggestedPrompts ? html`
+        <div class="suggested-prompts">
+          <!-- TODO create suggested prompts component and input samples here -->
+        </div>
+      ` : ''}
     `;
   }
 
@@ -131,6 +137,10 @@ class ChatMessage extends DDD {
       isSentMessage: {
         type: Boolean,
         attribute: "sent-message",
+      },
+      hasSuggestedPrompts: {
+        type: Boolean,
+        attribute: "suggested-prompts",
       },
     };
   }
