@@ -37,7 +37,7 @@ class ChatButton extends DDD {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          border-radius: 16px;
+          border-radius: var(--ddd-radius-lg);
           cursor: pointer;
         }
 
@@ -48,7 +48,7 @@ class ChatButton extends DDD {
           align-items: center;
           justify-content: center;
           background-color: var(--ddd-theme-default-white);
-          border-radius: 100%;
+          border-radius: var(--ddd-radius-circle);
           margin-bottom: var(--ddd-spacing-1);
         }
 
@@ -62,7 +62,7 @@ class ChatButton extends DDD {
           padding: var(--ddd-spacing-1);
           background-color: var(--ddd-theme-default-white);
           color: var(--ddd-theme-default-potentialMidnight);
-          border-radius: 4px;
+          border-radius: var(--ddd-radius-xs);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
           max-width: var(--ddd-spacing-19);
