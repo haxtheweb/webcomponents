@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/type-writer/type-writer.js";
 
 class ChatMessage extends DDD {
 
@@ -47,7 +48,7 @@ class ChatMessage extends DDD {
           justify-content: center;
           border: var(--ddd-border-md);
           border-color: var(--ddd-theme-default-potentialMidnight);
-          border-radius: 100%;
+          border-radius: var(--ddd-radius-circle);
           width: var(--ddd-spacing-18);
           height: var(--ddd-spacing-18);
         }
@@ -58,14 +59,21 @@ class ChatMessage extends DDD {
           --simple-icon-width: var(--ddd-spacing-12);
         }
 
+        rpg-character {
+          width: var(--ddd-spacing-12);
+          height: var(--ddd-spacing-12);
+          margin-bottom: var(--ddd-spacing-3);
+        }
+
         .message-content {
-          color: black;
+          color: #000;
           border: var(--ddd-border-md);
           border-color: var(--ddd-theme-default-potentialMidnight);
-          border-radius: 8px;
+          border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-0);
           width: 80%;
+          font-family: var(--ddd-font-primary);
         }
 
       `
@@ -75,30 +83,26 @@ class ChatMessage extends DDD {
   render() {
     return html`
       <div class="chat-message-wrapper">
-        ${this.isSentMessage ? this.sentMessage() : this.receivedMessage()}
+        ${this.isSentMessage ? this.renderSentMessage() : this.renderReceivedMessage()}
       </div>
     `;
   }
 
-  receivedMessage() {
+  renderReceivedMessage() {
     return html`
       <div class="received-chat-message">
         <div class="author-icon">
           <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
         </div>
-        <p class="message-content">
-          <slot name="message">${this.message}</slot>
-        </p>
+        <type-writer class="message-content" text="${this.message}" speed="30"></type-writer>
       </div>
     `;
   }
 
-  sentMessage() {
+  renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-        <p class="message-content">
-          <slot name="message">${this.message}</slot>
-        </p>
+        <type-writer class="message-content" speed="1" text="${this.message}"></type-writer>
         <div class="author-icon">
           <rpg-character seed="${this.author}"></rpg-character>
         </div>
@@ -109,7 +113,16 @@ class ChatMessage extends DDD {
   static get properties() {
     return {
       ...super.properties,
-
+      author: {
+        type: String,
+      },
+      message: {
+        type: String,
+      },
+      isSentMessage: {
+        type: Boolean,
+        attribute: "sent-message",
+      },
     };
   }
 
