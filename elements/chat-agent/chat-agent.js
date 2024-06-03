@@ -47,7 +47,8 @@ class ChatAgent extends DDD {
     return [
       ...styles,
       css`
-        
+        /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
+
         :host {
           display: block;
         }
@@ -59,7 +60,7 @@ class ChatAgent extends DDD {
           position: fixed;
           bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          width: 35%;
+          width: 40%;
         }
 
         .agent-interface-wrapper {
