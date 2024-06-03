@@ -40,7 +40,7 @@ class ChatInterface extends DDD {
 
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          padding: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-sm);
         }
 
@@ -60,7 +60,7 @@ class ChatInterface extends DDD {
         <div class="chat-wrapper">
           <chat-control-bar></chat-control-bar>
           <div class="chat-container">
-            <chat-message author="merlin-ai">Hello! My name is Merlin. How can I help you today?</chat-message>
+            <chat-message author="merlin-ai"><span slot="message">Hello! My name is Merlin. How can I help you today?</span></chat-message>
             <chat-input placeholder="${this.textAreaPlaceholder}"></chat-input>
           </div>
         </div>

@@ -54,8 +54,8 @@ class ChatButton extends DDD {
 
         simple-icon-lite {
           color: var(--data-theme-primary, var(--ddd-primary-13));
-          --simple-icon-height: 48px;
-          --simple-icon-width: 48px;
+          --simple-icon-height: var(--ddd-spacing-12);
+          --simple-icon-width: var(--ddd-spacing-12);
         }
 
         .label-wrapper {
@@ -65,7 +65,7 @@ class ChatButton extends DDD {
           border-radius: 4px;
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
-          max-width: 76px;
+          max-width: var(--ddd-spacing-19);
           text-align: center;
           overflow: hidden;
           text-overflow: ellipsis;

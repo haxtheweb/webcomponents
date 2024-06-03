@@ -29,7 +29,7 @@ class ChatInput extends DDD {
         .chat-input-wrapper {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: center;
           gap: var(--ddd-spacing-3);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
         }
@@ -41,12 +41,12 @@ class ChatInput extends DDD {
           color: #000;
           resize: none;
           scrollbar-width: none;
-          width: 75%;
+          width: 85%;
         }
 
         .send-button {
-          width: 50px;
-          height: 50px;
+          width: var(--ddd-spacing-13);
+          height: var(--ddd-spacing-13);
           border-radius: 50%;
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           display: flex;

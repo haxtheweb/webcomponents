@@ -31,6 +31,7 @@ class ChatControlBar extends DDD {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-0);
         }
 
       `
