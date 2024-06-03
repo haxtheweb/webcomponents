@@ -59,6 +59,7 @@ class ChatAgent extends DDD {
           position: fixed;
           bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
+          width: 35%;
         }
 
         .agent-interface-wrapper {
@@ -70,6 +71,7 @@ class ChatAgent extends DDD {
           display: flex;
           justify-content: right;
         }
+
       `,
     ];
   }

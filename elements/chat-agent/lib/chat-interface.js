@@ -27,6 +27,7 @@ class ChatInterface extends DDD {
         :host {
           display: block;
           z-index: 999999;
+          width: 100%;
         }
 
         :host([_isFullView]) .chat-interface-wrapper {

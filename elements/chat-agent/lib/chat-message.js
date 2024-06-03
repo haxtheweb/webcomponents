@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import '@haxtheweb/simple-icon/simple-icon.js';
 
 class ChatMessage extends DDD {
 
@@ -29,6 +30,10 @@ class ChatMessage extends DDD {
         
         :host {
           display: block;
+        }
+
+        p {
+          color: black;
         }
 
       `
