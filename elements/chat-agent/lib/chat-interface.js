@@ -34,8 +34,6 @@ class ChatInterface extends DDD {
         }
 
         .chat-interface-wrapper {
-          width: 25%;
-          height: 25%;
           background-color: transparent;
         }
 

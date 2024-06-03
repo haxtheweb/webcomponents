@@ -26,9 +26,6 @@ class ChatButton extends DDD {
         
         :host {
           display: block;
-          position: fixed;
-          bottom: 24px;
-          right: 24px;
           z-index: 999998;
         }
 

@@ -47,8 +47,28 @@ class ChatAgent extends DDD {
     return [
       ...styles,
       css`
+        
         :host {
           display: block;
+        }
+
+        .chat-agent-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+          position: fixed;
+          bottom: var(--ddd-spacing-2);
+          right: var(--ddd-spacing-2);
+        }
+
+        .agent-interface-wrapper {
+          display: flex;
+          justify-content: right;
+        }
+
+        .agent-button-wrapper {
+          display: flex;
+          justify-content: right;
         }
       `,
     ];
@@ -58,11 +78,15 @@ class ChatAgent extends DDD {
    */
   render() {
     return html`
-      <div>
-        <chat-interface placeholder="${this.promptPlaceholder}"></chat-interface>
-        <chat-button>
-          <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
-        </chat-button>
+      <div class="chat-agent-wrapper">
+        <div class="agent-interface-wrapper">
+          <chat-interface placeholder="${this.promptPlaceholder}"></chat-interface>
+        </div>
+        <div class="agent-button-wrapper">
+          <chat-button>
+            <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
+          </chat-button>
+        </div>
       </div>
     `;
   }

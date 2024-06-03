@@ -36,11 +36,11 @@ class ChatMessage extends DDD {
   }
 
   render() {
-    if (this.author === "merlin-ai") {
-      this.receivedMessage();
-    } else {
-      this.sentMessage();
-    }
+    return html`
+      <div class="chat-message-wrapper">
+        ${this.isSentMessage ? this.sentMessage() : this.receivedMessage()}
+      </div>
+    `;
   }
 
   receivedMessage() {
