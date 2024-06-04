@@ -40,6 +40,12 @@ class ChatDeveloperPanel extends DDD {
           align-items: center;
         }
 
+        .switch-engine-controls {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
         button {
           display: flex;
           align-items: center;
@@ -47,14 +53,11 @@ class ChatDeveloperPanel extends DDD {
           cursor: pointer;
           gap: var(--ddd-spacing-1);
         }
-
       `
     ];
   }
 
   render() {
-    let oppositeEngine = this.engine === "alfred" ? "robin" : "alfred";
-    
     return html`
       <div class="chat-developer-panel-wrapper">
         <div class="console-table">
@@ -100,9 +103,21 @@ class ChatDeveloperPanel extends DDD {
     `;
   }
 
+  handleConsoleTableButton(e) {
+    switch (e.target.id) {
+      case "console-table-user":
+        // TODO console.table() user chat log
+        break;
+      case "console-table-merlin":
+        // TODO console.table() merlin chat log
+        break;
+      case "console-table-all":
+        // TODO console.table() entire chat log
+        break;
+    }
+  }
+
   handleSwitchEngineButton(e) {
-    console.info("switch engine button clicked");
-    
     switch (this.engine) {
       case "alfred":
         this.engine = "robin";
@@ -112,7 +127,7 @@ class ChatDeveloperPanel extends DDD {
         break;
     }
 
-    console.info("engine switched to " + this.engine);
+    console.info("HAX-DEV-MODE: Engine switched to " + this.engine);
 
     e.target.innerHTML = `Switch LLM Engine (Current Engine = <em>${this.engine}</em>)`;
   }

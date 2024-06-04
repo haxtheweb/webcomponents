@@ -16,7 +16,7 @@ class ChatInterface extends DDD {
     this.isOpen = false;
     this._isFullView = false;
     this.textAreaPlaceholder = "Type a message...";
-    this.enableDeveloperPanel = true;
+    this.enableDeveloperPanel = false;
   }
 
   static get styles() {

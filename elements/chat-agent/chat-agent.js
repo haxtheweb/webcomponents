@@ -4,10 +4,11 @@
  */
 import "./lib/chat-button.js";
 import "./lib/chat-control-bar.js";
+import "./lib/chat-developer-panel.js";
 import "./lib/chat-input.js";
 import "./lib/chat-interface.js";
 import "./lib/chat-message.js";
-import ".lib/chat-suggestion.js";
+import "./lib/chat-suggestion.js";
 import '@haxtheweb/rpg-character/rpg-character.js';
 import '@haxtheweb/simple-icon/simple-icon.js';
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -35,6 +36,10 @@ class ChatAgent extends DDD {
     this.promptPlaceholder = "Enter your prompt here...";
 
     // message
+
+
+    // developer panel
+    this.enableDeveloperPanel = false;
   }
   /**
    * LitElement style callback
@@ -84,7 +89,11 @@ class ChatAgent extends DDD {
     return html`
       <div class="chat-agent-wrapper">
         <div class="agent-interface-wrapper">
-          <chat-interface placeholder="${this.promptPlaceholder}"></chat-interface>
+          ${this.enableDeveloperPanel ? html`
+            <chat-interface placeholder="${this.promptPlaceholder}" developer-panel></chat-interface>
+          ` : html`
+            <chat-interface placeholder="${this.promptPlaceholder}"></chat-interface>
+          `}
         </div>
         <div class="agent-button-wrapper">
           <chat-button>
@@ -106,6 +115,10 @@ class ChatAgent extends DDD {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
+    }
+    
+    if (this.enableDeveloperPanel) {
+      console.info("HAX-DEV-MODE: Developer panel is enabled");
     }
   }
   /**
@@ -151,6 +164,10 @@ class ChatAgent extends DDD {
       promptPlaceholder: {
         type: String,
         attribute: "placeholder",
+      },
+      enableDeveloperPanel: {
+        type: Boolean,
+        attribute: "developer-panel",
       },
     }
   }
