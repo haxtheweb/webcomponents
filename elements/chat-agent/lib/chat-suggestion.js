@@ -14,7 +14,8 @@ class ChatSuggestion extends DDD {
 
   constructor() {
     super();
-    this.suggestion;
+    this.suggestion = '';
+    this.active = true;
   }
 
   static get styles() {
@@ -26,6 +27,30 @@ class ChatSuggestion extends DDD {
         :host {
           display: block;
         }
+
+        .chat-suggestion-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: var(--ddd-theme-default-successLight);
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-rounded);
+          border-color: var(--ddd-theme-default-potentialMidnight);
+          opacity: 0.4;
+        }
+
+        :host([active]), .chat-suggestion-wrapper {
+          cursor: pointer;
+          opacity: 1.0;
+        }
+
+        /* TODO: Set the opacity to 0.4 and cursor to normal when not active. NOT CURRENTLY WORKING */
+
+        p {
+          color: var(--ddd-theme-default-potentialMidnight);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+        }
       `
     ];
   }
@@ -33,7 +58,9 @@ class ChatSuggestion extends DDD {
   render() {
     return html`
       <div class="chat-suggestion-wrapper">
-        <slot name="suggestion">${this.suggestion}</slot>
+        <p class="chat-suggestion">
+          <slot name="suggestion">${this.suggestion}</slot>
+        </p>  
       </div>
     `;
   }
@@ -42,6 +69,7 @@ class ChatSuggestion extends DDD {
     return {
       ...super.properties,
       suggestion: { type: String },
+      active: { type: Boolean },
     };
   }
 

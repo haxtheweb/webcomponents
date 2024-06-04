@@ -35,12 +35,21 @@ class ChatMessage extends DDD {
 
         .chat-message-wrapper {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-bottom: var(--ddd-border-md);
+          border-bottom-style: dashed;
         }
 
-        .received-chat-message, .sent-chat-message {
+        .sent-chat-message, .message {
           display: flex;
           flex-direction: row;
           gap: var(--ddd-spacing-3);
+          align-items: center;
+        }
+
+        .received-chat-message {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
         }
 
         .author-icon {
@@ -75,6 +84,13 @@ class ChatMessage extends DDD {
           margin: var(--ddd-spacing-0);
           width: 80%;
           font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+        }
+
+        .suggested-prompts {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
         }
 
       `
@@ -98,16 +114,21 @@ class ChatMessage extends DDD {
   renderReceivedMessage() {
     return html`
       <div class="received-chat-message">
-        <div class="author-icon">
-          <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
+        <div class="message">
+          <div class="author-icon">
+            <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
+          </div>
+          <type-writer class="message-content" text="${this.message}" speed="30"></type-writer>
         </div>
-        <type-writer class="message-content" text="${this.message}" speed="30"></type-writer>
+        ${this.hasSuggestedPrompts ? html`
+          <div class="suggested-prompts">
+            <!-- TODO create suggested prompts component and input samples here -->
+            <chat-suggestion>
+              <span slot="suggestion">This is a suggestion</span>
+            </chat-suggestion>
+          </div>
+        ` : ''}
       </div>
-      ${this.hasSuggestedPrompts ? html`
-        <div class="suggested-prompts">
-          <!-- TODO create suggested prompts component and input samples here -->
-        </div>
-      ` : ''}
     `;
   }
 
