@@ -16,6 +16,7 @@ class ChatInterface extends DDD {
     this.isOpen = false;
     this._isFullView = false;
     this.textAreaPlaceholder = "Type a message...";
+    this.enableDeveloperPanel = true;
   }
 
   static get styles() {
@@ -44,6 +45,10 @@ class ChatInterface extends DDD {
           border-radius: var(--ddd-radius-sm);
         }
 
+        :host([enableDeveloperPanel]), .chat-wrapper {
+          padding-top: var(--ddd-spacing-1);
+        }
+
         .chat-container {
           width: 100%;
           height: 100%;
@@ -65,15 +70,22 @@ class ChatInterface extends DDD {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
-          <chat-control-bar></chat-control-bar>
-          <div class="chat-container">
-            <div class="chat-messages">
-              <chat-message author="merlin-ai" message="Hello! My name is Merlin. How can I help you today?"></chat-message>
-              <chat-message sent-message message="Hi Merlin! I could use some help with programming."></chat-message>
-              <chat-message author="merlin-ai" message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>
-              <chat-message sent-message message="This last message will cause the chat to scroll."></chat-message>
+          ${this.enableDeveloperPanel ? html`
+            <div class="developer-panel-wrapper">
+              <chat-developer-panel></chat-developer-panel>
             </div>
-            <chat-input placeholder="${this.textAreaPlaceholder}"></chat-input>
+          ` : ''}
+          <div class="main-wrapper">
+            <chat-control-bar></chat-control-bar>
+            <div class="chat-container">
+              <div class="chat-messages">
+                <chat-message author="merlin-ai" message="Hello! My name is Merlin. How can I help you today?"></chat-message>
+                <chat-message sent-message message="Hi Merlin! I could use some help with programming."></chat-message>
+                <chat-message author="merlin-ai" message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>
+                <chat-message sent-message message="This last message will cause the chat to scroll."></chat-message>
+              </div>
+              <chat-input placeholder="${this.textAreaPlaceholder}"></chat-input>
+            </div>
           </div>
         </div>
       </div>
@@ -86,6 +98,14 @@ class ChatInterface extends DDD {
       textAreaPlaceholder: {
         type: String,
         attribute: "placeholder",
+      },
+      enableDeveloperPanel: {
+        type: Boolean,
+        attribute: "developer-panel",
+      },
+      isOpen: {
+        type: Boolean,
+        attribute: "open",
       },
     };
   }
