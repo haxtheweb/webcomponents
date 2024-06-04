@@ -43,6 +43,8 @@ class ChatInterface extends DDD {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-sm);
+          /* display: flex;
+          flex-direction: row; */
         }
 
         :host([enableDeveloperPanel]), .chat-wrapper {

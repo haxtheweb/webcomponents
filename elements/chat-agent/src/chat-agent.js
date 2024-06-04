@@ -69,6 +69,10 @@ class ChatAgent extends DDD {
           width: 40%;
         }
 
+        /* :host([enableDeveloperPanel]), .chat-agent-wrapper {
+          width: 50%;
+        } */
+
         .agent-interface-wrapper {
           display: flex;
           justify-content: right;
@@ -116,7 +120,7 @@ class ChatAgent extends DDD {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    
+
     if (this.enableDeveloperPanel) {
       console.info("HAX-DEV-MODE: Developer panel is enabled");
     }

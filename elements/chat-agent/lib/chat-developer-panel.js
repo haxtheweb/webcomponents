@@ -31,6 +31,9 @@ class ChatDeveloperPanel extends DDD {
           background-color: var(--ddd-theme-default-keystoneYellow);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
           border-radius: var(--ddd-radius-sm);
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
         }
 
         .console-table {
@@ -38,6 +41,7 @@ class ChatDeveloperPanel extends DDD {
           gap: var(--ddd-spacing-1);
           justify-content: space-between;
           align-items: center;
+          /* flex-direction: column; */
         }
 
         .switch-engine-controls {
