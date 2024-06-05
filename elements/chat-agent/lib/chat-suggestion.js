@@ -15,7 +15,7 @@ class ChatSuggestion extends DDD {
   constructor() {
     super();
     this.suggestion = '';
-    this.active = true;
+    this.disabled = false;
     this.developerModeEnabled = false;
   }
 
@@ -65,6 +65,12 @@ class ChatSuggestion extends DDD {
         </p>  
       </div>
     `;
+  }
+
+  handleSuggestion() {
+    if (this.developerModeEnabled) {
+      console.info('HAX-DEV-MODE: Suggestion button pressed.');
+    }
   }
 
   static get properties() {
