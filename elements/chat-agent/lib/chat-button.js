@@ -15,7 +15,9 @@ class ChatButton extends DDD {
     super();
     this.icon = "hax:wizard-hat";
     this.label = "Chat";
-    this.isHiding = false; // TODO needs functionality added for this. Becomes true when user enters full mode, and when user is in standard mode
+    this.hidingButton = false; // TODO needs functionality added for this. Becomes true when user enters full mode, and when user is in standard mode
+    this.hidingInterface = false;
+    this.developerModeEnabled = false;
   }
 
   static get styles() {
@@ -77,7 +79,7 @@ class ChatButton extends DDD {
 
   render() {
     return html`
-      <div class="chat-button-wrapper">
+      <div class="chat-button-wrapper" @click=${this.handleChatButton}>
         <div class="icon-wrapper">
           <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
         </div>
@@ -86,6 +88,12 @@ class ChatButton extends DDD {
         </div>
       </div>
     `;
+  }
+
+  handleChatButton() {
+    if (this.developerModeEnabled) {
+      console.info('HAX-DEV-MODE: Chat button pressed.');
+    }
   }
 
   static get properties() {
@@ -97,10 +105,18 @@ class ChatButton extends DDD {
       label: {
         type: String,
       },
-      isHiding: {
+      hidingButton: {
         type: Boolean,
         attribute: "hide",
-      }
+      },
+      hidingInterface: {
+        type: Boolean,
+        attribute: "hiding-interface",
+      },
+      developerModeEnabled: {
+        type: Boolean,
+        attribute: "developer-mode",
+      },
     };
   }
 

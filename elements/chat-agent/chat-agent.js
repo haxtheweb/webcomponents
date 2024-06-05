@@ -103,9 +103,15 @@ class ChatAgent extends DDD {
           `}
         </div>
         <div class="agent-button-wrapper">
-          <chat-button>
-            <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
-          </chat-button>
+          ${this.enableDeveloperPanel ? html`
+            <chat-button developer-mode>
+              <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
+            </chat-button>
+          ` : html`
+            <chat-button>
+              <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
+            </chat-button>
+          `}
         </div>
       </div>
     `;
