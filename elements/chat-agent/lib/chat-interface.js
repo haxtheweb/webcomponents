@@ -93,7 +93,11 @@ class ChatInterface extends DDD {
                 <chat-message author="merlin-ai" message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>
                 <chat-message sent-message message="This last message will cause the chat to scroll."></chat-message>
               </div>
-              <chat-input placeholder="${this.textAreaPlaceholder}"></chat-input>
+              ${this.enableDeveloperPanel ? html`
+                <chat-input placeholder="${this.textAreaPlaceholder}" developer-mode></chat-input>
+              ` : html`
+                <chat-input placeholder="${this.textAreaPlaceholder}"></chat-input>
+              `}
             </div>
           </div>
         </div>
