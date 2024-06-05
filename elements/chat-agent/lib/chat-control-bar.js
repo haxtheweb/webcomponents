@@ -114,14 +114,19 @@ class ChatControlBar extends DDD {
     }
   }
 
+  /**
+   * @description changes the interface window to be hidden off screen and unfocusable
+   */
   handleHideButton() {
     if (this.developerModeEnabled) {
       console.info('HAX-DEV-MODE: Hide button pressed.');
     }
+
+    document.querySelector("chat-agent").shadowRoot().querySelector("chat-interface").isHidden = true; // TODO doesn't work right now, will fix
   }
 
   /**
-   * @description downloads the chat log
+   * @description downloads the chat log as a .json file
    */
   downloadChatLog() {
     if (this.developerModeEnabled) {
@@ -130,7 +135,7 @@ class ChatControlBar extends DDD {
   }
 
   /**
-   * @description resets the chat
+   * @description resets the chat to initial state
    */
   resetChat() {
     if (this.developerModeEnabled) {

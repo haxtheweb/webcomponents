@@ -16,6 +16,7 @@ class ChatSuggestion extends DDD {
     super();
     this.suggestion = '';
     this.active = true;
+    this.developerModeEnabled = false;
   }
 
   static get styles() {
@@ -36,15 +37,16 @@ class ChatSuggestion extends DDD {
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-rounded);
           border-color: var(--ddd-theme-default-potentialMidnight);
-          opacity: 0.4;
+          opacity: 1.0;
+          cursor: pointer;
         }
 
-        :host([active]), .chat-suggestion-wrapper {
+        /* :host([active]) .chat-suggestion-wrapper {
           cursor: pointer;
           opacity: 1.0;
-        }
+        } */
 
-        /* TODO: Set the opacity to 0.4 and cursor to normal when not active. NOT CURRENTLY WORKING */
+        /* TODO: Set the opacity to 0.4 and cursor to normal when not active. Also set the background color to a yellower shade. NOT CURRENTLY WORKING */
 
         p {
           color: var(--ddd-theme-default-potentialMidnight);
@@ -70,6 +72,10 @@ class ChatSuggestion extends DDD {
       ...super.properties,
       suggestion: { type: String },
       active: { type: Boolean },
+      developerModeEnabled: { 
+        type: Boolean, 
+        attribute: "developer-mode"
+      },
     };
   }
 

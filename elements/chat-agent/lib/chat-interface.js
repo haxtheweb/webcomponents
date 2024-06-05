@@ -13,8 +13,10 @@ class ChatInterface extends DDD {
 
   constructor() {
     super();
+    
+    this.isHidden = false;
     this.isOpen = false;
-    this._isFullView = false;
+    this.isFullView = false;
     this.textAreaPlaceholder = "Type a message...";
     this.enableDeveloperPanel = false;
   }
@@ -78,7 +80,12 @@ class ChatInterface extends DDD {
             </div>
           ` : ''}
           <div class="main-wrapper">
-            <chat-control-bar></chat-control-bar>
+            ${this.enableDeveloperPanel ? html`
+              <chat-control-bar developer-mode></chat-control-bar>
+            ` : html`
+              <chat-control-bar></chat-control-bar>
+            `}
+            
             <div class="chat-container">
               <div class="chat-messages">
                 <chat-message author="merlin-ai" message="Hello! My name is Merlin. How can I help you today?" suggested-prompts></chat-message>
@@ -108,6 +115,14 @@ class ChatInterface extends DDD {
       isOpen: {
         type: Boolean,
         attribute: "open",
+      },
+      isFullView: {
+        type: Boolean,
+        attribute: "full-view",
+      },
+      isHidden: {
+        type: Boolean,
+        attribute: "hidden",
       },
     };
   }

@@ -5,6 +5,7 @@ import { toJS } from "mobx";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/chat-agent/chat-agent.js";
 
 // enable services for glossary enhancement
 enableServices(["haxcms"]);
