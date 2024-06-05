@@ -14,7 +14,7 @@ class ChatControlBar extends DDD {
   constructor() {
     super();
 
-    this._isFullView = false;
+    this.isFullView = false;
     this.developerModeEnabled = false;
   }
 
@@ -54,7 +54,7 @@ class ChatControlBar extends DDD {
         </div>
         <div class="right-side">
           <button id="view-button" @click=${this.handleViewButton}>
-            <simple-icon-lite icon="${this._isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
+            <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
           <button id="hide-button" @click=${this.handleHideButton}>
             <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite> <!-- TODO might want to change to just be minimize button, since there shouldn't be a way to shut down AI without refreshing page -->
@@ -85,7 +85,7 @@ class ChatControlBar extends DDD {
 
     //TODO prompts Merlin to pop up an alert asking if the user would like to download the chat log
 
-    if (confirm('Would you like to download the chat log before you reset?')) {
+    if (confirm('Download the chat log before you reset?')) {
       if(this.developerModeEnabled) {
         console.info('HAX-DEV-MODE: Download before reset confirmed.');
       }
@@ -107,10 +107,10 @@ class ChatControlBar extends DDD {
       console.info('HAX-DEV-MODE: View switch button pressed.');
     }
 
-    this._isFullView = !this._isFullView;
+    this.isFullView = !this.isFullView;
 
     if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: View switched to: ' + (this._isFullView ? 'full' : 'minimized'));
+      console.info('HAX-DEV-MODE: View switched to: ' + (this.isFullView ? 'full' : 'minimized'));
     }
   }
 
@@ -147,7 +147,7 @@ class ChatControlBar extends DDD {
     return {
       ...super.properties,
 
-      _isFullView: {
+      isFullView: {
         type: Boolean,
         attribute: "full-view",
       },

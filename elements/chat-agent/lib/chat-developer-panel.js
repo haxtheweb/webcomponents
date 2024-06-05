@@ -61,6 +61,7 @@ class ChatDeveloperPanel extends DDD {
     ];
   }
 
+  // TODO add option to disable <type-writer>
   render() {
     return html`
       <div class="chat-developer-panel-wrapper">
@@ -111,12 +112,15 @@ class ChatDeveloperPanel extends DDD {
     switch (e.target.id) {
       case "console-table-user":
         // TODO console.table() user chat log
+        console.table();
         break;
       case "console-table-merlin":
         // TODO console.table() merlin chat log
+        console.table()
         break;
       case "console-table-all":
         // TODO console.table() entire chat log
+        console.table()
         break;
     }
   }

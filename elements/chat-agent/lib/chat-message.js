@@ -14,13 +14,11 @@ class ChatMessage extends DDD {
 
   constructor() {
     super();
-    // TODO suggested prompt disable state
 
     this.author = "guest";
     this.message = "";
     this.isSentMessage = false;
     this.hasSuggestedPrompts = false;
-
   }
 
   static get styles() {
@@ -92,7 +90,6 @@ class ChatMessage extends DDD {
           flex-direction: column;
           gap: var(--ddd-spacing-1);
         }
-
       `
     ];
   }

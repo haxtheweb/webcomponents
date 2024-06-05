@@ -26,6 +26,9 @@ class ChatAgent extends DDD {
   constructor() {
     super();
 
+    // everything
+    this.engine = "alfred";
+
     // button
     this.buttonLabel = "Chat";
 
