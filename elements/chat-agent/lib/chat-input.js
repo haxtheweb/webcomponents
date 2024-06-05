@@ -14,6 +14,8 @@ class ChatInput extends DDD {
   constructor() {
     super();
     this.placeholder = "Type text here...";
+    this.developerModeEnabled = false;
+    this.engine = "alfred";
   }
 
   static get styles() {
@@ -70,19 +72,37 @@ class ChatInput extends DDD {
     return html`
       <div class="chat-input-wrapper">
         <textarea name="" id="user-input" placeholder="${this.placeholder}"></textarea>
-        <div class="send-button">
+        <div class="send-button" @click=${this.handleSendButton}>
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
       </div>
     `;
   }
 
+  handleSendButton() {
+    const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value
+
+    if (this.developerModeEnabled) {
+      console.info('HAX-DEV-MODE: Send button pressed. Prompt to send: ' + INPUTTED_PROMPT);
+    }
+
+    // TODO send the prompt to merlin engine
+
+    this.shadowRoot.querySelector("#user-input").value = "";
+  }
+
+  // TODO when user presses SHIFT+ENTER, call handleSendButton()
+
   static get properties() {
     return {
       ...super.properties,
       placeholder: {
         type: String,
-      }
+      },
+      developerModeEnabled: {
+        type: Boolean,
+        attribute: "developer-mode",
+      },
     };
   }
 
