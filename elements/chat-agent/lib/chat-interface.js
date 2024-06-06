@@ -41,12 +41,33 @@ class ChatInterface extends DDD {
           background-color: transparent;
         }
 
+        /* Want to make it so the opacity starts at 1.0, then starts to fade to 0.5 */
+        /* @keyframes fadeInOpacity {
+          from {
+            opacity: 1.0;
+          } 
+          to {
+            opacity: 0.5;
+          }
+        } */
+
+        /* TODO make it so when any element within the chat interface is focused, the opacity is 1.0 */
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-sm);
+          box-shadow: var(--ddd-boxShadow-xl);
+          /* animation: fadeInOpacity 20s ease-in; */
+          opacity: 0.5;
+          transition: 
+            opacity 20s ease-in;
           /* display: flex;
           flex-direction: row; */
+        }
+
+        .chat-wrapper:hover, .chat-wrapper:focus{
+          opacity: 1.0;
+          transition: opacity 0.3s ease-out;
         }
 
         :host([enableDeveloperPanel]), .chat-wrapper {
