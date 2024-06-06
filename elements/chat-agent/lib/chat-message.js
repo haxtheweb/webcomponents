@@ -87,8 +87,10 @@ class ChatMessage extends DDD {
 
         .suggested-prompts {
           display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-1);
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-5);
+          justify-content: center;
         }
       `
     ];
@@ -120,7 +122,16 @@ class ChatMessage extends DDD {
         ${this.hasSuggestedPrompts ? html`
           <div class="suggested-prompts">
             <!-- TODO create suggested prompts component and input samples here -->
-            <chat-suggestion>
+            <chat-suggestion developer-mode>
+              <span slot="suggestion">This is a suggestion</span>
+            </chat-suggestion>
+            <chat-suggestion developer-mode>
+              <span slot="suggestion">This is a second suggestion</span>
+            </chat-suggestion>
+            <chat-suggestion developer-mode>
+              <span slot="suggestion">This is a longer suggestion because testing weeeeee</span>
+            </chat-suggestion>
+            <chat-suggestion developer-mode>
               <span slot="suggestion">This is a suggestion</span>
             </chat-suggestion>
           </div>

@@ -13,6 +13,11 @@
       import '../chat-agent.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      body {
+        background-color: rgb(203, 196, 196);
+      }
+    </style>
   </head>
   <body>
     <!-- <div class="vertical-section-container centered">
@@ -23,7 +28,7 @@
         </template>
       </demo-snippet>
     </div> -->
-    <chat-agent placeholder="Enter your prompt here..." developer-panel>
+    <chat-agent placeholder="Enter your prompt here..." developer-mode>
       <span slot="label">Merlin-AI</span>
     </chat-agent>
   </body>

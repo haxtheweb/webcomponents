@@ -31,6 +31,11 @@ class ChatButton extends DDD {
           z-index: 999998;
         }
 
+        :host([hidingButton]) {
+          display: none;
+          /* Will alter to animate it off screen and hiding, unfocusable */
+        }
+
         .chat-button-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           display: flex;
@@ -41,6 +46,7 @@ class ChatButton extends DDD {
           justify-content: center;
           border-radius: var(--ddd-radius-lg);
           cursor: pointer;
+          box-shadow: var(--ddd-boxShadow-xl);
         }
 
         .icon-wrapper {
@@ -79,7 +85,7 @@ class ChatButton extends DDD {
 
   render() {
     return html`
-      <div class="chat-button-wrapper" @click=${this.handleChatButton}>
+      <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress}>
         <div class="icon-wrapper">
           <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
         </div>
@@ -88,6 +94,16 @@ class ChatButton extends DDD {
         </div>
       </div>
     `;
+  }
+
+  // TODO does not work, don't know why, not priority but should be fixed before PR to main
+  keyPress(e) {
+    if (e.key === "Enter") {
+      if (this.developerModeEnabled) {
+        console.info('HAX-DEV-MODE: Chat button pressed using Enter key.');
+      }
+      this.handleChatButton();
+    }
   }
 
   handleChatButton() {

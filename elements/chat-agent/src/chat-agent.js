@@ -31,18 +31,25 @@ class ChatAgent extends DDD {
 
     // button
     this.buttonLabel = "Chat";
+    this.hideButton = false;
 
     // control bar
 
 
+    // developer mode
+    this.enableDeveloperMode = false; // ! this will enable developer mode for the entire chat system
+
     // input
     this.promptPlaceholder = "Enter your prompt here...";
+
+    // interface
+    this.isFullView = false;
+    this.hideInterface = false;
 
     // message
 
 
-    // developer panel
-    this.enableDeveloperPanel = false;
+    // suggestion    
   }
   /**
    * LitElement style callback
@@ -96,19 +103,19 @@ class ChatAgent extends DDD {
     return html`
       <div class="chat-agent-wrapper">
         <div class="agent-interface-wrapper">
-          ${this.enableDeveloperPanel ? html`
-            <chat-interface placeholder="${this.promptPlaceholder}" developer-panel></chat-interface>
+          ${this.enableDeveloperMode ? html`
+            <chat-interface placeholder="${this.promptPlaceholder}" developer-panel tabindex="0"></chat-interface>
           ` : html`
-            <chat-interface placeholder="${this.promptPlaceholder}"></chat-interface>
+            <chat-interface placeholder="${this.promptPlaceholder}" tabindex="0"></chat-interface>
           `}
         </div>
         <div class="agent-button-wrapper">
-          ${this.enableDeveloperPanel ? html`
-            <chat-button developer-mode>
+          ${this.enableDeveloperMode ? html`
+            <chat-button developer-mode tabindex="0">
               <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
             </chat-button>
           ` : html`
-            <chat-button>
+            <chat-button tabindex="0">
               <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
             </chat-button>
           `}
@@ -130,7 +137,7 @@ class ChatAgent extends DDD {
       super.firstUpdated(changedProperties);
     }
 
-    if (this.enableDeveloperPanel) {
+    if (this.enableDeveloperMode) {
       console.info("HAX-DEV-MODE: Developer panel is enabled");
     }
   }
@@ -170,18 +177,55 @@ class ChatAgent extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      
+      // everything
+      engine: {
+        type: String,
+      },
+
+      // button
       buttonLabel: {
         type: String,
         attribute: "button-label",
       },
+      hideButton: {
+        type: Boolean,
+        attribute: "hide-button",
+      },
+
+      // control bar
+
+
+      // developer mode
+      enableDeveloperMode: { // ! this will enable developer mode for the entire chat system
+        type: Boolean,
+        attribute: "developer-mode",
+      }, 
+
+      // input
       promptPlaceholder: {
         type: String,
         attribute: "placeholder",
       },
-      enableDeveloperPanel: {
+
+      // interface
+      isFullView: {
         type: Boolean,
-        attribute: "developer-panel",
+        attribute: "full-view",
       },
+      hideInterface: {
+        type: Boolean,
+        attribute: "hide-interface",
+      },
+
+      // message
+
+
+      // suggestion
+      
+      
+
+      
     }
   }
 }

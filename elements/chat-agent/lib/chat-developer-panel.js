@@ -61,7 +61,6 @@ class ChatDeveloperPanel extends DDD {
     ];
   }
 
-  // TODO add option to disable <type-writer>
   render() {
     return html`
       <div class="chat-developer-panel-wrapper">

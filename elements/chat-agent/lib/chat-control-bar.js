@@ -64,6 +64,8 @@ class ChatControlBar extends DDD {
     `;
   }
 
+  // TODO try to make sure that most things that change go through chat-agent.js, which will pass information down to lower components.
+
   /**
    * @description handles the functionality of the download button
    */
@@ -82,8 +84,6 @@ class ChatControlBar extends DDD {
     if (this.developerModeEnabled) {
       console.info('HAX-DEV-MODE: Reset button pressed.');
     }
-
-    //TODO prompts Merlin to pop up an alert asking if the user would like to download the chat log
 
     if (confirm('Download the chat log before you reset?')) {
       if(this.developerModeEnabled) {
@@ -107,11 +107,19 @@ class ChatControlBar extends DDD {
       console.info('HAX-DEV-MODE: View switch button pressed.');
     }
 
-    this.isFullView = !this.isFullView;
+    // this.isFullView = !this.isFullView; // TODO may need to remove this part since it will be handled via attribute in chat-agent.js
 
     if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: View switched to: ' + (this.isFullView ? 'full' : 'minimized'));
+      console.info('HAX-DEV-MODE: View switched to: ' + (this.isFullView ? 'full' : 'standard'));
     }
+
+    // TODO change the view in chat-agent.js (this.isFullView)
+    if (this.isFullView) {
+      document.querySelector('chat-agent').removeAttribute('full-view');
+    } else {
+      document.querySelector('chat-agent').setAttribute('full-view', "");
+    }
+    
   }
 
   /**
@@ -123,6 +131,9 @@ class ChatControlBar extends DDD {
     }
 
     document.querySelector("chat-agent").shadowRoot().querySelector("chat-interface").isHidden = true; // TODO doesn't work right now, will fix
+
+    // TODO write code that will hide the interface using CSS.
+    // * is user is in full size mode, the chat-button needs to become unhidden
   }
 
   /**
@@ -132,6 +143,8 @@ class ChatControlBar extends DDD {
     if (this.developerModeEnabled) {
       console.info('HAX-DEV-MODE: downloadChatLog() called.');
     }
+
+    // TODO write code to download the chat log. May need to convert an array to .json
   }
 
   /**
@@ -141,6 +154,8 @@ class ChatControlBar extends DDD {
     if (this.developerModeEnabled) {
       console.info('HAX-DEV-MODE: resetChat() called.');
     }
+
+    // TODO write code to reset the chat to it's initial state
   }
 
   static get properties() {

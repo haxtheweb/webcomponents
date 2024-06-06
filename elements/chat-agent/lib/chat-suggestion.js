@@ -17,6 +17,7 @@ class ChatSuggestion extends DDD {
     this.suggestion = '';
     this.disabled = false;
     this.developerModeEnabled = false;
+    this.engine = "alfred";
   }
 
   static get styles() {
@@ -39,6 +40,15 @@ class ChatSuggestion extends DDD {
           border-color: var(--ddd-theme-default-potentialMidnight);
           opacity: 1.0;
           cursor: pointer;
+          box-shadow: var(--ddd-boxShadow-xl);
+        }
+
+        .chat-suggestion-wrapper:hover, .chat-suggestion-wrapper:focus {
+          background-color: var(--ddd-theme-default-futureLime);
+        }
+
+        .chat-suggestion-wrapper:hover p, .chat-suggestion-wrapper:focus p {
+          text-decoration: underline;
         }
 
         /* :host([active]) .chat-suggestion-wrapper {
@@ -52,6 +62,8 @@ class ChatSuggestion extends DDD {
           color: var(--ddd-theme-default-potentialMidnight);
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
+          width: 80%;
+          text-align: center;
         }
       `
     ];
@@ -59,7 +71,7 @@ class ChatSuggestion extends DDD {
 
   render() {
     return html`
-      <div class="chat-suggestion-wrapper">
+      <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion}>
         <p class="chat-suggestion">
           <slot name="suggestion">${this.suggestion}</slot>
         </p>  
@@ -68,9 +80,13 @@ class ChatSuggestion extends DDD {
   }
 
   handleSuggestion() {
+    const SUGGESTION = this.shadowRoot.querySelector("p").textContent; // TODO need to make functional for both dev tools + merlin
+    
     if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: Suggestion button pressed.');
+      console.info('HAX-DEV-MODE: Suggestion button pressed. Submission to send to Merlin: ' + SUGGESTION);
     }
+
+    // TODO send the suggestion to current merlin engine
   }
 
   static get properties() {
@@ -80,8 +96,9 @@ class ChatSuggestion extends DDD {
       active: { type: Boolean },
       developerModeEnabled: { 
         type: Boolean, 
-        attribute: "developer-mode"
+        attribute: "developer-mode",
       },
+      engine: { type: String },
     };
   }
 
