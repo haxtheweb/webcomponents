@@ -70,9 +70,7 @@ class ChatControlBar extends DDD {
    * @description handles the functionality of the download button
    */
   handleDownloadLogButton() {
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: Download log button pressed.');
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Download log button pressed.') : null;
 
     this.downloadChatLog();
   }
@@ -81,19 +79,16 @@ class ChatControlBar extends DDD {
    * @description handles the functionality of the reset button
    */
   handleResetButton() {
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: Reset button pressed.');
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Reset button pressed.') : null;
 
     if (confirm('Download the chat log before you reset?')) {
-      if(this.developerModeEnabled) {
-        console.info('HAX-DEV-MODE: Download before reset confirmed.');
-      }
+      this.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset confirmed.') : null;
       this.downloadChatLog();
     } else {
       if(this.developerModeEnabled) {
         console.info('HAX-DEV-MODE: Download before reset denied.');
       }
+      this.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset denied.') : null;
     }
 
     this.resetChat();
@@ -103,15 +98,11 @@ class ChatControlBar extends DDD {
    * @description Toggles the view of chat-interface to full or minimized
    */
   handleViewButton() {
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: View switch button pressed.');
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switch button pressed.') : null;
 
     // this.isFullView = !this.isFullView; // TODO may need to remove this part since it will be handled via attribute in chat-agent.js
 
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: View switched to: ' + (this.isFullView ? 'full' : 'standard'));
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (this.isFullView ? 'full' : 'standard')) : null;
 
     // TODO change the view in chat-agent.js (this.isFullView)
     if (this.isFullView) {
@@ -126,9 +117,7 @@ class ChatControlBar extends DDD {
    * @description changes the interface window to be hidden off screen and unfocusable
    */
   handleHideButton() {
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: Hide button pressed.');
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
 
     document.querySelector("chat-agent").shadowRoot().querySelector("chat-interface").isHidden = true; // TODO doesn't work right now, will fix
 
@@ -140,9 +129,7 @@ class ChatControlBar extends DDD {
    * @description downloads the chat log as a .json file
    */
   downloadChatLog() {
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: downloadChatLog() called.');
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
 
     // TODO write code to download the chat log. May need to convert an array to .json
   }
@@ -151,9 +138,7 @@ class ChatControlBar extends DDD {
    * @description resets the chat to initial state
    */
   resetChat() {
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: resetChat() called.');
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Resetting chat...') : null;
 
     // TODO write code to reset the chat to it's initial state
   }

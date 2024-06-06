@@ -82,9 +82,7 @@ class ChatSuggestion extends DDD {
   handleSuggestion() {
     const SUGGESTION = this.shadowRoot.querySelector("p").textContent; // TODO need to make functional for both dev tools + merlin
     
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: Suggestion button pressed. Submission to send to Merlin: ' + SUGGESTION);
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + SUGGESTION) : null;
 
     // TODO send the suggestion to current merlin engine
   }

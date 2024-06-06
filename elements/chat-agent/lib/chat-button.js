@@ -99,17 +99,13 @@ class ChatButton extends DDD {
   // TODO does not work, don't know why, not priority but should be fixed before PR to main
   keyPress(e) {
     if (e.key === "Enter") {
-      if (this.developerModeEnabled) {
-        console.info('HAX-DEV-MODE: Chat button pressed using Enter key.');
-      }
+      this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
       this.handleChatButton();
     }
   }
 
   handleChatButton() {
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: Chat button pressed.');
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
   }
 
   static get properties() {

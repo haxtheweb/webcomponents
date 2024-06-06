@@ -82,9 +82,7 @@ class ChatInput extends DDD {
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value
 
-    if (this.developerModeEnabled) {
-      console.info('HAX-DEV-MODE: Send button pressed. Prompt to send: ' + INPUTTED_PROMPT);
-    }
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button pressed. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
     // TODO send the prompt to merlin engine
 

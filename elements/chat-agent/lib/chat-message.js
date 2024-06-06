@@ -122,16 +122,16 @@ class ChatMessage extends DDD {
         ${this.hasSuggestedPrompts ? html`
           <div class="suggested-prompts">
             <!-- TODO create suggested prompts component and input samples here -->
-            <chat-suggestion developer-mode>
+            <chat-suggestion developer-mode tabindex="0">
               <span slot="suggestion">This is a suggestion</span>
             </chat-suggestion>
-            <chat-suggestion developer-mode>
+            <chat-suggestion developer-mode tabindex="0">
               <span slot="suggestion">This is a second suggestion</span>
             </chat-suggestion>
-            <chat-suggestion developer-mode>
+            <chat-suggestion developer-mode tabindex="0">
               <span slot="suggestion">This is a longer suggestion because testing weeeeee</span>
             </chat-suggestion>
-            <chat-suggestion developer-mode>
+            <chat-suggestion developer-mode tabindex="0">
               <span slot="suggestion">This is a suggestion</span>
             </chat-suggestion>
           </div>
