@@ -47,6 +47,16 @@ class ChatInterface extends DDD {
           background-color: var(--ddd-theme-default-potentialMidnight);
         }
 
+        @keyframes fadeOpacity {
+          from {
+            opacity: 1.0;
+          }
+
+          to {
+            opacity: 0.3;
+          }
+        }
+
         /* TODO make it so when any element within the chat interface is focused, the opacity is 1.0 */
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
@@ -54,16 +64,16 @@ class ChatInterface extends DDD {
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-xl);
           /* animation: fadeInOpacity 20s ease-in; */
-          opacity: 0.3;
+          /* opacity: 0.3; */
           transition: 
-            opacity 60s ease-in; /* TODO might want to remove since the interface can be hidden off screen, get opinion on this */
+            fadeOpacity 60s ease-in; /* TODO might want to remove since the interface can be hidden off screen, get opinion on this */
           /* display: flex;
           flex-direction: row; */
         }
 
         .chat-wrapper:hover, .chat-wrapper:focus{
           opacity: 1.0;
-          transition: opacity 0.1s ease-out;
+          /* transition: opacity 0.1s ease-out; */
         }
 
         :host([enableDeveloperPanel]), .chat-wrapper {

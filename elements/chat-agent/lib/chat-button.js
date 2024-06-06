@@ -83,6 +83,7 @@ class ChatButton extends DDD {
     ];
   }
 
+  // TODO might need to switch to key down
   render() {
     return html`
       <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress}>
@@ -100,8 +101,10 @@ class ChatButton extends DDD {
   keyPress(e) {
     if (e.key === "Enter") {
       this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
+      e.preventDefault();
       this.handleChatButton();
     }
+    
   }
 
   handleChatButton() {
