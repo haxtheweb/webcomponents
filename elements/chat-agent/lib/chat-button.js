@@ -17,6 +17,7 @@ class ChatButton extends DDD {
     this.buttonLabel = "Chat";
     this.isFullView = false; // TODO needs functionality added for this. Becomes true when user enters full mode, and when user is in standard mode
     this.isInterfaceHidden = false; // TODO make it this value is grabbed from the interface rather than being set separately
+    this.isButtonHiding = false;
     this.developerModeEnabled = false;
   }
 
@@ -115,24 +116,8 @@ class ChatButton extends DDD {
 
   // TODO: Make all attribute changes occur through chat-agent, making all attributes easier to find and pass through to lower components
   handleChatButton() {
-    const CHAT_INTERFACE = document.querySelector("chat-agent").shadowRoot().querySelector("chat-interface"); // TODO doesn't work right now, need to find a fix
-    
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
-
-    if (CHAT_INTERFACE.isOpen === false) {
-      CHAT_INTERFACE.isOpen = true; // loads AI
-      CHAT_INTERFACE.isHidden = false; // removes interface from hiding
-      this.isInterfaceHidden = false;
-    } else {
-      if (CHAT_INTERFACE.isHidden === true) {
-        CHAT_INTERFACE.isHidden = false;
-        this.isInterfaceHidden = false;
-      } else {
-        CHAT_INTERFACE.isHidden = true;
-        this.isInterfaceHidden = true;
-      }
-    }
-
+    
   }
 
   static get properties() {
@@ -157,6 +142,10 @@ class ChatButton extends DDD {
       developerModeEnabled: {
         type: Boolean,
         attribute: "developer-mode",
+      },
+      isButtonHiding: {
+        type: Boolean,
+        attribute: "hidden",
       },
     };
   }

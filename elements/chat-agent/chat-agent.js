@@ -19,7 +19,6 @@ import { html, css } from "lit";
  * @demo demo/index.html
  * @element chat-agent
  */
-// TODO: synchronize variable names across all components
 class ChatAgent extends DDD {
   /**
    * HTMLElement
@@ -40,7 +39,7 @@ class ChatAgent extends DDD {
 
 
     // developer mode
-    this.enableDeveloperMode = false; // ! this will enable developer mode for the entire chat system
+    this.enableDeveloperMode = true; // ! this will enable developer mode for the entire chat system
 
     // input
     this.promptPlaceholder = "Enter your prompt here...";
@@ -50,10 +49,11 @@ class ChatAgent extends DDD {
     this.isInterfaceHidden = false;
 
     // message
-    
 
-    // suggestion    
+
+    // suggestion      
   }
+
   /**
    * LitElement style callback
    */
@@ -91,10 +91,10 @@ class ChatAgent extends DDD {
           display: flex;
           justify-content: right;
         }
-
       `,
     ];
   }
+
   /**
    * LitElement render callback
    */
@@ -102,22 +102,12 @@ class ChatAgent extends DDD {
     return html`
       <div class="chat-agent-wrapper">
         <div class="agent-interface-wrapper">
-          ${this.enableDeveloperMode ? html`
-            <chat-interface prompt-placeholder="${this.promptPlaceholder}" developer-panel tabindex="0"></chat-interface>
-          ` : html`
-            <chat-interface prompt-placeholder="${this.promptPlaceholder}" tabindex="0"></chat-interface>
-          `}
+          <chat-interface prompt-placeholder="${this.promptPlaceholder}" tabindex="0"></chat-interface>
         </div>
         <div class="agent-button-wrapper">
-          ${this.enableDeveloperMode ? html`
-            <chat-button developer-mode tabindex="0" icon="${this.buttonIcon}">
-              <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
-            </chat-button>
-          ` : html`
-            <chat-button tabindex="0" icon="${this.buttonIcon}">
-              <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
-            </chat-button>
-          `}
+          <chat-button tabindex="0" icon="${this.buttonIcon}">
+            <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
+          </chat-button>
         </div>
       </div>
     `;
@@ -133,18 +123,59 @@ class ChatAgent extends DDD {
    * LitElement ready
    */
   firstUpdated(changedProperties) {
-    const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
-    const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
-    
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
 
+    const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
+    const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
+
     if (this.enableDeveloperMode) {
       console.info("HAX-DEV-MODE: Developer panel is enabled");
     }
-  }
 
+    // everything
+    if (this.isAIOpen) {
+
+    }
+
+    // button
+    if (this.isFullView && !this.isInterfaceHidden) {
+      this.isButtonHidden = true;
+    } else {
+      this.isButtonHidden = false;
+    }
+
+    if (this.isButtonHidden) {
+      CHAT_BUTTON.setAttribute("hidden", "");
+    }
+
+    // control bar
+
+
+    // developer mode
+    if (this.enableDeveloperMode) {
+      console.info("HAX-DEV-MODE: Developer panel is enabled");
+
+      CHAT_INTERFACE.setAttribute("developer-mode", "");
+      CHAT_BUTTON.setAttribute("developer-mode", "");
+    }
+
+    // input
+
+    // interface
+    if (this.isFullView) {
+      CHAT_INTERFACE.setAttribute("full-view", "");
+    }
+
+    // message
+
+
+    // suggestion
+
+
+    // Other needed logic (might be moved to updated() once I learn how that works)
+  }
   /**
    * LitElement life cycle - property changed
    */
@@ -202,6 +233,7 @@ class ChatAgent extends DDD {
       },
       buttonIcon: {
         type: String,
+        attribute: "button-icon",
       },
 
       // control bar
@@ -234,9 +266,7 @@ class ChatAgent extends DDD {
 
       // suggestion
       
-      
 
-      
     }
   }
 }

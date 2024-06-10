@@ -121,7 +121,7 @@ class ChatInterface extends DDD {
       },
       enableDeveloperPanel: {
         type: Boolean,
-        attribute: "developer-panel",
+        attribute: "developer-mode",
       },
       isAIOpen: {
         type: Boolean,
