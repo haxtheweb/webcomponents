@@ -14,10 +14,10 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     
-    this.isHidden = false;
-    this.isOpen = false;
+    this.isInterfaceHidden = false;
+    this.isAIOpen = false;
     this.isFullView = false;
-    this.textAreaPlaceholder = "Type a message...";
+    this.promptPlaceholder = "Type a message...";
     this.enableDeveloperPanel = false;
 
     // TODO: possible add developer option to toggle whether fading is enabled
@@ -47,34 +47,14 @@ class ChatInterface extends DDD {
           background-color: var(--ddd-theme-default-potentialMidnight);
         }
 
-        @keyframes fadeOpacity {
-          from {
-            opacity: 1.0;
-          }
-
-          to {
-            opacity: 0.3;
-          }
-        }
-
         /* TODO make it so when any element within the chat interface is focused, the opacity is 1.0 */
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-xl);
-          /* animation: fadeInOpacity 20s ease-in; */
-          /* opacity: 0.3; */
-          transition: 
-            fadeOpacity 60s ease-in; /* TODO might want to remove since the interface can be hidden off screen, get opinion on this */
-          /* display: flex;
-          flex-direction: row; */
         }
 
-        .chat-wrapper:hover, .chat-wrapper:focus{
-          opacity: 1.0;
-          /* transition: opacity 0.1s ease-out; */
-        }
 
         :host([enableDeveloperPanel]), .chat-wrapper {
           padding-top: var(--ddd-spacing-1);
@@ -121,9 +101,9 @@ class ChatInterface extends DDD {
                 <chat-message sent-message message="This last message will cause the chat to scroll."></chat-message>
               </div>
               ${this.enableDeveloperPanel ? html`
-                <chat-input placeholder="${this.textAreaPlaceholder}" developer-mode></chat-input>
+                <chat-input placeholder="${this.promptPlaceholder}" developer-mode></chat-input>
               ` : html`
-                <chat-input placeholder="${this.textAreaPlaceholder}"></chat-input>
+                <chat-input placeholder="${this.promptPlaceholder}"></chat-input>
               `}
             </div>
           </div>
@@ -135,15 +115,15 @@ class ChatInterface extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      textAreaPlaceholder: {
+      promptPlaceholder: {
         type: String,
-        attribute: "placeholder",
+        attribute: "prompt-placeholder",
       },
       enableDeveloperPanel: {
         type: Boolean,
         attribute: "developer-panel",
       },
-      isOpen: {
+      isAIOpen: {
         type: Boolean,
         attribute: "open",
       },
@@ -151,7 +131,7 @@ class ChatInterface extends DDD {
         type: Boolean,
         attribute: "full-view",
       },
-      isHidden: {
+      isInterfaceHidden: {
         type: Boolean,
         attribute: "hidden",
       },

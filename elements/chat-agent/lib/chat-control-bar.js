@@ -100,9 +100,9 @@ class ChatControlBar extends DDD {
   handleViewButton() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switch button pressed.') : null;
 
-    // this.isFullView = !this.isFullView; // TODO may need to remove this part since it will be handled via attribute in chat-agent.js
+    this.isFullView = !this.isFullView; // TODO may need to remove this part since it will be handled via attribute in chat-agent.js
 
-    this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (this.isFullView ? 'full' : 'standard')) : null;
+    // this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (this.isFullView ? 'full' : 'standard')) : null;
 
     // TODO change the view in chat-agent.js (this.isFullView)
     if (this.isFullView) {

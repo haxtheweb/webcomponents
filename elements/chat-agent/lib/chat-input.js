@@ -13,7 +13,7 @@ class ChatInput extends DDD {
 
   constructor() {
     super();
-    this.placeholder = "Type text here...";
+    this.promptPlaceholder = "Type text here...";
     this.developerModeEnabled = false;
     this.engine = "alfred";
   }
@@ -71,7 +71,7 @@ class ChatInput extends DDD {
   render() {
     return html`
       <div class="chat-input-wrapper">
-        <textarea name="" id="user-input" placeholder="${this.placeholder}"></textarea>
+        <textarea name="" id="user-input" placeholder="${this.promptPlaceholder}"></textarea>
         <div class="send-button" @click=${this.handleSendButton}>
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
@@ -94,8 +94,9 @@ class ChatInput extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      placeholder: {
+      promptPlaceholder: {
         type: String,
+        attribute: "placeholder",
       },
       developerModeEnabled: {
         type: Boolean,

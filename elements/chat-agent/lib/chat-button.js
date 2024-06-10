@@ -13,10 +13,10 @@ class ChatButton extends DDD {
 
   constructor() {
     super();
-    this.icon = "hax:wizard-hat";
-    this.label = "Chat";
-    this.hidingButton = false; // TODO needs functionality added for this. Becomes true when user enters full mode, and when user is in standard mode
-    this.hidingInterface = false;
+    this.buttonIcon = "hax:loading";
+    this.buttonLabel = "Chat";
+    this.isFullView = false; // TODO needs functionality added for this. Becomes true when user enters full mode, and when user is in standard mode
+    this.isInterfaceHidden = false; // TODO make it this value is grabbed from the interface rather than being set separately
     this.developerModeEnabled = false;
   }
 
@@ -31,9 +31,8 @@ class ChatButton extends DDD {
           z-index: 999998;
         }
 
-        :host([hidingButton]) {
+        .chat-button-wrapper[full-view][hiding-interface = "false"]  {
           display: none;
-          /* Will alter to animate it off screen and hiding, unfocusable */
         }
 
         .chat-button-wrapper {
@@ -88,10 +87,10 @@ class ChatButton extends DDD {
     return html`
       <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress}>
         <div class="icon-wrapper">
-          <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
+          <simple-icon-lite icon="${this.buttonIcon}"></simple-icon-lite>
         </div>
         <div class="label-wrapper">
-          <slot name="label">${this.label}</slot>
+          <slot name="label">${this.buttonLabel}</slot>
         </div>
       </div>
     `;
@@ -107,24 +106,51 @@ class ChatButton extends DDD {
     
   }
 
+  /*
+    TODO:
+    * Check if chat interface is open, if not, open it
+    * Flip hidden state.
+    * Add developer mode console statements
+  */
+
+  // TODO: Make all attribute changes occur through chat-agent, making all attributes easier to find and pass through to lower components
   handleChatButton() {
+    const CHAT_INTERFACE = document.querySelector("chat-agent").shadowRoot().querySelector("chat-interface"); // TODO doesn't work right now, need to find a fix
+    
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
+
+    if (CHAT_INTERFACE.isOpen === false) {
+      CHAT_INTERFACE.isOpen = true; // loads AI
+      CHAT_INTERFACE.isHidden = false; // removes interface from hiding
+      this.isInterfaceHidden = false;
+    } else {
+      if (CHAT_INTERFACE.isHidden === true) {
+        CHAT_INTERFACE.isHidden = false;
+        this.isInterfaceHidden = false;
+      } else {
+        CHAT_INTERFACE.isHidden = true;
+        this.isInterfaceHidden = true;
+      }
+    }
+
   }
 
   static get properties() {
     return {
       ...super.properties,
-      icon: {
+      buttonIcon: {
         type: String,
+        attribute: "icon",
       },
-      label: {
+      buttonLabel: {
         type: String,
+        attribute: "label",
       },
-      hidingButton: {
+      isFullView: {
         type: Boolean,
-        attribute: "hide",
+        attribute: "full-view",
       },
-      hidingInterface: {
+      isInterfaceHidden: {
         type: Boolean,
         attribute: "hiding-interface",
       },
