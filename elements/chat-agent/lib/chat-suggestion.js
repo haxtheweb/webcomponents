@@ -17,7 +17,7 @@ class ChatSuggestion extends DDD {
     this.developerModeEnabled = false;
     this.disabled = false;
     this.engine = "alfred";
-    this.suggestion = '';
+    this.suggestion = ""; 
   }
 
   static get styles() {
@@ -51,13 +51,6 @@ class ChatSuggestion extends DDD {
           text-decoration: underline;
         }
 
-        /* :host([active]) .chat-suggestion-wrapper {
-          cursor: pointer;
-          opacity: 1.0;
-        } */
-
-        /* TODO: Set the opacity to 0.4 and cursor to normal when not active. Also set the background color to a yellower shade. NOT CURRENTLY WORKING */
-
         p {
           color: var(--ddd-theme-default-potentialMidnight);
           font-family: var(--ddd-font-primary);
@@ -69,22 +62,27 @@ class ChatSuggestion extends DDD {
     ];
   }
 
+  // ! slot has to be this way as it makes it easier to both dynamically create this tag using .setAttribute(), as well as grabbing the variable for other purposes
   render() {
     return html`
       <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion}>
         <p class="chat-suggestion">
-          <slot name="suggestion">${this.suggestion}</slot>
+          <slot>${this.suggestion}</slot>
         </p>  
       </div>
     `;
   }
 
   handleSuggestion() {
-    const SUGGESTION = this.shadowRoot.querySelector("p").textContent; // TODO need to make functional for both dev tools + merlin
-    
-    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + SUGGESTION) : null;
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
 
-    // TODO send the suggestion to current merlin engine
+    // send user chat-messaage with a suggested-prompt attribute
+
+    
+    // write message to chat log while signifying in the chat log that the message is a suggestion
+
+
+    // Send message to AI for response
   }
 
   static get properties() {

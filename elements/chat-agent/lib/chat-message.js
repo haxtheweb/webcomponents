@@ -16,8 +16,9 @@ class ChatMessage extends DDD {
     super();
 
     this.author = "guest";
-    this.hasSuggestedPrompts = false;
-    this.isSentMessage = false;
+    this.hasSuggestedPrompts = false; // determines whether or not suggestions will render
+    this.isSentPrompt = false;
+    this.isSuggestedPrompt = false; // determines whether or not the user submitted prompt is a suggested prompt or user submitted prompt
     this.message = "";
   }
 
@@ -97,18 +98,20 @@ class ChatMessage extends DDD {
   }
 
   /**
-   * Render chat message
+   * @description Render chat message
    */
   render() {
     return html`
       <div class="chat-message-wrapper">
-        ${this.isSentMessage ? this.renderSentMessage() : this.renderReceivedMessage()}
+        ${this.isSentPrompt ? this.renderSentMessage() : this.renderReceivedMessage()}
       </div>
     `;
   }
 
+  // TODO want the chat-suggestions to load after the type-writer is done writing out the text
+  // TODO remove the this.hasSuggestedPrompts ternary operator since that is for testing purposes only
   /**
-   * Renders a message recevied from Merlin-AI
+   * @description Renders a message recevied from Merlin-AI
    */
   renderReceivedMessage() {
     return html`
@@ -121,27 +124,19 @@ class ChatMessage extends DDD {
         </div>
         ${this.hasSuggestedPrompts ? html`
           <div class="suggested-prompts">
-            <!-- TODO create suggested prompts component and input samples here -->
-            <chat-suggestion developer-mode tabindex="0">
-              <span slot="suggestion">This is a suggestion</span>
-            </chat-suggestion>
-            <chat-suggestion developer-mode tabindex="0">
-              <span slot="suggestion">This is a second suggestion</span>
-            </chat-suggestion>
-            <chat-suggestion developer-mode tabindex="0">
-              <span slot="suggestion">This is a longer suggestion because testing weeeeee</span>
-            </chat-suggestion>
-            <chat-suggestion developer-mode tabindex="0">
-              <span slot="suggestion">This is a suggestion</span>
-            </chat-suggestion>
+            <chat-suggestion developer-mode tabindex="0" suggestion="This is a suggestion"></chat-suggestion>
+            <chat-suggestion developer-mode tabindex="0" suggestion="This is a second suggestion"></chat-suggestion>
+            <chat-suggestion developer-mode tabindex="0" suggestion="This is a longer suggestion because testing weeeeeee"></chat-suggestion>
+            <chat-suggestion developer-mode tabindex="0" suggestion="This is a suggestion"></chat-suggestion>
           </div>
         ` : ''}
       </div>
     `;
   }
 
+  // TODO may wish to change type-writer for user messages to <p> instead of <type-writer>
   /**
-   * Renders a message sent by the end user
+   * @description Renders a message sent by the end user
    */
   renderSentMessage() {
     return html`
@@ -164,9 +159,13 @@ class ChatMessage extends DDD {
         type: Boolean,
         attribute: "suggested-prompts",
       },
-      isSentMessage: {
+      isSentPrompt: {
         type: Boolean,
-        attribute: "sent-message",
+        attribute: "sent-prompt",
+      },
+      isSuggestedPrompt: {
+        type: Boolean,
+        attribute: "suggested-message",
       },
       message: {
         type: String,

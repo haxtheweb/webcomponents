@@ -83,7 +83,6 @@ class ChatButton extends DDD {
     ];
   }
 
-  // TODO might need to switch to key down
   render() {
     return html`
       <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress}>
@@ -111,7 +110,7 @@ class ChatButton extends DDD {
   handleChatButton() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
     
-    const CHAT_AGENT = document.querySelector(); // TODO modify
+    // const CHAT_AGENT = document.querySelector(); 
 
     // ! The following is essentiall pseudo-code with the intent of showing how this can work, but element pathes and other aspects will need to be modified for actual test environment
     

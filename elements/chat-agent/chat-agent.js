@@ -35,8 +35,11 @@ class ChatAgent extends DDD {
     super();
 
     // everything
+    // TODO this either stays an array, or find an away to intialize this variable as the JSON I want it to be
+    // this.chatLog = [];
     this.engine = "alfred";
     this.isAIOpen = false;
+    this.userName = "guest"; // TODO needs to grab username somehow or default to "guest"
 
     // button
     this.buttonIcon = "hax:wizard-hat";
@@ -103,6 +106,7 @@ class ChatAgent extends DDD {
     ];
   }
 
+  // TODO user-name needs to filter down to chat-message.js and chat-developer-panel.js
   /**
    * LitElement render callback
    */
@@ -165,6 +169,7 @@ class ChatAgent extends DDD {
 
     // input
 
+    
     // interface
     if (this.isFullView) {
       CHAT_INTERFACE.setAttribute("full-view", "");
@@ -256,6 +261,10 @@ class ChatAgent extends DDD {
       isAIOpen: {
         type: Boolean,
         attribute: "ai-open",
+      },
+      userName: {
+        type: String,
+        attribute: "user-name",
       },
 
       // button

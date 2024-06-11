@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-cta/simple-cta.js"; // TODO remove if not used
 
 class ChatInput extends DDD {
 
@@ -68,11 +69,12 @@ class ChatInput extends DDD {
     ];
   }
 
+  // TODO change the send button to simple-cta, will have to ensure coloring works properly. Check if this is required.
   render() {
     return html`
       <div class="chat-input-wrapper">
-        <textarea name="" id="user-input" placeholder="${this.promptPlaceholder}"></textarea>
-        <div class="send-button" @click=${this.handleSendButton}>
+        <textarea name="" id="user-input" placeholder="${this.promptPlaceholder}" @keypress=${this.handleKeyPress}></textarea>
+        <div class="send-button" @click=${this.handleSendButton} tabindex="0">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
       </div>
@@ -80,16 +82,27 @@ class ChatInput extends DDD {
   }
 
   handleSendButton() {
-    const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value
+    const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
+    // TODO may need to format this variable (change it to let) to make it more readable, such as removing new lines, depending on what Merlin can handle
 
-    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button pressed. Prompt to send: ' + INPUTTED_PROMPT) : null;
+    if (INPUTTED_PROMPT !== "") {
+      this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
-    // TODO send the prompt to merlin engine
+      // TODO send the prompt to merlin engine
 
-    this.shadowRoot.querySelector("#user-input").value = "";
+      this.shadowRoot.querySelector("#user-input").value = "";
+    } else {
+      this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
+    }
   }
 
-  // TODO when user presses SHIFT+ENTER, call handleSendButton()
+  // TODO does not work when there is text in the textarea. Should check if it works when tabbing into it as well for accessibility reasons
+  handleKeyPress(e) {
+    if (e.key === "Enter" && e.shiftKey) {
+      e.preventDefault();
+      this.handleSendButton();
+    }
+  }
 
   static get properties() {
     return {

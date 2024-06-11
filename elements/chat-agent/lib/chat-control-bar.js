@@ -64,8 +64,6 @@ class ChatControlBar extends DDD {
     `;
   }
 
-  // TODO try to make sure that most things that change go through chat-agent.js, which will pass information down to lower components.
-
   /**
    * @description handles the functionality of the download button
    */
@@ -98,17 +96,17 @@ class ChatControlBar extends DDD {
    * @description Toggles the view of chat-interface to full or minimized
    */
   handleViewButton() {
+    const CHAT_AGENT = document.querySelector('chat-agent'); // TODO needs to change for actual HAX environment
+    
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switch button pressed.') : null;
-
-    this.isFullView = !this.isFullView; // TODO may need to remove this part since it will be handled via attribute in chat-agent.js
 
     // this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (this.isFullView ? 'full' : 'standard')) : null;
 
-    // TODO change the view in chat-agent.js (this.isFullView)
-    if (this.isFullView) {
-      document.querySelector('chat-agent').removeAttribute('full-view');
+    // ! pseudo code to have the general idea down; will need more logic
+    if (CHAT_AGENT.isFullView) {
+      CHAT_AGENT.isFullView = false;
     } else {
-      document.querySelector('chat-agent').setAttribute('full-view', "");
+      CHAT_AGENT.isFullView = true;
     }
     
   }
@@ -117,12 +115,14 @@ class ChatControlBar extends DDD {
    * @description changes the interface window to be hidden off screen and unfocusable
    */
   handleHideButton() {
+    const CHAT_AGENT = document.querySelector('chat-agent');
+    
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
 
-    document.querySelector("chat-agent").shadowRoot().querySelector("chat-interface").isHidden = true; // TODO doesn't work right now, will fix
+    
 
     // TODO write code that will hide the interface using CSS.
-    // * is user is in full size mode, the chat-button needs to become unhidden
+    // * is user is in full size mode, the chat-button needs to become unhidden (which will happen through src/chat-agent.js)
   }
 
   /**
@@ -132,6 +132,10 @@ class ChatControlBar extends DDD {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
 
     // TODO write code to download the chat log. May need to convert an array to .json
+    /*
+      * Grab the array to convery to JSON, or if it is possible to make the JSON file when the AI loads, then just need to find way to download
+      * Download array as JSON
+    */
   }
 
   /**

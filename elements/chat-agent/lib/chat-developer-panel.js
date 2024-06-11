@@ -15,6 +15,7 @@ class ChatDeveloperPanel extends DDD {
   constructor() {
     super();
     this.engine = "alfred";
+    this.userName = "guest";
   }
 
   static get styles() {
@@ -65,7 +66,7 @@ class ChatDeveloperPanel extends DDD {
     return html`
       <div class="chat-developer-panel-wrapper">
         <div class="console-table">
-          <button id="console-table-user">
+          <button id="console-table-user" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
             </div>
@@ -74,7 +75,7 @@ class ChatDeveloperPanel extends DDD {
             </div> 
           </button>
 
-          <button id="console-table-merlin">
+          <button id="console-table-merlin" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite> 
             </div>
@@ -83,7 +84,7 @@ class ChatDeveloperPanel extends DDD {
             </div>
           </button>
 
-          <button id="console-table-all">
+          <button id="console-table-all" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
             </div>
@@ -108,23 +109,41 @@ class ChatDeveloperPanel extends DDD {
   }
 
   handleConsoleTableButton(e) {
-    switch (e.target.id) {
+    const TARGET = e.currentTarget.id; // TODO not working
+    
+    console.info(`HAX-DEV-MODE: ${TARGET} button pressed.`);
+
+    switch (TARGET) {
       case "console-table-user":
-        // TODO console.table() user chat log
-        console.table();
+        console.table(this.compileChatLog(this.userName));
         break;
       case "console-table-merlin":
-        // TODO console.table() merlin chat log
-        console.table()
+        console.table(this.compileChatLog("merlin"))
         break;
       case "console-table-all":
-        // TODO console.table() entire chat log
+        // TODO console.table() entire chat log. No compile needed, just console.table the chat log itself
         console.table()
         break;
     }
   }
+  
+  /**
+   * @description compiles a smaller chat log for the given author of messages
+   * @param {string} author - the name of the author of the messages. Either the user's name or "merlin".
+   */
+  compileChatLog(author) {
+    console.info(`HAX-DEV-MODE: Compiling "${author}" chat log`)
+    
+    let newChatLog = [];
+
+    // TODO create for loop that will find every message written by author, then add to newChatLog
+
+
+    return newChatLog;
+  }
 
   handleSwitchEngineButton(e) {
+    // TODO needs to set the engine at the highest level, which then needs to pass down through the applicable components
     switch (this.engine) {
       case "alfred":
         this.engine = "robin";
@@ -134,15 +153,20 @@ class ChatDeveloperPanel extends DDD {
         break;
     }
 
-    console.info("HAX-DEV-MODE: Engine switched to " + this.engine);
+    console.info(`HAX-DEV-MODE: Engine switched to ${this.engine}`);
 
-    e.target.innerHTML = `Switch LLM Engine (Current Engine = <em>${this.engine}</em>)`;
+    e.currentTarget.innerHTML = `Switch LLM Engine (Current Engine = <em>${this.engine}</em>)`;
   }
+
 
   static get properties() {
     return {
       ...super.properties,
       engine: { type: String },
+      userName: { 
+        type: String,
+        attribute: "user-name",
+       },
     };
   }
 

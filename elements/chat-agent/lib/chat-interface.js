@@ -14,7 +14,7 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     
-    this.enableDeveloperPanel = false;
+    this.developerModeEnabled = false;
     this.isAIOpen = false;
     this.isFullView = false;
     this.isInterfaceHidden = false;
@@ -79,30 +79,30 @@ class ChatInterface extends DDD {
     ];
   }
 
+  // TODO might need to check ternary statements to ensure they are needed or not. could use firstUpdated() instead to set attribute. for one attribute it doesn't seem terrible though
   render() {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
-          ${this.enableDeveloperPanel ? html`
+          ${this.developerModeEnabled ? html`
             <div class="developer-panel-wrapper">
               <chat-developer-panel></chat-developer-panel>
             </div>
           ` : ''}
           <div class="main-wrapper">
-            ${this.enableDeveloperPanel ? html`
+            ${this.developerModeEnabled ? html`
               <chat-control-bar developer-mode></chat-control-bar>
             ` : html`
               <chat-control-bar></chat-control-bar>
             `}
-            
             <div class="chat-container">
               <div class="chat-messages">
                 <chat-message author="merlin-ai" message="Hello! My name is Merlin. How can I help you today?" suggested-prompts></chat-message>
-                <chat-message sent-message message="Hi Merlin! I could use some help with programming."></chat-message>
+                <chat-message sent-prompt message="Hi Merlin! I could use some help with programming."></chat-message>
                 <chat-message author="merlin-ai" message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>
-                <chat-message sent-message message="This last message will cause the chat to scroll."></chat-message>
+                <chat-message sent-prompt message="This last message will cause the chat to scroll."></chat-message>
               </div>
-              ${this.enableDeveloperPanel ? html`
+              ${this.developerModeEnabled ? html`
                 <chat-input placeholder="${this.promptPlaceholder}" developer-mode></chat-input>
               ` : html`
                 <chat-input placeholder="${this.promptPlaceholder}"></chat-input>
@@ -117,7 +117,7 @@ class ChatInterface extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      enableDeveloperPanel: {
+      developerModeEnabled: {
         type: Boolean,
         attribute: "developer-mode",
       },
