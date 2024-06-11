@@ -13,9 +13,9 @@ class ChatInput extends DDD {
 
   constructor() {
     super();
-    this.promptPlaceholder = "Type text here...";
     this.developerModeEnabled = false;
     this.engine = "alfred";
+    this.promptPlaceholder = "Type text here...";
   }
 
   static get styles() {
@@ -94,13 +94,14 @@ class ChatInput extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      promptPlaceholder: {
-        type: String,
-        attribute: "placeholder",
-      },
       developerModeEnabled: {
         type: Boolean,
         attribute: "developer-mode",
+      },
+      engine: { type: String },
+      promptPlaceholder: {
+        type: String,
+        attribute: "placeholder",
       },
     };
   }

@@ -142,6 +142,7 @@ class ChatDeveloperPanel extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      engine: { type: String },
     };
   }
 

@@ -14,10 +14,10 @@ class ChatSuggestion extends DDD {
 
   constructor() {
     super();
-    this.suggestion = '';
-    this.disabled = false;
     this.developerModeEnabled = false;
+    this.disabled = false;
     this.engine = "alfred";
+    this.suggestion = '';
   }
 
   static get styles() {
@@ -90,13 +90,13 @@ class ChatSuggestion extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      suggestion: { type: String },
-      active: { type: Boolean },
       developerModeEnabled: { 
         type: Boolean, 
         attribute: "developer-mode",
       },
+      disabled: { type: Boolean },
       engine: { type: String },
+      suggestion: { type: String },
     };
   }
 

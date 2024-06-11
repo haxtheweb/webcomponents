@@ -20,6 +20,14 @@ import { html, css } from "lit";
  * @element chat-agent
  */
 class ChatAgent extends DDD {
+  
+  /**
+   * Convention we use
+   */
+  static get tag() {
+    return "chat-agent";
+  }
+  
   /**
    * HTMLElement
    */
@@ -31,9 +39,9 @@ class ChatAgent extends DDD {
     this.isAIOpen = false;
 
     // button
+    this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
     this.isButtonHidden = false;
-    this.buttonIcon = "hax:wizard-hat";
 
     // control bar
 
@@ -112,12 +120,7 @@ class ChatAgent extends DDD {
       </div>
     `;
   }
-  /**
-   * Convention we use
-   */
-  static get tag() {
-    return "chat-agent";
-  }
+  
 
   /**
    * LitElement ready
@@ -130,8 +133,12 @@ class ChatAgent extends DDD {
     const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
     const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
 
+    // developer mode
     if (this.enableDeveloperMode) {
-      console.info("HAX-DEV-MODE: Developer panel is enabled");
+      console.info("HAX-DEV-MODE: Developer mode is enabled");
+
+      CHAT_INTERFACE.setAttribute("developer-mode", "");
+      CHAT_BUTTON.setAttribute("developer-mode", "");
     }
 
     // everything
@@ -142,30 +149,28 @@ class ChatAgent extends DDD {
     // button
     if (this.isFullView && !this.isInterfaceHidden) {
       this.isButtonHidden = true;
+      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Button is hidden") : null;
     } else {
       this.isButtonHidden = false;
+      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Button is visible") : null;
     }
 
     if (this.isButtonHidden) {
+      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Setting button to hidden") : null;
       CHAT_BUTTON.setAttribute("hidden", "");
-    }
+    } // TODO this might be moved down to `updated(changedProperties)`
 
     // control bar
 
-
-    // developer mode
-    if (this.enableDeveloperMode) {
-      console.info("HAX-DEV-MODE: Developer panel is enabled");
-
-      CHAT_INTERFACE.setAttribute("developer-mode", "");
-      CHAT_BUTTON.setAttribute("developer-mode", "");
-    }
 
     // input
 
     // interface
     if (this.isFullView) {
       CHAT_INTERFACE.setAttribute("full-view", "");
+      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
+    } else {
+      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
     }
 
     // message
@@ -176,6 +181,7 @@ class ChatAgent extends DDD {
 
     // Other needed logic (might be moved to updated() once I learn how that works)
   }
+
   /**
    * LitElement life cycle - property changed
    */
@@ -183,6 +189,36 @@ class ChatAgent extends DDD {
     if (super.updated) {
       super.updated(changedProperties);
     }
+
+    const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
+    const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
+
+    // developer mode
+
+
+    // everything
+
+
+    // button
+
+
+    // control bar
+
+
+    // input
+
+
+    // interface
+
+
+    // message
+
+
+    // suggestion
+
+
+    // Other needed logic
+    
     changedProperties.forEach((oldValue, propName) => {
       /* notify example
       // notify
@@ -223,17 +259,17 @@ class ChatAgent extends DDD {
       },
 
       // button
+      buttonIcon: {
+        type: String,
+        attribute: "button-icon",
+      },
       buttonLabel: {
         type: String,
         attribute: "button-label",
       },
-      hideButton: {
+      isButtonHidden: {
         type: Boolean,
         attribute: "hide-button",
-      },
-      buttonIcon: {
-        type: String,
-        attribute: "button-icon",
       },
 
       // control bar
@@ -256,7 +292,7 @@ class ChatAgent extends DDD {
         type: Boolean,
         attribute: "full-view",
       },
-      hideInterface: {
+      isInterfaceHidden: {
         type: Boolean,
         attribute: "hide-interface",
       },
@@ -270,5 +306,6 @@ class ChatAgent extends DDD {
     }
   }
 }
+
 customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };

@@ -14,11 +14,11 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     
-    this.isInterfaceHidden = false;
+    this.enableDeveloperPanel = false;
     this.isAIOpen = false;
     this.isFullView = false;
+    this.isInterfaceHidden = false;
     this.promptPlaceholder = "Type a message...";
-    this.enableDeveloperPanel = false;
 
     // TODO: possible add developer option to toggle whether fading is enabled
   }
@@ -43,8 +43,10 @@ class ChatInterface extends DDD {
           background-color: transparent;
         }
 
+        /* Does not work currently */
         :host([isFullView]) .chat-interface-wrapper {
           background-color: var(--ddd-theme-default-potentialMidnight);
+          padding: var(--ddd-spacing-2);
         }
 
         /* TODO make it so when any element within the chat interface is focused, the opacity is 1.0 */
@@ -115,17 +117,13 @@ class ChatInterface extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      promptPlaceholder: {
-        type: String,
-        attribute: "prompt-placeholder",
-      },
       enableDeveloperPanel: {
         type: Boolean,
         attribute: "developer-mode",
       },
       isAIOpen: {
         type: Boolean,
-        attribute: "open",
+        attribute: "ai-open",
       },
       isFullView: {
         type: Boolean,
@@ -134,6 +132,10 @@ class ChatInterface extends DDD {
       isInterfaceHidden: {
         type: Boolean,
         attribute: "hidden",
+        },
+      promptPlaceholder: {
+        type: String,
+        attribute: "prompt-placeholder",
       },
     };
   }

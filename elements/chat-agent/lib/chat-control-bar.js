@@ -14,8 +14,8 @@ class ChatControlBar extends DDD {
   constructor() {
     super();
 
-    this.isFullView = false;
     this.developerModeEnabled = false;
+    this.isFullView = false;
   }
 
   static get styles() {
@@ -146,15 +146,13 @@ class ChatControlBar extends DDD {
   static get properties() {
     return {
       ...super.properties,
-
-      isFullView: {
-        type: Boolean,
-        attribute: "full-view",
-      },
-
       developerModeEnabled: {
         type: Boolean,
         attribute: "developer-mode",
+      },
+      isFullView: {
+        type: Boolean,
+        attribute: "full-view",
       },
     };
   }

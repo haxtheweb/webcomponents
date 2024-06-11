@@ -16,9 +16,9 @@ class ChatMessage extends DDD {
     super();
 
     this.author = "guest";
-    this.message = "";
-    this.isSentMessage = false;
     this.hasSuggestedPrompts = false;
+    this.isSentMessage = false;
+    this.message = "";
   }
 
   static get styles() {
@@ -160,16 +160,16 @@ class ChatMessage extends DDD {
       author: {
         type: String,
       },
-      message: {
-        type: String,
+      hasSuggestedPrompts: {
+        type: Boolean,
+        attribute: "suggested-prompts",
       },
       isSentMessage: {
         type: Boolean,
         attribute: "sent-message",
       },
-      hasSuggestedPrompts: {
-        type: Boolean,
-        attribute: "suggested-prompts",
+      message: {
+        type: String,
       },
     };
   }

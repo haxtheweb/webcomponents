@@ -15,10 +15,10 @@ class ChatButton extends DDD {
     super();
     this.buttonIcon = "hax:loading";
     this.buttonLabel = "Chat";
+    this.developerModeEnabled = false;
+    this.isButtonHiding = false;
     this.isFullView = false; // TODO needs functionality added for this. Becomes true when user enters full mode, and when user is in standard mode
     this.isInterfaceHidden = false; // TODO make it this value is grabbed from the interface rather than being set separately
-    this.isButtonHiding = false;
-    this.developerModeEnabled = false;
   }
 
   static get styles() {
@@ -104,20 +104,32 @@ class ChatButton extends DDD {
       e.preventDefault();
       this.handleChatButton();
     }
-    
   }
 
-  /*
-    TODO:
-    * Check if chat interface is open, if not, open it
-    * Flip hidden state.
-    * Add developer mode console statements
-  */
 
   // TODO: Make all attribute changes occur through chat-agent, making all attributes easier to find and pass through to lower components
   handleChatButton() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
     
+    const CHAT_AGENT = document.querySelector(); // TODO modify
+
+    // ! The following is essentiall pseudo-code with the intent of showing how this can work, but element pathes and other aspects will need to be modified for actual test environment
+    
+    // If being clicked for the first time, start AI, will never be switched back to false unless page is reloaded
+    if (!CHAT_AGENT.isAIOpen) { // ? unsure if this will work, may have to switch to .hasAttribute("ai-open")
+      CHAT_AGENT.isAIOpen = true;
+    }
+
+    // Open or close interface
+    CHAT_AGENT.isInterfaceHidden = !CHAT_AGENT.isInterfaceHidden;
+
+    // Hide or show button
+    if (CHAT_AGENT.isFullView && !CHAT_AGENT.isInterfaceHidden) {
+      CHAT_AGENT.isButtonHidden = true;
+    } else {
+      CHAT_AGENT.isButtonHidden = false;
+    } // TODO: Check if this if-else needs to be moved elsewhere
+
   }
 
   static get properties() {
@@ -131,14 +143,6 @@ class ChatButton extends DDD {
         type: String,
         attribute: "label",
       },
-      isFullView: {
-        type: Boolean,
-        attribute: "full-view",
-      },
-      isInterfaceHidden: {
-        type: Boolean,
-        attribute: "hiding-interface",
-      },
       developerModeEnabled: {
         type: Boolean,
         attribute: "developer-mode",
@@ -146,6 +150,14 @@ class ChatButton extends DDD {
       isButtonHiding: {
         type: Boolean,
         attribute: "hidden",
+      },
+      isFullView: {
+        type: Boolean,
+        attribute: "full-view",
+      },
+      isInterfaceHidden: {
+        type: Boolean,
+        attribute: "hiding-interface",
       },
     };
   }
