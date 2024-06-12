@@ -119,8 +119,6 @@ class ChatControlBar extends DDD {
     
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
 
-    
-
     // TODO write code that will hide the interface using CSS.
     // * is user is in full size mode, the chat-button needs to become unhidden (which will happen through src/chat-agent.js)
   }
@@ -144,7 +142,7 @@ class ChatControlBar extends DDD {
   resetChat() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Resetting chat...') : null;
 
-    // TODO write code to reset the chat to it's initial state
+    // TODO write code to reset the chat to it's initial state. Could maybe just be done through array map
   }
 
   static get properties() {

@@ -16,10 +16,12 @@ class ChatMessage extends DDD {
     super();
 
     this.author = "guest";
+    this.developerModeEnabled = false;
     this.hasSuggestedPrompts = false; // determines whether or not suggestions will render
     this.isSentPrompt = false;
     this.isSuggestedPrompt = false; // determines whether or not the user submitted prompt is a suggested prompt or user submitted prompt
     this.message = "";
+    this.suggestedPrompts = []; // Array of strings, each string is a suggested prompt
   }
 
   static get styles() {
@@ -110,6 +112,7 @@ class ChatMessage extends DDD {
 
   // TODO want the chat-suggestions to load after the type-writer is done writing out the text
   // TODO remove the this.hasSuggestedPrompts ternary operator since that is for testing purposes only
+  // TODO chat suggestions should be rendered using Array Map?
   /**
    * @description Renders a message recevied from Merlin-AI
    */
@@ -124,14 +127,28 @@ class ChatMessage extends DDD {
         </div>
         ${this.hasSuggestedPrompts ? html`
           <div class="suggested-prompts">
-            <chat-suggestion developer-mode tabindex="0" suggestion="This is a suggestion"></chat-suggestion>
-            <chat-suggestion developer-mode tabindex="0" suggestion="This is a second suggestion"></chat-suggestion>
-            <chat-suggestion developer-mode tabindex="0" suggestion="This is a longer suggestion because testing weeeeeee"></chat-suggestion>
-            <chat-suggestion developer-mode tabindex="0" suggestion="This is a suggestion"></chat-suggestion>
+            <chat-suggestion tabindex="0" suggestion="This is a suggestion"></chat-suggestion>
+            <chat-suggestion tabindex="0" suggestion="This is a second suggestion"></chat-suggestion>
+            <chat-suggestion tabindex="0" suggestion="This is a longer suggestion because testing weeeeeee"></chat-suggestion>
+            <chat-suggestion tabindex="0" suggestion="This is a suggestion"></chat-suggestion>
           </div>
         ` : ''}
       </div>
     `;
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties)
+    }
+
+    const CHAT_SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
+    
+    if (this.developerModeEnabled) {
+      CHAT_SUGGESTIONS.forEach((chatSuggestion) => {
+        chatSuggestion.setAttribute("developer-mode", "");
+      });
+    }
   }
 
   // TODO may wish to change type-writer for user messages to <p> instead of <type-writer>
@@ -155,6 +172,10 @@ class ChatMessage extends DDD {
       author: {
         type: String,
       },
+      developerModeEnabled: {
+        type: Boolean,
+        attribute: "developer-mode",
+      },
       hasSuggestedPrompts: {
         type: Boolean,
         attribute: "suggested-prompts",
@@ -169,6 +190,9 @@ class ChatMessage extends DDD {
       },
       message: {
         type: String,
+      },
+      suggestedPrompts: {
+        type: Array,
       },
     };
   }

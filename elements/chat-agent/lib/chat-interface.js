@@ -79,7 +79,7 @@ class ChatInterface extends DDD {
     ];
   }
 
-  // TODO might need to check ternary statements to ensure they are needed or not. could use firstUpdated() instead to set attribute. for one attribute it doesn't seem terrible though
+  // TODO chat-message tags should be rendered using array map
   render() {
     return html`
       <div class="chat-interface-wrapper">
@@ -90,11 +90,7 @@ class ChatInterface extends DDD {
             </div>
           ` : ''}
           <div class="main-wrapper">
-            ${this.developerModeEnabled ? html`
-              <chat-control-bar developer-mode></chat-control-bar>
-            ` : html`
-              <chat-control-bar></chat-control-bar>
-            `}
+            <chat-control-bar></chat-control-bar>
             <div class="chat-container">
               <div class="chat-messages">
                 <chat-message author="merlin-ai" message="Hello! My name is Merlin. How can I help you today?" suggested-prompts></chat-message>
@@ -102,16 +98,28 @@ class ChatInterface extends DDD {
                 <chat-message author="merlin-ai" message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>
                 <chat-message sent-prompt message="This last message will cause the chat to scroll."></chat-message>
               </div>
-              ${this.developerModeEnabled ? html`
-                <chat-input placeholder="${this.promptPlaceholder}" developer-mode></chat-input>
-              ` : html`
-                <chat-input placeholder="${this.promptPlaceholder}"></chat-input>
-              `}
+              <chat-input placeholder="${this.promptPlaceholder}"></chat-input>
             </div>
           </div>
         </div>
       </div>
     `;
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+
+    const CHAT_CONTROL_BAR = this.shadowRoot.querySelector("chat-control-bar");
+    const CHAT_MESSAGE = this.shadowRoot.querySelector("chat-message");
+    const CHAT_INPUT = this.shadowRoot.querySelector("chat-input");
+
+    if (this.developerModeEnabled) {
+      CHAT_CONTROL_BAR.setAttribute("developer-mode", "");
+      CHAT_MESSAGE.setAttribute("developer-mode", "");
+      CHAT_INPUT.setAttribute("developer-mode", "");
+    }
   }
 
   static get properties() {

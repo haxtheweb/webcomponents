@@ -137,12 +137,14 @@ class ChatDeveloperPanel extends DDD {
     let newChatLog = [];
 
     // TODO create for loop that will find every message written by author, then add to newChatLog
-
+    
 
     return newChatLog;
   }
 
   handleSwitchEngineButton(e) {
+    const CHAT_AGENT = document.querySelector('chat-agent'); // TODO needs to change for actual HAX environment
+    
     // TODO needs to set the engine at the highest level, which then needs to pass down through the applicable components
     switch (this.engine) {
       case "alfred":

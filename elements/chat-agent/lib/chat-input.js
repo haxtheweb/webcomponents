@@ -80,27 +80,31 @@ class ChatInput extends DDD {
       </div>
     `;
   }
+  
+  // TODO Should check if it works when tabbing into it as well for accessibility reasons
+  handleKeyPress(e) {
+    if (e.key === "Enter" && e.shiftKey) {
+      e.preventDefault();
+      this.handleSendButton();
+    }
+  }
 
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
-    // TODO may need to format this variable (change it to let) to make it more readable, such as removing new lines, depending on what Merlin can handle
+    // TODO may need to format this variable (change it to let) to make it modifiable.
 
     if (INPUTTED_PROMPT !== "") {
       this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
+
+      // TODO make new chat-message appear in chat interface
+
+      // TODO write message to chat log
 
       // TODO send the prompt to merlin engine
 
       this.shadowRoot.querySelector("#user-input").value = "";
     } else {
       this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
-    }
-  }
-
-  // TODO does not work when there is text in the textarea. Should check if it works when tabbing into it as well for accessibility reasons
-  handleKeyPress(e) {
-    if (e.key === "Enter" && e.shiftKey) {
-      e.preventDefault();
-      this.handleSendButton();
     }
   }
 

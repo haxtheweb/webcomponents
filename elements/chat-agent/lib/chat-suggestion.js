@@ -73,16 +73,19 @@ class ChatSuggestion extends DDD {
     `;
   }
 
+  /**
+   * @description Event handler for the suggestion button
+   */
   handleSuggestion() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
 
-    // send user chat-messaage with a suggested-prompt attribute
+    // TODO send user chat-messaage with a suggested-prompt attribute
 
     
-    // write message to chat log while signifying in the chat log that the message is a suggestion
+    // TODO write message to chat log while signifying in the chat log that the message is a suggestion
 
 
-    // Send message to AI for response
+    // TODO Send message to AI for response
   }
 
   static get properties() {

@@ -50,7 +50,7 @@ class ChatAgent extends DDD {
 
 
     // developer mode
-    this.enableDeveloperMode = true; // ! this will enable developer mode for the entire chat system
+    this.developerModeEnabled = false; // ! this will enable developer mode for the entire chat system
 
     // input
     this.promptPlaceholder = "Enter your prompt here...";
@@ -125,7 +125,7 @@ class ChatAgent extends DDD {
     `;
   }
   
-
+  // TODO remove any comments that are not needed (before push to release)
   /**
    * LitElement ready
    */
@@ -138,7 +138,7 @@ class ChatAgent extends DDD {
     const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
 
     // developer mode
-    if (this.enableDeveloperMode) {
+    if (this.developerModeEnabled) {
       console.info("HAX-DEV-MODE: Developer mode is enabled");
 
       CHAT_INTERFACE.setAttribute("developer-mode", "");
@@ -153,14 +153,14 @@ class ChatAgent extends DDD {
     // button
     if (this.isFullView && !this.isInterfaceHidden) {
       this.isButtonHidden = true;
-      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Button is hidden") : null;
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is hidden") : null;
     } else {
       this.isButtonHidden = false;
-      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Button is visible") : null;
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is visible") : null;
     }
 
     if (this.isButtonHidden) {
-      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Setting button to hidden") : null;
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting button to hidden") : null;
       CHAT_BUTTON.setAttribute("hidden", "");
     } // TODO this might be moved down to `updated(changedProperties)`
 
@@ -173,9 +173,9 @@ class ChatAgent extends DDD {
     // interface
     if (this.isFullView) {
       CHAT_INTERFACE.setAttribute("full-view", "");
-      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
     } else {
-      this.enableDeveloperMode ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
     }
 
     // message
@@ -285,7 +285,7 @@ class ChatAgent extends DDD {
 
 
       // developer mode
-      enableDeveloperMode: { // ! this will enable developer mode for the entire chat system
+      developerModeEnabled: { // ! this will enable developer mode for the entire chat system
         type: Boolean,
         attribute: "developer-mode",
       }, 

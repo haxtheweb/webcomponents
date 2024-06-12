@@ -17,8 +17,8 @@ class ChatButton extends DDD {
     this.buttonLabel = "Chat";
     this.developerModeEnabled = false;
     this.isButtonHiding = false;
-    this.isFullView = false; // TODO needs functionality added for this. Becomes true when user enters full mode, and when user is in standard mode
-    this.isInterfaceHidden = false; // TODO make it this value is grabbed from the interface rather than being set separately
+    this.isFullView = false;
+    this.isInterfaceHidden = false;
   }
 
   static get styles() {
@@ -112,7 +112,7 @@ class ChatButton extends DDD {
     
     // const CHAT_AGENT = document.querySelector(); 
 
-    // ! The following is essentiall pseudo-code with the intent of showing how this can work, but element pathes and other aspects will need to be modified for actual test environment
+    // ! The following is essentially pseudo-code with the intent of showing how this can work, but element pathes and other aspects will need to be modified for actual test environment
     
     // If being clicked for the first time, start AI, will never be switched back to false unless page is reloaded
     if (!CHAT_AGENT.isAIOpen) { // ? unsure if this will work, may have to switch to .hasAttribute("ai-open")
