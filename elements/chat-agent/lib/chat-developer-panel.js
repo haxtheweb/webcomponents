@@ -14,8 +14,9 @@ class ChatDeveloperPanel extends DDD {
 
   constructor() {
     super();
-    this.engine = "alfred";
-    this.userName = "guest";
+
+    this.engine = "alfred"; // set by chat-agent.js
+    this.userName = "guest"; // set by chat-agent.js
   }
 
   static get styles() {
@@ -148,10 +149,10 @@ class ChatDeveloperPanel extends DDD {
     // TODO needs to set the engine at the highest level, which then needs to pass down through the applicable components
     switch (this.engine) {
       case "alfred":
-        this.engine = "robin";
+        CHAT_AGENT.setAttribute("engine", "robin");
         break;
       case "robin":
-        this.engine = "alfred";
+        CHAT_AGENT.setAttribute("engine", "alfred");
         break;
     }
 
@@ -167,7 +168,7 @@ class ChatDeveloperPanel extends DDD {
       engine: { type: String },
       userName: { 
         type: String,
-        attribute: "user-name",
+        attribute: "username",
        },
     };
   }

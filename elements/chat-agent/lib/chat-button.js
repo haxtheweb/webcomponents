@@ -13,12 +13,12 @@ class ChatButton extends DDD {
 
   constructor() {
     super();
-    this.buttonIcon = "hax:loading";
-    this.buttonLabel = "Chat";
-    this.developerModeEnabled = false;
-    this.isButtonHiding = false;
-    this.isFullView = false;
-    this.isInterfaceHidden = false;
+    this.buttonIcon = "hax:loading"; // set by chat-agent.js
+    this.buttonLabel = "Chat"; // set by chat-agent.js
+    this.developerModeEnabled = false; // set by chat-agent.js
+    this.isButtonHiding = false; // set by chat-agent.js
+    this.isFullView = false; // set by chat-agent.js
+    this.isInterfaceHidden = false; // set by chat-agent.js
   }
 
   static get styles() {

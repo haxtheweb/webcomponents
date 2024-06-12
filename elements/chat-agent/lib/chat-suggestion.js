@@ -14,10 +14,10 @@ class ChatSuggestion extends DDD {
 
   constructor() {
     super();
-    this.developerModeEnabled = false;
-    this.disabled = false;
-    this.engine = "alfred";
-    this.suggestion = ""; 
+    this.developerModeEnabled = false; // set by chat-agent.js
+    this.disabled = false; // TODO set by statement
+    this.engine = "alfred"; // set by chat-agent.js
+    this.suggestion = "";  // TODO set by statement
   }
 
   static get styles() {
@@ -86,6 +86,8 @@ class ChatSuggestion extends DDD {
 
 
     // TODO Send message to AI for response
+
+
   }
 
   static get properties() {

@@ -15,12 +15,12 @@ class ChatMessage extends DDD {
   constructor() {
     super();
 
-    this.author = "guest";
-    this.developerModeEnabled = false;
-    this.hasSuggestedPrompts = false; // determines whether or not suggestions will render
-    this.isSentPrompt = false;
-    this.isSuggestedPrompt = false; // determines whether or not the user submitted prompt is a suggested prompt or user submitted prompt
-    this.message = "";
+    this.author = "guest"; // set by chat-agent.js ("userName")
+    this.developerModeEnabled = false; // set by chat-agent.js
+    this.hasSuggestedPrompts = false; // TODO set by statement; determines whether or not suggestions will render
+    this.isSentPrompt = false; // TODO set by statement
+    this.wasSuggestedPrompt = false; //TODO set by statement; determines whether or not the user submitted prompt is a suggested prompt or user submitted prompt
+    this.message = ""; // TODO set by statement, probably chat-input.js
     this.suggestedPrompts = []; // Array of strings, each string is a suggested prompt
   }
 
@@ -184,7 +184,7 @@ class ChatMessage extends DDD {
         type: Boolean,
         attribute: "sent-prompt",
       },
-      isSuggestedPrompt: {
+      wasSuggestedPrompt: {
         type: Boolean,
         attribute: "suggested-message",
       },

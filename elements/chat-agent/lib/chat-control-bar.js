@@ -14,8 +14,8 @@ class ChatControlBar extends DDD {
   constructor() {
     super();
 
-    this.developerModeEnabled = false;
-    this.isFullView = false;
+    this.developerModeEnabled = false; // set by chat-agent.js
+    this.isFullView = false; // set by chat-agent.js
   }
 
   static get styles() {
@@ -142,7 +142,7 @@ class ChatControlBar extends DDD {
   resetChat() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Resetting chat...') : null;
 
-    // TODO write code to reset the chat to it's initial state. Could maybe just be done through array map
+    // TODO write code to reset the chat to it's initial state. Could maybe just be done through array map by resetting the chat log to initial state
   }
 
   static get properties() {

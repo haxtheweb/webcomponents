@@ -14,9 +14,11 @@ class ChatInput extends DDD {
 
   constructor() {
     super();
-    this.developerModeEnabled = false;
-    this.engine = "alfred";
-    this.promptPlaceholder = "Type text here...";
+
+    this.characterLimit;
+    this.developerModeEnabled = false; // set by chat-agent.js
+    this.engine = "alfred"; // set by chat-agent.js
+    this.promptPlaceholder = "Type text here..."; // set by chat-agent.js
   }
 
   static get styles() {
@@ -69,7 +71,8 @@ class ChatInput extends DDD {
     ];
   }
 
-  // TODO change the send button to simple-cta, will have to ensure coloring works properly. Check if this is required.
+  // TODO change the send button to simple-cta, will have to ensure coloring works properly.
+  // TODO set maxlength attribute on text area, ask Dave what the character limit is
   render() {
     return html`
       <div class="chat-input-wrapper">
@@ -81,7 +84,6 @@ class ChatInput extends DDD {
     `;
   }
   
-  // TODO Should check if it works when tabbing into it as well for accessibility reasons
   handleKeyPress(e) {
     if (e.key === "Enter" && e.shiftKey) {
       e.preventDefault();
@@ -92,6 +94,8 @@ class ChatInput extends DDD {
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
     // TODO may need to format this variable (change it to let) to make it modifiable.
+
+    // TODO if prompt has character amount greater than character length, alert user that they need to shorten their prompt (this is in case the user goes into browser dev tools and changes maxlength attribute)
 
     if (INPUTTED_PROMPT !== "") {
       this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
@@ -108,9 +112,23 @@ class ChatInput extends DDD {
     }
   }
 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+
+    if (this.characterLimit > 0) {
+      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", this.characterLimit);
+    }
+  }
+
   static get properties() {
     return {
       ...super.properties,
+      characterLimit: { 
+        type: Number,
+        attribute: "maxlength",
+      },
       developerModeEnabled: {
         type: Boolean,
         attribute: "developer-mode",

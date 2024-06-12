@@ -35,8 +35,7 @@ class ChatAgent extends DDD {
     super();
 
     // everything
-    // TODO this either stays an array, or find an away to intialize this variable as the JSON I want it to be
-    // this.chatLog = [];
+    this.chatLog = []; // TODO this either stays an array, or find an away to intialize this variable as the JSON I want it to be
     this.engine = "alfred";
     this.isAIOpen = false;
     this.userName = "guest"; // TODO needs to grab username somehow or default to "guest"
@@ -50,7 +49,7 @@ class ChatAgent extends DDD {
 
 
     // developer mode
-    this.developerModeEnabled = false; // ! this will enable developer mode for the entire chat system
+    this.developerModeEnabled = true; // ! this will enable developer mode for the entire chat system
 
     // input
     this.promptPlaceholder = "Enter your prompt here...";
@@ -60,9 +59,13 @@ class ChatAgent extends DDD {
     this.isInterfaceHidden = false;
 
     // message
+    this.merlinIndex = 0; // index of merlin messages
+    this.messageIndex = 0; // index of all messages
+    this.userIndex = 0; // index of user messages
+
+    // suggestion
 
 
-    // suggestion      
   }
 
   /**
@@ -106,7 +109,10 @@ class ChatAgent extends DDD {
     ];
   }
 
-  // TODO user-name needs to filter down to chat-message.js and chat-developer-panel.js
+  // TODO ensure all applicable values filter through the components to get down to where they need to be
+  /* 
+    * engine
+  */
   /**
    * LitElement render callback
    */
@@ -114,7 +120,7 @@ class ChatAgent extends DDD {
     return html`
       <div class="chat-agent-wrapper">
         <div class="agent-interface-wrapper">
-          <chat-interface prompt-placeholder="${this.promptPlaceholder}" tabindex="0"></chat-interface>
+          <chat-interface prompt-placeholder="${this.promptPlaceholder}" tabindex="0" username="${this.userName}"></chat-interface>
         </div>
         <div class="agent-button-wrapper">
           <chat-button tabindex="0" icon="${this.buttonIcon}">
@@ -176,6 +182,11 @@ class ChatAgent extends DDD {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
     } else {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
+    }
+
+    if (this.isInterfaceHidden) {
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
+      CHAT_INTERFACE.setAttribute("hidden", "");
     }
 
     // message
@@ -264,7 +275,7 @@ class ChatAgent extends DDD {
       },
       userName: {
         type: String,
-        attribute: "user-name",
+        attribute: "username",
       },
 
       // button
@@ -307,7 +318,18 @@ class ChatAgent extends DDD {
       },
 
       // message
-
+      merlinIndex: {
+        type: Number,
+        attribute: "merlin-index",
+      },
+      messageIndex: {
+        type: Number,
+        attribute: "message-index",
+      },
+      userIndex: {
+        type: Number,
+        attribute: "user-index",
+      },
 
       // suggestion
       
