@@ -115,14 +115,21 @@ class ChatControlBar extends DDD {
   }
 
   /**
-   * @description downloads the chat log as a .json file
+   * @description downloads the chat log as a .txt file
    */
   downloadChatLog() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
 
-    // TODO write code to download the chat log from ChatAgentModalStore.chatLog by converting array to JSON;
-    
-    
+    if (ChatAgentModalStore.chatLog.length !== 0) {
+      const log = JSON.stringify(ChatAgentModalStore.chatLog, undefined, 2);
+      const fileName = 'chat-log-' + new Date().toISOString() + '.txt'; // TODO need to properly format date string
+      
+      let download = document.createElement('a');
+      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(log));
+      download.setAttribute('download', fileName);
+      download.click();
+      download.remove();
+    }
   }
 
   /**

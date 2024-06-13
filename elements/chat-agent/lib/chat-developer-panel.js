@@ -94,6 +94,14 @@ class ChatDeveloperPanel extends DDD {
               console.table() entire chat log
             </div>
           </button>
+          <button id="download-as-json" @click=${this.handleDownloadAsJsonButton}>
+            <div class="button-icon">
+              <simple-icon-lite icon="icons:file-download"></simple-icon-lite> 
+            </div>
+            <div class="button-text">
+              Download chat log as .json
+            </div>
+          </button>
         </div>
 
         <div class="switch-engine-controls">
@@ -142,6 +150,21 @@ class ChatDeveloperPanel extends DDD {
     
 
     return newChatLog;
+  }
+
+  handleDownloadAsJsonButton() {
+    console.info(`HAX-DEV-MODE: Downloading chat log as .json...`)
+
+    if (ChatAgentModalStore.chatLog.length !== 0) {
+      const log = JSON.stringify(ChatAgentModalStore.chatLog, undefined, 2);
+      const fileName = 'chat-log-' + new Date().toISOString() + '.json'; // TODO need to properly format date string
+      
+      let download = document.createElement('a');
+      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(log));
+      download.setAttribute('download', fileName);
+      download.click();
+      download.remove();
+    }
   }
 
   handleSwitchEngineButton(e) {

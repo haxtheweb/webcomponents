@@ -88,7 +88,7 @@ class ChatSuggestion extends DDD {
       author: ChatAgentModalStore.userName,
       message: this.suggestion,
       authorMessageIndex: ChatAgentModalStore.userIndex,
-      timestamp: new Date(), // TODO check if this stores as string
+      timestamp: new Date(), // TODO need to fix this so it stores the data as a properly formatted string
     }
 
     ChatAgentModalStore.chatLog.push(chatLogObject);
