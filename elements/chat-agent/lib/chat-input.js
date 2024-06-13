@@ -73,7 +73,7 @@ class ChatInput extends DDD {
   render() {
     return html`
       <div class="chat-input-wrapper">
-        <textarea name="" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keypress=${this.handleKeyPress}></textarea>
+        <textarea name="prompt-input" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keypress=${this.handleKeyPress}></textarea>
         <div class="send-button" @click=${this.handleSendButton} tabindex="0">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>

@@ -121,7 +121,7 @@ class ChatMessage extends DDD {
           <div class="author-icon">
             <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
           </div>
-          <type-writer class="message-content" text="${this.message}" speed="30"></type-writer>
+          <type-writer class="message-content" text="${this.message}" speed="${ChatAgentModalStore.merlinTypeWriterSpeed}"></type-writer>
         </div>
         ${this.hasSuggestedPrompts ? html`
           <div class="suggested-prompts">
@@ -134,21 +134,13 @@ class ChatMessage extends DDD {
     `;
   }
 
-  // TODO remove when overhaul of grabbing values is complete
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties)
-    }
-    
-  }
-
   /**
    * @description Renders a message sent by the end user
    */
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-        <type-writer class="message-content" speed="1" text="${this.message}"></type-writer>
+        <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer>
         <div class="author-icon">
           <rpg-character seed="${ChatAgentModalStore.userName}"></rpg-character>
         </div>

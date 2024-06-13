@@ -14,6 +14,7 @@ import '@haxtheweb/simple-icon/simple-icon.js';
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 
+
 /**
  * `chat-agent`
  * `chatbot agent style chat widget`
@@ -38,7 +39,7 @@ class ChatAgent extends DDD {
     // everything
     this.chatLog = [];
     this.engine = "alfred";
-    this.isAIOpen = false;
+    this.isAILoaded = false;
     this.userName = "guest"; // TODO needs to grab username somehow or default to "guest", saw example in haxcms-site-editor-ui.js
 
 
@@ -65,6 +66,9 @@ class ChatAgent extends DDD {
     this.merlinIndex = 0; // index of merlin messages
     this.messageIndex = 0; // index of all messages
     this.userIndex = 0; // index of user messages
+
+    this.userTypeWriterSpeed = 1;
+    this.merlinTypeWriterSpeed = 30;
 
     // suggestion
 
@@ -120,10 +124,7 @@ class ChatAgent extends DDD {
     ];
   }
 
-  // TODO ensure all applicable values filter through the components to get down to where they need to be
-  /* 
-    * engine
-  */
+
   /**
    * LitElement render callback
    */
@@ -131,11 +132,11 @@ class ChatAgent extends DDD {
     return html`
       <div class="chat-agent-wrapper">
         <div class="agent-interface-wrapper">
-          <chat-interface prompt-placeholder="${this.promptPlaceholder}" tabindex="0" username="${this.userName}"></chat-interface>
+          <chat-interface></chat-interface>
         </div>
         <div class="agent-button-wrapper">
-          <chat-button icon="${this.buttonIcon}">
-            <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
+          <chat-button>
+            <span slot="label">${this.buttonLabel}</span>
           </chat-button>
         </div>
       </div>
@@ -222,6 +223,7 @@ class ChatAgent extends DDD {
     // TODO possibly change due to modal, check with Bryan if for example I can use ChatInterface exported from chat-interface.js instead of querySelector
     const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
     const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
+    const SITE_BUILDER = document.querySelector("#site");
 
     // developer mode
 
@@ -246,7 +248,7 @@ class ChatAgent extends DDD {
     // interface
     if (this.isInterfaceHidden) {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
-      CHAT_INTERFACE.style.display = "none"; // TODO will need updated
+      CHAT_INTERFACE.style.display = "none"; // TODO will be changed
     } else {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to visible") : null;
       CHAT_INTERFACE.style.display = "block";
@@ -254,9 +256,11 @@ class ChatAgent extends DDD {
 
     if (this.isFullView) {
       CHAT_INTERFACE.setAttribute("full-view", "");
+      SITE_BUILDER.style.width = "75%"; // TODO will be changed
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
     } else {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
+      SITE_BUILDER.style.width = "100%";
       CHAT_INTERFACE.removeAttribute("full-view");
     }
 
@@ -305,7 +309,7 @@ class ChatAgent extends DDD {
       engine: {
         type: String,
       },
-      isAIOpen: {
+      isAILoaded: {
         type: Boolean,
         attribute: "ai-open",
       },

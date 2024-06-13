@@ -17,7 +17,7 @@ class ChatSuggestion extends DDD {
     super();
     
     this.disabled = false;
-    this.suggestion = ""; // TODO deprecated
+    this.suggestion = "";
   }
 
   static get styles() {
@@ -62,12 +62,11 @@ class ChatSuggestion extends DDD {
     ];
   }
 
-  // ! slot has to be this way as it makes it easier to both dynamically create this tag using .setAttribute(), as well as grabbing the variable for other purposes
   render() {
     return html`
       <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0">
         <p class="chat-suggestion">
-          <slot>${this.suggestion}</slot>
+          ${this.suggestion}
         </p>  
       </div>
     `;

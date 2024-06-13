@@ -140,7 +140,12 @@ class ChatControlBar extends DDD {
   resetChat() {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Resetting chat...') : null;
 
-    // TODO write code to reset the chat to it's initial state. Could maybe just be done through array map by resetting the chat log to initial state
+    ChatAgentModalStore.chatLog = [];
+    ChatAgentModalStore.merlinIndex = 0;
+    ChatAgentModalStore.messageIndex = 0;
+    ChatAgentModalStore.userIndex = 0;
+
+    // TODO need to prompt the AI to start again
   }
 
   static get properties() {
