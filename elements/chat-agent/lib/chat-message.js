@@ -2,9 +2,10 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
-import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/type-writer/type-writer.js";
+import { ChatAgentModalStore } from "../chat-agent";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { html, css } from "lit";
 
 class ChatMessage extends DDD {
 
@@ -127,9 +128,9 @@ class ChatMessage extends DDD {
         </div>
         ${this.hasSuggestedPrompts ? html`
           <div class="suggested-prompts">
-            <chat-suggestion tabindex="0" suggestion="This is a suggestion"></chat-suggestion>
-            <chat-suggestion tabindex="0" suggestion="This is a second suggestion"></chat-suggestion>
-            <chat-suggestion tabindex="0" suggestion="This is a longer suggestion because testing weeeeeee"></chat-suggestion>
+            <chat-suggestion suggestion="This is a suggestion"></chat-suggestion>
+            <chat-suggestion suggestion="This is a second suggestion"></chat-suggestion>
+            <chat-suggestion suggestion="This is a longer suggestion because testing weeeeeee"></chat-suggestion>
           </div>
         ` : ''}
       </div>

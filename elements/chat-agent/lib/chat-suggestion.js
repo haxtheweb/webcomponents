@@ -3,8 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 
-import { html, css } from "lit";
+import { ChatAgentModalStore } from "../chat-agent";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { html, css } from "lit";
 
 class ChatSuggestion extends DDD {
   
@@ -65,7 +66,7 @@ class ChatSuggestion extends DDD {
   // ! slot has to be this way as it makes it easier to both dynamically create this tag using .setAttribute(), as well as grabbing the variable for other purposes
   render() {
     return html`
-      <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion}>
+      <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0">
         <p class="chat-suggestion">
           <slot>${this.suggestion}</slot>
         </p>  
@@ -78,12 +79,19 @@ class ChatSuggestion extends DDD {
    */
   handleSuggestion() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
-
-    // TODO send user chat-messaage with a suggested-prompt attribute
-
     
-    // TODO write message to chat log while signifying in the chat log that the message is a suggestion
+    ChatAgentModalStore.messageIndex++;
+    ChatAgentModalStore.userIndex++;
+    
+    const chatLogObject = {
+      messageID: ChatAgentModalStore.messageIndex,
+      author: ChatAgentModalStore.userName,
+      message: this.suggestion,
+      authorMessageIndex: ChatAgentModalStore.userIndex,
+      timestamp: new Date(), // TODO check if this stores as string
+    }
 
+    ChatAgentModalStore.chatLog.push(chatLogObject);
 
     // TODO Send message to AI for response
 
