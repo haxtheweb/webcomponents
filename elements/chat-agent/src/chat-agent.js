@@ -38,7 +38,8 @@ class ChatAgent extends DDD {
     this.chatLog = []; // TODO this either stays an array, or find an away to intialize this variable as the JSON I want it to be
     this.engine = "alfred";
     this.isAIOpen = false;
-    this.userName = "guest"; // TODO needs to grab username somehow or default to "guest"
+    this.userName = "guest"; // TODO needs to grab username somehow or default to "guest", saw example in haxcms-site-editor-ui.js
+    // TODO add support for user picture
 
     // button
     this.buttonIcon = "hax:wizard-hat";
@@ -68,6 +69,7 @@ class ChatAgent extends DDD {
 
   }
 
+  // TODO @container queries for screen size differences
   /**
    * LitElement style callback
    */
@@ -93,7 +95,7 @@ class ChatAgent extends DDD {
           position: fixed;
           bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          width: 40%;
+          width: 40%; /* Switch to 30% when working with hax environment */
         }
 
         .agent-interface-wrapper {
@@ -104,6 +106,13 @@ class ChatAgent extends DDD {
         .agent-button-wrapper {
           display: flex;
           justify-content: right;
+        }
+
+        /* TODO does not work, refine and fix */
+        @container (max-width: 600px) {
+          .chat-agent-wrapper {
+            width: 30%;
+          }
         }
       `,
     ];
@@ -123,7 +132,7 @@ class ChatAgent extends DDD {
           <chat-interface prompt-placeholder="${this.promptPlaceholder}" tabindex="0" username="${this.userName}"></chat-interface>
         </div>
         <div class="agent-button-wrapper">
-          <chat-button tabindex="0" icon="${this.buttonIcon}">
+          <chat-button icon="${this.buttonIcon}">
             <span slot="label"><slot name="label">${this.buttonLabel}</slot></span>
           </chat-button>
         </div>
@@ -131,7 +140,6 @@ class ChatAgent extends DDD {
     `;
   }
   
-  // TODO remove any comments that are not needed (before push to release)
   /**
    * LitElement ready
    */
@@ -140,6 +148,7 @@ class ChatAgent extends DDD {
       super.firstUpdated(changedProperties);
     }
 
+    // TODO possibly change due to modal
     const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
     const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
 
@@ -206,6 +215,7 @@ class ChatAgent extends DDD {
       super.updated(changedProperties);
     }
 
+    // TODO possibly change due to modal
     const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
     const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
 
@@ -225,7 +235,10 @@ class ChatAgent extends DDD {
 
 
     // interface
-
+    if (this.isInterfaceHidden) {
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
+      CHAT_INTERFACE.setAttribute("hidden", "");
+    }
 
     // message
 
@@ -266,6 +279,9 @@ class ChatAgent extends DDD {
       ...super.properties,
       
       // everything
+      chatLog: {
+        type: Array,
+      },
       engine: {
         type: String,
       },
@@ -340,3 +356,18 @@ class ChatAgent extends DDD {
 
 customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };
+
+// register globally so we can make sure there is only one
+window.ChatAgentModal = window.ChatAgentModal || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same modal
+window.ChatAgentModal.requestAvailability = () => {
+  if (!window.ChatAgentModal.instance) {
+    window.ChatAgentModal.instance = document.createElement("chat-agent");
+    document.body.appendChild(window.ChatAgentModal.instance);
+  }
+  return window.ChatAgentModal.instance;
+};
+
+export const ChatAgentModalStore = window.ChatAgentModal.requestAvailability();

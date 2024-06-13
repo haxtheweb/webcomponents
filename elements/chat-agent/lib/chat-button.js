@@ -32,10 +32,6 @@ class ChatButton extends DDD {
           z-index: 999998;
         }
 
-        .chat-button-wrapper[full-view][hiding-interface = "false"]  {
-          display: none;
-        }
-
         .chat-button-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           display: flex;
@@ -85,7 +81,7 @@ class ChatButton extends DDD {
 
   render() {
     return html`
-      <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress}>
+      <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0">
         <div class="icon-wrapper">
           <simple-icon-lite icon="${this.buttonIcon}"></simple-icon-lite>
         </div>
@@ -96,7 +92,6 @@ class ChatButton extends DDD {
     `;
   }
 
-  // TODO does not work, don't know why, not priority but should be fixed before PR to main
   keyPress(e) {
     if (e.key === "Enter") {
       this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
@@ -105,8 +100,6 @@ class ChatButton extends DDD {
     }
   }
 
-
-  // TODO: Make all attribute changes occur through chat-agent, making all attributes easier to find and pass through to lower components
   handleChatButton() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
     
@@ -127,7 +120,7 @@ class ChatButton extends DDD {
       CHAT_AGENT.isButtonHidden = true;
     } else {
       CHAT_AGENT.isButtonHidden = false;
-    } // TODO: Check if this if-else needs to be moved elsewhere
+    } // TODO: Check if this if-else needs to be moved elsewhere, such as updated()
 
   }
 

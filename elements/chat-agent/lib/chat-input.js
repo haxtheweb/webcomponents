@@ -100,11 +100,9 @@ class ChatInput extends DDD {
     if (INPUTTED_PROMPT !== "") {
       this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
-      // TODO make new chat-message appear in chat interface
+      // TODO write message to chat log, which should update the interface to make it appear via Array Map
 
-      // TODO write message to chat log
-
-      // TODO send the prompt to merlin engine
+      // TODO send the prompt to merlin engine, write response to chat log which will update interface via Array Map
 
       this.shadowRoot.querySelector("#user-input").value = "";
     } else {

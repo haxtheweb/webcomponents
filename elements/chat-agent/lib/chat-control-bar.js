@@ -45,6 +45,7 @@ class ChatControlBar extends DDD {
       
       <div class="chat-control-bar-wrapper">
         <div class="left-side">
+          <!-- https://stackoverflow.com/questions/72654466/how-do-i-make-a-button-that-will-download-a-file -->
           <button id="download-button" @click=${this.handleDownloadLogButton}>
             <simple-icon-lite icon="icons:file-download"></simple-icon-lite> 
           </button>
@@ -57,7 +58,7 @@ class ChatControlBar extends DDD {
             <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
           <button id="hide-button" @click=${this.handleHideButton}>
-            <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite> <!-- TODO might want to change to just be minimize button, since there shouldn't be a way to shut down AI without refreshing page -->
+            <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
           </button>
         </div>
       </div>
@@ -115,12 +116,13 @@ class ChatControlBar extends DDD {
    * @description changes the interface window to be hidden off screen and unfocusable
    */
   handleHideButton() {
-    const CHAT_AGENT = document.querySelector('chat-agent');
-    
+    const CHAT_AGENT = document.querySelector('#site').shadowRoot.querySelector('site-ai-chat').shadowRoot.querySelector('chat-agent'); // TODO needs to change for actual HAX environment
+    console.log(CHAT_AGENT);
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
 
-    // TODO write code that will hide the interface using CSS.
-    // * is user is in full size mode, the chat-button needs to become unhidden (which will happen through src/chat-agent.js)
+    if (!CHAT_AGENT.hasAttribute('hide-interface')) {
+      CHAT_AGENT.setAttribute('hide-interface', '');
+    }
   }
 
   /**

@@ -60,7 +60,6 @@ class ChatInterface extends DDD {
           box-shadow: var(--ddd-boxShadow-xl);
         }
 
-
         :host([enableDeveloperPanel]), .chat-wrapper {
           padding-top: var(--ddd-spacing-1);
         }

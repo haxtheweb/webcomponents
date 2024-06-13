@@ -51,12 +51,6 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
     ];
   }
 
-  render() {
-    return html`
-      <chat-agent developer-mode></chat-agent>
-    `;
-  }
-
   askQuestion(e) {
     e.preventDefault();
     this.engine = e.target.getAttribute("name");
@@ -120,8 +114,6 @@ export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
       this.shadowRoot.querySelector("#question").select();
     }, 300);
   }
-
-  
 
   static get properties() {
     return {

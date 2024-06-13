@@ -111,8 +111,8 @@ class ChatMessage extends DDD {
   }
 
   // TODO want the chat-suggestions to load after the type-writer is done writing out the text
-  // TODO remove the this.hasSuggestedPrompts ternary operator since that is for testing purposes only
-  // TODO chat suggestions should be rendered using Array Map?
+  // TODO remove the this.hasSuggestedPrompts ternary operator when moving out of demo phase
+  // TODO chat suggestions should be rendered using Array Map maybe?
   /**
    * @description Renders a message recevied from Merlin-AI
    */
@@ -130,7 +130,6 @@ class ChatMessage extends DDD {
             <chat-suggestion tabindex="0" suggestion="This is a suggestion"></chat-suggestion>
             <chat-suggestion tabindex="0" suggestion="This is a second suggestion"></chat-suggestion>
             <chat-suggestion tabindex="0" suggestion="This is a longer suggestion because testing weeeeeee"></chat-suggestion>
-            <chat-suggestion tabindex="0" suggestion="This is a suggestion"></chat-suggestion>
           </div>
         ` : ''}
       </div>
@@ -151,7 +150,6 @@ class ChatMessage extends DDD {
     }
   }
 
-  // TODO may wish to change type-writer for user messages to <p> instead of <type-writer>
   /**
    * @description Renders a message sent by the end user
    */
