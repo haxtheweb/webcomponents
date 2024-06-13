@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { ChatAgentModalStore } from "../chat-agent";
 
 class ChatButton extends DDD {
 
@@ -103,24 +104,7 @@ class ChatButton extends DDD {
   handleChatButton() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
     
-    // const CHAT_AGENT = document.querySelector(); 
-
-    // ! The following is essentially pseudo-code with the intent of showing how this can work, but element pathes and other aspects will need to be modified for actual test environment
-    
-    // If being clicked for the first time, start AI, will never be switched back to false unless page is reloaded
-    if (!CHAT_AGENT.isAIOpen) { // ? unsure if this will work, may have to switch to .hasAttribute("ai-open")
-      CHAT_AGENT.isAIOpen = true;
-    }
-
-    // Open or close interface
-    CHAT_AGENT.isInterfaceHidden = !CHAT_AGENT.isInterfaceHidden;
-
-    // Hide or show button
-    if (CHAT_AGENT.isFullView && !CHAT_AGENT.isInterfaceHidden) {
-      CHAT_AGENT.isButtonHidden = true;
-    } else {
-      CHAT_AGENT.isButtonHidden = false;
-    } // TODO: Check if this if-else needs to be moved elsewhere, such as updated()
+    ChatAgentModalStore.isInterfaceHidden = !ChatAgentModalStore.isInterfaceHidden;
 
   }
 

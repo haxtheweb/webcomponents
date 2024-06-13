@@ -39,7 +39,7 @@ class ChatAgent extends DDD {
     this.engine = "alfred";
     this.isAIOpen = false;
     this.userName = "guest"; // TODO needs to grab username somehow or default to "guest", saw example in haxcms-site-editor-ui.js
-    // TODO add support for user picture
+
 
     // button
     this.buttonIcon = "hax:wizard-hat";
@@ -57,7 +57,7 @@ class ChatAgent extends DDD {
 
     // interface
     this.isFullView = false;
-    this.isInterfaceHidden = false;
+    this.isInterfaceHidden = true;
 
     // message
     this.merlinIndex = 0; // index of merlin messages
@@ -140,6 +140,7 @@ class ChatAgent extends DDD {
     `;
   }
   
+  // TODO clean up dev statements
   /**
    * LitElement ready
    */
@@ -207,6 +208,7 @@ class ChatAgent extends DDD {
     // Other needed logic (might be moved to updated() once I learn how that works)
   }
 
+  // TODO CLEAN UP DEV LOGS HOLY CRAP
   /**
    * LitElement life cycle - property changed
    */
@@ -215,7 +217,7 @@ class ChatAgent extends DDD {
       super.updated(changedProperties);
     }
 
-    // TODO possibly change due to modal
+    // TODO possibly change due to modal, check with Bryan if for example I can use ChatInterface exported from chat-interface.js instead of querySelector
     const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
     const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
 
@@ -223,10 +225,23 @@ class ChatAgent extends DDD {
 
 
     // everything
-
+    switch (this.engine) {
+      case "alfred":
+        // Set engine to robin where applicable
+        break;
+      case "robin":
+        // Set engine to alfred where applicable
+        break;
+    }
 
     // button
-
+    if (this.isFullView && !this.isInterfaceHidden) {
+      this.isButtonHidden = true;
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is hidden") : null;
+    } else {
+      this.isButtonHidden = false;
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is visible") : null;
+    }
 
     // control bar
 
@@ -238,6 +253,17 @@ class ChatAgent extends DDD {
     if (this.isInterfaceHidden) {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
       CHAT_INTERFACE.setAttribute("hidden", "");
+    } else {
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to visible") : null;
+      CHAT_INTERFACE.removeAttribute("hidden");
+    }
+
+    if (this.isFullView) {
+      CHAT_INTERFACE.setAttribute("full-view", "");
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
+    } else {
+      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
+      CHAT_INTERFACE.removeAttribute("full-view");
     }
 
     // message

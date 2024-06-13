@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { ChatAgentModalStore } from "../chat-agent";
 
 class ChatControlBar extends DDD {
 
@@ -96,33 +97,21 @@ class ChatControlBar extends DDD {
   /**
    * @description Toggles the view of chat-interface to full or minimized
    */
-  handleViewButton() {
-    const CHAT_AGENT = document.querySelector('chat-agent'); // TODO needs to change for actual HAX environment
-    
+  handleViewButton() {    
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switch button pressed.') : null;
 
-    // this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (this.isFullView ? 'full' : 'standard')) : null;
+    ChatAgentModalStore.isFullView = !ChatAgentModalStore.isFullView;
 
-    // ! pseudo code to have the general idea down; will need more logic
-    if (CHAT_AGENT.isFullView) {
-      CHAT_AGENT.isFullView = false;
-    } else {
-      CHAT_AGENT.isFullView = true;
-    }
-    
+    this.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (!this.isFullView ? 'full' : 'standard')) : null;
   }
 
   /**
    * @description changes the interface window to be hidden off screen and unfocusable
    */
   handleHideButton() {
-    const CHAT_AGENT = document.querySelector('#site').shadowRoot.querySelector('site-ai-chat').shadowRoot.querySelector('chat-agent'); // TODO needs to change for actual HAX environment
-    console.log(CHAT_AGENT);
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
 
-    if (!CHAT_AGENT.hasAttribute('hide-interface')) {
-      CHAT_AGENT.setAttribute('hide-interface', '');
-    }
+    ChatAgentModalStore.isInterfaceHidden = true;
   }
 
   /**
@@ -131,7 +120,8 @@ class ChatControlBar extends DDD {
   downloadChatLog() {
     this.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
 
-    // TODO write code to download the chat log. May need to convert an array to .json
+    // TODO write code to download the chat log from ChatAgentModalStore.chatLog by converting array to JSON;
+    
     /*
       * Grab the array to convery to JSON, or if it is possible to make the JSON file when the AI loads, then just need to find way to download
       * Download array as JSON

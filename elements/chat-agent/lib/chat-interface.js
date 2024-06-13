@@ -34,10 +34,6 @@ class ChatInterface extends DDD {
           width: 100%;
         }
 
-        :host([isInterfaceHidden]) {
-          display: none;
-        }
-
         :host([_isFullView]) .chat-interface-wrapper {
           background-color: var(--ddd-theme-default-potentialMidnight);
         }
@@ -79,6 +75,26 @@ class ChatInterface extends DDD {
         }
       `
     ];
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+
+    const CHAT_CONTROL_BAR = this.shadowRoot.querySelector("chat-control-bar");
+    
+    if (this.isInterfaceHidden) {
+      this.style.display = "none";
+    } else {
+      this.style.display = "block";
+    }
+
+    if (this.isFullView) {
+      CHAT_CONTROL_BAR.setAttribute("full-view", "");
+    } else {
+      CHAT_CONTROL_BAR.removeAttribute("full-view");
+    }
   }
 
   // TODO chat-message tags should be rendered using array map

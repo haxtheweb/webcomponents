@@ -5,6 +5,7 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-cta/simple-cta.js"; // TODO remove if not used
+import { ChatAgentModalStore } from "../chat-agent";
 
 class ChatInput extends DDD {
 
@@ -93,14 +94,25 @@ class ChatInput extends DDD {
 
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
-    // TODO may need to format this variable (change it to let) to make it modifiable.
+    // TODO may need to format this variable (change it to let) to make it modifiable, depends on if it needs to be formatted before being sent to AI.
 
     // TODO if prompt has character amount greater than character length, alert user that they need to shorten their prompt (this is in case the user goes into browser dev tools and changes maxlength attribute)
 
     if (INPUTTED_PROMPT !== "") {
       this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
-      // TODO write message to chat log, which should update the interface to make it appear via Array Map
+      ChatAgentModalStore.messageIndex++;
+      ChatAgentModalStore.userIndex++;
+
+      const chatLogObject = {
+        messageID: ChatAgentModalStore.messageIndex,
+        author: ChatAgentModalStore.userName,
+        message: INPUTTED_PROMPT,
+        authorMessageIndex: ChatAgentModalStore.userIndex,
+        timestamp: new Date(), // TODO check if this stores as string
+      }
+
+      ChatAgentModalStore.chatLog.push(chatLogObject);
 
       // TODO send the prompt to merlin engine, write response to chat log which will update interface via Array Map
 

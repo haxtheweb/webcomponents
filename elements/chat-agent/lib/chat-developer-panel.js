@@ -5,6 +5,7 @@
 
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { ChatAgentModalStore } from "../chat-agent";
 
 class ChatDeveloperPanel extends DDD {
 
@@ -123,7 +124,7 @@ class ChatDeveloperPanel extends DDD {
         break;
       case "console-table-all":
         // TODO console.table() entire chat log. No compile needed, just console.table the chat log itself
-        console.table()
+        console.table(ChatAgentModalStore.chatLog)
         break;
     }
   }
@@ -144,15 +145,12 @@ class ChatDeveloperPanel extends DDD {
   }
 
   handleSwitchEngineButton(e) {
-    const CHAT_AGENT = document.querySelector('chat-agent'); // TODO needs to change for actual HAX environment
-    
-    // TODO needs to set the engine at the highest level, which then needs to pass down through the applicable components
     switch (this.engine) {
       case "alfred":
-        CHAT_AGENT.setAttribute("engine", "robin");
+        ChatAgentModalStore.engine = "robin";
         break;
       case "robin":
-        CHAT_AGENT.setAttribute("engine", "alfred");
+        ChatAgentModalStore.engine = "alfred";
         break;
     }
 
