@@ -15,9 +15,6 @@ class ChatDeveloperPanel extends DDD {
 
   constructor() {
     super();
-
-    this.engine = "alfred"; // set by chat-agent.js
-    this.userName = "guest"; // set by chat-agent.js
   }
 
   static get styles() {
@@ -94,9 +91,10 @@ class ChatDeveloperPanel extends DDD {
               console.table() entire chat log
             </div>
           </button>
+
           <button id="download-as-json" @click=${this.handleDownloadAsJsonButton}>
             <div class="button-icon">
-              <simple-icon-lite icon="icons:file-download"></simple-icon-lite> 
+              <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
             </div>
             <div class="button-text">
               Download chat log as .json
@@ -110,7 +108,7 @@ class ChatDeveloperPanel extends DDD {
               <simple-icon-lite icon="hardware:memory"></simple-icon-lite>
             </div>
             <div class="button-text" @click=${this.handleSwitchEngineButton}>
-              Switch LLM Engine (Current Engine = <em>${this.engine}</em>)
+              Switch LLM Engine (Current Engine = <em>${ChatAgentModalStore.engine}</em>)
             </div>
           </button>
         </div>
@@ -125,7 +123,7 @@ class ChatDeveloperPanel extends DDD {
 
     switch (TARGET) {
       case "console-table-user":
-        console.table(this.compileChatLog(this.userName));
+        console.table(this.compileChatLog(ChatAgentModalStore.userName));
         break;
       case "console-table-merlin":
         console.table(this.compileChatLog("merlin"))
@@ -146,18 +144,26 @@ class ChatDeveloperPanel extends DDD {
     
     let newChatLog = [];
 
-    // TODO create for loop that will find every message written by author, then add to newChatLog
-    
+    ChatAgentModalStore.chatLog.forEach(element => {
+      if (element.author === author) {
+        newChatLog.push(element);
+      }
+    });
 
     return newChatLog;
   }
 
+  /**
+   * @description downloads the chat log as a .json file
+   */
   handleDownloadAsJsonButton() {
     console.info(`HAX-DEV-MODE: Downloading chat log as .json...`)
 
     if (ChatAgentModalStore.chatLog.length !== 0) {
       const log = JSON.stringify(ChatAgentModalStore.chatLog, undefined, 2);
-      const fileName = 'chat-log-' + new Date().toISOString() + '.json'; // TODO need to properly format date string
+      let date = new Date();
+      let dateString = date.toString().replace(/\s/g, '-');;
+      const fileName = ChatAgentModalStore.userName + '-chat-log-' + dateString + '.json';
       
       let download = document.createElement('a');
       download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(log));
@@ -168,7 +174,7 @@ class ChatDeveloperPanel extends DDD {
   }
 
   handleSwitchEngineButton(e) {
-    switch (this.engine) {
+    switch (ChatAgentModalStore.engine) {
       case "alfred":
         ChatAgentModalStore.engine = "robin";
         break;
@@ -177,20 +183,16 @@ class ChatDeveloperPanel extends DDD {
         break;
     }
 
-    console.info(`HAX-DEV-MODE: Engine switched to ${this.engine}`);
+    console.info(`HAX-DEV-MODE: Engine switched to ${ChatAgentModalStore.engine}`);
 
-    e.currentTarget.innerHTML = `Switch LLM Engine (Current Engine = <em>${this.engine}</em>)`;
+    e.currentTarget.innerHTML = `Switch LLM Engine (Current Engine = <em>${ChatAgentModalStore.engine}</em>)`;
   }
 
 
   static get properties() {
     return {
       ...super.properties,
-      engine: { type: String },
-      userName: { 
-        type: String,
-        attribute: "username",
-       },
+
     };
   }
 

@@ -16,10 +16,6 @@ class ChatInput extends DDD {
   constructor() {
     super();
 
-    this.characterLimit;
-    this.developerModeEnabled = false; // set by chat-agent.js
-    this.engine = "alfred"; // set by chat-agent.js
-    this.promptPlaceholder = "Type text here..."; // set by chat-agent.js
   }
 
   static get styles() {
@@ -77,7 +73,7 @@ class ChatInput extends DDD {
   render() {
     return html`
       <div class="chat-input-wrapper">
-        <textarea name="" id="user-input" placeholder="${this.promptPlaceholder}" @keypress=${this.handleKeyPress}></textarea>
+        <textarea name="" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keypress=${this.handleKeyPress}></textarea>
         <div class="send-button" @click=${this.handleSendButton} tabindex="0">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
@@ -90,26 +86,32 @@ class ChatInput extends DDD {
       e.preventDefault();
       this.handleSendButton();
     }
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
   }
 
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
-    // TODO may need to format this variable (change it to let) to make it modifiable, depends on if it needs to be formatted before being sent to AI.
 
     // TODO if prompt has character amount greater than character length, alert user that they need to shorten their prompt (this is in case the user goes into browser dev tools and changes maxlength attribute)
 
     if (INPUTTED_PROMPT !== "") {
-      this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
+      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
       ChatAgentModalStore.messageIndex++;
       ChatAgentModalStore.userIndex++;
+
+      let date = new Date();
+      let dateString = date.toString().replace(/\s/g, '-');
 
       const chatLogObject = {
         messageID: ChatAgentModalStore.messageIndex,
         author: ChatAgentModalStore.userName,
         message: INPUTTED_PROMPT,
         authorMessageIndex: ChatAgentModalStore.userIndex,
-        timestamp: new Date(), // TODO need to fix this so it stores the data as a properly formatted string
+        timestamp: dateString, // TODO need to fix this so it stores the data as a properly formatted string
       }
 
       ChatAgentModalStore.chatLog.push(chatLogObject);
@@ -118,7 +120,7 @@ class ChatInput extends DDD {
 
       this.shadowRoot.querySelector("#user-input").value = "";
     } else {
-      this.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
+      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
     }
   }
 
@@ -127,8 +129,8 @@ class ChatInput extends DDD {
       super.firstUpdated(changedProperties);
     }
 
-    if (this.characterLimit > 0) {
-      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", this.characterLimit);
+    if (ChatAgentModalStore.promptCharacterLimit > 0) {
+      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", ChatAgentModalStore.promptCharacterLimit);
     }
   }
 
@@ -142,11 +144,6 @@ class ChatInput extends DDD {
       developerModeEnabled: {
         type: Boolean,
         attribute: "developer-mode",
-      },
-      engine: { type: String },
-      promptPlaceholder: {
-        type: String,
-        attribute: "placeholder",
       },
     };
   }

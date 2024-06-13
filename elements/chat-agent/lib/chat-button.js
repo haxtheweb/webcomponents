@@ -14,12 +14,7 @@ class ChatButton extends DDD {
 
   constructor() {
     super();
-    this.buttonIcon = "hax:loading"; // set by chat-agent.js
-    this.buttonLabel = "Chat"; // set by chat-agent.js
-    this.developerModeEnabled = false; // set by chat-agent.js
-    this.isButtonHiding = false; // set by chat-agent.js
-    this.isFullView = false; // set by chat-agent.js
-    this.isInterfaceHidden = false; // set by chat-agent.js
+
   }
 
   static get styles() {
@@ -84,10 +79,10 @@ class ChatButton extends DDD {
     return html`
       <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0">
         <div class="icon-wrapper">
-          <simple-icon-lite icon="${this.buttonIcon}"></simple-icon-lite>
+          <simple-icon-lite icon="${ChatAgentModalStore.buttonIcon}"></simple-icon-lite>
         </div>
         <div class="label-wrapper">
-          <slot name="label">${this.buttonLabel}</slot>
+          <slot name="label">${ChatAgentModalStore.buttonLabel}</slot>
         </div>
       </div>
     `;
@@ -95,14 +90,14 @@ class ChatButton extends DDD {
 
   keyPress(e) {
     if (e.key === "Enter") {
-      this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
+      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
       e.preventDefault();
       this.handleChatButton();
     }
   }
 
   handleChatButton() {
-    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
+    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
     
     ChatAgentModalStore.isInterfaceHidden = !ChatAgentModalStore.isInterfaceHidden;
 
@@ -111,30 +106,7 @@ class ChatButton extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      buttonIcon: {
-        type: String,
-        attribute: "icon",
-      },
-      buttonLabel: {
-        type: String,
-        attribute: "label",
-      },
-      developerModeEnabled: {
-        type: Boolean,
-        attribute: "developer-mode",
-      },
-      isButtonHiding: {
-        type: Boolean,
-        attribute: "hidden",
-      },
-      isFullView: {
-        type: Boolean,
-        attribute: "full-view",
-      },
-      isInterfaceHidden: {
-        type: Boolean,
-        attribute: "hiding-interface",
-      },
+
     };
   }
 

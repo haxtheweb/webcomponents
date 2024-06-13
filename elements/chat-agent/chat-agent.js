@@ -36,7 +36,7 @@ class ChatAgent extends DDD {
     super();
 
     // everything
-    this.chatLog = []; // TODO this either stays an array, or find an away to intialize this variable as the JSON I want it to be
+    this.chatLog = [];
     this.engine = "alfred";
     this.isAIOpen = false;
     this.userName = "guest"; // TODO needs to grab username somehow or default to "guest", saw example in haxcms-site-editor-ui.js
@@ -54,11 +54,12 @@ class ChatAgent extends DDD {
     this.developerModeEnabled = true; // ! this will enable developer mode for the entire chat system
 
     // input
+    this.promptCharacterLimit;
     this.promptPlaceholder = "Enter your prompt here...";
 
     // interface
     this.isFullView = false;
-    this.isInterfaceHidden = true;
+    this.isInterfaceHidden = false;
 
     // message
     this.merlinIndex = 0; // index of merlin messages
@@ -226,14 +227,6 @@ class ChatAgent extends DDD {
 
 
     // everything
-    switch (this.engine) {
-      case "alfred":
-        // Set engine to robin where applicable
-        break;
-      case "robin":
-        // Set engine to alfred where applicable
-        break;
-    }
 
     // button
     if (this.isFullView && !this.isInterfaceHidden) {
@@ -253,10 +246,10 @@ class ChatAgent extends DDD {
     // interface
     if (this.isInterfaceHidden) {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
-      CHAT_INTERFACE.setAttribute("hidden", "");
+      CHAT_INTERFACE.style.display = "none"; // TODO will need updated
     } else {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to visible") : null;
-      CHAT_INTERFACE.removeAttribute("hidden");
+      CHAT_INTERFACE.style.display = "block";
     }
 
     if (this.isFullView) {
@@ -345,9 +338,13 @@ class ChatAgent extends DDD {
       }, 
 
       // input
+      promptCharacterLimit: {
+        type: Number,
+        attribute: "maxlength",
+      },
       promptPlaceholder: {
         type: String,
-        attribute: "prompt-placeholder",
+        attribute: "placeholder",
       },
 
       // interface

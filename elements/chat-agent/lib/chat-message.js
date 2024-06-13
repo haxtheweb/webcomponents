@@ -16,13 +16,10 @@ class ChatMessage extends DDD {
   constructor() {
     super();
 
-    this.author = "guest"; // set by chat-agent.js ("userName")
-    this.developerModeEnabled = false; // set by chat-agent.js
     this.hasSuggestedPrompts = false; // TODO set by statement; determines whether or not suggestions will render
-    this.isSentPrompt = false; // TODO set by statement
+    this.isSentPrompt = false; // TODO may replace with a different method, such as by checking the author of the message
+    this.message = "";
     this.wasSuggestedPrompt = false; //TODO set by statement; determines whether or not the user submitted prompt is a suggested prompt or user submitted prompt
-    this.message = ""; // TODO set by statement, probably chat-input.js
-    this.suggestedPrompts = []; // Array of strings, each string is a suggested prompt
   }
 
   static get styles() {
@@ -137,18 +134,12 @@ class ChatMessage extends DDD {
     `;
   }
 
+  // TODO remove when overhaul of grabbing values is complete
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties)
     }
-
-    const CHAT_SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
     
-    if (this.developerModeEnabled) {
-      CHAT_SUGGESTIONS.forEach((chatSuggestion) => {
-        chatSuggestion.setAttribute("developer-mode", "");
-      });
-    }
   }
 
   /**
@@ -159,7 +150,7 @@ class ChatMessage extends DDD {
       <div class="sent-chat-message">
         <type-writer class="message-content" speed="1" text="${this.message}"></type-writer>
         <div class="author-icon">
-          <rpg-character seed="${this.author}"></rpg-character>
+          <rpg-character seed="${ChatAgentModalStore.userName}"></rpg-character>
         </div>
       </div>
     `;
@@ -168,9 +159,6 @@ class ChatMessage extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      author: {
-        type: String,
-      },
       developerModeEnabled: {
         type: Boolean,
         attribute: "developer-mode",

@@ -15,12 +15,6 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     
-    this.developerModeEnabled = false; // set by chat-agent.js
-    this.isAIOpen = false; // set by chat-agent.js
-    this.isFullView = false; // set by chat-agent.js
-    this.isInterfaceHidden = false; // set by chat-agent.js
-    this.promptPlaceholder = "Type a message..."; // set by chat-agent.js
-    this.userName = "guest"; // set by chat-agent.js
   }
 
   static get styles() {
@@ -35,18 +29,8 @@ class ChatInterface extends DDD {
           width: 100%;
         }
 
-        :host([_isFullView]) .chat-interface-wrapper {
-          background-color: var(--ddd-theme-default-potentialMidnight);
-        }
-
         .chat-interface-wrapper {
           background-color: transparent;
-        }
-
-        /* Does not work currently */
-        :host([isFullView]) .chat-interface-wrapper {
-          background-color: var(--ddd-theme-default-potentialMidnight);
-          padding: var(--ddd-spacing-2);
         }
 
         /* TODO make it so when any element within the chat interface is focused, the opacity is 1.0 */
@@ -82,19 +66,11 @@ class ChatInterface extends DDD {
     if (super.updated) {
       super.updated(changedProperties);
     }
-
-    const CHAT_CONTROL_BAR = this.shadowRoot.querySelector("chat-control-bar");
     
-    if (this.isInterfaceHidden) {
+    if (ChatAgentModalStore.isInterfaceHidden) {
       this.style.display = "none";
     } else {
       this.style.display = "block";
-    }
-
-    if (this.isFullView) {
-      CHAT_CONTROL_BAR.setAttribute("full-view", "");
-    } else {
-      CHAT_CONTROL_BAR.removeAttribute("full-view");
     }
   }
 
@@ -103,9 +79,9 @@ class ChatInterface extends DDD {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
-          ${this.developerModeEnabled ? html`
+          ${ChatAgentModalStore.developerModeEnabled ? html`
             <div class="developer-panel-wrapper">
-              <chat-developer-panel username="${this.userName}"></chat-developer-panel>
+              <chat-developer-panel></chat-developer-panel>
             </div>
           ` : ''}
           <div class="main-wrapper">
@@ -113,11 +89,11 @@ class ChatInterface extends DDD {
             <div class="chat-container">
               <div class="chat-messages">
                 <chat-message author="merlin-ai" message="Hello! My name is Merlin. How can I help you today?" suggested-prompts></chat-message>
-                <chat-message sent-prompt author="${this.userName}" message="Hi Merlin! I could use some help with programming."></chat-message>
+                <chat-message sent-prompt message="Hi Merlin! I could use some help with programming."></chat-message>
                 <chat-message author="merlin-ai" message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>
-                <chat-message sent-prompt author="${this.userName}" message="This last message will cause the chat to scroll."></chat-message>
+                <chat-message sent-prompt message="This last message will cause the chat to scroll."></chat-message>
               </div>
-              <chat-input placeholder="${this.promptPlaceholder}"></chat-input>
+              <chat-input placeholder="${ChatAgentModalStore.promptPlaceholder}"></chat-input>
             </div>
           </div>
         </div>
@@ -125,49 +101,10 @@ class ChatInterface extends DDD {
     `;
   }
 
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-
-    const CHAT_CONTROL_BAR = this.shadowRoot.querySelector("chat-control-bar");
-    const CHAT_MESSAGE = this.shadowRoot.querySelector("chat-message");
-    const CHAT_INPUT = this.shadowRoot.querySelector("chat-input");
-
-    if (this.developerModeEnabled) {
-      CHAT_CONTROL_BAR.setAttribute("developer-mode", "");
-      CHAT_MESSAGE.setAttribute("developer-mode", "");
-      CHAT_INPUT.setAttribute("developer-mode", "");
-    }
-  }
-
   static get properties() {
     return {
       ...super.properties,
-      developerModeEnabled: {
-        type: Boolean,
-        attribute: "developer-mode",
-      },
-      isAIOpen: {
-        type: Boolean,
-        attribute: "ai-open",
-      },
-      isFullView: {
-        type: Boolean,
-        attribute: "full-view",
-      },
-      isInterfaceHidden: {
-        type: Boolean,
-        attribute: "hidden",
-        },
-      promptPlaceholder: {
-        type: String,
-        attribute: "prompt-placeholder",
-      },
-      userName: {
-        type: String,
-        attribute: "username",
-      },
+      
     };
   }
 

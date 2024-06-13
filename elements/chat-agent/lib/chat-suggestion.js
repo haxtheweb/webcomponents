@@ -15,10 +15,9 @@ class ChatSuggestion extends DDD {
 
   constructor() {
     super();
-    this.developerModeEnabled = false; // set by chat-agent.js
-    this.disabled = false; // TODO set by statement
-    this.engine = "alfred"; // set by chat-agent.js
-    this.suggestion = "";  // TODO set by statement
+    
+    this.disabled = false;
+    this.suggestion = ""; // TODO deprecated
   }
 
   static get styles() {
@@ -78,17 +77,22 @@ class ChatSuggestion extends DDD {
    * @description Event handler for the suggestion button
    */
   handleSuggestion() {
-    this.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
+    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
     
     ChatAgentModalStore.messageIndex++;
     ChatAgentModalStore.userIndex++;
+
+    // TODO get suggestion from AI, store into local variable and remove above this.suggestion
+
+    let date = new Date();
+    let dateString = date.toString().replace(/\s/g, '-');
     
     const chatLogObject = {
       messageID: ChatAgentModalStore.messageIndex,
       author: ChatAgentModalStore.userName,
       message: this.suggestion,
       authorMessageIndex: ChatAgentModalStore.userIndex,
-      timestamp: new Date(), // TODO need to fix this so it stores the data as a properly formatted string
+      timestamp: dateString,
     }
 
     ChatAgentModalStore.chatLog.push(chatLogObject);
@@ -106,7 +110,6 @@ class ChatSuggestion extends DDD {
         attribute: "developer-mode",
       },
       disabled: { type: Boolean },
-      engine: { type: String },
       suggestion: { type: String },
     };
   }
