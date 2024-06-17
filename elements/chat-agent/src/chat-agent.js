@@ -41,6 +41,7 @@ class ChatAgent extends DDD {
     this.engine = "alfred";
     this.isAILoaded = false;
     this.userName = "guest"; // TODO needs to grab username somehow or default to "guest", saw example in "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js", lines 2639 - 2660
+    this.userPicture = ""; // TODO needs to be set up
 
 
     // button
@@ -56,7 +57,11 @@ class ChatAgent extends DDD {
 
     // input
     this.promptCharacterLimit;
-    this.promptPlaceholder = "Enter your prompt here...";
+    if (this.promptCharacterLimit > 0) {
+      this.promptPlaceholder = `Enter prompt here... (character limit: ${this.promptCharacterLimit})`;
+    } else {
+      "Enter your prompt here...";
+    }
 
     // interface
     this.isFullView = false;
@@ -104,12 +109,7 @@ class ChatAgent extends DDD {
           width: 40%; /* Switch to 30% when working with hax environment */
         }
 
-        .agent-interface-wrapper {
-          display: flex;
-          justify-content: right;
-        }
-
-        .agent-button-wrapper {
+        .agent-interface-wrapper, .agent-button-wrapper {
           display: flex;
           justify-content: right;
         }
@@ -143,7 +143,7 @@ class ChatAgent extends DDD {
     `;
   }
   
-
+  // TODO check for unused code
   /**
    * LitElement ready
    */
@@ -203,7 +203,6 @@ class ChatAgent extends DDD {
     // Other needed logic (might be moved to updated() once I learn how that works)
   }
 
-  // TODO CLEAN UP DEV LOGS HOLY CRAP
   /**
    * LitElement life cycle - property changed
    */
@@ -237,18 +236,18 @@ class ChatAgent extends DDD {
 
     // interface
     if (this.isInterfaceHidden) {
-      CHAT_INTERFACE.style.display = "none"; // TODO will be changed
+      CHAT_INTERFACE.style.display = "none";
     } else {
       CHAT_INTERFACE.style.display = "block";
     }
 
-    if (this.isFullView) {
-      CHAT_INTERFACE.setAttribute("full-view", "");
-      SITE_BUILDER.style.width = "75%"; // TODO will be changed
-    } else {
-      SITE_BUILDER.style.width = "100%";
-      CHAT_INTERFACE.removeAttribute("full-view");
-    }
+    // if (this.isFullView) {
+    //   CHAT_INTERFACE.setAttribute("full-view", "");
+    //   SITE_BUILDER.style.width = "75%";
+    // } else {
+    //   SITE_BUILDER.style.width = "100%";
+    //   CHAT_INTERFACE.removeAttribute("full-view");
+    // }
 
     // message
 
@@ -302,6 +301,10 @@ class ChatAgent extends DDD {
       userName: {
         type: String,
         attribute: "username",
+      },
+      userPicture: {
+        type: String,
+        attribute: "user-picture",
       },
 
       // button

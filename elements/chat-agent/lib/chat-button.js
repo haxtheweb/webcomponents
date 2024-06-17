@@ -14,7 +14,6 @@ class ChatButton extends DDD {
 
   constructor() {
     super();
-
   }
 
   static get styles() {
@@ -105,7 +104,6 @@ class ChatButton extends DDD {
   static get properties() {
     return {
       ...super.properties,
-
     };
   }
 

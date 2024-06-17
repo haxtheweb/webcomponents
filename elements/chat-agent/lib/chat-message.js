@@ -4,6 +4,7 @@
  */
 import "@haxtheweb/type-writer/type-writer.js";
 import { ChatAgentModalStore } from "../chat-agent";
+import { ChatSuggestion } from "./chat-suggestion";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 
@@ -20,6 +21,7 @@ class ChatMessage extends DDD {
     this.isSentPrompt = false;
     this.message = "";
     this.messageWasSuggestedPrompt = false; 
+    this.suggestedPrompts = [];
     this.suggestionsDisabled = false;
   }
 
@@ -157,7 +159,7 @@ class ChatMessage extends DDD {
         suggestion.setAttribute("disabled", "");
       });
 
-      e.target.setAttribute("chosen-prompt", "");
+      e.currentTarget.setAttribute("chosen-prompt", "");
 
       this.suggestionsDisabled = true;
     }
@@ -167,10 +169,6 @@ class ChatMessage extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      developerModeEnabled: {
-        type: Boolean,
-        attribute: "developer-mode",
-      },
       hasSuggestedPrompts: {
         type: Boolean,
         attribute: "suggested-prompts",
@@ -179,15 +177,19 @@ class ChatMessage extends DDD {
         type: Boolean,
         attribute: "sent-prompt",
       },
+      message: {
+        type: String,
+      },
       messageWasSuggestedPrompt: {
         type: Boolean,
         attribute: "suggested-message",
       },
-      message: {
-        type: String,
-      },
       suggestedPrompts: {
         type: Array,
+      },
+      suggestionsDisabled: {
+        type: Boolean,
+        attribute: "suggestions-disabled",
       },
     };
   }

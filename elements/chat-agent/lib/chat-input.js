@@ -15,7 +15,6 @@ class ChatInput extends DDD {
 
   constructor() {
     super();
-
   }
 
   static get styles() {
@@ -69,7 +68,6 @@ class ChatInput extends DDD {
   }
 
   // TODO change the send button to simple-cta, will have to ensure coloring works properly.
-  // TODO set maxlength attribute on text area, ask Dave what the character limit is
   render() {
     return html`
       <div class="chat-input-wrapper">
@@ -81,6 +79,9 @@ class ChatInput extends DDD {
     `;
   }
   
+  /**
+   * @description handles key presses enter and shift + enter
+   */
   handleKeyPress(e) {
     if (e.key === "Enter" && e.shiftKey) {
       e.preventDefault();
@@ -92,6 +93,9 @@ class ChatInput extends DDD {
     }
   }
 
+  /**
+   * @description handles "send" events, writing entered prompt to chat log
+   */
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
 
@@ -139,14 +143,6 @@ class ChatInput extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      characterLimit: { 
-        type: Number,
-        attribute: "maxlength",
-      },
-      developerModeEnabled: {
-        type: Boolean,
-        attribute: "developer-mode",
-      },
     };
   }
 

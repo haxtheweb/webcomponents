@@ -4,6 +4,7 @@
  */
 
 import { ChatAgentModalStore } from "../chat-agent";
+import { ChatMessage } from "./chat-message";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 
@@ -29,6 +30,7 @@ class ChatSuggestion extends DDD {
 
         :host {
           display: block;
+          border-radius: var(--ddd-radius-rounded);
         }
 
         .chat-suggestion-wrapper {
@@ -98,8 +100,6 @@ class ChatSuggestion extends DDD {
     ChatAgentModalStore.messageIndex++;
     ChatAgentModalStore.userIndex++;
 
-    // TODO get suggestion from AI, store into local variable and remove above this.suggestion
-
     let date = new Date();
     let dateString = date.toString().replace(/\s/g, '-');
     
@@ -114,8 +114,6 @@ class ChatSuggestion extends DDD {
     ChatAgentModalStore.chatLog.push(chatLogObject);
 
     // TODO Send message to AI for response
-
-
   }
 
   updated(changedProperties) {
@@ -131,9 +129,9 @@ class ChatSuggestion extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      developerModeEnabled: { 
-        type: Boolean, 
-        attribute: "developer-mode",
+      chosenPrompt: {
+        type: Boolean,
+        attribute: "chosen-prompt",
       },
       disabled: { type: Boolean },
       suggestion: { type: String },

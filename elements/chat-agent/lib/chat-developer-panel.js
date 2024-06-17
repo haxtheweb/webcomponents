@@ -41,7 +41,6 @@ class ChatDeveloperPanel extends DDD {
           gap: var(--ddd-spacing-1);
           justify-content: space-between;
           align-items: center;
-          /* flex-direction: column; */
         }
 
         .switch-engine-controls {
@@ -116,6 +115,9 @@ class ChatDeveloperPanel extends DDD {
     `;
   }
 
+  /**
+   * @description handles all console table buttons utilizing button id
+   */
   handleConsoleTableButton(e) {
     const TARGET = e.currentTarget.id;
     
@@ -172,6 +174,9 @@ class ChatDeveloperPanel extends DDD {
     }
   }
 
+  /**
+   * @description handles the functionality of the switch engine button
+   */
   handleSwitchEngineButton(e) {
     switch (ChatAgentModalStore.engine) {
       case "alfred":
@@ -187,11 +192,9 @@ class ChatDeveloperPanel extends DDD {
     e.currentTarget.innerHTML = `Switch LLM Engine (Current Engine = <em>${ChatAgentModalStore.engine}</em>)`;
   }
 
-
   static get properties() {
     return {
       ...super.properties,
-
     };
   }
 

@@ -5,7 +5,6 @@
 import { ChatAgentModalStore } from "../chat-agent";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-import { ChatInterface } from "./chat-interface";
 
 class ChatControlBar extends DDD {
 
@@ -15,7 +14,6 @@ class ChatControlBar extends DDD {
 
   constructor() {
     super();
-
   }
 
   static get styles() {
@@ -34,7 +32,6 @@ class ChatControlBar extends DDD {
           align-items: center;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-0);
         }
-
       `
     ];
   }
@@ -149,10 +146,6 @@ class ChatControlBar extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      developerModeEnabled: {
-        type: Boolean,
-        attribute: "developer-mode",
-      },
     };
   }
 
