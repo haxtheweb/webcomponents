@@ -95,25 +95,29 @@ class ChatSuggestion extends DDD {
    * @description Event handler for the suggestion button
    */
   handleSuggestion() {
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
-    
-    ChatAgentModalStore.messageIndex++;
-    ChatAgentModalStore.userIndex++;
-
-    let date = new Date();
-    let dateString = date.toString().replace(/\s/g, '-');
-    
-    const chatLogObject = {
-      messageID: ChatAgentModalStore.messageIndex,
-      author: ChatAgentModalStore.userName,
-      message: this.suggestion,
-      authorMessageIndex: ChatAgentModalStore.userIndex,
-      timestamp: dateString,
+    if (!this.disabled) {
+      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
+      
+      ChatAgentModalStore.messageIndex++;
+      ChatAgentModalStore.userIndex++;
+  
+      let date = new Date();
+      let dateString = date.toString().replace(/\s/g, '-');
+      
+      const chatLogObject = {
+        messageID: ChatAgentModalStore.messageIndex,
+        author: ChatAgentModalStore.userName,
+        message: this.suggestion,
+        authorMessageIndex: ChatAgentModalStore.userIndex,
+        timestamp: dateString,
+      }
+  
+      ChatAgentModalStore.chatLog.push(chatLogObject);
+  
+      // TODO Send message to AI for response
+    } else {
+      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion buttons disabled, ignoring request') : null;
     }
-
-    ChatAgentModalStore.chatLog.push(chatLogObject);
-
-    // TODO Send message to AI for response
   }
 
   updated(changedProperties) {

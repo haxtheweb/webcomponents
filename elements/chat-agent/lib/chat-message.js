@@ -21,7 +21,7 @@ class ChatMessage extends DDD {
     this.isSentPrompt = false;
     this.message = "";
     this.messageWasSuggestedPrompt = false; 
-    this.suggestedPrompts = [];
+    this.suggestedPrompts = ["this is a suggestion", "this is a second suggestion", "this is proof the array map works (plz work I need this)"];
     this.suggestionsDisabled = false;
   }
 
@@ -128,9 +128,9 @@ class ChatMessage extends DDD {
         </div>
         ${this.hasSuggestedPrompts ? html`
           <div class="suggested-prompts">
-            <chat-suggestion suggestion="This is a suggestion" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
-            <chat-suggestion suggestion="This is a second suggestion" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
-            <chat-suggestion suggestion="This is a longer suggestion because testing weeeeeee" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
+            ${this.suggestedPrompts.map((suggestion) => html`
+              <chat-suggestion suggestion="${suggestion}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
+            `)}
           </div>
         ` : ''}
       </div>

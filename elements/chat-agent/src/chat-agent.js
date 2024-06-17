@@ -3,10 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import "./lib/chat-button.js";
+import { ChatButton } from "./lib/chat-button.js";
 import "./lib/chat-control-bar.js";
 import "./lib/chat-developer-panel.js";
 import "./lib/chat-input.js";
 import "./lib/chat-interface.js";
+import { ChatInterface } from "../lib/chat-interface.js";
 import "./lib/chat-message.js";
 import "./lib/chat-suggestion.js";
 import '@haxtheweb/rpg-character/rpg-character.js';
@@ -37,7 +39,7 @@ class ChatAgent extends DDD {
     super();
 
     // everything
-    this.chatLog = [];
+    this.chatLog = ["Hello! My name is Merlin. How can I help you today?"];
     this.engine = "alfred";
     this.isAILoaded = false;
     this.userName = "guest"; // TODO needs to grab username somehow or default to "guest", saw example in "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js", lines 2639 - 2660
@@ -68,8 +70,8 @@ class ChatAgent extends DDD {
     this.isInterfaceHidden = false;
 
     // message
-    this.merlinIndex = 0; // index of merlin messages
-    this.messageIndex = 0; // index of all messages
+    this.merlinIndex = 1; // index of merlin messages, starts at 1 for now with hardcoded merlin message
+    this.messageIndex = 1; // index of all messages, starts at 1 for now with hardcoded merlin message
     this.userIndex = 0; // index of user messages
 
     this.merlinTypeWriterSpeed = 30;
@@ -189,11 +191,6 @@ class ChatAgent extends DDD {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
     }
 
-    if (this.isInterfaceHidden) {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
-      CHAT_INTERFACE.setAttribute("hidden", "");
-    }
-
     // message
 
 
@@ -236,9 +233,11 @@ class ChatAgent extends DDD {
 
     // interface
     if (this.isInterfaceHidden) {
-      CHAT_INTERFACE.style.display = "none";
+      // CHAT_INTERFACE.style.display = "none";
+      ChatInterface.style.display = "none";
     } else {
-      CHAT_INTERFACE.style.display = "block";
+      // CHAT_INTERFACE.style.display = "block";
+      ChatInterface.style.display = "block";
     }
 
     // if (this.isFullView) {
