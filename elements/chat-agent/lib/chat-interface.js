@@ -14,7 +14,6 @@ class ChatInterface extends DDD {
 
   constructor() {
     super();
-    
   }
 
   static get styles() {
@@ -33,7 +32,6 @@ class ChatInterface extends DDD {
           background-color: transparent;
         }
 
-        /* TODO make it so when any element within the chat interface is focused, the opacity is 1.0 */
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
@@ -74,7 +72,6 @@ class ChatInterface extends DDD {
     }
   }
 
-  // TODO chat-message tags should be rendered using array map
   render() {
     return html`
       <div class="chat-interface-wrapper">
@@ -88,6 +85,8 @@ class ChatInterface extends DDD {
             <chat-control-bar></chat-control-bar>
             <div class="chat-container">
               <div class="chat-messages">
+                <!-- Array Map to handle rendering of messages, just need to figure our the sent-prompt attribute. if author === ChatAgentModalStore.userName then set sent-prompt attribute. -->
+                 <!-- TODO figure out suggested prompts attribute -->
                 <chat-message message="Hello! My name is Merlin. How can I help you today?" suggested-prompts></chat-message>
                 <chat-message sent-prompt message="Hi Merlin! I could use some help with programming."></chat-message>
                 <chat-message message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>
@@ -104,7 +103,6 @@ class ChatInterface extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      
     };
   }
 

@@ -95,7 +95,9 @@ class ChatInput extends DDD {
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
 
-    // TODO if prompt has character amount greater than character length, alert user that they need to shorten their prompt (this is in case the user goes into browser dev tools and changes maxlength attribute)
+    if (ChatAgentModalStore.promptCharacterLimit > 0 && INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit) { // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
+      alert(`Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`)
+    }
 
     if (INPUTTED_PROMPT !== "") {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
@@ -111,7 +113,7 @@ class ChatInput extends DDD {
         author: ChatAgentModalStore.userName,
         message: INPUTTED_PROMPT,
         authorMessageIndex: ChatAgentModalStore.userIndex,
-        timestamp: dateString, // TODO need to fix this so it stores the data as a properly formatted string
+        timestamp: dateString,
       }
 
       ChatAgentModalStore.chatLog.push(chatLogObject);
@@ -130,7 +132,7 @@ class ChatInput extends DDD {
     }
 
     if (ChatAgentModalStore.promptCharacterLimit > 0) {
-      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", ChatAgentModalStore.promptCharacterLimit);
+      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", `${ChatAgentModalStore.promptCharacterLimit}`);
     }
   }
 

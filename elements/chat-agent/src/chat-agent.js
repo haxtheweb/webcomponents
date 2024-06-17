@@ -40,7 +40,7 @@ class ChatAgent extends DDD {
     this.chatLog = [];
     this.engine = "alfred";
     this.isAILoaded = false;
-    this.userName = "guest"; // TODO needs to grab username somehow or default to "guest", saw example in haxcms-site-editor-ui.js
+    this.userName = "guest"; // TODO needs to grab username somehow or default to "guest", saw example in "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js", lines 2639 - 2660
 
 
     // button
@@ -67,8 +67,8 @@ class ChatAgent extends DDD {
     this.messageIndex = 0; // index of all messages
     this.userIndex = 0; // index of user messages
 
-    this.userTypeWriterSpeed = 1;
     this.merlinTypeWriterSpeed = 30;
+    this.userTypeWriterSpeed = 1;
 
     // suggestion
 
@@ -143,7 +143,7 @@ class ChatAgent extends DDD {
     `;
   }
   
-  // TODO clean up dev statements
+
   /**
    * LitElement ready
    */
@@ -156,17 +156,9 @@ class ChatAgent extends DDD {
     const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
     const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
 
-    // developer mode
-    if (this.developerModeEnabled) {
-      console.info("HAX-DEV-MODE: Developer mode is enabled");
-
-      CHAT_INTERFACE.setAttribute("developer-mode", "");
-      CHAT_BUTTON.setAttribute("developer-mode", "");
-    }
-
     // everything
-    if (this.isAIOpen) {
-
+    if (!this.isAIOpen) {
+      
     }
 
     // button
@@ -233,10 +225,8 @@ class ChatAgent extends DDD {
     // button
     if (this.isFullView && !this.isInterfaceHidden) {
       this.isButtonHidden = true;
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is hidden") : null;
     } else {
       this.isButtonHidden = false;
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is visible") : null;
     }
 
     // control bar
@@ -247,19 +237,15 @@ class ChatAgent extends DDD {
 
     // interface
     if (this.isInterfaceHidden) {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
       CHAT_INTERFACE.style.display = "none"; // TODO will be changed
     } else {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to visible") : null;
       CHAT_INTERFACE.style.display = "block";
     }
 
     if (this.isFullView) {
       CHAT_INTERFACE.setAttribute("full-view", "");
       SITE_BUILDER.style.width = "75%"; // TODO will be changed
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
     } else {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
       SITE_BUILDER.style.width = "100%";
       CHAT_INTERFACE.removeAttribute("full-view");
     }

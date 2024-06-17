@@ -16,10 +16,11 @@ class ChatMessage extends DDD {
   constructor() {
     super();
 
-    this.hasSuggestedPrompts = false; // TODO set by statement; determines whether or not suggestions will render
-    this.isSentPrompt = false; // TODO may replace with a different method, such as by checking the author of the message
+    this.hasSuggestedPrompts = false;
+    this.isSentPrompt = false;
     this.message = "";
-    this.wasSuggestedPrompt = false; //TODO set by statement; determines whether or not the user submitted prompt is a suggested prompt or user submitted prompt
+    this.messageWasSuggestedPrompt = false; 
+    this.suggestionsDisabled = false;
   }
 
   static get styles() {
@@ -109,7 +110,7 @@ class ChatMessage extends DDD {
   }
 
   // TODO want the chat-suggestions to load after the type-writer is done writing out the text
-  // TODO remove the this.hasSuggestedPrompts ternary operator when moving out of demo phase
+  // TODO remove the this.hasSuggestedPrompts ternary operator when moving out of demo phase, leave .suggested-prompts
   // TODO chat suggestions should be rendered using Array Map maybe?
   /**
    * @description Renders a message recevied from Merlin-AI
@@ -125,9 +126,9 @@ class ChatMessage extends DDD {
         </div>
         ${this.hasSuggestedPrompts ? html`
           <div class="suggested-prompts">
-            <chat-suggestion suggestion="This is a suggestion"></chat-suggestion>
-            <chat-suggestion suggestion="This is a second suggestion"></chat-suggestion>
-            <chat-suggestion suggestion="This is a longer suggestion because testing weeeeeee"></chat-suggestion>
+            <chat-suggestion suggestion="This is a suggestion" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
+            <chat-suggestion suggestion="This is a second suggestion" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
+            <chat-suggestion suggestion="This is a longer suggestion because testing weeeeeee" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
           </div>
         ` : ''}
       </div>
@@ -148,6 +149,21 @@ class ChatMessage extends DDD {
     `;
   }
 
+  disableSuggestions(e) {
+    if (!this.suggestionsDisabled) {
+      const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
+
+      SUGGESTIONS.forEach((suggestion) => {
+        suggestion.setAttribute("disabled", "");
+      });
+
+      e.target.setAttribute("chosen-prompt", "");
+
+      this.suggestionsDisabled = true;
+    }
+  }
+
+  // TODO ensure properties matches constructor
   static get properties() {
     return {
       ...super.properties,
@@ -163,7 +179,7 @@ class ChatMessage extends DDD {
         type: Boolean,
         attribute: "sent-prompt",
       },
-      wasSuggestedPrompt: {
+      messageWasSuggestedPrompt: {
         type: Boolean,
         attribute: "suggested-message",
       },

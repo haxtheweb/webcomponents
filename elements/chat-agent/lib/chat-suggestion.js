@@ -16,6 +16,7 @@ class ChatSuggestion extends DDD {
   constructor() {
     super();
     
+    this.chosenPrompt = false;
     this.disabled = false;
     this.suggestion = "";
   }
@@ -43,12 +44,28 @@ class ChatSuggestion extends DDD {
           box-shadow: var(--ddd-boxShadow-xl);
         }
 
+        /* TODO create CSS that will set background-color to a faded red, along with lower opacity when this.disabled = true */
+        :host([disabled]) .chat-suggestion-wrapper {
+          background-color: var(--ddd-theme-default-discoveryCoral);
+          opacity: 0.6;
+          cursor: default;
+        }
+
+        /* TODO chosen prompt css sets background color to keystoneYellow */
+        :host([chosen-prompt]) .chat-suggestion-wrapper {
+          background-color: var(--ddd-theme-default-futureLime);
+        }
+
         .chat-suggestion-wrapper:hover, .chat-suggestion-wrapper:focus {
           background-color: var(--ddd-theme-default-futureLime);
         }
 
         .chat-suggestion-wrapper:hover p, .chat-suggestion-wrapper:focus p {
           text-decoration: underline;
+        }
+        
+        :host([disabled]) p {
+          text-decoration: none;
         }
 
         p {
@@ -99,6 +116,16 @@ class ChatSuggestion extends DDD {
     // TODO Send message to AI for response
 
 
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+
+    if (this.disabled) {
+      this.shadowRoot.querySelector(".chat-suggestion-wrapper").removeAttribute("tabindex");
+    }
   }
 
   static get properties() {

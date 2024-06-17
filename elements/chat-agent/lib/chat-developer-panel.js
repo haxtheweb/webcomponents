@@ -117,7 +117,7 @@ class ChatDeveloperPanel extends DDD {
   }
 
   handleConsoleTableButton(e) {
-    const TARGET = e.currentTarget.id; // TODO not working
+    const TARGET = e.currentTarget.id;
     
     console.info(`HAX-DEV-MODE: ${TARGET} button pressed.`);
 
@@ -129,7 +129,6 @@ class ChatDeveloperPanel extends DDD {
         console.table(this.compileChatLog("merlin"))
         break;
       case "console-table-all":
-        // TODO console.table() entire chat log. No compile needed, just console.table the chat log itself
         console.table(ChatAgentModalStore.chatLog)
         break;
     }

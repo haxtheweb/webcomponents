@@ -100,7 +100,6 @@ class ChatButton extends DDD {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
     
     ChatAgentModalStore.isInterfaceHidden = !ChatAgentModalStore.isInterfaceHidden;
-
   }
 
   static get properties() {

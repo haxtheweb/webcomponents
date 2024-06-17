@@ -110,8 +110,6 @@ class ChatControlBar extends DDD {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
 
     ChatAgentModalStore.isInterfaceHidden = true;
-
-    // TODO I think this needs to tell chat-interface to update in some way
   }
 
   /**
