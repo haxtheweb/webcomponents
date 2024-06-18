@@ -105,9 +105,6 @@ class ChatInput extends DDD {
     }
 
     if (INPUTTED_PROMPT !== "") {
-      // ChatAgentModalStore.handleMessage();
-      // TODO fix above function, claiming not a function
-      
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
       ChatAgentModalStore.messageIndex++;
@@ -131,6 +128,8 @@ class ChatInput extends DDD {
       // TODO Send message to AI for response
 
       this.shadowRoot.querySelector("#user-input").value = "";
+
+      this.requestUpdate();
 
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
