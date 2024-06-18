@@ -98,6 +98,7 @@ class ChatSuggestion extends DDD {
     if (!this.disabled) {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
       
+      // TODO replace code below with handleMessages()
       ChatAgentModalStore.messageIndex++;
       ChatAgentModalStore.userIndex++;
   

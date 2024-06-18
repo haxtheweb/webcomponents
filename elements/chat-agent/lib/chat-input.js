@@ -125,6 +125,7 @@ class ChatInput extends DDD {
       // TODO send the prompt to merlin engine, write response to chat log which will update interface via Array Map
 
       this.shadowRoot.querySelector("#user-input").value = "";
+
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
     }

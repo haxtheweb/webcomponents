@@ -85,8 +85,7 @@ class ChatInterface extends DDD {
             <chat-control-bar></chat-control-bar>
             <div class="chat-container">
               <div class="chat-messages">
-                <!-- Array Map to handle rendering of messages, just need to figure our the sent-prompt attribute. if author === ChatAgentModalStore.userName then set sent-prompt attribute. -->
-                 <!-- TODO figure out suggested prompts attribute -->
+                 <!-- TODO array map currently does not work -->
                 <chat-message message="Hello! My name is Merlin. How can I help you today?" suggested-prompts></chat-message>
                 <chat-message sent-prompt message="Hi Merlin! I could use some help with programming."></chat-message>
                 <chat-message message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>

@@ -17,7 +17,7 @@ class ChatMessage extends DDD {
   constructor() {
     super();
 
-    this.hasSuggestedPrompts = false;
+    this.hasSuggestedPrompts = false; // may be removed by by checking the length of this.suggestedPrompts
     this.isSentPrompt = false;
     this.message = "";
     this.messageWasSuggestedPrompt = false; 
