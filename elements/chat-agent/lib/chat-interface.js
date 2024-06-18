@@ -72,6 +72,7 @@ class ChatInterface extends DDD {
     }
   }
 
+  // TODO need to dynamically apply attributes "sent-prompt" or "suggested-prompts" to chat message components in array map. sent-prompt applied to sent messages, suggested-prompts applied to received messages
   render() {
     return html`
       <div class="chat-interface-wrapper">
@@ -85,7 +86,9 @@ class ChatInterface extends DDD {
             <chat-control-bar></chat-control-bar>
             <div class="chat-container">
               <div class="chat-messages">
-                 <!-- TODO array map currently does not work -->
+                  ${ChatAgentModalStore.chatLog.map((message) => html`
+                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${message.author === "merlin"}"></chat-message>
+                  `)}
                 <chat-message message="Hello! My name is Merlin. How can I help you today?" suggested-prompts></chat-message>
                 <chat-message sent-prompt message="Hi Merlin! I could use some help with programming."></chat-message>
                 <chat-message message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>

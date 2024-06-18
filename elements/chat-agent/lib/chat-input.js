@@ -4,6 +4,7 @@
  */
 import "@haxtheweb/simple-cta/simple-cta.js"; // TODO remove if not used
 import { ChatAgentModalStore } from "../chat-agent";
+import { ChatInterface } from "./chat-interface";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 
@@ -104,6 +105,9 @@ class ChatInput extends DDD {
     }
 
     if (INPUTTED_PROMPT !== "") {
+      // ChatAgentModalStore.handleMessage();
+      // TODO fix above function, claiming not a function
+      
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
       ChatAgentModalStore.messageIndex++;
@@ -122,7 +126,9 @@ class ChatInput extends DDD {
 
       ChatAgentModalStore.chatLog.push(chatLogObject);
 
-      // TODO send the prompt to merlin engine, write response to chat log which will update interface via Array Map
+      // TODO ensure message sent to chat log renders via array map in chat-interface.js
+
+      // TODO Send message to AI for response
 
       this.shadowRoot.querySelector("#user-input").value = "";
 

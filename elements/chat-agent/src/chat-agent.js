@@ -123,7 +123,6 @@ class ChatAgent extends DDD {
     ];
   }
 
-
   /**
    * LitElement render callback
    */
@@ -151,36 +150,25 @@ class ChatAgent extends DDD {
       super.firstUpdated(changedProperties);
     }
 
-    // TODO possibly change due to modal
-    const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
-    const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
-
-    // developer mode
-    if (this.developerModeEnabled) {
-      console.info("HAX-DEV-MODE: Developer mode is enabled");
-
-      CHAT_INTERFACE.setAttribute("developer-mode", "");
-      CHAT_BUTTON.setAttribute("developer-mode", "");
-    }
-
     // everything
-    if (this.isAIOpen) {
+    ChatAgentModalStore.messageIndex++;
+    ChatAgentModalStore.merlinIndex++;
 
+    let date = new Date();
+    let dateString = date.toString().replace(/\s/g, '-');
+
+    const chatLogObject = {
+      messageID: ChatAgentModalStore.messageIndex,
+      author: "merlin",
+      message: "Hello, I am Merlin. This message is rendered via Array Mapping. How can I help you today?",
+      authorMessageIndex: ChatAgentModalStore.merlinIndex,
+      timestamp: dateString,
     }
+
+    ChatAgentModalStore.chatLog.push(chatLogObject);
 
     // button
-    if (this.isFullView && !this.isInterfaceHidden) {
-      this.isButtonHidden = true;
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is hidden") : null;
-    } else {
-      this.isButtonHidden = false;
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is visible") : null;
-    }
 
-    if (this.isButtonHidden) {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting button to hidden") : null;
-      CHAT_BUTTON.setAttribute("hidden", "");
-    } // TODO this might be moved down to `updated(changedProperties)`
 
     // control bar
 
@@ -189,17 +177,7 @@ class ChatAgent extends DDD {
 
     
     // interface
-    if (this.isFullView) {
-      CHAT_INTERFACE.setAttribute("full-view", "");
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
-    } else {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
-    }
 
-    if (this.isInterfaceHidden) {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
-      CHAT_INTERFACE.setAttribute("hidden", "");
-    }
 
     // message
 
@@ -229,14 +207,9 @@ class ChatAgent extends DDD {
 
     // everything
 
+
     // button
-    if (this.isFullView && !this.isInterfaceHidden) {
-      this.isButtonHidden = true;
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is hidden") : null;
-    } else {
-      this.isButtonHidden = false;
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Button is visible") : null;
-    }
+    
 
     // control bar
 
@@ -295,6 +268,35 @@ class ChatAgent extends DDD {
       }
       */
     });
+  }
+
+  handleMessages(author, message) {
+    let authorIndex;
+
+    ChatAgentModalStore.messageIndex++;
+    switch(author) {
+      case "merlin":
+        ChatAgentModalStore.merlinIndex++;
+        authorIndex = ChatAgentModalStore.merlinIndex;
+        break;
+      case ChatAgentModalStore.userName:
+        ChatAgentModalStore.userIndex++;
+        authorIndex = ChatAgentModalStore.userIndex;
+        break;
+    }
+
+    let date = new Date();
+    let dateString = date.toString().replace(/\s/g, '-');
+    
+    const chatLogObject = {
+      messageID: ChatAgentModalStore.messageIndex,
+      author: author,
+      message: message,
+      authorMessageIndex: authorIndex,
+      timestamp: dateString,
+    }
+
+    ChatAgentModalStore.chatLog.push(chatLogObject);
   }
 
   static get properties() {
