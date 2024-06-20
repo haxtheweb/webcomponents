@@ -4,9 +4,9 @@
  */
 import "@haxtheweb/type-writer/type-writer.js";
 import { ChatAgentModalStore } from "../chat-agent.js";
-import { ChatSuggestion } from "./chat-suggestion";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { autorun, toJS, } from "mobx";
 
 class ChatMessage extends DDD {
 

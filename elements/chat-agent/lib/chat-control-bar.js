@@ -16,9 +16,11 @@ class ChatControlBar extends DDD {
   constructor() {
     super();
     this.chatLog = [];
-      autorun(() => {
-        this.chatLog = toJS(ChatAgentModalStore.chatLog);
-      })
+    this.isInterfaceHidden;
+    autorun(() => {
+      this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+    })
   }
 
   static get styles() {
@@ -101,19 +103,20 @@ class ChatControlBar extends DDD {
 
     ChatAgentModalStore.isFullView = !ChatAgentModalStore.isFullView;
 
-    this.requestUpdate();
+    this.requestUpdate(); // allows icon to change
 
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (ChatAgentModalStore.isFullView ? 'full' : 'standard')) : null;
   }
 
-  // TODO rework logic using mobx
   /**
    * @description changes the interface window to be hidden off screen and unfocusable
    */
   handleHideButton() {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
 
-    ChatAgentModalStore.isInterfaceHidden = true;
+    if (!this.isInterfaceHidden) {
+      ChatAgentModalStore.isInterfaceHidden = true;
+    }
   }
 
   /**
@@ -146,7 +149,7 @@ class ChatControlBar extends DDD {
     ChatAgentModalStore.messageIndex = 0;
     ChatAgentModalStore.userIndex = 0;
 
-    // TODO need to prompt the AI to start again
+    ChatAgentModalStore.loadAI();
   }
 
   static get properties() {

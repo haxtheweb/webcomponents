@@ -16,9 +16,20 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     this.chatLog = [];
-      autorun(() => {
-        this.chatLog = toJS(ChatAgentModalStore.chatLog);
-      })
+    this.isFullView;
+    this.isInterfaceHidden;
+
+    autorun(() => {
+      this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.isFullView = toJS(ChatAgentModalStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+
+      if (this.isInterfaceHidden) {
+        this.style.display = "none";
+      } else {
+        this.style.display = "block";
+      }
+    })
   }
 
   static get styles() {

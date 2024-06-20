@@ -70,7 +70,6 @@ class ChatAgent extends DDD {
     // button
     this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
-    this.isButtonHidden = false; // TODO setup mobx for isButtonHidden, remember to remove from properties
     
     // control bar
 
@@ -101,7 +100,6 @@ class ChatAgent extends DDD {
     makeObservable(this, {
       chatLog: observable,
       engine: observable,
-      isButtonHidden: observable,
       isFullView: observable,
       isInterfaceHidden: observable,
     });
@@ -112,9 +110,6 @@ class ChatAgent extends DDD {
 
       const engine = toJS(this.engine);
       // console.log(engine);
-
-      const isButtonHidden = toJS(this.isButtonHidden);
-      // console.log(isButtonHidden);
 
       const isFullView = toJS(this.isFullView);
       // console.log(isFullView);
@@ -128,10 +123,9 @@ class ChatAgent extends DDD {
     super.connectedCallback();
 
     // TODO code for username and picture possibly found at => elements/haxcms-elements/lib/core/haxcms-editor-builder.js (starting around line 2639)
-    
+
   }
 
-  // TODO @container queries for screen size differences
   /**
    * LitElement style callback
    */
@@ -203,21 +197,7 @@ class ChatAgent extends DDD {
     }
 
     // everything
-    ChatAgentModalStore.messageIndex++;
-    ChatAgentModalStore.merlinIndex++;
-
-    let date = new Date();
-    let dateString = date.toString().replace(/\s/g, '-');
-
-    const chatLogObject = {
-      messageID: ChatAgentModalStore.messageIndex,
-      author: "merlin",
-      message: "Hello! My name is Merlin. How can I assist you today?",
-      authorMessageIndex: ChatAgentModalStore.merlinIndex,
-      timestamp: dateString,
-    }
-
-    this.chatLog.push(chatLogObject);
+    this.loadAI();
 
     // button
 
@@ -260,75 +240,23 @@ class ChatAgent extends DDD {
         SITE_BUILDER.style.width = "100%";
       }
     }
+  }
 
-    // developer mode
+  loadAI() {
+    ChatAgentModalStore.messageIndex++;
+    ChatAgentModalStore.merlinIndex++;
 
+    let date = new Date();
 
-    // everything
-
-
-    // button
-    if (!this.isInterfaceHidden && this.isFullView) {
-      this.isButtonHidden = true;
-      CHAT_BUTTON.style.display = "none";
-    } else {
-      this.isButtonHidden = false;
-      CHAT_BUTTON.style.display = "block";
+    const chatLogObject = {
+      messageID: ChatAgentModalStore.messageIndex,
+      author: "merlin",
+      message: "Hello! My name is Merlin. How can I assist you today?",
+      authorMessageIndex: ChatAgentModalStore.merlinIndex,
+      timestamp: date.toString().replace(/\s/g, '-'),
     }
 
-    // control bar
-
-
-    // input
-
-
-    // interface
-    if (this.isInterfaceHidden) {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
-      CHAT_INTERFACE.style.display = "none"; // TODO will be changed
-    } else {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to visible") : null;
-      CHAT_INTERFACE.style.display = "block";
-    }
-
-    if (this.isFullView) {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
-    } else {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
-    }
-
-    // message
-
-
-    // suggestion
-
-
-    // Other needed logic
-    
-    changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
-      }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
-    });
+    this.chatLog.push(chatLogObject);
   }
 
   // TODO get commented code working

@@ -4,6 +4,7 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
 
 class ChatButton extends DDD {
@@ -14,6 +15,19 @@ class ChatButton extends DDD {
 
   constructor() {
     super();
+    this.isFullView;
+    this.isInterfaceHidden;
+
+    autorun(() => {
+      this.isFullView = toJS(ChatAgentModalStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+
+      if (this.isFullView && !this.isInterfaceHidden) {
+        this.style.display = "none";
+      } else {
+        this.style.display = "block";
+      }
+    })
   }
 
   static get styles() {
@@ -38,6 +52,10 @@ class ChatButton extends DDD {
           border-radius: var(--ddd-radius-lg);
           cursor: pointer;
           box-shadow: var(--ddd-boxShadow-xl);
+        }
+
+        .chat-button-wrapper:hover .label-wrapper, .chat-button-wrapper:focus .label-wrapper {
+          text-decoration: underline;
         }
 
         .icon-wrapper {

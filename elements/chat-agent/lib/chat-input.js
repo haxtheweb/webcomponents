@@ -4,9 +4,9 @@
  */
 import "@haxtheweb/simple-cta/simple-cta.js"; // TODO remove if not used
 import { ChatAgentModalStore } from "../chat-agent.js";
-import { ChatInterface } from "./chat-interface";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { autorun, toJS, } from "mobx";
 
 class ChatInput extends DDD {
 

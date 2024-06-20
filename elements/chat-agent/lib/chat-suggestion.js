@@ -4,9 +4,9 @@
  */
 
 import { ChatAgentModalStore } from "../chat-agent.js";
-import { ChatMessage } from "./chat-message.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { autorun, toJS, } from "mobx";
 
 class ChatSuggestion extends DDD {
   

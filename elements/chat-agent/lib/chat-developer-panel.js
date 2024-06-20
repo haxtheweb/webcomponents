@@ -17,7 +17,7 @@ class ChatDeveloperPanel extends DDD {
   constructor() {
     super();
     this.chatLog = [];
-    this.engine = "";
+    this.engine;
     
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
@@ -76,6 +76,7 @@ class ChatDeveloperPanel extends DDD {
         @container (max-width: 180px) {
           .console-table {
             flex-wrap: wrap;
+            justify-content: center;
           }
         }
       `
