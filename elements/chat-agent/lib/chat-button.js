@@ -21,12 +21,6 @@ class ChatButton extends DDD {
     autorun(() => {
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-
-      if (this.isFullView && !this.isInterfaceHidden) {
-        this.style.display = "none";
-      } else {
-        this.style.display = "block";
-      }
     })
   }
 
@@ -52,6 +46,11 @@ class ChatButton extends DDD {
           border-radius: var(--ddd-radius-lg);
           cursor: pointer;
           box-shadow: var(--ddd-boxShadow-xl);
+        }
+
+        /* TODO when isFullView && !isInterfaceHidden, set position to relative and get button off the screen, will animate later */
+        :host([is-full-view]:not([is-interface-hidden])) .chat-button-wrapper {
+          display: none;
         }
 
         .chat-button-wrapper:hover .label-wrapper, .chat-button-wrapper:focus .label-wrapper {
@@ -122,6 +121,16 @@ class ChatButton extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      isFullView: {
+        type: Boolean,
+        attribute: "is-full-view",
+        reflect: true,
+      },
+      isInterfaceHidden: {
+        type: Boolean,
+        attribute: "is-interface-hidden",
+        reflect: true,
+      },
     };
   }
 

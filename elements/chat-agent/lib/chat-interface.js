@@ -16,19 +16,13 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     this.chatLog = [];
-    this.isFullView;
-    this.isInterfaceHidden;
+    this.isFullView = null;
+    this.isInterfaceHidden = null;
 
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-
-      if (this.isInterfaceHidden) {
-        this.style.display = "none";
-      } else {
-        this.style.display = "block";
-      }
     })
   }
 
@@ -46,6 +40,11 @@ class ChatInterface extends DDD {
 
         .chat-interface-wrapper {
           background-color: transparent;
+        }
+
+        :host([is-full-view]) .chat-interface-wrapper {
+          background-color: var(--ddd-theme-default-potentialMidnight);
+          padding: var(--ddd-spacing-3);
         }
 
         .chat-wrapper {
@@ -117,7 +116,17 @@ class ChatInterface extends DDD {
       ...super.properties,
       chatLog: {
         type: Array,
-      }
+      },
+      isFullView: {
+        type: Boolean,
+        attribute: "is-full-view",
+        reflect: true,
+      },
+      isInterfaceHidden: {
+        type: Boolean,
+        attribute: "is-interface-hidden",
+        reflect: true,
+      },
     };
   }
 }

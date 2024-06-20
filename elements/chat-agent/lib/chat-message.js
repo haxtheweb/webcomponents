@@ -53,7 +53,7 @@ class ChatMessage extends DDD {
         .received-chat-message {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-0);
+          gap: var(--ddd-spacing-1);
         }
 
         .author-icon {

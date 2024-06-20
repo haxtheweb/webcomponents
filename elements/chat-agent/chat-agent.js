@@ -116,14 +116,11 @@ class ChatAgent extends DDD {
 
       const isInterfaceHidden = toJS(this.isInterfaceHidden);
       // console.log(isInterfaceHidden);
+
+      // ! work around to not being able to put this in properties
+      isFullView ? this.setAttribute("is-full-view", "") : this.removeAttribute("is-full-view");
+      isInterfaceHidden ? this.setAttribute("is-interface-hidden", "") : this.removeAttribute("is-interface-hidden");
     });
-  }
-  
-  connectedCallback() {
-    super.connectedCallback();
-
-    // TODO code for username and picture possibly found at => elements/haxcms-elements/lib/core/haxcms-editor-builder.js (starting around line 2639)
-
   }
 
   /**
@@ -148,6 +145,19 @@ class ChatAgent extends DDD {
           bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
           width: 40%; /* Switch to 30% when working with hax environment */
+        }
+
+        :host([is-full-view]) .chat-agent-wrapper {
+          bottom: var(--ddd-spacing-0);
+          right: var(--ddd-spacing-0);
+          gap: var(--ddd-spacing-0);
+          width: 25%;
+        }
+
+        :host([is-full-view]:host([is-interface-hidden])) .chat-agent-wrapper {
+          bottom: var(--ddd-spacing-2);
+          right: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-2);
         }
 
         .agent-interface-wrapper {
@@ -196,50 +206,7 @@ class ChatAgent extends DDD {
       super.firstUpdated(changedProperties);
     }
 
-    // everything
     this.loadAI();
-
-    // button
-
-
-    // control bar
-
-
-    // input
-
-    
-    // interface
-
-
-    // message
-
-
-    // suggestion
-
-
-    // Other needed logic (might be moved to updated() once I learn how that works)
-  }
-
-  // TODO CLEAN UP DEV LOGS HOLY CRAP
-  /**
-   * LitElement life cycle - property changed
-   */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-
-    // TODO possibly change due to modal, check with Bryan if for example I can use ChatInterface exported from chat-interface.js instead of querySelector
-    const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
-    const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
-    if (document.querySelector("#site")) {
-      const SITE_BUILDER = document.querySelector("#site");
-      if (this.isFullView) {
-        SITE_BUILDER.style.width = "75%"; // TODO will be changed
-      } else {
-        SITE_BUILDER.style.width = "100%";
-      }
-    }
   }
 
   loadAI() {
@@ -297,7 +264,7 @@ class ChatAgent extends DDD {
     }
     const params = {
       site: {
-        file: base + "site.json",
+        file: "https://haxtheweb.org/site.json",
       },
       type: "site",
       question: prompt,
