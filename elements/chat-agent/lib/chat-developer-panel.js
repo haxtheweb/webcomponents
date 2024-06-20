@@ -17,6 +17,7 @@ class ChatDeveloperPanel extends DDD {
     super();
   }
 
+  // TODO container query to lower button font to ensure they stay in line, and remove button text if window becomes too narrow
   static get styles() {
     return[
       super.styles,
@@ -41,7 +42,6 @@ class ChatDeveloperPanel extends DDD {
           gap: var(--ddd-spacing-1);
           justify-content: space-between;
           align-items: center;
-          flex-wrap: wrap;
         }
 
         .switch-engine-controls {
@@ -57,6 +57,8 @@ class ChatDeveloperPanel extends DDD {
           cursor: pointer;
           gap: var(--ddd-spacing-1);
         }
+
+        
       `
     ];
   }
@@ -69,37 +71,41 @@ class ChatDeveloperPanel extends DDD {
           <!-- Maybe convert buttons to simple-cta -->
           <button id="console-table-user" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
-              <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
+              <simple-icon-lite icon="hax:console-line"></simple-icon-lite> 
+              <simple-icon-lite icon="lrn:user"></simple-icon-lite>
             </div>
             <div class="button-text">
-              console.table() user chat log
+              <span class="btn-txt">console.table() user chat log</span>
             </div> 
           </button>
 
           <button id="console-table-merlin" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
-              <simple-icon-lite icon="hax:console-line"></simple-icon-lite> 
+              <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
+              <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite> 
             </div>
             <div class="button-text">
-              console.table() merlin chat log
+              <span class="btn-txt">console.table() merlin chat log</span>
             </div>
           </button>
 
           <button id="console-table-all" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
+              <simple-icon-lite icon="book"></simple-icon-lite>
             </div>
             <div class="button-text">
-              console.table() entire chat log
+              <span class="btn-txt">console.table() entire chat log</span>  
             </div>
           </button>
 
           <button id="download-as-json" @click=${this.handleDownloadAsJsonButton}>
             <div class="button-icon">
               <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
+              <simple-icon-lite icon="hax:code-json"></simple-icon-lite>
             </div>
             <div class="button-text">
-              Download chat log as .json
+              <span class="btn-txt">Download chat log as .json</span>
             </div>
           </button>
         </div>
@@ -110,7 +116,7 @@ class ChatDeveloperPanel extends DDD {
               <simple-icon-lite icon="hardware:memory"></simple-icon-lite>
             </div>
             <div class="button-text" @click=${this.handleSwitchEngineButton}>
-              Switch LLM Engine (Current Engine = <em>${ChatAgentModalStore.engine}</em>)
+              <span class="btn-txt">Switch LLM Engine</span> (Current Engine = <em>${ChatAgentModalStore.engine}</em>)
             </div>
           </button>
         </div>
