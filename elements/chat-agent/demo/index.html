@@ -13,17 +13,34 @@
       import '../chat-agent.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      body {
+        background-color: rgb(203, 196, 196);
+      }
+    </style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
+    <!-- <div class="vertical-section-container centered">
       <h3>Basic chat-agent demo</h3>
       <demo-snippet>
         <template>
-          <chat-agent>
-            This is chat-agent
-          </chat-agent>
+          
         </template>
       </demo-snippet>
-    </div>
+    </div> -->
+    <!-- <div style="display: inline-flex; gap: 8px;">
+      <p style="color: black;">Disable Developer Mode?</p>
+      <input type="checkbox" id="disable-dev-mode" onchange="toggleDevMode()" style="width: 24px;"> 
+      <script>
+        function toggleDevMode() {
+          const devModeCheckBox = document.querySelector('#disable-dev-mode');
+          const chatAgent = document.querySelector('chat-agent');
+          devModeCheckBox.checked ? chatAgent.removeAttribute('developer-mode') : chatAgent.setAttribute('developer-mode', '');
+        }
+      </script>
+    </div> -->
+    <!-- <chat-agent placeholder="Enter your prompt here...">
+      <span slot="label">Merlin-AI</span>
+    </chat-agent> -->
   </body>
 </html>
