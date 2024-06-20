@@ -2,10 +2,13 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatAgentModalStore } from "../chat-agent";
+import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-
+import {
+  autorun,
+  toJS,
+} from "mobx";
 class ChatInterface extends DDD {
 
   static get tag() {
@@ -14,6 +17,10 @@ class ChatInterface extends DDD {
 
   constructor() {
     super();
+    this.chatLog = [];
+    autorun(() => {
+      this.chatLog = toJS(ChatAgentModalStore.chatLog);
+    })
   }
 
   static get styles() {
@@ -84,7 +91,7 @@ class ChatInterface extends DDD {
             <chat-control-bar></chat-control-bar>
             <div class="chat-container">
               <div class="chat-messages">
-                  ${ChatAgentModalStore.chatLog.map((message) => html`
+                  ${this.chatLog.map((message) => html`
                     <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${message.author === "merlin"}"></chat-message>
                   `)}
                 <chat-message message="Hello! My name is Merlin. How can I help you today?" suggested-prompts></chat-message>
@@ -103,15 +110,10 @@ class ChatInterface extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      chatLog: {
+        type: Array,
+      }
     };
-  }
-
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
   }
 }
 

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import "@haxtheweb/simple-cta/simple-cta.js"; // TODO remove if not used
-import { ChatAgentModalStore } from "../chat-agent";
+import { ChatAgentModalStore } from "../chat-agent.js";
 import { ChatInterface } from "./chat-interface";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
