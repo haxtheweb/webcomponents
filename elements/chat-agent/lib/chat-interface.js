@@ -5,10 +5,8 @@
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-import {
-  autorun,
-  toJS,
-} from "mobx";
+import { autorun, toJS, } from "mobx";
+
 class ChatInterface extends DDD {
 
   static get tag() {
@@ -18,9 +16,9 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     this.chatLog = [];
-    autorun(() => {
-      this.chatLog = toJS(ChatAgentModalStore.chatLog);
-    })
+      autorun(() => {
+        this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      })
   }
 
   static get styles() {

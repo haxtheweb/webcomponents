@@ -63,17 +63,15 @@ class ChatAgent extends DDD {
 
     // everything
     this.chatLog = [];
-    this.engine = "alfred";
-    this.isAILoaded = false;
+    this.engine = "alfred"; // TODO setup mobx for engine, remember to remove from properties
     this.userName = "guest";
     this.userPicture = "";
-
-
+    
     // button
     this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
-    this.isButtonHidden = false; // TODO remove if unused
-
+    this.isButtonHidden = false; // TODO setup mobx for isButtonHidden, remember to remove from properties
+    
     // control bar
 
 
@@ -85,30 +83,47 @@ class ChatAgent extends DDD {
     this.promptPlaceholder = "Enter your prompt here...";
 
     // interface
-    this.isFullView = false;
-    this.isInterfaceHidden = false;
+    this.isFullView = false; // TODO setup mobx for isFullView, remember to remove from properties
+    this.isInterfaceHidden = false; // TODO setup mobx for isInterfaceHidden, remember to remove from properties
 
     // message
     this.merlinIndex = 0; // index of merlin messages
     this.messageIndex = 0; // index of all messages
     this.userIndex = 0; // index of user messages
-
+    
     this.userTypeWriterSpeed = 1;
     this.merlinTypeWriterSpeed = 30;
-
+    
     // suggestion
+    
 
+    // ! mobx
     makeObservable(this, {
-     chatLog: observable,
+      chatLog: observable,
+      engine: observable,
+      isButtonHidden: observable,
+      isFullView: observable,
+      isInterfaceHidden: observable,
     });
     autorun(() => {
       // magic
       const chatLog = toJS(this.chatLog);
-      console.log(chatLog);
+      // console.log(chatLog);
+
+      const engine = toJS(this.engine);
+      // console.log(engine);
+
+      const isButtonHidden = toJS(this.isButtonHidden);
+      // console.log(isButtonHidden);
+
+      const isFullView = toJS(this.isFullView);
+      // console.log(isFullView);
+
+      const isInterfaceHidden = toJS(this.isInterfaceHidden);
+      // console.log(isInterfaceHidden);
     });
-
   }
-
+  
   connectedCallback() {
     super.connectedCallback();
 
@@ -151,7 +166,7 @@ class ChatAgent extends DDD {
           justify-content: right;
         }
 
-        /* TODO does not work, refine and fix */
+        /* TODO may not need, may just need in lower components */
         @container (max-width: 600px) {
           .chat-agent-wrapper {
             width: 30%;
@@ -179,7 +194,6 @@ class ChatAgent extends DDD {
     `;
   }
   
-  // TODO clean up dev statements
   /**
    * LitElement ready
    */
@@ -198,7 +212,7 @@ class ChatAgent extends DDD {
     const chatLogObject = {
       messageID: ChatAgentModalStore.messageIndex,
       author: "merlin",
-      message: "Hello, I am Merlin. This message is rendered via Array Mapping. How can I help you today?",
+      message: "Hello! My name is Merlin. How can I assist you today?",
       authorMessageIndex: ChatAgentModalStore.merlinIndex,
       timestamp: dateString,
     }
@@ -317,36 +331,37 @@ class ChatAgent extends DDD {
     });
   }
 
-  handleMessages(author, message) {
-    let authorIndex;
+  // TODO get commented code working
+  // handleMessages(author, message) {
+  //   let authorIndex;
 
-    ChatAgentModalStore.messageIndex++;
-    switch(author) {
-      case "merlin":
-        ChatAgentModalStore.merlinIndex++;
-        authorIndex = ChatAgentModalStore.merlinIndex;
-        break;
-      case ChatAgentModalStore.userName:
-        ChatAgentModalStore.userIndex++;
-        authorIndex = ChatAgentModalStore.userIndex;
-        break;
-    }
+  //   ChatAgentModalStore.messageIndex++;
+  //   switch(author) {
+  //     case "merlin":
+  //       ChatAgentModalStore.merlinIndex++;
+  //       authorIndex = ChatAgentModalStore.merlinIndex;
+  //       break;
+  //     case ChatAgentModalStore.userName:
+  //       ChatAgentModalStore.userIndex++;
+  //       authorIndex = ChatAgentModalStore.userIndex;
+  //       break;
+  //   }
 
-    let date = new Date();
-    let dateString = date.toString().replace(/\s/g, '-');
+  //   let date = new Date();
+  //   let dateString = date.toString().replace(/\s/g, '-');
     
-    const chatLogObject = {
-      messageID: ChatAgentModalStore.messageIndex,
-      author: author,
-      message: message,
-      authorMessageIndex: authorIndex,
-      timestamp: dateString,
-    }
+  //   const chatLogObject = {
+  //     messageID: ChatAgentModalStore.messageIndex,
+  //     author: author,
+  //     message: message,
+  //     authorMessageIndex: authorIndex,
+  //     timestamp: dateString,
+  //   }
 
-    this.chatLog.push(chatLogObject);
-  }
+  //   this.chatLog.push(chatLogObject);
+  // }
 
-  sendPrompt(prompt) {
+  handleInteraction(prompt) {
     this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`) : null;
     var base = "";
     if (globalThis.document.querySelector("base")) {
@@ -379,13 +394,7 @@ class ChatAgent extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      engine: {
-        type: String,
-      },
-      isAILoaded: {
-        type: Boolean,
-        attribute: "ai-open",
-      },
+      // everything
       userName: {
         type: String,
         attribute: "username",
@@ -403,10 +412,6 @@ class ChatAgent extends DDD {
       buttonLabel: {
         type: String,
         attribute: "button-label",
-      },
-      isButtonHidden: {
-        type: Boolean,
-        attribute: "hide-button",
       },
 
       // control bar
@@ -429,14 +434,7 @@ class ChatAgent extends DDD {
       },
 
       // interface
-      isFullView: {
-        type: Boolean,
-        attribute: "full-view",
-      },
-      isInterfaceHidden: {
-        type: Boolean,
-        attribute: "hide-interface",
-      },
+
 
       // message
       merlinIndex: {

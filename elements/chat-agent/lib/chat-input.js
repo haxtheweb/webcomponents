@@ -122,7 +122,7 @@ class ChatInput extends DDD {
 
       ChatAgentModalStore.chatLog.push(chatLogObject);
 
-      ChatAgentModalStore.sendPrompt(INPUTTED_PROMPT);
+      ChatAgentModalStore.handleInteraction(INPUTTED_PROMPT);
 
       this.shadowRoot.querySelector("#user-input").value = "";
 

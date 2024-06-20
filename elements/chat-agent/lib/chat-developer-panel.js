@@ -6,6 +6,7 @@
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { autorun, toJS, } from "mobx";
 
 class ChatDeveloperPanel extends DDD {
 
@@ -15,6 +16,13 @@ class ChatDeveloperPanel extends DDD {
 
   constructor() {
     super();
+    this.chatLog = [];
+    this.engine = "";
+    
+    autorun(() => {
+      this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.engine = toJS(ChatAgentModalStore.engine);
+    });
   }
 
   // TODO container query to lower button font to ensure they stay in line, and remove button text if window becomes too narrow
@@ -127,7 +135,7 @@ class ChatDeveloperPanel extends DDD {
               <simple-icon-lite icon="hardware:memory"></simple-icon-lite>
             </div>
             <div class="button-text" @click=${this.handleSwitchEngineButton}>
-              <span class="btn-txt">Switch LLM Engine</span> (Current Engine = <em>${ChatAgentModalStore.engine}</em>)
+              <span class="btn-txt">Switch LLM Engine</span> <span class="switch-engine-txt">(Current Engine = <em>${this.engine}</em>)</span>
             </div>
           </button>
         </div>
@@ -151,7 +159,7 @@ class ChatDeveloperPanel extends DDD {
         console.table(this.compileChatLog("merlin"))
         break;
       case "console-table-all":
-        console.table(ChatAgentModalStore.chatLog)
+        console.table(this.chatLog)
         break;
     }
   }
@@ -165,7 +173,7 @@ class ChatDeveloperPanel extends DDD {
     
     let newChatLog = [];
 
-    ChatAgentModalStore.chatLog.forEach(element => {
+    this.chatLog.forEach(element => {
       if (element.author === author) {
         newChatLog.push(element);
       }
@@ -180,11 +188,10 @@ class ChatDeveloperPanel extends DDD {
   handleDownloadAsJsonButton() {
     console.info(`HAX-DEV-MODE: Downloading chat log as .json...`)
 
-    if (ChatAgentModalStore.chatLog.length !== 0) {
-      const log = JSON.stringify(ChatAgentModalStore.chatLog, undefined, 2);
+    if (this.chatLog.length !== 0) {
+      const log = JSON.stringify(this.chatLog, undefined, 2);
       let date = new Date();
-      let dateString = date.toString().replace(/\s/g, '-');;
-      const fileName = ChatAgentModalStore.userName + '-chat-log-' + dateString + '.json';
+      const fileName = ChatAgentModalStore.userName + '-chat-log-' + date.toString().replace(/\s/g, '-') + '.json';
       
       let download = document.createElement('a');
       download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(log));
@@ -197,8 +204,8 @@ class ChatDeveloperPanel extends DDD {
   /**
    * @description handles the functionality of the switch engine button
    */
-  handleSwitchEngineButton(e) {
-    switch (ChatAgentModalStore.engine) {
+  handleSwitchEngineButton() {
+    switch (this.engine) {
       case "alfred":
         ChatAgentModalStore.engine = "robin";
         break;
@@ -207,9 +214,9 @@ class ChatDeveloperPanel extends DDD {
         break;
     }
 
-    console.info(`HAX-DEV-MODE: Engine switched to ${ChatAgentModalStore.engine}`);
+    console.info(`HAX-DEV-MODE: Engine switched to ${ChatAgentModalStore.engine} (store) & ${this.engine} (autorun)`);
 
-    e.currentTarget.innerHTML = `Switch LLM Engine (Current Engine = <em>${ChatAgentModalStore.engine}</em>)`;
+    this.shadowRoot.querySelector(".switch-engine-txt").innerHTML = `(Current Engine = <em>${this.engine}</em>)`;
   }
 
   static get properties() {

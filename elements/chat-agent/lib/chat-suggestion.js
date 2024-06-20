@@ -46,14 +46,12 @@ class ChatSuggestion extends DDD {
           box-shadow: var(--ddd-boxShadow-xl);
         }
 
-        /* TODO create CSS that will set background-color to a faded red, along with lower opacity when this.disabled = true */
         :host([disabled]) .chat-suggestion-wrapper {
           background-color: var(--ddd-theme-default-discoveryCoral);
           opacity: 0.6;
           cursor: default;
         }
 
-        /* TODO chosen prompt css sets background color to keystoneYellow */
         :host([chosen-prompt]) .chat-suggestion-wrapper {
           background-color: var(--ddd-theme-default-futureLime);
         }
@@ -114,7 +112,7 @@ class ChatSuggestion extends DDD {
   
       ChatAgentModalStore.chatLog.push(chatLogObject);
   
-      ChatAgentModalStore.sendPrompt(this.suggestion);
+      ChatAgentModalStore.handleInteraction(this.suggestion);
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion buttons disabled, ignoring request') : null;
     }

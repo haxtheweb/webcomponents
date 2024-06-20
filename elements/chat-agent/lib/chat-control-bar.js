@@ -5,6 +5,7 @@
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { autorun, toJS, } from "mobx";
 
 class ChatControlBar extends DDD {
 
@@ -14,6 +15,10 @@ class ChatControlBar extends DDD {
 
   constructor() {
     super();
+    this.chatLog = [];
+      autorun(() => {
+        this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      })
   }
 
   static get styles() {
@@ -87,6 +92,7 @@ class ChatControlBar extends DDD {
     this.resetChat();
   }
 
+  // TODO rework logic using mobx
   /**
    * @description Toggles the view of chat-interface to full or minimized
    */
@@ -100,6 +106,7 @@ class ChatControlBar extends DDD {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (ChatAgentModalStore.isFullView ? 'full' : 'standard')) : null;
   }
 
+  // TODO rework logic using mobx
   /**
    * @description changes the interface window to be hidden off screen and unfocusable
    */
@@ -115,11 +122,10 @@ class ChatControlBar extends DDD {
   downloadChatLog() {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
 
-    if (ChatAgentModalStore.chatLog.length !== 0) {
-      const log = JSON.stringify(ChatAgentModalStore.chatLog, undefined, 2);
+    if (this.chatLog.length !== 0) {
+      const log = JSON.stringify(this.chatLog, undefined, 2);
       let date = new Date();
-      let dateString = date.toString().replace(/\s/g, '-');
-      const fileName = ChatAgentModalStore.userName + '-chat-log-' + dateString + '.txt';
+      const fileName = ChatAgentModalStore.userName + '-chat-log-' + date.toString().replace(/\s/g, '-') + '.txt';
       
       let download = document.createElement('a');
       download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(log));

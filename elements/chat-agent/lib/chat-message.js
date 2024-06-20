@@ -25,6 +25,7 @@ class ChatMessage extends DDD {
     this.suggestionsDisabled = false;
   }
 
+  // TODO container query to ensure messages collapse properly when window becomes too narrow
   static get styles() {
     return [
       super.styles,
@@ -33,6 +34,7 @@ class ChatMessage extends DDD {
         
         :host {
           display: block;
+          container-type: inline-size;
         }
 
         .chat-message-wrapper {
@@ -51,7 +53,7 @@ class ChatMessage extends DDD {
         .received-chat-message {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-1);
+          gap: var(--ddd-spacing-0);
         }
 
         .author-icon {
@@ -96,6 +98,16 @@ class ChatMessage extends DDD {
           gap: var(--ddd-spacing-5);
           justify-content: center;
         }
+
+        @container (max-width: 190px) {
+          .author-icon {
+            display: none;
+          }
+
+          .received-chat-message .message-content {
+            background: rgba(73, 29, 112, 0.1);
+          }
+        }
       `
     ];
   }
@@ -113,7 +125,6 @@ class ChatMessage extends DDD {
 
   // TODO want the chat-suggestions to load after the type-writer is done writing out the text
   // TODO remove the this.hasSuggestedPrompts ternary operator when moving out of demo phase, leave .suggested-prompts
-  // TODO chat suggestions should be rendered using Array Map maybe?
   /**
    * @description Renders a message recevied from Merlin-AI
    */
