@@ -21,7 +21,7 @@ class ChatMessage extends DDD {
     this.isSentPrompt = false;
     this.message = "";
     this.messageWasSuggestedPrompt = false; 
-    this.suggestedPrompts = ["this is a suggestion", "this is a second suggestion", "this is proof the array map works (plz work I need this)"];
+    this.suggestedPrompts = ["Who are you?", "What can you do?", "this is proof the array map works (plz work I need this)"];
     this.suggestionsDisabled = false;
   }
 

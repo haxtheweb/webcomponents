@@ -103,14 +103,13 @@ class ChatSuggestion extends DDD {
       ChatAgentModalStore.userIndex++;
   
       let date = new Date();
-      let dateString = date.toString().replace(/\s/g, '-');
       
       const chatLogObject = {
         messageID: ChatAgentModalStore.messageIndex,
         author: ChatAgentModalStore.userName,
         message: this.suggestion,
         authorMessageIndex: ChatAgentModalStore.userIndex,
-        timestamp: dateString,
+        timestamp: date.toString().replace(/\s/g, '-'),
       }
   
       ChatAgentModalStore.chatLog.push(chatLogObject);

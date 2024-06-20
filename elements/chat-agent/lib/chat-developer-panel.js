@@ -41,6 +41,7 @@ class ChatDeveloperPanel extends DDD {
           gap: var(--ddd-spacing-1);
           justify-content: space-between;
           align-items: center;
+          flex-wrap: wrap;
         }
 
         .switch-engine-controls {
@@ -63,7 +64,9 @@ class ChatDeveloperPanel extends DDD {
   render() {
     return html`
       <div class="chat-developer-panel-wrapper">
+
         <div class="console-table">
+          <!-- Maybe convert buttons to simple-cta -->
           <button id="console-table-user" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>

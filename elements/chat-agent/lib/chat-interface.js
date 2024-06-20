@@ -72,15 +72,13 @@ class ChatInterface extends DDD {
     }
   }
 
-  // TODO need to dynamically apply attributes "sent-prompt" or "suggested-prompts" to chat message components in array map. sent-prompt applied to sent messages, suggested-prompts applied to received messages
+  // TODO page scrolls down when new message is sent. Not when message is received
   render() {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
           ${ChatAgentModalStore.developerModeEnabled ? html`
-            <div class="developer-panel-wrapper">
-              <chat-developer-panel></chat-developer-panel>
-            </div>
+            <chat-developer-panel></chat-developer-panel>
           ` : ''}
           <div class="main-wrapper">
             <chat-control-bar></chat-control-bar>

@@ -39,13 +39,14 @@ class ChatAgent extends DDD {
     this.chatLog = [];
     this.engine = "alfred";
     this.isAILoaded = false;
-    this.userName = "guest"; // TODO needs to grab username somehow or default to "guest", saw example in haxcms-site-editor-ui.js
+    this.userName = "guest";
+    this.userPicture = "";
 
 
     // button
     this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
-    this.isButtonHidden = false;
+    this.isButtonHidden = false; // TODO remove if unused
 
     // control bar
 
@@ -72,6 +73,13 @@ class ChatAgent extends DDD {
     // suggestion
 
 
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    // code for username and picture possibly found at => elements/haxcms-elements/lib/core/haxcms-editor-builder.js (starting around line 2639)
+    
   }
 
   // TODO @container queries for screen size differences
@@ -209,7 +217,13 @@ class ChatAgent extends DDD {
 
 
     // button
-    
+    if (!this.isInterfaceHidden && this.isFullView) {
+      this.isButtonHidden = true;
+      CHAT_BUTTON.style.display = "none";
+    } else {
+      this.isButtonHidden = false;
+      CHAT_BUTTON.style.display = "block";
+    }
 
     // control bar
 
@@ -227,13 +241,11 @@ class ChatAgent extends DDD {
     }
 
     if (this.isFullView) {
-      CHAT_INTERFACE.setAttribute("full-view", "");
       SITE_BUILDER.style.width = "75%"; // TODO will be changed
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
     } else {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
       SITE_BUILDER.style.width = "100%";
-      CHAT_INTERFACE.removeAttribute("full-view");
     }
 
     // message
@@ -317,6 +329,10 @@ class ChatAgent extends DDD {
       userName: {
         type: String,
         attribute: "username",
+      },
+      userPicture: {
+        type: String,
+        attribute: "user-picture",
       },
 
       // button

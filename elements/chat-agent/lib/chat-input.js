@@ -48,8 +48,8 @@ class ChatInput extends DDD {
         }
 
         .send-button {
-          width: var(--ddd-spacing-13);
-          height: var(--ddd-spacing-13);
+          width: 52px;
+          height: 52px;
           border-radius: var(--ddd-radius-circle);
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           display: flex;
@@ -111,25 +111,23 @@ class ChatInput extends DDD {
       ChatAgentModalStore.userIndex++;
 
       let date = new Date();
-      let dateString = date.toString().replace(/\s/g, '-');
 
       const chatLogObject = {
         messageID: ChatAgentModalStore.messageIndex,
         author: ChatAgentModalStore.userName,
         message: INPUTTED_PROMPT,
         authorMessageIndex: ChatAgentModalStore.userIndex,
-        timestamp: dateString,
+        timestamp: date.toString().replace(/\s/g, '-'),
       }
 
       ChatAgentModalStore.chatLog.push(chatLogObject);
 
-      // TODO ensure message sent to chat log renders via array map in chat-interface.js
+      // TODO ensure message sent to chat log renders via array map in chat-interface.js, probably an update function
+
 
       // TODO Send message to AI for response
 
       this.shadowRoot.querySelector("#user-input").value = "";
-
-      this.requestUpdate();
 
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
