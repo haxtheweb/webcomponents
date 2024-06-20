@@ -122,7 +122,7 @@ class ChatInput extends DDD {
 
       ChatAgentModalStore.chatLog.push(chatLogObject);
 
-      // TODO ensure message sent to chat log renders via array map in chat-interface.js, probably an update function
+      // TODO ensure message sent to chat log renders via array map in chat-interface.js, try custom event
 
 
       // TODO Send message to AI for response

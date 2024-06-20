@@ -26,6 +26,7 @@ class ChatDeveloperPanel extends DDD {
 
         :host {
           display: block;
+          container-type: inline-size;
         }
 
         .chat-developer-panel-wrapper {
@@ -58,7 +59,17 @@ class ChatDeveloperPanel extends DDD {
           gap: var(--ddd-spacing-1);
         }
 
-        
+        @container (max-width: 500px) {
+          .btn-txt {
+            display: none;
+          }
+        }
+
+        @container (max-width: 180px) {
+          .console-table {
+            flex-wrap: wrap;
+          }
+        }
       `
     ];
   }
