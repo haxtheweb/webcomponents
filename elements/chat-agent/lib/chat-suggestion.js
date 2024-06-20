@@ -114,9 +114,7 @@ class ChatSuggestion extends DDD {
   
       ChatAgentModalStore.chatLog.push(chatLogObject);
   
-      // TODO Send message to AI for response
-
-      
+      ChatAgentModalStore.sendPrompt(this.suggestion);
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion buttons disabled, ignoring request') : null;
     }

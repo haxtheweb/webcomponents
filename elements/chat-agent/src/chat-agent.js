@@ -21,7 +21,24 @@ import {
   autorun,
   toJS,
 } from "mobx";
-configure({ enforceActions: false }); // strict mode off
+configure({ enforceActions: false });
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+// enable services for glossary enhancement
+enableServices(["haxcms"]);
+MicroFrontendRegistry.add({
+  endpoint: "/api/apps/haxcms/aiChat",
+  name: "@haxcms/aiChat",
+  title: "AI Chat",
+  description: "AI based chat agent that can answer questions about a site",
+  params: {
+    site: "location of the HAXcms site OR site.json data",
+    type: "site for site.json or link for remote loading",
+    question: "Question to ask of the AI",
+    engine: "which engine to use as we test multiple",
+    context: "context to query based on. Course typical",
+  },
+}); // strict mode off
 
 /**
  * `chat-agent`
@@ -95,7 +112,7 @@ class ChatAgent extends DDD {
   connectedCallback() {
     super.connectedCallback();
 
-    // code for username and picture possibly found at => elements/haxcms-elements/lib/core/haxcms-editor-builder.js (starting around line 2639)
+    // TODO code for username and picture possibly found at => elements/haxcms-elements/lib/core/haxcms-editor-builder.js (starting around line 2639)
     
   }
 
@@ -327,6 +344,36 @@ class ChatAgent extends DDD {
     }
 
     this.chatLog.push(chatLogObject);
+  }
+
+  sendPrompt(prompt) {
+    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`) : null;
+    var base = "";
+    if (globalThis.document.querySelector("base")) {
+      base = globalThis.document.querySelector("base").href;
+    }
+    const params = {
+      site: {
+        file: base + "site.json",
+      },
+      type: "site",
+      question: prompt,
+      engine: this.engine,
+      context: this.context,
+    };
+    this.loading = true;
+    MicroFrontendRegistry.call("@haxcms/aiChat", params)
+      .then((d) => {
+        if (d.status == 200) {
+          this.answers = [...d.data.answers];
+          this.question = d.data.question;
+        }
+        this.loading = false;
+      })
+      .catch((error) => {
+        this.loading = false;
+        console.error(error);
+      });
   }
 
   static get properties() {
