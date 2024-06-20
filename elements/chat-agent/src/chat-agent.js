@@ -13,6 +13,15 @@ import '@haxtheweb/rpg-character/rpg-character.js';
 import '@haxtheweb/simple-icon/simple-icon.js';
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import {
+  observable,
+  makeObservable,
+  computed,
+  configure,
+  autorun,
+  toJS,
+} from "mobx";
+configure({ enforceActions: false }); // strict mode off
 
 /**
  * `chat-agent`
@@ -72,6 +81,14 @@ class ChatAgent extends DDD {
 
     // suggestion
 
+    makeObservable(this, {
+     chatLog: observable,
+    });
+    autorun(() => {
+      // magic
+      const chatLog = toJS(this.chatLog);
+      console.log(chatLog);
+    });
 
   }
 
@@ -87,18 +104,14 @@ class ChatAgent extends DDD {
    * LitElement style callback
    */
   static get styles() {
-    // support for using in other classes
-    let styles = [];
-    if (super.styles) {
-      styles = super.styles;
-    }
     return [
-      ...styles,
+      super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
 
         :host {
           display: block;
+          container-type: normal;
         }
 
         .chat-agent-wrapper {
@@ -173,7 +186,7 @@ class ChatAgent extends DDD {
       timestamp: dateString,
     }
 
-    ChatAgentModalStore.chatLog.push(chatLogObject);
+    this.chatLog.push(chatLogObject);
 
     // button
 
@@ -208,7 +221,14 @@ class ChatAgent extends DDD {
     // TODO possibly change due to modal, check with Bryan if for example I can use ChatInterface exported from chat-interface.js instead of querySelector
     const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
     const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
-    const SITE_BUILDER = document.querySelector("#site");
+    if (document.querySelector("#site")) {
+      const SITE_BUILDER = document.querySelector("#site");
+      if (this.isFullView) {
+        SITE_BUILDER.style.width = "75%"; // TODO will be changed
+      } else {
+        SITE_BUILDER.style.width = "100%";
+      }
+    }
 
     // developer mode
 
@@ -241,11 +261,9 @@ class ChatAgent extends DDD {
     }
 
     if (this.isFullView) {
-      SITE_BUILDER.style.width = "75%"; // TODO will be changed
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
     } else {
       this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
-      SITE_BUILDER.style.width = "100%";
     }
 
     // message
@@ -308,17 +326,12 @@ class ChatAgent extends DDD {
       timestamp: dateString,
     }
 
-    ChatAgentModalStore.chatLog.push(chatLogObject);
+    this.chatLog.push(chatLogObject);
   }
 
   static get properties() {
     return {
       ...super.properties,
-      
-      // everything
-      chatLog: {
-        type: Array,
-      },
       engine: {
         type: String,
       },
@@ -403,16 +416,16 @@ customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };
 
 // register globally so we can make sure there is only one
-window.ChatAgentModal = window.ChatAgentModal || {};
+globalThis.ChatAgentModal = globalThis.ChatAgentModal || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.ChatAgentModal.requestAvailability = () => {
-  if (!window.ChatAgentModal.instance) {
-    window.ChatAgentModal.instance = document.createElement("chat-agent");
-    document.body.appendChild(window.ChatAgentModal.instance);
+globalThis.ChatAgentModal.requestAvailability = () => {
+  if (!globalThis.ChatAgentModal.instance) {
+    globalThis.ChatAgentModal.instance = document.createElement("chat-agent");
+    document.body.appendChild(globalThis.ChatAgentModal.instance);
   }
-  return window.ChatAgentModal.instance;
+  return globalThis.ChatAgentModal.instance;
 };
 
-export const ChatAgentModalStore = window.ChatAgentModal.requestAvailability();
+export const ChatAgentModalStore = globalThis.ChatAgentModal.requestAvailability();

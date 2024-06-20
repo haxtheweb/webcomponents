@@ -45,7 +45,7 @@
     "@haxtheweb/intersection-element": "^9.0.0-alpha.0",
     "@haxtheweb/schema-behaviors": "^9.0.0-alpha.0",
     "@haxtheweb/simple-colors": "^9.0.0-alpha.0",
-    "lit": "^3.1.3"
+    "lit": "^3.1.4"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
