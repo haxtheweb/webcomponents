@@ -23,6 +23,12 @@ class ChatInterface extends DDD {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+
+      // TODO change, demo for now
+      const tempSiteGrabber = document.querySelector("#site");
+      this.isFullView ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
+
+
     })
   }
 
@@ -45,6 +51,11 @@ class ChatInterface extends DDD {
         :host([is-full-view]) .chat-interface-wrapper {
           background-color: var(--ddd-theme-default-potentialMidnight);
           padding: var(--ddd-spacing-3);
+        }
+
+        :host([is-full-view]) .chat-messages {
+          max-height: 100%;
+          /* TODO finish this, max-height is what is causing it to not grow at least somewhat */
         }
 
         .chat-wrapper {
