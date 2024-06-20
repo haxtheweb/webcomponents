@@ -51,8 +51,8 @@
     "@haxtheweb/micro-frontend-registry": "^9.0.0-alpha.0",
     "@haxtheweb/simple-colors": "^9.0.0-alpha.0",
     "@haxtheweb/simple-icon": "^9.0.0-alpha.0",
-    "lit": "^3.1.3",
-    "mobx": "6.12.0"
+    "lit": "^3.1.4",
+    "mobx": "6.12.4"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
