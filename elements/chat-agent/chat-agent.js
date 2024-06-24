@@ -67,7 +67,7 @@ class ChatAgent extends DDD {
     this.chatLog = [];
     this.engine = "alfred";
     store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
-    store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null;
+    store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
     
     // button
     this.buttonIcon = "hax:wizard-hat";
@@ -223,6 +223,8 @@ class ChatAgent extends DDD {
    * @param {string} message - the written or suggested prompt
    */
   handleMessage(author, message) {
+    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Writing message ${message} by ${author} to chatLog.`) : null;
+
     let authorIndex;
 
     this.messageIndex++;
@@ -278,11 +280,13 @@ class ChatAgent extends DDD {
     MicroFrontendRegistry.call("@haxcms/aiChat", params)
       .then((d) => {
         if (d.status == 200) {
-          this.answers = [...d.data.answers];
+          this.answers = [d.data.answer];
           console.log(this.answers);
           this.question = d.data.question;
         }
         this.loading = false;
+
+        this.handleMessage("merlin", d.data.answer);
       })
       .catch((error) => {
         this.loading = false;
