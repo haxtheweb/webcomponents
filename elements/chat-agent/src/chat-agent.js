@@ -14,6 +14,7 @@ import '@haxtheweb/simple-icon/simple-icon.js';
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 import { HAXCMSSiteEditorUI } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import {
   observable,
   makeObservable,
@@ -65,8 +66,8 @@ class ChatAgent extends DDD {
     // everything
     this.chatLog = [];
     this.engine = "alfred";
-    this.userName = "guest";
-    this.userPicture = "";
+    store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
+    store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null;
     
     // button
     this.buttonIcon = "hax:wizard-hat";
@@ -128,6 +129,8 @@ class ChatAgent extends DDD {
       isInterfaceHidden ? this.setAttribute("is-interface-hidden", "") : this.removeAttribute("is-interface-hidden");
     });
   }
+
+
 
   /**
    * LitElement style callback
@@ -276,6 +279,7 @@ class ChatAgent extends DDD {
       .then((d) => {
         if (d.status == 200) {
           this.answers = [...d.data.answers];
+          console.log(this.answers);
           this.question = d.data.question;
         }
         this.loading = false;
