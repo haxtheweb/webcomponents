@@ -1,0 +1,20 @@
+{
+  "functions": {
+    "api/apps/haxcms/**.js": {
+      "memory": 3008,
+      "maxDuration": 300
+    },
+    "api/services/media/format/*.js": {
+      "memory": 1024,
+      "maxDuration": 300
+    },
+    "api/apps/haxcms/convert/*.js": {
+      "memory": 3008,
+      "maxDuration": 300
+    },
+    "api/**/*.js": {
+      "memory": 1024,
+      "maxDuration": 15
+    }
+  }
+}
