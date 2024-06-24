@@ -26,36 +26,39 @@ export default async function handler(req, res) {
   else {
     body = stdPostBody(req);
   }
-  if (body.question && body.type && body.site.file) {
-    // get URL bits for validating and forming calls
-    let url = '';
-    url = body.site.file.replace('/site.json', '');
-    // handle trailing slash
-    if (url.endsWith('/')) {
-      url = url.slice(0, -1);
-    }
-    try {
-      var parseURL = new URL(url);
-      // verify we have a path / host
-      if (parseURL.pathname && parseURL.host) {
-        // support for iam vs oer
-        if (parseURL.host) {
-          // specific to our instances but iam is going to block access when querying for the site content
-          // iam is the authoring domain while oer is the openly available one which if printing
-          // and rendering the content appropriately, this is the way to do it
-          parseURL.host = parseURL.host.replace('iam.', 'oer.');
+  // either need a context OR a site file to know which to request
+  if (body.question && ((body.site && body.site.file) || body.context)) {
+    if (body.site && body.site.file) {
+      // get URL bits for validating and forming calls
+      let url = '';
+      url = body.site.file.replace('/site.json', '');
+      // handle trailing slash
+      if (url.endsWith('/')) {
+        url = url.slice(0, -1);
+      }
+      try {
+        var parseURL = new URL(url);
+        // verify we have a path / host
+        if (parseURL.pathname && parseURL.host) {
+          // support for iam vs oer
+          if (parseURL.host) {
+            // specific to our instances but iam is going to block access when querying for the site content
+            // iam is the authoring domain while oer is the openly available one which if printing
+            // and rendering the content appropriately, this is the way to do it
+            parseURL.host = parseURL.host.replace('iam.', 'oer.');
+          }
+          const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
+          const siteManifest = await resolveSiteData(base);
+          context = siteManifest.metadata.site.name;
         }
-        const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
-        const siteManifest = await resolveSiteData(base);
-        context = siteManifest.metadata.site.name;
       }
-      // support definition in post
-      if (body.context) {
-        context = body.context;
+      catch(e) {
+        console.warn('invalid url');
       }
     }
-    catch(e) {
-      console.warn('invalid url');
+    // support definition in post
+    if (body.context) {
+      context = body.context;
     }
     // hard code to switch context on the fly
     //context = "haxcellence";
