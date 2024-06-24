@@ -64,7 +64,7 @@ class ChatAgent extends DDD {
 
     // everything
     this.chatLog = [];
-    this.engine = "alfred"; // TODO setup mobx for engine, remember to remove from properties
+    this.engine = "alfred";
     this.userName = "guest";
     this.userPicture = "";
     
@@ -83,8 +83,8 @@ class ChatAgent extends DDD {
     this.promptPlaceholder = "Enter your prompt here...";
 
     // interface
-    this.isFullView = false; // TODO setup mobx for isFullView, remember to remove from properties
-    this.isInterfaceHidden = false; // TODO setup mobx for isInterfaceHidden, remember to remove from properties
+    this.isFullView = false;
+    this.isInterfaceHidden = false;
 
     // message
     this.merlinIndex = 0; // index of merlin messages
@@ -108,12 +108,11 @@ class ChatAgent extends DDD {
       isFullView: observable,
       isInterfaceHidden: observable,
       merlinIndex: observable,
-      merlinTypeWriterSpeed: observable,
       messageIndex: observable,
       userIndex: observable,
       userName: observable,
-      userTypeWriterSpeed: observable,
     });
+
     autorun(() => {
       // magic
 
@@ -122,11 +121,9 @@ class ChatAgent extends DDD {
       const isFullView = toJS(this.isFullView);
       const isInterfaceHidden = toJS(this.isInterfaceHidden);
       const merlinIndex = toJS(this.merlinIndex);
-      const merlinTypeWriterSpeed = toJS(this.merlinTypeWriterSpeed);
       const messageIndex = toJS(this.messageIndex);
       const userIndex = toJS(this.userIndex);
       const userName = toJS(this.userName);
-      const userTypeWriterSpeed = toJS(this.userTypeWriterSpeed);
 
       // ! work around to not being able to put this in properties
       isFullView ? this.setAttribute("is-full-view", "") : this.removeAttribute("is-full-view");
@@ -181,7 +178,6 @@ class ChatAgent extends DDD {
           justify-content: right;
         }
 
-        /* TODO may not need, may just need in lower components */
         @container (max-width: 600px) {
           .chat-agent-wrapper {
             width: 30%;
@@ -217,58 +213,50 @@ class ChatAgent extends DDD {
       super.firstUpdated(changedProperties);
     }
 
-    this.loadAI();
+    this.handleMessage("merlin", "Hello! My name is Merlin. How can I assist you today?");
   }
 
-  loadAI() {
-    ChatAgentModalStore.messageIndex++;
-    ChatAgentModalStore.merlinIndex++;
+  /**
+   * @description writes message to chatLog
+   * @param {string} author - the author of the message
+   * @param {string} message - the written or suggested prompt
+   */
+  handleMessage(author, message) {
+    let authorIndex;
+
+    this.messageIndex++;
+
+    switch(author) {
+      case "merlin":
+        this.merlinIndex++;
+        authorIndex = this.merlinIndex;
+        break;
+      case this.userName:
+        this.userIndex++;
+        authorIndex = this.userIndex;
+        break;
+    }
 
     let date = new Date();
-
+    
     const chatLogObject = {
-      messageID: ChatAgentModalStore.messageIndex,
-      author: "merlin",
-      message: "Hello! My name is Merlin. How can I assist you today?",
-      authorMessageIndex: ChatAgentModalStore.merlinIndex,
+      messageID: this.messageIndex,
+      author: author,
+      message: message,
+      authorMessageIndex: authorIndex,
       timestamp: date.toString().replace(/\s/g, '-'),
     }
 
     this.chatLog.push(chatLogObject);
+
+    if (author === this.userName) {
+      this.handleInteraction(message);
+    }
   }
-
-  // TODO get commented code working
-  // handleMessages(author, message) {
-  //   let authorIndex;
-
-  //   ChatAgentModalStore.messageIndex++;
-  //   switch(author) {
-  //     case "merlin":
-  //       ChatAgentModalStore.merlinIndex++;
-  //       authorIndex = ChatAgentModalStore.merlinIndex;
-  //       break;
-  //     case ChatAgentModalStore.userName:
-  //       ChatAgentModalStore.userIndex++;
-  //       authorIndex = ChatAgentModalStore.userIndex;
-  //       break;
-  //   }
-
-  //   let date = new Date();
-  //   let dateString = date.toString().replace(/\s/g, '-');
-    
-  //   const chatLogObject = {
-  //     messageID: ChatAgentModalStore.messageIndex,
-  //     author: author,
-  //     message: message,
-  //     authorMessageIndex: authorIndex,
-  //     timestamp: dateString,
-  //   }
-
-  //   this.chatLog.push(chatLogObject);
-  // }
 
   /**
    * @description sends prompt to AI engine specified
+   * @param {string} prompt - the written or suggested prompt
    */
   handleInteraction(prompt) {
     this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`) : null;
@@ -298,6 +286,26 @@ class ChatAgent extends DDD {
         this.loading = false;
         console.error(error);
       });
+  }
+
+  /**
+   * @description downloads the chat log as the specified file type
+   * @param {string} fileType - the file type to download
+   */
+  handleDownload(fileType) {
+    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Downloading chatlog as ${fileType}.`) : null;
+
+    if (this.chatLog.length !== 0) {
+      const LOG = JSON.stringify(this.chatLog, undefined, 2);
+      let date = new Date();
+      const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, '-')}.${fileType}`;
+      
+      let download = document.createElement('a');
+      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(LOG));
+      download.setAttribute('download', FILE_NAME);
+      download.click();
+      download.remove();
+    }
   }
 
   static get properties() {
@@ -332,6 +340,14 @@ class ChatAgent extends DDD {
 
 
       // message
+      merlinTypeWriterSpeed: {
+        type: Number,
+        attribute: "merlin-type-writer-speed",
+      },
+      userTypeWriterSpeed: {
+        type: Number,
+        attribute: "user-type-writer-speed",
+      },
 
 
       // suggestion

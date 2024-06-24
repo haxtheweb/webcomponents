@@ -129,17 +129,7 @@ class ChatControlBar extends DDD {
   downloadChatLog() {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
 
-    if (this.chatLog.length !== 0) {
-      const LOG = JSON.stringify(this.chatLog, undefined, 2);
-      let date = new Date();
-      const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, '-')}.txt`;
-      
-      let download = document.createElement('a');
-      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(LOG));
-      download.setAttribute('download', FILE_NAME);
-      download.click();
-      download.remove();
-    }
+    ChatAgentModalStore.handleDownload('txt');
   }
 
   /**

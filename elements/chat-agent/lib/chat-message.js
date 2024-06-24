@@ -26,16 +26,12 @@ class ChatMessage extends DDD {
 
     // ! mobx stuff
     this.userName = null;
-    this.userTypeWriterSpeed = null;
-    this.merlinTypeWriterSpeed = null;
+
     autorun(() => {
       this.userName = toJS(ChatAgentModalStore.userName);
-      this.userTypeWriterSpeed = toJS(ChatAgentModalStore.userTypeWriterSpeed);
-      this.merlinTypeWriterSpeed = toJS(ChatAgentModalStore.merlinTypeWriterSpeed);
     })
   }
 
-  // TODO container query to ensure messages collapse properly when window becomes too narrow
   static get styles() {
     return [
       super.styles,
@@ -144,7 +140,7 @@ class ChatMessage extends DDD {
           <div class="author-icon">
             <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
           </div>
-          <type-writer class="message-content" text="${this.message}" speed="${this.merlinTypeWriterSpeed}"></type-writer>
+          <type-writer class="message-content" text="${this.message}" speed="${ChatAgentModalStore.merlinTypeWriterSpeed}"></type-writer>
         </div>
         <div class="suggested-prompts">
           ${this.suggestedPrompts.map((suggestion) => html`
@@ -161,7 +157,7 @@ class ChatMessage extends DDD {
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-        <type-writer class="message-content" speed="${this.userTypeWriterSpeed}" text="${this.message}"></type-writer>
+        <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer>
         <div class="author-icon">
           <rpg-character seed="${this.userName}"></rpg-character>
         </div>
@@ -169,6 +165,9 @@ class ChatMessage extends DDD {
     `;
   }
 
+  /**
+   * @description Disables the suggestions after one is clicked
+   */
   disableSuggestions(e) {
     if (!this.suggestionsDisabled) {
       const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
@@ -183,7 +182,6 @@ class ChatMessage extends DDD {
     }
   }
 
-  // TODO ensure properties matches constructor
   static get properties() {
     return {
       ...super.properties,

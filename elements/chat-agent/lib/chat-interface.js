@@ -26,7 +26,7 @@ class ChatInterface extends DDD {
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
       this.userName = toJS(ChatAgentModalStore.userName);
 
-      // TODO change, here for brute force for now
+      // TODO will change, here for brute force for now
       const tempSiteGrabber = document.querySelector("#site");
       this.isFullView ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
     })

@@ -117,22 +117,7 @@ class ChatInput extends DDD {
     if (INPUTTED_PROMPT !== "") {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
-      ChatAgentModalStore.messageIndex++;
-      ChatAgentModalStore.userIndex++;
-
-      let date = new Date();
-
-      const chatLogObject = {
-        messageID: this.messageIndex,
-        author: this.userName,
-        message: INPUTTED_PROMPT,
-        authorMessageIndex: this.userIndex,
-        timestamp: date.toString().replace(/\s/g, '-'),
-      }
-
-      ChatAgentModalStore.chatLog.push(chatLogObject);
-
-      ChatAgentModalStore.handleInteraction(INPUTTED_PROMPT);
+      ChatAgentModalStore.handleMessage(this.userName, INPUTTED_PROMPT);
 
       this.shadowRoot.querySelector("#user-input").value = "";
 

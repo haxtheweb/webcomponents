@@ -107,23 +107,7 @@ class ChatSuggestion extends DDD {
     if (!this.disabled) {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
       
-      // TODO replace code below with handleMessages()
-      ChatAgentModalStore.messageIndex++;
-      ChatAgentModalStore.userIndex++;
-  
-      let date = new Date();
-      
-      const chatLogObject = {
-        messageID: this.messageIndex,
-        author: this.userName,
-        message: this.suggestion,
-        authorMessageIndex: this.userIndex,
-        timestamp: date.toString().replace(/\s/g, '-'),
-      }
-  
-      ChatAgentModalStore.chatLog.push(chatLogObject);
-  
-      ChatAgentModalStore.handleInteraction(this.suggestion);
+      ChatAgentModalStore.handleMessage(this.userName, this.suggestion);
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion buttons disabled, ignoring request') : null;
     }
