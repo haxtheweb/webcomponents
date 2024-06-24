@@ -2,11 +2,11 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import "@haxtheweb/simple-cta/simple-cta.js"; // TODO remove if not used
+import "@haxtheweb/simple-cta/simple-cta.js";
 import { ChatAgentModalStore } from "../chat-agent.js";
-import { ChatInterface } from "./chat-interface";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { autorun, toJS, } from "mobx";
 
 class ChatInput extends DDD {
 
@@ -16,6 +16,14 @@ class ChatInput extends DDD {
 
   constructor() {
     super();
+
+    this.messageIndex = null;
+    this.userIndex = null;
+
+    autorun(() => {
+      this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
+      this.userIndex = toJS(ChatAgentModalStore.userIndex);
+    })
   }
 
   static get styles() {
@@ -107,25 +115,7 @@ class ChatInput extends DDD {
     if (INPUTTED_PROMPT !== "") {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
-      ChatAgentModalStore.messageIndex++;
-      ChatAgentModalStore.userIndex++;
-
-      let date = new Date();
-
-      const chatLogObject = {
-        messageID: ChatAgentModalStore.messageIndex,
-        author: ChatAgentModalStore.userName,
-        message: INPUTTED_PROMPT,
-        authorMessageIndex: ChatAgentModalStore.userIndex,
-        timestamp: date.toString().replace(/\s/g, '-'),
-      }
-
-      ChatAgentModalStore.chatLog.push(chatLogObject);
-
-      // TODO ensure message sent to chat log renders via array map in chat-interface.js, probably an update function
-
-
-      // TODO Send message to AI for response
+      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, INPUTTED_PROMPT);
 
       this.shadowRoot.querySelector("#user-input").value = "";
 

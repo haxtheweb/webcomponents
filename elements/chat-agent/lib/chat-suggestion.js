@@ -4,9 +4,9 @@
  */
 
 import { ChatAgentModalStore } from "../chat-agent.js";
-import { ChatMessage } from "./chat-message.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { autorun, toJS, } from "mobx";
 
 class ChatSuggestion extends DDD {
   
@@ -20,6 +20,15 @@ class ChatSuggestion extends DDD {
     this.chosenPrompt = false;
     this.disabled = false;
     this.suggestion = "";
+
+    //! mobx
+    this.messageIndex = null;
+    this.userIndex = null;
+
+    autorun(() => {
+      this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
+      this.userIndex = toJS(ChatAgentModalStore.userIndex);
+    })
   }
 
   static get styles() {
@@ -46,14 +55,12 @@ class ChatSuggestion extends DDD {
           box-shadow: var(--ddd-boxShadow-xl);
         }
 
-        /* TODO create CSS that will set background-color to a faded red, along with lower opacity when this.disabled = true */
         :host([disabled]) .chat-suggestion-wrapper {
           background-color: var(--ddd-theme-default-discoveryCoral);
           opacity: 0.6;
           cursor: default;
         }
 
-        /* TODO chosen prompt css sets background color to keystoneYellow */
         :host([chosen-prompt]) .chat-suggestion-wrapper {
           background-color: var(--ddd-theme-default-futureLime);
         }
@@ -98,23 +105,7 @@ class ChatSuggestion extends DDD {
     if (!this.disabled) {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
       
-      // TODO replace code below with handleMessages()
-      ChatAgentModalStore.messageIndex++;
-      ChatAgentModalStore.userIndex++;
-  
-      let date = new Date();
-      
-      const chatLogObject = {
-        messageID: ChatAgentModalStore.messageIndex,
-        author: ChatAgentModalStore.userName,
-        message: this.suggestion,
-        authorMessageIndex: ChatAgentModalStore.userIndex,
-        timestamp: date.toString().replace(/\s/g, '-'),
-      }
-  
-      ChatAgentModalStore.chatLog.push(chatLogObject);
-  
-      // TODO Send message to AI for response
+      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, this.suggestion);
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion buttons disabled, ignoring request') : null;
     }

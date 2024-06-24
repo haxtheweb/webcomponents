@@ -13,6 +13,8 @@ import '@haxtheweb/rpg-character/rpg-character.js';
 import '@haxtheweb/simple-icon/simple-icon.js';
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { HAXCMSSiteEditorUI } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import {
   observable,
   makeObservable,
@@ -21,7 +23,24 @@ import {
   autorun,
   toJS,
 } from "mobx";
-configure({ enforceActions: false }); // strict mode off
+configure({ enforceActions: false });
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+// enable services for glossary enhancement
+enableServices(["haxcms"]);
+MicroFrontendRegistry.add({
+  endpoint: "/api/apps/haxcms/aiChat",
+  name: "@haxcms/aiChat",
+  title: "AI Chat",
+  description: "AI based chat agent that can answer questions about a site",
+  params: {
+    site: "location of the HAXcms site OR site.json data",
+    type: "site for site.json or link for remote loading",
+    question: "Question to ask of the AI",
+    engine: "which engine to use as we test multiple",
+    context: "context to query based on. Course typical",
+  },
+}); // strict mode off
 
 /**
  * `chat-agent`
@@ -47,16 +66,13 @@ class ChatAgent extends DDD {
     // everything
     this.chatLog = [];
     this.engine = "alfred";
-    this.isAILoaded = false;
-    this.userName = "guest";
-    this.userPicture = "";
-
-
+    store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
+    store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
+    
     // button
     this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
-    this.isButtonHidden = false; // TODO remove if unused
-
+    
     // control bar
 
 
@@ -75,31 +91,47 @@ class ChatAgent extends DDD {
     this.merlinIndex = 0; // index of merlin messages
     this.messageIndex = 0; // index of all messages
     this.userIndex = 0; // index of user messages
-
+    
     this.userTypeWriterSpeed = 1;
     this.merlinTypeWriterSpeed = 30;
-
+    
     // suggestion
 
+
+    // external
+    this.isSiteEditorOpen = HAXCMSSiteEditorUI.userMenuOpen; // TODO the idea is here, but I do not think it works (checks for editor bar, will be used for CSS)
+    console.log(this.isSiteEditorOpen);
+
+    // ! mobx
     makeObservable(this, {
-     chatLog: observable,
+      chatLog: observable,
+      engine: observable,
+      isFullView: observable,
+      isInterfaceHidden: observable,
+      merlinIndex: observable,
+      messageIndex: observable,
+      userIndex: observable,
     });
+
     autorun(() => {
       // magic
+
       const chatLog = toJS(this.chatLog);
-      console.log(chatLog);
+      const engine = toJS(this.engine);
+      const isFullView = toJS(this.isFullView);
+      const isInterfaceHidden = toJS(this.isInterfaceHidden);
+      const merlinIndex = toJS(this.merlinIndex);
+      const messageIndex = toJS(this.messageIndex);
+      const userIndex = toJS(this.userIndex);
+
+      // ! work around to not being able to put this in properties
+      isFullView ? this.setAttribute("is-full-view", "") : this.removeAttribute("is-full-view");
+      isInterfaceHidden ? this.setAttribute("is-interface-hidden", "") : this.removeAttribute("is-interface-hidden");
     });
-
   }
 
-  connectedCallback() {
-    super.connectedCallback();
 
-    // code for username and picture possibly found at => elements/haxcms-elements/lib/core/haxcms-editor-builder.js (starting around line 2639)
-    
-  }
 
-  // TODO @container queries for screen size differences
   /**
    * LitElement style callback
    */
@@ -124,6 +156,19 @@ class ChatAgent extends DDD {
           width: 40%; /* Switch to 30% when working with hax environment */
         }
 
+        :host([is-full-view]) .chat-agent-wrapper {
+          bottom: var(--ddd-spacing-0);
+          right: var(--ddd-spacing-0);
+          gap: var(--ddd-spacing-0);
+          width: 25%;
+        }
+
+        :host([is-full-view]:host([is-interface-hidden])) .chat-agent-wrapper {
+          bottom: var(--ddd-spacing-2);
+          right: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-2);
+        }
+
         .agent-interface-wrapper {
           display: flex;
           justify-content: right;
@@ -134,7 +179,6 @@ class ChatAgent extends DDD {
           justify-content: right;
         }
 
-        /* TODO does not work, refine and fix */
         @container (max-width: 600px) {
           .chat-agent-wrapper {
             width: 30%;
@@ -162,7 +206,6 @@ class ChatAgent extends DDD {
     `;
   }
   
-  // TODO clean up dev statements
   /**
    * LitElement ready
    */
@@ -171,195 +214,117 @@ class ChatAgent extends DDD {
       super.firstUpdated(changedProperties);
     }
 
-    // everything
-    ChatAgentModalStore.messageIndex++;
-    ChatAgentModalStore.merlinIndex++;
-
-    let date = new Date();
-    let dateString = date.toString().replace(/\s/g, '-');
-
-    const chatLogObject = {
-      messageID: ChatAgentModalStore.messageIndex,
-      author: "merlin",
-      message: "Hello, I am Merlin. This message is rendered via Array Mapping. How can I help you today?",
-      authorMessageIndex: ChatAgentModalStore.merlinIndex,
-      timestamp: dateString,
-    }
-
-    this.chatLog.push(chatLogObject);
-
-    // button
-
-
-    // control bar
-
-
-    // input
-
-    
-    // interface
-
-
-    // message
-
-
-    // suggestion
-
-
-    // Other needed logic (might be moved to updated() once I learn how that works)
+    this.handleMessage("merlin", "Hello! My name is Merlin. How can I assist you today?");
   }
 
-  // TODO CLEAN UP DEV LOGS HOLY CRAP
   /**
-   * LitElement life cycle - property changed
+   * @description writes message to chatLog
+   * @param {string} author - the author of the message
+   * @param {string} message - the written or suggested prompt
    */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
+  handleMessage(author, message) {
+    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Writing message ${message} by ${author} to chatLog.`) : null;
 
-    // TODO possibly change due to modal, check with Bryan if for example I can use ChatInterface exported from chat-interface.js instead of querySelector
-    const CHAT_INTERFACE = this.shadowRoot.querySelector("chat-interface");
-    const CHAT_BUTTON = this.shadowRoot.querySelector("chat-button");
-    if (document.querySelector("#site")) {
-      const SITE_BUILDER = document.querySelector("#site");
-      if (this.isFullView) {
-        SITE_BUILDER.style.width = "75%"; // TODO will be changed
-      } else {
-        SITE_BUILDER.style.width = "100%";
-      }
-    }
-
-    // developer mode
-
-
-    // everything
-
-
-    // button
-    if (!this.isInterfaceHidden && this.isFullView) {
-      this.isButtonHidden = true;
-      CHAT_BUTTON.style.display = "none";
-    } else {
-      this.isButtonHidden = false;
-      CHAT_BUTTON.style.display = "block";
-    }
-
-    // control bar
-
-
-    // input
-
-
-    // interface
-    if (this.isInterfaceHidden) {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to hidden") : null;
-      CHAT_INTERFACE.style.display = "none"; // TODO will be changed
-    } else {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Setting interface to visible") : null;
-      CHAT_INTERFACE.style.display = "block";
-    }
-
-    if (this.isFullView) {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into full view") : null;
-    } else {
-      this.developerModeEnabled ? console.info("HAX-DEV-MODE: Interface loaded into standard view") : null;
-    }
-
-    // message
-
-
-    // suggestion
-
-
-    // Other needed logic
-    
-    changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
-      }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
-    });
-  }
-
-  handleMessages(author, message) {
     let authorIndex;
 
-    ChatAgentModalStore.messageIndex++;
+    this.messageIndex++;
+
     switch(author) {
       case "merlin":
-        ChatAgentModalStore.merlinIndex++;
-        authorIndex = ChatAgentModalStore.merlinIndex;
+        this.merlinIndex++;
+        authorIndex = this.merlinIndex;
         break;
-      case ChatAgentModalStore.userName:
-        ChatAgentModalStore.userIndex++;
-        authorIndex = ChatAgentModalStore.userIndex;
+      case this.userName:
+        this.userIndex++;
+        authorIndex = this.userIndex;
         break;
     }
 
     let date = new Date();
-    let dateString = date.toString().replace(/\s/g, '-');
     
     const chatLogObject = {
-      messageID: ChatAgentModalStore.messageIndex,
+      messageID: this.messageIndex,
       author: author,
       message: message,
       authorMessageIndex: authorIndex,
-      timestamp: dateString,
+      timestamp: date.toString().replace(/\s/g, '-'),
     }
 
     this.chatLog.push(chatLogObject);
+
+    if (author === this.userName) {
+      this.handleInteraction(message);
+    }
+  }
+
+  /**
+   * @description sends prompt to AI engine specified
+   * @param {string} prompt - the written or suggested prompt
+   */
+  handleInteraction(prompt) {
+    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`) : null;
+    var base = "";
+    if (globalThis.document.querySelector("base")) {
+      base = globalThis.document.querySelector("base").href;
+    }
+    const params = {
+      site: {
+        file: "https://haxtheweb.org/site.json",
+      },
+      type: "site",
+      question: prompt,
+      engine: this.engine,
+      context: this.context,
+    };
+    this.loading = true;
+    MicroFrontendRegistry.call("@haxcms/aiChat", params)
+      .then((d) => {
+        if (d.status == 200) {
+          this.answers = [d.data.answer];
+          console.log(this.answers);
+          this.question = d.data.question;
+        }
+        this.loading = false;
+
+        this.handleMessage("merlin", d.data.answer);
+      })
+      .catch((error) => {
+        this.loading = false;
+        console.error(error);
+      });
+  }
+
+  /**
+   * @description downloads the chat log as the specified file type
+   * @param {string} fileType - the file type to download
+   */
+  handleDownload(fileType) {
+    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Downloading chatlog as ${fileType}.`) : null;
+
+    if (this.chatLog.length !== 0) {
+      const LOG = JSON.stringify(this.chatLog, undefined, 2);
+      let date = new Date();
+      const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, '-')}.${fileType}`;
+      
+      let download = document.createElement('a');
+      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(LOG));
+      download.setAttribute('download', FILE_NAME);
+      download.click();
+      download.remove();
+    }
   }
 
   static get properties() {
     return {
       ...super.properties,
-      engine: {
-        type: String,
-      },
-      isAILoaded: {
-        type: Boolean,
-        attribute: "ai-open",
-      },
+      // everything
       userName: {
         type: String,
-        attribute: "username",
+        attribute: "user-name",
       },
       userPicture: {
         type: String,
         attribute: "user-picture",
-      },
-
-      // button
-      buttonIcon: {
-        type: String,
-        attribute: "button-icon",
-      },
-      buttonLabel: {
-        type: String,
-        attribute: "button-label",
-      },
-      isButtonHidden: {
-        type: Boolean,
-        attribute: "hide-button",
       },
 
       // control bar
@@ -382,28 +347,18 @@ class ChatAgent extends DDD {
       },
 
       // interface
-      isFullView: {
-        type: Boolean,
-        attribute: "full-view",
-      },
-      isInterfaceHidden: {
-        type: Boolean,
-        attribute: "hide-interface",
-      },
+
 
       // message
-      merlinIndex: {
+      merlinTypeWriterSpeed: {
         type: Number,
-        attribute: "merlin-index",
+        attribute: "merlin-type-writer-speed",
       },
-      messageIndex: {
+      userTypeWriterSpeed: {
         type: Number,
-        attribute: "message-index",
+        attribute: "user-type-writer-speed",
       },
-      userIndex: {
-        type: Number,
-        attribute: "user-index",
-      },
+
 
       // suggestion
       

@@ -5,6 +5,7 @@
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { autorun, toJS, } from "mobx";
 
 class ChatControlBar extends DDD {
 
@@ -14,6 +15,13 @@ class ChatControlBar extends DDD {
 
   constructor() {
     super();
+    this.isFullView = null;
+    this.isInterfaceHidden = null;
+
+    autorun(() => {
+      this.isFullView = toJS(ChatAgentModalStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+    })
   }
 
   static get styles() {
@@ -52,7 +60,7 @@ class ChatControlBar extends DDD {
         </div>
         <div class="right-side">
           <button id="view-button" @click=${this.handleViewButton}>
-            <simple-icon-lite icon="${ChatAgentModalStore.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
+            <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
           <button id="hide-button" @click=${this.handleHideButton}>
             <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
@@ -93,9 +101,9 @@ class ChatControlBar extends DDD {
   handleViewButton() {    
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switch button pressed.') : null;
 
-    ChatAgentModalStore.isFullView = !ChatAgentModalStore.isFullView;
+    ChatAgentModalStore.isFullView = !this.isFullView;
 
-    this.requestUpdate();
+    this.requestUpdate(); // changes button icon
 
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (ChatAgentModalStore.isFullView ? 'full' : 'standard')) : null;
   }
@@ -106,7 +114,9 @@ class ChatControlBar extends DDD {
   handleHideButton() {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
 
-    ChatAgentModalStore.isInterfaceHidden = true;
+    if (!this.isInterfaceHidden) {
+      ChatAgentModalStore.isInterfaceHidden = true;
+    }
   }
 
   /**
@@ -115,18 +125,7 @@ class ChatControlBar extends DDD {
   downloadChatLog() {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
 
-    if (ChatAgentModalStore.chatLog.length !== 0) {
-      const log = JSON.stringify(ChatAgentModalStore.chatLog, undefined, 2);
-      let date = new Date();
-      let dateString = date.toString().replace(/\s/g, '-');
-      const fileName = ChatAgentModalStore.userName + '-chat-log-' + dateString + '.txt';
-      
-      let download = document.createElement('a');
-      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(log));
-      download.setAttribute('download', fileName);
-      download.click();
-      download.remove();
-    }
+    ChatAgentModalStore.handleDownload('txt');
   }
 
   /**
@@ -140,7 +139,7 @@ class ChatControlBar extends DDD {
     ChatAgentModalStore.messageIndex = 0;
     ChatAgentModalStore.userIndex = 0;
 
-    // TODO need to prompt the AI to start again
+    ChatAgentModalStore.loadAI();
   }
 
   static get properties() {

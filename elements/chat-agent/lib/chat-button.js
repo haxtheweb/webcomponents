@@ -4,6 +4,7 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
 
 class ChatButton extends DDD {
@@ -14,6 +15,15 @@ class ChatButton extends DDD {
 
   constructor() {
     super();
+
+    this.isFullView;
+    this.isInterfaceHidden;
+
+    autorun(() => {
+      
+      this.isFullView = toJS(ChatAgentModalStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+    })
   }
 
   static get styles() {
@@ -38,6 +48,15 @@ class ChatButton extends DDD {
           border-radius: var(--ddd-radius-lg);
           cursor: pointer;
           box-shadow: var(--ddd-boxShadow-xl);
+        }
+
+        /* TODO transition CSS button moving off screen */
+        :host([is-full-view]:not([is-interface-hidden])) .chat-button-wrapper {
+          display: none;
+        }
+
+        .chat-button-wrapper:hover .label-wrapper, .chat-button-wrapper:focus .label-wrapper {
+          text-decoration: underline;
         }
 
         .icon-wrapper {
@@ -89,8 +108,8 @@ class ChatButton extends DDD {
 
   keyPress(e) {
     if (e.key === "Enter") {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
       e.preventDefault();
+      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
       this.handleChatButton();
     }
   }
@@ -98,12 +117,31 @@ class ChatButton extends DDD {
   handleChatButton() {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
 
-    ChatAgentModalStore.isInterfaceHidden = !ChatAgentModalStore.isInterfaceHidden;
+    ChatAgentModalStore.isInterfaceHidden = !this.isInterfaceHidden;
   }
 
   static get properties() {
     return {
       ...super.properties,
+      buttonIcon: {
+        type: String,
+        attribute: "button-icon",
+      },
+      buttonLabel: {
+        type: String,
+        attribute: "button-label",
+      },
+      
+      isFullView: {
+        type: Boolean,
+        attribute: "is-full-view",
+        reflect: true,
+      },
+      isInterfaceHidden: {
+        type: Boolean,
+        attribute: "is-interface-hidden",
+        reflect: true,
+      },
     };
   }
 

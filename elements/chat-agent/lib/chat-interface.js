@@ -5,10 +5,8 @@
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-import {
-  autorun,
-  toJS,
-} from "mobx";
+import { autorun, toJS, } from "mobx";
+
 class ChatInterface extends DDD {
 
   static get tag() {
@@ -18,11 +16,21 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     this.chatLog = [];
+    this.isFullView = null;
+    this.isInterfaceHidden = null;
+
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.isFullView = toJS(ChatAgentModalStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+
+      // TODO will change, here for brute force for now
+      const tempSiteGrabber = document.querySelector("#site");
+      this.isFullView ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
     })
   }
 
+  // TODO transition changing between standard and full view
   static get styles() {
     return [
       super.styles,
@@ -37,6 +45,16 @@ class ChatInterface extends DDD {
 
         .chat-interface-wrapper {
           background-color: transparent;
+        }
+
+        :host([is-full-view]) .chat-interface-wrapper {
+          background-color: var(--ddd-theme-default-potentialMidnight);
+          padding: var(--ddd-spacing-3);
+        }
+
+        :host([is-full-view]) .chat-messages {
+          max-height: 100%;
+          /* TODO finish this, max-height is what is causing it to not grow at least somewhat */
         }
 
         .chat-wrapper {
@@ -94,10 +112,6 @@ class ChatInterface extends DDD {
                   ${this.chatLog.map((message) => html`
                     <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${message.author === "merlin"}"></chat-message>
                   `)}
-                <chat-message message="Hello! My name is Merlin. How can I help you today?" suggested-prompts></chat-message>
-                <chat-message sent-prompt message="Hi Merlin! I could use some help with programming."></chat-message>
-                <chat-message message="Certainly. I love programming! This is some extra text to ensure that this message is extra long to show how the chat message text will wrap."></chat-message>
-                <chat-message sent-prompt message="This last message will cause the chat to scroll."></chat-message>
               </div>
               <chat-input placeholder="${ChatAgentModalStore.promptPlaceholder}"></chat-input>
             </div>
@@ -112,7 +126,17 @@ class ChatInterface extends DDD {
       ...super.properties,
       chatLog: {
         type: Array,
-      }
+      },
+      isFullView: {
+        type: Boolean,
+        attribute: "is-full-view",
+        reflect: true,
+      },
+      isInterfaceHidden: {
+        type: Boolean,
+        attribute: "is-interface-hidden",
+        reflect: true,
+      },
     };
   }
 }

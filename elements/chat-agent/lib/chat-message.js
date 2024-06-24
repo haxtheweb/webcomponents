@@ -4,9 +4,9 @@
  */
 import "@haxtheweb/type-writer/type-writer.js";
 import { ChatAgentModalStore } from "../chat-agent.js";
-import { ChatSuggestion } from "./chat-suggestion";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { autorun, toJS, } from "mobx";
 
 class ChatMessage extends DDD {
 
@@ -33,6 +33,7 @@ class ChatMessage extends DDD {
         
         :host {
           display: block;
+          container-type: inline-size;
         }
 
         .chat-message-wrapper {
@@ -96,6 +97,16 @@ class ChatMessage extends DDD {
           gap: var(--ddd-spacing-5);
           justify-content: center;
         }
+
+        @container (max-width: 190px) {
+          .author-icon {
+            display: none;
+          }
+
+          .received-chat-message .message-content {
+            background: rgba(73, 29, 112, 0.1);
+          }
+        }
       `
     ];
   }
@@ -112,8 +123,6 @@ class ChatMessage extends DDD {
   }
 
   // TODO want the chat-suggestions to load after the type-writer is done writing out the text
-  // TODO remove the this.hasSuggestedPrompts ternary operator when moving out of demo phase, leave .suggested-prompts
-  // TODO chat suggestions should be rendered using Array Map maybe?
   /**
    * @description Renders a message recevied from Merlin-AI
    */
@@ -126,13 +135,11 @@ class ChatMessage extends DDD {
           </div>
           <type-writer class="message-content" text="${this.message}" speed="${ChatAgentModalStore.merlinTypeWriterSpeed}"></type-writer>
         </div>
-        ${this.hasSuggestedPrompts ? html`
-          <div class="suggested-prompts">
-            ${this.suggestedPrompts.map((suggestion) => html`
-              <chat-suggestion suggestion="${suggestion}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
-            `)}
-          </div>
-        ` : ''}
+        <div class="suggested-prompts">
+          ${this.suggestedPrompts.map((suggestion) => html`
+            <chat-suggestion suggestion="${suggestion}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
+          `)}
+        </div>
       </div>
     `;
   }
@@ -151,6 +158,9 @@ class ChatMessage extends DDD {
     `;
   }
 
+  /**
+   * @description Disables the suggestions after one is clicked
+   */
   disableSuggestions(e) {
     if (!this.suggestionsDisabled) {
       const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
@@ -165,7 +175,6 @@ class ChatMessage extends DDD {
     }
   }
 
-  // TODO ensure properties matches constructor
   static get properties() {
     return {
       ...super.properties,
