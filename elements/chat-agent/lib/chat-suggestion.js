@@ -20,6 +20,17 @@ class ChatSuggestion extends DDD {
     this.chosenPrompt = false;
     this.disabled = false;
     this.suggestion = "";
+
+    //! mobx
+    this.userName = null;
+    this.messageIndex = null;
+    this.userIndex = null;
+
+    autorun(() => {
+      this.userName = toJS(ChatAgentModalStore.userName);
+      this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
+      this.userIndex = toJS(ChatAgentModalStore.userIndex);
+    })
   }
 
   static get styles() {
@@ -103,10 +114,10 @@ class ChatSuggestion extends DDD {
       let date = new Date();
       
       const chatLogObject = {
-        messageID: ChatAgentModalStore.messageIndex,
-        author: ChatAgentModalStore.userName,
+        messageID: this.messageIndex,
+        author: this.userName,
         message: this.suggestion,
-        authorMessageIndex: ChatAgentModalStore.userIndex,
+        authorMessageIndex: this.userIndex,
         timestamp: date.toString().replace(/\s/g, '-'),
       }
   

@@ -17,15 +17,16 @@ class ChatDeveloperPanel extends DDD {
   constructor() {
     super();
     this.chatLog = [];
-    this.engine;
+    this.engine = null;
+    this.userName = null;
     
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.engine = toJS(ChatAgentModalStore.engine);
+      this.userName = toJS(ChatAgentModalStore.userName);
     });
   }
 
-  // TODO container query to lower button font to ensure they stay in line, and remove button text if window becomes too narrow
   static get styles() {
     return[
       super.styles,
@@ -154,7 +155,7 @@ class ChatDeveloperPanel extends DDD {
 
     switch (TARGET) {
       case "console-table-user":
-        console.table(this.compileChatLog(ChatAgentModalStore.userName));
+        console.table(this.compileChatLog(this.userName));
         break;
       case "console-table-merlin":
         console.table(this.compileChatLog("merlin"))
@@ -174,9 +175,9 @@ class ChatDeveloperPanel extends DDD {
     
     let newChatLog = [];
 
-    this.chatLog.forEach(element => {
-      if (element.author === author) {
-        newChatLog.push(element);
+    this.chatLog.forEach(object => {
+      if (object.author === author) {
+        newChatLog.push(object);
       }
     });
 
@@ -190,13 +191,13 @@ class ChatDeveloperPanel extends DDD {
     console.info(`HAX-DEV-MODE: Downloading chat log as .json...`)
 
     if (this.chatLog.length !== 0) {
-      const log = JSON.stringify(this.chatLog, undefined, 2);
+      const LOG = JSON.stringify(this.chatLog, undefined, 2);
       let date = new Date();
-      const fileName = ChatAgentModalStore.userName + '-chat-log-' + date.toString().replace(/\s/g, '-') + '.json';
+      const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, '-')}.json`;
       
       let download = document.createElement('a');
-      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(log));
-      download.setAttribute('download', fileName);
+      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(LOG));
+      download.setAttribute('download', FILE_NAME);
       download.click();
       download.remove();
     }

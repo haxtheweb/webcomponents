@@ -23,6 +23,16 @@ class ChatMessage extends DDD {
     this.messageWasSuggestedPrompt = false; 
     this.suggestedPrompts = ["Who are you?", "What can you do?", "this is proof the array map works (plz work I need this)"];
     this.suggestionsDisabled = false;
+
+    // ! mobx stuff
+    this.userName = null;
+    this.userTypeWriterSpeed = null;
+    this.merlinTypeWriterSpeed = null;
+    autorun(() => {
+      this.userName = toJS(ChatAgentModalStore.userName);
+      this.userTypeWriterSpeed = toJS(ChatAgentModalStore.userTypeWriterSpeed);
+      this.merlinTypeWriterSpeed = toJS(ChatAgentModalStore.merlinTypeWriterSpeed);
+    })
   }
 
   // TODO container query to ensure messages collapse properly when window becomes too narrow
@@ -124,7 +134,6 @@ class ChatMessage extends DDD {
   }
 
   // TODO want the chat-suggestions to load after the type-writer is done writing out the text
-  // TODO remove the this.hasSuggestedPrompts ternary operator when moving out of demo phase, leave .suggested-prompts
   /**
    * @description Renders a message recevied from Merlin-AI
    */
@@ -135,15 +144,13 @@ class ChatMessage extends DDD {
           <div class="author-icon">
             <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
           </div>
-          <type-writer class="message-content" text="${this.message}" speed="${ChatAgentModalStore.merlinTypeWriterSpeed}"></type-writer>
+          <type-writer class="message-content" text="${this.message}" speed="${this.merlinTypeWriterSpeed}"></type-writer>
         </div>
-        ${this.hasSuggestedPrompts ? html`
-          <div class="suggested-prompts">
-            ${this.suggestedPrompts.map((suggestion) => html`
-              <chat-suggestion suggestion="${suggestion}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
-            `)}
-          </div>
-        ` : ''}
+        <div class="suggested-prompts">
+          ${this.suggestedPrompts.map((suggestion) => html`
+            <chat-suggestion suggestion="${suggestion}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
+          `)}
+        </div>
       </div>
     `;
   }
@@ -154,9 +161,9 @@ class ChatMessage extends DDD {
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-        <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer>
+        <type-writer class="message-content" speed="${this.userTypeWriterSpeed}" text="${this.message}"></type-writer>
         <div class="author-icon">
-          <rpg-character seed="${ChatAgentModalStore.userName}"></rpg-character>
+          <rpg-character seed="${this.userName}"></rpg-character>
         </div>
       </div>
     `;

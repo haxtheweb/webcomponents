@@ -15,10 +15,16 @@ class ChatButton extends DDD {
 
   constructor() {
     super();
+    this.buttonIcon = null;
+    this.buttonLabel = null;
+
     this.isFullView;
     this.isInterfaceHidden;
 
     autorun(() => {
+      this.buttonIcon = toJS(ChatAgentModalStore.buttonIcon);
+      this.buttonLabel = toJS(ChatAgentModalStore.buttonLabel);
+      
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
     })
@@ -48,10 +54,9 @@ class ChatButton extends DDD {
           box-shadow: var(--ddd-boxShadow-xl);
         }
 
-        /* TODO transition CSS button moving off screen? */
+        /* TODO transition CSS button moving off screen */
         :host([is-full-view]:not([is-interface-hidden])) .chat-button-wrapper {
-          position: relative;
-          bottom: -120px;
+          display: none;
         }
 
         .chat-button-wrapper:hover .label-wrapper, .chat-button-wrapper:focus .label-wrapper {
@@ -96,10 +101,10 @@ class ChatButton extends DDD {
     return html`
       <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0">
         <div class="icon-wrapper">
-          <simple-icon-lite icon="${ChatAgentModalStore.buttonIcon}"></simple-icon-lite>
+          <simple-icon-lite icon="${this.buttonIcon}"></simple-icon-lite>
         </div>
         <div class="label-wrapper">
-          <slot name="label">${ChatAgentModalStore.buttonLabel}</slot>
+          <slot name="label">${this.buttonLabel}</slot>
         </div>
       </div>
     `;
@@ -107,8 +112,8 @@ class ChatButton extends DDD {
 
   keyPress(e) {
     if (e.key === "Enter") {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
       e.preventDefault();
+      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
       this.handleChatButton();
     }
   }
@@ -116,12 +121,21 @@ class ChatButton extends DDD {
   handleChatButton() {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
 
-    ChatAgentModalStore.isInterfaceHidden = !ChatAgentModalStore.isInterfaceHidden;
+    ChatAgentModalStore.isInterfaceHidden = !this.isInterfaceHidden;
   }
 
   static get properties() {
     return {
       ...super.properties,
+      buttonIcon: {
+        type: String,
+        attribute: "button-icon",
+      },
+      buttonLabel: {
+        type: String,
+        attribute: "button-label",
+      },
+      
       isFullView: {
         type: Boolean,
         attribute: "is-full-view",

@@ -16,10 +16,15 @@ class ChatControlBar extends DDD {
   constructor() {
     super();
     this.chatLog = [];
-    this.isInterfaceHidden;
+    this.isFullView = null;
+    this.isInterfaceHidden = null;
+    this.userName = null;
+
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+      this.userName = toJS(ChatAgentModalStore.userName);
     })
   }
 
@@ -59,7 +64,7 @@ class ChatControlBar extends DDD {
         </div>
         <div class="right-side">
           <button id="view-button" @click=${this.handleViewButton}>
-            <simple-icon-lite icon="${ChatAgentModalStore.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
+            <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
           <button id="hide-button" @click=${this.handleHideButton}>
             <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
@@ -94,16 +99,15 @@ class ChatControlBar extends DDD {
     this.resetChat();
   }
 
-  // TODO rework logic using mobx
   /**
    * @description Toggles the view of chat-interface to full or minimized
    */
   handleViewButton() {    
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switch button pressed.') : null;
 
-    ChatAgentModalStore.isFullView = !ChatAgentModalStore.isFullView;
+    ChatAgentModalStore.isFullView = !this.isFullView;
 
-    this.requestUpdate(); // allows icon to change
+    this.requestUpdate(); // changes button icon
 
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (ChatAgentModalStore.isFullView ? 'full' : 'standard')) : null;
   }
@@ -126,13 +130,13 @@ class ChatControlBar extends DDD {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
 
     if (this.chatLog.length !== 0) {
-      const log = JSON.stringify(this.chatLog, undefined, 2);
+      const LOG = JSON.stringify(this.chatLog, undefined, 2);
       let date = new Date();
-      const fileName = ChatAgentModalStore.userName + '-chat-log-' + date.toString().replace(/\s/g, '-') + '.txt';
+      const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, '-')}.txt`;
       
       let download = document.createElement('a');
-      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(log));
-      download.setAttribute('download', fileName);
+      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(LOG));
+      download.setAttribute('download', FILE_NAME);
       download.click();
       download.remove();
     }

@@ -13,6 +13,7 @@ import '@haxtheweb/rpg-character/rpg-character.js';
 import '@haxtheweb/simple-icon/simple-icon.js';
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
+import { HAXCMSSiteEditorUI } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js";
 import {
   observable,
   makeObservable,
@@ -94,7 +95,11 @@ class ChatAgent extends DDD {
     this.merlinTypeWriterSpeed = 30;
     
     // suggestion
-    
+
+
+    // external
+    this.isSiteEditorOpen = HAXCMSSiteEditorUI.userMenuOpen; // TODO the idea is here, but I do not think it works (checks for editor bar, will be used for CSS)
+    console.log(this.isSiteEditorOpen);
 
     // ! mobx
     makeObservable(this, {
@@ -102,20 +107,26 @@ class ChatAgent extends DDD {
       engine: observable,
       isFullView: observable,
       isInterfaceHidden: observable,
+      merlinIndex: observable,
+      merlinTypeWriterSpeed: observable,
+      messageIndex: observable,
+      userIndex: observable,
+      userName: observable,
+      userTypeWriterSpeed: observable,
     });
     autorun(() => {
       // magic
+
       const chatLog = toJS(this.chatLog);
-      // console.log(chatLog);
-
       const engine = toJS(this.engine);
-      // console.log(engine);
-
       const isFullView = toJS(this.isFullView);
-      // console.log(isFullView);
-
       const isInterfaceHidden = toJS(this.isInterfaceHidden);
-      // console.log(isInterfaceHidden);
+      const merlinIndex = toJS(this.merlinIndex);
+      const merlinTypeWriterSpeed = toJS(this.merlinTypeWriterSpeed);
+      const messageIndex = toJS(this.messageIndex);
+      const userIndex = toJS(this.userIndex);
+      const userName = toJS(this.userName);
+      const userTypeWriterSpeed = toJS(this.userTypeWriterSpeed);
 
       // ! work around to not being able to put this in properties
       isFullView ? this.setAttribute("is-full-view", "") : this.removeAttribute("is-full-view");
@@ -256,6 +267,9 @@ class ChatAgent extends DDD {
   //   this.chatLog.push(chatLogObject);
   // }
 
+  /**
+   * @description sends prompt to AI engine specified
+   */
   handleInteraction(prompt) {
     this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`) : null;
     var base = "";
@@ -290,23 +304,9 @@ class ChatAgent extends DDD {
     return {
       ...super.properties,
       // everything
-      userName: {
-        type: String,
-        attribute: "username",
-      },
       userPicture: {
         type: String,
         attribute: "user-picture",
-      },
-
-      // button
-      buttonIcon: {
-        type: String,
-        attribute: "button-icon",
-      },
-      buttonLabel: {
-        type: String,
-        attribute: "button-label",
       },
 
       // control bar
@@ -332,18 +332,7 @@ class ChatAgent extends DDD {
 
 
       // message
-      merlinIndex: {
-        type: Number,
-        attribute: "merlin-index",
-      },
-      messageIndex: {
-        type: Number,
-        attribute: "message-index",
-      },
-      userIndex: {
-        type: Number,
-        attribute: "user-index",
-      },
+
 
       // suggestion
       
