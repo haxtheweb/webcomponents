@@ -48,9 +48,10 @@ class ChatButton extends DDD {
           box-shadow: var(--ddd-boxShadow-xl);
         }
 
-        /* TODO when isFullView && !isInterfaceHidden, set position to relative and get button off the screen, will animate later */
+        /* TODO transition CSS button moving off screen? */
         :host([is-full-view]:not([is-interface-hidden])) .chat-button-wrapper {
-          display: none;
+          position: relative;
+          bottom: -120px;
         }
 
         .chat-button-wrapper:hover .label-wrapper, .chat-button-wrapper:focus .label-wrapper {
