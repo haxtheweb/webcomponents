@@ -15,15 +15,11 @@ class ChatButton extends DDD {
 
   constructor() {
     super();
-    this.buttonIcon = null;
-    this.buttonLabel = null;
 
     this.isFullView;
     this.isInterfaceHidden;
 
     autorun(() => {
-      this.buttonIcon = toJS(ChatAgentModalStore.buttonIcon);
-      this.buttonLabel = toJS(ChatAgentModalStore.buttonLabel);
       
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
@@ -101,10 +97,10 @@ class ChatButton extends DDD {
     return html`
       <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0">
         <div class="icon-wrapper">
-          <simple-icon-lite icon="${this.buttonIcon}"></simple-icon-lite>
+          <simple-icon-lite icon="${ChatAgentModalStore.buttonIcon}"></simple-icon-lite>
         </div>
         <div class="label-wrapper">
-          <slot name="label">${this.buttonLabel}</slot>
+          <slot name="label">${ChatAgentModalStore.buttonLabel}</slot>
         </div>
       </div>
     `;

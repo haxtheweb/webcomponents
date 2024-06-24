@@ -110,7 +110,6 @@ class ChatAgent extends DDD {
       merlinIndex: observable,
       messageIndex: observable,
       userIndex: observable,
-      userName: observable,
     });
 
     autorun(() => {
@@ -123,7 +122,6 @@ class ChatAgent extends DDD {
       const merlinIndex = toJS(this.merlinIndex);
       const messageIndex = toJS(this.messageIndex);
       const userIndex = toJS(this.userIndex);
-      const userName = toJS(this.userName);
 
       // ! work around to not being able to put this in properties
       isFullView ? this.setAttribute("is-full-view", "") : this.removeAttribute("is-full-view");
@@ -312,6 +310,10 @@ class ChatAgent extends DDD {
     return {
       ...super.properties,
       // everything
+      userName: {
+        type: String,
+        attribute: "user-name",
+      },
       userPicture: {
         type: String,
         attribute: "user-picture",

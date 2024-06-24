@@ -19,12 +19,10 @@ class ChatInput extends DDD {
 
     this.messageIndex = null;
     this.userIndex = null;
-    this.userName = null;
 
     autorun(() => {
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
-      this.userName = toJS(ChatAgentModalStore.userName);
     })
   }
 
@@ -117,7 +115,7 @@ class ChatInput extends DDD {
     if (INPUTTED_PROMPT !== "") {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
 
-      ChatAgentModalStore.handleMessage(this.userName, INPUTTED_PROMPT);
+      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, INPUTTED_PROMPT);
 
       this.shadowRoot.querySelector("#user-input").value = "";
 

@@ -18,12 +18,10 @@ class ChatDeveloperPanel extends DDD {
     super();
     this.chatLog = [];
     this.engine = null;
-    this.userName = null;
     
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.engine = toJS(ChatAgentModalStore.engine);
-      this.userName = toJS(ChatAgentModalStore.userName);
     });
   }
 
@@ -155,7 +153,7 @@ class ChatDeveloperPanel extends DDD {
 
     switch (TARGET) {
       case "console-table-user":
-        console.table(this.compileChatLog(this.userName));
+        console.table(this.compileChatLog(ChatAgentModalStore.userName));
         break;
       case "console-table-merlin":
         console.table(this.compileChatLog("merlin"))

@@ -15,16 +15,12 @@ class ChatControlBar extends DDD {
 
   constructor() {
     super();
-    this.chatLog = [];
     this.isFullView = null;
     this.isInterfaceHidden = null;
-    this.userName = null;
 
     autorun(() => {
-      this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-      this.userName = toJS(ChatAgentModalStore.userName);
     })
   }
 

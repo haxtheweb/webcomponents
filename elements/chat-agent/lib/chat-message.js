@@ -23,13 +23,6 @@ class ChatMessage extends DDD {
     this.messageWasSuggestedPrompt = false; 
     this.suggestedPrompts = ["Who are you?", "What can you do?", "this is proof the array map works (plz work I need this)"];
     this.suggestionsDisabled = false;
-
-    // ! mobx stuff
-    this.userName = null;
-
-    autorun(() => {
-      this.userName = toJS(ChatAgentModalStore.userName);
-    })
   }
 
   static get styles() {
@@ -159,7 +152,7 @@ class ChatMessage extends DDD {
       <div class="sent-chat-message">
         <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer>
         <div class="author-icon">
-          <rpg-character seed="${this.userName}"></rpg-character>
+          <rpg-character seed="${ChatAgentModalStore.userName}"></rpg-character>
         </div>
       </div>
     `;

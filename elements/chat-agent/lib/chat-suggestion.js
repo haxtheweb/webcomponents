@@ -22,12 +22,10 @@ class ChatSuggestion extends DDD {
     this.suggestion = "";
 
     //! mobx
-    this.userName = null;
     this.messageIndex = null;
     this.userIndex = null;
 
     autorun(() => {
-      this.userName = toJS(ChatAgentModalStore.userName);
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
     })
@@ -107,7 +105,7 @@ class ChatSuggestion extends DDD {
     if (!this.disabled) {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
       
-      ChatAgentModalStore.handleMessage(this.userName, this.suggestion);
+      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, this.suggestion);
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion buttons disabled, ignoring request') : null;
     }

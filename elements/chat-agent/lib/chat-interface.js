@@ -18,13 +18,11 @@ class ChatInterface extends DDD {
     this.chatLog = [];
     this.isFullView = null;
     this.isInterfaceHidden = null;
-    this.userName = null;
 
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-      this.userName = toJS(ChatAgentModalStore.userName);
 
       // TODO will change, here for brute force for now
       const tempSiteGrabber = document.querySelector("#site");
@@ -112,7 +110,7 @@ class ChatInterface extends DDD {
             <div class="chat-container">
               <div class="chat-messages">
                   ${this.chatLog.map((message) => html`
-                    <chat-message message="${message.message}" ?sent-prompt="${message.author === this.userName}" ?suggested-prompts="${message.author === "merlin"}"></chat-message>
+                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${message.author === "merlin"}"></chat-message>
                   `)}
               </div>
               <chat-input placeholder="${ChatAgentModalStore.promptPlaceholder}"></chat-input>
@@ -139,10 +137,6 @@ class ChatInterface extends DDD {
         attribute: "is-interface-hidden",
         reflect: true,
       },
-      userName: {
-        type: String,
-        attribute: "user-name",
-      }
     };
   }
 }
