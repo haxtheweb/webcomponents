@@ -229,7 +229,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           height: auto;
           height: 100vh;
           position: absolute;
-          font-size: 16px;
           width: 100%;
           margin: 0 auto;
           display: flex;

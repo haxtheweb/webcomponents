@@ -34,23 +34,28 @@ export default async function handler(req, res) {
     if (url.endsWith('/')) {
       url = url.slice(0, -1);
     }
-    var parseURL = new URL(url);
-    // verify we have a path / host
-    if (parseURL.pathname && parseURL.host) {
-      // support for iam vs oer
-      if (parseURL.host) {
-        // specific to our instances but iam is going to block access when querying for the site content
-        // iam is the authoring domain while oer is the openly available one which if printing
-        // and rendering the content appropriately, this is the way to do it
-        parseURL.host = parseURL.host.replace('iam.', 'oer.');
+    try {
+      var parseURL = new URL(url);
+      // verify we have a path / host
+      if (parseURL.pathname && parseURL.host) {
+        // support for iam vs oer
+        if (parseURL.host) {
+          // specific to our instances but iam is going to block access when querying for the site content
+          // iam is the authoring domain while oer is the openly available one which if printing
+          // and rendering the content appropriately, this is the way to do it
+          parseURL.host = parseURL.host.replace('iam.', 'oer.');
+        }
+        const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
+        const siteManifest = await resolveSiteData(base);
+        context = siteManifest.metadata.site.name;
       }
-      const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
-      const siteManifest = await resolveSiteData(base);
-      context = siteManifest.metadata.site.name;
+      // support definition in post
+      if (body.context) {
+        context = body.context;
+      }
     }
-    // support definition in post
-    if (body.context) {
-      context = body.context;
+    catch(e) {
+      console.warn('invalid url');
     }
     // hard code to switch context on the fly
     //context = "haxcellence";
