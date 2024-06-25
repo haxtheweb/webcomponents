@@ -51,7 +51,7 @@ class ChatMessage extends DDD {
         .received-chat-message {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-1);
+          /* gap: var(--ddd-spacing-1); */
         }
 
         .author-icon {
@@ -93,8 +93,9 @@ class ChatMessage extends DDD {
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
-          gap: var(--ddd-spacing-5);
+          gap: var(--ddd-spacing-3);
           justify-content: center;
+          padding-top: var(--ddd-spacing-2);
         }
 
         @container (max-width: 190px) {
@@ -104,6 +105,12 @@ class ChatMessage extends DDD {
 
           .received-chat-message .message-content {
             background: rgba(73, 29, 112, 0.1);
+          }
+
+          .message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
       `

@@ -229,6 +229,9 @@ class ChatAgent extends DDD {
     this.startAI();
   }
 
+  /**
+   * @description start sequence for Merlin
+   */
   startAI() {
     this.handleMessage("merlin", "Hello! My name is Merlin. How can I assist you today?");
     this.currentSuggestions = ["Who are you?", "What can you do for me?", "How do I use you?"];
@@ -293,11 +296,11 @@ class ChatAgent extends DDD {
     switch(prompt) {
       case "Who are you?":
         this.currentSuggestions = ["What can you do for me?", "How do I use you?"];
-        this.handleMessage("merlin", "I am Merlin. My name is Merlin. How can I assist you today?");
+        this.handleMessage("merlin", "I am Merlin. I was created for use within HAX websites as an assistant to help you with your questions. How may I help you today?");
         break;
       case "What can you do for me?":
         this.currentSuggestions = ["Who are you?", "How do I use you?"];
-        this.handleMessage("merlin", "I can help you with anything. Ask me anything you want.");
+        this.handleMessage("merlin", "I can answer questions and chat with you about information relevant to the website you are navigating. How can I help you?");
         break;
       case "How do I use you?":
         this.currentSuggestions = ["Who are you?", "What can you do for me?"];
