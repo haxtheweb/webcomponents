@@ -16,11 +16,12 @@ class ChatButton extends DDD {
   constructor() {
     super();
 
-    this.isFullView;
-    this.isInterfaceHidden;
+    this.buttonIcon = null;
+    this.isFullView = null;
+    this.isInterfaceHidden = null;
 
     autorun(() => {
-      
+      this.buttonIcon = toJS(ChatAgentModalStore.buttonIcon);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
     })

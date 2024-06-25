@@ -89,16 +89,17 @@ class ChatInput extends DDD {
   }
   
   /**
-   * @description handles key presses enter and shift + enter
+   * @description handles key presses enter
    */
   handleKeyPress(e) {
-    if (e.key === "Enter" && e.shiftKey) {
-      e.preventDefault();
-      this.handleSendButton();
-    }
+    // if (e.key === "Enter" && e.shiftKey) {
+    //   e.preventDefault();
+    //   this.handleSendButton();
+    // }
 
     if (e.key === "Enter") {
       e.preventDefault();
+      this.handleSendButton();
     }
   }
 

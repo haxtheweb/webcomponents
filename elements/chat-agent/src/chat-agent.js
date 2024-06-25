@@ -69,8 +69,9 @@ class ChatAgent extends DDD {
     store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
     store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
     this.context = "phys211";
+    this.loading = null;
     
-    // button
+    // button    
     this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
     
@@ -105,10 +106,12 @@ class ChatAgent extends DDD {
 
     // ! mobx
     makeObservable(this, {
+      buttonIcon: observable,
       chatLog: observable,
       engine: observable,
       isFullView: observable,
       isInterfaceHidden: observable,
+      loading: observable,
       merlinIndex: observable,
       messageIndex: observable,
       userIndex: observable,
@@ -117,10 +120,12 @@ class ChatAgent extends DDD {
     autorun(() => {
       // magic
 
+      const buttonIcon = toJS(this.buttonIcon);
       const chatLog = toJS(this.chatLog);
       const engine = toJS(this.engine);
       const isFullView = toJS(this.isFullView);
       const isInterfaceHidden = toJS(this.isInterfaceHidden);
+      const loading = toJS(this.loading);
       const merlinIndex = toJS(this.merlinIndex);
       const messageIndex = toJS(this.messageIndex);
       const userIndex = toJS(this.userIndex);
@@ -128,6 +133,12 @@ class ChatAgent extends DDD {
       // ! work around to not being able to put this in properties
       isFullView ? this.setAttribute("is-full-view", "") : this.removeAttribute("is-full-view");
       isInterfaceHidden ? this.setAttribute("is-interface-hidden", "") : this.removeAttribute("is-interface-hidden");
+
+      if (loading) {
+        this.buttonIcon = "hax:loading";
+      } else {
+        this.buttonIcon = "hax:wizard-hat";
+      }
     });
   }
 
@@ -290,7 +301,7 @@ class ChatAgent extends DDD {
         break;
       case "How do I use you?":
         this.currentSuggestions = ["Who are you?", "What can you do for me?"];
-        this.handleMessage("merlin", "I can help you with anything. Ask me anything you want.");
+        this.handleMessage("merlin", "I support numerous functions. You can ask me questions, as well as download our chatlog and reset our chat. You can start asking me questions by clicking on one of the suggested prompts, or by typing a prompt in the input box below and pressing the send button or pressing the enter key on your keyboard.");
         break;
       default:
         var base = "";
