@@ -139,7 +139,7 @@ class ChatControlBar extends DDD {
     ChatAgentModalStore.messageIndex = 0;
     ChatAgentModalStore.userIndex = 0;
 
-    ChatAgentModalStore.loadAI();
+    ChatAgentModalStore.startAI(); // TODO not resetting suggestion status
   }
 
   static get properties() {

@@ -110,7 +110,7 @@ class ChatInterface extends DDD {
             <div class="chat-container">
               <div class="chat-messages">
                   ${this.chatLog.map((message) => html`
-                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${message.author === "merlin"}"></chat-message>
+                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${ChatAgentModalStore.currentSuggestions.length > 0}"></chat-message>
                   `)}
               </div>
               <chat-input placeholder="${ChatAgentModalStore.promptPlaceholder}"></chat-input>

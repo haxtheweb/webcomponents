@@ -68,6 +68,7 @@ class ChatAgent extends DDD {
     this.engine = "alfred";
     store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
     store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
+    this.context = "phys211";
     
     // button
     this.buttonIcon = "hax:wizard-hat";
@@ -96,7 +97,7 @@ class ChatAgent extends DDD {
     this.merlinTypeWriterSpeed = 30;
     
     // suggestion
-
+    this.currentSuggestions = [];
 
     // external
     this.isSiteEditorOpen = HAXCMSSiteEditorUI.userMenuOpen; // TODO the idea is here, but I do not think it works (checks for editor bar, will be used for CSS)
@@ -214,7 +215,20 @@ class ChatAgent extends DDD {
       super.firstUpdated(changedProperties);
     }
 
+    this.startAI();
+  }
+
+  startAI() {
     this.handleMessage("merlin", "Hello! My name is Merlin. How can I assist you today?");
+    this.currentSuggestions = ["Who are you?", "What can you do for me?", "How do I use you?"];
+    this.shadowRoot.querySelector("chat-interface").shadowRoot.querySelector("chat-message").shadowRoot.querySelectorAll("chat-suggestion").forEach((suggestion) => {
+      if (suggestion.hasAttribute("disabled")) {
+        suggestion.removeAttribute("disabled");
+      }
+      if(suggestion.hasAttribute("chosen-prompt")) {
+        suggestion.removeAttribute("chosen-prompt");
+      }
+    });
   }
 
   /**
@@ -263,35 +277,54 @@ class ChatAgent extends DDD {
    */
   handleInteraction(prompt) {
     this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`) : null;
-    var base = "";
-    if (globalThis.document.querySelector("base")) {
-      base = globalThis.document.querySelector("base").href;
-    }
-    const params = {
-      site: {
-        file: "https://haxtheweb.org/site.json",
-      },
-      type: "site",
-      question: prompt,
-      engine: this.engine,
-      context: this.context,
-    };
-    this.loading = true;
-    MicroFrontendRegistry.call("@haxcms/aiChat", params)
-      .then((d) => {
-        if (d.status == 200) {
-          this.answers = [d.data.answer];
-          console.log(this.answers);
-          this.question = d.data.question;
-        }
-        this.loading = false;
+    this.currentSuggestions = [];
 
-        this.handleMessage("merlin", d.data.answer);
-      })
-      .catch((error) => {
-        this.loading = false;
-        console.error(error);
-      });
+    switch(prompt) {
+      case "Who are you?":
+        this.currentSuggestions = ["What can you do for me?", "How do I use you?"];
+        this.handleMessage("merlin", "I am Merlin. My name is Merlin. How can I assist you today?");
+        break;
+      case "What can you do for me?":
+        this.currentSuggestions = ["Who are you?", "How do I use you?"];
+        this.handleMessage("merlin", "I can help you with anything. Ask me anything you want.");
+        break;
+      case "How do I use you?":
+        this.currentSuggestions = ["Who are you?", "What can you do for me?"];
+        this.handleMessage("merlin", "I can help you with anything. Ask me anything you want.");
+        break;
+      default:
+        var base = "";
+        if (globalThis.document.querySelector("base")) {
+          base = globalThis.document.querySelector("base").href;
+        }
+        const params = {
+          site: {
+            file: "https://haxtheweb.org/site.json",
+          },
+          type: "site",
+          question: prompt,
+          engine: this.engine,
+          context: this.context,
+        };
+        this.loading = true;
+        MicroFrontendRegistry.call("@haxcms/aiChat", params)
+          .then((d) => {
+            if (d.status == 200) {
+              this.answers = [d.data.answers];
+              console.log(this.answers);
+              this.question = d.data.question;
+            }
+            this.loading = false;
+    
+            this.currentSuggestions = ["Test 1", "Test 2", "Test 3", "Test 4"];
+            this.handleMessage("merlin", d.data.answers);
+          })
+          .catch((error) => {
+            this.loading = false;
+            console.error(error);
+          });
+    }
+
   }
 
   /**

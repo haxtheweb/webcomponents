@@ -21,8 +21,7 @@ class ChatMessage extends DDD {
     this.isSentPrompt = false;
     this.message = "";
     this.messageWasSuggestedPrompt = false; 
-    this.suggestedPrompts = ["Who are you?", "What can you do?", "this is proof the array map works (plz work I need this)"];
-    this.suggestionsDisabled = false;
+    this.suggestedPrompts = ChatAgentModalStore.currentSuggestions; // needs to remain this way that way it doesn't update.
   }
 
   static get styles() {
@@ -162,16 +161,25 @@ class ChatMessage extends DDD {
    * @description Disables the suggestions after one is clicked
    */
   disableSuggestions(e) {
-    if (!this.suggestionsDisabled) {
-      const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
+    const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
 
-      SUGGESTIONS.forEach((suggestion) => {
+    SUGGESTIONS.forEach((suggestion) => {
+      if (!suggestion.hasAttribute("disabled")) {
         suggestion.setAttribute("disabled", "");
-      });
+      }
+    });
 
-      e.currentTarget.setAttribute("chosen-prompt", "");
+    if (!e.currentTarget.hasAttribute("chosen-prompt")) {
+      let existingChosenPrompt = false;
+      SUGGESTIONS.forEach((suggestion) => {
+        if (suggestion.hasAttribute("chosen-prompt")) {
+          existingChosenPrompt = true;
+        }
+      })
 
-      this.suggestionsDisabled = true;
+      if (!existingChosenPrompt) {
+        e.currentTarget.setAttribute("chosen-prompt", "");
+      }
     }
   }
 
@@ -195,10 +203,6 @@ class ChatMessage extends DDD {
       },
       suggestedPrompts: {
         type: Array,
-      },
-      suggestionsDisabled: {
-        type: Boolean,
-        attribute: "suggestions-disabled",
       },
     };
   }
