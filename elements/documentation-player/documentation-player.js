@@ -83,7 +83,7 @@ class DocumentationPlayer extends LitElement {
             loading="lazy"
             fetchpriority="low"
             decoding="async"
-            src="https://screenshoturl-haxtheweb.vercel.app/api/screenshotUrl?quality=10&amp;render=img&amp;urlToCapture=${this
+            src="https://screenshoturl.open-apis.hax.cloud/api/screenshotUrl?quality=10&amp;render=img&amp;urlToCapture=${this
               .imageUrl}"
             alt=""
             width="300"
