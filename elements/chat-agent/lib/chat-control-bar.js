@@ -85,14 +85,15 @@ class ChatControlBar extends DDD {
   handleResetButton() {
     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Reset button pressed.') : null;
 
-    if (confirm('Download the chat log before you reset?')) {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset confirmed.') : null;
-      this.downloadChatLog();
-    } else {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset denied.') : null;
+    if (confirm('Reset the chat?')) {
+      if (confirm('Download the chat log before you reset?')) {
+        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset confirmed.') : null;
+        this.downloadChatLog();
+      } else {
+        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset denied.') : null;
+      }
+      this.resetChat();
     }
-
-    this.resetChat();
   }
 
   /**
@@ -139,7 +140,7 @@ class ChatControlBar extends DDD {
     ChatAgentModalStore.messageIndex = 0;
     ChatAgentModalStore.userIndex = 0;
 
-    ChatAgentModalStore.startAI(); // TODO not resetting suggestion status
+    ChatAgentModalStore.startAI();
   }
 
   static get properties() {

@@ -101,7 +101,7 @@ class ChatAgent extends DDD {
     this.currentSuggestions = [];
 
     // external
-    this.isSiteEditorOpen = HAXCMSSiteEditorUI.userMenuOpen; // TODO the idea is here, but I do not think it works (checks for editor bar, will be used for CSS)
+    this.isSiteEditorOpen = HAXCMSSiteEditorUI.userMenuOpen; // TODO the idea is here, but I do not think it works (checks for editor bar, will be used for CSS full-view)
     console.log(this.isSiteEditorOpen);
 
     // ! mobx
@@ -140,6 +140,8 @@ class ChatAgent extends DDD {
         this.buttonIcon = "hax:wizard-hat";
       }
     });
+
+    // TODO would like to add JS for when the user goes to refresh the page, it asks if they would like to do that. Could be used at restart as well
   }
 
 
