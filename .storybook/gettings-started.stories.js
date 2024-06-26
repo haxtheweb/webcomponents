@@ -35,9 +35,9 @@ export const UsingPennStateCdn = () => {
       <p>Add the following to the <tt>&lt;head&gt;</tt> of your page:</p>
       <template id="template1">
         <script>
-          window.__appCDN = "https://cdn.webcomponents.psu.edu/cdn/";
+          window.__appCDN = "https://cdn.hax.cloud/cdn/";
         </script>
-        <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>
+        <script src="https://cdn.hax.cloud/cdn/build.js"></script>
       </template>
     </demo-snippet>
 
