@@ -57,6 +57,10 @@ class ChatInterface extends DDD {
           /* TODO finish this, max-height is what is causing it to not grow at least somewhat */
         }
 
+        :host([is-interface-hidden]) .chat-interface-wrapper {
+          display: none;
+        }
+
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
@@ -83,18 +87,6 @@ class ChatInterface extends DDD {
         }
       `
     ];
-  }
-
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    
-    if (ChatAgentModalStore.isInterfaceHidden) {
-      this.style.display = "none";
-    } else {
-      this.style.display = "block";
-    }
   }
 
   // TODO page scrolls down when new message is sent. Not when message is received

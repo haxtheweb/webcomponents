@@ -362,7 +362,7 @@ class ChatAgent extends DDD {
         }).catch((error) => {
           this.loading = false;
           this.currentSuggestions = ["Why can't you connect?", "How do I fix this connection issue?"];
-          this.handleMessage("merlin", "I'm sorry, I'm having trouble connecting right now. Please try again soon.")
+          this.handleMessage("merlin", "I'm sorry, I'm having trouble connecting right now. Please try again soon. If you'd like to learn more, please click on one of the suggested prompts.");
           console.error(error);
         });
     }

@@ -79,7 +79,7 @@ class ChatDeveloperPanel extends DDD {
           }
         }
 
-        /* plaay with this one, see if dev mode buttons can be adjusted to work better for both width and height */
+        /* TODO play with this one, see if dev mode buttons can be adjusted to work better for both width and height */
         @media only screen and (max-height: 575px) {
           :host {
             display: none;
@@ -152,6 +152,7 @@ class ChatDeveloperPanel extends DDD {
 
   /**
    * @description handles all console table buttons utilizing button id
+   * @param {object} e - event
    */
   handleConsoleTableButton(e) {
     const TARGET = e.currentTarget.id;

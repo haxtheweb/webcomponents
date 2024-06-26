@@ -93,7 +93,8 @@ class ChatInput extends DDD {
   }
   
   /**
-   * @description handles key presses enter
+   * @description - handles key presses enter
+   * @param {event} e - event
    */
   handleKeyPress(e) {
     let textArea = this.shadowRoot.querySelector("#user-input");
@@ -145,6 +146,7 @@ class ChatInput extends DDD {
     }
   }
 
+  // TODO possibly have this occur through mobx
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);

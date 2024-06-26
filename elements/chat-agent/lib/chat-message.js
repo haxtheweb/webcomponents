@@ -165,6 +165,7 @@ class ChatMessage extends DDD {
 
   /**
    * @description Disables the suggestions after one is clicked
+   * @param {Event} e - click
    */
   disableSuggestions(e) {
     const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
