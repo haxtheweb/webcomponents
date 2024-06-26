@@ -260,7 +260,7 @@ class ChatAgent extends DDD {
    * @param {string} message - the written or suggested prompt
    */
   handleMessage(author, message) {
-    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Writing message ${message} by ${author} to chatLog.`) : null;
+    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Writing message "${message}" by ${author} to chatLog.`) : null;
 
     let authorIndex;
 
@@ -303,6 +303,9 @@ class ChatAgent extends DDD {
     this.currentSuggestions = [];
 
     switch(prompt) {
+      // Offline messages, do not request response from backend AI
+
+      // Tutorial messages
       case "Who are you?":
         this.currentSuggestions = ["What can you do for me?", "How do I use you?"];
         this.handleMessage("merlin", "I am Merlin. I was created for use within HAX websites as an assistant to help you with your questions. How may I help you today?");
@@ -313,8 +316,20 @@ class ChatAgent extends DDD {
         break;
       case "How do I use you?":
         this.currentSuggestions = ["Who are you?", "What can you do for me?"];
-        this.handleMessage("merlin", "I support numerous functions. You can ask me questions, as well as download our chat log and reset our chat. You can start asking me questions by clicking on one of the suggested prompts, or by typing a prompt in the input box below and pressing the send button or pressing the enter key on your keyboard.");
+        this.handleMessage("merlin", "I support numerous functions. You can ask me questions, as well as download our chat log and reset our chat. You can start asking me questions by clicking on one of the suggested prompts, or by typing a prompt in the input box below and pressing the send button or pressing the enter key on your keyboard. Here are some of the keyboard controls you can utilize: \n 1. Tab Key - Navigates you through the numerous usable buttons. \n 2. Enter Key (in text area) - Will submit the prompt you wrote. \n 3. Enter key (When focusing on a button) - Will act in the same way as clicking the button. \n 4. Up & Down Arrow Keys (in text area) - will navigate you through previously sent prompts so you can send them again.");
         break;
+
+      // Network error messages
+      case "Why can't you connect?":
+        this.currentSuggestions = ["How do I fix this connection issue?"];
+        this.handleMessage("merlin", "I am either unable to connect to the internet, or a service I connect to is not available, meaning I cannot research how to respond to your prompt.");
+        break;
+      case "How do I fix this connection issue?":
+        this.currentSuggestions = ["Why can't you connect?"];
+        this.handleMessage("merlin", "Please ensure you are connected to the internet. I cannot respond to (most of) your questions if you are not connected to the internet. If you are connected, it is likely one of my connected services is having an issue, I will try to fix that and be back to help you soon.");
+        break;
+
+      // Online messages, do request response from backend AI
       default:
         var base = "";
         
@@ -346,7 +361,7 @@ class ChatAgent extends DDD {
           this.handleMessage("merlin", d.data.answers);
         }).catch((error) => {
           this.loading = false;
-          this.currentSuggestions = [];
+          this.currentSuggestions = ["Why can't you connect?", "How do I fix this connection issue?"];
           this.handleMessage("merlin", "I'm sorry, I'm having trouble connecting right now. Please try again soon.")
           console.error(error);
         });

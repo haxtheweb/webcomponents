@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import "@haxtheweb/simple-cta/simple-cta.js";
-import { ChatAgentModalStore } from "../chat-agent.js";
+import { ChatAgent, ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 import { autorun, toJS, } from "mobx";
@@ -17,12 +17,16 @@ class ChatInput extends DDD {
   constructor() {
     super();
 
+    this.chatLog = [];
     this.messageIndex = null;
     this.userIndex = null;
+    this.previousMessageIndex = null;
 
     autorun(() => {
+      this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
+      this.previousMessageIndex = toJS(this.messageIndex);
     })
   }
 
@@ -80,7 +84,7 @@ class ChatInput extends DDD {
   render() {
     return html`
       <div class="chat-input-wrapper">
-        <textarea name="prompt-input" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keypress=${this.handleKeyPress}></textarea>
+        <textarea name="prompt-input" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keydown=${this.handleKeyPress}></textarea>
         <div class="send-button" @click=${this.handleSendButton} tabindex="0">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
@@ -92,14 +96,30 @@ class ChatInput extends DDD {
    * @description handles key presses enter
    */
   handleKeyPress(e) {
-    // if (e.key === "Enter" && e.shiftKey) {
-    //   e.preventDefault();
-    //   this.handleSendButton();
-    // }
+    let textArea = this.shadowRoot.querySelector("#user-input");
+    
+    switch (e.key) {
+      case "Enter":
+        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Enter key pressed.') : null;
+        e.preventDefault();
+        this.handleSendButton();
+        break;
+      case "ArrowUp":
+        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`) : null;
+        if (this.previousMessageIndex === this.messageIndex) {
+          ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Message to display: ${this.chatLog[this.previousMessageIndex].message}`) : null;
+          textArea.value = this.chatLog[this.previousMessageIndex].message;
+          this.requestUpdate();
+        }
 
-    if (e.key === "Enter") {
-      e.preventDefault();
-      this.handleSendButton();
+        // TODO steps to finish this
+        // * set up while loop for while previousMessageIndex.author === merlin {previousMessageIndex--}
+        // * set textArea.value = chatLog[previousMessageIndex].message
+        break;
+      case "ArrowDown":
+        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Arrow Down pressed.') : null;
+        e.preventDefault();
+        break;
     }
   }
 
