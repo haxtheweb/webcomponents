@@ -95,7 +95,7 @@ class ChatAgent extends DDD {
     this.userIndex = 0; // index of user messages
     
     this.userTypeWriterSpeed = 1;
-    this.merlinTypeWriterSpeed = 30;
+    this.merlinTypeWriterSpeed = 20;
     
     // suggestion
     this.currentSuggestions = [];
@@ -346,6 +346,7 @@ class ChatAgent extends DDD {
           this.handleMessage("merlin", d.data.answers);
         }).catch((error) => {
           this.loading = false;
+          this.currentSuggestions = [];
           this.handleMessage("merlin", "I'm sorry, I'm having trouble connecting right now. Please try again soon.")
           console.error(error);
         });

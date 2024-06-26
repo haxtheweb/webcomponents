@@ -128,7 +128,6 @@ class ChatMessage extends DDD {
     `;
   }
 
-  // TODO want the chat-suggestions to load after the type-writer is done writing out the text
   /**
    * @description Renders a message recevied from Merlin-AI
    */
