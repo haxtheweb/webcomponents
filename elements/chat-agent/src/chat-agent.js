@@ -342,10 +342,11 @@ class ChatAgent extends DDD {
           }
           this.loading = false;
 
-          this.currentSuggestions = ["Test 1", "Test 2", "Test 3", "Test 4"];
+          this.currentSuggestions = ["What is gravity?", "What is the earth?", "Who created the physics field of study?", "How does gravity vary on different planets?"];
           this.handleMessage("merlin", d.data.answers);
         }).catch((error) => {
           this.loading = false;
+          this.handleMessage("merlin", "I'm sorry, I'm having trouble connecting right now. Please try again soon.")
           console.error(error);
         });
     }
