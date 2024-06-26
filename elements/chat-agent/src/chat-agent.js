@@ -144,8 +144,6 @@ class ChatAgent extends DDD {
     // TODO would like to add JS for when the user goes to refresh the page, it asks if they would like to do that. Could be used at restart as well
   }
 
-
-
   /**
    * LitElement style callback
    */
@@ -198,6 +196,13 @@ class ChatAgent extends DDD {
             width: 30%;
           }
         }
+
+        /* TODO adjust all media queries for HAX environment, not demo environment */
+        @media only screen and (max-width: 425px) {
+          .chat-agent-wrapper {
+            width: 90%;
+          }
+        }
       `,
     ];
   }
@@ -237,10 +242,12 @@ class ChatAgent extends DDD {
   startAI() {
     this.handleMessage("merlin", "Hello! My name is Merlin. How can I assist you today?");
     this.currentSuggestions = ["Who are you?", "What can you do for me?", "How do I use you?"];
+
     this.shadowRoot.querySelector("chat-interface").shadowRoot.querySelector("chat-message").shadowRoot.querySelectorAll("chat-suggestion").forEach((suggestion) => {
       if (suggestion.hasAttribute("disabled")) {
         suggestion.removeAttribute("disabled");
       }
+
       if(suggestion.hasAttribute("chosen-prompt")) {
         suggestion.removeAttribute("chosen-prompt");
       }
@@ -306,13 +313,15 @@ class ChatAgent extends DDD {
         break;
       case "How do I use you?":
         this.currentSuggestions = ["Who are you?", "What can you do for me?"];
-        this.handleMessage("merlin", "I support numerous functions. You can ask me questions, as well as download our chatlog and reset our chat. You can start asking me questions by clicking on one of the suggested prompts, or by typing a prompt in the input box below and pressing the send button or pressing the enter key on your keyboard.");
+        this.handleMessage("merlin", "I support numerous functions. You can ask me questions, as well as download our chat log and reset our chat. You can start asking me questions by clicking on one of the suggested prompts, or by typing a prompt in the input box below and pressing the send button or pressing the enter key on your keyboard.");
         break;
       default:
         var base = "";
+        
         if (globalThis.document.querySelector("base")) {
           base = globalThis.document.querySelector("base").href;
         }
+
         const params = {
           site: {
             file: "https://haxtheweb.org/site.json",
@@ -322,25 +331,24 @@ class ChatAgent extends DDD {
           engine: this.engine,
           context: this.context,
         };
-        this.loading = true;
-        MicroFrontendRegistry.call("@haxcms/aiChat", params)
-          .then((d) => {
-            if (d.status == 200) {
-              this.answers = [d.data.answers];
-              console.log(this.answers);
-              this.question = d.data.question;
-            }
-            this.loading = false;
-    
-            this.currentSuggestions = ["Test 1", "Test 2", "Test 3", "Test 4"];
-            this.handleMessage("merlin", d.data.answers);
-          })
-          .catch((error) => {
-            this.loading = false;
-            console.error(error);
-          });
-    }
 
+        this.loading = true;
+
+        MicroFrontendRegistry.call("@haxcms/aiChat", params).then((d) => {
+          if (d.status == 200) {
+            this.answers = [d.data.answers];
+            console.log(this.answers);
+            this.question = d.data.question;
+          }
+          this.loading = false;
+
+          this.currentSuggestions = ["Test 1", "Test 2", "Test 3", "Test 4"];
+          this.handleMessage("merlin", d.data.answers);
+        }).catch((error) => {
+          this.loading = false;
+          console.error(error);
+        });
+    }
   }
 
   /**

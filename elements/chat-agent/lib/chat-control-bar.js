@@ -40,6 +40,13 @@ class ChatControlBar extends DDD {
           align-items: center;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-0);
         }
+
+        /* Phones */
+        @media only screen and (max-width: 425px), only screen and (max-height: 616px) {
+          #view-button {
+            display: none;
+          }
+        }
       `
     ];
   }
