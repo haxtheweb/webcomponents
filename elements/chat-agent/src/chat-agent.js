@@ -69,7 +69,7 @@ class ChatAgent extends DDD {
     store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
     store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
     this.context = "phys211";
-    this.loading = null;
+    this.isLoading = null;
     
     // button    
     this.buttonIcon = "hax:wizard-hat";
@@ -86,6 +86,7 @@ class ChatAgent extends DDD {
     this.promptPlaceholder = "Enter your prompt here...";
 
     // interface
+    // TODO UserScaffold
     this.isFullView = false;
     this.isInterfaceHidden = false;
 
@@ -95,7 +96,7 @@ class ChatAgent extends DDD {
     this.userIndex = 0; // index of user messages
     
     this.userTypeWriterSpeed = 1;
-    this.merlinTypeWriterSpeed = 20;
+    this.merlinTypeWriterSpeed = 10;
     
     // suggestion
     this.currentSuggestions = [];
@@ -111,7 +112,7 @@ class ChatAgent extends DDD {
       engine: observable,
       isFullView: observable,
       isInterfaceHidden: observable,
-      loading: observable,
+      isLoading: observable,
       merlinIndex: observable,
       messageIndex: observable,
       userIndex: observable,
@@ -125,7 +126,7 @@ class ChatAgent extends DDD {
       const engine = toJS(this.engine);
       const isFullView = toJS(this.isFullView);
       const isInterfaceHidden = toJS(this.isInterfaceHidden);
-      const loading = toJS(this.loading);
+      const isLoading = toJS(this.isLoading);
       const merlinIndex = toJS(this.merlinIndex);
       const messageIndex = toJS(this.messageIndex);
       const userIndex = toJS(this.userIndex);
@@ -134,7 +135,7 @@ class ChatAgent extends DDD {
       isFullView ? this.setAttribute("is-full-view", "") : this.removeAttribute("is-full-view");
       isInterfaceHidden ? this.setAttribute("is-interface-hidden", "") : this.removeAttribute("is-interface-hidden");
 
-      if (loading) {
+      if (isLoading) {
         this.buttonIcon = "hax:loading";
       } else {
         this.buttonIcon = "hax:wizard-hat";
@@ -347,20 +348,20 @@ class ChatAgent extends DDD {
           context: this.context,
         };
 
-        this.loading = true;
+        this.isLoading = true;
 
         MicroFrontendRegistry.call("@haxcms/aiChat", params).then((d) => {
           if (d.status == 200) {
             this.answers = [d.data.answers];
-            console.log(this.answers);
+            this.developerModeEnabled ? console.info(this.answers) : null;
             this.question = d.data.question;
+            this.currentSuggestions = ["What is gravity?", "What is the earth?", "Who created the physics field of study?", "How does gravity vary on different planets?"];
           }
-          this.loading = false;
 
-          this.currentSuggestions = ["What is gravity?", "What is the earth?", "Who created the physics field of study?", "How does gravity vary on different planets?"];
+          this.isLoading = false;
           this.handleMessage("merlin", d.data.answers);
         }).catch((error) => {
-          this.loading = false;
+          this.isLoading = false;
           this.currentSuggestions = ["Why can't you connect?", "How do I fix this connection issue?"];
           this.handleMessage("merlin", "I'm sorry, I'm having trouble connecting right now. Please try again soon. If you'd like to learn more, please click on one of the suggested prompts.");
           console.error(error);
@@ -444,6 +445,8 @@ class ChatAgent extends DDD {
 customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };
 
+
+// TODO causing inefficiency, abstract to it's own file
 // register globally so we can make sure there is only one
 globalThis.ChatAgentModal = globalThis.ChatAgentModal || {};
 // request if this exists. This helps invoke the element existing in the dom

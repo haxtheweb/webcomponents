@@ -18,15 +18,23 @@ class ChatInterface extends DDD {
     this.chatLog = [];
     this.isFullView = null;
     this.isInterfaceHidden = null;
-
+    this.hasEditorUI = null;
+    
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-
-      // TODO will change, here for brute force for now
+      
+      // TODO will change, brute forcing for now
       const tempSiteGrabber = document.querySelector("#site");
       this.isFullView ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
+      
+      if (document.querySelector('haxcms-site-editor-ui')) {
+        this.hasEditorUI = true;
+      } else {
+        this.hasEditorUI = false; 
+      }
+      console.log(hasEditorUI);
     })
   }
 
@@ -50,10 +58,22 @@ class ChatInterface extends DDD {
         :host([is-full-view]) .chat-interface-wrapper {
           background-color: var(--ddd-theme-default-potentialMidnight);
           padding: var(--ddd-spacing-3);
+          height: 100vh;
+        }
+
+        :host([is-full-view]) .chat-wrapper {
+          margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
+        }
+
+        /* Same as above but more margin when editor is open. */
+        :host([is-full-view][has-editor-ui]) .chat-wrapper {
+          margin-top: var(--ddd-spacing-18);
         }
 
         :host([is-full-view]) .chat-messages {
-          max-height: 100%;
+          max-height: 74vh;
+          min-height: 74vh;
+          height: 74vh;
           /* TODO finish this, max-height is what is causing it to not grow at least somewhat */
         }
 
@@ -89,7 +109,7 @@ class ChatInterface extends DDD {
     ];
   }
 
-  // TODO page scrolls down when new message is sent. Not when message is received
+  // TODO page scrolls down when new message is mapped
   render() {
     return html`
       <div class="chat-interface-wrapper">
@@ -118,6 +138,11 @@ class ChatInterface extends DDD {
       ...super.properties,
       chatLog: {
         type: Array,
+      },
+      hasEditorUI: {
+        type: Boolean,
+        attribute: "has-editor-ui",
+        reflect: true,
       },
       isFullView: {
         type: Boolean,

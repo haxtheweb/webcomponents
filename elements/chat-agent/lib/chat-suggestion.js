@@ -31,6 +31,7 @@ class ChatSuggestion extends DDD {
     })
   }
 
+  // TODO make it so suggestions take up a whole row, make a bit smaller as well (shape size and font size)
   static get styles() {
     return [
       super.styles,
@@ -88,6 +89,12 @@ class ChatSuggestion extends DDD {
     ];
   }
 
+  /* 
+    TODO - add a section for a simple-icon on the left side that represents the type of suggestions, listed below: background of icon area stays white, rest of area affected by hover and colors and stuff
+      Suggested prompt - question-answer
+      Network issue prompt - device:signal-cellular-connected-no-internet-0-bar (color: black)
+      Help prompt - help-outline (color: red )
+  */
   render() {
     return html`
       <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0">
