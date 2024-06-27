@@ -39,6 +39,7 @@ class ChatInterface extends DDD {
   }
 
   // TODO transition changing between standard and full view
+  // TODO webkit-scrollbar-thumb (google how to make scrollbar round for examples)
   static get styles() {
     return [
       super.styles,
@@ -65,16 +66,16 @@ class ChatInterface extends DDD {
           margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
         }
 
+        /* TODO full view stuff works on 1 very specific screen resolution :( */
         /* Same as above but more margin when editor is open. */
         :host([is-full-view][has-editor-ui]) .chat-wrapper {
           margin-top: var(--ddd-spacing-18);
         }
 
         :host([is-full-view]) .chat-messages {
-          max-height: 74vh;
-          min-height: 74vh;
-          height: 74vh;
-          /* TODO finish this, max-height is what is causing it to not grow at least somewhat */
+          max-height: 76.5vh;
+          min-height: 76.5vh;
+          height: 76.5vh;
         }
 
         :host([is-interface-hidden]) .chat-interface-wrapper {

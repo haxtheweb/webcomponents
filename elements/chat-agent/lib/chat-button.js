@@ -109,6 +109,7 @@ class ChatButton extends DDD {
 
   /**
    * @description - handles enter key press
+   * @param {event} e - enter key press
    */
   keyPress(e) {
     if (e.key === "Enter") {

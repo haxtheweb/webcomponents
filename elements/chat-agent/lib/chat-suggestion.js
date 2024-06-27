@@ -73,12 +73,15 @@ class ChatSuggestion extends DDD {
         }
 
         simple-icon-lite {
-          --simple-icon-height: var(--ddd-icon-sm);
-          --simple-icon-width: var(--ddd-icon-sm);
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
         }
 
         .suggestion-text {
           width: 80%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         :host([disabled]) .chat-suggestion-wrapper {
@@ -114,7 +117,7 @@ class ChatSuggestion extends DDD {
     ];
   }
 
-
+  // TODO fix corner clicking issue
   render() {
     return html`
       <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0">

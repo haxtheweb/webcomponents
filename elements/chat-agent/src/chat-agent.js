@@ -95,7 +95,7 @@ class ChatAgent extends DDD {
     this.messageIndex = 0; // index of all messages
     this.userIndex = 0; // index of user messages
     
-    this.userTypeWriterSpeed = 1;
+    this.userTypeWriterSpeed = 0;
     this.merlinTypeWriterSpeed = 10;
     
     // suggestion
@@ -334,16 +334,16 @@ class ChatAgent extends DDD {
         this.handleMessage("merlin", "I am Merlin. I was created for use within HAX websites as an assistant to help you with your questions. How may I help you today?");
         break;
       case "What can you do for me?":
-        this.currentSuggestions = [
-          {
-            suggestion: "Who are you?",
-            type: "hax"
-          },
-          {
-            suggestion: "How do I use you?",
-            type: "help"
-          }
-        ];
+this.currentSuggestions = [
+  {
+    suggestion: "Who are you?",
+    type: "hax"
+  },
+  {
+    suggestion: "How do I use you?",
+    type: "help"
+  }
+];
         this.handleMessage("merlin", "I can answer questions and chat with you about information relevant to the website you are navigating. How can I help you?");
         break;
       case "How do I use you?":
@@ -362,12 +362,12 @@ class ChatAgent extends DDD {
 
       // Network error messages
       case "Why can't you connect?":
-        this.currentSuggestions = [
-          {
-            suggestion: "How do I fix this connection issue?",
-            type: "network",
-          }
-        ];
+this.currentSuggestions = [
+  {
+    suggestion: "How do I fix this connection issue?",
+    type: "network",
+  }
+];
         this.handleMessage("merlin", "I am either unable to connect to the internet, or a service I connect to is not available, meaning I cannot research how to respond to your prompt.");
         break;
       case "How do I fix this connection issue?":
@@ -419,7 +419,7 @@ class ChatAgent extends DDD {
                 type: "suggestion"
               }, 
               {
-                suggestion: "How does gravity vary on different planets?", 
+                suggestion: "How does gravity vary on different planets? Here is some more text to ensure that this suggestion wraps to another line. Even more text allows the text to continue wrapping to a very long length that will hopefully increase the size of the suggestion box.", 
                 type: "suggestion"
               }
             ];

@@ -96,9 +96,9 @@ class ChatMessage extends DDD {
         .suggested-prompts {
           display: flex;
           flex-direction: column;
-          flex-wrap: wrap;
           justify-content: center;
-          padding-top: var(--ddd-spacing-2);
+          padding-top: var(--ddd-spacing-3);
+          gap: var(--ddd-spacing-2);
         }
 
         @container (max-width: 190px) {
@@ -158,7 +158,8 @@ class ChatMessage extends DDD {
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-        <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer>
+        <!-- <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer> -->
+         <p class="message-content">${this.message}</p>
         <div class="author-icon">
           <rpg-character seed="${ChatAgentModalStore.userName}"></rpg-character>
         </div>
