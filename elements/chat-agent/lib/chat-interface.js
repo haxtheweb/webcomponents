@@ -64,6 +64,7 @@ class ChatInterface extends DDD {
 
         :host([is-full-view]) .chat-wrapper {
           margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
+          height: 96%;
         }
 
         /* TODO full view stuff works on 1 very specific screen resolution :( */
@@ -72,10 +73,13 @@ class ChatInterface extends DDD {
           margin-top: var(--ddd-spacing-18);
         }
 
-        :host([is-full-view]) .chat-messages {
-          max-height: 76.5vh;
-          min-height: 76.5vh;
-          height: 76.5vh;
+        :host([is-full-view]) .main-wrapper {
+          height: 96vh;
+        }
+
+        /* TODO this seems to be the problem spot in terms of height??? */
+        :host([is-full-view]) .chat-container {
+          height: 87%;
         }
 
         :host([is-interface-hidden]) .chat-interface-wrapper {
@@ -93,11 +97,18 @@ class ChatInterface extends DDD {
           padding-top: var(--ddd-spacing-1);
         }
 
+        .main-wrapper {
+          display: flex;
+          flex-direction: column;
+        }
+
         .chat-container {
           width: 100%;
-          height: 100%;
+          /* height: 100%; */
           background-color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-sm);
+          display: flex;
+          flex-direction: column;
         }
 
         .chat-messages {
@@ -105,6 +116,16 @@ class ChatInterface extends DDD {
           overflow-x: hidden;
           overflow-y: auto;
           scrollbar-width: thin;
+        }
+        
+        :host([is-full-view]) .chat-messages {
+          max-height: none;
+          height: 84vh;
+        }
+
+        /* TODO confirm this works on linux WEB browser */
+        ::-webkit-scrollbar-thumb {
+          border-radius: var(--ddd-radius-rounded);
         }
       `
     ];
@@ -119,7 +140,9 @@ class ChatInterface extends DDD {
             <chat-developer-panel></chat-developer-panel>
           ` : ''}
           <div class="main-wrapper">
-            <chat-control-bar></chat-control-bar>
+            <div>
+              <chat-control-bar></chat-control-bar>
+            </div>  
             <div class="chat-container">
               <div class="chat-messages">
                   ${this.chatLog.map((message) => html`
