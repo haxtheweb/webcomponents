@@ -242,7 +242,20 @@ class ChatAgent extends DDD {
    */
   startAI() {
     this.handleMessage("merlin", "Hello! My name is Merlin. How can I assist you today?");
-    this.currentSuggestions = ["Who are you?", "What can you do for me?", "How do I use you?"];
+    this.currentSuggestions = [
+      {
+        suggestion: "Who are you?",
+        type: "hax"
+      },
+      {
+        suggestion: "What can you do for me?",
+        type: "help"
+      },
+      {
+        suggestion: "How do I use you?",
+        type: "help"
+      }
+    ];
 
     this.shadowRoot.querySelector("chat-interface").shadowRoot.querySelector("chat-message").shadowRoot.querySelectorAll("chat-suggestion").forEach((suggestion) => {
       if (suggestion.hasAttribute("disabled")) {
@@ -308,25 +321,62 @@ class ChatAgent extends DDD {
 
       // Tutorial messages
       case "Who are you?":
-        this.currentSuggestions = ["What can you do for me?", "How do I use you?"];
+        this.currentSuggestions = [
+          {
+            suggestion: "What can you do for me?",
+            type: "help",
+          },
+          {
+            suggestion: "How do I use you?", 
+            type: "help"
+          },
+        ];
         this.handleMessage("merlin", "I am Merlin. I was created for use within HAX websites as an assistant to help you with your questions. How may I help you today?");
         break;
       case "What can you do for me?":
-        this.currentSuggestions = ["Who are you?", "How do I use you?"];
+        this.currentSuggestions = [
+          {
+            suggestion: "Who are you?",
+            type: "hax"
+          },
+          {
+            suggestion: "How do I use you?",
+            type: "help"
+          }
+        ];
         this.handleMessage("merlin", "I can answer questions and chat with you about information relevant to the website you are navigating. How can I help you?");
         break;
       case "How do I use you?":
-        this.currentSuggestions = ["Who are you?", "What can you do for me?"];
+        this.currentSuggestions = [
+          {
+            suggestion: "Who are you?",
+            type: "hax"
+          },
+          {
+            suggestion: "What can you do for me?",
+            type: "help"
+          }
+        ];
         this.handleMessage("merlin", "I support numerous functions. You can ask me questions, as well as download our chat log and reset our chat. You can start asking me questions by clicking on one of the suggested prompts, or by typing a prompt in the input box below and pressing the send button or pressing the enter key on your keyboard. Here are some of the keyboard controls you can utilize: \n 1. Tab Key - Navigates you through the numerous usable buttons. \n 2. Enter Key (in text area) - Will submit the prompt you wrote. \n 3. Enter key (When focusing on a button) - Will act in the same way as clicking the button. \n 4. Up & Down Arrow Keys (in text area) - will navigate you through previously sent prompts so you can send them again.");
         break;
 
       // Network error messages
       case "Why can't you connect?":
-        this.currentSuggestions = ["How do I fix this connection issue?"];
+        this.currentSuggestions = [
+          {
+            suggestion: "How do I fix this connection issue?",
+            type: "network",
+          }
+        ];
         this.handleMessage("merlin", "I am either unable to connect to the internet, or a service I connect to is not available, meaning I cannot research how to respond to your prompt.");
         break;
       case "How do I fix this connection issue?":
-        this.currentSuggestions = ["Why can't you connect?"];
+        this.currentSuggestions = [
+          {
+            suggestion: "Why can't you connect?",
+            type: "network",
+          }
+        ];
         this.handleMessage("merlin", "Please ensure you are connected to the internet. I cannot respond to (most of) your questions if you are not connected to the internet. If you are connected, it is likely one of my connected services is having an issue, I will try to fix that and be back to help you soon.");
         break;
 
@@ -355,14 +405,40 @@ class ChatAgent extends DDD {
             this.answers = [d.data.answers];
             this.developerModeEnabled ? console.info(this.answers) : null;
             this.question = d.data.question;
-            this.currentSuggestions = ["What is gravity?", "What is the earth?", "Who created the physics field of study?", "How does gravity vary on different planets?"];
+            this.currentSuggestions = [
+              {
+                suggestion: "What is gravity?",
+                type: "suggestion"
+              }, 
+              {
+                suggestion: "What is the earth?",
+                type: "suggestion"
+              }, 
+              {
+                suggestion: "Who created the physics field of study?",
+                type: "suggestion"
+              }, 
+              {
+                suggestion: "How does gravity vary on different planets?", 
+                type: "suggestion"
+              }
+            ];
           }
 
           this.isLoading = false;
           this.handleMessage("merlin", d.data.answers);
         }).catch((error) => {
           this.isLoading = false;
-          this.currentSuggestions = ["Why can't you connect?", "How do I fix this connection issue?"];
+          this.currentSuggestions = [
+            {
+              suggestion: "Why can't you connect?",
+              type: "network"
+            },
+            {
+              suggestion: "How do I fix this connection issue?",
+              type: "network"
+            }
+];
           this.handleMessage("merlin", "I'm sorry, I'm having trouble connecting right now. Please try again soon. If you'd like to learn more, please click on one of the suggested prompts.");
           console.error(error);
         });

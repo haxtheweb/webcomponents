@@ -19,6 +19,7 @@ class ChatSuggestion extends DDD {
     
     this.chosenPrompt = false;
     this.disabled = false;
+    this.promptType = "";
     this.suggestion = "";
 
     //! mobx
@@ -40,20 +41,44 @@ class ChatSuggestion extends DDD {
 
         :host {
           display: block;
-          border-radius: var(--ddd-radius-rounded);
         }
 
         .chat-suggestion-wrapper {
           display: flex;
+          flex-direction: row;
           justify-content: center;
           align-items: center;
           background-color: var(--ddd-theme-default-successLight);
           border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-rounded);
+          border-radius: var(--ddd-radius-xl);
           border-color: var(--ddd-theme-default-potentialMidnight);
           opacity: 1.0;
           cursor: pointer;
           box-shadow: var(--ddd-boxShadow-xl);
+        }
+
+        .suggestion-icon {
+          width: 20%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-right: var(--ddd-border-md);
+          border-right-style: solid;
+        }
+
+        .circle-wrapper {
+          background-color: white;
+          border-radius: var(--ddd-radius-circle);
+          padding: var(--ddd-spacing-2);
+        }
+
+        simple-icon-lite {
+          --simple-icon-height: var(--ddd-icon-sm);
+          --simple-icon-width: var(--ddd-icon-sm);
+        }
+
+        .suggestion-text {
+          width: 80%;
         }
 
         :host([disabled]) .chat-suggestion-wrapper {
@@ -89,35 +114,68 @@ class ChatSuggestion extends DDD {
     ];
   }
 
-  /* 
-    TODO - add a section for a simple-icon on the left side that represents the type of suggestions, listed below: background of icon area stays white, rest of area affected by hover and colors and stuff
-      Suggested prompt - question-answer
-      Network issue prompt - device:signal-cellular-connected-no-internet-0-bar (color: black)
-      Help prompt - help-outline (color: red )
-  */
+
   render() {
     return html`
       <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0">
-        <p class="chat-suggestion">
-          ${this.suggestion}
-        </p>  
+        <div class="suggestion-icon">
+          <div class="circle-wrapper">
+            <simple-icon-lite></simple-icon-lite>
+          </div>  
+        </div>
+        <div class="suggestion-text">
+          <p class="chat-suggestion">
+            ${this.suggestion}
+          </p>  
+        </div>
       </div>
     `;
   }
 
+  
   /**
    * @description Event handler for the suggestion button
-   */
-  handleSuggestion() {
-    if (!this.disabled) {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
-      
-      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, this.suggestion);
+  */
+ handleSuggestion() {
+   if (!this.disabled) {
+     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
+     
+     ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, this.suggestion);
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion buttons disabled, ignoring request') : null;
     }
   }
 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+
+    let simpleIcon = this.shadowRoot.querySelector("simple-icon-lite");
+    switch (this.promptType) {
+      case "suggestion":
+        simpleIcon.setAttribute("icon", "question-answer");
+        simpleIcon.style.color = "var(--data-theme-primary, var(--ddd-primary-13))";
+        break;
+      case "network":
+        simpleIcon.setAttribute("icon", "device:signal-cellular-connected-no-internet-0-bar");
+        simpleIcon.style.color = "var(--ddd-theme-default-coalyGray)";
+        break;
+      case "help":
+        simpleIcon.setAttribute("icon", "help-outline");
+        simpleIcon.style.color = "var(--ddd-theme-default-original87Pink)";
+        break;
+      case "hax":
+        simpleIcon.setAttribute("icon", "lrn:network");
+        simpleIcon.style.color = "var(--data-theme-primary, var(--ddd-primary-13))";
+        break;
+      default:
+        simpleIcon.setAttribute("icon", "lrn:info");
+        simpleIcon.style.color = "var(--ddd-theme-default-skyBlue)";
+        break;
+    }
+  }
+  
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -136,6 +194,10 @@ class ChatSuggestion extends DDD {
         attribute: "chosen-prompt",
       },
       disabled: { type: Boolean },
+      promptType: { 
+        type: String, 
+        attribute: "prompt-type" 
+      },
       suggestion: { type: String },
     };
   }

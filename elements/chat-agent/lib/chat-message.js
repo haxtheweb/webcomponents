@@ -65,6 +65,10 @@ class ChatMessage extends DDD {
           height: var(--ddd-spacing-18);
         }
 
+        .received-chat-message .author-icon {
+          border-radius: var(--ddd-radius-xl);
+        }
+
         simple-icon-lite {
           color: var(--data-theme-primary, var(--ddd-primary-13));
           --simple-icon-height: var(--ddd-icon-md);
@@ -91,9 +95,8 @@ class ChatMessage extends DDD {
 
         .suggested-prompts {
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           flex-wrap: wrap;
-          gap: var(--ddd-spacing-3);
           justify-content: center;
           padding-top: var(--ddd-spacing-2);
         }
@@ -142,7 +145,7 @@ class ChatMessage extends DDD {
         </div>
         <div class="suggested-prompts">
           ${this.suggestedPrompts.map((suggestion) => html`
-            <chat-suggestion suggestion="${suggestion}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
+            <chat-suggestion suggestion="${suggestion.suggestion}" prompt-type="${suggestion.type}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
           `)}
         </div>
       </div>
