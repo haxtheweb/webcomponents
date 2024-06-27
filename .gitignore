@@ -5,6 +5,7 @@ lerna-debug.log
 *.local.umd.js
 *.local.js
 .storybook_out
+build
 npm-debug.log
 test/.wct-kludge
 .sass-cache

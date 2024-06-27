@@ -227,6 +227,7 @@
           <button id="resetbtn">reset app</button>
         </div>
         <script>
+          window.HAXCMSContext="nodejs";
           // reduce FOUC for dark mode so it starts in dark rapidly if selected
           if (window.localStorage && window.localStorage.getItem('app-hax-darkMode')) {
             if (window.localStorage.getItem('app-hax-darkMode') == 'true') {
