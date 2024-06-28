@@ -9,8 +9,8 @@ import "./lib/chat-input.js";
 import "./lib/chat-interface.js";
 import "./lib/chat-message.js";
 import "./lib/chat-suggestion.js";
-import '@haxtheweb/rpg-character/rpg-character.js';
-import '@haxtheweb/simple-icon/simple-icon.js';
+import "@haxtheweb/rpg-character/rpg-character.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 import { HAXCMSSiteEditorUI } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js";
@@ -49,14 +49,13 @@ MicroFrontendRegistry.add({
  * @element chat-agent
  */
 class ChatAgent extends DDD {
-  
   /**
    * Convention we use
    */
   static get tag() {
     return "chat-agent";
   }
-  
+
   /**
    * HTMLElement
    */
@@ -66,15 +65,18 @@ class ChatAgent extends DDD {
     // everything
     this.chatLog = [];
     this.engine = "alfred";
-    store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
-    store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
-    
+    store.userData.userName !== undefined
+      ? (this.userName = store.userData.userName)
+      : (this.userName = "guest");
+    store.userData.userPicture !== undefined
+      ? (this.userPicture = store.userData.userPicture)
+      : null; // TODO may not utilize, remove if not utilized
+
     // button
     this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
-    
-    // control bar
 
+    // control bar
 
     // developer mode
     this.developerModeEnabled = true; // ! this will enable developer mode for the entire chat system
@@ -91,12 +93,11 @@ class ChatAgent extends DDD {
     this.merlinIndex = 0; // index of merlin messages
     this.messageIndex = 0; // index of all messages
     this.userIndex = 0; // index of user messages
-    
+
     this.userTypeWriterSpeed = 1;
     this.merlinTypeWriterSpeed = 30;
-    
-    // suggestion
 
+    // suggestion
 
     // external
     this.isSiteEditorOpen = HAXCMSSiteEditorUI.userMenuOpen; // TODO the idea is here, but I do not think it works (checks for editor bar, will be used for CSS)
@@ -125,12 +126,14 @@ class ChatAgent extends DDD {
       const userIndex = toJS(this.userIndex);
 
       // ! work around to not being able to put this in properties
-      isFullView ? this.setAttribute("is-full-view", "") : this.removeAttribute("is-full-view");
-      isInterfaceHidden ? this.setAttribute("is-interface-hidden", "") : this.removeAttribute("is-interface-hidden");
+      isFullView
+        ? this.setAttribute("is-full-view", "")
+        : this.removeAttribute("is-full-view");
+      isInterfaceHidden
+        ? this.setAttribute("is-interface-hidden", "")
+        : this.removeAttribute("is-interface-hidden");
     });
   }
-
-
 
   /**
    * LitElement style callback
@@ -205,7 +208,7 @@ class ChatAgent extends DDD {
       </div>
     `;
   }
-  
+
   /**
    * LitElement ready
    */
@@ -214,7 +217,10 @@ class ChatAgent extends DDD {
       super.firstUpdated(changedProperties);
     }
 
-    this.handleMessage("merlin", "Hello! My name is Merlin. How can I assist you today?");
+    this.handleMessage(
+      "merlin",
+      "Hello! My name is Merlin. How can I assist you today?",
+    );
   }
 
   /**
@@ -223,13 +229,17 @@ class ChatAgent extends DDD {
    * @param {string} message - the written or suggested prompt
    */
   handleMessage(author, message) {
-    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Writing message ${message} by ${author} to chatLog.`) : null;
+    this.developerModeEnabled
+      ? console.info(
+          `HAX-DEV-MODE: Writing message ${message} by ${author} to chatLog.`,
+        )
+      : null;
 
     let authorIndex;
 
     this.messageIndex++;
 
-    switch(author) {
+    switch (author) {
       case "merlin":
         this.merlinIndex++;
         authorIndex = this.merlinIndex;
@@ -241,14 +251,14 @@ class ChatAgent extends DDD {
     }
 
     let date = new Date();
-    
+
     const chatLogObject = {
       messageID: this.messageIndex,
       author: author,
       message: message,
       authorMessageIndex: authorIndex,
-      timestamp: date.toString().replace(/\s/g, '-'),
-    }
+      timestamp: date.toString().replace(/\s/g, "-"),
+    };
 
     this.chatLog.push(chatLogObject);
 
@@ -262,7 +272,11 @@ class ChatAgent extends DDD {
    * @param {string} prompt - the written or suggested prompt
    */
   handleInteraction(prompt) {
-    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`) : null;
+    this.developerModeEnabled
+      ? console.info(
+          `HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`,
+        )
+      : null;
     var base = "";
     if (globalThis.document.querySelector("base")) {
       base = globalThis.document.querySelector("base").href;
@@ -299,16 +313,21 @@ class ChatAgent extends DDD {
    * @param {string} fileType - the file type to download
    */
   handleDownload(fileType) {
-    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Downloading chatlog as ${fileType}.`) : null;
+    this.developerModeEnabled
+      ? console.info(`HAX-DEV-MODE: Downloading chatlog as ${fileType}.`)
+      : null;
 
     if (this.chatLog.length !== 0) {
       const LOG = JSON.stringify(this.chatLog, undefined, 2);
       let date = new Date();
-      const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, '-')}.${fileType}`;
-      
-      let download = document.createElement('a');
-      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(LOG));
-      download.setAttribute('download', FILE_NAME);
+      const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, "-")}.${fileType}`;
+
+      let download = document.createElement("a");
+      download.setAttribute(
+        "href",
+        "data:text/plain;charset=utf-8," + encodeURIComponent(LOG),
+      );
+      download.setAttribute("download", FILE_NAME);
       download.click();
       download.remove();
     }
@@ -329,12 +348,12 @@ class ChatAgent extends DDD {
 
       // control bar
 
-
       // developer mode
-      developerModeEnabled: { // ! this will enable developer mode for the entire chat system
+      developerModeEnabled: {
+        // ! this will enable developer mode for the entire chat system
         type: Boolean,
         attribute: "developer-mode",
-      }, 
+      },
 
       // input
       promptCharacterLimit: {
@@ -348,7 +367,6 @@ class ChatAgent extends DDD {
 
       // interface
 
-
       // message
       merlinTypeWriterSpeed: {
         type: Number,
@@ -359,11 +377,8 @@ class ChatAgent extends DDD {
         attribute: "user-type-writer-speed",
       },
 
-
       // suggestion
-      
-
-    }
+    };
   }
 }
 
@@ -383,4 +398,5 @@ globalThis.ChatAgentModal.requestAvailability = () => {
   return globalThis.ChatAgentModal.instance;
 };
 
-export const ChatAgentModalStore = globalThis.ChatAgentModal.requestAvailability();
+export const ChatAgentModalStore =
+  globalThis.ChatAgentModal.requestAvailability();

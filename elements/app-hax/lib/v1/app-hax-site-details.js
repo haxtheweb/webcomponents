@@ -48,13 +48,11 @@ export class AppHaxSiteDetails extends SimpleColors {
       },
     ];
     if (globalThis.HAXCMSContext && globalThis.HAXCMSContext === "php") {
-      this.detailOps.push(
-        {
+      this.detailOps.push({
         name: "Git",
         op: "gitList",
         icon: "hax:git",
-        }
-      );
+      });
     }
   }
 

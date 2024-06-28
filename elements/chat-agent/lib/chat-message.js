@@ -6,10 +6,9 @@ import "@haxtheweb/type-writer/type-writer.js";
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 
 class ChatMessage extends DDD {
-
   static get tag() {
     return "chat-message";
   }
@@ -20,8 +19,12 @@ class ChatMessage extends DDD {
     this.hasSuggestedPrompts = false; // may be removed by by checking the length of this.suggestedPrompts
     this.isSentPrompt = false;
     this.message = "";
-    this.messageWasSuggestedPrompt = false; 
-    this.suggestedPrompts = ["Who are you?", "What can you do?", "this is proof the array map works (plz work I need this)"];
+    this.messageWasSuggestedPrompt = false;
+    this.suggestedPrompts = [
+      "Who are you?",
+      "What can you do?",
+      "this is proof the array map works (plz work I need this)",
+    ];
     this.suggestionsDisabled = false;
   }
 
@@ -30,7 +33,7 @@ class ChatMessage extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-        
+
         :host {
           display: block;
           container-type: inline-size;
@@ -42,7 +45,8 @@ class ChatMessage extends DDD {
           border-bottom-style: dashed;
         }
 
-        .sent-chat-message, .message {
+        .sent-chat-message,
+        .message {
           display: flex;
           flex-direction: row;
           gap: var(--ddd-spacing-3);
@@ -107,7 +111,7 @@ class ChatMessage extends DDD {
             background: rgba(73, 29, 112, 0.1);
           }
         }
-      `
+      `,
     ];
   }
 
@@ -117,7 +121,9 @@ class ChatMessage extends DDD {
   render() {
     return html`
       <div class="chat-message-wrapper">
-        ${this.isSentPrompt ? this.renderSentMessage() : this.renderReceivedMessage()}
+        ${this.isSentPrompt
+          ? this.renderSentMessage()
+          : this.renderReceivedMessage()}
       </div>
     `;
   }
@@ -133,12 +139,22 @@ class ChatMessage extends DDD {
           <div class="author-icon">
             <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
           </div>
-          <type-writer class="message-content" text="${this.message}" speed="${ChatAgentModalStore.merlinTypeWriterSpeed}"></type-writer>
+          <type-writer
+            class="message-content"
+            text="${this.message}"
+            speed="${ChatAgentModalStore.merlinTypeWriterSpeed}"
+          ></type-writer>
         </div>
         <div class="suggested-prompts">
-          ${this.suggestedPrompts.map((suggestion) => html`
-            <chat-suggestion suggestion="${suggestion}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
-          `)}
+          ${this.suggestedPrompts.map(
+            (suggestion) => html`
+              <chat-suggestion
+                suggestion="${suggestion}"
+                @click=${this.disableSuggestions}
+                @keypress=${this.disableSuggestions}
+              ></chat-suggestion>
+            `,
+          )}
         </div>
       </div>
     `;
@@ -150,7 +166,11 @@ class ChatMessage extends DDD {
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-        <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer>
+        <type-writer
+          class="message-content"
+          speed="${ChatAgentModalStore.userTypeWriterSpeed}"
+          text="${this.message}"
+        ></type-writer>
         <div class="author-icon">
           <rpg-character seed="${ChatAgentModalStore.userName}"></rpg-character>
         </div>

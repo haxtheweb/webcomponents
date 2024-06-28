@@ -38,12 +38,11 @@
     "build": "lerna run build && yarn run build-storybook",
     "analyze": "wca analyze \"elements/*/**/*.js\" --format vscode --outFile custom-elements.json",
     "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
-    "test-suite-inject": "node scripts/test-suite-inject.js",
     "storybook": "set STORYBOOK=true && npx --max_old_space_size=16384 start-storybook --node-resolve --watch --open",
     "build-storybook": "yarn run analyze && export NODE_OPTIONS=--openssl-legacy-provider && set NODE_OPTIONS=--openssl-legacy-provider && set STORYBOOK=true && npx --openssl-legacy-provider --max_old_space_size=16384 build-storybook && cp elements/*/demo/*.json --parents storybook && cp elements/*/lib/*.json --parents storybook",
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
     "haxschema": "./node_modules/.bin/gulp haxschema",
-    "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates",
+    "new": "yarn run rebuild-wcfcache && wcf element && yarn install --link-duplicates",
     "ubiquity": "polymer build && yarn run terser && yarn run wc-autoloader && yarn run version-match && mkdir build/es6/node_modules/@lrnwebcomponents && cp -R build/es6/node_modules/@haxtheweb/wc-autoload build/es6/node_modules/@lrnwebcomponents/wc-autoload && cp -R build/es6/node_modules/@haxtheweb/dynamic-import-registry build/es6/node_modules/@lrnwebcomponents/dynamic-import-registry",
     "terser": "gulp terser --gulpfile=gulpfile.mjs",
     "wc-autoloader": "gulp wc-autoloader --gulpfile=gulpfile.mjs",
@@ -165,7 +164,6 @@
     "webpack-node-externals": "3.0.0",
     "whatwg-fetch": "3.6.2",
     "yo": "4.3.0",
-    "@wcfactory/rollup-umd-build": "^0.13.0",
     "rollup-plugin-copy": "3.4.0",
     "lit-html": "^3.1.4",
     "lit": "^3.1.4",
@@ -190,10 +188,11 @@
     "*.scss": "stylelint --syntax=scss --fix"
   },
   "keywords": [
+    "haxtheweb",
+    "hax",
+    "lit",
     "custom-elements",
-    "webcomponents",
-    "li",
-    "vanillajs"
+    "webcomponents"
   ],
   "private": true,
   "npmClient": "yarn",
@@ -206,7 +205,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run test-suite-inject > /dev/null && lint-staged"
+      "pre-commit": "lint-staged"
     }
   }
 }

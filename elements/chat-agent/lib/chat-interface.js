@@ -5,10 +5,9 @@
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 
 class ChatInterface extends DDD {
-
   static get tag() {
     return "chat-interface";
   }
@@ -26,8 +25,10 @@ class ChatInterface extends DDD {
 
       // TODO will change, here for brute force for now
       const tempSiteGrabber = document.querySelector("#site");
-      this.isFullView ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
-    })
+      this.isFullView
+        ? (tempSiteGrabber.style.width = "75%")
+        : (tempSiteGrabber.style.width = "100%");
+    });
   }
 
   // TODO transition changing between standard and full view
@@ -36,7 +37,7 @@ class ChatInterface extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-        
+
         :host {
           display: block;
           z-index: 999999;
@@ -59,12 +60,14 @@ class ChatInterface extends DDD {
 
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-2)
+            var(--ddd-spacing-2) var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-xl);
         }
 
-        :host([enableDeveloperPanel]), .chat-wrapper {
+        :host([enableDeveloperPanel]),
+        .chat-wrapper {
           padding-top: var(--ddd-spacing-1);
         }
 
@@ -81,7 +84,7 @@ class ChatInterface extends DDD {
           overflow-y: auto;
           scrollbar-width: thin;
         }
-      `
+      `,
     ];
   }
 
@@ -89,7 +92,7 @@ class ChatInterface extends DDD {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    
+
     if (ChatAgentModalStore.isInterfaceHidden) {
       this.style.display = "none";
     } else {
@@ -102,18 +105,27 @@ class ChatInterface extends DDD {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
-          ${ChatAgentModalStore.developerModeEnabled ? html`
-            <chat-developer-panel></chat-developer-panel>
-          ` : ''}
+          ${ChatAgentModalStore.developerModeEnabled
+            ? html` <chat-developer-panel></chat-developer-panel> `
+            : ""}
           <div class="main-wrapper">
             <chat-control-bar></chat-control-bar>
             <div class="chat-container">
               <div class="chat-messages">
-                  ${this.chatLog.map((message) => html`
-                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${message.author === "merlin"}"></chat-message>
-                  `)}
+                ${this.chatLog.map(
+                  (message) => html`
+                    <chat-message
+                      message="${message.message}"
+                      ?sent-prompt="${message.author ===
+                      ChatAgentModalStore.userName}"
+                      ?suggested-prompts="${message.author === "merlin"}"
+                    ></chat-message>
+                  `,
+                )}
               </div>
-              <chat-input placeholder="${ChatAgentModalStore.promptPlaceholder}"></chat-input>
+              <chat-input
+                placeholder="${ChatAgentModalStore.promptPlaceholder}"
+              ></chat-input>
             </div>
           </div>
         </div>

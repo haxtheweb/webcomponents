@@ -6,10 +6,9 @@ import "@haxtheweb/simple-cta/simple-cta.js";
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 
 class ChatInput extends DDD {
-
   static get tag() {
     return "chat-input";
   }
@@ -23,7 +22,7 @@ class ChatInput extends DDD {
     autorun(() => {
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
-    })
+    });
   }
 
   static get styles() {
@@ -31,7 +30,7 @@ class ChatInput extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-        
+
         :host {
           display: block;
           font-family: var(--ddd-font-primary);
@@ -72,7 +71,7 @@ class ChatInput extends DDD {
             var(--ddd-theme-bgContrast, white)
           );
         }
-      `
+      `,
     ];
   }
 
@@ -80,14 +79,19 @@ class ChatInput extends DDD {
   render() {
     return html`
       <div class="chat-input-wrapper">
-        <textarea name="prompt-input" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keypress=${this.handleKeyPress}></textarea>
+        <textarea
+          name="prompt-input"
+          id="user-input"
+          placeholder="${ChatAgentModalStore.promptPlaceholder}"
+          @keypress=${this.handleKeyPress}
+        ></textarea>
         <div class="send-button" @click=${this.handleSendButton} tabindex="0">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
       </div>
     `;
   }
-  
+
   /**
    * @description handles key presses enter and shift + enter
    */
@@ -108,19 +112,34 @@ class ChatInput extends DDD {
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
 
-    if (ChatAgentModalStore.promptCharacterLimit > 0 && INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit) { // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
-      alert(`Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`)
+    if (
+      ChatAgentModalStore.promptCharacterLimit > 0 &&
+      INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit
+    ) {
+      // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
+      alert(
+        `Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`,
+      );
     }
 
     if (INPUTTED_PROMPT !== "") {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info(
+            "HAX-DEV-MODE: Send button activated. Prompt to send: " +
+              INPUTTED_PROMPT,
+          )
+        : null;
 
-      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, INPUTTED_PROMPT);
+      ChatAgentModalStore.handleMessage(
+        ChatAgentModalStore.userName,
+        INPUTTED_PROMPT,
+      );
 
       this.shadowRoot.querySelector("#user-input").value = "";
-
     } else {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info("HAX-DEV-MODE: Send button activated. No prompt to send")
+        : null;
     }
   }
 
@@ -130,7 +149,12 @@ class ChatInput extends DDD {
     }
 
     if (ChatAgentModalStore.promptCharacterLimit > 0) {
-      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", `${ChatAgentModalStore.promptCharacterLimit}`);
+      this.shadowRoot
+        .querySelector("#user-input")
+        .setAttribute(
+          "maxlength",
+          `${ChatAgentModalStore.promptCharacterLimit}`,
+        );
     }
   }
 
