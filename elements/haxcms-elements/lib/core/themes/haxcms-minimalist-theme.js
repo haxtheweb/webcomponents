@@ -5,7 +5,6 @@
 import { html } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSPolymerElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import { MinimalistTemplate } from "@haxtheweb/haxcms-elements/lib/ui-components/templates/minimalist-template.js";
-import "@haxtheweb/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `haxcms-minimalist-theme`
  * `Minimalist design, just a whole page really.
@@ -21,7 +20,7 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
   static get template() {
     let template = super.template;
     return html`
-      <style include="simple-colors-shared-styles-polymer">
+      <style>
         :host {
           display: block;
           font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,

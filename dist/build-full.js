@@ -22,7 +22,6 @@ import "@haxtheweb/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js";
 import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
 import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js";
 import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js";
-import "@haxtheweb/haxcms-elements/lib/core/site-list/haxcms-site-listing.js";
 import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-router.js";
 import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@haxtheweb/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
