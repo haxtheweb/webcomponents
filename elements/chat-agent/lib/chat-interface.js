@@ -121,11 +121,6 @@ class ChatInterface extends DDD {
           max-height: none;
           height: 84vh;
         }
-
-        /* TODO confirm this works on linux WEB browser */
-        ::-webkit-scrollbar-thumb {
-          border-radius: var(--ddd-radius-rounded);
-        }
       `
     ];
   }
