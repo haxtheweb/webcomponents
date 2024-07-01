@@ -4,11 +4,10 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 import { html, css } from "lit";
 
 class ChatButton extends DDD {
-
   static get tag() {
     return "chat-button";
   }
@@ -16,15 +15,13 @@ class ChatButton extends DDD {
   constructor() {
     super();
 
-    this.buttonIcon = null;
-    this.isFullView = null;
-    this.isInterfaceHidden = null;
+    this.isFullView;
+    this.isInterfaceHidden;
 
     autorun(() => {
-      this.buttonIcon = toJS(ChatAgentModalStore.buttonIcon);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-    })
+    });
   }
 
   static get styles() {
@@ -32,7 +29,7 @@ class ChatButton extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-        
+
         :host {
           display: block;
           z-index: 999998;
@@ -56,7 +53,8 @@ class ChatButton extends DDD {
           display: none;
         }
 
-        .chat-button-wrapper:hover .label-wrapper, .chat-button-wrapper:focus .label-wrapper {
+        .chat-button-wrapper:hover .label-wrapper,
+        .chat-button-wrapper:focus .label-wrapper {
           text-decoration: underline;
         }
 
@@ -90,15 +88,22 @@ class ChatButton extends DDD {
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-      `
+      `,
     ];
   }
 
   render() {
     return html`
-      <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0">
+      <div
+        class="chat-button-wrapper"
+        @click=${this.handleChatButton}
+        @keypress=${this.keyPress}
+        tabindex="0"
+      >
         <div class="icon-wrapper">
-          <simple-icon-lite icon="${ChatAgentModalStore.buttonIcon}"></simple-icon-lite>
+          <simple-icon-lite
+            icon="${ChatAgentModalStore.buttonIcon}"
+          ></simple-icon-lite>
         </div>
         <div class="label-wrapper">
           <slot name="label">${ChatAgentModalStore.buttonLabel}</slot>
@@ -107,23 +112,20 @@ class ChatButton extends DDD {
     `;
   }
 
-  /**
-   * @description - handles enter key press
-   * @param {event} e - enter key press
-   */
   keyPress(e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info("HAX-DEV-MODE: Chat button pressed using Enter key.")
+        : null;
       this.handleChatButton();
     }
   }
 
-  /**
-   * @description - handles button being clicked / pressed, will toggle the interface visibility
-   */
   handleChatButton() {
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
+    ChatAgentModalStore.developerModeEnabled
+      ? console.info("HAX-DEV-MODE: Chat button pressed.")
+      : null;
 
     ChatAgentModalStore.isInterfaceHidden = !this.isInterfaceHidden;
   }
@@ -139,7 +141,7 @@ class ChatButton extends DDD {
         type: String,
         attribute: "button-label",
       },
-      
+
       isFullView: {
         type: Boolean,
         attribute: "is-full-view",

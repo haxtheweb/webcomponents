@@ -6,20 +6,18 @@
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 
 class ChatSuggestion extends DDD {
-  
   static get tag() {
     return "chat-suggestion";
   }
 
   constructor() {
     super();
-    
+
     this.chosenPrompt = false;
     this.disabled = false;
-    this.promptType = "";
     this.suggestion = "";
 
     //! mobx
@@ -29,10 +27,9 @@ class ChatSuggestion extends DDD {
     autorun(() => {
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
-    })
+    });
   }
 
-  // TODO make it so suggestions take up a whole row, make a bit smaller as well (shape size and font size)
   static get styles() {
     return [
       super.styles,
@@ -41,47 +38,20 @@ class ChatSuggestion extends DDD {
 
         :host {
           display: block;
+          border-radius: var(--ddd-radius-rounded);
         }
 
         .chat-suggestion-wrapper {
           display: flex;
-          flex-direction: row;
           justify-content: center;
           align-items: center;
           background-color: var(--ddd-theme-default-successLight);
           border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-xl);
+          border-radius: var(--ddd-radius-rounded);
           border-color: var(--ddd-theme-default-potentialMidnight);
-          opacity: 1.0;
+          opacity: 1;
           cursor: pointer;
           box-shadow: var(--ddd-boxShadow-xl);
-        }
-
-        .suggestion-icon {
-          width: 20%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-right: var(--ddd-border-md);
-          border-right-style: solid;
-        }
-
-        .circle-wrapper {
-          background-color: white;
-          border-radius: var(--ddd-radius-circle);
-          padding: var(--ddd-spacing-2);
-        }
-
-        simple-icon-lite {
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
-        }
-
-        .suggestion-text {
-          width: 80%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
 
         :host([disabled]) .chat-suggestion-wrapper {
@@ -94,14 +64,16 @@ class ChatSuggestion extends DDD {
           background-color: var(--ddd-theme-default-futureLime);
         }
 
-        .chat-suggestion-wrapper:hover, .chat-suggestion-wrapper:focus {
+        .chat-suggestion-wrapper:hover,
+        .chat-suggestion-wrapper:focus {
           background-color: var(--ddd-theme-default-futureLime);
         }
 
-        .chat-suggestion-wrapper:hover p, .chat-suggestion-wrapper:focus p {
+        .chat-suggestion-wrapper:hover p,
+        .chat-suggestion-wrapper:focus p {
           text-decoration: underline;
         }
-        
+
         :host([disabled]) p {
           text-decoration: none;
         }
@@ -113,79 +85,57 @@ class ChatSuggestion extends DDD {
           width: 80%;
           text-align: center;
         }
-      `
+      `,
     ];
   }
 
-  // TODO fix corner clicking issue
   render() {
     return html`
-      <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0">
-        <div class="suggestion-icon">
-          <div class="circle-wrapper">
-            <simple-icon-lite></simple-icon-lite>
-          </div>  
-        </div>
-        <div class="suggestion-text">
-          <p class="chat-suggestion">
-            ${this.suggestion}
-          </p>  
-        </div>
+      <div
+        class="chat-suggestion-wrapper"
+        @click=${this.handleSuggestion}
+        @keypress=${this.handleSuggestion}
+        tabindex="0"
+      >
+        <p class="chat-suggestion">${this.suggestion}</p>
       </div>
     `;
   }
 
-  
   /**
    * @description Event handler for the suggestion button
-  */
- handleSuggestion() {
-   if (!this.disabled) {
-     ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: ' + this.suggestion) : null;
-     
-     ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, this.suggestion);
+   */
+  handleSuggestion() {
+    if (!this.disabled) {
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info(
+            "HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: " +
+              this.suggestion,
+          )
+        : null;
+
+      ChatAgentModalStore.handleMessage(
+        ChatAgentModalStore.userName,
+        this.suggestion,
+      );
     } else {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Suggestion buttons disabled, ignoring request') : null;
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info(
+            "HAX-DEV-MODE: Suggestion buttons disabled, ignoring request",
+          )
+        : null;
     }
   }
 
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-
-    let simpleIcon = this.shadowRoot.querySelector("simple-icon-lite");
-    switch (this.promptType) {
-      case "suggestion":
-        simpleIcon.setAttribute("icon", "question-answer");
-        simpleIcon.style.color = "var(--data-theme-primary, var(--ddd-primary-13))";
-        break;
-      case "network":
-        simpleIcon.setAttribute("icon", "device:signal-cellular-connected-no-internet-0-bar");
-        simpleIcon.style.color = "var(--ddd-theme-default-coalyGray)";
-        break;
-      case "help":
-        simpleIcon.setAttribute("icon", "help-outline");
-        simpleIcon.style.color = "var(--ddd-theme-default-original87Pink)";
-        break;
-      case "hax":
-        simpleIcon.setAttribute("icon", "lrn:network");
-        simpleIcon.style.color = "var(--data-theme-primary, var(--ddd-primary-13))";
-        break;
-      default:
-        simpleIcon.setAttribute("icon", "lrn:info");
-        simpleIcon.style.color = "var(--ddd-theme-default-skyBlue)";
-        break;
-    }
-  }
-  
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
 
     if (this.disabled) {
-      this.shadowRoot.querySelector(".chat-suggestion-wrapper").removeAttribute("tabindex");
+      this.shadowRoot
+        .querySelector(".chat-suggestion-wrapper")
+        .removeAttribute("tabindex");
     }
   }
 
@@ -197,10 +147,6 @@ class ChatSuggestion extends DDD {
         attribute: "chosen-prompt",
       },
       disabled: { type: Boolean },
-      promptType: { 
-        type: String, 
-        attribute: "prompt-type" 
-      },
       suggestion: { type: String },
     };
   }
