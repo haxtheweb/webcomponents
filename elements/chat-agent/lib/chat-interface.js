@@ -38,8 +38,7 @@ class ChatInterface extends DDD {
     })
   }
 
-  // TODO transition changing between standard and full view
-  // TODO webkit-scrollbar-thumb (google how to make scrollbar round for examples)
+  // TODO may be best to just rewrite the CSS for full view
   static get styles() {
     return [
       super.styles,
