@@ -6,9 +6,10 @@ import "@haxtheweb/type-writer/type-writer.js";
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS, } from "mobx";
 
 class ChatMessage extends DDD {
+
   static get tag() {
     return "chat-message";
   }
@@ -19,13 +20,8 @@ class ChatMessage extends DDD {
     this.hasSuggestedPrompts = false; // may be removed by by checking the length of this.suggestedPrompts
     this.isSentPrompt = false;
     this.message = "";
-    this.messageWasSuggestedPrompt = false;
-    this.suggestedPrompts = [
-      "Who are you?",
-      "What can you do?",
-      "this is proof the array map works (plz work I need this)",
-    ];
-    this.suggestionsDisabled = false;
+    this.messageWasSuggestedPrompt = false; 
+    this.suggestedPrompts = ChatAgentModalStore.currentSuggestions; // needs to remain this way that way it doesn't update.
   }
 
   static get styles() {
@@ -33,7 +29,7 @@ class ChatMessage extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-
+        
         :host {
           display: block;
           container-type: inline-size;
@@ -45,8 +41,7 @@ class ChatMessage extends DDD {
           border-bottom-style: dashed;
         }
 
-        .sent-chat-message,
-        .message {
+        .sent-chat-message, .message {
           display: flex;
           flex-direction: row;
           gap: var(--ddd-spacing-3);
@@ -56,7 +51,7 @@ class ChatMessage extends DDD {
         .received-chat-message {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-1);
+          /* gap: var(--ddd-spacing-1); */
         }
 
         .author-icon {
@@ -68,6 +63,10 @@ class ChatMessage extends DDD {
           border-radius: var(--ddd-radius-circle);
           width: var(--ddd-spacing-18);
           height: var(--ddd-spacing-18);
+        }
+
+        .received-chat-message .author-icon {
+          border-radius: var(--ddd-radius-xl);
         }
 
         simple-icon-lite {
@@ -96,10 +95,10 @@ class ChatMessage extends DDD {
 
         .suggested-prompts {
           display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: var(--ddd-spacing-5);
+          flex-direction: column;
           justify-content: center;
+          padding-top: var(--ddd-spacing-3);
+          gap: var(--ddd-spacing-2);
         }
 
         @container (max-width: 190px) {
@@ -110,8 +109,14 @@ class ChatMessage extends DDD {
           .received-chat-message .message-content {
             background: rgba(73, 29, 112, 0.1);
           }
+
+          .message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
         }
-      `,
+      `
     ];
   }
 
@@ -121,14 +126,11 @@ class ChatMessage extends DDD {
   render() {
     return html`
       <div class="chat-message-wrapper">
-        ${this.isSentPrompt
-          ? this.renderSentMessage()
-          : this.renderReceivedMessage()}
+        ${this.isSentPrompt ? this.renderSentMessage() : this.renderReceivedMessage()}
       </div>
     `;
   }
 
-  // TODO want the chat-suggestions to load after the type-writer is done writing out the text
   /**
    * @description Renders a message recevied from Merlin-AI
    */
@@ -139,22 +141,12 @@ class ChatMessage extends DDD {
           <div class="author-icon">
             <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
           </div>
-          <type-writer
-            class="message-content"
-            text="${this.message}"
-            speed="${ChatAgentModalStore.merlinTypeWriterSpeed}"
-          ></type-writer>
+          <type-writer class="message-content" text="${this.message}" speed="${ChatAgentModalStore.merlinTypeWriterSpeed}"></type-writer>
         </div>
         <div class="suggested-prompts">
-          ${this.suggestedPrompts.map(
-            (suggestion) => html`
-              <chat-suggestion
-                suggestion="${suggestion}"
-                @click=${this.disableSuggestions}
-                @keypress=${this.disableSuggestions}
-              ></chat-suggestion>
-            `,
-          )}
+          ${this.suggestedPrompts.map((suggestion) => html`
+            <chat-suggestion suggestion="${suggestion.suggestion}" prompt-type="${suggestion.type}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
+          `)}
         </div>
       </div>
     `;
@@ -166,11 +158,8 @@ class ChatMessage extends DDD {
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-        <type-writer
-          class="message-content"
-          speed="${ChatAgentModalStore.userTypeWriterSpeed}"
-          text="${this.message}"
-        ></type-writer>
+        <!-- <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer> -->
+         <p class="message-content">${this.message}</p>
         <div class="author-icon">
           <rpg-character seed="${ChatAgentModalStore.userName}"></rpg-character>
         </div>
@@ -180,18 +169,28 @@ class ChatMessage extends DDD {
 
   /**
    * @description Disables the suggestions after one is clicked
+   * @param {Event} e - click
    */
   disableSuggestions(e) {
-    if (!this.suggestionsDisabled) {
-      const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
+    const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
 
-      SUGGESTIONS.forEach((suggestion) => {
+    SUGGESTIONS.forEach((suggestion) => {
+      if (!suggestion.hasAttribute("disabled")) {
         suggestion.setAttribute("disabled", "");
-      });
+      }
+    });
 
-      e.currentTarget.setAttribute("chosen-prompt", "");
+    if (!e.currentTarget.hasAttribute("chosen-prompt")) {
+      let existingChosenPrompt = false;
+      SUGGESTIONS.forEach((suggestion) => {
+        if (suggestion.hasAttribute("chosen-prompt")) {
+          existingChosenPrompt = true;
+        }
+      })
 
-      this.suggestionsDisabled = true;
+      if (!existingChosenPrompt) {
+        e.currentTarget.setAttribute("chosen-prompt", "");
+      }
     }
   }
 
@@ -215,10 +214,6 @@ class ChatMessage extends DDD {
       },
       suggestedPrompts: {
         type: Array,
-      },
-      suggestionsDisabled: {
-        type: Boolean,
-        attribute: "suggestions-disabled",
       },
     };
   }
