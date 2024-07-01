@@ -83,7 +83,7 @@ class HAXCMSSiteEditor extends LitElement {
           height: 80px;
           margin: 0;
           padding: 8px;
-          background-color: var(--paper-blue-500) !important;
+          background-color: lightblue !important;
         }
         h-a-x {
           margin: auto;

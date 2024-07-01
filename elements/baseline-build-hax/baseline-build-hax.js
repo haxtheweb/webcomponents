@@ -41,7 +41,6 @@ import "@haxtheweb/person-testimonial/person-testimonial.js";
 import "@haxtheweb/place-holder/place-holder.js";
 import "@haxtheweb/q-r/q-r.js";
 import "@haxtheweb/self-check/self-check.js";
-import "@haxtheweb/simple-colors/lib/simple-colors-polymer.js";
 
 import "@haxtheweb/stop-note/stop-note.js";
 import "@haxtheweb/video-player/video-player.js";

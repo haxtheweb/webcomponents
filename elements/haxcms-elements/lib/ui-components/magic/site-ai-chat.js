@@ -7,7 +7,6 @@ import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServ
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/chat-agent/chat-agent.js";
 
-
 // enable services for glossary enhancement
 enableServices(["haxcms"]);
 MicroFrontendRegistry.add({

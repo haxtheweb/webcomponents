@@ -17,6 +17,7 @@
                 "inputMethod": "select",
                 "options": {
                   "https://cdn.webcomponents.psu.edu/cdn/": "Penn State CDN",
+                  "https://cdn.hax.cloud/cdn/": "Penn State CDN",
                   "https://cdn.waxam.io/": "WaxaM CDN",
                   "other": "Other location"
                 }

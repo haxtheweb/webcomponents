@@ -28,7 +28,6 @@
   },
   "main": "discord-embed.js",
   "module": "discord-embed.js",
-  "umd": "discord-embed.umd.js",
   "scripts": {
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium",
@@ -52,7 +51,6 @@
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@wcfactory/rollup-umd-build": "^0.12.1",
     "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",

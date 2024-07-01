@@ -9,7 +9,10 @@ class Store {
     this.badDevice = null;
     this.evaluateBadDevice();
     this.location = null;
-    this.token = globalThis.appSettings && globalThis.appSettings.token ? globalThis.appSettings.token : null;
+    this.token =
+      globalThis.appSettings && globalThis.appSettings.token
+        ? globalThis.appSettings.token
+        : null;
     this.version = "0.0.0";
     this.items = null;
     this.itemFiles = null;

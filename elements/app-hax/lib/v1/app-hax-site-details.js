@@ -46,12 +46,14 @@ export class AppHaxSiteDetails extends SimpleColors {
         op: "archiveSite",
         icon: "icons:archive",
       },
-      {
+    ];
+    if (globalThis.HAXCMSContext && globalThis.HAXCMSContext === "php") {
+      this.detailOps.push({
         name: "Git",
         op: "gitList",
         icon: "hax:git",
-      },
-    ];
+      });
+    }
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -219,12 +221,15 @@ export class AppHaxSiteDetails extends SimpleColors {
         );
         // gitlist opens in a new window
         if (op === "gitList") {
-          // open link in new window
-          globalThis.open(
-            `gitlist/${site.metadata.site.name}`,
-            "_blank",
-            "noopener noreferrer",
-          );
+          // php library is basis for this button, rare instance
+          if (window.HAXCMSContext === "php") {
+            // open link in new window
+            globalThis.open(
+              `gitlist/${site.metadata.site.name}`,
+              "_blank",
+              "noopener noreferrer",
+            );
+          }
         } else {
           const bcontainer = globalThis.document.createElement("div");
           const b = globalThis.document.createElement("button");

@@ -4,7 +4,6 @@
  */
 import { html } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSPolymerElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-import "@haxtheweb/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/iron-list/iron-list.js";
 /**
  * `haxcms-dev-theme`
@@ -75,7 +74,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles-polymer">
+      <style>
         :host {
           display: block;
           /* theme color which is dictated by the manifest */
