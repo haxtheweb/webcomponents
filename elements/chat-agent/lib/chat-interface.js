@@ -16,12 +16,14 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     this.chatLog = [];
+    this.developerModeEnabled = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
     this.hasEditorUI = null;
     
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.developerModeEnabled = toJS(ChatAgentModalStore.developerModeEnabled);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
       
@@ -61,26 +63,6 @@ class ChatInterface extends DDD {
           height: 100vh;
         }
 
-        :host([is-full-view]) .chat-wrapper {
-          margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
-          height: 96%;
-        }
-
-        /* TODO full view stuff works on 1 very specific screen resolution :( */
-        /* Same as above but more margin when editor is open. */
-        :host([is-full-view][has-editor-ui]) .chat-wrapper {
-          margin-top: var(--ddd-spacing-18);
-        }
-
-        :host([is-full-view]) .main-wrapper {
-          height: 96vh;
-        }
-
-        /* TODO this seems to be the problem spot in terms of height??? */
-        :host([is-full-view]) .chat-container {
-          height: 87%;
-        }
-
         :host([is-interface-hidden]) .chat-interface-wrapper {
           display: none;
         }
@@ -91,16 +73,31 @@ class ChatInterface extends DDD {
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-xl);
         }
-
-        :host([enableDeveloperPanel]), .chat-wrapper {
+        
+        :host([is-full-view]) .chat-wrapper {
+          margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
+          height: 96%;
+        }
+        
+        :host([deveroper-mode]), .chat-wrapper {
           padding-top: var(--ddd-spacing-1);
         }
 
+        /* TODO full view stuff works on 1 very specific screen resolution :( */
+        /* Same as above but more margin when editor is open. */
+        :host([is-full-view][has-editor-ui]) .chat-wrapper {
+          margin-top: var(--ddd-spacing-18);
+        }
+        
         .main-wrapper {
           display: flex;
           flex-direction: column;
         }
 
+        :host([is-full-view]) .main-wrapper {
+          height: 96vh;
+        }
+        
         .chat-container {
           width: 100%;
           /* height: 100%; */
@@ -108,6 +105,11 @@ class ChatInterface extends DDD {
           border-radius: var(--ddd-radius-sm);
           display: flex;
           flex-direction: column;
+        }
+
+        /* TODO this seems to be the problem spot in terms of height??? */
+        :host([is-full-view]) .chat-container {
+          height: 87%;
         }
 
         .chat-messages {
@@ -134,9 +136,7 @@ class ChatInterface extends DDD {
             <chat-developer-panel></chat-developer-panel>
           ` : ''}
           <div class="main-wrapper">
-            <div>
-              <chat-control-bar></chat-control-bar>
-            </div>  
+            <chat-control-bar></chat-control-bar>
             <div class="chat-container">
               <div class="chat-messages">
                   ${this.chatLog.map((message) => html`
@@ -156,6 +156,11 @@ class ChatInterface extends DDD {
       ...super.properties,
       chatLog: {
         type: Array,
+      },
+      developerModeEnabled: {
+        type: Boolean,
+        attribute: "developer-mode",
+        reflect: true,
       },
       hasEditorUI: {
         type: Boolean,
