@@ -79,7 +79,7 @@ class ChatInterface extends DDD {
           height: 96%;
         }
         
-        :host([deveroper-mode]), .chat-wrapper {
+        :host([developer-mode]), .chat-wrapper {
           padding-top: var(--ddd-spacing-1);
         }
 
