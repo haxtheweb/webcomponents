@@ -68,7 +68,7 @@ class ChatAgent extends DDD {
     this.engine = "alfred";
     store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
     store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
-    this.context = "phys211";
+    this.context = "phys211"; // test with phys211
     this.isLoading = null;
     
     // button    
