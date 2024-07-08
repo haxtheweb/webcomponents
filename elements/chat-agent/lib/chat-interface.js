@@ -29,7 +29,7 @@ class ChatInterface extends DDD {
       
       // TODO will change, brute forcing for now
       const tempSiteGrabber = document.querySelector("#site");
-      this.isFullView ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
+      this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
       
       if (document.querySelector('haxcms-site-editor-ui')) {
         this.hasEditorUI = true;
@@ -97,7 +97,7 @@ class ChatInterface extends DDD {
         }
 
         :host([is-full-view]) .main-wrapper {
-          height: 102%;
+          height: 100%;
         }
 
         :host([is-full-view][developer-mode]) .main-wrapper {
@@ -134,7 +134,44 @@ class ChatInterface extends DDD {
           height: 100%;
         }
 
-        /* TODO container queries, start by changing the margins (adjust heights of .chat-wrapper and .main-wrapper) */
+        /* TODO refine media queries using tall monitor for height adjustments */
+
+        @media only screen and (min-height: 1201px) {
+          :host([is-full-view]) .chat-wrapper {
+            height: 98%;
+          }
+
+          :host([is-full-view][has-editor-ui]) .chat-wrapper {
+            height: 95%;
+          }
+
+          :host([is-full-view]) .main-wrapper {
+            height: 105.5%;
+          }
+
+          :host([is-full-view][developer-mode]) .main-wrapper {
+            height: 101%;
+          }
+        }
+
+        @media only screen and (min-height: 999px) and (max-height: 1200px) {
+          :host([is-full-view]) .chat-wrapper {
+            height: 96%;
+          }
+
+          :host([is-full-view][has-editor-ui]) .chat-wrapper {
+            height: 91.5%;
+          }
+
+          :host([is-full-view]) .main-wrapper {
+            height: 102%;
+          }
+
+          :host([is-full-view][developer-mode]) .main-wrapper {
+            height: 96%;
+          }
+        }
+
       `
     ];
   }

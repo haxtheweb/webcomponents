@@ -51,6 +51,7 @@ class ChatControlBar extends DDD {
     ];
   }
 
+  // TODO swap buttons for simple-cta, ensures uniformity across browsers
   render() {
     return html`
       <!-- https://haxapi.vercel.app/?path=/story/media-icons--hax-iconset-story -->

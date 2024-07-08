@@ -89,6 +89,7 @@ class ChatDeveloperPanel extends DDD {
     ];
   }
 
+  // TODO swap buttons for simple-cta, ensures uniformity across browsers
   render() {
     return html`
       <div class="chat-developer-panel-wrapper">
