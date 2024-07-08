@@ -406,6 +406,7 @@ class ChatAgent extends DDD {
             this.developerModeEnabled ? console.info(this.answers) : null;
             this.question = d.data.question;
             this.currentSuggestions = [
+              // TODO alter for AI generated suggestions
               {
                 suggestion: "What is gravity?",
                 type: "suggestion"

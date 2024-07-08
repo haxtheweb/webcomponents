@@ -66,7 +66,7 @@ class ChatInterface extends DDD {
         :host([is-interface-hidden]) .chat-interface-wrapper {
           display: none;
         }
-
+        
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
@@ -76,7 +76,12 @@ class ChatInterface extends DDD {
         
         :host([is-full-view]) .chat-wrapper {
           margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
-          height: 96%;
+          height: 94%;
+        }
+
+        :host([is-full-view][has-editor-ui]) .chat-wrapper {
+          margin: var(--ddd-spacing-18) var(--ddd-spacing-0) var(--ddd-spacing-0) var(--ddd-spacing-0);
+          height: 87%;
         }
         
         :host([developer-mode]), .chat-wrapper {
@@ -85,9 +90,6 @@ class ChatInterface extends DDD {
 
         /* TODO full view stuff works on 1 very specific screen resolution :( */
         /* Same as above but more margin when editor is open. */
-        :host([is-full-view][has-editor-ui]) .chat-wrapper {
-          margin-top: var(--ddd-spacing-18);
-        }
         
         .main-wrapper {
           display: flex;
@@ -95,7 +97,7 @@ class ChatInterface extends DDD {
         }
 
         :host([is-full-view]) .main-wrapper {
-          height: 96vh;
+          height: 88%;
         }
         
         .chat-container {
@@ -109,7 +111,7 @@ class ChatInterface extends DDD {
 
         /* TODO this seems to be the problem spot in terms of height??? */
         :host([is-full-view]) .chat-container {
-          height: 87%;
+          height: 90%;
         }
 
         .chat-messages {
@@ -120,8 +122,8 @@ class ChatInterface extends DDD {
         }
         
         :host([is-full-view]) .chat-messages {
-          max-height: none;
-          height: 84vh;
+          max-height: 100%;
+          height: 100%;
         }
       `
     ];
