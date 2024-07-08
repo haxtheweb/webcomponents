@@ -70,9 +70,11 @@ class ChatControlBar extends DDD {
           <button id="view-button" @click=${this.handleViewButton}>
             <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
-          <button id="hide-button" @click=${this.handleHideButton}>
-            <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
-          </button>
+          ${this.isFullView ? html`
+            <button id="hide-button" @click=${this.handleHideButton}>
+              <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
+            </button>
+          ` : ''}
         </div>
       </div>
     `;
