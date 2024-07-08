@@ -53,6 +53,7 @@ class ChatInterface extends DDD {
           width: 100%;
         }
 
+        /* Chat Interface Wrapper */
         .chat-interface-wrapper {
           background-color: transparent;
         }
@@ -67,6 +68,7 @@ class ChatInterface extends DDD {
           display: none;
         }
         
+        /* Chat Wrapper */
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
@@ -77,43 +79,49 @@ class ChatInterface extends DDD {
         :host([is-full-view]) .chat-wrapper {
           margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
           height: 94%;
-        }
-
+        } 
+        
         :host([is-full-view][has-editor-ui]) .chat-wrapper {
           margin: var(--ddd-spacing-18) var(--ddd-spacing-0) var(--ddd-spacing-0) var(--ddd-spacing-0);
           height: 87%;
-        }
+        } 
         
         :host([developer-mode]), .chat-wrapper {
           padding-top: var(--ddd-spacing-1);
         }
-
-        /* TODO full view stuff works on 1 very specific screen resolution :( */
-        /* Same as above but more margin when editor is open. */
         
+        /* Main Wrapper */
         .main-wrapper {
           display: flex;
           flex-direction: column;
         }
 
         :host([is-full-view]) .main-wrapper {
+          height: 102%;
+        }
+
+        :host([is-full-view][developer-mode]) .main-wrapper {
           height: 88%;
         }
         
+        /* Chat Container */
         .chat-container {
           width: 100%;
-          /* height: 100%; */
           background-color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-sm);
           display: flex;
           flex-direction: column;
         }
 
-        /* TODO this seems to be the problem spot in terms of height??? */
         :host([is-full-view]) .chat-container {
+          height: 92%;
+        }
+        
+        :host([is-full-view][developer-mode]) .chat-container {
           height: 90%;
         }
 
+        /* Chat Messages */
         .chat-messages {
           max-height: 300px;
           overflow-x: hidden;
@@ -125,6 +133,8 @@ class ChatInterface extends DDD {
           max-height: 100%;
           height: 100%;
         }
+
+        /* TODO container queries, start by changing the margins (adjust heights of .chat-wrapper and .main-wrapper) */
       `
     ];
   }
