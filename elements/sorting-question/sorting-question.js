@@ -250,11 +250,14 @@ export class SortingQuestion extends QuestionElement {
           border-radius: var(--ddd-radius-xs);
         }
         simple-toolbar-button {
-          background-color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-linkLight)
+          background-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
           );
-          color: light-dark(white, black);
+          color: var(
+            --lowContrast-override,
+            var(--ddd-theme-bgContrast, white)
+          );
         }
         simple-toolbar-button[disabled] {
           background-color: light-dark(

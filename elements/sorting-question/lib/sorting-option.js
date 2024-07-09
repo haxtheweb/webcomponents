@@ -163,14 +163,8 @@ export class SortingOption extends DDDSuper(LitElement) {
           transition: all 0.3s ease-in-out 0s;
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-xs);
-          color: light-dark(
-            var(--simple-colors-default-theme-accent-10),
-            var(--simple-colors-default-theme-accent-2)
-          );
-          background-color: light-dark(
-            var(--simple-colors-default-theme-accent-2),
-            var(--simple-colors-default-theme-accent-10)
-          );
+          background-color: var(--ddd-theme-accent, var(--simple-colors-default-theme-accent-3));
+          color: var(--simple-colors-default-theme-accent-12);
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-xs);
           line-height: var(--ddd-font-size-xs);
@@ -250,7 +244,7 @@ export class SortingOption extends DDDSuper(LitElement) {
         }
         :host(:focus-within:not([disabled])),
         :host(:hover:not([disabled])) {
-          background-color: var(--simple-colors-default-theme-accent-3);
+          background-color: var(--ddd-theme-accent, var(--simple-colors-default-theme-accent-3));
           color: var(--simple-colors-default-theme-accent-12);
           box-shadow: var(--ddd-boxShadow-sm);
           border-color: black;
@@ -268,11 +262,14 @@ export class SortingOption extends DDDSuper(LitElement) {
         }
 
         :host(:not([disabled])) simple-icon-button-lite {
-          background-color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-linkLight)
+          background-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
           );
-          color: light-dark(white, black);
+          color: var(
+            --lowContrast-override,
+            var(--ddd-theme-bgContrast, white)
+          );
         }
         :host(:hover:not([disabled])) simple-icon-button-lite {
           border-color: black;
