@@ -62,7 +62,7 @@ class ChatControlBar extends DDD {
     ];
   }
 
-  // TODO swap buttons for simple-cta, ensures uniformity across browsers
+  // TODO issue with button colors in Opera Dark Mode, test compatibility and add CSS for this specific situation, possibly the color switching thing I implemented into media-quote for accessibility
   render() {
     return html`
       <!-- https://haxapi.vercel.app/?path=/story/media-icons--hax-iconset-story -->
