@@ -363,7 +363,6 @@ export class QuestionElement extends SchemaBehaviors(
           border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-sm);
-          background-color: light-dark(var(--ddd-theme-accent), transparent);
           transition: all 0.3s ease-in-out;
           --simple-toolbar-button-border-color: var(
             --simple-colors-default-theme-grey-4
@@ -408,7 +407,7 @@ export class QuestionElement extends SchemaBehaviors(
         :host simple-fields-field:focus-within,
         :host simple-fields-field:active {
           cursor: pointer;
-          background-color: var(--simple-colors-default-theme-accent-3);
+          background-color: var(--ddd-theme-accent, var(--simple-colors-default-theme-accent-3));
           color: var(--simple-colors-default-theme-accent-12);
           box-shadow: var(--ddd-boxShadow-sm);
           border-color: black;
@@ -448,7 +447,9 @@ export class QuestionElement extends SchemaBehaviors(
         simple-fields-field {
           transition: all 0.3s ease-in-out;
           border-radius: var(--ddd-radius-xs);
-          margin-bottom: var(--ddd-spacing-6);
+          padding: var(--ddd-spacing-4);
+          margin-top: var(--ddd-spacing-2);
+          margin-bottom: var(--ddd-spacing-2);
           border: var(--ddd-border-xs);
           color: var(--simple-colors-default-theme-accent-12);
           background-color: var(--simple-colors-default-theme-accent-2);
@@ -484,6 +485,12 @@ export class QuestionElement extends SchemaBehaviors(
           color: var(
             --lowContrast-override,
             var(--ddd-theme-bgContrast, white)
+          );
+        }
+        details[open] > summary {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
           );
         }
         simple-toolbar-button[disabled] {
