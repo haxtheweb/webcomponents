@@ -79,7 +79,6 @@ class ChatDeveloperPanel extends DDD {
           }
         }
 
-        /* TODO play with this one, see if dev mode buttons can be adjusted to work better for both width and height */
         @media only screen and (max-height: 575px) {
           :host {
             display: none;

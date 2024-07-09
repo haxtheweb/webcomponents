@@ -40,7 +40,6 @@ class ChatInterface extends DDD {
     })
   }
 
-  // TODO may be best to just rewrite the CSS for full view
   static get styles() {
     return [
       super.styles,
@@ -134,7 +133,7 @@ class ChatInterface extends DDD {
           height: 100%;
         }
 
-        /* TODO refine media queries using tall monitor for height adjustments */
+        /* TODO refine media queries using tall monitor for height adjustments. all issues seem to be height based */
 
         @media only screen and (min-height: 1201px) {
           :host([is-full-view]) .chat-wrapper {

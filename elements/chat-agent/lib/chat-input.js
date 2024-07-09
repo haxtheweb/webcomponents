@@ -146,7 +146,6 @@ class ChatInput extends DDD {
     }
   }
 
-  // TODO possibly have this occur through mobx
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
