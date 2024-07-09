@@ -70,6 +70,7 @@ class ChatAgent extends DDD {
     store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
     this.context = "phys211"; // test with phys211
     this.isLoading = null;
+    this.dataCollectionEnabled = true;
     
     // button    
     this.buttonIcon = "hax:wizard-hat";
@@ -109,6 +110,7 @@ class ChatAgent extends DDD {
     makeObservable(this, {
       buttonIcon: observable,
       chatLog: observable,
+      dataCollectionEnabled: observable,
       engine: observable,
       isFullView: observable,
       isInterfaceHidden: observable,
@@ -123,6 +125,7 @@ class ChatAgent extends DDD {
 
       const buttonIcon = toJS(this.buttonIcon);
       const chatLog = toJS(this.chatLog);
+      const dataCollectionEnabled = toJS(this.dataCollectionEnabled);
       const engine = toJS(this.engine);
       const isFullView = toJS(this.isFullView);
       const isInterfaceHidden = toJS(this.isInterfaceHidden);

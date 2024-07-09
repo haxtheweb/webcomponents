@@ -18,9 +18,12 @@ class ChatControlBar extends DDD {
     this.isFullView = null;
     this.isInterfaceHidden = null;
 
+    this.dataCollectionEnabled = null;
+
     autorun(() => {
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+      this.dataCollectionEnabled = toJS(ChatAgentModalStore.dataCollectionEnabled);
     })
   }
 
@@ -39,6 +42,14 @@ class ChatControlBar extends DDD {
           justify-content: space-between;
           align-items: center;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-0);
+        }
+
+        .data-collection-icon {
+          --simple-icon-color: var(--ddd-theme-default-original87Pink);
+        }
+
+        :host([data-collection-enabled]) .data-collection-icon {
+          --simple-icon-color: var(--ddd-theme-default-futureLime);
         }
 
         /* Phones */
@@ -64,6 +75,10 @@ class ChatControlBar extends DDD {
           </button>
           <button id="reset-button" @click=${this.handleResetButton}>
             <simple-icon-lite icon="icons:refresh"></simple-icon-lite>
+          </button>
+          <button id="data-collection-button" @click=${this.handleDataCollectionButton}>
+            <simple-icon-lite icon="lrn:data_usage" class="data-collection-icon"></simple-icon-lite>
+            <span>Data Collection</span>
           </button>
         </div>
         <div class="right-side">
@@ -104,6 +119,13 @@ class ChatControlBar extends DDD {
       }
       this.resetChat();
     }
+  }
+
+  /**
+   * @description - handles the functionality of the data collection button
+   */
+  handleDataCollectionButton() {
+    ChatAgentModalStore.dataCollectionEnabled = !ChatAgentModalStore.dataCollectionEnabled;
   }
 
   /**
@@ -156,6 +178,11 @@ class ChatControlBar extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      dataCollectionEnabled: {
+        type: Boolean,
+        attribute: 'data-collection-enabled',
+        reflect: true,
+      },
     };
   }
 
