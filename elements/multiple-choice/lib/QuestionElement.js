@@ -151,6 +151,17 @@ export class QuestionElement extends SchemaBehaviors(
    * that they want to see how they did.
    */
   checkAnswer(e) {
+    if (globalThis.document && globalThis.document.startViewTransition) {
+      globalThis.document.startViewTransition(() => {
+        this.checkAnswerCallbak();
+      });
+    }
+    else {
+      this.checkAnswerCallbak();
+    }
+  }
+
+  checkAnswerCallbak() {
     globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
         bubbles: true,
@@ -416,8 +427,25 @@ export class QuestionElement extends SchemaBehaviors(
           padding: 0;
           margin: 0;
         }
-        details p {
-          padding: var(--ddd-spacing-4);
+        grid-plate {
+          view-transition-name: grid-shift;
+          transition: 0.3s ease-in-out height;
+        }
+        details[open] {
+          view-transition-name: details-open;
+          transition: 0.3s ease-in-out height;
+        }
+        details[open] p {
+          padding: var(--ddd-spacing-2);
+        }
+        details[open] .container {
+          padding: var(--ddd-spacing-6);
+          margin: 0;
+          border: var(--ddd-border-sm);
+          border-top: none;
+        }
+        details[open] .container h4 {
+          margin-top: 0;
         }
         ul {
           list-style: none;
@@ -445,7 +473,7 @@ export class QuestionElement extends SchemaBehaviors(
           margin-right: var(--ddd-spacing-4);
         }
         simple-fields-field {
-          transition: all 0.3s ease-in-out;
+          view-transition-name: field;
           border-radius: var(--ddd-radius-xs);
           padding: var(--ddd-spacing-4);
           margin-top: var(--ddd-spacing-2);
@@ -488,6 +516,7 @@ export class QuestionElement extends SchemaBehaviors(
           );
         }
         details[open] > summary {
+        border: var(--ddd-border-sm);
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-theme-default-potentialMidnight)
@@ -499,7 +528,7 @@ export class QuestionElement extends SchemaBehaviors(
             var(--ddd-theme-default-slateGray)
           );
           color: light-dark(black, white);
-          opacity: 0.5;
+          opacity: 0.7;
         }
         :host simple-toolbar-button:hover::part(button),
         :host simple-toolbar-button:focus::part(button),
@@ -534,8 +563,12 @@ export class QuestionElement extends SchemaBehaviors(
           padding: 0px;
           margin: 0px;
         }
-        button[disabled] {
-          opacity: 0.5;
+        simple-fields-field[disabled]:not(.correct):not(.incorrect) {
+          opacity: 0.7;
+          color: unset;
+        }
+        button[disabled]:not(.correct):not(.incorrect) {
+          opacity: 0.7;
         }
 
         h4 {
@@ -551,10 +584,27 @@ export class QuestionElement extends SchemaBehaviors(
           display: inline-flex;
         }
         .feedback {
-          margin: var(--ddd-spacing-3) 0;
+          margin: var(--ddd-spacing-2) 0;
           font-size: var(--ddd-font-size-sm);
           font-weight: bold;
           text-align: center;
+        }
+        dl .correct {
+          border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
+          padding-left: 8px;
+        }
+        dl .incorrect {
+          border-left: 4px dotted var(--ddd-theme-default-wonderPurple);
+          padding-left: 8px;
+        }
+        .tag-option.correct {
+          outline: 3px solid var(--ddd-theme-default-opportunityGreen);
+          outline-offset: -3px;
+        }
+
+        .tag-option.incorrect {
+          outline: 3px dotted var(--ddd-theme-default-wonderPurple);
+          outline-offset: -3px;
         }
       `,
     ];
@@ -658,12 +708,12 @@ export class QuestionElement extends SchemaBehaviors(
           <div slot="col-2">
             <details ?open="${!this.hasContent}" id="directions">
               <summary>Directions</summary>
-              <div>${this.renderDirections()}</div>
+              <div class="container">${this.renderDirections()}</div>
             </details>
             ${this.hasContent
               ? html` <details ?open="${!this.showAnswer}" id="related">
                   <summary>Related content</summary>
-                  <div>
+                  <div class="container">
                     <slot name="content"></slot>
                   </div>
                 </details>`
@@ -674,7 +724,7 @@ export class QuestionElement extends SchemaBehaviors(
               ?open="${this.showAnswer}"
             >
               <summary id="feedback">Feedback</summary>
-              <div>${this.renderFeedback()}</div>
+              <div class="container">${this.renderFeedback()}</div>
             </details>
           </div>
         </grid-plate>
@@ -691,11 +741,15 @@ export class QuestionElement extends SchemaBehaviors(
           (answer, index) => html`
             <simple-fields-field
               type="${this.singleOption ? "radio" : "checkbox"}"
-              ?disabled="${this.disabled}"
+              ?disabled="${this.showAnswer || this.disabled}"
               property="oer:answer"
               name="${index}"
               @mousedown="${this.clickSingle}"
               @keydown="${this.clickSingle}"
+              class="tag-option ${answer && this.showAnswer && answer.userGuess ? answer.correct
+                ? "correct"
+                : "incorrect"
+              : ""}"
               .value="${answer ? answer.userGuess : ""}"
               @value-changed="${this.checkedEvent}"
               label="${answer && answer.label ? answer.label : ""}"
@@ -744,9 +798,22 @@ export class QuestionElement extends SchemaBehaviors(
     </p>`;
   }
 
+  // legend so user understands color relation to correctness
+  renderLegend() {
+    return html`
+    <h4>Legend</h4>
+    <dl>
+      <dt class="correct">Correct</dt>
+      <dd>Answer is correct</dd>
+      <dt class="incorrect">Incorrect</dt>
+      <dd>Answer requires correction</dd>
+    </dl>`;
+  }
+
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
+      ${this.renderLegend()}
       ${this.showAnswer && !this.isCorrect()
         ? html` <p class="feedback">${this.incorrectText}</p>
             ${this.hasFeedbackIncorrect

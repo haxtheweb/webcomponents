@@ -132,23 +132,6 @@ export class MarkTheWords extends QuestionElement {
         :host(:not([show-answer])) .tag-option:focus {
           background-color: var(--simple-colors-default-theme-grey-3);
         }
-
-        .tag-option.correct {
-          outline: 4px solid var(--ddd-theme-default-opportunityGreen);
-        }
-
-        .tag-option.incorrect {
-          outline: 4px solid var(--ddd-theme-default-original87Pink);
-        }
-
-        dl .correct {
-          border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
-          padding-left: 8px;
-        }
-        dl .incorrect {
-          border-left: 4px solid var(--ddd-theme-default-original87Pink);
-          padding-left: 8px;
-        }
       `,
     ];
   }
@@ -244,13 +227,14 @@ export class MarkTheWords extends QuestionElement {
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
+      ${this.renderLegend()}
       ${this.showAnswer &&
       (this.numberCorrect !==
         this.displayedAnswers.filter((answer) => answer.correct).length ||
         this.numberCorrect !== this.numberGuessed)
         ? html` <p class="feedback">
               ${this.t.numCorrectLeft}
-              ${this.numberCorrect}/${this.displayedAnswers.filter(
+              ${this.numberCorrect} out of ${this.displayedAnswers.filter(
                 (answer) => answer.correct,
               ).length}
               ${this.t.numCorrectRight} (${this.numberGuessed} guessed)

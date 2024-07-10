@@ -50,9 +50,6 @@ export class SortingQuestion extends QuestionElement {
       checkAnswer: "Check answer",
       tryAgain: "Try again",
     };
-    // @todo this needs refactored when we move to QuestionElement
-    this.checkLabel = "Check answer";
-    this.resetLabel = "Try again";
     this.registerLocalization({
       context: this,
       localesPath:
@@ -62,7 +59,7 @@ export class SortingQuestion extends QuestionElement {
     });
   }
 
-  checkAnswer() {
+  checkAnswerCallback() {
     this.showAnswer = true;
   }
   resetAnswer() {
@@ -265,7 +262,7 @@ export class SortingQuestion extends QuestionElement {
             var(--ddd-theme-default-slateGray)
           );
           color: light-dark(black, white);
-          opacity: 0.5;
+          opacity: 0.7;
         }
         :host simple-toolbar-button:hover::part(button),
         :host simple-toolbar-button:focus::part(button),
@@ -304,12 +301,6 @@ export class SortingQuestion extends QuestionElement {
           padding: 0;
           margin: 0 0 var(--ddd-spacing-8) 0;
           font-family: var(--ddd-font-navigation);
-        }
-        .feedback {
-          margin: var(--ddd-spacing-3) 0;
-          font-size: var(--ddd-font-size-m);
-          font-weight: bold;
-          text-align: center;
         }
         sorting-option img {
           border: var(--ddd-border-sm);
@@ -354,7 +345,7 @@ export class SortingQuestion extends QuestionElement {
               id="directions"
             >
               <summary>Directions</summary>
-              <div>${this.renderDirections()}</div>
+              <div class="container">${this.renderDirections()}</div>
             </details>
             ${this.hasContent
               ? html` <details
@@ -364,7 +355,7 @@ export class SortingQuestion extends QuestionElement {
                   id="related"
                 >
                   <summary>Related content</summary>
-                  <div>
+                  <div class="container">
                     <slot name="content"></slot>
                   </div>
                 </details>`
@@ -375,7 +366,7 @@ export class SortingQuestion extends QuestionElement {
               ?open="${this.showAnswer}"
             >
               <summary id="feedback">Feedback</summary>
-              <div>${this.renderFeedback()}</div>
+              <div class="container">${this.renderFeedback()}</div>
             </details>
           </div>
         </grid-plate>
@@ -387,31 +378,6 @@ export class SortingQuestion extends QuestionElement {
     // due to the odd nature of this, the 1st supplies option COULD be in the right order
     // as a result we ALWAYS want to be active case
     return true;
-  }
-
-  renderButtons() {
-    return html`
-      <div id="buttons">
-        <simple-toolbar-button
-          id="check"
-          ?disabled="${this.disabled ||
-          !this.inactiveCase() ||
-          this.showAnswer}"
-          @click="${this.checkAnswer}"
-          label="${this.checkLabel}"
-        >
-        </simple-toolbar-button>
-        <simple-toolbar-button
-          id="reset"
-          ?disabled="${this.disabled ||
-          !this.inactiveCase() ||
-          (this.inactiveCase() && !this.showAnswer)}"
-          @click="${this.resetAnswer}"
-          label="${this.resetLabel}"
-        >
-        </simple-toolbar-button>
-      </div>
-    `;
   }
 
   // this manages the directions that are rendered and hard coded for the interaction
@@ -428,10 +394,11 @@ export class SortingQuestion extends QuestionElement {
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
+      ${this.renderLegend()}
       ${this.showAnswer && this.numberCorrect !== this.answers.length
         ? html` <p class="feedback">
               ${this.t.numCorrectLeft}
-              ${this.numberCorrect}/${this.answers.length}
+              ${this.numberCorrect} out of ${this.answers.length}
               ${this.t.numCorrectRight}
             </p>
             ${this.hasFeedbackIncorrect

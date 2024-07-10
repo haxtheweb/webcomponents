@@ -95,14 +95,6 @@ class MatchingQuestion extends QuestionElement {
           background-color: var(--simple-colors-default-theme-grey-3);
         }
 
-        .tag-option.correct {
-          outline: 4px solid var(--ddd-theme-default-opportunityGreen);
-        }
-
-        .tag-option.incorrect {
-          outline: 4px solid var(--ddd-theme-default-original87Pink);
-        }
-
         :host([show-answer]) .tag-option {
           cursor: unset;
         }

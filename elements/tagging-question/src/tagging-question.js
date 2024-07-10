@@ -90,14 +90,6 @@ class TaggingQuestion extends QuestionElement {
           background-color: var(--simple-colors-default-theme-grey-3);
         }
 
-        .tag-option.correct {
-          outline: 4px solid var(--ddd-theme-default-opportunityGreen);
-        }
-
-        .tag-option.incorrect {
-          outline: 4px solid var(--ddd-theme-default-original87Pink);
-        }
-
         :host([dragging]) #user-choice-container {
           border-style: dashed;
           border-color: gray;
@@ -131,15 +123,6 @@ class TaggingQuestion extends QuestionElement {
           cursor: pointer;
           user-select: none;
           transition: background-color 0.3s ease;
-        }
-
-        dl .correct {
-          border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
-          padding-left: 8px;
-        }
-        dl .incorrect {
-          border-left: 4px solid var(--ddd-theme-default-original87Pink);
-          padding-left: 8px;
         }
       `,
     ];
@@ -205,6 +188,7 @@ class TaggingQuestion extends QuestionElement {
 
   renderFeedback() {
     return html`
+      ${this.renderLegend()}
       ${this.showAnswer && !this.isCorrect()
         ? html` <p class="feedback">${this.incorrectText}</p>
             ${this.hasFeedbackIncorrect
@@ -219,7 +203,7 @@ class TaggingQuestion extends QuestionElement {
         : ``}
       ${this.showAnswer
         ? html`
-      <p>${this.selectedAnswers.filter((answer) => answer.correct).length} out of ${this.answers.filter((answer) => answer.correct).length} correct options selected${this.selectedAnswers.length > this.answers.filter((answer) => answer.correct).length && this.selectedAnswers.length > this.selectedAnswers.filter((answer) => answer.correct).length ? html`, <strong>but too many options present!</strong>` : "."}</p>
+      <p class="feedback">${this.selectedAnswers.filter((answer) => answer.correct).length} out of ${this.answers.filter((answer) => answer.correct).length} correct${this.selectedAnswers.length > this.answers.filter((answer) => answer.correct).length && this.selectedAnswers.length > this.selectedAnswers.filter((answer) => answer.correct).length ? html`, <strong>but too many options present!</strong>` : "."}</p>
       <h4>Answers selected</h4>
       <dl>
       ${this.selectedAnswers.map(
@@ -374,7 +358,7 @@ class TaggingQuestion extends QuestionElement {
     }
   }
 
-  checkAnswer() {
+  checkAnswerCallback() {
     this.showAnswer = true;
     this.shadowRoot.querySelector("#feedback").focus();
     const allCorrect =

@@ -40,6 +40,12 @@ class FillInTheBlanks extends MarkTheWords {
         }
         simple-fields-field[type="textfield"] {
           width: 140px;
+          min-height: unset;
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+        }
+        simple-fields-field[type="select"] {
+          width: 140px;
+          min-height: unset;
           padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
         }
       `,
@@ -64,6 +70,7 @@ class FillInTheBlanks extends MarkTheWords {
             input.value.toLowerCase().trim() ===
             this.answers[i].answer[j].toLowerCase().trim()
           ) {
+            this.answers[i].userGuessCorrect = true;
             this.numberCorrect++;
           }
         }
@@ -77,6 +84,7 @@ class FillInTheBlanks extends MarkTheWords {
           input.value.toLowerCase().trim() ===
           this.answers[i].answer.toLowerCase().trim()
         ) {
+          this.answers[i].userGuessCorrect = true;
           this.numberCorrect++;
         }
       }
@@ -98,6 +106,7 @@ class FillInTheBlanks extends MarkTheWords {
       );
       for (var i in inputs) {
         inputs[i].value = "";
+        this.answers[i].userGuessCorrect = false;
         if (inputs[i].selectedIndex) {
           inputs[i].selectedIndex = 0;
         }
@@ -116,7 +125,8 @@ class FillInTheBlanks extends MarkTheWords {
     for (var i in answerList) {
       let answer = {
         text: answerList[i],
-        correct: true, // all answers are correct in this setup
+        userGuessCorrect: false,
+        correct: true, // always is true on this prop bc of mark the words, we use userGuess to eval correctness
       };
       let word = answerList[i].replace("[", "").replace("]", "");
       // implies we have synonyms
@@ -188,11 +198,21 @@ class FillInTheBlanks extends MarkTheWords {
         data-answer-index="${index}"
         type="select"
         .itemsList="${selectItems}"
+        ?disabled="${this.showAnswer}"
+        class="tag-option ${this.showAnswer ? this.answers[index].userGuessCorrect 
+          ? "correct"
+          : "incorrect"
+        : ""}"
       ></simple-fields-field>`;
     } else {
       return html` <simple-fields-field
         type="textfield"
         data-answer-index="${index}"
+        ?disabled="${this.showAnswer}"
+        class="tag-option ${this.showAnswer ? this.answers[index].userGuessCorrect
+          ? "correct"
+          : "incorrect"
+        : ""}"
       ></simple-fields-field>`;
     }
   }

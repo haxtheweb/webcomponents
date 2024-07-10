@@ -59,6 +59,17 @@ export class SortingOption extends DDDSuper(LitElement) {
   }
 
   dragStart(e) {
+    if (globalThis.document && globalThis.document.startViewTransition) {
+      globalThis.document.startViewTransition(() => {
+        this.dragStartCallback(e);
+      });
+    }
+    else {
+      this.dragStartCallback(e);
+    }
+  }
+
+  dragStartCallback(e) {
     if (!this.disabled) {
       this.dragging = true;
       // distance above or below current pos to switch index
@@ -115,10 +126,21 @@ export class SortingOption extends DDDSuper(LitElement) {
   }
 
   arrowSort(e) {
+    const target = e.target;
+    if (globalThis.document && globalThis.document.startViewTransition) {
+      globalThis.document.startViewTransition(() => {
+        this.arrowSortCallback(target);
+      });
+    }
+    else {
+      this.arrowSortCallback(target);
+    }
+  }
+  arrowSortCallback(target) {
     if (!this.disabled) {
       let parent = this.parentNode;
       //set new index
-      if (e.target.getAttribute("id") === "downArrow") {
+      if (target.getAttribute("id") === "downArrow") {
         if (
           this.nextElementSibling &&
           this.nextElementSibling.tagName === "SORTING-OPTION"
@@ -152,6 +174,7 @@ export class SortingOption extends DDDSuper(LitElement) {
       super.styles,
       css`
         :host {
+          view-transition-name: sort-option;
           padding: var(--ddd-spacing-4);
           min-height: var(--ddd-spacing-8);
           margin: var(--ddd-spacing-4);
@@ -161,7 +184,7 @@ export class SortingOption extends DDDSuper(LitElement) {
           z-index: 1;
           overflow: hidden;
           transition: all 0.3s ease-in-out 0s;
-          border: var(--ddd-border-sm);
+          border: var(--ddd-border-lg);
           border-radius: var(--ddd-radius-xs);
           background-color: var(--ddd-theme-accent, var(--simple-colors-default-theme-accent-3));
           color: var(--simple-colors-default-theme-accent-12);
@@ -171,26 +194,21 @@ export class SortingOption extends DDDSuper(LitElement) {
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
         }
-        :host([disabled]) {
-          opacity: 0.8;
+        button[disabled]:not([correct]):not([incorrect]) {
+          opacity: 0.7;
         }
         :host(:not([disabled])) {
           cursor: grab;
         }
 
         :host([correct]) {
-          background-color: var(
-            --option-background-color-correct,
-            var(--ddd-theme-default-successLight)
-          ) !important;
+          border: 4px solid var(--ddd-theme-default-opportunityGreen);
           color: black;
         }
 
+
         :host([incorrect]) {
-          background-color: var(
-            --option-background-color-incorrect,
-            var(--ddd-theme-default-errorLight)
-          ) !important;
+          border: 4px dotted var(--ddd-theme-default-wonderPurple);
           color: black;
         }
 
@@ -201,10 +219,10 @@ export class SortingOption extends DDDSuper(LitElement) {
         }
 
         :host([correct]) .icon {
-          color: var(--ddd-theme-default-success);
+          color: var(--ddd-theme-default-opportunityGreen);
         }
         :host([incorrect]) .icon {
-          color: var(--ddd-theme-default-error);
+          color: var(--ddd-theme-default-wonderPurple);
         }
         .option-slot-wrapper {
           display: flex;
