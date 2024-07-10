@@ -395,6 +395,7 @@ class ChatAgent extends DDD {
           base = globalThis.document.querySelector("base").href;
         }
 
+        // TODO: Add support for data collection toggle
         const params = {
           site: {
             file: "https://haxtheweb.org/site.json",
@@ -412,25 +413,7 @@ class ChatAgent extends DDD {
             this.answers = [d.data.answers];
             this.developerModeEnabled ? console.info(this.answers) : null;
             this.question = d.data.question;
-            this.currentSuggestions = [
-              // TODO alter for AI generated suggestions
-              {
-                suggestion: "What is gravity?",
-                type: "suggestion"
-              }, 
-              {
-                suggestion: "What is the earth?",
-                type: "suggestion"
-              }, 
-              {
-                suggestion: "Who created the physics field of study?",
-                type: "suggestion"
-              }, 
-              {
-                suggestion: "How does gravity vary on different planets? Here is some more text to ensure that this suggestion wraps to another line. Even more text allows the text to continue wrapping to a very long length that will hopefully increase the size of the suggestion box.", 
-                type: "suggestion"
-              }
-            ];
+            this.currentSuggestions = []; // TODO add support for AI based suggestiongs
           }
 
           this.isLoading = false;
