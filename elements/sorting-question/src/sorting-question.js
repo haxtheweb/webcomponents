@@ -447,6 +447,52 @@ export class SortingQuestion extends QuestionElement {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }
+
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      ...super.haxHooks,
+      inlineContextMenu: "haxinlineContextMenu",
+    };
+  }
+
+  /**
+   * add buttons when it is in context
+   */
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "icons:add",
+        callback: "haxClickInlineAdd",
+        label: "Add answer",
+      },
+      {
+        icon: "icons:remove",
+        callback: "haxClickInlineRemove",
+        label: "Remove answer",
+      },
+    ];
+  }
+  haxClickInlineAdd(e) {
+    this.resetAnswer();
+    this.displayedAnswers = [];
+    let d = this.answers;
+    d.push({ label: "New answer", order: this.answers.length });
+    this.answers = [...d];
+    return true;
+  }
+  haxClickInlineRemove(e) {
+    if (this.answers.length > 0) {
+      this.resetAnswer();
+      this.displayedAnswers = [];
+      let d = this.answers;
+      d.pop();
+      this.answers = [...d];
+      return true;
+    }
+  }
 }
 
 globalThis.customElements.define(SortingQuestion.tag, SortingQuestion);

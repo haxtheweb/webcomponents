@@ -153,15 +153,15 @@ export class QuestionElement extends SchemaBehaviors(
   checkAnswer(e) {
     if (globalThis.document && globalThis.document.startViewTransition) {
       globalThis.document.startViewTransition(() => {
-        this.checkAnswerCallbak();
+        this.checkAnswerCallback();
       });
     }
     else {
-      this.checkAnswerCallbak();
+      this.checkAnswerCallback();
     }
   }
 
-  checkAnswerCallbak() {
+  checkAnswerCallback() {
     globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
         bubbles: true,
@@ -375,6 +375,7 @@ export class QuestionElement extends SchemaBehaviors(
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-sm);
           transition: all 0.3s ease-in-out;
+          --simple-fields-background-color: transparent;
           --simple-toolbar-button-border-color: var(
             --simple-colors-default-theme-grey-4
           );

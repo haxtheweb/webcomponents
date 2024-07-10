@@ -1,14 +1,17 @@
 {
   "canScale": false,
-
+  "designSystem": {
+    "accent": true,
+    "primary": true
+  },
   "canEditSource": true,
   "type": "grid",
   "gizmo": {
-    "title": "Sorting question",
-    "description": "Sort options in the right order to get a score!",
+    "title": "Sorting Question",
+    "description": "Sort items in the correct order",
     "icon": "credit-card",
     "color": "blue",
-    "tags": ["Instructional", "self check", "assessment", "sort"]
+    "tags": ["Instructional", "self check", "sorting", "question", "quiz", "assessment"]
   },
   "settings": {
     "configure": [
@@ -19,14 +22,48 @@
         "inputMethod": "textfield"
       },
       {
-        "slot": "",
-        "title": "Options",
-        "description": "Options to sort",
-        "required": true,
-        "slotWrapper": "sorting-option"
+        "property": "answers",
+        "title": "Answers",
+        "description": "Order of the answers dictates correct order",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "properties": [
+          {
+            "property": "label",
+            "title": "Answer",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "order",
+            "title": "Order",
+            "inputMethod": "number",
+            "required": true
+          }
+        ]
       }
     ],
-    "advanced": []
+    "advanced": [],
+    "developer": [
+      {
+        "property": "correctText",
+        "title": "Correct feedback",
+        "description": "Feedback when they get it right",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "incorrectText",
+        "title": "Incorrect feedback",
+        "description": "Feedback when they get it wrong",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      }
+    ]
   },
   "demoSchema": [
     {
@@ -34,7 +71,7 @@
       "properties": {
         "question": "Sorting these in numerical order"
       },
-      "content": "<p slot=\"evidence\">Self evident, Refer back to 1st grade</p><p slot=\"hint\">Consider that numbers tend to go zero, one, two...</p><sorting-option>1</sorting-option><sorting-option>2</sorting-option><sorting-option>3</sorting-option>"
+      "content": "<p slot=\"evidence\">Self evident, Refer back to 1st grade</p><p slot=\"hint\">Consider that numbers tend to go zero, one, two...</p><input value=\"1\" /><input value=\"2\" /><input value=\"3\" />"
     }
   ]
 }

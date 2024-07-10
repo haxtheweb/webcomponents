@@ -2,15 +2,19 @@
   "canScale": false,
   "canEditSource": true,
   "type": "grid",
+  "designSystem": {
+    "accent": true,
+    "primary": true
+  },
   "editMode": {
     "editMode": true
   },
   "gizmo": {
-    "title": "True / False",
+    "title": "True / False Question",
     "description": "True false question",
     "icon": "hax:multiple-choice",
     "color": "purple",
-    "tags": ["Instructional", "quiz", "true false"],
+    "tags": ["Instructional", "quiz", "question", "true false"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -38,7 +42,10 @@
             "text": "False"
           }
         ]
-      },
+      }
+    ],
+    "advanced": [],
+    "developer": [
       {
         "property": "correctText",
         "title": "Correct feedback",
@@ -50,10 +57,7 @@
         "title": "Incorrect feedback",
         "description": "Feedback when they get it wrong",
         "inputMethod": "textfield"
-      }
-    ],
-    "advanced": [],
-    "developer": [
+      },
       {
         "property": "quizName",
         "title": "Name of the quiz",

@@ -87,10 +87,13 @@ class ShortAnswerQuestion extends QuestionElement {
    * Return if the current answers are correct
    */
   isCorrect() {
-    return (
-      this.displayedAnswers[0].label.toLowerCase() ==
-      this.shortanswer.toLowerCase()
-    );
+    for (var i in this.displayedAnswers) {
+      if (this.displayedAnswers[i].label.toLowerCase() ==
+      this.shortanswer.toLowerCase()) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 globalThis.customElements.define(ShortAnswerQuestion.tag, ShortAnswerQuestion);

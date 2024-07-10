@@ -1,8 +1,11 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "type": "grid",
+  "designSystem": {
+    "accent": true,
+    "primary": true
+  },
   "editMode": {
     "editMode": true
   },
@@ -67,7 +70,10 @@
             "required": true
           }
         ]
-      },
+      }
+    ],
+    "advanced": [],
+    "developer": [
       {
         "property": "correctText",
         "title": "Correct feedback",
@@ -79,9 +85,7 @@
         "title": "Incorrect feedback",
         "description": "Feedback when they get it wrong",
         "inputMethod": "textfield"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "quizName",
         "title": "Name of the quiz",
