@@ -628,13 +628,14 @@
     }
   ],
   "autoloader": {
-    "fill-in-the-blanks": "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
-    "mark-the-words": "@haxtheweb/mark-the-words/mark-the-words.js",
+    "multiple-choice": "@haxtheweb/multiple-choice/multiple-choice.js",
+    "true-false-question": "@haxtheweb/multiple-choice/lib/true-false-question.js",
+    "short-answer-question": "@haxtheweb/multiple-choice/lib/short-answer-question.js",
     "sorting-question": "@haxtheweb/sorting-question/sorting-question.js",
     "tagging-question": "@haxtheweb/tagging-question/tagging-question.js",
     "matching-question": "@haxtheweb/matching-question/matching-question.js",
-    "multiple-choice": "@haxtheweb/multiple-choice/multiple-choice.js",
-    "true-false-question": "@haxtheweb/multiple-choice/lib/true-false-question.js",
+    "mark-the-words": "@haxtheweb/mark-the-words/mark-the-words.js",
+    "fill-in-the-blanks": "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
     "haxcms-site-disqus": "@haxtheweb/disqus-embed/lib/haxcms-site-disqus.js",
     "discord-embed": "@haxtheweb/discord-embed/discord-embed.js",
     "page-anchor": "@haxtheweb/page-break/lib/page-anchor.js",
