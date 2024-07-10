@@ -6,8 +6,12 @@
   "canScale": true,
   "canEditSource": true,
   "contentEditable": false,
+  "designSystem": {
+    "primary": true,
+    "accent": true
+  },
   "gizmo": {
-    "title": "Matching question",
+    "title": "Matching Question",
     "description": "",
     "icon": "editor:drag-handle",
     "color": "purple",
@@ -18,9 +22,54 @@
     }
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question for users to respond to. To define drop targets, check the box. To define answers, list them until the next drop target.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "answers",
+        "title": "Answers",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "properties": [
+          {
+            "property": "correct",
+            "title": "Target",
+            "inputMethod": "boolean"
+          },
+          {
+            "property": "label",
+            "title": "Label",
+            "inputMethod": "textfield",
+            "required": true
+          }
+        ]
+      }
+    ],
     "advanced": [],
-    "developer": []
+    "developer": [
+      {
+        "property": "correctText",
+        "title": "Correct feedback",
+        "description": "Feedback when they get it right",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "incorrectText",
+        "title": "Incorrect feedback",
+        "description": "Feedback when they get it wrong",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      }
+    ]
   },
   "saveOptions": {
     "unsetAttributes": []
@@ -32,8 +81,11 @@
   "demoSchema": [
     {
       "tag": "matching-question",
-      "content": "",
-      "properties": {}
+      "content": "<input correct value=\"Cow\"/><input value=\"Moo\"/><input correct value=\"Fox\"/><input value=\"PaPaPower\"/>",
+      "properties": {
+        "question": "What does the animal say?",
+        "data-accent": "2"
+      }
     }
   ]
 }

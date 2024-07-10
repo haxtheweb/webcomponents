@@ -7,12 +7,11 @@
   "canEditSource": true,
   "contentEditable": false,
   "designSystem": {
-    "card": true,
     "primary": true,
     "accent": true
   },
   "gizmo": {
-    "title": "Tagging question",
+    "title": "Tagging Question",
     "description": "Select tags to answer the question",
     "icon": "icons:line-style",
     "color": "purple",
@@ -23,9 +22,55 @@
     }
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question for users to respond to.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "answers",
+        "title": "Answers",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "properties": [
+          {
+            "property": "correct",
+            "title": "Correct",
+            "description": "Is this correct",
+            "inputMethod": "boolean"
+          },
+          {
+            "property": "label",
+            "title": "Answer",
+            "inputMethod": "textfield",
+            "required": true
+          }
+        ]
+      }
+    ],
     "advanced": [],
-    "developer": []
+    "developer": [
+      {
+        "property": "correctText",
+        "title": "Correct feedback",
+        "description": "Feedback when they get it right",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "incorrectText",
+        "title": "Incorrect feedback",
+        "description": "Feedback when they get it wrong",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      }
+    ]
   },
   "saveOptions": {
     "unsetAttributes": []

@@ -1,7 +1,10 @@
 {
   "type": "grid",
   "canScale": false,
-
+  "designSystem": {
+    "primary": true,
+    "accent": true
+  },
   "canEditSource": true,
   "gizmo": {
     "title": "Mark the words",
@@ -25,11 +28,31 @@
       {
         "property": "question",
         "title": "Question",
-        "description": "Prompting for the user to answer the question",
+        "description": "Question for users to respond to.",
         "inputMethod": "textfield"
       }
     ],
-    "advanced": []
+    "advanced": [],
+    "developer": [
+      {
+        "property": "correctText",
+        "title": "Correct feedback",
+        "description": "Feedback when they get it right",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "incorrectText",
+        "title": "Incorrect feedback",
+        "description": "Feedback when they get it wrong",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      }
+    ]
   },
   "saveOptions": {
     "unsetAttributes": ["wordList", "numberCorrect", "numberGuessed"]

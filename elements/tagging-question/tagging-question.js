@@ -216,6 +216,7 @@ class TaggingQuestion extends QuestionElement {
       )}
       </dl>
       <h4>Answers not selected</h4>
+      <p>Incorrectness implies it should have been selected. Correctness implies it was correctly <strong>not</strong> selected</p>
       <dl>
       ${this.displayedAnswers.map(
         (answer) => html`

@@ -33,12 +33,6 @@
             "title": "Answer",
             "inputMethod": "textfield",
             "required": true
-          },
-          {
-            "property": "order",
-            "title": "Order",
-            "inputMethod": "number",
-            "required": true
           }
         ]
       }
