@@ -250,6 +250,24 @@ class ChatInterface extends DDD {
               height: 91%;
             }
           }
+
+          @media only screen and (max-height: 748px) {
+            :host([is-full-view]) .chat-wrapper {
+              height: 88%;
+            }
+
+            :host([is-full-view][has-editor-ui]) .chat-wrapper {
+              height: 88%;
+            }
+
+            :host([is-full-view]) .main-wrapper {
+              height: 94%;
+            }
+
+            :host([is-full-view][developer-mode]) .main-wrapper {
+              height: 89%;
+            }
+          }
         }
 
 
