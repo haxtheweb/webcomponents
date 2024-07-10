@@ -248,7 +248,7 @@ class ChatAgent extends DDD {
    * @description start sequence for Merlin
    */
   startAI() {
-    this.handleMessage("merlin", "Hello! My name is Merlin. How can I assist you today?");
+    this.handleMessage("merlin", "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?");
     this.currentSuggestions = [
       {
         suggestion: "Who are you?",
