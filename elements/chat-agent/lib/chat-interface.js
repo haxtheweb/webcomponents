@@ -140,6 +140,7 @@ class ChatInterface extends DDD {
           height: 100%;
         }
 
+        /* TODO test the media queries for quality assurance, and test without editor ui & without developer mode */
         /* This should coveer a lot of horizontal monitors */
         @media only screen and (min-width: 1081px) {
           @media only screen and (min-height: 1201px) {
@@ -160,7 +161,7 @@ class ChatInterface extends DDD {
             }
           }
 
-          @media only screen and (min-height: 999px) and (max-height: 1200px) {
+          @media only screen and (max-height: 1200px) and (min-height: 940px) {
             :host([is-full-view]) .chat-wrapper {
               height: 96%;
             }
@@ -177,7 +178,80 @@ class ChatInterface extends DDD {
               height: 96%;
             }
           }
+
+          @media only screen and (max-height: 939px) and (min-height: 880px) {
+            :host([is-full-view]) .chat-wrapper {
+              height: 91%;
+            }
+
+            :host([is-full-view][has-editor-ui]) .chat-wrapper {
+              height: 91%;
+            }
+
+            :host([is-full-view]) .main-wrapper {
+              height: 99%;
+            }
+
+            :host([is-full-view][developer-mode]) .main-wrapper {
+              height: 95%;
+            }
+          }
+
+          @media only screen and (max-height: 879px) and (min-height: 780px) {
+            :host([is-full-view]) .chat-wrapper {
+              height: 90%;
+            }
+
+            :host([is-full-view][has-editor-ui]) .chat-wrapper {
+              height: 90%;
+            }
+
+            :host([is-full-view]) .main-wrapper {
+              height: 97%;
+            }
+
+            :host([is-full-view][developer-mode]) .main-wrapper {
+              height: 93%;
+            }
+          }
+
+          @media only screen and (max-height: 779px) and (min-height: 752px) {
+            :host([is-full-view]) .chat-wrapper {
+              height: 89%;
+            }
+
+            :host([is-full-view][has-editor-ui]) .chat-wrapper {
+              height: 89%;
+            }
+
+            :host([is-full-view]) .main-wrapper {
+              height: 96%;
+            }
+
+            :host([is-full-view][developer-mode]) .main-wrapper {
+              height: 92%;
+            }
+          }
+
+          @media only screen and (max-height: 751px) {
+            :host([is-full-view]) .chat-wrapper {
+              height: 88%;
+            }
+
+            :host([is-full-view][has-editor-ui]) .chat-wrapper {
+              height: 88%;
+            }
+
+            :host([is-full-view]) .main-wrapper {
+              height: 95%;
+            }
+
+            :host([is-full-view][developer-mode]) .main-wrapper {
+              height: 91%;
+            }
+          }
         }
+
 
         /* This should cover a lot of vertical monitors */
         @media only screen and (max-width: 1080px) {
