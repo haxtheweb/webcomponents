@@ -98,7 +98,7 @@ class ChatAgent extends DDD {
     this.userIndex = 0; // index of user messages
     
     this.userTypeWriterSpeed = 0;
-    this.merlinTypeWriterSpeed = 8;
+    this.merlinTypeWriterSpeed = 4;
     
     // suggestion
     this.currentSuggestions = [];
@@ -178,6 +178,9 @@ class ChatAgent extends DDD {
           right: var(--ddd-spacing-0);
           gap: var(--ddd-spacing-0);
           width: 25%;
+          @media only screen and (min-height: 1000px) {
+            width: 35%;
+          }
         }
 
         :host([is-full-view]:host([is-interface-hidden])) .chat-agent-wrapper {

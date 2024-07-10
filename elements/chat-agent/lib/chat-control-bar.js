@@ -126,6 +126,8 @@ class ChatControlBar extends DDD {
    */
   handleDataCollectionButton() {
     ChatAgentModalStore.dataCollectionEnabled = !ChatAgentModalStore.dataCollectionEnabled;
+
+    this.dataCollectionEnabled ? alert('Data will not be collected to train our AI models') : alert('Data will be collected to train our AI models');
   }
 
   /**
