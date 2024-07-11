@@ -41,12 +41,13 @@ export class MarkTheWords extends QuestionElement {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has("statement")) {
+    if (changedProperties.has("statement") || changedProperties.has('answers')) {
       this.rebuildWordList(this.statement);
     }
   }
 
   rebuildWordList(statement) {
+    this.wordList = [];
     const wordList = statement.trim().split(/\s+/g);
     for (var i in wordList) {
       let answerMatch = this.displayedAnswers.find(
@@ -191,7 +192,11 @@ export class MarkTheWords extends QuestionElement {
     }
     super.resetAnswer(e);
   }
-
+  // overload so we can process wordList for this
+  // major thing this provides is disabling answer checking until we've made a selection
+  guessCount() {
+    return this.wordList.filter(word => word.selected).length;
+  }
   renderInteraction() {
     return html`<div class="text-wrap">
       <div class="text">
@@ -218,7 +223,7 @@ export class MarkTheWords extends QuestionElement {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      Select the words that match the criteria of the question. Then select
+      <strong>Select all</strong> the words that apply to the question. Then press
       <strong>${this.t.checkAnswer}</strong> to test your answers. You will get
       feedback just below here indicating correctness of your answer.
     </p>`;
@@ -227,7 +232,7 @@ export class MarkTheWords extends QuestionElement {
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
-      ${this.renderLegend()}
+    ${!this.edit ? html`
       ${this.showAnswer &&
       (this.numberCorrect !==
         this.displayedAnswers.filter((answer) => answer.correct).length ||
@@ -276,7 +281,7 @@ export class MarkTheWords extends QuestionElement {
                   </dl>
                 `
               : nothing}
-            ${this.hasFeedbackIncorrect
+            ${this.querySelector('[slot="feedbackIncorrect"]')
               ? html`<slot name="feedbackIncorrect"></slot>`
               : ``}`
         : ``}
@@ -284,11 +289,11 @@ export class MarkTheWords extends QuestionElement {
       this.numberCorrect ===
         this.displayedAnswers.filter((answer) => answer.correct).length
         ? html` <p class="feedback">${this.correctText}</p>
-            ${this.hasFeedbackCorrect
+            ${this.querySelector('[slot="feedbackCorrect"]')
               ? html`<slot name="feedbackCorrect"></slot>`
               : ``}`
         : ``}
-      ${this.hasHint &&
+      ${this.querySelector('[slot="hint"]') &&
       this.showAnswer &&
       this.numberCorrect !==
         this.displayedAnswers.filter((answer) => answer.correct).length
@@ -299,7 +304,7 @@ export class MarkTheWords extends QuestionElement {
             </div>
           `
         : ``}
-      ${this.hasEvidence &&
+      ${this.querySelector('[slot="evidence"]') &&
       this.showAnswer &&
       this.numberCorrect ===
         this.displayedAnswers.filter((answer) => answer.correct).length
@@ -316,7 +321,7 @@ export class MarkTheWords extends QuestionElement {
         label="${this.t.tryAgain}"
       >
       </simple-toolbar-button>
-    `;
+    ` : this.renderEditModeFeedbackAreas()}`;
   }
 
   // HAX specific callback

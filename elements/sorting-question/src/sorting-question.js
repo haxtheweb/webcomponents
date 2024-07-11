@@ -32,13 +32,6 @@ export class SortingQuestion extends QuestionElement {
     // inputs which will show up in answers but sorting question is a bit odd
     this.randomize = true;
     this.numberCorrect = 0;
-    this.hasHint = this.querySelector('[slot="hint"]');
-    this.hasContent = this.querySelector('[slot="content"]');
-    this.hasFeedbackCorrect = this.querySelector('[slot="feedbackCorrect"]');
-    this.hasFeedbackIncorrect = this.querySelector(
-      '[slot="feedbackIncorrect"]',
-    );
-    this.hasEvidence = this.querySelector('[slot="evidence"]');
     this.correctText = "That is correct, Great job!";
     this.correctIcon = "icons:thumb-up";
     this.incorrectIcon = "icons:thumb-down";
@@ -341,13 +334,13 @@ export class SortingQuestion extends QuestionElement {
             <details
               tabindex="${this.disabled ? "-1" : ""}"
               ?disabled="${this.disabled}"
-              ?open="${!this.hasContent}"
+              ?open="${!this.querySelector('[slot="content"]')}"
               id="directions"
             >
               <summary>Directions</summary>
               <div class="container">${this.renderDirections()}</div>
             </details>
-            ${this.hasContent
+            ${this.querySelector('[slot="content"]')
               ? html` <details
                   tabindex="${this.disabled ? "-1" : ""}"
                   ?disabled="${this.disabled}"
@@ -394,24 +387,22 @@ export class SortingQuestion extends QuestionElement {
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
-      ${this.renderLegend()}
       ${this.showAnswer && this.numberCorrect !== this.answers.length
         ? html` <p class="feedback">
-              ${this.t.numCorrectLeft}
-              ${this.numberCorrect} out of ${this.answers.length}
-              ${this.t.numCorrectRight}
+              ${this.t.numCorrectLeft} ${this.numberCorrect} out of
+              ${this.answers.length} ${this.t.numCorrectRight}
             </p>
-            ${this.hasFeedbackIncorrect
+            ${this.querySelector('[slot="feedbackIncorrect"]')
               ? html`<slot name="feedbackIncorrect"></slot>`
               : ``}`
         : ``}
       ${this.showAnswer && this.numberCorrect === this.answers.length
         ? html` <p class="feedback">${this.correctText}</p>
-            ${this.hasFeedbackCorrect
+            ${this.querySelector('[slot="feedbackCorrect"]')
               ? html`<slot name="feedbackCorrect"></slot>`
               : ``}`
         : ``}
-      ${this.hasHint &&
+      ${this.querySelector('[slot="hint"]') &&
       this.showAnswer &&
       this.numberCorrect !== this.answers.length
         ? html`
@@ -421,7 +412,7 @@ export class SortingQuestion extends QuestionElement {
             </div>
           `
         : ``}
-      ${this.hasEvidence &&
+      ${this.querySelector('[slot="evidence"]') &&
       this.showAnswer &&
       this.numberCorrect === this.answers.length
         ? html`
@@ -449,16 +440,6 @@ export class SortingQuestion extends QuestionElement {
   }
 
   /**
-   * Implements haxHooks to tie into life-cycle if hax exists.
-   */
-  haxHooks() {
-    return {
-      ...super.haxHooks,
-      inlineContextMenu: "haxinlineContextMenu",
-    };
-  }
-
-  /**
    * add buttons when it is in context
    */
   haxinlineContextMenu(ceMenu) {
@@ -472,6 +453,11 @@ export class SortingQuestion extends QuestionElement {
         icon: "icons:remove",
         callback: "haxClickInlineRemove",
         label: "Remove answer",
+      },
+      {
+        icon: "lrn:edit",
+        callback: "haxToggleEdit",
+        label: "Toggle editing feedback blocks",
       },
     ];
   }

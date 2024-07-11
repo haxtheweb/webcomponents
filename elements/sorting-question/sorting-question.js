@@ -397,9 +397,8 @@ export class SortingQuestion extends QuestionElement {
       ${this.renderLegend()}
       ${this.showAnswer && this.numberCorrect !== this.answers.length
         ? html` <p class="feedback">
-              ${this.t.numCorrectLeft}
-              ${this.numberCorrect} out of ${this.answers.length}
-              ${this.t.numCorrectRight}
+              ${this.t.numCorrectLeft} ${this.numberCorrect} out of
+              ${this.answers.length} ${this.t.numCorrectRight}
             </p>
             ${this.hasFeedbackIncorrect
               ? html`<slot name="feedbackIncorrect"></slot>`
@@ -449,16 +448,6 @@ export class SortingQuestion extends QuestionElement {
   }
 
   /**
-   * Implements haxHooks to tie into life-cycle if hax exists.
-   */
-  haxHooks() {
-    return {
-      ...super.haxHooks,
-      inlineContextMenu: "haxinlineContextMenu",
-    };
-  }
-
-  /**
    * add buttons when it is in context
    */
   haxinlineContextMenu(ceMenu) {
@@ -472,6 +461,11 @@ export class SortingQuestion extends QuestionElement {
         icon: "icons:remove",
         callback: "haxClickInlineRemove",
         label: "Remove answer",
+      },
+      {
+        icon: "lrn:edit",
+        callback: "haxToggleEdit",
+        label: "Toggle editing feedback blocks",
       },
     ];
   }

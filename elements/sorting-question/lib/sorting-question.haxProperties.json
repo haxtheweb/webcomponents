@@ -11,7 +11,14 @@
     "description": "Sort items in the correct order",
     "icon": "credit-card",
     "color": "blue",
-    "tags": ["Instructional", "self check", "sorting", "question", "quiz", "assessment"]
+    "tags": [
+      "Instructional",
+      "self check",
+      "sorting",
+      "question",
+      "quiz",
+      "assessment"
+    ]
   },
   "settings": {
     "configure": [

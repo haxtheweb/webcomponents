@@ -42,6 +42,7 @@ export class QuestionElement extends SchemaBehaviors(
       checkAnswer: "Check answer",
       tryAgain: "Try again",
     };
+    this.edit = false;
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -61,6 +62,17 @@ export class QuestionElement extends SchemaBehaviors(
             },
           }),
         );
+      }
+      if (propName === "edit" && this.edit && this._haxstate) {
+        // ensure we have empty slotted items for these if we're going to need them
+        ['feedbackIncorrect', 'feedbackCorrect', 'content', 'hint', 'evidence'].map((slotName) => {
+          if (this.querySelector(`[slot="${slotName}"]`) === null) {
+            let p = globalThis.document.createElement('p');
+            p.setAttribute('slot', slotName);
+            this.appendChild(p);
+          }
+        })
+        
       }
       if (propName == "answers" && this.answers && this.answers.length > 0) {
         this.displayedAnswers = [
@@ -155,8 +167,7 @@ export class QuestionElement extends SchemaBehaviors(
       globalThis.document.startViewTransition(() => {
         this.checkAnswerCallback();
       });
-    }
-    else {
+    } else {
       this.checkAnswerCallback();
     }
   }
@@ -272,13 +283,9 @@ export class QuestionElement extends SchemaBehaviors(
   static get properties() {
     return {
       ...super.properties,
+      edit: { type: Boolean, reflect: true },
       // show the solution feedback to the user
       showAnswer: { type: Boolean, reflect: true, attribute: "show-answer" },
-      hasHint: { type: Boolean },
-      hasContent: { type: Boolean },
-      hasFeedbackIncorrect: { type: Boolean },
-      hasFeedbackCorrect: { type: Boolean },
-      hasEvidence: { type: Boolean },
       media: { type: String },
       // support for max attempts, default is unlimited
       maxAttempts: { type: Number, reflect: true, attribute: "max-attempts" },
@@ -419,7 +426,10 @@ export class QuestionElement extends SchemaBehaviors(
         :host simple-fields-field:focus-within,
         :host simple-fields-field:active {
           cursor: pointer;
-          background-color: var(--ddd-theme-accent, var(--simple-colors-default-theme-accent-3));
+          background-color: var(
+            --ddd-theme-accent,
+            var(--simple-colors-default-theme-accent-3)
+          );
           color: var(--simple-colors-default-theme-accent-12);
           box-shadow: var(--ddd-boxShadow-sm);
           border-color: black;
@@ -473,6 +483,11 @@ export class QuestionElement extends SchemaBehaviors(
         #check {
           margin-right: var(--ddd-spacing-4);
         }
+        .details-icon {
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+          margin-right: var(--ddd-spacing-2);
+        }
         simple-fields-field {
           view-transition-name: field;
           border-radius: var(--ddd-radius-xs);
@@ -517,7 +532,7 @@ export class QuestionElement extends SchemaBehaviors(
           );
         }
         details[open] > summary {
-        border: var(--ddd-border-sm);
+          border: var(--ddd-border-sm);
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-theme-default-potentialMidnight)
@@ -607,6 +622,28 @@ export class QuestionElement extends SchemaBehaviors(
           outline: 3px dotted var(--ddd-theme-default-wonderPurple);
           outline-offset: -3px;
         }
+        /** edit mode, hax, etc */
+        :host([edit]) .edit-wrapper {
+          border: 2px dashed #999999;
+          box-sizing: border-box;
+          padding: 16px;
+          background-color: #f5f5f5;
+        }
+        :host([edit]) .edit-wrapper::before {
+          content: "Feedback edit mode";
+          display: block;
+          font-size: 16px;
+        }
+        :host([edit]) .edit-wrapper ::slotted(*) {
+          display: block;
+          width: 100%;
+          padding: 16px;
+        }
+        :host([edit]) .edit-wrapper ::slotted(*)::before {
+          content: attr(slot);
+          display: block;
+          font-size: 16px;
+        }
       `,
     ];
   }
@@ -676,7 +713,7 @@ export class QuestionElement extends SchemaBehaviors(
    */
   haxpreProcessInsertContent(detail, activeNode) {
     // ensure we dont accidently have the answer displayed!
-    if (detail.properties.answers) {
+    if (detail.properties.answers && detail.properties.answers.length > 0 && detail.properties.answers.map) {
       detail.properties.answers = detail.properties.answers.map(function (val) {
         if (val.userGuess) {
           delete val.userGuess;
@@ -707,24 +744,28 @@ export class QuestionElement extends SchemaBehaviors(
             ${!this.hideButtons ? this.renderButtons() : nothing}
           </div>
           <div slot="col-2">
-            <details ?open="${!this.hasContent}" id="directions">
-              <summary>Directions</summary>
+            ${this.querySelector('[slot="content"]') && !this.edit
+            ? html` <details ?open="${!this.showAnswer}" id="related">
+                <summary><simple-icon-lite class="details-icon" icon="lrn:content"></simple-icon-lite>Related content</summary>
+                <div class="container">
+                  <slot name="content"></slot>
+                </div>
+              </details>`
+            : nothing}
+            <details ?open="${!this.querySelector('[slot="content"]')}" id="directions">
+              <summary><simple-icon-lite class="details-icon" icon="maps:directions"></simple-icon-lite>Directions</summary>
               <div class="container">${this.renderDirections()}</div>
             </details>
-            ${this.hasContent
-              ? html` <details ?open="${!this.showAnswer}" id="related">
-                  <summary>Related content</summary>
-                  <div class="container">
-                    <slot name="content"></slot>
-                  </div>
-                </details>`
-              : nothing}
+            <details ?open="${this.showAnswer}" id="legend">
+              <summary><simple-icon-lite class="details-icon" icon="hax:map-legend"></simple-icon-lite>Legend</summary>
+              <div class="container">${this.renderLegend()}</div>
+            </details>
             <details
               tabindex="${!this.showAnswer ? "-1" : ""}"
-              ?disabled="${!this.showAnswer}"
+              ?disabled="${!this.showAnswer && !this.edit}"
               ?open="${this.showAnswer}"
             >
-              <summary id="feedback">Feedback</summary>
+              <summary id="feedback"><simple-icon-lite class="details-icon" icon="icons:feedback"></simple-icon-lite>Feedback</summary>
               <div class="container">${this.renderFeedback()}</div>
             </details>
           </div>
@@ -747,10 +788,11 @@ export class QuestionElement extends SchemaBehaviors(
               name="${index}"
               @mousedown="${this.clickSingle}"
               @keydown="${this.clickSingle}"
-              class="tag-option ${answer && this.showAnswer && answer.userGuess ? answer.correct
-                ? "correct"
-                : "incorrect"
-              : ""}"
+              class="tag-option ${answer && this.showAnswer && answer.userGuess
+                ? answer.correct
+                  ? "correct"
+                  : "incorrect"
+                : ""}"
               .value="${answer ? answer.userGuess : ""}"
               @value-changed="${this.checkedEvent}"
               label="${answer && answer.label ? answer.label : ""}"
@@ -802,32 +844,30 @@ export class QuestionElement extends SchemaBehaviors(
   // legend so user understands color relation to correctness
   renderLegend() {
     return html`
-    <h4>Legend</h4>
-    <dl>
-      <dt class="correct">Correct</dt>
-      <dd>Answer is correct</dd>
-      <dt class="incorrect">Incorrect</dt>
-      <dd>Answer requires correction</dd>
-    </dl>`;
+      <dl>
+        <dt class="correct">Correct</dt>
+        <dd>Answer is correct</dd>
+        <dt class="incorrect">Incorrect</dt>
+        <dd>Answer requires correction</dd>
+      </dl>`;
   }
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html`
-      ${this.renderLegend()}
+    return html`${!this.edit ? html`
       ${this.showAnswer && !this.isCorrect()
         ? html` <p class="feedback">${this.incorrectText}</p>
-            ${this.hasFeedbackIncorrect
+            ${this.querySelector('[slot="feedbackIncorrect"]')
               ? html`<slot name="feedbackIncorrect"></slot>`
               : nothing}`
         : nothing}
       ${this.showAnswer && this.isCorrect()
         ? html` <p class="feedback">${this.correctText}</p>
-            ${this.hasFeedbackCorrect
+            ${this.querySelector('[slot="feedbackCorrect"]')
               ? html`<slot name="feedbackCorrect"></slot>`
               : nothing}`
         : nothing}
-      ${this.hasHint && this.showAnswer && !this.isCorrect()
+      ${this.querySelector('[slot="hint"]') && this.showAnswer && !this.isCorrect()
         ? html`
             <h4>Need a hint?</h4>
             <div>
@@ -835,7 +875,7 @@ export class QuestionElement extends SchemaBehaviors(
             </div>
           `
         : nothing}
-      ${this.hasEvidence && this.showAnswer && this.isCorrect()
+      ${this.querySelector('[slot="evidence"]') && this.showAnswer && this.isCorrect()
         ? html`
             <h4>Evidence</h4>
             <div>
@@ -849,7 +889,7 @@ export class QuestionElement extends SchemaBehaviors(
         label="${this.t.tryAgain}"
       >
       </simple-toolbar-button>
-    `;
+    ` : this.renderEditModeFeedbackAreas()}`;
   }
 
   clickSingle(e) {
@@ -947,14 +987,6 @@ export class QuestionElement extends SchemaBehaviors(
         answers.push(answer);
       }
       this.answers = answers;
-      // look for light dom slot markers
-      this.hasHint = this.querySelector('[slot="hint"]');
-      this.hasContent = this.querySelector('[slot="content"]');
-      this.hasFeedbackCorrect = this.querySelector('[slot="feedbackCorrect"]');
-      this.hasFeedbackIncorrect = this.querySelector(
-        '[slot="feedbackIncorrect"]',
-      );
-      this.hasEvidence = this.querySelector('[slot="evidence"]');
       // wipe lightdom after reading it in for data. This makes it harder for someone
       // to just inspect the document and get at the underlying data
       // remove just the inputs we found
@@ -974,6 +1006,18 @@ export class QuestionElement extends SchemaBehaviors(
     this._haxstate = value;
   }
 
+  renderEditModeFeedbackAreas() {
+    return html`
+      <div class="edit-wrapper">
+        <slot name="content"></slot>
+        <slot name="feedbackIncorrect"></slot>
+        <slot name="feedbackCorrect"></slot>
+        <slot name="hint"></slot>
+        <slot name="evidence"></slot>
+      </div>
+    `;
+  }
+
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
    */
@@ -983,6 +1027,24 @@ export class QuestionElement extends SchemaBehaviors(
       activeElementChanged: "haxactiveElementChanged",
       preProcessNodeToContent: "haxpreProcessNodeToContent",
       preProcessInsertContent: "haxpreProcessInsertContent",
+      inlineContextMenu: "haxinlineContextMenu",
     };
+  }
+
+  /**
+   * add buttons when it is in context
+   */
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "lrn:edit",
+        callback: "haxToggleEdit",
+        label: "Toggle editing feedback blocks",
+      },
+    ];
+  }
+  haxToggleEdit(e) {
+    this.edit = !this.edit;
+    return true;
   }
 }

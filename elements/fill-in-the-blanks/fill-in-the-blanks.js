@@ -115,6 +115,19 @@ class FillInTheBlanks extends MarkTheWords {
     super.resetAnswer(e);
   }
 
+  // overload so we can process wordList for this
+  // major thing this provides is disabling answer checking until we've made a selection
+  guessCount() {
+    let counter = 0;
+    for (var i in this.answers) {
+      let input = this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
+      if (input && input.value) {
+        counter++;
+      }
+    }
+    return counter;
+  }
+
   rebuildWordList(statement) {
     this.answers = [];
     this.wordList = [];
@@ -135,10 +148,16 @@ class FillInTheBlanks extends MarkTheWords {
       }
       // implies we have multiple options, 1st option is the correct answer
       else {
-        answer.answer = word.split("|")[0];
-        answer.possible = word.split("|");
-        // shuffle happens in place
-        this.shuffleArray(answer.possible);
+        // support single answer
+        if (word.split("|").length > 1) {
+          answer.answer = word.split("|")[0];
+          answer.possible = word.split("|");
+          // shuffle happens in place
+          this.shuffleArray(answer.possible);
+        }
+        else {
+          answer.answer = word;
+        }
       }
       this.answers.push(answer);
     }
@@ -179,6 +198,10 @@ class FillInTheBlanks extends MarkTheWords {
     }
   }
 
+  refreshEvent(e) {
+    this.requestUpdate();
+  }
+
   renderFillInBlankField(word) {
     const index = this.answers.findIndex((answer) => word.text === answer.text);
     if (this.answers[index].possible) {
@@ -196,6 +219,7 @@ class FillInTheBlanks extends MarkTheWords {
       ];
       return html`<simple-fields-field
         data-answer-index="${index}"
+        @value-changed="${this.refreshEvent}"
         type="select"
         .itemsList="${selectItems}"
         ?disabled="${this.showAnswer}"
@@ -207,6 +231,7 @@ class FillInTheBlanks extends MarkTheWords {
     } else {
       return html` <simple-fields-field
         type="textfield"
+        @value-changed="${this.refreshEvent}"
         data-answer-index="${index}"
         ?disabled="${this.showAnswer}"
         class="tag-option ${this.showAnswer ? this.answers[index].userGuessCorrect

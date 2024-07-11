@@ -49,10 +49,11 @@ class ShortAnswerQuestion extends QuestionElement {
       <simple-fields-field
         type="textfield"
         ?disabled="${this.disabled || this.showAnswer}"
-        class="tag-option ${this.showAnswer ? this.isCorrect()
-          ? "correct"
-          : "incorrect"
-        : ""}"
+        class="tag-option ${this.showAnswer
+          ? this.isCorrect()
+            ? "correct"
+            : "incorrect"
+          : ""}"
         property="oer:answer"
         name="0"
         @keydown="${(e) => {
@@ -88,8 +89,10 @@ class ShortAnswerQuestion extends QuestionElement {
    */
   isCorrect() {
     for (var i in this.displayedAnswers) {
-      if (this.displayedAnswers[i].label.toLowerCase() ==
-      this.shortanswer.toLowerCase()) {
+      if (
+        this.displayedAnswers[i].label.toLowerCase() ==
+        this.shortanswer.toLowerCase()
+      ) {
         return true;
       }
     }
