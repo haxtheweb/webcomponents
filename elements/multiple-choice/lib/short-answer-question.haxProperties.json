@@ -71,7 +71,10 @@
       "displayed-answers",
       "colors",
       "answers",
-      "shortanswer"
+      "shortanswer",
+      "show-answer",
+      "t",
+      "attempts"
     ]
   },
   "demoSchema": [

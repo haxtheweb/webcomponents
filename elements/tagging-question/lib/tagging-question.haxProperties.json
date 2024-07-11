@@ -73,7 +73,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": []
+    "unsetAttributes": ["word-list", "match-answers", "selected-answers", "attempts", "answers", "displayed-answers", "t", "show-answer"]
   },
   "documentation": {
     "howTo": null,

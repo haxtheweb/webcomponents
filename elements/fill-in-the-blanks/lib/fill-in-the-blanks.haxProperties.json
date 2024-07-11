@@ -59,7 +59,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["wordList", "numberCorrect", "numberGuessed"]
+    "unsetAttributes": ["word-list", "number-correct", "number-guessed", "attempts", "answers", "displayed-answers", "t", "show-answer"]
   },
   "documentation": {
     "howTo": null,

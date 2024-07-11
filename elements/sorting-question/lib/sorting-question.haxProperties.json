@@ -66,6 +66,13 @@
       }
     ]
   },
+  "saveOptions": {
+    "unsetAttributes": ["number-correct", "attempts", "answers", "displayed-answers", "t", "show-answer"]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
   "demoSchema": [
     {
       "tag": "sorting-question",

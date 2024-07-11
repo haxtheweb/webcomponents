@@ -95,7 +95,9 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers"]
+    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers", "show-answer",
+    "t",
+    "attempts"]
   },
   "demoSchema": [
     {
