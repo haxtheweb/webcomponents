@@ -170,7 +170,7 @@ class ChatAgent extends DDD {
           position: fixed;
           bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          width: 40%; /* Switch to 30% when working with hax environment */
+          width: 30%; /* Switch to 30% when working with hax environment */
         }
 
         :host([is-full-view]) .chat-agent-wrapper {

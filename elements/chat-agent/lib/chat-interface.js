@@ -161,7 +161,25 @@ class ChatInterface extends DDD {
             }
           }
 
-          @media only screen and (max-height: 1200px) and (min-height: 940px) {
+          @media only screen and (max-height: 1200px) and (min-height: 1001px) {
+            :host([is-full-view]) .chat-wrapper {
+              height: 96%;
+            }
+
+            :host([is-full-view][has-editor-ui]) .chat-wrapper {
+              height: 91.5%;
+            }
+
+            :host([is-full-view]) .main-wrapper {
+              height: 102%;
+            }
+
+            :host([is-full-view][developer-mode]) .main-wrapper {
+              height: 94%;
+            }
+          }
+
+          @media only screen and (max-height: 1001px) and (min-height: 940px) { /* Modify more for even bigger screen sizes -_- */
             :host([is-full-view]) .chat-wrapper {
               height: 96%;
             }
@@ -454,7 +472,7 @@ class ChatInterface extends DDD {
             }
           }
 
-          @media only screen and (max-height: 1099px) and (min-height: 1000px) {
+          @media only screen and (max-height: 1099px) and (min-height: 1050px) {
             :host([is-full-view]) .chat-wrapper {
               height: 96%;
             }
@@ -469,6 +487,24 @@ class ChatInterface extends DDD {
 
             :host([is-full-view][developer-mode]) .main-wrapper {
               height: 97%;
+            }
+          }
+
+          @media only screen and (max-height: 1049px) and (min-height: 1000px) {
+            :host([is-full-view]) .chat-wrapper {
+              height: 96%;
+            }
+
+            :host([is-full-view][has-editor-ui]) .chat-wrapper {
+              height: 92%;
+            }
+
+            :host([is-full-view]) .main-wrapper {
+              height: 99.5%;
+            }
+
+            :host([is-full-view][developer-mode]) .main-wrapper {
+              height: 94%;
             }
           }
 
