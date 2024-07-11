@@ -175,6 +175,15 @@ class FillInTheBlanks extends MarkTheWords {
   constructor() {
     super();
     this.question = "Fill in the blanks";
+    this.isMarkTheWords = false;
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // THIS NEEDS TO NOT REACT TO ANSWERS AS ANSWERS ARE BUILT FROM STATEMENTS
+    if (this.shadowRoot && this.statement && (changedProperties.has("statement"))) {
+      this.rebuildWordList(this.statement);
+    }
   }
 
   renderInteraction() {

@@ -22,6 +22,7 @@ export class MarkTheWords extends QuestionElement {
     this.statement = "";
     this.numberCorrect = 0;
     this.numberGuessed = 0;
+    this.isMarkTheWords = true;
   }
 
   getGuess() {
@@ -41,7 +42,8 @@ export class MarkTheWords extends QuestionElement {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has("statement") || changedProperties.has('answers')) {
+    // THIS NEEDS A TRAP TO ONLY REACT TO ITSELF OR ELSE THINGS THAT DON'T HAVE ANSWERS INFINITE LOOP
+    if (this.isMarkTheWords && this.shadowRoot && this.statement && (changedProperties.has("statement") || changedProperties.has('answers'))) {
       this.rebuildWordList(this.statement);
     }
   }
