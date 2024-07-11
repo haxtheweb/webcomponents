@@ -53,7 +53,7 @@ export class MarkTheWords extends QuestionElement {
     const wordList = statement.trim().split(/\s+/g);
     for (var i in wordList) {
       let answerMatch = this.displayedAnswers.find(
-        (answer) => wordList[i].toLowerCase() === answer.label.toLowerCase(),
+        (answer) => answer.label && wordList[i].toLowerCase() === answer.label.toLowerCase(),
       );
       this.wordList.push({
         text: wordList[i],

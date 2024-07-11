@@ -442,6 +442,9 @@ export class QuestionElement extends SchemaBehaviors(
           view-transition-name: grid-shift;
           transition: 0.3s ease-in-out height;
         }
+        details {
+          max-width: unset;
+        }
         details[open] {
           view-transition-name: details-open;
           transition: 0.3s ease-in-out height;
