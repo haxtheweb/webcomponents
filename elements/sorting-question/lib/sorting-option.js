@@ -63,8 +63,7 @@ export class SortingOption extends DDDSuper(LitElement) {
       globalThis.document.startViewTransition(() => {
         this.dragStartCallback(e);
       });
-    }
-    else {
+    } else {
       this.dragStartCallback(e);
     }
   }
@@ -131,8 +130,7 @@ export class SortingOption extends DDDSuper(LitElement) {
       globalThis.document.startViewTransition(() => {
         this.arrowSortCallback(target);
       });
-    }
-    else {
+    } else {
       this.arrowSortCallback(target);
     }
   }
@@ -186,7 +184,10 @@ export class SortingOption extends DDDSuper(LitElement) {
           transition: all 0.3s ease-in-out 0s;
           border: var(--ddd-border-lg);
           border-radius: var(--ddd-radius-xs);
-          background-color: var(--ddd-theme-accent, var(--simple-colors-default-theme-accent-3));
+          background-color: var(
+            --ddd-theme-accent,
+            var(--simple-colors-default-theme-accent-3)
+          );
           color: var(--simple-colors-default-theme-accent-12);
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-xs);
@@ -205,7 +206,6 @@ export class SortingOption extends DDDSuper(LitElement) {
           border: 4px solid var(--ddd-theme-default-opportunityGreen);
           color: black;
         }
-
 
         :host([incorrect]) {
           border: 4px dotted var(--ddd-theme-default-wonderPurple);
@@ -262,7 +262,10 @@ export class SortingOption extends DDDSuper(LitElement) {
         }
         :host(:focus-within:not([disabled])),
         :host(:hover:not([disabled])) {
-          background-color: var(--ddd-theme-accent, var(--simple-colors-default-theme-accent-3));
+          background-color: var(
+            --ddd-theme-accent,
+            var(--simple-colors-default-theme-accent-3)
+          );
           color: var(--simple-colors-default-theme-accent-12);
           box-shadow: var(--ddd-boxShadow-sm);
           border-color: black;

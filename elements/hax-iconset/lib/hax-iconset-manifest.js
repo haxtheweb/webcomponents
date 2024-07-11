@@ -163,6 +163,7 @@ export const HaxIconsetManifest = [
       "lesson",
       "loading",
       "map",
+      "map-legend",
       "math",
       "meme",
       "menu-open",

@@ -1,11 +1,15 @@
 {
+  "api": "1",
   "type": "grid",
-  "canScale": false,
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
   "designSystem": {
     "primary": true,
     "accent": true
   },
-  "canEditSource": true,
   "gizmo": {
     "title": "Mark the words",
     "description": "Identify concepts via words by clicking within a body of text.",
@@ -30,6 +34,44 @@
         "title": "Question",
         "description": "Question for users to respond to.",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "statement",
+        "title": "Statement",
+        "description": "Statement that will be converted into the mark the words interaction.",
+        "inputMethod": "textarea"
+      },
+      {
+        "property": "answers",
+        "title": "Answers",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "properties": [
+          {
+            "property": "correct",
+            "title": "Correct",
+            "description": "Is this correct",
+            "inputMethod": "boolean"
+          },
+          {
+            "property": "label",
+            "title": "Answer",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "selectedFeedback",
+            "title": "Feedback if selected",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "unselectedFeedback",
+            "title": "Feedback if NOT selected",
+            "inputMethod": "textfield",
+            "required": true
+          }
+        ]
       }
     ],
     "advanced": [],
@@ -57,14 +99,18 @@
   "saveOptions": {
     "unsetAttributes": ["wordList", "numberCorrect", "numberGuessed"]
   },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
   "demoSchema": [
     {
       "tag": "mark-the-words",
       "properties": {
         "question": "Select all of the contractions",
-        "answers": "it'll"
+        "statement": "I have not been to the farm-house, however; it'll be fun to attend!"
       },
-      "content": "<p>It'll be a great day at the farm and you should come too..</p>"
+      "content": "<input correct value=\"it'll\" />"
     }
   ]
 }

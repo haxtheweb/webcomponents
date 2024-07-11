@@ -27,15 +27,6 @@ class MultipleChoice extends QuestionElement {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }
-  /**
-   * Implements haxHooks to tie into life-cycle if hax exists.
-   */
-  haxHooks() {
-    return {
-      ...super.haxHooks,
-      inlineContextMenu: "haxinlineContextMenu",
-    };
-  }
 
   /**
    * add buttons when it is in context
@@ -51,6 +42,11 @@ class MultipleChoice extends QuestionElement {
         icon: "icons:remove",
         callback: "haxClickInlineRemove",
         label: "Remove answer",
+      },
+      {
+        icon: "lrn:edit",
+        callback: "haxToggleEdit",
+        label: "Toggle editing feedback blocks",
       },
     ];
   }

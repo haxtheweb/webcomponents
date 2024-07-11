@@ -1,11 +1,15 @@
 {
   "api": "1",
-  "type": "element",
+  "type": "grid",
   "editingElement": "core",
   "hideDefaultSettings": false,
   "canScale": true,
   "canEditSource": true,
   "contentEditable": false,
+  "designSystem": {
+    "primary": true,
+    "accent": true
+  },
   "gizmo": {
     "title": "Fill in the blanks",
     "description": "",
@@ -18,12 +22,44 @@
     }
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question for users to respond to.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "statement",
+        "title": "Statement",
+        "description": "Statement that will be converted into the mark the words interaction.",
+        "inputMethod": "textarea"
+      }
+    ],
     "advanced": [],
-    "developer": []
+    "developer": [
+      {
+        "property": "correctText",
+        "title": "Correct feedback",
+        "description": "Feedback when they get it right",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "incorrectText",
+        "title": "Incorrect feedback",
+        "description": "Feedback when they get it wrong",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      }
+    ]
   },
   "saveOptions": {
-    "unsetAttributes": []
+    "unsetAttributes": ["wordList", "numberCorrect", "numberGuessed"]
   },
   "documentation": {
     "howTo": null,
@@ -33,7 +69,10 @@
     {
       "tag": "fill-in-the-blanks",
       "content": "",
-      "properties": {}
+      "properties": {
+        "question": "Complete this sentence",
+        "statement": "[hax] is really [good~great] at authoring [content|kittens|kites|moons] which is nice.."
+      }
     }
   ]
 }
