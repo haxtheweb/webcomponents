@@ -4,8 +4,8 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { html, css } from "lit";
 import { autorun, toJS, } from "mobx";
+import { html, css } from "lit";
 
 class ChatInterface extends DDD {
 

@@ -5,8 +5,8 @@
 
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { html, css } from "lit";
 import { autorun, toJS, } from "mobx";
+import { html, css } from "lit";
 
 class ChatDeveloperPanel extends DDD {
 
@@ -88,7 +88,6 @@ class ChatDeveloperPanel extends DDD {
     ];
   }
 
-  // TODO swap buttons for simple-cta, ensures uniformity across browsers
   render() {
     return html`
       <div class="chat-developer-panel-wrapper">

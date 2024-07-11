@@ -51,7 +51,6 @@ class ChatButton extends DDD {
           box-shadow: var(--ddd-boxShadow-xl);
         }
 
-        /* TODO transition CSS button moving off screen */
         :host([is-full-view]:not([is-interface-hidden])) .chat-button-wrapper {
           display: none;
         }

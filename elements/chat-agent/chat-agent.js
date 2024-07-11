@@ -17,11 +17,11 @@ import { html, css } from "lit";
 import { HAXCMSSiteEditorUI } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import {
-  observable,
-  makeObservable,
+  autorun,
   computed,
   configure,
-  autorun,
+  makeObservable,
+  observable,
   toJS,
 } from "mobx";
 configure({ enforceActions: false });
@@ -68,7 +68,6 @@ class ChatAgent extends DDD {
     this.chatLog = [];
     this.engine = "alfred";
     store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
-    store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
     this.context = "phys211"; // test with phys211
     this.isLoading = null;
     this.dataCollectionEnabled = true;
@@ -145,8 +144,6 @@ class ChatAgent extends DDD {
         this.buttonIcon = "hax:wizard-hat";
       }
     });
-
-    // TODO would like to add JS for when the user goes to refresh the page, it asks if they would like to do that. Could be used at restart as well
   }
 
   /**
@@ -205,7 +202,6 @@ class ChatAgent extends DDD {
           }
         }
 
-        /* TODO adjust all media queries for HAX environment, not demo environment */
         @media only screen and (max-width: 425px) {
           .chat-agent-wrapper {
             width: 90%;
@@ -248,7 +244,7 @@ class ChatAgent extends DDD {
    * @description start sequence for Merlin
    */
   startAI() {
-    this.handleMessage("merlin", "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?");
+    this.handleMessage("merlin", "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. Currently, I can only answer questions related to physics. How can I assist you today?");
     this.currentSuggestions = [
       {
         suggestion: "Who are you?",
@@ -395,10 +391,11 @@ class ChatAgent extends DDD {
           base = globalThis.document.querySelector("base").href;
         }
 
-        // TODO: Add support for data collection toggle
+        // TODO: Add support for data collection toggle when possible through API
         const params = {
           site: {
             file: "https://haxtheweb.org/site.json",
+            // file: "https://ai.hax.cloud/api/askSuggest";
           },
           type: "site",
           question: prompt,
@@ -413,7 +410,7 @@ class ChatAgent extends DDD {
             this.answers = [d.data.answers];
             this.developerModeEnabled ? console.info(this.answers) : null;
             this.question = d.data.question;
-            this.currentSuggestions = []; // TODO add support for AI based suggestiongs
+            this.currentSuggestions = []; // TODO add support for AI based suggestions
           }
 
           this.isLoading = false;

@@ -4,8 +4,8 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { html, css } from "lit";
 import { autorun, toJS, } from "mobx";
+import { html, css } from "lit";
 
 class ChatControlBar extends DDD {
 
@@ -127,7 +127,7 @@ class ChatControlBar extends DDD {
   handleDataCollectionButton() {
     ChatAgentModalStore.dataCollectionEnabled = !ChatAgentModalStore.dataCollectionEnabled;
 
-    this.dataCollectionEnabled ? alert('Data will not be collected to train our AI models') : alert('Data will be collected to train our AI models');
+    this.dataCollectionEnabled ? alert('Your conversations will be used to train our AI models') : alert('Your conversations will not be used to train our AI models');
   }
 
   /**

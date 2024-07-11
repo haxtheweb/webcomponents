@@ -2,10 +2,10 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatAgent, ChatAgentModalStore } from "../chat-agent.js";
+import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { html, css } from "lit";
 import { autorun, toJS, } from "mobx";
+import { html, css } from "lit";
 
 class ChatInput extends DDD {
 
@@ -20,12 +20,14 @@ class ChatInput extends DDD {
     this.messageIndex = null;
     this.userIndex = null;
     this.previousMessageIndex = null;
+    this.userName = null;
 
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
-      this.previousMessageIndex = toJS(this.messageIndex);
+      this.previousMessageIndex = toJS(this.messageIndex - 1);
+      this.userName = toJS(ChatAgentModalStore.userName);
     })
   }
 
@@ -92,11 +94,12 @@ class ChatInput extends DDD {
   }
   
   /**
-   * @description - handles key presses enter
+   * @description - handles key presses
    * @param {event} e - event
    */
   handleKeyPress(e) {
     let textArea = this.shadowRoot.querySelector("#user-input");
+    // this.previousMessageIndex = this.messageIndex - 1;
     
     switch (e.key) {
       case "Enter":
@@ -104,21 +107,33 @@ class ChatInput extends DDD {
         e.preventDefault();
         this.handleSendButton();
         break;
-      case "ArrowUp":
-        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`) : null;
-        if (this.previousMessageIndex === this.messageIndex) {
-          ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Message to display: ${this.chatLog[this.previousMessageIndex].message}`) : null;
-          textArea.value = this.chatLog[this.previousMessageIndex].message;
-          this.requestUpdate();
-        }
 
-        // TODO steps to finish this
-        // * set up while loop for while previousMessageIndex.author === merlin {previousMessageIndex--}
-        // * set textArea.value = chatLog[previousMessageIndex].message
-        break;
-      case "ArrowDown":
-        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Arrow Down pressed.') : null;
+      case "ArrowUp": // TODO finish this, careful, it's fragile
+        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`) : null;
         e.preventDefault();
+        if (this.previousMessageIndex > 0) {
+          while (this.chatLog[this.previousMessageIndex].author !== this.userName) {
+            this.previousMessageIndex--;
+            if (this.previousMessageIndex === 0) {
+              break;
+            }
+          }
+          textArea.value = this.chatLog[this.previousMessageIndex].message;
+        }
+        break;
+
+      case "ArrowDown":
+        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Down pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`) : null;
+        e.preventDefault();
+        if (this.previousMessageIndex < this.messageIndex - 1) {
+          while (this.chatLog[this.previousMessageIndex].author !== this.userName) {
+            this.previousMessageIndex++;
+          }
+          textArea.value = this.chatLog[this.previousMessageIndex].message;
+          this.previousMessageIndex++;
+        } else {
+          textArea.value = "";
+        }
         break;
     }
   }
