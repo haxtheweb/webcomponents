@@ -4467,7 +4467,7 @@
     },
     {
       "name": "chat-agent",
-      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `maxlength` {`number`} - \n\n  * `developer-mode` {`boolean`} - \n\n  * `placeholder` {`string`} - \n\n  * `user-type-writer-speed` {`number`} - \n\n  * `merlin-type-writer-speed` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `promptCharacterLimit` {`number`} - \n\n  * `chatLog` {`never[]`} - \n\n  * `engine` {`string`} - \n\n  * `buttonIcon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `developerModeEnabled` {`boolean`} - \n\n  * `promptPlaceholder` {`string`} - \n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `merlinIndex` {`number`} - \n\n  * `messageIndex` {`number`} - \n\n  * `userIndex` {`number`} - \n\n  * `userTypeWriterSpeed` {`number`} - \n\n  * `merlinTypeWriterSpeed` {`number`} - \n\n  * `isSiteEditorOpen` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `maxlength` {`number`} - \n\n  * `developer-mode` {`boolean`} - \n\n  * `placeholder` {`string`} - \n\n  * `user-type-writer-speed` {`number`} - \n\n  * `merlin-type-writer-speed` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `promptCharacterLimit` {`number`} - \n\n  * `chatLog` {`never[]`} - \n\n  * `engine` {`string`} - \n\n  * `context` {`string`} - \n\n  * `isLoading` - \n\n  * `dataCollectionEnabled` {`boolean`} - \n\n  * `buttonIcon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `developerModeEnabled` {`boolean`} - \n\n  * `promptPlaceholder` {`string`} - \n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `merlinIndex` {`number`} - \n\n  * `messageIndex` {`number`} - \n\n  * `userIndex` {`number`} - \n\n  * `userTypeWriterSpeed` {`number`} - \n\n  * `merlinTypeWriterSpeed` {`number`} - \n\n  * `currentSuggestions` {`never[]`} - \n\n  * `isSiteEditorOpen` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "user-name",
@@ -4492,11 +4492,11 @@
         },
         {
           "name": "user-type-writer-speed",
-          "description": "`user-type-writer-speed` {`number`} - \n\nProperty: userTypeWriterSpeed\n\nDefault: 1"
+          "description": "`user-type-writer-speed` {`number`} - \n\nProperty: userTypeWriterSpeed\n\nDefault: 0"
         },
         {
           "name": "merlin-type-writer-speed",
-          "description": "`merlin-type-writer-speed` {`number`} - \n\nProperty: merlinTypeWriterSpeed\n\nDefault: 30"
+          "description": "`merlin-type-writer-speed` {`number`} - \n\nProperty: merlinTypeWriterSpeed\n\nDefault: 4"
         },
         {
           "name": "accent-color",
@@ -4511,12 +4511,7 @@
     },
     {
       "name": "chat-agent",
-      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\n",
-      "attributes": []
-    },
-    {
-      "name": "chat-agent",
-      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `maxlength` {`number`} - \n\n  * `developer-mode` {`boolean`} - \n\n  * `placeholder` {`string`} - \n\n  * `user-type-writer-speed` {`number`} - \n\n  * `merlin-type-writer-speed` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `promptCharacterLimit` {`number`} - \n\n  * `chatLog` {`never[]`} - \n\n  * `engine` {`string`} - \n\n  * `buttonIcon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `developerModeEnabled` {`boolean`} - \n\n  * `promptPlaceholder` {`string`} - \n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `merlinIndex` {`number`} - \n\n  * `messageIndex` {`number`} - \n\n  * `userIndex` {`number`} - \n\n  * `userTypeWriterSpeed` {`number`} - \n\n  * `merlinTypeWriterSpeed` {`number`} - \n\n  * `isSiteEditorOpen` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `maxlength` {`number`} - \n\n  * `developer-mode` {`boolean`} - \n\n  * `placeholder` {`string`} - \n\n  * `user-type-writer-speed` {`number`} - \n\n  * `merlin-type-writer-speed` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `promptCharacterLimit` {`number`} - \n\n  * `chatLog` {`never[]`} - \n\n  * `engine` {`string`} - \n\n  * `context` {`string`} - \n\n  * `isLoading` - \n\n  * `dataCollectionEnabled` {`boolean`} - \n\n  * `buttonIcon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `developerModeEnabled` {`boolean`} - \n\n  * `promptPlaceholder` {`string`} - \n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `merlinIndex` {`number`} - \n\n  * `messageIndex` {`number`} - \n\n  * `userIndex` {`number`} - \n\n  * `userTypeWriterSpeed` {`number`} - \n\n  * `merlinTypeWriterSpeed` {`number`} - \n\n  * `currentSuggestions` {`never[]`} - \n\n  * `isSiteEditorOpen` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "user-name",
@@ -4541,11 +4536,11 @@
         },
         {
           "name": "user-type-writer-speed",
-          "description": "`user-type-writer-speed` {`number`} - \n\nProperty: userTypeWriterSpeed\n\nDefault: 1"
+          "description": "`user-type-writer-speed` {`number`} - \n\nProperty: userTypeWriterSpeed\n\nDefault: 0"
         },
         {
           "name": "merlin-type-writer-speed",
-          "description": "`merlin-type-writer-speed` {`number`} - \n\nProperty: merlinTypeWriterSpeed\n\nDefault: 30"
+          "description": "`merlin-type-writer-speed` {`number`} - \n\nProperty: merlinTypeWriterSpeed\n\nDefault: 4"
         },
         {
           "name": "accent-color",
@@ -8558,7 +8553,7 @@
     },
     {
       "name": "fill-in-the-blanks",
-      "description": "`fill-in-the-blanks`\n`Fill in the blanks question`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "`fill-in-the-blanks`\n`Fill in the blanks question`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `isMarkTheWords` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "missedAnswers",
@@ -8579,31 +8574,6 @@
         {
           "name": "numberGuessed",
           "description": "`numberGuessed` {`number`} - \n\nProperty: numberGuessed\n\nDefault: 0"
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
-          "valueSet": "v"
         },
         {
           "name": "related-resource",
@@ -8659,16 +8629,13 @@
           "description": "`displayedAnswers` {`never[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -8698,7 +8665,7 @@
     },
     {
       "name": "fill-in-the-blanks",
-      "description": "`fill-in-the-blanks`\n`Fill in the blanks question`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "`fill-in-the-blanks`\n`Fill in the blanks question`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `isMarkTheWords` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "missedAnswers",
@@ -8719,31 +8686,6 @@
         {
           "name": "numberGuessed",
           "description": "`numberGuessed` {`number`} - \n\nProperty: numberGuessed\n\nDefault: 0"
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
-          "valueSet": "v"
         },
         {
           "name": "related-resource",
@@ -8799,16 +8741,13 @@
           "description": "`displayedAnswers` {`never[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -13981,170 +13920,6 @@
         {
           "name": "onupdate-button-registry",
           "description": "`update-button-registry` {`CustomEvent<this>`} - "
-        }
-      ]
-    },
-    {
-      "name": "haxcms-site-listing",
-      "description": "`haxcms-site-listing`\n`A listing of all sites being managed by this instance.`\n\nEvents:\n\n  * `jwt-login-logout` {`CustomEvent<{}>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `simple-login-camera-icon-click` {`CustomEvent<this>`} - \n\n  * `simple-login-cancel-icon-click` {`CustomEvent<this>`} - \n\n  * `jwt-login-login` {`CustomEvent<any>`} - \n\n  * `sites-listing-refresh-data` {`CustomEvent<boolean>`} - \n\n  * `resize` {`Event`} - \n\n  * `jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - \n\nAttributes:\n\n  * `__loading` {`boolean`} - \n\n  * `sites-response` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `base-path` {`string`} - Base path of where this is located.\n\n  * `hide-login` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hide-global-settings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `data-source` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `user-data` - \n\n  * `create-params` - Request params for creating a new site\n\n  * `download-params` - \n\n  * `delete-params` - \n\n  * `clone-params` - \n\n  * `publish-params` - \n\n  * `sync-params` - \n\n  * `archive-params` - \n\n  * `config-params` - \n\n  * `set-config-params` - \n\n  * `get-user-data-params` - \n\n  * `active-opertion` {`string`} - \n\n  * `selected-items` {`any[]`} - \n\n  * `active-item` - Active item that's being reviewed / has bubbled up.\n\n  * `logged-in` {`boolean`} - Logged in state\n\n  * `edit-mode` {`boolean`} - Edit mode\n\n  * `hide-camera` {`boolean`} - \n\n  * `logout-photo` {`string`} - \n\n  * `-hax-schematizer` - \n\n  * `-hax-elementizer` - \n\nProperties:\n\n  * `__loading` {`boolean`} - \n\n  * `sitesResponse` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `basePath` {`string`} - Base path of where this is located.\n\n  * `hideLogin` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hideGlobalSettings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `dataSource` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `userData` - \n\n  * `createParams` - Request params for creating a new site\n\n  * `downloadParams` - \n\n  * `deleteParams` - \n\n  * `cloneParams` - \n\n  * `publishParams` - \n\n  * `syncParams` - \n\n  * `archiveParams` - \n\n  * `configParams` - \n\n  * `setConfigParams` - \n\n  * `getUserDataParams` - \n\n  * `activeOpertion` {`string`} - \n\n  * `selectedItems` {`any[]`} - \n\n  * `activeItem` - Active item that's being reviewed / has bubbled up.\n\n  * `loggedIn` {`boolean`} - Logged in state\n\n  * `editMode` {`boolean`} - Edit mode\n\n  * `hideCamera` {`boolean`} - \n\n  * `logoutPhoto` {`string`} - \n\n  * `windowControllers` - \n\n  * `SimpleColors` - \n\n  * `HaxSchematizer` - \n\n  * `HaxElementizer` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "__loading",
-          "description": "`__loading` {`boolean`} - \n\nProperty: __loading",
-          "valueSet": "v"
-        },
-        {
-          "name": "sites-response",
-          "description": "`sites-response` - Object, JSON Outline Schema format\n\nProperty: sitesResponse"
-        },
-        {
-          "name": "method",
-          "description": "`method` {`string`} - \n\nProperty: method\n\nDefault: POST"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: My sites"
-        },
-        {
-          "name": "sites",
-          "description": "`sites` {`any[]`} - \n\nProperty: sites"
-        },
-        {
-          "name": "base-path",
-          "description": "`base-path` {`string`} - Base path of where this is located.\n\nProperty: basePath"
-        },
-        {
-          "name": "hide-login",
-          "description": "`hide-login` {`boolean`} - If we should hide the login button all the time or not\n\nProperty: hideLogin\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-global-settings",
-          "description": "`hide-global-settings` {`boolean`} - If we should hide the login button all the time or not\n\nProperty: hideGlobalSettings\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "data-source",
-          "description": "`data-source` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\nProperty: dataSource"
-        },
-        {
-          "name": "jwt",
-          "description": "`jwt` {`string`} - JSON Web token\n\nProperty: jwt"
-        },
-        {
-          "name": "user-data",
-          "description": "`user-data` - \n\nProperty: userData\n\nDefault: [object Object]"
-        },
-        {
-          "name": "create-params",
-          "description": "`create-params` - Request params for creating a new site\n\nProperty: createParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "download-params",
-          "description": "`download-params` - \n\nProperty: downloadParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "delete-params",
-          "description": "`delete-params` - \n\nProperty: deleteParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "clone-params",
-          "description": "`clone-params` - \n\nProperty: cloneParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "publish-params",
-          "description": "`publish-params` - \n\nProperty: publishParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "sync-params",
-          "description": "`sync-params` - \n\nProperty: syncParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "archive-params",
-          "description": "`archive-params` - \n\nProperty: archiveParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "config-params",
-          "description": "`config-params` - \n\nProperty: configParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "set-config-params",
-          "description": "`set-config-params` - \n\nProperty: setConfigParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "get-user-data-params",
-          "description": "`get-user-data-params` - \n\nProperty: getUserDataParams\n\nDefault: [object Object]"
-        },
-        {
-          "name": "active-opertion",
-          "description": "`active-opertion` {`string`} - \n\nProperty: activeOpertion"
-        },
-        {
-          "name": "selected-items",
-          "description": "`selected-items` {`any[]`} - \n\nProperty: selectedItems\n\nDefault: "
-        },
-        {
-          "name": "active-item",
-          "description": "`active-item` - Active item that's being reviewed / has bubbled up.\n\nProperty: activeItem"
-        },
-        {
-          "name": "logged-in",
-          "description": "`logged-in` {`boolean`} - Logged in state\n\nProperty: loggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - Edit mode\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-camera",
-          "description": "`hide-camera` {`boolean`} - \n\nProperty: hideCamera\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "logout-photo",
-          "description": "`logout-photo` {`string`} - \n\nProperty: logoutPhoto\n\nDefault: false"
-        },
-        {
-          "name": "-hax-schematizer",
-          "description": "`-hax-schematizer` - \n\nProperty: HaxSchematizer\n\nDefault: [object Object]"
-        },
-        {
-          "name": "-hax-elementizer",
-          "description": "`-hax-elementizer` - \n\nProperty: HaxElementizer\n\nDefault: [object Object]"
-        },
-        {
-          "name": "onjwt-login-logout",
-          "description": "`jwt-login-logout` {`CustomEvent<{}>`} - "
-        },
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
-        },
-        {
-          "name": "onsimple-login-camera-icon-click",
-          "description": "`simple-login-camera-icon-click` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onsimple-login-cancel-icon-click",
-          "description": "`simple-login-cancel-icon-click` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onjwt-login-login",
-          "description": "`jwt-login-login` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onsites-listing-refresh-data",
-          "description": "`sites-listing-refresh-data` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        },
-        {
-          "name": "onjwt-login-refresh-token",
-          "description": "`jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - "
         }
       ]
     },
@@ -20743,7 +20518,7 @@
     },
     {
       "name": "mark-the-words",
-      "description": "Events:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "Events:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `isMarkTheWords` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "missedAnswers",
@@ -20764,31 +20539,6 @@
         {
           "name": "numberGuessed",
           "description": "`numberGuessed` {`number`} - \n\nProperty: numberGuessed\n\nDefault: 0"
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
-          "valueSet": "v"
         },
         {
           "name": "related-resource",
@@ -20844,16 +20594,13 @@
           "description": "`displayedAnswers` {`never[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -20883,7 +20630,7 @@
     },
     {
       "name": "mark-the-words",
-      "description": "Events:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "Events:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `statement` {`string`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `isMarkTheWords` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`never[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "missedAnswers",
@@ -20904,31 +20651,6 @@
         {
           "name": "numberGuessed",
           "description": "`numberGuessed` {`number`} - \n\nProperty: numberGuessed\n\nDefault: 0"
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
-          "valueSet": "v"
         },
         {
           "name": "related-resource",
@@ -20984,16 +20706,13 @@
           "description": "`displayedAnswers` {`never[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -21023,7 +20742,7 @@
     },
     {
       "name": "matching-question",
-      "description": "`matching-question`\n`Match concepts question type`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `__activeOption` - \n\n  * `drag-enter` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `matchAnswers` {`any[]`} - \n\n  * `targetAnswers` {`any[]`} - \n\n  * `match-target` {`boolean`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `__activeOption` - \n\n  * `dragEnter` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `matchAnswers` {`any[]`} - \n\n  * `targetAnswers` {`any[]`} - \n\n  * `matchTarget` {`boolean`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "`matching-question`\n`Match concepts question type`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `__activeOption` - \n\n  * `drag-enter` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `matchAnswers` {`any[]`} - \n\n  * `match-target` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `__activeOption` - \n\n  * `dragEnter` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `matchAnswers` {`any[]`} - \n\n  * `matchTarget` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "__activeOption",
@@ -21044,37 +20763,8 @@
           "description": "`matchAnswers` {`any[]`} - \n\nProperty: matchAnswers\n\nDefault: "
         },
         {
-          "name": "targetAnswers",
-          "description": "`targetAnswers` {`any[]`} - \n\nProperty: targetAnswers\n\nDefault: "
-        },
-        {
           "name": "match-target",
           "description": "`match-target` {`boolean`} - \n\nProperty: matchTarget\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
           "valueSet": "v"
         },
         {
@@ -21131,16 +20821,13 @@
           "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -21170,7 +20857,7 @@
     },
     {
       "name": "matching-question",
-      "description": "`matching-question`\n`Match concepts question type`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `__activeOption` - \n\n  * `drag-enter` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `matchAnswers` {`any[]`} - \n\n  * `targetAnswers` {`any[]`} - \n\n  * `match-target` {`boolean`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `__activeOption` - \n\n  * `dragEnter` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `matchAnswers` {`any[]`} - \n\n  * `targetAnswers` {`any[]`} - \n\n  * `matchTarget` {`boolean`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "`matching-question`\n`Match concepts question type`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `__activeOption` - \n\n  * `drag-enter` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `matchAnswers` {`any[]`} - \n\n  * `match-target` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `__activeOption` - \n\n  * `dragEnter` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `matchAnswers` {`any[]`} - \n\n  * `matchTarget` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "__activeOption",
@@ -21191,37 +20878,8 @@
           "description": "`matchAnswers` {`any[]`} - \n\nProperty: matchAnswers\n\nDefault: "
         },
         {
-          "name": "targetAnswers",
-          "description": "`targetAnswers` {`any[]`} - \n\nProperty: targetAnswers\n\nDefault: "
-        },
-        {
           "name": "match-target",
           "description": "`match-target` {`boolean`} - \n\nProperty: matchTarget\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
           "valueSet": "v"
         },
         {
@@ -21278,16 +20936,13 @@
           "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -22390,36 +22045,11 @@
     },
     {
       "name": "short-answer-question",
-      "description": "`short-answer-question`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `shortanswer` {`string`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `shortanswer` {`string`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "`short-answer-question`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `shortanswer` {`string`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `shortanswer` {`string`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "shortanswer",
           "description": "`shortanswer` {`string`} - \n\nProperty: shortanswer\n\nDefault: null"
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
-          "valueSet": "v"
         },
         {
           "name": "related-resource",
@@ -22475,16 +22105,13 @@
           "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -22514,36 +22141,11 @@
     },
     {
       "name": "true-false-question",
-      "description": "`true-false-question`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `_tfanswer` {`string`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `_tfanswer` {`string`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "`true-false-question`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `_tfanswer` {`string`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `_tfanswer` {`string`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "_tfanswer",
           "description": "`_tfanswer` {`string`} - \n\nProperty: _tfanswer\n\nDefault: null"
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
-          "valueSet": "v"
         },
         {
           "name": "related-resource",
@@ -22599,16 +22201,13 @@
           "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -22638,33 +22237,8 @@
     },
     {
       "name": "multiple-choice",
-      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
-          "valueSet": "v"
-        },
         {
           "name": "related-resource",
           "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
@@ -22719,16 +22293,13 @@
           "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -38269,7 +37840,7 @@
     },
     {
       "name": "tagging-question",
-      "description": "`tagging-question`\n`Answer question by applying related tags`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `drag-enter` {`boolean`} - \n\n  * `drag-enter-answer` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `selectedAnswers` {`any[]`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `dragEnter` {`boolean`} - \n\n  * `dragEnterAnswer` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `selectedAnswers` {`any[]`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "`tagging-question`\n`Answer question by applying related tags`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `drag-enter` {`boolean`} - \n\n  * `drag-enter-answer` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `selectedAnswers` {`any[]`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `dragEnter` {`boolean`} - \n\n  * `dragEnterAnswer` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `selectedAnswers` {`any[]`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "drag-enter",
@@ -38289,31 +37860,6 @@
         {
           "name": "selectedAnswers",
           "description": "`selectedAnswers` {`any[]`} - \n\nProperty: selectedAnswers\n\nDefault: "
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
-          "valueSet": "v"
         },
         {
           "name": "related-resource",
@@ -38369,16 +37915,13 @@
           "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",
@@ -38408,7 +37951,7 @@
     },
     {
       "name": "tagging-question",
-      "description": "`tagging-question`\n`Answer question by applying related tags`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `drag-enter` {`boolean`} - \n\n  * `drag-enter-answer` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `selectedAnswers` {`any[]`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `dragEnter` {`boolean`} - \n\n  * `dragEnterAnswer` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `selectedAnswers` {`any[]`} - \n\n  * `hasHint` {`boolean`} - \n\n  * `hasContent` {`boolean`} - \n\n  * `hasFeedbackIncorrect` {`boolean`} - \n\n  * `hasFeedbackCorrect` {`boolean`} - \n\n  * `hasEvidence` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
+      "description": "`tagging-question`\n`Answer question by applying related tags`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `drag-enter` {`boolean`} - \n\n  * `drag-enter-answer` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `selectedAnswers` {`any[]`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\nProperties:\n\n  * `dragEnter` {`boolean`} - \n\n  * `dragEnterAnswer` {`boolean`} - \n\n  * `dragging` {`boolean`} - \n\n  * `selectedAnswers` {`any[]`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - ",
       "attributes": [
         {
           "name": "drag-enter",
@@ -38428,31 +37971,6 @@
         {
           "name": "selectedAnswers",
           "description": "`selectedAnswers` {`any[]`} - \n\nProperty: selectedAnswers\n\nDefault: "
-        },
-        {
-          "name": "hasHint",
-          "description": "`hasHint` {`boolean`} - \n\nProperty: hasHint",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasContent",
-          "description": "`hasContent` {`boolean`} - \n\nProperty: hasContent",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackIncorrect",
-          "description": "`hasFeedbackIncorrect` {`boolean`} - \n\nProperty: hasFeedbackIncorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasFeedbackCorrect",
-          "description": "`hasFeedbackCorrect` {`boolean`} - \n\nProperty: hasFeedbackCorrect",
-          "valueSet": "v"
-        },
-        {
-          "name": "hasEvidence",
-          "description": "`hasEvidence` {`boolean`} - \n\nProperty: hasEvidence",
-          "valueSet": "v"
         },
         {
           "name": "related-resource",
@@ -38508,16 +38026,13 @@
           "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
         },
         {
-          "name": "correct-text",
-          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
-        },
-        {
           "name": "quiz-name",
           "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "schemaMap",

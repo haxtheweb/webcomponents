@@ -235,10 +235,7 @@ export class MarkTheWords extends QuestionElement {
   renderFeedback() {
     return html`
     ${!this.edit ? html`
-      ${this.showAnswer &&
-      (this.numberCorrect !==
-        this.displayedAnswers.filter((answer) => answer.correct).length ||
-        this.numberCorrect !== this.numberGuessed)
+      ${this.showAnswer
         ? html` <p class="feedback">
               ${this.t.numCorrectLeft}
               ${this.numberCorrect} out of ${this.displayedAnswers.filter(

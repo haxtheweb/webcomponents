@@ -95,7 +95,7 @@
       "tag": "multiple-choice",
       "properties": {
         "question": "Which is correct?",
-        "singleAnswer": true,
+        "singleOption": true,
         "randomize": true
       },
       "content": "<input type=\"checkbox\" value=\"Correct answer\" correct>\n<input type=\"checkbox\" value=\"Another option\">"

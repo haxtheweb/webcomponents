@@ -373,19 +373,6 @@ class TaggingQuestion extends QuestionElement {
     }
   }
 
-  checkAnswerCallback() {
-    this.showAnswer = true;
-    this.shadowRoot.querySelector("#feedback").focus();
-    const allCorrect =
-      this.answers.filter((answer) => answer.correct).length ===
-        this.selectedAnswers.filter((answer) => answer.correct).length &&
-      this.selectedAnswers.filter((answer) => answer.correct).length ===
-        this.selectedAnswers.length;
-    if (allCorrect) {
-      this.makeItRain();
-    }
-  }
-
   resetAnswer() {
     this.showAnswer = false;
     globalThis.dispatchEvent(
@@ -396,12 +383,7 @@ class TaggingQuestion extends QuestionElement {
         detail: false,
       }),
     );
-    const allCorrect =
-      this.answers.filter((answer) => answer.correct).length ===
-        this.selectedAnswers.filter((answer) => answer.correct).length &&
-      this.selectedAnswers.filter((answer) => answer.correct).length ===
-        this.selectedAnswers.length;
-    if (allCorrect) {
+    if (this.isCorrect()) {
       this.displayedAnswers = [...this.answers];
       this.selectedAnswers = [];
       this.randomizeOptions(this.displayedAnswers);
