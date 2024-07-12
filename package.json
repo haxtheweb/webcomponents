@@ -208,5 +208,6 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "version": "9.0.0"
 }
