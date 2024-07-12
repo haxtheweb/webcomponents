@@ -87,6 +87,7 @@
     "@babel/plugin-proposal-optional-chaining": "7.21.0",
     "@babel/preset-env": "^7.16.4",
     "@custom-elements-manifest/analyzer": "^0.9.0",
+    "commit-and-tag-version": "^12.4.1",
     "@open-wc/building-rollup": "^2.0.1",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@web/dev-server": "0.4.2",
