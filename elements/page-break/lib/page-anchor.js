@@ -8,7 +8,7 @@ export class PageAnchor extends DDD {
   constructor() {
     super();
     this.value = null;
-    this.target = null;
+    this.target = "";
     this.entityId = null;
   }
 
@@ -22,7 +22,7 @@ export class PageAnchor extends DDD {
       /**
        * the selector to target in the DOM; css selector
        */
-      target: { type: String },
+      target: { type: String, reflect: true },
       /**
        * entity to reference to pull associated visuals for such as icon / color
        */
@@ -36,6 +36,7 @@ export class PageAnchor extends DDD {
       css`
         :host {
           display: inline-block;
+          cursor: pointer;
         }
         simple-icon-lite {
           margin-right: var(--ddd-spacing-2);
@@ -47,7 +48,6 @@ export class PageAnchor extends DDD {
   }
   // scroll related item into view and initialize
   clickHandler(e) {
-    console.log(e.type);
     // @todo make sure that we can highlight concepts that are NOT connected to anything in the current page.
     // this could be a good way of reinforcing concepts or having a button that allows jumping to that concept (or loading the content of that concept short form in a tooltip like a definition)
     if (this._haxState && e.type === "click") {
@@ -128,12 +128,16 @@ export class PageAnchor extends DDD {
   }
 
   render() {
-    let color = this.getMatchFromFields(
-      this.entityId,
-      this.target,
-      "accentColor",
-    );
-    let icon = this.getMatchFromFields(this.entityId, this.target, "icon");
+    let color,icon;
+    try {
+      color = this.getMatchFromFields(
+        this.entityId,
+        this.target,
+        "accentColor",
+      );
+      icon = this.getMatchFromFields(this.entityId, this.target, "icon");  
+    }
+    catch(e) {}
     return html`<mark
       @click="${this.clickHandler}"
       style="${color ? `background-color: var(${color})` : ``}"
