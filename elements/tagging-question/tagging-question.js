@@ -128,6 +128,15 @@ class TaggingQuestion extends QuestionElement {
     ];
   }
 
+  // this manages the directions that are rendered and hard coded for the interaction
+  renderDirections() {
+    return html`<p>
+      Select all that apply. When you are done, press
+      <strong>${this.t.checkAnswer}</strong>. You will get feedback indicating
+      correctness of your answer and how to proceed.
+    </p>`;
+  }
+
   renderInteraction() {
     return html`<div class="tag-option-container">
       <div
@@ -188,16 +197,15 @@ class TaggingQuestion extends QuestionElement {
 
   renderFeedback() {
     return html`
-      ${this.renderLegend()}
       ${this.showAnswer && !this.isCorrect()
         ? html` <p class="feedback">${this.incorrectText}</p>
-            ${this.hasFeedbackIncorrect
+            ${this.querySelector('[slot="feedbackIncorrect"]')
               ? html`<slot name="feedbackIncorrect"></slot>`
               : ``}`
         : ``}
       ${this.showAnswer && this.isCorrect()
         ? html` <p class="feedback">${this.correctText}</p>
-            ${this.hasFeedbackCorrect
+            ${this.querySelector('[slot="feedbackCorrect"]')
               ? html`<slot name="feedbackCorrect"></slot>`
               : ``}`
         : ``}
@@ -230,7 +238,9 @@ class TaggingQuestion extends QuestionElement {
     </div>
   `
         : ""}
-      ${this.hasHint && this.showAnswer && !this.isCorrect()
+      ${this.querySelector('[slot="hint"]') &&
+      this.showAnswer &&
+      !this.isCorrect()
         ? html`
             <h4>Need a hint?</h4>
             <div>
@@ -238,7 +248,9 @@ class TaggingQuestion extends QuestionElement {
             </div>
           `
         : ``}
-      ${this.hasEvidence && this.showAnswer && this.isCorrect()
+      ${this.querySelector('[slot="evidence"]') &&
+      this.showAnswer &&
+      this.isCorrect()
         ? html`
             <h4>Evidence</h4>
             <div>

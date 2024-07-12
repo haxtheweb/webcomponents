@@ -838,9 +838,9 @@ export class QuestionElement extends SchemaBehaviors(
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      Select the answers you feel satsisfy the question. When you are done,
-      select <strong>${this.t.checkAnswer}</strong>. You will get feedback just
-      below here indicating correctness of your answer and how to proceed.
+      Select the answer you feel satsisfy the question. When you are done,
+      press <strong>${this.t.checkAnswer}</strong>. You will get feedback
+      indicating correctness of your answer and how to proceed.
     </p>`;
   }
 

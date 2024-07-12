@@ -20,6 +20,15 @@ class MultipleChoice extends QuestionElement {
   constructor() {
     super();
   }
+
+  // this manages the directions that are rendered and hard coded for the interaction
+  renderDirections() {
+    return html`<p>
+    ${!this.singleOption ? html`Select all that apply` : html`Select the answer`}, then press <strong>${this.t.checkAnswer}</strong>. You will get feedback indicating 
+      correctness of your answer and how to proceed.
+    </p>`;
+  }
+
   /**
    * haxProperties integration via file reference
    */

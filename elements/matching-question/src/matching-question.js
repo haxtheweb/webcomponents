@@ -407,6 +407,15 @@ class MatchingQuestion extends QuestionElement {
     }
   }
 
+  // this manages the directions that are rendered and hard coded for the interaction
+  renderDirections() {
+    return html`<p>
+      Select all that apply. When you are done, press
+      <strong>${this.t.checkAnswer}</strong>. You will get feedback indicating
+      correctness of your answer and how to proceed.
+    </p>`;
+  }
+
   focusActive(tagOption) {
     this.shadowRoot
       .querySelector(`button[data-label="${tagOption.label}"]`)

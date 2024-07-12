@@ -225,9 +225,9 @@ export class MarkTheWords extends QuestionElement {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      <strong>Select all</strong> the words that apply to the question. Then press
+      <strong>Select all</strong> the words that apply. Then press
       <strong>${this.t.checkAnswer}</strong> to test your answers. You will get
-      feedback just below here indicating correctness of your answer.
+      feedback indicating correctness of your answer.
     </p>`;
   }
 

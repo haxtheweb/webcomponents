@@ -67,7 +67,14 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["number-correct", "attempts", "answers", "displayed-answers", "t", "show-answer"]
+    "unsetAttributes": [
+      "number-correct",
+      "attempts",
+      "answers",
+      "displayed-answers",
+      "t",
+      "show-answer"
+    ]
   },
   "documentation": {
     "howTo": null,
