@@ -9,8 +9,8 @@ import "./lib/chat-input.js";
 import "./lib/chat-interface.js";
 import "./lib/chat-message.js";
 import "./lib/chat-suggestion.js";
-import '@haxtheweb/rpg-character/rpg-character.js';
-import '@haxtheweb/simple-icon/simple-icon.js';
+import "@haxtheweb/rpg-character/rpg-character.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
@@ -50,14 +50,13 @@ MicroFrontendRegistry.add({
  * @element chat-agent
  */
 class ChatAgent extends DDD {
-  
   /**
    * Convention we use
    */
   static get tag() {
     return "chat-agent";
   }
-  
+
   /**
    * HTMLElement
    */
@@ -67,18 +66,21 @@ class ChatAgent extends DDD {
     // everything
     this.chatLog = [];
     this.engine = "alfred";
-    store.userData.userName !== undefined ? this.userName = store.userData.userName : this.userName = "guest";
-    store.userData.userPicture !== undefined ? this.userPicture = store.userData.userPicture : null; // TODO may not utilize, remove if not utilized
+    store.userData.userName !== undefined
+      ? (this.userName = store.userData.userName)
+      : (this.userName = "guest");
+    store.userData.userPicture !== undefined
+      ? (this.userPicture = store.userData.userPicture)
+      : null; // TODO may not utilize, remove if not utilized
     this.context = "phys211"; // test with phys211
     this.isLoading = null;
     this.dataCollectionEnabled = true;
-    
-    // button    
+
+    // button
     this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
-    
-    // control bar
 
+    // control bar
 
     // developer mode
     this.developerModeEnabled = true; // ! this will enable developer mode for the entire chat system
@@ -96,10 +98,10 @@ class ChatAgent extends DDD {
     this.merlinIndex = 0; // index of merlin messages
     this.messageIndex = 0; // index of all messages
     this.userIndex = 0; // index of user messages
-    
+
     this.userTypeWriterSpeed = 0;
     this.merlinTypeWriterSpeed = 4;
-    
+
     // suggestion
     this.currentSuggestions = [];
 
@@ -136,8 +138,12 @@ class ChatAgent extends DDD {
       const userIndex = toJS(this.userIndex);
 
       // ! work around to not being able to put this in properties
-      isFullView ? this.setAttribute("is-full-view", "") : this.removeAttribute("is-full-view");
-      isInterfaceHidden ? this.setAttribute("is-interface-hidden", "") : this.removeAttribute("is-interface-hidden");
+      isFullView
+        ? this.setAttribute("is-full-view", "")
+        : this.removeAttribute("is-full-view");
+      isInterfaceHidden
+        ? this.setAttribute("is-interface-hidden", "")
+        : this.removeAttribute("is-interface-hidden");
 
       if (isLoading) {
         this.buttonIcon = "hax:loading";
@@ -232,7 +238,7 @@ class ChatAgent extends DDD {
       </div>
     `;
   }
-  
+
   /**
    * LitElement ready
    */
@@ -248,31 +254,38 @@ class ChatAgent extends DDD {
    * @description start sequence for Merlin
    */
   startAI() {
-    this.handleMessage("merlin", "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?");
+    this.handleMessage(
+      "merlin",
+      "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
+    );
     this.currentSuggestions = [
       {
         suggestion: "Who are you?",
-        type: "hax"
+        type: "hax",
       },
       {
         suggestion: "What can you do for me?",
-        type: "help"
+        type: "help",
       },
       {
         suggestion: "How do I use you?",
-        type: "help"
-      }
+        type: "help",
+      },
     ];
 
-    this.shadowRoot.querySelector("chat-interface").shadowRoot.querySelector("chat-message").shadowRoot.querySelectorAll("chat-suggestion").forEach((suggestion) => {
-      if (suggestion.hasAttribute("disabled")) {
-        suggestion.removeAttribute("disabled");
-      }
+    this.shadowRoot
+      .querySelector("chat-interface")
+      .shadowRoot.querySelector("chat-message")
+      .shadowRoot.querySelectorAll("chat-suggestion")
+      .forEach((suggestion) => {
+        if (suggestion.hasAttribute("disabled")) {
+          suggestion.removeAttribute("disabled");
+        }
 
-      if(suggestion.hasAttribute("chosen-prompt")) {
-        suggestion.removeAttribute("chosen-prompt");
-      }
-    });
+        if (suggestion.hasAttribute("chosen-prompt")) {
+          suggestion.removeAttribute("chosen-prompt");
+        }
+      });
   }
 
   /**
@@ -281,13 +294,17 @@ class ChatAgent extends DDD {
    * @param {string} message - the written or suggested prompt
    */
   handleMessage(author, message) {
-    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Writing message "${message}" by ${author} to chatLog.`) : null;
+    this.developerModeEnabled
+      ? console.info(
+          `HAX-DEV-MODE: Writing message "${message}" by ${author} to chatLog.`,
+        )
+      : null;
 
     let authorIndex;
 
     this.messageIndex++;
 
-    switch(author) {
+    switch (author) {
       case "merlin":
         this.merlinIndex++;
         authorIndex = this.merlinIndex;
@@ -299,14 +316,14 @@ class ChatAgent extends DDD {
     }
 
     let date = new Date();
-    
+
     const chatLogObject = {
       messageID: this.messageIndex,
       author: author,
       message: message,
       authorMessageIndex: authorIndex,
-      timestamp: date.toString().replace(/\s/g, '-'),
-    }
+      timestamp: date.toString().replace(/\s/g, "-"),
+    };
 
     this.chatLog.push(chatLogObject);
 
@@ -320,10 +337,14 @@ class ChatAgent extends DDD {
    * @param {string} prompt - the written or suggested prompt
    */
   handleInteraction(prompt) {
-    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`) : null;
+    this.developerModeEnabled
+      ? console.info(
+          `HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`,
+        )
+      : null;
     this.currentSuggestions = [];
 
-    switch(prompt) {
+    switch (prompt) {
       // Offline messages, do not request response from backend AI
 
       // Tutorial messages
@@ -334,37 +355,46 @@ class ChatAgent extends DDD {
             type: "help",
           },
           {
-            suggestion: "How do I use you?", 
-            type: "help"
+            suggestion: "How do I use you?",
+            type: "help",
           },
         ];
-        this.handleMessage("merlin", "I am Merlin. I was created for use within HAX websites as an assistant to help you with your questions. How may I help you today?");
+        this.handleMessage(
+          "merlin",
+          "I am Merlin. I was created for use within HAX websites as an assistant to help you with your questions. How may I help you today?",
+        );
         break;
       case "What can you do for me?":
         this.currentSuggestions = [
           {
             suggestion: "Who are you?",
-            type: "hax"
+            type: "hax",
           },
           {
             suggestion: "How do I use you?",
-            type: "help"
-          }
+            type: "help",
+          },
         ];
-        this.handleMessage("merlin", "I can answer questions and chat with you about information relevant to the website you are navigating. How can I help you?");
+        this.handleMessage(
+          "merlin",
+          "I can answer questions and chat with you about information relevant to the website you are navigating. How can I help you?",
+        );
         break;
       case "How do I use you?":
         this.currentSuggestions = [
           {
             suggestion: "Who are you?",
-            type: "hax"
+            type: "hax",
           },
           {
             suggestion: "What can you do for me?",
-            type: "help"
-          }
+            type: "help",
+          },
         ];
-        this.handleMessage("merlin", "I support numerous functions. You can ask me questions, as well as download our chat log and reset our chat. You can start asking me questions by clicking on one of the suggested prompts, or by typing a prompt in the input box below and pressing the send button or pressing the enter key on your keyboard. Here are some of the keyboard controls you can utilize: \n 1. Tab Key - Navigates you through the numerous usable buttons. \n 2. Enter Key (in text area) - Will submit the prompt you wrote. \n 3. Enter key (When focusing on a button) - Will act in the same way as clicking the button. \n 4. Up & Down Arrow Keys (in text area) - will navigate you through previously sent prompts so you can send them again.");
+        this.handleMessage(
+          "merlin",
+          "I support numerous functions. You can ask me questions, as well as download our chat log and reset our chat. You can start asking me questions by clicking on one of the suggested prompts, or by typing a prompt in the input box below and pressing the send button or pressing the enter key on your keyboard. Here are some of the keyboard controls you can utilize: \n 1. Tab Key - Navigates you through the numerous usable buttons. \n 2. Enter Key (in text area) - Will submit the prompt you wrote. \n 3. Enter key (When focusing on a button) - Will act in the same way as clicking the button. \n 4. Up & Down Arrow Keys (in text area) - will navigate you through previously sent prompts so you can send them again.",
+        );
         break;
 
       // Network error messages
@@ -373,24 +403,30 @@ class ChatAgent extends DDD {
           {
             suggestion: "How do I fix this connection issue?",
             type: "network",
-          }
+          },
         ];
-        this.handleMessage("merlin", "I am either unable to connect to the internet, or a service I connect to is not available, meaning I cannot research how to respond to your prompt.");
+        this.handleMessage(
+          "merlin",
+          "I am either unable to connect to the internet, or a service I connect to is not available, meaning I cannot research how to respond to your prompt.",
+        );
         break;
       case "How do I fix this connection issue?":
         this.currentSuggestions = [
           {
             suggestion: "Why can't you connect?",
             type: "network",
-          }
+          },
         ];
-        this.handleMessage("merlin", "Please ensure you are connected to the internet. I cannot respond to (most of) your questions if you are not connected to the internet. If you are connected, it is likely one of my connected services is having an issue, I will try to fix that and be back to help you soon.");
+        this.handleMessage(
+          "merlin",
+          "Please ensure you are connected to the internet. I cannot respond to (most of) your questions if you are not connected to the internet. If you are connected, it is likely one of my connected services is having an issue, I will try to fix that and be back to help you soon.",
+        );
         break;
 
       // Online messages, do request response from backend AI
       default:
         var base = "";
-        
+
         if (globalThis.document.querySelector("base")) {
           base = globalThis.document.querySelector("base").href;
         }
@@ -408,31 +444,36 @@ class ChatAgent extends DDD {
 
         this.isLoading = true;
 
-        MicroFrontendRegistry.call("@haxcms/aiChat", params).then((d) => {
-          if (d.status == 200) {
-            this.answers = [d.data.answers];
-            this.developerModeEnabled ? console.info(this.answers) : null;
-            this.question = d.data.question;
-            this.currentSuggestions = []; // TODO add support for AI based suggestiongs
-          }
-
-          this.isLoading = false;
-          this.handleMessage("merlin", d.data.answers);
-        }).catch((error) => {
-          this.isLoading = false;
-          this.currentSuggestions = [
-            {
-              suggestion: "Why can't you connect?",
-              type: "network"
-            },
-            {
-              suggestion: "How do I fix this connection issue?",
-              type: "network"
+        MicroFrontendRegistry.call("@haxcms/aiChat", params)
+          .then((d) => {
+            if (d.status == 200) {
+              this.answers = [d.data.answers];
+              this.developerModeEnabled ? console.info(this.answers) : null;
+              this.question = d.data.question;
+              this.currentSuggestions = []; // TODO add support for AI based suggestiongs
             }
-          ];
-          this.handleMessage("merlin", "I'm sorry, I'm having trouble connecting right now. Please try again soon. If you'd like to learn more, please click on one of the suggested prompts.");
-          console.error(error);
-        });
+
+            this.isLoading = false;
+            this.handleMessage("merlin", d.data.answers);
+          })
+          .catch((error) => {
+            this.isLoading = false;
+            this.currentSuggestions = [
+              {
+                suggestion: "Why can't you connect?",
+                type: "network",
+              },
+              {
+                suggestion: "How do I fix this connection issue?",
+                type: "network",
+              },
+            ];
+            this.handleMessage(
+              "merlin",
+              "I'm sorry, I'm having trouble connecting right now. Please try again soon. If you'd like to learn more, please click on one of the suggested prompts.",
+            );
+            console.error(error);
+          });
     }
   }
 
@@ -441,16 +482,21 @@ class ChatAgent extends DDD {
    * @param {string} fileType - the file type to download
    */
   handleDownload(fileType) {
-    this.developerModeEnabled ? console.info(`HAX-DEV-MODE: Downloading chatlog as ${fileType}.`) : null;
+    this.developerModeEnabled
+      ? console.info(`HAX-DEV-MODE: Downloading chatlog as ${fileType}.`)
+      : null;
 
     if (this.chatLog.length !== 0) {
       const LOG = JSON.stringify(this.chatLog, undefined, 2);
       let date = new Date();
-      const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, '-')}.${fileType}`;
-      
-      let download = document.createElement('a');
-      download.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(LOG));
-      download.setAttribute('download', FILE_NAME);
+      const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, "-")}.${fileType}`;
+
+      let download = document.createElement("a");
+      download.setAttribute(
+        "href",
+        "data:text/plain;charset=utf-8," + encodeURIComponent(LOG),
+      );
+      download.setAttribute("download", FILE_NAME);
       download.click();
       download.remove();
     }
@@ -471,12 +517,12 @@ class ChatAgent extends DDD {
 
       // control bar
 
-
       // developer mode
-      developerModeEnabled: { // ! this will enable developer mode for the entire chat system
+      developerModeEnabled: {
+        // ! this will enable developer mode for the entire chat system
         type: Boolean,
         attribute: "developer-mode",
-      }, 
+      },
 
       // input
       promptCharacterLimit: {
@@ -490,7 +536,6 @@ class ChatAgent extends DDD {
 
       // interface
 
-
       // message
       merlinTypeWriterSpeed: {
         type: Number,
@@ -501,17 +546,13 @@ class ChatAgent extends DDD {
         attribute: "user-type-writer-speed",
       },
 
-
       // suggestion
-      
-
-    }
+    };
   }
 }
 
 customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };
-
 
 // TODO causing inefficiency, abstract to it's own file
 // register globally so we can make sure there is only one
@@ -527,4 +568,5 @@ globalThis.ChatAgentModal.requestAvailability = () => {
   return globalThis.ChatAgentModal.instance;
 };
 
-export const ChatAgentModalStore = globalThis.ChatAgentModal.requestAvailability();
+export const ChatAgentModalStore =
+  globalThis.ChatAgentModal.requestAvailability();

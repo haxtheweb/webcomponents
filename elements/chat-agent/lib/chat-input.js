@@ -5,10 +5,9 @@
 import { ChatAgent, ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 
 class ChatInput extends DDD {
-
   static get tag() {
     return "chat-input";
   }
@@ -26,7 +25,7 @@ class ChatInput extends DDD {
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
       this.previousMessageIndex = toJS(this.messageIndex);
-    })
+    });
   }
 
   static get styles() {
@@ -34,7 +33,7 @@ class ChatInput extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-        
+
         :host {
           display: block;
           font-family: var(--ddd-font-primary);
@@ -75,7 +74,7 @@ class ChatInput extends DDD {
             var(--ddd-theme-bgContrast, white)
           );
         }
-      `
+      `,
     ];
   }
 
@@ -83,31 +82,46 @@ class ChatInput extends DDD {
   render() {
     return html`
       <div class="chat-input-wrapper">
-        <textarea name="prompt-input" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keydown=${this.handleKeyPress}></textarea>
+        <textarea
+          name="prompt-input"
+          id="user-input"
+          placeholder="${ChatAgentModalStore.promptPlaceholder}"
+          @keydown=${this.handleKeyPress}
+        ></textarea>
         <div class="send-button" @click=${this.handleSendButton} tabindex="0">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
       </div>
     `;
   }
-  
+
   /**
    * @description - handles key presses enter
    * @param {event} e - event
    */
   handleKeyPress(e) {
     let textArea = this.shadowRoot.querySelector("#user-input");
-    
+
     switch (e.key) {
       case "Enter":
-        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Enter key pressed.') : null;
+        ChatAgentModalStore.developerModeEnabled
+          ? console.info("HAX-DEV-MODE: Enter key pressed.")
+          : null;
         e.preventDefault();
         this.handleSendButton();
         break;
       case "ArrowUp":
-        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`) : null;
+        ChatAgentModalStore.developerModeEnabled
+          ? console.info(
+              `HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`,
+            )
+          : null;
         if (this.previousMessageIndex === this.messageIndex) {
-          ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Message to display: ${this.chatLog[this.previousMessageIndex].message}`) : null;
+          ChatAgentModalStore.developerModeEnabled
+            ? console.info(
+                `HAX-DEV-MODE: Message to display: ${this.chatLog[this.previousMessageIndex].message}`,
+              )
+            : null;
           textArea.value = this.chatLog[this.previousMessageIndex].message;
           this.requestUpdate();
         }
@@ -117,7 +131,9 @@ class ChatInput extends DDD {
         // * set textArea.value = chatLog[previousMessageIndex].message
         break;
       case "ArrowDown":
-        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Arrow Down pressed.') : null;
+        ChatAgentModalStore.developerModeEnabled
+          ? console.info("HAX-DEV-MODE: Arrow Down pressed.")
+          : null;
         e.preventDefault();
         break;
     }
@@ -129,19 +145,34 @@ class ChatInput extends DDD {
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
 
-    if (ChatAgentModalStore.promptCharacterLimit > 0 && INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit) { // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
-      alert(`Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`)
+    if (
+      ChatAgentModalStore.promptCharacterLimit > 0 &&
+      INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit
+    ) {
+      // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
+      alert(
+        `Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`,
+      );
     }
 
     if (INPUTTED_PROMPT !== "") {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info(
+            "HAX-DEV-MODE: Send button activated. Prompt to send: " +
+              INPUTTED_PROMPT,
+          )
+        : null;
 
-      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, INPUTTED_PROMPT);
+      ChatAgentModalStore.handleMessage(
+        ChatAgentModalStore.userName,
+        INPUTTED_PROMPT,
+      );
 
       this.shadowRoot.querySelector("#user-input").value = "";
-
     } else {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info("HAX-DEV-MODE: Send button activated. No prompt to send")
+        : null;
     }
   }
 
@@ -151,7 +182,12 @@ class ChatInput extends DDD {
     }
 
     if (ChatAgentModalStore.promptCharacterLimit > 0) {
-      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", `${ChatAgentModalStore.promptCharacterLimit}`);
+      this.shadowRoot
+        .querySelector("#user-input")
+        .setAttribute(
+          "maxlength",
+          `${ChatAgentModalStore.promptCharacterLimit}`,
+        );
     }
   }
 

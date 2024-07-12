@@ -184,13 +184,15 @@ class MatchingQuestion extends QuestionElement {
     this.showAnswer = false;
     let newAnswers = [];
     for (let i in answers) {
-      let tmpA = { ... this.answerPrototype(), ...answers[i]};
+      let tmpA = { ...this.answerPrototype(), ...answers[i] };
       tmpA.order = parseInt(i);
       // unset match and target details so they get rebuilt every time the data changes in any way
       tmpA.match = false;
       tmpA.matchOption = false;
       tmpA.target = false;
-      newAnswers.push({...this.cleanAnswerDataBeforeSend(tmpA, parseInt(i), newAnswers)});
+      newAnswers.push({
+        ...this.cleanAnswerDataBeforeSend(tmpA, parseInt(i), newAnswers),
+      });
     }
     return newAnswers;
   }
@@ -488,7 +490,9 @@ class MatchingQuestion extends QuestionElement {
     }
     if (e.target.value === "") {
       this.__activeOption.guess = null;
-      this.displayedAnswers.push(JSON.parse(JSON.stringify(this.__activeOption)));
+      this.displayedAnswers.push(
+        JSON.parse(JSON.stringify(this.__activeOption)),
+      );
     } else {
       this.matchAnswers.push(JSON.parse(JSON.stringify(this.__activeOption)));
     }

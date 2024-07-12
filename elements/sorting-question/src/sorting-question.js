@@ -88,7 +88,7 @@ export class SortingQuestion extends QuestionElement {
       });
       const answers = JSON.parse(JSON.stringify(this.answers));
       setTimeout(() => {
-        this.answers = [...answers];        
+        this.answers = [...answers];
       }, 0);
     }
     this.numberCorrect = 0;
@@ -386,50 +386,51 @@ export class SortingQuestion extends QuestionElement {
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html`
-    ${!this.edit ? html`
-      ${this.showAnswer && this.numberCorrect !== this.answers.length
-        ? html` <p class="feedback">
-              ${this.t.numCorrectLeft} ${this.numberCorrect} out of
-              ${this.answers.length} ${this.t.numCorrectRight}
-            </p>
-            ${this.querySelector('[slot="feedbackIncorrect"]')
-              ? html`<slot name="feedbackIncorrect"></slot>`
-              : ``}`
-        : ``}
-      ${this.showAnswer && this.numberCorrect === this.answers.length
-        ? html` <p class="feedback">${this.correctText}</p>
-            ${this.querySelector('[slot="feedbackCorrect"]')
-              ? html`<slot name="feedbackCorrect"></slot>`
-              : ``}`
-        : ``}
-      ${this.querySelector('[slot="hint"]') &&
-      this.showAnswer &&
-      this.numberCorrect !== this.answers.length
-        ? html`
-            <h4>Need a hint?</h4>
-            <div>
-              <slot name="hint"></slot>
-            </div>
-          `
-        : ``}
-      ${this.querySelector('[slot="evidence"]') &&
-      this.showAnswer &&
-      this.numberCorrect === this.answers.length
-        ? html`
-            <h4>Evidence</h4>
-            <div>
-              <slot name="evidence"></slot>
-            </div>
-          `
-        : ``}
-      <simple-toolbar-button
-        ?disabled="${this.disabled || !this.showAnswer}"
-        @click="${this.resetAnswer}"
-        label="${this.t.tryAgain}"
-      >
-      </simple-toolbar-button>
-      ` : this.renderEditModeFeedbackAreas()}`;
+    return html` ${!this.edit
+      ? html`
+          ${this.showAnswer && this.numberCorrect !== this.answers.length
+            ? html` <p class="feedback">
+                  ${this.t.numCorrectLeft} ${this.numberCorrect} out of
+                  ${this.answers.length} ${this.t.numCorrectRight}
+                </p>
+                ${this.querySelector('[slot="feedbackIncorrect"]')
+                  ? html`<slot name="feedbackIncorrect"></slot>`
+                  : ``}`
+            : ``}
+          ${this.showAnswer && this.numberCorrect === this.answers.length
+            ? html` <p class="feedback">${this.correctText}</p>
+                ${this.querySelector('[slot="feedbackCorrect"]')
+                  ? html`<slot name="feedbackCorrect"></slot>`
+                  : ``}`
+            : ``}
+          ${this.querySelector('[slot="hint"]') &&
+          this.showAnswer &&
+          this.numberCorrect !== this.answers.length
+            ? html`
+                <h4>Need a hint?</h4>
+                <div>
+                  <slot name="hint"></slot>
+                </div>
+              `
+            : ``}
+          ${this.querySelector('[slot="evidence"]') &&
+          this.showAnswer &&
+          this.numberCorrect === this.answers.length
+            ? html`
+                <h4>Evidence</h4>
+                <div>
+                  <slot name="evidence"></slot>
+                </div>
+              `
+            : ``}
+          <simple-toolbar-button
+            ?disabled="${this.disabled || !this.showAnswer}"
+            @click="${this.resetAnswer}"
+            label="${this.t.tryAgain}"
+          >
+          </simple-toolbar-button>
+        `
+      : this.renderEditModeFeedbackAreas()}`;
   }
 
   /**
