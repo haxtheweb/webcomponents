@@ -640,12 +640,13 @@ export class QuestionElement extends SchemaBehaviors(
         :host([edit]) .edit-wrapper ::slotted(*) {
           display: block;
           width: 100%;
-          padding: 16px;
+          border: var(--ddd-border-sm);
+          border-style: dashed;
         }
-        :host([edit]) .edit-wrapper ::slotted(*)::before {
-          content: attr(slot);
+        :host([edit]) .edit-wrapper ::slotted(*:empty)::before {
           display: block;
-          font-size: 16px;
+          font-size: 12px;
+          content: "Add content";
         }
       `,
     ];
@@ -1012,10 +1013,18 @@ export class QuestionElement extends SchemaBehaviors(
   renderEditModeFeedbackAreas() {
     return html`
       <div class="edit-wrapper">
+        <h4>Related Content</h4>
+        <p>This creates a collapsed area for content related to this question and is always shown</p>
         <slot name="content"></slot>
+        <h4>Feedback for incorrect answer</h4>
         <slot name="feedbackIncorrect"></slot>
+        <h4>Feedback for correct answer</h4>
         <slot name="feedbackCorrect"></slot>
+        <h4>Hint</h4>
+        <p>This is presented if the user gets the answer wrong</p>
         <slot name="hint"></slot>
+        <h4>Evidence</h4>
+        <p>This is presented if the user gets the answer correct</p>
         <slot name="evidence"></slot>
       </div>
     `;

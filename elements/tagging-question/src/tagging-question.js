@@ -196,21 +196,22 @@ class TaggingQuestion extends QuestionElement {
   }
 
   renderFeedback() {
-    return html`
-      ${this.showAnswer && !this.isCorrect()
-        ? html` <p class="feedback">${this.incorrectText}</p>
-            ${this.querySelector('[slot="feedbackIncorrect"]')
-              ? html`<slot name="feedbackIncorrect"></slot>`
-              : ``}`
-        : ``}
-      ${this.showAnswer && this.isCorrect()
-        ? html` <p class="feedback">${this.correctText}</p>
-            ${this.querySelector('[slot="feedbackCorrect"]')
-              ? html`<slot name="feedbackCorrect"></slot>`
-              : ``}`
-        : ``}
-      ${this.showAnswer
-        ? html`
+    return html` ${!this.edit
+      ? html`
+          ${this.showAnswer && !this.isCorrect()
+            ? html` <p class="feedback">${this.incorrectText}</p>
+                ${this.querySelector('[slot="feedbackIncorrect"]')
+                  ? html`<slot name="feedbackIncorrect"></slot>`
+                  : ``}`
+            : ``}
+          ${this.showAnswer && this.isCorrect()
+            ? html` <p class="feedback">${this.correctText}</p>
+                ${this.querySelector('[slot="feedbackCorrect"]')
+                  ? html`<slot name="feedbackCorrect"></slot>`
+                  : ``}`
+            : ``}
+          ${this.showAnswer
+            ? html`
       <p class="feedback">${this.selectedAnswers.filter((answer) => answer.correct).length} out of ${this.answers.filter((answer) => answer.correct).length} correct${this.selectedAnswers.length > this.answers.filter((answer) => answer.correct).length && this.selectedAnswers.length > this.selectedAnswers.filter((answer) => answer.correct).length ? html`, <strong>but too many options present!</strong>` : "."}</p>
       <h4>Answers selected</h4>
       <dl>
@@ -237,34 +238,35 @@ class TaggingQuestion extends QuestionElement {
       </dl>
     </div>
   `
-        : ""}
-      ${this.querySelector('[slot="hint"]') &&
-      this.showAnswer &&
-      !this.isCorrect()
-        ? html`
-            <h4>Need a hint?</h4>
-            <div>
-              <slot name="hint"></slot>
-            </div>
-          `
-        : ``}
-      ${this.querySelector('[slot="evidence"]') &&
-      this.showAnswer &&
-      this.isCorrect()
-        ? html`
-            <h4>Evidence</h4>
-            <div>
-              <slot name="evidence"></slot>
-            </div>
-          `
-        : ``}
-      <simple-toolbar-button
-        ?disabled="${this.disabled || !this.showAnswer}"
-        @click="${this.resetAnswer}"
-        label="${this.t.tryAgain}"
-      >
-      </simple-toolbar-button>
-    `;
+            : ""}
+          ${this.querySelector('[slot="hint"]') &&
+          this.showAnswer &&
+          !this.isCorrect()
+            ? html`
+                <h4>Need a hint?</h4>
+                <div>
+                  <slot name="hint"></slot>
+                </div>
+              `
+            : ``}
+          ${this.querySelector('[slot="evidence"]') &&
+          this.showAnswer &&
+          this.isCorrect()
+            ? html`
+                <h4>Evidence</h4>
+                <div>
+                  <slot name="evidence"></slot>
+                </div>
+              `
+            : ``}
+          <simple-toolbar-button
+            ?disabled="${this.disabled || !this.showAnswer}"
+            @click="${this.resetAnswer}"
+            label="${this.t.tryAgain}"
+          >
+          </simple-toolbar-button>
+        `
+      : this.renderEditModeFeedbackAreas()}`;
   }
 
   randomizeOptions(array) {

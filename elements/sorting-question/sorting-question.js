@@ -387,6 +387,7 @@ export class SortingQuestion extends QuestionElement {
   // this manages the output of the feedback area
   renderFeedback() {
     return html`
+    ${!this.edit ? html`
       ${this.showAnswer && this.numberCorrect !== this.answers.length
         ? html` <p class="feedback">
               ${this.t.numCorrectLeft} ${this.numberCorrect} out of
@@ -428,7 +429,7 @@ export class SortingQuestion extends QuestionElement {
         label="${this.t.tryAgain}"
       >
       </simple-toolbar-button>
-    `;
+      ` : this.renderEditModeFeedbackAreas()}`;
   }
 
   /**
