@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "description": "Learn2 theme for HAXcms",
   "repository": {
     "type": "git",
@@ -42,16 +42,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^9.0.0-alpha.0",
-    "@haxtheweb/map-menu": "^9.0.0-alpha.0",
-    "@haxtheweb/simple-colors": "^9.0.0-alpha.0",
-    "@haxtheweb/simple-icon": "^9.0.0-alpha.0",
-    "@haxtheweb/simple-tooltip": "^9.0.0-alpha.0",
+    "@haxtheweb/hax-iconset": "^9.0.0",
+    "@haxtheweb/map-menu": "^9.0.0",
+    "@haxtheweb/simple-colors": "^9.0.0",
+    "@haxtheweb/simple-icon": "^9.0.0",
+    "@haxtheweb/simple-tooltip": "^9.0.0",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+    "@haxtheweb/deduping-fix": "^9.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

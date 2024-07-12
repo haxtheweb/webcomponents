@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "description": "Start of mdi-iconset-svg fork",
   "repository": {
     "type": "git",
@@ -47,8 +47,8 @@
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
-    "@haxtheweb/storybook-utilities": "^9.0.0-alpha.0",
+    "@haxtheweb/deduping-fix": "^9.0.0",
+    "@haxtheweb/storybook-utilities": "^9.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

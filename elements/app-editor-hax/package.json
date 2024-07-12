@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "description": "HAX but for mobile / desktop application development",
   "repository": {
     "type": "git",
@@ -42,12 +42,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/h-a-x": "^9.0.0-alpha.0",
+    "@haxtheweb/h-a-x": "^9.0.0",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
-    "@haxtheweb/storybook-utilities": "^9.0.0-alpha.0",
+    "@haxtheweb/deduping-fix": "^9.0.0",
+    "@haxtheweb/storybook-utilities": "^9.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

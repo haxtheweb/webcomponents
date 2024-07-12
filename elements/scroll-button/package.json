@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "description": "button to scroll to an area or back to top",
   "repository": {
     "type": "git",
@@ -37,13 +37,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-icon": "^9.0.0-alpha.0",
-    "@haxtheweb/simple-tooltip": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-icon": "^9.0.0",
+    "@haxtheweb/simple-tooltip": "^9.0.0",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
-    "@haxtheweb/i18n-manager": "^9.0.0-alpha.0",
+    "@haxtheweb/deduping-fix": "^9.0.0",
+    "@haxtheweb/i18n-manager": "^9.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

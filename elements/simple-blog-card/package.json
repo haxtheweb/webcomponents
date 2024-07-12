@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "description": "a card commonly found on a blogging website",
   "repository": {
     "type": "git",
@@ -42,14 +42,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/paper-avatar": "^9.0.0-alpha.0",
-    "@haxtheweb/simple-popover": "^9.0.0-alpha.0",
+    "@haxtheweb/paper-avatar": "^9.0.0",
+    "@haxtheweb/simple-popover": "^9.0.0",
     "@polymer/paper-card": "^3.0.1",
     "lit": "^3.1.4",
     "local-time": "3.0.2"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+    "@haxtheweb/deduping-fix": "^9.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

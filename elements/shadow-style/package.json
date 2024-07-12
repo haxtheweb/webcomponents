@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "description": "write css that is for piercing shadow roots and applying CSS automatically",
   "repository": {
     "type": "git",
@@ -45,8 +45,8 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
-    "@haxtheweb/meme-maker": "^9.0.0-alpha.0",
+    "@haxtheweb/deduping-fix": "^9.0.0",
+    "@haxtheweb/meme-maker": "^9.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

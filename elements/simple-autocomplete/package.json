@@ -14,7 +14,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "description": "auto complete either from an endpoint or local json array",
   "repository": {
     "type": "git",
@@ -39,14 +39,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-filter": "^9.0.0-alpha.0",
-    "@haxtheweb/simple-icon": "^9.0.0-alpha.0",
-    "@haxtheweb/simple-popover": "^9.0.0-alpha.0",
-    "@haxtheweb/utils": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-filter": "^9.0.0",
+    "@haxtheweb/simple-icon": "^9.0.0",
+    "@haxtheweb/simple-popover": "^9.0.0",
+    "@haxtheweb/utils": "^9.0.0",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+    "@haxtheweb/deduping-fix": "^9.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

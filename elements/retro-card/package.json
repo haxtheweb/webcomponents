@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "description": "Simple card in a cool retro design",
   "repository": {
     "type": "git",
@@ -44,11 +44,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-colors": "^9.0.0-alpha.0",
+    "@haxtheweb/simple-colors": "^9.0.0",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+    "@haxtheweb/deduping-fix": "^9.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
