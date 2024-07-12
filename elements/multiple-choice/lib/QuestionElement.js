@@ -32,9 +32,8 @@ export class QuestionElement extends SchemaBehaviors(
     this.question = "";
     this.answers = [];
     this.displayedAnswers = [];
-    this.correctText = "Great job!";
-    this.incorrectText = "Better luck next time!";
-    this.incorrectIcon = "icons:thumb-down";
+    this.correctText = "You are correct!";
+    this.incorrectText = "Try again!";
     this.quizName = "default";
     this.t = {
       numCorrectLeft: "You have",
@@ -74,10 +73,19 @@ export class QuestionElement extends SchemaBehaviors(
         })
         
       }
-      if (propName == "answers" && this.answers && this.answers.length > 0) {
+      if (propName == "answers" && this.answers && this.answers.length > 0 && !this.__answerLock) {
+        this.__answerLock = true;
+        // validate answer data structure
+        const newAs = this.cleanAnswerData(this.answers);
+        this.answers = [...newAs];
         this.displayedAnswers = [
           ...this._computeDisplayedAnswers([...this.answers], this.randomize),
         ];
+        // lock ensures that if data is cleaned above it doesn't reload loop
+        setTimeout(() => {
+          this.__answerLock = false;          
+        }, 0);
+
       }
     });
   }
@@ -329,20 +337,6 @@ export class QuestionElement extends SchemaBehaviors(
        */
       displayedAnswers: {
         type: Array,
-      },
-      /**
-       * Correct answer text to display
-       */
-      correctText: {
-        type: String,
-        attribute: "correct-text",
-      },
-      /**
-       * Incorrect answer text to display
-       */
-      incorrectText: {
-        type: String,
-        attribute: "incorrect-text",
       },
       /**
        * Name of the quiz - hardcoded for now from HTML
@@ -966,6 +960,37 @@ export class QuestionElement extends SchemaBehaviors(
       }
     }
     this.requestUpdate();
+  }
+  // ensure data model of the answers is normalized
+  cleanAnswerData(answers) {
+    let newAnswers = [];
+    // force reset bc data changed
+    this.showAnswer = false;
+    for (let i in answers) {
+      let tmpA = { ... this.answerPrototype(), ...answers[i]};
+      tmpA.order = parseInt(i);
+      newAnswers.push({...this.cleanAnswerDataBeforeSend(tmpA, parseInt(i), answers)});
+    }
+    return newAnswers;
+  }
+
+  cleanAnswerDataBeforeSend(answer, index, answers) {
+    // stub for advanced element usage where items are relative to each other
+    return answer;
+  }
+  // answer object so we can verify answer structure given that we have many things
+  // working up above and we don't want to have to constantly provide hidden UI elements just for
+  // things like order which is calculated
+  answerPrototype() {
+    return {
+      order: null,
+      label: '',
+      correct: false,
+      image: null,
+      alt: '',
+      selectedFeedback: null,
+      unselectedFeedback: null,
+    }
   }
   // convert the input to data
   processInput(index, inputs, answers) {

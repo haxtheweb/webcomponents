@@ -56,6 +56,9 @@
         "title": "Answers",
         "inputMethod": "array",
         "itemLabel": "label",
+        "hideReorder": true,
+        "expanded": true,
+        "hideDuplicate": true,
         "properties": [
           {
             "property": "correct",
@@ -75,18 +78,6 @@
     "advanced": [],
     "developer": [
       {
-        "property": "correctText",
-        "title": "Correct feedback",
-        "description": "Feedback when they get it right",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "incorrectText",
-        "title": "Incorrect feedback",
-        "description": "Feedback when they get it wrong",
-        "inputMethod": "textfield"
-      },
-      {
         "property": "quizName",
         "title": "Name of the quiz",
         "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
@@ -103,9 +94,11 @@
     {
       "tag": "multiple-choice",
       "properties": {
+        "question": "Which is correct?",
+        "singleAnswer": true,
         "randomize": true
       },
-      "content": "<input type=\"checkbox\" value=\"Option 1 - Correct answer\" correct>\n<input type=\"checkbox\" value=\"Option 2\">"
+      "content": "<input type=\"checkbox\" value=\"Correct answer\" correct>\n<input type=\"checkbox\" value=\"Another option\">"
     }
   ]
 }

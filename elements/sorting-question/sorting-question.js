@@ -90,7 +90,9 @@ export class SortingQuestion extends QuestionElement {
         el.userGuess = "";
       });
       const answers = JSON.parse(JSON.stringify(this.answers));
-      this.answers = [...answers];
+      setTimeout(() => {
+        this.answers = [...answers];        
+      }, 0);
     }
     this.numberCorrect = 0;
   }
@@ -304,6 +306,7 @@ export class SortingQuestion extends QuestionElement {
       `,
     ];
   }
+
   // render the area the user will interact with the question
   // our default implementation is a multiple-choice element
   renderInteraction() {
@@ -466,7 +469,7 @@ export class SortingQuestion extends QuestionElement {
     this.resetAnswer();
     this.displayedAnswers = [];
     let d = this.answers;
-    d.push({ label: "New answer", order: this.answers.length });
+    d.push({ label: "Next" });
     this.answers = [...d];
     return true;
   }

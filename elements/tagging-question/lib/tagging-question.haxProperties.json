@@ -34,6 +34,9 @@
         "title": "Answers",
         "inputMethod": "array",
         "itemLabel": "label",
+        "hideReorder": true,
+        "expanded": true,
+        "hideDuplicate": true,
         "properties": [
           {
             "property": "correct",
@@ -52,18 +55,6 @@
     ],
     "advanced": [],
     "developer": [
-      {
-        "property": "correctText",
-        "title": "Correct feedback",
-        "description": "Feedback when they get it right",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "incorrectText",
-        "title": "Incorrect feedback",
-        "description": "Feedback when they get it wrong",
-        "inputMethod": "textfield"
-      },
       {
         "property": "quizName",
         "title": "Name of the quiz",

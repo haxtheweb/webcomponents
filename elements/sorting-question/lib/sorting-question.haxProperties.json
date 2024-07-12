@@ -34,6 +34,9 @@
         "description": "Order of the answers dictates correct order",
         "inputMethod": "array",
         "itemLabel": "label",
+        "hideReorder": true,
+        "expanded": true,
+        "hideDuplicate": true,
         "properties": [
           {
             "property": "label",
@@ -46,18 +49,6 @@
     ],
     "advanced": [],
     "developer": [
-      {
-        "property": "correctText",
-        "title": "Correct feedback",
-        "description": "Feedback when they get it right",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "incorrectText",
-        "title": "Incorrect feedback",
-        "description": "Feedback when they get it wrong",
-        "inputMethod": "textfield"
-      },
       {
         "property": "quizName",
         "title": "Name of the quiz",
@@ -73,7 +64,8 @@
       "answers",
       "displayed-answers",
       "t",
-      "show-answer"
+      "show-answer",
+      "edit"
     ]
   },
   "documentation": {

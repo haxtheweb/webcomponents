@@ -156,7 +156,6 @@ class MatchingQuestion extends QuestionElement {
     this.dragEnter = false;
     this.dragging = false;
     this.matchAnswers = [];
-    this.targetAnswers = [];
     // allow for requiring the user to place the targets in the right place as well
     this.matchTarget = false;
   }
@@ -177,6 +176,39 @@ class MatchingQuestion extends QuestionElement {
     }
     return data;
   }
+  // ensure data model of the answers is normalized
+  cleanAnswerData(answers) {
+    // when this is called, we have to clean up any movement on the board or it'll cause duplications
+    this.matchAnswers = [];
+    // force reset bc data changed
+    this.showAnswer = false;
+    let newAnswers = [];
+    for (let i in answers) {
+      let tmpA = { ... this.answerPrototype(), ...answers[i]};
+      tmpA.order = parseInt(i);
+      // unset match and target details so they get rebuilt every time the data changes in any way
+      tmpA.match = false;
+      tmpA.matchOption = false;
+      tmpA.target = false;
+      newAnswers.push({...this.cleanAnswerDataBeforeSend(tmpA, parseInt(i), newAnswers)});
+    }
+    return newAnswers;
+  }
+  cleanAnswerDataBeforeSend(answer, index, answers) {
+    // implies previous index is the matching target
+    if (answer.correct === false) {
+      answer.matchOption = true;
+      // look back until we find a target
+      for (let i = index; i >= 0; i--) {
+        if (!answer.match && answers[i] && answers[i].target === true) {
+          answer.match = answers[i].order;
+        }
+      }
+    } else {
+      answer.target = true;
+    }
+    return answer;
+  }
 
   resetAnswer() {
     this.showAnswer = false;
@@ -194,6 +226,9 @@ class MatchingQuestion extends QuestionElement {
       const answers = JSON.parse(JSON.stringify(this.answers));
       this.answers = [...answers];
     }
+    setTimeout(() => {
+      this.requestUpdate();
+    }, 0);
   }
 
   isCorrect() {
@@ -379,7 +414,7 @@ class MatchingQuestion extends QuestionElement {
           if (index > -1) {
             this.matchAnswers.splice(index, 1); // Remove one item only
           }
-          this.displayedAnswers.push(tagOption);
+          this.displayedAnswers.push(JSON.parse(JSON.stringify(tagOption)));
           break;
         case "match":
           // we have a drop event on a match. put it in the right listing
@@ -397,7 +432,8 @@ class MatchingQuestion extends QuestionElement {
           if (index > -1) {
             this.matchAnswers.splice(index, 1); // Remove one item only
           }
-          this.matchAnswers.push(tagOption);
+          this.matchAnswers.push(JSON.parse(JSON.stringify(tagOption)));
+
           break;
       }
       this.requestUpdate();
@@ -452,9 +488,9 @@ class MatchingQuestion extends QuestionElement {
     }
     if (e.target.value === "") {
       this.__activeOption.guess = null;
-      this.displayedAnswers.push(this.__activeOption);
+      this.displayedAnswers.push(JSON.parse(JSON.stringify(this.__activeOption)));
     } else {
-      this.matchAnswers.push(this.__activeOption);
+      this.matchAnswers.push(JSON.parse(JSON.stringify(this.__activeOption)));
     }
     this.shadowRoot.querySelector("dialog select").selectedIndex = 0;
     this.shadowRoot.querySelector("dialog").close();
@@ -473,7 +509,6 @@ class MatchingQuestion extends QuestionElement {
       dragEnter: { type: Boolean, reflect: true, attribute: "drag-enter" },
       matchTarget: { type: Boolean, reflect: true, attribute: "match-target" },
       matchAnswers: { type: Array },
-      targetAnswers: { type: Array },
       __activeOption: { type: Object },
     };
   }

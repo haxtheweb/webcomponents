@@ -32,9 +32,6 @@ export class SortingQuestion extends QuestionElement {
     // inputs which will show up in answers but sorting question is a bit odd
     this.randomize = true;
     this.numberCorrect = 0;
-    this.correctText = "That is correct, Great job!";
-    this.correctIcon = "icons:thumb-up";
-    this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
     this.question = "Put the following in order";
     this.t = {
@@ -90,7 +87,9 @@ export class SortingQuestion extends QuestionElement {
         el.userGuess = "";
       });
       const answers = JSON.parse(JSON.stringify(this.answers));
-      this.answers = [...answers];
+      setTimeout(() => {
+        this.answers = [...answers];        
+      }, 0);
     }
     this.numberCorrect = 0;
   }
@@ -145,17 +144,17 @@ export class SortingQuestion extends QuestionElement {
           let gotRight = this.numberCorrect === this.answers.length;
           // see if they got this correct based on their answers
           if (gotRight) {
-            this.playSound("success");
             this.__toastColor = "green";
-            this.__toastIcon = this.correctIcon;
+            this.__toastIcon = "icons:thumb-up";
             this.__toastText = this.correctText;
             this.makeItRain();
+            this.playSound("success");
             extras.hat = "party";
           } else {
-            this.playSound("error");
             this.__toastColor = "red";
-            this.__toastIcon = this.incorrectIcon;
+            this.__toastIcon = "icons:thumb-down";
             this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrect} of ${this.answers.length} ${this.t.numCorrectRight}`;
+            this.playSound("error");
             extras.fire = true;
           }
           si.icon = this.__toastIcon;
@@ -304,6 +303,7 @@ export class SortingQuestion extends QuestionElement {
       `,
     ];
   }
+
   // render the area the user will interact with the question
   // our default implementation is a multiple-choice element
   renderInteraction() {
@@ -466,7 +466,7 @@ export class SortingQuestion extends QuestionElement {
     this.resetAnswer();
     this.displayedAnswers = [];
     let d = this.answers;
-    d.push({ label: "New answer", order: this.answers.length });
+    d.push({ label: "Next" });
     this.answers = [...d];
     return true;
   }
