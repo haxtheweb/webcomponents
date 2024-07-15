@@ -50,7 +50,7 @@ class CourseModel extends LitElement {
           gizmo: {
             title: "3d Model",
             description: "3D Model viewer",
-            icon: "icons:android",
+            icon: "3d-rotation",
             color: "purple",
             tags: ["Resource", "3D", "model", "viewer"],
             handles: [],

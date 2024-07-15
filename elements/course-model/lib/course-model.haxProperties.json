@@ -7,7 +7,7 @@
   "gizmo": {
     "title": "course model",
     "description": "",
-    "icon": "icons:android",
+    "icon": "3d-rotation",
     "color": "purple",
     "tags": ["Other", "Course", "Model", "Eberly"],
     "handles": [],
