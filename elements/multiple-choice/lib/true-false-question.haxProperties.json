@@ -47,18 +47,6 @@
     "advanced": [],
     "developer": [
       {
-        "property": "correctText",
-        "title": "Correct feedback",
-        "description": "Feedback when they get it right",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "incorrectText",
-        "title": "Incorrect feedback",
-        "description": "Feedback when they get it wrong",
-        "inputMethod": "textfield"
-      },
-      {
         "property": "quizName",
         "title": "Name of the quiz",
         "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
@@ -72,7 +60,10 @@
       "displayed-answers",
       "colors",
       "answers",
-      "_tfanswer"
+      "_tfanswer",
+      "show-answer",
+      "t",
+      "attempts"
     ]
   },
   "demoSchema": [

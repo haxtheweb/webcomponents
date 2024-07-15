@@ -32,16 +32,6 @@ export class SortingQuestion extends QuestionElement {
     // inputs which will show up in answers but sorting question is a bit odd
     this.randomize = true;
     this.numberCorrect = 0;
-    this.hasHint = this.querySelector('[slot="hint"]');
-    this.hasContent = this.querySelector('[slot="content"]');
-    this.hasFeedbackCorrect = this.querySelector('[slot="feedbackCorrect"]');
-    this.hasFeedbackIncorrect = this.querySelector(
-      '[slot="feedbackIncorrect"]',
-    );
-    this.hasEvidence = this.querySelector('[slot="evidence"]');
-    this.correctText = "That is correct, Great job!";
-    this.correctIcon = "icons:thumb-up";
-    this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
     this.question = "Put the following in order";
     this.t = {
@@ -97,7 +87,9 @@ export class SortingQuestion extends QuestionElement {
         el.userGuess = "";
       });
       const answers = JSON.parse(JSON.stringify(this.answers));
-      this.answers = [...answers];
+      setTimeout(() => {
+        this.answers = [...answers];
+      }, 0);
     }
     this.numberCorrect = 0;
   }
@@ -152,17 +144,17 @@ export class SortingQuestion extends QuestionElement {
           let gotRight = this.numberCorrect === this.answers.length;
           // see if they got this correct based on their answers
           if (gotRight) {
-            this.playSound("success");
             this.__toastColor = "green";
-            this.__toastIcon = this.correctIcon;
+            this.__toastIcon = "icons:thumb-up";
             this.__toastText = this.correctText;
             this.makeItRain();
+            this.playSound("success");
             extras.hat = "party";
           } else {
-            this.playSound("error");
             this.__toastColor = "red";
-            this.__toastIcon = this.incorrectIcon;
+            this.__toastIcon = "icons:thumb-down";
             this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrect} of ${this.answers.length} ${this.t.numCorrectRight}`;
+            this.playSound("error");
             extras.fire = true;
           }
           si.icon = this.__toastIcon;
@@ -311,6 +303,7 @@ export class SortingQuestion extends QuestionElement {
       `,
     ];
   }
+
   // render the area the user will interact with the question
   // our default implementation is a multiple-choice element
   renderInteraction() {
@@ -341,13 +334,13 @@ export class SortingQuestion extends QuestionElement {
             <details
               tabindex="${this.disabled ? "-1" : ""}"
               ?disabled="${this.disabled}"
-              ?open="${!this.hasContent}"
+              ?open="${!this.querySelector('[slot="content"]')}"
               id="directions"
             >
               <summary>Directions</summary>
               <div class="container">${this.renderDirections()}</div>
             </details>
-            ${this.hasContent
+            ${this.querySelector('[slot="content"]')
               ? html` <details
                   tabindex="${this.disabled ? "-1" : ""}"
                   ?disabled="${this.disabled}"
@@ -393,50 +386,51 @@ export class SortingQuestion extends QuestionElement {
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html`
-      ${this.renderLegend()}
-      ${this.showAnswer && this.numberCorrect !== this.answers.length
-        ? html` <p class="feedback">
-              ${this.t.numCorrectLeft} ${this.numberCorrect} out of
-              ${this.answers.length} ${this.t.numCorrectRight}
-            </p>
-            ${this.hasFeedbackIncorrect
-              ? html`<slot name="feedbackIncorrect"></slot>`
-              : ``}`
-        : ``}
-      ${this.showAnswer && this.numberCorrect === this.answers.length
-        ? html` <p class="feedback">${this.correctText}</p>
-            ${this.hasFeedbackCorrect
-              ? html`<slot name="feedbackCorrect"></slot>`
-              : ``}`
-        : ``}
-      ${this.hasHint &&
-      this.showAnswer &&
-      this.numberCorrect !== this.answers.length
-        ? html`
-            <h4>Need a hint?</h4>
-            <div>
-              <slot name="hint"></slot>
-            </div>
-          `
-        : ``}
-      ${this.hasEvidence &&
-      this.showAnswer &&
-      this.numberCorrect === this.answers.length
-        ? html`
-            <h4>Evidence</h4>
-            <div>
-              <slot name="evidence"></slot>
-            </div>
-          `
-        : ``}
-      <simple-toolbar-button
-        ?disabled="${this.disabled || !this.showAnswer}"
-        @click="${this.resetAnswer}"
-        label="${this.t.tryAgain}"
-      >
-      </simple-toolbar-button>
-    `;
+    return html` ${!this.edit
+      ? html`
+          ${this.showAnswer && this.numberCorrect !== this.answers.length
+            ? html` <p class="feedback">
+                  ${this.t.numCorrectLeft} ${this.numberCorrect} out of
+                  ${this.answers.length} ${this.t.numCorrectRight}
+                </p>
+                ${this.querySelector('[slot="feedbackIncorrect"]')
+                  ? html`<slot name="feedbackIncorrect"></slot>`
+                  : ``}`
+            : ``}
+          ${this.showAnswer && this.numberCorrect === this.answers.length
+            ? html` <p class="feedback">${this.correctText}</p>
+                ${this.querySelector('[slot="feedbackCorrect"]')
+                  ? html`<slot name="feedbackCorrect"></slot>`
+                  : ``}`
+            : ``}
+          ${this.querySelector('[slot="hint"]') &&
+          this.showAnswer &&
+          this.numberCorrect !== this.answers.length
+            ? html`
+                <h4>Need a hint?</h4>
+                <div>
+                  <slot name="hint"></slot>
+                </div>
+              `
+            : ``}
+          ${this.querySelector('[slot="evidence"]') &&
+          this.showAnswer &&
+          this.numberCorrect === this.answers.length
+            ? html`
+                <h4>Evidence</h4>
+                <div>
+                  <slot name="evidence"></slot>
+                </div>
+              `
+            : ``}
+          <simple-toolbar-button
+            ?disabled="${this.disabled || !this.showAnswer}"
+            @click="${this.resetAnswer}"
+            label="${this.t.tryAgain}"
+          >
+          </simple-toolbar-button>
+        `
+      : this.renderEditModeFeedbackAreas()}`;
   }
 
   /**
@@ -473,7 +467,7 @@ export class SortingQuestion extends QuestionElement {
     this.resetAnswer();
     this.displayedAnswers = [];
     let d = this.answers;
-    d.push({ label: "New answer", order: this.answers.length });
+    d.push({ label: "Next" });
     this.answers = [...d];
     return true;
   }

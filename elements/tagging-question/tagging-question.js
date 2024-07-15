@@ -128,6 +128,15 @@ class TaggingQuestion extends QuestionElement {
     ];
   }
 
+  // this manages the directions that are rendered and hard coded for the interaction
+  renderDirections() {
+    return html`<p>
+      Select all that apply. When you are done, press
+      <strong>${this.t.checkAnswer}</strong>. You will get feedback indicating
+      correctness of your answer and how to proceed.
+    </p>`;
+  }
+
   renderInteraction() {
     return html`<div class="tag-option-container">
       <div
@@ -187,22 +196,22 @@ class TaggingQuestion extends QuestionElement {
   }
 
   renderFeedback() {
-    return html`
-      ${this.renderLegend()}
-      ${this.showAnswer && !this.isCorrect()
-        ? html` <p class="feedback">${this.incorrectText}</p>
-            ${this.hasFeedbackIncorrect
-              ? html`<slot name="feedbackIncorrect"></slot>`
-              : ``}`
-        : ``}
-      ${this.showAnswer && this.isCorrect()
-        ? html` <p class="feedback">${this.correctText}</p>
-            ${this.hasFeedbackCorrect
-              ? html`<slot name="feedbackCorrect"></slot>`
-              : ``}`
-        : ``}
-      ${this.showAnswer
-        ? html`
+    return html` ${!this.edit
+      ? html`
+          ${this.showAnswer && !this.isCorrect()
+            ? html` <p class="feedback">${this.incorrectText}</p>
+                ${this.querySelector('[slot="feedbackIncorrect"]')
+                  ? html`<slot name="feedbackIncorrect"></slot>`
+                  : ``}`
+            : ``}
+          ${this.showAnswer && this.isCorrect()
+            ? html` <p class="feedback">${this.correctText}</p>
+                ${this.querySelector('[slot="feedbackCorrect"]')
+                  ? html`<slot name="feedbackCorrect"></slot>`
+                  : ``}`
+            : ``}
+          ${this.showAnswer
+            ? html`
       <p class="feedback">${this.selectedAnswers.filter((answer) => answer.correct).length} out of ${this.answers.filter((answer) => answer.correct).length} correct${this.selectedAnswers.length > this.answers.filter((answer) => answer.correct).length && this.selectedAnswers.length > this.selectedAnswers.filter((answer) => answer.correct).length ? html`, <strong>but too many options present!</strong>` : "."}</p>
       <h4>Answers selected</h4>
       <dl>
@@ -229,30 +238,35 @@ class TaggingQuestion extends QuestionElement {
       </dl>
     </div>
   `
-        : ""}
-      ${this.hasHint && this.showAnswer && !this.isCorrect()
-        ? html`
-            <h4>Need a hint?</h4>
-            <div>
-              <slot name="hint"></slot>
-            </div>
-          `
-        : ``}
-      ${this.hasEvidence && this.showAnswer && this.isCorrect()
-        ? html`
-            <h4>Evidence</h4>
-            <div>
-              <slot name="evidence"></slot>
-            </div>
-          `
-        : ``}
-      <simple-toolbar-button
-        ?disabled="${this.disabled || !this.showAnswer}"
-        @click="${this.resetAnswer}"
-        label="${this.t.tryAgain}"
-      >
-      </simple-toolbar-button>
-    `;
+            : ""}
+          ${this.querySelector('[slot="hint"]') &&
+          this.showAnswer &&
+          !this.isCorrect()
+            ? html`
+                <h4>Need a hint?</h4>
+                <div>
+                  <slot name="hint"></slot>
+                </div>
+              `
+            : ``}
+          ${this.querySelector('[slot="evidence"]') &&
+          this.showAnswer &&
+          this.isCorrect()
+            ? html`
+                <h4>Evidence</h4>
+                <div>
+                  <slot name="evidence"></slot>
+                </div>
+              `
+            : ``}
+          <simple-toolbar-button
+            ?disabled="${this.disabled || !this.showAnswer}"
+            @click="${this.resetAnswer}"
+            label="${this.t.tryAgain}"
+          >
+          </simple-toolbar-button>
+        `
+      : this.renderEditModeFeedbackAreas()}`;
   }
 
   randomizeOptions(array) {
@@ -359,19 +373,6 @@ class TaggingQuestion extends QuestionElement {
     }
   }
 
-  checkAnswerCallback() {
-    this.showAnswer = true;
-    this.shadowRoot.querySelector("#feedback").focus();
-    const allCorrect =
-      this.answers.filter((answer) => answer.correct).length ===
-        this.selectedAnswers.filter((answer) => answer.correct).length &&
-      this.selectedAnswers.filter((answer) => answer.correct).length ===
-        this.selectedAnswers.length;
-    if (allCorrect) {
-      this.makeItRain();
-    }
-  }
-
   resetAnswer() {
     this.showAnswer = false;
     globalThis.dispatchEvent(
@@ -382,12 +383,7 @@ class TaggingQuestion extends QuestionElement {
         detail: false,
       }),
     );
-    const allCorrect =
-      this.answers.filter((answer) => answer.correct).length ===
-        this.selectedAnswers.filter((answer) => answer.correct).length &&
-      this.selectedAnswers.filter((answer) => answer.correct).length ===
-        this.selectedAnswers.length;
-    if (allCorrect) {
+    if (this.isCorrect()) {
       this.displayedAnswers = [...this.answers];
       this.selectedAnswers = [];
       this.randomizeOptions(this.displayedAnswers);

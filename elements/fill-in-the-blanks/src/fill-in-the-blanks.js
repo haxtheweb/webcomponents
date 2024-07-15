@@ -25,7 +25,7 @@ class FillInTheBlanks extends MarkTheWords {
       Read the sentance and type or select the answer at each input. Once you
       set all your answers you can press
       <strong>${this.t.checkAnswer}</strong> to test your answers. You will get
-      feedback just below here indicating correctness of your answer.
+      feedback indicating correctness of your answer.
     </p>`;
   }
 
@@ -154,8 +154,7 @@ class FillInTheBlanks extends MarkTheWords {
           answer.possible = word.split("|");
           // shuffle happens in place
           this.shuffleArray(answer.possible);
-        }
-        else {
+        } else {
           answer.answer = word;
         }
       }
@@ -175,6 +174,19 @@ class FillInTheBlanks extends MarkTheWords {
   constructor() {
     super();
     this.question = "Fill in the blanks";
+    this.isMarkTheWords = false;
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // THIS NEEDS TO NOT REACT TO ANSWERS AS ANSWERS ARE BUILT FROM STATEMENTS
+    if (
+      this.shadowRoot &&
+      this.statement &&
+      changedProperties.has("statement")
+    ) {
+      this.rebuildWordList(this.statement);
+    }
   }
 
   renderInteraction() {
@@ -223,10 +235,11 @@ class FillInTheBlanks extends MarkTheWords {
         type="select"
         .itemsList="${selectItems}"
         ?disabled="${this.showAnswer}"
-        class="tag-option ${this.showAnswer ? this.answers[index].userGuessCorrect 
-          ? "correct"
-          : "incorrect"
-        : ""}"
+        class="tag-option ${this.showAnswer
+          ? this.answers[index].userGuessCorrect
+            ? "correct"
+            : "incorrect"
+          : ""}"
       ></simple-fields-field>`;
     } else {
       return html` <simple-fields-field
@@ -234,10 +247,11 @@ class FillInTheBlanks extends MarkTheWords {
         @value-changed="${this.refreshEvent}"
         data-answer-index="${index}"
         ?disabled="${this.showAnswer}"
-        class="tag-option ${this.showAnswer ? this.answers[index].userGuessCorrect
-          ? "correct"
-          : "incorrect"
-        : ""}"
+        class="tag-option ${this.showAnswer
+          ? this.answers[index].userGuessCorrect
+            ? "correct"
+            : "incorrect"
+          : ""}"
       ></simple-fields-field>`;
     }
   }

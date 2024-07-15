@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "description": "Hax bootstrap themeing",
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+    "@haxtheweb/deduping-fix": "^9.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -67,5 +67,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "4d0f1a05892352c5639fd091187b2973c73545e2"
+  "gitHead": "77b3fbce0cfab6f70716e875d24b77c5f9c01d99"
 }

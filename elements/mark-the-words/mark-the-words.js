@@ -22,6 +22,7 @@ export class MarkTheWords extends QuestionElement {
     this.statement = "";
     this.numberCorrect = 0;
     this.numberGuessed = 0;
+    this.isMarkTheWords = true;
   }
 
   getGuess() {
@@ -41,7 +42,8 @@ export class MarkTheWords extends QuestionElement {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has("statement") || changedProperties.has('answers')) {
+    // THIS NEEDS A TRAP TO ONLY REACT TO ITSELF OR ELSE THINGS THAT DON'T HAVE ANSWERS INFINITE LOOP
+    if (this.isMarkTheWords && this.shadowRoot && this.statement && (changedProperties.has("statement") || changedProperties.has('answers'))) {
       this.rebuildWordList(this.statement);
     }
   }
@@ -51,7 +53,7 @@ export class MarkTheWords extends QuestionElement {
     const wordList = statement.trim().split(/\s+/g);
     for (var i in wordList) {
       let answerMatch = this.displayedAnswers.find(
-        (answer) => wordList[i].toLowerCase() === answer.label.toLowerCase(),
+        (answer) => answer.label && wordList[i].toLowerCase() === answer.label.toLowerCase(),
       );
       this.wordList.push({
         text: wordList[i],
@@ -223,9 +225,9 @@ export class MarkTheWords extends QuestionElement {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      <strong>Select all</strong> the words that apply to the question. Then press
+      <strong>Select all</strong> the words that apply. Then press
       <strong>${this.t.checkAnswer}</strong> to test your answers. You will get
-      feedback just below here indicating correctness of your answer.
+      feedback indicating correctness of your answer.
     </p>`;
   }
 
@@ -233,10 +235,7 @@ export class MarkTheWords extends QuestionElement {
   renderFeedback() {
     return html`
     ${!this.edit ? html`
-      ${this.showAnswer &&
-      (this.numberCorrect !==
-        this.displayedAnswers.filter((answer) => answer.correct).length ||
-        this.numberCorrect !== this.numberGuessed)
+      ${this.showAnswer
         ? html` <p class="feedback">
               ${this.t.numCorrectLeft}
               ${this.numberCorrect} out of ${this.displayedAnswers.filter(

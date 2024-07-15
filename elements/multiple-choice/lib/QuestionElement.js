@@ -32,9 +32,8 @@ export class QuestionElement extends SchemaBehaviors(
     this.question = "";
     this.answers = [];
     this.displayedAnswers = [];
-    this.correctText = "Great job!";
-    this.incorrectText = "Better luck next time!";
-    this.incorrectIcon = "icons:thumb-down";
+    this.correctText = "You are correct!";
+    this.incorrectText = "Try again!";
     this.quizName = "default";
     this.t = {
       numCorrectLeft: "You have",
@@ -74,10 +73,19 @@ export class QuestionElement extends SchemaBehaviors(
         })
         
       }
-      if (propName == "answers" && this.answers && this.answers.length > 0) {
+      if (propName == "answers" && this.answers && this.answers.length > 0 && !this.__answerLock) {
+        this.__answerLock = true;
+        // validate answer data structure
+        const newAs = this.cleanAnswerData(this.answers);
+        this.answers = [...newAs];
         this.displayedAnswers = [
           ...this._computeDisplayedAnswers([...this.answers], this.randomize),
         ];
+        // lock ensures that if data is cleaned above it doesn't reload loop
+        setTimeout(() => {
+          this.__answerLock = false;          
+        }, 0);
+
       }
     });
   }
@@ -331,20 +339,6 @@ export class QuestionElement extends SchemaBehaviors(
         type: Array,
       },
       /**
-       * Correct answer text to display
-       */
-      correctText: {
-        type: String,
-        attribute: "correct-text",
-      },
-      /**
-       * Incorrect answer text to display
-       */
-      incorrectText: {
-        type: String,
-        attribute: "incorrect-text",
-      },
-      /**
        * Name of the quiz - hardcoded for now from HTML
        */
       quizName: {
@@ -441,6 +435,9 @@ export class QuestionElement extends SchemaBehaviors(
         grid-plate {
           view-transition-name: grid-shift;
           transition: 0.3s ease-in-out height;
+        }
+        details {
+          max-width: unset;
         }
         details[open] {
           view-transition-name: details-open;
@@ -637,12 +634,13 @@ export class QuestionElement extends SchemaBehaviors(
         :host([edit]) .edit-wrapper ::slotted(*) {
           display: block;
           width: 100%;
-          padding: 16px;
+          border: var(--ddd-border-sm);
+          border-style: dashed;
         }
-        :host([edit]) .edit-wrapper ::slotted(*)::before {
-          content: attr(slot);
+        :host([edit]) .edit-wrapper ::slotted(*:empty)::before {
           display: block;
-          font-size: 16px;
+          font-size: 12px;
+          content: "Add content";
         }
       `,
     ];
@@ -835,9 +833,9 @@ export class QuestionElement extends SchemaBehaviors(
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      Select the answers you feel satsisfy the question. When you are done,
-      select <strong>${this.t.checkAnswer}</strong>. You will get feedback just
-      below here indicating correctness of your answer and how to proceed.
+      Select the answer you feel satsisfy the question. When you are done,
+      press <strong>${this.t.checkAnswer}</strong>. You will get feedback
+      indicating correctness of your answer and how to proceed.
     </p>`;
   }
 
@@ -963,6 +961,37 @@ export class QuestionElement extends SchemaBehaviors(
     }
     this.requestUpdate();
   }
+  // ensure data model of the answers is normalized
+  cleanAnswerData(answers) {
+    let newAnswers = [];
+    // force reset bc data changed
+    this.showAnswer = false;
+    for (let i in answers) {
+      let tmpA = { ... this.answerPrototype(), ...answers[i]};
+      tmpA.order = parseInt(i);
+      newAnswers.push({...this.cleanAnswerDataBeforeSend(tmpA, parseInt(i), answers)});
+    }
+    return newAnswers;
+  }
+
+  cleanAnswerDataBeforeSend(answer, index, answers) {
+    // stub for advanced element usage where items are relative to each other
+    return answer;
+  }
+  // answer object so we can verify answer structure given that we have many things
+  // working up above and we don't want to have to constantly provide hidden UI elements just for
+  // things like order which is calculated
+  answerPrototype() {
+    return {
+      order: null,
+      label: '',
+      correct: false,
+      image: null,
+      alt: '',
+      selectedFeedback: null,
+      unselectedFeedback: null,
+    }
+  }
   // convert the input to data
   processInput(index, inputs, answers) {
     let input = inputs[index];
@@ -1009,10 +1038,18 @@ export class QuestionElement extends SchemaBehaviors(
   renderEditModeFeedbackAreas() {
     return html`
       <div class="edit-wrapper">
+        <h4>Related Content</h4>
+        <p>This creates a collapsed area for content related to this question and is always shown</p>
         <slot name="content"></slot>
+        <h4>Feedback for incorrect answer</h4>
         <slot name="feedbackIncorrect"></slot>
+        <h4>Feedback for correct answer</h4>
         <slot name="feedbackCorrect"></slot>
+        <h4>Hint</h4>
+        <p>This is presented if the user gets the answer wrong</p>
         <slot name="hint"></slot>
+        <h4>Evidence</h4>
+        <p>This is presented if the user gets the answer correct</p>
         <slot name="evidence"></slot>
       </div>
     `;
