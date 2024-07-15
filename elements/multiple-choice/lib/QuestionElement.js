@@ -371,7 +371,7 @@ export class QuestionElement extends SchemaBehaviors(
         :host {
           display: block;
           min-width: 160px;
-          padding: var(--ddd-spacing-8);
+          padding: var(--ddd-spacing-4);
           border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-sm);
@@ -403,6 +403,10 @@ export class QuestionElement extends SchemaBehaviors(
           );
           --simple-fields-border-bottom-size: 0px;
           --simple-fields-border-bottom-focus-size: 0px;
+
+          --simple-fields-margin-small: 42px;
+          --grid-plate-item-margin: 0 8px;
+          --grid-plate-item-padding: 0 8px;
         }
 
         :host(:focus),
@@ -455,6 +459,9 @@ export class QuestionElement extends SchemaBehaviors(
         details[open] .container h4 {
           margin-top: 0;
         }
+        #legend {
+          margin: 0 -26px;
+        }
         ul {
           list-style: none;
           padding: 0;
@@ -462,7 +469,7 @@ export class QuestionElement extends SchemaBehaviors(
         }
         h3 {
           padding: 0;
-          margin: 0 0 var(--ddd-spacing-8) 0;
+          margin: 0 0 var(--ddd-spacing-4) 0;
           font-family: var(--ddd-font-navigation);
         }
         ul li {
@@ -642,6 +649,23 @@ export class QuestionElement extends SchemaBehaviors(
           font-size: 12px;
           content: "Add content";
         }
+        @media (max-width: 600px) {
+          :host {
+            padding: 4px;
+            margin: 0;
+            --grid-plate-item-margin: 0;
+            --grid-plate-item-padding: 0;
+            font-size: var(--ddd-font-size-4xs);
+          }
+          h3 {
+            margin: 4px;
+          }
+          :host .column ::slotted(*) {
+            padding: 0;
+            margin: 0;
+           
+          }
+        }
       `,
     ];
   }
@@ -737,11 +761,30 @@ export class QuestionElement extends SchemaBehaviors(
       <confetti-container id="confetti">
         <grid-plate layout="1-1">
           <div slot="col-1">
-            <h3 property="oer:name">${this.question}</h3>
-            ${this.renderInteraction()}
-            ${!this.hideButtons ? this.renderButtons() : nothing}
+            <details open>
+              <summary id="question"><simple-icon-lite class="details-icon" icon="hax:head-question"></simple-icon-lite>Question</summary>
+            <div class="container">
+              <h3 property="oer:name">${this.question}</h3>
+              ${this.renderInteraction()}
+              ${!this.hideButtons ? this.renderButtons() : nothing}
+            </div>
+            </details>
           </div>
           <div slot="col-2">
+            <details
+              tabindex="${!this.showAnswer ? "-1" : ""}"
+              ?disabled="${!this.showAnswer && !this.edit}"
+              ?open="${this.showAnswer}"
+            >
+              <summary id="feedback"><simple-icon-lite class="details-icon" icon="icons:feedback"></simple-icon-lite>Feedback</summary>
+              <div class="container">
+                <details id="legend">
+                  <summary><simple-icon-lite class="details-icon" icon="hax:map-legend"></simple-icon-lite>Legend</summary>
+                  <div class="container">${this.renderLegend()}</div>
+                </details>
+                ${this.renderFeedback()}
+              </div>
+            </details>
             ${this.querySelector('[slot="content"]') && !this.edit
             ? html` <details ?open="${!this.showAnswer}" id="related">
                 <summary><simple-icon-lite class="details-icon" icon="lrn:content"></simple-icon-lite>Related content</summary>
@@ -752,19 +795,8 @@ export class QuestionElement extends SchemaBehaviors(
             : nothing}
             <details ?open="${!this.querySelector('[slot="content"]')}" id="directions">
               <summary><simple-icon-lite class="details-icon" icon="maps:directions"></simple-icon-lite>Directions</summary>
-              <div class="container">${this.renderDirections()}</div>
-            </details>
-            <details ?open="${this.showAnswer}" id="legend">
-              <summary><simple-icon-lite class="details-icon" icon="hax:map-legend"></simple-icon-lite>Legend</summary>
-              <div class="container">${this.renderLegend()}</div>
-            </details>
-            <details
-              tabindex="${!this.showAnswer ? "-1" : ""}"
-              ?disabled="${!this.showAnswer && !this.edit}"
-              ?open="${this.showAnswer}"
-            >
-              <summary id="feedback"><simple-icon-lite class="details-icon" icon="icons:feedback"></simple-icon-lite>Feedback</summary>
-              <div class="container">${this.renderFeedback()}</div>
+              <div class="container">
+              ${this.renderDirections()}</div>
             </details>
           </div>
         </grid-plate>

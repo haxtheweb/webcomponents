@@ -21,7 +21,7 @@
     "handles": [
       {
         "type": "text",
-        "title": "label"
+        "title": "title"
       }
     ],
     "meta": {

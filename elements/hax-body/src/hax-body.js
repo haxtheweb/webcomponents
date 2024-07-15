@@ -1394,13 +1394,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
     // special support for place holder which defines exactly
     // what the user wants this replaced with
-    if (
-      element.tag === "place-holder" &&
-      typeof element.properties["type"] !== typeof undefined
-    ) {
-      type = element.properties["type"];
-      skipPropMatch = true;
-    } else if (this.primitiveTextBlocks.includes(element.tag)) {
+    if (this.primitiveTextBlocks.includes(element.tag)) {
       skipPropMatch = true;
     }
     var props = !!element.content ? { innerHTML: element.content } : {};

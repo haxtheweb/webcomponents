@@ -152,6 +152,7 @@ export const HaxIconsetManifest = [
       "h5",
       "h6",
       "hax2022",
+      "head-question",
       "home-edit",
       "hr",
       "html-code",

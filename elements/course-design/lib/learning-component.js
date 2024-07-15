@@ -426,12 +426,6 @@ class LearningComponent extends I18NMixin(DDD) {
             inputMethod: "url",
           },
           {
-            slot: "",
-            title: "Contents",
-          },
-        ],
-        advanced: [
-          {
             property: "title",
             title: "Title",
             description: "Set Title, this overrides type based title",
@@ -450,11 +444,11 @@ class LearningComponent extends I18NMixin(DDD) {
             inputMethod: "colorpicker",
           },
           {
-            property: "dark",
-            title: "Dark mode",
-            description: "Invert high and low tones",
-            inputMethod: "boolean",
+            slot: "",
+            title: "Contents",
           },
+        ],
+        advanced: [
         ],
       },
       saveOptions: {
@@ -464,7 +458,6 @@ class LearningComponent extends I18NMixin(DDD) {
         {
           tag: "learning-component",
           properties: {
-            type: "objectives",
             subtitle: "Unit 1",
           },
           content: "<p>By the end of this lesson, you should be able to...</p>",

@@ -113,6 +113,13 @@ export class MarkTheWords extends QuestionElement {
           line-height: 2.2;
         }
 
+        @media (max-width: 600px) {
+          .text {
+            margin: var(--ddd-spacing-1);
+            padding: var(--ddd-spacing-1);
+          }
+        }
+
         .tag-option {
           font-size: var(--ddd-font-size-s);
           height: auto;

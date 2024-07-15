@@ -225,7 +225,7 @@ class PlaceHolder extends SimpleColors {
     this.iconFromType = "editor:format-align-left";
     this.type = "text";
     this.dragOver = false;
-    this.directions = "Double click or drag and drop file to replace";
+    this.directions = "Drag and drop file to replace";
     this.addEventListener("dragover", function (e) {
       this.dragOver = true;
       e.preventDefault();
@@ -265,15 +265,13 @@ class PlaceHolder extends SimpleColors {
         }
       } catch (e) {}
     });
-    this.addEventListener("dblclick", this.fireReplaceEvent.bind(this));
   }
   /**
    * HAX
    */
   static get haxProperties() {
     return {
-      canScale: true,
-
+      canScale: false,
       canEditSource: false,
       gizmo: {
         title: "Placeholder",
@@ -293,7 +291,8 @@ class PlaceHolder extends SimpleColors {
           "math",
           "text",
         ],
-        handles: [],
+        handles: [
+        ],
         meta: {
           author: "HAXTheWeb core team",
         },

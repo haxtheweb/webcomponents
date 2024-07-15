@@ -71,7 +71,8 @@
       "answers",
       "displayed-answers",
       "t",
-      "show-answer"
+      "show-answer",
+      "edit"
     ]
   },
   "documentation": {
