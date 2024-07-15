@@ -81,7 +81,6 @@ class ChatInput extends DDD {
     ];
   }
 
-  // TODO change the send button to simple-cta, will have to ensure coloring works properly.
   render() {
     return html`
       <div class="chat-input-wrapper">
