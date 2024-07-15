@@ -38,7 +38,7 @@ class ShortAnswerQuestion extends QuestionElement {
 
   renderDirections() {
     return html`<p>
-      Type the answer you feel satsisfies the question. When you are done,
+      Type the answer you feel answers the question. When you are done,
       select <strong>${this.t.checkAnswer}</strong>. You will get feedback
       indicating correctness of your answer.
     </p>`;
