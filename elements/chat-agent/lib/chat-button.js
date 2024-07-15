@@ -55,8 +55,7 @@ class ChatButton extends DDD {
           display: none;
         }
 
-        /* TODO modfiy focus to lose focus when no longer hovering or after click https://stackoverflow.com/questions/19053181/how-to-remove-focus-around-buttons-on-click */
-        .chat-button-wrapper:hover .label-wrapper, .chat-button-wrapper:focus .label-wrapper {
+        .chat-button-wrapper:hover .label-wrapper, .chat-button-wrapper:focus-visible .label-wrapper {
           text-decoration: underline;
         }
 
