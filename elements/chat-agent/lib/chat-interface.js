@@ -4,10 +4,11 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
-import { autorun, toJS } from "mobx";
 
 class ChatInterface extends DDD {
+
   static get tag() {
     return "chat-interface";
   }
@@ -19,37 +20,31 @@ class ChatInterface extends DDD {
     this.isFullView = null;
     this.isInterfaceHidden = null;
     this.hasEditorUI = null;
-
+    
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
-      this.developerModeEnabled = toJS(
-        ChatAgentModalStore.developerModeEnabled,
-      );
+      this.developerModeEnabled = toJS(ChatAgentModalStore.developerModeEnabled);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-
+      
       // TODO will change, brute forcing for now
       const tempSiteGrabber = document.querySelector("#site");
-
+      
       // TODO add something so this if statement is called when window size changes (event listener?)
       if (window.innerHeight > 1000) {
-        this.isFullView && !this.isInterfaceHidden
-          ? (tempSiteGrabber.style.width = "65%")
-          : (tempSiteGrabber.style.width = "100%");
+        this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "65%" : tempSiteGrabber.style.width = "100%";
       } else {
-        this.isFullView && !this.isInterfaceHidden
-          ? (tempSiteGrabber.style.width = "75%")
-          : (tempSiteGrabber.style.width = "100%");
+        this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
       }
-
+      
       // TODO again, brute forcing for now
-      if (document.querySelector("haxcms-site-editor-ui")) {
+      if (document.querySelector('haxcms-site-editor-ui')) {
         this.hasEditorUI = true;
       } else {
-        this.hasEditorUI = false;
+        this.hasEditorUI = false; 
       }
       console.log(hasEditorUI);
-    });
+    })
   }
 
   static get styles() {
@@ -57,7 +52,7 @@ class ChatInterface extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-
+        
         :host {
           display: block;
           z-index: 999999;
@@ -78,33 +73,29 @@ class ChatInterface extends DDD {
         :host([is-interface-hidden]) .chat-interface-wrapper {
           display: none;
         }
-
+        
         /* Chat Wrapper */
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-2)
-            var(--ddd-spacing-2) var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-xl);
         }
-
+        
         :host([is-full-view]) .chat-wrapper {
-          margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6)
-            var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
           height: 94%;
-        }
-
+        } 
+        
         :host([is-full-view][has-editor-ui]) .chat-wrapper {
-          margin: var(--ddd-spacing-18) var(--ddd-spacing-0)
-            var(--ddd-spacing-0) var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-18) var(--ddd-spacing-0) var(--ddd-spacing-0) var(--ddd-spacing-0);
           height: 87%;
-        }
-
-        :host([developer-mode]),
-        .chat-wrapper {
+        } 
+        
+        :host([developer-mode]), .chat-wrapper {
           padding-top: var(--ddd-spacing-1);
         }
-
+        
         /* Main Wrapper */
         .main-wrapper {
           display: flex;
@@ -118,7 +109,7 @@ class ChatInterface extends DDD {
         :host([is-full-view][developer-mode]) .main-wrapper {
           height: 88%;
         }
-
+        
         /* Chat Container */
         .chat-container {
           width: 100%;
@@ -131,7 +122,7 @@ class ChatInterface extends DDD {
         :host([is-full-view]) .chat-container {
           height: 92%;
         }
-
+        
         :host([is-full-view][developer-mode]) .chat-container {
           height: 90%;
         }
@@ -143,7 +134,7 @@ class ChatInterface extends DDD {
           overflow-y: auto;
           scrollbar-width: thin;
         }
-
+        
         :host([is-full-view]) .chat-messages {
           max-height: 100%;
           height: 100%;
@@ -170,7 +161,25 @@ class ChatInterface extends DDD {
             }
           }
 
-          @media only screen and (max-height: 1200px) and (min-height: 940px) {
+          @media only screen and (max-height: 1200px) and (min-height: 1001px) {
+            :host([is-full-view]) .chat-wrapper {
+              height: 96%;
+            }
+
+            :host([is-full-view][has-editor-ui]) .chat-wrapper {
+              height: 91.5%;
+            }
+
+            :host([is-full-view]) .main-wrapper {
+              height: 102%;
+            }
+
+            :host([is-full-view][developer-mode]) .main-wrapper {
+              height: 94%;
+            }
+          }
+
+          @media only screen and (max-height: 1001px) and (min-height: 940px) { /* Modify more for even bigger screen sizes -_- */
             :host([is-full-view]) .chat-wrapper {
               height: 96%;
             }
@@ -279,8 +288,10 @@ class ChatInterface extends DDD {
           }
         }
 
+
         /* This should cover a lot of vertical monitors */
         @media only screen and (max-width: 1080px) {
+
           @media only screen and (min-height: 1720px) {
             :host([is-full-view]) .chat-wrapper {
               height: 98%;
@@ -299,7 +310,7 @@ class ChatInterface extends DDD {
             }
           }
 
-          @media only screen and (max-height: 1719px) and (min-height: 1600px) {
+          @media only screen and (max-height: 1719px)  and  (min-height: 1600px){
             :host([is-full-view]) .chat-wrapper {
               height: 97.5%;
             }
@@ -337,7 +348,7 @@ class ChatInterface extends DDD {
 
           @media only screen and (max-height: 1499px) and (min-height: 1440px) {
             :host([is-full-view]) .chat-wrapper {
-              height: 96.5%;
+              height: 96.5%; 
             }
 
             :host([is-full-view][has-editor-ui]) .chat-wrapper {
@@ -395,7 +406,7 @@ class ChatInterface extends DDD {
             }
 
             :host([is-full-view][has-editor-ui]) .chat-wrapper {
-              height: 94%;
+              height: 94%
             }
 
             :host([is-full-view]) .main-wrapper {
@@ -461,7 +472,7 @@ class ChatInterface extends DDD {
             }
           }
 
-          @media only screen and (max-height: 1099px) and (min-height: 1000px) {
+          @media only screen and (max-height: 1099px) and (min-height: 1050px) {
             :host([is-full-view]) .chat-wrapper {
               height: 96%;
             }
@@ -479,7 +490,25 @@ class ChatInterface extends DDD {
             }
           }
 
-          @media only screen and (max-height: 999px) and (min-height: 880px) {
+          @media only screen and (max-height: 1049px) and (min-height: 1000px) {
+            :host([is-full-view]) .chat-wrapper {
+              height: 96%;
+            }
+
+            :host([is-full-view][has-editor-ui]) .chat-wrapper {
+              height: 92%;
+            }
+
+            :host([is-full-view]) .main-wrapper {
+              height: 99.5%;
+            }
+
+            :host([is-full-view][developer-mode]) .main-wrapper {
+              height: 94%;
+            }
+          }
+
+          @media only screen and (max-height: 999px) and (min-height: 880px){
             :host([is-full-view]) .chat-wrapper {
               height: 96%;
             }
@@ -551,7 +580,7 @@ class ChatInterface extends DDD {
             height: 85%;
           }
         }
-      `,
+      `
     ];
   }
 
@@ -560,28 +589,18 @@ class ChatInterface extends DDD {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
-          ${ChatAgentModalStore.developerModeEnabled
-            ? html` <chat-developer-panel></chat-developer-panel> `
-            : ""}
+          ${ChatAgentModalStore.developerModeEnabled ? html`
+            <chat-developer-panel></chat-developer-panel>
+          ` : ''}
           <div class="main-wrapper">
             <chat-control-bar></chat-control-bar>
             <div class="chat-container">
               <div class="chat-messages">
-                ${this.chatLog.map(
-                  (message) => html`
-                    <chat-message
-                      message="${message.message}"
-                      ?sent-prompt="${message.author ===
-                      ChatAgentModalStore.userName}"
-                      ?suggested-prompts="${ChatAgentModalStore
-                        .currentSuggestions.length > 0}"
-                    ></chat-message>
-                  `,
-                )}
+                  ${this.chatLog.map((message) => html`
+                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${ChatAgentModalStore.currentSuggestions.length > 0}"></chat-message>
+                  `)}
               </div>
-              <chat-input
-                placeholder="${ChatAgentModalStore.promptPlaceholder}"
-              ></chat-input>
+              <chat-input placeholder="${ChatAgentModalStore.promptPlaceholder}"></chat-input>
             </div>
           </div>
         </div>

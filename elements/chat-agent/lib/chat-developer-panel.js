@@ -5,10 +5,11 @@
 
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
-import { autorun, toJS } from "mobx";
 
 class ChatDeveloperPanel extends DDD {
+
   static get tag() {
     return "chat-developer-panel";
   }
@@ -17,7 +18,7 @@ class ChatDeveloperPanel extends DDD {
     super();
     this.chatLog = [];
     this.engine = null;
-
+    
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.engine = toJS(ChatAgentModalStore.engine);
@@ -25,7 +26,7 @@ class ChatDeveloperPanel extends DDD {
   }
 
   static get styles() {
-    return [
+    return[
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
@@ -83,59 +84,47 @@ class ChatDeveloperPanel extends DDD {
             display: none;
           }
         }
-      `,
+      `
     ];
   }
 
-  // TODO swap buttons for simple-cta, ensures uniformity across browsers
   render() {
     return html`
       <div class="chat-developer-panel-wrapper">
+
         <div class="console-table">
           <!-- Maybe convert buttons to simple-cta -->
-          <button
-            id="console-table-user"
-            @click=${this.handleConsoleTableButton}
-          >
+          <button id="console-table-user" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
-              <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
+              <simple-icon-lite icon="hax:console-line"></simple-icon-lite> 
               <simple-icon-lite icon="lrn:user"></simple-icon-lite>
             </div>
             <div class="button-text">
               <span class="btn-txt">console.table() user chat log</span>
-            </div>
+            </div> 
           </button>
 
-          <button
-            id="console-table-merlin"
-            @click=${this.handleConsoleTableButton}
-          >
+          <button id="console-table-merlin" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
-              <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
+              <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite> 
             </div>
             <div class="button-text">
               <span class="btn-txt">console.table() merlin chat log</span>
             </div>
           </button>
 
-          <button
-            id="console-table-all"
-            @click=${this.handleConsoleTableButton}
-          >
+          <button id="console-table-all" @click=${this.handleConsoleTableButton}>
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
               <simple-icon-lite icon="book"></simple-icon-lite>
             </div>
             <div class="button-text">
-              <span class="btn-txt">console.table() entire chat log</span>
+              <span class="btn-txt">console.table() entire chat log</span>  
             </div>
           </button>
 
-          <button
-            id="download-as-json"
-            @click=${this.handleDownloadAsJsonButton}
-          >
+          <button id="download-as-json" @click=${this.handleDownloadAsJsonButton}>
             <div class="button-icon">
               <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
               <simple-icon-lite icon="hax:code-json"></simple-icon-lite>
@@ -148,14 +137,11 @@ class ChatDeveloperPanel extends DDD {
 
         <div class="switch-engine-controls">
           <button id="switch-engine-btn">
-            <div class="button-icon">
+          <div class="button-icon">
               <simple-icon-lite icon="hardware:memory"></simple-icon-lite>
             </div>
             <div class="button-text" @click=${this.handleSwitchEngineButton}>
-              <span class="btn-txt">Switch LLM Engine</span>
-              <span class="switch-engine-txt"
-                >(Current Engine = <em>${this.engine}</em>)</span
-              >
+              <span class="btn-txt">Switch LLM Engine</span> <span class="switch-engine-txt">(Current Engine = <em>${this.engine}</em>)</span>
             </div>
           </button>
         </div>
@@ -169,7 +155,7 @@ class ChatDeveloperPanel extends DDD {
    */
   handleConsoleTableButton(e) {
     const TARGET = e.currentTarget.id;
-
+    
     console.info(`HAX-DEV-MODE: ${TARGET} button pressed.`);
 
     switch (TARGET) {
@@ -177,24 +163,24 @@ class ChatDeveloperPanel extends DDD {
         console.table(this.compileChatLog(ChatAgentModalStore.userName));
         break;
       case "console-table-merlin":
-        console.table(this.compileChatLog("merlin"));
+        console.table(this.compileChatLog("merlin"))
         break;
       case "console-table-all":
-        console.table(this.chatLog);
+        console.table(this.chatLog)
         break;
     }
   }
-
+  
   /**
    * @description compiles a smaller chat log for the given author of messages
    * @param {string} author - the name of the author of the messages. Either the user's name or "merlin".
    */
   compileChatLog(author) {
-    console.info(`HAX-DEV-MODE: Compiling "${author}" chat log`);
-
+    console.info(`HAX-DEV-MODE: Compiling "${author}" chat log`)
+    
     let newChatLog = [];
 
-    this.chatLog.forEach((object) => {
+    this.chatLog.forEach(object => {
       if (object.author === author) {
         newChatLog.push(object);
       }
@@ -207,9 +193,9 @@ class ChatDeveloperPanel extends DDD {
    * @description downloads the chat log as a .json file
    */
   handleDownloadAsJsonButton() {
-    console.info(`HAX-DEV-MODE: Downloading chat log as .json...`);
+    console.info(`HAX-DEV-MODE: Downloading chat log as .json...`)
 
-    ChatAgentModalStore.handleDownload("json");
+    ChatAgentModalStore.handleDownload('json');
   }
 
   /**
@@ -225,12 +211,9 @@ class ChatDeveloperPanel extends DDD {
         break;
     }
 
-    console.info(
-      `HAX-DEV-MODE: Engine switched to ${ChatAgentModalStore.engine} (store) & ${this.engine} (autorun)`,
-    );
+    console.info(`HAX-DEV-MODE: Engine switched to ${ChatAgentModalStore.engine} (store) & ${this.engine} (autorun)`);
 
-    this.shadowRoot.querySelector(".switch-engine-txt").innerHTML =
-      `(Current Engine = <em>${this.engine}</em>)`;
+    this.shadowRoot.querySelector(".switch-engine-txt").innerHTML = `(Current Engine = <em>${this.engine}</em>)`;
   }
 
   static get properties() {
