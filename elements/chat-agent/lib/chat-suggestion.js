@@ -32,7 +32,7 @@ class ChatSuggestion extends DDD {
     })
   }
 
-  // TODO make it so suggestions take up a whole row, make a bit smaller as well (shape size and font size)
+  // TODO container queries for icons, make smaller, then disappear when too small
   static get styles() {
     return [
       super.styles,

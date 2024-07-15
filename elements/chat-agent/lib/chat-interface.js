@@ -37,7 +37,6 @@ class ChatInterface extends DDD {
         this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
       }
       
-      // TODO again, brute forcing for now
       if (document.querySelector('haxcms-site-editor-ui')) {
         this.hasEditorUI = true;
       } else {
@@ -141,7 +140,7 @@ class ChatInterface extends DDD {
         }
 
         /* TODO test the media queries for quality assurance, and test without editor ui & without developer mode */
-        /* This should coveer a lot of horizontal monitors */
+        /* This should cover a lot of horizontal monitors */
         @media only screen and (min-width: 1081px) {
           @media only screen and (min-height: 1201px) {
             :host([is-full-view]) .chat-wrapper {
@@ -584,7 +583,6 @@ class ChatInterface extends DDD {
     ];
   }
 
-  // TODO page scrolls down when new message is mapped
   render() {
     return html`
       <div class="chat-interface-wrapper">
@@ -606,6 +604,15 @@ class ChatInterface extends DDD {
         </div>
       </div>
     `;
+  }
+
+  // TODO scroll down to bottom when new chatLog message is mapped
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+
+
   }
 
   static get properties() {

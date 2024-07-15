@@ -69,9 +69,6 @@ class ChatAgent extends DDD {
     store.userData.userName !== undefined
       ? (this.userName = store.userData.userName)
       : (this.userName = "guest");
-    store.userData.userPicture !== undefined
-      ? (this.userPicture = store.userData.userPicture)
-      : null; // TODO may not utilize, remove if not utilized
     this.context = "phys211"; // test with phys211
     this.isLoading = null;
     this.dataCollectionEnabled = true;
@@ -151,8 +148,6 @@ class ChatAgent extends DDD {
         this.buttonIcon = "hax:wizard-hat";
       }
     });
-
-    // TODO would like to add JS for when the user goes to refresh the page, it asks if they would like to do that. Could be used at restart as well
   }
 
   /**
@@ -450,7 +445,7 @@ class ChatAgent extends DDD {
               this.answers = [d.data.answers];
               this.developerModeEnabled ? console.info(this.answers) : null;
               this.question = d.data.question;
-              this.currentSuggestions = []; // TODO add support for AI based suggestiongs
+              this.currentSuggestions = []; // TODO add support for AI based suggestions
             }
 
             this.isLoading = false;

@@ -450,7 +450,7 @@ class ChatAgent extends DDD {
               this.answers = [d.data.answers];
               this.developerModeEnabled ? console.info(this.answers) : null;
               this.question = d.data.question;
-              this.currentSuggestions = []; // TODO add support for AI based suggestiongs
+              this.currentSuggestions = []; // TODO add support for AI based suggestions
             }
 
             this.isLoading = false;
