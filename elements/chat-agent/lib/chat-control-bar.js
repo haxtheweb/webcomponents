@@ -44,6 +44,16 @@ class ChatControlBar extends DDD {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-0);
         }
 
+        button {
+          background-color: var(--ddd-theme-default-potentialMidnight);
+          color: var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-md);
+        }
+
+        button > simple-icon-lite {
+          --simple-icon-color: var(--ddd-theme-default-white);
+        }
+
         .data-collection-icon {
           --simple-icon-color: var(--ddd-theme-default-original87Pink);
         }
@@ -62,7 +72,6 @@ class ChatControlBar extends DDD {
     ];
   }
 
-  // TODO issue with button colors in Opera Dark Mode, test compatibility and add CSS for this specific situation, possibly the color switching thing I implemented into media-quote for accessibility
   render() {
     return html`
       <!-- https://haxapi.vercel.app/?path=/story/media-icons--hax-iconset-story -->

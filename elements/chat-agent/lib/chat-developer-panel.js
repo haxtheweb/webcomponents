@@ -64,6 +64,13 @@ class ChatDeveloperPanel extends DDD {
           justify-content: center;
           cursor: pointer;
           gap: var(--ddd-spacing-1);
+          background-color: var(--ddd-theme-default-potentialMidnight);
+          color: var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-md);
+        }
+
+        button > simple-icon-lite {
+          --simple-icon-color: var(--ddd-theme-default-white);
         }
 
         @container (max-width: 500px) {
