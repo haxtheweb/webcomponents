@@ -265,7 +265,6 @@ class HaxTray extends I18NMixin(
         }
         :host([tray-detail="view-source"]) .detail {
           width: 50vw;
-          height: 50vh;
           min-height: 300px;
           min-width: calc(var(--hax-tray-width) - 100px);
           resize: both;
