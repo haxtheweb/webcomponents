@@ -21,7 +21,10 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     return [
       ...HaxComponentStyles,
       css`
-        :host,
+        :host {
+          display: block;
+          height: calc(100vh - 120px);
+        }
         #wrapper {
           margin: 0;
           padding: 0;
@@ -41,6 +44,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           bottom: 0;
           margin: 0;
           padding: 0;
+          height: calc(100vh - 200px);
         }
         .updatecontent {
           background-color: var(--simple-colors-default-theme-green-1);
