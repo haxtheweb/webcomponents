@@ -95,7 +95,7 @@ class ChatButton extends DDD {
 
   render() {
     return html`
-      <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0">
+      <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0" aria-label="${this.isInterfaceHidden ? 'Open Interface' : 'Close Interface'}">
         <div class="icon-wrapper">
           <simple-icon-lite icon="${ChatAgentModalStore.buttonIcon}"></simple-icon-lite>
         </div>

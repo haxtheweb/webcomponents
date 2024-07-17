@@ -101,7 +101,7 @@ class ChatDeveloperPanel extends DDD {
 
         <div class="console-table">
           <!-- Maybe convert buttons to simple-cta -->
-          <button id="console-table-user" @click=${this.handleConsoleTableButton}>
+          <button id="console-table-user" @click=${this.handleConsoleTableButton} aria-label="Console table user chat log">
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite> 
               <simple-icon-lite icon="lrn:user"></simple-icon-lite>
@@ -111,7 +111,7 @@ class ChatDeveloperPanel extends DDD {
             </div> 
           </button>
 
-          <button id="console-table-merlin" @click=${this.handleConsoleTableButton}>
+          <button id="console-table-merlin" @click=${this.handleConsoleTableButton} aria-label="Console table merlin chat log">
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
               <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite> 
@@ -121,7 +121,7 @@ class ChatDeveloperPanel extends DDD {
             </div>
           </button>
 
-          <button id="console-table-all" @click=${this.handleConsoleTableButton}>
+          <button id="console-table-all" @click=${this.handleConsoleTableButton} aria-label="Console table entire chat log">
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
               <simple-icon-lite icon="book"></simple-icon-lite>
@@ -131,7 +131,7 @@ class ChatDeveloperPanel extends DDD {
             </div>
           </button>
 
-          <button id="download-as-json" @click=${this.handleDownloadAsJsonButton}>
+          <button id="download-as-json" @click=${this.handleDownloadAsJsonButton} aria-label="Download chat log as .json">
             <div class="button-icon">
               <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
               <simple-icon-lite icon="hax:code-json"></simple-icon-lite>
@@ -142,7 +142,7 @@ class ChatDeveloperPanel extends DDD {
           </button>
         </div>
 
-        <div class="switch-engine-controls">
+        <div class="switch-engine-controls" aria-label="Switch LLM Engine">
           <button id="switch-engine-btn">
           <div class="button-icon">
               <simple-icon-lite icon="hardware:memory"></simple-icon-lite>

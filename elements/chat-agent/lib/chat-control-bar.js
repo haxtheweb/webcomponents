@@ -79,23 +79,23 @@ class ChatControlBar extends DDD {
       <div class="chat-control-bar-wrapper">
         <div class="left-side">
           <!-- https://stackoverflow.com/questions/72654466/how-do-i-make-a-button-that-will-download-a-file -->
-          <button id="download-button" @click=${this.handleDownloadLogButton}>
+          <button id="download-button" @click=${this.handleDownloadLogButton} aria-label="Download Log as txt">
             <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
           </button>
-          <button id="reset-button" @click=${this.handleResetButton}>
+          <button id="reset-button" @click=${this.handleResetButton} aria-label="Reset Chat">
             <simple-icon-lite icon="icons:refresh"></simple-icon-lite>
           </button>
-          <button id="data-collection-button" @click=${this.handleDataCollectionButton}>
+          <button id="data-collection-button" @click=${this.handleDataCollectionButton} aria-label="Toggle Data Collection">
             <simple-icon-lite icon="lrn:data_usage" class="data-collection-icon"></simple-icon-lite>
             <span>Data Collection</span>
           </button>
         </div>
         <div class="right-side">
-          <button id="view-button" @click=${this.handleViewButton}>
+          <button id="view-button" @click=${this.handleViewButton} aria-label="${this.isFullView ? 'Exit Full View' : 'Enter Full View'}">
             <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
           ${this.isFullView ? html`
-            <button id="hide-button" @click=${this.handleHideButton}>
+            <button id="hide-button" @click=${this.handleHideButton} aria-label="Close Interface">
               <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
             </button>
           ` : ''}

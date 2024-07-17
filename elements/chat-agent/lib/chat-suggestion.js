@@ -120,7 +120,7 @@ class ChatSuggestion extends DDD {
   // TODO fix corner clicking issue
   render() {
     return html`
-      <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0">
+      <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0" aria-label='Send suggestion "${this.suggestion}" to Merlin'>
         <div class="suggestion-icon">
           <div class="circle-wrapper">
             <simple-icon-lite></simple-icon-lite>
