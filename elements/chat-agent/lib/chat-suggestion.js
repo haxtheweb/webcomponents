@@ -41,6 +41,7 @@ class ChatSuggestion extends DDD {
 
         :host {
           display: block;
+          container-type: inline-size;
         }
 
         .chat-suggestion-wrapper {
@@ -112,6 +113,19 @@ class ChatSuggestion extends DDD {
           font-size: var(--ddd-font-size-4xs);
           width: 80%;
           text-align: center;
+        }
+
+        @container (max-width: 270px) and (min-width: 216px) {
+          simple-icon-lite {
+            --simple-icon-height: var(--ddd-icon-xxs);
+            --simple-icon-width: var(--ddd-icon-xxs);
+          }
+        }
+
+        @container (max-width: 216px) {
+          .suggestion-icon {
+            display: none;
+          }
         }
       `
     ];

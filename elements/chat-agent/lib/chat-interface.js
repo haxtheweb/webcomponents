@@ -608,6 +608,7 @@ class ChatInterface extends DDD {
 
   async updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
+    console.log(changedProperties);
     if (changedProperties.has("chatLog")) {
       await this.updateComplete;
       if (this.chatLog.length > 1) {
