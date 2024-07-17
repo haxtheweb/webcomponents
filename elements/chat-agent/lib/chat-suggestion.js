@@ -135,7 +135,6 @@ class ChatSuggestion extends DDD {
     `;
   }
 
-  
   /**
    * @description Event handler for the suggestion button
   */

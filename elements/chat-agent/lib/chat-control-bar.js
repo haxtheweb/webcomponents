@@ -45,9 +45,13 @@ class ChatControlBar extends DDD {
         }
 
         button {
-          background-color: var(--ddd-theme-default-potentialMidnight);
+          background-color: #2b2a33;
           color: var(--ddd-theme-default-white);
-          border-radius: var(--ddd-radius-md);
+          border-radius: var(--ddd-radius-sm);
+        }
+        
+        button:hover, button:focus-visible {
+          background-color: #52525e;
         }
 
         button > simple-icon-lite {
