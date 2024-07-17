@@ -606,13 +606,17 @@ class ChatInterface extends DDD {
     `;
   }
 
-  // TODO scroll down to bottom when new chatLog message is mapped
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
+  async updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    if (changedProperties.has("chatLog")) {
+      await this.updateComplete;
+      if (this.chatLog.length > 1) {
+        const SCROLLABLE_ELEMENT = this.shadowRoot.querySelector(".chat-messages");
+        SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
+      } else {
+        SCROLLABLE_ELEMENT.scrollTop(0);
+      }
     }
-
-
   }
 
   static get properties() {

@@ -97,7 +97,7 @@ class ChatAgent extends DDD {
     this.userIndex = 0; // index of user messages
 
     this.userTypeWriterSpeed = 0;
-    this.merlinTypeWriterSpeed = 4;
+    this.merlinTypeWriterSpeed = 2;
 
     // suggestion
     this.currentSuggestions = [];
