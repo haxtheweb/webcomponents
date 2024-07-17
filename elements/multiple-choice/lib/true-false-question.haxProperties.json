@@ -63,7 +63,8 @@
       "_tfanswer",
       "show-answer",
       "t",
-      "attempts"
+      "attempts",
+      "edit"
     ]
   },
   "demoSchema": [

@@ -65,7 +65,8 @@
       "shortanswer",
       "show-answer",
       "t",
-      "attempts"
+      "attempts",
+      "edit"
     ]
   },
   "demoSchema": [

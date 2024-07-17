@@ -88,7 +88,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["word-list", "number-correct", "number-guessed", "attempts", "answers", "displayed-answers", "t", "show-answer"]
+    "unsetAttributes": ["edit", "word-list", "number-correct", "number-guessed", "attempts", "answers", "displayed-answers", "t", "show-answer"]
   },
   "documentation": {
     "howTo": null,

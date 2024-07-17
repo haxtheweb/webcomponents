@@ -13,7 +13,7 @@
   "gizmo": {
     "title": "Fill in the blanks",
     "description": "",
-    "icon": "icons:android",
+    "icon": "editor:space-bar",
     "color": "purple",
     "tags": ["Instructional", "question"],
     "handles": [],
@@ -55,7 +55,8 @@
       "answers",
       "displayed-answers",
       "t",
-      "show-answer"
+      "show-answer",
+      "edit"
     ]
   },
   "documentation": {

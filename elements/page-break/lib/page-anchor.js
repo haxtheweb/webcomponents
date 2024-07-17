@@ -58,7 +58,7 @@ export class PageAnchor extends DDD {
     }
     // verify node exists and change targetting system if we are in edit mode of HAX
     let node;
-    if (this._haxState) {
+    if (!this._haxState) {
       node = globalThis.document.querySelector(
         ".haxcms-theme-element " + this.target,
       );
@@ -109,7 +109,7 @@ export class PageAnchor extends DDD {
     // system. For example a video might have that icon but color shift to
     // the taxonomy provided color
     let node;
-    if (this._haxState) {
+    if (!this._haxState) {
       node = globalThis.document.querySelector(
         ".haxcms-theme-element " + target,
       );

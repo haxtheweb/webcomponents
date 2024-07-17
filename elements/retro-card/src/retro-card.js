@@ -236,7 +236,7 @@ class RetroCard extends SimpleColors {
       gizmo: {
         title: "Retro card",
         description: "Simple card in a cool retro design",
-        icon: "icons:android",
+        icon: "icons:credit-card",
         color: "purple",
         tags: ["Layout", "card", "layout"],
         handles: [],
@@ -253,14 +253,12 @@ class RetroCard extends SimpleColors {
             description: "Main title of card",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android",
           },
           {
             property: "url",
             description: "Link to go to when clicking the card",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android",
             validationType: "url",
           },
           {
@@ -269,7 +267,6 @@ class RetroCard extends SimpleColors {
             description: "Sub heading",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android",
           },
           {
             property: "tags",
@@ -277,7 +274,6 @@ class RetroCard extends SimpleColors {
             description: "Comma separated tags",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android",
           },
           {
             property: "mediaSource",
@@ -286,7 +282,6 @@ class RetroCard extends SimpleColors {
             inputMethod: "haxupload",
             noVoiceRecord: true,
             required: true,
-            icon: "icons:link",
             validationType: "url",
           },
           {
@@ -297,7 +292,6 @@ class RetroCard extends SimpleColors {
             noVoiceRecord: true,
             required: false,
             validationType: "url",
-            icon: "icons:android",
           },
           {
             property: "accentColor",
@@ -305,7 +299,6 @@ class RetroCard extends SimpleColors {
             title: "Accent Color",
             inputMethod: "colorpicker",
             required: false,
-            icon: "icons:android",
           },
           {
             property: "dark",
