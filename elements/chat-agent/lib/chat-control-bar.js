@@ -4,10 +4,11 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
-import { autorun, toJS } from "mobx";
 
 class ChatControlBar extends DDD {
+
   static get tag() {
     return "chat-control-bar";
   }
@@ -22,10 +23,8 @@ class ChatControlBar extends DDD {
     autorun(() => {
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-      this.dataCollectionEnabled = toJS(
-        ChatAgentModalStore.dataCollectionEnabled,
-      );
-    });
+      this.dataCollectionEnabled = toJS(ChatAgentModalStore.dataCollectionEnabled);
+    })
   }
 
   static get styles() {
@@ -33,9 +32,10 @@ class ChatControlBar extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-
+        
         :host {
           display: block;
+          container-type: inline-size;
         }
 
         .chat-control-bar-wrapper {
@@ -43,6 +43,20 @@ class ChatControlBar extends DDD {
           justify-content: space-between;
           align-items: center;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-0);
+        }
+
+        button {
+          background-color: #2b2a33;
+          color: var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-sm);
+        }
+        
+        button:hover, button:focus-visible {
+          background-color: #52525e;
+        }
+
+        button > simple-icon-lite {
+          --simple-icon-color: var(--ddd-theme-default-white);
         }
 
         .data-collection-icon {
@@ -54,56 +68,64 @@ class ChatControlBar extends DDD {
         }
 
         /* Phones */
-        @media only screen and (max-width: 425px),
-          only screen and (max-height: 616px) {
+        @media only screen and (max-width: 425px), only screen and (max-height: 616px) {
           #view-button {
             display: none;
           }
         }
-      `,
+
+        /* TODO Does not work */
+        @container (max-width: 330px) {
+          .data-collection-label {
+            display: none;
+          }
+        }
+      `
     ];
   }
 
-  // TODO issue with button colors in Opera Dark Mode, test compatibility and add CSS for this specific situation, possibly the color switching thing I implemented into media-quote for accessibility
+  // TODO dev mode button
   render() {
     return html`
       <!-- https://haxapi.vercel.app/?path=/story/media-icons--hax-iconset-story -->
-
+      
       <div class="chat-control-bar-wrapper">
         <div class="left-side">
           <!-- https://stackoverflow.com/questions/72654466/how-do-i-make-a-button-that-will-download-a-file -->
-          <button id="download-button" @click=${this.handleDownloadLogButton}>
+          <button id="download-button" @click=${this.handleDownloadLogButton} aria-label="Download Log as txt">
             <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
           </button>
-          <button id="reset-button" @click=${this.handleResetButton}>
+          <simple-tooltip for="download-button" position="right">Download Chat Log</simple-tooltip>
+          
+          <button id="reset-button" @click=${this.handleResetButton} aria-label="Reset Chat">
             <simple-icon-lite icon="icons:refresh"></simple-icon-lite>
           </button>
-          <button
-            id="data-collection-button"
-            @click=${this.handleDataCollectionButton}
-          >
-            <simple-icon-lite
-              icon="lrn:data_usage"
-              class="data-collection-icon"
-            ></simple-icon-lite>
-            <span>Data Collection</span>
+          <simple-tooltip for="reset-button" position="right">Reset Chat</simple-tooltip>
+
+          <button id="data-collection-button" @click=${this.handleDataCollectionButton} aria-label="Toggle Data Collection">
+            <simple-icon-lite icon="lrn:data_usage" class="data-collection-icon"></simple-icon-lite>
+            <span class="data-collection-label">Data Collection</span>
           </button>
+          <simple-tooltip for="data-collection-button" position="right">Toggle Data Collection</simple-tooltip>
+
+          <button id="dev-mode-button" @click=${this.handleDevModeButton} aria-label="Toggle Developer Mode">
+            <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
+          </button>
+          <simple-tooltip for="dev-mode-button" position="right">Toggle Developer Mode</simple-tooltip>
+
         </div>
         <div class="right-side">
-          <button id="view-button" @click=${this.handleViewButton}>
-            <simple-icon-lite
-              icon="${this.isFullView
-                ? "icons:fullscreen-exit"
-                : "icons:fullscreen"}"
-            ></simple-icon-lite>
+          <button id="view-button" @click=${this.handleViewButton} aria-label="${this.isFullView ? 'Exit Full View' : 'Enter Full View'}">
+            <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
-          ${this.isFullView
-            ? html`
-                <button id="hide-button" @click=${this.handleHideButton}>
-                  <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
-                </button>
-              `
-            : ""}
+          <simple-tooltip for="view-button" position="left">${this.isFullView ? 'Exit Full View' : 'Enter Full View'}</simple-tooltip>
+
+          ${this.isFullView ? html`
+            <button id="hide-button" @click=${this.handleHideButton} aria-label="Hide Interface">
+              <simple-icon-lite icon="remove"></simple-icon-lite>
+            </button>
+            <simple-tooltip for="hide-button" position="left">Hide Interface</simple-tooltip>
+          ` : ''}
         </div>
       </div>
     `;
@@ -113,9 +135,7 @@ class ChatControlBar extends DDD {
    * @description handles the functionality of the download button
    */
   handleDownloadLogButton() {
-    ChatAgentModalStore.developerModeEnabled
-      ? console.info("HAX-DEV-MODE: Download log button pressed.")
-      : null;
+    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download log button pressed.') : null;
 
     this.downloadChatLog();
   }
@@ -124,22 +144,14 @@ class ChatControlBar extends DDD {
    * @description handles the functionality of the reset button
    */
   handleResetButton() {
-    ChatAgentModalStore.developerModeEnabled
-      ? console.info("HAX-DEV-MODE: Reset button pressed.")
-      : null;
+    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Reset button pressed.') : null;
 
-    if (confirm("Reset the chat?")) {
-      if (confirm("Download the chat log before you reset?")) {
-        ChatAgentModalStore.developerModeEnabled
-          ? console.info(
-              "HAX-DEV-MODE: Download chat log before reset confirmed.",
-            )
-          : null;
+    if (confirm('Reset the chat?')) {
+      if (confirm('Download the chat log before you reset?')) {
+        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset confirmed.') : null;
         this.downloadChatLog();
       } else {
-        ChatAgentModalStore.developerModeEnabled
-          ? console.info("HAX-DEV-MODE: Download chat log before reset denied.")
-          : null;
+        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset denied.') : null;
       }
       this.resetChat();
     }
@@ -149,41 +161,36 @@ class ChatControlBar extends DDD {
    * @description - handles the functionality of the data collection button
    */
   handleDataCollectionButton() {
-    ChatAgentModalStore.dataCollectionEnabled =
-      !ChatAgentModalStore.dataCollectionEnabled;
+    ChatAgentModalStore.dataCollectionEnabled = !ChatAgentModalStore.dataCollectionEnabled;
 
-    this.dataCollectionEnabled
-      ? alert("Data will not be collected to train our AI models")
-      : alert("Data will be collected to train our AI models");
+    this.dataCollectionEnabled ? alert('Your conversations will be used to train our AI models') : alert('Your conversations will not be used to train our AI models');
+  }
+
+  /**
+   * @description - handles the functionality of the dev mode button
+   */
+  handleDevModeButton() {
+    ChatAgentModalStore.developerModeEnabled = !ChatAgentModalStore.developerModeEnabled;
   }
 
   /**
    * @description Toggles the view of chat-interface to full or minimized
    */
-  handleViewButton() {
-    ChatAgentModalStore.developerModeEnabled
-      ? console.info("HAX-DEV-MODE: View switch button pressed.")
-      : null;
+  handleViewButton() {    
+    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switch button pressed.') : null;
 
     ChatAgentModalStore.isFullView = !this.isFullView;
 
     this.requestUpdate(); // changes button icon
 
-    ChatAgentModalStore.developerModeEnabled
-      ? console.info(
-          "HAX-DEV-MODE: View switched to: " +
-            (ChatAgentModalStore.isFullView ? "full" : "standard"),
-        )
-      : null;
+    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (ChatAgentModalStore.isFullView ? 'full' : 'standard')) : null;
   }
 
   /**
    * @description changes the interface window to be hidden off screen and unfocusable
    */
   handleHideButton() {
-    ChatAgentModalStore.developerModeEnabled
-      ? console.info("HAX-DEV-MODE: Hide button pressed.")
-      : null;
+    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
 
     if (!this.isInterfaceHidden) {
       ChatAgentModalStore.isInterfaceHidden = true;
@@ -194,20 +201,16 @@ class ChatControlBar extends DDD {
    * @description downloads the chat log as a .txt file
    */
   downloadChatLog() {
-    ChatAgentModalStore.developerModeEnabled
-      ? console.info("HAX-DEV-MODE: Downloading chat log...")
-      : null;
+    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
 
-    ChatAgentModalStore.handleDownload("txt");
+    ChatAgentModalStore.handleDownload('txt');
   }
 
   /**
    * @description resets the chat to initial state
    */
   resetChat() {
-    ChatAgentModalStore.developerModeEnabled
-      ? console.info("HAX-DEV-MODE: Resetting chat...")
-      : null;
+    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Resetting chat...') : null;
 
     ChatAgentModalStore.chatLog = [];
     ChatAgentModalStore.merlinIndex = 0;
@@ -222,7 +225,7 @@ class ChatControlBar extends DDD {
       ...super.properties,
       dataCollectionEnabled: {
         type: Boolean,
-        attribute: "data-collection-enabled",
+        attribute: 'data-collection-enabled',
         reflect: true,
       },
     };

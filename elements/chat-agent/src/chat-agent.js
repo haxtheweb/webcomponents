@@ -12,6 +12,7 @@ import "./lib/chat-suggestion.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 import { HAXCMSSiteEditorUI } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js";
@@ -69,9 +70,6 @@ class ChatAgent extends DDD {
     store.userData.userName !== undefined
       ? (this.userName = store.userData.userName)
       : (this.userName = "guest");
-    store.userData.userPicture !== undefined
-      ? (this.userPicture = store.userData.userPicture)
-      : null; // TODO may not utilize, remove if not utilized
     this.context = "phys211"; // test with phys211
     this.isLoading = null;
     this.dataCollectionEnabled = true;
@@ -83,7 +81,7 @@ class ChatAgent extends DDD {
     // control bar
 
     // developer mode
-    this.developerModeEnabled = true; // ! this will enable developer mode for the entire chat system
+    this.developerModeEnabled = false; // ! this will enable developer mode for the entire chat system
 
     // input
     this.promptCharacterLimit;
@@ -92,7 +90,7 @@ class ChatAgent extends DDD {
     // interface
     // TODO UserScaffold
     this.isFullView = false;
-    this.isInterfaceHidden = false;
+    this.isInterfaceHidden = false; // TODO setting this to true (which should be the default) causes everything to break (error at line 567)
 
     // message
     this.merlinIndex = 0; // index of merlin messages
@@ -100,7 +98,7 @@ class ChatAgent extends DDD {
     this.userIndex = 0; // index of user messages
 
     this.userTypeWriterSpeed = 0;
-    this.merlinTypeWriterSpeed = 4;
+    this.merlinTypeWriterSpeed = 2;
 
     // suggestion
     this.currentSuggestions = [];
@@ -114,6 +112,7 @@ class ChatAgent extends DDD {
       buttonIcon: observable,
       chatLog: observable,
       dataCollectionEnabled: observable,
+      developerModeEnabled: observable,
       engine: observable,
       isFullView: observable,
       isInterfaceHidden: observable,
@@ -129,6 +128,7 @@ class ChatAgent extends DDD {
       const buttonIcon = toJS(this.buttonIcon);
       const chatLog = toJS(this.chatLog);
       const dataCollectionEnabled = toJS(this.dataCollectionEnabled);
+      const developerModeEnabled = toJS(this.developerModeEnabled);
       const engine = toJS(this.engine);
       const isFullView = toJS(this.isFullView);
       const isInterfaceHidden = toJS(this.isInterfaceHidden);
@@ -138,12 +138,17 @@ class ChatAgent extends DDD {
       const userIndex = toJS(this.userIndex);
 
       // ! work around to not being able to put this in properties
-      isFullView
-        ? this.setAttribute("is-full-view", "")
-        : this.removeAttribute("is-full-view");
-      isInterfaceHidden
-        ? this.setAttribute("is-interface-hidden", "")
-        : this.removeAttribute("is-interface-hidden");
+      if (isFullView) {
+        this.setAttribute("is-full-view", "");
+      } else if (this.hasAttribute("is-full-view")) {
+        this.removeAttribute("is-full-view");
+      }
+
+      if (isInterfaceHidden) {
+        this.setAttribute("is-interface-hidden", "");
+      } else if (this.hasAttribute("is-interface-hidden")) {
+        this.removeAttribute("is-interface-hidden");
+      }
 
       if (isLoading) {
         this.buttonIcon = "hax:loading";
@@ -151,8 +156,6 @@ class ChatAgent extends DDD {
         this.buttonIcon = "hax:wizard-hat";
       }
     });
-
-    // TODO would like to add JS for when the user goes to refresh the page, it asks if they would like to do that. Could be used at restart as well
   }
 
   /**
@@ -176,8 +179,7 @@ class ChatAgent extends DDD {
           position: fixed;
           bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          width: 40%; /* Switch to 30% when working with hax environment */
-        }
+          width: 35%;        }
 
         :host([is-full-view]) .chat-agent-wrapper {
           bottom: var(--ddd-spacing-0);
@@ -258,6 +260,7 @@ class ChatAgent extends DDD {
       "merlin",
       "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
     );
+    
     this.currentSuggestions = [
       {
         suggestion: "Who are you?",
@@ -286,7 +289,7 @@ class ChatAgent extends DDD {
           suggestion.removeAttribute("chosen-prompt");
         }
       });
-  }
+    }
 
   /**
    * @description writes message to chatLog
@@ -450,7 +453,7 @@ class ChatAgent extends DDD {
               this.answers = [d.data.answers];
               this.developerModeEnabled ? console.info(this.answers) : null;
               this.question = d.data.question;
-              this.currentSuggestions = []; // TODO add support for AI based suggestiongs
+              this.currentSuggestions = []; // TODO add support for AI based suggestions
             }
 
             this.isLoading = false;
@@ -518,11 +521,6 @@ class ChatAgent extends DDD {
       // control bar
 
       // developer mode
-      developerModeEnabled: {
-        // ! this will enable developer mode for the entire chat system
-        type: Boolean,
-        attribute: "developer-mode",
-      },
 
       // input
       promptCharacterLimit: {
