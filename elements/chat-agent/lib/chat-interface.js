@@ -278,7 +278,7 @@ class ChatInterface extends DDD {
             }
 
             :host([is-full-view]) .main-wrapper {
-              height: 94%;
+              height: 100%;
             }
 
             :host([is-full-view][developer-mode]) .main-wrapper {
@@ -286,7 +286,6 @@ class ChatInterface extends DDD {
             }
           }
         }
-
 
         /* This should cover a lot of vertical monitors */
         @media only screen and (max-width: 1080px) {

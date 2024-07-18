@@ -520,11 +520,6 @@ class ChatAgent extends DDD {
       // control bar
 
       // developer mode
-      // developerModeEnabled: {
-      //   // ! this will enable developer mode for the entire chat system
-      //   type: Boolean,
-      //   attribute: "developer-mode",
-      // },
 
       // input
       promptCharacterLimit: {
