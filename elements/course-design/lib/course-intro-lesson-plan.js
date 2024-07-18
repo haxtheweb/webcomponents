@@ -28,7 +28,15 @@ class CourseIntroLessonPlan extends DDD {
         a:focus,
         a:hover {
           background-color: var(--ddd-accent-2);
-          color: light-dark(black, black);
+          color: black;
+        }
+
+        :host([is-safari]) a {
+          color: black;
+        }
+        :host([is-safari]) a:focus,
+        :host([is-safari]) a:hover {
+          color: black;
         }
 
         #container {

@@ -7,6 +7,7 @@ import "./course-intro-lesson-plan.js";
 class CourseIntroLessonPlans extends DDD {
   static get properties() {
     return {
+      ...super.properties,
       items: { type: Array },
     };
   }
@@ -41,10 +42,17 @@ class CourseIntroLessonPlans extends DDD {
           font-weight: var(--ddd-font-weight-light);
         }
 
+        #plans-container {
+          background-color: light-dark(white, black);
+          margin: 0 auto;
+        }
+
+        :host([is-safari]) #plans-container {
+          background-color: white;
+        }
+
         @media screen and (min-width: 320px) {
           #plans-container {
-            background: light-dark(white, black);
-            margin: 0 auto;
             max-width: 400px;
           }
         }
