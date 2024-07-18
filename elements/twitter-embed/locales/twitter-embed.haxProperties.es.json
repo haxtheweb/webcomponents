@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Insertar en Twitter",
+    "title": "Insertar en Twitter (X)",
     "description": "Insertar un tweet de Twitter en contexto"
   },
   "settings": {
@@ -18,7 +18,7 @@
       },
       {
         "title": "Evitar ventanas emergentes al hacer clic",
-        "description": "Esto impide que el usuario haga clic en el tweet y vaya a twitter.com."
+        "description": "Esto impide que el usuario haga clic en el tweet y vaya a x.com."
       }
     ]
   }

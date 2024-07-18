@@ -143,7 +143,7 @@ class TwitterEmbed extends LitElement {
       if (
         propName === "tweet" &&
         this[propName] &&
-        this[propName].includes("twitter.com")
+        (this[propName].includes("twitter.com") || this[propName].includes("x.com"))
       ) {
         this.tweetId = this[propName].split("/").pop();
       }
@@ -173,7 +173,7 @@ class TwitterEmbed extends LitElement {
           style="position: static; visibility: visible; width: ${this
             .dataWidth}; height: 498px; display: block; flex-grow: 1;"
           title="Twitter Tweet"
-          src="https://platform.twitter.com/embed/index.html?dnt=true&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this
+          src="https://platform.x.com/embed/index.html?dnt=true&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this
             .tweetId}&amp;lang=${this.lang}&amp;theme=${this
             .dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this
             .dataWidth}"
