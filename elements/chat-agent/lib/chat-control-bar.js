@@ -76,6 +76,7 @@ class ChatControlBar extends DDD {
     ];
   }
 
+  // TODO dev mode button
   render() {
     return html`
       <!-- https://haxapi.vercel.app/?path=/story/media-icons--hax-iconset-story -->
@@ -92,6 +93,9 @@ class ChatControlBar extends DDD {
           <button id="data-collection-button" @click=${this.handleDataCollectionButton} aria-label="Toggle Data Collection">
             <simple-icon-lite icon="lrn:data_usage" class="data-collection-icon"></simple-icon-lite>
             <span>Data Collection</span>
+          </button>
+          <button id="dev-mode-button" @click=${this.handleDevModeButton} aria-label="Toggle Developer Mode">
+            <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
           </button>
         </div>
         <div class="right-side">
@@ -141,6 +145,13 @@ class ChatControlBar extends DDD {
     ChatAgentModalStore.dataCollectionEnabled = !ChatAgentModalStore.dataCollectionEnabled;
 
     this.dataCollectionEnabled ? alert('Your conversations will be used to train our AI models') : alert('Your conversations will not be used to train our AI models');
+  }
+
+  /**
+   * @description - handles the functionality of the dev mode button
+   */
+  handleDevModeButton() {
+    ChatAgentModalStore.developerModeEnabled = !ChatAgentModalStore.developerModeEnabled;
   }
 
   /**

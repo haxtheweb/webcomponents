@@ -80,7 +80,7 @@ class ChatAgent extends DDD {
     // control bar
 
     // developer mode
-    this.developerModeEnabled = true; // ! this will enable developer mode for the entire chat system
+    this.developerModeEnabled = false; // ! this will enable developer mode for the entire chat system
 
     // input
     this.promptCharacterLimit;
@@ -111,6 +111,7 @@ class ChatAgent extends DDD {
       buttonIcon: observable,
       chatLog: observable,
       dataCollectionEnabled: observable,
+      developerModeEnabled: observable,
       engine: observable,
       isFullView: observable,
       isInterfaceHidden: observable,
@@ -126,6 +127,7 @@ class ChatAgent extends DDD {
       const buttonIcon = toJS(this.buttonIcon);
       const chatLog = toJS(this.chatLog);
       const dataCollectionEnabled = toJS(this.dataCollectionEnabled);
+      const developerModeEnabled = toJS(this.developerModeEnabled);
       const engine = toJS(this.engine);
       const isFullView = toJS(this.isFullView);
       const isInterfaceHidden = toJS(this.isInterfaceHidden);
@@ -513,11 +515,11 @@ class ChatAgent extends DDD {
       // control bar
 
       // developer mode
-      developerModeEnabled: {
-        // ! this will enable developer mode for the entire chat system
-        type: Boolean,
-        attribute: "developer-mode",
-      },
+      // developerModeEnabled: {
+      //   // ! this will enable developer mode for the entire chat system
+      //   type: Boolean,
+      //   attribute: "developer-mode",
+      // },
 
       // input
       promptCharacterLimit: {
