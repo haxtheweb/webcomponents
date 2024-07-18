@@ -89,7 +89,7 @@ class ChatAgent extends DDD {
     // interface
     // TODO UserScaffold
     this.isFullView = false;
-    this.isInterfaceHidden = false;
+    this.isInterfaceHidden = false; // TODO setting this to true (which should be the default) causes everything to break (error at line 567)
 
     // message
     this.merlinIndex = 0; // index of merlin messages
@@ -137,12 +137,17 @@ class ChatAgent extends DDD {
       const userIndex = toJS(this.userIndex);
 
       // ! work around to not being able to put this in properties
-      isFullView
-        ? this.setAttribute("is-full-view", "")
-        : this.removeAttribute("is-full-view");
-      isInterfaceHidden
-        ? this.setAttribute("is-interface-hidden", "")
-        : this.removeAttribute("is-interface-hidden");
+      if (isFullView) {
+        this.setAttribute("is-full-view", "");
+      } else if (this.hasAttribute("is-full-view")) {
+        this.removeAttribute("is-full-view");
+      }
+
+      if (isInterfaceHidden) {
+        this.setAttribute("is-interface-hidden", "");
+      } else if (this.hasAttribute("is-interface-hidden")) {
+        this.removeAttribute("is-interface-hidden");
+      }
 
       if (isLoading) {
         this.buttonIcon = "hax:loading";
