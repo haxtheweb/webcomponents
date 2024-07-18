@@ -35,6 +35,7 @@ class ChatControlBar extends DDD {
         
         :host {
           display: block;
+          container-type: inline-size;
         }
 
         .chat-control-bar-wrapper {
@@ -72,6 +73,13 @@ class ChatControlBar extends DDD {
             display: none;
           }
         }
+
+        /* TODO Does not work */
+        @container (max-width: 330px) {
+          .data-collection-label {
+            display: none;
+          }
+        }
       `
     ];
   }
@@ -92,7 +100,7 @@ class ChatControlBar extends DDD {
           </button>
           <button id="data-collection-button" @click=${this.handleDataCollectionButton} aria-label="Toggle Data Collection">
             <simple-icon-lite icon="lrn:data_usage" class="data-collection-icon"></simple-icon-lite>
-            <span>Data Collection</span>
+            <span class="data-collection-label">Data Collection</span>
           </button>
           <button id="dev-mode-button" @click=${this.handleDevModeButton} aria-label="Toggle Developer Mode">
             <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
