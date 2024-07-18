@@ -95,25 +95,36 @@ class ChatControlBar extends DDD {
           <button id="download-button" @click=${this.handleDownloadLogButton} aria-label="Download Log as txt">
             <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
           </button>
+          <simple-tooltip for="download-button" position="right">Download Chat Log</simple-tooltip>
+          
           <button id="reset-button" @click=${this.handleResetButton} aria-label="Reset Chat">
             <simple-icon-lite icon="icons:refresh"></simple-icon-lite>
           </button>
+          <simple-tooltip for="reset-button" position="right">Reset Chat</simple-tooltip>
+
           <button id="data-collection-button" @click=${this.handleDataCollectionButton} aria-label="Toggle Data Collection">
             <simple-icon-lite icon="lrn:data_usage" class="data-collection-icon"></simple-icon-lite>
             <span class="data-collection-label">Data Collection</span>
           </button>
+          <simple-tooltip for="data-collection-button" position="right">Toggle Data Collection</simple-tooltip>
+
           <button id="dev-mode-button" @click=${this.handleDevModeButton} aria-label="Toggle Developer Mode">
             <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
           </button>
+          <simple-tooltip for="dev-mode-button" position="right">Toggle Developer Mode</simple-tooltip>
+
         </div>
         <div class="right-side">
           <button id="view-button" @click=${this.handleViewButton} aria-label="${this.isFullView ? 'Exit Full View' : 'Enter Full View'}">
             <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
+          <simple-tooltip for="view-button" position="left">${this.isFullView ? 'Exit Full View' : 'Enter Full View'}</simple-tooltip>
+
           ${this.isFullView ? html`
-            <button id="hide-button" @click=${this.handleHideButton} aria-label="Close Interface">
-              <simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite>
+            <button id="hide-button" @click=${this.handleHideButton} aria-label="Hide Interface">
+              <simple-icon-lite icon="remove"></simple-icon-lite>
             </button>
+            <simple-tooltip for="hide-button" position="left">Hide Interface</simple-tooltip>
           ` : ''}
         </div>
       </div>

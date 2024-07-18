@@ -12,6 +12,7 @@ import "./lib/chat-suggestion.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 import { HAXCMSSiteEditorUI } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js";

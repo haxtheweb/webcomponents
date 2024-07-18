@@ -60,6 +60,7 @@ class ChatInput extends DDD {
           width: 85%;
         }
 
+        /* TODO icon shifts slightly when doing the click sequence */
         .send-button {
           width: 52px;
           height: 52px;
@@ -69,6 +70,17 @@ class ChatInput extends DDD {
           align-items: center;
           justify-content: center;
           cursor: pointer;
+          box-shadow: 0 4px red;
+        }
+
+        .send-button:hover, .send-button:focus-visible {
+          box-shadow: 0 5px red;
+          transform: translateY(-1px);
+        }
+
+        .send-button:active {
+          box-shadow: 0 1px red;
+          transform: translateY(3px);
         }
 
         simple-icon-lite {
@@ -85,9 +97,10 @@ class ChatInput extends DDD {
     return html`
       <div class="chat-input-wrapper">
         <textarea name="prompt-input" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keydown=${this.handleKeyPress}></textarea>
-        <div class="send-button" @click=${this.handleSendButton} tabindex="0" aria-label="Send Prompt">
+        <div class="send-button" id="send-button" @click=${this.handleSendButton} tabindex="0" aria-label="Send Prompt">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
+        <simple-tooltip for="send-button" position="top">Send Prompt to Merlin</simple-tooltip></simple-tooltip>
       </div>
     `;
   }

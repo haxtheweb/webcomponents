@@ -114,6 +114,7 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">console.table() user chat log</span>
             </div> 
           </button>
+          <simple-tooltip for="console-table-user" position="left">Print User Chat Log as Table to Console</simple-tooltip>
 
           <button id="console-table-merlin" @click=${this.handleConsoleTableButton} aria-label="Console table merlin chat log">
             <div class="button-icon">
@@ -124,6 +125,7 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">console.table() merlin chat log</span>
             </div>
           </button>
+          <simple-tooltip for="console-table-merlin" position="left">Print Merlin Chat Log as Table to Console</simple-tooltip>
 
           <button id="console-table-all" @click=${this.handleConsoleTableButton} aria-label="Console table entire chat log">
             <div class="button-icon">
@@ -134,6 +136,7 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">console.table() entire chat log</span>  
             </div>
           </button>
+          <simple-tooltip for="console-table-all" position="left">Print Entire Chat Log as Table to Console</simple-tooltip>
 
           <button id="download-as-json" @click=${this.handleDownloadAsJsonButton} aria-label="Download chat log as .json">
             <div class="button-icon">
@@ -144,6 +147,7 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">Download chat log as .json</span>
             </div>
           </button>
+          <simple-tooltip for="download-as-json" position="left">Download Chat Log as .json</simple-tooltip>
         </div>
 
         <div class="switch-engine-controls" aria-label="Switch LLM Engine">

@@ -48,7 +48,18 @@ class ChatButton extends DDD {
           justify-content: center;
           border-radius: var(--ddd-radius-lg);
           cursor: pointer;
-          box-shadow: var(--ddd-boxShadow-xl);
+          box-shadow: 0 4px red;
+        }
+
+        .chat-button-wrapper:hover, .chat-button-wrapper:focus-visible {
+          box-shadow: 0 5px red;
+          transform: translateY(-1px);
+        }
+
+        /* TODO Figure out how to get this to work with enter key */
+        .chat-button-wrapper:active {
+          box-shadow: 0 1px red;
+          transform: translateY(3px);
         }
 
         :host([is-full-view]:not([is-interface-hidden])) .chat-button-wrapper {
