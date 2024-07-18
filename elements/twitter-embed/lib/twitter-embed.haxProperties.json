@@ -3,8 +3,8 @@
 
   "canEditSource": true,
   "gizmo": {
-    "title": "Twitter embed",
-    "description": "Embed a tweet from twitter in context",
+    "title": "Twitter (X) embed",
+    "description": "Embed a tweet from X in context",
     "icon": "hax:twitter",
     "color": "blue",
     "tags": ["Other", "social media", "twitter", "embed", "tweet"],
@@ -24,7 +24,7 @@
       {
         "attribute": "data-theme",
         "title": "Theme",
-        "description": "Light or dark version of twitter tweets",
+        "description": "Light or dark version of X tweets",
         "inputMethod": "select",
         "options": {
           "light": "Light",
@@ -34,7 +34,7 @@
       {
         "attribute": "no-popups",
         "title": "Prevent popup on click",
-        "description": "This blocks the user from clicking the tweet and going to twitter.com",
+        "description": "This blocks the user from clicking the tweet and going to x.com",
         "inputMethod": "boolean"
       }
     ],
@@ -48,7 +48,7 @@
       "tag": "twitter-embed",
       "content": "",
       "properties": {
-        "tweet": "https://twitter.com/btopro/status/1298632260707639298"
+        "tweet": "https://x.com/btopro/status/1298632260707639298"
       }
     }
   ]
