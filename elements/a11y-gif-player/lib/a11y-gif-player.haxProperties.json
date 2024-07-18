@@ -55,6 +55,12 @@
         "inputMethod": "alt",
         "icon": "accessibility",
         "required": true
+      },
+      {
+        "property": "longdesc",
+        "title": "Long Description",
+        "description": "Long descriptions of the GIF for accessibiility",
+        "inputMethod": "textarea"
       }
     ],
     "advanced": [
@@ -67,12 +73,6 @@
         "icon": "link",
         "validationType": "url",
         "required": true
-      },
-      {
-        "property": "longdesc",
-        "title": "Long Description",
-        "description": "Long descriptions of the GIF for accessibiility",
-        "inputMethod": "textarea"
       }
     ]
   },
