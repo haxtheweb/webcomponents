@@ -20,6 +20,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
 ) {
   constructor() {
     super();
+    this.isSafari = globalThis.safari !== undefined;
     this.editMode = false;
     this.isLoggedIn = false;
     this.__disposer = this.__disposer ? this.__disposer : [];
@@ -36,8 +37,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         this.HAXCMSThemeSettings.scrollTarget &&
         this.HAXCMSThemeSettings.scrollTarget.scrollIntoView
       ) {
-        const isSafari = globalThis.safari !== undefined;
-        if (isSafari) {
+        if (this.isSafari) {
           this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
         } else {
           this.HAXCMSThemeSettings.scrollTarget.scrollIntoView({
@@ -99,8 +99,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     if (!target.id && target.parentNode && target.parentNode.id) {
       target = target.parentNode;
     }
-    const isSafari = globalThis.safari !== undefined;
-    if (isSafari) {
+    if (this.isSafari) {
       target.scrollIntoView();
     } else {
       target.scrollIntoView({
@@ -126,6 +125,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     }
     return {
       ...props,
+      // safari is terrible, fml
+      isSafari: {
+        type: Boolean,
+        reflect: true,
+        attribute: 'is-safari',
+      },
       /**
        * Class for the color
        */
@@ -224,8 +229,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         if (this._location && this._location.hash) {
           let target = this.querySelector(this._location.hash);
           if (target) {
-            const isSafari = globalThis.safari !== undefined;
-            if (isSafari) {
+            if (this.isSafari) {
               target.scrollIntoView();
             } else {
               target.scrollIntoView({
@@ -266,8 +270,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           if (this._location && this._location.hash) {
             let target = this.querySelector(this._location.hash);
             if (target) {
-              const isSafari = globalThis.safari !== undefined;
-              if (isSafari) {
+              if (this.isSafari) {
                 target.scrollIntoView();
               } else {
                 target.scrollIntoView({

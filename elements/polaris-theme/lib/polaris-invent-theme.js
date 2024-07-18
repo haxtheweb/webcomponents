@@ -91,6 +91,13 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           --video-player-disabled-color: var(--ddd-theme-default-disabled);
         }
 
+        :host([is-safari]) {
+          background-color: var(--ddd-accent-6);
+          color: black;
+          --polaris-content-bg-color: var(--ddd-accent-6);
+          --polaris-nav-bg-color: var(--ddd-theme-default-skyBlue);
+        }
+
         scroll-button {
           position: fixed;
           right: 0px;

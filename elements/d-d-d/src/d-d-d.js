@@ -111,7 +111,14 @@ export const DDDSuper = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.isSafari = globalThis.safari !== undefined;
       globalThis.DDDSharedStyles.requestAvailability();
+    }
+    static get properties() {
+      return {
+        ...super.properties,
+        isSafari: { type: Boolean, reflect: true, attribute: "is-safari" },
+      };
     }
     /**
      * LitElement style callback
@@ -152,19 +159,29 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
     let globalStyles = DDDAllStyles.map((st) =>
       st.cssText ? st.cssText : "",
     ).join("");
-    const adoptableDDD = new CSSStyleSheet();
-    adoptableDDD.replaceSync(globalStyles);
-    // THIS FLAG MAKES HAX LOAD IT IN ITS SHADOW ROOT!!!!
-    adoptableDDD.hax = true;
-    // Combine the existing adopted sheets if we need to but these will work everywhere
-    // and are very fast
-    globalThis.document.adoptedStyleSheets = [
-      ...globalThis.document.adoptedStyleSheets,
-      adoptableDDD,
-    ];
-    loadDDDFonts();
-    globalThis.document.onload = dddCSSFeatureDetection();
-    globalThis.DDDSharedStyles.instance = adoptableDDD;
+    try {
+      const adoptableDDD = new CSSStyleSheet();
+      adoptableDDD.replaceSync(globalStyles);
+      // THIS FLAG MAKES HAX LOAD IT IN ITS SHADOW ROOT!!!!
+      adoptableDDD.hax = true;
+      // Combine the existing adopted sheets if we need to but these will work everywhere
+      // and are very fast
+      globalThis.document.adoptedStyleSheets = [
+        ...globalThis.document.adoptedStyleSheets,
+        adoptableDDD,
+      ];
+      loadDDDFonts();
+      globalThis.document.onload = dddCSSFeatureDetection();
+      globalThis.DDDSharedStyles.instance = adoptableDDD;
+    }
+    catch(e) {
+      const oldStyleSafariBs = document.createElement('style');
+      oldStyleSafariBs.innerHTML = globalStyles;
+      globalThis.document.head.appendChild(oldStyleSafariBs);
+      loadDDDFonts();
+      globalThis.document.onload = dddCSSFeatureDetection();
+      globalThis.DDDSharedStyles.instance = oldStyleSafariBs;
+    }
   }
   return globalThis.DDDSharedStyles.instance;
 };
