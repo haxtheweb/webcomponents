@@ -2577,11 +2577,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         break;
       // grid plate based operations
       // allow for transforming this haxElement into another one
-      case "hax-transform-node":
-        this.replaceElementWorkflow();
-        break;
-      // grid plate based operations
-      // allow for transforming this haxElement into another one
       case "hax-plate-create-right":
         this.haxGridPlateOps();
         break;

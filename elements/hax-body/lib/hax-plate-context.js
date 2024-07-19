@@ -43,7 +43,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       changeTo: "Change to",
       editElement: "Edit Mode",
       modifyHTMLSource: "Modify HTML source",
-      clickToChange: "Click to change",
       regions: "Available regions",
       insertItemAbove: "Insert item above",
       insertItemAboveOrBelow: "Insert item above or below",
@@ -452,16 +451,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         </div>
         </div>
         <div class="group">
-          <hax-context-item
-            action
-            more
-            label="${this.t.changeTo}..."
-            tooltip="${this.activeTagName}, ${this.t.clickToChange}"
-            ?disabled="${
-              this.disableTransform || this.viewSource || this.disableOps
-            }"
-            event-name="hax-transform-node"
-          ></hax-context-item>
             <hax-context-item
               action
               label="${this.t.editElement}"
@@ -490,10 +479,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         </div>
       </hax-toolbar>
     `;
-  }
-
-  get disableTransform() {
-    return HAXStore.isTextElement(this.activeNode); // || !this.filteredBlocks || this.filteredBlocks.length < 1;
   }
 
   /**
@@ -534,16 +519,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           target: event.target,
           eventName: "insert-below-active",
         },
-      }),
-    );
-  }
-  _handleOpen(e) {
-    this.dispatchEvent(
-      new CustomEvent("hax-transform-node", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: HAXStore.elementList[el],
       }),
     );
   }
@@ -655,26 +630,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     if (HAXStore.activeHaxBody && this.activeNode != null) {
       let schema = HAXStore.haxSchemaFromTag(this.activeNode.tagName);
       this.sourceView = schema.canEditSource;
-      /*
-// this is a performance bottle neck just for disabling a button that is not often clicked
-      if (this.activeNode) {
-        // detect if this can be transformed into anything else
-        let elements =
-            (await HAXStore.activeHaxBody.replaceElementWorkflow(
-              this.activeNode,
-              true
-            )) || [],
-          tag =
-            !!this.activeNode && !!this.activeNode.tagName
-              ? this.activeNode.tagName.toLowerCase()
-              : undefined,
-          primTag = HAXStore.activeHaxBody.primitiveTextBlocks.includes(tag)
-            ? "p"
-            : undefined;
-        this.formatBlocks = !!tag
-          ? elements.filter((el) => el.tag && ![tag, primTag].includes(el.tag))
-          : elements;
-      }*/
       if (HAXStore.activeGizmo) {
         this.activeTagName = HAXStore.activeGizmo.title;
         this.activeTagIcon = HAXStore.activeGizmo.icon;

@@ -1368,49 +1368,76 @@ class HaxTray extends I18NMixin(
       } else {
         this.humanName = props.gizmo.title;
       }
+
       // first, allow element properties to dictate defaults
       for (let property in this.activeHaxElement.properties) {
-        props.settings.configure.forEach((el) => {
-          if (el.property === property) {
-            this.activeValue.settings.configure[property] =
-              this.activeHaxElement.properties[property];
-          }
-          if (el.attribute === property) {
-            this.activeValue.settings.configure[property] =
-              this.activeHaxElement.properties[property];
-          }
-          if (el.slot === property) {
-            this.activeValue.settings.configure[property] =
-              this.activeHaxElement.properties[property];
-          }
-        });
-        props.settings.advanced.forEach((el) => {
-          if (el.property === property) {
-            this.activeValue.settings.advanced[property] =
-              this.activeHaxElement.properties[property];
-          }
-          if (el.attribute === property) {
-            this.activeValue.settings.advanced[property] =
-              this.activeHaxElement.properties[property];
-          }
-          if (el.slot === property) {
-            this.activeValue.settings.advanced[property] =
-              this.activeHaxElement.properties[property];
-          }
-        });
-        props.settings.developer.forEach((el) => {
-          if (el.property === property) {
-            this.activeValue.settings.developer[property] =
-              this.activeHaxElement.properties[property];
-          }
-          if (el.attribute === property) {
-            this.activeValue.settings.developer[property] =
-              this.activeHaxElement.properties[property];
-          }
-          if (el.slot === property) {
-            this.activeValue.settings.developer[property] =
-              this.activeHaxElement.properties[property];
-          }
+        // step through the 3 keys we have so we write less code
+        Object.keys(props.settings).forEach((propContainer) => {
+          // see if this container has settings that match a prop name
+          // so that we can set the default value at the correct location
+          // this is effectively converting a flat html data object in the page
+          // into the hierarchy matching the SimpleFieldsSchema of the form structure
+          // keys and depth have to match for SimpleFields to pick up the right value
+          // then we flatten it back into HTML on @value-change __valueChangedEvent
+          props.settings[propContainer].forEach((el, i) => {
+            // see if we match on prop name, attr, or slot, falling back to collapse
+            if (['contenteditable', 'data-hax-active', 'data-hax-grid', 'data-hax-layout'].includes(property)) {
+              // no need to dig for these bc they are part of HAX / web platform operations
+            }
+            else if (el.property === property) {
+              this.activeValue.settings[propContainer][property] =
+                this.activeHaxElement.properties[property];
+            }
+            else if (el.attribute === property) {
+              this.activeValue.settings[propContainer][property] =
+                this.activeHaxElement.properties[property];
+            }
+            else if (el.slot === property) {
+              this.activeValue.settings[propContainer][property] =
+                this.activeHaxElement.properties[property];
+            }
+            // if that didn't work, look for a collapse because that means
+            // visually we are nesting data however the data needs to recall flat
+            // this will not impact Array based data as that is structural and visual
+            else if (el.inputMethod === "collapse" && props.settings[propContainer][i].properties) {
+              // we are a collapse
+              props.settings[propContainer][i].properties.forEach((collapseContainer, collapseIndex) => {
+                // sanity check that they put props under a collapse container w/ a label
+                if (collapseContainer.title && collapseContainer.properties) {
+                  props.settings[propContainer][i].properties[collapseIndex].properties.forEach((nested) => {
+                    if (nested.property === property) {
+                      // ensure nesting if 1st value here
+                      if (!this.activeValue.settings[propContainer][el.property]) {
+                        this.activeValue.settings[propContainer][el.property] = {};
+                      }
+                      // ensure nesting if 1st value under this container
+                      if (!this.activeValue.settings[propContainer][el.property][collapseContainer.property]) {
+                        this.activeValue.settings[propContainer][el.property][collapseContainer.property] = {};
+                      }
+                      this.activeValue.settings[propContainer][el.property][collapseContainer.property][property] =
+                        this.activeHaxElement.properties[property];
+                    }
+                    if (nested.attribute === property) {
+                      // ensure nesting if 1st value here
+                      if (!this.activeValue.settings[propContainer][el.property]) {
+                        this.activeValue.settings[propContainer][el.property] = {};
+                      }
+                      // ensure nesting if 1st value under this container
+                      if (!this.activeValue.settings[propContainer][el.property][collapseContainer.property]) {
+                        this.activeValue.settings[propContainer][el.property][collapseContainer.property] = {};
+                      }
+                      this.activeValue.settings[propContainer][el.property][collapseContainer.property][property] =
+                        this.activeHaxElement.properties[property];
+                    }
+                  });
+                }
+              });
+            }
+            else {
+              // not a problem but worth debugging possibly
+              //console.warn(`${property} no match on a value under ${propContainer}, but is in HTML`);
+            }
+          });
         });
       }
       // now we need to parse through for slotted items
@@ -1451,7 +1478,7 @@ class HaxTray extends I18NMixin(
               this.activeValue.settings.advanced[prop.slot] = el.innerHTML;
             }
           });
-          // now advanced
+          // now developer
           props.settings.developer.forEach((prop) => {
             if (prop.slot === el.getAttribute("slot")) {
               this.activeValue.settings.developer[prop.slot] = el.innerHTML;
@@ -1525,10 +1552,7 @@ class HaxTray extends I18NMixin(
           disabled: filteredProps.length < 1,
           // we only auto expand (and hence auto focus) active nodes if they are NOT text based
           // grid plates are the exception to the rule here
-          expanded:
-            propName === "configure" &&
-            (!HAXStore.isTextElement(this.activeNode) ||
-              HAXStore.isInlineElement(this.activeNode)),
+          expanded: propName === "configure",
           accordion: true,
         });
       };
@@ -1613,12 +1637,22 @@ class HaxTray extends I18NMixin(
     }
     this.requestUpdate();
   }
+
+  // this helper ensures that objcets are not deeply nested, while avoiding smashing together array based data
+  flattenObject = (obj) => {
+    return Object.assign({}, ...function _flatten(o) {
+      return [].concat(...Object.keys(o).map(k =>
+          typeof o[k] === 'object' && !Array.isArray(o[k]) ? _flatten(o[k]) : ({ [k]: o[k] })
+      ));
+    }(obj));
+  }
   /**
    * Notice change in values from below
    */
   __valueChangedEvent(e) {
     if (this.editMode && e.detail.value && e.detail.value.settings) {
-      let settings = e.detail.value.settings;
+      // ensure it's a clone of an object
+      let settings = {...e.detail.value.settings};
       let props = {
         ...HAXStore.elementList[this.activeNode.tagName.toLowerCase()],
       };
@@ -1628,6 +1662,18 @@ class HaxTray extends I18NMixin(
         advanced: "advanced",
         developer: "developer",
       };
+      // support flattening empty keys
+      for (let key in settingsKeys) {
+        for (let prop in settings[key]) {
+          // if we get an empty key, we need to flatten the values
+          // we are writing to HTML in the end and not some infinitely nested object
+          // this means we are NOT assigning a name to the collapse, by design.
+          // collapse also has 2 levels of nesting, so if we're putting values under it we need to assume they are in a similarly unnamed container
+          // for the time being
+          // this will only support a single collapse hiding a whole bunch of values
+          settings[key] = this.flattenObject(settings[key]);
+        }
+      }
       var setAhead;
       clearTimeout(this.__contextPropDebounce);
       this.__contextPropDebounce = setTimeout(() => {

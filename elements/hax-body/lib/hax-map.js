@@ -334,17 +334,6 @@ class HaxMap extends I18NMixin(SimpleColors) {
                           @click="${(e) => this.itemOp(index, "lock")}"
                           title="Lock / Unlock"
                         ></simple-icon-button-lite>
-                        ${HAXStore.isTextElement(element.node) ||
-                        element.tag == "grid-plate"
-                          ? html``
-                          : html`
-                              <simple-icon-button-lite
-                                icon="image:transform"
-                                @click="${(e) =>
-                                  this.itemOp(index, "transform")}"
-                                title="Change to.."
-                              ></simple-icon-button-lite>
-                            `}
                         <simple-icon-button-lite
                           icon="hax:keyboard-arrow-up"
                           @click="${(e) => this.itemOp(index, "up")}"
@@ -411,20 +400,6 @@ class HaxMap extends I18NMixin(SimpleColors) {
         node.parentNode.getAttribute("data-hax-lock") == null
       ) {
         switch (action) {
-          case "transform":
-            this.dispatchEvent(
-              new CustomEvent("hax-context-item-selected", {
-                bubbles: true,
-                cancelable: true,
-                composed: true,
-                detail: {
-                  target: node,
-                  eventName: "hax-transform-node",
-                  value: true,
-                },
-              }),
-            );
-            break;
           case "lock":
             node.setAttribute("data-hax-lock", "data-hax-lock");
             break;

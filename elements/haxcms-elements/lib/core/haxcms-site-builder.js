@@ -219,7 +219,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             }
           })
           .then((data) => {
-            this._updateActiveItemContent(data);
+              this._updateActiveItemContent(data);
             this.loading = false;
           })
           .catch((err) => {

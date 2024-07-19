@@ -577,7 +577,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
               part="page-tags"
               auto-accent-color
             ></site-active-tags>
-            <section id="slot">
+            <section id="slot" part="slot">
               <slot></slot>
             </section>
             <div class="link-actions">
