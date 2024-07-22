@@ -116,10 +116,12 @@ class MediaQuote extends DDD {
           font-style: italic;
           font-size: 0; /* Prevents a space between author and author detail comma on both sides  */
         }
+
         .author {
           display: inline;
           font-weight: var(--ddd-font-weight-bold);
         }
+
         .author,
         .author-detail {
           display: inline;
@@ -143,7 +145,6 @@ class MediaQuote extends DDD {
         .caption {
           display: flex;
           justify-content: center;
-          
         }
 
         details {
@@ -159,10 +160,12 @@ class MediaQuote extends DDD {
           color: light-dark(black, white);
           background-color: light-dark(white, var(--ddd-theme-default-coalyGray));
         }
+
         summary {
           font-size: var(--ddd-font-size-4xs);
           padding: 0 var(--ddd-spacing-2);
         }
+
         p {
           margin: 0;
         }
@@ -217,6 +220,7 @@ class MediaQuote extends DDD {
           .citation {
             padding: var(--ddd-spacing-2) 0;
           }
+          
           .citation {
             width: 100%;
             margin-top: 0;
