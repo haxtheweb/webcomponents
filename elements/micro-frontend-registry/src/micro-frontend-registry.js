@@ -75,18 +75,19 @@ class MicroFrontendRegistryEl extends HTMLElement {
         if (window.MicroFrontendRegistryConfig.base) {
           base = window.MicroFrontendRegistryConfig.base;
         }
-        // keep local based if we're local, otherwise we need to leverage deployed address
+        // keep local based on if we're local, otherwise we need to leverage deployed address
         else if (
-          window.location.origin.startsWith("http://127.0.0.1") ||
-          window.location.origin.startsWith("http://localhost")
+          (!window.HAXCMSContext || window.HAXCMSContext !== "nodejs") &&
+          (window.location.origin.startsWith("http://127.0.0.1") ||
+          window.location.origin.startsWith("http://localhost"))
         ) {
           base = window.location.origin
             .replace(/127.0.0.1:8(.*)/, "localhost:3000")
             .replace(/localhost:8(.*)/, "localhost:3000");
         }
-        // most common case, hit vercel address
+        // most common case, hit production open api address
         else {
-          base = "https://haxapi.vercel.app";
+          base = "https://open-apis.hax.cloud";
         }
         item.endpoint = `${base}${item.endpoint}`;
       }

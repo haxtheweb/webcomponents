@@ -87,7 +87,7 @@ class ChatControlBar extends DDD {
   // TODO dev mode button
   render() {
     return html`
-      <!-- https://haxapi.vercel.app/?path=/story/media-icons--hax-iconset-story -->
+      <!-- https://open-apis.hax.cloud/?path=/story/media-icons--hax-iconset-story -->
       
       <div class="chat-control-bar-wrapper">
         <div class="left-side">
