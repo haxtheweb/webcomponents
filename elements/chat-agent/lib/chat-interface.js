@@ -80,11 +80,20 @@ class ChatInterface extends DDD {
           border-style: solid;
           box-shadow: var(--ddd-boxShadow-xl);
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
+
+          border-style: solid;
+          border-width: 0.75px;
+          border-color: light-dark(black, white);
         }
         
         :host([is-full-view]) .chat-wrapper {
           height: 94%;
           margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
+
+          border-color: transparent;
+          border-radius: var(--ddd-radius-sm);
+          border-style: none;
+          border-width: 0;
         } 
         
         :host([is-full-view][has-editor-ui]) .chat-wrapper {
@@ -113,15 +122,13 @@ class ChatInterface extends DDD {
         /* Chat Container */
         .chat-container {
           background-color: var(--ddd-theme-default-white);
-          border-color: light-dark(black, white);
-          border-radius: var(--ddd-radius-sm);
-          border-style: solid;
-          border-width: 0.75px;
+          border-radius: var(--ddd-radius-sm);       
           display: flex;
           flex-direction: column;
           width: 100%;
         }
 
+        /* TODO this is not working for some reason, try to fix it */
         :host([is-full-view]) .chat-container {
           height: 92%;
         }
