@@ -44,12 +44,13 @@ class ChatSuggestion extends DDD {
           display: block;
         }
 
+        /* TODO fix border color */
         .chat-suggestion-wrapper {
           align-items: center;
+          border: var(--ddd-border-sm);
           background-color: var(--ddd-theme-default-successLight);
           border-color: var(--ddd-theme-default-potentialMidnight);
           border-radius: var(--ddd-radius-xl);
-          border: var(--ddd-border-sm);
           box-shadow: var(--ddd-boxShadow-xl);
           cursor: pointer;
           display: flex;
