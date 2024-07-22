@@ -83,6 +83,12 @@ class ChatSuggestion extends DDD {
           display: flex;
           justify-content: center;
           width: 80%;
+
+          /* Prevent text highlighting in button */
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
+          user-select: none;
         }
 
         :host([disabled]) .chat-suggestion-wrapper {
