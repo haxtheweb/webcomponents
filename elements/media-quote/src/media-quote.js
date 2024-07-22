@@ -143,6 +143,7 @@ class MediaQuote extends DDD {
         .caption {
           display: flex;
           justify-content: center;
+          
         }
 
         details {
@@ -155,6 +156,8 @@ class MediaQuote extends DDD {
         figcaption {
           padding: var(--ddd-spacing-4);
           font-size: var(--ddd-font-size-4xs);
+          color: light-dark(black, white);
+          background-color: light-dark(white, var(--ddd-theme-default-coalyGray));
         }
         summary {
           font-size: var(--ddd-font-size-4xs);
