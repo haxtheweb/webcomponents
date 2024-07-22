@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Automated conversion of parallax-image/",
   "repository": {
     "type": "git",
@@ -42,12 +42,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/schema-behaviors": "^9.0.0",
+    "@haxtheweb/schema-behaviors": "^9.0.1",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0",
-    "@haxtheweb/storybook-utilities": "^9.0.0",
+    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/storybook-utilities": "^9.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
