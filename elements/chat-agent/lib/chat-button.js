@@ -39,26 +39,29 @@ class ChatButton extends DDD {
         }
 
         .chat-button-wrapper {
-          background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          display: flex;
-          width: 96px;
-          height: 96px;
-          flex-direction: column;
           align-items: center;
-          justify-content: center;
+          background-color: var(--data-theme-primary, var(--ddd-primary-1));
+          border-color: light-dark(black, white);
           border-radius: var(--ddd-radius-lg);
+          border-style: solid;
+          border-width: 0.75px;
+          box-shadow: 0 4px rgba(0, 3, 33, 0.4);
           cursor: pointer;
-          box-shadow: 0 4px red;
+          display: flex;
+          flex-direction: column;
+          height: 96px;
+          justify-content: center;
+          width: 96px;
         }
 
         .chat-button-wrapper:hover, .chat-button-wrapper:focus-visible {
-          box-shadow: 0 5px red;
-          transform: translateY(-1px);
+          box-shadow: 0 6px rgba(0, 3, 33, 0.4);
+          transform: translateY(-2px);
         }
 
         /* TODO Figure out how to get this to work with enter key */
         .chat-button-wrapper:active {
-          box-shadow: 0 1px red;
+          box-shadow: 0 1px rgba(0, 3, 33, 0.4);
           transform: translateY(3px);
         }
 
@@ -71,34 +74,40 @@ class ChatButton extends DDD {
         }
 
         .icon-wrapper {
-          width: 56px;
-          height: 56px;
-          display: flex;
           align-items: center;
-          justify-content: center;
           background-color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-circle);
+          display: flex;
+          height: 56px;
+          justify-content: center;
           margin-bottom: var(--ddd-spacing-1);
+          width: 56px;
         }
 
         simple-icon-lite {
-          color: var(--data-theme-primary, var(--ddd-primary-13));
           --simple-icon-height: var(--ddd-icon-md);
           --simple-icon-width: var(--ddd-icon-md);
+          color: var(--data-theme-primary, var(--ddd-primary-13));
         }
 
         .label-wrapper {
-          padding: var(--ddd-spacing-1);
           background-color: var(--ddd-theme-default-white);
-          color: var(--ddd-theme-default-potentialMidnight);
           border-radius: var(--ddd-radius-xs);
+          color: var(--ddd-theme-default-potentialMidnight);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
           max-width: var(--ddd-spacing-19);
-          text-align: center;
           overflow: hidden;
+          padding: var(--ddd-spacing-1);
+          text-align: center;
           text-overflow: ellipsis;
           white-space: nowrap;
+          
+          /* Prevent text highlighting in button */
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
+          user-select: none;
         }
       `
     ];
@@ -110,7 +119,7 @@ class ChatButton extends DDD {
         <div class="icon-wrapper">
           <simple-icon-lite icon="${ChatAgentModalStore.buttonIcon}"></simple-icon-lite>
         </div>
-        <div class="label-wrapper">
+        <div class="label-wrapper" unselectable="on">
           <slot name="label">${ChatAgentModalStore.buttonLabel}</slot>
         </div>
       </div>

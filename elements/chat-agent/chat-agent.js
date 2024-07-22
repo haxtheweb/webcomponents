@@ -168,23 +168,24 @@ class ChatAgent extends DDD {
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
 
         :host {
-          display: block;
           container-type: normal;
+          display: block;
         }
 
         .chat-agent-wrapper {
+          bottom: var(--ddd-spacing-2);
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-2);
           position: fixed;
-          bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          width: 35%;        }
+          width: 35%;        
+        }
 
         :host([is-full-view]) .chat-agent-wrapper {
           bottom: var(--ddd-spacing-0);
-          right: var(--ddd-spacing-0);
           gap: var(--ddd-spacing-0);
+          right: var(--ddd-spacing-0);
           width: 25%;
           @media only screen and (min-height: 1000px) {
             width: 35%;
@@ -193,8 +194,8 @@ class ChatAgent extends DDD {
 
         :host([is-full-view]:host([is-interface-hidden])) .chat-agent-wrapper {
           bottom: var(--ddd-spacing-2);
-          right: var(--ddd-spacing-2);
           gap: var(--ddd-spacing-2);
+          right: var(--ddd-spacing-2);
         }
 
         .agent-interface-wrapper {

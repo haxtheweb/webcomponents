@@ -40,31 +40,31 @@ class ChatSuggestion extends DDD {
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
 
         :host {
-          display: block;
           container-type: inline-size;
+          display: block;
         }
 
         .chat-suggestion-wrapper {
+          align-items: center;
+          background-color: var(--ddd-theme-default-successLight);
+          border-color: var(--ddd-theme-default-potentialMidnight);
+          border-radius: var(--ddd-radius-xl);
+          border: var(--ddd-border-sm);
+          box-shadow: var(--ddd-boxShadow-xl);
+          cursor: pointer;
           display: flex;
           flex-direction: row;
           justify-content: center;
-          align-items: center;
-          background-color: var(--ddd-theme-default-successLight);
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-xl);
-          border-color: var(--ddd-theme-default-potentialMidnight);
           opacity: 1.0;
-          cursor: pointer;
-          box-shadow: var(--ddd-boxShadow-xl);
         }
 
         .suggestion-icon {
-          width: 20%;
-          display: flex;
           align-items: center;
-          justify-content: center;
-          border-right: var(--ddd-border-md);
           border-right-style: solid;
+          border-right: var(--ddd-border-md);
+          display: flex;
+          justify-content: center;
+          width: 20%;
         }
 
         .circle-wrapper {
@@ -79,16 +79,16 @@ class ChatSuggestion extends DDD {
         }
 
         .suggestion-text {
-          width: 80%;
-          display: flex;
           align-items: center;
+          display: flex;
           justify-content: center;
+          width: 80%;
         }
 
         :host([disabled]) .chat-suggestion-wrapper {
           background-color: var(--ddd-theme-default-discoveryCoral);
-          opacity: 0.6;
           cursor: default;
+          opacity: 0.6;
         }
 
         :host([chosen-prompt]) .chat-suggestion-wrapper {
@@ -111,8 +111,8 @@ class ChatSuggestion extends DDD {
           color: var(--ddd-theme-default-potentialMidnight);
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
-          width: 80%;
           text-align: center;
+          width: 80%;
         }
 
         @container (max-width: 270px) and (min-width: 216px) {

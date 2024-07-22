@@ -43,18 +43,18 @@ class ChatInput extends DDD {
         }
 
         .chat-input-wrapper {
-          display: flex;
           align-items: center;
-          justify-content: center;
+          display: flex;
           gap: var(--ddd-spacing-3);
+          justify-content: center;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
         }
 
         #user-input {
-          border-radius: var(--ddd-radius-lg);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           background-color: var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-lg);
           color: #000;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           resize: none;
           scrollbar-width: none;
           width: 85%;
@@ -62,24 +62,24 @@ class ChatInput extends DDD {
 
         /* TODO icon shifts slightly when doing the click sequence */
         .send-button {
-          width: 52px;
-          height: 52px;
-          border-radius: var(--ddd-radius-circle);
-          background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          display: flex;
           align-items: center;
-          justify-content: center;
+          background-color: var(--data-theme-primary, var(--ddd-primary-1));
+          border-radius: var(--ddd-radius-circle);
+          box-shadow: 0 4px rgba(0, 3, 33, 0.2);
           cursor: pointer;
-          box-shadow: 0 4px red;
+          display: flex;
+          height: 52px;
+          justify-content: center;
+          width: 52px;
         }
 
         .send-button:hover, .send-button:focus-visible {
-          box-shadow: 0 5px red;
-          transform: translateY(-1px);
+          box-shadow: 0 6px rgba(0, 3, 33, 0.2);
+          transform: translateY(-2px);
         }
 
         .send-button:active {
-          box-shadow: 0 1px red;
+          box-shadow: 0 1px rgba(0, 3, 33, 0.2);
           transform: translateY(3px);
         }
 
@@ -88,6 +88,10 @@ class ChatInput extends DDD {
             --lowContrast-override,
             var(--ddd-theme-bgContrast, white)
           );
+        }
+
+        simple-tooltip {
+          --simple-tooltip-delay-in: 1000ms;
         }
       `
     ];
@@ -100,7 +104,7 @@ class ChatInput extends DDD {
         <div class="send-button" id="send-button" @click=${this.handleSendButton} tabindex="0" aria-label="Send Prompt">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
-        <simple-tooltip for="send-button" position="top">Send Prompt to Merlin</simple-tooltip></simple-tooltip>
+        <simple-tooltip for="send-button" position="left">Send Prompt to Merlin</simple-tooltip></simple-tooltip>
       </div>
     `;
   }

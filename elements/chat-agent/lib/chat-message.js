@@ -31,38 +31,37 @@ class ChatMessage extends DDD {
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
         
         :host {
-          display: block;
           container-type: inline-size;
+          display: block;
         }
 
         .chat-message-wrapper {
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-md);
           border-bottom-style: dashed;
+          border-bottom: var(--ddd-border-md);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
         }
 
         .sent-chat-message, .message {
+          align-items: center;
           display: flex;
           flex-direction: row;
           gap: var(--ddd-spacing-3);
-          align-items: center;
         }
 
         .received-chat-message {
           display: flex;
           flex-direction: column;
-          /* gap: var(--ddd-spacing-1); */
         }
 
         .author-icon {
-          display: flex;
           align-items: center;
-          justify-content: center;
-          border: var(--ddd-border-md);
           border-color: var(--ddd-theme-default-potentialMidnight);
           border-radius: var(--ddd-radius-circle);
-          width: var(--ddd-spacing-18);
+          border: var(--ddd-border-md);
+          display: flex;
           height: var(--ddd-spacing-18);
+          justify-content: center;
+          width: var(--ddd-spacing-18);
         }
 
         .received-chat-message .author-icon {
@@ -76,29 +75,29 @@ class ChatMessage extends DDD {
         }
 
         rpg-character {
-          width: var(--ddd-spacing-12);
           height: var(--ddd-spacing-12);
           margin-bottom: var(--ddd-spacing-3);
+          width: var(--ddd-spacing-12);
         }
 
         .message-content {
-          color: #000;
-          border: var(--ddd-border-md);
           border-color: var(--ddd-theme-default-potentialMidnight);
           border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2);
-          margin: var(--ddd-spacing-0);
-          width: 80%;
+          border: var(--ddd-border-md);
+          color: #000;
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
+          margin: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-2);
+          width: 80%;
         }
 
         .suggested-prompts {
           display: flex;
           flex-direction: column;
+          gap: var(--ddd-spacing-2);
           justify-content: center;
           padding-top: var(--ddd-spacing-3);
-          gap: var(--ddd-spacing-2);
         }
 
         @container (max-width: 190px) {
@@ -111,9 +110,9 @@ class ChatMessage extends DDD {
           }
 
           .message {
+            align-items: center;
             display: flex;
             justify-content: center;
-            align-items: center;
           }
         }
       `

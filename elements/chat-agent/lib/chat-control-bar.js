@@ -34,21 +34,21 @@ class ChatControlBar extends DDD {
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
         
         :host {
-          display: block;
           container-type: inline-size;
+          display: block;
         }
 
         .chat-control-bar-wrapper {
+          align-items: center;
           display: flex;
           justify-content: space-between;
-          align-items: center;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-0);
         }
 
         button {
           background-color: #2b2a33;
-          color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-sm);
+          color: var(--ddd-theme-default-white);
         }
         
         button:hover, button:focus-visible {
@@ -57,6 +57,10 @@ class ChatControlBar extends DDD {
 
         button > simple-icon-lite {
           --simple-icon-color: var(--ddd-theme-default-white);
+        }
+
+        simple-tooltip {
+          --simple-tooltip-delay-in: 1000ms;
         }
 
         .data-collection-icon {
@@ -95,36 +99,36 @@ class ChatControlBar extends DDD {
           <button id="download-button" @click=${this.handleDownloadLogButton} aria-label="Download Log as txt">
             <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
           </button>
-          <simple-tooltip for="download-button" position="right">Download Chat Log</simple-tooltip>
+          <simple-tooltip for="download-button" position="${this.isFullView ? "right" : "top"}">Download Chat Log</simple-tooltip>
           
           <button id="reset-button" @click=${this.handleResetButton} aria-label="Reset Chat">
             <simple-icon-lite icon="icons:refresh"></simple-icon-lite>
           </button>
-          <simple-tooltip for="reset-button" position="right">Reset Chat</simple-tooltip>
+          <simple-tooltip for="reset-button" position="${this.isFullView ? "right" : "top"}">Reset Chat</simple-tooltip>
 
           <button id="data-collection-button" @click=${this.handleDataCollectionButton} aria-label="Toggle Data Collection">
             <simple-icon-lite icon="lrn:data_usage" class="data-collection-icon"></simple-icon-lite>
             <span class="data-collection-label">Data Collection</span>
           </button>
-          <simple-tooltip for="data-collection-button" position="right">Toggle Data Collection</simple-tooltip>
+          <simple-tooltip for="data-collection-button" position="${this.isFullView ? "right" : "top"}">Toggle Data Collection</simple-tooltip>
 
           <button id="dev-mode-button" @click=${this.handleDevModeButton} aria-label="Toggle Developer Mode">
             <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
           </button>
-          <simple-tooltip for="dev-mode-button" position="right">Toggle Developer Mode</simple-tooltip>
+          <simple-tooltip for="dev-mode-button" position="${this.isFullView ? "right" : "top"}">Toggle Developer Mode</simple-tooltip>
 
         </div>
         <div class="right-side">
           <button id="view-button" @click=${this.handleViewButton} aria-label="${this.isFullView ? 'Exit Full View' : 'Enter Full View'}">
             <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
-          <simple-tooltip for="view-button" position="left">${this.isFullView ? 'Exit Full View' : 'Enter Full View'}</simple-tooltip>
+          <simple-tooltip for="view-button" position="${this.isFullView ? "left" : "top"}">${this.isFullView ? 'Exit Full View' : 'Enter Full View'}</simple-tooltip>
 
           ${this.isFullView ? html`
             <button id="hide-button" @click=${this.handleHideButton} aria-label="Hide Interface">
               <simple-icon-lite icon="remove"></simple-icon-lite>
             </button>
-            <simple-tooltip for="hide-button" position="left">Hide Interface</simple-tooltip>
+            <simple-tooltip for="hide-button" position="${this.isFullView ? "left" : "top"}">Hide Interface</simple-tooltip>
           ` : ''}
         </div>
       </div>

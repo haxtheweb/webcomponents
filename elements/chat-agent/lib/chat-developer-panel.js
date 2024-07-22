@@ -18,10 +18,12 @@ class ChatDeveloperPanel extends DDD {
     super();
     this.chatLog = [];
     this.engine = null;
+    this.isFullView = null;
     
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.engine = toJS(ChatAgentModalStore.engine);
+      this.isFullView = toJS(ChatAgentModalStore.isFullView);
     });
   }
 
@@ -32,41 +34,41 @@ class ChatDeveloperPanel extends DDD {
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
 
         :host {
-          display: block;
           container-type: inline-size;
+          display: block;
         }
 
         .chat-developer-panel-wrapper {
           background-color: var(--ddd-theme-default-keystoneYellow);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
           border-radius: var(--ddd-radius-sm);
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
         }
 
         .console-table {
+          align-items: center;
           display: flex;
           gap: var(--ddd-spacing-1);
           justify-content: space-between;
-          align-items: center;
         }
 
         .switch-engine-controls {
+          align-items: center;
           display: flex;
           justify-content: center;
-          align-items: center;
         }
 
         button {
-          display: flex;
           align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          gap: var(--ddd-spacing-1);
           background-color: #2b2a33;
-          color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-sm);
+          color: var(--ddd-theme-default-white);
+          cursor: pointer;
+          display: flex;
+          gap: var(--ddd-spacing-1);
+          justify-content: center;
         }
         
         button:hover, button:focus-visible {
@@ -75,6 +77,10 @@ class ChatDeveloperPanel extends DDD {
 
         button > simple-icon-lite {
           --simple-icon-color: var(--ddd-theme-default-white);
+        }
+
+        simple-tooltip {
+          --simple-tooltip-delay-in: 1000ms;
         }
 
         @container (max-width: 500px) {
@@ -114,7 +120,7 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">console.table() user chat log</span>
             </div> 
           </button>
-          <simple-tooltip for="console-table-user" position="left">Print User Chat Log as Table to Console</simple-tooltip>
+          <simple-tooltip for="console-table-user" position="${this.isFullView ? "right" : "top"}">Print User Chat Log as Table to Console</simple-tooltip>
 
           <button id="console-table-merlin" @click=${this.handleConsoleTableButton} aria-label="Console table merlin chat log">
             <div class="button-icon">
@@ -125,7 +131,7 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">console.table() merlin chat log</span>
             </div>
           </button>
-          <simple-tooltip for="console-table-merlin" position="left">Print Merlin Chat Log as Table to Console</simple-tooltip>
+          <simple-tooltip for="console-table-merlin" position="${this.isFullView ? "right" : "top"}">Print Merlin Chat Log as Table to Console</simple-tooltip>
 
           <button id="console-table-all" @click=${this.handleConsoleTableButton} aria-label="Console table entire chat log">
             <div class="button-icon">
@@ -136,7 +142,7 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">console.table() entire chat log</span>  
             </div>
           </button>
-          <simple-tooltip for="console-table-all" position="left">Print Entire Chat Log as Table to Console</simple-tooltip>
+          <simple-tooltip for="console-table-all" position="${this.isFullView ? "left" : "top"}">Print Entire Chat Log as Table to Console</simple-tooltip>
 
           <button id="download-as-json" @click=${this.handleDownloadAsJsonButton} aria-label="Download chat log as .json">
             <div class="button-icon">
@@ -147,7 +153,7 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">Download chat log as .json</span>
             </div>
           </button>
-          <simple-tooltip for="download-as-json" position="left">Download Chat Log as .json</simple-tooltip>
+          <simple-tooltip for="download-as-json" position="${this.isFullView ? "left" : "top"}">Download Chat Log as .json</simple-tooltip>
         </div>
 
         <div class="switch-engine-controls" aria-label="Switch LLM Engine">
@@ -234,6 +240,12 @@ class ChatDeveloperPanel extends DDD {
   static get properties() {
     return {
       ...super.properties,
+
+      isFullView: {
+        type: Boolean,
+        attribute: "is-full-view",
+        reflect: true,
+      },
     };
   }
 

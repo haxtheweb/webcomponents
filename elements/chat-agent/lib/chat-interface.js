@@ -54,8 +54,8 @@ class ChatInterface extends DDD {
         
         :host {
           display: block;
-          z-index: 999999;
           width: 100%;
+          z-index: 999999;
         }
 
         /* Chat Interface Wrapper */
@@ -65,8 +65,8 @@ class ChatInterface extends DDD {
 
         :host([is-full-view]) .chat-interface-wrapper {
           background-color: var(--ddd-theme-default-potentialMidnight);
-          padding: var(--ddd-spacing-3);
           height: 100vh;
+          padding: var(--ddd-spacing-3);
         }
 
         :host([is-interface-hidden]) .chat-interface-wrapper {
@@ -76,19 +76,20 @@ class ChatInterface extends DDD {
         /* Chat Wrapper */
         .chat-wrapper {
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-sm);
+          border-style: solid;
           box-shadow: var(--ddd-boxShadow-xl);
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
         }
         
         :host([is-full-view]) .chat-wrapper {
-          margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
           height: 94%;
+          margin: var(--ddd-spacing-6) var(--ddd-spacing-0) var(--ddd-spacing-6) var(--ddd-spacing-0);
         } 
         
         :host([is-full-view][has-editor-ui]) .chat-wrapper {
-          margin: var(--ddd-spacing-18) var(--ddd-spacing-0) var(--ddd-spacing-0) var(--ddd-spacing-0);
           height: 87%;
+          margin: var(--ddd-spacing-18) var(--ddd-spacing-0) var(--ddd-spacing-0) var(--ddd-spacing-0);
         } 
         
         :host([developer-mode]), .chat-wrapper {
@@ -111,11 +112,14 @@ class ChatInterface extends DDD {
         
         /* Chat Container */
         .chat-container {
-          width: 100%;
           background-color: var(--ddd-theme-default-white);
+          border-color: light-dark(black, white);
           border-radius: var(--ddd-radius-sm);
+          border-style: solid;
+          border-width: 0.75px;
           display: flex;
           flex-direction: column;
+          width: 100%;
         }
 
         :host([is-full-view]) .chat-container {
@@ -135,8 +139,8 @@ class ChatInterface extends DDD {
         }
         
         :host([is-full-view]) .chat-messages {
-          max-height: 100%;
           height: 100%;
+          max-height: 100%;
         }
 
         /* TODO test the media queries for quality assurance, and test without editor ui & without developer mode */
@@ -607,7 +611,9 @@ class ChatInterface extends DDD {
 
   async updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
+
     console.log(changedProperties);
+
     if (changedProperties.has("chatLog")) {
       await this.updateComplete;
       if (this.chatLog.length > 1) {
