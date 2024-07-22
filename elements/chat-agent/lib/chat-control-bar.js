@@ -78,7 +78,6 @@ class ChatControlBar extends DDD {
           }
         }
 
-        /* TODO Does not work */
         @container (max-width: 330px) {
           .data-collection-label {
             display: none;
@@ -88,7 +87,6 @@ class ChatControlBar extends DDD {
     ];
   }
 
-  // TODO issue will vertical monitors and overlap from another element prevents pressing buttons on right side of screen
   render() {
     return html`
       <!-- https://open-apis.hax.cloud/?path=/story/media-icons--hax-iconset-story -->

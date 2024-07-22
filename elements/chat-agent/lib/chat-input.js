@@ -60,7 +60,6 @@ class ChatInput extends DDD {
           width: 85%;
         }
 
-        /* TODO icon shifts slightly when doing the click sequence */
         .send-button {
           align-items: center;
           background-color: var(--data-theme-primary, var(--ddd-primary-1));

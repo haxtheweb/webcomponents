@@ -128,7 +128,6 @@ class ChatInterface extends DDD {
           width: 100%;
         }
 
-        /* TODO this is not working for some reason, try to fix it */
         :host([is-full-view]) .chat-container {
           height: 92%;
         }

@@ -90,7 +90,7 @@ class ChatAgent extends DDD {
     // interface
     // TODO UserScaffold
     this.isFullView = false;
-    this.isInterfaceHidden = false; // TODO setting this to true (which should be the default) causes everything to break (error at line 567)
+    this.isInterfaceHidden = false; // TODO setting this to true (which should be the default) causes everything to break (error at line or around 567)
 
     // message
     this.merlinIndex = 0; // index of merlin messages
@@ -214,7 +214,6 @@ class ChatAgent extends DDD {
           }
         }
 
-        /* TODO adjust all media queries for HAX environment, not demo environment */
         @media only screen and (max-width: 425px) {
           .chat-agent-wrapper {
             width: 90%;
