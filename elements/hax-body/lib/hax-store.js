@@ -2375,6 +2375,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         ]);
       }
     }
+    console.log(e.detail.element);
     // support contextual hax hooks for active item form overwrites
 
     // verify that we are not overflowing, a lot of themes have this ability

@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Links that jump you to the right place in the page&#39;s content",
   "repository": {
     "type": "git",
@@ -44,13 +44,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-popover": "^9.0.0",
-    "@haxtheweb/simple-tooltip": "^9.0.0",
-    "@haxtheweb/utils": "^9.0.0",
+    "@haxtheweb/simple-popover": "^9.0.1",
+    "@haxtheweb/simple-tooltip": "^9.0.1",
+    "@haxtheweb/utils": "^9.0.1",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0",
+    "@haxtheweb/deduping-fix": "^9.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -68,5 +68,5 @@
     "html",
     "haxtheweb"
   ],
-  "gitHead": "77b3fbce0cfab6f70716e875d24b77c5f9c01d99"
+  "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

@@ -47,7 +47,7 @@ globalThis.addEventListener(
         if (props.gizmo && props.gizmo.meta && props.gizmo.meta.inlineOnly) {
           inline = true;
         }
-        // everything that allows for advacned should be able to apply spacing
+        // everything that allows for advanced should be able to apply spacing
         // this stuff floats to the top of those options
         if (!props.hideDefaultSettings && !inline) {
           if (["media-image", "img"].includes(tag)) {

@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/storybook-utilities",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "A series of utilities for `story.js` files",
   "repository": {
     "type": "git",
@@ -14,9 +14,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/es-global-bridge": "^9.0.0",
-    "@haxtheweb/lorem-data": "^9.0.0",
-    "@haxtheweb/simple-colors": "^9.0.0",
+    "@haxtheweb/es-global-bridge": "^9.0.1",
+    "@haxtheweb/lorem-data": "^9.0.1",
+    "@haxtheweb/simple-colors": "^9.0.1",
     "@storybook/addon-knobs": "6.4.0",
     "@storybook/polymer": "5.3.21",
     "lorem-ipsum": "^2.0.3"
@@ -31,5 +31,5 @@
     "demo",
     "html"
   ],
-  "gitHead": "77b3fbce0cfab6f70716e875d24b77c5f9c01d99"
+  "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

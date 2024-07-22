@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Automated conversion of map-menu/",
   "repository": {
     "type": "git",
@@ -42,9 +42,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-collapse": "^9.0.0",
-    "@haxtheweb/simple-icon": "^9.0.0",
-    "@haxtheweb/simple-tooltip": "^9.0.0",
+    "@haxtheweb/a11y-collapse": "^9.0.1",
+    "@haxtheweb/simple-icon": "^9.0.1",
+    "@haxtheweb/simple-tooltip": "^9.0.1",
     "lit": "^3.1.4"
   },
   "devDependencies": {
@@ -63,5 +63,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "77b3fbce0cfab6f70716e875d24b77c5f9c01d99"
+  "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

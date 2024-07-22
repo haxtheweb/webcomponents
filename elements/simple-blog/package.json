@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",
@@ -43,18 +43,18 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@github/time-elements": "3.1.4",
-    "@haxtheweb/hax-iconset": "^9.0.0",
-    "@haxtheweb/schema-behaviors": "^9.0.0",
-    "@haxtheweb/simple-colors": "^9.0.0",
-    "@haxtheweb/simple-datetime": "^9.0.0",
-    "@haxtheweb/simple-icon": "^9.0.0",
+    "@haxtheweb/hax-iconset": "^9.0.1",
+    "@haxtheweb/schema-behaviors": "^9.0.1",
+    "@haxtheweb/simple-colors": "^9.0.1",
+    "@haxtheweb/simple-datetime": "^9.0.1",
+    "@haxtheweb/simple-icon": "^9.0.1",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0",
-    "@haxtheweb/storybook-utilities": "^9.0.0",
+    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/storybook-utilities": "^9.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -71,5 +71,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "77b3fbce0cfab6f70716e875d24b77c5f9c01d99"
+  "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }
