@@ -1641,9 +1641,12 @@ class HaxTray extends I18NMixin(
   // this helper ensures that objcets are not deeply nested, while avoiding smashing together array based data
   flattenObject = (obj) => {
     return Object.assign({}, ...function _flatten(o) {
-      return [].concat(...Object.keys(o).map(k =>
+      if (o) {
+        return [].concat(...Object.keys(o).map(k =>
           typeof o[k] === 'object' && !Array.isArray(o[k]) ? _flatten(o[k]) : ({ [k]: o[k] })
-      ));
+        ));
+      }
+      return o;
     }(obj));
   }
   /**

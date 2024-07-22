@@ -1,6 +1,8 @@
 {
   "canScale": false,
-
+  "designSystem": {
+    "primary": true
+  },
   "canEditSource": true,
   "api": "1",
   "gizmo": {
@@ -9,15 +11,12 @@
     "icon": "hax:anchor",
     "color": "grey",
     "tags": [
-      "Other",
+      "Resource",
       "video-player",
       "audio-player",
       "play-list",
-      "time-line",
       "site",
-      "taxonomy",
-      "config",
-      "entity"
+      "taxonomy"
     ],
     "handles": [],
     "meta": {
