@@ -186,7 +186,8 @@ class LrnMath extends HTMLElement {
   connectedCallback() {
     check_handler(this);
     setTimeout(() => {
-      if (this._haxstate && this.innerHTML && this.mathtext == null) {
+      // if in hax and we have innerHTML, we always defer to it
+      if (this._haxstate && this.innerHTML) {
         this.mathtext = this.innerHTML;
       } else {
         this.updateMath();
@@ -248,7 +249,6 @@ class LrnMath extends HTMLElement {
   static get haxProperties() {
     return {
       canScale: false,
-
       canEditSource: true,
       gizmo: {
         title: "Math",

@@ -82,7 +82,10 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         if (f.slot === "") f.property = "innerHTML";
         return f;
       }),
-    ];
+    ].filter((field) => {
+      // we don't allow collapsed fieldsets in the quick form
+      return field.inputMethod !== "collapse";
+    });
     this.tagsList = gizmo.tag || "span";
     this.icon = gizmo.icon || "add";
     this.label = gizmo.title || gizmo.tag;
@@ -167,8 +170,12 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
             ${this.value[slot]}
           </${this.getSlotWrapper(field)}>`;
     });
+    if (!this.value || Object.keys(this.value).length === 0) {
+      this.value = {
+        innerHTML: this.__highlight.innerHTML
+      };
+    }
     html += this.value.innerHTML || "";
-
     this.__highlight.innerHTML = "";
     this.__highlight.parentNode.insertBefore(tag, this.__highlight);
     this.__highlight.unwrap();
