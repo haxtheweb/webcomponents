@@ -19,14 +19,14 @@ class ChatInput extends DDD {
     this.chatLog = [];
     this.messageIndex = null;
     this.userIndex = null;
-    this.previousMessageIndex = null;
+    this.previousMessagesIndex = null;
     this.userName = null;
 
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
-      this.previousMessageIndex = toJS(this.messageIndex - 1);
+      this.previousMessagesIndex = toJS(this.messageIndex);
       this.userName = toJS(ChatAgentModalStore.userName);
     })
   }
@@ -123,32 +123,46 @@ class ChatInput extends DDD {
         this.handleSendButton();
         break;
 
-      case "ArrowUp": // TODO finish this, careful, it's fragile
-        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`) : null;
-        e.preventDefault();
-        if (this.previousMessageIndex > 0) {
-          while (this.chatLog[this.previousMessageIndex].author !== this.userName) {
-            this.previousMessageIndex--;
-            if (this.previousMessageIndex === 0) {
-              break;
-            }
+      case "ArrowUp": // ! don't touch; it's working >:(
+      e.preventDefault();
+      if (this.previousMessagesIndex > 1) {
+        this.previousMessagesIndex--;
+        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`) : null;
+        
+        while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
+                && this.previousMessagesIndex >= 1) {
+          this.previousMessagesIndex--;
+          if (this.previousMessagesIndex < 1) {
+            this.previousMessagesIndex++;
+            break; 
           }
-          textArea.value = this.chatLog[this.previousMessageIndex].message;
+        }
+
+        textArea.value = this.chatLog[this.previousMessagesIndex].message;
         }
         break;
 
-      case "ArrowDown":
-        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Down pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`) : null;
+      case "ArrowDown": // TODO have Bryan look at this but also work on see if can get working before that
         e.preventDefault();
-        if (this.previousMessageIndex < this.messageIndex - 1) {
-          while (this.chatLog[this.previousMessageIndex].author !== this.userName) {
-            this.previousMessageIndex++;
+        if (this.previousMessagesIndex < this.messageIndex) {
+          this.previousMessagesIndex++;
+          while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
+                  && this.previousMessagesIndex < this.messageIndex) {
+            this.previousMessagesIndex++;
+            if (this.previousMessagesIndex > this.messageIndex) {
+              this.previousMessagesIndex = this.messageIndex;
+              break;
+            }
           }
-          textArea.value = this.chatLog[this.previousMessageIndex].message;
-          this.previousMessageIndex++;
+          if (this.previousMessagesIndex >= this.messageIndex) {
+            textArea.value = "";
+          } else {
+            textArea.value = this.chatLog[this.previousMessagesIndex].message;
+          }
         } else {
           textArea.value = "";
         }
+        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`) : null;
         break;
     }
   }
