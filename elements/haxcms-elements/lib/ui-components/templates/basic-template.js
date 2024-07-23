@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "@polymer/polymer/polymer-element.js";
+import { html } from "lit";
 import "@haxtheweb/grid-plate/grid-plate.js";
 
 /**
@@ -67,11 +67,7 @@ let BasicTemplate = (superclass) =>
       // prettier-ignore
       import(
         "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js"
-      );
-      // prettier-ignore
-      import(
-        "@haxtheweb/haxcms-elements/lib/ui-components/query/site-render-query.js"
-      );
+      )
       // prettier-ignore
       import(
         "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
@@ -94,7 +90,7 @@ let BasicTemplate = (superclass) =>
       );
     }
     // render function
-    static get template() {
+    render() {
       return html`
         <site-top-menu noink indicator="arrow" arrow-size="8">
           <site-title slot="prefix" class="spacing"></site-title>

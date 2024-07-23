@@ -4,7 +4,6 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-blog/lib/simple-blog-post.js";
-import "@polymer/iron-pages/iron-pages.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -73,8 +72,8 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
           color: white;
           background-color: var(--haxcms-color, black);
         }
-        iron-pages,
-        iron-pages section {
+        main,
+        main section {
           width: 100vw;
           height: 100vh;
         }
@@ -109,35 +108,36 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
   // render function
   render() {
     return html`
-      <iron-pages .selected="${this.selectedPage}">
-        <header>
+    <main>
+        ${this.selectedPage === 0 ? html`
+        <section>
           <simple-blog-header></simple-blog-header>
           <simple-blog-listing></simple-blog-listing>
-        </header>
-        <main>
-          <simple-icon-button
-            id="backbutton"
-            icon="icons:arrow-back"
-            @click="${this._goBack}"
-          ></simple-icon-button>
-          <simple-tooltip
-            for="backbutton"
-            position="right"
-            offset="14"
-            animation-delay="0"
-            >Back to listing
-          </simple-tooltip>
-          <article>
-            <simple-blog-post ?edit-mode="${this.editMode}"
-              ><slot></slot
-            ></simple-blog-post>
-          </article>
-          <footer>
-            <simple-blog-footer id="footer"></simple-blog-footer>
-          </footer>
-        </main>
-      </iron-pages>
-    `;
+        </section>
+` : html`<section>
+        <simple-icon-button
+          id="backbutton"
+          icon="icons:arrow-back"
+          @click="${this._goBack}"
+        ></simple-icon-button>
+        <simple-tooltip
+          for="backbutton"
+          position="right"
+          offset="14"
+          animation-delay="0"
+          >Back to listing
+        </simple-tooltip>
+        <article>
+          <simple-blog-post ?edit-mode="${this.editMode}"
+            ><slot></slot
+          ></simple-blog-post>
+        </article>
+        <footer>
+          <simple-blog-footer id="footer"></simple-blog-footer>
+        </footer>
+      </section>`}
+    </main>
+`;
   }
   /**
    * Mix in an opened status

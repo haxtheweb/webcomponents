@@ -42,40 +42,29 @@ class SiteOutlineBlock extends PolymerElement {
           left: 0;
           right: 0;
           z-index: 1000;
-          @apply --site-top-menu-sticky;
         }
         .wrapper {
           display: flex;
           justify-content: center;
           justify-items: space-evenly;
           background-color: var(--site-top-menu-bg);
-          @apply --site-top-menu-wrapper;
         }
         :host .wrapper ::slotted(div.spacing) {
           display: inline-flex;
-          @apply --site-top-menu-spacing;
         }
         .spacing {
           display: inline-flex;
-          @apply --site-top-menu-spacing;
         }
         .link {
           color: var(--site-top-menu-link-color, #444444);
-          @apply --site-top-menu-link;
         }
         button {
           text-transform: unset;
           min-width: unset;
-          @apply --site-top-menu-button;
         }
-        button:hover,
-        button:focus,
-        button:active {
-          @apply --site-top-menu-button-hover;
-        }
+
         .active {
           color: var(--site-top-menu-link-active-color, #000000);
-          @apply --site-top-menu-link-active;
         }
         #indicator {
           transition: 0.4s ease-in-out all;
@@ -87,19 +76,16 @@ class SiteOutlineBlock extends PolymerElement {
         }
         :host([indicator="line"]) #indicator {
           border-bottom: 2px solid var(--site-top-menu-indicator-color, #000000);
-          @apply --site-top-menu-indicator;
         }
         :host([indicator="arrow"]) #indicator {
           border-left: var(--site-top-menu-indicator-arrow) solid transparent;
           border-right: var(--site-top-menu-indicator-arrow) solid transparent;
           border-bottom: var(--site-top-menu-indicator-arrow) solid
             var(--site-top-menu-indicator-color, #000000);
-          @apply --site-top-menu-indicator;
         }
         #indicator.activated {
           visibility: visible;
           position: absolute;
-          @apply --site-top-menu-indicator-activated;
         }
         :host([notitle]) .spacing .link-title {
           display: none;

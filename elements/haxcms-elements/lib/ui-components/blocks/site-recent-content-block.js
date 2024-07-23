@@ -1,8 +1,7 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
+import { LitElement, css, html } from "lit";
 
 /**
  * `site-recent-content-block`
@@ -12,18 +11,39 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
  * @polymer
  * @demo demo/index.html
  */
-class SiteRecentContentBlock extends PolymerElement {
+class SiteRecentContentBlock extends LitElement {
+  constructor() {
+    super();
+    this.limit = 10;
+    this.startIndex = 0;
+    this.sort = {
+      "metadata.created": "ASC"
+    };
+    this.conditions = {};
+    this.title = "Recent content";
+    this.__disposer = autorun(() => {
+      this.activeId = toJS(store.activeId);
+    });
+  }
+
+  updated(changedProperties)  {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+
+    if (changedProperties.has('activeId')) {
+      this._activeIdChanged(this.activeId);
+    }
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "site-recent-content-block";
   }
-  // render function
-  static get template() {
-    return html`
-      <style>
-        :host {
+  static get styles() {
+    return [css`
+      :host {
           display: block;
           background-color: #fff;
           box-shadow: 0 1px 2px #dcdcdc;
@@ -43,19 +63,12 @@ class SiteRecentContentBlock extends PolymerElement {
           border-bottom: solid 1px #dcdcdc;
           padding-bottom: 8px;
           padding-top: 8px;
-          @apply --site-recent-content-block-item-wrap;
         }
         .item-heading a {
           text-decoration: none;
           text-transform: none;
           color: var(--site-recent-content-block-item-link-color);
           font-size: 16px;
-          @apply --site-recent-content-block-item-link;
-        }
-        .item-heading a:hover,
-        .item-heading a:focus,
-        .item-heading a:active {
-          @apply --site-recent-content-block-item-link-hover;
         }
         .active {
           border-left: solid;
@@ -63,47 +76,53 @@ class SiteRecentContentBlock extends PolymerElement {
           border-left-color: var(--site-recent-content-block-active-color);
           background-color: whitesmoke;
           padding-left: 5px;
-          @apply --site-recent-content-block-item-active;
         }
         .image-wrapper {
           display: flex;
           margin-right: 10px;
-          @apply --site-recent-content-block-image-wrapper;
         }
         .image-wrapper img.image {
           height: 50px;
           width: 50px;
-          @apply --site-recent-content-block-image;
         }
-      </style>
+    `];
+  }
+
+  __resultChanged(e) {
+    if (e.detail && e.detail.value) {
+      this.__items = [...e.detail.value];
+    }
+  }
+
+  // render function
+  render() {
+    return html`
       <aside>
         <div class="header">
-          <h3>[[title]]</h3>
+          <h3>${title}</h3>
         </div>
         <site-query
-          result="{{__items}}"
-          sort="[[sort]]"
-          conditions="[[conditions]]"
-          limit="[[limit]]"
-          start-index="[[startIndex]]"
+          @result-changed="${this.__resultChanged}"
+          sort="${sort}"
+          conditions="${conditions}"
+          limit="${limit}"
+          start-index="${startIndex}"
         >
         </site-query>
-        <dom-repeat items="[[__items]]" mutable-data>
-          <template>
-            <div class="item-wrap" data-id$="[[item.id]]">
+        ${this.__items.map(item => html`
+          <div class="item-wrap" data-id="${item.id}">
               <div class="image-wrapper">
                 <img
                   class="image"
                   loading="lazy"
-                  src="[[item.metadata.fields.image]]"
+                  src="${item.metadata.fields.image}"
                 />
               </div>
               <div class="item-heading">
-                <a href$="[[item.slug]]">[[item.title]]</a>
+                <a .href="${item.slug}">${item.title}</a>
               </div>
             </div>
-          </template>
-        </dom-repeat>
+            `)}
       </aside>
     `;
   }
@@ -117,44 +136,41 @@ class SiteRecentContentBlock extends PolymerElement {
        */
       limit: {
         type: Number,
-        value: 10,
       },
       /**
        * ending level for the menu items
        */
       startIndex: {
         type: Number,
-        value: 0,
+        attribute: 'start-index'
+      },
+      __items: {
+        type: Array
       },
       /**
        * optional sort
        */
       sort: {
         type: Object,
-        value: {
-          "metadata.created": "ASC",
-        },
       },
       /**
        * conditions to query on
        */
       conditions: {
         type: Object,
-        value: {},
       },
       /**
        * title for the block;
        */
       title: {
         type: String,
-        value: "Recent content",
       },
       /**
        * acitvely selected item
        */
       activeId: {
         type: String,
-        observer: "_activeIdChanged",
+        attribute: 'active-id'
       },
     };
   }
@@ -190,14 +206,6 @@ class SiteRecentContentBlock extends PolymerElement {
         this._prevEl = el;
       }
     }
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    setTimeout(() => {
-      this.__disposer = autorun(() => {
-        this.activeId = toJS(store.activeId);
-      });
-    }, 50);
   }
   disconnectedCallback() {
     if (this.__disposer) {

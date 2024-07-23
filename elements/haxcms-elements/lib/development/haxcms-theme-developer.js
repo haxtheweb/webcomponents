@@ -10,7 +10,6 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-render-query.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";

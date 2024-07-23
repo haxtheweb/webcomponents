@@ -183,13 +183,9 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
           line-height: 1.5;
         }
         site-top-menu[sticky] {
-          --site-top-menu-wrapper: {
-            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,
-              sans-serif;
-            border-bottom: 1px solid #fff;
-            max-width: 1140px;
-            font-weight: 800;
-          }
+          font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,
+            sans-serif;
+          font-weight: 800;
           height: 50px;
           line-height: 50px;
           color: black;
@@ -206,34 +202,15 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
           overflow: visible;
         }
         site-top-menu:not([sticky]) {
-          --site-top-menu-wrapper: {
             font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,
               sans-serif;
-            justify-content: center;
-          }
-          --site-top-menu-tooltip: {
             --simple-tooltip-background: #000000;
             --simple-tooltip-opacity: 1;
             --simple-tooltip-text-color: #ffffff;
             --simple-tooltip-delay-in: 0;
             --simple-tooltip-border-radius: 0;
-          }
           color: #007bff;
           --site-top-menu-bg: white;
-          --site-top-menu-button: {
-            border: 1px solid #dee2e6;
-            padding: 0;
-            margin: 0;
-            height: 50px;
-            width: 50px;
-            min-width: unset;
-            border-radius: 0;
-            font-size: 1.25rem;
-            line-height: 1.5;
-          }
-          --site-top-menu-button-hover: {
-            background-color: #dee2e6;
-          }
         }
         site-print-button simple-tooltip {
           --simple-tooltip-background: #000000;

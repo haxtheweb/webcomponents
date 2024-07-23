@@ -47,7 +47,6 @@ class SimpleLoginAvatar extends HTMLElement {
       :host {
         margin: 0;
         display: block;
-        @apply --simple-login-avatar;
         max-width: 100%; 
       }
       :host([hidden]){

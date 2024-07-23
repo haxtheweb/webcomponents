@@ -2,21 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/communication-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/places-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
-import "@polymer/iron-image/iron-image.js";
-import "@haxtheweb/lrn-icons/lrn-icons.js";
 import "@haxtheweb/wysiwyg-hax/wysiwyg-hax.js";
 import "@haxtheweb/cms-hax/cms-hax.js";
-import "@polymer/paper-card/paper-card.js";
 import "@haxtheweb/hax-body/hax-body.js";
 import "@haxtheweb/hax-body/lib/hax-store.js";
 import "@haxtheweb/hax-body/lib/hax-autoloader.js";

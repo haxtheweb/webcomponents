@@ -20,9 +20,8 @@ import "@haxtheweb/full-width-image/full-width-image.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@haxtheweb/date-card/lib/date-chip.js";
 import "@haxtheweb/accent-card/accent-card.js";
-import "@polymer/iron-pages/iron-pages.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
@@ -46,7 +45,6 @@ class HaxorSlevin extends HAXCMSRememberRoute(
         }
         site-modal:not(:defined),
         site-rss-button:not(:defined),
-        iron-pages:not(:defined),
         site-share-widget:not(:defined),
         site-active-title:not(:defined),
         site-git-corner:not(:defined),
@@ -82,6 +80,8 @@ class HaxorSlevin extends HAXCMSRememberRoute(
         }
         .wrapper {
           padding-bottom: 80px;
+          padding-top: 64px;
+
         }
         #home {
           max-width: 1032px;
@@ -95,13 +95,6 @@ class HaxorSlevin extends HAXCMSRememberRoute(
           box-sizing: border-box;
           padding-left: 20px;
           padding-right: 20px;
-        }
-        iron-pages {
-          padding-top: 64px;
-        }
-        dom-repeat {
-          padding-bottom: 16px;
-          min-height: 300px;
         }
         full-width-image {
           --full-width-image-font-size: 54px;
@@ -339,7 +332,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
         <site-region name="header"></site-region>
       </header>
       <div class="wrapper">
-        <iron-pages .selected="${this.selectedPage}">
+        ${this.selectedPage === 0 ? html`
           <div id="home">
             <site-query
               @result-changed="${this.__mainPostsChanged}"
@@ -374,6 +367,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
             )}
             <site-region name="footerPrimary"></site-region>
           </div>
+          ` : html`
           <main class="contentcontainer-wrapper">
             <article id="contentcontainer">
               <site-region name="contentTop"></site-region>
@@ -496,7 +490,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
               </div>
             </footer>
           </main>
-        </iron-pages>
+          `}
       </div>
     `;
   }
@@ -599,10 +593,6 @@ class HaxorSlevin extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // prettier-ignore
-    import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
-    );
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-share-widget.js"
