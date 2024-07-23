@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "media-image",
-      "description": "`media-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `disable-zoom` {`boolean`} - \n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `disableZoom` {`boolean`} - \n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`media-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `disable-zoom` {`boolean`} - \n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `disableZoom` {`boolean`} - \n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "__figureLabel",
@@ -76,6 +76,11 @@
           "description": "`offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperty: offset\n\nDefault: none"
         },
         {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
+        {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
@@ -88,7 +93,7 @@
     },
     {
       "name": "media-image-image",
-      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - \n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - \n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "source",
@@ -108,6 +113,11 @@
           "description": "`modal-title` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
         },
         {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
+        {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
@@ -124,8 +134,13 @@
     },
     {
       "name": "media-image-citation",
-      "description": "`media-image-citation`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`media-image-citation`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
         {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
@@ -139,8 +154,13 @@
     },
     {
       "name": "media-image-caption",
-      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
         {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"

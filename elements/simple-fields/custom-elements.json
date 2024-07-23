@@ -2355,7 +2355,7 @@
     },
     {
       "name": "simple-tag",
-      "description": "Events:\n\n  * `simple-tag-clicked` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `auto-accent-color` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `toggles` {`boolean`} - \n\n  * `toggled` {`boolean`} - \n\n  * `toggled-icon` {`string`} - \n\n  * `data` - \n\n  * `icon` {`string`} - \n\n  * `cancel-button` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `autoAccentColor` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `toggles` {`boolean`} - \n\n  * `toggled` {`boolean`} - \n\n  * `toggledIcon` {`string`} - \n\n  * `data` - \n\n  * `icon` {`string`} - \n\n  * `cancelButton` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Events:\n\n  * `simple-tag-clicked` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `auto-accent-color` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `toggles` {`boolean`} - \n\n  * `toggled` {`boolean`} - \n\n  * `toggled-icon` {`string`} - \n\n  * `data` - \n\n  * `icon` {`string`} - \n\n  * `cancel-button` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `autoAccentColor` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `toggles` {`boolean`} - \n\n  * `toggled` {`boolean`} - \n\n  * `toggledIcon` {`string`} - \n\n  * `data` - \n\n  * `icon` {`string`} - \n\n  * `cancelButton` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "auto-accent-color",
@@ -2401,6 +2401,11 @@
         {
           "name": "readonly",
           "description": "`readonly` {`boolean`} - \n\nProperty: readonly\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
           "valueSet": "v"
         },
         {

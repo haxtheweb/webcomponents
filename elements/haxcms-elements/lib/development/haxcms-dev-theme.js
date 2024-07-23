@@ -67,8 +67,10 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
     );
   }
   static get styles() {
-    return [super.styles, css`
-      :host {
+    return [
+      super.styles,
+      css`
+        :host {
           display: block;
           /* theme color which is dictated by the manifest */
           background-color: var(--haxcms-color, black);
@@ -128,7 +130,8 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
             color: #ffffff;
           };
         }
-    `];
+      `,
+    ];
   }
   // render function
   render() {
@@ -190,24 +193,28 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
           <div id="slot"><slot></slot></div>
         </div>
       </div>
-      ${this.items.map(item => html`
-        <div style="padding:8px;">
-        <div class="card">
-          <div class="card-content">
-            <div>title: ${item.title}</div>
-            <div>description: ${item.description}</div>
-            <div>slug: ${item.slug}</div>
-            <div>location: ${item.location}</div>
-            <div>changed: ${item.metadata.updated}</div>
+      ${this.items.map(
+        (item) => html`
+          <div style="padding:8px;">
+            <div class="card">
+              <div class="card-content">
+                <div>title: ${item.title}</div>
+                <div>description: ${item.description}</div>
+                <div>slug: ${item.slug}</div>
+                <div>location: ${item.location}</div>
+                <div>changed: ${item.metadata.updated}</div>
+              </div>
+              <div class="card-actions">
+                <a tabindex="-1" href$="${item.slug}"
+                  ><button data-id$="${item.id}" @click="${this._itemTapped}">
+                    Set as active
+                  </button></a
+                >
+              </div>
+            </div>
           </div>
-          <div class="card-actions">
-            <a tabindex="-1" href$="${item.slug}"
-              ><button data-id$="${item.id}" @click="${this._itemTapped}">Set as active</button></a
-            >
-          </div>
-        </div>
-      </div>
-      `)}
+        `,
+      )}
       <site-menu></site-menu>
     `;
   }

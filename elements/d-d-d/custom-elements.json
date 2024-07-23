@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "d-d-docs",
-      "description": "Attributes:\n\n  * `option` {`string`} - \n\n  * `options` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `option` {`string`} - \n\n  * `options` {`any[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `option` {`string`} - \n\n  * `options` {`any[]`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `option` {`string`} - \n\n  * `options` {`any[]`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "option",
@@ -12,6 +12,11 @@
         {
           "name": "options",
           "description": "`options` {`any[]`} - \n\nProperty: options"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
@@ -26,8 +31,13 @@
     },
     {
       "name": "mini-map",
-      "description": "Events:\n\n  * `simple-modal-show` {`CustomEvent<{ elements: { content: HTMLDivElement; }; invokedBy: HTMLButtonElement; clone: boolean; onShow: () => void; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `properties` {`{ gridSize: { type: NumberConstructor; }; nodeList: { type: ArrayConstructor; }; lineList: { type: ArrayConstructor; }; activeNode: { ...; }; availableNodes: { ...; }; }`} - \n\n  * `gridSize` {`number`} - \n\n  * `nodeList` {`never[]`} - \n\n  * `lineList` {`never[]`} - \n\n  * `activeNode` - \n\n  * `availableNodes` {`never[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Events:\n\n  * `simple-modal-show` {`CustomEvent<{ elements: { content: HTMLDivElement; }; invokedBy: HTMLButtonElement; clone: boolean; onShow: () => void; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `properties` {`{ gridSize: { type: NumberConstructor; }; nodeList: { type: ArrayConstructor; }; lineList: { type: ArrayConstructor; }; activeNode: { ...; }; availableNodes: { ...; }; }`} - \n\n  * `gridSize` {`number`} - \n\n  * `nodeList` {`never[]`} - \n\n  * `lineList` {`never[]`} - \n\n  * `activeNode` - \n\n  * `availableNodes` {`never[]`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
         {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"

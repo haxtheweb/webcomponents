@@ -210,7 +210,7 @@ diff a/elements/simple-picker/simple-picker.js b/elements/simple-picker/simple-p
 -      style$="[[__selectedOption.style]]" 
 -      title-as-html$="[[titleAsHtml]]">
 -    </simple-picker-option>
--    <span id="icon"><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon></span>
+-    <span id="icon"><simple-icon aria-hidden="true" icon="arrow-drop-down"></simple-icon></span>
 -  </div>
 -  <div id="collapse">
 -    <div class="rows">

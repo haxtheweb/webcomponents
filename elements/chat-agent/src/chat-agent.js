@@ -179,7 +179,8 @@ class ChatAgent extends DDD {
           position: fixed;
           bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          width: 35%;        }
+          width: 35%;
+        }
 
         :host([is-full-view]) .chat-agent-wrapper {
           bottom: var(--ddd-spacing-0);
@@ -260,7 +261,7 @@ class ChatAgent extends DDD {
       "merlin",
       "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
     );
-    
+
     this.currentSuggestions = [
       {
         suggestion: "Who are you?",
@@ -289,7 +290,7 @@ class ChatAgent extends DDD {
           suggestion.removeAttribute("chosen-prompt");
         }
       });
-    }
+  }
 
   /**
    * @description writes message to chatLog

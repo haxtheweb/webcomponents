@@ -12,7 +12,9 @@ import { BasicTemplate } from "@haxtheweb/haxcms-elements/lib/ui-components/temp
  */
 class HAXCMSBasicTheme extends BasicTemplate(HAXCMSLitElementTheme) {
   static get styles() {
-    return [super.styles, css`
+    return [
+      super.styles,
+      css`
       :host {
         display: block;
         background-color: white;
@@ -156,7 +158,8 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSLitElementTheme) {
         --simple-tooltip-delay-in: 0;
         --simple-tooltip-border-radius: 0;
       }
-    `];
+    `,
+    ];
   }
 }
 customElements.define("haxcms-basic-theme", HAXCMSBasicTheme);

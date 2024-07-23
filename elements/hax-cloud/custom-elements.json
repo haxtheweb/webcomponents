@@ -3,8 +3,13 @@
   "tags": [
     {
       "name": "hax-cloud",
-      "description": "Attributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `windowControllers` - \n\n  * `fileRoot` {`string`} - \n\n  * `fileObjects` {`never[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `windowControllers` - \n\n  * `fileRoot` {`string`} - \n\n  * `fileObjects` {`never[]`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
         {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"

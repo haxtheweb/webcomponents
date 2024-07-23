@@ -64,16 +64,26 @@ export class QuestionElement extends SchemaBehaviors(
       }
       if (propName === "edit" && this.edit && this._haxstate) {
         // ensure we have empty slotted items for these if we're going to need them
-        ['feedbackIncorrect', 'feedbackCorrect', 'content', 'hint', 'evidence'].map((slotName) => {
+        [
+          "feedbackIncorrect",
+          "feedbackCorrect",
+          "content",
+          "hint",
+          "evidence",
+        ].map((slotName) => {
           if (this.querySelector(`[slot="${slotName}"]`) === null) {
-            let p = globalThis.document.createElement('p');
-            p.setAttribute('slot', slotName);
+            let p = globalThis.document.createElement("p");
+            p.setAttribute("slot", slotName);
             this.appendChild(p);
           }
-        })
-        
+        });
       }
-      if (propName == "answers" && this.answers && this.answers.length > 0 && !this.__answerLock) {
+      if (
+        propName == "answers" &&
+        this.answers &&
+        this.answers.length > 0 &&
+        !this.__answerLock
+      ) {
         this.__answerLock = true;
         // validate answer data structure
         const newAs = this.cleanAnswerData(this.answers);
@@ -83,9 +93,8 @@ export class QuestionElement extends SchemaBehaviors(
         ];
         // lock ensures that if data is cleaned above it doesn't reload loop
         setTimeout(() => {
-          this.__answerLock = false;          
+          this.__answerLock = false;
         }, 0);
-
       }
     });
   }
@@ -663,7 +672,6 @@ export class QuestionElement extends SchemaBehaviors(
           :host .column ::slotted(*) {
             padding: 0;
             margin: 0;
-           
           }
         }
       `,
@@ -735,7 +743,11 @@ export class QuestionElement extends SchemaBehaviors(
    */
   haxpreProcessInsertContent(detail, activeNode) {
     // ensure we dont accidently have the answer displayed!
-    if (detail.properties.answers && detail.properties.answers.length > 0 && detail.properties.answers.map) {
+    if (
+      detail.properties.answers &&
+      detail.properties.answers.length > 0 &&
+      detail.properties.answers.map
+    ) {
       detail.properties.answers = detail.properties.answers.map(function (val) {
         if (val.userGuess) {
           delete val.userGuess;
@@ -762,12 +774,18 @@ export class QuestionElement extends SchemaBehaviors(
         <grid-plate layout="1-1">
           <div slot="col-1">
             <details open>
-              <summary id="question"><simple-icon-lite class="details-icon" icon="hax:head-question"></simple-icon-lite>Question</summary>
-            <div class="container">
-              <h3 property="oer:name">${this.question}</h3>
-              ${this.renderInteraction()}
-              ${!this.hideButtons ? this.renderButtons() : nothing}
-            </div>
+              <summary id="question">
+                <simple-icon-lite
+                  class="details-icon"
+                  icon="hax:head-question"
+                ></simple-icon-lite
+                >Question
+              </summary>
+              <div class="container">
+                <h3 property="oer:name">${this.question}</h3>
+                ${this.renderInteraction()}
+                ${!this.hideButtons ? this.renderButtons() : nothing}
+              </div>
             </details>
           </div>
           <div slot="col-2">
@@ -776,27 +794,53 @@ export class QuestionElement extends SchemaBehaviors(
               ?disabled="${!this.showAnswer && !this.edit}"
               ?open="${this.showAnswer}"
             >
-              <summary id="feedback"><simple-icon-lite class="details-icon" icon="icons:feedback"></simple-icon-lite>Feedback</summary>
+              <summary id="feedback">
+                <simple-icon-lite
+                  class="details-icon"
+                  icon="icons:feedback"
+                ></simple-icon-lite
+                >Feedback
+              </summary>
               <div class="container">
                 <details id="legend">
-                  <summary><simple-icon-lite class="details-icon" icon="hax:map-legend"></simple-icon-lite>Legend</summary>
+                  <summary>
+                    <simple-icon-lite
+                      class="details-icon"
+                      icon="hax:map-legend"
+                    ></simple-icon-lite
+                    >Legend
+                  </summary>
                   <div class="container">${this.renderLegend()}</div>
                 </details>
                 ${this.renderFeedback()}
               </div>
             </details>
             ${this.querySelector('[slot="content"]') && !this.edit
-            ? html` <details ?open="${!this.showAnswer}" id="related">
-                <summary><simple-icon-lite class="details-icon" icon="lrn:content"></simple-icon-lite>Related content</summary>
-                <div class="container">
-                  <slot name="content"></slot>
-                </div>
-              </details>`
-            : nothing}
-            <details ?open="${!this.querySelector('[slot="content"]')}" id="directions">
-              <summary><simple-icon-lite class="details-icon" icon="maps:directions"></simple-icon-lite>Directions</summary>
-              <div class="container">
-              ${this.renderDirections()}</div>
+              ? html` <details ?open="${!this.showAnswer}" id="related">
+                  <summary>
+                    <simple-icon-lite
+                      class="details-icon"
+                      icon="lrn:content"
+                    ></simple-icon-lite
+                    >Related content
+                  </summary>
+                  <div class="container">
+                    <slot name="content"></slot>
+                  </div>
+                </details>`
+              : nothing}
+            <details
+              ?open="${!this.querySelector('[slot="content"]')}"
+              id="directions"
+            >
+              <summary>
+                <simple-icon-lite
+                  class="details-icon"
+                  icon="maps:directions"
+                ></simple-icon-lite
+                >Directions
+              </summary>
+              <div class="container">${this.renderDirections()}</div>
             </details>
           </div>
         </grid-plate>
@@ -865,61 +909,66 @@ export class QuestionElement extends SchemaBehaviors(
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      Select the answer you feel answers the question. When you are done,
-      press <strong>${this.t.checkAnswer}</strong>. You will get feedback
-      indicating correctness of your answer and how to proceed.
+      Select the answer you feel answers the question. When you are done, press
+      <strong>${this.t.checkAnswer}</strong>. You will get feedback indicating
+      correctness of your answer and how to proceed.
     </p>`;
   }
 
   // legend so user understands color relation to correctness
   renderLegend() {
-    return html`
-      <dl>
-        <dt class="correct">Correct</dt>
-        <dd>Answer is correct</dd>
-        <dt class="incorrect">Incorrect</dt>
-        <dd>Answer requires correction</dd>
-      </dl>`;
+    return html` <dl>
+      <dt class="correct">Correct</dt>
+      <dd>Answer is correct</dd>
+      <dt class="incorrect">Incorrect</dt>
+      <dd>Answer requires correction</dd>
+    </dl>`;
   }
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html`${!this.edit ? html`
-      ${this.showAnswer && !this.isCorrect()
-        ? html` <p class="feedback">${this.incorrectText}</p>
-            ${this.querySelector('[slot="feedbackIncorrect"]')
-              ? html`<slot name="feedbackIncorrect"></slot>`
-              : nothing}`
-        : nothing}
-      ${this.showAnswer && this.isCorrect()
-        ? html` <p class="feedback">${this.correctText}</p>
-            ${this.querySelector('[slot="feedbackCorrect"]')
-              ? html`<slot name="feedbackCorrect"></slot>`
-              : nothing}`
-        : nothing}
-      ${this.querySelector('[slot="hint"]') && this.showAnswer && !this.isCorrect()
-        ? html`
-            <h4>Need a hint?</h4>
-            <div>
-              <slot name="hint"></slot>
-            </div>
-          `
-        : nothing}
-      ${this.querySelector('[slot="evidence"]') && this.showAnswer && this.isCorrect()
-        ? html`
-            <h4>Evidence</h4>
-            <div>
-              <slot name="evidence"></slot>
-            </div>
-          `
-        : nothing}
-      <simple-toolbar-button
-        ?disabled="${this.disabled || !this.showAnswer}"
-        @click="${this.resetAnswer}"
-        label="${this.t.tryAgain}"
-      >
-      </simple-toolbar-button>
-    ` : this.renderEditModeFeedbackAreas()}`;
+    return html`${!this.edit
+      ? html`
+          ${this.showAnswer && !this.isCorrect()
+            ? html` <p class="feedback">${this.incorrectText}</p>
+                ${this.querySelector('[slot="feedbackIncorrect"]')
+                  ? html`<slot name="feedbackIncorrect"></slot>`
+                  : nothing}`
+            : nothing}
+          ${this.showAnswer && this.isCorrect()
+            ? html` <p class="feedback">${this.correctText}</p>
+                ${this.querySelector('[slot="feedbackCorrect"]')
+                  ? html`<slot name="feedbackCorrect"></slot>`
+                  : nothing}`
+            : nothing}
+          ${this.querySelector('[slot="hint"]') &&
+          this.showAnswer &&
+          !this.isCorrect()
+            ? html`
+                <h4>Need a hint?</h4>
+                <div>
+                  <slot name="hint"></slot>
+                </div>
+              `
+            : nothing}
+          ${this.querySelector('[slot="evidence"]') &&
+          this.showAnswer &&
+          this.isCorrect()
+            ? html`
+                <h4>Evidence</h4>
+                <div>
+                  <slot name="evidence"></slot>
+                </div>
+              `
+            : nothing}
+          <simple-toolbar-button
+            ?disabled="${this.disabled || !this.showAnswer}"
+            @click="${this.resetAnswer}"
+            label="${this.t.tryAgain}"
+          >
+          </simple-toolbar-button>
+        `
+      : this.renderEditModeFeedbackAreas()}`;
   }
 
   clickSingle(e) {
@@ -999,9 +1048,11 @@ export class QuestionElement extends SchemaBehaviors(
     // force reset bc data changed
     this.showAnswer = false;
     for (let i in answers) {
-      let tmpA = { ... this.answerPrototype(), ...answers[i]};
+      let tmpA = { ...this.answerPrototype(), ...answers[i] };
       tmpA.order = parseInt(i);
-      newAnswers.push({...this.cleanAnswerDataBeforeSend(tmpA, parseInt(i), answers)});
+      newAnswers.push({
+        ...this.cleanAnswerDataBeforeSend(tmpA, parseInt(i), answers),
+      });
     }
     return newAnswers;
   }
@@ -1016,13 +1067,13 @@ export class QuestionElement extends SchemaBehaviors(
   answerPrototype() {
     return {
       order: null,
-      label: '',
+      label: "",
       correct: false,
       image: null,
-      alt: '',
+      alt: "",
       selectedFeedback: null,
       unselectedFeedback: null,
-    }
+    };
   }
   // convert the input to data
   processInput(index, inputs, answers) {
@@ -1071,7 +1122,10 @@ export class QuestionElement extends SchemaBehaviors(
     return html`
       <div class="edit-wrapper">
         <h4>Related Content</h4>
-        <p>This creates a collapsed area for content related to this question and is always shown</p>
+        <p>
+          This creates a collapsed area for content related to this question and
+          is always shown
+        </p>
         <slot name="content"></slot>
         <h4>Feedback for incorrect answer</h4>
         <slot name="feedbackIncorrect"></slot>

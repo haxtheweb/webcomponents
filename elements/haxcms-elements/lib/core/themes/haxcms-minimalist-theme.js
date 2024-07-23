@@ -202,13 +202,13 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
           overflow: visible;
         }
         site-top-menu:not([sticky]) {
-            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,
-              sans-serif;
-            --simple-tooltip-background: #000000;
-            --simple-tooltip-opacity: 1;
-            --simple-tooltip-text-color: #ffffff;
-            --simple-tooltip-delay-in: 0;
-            --simple-tooltip-border-radius: 0;
+          font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,
+            sans-serif;
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
           color: #007bff;
           --site-top-menu-bg: white;
         }

@@ -4,11 +4,10 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 import { html, css } from "lit";
 
 class ChatInput extends DDD {
-
   static get tag() {
     return "chat-input";
   }
@@ -28,7 +27,7 @@ class ChatInput extends DDD {
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
       this.previousMessageIndex = toJS(this.messageIndex - 1);
       this.userName = toJS(ChatAgentModalStore.userName);
-    })
+    });
   }
 
   static get styles() {
@@ -36,7 +35,7 @@ class ChatInput extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-        
+
         :host {
           display: block;
           font-family: var(--ddd-font-primary);
@@ -73,7 +72,8 @@ class ChatInput extends DDD {
           box-shadow: 0 4px red;
         }
 
-        .send-button:hover, .send-button:focus-visible {
+        .send-button:hover,
+        .send-button:focus-visible {
           box-shadow: 0 5px red;
           transform: translateY(-1px);
         }
@@ -89,7 +89,7 @@ class ChatInput extends DDD {
             var(--ddd-theme-bgContrast, white)
           );
         }
-      `
+      `,
     ];
   }
 
@@ -104,7 +104,7 @@ class ChatInput extends DDD {
       </div>
     `;
   }
-  
+
   /**
    * @description - handles key presses
    * @param {event} e - event
@@ -112,19 +112,27 @@ class ChatInput extends DDD {
   handleKeyPress(e) {
     let textArea = this.shadowRoot.querySelector("#user-input");
     // this.previousMessageIndex = this.messageIndex - 1;
-    
+
     switch (e.key) {
       case "Enter":
-        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Enter key pressed.') : null;
+        ChatAgentModalStore.developerModeEnabled
+          ? console.info("HAX-DEV-MODE: Enter key pressed.")
+          : null;
         e.preventDefault();
         this.handleSendButton();
         break;
 
       case "ArrowUp": // TODO finish this, careful, it's fragile
-        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`) : null;
+        ChatAgentModalStore.developerModeEnabled
+          ? console.info(
+              `HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`,
+            )
+          : null;
         e.preventDefault();
         if (this.previousMessageIndex > 0) {
-          while (this.chatLog[this.previousMessageIndex].author !== this.userName) {
+          while (
+            this.chatLog[this.previousMessageIndex].author !== this.userName
+          ) {
             this.previousMessageIndex--;
             if (this.previousMessageIndex === 0) {
               break;
@@ -135,10 +143,16 @@ class ChatInput extends DDD {
         break;
 
       case "ArrowDown":
-        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Down pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`) : null;
+        ChatAgentModalStore.developerModeEnabled
+          ? console.info(
+              `HAX-DEV-MODE: Arrow Down pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`,
+            )
+          : null;
         e.preventDefault();
         if (this.previousMessageIndex < this.messageIndex - 1) {
-          while (this.chatLog[this.previousMessageIndex].author !== this.userName) {
+          while (
+            this.chatLog[this.previousMessageIndex].author !== this.userName
+          ) {
             this.previousMessageIndex++;
           }
           textArea.value = this.chatLog[this.previousMessageIndex].message;
@@ -156,19 +170,34 @@ class ChatInput extends DDD {
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
 
-    if (ChatAgentModalStore.promptCharacterLimit > 0 && INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit) { // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
-      alert(`Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`)
+    if (
+      ChatAgentModalStore.promptCharacterLimit > 0 &&
+      INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit
+    ) {
+      // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
+      alert(
+        `Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`,
+      );
     }
 
     if (INPUTTED_PROMPT !== "") {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info(
+            "HAX-DEV-MODE: Send button activated. Prompt to send: " +
+              INPUTTED_PROMPT,
+          )
+        : null;
 
-      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, INPUTTED_PROMPT);
+      ChatAgentModalStore.handleMessage(
+        ChatAgentModalStore.userName,
+        INPUTTED_PROMPT,
+      );
 
       this.shadowRoot.querySelector("#user-input").value = "";
-
     } else {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info("HAX-DEV-MODE: Send button activated. No prompt to send")
+        : null;
     }
   }
 
@@ -178,7 +207,12 @@ class ChatInput extends DDD {
     }
 
     if (ChatAgentModalStore.promptCharacterLimit > 0) {
-      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", `${ChatAgentModalStore.promptCharacterLimit}`);
+      this.shadowRoot
+        .querySelector("#user-input")
+        .setAttribute(
+          "maxlength",
+          `${ChatAgentModalStore.promptCharacterLimit}`,
+        );
     }
   }
 

@@ -128,16 +128,15 @@ export class PageAnchor extends DDD {
   }
 
   render() {
-    let color,icon;
+    let color, icon;
     try {
       color = this.getMatchFromFields(
         this.entityId,
         this.target,
         "accentColor",
       );
-      icon = this.getMatchFromFields(this.entityId, this.target, "icon");  
-    }
-    catch(e) {}
+      icon = this.getMatchFromFields(this.entityId, this.target, "icon");
+    } catch (e) {}
     return html`<mark
       @click="${this.clickHandler}"
       style="${color ? `background-color: var(${color})` : ``}"

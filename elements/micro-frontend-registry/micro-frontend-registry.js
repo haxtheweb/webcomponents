@@ -79,7 +79,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
         else if (
           (!window.HAXCMSContext || window.HAXCMSContext !== "nodejs") &&
           (window.location.origin.startsWith("http://127.0.0.1") ||
-          window.location.origin.startsWith("http://localhost"))
+            window.location.origin.startsWith("http://localhost"))
         ) {
           base = window.location.origin
             .replace(/127.0.0.1:8(.*)/, "localhost:3000")

@@ -11,16 +11,17 @@ import { LitElement, html, css } from "lit";
  */
 class LrnGitgraph extends LitElement {
   static get styles() {
-    return [css`
-      :host {
+    return [
+      css`
+        :host {
           display: block;
           overflow-x: scroll;
-        }`];
+        }
+      `,
+    ];
   }
   render() {
-    return html`
-      <canvas id="gitGraph"></canvas>
-    `;
+    return html` <canvas id="gitGraph"></canvas> `;
   }
 
   static get tag() {
@@ -64,7 +65,7 @@ class LrnGitgraph extends LitElement {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    if (changedProperties.has('commits')) {
+    if (changedProperties.has("commits")) {
       this._commitsChanged(this.commits);
     }
   }

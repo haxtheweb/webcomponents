@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "chat-agent",
-      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `maxlength` {`number`} - \n\n  * `developer-mode` {`boolean`} - \n\n  * `placeholder` {`string`} - \n\n  * `user-type-writer-speed` {`number`} - \n\n  * `merlin-type-writer-speed` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `promptCharacterLimit` {`number`} - \n\n  * `chatLog` {`never[]`} - \n\n  * `engine` {`string`} - \n\n  * `context` {`string`} - \n\n  * `isLoading` - \n\n  * `dataCollectionEnabled` {`boolean`} - \n\n  * `buttonIcon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `developerModeEnabled` {`boolean`} - \n\n  * `promptPlaceholder` {`string`} - \n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `merlinIndex` {`number`} - \n\n  * `messageIndex` {`number`} - \n\n  * `userIndex` {`number`} - \n\n  * `userTypeWriterSpeed` {`number`} - \n\n  * `merlinTypeWriterSpeed` {`number`} - \n\n  * `currentSuggestions` {`never[]`} - \n\n  * `isSiteEditorOpen` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `maxlength` {`number`} - \n\n  * `placeholder` {`string`} - \n\n  * `user-type-writer-speed` {`number`} - \n\n  * `merlin-type-writer-speed` {`number`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `promptCharacterLimit` {`number`} - \n\n  * `chatLog` {`never[]`} - \n\n  * `engine` {`string`} - \n\n  * `context` {`string`} - \n\n  * `isLoading` - \n\n  * `dataCollectionEnabled` {`boolean`} - \n\n  * `buttonIcon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `developerModeEnabled` {`boolean`} - \n\n  * `promptPlaceholder` {`string`} - \n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `merlinIndex` {`number`} - \n\n  * `messageIndex` {`number`} - \n\n  * `userIndex` {`number`} - \n\n  * `userTypeWriterSpeed` {`number`} - \n\n  * `merlinTypeWriterSpeed` {`number`} - \n\n  * `currentSuggestions` {`never[]`} - \n\n  * `isSiteEditorOpen` - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "user-name",
@@ -18,11 +18,6 @@
           "description": "`maxlength` {`number`} - \n\nProperty: promptCharacterLimit"
         },
         {
-          "name": "developer-mode",
-          "description": "`developer-mode` {`boolean`} - \n\nProperty: developerModeEnabled\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
           "name": "placeholder",
           "description": "`placeholder` {`string`} - \n\nProperty: promptPlaceholder\n\nDefault: Enter your prompt here..."
         },
@@ -32,7 +27,12 @@
         },
         {
           "name": "merlin-type-writer-speed",
-          "description": "`merlin-type-writer-speed` {`number`} - \n\nProperty: merlinTypeWriterSpeed\n\nDefault: 4"
+          "description": "`merlin-type-writer-speed` {`number`} - \n\nProperty: merlinTypeWriterSpeed\n\nDefault: 2"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",

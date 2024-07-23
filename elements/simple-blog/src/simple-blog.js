@@ -108,36 +108,38 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
   // render function
   render() {
     return html`
-    <main>
-        ${this.selectedPage === 0 ? html`
-        <section>
-          <simple-blog-header></simple-blog-header>
-          <simple-blog-listing></simple-blog-listing>
-        </section>
-` : html`<section>
-        <simple-icon-button
-          id="backbutton"
-          icon="icons:arrow-back"
-          @click="${this._goBack}"
-        ></simple-icon-button>
-        <simple-tooltip
-          for="backbutton"
-          position="right"
-          offset="14"
-          animation-delay="0"
-          >Back to listing
-        </simple-tooltip>
-        <article>
-          <simple-blog-post ?edit-mode="${this.editMode}"
-            ><slot></slot
-          ></simple-blog-post>
-        </article>
-        <footer>
-          <simple-blog-footer id="footer"></simple-blog-footer>
-        </footer>
-      </section>`}
-    </main>
-`;
+      <main>
+        ${this.selectedPage === 0
+          ? html`
+              <section>
+                <simple-blog-header></simple-blog-header>
+                <simple-blog-listing></simple-blog-listing>
+              </section>
+            `
+          : html`<section>
+              <simple-icon-button
+                id="backbutton"
+                icon="icons:arrow-back"
+                @click="${this._goBack}"
+              ></simple-icon-button>
+              <simple-tooltip
+                for="backbutton"
+                position="right"
+                offset="14"
+                animation-delay="0"
+                >Back to listing
+              </simple-tooltip>
+              <article>
+                <simple-blog-post ?edit-mode="${this.editMode}"
+                  ><slot></slot
+                ></simple-blog-post>
+              </article>
+              <footer>
+                <simple-blog-footer id="footer"></simple-blog-footer>
+              </footer>
+            </section>`}
+      </main>
+    `;
   }
   /**
    * Mix in an opened status

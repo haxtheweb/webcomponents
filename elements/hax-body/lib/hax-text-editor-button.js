@@ -172,7 +172,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     });
     if (!this.value || Object.keys(this.value).length === 0) {
       this.value = {
-        innerHTML: this.__highlight.innerHTML
+        innerHTML: this.__highlight.innerHTML,
       };
     }
     html += this.value.innerHTML || "";

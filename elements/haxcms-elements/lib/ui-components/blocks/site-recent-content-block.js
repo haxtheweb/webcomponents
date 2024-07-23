@@ -17,7 +17,7 @@ class SiteRecentContentBlock extends LitElement {
     this.limit = 10;
     this.startIndex = 0;
     this.sort = {
-      "metadata.created": "ASC"
+      "metadata.created": "ASC",
     };
     this.conditions = {};
     this.title = "Recent content";
@@ -26,12 +26,12 @@ class SiteRecentContentBlock extends LitElement {
     });
   }
 
-  updated(changedProperties)  {
+  updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
 
-    if (changedProperties.has('activeId')) {
+    if (changedProperties.has("activeId")) {
       this._activeIdChanged(this.activeId);
     }
   }
@@ -42,8 +42,9 @@ class SiteRecentContentBlock extends LitElement {
     return "site-recent-content-block";
   }
   static get styles() {
-    return [css`
-      :host {
+    return [
+      css`
+        :host {
           display: block;
           background-color: #fff;
           box-shadow: 0 1px 2px #dcdcdc;
@@ -85,7 +86,8 @@ class SiteRecentContentBlock extends LitElement {
           height: 50px;
           width: 50px;
         }
-    `];
+      `,
+    ];
   }
 
   __resultChanged(e) {
@@ -109,8 +111,9 @@ class SiteRecentContentBlock extends LitElement {
           start-index="${startIndex}"
         >
         </site-query>
-        ${this.__items.map(item => html`
-          <div class="item-wrap" data-id="${item.id}">
+        ${this.__items.map(
+          (item) => html`
+            <div class="item-wrap" data-id="${item.id}">
               <div class="image-wrapper">
                 <img
                   class="image"
@@ -122,7 +125,8 @@ class SiteRecentContentBlock extends LitElement {
                 <a .href="${item.slug}">${item.title}</a>
               </div>
             </div>
-            `)}
+          `,
+        )}
       </aside>
     `;
   }
@@ -142,10 +146,10 @@ class SiteRecentContentBlock extends LitElement {
        */
       startIndex: {
         type: Number,
-        attribute: 'start-index'
+        attribute: "start-index",
       },
       __items: {
-        type: Array
+        type: Array,
       },
       /**
        * optional sort
@@ -170,7 +174,7 @@ class SiteRecentContentBlock extends LitElement {
        */
       activeId: {
         type: String,
-        attribute: 'active-id'
+        attribute: "active-id",
       },
     };
   }

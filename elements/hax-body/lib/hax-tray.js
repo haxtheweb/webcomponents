@@ -1381,59 +1381,93 @@ class HaxTray extends I18NMixin(
           // then we flatten it back into HTML on @value-change __valueChangedEvent
           props.settings[propContainer].forEach((el, i) => {
             // see if we match on prop name, attr, or slot, falling back to collapse
-            if (['contenteditable', 'data-hax-active', 'data-hax-grid', 'data-hax-layout'].includes(property)) {
+            if (
+              [
+                "contenteditable",
+                "data-hax-active",
+                "data-hax-grid",
+                "data-hax-layout",
+              ].includes(property)
+            ) {
               // no need to dig for these bc they are part of HAX / web platform operations
-            }
-            else if (el.property === property) {
+            } else if (el.property === property) {
               this.activeValue.settings[propContainer][property] =
                 this.activeHaxElement.properties[property];
-            }
-            else if (el.attribute === property) {
+            } else if (el.attribute === property) {
               this.activeValue.settings[propContainer][property] =
                 this.activeHaxElement.properties[property];
-            }
-            else if (el.slot === property) {
+            } else if (el.slot === property) {
               this.activeValue.settings[propContainer][property] =
                 this.activeHaxElement.properties[property];
             }
             // if that didn't work, look for a collapse because that means
             // visually we are nesting data however the data needs to recall flat
             // this will not impact Array based data as that is structural and visual
-            else if (el.inputMethod === "collapse" && props.settings[propContainer][i].properties) {
+            else if (
+              el.inputMethod === "collapse" &&
+              props.settings[propContainer][i].properties
+            ) {
               // we are a collapse
-              props.settings[propContainer][i].properties.forEach((collapseContainer, collapseIndex) => {
-                // sanity check that they put props under a collapse container w/ a label
-                if (collapseContainer.title && collapseContainer.properties) {
-                  props.settings[propContainer][i].properties[collapseIndex].properties.forEach((nested) => {
-                    if (nested.property === property) {
-                      // ensure nesting if 1st value here
-                      if (!this.activeValue.settings[propContainer][el.property]) {
-                        this.activeValue.settings[propContainer][el.property] = {};
+              props.settings[propContainer][i].properties.forEach(
+                (collapseContainer, collapseIndex) => {
+                  // sanity check that they put props under a collapse container w/ a label
+                  if (collapseContainer.title && collapseContainer.properties) {
+                    props.settings[propContainer][i].properties[
+                      collapseIndex
+                    ].properties.forEach((nested) => {
+                      if (nested.property === property) {
+                        // ensure nesting if 1st value here
+                        if (
+                          !this.activeValue.settings[propContainer][el.property]
+                        ) {
+                          this.activeValue.settings[propContainer][
+                            el.property
+                          ] = {};
+                        }
+                        // ensure nesting if 1st value under this container
+                        if (
+                          !this.activeValue.settings[propContainer][
+                            el.property
+                          ][collapseContainer.property]
+                        ) {
+                          this.activeValue.settings[propContainer][el.property][
+                            collapseContainer.property
+                          ] = {};
+                        }
+                        this.activeValue.settings[propContainer][el.property][
+                          collapseContainer.property
+                        ][property] =
+                          this.activeHaxElement.properties[property];
                       }
-                      // ensure nesting if 1st value under this container
-                      if (!this.activeValue.settings[propContainer][el.property][collapseContainer.property]) {
-                        this.activeValue.settings[propContainer][el.property][collapseContainer.property] = {};
+                      if (nested.attribute === property) {
+                        // ensure nesting if 1st value here
+                        if (
+                          !this.activeValue.settings[propContainer][el.property]
+                        ) {
+                          this.activeValue.settings[propContainer][
+                            el.property
+                          ] = {};
+                        }
+                        // ensure nesting if 1st value under this container
+                        if (
+                          !this.activeValue.settings[propContainer][
+                            el.property
+                          ][collapseContainer.property]
+                        ) {
+                          this.activeValue.settings[propContainer][el.property][
+                            collapseContainer.property
+                          ] = {};
+                        }
+                        this.activeValue.settings[propContainer][el.property][
+                          collapseContainer.property
+                        ][property] =
+                          this.activeHaxElement.properties[property];
                       }
-                      this.activeValue.settings[propContainer][el.property][collapseContainer.property][property] =
-                        this.activeHaxElement.properties[property];
-                    }
-                    if (nested.attribute === property) {
-                      // ensure nesting if 1st value here
-                      if (!this.activeValue.settings[propContainer][el.property]) {
-                        this.activeValue.settings[propContainer][el.property] = {};
-                      }
-                      // ensure nesting if 1st value under this container
-                      if (!this.activeValue.settings[propContainer][el.property][collapseContainer.property]) {
-                        this.activeValue.settings[propContainer][el.property][collapseContainer.property] = {};
-                      }
-                      this.activeValue.settings[propContainer][el.property][collapseContainer.property][property] =
-                        this.activeHaxElement.properties[property];
-                    }
-                  });
-                }
-              });
-            }
-            else {
+                    });
+                  }
+                },
+              );
+            } else {
               // not a problem but worth debugging possibly
               //console.warn(`${property} no match on a value under ${propContainer}, but is in HTML`);
             }
@@ -1640,22 +1674,29 @@ class HaxTray extends I18NMixin(
 
   // this helper ensures that objcets are not deeply nested, while avoiding smashing together array based data
   flattenObject = (obj) => {
-    return Object.assign({}, ...function _flatten(o) {
-      if (o) {
-        return [].concat(...Object.keys(o).map(k =>
-          typeof o[k] === 'object' && !Array.isArray(o[k]) ? _flatten(o[k]) : ({ [k]: o[k] })
-        ));
-      }
-      return o;
-    }(obj));
-  }
+    return Object.assign(
+      {},
+      ...(function _flatten(o) {
+        if (o) {
+          return [].concat(
+            ...Object.keys(o).map((k) =>
+              typeof o[k] === "object" && !Array.isArray(o[k])
+                ? _flatten(o[k])
+                : { [k]: o[k] },
+            ),
+          );
+        }
+        return o;
+      })(obj),
+    );
+  };
   /**
    * Notice change in values from below
    */
   __valueChangedEvent(e) {
     if (this.editMode && e.detail.value && e.detail.value.settings) {
       // ensure it's a clone of an object
-      let settings = {...e.detail.value.settings};
+      let settings = { ...e.detail.value.settings };
       let props = {
         ...HAXStore.elementList[this.activeNode.tagName.toLowerCase()],
       };

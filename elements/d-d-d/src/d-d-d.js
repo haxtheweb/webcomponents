@@ -173,9 +173,8 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
       loadDDDFonts();
       globalThis.document.onload = dddCSSFeatureDetection();
       globalThis.DDDSharedStyles.instance = adoptableDDD;
-    }
-    catch(e) {
-      const oldStyleSafariBs = document.createElement('style');
+    } catch (e) {
+      const oldStyleSafariBs = document.createElement("style");
       oldStyleSafariBs.innerHTML = globalStyles;
       globalThis.document.head.appendChild(oldStyleSafariBs);
       loadDDDFonts();
