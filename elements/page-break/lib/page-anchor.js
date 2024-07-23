@@ -1,10 +1,10 @@
-import { html, css } from "lit";
-import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { html, css, LitElement } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { toJS } from "mobx";
 
-export class PageAnchor extends DDD {
+export class PageAnchor extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.value = null;
@@ -128,18 +128,12 @@ export class PageAnchor extends DDD {
   }
 
   render() {
-    let color, icon;
+    let icon;
     try {
-      color = this.getMatchFromFields(
-        this.entityId,
-        this.target,
-        "accentColor",
-      );
       icon = this.getMatchFromFields(this.entityId, this.target, "icon");
     } catch (e) {}
     return html`<mark
       @click="${this.clickHandler}"
-      style="${color ? `background-color: var(${color})` : ``}"
     >
       ${icon ? html`<simple-icon-lite icon="${icon}"></simple-icon-lite>` : ``}
       <slot></slot>
