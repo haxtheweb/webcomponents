@@ -60,6 +60,21 @@ class ChatInput extends DDD {
           width: 85%;
         }
 
+        button {
+          align-items: center;
+          background-color: #2b2a33;
+          border-radius: var(--ddd-radius-sm);
+          color: var(--ddd-theme-default-white);
+          cursor: pointer;
+          display: flex;
+          gap: var(--ddd-spacing-1);
+          justify-content: center;
+        }
+        
+        button:hover, button:focus-visible {
+          background-color: #52525e;
+        }
+
         .send-button {
           align-items: center;
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
@@ -100,10 +115,14 @@ class ChatInput extends DDD {
     return html`
       <div class="chat-input-wrapper">
         <textarea name="prompt-input" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keydown=${this.handleKeyPress}></textarea>
+        <div class="up-down-btns">
+          <button id="input-up-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-up"></simple-icon-lite></button>
+          <button id="input-down-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-down"></simple-icon-lite></button>
+        </div>
         <div class="send-button" id="send-button" @click=${this.handleSendButton} tabindex="0" aria-label="Send Prompt">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
-        <simple-tooltip for="send-button" position="left">Send Prompt to Merlin</simple-tooltip></simple-tooltip>
+        <simple-tooltip for="send-button" position="left">Send Prompt to Merlin</simple-tooltip>
       </div>
     `;
   }
@@ -113,9 +132,6 @@ class ChatInput extends DDD {
    * @param {event} e - event
    */
   handleKeyPress(e) {
-    let textArea = this.shadowRoot.querySelector("#user-input");
-    // this.previousMessageIndex = this.messageIndex - 1;
-    
     switch (e.key) {
       case "Enter":
         ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Enter key pressed.') : null;
@@ -124,45 +140,28 @@ class ChatInput extends DDD {
         break;
 
       case "ArrowUp": // ! don't touch; it's working >:(
-      e.preventDefault();
-      if (this.previousMessagesIndex > 1) {
-        this.previousMessagesIndex--;
-        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`) : null;
-        
-        while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
-                && this.previousMessagesIndex >= 1) {
-          this.previousMessagesIndex--;
-          if (this.previousMessagesIndex < 1) {
-            this.previousMessagesIndex++;
-            break; 
-          }
-        }
-
-        textArea.value = this.chatLog[this.previousMessagesIndex].message;
-        }
+        e.preventDefault();
+        this.displayPreviousMessages("up");
         break;
 
       case "ArrowDown": // TODO have Bryan look at this but also work on see if can get working before that
         e.preventDefault();
-        if (this.previousMessagesIndex < this.messageIndex) {
-          this.previousMessagesIndex++;
-          while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
-                  && this.previousMessagesIndex < this.messageIndex) {
-            this.previousMessagesIndex++;
-            if (this.previousMessagesIndex > this.messageIndex) {
-              this.previousMessagesIndex = this.messageIndex;
-              break;
-            }
-          }
-          if (this.previousMessagesIndex >= this.messageIndex) {
-            textArea.value = "";
-          } else {
-            textArea.value = this.chatLog[this.previousMessagesIndex].message;
-          }
-        } else {
-          textArea.value = "";
-        }
-        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`) : null;
+        this.displayPreviousMessages("down");
+        break;
+    }
+  }
+
+  handleDirectionButtons(e) {
+    const BUTTON_ID = e.currentTarget.id;
+
+    ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: ${BUTTON_ID} button pressed.`) : null;
+
+    switch (BUTTON_ID) {
+      case "input-up-btn":
+        this.displayPreviousMessages("up");
+        break;
+      case "input-down-btn":
+        this.displayPreviousMessages("down");
         break;
     }
   }
@@ -186,6 +185,52 @@ class ChatInput extends DDD {
 
     } else {
       ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
+    }
+  }
+
+  displayPreviousMessages(direction) {
+    let textArea = this.shadowRoot.querySelector("#user-input");
+    
+    switch (direction) {
+      case "up":
+        if (this.previousMessagesIndex > 1) {
+          this.previousMessagesIndex--;
+          ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`) : null;
+          
+          while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
+                  && this.previousMessagesIndex >= 1) {
+            this.previousMessagesIndex--;
+            if (this.previousMessagesIndex < 1) {
+              this.previousMessagesIndex++;
+              break; 
+            }
+          }
+  
+          textArea.value = this.chatLog[this.previousMessagesIndex].message;
+        }
+        break;
+
+      case "down":
+        if (this.previousMessagesIndex < this.messageIndex) {
+          this.previousMessagesIndex++;
+          while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
+                  && this.previousMessagesIndex < this.messageIndex) {
+            this.previousMessagesIndex++;
+            if (this.previousMessagesIndex > this.messageIndex) {
+              this.previousMessagesIndex = this.messageIndex;
+              break;
+            }
+          }
+          if (this.previousMessagesIndex >= this.messageIndex) {
+            textArea.value = "";
+          } else {
+            textArea.value = this.chatLog[this.previousMessagesIndex].message;
+          }
+        } else {
+          textArea.value = "";
+        }
+        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`) : null;
+        break;
     }
   }
 
