@@ -6,7 +6,7 @@
 // register globally so we can make sure there is only one
 globalThis.I18NManagerStore = globalThis.I18NManagerStore || {};
 globalThis.I18NManagerStore.requestAvailability = () => {
-  if (!globalThis.I18NManagerStore.instance && globalThis.document) {
+  if (!globalThis.I18NManagerStore.instance && globalThis.document && globalThis.document.body) {
     globalThis.I18NManagerStore.instance =
       globalThis.document.createElement("i18n-manager");
     globalThis.document.body.appendChild(globalThis.I18NManagerStore.instance);

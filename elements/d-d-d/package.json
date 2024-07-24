@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"
   },
+  "type": "module",
   "main": "d-d-d.js",
   "module": "d-d-d.js",
   "scripts": {

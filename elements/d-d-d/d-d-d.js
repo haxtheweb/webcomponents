@@ -153,7 +153,7 @@ export { DDD };
  */
 globalThis.DDDSharedStyles = globalThis.DDDSharedStyles || {};
 globalThis.DDDSharedStyles.requestAvailability = () => {
-  if (globalThis.DDDSharedStyles.instance == null) {
+  if (globalThis.DDDSharedStyles.instance == null && globalThis.document && globalThis.document.head) {
     // convert css into text content of arrays mashed together
     // this way we can inject it into a global style sheet
     let globalStyles = DDDAllStyles.map((st) =>
