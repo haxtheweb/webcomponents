@@ -16,7 +16,8 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  * of keys to hide from this specific element. If the entire thing is there
  * then it'll remove all of them
  */
-globalThis.addEventListener(
+if (globalThis && globalThis.addEventListener) {
+  globalThis.addEventListener(
   "hax-store-ready",
   (e) => {
     if (globalThis.HaxStore) {
@@ -293,7 +294,8 @@ globalThis.addEventListener(
     }
   },
   { once: true },
-);
+  );
+}
 /**
  * Instructional design meshing with styles. What we use to represent concepts
  */

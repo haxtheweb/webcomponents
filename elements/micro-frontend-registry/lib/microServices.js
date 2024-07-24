@@ -464,7 +464,7 @@ export function enableHAXcmsServices() {
 export function enableExperimentalServices() {
   // hydrateSsr
   MicroFrontendRegistry.add({
-    endpoint: "/api/experiments/hydrateSsr",
+    endpoint: "https://webcomponents.hax.cloud/api/hydrateSsr",
     name: "@experiments/hydrateSsr",
     title: "Hydrate SSR",
     description: "Hydrate web components via lit server side",

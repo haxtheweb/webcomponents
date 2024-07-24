@@ -379,20 +379,23 @@ class A11yGifPlayer extends I18NMixin(
    * when slot changes update with animated gif
    */
   _updateFromSlot() {
-    let img = this.querySelector("img");
-    if (img) {
-      let src = img.src || null;
-      let alt = img.alt || null;
-      if (src) this.srcWithoutAnimation = src;
-      if (alt) this.alt = alt;
-    }
-    // support simple-img tag since it can auto-convert gif to static!
-    img = this.querySelector("simple-img");
-    if (img) {
-      let src = img.srcconverted || null;
-      let alt = img.alt || null;
-      if (src) this.srcWithoutAnimation = src;
-      if (alt) this.alt = alt;
+    // ensures ssr works
+    if (this.querySelector) {
+      let img = this.querySelector("img");
+      if (img) {
+        let src = img.src || null;
+        let alt = img.alt || null;
+        if (src) this.srcWithoutAnimation = src;
+        if (alt) this.alt = alt;
+      }
+      // support simple-img tag since it can auto-convert gif to static!
+      img = this.querySelector("simple-img");
+      if (img) {
+        let src = img.srcconverted || null;
+        let alt = img.alt || null;
+        if (src) this.srcWithoutAnimation = src;
+        if (alt) this.alt = alt;
+      }
     }
   }
   /**

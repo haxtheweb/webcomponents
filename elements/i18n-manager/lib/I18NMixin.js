@@ -29,7 +29,7 @@ export const I18NMixin = function (SuperClass) {
     // pass through to the manager, automatically adding some namespace values
     registerLocalization(detail) {
       // ensure we have a namespace for later use
-      if (!detail.namespace) {
+      if (!detail.namespace && detail.context && detail.context.tagName && detail.context.tagName) {
         detail.namespace = detail.context.tagName.toLowerCase();
       }
       // support fallback calls for requestUpdate; you can always supply one
@@ -54,7 +54,9 @@ export const I18NMixin = function (SuperClass) {
       // register the localization directly, skipping event
       // this also ensures that things leveraging the Mixin will never miss
       // the singleton being registered
-      I18NManagerStore.registerLocalization(detail);
+      if (I18NManagerStore) {
+        I18NManagerStore.registerLocalization(detail);
+      }
     }
   };
 };

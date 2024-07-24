@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "web-dialog/index.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 const SimpleModalCssVars = [
@@ -344,10 +343,14 @@ class SimpleModal extends LitElement {
    * LitElement
    */
   firstUpdated() {
-    this.shadowRoot
-      .querySelector("web-dialog")
-      .shadowRoot.querySelector("#backdrop").style.backgroundColor =
-      "var(--ddd-theme-default-potential70)";
+    import("web-dialog/index.js").then((e) => {
+      setTimeout(() => {
+        this.shadowRoot
+        .querySelector("web-dialog")
+        .shadowRoot.querySelector("#backdrop").style.backgroundColor =
+        "var(--ddd-theme-default-potential70)";  
+      }, 0);
+    });
   }
 
   updated(changedProperties) {
@@ -365,11 +368,11 @@ class SimpleModal extends LitElement {
     this.close = this.close.bind(this);
     this.showEvent = this.showEvent.bind(this);
     setTimeout(() => {
-      window.addEventListener("simple-modal-hide", this.close, {
+      globalThis.addEventListener("simple-modal-hide", this.close, {
         signal: this.windowControllers.signal,
       });
 
-      window.addEventListener("simple-modal-show", this.showEvent, {
+      globalThis.addEventListener("simple-modal-show", this.showEvent, {
         signal: this.windowControllers.signal,
       });
     }, 0);
@@ -389,7 +392,7 @@ class SimpleModal extends LitElement {
     // if we're already opened and we get told to open again....
     // swap out the contents
     // ensure things don't conflict w/ the modal if its around
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
         bubbles: true,
         composed: true,
@@ -484,7 +487,7 @@ class SimpleModal extends LitElement {
    */
   close() {
     this.opened = false;
-    if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
+    if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
       this.shadowRoot
         .querySelector("web-dialog")
         .shadowRoot.querySelector("#backdrop").style.position = "relative";
@@ -504,7 +507,7 @@ class SimpleModal extends LitElement {
         passive: true,
       });
     }
-    if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
+    if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
       this.shadowRoot
         .querySelector("web-dialog")
         .shadowRoot.querySelector("#backdrop").style.position = "fixed";
@@ -607,16 +610,16 @@ customElements.define(SimpleModal.tag, SimpleModal);
 export { SimpleModal, SimpleModalCssVars };
 
 // register globally so we can make sure there is only one
-window.SimpleModal = window.SimpleModal || {};
+globalThis.SimpleModal = globalThis.SimpleModal || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.SimpleModal.requestAvailability = () => {
-  if (!window.SimpleModal.instance) {
-    window.SimpleModal.instance = document.createElement("simple-modal");
-    document.body.appendChild(window.SimpleModal.instance);
+globalThis.SimpleModal.requestAvailability = () => {
+  if (!globalThis.SimpleModal.instance && globalThis.document && globalThis.document.body) {
+    globalThis.SimpleModal.instance = globalThis.document.createElement("simple-modal");
+    globalThis.document.body.appendChild(globalThis.SimpleModal.instance);
   }
-  return window.SimpleModal.instance;
+  return globalThis.SimpleModal.instance;
 };
 
-export const SimpleModalStore = window.SimpleModal.requestAvailability();
+export const SimpleModalStore = globalThis.SimpleModal.requestAvailability();

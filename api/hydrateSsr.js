@@ -1,12 +1,12 @@
-import { stdResponse, invalidRequest, stdPostBody } from "../../utilities/requestHelpers.js";
-import { render } from '@lit-labs/ssr';
-import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
+import { stdResponse, invalidRequest, stdPostBody } from "../utilities/requestHelpers.js";
+import { render } from '@lit-labs/ssr/lib/render-with-global-dom-shim.js';
+import {collectResult} from '@lit-labs/ssr/lib/render-result.js';
 import { html } from 'lit';
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 // node parser
 import { parse } from 'node-html-parser';
 
-import wcRegistry from "https://cdn.hax.cloud/cdn/wc-registry.json" assert { type: 'json' };
+import wcRegistry from "../wc-registry.json" assert { type: 'json' };
 
 export default async function handler(req, res) {
   // destructing GET params after ? available in this object
@@ -39,17 +39,17 @@ export default async function handler(req, res) {
         // see if it's in the registry
         if (wcRegistry[allEls[i].tagName.toLowerCase()]) {
           try {
-            console.log(`importing ${wcRegistry[allEls[i].tagName.toLowerCase()]}`);
-            await import(`https://cdn.hax.cloud/cdn/${wcRegistry[allEls[i].tagName.toLowerCase()]}`);
+            //console.log(`importing ${wcRegistry[allEls[i].tagName.toLowerCase()]}`);
+            await import(wcRegistry[allEls[i].tagName.toLowerCase()]);
           }
           catch(e) {
-            console.log(e);
+            console.warn(e);
           }
         }
       }
     }
-    const myServerTemplate = () => html`${unsafeHTML(q)}`;
-    const ssrResult = render(myServerTemplate());
+    const myServerTemplate = html`${unsafeHTML(q)}`;
+    const ssrResult = render(myServerTemplate);
     const content = await collectResult(ssrResult);
     // Awaits promises
     res = stdResponse(res, content, {cache: 86400,type : 'text/html' });
