@@ -1,12 +1,16 @@
 {
   "type": "module",
   "name": "vercel-api-webcomponents",
+  "scripts": {
+    "postinstall": "./node_modules/.bin/patch-package"
+  },
   "dependencies": {
+    "patch-package": "^8.0.0",
     "lit-html": "^3.1.4",
     "@lit-labs/ssr": "^3.2.2",
     "lit": "^3.1.4",
     "node-html-parser": "^6.1.13",
-    "@haxtheweb/course-design": "9.0.1",
-    "@haxtheweb/video-player": "9.0.1"
+    "@haxtheweb/course-design": "^9.0.1",
+    "@haxtheweb/video-player": "^9.0.1"
   }
 }
