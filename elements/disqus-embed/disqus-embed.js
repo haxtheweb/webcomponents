@@ -173,7 +173,7 @@ class DisqusBroker extends LitElement {
     this.renderTarget = target;
     this.innerHTML = "";
     if (!this._embed) {
-      this._embed = document.createElement("script");
+      this._embed = globalThis.document.createElement("script");
       this._embed.setAttribute("data-timestamp", +new Date());
       this._embed.type = "text/javascript";
       this._embed.async = true;
@@ -248,7 +248,7 @@ globalThis.DisqusSingleton.requestAvailability = () => {
     globalThis.document &&
     globalThis.document.body
   ) {
-    globalThis.DisqusSingleton.instance = document.createElement(
+    globalThis.DisqusSingleton.instance = globalThis.document.createElement(
       DisqusBroker.tag,
     );
     globalThis.document.body.insertAdjacentElement(

@@ -17,7 +17,7 @@ globalThis.DataViz.requestAvailability = () => {
     globalThis.document &&
     globalThis.document.body
   ) {
-    globalThis.DataViz.instance = document.createElement("data-viz");
+    globalThis.DataViz.instance = globalThis.document.createElement("data-viz");
     globalThis.document.body.appendChild(globalThis.DataViz.instance);
   }
   return globalThis.DataViz.instance;

@@ -2075,9 +2075,11 @@ globalThis.GradeBook.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
   if (!globalThis.GradeBook.instance) {
     if (globalThis.document.querySelector("grade-book")) {
-      globalThis.GradeBook.instance = globalThis.document.querySelector("grade-book");
+      globalThis.GradeBook.instance =
+        globalThis.document.querySelector("grade-book");
     } else {
-      globalThis.GradeBook.instance = globalThis.document.createElement("grade-book");
+      globalThis.GradeBook.instance =
+        globalThis.document.createElement("grade-book");
       globalThis.document.body.appendChild(globalThis.GradeBook.instance);
     }
   }

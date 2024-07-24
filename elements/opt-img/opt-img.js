@@ -32,16 +32,16 @@ class OptImg extends HTMLElement {
     // wipe anything that may be here from before
     this.innerHTML = null;
     // create a 'loading' container
-    this._loading = document.createElement("div");
+    this._loading = globalThis.document.createElement("div");
     this._loading.style.height = this.height;
     this._loading.style.width = this.width;
     this._loading.innerHTML = this.loading;
     this.appendChild(this._loading);
     // used for flipping visibility status to change what loads
     this.loadingvisible = false;
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
     // preconnect the domain early on
-    this._preconnect = document.createElement("link");
+    this._preconnect = globalThis.document.createElement("link");
     this._preconnect.rel = "preconnect";
   }
   handleIntersectionCallback(entries) {
@@ -55,11 +55,11 @@ class OptImg extends HTMLElement {
       ) {
         // preload the image via header request
         this._preconnect.remove();
-        this._preconnect = document.createElement("link");
+        this._preconnect = globalThis.document.createElement("link");
         this._preconnect.rel = "preload";
         this._preconnect.href = this.src;
         this._preconnect.as = "image";
-        document.head.appendChild(this._preconnect);
+        globalThis.document.head.appendChild(this._preconnect);
       }
     }
   }
@@ -138,7 +138,7 @@ class OptImg extends HTMLElement {
     if (attr === "src") {
       // preconnect domain
       this._preconnect.href = new URL(this.src).origin;
-      document.head.appendChild(this._preconnect);
+      globalThis.document.head.appendChild(this._preconnect);
     }
   }
   // peg attribute to property change internally

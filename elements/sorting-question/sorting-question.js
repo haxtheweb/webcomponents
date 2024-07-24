@@ -128,7 +128,7 @@ export class SortingQuestion extends QuestionElement {
             children[i].disabled = true;
           }
           this.numberCorrect = numCorrect;
-          let si = document.createElement("simple-icon-lite");
+          let si = globalThis.document.createElement("simple-icon-lite");
           let extras = {};
           let toastShowEventName = "simple-toast-show";
           // support for haxcms toast

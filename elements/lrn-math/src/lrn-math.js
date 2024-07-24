@@ -126,7 +126,11 @@ function check_handler(el) {
   handler =
     globalThis.document.querySelector(CONTROLLER_TAG_NAME) ||
     globalThis.document.createElement(CONTROLLER_TAG_NAME);
-  if (!globalThis.document.contains(handler) && globalThis.document && globalThis.document.head) {
+  if (
+    !globalThis.document.contains(handler) &&
+    globalThis.document &&
+    globalThis.document.head
+  ) {
     globalThis.document.head.appendChild(handler);
   }
   setTimeout(() => {

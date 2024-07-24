@@ -10,8 +10,8 @@ globalThis.PouchDb = globalThis.PouchDb || {};
 globalThis.PouchDb.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
   if (!globalThis.PouchDb.instance) {
-    globalThis.PouchDb.instance = document.createElement("pouch-db");
-    document.body.appendChild(globalThis.PouchDb.instance);
+    globalThis.PouchDb.instance = globalThis.document.createElement("pouch-db");
+    globalThis.document.body.appendChild(globalThis.PouchDb.instance);
   }
   return globalThis.PouchDb.instance;
 };

@@ -80,7 +80,7 @@ class HAX extends HTMLElement {
     this.__rendered = false;
     // set tag for later use
     this.tag = HAX.tag;
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
     this.attachShadow({ mode: "open" });
     // see if we have any adoptable stylesheets
     if (globalThis.document.adoptedStyleSheets) {
@@ -219,7 +219,7 @@ class HAX extends HTMLElement {
     // store needs to come before anyone else, use it's availability request mechanism
     let store = globalThis.HaxStore.requestAvailability();
     // now everyone else
-    let tray = document.createElement("hax-tray");
+    let tray = globalThis.document.createElement("hax-tray");
     tray.hidePanelOps = this.hidePanelOps;
     tray.hideToolbar = this.hideToolbar;
     this.elementAlign = localStorageGet("hax-tray-elementAlign");
@@ -231,10 +231,16 @@ class HAX extends HTMLElement {
       this.elementAlign = "left";
     }
     store.elementAlign = this.elementAlign;
-    document.body.appendChild(tray);
-    document.body.appendChild(document.createElement("hax-app-picker"));
-    document.body.appendChild(document.createElement("hax-autoloader"));
-    document.body.appendChild(document.createElement("hax-cancel-dialog"));
+    globalThis.document.body.appendChild(tray);
+    globalThis.document.body.appendChild(
+      globalThis.document.createElement("hax-app-picker"),
+    );
+    globalThis.document.body.appendChild(
+      globalThis.document.createElement("hax-autoloader"),
+    );
+    globalThis.document.body.appendChild(
+      globalThis.document.createElement("hax-cancel-dialog"),
+    );
     return true;
   }
   disconnectedCallback() {

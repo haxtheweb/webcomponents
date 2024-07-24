@@ -579,12 +579,12 @@ class SimpleTooltip extends LitElement {
         var timingDelay = this.animationConfig[type][0].timing.delay;
         // Has Timing Change - Update CSS
         if (type === "entry") {
-          document.documentElement.style.setProperty(
+          globalThis.document.documentElement.style.setProperty(
             "--simple-tooltip-delay-in",
             timingDelay + "ms",
           );
         } else if (type === "exit") {
-          document.documentElement.style.setProperty(
+          globalThis.document.documentElement.style.setProperty(
             "--simple-tooltip-delay-out",
             timingDelay + "ms",
           );
@@ -630,7 +630,7 @@ class SimpleTooltip extends LitElement {
   _delayChange(newValue) {
     // Only Update delay if different value set
     if (newValue !== 500) {
-      document.documentElement.style.setProperty(
+      globalThis.document.documentElement.style.setProperty(
         "--simple-tooltip-delay-in",
         newValue + "ms",
       );

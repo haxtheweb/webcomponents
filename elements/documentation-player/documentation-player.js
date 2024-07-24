@@ -75,7 +75,7 @@ class DocumentationPlayer extends LitElement {
   // because of how processed <template> tags work in lit (illegal) we have to specialized way of rendering
   // so that the play-list element is empty for a second and then we template stamp it into placee
   renderPlayListTemplate() {
-    let template = document.createElement("template");
+    let template = globalThis.document.createElement("template");
     render(
       html` <div>
           <a href="${this.url}" rel="noopener" target="_blank">${this.label}</a>
@@ -102,9 +102,9 @@ class DocumentationPlayer extends LitElement {
       .querySelector("#contentplayertemplate")
       .appendChild(template);
     setTimeout(() => {
-      let template = document.createElement("template");
+      let template = globalThis.document.createElement("template");
       template.innerHTML = this.innerHTML.trim();
-      let codesample = document.createElement("code-sample");
+      let codesample = globalThis.document.createElement("code-sample");
       codesample.innerHTML = template.outerHTML;
       this.shadowRoot.querySelector("#codesample").appendChild(codesample);
     }, 10);

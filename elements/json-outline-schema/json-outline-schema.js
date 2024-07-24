@@ -63,7 +63,7 @@ class JsonOutlineSchema extends HTMLElement {
     this.windowControllers = new AbortController();
     // set tag for later use
     this.tag = JsonOutlineSchema.tag;
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
 
     this.attachShadow({ mode: "open" });
 
@@ -317,7 +317,7 @@ class JsonOutlineSchema extends HTMLElement {
         metadata: this.metadata,
         items: this.items,
       };
-      let span = document.createElement("span");
+      let span = globalThis.document.createElement("span");
       span.innerHTML = JSON.stringify(obj, null, 2);
       this.shadowRoot.appendChild(span.cloneNode(true));
     } else {
@@ -531,11 +531,11 @@ class JsonOutlineSchema extends HTMLElement {
       items = this.items;
     }
     let tree = this.unflattenItems(items);
-    return this.treeToNodes(tree, document.createElement("ul"));
+    return this.treeToNodes(tree, globalThis.document.createElement("ul"));
   }
   treeToNodes(tree, appendTarget) {
     for (var i in tree) {
-      let li = document.createElement("li");
+      let li = globalThis.document.createElement("li");
       li.innerText = tree[i].title;
       li.setAttribute("data-jos-id", tree[i].id);
       if (tree[i].location) {
@@ -552,7 +552,10 @@ class JsonOutlineSchema extends HTMLElement {
       appendTarget.appendChild(li);
       if (tree[i].children && tree[i].children.length > 0) {
         appendTarget.appendChild(
-          this.treeToNodes(tree[i].children, document.createElement("ul")),
+          this.treeToNodes(
+            tree[i].children,
+            globalThis.document.createElement("ul"),
+          ),
         );
       }
     }

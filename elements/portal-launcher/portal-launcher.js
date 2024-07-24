@@ -69,7 +69,7 @@ class PortalLauncher extends HTMLElement {
         e.stopPropagation();
         e.stopImmediatePropagation();
         // Adding some styles with transitions
-        const style = document.createElement("style");
+        const style = globalThis.document.createElement("style");
         const initialScale = 0.2;
         style.innerHTML = `
           portal {
@@ -104,7 +104,7 @@ class PortalLauncher extends HTMLElement {
             opacity: 1.0;
           }
         `;
-        const portal = document.createElement("portal");
+        const portal = globalThis.document.createElement("portal");
         // Let's navigate into the WICG Portals spec page
         portal.src = target.getAttribute("href");
         // Add a class that defines the transition. Consider using
@@ -117,7 +117,7 @@ class PortalLauncher extends HTMLElement {
             portal.activate();
           }
         });
-        document.body.appendChild(style, portal);
+        globalThis.document.body.appendChild(style, portal);
         // Waiting for the page to load.
         // using setTimeout is a suboptimal way and it's best to fade-in
         // when receiving a load complete message from the portal via postMessage

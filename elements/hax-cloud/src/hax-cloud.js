@@ -191,7 +191,8 @@ class HaxCloud extends DDD {
         this.fileRoot = fileRecord.folder;
         console.log(manifest);
         if (manifest && manifest.items.length > 0) {
-          globalThis.document.querySelector("haxcms-site-builder").manifest = manifest;
+          globalThis.document.querySelector("haxcms-site-builder").manifest =
+            manifest;
         }
       }
     });
@@ -230,7 +231,8 @@ class HaxCloud extends DDD {
     // and keep all logic inside the userfs handler and remove this element
     globalThis.document.querySelector("haxcms-backend-userfs").fileObjects =
       this.fileObjects;
-    globalThis.document.querySelector("haxcms-backend-userfs").fileRoot = this.fileRoot;
+    globalThis.document.querySelector("haxcms-backend-userfs").fileRoot =
+      this.fileRoot;
     // show the hidden site tag
     globalThis.document.querySelector("haxcms-site-builder").style.display = "";
     // you may rest now my friend

@@ -46,7 +46,10 @@ class HaxTextEditorPasteButton extends RichTextEditorButtonBehaviors(
   }
   sendCommand(e) {
     if (navigator && globalThis.navigator.clipboard)
-      HAXStore._onPaste({ ...e, clipboardData: globalThis.navigator.clipboard });
+      HAXStore._onPaste({
+        ...e,
+        clipboardData: globalThis.navigator.clipboard,
+      });
   }
 }
 customElements.define(HaxTextEditorPasteButton.tag, HaxTextEditorPasteButton);

@@ -43,7 +43,7 @@ class FluidType extends HTMLElement {
     super();
     // set tag for later use
     this.tag = FluidType.tag;
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
 
     this.attachShadow({ mode: "open" });
 

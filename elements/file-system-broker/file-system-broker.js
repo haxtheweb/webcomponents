@@ -216,7 +216,7 @@ globalThis.FileSystemBroker.requestAvailability = () => {
     globalThis.document.body
   ) {
     globalThis.FileSystemBroker.instance =
-      document.createElement("file-system-broker");
+      globalThis.document.createElement("file-system-broker");
     globalThis.document.body.appendChild(globalThis.FileSystemBroker.instance);
   }
   return globalThis.FileSystemBroker.instance;

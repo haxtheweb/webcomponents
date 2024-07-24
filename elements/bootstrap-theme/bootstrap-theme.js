@@ -595,22 +595,22 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
   _generateBootstrapLink() {
     if (this._bootstrapLink) {
-      document.head.removeChild(this._bootstrapLink);
+      globalThis.document.head.removeChild(this._bootstrapLink);
     }
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-    let link = document.createElement("link");
+    let link = globalThis.document.createElement("link");
     link.setAttribute("rel", "stylesheet");
     link.setAttribute(
       "href",
       basePath + "bootstrap/dist/css/bootstrap.min.css",
     );
-    document.head.appendChild(link);
+    globalThis.document.head.appendChild(link);
     return link;
   }
 
   disconnectedCallback() {
     if (this._bootstrapLink) {
-      document.head.removeChild(this._bootstrapLink);
+      globalThis.document.head.removeChild(this._bootstrapLink);
     }
     super.disconnectedCallback();
   }
@@ -623,7 +623,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
       super.firstUpdated(changedProperties);
     }
     this._loadScripts();
-    document.body.style.overflow = "hidden";
+    globalThis.document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".site-body");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =

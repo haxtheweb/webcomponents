@@ -18,11 +18,11 @@ class TwitterEmbed extends LitElement {
   constructor() {
     super();
     this.lang =
-    globalThis.document.body.getAttribute("xml:lang") ||
-    globalThis.document.body.getAttribute("lang") ||
-    globalThis.document.documentElement.getAttribute("xml:lang") ||
-    globalThis.document.documentElement.getAttribute("lang") ||
-    globalThis.navigator.language ||
+      globalThis.document.body.getAttribute("xml:lang") ||
+      globalThis.document.body.getAttribute("lang") ||
+      globalThis.document.documentElement.getAttribute("xml:lang") ||
+      globalThis.document.documentElement.getAttribute("lang") ||
+      globalThis.navigator.language ||
       FALLBACK_LANG;
     this.dataWidth = "550px";
     this.dataTheme = "light";

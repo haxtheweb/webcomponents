@@ -490,7 +490,7 @@ if ($MrTheCheat) {
 
     let template = this._getCodeTemplate();
     if (!template) {
-      template = document.createElement("template");
+      template = globalThis.document.createElement("template");
       template.setAttribute("preserve-content", "preserve-content");
       this.appendChild(template);
     }
@@ -504,7 +504,7 @@ if ($MrTheCheat) {
     )[0];
   }
   _applyHighlightjs(str) {
-    this._code = document.createElement("code");
+    this._code = globalThis.document.createElement("code");
     if (this.type) this._code.classList.add(this.type);
     this._code.innerHTML = this._entitize(this._cleanIndentation(str));
     if (this.shadowRoot && this.shadowRoot.querySelector("#code")) {
@@ -533,7 +533,7 @@ if ($MrTheCheat) {
     textarea.select();
 
     try {
-      document.execCommand("copy", false);
+      globalThis.document.execCommand("copy", false);
       copyButton.textContent = "Done";
     } catch (err) {
       console.error(err);
@@ -547,8 +547,8 @@ if ($MrTheCheat) {
     }, 1000);
   }
   _textAreaWithClonedContent() {
-    const textarea = document.createElement("textarea");
-    document.body.appendChild(textarea);
+    const textarea = globalThis.document.createElement("textarea");
+    globalThis.document.body.appendChild(textarea);
     textarea.value = this._cleanIndentation(this._getCodeTemplate().innerHTML);
 
     return textarea;

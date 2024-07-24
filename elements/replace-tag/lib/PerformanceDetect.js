@@ -63,11 +63,14 @@ class PerformanceDetect extends HTMLElement {
     };
     if (navigator) {
       // if less than a gig we know its bad
-      if (navigator.deviceMemory &&  globalThis.navigator.deviceMemory < 1) {
+      if (navigator.deviceMemory && globalThis.navigator.deviceMemory < 1) {
         details.lowMemory = true;
       }
       // even phones have multi-core processors so another sign
-      if (navigator.hardwareConcurrency &&  globalThis.navigator.hardwareConcurrency < 2) {
+      if (
+        navigator.hardwareConcurrency &&
+        globalThis.navigator.hardwareConcurrency < 2
+      ) {
         details.lowProcessor = true;
       }
       // some platforms support getting the battery status

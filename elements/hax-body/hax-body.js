@@ -426,8 +426,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       namespace: "hax",
     });
     if (!globalThis.HaxUiStyles) {
-      globalThis.HaxUiStyles = document.createElement("div");
-      let s = document.createElement("style"),
+      globalThis.HaxUiStyles = globalThis.document.createElement("div");
+      let s = globalThis.document.createElement("style"),
         css = HaxUiBaseStyles.map((st) => st.cssText).join("");
       s.setAttribute("data-hax", true);
       s.setAttribute("type", "text/css");
@@ -547,7 +547,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               eventPath[0].closest("[data-move-order]").parentNode.parentNode
                 .host.children.length == 0
             ) {
-              let p = document.createElement("p");
+              let p = globalThis.document.createElement("p");
               eventPath[0]
                 .closest("[data-move-order]")
                 .parentNode.parentNode.host.appendChild(p);
@@ -630,7 +630,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __manageFakeEndCap(create = true) {
     if (create && !this.__fakeEndCap) {
-      let fake = document.createElement("fake-hax-body-end");
+      let fake = globalThis.document.createElement("fake-hax-body-end");
       fake.style.width = "100%";
       fake.style.height = "20px";
       fake.style.zIndex = "2";
@@ -685,7 +685,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             ? this.activeNode.parentNode.tagName
             : this.activeNode.tagName}"
         .target="${!this.activeNode
-          ? document.body
+          ? globalThis.document.body
           : this.viewSourceToggle
             ? this.activeNode.parentNode
             : this.activeNode}"
@@ -826,8 +826,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     );
     // try to normalize paragraph insert on enter
     try {
-      document.execCommand("enableObjectResizing", false, false);
-      document.execCommand("defaultParagraphSeparator", false, "p");
+      globalThis.document.execCommand("enableObjectResizing", false, false);
+      globalThis.document.execCommand("defaultParagraphSeparator", false, "p");
     } catch (e) {
       console.warn(e);
     }
@@ -970,7 +970,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             !this.activeNode.previousElementSibling &&
             this.activeNode.parentNode === this
           ) {
-            let p = document.createElement("p");
+            let p = globalThis.document.createElement("p");
             this.insertBefore(p, this.activeNode);
           }
         } else {
@@ -1006,9 +1006,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // make sure we don't have an open drawer, and editing, and we are not focused on tray
     if (
       this.editMode &&
-      document.activeElement.tagName !== "HAX-TRAY" &&
-      document.activeElement.tagName !== "BODY" &&
-      document.activeElement.tagName !== "SIMPLE-MODAL"
+      globalThis.document.activeElement.tagName !== "HAX-TRAY" &&
+      globalThis.document.activeElement.tagName !== "BODY" &&
+      globalThis.document.activeElement.tagName !== "SIMPLE-MODAL"
     ) {
       if (this.getAttribute("contenteditable")) {
         this.__dropActiveVisible();
@@ -1299,7 +1299,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // generate a paragraph of text here on click
     if (e.detail === "text") {
       // make sure text just escalates to a paragraph tag
-      let p = document.createElement("p");
+      let p = globalThis.document.createElement("p");
       this.haxReplaceNode(this.activeNode, p);
       this.__focusLogic(p);
       if (this.activeNode.parentNode) {
@@ -1514,7 +1514,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // verify this tag is a valid one
     // create a new element fragment w/ content in it
     // if this is a custom-element it won't expand though
-    var frag = document.createElement(tag);
+    var frag = globalThis.document.createElement(tag);
     // set text forcibly
     //frag.innerText = content;
     // now set html forcibly which would overwrite the other one
@@ -2065,7 +2065,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else {
       // make a new grid plate, default to 3 columns and put this in the middle
       // that way they get a common expectation of offsetting material visually
-      let grid = document.createElement("grid-plate");
+      let grid = globalThis.document.createElement("grid-plate");
       grid.layout = "1-2-1";
       grid.disableResponsive = true;
       if (node.getAttribute("slot")) {
@@ -2110,7 +2110,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   haxChangeTagName(node, tagName, maintainContent = true) {
     // Create a replacement tag of the desired type
-    var replacement = document.createElement(tagName);
+    var replacement = globalThis.document.createElement(tagName);
     // Grab all of the original's attributes, and pass them to the replacement
     for (var i = 0, l = node.attributes.length; i < l; ++i) {
       let nodeName = node.attributes.item(i).nodeName;
@@ -2190,7 +2190,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // implies nothing; let's not allow NOTHING as it breaks user context
       this.haxInsert("p", "", {});
       try {
-        var range = document.createRange();
+        var range = globalThis.document.createRange();
         var sel = HAXStore.getSelection();
         range.setStart(this.activeNode, 0);
         range.collapse(true);
@@ -2220,7 +2220,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     setTimeout(() => {
       html = encapScript(html);
-      let fragment = document.createElement("div");
+      let fragment = globalThis.document.createElement("div");
       fragment.insertAdjacentHTML("beforeend", html);
       while (fragment.firstChild !== null) {
         if (typeof fragment.firstChild.tagName !== typeof undefined) {
@@ -2230,7 +2230,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             fragment.firstChild.tagName.toLowerCase() === "iframe"
           ) {
             // Create a replacement tag of the desired type
-            var replacement = document.createElement("webview");
+            var replacement = globalThis.document.createElement("webview");
             // Grab all of the original's attributes, and pass them to the replacement
             for (
               var j = 0, l = fragment.firstChild.attributes.length;
@@ -2297,7 +2297,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
         } else if (this.activeNode) {
           // would imply top of document
-          let p = document.createElement("p");
+          let p = globalThis.document.createElement("p");
           // account for slot being set in this edge case of being
           // the 1st child inserted into an element that is NOT parent body
           if (this.activeNode.getAttribute("slot")) {
@@ -2327,7 +2327,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.activeNode &&
           HAXStore.isGridPlateElement(this.activeNode)
         ) {
-          let p = document.createElement("p");
+          let p = globalThis.document.createElement("p");
           p.slot = slot;
           this.activeNode.append(p);
           this.haxInsert("p", "", { slot: slot }, p);
@@ -2391,7 +2391,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       case "hax-source-view-toggle":
         if (!this.activeNode.__haxSourceView) {
           this.activeNode.__haxSourceView = true;
-          HAXStore.activeEditingElement = document.createElement("code-editor");
+          HAXStore.activeEditingElement =
+            globalThis.document.createElement("code-editor");
           HAXStore.activeEditingElement.language = "html";
           HAXStore.activeEditingElement.title = "";
           HAXStore.activeEditingElement.theme = "vs";
@@ -2488,7 +2489,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // could be 1st time this shows up so ensure we import
           import("@haxtheweb/rich-text-editor/rich-text-editor.js").then(() => {
             HAXStore.activeEditingElement =
-              document.createElement("rich-text-editor");
+              globalThis.document.createElement("rich-text-editor");
             HAXStore.activeEditingElement.type =
               "rich-text-editor-toolbar-full";
             // test for slots to match to ensure this is maintained
@@ -2749,7 +2750,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               HAXStore.isTextElement(activeNode)
             ) {
               try {
-                var range = document.createRange();
+                var range = globalThis.document.createRange();
                 var sel = HAXStore.getSelection();
                 range.setStart(this.activeNode, 0);
                 range.collapse(true);
@@ -2844,7 +2845,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         } else {
           this.haxInsert("p", "", {});
           try {
-            var range = document.createRange();
+            var range = globalThis.document.createRange();
             var sel = HAXStore.getSelection();
             range.setStart(this.activeNode, 0);
             range.collapse(true);
@@ -3705,7 +3706,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           e.stopPropagation();
           e.stopImmediatePropagation();
           // inject a placeholder P tag which we will then immediately replace
-          let tmp = document.createElement("p");
+          let tmp = globalThis.document.createElement("p");
           if (
             e.target.closest("[data-hax-layout]") &&
             e.target.parentNode != e.target.closest("[data-hax-layout]")
@@ -3892,8 +3893,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     var viewportY = e.clientY;
 
     // Get the viewport dimensions.
-    var viewportWidth = document.documentElement.clientWidth;
-    var viewportHeight = document.documentElement.clientHeight;
+    var viewportWidth = globalThis.document.documentElement.clientWidth;
+    var viewportHeight = globalThis.document.documentElement.clientHeight;
 
     // Next, we need to determine if the mouse is within the "edge" of the
     // viewport, which may require scrolling the window . To do this, we need to
@@ -3924,20 +3925,20 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // NOTE: The various property reads here are for cross-browser compatibility
     // as outlined in the JavaScript.info site (link provided above).
     var documentWidth = Math.max(
-      document.body.scrollWidth,
-      document.body.offsetWidth,
-      document.body.clientWidth,
-      document.documentElement.scrollWidth,
-      document.documentElement.offsetWidth,
-      document.documentElement.clientWidth,
+      globalThis.document.body.scrollWidth,
+      globalThis.document.body.offsetWidth,
+      globalThis.document.body.clientWidth,
+      globalThis.document.documentElement.scrollWidth,
+      globalThis.document.documentElement.offsetWidth,
+      globalThis.document.documentElement.clientWidth,
     );
     var documentHeight = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.body.clientHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight,
-      document.documentElement.clientHeight,
+      globalThis.document.body.scrollHeight,
+      globalThis.document.body.offsetHeight,
+      globalThis.document.body.clientHeight,
+      globalThis.document.documentElement.scrollHeight,
+      globalThis.document.documentElement.offsetHeight,
+      globalThis.document.documentElement.clientHeight,
     );
 
     // Calculate the maximum scroll offset in each direction. Since you can only
@@ -4256,7 +4257,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           }
           await import(`${basePath}${newSchema.editingElement.import}`);
         }
-        HAXStore.activeEditingElement = document.createElement(
+        HAXStore.activeEditingElement = globalThis.document.createElement(
           newSchema.editingElement.tag,
         );
         // test for slots to match to ensure this is maintained
@@ -4355,7 +4356,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           if (this.polyfillSafe) {
             this.__tabTrap = true;
             this.__indentTrap = true;
-            document.execCommand("indent");
+            globalThis.document.execCommand("indent");
           }
         } else {
           while (!focus) {
@@ -4396,7 +4397,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           if (this.polyfillSafe) {
             this.__tabTrap = true;
             this.__indentTrap = true;
-            document.execCommand("outdent");
+            globalThis.document.execCommand("outdent");
           }
         } else {
           if (node != null) {

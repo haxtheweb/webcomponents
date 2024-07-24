@@ -26,7 +26,8 @@ const FullscreenBehaviors = function (SuperClass) {
       super();
       this.fullscreen = false;
       this.fullscreenEnabled = globalThis.document.fullscreenEnabled;
-      globalThis.document.onfullscreenchange = this._handleFullscreenChange.bind(this);
+      globalThis.document.onfullscreenchange =
+        this._handleFullscreenChange.bind(this);
       this.onfullscreenchange = this._handleFullscreenChange;
     }
 
@@ -50,13 +51,17 @@ const FullscreenBehaviors = function (SuperClass) {
     }
 
     _handleFullscreenChange(e) {
-      this.fullscreen = globalThis.document.fullscreenElement === this.fullscreenTarget;
+      this.fullscreen =
+        globalThis.document.fullscreenElement === this.fullscreenTarget;
     }
 
     toggleFullscreen(
       mode = globalThis.document.fullscreenElement !== this.fullscreenTarget,
     ) {
-      if (!mode || (document.fullscreenElement && globalThis.document.exitFullscreen))
+      if (
+        !mode ||
+        (document.fullscreenElement && globalThis.document.exitFullscreen)
+      )
         globalThis.document.exitFullscreen();
       if (mode) this.fullscreenTarget.requestFullscreen();
     }

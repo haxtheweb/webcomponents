@@ -323,7 +323,9 @@ export class PageBreak extends IntersectionObserverMixin(
                   let tagNumber = new Number(
                     el.getAttribute("data-original-level").replace("H", ""),
                   );
-                  const newH = globalThis.document.createElement(`h${tagNumber}`);
+                  const newH = globalThis.document.createElement(
+                    `h${tagNumber}`,
+                  );
                   for (var i = 0, l = el.attributes.length; i < l; ++i) {
                     newH.setAttribute(
                       el.attributes.item(i).nodeName,

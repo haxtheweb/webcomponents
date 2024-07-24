@@ -197,7 +197,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
       (item) =>
         item !== element.id &&
         item !==
-          globalThis.document.querySelector(`[data-associatedID="${element.id}"]`).id,
+          globalThis.document.querySelector(
+            `[data-associatedID="${element.id}"]`,
+          ).id,
     );
     console.log(stopIDs);
     while (nextSibling) {
@@ -257,7 +259,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
     console.log(jumbotron);
     jumbotron ? (jumbotron.innerHTML = "") : "";
     console.log(this.activeIndex);
-    const activeAnchor = globalThis.document.querySelector(`#${this.activeIndex}`);
+    const activeAnchor = globalThis.document.querySelector(
+      `#${this.activeIndex}`,
+    );
     console.log(activeAnchor);
     if (activeAnchor) {
       const jumbotronHeading = globalThis.document.createElement("h2");
@@ -316,7 +320,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
     console.log("seek to timestamp: ", timestamp);
     if (this.open) {
       setTimeout(() => {
-        globalThis.document.querySelector("#lecture-player-video").seek(timestamp);
+        globalThis.document
+          .querySelector("#lecture-player-video")
+          .seek(timestamp);
         globalThis.document.querySelector("#lecture-player-video").play();
         console.log(timestamp);
       }, 3000);
@@ -346,25 +352,32 @@ class LecturePlayer extends DDDSuper(LitElement) {
       prevSlideBtn.removeAttribute("disabled");
     }
     if (
-      activeIndex !== globalThis.document.querySelectorAll("[data-lecture-slide]").length
+      activeIndex !==
+      globalThis.document.querySelectorAll("[data-lecture-slide]").length
     ) {
-      globalThis.document.querySelector("#nextSlideBtn").removeAttribute("disabled");
+      globalThis.document
+        .querySelector("#nextSlideBtn")
+        .removeAttribute("disabled");
     }
   }
 
   endVideo() {
     console.log("endVideo");
     globalThis.document.querySelector("#lecture-player-video").pause();
-    globalThis.document.querySelector("#nextSlideBtn").setAttribute("disabled", "true");
+    globalThis.document
+      .querySelector("#nextSlideBtn")
+      .setAttribute("disabled", "true");
     let endBtnDiv = globalThis.document.createElement("div");
     endBtnDiv.setAttribute("data-primary", "11");
     endBtnDiv.innerHTML = `<simple-cta class="endBtn" data-pulse data-primary="11">Close Lecture Player</simple-cta>`;
     endBtnDiv.classList.add("endBtnContainer");
     globalThis.document.querySelector(".jumbotron").appendChild(endBtnDiv);
-    globalThis.document.querySelector(".endBtn").addEventListener("click", () => {
-      globalThis.document.querySelector("simple-modal").close();
-      this.open = false;
-    });
+    globalThis.document
+      .querySelector(".endBtn")
+      .addEventListener("click", () => {
+        globalThis.document.querySelector("simple-modal").close();
+        this.open = false;
+      });
     let jumbotron = globalThis.document.querySelector(".jumbotron");
     jumbotron.scrollTop = jumbotron.scrollHeight + 500;
   }
@@ -563,35 +576,59 @@ class LecturePlayer extends DDDSuper(LitElement) {
       document
         .querySelector("#lecture-size-large")
         .addEventListener("click", (e) => {
-          globalThis.document.querySelectorAll(".lecture-control").forEach((control) => {
-            control.classList.remove("active");
-          });
+          globalThis.document
+            .querySelectorAll(".lecture-control")
+            .forEach((control) => {
+              control.classList.remove("active");
+            });
           e.target.classList.toggle("active");
-          globalThis.document.querySelector(".videoSection").classList.add("large");
-          globalThis.document.querySelector(".videoSection").classList.remove("small");
-          globalThis.document.querySelector(".videoSection").classList.remove("normal");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.add("large");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("small");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("normal");
         });
       document
         .querySelector("#lecture-size-normal")
         .addEventListener("click", (e) => {
-          globalThis.document.querySelectorAll(".lecture-control").forEach((control) => {
-            control.classList.remove("active");
-          });
+          globalThis.document
+            .querySelectorAll(".lecture-control")
+            .forEach((control) => {
+              control.classList.remove("active");
+            });
           e.target.classList.toggle("active");
-          globalThis.document.querySelector(".videoSection").classList.add("normal");
-          globalThis.document.querySelector(".videoSection").classList.remove("small");
-          globalThis.document.querySelector(".videoSection").classList.remove("large");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.add("normal");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("small");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("large");
         });
       document
         .querySelector("#lecture-size-small")
         .addEventListener("click", (e) => {
-          globalThis.document.querySelectorAll(".lecture-control").forEach((control) => {
-            control.classList.remove("active");
-          });
+          globalThis.document
+            .querySelectorAll(".lecture-control")
+            .forEach((control) => {
+              control.classList.remove("active");
+            });
           e.target.classList.toggle("active");
-          globalThis.document.querySelector(".videoSection").classList.add("small");
-          globalThis.document.querySelector(".videoSection").classList.remove("normal");
-          globalThis.document.querySelector(".videoSection").classList.remove("large");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.add("small");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("normal");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("large");
         });
       document
         .querySelector("simple-modal .modal-content .videoSection video-player")

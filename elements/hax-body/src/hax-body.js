@@ -2391,7 +2391,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       case "hax-source-view-toggle":
         if (!this.activeNode.__haxSourceView) {
           this.activeNode.__haxSourceView = true;
-          HAXStore.activeEditingElement = globalThis.document.createElement("code-editor");
+          HAXStore.activeEditingElement =
+            globalThis.document.createElement("code-editor");
           HAXStore.activeEditingElement.language = "html";
           HAXStore.activeEditingElement.title = "";
           HAXStore.activeEditingElement.theme = "vs";

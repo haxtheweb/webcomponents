@@ -1167,8 +1167,10 @@ globalThis.SuperDaemonManager = globalThis.SuperDaemonManager || {};
 globalThis.SuperDaemonManager.requestAvailability = () => {
   if (!globalThis.SuperDaemonManager.instance) {
     globalThis.SuperDaemonManager.instance =
-    globalThis.document.createElement("super-daemon");
-      globalThis.document.body.appendChild(globalThis.SuperDaemonManager.instance);
+      globalThis.document.createElement("super-daemon");
+    globalThis.document.body.appendChild(
+      globalThis.SuperDaemonManager.instance,
+    );
   }
   return globalThis.SuperDaemonManager.instance;
 };

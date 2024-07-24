@@ -139,7 +139,7 @@ class BarcodeReader extends LitElement {
     // check devices
     function browserRedirect() {
       var deviceType;
-      var sUserAgent = navigator.userAgent.toLowerCase();
+      var sUserAgent = globalThis.navigator.userAgent.toLowerCase();
       var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
       var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
       var bIsMidp = sUserAgent.match(/midp/i) == "midp";
@@ -203,7 +203,7 @@ class BarcodeReader extends LitElement {
         height = mobileVideoHeight;
       }
       context.drawImage(videoElement, 0, 0, width, height);
-      var barcodeCanvas = document.createElement("canvas");
+      var barcodeCanvas = globalThis.document.createElement("canvas");
       barcodeCanvas.width = vid.videoWidth;
       barcodeCanvas.height = vid.videoHeight;
       var barcodeContext = barcodeCanvas.getContext("2d");
@@ -235,7 +235,7 @@ class BarcodeReader extends LitElement {
       }
     }
     var videoSelect = this.shadowRoot.querySelector("select");
-    navigator.mediaDevices
+    globalThis.navigator.mediaDevices
       .enumerateDevices()
       .then(gotDevices)
       .then(getStream)
@@ -246,7 +246,7 @@ class BarcodeReader extends LitElement {
     function gotDevices(deviceInfos) {
       for (var i = deviceInfos.length - 1; i >= 0; --i) {
         var deviceInfo = deviceInfos[i];
-        var option = document.createElement("option");
+        var option = globalThis.document.createElement("option");
         option.value = deviceInfo.deviceId;
         if (deviceInfo.kind === "videoinput") {
           option.text =
@@ -272,7 +272,7 @@ class BarcodeReader extends LitElement {
         },
       };
 
-      navigator.mediaDevices
+      globalThis.navigator.mediaDevices
         .getUserMedia(constraints)
         .then(gotStream)
         .catch(handleError);
@@ -292,7 +292,7 @@ class BarcodeReader extends LitElement {
               deviceId: { exact: videoSelect.value },
             },
           };
-          navigator.mediaDevices
+          globalThis.navigator.mediaDevices
             .getUserMedia(constraints)
             .then(gotStream)
             .catch(handleError);

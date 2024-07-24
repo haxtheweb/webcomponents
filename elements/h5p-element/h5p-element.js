@@ -187,7 +187,7 @@ class H5PElement extends LitElement {
       ],
       scripts: this.h5pJSDeps,
     };
-    let frag = document.createRange().createContextualFragment(`
+    let frag = globalThis.document.createRange().createContextualFragment(`
      <div class="h5p-iframe-wrapper" style="background-color:#DDD;">
        <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
      </div>

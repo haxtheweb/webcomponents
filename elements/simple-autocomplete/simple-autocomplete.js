@@ -369,7 +369,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
       if (this.$input.getAttribute("contenteditable") != null) {
         // generate a fake range at the end of the input so that we can place
         // the cursor where the user expects (end of the input area)
-        var range = document.createRange();
+        var range = globalThis.document.createRange();
         var sel = this.getSelection();
         range.setEnd(this.$input.childNodes[0], this.$input.innerText.length);
         range.collapse(true);
@@ -461,7 +461,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
             if (
               ["TEXTAREA", "INPUT"].includes(document.activeElement.tagName)
             ) {
-              this.$input = document.activeElement;
+              this.$input = globalThis.document.activeElement;
             }
             this.shadowRoot.querySelector("simple-popover").target =
               this.$input;

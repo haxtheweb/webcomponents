@@ -159,7 +159,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
         for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
           props[atts[i].nodeName] = atts[i].nodeValue;
         }
-        let replacement = document.createElement(props.with);
+        let replacement = globalThis.document.createElement(props.with);
         // set the value in the new object
         for (var i in props) {
           if (props[i] != null) {
@@ -192,7 +192,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
           for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
             props[atts[i].nodeName] = atts[i].nodeValue;
           }
-          let replacement = document.createElement(props.with);
+          let replacement = globalThis.document.createElement(props.with);
           replacement.setAttribute("popup-loader", "popup-loader");
           // set the value in the new object
           for (var i in props) {
@@ -225,7 +225,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
         }
         // we resolved 1 definition so now we know it's safe to do all of them
         setTimeout(() => {
-          document.body
+          globalThis.document.body
             .querySelectorAll('replace-tag[with="' + props.with + '"]')
             .forEach((el) => {
               el.runReplacement();
@@ -234,7 +234,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       });
     }
     if (this.exists) {
-      this.template = document.createElement("template");
+      this.template = globalThis.document.createElement("template");
       this.attachShadow({ mode: "open" });
     }
   }

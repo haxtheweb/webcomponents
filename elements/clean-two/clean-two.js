@@ -611,7 +611,7 @@ class CleanTwo extends HAXCMSOperationButtons(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    document.body.style.overflow = "hidden";
+    globalThis.document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.themeTop =
       this.shadowRoot.querySelector("#haxcms-theme-top");
     this.HAXCMSThemeSettings.scrollTarget =
@@ -849,7 +849,7 @@ class CleanTwo extends HAXCMSOperationButtons(
   }
   siteModalForceClick(e) {
     setTimeout(() => {
-      const theme = document.querySelector("clean-two");
+      const theme = globalThis.document.querySelector("clean-two");
       // edge cases where we're switching themes and this callback is not valid
       if (
         theme &&

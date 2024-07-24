@@ -9326,11 +9326,13 @@
           );
         }),
         (s.default.UserMedia.enumerateDevices = function () {
-          return globalThis.navigator.mediaDevices.enumerateDevices().then(function (t) {
-            return t.filter(function (t) {
-              return "audioinput" === t.kind;
+          return globalThis.navigator.mediaDevices
+            .enumerateDevices()
+            .then(function (t) {
+              return t.filter(function (t) {
+                return "audioinput" === t.kind;
+              });
             });
-          });
         }),
         Object.defineProperty(s.default.UserMedia.prototype, "state", {
           get: function () {

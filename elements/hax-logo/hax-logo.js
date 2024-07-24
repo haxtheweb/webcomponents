@@ -124,7 +124,7 @@ class HaxLogo extends HTMLElement {
       globalThis.document &&
       globalThis.document.head
     ) {
-      let link = document.createElement("link");
+      let link = globalThis.document.createElement("link");
       link.setAttribute(
         "href",
         "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap",
@@ -135,7 +135,7 @@ class HaxLogo extends HTMLElement {
     }
     // set tag for later use
     this.tag = HaxLogo.tag;
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
 
     this.attachShadow({ mode: "open" });
 

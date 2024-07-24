@@ -60,13 +60,16 @@ Screen: ${globalThis.screen.width}x${globalThis.screen.height}
 Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
       if (navigator.getBattery) {
-        const stats = await navigator.getBattery();
+        const stats = await globalThis.navigator.getBattery();
         body += `Battery: ${stats.level * 100}%
 `;
       }
       // some things report the "type" of internet connection speed
       // for terrible connections lets save frustration
-      if (navigator.connection && navigator.connection.effectiveType) {
+      if (
+        navigator.connection &&
+        globalThis.navigator.connection.effectiveType
+      ) {
         body += `Connection: ${navigator.connection.effectiveType}
 `;
       }
@@ -473,7 +476,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         import("@haxtheweb/rpg-character/rpg-character.js");
         import("./lib/random-word/random-word.js");
       } else if (badDevice === true) {
-        document.body.classList.add("bad-device");
+        globalThis.document.body.classList.add("bad-device");
       }
     });
     this.userMenuOpen = false;
@@ -602,13 +605,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       localStorageSet("app-hax-darkMode", toJS(store.darkMode));
       requestAnimationFrame(() => {
         if (toJS(store.darkMode)) {
-          document.body.classList.add("dark-mode");
+          globalThis.document.body.classList.add("dark-mode");
           store.toast("I'm ascared of the dark", 2000, { fire: true });
           this.dark = true;
           SuperDaemonInstance.dark = true;
           SuperDaemonInstance.toastInstance.darkMode = true;
         } else {
-          document.body.classList.remove("dark-mode");
+          globalThis.document.body.classList.remove("dark-mode");
           store.toast("Sunny day it is", 2000, { hat: "random" });
           this.dark = false;
           SuperDaemonInstance.dark = false;
@@ -619,11 +622,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     autorun(() => {
       const mode = toJS(store.appMode);
       if (mode) {
-        document.body.classList.remove("app-hax-search");
-        document.body.classList.remove("app-hax-create");
-        document.body.classList.remove("app-hax-404");
-        document.body.classList.remove("app-hax-home");
-        document.body.classList.add(`app-hax-${mode}`);
+        globalThis.document.body.classList.remove("app-hax-search");
+        globalThis.document.body.classList.remove("app-hax-create");
+        globalThis.document.body.classList.remove("app-hax-404");
+        globalThis.document.body.classList.remove("app-hax-home");
+        globalThis.document.body.classList.add(`app-hax-${mode}`);
       }
     });
   }
@@ -657,7 +660,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       if (reload) {
         // should always be a base tag for a SPA but just checking
         if (document.querySelector("base")) {
-          globalThis.location = document.querySelector("base").href;
+          globalThis.location = globalThis.document.querySelector("base").href;
         } else {
           globalThis.location.reload();
         }
@@ -716,7 +719,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   // eslint-disable-next-line class-methods-use-this
   login() {
     import("./lib/v1/app-hax-site-login.js").then(() => {
-      const p = document.createElement("app-hax-site-login");
+      const p = globalThis.document.createElement("app-hax-site-login");
       if (this.querySelector('[slot="externalproviders"]')) {
         const cloneSlot = this.querySelector(
           '[slot="externalproviders"]',
@@ -1067,9 +1070,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     store.appReady = true;
     autorun(() => {
       if (toJS(store.appReady)) {
-        document.body.classList.add("app-loaded");
+        globalThis.document.body.classList.add("app-loaded");
       } else {
-        document.body.classList.remove("app-loaded");
+        globalThis.document.body.classList.remove("app-loaded");
       }
     });
     store.appEl = this;
@@ -1404,7 +1407,7 @@ globalThis.AppHax = globalThis.AppHax || {};
 
 globalThis.AppHax.requestAvailability = () => {
   if (!globalThis.AppHax.instance && globalThis.document) {
-    globalThis.AppHax.instance = document.querySelector(AppHax.tag);
+    globalThis.AppHax.instance = globalThis.document.querySelector(AppHax.tag);
   }
   return globalThis.AppHax.instance;
 };

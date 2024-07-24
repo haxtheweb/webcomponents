@@ -12,7 +12,8 @@ globalThis.WCAutoloadRegistry = globalThis.WCAutoloadRegistry || {};
 // is rendered through the same modal
 globalThis.WCAutoload.requestAvailability = () => {
   if (!globalThis.WCAutoload.instance) {
-    globalThis.WCAutoload.instance = globalThis.document.createElement("wc-autoload");
+    globalThis.WCAutoload.instance =
+      globalThis.document.createElement("wc-autoload");
     globalThis.document.body.appendChild(globalThis.WCAutoload.instance);
   }
   return globalThis.WCAutoload.instance;
@@ -129,7 +130,10 @@ globalThis.addEventListener("load", globalThis.WCAutoload.process);
 globalThis.WCAutoload.postLoaded = (e) => {
   setTimeout(() => {
     let loader = globalThis.WCAutoload.requestAvailability();
-    if (loader.loaded && globalThis.document.querySelectorAll(e.detail.tag).length > 0) {
+    if (
+      loader.loaded &&
+      globalThis.document.querySelectorAll(e.detail.tag).length > 0
+    ) {
       loader.registry.loadDefinition(e.detail.tag);
     }
   }, 0);

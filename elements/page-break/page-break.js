@@ -144,7 +144,7 @@ export class PageBreak extends IntersectionObserverMixin(
               this.setupTargetData(this.target);
             } else {
               let tagName = this.depth === 0 ? `h2` : `h${this.depth + 2}`;
-              let newH = document.createElement(tagName);
+              let newH = globalThis.document.createElement(tagName);
               newH.setAttribute("data-original-level", "H2");
               newH.innerText = this.title;
               this.parentNode.insertBefore(newH, this.nextElementSibling);
@@ -299,7 +299,7 @@ export class PageBreak extends IntersectionObserverMixin(
                     )
                   : new Number(el.tagName.replace("H", ""))) + this.depth;
               tagNumber = tagNumber > 6 ? 6 : tagNumber;
-              const newH = document.createElement(`h${tagNumber}`);
+              const newH = globalThis.document.createElement(`h${tagNumber}`);
               newH.setAttribute("data-original-level", el.tagName);
               for (var i = 0, l = el.attributes.length; i < l; ++i) {
                 newH.setAttribute(
@@ -323,7 +323,9 @@ export class PageBreak extends IntersectionObserverMixin(
                   let tagNumber = new Number(
                     el.getAttribute("data-original-level").replace("H", ""),
                   );
-                  const newH = document.createElement(`h${tagNumber}`);
+                  const newH = globalThis.document.createElement(
+                    `h${tagNumber}`,
+                  );
                   for (var i = 0, l = el.attributes.length; i < l; ++i) {
                     newH.setAttribute(
                       el.attributes.item(i).nodeName,
@@ -346,7 +348,7 @@ export class PageBreak extends IntersectionObserverMixin(
                       )
                     : new Number(el.tagName.replace("H", ""))) + this.depth;
                 tagNumber = tagNumber > 6 ? 6 : tagNumber;
-                const newH = document.createElement(`h${tagNumber}`);
+                const newH = globalThis.document.createElement(`h${tagNumber}`);
                 newH.setAttribute("data-original-level", el.tagName);
                 for (var i = 0, l = el.attributes.length; i < l; ++i) {
                   newH.setAttribute(

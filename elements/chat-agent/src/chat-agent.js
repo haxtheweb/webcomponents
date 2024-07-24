@@ -561,7 +561,8 @@ globalThis.ChatAgentModal = globalThis.ChatAgentModal || {};
 // is rendered through the same modal
 globalThis.ChatAgentModal.requestAvailability = () => {
   if (!globalThis.ChatAgentModal.instance) {
-    globalThis.ChatAgentModal.instance = globalThis.document.createElement("chat-agent");
+    globalThis.ChatAgentModal.instance =
+      globalThis.document.createElement("chat-agent");
     globalThis.document.body.appendChild(globalThis.ChatAgentModal.instance);
   }
   return globalThis.ChatAgentModal.instance;

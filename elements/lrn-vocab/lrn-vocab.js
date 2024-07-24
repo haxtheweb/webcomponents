@@ -100,7 +100,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
       e.stopImmediatePropagation();
       return false;
     }
-    let c = document.createElement("div");
+    let c = globalThis.document.createElement("div");
     for (var id in this.children) {
       if (this.children[id].cloneNode) {
         c.appendChild(this.children[id].cloneNode(true));

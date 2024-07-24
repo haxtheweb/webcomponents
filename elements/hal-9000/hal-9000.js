@@ -105,7 +105,7 @@ class Hal9000 extends LitElement {
     this.debug = false;
     this.pitch = 0.9;
     this.rate = 0.9;
-    this.language = navigator.language;
+    this.language = globalThis.navigator.language;
     // ensure singleton is set
     globalThis.Hal9000 = globalThis.Hal9000 || {};
     globalThis.Hal9000.instance = this;
@@ -340,8 +340,8 @@ globalThis.Hal9000 = globalThis.Hal9000 || {};
 
 globalThis.Hal9000.requestAvailability = () => {
   if (!globalThis.Hal9000.instance) {
-    const hal = document.createElement("hal-9000");
-    document.body.appendChild(hal);
+    const hal = globalThis.document.createElement("hal-9000");
+    globalThis.document.body.appendChild(hal);
     globalThis.Hal9000.instance = hal;
   }
   return globalThis.Hal9000.instance;

@@ -510,7 +510,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
       // because the CMS controls certain internal connectors
       ["polaris-cta", "polaris-mark", "polaris-story-card", "polaris-tile"].map(
         (name) => {
-          let el = document.createElement(name);
+          let el = globalThis.document.createElement(name);
           store.haxAutoloader.appendChild(el);
         },
       );
@@ -564,14 +564,14 @@ class PolarisTheme extends HAXCMSOperationButtons(
       const badDevice = toJS(store.badDevice);
       // good device, we can inject font we use
       if (badDevice === false) {
-        const link = document.createElement("link");
+        const link = globalThis.document.createElement("link");
         link.setAttribute(
           "href",
           "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap",
         );
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("fetchpriority", "low");
-        document.head.appendChild(link);
+        globalThis.document.head.appendChild(link);
       }
     });
 

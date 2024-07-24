@@ -815,7 +815,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     _renderButton(config) {
-      let button = document.createElement(config.type);
+      let button = globalThis.document.createElement(config.type);
       Object.keys(config).forEach((key) => (button[key] = config[key]));
       button.addEventListener("button-command", this._handleButton);
       return button;
@@ -832,7 +832,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         !!config.type && config.type === "simpletoolbar-button-group"
           ? config.type
           : "div";
-      let group = document.createElement(type);
+      let group = globalThis.document.createElement(type);
       group.setAttribute("class", "group");
       Object.keys(config).forEach((key) => (group[key] = config[key]));
       return group;

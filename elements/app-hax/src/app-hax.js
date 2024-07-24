@@ -66,7 +66,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       }
       // some things report the "type" of internet connection speed
       // for terrible connections lets save frustration
-      if (navigator.connection && globalThis.navigator.connection.effectiveType) {
+      if (
+        navigator.connection &&
+        globalThis.navigator.connection.effectiveType
+      ) {
         body += `Connection: ${navigator.connection.effectiveType}
 `;
       }

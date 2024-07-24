@@ -135,7 +135,7 @@ class ImgViewModal extends LitElement {
             this._getCssVar("--img-view-viewer-toggled-backgroundColor") ||
             "#eee",
         },
-        img = document.createElement("img-view-viewer"),
+        img = globalThis.document.createElement("img-view-viewer"),
         props = [
           ...Object.keys(ImgViewViewer.properties || {}),
           ...Object.keys(ImgPanZoom.properties || {}),

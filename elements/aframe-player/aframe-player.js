@@ -245,7 +245,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
   _aframeLoaded(el) {
     // ensure that this doesn't put full screen styles on the page!
     this.querySelector("#scene").removeFullScreenStyles();
-    this.__entity = document.createElement("a-entity");
+    this.__entity = globalThis.document.createElement("a-entity");
     this.__entity.setAttribute("gltf-model", "url(" + this.source + ")");
     this._positionChanged(this.position);
     this.querySelector("#scene").appendChild(this.__entity);

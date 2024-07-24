@@ -2074,11 +2074,13 @@ globalThis.GradeBook = globalThis.GradeBook || {};
 globalThis.GradeBook.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
   if (!globalThis.GradeBook.instance) {
-    if (document.querySelector("grade-book")) {
-      globalThis.GradeBook.instance = document.querySelector("grade-book");
+    if (globalThis.document.querySelector("grade-book")) {
+      globalThis.GradeBook.instance =
+        globalThis.document.querySelector("grade-book");
     } else {
-      globalThis.GradeBook.instance = document.createElement("grade-book");
-      document.body.appendChild(globalThis.GradeBook.instance);
+      globalThis.GradeBook.instance =
+        globalThis.document.createElement("grade-book");
+      globalThis.document.body.appendChild(globalThis.GradeBook.instance);
     }
   }
   return globalThis.GradeBook.instance;

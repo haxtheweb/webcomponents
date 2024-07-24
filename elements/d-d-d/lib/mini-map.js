@@ -225,7 +225,9 @@ export class MiniMap extends DDD {
         .setAttribute("url", url);
     } else {
       globalThis.document.querySelector("mini-map").nodeList.push(id);
-      globalThis.document.querySelector("mini-map").addNode(id, type, name, url);
+      globalThis.document
+        .querySelector("mini-map")
+        .addNode(id, type, name, url);
     }
     globalThis.document.querySelector("mini-map").closeModal();
   }

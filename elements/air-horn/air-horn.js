@@ -42,7 +42,7 @@ class AirHorn extends HTMLElement {
     super();
     // set tag for later use
     this.tag = AirHorn.tag;
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
 
     this.attachShadow({ mode: "open" });
 

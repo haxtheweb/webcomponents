@@ -552,7 +552,10 @@ class JsonOutlineSchema extends HTMLElement {
       appendTarget.appendChild(li);
       if (tree[i].children && tree[i].children.length > 0) {
         appendTarget.appendChild(
-          this.treeToNodes(tree[i].children, globalThis.document.createElement("ul")),
+          this.treeToNodes(
+            tree[i].children,
+            globalThis.document.createElement("ul"),
+          ),
         );
       }
     }

@@ -165,7 +165,7 @@ class LrndesignImagemap extends LitElement {
    * Convert from svg text to an array in the table function
    */
   _getSVGHandler(data) {
-    let loader = document.createElement("div");
+    let loader = globalThis.document.createElement("div");
     let hotspots = [];
     loader.innerHTML = data;
     let svg = loader.querySelector("svg");
@@ -184,7 +184,7 @@ class LrndesignImagemap extends LitElement {
         hotspot: svg.querySelector(`#${hotspot.hotspotId}`),
         label: hotspot.label,
         position: hotspot.position || "bottom",
-        details: document.createElement("div"),
+        details: globalThis.document.createElement("div"),
       };
       // Turning main svg interactive hotspots into buttons
       obj.hotspot.classList.add("hotspot");
@@ -220,7 +220,7 @@ class LrndesignImagemap extends LitElement {
     let node = svg.querySelector(nodeName);
     let query = this.shadowRoot.querySelector(`#${nodeId}`);
     if (!node) {
-      node = document.createElement(nodeName);
+      node = globalThis.document.createElement(nodeName);
       svg.prepend(node);
       if (query && query.innerHTML != "") {
         node.innerHTML == query.html;

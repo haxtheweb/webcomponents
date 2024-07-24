@@ -49,11 +49,11 @@ class I18NManager extends LitElement {
    */
   get documentLang() {
     return (
-      document.body.getAttribute("xml:lang") ||
-      document.body.getAttribute("lang") ||
-      document.documentElement.getAttribute("xml:lang") ||
-      document.documentElement.getAttribute("lang") ||
-      navigator.language ||
+      globalThis.document.body.getAttribute("xml:lang") ||
+      globalThis.document.body.getAttribute("lang") ||
+      globalThis.document.documentElement.getAttribute("xml:lang") ||
+      globalThis.document.documentElement.getAttribute("lang") ||
+      globalThis.navigator.language ||
       FALLBACK_LANG
     );
   }
@@ -62,10 +62,10 @@ class I18NManager extends LitElement {
    */
   get documentDir() {
     return (
-      document.body.getAttribute("xml:dir") ||
-      document.body.getAttribute("dir") ||
-      document.documentElement.getAttribute("xml:dir") ||
-      document.documentElement.getAttribute("dir") ||
+      globalThis.document.body.getAttribute("xml:dir") ||
+      globalThis.document.body.getAttribute("dir") ||
+      globalThis.document.documentElement.getAttribute("xml:dir") ||
+      globalThis.document.documentElement.getAttribute("dir") ||
       FALLBACK_DIR
     );
   }

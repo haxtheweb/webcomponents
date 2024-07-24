@@ -57,7 +57,7 @@ export const MtzFileDownloadBehaviors = function (SuperClass) {
         // Link elements have a download attribute which provides cross-platform
         // download behavior supporting all but IE 11. This creates new link and then
         // clicks it to initiate download.
-        const link = document.createElement("a");
+        const link = globalThis.document.createElement("a");
         link.href = (globalThis.URL || globalThis.webkitURL).createObjectURL(
           blob,
         );

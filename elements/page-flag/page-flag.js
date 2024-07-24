@@ -173,7 +173,7 @@ class PageFlag extends SimpleColors {
     }
   }
   handleReply(e) {
-    const comment = document.createElement("page-flag-comment");
+    const comment = globalThis.document.createElement("page-flag-comment");
     comment.seed = pageFlagManager.activeUser;
     comment.timestamp = Date.now() / 1000;
     comment.canEdit = true;
@@ -247,7 +247,7 @@ class PageFlag extends SimpleColors {
       this.shadowRoot.querySelector(".arrow");
     // ensure we have content, if not let's add a boilerplate one to get writing
     if (!this.querySelector("page-flag-comment")) {
-      const comment = document.createElement("page-flag-comment");
+      const comment = globalThis.document.createElement("page-flag-comment");
       comment.seed = pageFlagManager.activeUser;
       comment.timestamp = Date.now() / 1000;
       comment.canEdit = true;
@@ -296,10 +296,10 @@ customElements.define(pageFlagManagerEl.tag, pageFlagManagerEl);
 globalThis.pageFlagManager = globalThis.pageFlagManager || {};
 globalThis.pageFlagManager.requestAvailability = () => {
   if (!globalThis.pageFlagManager.instance) {
-    globalThis.pageFlagManager.instance = document.createElement(
+    globalThis.pageFlagManager.instance = globalThis.document.createElement(
       pageFlagManagerEl.tag,
     );
-    document.body.appendChild(globalThis.pageFlagManager.instance);
+    globalThis.document.body.appendChild(globalThis.pageFlagManager.instance);
   }
   return globalThis.pageFlagManager.instance;
 };

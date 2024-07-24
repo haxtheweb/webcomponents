@@ -46,20 +46,22 @@ class LazyImportDiscover extends HTMLElement {
     if (this.base == null) {
       this.base = "../node_modules";
     }
-    document.querySelectorAll(":not(:defined)").forEach((el, index) => {
-      let t = el.tagName.toLowerCase();
-      let path = `@haxtheweb/${t}/${t}.js`;
-      if (el.getAttribute("data-wc-def") != null) {
-        path = el.getAttribute("data-wc-def");
-      }
-      if (t !== "style") {
-        dyn += `import('${this.base}/${path}');\n`;
-      }
-    });
-    let s = document.createElement("script");
+    globalThis.document
+      .querySelectorAll(":not(:defined)")
+      .forEach((el, index) => {
+        let t = el.tagName.toLowerCase();
+        let path = `@haxtheweb/${t}/${t}.js`;
+        if (el.getAttribute("data-wc-def") != null) {
+          path = el.getAttribute("data-wc-def");
+        }
+        if (t !== "style") {
+          dyn += `import('${this.base}/${path}');\n`;
+        }
+      });
+    let s = globalThis.document.createElement("script");
     s.type = "module";
     s.innerText = dyn;
-    document.head.appendChild(s);
+    globalThis.document.head.appendChild(s);
   }
 
   static get observedAttributes() {
@@ -76,9 +78,9 @@ export { LazyImportDiscover };
 
 // self append. this is beyond trippy but the window loading will actually self invoke
 globalThis.addEventListener("DOMContentLoaded", (event) => {
-  var el = document.createElement(LazyImportDiscover.tag);
+  var el = globalThis.document.createElement(LazyImportDiscover.tag);
   if (globalThis.LazyImportBase) {
     el.setAttribute("base", globalThis.LazyImportBase);
   }
-  document.body.appendChild(el);
+  globalThis.document.body.appendChild(el);
 });

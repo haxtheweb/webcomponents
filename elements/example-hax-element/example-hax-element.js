@@ -125,7 +125,7 @@ class ExampleHaxElement extends HTMLElement {
     }
     // optional queue for future use
     this._queue = [];
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
 
     this.attachShadow({ mode: "open" });
 

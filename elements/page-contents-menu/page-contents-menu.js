@@ -473,7 +473,9 @@ class PageContentsMenu extends DDD {
         }
         let reference = {
           title: title,
-          link: item.id ? document.location.pathname + "#" + item.id : null,
+          link: item.id
+            ? globalThis.document.location.pathname + "#" + item.id
+            : null,
           id: item.id,
           indent: parseInt(item.tagName.toLowerCase().replace("h", ""))
             ? parseInt(item.tagName.toLowerCase().replace("h", ""))
@@ -509,7 +511,8 @@ class PageContentsMenu extends DDD {
       let activeFound = false;
       // viewport height
       let browserViewport =
-        globalThis.innerHeight || document.documentElement.clientHeight;
+        globalThis.innerHeight ||
+        globalThis.document.documentElement.clientHeight;
       this.items.forEach((value, i) => {
         if (
           this.contentContainer &&

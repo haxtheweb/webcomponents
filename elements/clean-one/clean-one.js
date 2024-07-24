@@ -772,7 +772,7 @@ class CleanOne extends PrintBranchMixin(
       super.firstUpdated(changedProperties);
     }
     // only way to hit this
-    document.body.style.overflow = "hidden";
+    globalThis.document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector("main");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =

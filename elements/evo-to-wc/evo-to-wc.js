@@ -61,10 +61,10 @@ export class EvoToWc {
   /**
    * Conversion function
    *
-   * @param {object} [target=document.body] node to convert
+   * @param {object} [target=globalThis.document.body] node to convert
    * @memberof EvoToWc
    */
-  convert(target = document.body) {
+  convert(target = globalThis.document.body) {
     this.convertIfNeeded(target, [
       { selector: ".coursework", function: "convertIcons" },
       { selector: ".graphme", function: "convertGraphmes" },
@@ -114,14 +114,14 @@ export class EvoToWc {
     import("@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js");
 
     accordions.forEach((accordion) => {
-      let group = document.createElement("a11y-collapse-group"),
+      let group = globalThis.document.createElement("a11y-collapse-group"),
         children = [...accordion.childNodes],
         collapse;
       group.radio = true;
       group.headingButton = true;
       children.forEach((child) => {
         if (this.isHeading(child)) {
-          collapse = document.createElement("a11y-collapse");
+          collapse = globalThis.document.createElement("a11y-collapse");
           child.slot = "heading";
           collapse.headingButton = true;
           collapse.append(child);
@@ -160,7 +160,7 @@ export class EvoToWc {
    */
   convertCarousels(carousels = []) {
     carousels.forEach((group) => {
-      let gallery = document.createElement("lrndesign-gallery"),
+      let gallery = globalThis.document.createElement("lrndesign-gallery"),
         items = group.querySelectorAll("figure");
       gallery.layout = "carousel";
       gallery.accentColor = "light-blue";
@@ -191,7 +191,7 @@ export class EvoToWc {
    */
   convertColorboxes(cards = []) {
     cards.forEach((box) => {
-      let card = document.createElement("accent-card");
+      let card = globalThis.document.createElement("accent-card");
       card.accentColor = "light-blue";
       this.replace(box, card, this.slotAccentCard);
     });
@@ -204,13 +204,13 @@ export class EvoToWc {
    */
   convertExpandables(expandables = []) {
     expandables.forEach((expandable) => {
-      let collapse = document.createElement("a11y-collapse"),
+      let collapse = globalThis.document.createElement("a11y-collapse"),
         collapseable = expandable.querySelector(".collapseable"),
         content = collapseable
           ? [...expandable.querySelector(".collapseable").childNodes]
           : [],
         expandcollapse = expandable.querySelector(".expandcollapse"),
-        heading = document.createElement("span"),
+        heading = globalThis.document.createElement("span"),
         nodes = expandcollapse ? [...expandcollapse.childNodes] : [];
       nodes.forEach((node) => heading.append(node));
       expandcollapse.parentNode.insertBefore(heading, expandcollapse);
@@ -236,7 +236,7 @@ export class EvoToWc {
 
     figures.forEach((figure) => {
       let figcaption = figure.querySelector("figcaption"),
-        a11y = document.createElement("a11y-figure"),
+        a11y = globalThis.document.createElement("a11y-figure"),
         image = figure.querySelector("img"),
         nodes,
         details,
@@ -244,8 +244,8 @@ export class EvoToWc {
       if (figcaption && figure.classList.contains("image-info")) {
         nodes = [...figcaption.childNodes];
         this.setSize(image, a11y);
-        details = document.createElement("details");
-        summary = document.createElement("summary");
+        details = globalThis.document.createElement("details");
+        summary = globalThis.document.createElement("summary");
         summary.innerHTML = "info";
         details.append(summary);
         nodes.forEach((node) => details.append(node));
@@ -266,7 +266,7 @@ export class EvoToWc {
     import("@haxtheweb/a11y-gif-player/a11y-gif-player.js");
 
     gifs.forEach((image) => {
-      let player = document.createElement("a11y-gif-player"),
+      let player = globalThis.document.createElement("a11y-gif-player"),
         src = image.src || "";
       this.setSize(image, player);
       this.setSize(image, player, "height");
@@ -324,7 +324,7 @@ export class EvoToWc {
     Object.keys(this.courseicons).forEach((key) => {
       target.querySelectorAll(`.coursework.${key}`).forEach((evoicon) => {
         let child = evoicon.firstElementChild,
-          icon = document.createElement("simple-icon-lite");
+          icon = globalThis.document.createElement("simple-icon-lite");
         icon.icon = this.courseicons[key];
         icon.style.marginRight = "0.25em";
         child.insertBefore(icon, child.firstChild);
@@ -341,7 +341,7 @@ export class EvoToWc {
    */
   convertImageLists(lists = []) {
     lists.forEach((list) => {
-      let gallery = document.createElement("lrndesign-gallery"),
+      let gallery = globalThis.document.createElement("lrndesign-gallery"),
         items = list.querySelectorAll("li");
       gallery.layout = "grid";
       gallery.accentColor = "light-blue";
@@ -359,7 +359,7 @@ export class EvoToWc {
    */
   convertNewcolorboxes(cards = []) {
     cards.forEach((box) => {
-      let card = document.createElement("accent-card");
+      let card = globalThis.document.createElement("accent-card");
       card.noBorder = true;
       card.flat = true;
       this.replace(box, card, this.slotAccentCard);
@@ -374,7 +374,7 @@ export class EvoToWc {
    */
   convertPulltexts(cards = []) {
     cards.forEach((box) => {
-      let card = document.createElement("accent-card");
+      let card = globalThis.document.createElement("accent-card");
       card.accentColor = "light-blue";
       card.horizontal = true;
       this.replace(box, card, this.slotAccentCard);
@@ -388,7 +388,7 @@ export class EvoToWc {
    */
   convertSpeechbubbles(cards = []) {
     cards.forEach((box) => {
-      let card = document.createElement("accent-card"),
+      let card = globalThis.document.createElement("accent-card"),
         afterBox = box.nextElementSibling;
       card.accentColor = "light-blue";
       card.horizontal = true;
@@ -413,7 +413,7 @@ export class EvoToWc {
     import("@haxtheweb/a11y-tabs/a11y-tabs.js");
 
     tabbed.forEach((tabs) => {
-      let a11ytabs = document.createElement("a11y-tabs");
+      let a11ytabs = globalThis.document.createElement("a11y-tabs");
       this.replace(tabs, a11ytabs, this.slotTabs.bind(this));
     });
   }
@@ -428,7 +428,7 @@ export class EvoToWc {
     import("@haxtheweb/editable-table/editable-table.js");
 
     tablestyles.forEach((table) => {
-      let editable = document.createElement("editable-table");
+      let editable = globalThis.document.createElement("editable-table");
       editable.bordered =
         table.classList.contains("dottedrows") ||
         table.classList.contains("dottedcols") ||
@@ -453,7 +453,7 @@ export class EvoToWc {
    */
   convertThumbnails(images) {
     images.forEach((image) => {
-      let gallery = document.createElement("lrndesign-gallery"),
+      let gallery = globalThis.document.createElement("lrndesign-gallery"),
         src = image.src,
         thumb = src.match("_thumb.") ? src : undefined,
         large = thumb ? thumb.replace(/_thumb\./, "_full.") : undefined;
@@ -495,7 +495,7 @@ export class EvoToWc {
    */
   convertYellownotes(cards) {
     cards.forEach((box) => {
-      let card = document.createElement("accent-card");
+      let card = globalThis.document.createElement("accent-card");
       card.accentColor = "yellow";
       card.accentBackground = true;
       card.noBorder = true;
@@ -510,9 +510,9 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   insertChart(table, type = "bar") {
-    let newTable = document.createElement("table"),
+    let newTable = globalThis.document.createElement("table"),
       chart = table.classList.contains(`${type}chart`)
-        ? document.createElement(`lrndesign-${type}`)
+        ? globalThis.document.createElement(`lrndesign-${type}`)
         : undefined;
     if (chart) {
       chart.scale = "ct-octave";
@@ -584,7 +584,7 @@ export class EvoToWc {
         node.slot = "content";
       }
     } else {
-      let span = document.createElement("span");
+      let span = globalThis.document.createElement("span");
       span.append(node);
       span.slot = "content";
       node = span;
@@ -599,8 +599,8 @@ export class EvoToWc {
    * @memberof EvoToWc
    */
   slotGallery(item) {
-    let figure = document.createElement("figure"),
-      figcaption = document.createElement("figcaption"),
+    let figure = globalThis.document.createElement("figure"),
+      figcaption = globalThis.document.createElement("figcaption"),
       img =
         item.firstElementChild.querySelector("img") ||
         item.querySelector("img"),
@@ -614,7 +614,7 @@ export class EvoToWc {
       figure.append(img);
     }
     if (!heading) {
-      heading = document.createElement("h3");
+      heading = globalThis.document.createElement("h3");
       if (img) heading.innerHTML = img.alt;
     }
     figcaption.append(heading);
@@ -635,13 +635,13 @@ export class EvoToWc {
    */
   slotTabs(tab) {
     if (tab && tab.tagName) {
-      let a11ytab = document.createElement("a11y-tab");
+      let a11ytab = globalThis.document.createElement("a11y-tab");
       a11ytab.id = tab.id;
       if (tab.firstElementChild) {
         tab.firstElementChild.slot = "label";
         a11ytab.append(tab.firstElementChild);
       } else if (tab.firstChild) {
-        let span = document.createElement("span");
+        let span = globalThis.document.createElement("span");
         span.slot = "label";
         span.append(tab);
         a11ytab.append(span);

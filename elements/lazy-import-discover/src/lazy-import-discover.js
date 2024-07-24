@@ -46,16 +46,18 @@ class LazyImportDiscover extends HTMLElement {
     if (this.base == null) {
       this.base = "../node_modules";
     }
-    globalThis.document.querySelectorAll(":not(:defined)").forEach((el, index) => {
-      let t = el.tagName.toLowerCase();
-      let path = `@haxtheweb/${t}/${t}.js`;
-      if (el.getAttribute("data-wc-def") != null) {
-        path = el.getAttribute("data-wc-def");
-      }
-      if (t !== "style") {
-        dyn += `import('${this.base}/${path}');\n`;
-      }
-    });
+    globalThis.document
+      .querySelectorAll(":not(:defined)")
+      .forEach((el, index) => {
+        let t = el.tagName.toLowerCase();
+        let path = `@haxtheweb/${t}/${t}.js`;
+        if (el.getAttribute("data-wc-def") != null) {
+          path = el.getAttribute("data-wc-def");
+        }
+        if (t !== "style") {
+          dyn += `import('${this.base}/${path}');\n`;
+        }
+      });
     let s = globalThis.document.createElement("script");
     s.type = "module";
     s.innerText = dyn;

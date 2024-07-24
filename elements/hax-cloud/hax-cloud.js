@@ -28,13 +28,13 @@ class HaxCloud extends DDD {
     this.fileRoot = "";
     this.fileObjects = [];
     if (!globalThis.__haxLogoFontLoaded) {
-      let link = document.createElement("link");
+      let link = globalThis.document.createElement("link");
       link.setAttribute(
         "href",
         "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap",
       );
       link.setAttribute("rel", "stylesheet");
-      document.head.appendChild(link);
+      globalThis.document.head.appendChild(link);
       globalThis.__haxLogoFontLoaded = true;
     }
     globalThis.addEventListener(
@@ -173,7 +173,7 @@ class HaxCloud extends DDD {
   }
 
   async downloadHAXLatest() {
-    let a = document.createElement("a");
+    let a = globalThis.document.createElement("a");
     a.href =
       "https://github.com/elmsln/hax-single-site/archive/refs/heads/main.zip";
     a.download = "hax-single-site.zip";
@@ -191,7 +191,8 @@ class HaxCloud extends DDD {
         this.fileRoot = fileRecord.folder;
         console.log(manifest);
         if (manifest && manifest.items.length > 0) {
-          document.querySelector("haxcms-site-builder").manifest = manifest;
+          globalThis.document.querySelector("haxcms-site-builder").manifest =
+            manifest;
         }
       }
     });
@@ -228,11 +229,12 @@ class HaxCloud extends DDD {
     // inject the file object / directory root into the user file system backend handler
     // this way we can intercept failed page requests and redirect them to the local file system
     // and keep all logic inside the userfs handler and remove this element
-    document.querySelector("haxcms-backend-userfs").fileObjects =
+    globalThis.document.querySelector("haxcms-backend-userfs").fileObjects =
       this.fileObjects;
-    document.querySelector("haxcms-backend-userfs").fileRoot = this.fileRoot;
+    globalThis.document.querySelector("haxcms-backend-userfs").fileRoot =
+      this.fileRoot;
     // show the hidden site tag
-    document.querySelector("haxcms-site-builder").style.display = "";
+    globalThis.document.querySelector("haxcms-site-builder").style.display = "";
     // you may rest now my friend
     setTimeout(() => {
       this.remove();

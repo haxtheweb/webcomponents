@@ -1653,7 +1653,7 @@ const ChartistRenderSuper = function (SuperClass) {
         if (!thead && data.labels) {
           thead = data.labels;
         }
-        table = table || document.createElement("table");
+        table = table || globalThis.document.createElement("table");
         if (thead)
           html += `
            <thead><tr>

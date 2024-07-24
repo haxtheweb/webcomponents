@@ -40,7 +40,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
     this.hideTitle = false;
     const FALLBACK_LANG = "en";
     const language =
-    globalThis.document.body.getAttribute("xml:lang") ||
+      globalThis.document.body.getAttribute("xml:lang") ||
       globalThis.document.body.getAttribute("lang") ||
       globalThis.document.documentElement.getAttribute("xml:lang") ||
       globalThis.document.documentElement.getAttribute("lang") ||

@@ -345,7 +345,7 @@ class SimpleCta extends DDDPulseEffectSuper(
     this.disabled = false;
     this.saturate = null;
     // progressive enhancement support
-    if (this.querySelector("a")) {
+    if (this.querySelector && this.querySelector("a")) {
       this.link = this.querySelector("a").getAttribute("href");
       this.label = this.querySelector("a").innerText;
       this.innerHTML = null;

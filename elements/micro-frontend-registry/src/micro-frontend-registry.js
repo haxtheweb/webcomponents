@@ -270,10 +270,11 @@ globalThis.MicroFrontendRegistryConfig =
   globalThis.MicroFrontendRegistryConfig || {};
 globalThis.MicroFrontendRegistry.requestAvailability = () => {
   if (!globalThis.MicroFrontendRegistry.instance) {
-    globalThis.MicroFrontendRegistry.instance = globalThis.document.createElement(
-      MicroFrontendRegistryEl.tag,
+    globalThis.MicroFrontendRegistry.instance =
+      globalThis.document.createElement(MicroFrontendRegistryEl.tag);
+    globalThis.document.body.appendChild(
+      globalThis.MicroFrontendRegistry.instance,
     );
-    globalThis.document.body.appendChild(globalThis.MicroFrontendRegistry.instance);
   }
   return globalThis.MicroFrontendRegistry.instance;
 };

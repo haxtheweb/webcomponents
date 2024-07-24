@@ -13,9 +13,8 @@ globalThis.DynamicImportRegistry.requestAvailability = () => {
     globalThis.document &&
     globalThis.document.body
   ) {
-    globalThis.DynamicImportRegistry.instance = document.createElement(
-      "dynamic-import-registry",
-    );
+    globalThis.DynamicImportRegistry.instance =
+      globalThis.document.createElement("dynamic-import-registry");
     globalThis.document.body.appendChild(
       globalThis.DynamicImportRegistry.instance,
     );

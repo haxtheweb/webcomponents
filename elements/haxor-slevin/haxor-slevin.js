@@ -676,7 +676,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
     });
     autorun((reaction) => {
       this.activeTitle = toJS(store.activeTitle);
-      this.shareUrl = document.location.href;
+      this.shareUrl = globalThis.document.location.href;
       this.shareMsg = this.activeTitle + " " + this.shareUrl;
       this.__disposer.push(reaction);
     });

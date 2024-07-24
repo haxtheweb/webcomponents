@@ -561,7 +561,7 @@ class SuperDaemon extends SimpleColors {
       bubbles: true,
       cancelable: true,
     });
-    document.dispatchEvent(event);
+    globalThis.document.dispatchEvent(event);
     this.windowControllers2.abort();
     if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
       this.shadowRoot
@@ -731,7 +731,7 @@ class SuperDaemon extends SimpleColors {
   focusout(e) {
     if (e) {
       let parent = e.relatedTarget;
-      while (parent !== document.body && parent !== null) {
+      while (parent !== globalThis.document.body && parent !== null) {
         if (parent === this.shadowRoot.querySelector("super-daemon-ui")) {
           return;
         }
@@ -949,7 +949,7 @@ class SuperDaemon extends SimpleColors {
       });
     };
     this.voiceCommands[`scroll (to) bottom`] = (response) => {
-      globalThis.scrollTo(0, document.body.scrollHeight);
+      globalThis.scrollTo(0, globalThis.document.body.scrollHeight);
     };
     this.voiceCommands[`scroll (to) top`] = (response) => {
       globalThis.scrollTo(0, 0);
@@ -1167,8 +1167,10 @@ globalThis.SuperDaemonManager = globalThis.SuperDaemonManager || {};
 globalThis.SuperDaemonManager.requestAvailability = () => {
   if (!globalThis.SuperDaemonManager.instance) {
     globalThis.SuperDaemonManager.instance =
-      document.createElement("super-daemon");
-    document.body.appendChild(globalThis.SuperDaemonManager.instance);
+      globalThis.document.createElement("super-daemon");
+    globalThis.document.body.appendChild(
+      globalThis.SuperDaemonManager.instance,
+    );
   }
   return globalThis.SuperDaemonManager.instance;
 };

@@ -98,7 +98,7 @@ class SimpleProgress extends HTMLElement {
   constructor() {
     super();
     // create a template element for processing shadowRoot
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
     // create a shadowRoot
     this.attachShadow({ mode: "open" });
     this.render();

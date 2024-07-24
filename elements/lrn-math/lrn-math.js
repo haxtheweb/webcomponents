@@ -8,7 +8,7 @@ let mathjaxHub,
   src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js";
 
 function getStyleNode() {
-  const styleNodes = document.querySelectorAll("style");
+  const styleNodes = globalThis.document.querySelectorAll("style");
   const sn = Array.prototype.filter.call(styleNodes, function (n) {
     return (
       n.sheet &&
@@ -25,15 +25,15 @@ function flush_typesets() {
   const jaxs = [],
     items = [];
   typesets.forEach(function (item) {
-    const script = document.createElement("script"),
-      div = document.createElement("div");
+    const script = globalThis.document.createElement("script"),
+      div = globalThis.document.createElement("div");
     script.type = item[1] ? "math/tex; mode=display" : "math/tex";
     script.text = item[0];
     div.style.position = "fixed";
     div.style.top = 0;
     div.style.left = "99999px";
     div.appendChild(script);
-    document.body.appendChild(div);
+    globalThis.document.body.appendChild(div);
     jaxs.push(script);
     items.push([div, item[2]]);
   });
@@ -47,7 +47,7 @@ function flush_typesets() {
       const result =
         div.firstElementChild.tagName === "SPAN" ? div.firstElementChild : null;
       item[1](result, styleNode);
-      document.body.removeChild(div);
+      globalThis.document.body.removeChild(div);
     });
     state = states.ready;
     flush_typesets();
@@ -76,7 +76,7 @@ function load_library() {
       });
     },
   };
-  var script = document.createElement("script");
+  var script = globalThis.document.createElement("script");
   script.type = "text/javascript";
   script.src = src;
   script.async = true;
@@ -85,7 +85,7 @@ function load_library() {
     state = states.error;
     typesets = [];
   };
-  document.head.appendChild(script);
+  globalThis.document.head.appendChild(script);
 }
 
 class LrnMathController extends HTMLElement {
@@ -124,10 +124,14 @@ let handler;
 function check_handler(el) {
   if (handler) return;
   handler =
-    document.querySelector(CONTROLLER_TAG_NAME) ||
-    document.createElement(CONTROLLER_TAG_NAME);
-  if (!document.contains(handler)) {
-    document.head.appendChild(handler);
+    globalThis.document.querySelector(CONTROLLER_TAG_NAME) ||
+    globalThis.document.createElement(CONTROLLER_TAG_NAME);
+  if (
+    !globalThis.document.contains(handler) &&
+    globalThis.document &&
+    globalThis.document.head
+  ) {
+    globalThis.document.head.appendChild(handler);
   }
   setTimeout(() => {
     el.refresh();
@@ -234,7 +238,7 @@ class LrnMath extends HTMLElement {
         if (newValue !== "" && newValue !== null) {
           clearTimeout(this._typingTimeout);
           this._typingTimeout = setTimeout(() => {
-            const container = document.createElement("span");
+            const container = globalThis.document.createElement("span");
             container.innerText = newValue;
             this.innerHTML = "";
             this.appendChild(container);
@@ -290,7 +294,7 @@ class LrnMath extends HTMLElement {
    */
   refresh() {
     let root = this;
-    let clone = document.createElement("lrn-math");
+    let clone = globalThis.document.createElement("lrn-math");
     root.parentNode.insertBefore(clone, root);
     clone.innerHTML = this.innerHTML;
     this.remove();

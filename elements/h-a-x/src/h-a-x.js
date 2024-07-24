@@ -232,9 +232,15 @@ class HAX extends HTMLElement {
     }
     store.elementAlign = this.elementAlign;
     globalThis.document.body.appendChild(tray);
-    globalThis.document.body.appendChild(globalThis.document.createElement("hax-app-picker"));
-    globalThis.document.body.appendChild(globalThis.document.createElement("hax-autoloader"));
-    globalThis.document.body.appendChild(globalThis.document.createElement("hax-cancel-dialog"));
+    globalThis.document.body.appendChild(
+      globalThis.document.createElement("hax-app-picker"),
+    );
+    globalThis.document.body.appendChild(
+      globalThis.document.createElement("hax-autoloader"),
+    );
+    globalThis.document.body.appendChild(
+      globalThis.document.createElement("hax-cancel-dialog"),
+    );
     return true;
   }
   disconnectedCallback() {
