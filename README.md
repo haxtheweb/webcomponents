@@ -1,5 +1,5 @@
 # webcomponents
-Monorepo of all elements built as part of the HAX ecosystem
+Monorepo of all web components built as part of the HAX ecosystem
 
 # HAX
 The authoring experience of HAX and the ability to make fast, static file backed websites rapidly.
