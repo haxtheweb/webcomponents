@@ -90,7 +90,7 @@ class ChatAgent extends DDD {
     // interface
     // TODO UserScaffold
     this.isFullView = false;
-    this.isInterfaceHidden = false; // TODO setting this to true (which should be the default) causes everything to break (error at line 567)
+    this.isInterfaceHidden = false; // TODO setting this to true (which should be the default) causes everything to break (error at line or around 567)
 
     // message
     this.merlinIndex = 0; // index of merlin messages
@@ -168,24 +168,24 @@ class ChatAgent extends DDD {
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
 
         :host {
-          display: block;
           container-type: normal;
+          display: block;
         }
 
         .chat-agent-wrapper {
+          bottom: var(--ddd-spacing-2);
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-2);
           position: fixed;
-          bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          width: 35%;
+          width: 35%;        
         }
 
         :host([is-full-view]) .chat-agent-wrapper {
           bottom: var(--ddd-spacing-0);
-          right: var(--ddd-spacing-0);
           gap: var(--ddd-spacing-0);
+          right: var(--ddd-spacing-0);
           width: 25%;
           @media only screen and (min-height: 1000px) {
             width: 35%;
@@ -194,8 +194,8 @@ class ChatAgent extends DDD {
 
         :host([is-full-view]:host([is-interface-hidden])) .chat-agent-wrapper {
           bottom: var(--ddd-spacing-2);
-          right: var(--ddd-spacing-2);
           gap: var(--ddd-spacing-2);
+          right: var(--ddd-spacing-2);
         }
 
         .agent-interface-wrapper {
@@ -214,7 +214,6 @@ class ChatAgent extends DDD {
           }
         }
 
-        /* TODO adjust all media queries for HAX environment, not demo environment */
         @media only screen and (max-width: 425px) {
           .chat-agent-wrapper {
             width: 90%;
@@ -261,7 +260,7 @@ class ChatAgent extends DDD {
       "merlin",
       "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
     );
-
+    
     this.currentSuggestions = [
       {
         suggestion: "Who are you?",
@@ -290,7 +289,7 @@ class ChatAgent extends DDD {
           suggestion.removeAttribute("chosen-prompt");
         }
       });
-  }
+    }
 
   /**
    * @description writes message to chatLog
@@ -298,11 +297,7 @@ class ChatAgent extends DDD {
    * @param {string} message - the written or suggested prompt
    */
   handleMessage(author, message) {
-    this.developerModeEnabled
-      ? console.info(
-          `HAX-DEV-MODE: Writing message "${message}" by ${author} to chatLog.`,
-        )
-      : null;
+    this.devStatement(`Writing message "${message}" by ${author} to chatLog.`, `info`);
 
     let authorIndex;
 
@@ -341,11 +336,7 @@ class ChatAgent extends DDD {
    * @param {string} prompt - the written or suggested prompt
    */
   handleInteraction(prompt) {
-    this.developerModeEnabled
-      ? console.info(
-          `HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`,
-        )
-      : null;
+    this.devStatement(`Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`, `info`)
     this.currentSuggestions = [];
 
     switch (prompt) {
@@ -452,7 +443,6 @@ class ChatAgent extends DDD {
           .then((d) => {
             if (d.status == 200) {
               this.answers = [d.data.answers];
-              this.developerModeEnabled ? console.info(this.answers) : null;
               this.question = d.data.question;
               this.currentSuggestions = []; // TODO add support for AI based suggestions
             }
@@ -486,16 +476,14 @@ class ChatAgent extends DDD {
    * @param {string} fileType - the file type to download
    */
   handleDownload(fileType) {
-    this.developerModeEnabled
-      ? console.info(`HAX-DEV-MODE: Downloading chatlog as ${fileType}.`)
-      : null;
+    this.devStatement(`Downloading chatlog as ${fileType}.`, 'info');
 
     if (this.chatLog.length !== 0) {
       const LOG = JSON.stringify(this.chatLog, undefined, 2);
       let date = new Date();
       const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, "-")}.${fileType}`;
 
-      let download = globalThis.document.createElement("a");
+      let download = document.createElement("a");
       download.setAttribute(
         "href",
         "data:text/plain;charset=utf-8," + encodeURIComponent(LOG),
@@ -503,6 +491,28 @@ class ChatAgent extends DDD {
       download.setAttribute("download", FILE_NAME);
       download.click();
       download.remove();
+    }
+  }
+
+  devStatement(statement, type) {
+    if (this.developerModeEnabled) {
+      switch (type) {
+        case "log":
+          console.log(`CHAT-AGENT-DEV-MODE: ${statement}`);
+          break;
+        case "info":
+          console.info(`CHAT-AGENT-DEV-MODE: ${statement}`);
+          break;
+        case "warn":
+          console.warn(`CHAT-AGENT-DEV-MODE: ${statement}`);
+          break;
+        case "error":
+          console.error(`CHAT-AGENT-DEV-MODE: ${statement}`);
+          break;
+
+        default:
+          console.error("No devStatement type specified");
+      }
     }
   }
 
@@ -561,9 +571,8 @@ globalThis.ChatAgentModal = globalThis.ChatAgentModal || {};
 // is rendered through the same modal
 globalThis.ChatAgentModal.requestAvailability = () => {
   if (!globalThis.ChatAgentModal.instance) {
-    globalThis.ChatAgentModal.instance =
-      globalThis.document.createElement("chat-agent");
-    globalThis.document.body.appendChild(globalThis.ChatAgentModal.instance);
+    globalThis.ChatAgentModal.instance = document.createElement("chat-agent");
+    document.body.appendChild(globalThis.ChatAgentModal.instance);
   }
   return globalThis.ChatAgentModal.instance;
 };
