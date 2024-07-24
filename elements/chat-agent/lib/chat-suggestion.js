@@ -5,18 +5,17 @@
 
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 import { html, css } from "lit";
 
 class ChatSuggestion extends DDD {
-  
   static get tag() {
     return "chat-suggestion";
   }
 
   constructor() {
     super();
-    
+
     this.chosenPrompt = false;
     this.disabled = false;
     this.promptType = "";
@@ -29,7 +28,7 @@ class ChatSuggestion extends DDD {
     autorun(() => {
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
-    })
+    });
   }
 
   // TODO slim down the suggestions
@@ -40,32 +39,31 @@ class ChatSuggestion extends DDD {
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
 
         :host {
-          container-type: inline-size;
           display: block;
+          container-type: inline-size;
         }
 
-        /* TODO fix border color */
         .chat-suggestion-wrapper {
-          align-items: center;
-          border: var(--ddd-border-sm);
-          background-color: var(--ddd-theme-default-successLight);
-          border-color: var(--ddd-theme-default-potentialMidnight);
-          border-radius: var(--ddd-radius-xl);
-          box-shadow: var(--ddd-boxShadow-xl);
-          cursor: pointer;
           display: flex;
           flex-direction: row;
           justify-content: center;
-          opacity: 1.0;
+          align-items: center;
+          background-color: var(--ddd-theme-default-successLight);
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-xl);
+          border-color: var(--ddd-theme-default-potentialMidnight);
+          opacity: 1;
+          cursor: pointer;
+          box-shadow: var(--ddd-boxShadow-xl);
         }
 
         .suggestion-icon {
-          align-items: center;
-          border-right-style: solid;
-          border-right: var(--ddd-border-md);
-          display: flex;
-          justify-content: center;
           width: 20%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-right: var(--ddd-border-md);
+          border-right-style: solid;
         }
 
         .circle-wrapper {
@@ -80,36 +78,32 @@ class ChatSuggestion extends DDD {
         }
 
         .suggestion-text {
-          align-items: center;
-          display: flex;
-          justify-content: center;
           width: 80%;
-
-          /* Prevent text highlighting in button */
-          -moz-user-select: none;
-          -ms-user-select: none;
-          -webkit-user-select: none;
-          user-select: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         :host([disabled]) .chat-suggestion-wrapper {
           background-color: var(--ddd-theme-default-discoveryCoral);
-          cursor: default;
           opacity: 0.6;
+          cursor: default;
         }
 
         :host([chosen-prompt]) .chat-suggestion-wrapper {
           background-color: var(--ddd-theme-default-futureLime);
         }
 
-        .chat-suggestion-wrapper:hover, .chat-suggestion-wrapper:focus {
+        .chat-suggestion-wrapper:hover,
+        .chat-suggestion-wrapper:focus {
           background-color: var(--ddd-theme-default-futureLime);
         }
 
-        .chat-suggestion-wrapper:hover p, .chat-suggestion-wrapper:focus p {
+        .chat-suggestion-wrapper:hover p,
+        .chat-suggestion-wrapper:focus p {
           text-decoration: underline;
         }
-        
+
         :host([disabled]) p {
           text-decoration: none;
         }
@@ -118,8 +112,8 @@ class ChatSuggestion extends DDD {
           color: var(--ddd-theme-default-potentialMidnight);
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
-          text-align: center;
           width: 80%;
+          text-align: center;
         }
 
         @container (max-width: 270px) and (min-width: 216px) {
@@ -134,23 +128,27 @@ class ChatSuggestion extends DDD {
             display: none;
           }
         }
-      `
+      `,
     ];
   }
 
   // TODO fix corner clicking issue
   render() {
     return html`
-      <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0" aria-label='Send suggestion "${this.suggestion}" to Merlin'>
+      <div
+        class="chat-suggestion-wrapper"
+        @click=${this.handleSuggestion}
+        @keypress=${this.handleSuggestion}
+        tabindex="0"
+        aria-label='Send suggestion "${this.suggestion}" to Merlin'
+      >
         <div class="suggestion-icon">
           <div class="circle-wrapper">
             <simple-icon-lite></simple-icon-lite>
-          </div>  
+          </div>
         </div>
         <div class="suggestion-text">
-          <p class="chat-suggestion">
-            ${this.suggestion}
-          </p>  
+          <p class="chat-suggestion">${this.suggestion}</p>
         </div>
       </div>
     `;
@@ -158,14 +156,26 @@ class ChatSuggestion extends DDD {
 
   /**
    * @description Event handler for the suggestion button
-  */
- handleSuggestion() {
-   if (!this.disabled) {
-     ChatAgentModalStore.devStatement(`Suggestion button pressed. Suggested prompt to send to Merlin: ${this.suggestion}`, 'info');
-     
-     ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, this.suggestion);
+   */
+  handleSuggestion() {
+    if (!this.disabled) {
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info(
+            "HAX-DEV-MODE: Suggestion button pressed. Suggested prompt to send to Merlin: " +
+              this.suggestion,
+          )
+        : null;
+
+      ChatAgentModalStore.handleMessage(
+        ChatAgentModalStore.userName,
+        this.suggestion,
+      );
     } else {
-      ChatAgentModalStore.devStatement('Suggestion buttons disabled, ignoring request', 'warn');
+      ChatAgentModalStore.developerModeEnabled
+        ? console.info(
+            "HAX-DEV-MODE: Suggestion buttons disabled, ignoring request",
+          )
+        : null;
     }
   }
 
@@ -178,10 +188,14 @@ class ChatSuggestion extends DDD {
     switch (this.promptType) {
       case "suggestion":
         simpleIcon.setAttribute("icon", "question-answer");
-        simpleIcon.style.color = "var(--data-theme-primary, var(--ddd-primary-13))";
+        simpleIcon.style.color =
+          "var(--data-theme-primary, var(--ddd-primary-13))";
         break;
       case "network":
-        simpleIcon.setAttribute("icon", "device:signal-cellular-connected-no-internet-0-bar");
+        simpleIcon.setAttribute(
+          "icon",
+          "device:signal-cellular-connected-no-internet-0-bar",
+        );
         simpleIcon.style.color = "var(--ddd-theme-default-coalyGray)";
         break;
       case "help":
@@ -190,7 +204,8 @@ class ChatSuggestion extends DDD {
         break;
       case "hax":
         simpleIcon.setAttribute("icon", "lrn:network");
-        simpleIcon.style.color = "var(--data-theme-primary, var(--ddd-primary-13))";
+        simpleIcon.style.color =
+          "var(--data-theme-primary, var(--ddd-primary-13))";
         break;
       default:
         simpleIcon.setAttribute("icon", "lrn:info");
@@ -198,14 +213,16 @@ class ChatSuggestion extends DDD {
         break;
     }
   }
-  
+
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
 
     if (this.disabled) {
-      this.shadowRoot.querySelector(".chat-suggestion-wrapper").removeAttribute("tabindex");
+      this.shadowRoot
+        .querySelector(".chat-suggestion-wrapper")
+        .removeAttribute("tabindex");
     }
   }
 
@@ -217,9 +234,9 @@ class ChatSuggestion extends DDD {
         attribute: "chosen-prompt",
       },
       disabled: { type: Boolean },
-      promptType: { 
-        type: String, 
-        attribute: "prompt-type" 
+      promptType: {
+        type: String,
+        attribute: "prompt-type",
       },
       suggestion: { type: String },
     };
