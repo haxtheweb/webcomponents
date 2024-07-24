@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>ChatAgent: chat-agent Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>
+    window.process = window.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
+    window.MicroFrontendRegistryConfig = window.MicroFrontendRegistryConfig || {};
+    window.MicroFrontendRegistryConfig.base = "https://open-apis.hax.cloud";
+    </script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../chat-agent.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      body {
+        background-color: rgb(203, 196, 196);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="vertical-section-container centered">
+      <h3>Basic chat-agent demo</h3>
+      <demo-snippet>
+        <template>
+          
+        </template>
+      </demo-snippet>
+    </div> -->
+    <!-- <div style="display: inline-flex; gap: 8px;">
+      <p style="color: black;">Disable Developer Mode?</p>
+      <input type="checkbox" id="disable-dev-mode" onchange="toggleDevMode()" style="width: 24px;"> 
+      <script>
+        function toggleDevMode() {
+          const devModeCheckBox = document.querySelector('#disable-dev-mode');
+          const chatAgent = document.querySelector('chat-agent');
+          devModeCheckBox.checked ? chatAgent.removeAttribute('developer-mode') : chatAgent.setAttribute('developer-mode', '');
+        }
+      </script>
+    </div> -->
+    <!-- <chat-agent placeholder="Enter your prompt here...">
+      <span slot="label">Merlin-AI</span>
+    </chat-agent> -->
+  </body>
+</html>
