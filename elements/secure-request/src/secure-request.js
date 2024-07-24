@@ -41,11 +41,11 @@ export const SecureRequestXhr = function (SuperClass) {
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
         expires = "; expires=" + date.toUTCString();
       }
-      document.cookie = name + "=" + value + expires + "; path=" + path;
+      globalThis.document.cookie = name + "=" + value + expires + "; path=" + path;
     }
     _readCookie(name) {
       var nameEQ = name + "=";
-      var ca = document.cookie.split(";");
+      var ca = globalThis.document.cookie.split(";");
       for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == " ") c = c.substring(1, c.length);
@@ -58,8 +58,8 @@ export const SecureRequestXhr = function (SuperClass) {
     }
   };
 };
-window.SecureRequest = window.SecureRequest || {};
-window.SecureRequest.xhr = {
+globalThis.SecureRequest = globalThis.SecureRequest || {};
+globalThis.SecureRequest.xhr = {
   // Call this function in your root component.
   setCookies(endPoint, csrfToken) {
     this._eraseCookie("securerequest-endpoint");
@@ -89,11 +89,11 @@ window.SecureRequest.xhr = {
       date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
       expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + value + expires + "; path=" + path;
+    globalThis.document.cookie = name + "=" + value + expires + "; path=" + path;
   },
   _readCookie(name) {
     var nameEQ = name + "=";
-    var ca = document.cookie.split(";");
+    var ca = globalThis.document.cookie.split(";");
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
       while (c.charAt(0) == " ") c = c.substring(1, c.length);

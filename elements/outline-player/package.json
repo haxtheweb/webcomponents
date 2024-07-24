@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/outline-player.css",
-      "scss": "src/outline-player.scss",
+      "css": "src/outline-player.css",
       "html": "src/outline-player.html",
       "js": "src/outline-player.js",
       "properties": "src/outline-player-properties.json",

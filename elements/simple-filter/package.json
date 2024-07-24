@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-filter.css",
-      "scss": "src/simple-filter.scss",
+      "css": "src/simple-filter.css",
       "html": "src/simple-filter.html",
       "js": "src/simple-filter.js",
       "properties": "src/simple-filter-properties.json",

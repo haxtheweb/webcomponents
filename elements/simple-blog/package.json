@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-blog.css",
-      "scss": "src/simple-blog.scss",
+      "css": "src/simple-blog.css",
       "html": "src/simple-blog.html",
       "js": "src/simple-blog.js",
       "properties": "src/simple-blog-properties.json",

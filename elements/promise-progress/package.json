@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/promise-progress.css",
-      "scss": "src/promise-progress.scss",
+      "css": "src/promise-progress.css",
       "html": "src/promise-progress.html",
       "js": "src/promise-progress.js",
       "properties": "src/promise-progress-properties.json",

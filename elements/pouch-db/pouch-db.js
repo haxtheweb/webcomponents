@@ -3,20 +3,20 @@
  * @license Apache-2.0, see License.md for full text.
  */
 // register globally so we can make sure there is only one
-window.PouchDb = window.PouchDb || {};
+globalThis.PouchDb = globalThis.PouchDb || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same pouch-db element, making it a singleton.
-window.PouchDb.requestAvailability = () => {
+globalThis.PouchDb.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.PouchDb.instance) {
-    window.PouchDb.instance = document.createElement("pouch-db");
-    document.body.appendChild(window.PouchDb.instance);
+  if (!globalThis.PouchDb.instance) {
+    globalThis.PouchDb.instance = document.createElement("pouch-db");
+    document.body.appendChild(globalThis.PouchDb.instance);
   }
-  return window.PouchDb.instance;
+  return globalThis.PouchDb.instance;
 };
 
-export const PouchDBElement = window.PouchDb.requestAvailability();
+export const PouchDBElement = globalThis.PouchDb.requestAvailability();
 
 /**
  * `pouch-db`
@@ -45,13 +45,13 @@ class PouchDb extends HTMLElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    window.addEventListener(
+    globalThis.addEventListener(
       "user-engagement",
       this.userEngagmentFunction.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "pouch-db-get-data",
       this.getDataFunction.bind(this),
       { signal: this.windowControllers.signal },
@@ -243,7 +243,7 @@ class PouchDb extends HTMLElement {
                   //resultCompletion: eventData.resultCompletion    //FUTURE
                 };
 
-                window.dispatchEvent(
+                globalThis.dispatchEvent(
                   new CustomEvent("pouch-db-show-data", {
                     bubbles: true,
                     composed: true,

@@ -29,10 +29,10 @@ class ChatInterface extends DDD {
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
 
       // TODO will change, brute forcing for now
-      const tempSiteGrabber = document.querySelector("#site");
+      const tempSiteGrabber = globalThis.document.querySelector("#site");
 
       // TODO add something so this if statement is called when window size changes (event listener?)
-      if (window.innerHeight > 1000) {
+      if (globalThis.innerHeight > 1000) {
         this.isFullView && !this.isInterfaceHidden
           ? (tempSiteGrabber.style.width = "65%")
           : (tempSiteGrabber.style.width = "100%");

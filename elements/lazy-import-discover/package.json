@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/lazy-import-discover.css",
-      "scss": "src/lazy-import-discover.scss",
+      "css": "src/lazy-import-discover.css",
       "html": "src/lazy-import-discover.html",
       "js": "src/lazy-import-discover.js",
       "properties": "src/lazy-import-discover-properties.json",

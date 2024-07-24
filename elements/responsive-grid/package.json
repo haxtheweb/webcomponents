@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/responsive-grid.css",
-      "scss": "src/responsive-grid.scss",
+      "css": "src/responsive-grid.css",
       "html": "src/responsive-grid.html",
       "js": "src/responsive-grid.js",
       "properties": "src/responsive-grid-properties.json",

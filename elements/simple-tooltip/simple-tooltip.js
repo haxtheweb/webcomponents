@@ -303,11 +303,13 @@ class SimpleTooltip extends LitElement {
       exit: [{ name: "fade-out-animation", node: this }],
     };
     setTimeout(() => {
-      this.addEventListener(
-        "webkitAnimationEnd",
-        this._onAnimationEnd.bind(this),
-      );
-      this.addEventListener("mouseenter", this.hide.bind(this));
+      if (this.addEventListener) {
+        this.addEventListener(
+          "webkitAnimationEnd",
+          this._onAnimationEnd.bind(this),
+        );
+        this.addEventListener("mouseenter", this.hide.bind(this));
+      }
     }, 0);
   }
   /**
@@ -468,7 +470,10 @@ class SimpleTooltip extends LitElement {
     // TODO(noms): This should use IronFitBehavior if possible.
     if (this.fitToVisibleBounds) {
       // Clip the left/right side
-      if (parentRect.left + tooltipLeft + thisRect.width > window.innerWidth) {
+      if (
+        parentRect.left + tooltipLeft + thisRect.width >
+        globalThis.innerWidth
+      ) {
         this.style.right = "0px";
         this.style.left = "auto";
       } else {
@@ -476,7 +481,10 @@ class SimpleTooltip extends LitElement {
         this.style.right = "auto";
       }
       // Clip the top/bottom side.
-      if (parentRect.top + tooltipTop + thisRect.height > window.innerHeight) {
+      if (
+        parentRect.top + tooltipTop + thisRect.height >
+        globalThis.innerHeight
+      ) {
         this.style.bottom = parentRect.height - targetTop + offset + "px";
         this.style.top = "auto";
       } else {

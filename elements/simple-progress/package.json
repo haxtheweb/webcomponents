@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-progress.css",
-      "scss": "src/simple-progress.scss",
+      "css": "src/simple-progress.css",
       "html": "src/simple-progress.html",
       "js": "src/simple-progress.js",
       "properties": "src/simple-progress-properties.json",

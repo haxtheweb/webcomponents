@@ -45,7 +45,7 @@ export class PostCard extends LitElement {
     ).href;
     this.postMarkLocations = "insert - locations - here";
 
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           context: this,

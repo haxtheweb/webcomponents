@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/learn-two-theme.css",
-      "scss": "src/learn-two-theme.scss",
+      "css": "src/learn-two-theme.css",
       "html": "src/learn-two-theme.html",
       "js": "src/learn-two-theme.js",
       "properties": "src/learn-two-theme-properties.json",

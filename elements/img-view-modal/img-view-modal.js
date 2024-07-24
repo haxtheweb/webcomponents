@@ -81,7 +81,7 @@ class ImgViewModal extends LitElement {
   }
   constructor() {
     super();
-    this.modal = window.SimpleModal.requestAvailability();
+    this.modal = globalThis.SimpleModal.requestAvailability();
     this.addEventListener("click", this.modalOpen);
   }
 

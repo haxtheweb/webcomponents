@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/rich-text-editor.css",
-      "scss": "src/rich-text-editor.scss",
+      "css": "src/rich-text-editor.css",
       "html": "src/rich-text-editor.html",
       "js": "src/rich-text-editor.js",
       "properties": "src/rich-text-editor-properties.json",

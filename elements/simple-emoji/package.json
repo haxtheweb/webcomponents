@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-emoji.css",
-      "scss": "src/simple-emoji.scss",
+      "css": "src/simple-emoji.css",
       "html": "src/simple-emoji.html",
       "js": "src/simple-emoji.js",
       "properties": "src/simple-emoji-properties.json",

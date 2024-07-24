@@ -63,16 +63,16 @@ class PerformanceDetect extends HTMLElement {
     };
     if (navigator) {
       // if less than a gig we know its bad
-      if (navigator.deviceMemory && navigator.deviceMemory < 1) {
+      if (navigator.deviceMemory &&  globalThis.navigator.deviceMemory < 1) {
         details.lowMemory = true;
       }
       // even phones have multi-core processors so another sign
-      if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 2) {
+      if (navigator.hardwareConcurrency &&  globalThis.navigator.hardwareConcurrency < 2) {
         details.lowProcessor = true;
       }
       // some platforms support getting the battery status
       if (navigator.getBattery) {
-        navigator.getBattery().then(function (battery) {
+        globalThis.navigator.getBattery().then(function (battery) {
           // if we are not charging AND we have under 25% be kind
           if (!battery.charging && battery.level < 0.25) {
             details.lowBattery = true;
@@ -82,14 +82,14 @@ class PerformanceDetect extends HTMLElement {
       // some things report the "type" of internet connection speed
       // for terrible connections lets save frustration
       if (
-        navigator.connection &&
-        navigator.connection.effectiveType &&
+        globalThis.navigator.connection &&
+        globalThis.navigator.connection.effectiveType &&
         ["slow-2g", "2g", "3g"].includes(navigator.connection.effectiveType)
       ) {
         details.poorConnection = true;
       }
       // see if they said "hey, save me data"
-      if (navigator.connection && navigator.connection.saveData) {
+      if (navigator.connection && globalThis.navigator.connection.saveData) {
         details.dataSaver = true;
       }
     }

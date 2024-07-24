@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/micro-copy-heading.css",
-      "scss": "src/micro-copy-heading.scss",
+      "css": "src/micro-copy-heading.css",
       "html": "src/micro-copy-heading.html",
       "js": "src/micro-copy-heading.js",
       "properties": "src/micro-copy-heading-properties.json",

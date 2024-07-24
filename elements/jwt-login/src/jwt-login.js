@@ -180,23 +180,35 @@ class JwtLogin extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener(
+    globalThis.addEventListener(
       "jwt-login-refresh-token",
       this.requestRefreshToken.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    window.addEventListener("jwt-login-toggle", this.toggleLogin.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      "jwt-login-toggle",
+      this.toggleLogin.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
 
-    window.addEventListener("jwt-login-login", this.loginRequest.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      "jwt-login-login",
+      this.loginRequest.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
 
-    window.addEventListener("jwt-login-logout", this.logoutRequest.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      "jwt-login-logout",
+      this.logoutRequest.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
   }
   /**
    * HTMLElement
@@ -253,7 +265,7 @@ class JwtLogin extends LitElement {
             this.redirectUrl
           ) {
             setTimeout(() => {
-              window.location.href = this.redirectUrl;
+              globalThis.location.href = this.redirectUrl;
             }, 100);
           }
           // message so things know out login attempt failed
@@ -338,7 +350,7 @@ class JwtLogin extends LitElement {
       case "logout":
         if (this.__redirect && this.redirectUrl) {
           setTimeout(() => {
-            window.location.href = this.redirectUrl;
+            globalThis.location.href = this.redirectUrl;
           }, 100);
         }
         break;

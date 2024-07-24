@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/a11y-compare-image.css",
-      "scss": "src/a11y-compare-image.scss",
+      "css": "src/a11y-compare-image.css",
       "html": "src/a11y-compare-image.html",
       "js": "src/a11y-compare-image.js",
       "properties": "src/a11y-compare-image-properties.json",

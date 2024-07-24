@@ -56,8 +56,8 @@ class UnityWebgl extends HTMLElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.styleElement(this);
     }
     // set initial values based on attributes in dom node
     ATTRS.forEach((a) => {
@@ -71,8 +71,8 @@ class UnityWebgl extends HTMLElement {
     this.shadowRoot.innerHTML = null;
     this.template.innerHTML = this.html;
 
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
     var script = document.createElement("script");

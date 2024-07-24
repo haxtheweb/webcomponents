@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/discord-embed.css",
-      "scss": "src/discord-embed.scss",
+      "css": "src/discord-embed.css",
       "html": "src/discord-embed.html",
       "js": "src/discord-embed.js",
       "properties": "src/discord-embed-properties.json",

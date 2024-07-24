@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-range-input.css",
-      "scss": "src/simple-range-input.scss",
+      "css": "src/simple-range-input.css",
       "html": "src/simple-range-input.html",
       "js": "src/simple-range-input.js",
       "properties": "src/simple-range-input-properties.json",

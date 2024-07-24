@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/lrs-elements.css",
-      "scss": "src/lrs-elements.scss",
+      "css": "src/lrs-elements.css",
       "html": "src/lrs-elements.html",
       "js": "src/lrs-elements.js",
       "properties": "src/lrs-elements-properties.json",

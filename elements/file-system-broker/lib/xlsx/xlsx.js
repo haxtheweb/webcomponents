@@ -3927,8 +3927,8 @@ function make_xlsx_lib(XLSX) {
       var blob = new Blob([blobify(data)], {
         type: "application/octet-stream",
       });
-      if (typeof navigator !== "undefined" && navigator.msSaveBlob)
-        return navigator.msSaveBlob(blob, fname);
+      if (typeof navigator !== "undefined" && globalThis.navigator.msSaveBlob)
+        return globalThis.navigator.msSaveBlob(blob, fname);
       if (typeof saveAs !== "undefined") return saveAs(blob, fname);
       if (
         typeof URL !== "undefined" &&

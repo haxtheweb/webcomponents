@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/disqus-embed.css",
-      "scss": "src/disqus-embed.scss",
+      "css": "src/disqus-embed.css",
       "html": "src/disqus-embed.html",
       "js": "src/disqus-embed.js",
       "properties": "src/disqus-embed-properties.json",

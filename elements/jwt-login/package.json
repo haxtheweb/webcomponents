@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/jwt-login.css",
-      "scss": "src/jwt-login.scss",
+      "css": "src/jwt-login.css",
       "html": "src/jwt-login.html",
       "js": "src/jwt-login.js",
       "properties": "src/jwt-login-properties.json",

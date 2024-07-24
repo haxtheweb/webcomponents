@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/lrndesign-timeline.css",
-      "scss": "src/lrndesign-timeline.scss",
+      "css": "src/lrndesign-timeline.css",
       "html": "src/lrndesign-timeline.html",
       "js": "src/lrndesign-timeline.js",
       "properties": "src/lrndesign-timeline-properties.json",

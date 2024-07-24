@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/parallax-image.css",
-      "scss": "src/parallax-image.scss",
+      "css": "src/parallax-image.css",
       "html": "src/parallax-image.html",
       "js": "src/parallax-image.js",
       "properties": "src/parallax-image-properties.json",

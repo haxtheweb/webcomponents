@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/grade-book.css",
-      "scss": "src/grade-book.scss",
+      "css": "src/grade-book.css",
       "html": "src/grade-book.html",
       "js": "src/grade-book.js",
       "properties": "src/grade-book-properties.json",

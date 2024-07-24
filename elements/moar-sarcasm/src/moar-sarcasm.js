@@ -31,7 +31,7 @@ class MoarSarcasm extends HTMLElement {
   constructor() {
     super();
     // create a template element for processing shadowRoot
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
     // create a shadowRoot
     this.attachShadow({ mode: "open" });
     this.render();
@@ -84,8 +84,8 @@ class MoarSarcasm extends HTMLElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.styleElement(this);
     }
     this.a11y = "the following is sarcastic:";
     this.say = this.innerText;
@@ -100,8 +100,8 @@ class MoarSarcasm extends HTMLElement {
     if (this.template) {
       this.template.innerHTML = this.html;
     }
-    if (window.ShadyCSS && this.template) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (globalThis.ShadyCSS && this.template) {
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     if (this.shadowRoot && this.template) {
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));
@@ -115,12 +115,12 @@ class MoarSarcasm extends HTMLElement {
     this.shadowRoot.querySelector(".sarcastic").innerHTML = "";
     // loop through text to process and convert to span tags
     for (var i = 0; i < text.length; i++) {
-      let tag = document.createElement("span");
+      let tag = globalThis.document.createElement("span");
       if (text.charAt(i).match(/[a-z]/i)) {
         tag.classList.add("letter");
         tag.innerText = text.charAt(i);
       } else {
-        tag = document.createTextNode(text.charAt(i));
+        tag = globalThis.document.createTextNode(text.charAt(i));
       }
       this.shadowRoot.querySelector(".sarcastic").appendChild(tag);
     }

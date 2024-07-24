@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/hax-iconset.css",
-      "scss": "src/hax-iconset.scss",
+      "css": "src/hax-iconset.css",
       "html": "src/hax-iconset.html",
       "js": "src/hax-iconset.js",
       "properties": "src/hax-iconset-properties.json",

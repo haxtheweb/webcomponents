@@ -341,7 +341,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
       }
     }
     // missed on both, hope the normal one will work
-    return window.getSelection();
+    return globalThis.getSelection();
   }
   /**
    * Get a normalized range based on current selection

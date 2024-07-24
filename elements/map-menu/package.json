@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/map-menu.css",
-      "scss": "src/map-menu.scss",
+      "css": "src/map-menu.css",
       "html": "src/map-menu.html",
       "js": "src/map-menu.js",
       "properties": "src/map-menu-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/enhanced-text.css",
-      "scss": "src/enhanced-text.scss",
+      "css": "src/enhanced-text.css",
       "html": "src/enhanced-text.html",
       "js": "src/enhanced-text.js",
       "properties": "src/enhanced-text-properties.json",

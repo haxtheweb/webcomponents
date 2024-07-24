@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/app-hax.css",
-      "scss": "src/app-hax.scss",
+      "css": "src/app-hax.css",
       "html": "src/app-hax.html",
       "js": "src/app-hax.js",
       "properties": "src/app-hax-properties.json",

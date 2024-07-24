@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-picker.css",
-      "scss": "src/simple-picker.scss",
+      "css": "src/simple-picker.css",
       "html": "src/simple-picker.html",
       "js": "src/simple-picker.js",
       "properties": "src/simple-picker-properties.json"

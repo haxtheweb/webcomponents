@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/page-break.css",
-      "scss": "src/page-break.scss",
+      "css": "src/page-break.css",
       "html": "src/page-break.html",
       "js": "src/page-break.js",
       "properties": "src/page-break-properties.json",

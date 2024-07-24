@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/a11y-menu-button.css",
-      "scss": "src/a11y-menu-button.scss",
+      "css": "src/a11y-menu-button.css",
       "html": "src/a11y-menu-button.html",
       "js": "src/a11y-menu-button.js",
       "properties": "src/a11y-menu-button-properties.json",

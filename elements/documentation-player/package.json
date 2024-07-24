@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/documentation-player.css",
-      "scss": "src/documentation-player.scss",
+      "css": "src/documentation-player.css",
       "html": "src/documentation-player.html",
       "js": "src/documentation-player.js",
       "properties": "src/documentation-player-properties.json",

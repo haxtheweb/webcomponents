@@ -119,15 +119,19 @@ class HaxLogo extends HTMLElement {
    */
   constructor() {
     super();
-    if (!window.__haxLogoFontLoaded) {
+    if (
+      !globalThis.__haxLogoFontLoaded &&
+      globalThis.document &&
+      globalThis.document.head
+    ) {
       let link = document.createElement("link");
       link.setAttribute(
         "href",
         "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap",
       );
       link.setAttribute("rel", "stylesheet");
-      document.head.appendChild(link);
-      window.__haxLogoFontLoaded = true;
+      globalThis.document.head.appendChild(link);
+      globalThis.__haxLogoFontLoaded = true;
     }
     // set tag for later use
     this.tag = HaxLogo.tag;
@@ -141,8 +145,8 @@ class HaxLogo extends HTMLElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.styleElement(this);
     }
   }
 
@@ -150,8 +154,8 @@ class HaxLogo extends HTMLElement {
     this.shadowRoot.innerHTML = null;
     this.template.innerHTML = this.html;
 
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }

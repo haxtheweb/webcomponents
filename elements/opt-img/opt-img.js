@@ -199,7 +199,7 @@ class OptImg extends HTMLElement {
     if (super.connectedCallback) {
       super.connectedCallback();
     }
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           context: this,

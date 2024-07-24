@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/social-share-link.css",
-      "scss": "src/social-share-link.scss",
+      "css": "src/social-share-link.css",
       "html": "src/social-share-link.html",
       "js": "src/social-share-link.js",
       "properties": "src/social-share-link-properties.json",

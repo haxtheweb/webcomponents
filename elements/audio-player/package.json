@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/audio-player.css",
-      "scss": "src/audio-player.scss",
+      "css": "src/audio-player.css",
       "html": "src/audio-player.html",
       "js": "src/audio-player.js",
       "properties": "src/audio-player-properties.json",

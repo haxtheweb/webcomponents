@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-cta.css",
-      "scss": "src/simple-cta.scss",
+      "css": "src/simple-cta.css",
       "html": "src/simple-cta.html",
       "js": "src/simple-cta.js",
       "properties": "src/simple-cta-properties.json",

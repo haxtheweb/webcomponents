@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/opt-img.css",
-      "scss": "src/opt-img.scss",
+      "css": "src/opt-img.css",
       "html": "src/opt-img.html",
       "js": "src/opt-img.js",
       "properties": "src/opt-img-properties.json",

@@ -1,5 +1,5 @@
 // forked from https://github.com/janmarthedal/math-tex
-const document = window.document,
+const document = globalThis.document,
   states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
 let mathjaxHub,
   typesets = [],
@@ -56,7 +56,7 @@ function flush_typesets() {
 
 function load_library() {
   state = states.loading;
-  window.MathJax = {
+  globalThis.MathJax = {
     skipStartupTypeset: true,
     showMathMenu: false,
     jax: ["input/TeX", "output/CommonHTML"],
@@ -69,7 +69,7 @@ function load_library() {
       ],
     },
     AuthorInit() {
-      mathjaxHub = window.MathJax.Hub;
+      mathjaxHub = globalThis.MathJax.Hub;
       mathjaxHub.Register.StartupHook("End", function () {
         state = states.ready;
         flush_typesets();

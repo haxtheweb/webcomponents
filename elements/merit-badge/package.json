@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/merit-badge.css",
-      "scss": "src/merit-badge.scss",
+      "css": "src/merit-badge.css",
       "html": "src/merit-badge.html",
       "js": "src/merit-badge.js",
       "properties": "src/merit-badge-properties.json",

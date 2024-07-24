@@ -132,9 +132,7 @@ export class PageAnchor extends DDDSuper(LitElement) {
     try {
       icon = this.getMatchFromFields(this.entityId, this.target, "icon");
     } catch (e) {}
-    return html`<mark
-      @click="${this.clickHandler}"
-    >
+    return html`<mark @click="${this.clickHandler}">
       ${icon ? html`<simple-icon-lite icon="${icon}"></simple-icon-lite>` : ``}
       <slot></slot>
     </mark>`;

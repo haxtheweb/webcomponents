@@ -876,10 +876,10 @@ class CleanTwo extends HAXCMSOperationButtons(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
       if (store.getInternalRoute() !== 'search') {
-        window.history.replaceState({}, null, "x/search");
+        globalThis.history.replaceState({}, null, "x/search");
       }
       const params = new URLSearchParams(store.currentRouterLocation.search);
-      const input = window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");
+      const input = globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");
       input.focus();
       // if we have a search param already, set it to the field on open
       if (params.get("search")) {

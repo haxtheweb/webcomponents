@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/code-sample.css",
-      "scss": "src/code-sample.scss",
+      "css": "src/code-sample.css",
       "html": "src/code-sample.html",
       "js": "src/code-sample.js",
       "properties": "src/code-sample-properties.json",

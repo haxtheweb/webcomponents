@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/check-it-out.css",
-      "scss": "src/check-it-out.scss",
+      "css": "src/check-it-out.css",
       "html": "src/check-it-out.html",
       "js": "src/check-it-out.js",
       "properties": "src/check-it-out-properties.json",

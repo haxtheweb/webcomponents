@@ -660,7 +660,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   _activeTabChanged(newValue, oldValue) {
     if (newValue !== oldValue) this.selectTab(newValue);
     // global response when local is not enough
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("a11y-tabs-active-changed", {
         cancelable: true,
         detail: this,

@@ -152,7 +152,7 @@ export class IframeLoader extends LitElement {
       super.firstUpdated(changedProperties);
     }
     if (!this.querySelector("iframe")) {
-      this.__iframe = document.createElement("iframe");
+      this.__iframe = globalThis.document.createElement("iframe");
       this.__iframe.setAttribute("width", this.width);
       this.__iframe.setAttribute("height", this.height);
       this.__mutationObserver.observe(this.__iframe, {
@@ -183,7 +183,7 @@ export class IframeLoader extends LitElement {
           if (this.__iframe) {
             this.__iframe.setAttribute("src", this.source);
           } else {
-            this.__iframe = document.createElement("iframe");
+            this.__iframe = globalThis.document.createElement("iframe");
             this.__iframe.setAttribute("width", this.width);
             this.__iframe.setAttribute("height", this.height);
             this.__mutationObserver.observe(this.__iframe, {

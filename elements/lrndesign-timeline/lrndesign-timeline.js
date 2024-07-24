@@ -540,7 +540,7 @@ class LrndesignTimeline extends SimpleColors {
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
           element: this,

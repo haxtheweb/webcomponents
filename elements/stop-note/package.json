@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/stop-note.css",
-      "scss": "src/stop-note.scss",
+      "css": "src/stop-note.css",
       "html": "src/stop-note.html",
       "js": "src/stop-note.js",
       "properties": "src/stop-note-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/post-card.css",
-      "scss": "src/post-card.scss",
+      "css": "src/post-card.css",
       "html": "src/post-card.html",
       "js": "src/post-card.js",
       "properties": "src/post-card-properties.json",

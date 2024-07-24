@@ -144,7 +144,7 @@ export class PageBreak extends IntersectionObserverMixin(
               this.setupTargetData(this.target);
             } else {
               let tagName = this.depth === 0 ? `h2` : `h${this.depth + 2}`;
-              let newH = document.createElement(tagName);
+              let newH = globalThis.document.createElement(tagName);
               newH.setAttribute("data-original-level", "H2");
               newH.innerText = this.title;
               this.parentNode.insertBefore(newH, this.nextElementSibling);
@@ -157,7 +157,7 @@ export class PageBreak extends IntersectionObserverMixin(
         }, 0);
       }
     }
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("page-break-registration", {
         composed: true,
         bubbles: true,
@@ -168,7 +168,7 @@ export class PageBreak extends IntersectionObserverMixin(
         },
       }),
     );
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("page-break-change", {
         composed: true,
         bubbles: true,
@@ -180,7 +180,7 @@ export class PageBreak extends IntersectionObserverMixin(
     );
   }
   disconnectedCallback() {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("page-break-registration", {
         detail: {
           value: this,
@@ -188,7 +188,7 @@ export class PageBreak extends IntersectionObserverMixin(
         },
       }),
     );
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("page-break-change", {
         composed: true,
         bubbles: true,
@@ -263,7 +263,7 @@ export class PageBreak extends IntersectionObserverMixin(
       }
       // fire event for reaction so we can update sgtate elsewhere
       if (["title", "parent", "slug"].includes(propName)) {
-        window.dispatchEvent(
+        globalThis.dispatchEvent(
           new CustomEvent("page-break-change", {
             composed: true,
             bubbles: true,
@@ -299,7 +299,7 @@ export class PageBreak extends IntersectionObserverMixin(
                     )
                   : new Number(el.tagName.replace("H", ""))) + this.depth;
               tagNumber = tagNumber > 6 ? 6 : tagNumber;
-              const newH = document.createElement(`h${tagNumber}`);
+              const newH = globalThis.document.createElement(`h${tagNumber}`);
               newH.setAttribute("data-original-level", el.tagName);
               for (var i = 0, l = el.attributes.length; i < l; ++i) {
                 newH.setAttribute(
@@ -323,7 +323,7 @@ export class PageBreak extends IntersectionObserverMixin(
                   let tagNumber = new Number(
                     el.getAttribute("data-original-level").replace("H", ""),
                   );
-                  const newH = document.createElement(`h${tagNumber}`);
+                  const newH = globalThis.document.createElement(`h${tagNumber}`);
                   for (var i = 0, l = el.attributes.length; i < l; ++i) {
                     newH.setAttribute(
                       el.attributes.item(i).nodeName,
@@ -346,7 +346,7 @@ export class PageBreak extends IntersectionObserverMixin(
                       )
                     : new Number(el.tagName.replace("H", ""))) + this.depth;
                 tagNumber = tagNumber > 6 ? 6 : tagNumber;
-                const newH = document.createElement(`h${tagNumber}`);
+                const newH = globalThis.document.createElement(`h${tagNumber}`);
                 newH.setAttribute("data-original-level", el.tagName);
                 for (var i = 0, l = el.attributes.length; i < l; ++i) {
                   newH.setAttribute(
@@ -545,9 +545,9 @@ export class PageBreak extends IntersectionObserverMixin(
    * with values to do so
    */
   haxsetupActiveElementForm(props) {
-    if (window.HAXCMS) {
+    if (globalThis.HAXCMS) {
       const itemManifest =
-        window.HAXCMS.requestAvailability().store.getManifestItems(true);
+        globalThis.HAXCMS.requestAvailability().store.getManifestItems(true);
       // default to null parent as the whole site
       var items = [
         {
@@ -591,8 +591,8 @@ export class PageBreak extends IntersectionObserverMixin(
         // pull theme list from the registry
         if (
           attr.property === "developerTheme" &&
-          window.appSettings &&
-          window.appSettings.themes
+          globalThis.appSettings &&
+          globalThis.appSettings.themes
         ) {
           var themes = [
             {
@@ -600,10 +600,10 @@ export class PageBreak extends IntersectionObserverMixin(
               value: null,
             },
           ];
-          Object.keys(window.appSettings.themes).map((key) => {
+          Object.keys(globalThis.appSettings.themes).map((key) => {
             themes.push({
-              text: window.appSettings.themes[key].name,
-              value: window.appSettings.themes[key].element,
+              text: globalThis.appSettings.themes[key].name,
+              value: globalThis.appSettings.themes[key].element,
             });
           });
           props.settings.developer[index].inputMethod = "select";
@@ -666,7 +666,7 @@ export class PageBreak extends IntersectionObserverMixin(
   }
   haxClickLockInPage(e) {
     this.locked = !this.locked;
-    window.dispatchEvent(new CustomEvent("hax-refresh-tray-form", {}));
+    globalThis.dispatchEvent(new CustomEvent("hax-refresh-tray-form", {}));
   }
   haxClickInlineLock(e) {
     this.locked = !this.locked;

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/example-hax-element.css",
-      "scss": "src/example-hax-element.scss",
+      "css": "src/example-hax-element.css",
       "html": "src/example-hax-element.html",
       "js": "src/example-hax-element.js",
       "properties": "src/example-hax-element-properties.json",

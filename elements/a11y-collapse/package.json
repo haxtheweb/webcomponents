@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/a11y-collapse.css",
-      "scss": "src/a11y-collapse.scss",
+      "css": "src/a11y-collapse.css",
       "html": "src/a11y-collapse.html",
       "js": "src/a11y-collapse.js",
       "properties": "src/a11y-collapse-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/a11y-media-player.css",
-      "scss": "src/a11y-media-player.scss",
+      "css": "src/a11y-media-player.css",
       "html": "src/a11y-media-player.html",
       "js": "src/a11y-media-player.js",
       "properties": "src/a11y-media-player-properties.json",

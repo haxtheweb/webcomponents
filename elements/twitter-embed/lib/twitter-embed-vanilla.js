@@ -15,13 +15,17 @@ class TwitterEmbedVanilla extends HTMLElement {
    */
   constructor() {
     super();
-    this.lang =
-      globalThis.document.body.getAttribute("xml:lang") ||
-      globalThis.document.body.getAttribute("lang") ||
-      globalThis.document.documentElement.getAttribute("xml:lang") ||
-      globalThis.document.documentElement.getAttribute("lang") ||
-      navigator.language ||
-      FALLBACK_LANG;
+    if (globalThis.document && globalThis.document.body) {
+      this.lang =
+        globalThis.document.body.getAttribute("xml:lang") ||
+        globalThis.document.body.getAttribute("lang") ||
+        globalThis.document.documentElement.getAttribute("xml:lang") ||
+        globalThis.document.documentElement.getAttribute("lang") ||
+        globalThis.navigator.language ||
+        FALLBACK_LANG;
+    } else {
+      this.lang = FALLBACK_LANG;
+    }
     this.dataWidth = this.getAttribute("data-width")
       ? this.getAttribute("data-width")
       : "550px";

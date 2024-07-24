@@ -534,7 +534,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       );
       // should have contents but verify
       if (item.contents) {
-        let div = document.createElement("div");
+        let div = globalThis.document.createElement("div");
         div.innerHTML = item.contents;
         // walk up to the index in question
         for (let i = 0; i < div.childNodes.length; i++) {
@@ -711,7 +711,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   renderItemContents(item) {
     let render = [this.itemContentsOperations(item)];
     if (item.contents) {
-      let div = document.createElement("div");
+      let div = globalThis.document.createElement("div");
       div.innerHTML = item.contents;
       let activeHeadingDepth = 1;
       let modifier = 0;
@@ -787,7 +787,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ) {
           node = haxElementToNode(schema.demoSchema[0]);
         } else {
-          node = document.createElement(tag);
+          node = globalThis.document.createElement(tag);
         }
         this.items[index].contents = node.outerHTML + item.contents;
         this.resetPopOver();
@@ -925,7 +925,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       let item = this.items.find((item) => item.id === itemId);
       // should have contents but verify
       if (item.contents) {
-        let div = document.createElement("div");
+        let div = globalThis.document.createElement("div");
         div.innerHTML = item.contents;
         let content = "";
         // up / down require reorganization prior to html calculation
@@ -976,10 +976,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
                 );
                 let h;
                 if (action === "in" && hlevel > 1) {
-                  h = document.createElement(`h${hlevel - 1}`);
+                  h = globalThis.document.createElement(`h${hlevel - 1}`);
                   h.innerText = node.innerText;
                 } else if (action === "out" && hlevel < 6) {
-                  h = document.createElement(`h${hlevel + 1}`);
+                  h = globalThis.document.createElement(`h${hlevel + 1}`);
                   h.innerText = node.innerText;
                 } else {
                   // blocked operation
@@ -1017,7 +1017,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       );
       // should have contents but verify
       if (item.contents) {
-        let div = document.createElement("div");
+        let div = globalThis.document.createElement("div");
         div.innerHTML = item.contents;
         let oldContent = "";
         let newContent = "";
@@ -1174,7 +1174,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     target.focus();
     // get the selection and select all
     if (this.shadowRoot.getSelection) {
-      var range = document.createRange();
+      var range = globalThis.document.createRange();
       range.selectNodeContents(target);
       this.shadowRoot.getSelection().removeAllRanges();
       this.shadowRoot.getSelection().addRange(range);
@@ -1182,7 +1182,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     // deprecated but best we got
     else {
       try {
-        document.execCommand("selectAll", false, null);
+        globalThis.document.execCommand("selectAll", false, null);
       } catch (e) {
         console.warn(e);
       }
@@ -1220,7 +1220,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       let item = this.items.find((item) => item.id === itemId);
       // should have contents but verify
       if (item.contents) {
-        let div = document.createElement("div");
+        let div = globalThis.document.createElement("div");
         div.innerHTML = item.contents;
         let content = "";
         // walk up to the index in question

@@ -709,7 +709,7 @@ class CleanOne extends PrintBranchMixin(
          "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
        ).then(() => {
         if (store.getInternalRoute() !== 'search') {
-          window.history.replaceState({}, null, "x/search");
+          globalThis.history.replaceState({}, null, "x/search");
         }
          this.searchTerm = e.detail.value;
        });

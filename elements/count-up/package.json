@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/count-up.css",
-      "scss": "src/count-up.scss",
+      "css": "src/count-up.css",
       "html": "src/count-up.html",
       "js": "src/count-up.js",
       "properties": "src/count-up-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/future-terminal-text.css",
-      "scss": "src/future-terminal-text.scss",
+      "css": "src/future-terminal-text.css",
       "html": "src/future-terminal-text.html",
       "js": "src/future-terminal-text.js",
       "properties": "src/future-terminal-text-properties.json",

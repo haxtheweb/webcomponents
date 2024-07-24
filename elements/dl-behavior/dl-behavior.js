@@ -51,14 +51,16 @@ export const MtzFileDownloadBehaviors = function (SuperClass) {
         type: mimeType,
       });
       const filename = name + "." + type.toLowerCase();
-      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-        window.navigator.msSaveOrOpenBlob(blob, filename);
+      if (globalThis.navigator && globalThis.navigator.msSaveOrOpenBlob) {
+        globalThis.navigator.msSaveOrOpenBlob(blob, filename);
       } else {
         // Link elements have a download attribute which provides cross-platform
         // download behavior supporting all but IE 11. This creates new link and then
         // clicks it to initiate download.
         const link = document.createElement("a");
-        link.href = (window.URL || window.webkitURL).createObjectURL(blob);
+        link.href = (globalThis.URL || globalThis.webkitURL).createObjectURL(
+          blob,
+        );
         link.download = filename;
         link.target = newTab ? "_blank" : "_self";
         this.appendChild(link);
@@ -75,7 +77,7 @@ export const MtzFileDownloadBehaviors = function (SuperClass) {
      * @return {Boolean} Returns true.
      */
     downloadFromURI(uri, newTab = true) {
-      window.open(uri, newTab ? "_blank" : "_self");
+      globalThis.open(uri, newTab ? "_blank" : "_self");
       return true; // NOTE: Returning true to prevent error in some browsers during download.
     }
   };

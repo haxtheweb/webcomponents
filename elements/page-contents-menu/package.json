@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/page-contents-menu.css",
-      "scss": "src/page-contents-menu.scss",
+      "css": "src/page-contents-menu.css",
       "html": "src/page-contents-menu.html",
       "js": "src/page-contents-menu.js",
       "properties": "src/page-contents-menu-properties.json",

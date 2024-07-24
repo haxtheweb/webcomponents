@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/retro-card.css",
-      "scss": "src/retro-card.scss",
+      "css": "src/retro-card.css",
       "html": "src/retro-card.html",
       "js": "src/retro-card.js",
       "properties": "src/retro-card-properties.json",

@@ -71,7 +71,10 @@ export class QuestionElement extends SchemaBehaviors(
           "hint",
           "evidence",
         ].map((slotName) => {
-          if (this.querySelector(`[slot="${slotName}"]`) === null) {
+          if (
+            this.querySelector &&
+            this.querySelector(`[slot="${slotName}"]`) === null
+          ) {
             let p = globalThis.document.createElement("p");
             p.setAttribute("slot", slotName);
             this.appendChild(p);
@@ -198,7 +201,7 @@ export class QuestionElement extends SchemaBehaviors(
         detail: false,
       }),
     );
-    let si = document.createElement("simple-icon-lite");
+    let si = globalThis.document.createElement("simple-icon-lite");
     let extras = {};
     let toastShowEventName = "simple-toast-show";
     // support for haxcms toast
@@ -707,7 +710,7 @@ export class QuestionElement extends SchemaBehaviors(
       }
       for (var i in node.answers) {
         if (node.answers[i]) {
-          let answer = document.createElement("input");
+          let answer = globalThis.document.createElement("input");
           answer.setAttribute("type", "checkbox");
           answer.value = node.answers[i].label;
           if (node.answers[i].correct) {
@@ -815,7 +818,9 @@ export class QuestionElement extends SchemaBehaviors(
                 ${this.renderFeedback()}
               </div>
             </details>
-            ${this.querySelector('[slot="content"]') && !this.edit
+            ${this.querySelector &&
+            this.querySelector('[slot="content"]') &&
+            !this.edit
               ? html` <details ?open="${!this.showAnswer}" id="related">
                   <summary>
                     <simple-icon-lite
@@ -830,7 +835,8 @@ export class QuestionElement extends SchemaBehaviors(
                 </details>`
               : nothing}
             <details
-              ?open="${!this.querySelector('[slot="content"]')}"
+              ?open="${this.querySelector &&
+              !this.querySelector('[slot="content"]')}"
               id="directions"
             >
               <summary>
@@ -931,17 +937,20 @@ export class QuestionElement extends SchemaBehaviors(
       ? html`
           ${this.showAnswer && !this.isCorrect()
             ? html` <p class="feedback">${this.incorrectText}</p>
-                ${this.querySelector('[slot="feedbackIncorrect"]')
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackIncorrect"]')
                   ? html`<slot name="feedbackIncorrect"></slot>`
                   : nothing}`
             : nothing}
           ${this.showAnswer && this.isCorrect()
             ? html` <p class="feedback">${this.correctText}</p>
-                ${this.querySelector('[slot="feedbackCorrect"]')
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackCorrect"]')
                   ? html`<slot name="feedbackCorrect"></slot>`
                   : nothing}`
             : nothing}
-          ${this.querySelector('[slot="hint"]') &&
+          ${this.querySelector &&
+          this.querySelector('[slot="hint"]') &&
           this.showAnswer &&
           !this.isCorrect()
             ? html`
@@ -951,7 +960,8 @@ export class QuestionElement extends SchemaBehaviors(
                 </div>
               `
             : nothing}
-          ${this.querySelector('[slot="evidence"]') &&
+          ${this.querySelector &&
+          this.querySelector('[slot="evidence"]') &&
           this.showAnswer &&
           this.isCorrect()
             ? html`

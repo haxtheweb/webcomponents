@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/img-pan-zoom.css",
-      "scss": "src/img-pan-zoom.scss",
+      "css": "src/img-pan-zoom.css",
       "html": "src/img-pan-zoom.html",
       "js": "src/img-pan-zoom.js",
       "properties": "src/img-pan-zoom-properties.json",

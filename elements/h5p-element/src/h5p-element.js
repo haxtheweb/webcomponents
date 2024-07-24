@@ -4,9 +4,9 @@
  */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
-window.__H5PBridgeTimeOut = function () {
+globalThis.__H5PBridgeTimeOut = function () {
   setTimeout(function () {
-    window.H5P.init();
+    globalThis.H5P.init();
   }, 500);
 };
 /**
@@ -108,16 +108,16 @@ class H5PElement extends LitElement {
       basePath + "h5p/js/h5p-x-api.js",
     ];
     this.__h5pDepsLength = this.h5pJSDeps.length - 1;
-    await window.ESGlobalBridge.requestAvailability().load(
+    await globalThis.ESGlobalBridge.requestAvailability().load(
       "h5p-jquery",
       basePath + "h5p/js/jquery.js",
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "es-bridge-h5p-jquery-loaded",
       this.h5pJqueryReady.bind(this),
       { signal: this.windowControllers.signal },
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "es-bridge-h5p-" + this.__h5pDepsLength + "-loaded",
       this.h5pReadyCallback.bind(this),
       { signal: this.windowControllers.signal },
@@ -140,7 +140,7 @@ class H5PElement extends LitElement {
     }
     if (
       this.source &&
-      window.ESGlobalBridge.requestAvailability().imports[
+      globalThis.ESGlobalBridge.requestAvailability().imports[
         "h5p-" + this.__h5pDepsLength
       ] === true &&
       this.contentId
@@ -154,7 +154,7 @@ class H5PElement extends LitElement {
   }
   async h5pJqueryReady(e) {
     for (var i in this.h5pJSDeps) {
-      await window.ESGlobalBridge.requestAvailability().load(
+      await globalThis.ESGlobalBridge.requestAvailability().load(
         "h5p-" + i,
         this.h5pJSDeps[i],
       );
@@ -187,7 +187,7 @@ class H5PElement extends LitElement {
       ],
       scripts: this.h5pJSDeps,
     };
-    let frag = document.createRange().createContextualFragment(`
+    let frag = globalThis.document.createRange().createContextualFragment(`
      <div class="h5p-iframe-wrapper" style="background-color:#DDD;">
        <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
      </div>
@@ -206,9 +206,9 @@ class H5PElement extends LitElement {
       // clear previous calls to this exact thing
       // this accounts for multiples on the DOM and the exccess
       // file parsing required per each in order to use this thing
-      if (window.__H5PBridgeTimeOut) {
-        clearTimeout(window.__H5PBridgeTimeOut);
-        window.__H5PBridgeTimeOut();
+      if (globalThis.__H5PBridgeTimeOut) {
+        clearTimeout(globalThis.__H5PBridgeTimeOut);
+        globalThis.__H5PBridgeTimeOut();
       }
     }
     return true;
@@ -227,9 +227,9 @@ class H5PElement extends LitElement {
   }
 }
 customElements.define("h5p-element", H5PElement);
-window.H5P = window.H5P || {};
+globalThis.H5P = globalThis.H5P || {};
 
-window.H5PIntegration = window.H5PIntegration || {};
+globalThis.H5PIntegration = globalThis.H5PIntegration || {};
 
 H5PIntegration.l10n = {
   H5P: {
@@ -285,7 +285,7 @@ class H5PStandalone {
     this.content = JSON.stringify(
       await this.getJSONPromise(`${this.path}/content/content.json`),
     );
-    window.H5PIntegration.pathIncludesVersion = this.pathIncludesVersion =
+    globalThis.H5PIntegration.pathIncludesVersion = this.pathIncludesVersion =
       await this.checkIfPathIncludesVersion();
 
     this.mainLibrary = await this.findMainLibrary();

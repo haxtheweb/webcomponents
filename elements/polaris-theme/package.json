@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/polaris-theme.css",
-      "scss": "src/polaris-theme.scss",
+      "css": "src/polaris-theme.css",
       "html": "src/polaris-theme.html",
       "js": "src/polaris-theme.js",
       "properties": "src/polaris-theme-properties.json",

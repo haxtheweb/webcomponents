@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/self-check.css",
-      "scss": "src/self-check.scss",
+      "css": "src/self-check.css",
       "html": "src/self-check.html",
       "js": "src/self-check.js",
       "properties": "src/self-check-properties.json",

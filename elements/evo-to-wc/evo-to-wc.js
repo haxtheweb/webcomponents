@@ -655,21 +655,21 @@ export class EvoToWc {
   }
 }
 // register global bridge on window if needed
-window.EvoToWc = window.EvoToWc || {};
+globalThis.EvoToWc = globalThis.EvoToWc || {};
 
-window.EvoToWc.requestAvailability = () => {
-  if (!window.EvoToWc.instance) {
-    window.EvoToWc.instance = new EvoToWc();
+globalThis.EvoToWc.requestAvailability = () => {
+  if (!globalThis.EvoToWc.instance) {
+    globalThis.EvoToWc.instance = new EvoToWc();
   }
-  window.dispatchEvent(
+  globalThis.dispatchEvent(
     new CustomEvent("register-hax-converter", {
       bubbles: true,
       composed: true,
       cancelable: true,
-      detail: window.EvoToWc.instance.convert,
+      detail: globalThis.EvoToWc.instance.convert,
     }),
   );
 
-  return window.EvoToWc.instance;
+  return globalThis.EvoToWc.instance;
 };
-export const EvoToWcConverter = window.EvoToWc.requestAvailability();
+export const EvoToWcConverter = globalThis.EvoToWc.requestAvailability();

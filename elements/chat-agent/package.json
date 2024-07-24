@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/chat-agent.css",
-      "scss": "src/chat-agent.scss",
+      "css": "src/chat-agent.css",
       "html": "src/chat-agent.html",
       "js": "src/chat-agent.js",
       "properties": "src/chat-agent-properties.json",

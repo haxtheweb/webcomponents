@@ -2342,13 +2342,13 @@ Screen: ${globalThis.screen.width}x${globalThis.screen.height}
 Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
       if (navigator.getBattery) {
-        const stats = await navigator.getBattery();
+        const stats = await globalThis.navigator.getBattery();
         body += `Battery: ${stats.level * 100}%
 `;
       }
       // some things report the "type" of internet connection speed
       // for terrible connections lets save frustration
-      if (navigator.connection && navigator.connection.effectiveType) {
+      if (navigator.connection && globalThis.navigator.connection.effectiveType) {
         body += `Connection: ${navigator.connection.effectiveType}
 `;
       }
@@ -2375,7 +2375,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         ]);
       }
     }
-    console.log(e.detail.element);
     // support contextual hax hooks for active item form overwrites
 
     // verify that we are not overflowing, a lot of themes have this ability

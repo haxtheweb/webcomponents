@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/wysiwyg-hax.css",
-      "scss": "src/wysiwyg-hax.scss",
+      "css": "src/wysiwyg-hax.css",
       "html": "src/wysiwyg-hax.html",
       "js": "src/wysiwyg-hax.js",
       "properties": "src/wysiwyg-hax-properties.json",

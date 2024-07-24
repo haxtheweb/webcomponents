@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/product-card.css",
-      "scss": "src/product-card.scss",
+      "css": "src/product-card.css",
       "html": "src/product-card.html",
       "js": "src/product-card.js",
       "properties": "src/product-card-properties.json",

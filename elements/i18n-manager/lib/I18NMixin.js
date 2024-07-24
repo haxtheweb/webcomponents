@@ -29,7 +29,12 @@ export const I18NMixin = function (SuperClass) {
     // pass through to the manager, automatically adding some namespace values
     registerLocalization(detail) {
       // ensure we have a namespace for later use
-      if (!detail.namespace && detail.context && detail.context.tagName && detail.context.tagName) {
+      if (
+        !detail.namespace &&
+        detail.context &&
+        detail.context.tagName &&
+        detail.context.tagName
+      ) {
         detail.namespace = detail.context.tagName.toLowerCase();
       }
       // support fallback calls for requestUpdate; you can always supply one

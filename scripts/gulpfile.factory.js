@@ -49,10 +49,7 @@ module.exports = function factory(packageJson) {
               packageJson.wcfactory.useSass &&
               packageJson.wcfactory.files.scss
             ) {
-              import sass from "node-sass";
-              cssResult += sass.renderSync({
-                file: path.join("./", packageJson.wcfactory.files.scss),
-              }).css;
+              // we don't do sass anymore
             } else if (packageJson.wcfactory.files.css) {
               cssResult += fs.readFileSync(
                 path.join("./", packageJson.wcfactory.files.css)

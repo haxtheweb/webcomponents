@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/secure-request.css",
-      "scss": "src/secure-request.scss",
+      "css": "src/secure-request.css",
       "html": "src/secure-request.html",
       "js": "src/secure-request.js",
       "properties": "src/secure-request-properties.json",

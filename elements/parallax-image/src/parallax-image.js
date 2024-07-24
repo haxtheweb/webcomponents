@@ -121,7 +121,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
   scrollBy(e) {
     const bgParallax = this.shadowRoot.querySelector("#bgParallax");
     const titleParallax = this.shadowRoot.querySelector("#titleParallax");
-    const yParallaxPosition = window.scrollY * -0.2;
+    const yParallaxPosition = globalThis.scrollY * -0.2;
     const yParallaxPositionTitle = yParallaxPosition * 1.4;
     bgParallax.style.backgroundPosition = `center ${yParallaxPosition}px`;
     titleParallax.style.transform = `translate3D(0, ${yParallaxPositionTitle}px, 0)`;
@@ -129,7 +129,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
-      window.addEventListener("scroll", this.scrollBy.bind(this), {
+      globalThis.addEventListener("scroll", this.scrollBy.bind(this), {
         signal: this.windowControllers.signal,
       });
     }, 0);

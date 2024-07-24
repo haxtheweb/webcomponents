@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/code-editor.css",
-      "scss": "src/code-editor.scss",
+      "css": "src/code-editor.css",
       "html": "src/code-editor.html",
       "js": "src/code-editor.js",
       "properties": "src/code-editor-properties.json",

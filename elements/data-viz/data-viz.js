@@ -6,17 +6,21 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/chartist-render/chartist-render.js";
 
 // register globally so we can make sure there is only one
-window.DataViz = window.DataViz || {};
+globalThis.DataViz = globalThis.DataViz || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same data-viz element, making it a singleton.
-window.DataViz.requestAvailability = () => {
+globalThis.DataViz.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.DataViz.instance) {
-    window.DataViz.instance = document.createElement("data-viz");
-    document.body.appendChild(window.DataViz.instance);
+  if (
+    !globalThis.DataViz.instance &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
+    globalThis.DataViz.instance = document.createElement("data-viz");
+    globalThis.document.body.appendChild(globalThis.DataViz.instance);
   }
-  return window.DataViz.instance;
+  return globalThis.DataViz.instance;
 };
 
 /**
@@ -74,7 +78,7 @@ class DataViz extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener(
+    globalThis.addEventListener(
       "pouch-db-show-data",
       this.showDataFunction.bind(this),
       { signal: this.windowControllers.signal },

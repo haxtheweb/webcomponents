@@ -207,7 +207,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
    * @see haxHooks: gizmoRegistration
    */
   haxgizmoRegistration(store) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `wikipedia-query.haxProperties`,
@@ -229,7 +229,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         return false;
       }).length === 0
     ) {
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("hax-register-app", {
           bubbles: false,
           composed: false,

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/md-block.css",
-      "scss": "src/md-block.scss",
+      "css": "src/md-block.css",
       "html": "src/md-block.html",
       "js": "src/md-block.js",
       "properties": "src/md-block-properties.json",

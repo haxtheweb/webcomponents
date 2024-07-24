@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/collection-list.css",
-      "scss": "src/collection-list.scss",
+      "css": "src/collection-list.css",
       "html": "src/collection-list.html",
       "js": "src/collection-list.js",
       "properties": "src/collection-list-properties.json",

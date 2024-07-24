@@ -352,7 +352,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     connectedCallback() {
       super.connectedCallback();
       if (this.collapsed) {
-        window.addEventListener("resize", this._handleResize, {
+        globalThis.addEventListener("resize", this._handleResize, {
           signal: this.windowControllers.signal,
         });
       }
@@ -387,7 +387,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           if (this.collapsed) {
             this.resizeToolbar();
             this.windowControllers = new AbortController();
-            window.addEventListener("resize", this._handleResize, {
+            globalThis.addEventListener("resize", this._handleResize, {
               signal: this.windowControllers.signal,
             });
           } else {
@@ -859,7 +859,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           match =
             altKey === keyEvt.altKey &&
             (ctrlKey === keyEvt.ctrlKey ||
-              ((ctrlKey === window.navigator.platform) === "MacIntel" &&
+              ((ctrlKey === globalThis.navigator.platform) === "MacIntel" &&
                 e.metaKey)) &&
             metaKey === keyEvt.metaKey &&
             shiftKey === keyEvt.shiftKey &&

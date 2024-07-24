@@ -599,7 +599,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         return false;
       }).length === 0
     ) {
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("hax-register-app", {
           bubbles: false,
           composed: false,

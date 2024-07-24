@@ -89,11 +89,14 @@ class BarcodeReader extends LitElement {
     super();
     this.value = "";
     this.hideinput = false;
-    window.ESGlobalBridge.requestAvailability().load(
+    globalThis.ESGlobalBridge.requestAvailability().load(
       "ZXing",
       decodeURIComponent(import.meta.url) + "/../lib/zxing.js",
     );
-    window.addEventListener(`es-bridge-zxing-loaded`, this._control.bind(this));
+    globalThis.addEventListener(
+      `es-bridge-zxing-loaded`,
+      this._control.bind(this),
+    );
   }
 
   _control() {
@@ -113,10 +116,10 @@ class BarcodeReader extends LitElement {
     let decodePtr = null;
 
     var tick = function () {
-      if (window.ZXing) {
+      if (globalThis.ZXing) {
         setTimeout(() => {
           console.log("loaded zxing instance");
-          ZXing = new window.ZXing();
+          ZXing = new globalThis.ZXing();
           decodePtr = ZXing.Runtime.addFunction(decodeCallback);
         }, 100); //Slow down execution. Error when loaded before getting devices
       } else {
@@ -257,8 +260,8 @@ class BarcodeReader extends LitElement {
 
     function getStream() {
       buttonGo.removeAttribute("disabled");
-      if (window.stream) {
-        window.stream.getTracks().forEach(function (track) {
+      if (globalThis.stream) {
+        globalThis.stream.getTracks().forEach(function (track) {
           track.stop();
         });
       }
@@ -276,14 +279,14 @@ class BarcodeReader extends LitElement {
     }
 
     function gotStream(stream) {
-      window.stream = stream; // make stream available to console
+      globalThis.stream = stream; // make stream available to console
       videoElement.srcObject = stream;
     }
 
     this.shadowRoot.querySelector(".render").addEventListener("click", () => {
       if (this.shadowRoot.querySelector(".render").innerHTML === "Show") {
-        if (window.stream) {
-          window.stream.getTracks().forEach(function (track) {});
+        if (globalThis.stream) {
+          globalThis.stream.getTracks().forEach(function (track) {});
           let constraints = {
             video: {
               deviceId: { exact: videoSelect.value },
@@ -382,7 +385,7 @@ class BarcodeReader extends LitElement {
             video.style.display = "none";
             button.innerHTML = "Show";
             extraButtons.style.display = "none";
-            window.stream.getTracks().forEach(function (track) {
+            globalThis.stream.getTracks().forEach(function (track) {
               track.stop();
             });
           }

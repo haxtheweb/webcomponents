@@ -257,13 +257,17 @@ class CmsHax extends LitElement {
     this.windowControllersLoaded = new AbortController();
 
     this.ready = false;
-    window.addEventListener("hax-store-ready", this._storeReady.bind(this), {
-      once: true,
-      passive: true,
-      signal: this.windowControllersReady.signal,
-    });
+    globalThis.addEventListener(
+      "hax-store-ready",
+      this._storeReady.bind(this),
+      {
+        once: true,
+        passive: true,
+        signal: this.windowControllersReady.signal,
+      },
+    );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-store-app-store-loaded",
       this._appstoreLoaded.bind(this),
       {
@@ -272,11 +276,15 @@ class CmsHax extends LitElement {
         signal: this.windowControllersLoaded.signal,
       },
     );
-    window.addEventListener("hax-save-body-value", this._saveFired.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      "hax-save-body-value",
+      this._saveFired.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
 
-    window.addEventListener("hax-cancel", this._cancelFired.bind(this), {
+    globalThis.addEventListener("hax-cancel", this._cancelFired.bind(this), {
       signal: this.windowControllers.signal,
     });
 
@@ -379,7 +387,7 @@ class CmsHax extends LitElement {
     if (this.redirectOnSave) {
       setTimeout(() => {
         // trigger redirect
-        window.location = this.redirectLocation;
+        globalThis.location = this.redirectLocation;
       }, 0);
     }
   }
@@ -414,7 +422,7 @@ class CmsHax extends LitElement {
           duration: 3000,
         },
       });
-      window.dispatchEvent(evt);
+      globalThis.dispatchEvent(evt);
       // custom event for things that want to know we just saved
       this.dispatchEvent(
         new CustomEvent("cms-hax-saved", {
@@ -429,7 +437,7 @@ class CmsHax extends LitElement {
       if (this.redirectOnSave) {
         setTimeout(() => {
           // trigger redirect
-          window.location = this.redirectLocation;
+          globalThis.location = this.redirectLocation;
         }, 2000);
       }
     }

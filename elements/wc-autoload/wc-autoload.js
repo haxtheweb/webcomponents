@@ -5,17 +5,17 @@
  */
 import "@haxtheweb/dynamic-import-registry/dynamic-import-registry.js";
 // register globally so we can make sure there is only one
-window.WCAutoload = window.WCAutoload || {};
-window.WCAutoloadRegistry = window.WCAutoloadRegistry || {};
+globalThis.WCAutoload = globalThis.WCAutoload || {};
+globalThis.WCAutoloadRegistry = globalThis.WCAutoloadRegistry || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.WCAutoload.requestAvailability = () => {
-  if (!window.WCAutoload.instance) {
-    window.WCAutoload.instance = document.createElement("wc-autoload");
-    document.body.appendChild(window.WCAutoload.instance);
+globalThis.WCAutoload.requestAvailability = () => {
+  if (!globalThis.WCAutoload.instance) {
+    globalThis.WCAutoload.instance = document.createElement("wc-autoload");
+    document.body.appendChild(globalThis.WCAutoload.instance);
   }
-  return window.WCAutoload.instance;
+  return globalThis.WCAutoload.instance;
 };
 
 /**
@@ -36,14 +36,14 @@ const fetch_retry = async (url, options, n) => {
  * process the loading event in case we need to ensure timing is
  * better handled downstream.
  */
-window.WCAutoload.process = (e) => {
+globalThis.WCAutoload.process = (e) => {
   return new Promise((resolve, reject) => {
     // find the loader
-    var loader = window.WCAutoload.requestAvailability();
+    var loader = globalThis.WCAutoload.requestAvailability();
     loader.loaded = true;
     var list = {};
     // microtask timing to ensure window settings are accepted
-    if (window.WCAutoloadRegistryFileProcessed) {
+    if (globalThis.WCAutoloadRegistryFileProcessed) {
       // mutation observer will pick up changes after initial load
       // but this gets us at load time with fallback support for legacy
       let target = document;
@@ -62,39 +62,41 @@ window.WCAutoload.process = (e) => {
     } else {
       setTimeout(async () => {
         // set the basePath if it exists
-        if (window.WCAutoloadBasePath) {
-          loader.registry.basePath = window.WCAutoloadBasePath;
-        } else if (window.WCGlobalBasePath) {
-          loader.registry.basePath = window.WCGlobalBasePath;
+        if (globalThis.WCAutoloadBasePath) {
+          loader.registry.basePath = globalThis.WCAutoloadBasePath;
+        } else if (globalThis.WCGlobalBasePath) {
+          loader.registry.basePath = globalThis.WCGlobalBasePath;
         }
         if (
-          window.WCAutoloadRegistryFile &&
-          !window.WCAutoloadRegistryFileProcessed
+          globalThis.WCAutoloadRegistryFile &&
+          !globalThis.WCAutoloadRegistryFileProcessed
         ) {
           // support single string or multiple registries
-          if (typeof window.WCAutoloadRegistryFile === "string") {
-            window.WCAutoloadRegistryFile = [window.WCAutoloadRegistryFile];
+          if (typeof globalThis.WCAutoloadRegistryFile === "string") {
+            globalThis.WCAutoloadRegistryFile = [
+              globalThis.WCAutoloadRegistryFile,
+            ];
           }
-          for (var i = 0; i < window.WCAutoloadRegistryFile.length; i++) {
-            await fetch_retry(window.WCAutoloadRegistryFile[i], {}, 3)
+          for (var i = 0; i < globalThis.WCAutoloadRegistryFile.length; i++) {
+            await fetch_retry(globalThis.WCAutoloadRegistryFile[i], {}, 3)
               .then(function (response) {
                 return response.json();
               })
               .then(function (data) {
-                window.WCAutoloadRegistryFileProcessed = true;
-                window.WCAutoloadRegistry = {
-                  ...window.WCAutoloadRegistry,
+                globalThis.WCAutoloadRegistryFileProcessed = true;
+                globalThis.WCAutoloadRegistry = {
+                  ...globalThis.WCAutoloadRegistry,
                   ...data,
                 };
               });
           }
         }
         // build out the registry via events translated from object
-        if (window.WCAutoloadRegistry) {
-          for (var i in window.WCAutoloadRegistry) {
+        if (globalThis.WCAutoloadRegistry) {
+          for (var i in globalThis.WCAutoloadRegistry) {
             loader.registry.register({
               tag: i,
-              path: window.WCAutoloadRegistry[i],
+              path: globalThis.WCAutoloadRegistry[i],
             });
           }
         }
@@ -118,24 +120,24 @@ window.WCAutoload.process = (e) => {
 };
 // forces self appending which kicks all this off but AFTER dom is loaded
 // function based allows for fallbacks due to timing on legacy browsers
-window.addEventListener("load", window.WCAutoload.process);
+globalThis.addEventListener("load", globalThis.WCAutoload.process);
 
 // edge case; definition to load comes in AFTER we have loaded the page
 // and MutationObserver doesn't pick up the tag being there
 // this could be the result of a slow page load for example
 // in these cases; see the event of the item being in the registry
-window.WCAutoload.postLoaded = (e) => {
+globalThis.WCAutoload.postLoaded = (e) => {
   setTimeout(() => {
-    let loader = window.WCAutoload.requestAvailability();
+    let loader = globalThis.WCAutoload.requestAvailability();
     if (loader.loaded && document.querySelectorAll(e.detail.tag).length > 0) {
       loader.registry.loadDefinition(e.detail.tag);
     }
   }, 0);
 };
 // listen for new tags being registered
-window.addEventListener(
+globalThis.addEventListener(
   "dynamic-import-registry--new-registration",
-  window.WCAutoload.postLoaded,
+  globalThis.WCAutoload.postLoaded,
 );
 /**
  * `wc-registry`
@@ -156,7 +158,7 @@ class WcRegistry extends HTMLElement {
   }
   constructor() {
     super();
-    this.loader = window.WCAutoload.requestAvailability();
+    this.loader = globalThis.WCAutoload.requestAvailability();
   }
   connectedCallback() {
     setTimeout(() => {
@@ -195,7 +197,7 @@ class WcAutoload extends HTMLElement {
   constructor() {
     super();
     this.loaded = false;
-    this.registry = window.DynamicImportRegistry.requestAvailability();
+    this.registry = globalThis.DynamicImportRegistry.requestAvailability();
     this.options = {
       childList: true,
       subtree: true,
@@ -211,13 +213,13 @@ class WcAutoload extends HTMLElement {
       });
     });
     // support window target
-    if (window.WCAutoloadOptions) {
-      this.options = window.WCAutoloadOptions;
+    if (globalThis.WCAutoloadOptions) {
+      this.options = globalThis.WCAutoloadOptions;
     }
     setTimeout(() => {
       // support window target
-      if (window.WCAutoloadTarget) {
-        this.target = window.WCAutoloadTarget;
+      if (globalThis.WCAutoloadTarget) {
+        this.target = globalThis.WCAutoloadTarget;
       } else {
         this.target = document.body;
       }

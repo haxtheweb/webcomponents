@@ -95,13 +95,13 @@ class HAX extends HTMLElement {
       this.render();
     }
     // setup events, only run them once and remove
-    window.addEventListener("hax-store-ready", this.storeReady.bind(this), {
+    globalThis.addEventListener("hax-store-ready", this.storeReady.bind(this), {
       once: true,
       passive: true,
       signal: this.windowControllersReady.signal,
     });
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this),
       {
@@ -111,10 +111,10 @@ class HAX extends HTMLElement {
       },
     );
     // map events from tray
-    window.addEventListener("hax-cancel", this.cancelEvent.bind(this), {
+    globalThis.addEventListener("hax-cancel", this.cancelEvent.bind(this), {
       signal: this.windowControllers.signal,
     });
-    window.addEventListener("hax-save", this.saveEvent.bind(this), {
+    globalThis.addEventListener("hax-save", this.saveEvent.bind(this), {
       signal: this.windowControllers.signal,
     });
   }
@@ -143,8 +143,8 @@ class HAX extends HTMLElement {
       super.connectedCallback();
     }
     // this ensures it's only applied once
-    if (!this.__HAXApplied && !window.__HAXApplied) {
-      window.__HAXApplied = this.__HAXApplied = this.applyHAX();
+    if (!this.__HAXApplied && !globalThis.__HAXApplied) {
+      globalThis.__HAXApplied = this.__HAXApplied = this.applyHAX();
     }
   }
 
@@ -217,7 +217,7 @@ class HAX extends HTMLElement {
    */
   applyHAX() {
     // store needs to come before anyone else, use it's availability request mechanism
-    let store = window.HaxStore.requestAvailability();
+    let store = globalThis.HaxStore.requestAvailability();
     // now everyone else
     let tray = document.createElement("hax-tray");
     tray.hidePanelOps = this.hidePanelOps;

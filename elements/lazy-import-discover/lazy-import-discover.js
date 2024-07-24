@@ -75,10 +75,10 @@ customElements.define(LazyImportDiscover.tag, LazyImportDiscover);
 export { LazyImportDiscover };
 
 // self append. this is beyond trippy but the window loading will actually self invoke
-window.addEventListener("DOMContentLoaded", (event) => {
+globalThis.addEventListener("DOMContentLoaded", (event) => {
   var el = document.createElement(LazyImportDiscover.tag);
-  if (window.LazyImportBase) {
-    el.setAttribute("base", window.LazyImportBase);
+  if (globalThis.LazyImportBase) {
+    el.setAttribute("base", globalThis.LazyImportBase);
   }
   document.body.appendChild(el);
 });

@@ -3,18 +3,24 @@
  * @license Apache-2.0, see License.md for full text.
  */
 // register globally so we can make sure there is only one
-window.DynamicImportRegistry = window.DynamicImportRegistry || {};
+globalThis.DynamicImportRegistry = globalThis.DynamicImportRegistry || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.DynamicImportRegistry.requestAvailability = () => {
-  if (!window.DynamicImportRegistry.instance) {
-    window.DynamicImportRegistry.instance = document.createElement(
+globalThis.DynamicImportRegistry.requestAvailability = () => {
+  if (
+    !globalThis.DynamicImportRegistry.instance &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
+    globalThis.DynamicImportRegistry.instance = globalThis.document.createElement(
       "dynamic-import-registry",
     );
-    document.body.appendChild(window.DynamicImportRegistry.instance);
+    globalThis.document.body.appendChild(
+      globalThis.DynamicImportRegistry.instance,
+    );
   }
-  return window.DynamicImportRegistry.instance;
+  return globalThis.DynamicImportRegistry.instance;
 };
 /**
  * `dynamic-import-registry`
@@ -35,14 +41,14 @@ class DynamicImportRegistry extends HTMLElement {
     this.basePath =
       new URL("./dynamic-import-registry.js", import.meta.url).href +
       "/../../../";
-    if (window.WCAutoloadBasePath) {
-      this.basePath = window.WCAutoloadBasePath;
-    } else if (window.WCGlobalBasePath) {
-      this.basePath = window.WCGlobalBasePath;
+    if (globalThis.WCAutoloadBasePath) {
+      this.basePath = globalThis.WCAutoloadBasePath;
+    } else if (globalThis.WCGlobalBasePath) {
+      this.basePath = globalThis.WCGlobalBasePath;
     }
   }
   connectedCallback() {
-    window.addEventListener(
+    globalThis.addEventListener(
       "dynamic-import-registry--register",
       this.registerDefinitionEvent.bind(this),
       { signal: this.windowControllers.signal },
@@ -87,7 +93,7 @@ class DynamicImportRegistry extends HTMLElement {
     tag = tag.toLowerCase();
     // only import if we already had it
     if (
-      !window.customElements.get(tag) &&
+      !globalThis.customElements.get(tag) &&
       this.list[tag] &&
       !this.__loaded[tag]
     ) {

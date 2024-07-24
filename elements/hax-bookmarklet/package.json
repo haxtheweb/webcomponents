@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/hax-bookmarklet.css",
-      "scss": "src/hax-bookmarklet.scss",
+      "css": "src/hax-bookmarklet.css",
       "html": "src/hax-bookmarklet.html",
       "js": "src/hax-bookmarklet.js",
       "properties": "src/hax-bookmarklet-properties.json",

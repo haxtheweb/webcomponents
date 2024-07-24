@@ -133,7 +133,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    window.SimpleModal.requestAvailability();
+    globalThis.SimpleModal.requestAvailability();
   }
   static get haxProperties() {
     return {

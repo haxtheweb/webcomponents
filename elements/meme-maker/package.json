@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/meme-maker.css",
-      "scss": "src/meme-maker.scss",
+      "css": "src/meme-maker.css",
       "html": "src/meme-maker.html",
       "js": "src/meme-maker.js",
       "properties": "src/meme-maker-properties.json",

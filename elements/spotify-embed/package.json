@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/spotify-embed.css",
-      "scss": "src/spotify-embed.scss",
+      "css": "src/spotify-embed.css",
       "html": "src/spotify-embed.html",
       "js": "src/spotify-embed.js",
       "properties": "src/spotify-embed-properties.json",

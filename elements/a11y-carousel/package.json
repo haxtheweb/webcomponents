@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/a11y-carousel.css",
-      "scss": "src/a11y-carousel.scss",
+      "css": "src/a11y-carousel.css",
       "html": "src/a11y-carousel.html",
       "js": "src/a11y-carousel.js",
       "properties": "src/a11y-carousel-properties.json",

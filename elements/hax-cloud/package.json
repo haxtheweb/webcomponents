@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/hax-cloud.css",
-      "scss": "src/hax-cloud.scss",
+      "css": "src/hax-cloud.css",
       "html": "src/hax-cloud.html",
       "js": "src/hax-cloud.js",
       "properties": "src/hax-cloud-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/hex-picker.css",
-      "scss": "src/hex-picker.scss",
+      "css": "src/hex-picker.css",
       "html": "src/hex-picker.html",
       "js": "src/hex-picker.js",
       "properties": "src/hex-picker-properties.json",

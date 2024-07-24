@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/img-view-modal.css",
-      "scss": "src/img-view-modal.scss",
+      "css": "src/img-view-modal.css",
       "html": "src/img-view-modal.html",
       "js": "src/img-view-modal.js",
       "properties": "src/img-view-modal-properties.json",

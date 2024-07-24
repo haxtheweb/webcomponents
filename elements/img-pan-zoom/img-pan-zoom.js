@@ -415,13 +415,16 @@ class ImgPanZoom extends LitElement {
       "/",
     );
     let location = `${basePath}lib/openseadragon/openseadragon.min.js`;
-    window.addEventListener(
+    globalThis.addEventListener(
       "es-bridge-openseadragon-loaded",
       this._openseadragonLoaded.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    window.ESGlobalBridge.requestAvailability().load("openseadragon", location);
+    globalThis.ESGlobalBridge.requestAvailability().load(
+      "openseadragon",
+      location,
+    );
     import("@haxtheweb/hexagon-loader/hexagon-loader.js");
     import("./lib/img-loader.js");
   }
@@ -469,11 +472,11 @@ class ImgPanZoom extends LitElement {
   }
   _openseadragonLoaded() {
     try {
-      if (window.OpenSeadragon) {
+      if (globalThis.OpenSeadragon) {
         this._initOpenSeadragon();
       } else {
         let check = () => {
-            if (window.OpenSeadragon) {
+            if (globalThis.OpenSeadragon) {
               this._initOpenSeadragon();
               clearInterval(interval);
             }

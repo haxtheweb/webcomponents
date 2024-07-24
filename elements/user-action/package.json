@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/user-action.css",
-      "scss": "src/user-action.scss",
+      "css": "src/user-action.css",
       "html": "src/user-action.html",
       "js": "src/user-action.js",
       "properties": "src/user-action-properties.json",

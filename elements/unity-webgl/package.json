@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/unity-webgl.css",
-      "scss": "src/unity-webgl.scss",
+      "css": "src/unity-webgl.css",
       "html": "src/unity-webgl.html",
       "js": "src/unity-webgl.js",
       "properties": "src/unity-webgl-properties.json",

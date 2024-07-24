@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-login.css",
-      "scss": "src/simple-login.scss",
+      "css": "src/simple-login.css",
       "html": "src/simple-login.html",
       "js": "src/simple-login.js",
       "properties": "src/simple-login-properties.json",

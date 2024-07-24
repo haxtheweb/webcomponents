@@ -346,9 +346,9 @@ class SimpleModal extends LitElement {
     import("web-dialog/index.js").then((e) => {
       setTimeout(() => {
         this.shadowRoot
-        .querySelector("web-dialog")
-        .shadowRoot.querySelector("#backdrop").style.backgroundColor =
-        "var(--ddd-theme-default-potential70)";  
+          .querySelector("web-dialog")
+          .shadowRoot.querySelector("#backdrop").style.backgroundColor =
+          "var(--ddd-theme-default-potential70)";
       }, 0);
     });
   }
@@ -615,8 +615,13 @@ globalThis.SimpleModal = globalThis.SimpleModal || {};
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
 globalThis.SimpleModal.requestAvailability = () => {
-  if (!globalThis.SimpleModal.instance && globalThis.document && globalThis.document.body) {
-    globalThis.SimpleModal.instance = globalThis.document.createElement("simple-modal");
+  if (
+    !globalThis.SimpleModal.instance &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
+    globalThis.SimpleModal.instance =
+      globalThis.document.createElement("simple-modal");
     globalThis.document.body.appendChild(globalThis.SimpleModal.instance);
   }
   return globalThis.SimpleModal.instance;

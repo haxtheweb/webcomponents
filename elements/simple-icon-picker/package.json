@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-icon-picker.css",
-      "scss": "src/simple-icon-picker.scss",
+      "css": "src/simple-icon-picker.css",
       "html": "src/simple-icon-picker.html",
       "js": "src/simple-icon-picker.js",
       "properties": "src/simple-icon-picker-properties.json",

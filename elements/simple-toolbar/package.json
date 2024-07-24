@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-toolbar.css",
-      "scss": "src/simple-toolbar.scss",
+      "css": "src/simple-toolbar.css",
       "html": "src/simple-toolbar.html",
       "js": "src/simple-toolbar.js",
       "properties": "src/simple-toolbar-properties.json",

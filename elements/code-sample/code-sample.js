@@ -554,5 +554,5 @@ if ($MrTheCheat) {
     return textarea;
   }
 }
-window.customElements.define(CodeSample.tag, CodeSample);
+globalThis.customElements.define(CodeSample.tag, CodeSample);
 export { CodeSample };

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/voice-recorder.css",
-      "scss": "src/voice-recorder.scss",
+      "css": "src/voice-recorder.css",
       "html": "src/voice-recorder.html",
       "js": "src/voice-recorder.js",
       "properties": "src/voice-recorder-properties.json",

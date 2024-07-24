@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/user-scaffold.css",
-      "scss": "src/user-scaffold.scss",
+      "css": "src/user-scaffold.css",
       "html": "src/user-scaffold.html",
       "js": "src/user-scaffold.js",
       "properties": "src/user-scaffold-properties.json",

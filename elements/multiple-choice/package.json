@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/multiple-choice.css",
-      "scss": "src/multiple-choice.scss",
+      "css": "src/multiple-choice.css",
       "html": "src/multiple-choice.html",
       "js": "src/multiple-choice.js",
       "properties": "src/multiple-choice-properties.json",

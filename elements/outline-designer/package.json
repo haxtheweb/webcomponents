@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/outline-designer.css",
-      "scss": "src/outline-designer.scss",
+      "css": "src/outline-designer.css",
       "html": "src/outline-designer.html",
       "js": "src/outline-designer.js",
       "properties": "src/outline-designer-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/example-haxcms-theme.css",
-      "scss": "src/example-haxcms-theme.scss",
+      "css": "src/example-haxcms-theme.css",
       "html": "src/example-haxcms-theme.html",
       "js": "src/example-haxcms-theme.js",
       "properties": "src/example-haxcms-theme-properties.json",

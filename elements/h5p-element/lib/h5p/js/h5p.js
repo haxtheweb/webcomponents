@@ -31,7 +31,7 @@ if (globalThis.document.documentElement.requestFullScreen) {
    */
   H5P.fullScreenBrowserPrefix = "";
 } else if (globalThis.document.documentElement.webkitRequestFullScreen) {
-  H5P.safariBrowser = navigator.userAgent.match(/version\/([.\d]+)/i);
+  H5P.safariBrowser = globalThis.navigator.userAgent.match(/version\/([.\d]+)/i);
   H5P.safariBrowser =
     H5P.safariBrowser === null ? 0 : parseInt(H5P.safariBrowser[1]);
 

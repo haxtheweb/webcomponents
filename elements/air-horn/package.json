@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/air-horn.css",
-      "scss": "src/air-horn.scss",
+      "css": "src/air-horn.css",
       "html": "src/air-horn.html",
       "js": "src/air-horn.js",
       "properties": "src/air-horn-properties.json",

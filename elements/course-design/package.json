@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/course-design.css",
-      "scss": "src/course-design.scss",
+      "css": "src/course-design.css",
       "html": "src/course-design.html",
       "js": "src/course-design.js",
       "properties": "src/course-design-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/super-daemon.css",
-      "scss": "src/super-daemon.scss",
+      "css": "src/super-daemon.css",
       "html": "src/super-daemon.html",
       "js": "src/super-daemon.js",
       "properties": "src/super-daemon-properties.json",

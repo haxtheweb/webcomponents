@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-datetime.css",
-      "scss": "src/simple-datetime.scss",
+      "css": "src/simple-datetime.css",
       "html": "src/simple-datetime.html",
       "js": "src/simple-datetime.js",
       "properties": "src/simple-datetime-properties.json",

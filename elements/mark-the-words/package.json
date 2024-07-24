@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/mark-the-words.css",
-      "scss": "src/mark-the-words.scss",
+      "css": "src/mark-the-words.css",
       "html": "src/mark-the-words.html",
       "js": "src/mark-the-words.js",
       "properties": "src/mark-the-words-properties.json",

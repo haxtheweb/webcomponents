@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/product-glance.css",
-      "scss": "src/product-glance.scss",
+      "css": "src/product-glance.css",
       "html": "src/product-glance.html",
       "js": "src/product-glance.js",
       "properties": "src/product-glance-properties.json",

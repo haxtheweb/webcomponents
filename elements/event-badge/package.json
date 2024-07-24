@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/event-badge.css",
-      "scss": "src/event-badge.scss",
+      "css": "src/event-badge.css",
       "html": "src/event-badge.html",
       "js": "src/event-badge.js",
       "properties": "src/event-badge-properties.json",

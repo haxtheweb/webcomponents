@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/beaker-broker.css",
-      "scss": "src/beaker-broker.scss",
+      "css": "src/beaker-broker.css",
       "html": "src/beaker-broker.html",
       "js": "src/beaker-broker.js",
       "properties": "src/beaker-broker-properties.json",

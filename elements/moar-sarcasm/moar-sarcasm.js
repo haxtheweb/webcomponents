@@ -84,8 +84,8 @@ class MoarSarcasm extends HTMLElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.styleElement(this);
     }
     this.a11y = "the following is sarcastic:";
     this.say = this.innerText;
@@ -100,8 +100,8 @@ class MoarSarcasm extends HTMLElement {
     if (this.template) {
       this.template.innerHTML = this.html;
     }
-    if (window.ShadyCSS && this.template) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (globalThis.ShadyCSS && this.template) {
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     if (this.shadowRoot && this.template) {
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));

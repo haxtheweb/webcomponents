@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/paper-input-flagged.css",
-      "scss": "src/paper-input-flagged.scss",
+      "css": "src/paper-input-flagged.css",
       "html": "src/paper-input-flagged.html",
       "js": "src/paper-input-flagged.js",
       "properties": "src/paper-input-flagged-properties.json",

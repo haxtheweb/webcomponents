@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/fluid-type.css",
-      "scss": "src/fluid-type.scss",
+      "css": "src/fluid-type.css",
       "html": "src/fluid-type.html",
       "js": "src/fluid-type.js",
       "properties": "src/fluid-type-properties.json",

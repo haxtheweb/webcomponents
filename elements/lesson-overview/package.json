@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/lesson-overview.css",
-      "scss": "src/lesson-overview.scss",
+      "css": "src/lesson-overview.css",
       "html": "src/lesson-overview.html",
       "js": "src/lesson-overview.js",
       "properties": "src/lesson-overview-properties.json",

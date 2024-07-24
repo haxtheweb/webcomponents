@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/flash-card.css",
-      "scss": "src/flash-card.scss",
+      "css": "src/flash-card.css",
       "html": "src/flash-card.html",
       "js": "src/flash-card.js",
       "properties": "src/flash-card-properties.json",

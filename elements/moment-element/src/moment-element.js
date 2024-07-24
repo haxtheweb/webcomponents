@@ -59,13 +59,13 @@ class MomentElement extends LitElement {
     this.to = "";
     const location = new URL("./lib/moment/moment.min.js", import.meta.url)
       .href;
-    window.addEventListener(
+    globalThis.addEventListener(
       "es-bridge-moment-loaded",
       this._momentLoaded.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    window.ESGlobalBridge.requestAvailability().load("moment", location);
+    globalThis.ESGlobalBridge.requestAvailability().load("moment", location);
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

@@ -201,7 +201,7 @@ class WysiwygHax extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-save-body-value",
       this._bodyContentUpdated.bind(this),
       { signal: this.windowControllers.signal },
@@ -231,7 +231,7 @@ class WysiwygHax extends LitElement {
         detail: e.detail,
       }),
     );
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,

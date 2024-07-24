@@ -68,7 +68,7 @@ class DocumentationPlayer extends LitElement {
     return this._getDataString({
       title: label,
       html: this.innerHTML.trim(),
-      head: `<script>window.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/";</script><script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>`,
+      head: `<script>globalThis.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/";</script><script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>`,
     });
   }
 
@@ -129,7 +129,7 @@ class DocumentationPlayer extends LitElement {
     `;
   }
   _injectHAX(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("hax-insert", {
         detail: {
           value: this.haxSchema,

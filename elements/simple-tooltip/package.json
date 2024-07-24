@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-tooltip.css",
-      "scss": "src/simple-tooltip.scss",
+      "css": "src/simple-tooltip.css",
       "html": "src/simple-tooltip.html",
       "js": "src/simple-tooltip.js",
       "properties": "src/simple-tooltip-properties.json",

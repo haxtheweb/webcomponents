@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/undo-manager.css",
-      "scss": "src/undo-manager.scss",
+      "css": "src/undo-manager.css",
       "html": "src/undo-manager.html",
       "js": "src/undo-manager.js",
       "properties": "src/undo-manager-properties.json",

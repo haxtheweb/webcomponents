@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/rpg-character.css",
-      "scss": "src/rpg-character.scss",
+      "css": "src/rpg-character.css",
       "html": "src/rpg-character.html",
       "js": "src/rpg-character.js",
       "properties": "src/rpg-character-properties.json",

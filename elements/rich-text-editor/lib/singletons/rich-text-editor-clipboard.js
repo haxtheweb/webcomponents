@@ -52,7 +52,7 @@ class RichTextEditorClipboard extends LitElement {
     this.__textarea =
       this.__textarea || this.shadowRoot.querySelector("textarea");
     setTimeout(async () => {
-      this.__textarea.value = await navigator.clipboard.readText();
+      this.__textarea.value = await globalThis.navigator.clipboard.readText();
       this.__textarea.focus();
       this.__textarea.select();
       globalThis.document.execCommand("paste");

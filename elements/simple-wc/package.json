@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-wc.css",
-      "scss": "src/simple-wc.scss",
+      "css": "src/simple-wc.css",
       "html": "src/simple-wc.html",
       "js": "src/simple-wc.js",
       "properties": "src/simple-wc-properties.json",

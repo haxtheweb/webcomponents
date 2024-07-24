@@ -200,13 +200,15 @@ class TaggingQuestion extends QuestionElement {
       ? html`
           ${this.showAnswer && !this.isCorrect()
             ? html` <p class="feedback">${this.incorrectText}</p>
-                ${this.querySelector('[slot="feedbackIncorrect"]')
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackIncorrect"]')
                   ? html`<slot name="feedbackIncorrect"></slot>`
                   : ``}`
             : ``}
           ${this.showAnswer && this.isCorrect()
             ? html` <p class="feedback">${this.correctText}</p>
-                ${this.querySelector('[slot="feedbackCorrect"]')
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackCorrect"]')
                   ? html`<slot name="feedbackCorrect"></slot>`
                   : ``}`
             : ``}
@@ -239,7 +241,8 @@ class TaggingQuestion extends QuestionElement {
     </div>
   `
             : ""}
-          ${this.querySelector('[slot="hint"]') &&
+          ${this.querySelector &&
+          this.querySelector('[slot="hint"]') &&
           this.showAnswer &&
           !this.isCorrect()
             ? html`
@@ -249,7 +252,8 @@ class TaggingQuestion extends QuestionElement {
                 </div>
               `
             : ``}
-          ${this.querySelector('[slot="evidence"]') &&
+          ${this.querySelector &&
+          this.querySelector('[slot="evidence"]') &&
           this.showAnswer &&
           this.isCorrect()
             ? html`

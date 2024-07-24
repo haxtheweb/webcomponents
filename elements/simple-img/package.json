@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-img.css",
-      "scss": "src/simple-img.scss",
+      "css": "src/simple-img.css",
       "html": "src/simple-img.html",
       "js": "src/simple-img.js",
       "properties": "src/simple-img-properties.json",

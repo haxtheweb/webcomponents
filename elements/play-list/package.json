@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/play-list.css",
-      "scss": "src/play-list.scss",
+      "css": "src/play-list.css",
       "html": "src/play-list.html",
       "js": "src/play-list.js",
       "properties": "src/play-list-properties.json",

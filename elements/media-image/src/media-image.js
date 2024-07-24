@@ -547,13 +547,17 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
   constructor() {
     super();
     this.round = false;
-    this.modalContent = document.createElement("image-inspector");
-    this.modalContent.noLeft = true;
+    if (globalThis.document) {
+      this.modalContent = globalThis.document.createElement("image-inspector");
+      this.modalContent.noLeft = true;
+    }
     this.modalTitle = "";
-    this.addEventListener(
-      "simple-modal-show",
-      this.__modalShowEvent.bind(this),
-    );
+    if (this.addEventListener) {
+      this.addEventListener(
+        "simple-modal-show",
+        this.__modalShowEvent.bind(this),
+      );
+    }
   }
   /**
    * Only import the definition if they call up the modal because it's a pretty

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/barcode-reader.css",
-      "scss": "src/barcode-reader.scss",
+      "css": "src/barcode-reader.css",
       "html": "src/barcode-reader.html",
       "js": "src/barcode-reader.js",
       "properties": "src/barcode-reader-properties.json",

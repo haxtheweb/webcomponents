@@ -256,8 +256,8 @@ class RelativeHeading extends RelativeHeadingLite {
    * @returns {boolean}
    */
   get anchored() {
-    return window.AnchorBehaviors && window.AnchorBehaviors.getTarget
-      ? window.AnchorBehaviors.getTarget(this)
+    return globalThis.AnchorBehaviors && globalThis.AnchorBehaviors.getTarget
+      ? globalThis.AnchorBehaviors.getTarget(this)
       : false;
   }
 

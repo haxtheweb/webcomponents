@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/pouch-db.css",
-      "scss": "src/pouch-db.scss",
+      "css": "src/pouch-db.css",
       "html": "src/pouch-db.html",
       "js": "src/pouch-db.js",
       "properties": "src/pouch-db-properties.json",

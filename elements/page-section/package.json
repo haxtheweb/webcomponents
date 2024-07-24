@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/page-section.css",
-      "scss": "src/page-section.scss",
+      "css": "src/page-section.css",
       "html": "src/page-section.html",
       "js": "src/page-section.js",
       "properties": "src/page-section-properties.json",

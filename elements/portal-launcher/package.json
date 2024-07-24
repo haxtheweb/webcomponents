@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/portal-launcher.css",
-      "scss": "src/portal-launcher.scss",
+      "css": "src/portal-launcher.css",
       "html": "src/portal-launcher.html",
       "js": "src/portal-launcher.js",
       "properties": "src/portal-launcher-properties.json",

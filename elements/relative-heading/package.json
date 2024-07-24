@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/relative-heading.css",
-      "scss": "src/relative-heading.scss",
+      "css": "src/relative-heading.css",
       "html": "src/relative-heading.html",
       "js": "src/relative-heading.js",
       "properties": "src/relative-heading-properties.json",

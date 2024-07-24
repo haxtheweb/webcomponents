@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/type-writer.css",
-      "scss": "src/type-writer.scss",
+      "css": "src/type-writer.css",
       "html": "src/type-writer.html",
       "js": "src/type-writer.js",
       "properties": "src/type-writer-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/editable-table.css",
-      "scss": "src/editable-table.scss",
+      "css": "src/editable-table.css",
       "html": "src/editable-table.html",
       "js": "src/editable-table.js",
       "properties": "src/editable-table-properties.json",

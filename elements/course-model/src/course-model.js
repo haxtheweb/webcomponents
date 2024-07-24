@@ -35,12 +35,12 @@ class CourseModel extends LitElement {
   static get haxProperties() {
     if (
       !this._sent &&
-      window.HaxStore &&
-      window.HaxStore.instance &&
-      window.HaxStore.instance.ready
+      globalThis.HaxStore &&
+      globalThis.HaxStore.instance &&
+      globalThis.HaxStore.instance.ready
     ) {
       this._sent = true;
-      window.HaxStore.instance.setHaxProperties(
+      globalThis.HaxStore.instance.setHaxProperties(
         {
           api: "1",
           canScale: true,

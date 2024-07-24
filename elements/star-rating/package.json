@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/star-rating.css",
-      "scss": "src/star-rating.scss",
+      "css": "src/star-rating.css",
       "html": "src/star-rating.html",
       "js": "src/star-rating.js",
       "properties": "src/star-rating-properties.json",

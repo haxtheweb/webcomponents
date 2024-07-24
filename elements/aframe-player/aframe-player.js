@@ -231,12 +231,15 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     super.connectedCallback();
     let location = "https://aframe.io/releases/0.9.2/aframe.min.js";
     if (typeof TWEEN === "object") this._aframeLoaded.bind(this);
-    window.addEventListener(
+    globalThis.addEventListener(
       "es-bridge-aframePlayer-loaded",
       this._aframeLoaded.bind(this),
       { signal: this.windowControllers.signal },
     );
-    window.ESGlobalBridge.requestAvailability().load("aframePlayer", location);
+    globalThis.ESGlobalBridge.requestAvailability().load(
+      "aframePlayer",
+      location,
+    );
   }
 
   _aframeLoaded(el) {

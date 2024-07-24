@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/haxor-slevin.css",
-      "scss": "src/haxor-slevin.scss",
+      "css": "src/haxor-slevin.css",
       "html": "src/haxor-slevin.html",
       "js": "src/haxor-slevin.js",
       "properties": "src/haxor-slevin-properties.json",

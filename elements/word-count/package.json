@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/word-count.css",
-      "scss": "src/word-count.scss",
+      "css": "src/word-count.css",
       "html": "src/word-count.html",
       "js": "src/word-count.js",
       "properties": "src/word-count-properties.json",

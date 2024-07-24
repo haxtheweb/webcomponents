@@ -103,21 +103,23 @@ class LunrSearch extends LitElement {
     this.__auto = false;
     this.minScore = 0;
     this.log = false;
-    if (window.WCGlobalBasePath) {
-      this.basePath = window.WCGlobalBasePath;
+    if (globalThis.WCGlobalBasePath) {
+      this.basePath = globalThis.WCGlobalBasePath;
     } else {
       this.basePath =
         new URL("./lunr-search.js", import.meta.url).href + "/../../../";
     }
     const location = `${this.basePath}lunr/lunr.js`;
-    window.addEventListener(
+    globalThis.addEventListener(
       "es-bridge-lunr-loaded",
       this._lunrLoaded.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    window.ESGlobalBridge.requestAvailability().load("lunr", location);
-    if (window.ESGlobalBridge.requestAvailability().imports["lunr"] === true) {
+    globalThis.ESGlobalBridge.requestAvailability().load("lunr", location);
+    if (
+      globalThis.ESGlobalBridge.requestAvailability().imports["lunr"] === true
+    ) {
       setTimeout(() => {
         this.__lunrLoaded = true;
       }, 0);

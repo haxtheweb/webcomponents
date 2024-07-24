@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/clean-one.css",
-      "scss": "src/clean-one.scss",
+      "css": "src/clean-one.css",
       "html": "src/clean-one.html",
       "js": "src/clean-one.js",
       "properties": "src/clean-one-properties.json",

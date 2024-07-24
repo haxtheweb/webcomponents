@@ -58,8 +58,8 @@ export const SecureRequestXhr = function (SuperClass) {
     }
   };
 };
-window.SecureRequest = window.SecureRequest || {};
-window.SecureRequest.xhr = {
+globalThis.SecureRequest = globalThis.SecureRequest || {};
+globalThis.SecureRequest.xhr = {
   // Call this function in your root component.
   setCookies(endPoint, csrfToken) {
     this._eraseCookie("securerequest-endpoint");

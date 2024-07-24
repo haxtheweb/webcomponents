@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/shadow-style.css",
-      "scss": "src/shadow-style.scss",
+      "css": "src/shadow-style.css",
       "html": "src/shadow-style.html",
       "js": "src/shadow-style.js",
       "properties": "src/shadow-style-properties.json",

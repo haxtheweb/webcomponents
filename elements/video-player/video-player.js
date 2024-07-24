@@ -540,6 +540,13 @@ class VideoPlayer extends IntersectionObserverMixin(
   static get tag() {
     return "video-player";
   }
+  // weird looking but allows for SSR support
+  querySelectorAll(query) {
+    if (super.query) {
+      super.querySelectorAll(query);
+    }
+    return [];
+  }
   constructor() {
     super();
     this.windowControllers = new AbortController();

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/lrn-vocab.css",
-      "scss": "src/lrn-vocab.scss",
+      "css": "src/lrn-vocab.css",
       "html": "src/lrn-vocab.html",
       "js": "src/lrn-vocab.js",
       "properties": "src/lrn-vocab-properties.json",

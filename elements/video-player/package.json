@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/video-player.css",
-      "scss": "src/video-player.scss",
+      "css": "src/video-player.css",
       "html": "src/video-player.html",
       "js": "src/video-player.js",
       "properties": "src/video-player-properties.json",

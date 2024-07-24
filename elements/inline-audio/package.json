@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/inline-audio.css",
-      "scss": "src/inline-audio.scss",
+      "css": "src/inline-audio.css",
       "html": "src/inline-audio.html",
       "js": "src/inline-audio.js",
       "properties": "src/inline-audio-properties.json",

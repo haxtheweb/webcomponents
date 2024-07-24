@@ -42,7 +42,7 @@ class AirHorn extends HTMLElement {
     super();
     // set tag for later use
     this.tag = AirHorn.tag;
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
 
     this.attachShadow({ mode: "open" });
 
@@ -66,8 +66,8 @@ class AirHorn extends HTMLElement {
     this.shadowRoot.innerHTML = null;
     this.template.innerHTML = this.html;
 
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }

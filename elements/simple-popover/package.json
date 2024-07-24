@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-popover.css",
-      "scss": "src/simple-popover.scss",
+      "css": "src/simple-popover.css",
       "html": "src/simple-popover.html",
       "js": "src/simple-popover.js",
       "properties": "src/simple-popover-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/bootstrap-theme.css",
-      "scss": "src/bootstrap-theme.scss",
+      "css": "src/bootstrap-theme.css",
       "html": "src/bootstrap-theme.html",
       "js": "src/bootstrap-theme.js",
       "properties": "src/bootstrap-theme-properties.json",

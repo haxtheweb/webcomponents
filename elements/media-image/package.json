@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/media-image.css",
-      "scss": "src/media-image.scss",
+      "css": "src/media-image.css",
       "html": "src/media-image.html",
       "js": "src/media-image.js",
       "properties": "src/media-image-properties.json",

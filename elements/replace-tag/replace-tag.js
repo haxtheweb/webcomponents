@@ -123,11 +123,11 @@ const ReplaceTagSuper = function (SuperClass) {
         // inject autoload tag which self appends
         import("@haxtheweb/wc-autoload/wc-autoload.js").then(() => {
           // force a process to occur if this is the 1st time
-          window.WCAutoload.process().then(() => {
+          globalThis.WCAutoload.process().then(() => {
             // kicks off the definition to load from the registry if its in there
             // the promise ensures everyting in the registry is teed up before
             // the DOM is asked to be processed w/ a definition
-            window.WCAutoload.requestAvailability().registry.loadDefinition(
+            globalThis.WCAutoload.requestAvailability().registry.loadDefinition(
               this.getAttribute("with"),
             );
           });
@@ -286,8 +286,8 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       this.shadowRoot.innerHTML = null;
       this.template.innerHTML = this.html;
 
-      if (window.ShadyCSS) {
-        window.ShadyCSS.prepareTemplate(this.template, this.tag);
+      if (globalThis.ShadyCSS) {
+        globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
       }
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));
     }

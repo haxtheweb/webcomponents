@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/hal-9000.css",
-      "scss": "src/hal-9000.scss",
+      "css": "src/hal-9000.css",
       "html": "src/hal-9000.html",
       "js": "src/hal-9000.js",
       "properties": "src/hal-9000-properties.json",

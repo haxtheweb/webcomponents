@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/mutation-observer-import-mixin.css",
-      "scss": "src/mutation-observer-import-mixin.scss",
+      "css": "src/mutation-observer-import-mixin.css",
       "html": "src/mutation-observer-import-mixin.html",
       "js": "src/mutation-observer-import-mixin.js",
       "properties": "src/mutation-observer-import-mixin-properties.json",

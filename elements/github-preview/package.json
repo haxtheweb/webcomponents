@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/github-preview.css",
-      "scss": "src/github-preview.scss",
+      "css": "src/github-preview.css",
       "html": "src/github-preview.html",
       "js": "src/github-preview.js",
       "properties": "src/github-preview-properties.json",

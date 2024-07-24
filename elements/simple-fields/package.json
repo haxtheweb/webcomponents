@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-fields.css",
-      "scss": "src/simple-fields.scss",
+      "css": "src/simple-fields.css",
       "html": "src/simple-fields.html",
       "js": "src/simple-fields.js",
       "properties": "src/simple-fields-properties.json",

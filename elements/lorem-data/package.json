@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/lorem-data.css",
-      "scss": "src/lorem-data.scss",
+      "css": "src/lorem-data.css",
       "html": "src/lorem-data.html",
       "js": "src/lorem-data.js",
       "properties": "src/lorem-data-properties.json",

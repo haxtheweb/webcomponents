@@ -1260,7 +1260,7 @@ const ChartistRenderSuper = function (SuperClass) {
       this.dataSource = "";
       this.showTable = false;
       this.__chartId = generateResourceID("chart-");
-      window.ESGlobalBridge.requestAvailability();
+      globalThis.ESGlobalBridge.requestAvailability();
       this._loadScripts(
         "chartistLib",
         "lib/chartist/dist/chartist.min.js",
@@ -1610,11 +1610,15 @@ const ChartistRenderSuper = function (SuperClass) {
       let basePath =
         new URL("./chartist-render.js", import.meta.url).href + "/../";
       let location = `${basePath}${path}`;
-      window.addEventListener(`es-bridge-${classname}-loaded`, fnc.bind(this), {
-        signal: this.windowControllers.signal,
-      });
+      globalThis.addEventListener(
+        `es-bridge-${classname}-loaded`,
+        fnc.bind(this),
+        {
+          signal: this.windowControllers.signal,
+        },
+      );
 
-      window.ESGlobalBridge.requestAvailability().load(classname, location);
+      globalThis.ESGlobalBridge.requestAvailability().load(classname, location);
     }
 
     /**

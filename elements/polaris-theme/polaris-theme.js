@@ -504,8 +504,8 @@ class PolarisTheme extends HAXCMSOperationButtons(
   }
 
   appStoreReady(e) {
-    if (window.HaxStore && window.HaxStore.requestAvailability()) {
-      let store = window.HaxStore.requestAvailability();
+    if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
+      let store = globalThis.HaxStore.requestAvailability();
       // elements that are in HAXcms that are injected regardless of what editor says
       // because the CMS controls certain internal connectors
       ["polaris-cta", "polaris-mark", "polaris-story-card", "polaris-tile"].map(
@@ -523,7 +523,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
   constructor() {
     super();
     this.windowControllersLoaded = new AbortController();
-    window.addEventListener(
+    globalThis.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this),
       {
@@ -595,10 +595,10 @@ class PolarisTheme extends HAXCMSOperationButtons(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
       if (store.getInternalRoute() !== 'search') {
-        window.history.replaceState({}, null, "x/search");
+        globalThis.history.replaceState({}, null, "x/search");
       }
       const params = new URLSearchParams(store.currentRouterLocation.search);
-      const input = window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");
+      const input = globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");
       input.focus();
       // if we have a search param already, set it to the field on open
       if (params.get("search")) {

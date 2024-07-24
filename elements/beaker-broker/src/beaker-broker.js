@@ -72,7 +72,7 @@ class BeakerBroker extends LitElement {
    */
   constructor() {
     super();
-    this.datUrl = window.location.host;
+    this.datUrl = globalThis.location.host;
   }
   /**
    * LitElement properties changed

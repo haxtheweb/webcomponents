@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/micro-frontend-registry.css",
-      "scss": "src/micro-frontend-registry.scss",
+      "css": "src/micro-frontend-registry.css",
       "html": "src/micro-frontend-registry.html",
       "js": "src/micro-frontend-registry.js",
       "properties": "src/micro-frontend-registry-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/absolute-position-behavior.css",
-      "scss": "src/absolute-position-behavior.scss",
+      "css": "src/absolute-position-behavior.css",
       "html": "src/absolute-position-behavior.html",
       "js": "src/absolute-position-behavior.js",
       "properties": "src/absolute-position-behavior-properties.json",

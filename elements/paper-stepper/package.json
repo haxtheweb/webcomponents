@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/paper-stepper.css",
-      "scss": "src/paper-stepper.scss",
+      "css": "src/paper-stepper.css",
       "html": "src/paper-stepper.html",
       "js": "src/paper-stepper.js",
       "properties": "src/paper-stepper-properties.json",

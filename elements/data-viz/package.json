@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/data-viz.css",
-      "scss": "src/data-viz.scss",
+      "css": "src/data-viz.css",
       "html": "src/data-viz.html",
       "js": "src/data-viz.js",
       "properties": "src/data-viz-properties.json",

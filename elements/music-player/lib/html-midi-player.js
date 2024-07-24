@@ -862,7 +862,7 @@
         s.default.supported &&
         !s.default.global.AudioContext.prototype._native_createWaveShaper
       ) {
-        var n = navigator.userAgent.toLowerCase();
+        var n = globalThis.navigator.userAgent.toLowerCase();
         if (n.includes("safari") && !n.includes("chrome")) {
           var o = function (t) {
             for (var e in ((this._internalNode =
@@ -9295,7 +9295,7 @@
                 };
                 return (
                   i && (n.audio.deviceId = i.deviceId),
-                  navigator.mediaDevices.getUserMedia(n).then(
+                  globalThis.navigator.mediaDevices.getUserMedia(n).then(
                     function (t) {
                       return (
                         this._stream ||
@@ -9326,7 +9326,7 @@
           );
         }),
         (s.default.UserMedia.enumerateDevices = function () {
-          return navigator.mediaDevices.enumerateDevices().then(function (t) {
+          return globalThis.navigator.mediaDevices.enumerateDevices().then(function (t) {
             return t.filter(function (t) {
               return "audioinput" === t.kind;
             });
@@ -24497,9 +24497,9 @@
               (this.NOTE_OFF = 128);
           }
           async requestMIDIAccess() {
-            return navigator.requestMIDIAccess
+            return globalThis.navigator.requestMIDIAccess
               ? new Promise((t, e) => {
-                  navigator.requestMIDIAccess().then(
+                  globalThis.navigator.requestMIDIAccess().then(
                     (e) => {
                       e.addEventListener("statechange", (t) =>
                         this.initOutputs(e),
@@ -24567,7 +24567,7 @@
               (this.onNotes = new Map());
           }
           async initialize() {
-            await navigator.requestMIDIAccess().then(
+            await globalThis.navigator.requestMIDIAccess().then(
               (t) => this.midiReady(t),
               (t) => console.log("Something went wrong", t),
             );

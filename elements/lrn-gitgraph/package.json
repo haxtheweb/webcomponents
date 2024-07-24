@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/lrn-gitgraph.css",
-      "scss": "src/lrn-gitgraph.scss",
+      "css": "src/lrn-gitgraph.css",
       "html": "src/lrn-gitgraph.html",
       "js": "src/lrn-gitgraph.js",
       "properties": "src/lrn-gitgraph-properties.json",

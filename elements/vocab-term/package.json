@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/vocab-term.css",
-      "scss": "src/vocab-term.scss",
+      "css": "src/vocab-term.css",
       "html": "src/vocab-term.html",
       "js": "src/vocab-term.js",
       "properties": "src/vocab-term-properties.json",

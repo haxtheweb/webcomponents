@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/wc-autoload.css",
-      "scss": "src/wc-autoload.scss",
+      "css": "src/wc-autoload.css",
       "html": "src/wc-autoload.html",
       "js": "src/wc-autoload.js",
       "properties": "src/wc-autoload-properties.json",

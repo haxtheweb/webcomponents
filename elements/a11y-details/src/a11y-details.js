@@ -501,7 +501,7 @@ class A11yDetails extends LitElement {
     let slot = this.querySelector(`[slot=${slotName}]`);
     if (slot && slot.tagName !== tagName) slot.remove();
     if (!slot) {
-      slot = document.createElement(tagName);
+      slot = globalThis.document.createElement(tagName);
       slot.slot = slotName;
       this.append(slot);
     }

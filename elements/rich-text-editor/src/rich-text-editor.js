@@ -368,24 +368,24 @@ const RichTextEditorBehaviors = function (SuperClass) {
         let toolbar,
           filter = !this.toolbarId
             ? []
-            : (window.RichTextEditorToolbars || []).filter(
+            : (globalThis.RichTextEditorToolbars || []).filter(
                 (toolbar) => toolbar.id === this.toolbarId,
               );
         //get toolbar by type
         if (filter.length === 0) {
           filter = !this.type
             ? []
-            : (window.RichTextEditorToolbars || []).filter(
+            : (globalThis.RichTextEditorToolbars || []).filter(
                 (toolbar) => toolbar.type === this.type,
               );
         }
         //get any toolbar
-        if (filter.length === 0) filter = window.RichTextEditorToolbars;
+        if (filter.length === 0) filter = globalThis.RichTextEditorToolbars;
         if (filter[0]) {
           toolbar = filter[0];
         } else if (filter.length === 0) {
           //make toolbar
-          toolbar = document.createElement(
+          toolbar = globalThis.document.createElement(
             this.type || "rich-text-editor-toolbar",
           );
         }

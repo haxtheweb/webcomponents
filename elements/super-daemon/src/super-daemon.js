@@ -112,7 +112,7 @@ class SuperDaemon extends SimpleColors {
     this.programResults = [];
     this.programName = null;
     this.commandContext = "*";
-    const isSafari = window.safari !== undefined;
+    const isSafari = globalThis.safari !== undefined;
     if (isSafari) {
       this.key1 = "Meta";
     } else {
@@ -123,40 +123,40 @@ class SuperDaemon extends SimpleColors {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("keydown", this.keyHandler.bind(this), {
+    globalThis.addEventListener("keydown", this.keyHandler.bind(this), {
       signal: this.windowControllers.signal,
     });
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "super-daemon-define-option",
       this.defineOptionEvent.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "super-daemon-element-method",
       this.elementMethod.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "super-daemon-element-click",
       this.elementClick.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "super-daemon-run-program",
       this.runProgramEvent.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "super-daemon-voice-command",
       this._addVoiceCommand.bind(this),
       { signal: this.windowControllers.signal },
     );
-    window.addEventListener("super-daemon-close", this.close.bind(this), {
+    globalThis.addEventListener("super-daemon-close", this.close.bind(this), {
       signal: this.windowControllers.signal,
     });
   }
@@ -535,7 +535,7 @@ class SuperDaemon extends SimpleColors {
       // this happens when other parts of the program invoke close() directly
       // as opposed to the event of selecting a result
       if (!e || e.type !== "super-daemon-close") {
-        window.dispatchEvent(
+        globalThis.dispatchEvent(
           new CustomEvent("super-daemon-close", {
             bubbles: true,
             composed: true,
@@ -546,7 +546,7 @@ class SuperDaemon extends SimpleColors {
       }
       // we have an event, but not a close event
       if (e && e.type !== "super-daemon-close" && e.type !== "close") {
-        window.dispatchEvent(
+        globalThis.dispatchEvent(
           new CustomEvent("super-daemon-toast-hide", {
             bubbles: true,
             composed: true,
@@ -561,9 +561,9 @@ class SuperDaemon extends SimpleColors {
       bubbles: true,
       cancelable: true,
     });
-    document.dispatchEvent(event);
+    globalThis.document.dispatchEvent(event);
     this.windowControllers2.abort();
-    if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
+    if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
       this.shadowRoot
         .querySelector("web-dialog")
         .shadowRoot.querySelector("#backdrop").style.position = "relative";
@@ -650,7 +650,7 @@ class SuperDaemon extends SimpleColors {
       if (e.target !== this) {
         this.miniCancel();
       } else {
-        window.addEventListener("click", this.clickOnMiniMode.bind(this), {
+        globalThis.addEventListener("click", this.clickOnMiniMode.bind(this), {
           once: true,
           passive: true,
           signal: this.windowControllers2.signal,
@@ -695,7 +695,7 @@ class SuperDaemon extends SimpleColors {
         capture: true,
         passive: true,
       });
-      if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
+      if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
         this.shadowRoot
           .querySelector("web-dialog")
           .shadowRoot.querySelector("#backdrop").style.position = "fixed";
@@ -719,7 +719,7 @@ class SuperDaemon extends SimpleColors {
       this.windowControllers2 = new AbortController();
       // ensure if we click away from the UI that we close and clean up
       if (this.mini) {
-        window.addEventListener("click", this.clickOnMiniMode.bind(this), {
+        globalThis.addEventListener("click", this.clickOnMiniMode.bind(this), {
           once: true,
           passive: true,
           signal: this.windowControllers2.signal,
@@ -731,7 +731,7 @@ class SuperDaemon extends SimpleColors {
   focusout(e) {
     if (e) {
       let parent = e.relatedTarget;
-      while (parent !== document.body && parent !== null) {
+      while (parent !== globalThis.document.body && parent !== null) {
         if (parent === this.shadowRoot.querySelector("super-daemon-ui")) {
           return;
         }
@@ -935,27 +935,27 @@ class SuperDaemon extends SimpleColors {
     this.addVoiceCommand(`scroll`, this, "scroll");
 
     this.voiceCommands[`scroll up`] = (response) => {
-      window.scrollBy({
-        top: -(window.innerHeight * 0.5),
+      globalThis.scrollBy({
+        top: -(globalThis.innerHeight * 0.5),
         left: 0,
         behavior: "smooth",
       });
     };
     this.voiceCommands[`scroll (down)`] = (response) => {
-      window.scrollBy({
-        top: window.innerHeight * 0.5,
+      globalThis.scrollBy({
+        top: globalThis.innerHeight * 0.5,
         left: 0,
         behavior: "smooth",
       });
     };
     this.voiceCommands[`scroll (to) bottom`] = (response) => {
-      window.scrollTo(0, document.body.scrollHeight);
+      globalThis.scrollTo(0, globalThis.document.body.scrollHeight);
     };
     this.voiceCommands[`scroll (to) top`] = (response) => {
-      window.scrollTo(0, 0);
+      globalThis.scrollTo(0, 0);
     };
     this.voiceCommands[`back to top`] = (response) => {
-      window.scrollTo(0, 0);
+      globalThis.scrollTo(0, 0);
     };
 
     this.voiceCommands["(run) program"] = (response) => {
@@ -1010,7 +1010,7 @@ class SuperDaemon extends SimpleColors {
     }
     if (changedProperties.has("voiceSearch") && this.voiceSearch) {
       import("@haxtheweb/hal-9000/hal-9000.js").then(() => {
-        this.hal = window.Hal9000.requestAvailability();
+        this.hal = globalThis.Hal9000.requestAvailability();
         this.hal.debug = false; // enable to see all available commands in console
         this.hal.toast = true;
         this.defaultVoiceCommands();
@@ -1021,20 +1021,20 @@ class SuperDaemon extends SimpleColors {
     // align state of voice enabled with hal
     if (changedProperties.has("listeningForInput") && this.hal) {
       this.hal.enabled = this.listeningForInput;
-      if (window.HAXCMS) {
+      if (globalThis.HAXCMS) {
         if (this.listeningForInput) {
-          window.HAXCMS.instance.setCursor("hax:loading");
-          window.HAXCMS.instance.setFavicon("hax:loading");
+          globalThis.HAXCMS.instance.setCursor("hax:loading");
+          globalThis.HAXCMS.instance.setFavicon("hax:loading");
         } else {
-          window.HAXCMS.instance.resetCursor();
-          window.HAXCMS.instance.resetFavicon();
+          globalThis.HAXCMS.instance.resetCursor();
+          globalThis.HAXCMS.instance.resetFavicon();
         }
       }
       clearTimeout(this._listeningTimeout);
       this._listeningTimeout = setTimeout(() => {
         // if we shut off, ensure we close the toast
         if (!this.listeningForInput && !this.__closeLock) {
-          window.dispatchEvent(
+          globalThis.dispatchEvent(
             new CustomEvent("super-daemon-toast-hide", {
               bubbles: true,
               composed: true,
@@ -1163,13 +1163,14 @@ customElements.define(SuperDaemon.tag, SuperDaemon);
 export { SuperDaemon };
 
 // register globally so we can make sure there is only one
-window.SuperDaemonManager = window.SuperDaemonManager || {};
-window.SuperDaemonManager.requestAvailability = () => {
-  if (!window.SuperDaemonManager.instance) {
-    window.SuperDaemonManager.instance = document.createElement("super-daemon");
-    document.body.appendChild(window.SuperDaemonManager.instance);
+globalThis.SuperDaemonManager = globalThis.SuperDaemonManager || {};
+globalThis.SuperDaemonManager.requestAvailability = () => {
+  if (!globalThis.SuperDaemonManager.instance) {
+    globalThis.SuperDaemonManager.instance =
+    globalThis.document.createElement("super-daemon");
+      globalThis.document.body.appendChild(globalThis.SuperDaemonManager.instance);
   }
-  return window.SuperDaemonManager.instance;
+  return globalThis.SuperDaemonManager.instance;
 };
 export const SuperDaemonInstance =
-  window.SuperDaemonManager.requestAvailability();
+  globalThis.SuperDaemonManager.requestAvailability();

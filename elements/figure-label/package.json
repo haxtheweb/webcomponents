@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/figure-label.css",
-      "scss": "src/figure-label.scss",
+      "css": "src/figure-label.css",
       "html": "src/figure-label.html",
       "js": "src/figure-label.js",
       "properties": "src/figure-label-properties.json",

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/image-inspector.css",
-      "scss": "src/image-inspector.scss",
+      "css": "src/image-inspector.css",
       "html": "src/image-inspector.html",
       "js": "src/image-inspector.js",
       "properties": "src/image-inspector-properties.json",

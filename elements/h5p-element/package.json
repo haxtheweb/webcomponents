@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/h5p-element.css",
-      "scss": "src/h5p-element.scss",
+      "css": "src/h5p-element.css",
       "html": "src/h5p-element.html",
       "js": "src/h5p-element.js",
       "properties": "src/h5p-element-properties.json",

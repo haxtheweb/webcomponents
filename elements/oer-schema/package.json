@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/oer-schema.css",
-      "scss": "src/oer-schema.scss",
+      "css": "src/oer-schema.css",
       "html": "src/oer-schema.html",
       "js": "src/oer-schema.js",
       "properties": "src/oer-schema-properties.json",

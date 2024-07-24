@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/dynamic-import-registry.css",
-      "scss": "src/dynamic-import-registry.scss",
+      "css": "src/dynamic-import-registry.css",
       "html": "src/dynamic-import-registry.html",
       "js": "src/dynamic-import-registry.js",
       "properties": "src/dynamic-import-registry-properties.json",

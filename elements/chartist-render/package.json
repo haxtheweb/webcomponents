@@ -6,10 +6,10 @@
     "elementName": "chartist-render",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": false,
-    "useSass": true,
+    "useSass": false,
     "files": {
       "css": "src/chartist-render.css",
-      "scss": "src/chartist-render.scss",
+      "css": "src/chartist-render.css",
       "html": "src/chartist-render.html",
       "js": "src/chartist-render.js",
       "properties": "src/chartist-render-properties.json",

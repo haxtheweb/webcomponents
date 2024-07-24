@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/date-card.css",
-      "scss": "src/date-card.scss",
+      "css": "src/date-card.css",
       "html": "src/date-card.html",
       "js": "src/date-card.js",
       "properties": "src/date-card-properties.json",

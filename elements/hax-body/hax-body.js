@@ -425,7 +425,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       context: this,
       namespace: "hax",
     });
-    if (!window.HaxUiStyles) {
+    if (!globalThis.HaxUiStyles) {
       globalThis.HaxUiStyles = document.createElement("div");
       let s = document.createElement("style"),
         css = HaxUiBaseStyles.map((st) => st.cssText).join("");
@@ -2926,29 +2926,29 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // helps ensure correct state attachment and detachment
       this.windowControllers = new AbortController();
 
-      window.addEventListener(
+      globalThis.addEventListener(
         "hax-context-item-selected",
         this._haxContextOperation,
         { signal: this.windowControllers.signal },
       );
-      window.addEventListener(
+      globalThis.addEventListener(
         "hax-toggle-active-node-lock",
         this._toggleNodeLocking,
         { signal: this.windowControllers.signal },
       );
-      window.addEventListener("click", this.scrollerFixclickEvent, {
+      globalThis.addEventListener("click", this.scrollerFixclickEvent, {
         signal: this.windowControllers.signal,
       });
-      window.addEventListener("blur", this.blurEvent, {
+      globalThis.addEventListener("blur", this.blurEvent, {
         signal: this.windowControllers.signal,
       });
-      window.addEventListener("keydown", this._onKeyDown, {
+      globalThis.addEventListener("keydown", this._onKeyDown, {
         signal: this.windowControllers.signal,
       });
-      window.addEventListener("keyup", this._onKeyUp, {
+      globalThis.addEventListener("keyup", this._onKeyUp, {
         signal: this.windowControllers.signal,
       });
-      window.addEventListener("resize", this._keepContextVisible, {
+      globalThis.addEventListener("resize", this._keepContextVisible, {
         passive: true,
         signal: this.windowControllers.signal,
       });
@@ -3896,7 +3896,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     var viewportHeight = document.documentElement.clientHeight;
 
     // Next, we need to determine if the mouse is within the "edge" of the
-    // viewport, which may require scrolling the window. To do this, we need to
+    // viewport, which may require scrolling the window . To do this, we need to
     // calculate the boundaries of the edge in the viewport (these coordinates
     // are relative to the viewport grid system).
     var edgeTop = edgeSize;
@@ -3967,8 +3967,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // or False depending on whether or not the window scroll was changed.
     function adjustWindowScroll() {
       // Get the current scroll position of the document.
-      var currentScrollX = window.pageXOffset;
-      var currentScrollY = window.pageYOffset;
+      var currentScrollX = globalThis.pageXOffset;
+      var currentScrollY = globalThis.pageYOffset;
 
       // Determine if the window can be scrolled in any particular direction.
       var canScrollUp = currentScrollY > 0;
@@ -4107,7 +4107,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   async _activeNodeChanged(newValue, oldValue) {
     // close any open popover items
-    window.SimplePopoverManager.requestAvailability().opened = false;
+    globalThis.SimplePopoverManager.requestAvailability().opened = false;
     this.contextMenus.plate.disableDuplicate = false;
     this.contextMenus.plate.disableOps = false;
     this.contextMenus.plate.disableItemOps = false;
@@ -4251,8 +4251,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           let basePath =
             new URL("./hax-body.js", import.meta.url).href + "/../../../";
           // support base path global override
-          if (window.WCGlobalBasePath) {
-            basePath = window.WCGlobalBasePath;
+          if (globalThis.WCGlobalBasePath) {
+            basePath = globalThis.WCGlobalBasePath;
           }
           await import(`${basePath}${newSchema.editingElement.import}`);
         }

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/file-system-broker.css",
-      "scss": "src/file-system-broker.scss",
+      "css": "src/file-system-broker.css",
       "html": "src/file-system-broker.html",
       "js": "src/file-system-broker.js",
       "properties": "src/file-system-broker-properties.json",

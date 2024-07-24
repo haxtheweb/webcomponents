@@ -1060,7 +1060,7 @@ export { SimpleColorsSharedStyles };
  */
 globalThis.SimpleColorsSharedStyles.requestAvailability = () => {
   if (globalThis.SimpleColorsSharedStyles.instance == null) {
-    globalThis.SimpleColorsSharedStyles.instance = document.createElement(
+    globalThis.SimpleColorsSharedStyles.instance = globalThis.document.createElement(
       "simple-colors-shared-styles",
     );
     globalThis.SimpleColorsSharedStyles.colors =
@@ -1068,9 +1068,9 @@ globalThis.SimpleColorsSharedStyles.requestAvailability = () => {
     globalThis.SimpleColorsSharedStyles.contrasts =
       globalThis.SimpleColorsSharedStyles.instance.contrasts;
     globalThis.SimpleColorsSharedStyles.stylesheet =
-      document.createElement("style");
+    globalThis.document.createElement("style");
     globalThis.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
-    document.head.appendChild(globalThis.SimpleColorsSharedStyles.stylesheet);
+    globalThis.document.head.appendChild(globalThis.SimpleColorsSharedStyles.stylesheet);
   }
   return globalThis.SimpleColorsSharedStyles.instance;
 };

@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/image-compare-slider.css",
-      "scss": "src/image-compare-slider.scss",
+      "css": "src/image-compare-slider.css",
       "html": "src/image-compare-slider.html",
       "js": "src/image-compare-slider.js",
       "properties": "src/image-compare-slider-properties.json",

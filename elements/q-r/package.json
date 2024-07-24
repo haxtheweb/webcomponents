@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/q-r.css",
-      "scss": "src/q-r.scss",
+      "css": "src/q-r.css",
       "html": "src/q-r.html",
       "js": "src/q-r.js",
       "properties": "src/q-r-properties.json",

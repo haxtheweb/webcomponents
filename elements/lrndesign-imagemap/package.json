@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/lrndesign-imagemap.css",
-      "scss": "src/lrndesign-imagemap.scss",
+      "css": "src/lrndesign-imagemap.css",
       "html": "src/lrndesign-imagemap.html",
       "js": "src/lrndesign-imagemap.js",
       "properties": "src/lrndesign-imagemap-properties.json",

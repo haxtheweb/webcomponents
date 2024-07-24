@@ -39,7 +39,7 @@ class FileSystemBroker extends HTMLElement {
     let accept = this.typeToAccept(type);
     let fileHandle;
     let description = `${type} file`;
-    [fileHandle] = await window.showOpenFilePicker({
+    [fileHandle] = await globalThis.showOpenFilePicker({
       types: [
         {
           description: description,
@@ -108,7 +108,7 @@ class FileSystemBroker extends HTMLElement {
         },
       ],
     };
-    this.fileHandler = await window.showSaveFilePicker(options);
+    this.fileHandler = await globalThis.showSaveFilePicker(options);
     // Create a FileSystemWritableFileStream to write to.
     const writable = await this.fileHandler.createWritable();
     // Write the contents of the file to the stream.
@@ -121,7 +121,7 @@ class FileSystemBroker extends HTMLElement {
    */
   async openDir(recursive = true, options = {}) {
     try {
-      this.dirHandler = await window.showDirectoryPicker(options);
+      this.dirHandler = await globalThis.showDirectoryPicker(options);
     } catch (e) {
       console.warn(e);
     }
@@ -136,7 +136,7 @@ class FileSystemBroker extends HTMLElement {
   }
   async readFileInDir(fileName, options = {}) {
     try {
-      this.dirHandler = await window.showDirectoryPicker(options);
+      this.dirHandler = await globalThis.showDirectoryPicker(options);
       // need to load references found in the directory
       for await (const entry of this.dirHandler.values()) {
         if (
@@ -156,7 +156,7 @@ class FileSystemBroker extends HTMLElement {
   }
   async writeFileInDir(fileName, content = "", options = {}) {
     try {
-      this.dirHandler = await window.showDirectoryPicker(options);
+      this.dirHandler = await globalThis.showDirectoryPicker(options);
       // need to load references found in the directory
       for await (const entry of this.dirHandler.values()) {
         if (
@@ -207,18 +207,23 @@ class FileSystemBroker extends HTMLElement {
   }
 }
 // register globally so we can make sure there is only one
-window.FileSystemBroker = window.FileSystemBroker || {};
-window.FileSystemBroker.requestAvailability = () => {
+globalThis.FileSystemBroker = globalThis.FileSystemBroker || {};
+globalThis.FileSystemBroker.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.FileSystemBroker.instance) {
-    window.FileSystemBroker.instance =
+  if (
+    !globalThis.FileSystemBroker.instance &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
+    globalThis.FileSystemBroker.instance =
       document.createElement("file-system-broker");
-    document.body.appendChild(window.FileSystemBroker.instance);
+    globalThis.document.body.appendChild(globalThis.FileSystemBroker.instance);
   }
-  return window.FileSystemBroker.instance;
+  return globalThis.FileSystemBroker.instance;
 };
 // forces appending
-const FileSystemBrokerSingleton = window.FileSystemBroker.requestAvailability();
+const FileSystemBrokerSingleton =
+  globalThis.FileSystemBroker.requestAvailability();
 
 customElements.define(FileSystemBroker.tag, FileSystemBroker);
 export { FileSystemBroker, FileSystemBrokerSingleton };

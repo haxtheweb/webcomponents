@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/accent-card.css",
-      "scss": "src/accent-card.scss",
+      "css": "src/accent-card.css",
       "html": "src/accent-card.html",
       "js": "src/accent-card.js",
       "properties": "src/accent-card-properties.json",

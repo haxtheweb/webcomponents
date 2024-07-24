@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/lazy-image-helpers.css",
-      "scss": "src/lazy-image-helpers.scss",
+      "css": "src/lazy-image-helpers.css",
       "html": "src/lazy-image-helpers.html",
       "js": "src/lazy-image-helpers.js",
       "properties": "src/lazy-image-helpers-properties.json",

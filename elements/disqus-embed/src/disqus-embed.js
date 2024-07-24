@@ -76,7 +76,7 @@ class DisqusEmbed extends LitElement {
         DisqusInstance.createEmbedScript(this, this.shortName);
       }
       // on ANY change to the element let's rebuild the configuration except initial shortName setting
-      if (propName !== "shortName" && window.DISQUS) {
+      if (propName !== "shortName" && globalThis.DISQUS) {
         clearTimeout(this._timeout);
         this._timeout = setTimeout(() => {
           DisqusInstance.rebuildConfiguration(
@@ -173,7 +173,7 @@ class DisqusBroker extends LitElement {
     this.renderTarget = target;
     this.innerHTML = "";
     if (!this._embed) {
-      this._embed = document.createElement("script");
+      this._embed = globalThis.document.createElement("script");
       this._embed.setAttribute("data-timestamp", +new Date());
       this._embed.type = "text/javascript";
       this._embed.async = true;
@@ -184,14 +184,14 @@ class DisqusBroker extends LitElement {
 
   // when anything changes we need to ensure that we rebuild / reset Disqus object
   rebuildConfiguration(target, identifier, url, title, lang) {
-    if (window.DISQUS) {
+    if (globalThis.DISQUS) {
       this.renderTarget = target;
       this.innerHTML = "";
       while (this.renderTarget.childNodes.length > 0) {
         this.appendChild(this.renderTarget.childNodes[0]);
       }
       setTimeout(() => {
-        window.DISQUS.reset({
+        globalThis.DISQUS.reset({
           reload: true,
           config: function () {
             this.page.identifier = identifier;
@@ -241,23 +241,29 @@ class DisqusBroker extends LitElement {
 customElements.define(DisqusBroker.tag, DisqusBroker);
 export { DisqusBroker };
 
-window.DisqusSingleton = window.DisqusSingleton || {};
-window.DisqusSingleton.requestAvailability = () => {
-  if (!window.DisqusSingleton.instance) {
-    window.DisqusSingleton.instance = document.createElement(DisqusBroker.tag);
-    document.body.insertAdjacentElement(
+globalThis.DisqusSingleton = globalThis.DisqusSingleton || {};
+globalThis.DisqusSingleton.requestAvailability = () => {
+  if (
+    !globalThis.DisqusSingleton.instance &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
+    globalThis.DisqusSingleton.instance = globalThis.document.createElement(
+      DisqusBroker.tag,
+    );
+    globalThis.document.body.insertAdjacentElement(
       "afterbegin",
-      window.DisqusSingleton.instance,
+      globalThis.DisqusSingleton.instance,
     );
   }
-  return window.DisqusSingleton.instance;
+  return globalThis.DisqusSingleton.instance;
 };
 // most common way to access registry
-export const DisqusInstance = window.DisqusSingleton.requestAvailability();
+export const DisqusInstance = globalThis.DisqusSingleton.requestAvailability();
 
 // set initially and then modify based on prop changes in tag
-window.disqus_config =
-  window.disqus_config ||
+globalThis.disqus_config =
+  globalThis.disqus_config ||
   function () {
     this.language = "en";
     this.callbacks.onReady = [

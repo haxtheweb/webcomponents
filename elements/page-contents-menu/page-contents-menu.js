@@ -509,7 +509,7 @@ class PageContentsMenu extends DDD {
       let activeFound = false;
       // viewport height
       let browserViewport =
-        window.innerHeight || document.documentElement.clientHeight;
+        globalThis.innerHeight || document.documentElement.clientHeight;
       this.items.forEach((value, i) => {
         if (
           this.contentContainer &&

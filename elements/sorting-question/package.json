@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/sorting-question.css",
-      "scss": "src/sorting-question.scss",
+      "css": "src/sorting-question.css",
       "html": "src/sorting-question.html",
       "js": "src/sorting-question.js",
       "properties": "src/sorting-question-properties.json",

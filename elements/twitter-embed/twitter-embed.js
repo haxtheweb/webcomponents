@@ -86,7 +86,7 @@ class TwitterEmbed extends LitElement {
    * Supply translations for the UI elements of HAX in meme-maker
    */
   haxgizmoRegistration(store) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `twitter-embed.haxProperties`,

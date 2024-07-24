@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/wikipedia-query.css",
-      "scss": "src/wikipedia-query.scss",
+      "css": "src/wikipedia-query.css",
       "html": "src/wikipedia-query.html",
       "js": "src/wikipedia-query.js",
       "properties": "src/wikipedia-query-properties.json",

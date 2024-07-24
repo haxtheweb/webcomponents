@@ -495,7 +495,7 @@ class ChatAgent extends DDD {
       let date = new Date();
       const FILE_NAME = `${this.userName}-chat-log-${date.toString().replace(/\s/g, "-")}.${fileType}`;
 
-      let download = document.createElement("a");
+      let download = globalThis.document.createElement("a");
       download.setAttribute(
         "href",
         "data:text/plain;charset=utf-8," + encodeURIComponent(LOG),
@@ -561,8 +561,8 @@ globalThis.ChatAgentModal = globalThis.ChatAgentModal || {};
 // is rendered through the same modal
 globalThis.ChatAgentModal.requestAvailability = () => {
   if (!globalThis.ChatAgentModal.instance) {
-    globalThis.ChatAgentModal.instance = document.createElement("chat-agent");
-    document.body.appendChild(globalThis.ChatAgentModal.instance);
+    globalThis.ChatAgentModal.instance = globalThis.document.createElement("chat-agent");
+    globalThis.document.body.appendChild(globalThis.ChatAgentModal.instance);
   }
   return globalThis.ChatAgentModal.instance;
 };

@@ -40,11 +40,11 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
     this.hideTitle = false;
     const FALLBACK_LANG = "en";
     const language =
-      document.body.getAttribute("xml:lang") ||
-      document.body.getAttribute("lang") ||
-      document.documentElement.getAttribute("xml:lang") ||
-      document.documentElement.getAttribute("lang") ||
-      navigator.language ||
+    globalThis.document.body.getAttribute("xml:lang") ||
+      globalThis.document.body.getAttribute("lang") ||
+      globalThis.document.documentElement.getAttribute("xml:lang") ||
+      globalThis.document.documentElement.getAttribute("lang") ||
+      globalThis.navigator.language ||
       FALLBACK_LANG;
     this.language = language.split("-")[0];
     this.headers = {
@@ -207,7 +207,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
    * @see haxHooks: gizmoRegistration
    */
   haxgizmoRegistration(store) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `wikipedia-query.haxProperties`,
@@ -229,7 +229,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         return false;
       }).length === 0
     ) {
-      window.dispatchEvent(
+      globalThis.dispatchEvent(
         new CustomEvent("hax-register-app", {
           bubbles: false,
           composed: false,

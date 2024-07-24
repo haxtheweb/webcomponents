@@ -6,10 +6,10 @@
     "elementName": "progress-donut",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
-    "useSass": true,
+    "useSass": false,
     "files": {
       "css": "src/progress-donut.css",
-      "scss": "src/progress-donut.scss",
+      "css": "src/progress-donut.css",
       "html": "src/progress-donut.html",
       "js": "src/progress-donut.js",
       "properties": "src/progress-donut-properties.json",

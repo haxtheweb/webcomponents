@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/terrible-themes.css",
-      "scss": "src/terrible-themes.scss",
+      "css": "src/terrible-themes.css",
       "html": "src/terrible-themes.html",
       "js": "src/terrible-themes.js",
       "properties": "src/terrible-themes-properties.json",

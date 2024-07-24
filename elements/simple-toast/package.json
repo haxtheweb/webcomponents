@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/simple-toast.css",
-      "scss": "src/simple-toast.scss",
+      "css": "src/simple-toast.css",
       "html": "src/simple-toast.html",
       "js": "src/simple-toast.js",
       "properties": "src/simple-toast-properties.json",

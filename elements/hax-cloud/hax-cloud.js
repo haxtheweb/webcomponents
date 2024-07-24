@@ -27,7 +27,7 @@ class HaxCloud extends DDD {
     this.windowControllers = new AbortController();
     this.fileRoot = "";
     this.fileObjects = [];
-    if (!window.__haxLogoFontLoaded) {
+    if (!globalThis.__haxLogoFontLoaded) {
       let link = document.createElement("link");
       link.setAttribute(
         "href",
@@ -35,11 +35,15 @@ class HaxCloud extends DDD {
       );
       link.setAttribute("rel", "stylesheet");
       document.head.appendChild(link);
-      window.__haxLogoFontLoaded = true;
+      globalThis.__haxLogoFontLoaded = true;
     }
-    window.addEventListener("manifest-changed", this.loadLocalHax.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      "manifest-changed",
+      this.loadLocalHax.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
   }
 
   disconnectedCallback() {
@@ -195,7 +199,7 @@ class HaxCloud extends DDD {
 
   loadLocalHax() {
     // fake app settings so we get the buttons, it'll be on the userfs to handle the rest
-    window.appSettings = {
+    globalThis.appSettings = {
       login: "dist/dev/login.json",
       logout: "dist/dev/logout.json",
       saveNodePath: "dist/dev/saveNode.json",

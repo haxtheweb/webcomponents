@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/license-element.css",
-      "scss": "src/license-element.scss",
+      "css": "src/license-element.css",
       "html": "src/license-element.html",
       "js": "src/license-element.js",
       "properties": "src/license-element-properties.json",

@@ -110,16 +110,22 @@ export const SimpleIconBehaviors = function (SuperClass) {
       this.dir = this.documentDir;
     }
     get documentDir() {
-      return (
-        globalThis.document.body.getAttribute("xml:dir") ||
-        globalThis.document.body.getAttribute("dir") ||
-        globalThis.document.documentElement.getAttribute("xml:dir") ||
-        globalThis.document.documentElement.getAttribute("dir") ||
-        "ltr"
-      );
+      if (globalThis.document && globalThis.document.body) {
+        return (
+          globalThis.document.body.getAttribute("xml:dir") ||
+          globalThis.document.body.getAttribute("dir") ||
+          globalThis.document.documentElement.getAttribute("xml:dir") ||
+          globalThis.document.documentElement.getAttribute("dir") ||
+          "ltr"
+        );
+      }
+      return "ltr";
     }
     get useSafariPolyfill() {
-      return navigator.userAgent.indexOf("Safari") > -1;
+      return (
+        globalThis.navigator &&
+        globalThis.navigator.userAgent.indexOf("Safari") > -1
+      );
     }
     get safariMask() {
       return this.src && this.useSafariPolyfill

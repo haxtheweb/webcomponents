@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/page-flag.css",
-      "scss": "src/page-flag.scss",
+      "css": "src/page-flag.css",
       "html": "src/page-flag.html",
       "js": "src/page-flag.js",
       "properties": "src/page-flag-properties.json",

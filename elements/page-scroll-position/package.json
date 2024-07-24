@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/page-scroll-position.css",
-      "scss": "src/page-scroll-position.scss",
+      "css": "src/page-scroll-position.css",
       "html": "src/page-scroll-position.html",
       "js": "src/page-scroll-position.js",
       "properties": "src/page-scroll-position-properties.json",

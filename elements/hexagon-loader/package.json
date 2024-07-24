@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/hexagon-loader.css",
-      "scss": "src/hexagon-loader.scss",
+      "css": "src/hexagon-loader.css",
       "html": "src/hexagon-loader.html",
       "js": "src/hexagon-loader.js",
       "properties": "src/hexagon-loader-properties.json",

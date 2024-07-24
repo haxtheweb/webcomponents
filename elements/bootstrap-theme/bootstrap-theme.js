@@ -626,7 +626,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".site-body");
-    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
 
     this._bootstrapLink = this._generateBootstrapLink();
@@ -639,11 +639,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
   _loadScripts() {
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     let jqueryPath = "jquery/dist/jquery.min.js";
-    window.ESGlobalBridge.requestAvailability().load(
+    globalThis.ESGlobalBridge.requestAvailability().load(
       "jquery",
       basePath + jqueryPath,
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       `es-bridge-jquery-loaded`,
       this._jqueryLoaded.bind(this),
     );
@@ -656,11 +656,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
   _loadBootstrap() {
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     let bootstrapPath = "bootstrap/dist/js/bootstrap.bundle.min.js";
-    window.ESGlobalBridge.requestAvailability().load(
+    globalThis.ESGlobalBridge.requestAvailability().load(
       "bootstrap",
       basePath + bootstrapPath,
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       `es-bridge-bootstrap-loaded`,
       this._bootstrapLoaded.bind(this),
     );

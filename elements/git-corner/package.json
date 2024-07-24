@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/git-corner.css",
-      "scss": "src/git-corner.scss",
+      "css": "src/git-corner.css",
       "html": "src/git-corner.html",
       "js": "src/git-corner.js",
       "properties": "src/git-corner-properties.json",

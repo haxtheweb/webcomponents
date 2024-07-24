@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/replace-tag.css",
-      "scss": "src/replace-tag.scss",
+      "css": "src/replace-tag.css",
       "html": "src/replace-tag.html",
       "js": "src/replace-tag.js",
       "properties": "src/replace-tag-properties.json",

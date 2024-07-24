@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/place-holder.css",
-      "scss": "src/place-holder.scss",
+      "css": "src/place-holder.css",
       "html": "src/place-holder.html",
       "js": "src/place-holder.js",
       "properties": "src/place-holder-properties.json",

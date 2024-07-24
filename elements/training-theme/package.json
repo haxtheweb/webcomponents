@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/training-theme.css",
-      "scss": "src/training-theme.scss",
+      "css": "src/training-theme.css",
       "html": "src/training-theme.html",
       "js": "src/training-theme.js",
       "properties": "src/training-theme-properties.json",

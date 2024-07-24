@@ -2,11 +2,15 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-
+import { LitElement } from "lit";
 // register globally so we can make sure there is only one
 globalThis.I18NManagerStore = globalThis.I18NManagerStore || {};
 globalThis.I18NManagerStore.requestAvailability = () => {
-  if (!globalThis.I18NManagerStore.instance && globalThis.document && globalThis.document.body) {
+  if (
+    !globalThis.I18NManagerStore.instance &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
     globalThis.I18NManagerStore.instance =
       globalThis.document.createElement("i18n-manager");
     globalThis.document.body.appendChild(globalThis.I18NManagerStore.instance);
@@ -23,7 +27,7 @@ const FALLBACK_DIR = "ltr";
  * @demo demo/index.html
  * @element i18n-manager
  */
-class I18NManager extends HTMLElement {
+class I18NManager extends LitElement {
   /**
    * HTMLElement
    */
@@ -359,5 +363,5 @@ class I18NManager extends HTMLElement {
     }
   }
 }
-customElements.define(I18NManager.tag, I18NManager);
+globalThis.customElements.define(I18NManager.tag, I18NManager);
 export { I18NManager };

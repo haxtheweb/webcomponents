@@ -9,7 +9,7 @@
     "useSass": false,
     "files": {
       "css": "src/baseline-build-hax.css",
-      "scss": "src/baseline-build-hax.scss",
+      "css": "src/baseline-build-hax.css",
       "html": "src/baseline-build-hax.html",
       "js": "src",
       "properties": "src/baseline-build-hax-properties.json",
