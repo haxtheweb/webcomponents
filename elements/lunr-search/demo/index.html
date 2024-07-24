@@ -10,11 +10,6 @@
     <script>window.WCGlobalBasePath = "/node_modules/";</script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/polymer/lib/elements/dom-bind.js';
-      import "@polymer/iron-list/iron-list.js";
-      import "@polymer/paper-input/paper-input.js";
-      import "@polymer/iron-icons/iron-icons.js";
-      import "@polymer/iron-icon/iron-icon.js";
       import '../lunr-search.js';
     </script>
   </head>
@@ -63,7 +58,7 @@
               }
             </style>
           <paper-input id="input" always-float-label label="Search" value="{{__search}}">
-            <iron-icon icon="search" slot="prefix"></iron-icon>
+            <simple-icon icon="search" slot="prefix"></simple-icon>
           </paper-input>
           <template is="dom-if" if="[[__search]]">
             Found [[__results.length]] results.

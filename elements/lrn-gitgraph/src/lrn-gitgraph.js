@@ -1,5 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "./lib/gitgraphjs/src/gitgraph.js";
+import { LitElement, html, css } from "lit";
 /**
  * `lrn-gitgraph`
  * @element lrn-gitgraph
@@ -9,56 +9,65 @@ import "./lib/gitgraphjs/src/gitgraph.js";
  *   ```
  * @demo demo/index.html
  */
-class LrnGitgraph extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnGitgraph extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           overflow-x: scroll;
         }
-      </style>
-      <canvas id="gitGraph"></canvas>
-    `;
+      `,
+    ];
+  }
+  render() {
+    return html` <canvas id="gitGraph"></canvas> `;
   }
 
   static get tag() {
     return "lrn-gitgraph";
   }
 
+  constructor() {
+    super();
+    this.commits = [];
+    this.template = "blackarrow";
+    this.orientation = "horizontal";
+    this.mode = "";
+    this.reverseArrow = false;
+  }
+
   static get properties() {
     return {
       commits: {
         type: Array,
-        value: [],
       },
       template: {
         type: String,
-        value: "blackarrow",
       },
       orientation: {
         type: String,
-        value: "horizontal",
       },
       mode: {
         type: String,
-        value: "",
       },
       reverseArrow: {
         type: Boolean,
-        value: false,
+        attribute: "reverse-arrow",
       },
-      /**
-       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}
-       */
       config: {
         type: Object,
       },
     };
   }
 
-  static get observers() {
-    return ["_commitsChanged(commits)"];
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("commits")) {
+      this._commitsChanged(this.commits);
+    }
   }
 
   _commitsChanged(commits) {
@@ -76,7 +85,6 @@ class LrnGitgraph extends PolymerElement {
           }
         });
         // remove duplicate commits
-        console.log("befor", tree);
         tree = root._treeRemoveDuplicates(tree);
         // sort by date
         tree = tree.sort(function (a, b) {
@@ -115,19 +123,18 @@ class LrnGitgraph extends PolymerElement {
     return htTree;
   }
 
-  ready() {
-    super.ready();
-    var root = this;
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
     var config = {
-      template: root.template, // could be: "blackarrow" or "metro" or `myTemplate` (custom Template object)
+      template: this.template, // could be: "blackarrow" or "metro" or `myTemplate` (custom Template object)
       reverseArrow: false, // to make arrows point to ancestors, if displayed
-      orientation: root.orientation,
-      element: root.shadowRoot.querySelector("#gitGraph"),
+      orientation: this.orientation,
+      element: this.shadowRoot.querySelector("#gitGraph"),
     };
-    if (root.mode !== "") {
-      config.mode = root.mode;
+    if (this.mode !== "") {
+      config.mode = this.mode;
     }
-    root.config = config;
+    this.config = config;
   }
 }
 customElements.define(LrnGitgraph.tag, LrnGitgraph);

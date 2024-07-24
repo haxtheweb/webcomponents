@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "runkit-embed",
-      "description": "`runkit-embed`\n``\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `data-hax-active` {`string`} - \n\n  * `loading` {`boolean`} - \n\n  * `mode` {`string`} - \n\n  * `node-version` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `source` {`string`} - \n\n  * `dataHaxActive` {`string`} - \n\n  * `__runkitloaded` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `mode` {`string`} - \n\n  * `nodeVersion` {`string`} - \n\n  * `__observer` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`runkit-embed`\n``\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `data-hax-active` {`string`} - \n\n  * `loading` {`boolean`} - \n\n  * `mode` {`string`} - \n\n  * `node-version` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `source` {`string`} - \n\n  * `dataHaxActive` {`string`} - \n\n  * `__runkitloaded` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `mode` {`string`} - \n\n  * `nodeVersion` {`string`} - \n\n  * `__observer` - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "source",
@@ -25,6 +25,11 @@
         {
           "name": "node-version",
           "description": "`node-version` {`string`} - \n\nProperty: nodeVersion\n\nDefault: 18.x.x"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",

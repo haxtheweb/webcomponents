@@ -291,8 +291,7 @@ class PlaceHolder extends SimpleColors {
           "math",
           "text",
         ],
-        handles: [
-        ],
+        handles: [],
         meta: {
           author: "HAXTheWeb core team",
         },

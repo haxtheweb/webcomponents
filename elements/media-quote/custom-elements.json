@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "media-quote",
-      "description": "`media-quote`\n`A quote focused around a piece of media with citation and optional caption`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `quote` {`string`} - \n\n  * `author` {`string`} - \n\n  * `author-detail` {`string`} - \n\n  * `caption` {`string`} - \n\n  * `filter` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `quote` {`string`} - \n\n  * `author` {`string`} - \n\n  * `authorDetail` {`string`} - \n\n  * `caption` {`string`} - \n\n  * `hasFilter` {`boolean`} - \n\n  * `_isCaptionOpen` {`boolean`} - \n\n  * `hasAuthor` {`boolean`} - \n\n  * `hasAuthorDetail` {`boolean`} - \n\n  * `hasCaption` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`media-quote`\n`A quote focused around a piece of media with citation and optional caption`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `quote` {`string`} - \n\n  * `author` {`string`} - \n\n  * `author-detail` {`string`} - \n\n  * `caption` {`string`} - \n\n  * `filter` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `quote` {`string`} - \n\n  * `author` {`string`} - \n\n  * `authorDetail` {`string`} - \n\n  * `caption` {`string`} - \n\n  * `hasFilter` {`boolean`} - \n\n  * `_isCaptionOpen` {`boolean`} - \n\n  * `hasAuthor` {`boolean`} - \n\n  * `hasAuthorDetail` {`boolean`} - \n\n  * `hasCaption` {`boolean`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "src",
@@ -32,6 +32,11 @@
         {
           "name": "filter",
           "description": "`filter` {`boolean`} - \n\nProperty: hasFilter\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
           "valueSet": "v"
         },
         {

@@ -143,7 +143,8 @@ class TwitterEmbed extends LitElement {
       if (
         propName === "tweet" &&
         this[propName] &&
-        (this[propName].includes("twitter.com") || this[propName].includes("x.com"))
+        (this[propName].includes("twitter.com") ||
+          this[propName].includes("x.com"))
       ) {
         this.tweetId = this[propName].split("/").pop();
       }

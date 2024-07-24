@@ -2476,8 +2476,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         icon: "image:image",
         color: "blue-grey",
         tags: ["Images", "media", "img", "html"],
-        handles: [
-        ],
+        handles: [],
         meta: {
           author: "W3C",
           hidden: true,

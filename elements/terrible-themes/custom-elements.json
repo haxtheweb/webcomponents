@@ -29,6 +29,10 @@
           "type": "object"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "editting state for the page",
           "type": "boolean",
@@ -114,6 +118,11 @@
           "attribute": "contentContainer",
           "description": "DOM node that wraps the slot",
           "type": "object"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -247,6 +256,10 @@
           "type": "object"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "editting state for the page",
           "type": "boolean",
@@ -332,6 +345,11 @@
           "attribute": "contentContainer",
           "description": "DOM node that wraps the slot",
           "type": "object"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -465,6 +483,10 @@
           "type": "object"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "editting state for the page",
           "type": "boolean",
@@ -550,6 +572,11 @@
           "attribute": "contentContainer",
           "description": "DOM node that wraps the slot",
           "type": "object"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -693,6 +720,10 @@
           "type": "object"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "editting state for the page",
           "type": "boolean",
@@ -790,6 +821,11 @@
           "attribute": "contentContainer",
           "description": "DOM node that wraps the slot",
           "type": "object"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -933,6 +969,10 @@
           "type": "object"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "editting state for the page",
           "type": "boolean",
@@ -1030,6 +1070,11 @@
           "attribute": "contentContainer",
           "description": "DOM node that wraps the slot",
           "type": "object"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -1163,6 +1208,10 @@
           "type": "object"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "editting state for the page",
           "type": "boolean",
@@ -1248,6 +1297,11 @@
           "attribute": "contentContainer",
           "description": "DOM node that wraps the slot",
           "type": "object"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -1381,6 +1435,10 @@
           "type": "object"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "editting state for the page",
           "type": "boolean",
@@ -1466,6 +1524,11 @@
           "attribute": "contentContainer",
           "description": "DOM node that wraps the slot",
           "type": "object"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -1599,6 +1662,10 @@
           "type": "object"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "editting state for the page",
           "type": "boolean",
@@ -1684,6 +1751,11 @@
           "attribute": "contentContainer",
           "description": "DOM node that wraps the slot",
           "type": "object"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -1817,6 +1889,10 @@
           "type": "object"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "editting state for the page",
           "type": "boolean",
@@ -1902,6 +1978,11 @@
           "attribute": "contentContainer",
           "description": "DOM node that wraps the slot",
           "type": "object"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "editMode",

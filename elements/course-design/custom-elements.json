@@ -27,7 +27,7 @@
     },
     {
       "name": "block-quote",
-      "description": "Attributes:\n\n  * `citation` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `citation` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `citation` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `citation` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "citation",
@@ -42,6 +42,11 @@
           "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
         },
         {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
+        {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
@@ -54,7 +59,7 @@
     },
     {
       "name": "course-intro-header",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `backgroundImage` {`string`} - \n\n  * `color` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `backgroundImage` {`string`} - \n\n  * `color` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `backgroundImage` {`string`} - \n\n  * `color` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `backgroundImage` {`string`} - \n\n  * `color` {`string`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "title",
@@ -77,6 +82,11 @@
           "description": "`color` {`string`} - \n\nProperty: color\n\nDefault: "
         },
         {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
+        {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
@@ -89,7 +99,7 @@
     },
     {
       "name": "course-intro-lesson-plan",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "title",
@@ -98,6 +108,11 @@
         {
           "name": "link",
           "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: "
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
@@ -112,11 +127,16 @@
     },
     {
       "name": "course-intro-lesson-plans",
-      "description": "Attributes:\n\n  * `items` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `items` {`any[]`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "items",
           "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
@@ -159,7 +179,7 @@
     },
     {
       "name": "learning-component",
-      "description": "`learning-component`\n`An element for displaying learning materials.`\n\nAttributes:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `t` - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `t` - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`learning-component`\n`An element for displaying learning materials.`\n\nAttributes:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `t` - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `t` - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "icon",
@@ -184,6 +204,11 @@
         {
           "name": "t",
           "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",

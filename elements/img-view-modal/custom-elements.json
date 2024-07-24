@@ -3,33 +3,6 @@
   "tags": [
     {
       "name": "img-view-modal",
-      "description": "`img-view-modal`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
-        },
-        {
-          "name": "top-src",
-          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
-        },
-        {
-          "name": "bottom-src",
-          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
-        },
-        {
-          "name": "opacity",
-          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        }
-      ]
-    },
-    {
-      "name": "img-view-modal",
       "description": "`img-view-modal`\nCombines img-pan-zoom and simple-modal for an easy image zoom solution\n\n### Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--img-view-modal-width` | sets width of modal | 90%\n`--img-view-modal-height` | sets height of modal | 90vh\n`--img-view-modal-backgroundColor` | background color | white\n`--img-view-modal-color` | text color | black\n`--img-view-modal-borderColor` | border color | #ddd\n`--img-view-modal-toggled-backgroundColor` | background color of toggled buttons and kbd commands | #eee\n\nEvents:\n\n  * `modal-button-click` {`CustomEvent<this>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string | boolean; elements: { content: HTMLElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-height\": string; \"--simple-modal-titlebar-height\": string; ... 7 more ...; \"--simple-modal-buttons-padding\": string; }; invokedBy: this; clone: boolean; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `modal` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `modal` - ",
       "attributes": [
         {

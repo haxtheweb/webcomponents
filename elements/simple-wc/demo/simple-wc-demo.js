@@ -6,7 +6,9 @@ createSWC({
   // HTML contents, el is the element itself and html is the processing function
   html: (el, html) => {
     return html`
-      <button id="stuff"><iron-icon icon="save"></iron-icon>${el.title}</button>
+      <button id="stuff">
+        <simple-icon icon="save"></simple-icon>${el.title}
+      </button>
     `;
   },
   // CSS styles, el is the element itself and css is the processing function
@@ -25,16 +27,10 @@ createSWC({
         font-size: 16px;
         color: yellow;
       }
-      iron-icon {
-        padding-right: 8px;
-      }
     `;
   },
   // dynamically imported dependencies
-  deps: [
-    "@polymer/iron-icon/iron-icon.js",
-    "@polymer/iron-icons/iron-icons.js",
-  ],
+  deps: [],
   // data handling and properties
   data: {
     // default values
@@ -72,7 +68,7 @@ createSWC({
     `;
   },
   // dynamically imported dependencies
-  deps: ["@polymer/paper-card/paper-card.js"],
+  deps: [],
   // events to listenr for and react to
   events: {
     // window events are added on connection and disconnection

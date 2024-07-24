@@ -2,9 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSPolymerElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-import "@polymer/iron-list/iron-list.js";
+import { html, css } from "lit";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 /**
  * `haxcms-dev-theme`
  * `A theme intended as the starting point to fork from and build new themes for HAXCMS
@@ -14,7 +13,7 @@ import "@polymer/iron-list/iron-list.js";
 
  * @demo demo/index.html
  */
-class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
+class HAXCMSDevTheme extends HAXCMSLitElementTheme {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -56,10 +55,6 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
     );
     // prettier-ignore
     import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/query/site-render-query.js"
-    );
-    // prettier-ignore
-    import(
       "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js"
     );
     // prettier-ignore
@@ -71,10 +66,10 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js"
     );
   }
-  // render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      super.styles,
+      css`
         :host {
           display: block;
           /* theme color which is dictated by the manifest */
@@ -135,14 +130,19 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
             color: #ffffff;
           };
         }
-      </style>
+      `,
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <site-top-menu noink indicator="arrow" arrow-size="8">
         <div slot="suffix" class="spacing">
           <a
             rel="noopener noreferrer"
             target="_blank"
             tabindex="-1"
-            href="https://github.com/haxtheweb/haxcms"
+            href="https://github.com/haxtheweb/haxcms-php"
             data-title="Get it. Got it? Good."
           >
             <button noink>Get HAXcms</button>
@@ -168,18 +168,18 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
         <site-rss-button type="rss"></site-rss-button>
       </div>
       <div class="manifest">
-        <h2>title: [[manifest.title]]</h2>
-        <div>description: [[manifest.description]]</div>
+        <h2>title: ${manifest.title}</h2>
+        <div>description: ${manifest.description}</div>
         <div>
           icon:
           <simple-icon
-            icon="[[manifest.metadata.theme.variables.icon]]"
+            icon="${manifest.metadata.theme.variables.icon}"
           ></simple-icon>
         </div>
         <div>
           image:
           <img
-            src$="[[manifest.metadata.theme.variables.image]]"
+            src="${manifest.metadata.theme.variables.image}"
             height="200px"
             width="200px"
           />
@@ -193,26 +193,28 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
           <div id="slot"><slot></slot></div>
         </div>
       </div>
-      <site-render-query class="cardlist" grid on-click="_itemTapped">
-        <template>
+      ${this.items.map(
+        (item) => html`
           <div style="padding:8px;">
             <div class="card">
               <div class="card-content">
-                <div>title: [[item.title]]</div>
-                <div>description: [[item.description]]</div>
-                <div>slug: [[item.slug]]</div>
-                <div>location: [[item.location]]</div>
-                <div>changed: [[item.metadata.updated]]</div>
+                <div>title: ${item.title}</div>
+                <div>description: ${item.description}</div>
+                <div>slug: ${item.slug}</div>
+                <div>location: ${item.location}</div>
+                <div>changed: ${item.metadata.updated}</div>
               </div>
               <div class="card-actions">
-                <a tabindex="-1" href$="[[item.slug]]"
-                  ><button data-id$="[[item.id]]">Set as active</button></a
+                <a tabindex="-1" href$="${item.slug}"
+                  ><button data-id$="${item.id}" @click="${this._itemTapped}">
+                    Set as active
+                  </button></a
                 >
               </div>
             </div>
           </div>
-        </template>
-      </site-render-query>
+        `,
+      )}
       <site-menu></site-menu>
     `;
   }

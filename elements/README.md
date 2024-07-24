@@ -38,6 +38,10 @@ Compare
 
 11
 > accessible and responsive tabbed interface
+# &lt;a11y-utils&gt;
+
+11
+> a collection of accessibility patterns and styles
 # &lt;absolute-position-behavior&gt;
 
 Position
@@ -58,10 +62,14 @@ Horn
 
 Behaviors
 > handles anchors and params in the url
-# &lt;app-editor-hax&gt;
+# &lt;app-hax&gt;
 
-Editor
-> HAX geared toward application development
+Hax
+> HAX+HAXcms as a full app experience
+# &lt;audio-player&gt;
+
+Player
+> simple audio web component to match video
 # &lt;awesome-explosion&gt;
 
 Explosion
@@ -90,14 +98,14 @@ R
 
 Render
 > Chartist render wrapper
+# &lt;chat-agent&gt;
+
+Agent
+> chatbot agent style chat widget
 # &lt;check-it-out&gt;
 
 It
 > View codepen or stackblitz demos
-# &lt;circle-progress&gt;
-
-Progress
-> Progress as tracked around the outside of a circle
 # &lt;citation-element&gt;
 
 Element
@@ -122,6 +130,10 @@ Editor
 
 Sample
 > A wrapper element for highlight.js
+# &lt;collection-list&gt;
+
+List
+> listing and display elements for collections of items
 # &lt;count-up&gt;
 
 Up
@@ -130,6 +142,10 @@ Up
 
 Design
 > some different elements specific to the design of educational materials. Lots of small elements and a catch all repo
+# &lt;course-model&gt;
+
+Model
+> view 3d models with multiple angel rotation for a course experience
 # &lt;csv-render&gt;
 
 Render
@@ -142,59 +158,51 @@ Viz
 
 Card
 > A simple presentation of a date
+# &lt;d-d-d&gt;
+
+D
+> design, develop, destroy the competition
 # Deduping fix
 
-This is a utility that helps fix a core issue with "the platform" in that if two things try to call window.customElements.define('tag-name',ClassName) and reference the same tag-name, it is a hard bricking issue. This problem can pop up in local development for a number of reasons (or timing with legacy platforms and dynamically imported assets) and so this little utility helps rewrite this global function to perform it's same function, but issue a warning if already defined as opposed to outright failing.# &lt;dl-behavior&gt;
+This is a utility that helps fix a core issue with "the platform" in that if two things try to call window.customElements.define('tag-name',ClassName) and reference the same tag-name, it is a hard bricking issue. This problem can pop up in local development for a number of reasons (or timing with legacy platforms and dynamically imported assets) and so this little utility helps rewrite this global function to perform it's same function, but issue a warning if already defined as opposed to outright failing.# &lt;discord-embed&gt;
+
+Embed
+> widgetbot.io based embed widget for discord threads and channels
+# &lt;disqus-embed&gt;
+
+Embed
+> Disqus service integration
+# &lt;dl-behavior&gt;
 
 File
 > Start of dl-behavior fork
-# &lt;drag-n-drop&gt;
+# &lt;documentation-player&gt;
 
-N
-> drag and drop elements and manager
-# &lt;drawing-icons&gt;
-
-Icons
-> iconset for drawing toolbar buttons
-# &lt;dropdown-select&gt;
-
-Select
-> dropdown that provides selection capabilities
+Player
+> playlist like element but for documenting web components in the context of hax
 # &lt;dynamic-import-registry&gt;
 
 Import
 > maintain manage the registration and usage of dynamic imports
-# &lt;eco-json-schema-form&gt;
-
-Json
-> JSON Schema data bound form
-# &lt;editable-list&gt;
-
-List
-> a listing of items that can be edited in place with operations
-# &lt;editable-outline&gt;
-
-Outline
-> a simple outline thats contenteditable in nature
 # &lt;editable-table&gt;
 
 Table
 > A table that can be edited on the front end
-# &lt;elmsln-apps&gt;
-
-Apps
-> The applications of ELMSLN in one place to make it easier to work on
 # &lt;elmsln-loading&gt;
 
 Loading
 > ELMS:LN logo that spins as a loading icon
-# &lt;elmsln-studio&gt;
+# &lt;enhanced-text&gt;
 
-Studio
-> Studio App for ELMS:LN
+Text
+> take text and process it with various enhancements
 # ES Global bridge
 
-This project helps bridge legacy, non-ESM code with modern ESM code. It generates a Promise for adding a script tag to the page. Then when it's resolved (loaded) it generates an event that can be listened for to make sure that the global classes in that file resolve correctly.# &lt;a11y-menu-button&gt;
+This project helps bridge legacy, non-ESM code with modern ESM code. It generates a Promise for adding a script tag to the page. Then when it's resolved (loaded) it generates an event that can be listened for to make sure that the global classes in that file resolve correctly.# &lt;event-badge&gt;
+
+Badge
+> a conference style badge
+# &lt;a11y-menu-button&gt;
 
 11
 > Start of a11y-menu-button
@@ -206,22 +214,22 @@ Haxcms
 
 Hax
 > Provide an example to pick apart of a working HAX element
-# &lt;exif-data&gt;
-
-Data
-> obtain exif data from slotted elements
 # &lt;figure-label&gt;
 
 Label
 > Figure label element to mark media assets within content.
-# &lt;filtered-image&gt;
+# &lt;file-system-broker&gt;
 
-Image
-> An image using an SVG filter. Can be used to make background images have more contrast with text.
+System
+> singleton to simplify interactions with the file system on a user&#39;s device
+# &lt;fill-in-the-blanks&gt;
+
+In
+> Fill in the blanks question
 # &lt;flash-card&gt;
 
 Card
-> Flash card that can be flipped to show definition
+> self check for a card that has a definition on the back
 # &lt;fluid-type&gt;
 
 Type
@@ -230,10 +238,6 @@ Type
 
 Colors
 > a utilty that provides a global set of color classes and variables based on theme and accent color attributes
-# &lt;full-screen-image&gt;
-
-Screen
-> full screen banner image with down arrow
 # &lt;full-width-image&gt;
 
 Width
@@ -241,11 +245,7 @@ Width
 # &lt;future-terminal-text&gt;
 
 Terminal
-> this is to provide a futuristic terminal text type of environment
-# &lt;game-show-quiz&gt;
-
-Show
-> Game show style quizzing system
+> cyberpunk 2077 inspired text for robots presentation
 # &lt;git-corner&gt;
 
 Corner
@@ -254,18 +254,10 @@ Corner
 
 Preview
 > A simple element that displays information about a github repository.
-# &lt;glossary-term&gt;
-
-## UNDER DEVELOPMENT
-
 # &lt;grade-book&gt;
 
 Book
 > A headless gradebook that supports multiple backends with rubrics
-# &lt;grafitto-filter&gt;
-
-Filter
-> Start of grafitto-filter fork
 # &lt;grid-plate&gt;
 
 Plate
@@ -294,6 +286,10 @@ Body
 
 Bookmarklet
 > HAX as a bookmarklet script
+# &lt;hax-cloud&gt;
+
+Cloud
+> Turn any website into authorware with one tag and a computer
 # &lt;haxcms-elements&gt;
 
 Elements
@@ -310,14 +306,6 @@ Logo
 
 Slevin
 > Tech blogger theme
-# &lt;haxschema-builder&gt;
-
-Builder
-> dynamically build and visualize HAXschema
-# &lt;hero-banner&gt;
-
-Banner
-> The evil yet always requested hero banner
 # &lt;hexagon-loader&gt;
 
 Loader
@@ -354,16 +342,12 @@ Pan
 
 Compare
 > Slider that allows comparison of two images
+# &lt;inline-audio&gt;
+
+Audio
+> audio that enhances the experience but is not required by being selectable inline with text content
 # intersection-element
-VanillaJS intersection oberver partcial element. Does nothing on it's own but wires up an element to correctly do intersection observation and running a callback when visible in the browsing window. Reasonable defaults that can be overloaded as needed.# &lt;item-overlay-ops&gt;
-
-Overlay
-> A wrapper that provides an overlay of operations to any element, usually a card.
-# &lt;json-editor&gt;
-
-Editor
-> simple JSON blob data binding to a text area
-# &lt;json-outline-schema&gt;
+VanillaJS intersection oberver partcial element. Does nothing on it's own but wires up an element to correctly do intersection observation and running a callback when visible in the browsing window. Reasonable defaults that can be overloaded as needed.# &lt;json-outline-schema&gt;
 
 Outline
 > 
@@ -371,10 +355,6 @@ Outline
 
 Login
 > JSON Web Token login broker / manager
-# &lt;layout-builder&gt;
-
-Builder
-> A new UI for adding content to layouts
 # &lt;lazy-image-helpers&gt;
 
 Image
@@ -387,6 +367,10 @@ Import
 
 Two
 > Learn2 theme for HAXcms
+# &lt;lesson-overview&gt;
+
+Overview
+> Clean presentation of what to expect in an upcoming lesson of instruction
 # &lt;license-element&gt;
 
 Element
@@ -395,94 +379,14 @@ Element
 
 11
 > Start of lorem-data
-# &lt;lrnapp-fab-menu&gt;
-
-Fab
-> Automated conversion of lrnapp-fab-menu/
-# &lt;lrn-aside&gt;
-
-Aside
-> A simple textual aside
-# &lt;lrn-assignment&gt;
-
-Assignment
-> A basic OER schema semantic assignment wrapper
-# lrn-button Element
-
-## Dependencies
-
-# &lt;lrn-content&gt;
-
-Content
-> Simple content wrapper for OER Schema meta-data
-# &lt;lrndesign-abbreviation&gt;
-
-Abbreviation
-> Automated conversion of lrndesign-abbreviation/
-# &lt;lrndesign-avatar&gt;
-
-Avatar
-> Visualize a user account either with an image, a label, or as abstract art.
-# &lt;lrndesign-blockquote&gt;
-
-Blockquote
-> Automated conversion of lrndesign-blockquote/
 # &lt;lrndesign-chart&gt;
 
 Chart
 > Automated conversion of lrndesign-chart/
-# &lt;lrndesign-comment&gt;
-
-Comment
-> Automated conversion of lrndesign-comment/
-# &lt;lrndesign-contactcard&gt;
-
-Contactcard
-> Automated conversion of lrndesign-contactcard/
-# &lt;lrndesign-contentblock&gt;
-
-Contentblock
-> Automated conversion of lrndesign-contentblock/
-# &lt;lrndesign-course-banner&gt;
-
-Course
-> Automated conversion of lrndesign-course-banner/
-# &lt;lrndesign-drawer&gt;
-
-Drawer
-> Automated conversion of lrndesign-drawer/
-# &lt;lrndesign-gallery&gt;
-
-Gallery
-> displays images as a carousel or grid with the ability to zoom
-# &lt;lrndesign-gallerycard&gt;
-
-Gallerycard
-> Automated conversion of lrndesign-gallerycard/
 # &lt;lrndesign-imagemap&gt;
 
 Imagemap
 > Automated conversion of lrndesign-imagemap/
-# &lt;lrndesign-mapmenu&gt;
-
-Mapmenu
-> Automated conversion of lrndesign-mapmenu/
-# &lt;lrndesign-panelcard&gt;
-
-Panelcard
-> Automated conversion of lrndesign-panelcard/
-# &lt;lrndesign-paperstack&gt;
-
-Paperstack
-> Automated conversion of lrndesign-paperstack/
-# &lt;lrndesign-sidenote&gt;
-
-Sidenote
-> Automated conversion of lrndesign-sidenote/
-# &lt;lrndesign-stepper&gt;
-
-Stepper
-> Automated conversion of lrndesign-stepper/
 # &lt;lrndesign-timeline&gt;
 
 Timeline
@@ -491,63 +395,10 @@ Timeline
 
 Gitgraph
 > Render git data in a graphing tree format
-# &lt;lrn-icon&gt;
-
-Icon
-> Some icons related to education concepts
-# &lt;lrn-icons&gt;
-
-Icons
-> Some icons related to education concepts
-# &lt;lrn-markdown-editor&gt;
-
-Markdown
-> markdown editor wrapper with preview editor
 # &lt;lrn-math&gt;
 
 Math
 > MathJAX element with HAX capabilities baked in
-# &lt;lrn-page&gt;
-
-Page
-> OER Schema wrapping for a page
-# &lt;lrn-shared-styles&gt;
-
-Shared
-> a shared set of styles for all @haxtheweb
-# &lt;lrnsys-button&gt;
-
-Button
-> Automated conversion of lrnsys-button/
-# &lt;lrnsys-chartjs&gt;
-
-Chartjs
-> Automated conversion of lrnsys-chartjs/
-
-# &lt;lrnsys-layout&gt;
-
-Layout
-> Automated conversion of lrnsys-layout/
-# &lt;lrnsys-outline&gt;
-
-Outline
-> Automated conversion of lrnsys-outline/
-# &lt;lrnsys-pdf&gt;
-
-Pdf
-> Automated conversion of lrnsys-pdf/
-# &lt;lrnsys-progress&gt;
-
-Progress
-> Automated conversion of lrnsys-progress/
-# &lt;lrnsys-randomimage&gt;
-
-Randomimage
-> Automated conversion of lrnsys-randomimage/
-# &lt;lrnsys-render-html&gt;
-
-Render
-> Automated conversion of lrnsys-render-html/
 # &lt;lrn-table&gt;
 
 Table
@@ -564,38 +415,22 @@ Elements
 
 Search
 > LunrJS search element
-# &lt;magazine-cover&gt;
-
-Cover
-> Automated conversion of magazine-cover/
 # &lt;map-menu&gt;
 
 Menu
 > Automated conversion of map-menu/
-# &lt;materializecss-styles&gt;
+# &lt;mark-the-words&gt;
 
-Styles
-> Materialize CSS style class names
-# &lt;material-progress&gt;
+The
+> Mark desired words in a sentence
+# &lt;matching-question&gt;
 
-Progress
-> Start of material-progress
-# &lt;material-word&gt;
-
-Word
-> Start of material-word
+Question
+> Match concepts question type
 # &lt;md-block&gt;
 
 Block
 > a markdown block
-# &lt;md-extra-icons&gt;
-
-Extra
-> Automated conversion of md-extra-icons/
-# &lt;mdi-iconset-svg&gt;
-
-Iconset
-> Start of mdi-iconset-svg fork
 # &lt;media-behaviors&gt;
 
 Behaviors
@@ -604,14 +439,26 @@ Behaviors
 
 Image
 > Automated conversion of media-image/
+# &lt;media-quote&gt;
+
+Quote
+> A quote focused around a piece of media with citation with an optional caption.
 # &lt;meme-maker&gt;
 
 Maker
 > Automated conversion of meme-maker/
+# &lt;merit-badge&gt;
+
+Badge
+> visual badge to communicate obtaining a skill
 # &lt;micro-copy-heading&gt;
 
 Copy
 > small call to action / attention that acts as a heading too
+# &lt;micro-frontend-registry&gt;
+
+Frontend
+> A singleton for registration and managing access to leverage microservices for web components
 # &lt;moar-sarcasm&gt;
 
 Sarcasm
@@ -620,10 +467,6 @@ Sarcasm
 
 Element
 > Start of moment-element
-# &lt;mtz-marked-editor&gt;
-
-Marked
-> Automated conversion of mtz-marked-editor/
 # &lt;multiple-choice&gt;
 
 Choice
@@ -636,14 +479,14 @@ Player
 
 Observer
 > a SuperClass mixin that dynamically imports undefined custom element definitions
-# &lt;nav-card&gt;
-
-Card
-> an accent card of link lists
 # &lt;oer-schema&gt;
 
 Schema
 > Automated conversion of oer-schema/
+# &lt;opt-img&gt;
+
+Img
+> an optimized image delivery
 # &lt;outline-designer&gt;
 
 Designer
@@ -652,34 +495,30 @@ Designer
 
 Player
 > Automated conversion of outline-player/
+# &lt;page-break&gt;
+
+Break
+> a visual break but also helps manage hierarchy
 # &lt;page-contents-menu&gt;
 
 Contents
 > Links that jump you to the right place in the page&#39;s content
+# &lt;page-flag&gt;
+
+Flag
+> visual flag for notes about a piece of content
 # &lt;page-scroll-position&gt;
 
 Scroll
 > Automated conversion of page-scroll-position/
-# &lt;paper-audio-player&gt;
+# &lt;page-section&gt;
 
-Audio
-> Automated conversion of paper-audio-player/
-# &lt;paper-avatar&gt;
-
-Avatar
-> Automated conversion of paper-avatar/
-# &lt;paper-fab-speed-dial&gt;
-
-Fab
-> Start of paper-fab-speed-dial fork
+Section
+> A well designed section of a page with many options for marketing purposes
 # &lt;paper-input-flagged&gt;
 
 Input
 > Automated conversion of paper-input-flagged/
-# &lt;paper-search&gt;
-
-Search
-> Start of paper-search
 # &lt;paper-stepper&gt;
 
 Stepper
@@ -687,27 +526,35 @@ Stepper
 # &lt;parallax-image&gt;
 
 Image
-> Automated conversion of pdf-browser-viewer/
+> Automated conversion of parallax-image/
 # &lt;pdf-browser-viewer&gt;
 
-Element
-> Automated conversion of person-testimonial/
+Browser
+> Start of pdf-browser-viewer
 # &lt;person-testimonial&gt;
 
 Testimonial
 > Automated conversion of person-testimonial/
-# &lt;pie-menu&gt;
-
-Menu
-> Automated conversion of pie-menu/
 # &lt;place-holder&gt;
 
 Holder
 > Automated conversion of place-holder/
+# &lt;play-list&gt;
+
+List
+> scrollable component that accepts lightDom or data driven lists and generates a content player
+# &lt;polaris-theme&gt;
+
+Theme
+> A polaris PSU based branding styled theme
 # &lt;portal-launcher&gt;
 
 Launcher
 > silly thing to play with portal tag and progressive enhancement
+# &lt;post-card&gt;
+
+Card
+> sending you mail from afar, or the browser.
 # &lt;pouch-db&gt;
 
 Db
@@ -716,18 +563,22 @@ Db
 
 Card
 > basic display of a product with advanced data driven helpers
+# &lt;product-glance&gt;
+
+Glance
+> glance / overview of a product feature
+# &lt;product-offering&gt;
+
+Offering
+> Simple card for displaying product info
 # &lt;progress-donut&gt;
 
 Donut
 > Start of progress-donut
-# &lt;promo-tile&gt;
+# &lt;promise-progress&gt;
 
-Tile
-> Start of promo-tile
-# &lt;punnett-square&gt;
-
-Square
-> 
+Progress
+> An element to display the progress visually of forfilling an array of JS Promise objects
 # &lt;q-r&gt;
 
 R
@@ -736,18 +587,6 @@ R
 
 Colors
 > a utilty that provides a global set of color classes and variables based on theme and accent color attributes
-# &lt;random-image&gt;
-
-Image
-> Start of random-image
-# &lt;random-item&gt;
-
-Item
-> show a random item from a list of items
-# &lt;r-coder&gt;
-
-Coder
-> R coder interface for the r-service backend.
 # &lt;relative-heading&gt;
 
 Heading
@@ -768,17 +607,18 @@ Utility
 
 Card
 > Simple card in a cool retro design based off of PSU DMD program style
-# WIP 🐣: RH SASS
-
-All of the variables and mixins that are available to rh-elements.
 # &lt;rich-text-editor&gt;
 
 Text
 > a standalone rich text editor
-# &lt;rss-items&gt;
+# &lt;rpg-character&gt;
 
-Items
-> visualize RSS items
+Character
+> Little RPG character that&#39;s remixable
+# &lt;runkit-embed&gt;
+
+Embed
+> 
 # &lt;schema-behaviors&gt;
 
 Behaviors
@@ -791,18 +631,10 @@ Button
 
 Request
 > Automated conversion of secure-request/
-# &lt;select-menu&gt;
-
-Menu
-> Automated conversion of select-menu/
 # &lt;self-check&gt;
 
 Check
 > Automated conversion of self-check/
-# &lt;service-card&gt;
-
-Card
-> simple showcase of services provided
 # &lt;shadow-style&gt;
 
 Style
@@ -815,10 +647,6 @@ Autocomplete
 
 Blog
 > Automated conversion of simple-blog/
-# &lt;simple-blog-card&gt;
-
-Blog
-> a card commonly found on a blogging website
 # &lt;simple-colors&gt;
 
 Colors
@@ -827,10 +655,6 @@ Colors
 
 Colors
 > shared styles for simple-colors
-# &lt;simple-concept-network&gt;
-
-Concept
-> Automated conversion of simple-concept-network/
 # &lt;simple-cta&gt;
 
 Cta
@@ -839,10 +663,10 @@ Cta
 
 Datetime
 > Automated conversion of simple-datetime/
-# &lt;simple-drawer&gt;
+# &lt;simple-emoji&gt;
 
-Drawer
-> a singleton drawer element
+Emoji
+> simplify emoji creation and management
 # &lt;simple-fields&gt;
 
 Fields
@@ -859,6 +683,10 @@ Icon
 
 Icon
 > Uses simple-picker to create an icon picker
+# &lt;simple-img&gt;
+
+Img
+> simple image manipulation with a microservice
 # &lt;simple-login&gt;
 
 Login
@@ -867,10 +695,6 @@ Login
 
 Modal
 > A simple modal that ensures accessibility and stack order context appropriately
-# &lt;simple-pages&gt;
-
-Pages
-> toggle between pages
 # &lt;simple-picker&gt;
 
 Picker
@@ -891,10 +715,6 @@ Range
 
 Search
 > Automated conversion of simple-search
-# &lt;simple-timer&gt;
-
-Timer
-> Automated conversion of simple-timer/
 # &lt;simple-toast&gt;
 
 Toast
@@ -911,56 +731,44 @@ Tooltip
 
 Wc
 > A simple web component wrapper to simplify consistent patterns of element creation
-# &lt;social-media-icons&gt;
-
-Media
-> Start of social-media-icons
 # &lt;social-share-link&gt;
 
 Share
 > a link to share content on social
+# &lt;sorting-question&gt;
+
+Question
+> sorting questions to be in the right order when they are randomized.
+# &lt;spotify-embed&gt;
+
+Embed
+> embed spotify playlists
+# &lt;star-rating&gt;
+
+Rating
+> rating display and interaction widget
 # &lt;stop-note&gt;
 
 Note
 > Automated conversion of stop-note/
 # Storybook utilities
 
-This provides some utility functions for working with storybook and our monorepo. It is for internal purposes only though it is published for maintainability.# &lt;tab-list&gt;
+This provides some utility functions for working with storybook and our monorepo. It is for internal purposes only though it is published for maintainability.# &lt;super-daemon&gt;
 
-List
-> Automated conversion of tab-list/
-# &lt;task-list&gt;
+Daemon
+> 
+# &lt;tagging-question&gt;
 
-List
-> Automated conversion of task-list/
-# &lt;team-member&gt;
+Question
+> Answer question by applying related tags
+# &lt;terrible-themes&gt;
 
-Member
-> Automated conversion of team-member/
-# &lt;they-live&gt;
+Themes
+> themes inspired by creations by btopro from his youth. legitimate, terrible websites.
+# &lt;training-theme&gt;
 
-Live
-> To demonstrate the hidden reality behind the component
-# &lt;threaded-discussion&gt;
-
-11
-> Start of threaded-discussion
-# &lt;to-do&gt;
-
-Do
-> Start of to-do
-# &lt;to-element&gt;
-
-Element
-> Replicate any DOM node passed in and turn it into a web component
-# &lt;top-alert&gt;
-
-Alert
-> A full width alert that has an important message for the website viewer
-# &lt;topic-heading&gt;
-
-Heading
-> Semantic and visual meaning behind a heading break
+Theme
+> theme for training content in HAXcms
 # &lt;twitter-embed&gt;
 
 Embed
@@ -981,19 +789,23 @@ Webgl
 
 Action
 > track user actions and allow them to talk to xAPI stores easily
+# &lt;user-scaffold&gt;
+
+Scaffold
+> memory and context to establish and maintain appropriate user scaffolding
 # Utils
 A series of functions that are reusable acros many JS contexts, many written to help with sanitization and clean up of data in a web component context.# &lt;video-player&gt;
 
 Player
 > Automated conversion of video-player/
+# &lt;vocab-term&gt;
+
+Term
+> a vocabulary term visualized in the page
 # &lt;voice-recorder&gt;
 
 Recorder
 > LAME bridge
-# &lt;wave-player&gt;
-
-Player
-> Automated conversion of wave-player/
 # &lt;wc-autoload&gt;
 
 Autoload

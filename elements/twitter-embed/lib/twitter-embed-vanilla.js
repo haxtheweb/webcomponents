@@ -51,7 +51,11 @@ class TwitterEmbedVanilla extends HTMLElement {
    * HTMLElement spec
    */
   attributeChangedCallback(attr, oldValue, newValue) {
-    if (attr == "tweet" && newValue && (newValue.includes("twitter.com") || newValue.includes('x.com'))) {
+    if (
+      attr == "tweet" &&
+      newValue &&
+      (newValue.includes("twitter.com") || newValue.includes("x.com"))
+    ) {
       this.tweetId = newValue.split("/").pop();
     }
     if (attr == "no-popups") {

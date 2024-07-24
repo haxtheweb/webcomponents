@@ -320,52 +320,6 @@ export class SortingQuestion extends QuestionElement {
       </fieldset>
     `;
   }
-  render() {
-    return html`
-      <meta property="oer:assessing" content="${this.relatedResource}" />
-      <confetti-container id="confetti">
-        <grid-plate layout="1-1">
-          <div slot="col-1">
-            <h3 property="oer:name">${this.question}</h3>
-            ${this.renderInteraction()}
-            ${!this.hideButtons ? this.renderButtons() : ``}
-          </div>
-          <div slot="col-2">
-            <details
-              tabindex="${this.disabled ? "-1" : ""}"
-              ?disabled="${this.disabled}"
-              ?open="${!this.querySelector('[slot="content"]')}"
-              id="directions"
-            >
-              <summary>Directions</summary>
-              <div class="container">${this.renderDirections()}</div>
-            </details>
-            ${this.querySelector('[slot="content"]')
-              ? html` <details
-                  tabindex="${this.disabled ? "-1" : ""}"
-                  ?disabled="${this.disabled}"
-                  ?open="${!this.showAnswer}"
-                  id="related"
-                >
-                  <summary>Related content</summary>
-                  <div class="container">
-                    <slot name="content"></slot>
-                  </div>
-                </details>`
-              : ``}
-            <details
-              tabindex="${!this.showAnswer || this.disabled ? "-1" : ""}"
-              ?disabled="${!this.showAnswer || this.disabled}"
-              ?open="${this.showAnswer}"
-            >
-              <summary id="feedback">Feedback</summary>
-              <div class="container">${this.renderFeedback()}</div>
-            </details>
-          </div>
-        </grid-plate>
-      </confetti-container>
-    `;
-  }
   // the case for whether or not this is inactive based on user input
   inactiveCase() {
     // due to the odd nature of this, the 1st supplies option COULD be in the right order

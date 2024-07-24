@@ -129,7 +129,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       isSafari: {
         type: Boolean,
         reflect: true,
-        attribute: 'is-safari',
+        attribute: "is-safari",
       },
       /**
        * Class for the color

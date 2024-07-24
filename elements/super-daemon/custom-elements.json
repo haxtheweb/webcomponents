@@ -185,7 +185,7 @@
     },
     {
       "name": "super-daemon-toast",
-      "description": "Events:\n\n  * `opened-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `dark-mode` {`boolean`} - \n\n  * `awaiting-merlin-input` {`boolean`} - \n\n  * `merlin` {`boolean`} - \n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `darkMode` {`boolean`} - \n\n  * `awaitingMerlinInput` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `merlin` {`boolean`} - \n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Events:\n\n  * `opened-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `dark-mode` {`boolean`} - \n\n  * `awaiting-merlin-input` {`boolean`} - \n\n  * `merlin` {`boolean`} - \n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `darkMode` {`boolean`} - \n\n  * `awaitingMerlinInput` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `merlin` {`boolean`} - \n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "dark-mode",
@@ -245,6 +245,11 @@
         {
           "name": "opened",
           "description": "`opened` {`boolean`} - Opened state of the toast, use event to change\n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
           "valueSet": "v"
         },
         {

@@ -3,34 +3,6 @@
   "tags": [
     {
       "name": "iframe-loader",
-      "description": "Attributes:\n\n  * `source` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - \n\n  * `__observer` - ",
-      "attributes": [
-        {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "height",
-          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: 100"
-        },
-        {
-          "name": "width",
-          "description": "`width` {`string`} - \n\nProperty: width\n\nDefault: 100%"
-        }
-      ]
-    },
-    {
-      "name": "iframe-loader",
       "description": "Attributes:\n\n  * `source` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `invalidSource` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - \n\n  * `__observer` - ",
       "attributes": [
         {

@@ -237,57 +237,57 @@ globalThis.addEventListener(
               inputMethod: "select",
               inputMethod: "radio",
               itemsList: [...HAXOptionSampleFactory("box-shadow")],
-            }
+            },
           ];
         }
         // @todo make sure we push the text stuff on accurately. might need to build
-          // this entire field as a composite object before pushing onto the stack
-          props.settings.configure.push({
-            inputMethod: "collapse",
-            property: "ddd-styles",
-            properties: [
-              {
-                title: "Design treatment",
-                collapsed: true,
-                accordion: true,
-                property: "ddd-designtreatment",
-                disabled: designTreatmentProps.length === 0,
-                properties: designTreatmentProps
-              },
-              {
-                title: "Colors",
-                collapsed: true,
-                accordion: true,
-                property: "ddd-card",
-                disabled: colorProps.length === 0,
-                properties: colorProps
-              },
-              {
-                title: "Font",
-                collapsed: true,
-                accordion: true,
-                property: "ddd-font",
-                disabled: fontProps.length === 0,
-                properties: fontProps
-              },
-              {
-                title: "Spacing",
-                collapsed: true,
-                accordion: true,
-                property: "ddd-spacing",
-                disabled: spacingProps.length === 0,
-                properties: spacingProps
-              },
-              {
-                title: "Box appearance",
-                collapsed: true,
-                accordion: true,
-                property: "ddd-box",
-                disabled: cardProps.length === 0,
-                properties: cardProps
-              }
-            ]
-          });
+        // this entire field as a composite object before pushing onto the stack
+        props.settings.configure.push({
+          inputMethod: "collapse",
+          property: "ddd-styles",
+          properties: [
+            {
+              title: "Design treatment",
+              collapsed: true,
+              accordion: true,
+              property: "ddd-designtreatment",
+              disabled: designTreatmentProps.length === 0,
+              properties: designTreatmentProps,
+            },
+            {
+              title: "Colors",
+              collapsed: true,
+              accordion: true,
+              property: "ddd-card",
+              disabled: colorProps.length === 0,
+              properties: colorProps,
+            },
+            {
+              title: "Font",
+              collapsed: true,
+              accordion: true,
+              property: "ddd-font",
+              disabled: fontProps.length === 0,
+              properties: fontProps,
+            },
+            {
+              title: "Spacing",
+              collapsed: true,
+              accordion: true,
+              property: "ddd-spacing",
+              disabled: spacingProps.length === 0,
+              properties: spacingProps,
+            },
+            {
+              title: "Box appearance",
+              collapsed: true,
+              accordion: true,
+              property: "ddd-box",
+              disabled: cardProps.length === 0,
+              properties: cardProps,
+            },
+          ],
+        });
         return props;
       };
     }

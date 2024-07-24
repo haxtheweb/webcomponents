@@ -83,8 +83,6 @@ export class EbookButton extends LitElement {
       css`
         :host {
           display: inline-block;
-          --paper-button-click-state: #000;
-          --paper-button-title: #000;
           --link-color: #aeaeae;
         }
 
@@ -97,7 +95,6 @@ export class EbookButton extends LitElement {
         button:active,
         button:focus,
         button:hover {
-          color: var(--paper-button-click-state);
           outline: 2px solid black;
           cursor: pointer;
         }
@@ -109,7 +106,6 @@ export class EbookButton extends LitElement {
         }
 
         .title {
-          color: var(--paper-button-title);
           font-size: 16px;
           font-weight: bold;
           display: inline-flex;

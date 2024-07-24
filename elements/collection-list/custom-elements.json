@@ -3,11 +3,16 @@
   "tags": [
     {
       "name": "collection-list",
-      "description": "`collection-list`\n`listing and display elements for collections of items`\n\nAttributes:\n\n  * `responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `responsiveSize` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`collection-list`\n`listing and display elements for collections of items`\n\nAttributes:\n\n  * `responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `responsiveSize` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "responsive-size",
           "description": "`responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\nProperty: responsiveSize\n\nDefault: lg"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
@@ -22,7 +27,7 @@
     },
     {
       "name": "collection-item",
-      "description": "Attributes:\n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `line3` {`string`} - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `line3` {`string`} - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `line3` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `line3` {`string`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "tags",
@@ -62,6 +67,11 @@
           "description": "`line3` {`string`} - \n\nProperty: line3\n\nDefault: null"
         },
         {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
+        {
           "name": "accent-color",
           "description": "`accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: null"
         },
@@ -74,7 +84,7 @@
     },
     {
       "name": "collection-row",
-      "description": "Attributes:\n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "tags",
@@ -108,6 +118,11 @@
         {
           "name": "line2",
           "description": "`line2` {`string`} - \n\nProperty: line2\n\nDefault: null"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
@@ -144,7 +159,7 @@
     },
     {
       "name": "collections-theme",
-      "description": "`collections-theme`\n`A theme for presenting collections of material`\n\nEvents:\n\n  * `haxcms-save-node` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `image` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `image` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
+      "description": "`collections-theme`\n`A theme for presenting collections of material`\n\nEvents:\n\n  * `haxcms-save-node` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `image` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `image` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
           "name": "image",
@@ -206,6 +221,11 @@
         {
           "name": "_location",
           "description": "`_location` - location as object\n\nProperty: _location"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "edit-mode",

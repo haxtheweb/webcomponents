@@ -20,9 +20,8 @@ import "@haxtheweb/full-width-image/full-width-image.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@haxtheweb/date-card/lib/date-chip.js";
 import "@haxtheweb/accent-card/accent-card.js";
-import "@polymer/iron-pages/iron-pages.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
@@ -46,7 +45,6 @@ class HaxorSlevin extends HAXCMSRememberRoute(
         }
         site-modal:not(:defined),
         site-rss-button:not(:defined),
-        iron-pages:not(:defined),
         site-share-widget:not(:defined),
         site-active-title:not(:defined),
         site-git-corner:not(:defined),
@@ -82,6 +80,7 @@ class HaxorSlevin extends HAXCMSRememberRoute(
         }
         .wrapper {
           padding-bottom: 80px;
+          padding-top: 64px;
         }
         #home {
           max-width: 1032px;
@@ -95,13 +94,6 @@ class HaxorSlevin extends HAXCMSRememberRoute(
           box-sizing: border-box;
           padding-left: 20px;
           padding-right: 20px;
-        }
-        iron-pages {
-          padding-top: 64px;
-        }
-        dom-repeat {
-          padding-bottom: 16px;
-          min-height: 300px;
         }
         full-width-image {
           --full-width-image-font-size: 54px;
@@ -339,164 +331,167 @@ class HaxorSlevin extends HAXCMSRememberRoute(
         <site-region name="header"></site-region>
       </header>
       <div class="wrapper">
-        <iron-pages .selected="${this.selectedPage}">
-          <div id="home">
-            <site-query
-              @result-changed="${this.__mainPostsChanged}"
-              limit="10"
-              sort='{"created": "ASC"}'
-            ></site-query>
-            ${this.__mainPosts.map(
-              (post) =>
-                html` <a class="article-link" href="${post.slug}">
-                  <accent-card
-                    image-align="center"
-                    image-valign="top"
-                    accent-background
-                    accent-color="${this.color}"
-                    accent-heading
-                    horizontal
-                    image-src="${post.metadata && post.metadata.image
-                      ? post.metadata.image
-                      : this.image}"
-                  >
-                    <div slot="heading"><h3>${post.title}</h3></div>
-                    <p slot="content">
-                      <date-chip
-                        unix
-                        timestamp="${post.metadata.created}"
+        ${this.selectedPage === 0
+          ? html`
+              <div id="home">
+                <site-query
+                  @result-changed="${this.__mainPostsChanged}"
+                  limit="10"
+                  sort='{"created": "ASC"}'
+                ></site-query>
+                ${this.__mainPosts.map(
+                  (post) =>
+                    html` <a class="article-link" href="${post.slug}">
+                      <accent-card
+                        image-align="center"
+                        image-valign="top"
+                        accent-background
                         accent-color="${this.color}"
-                      ></date-chip>
-                      ${post.description}
-                    </p>
-                  </accent-card></a
-                >`,
-            )}
-            <site-region name="footerPrimary"></site-region>
-          </div>
-          <main class="contentcontainer-wrapper">
-            <article id="contentcontainer">
-              <site-region name="contentTop"></site-region>
-              <site-git-corner position="right"></site-git-corner>
-              ${this.activeItem &&
-              this.activeItem.metadata &&
-              this.activeItem.metadata.image
-                ? html`<full-width-image
-                    source="${this.activeItem.metadata.image}"
-                    caption="${this.activeItem.title}"
-                  ></full-width-image>`
-                : html`<site-active-title></site-active-title>`}
-              <h3 class="subtitle" .hidden="${!this.subtitle}">
-                ${this.subtitle}
-              </h3>
-              <section id="slot">
-                <slot></slot>
-              </section>
-              <site-region name="contentBottom"></site-region>
-            </article>
-            <site-query
-              @result-changed="${this.__followUpPostsChanged}"
-              limit="6"
-              start-index="${this.activeManifestIndexCounter}"
-              sort='{"created": "ASC"}'
-            ></site-query>
-            ${this.__followUpPosts.map(
-              (post) => html`
-                <a class="article-link-bottom" href="${post.slug}">
-                  <accent-card
-                    image-align="center"
-                    image-valign="top"
-                    accent-background
-                    accent-color="${this.color}"
-                    accent-heading
-                    horizontal
-                    image-src="${post.metadata && post.metadata.image
-                      ? post.metadata.image
-                      : this.image}"
-                  >
-                    <div slot="heading"><h3>${post.title}</h3></div>
-                    <div slot="subheading">
-                      <simple-datetime
-                        unix
-                        timestamp="${post.metadata.created}"
-                      ></simple-datetime>
-                    </div>
-                    <div slot="content">
-                      <p>${post.description}</p>
-                    </div>
-                  </accent-card></a
-                >
-              `,
-            )}
-            <nav class="social-float hide-small ${this.stateClass}">
-              <ul>
-                <li>
-                  <social-share-link
-                    title="Share on twitter"
-                    button-style
-                    mode="icon-only"
-                    message="${this.shareMsg}"
-                    type="Twitter"
-                  >
-                  </social-share-link>
-                </li>
-                <li>
-                  <social-share-link
-                    title="Share on LinkedIn"
-                    button-style
-                    mode="icon-only"
-                    message="${this.shareMsg}"
-                    url="${this.shareUrl}"
-                    type="LinkedIn"
-                  >
-                  </social-share-link>
-                </li>
-                <li>
-                  <social-share-link
-                    title="Share on Facebook"
-                    button-style
-                    mode="icon-only"
-                    url="${this.shareUrl}"
-                    message="${this.shareMsg}"
-                    type="Facebook"
-                  >
-                  </social-share-link>
-                </li>
-                <li>
-                  <social-share-link
-                    title="Share on Pinterest"
-                    button-style
-                    mode="icon-only"
-                    message="${this.shareMsg}"
-                    image="${this.activeImage}"
-                    url="${this.shareUrl}"
-                    type="Pinterest"
-                  >
-                  </social-share-link>
-                </li>
-              </ul>
-            </nav>
-            <footer class="annoy-user ${this.stateClass}">
-              <div class="annoy-inner">
-                <simple-icon-lite
-                  icon="${this.icon}"
-                  class="hide-small"
-                ></simple-icon-lite>
-                <span class="hide-small">
-                  Never miss a story from <strong>${this.title}</strong> use RSS
-                  today!
-                </span>
-                <span class="rss">
-                  <site-rss-button type="atom"></site-rss-button>
-                  <site-rss-button type="rss"></site-rss-button>
-                </span>
-                <site-share-widget
-                  alt="Share on social media"
-                ></site-share-widget>
+                        accent-heading
+                        horizontal
+                        image-src="${post.metadata && post.metadata.image
+                          ? post.metadata.image
+                          : this.image}"
+                      >
+                        <div slot="heading"><h3>${post.title}</h3></div>
+                        <p slot="content">
+                          <date-chip
+                            unix
+                            timestamp="${post.metadata.created}"
+                            accent-color="${this.color}"
+                          ></date-chip>
+                          ${post.description}
+                        </p>
+                      </accent-card></a
+                    >`,
+                )}
+                <site-region name="footerPrimary"></site-region>
               </div>
-            </footer>
-          </main>
-        </iron-pages>
+            `
+          : html`
+              <main class="contentcontainer-wrapper">
+                <article id="contentcontainer">
+                  <site-region name="contentTop"></site-region>
+                  <site-git-corner position="right"></site-git-corner>
+                  ${this.activeItem &&
+                  this.activeItem.metadata &&
+                  this.activeItem.metadata.image
+                    ? html`<full-width-image
+                        source="${this.activeItem.metadata.image}"
+                        caption="${this.activeItem.title}"
+                      ></full-width-image>`
+                    : html`<site-active-title></site-active-title>`}
+                  <h3 class="subtitle" .hidden="${!this.subtitle}">
+                    ${this.subtitle}
+                  </h3>
+                  <section id="slot">
+                    <slot></slot>
+                  </section>
+                  <site-region name="contentBottom"></site-region>
+                </article>
+                <site-query
+                  @result-changed="${this.__followUpPostsChanged}"
+                  limit="6"
+                  start-index="${this.activeManifestIndexCounter}"
+                  sort='{"created": "ASC"}'
+                ></site-query>
+                ${this.__followUpPosts.map(
+                  (post) => html`
+                    <a class="article-link-bottom" href="${post.slug}">
+                      <accent-card
+                        image-align="center"
+                        image-valign="top"
+                        accent-background
+                        accent-color="${this.color}"
+                        accent-heading
+                        horizontal
+                        image-src="${post.metadata && post.metadata.image
+                          ? post.metadata.image
+                          : this.image}"
+                      >
+                        <div slot="heading"><h3>${post.title}</h3></div>
+                        <div slot="subheading">
+                          <simple-datetime
+                            unix
+                            timestamp="${post.metadata.created}"
+                          ></simple-datetime>
+                        </div>
+                        <div slot="content">
+                          <p>${post.description}</p>
+                        </div>
+                      </accent-card></a
+                    >
+                  `,
+                )}
+                <nav class="social-float hide-small ${this.stateClass}">
+                  <ul>
+                    <li>
+                      <social-share-link
+                        title="Share on twitter"
+                        button-style
+                        mode="icon-only"
+                        message="${this.shareMsg}"
+                        type="Twitter"
+                      >
+                      </social-share-link>
+                    </li>
+                    <li>
+                      <social-share-link
+                        title="Share on LinkedIn"
+                        button-style
+                        mode="icon-only"
+                        message="${this.shareMsg}"
+                        url="${this.shareUrl}"
+                        type="LinkedIn"
+                      >
+                      </social-share-link>
+                    </li>
+                    <li>
+                      <social-share-link
+                        title="Share on Facebook"
+                        button-style
+                        mode="icon-only"
+                        url="${this.shareUrl}"
+                        message="${this.shareMsg}"
+                        type="Facebook"
+                      >
+                      </social-share-link>
+                    </li>
+                    <li>
+                      <social-share-link
+                        title="Share on Pinterest"
+                        button-style
+                        mode="icon-only"
+                        message="${this.shareMsg}"
+                        image="${this.activeImage}"
+                        url="${this.shareUrl}"
+                        type="Pinterest"
+                      >
+                      </social-share-link>
+                    </li>
+                  </ul>
+                </nav>
+                <footer class="annoy-user ${this.stateClass}">
+                  <div class="annoy-inner">
+                    <simple-icon-lite
+                      icon="${this.icon}"
+                      class="hide-small"
+                    ></simple-icon-lite>
+                    <span class="hide-small">
+                      Never miss a story from <strong>${this.title}</strong> use
+                      RSS today!
+                    </span>
+                    <span class="rss">
+                      <site-rss-button type="atom"></site-rss-button>
+                      <site-rss-button type="rss"></site-rss-button>
+                    </span>
+                    <site-share-widget
+                      alt="Share on social media"
+                    ></site-share-widget>
+                  </div>
+                </footer>
+              </main>
+            `}
       </div>
     `;
   }
@@ -599,10 +594,6 @@ class HaxorSlevin extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // prettier-ignore
-    import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
-    );
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-share-widget.js"

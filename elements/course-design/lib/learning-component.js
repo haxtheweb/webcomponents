@@ -448,8 +448,7 @@ class LearningComponent extends I18NMixin(DDD) {
             title: "Contents",
           },
         ],
-        advanced: [
-        ],
+        advanced: [],
       },
       saveOptions: {
         unsetAttributes: ["t"],

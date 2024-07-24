@@ -28,7 +28,7 @@
         },
         {
           "name": "directions",
-          "description": "`directions` {`string`} - \n\nProperty: directions\n\nDefault: Double click or drag and drop file to replace"
+          "description": "`directions` {`string`} - \n\nProperty: directions\n\nDefault: Drag and drop file to replace"
         },
         {
           "name": "accent-color",
