@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/pdf-browser-viewer.css",
-      "scss": "src/pdf-browser-viewer.scss",
       "html": "src/pdf-browser-viewer.html",
       "js": "src/pdf-browser-viewer.js",
       "properties": "src/pdf-browser-viewer-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Start of pdf-browser-viewer",
   "repository": {
     "type": "git",
@@ -46,8 +45,8 @@
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

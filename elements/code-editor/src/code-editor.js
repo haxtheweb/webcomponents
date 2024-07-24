@@ -501,7 +501,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
    */
   getValueAsNode(wrap = null) {
     if (wrap == null) {
-      wrap = document.createElement("p");
+      wrap = globalThis.document.createElement("p");
     }
     if (this.value) {
       wrap.innerHTML = formatHTML(this.value);

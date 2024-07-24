@@ -106,7 +106,11 @@ export { ResponsiveUtility };
  * Checks to see if there is an instance available, and if not appends one
  */
 globalThis.ResponsiveUtility.requestAvailability = () => {
-  if (globalThis.ResponsiveUtility.instance == null && globalThis.document && globalThis.document.body) {
+  if (
+    globalThis.ResponsiveUtility.instance == null &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
     globalThis.ResponsiveUtility.instance =
       globalThis.document.createElement("responsive-utility");
     globalThis.document.body.appendChild(globalThis.ResponsiveUtility.instance);

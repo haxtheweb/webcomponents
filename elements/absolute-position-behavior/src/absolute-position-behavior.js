@@ -195,7 +195,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      */
     setPosition() {
       this.__observe = true;
-      window.AbsolutePositionStateManager.requestAvailability().loadElement(
+      globalThis.AbsolutePositionStateManager.requestAvailability().loadElement(
         this,
       );
     }
@@ -206,7 +206,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      */
     unsetPosition() {
       this.__observe = false;
-      window.AbsolutePositionStateManager.requestAvailability().unloadElement(
+      globalThis.AbsolutePositionStateManager.requestAvailability().unloadElement(
         this,
       );
     }
@@ -217,12 +217,12 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      */
     updatePosition() {
       if (!this.hidden && this.auto && this.__observe == false) {
-        window.AbsolutePositionStateManager.requestAvailability().loadElement(
+        globalThis.AbsolutePositionStateManager.requestAvailability().loadElement(
           this,
         );
       }
       if (!this.auto || this.__observe === true) {
-        window.AbsolutePositionStateManager.requestAvailability().positionElement(
+        globalThis.AbsolutePositionStateManager.requestAvailability().positionElement(
           this,
         );
       }

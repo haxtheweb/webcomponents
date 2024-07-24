@@ -208,14 +208,14 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   _generateLicenseLink(source) {
     // remove existing if this is moving around
     if (this._licenseLink) {
-      document.head.removeChild(this._licenseLink);
+      globalThis.document.head.removeChild(this._licenseLink);
     }
-    let link = document.createElement("link");
+    let link = globalThis.document.createElement("link");
     link.setAttribute("typeof", "resource");
     link.setAttribute("rel", "license");
     link.setAttribute("src", source);
 
-    document.head.appendChild(link);
+    globalThis.document.head.appendChild(link);
     return link;
   }
   /**
@@ -226,13 +226,13 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   _generateAboutLink(relatedResource, licenseLink) {
     // remove existing if this is moving around
     if (this._aboutLink) {
-      document.head.removeChild(this._aboutLink);
+      globalThis.document.head.removeChild(this._aboutLink);
     }
-    let link = document.createElement("link");
+    let link = globalThis.document.createElement("link");
     link.setAttribute("about", relatedResource);
     link.setAttribute("property", "cc:license");
     link.setAttribute("content", licenseLink);
-    document.head.appendChild(link);
+    globalThis.document.head.appendChild(link);
     return link;
   }
   /**

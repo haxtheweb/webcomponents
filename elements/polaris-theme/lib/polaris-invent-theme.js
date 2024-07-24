@@ -675,7 +675,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       // because the CMS controls certain internal connectors
       ["polaris-cta", "polaris-mark", "polaris-story-card", "polaris-tile"].map(
         (name) => {
-          let el = document.createElement(name);
+          let el = globalThis.document.createElement(name);
           store.haxAutoloader.appendChild(el);
         },
       );

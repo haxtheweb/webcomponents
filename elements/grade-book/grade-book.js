@@ -42,7 +42,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     super();
     this.hasFilePicker = false;
     this.source = "googledocs";
-    if (window.showOpenFilePicker) {
+    if (globalThis.showOpenFilePicker) {
       this.source = "filesystem";
       this.hasFilePicker = true;
     }
@@ -151,11 +151,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         for (let entry of entries) {
           if (entry.contentBoxSize) {
             pixels = Math.round(
-              window.innerHeight - entry.contentBoxSize[0].blockSize - 122,
+              globalThis.innerHeight - entry.contentBoxSize[0].blockSize - 122,
             );
           } else {
             pixels = Math.round(
-              window.innerHeight - entry.contentRect.height - 122,
+              globalThis.innerHeight - entry.contentRect.height - 122,
             );
           }
         }
@@ -352,7 +352,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           if (!this.__applied) {
             this.__applied = true;
             // this listener gets the event from the service worker
-            window.addEventListener("xlsx-file-system-data", (e) => {
+            globalThis.addEventListener("xlsx-file-system-data", (e) => {
               let database = e.detail.data;
               for (var i in database) {
                 let loadedData = this.transformTable(database[i]);
@@ -411,7 +411,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           this.shadowRoot.querySelector("#studentgrid [data-active]"),
           {
             top: 0,
-            right: window.innerWidth,
+            right: globalThis.innerWidth,
             bottom:
               this.shadowRoot
                 .querySelector("#studentgrid")
@@ -1108,7 +1108,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     this.shadowRoot
       .querySelector("#studentassessment")
       .shadowRoot.querySelector("[part='content']").style.height =
-      Math.round(window.innerHeight - height - 104) + "px";
+      Math.round(globalThis.innerHeight - height - 104) + "px";
     // @todo make this actually be the submitted time, right now it's due relative time'd
     let pre = html`<h3>${this.t.studentSubmission}</h3>
       ${this.t.submitted}
@@ -1245,7 +1245,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         .height,
     );
     // ensure small heights are expanded because it's impossible to leverage overwise
-    if (height / window.innerHeight > 0.65) {
+    if (height / globalThis.innerHeight > 0.65) {
       this.shadowRoot.querySelector("#studentgrid").style.height = null;
     }
   }
@@ -1273,7 +1273,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     if (this.__openWindow && !this.__openWindow.closed) {
       this.__openWindow.focus();
     } else {
-      this.__openWindow = window.open(
+      this.__openWindow = globalThis.open(
         "",
         "studentwork",
         `left=0,top=0,width=${screen.width / 2},height=${
@@ -2042,7 +2042,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   // ensure when we drop a tag onto the UI that it removes all the outlines
   // of fields that can have items dropped into them
   _handleDragDrop(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-tag-drop", {
         detail: {
           value: "drop",
@@ -2052,7 +2052,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   }
   // set the drag transfer data
   setDragTransfer(e) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("simple-tag-dragstart", {
         detail: {
           value: e.target,
@@ -2070,16 +2070,18 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
 }
 customElements.define(GradeBook.tag, GradeBook);
 export { GradeBook };
-window.GradeBook = window.GradeBook || {};
-window.GradeBook.requestAvailability = () => {
+globalThis.GradeBook = globalThis.GradeBook || {};
+globalThis.GradeBook.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.GradeBook.instance) {
-    if (document.querySelector("grade-book")) {
-      window.GradeBook.instance = document.querySelector("grade-book");
+  if (!globalThis.GradeBook.instance) {
+    if (globalThis.document.querySelector("grade-book")) {
+      globalThis.GradeBook.instance =
+        globalThis.document.querySelector("grade-book");
     } else {
-      window.GradeBook.instance = document.createElement("grade-book");
-      document.body.appendChild(window.GradeBook.instance);
+      globalThis.GradeBook.instance =
+        globalThis.document.createElement("grade-book");
+      globalThis.document.body.appendChild(globalThis.GradeBook.instance);
     }
   }
-  return window.GradeBook.instance;
+  return globalThis.GradeBook.instance;
 };

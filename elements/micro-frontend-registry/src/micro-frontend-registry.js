@@ -72,16 +72,17 @@ class MicroFrontendRegistryEl extends HTMLElement {
       if (item.endpoint.startsWith("/api/")) {
         var base = "";
         // support base rewrite
-        if (window.MicroFrontendRegistryConfig.base) {
-          base = window.MicroFrontendRegistryConfig.base;
+        if (globalThis.MicroFrontendRegistryConfig.base) {
+          base = globalThis.MicroFrontendRegistryConfig.base;
         }
         // keep local based on if we're local, otherwise we need to leverage deployed address
         else if (
-          (!window.HAXCMSContext || window.HAXCMSContext !== "nodejs") &&
-          (window.location.origin.startsWith("http://127.0.0.1") ||
-            window.location.origin.startsWith("http://localhost"))
+          (!globalThis.HAXCMSContext ||
+            globalThis.HAXCMSContext !== "nodejs") &&
+          (globalThis.location.origin.startsWith("http://127.0.0.1") ||
+            globalThis.location.origin.startsWith("http://localhost"))
         ) {
-          base = window.location.origin
+          base = globalThis.location.origin
             .replace(/127.0.0.1:8(.*)/, "localhost:3000")
             .replace(/localhost:8(.*)/, "localhost:3000");
         }
@@ -92,10 +93,10 @@ class MicroFrontendRegistryEl extends HTMLElement {
         item.endpoint = `${base}${item.endpoint}`;
       }
       // check for registry config object
-      if (window.MicroFrontendRegistryConfig[item.name]) {
-        Object.keys(window.MicroFrontendRegistryConfig[item.name]).map(
+      if (globalThis.MicroFrontendRegistryConfig[item.name]) {
+        Object.keys(globalThis.MicroFrontendRegistryConfig[item.name]).map(
           (key) => {
-            item[key] = window.MicroFrontendRegistryConfig[item.name][key];
+            item[key] = globalThis.MicroFrontendRegistryConfig[item.name][key];
           },
         );
       }
@@ -264,17 +265,19 @@ class MicroFrontendRegistryEl extends HTMLElement {
 customElements.define(MicroFrontendRegistryEl.tag, MicroFrontendRegistryEl);
 
 // register globally so we can make sure there is only one
-window.MicroFrontendRegistry = window.MicroFrontendRegistry || {};
-window.MicroFrontendRegistryConfig = window.MicroFrontendRegistryConfig || {};
-window.MicroFrontendRegistry.requestAvailability = () => {
-  if (!window.MicroFrontendRegistry.instance) {
-    window.MicroFrontendRegistry.instance = document.createElement(
-      MicroFrontendRegistryEl.tag,
+globalThis.MicroFrontendRegistry = globalThis.MicroFrontendRegistry || {};
+globalThis.MicroFrontendRegistryConfig =
+  globalThis.MicroFrontendRegistryConfig || {};
+globalThis.MicroFrontendRegistry.requestAvailability = () => {
+  if (!globalThis.MicroFrontendRegistry.instance) {
+    globalThis.MicroFrontendRegistry.instance =
+      globalThis.document.createElement(MicroFrontendRegistryEl.tag);
+    globalThis.document.body.appendChild(
+      globalThis.MicroFrontendRegistry.instance,
     );
-    document.body.appendChild(window.MicroFrontendRegistry.instance);
   }
-  return window.MicroFrontendRegistry.instance;
+  return globalThis.MicroFrontendRegistry.instance;
 };
 // most common way to access registry
 export const MicroFrontendRegistry =
-  window.MicroFrontendRegistry.requestAvailability();
+  globalThis.MicroFrontendRegistry.requestAvailability();

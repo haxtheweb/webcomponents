@@ -9,14 +9,13 @@
     "useSass": false,
     "files": {
       "css": "src/mutation-observer-import-mixin.css",
-      "scss": "src/mutation-observer-import-mixin.scss",
       "html": "src/mutation-observer-import-mixin.html",
       "js": "src/mutation-observer-import-mixin.js",
       "properties": "src/mutation-observer-import-mixin-properties.json",
       "hax": "src/mutation-observer-import-mixin-hax.json"
     }
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "a SuperClass mixin that dynamically imports undefined custom element definitions",
   "repository": {
     "type": "git",
@@ -41,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/dynamic-import-registry": "^9.0.1"
+    "@haxtheweb/dynamic-import-registry": "^9.0.2"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

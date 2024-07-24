@@ -134,7 +134,7 @@ class SimpleLoginCamera extends HTMLElement {
         new Error("getUserMedia is not implemented in this browser"),
       );
     }
-    return navigator.mediaDevices.getUserMedia({
+    return globalThis.navigator.mediaDevices.getUserMedia({
       video: {
         width: { min: 320, ideal: 1280, max: 1920 },
         height: { min: 240, ideal: 720, max: 1080 },

@@ -151,15 +151,15 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
     };
   }
   _generateforComponentLink(source) {
-    if (document && document.head) {
+    if (globalThis.document && globalThis.document.head) {
       // remove existing if this is moving around
       if (this._OERLink) {
-        document.head.removeChild(this._OERLink);
+        globalThis.document.head.removeChild(this._OERLink);
       }
-      let link = document.createElement("link");
+      let link = globalThis.document.createElement("link");
       link.setAttribute("property", "oer:forComponent");
       link.setAttribute("content", this.relatedResource);
-      document.head.appendChild(link);
+      globalThis.document.head.appendChild(link);
       return link;
     }
   }

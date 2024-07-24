@@ -86,8 +86,8 @@ class PlayList extends LitElement {
 
   disconnectedCallback() {
     if (this._linkEls) {
-      document.head.removeChild(this._linkEls[0]);
-      document.head.removeChild(this._linkEls[1]);
+      globalThis.document.head.removeChild(this._linkEls[0]);
+      globalThis.document.head.removeChild(this._linkEls[1]);
     }
     super.disconnectedCallback();
   }

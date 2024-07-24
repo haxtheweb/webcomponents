@@ -68,7 +68,7 @@ class LectureAnchor extends DDD {
       );
     } else {
       //node = HAXStore.activeHaxBody.querySelector(this.target);
-      node = document.querySelector(this.target);
+      node = globalThis.document.querySelector(this.target);
     }
     // ensure node exists in selection; may get deleted after being set
     if (node) {
@@ -126,4 +126,4 @@ class LectureAnchor extends DDD {
   }
 }
 
-window.customElements.define("lecture-anchor", LectureAnchor);
+globalThis.customElements.define("lecture-anchor", LectureAnchor);

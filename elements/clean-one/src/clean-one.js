@@ -709,7 +709,7 @@ class CleanOne extends PrintBranchMixin(
          "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
        ).then(() => {
         if (store.getInternalRoute() !== 'search') {
-          window.history.replaceState({}, null, "x/search");
+          globalThis.history.replaceState({}, null, "x/search");
         }
          this.searchTerm = e.detail.value;
        });
@@ -772,7 +772,7 @@ class CleanOne extends PrintBranchMixin(
       super.firstUpdated(changedProperties);
     }
     // only way to hit this
-    document.body.style.overflow = "hidden";
+    globalThis.document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector("main");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =

@@ -383,7 +383,7 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
       // weird looking but forces focus when it opens the search form
-      window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
+      globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
     });
   }
   /**

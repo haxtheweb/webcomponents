@@ -249,7 +249,7 @@ class OutlinePlayer extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
       // weird looking but forces focus when it opens the search form
-      window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
+      globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
     });
   }
   // render function
@@ -383,7 +383,7 @@ class OutlinePlayer extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     // app-panel doesn't make any assumptions about how
     // to handle the layout when it closes
     // trick browser into thinking we just reized
-    window.dispatchEvent(new Event("resize"));
+    globalThis.dispatchEvent(new Event("resize"));
   }
   /**
    * active id has changed.
@@ -393,7 +393,7 @@ class OutlinePlayer extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     if (this.opened && this.narrow) {
       this.shadowRoot.querySelector("#drawer").toggle();
     }
-    window.scrollTo({
+    globalThis.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",

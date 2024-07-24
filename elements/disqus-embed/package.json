@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/disqus-embed.css",
-      "scss": "src/disqus-embed.scss",
       "html": "src/disqus-embed.html",
       "js": "src/disqus-embed.js",
       "properties": "src/disqus-embed-properties.json",
@@ -20,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Disqus service integration",
   "repository": {
     "type": "git",
@@ -47,7 +46,7 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

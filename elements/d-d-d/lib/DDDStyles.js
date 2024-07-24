@@ -18,127 +18,133 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  */
 if (globalThis && globalThis.addEventListener) {
   globalThis.addEventListener(
-  "hax-store-ready",
-  (e) => {
-    if (globalThis.HaxStore) {
-      const HAXStore = globalThis.HaxStore.requestAvailability();
-      HAXStore.designSystemHAXProperties = (props, tag) => {
-        // setup the props of the design system to populate based on matches below
-        let spacingProps = [];
-        let designTreatmentProps = [];
-        let fontProps = [];
-        let cardProps = [];
-        let colorProps = [];
-        // test if this element can be scaled
-        // we generally don't want people doing it this way
-        if (props.canScale) {
-          spacingProps.push({
-            attribute: "data-width",
-            title: "Width",
-            description: "Scaled relative to width of container",
-            inputMethod: "slider",
-            min: props.canScale.min ? props.canScale.min : 25,
-            max: props.canScale.max ? props.canScale.max : 100,
-            step: props.canScale.step ? props.canScale.step : 25,
-          });
-        }
-        // will catch prims and MIGHT catch tag
-        let inline = HAXStore.isInlineElement(tag);
-        // test for inline bc we are so early in bootstrap we might miss it
-        if (props.gizmo && props.gizmo.meta && props.gizmo.meta.inlineOnly) {
-          inline = true;
-        }
-        // everything that allows for advanced should be able to apply spacing
-        // this stuff floats to the top of those options
-        if (!props.hideDefaultSettings && !inline) {
-          if (["media-image", "img"].includes(tag)) {
+    "hax-store-ready",
+    (e) => {
+      if (globalThis.HaxStore) {
+        const HAXStore = globalThis.HaxStore.requestAvailability();
+        HAXStore.designSystemHAXProperties = (props, tag) => {
+          // setup the props of the design system to populate based on matches below
+          let spacingProps = [];
+          let designTreatmentProps = [];
+          let fontProps = [];
+          let cardProps = [];
+          let colorProps = [];
+          // test if this element can be scaled
+          // we generally don't want people doing it this way
+          if (props.canScale) {
             spacingProps.push({
-              attribute: "data-float-position",
-              title: "Float Position",
-              description: "Alignment relative to other items on large screens",
-              inputMethod: "select",
-              options: {
-                "": "-- default --",
-                left: "Left",
-                right: "Right",
-              },
-            });
-          } else {
-            spacingProps.push({
-              attribute: "data-text-align",
-              title: "Text align",
-              description: "Horizontal alignment of text",
-              inputMethod: "select",
-              options: {
-                "": "-- default --",
-                left: "Left",
-                center: "Center",
-                right: "Right",
-                justify: "Justify",
-              },
+              attribute: "data-width",
+              title: "Width",
+              description: "Scaled relative to width of container",
+              inputMethod: "slider",
+              min: props.canScale.min ? props.canScale.min : 25,
+              max: props.canScale.max ? props.canScale.max : 100,
+              step: props.canScale.step ? props.canScale.step : 25,
             });
           }
-          spacingProps.push({
-            attribute: "data-padding",
-            title: "Padding",
-            description: "Padding for added aesthetics",
-            inputMethod: "radio",
-            itemsList: [...HAXOptionSampleFactory("padding")],
-          });
-          spacingProps.push({
-            attribute: "data-margin",
-            title: "Margin",
-            description: "Margin for added aesthetics",
-            inputMethod: "radio",
-            itemsList: [...HAXOptionSampleFactory("margin")],
-          });
-        }
-        // design treatments are rather open ended but should be high up for things that have them
-        if (
-          props.designSystem === true ||
-          props.designSystem.designTreatment === true
-        ) {
-          if (["p", "blockquote"].includes(tag)) {
-            designTreatmentProps.push({
-              attribute: "data-design-treatment",
-              title: "Design treatment",
-              description: "Minor aesthetic treatments for emphasis",
+          // will catch prims and MIGHT catch tag
+          let inline = HAXStore.isInlineElement(tag);
+          // test for inline bc we are so early in bootstrap we might miss it
+          if (props.gizmo && props.gizmo.meta && props.gizmo.meta.inlineOnly) {
+            inline = true;
+          }
+          // everything that allows for advanced should be able to apply spacing
+          // this stuff floats to the top of those options
+          if (!props.hideDefaultSettings && !inline) {
+            if (["media-image", "img"].includes(tag)) {
+              spacingProps.push({
+                attribute: "data-float-position",
+                title: "Float Position",
+                description:
+                  "Alignment relative to other items on large screens",
+                inputMethod: "select",
+                options: {
+                  "": "-- default --",
+                  left: "Left",
+                  right: "Right",
+                },
+              });
+            } else {
+              spacingProps.push({
+                attribute: "data-text-align",
+                title: "Text align",
+                description: "Horizontal alignment of text",
+                inputMethod: "select",
+                options: {
+                  "": "-- default --",
+                  left: "Left",
+                  center: "Center",
+                  right: "Right",
+                  justify: "Justify",
+                },
+              });
+            }
+            spacingProps.push({
+              attribute: "data-padding",
+              title: "Padding",
+              description: "Padding for added aesthetics",
               inputMethod: "radio",
-              itemsList: [
-                ...HAXOptionSampleFactory("design-treatment").filter((item) =>
-                  item && item.value.startsWith("dropCap") ? true : false,
-                ),
-              ],
+              itemsList: [...HAXOptionSampleFactory("padding")],
             });
-          } else if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
-            // filter options to only NON-dropCap options
-            designTreatmentProps.push({
-              attribute: "data-design-treatment",
-              title: "Design treatment",
-              description: "Minor aesthetic treatments for emphasis",
+            spacingProps.push({
+              attribute: "data-margin",
+              title: "Margin",
+              description: "Margin for added aesthetics",
               inputMethod: "radio",
-              itemsList: [
-                ...HAXOptionSampleFactory("design-treatment").filter((item) =>
-                  item && !item.value.startsWith("dropCap") ? true : false,
-                ),
-              ],
+              itemsList: [...HAXOptionSampleFactory("margin")],
             });
           }
-        }
-        // block elements can get accents which effectively implies that they
-        // can get the other 'card' like configuration pieces
-        if (props.designSystem === true || props.designSystem.accent === true) {
-          colorProps.push({
-            attribute: "data-accent",
-            title: "Accent color",
-            description: "Offset items visually for aesthetic purposes",
-            inputMethod: "select",
-            inputMethod: "radio",
-            itemsList: [...HAXOptionSampleFactory("accent")],
-          });
-        }
-        // things allowed to have primary
-        /* if (
+          // design treatments are rather open ended but should be high up for things that have them
+          if (
+            props.designSystem === true ||
+            props.designSystem.designTreatment === true
+          ) {
+            if (["p", "blockquote"].includes(tag)) {
+              designTreatmentProps.push({
+                attribute: "data-design-treatment",
+                title: "Design treatment",
+                description: "Minor aesthetic treatments for emphasis",
+                inputMethod: "radio",
+                itemsList: [
+                  ...HAXOptionSampleFactory("design-treatment").filter(
+                    (item) =>
+                      item && item.value.startsWith("dropCap") ? true : false,
+                  ),
+                ],
+              });
+            } else if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
+              // filter options to only NON-dropCap options
+              designTreatmentProps.push({
+                attribute: "data-design-treatment",
+                title: "Design treatment",
+                description: "Minor aesthetic treatments for emphasis",
+                inputMethod: "radio",
+                itemsList: [
+                  ...HAXOptionSampleFactory("design-treatment").filter(
+                    (item) =>
+                      item && !item.value.startsWith("dropCap") ? true : false,
+                  ),
+                ],
+              });
+            }
+          }
+          // block elements can get accents which effectively implies that they
+          // can get the other 'card' like configuration pieces
+          if (
+            props.designSystem === true ||
+            props.designSystem.accent === true
+          ) {
+            colorProps.push({
+              attribute: "data-accent",
+              title: "Accent color",
+              description: "Offset items visually for aesthetic purposes",
+              inputMethod: "select",
+              inputMethod: "radio",
+              itemsList: [...HAXOptionSampleFactory("accent")],
+            });
+          }
+          // things allowed to have primary
+          /* if (
           [
             "p",
             "blockquote",
@@ -155,145 +161,145 @@ if (globalThis && globalThis.addEventListener) {
             "h6",
           ].includes(tag)
         ) {*/
-        if (
-          props.designSystem === true ||
-          props.designSystem.primary === true
-        ) {
-          colorProps.push({
-            attribute: "data-primary",
-            title: "Primary color",
-            description:
-              "Primary color to apply color, often for meaning or aesthetic",
-            inputMethod: "radio",
-            itemsList: [...HAXOptionSampleFactory("primary")],
-          });
-        }
-        // placing here ensures it loads below colors
-        if (
-          props.designSystem === true ||
-          props.designSystem.designTreatment === true
-        ) {
-          if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
-            // headings can pick up instructional meaning
-            designTreatmentProps.push({
-              attribute: "data-instructional-action",
-              title: "Instructional Context",
-              description: "Indicated to users visually",
+          if (
+            props.designSystem === true ||
+            props.designSystem.primary === true
+          ) {
+            colorProps.push({
+              attribute: "data-primary",
+              title: "Primary color",
+              description:
+                "Primary color to apply color, often for meaning or aesthetic",
               inputMethod: "radio",
-              itemsList: [...HAXOptionSampleFactory("instructional-action")],
+              itemsList: [...HAXOptionSampleFactory("primary")],
             });
           }
-        }
-        // textual controls
-        if (props.designSystem === true || props.designSystem.text === true) {
-          fontProps.push({
-            attribute: "data-font-family",
-            title: "Font family",
-            inputMethod: "select",
-            inputMethod: "radio",
-            itemsList: [...HAXOptionSampleFactory("font-family")],
-          });
+          // placing here ensures it loads below colors
+          if (
+            props.designSystem === true ||
+            props.designSystem.designTreatment === true
+          ) {
+            if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
+              // headings can pick up instructional meaning
+              designTreatmentProps.push({
+                attribute: "data-instructional-action",
+                title: "Instructional Context",
+                description: "Indicated to users visually",
+                inputMethod: "radio",
+                itemsList: [...HAXOptionSampleFactory("instructional-action")],
+              });
+            }
+          }
+          // textual controls
+          if (props.designSystem === true || props.designSystem.text === true) {
+            fontProps.push({
+              attribute: "data-font-family",
+              title: "Font family",
+              inputMethod: "select",
+              inputMethod: "radio",
+              itemsList: [...HAXOptionSampleFactory("font-family")],
+            });
 
-          fontProps.push({
-            attribute: "data-font-weight",
-            title: "Font weight",
-            description: "Ensure it is only for aesthetic purposes",
-            inputMethod: "select",
-            inputMethod: "radio",
-            itemsList: [...HAXOptionSampleFactory("font-weight")],
-          });
+            fontProps.push({
+              attribute: "data-font-weight",
+              title: "Font weight",
+              description: "Ensure it is only for aesthetic purposes",
+              inputMethod: "select",
+              inputMethod: "radio",
+              itemsList: [...HAXOptionSampleFactory("font-weight")],
+            });
 
-          fontProps.push({
-            attribute: "data-font-size",
-            title: "Font size",
-            description: "Ensure sizing is only for aesthetic purposes",
-            inputMethod: "select",
-            inputMethod: "radio",
-            itemsList: [...HAXOptionSampleFactory("font-size")],
+            fontProps.push({
+              attribute: "data-font-size",
+              title: "Font size",
+              description: "Ensure sizing is only for aesthetic purposes",
+              inputMethod: "select",
+              inputMethod: "radio",
+              itemsList: [...HAXOptionSampleFactory("font-size")],
+            });
+          }
+          // things that would give a card appearance
+          if (props.designSystem === true || props.designSystem.card === true) {
+            cardProps = [
+              {
+                attribute: "data-border-radius",
+                title: "Border radius",
+                description: "Border radius to apply",
+                inputMethod: "select",
+                inputMethod: "radio",
+                itemsList: [...HAXOptionSampleFactory("border-radius")],
+              },
+              {
+                attribute: "data-border",
+                title: "Border",
+                description: "Thickness of the border",
+                inputMethod: "select",
+                inputMethod: "radio",
+                itemsList: [...HAXOptionSampleFactory("border")],
+              },
+              {
+                attribute: "data-box-shadow",
+                title: "Box shadow",
+                description: "Subtly raises off the page",
+                inputMethod: "select",
+                inputMethod: "radio",
+                itemsList: [...HAXOptionSampleFactory("box-shadow")],
+              },
+            ];
+          }
+          // @todo make sure we push the text stuff on accurately. might need to build
+          // this entire field as a composite object before pushing onto the stack
+          props.settings.configure.push({
+            inputMethod: "collapse",
+            property: "ddd-styles",
+            properties: [
+              {
+                title: "Design treatment",
+                collapsed: true,
+                accordion: true,
+                property: "ddd-designtreatment",
+                disabled: designTreatmentProps.length === 0,
+                properties: designTreatmentProps,
+              },
+              {
+                title: "Colors",
+                collapsed: true,
+                accordion: true,
+                property: "ddd-card",
+                disabled: colorProps.length === 0,
+                properties: colorProps,
+              },
+              {
+                title: "Font",
+                collapsed: true,
+                accordion: true,
+                property: "ddd-font",
+                disabled: fontProps.length === 0,
+                properties: fontProps,
+              },
+              {
+                title: "Spacing",
+                collapsed: true,
+                accordion: true,
+                property: "ddd-spacing",
+                disabled: spacingProps.length === 0,
+                properties: spacingProps,
+              },
+              {
+                title: "Box appearance",
+                collapsed: true,
+                accordion: true,
+                property: "ddd-box",
+                disabled: cardProps.length === 0,
+                properties: cardProps,
+              },
+            ],
           });
-        }
-        // things that would give a card appearance
-        if (props.designSystem === true || props.designSystem.card === true) {
-          cardProps = [
-            {
-              attribute: "data-border-radius",
-              title: "Border radius",
-              description: "Border radius to apply",
-              inputMethod: "select",
-              inputMethod: "radio",
-              itemsList: [...HAXOptionSampleFactory("border-radius")],
-            },
-            {
-              attribute: "data-border",
-              title: "Border",
-              description: "Thickness of the border",
-              inputMethod: "select",
-              inputMethod: "radio",
-              itemsList: [...HAXOptionSampleFactory("border")],
-            },
-            {
-              attribute: "data-box-shadow",
-              title: "Box shadow",
-              description: "Subtly raises off the page",
-              inputMethod: "select",
-              inputMethod: "radio",
-              itemsList: [...HAXOptionSampleFactory("box-shadow")],
-            },
-          ];
-        }
-        // @todo make sure we push the text stuff on accurately. might need to build
-        // this entire field as a composite object before pushing onto the stack
-        props.settings.configure.push({
-          inputMethod: "collapse",
-          property: "ddd-styles",
-          properties: [
-            {
-              title: "Design treatment",
-              collapsed: true,
-              accordion: true,
-              property: "ddd-designtreatment",
-              disabled: designTreatmentProps.length === 0,
-              properties: designTreatmentProps,
-            },
-            {
-              title: "Colors",
-              collapsed: true,
-              accordion: true,
-              property: "ddd-card",
-              disabled: colorProps.length === 0,
-              properties: colorProps,
-            },
-            {
-              title: "Font",
-              collapsed: true,
-              accordion: true,
-              property: "ddd-font",
-              disabled: fontProps.length === 0,
-              properties: fontProps,
-            },
-            {
-              title: "Spacing",
-              collapsed: true,
-              accordion: true,
-              property: "ddd-spacing",
-              disabled: spacingProps.length === 0,
-              properties: spacingProps,
-            },
-            {
-              title: "Box appearance",
-              collapsed: true,
-              accordion: true,
-              property: "ddd-box",
-              disabled: cardProps.length === 0,
-              properties: cardProps,
-            },
-          ],
-        });
-        return props;
-      };
-    }
-  },
-  { once: true },
+          return props;
+        };
+      }
+    },
+    { once: true },
   );
 }
 /**

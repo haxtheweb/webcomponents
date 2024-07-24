@@ -33,7 +33,6 @@
     "format": "run-s format:*",
     "format:js": "prettier --write **/*.{js,json}",
     "format:css": "stylelint --fix **/*.css",
-    "format:scss": "stylelint --syntax=scss --fix **/*.scss",
     "test": "lerna run test --concurrency=1",
     "build": "lerna run build && yarn run build-storybook",
     "analyze": "wca analyze \"elements/*/**/*.js\" --format vscode --outFile custom-elements.json",
@@ -112,7 +111,6 @@
     "babel-preset-env": "1.7.0",
     "chalk": "5.3.0",
     "core-js": "3.21.1",
-    "css-scss": "0.1.1",
     "decomment": "0.9.5",
     "del": "6.0.0",
     "dialog-polyfill": "0.5.6",
@@ -142,7 +140,6 @@
     "lodash": "^4.17.21",
     "lodash.clonedeep": "4.5.0",
     "lorem-ipsum": "^2.0.3",
-    "node-sass": "^8.0.0",
     "npm-run-all": "^4.1.5",
     "polymer-cli": "^1.9.11",
     "polymer-build": "3.1.4",
@@ -152,7 +149,7 @@
     "react": "*",
     "react-dom": "*",
     "regenerator-runtime": "^0.13.5",
-    "requirejs": "2.3.6",
+    "requirejs": "2.3.7",
     "rollup": "2.68.0",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-babel": "4.4.0",
@@ -187,8 +184,7 @@
   "lint-staged": {
     "*.{js,json}": "prettier --write",
     "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged",
-    "*.css": "stylelint --fix",
-    "*.scss": "stylelint --syntax=scss --fix"
+    "*.css": "stylelint --fix"
   },
   "keywords": [
     "haxtheweb",

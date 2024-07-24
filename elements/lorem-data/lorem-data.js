@@ -104,7 +104,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
   saveDataUrl(schema) {
     let json = this.getJson(schema),
       blob = new Blob([json], { type: "octet/stream" });
-    return window.URL.createObjectURL(blob);
+    return globalThis.URL.createObjectURL(blob);
   }
   get data() {
     let data = {};
@@ -119,7 +119,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
    * @memberof LoremData
    */
   get colors() {
-    let simple = window.SimpleColorsSharedStyles.requestAvailability();
+    let simple = globalThis.SimpleColorsSharedStyles.requestAvailability();
     return simple && simple.colors ? Object.keys(simple.colors) : false;
   }
 

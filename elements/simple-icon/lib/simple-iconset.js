@@ -1,3 +1,4 @@
+import { LitElement } from "lit";
 /**
  * Singleton to manage iconsets
  * @demo demo/index.html
@@ -13,7 +14,7 @@ if (!String.prototype.replaceAll) {
  * @class SimpleIconset
  * @extends HTMLElement
  */
-class SimpleIconset extends HTMLElement {
+class SimpleIconset extends LitElement {
   static get tag() {
     return "simple-iconset";
   }
@@ -111,14 +112,18 @@ class SimpleIconset extends HTMLElement {
   }
 }
 
-customElements.define(SimpleIconset.tag, SimpleIconset);
+globalThis.customElements.define(SimpleIconset.tag, SimpleIconset);
 
 globalThis.SimpleIconset = globalThis.SimpleIconset || {};
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
 globalThis.SimpleIconset.requestAvailability = () => {
-  if (globalThis.SimpleIconset.instance == null && globalThis.document) {
+  if (
+    globalThis.SimpleIconset.instance == null &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
     globalThis.SimpleIconset.instance =
       globalThis.document.createElement("simple-iconset");
     globalThis.document.body.appendChild(globalThis.SimpleIconset.instance);

@@ -6,7 +6,7 @@
     "elementName": "tagging-question",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Answer question by applying related tags",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

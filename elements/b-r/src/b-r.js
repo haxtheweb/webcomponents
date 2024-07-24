@@ -35,7 +35,7 @@ class BR extends LitElement {
     let count = 0;
     const content = [];
     if (amount === 0) {
-      amount = window.innerHeight / 21;
+      amount = globalThis.innerHeight / 21;
     }
     while (count < amount) {
       content.push(html`<br />`);

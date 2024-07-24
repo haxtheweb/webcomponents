@@ -1,4 +1,5 @@
 import { stdResponse, invalidRequest, stdPostBody } from "../utilities/requestHelpers.js";
+//import { render } from '@lit-labs/ssr';
 import { render } from '@lit-labs/ssr/lib/render-with-global-dom-shim.js';
 import {collectResult} from '@lit-labs/ssr/lib/render-result.js';
 import { html } from 'lit';
@@ -28,6 +29,7 @@ export default async function handler(req, res) {
   }
   // need to know what we're searching for otherwise bail
   if (q) {
+    let pastImports = {};
     const doc = parse(q);
     // can select all the dt's for term
     // then all the dd's for definition
@@ -37,18 +39,18 @@ export default async function handler(req, res) {
       const allEls = doc.querySelectorAll('*');
       for (var i=0; i < allEls.length; i++) {
         // see if it's in the registry
-        if (wcRegistry[allEls[i].tagName.toLowerCase()]) {
+        if (wcRegistry[allEls[i].tagName.toLowerCase()] && !pastImports[wcRegistry[allEls[i].tagName.toLowerCase()]]) {
+          pastImports[wcRegistry[allEls[i].tagName.toLowerCase()]] = true;
           try {
-            //console.log(`importing ${wcRegistry[allEls[i].tagName.toLowerCase()]}`);
             await import(wcRegistry[allEls[i].tagName.toLowerCase()]);
           }
           catch(e) {
-            console.warn(e);
+            console.log(`failed to load: ${wcRegistry[allEls[i].tagName.toLowerCase()]}`);
           }
         }
       }
     }
-    const myServerTemplate = html`${unsafeHTML(q)}`;
+    const myServerTemplate = html`<div>${unsafeHTML(q)}</div>`;
     const ssrResult = render(myServerTemplate);
     const content = await collectResult(ssrResult);
     // Awaits promises

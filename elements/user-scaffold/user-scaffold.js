@@ -18,19 +18,25 @@ import {
 } from "mobx";
 configure({ enforceActions: false }); // strict mode off
 // register globally so we can make sure there is only one
-window.UserScaffold = window.UserScaffold || {};
+globalThis.UserScaffold = globalThis.UserScaffold || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same user-scaffold element, making it a singleton.
-window.UserScaffold.requestAvailability = () => {
+globalThis.UserScaffold.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.UserScaffold.instance) {
-    window.UserScaffold.instance = document.createElement("user-scaffold");
-    document.body.appendChild(window.UserScaffold.instance);
+  if (
+    !globalThis.UserScaffold.instance &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
+    globalThis.UserScaffold.instance =
+      globalThis.document.createElement("user-scaffold");
+    globalThis.document.body.appendChild(globalThis.UserScaffold.instance);
   }
-  return window.UserScaffold.instance;
+  return globalThis.UserScaffold.instance;
 };
-export const UserScaffoldInstance = window.UserScaffold.requestAvailability();
+export const UserScaffoldInstance =
+  globalThis.UserScaffold.requestAvailability();
 
 const MEMORYINTERVALPOLLING = 300;
 /**
@@ -108,20 +114,20 @@ export class UserScaffold extends HTMLElement {
       }
     }, MEMORYINTERVALPOLLING);
     // events
-    window.addEventListener("click", this.userMouseAction.bind(this), {
+    globalThis.addEventListener("click", this.userMouseAction.bind(this), {
       signal: this.windowControllers.signal,
     });
     // @todo COMMENT IN AFTER WE GET UX PATTERN DOWN FOR USERS PASTING
-    /*window.addEventListener("paste", this.userPasteAction.bind(this), {
+    /*globalThis.addEventListener("paste", this.userPasteAction.bind(this), {
       signal: this.windowControllers.signal,
     });
-    window.addEventListener("keydown", this.userKeyDownAction.bind(this), {
+    globalThis.addEventListener("keydown", this.userKeyDownAction.bind(this), {
       signal: this.windowControllers.signal,
     });*/
-    window.addEventListener("drop", this.userDropAction.bind(this), {
+    globalThis.addEventListener("drop", this.userDropAction.bind(this), {
       signal: this.windowControllers.signal,
     });
-    window.addEventListener("dragover", this.userDragAction.bind(this), {
+    globalThis.addEventListener("dragover", this.userDragAction.bind(this), {
       signal: this.windowControllers.signal,
     });
   }
@@ -162,8 +168,8 @@ export class UserScaffold extends HTMLElement {
         } else {
           architype = "text/html";
         }
-      } else if (window.clipboardData) {
-        pasteContent = window.clipboardData.getData("Text");
+      } else if (globalThis.clipboardData) {
+        pasteContent = globalThis.clipboardData.getData("Text");
       }
       const raw = pasteContent;
       pasteContent = pasteContent.trim();

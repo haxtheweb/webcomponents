@@ -58,10 +58,7 @@ gulp.task("merge", () => {
             packageJson.wcfactory.useSass &&
             packageJson.wcfactory.files.scss
           ) {
-            const sass = require("node-sass");
-            cssResult += sass.renderSync({
-              file: path.join("./", packageJson.wcfactory.files.scss)
-            }).css;
+            // we don't support scss anymore
           } else if (packageJson.wcfactory.files.css) {
             cssResult += fs.readFileSync(
               path.join("./", packageJson.wcfactory.files.css)

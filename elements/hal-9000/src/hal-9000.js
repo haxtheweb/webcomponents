@@ -105,29 +105,29 @@ class Hal9000 extends LitElement {
     this.debug = false;
     this.pitch = 0.9;
     this.rate = 0.9;
-    this.language = navigator.language;
+    this.language = globalThis.navigator.language;
     // ensure singleton is set
-    window.Hal9000 = window.Hal9000 || {};
-    window.Hal9000.instance = this;
+    globalThis.Hal9000 = globalThis.Hal9000 || {};
+    globalThis.Hal9000.instance = this;
     const location = `${
       new URL("./lib/annyang/annyang.min.js", import.meta.url).href
     }`;
-    window.addEventListener(
+    globalThis.addEventListener(
       "es-bridge-annyang-loaded",
       this._annyangLoaded.bind(this),
       { signal: this.windowControllers.signal },
     );
-    window.ESGlobalBridge.requestAvailability().load("annyang", location);
+    globalThis.ESGlobalBridge.requestAvailability().load("annyang", location);
     // check for speech synthesis API
     if (
-      typeof window.speechSynthesis !== "undefined" &&
-      (window.SpeechRecognition ||
-        window.webkitSpeechRecognition ||
-        window.mozSpeechRecognition ||
-        window.msSpeechRecognition ||
-        window.oSpeechRecognition)
+      typeof globalThis.speechSynthesis !== "undefined" &&
+      (globalThis.SpeechRecognition ||
+        globalThis.webkitSpeechRecognition ||
+        globalThis.mozSpeechRecognition ||
+        globalThis.msSpeechRecognition ||
+        globalThis.oSpeechRecognition)
     ) {
-      this.synth = window.speechSynthesis;
+      this.synth = globalThis.speechSynthesis;
       /*this.voices = this.synth.getVoices();
       for (var i = 0; i < this.voices.length; i++) {
         if (this.voices[i].default) {
@@ -169,9 +169,9 @@ class Hal9000 extends LitElement {
         this.utter.rate = this.rate;
         this.utter.lang = this.language;
         //this.utter.voice = this.defaultVoice;
-        if (window.HAXCMS) {
-          window.HAXCMS.instance.setCursor("hax:wizard-hat");
-          window.HAXCMS.instance.setFavicon("hax:wizard-hat");
+        if (globalThis.HAXCMS) {
+          globalThis.HAXCMS.instance.setCursor("hax:wizard-hat");
+          globalThis.HAXCMS.instance.setFavicon("hax:wizard-hat");
         }
         // THOU SPEAKITH
         this.synth.speak(this.utter);
@@ -179,12 +179,12 @@ class Hal9000 extends LitElement {
           this.setToast(text, alwaysvisible, awaitingInput);
         }
         this.utter.onend = (event) => {
-          if (window.HAXCMS) {
-            window.HAXCMS.instance.resetCursor();
-            window.HAXCMS.instance.resetFavicon();
+          if (globalThis.HAXCMS) {
+            globalThis.HAXCMS.instance.resetCursor();
+            globalThis.HAXCMS.instance.resetFavicon();
           }
           if (!alwaysvisible && !awaitingInput) {
-            window.dispatchEvent(
+            globalThis.dispatchEvent(
               new CustomEvent("super-daemon-toast-hide", {
                 bubbles: true,
                 composed: true,
@@ -205,7 +205,7 @@ class Hal9000 extends LitElement {
    */
   setToast(text, alwaysvisible = false, awaitingInput = true) {
     // gets it all the way to the top immediately
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("super-daemon-toast-show", {
         bubbles: true,
         composed: true,
@@ -226,7 +226,7 @@ class Hal9000 extends LitElement {
    * Annyang library has been loaded globally so we can use it
    */
   _annyangLoaded() {
-    this.annyang = window.annyang;
+    this.annyang = globalThis.annyang;
     // Add our commands to annyang
     if (this.annyang) {
       this.annyang.addCommands(this.commands);
@@ -336,15 +336,15 @@ class Hal9000 extends LitElement {
 // ensure we can generate a singleton
 customElements.define(Hal9000.tag, Hal9000);
 export { Hal9000 };
-window.Hal9000 = window.Hal9000 || {};
+globalThis.Hal9000 = globalThis.Hal9000 || {};
 
-window.Hal9000.requestAvailability = () => {
-  if (!window.Hal9000.instance) {
-    const hal = document.createElement("hal-9000");
-    document.body.appendChild(hal);
-    window.Hal9000.instance = hal;
+globalThis.Hal9000.requestAvailability = () => {
+  if (!globalThis.Hal9000.instance) {
+    const hal = globalThis.document.createElement("hal-9000");
+    globalThis.document.body.appendChild(hal);
+    globalThis.Hal9000.instance = hal;
   }
-  return window.Hal9000.instance;
+  return globalThis.Hal9000.instance;
 };
 
-export const HAL9000Instance = window.Hal9000.requestAvailability();
+export const HAL9000Instance = globalThis.Hal9000.requestAvailability();

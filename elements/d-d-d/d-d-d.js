@@ -41,7 +41,7 @@ export function dddCSSFeatureDetection() {
   if (!CSS.supports("initial-letter", "1")) {
     console.warn("CSS feature: initial-letter not supported");
     console.warn("Adding dropCap-noSupport class");
-    document.body.classList.add("dropCap-noSupport");
+    globalThis.document.body.classList.add("dropCap-noSupport");
   }
 }
 
@@ -153,7 +153,11 @@ export { DDD };
  */
 globalThis.DDDSharedStyles = globalThis.DDDSharedStyles || {};
 globalThis.DDDSharedStyles.requestAvailability = () => {
-  if (globalThis.DDDSharedStyles.instance == null && globalThis.document && globalThis.document.head) {
+  if (
+    globalThis.DDDSharedStyles.instance == null &&
+    globalThis.document &&
+    globalThis.document.head
+  ) {
     // convert css into text content of arrays mashed together
     // this way we can inject it into a global style sheet
     let globalStyles = DDDAllStyles.map((st) =>
@@ -174,7 +178,7 @@ globalThis.DDDSharedStyles.requestAvailability = () => {
       globalThis.document.onload = dddCSSFeatureDetection();
       globalThis.DDDSharedStyles.instance = adoptableDDD;
     } catch (e) {
-      const oldStyleSafariBs = document.createElement("style");
+      const oldStyleSafariBs = globalThis.document.createElement("style");
       oldStyleSafariBs.innerHTML = globalStyles;
       globalThis.document.head.appendChild(oldStyleSafariBs);
       loadDDDFonts();

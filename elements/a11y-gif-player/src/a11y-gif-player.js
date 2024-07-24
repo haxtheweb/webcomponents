@@ -300,7 +300,7 @@ class A11yGifPlayer extends I18NMixin(
   generateStill(src) {
     // enable core services, though should be available
     const MicroFrontendRegistry =
-      window.MicroFrontendRegistry.requestAvailability();
+      globalThis.MicroFrontendRegistry.requestAvailability();
     MicroFrontendRegistry.enableServices(["core"]);
     return MicroFrontendRegistry.url("@core/imgManipulate", {
       quality: 50,
@@ -323,14 +323,14 @@ class A11yGifPlayer extends I18NMixin(
       childList: true,
       subtree: true,
     });
-    window.addEventListener(
+    globalThis.addEventListener(
       "beforeprint",
       (event) => {
         this.shadowRoot.querySelector("#longdesc").toggleOpen();
       },
       { signal: this.windowControllers.signal },
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       "afterprint",
       (event) => {
         this.shadowRoot.querySelector("#longdesc").toggleOpen();

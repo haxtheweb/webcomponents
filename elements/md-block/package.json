@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/md-block.css",
-      "scss": "src/md-block.scss",
       "html": "src/md-block.html",
       "js": "src/md-block.js",
       "properties": "src/md-block-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "a markdown block",
   "repository": {
     "type": "git",
@@ -47,7 +46,7 @@
     "marked": "5.1.0"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Accessibly render a HTML table from a csv file",
   "repository": {
     "type": "git",
@@ -37,13 +37,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/csv-render": "^9.0.1",
-    "@haxtheweb/schema-behaviors": "^9.0.1",
+    "@haxtheweb/csv-render": "^9.0.2",
+    "@haxtheweb/schema-behaviors": "^9.0.2",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

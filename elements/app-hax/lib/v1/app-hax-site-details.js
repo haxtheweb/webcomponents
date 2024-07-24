@@ -222,7 +222,7 @@ export class AppHaxSiteDetails extends SimpleColors {
         // gitlist opens in a new window
         if (op === "gitList") {
           // php library is basis for this button, rare instance
-          if (window.HAXCMSContext === "php") {
+          if (globalThis.HAXCMSContext === "php") {
             // open link in new window
             globalThis.open(
               `gitlist/${site.metadata.site.name}`,

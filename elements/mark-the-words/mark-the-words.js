@@ -295,7 +295,8 @@ export class MarkTheWords extends QuestionElement {
                       </dl>
                     `
                   : nothing}
-                ${this.querySelector('[slot="feedbackIncorrect"]')
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackIncorrect"]')
                   ? html`<slot name="feedbackIncorrect"></slot>`
                   : ``}`
             : ``}
@@ -303,11 +304,13 @@ export class MarkTheWords extends QuestionElement {
           this.numberCorrect ===
             this.displayedAnswers.filter((answer) => answer.correct).length
             ? html` <p class="feedback">${this.correctText}</p>
-                ${this.querySelector('[slot="feedbackCorrect"]')
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackCorrect"]')
                   ? html`<slot name="feedbackCorrect"></slot>`
                   : ``}`
             : ``}
-          ${this.querySelector('[slot="hint"]') &&
+          ${this.querySelector &&
+          this.querySelector('[slot="hint"]') &&
           this.showAnswer &&
           this.numberCorrect !==
             this.displayedAnswers.filter((answer) => answer.correct).length
@@ -318,7 +321,8 @@ export class MarkTheWords extends QuestionElement {
                 </div>
               `
             : ``}
-          ${this.querySelector('[slot="evidence"]') &&
+          ${this.querySelector &&
+          this.querySelector('[slot="evidence"]') &&
           this.showAnswer &&
           this.numberCorrect ===
             this.displayedAnswers.filter((answer) => answer.correct).length

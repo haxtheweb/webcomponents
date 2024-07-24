@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/self-check.css",
-      "scss": "src/self-check.scss",
       "html": "src/self-check.html",
       "js": "src/self-check.js",
       "properties": "src/self-check-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Automated conversion of self-check/",
   "repository": {
     "type": "git",
@@ -42,20 +41,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-behaviors": "^9.0.1",
-    "@haxtheweb/i18n-manager": "^9.0.1",
-    "@haxtheweb/lazy-image-helpers": "^9.0.1",
-    "@haxtheweb/replace-tag": "^9.0.1",
-    "@haxtheweb/schema-behaviors": "^9.0.1",
-    "@haxtheweb/simple-colors": "^9.0.1",
-    "@haxtheweb/simple-icon": "^9.0.1",
-    "@haxtheweb/simple-tooltip": "^9.0.1",
-    "@haxtheweb/user-action": "^9.0.1",
+    "@haxtheweb/a11y-behaviors": "^9.0.2",
+    "@haxtheweb/i18n-manager": "^9.0.2",
+    "@haxtheweb/lazy-image-helpers": "^9.0.2",
+    "@haxtheweb/replace-tag": "^9.0.2",
+    "@haxtheweb/schema-behaviors": "^9.0.2",
+    "@haxtheweb/simple-colors": "^9.0.2",
+    "@haxtheweb/simple-icon": "^9.0.2",
+    "@haxtheweb/simple-tooltip": "^9.0.2",
+    "@haxtheweb/user-action": "^9.0.2",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

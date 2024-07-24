@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/page-scroll-position.css",
-      "scss": "src/page-scroll-position.scss",
       "html": "src/page-scroll-position.html",
       "js": "src/page-scroll-position.js",
       "properties": "src/page-scroll-position-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Automated conversion of page-scroll-position/",
   "repository": {
     "type": "git",
@@ -45,8 +44,8 @@
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/moar-sarcasm.css",
-      "scss": "src/moar-sarcasm.scss",
       "html": "src/moar-sarcasm.html",
       "js": "src/moar-sarcasm.js",
       "properties": "src/moar-sarcasm-properties.json",
@@ -19,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Provide a laugh and a good example of VanillaJS for demos",
   "repository": {
     "type": "git",
@@ -44,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

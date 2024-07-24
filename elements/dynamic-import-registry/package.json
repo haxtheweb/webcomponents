@@ -9,14 +9,13 @@
     "useSass": false,
     "files": {
       "css": "src/dynamic-import-registry.css",
-      "scss": "src/dynamic-import-registry.scss",
       "html": "src/dynamic-import-registry.html",
       "js": "src/dynamic-import-registry.js",
       "properties": "src/dynamic-import-registry-properties.json",
       "hax": "src/dynamic-import-registry-hax.json"
     }
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "maintain manage the registration and usage of dynamic imports",
   "repository": {
     "type": "git",
@@ -41,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

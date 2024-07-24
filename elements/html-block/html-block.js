@@ -142,7 +142,7 @@ class HtmlBlock extends HTMLElement {
   }
   __sanitizeHTML() {
     if (!this.__pen) {
-      this.__pen = document.createElement("div");
+      this.__pen = globalThis.document.createElement("div");
     }
     this.__pen.innerHTML = this.innerHTML;
     this.__rawHTML = this.__pen.cloneNode(true).innerHTML;

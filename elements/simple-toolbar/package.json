@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/simple-toolbar.css",
-      "scss": "src/simple-toolbar.scss",
       "html": "src/simple-toolbar.html",
       "js": "src/simple-toolbar.js",
       "properties": "src/simple-toolbar-properties.json",
@@ -19,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "a customizable toolbar",
   "repository": {
     "type": "git",
@@ -44,14 +43,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-menu-button": "^9.0.1",
-    "@haxtheweb/radio-behaviors": "^9.0.1",
-    "@haxtheweb/simple-icon": "^9.0.1",
-    "@haxtheweb/simple-tooltip": "^9.0.1",
+    "@haxtheweb/a11y-menu-button": "^9.0.2",
+    "@haxtheweb/radio-behaviors": "^9.0.2",
+    "@haxtheweb/simple-icon": "^9.0.2",
+    "@haxtheweb/simple-tooltip": "^9.0.2",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

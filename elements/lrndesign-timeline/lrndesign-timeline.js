@@ -540,7 +540,7 @@ class LrndesignTimeline extends SimpleColors {
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
           element: this,
@@ -638,7 +638,7 @@ class LrndesignTimeline extends SimpleColors {
     }
   }
   updateTimeline() {
-    let sections = document.querySelectorAll("section") || [];
+    let sections = globalThis.document.querySelectorAll("section") || [];
     if (
       this.eventsList.length < 1 &&
       sections.length > 0 &&
@@ -647,7 +647,7 @@ class LrndesignTimeline extends SimpleColors {
       this.eventsElement.innerHTML = "";
       sections.forEach((section) => {
         let clone = section.cloneNode(true),
-          div = document.createElement("div"),
+          div = globalThis.document.createElement("div"),
           overview = div.cloneNode(),
           details = div.cloneNode(),
           heading = div.cloneNode(),
@@ -661,7 +661,7 @@ class LrndesignTimeline extends SimpleColors {
         //get heading
         overview.classList.add("event-overview");
         if (cloneHeading) {
-          let inner = document.createElement("h2");
+          let inner = globalThis.document.createElement("h2");
           heading.appendChild(inner);
           heading.classList.add("heading");
           inner.innerHTML = cloneHeading.innerHTML;

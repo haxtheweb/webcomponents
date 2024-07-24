@@ -14,11 +14,11 @@ class PageScrollPosition extends HTMLElement {
 
     element.addEventListener("scroll", () => {
       // get the height to the top
-      let a = document.documentElement.scrollTop;
+      let a = globalThis.document.documentElement.scrollTop;
       // get how far down the page they have scrolled
       let b =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
+        globalThis.document.documentElement.scrollHeight -
+        globalThis.document.documentElement.clientHeight;
       let c = (a / b) * 100;
       // set value to the percent of the way through
       this.value = c;

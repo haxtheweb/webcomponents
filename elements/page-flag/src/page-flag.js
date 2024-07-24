@@ -173,7 +173,7 @@ class PageFlag extends SimpleColors {
     }
   }
   handleReply(e) {
-    const comment = document.createElement("page-flag-comment");
+    const comment = globalThis.document.createElement("page-flag-comment");
     comment.seed = pageFlagManager.activeUser;
     comment.timestamp = Date.now() / 1000;
     comment.canEdit = true;
@@ -247,7 +247,7 @@ class PageFlag extends SimpleColors {
       this.shadowRoot.querySelector(".arrow");
     // ensure we have content, if not let's add a boilerplate one to get writing
     if (!this.querySelector("page-flag-comment")) {
-      const comment = document.createElement("page-flag-comment");
+      const comment = globalThis.document.createElement("page-flag-comment");
       comment.seed = pageFlagManager.activeUser;
       comment.timestamp = Date.now() / 1000;
       comment.canEdit = true;
@@ -273,7 +273,7 @@ export class pageFlagManagerEl extends HTMLElement {
     this.allFlags = [];
   }
   connectedCallback() {
-    window.addEventListener(
+    globalThis.addEventListener(
       "haxcms-user-data-updated",
       this.userDataUpdated.bind(this),
       { signal: this.windowControllers.signal },
@@ -293,15 +293,15 @@ export class pageFlagManagerEl extends HTMLElement {
 customElements.define(pageFlagManagerEl.tag, pageFlagManagerEl);
 
 // register globally so we can make sure there is only one
-window.pageFlagManager = window.pageFlagManager || {};
-window.pageFlagManager.requestAvailability = () => {
-  if (!window.pageFlagManager.instance) {
-    window.pageFlagManager.instance = document.createElement(
+globalThis.pageFlagManager = globalThis.pageFlagManager || {};
+globalThis.pageFlagManager.requestAvailability = () => {
+  if (!globalThis.pageFlagManager.instance) {
+    globalThis.pageFlagManager.instance = globalThis.document.createElement(
       pageFlagManagerEl.tag,
     );
-    document.body.appendChild(window.pageFlagManager.instance);
+    globalThis.document.body.appendChild(globalThis.pageFlagManager.instance);
   }
-  return window.pageFlagManager.instance;
+  return globalThis.pageFlagManager.instance;
 };
 // most common way to access registry
-export const pageFlagManager = window.pageFlagManager.requestAvailability();
+export const pageFlagManager = globalThis.pageFlagManager.requestAvailability();

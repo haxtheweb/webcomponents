@@ -62,7 +62,7 @@ class EnhancedText extends LitElement {
         const content = this.innerText;
         this.innerHTML = "";
         content.split(/\s|\.+/).forEach((item) => {
-          const tn = document.createTextNode(item);
+          const tn = globalThis.document.createTextNode(item);
           this.appendChild(tn);
           this.appendChild(document.createTextNode(" "));
         });
@@ -75,7 +75,7 @@ class EnhancedText extends LitElement {
         const content = textNodes[0].textContent;
         textNodes[0].remove();
         content.split(/\s|\.+/).forEach((item) => {
-          const tn = document.createTextNode(item);
+          const tn = globalThis.document.createTextNode(item);
           this.appendChild(tn);
           this.appendChild(document.createTextNode(" "));
         });
@@ -96,15 +96,15 @@ class EnhancedText extends LitElement {
           ) {
             // find term in contents of page
             // replace in context
-            let termEl = document.createElement("vocab-term");
+            let termEl = globalThis.document.createElement("vocab-term");
             termEl.term = el.textContent;
             termEl.information = term.definition;
             // support for links from endpoint
             if (term.links && term.links.length > 0) {
-              let div = document.createElement("div");
+              let div = globalThis.document.createElement("div");
               div.classList.add("links");
               for (var t = 0; t < term.links.length; t++) {
-                let a = document.createElement("a");
+                let a = globalThis.document.createElement("a");
                 a.href = term.links[t].href;
                 a.innerText = term.links[t].title;
                 div.appendChild(a);

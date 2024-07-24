@@ -193,7 +193,7 @@ class PdfBrowserViewer extends PolymerElement {
    * Downloads the pdf file
    */
   _download() {
-    window.location = this.file;
+    globalThis.location = this.file;
   }
 }
 customElements.define(PdfBrowserViewer.tag, PdfBrowserViewer);

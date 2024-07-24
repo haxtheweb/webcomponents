@@ -170,7 +170,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
         this.getNextSiblingHTML(header),
       );
       // Scrub the ids from the lecture-anchor elements in the content
-      let contentElement = document.createElement("div");
+      let contentElement = globalThis.document.createElement("div");
       contentElement.innerHTML = anchor.getAttribute("data-lecture-content");
       contentElement.querySelectorAll("[data-lecture-slide]").forEach((el) => {
         el.removeAttribute("id");
@@ -197,7 +197,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
       (item) =>
         item !== element.id &&
         item !==
-          document.querySelector(`[data-associatedID="${element.id}"]`).id,
+          globalThis.document.querySelector(
+            `[data-associatedID="${element.id}"]`,
+          ).id,
     );
     console.log(stopIDs);
     while (nextSibling) {
@@ -220,8 +222,8 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   addPrevNextListeners() {
     console.log("addPrevNextListeners");
-    const prevSlideBtn = document.querySelector("#prevSlideBtn");
-    const nextSlideBtn = document.querySelector("#nextSlideBtn");
+    const prevSlideBtn = globalThis.document.querySelector("#prevSlideBtn");
+    const nextSlideBtn = globalThis.document.querySelector("#nextSlideBtn");
     prevSlideBtn.addEventListener("click", () => {
       const prevSlide =
         this.activeIndex.split("-")[1] > 1
@@ -232,7 +234,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       }
     });
     nextSlideBtn.addEventListener("click", () => {
-      const anchorsWithId = document.querySelectorAll(
+      const anchorsWithId = globalThis.document.querySelectorAll(
         "[data-lecture-slide][id]",
       ).length;
       console.log(anchorsWithId);
@@ -253,20 +255,22 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   updateJumbotron() {
     console.log("updateJumbotron");
-    const jumbotron = document.querySelector(".jumbotron");
+    const jumbotron = globalThis.document.querySelector(".jumbotron");
     console.log(jumbotron);
     jumbotron ? (jumbotron.innerHTML = "") : "";
     console.log(this.activeIndex);
-    const activeAnchor = document.querySelector(`#${this.activeIndex}`);
+    const activeAnchor = globalThis.document.querySelector(
+      `#${this.activeIndex}`,
+    );
     console.log(activeAnchor);
     if (activeAnchor) {
-      const jumbotronHeading = document.createElement("h2");
+      const jumbotronHeading = globalThis.document.createElement("h2");
       jumbotronHeading.id = "jumbotron-heading";
       jumbotronHeading.innerText = activeAnchor.getAttribute(
         "data-lecture-heading",
       );
       jumbotron.appendChild(jumbotronHeading);
-      const jumbotronContent = document.createElement("div");
+      const jumbotronContent = globalThis.document.createElement("div");
       jumbotronContent.id = "jumbotron-desc";
       jumbotronContent.innerHTML = activeAnchor.getAttribute(
         "data-lecture-content",
@@ -277,7 +281,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   updatePlaylist() {
     console.log("updatePlaylist");
-    const valueList = document.querySelector(".valueList");
+    const valueList = globalThis.document.querySelector(".valueList");
     if (!valueList) {
       console.error("ValueList element not found");
       return;
@@ -287,8 +291,8 @@ class LecturePlayer extends DDDSuper(LitElement) {
     Object.keys(this.associatedNodes).forEach((key) => {
       console.log(key, this.associatedNodes[key]);
       const timestamp = this.associatedNodes[key];
-      const slideAnchor = document.querySelector(`#${key}`);
-      const valueBtn = document.createElement("button");
+      const slideAnchor = globalThis.document.querySelector(`#${key}`);
+      const valueBtn = globalThis.document.createElement("button");
       valueBtn.classList.add("valueBtn");
       valueBtn.textContent = slideAnchor
         ? slideAnchor.getAttribute("data-lecture-heading")
@@ -316,8 +320,10 @@ class LecturePlayer extends DDDSuper(LitElement) {
     console.log("seek to timestamp: ", timestamp);
     if (this.open) {
       setTimeout(() => {
-        document.querySelector("#lecture-player-video").seek(timestamp);
-        document.querySelector("#lecture-player-video").play();
+        globalThis.document
+          .querySelector("#lecture-player-video")
+          .seek(timestamp);
+        globalThis.document.querySelector("#lecture-player-video").play();
         console.log(timestamp);
       }, 3000);
     } else {
@@ -328,9 +334,9 @@ class LecturePlayer extends DDDSuper(LitElement) {
   }
 
   play() {
-    document.querySelector("video-player");
+    globalThis.document.querySelector("video-player");
     if (document.querySelector("video-player")) {
-      document.querySelector("video-player").play();
+      globalThis.document.querySelector("video-player").play();
     } else {
       this.querySelector("video-player").play();
     }
@@ -338,7 +344,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   checkDisabledButtons() {
     console.log("checkDisabledButtons");
-    const prevSlideBtn = document.querySelector("#prevSlideBtn");
+    const prevSlideBtn = globalThis.document.querySelector("#prevSlideBtn");
     const activeIndex = parseInt(this.activeIndex.split("-")[1]);
     if (activeIndex === 1) {
       prevSlideBtn.setAttribute("disabled", "true");
@@ -346,33 +352,40 @@ class LecturePlayer extends DDDSuper(LitElement) {
       prevSlideBtn.removeAttribute("disabled");
     }
     if (
-      activeIndex !== document.querySelectorAll("[data-lecture-slide]").length
+      activeIndex !==
+      globalThis.document.querySelectorAll("[data-lecture-slide]").length
     ) {
-      document.querySelector("#nextSlideBtn").removeAttribute("disabled");
+      globalThis.document
+        .querySelector("#nextSlideBtn")
+        .removeAttribute("disabled");
     }
   }
 
   endVideo() {
     console.log("endVideo");
-    document.querySelector("#lecture-player-video").pause();
-    document.querySelector("#nextSlideBtn").setAttribute("disabled", "true");
-    let endBtnDiv = document.createElement("div");
+    globalThis.document.querySelector("#lecture-player-video").pause();
+    globalThis.document
+      .querySelector("#nextSlideBtn")
+      .setAttribute("disabled", "true");
+    let endBtnDiv = globalThis.document.createElement("div");
     endBtnDiv.setAttribute("data-primary", "11");
     endBtnDiv.innerHTML = `<simple-cta class="endBtn" data-pulse data-primary="11">Close Lecture Player</simple-cta>`;
     endBtnDiv.classList.add("endBtnContainer");
-    document.querySelector(".jumbotron").appendChild(endBtnDiv);
-    document.querySelector(".endBtn").addEventListener("click", () => {
-      document.querySelector("simple-modal").close();
-      this.open = false;
-    });
-    let jumbotron = document.querySelector(".jumbotron");
+    globalThis.document.querySelector(".jumbotron").appendChild(endBtnDiv);
+    globalThis.document
+      .querySelector(".endBtn")
+      .addEventListener("click", () => {
+        globalThis.document.querySelector("simple-modal").close();
+        this.open = false;
+      });
+    let jumbotron = globalThis.document.querySelector(".jumbotron");
     jumbotron.scrollTop = jumbotron.scrollHeight + 500;
   }
 
   showModal() {
     let videoSectionColumns = "1fr 1fr";
     console.log("showModal");
-    let c = document.createElement("div");
+    let c = globalThis.document.createElement("div");
     c.classList.add("modal-content");
     c.innerHTML = `
     <style>
@@ -563,40 +576,64 @@ class LecturePlayer extends DDDSuper(LitElement) {
       document
         .querySelector("#lecture-size-large")
         .addEventListener("click", (e) => {
-          document.querySelectorAll(".lecture-control").forEach((control) => {
-            control.classList.remove("active");
-          });
+          globalThis.document
+            .querySelectorAll(".lecture-control")
+            .forEach((control) => {
+              control.classList.remove("active");
+            });
           e.target.classList.toggle("active");
-          document.querySelector(".videoSection").classList.add("large");
-          document.querySelector(".videoSection").classList.remove("small");
-          document.querySelector(".videoSection").classList.remove("normal");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.add("large");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("small");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("normal");
         });
       document
         .querySelector("#lecture-size-normal")
         .addEventListener("click", (e) => {
-          document.querySelectorAll(".lecture-control").forEach((control) => {
-            control.classList.remove("active");
-          });
+          globalThis.document
+            .querySelectorAll(".lecture-control")
+            .forEach((control) => {
+              control.classList.remove("active");
+            });
           e.target.classList.toggle("active");
-          document.querySelector(".videoSection").classList.add("normal");
-          document.querySelector(".videoSection").classList.remove("small");
-          document.querySelector(".videoSection").classList.remove("large");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.add("normal");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("small");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("large");
         });
       document
         .querySelector("#lecture-size-small")
         .addEventListener("click", (e) => {
-          document.querySelectorAll(".lecture-control").forEach((control) => {
-            control.classList.remove("active");
-          });
+          globalThis.document
+            .querySelectorAll(".lecture-control")
+            .forEach((control) => {
+              control.classList.remove("active");
+            });
           e.target.classList.toggle("active");
-          document.querySelector(".videoSection").classList.add("small");
-          document.querySelector(".videoSection").classList.remove("normal");
-          document.querySelector(".videoSection").classList.remove("large");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.add("small");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("normal");
+          globalThis.document
+            .querySelector(".videoSection")
+            .classList.remove("large");
         });
       document
         .querySelector("simple-modal .modal-content .videoSection video-player")
         .setAttribute("id", "lecture-player-video");
-      window.addEventListener("simple-modal-closed", () => {
+      globalThis.addEventListener("simple-modal-closed", () => {
         this.querySelector("video-player").removeAttribute("hidden");
         this.open = false;
       });
@@ -611,4 +648,4 @@ class LecturePlayer extends DDDSuper(LitElement) {
   }
 }
 
-window.customElements.define("lecture-player", LecturePlayer);
+globalThis.customElements.define("lecture-player", LecturePlayer);

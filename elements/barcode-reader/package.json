@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/barcode-reader.css",
-      "scss": "src/barcode-reader.scss",
       "html": "src/barcode-reader.html",
       "js": "src/barcode-reader.js",
       "properties": "src/barcode-reader-properties.json",
@@ -20,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Reads barcodes",
   "repository": {
     "type": "git",
@@ -52,7 +51,7 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

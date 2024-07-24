@@ -15,11 +15,13 @@ export const SimpleModalHandler = function (SuperClass) {
       super();
       setTimeout(() => {
         globalThis.SimpleModal.requestAvailability();
-        this.addEventListener(
-          "click",
-          this.__SimpleModalHandlerClick.bind(this),
-        );
-        this.addEventListener("keypress", this._keyPress.bind(this));
+        if (this.addEventListener) {
+          this.addEventListener(
+            "click",
+            this.__SimpleModalHandlerClick.bind(this),
+          );
+          this.addEventListener("keypress", this._keyPress.bind(this));
+        }
       }, 0);
     }
     /**

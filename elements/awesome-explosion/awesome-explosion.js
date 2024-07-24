@@ -178,8 +178,8 @@ class AwesomeExplosion extends LitElement {
   _calculateStopped(newValue, oldValue) {
     if (newValue == "stop") {
       this.stopped = true;
-      if (typeof window.audio !== typeof undefined) {
-        window.audio.currentTime = 0;
+      if (typeof globalThis.audio !== typeof undefined) {
+        globalThis.audio.currentTime = 0;
       }
       this._stopSound();
       this.dispatchEvent(
@@ -239,10 +239,10 @@ class AwesomeExplosion extends LitElement {
    * Stop the sound effect.
    */
   _stopSound() {
-    if (typeof window.audio !== typeof undefined) {
-      window.audio.pause();
+    if (typeof globalThis.audio !== typeof undefined) {
+      globalThis.audio.pause();
       if (this.resetSound) {
-        window.audio.currentTime = 0;
+        globalThis.audio.currentTime = 0;
       }
     }
   }
@@ -265,10 +265,10 @@ class AwesomeExplosion extends LitElement {
    * Play the sound effect.
    */
   _playSound() {
-    if (typeof window.audio === typeof undefined) {
-      window.audio = new Audio(this.sound);
+    if (typeof globalThis.audio === typeof undefined) {
+      globalThis.audio = new Audio(this.sound);
     }
-    window.audio.play();
+    globalThis.audio.play();
   }
 }
 customElements.define(AwesomeExplosion.tag, AwesomeExplosion);

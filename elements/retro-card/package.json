@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/retro-card.css",
-      "scss": "src/retro-card.scss",
       "html": "src/retro-card.html",
       "js": "src/retro-card.js",
       "properties": "src/retro-card-properties.json",
@@ -19,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Simple card in a cool retro design",
   "repository": {
     "type": "git",
@@ -44,11 +43,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-colors": "^9.0.1",
+    "@haxtheweb/simple-colors": "^9.0.2",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

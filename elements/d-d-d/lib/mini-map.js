@@ -91,7 +91,7 @@ export class MiniMap extends DDD {
   }
 
   showModal(id) {
-    const c = document.createElement("div");
+    const c = globalThis.document.createElement("div");
     c.classList.add("modal-form");
     const nodeExists = this.nodeList ? this.nodeList.includes(id) : false;
     const type = nodeExists ? nodeExists.type : "topic";
@@ -147,17 +147,17 @@ export class MiniMap extends DDD {
       </div>
     `;
 
-    const saveButton = document.createElement("button");
+    const saveButton = globalThis.document.createElement("button");
     saveButton.id = "nodeSaveBtn";
     saveButton.textContent = "Save";
     saveButton.addEventListener("click", this.saveNode);
 
-    const cancelButton = document.createElement("button");
+    const cancelButton = globalThis.document.createElement("button");
     cancelButton.id = "nodeCancelBtn";
     cancelButton.textContent = "Cancel";
     cancelButton.addEventListener("click", this.closeModal);
 
-    const deleteButton = document.createElement("button");
+    const deleteButton = globalThis.document.createElement("button");
     deleteButton.id = "nodeDeleteBtn";
     deleteButton.textContent = "Delete";
     deleteButton.addEventListener("click", this.deleteNode);
@@ -178,7 +178,7 @@ export class MiniMap extends DDD {
     });
     dispatchEvent(evnt);
 
-    document.addEventListener("simple-modal-opened", (e) => {
+    globalThis.document.addEventListener("simple-modal-opened", (e) => {
       console.log("Modal opened", e);
       this.addModalListeners();
     });
@@ -204,10 +204,10 @@ export class MiniMap extends DDD {
   renderCanvas() {}
 
   saveNode() {
-    const type = document.querySelector("#node-input-type").value;
-    const name = document.querySelector("#node-input-name").value;
-    const url = document.querySelector("#node-input-url").value;
-    const id = document.querySelector("#node-input-id").innerText;
+    const type = globalThis.document.querySelector("#node-input-type").value;
+    const name = globalThis.document.querySelector("#node-input-name").value;
+    const url = globalThis.document.querySelector("#node-input-url").value;
+    const id = globalThis.document.querySelector("#node-input-id").innerText;
     console.log(id, type, name, url);
     this.nodeList = this.nodeList ? this.nodeList : [];
     if (this.nodeList.length != 0 && this.nodeList.includes(id)) {
@@ -224,16 +224,18 @@ export class MiniMap extends DDD {
         .shadowRoot.querySelector("#node-" + id)
         .setAttribute("url", url);
     } else {
-      document.querySelector("mini-map").nodeList.push(id);
-      document.querySelector("mini-map").addNode(id, type, name, url);
+      globalThis.document.querySelector("mini-map").nodeList.push(id);
+      globalThis.document
+        .querySelector("mini-map")
+        .addNode(id, type, name, url);
     }
-    document.querySelector("mini-map").closeModal();
+    globalThis.document.querySelector("mini-map").closeModal();
   }
 
   async addNode(id, type, name, url) {
-    const miniMap = document.querySelector("mini-map").shadowRoot;
+    const miniMap = globalThis.document.querySelector("mini-map").shadowRoot;
     const cell = miniMap.querySelector(`#cell-${id}`);
-    const node = document.createElement("a");
+    const node = globalThis.document.createElement("a");
     node.classList.add("node");
     node.classList.add(`node-${type}`);
     node.setAttribute("href", "#");
@@ -287,4 +289,4 @@ export class MiniMap extends DDD {
   }
 }
 
-window.customElements.define("mini-map", MiniMap);
+globalThis.customElements.define("mini-map", MiniMap);

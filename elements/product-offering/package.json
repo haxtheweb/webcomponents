@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/product-offering.css",
-      "scss": "src/product-offering.scss",
       "html": "src/product-offering.html",
       "js": "src/product-offering.js",
       "properties": "src/product-offering-properties.json",
@@ -20,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Simple card for displaying product info",
   "repository": {
     "type": "git",
@@ -45,13 +44,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/intersection-element": "^9.0.1",
-    "@haxtheweb/simple-colors": "^9.0.1",
-    "@haxtheweb/simple-icon": "^9.0.1",
+    "@haxtheweb/intersection-element": "^9.0.2",
+    "@haxtheweb/simple-colors": "^9.0.2",
+    "@haxtheweb/simple-icon": "^9.0.2",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@web/dev-server": "0.4.2",

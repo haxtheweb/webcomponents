@@ -4,19 +4,21 @@ export const activeStateBehavior = function (SuperClass) {
       super();
       this.isUserSelected = false;
       setTimeout(() => {
-        this.addEventListener("mouseover", (e) => {
-          this.isUserSelected = true;
-        });
-        this.addEventListener("focusin", (e) => {
-          this.isUserSelected = true;
-        });
+        if (this.addEventListener) {
+          this.addEventListener("mouseover", (e) => {
+            this.isUserSelected = true;
+          });
+          this.addEventListener("focusin", (e) => {
+            this.isUserSelected = true;
+          });
 
-        this.addEventListener("mouseout", (e) => {
-          this.isUserSelected = false;
-        });
-        this.addEventListener("focusout", (e) => {
-          this.isUserSelected = false;
-        });
+          this.addEventListener("mouseout", (e) => {
+            this.isUserSelected = false;
+          });
+          this.addEventListener("focusout", (e) => {
+            this.isUserSelected = false;
+          });
+        }
       }, 0);
     }
     static get properties() {

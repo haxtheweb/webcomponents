@@ -4,19 +4,23 @@
  */
 import { JSONOutlineSchemaItem } from "./lib/json-outline-schema-item.js";
 // register globally so we can make sure there is only one
-window.JSONOutlineSchema = window.JSONOutlineSchema || {};
+globalThis.JSONOutlineSchema = globalThis.JSONOutlineSchema || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same json-outline-schema element, making it a singleton.
-window.JSONOutlineSchema.requestAvailability = () => {
+globalThis.JSONOutlineSchema.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
-  if (!window.JSONOutlineSchema.instance) {
-    window.JSONOutlineSchema.instance = document.createElement(
+  if (
+    !globalThis.JSONOutlineSchema.instance &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
+    globalThis.JSONOutlineSchema.instance = globalThis.document.createElement(
       "json-outline-schema",
     );
-    document.body.appendChild(window.JSONOutlineSchema.instance);
+    globalThis.document.body.appendChild(globalThis.JSONOutlineSchema.instance);
   }
-  return window.JSONOutlineSchema.instance;
+  return globalThis.JSONOutlineSchema.instance;
 };
 /**
  * `json-outline-schema`
@@ -59,7 +63,7 @@ class JsonOutlineSchema extends HTMLElement {
     this.windowControllers = new AbortController();
     // set tag for later use
     this.tag = JsonOutlineSchema.tag;
-    this.template = document.createElement("template");
+    this.template = globalThis.document.createElement("template");
 
     this.attachShadow({ mode: "open" });
 
@@ -76,17 +80,17 @@ class JsonOutlineSchema extends HTMLElement {
     this.metadata = {};
     this.items = [];
     this.debug = false;
-    window.JSONOutlineSchema.instance = this;
+    globalThis.JSONOutlineSchema.instance = this;
   }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.styleElement(this);
     }
 
-    window.addEventListener(
+    globalThis.addEventListener(
       "json-outline-schema-debug-toggle",
       this._toggleDebug.bind(this),
       { signal: this.windowControllers.signal },
@@ -119,8 +123,8 @@ class JsonOutlineSchema extends HTMLElement {
     this.shadowRoot.innerHTML = null;
     this.template.innerHTML = this.html;
 
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
@@ -313,7 +317,7 @@ class JsonOutlineSchema extends HTMLElement {
         metadata: this.metadata,
         items: this.items,
       };
-      let span = document.createElement("span");
+      let span = globalThis.document.createElement("span");
       span.innerHTML = JSON.stringify(obj, null, 2);
       this.shadowRoot.appendChild(span.cloneNode(true));
     } else {
@@ -527,11 +531,11 @@ class JsonOutlineSchema extends HTMLElement {
       items = this.items;
     }
     let tree = this.unflattenItems(items);
-    return this.treeToNodes(tree, document.createElement("ul"));
+    return this.treeToNodes(tree, globalThis.document.createElement("ul"));
   }
   treeToNodes(tree, appendTarget) {
     for (var i in tree) {
-      let li = document.createElement("li");
+      let li = globalThis.document.createElement("li");
       li.innerText = tree[i].title;
       li.setAttribute("data-jos-id", tree[i].id);
       if (tree[i].location) {
@@ -548,7 +552,10 @@ class JsonOutlineSchema extends HTMLElement {
       appendTarget.appendChild(li);
       if (tree[i].children && tree[i].children.length > 0) {
         appendTarget.appendChild(
-          this.treeToNodes(tree[i].children, document.createElement("ul")),
+          this.treeToNodes(
+            tree[i].children,
+            globalThis.document.createElement("ul"),
+          ),
         );
       }
     }

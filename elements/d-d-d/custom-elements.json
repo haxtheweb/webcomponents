@@ -28,34 +28,6 @@
           "valueSet": "v"
         }
       ]
-    },
-    {
-      "name": "mini-map",
-      "description": "Events:\n\n  * `simple-modal-show` {`CustomEvent<{ elements: { content: HTMLDivElement; }; invokedBy: HTMLButtonElement; clone: boolean; onShow: () => void; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `properties` {`{ gridSize: { type: NumberConstructor; }; nodeList: { type: ArrayConstructor; }; lineList: { type: ArrayConstructor; }; activeNode: { ...; }; availableNodes: { ...; }; }`} - \n\n  * `gridSize` {`number`} - \n\n  * `nodeList` {`never[]`} - \n\n  * `lineList` {`never[]`} - \n\n  * `activeNode` - \n\n  * `availableNodes` {`never[]`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ elements: { content: HTMLDivElement; }; invokedBy: HTMLButtonElement; clone: boolean; onShow: () => void; }>`} - "
-        },
-        {
-          "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` {`CustomEvent<any>`} - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

@@ -595,22 +595,22 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
   _generateBootstrapLink() {
     if (this._bootstrapLink) {
-      document.head.removeChild(this._bootstrapLink);
+      globalThis.document.head.removeChild(this._bootstrapLink);
     }
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-    let link = document.createElement("link");
+    let link = globalThis.document.createElement("link");
     link.setAttribute("rel", "stylesheet");
     link.setAttribute(
       "href",
       basePath + "bootstrap/dist/css/bootstrap.min.css",
     );
-    document.head.appendChild(link);
+    globalThis.document.head.appendChild(link);
     return link;
   }
 
   disconnectedCallback() {
     if (this._bootstrapLink) {
-      document.head.removeChild(this._bootstrapLink);
+      globalThis.document.head.removeChild(this._bootstrapLink);
     }
     super.disconnectedCallback();
   }
@@ -623,10 +623,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
       super.firstUpdated(changedProperties);
     }
     this._loadScripts();
-    document.body.style.overflow = "hidden";
+    globalThis.document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".site-body");
-    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
 
     this._bootstrapLink = this._generateBootstrapLink();
@@ -639,11 +639,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
   _loadScripts() {
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     let jqueryPath = "jquery/dist/jquery.min.js";
-    window.ESGlobalBridge.requestAvailability().load(
+    globalThis.ESGlobalBridge.requestAvailability().load(
       "jquery",
       basePath + jqueryPath,
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       `es-bridge-jquery-loaded`,
       this._jqueryLoaded.bind(this),
     );
@@ -656,11 +656,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
   _loadBootstrap() {
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     let bootstrapPath = "bootstrap/dist/js/bootstrap.bundle.min.js";
-    window.ESGlobalBridge.requestAvailability().load(
+    globalThis.ESGlobalBridge.requestAvailability().load(
       "bootstrap",
       basePath + bootstrapPath,
     );
-    window.addEventListener(
+    globalThis.addEventListener(
       `es-bridge-bootstrap-loaded`,
       this._bootstrapLoaded.bind(this),
     );

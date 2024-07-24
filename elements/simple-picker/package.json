@@ -9,14 +9,13 @@
     "useSass": false,
     "files": {
       "css": "src/simple-picker.css",
-      "scss": "src/simple-picker.scss",
       "html": "src/simple-picker.html",
       "js": "src/simple-picker.js",
       "properties": "src/simple-picker-properties.json"
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "a simple picker for swatches, icons, etc.",
   "repository": {
     "type": "git",
@@ -41,13 +40,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/intersection-element": "^9.0.1",
-    "@haxtheweb/simple-icon": "^9.0.1",
+    "@haxtheweb/intersection-element": "^9.0.2",
+    "@haxtheweb/simple-icon": "^9.0.2",
     "@lit-labs/virtualizer": "2.0.12",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

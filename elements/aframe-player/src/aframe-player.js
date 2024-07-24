@@ -231,18 +231,21 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     super.connectedCallback();
     let location = "https://aframe.io/releases/0.9.2/aframe.min.js";
     if (typeof TWEEN === "object") this._aframeLoaded.bind(this);
-    window.addEventListener(
+    globalThis.addEventListener(
       "es-bridge-aframePlayer-loaded",
       this._aframeLoaded.bind(this),
       { signal: this.windowControllers.signal },
     );
-    window.ESGlobalBridge.requestAvailability().load("aframePlayer", location);
+    globalThis.ESGlobalBridge.requestAvailability().load(
+      "aframePlayer",
+      location,
+    );
   }
 
   _aframeLoaded(el) {
     // ensure that this doesn't put full screen styles on the page!
     this.querySelector("#scene").removeFullScreenStyles();
-    this.__entity = document.createElement("a-entity");
+    this.__entity = globalThis.document.createElement("a-entity");
     this.__entity.setAttribute("gltf-model", "url(" + this.source + ")");
     this._positionChanged(this.position);
     this.querySelector("#scene").appendChild(this.__entity);

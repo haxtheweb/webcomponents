@@ -101,7 +101,7 @@ class ShadowStyle extends HTMLElement {
               appendTo = el.shadowRoot;
             }
             // make a style tag that is empty
-            let style = document.createElement("style");
+            let style = globalThis.document.createElement("style");
             style.innerHTML = "";
             // apply any / all selectors found to this element
             for (let shadowSelector in this.cssMap[tagName]) {

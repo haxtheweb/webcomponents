@@ -540,6 +540,13 @@ class VideoPlayer extends IntersectionObserverMixin(
   static get tag() {
     return "video-player";
   }
+  // weird looking but allows for SSR support
+  querySelectorAll(query) {
+    if (super.query) {
+      super.querySelectorAll(query);
+    }
+    return [];
+  }
   constructor() {
     super();
     this.windowControllers = new AbortController();
@@ -679,7 +686,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     ) {
       // fake creation of a webview element to see if it's valid
       // or not.
-      let test = document.createElement("webview");
+      let test = globalThis.document.createElement("webview");
       // if this function exists it means that our deploy target
       // is in a sandboxed environment and is not able to run iframe
       // content with any real stability. This is beyond edge case but
@@ -995,7 +1002,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       ) {
         this.__setVisChange = true;
         this.windowControllers = new AbortController();
-        document.addEventListener(
+        globalThis.document.addEventListener(
           "visibilitychange",
           this._visChange.bind(this),
           { signal: this.windowControllers.signal },
@@ -1057,7 +1064,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   _visChange(e) {
     setTimeout(() => {
       if (
-        document.visibilityState === "visible" &&
+        globalThis.document.visibilityState === "visible" &&
         !this.playing &&
         this.__forcePaused
       ) {

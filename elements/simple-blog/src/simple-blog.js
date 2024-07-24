@@ -213,7 +213,7 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     if (name === "home" || name === "404") {
       this.selectedPage = 0;
     } else {
-      window.scrollTo({
+      globalThis.scrollTo({
         top: 0,
         left: 0,
       });
@@ -221,11 +221,11 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
       // @todo hacky timing thing
       setTimeout(() => {
         // try scrolling to the target ID after content gets imported
-        window.AnchorBehaviors.getTarget(store.themeElement);
+        globalThis.AnchorBehaviors.getTarget(store.themeElement);
       }, 1000);
     }
     setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
+      globalThis.dispatchEvent(new Event("resize"));
     }, 50);
   }
   /**
@@ -233,8 +233,8 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
    */
   _goBack(e) {
     const prevActiveItemId = store.activeId;
-    window.history.pushState(null, null, store.location.baseUrl);
-    window.dispatchEvent(new PopStateEvent("popstate"));
+    globalThis.history.pushState(null, null, store.location.baseUrl);
+    globalThis.dispatchEvent(new PopStateEvent("popstate"));
     // should help account for starting on a page where popstate isn't set
     // and also generate data model mirroring
     if (prevActiveItemId) {
@@ -250,7 +250,7 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
         }
       }, 100);
     } else {
-      window.scrollTo({
+      globalThis.scrollTo({
         top: 0,
         left: 0,
       });

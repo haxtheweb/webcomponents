@@ -619,8 +619,8 @@ class HexagonLoader extends LitElement {
    * Color changed
    */
   _colorChanged(newValue, oldValue) {
-    if (newValue && window.ShadyCSS) {
-      window.ShadyCSS.styleSubtree(this, { "--hexagon-color": newValue });
+    if (newValue && globalThis.ShadyCSS) {
+      globalThis.ShadyCSS.styleSubtree(this, { "--hexagon-color": newValue });
     }
   }
 }

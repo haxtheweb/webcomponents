@@ -208,13 +208,15 @@ export class Recorder {
   //                                                  -> [worker]
   initAudio() {
     const getUserMedia =
-      navigator.mediaDevices && navigator.mediaDevices.getUserMedia
+      globalThis.navigator.mediaDevices &&
+      globalThis.navigator.mediaDevices.getUserMedia
         ? function (constraints) {
-            return navigator.mediaDevices.getUserMedia(constraints);
+            return globalThis.navigator.mediaDevices.getUserMedia(constraints);
           }
         : function (constraints) {
             const oldGetUserMedia =
-              navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+              globalThis.navigator.webkitGetUserMedia ||
+              globalThis.navigator.mozGetUserMedia;
             if (!oldGetUserMedia) {
               return Promise.reject(
                 new Error("getUserMedia is not implemented in this browser"),

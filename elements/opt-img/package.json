@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/opt-img.css",
-      "scss": "src/opt-img.scss",
       "html": "src/opt-img.html",
       "js": "src/opt-img.js",
       "properties": "src/opt-img-properties.json",
@@ -20,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "an optimized image delivery",
   "repository": {
     "type": "git",
@@ -45,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -128,7 +128,7 @@ export class SortingQuestion extends QuestionElement {
             children[i].disabled = true;
           }
           this.numberCorrect = numCorrect;
-          let si = document.createElement("simple-icon-lite");
+          let si = globalThis.document.createElement("simple-icon-lite");
           let extras = {};
           let toastShowEventName = "simple-toast-show";
           // support for haxcms toast
@@ -347,17 +347,20 @@ export class SortingQuestion extends QuestionElement {
                   ${this.t.numCorrectLeft} ${this.numberCorrect} out of
                   ${this.answers.length} ${this.t.numCorrectRight}
                 </p>
-                ${this.querySelector('[slot="feedbackIncorrect"]')
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackIncorrect"]')
                   ? html`<slot name="feedbackIncorrect"></slot>`
                   : ``}`
             : ``}
           ${this.showAnswer && this.numberCorrect === this.answers.length
             ? html` <p class="feedback">${this.correctText}</p>
-                ${this.querySelector('[slot="feedbackCorrect"]')
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackCorrect"]')
                   ? html`<slot name="feedbackCorrect"></slot>`
                   : ``}`
             : ``}
-          ${this.querySelector('[slot="hint"]') &&
+          ${this.querySelector &&
+          this.querySelector('[slot="hint"]') &&
           this.showAnswer &&
           this.numberCorrect !== this.answers.length
             ? html`
@@ -367,7 +370,8 @@ export class SortingQuestion extends QuestionElement {
                 </div>
               `
             : ``}
-          ${this.querySelector('[slot="evidence"]') &&
+          ${this.querySelector &&
+          this.querySelector('[slot="evidence"]') &&
           this.showAnswer &&
           this.numberCorrect === this.answers.length
             ? html`

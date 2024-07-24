@@ -18,11 +18,11 @@ class TwitterEmbed extends LitElement {
   constructor() {
     super();
     this.lang =
-      document.body.getAttribute("xml:lang") ||
-      document.body.getAttribute("lang") ||
-      document.documentElement.getAttribute("xml:lang") ||
-      document.documentElement.getAttribute("lang") ||
-      navigator.language ||
+      globalThis.document.body.getAttribute("xml:lang") ||
+      globalThis.document.body.getAttribute("lang") ||
+      globalThis.document.documentElement.getAttribute("xml:lang") ||
+      globalThis.document.documentElement.getAttribute("lang") ||
+      globalThis.navigator.language ||
       FALLBACK_LANG;
     this.dataWidth = "550px";
     this.dataTheme = "light";
@@ -86,7 +86,7 @@ class TwitterEmbed extends LitElement {
    * Supply translations for the UI elements of HAX in meme-maker
    */
   haxgizmoRegistration(store) {
-    window.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `twitter-embed.haxProperties`,

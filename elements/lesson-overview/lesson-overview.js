@@ -87,7 +87,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       if (site) {
         var base = "";
         if (document.querySelector("base")) {
-          base = document.querySelector("base").href;
+          base = globalThis.document.querySelector("base").href;
         }
         params.site = base;
         params.ancestor = toJS(store.activeId); // set as the active item ID
