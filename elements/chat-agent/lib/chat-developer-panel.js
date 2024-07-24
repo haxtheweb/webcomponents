@@ -197,7 +197,7 @@ class ChatDeveloperPanel extends DDD {
    * @param {string} author - the name of the author of the messages. Either the user's name or "merlin".
    */
   compileChatLog(author) {
-    console.info(`HAX-DEV-MODE: Compiling "${author}" chat log`)
+    ChatAgentModalStore.devStatement(`Compiling "${author}" chat log...`, 'info');
     
     let newChatLog = [];
 
@@ -214,7 +214,7 @@ class ChatDeveloperPanel extends DDD {
    * @description downloads the chat log as a .json file
    */
   handleDownloadAsJsonButton() {
-    console.info(`HAX-DEV-MODE: Downloading chat log as .json...`)
+    ChatAgentModalStore.devStatement(`Calling download funtion...`, 'info');
 
     ChatAgentModalStore.handleDownload('json');
   }
@@ -232,7 +232,7 @@ class ChatDeveloperPanel extends DDD {
         break;
     }
 
-    console.info(`HAX-DEV-MODE: Engine switched to ${ChatAgentModalStore.engine} (store) & ${this.engine} (autorun)`);
+    ChatAgentModalStore.devStatement(`Engine switched to ${ChatAgentModalStore.engine}`, 'info');
 
     this.shadowRoot.querySelector(".switch-engine-txt").innerHTML = `(Current Engine = <em>${this.engine}</em>)`;
   }

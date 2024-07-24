@@ -42,7 +42,6 @@ class ChatInterface extends DDD {
       } else {
         this.hasEditorUI = false; 
       }
-      console.log(hasEditorUI);
     })
   }
 
@@ -615,10 +614,9 @@ class ChatInterface extends DDD {
     `;
   }
 
+  // TODO does not work for resetting chat...
   async updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
-
-    console.log(changedProperties);
 
     if (changedProperties.has("chatLog")) {
       await this.updateComplete;

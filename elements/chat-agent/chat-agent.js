@@ -297,11 +297,7 @@ class ChatAgent extends DDD {
    * @param {string} message - the written or suggested prompt
    */
   handleMessage(author, message) {
-    this.developerModeEnabled
-      ? console.info(
-          `HAX-DEV-MODE: Writing message "${message}" by ${author} to chatLog.`,
-        )
-      : null;
+    this.devStatement(`Writing message "${message}" by ${author} to chatLog.`, `info`);
 
     let authorIndex;
 
@@ -340,11 +336,7 @@ class ChatAgent extends DDD {
    * @param {string} prompt - the written or suggested prompt
    */
   handleInteraction(prompt) {
-    this.developerModeEnabled
-      ? console.info(
-          `HAX-DEV-MODE: Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`,
-        )
-      : null;
+    this.devStatement(`Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`, `info`)
     this.currentSuggestions = [];
 
     switch (prompt) {
@@ -451,7 +443,6 @@ class ChatAgent extends DDD {
           .then((d) => {
             if (d.status == 200) {
               this.answers = [d.data.answers];
-              this.developerModeEnabled ? console.info(this.answers) : null;
               this.question = d.data.question;
               this.currentSuggestions = []; // TODO add support for AI based suggestions
             }
@@ -485,9 +476,7 @@ class ChatAgent extends DDD {
    * @param {string} fileType - the file type to download
    */
   handleDownload(fileType) {
-    this.developerModeEnabled
-      ? console.info(`HAX-DEV-MODE: Downloading chatlog as ${fileType}.`)
-      : null;
+    this.devStatement(`Downloading chatlog as ${fileType}.`, 'info');
 
     if (this.chatLog.length !== 0) {
       const LOG = JSON.stringify(this.chatLog, undefined, 2);
@@ -502,6 +491,28 @@ class ChatAgent extends DDD {
       download.setAttribute("download", FILE_NAME);
       download.click();
       download.remove();
+    }
+  }
+
+  devStatement(statement, type) {
+    if (this.developerModeEnabled) {
+      switch (type) {
+        case "log":
+          console.log(`CHAT-AGENT-DEV-MODE: ${statement}`);
+          break;
+        case "info":
+          console.info(`CHAT-AGENT-DEV-MODE: ${statement}`);
+          break;
+        case "warn":
+          console.warn(`CHAT-AGENT-DEV-MODE: ${statement}`);
+          break;
+        case "error":
+          console.error(`CHAT-AGENT-DEV-MODE: ${statement}`);
+          break;
+
+        default:
+          console.error("No devStatement type specified");
+      }
     }
   }
 

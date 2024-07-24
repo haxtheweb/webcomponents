@@ -137,7 +137,7 @@ class ChatControlBar extends DDD {
    * @description handles the functionality of the download button
    */
   handleDownloadLogButton() {
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download log button pressed.') : null;
+    ChatAgentModalStore.devStatement("Download log button pressed.", "log");
 
     this.downloadChatLog();
   }
@@ -146,14 +146,14 @@ class ChatControlBar extends DDD {
    * @description handles the functionality of the reset button
    */
   handleResetButton() {
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Reset button pressed.') : null;
+    ChatAgentModalStore.devStatement("Reset button pressed.", "log");
 
     if (confirm('Reset the chat?')) {
       if (confirm('Download the chat log before you reset?')) {
-        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset confirmed.') : null;
+        ChatAgentModalStore.devStatement("Download chat log before reset confirmed.", "info")
         this.downloadChatLog();
       } else {
-        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Download chat log before reset denied.') : null;
+        ChatAgentModalStore.devStatement("Download chat log before reset denied.", "warning");
       }
       this.resetChat();
     }
@@ -179,20 +179,20 @@ class ChatControlBar extends DDD {
    * @description Toggles the view of chat-interface to full or minimized
    */
   handleViewButton() {    
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switch button pressed.') : null;
+    ChatAgentModalStore.devStatement("View switch button pressed.", "log");
 
     ChatAgentModalStore.isFullView = !this.isFullView;
 
     this.requestUpdate(); // changes button icon
 
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: View switched to: ' + (ChatAgentModalStore.isFullView ? 'full' : 'standard')) : null;
+    ChatAgentModalStore.devStatement("View switched to: " + (ChatAgentModalStore.isFullView ? 'full' : 'standard'), "info");
   }
 
   /**
    * @description changes the interface window to be hidden off screen and unfocusable
    */
   handleHideButton() {
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Hide button pressed.') : null;
+    ChatAgentModalStore.devStatement("Hide button pressed.", "log");
 
     if (!this.isInterfaceHidden) {
       ChatAgentModalStore.isInterfaceHidden = true;
@@ -203,7 +203,7 @@ class ChatControlBar extends DDD {
    * @description downloads the chat log as a .txt file
    */
   downloadChatLog() {
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Downloading chat log...') : null;
+    ChatAgentModalStore.devStatement("Calling download function...", "info");
 
     ChatAgentModalStore.handleDownload('txt');
   }
@@ -212,7 +212,7 @@ class ChatControlBar extends DDD {
    * @description resets the chat to initial state
    */
   resetChat() {
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Resetting chat...') : null;
+    ChatAgentModalStore.devStatement("Resetting chat...", "info");
 
     ChatAgentModalStore.chatLog = [];
     ChatAgentModalStore.merlinIndex = 0;

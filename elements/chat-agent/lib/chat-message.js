@@ -173,6 +173,8 @@ class ChatMessage extends DDD {
   disableSuggestions(e) {
     const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
 
+    ChatAgentModalStore.devStatement("Disabling previous suggestions.", "info");
+
     SUGGESTIONS.forEach((suggestion) => {
       if (!suggestion.hasAttribute("disabled")) {
         suggestion.setAttribute("disabled", "");

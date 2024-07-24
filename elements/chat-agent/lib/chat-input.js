@@ -134,7 +134,6 @@ class ChatInput extends DDD {
   handleKeyPress(e) {
     switch (e.key) {
       case "Enter":
-        ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Enter key pressed.') : null;
         e.preventDefault();
         this.handleSendButton();
         break;
@@ -154,7 +153,7 @@ class ChatInput extends DDD {
   handleDirectionButtons(e) {
     const BUTTON_ID = e.currentTarget.id;
 
-    ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: ${BUTTON_ID} button pressed.`) : null;
+    ChatAgentModalStore.devStatement(`${BUTTON_ID} button pressed.`, 'info');
 
     switch (BUTTON_ID) {
       case "input-up-btn":
@@ -177,14 +176,14 @@ class ChatInput extends DDD {
     }
 
     if (INPUTTED_PROMPT !== "") {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. Prompt to send: ' + INPUTTED_PROMPT) : null;
+      ChatAgentModalStore.devStatement(`Send function activated. "${INPUTTED_PROMPT}" sent to Merlin.`, 'info');
 
       ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, INPUTTED_PROMPT);
 
       this.shadowRoot.querySelector("#user-input").value = "";
 
     } else {
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Send button activated. No prompt to send') : null;
+      ChatAgentModalStore.devStatement(`Send button activated. No prompt to send.`, 'warn');
     }
   }
 
@@ -195,7 +194,7 @@ class ChatInput extends DDD {
       case "up":
         if (this.previousMessagesIndex > 1) {
           this.previousMessagesIndex--;
-          ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`) : null;
+          ChatAgentModalStore.devStatement(`Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
           
           while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
                   && this.previousMessagesIndex >= 1) {
@@ -229,7 +228,7 @@ class ChatInput extends DDD {
         } else {
           textArea.value = "";
         }
-        ChatAgentModalStore.developerModeEnabled ? console.info(`HAX-DEV-MODE: Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`) : null;
+        ChatAgentModalStore.devStatement(`Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
         break;
     }
   }

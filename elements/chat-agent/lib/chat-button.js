@@ -133,7 +133,7 @@ class ChatButton extends DDD {
   keyPress(e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed using Enter key.') : null;
+      ChatAgentModalStore.devStatement("Chat button pressed using Enter key.", "log");
       this.handleChatButton();
     }
   }
@@ -142,7 +142,7 @@ class ChatButton extends DDD {
    * @description - handles button being clicked / pressed, will toggle the interface visibility
    */
   handleChatButton() {
-    ChatAgentModalStore.developerModeEnabled ? console.info('HAX-DEV-MODE: Chat button pressed.') : null;
+    ChatAgentModalStore.devStatement("Chat button pressed.", "log");
 
     ChatAgentModalStore.isInterfaceHidden = !this.isInterfaceHidden;
   }
