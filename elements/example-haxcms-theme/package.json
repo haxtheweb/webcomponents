@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/example-haxcms-theme.css",
-      "css": "src/example-haxcms-theme.css",
       "html": "src/example-haxcms-theme.html",
       "js": "src/example-haxcms-theme.js",
       "properties": "src/example-haxcms-theme-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "A basic, well documented example theme for HAXcms",
   "repository": {
     "type": "git",
@@ -42,11 +41,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^9.0.1",
-    "@haxtheweb/simple-colors": "^9.0.1"
+    "@haxtheweb/haxcms-elements": "^9.0.2",
+    "@haxtheweb/simple-colors": "^9.0.2"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

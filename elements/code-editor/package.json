@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/code-editor.css",
-      "css": "src/code-editor.css",
       "html": "src/code-editor.html",
       "js": "src/code-editor.js",
       "properties": "src/code-editor-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Data binding wrapped on top of a popular code editor",
   "repository": {
     "type": "git",
@@ -42,14 +41,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/schema-behaviors": "^9.0.1",
-    "@haxtheweb/utils": "^9.0.1",
+    "@haxtheweb/schema-behaviors": "^9.0.2",
+    "@haxtheweb/utils": "^9.0.2",
     "lit": "^3.1.4",
     "monaco-editor": "0.32.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

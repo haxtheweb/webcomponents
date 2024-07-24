@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/git-corner.css",
-      "css": "src/git-corner.css",
       "html": "src/git-corner.html",
       "js": "src/git-corner.js",
       "properties": "src/git-corner-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "display a quick link with styling to a repo to help with contributions",
   "repository": {
     "type": "git",
@@ -45,7 +44,7 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

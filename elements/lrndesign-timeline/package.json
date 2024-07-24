@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/lrndesign-timeline.css",
-      "css": "src/lrndesign-timeline.css",
       "html": "src/lrndesign-timeline.html",
       "js": "src/lrndesign-timeline.js",
       "properties": "src/lrndesign-timeline-properties.json",
@@ -22,7 +21,7 @@
       "...super.properties"
     ]
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "an element that displays events on a timeline",
   "repository": {
     "type": "git",
@@ -47,13 +46,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/responsive-utility": "^9.0.1",
-    "@haxtheweb/schema-behaviors": "^9.0.1",
-    "@haxtheweb/simple-colors": "^9.0.1",
+    "@haxtheweb/responsive-utility": "^9.0.2",
+    "@haxtheweb/schema-behaviors": "^9.0.2",
+    "@haxtheweb/simple-colors": "^9.0.2",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

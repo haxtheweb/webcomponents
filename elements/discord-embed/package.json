@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/discord-embed.css",
-      "css": "src/discord-embed.css",
       "html": "src/discord-embed.html",
       "js": "src/discord-embed.js",
       "properties": "src/discord-embed-properties.json",
@@ -20,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "widgetbot.io based embed widget for discord threads and channels",
   "repository": {
     "type": "git",
@@ -47,7 +46,7 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

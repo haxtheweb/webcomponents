@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/absolute-position-behavior.css",
-      "css": "src/absolute-position-behavior.css",
       "html": "src/absolute-position-behavior.html",
       "js": "src/absolute-position-behavior.js",
       "properties": "src/absolute-position-behavior-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Abstracting the positioning behavior from paper-tooltip to be resusable in other elements",
   "repository": {
     "type": "git",
@@ -45,7 +44,7 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

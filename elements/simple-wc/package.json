@@ -9,14 +9,13 @@
     "useSass": false,
     "files": {
       "css": "src/simple-wc.css",
-      "css": "src/simple-wc.css",
       "html": "src/simple-wc.html",
       "js": "src/simple-wc.js",
       "properties": "src/simple-wc-properties.json",
       "hax": "src/simple-wc-hax.json"
     }
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "A simple web component wrapper to simplify consistent patterns of element creation",
   "repository": {
     "type": "git",
@@ -44,7 +43,7 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",

@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/air-horn.css",
-      "css": "src/air-horn.css",
       "html": "src/air-horn.html",
       "js": "src/air-horn.js",
       "properties": "src/air-horn-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "demonstrative purposes via meme",
   "repository": {
     "type": "git",
@@ -42,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

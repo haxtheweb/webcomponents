@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/simple-img.css",
-      "css": "src/simple-img.css",
       "html": "src/simple-img.html",
       "js": "src/simple-img.js",
       "properties": "src/simple-img-properties.json",
@@ -20,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "simple image manipulation with a microservice",
   "repository": {
     "type": "git",
@@ -45,10 +44,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/micro-frontend-registry": "^9.0.1"
+    "@haxtheweb/micro-frontend-registry": "^9.0.2"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

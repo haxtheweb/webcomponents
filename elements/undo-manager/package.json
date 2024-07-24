@@ -9,14 +9,13 @@
     "useSass": false,
     "files": {
       "css": "src/undo-manager.css",
-      "css": "src/undo-manager.css",
       "html": "src/undo-manager.html",
       "js": "src/undo-manager.js",
       "properties": "src/undo-manager-properties.json",
       "hax": "src/undo-manager-hax.json"
     }
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "an undo history manager element",
   "repository": {
     "type": "git",
@@ -44,7 +43,7 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

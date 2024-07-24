@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/super-daemon.css",
-      "css": "src/super-daemon.css",
       "html": "src/super-daemon.html",
       "js": "src/super-daemon.js",
       "properties": "src/super-daemon-properties.json",
@@ -20,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "",
   "repository": {
     "type": "git",
@@ -45,20 +44,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/future-terminal-text": "^9.0.1",
-    "@haxtheweb/hal-9000": "^9.0.1",
-    "@haxtheweb/i18n-manager": "^9.0.1",
-    "@haxtheweb/simple-fields": "^9.0.1",
-    "@haxtheweb/simple-filter": "^9.0.1",
-    "@haxtheweb/simple-icon": "^9.0.1",
-    "@haxtheweb/user-scaffold": "^9.0.1",
+    "@haxtheweb/future-terminal-text": "^9.0.2",
+    "@haxtheweb/hal-9000": "^9.0.2",
+    "@haxtheweb/i18n-manager": "^9.0.2",
+    "@haxtheweb/simple-fields": "^9.0.2",
+    "@haxtheweb/simple-filter": "^9.0.2",
+    "@haxtheweb/simple-icon": "^9.0.2",
+    "@haxtheweb/user-scaffold": "^9.0.2",
     "@lit-labs/virtualizer": "2.0.12",
     "lit": "^3.1.4",
     "mobx": "6.12.4",
     "web-dialog": "^0.0.11"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

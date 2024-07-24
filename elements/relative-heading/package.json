@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/relative-heading.css",
-      "css": "src/relative-heading.css",
       "html": "src/relative-heading.html",
       "js": "src/relative-heading.js",
       "properties": "src/relative-heading-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Start of relative-heading",
   "repository": {
     "type": "git",
@@ -42,16 +41,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/anchor-behaviors": "^9.0.1",
-    "@haxtheweb/hax-iconset": "^9.0.1",
-    "@haxtheweb/simple-icon": "^9.0.1",
-    "@haxtheweb/simple-toast": "^9.0.1",
+    "@haxtheweb/anchor-behaviors": "^9.0.2",
+    "@haxtheweb/hax-iconset": "^9.0.2",
+    "@haxtheweb/simple-icon": "^9.0.2",
+    "@haxtheweb/simple-toast": "^9.0.2",
     "@polymer/paper-toast": "^3.0.1",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

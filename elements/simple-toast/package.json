@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/simple-toast.css",
-      "css": "src/simple-toast.css",
       "html": "src/simple-toast.html",
       "js": "src/simple-toast.js",
       "properties": "src/simple-toast-properties.json",
@@ -19,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "A singular toast / message for conistency",
   "repository": {
     "type": "git",
@@ -44,12 +43,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-colors": "^9.0.1",
+    "@haxtheweb/simple-colors": "^9.0.2",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

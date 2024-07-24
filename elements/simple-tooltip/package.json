@@ -9,14 +9,13 @@
     "useSass": false,
     "files": {
       "css": "src/simple-tooltip.css",
-      "css": "src/simple-tooltip.css",
       "html": "src/simple-tooltip.html",
       "js": "src/simple-tooltip.js",
       "properties": "src/simple-tooltip-properties.json",
       "hax": "src/simple-tooltip-hax.json"
     }
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "a simple tooltip forked from paper-tooltip with the same api",
   "repository": {
     "type": "git",
@@ -44,8 +43,8 @@
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/simple-icon": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/simple-icon": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",

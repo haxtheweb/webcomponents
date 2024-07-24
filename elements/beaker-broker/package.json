@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/beaker-broker.css",
-      "css": "src/beaker-broker.css",
       "html": "src/beaker-broker.html",
       "js": "src/beaker-broker.js",
       "properties": "src/beaker-broker-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "A broker element to make working with Beaker Browser's API even easier.",
   "repository": {
     "type": "git",
@@ -45,8 +44,8 @@
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

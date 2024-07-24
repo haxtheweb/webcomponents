@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/responsive-grid.css",
-      "css": "src/responsive-grid.css",
       "html": "src/responsive-grid.html",
       "js": "src/responsive-grid.js",
       "properties": "src/responsive-grid-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Automated conversion of responsive-grid/",
   "repository": {
     "type": "git",
@@ -42,12 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/responsive-utility": "^9.0.1",
+    "@haxtheweb/responsive-utility": "^9.0.2",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -9,14 +9,13 @@
     "useSass": false,
     "files": {
       "css": "src/a11y-details.css",
-      "css": "src/a11y-details.css",
       "html": "src/a11y-details.html",
       "js": "src/a11y-details.js",
       "properties": "src/a11y-details-properties.json",
       "hax": "src/a11y-details-hax.json"
     }
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "accessible progressive disclosure with detail and summary",
   "repository": {
     "type": "git",
@@ -41,11 +40,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/absolute-position-behavior": "^9.0.1",
+    "@haxtheweb/absolute-position-behavior": "^9.0.2",
     "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

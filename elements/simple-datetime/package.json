@@ -9,7 +9,6 @@
     "useSass": false,
     "files": {
       "css": "src/simple-datetime.css",
-      "css": "src/simple-datetime.css",
       "html": "src/simple-datetime.html",
       "js": "src/simple-datetime.js",
       "properties": "src/simple-datetime-properties.json",
@@ -17,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Automated conversion of simple-datetime/",
   "repository": {
     "type": "git",
@@ -45,8 +44,8 @@
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.1",
-    "@haxtheweb/storybook-utilities": "^9.0.1",
+    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.2",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
