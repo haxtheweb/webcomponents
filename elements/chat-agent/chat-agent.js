@@ -90,7 +90,7 @@ class ChatAgent extends DDD {
     // interface
     // TODO UserScaffold
     this.isFullView = false;
-    this.isInterfaceHidden = false; // TODO setting this to true (which should be the default) causes everything to break (error at line 567)
+    this.isInterfaceHidden = false; // TODO setting this to true (which should be the default) causes everything to break (error at line or around 567)
 
     // message
     this.merlinIndex = 0; // index of merlin messages
@@ -168,24 +168,24 @@ class ChatAgent extends DDD {
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
 
         :host {
-          display: block;
           container-type: normal;
+          display: block;
         }
 
         .chat-agent-wrapper {
+          bottom: var(--ddd-spacing-2);
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-2);
           position: fixed;
-          bottom: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          width: 35%;
+          width: 35%;        
         }
 
         :host([is-full-view]) .chat-agent-wrapper {
           bottom: var(--ddd-spacing-0);
-          right: var(--ddd-spacing-0);
           gap: var(--ddd-spacing-0);
+          right: var(--ddd-spacing-0);
           width: 25%;
           @media only screen and (min-height: 1000px) {
             width: 35%;
@@ -194,8 +194,8 @@ class ChatAgent extends DDD {
 
         :host([is-full-view]:host([is-interface-hidden])) .chat-agent-wrapper {
           bottom: var(--ddd-spacing-2);
-          right: var(--ddd-spacing-2);
           gap: var(--ddd-spacing-2);
+          right: var(--ddd-spacing-2);
         }
 
         .agent-interface-wrapper {
@@ -214,7 +214,6 @@ class ChatAgent extends DDD {
           }
         }
 
-        /* TODO adjust all media queries for HAX environment, not demo environment */
         @media only screen and (max-width: 425px) {
           .chat-agent-wrapper {
             width: 90%;
@@ -261,7 +260,7 @@ class ChatAgent extends DDD {
       "merlin",
       "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
     );
-
+    
     this.currentSuggestions = [
       {
         suggestion: "Who are you?",
@@ -290,7 +289,7 @@ class ChatAgent extends DDD {
           suggestion.removeAttribute("chosen-prompt");
         }
       });
-  }
+    }
 
   /**
    * @description writes message to chatLog
