@@ -4,10 +4,11 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
 
 class ChatButton extends DDD {
+
   static get tag() {
     return "chat-button";
   }
@@ -16,14 +17,16 @@ class ChatButton extends DDD {
     super();
 
     this.buttonIcon = null;
+    this.darkMode = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
 
     autorun(() => {
       this.buttonIcon = toJS(ChatAgentModalStore.buttonIcon);
+      this.darkMode = toJS(ChatAgentModalStore.darkMode);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-    });
+    })
   }
 
   static get styles() {
@@ -31,34 +34,36 @@ class ChatButton extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-
+        
         :host {
           display: block;
           z-index: 999998;
         }
 
         .chat-button-wrapper {
-          background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          display: flex;
-          width: 96px;
-          height: 96px;
-          flex-direction: column;
           align-items: center;
-          justify-content: center;
+          background-color: var(--data-theme-primary, var(--ddd-primary-1));
+          border-color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
           border-radius: var(--ddd-radius-lg);
+          border-style: solid;
+          border-width: 0.75px;
+          box-shadow: 0 4px rgba(0, 3, 33, 0.4);
           cursor: pointer;
-          box-shadow: 0 4px red;
+          display: flex;
+          flex-direction: column;
+          height: 96px;
+          justify-content: center;
+          width: 96px;
         }
 
-        .chat-button-wrapper:hover,
-        .chat-button-wrapper:focus-visible {
-          box-shadow: 0 5px red;
-          transform: translateY(-1px);
+        .chat-button-wrapper:hover, .chat-button-wrapper:focus-visible {
+          box-shadow: 0 6px rgba(0, 3, 33, 0.4);
+          transform: translateY(-2px);
         }
 
         /* TODO Figure out how to get this to work with enter key */
         .chat-button-wrapper:active {
-          box-shadow: 0 1px red;
+          box-shadow: 0 1px rgba(0, 3, 33, 0.4);
           transform: translateY(3px);
         }
 
@@ -66,62 +71,62 @@ class ChatButton extends DDD {
           display: none;
         }
 
-        .chat-button-wrapper:hover .label-wrapper,
-        .chat-button-wrapper:focus-visible .label-wrapper {
+        .chat-button-wrapper:hover .label-wrapper, .chat-button-wrapper:focus-visible .label-wrapper {
           text-decoration: underline;
         }
 
         .icon-wrapper {
-          width: 56px;
-          height: 56px;
-          display: flex;
           align-items: center;
-          justify-content: center;
           background-color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-circle);
+          display: flex;
+          height: 56px;
+          justify-content: center;
           margin-bottom: var(--ddd-spacing-1);
+          width: 56px;
         }
 
         simple-icon-lite {
-          color: var(--data-theme-primary, var(--ddd-primary-13));
           --simple-icon-height: var(--ddd-icon-md);
           --simple-icon-width: var(--ddd-icon-md);
+          color: var(--data-theme-primary, var(--ddd-primary-13));
         }
 
         .label-wrapper {
-          padding: var(--ddd-spacing-1);
           background-color: var(--ddd-theme-default-white);
-          color: var(--ddd-theme-default-potentialMidnight);
           border-radius: var(--ddd-radius-xs);
+          color: var(--ddd-theme-default-coalyGray);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
           max-width: var(--ddd-spacing-19);
-          text-align: center;
           overflow: hidden;
+          padding: var(--ddd-spacing-1);
+          text-align: center;
           text-overflow: ellipsis;
           white-space: nowrap;
+          
+          /* Prevent text highlighting in button */
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
+          user-select: none;
         }
-      `,
+
+        :host([dark-mode]) .label-wrapper {
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-white);
+        }
+      `
     ];
   }
 
   render() {
     return html`
-      <div
-        class="chat-button-wrapper"
-        @click=${this.handleChatButton}
-        @keypress=${this.keyPress}
-        tabindex="0"
-        aria-label="${this.isInterfaceHidden
-          ? "Open Interface"
-          : "Close Interface"}"
-      >
+      <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0" aria-label="${this.isInterfaceHidden ? 'Open Interface' : 'Close Interface'}">
         <div class="icon-wrapper">
-          <simple-icon-lite
-            icon="${ChatAgentModalStore.buttonIcon}"
-          ></simple-icon-lite>
+          <simple-icon-lite icon="${ChatAgentModalStore.buttonIcon}"></simple-icon-lite>
         </div>
-        <div class="label-wrapper">
+        <div class="label-wrapper" unselectable="on">
           <slot name="label">${ChatAgentModalStore.buttonLabel}</slot>
         </div>
       </div>
@@ -135,9 +140,7 @@ class ChatButton extends DDD {
   keyPress(e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      ChatAgentModalStore.developerModeEnabled
-        ? console.info("HAX-DEV-MODE: Chat button pressed using Enter key.")
-        : null;
+      ChatAgentModalStore.devStatement("Chat button pressed using Enter key.", "log");
       this.handleChatButton();
     }
   }
@@ -146,9 +149,7 @@ class ChatButton extends DDD {
    * @description - handles button being clicked / pressed, will toggle the interface visibility
    */
   handleChatButton() {
-    ChatAgentModalStore.developerModeEnabled
-      ? console.info("HAX-DEV-MODE: Chat button pressed.")
-      : null;
+    ChatAgentModalStore.devStatement("Chat button pressed.", "log");
 
     ChatAgentModalStore.isInterfaceHidden = !this.isInterfaceHidden;
   }
@@ -160,11 +161,12 @@ class ChatButton extends DDD {
         type: String,
         attribute: "button-icon",
       },
-      buttonLabel: {
-        type: String,
-        attribute: "button-label",
+      darkMode: {
+        type: Boolean,
+        attribute: "dark-mode",
+        reflect: true,
       },
-
+      
       isFullView: {
         type: Boolean,
         attribute: "is-full-view",

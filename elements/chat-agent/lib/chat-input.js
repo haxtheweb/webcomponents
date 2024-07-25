@@ -4,10 +4,11 @@
  */
 import { ChatAgentModalStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
 
 class ChatInput extends DDD {
+
   static get tag() {
     return "chat-input";
   }
@@ -16,18 +17,20 @@ class ChatInput extends DDD {
     super();
 
     this.chatLog = [];
+    this.darkMode = null;
     this.messageIndex = null;
     this.userIndex = null;
-    this.previousMessageIndex = null;
+    this.previousMessagesIndex = null;
     this.userName = null;
 
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.darkMode = toJS(ChatAgentModalStore.darkMode);
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
-      this.previousMessageIndex = toJS(this.messageIndex - 1);
+      this.previousMessagesIndex = toJS(this.messageIndex);
       this.userName = toJS(ChatAgentModalStore.userName);
-    });
+    })
   }
 
   static get styles() {
@@ -35,51 +38,75 @@ class ChatInput extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-
+        
         :host {
           display: block;
           font-family: var(--ddd-font-primary);
         }
 
         .chat-input-wrapper {
-          display: flex;
           align-items: center;
-          justify-content: center;
+          display: flex;
           gap: var(--ddd-spacing-3);
+          justify-content: center;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-radius: var(--ddd-radius-lg);
+        }
+
+        :host([dark-mode]) .chat-input-wrapper {
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-white);
         }
 
         #user-input {
-          border-radius: var(--ddd-radius-lg);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           background-color: var(--ddd-theme-default-white);
-          color: #000;
+          border-radius: var(--ddd-radius-lg);
+          color: var(--ddd-theme-default-coalyGray);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           resize: none;
           scrollbar-width: none;
           width: 85%;
         }
 
-        /* TODO icon shifts slightly when doing the click sequence */
-        .send-button {
-          width: 52px;
-          height: 52px;
-          border-radius: var(--ddd-radius-circle);
-          background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          box-shadow: 0 4px red;
+        :host([dark-mode]) #user-input {
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-white);
         }
 
-        .send-button:hover,
-        .send-button:focus-visible {
-          box-shadow: 0 5px red;
-          transform: translateY(-1px);
+        button {
+          align-items: center;
+          background-color: #2b2a33;
+          border-radius: var(--ddd-radius-sm);
+          color: var(--ddd-theme-default-white);
+          cursor: pointer;
+          display: flex;
+          gap: var(--ddd-spacing-1);
+          justify-content: center;
+        }
+        
+        button:hover, button:focus-visible {
+          background-color: #52525e;
+        }
+
+        .send-button {
+          align-items: center;
+          background-color: var(--data-theme-primary, var(--ddd-primary-1));
+          border-radius: var(--ddd-radius-circle);
+          box-shadow: 0 4px rgba(0, 3, 33, 0.2);
+          cursor: pointer;
+          display: flex;
+          height: 52px;
+          justify-content: center;
+          width: 52px;
+        }
+
+        .send-button:hover, .send-button:focus-visible {
+          box-shadow: 0 6px rgba(0, 3, 33, 0.2);
+          transform: translateY(-2px);
         }
 
         .send-button:active {
-          box-shadow: 0 1px red;
+          box-shadow: 0 1px rgba(0, 3, 33, 0.2);
           transform: translateY(3px);
         }
 
@@ -89,7 +116,11 @@ class ChatInput extends DDD {
             var(--ddd-theme-bgContrast, white)
           );
         }
-      `,
+
+        simple-tooltip {
+          --simple-tooltip-delay-in: 1000ms;
+        }
+      `
     ];
   }
 
@@ -97,69 +128,52 @@ class ChatInput extends DDD {
     return html`
       <div class="chat-input-wrapper">
         <textarea name="prompt-input" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keydown=${this.handleKeyPress}></textarea>
+        <div class="up-down-btns">
+          <button id="input-up-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-up"></simple-icon-lite></button>
+          <button id="input-down-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-down"></simple-icon-lite></button>
+        </div>
         <div class="send-button" id="send-button" @click=${this.handleSendButton} tabindex="0" aria-label="Send Prompt">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
-        <simple-tooltip for="send-button" position="top">Send Prompt to Merlin</simple-tooltip></simple-tooltip>
+        <simple-tooltip for="send-button" position="left">Send Prompt to Merlin</simple-tooltip>
       </div>
     `;
   }
-
+  
   /**
    * @description - handles key presses
    * @param {event} e - event
    */
   handleKeyPress(e) {
-    let textArea = this.shadowRoot.querySelector("#user-input");
-    // this.previousMessageIndex = this.messageIndex - 1;
-
     switch (e.key) {
       case "Enter":
-        ChatAgentModalStore.developerModeEnabled
-          ? console.info("HAX-DEV-MODE: Enter key pressed.")
-          : null;
         e.preventDefault();
         this.handleSendButton();
         break;
 
-      case "ArrowUp": // TODO finish this, careful, it's fragile
-        ChatAgentModalStore.developerModeEnabled
-          ? console.info(
-              `HAX-DEV-MODE: Arrow Up pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`,
-            )
-          : null;
+      case "ArrowUp": // ! don't touch; it's working >:(
         e.preventDefault();
-        if (this.previousMessageIndex > 0) {
-          while (
-            this.chatLog[this.previousMessageIndex].author !== this.userName
-          ) {
-            this.previousMessageIndex--;
-            if (this.previousMessageIndex === 0) {
-              break;
-            }
-          }
-          textArea.value = this.chatLog[this.previousMessageIndex].message;
-        }
+        this.displayPreviousMessages("up");
         break;
 
-      case "ArrowDown":
-        ChatAgentModalStore.developerModeEnabled
-          ? console.info(
-              `HAX-DEV-MODE: Arrow Down pressed. Previous message index = ${this.previousMessageIndex} and message index = ${this.messageIndex}`,
-            )
-          : null;
+      case "ArrowDown": // TODO have Bryan look at this but also work on see if can get working before that
         e.preventDefault();
-        if (this.previousMessageIndex < this.messageIndex - 1) {
-          while (
-            this.chatLog[this.previousMessageIndex].author !== this.userName
-          ) {
-            this.previousMessageIndex++;
-          }
-          textArea.value = this.chatLog[this.previousMessageIndex].message;
-          this.previousMessageIndex++;
-        } else {
-          textArea.value = "";
-        }
+        this.displayPreviousMessages("down");
+        break;
+    }
+  }
+
+  handleDirectionButtons(e) {
+    const BUTTON_ID = e.currentTarget.id;
+
+    ChatAgentModalStore.devStatement(`${BUTTON_ID} button pressed.`, 'info');
+
+    switch (BUTTON_ID) {
+      case "input-up-btn":
+        this.displayPreviousMessages("up");
+        break;
+      case "input-down-btn":
+        this.displayPreviousMessages("down");
         break;
     }
   }
@@ -170,34 +184,68 @@ class ChatInput extends DDD {
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
 
-    if (
-      ChatAgentModalStore.promptCharacterLimit > 0 &&
-      INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit
-    ) {
-      // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
-      alert(
-        `Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`,
-      );
+    if (ChatAgentModalStore.promptCharacterLimit > 0 && INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit) { // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
+      alert(`Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`)
     }
 
     if (INPUTTED_PROMPT !== "") {
-      ChatAgentModalStore.developerModeEnabled
-        ? console.info(
-            "HAX-DEV-MODE: Send button activated. Prompt to send: " +
-              INPUTTED_PROMPT,
-          )
-        : null;
+      ChatAgentModalStore.devStatement(`Send function activated. "${INPUTTED_PROMPT}" sent to Merlin.`, 'info');
 
-      ChatAgentModalStore.handleMessage(
-        ChatAgentModalStore.userName,
-        INPUTTED_PROMPT,
-      );
+      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, INPUTTED_PROMPT);
 
       this.shadowRoot.querySelector("#user-input").value = "";
+
     } else {
-      ChatAgentModalStore.developerModeEnabled
-        ? console.info("HAX-DEV-MODE: Send button activated. No prompt to send")
-        : null;
+      ChatAgentModalStore.devStatement(`Send button activated. No prompt to send.`, 'warn');
+    }
+  }
+
+  displayPreviousMessages(direction) {
+    let textArea = this.shadowRoot.querySelector("#user-input");
+    
+    switch (direction) {
+      case "up":
+        if (this.previousMessagesIndex > 1) {
+          this.previousMessagesIndex--;
+          ChatAgentModalStore.devStatement(`Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
+          
+          while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
+                  && this.previousMessagesIndex >= 1) {
+            this.previousMessagesIndex--;
+            if (this.previousMessagesIndex < 1) {
+              this.previousMessagesIndex++;
+              break; 
+            }
+          }
+  
+          textArea.value = this.chatLog[this.previousMessagesIndex].message;
+        }
+        break;
+
+      case "down":
+        if (this.previousMessagesIndex < this.messageIndex) {
+          this.previousMessagesIndex++;
+          while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
+                  && this.previousMessagesIndex < this.messageIndex) {
+            this.previousMessagesIndex++;
+            if (this.previousMessagesIndex > this.messageIndex) {
+              this.previousMessagesIndex = this.messageIndex;
+              break;
+            }
+          }
+          if (this.previousMessagesIndex >= this.messageIndex) {
+            textArea.value = "";
+          } else {
+            textArea.value = this.chatLog[this.previousMessagesIndex].message;
+          }
+        } else {
+          textArea.value = "";
+        }
+        ChatAgentModalStore.devStatement(`Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
+        break;
+
+      default:
+        ChatAgentModalStore.devStatement(`Unknown direction: ${direction}.`, 'error');
     }
   }
 
@@ -207,18 +255,18 @@ class ChatInput extends DDD {
     }
 
     if (ChatAgentModalStore.promptCharacterLimit > 0) {
-      this.shadowRoot
-        .querySelector("#user-input")
-        .setAttribute(
-          "maxlength",
-          `${ChatAgentModalStore.promptCharacterLimit}`,
-        );
+      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", `${ChatAgentModalStore.promptCharacterLimit}`);
     }
   }
 
   static get properties() {
     return {
       ...super.properties,
+      darkMode: {
+        type: Boolean,
+        attribute: "dark-mode",
+        reflect: true
+      },
     };
   }
 

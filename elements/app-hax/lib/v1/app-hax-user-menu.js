@@ -33,8 +33,13 @@ export class AppHaxUserMenu extends LitElement {
         padding: 0px;
       }
 
+      .entireComponent {
+        max-height: 48px;
+      }
+
       .menuToggle {
         cursor: pointer;
+        max-height: 48px;
       }
 
       .user-menu {
