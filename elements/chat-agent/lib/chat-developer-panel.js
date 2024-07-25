@@ -110,7 +110,6 @@ class ChatDeveloperPanel extends DDD {
     ];
   }
 
-  // TODO drop down for setting context
   render() {
     return html`
       <div class="chat-developer-panel-wrapper">
@@ -171,11 +170,12 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">Switch LLM Engine</span> <span class="switch-engine-txt">(Current Engine = <em>${this.engine}</em>)</span>
             </div>
           </button>
-          <select name="set-context" id="context-select" @change=${this.handleContextChange}>
+          <select name="select-context" id="context-select" @change=${this.handleContextChange}>
             <option value="phys211">Phys 211</option>
             <option value="astro130">Astro 130</option>
             <option value="staxpython">Intro to Python</option>
           </select>
+          <simple-tooltip for="select-context" position="${this.isFullView ? "left" : "top"}">Change Merlin's Context</simple-tooltip>
         </div>
       </div>
     `;
