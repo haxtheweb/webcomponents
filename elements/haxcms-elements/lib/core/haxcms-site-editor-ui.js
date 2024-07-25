@@ -290,6 +290,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           overflow: hidden;
           word-break: break-all;
           transition: all 0.6 ease-in-out;
+          color: #222;
         }
         .characterbtn-name {
           font-family: "Press Start 2P", sans-serif;
