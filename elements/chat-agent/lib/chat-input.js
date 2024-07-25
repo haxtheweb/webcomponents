@@ -17,6 +17,7 @@ class ChatInput extends DDD {
     super();
 
     this.chatLog = [];
+    this.darkMode = null;
     this.messageIndex = null;
     this.userIndex = null;
     this.previousMessagesIndex = null;
@@ -24,6 +25,7 @@ class ChatInput extends DDD {
 
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.darkMode = toJS(ChatAgentModalStore.darkMode);
       this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
       this.userIndex = toJS(ChatAgentModalStore.userIndex);
       this.previousMessagesIndex = toJS(this.messageIndex);
@@ -50,14 +52,24 @@ class ChatInput extends DDD {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
         }
 
+        :host([dark-mode]) .chat-input-wrapper {
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-white);
+        }
+
         #user-input {
           background-color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-lg);
-          color: #000;
+          color: var(--ddd-theme-default-coalyGray);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           resize: none;
           scrollbar-width: none;
           width: 85%;
+        }
+
+        :host([dark-mode]) #user-input {
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-white);
         }
 
         button {
@@ -230,6 +242,9 @@ class ChatInput extends DDD {
         }
         ChatAgentModalStore.devStatement(`Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
         break;
+
+      default:
+        ChatAgentModalStore.devStatement(`Unknown direction: ${direction}.`, 'error');
     }
   }
 
@@ -246,6 +261,11 @@ class ChatInput extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      darkMode: {
+        type: Boolean,
+        attribute: "dark-mode",
+        reflect: true
+      },
     };
   }
 

@@ -17,11 +17,17 @@ class ChatMessage extends DDD {
   constructor() {
     super();
 
+    this.darkMode = null;
+
     this.hasSuggestedPrompts = false; // may be removed by by checking the length of this.suggestedPrompts
     this.isSentPrompt = false;
     this.message = "";
     this.messageWasSuggestedPrompt = false; 
     this.suggestedPrompts = ChatAgentModalStore.currentSuggestions; // needs to remain this way that way it doesn't update.
+
+    autorun(() => {
+      this.darkMode = toJS(ChatAgentModalStore.darkMode);
+    })
   }
 
   static get styles() {
@@ -55,13 +61,18 @@ class ChatMessage extends DDD {
 
         .author-icon {
           align-items: center;
-          border-color: var(--ddd-theme-default-potentialMidnight);
+          background-color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-circle);
           border: var(--ddd-border-md);
+          border-color: var(--ddd-theme-default-coalyGray);
           display: flex;
           height: var(--ddd-spacing-18);
           justify-content: center;
           width: var(--ddd-spacing-18);
+        }
+
+        :host([dark-mode]) .author-icon {
+          border-color: var(--ddd-theme-default-slateGray);
         }
 
         .received-chat-message .author-icon {
@@ -81,15 +92,21 @@ class ChatMessage extends DDD {
         }
 
         .message-content {
-          border-color: var(--ddd-theme-default-potentialMidnight);
           border-radius: var(--ddd-radius-sm);
           border: var(--ddd-border-md);
-          color: #000;
+          border-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-coalyGray);
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
           margin: var(--ddd-spacing-0);
           padding: var(--ddd-spacing-2);
           width: 80%;
+        }
+
+        :host([dark-mode]) .message-content {
+          border-color: var(--ddd-theme-default-slateGray);
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-coalyGray);
         }
 
         .suggested-prompts {
@@ -198,6 +215,11 @@ class ChatMessage extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      darkMode: {
+        type: Boolean,
+        attribute: "dark-mode",
+        reflect: true,
+      },
       hasSuggestedPrompts: {
         type: Boolean,
         attribute: "suggested-prompts",

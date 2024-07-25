@@ -73,6 +73,7 @@ class ChatAgent extends DDD {
     this.context = "phys211"; // test with phys211
     this.isLoading = null;
     this.dataCollectionEnabled = true;
+    this.darkMode = false;
 
     // button
     this.buttonIcon = "hax:wizard-hat";
@@ -111,6 +112,7 @@ class ChatAgent extends DDD {
     makeObservable(this, {
       buttonIcon: observable,
       chatLog: observable,
+      darkMode: observable,
       dataCollectionEnabled: observable,
       developerModeEnabled: observable,
       engine: observable,
@@ -127,6 +129,7 @@ class ChatAgent extends DDD {
 
       const buttonIcon = toJS(this.buttonIcon);
       const chatLog = toJS(this.chatLog);
+      const darkMode = toJS(store.darkMode);
       const dataCollectionEnabled = toJS(this.dataCollectionEnabled);
       const developerModeEnabled = toJS(this.developerModeEnabled);
       const engine = toJS(this.engine);

@@ -16,6 +16,7 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     this.chatLog = [];
+    this.darkMode = false;
     this.developerModeEnabled = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
@@ -23,6 +24,7 @@ class ChatInterface extends DDD {
     
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.darkMode = toJS(ChatAgentModalStore.darkMode);
       this.developerModeEnabled = toJS(ChatAgentModalStore.developerModeEnabled);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
@@ -45,6 +47,7 @@ class ChatInterface extends DDD {
     })
   }
 
+  // TODO Implement dark mode support
   static get styles() {
     return [
       super.styles,
@@ -79,10 +82,8 @@ class ChatInterface extends DDD {
           border-style: solid;
           box-shadow: var(--ddd-boxShadow-xl);
           padding: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2) var(--ddd-spacing-2);
-
-          border-style: solid;
           border-width: 0.75px;
-          border-color: light-dark(black, white);
+          border-color: light-dark(var(--ddd-theme-default-coalyGray, #000), var(--ddd-theme-default-white, #fff));
         }
         
         :host([is-full-view]) .chat-wrapper {
@@ -125,6 +126,10 @@ class ChatInterface extends DDD {
           display: flex;
           flex-direction: column;
           width: 100%;
+        }
+
+        :host([dark-mode]) .chat-container {
+          background-color: var(--ddd-theme-default-coalyGray);
         }
 
         :host([is-full-view]) .chat-container {
@@ -634,6 +639,11 @@ class ChatInterface extends DDD {
       ...super.properties,
       chatLog: {
         type: Array,
+      },
+      darkMode: {
+        type: Boolean,
+        attribute: "dark-mode",
+        reflect: true,
       },
       developerModeEnabled: {
         type: Boolean,

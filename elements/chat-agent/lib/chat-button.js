@@ -17,11 +17,13 @@ class ChatButton extends DDD {
     super();
 
     this.buttonIcon = null;
+    this.darkMode = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
 
     autorun(() => {
       this.buttonIcon = toJS(ChatAgentModalStore.buttonIcon);
+      this.darkMode = toJS(ChatAgentModalStore.darkMode);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
       this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
     })
@@ -41,7 +43,7 @@ class ChatButton extends DDD {
         .chat-button-wrapper {
           align-items: center;
           background-color: var(--data-theme-primary, var(--ddd-primary-1));
-          border-color: light-dark(black, white);
+          border-color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
           border-radius: var(--ddd-radius-lg);
           border-style: solid;
           border-width: 0.75px;
@@ -93,7 +95,7 @@ class ChatButton extends DDD {
         .label-wrapper {
           background-color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-xs);
-          color: var(--ddd-theme-default-potentialMidnight);
+          color: var(--ddd-theme-default-coalyGray);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
           max-width: var(--ddd-spacing-19);
@@ -108,6 +110,11 @@ class ChatButton extends DDD {
           -ms-user-select: none;
           -webkit-user-select: none;
           user-select: none;
+        }
+
+        :host([dark-mode]) .label-wrapper {
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-white);
         }
       `
     ];
@@ -154,9 +161,10 @@ class ChatButton extends DDD {
         type: String,
         attribute: "button-icon",
       },
-      buttonLabel: {
-        type: String,
-        attribute: "button-label",
+      darkMode: {
+        type: Boolean,
+        attribute: "dark-mode",
+        reflect: true,
       },
       
       isFullView: {
