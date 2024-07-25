@@ -73,7 +73,7 @@ class ChatAgent extends DDD {
     this.context = "phys211"; // test with phys211
     this.isLoading = null;
     this.dataCollectionEnabled = true;
-    this.darkMode = false;
+    this.darkMode = store.darkMode; // TODO will be changed when store is it's own thing, right now allows choosing between light & dark on load
 
     // button
     this.buttonIcon = "hax:wizard-hat";
@@ -523,6 +523,7 @@ class ChatAgent extends DDD {
     return {
       ...super.properties,
       // everything
+
       userName: {
         type: String,
         attribute: "user-name",

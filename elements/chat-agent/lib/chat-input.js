@@ -50,6 +50,7 @@ class ChatInput extends DDD {
           gap: var(--ddd-spacing-3);
           justify-content: center;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-radius: var(--ddd-radius-lg);
         }
 
         :host([dark-mode]) .chat-input-wrapper {

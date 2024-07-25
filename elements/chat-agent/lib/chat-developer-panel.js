@@ -54,13 +54,14 @@ class ChatDeveloperPanel extends DDD {
           justify-content: space-between;
         }
 
-        .switch-engine-controls {
+        .switches {
           align-items: center;
           display: flex;
           justify-content: center;
+          gap: var(--ddd-spacing-1);
         }
 
-        button {
+        button, select {
           align-items: center;
           background-color: #2b2a33;
           border-radius: var(--ddd-radius-sm);
@@ -69,6 +70,10 @@ class ChatDeveloperPanel extends DDD {
           display: flex;
           gap: var(--ddd-spacing-1);
           justify-content: center;
+        }
+
+        select {
+          font-size: 12px;
         }
         
         button:hover, button:focus-visible {
@@ -105,6 +110,7 @@ class ChatDeveloperPanel extends DDD {
     ];
   }
 
+  // TODO drop down for setting context
   render() {
     return html`
       <div class="chat-developer-panel-wrapper">
@@ -156,8 +162,8 @@ class ChatDeveloperPanel extends DDD {
           <simple-tooltip for="download-as-json" position="${this.isFullView ? "left" : "top"}">Download Chat Log as .json</simple-tooltip>
         </div>
 
-        <div class="switch-engine-controls" aria-label="Switch LLM Engine">
-          <button id="switch-engine-btn">
+        <div class="switches" >
+          <button id="switch-engine-btn" aria-label="Switch LLM Engine">
           <div class="button-icon">
               <simple-icon-lite icon="hardware:memory"></simple-icon-lite>
             </div>
@@ -165,6 +171,11 @@ class ChatDeveloperPanel extends DDD {
               <span class="btn-txt">Switch LLM Engine</span> <span class="switch-engine-txt">(Current Engine = <em>${this.engine}</em>)</span>
             </div>
           </button>
+          <select name="set-context" id="context-select" @change=${this.handleContextChange}>
+            <option value="phys211">Phys 211</option>
+            <option value="astro130">Astro 130</option>
+            <option value="staxpython">Intro to Python</option>
+          </select>
         </div>
       </div>
     `;
@@ -235,6 +246,11 @@ class ChatDeveloperPanel extends DDD {
     ChatAgentModalStore.devStatement(`Engine switched to ${ChatAgentModalStore.engine}`, 'info');
 
     this.shadowRoot.querySelector(".switch-engine-txt").innerHTML = `(Current Engine = <em>${this.engine}</em>)`;
+  }
+
+  handleContextChange() {
+    ChatAgentModalStore.context = this.shadowRoot.querySelector("#context-select").value;
+    ChatAgentModalStore.devStatement(`Context switched to ${ChatAgentModalStore.context}`, 'info');
   }
 
   static get properties() {
