@@ -175,11 +175,18 @@ class ChatDeveloperPanel extends DDD {
             <option value="Catwoman">Catwoman (ChatGPT)</option>
           </select>
 
+          <!-- Note: this does not set the starting context. 
+           To change the starting context, please set it in chat-agent.js at the this.context variable. 
+           For usability purposes, please set the top option to the starting context -->
           <label for="context-selection">Context:</label>
           <select name="select-context" id="context-selection" @change=${this.handleContextChange}>
             <option value="phys211">Phys 211</option>
             <option value="astro130">Astro 130</option>
             <option value="staxpython">Intro to Python</option>
+            <option value="janetlaw">Janet Law</option>
+            <option value="udni">UDNI</option>
+            <option value="epubcyber440">Cyber 440</option>
+            <option value="ciscopdfs">ciscopdfs</option>
           </select>
           
         </div>

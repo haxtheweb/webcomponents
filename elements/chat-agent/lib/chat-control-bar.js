@@ -98,7 +98,7 @@ class ChatControlBar extends DDD {
       
       <div class="chat-control-bar-wrapper">
         <div class="left-side">
-          <!-- https://stackoverflow.com/questions/72654466/how-do-i-make-a-button-that-will-download-a-file -->
+
           <button id="download-button" @click=${this.handleDownloadLogButton} aria-label="Download Log as txt">
             <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
           </button>

@@ -73,7 +73,8 @@ class ChatAgent extends DDD {
     this.context = "phys211"; // test with phys211
     this.isLoading = null;
     this.dataCollectionEnabled = true;
-    this.darkMode = store.darkMode; // TODO will be changed when store is it's own thing, right now allows choosing between light & dark on load
+    this.darkMode = store.darkMode; // TODO will be changed when store is its own thing, right now allows choosing between light & dark on load
+    this.editMode = true; // TODO null, store.editMode;
 
     // button
     this.buttonIcon = "hax:wizard-hat";
@@ -115,6 +116,7 @@ class ChatAgent extends DDD {
       darkMode: observable,
       dataCollectionEnabled: observable,
       developerModeEnabled: observable,
+      editMode: observable,
       engine: observable,
       isFullView: observable,
       isInterfaceHidden: observable,
@@ -132,6 +134,7 @@ class ChatAgent extends DDD {
       const darkMode = toJS(store.darkMode);
       const dataCollectionEnabled = toJS(this.dataCollectionEnabled);
       const developerModeEnabled = toJS(this.developerModeEnabled);
+      const editMode = toJS(this.editMode);
       const engine = toJS(this.engine);
       const isFullView = toJS(this.isFullView);
       const isInterfaceHidden = toJS(this.isInterfaceHidden);

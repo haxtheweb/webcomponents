@@ -18,6 +18,7 @@ class ChatMessage extends DDD {
     super();
 
     this.darkMode = null;
+    this.editMode = null;
 
     this.hasSuggestedPrompts = false; // may be removed by by checking the length of this.suggestedPrompts
     this.isSentPrompt = false;
@@ -27,6 +28,7 @@ class ChatMessage extends DDD {
 
     autorun(() => {
       this.darkMode = toJS(ChatAgentModalStore.darkMode);
+      this.editMode = toJS(ChatAgentModalStore.editMode);
     })
   }
 
@@ -177,7 +179,7 @@ class ChatMessage extends DDD {
         <!-- <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer> -->
          <p class="message-content">${this.message}</p>
         <div class="author-icon">
-          <rpg-character seed="${ChatAgentModalStore.userName}"></rpg-character>
+          <rpg-character seed="${ChatAgentModalStore.userName}" hat="${this.editMode ? "construction" : "none"}"></rpg-character>
         </div>
       </div>
     `;
