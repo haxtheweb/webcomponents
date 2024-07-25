@@ -67,6 +67,11 @@ class ChatControlBar extends DDD {
           --simple-icon-color: var(--ddd-theme-default-original87Pink);
         }
 
+        .data-collection-label {
+          font: var(--ddd-font-primary); 
+          font-size: 12px;
+        }
+
         :host([data-collection-enabled]) .data-collection-icon {
           --simple-icon-color: var(--ddd-theme-default-futureLime);
         }

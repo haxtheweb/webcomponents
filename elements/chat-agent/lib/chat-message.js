@@ -96,7 +96,7 @@ class ChatMessage extends DDD {
           border: var(--ddd-border-md);
           border-color: var(--ddd-theme-default-coalyGray);
           color: var(--ddd-theme-default-coalyGray);
-          font-family: var(--ddd-font-primary);
+          font: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
           margin: var(--ddd-spacing-0);
           padding: var(--ddd-spacing-2);

@@ -70,10 +70,15 @@ class ChatDeveloperPanel extends DDD {
           display: flex;
           gap: var(--ddd-spacing-1);
           justify-content: center;
+          font: var(--ddd-font-primary);
+          font-size: 12px;
         }
 
-        select {
-          font-size: 12px;
+        label {
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-white);
+          font-size: 14px;
+          padding: var(--ddd-spacing-2);
         }
         
         button:hover, button:focus-visible {
@@ -162,21 +167,21 @@ class ChatDeveloperPanel extends DDD {
         </div>
 
         <div class="switches" >
-          <!-- Switch this to a drop down for more engines -->
-        <button id="switch-engine-btn" aria-label="Switch LLM Engine">
-          <div class="button-icon">
-              <simple-icon-lite icon="hardware:memory"></simple-icon-lite>
-            </div>
-            <div class="button-text" @click=${this.handleSwitchEngineButton}>
-              <span class="btn-txt">Switch LLM Engine</span> <span class="switch-engine-txt">(Current Engine = <em>${this.engine}</em>)</span>
-            </div>
-          </button>
-          <select name="select-context" id="context-select" @change=${this.handleContextChange}>
+      
+          <label for="engine-selection">Engine:</label>
+          <select name="select-engine" id="engine-selection" @change=${this.handleSwitchEngine}>
+            <option value="alfred">Alfred (OpenAI)</option>
+            <option value="robin">Robin (Anthropic)</option>
+            <option value="Catwoman">Catwoman (ChatGPT)</option>
+          </select>
+
+          <label for="context-selection">Context:</label>
+          <select name="select-context" id="context-selection" @change=${this.handleContextChange}>
             <option value="phys211">Phys 211</option>
             <option value="astro130">Astro 130</option>
             <option value="staxpython">Intro to Python</option>
           </select>
-          <simple-tooltip for="select-context" position="${this.isFullView ? "left" : "top"}">Change Merlin's Context</simple-tooltip>
+          
         </div>
       </div>
     `;
@@ -234,19 +239,9 @@ class ChatDeveloperPanel extends DDD {
   /**
    * @description handles the functionality of the switch engine button
    */
-  handleSwitchEngineButton() {
-    switch (this.engine) {
-      case "alfred":
-        ChatAgentModalStore.engine = "robin";
-        break;
-      case "robin":
-        ChatAgentModalStore.engine = "alfred";
-        break;
-    }
-
+  handleSwitchEngine() {
+    ChatAgentModalStore.engine = this.shadowRoot.querySelector("#engine-selection").value;
     ChatAgentModalStore.devStatement(`Engine switched to ${ChatAgentModalStore.engine}`, 'info');
-
-    this.shadowRoot.querySelector(".switch-engine-txt").innerHTML = `(Current Engine = <em>${this.engine}</em>)`;
   }
 
   handleContextChange() {
