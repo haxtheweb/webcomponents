@@ -81,7 +81,11 @@
     "lit-html": "^3.1.4",
     "@lit-labs/ssr": "^3.2.2",
     "lit": "^3.1.4",
-    "node-html-parser": "^6.1.13"
+    "node-html-parser": "^6.1.13",
+    "@haxtheweb/course-design": "^9.0.2",
+    "@haxtheweb/video-player": "^9.0.2",
+    "@haxtheweb/lrn-math": "^9.0.2",
+    "@haxtheweb/media-image": "^9.0.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "7.18.6",

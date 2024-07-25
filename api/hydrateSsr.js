@@ -46,6 +46,7 @@ export default async function handler(req, res) {
           }
           catch(e) {
             console.log(`failed to load: ${wcRegistry[allEls[i].tagName.toLowerCase()]}`);
+            console.log(e);
           }
         }
       }
