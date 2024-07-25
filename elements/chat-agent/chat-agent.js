@@ -158,6 +158,7 @@ class ChatAgent extends DDD {
       } else {
         this.buttonIcon = "hax:wizard-hat";
       }
+      this.requestUpdate();
     });
   }
 

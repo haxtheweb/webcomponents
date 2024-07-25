@@ -162,7 +162,8 @@ class ChatDeveloperPanel extends DDD {
         </div>
 
         <div class="switches" >
-          <button id="switch-engine-btn" aria-label="Switch LLM Engine">
+          <!-- Switch this to a drop down for more engines -->
+        <button id="switch-engine-btn" aria-label="Switch LLM Engine">
           <div class="button-icon">
               <simple-icon-lite icon="hardware:memory"></simple-icon-lite>
             </div>
