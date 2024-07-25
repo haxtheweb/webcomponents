@@ -181,6 +181,7 @@ class ChatDeveloperPanel extends DDD {
           <label for="context-selection">Context:</label>
           <select name="select-context" id="context-selection" @change=${this.handleContextChange}>
             <option value="phys211">Phys 211</option>
+            <option value="haxcellence">HAX Docs</option>
             <option value="astro130">Astro 130</option>
             <option value="staxpython">Intro to Python</option>
             <option value="janetlaw">Janet Law</option>
