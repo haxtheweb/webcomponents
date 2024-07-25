@@ -42,7 +42,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .controls {
           position: sticky;
           top: -32px;
-          background-color: white;
+          background-color: light-dark(white, #262626);
           z-index: 1;
           padding: 16px 0 8px 0;
         }
@@ -249,6 +249,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .item:focus {
           background-color: #f5f5f5;
         }
+        .item:hover .label, 
+        .item:focus .label {
+          color: black;
+        }
         ul {
           list-style: none;
         }
@@ -262,6 +266,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           max-width: 40%;
           line-height: 1.2;
           padding: 0 4px;
+          color: light-dark(black, white);
         }
 
         .content-child {
@@ -623,43 +628,45 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         <div class="operations">
           ${this.activeItemForActions === item.id
             ? html`
-                <simple-icon-button
-                  part="lockbtn"
-                  class="operation lock"
-                  icon="${this.isLocked(index)
-                    ? "icons:lock"
-                    : "icons:lock-open"}"
-                  @click="${(e) => this.itemOp(index, "lock")}"
-                  title="Lock / Unlock"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation"
-                  icon="hax:outline-designer-outdent"
-                  @click="${(e) => this.itemOp(index, "out")}"
-                  title="Move next to parent"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation"
-                  icon="hax:keyboard-arrow-up"
-                  @click="${(e) => this.itemOp(index, "up")}"
-                  title="Move up"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation"
-                  icon="hax:keyboard-arrow-down"
-                  @click="${(e) => this.itemOp(index, "down")}"
-                  title="Move down"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation"
-                  icon="hax:outline-designer-indent"
-                  @click="${(e) => this.itemOp(index, "in")}"
-                  title="Make child"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
+                <div class="btn-contrast">
+                  <simple-icon-button
+                    part="lockbtn"
+                    class="operation lock"
+                    icon="${this.isLocked(index)
+                      ? "icons:lock"
+                      : "icons:lock-open"}"
+                    @click="${(e) => this.itemOp(index, "lock")}"
+                    title="Lock / Unlock"
+                  ></simple-icon-button>
+                  <simple-icon-button
+                    class="operation"
+                    icon="hax:outline-designer-outdent"
+                    @click="${(e) => this.itemOp(index, "out")}"
+                    title="Move next to parent"
+                    ?disabled="${this.isLocked(index)}"
+                  ></simple-icon-button>
+                  <simple-icon-button
+                    class="operation"
+                    icon="hax:keyboard-arrow-up"
+                    @click="${(e) => this.itemOp(index, "up")}"
+                    title="Move up"
+                    ?disabled="${this.isLocked(index)}"
+                  ></simple-icon-button>
+                  <simple-icon-button
+                    class="operation"
+                    icon="hax:keyboard-arrow-down"
+                    @click="${(e) => this.itemOp(index, "down")}"
+                    title="Move down"
+                    ?disabled="${this.isLocked(index)}"
+                  ></simple-icon-button>
+                  <simple-icon-button
+                    class="operation"
+                    icon="hax:outline-designer-indent"
+                    @click="${(e) => this.itemOp(index, "in")}"
+                    title="Make child"
+                    ?disabled="${this.isLocked(index)}"
+                  ></simple-icon-button>
+                </div>
                 <simple-icon-button
                   class="operation add"
                   icon="add"
@@ -828,11 +835,13 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       ?data-about-to-delete="${item.delete}"
       ?hidden="${this.hideDelete && item.delete}"
     >
-      <simple-icon-button-lite
-        icon="${icon}"
-        title="Click to preview"
-        @click="${this.setActivePreview}"
-      ></simple-icon-button-lite>
+      <div class="btn-contrast">
+        <simple-icon-button-lite
+          icon="${icon}"
+          title="Click to preview"
+          @click="${this.setActivePreview}"
+        ></simple-icon-button-lite>
+      </div>
       ${part === "heading"
         ? html`
             <span
