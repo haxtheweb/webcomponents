@@ -81,6 +81,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   // render function
   render() {
     return html`
+      <site-ai-chat></site-ai-chat>
       <haxcms-site-router base-uri="${this.baseURI}"></haxcms-site-router>
       <simple-progress .disabled="${!this.loading}"></simple-progress>
       <div id="slot"><slot></slot></div>
