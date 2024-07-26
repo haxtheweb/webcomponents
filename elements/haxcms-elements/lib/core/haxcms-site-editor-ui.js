@@ -2456,7 +2456,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     import("@haxtheweb/video-player/lib/lecture-player.js");
     // AI chat bot
     import(
-      // "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js"
       "@haxtheweb/chat-agent/chat-agent.js"
     );
     // runkit embed
