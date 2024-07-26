@@ -11,25 +11,9 @@
   "builds": [
     {
       "name": "es6",
-      "browserCapabilities": ["es2015", "modules"],
+      "browserCapabilities": ["es2018", "modules"],
       "js": {
         "minify": true
-      },
-      "css": {
-        "minify": true
-      },
-      "html": {
-        "minify": true
-      },
-      "bundle": false,
-      "addServiceWorker": false
-    },
-    {
-      "name": "es5-amd",
-      "js": {
-        "minify": true,
-        "compile": true,
-        "transformModulesToAmd": true
       },
       "css": {
         "minify": true

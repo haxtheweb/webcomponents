@@ -48,7 +48,7 @@ The HAXcms Code of Conduct applies to anyone involved in the project, including 
 ## Enforcement
 
 Instances of behavior which violates the HAXcms Code of Conduct may be reported by contacting 
-project leadership at elmsln@psu.edu. The project leadership will review and investigate all complaints, and will 
+project leadership at hax@psu.edu. The project leadership will review and investigate all complaints, and will 
 respond in a way that it deems appropriate. The project leadership is obligated to maintain 
 confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies 
 may be posted separately.
