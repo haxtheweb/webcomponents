@@ -9,7 +9,7 @@
   "builds": [
     {
       "name": "es6",
-      "browserCapabilities": ["es2015", "modules"],
+      "browserCapabilities": ["es2018", "modules"],
       "js": {
         "minify": true
       },

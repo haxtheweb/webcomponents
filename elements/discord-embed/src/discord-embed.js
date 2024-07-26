@@ -84,6 +84,12 @@ class DiscordEmbed extends LitElement {
             "https://e.widgetbot.io/channels/",
           );
         }
+        else if (this.source.includes("https://discordapp.com/channels")) {
+          this.source = this.source.replace(
+            "https://discordapp.com/channels/",
+            "https://e.widgetbot.io/channels/",
+          );
+        }
       }
     });
   }
