@@ -619,7 +619,7 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
   makeUsageDocs(el, path, demo, packageName = null) {
     const url = new URL(path);
     let entryFile = el.tag;
-    let importPath = url.pathname.replace('/elements/','@haxtheweb/').replace('.stories.js','.js');
+    let importPath = url.pathname.replace('/storybook/', '/').replace('/elements/','@haxtheweb/').replace('.stories.js','.js');
     packageName = packageName || `${importPath.split('/')[0]}/${importPath.split('/')[1]}`;
     var description = window.localStorage.getItem(`${entryFile}-description`);
     setTimeout( async () => {
