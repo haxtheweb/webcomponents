@@ -72,11 +72,12 @@ class ChatSuggestion extends DDD {
           background-color: white;
           border-radius: var(--ddd-radius-circle);
           padding: var(--ddd-spacing-2);
+          margin: var(--ddd-spacing-1) var(--ddd-spacing-0);
         }
 
         simple-icon-lite {
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xxs);
+          --simple-icon-width: var(--ddd-icon-xxs);
         }
 
         .suggestion-text {
@@ -120,13 +121,7 @@ class ChatSuggestion extends DDD {
           font-size: var(--ddd-font-size-4xs);
           text-align: center;
           width: 80%;
-        }
-
-        @container (max-width: 270px) and (min-width: 216px) {
-          simple-icon-lite {
-            --simple-icon-height: var(--ddd-icon-xxs);
-            --simple-icon-width: var(--ddd-icon-xxs);
-          }
+          margin: 0px;
         }
 
         @container (max-width: 216px) {
@@ -189,7 +184,7 @@ class ChatSuggestion extends DDD {
         simpleIcon.style.color = "var(--ddd-theme-default-original87Pink)";
         break;
       case "hax":
-        simpleIcon.setAttribute("icon", "lrn:network");
+        simpleIcon.setAttribute("icon", "hax:hax2022");
         simpleIcon.style.color = "var(--data-theme-primary, var(--ddd-primary-13))";
         break;
       default:
