@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "A simple fluid-type sizing wrapper element to apply to anything",
   "repository": {
     "type": "git",

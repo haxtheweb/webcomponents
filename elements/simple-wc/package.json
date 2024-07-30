@@ -15,7 +15,7 @@
       "hax": "src/simple-wc-hax.json"
     }
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "A simple web component wrapper to simplify consistent patterns of element creation",
   "repository": {
     "type": "git",

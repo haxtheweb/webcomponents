@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "Automated conversion of outline-player/",
   "repository": {
     "type": "git",
@@ -41,11 +41,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^9.0.2",
-    "@haxtheweb/map-menu": "^9.0.2",
-    "@haxtheweb/schema-behaviors": "^9.0.2",
-    "@haxtheweb/simple-colors": "^9.0.2",
-    "@haxtheweb/simple-icon": "^9.0.2",
+    "@haxtheweb/hax-iconset": "^9.0.3",
+    "@haxtheweb/map-menu": "^9.0.3",
+    "@haxtheweb/schema-behaviors": "^9.0.3",
+    "@haxtheweb/simple-colors": "^9.0.3",
+    "@haxtheweb/simple-icon": "^9.0.3",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-media-query": "^3.0.0",
@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.2",
-    "@haxtheweb/storybook-utilities": "^9.0.2",
+    "@haxtheweb/storybook-utilities": "^9.0.3",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

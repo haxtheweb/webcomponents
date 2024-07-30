@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "Abstracting the positioning behavior from paper-tooltip to be resusable in other elements",
   "repository": {
     "type": "git",
