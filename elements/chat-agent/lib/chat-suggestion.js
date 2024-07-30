@@ -164,6 +164,9 @@ class ChatSuggestion extends DDD {
     }
   }
 
+  /**
+   * @description LitElement first update / sets suggestion icon
+   */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -194,6 +197,9 @@ class ChatSuggestion extends DDD {
     }
   }
   
+  /**
+   * @description LitElement updated / sets disabled state
+   */
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);

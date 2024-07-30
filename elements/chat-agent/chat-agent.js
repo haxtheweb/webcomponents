@@ -251,7 +251,7 @@ class ChatAgent extends DDD {
   }
 
   /**
-   * LitElement ready
+   * @descrition LitElement ready / starts AI
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {

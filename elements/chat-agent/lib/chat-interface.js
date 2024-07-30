@@ -620,6 +620,11 @@ class ChatInterface extends DDD {
   }
 
   // TODO does not work for resetting chat...
+  /**
+   * @description LitElement updated / sets scroll height to the bottom when a new message is mapped.
+   * @param {object} changedProperties - changed properties
+   * @async
+   */
   async updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
 

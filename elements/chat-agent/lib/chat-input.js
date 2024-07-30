@@ -141,7 +141,7 @@ class ChatInput extends DDD {
   }
   
   /**
-   * @description - handles key presses
+   * @description - handles key presses in textarea
    * @param {event} e - event
    */
   handleKeyPress(e) {
@@ -163,6 +163,10 @@ class ChatInput extends DDD {
     }
   }
 
+  /**
+   * @description - handles direction buttons
+   * @param {event} e - event
+   */
   handleDirectionButtons(e) {
     const BUTTON_ID = e.currentTarget.id;
 
@@ -200,6 +204,9 @@ class ChatInput extends DDD {
     }
   }
 
+  /**
+   * @description changed <textarea> text when using up and down buttons or up and down arrow keys (when focused in textarea) 
+   */
   displayPreviousMessages(direction) {
     let textArea = this.shadowRoot.querySelector("#user-input");
     
@@ -249,6 +256,9 @@ class ChatInput extends DDD {
     }
   }
 
+  /**
+   * @description - LitElement first update / 
+   */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);

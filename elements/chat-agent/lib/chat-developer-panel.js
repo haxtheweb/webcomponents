@@ -265,13 +265,16 @@ class ChatDeveloperPanel extends DDD {
   }
 
   /**
-   * @description handles the functionality of the switch engine button
+   * @description handles the functionality of the switch engine dropdown
    */
   handleSwitchEngine() {
     ChatAgentModalStore.engine = this.shadowRoot.querySelector("#engine-selection").value;
     ChatAgentModalStore.devStatement(`Engine switched to ${ChatAgentModalStore.engine}`, 'info');
   }
 
+  /**
+   * @description handles the functionality of the switch context dropdown
+   */
   handleContextChange() {
     ChatAgentModalStore.context = this.shadowRoot.querySelector("#context-select").value;
     ChatAgentModalStore.devStatement(`Context switched to ${ChatAgentModalStore.context}`, 'info');
