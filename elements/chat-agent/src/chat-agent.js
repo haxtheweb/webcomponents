@@ -70,7 +70,7 @@ class ChatAgent extends DDD {
     store.userData.userName !== undefined
       ? (this.userName = store.userData.userName)
       : (this.userName = "guest");
-    this.context = "phys211"; // test with phys211
+    this.context = "phys211";
     this.isLoading = null;
     this.dataCollectionEnabled = true;
     this.darkMode = store.darkMode; // TODO will be changed when store is its own thing, right now allows choosing between light & dark on load
@@ -113,6 +113,7 @@ class ChatAgent extends DDD {
     makeObservable(this, {
       buttonIcon: observable,
       chatLog: observable,
+      context: observable,
       darkMode: observable,
       dataCollectionEnabled: observable,
       developerModeEnabled: observable,
@@ -131,6 +132,7 @@ class ChatAgent extends DDD {
 
       const buttonIcon = toJS(this.buttonIcon);
       const chatLog = toJS(this.chatLog);
+      const context = toJS(this.context);
       const darkMode = toJS(store.darkMode);
       const dataCollectionEnabled = toJS(this.dataCollectionEnabled);
       const developerModeEnabled = toJS(this.developerModeEnabled);
@@ -571,7 +573,7 @@ class ChatAgent extends DDD {
 customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };
 
-// TODO causing inefficiency, abstract to it's own file
+// TODO causing inefficiency, abstract to it's own class / file
 // register globally so we can make sure there is only one
 globalThis.ChatAgentModal = globalThis.ChatAgentModal || {};
 // request if this exists. This helps invoke the element existing in the dom
