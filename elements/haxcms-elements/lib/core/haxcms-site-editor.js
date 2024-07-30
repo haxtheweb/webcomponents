@@ -998,6 +998,12 @@ class HAXCMSSiteEditor extends LitElement {
         detail: true,
       }),
     );
+    // force an update in the store to reprocess what is "active"
+    // otherwise the page data that was just saved won't be reflected until hitting a different
+    // page, causing a temporary state error if going to edit again
+    let tmp = store.activeId;
+    store.activeId = null;
+    store.activeId = tmp;
   }
 
   _handleOutlineResponse(e) {
