@@ -17,11 +17,13 @@ class ChatDeveloperPanel extends DDD {
   constructor() {
     super();
     this.chatLog = [];
+    this.context = null;
     this.engine = null;
     this.isFullView = null;
     
     autorun(() => {
       this.chatLog = toJS(ChatAgentModalStore.chatLog);
+      this.context = toJS(ChatAgentModalStore.context);
       this.engine = toJS(ChatAgentModalStore.engine);
       this.isFullView = toJS(ChatAgentModalStore.isFullView);
     });
@@ -168,17 +170,12 @@ class ChatDeveloperPanel extends DDD {
 
         <div class="switches" >
       
-          <label for="engine-selection">Engine:</label>
           <select name="select-engine" id="engine-selection" @change=${this.handleSwitchEngine}>
             <option value="alfred">Alfred (OpenAI)</option>
             <option value="robin">Robin (Anthropic)</option>
             <option value="Catwoman">Catwoman (ChatGPT)</option>
           </select>
 
-          <!-- Note: this does not set the starting context. 
-           To change the starting context, please set it in chat-agent.js at the this.context variable. 
-           For usability purposes, please set the top option to the starting context -->
-          <label for="context-selection">Context:</label>
           <select name="select-context" id="context-selection" @change=${this.handleContextChange}>
             <option value="phys211">Phys 211</option>
             <option value="haxcellence">HAX Docs</option>
@@ -193,6 +190,29 @@ class ChatDeveloperPanel extends DDD {
         </div>
       </div>
     `;
+  }
+
+  /**
+   * @description LitElement firstUpdated / Sets selected properties of engine and context selection
+   * @param {object} changedProperties - changed properties
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+
+    const ENGINE_OPTIONS = this.shadowRoot.querySelectorAll("#engine-selection option");
+    const CONTEXT_OPTIONS = this.shadowRoot.querySelectorAll("#context-selection option");
+
+    ENGINE_OPTIONS.forEach(option => {
+      if (option.value === this.engine) {
+        option.selected = true;
+      }
+    })
+
+    CONTEXT_OPTIONS.forEach(option => {
+      if (option.value === ChatAgentModalStore.context) {
+        option.selected = true;
+      }
+    })
   }
 
   /**
