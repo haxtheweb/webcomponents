@@ -40,16 +40,18 @@ class MediaQuote extends DDD {
 
     // Logic
     this._isCaptionOpen = false; // not set by user
-    this.hasAuthor =
-      this.querySelector('[slot="author"]') &&
-      this.querySelector('[slot="author"]').textContent.trim().length > 0;
-    this.hasAuthorDetail =
-      this.querySelector('[slot="author-detail"]') &&
-      this.querySelector('[slot="author-detail"]').textContent.trim().length >
-        0;
-    this.hasCaption =
-      this.querySelector('[slot="caption"]') &&
-      this.querySelector('[slot="caption"]').textContent.trim().length > 0;
+    if (this.querySelector) {
+      this.hasAuthor =
+        this.querySelector('[slot="author"]') &&
+        this.querySelector('[slot="author"]').textContent.trim().length > 0;
+      this.hasAuthorDetail =
+        this.querySelector('[slot="author-detail"]') &&
+        this.querySelector('[slot="author-detail"]').textContent.trim().length >
+          0;
+      this.hasCaption =
+        this.querySelector('[slot="caption"]') &&
+        this.querySelector('[slot="caption"]').textContent.trim().length > 0;
+    }
   }
 
   static get styles() {
