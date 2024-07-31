@@ -74,7 +74,6 @@ globalThis.SimplePickerEmojis = globalThis.SimplePickerEmojis || {
       description: "face blowing a kiss",
     },
     { value: "&#x1F617;", alt: "&#x1F617;", description: "kissing face" },
-    { value: "&#x263A;", alt: "&#x263A;", description: "smiling face" },
     {
       value: "&#x1F61A;",
       alt: "&#x1F61A;",

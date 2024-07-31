@@ -22,12 +22,14 @@ class SimpleEmojiPicker extends IntersectionObserverMixin(
     return [
       super.styles,
       css`
-        simple-picker-option {
+        simple-picker-option:not([part="sample-option"]) {
           justify-content: space-around;
           --simple-picker-option-size: 30px;
-          font-size: 24px;
+          font-size: 18px;
+          text-align: left;
           line-height: 30px;
-          width: 30px;
+          width: 40px;
+          height: 30px;
         }
         .row {
           width: auto;
