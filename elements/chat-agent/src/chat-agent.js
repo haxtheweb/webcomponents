@@ -573,7 +573,7 @@ class ChatAgent extends DDD {
 customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };
 
-// TODO causing inefficiency, abstract to it's own class / file
+// TODO causing inefficiency, abstract to it's own class
 // register globally so we can make sure there is only one
 globalThis.ChatAgentModal = globalThis.ChatAgentModal || {};
 // request if this exists. This helps invoke the element existing in the dom
@@ -878,4 +878,4 @@ class ChatAgentStore {
   }
 }
 
-export const chatAgentStore = new ChatAgentStore();
+export const chatAgentStore = globalthis.ChatAgentStore.requestAvailability();
