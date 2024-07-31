@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "h5p wrapper for loading and presenting .h5p files",
   "repository": {
     "type": "git",

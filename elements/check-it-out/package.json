@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "View codepen or stackblitz demos",
   "repository": {
     "type": "git",

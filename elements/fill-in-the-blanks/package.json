@@ -6,7 +6,7 @@
     "elementName": "fill-in-the-blanks",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "Fill in the blanks question",
   "repository": {
     "type": "git",

@@ -15,7 +15,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "Internationalization management singleton and helper mixin to allow shipping localizations with elements in an app agnostic manner",
   "repository": {
     "type": "git",

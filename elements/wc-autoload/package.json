@@ -15,7 +15,7 @@
       "hax": "src/wc-autoload-hax.json"
     }
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "automatically load new tags in the dom",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/dynamic-import-registry": "^9.0.2"
+    "@haxtheweb/dynamic-import-registry": "^9.0.3"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.2",

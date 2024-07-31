@@ -6,7 +6,7 @@
     "elementName": "matching-question",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "Match concepts question type",
   "repository": {
     "type": "git",

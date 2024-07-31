@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "helpers for building lazy loading images",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-icon": "^9.0.2",
+    "@haxtheweb/simple-icon": "^9.0.3",
     "lit": "^3.1.4"
   },
   "devDependencies": {

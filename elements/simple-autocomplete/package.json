@@ -14,7 +14,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "auto complete either from an endpoint or local json array",
   "repository": {
     "type": "git",
@@ -39,9 +39,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-filter": "^9.0.2",
-    "@haxtheweb/simple-icon": "^9.0.2",
-    "@haxtheweb/simple-popover": "^9.0.2",
+    "@haxtheweb/simple-filter": "^9.0.3",
+    "@haxtheweb/simple-icon": "^9.0.3",
+    "@haxtheweb/simple-popover": "^9.0.3",
     "@haxtheweb/utils": "^9.0.2",
     "lit": "^3.1.4"
   },

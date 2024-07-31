@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "display a quick link with styling to a repo to help with contributions",
   "repository": {
     "type": "git",
