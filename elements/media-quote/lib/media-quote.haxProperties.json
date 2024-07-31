@@ -9,7 +9,7 @@
   "gizmo": {
     "title": "Media quote",
     "description": "Image with a quote, citation, and optional caption",
-    "icon": "image:image",
+    "icon": "editor:format-quote",
     "color": "purple",
     "tags": ["Images", "media", "quote"],
     "handles": [],
