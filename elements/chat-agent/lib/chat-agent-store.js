@@ -26,7 +26,7 @@ MicroFrontendRegistry.add({
   },
 }); // strict mode off
 
-// TODO can read from store, but cannot write to store. Also encountering "ReferenceError: can't access lexical declaration 'chatAgentStore' before initialization"
+
 class ChatAgentStore {
 
   constructor() {
@@ -46,7 +46,7 @@ class ChatAgentStore {
       : (this.editMode = false);
     this.engine = "alfred";
     this.isFullView = false;
-    this.isInterfaceHidden = false; // TODO switch to false for testing when I know this store works
+    this.isInterfaceHidden = true; 
     this.isLoading = null;
     this.merlinIndex = 0;
     this.merlinTypeWriterSpeed = 2;

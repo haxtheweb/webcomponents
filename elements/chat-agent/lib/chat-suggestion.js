@@ -33,7 +33,6 @@ class ChatSuggestion extends DDD {
     })
   }
 
-  // TODO slim down the suggestions
   static get styles() {
     return [
       super.styles,
@@ -45,7 +44,7 @@ class ChatSuggestion extends DDD {
           display: block;
         }
 
-        /* TODO fix border color */
+
         .chat-suggestion-wrapper {
           align-items: center;
           border: var(--ddd-border-sm);

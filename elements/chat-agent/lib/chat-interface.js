@@ -48,7 +48,6 @@ class ChatInterface extends DDD {
     })
   }
 
-  // TODO Implement dark mode support
   static get styles() {
     return [
       super.styles,

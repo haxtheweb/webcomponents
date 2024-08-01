@@ -157,7 +157,7 @@ class ChatInput extends DDD {
         this.displayPreviousMessages("up");
         break;
 
-      case "ArrowDown": // TODO have Bryan look at this but also work on see if can get working before that
+      case "ArrowDown": // TODO get this to work correctly
         e.preventDefault();
         this.displayPreviousMessages("down");
         break;
