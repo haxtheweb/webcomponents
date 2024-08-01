@@ -170,7 +170,6 @@ class ChatMessage extends DDD {
     `;
   }
 
-  // TODO editMode hat not working
   /**
    * @description Renders a message sent by the end user
    */

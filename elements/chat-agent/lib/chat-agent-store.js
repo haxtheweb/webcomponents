@@ -83,7 +83,7 @@ class ChatAgentStore {
       const darkMode = toJS(store.darkMode);
       const dataCollectionEnabled = toJS(this.dataCollectionEnabled);
       const developerModeEnabled = toJS(this.developerModeEnabled);
-      const editMode = toJS(this.editMode);
+      const editMode = toJS(store.editMode);
       const engine = toJS(this.engine);
       const isFullView = toJS(this.isFullView);
       const isInterfaceHidden = toJS(this.isInterfaceHidden);

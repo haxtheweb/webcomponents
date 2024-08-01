@@ -10,7 +10,6 @@ import "./lib/chat-interface.js";
 import "./lib/chat-message.js";
 import "./lib/chat-suggestion.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
-import "@haxtheweb/simple-cta/simple-cta.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { ChatStore } from "./lib/chat-agent-store.js";
