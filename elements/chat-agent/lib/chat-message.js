@@ -26,6 +26,10 @@ class ChatMessage extends DDD {
     this.messageWasSuggestedPrompt = false; 
     this.suggestedPrompts = ChatStore.currentSuggestions; // needs to remain this way that way it doesn't update.
 
+    this.date = new Date();
+    this.month = this.date.getMonth() + 1; // months are zero indexed
+    this.day = this.date.getDate();
+
     autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
       this.editMode = toJS(ChatStore.editMode);
@@ -176,13 +180,51 @@ class ChatMessage extends DDD {
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-        <!-- <type-writer class="message-content" speed="${ChatStore.userTypeWriterSpeed}" text="${this.message}"></type-writer> -->
          <p class="message-content">${this.message}</p>
         <div class="author-icon">
-          <rpg-character seed="${ChatStore.userName}" hat="${this.editMode ? "construction" : "none"}"></rpg-character>
+          <rpg-character seed="${ChatStore.userName}"></rpg-character>
         </div>
       </div>
     `;
+  }
+
+  firstUpdated() {
+
+    this.pickHat();
+  }
+
+  pickHat() {
+    let hat;
+
+    // Uncommment this.month and this.day below to test dates
+    // this.month = 7;
+    // this.day = 27;
+
+    if (this.month === 2 && this.day === 12) {
+      hat = "party";
+    } else if (this.month === 6 && this.day === 6) { // Closest I could get for a consistent "cowboy" day. If you get the reference then that's awesome
+      hat = "cowboy";
+    } else if (this.month === 7 && this.day === 27) { // Birthday of a famous cartoon "wabbit"
+      hat = "bunny";
+    } else if (this.month === 8 && this.day === 15) { // International Watermelon Day
+      hat = "watermelon"
+    } else if (this.month === 9 && this.day === 19) { // International Talk Like a Pirate Day
+      hat = "pirate"
+    } else if (this.month === 10 && this.day === 1) { // International Coffee Day
+      hat ="coffee";
+    } else if (this.month === 10 && this.day === 5) { // Internation Teacher Day
+      hat = "education"
+    } else if (this.month === 12 && this.day === 5) { // Day of the Ninja
+      hat = "ninja"
+    } else if (this.month === 12 && this.day === 18) { // Fellowship of the Ring founded
+      hat = "knight"
+    } else {
+      hat = "none";
+    }
+
+    if (this.editMode) hat = "construction";
+
+    this.shadowRoot.querySelector("rpg-character").setAttribute("hat", hat);
   }
 
   /**
