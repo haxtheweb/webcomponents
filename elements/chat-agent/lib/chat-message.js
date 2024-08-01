@@ -26,10 +26,6 @@ class ChatMessage extends DDD {
     this.messageWasSuggestedPrompt = false; 
     this.suggestedPrompts = ChatStore.currentSuggestions; // needs to remain this way that way it doesn't update.
 
-    this.date = new Date();
-    this.month = this.date.getMonth() + 1; // months are zero indexed
-    this.day = this.date.getDate();
-
     autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
       this.editMode = toJS(ChatStore.editMode);
@@ -196,27 +192,23 @@ class ChatMessage extends DDD {
   pickHat() {
     let hat;
 
-    // Uncommment this.month and this.day below to test dates
-    // this.month = 7;
-    // this.day = 27;
-
-    if (this.month === 2 && this.day === 12) {
+    if (ChatStore.month === 2 && ChatStore.day === 12) {
       hat = "party";
-    } else if (this.month === 6 && this.day === 6) { // Closest I could get for a consistent "cowboy" day. If you get the reference then that's awesome
+    } else if (ChatStore.month === 6 && ChatStore.day === 6) { // Closest I could get for a consistent "cowboy" day. If you get the reference then that's awesome
       hat = "cowboy";
-    } else if (this.month === 7 && this.day === 27) { // Birthday of a famous cartoon "wabbit"
+    } else if (ChatStore.month === 7 && ChatStore.day === 27) { // Birthday of a famous cartoon "wabbit"
       hat = "bunny";
-    } else if (this.month === 8 && this.day === 15) { // International Watermelon Day
+    } else if (ChatStore.month === 8 && ChatStore.day === 15) { // International Watermelon Day
       hat = "watermelon"
-    } else if (this.month === 9 && this.day === 19) { // International Talk Like a Pirate Day
+    } else if (ChatStore.month === 9 && ChatStore.day === 19) { // International Talk Like a Pirate Day
       hat = "pirate"
-    } else if (this.month === 10 && this.day === 1) { // International Coffee Day
+    } else if (ChatStore.month === 10 && ChatStore.day === 1) { // International Coffee Day
       hat ="coffee";
-    } else if (this.month === 10 && this.day === 5) { // Internation Teacher Day
+    } else if (ChatStore.month === 10 && ChatStore.day === 5) { // International Teacher Day
       hat = "education"
-    } else if (this.month === 12 && this.day === 5) { // Day of the Ninja
+    } else if (ChatStore.month === 12 && ChatStore.day === 5) { // Day of the Ninja
       hat = "ninja"
-    } else if (this.month === 12 && this.day === 18) { // Fellowship of the Ring founded
+    } else if (ChatStore.month === 12 && ChatStore.day === 18) { // Fellowship of the Ring founded
       hat = "knight"
     } else {
       hat = "none";

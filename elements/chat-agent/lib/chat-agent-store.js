@@ -59,6 +59,10 @@ class ChatAgentStore {
       ? (this.userName = store.userData.userName)
       : (this.userName = "guest");
 
+    this.date = new Date();
+    this.month = this.date.getMonth() + 1; // months are zero indexed
+    this.day = this.date.getDate();
+
     makeObservable(this, {
       buttonIcon: observable,
       chatLog: observable,
@@ -123,20 +127,52 @@ class ChatAgentStore {
     "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
   );
   
-  this.currentSuggestions = [
-    {
-      suggestion: "Who are you?",
-      type: "hax",
-    },
-    {
-      suggestion: "What can you do for me?",
-      type: "help",
-    },
-    {
-      suggestion: "How do I use you?",
-      type: "help",
-    },
-  ];
+
+  if (
+    this.month === 2 && this.day === 12 || 
+    this.month === 6 && this.day === 6 ||
+    this.month === 7 && this.day === 27 ||
+    this.month === 8 && this.day === 15 ||
+    this.month === 9 && this.day === 19 ||
+    this.month === 10 && this.day === 1 ||
+    this.month === 10 && this.day === 5 ||
+    this.month === 12 && this.day === 5 ||
+    this.month === 12 && this.day === 18
+  ) {
+    this.currentSuggestions = [
+      {
+        suggestion: "Who are you?",
+        type: "hax",
+      },
+      {
+        suggestion: "What can you do for me?",
+        type: "help",
+      },
+      {
+        suggestion: "How do I use you?",
+        type: "help",
+      },
+      {
+        suggestion: "Why is my character wearing a hat?",
+        type: "hax",
+      }
+    ];
+  } else {
+    this.currentSuggestions = [
+      {
+        suggestion: "Who are you?",
+        type: "hax",
+      },
+      {
+        suggestion: "What can you do for me?",
+        type: "help",
+      },
+      {
+        suggestion: "How do I use you?",
+        type: "help",
+      },
+    ];
+  }
 
   document.
     querySelector("chat-agent")
@@ -253,6 +289,27 @@ class ChatAgentStore {
           "merlin",
           "I support numerous functions. You can ask me questions, as well as download our chat log and reset our chat. You can start asking me questions by clicking on one of the suggested prompts, or by typing a prompt in the input box below and pressing the send button or pressing the enter key on your keyboard. Here are some of the keyboard controls you can utilize: \n 1. Tab Key - Navigates you through the numerous usable buttons. \n 2. Enter Key (in text area) - Will submit the prompt you wrote. \n 3. Enter key (When focusing on a button) - Will act in the same way as clicking the button. \n 4. Up & Down Arrow Keys (in text area) - will navigate you through previously sent prompts so you can send them again.",
         );
+        break;
+
+      case "Why is my character wearing a hat?":
+        this.currentSuggestions = [
+          {
+            suggestion: "Who are you?",
+            type: "hax",
+          },
+          {
+            suggestion: "What can you do for me?",
+            type: "help",
+          },
+          {
+            suggestion: "How do I use you?",
+            type: "help",
+          },
+        ];
+        this.handleMessage(
+          "merlin",
+          "Your character is wearing a hat because today is either a special (hat related) holiday, or another special occassion!"
+        )
         break;
 
       // Network error messages
