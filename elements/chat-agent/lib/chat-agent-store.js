@@ -113,6 +113,46 @@ class ChatAgentStore {
   
   }
 
+ /**
+   * @description start sequence for Merlin
+   */
+ startAI() {
+  this.handleMessage(
+    "merlin",
+    "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
+  );
+  
+  this.currentSuggestions = [
+    {
+      suggestion: "Who are you?",
+      type: "hax",
+    },
+    {
+      suggestion: "What can you do for me?",
+      type: "help",
+    },
+    {
+      suggestion: "How do I use you?",
+      type: "help",
+    },
+  ];
+
+  document.
+    querySelector("chat-agent")
+    .shadowRoot.querySelector("chat-interface")
+    .shadowRoot.querySelector("chat-message")
+    .shadowRoot.querySelectorAll("chat-suggestion")
+    .forEach((suggestion) => {
+      if (suggestion.hasAttribute("disabled")) {
+        suggestion.removeAttribute("disabled");
+      }
+
+      if (suggestion.hasAttribute("chosen-prompt")) {
+        suggestion.removeAttribute("chosen-prompt");
+      }
+    });
+  }
+
   /**
    * @description writes message to chatLog
    * @param {string} author - the author of the message
@@ -158,7 +198,7 @@ class ChatAgentStore {
    * @param {string} prompt - the written or suggested prompt
    */
   handleInteraction(prompt) {
-    this.devStatement(`Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`, `info`)
+    this.devStatement(`Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`, `info`);
     this.currentSuggestions = [];
 
     switch (prompt) {
@@ -317,7 +357,6 @@ class ChatAgentStore {
   }
 
   devStatement(statement, type) {
-    console.log('devStatement() called');
     if (this.developerModeEnabled) {
       switch (type) {
         case "log":

@@ -276,7 +276,7 @@ class ChatDeveloperPanel extends DDD {
    * @description handles the functionality of the switch context dropdown
    */
   handleContextChange() {
-    ChatStore.context = this.shadowRoot.querySelector("#context-select").value;
+    ChatStore.context = this.shadowRoot.querySelector("#context-selection").value;
     ChatStore.devStatement(`Context switched to ${ChatStore.context}`, 'info');
   }
 
