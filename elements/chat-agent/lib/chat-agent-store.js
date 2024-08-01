@@ -92,6 +92,7 @@ class ChatAgentStore {
       const messageIndex = toJS(this.messageIndex);
       const userIndex = toJS(this.userIndex);
       
+      // these are here because they weren't working without them
       if (isLoading) {
         this.buttonIcon = "hax:loading";
       } else {
@@ -288,7 +289,7 @@ class ChatAgentStore {
           base = globalThis.document.querySelector("base").href;
         }
 
-        // TODO: Add support for data collection toggle
+        // TODO: Add support for data collection toggle (this.dataCollectionEnabled)
         const params = {
           site: {
             file: "https://haxtheweb.org/site.json",
