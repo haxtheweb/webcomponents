@@ -64,6 +64,14 @@ class ChatAgent extends DDD {
    */
   constructor() {
     super();
+
+    this.isFullView = null;
+    this.isInterfaceHidden = null;
+
+    autorun(() => {
+      this.isFullView = toJS(ChatStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
+    });
   }
 
   /**
@@ -163,44 +171,16 @@ class ChatAgent extends DDD {
   static get properties() {
     return {
       ...super.properties,
-      // everything
-
-      userName: {
-        type: String,
-        attribute: "user-name",
+      isFullView: {
+        type: Boolean,
+        attribute: "is-full-view",
+        reflect: true,
       },
-      userPicture: {
-        type: String,
-        attribute: "user-picture",
+      isInterfaceHidden: {
+        type: Boolean,
+        attribute: "is-interface-hidden",
+        reflect: true,
       },
-
-      // control bar
-
-      // developer mode
-
-      // input
-      promptCharacterLimit: {
-        type: Number,
-        attribute: "maxlength",
-      },
-      promptPlaceholder: {
-        type: String,
-        attribute: "placeholder",
-      },
-
-      // interface
-
-      // message
-      merlinTypeWriterSpeed: {
-        type: Number,
-        attribute: "merlin-type-writer-speed",
-      },
-      userTypeWriterSpeed: {
-        type: Number,
-        attribute: "user-type-writer-speed",
-      },
-
-      // suggestion
     };
   }
 }
