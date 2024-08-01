@@ -4,6 +4,7 @@
  */
 import "@haxtheweb/type-writer/type-writer.js";
 import { ChatAgentModalStore } from "../chat-agent.js";
+import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";

@@ -2,7 +2,8 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatAgentModalStore, ChatStore } from "../chat-agent.js";
+import { ChatAgentModalStore } from "../chat-agent.js";
+import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
@@ -124,10 +125,10 @@ class ChatButton extends DDD {
     return html`
       <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0" aria-label="${this.isInterfaceHidden ? 'Open Interface' : 'Close Interface'}">
         <div class="icon-wrapper">
-          <simple-icon-lite icon="${ChatAgentModalStore.buttonIcon}"></simple-icon-lite>
+          <simple-icon-lite icon="${ChatStore.buttonIcon}"></simple-icon-lite>
         </div>
         <div class="label-wrapper" unselectable="on">
-          <slot name="label">${ChatAgentModalStore.buttonLabel}</slot>
+          <slot name="label">${ChatStore.buttonLabel}</slot>
         </div>
       </div>
     `;
@@ -151,7 +152,7 @@ class ChatButton extends DDD {
   handleChatButton() {
     ChatStore.devStatement("Chat button pressed.", "log");
 
-    ChatAgentModalStore.isInterfaceHidden = !this.isInterfaceHidden;
+    ChatStore.isInterfaceHidden = !this.isInterfaceHidden;
   }
 
   static get properties() {
