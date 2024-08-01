@@ -1,6 +1,7 @@
 {
   "canScale": false,
-
+  "canPosition": false,
+  "designSystem": false,
   "canEditSource": true,
   "gizmo": {
     "title": "RPG Character",
@@ -9,12 +10,8 @@
     "color": "red",
     "tags": [
       "Other",
-      "marketing",
-      "image",
-      "rpg",
       "fun",
       "8bit",
-      "gaming",
       "game"
     ],
     "handles": [],
