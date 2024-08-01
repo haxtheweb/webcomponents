@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import "@haxtheweb/type-writer/type-writer.js";
-
 import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
@@ -171,6 +170,7 @@ class ChatMessage extends DDD {
     `;
   }
 
+  // TODO editMode hat not working
   /**
    * @description Renders a message sent by the end user
    */

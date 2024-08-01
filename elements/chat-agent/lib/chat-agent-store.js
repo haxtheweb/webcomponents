@@ -34,18 +34,30 @@ class ChatAgentStore {
     this.buttonLabel = "Merlin-AI";
     this.chatLog = [];
     this.context = "phys211";
+    this.currentSuggestions = [];
     this.darkMode = null;
+    store.darkMode !== undefined
+      ? (this.darkMode = store.darkMode)
+      : (this.darkMode = false);
     this.dataCollectionEnabled = true;
-    this.developerModeEnabled = false;
-    this.editMode = null;
+    this.developerModeEnabled = false; // ! this will enable developer mode for the entire chat system
+    store.editMode !== undefined
+      ? (this.editMode = store.editMode)
+      : (this.editMode = false);
     this.engine = "alfred";
     this.isFullView = false;
     this.isInterfaceHidden = false; // TODO switch to false for testing when I know this store works
-    this.isLoading = false;
+    this.isLoading = null;
     this.merlinIndex = 0;
+    this.merlinTypeWriterSpeed = 2;
     this.messageIndex = 0;
+    this.promptCharacterLimit;
     this.promptPlaceholder = "Enter your prompt here...";
     this.userIndex = 0;
+    this.userTypeWriterSpeed = 0;
+    store.userData.userName !== undefined
+      ? (this.userName = store.userData.userName)
+      : (this.userName = "guest");
 
     makeObservable(this, {
       buttonIcon: observable,
@@ -79,13 +91,26 @@ class ChatAgentStore {
       const merlinIndex = toJS(this.merlinIndex);
       const messageIndex = toJS(this.messageIndex);
       const userIndex = toJS(this.userIndex);
+      
+      if (isLoading) {
+        this.buttonIcon = "hax:loading";
+      } else {
+        this.buttonIcon = "hax:wizard-hat";
+      }
+
+      if (darkMode) {
+        this.darkMode = true;
+      } else {
+        this.darkMode = false;
+      }
+
+      if (editMode) {
+        this.editMode = true;
+      } else {
+        this.editMode = false;
+      }
     });
   
-    if (this.isLoading) {
-      this.buttonIcon = "hax:loading";
-    } else {
-      this.buttonIcon = "hax:wizard-hat";
-    }
   }
 
   /**

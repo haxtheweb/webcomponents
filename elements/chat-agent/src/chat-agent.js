@@ -64,90 +64,6 @@ class ChatAgent extends DDD {
    */
   constructor() {
     super();
-
-    // everything
-    this.chatLog = [];
-    this.engine = "alfred";
-    store.userData.userName !== undefined
-      ? (this.userName = store.userData.userName)
-      : (this.userName = "guest");
-    this.context = "phys211";
-    this.isLoading = null;
-    this.dataCollectionEnabled = true;
-    this.darkMode = store.darkMode; // TODO will be changed when store is its own thing, right now allows choosing between light & dark on load
-    this.editMode = true; // TODO null, store.editMode;
-
-    // button
-    this.buttonIcon = "hax:wizard-hat";
-    this.buttonLabel = "Merlin-AI";
-
-    // control bar
-
-    // developer mode
-    this.developerModeEnabled = false; // ! this will enable developer mode for the entire chat system
-
-    // input
-    this.promptCharacterLimit;
-    this.promptPlaceholder = "Enter your prompt here...";
-
-    // interface
-    // TODO UserScaffold
-    this.isFullView = false;
-    this.isInterfaceHidden = false; // TODO setting this to true (which should be the default) causes everything to break (error at line or around 567)
-
-    // message
-    this.merlinIndex = 0; // index of merlin messages
-    this.messageIndex = 0; // index of all messages
-    this.userIndex = 0; // index of user messages
-
-    this.userTypeWriterSpeed = 0;
-    this.merlinTypeWriterSpeed = 2;
-
-    // suggestion
-    this.currentSuggestions = [];
-
-    // external
-    this.isSiteEditorOpen = HAXCMSSiteEditorUI.userMenuOpen; // TODO the idea is here, but I do not think it works (checks for editor bar, will be used for CSS full-view)
-    console.log(this.isSiteEditorOpen);
-
-    autorun(() => {
-      // magic
-
-      const buttonIcon = toJS(this.buttonIcon);
-      const chatLog = toJS(this.chatLog);
-      const context = toJS(this.context);
-      const darkMode = toJS(store.darkMode);
-      const dataCollectionEnabled = toJS(this.dataCollectionEnabled);
-      const developerModeEnabled = toJS(this.developerModeEnabled);
-      const editMode = toJS(this.editMode);
-      const engine = toJS(this.engine);
-      const isFullView = toJS(this.isFullView);
-      const isInterfaceHidden = toJS(this.isInterfaceHidden);
-      const isLoading = toJS(this.isLoading);
-      const merlinIndex = toJS(this.merlinIndex);
-      const messageIndex = toJS(this.messageIndex);
-      const userIndex = toJS(this.userIndex);
-
-      // ! work around to not being able to put this in properties
-      if (isFullView) {
-        this.setAttribute("is-full-view", "");
-      } else if (this.hasAttribute("is-full-view")) {
-        this.removeAttribute("is-full-view");
-      }
-
-      if (isInterfaceHidden) {
-        this.setAttribute("is-interface-hidden", "");
-      } else if (this.hasAttribute("is-interface-hidden")) {
-        this.removeAttribute("is-interface-hidden");
-      }
-
-      if (isLoading) {
-        this.buttonIcon = "hax:loading";
-      } else {
-        this.buttonIcon = "hax:wizard-hat";
-      }
-      this.requestUpdate();
-    });
   }
 
   /**
@@ -226,7 +142,7 @@ class ChatAgent extends DDD {
         </div>
         <div class="agent-button-wrapper">
           <chat-button>
-            <span slot="label">${this.buttonLabel}</span>
+            <span slot="label">${ChatStore.buttonLabel}</span>
           </chat-button>
         </div>
       </div>
