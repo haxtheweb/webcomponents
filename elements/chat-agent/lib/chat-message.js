@@ -26,6 +26,8 @@ class ChatMessage extends DDD {
     this.messageWasSuggestedPrompt = false; 
     this.suggestedPrompts = ChatStore.currentSuggestions; // needs to remain this way that way it doesn't update.
 
+    this.hat = "none";
+
     autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
       this.editMode = toJS(ChatStore.editMode);
@@ -162,8 +164,8 @@ class ChatMessage extends DDD {
           <type-writer class="message-content" text="${this.message}" speed="${ChatStore.merlinTypeWriterSpeed}"></type-writer>
         </div>
         <div class="suggested-prompts">
-          ${this.suggestedPrompts.map((suggestion) => html`
-            <chat-suggestion suggestion="${suggestion.suggestion}" prompt-type="${suggestion.type}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
+          ${this.suggestedPrompts.map((suggestedPrompt) => html`
+            <chat-suggestion suggestion="${suggestedPrompt.suggestion}" prompt-type="${suggestedPrompt.type}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
           `)}
         </div>
       </div>
@@ -178,7 +180,7 @@ class ChatMessage extends DDD {
       <div class="sent-chat-message">
          <p class="message-content">${this.message}</p>
         <div class="author-icon">
-          <rpg-character seed="${ChatStore.userName}"></rpg-character>
+          <rpg-character seed="${ChatStore.userName}" hat="${this.hat}"></rpg-character>
         </div>
       </div>
     `;
@@ -189,33 +191,31 @@ class ChatMessage extends DDD {
   }
 
   pickHat() {
-    let hat;
-
     if (ChatStore.month === 2 && ChatStore.day === 12) {
-      hat = "party";
+      this.hat = "party";
     } else if (ChatStore.month === 6 && ChatStore.day === 6) { // Closest I could get for a consistent "cowboy" day. If you get the pop-culture reference then that's awesome
-      hat = "cowboy";
+      this.hat = "cowboy";
     } else if (ChatStore.month === 7 && ChatStore.day === 27) { // Birthday of a famous cartoon "wabbit"
-      hat = "bunny";
+      this.hat = "bunny";
     } else if (ChatStore.month === 8 && ChatStore.day === 15) { // International Watermelon Day
-      hat = "watermelon"
+      this.hat = "watermelon"
     } else if (ChatStore.month === 9 && ChatStore.day === 19) { // International Talk Like a Pirate Day
-      hat = "pirate"
+      this.hat = "pirate"
     } else if (ChatStore.month === 10 && ChatStore.day === 1) { // International Coffee Day
-      hat ="coffee";
+      this.hat ="coffee";
     } else if (ChatStore.month === 10 && ChatStore.day === 5) { // International Teacher Day
-      hat = "education"
+      this.hat = "education"
     } else if (ChatStore.month === 12 && ChatStore.day === 5) { // Day of the Ninja
-      hat = "ninja"
+      this.hat = "ninja"
     } else if (ChatStore.month === 12 && ChatStore.day === 18) { // Fellowship of the Ring founded
-      hat = "knight"
+      this.hat = "knight"
     } else {
-      hat = "none";
+      this.hat = "none";
     }
 
-    if (this.editMode) hat = "construction";
+    if (this.editMode) this.hat = "construction";
 
-    this.shadowRoot.querySelector("rpg-character").setAttribute("hat", hat);
+    this.requestUpdate();
   }
 
   /**
