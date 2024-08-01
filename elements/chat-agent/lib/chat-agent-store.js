@@ -7,12 +7,31 @@ import {
   autorun,
   toJS,
 } from "mobx";
+configure({ enforceActions: false });
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+// enable services for glossary enhancement
+enableServices(["haxcms"]);
+MicroFrontendRegistry.add({
+  endpoint: "/api/apps/haxcms/aiChat",
+  name: "@haxcms/aiChat",
+  title: "AI Chat",
+  description: "AI based chat agent that can answer questions about a site",
+  params: {
+    site: "location of the HAXcms site OR site.json data",
+    type: "site for site.json or link for remote loading",
+    question: "Question to ask of the AI",
+    engine: "which engine to use as we test multiple",
+    context: "context to query based on. Course typical",
+  },
+}); // strict mode off
 
 // TODO can read from store, but cannot write to store. Also encountering "ReferenceError: can't access lexical declaration 'chatAgentStore' before initialization"
 class ChatAgentStore {
 
   constructor() {
     this.buttonIcon = "hax:wizard-hat";
+    this.buttonLabel = "Merlin-AI";
     this.chatLog = [];
     this.context = "phys211";
     this.darkMode = null;
@@ -21,10 +40,11 @@ class ChatAgentStore {
     this.editMode = null;
     this.engine = "alfred";
     this.isFullView = false;
-    this.isInterfaceHidden = true; // TODO switch to false for testing when I know this store works
+    this.isInterfaceHidden = false; // TODO switch to false for testing when I know this store works
     this.isLoading = false;
     this.merlinIndex = 0;
     this.messageIndex = 0;
+    this.promptPlaceholder = "Enter your prompt here...";
     this.userIndex = 0;
 
     makeObservable(this, {
@@ -272,6 +292,7 @@ class ChatAgentStore {
   }
 
   devStatement(statement, type) {
+    console.log('devStatement() called');
     if (this.developerModeEnabled) {
       switch (type) {
         case "log":
@@ -293,5 +314,18 @@ class ChatAgentStore {
     }
   }
 }
+
+// register globally so we can make sure there is only one
+globalThis.ChatAgentStore = globalThis.ChatAgentStore || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same modal
+globalThis.ChatAgentStore.requestAvailability = () => {
+  if (!globalThis.ChatAgentStore.instance) {
+    globalThis.ChatAgentStore.instance = document.createElement("chat-agent-store");
+    document.body.appendChild(globalThis.ChatAgentStore.instance);
+  }
+  return globalThis.ChatAgentStore.instance;
+};
 
 export const ChatStore = new ChatAgentStore();

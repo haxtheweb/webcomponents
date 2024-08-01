@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 
-import { ChatAgentModalStore } from "../chat-agent.js";
+
 import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
@@ -28,8 +28,8 @@ class ChatSuggestion extends DDD {
     this.userIndex = null;
 
     autorun(() => {
-      this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
-      this.userIndex = toJS(ChatAgentModalStore.userIndex);
+      this.messageIndex = toJS(ChatStore.messageIndex);
+      this.userIndex = toJS(ChatStore.userIndex);
     })
   }
 
@@ -157,11 +157,11 @@ class ChatSuggestion extends DDD {
   */
  handleSuggestion() {
    if (!this.disabled) {
-     ChatAgentModalStore.devStatement(`Suggestion button pressed. Suggested prompt to send to Merlin: ${this.suggestion}`, 'info');
+     ChatStore.devStatement(`Suggestion button pressed. Suggested prompt to send to Merlin: ${this.suggestion}`, 'info');
      
-     ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, this.suggestion);
+     ChatStore.handleMessage(ChatStore.userName, this.suggestion);
     } else {
-      ChatAgentModalStore.devStatement('Suggestion buttons disabled, ignoring request', 'warn');
+      ChatStore.devStatement('Suggestion buttons disabled, ignoring request', 'warn');
     }
   }
 

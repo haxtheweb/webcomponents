@@ -2,7 +2,7 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatAgentModalStore } from "../chat-agent.js";
+
 import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
@@ -24,11 +24,11 @@ class ChatInterface extends DDD {
     this.hasEditorUI = null;
     
     autorun(() => {
-      this.chatLog = toJS(ChatAgentModalStore.chatLog);
-      this.darkMode = toJS(ChatAgentModalStore.darkMode);
-      this.developerModeEnabled = toJS(ChatAgentModalStore.developerModeEnabled);
-      this.isFullView = toJS(ChatAgentModalStore.isFullView);
-      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+      this.chatLog = toJS(ChatStore.chatLog);
+      this.darkMode = toJS(ChatStore.darkMode);
+      this.developerModeEnabled = toJS(ChatStore.developerModeEnabled);
+      this.isFullView = toJS(ChatStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
       
       // TODO will change, brute forcing for now
       const tempSiteGrabber = document.querySelector("#site");
@@ -601,7 +601,7 @@ class ChatInterface extends DDD {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
-          ${ChatAgentModalStore.developerModeEnabled ? html`
+          ${ChatStore.developerModeEnabled ? html`
             <chat-developer-panel></chat-developer-panel>
           ` : ''}
           <div class="main-wrapper">
@@ -609,10 +609,10 @@ class ChatInterface extends DDD {
             <div class="chat-container">
               <div class="chat-messages">
                   ${this.chatLog.map((message) => html`
-                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${ChatAgentModalStore.currentSuggestions.length > 0}"></chat-message>
+                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatStore.userName}" ?suggested-prompts="${ChatStore.currentSuggestions.length > 0}"></chat-message>
                   `)}
               </div>
-              <chat-input placeholder="${ChatAgentModalStore.promptPlaceholder}"></chat-input>
+              <chat-input placeholder="${ChatStore.promptPlaceholder}"></chat-input>
             </div>
           </div>
         </div>

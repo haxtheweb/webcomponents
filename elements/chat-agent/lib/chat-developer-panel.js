@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 
-import { ChatAgentModalStore } from "../chat-agent.js";
 import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
@@ -23,10 +22,10 @@ class ChatDeveloperPanel extends DDD {
     this.isFullView = null;
     
     autorun(() => {
-      this.chatLog = toJS(ChatAgentModalStore.chatLog);
-      this.context = toJS(ChatAgentModalStore.context);
-      this.engine = toJS(ChatAgentModalStore.engine);
-      this.isFullView = toJS(ChatAgentModalStore.isFullView);
+      this.chatLog = toJS(ChatStore.chatLog);
+      this.context = toJS(ChatStore.context);
+      this.engine = toJS(ChatStore.engine);
+      this.isFullView = toJS(ChatStore.isFullView);
     });
   }
 
@@ -210,7 +209,7 @@ class ChatDeveloperPanel extends DDD {
     })
 
     CONTEXT_OPTIONS.forEach(option => {
-      if (option.value === ChatAgentModalStore.context) {
+      if (option.value === ChatStore.context) {
         option.selected = true;
       }
     })
@@ -227,7 +226,7 @@ class ChatDeveloperPanel extends DDD {
 
     switch (TARGET) {
       case "console-table-user":
-        console.table(this.compileChatLog(ChatAgentModalStore.userName));
+        console.table(this.compileChatLog(ChatStore.userName));
         break;
       case "console-table-merlin":
         console.table(this.compileChatLog("merlin"))
@@ -243,7 +242,7 @@ class ChatDeveloperPanel extends DDD {
    * @param {string} author - the name of the author of the messages. Either the user's name or "merlin".
    */
   compileChatLog(author) {
-    ChatAgentModalStore.devStatement(`Compiling "${author}" chat log...`, 'info');
+    ChatStore.devStatement(`Compiling "${author}" chat log...`, 'info');
     
     let newChatLog = [];
 
@@ -260,25 +259,25 @@ class ChatDeveloperPanel extends DDD {
    * @description downloads the chat log as a .json file
    */
   handleDownloadAsJsonButton() {
-    ChatAgentModalStore.devStatement(`Calling download funtion...`, 'info');
+    ChatStore.devStatement(`Calling download funtion...`, 'info');
 
-    ChatAgentModalStore.handleDownload('json');
+    ChatStore.handleDownload('json');
   }
 
   /**
    * @description handles the functionality of the switch engine dropdown
    */
   handleSwitchEngine() {
-    ChatAgentModalStore.engine = this.shadowRoot.querySelector("#engine-selection").value;
-    ChatAgentModalStore.devStatement(`Engine switched to ${ChatAgentModalStore.engine}`, 'info');
+    ChatStore.engine = this.shadowRoot.querySelector("#engine-selection").value;
+    ChatStore.devStatement(`Engine switched to ${ChatStore.engine}`, 'info');
   }
 
   /**
    * @description handles the functionality of the switch context dropdown
    */
   handleContextChange() {
-    ChatAgentModalStore.context = this.shadowRoot.querySelector("#context-select").value;
-    ChatAgentModalStore.devStatement(`Context switched to ${ChatAgentModalStore.context}`, 'info');
+    ChatStore.context = this.shadowRoot.querySelector("#context-select").value;
+    ChatStore.devStatement(`Context switched to ${ChatStore.context}`, 'info');
   }
 
   static get properties() {

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import "@haxtheweb/type-writer/type-writer.js";
-import { ChatAgentModalStore } from "../chat-agent.js";
+
 import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
@@ -25,11 +25,11 @@ class ChatMessage extends DDD {
     this.isSentPrompt = false;
     this.message = "";
     this.messageWasSuggestedPrompt = false; 
-    this.suggestedPrompts = ChatAgentModalStore.currentSuggestions; // needs to remain this way that way it doesn't update.
+    this.suggestedPrompts = ChatStore.currentSuggestions; // needs to remain this way that way it doesn't update.
 
     autorun(() => {
-      this.darkMode = toJS(ChatAgentModalStore.darkMode);
-      this.editMode = toJS(ChatAgentModalStore.editMode);
+      this.darkMode = toJS(ChatStore.darkMode);
+      this.editMode = toJS(ChatStore.editMode);
     })
   }
 
@@ -160,7 +160,7 @@ class ChatMessage extends DDD {
           <div class="author-icon">
             <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
           </div>
-          <type-writer class="message-content" text="${this.message}" speed="${ChatAgentModalStore.merlinTypeWriterSpeed}"></type-writer>
+          <type-writer class="message-content" text="${this.message}" speed="${ChatStore.merlinTypeWriterSpeed}"></type-writer>
         </div>
         <div class="suggested-prompts">
           ${this.suggestedPrompts.map((suggestion) => html`
@@ -177,10 +177,10 @@ class ChatMessage extends DDD {
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-        <!-- <type-writer class="message-content" speed="${ChatAgentModalStore.userTypeWriterSpeed}" text="${this.message}"></type-writer> -->
+        <!-- <type-writer class="message-content" speed="${ChatStore.userTypeWriterSpeed}" text="${this.message}"></type-writer> -->
          <p class="message-content">${this.message}</p>
         <div class="author-icon">
-          <rpg-character seed="${ChatAgentModalStore.userName}" hat="${this.editMode ? "construction" : "none"}"></rpg-character>
+          <rpg-character seed="${ChatStore.userName}" hat="${this.editMode ? "construction" : "none"}"></rpg-character>
         </div>
       </div>
     `;
@@ -193,7 +193,7 @@ class ChatMessage extends DDD {
   disableSuggestions(e) {
     const SUGGESTIONS = this.shadowRoot.querySelectorAll("chat-suggestion");
 
-    ChatAgentModalStore.devStatement("Disabling previous suggestions.", "info");
+    ChatStore.devStatement("Disabling previous suggestions.", "info");
 
     SUGGESTIONS.forEach((suggestion) => {
       if (!suggestion.hasAttribute("disabled")) {

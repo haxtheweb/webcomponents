@@ -2,7 +2,7 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatAgentModalStore } from "../chat-agent.js";
+
 import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
@@ -25,12 +25,12 @@ class ChatInput extends DDD {
     this.userName = null;
 
     autorun(() => {
-      this.chatLog = toJS(ChatAgentModalStore.chatLog);
-      this.darkMode = toJS(ChatAgentModalStore.darkMode);
-      this.messageIndex = toJS(ChatAgentModalStore.messageIndex);
-      this.userIndex = toJS(ChatAgentModalStore.userIndex);
+      this.chatLog = toJS(ChatStore.chatLog);
+      this.darkMode = toJS(ChatStore.darkMode);
+      this.messageIndex = toJS(ChatStore.messageIndex);
+      this.userIndex = toJS(ChatStore.userIndex);
       this.previousMessagesIndex = toJS(this.messageIndex);
-      this.userName = toJS(ChatAgentModalStore.userName);
+      this.userName = toJS(ChatStore.userName);
     })
   }
 
@@ -128,7 +128,7 @@ class ChatInput extends DDD {
   render() {
     return html`
       <div class="chat-input-wrapper">
-        <textarea name="prompt-input" id="user-input" placeholder="${ChatAgentModalStore.promptPlaceholder}" @keydown=${this.handleKeyPress}></textarea>
+        <textarea name="prompt-input" id="user-input" placeholder="${ChatStore.promptPlaceholder}" @keydown=${this.handleKeyPress}></textarea>
         <div class="up-down-btns">
           <button id="input-up-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-up"></simple-icon-lite></button>
           <button id="input-down-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-down"></simple-icon-lite></button>
@@ -171,7 +171,7 @@ class ChatInput extends DDD {
   handleDirectionButtons(e) {
     const BUTTON_ID = e.currentTarget.id;
 
-    ChatAgentModalStore.devStatement(`${BUTTON_ID} button pressed.`, 'info');
+    ChatStore.devStatement(`${BUTTON_ID} button pressed.`, 'info');
 
     switch (BUTTON_ID) {
       case "input-up-btn":
@@ -189,19 +189,19 @@ class ChatInput extends DDD {
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
 
-    if (ChatAgentModalStore.promptCharacterLimit > 0 && INPUTTED_PROMPT.length > ChatAgentModalStore.promptCharacterLimit) { // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
-      alert(`Please shorten your prompt to no more than ${ChatAgentModalStore.promptCharacterLimit} characters.`)
+    if (ChatStore.promptCharacterLimit > 0 && INPUTTED_PROMPT.length > ChatStore.promptCharacterLimit) { // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
+      alert(`Please shorten your prompt to no more than ${ChatStore.promptCharacterLimit} characters.`)
     }
 
     if (INPUTTED_PROMPT !== "") {
-      ChatAgentModalStore.devStatement(`Send function activated. "${INPUTTED_PROMPT}" sent to Merlin.`, 'info');
+      ChatStore.devStatement(`Send function activated. "${INPUTTED_PROMPT}" sent to Merlin.`, 'info');
 
-      ChatAgentModalStore.handleMessage(ChatAgentModalStore.userName, INPUTTED_PROMPT);
+      ChatStore.handleMessage(ChatStore.userName, INPUTTED_PROMPT);
 
       this.shadowRoot.querySelector("#user-input").value = "";
 
     } else {
-      ChatAgentModalStore.devStatement(`Send button activated. No prompt to send.`, 'warn');
+      ChatStore.devStatement(`Send button activated. No prompt to send.`, 'warn');
     }
   }
 
@@ -215,7 +215,7 @@ class ChatInput extends DDD {
       case "up":
         if (this.previousMessagesIndex > 1) {
           this.previousMessagesIndex--;
-          ChatAgentModalStore.devStatement(`Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
+          ChatStore.devStatement(`Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
           
           while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
                   && this.previousMessagesIndex >= 1) {
@@ -249,11 +249,11 @@ class ChatInput extends DDD {
         } else {
           textArea.value = "";
         }
-        ChatAgentModalStore.devStatement(`Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
+        ChatStore.devStatement(`Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
         break;
 
       default:
-        ChatAgentModalStore.devStatement(`Unknown direction: ${direction}.`, 'error');
+        ChatStore.devStatement(`Unknown direction: ${direction}.`, 'error');
     }
   }
 
@@ -265,8 +265,8 @@ class ChatInput extends DDD {
       super.firstUpdated(changedProperties);
     }
 
-    if (ChatAgentModalStore.promptCharacterLimit > 0) {
-      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", `${ChatAgentModalStore.promptCharacterLimit}`);
+    if (ChatStore.promptCharacterLimit > 0) {
+      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", `${ChatStore.promptCharacterLimit}`);
     }
   }
 
