@@ -626,7 +626,12 @@ class ChatInterface extends DDD {
   async updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
 
-    if (changedProperties.has("chatLog")) {
+    if (this.developerModeEnabled) console.table(changedProperties);
+    if (changedProperties.has("chatLog") && 
+        !changedProperties.has("darkMode") && 
+        !changedProperties.has("developerModeEnabled") && 
+        !changedProperties.has("hasEditorUI") && 
+        !changedProperties.has("isInterfaceHidden")) {
       await this.updateComplete;
       if (this.chatLog.length > 1) {
         const SCROLLABLE_ELEMENT = this.shadowRoot.querySelector(".chat-messages");
