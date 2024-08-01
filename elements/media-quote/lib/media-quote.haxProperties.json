@@ -6,6 +6,11 @@
   "canScale": true,
   "canEditSource": true,
   "contentEditable": false,
+  "designSystem": {
+    "primary": true,
+    "accent": true,
+    "font": true
+  },
   "gizmo": {
     "title": "Media quote",
     "description": "Image with a quote, citation, and optional caption",
