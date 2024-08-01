@@ -878,4 +878,4 @@ class ChatAgentStore {
   }
 }
 
-export const chatAgentStore = globalthis.ChatAgentStore.requestAvailability();
+export const ChatStore = globalthis.ChatAgentStore.requestAvailability();

@@ -2,7 +2,7 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatAgentModalStore, chatAgentStore } from "../chat-agent.js";
+import { ChatAgentModalStore, ChatStore } from "../chat-agent.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
@@ -22,10 +22,10 @@ class ChatButton extends DDD {
     this.isInterfaceHidden = null;
 
     autorun(() => {
-      this.buttonIcon = toJS(chatAgentStore.buttonIcon);
-      this.darkMode = toJS(chatAgentStore.darkMode);
-      this.isFullView = toJS(chatAgentStore.isFullView);
-      this.isInterfaceHidden = toJS(chatAgentStore.isInterfaceHidden);
+      this.buttonIcon = toJS(ChatStore.buttonIcon);
+      this.darkMode = toJS(ChatStore.darkMode);
+      this.isFullView = toJS(ChatStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
     })
   }
 
@@ -140,7 +140,7 @@ class ChatButton extends DDD {
   keyPress(e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      chatAgentStore.devStatement("Chat button pressed using Enter key.", "log");
+      ChatStore.devStatement("Chat button pressed using Enter key.", "log");
       this.handleChatButton();
     }
   }
@@ -149,7 +149,7 @@ class ChatButton extends DDD {
    * @description - handles button being clicked / pressed, will toggle the interface visibility
    */
   handleChatButton() {
-    chatAgentStore.devStatement("Chat button pressed.", "log");
+    ChatStore.devStatement("Chat button pressed.", "log");
 
     ChatAgentModalStore.isInterfaceHidden = !this.isInterfaceHidden;
   }
