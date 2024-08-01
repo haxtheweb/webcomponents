@@ -2,7 +2,7 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatAgentModalStore } from "../chat-agent.js";
+import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
@@ -22,10 +22,10 @@ class ChatButton extends DDD {
     this.isInterfaceHidden = null;
 
     autorun(() => {
-      this.buttonIcon = toJS(ChatAgentModalStore.buttonIcon);
-      this.darkMode = toJS(ChatAgentModalStore.darkMode);
-      this.isFullView = toJS(ChatAgentModalStore.isFullView);
-      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+      this.buttonIcon = toJS(ChatStore.buttonIcon);
+      this.darkMode = toJS(ChatStore.darkMode);
+      this.isFullView = toJS(ChatStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
     })
   }
 
@@ -124,10 +124,10 @@ class ChatButton extends DDD {
     return html`
       <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0" aria-label="${this.isInterfaceHidden ? 'Open Interface' : 'Close Interface'}">
         <div class="icon-wrapper">
-          <simple-icon-lite icon="${ChatAgentModalStore.buttonIcon}"></simple-icon-lite>
+          <simple-icon-lite icon="${this.buttonIcon}"></simple-icon-lite>
         </div>
         <div class="label-wrapper" unselectable="on">
-          <slot name="label">${ChatAgentModalStore.buttonLabel}</slot>
+          <slot name="label">${ChatStore.buttonLabel}</slot>
         </div>
       </div>
     `;
@@ -140,7 +140,7 @@ class ChatButton extends DDD {
   keyPress(e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      ChatAgentModalStore.devStatement("Chat button pressed using Enter key.", "log");
+      ChatStore.devStatement("Chat button pressed using Enter key.", "log");
       this.handleChatButton();
     }
   }
@@ -149,9 +149,9 @@ class ChatButton extends DDD {
    * @description - handles button being clicked / pressed, will toggle the interface visibility
    */
   handleChatButton() {
-    ChatAgentModalStore.devStatement("Chat button pressed.", "log");
+    ChatStore.devStatement("Chat button pressed.", "log");
 
-    ChatAgentModalStore.isInterfaceHidden = !this.isInterfaceHidden;
+    ChatStore.isInterfaceHidden = !this.isInterfaceHidden;
   }
 
   static get properties() {

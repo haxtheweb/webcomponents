@@ -88,7 +88,10 @@ class MediaQuote extends DDD {
           top: 10%;
           left: -15%;
           z-index: 2;
+          text-align: left;
         }
+
+        
 
         .content {
           box-decoration-break: clone;

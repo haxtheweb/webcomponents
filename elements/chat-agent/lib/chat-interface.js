@@ -2,7 +2,7 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatAgentModalStore } from "../chat-agent.js";
+import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
@@ -23,16 +23,15 @@ class ChatInterface extends DDD {
     this.hasEditorUI = null;
     
     autorun(() => {
-      this.chatLog = toJS(ChatAgentModalStore.chatLog);
-      this.darkMode = toJS(ChatAgentModalStore.darkMode);
-      this.developerModeEnabled = toJS(ChatAgentModalStore.developerModeEnabled);
-      this.isFullView = toJS(ChatAgentModalStore.isFullView);
-      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
+      this.chatLog = toJS(ChatStore.chatLog);
+      this.darkMode = toJS(ChatStore.darkMode);
+      this.developerModeEnabled = toJS(ChatStore.developerModeEnabled);
+      this.isFullView = toJS(ChatStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
       
-      // TODO will change, brute forcing for now
+      // TODO should be changed, but brute forces full view css percents for now does not change automatically, which is why this should be changed
       const tempSiteGrabber = document.querySelector("#site");
       
-      // TODO add something so this if statement is called when window size changes (event listener?)
       if (window.innerHeight > 1000) {
         this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "65%" : tempSiteGrabber.style.width = "100%";
       } else {
@@ -47,7 +46,6 @@ class ChatInterface extends DDD {
     })
   }
 
-  // TODO Implement dark mode support
   static get styles() {
     return [
       super.styles,
@@ -600,7 +598,7 @@ class ChatInterface extends DDD {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
-          ${ChatAgentModalStore.developerModeEnabled ? html`
+          ${ChatStore.developerModeEnabled ? html`
             <chat-developer-panel></chat-developer-panel>
           ` : ''}
           <div class="main-wrapper">
@@ -608,10 +606,10 @@ class ChatInterface extends DDD {
             <div class="chat-container">
               <div class="chat-messages">
                   ${this.chatLog.map((message) => html`
-                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatAgentModalStore.userName}" ?suggested-prompts="${ChatAgentModalStore.currentSuggestions.length > 0}"></chat-message>
+                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatStore.userName}" ?suggested-prompts="${ChatStore.currentSuggestions.length > 0}"></chat-message>
                   `)}
               </div>
-              <chat-input placeholder="${ChatAgentModalStore.promptPlaceholder}"></chat-input>
+              <chat-input placeholder="${ChatStore.promptPlaceholder}"></chat-input>
             </div>
           </div>
         </div>
@@ -620,10 +618,20 @@ class ChatInterface extends DDD {
   }
 
   // TODO does not work for resetting chat...
+  /**
+   * @description LitElement updated / sets scroll height to the bottom when a new message is mapped.
+   * @param {object} changedProperties - changed properties
+   * @async
+   */
   async updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
 
-    if (changedProperties.has("chatLog")) {
+    if (this.developerModeEnabled) console.table(changedProperties);
+    if (changedProperties.has("chatLog") && 
+        !changedProperties.has("darkMode") && 
+        !changedProperties.has("developerModeEnabled") && 
+        !changedProperties.has("hasEditorUI") && 
+        !changedProperties.has("isInterfaceHidden")) {
       await this.updateComplete;
       if (this.chatLog.length > 1) {
         const SCROLLABLE_ELEMENT = this.shadowRoot.querySelector(".chat-messages");

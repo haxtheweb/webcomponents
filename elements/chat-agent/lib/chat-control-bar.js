@@ -2,7 +2,7 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatAgentModalStore } from "../chat-agent.js";
+import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
@@ -15,15 +15,15 @@ class ChatControlBar extends DDD {
 
   constructor() {
     super();
+
+    this.dataCollectionEnabled = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
 
-    this.dataCollectionEnabled = null;
-
     autorun(() => {
-      this.isFullView = toJS(ChatAgentModalStore.isFullView);
-      this.isInterfaceHidden = toJS(ChatAgentModalStore.isInterfaceHidden);
-      this.dataCollectionEnabled = toJS(ChatAgentModalStore.dataCollectionEnabled);
+      this.dataCollectionEnabled = toJS(ChatStore.dataCollectionEnabled);
+      this.isFullView = toJS(ChatStore.isFullView);
+      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
     })
   }
 
@@ -142,7 +142,7 @@ class ChatControlBar extends DDD {
    * @description handles the functionality of the download button
    */
   handleDownloadLogButton() {
-    ChatAgentModalStore.devStatement("Download log button pressed.", "log");
+    ChatStore.devStatement("Download log button pressed.", "log");
 
     this.downloadChatLog();
   }
@@ -151,14 +151,14 @@ class ChatControlBar extends DDD {
    * @description handles the functionality of the reset button
    */
   handleResetButton() {
-    ChatAgentModalStore.devStatement("Reset button pressed.", "log");
+    ChatStore.devStatement("Reset button pressed.", "log");
 
     if (confirm('Reset the chat?')) {
       if (confirm('Download the chat log before you reset?')) {
-        ChatAgentModalStore.devStatement("Download chat log before reset confirmed.", "info")
+        ChatStore.devStatement("Download chat log before reset confirmed.", "info")
         this.downloadChatLog();
       } else {
-        ChatAgentModalStore.devStatement("Download chat log before reset denied.", "warning");
+        ChatStore.devStatement("Download chat log before reset denied.", "warning");
       }
       this.resetChat();
     }
@@ -168,7 +168,7 @@ class ChatControlBar extends DDD {
    * @description - handles the functionality of the data collection button
    */
   handleDataCollectionButton() {
-    ChatAgentModalStore.dataCollectionEnabled = !ChatAgentModalStore.dataCollectionEnabled;
+    ChatStore.dataCollectionEnabled = !ChatStore.dataCollectionEnabled;
 
     this.dataCollectionEnabled ? alert('Your conversations will be used to train our AI models') : alert('Your conversations will not be used to train our AI models');
   }
@@ -177,30 +177,30 @@ class ChatControlBar extends DDD {
    * @description - handles the functionality of the dev mode button
    */
   handleDevModeButton() {
-    ChatAgentModalStore.developerModeEnabled = !ChatAgentModalStore.developerModeEnabled;
+    ChatStore.developerModeEnabled = !ChatStore.developerModeEnabled;
   }
 
   /**
    * @description Toggles the view of chat-interface to full or minimized
    */
   handleViewButton() {    
-    ChatAgentModalStore.devStatement("View switch button pressed.", "log");
+    ChatStore.devStatement("View switch button pressed.", "log");
 
-    ChatAgentModalStore.isFullView = !this.isFullView;
+    ChatStore.isFullView = !this.isFullView;
 
     this.requestUpdate(); // changes button icon
 
-    ChatAgentModalStore.devStatement("View switched to: " + (ChatAgentModalStore.isFullView ? 'full' : 'standard'), "info");
+    ChatStore.devStatement("View switched to: " + (ChatStore.isFullView ? 'full' : 'standard'), "info");
   }
 
   /**
    * @description changes the interface window to be hidden off screen and unfocusable
    */
   handleHideButton() {
-    ChatAgentModalStore.devStatement("Hide button pressed.", "log");
+    ChatStore.devStatement("Hide button pressed.", "log");
 
     if (!this.isInterfaceHidden) {
-      ChatAgentModalStore.isInterfaceHidden = true;
+      ChatStore.isInterfaceHidden = true;
     }
   }
 
@@ -208,23 +208,23 @@ class ChatControlBar extends DDD {
    * @description downloads the chat log as a .txt file
    */
   downloadChatLog() {
-    ChatAgentModalStore.devStatement("Calling download function...", "info");
+    ChatStore.devStatement("Calling download function...", "info");
 
-    ChatAgentModalStore.handleDownload('txt');
+    ChatStore.handleDownload('txt');
   }
 
   /**
    * @description resets the chat to initial state
    */
   resetChat() {
-    ChatAgentModalStore.devStatement("Resetting chat...", "info");
+    ChatStore.devStatement("Resetting chat...", "info");
 
-    ChatAgentModalStore.chatLog = [];
-    ChatAgentModalStore.merlinIndex = 0;
-    ChatAgentModalStore.messageIndex = 0;
-    ChatAgentModalStore.userIndex = 0;
+    ChatStore.chatLog = [];
+    ChatStore.merlinIndex = 0;
+    ChatStore.messageIndex = 0;
+    ChatStore.userIndex = 0;
 
-    ChatAgentModalStore.startAI();
+    ChatStore.startAI();
   }
 
   static get properties() {

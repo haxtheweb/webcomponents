@@ -6,20 +6,70 @@
   "canScale": true,
   "canEditSource": true,
   "contentEditable": false,
+  "designSystem": {
+    "primary": true,
+    "accent": true,
+    "font": true
+  },
   "gizmo": {
-    "title": "media quote",
-    "description": "",
-    "icon": "icons:android",
+    "title": "Media quote",
+    "description": "Image with a quote, citation, and optional caption",
+    "icon": "editor:format-quote",
     "color": "purple",
-    "tags": ["Other"],
+    "tags": ["Images", "media", "quote"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
     }
   },
   "settings": {
-    "configure": [],
-    "advanced": [],
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Quote",
+        "description": "The quote",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "author",
+        "title": "Author",
+        "description": "The author of the quote",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "author-detail",
+        "title": "Author details",
+        "description": "The details about the author of the quote",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "caption",
+        "title": "Caption",
+        "description": "The caption for the image",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "src",
+        "title": "Image Source",
+        "description": "Image file used for media quote.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true
+      },
+      {
+        "property": "alt",
+        "title": "Alt Text",
+        "description": "Alternative text for the image.",
+        "inputMethod": "alt"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Changes the accent color of the card",
+        "inputMethod": "colorpicker"
+      }
+    ],
     "developer": []
   },
   "saveOptions": {
@@ -32,8 +82,11 @@
   "demoSchema": [
     {
       "tag": "media-quote",
-      "content": "",
-      "properties": {}
+      "content": "<span slot='quote'>A cute cat stalking a toy</span> <span slot='author'>John Doe</span> <span slot='author-detail'>Professional Cat Photographer</span> <span slot='caption'>This cat is stalking a Totoro toy. How cute!</span>",
+      "properties": {
+        "src": "https://cdn2.thecatapi.com/images/9j5.jpg",
+        "alt": "A cat stalking a small toy"
+      }
     }
   ]
 }
