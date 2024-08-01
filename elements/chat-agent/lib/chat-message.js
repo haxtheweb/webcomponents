@@ -185,7 +185,6 @@ class ChatMessage extends DDD {
   }
 
   firstUpdated() {
-
     this.pickHat();
   }
 
@@ -194,7 +193,7 @@ class ChatMessage extends DDD {
 
     if (ChatStore.month === 2 && ChatStore.day === 12) {
       hat = "party";
-    } else if (ChatStore.month === 6 && ChatStore.day === 6) { // Closest I could get for a consistent "cowboy" day. If you get the reference then that's awesome
+    } else if (ChatStore.month === 6 && ChatStore.day === 6) { // Closest I could get for a consistent "cowboy" day. If you get the pop-culture reference then that's awesome
       hat = "cowboy";
     } else if (ChatStore.month === 7 && ChatStore.day === 27) { // Birthday of a famous cartoon "wabbit"
       hat = "bunny";
