@@ -10,25 +10,16 @@ import "./lib/chat-interface.js";
 import "./lib/chat-message.js";
 import "./lib/chat-suggestion.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
-import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { html, css } from "lit";
-import { HAXCMSSiteEditorUI } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import {
-  observable,
-  makeObservable,
-  computed,
-  configure,
-  autorun,
-  toJS,
-} from "mobx";
-configure({ enforceActions: false });
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { ChatStore } from "./lib/chat-agent-store.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { configure, autorun, toJS, } from "mobx";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { html, css } from "lit";
+configure({ enforceActions: false });
 // enable services for glossary enhancement
 enableServices(["haxcms"]);
 MicroFrontendRegistry.add({
