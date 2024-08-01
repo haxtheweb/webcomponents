@@ -414,6 +414,11 @@ class ChatAgentStore {
     }
   }
 
+  /**
+   * @description handles the functionality of the dev mode console writing
+   * @param {string} statement - the statement to write
+   * @param {string} type - the type of statement (log, info, warn, error)
+   */
   devStatement(statement, type) {
     if (this.developerModeEnabled) {
       switch (type) {
