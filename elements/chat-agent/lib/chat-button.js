@@ -124,7 +124,7 @@ class ChatButton extends DDD {
     return html`
       <div class="chat-button-wrapper" @click=${this.handleChatButton} @keypress=${this.keyPress} tabindex="0" aria-label="${this.isInterfaceHidden ? 'Open Interface' : 'Close Interface'}">
         <div class="icon-wrapper">
-          <simple-icon-lite icon="${ChatStore.buttonIcon}"></simple-icon-lite>
+          <simple-icon-lite icon="${this.buttonIcon}"></simple-icon-lite>
         </div>
         <div class="label-wrapper" unselectable="on">
           <slot name="label">${ChatStore.buttonLabel}</slot>

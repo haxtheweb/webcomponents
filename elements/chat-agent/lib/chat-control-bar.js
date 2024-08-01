@@ -15,15 +15,15 @@ class ChatControlBar extends DDD {
 
   constructor() {
     super();
+
+    this.dataCollectionEnabled = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
 
-    this.dataCollectionEnabled = null;
-
     autorun(() => {
+      this.dataCollectionEnabled = toJS(ChatStore.dataCollectionEnabled);
       this.isFullView = toJS(ChatStore.isFullView);
       this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
-      this.dataCollectionEnabled = toJS(ChatStore.dataCollectionEnabled);
     })
   }
 

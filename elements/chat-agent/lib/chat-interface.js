@@ -29,10 +29,9 @@ class ChatInterface extends DDD {
       this.isFullView = toJS(ChatStore.isFullView);
       this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
       
-      // TODO will change, brute forcing for now
+      // TODO should be changed, but brute forces full view css percents for now does not change automatically, which is why this should be changed
       const tempSiteGrabber = document.querySelector("#site");
       
-      // TODO add something so this if statement is called when window size changes (event listener?)
       if (window.innerHeight > 1000) {
         this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "65%" : tempSiteGrabber.style.width = "100%";
       } else {
