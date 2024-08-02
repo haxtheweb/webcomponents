@@ -621,24 +621,31 @@ class ChatInterface extends DDD {
   /**
    * @description LitElement updated / sets scroll height to the bottom when a new message is mapped.
    * @param {object} changedProperties - changed properties
-   * @async
    */
-  async updated(changedProperties) {
+  updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
 
-    if (this.developerModeEnabled) console.table(changedProperties);
     if (changedProperties.has("chatLog") && 
         !changedProperties.has("darkMode") && 
         !changedProperties.has("developerModeEnabled") && 
         !changedProperties.has("hasEditorUI") && 
         !changedProperties.has("isInterfaceHidden")) {
-      await this.updateComplete;
-      if (this.chatLog.length > 1) {
-        const SCROLLABLE_ELEMENT = this.shadowRoot.querySelector(".chat-messages");
-        SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
-      } else {
-        SCROLLABLE_ELEMENT.scrollTop(0);
-      }
+      this.scrollControl();
+    }
+  }
+
+  /**
+   * @description scrolls to the bottom of the chat, except when reset which should be at the top
+   * @async
+   */
+  async scrollControl() {
+    await this.updateComplete;
+    const SCROLLABLE_ELEMENT = this.shadowRoot.querySelector(".chat-messages");
+
+    if (this.chatLog.length > 1) {
+      SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
+    } else {
+      SCROLLABLE_ELEMENT.scrollTo(0, 0);
     }
   }
 
