@@ -122,79 +122,82 @@ class ChatAgentStore {
         this.editMode = false;
       }
     });
-  
   }
 
  /**
    * @description starts Merlin
    */
- startAI() {
-  this.handleMessage(
-    "merlin",
-    "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
-  );
-  
+  startAI() {
+    this.handleMessage(
+      "merlin",
+      "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
+    );
+    
 
-  if (
-    this.month === 2 && this.day === 12 || 
-    this.month === 6 && this.day === 6 ||
-    this.month === 7 && this.day === 27 ||
-    this.month === 8 && this.day === 15 ||
-    this.month === 9 && this.day === 19 ||
-    this.month === 10 && this.day === 1 ||
-    this.month === 10 && this.day === 5 ||
-    this.month === 12 && this.day === 5 ||
-    this.month === 12 && this.day === 18
-  ) {
-    this.currentSuggestions = [
-      {
-        suggestion: "Who are you?",
-        type: "hax",
-      },
-      {
-        suggestion: "What can you do for me?",
-        type: "help",
-      },
-      {
-        suggestion: "How do I use you?",
-        type: "help",
-      },
-      {
-        suggestion: "Why is my character wearing a hat?",
-        type: "hax",
-      }
-    ];
-  } else {
-    this.currentSuggestions = [
-      {
-        suggestion: "Who are you?",
-        type: "hax",
-      },
-      {
-        suggestion: "What can you do for me?",
-        type: "help",
-      },
-      {
-        suggestion: "How do I use you?",
-        type: "help",
-      },
-    ];
-  }
+    if (
+      this.month === 2 && this.day === 12 || 
+      this.month === 6 && this.day === 6 ||
+      this.month === 7 && this.day === 27 ||
+      this.month === 8 && this.day === 15 ||
+      this.month === 9 && this.day === 19 ||
+      this.month === 10 && this.day === 1 ||
+      this.month === 10 && this.day === 5 ||
+      this.month === 12 && this.day === 5 ||
+      this.month === 12 && this.day === 18
+    ) {
+      this.currentSuggestions = [
+        {
+          suggestion: "Who are you?",
+          type: "hax",
+        },
+        {
+          suggestion: "What can you do for me?",
+          type: "help",
+        },
+        {
+          suggestion: "How do I use you?",
+          type: "help",
+        },
+        {
+          suggestion: "Why is my character wearing a hat?",
+          type: "hax",
+        }
+      ];
+    } else {
+      this.currentSuggestions = [
+        {
+          suggestion: "Who are you?",
+          type: "hax",
+        },
+        {
+          suggestion: "What can you do for me?",
+          type: "help",
+        },
+        {
+          suggestion: "How do I use you?",
+          type: "help",
+        },
+      ];
+    }
 
-  document.
-    querySelector("chat-agent")
-    .shadowRoot.querySelector("chat-interface")
-    .shadowRoot.querySelector("chat-message")
-    .shadowRoot.querySelectorAll("chat-suggestion")
-    .forEach((suggestion) => {
-      if (suggestion.hasAttribute("disabled")) {
-        suggestion.removeAttribute("disabled");
-      }
-
-      if (suggestion.hasAttribute("chosen-prompt")) {
-        suggestion.removeAttribute("chosen-prompt");
-      }
-    });
+    try {
+      document.
+        querySelector("chat-agent")
+        .shadowRoot.querySelector("chat-interface")
+        .shadowRoot.querySelector("chat-message")
+        .shadowRoot.querySelectorAll("chat-suggestion")
+        .forEach((suggestion) => {
+          if (suggestion.hasAttribute("disabled")) {
+            suggestion.removeAttribute("disabled");
+          }
+    
+          if (suggestion.hasAttribute("chosen-prompt")) {
+            suggestion.removeAttribute("chosen-prompt");
+          }
+        });
+    } catch (error) {
+      this.devStatement(error, "error");
+    }
   }
 
   /**

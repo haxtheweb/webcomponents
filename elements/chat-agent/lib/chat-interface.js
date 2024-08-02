@@ -30,12 +30,16 @@ class ChatInterface extends DDD {
       this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
       
       // TODO should be changed, but brute forces full view css percents for now does not change automatically, which is why this should be changed
-      const tempSiteGrabber = document.querySelector("#site");
-      
-      if (window.innerHeight > 1000) {
-        this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "65%" : tempSiteGrabber.style.width = "100%";
-      } else {
-        this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
+      try {
+        const tempSiteGrabber = document.querySelector("#site");
+        
+        if (window.innerHeight > 1000) {
+          this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "65%" : tempSiteGrabber.style.width = "100%";
+        } else {
+          this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
+        }
+      } catch (error) {
+        ChatStore.devStatement(error, "error");
       }
       
       if (document.querySelector('haxcms-site-editor-ui')) {
@@ -617,7 +621,6 @@ class ChatInterface extends DDD {
     `;
   }
 
-  // TODO does not work for resetting chat...
   /**
    * @description LitElement updated / sets scroll height to the bottom when a new message is mapped.
    * @param {object} changedProperties - changed properties
