@@ -133,7 +133,6 @@ class ChatAgentStore {
       "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
     );
     
-
     if (
       this.month === 2 && this.day === 12 || 
       this.month === 6 && this.day === 6 ||

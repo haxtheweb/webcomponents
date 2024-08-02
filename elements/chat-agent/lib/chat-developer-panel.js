@@ -243,15 +243,15 @@ class ChatDeveloperPanel extends DDD {
   compileChatLog(author) {
     ChatStore.devStatement(`Compiling "${author}" chat log...`, 'info');
     
-    let newChatLog = [];
+    let compiledChatLog = [];
 
     this.chatLog.forEach(object => {
       if (object.author === author) {
-        newChatLog.push(object);
+        compiledChatLog.push(object);
       }
     });
 
-    return newChatLog;
+    return compiledChatLog;
   }
 
   /**
