@@ -60,8 +60,12 @@ class ChatButton extends DDD {
           box-shadow: 0 6px rgba(0, 3, 33, 0.4);
           transform: translateY(-2px);
         }
+        
+        .chat-button-wrapper.active-mimic {
+          box-shadow: 0 1px rgba(0, 3, 33, 0.4);
+          transform: translateY(3px);
+        }
 
-        /* TODO Figure out how to get this to work with enter key */
         .chat-button-wrapper:active {
           box-shadow: 0 1px rgba(0, 3, 33, 0.4);
           transform: translateY(3px);
@@ -141,6 +145,20 @@ class ChatButton extends DDD {
     if (e.key === "Enter") {
       e.preventDefault();
       ChatStore.devStatement("Chat button pressed using Enter key.", "log");
+      
+      // mimic :active since it only works on click
+      const CHAT_BUTTON_WRAPPER = this.shadowRoot.querySelector(".chat-button-wrapper");
+
+      if (CHAT_BUTTON_WRAPPER.classList.contains("active-mimic")) {
+        CHAT_BUTTON_WRAPPER.classList.remove("active-mimic");
+      } else {
+        CHAT_BUTTON_WRAPPER.classList.add("active-mimic");
+      }
+
+      setTimeout(() => {
+        CHAT_BUTTON_WRAPPER.classList.remove("active-mimic");
+      }, 100);
+
       this.handleChatButton();
     }
   }

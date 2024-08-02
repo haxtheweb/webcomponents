@@ -148,7 +148,7 @@ class ChatAgent extends DDD {
   }
 
   /**
-   * @descrition LitElement ready / starts AI
+   * @descrition LitElement ready / calls to start AI
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -191,7 +191,6 @@ globalThis.ChatAgentStore.requestAvailability = () => {
   }
   return globalThis.ChatAgentStore.instance;
 };
-
 
 // ! Chat Agent Store
 export const ChatAgentModalStore =

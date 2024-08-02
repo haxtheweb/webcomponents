@@ -1,15 +1,19 @@
+/**
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import {
-  observable,
-  makeObservable,
+  autorun,
   computed,
   configure,
-  autorun,
+  makeObservable,
+  observable,
   toJS,
 } from "mobx";
 configure({ enforceActions: false });
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 // enable services for glossary enhancement
 enableServices(["haxcms"]);
 MicroFrontendRegistry.add({
@@ -27,6 +31,9 @@ MicroFrontendRegistry.add({
 }); // strict mode off
 
 
+/** 
+ * @description store for the chat agent and it's subcomponents
+ */
 class ChatAgentStore {
 
   constructor() {
@@ -96,7 +103,7 @@ class ChatAgentStore {
       const messageIndex = toJS(this.messageIndex);
       const userIndex = toJS(this.userIndex);
       
-      // these are here because they weren't working without them
+      // these are here because these updates weren't working without them
       if (isLoading) {
         this.buttonIcon = "hax:loading";
       } else {
@@ -119,7 +126,7 @@ class ChatAgentStore {
   }
 
  /**
-   * @description start sequence for Merlin
+   * @description starts Merlin
    */
  startAI() {
   this.handleMessage(
@@ -192,8 +199,8 @@ class ChatAgentStore {
 
   /**
    * @description writes message to chatLog
-   * @param {string} author - the author of the message
-   * @param {string} message - the written or suggested prompt
+   * @param {string} author - the author of the message (merlin or user's name / guest)
+   * @param {string} message - the written or suggested prompt or response from Merlin
    */
   handleMessage(author, message) {
     this.devStatement(`Writing message "${message}" by ${author} to chatLog.`, `info`);
