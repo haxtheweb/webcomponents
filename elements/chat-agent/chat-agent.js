@@ -178,7 +178,6 @@ class ChatAgent extends DDD {
 customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };
 
-// TODO causing inefficiency, abstract to it's own class
 // register globally so we can make sure there is only one
 globalThis.ChatAgentStore = globalThis.ChatAgentStore || {};
 // request if this exists. This helps invoke the element existing in the dom
