@@ -93,7 +93,7 @@ class A11yCollapseGroup extends LitElement {
        */
       radio: {
         type: Boolean,
-        attribute: "radio",
+        reflect: true,
       },
       /**
        * is radio button

@@ -242,7 +242,6 @@ class A11yCollapse extends DDD {
       disabled: {
         type: Boolean,
         reflect: true,
-        attribute: "disabled",
       },
       /**
        * hidden
@@ -250,7 +249,6 @@ class A11yCollapse extends DDD {
       hidden: {
         type: Boolean,
         reflect: true,
-        attribute: "hidden",
       },
       /**
        * icon when expanded
@@ -310,7 +308,6 @@ class A11yCollapse extends DDD {
       accordion: {
         type: Boolean,
         reflect: true,
-        attribute: "accordion",
       },
     };
   }
@@ -362,6 +359,7 @@ class A11yCollapse extends DDD {
      *
      * @event a11y-collapse-detached
      */
+
     this.dispatchEvent(
       new CustomEvent("a11y-collapse-detached", {
         bubbles: true,

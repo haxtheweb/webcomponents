@@ -360,8 +360,13 @@ export const HaxElementizer = {
         collapse: {
           defaultSettings: {
             import: "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js",
-            element: "div",
+            element: "div", // @todo make this a11y-collapse-group when we get state management right on cascading props
             noWrap: true,
+            attributes: {
+              radio: true,
+              "heading-button": true,
+              accordion: true,
+            },
             child: {
               import: "@haxtheweb/a11y-collapse/a11y-collapse.js",
               element: "a11y-collapse",
