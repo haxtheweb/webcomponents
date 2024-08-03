@@ -359,6 +359,7 @@ class A11yCollapse extends DDD {
      *
      * @event a11y-collapse-detached
      */
+
     this.dispatchEvent(
       new CustomEvent("a11y-collapse-detached", {
         bubbles: true,

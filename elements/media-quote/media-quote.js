@@ -91,8 +91,6 @@ class MediaQuote extends DDD {
           text-align: left;
         }
 
-        
-
         .content {
           box-decoration-break: clone;
         }
@@ -163,7 +161,10 @@ class MediaQuote extends DDD {
           padding: var(--ddd-spacing-4);
           font-size: var(--ddd-font-size-4xs);
           color: light-dark(black, white);
-          background-color: light-dark(white, var(--ddd-theme-default-coalyGray));
+          background-color: light-dark(
+            white,
+            var(--ddd-theme-default-coalyGray)
+          );
         }
 
         summary {
@@ -225,7 +226,7 @@ class MediaQuote extends DDD {
           .citation {
             padding: var(--ddd-spacing-2) 0;
           }
-          
+
           .citation {
             width: 100%;
             margin-top: 0;

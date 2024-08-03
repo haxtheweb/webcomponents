@@ -137,7 +137,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // they only modified page title / other page-break based details
       this.activeItemContent = "";
       setTimeout(() => {
-        this.activeItemContent = data;        
+        this.activeItemContent = data;
       }, 0);
     }
     // punt, we didn't find anything
@@ -808,12 +808,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         ${store.activeItem.metadata.tags ? `tags="${store.activeItem.metadata.tags}"` : ``}
         ${store.activeItem.metadata.hideInMenu ? `hide-in-menu="hide-in-menu"` : ``}
         ${store.activeItem.metadata.relatedItems ? `related-items="${store.activeItem.metadata.relatedItems}"` : ``}
-        ${store.activeItem.metadata.image ? `image="${store.activeItem.metadata.image}"` : `` }
+        ${store.activeItem.metadata.image ? `image="${store.activeItem.metadata.image}"` : ``}
         ${store.activeItem.metadata.icon ? `icon="${store.activeItem.metadata.icon}"` : ``}
         ${store.activeItem.metadata.accentColor ? `accent-color="${store.activeItem.metadata.accentColor}"` : ``}
-        ${store.activeItem.metadata.theme && store.activeItem.metadata.theme.key ? `developer-theme="${store.activeItem.metadata.theme.key}"`: ``}
+        ${store.activeItem.metadata.theme && store.activeItem.metadata.theme.key ? `developer-theme="${store.activeItem.metadata.theme.key}"` : ``}
         ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
-        ${store.activeItem.metadata.published === false ? "" : 'published="published"' } ></page-break>${newValue}`;
+        ${store.activeItem.metadata.published === false ? "" : 'published="published"'} ></page-break>${newValue}`;
         html = encapScript(newValue);
         // set in the store
         store.activeItemContent = html;

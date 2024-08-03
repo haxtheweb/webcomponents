@@ -249,7 +249,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .item:focus {
           background-color: #f5f5f5;
         }
-        .item:hover .label, 
+        .item:hover .label,
         .item:focus .label {
           color: black;
         }

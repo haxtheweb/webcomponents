@@ -28,8 +28,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
  * @demo demo/index.html
  * @element haxor-slevin
  */
-class HaxorSlevin extends (
-  HAXCMSThemeParts(SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)))
+class HaxorSlevin extends HAXCMSThemeParts(
+  SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)),
 ) {
   static get styles() {
     return [
@@ -88,10 +88,10 @@ class HaxorSlevin extends (
           padding-right: 20px;
           margin: 0 auto;
         }
-        :host([selected-page="1"]) #home{
+        :host([selected-page="1"]) #home {
           display: none;
         }
-        :host([selected-page="0"]) .contentcontainer-wrapper{
+        :host([selected-page="0"]) .contentcontainer-wrapper {
           display: none;
         }
         .contentcontainer-wrapper {
@@ -480,8 +480,8 @@ class HaxorSlevin extends (
                 class="hide-small"
               ></simple-icon-lite>
               <span class="hide-small">
-                Never miss a story from <strong>${this.title}</strong> use
-                RSS today!
+                Never miss a story from <strong>${this.title}</strong> use RSS
+                today!
               </span>
               <span class="rss">
                 <site-rss-button type="atom"></site-rss-button>

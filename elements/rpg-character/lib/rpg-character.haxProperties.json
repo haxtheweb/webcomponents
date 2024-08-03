@@ -7,12 +7,7 @@
     "description": "Fun character from HAX",
     "icon": "hax:hax2022",
     "color": "red",
-    "tags": [
-      "Other",
-      "fun",
-      "8bit",
-      "game"
-    ],
+    "tags": ["Other", "fun", "8bit", "game"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

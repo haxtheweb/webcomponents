@@ -50,7 +50,11 @@ if (globalThis && globalThis.addEventListener) {
           }
           // everything that allows for advanced should be able to apply spacing
           // this stuff floats to the top of those options
-          if (!props.hideDefaultSettings && !inline && props.designSystem !== false) {
+          if (
+            !props.hideDefaultSettings &&
+            !inline &&
+            props.designSystem !== false
+          ) {
             if (["media-image", "img"].includes(tag)) {
               spacingProps.push({
                 attribute: "data-float-position",
