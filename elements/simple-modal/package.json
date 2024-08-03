@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.3",
+  "version": "9.0.5",
   "description": "A simple modal that ensures accessibility and stack order context appropriately",
   "repository": {
     "type": "git",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.2",
-    "@haxtheweb/simple-fields": "^9.0.3",
+    "@haxtheweb/simple-fields": "^9.0.5",
     "@haxtheweb/storybook-utilities": "^9.0.3",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

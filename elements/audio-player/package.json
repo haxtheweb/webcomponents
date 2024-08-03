@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.3",
+  "version": "9.0.5",
   "description": "simple audio web component to match video",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/video-player": "^9.0.3",
+    "@haxtheweb/video-player": "^9.0.5",
     "lit": "^3.1.4"
   },
   "devDependencies": {

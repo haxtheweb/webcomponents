@@ -18,7 +18,7 @@
       "...RichTextStyles"
     ]
   },
-  "version": "9.0.3",
+  "version": "9.0.5",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -46,10 +46,10 @@
     "@haxtheweb/absolute-position-behavior": "^9.0.3",
     "@haxtheweb/code-editor": "^9.0.3",
     "@haxtheweb/md-extra-icons": "^9.0.1",
-    "@haxtheweb/simple-fields": "^9.0.3",
+    "@haxtheweb/simple-fields": "^9.0.5",
     "@haxtheweb/simple-icon": "^9.0.3",
-    "@haxtheweb/simple-icon-picker": "^9.0.3",
-    "@haxtheweb/simple-picker": "^9.0.3",
+    "@haxtheweb/simple-icon-picker": "^9.0.5",
+    "@haxtheweb/simple-picker": "^9.0.5",
     "@haxtheweb/simple-popover": "^9.0.3",
     "@haxtheweb/simple-toolbar": "^9.0.3",
     "@haxtheweb/utils": "^9.0.2",
