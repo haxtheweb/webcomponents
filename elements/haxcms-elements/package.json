@@ -43,6 +43,7 @@
   "dependencies": {
     "@github/time-elements": "3.1.4",
     "@haxtheweb/anchor-behaviors": "^9.0.3",
+    "@haxtheweb/lrndesign-sidenote": "^9.0.1",
     "@haxtheweb/app-hax": "^9.0.5",
     "@haxtheweb/beaker-broker": "^9.0.3",
     "@haxtheweb/citation-element": "^9.0.3",

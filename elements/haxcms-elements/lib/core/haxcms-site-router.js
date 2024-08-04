@@ -158,6 +158,8 @@ class HAXCMSSiteRouter extends HTMLElement {
         null,
         e.detail.location.search.replace("?p=/", "").split("&")[0],
       );
+      e.detail.location.search = e.detail.location.search.replace("?p=/", "").split("&")[0];
+      store.location = e.detail.location;
     } else {
       store.location = e.detail.location;
     }

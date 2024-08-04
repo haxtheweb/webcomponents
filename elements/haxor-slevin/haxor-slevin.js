@@ -649,6 +649,11 @@ class HaxorSlevin extends HAXCMSThemeParts(
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js"
     );
+    // haxor is a bit odd bc it has this anti-pattern currently
+    setTimeout(() => {
+      let location = toJS(store.location);
+      this._noticeLocationChange(location);
+    }, 1000);
   }
   updated(changedProperties) {
     if (super.updated) {
