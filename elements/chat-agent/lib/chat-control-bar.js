@@ -235,6 +235,16 @@ class ChatControlBar extends DDD {
         attribute: 'data-collection-enabled',
         reflect: true,
       },
+      isFullView: {
+        type: Boolean,
+        attribute: 'is-full-view',
+        reflect: true,
+      },
+      isInterfaceHidden: {
+        type: Boolean,
+        attribute: 'is-interface-hidden',
+        reflect: true,
+      },
     };
   }
 

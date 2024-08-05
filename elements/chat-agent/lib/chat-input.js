@@ -300,6 +300,10 @@ class ChatInput extends DDD {
         attribute: "dark-mode",
         reflect: true
       },
+      userName: {
+        type: String,
+        attribute: "username",
+      }
     };
   }
 

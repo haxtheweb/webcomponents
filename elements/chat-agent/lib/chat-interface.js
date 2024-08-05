@@ -16,7 +16,7 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     this.chatLog = [];
-    this.darkMode = false;
+    this.darkMode = null;
     this.developerModeEnabled = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
@@ -668,11 +668,6 @@ class ChatInterface extends DDD {
         attribute: "developer-mode",
         reflect: true,
       },
-      hasEditorUI: {
-        type: Boolean,
-        attribute: "has-editor-ui",
-        reflect: true,
-      },
       isFullView: {
         type: Boolean,
         attribute: "is-full-view",
@@ -681,6 +676,11 @@ class ChatInterface extends DDD {
       isInterfaceHidden: {
         type: Boolean,
         attribute: "is-interface-hidden",
+        reflect: true,
+      },
+      hasEditorUI: {
+        type: Boolean,
+        attribute: "has-editor-ui",
         reflect: true,
       },
     };

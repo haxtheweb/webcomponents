@@ -19,14 +19,12 @@ class ChatMessage extends DDD {
 
     this.darkMode = null;
     this.editMode = null;
-
     this.hasSuggestedPrompts = false; // may be removed by by checking the length of this.suggestedPrompts
+    this.hat = "none";
     this.isSentPrompt = false;
     this.message = "";
     this.messageWasSuggestedPrompt = false; 
     this.suggestedPrompts = ChatStore.currentSuggestions; // needs to remain this way that way it doesn't update.
-
-    this.hat = "none";
 
     autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
@@ -255,9 +253,18 @@ class ChatMessage extends DDD {
         attribute: "dark-mode",
         reflect: true,
       },
+      editMode: {
+        type: Boolean,
+        attribute: "edit-mode",
+        reflect: true,
+      },
       hasSuggestedPrompts: {
         type: Boolean,
         attribute: "suggested-prompts",
+      },
+      hat: {
+        type: String,
+        attribute: "hat",
       },
       isSentPrompt: {
         type: Boolean,
@@ -265,6 +272,7 @@ class ChatMessage extends DDD {
       },
       message: {
         type: String,
+        attribute: "message",
       },
       messageWasSuggestedPrompt: {
         type: Boolean,

@@ -282,7 +282,14 @@ class ChatDeveloperPanel extends DDD {
   static get properties() {
     return {
       ...super.properties,
-
+      context: {
+        type: String,
+        attribute: "context",
+      },
+      engine: {
+        type: String,
+        attribute: "engine",
+      },
       isFullView: {
         type: Boolean,
         attribute: "is-full-view",
