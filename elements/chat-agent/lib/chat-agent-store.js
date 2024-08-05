@@ -1,15 +1,19 @@
+/**
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import {
-  observable,
-  makeObservable,
+  autorun,
   computed,
   configure,
-  autorun,
+  makeObservable,
+  observable,
   toJS,
 } from "mobx";
 configure({ enforceActions: false });
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 // enable services for glossary enhancement
 enableServices(["haxcms"]);
 MicroFrontendRegistry.add({
@@ -26,7 +30,12 @@ MicroFrontendRegistry.add({
   },
 }); // strict mode off
 
+
+/** 
+ * @description store for the chat agent and it's subcomponents
+ */
 class ChatAgentStore {
+
   constructor() {
     this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
@@ -44,7 +53,7 @@ class ChatAgentStore {
       : (this.editMode = false);
     this.engine = "alfred";
     this.isFullView = false;
-    this.isInterfaceHidden = true;
+    this.isInterfaceHidden = true; 
     this.isLoading = null;
     this.merlinIndex = 0;
     this.merlinTypeWriterSpeed = 2;
@@ -77,7 +86,7 @@ class ChatAgentStore {
       messageIndex: observable,
       userIndex: observable,
     });
-
+  
     autorun(() => {
       const buttonIcon = toJS(this.buttonIcon);
       const chatLog = toJS(this.chatLog);
@@ -93,8 +102,8 @@ class ChatAgentStore {
       const merlinIndex = toJS(this.merlinIndex);
       const messageIndex = toJS(this.messageIndex);
       const userIndex = toJS(this.userIndex);
-
-      // these are here because they weren't working without them
+      
+      // these are here because these updates weren't working without them
       if (isLoading) {
         this.buttonIcon = "hax:loading";
       } else {
@@ -115,25 +124,25 @@ class ChatAgentStore {
     });
   }
 
-  /**
-   * @description start sequence for Merlin
+ /**
+   * @description starts Merlin
    */
   startAI() {
     this.handleMessage(
       "merlin",
       "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
     );
-
+    
     if (
-      (this.month === 2 && this.day === 12) ||
-      (this.month === 6 && this.day === 6) ||
-      (this.month === 7 && this.day === 27) ||
-      (this.month === 8 && this.day === 15) ||
-      (this.month === 9 && this.day === 19) ||
-      (this.month === 10 && this.day === 1) ||
-      (this.month === 10 && this.day === 5) ||
-      (this.month === 12 && this.day === 5) ||
-      (this.month === 12 && this.day === 18)
+      this.month === 2 && this.day === 12 || 
+      this.month === 6 && this.day === 6 ||
+      this.month === 7 && this.day === 27 ||
+      this.month === 8 && this.day === 15 ||
+      this.month === 9 && this.day === 19 ||
+      this.month === 10 && this.day === 1 ||
+      this.month === 10 && this.day === 5 ||
+      this.month === 12 && this.day === 5 ||
+      this.month === 12 && this.day === 18
     ) {
       this.currentSuggestions = [
         {
@@ -151,7 +160,7 @@ class ChatAgentStore {
         {
           suggestion: "Why is my character wearing a hat?",
           type: "hax",
-        },
+        }
       ];
     } else {
       this.currentSuggestions = [
@@ -170,32 +179,33 @@ class ChatAgentStore {
       ];
     }
 
-    document
-      .querySelector("chat-agent")
-      .shadowRoot.querySelector("chat-interface")
-      .shadowRoot.querySelector("chat-message")
-      .shadowRoot.querySelectorAll("chat-suggestion")
-      .forEach((suggestion) => {
-        if (suggestion.hasAttribute("disabled")) {
-          suggestion.removeAttribute("disabled");
-        }
-
-        if (suggestion.hasAttribute("chosen-prompt")) {
-          suggestion.removeAttribute("chosen-prompt");
-        }
-      });
+    try {
+      document.
+        querySelector("chat-agent")
+        .shadowRoot.querySelector("chat-interface")
+        .shadowRoot.querySelector("chat-message")
+        .shadowRoot.querySelectorAll("chat-suggestion")
+        .forEach((suggestion) => {
+          if (suggestion.hasAttribute("disabled")) {
+            suggestion.removeAttribute("disabled");
+          }
+    
+          if (suggestion.hasAttribute("chosen-prompt")) {
+            suggestion.removeAttribute("chosen-prompt");
+          }
+        });
+    } catch (error) {
+      this.devStatement(error, "error");
+    }
   }
 
   /**
    * @description writes message to chatLog
-   * @param {string} author - the author of the message
-   * @param {string} message - the written or suggested prompt
+   * @param {string} author - the author of the message (merlin or user's name / guest)
+   * @param {string} message - the written or suggested prompt or response from Merlin
    */
   handleMessage(author, message) {
-    this.devStatement(
-      `Writing message "${message}" by ${author} to chatLog.`,
-      `info`,
-    );
+    this.devStatement(`Writing message "${message}" by ${author} to chatLog.`, `info`);
 
     let authorIndex;
 
@@ -234,10 +244,7 @@ class ChatAgentStore {
    * @param {string} prompt - the written or suggested prompt
    */
   handleInteraction(prompt) {
-    this.devStatement(
-      `Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`,
-      `info`,
-    );
+    this.devStatement(`Prompt sent to: ${this.engine}. Prompt sent: ${prompt}`, `info`);
     this.currentSuggestions = [];
 
     switch (prompt) {
@@ -310,8 +317,8 @@ class ChatAgentStore {
         ];
         this.handleMessage(
           "merlin",
-          "Your character is wearing a hat because today is either a special (hat related) holiday, or another special occassion!",
-        );
+          "Your character is wearing a hat because today is either a special (hat related) holiday, or another special occassion!"
+        )
         break;
 
       // Network error messages
@@ -398,7 +405,7 @@ class ChatAgentStore {
    * @param {string} fileType - the file type to download
    */
   handleDownload(fileType) {
-    this.devStatement(`Downloading chatlog as ${fileType}.`, "info");
+    this.devStatement(`Downloading chatlog as ${fileType}.`, 'info');
 
     if (this.chatLog.length !== 0) {
       const LOG = JSON.stringify(this.chatLog, undefined, 2);
@@ -451,8 +458,7 @@ globalThis.ChatAgentStore = globalThis.ChatAgentStore || {};
 // is rendered through the same modal
 globalThis.ChatAgentStore.requestAvailability = () => {
   if (!globalThis.ChatAgentStore.instance) {
-    globalThis.ChatAgentStore.instance =
-      document.createElement("chat-agent-store");
+    globalThis.ChatAgentStore.instance = document.createElement("chat-agent-store");
     document.body.appendChild(globalThis.ChatAgentStore.instance);
   }
   return globalThis.ChatAgentStore.instance;

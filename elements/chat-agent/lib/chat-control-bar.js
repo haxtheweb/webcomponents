@@ -4,10 +4,11 @@
  */
 import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS, } from "mobx";
 import { html, css } from "lit";
 
 class ChatControlBar extends DDD {
+
   static get tag() {
     return "chat-control-bar";
   }
@@ -23,7 +24,7 @@ class ChatControlBar extends DDD {
       this.dataCollectionEnabled = toJS(ChatStore.dataCollectionEnabled);
       this.isFullView = toJS(ChatStore.isFullView);
       this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
-    });
+    })
   }
 
   static get styles() {
@@ -31,7 +32,7 @@ class ChatControlBar extends DDD {
       super.styles,
       css`
         /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-
+        
         :host {
           container-type: inline-size;
           display: block;
@@ -49,9 +50,8 @@ class ChatControlBar extends DDD {
           border-radius: var(--ddd-radius-sm);
           color: var(--ddd-theme-default-white);
         }
-
-        button:hover,
-        button:focus-visible {
+        
+        button:hover, button:focus-visible {
           background-color: #52525e;
         }
 
@@ -68,7 +68,7 @@ class ChatControlBar extends DDD {
         }
 
         .data-collection-label {
-          font: var(--ddd-font-primary);
+          font: var(--ddd-font-primary); 
           font-size: 12px;
         }
 
@@ -77,8 +77,7 @@ class ChatControlBar extends DDD {
         }
 
         /* Phones */
-        @media only screen and (max-width: 425px),
-          only screen and (max-height: 616px) {
+        @media only screen and (max-width: 425px), only screen and (max-height: 616px) {
           #view-button {
             display: none;
           }
@@ -89,110 +88,51 @@ class ChatControlBar extends DDD {
             display: none;
           }
         }
-      `,
+      `
     ];
   }
 
   render() {
     return html`
       <!-- https://open-apis.hax.cloud/?path=/story/media-icons--hax-iconset-story -->
-
+      
       <div class="chat-control-bar-wrapper">
         <div class="left-side">
-          <button
-            id="download-button"
-            @click=${this.handleDownloadLogButton}
-            aria-label="Download Log as txt"
-          >
+
+          <button id="download-button" @click=${this.handleDownloadLogButton} aria-label="Download Log as txt">
             <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
           </button>
-          <simple-tooltip
-            for="download-button"
-            position="${this.isFullView ? "right" : "top"}"
-            >Download Chat Log</simple-tooltip
-          >
-
-          <button
-            id="reset-button"
-            @click=${this.handleResetButton}
-            aria-label="Reset Chat"
-          >
+          <simple-tooltip for="download-button" position="${this.isFullView ? "right" : "top"}">Download Chat Log</simple-tooltip>
+          
+          <button id="reset-button" @click=${this.handleResetButton} aria-label="Reset Chat">
             <simple-icon-lite icon="icons:refresh"></simple-icon-lite>
           </button>
-          <simple-tooltip
-            for="reset-button"
-            position="${this.isFullView ? "right" : "top"}"
-            >Reset Chat</simple-tooltip
-          >
+          <simple-tooltip for="reset-button" position="${this.isFullView ? "right" : "top"}">Reset Chat</simple-tooltip>
 
-          <button
-            id="data-collection-button"
-            @click=${this.handleDataCollectionButton}
-            aria-label="Toggle Data Collection"
-          >
-            <simple-icon-lite
-              icon="lrn:data_usage"
-              class="data-collection-icon"
-            ></simple-icon-lite>
+          <button id="data-collection-button" @click=${this.handleDataCollectionButton} aria-label="Toggle Data Collection">
+            <simple-icon-lite icon="lrn:data_usage" class="data-collection-icon"></simple-icon-lite>
             <span class="data-collection-label">Data Collection</span>
           </button>
-          <simple-tooltip
-            for="data-collection-button"
-            position="${this.isFullView ? "right" : "top"}"
-            >Toggle Data Collection</simple-tooltip
-          >
+          <simple-tooltip for="data-collection-button" position="${this.isFullView ? "right" : "top"}">Toggle Data Collection</simple-tooltip>
 
-          <button
-            id="dev-mode-button"
-            @click=${this.handleDevModeButton}
-            aria-label="Toggle Developer Mode"
-          >
+          <button id="dev-mode-button" @click=${this.handleDevModeButton} aria-label="Toggle Developer Mode">
             <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
           </button>
-          <simple-tooltip
-            for="dev-mode-button"
-            position="${this.isFullView ? "right" : "top"}"
-            >Toggle Developer Mode</simple-tooltip
-          >
+          <simple-tooltip for="dev-mode-button" position="${this.isFullView ? "right" : "top"}">Toggle Developer Mode</simple-tooltip>
+
         </div>
         <div class="right-side">
-          <button
-            id="view-button"
-            @click=${this.handleViewButton}
-            aria-label="${this.isFullView
-              ? "Exit Full View"
-              : "Enter Full View"}"
-          >
-            <simple-icon-lite
-              icon="${this.isFullView
-                ? "icons:fullscreen-exit"
-                : "icons:fullscreen"}"
-            ></simple-icon-lite>
+          <button id="view-button" @click=${this.handleViewButton} aria-label="${this.isFullView ? 'Exit Full View' : 'Enter Full View'}">
+            <simple-icon-lite icon="${this.isFullView ? 'icons:fullscreen-exit' : 'icons:fullscreen'}"></simple-icon-lite>
           </button>
-          <simple-tooltip
-            for="view-button"
-            position="${this.isFullView ? "left" : "top"}"
-            >${this.isFullView
-              ? "Exit Full View"
-              : "Enter Full View"}</simple-tooltip
-          >
+          <simple-tooltip for="view-button" position="${this.isFullView ? "left" : "top"}">${this.isFullView ? 'Exit Full View' : 'Enter Full View'}</simple-tooltip>
 
-          ${this.isFullView
-            ? html`
-                <button
-                  id="hide-button"
-                  @click=${this.handleHideButton}
-                  aria-label="Hide Interface"
-                >
-                  <simple-icon-lite icon="remove"></simple-icon-lite>
-                </button>
-                <simple-tooltip
-                  for="hide-button"
-                  position="${this.isFullView ? "left" : "top"}"
-                  >Hide Interface</simple-tooltip
-                >
-              `
-            : ""}
+          ${this.isFullView ? html`
+            <button id="hide-button" @click=${this.handleHideButton} aria-label="Hide Interface">
+              <simple-icon-lite icon="remove"></simple-icon-lite>
+            </button>
+            <simple-tooltip for="hide-button" position="${this.isFullView ? "left" : "top"}">Hide Interface</simple-tooltip>
+          ` : ''}
         </div>
       </div>
     `;
@@ -213,18 +153,12 @@ class ChatControlBar extends DDD {
   handleResetButton() {
     ChatStore.devStatement("Reset button pressed.", "log");
 
-    if (confirm("Reset the chat?")) {
-      if (confirm("Download the chat log before you reset?")) {
-        ChatStore.devStatement(
-          "Download chat log before reset confirmed.",
-          "info",
-        );
+    if (confirm('Reset the chat?')) {
+      if (confirm('Download the chat log before you reset?')) {
+        ChatStore.devStatement("Download chat log before reset confirmed.", "info")
         this.downloadChatLog();
       } else {
-        ChatStore.devStatement(
-          "Download chat log before reset denied.",
-          "warning",
-        );
+        ChatStore.devStatement("Download chat log before reset denied.", "warning");
       }
       this.resetChat();
     }
@@ -236,9 +170,7 @@ class ChatControlBar extends DDD {
   handleDataCollectionButton() {
     ChatStore.dataCollectionEnabled = !ChatStore.dataCollectionEnabled;
 
-    this.dataCollectionEnabled
-      ? alert("Your conversations will be used to train our AI models")
-      : alert("Your conversations will not be used to train our AI models");
+    this.dataCollectionEnabled ? alert('Your conversations will be used to train our AI models') : alert('Your conversations will not be used to train our AI models');
   }
 
   /**
@@ -251,17 +183,14 @@ class ChatControlBar extends DDD {
   /**
    * @description Toggles the view of chat-interface to full or minimized
    */
-  handleViewButton() {
+  handleViewButton() {    
     ChatStore.devStatement("View switch button pressed.", "log");
 
     ChatStore.isFullView = !this.isFullView;
 
     this.requestUpdate(); // changes button icon
 
-    ChatStore.devStatement(
-      "View switched to: " + (ChatStore.isFullView ? "full" : "standard"),
-      "info",
-    );
+    ChatStore.devStatement("View switched to: " + (ChatStore.isFullView ? 'full' : 'standard'), "info");
   }
 
   /**
@@ -281,7 +210,7 @@ class ChatControlBar extends DDD {
   downloadChatLog() {
     ChatStore.devStatement("Calling download function...", "info");
 
-    ChatStore.handleDownload("txt");
+    ChatStore.handleDownload('txt');
   }
 
   /**
@@ -303,7 +232,7 @@ class ChatControlBar extends DDD {
       ...super.properties,
       dataCollectionEnabled: {
         type: Boolean,
-        attribute: "data-collection-enabled",
+        attribute: 'data-collection-enabled',
         reflect: true,
       },
     };

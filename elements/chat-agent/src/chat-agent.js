@@ -15,7 +15,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { ChatStore } from "./lib/chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import { configure, autorun, toJS } from "mobx";
+import { configure, autorun, toJS, } from "mobx";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { html, css } from "lit";
 configure({ enforceActions: false });
@@ -85,7 +85,7 @@ class ChatAgent extends DDD {
           gap: var(--ddd-spacing-2);
           position: fixed;
           right: var(--ddd-spacing-2);
-          width: 35%;
+          width: 35%;        
         }
 
         :host([is-full-view]) .chat-agent-wrapper {
@@ -148,7 +148,7 @@ class ChatAgent extends DDD {
   }
 
   /**
-   * @descrition LitElement ready / starts AI
+   * @descrition LitElement ready / calls to start AI
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -178,7 +178,6 @@ class ChatAgent extends DDD {
 customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };
 
-// TODO causing inefficiency, abstract to it's own class
 // register globally so we can make sure there is only one
 globalThis.ChatAgentStore = globalThis.ChatAgentStore || {};
 // request if this exists. This helps invoke the element existing in the dom
