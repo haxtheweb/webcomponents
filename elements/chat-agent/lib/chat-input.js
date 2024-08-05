@@ -100,12 +100,12 @@ class ChatInput extends DDD {
           width: 52px;
         }
 
-        .send-button:hover, .send-button:focus-visible {
+        #send-button:hover, #send-button:focus-visible {
           box-shadow: 0 6px rgba(0, 3, 33, 0.2);
           transform: translateY(-2px);
         }
 
-        .send-button:active {
+        #send-button:active, #send-button.active-mimic {
           box-shadow: 0 1px rgba(0, 3, 33, 0.2);
           transform: translateY(3px);
         }
@@ -132,7 +132,7 @@ class ChatInput extends DDD {
           <button id="input-up-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-up"></simple-icon-lite></button>
           <button id="input-down-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-down"></simple-icon-lite></button>
         </div>
-        <div class="send-button" id="send-button" @click=${this.handleSendButton} tabindex="0" aria-label="Send Prompt">
+        <div class="send-button" id="send-button" @click=${this.handleSendButton} @keydown=${this.handleSendButtonKeyPress} tabindex="0" aria-label="Send Prompt">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
         <simple-tooltip for="send-button" position="left">Send Prompt to Merlin</simple-tooltip>
@@ -160,6 +160,29 @@ class ChatInput extends DDD {
         e.preventDefault();
         this.displayPreviousMessages("down");
         break;
+    }
+  }
+
+  /** 
+   * @description handles key presses when focusing the send button
+   */
+  handleSendButtonKeyPress(e) {
+    // mimic :active since it only works on click
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const SEND_BUTTON = this.shadowRoot.querySelector("#send-button");
+
+      if (SEND_BUTTON.classList.contains("active-mimic")) {
+        SEND_BUTTON.classList.remove("active-mimic");
+      } else {
+        SEND_BUTTON.classList.add("active-mimic");
+      }
+
+      setTimeout(() => {
+        SEND_BUTTON.classList.remove("active-mimic");
+      }, 100);
+
+      this.handleSendButton();
     }
   }
 
