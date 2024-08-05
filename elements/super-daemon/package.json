@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.3",
+  "version": "9.0.5",
   "description": "",
   "repository": {
     "type": "git",
@@ -47,7 +47,7 @@
     "@haxtheweb/future-terminal-text": "^9.0.3",
     "@haxtheweb/hal-9000": "^9.0.3",
     "@haxtheweb/i18n-manager": "^9.0.3",
-    "@haxtheweb/simple-fields": "^9.0.3",
+    "@haxtheweb/simple-fields": "^9.0.5",
     "@haxtheweb/simple-filter": "^9.0.3",
     "@haxtheweb/simple-icon": "^9.0.3",
     "@haxtheweb/user-scaffold": "^9.0.2",

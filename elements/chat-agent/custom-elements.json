@@ -3,31 +3,17 @@
   "tags": [
     {
       "name": "chat-agent",
-      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `maxlength` {`number`} - \n\n  * `placeholder` {`string`} - \n\n  * `user-type-writer-speed` {`number`} - \n\n  * `merlin-type-writer-speed` {`number`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `promptCharacterLimit` {`number`} - \n\n  * `chatLog` {`never[]`} - \n\n  * `engine` {`string`} - \n\n  * `context` {`string`} - \n\n  * `isLoading` - \n\n  * `dataCollectionEnabled` {`boolean`} - \n\n  * `buttonIcon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `developerModeEnabled` {`boolean`} - \n\n  * `promptPlaceholder` {`string`} - \n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `merlinIndex` {`number`} - \n\n  * `messageIndex` {`number`} - \n\n  * `userIndex` {`number`} - \n\n  * `userTypeWriterSpeed` {`number`} - \n\n  * `merlinTypeWriterSpeed` {`number`} - \n\n  * `currentSuggestions` {`never[]`} - \n\n  * `isSiteEditorOpen` - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `is-full-view` {`boolean`} - \n\n  * `is-interface-hidden` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "user-name",
-          "description": "`user-name` {`string`} - \n\nProperty: userName"
+          "name": "is-full-view",
+          "description": "`is-full-view` {`boolean`} - \n\nProperty: isFullView\n\nDefault: null",
+          "valueSet": "v"
         },
         {
-          "name": "user-picture",
-          "description": "`user-picture` {`string`} - \n\nProperty: userPicture"
-        },
-        {
-          "name": "maxlength",
-          "description": "`maxlength` {`number`} - \n\nProperty: promptCharacterLimit"
-        },
-        {
-          "name": "placeholder",
-          "description": "`placeholder` {`string`} - \n\nProperty: promptPlaceholder\n\nDefault: Enter your prompt here..."
-        },
-        {
-          "name": "user-type-writer-speed",
-          "description": "`user-type-writer-speed` {`number`} - \n\nProperty: userTypeWriterSpeed\n\nDefault: 0"
-        },
-        {
-          "name": "merlin-type-writer-speed",
-          "description": "`merlin-type-writer-speed` {`number`} - \n\nProperty: merlinTypeWriterSpeed\n\nDefault: 2"
+          "name": "is-interface-hidden",
+          "description": "`is-interface-hidden` {`boolean`} - \n\nProperty: isInterfaceHidden\n\nDefault: null",
+          "valueSet": "v"
         },
         {
           "name": "is-safari",
