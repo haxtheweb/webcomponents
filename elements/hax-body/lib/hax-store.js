@@ -3030,7 +3030,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           tag: "hr",
           content: "",
           properties: {
-            style: "width:50%;",
+            "data-width": "50",
           },
         },
       ],

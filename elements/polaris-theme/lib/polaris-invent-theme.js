@@ -140,6 +140,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           background-color: var(--polaris-content-bg-color);
           font-family: var(--ddd-font-primary);
           min-width: 280px;
+          min-height: 50vh;
         }
 
         header:not(:empty) {
@@ -155,6 +156,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
 
         #slot {
           line-break: auto;
+          min-height: 50vh;
         }
 
         site-menu {
@@ -527,6 +529,18 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       `,
     ];
   }
+
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
+    this.HAXCMSThemeSettings.scrollTarget =
+    this.shadowRoot.querySelector("#main");
+  globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+    this.HAXCMSThemeSettings.scrollTarget;
+
+  // hook up the scroll target
+  this.shadowRoot.querySelector("scroll-button").target =
+    this.shadowRoot.querySelector("#main");
+  }
   // render function
   render() {
     return html`
@@ -580,34 +594,34 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             <section id="slot" part="slot">
               <slot></slot>
             </section>
-            <div class="link-actions">
-              <div class="inner">
-                <replace-tag with="site-menu-button" import-only></replace-tag>
-                <site-menu-button
-                  hide-label
-                  type="prev"
-                  position="right"
-                  class="navigation"
-                  data-primary="4"
-                >
-                  <div slot="suffix" class="wrapper">
-                    <div class="top">Go back</div>
-                  </div>
-                </site-menu-button>
-                <site-menu-button
-                  hide-label
-                  type="next"
-                  position="left"
-                  class="navigation"
-                  data-primary="4"
-                >
-                  <div slot="prefix" class="wrapper">
-                    <div class="top">Continue</div>
-                  </div>
-                </site-menu-button>
-              </div>
-            </div>
           </article>
+          <div class="link-actions">
+            <div class="inner">
+              <replace-tag with="site-menu-button" import-only></replace-tag>
+              <site-menu-button
+                hide-label
+                type="prev"
+                position="right"
+                class="navigation"
+                data-primary="4"
+              >
+                <div slot="suffix" class="wrapper">
+                  <div class="top">Go back</div>
+                </div>
+              </site-menu-button>
+              <site-menu-button
+                hide-label
+                type="next"
+                position="left"
+                class="navigation"
+                data-primary="4"
+              >
+                <div slot="prefix" class="wrapper">
+                  <div class="top">Continue</div>
+                </div>
+              </site-menu-button>
+            </div>
+          </div>
         </main>
       </div>
       <footer

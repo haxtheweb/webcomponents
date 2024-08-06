@@ -5,7 +5,6 @@
 import { html, css } from "lit";
 import { DDD } from "../d-d-d.js";
 import { DDDAllStyles, ApplicationAttributeData } from "./DDDStyles.js";
-import "./d-d-d-sample.js";
 import "@haxtheweb/page-section/page-section.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
 import "@haxtheweb/video-player/video-player.js";

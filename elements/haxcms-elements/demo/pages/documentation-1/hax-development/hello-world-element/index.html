@@ -1,0 +1,63 @@
+<p>Let's see what goes into the element called <a href="https://www.npmjs.com/package/@haxtheweb/example-hax-element"><b>@haxtheweb/example-hax-element</b>
+</a>
+<b> </b>
+in order to learn how we can wire anything up to HAXeditor.</p>
+<h2 id="header-bc7b0ca0-d451-d9b9-74ad-988ae9ebd70c"><span>@haxtheweb/example-hax-element/</span>example-hax-element.js</h2>
+<code-sample copy-clipboard-button type="javascript">  
+<template preserve-content="preserve-content">// import the reference to HAXWiring to use in your element
+import { HAXWiring } from "@haxtheweb/hax-body-behaviors/lib/HAXWiring.js";
+// connectedCallback is a life cycle hook in the web component specification
+// we tie into it so that when this element is appended to the DOM
+// it can tell HAX it exists
+connectedCallback() {
+// establish the wiring
+this.HAXWiring = new HAXWiring();
+// call setup which will ensure that it is setup when hax-store is ready
+this.HAXWiring.setup(
+  {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Example hax-element",
+        description:
+          "Provide an example to pick apart of a working HAX element",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Hax"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "You",
+          owner: "Your Company"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "title",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android"
+          },
+          {
+            property: "available",
+            description: "",
+            inputMethod: "boolean",
+            required: false,
+            icon: "icons:android"
+          }
+        ],
+        advanced: []
+      }
+    },
+    'example-hax-element',
+    this
+  );
+}
+  </template></code-sample>

@@ -1,0 +1,46 @@
+<p>We've created a way to internationalize ANY web component you create. Because this is a complex topic, and we seek to empower anyone, anywhere to work with web components; i18n is a critical piece of accessibility and improving knowledge access on the web. Doing so without requiring a framework driven approach, or even knowing how our element will be used in production, is a complicated series of decisions.</p>
+<a href="https://dev.to/btopro/i18n-manager-web-component-41a2">This blog series details these decisions</a>
+<h3 id="header-ecb29a0d-0858-782b-80ef-34646ea1b56e">I18NMixin</h3>
+<ul>
+    <li>
+      Install the mixin via yarn or npm: yarn add @haxtheweb/i18n-manager
+    </li>
+    <li>
+      create a folder in your element called /locales
+    </li>
+    <li>create a file called my-element.es.json for the spanish translation of your element. Japanese would be my-element.ja.json for example.</li>
+  </ul>
+<code-sample type="javascript" copy-clipboard-button>
+  <template preserve-content="preserve-content">import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+class MyElement extends I18NMixin(HTMLElement) {
+  constructor() {
+    this.t = {
+      stuff: "Stuff"
+    };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+      locales: ["es", "ja"],
+    });
+    connectedCallback() {
+      this.render();
+    }
+    render() {
+      this.innerHTML = `<span>${this.t.stuff}</span>`;
+    }
+  }
+}</template>
+</code-sample>
+<p>This invokes a dependency on our manager which you might not want to have in your element. If you want to do a similar approach but without dependencies, you just have to feed a custom event to our manager. You'll still have to use the  convention for translatable text, but here's how you can invoke the event needed</p>
+<code-sample type="javascript" copy-clipboard-button>
+  <template preserve-content="preserve-content">window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: "my-element.haxProperties",
+          localesPath: decodeURIComponent(import.meta.url) + "/../locales",
+          locales: ["es"],
+        },
+      })
+    );</template>
+</code-sample>
+<p>Using the vanilla approach, you'll still need to have a /locales directory and the same naming convention. Our mixin just simplifies the integration a bit as well as the timing of what it's initiated but this event registration method will still work within any element that's going to arrive in HAX/HAXcms or any property you make that isn't using HAX at all.</p>
