@@ -195,9 +195,7 @@ class ChatDeveloperPanel extends DDD {
    * @description LitElement firstUpdated / Sets selected properties of engine and context selection
    * @param {object} changedProperties - changed properties
    */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) super.firstUpdated(changedProperties);
-
+  firstUpdated() {
     const ENGINE_OPTIONS = this.shadowRoot.querySelectorAll("#engine-selection option");
     const CONTEXT_OPTIONS = this.shadowRoot.querySelectorAll("#context-selection option");
 

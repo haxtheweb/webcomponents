@@ -156,7 +156,7 @@ class ChatInput extends DDD {
         this.displayPreviousMessages("up");
         break;
 
-      case "ArrowDown": // TODO get this to work correctly
+      case "ArrowDown":
         e.preventDefault();
         this.displayPreviousMessages("down");
         break;
@@ -252,7 +252,7 @@ class ChatInput extends DDD {
         }
         break;
 
-      case "down":
+      case "down": // TODO get this to work correctly
         if (this.previousMessagesIndex < this.messageIndex) {
           this.previousMessagesIndex++;
           while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
@@ -282,11 +282,7 @@ class ChatInput extends DDD {
   /**
    * @description - LitElement first update / 
    */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-
+  firstUpdated() {
     if (ChatStore.promptCharacterLimit > 0) {
       this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", `${ChatStore.promptCharacterLimit}`);
     }

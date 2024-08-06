@@ -176,7 +176,7 @@ class ChatMessage extends DDD {
   renderSentMessage() {
     return html`
       <div class="sent-chat-message">
-         <p class="message-content">${this.message}</p>
+        <p class="message-content">${this.message}</p>
         <div class="author-icon">
           <rpg-character seed="${ChatStore.userName}" hat="${this.hat}"></rpg-character>
         </div>
@@ -188,6 +188,9 @@ class ChatMessage extends DDD {
     this.pickHat();
   }
 
+  /**
+   * @description Picks a hat for the user's <rpg-character> based on certain dates or if editMode enabled
+   */
   pickHat() {
     if (ChatStore.month === 2 && ChatStore.day === 12) {
       this.hat = "party";

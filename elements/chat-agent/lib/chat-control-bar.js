@@ -194,7 +194,7 @@ class ChatControlBar extends DDD {
   }
 
   /**
-   * @description changes the interface window to be hidden off screen and unfocusable
+   * @description changes the interface window to be hidden and unfocusable
    */
   handleHideButton() {
     ChatStore.devStatement("Hide button pressed.", "log");

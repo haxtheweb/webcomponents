@@ -7,7 +7,6 @@ import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServ
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import {
   autorun,
-  computed,
   configure,
   makeObservable,
   observable,
