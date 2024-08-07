@@ -204,7 +204,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            [contenteditable][data-hax-ray][data-hax-active]:empty:not(
+            p[contenteditable][data-hax-ray][data-hax-active]:empty:not(
                 [data-instructional-action]
               )
           )::before {

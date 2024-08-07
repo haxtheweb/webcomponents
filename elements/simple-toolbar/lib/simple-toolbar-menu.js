@@ -38,7 +38,7 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
             --simple-icon-height: 18px;
             --simple-icon-width: 18px;
             position: absolute;
-            right: 2px;
+            left: 2px;
           }
         `,
       ];

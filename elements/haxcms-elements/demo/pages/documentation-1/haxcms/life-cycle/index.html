@@ -1,0 +1,56 @@
+<p>This is a general life cycle that happens when HAXcms "boots up". When web components are unpacking the contents of what to do it generally will work this way.</p>
+<ul><li>page load, should it be no-js or a web component delivered, preflight</li>
+<li>haxcms-site-builder loads site.json, reads JSON Outline Schema and starts to bootstrap that into a theme, items, title, etc</li>
+<li>Appends a haxcms-editor-builder tag which checks for "context"</li>
+<li>Context is established based on global values for php, nodejs, beaker, etc<br/></li>
+<li>Uses a login end point to check if there's a JWT in the user's local data</li>
+<li>When it finds a backend, it <a href="https://github.com/elmsln/haxtheweb/tree/master/elements/haxcms-elements/lib/core/backends">injects a tag to bridge that backend</a>
+</li>
+<li>HAXeditor gets injected into the correct place in the theme which then all of that unpacks and does its thing</li>
+</ul>
+<h2 id="header-6fe66789-70ae-4122-a869-5ff3ca8765dd"><span>Event driven architecture</span></h2>
+<p><span style="caret-color: rgb(0, 0, 0);">HAXcms allows for jumping in at different core operational steps and reacting to these changes based on an event driven design pattern. This means that an event "fires" in PHP, much like it does in JavaScript and code written to react to it can make changes at that point in the operation.</span></p>
+<p><span style="caret-color: rgb(0, 0, 0);">Here is an example from HAXiam which implements custom configuration event listeners</span></p>
+<code-sample copy-clipboard-button><template preserve-content="preserve-content">// file included which has the class in question
+include_once str_replace('_iamConfig/HAXcmsConfig.php', '', __FILE__) . '/system/lib/IAM.php';
+// in the configuration file HAXcmsConfig.php
+// this adds an event listener for the haxcms-jwt-get event
+// and then says to pass the data in question to class $IAM-&gt;getJwtUser();
+$HAXCMS-&gt;addEventListener('haxcms-jwt-get', array($IAM, 'getJwtUser'));
+// later on in additionally included code
+class IAM {
+/**
+   * Callback for event: haxcms-jwt-get
+   */
+  public function getJwtUser(&amp;$token) {
+    if ($this-&gt;enterprise-&gt;userVar) {
+      $token['user'] = $this-&gt;enterprise-&gt;userVar;
+    }
+  }
+}
+// this ensures that there is a global $IAM object
+// it also ensures there's an instance so that when our above
+// listener fires it'll correctly associate to this code
+global $IAM;
+$IAM = new IAM();</template></code-sample>
+<h3 id="header-e1ddd703-264e-b7f5-ae8d-fbd1eeea3d1c">Core listeners</h3>
+<p>Core listeners to influence how the data is constructed. You can add these to your _config/config.php file</p>
+<ul><li><b>haxcms-init</b>
+ - just after HAXcms bootstraps its initial configuration</li>
+<li><b>haxcms-site-metadata</b>
+ - when constructing metadata block at the top of the document</li>
+<li><b>haxcms-connection-settings</b>
+ - for authorized users, this is the block of end points for connecting to and modifying HAXcms logic as far as where data flows.</li>
+</ul>
+<h3 id="header-741a6406-c39b-c28e-aa2e-0094d17f06e2"><span style="caret-color: rgb(0, 0, 0);">Enterprise integrations and SSO</span></h3>
+<p><span style="caret-color: rgb(0, 0, 0);">The following hooks allow for supplanting the HAXcms (intentionally) simplistic login system. This allows you to do custom integrations for your organization. <a href="https://github.com/haxtheweb/haxiam/tree/master/system">HAXiam implements many of these</a>
+ if you need specific examples.</span></p>
+<ul><li><b>haxcms-login-test</b>
+ - when a login didn't pass our simplistic built in checks. Useful for enterprise integrations and other SSO methods of access</li>
+<li><b>haxcms-validate-user</b>
+ - same as login-test except this fires to validate every transaction to ensure the user name matches when decoding the JWT</li>
+<li><b>haxcms-jwt-get</b>
+ - when we ask for the JWT. This allows SSO to supply the token manually via a different methodology than our core one</li>
+<li><b>haxcms-refresh-token-get</b>
+ - when our connection is deemed needing to refresh, this supplies the refresh token for when and what that looks like</li>
+</ul>

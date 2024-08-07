@@ -1,0 +1,89 @@
+<p>While you're not required to use them, HAXcms supplies a series of elements that can make theme development effortless. You can see the source of these in greater detail under the <a href="https://github.com/elmsln/haxtheweb/tree/master/elements/haxcms-elements/lib/ui-components">theme directory of haxcms-elements</a>
+
+
+. This is a brief overview of what they are and what they provide to your interface.</p>
+<p>HAXcms seeks to apply the SDS pattern, a technique we made up just for this sentence, for <i>dramatic effect</i>
+. As everyone knows who is about to read the next heading, SDS stands for:</p>
+<h2>So. Damn. Semantic.</h2>
+<img src="files/2019-03-12_16-45-51.png" alt="Learn two theme code view with arrows pointing out all the different HAXcms theme level elements" style="width: 100%;"/><p>Whew, I need an ice cold drink to wash away the semantic sweats.</p>
+<p>Yes, that's right, HAXcms allows you to theme a complex state managed system without needing to understand state management... like... at all.</p>
+<h3>"But I understand state management and it's important to me"</h3>
+<p>That's awesome, four people on twitter, but most designers just want to design! They don't need or want to understand the intricacies of making a collapsed field area expand relative to what item has been dictated as active in the store*.</p>
+<p><sub>*an intentionally confusing worded sentence</sub>
+
+
+</p>
+<p><sub>We use MobX to do our state management if that's something you care about and some of our themes directly implement and interface with the state management layer. See <a href="https://github.com/elmsln/haxtheweb/blob/master/elements/simple-blog/lib/simple-blog-footer.js#L5-L6">Simple Blog's footer element</a>
+
+
+ for a great example of why state management is a PITA.</sub>
+
+</p>
+<h2>Back to the elements jerk</h2>
+<p>Ok fine, here they are. Here's the list of ES module imports to get them</p>
+<code-sample style="width: 100%;" copy-clipboard-button="copy-clipboard-button">  <template preserve-content="preserve-content">{
+    "dependencies": {
+        "@haxtheweb/haxcms-elements": "latest"
+    }
+}</template>
+</code-sample>
+<code-sample style="width: 100%;" copy-clipboard-button="copy-clipboard-button">  <template preserve-content="preserve-content">import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-outline-block.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-footer.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-dot-indicator.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-render-query.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";</template>
+</code-sample>
+<p>Now here's what each of them provide you (pretty self explanatory because #SDS)</p>
+<ul><li><b>site-active-title - </b>
+the title of the active item wrapped in a h1 tag
+<br/></li>
+<li><b>site-children-block</b>
+ - all child menu items based on a criteria match</li>
+<li><b>site-outline-block</b>
+ - part of the outline based on criteria match</li>
+<li><b>site-footer</b>
+ - a basic footer with license element based on site details</li>
+<li><b>site-modal</b>
+ - a basic modal with button that can house other elements</li>
+<li><b>site-breadcrumb</b>
+
+ - a breadcrumb trail for the active menu item</li>
+<li><b>site-dot-indicator</b>
+ - site links but as a simple line of dots</li>
+<li><b>site-menu-button</b>
+ - buttons for navigating through the active items in the menu. This is next, previous, parent and first child kinds of options.<br/></li>
+
+
+<li><b>site-menu</b>
+
+ - A visualization of the hierarchy of your site, complete with checkmarks given per page the user goes to (optional) as well as a lot of styling options and a highlighted bar that scrolls the menu into view for small screens. It's fantastic and one line.</li>
+<li><b>site-top-menu</b>
+ - Top level menu links with indicator that scrolls to focus</li>
+<li><b>site-print-button</b>
+ - print button with support for 4 levels of printing the site<br/></li>
+<li><b>site-rss-button</b>
+ - a button that displays a link (opened in a new window) to get the RSS feed in RSS 2.0 or Atom 1.0 format (also applies correct semantic values for bots to discover)<br/></li>
+<li><b>site-title</b>
+ - a link to the homepage of the site wrapped in an h1 tag<br/></li>
+
+
+</ul>
+<p><span style="caret-color: rgb(0, 0, 0);">See the elements themselves for more details API examples and check out our themes as we leverage them heavily across the core themes.</span></p>
+<h2><span style="caret-color: rgb(0, 0, 0);">A word about style</span></h2>
+<p><span style="caret-color: rgb(0, 0, 0);">We use CSS variables to style all the bits inside of our custom elements. So if you don't like the styling, look at the CSS variables we make available and style away. The <a href="https://github.com/elmsln/haxtheweb/blob/master/elements/learn-two-theme/src/learn-two-theme.css">"Learn 2 theme"</a>
+
+
+ is a great example implementing multiple levels of styling against multiple HAXcms site elements. You can always you know, go back and <a href="css">reread the CSS variables section</a>
+.</span></p>
+<meme-maker image-url="https://memegenerator.net/img/images/66693.jpg" top-text="I don't like your style" bottom-text="LAWL CSS vars" style="width: 50%; margin: 0px auto; display: block;"></meme-maker>

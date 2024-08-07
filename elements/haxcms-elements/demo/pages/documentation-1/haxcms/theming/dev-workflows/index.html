@@ -1,0 +1,50 @@
+<p>Our development workflow is as follows (for themes)</p>
+<ol><li>All custom theme work happens in your _config directory</li>
+
+<li>Make my-theme.js, pull everything together, either in this directory or in a <a href="https://github.com/elmsln/wcfactory">wcfactory</a>
+ catalog  of elements you've made</li>
+<li>Reference this in you _config/my-custom-elements.js element</li>
+<li>Update the _config/config.json block that says <b>themes</b>
+ to include something like...</li>
+</ol>
+<code-sample copy-clipboard-button="copy-clipboard-button" style="width: 100%;">  <template preserve-content="preserve-content">"themes": {
+    "odl-haxtheme": {
+      "element": "odl-haxtheme",
+      "path": "@myorganization/odl-haxtheme/odl-haxtheme.js",
+      "name": "Eberly ODL"
+    }
+  },</template>
+</code-sample>
+<p>This tells HAXcms UI that you can now select the theme (but don't yet, it won't be valid)</p>
+<h2 class="hax-active">Local development workflow during theme development</h2>
+<p>We use polymer cli to serve up and work on web components locally and while you don't have to, it's recommended as part of the WCFactory workflow.</p>
+<ol><li>Make a new site in the HAXcms UI</li>
+
+<li>Go to _sites/mynewsite and run <i><b>polymer serve --npm --open --entrypoint dist/dev.html</b>
+</i>
+</li>
+<li>Adjust the URL that opens to only be the IP address with no path after it</li>
+<li>You'll see your site open up for local development work, which will be leveraging any assets referenced in your node_modules directory at the HAXcms project root.</li>
+<li>To add / install new assets run yarn (or npm) <i style="font-weight: bold;">add @what/ever-you-want --save </i>
+, just like you would any other project you work on in FE dev</li>
+<li>edit your site's site.json manually to update the theme to point to the theme location your actively working on</li>
+<li>Develop away until it is to your liking</li>
+</ol>
+<h2>Shipping the theme</h2>
+<p>To ship the theme, you'll need to do a polymer build routine</p>
+<h3 class="hax-active">important note</h3>
+<p>This currently forks you from the original source of HAXcms core (because it will recompile the assets). If you're ok with this cool, just know <a href="https://github.com/haxtheweb/haxcms/issues/145">we're trying to find ways around this involving rollup</a>
+.</p>
+<ol><li>Go to the HAXcms project root</li>
+
+<li>run <b><i>polymer build</i>
+</b>
+</li>
+<li>Copy the build directory and go to your site</li>
+<li>Delete the symlink and replace it with your build directory</li>
+<li>Now you can publish via the UI so long as you do not leverage a CDN</li>
+</ol>
+<h2 class="hax-active">The future</h2>
+<p>Admittedly, the full on custom theme / web component development workflow is rough. It's hard to maintain a built copy in a modular system without tooling. In the future we plan on having tooling workflows built directly into WCFactory that allow you to streamline the development and creation of HAXcms themes.</p>
+<h2 class="hax-active">Current limitations</h2>
+<p>You can't leverage existing CDNs (like webcomponents.psu.edu and whatever else is out there) that are pegged to the HAXcms project's source. You'll be creating a custom theme which then creates a custom build in effect so you'll want to ensure that you have some place that you can host the assets in order to power your site.</p>

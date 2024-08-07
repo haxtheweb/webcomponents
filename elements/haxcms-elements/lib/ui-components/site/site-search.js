@@ -163,7 +163,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
       ></loading-indicator>
       ${this.__results.map(
         (item) => html`
-          <a class="result" .href="${item.slug}" @click="${this.selectionMade}">
+          <a class="result" .href="${item.slug ? item.slug : item.location}" @click="${this.selectionMade}">
             <div class="title">
               ${item.icon
                 ? html`<simple-icon-lite

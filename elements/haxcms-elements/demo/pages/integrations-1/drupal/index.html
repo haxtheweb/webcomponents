@@ -1,0 +1,53 @@
+<h2 id="header-e76aa1f8-d284-e598-eb6e-930cc0a47fe2">Try on SimplyTest.me</h2>
+<p>Try HAX on Simplytest me in a few steps without needing to install anything</p>
+<ol><li>Go to <a href="https://simplytest.me/project/hax">Simplytest me and pick HAX module</a>
+</li>
+<li>Pick 9.x,8.x or 7.x</li>
+<li>Log in, go to Administration -> Configuration -> Content Authoring -> Input formats / filters</li>
+<li>Make sure that Filter HTML tags is disabled</li>
+</ol>
+<grid-plate layout="6/6" responsive-size="xs" breakpoint-sm="900" breakpoint-md="1200" breakpoint-lg="1500" breakpoint-xl="1800">
+<meme-maker image-url="files/d8cdnimage.jpg" bottom-text="CDN all the things" slot="col-1">
+    
+      <img src="files/d8cdnimage.jpg" alt="" preload="lazy" aria-describedby=""/>
+    <div>CDN all the things</div></meme-maker>
+<meme-maker image-url="files/haxd8simply.jpg" bottom-text="Garland..." slot="col-2">
+    
+      <img src="files/haxd8simply.jpg" alt="" preload="lazy" aria-describedby=""/>
+    <div>Garland...</div></meme-maker>
+</grid-plate>
+<h2 id="header-6f9fc64c-8270-4d96-d78e-52f756edb790">Getting HAX setup in Drupal CMS</h2>
+<p>HAX works with Drupal 8, 7 and all the way back to 6 (mostly to prove a point). While the install routines are largely the same make sure you follow the directions for your flavor of Drupal if it has any branching steps. Drupal 8 is the easiest to get setup while 7 and 6 require some additional modules to get going.</p>
+<ol><li>Go to the <a target="_blank" href="https://www.drupal.org/project/hax">HAX project page on drupal.org</a>
+</li>
+
+<ul><li>Be aware that the Drupal 8 and 9 version of HAX <b><i>does not</i>
+</b>
+ require the web components module while Drupal 7 does</li>
+</ul>
+
+<li>Download the module for your platform and follow the directions found in the README.md</li>
+
+<ul><li>Drupal 7 have these files in the <b>CopyThisStuff</b>
+ folder found in the <a target="_blank" href="https://www.drupal.org/project/webcomponents">web components module</a>
+ so make sure you get that!</li>
+</ul>
+
+<li>Enable the HAX module<br/></li>
+
+<ul><li><i>Web components module too if in Drupal 7</i>
+<br/></li>
+</ul>
+
+<li>Go to a node in your site, you should see a tab that says "Block editor mode"</li>
+
+<li>Enjoy HAX'ing your Drupal site!</li>
+
+</ol>
+<h3 id="header-457fbf1a-e5d1-9c8b-e9ad-fc160c07cf16">Special note on Drupal 7</h3>
+<p>In order to get the upload capabilities in Drupal 7 you'll need to download the <a target="_blank" href="https://www.drupal.org/project/file_entity">File Entity</a>
+
+ and <a target="_blank" href="https://www.drupal.org/project/restws">RESTws</a>
+
+ modules as well. We've created a "HAX Common" feature using the Features module which will help with the dependencies that are common in sites using HAX.</p>
+<wikipedia-query show-title="" search="Drupal" render-as="content" resource="#3b994c7f-952f-e85f-48b3" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 100%;" search-response="[object Object]"></wikipedia-query>

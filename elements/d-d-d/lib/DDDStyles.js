@@ -1063,6 +1063,9 @@ export const DDDDataAttributes = [
     [data-width="75"] {
       width: 75%;
     }
+    [data-width="100"] {
+      width: 100%;
+    }
 
     /* Float positioning for larger devices */
     @media (min-width: 1440px) {
@@ -1704,8 +1707,9 @@ export const DDDReset = css`
     border-color: var(--ddd-theme-primary);
     border-top-width: var(--ddd-theme-header-border-thickness);
     border-top-style: solid;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    transition: 
   }
 
   .h-invert {
@@ -1718,12 +1722,14 @@ export const DDDReset = css`
   [data-hax-ray][data-accent],
   [data-hax-ray][data-primary],
   [data-hax-ray][data-padding],
-  [data-hax-ray][data-margin] {
+  [data-hax-ray][data-margin],
+  [data-hax-ray][data-width] {
     transition:
       padding 0.3s ease-in-out,
       margin 0.3s ease-in-out,
       border 0.3s ease-in-out,
       color 0.3s ease-in-out,
+      width 0.3s ease-in-out,
       box-shadow 0.3s ease-in-out,
       border-radius 0.3s ease-in-out,
       background-color 0.3s ease-in-out;
