@@ -16,38 +16,27 @@ class ChatInterface extends DDD {
   constructor() {
     super();
     this.chatLog = [];
-    this.darkMode = null;
+    this.darkMode = false;
     this.developerModeEnabled = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
     this.hasEditorUI = null;
-    
+
     autorun(() => {
       this.chatLog = toJS(ChatStore.chatLog);
+    });
+    autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
+    });
+    autorun(() => {
       this.developerModeEnabled = toJS(ChatStore.developerModeEnabled);
+    });
+    autorun(() => {
       this.isFullView = toJS(ChatStore.isFullView);
+    });
+    autorun(() => {
       this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
-      
-      // TODO should be changed, but brute forces full view css percents for now does not change automatically, which is why this should be changed
-      try {
-        const tempSiteGrabber = document.querySelector("#site");
-        
-        if (window.innerHeight > 1000) {
-          this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "65%" : tempSiteGrabber.style.width = "100%";
-        } else {
-          this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
-        }
-      } catch (error) {
-        ChatStore.devStatement(error, "error");
-      }
-      
-      if (document.querySelector('haxcms-site-editor-ui')) {
-        this.hasEditorUI = true;
-      } else {
-        this.hasEditorUI = false; 
-      }
-    })
+    });
   }
 
   static get styles() {
@@ -602,23 +591,39 @@ class ChatInterface extends DDD {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
-          ${ChatStore.developerModeEnabled ? html`
-            <chat-developer-panel></chat-developer-panel>
-          ` : ''}
+          ${ChatStore.developerModeEnabled
+            ? html` <chat-developer-panel></chat-developer-panel> `
+            : ""}
           <div class="main-wrapper">
             <chat-control-bar></chat-control-bar>
             <div class="chat-container">
-              <div class="chat-messages">
-                  ${this.chatLog.map((message) => html`
-                    <chat-message message="${message.message}" ?sent-prompt="${message.author === ChatStore.userName}" ?suggested-prompts="${ChatStore.currentSuggestions.length > 0}"></chat-message>
-                  `)}
+              <div class="chat-messages" @type-writer-end="${this.finishedTyping}"
+              >
+                ${this.chatLog.map(
+                  (message) => html`
+                    <chat-message
+                      message="${message.message}"
+                      ?sent-prompt="${message.author === ChatStore.userName}"
+                      ?suggested-prompts="${ChatStore.currentSuggestions
+                        .length > 0}"
+                    ></chat-message>
+                  `,
+                )}
               </div>
-              <chat-input placeholder="${ChatStore.promptPlaceholder}"></chat-input>
+              <chat-input
+                placeholder="${ChatStore.promptPlaceholder}"
+              ></chat-input>
             </div>
           </div>
         </div>
       </div>
     `;
+  }
+
+  finishedTyping(e) {
+    const SCROLLABLE_ELEMENT =
+    this.shadowRoot.querySelector(".chat-messages");
+    SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
   }
 
   /**
@@ -628,28 +633,45 @@ class ChatInterface extends DDD {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
 
-    if (changedProperties.has("chatLog") && 
-        !changedProperties.has("darkMode") && 
-        !changedProperties.has("developerModeEnabled") && 
-        !changedProperties.has("hasEditorUI") && 
-        !changedProperties.has("isInterfaceHidden")) {
+    if (changedProperties.has('isInterfaceHidden') || changedProperties.has('isFullView')) {
+      // TODO should be changed, but brute forces full view css percents for now does not change automatically, which is why this should be changed
+      try {
+        const tempSiteGrabber = document.querySelector("haxcms-site-builder");
+        
+        if (globalThis.innerHeight > 1000) {
+          this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "65%" : tempSiteGrabber.style.width = "100%";
+        } else {
+          this.isFullView && !this.isInterfaceHidden ? tempSiteGrabber.style.width = "75%" : tempSiteGrabber.style.width = "100%";
+        }
+      } catch (error) {
+        ChatStore.devStatement(error, "error");
+      }
+      
+      if (document.querySelector('haxcms-site-editor-ui')) {
+        this.hasEditorUI = true;
+      } else {
+        this.hasEditorUI = false; 
+      }
+    }
+
+    if (changedProperties.has("chatLog")) {
       this.scrollControl();
     }
   }
 
   /**
    * @description scrolls to the bottom of the chat, except when reset which should be at the top
-   * @async
+   *
    */
-  async scrollControl() {
-    await this.updateComplete;
+  scrollControl() {
     const SCROLLABLE_ELEMENT = this.shadowRoot.querySelector(".chat-messages");
-
-    if (this.chatLog.length > 1) {
-      SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
-    } else {
-      SCROLLABLE_ELEMENT.scrollTo(0, 0);
-    }
+    setTimeout(() => {
+      if (this.chatLog.length > 1) {
+        SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
+      } else {
+        SCROLLABLE_ELEMENT.scrollTo(0, 0);
+      }
+    }, 0)
   }
 
   static get properties() {

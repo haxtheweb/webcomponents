@@ -252,7 +252,7 @@ class ChatInput extends DDD {
         }
         break;
 
-      case "down": // TODO get this to work correctly
+      case "down":
         if (this.previousMessagesIndex < this.messageIndex) {
           this.previousMessagesIndex++;
           while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
