@@ -258,7 +258,7 @@ class ChatInput extends DDD {
           while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
                   && this.previousMessagesIndex < this.messageIndex) {
             this.previousMessagesIndex++;
-            if (this.previousMessagesIndex > this.messageIndex) {
+            if (this.previousMessagesIndex >= this.messageIndex) {
               this.previousMessagesIndex = this.messageIndex;
               break;
             }

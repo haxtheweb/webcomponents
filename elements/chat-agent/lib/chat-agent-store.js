@@ -129,7 +129,7 @@ class ChatAgentStore {
   startAI() {
     this.handleMessage(
       "merlin",
-      "Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. I can currently only answer questions related to physics. How can I assist you today?",
+      `Hello! My name is Merlin. I am currently in beta, and may not yet be feature complete, so you may encounter some bugs. By default I can answer questions about ${this.context}. How can I assist you today?`,
     );
     
     if (
@@ -394,7 +394,7 @@ class ChatAgentStore {
               "merlin",
               "I'm sorry, I'm having trouble connecting right now. Please try again soon. If you'd like to learn more, please click on one of the suggested prompts.",
             );
-            console.error(error);
+            this.devStatement(error, 'error');
           });
     }
   }
