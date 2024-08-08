@@ -22,10 +22,19 @@ class ChatDeveloperPanel extends DDD {
     
     autorun(() => {
       this.chatLog = toJS(ChatStore.chatLog);
-      this.context = toJS(ChatStore.context);
-      this.engine = toJS(ChatStore.engine);
-      this.isFullView = toJS(ChatStore.isFullView);
     });
+    
+    autorun(() => {
+      this.context = toJS(ChatStore.context);
+    })
+    
+    autorun(() => {
+      this.engine = toJS(ChatStore.engine);
+    })
+    
+    autorun(() => {
+      this.isFullView = toJS(ChatStore.isFullView);
+    })
   }
 
   static get styles() {

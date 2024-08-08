@@ -621,9 +621,11 @@ class ChatInterface extends DDD {
   }
 
   finishedTyping(e) {
-    const SCROLLABLE_ELEMENT =
-    this.shadowRoot.querySelector(".chat-messages");
-    SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
+    if (this.chatLog.length > 1) {      
+      const SCROLLABLE_ELEMENT =
+      this.shadowRoot.querySelector(".chat-messages");
+      SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
+    }
   }
 
   /**

@@ -27,6 +27,9 @@ class ChatSuggestion extends DDD {
 
     autorun(() => {
       this.messageIndex = toJS(ChatStore.messageIndex);
+    })
+    
+    autorun(() => {
       this.userIndex = toJS(ChatStore.userIndex);
     })
   }

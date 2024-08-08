@@ -25,10 +25,25 @@ class ChatInput extends DDD {
 
     autorun(() => {
       this.chatLog = toJS(ChatStore.chatLog);
+    })
+    
+    autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
+    })
+    
+    autorun(() => {
       this.messageIndex = toJS(ChatStore.messageIndex);
+    })
+    
+    autorun(() => {
       this.userIndex = toJS(ChatStore.userIndex);
+    })
+    
+    autorun(() => {
       this.previousMessagesIndex = toJS(this.messageIndex);
+    })
+    
+    autorun(() => {
       this.userName = toJS(ChatStore.userName);
     })
   }

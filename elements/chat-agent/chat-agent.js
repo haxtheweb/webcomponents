@@ -60,8 +60,11 @@ class ChatAgent extends DDD {
 
     autorun(() => {
       this.isFullView = toJS(ChatStore.isFullView);
-      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
     });
+    
+    autorun(() => {
+      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
+    })
   }
 
   /**

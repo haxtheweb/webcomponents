@@ -28,6 +28,9 @@ class ChatMessage extends DDD {
 
     autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
+    })
+    
+    autorun(() => {
       this.editMode = toJS(ChatStore.editMode);
     })
   }

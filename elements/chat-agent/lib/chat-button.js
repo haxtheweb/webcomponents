@@ -23,8 +23,17 @@ class ChatButton extends DDD {
 
     autorun(() => {
       this.buttonIcon = toJS(ChatStore.buttonIcon);
+    })
+    
+    autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
+    })
+
+    autorun(() => {
       this.isFullView = toJS(ChatStore.isFullView);
+    })
+
+    autorun(() => {
       this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
     })
   }
