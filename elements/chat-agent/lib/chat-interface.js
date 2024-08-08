@@ -621,7 +621,7 @@ class ChatInterface extends DDD {
   }
 
   finishedTyping(e) {
-    if (this.chatLog.length > 1) {      
+    if (this.chatLog.length > 1) { // Ensures that scroll to bottom does not occur on intro message      
       const SCROLLABLE_ELEMENT =
       this.shadowRoot.querySelector(".chat-messages");
       SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
@@ -668,7 +668,7 @@ class ChatInterface extends DDD {
   scrollControl() {
     const SCROLLABLE_ELEMENT = this.shadowRoot.querySelector(".chat-messages");
     setTimeout(() => {
-      if (this.chatLog.length > 1) {
+      if (this.chatLog.length > 1) { // Ensures that scroll to bottom does not occur on intro message
         SCROLLABLE_ELEMENT.scrollTo(0, SCROLLABLE_ELEMENT.scrollHeight);
       } else {
         SCROLLABLE_ELEMENT.scrollTo(0, 0);
