@@ -129,8 +129,8 @@ class ChatInput extends DDD {
       <div class="chat-input-wrapper">
         <textarea name="prompt-input" id="user-input" placeholder="${ChatStore.promptPlaceholder}" @keydown=${this.handleKeyPress}></textarea>
         <div class="up-down-btns">
-          <button id="input-up-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-up"></simple-icon-lite></button>
-          <button id="input-down-btn" @click=${this.handleDirectionButtons}><simple-icon-lite icon="hardware:keyboard-arrow-down"></simple-icon-lite></button>
+          <button id="input-up-btn" @click=${this.handleDirectionButtons} aria-label="Display previously sent message (up)"><simple-icon-lite icon="hardware:keyboard-arrow-up"></simple-icon-lite></button>
+          <button id="input-down-btn" @click=${this.handleDirectionButtons} aria-label="Display previously sent message (down)"><simple-icon-lite icon="hardware:keyboard-arrow-down"></simple-icon-lite></button>
         </div>
         <div class="send-button" id="send-button" @click=${this.handleSendButton} @keydown=${this.handleSendButtonKeyPress} tabindex="0" aria-label="Send Prompt">
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
