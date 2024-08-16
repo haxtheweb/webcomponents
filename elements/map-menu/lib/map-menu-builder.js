@@ -16,6 +16,7 @@ class MapMenuBuilder extends LitElement {
   }
   constructor() {
     super();
+    this.editControls = false;
     this.items = [];
   }
   /**
@@ -38,21 +39,21 @@ class MapMenuBuilder extends LitElement {
                       icon-label="${item.metadata && item.metadata.pageType
                         ? item.metadata.pageType
                         : ""}"
-                      avatar-label="${item.metadata && item.metadata.avatarLabel
-                        ? item.metadata.avatarLabel
-                        : ""}"
+                      ?edit-controls="${this.editControls}"
                       selected="${this.selected}"
                       ?published="${this.getPublishedStatus(item)}"
                       ?hide-in-menu="${this.hideInMenuStatus(item)}"
                     >
                       <map-menu-builder
                         .items="${item.children}"
+                        ?edit-controls="${this.editControls}"
                         selected="${this.selected}"
                       ></map-menu-builder>
                     </map-menu-submenu>
                   `
                 : html`
                     <map-menu-item
+                      ?edit-controls="${this.editControls}"
                       itemtitle="${item.title}"
                       id="${item.id}"
                       url="${item.slug}"
@@ -103,6 +104,10 @@ class MapMenuBuilder extends LitElement {
       },
       selected: {
         type: String,
+      },
+      editControls: {
+        type: Boolean,
+        attribute: 'edit-controls',
       },
     };
   }

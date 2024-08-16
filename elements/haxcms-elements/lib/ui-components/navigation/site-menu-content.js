@@ -34,9 +34,9 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
       if (
         this.contentContainer &&
         this.contentContainer.HAXCMSThemeSettings &&
-        this.contentContainer.HAXCMSThemeSettings.scrollTarget
+        this.contentContainer.HAXCMSThemeSettings.siteMenuContent
       ) {
-        this.contentContainer.HAXCMSThemeSettings.scrollTarget.addEventListener(
+        this.contentContainer.HAXCMSThemeSettings.siteMenuContent.addEventListener(
           "scroll",
           this._applyScrollDetect.bind(this),
         );

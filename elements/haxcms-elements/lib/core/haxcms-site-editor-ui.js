@@ -1517,9 +1517,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
             <simple-toolbar-menu-item>
               <haxcms-button-add
+                role="menuitem"
                 hidden
                 ?disabled="${this.editMode}"
-                show-text-label
                 id="addbutton"
                 show-text-label
                 data-super-daemon-label="${this.t.addPage}"
@@ -1530,6 +1530,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
               <haxcms-button-add
+                role="menuitem"
                 hidden
                 ?disabled="${this.editMode}"
                 id="addbuttonchild"
@@ -1541,6 +1542,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ></haxcms-button-add>
             </simple-toolbar-menu-item>
               <haxcms-button-add
+                role="menuitem"
                 hidden
                 ?disabled="${this.editMode}"
                 type="duplicate"

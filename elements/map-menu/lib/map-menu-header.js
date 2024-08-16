@@ -12,17 +12,18 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       css`
         :host {
           display: block;
-          transition: 0.3s all ease;
-          --map-menu-item-height: 44px;
+          position: relative;
+          transition: .3s ease-in all;
         }
-        :host([active]) button {
-          font-weight: var(--map-menu-item-button-active-font-weight, bold);
-          color: var(--map-menu-item-button-active-color, inherit);
-          background-color: var(
-            --map-menu-item-button-active-background-color,
-            transparent
-          );
+
+        :host([hovered]) {
+          opacity: 0.8;
         }
+        :host(:hover),
+        :host(:focus) {
+          opacity: 1;
+        }
+
         a,
         a:visited {
           display: block;
@@ -31,11 +32,14 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           transition: background-color 0.3s ease;
           background-color: transparent;
         }
-        a button {
-          transition: all 0.1s ease;
+
+        :host([active]) button {
+          font-weight: var(--map-menu-item-button-active-font-weight, bold)
         }
+        :host([active]) button,
+        :host([hovered]) button,
         a:hover button,
-        a:active button,
+        a:focus-within button,
         a:focus button {
           color: var(
             --map-menu-item-a-active-color,
@@ -52,30 +56,37 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           flex-direction: column;
         }
 
+        :host([hovered]) simple-icon-lite,
+        :host(:hover) simple-icon-lite,
+        :host(:focus-within) simple-icon-lite,
+        :host(:focus) simple-icon-lite {
+          visibility: none;
+          opacity: 0;
+          pointer-events: none;
+        }
+
         simple-icon-lite {
           color: inherit;
+          margin-left: 4px;
           display: inline-flex;
           --simple-icon-height: var(--map-menu-item-icon-height);
           --simple-icon-width: var(--map-menu-item-icon-height);
-          margin-right: 8px;
-          margin-top: 12px;
-          line-height: 44px;
         }
 
         .title {
           text-transform: none;
-          font-size: var(--map-menu-font-size, 16px);
+          font-size: var(--map-menu-font-size);
           text-overflow: ellipsis;
-          height: 44px;
-          line-height: 44px;
           vertical-align: middle;
-          max-width: 260px;
+          max-width: 240px;
+          margin-left: 8px;
           white-space: nowrap;
           overflow: hidden;
           word-break: break-all;
         }
 
         button {
+          transition: .1s ease-in all;
           cursor: pointer;
           font-family: inherit;
           color: inherit;
@@ -84,20 +95,15 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           text-transform: none;
           width: 100%;
           justify-content: left;
-          margin: 0px;
+          margin: 0;
           border: 0px;
-          min-height: var(--map-menu-header-button-min-height, 44px);
-          padding: 0px 16px;
+          padding: 10px 20px;
           text-align: left;
           border-radius: 0px;
-          height: var(
-            --map-menu-item-button-height,
-            var(--map-menu-item-height, 44px)
-          );
           vertical-align: middle;
           line-height: var(
             --map-menu-item-button-height,
-            var(--map-menu-item-height, 44px)
+            var(--map-menu-item-height)
           );
         }
         :host([status="new"]) a::after {
@@ -120,6 +126,23 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
         :host([hide-in-menu]) {
           display: none;
+        }
+        :host(:not([icon=""])) button {
+          padding-left: 0;
+        }
+        .ops {
+          position: absolute;
+          display: block;
+          right: 0px;
+          height: 40px;
+          top: 0px;
+          z-index: 2;
+          margin: 0 4px 0 0;
+        }
+        .ops .op {
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+          margin: 4px;
         }
       `,
     ];
@@ -154,7 +177,10 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           <div class="title">${this.itemtitle}</div>
         </button>
       </a>
-    `;
+      ${this.editControls && this.hovered ? html`
+      <div class="ops">
+        <haxcms-button-add class="op" type="child" label="Add child page" action-id="${this.id}"></haxcms-button-add>
+      </div>` : ``}`;
   }
 
   static get tag() {
@@ -165,6 +191,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
+    this.editControls = false;
     this.iconLabel = null;
     this.icon = null;
     this.url = "";
@@ -173,6 +200,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     this.active = false;
     this.published = true;
     this.hideInMenu = false;
+    this.hovered = false;
     this.locked = false;
     this.itemtitle = "";
     this.t = {
@@ -190,6 +218,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       this.addEventListener("keypress", this.__keypress.bind(this));
     }, 0);
   }
+
   /**
    * LitElement life cycle - properties changed callback
    */
@@ -207,7 +236,12 @@ class MapMenuHeader extends I18NMixin(LitElement) {
    * LitElement life cycle - properties definition
    */
   static get properties() {
+    let props = {};
+    if (super.properties) {
+      props = super.properties;
+    }
     return {
+      ...props,
       opened: {
         type: Boolean,
         reflect: true,
@@ -218,6 +252,10 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       iconLabel: {
         type: String,
         attribute: "icon-label",
+      },
+      editControls: {
+        type: Boolean,
+        attribute: 'edit-controls',
       },
       url: {
         type: String,
@@ -236,6 +274,10 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         reflect: true,
       },
       active: {
+        type: Boolean,
+        reflect: true,
+      },
+      hovered: {
         type: Boolean,
         reflect: true,
       },

@@ -21,8 +21,8 @@ export class HAXCMSButton extends HAXCMSThemeParts(
 ) {
   constructor() {
     super();
-    this.icon = "mdextra:hexagon-multiple";
-    this.label = "button";
+    this.icon = null;
+    this.label = "";
     this.voiceCommand = "";
   }
   static get properties() {
@@ -31,7 +31,6 @@ export class HAXCMSButton extends HAXCMSThemeParts(
       icon: { type: String },
       label: { type: String },
       voiceCommand: { type: String },
-      accentColor: { type: String, attribute: "accent-color" },
     };
   }
   // wrapper on CustomEvent so we include the payload as these are listened for on window

@@ -11,12 +11,7 @@ export const HAXCMSOperationButtons = function (SuperClass) {
       if (this.t) {
         this.t = {
           ...this.t,
-          edit: "Edit",
-          save: "Save",
-          cancel: "Cancel",
-          editStack: "Edit stack",
-          import: "Import",
-          archive: "Archive",
+          editPage: "Edit page",
         };
       }
     }
@@ -34,29 +29,12 @@ export const HAXCMSOperationButtons = function (SuperClass) {
             height: 0px;
             margin: 0;
             padding: 0;
-            color: var(--simple-colors-default-theme-orange-7, orange);
-            background-color: var(
-              --simple-colors-default-theme-orange-1,
-              white
-            );
           }
           .operation-buttons-wrapper .btn {
-            display: inline-flex;
             margin: 0 16px 0 0;
-            height: 12px;
-            max-width: 200px;
-            opacity: 0.8;
             transition: all 0.3s ease-in-out;
           }
-          .operation-buttons-wrapper .btn:hover,
-          .operation-buttons-wrapper .btn:focus {
-            opacity: 0.9;
-          }
           .operation-buttons-wrapper .btn:active {
-            opacity: 1;
-            color: #000000;
-          }
-          .operation-buttons-wrapper .btn[part="edit-mode-active"] {
             opacity: 1;
           }
         `,
@@ -66,72 +44,23 @@ export const HAXCMSOperationButtons = function (SuperClass) {
     // and is intended to be used just above the content container
     // though not required for usage
     HAXCMSRenderOperationButtons() {
-      import("@haxtheweb/simple-icon/simple-icon.js");
-      import("@haxtheweb/simple-icon/lib/simple-icons.js");
-      import("@haxtheweb/simple-icon/lib/simple-icon-button-lite.js");
       return html`
+          ${this.isLoggedIn ? html`
         <div class="operation-buttons-wrapper">
+
           <simple-icon-button-lite
             class="btn ${this.editMode ? `edit-mode-active` : ``}"
-            icon="lrn:write"
+            icon="hax:page-edit"
+            ?disabled="${this.editMode}"
             @click="${this._editButtonTap}"
-            >${!this.editMode
-              ? this.t.edit
-              : this.t.save}</simple-icon-button-lite
-          >
-          <simple-icon-button-lite
-            class="btn"
-            icon="lrn:content"
-            @click="${this._editButtonTap}"
-            >${this.t.editStack}</simple-icon-button-lite
-          >
-          <simple-icon-button-lite class="btn" icon="icons:archive"
-            >${this.t.archive}</simple-icon-button-lite
-          >
-          <simple-icon-button-lite class="btn" icon="icons:file-upload"
-            >${this.t.import}</simple-icon-button-lite
+            >${this.t.editPage}</simple-icon-button-lite
           >
         </div>
+          ` : ``}
       `;
     }
     _editButtonTap(e) {
       this.editMode = !this.editMode;
-      // save button shifted to edit
-      if (!this.editMode) {
-        this.dispatchEvent(
-          new CustomEvent("haxcms-save-node", {
-            bubbles: true,
-            composed: true,
-            cancelable: false,
-            detail: store.activeItem,
-          }),
-        );
-      }
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
-    }
-    _cancelButtonTap(e) {
-      this.editMode = false;
-      this.dispatchEvent(
-        new CustomEvent("hax-cancel", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: e.detail,
-        }),
-      );
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
     }
   };
 };

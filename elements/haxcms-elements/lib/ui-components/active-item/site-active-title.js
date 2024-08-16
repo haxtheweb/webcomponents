@@ -29,6 +29,7 @@ class SiteActiveTitle extends LitElement {
       <style>
         site-active-title {
           display: block;
+          text-align: start;        
         }
         site-active-title[edit-mode]:hover {
           cursor: pointer;

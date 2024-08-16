@@ -19,13 +19,13 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     this.t.copy = "Copy";
     this.t.newChildPage = "Child";
     this.t.duplicatePage = "Clone";
-    this.icon = "hax:add-page";
+    this.icon = null;
     this.voiceCommand = "add page";
-    this.dark = false;
     this.type = "sibling";
     this.autoEdit = false;
-    this.showTextLabel = true;
+    this.showTextLabel = false;
     this.iconPosition = "left";
+    this.actionId = null;
     this.alignHorizontal = "left";
     this.addEventListener("click", this.HAXCMSButtonClick);
   }
@@ -45,24 +45,39 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     return {
       ...super.properties,
       autoEdit: { type: Boolean, attribute: "auto-edit" },
+      actionId: { type: String, attribute: "action-id" },
       type: { type: String },
     };
   }
 
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
     switch (this.type) {
       case "sibling":
-        return (this.label = this.t.newPage);
+        if (!this.icon) {
+          this.icon = "hax:add-page";
+        }
+        if (!this.label) {
+          this.label = this.t.newPage;
+        }
+      break;
       case "child":
-        this.icon = "hax:add-child-page";
-        return (this.label = this.t.newChildPage);
+        if (!this.icon) {
+          this.icon = "hax:add-child-page";
+        }
+        if (!this.label) {
+          this.label = this.t.newChildPage;
+        }
+      break;
       case "duplicate":
-        this.icon = "hax:duplicate";
-        return (this.label = this.t.duplicatePage);
+        if (!this.icon) {
+          this.icon = "hax:duplicate";
+        }
+        if (!this.label) {
+          this.label = this.t.duplicatePage;
+        }
+      break;
     }
-    this.icon = undefined;
-    this.setAttribute("role", "menuitem");
   }
 
   render() {
@@ -84,20 +99,36 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     super.disconnectedCallback();
   }
 
-  HAXCMSButtonClick() {
+  async HAXCMSButtonClick() {
     store.playSound("click");
     let order = null;
     let title = this.t.newPage;
     let parent = null;
-    const item = toJS(store.activeItem);
+    let item = {};
+    // support for button defining the id of the associated item
+    if (this.actionId) {
+      // support for null as in top of heirarchy
+      if (this.actionId == "null" || this.actionId == null) {
+        item = toJS(await store.getLastChildItem(null));
+      }
+      else {
+        item = await store.findItemAsObject(this.actionId);
+      }
+    }
+    // if we lacked dedicated context, assume the active Item
+    else {
+      item = toJS(store.activeItem);
+    }
     if (item) {
       if (this.type === "sibling") {
         parent = item.parent;
         order = parseInt(item.order) + 1;
       } else if (this.type === "child") {
-        parent = item.id;
+        // ensure we get last child
+        item = toJS(await store.getLastChildItem(item.id));
+        parent = item.parent;
         // @todo might need to check last child and add to end order wise there
-        order = 0;
+        order = parseInt(item.order) + 1;
       } else if (this.type === "duplicate") {
         title = item.title + " " + this.t.copy;
         parent = item.parent;

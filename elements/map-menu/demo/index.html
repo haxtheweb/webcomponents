@@ -116,6 +116,14 @@
       };
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      :root {
+        --map-menu-item-icon-height: 18px;
+        --map-menu-item-active-item-color: rgba(100, 100, 255, 0.1);
+        --map-menu-item-button-height: 20px;
+        --map-menu-item-height: 20px;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
@@ -127,40 +135,40 @@
       <demo-snippet>
         <template>
           <map-menu-container>
-            <map-menu-submenu title="Web Components" label="Level 1" avatar-label="1" opened="" collapsable=""
+            <map-menu-submenu itemtitle="Web Components" opened="" collapsable=""
               expand-children="">
-              <map-menu-submenu title="Shadow Dom">
-                <map-menu-item title="1.1- A title that is in an art history course about the past which is extremely long because otherwise how would you know what the topic of this 1 page actually ended up being" url="http://elmsln.org" icon="code" active=""></map-menu-item>
-                <map-menu-item title="1.2" url="http://elmsln.org" icon="3d-rotation"></map-menu-item>
-                <map-menu-item title="1.3" url="http://elmsln.org" icon="settings-voice"></map-menu-item>
-                <map-menu-item title="1.4" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-submenu itemtitle="Shadow Dom">
+                <map-menu-item itemtitle="1.1- A title that is in an art history course about the past which is extremely long because otherwise how would you know what the topic of this 1 page actually ended up being" url="http://elmsln.org" icon="code" active=""></map-menu-item>
+                <map-menu-item itemtitle="1.2" url="http://elmsln.org" icon="3d-rotation"></map-menu-item>
+                <map-menu-item itemtitle="1.3" url="http://elmsln.org" icon="settings-voice"></map-menu-item>
+                <map-menu-item itemtitle="1.4" url="http://elmsln.org" icon="code"></map-menu-item>
               </map-menu-submenu>
-              <map-menu-submenu title="Shadow Dom">
-                <map-menu-item title="1.1" url="http://elmsln.org" icon="code"></map-menu-item>
-                <map-menu-item title="1.2" url="http://elmsln.org" icon="3d-rotation"></map-menu-item>
-                <map-menu-item title="1.3" url="http://elmsln.org" icon="settings-voice"></map-menu-item>
-                <map-menu-item title="1.4" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-submenu itemtitle="Shadow Dom">
+                <map-menu-item itemtitle="1.1" url="http://elmsln.org" icon="code"></map-menu-item>
+                <map-menu-item itemtitle="1.2" url="http://elmsln.org" icon="3d-rotation"></map-menu-item>
+                <map-menu-item itemtitle="1.3" url="http://elmsln.org" icon="settings-voice"></map-menu-item>
+                <map-menu-item itemtitle="1.4" url="http://elmsln.org" icon="code"></map-menu-item>
               </map-menu-submenu>
-              <map-menu-submenu title="Properties">
-                <map-menu-item title="1.1" url="http://elmsln.org" icon="code"></map-menu-item>
-                <map-menu-item title="1.2" url="http://elmsln.org" icon="3d-rotation"></map-menu-item>
-                <map-menu-item title="1.3" url="http://elmsln.org" icon="settings-voice"></map-menu-item>
-                <map-menu-item title="1.4" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-submenu itemtitle="Properties">
+                <map-menu-item itemtitle="1.1" url="http://elmsln.org" icon="code"></map-menu-item>
+                <map-menu-item itemtitle="1.2" url="http://elmsln.org" icon="3d-rotation"></map-menu-item>
+                <map-menu-item itemtitle="1.3" url="http://elmsln.org" icon="settings-voice"></map-menu-item>
+                <map-menu-item itemtitle="1.4" url="http://elmsln.org" icon="code"></map-menu-item>
               </map-menu-submenu>
             </map-menu-submenu>
-            <map-menu-submenu title="HTTP" label="Level 2" avatar-label="2" collapsable="" expand-children="">
-              <map-menu-item title="2.1" url="http://elmsln.org" icon="code"></map-menu-item>
-              <map-menu-item title="2.2" url="http://elmsln.org" icon="code"></map-menu-item>
-              <map-menu-item title="2.3" url="http://elmsln.org" icon="code"></map-menu-item>
-              <map-menu-item title="2.4" url="http://elmsln.org" icon="code"></map-menu-item>
-              <map-menu-item title="2.5" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-submenu itemtitle="HTTP" label="Level 2" collapsable="" expand-children="">
+              <map-menu-item itemtitle="2.1" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item itemtitle="2.2" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item itemtitle="2.3" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item itemtitle="2.4" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item itemtitle="2.5" url="http://elmsln.org" icon="code"></map-menu-item>
             </map-menu-submenu>
-            <map-menu-submenu title="Accessibility" label="Level 3" avatar-label="3" collapsable="" expand-children="">
-              <map-menu-item title="3.1" url="http://elmsln.org" icon="code"></map-menu-item>
-              <map-menu-item title="3.2" url="http://elmsln.org" icon="code"></map-menu-item>
-              <map-menu-item title="3.3" url="http://elmsln.org" icon="code"></map-menu-item>
-              <map-menu-item title="3.4" url="http://elmsln.org" icon="code"></map-menu-item>
-              <map-menu-item title="3.5" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-submenu itemtitle="Accessibility" label="Level 3" collapsable="" expand-children="">
+              <map-menu-item itemtitle="3.1" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item itemtitle="3.2" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item itemtitle="3.3" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item itemtitle="3.4" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item itemtitle="3.5" url="http://elmsln.org" icon="code"></map-menu-item>
             </map-menu-submenu>
           </map-menu-container>
     

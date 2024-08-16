@@ -12,27 +12,15 @@ class MapMenuItem extends I18NMixin(LitElement) {
       css`
         :host {
           display: block;
-          transition: 0.3s all ease;
-          font-size: var(--map-menu-item-font-size);
-          --map-menu-item-height: 44px;
-          --map-menu-item-icon-height: 24px;
+          position: relative;
+          font-size: var(--map-menu-font-size);
           overflow: var(--map-menu-item-overflow, hidden);
-        }
-        :host([active]) button {
-          font-weight: var(--map-menu-item-button-active-font-weight, bold);
-          color: var(--map-menu-item-button-active-color, inherit);
-          background-color: var(
-            --map-menu-item-button-active-background-color,
-            transparent
-          );
         }
         simple-icon-lite {
           display: inline-flex;
           --simple-icon-height: var(--map-menu-item-icon-height);
           --simple-icon-width: var(--map-menu-item-icon-height);
           margin-right: 8px;
-          margin-top: 12px;
-          line-height: 44px;
         }
         :host(:not([published])) {
           text-decoration: line-through;
@@ -46,12 +34,10 @@ class MapMenuItem extends I18NMixin(LitElement) {
 
         .title {
           text-transform: none;
-          font-size: var(--map-menu-font-size, 16px);
+          font-size: var(--map-menu-font-size);
           text-overflow: ellipsis;
-          height: 44px;
           vertical-align: middle;
           width: auto;
-          line-height: 44px;
           white-space: nowrap;
           overflow: hidden;
           word-break: break-all;
@@ -62,9 +48,10 @@ class MapMenuItem extends I18NMixin(LitElement) {
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-item-a-text-decoration, none);
         }
-        a button {
-          transition: all 0.1s ease;
+        :host([active]) button {
+          font-weight: var(--map-menu-item-button-active-font-weight, bold);
         }
+        :host([active]) a button,
         a:hover button,
         a:active button,
         a:focus button {
@@ -73,11 +60,12 @@ class MapMenuItem extends I18NMixin(LitElement) {
             var(--map-menu-item-a-color, inherit)
           );
           text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
-          background-color: var(--map-menu-item-a-active-background-color,);
+          background-color: var(--map-menu-item-a-active-background-color, black);
         }
         button {
           cursor: pointer;
           color: inherit;
+          transition: .1s ease-in all;
           display: flex;
           font-family: inherit;
           background-color: transparent;
@@ -86,19 +74,17 @@ class MapMenuItem extends I18NMixin(LitElement) {
           justify-content: left;
           margin: 0px;
           border: 0;
-          min-height: var(--map-menu-header-button-min-height, 44px);
-          padding: 0 16px;
-          text-align: left;
-          border-radius: 0;
-          height: var(
-            --map-menu-item-button-height,
-            var(--map-menu-item-height, 44px)
-          );
-          vertical-align: middle;
           line-height: var(
             --map-menu-item-button-height,
-            var(--map-menu-item-height, 44px)
+            var(--map-menu-item-height)
           );
+          padding: 10px 0 10px 30px;
+          text-align: left;
+          border-radius: 0;
+          vertical-align: middle;
+        }
+        :host(:not([icon=""])) button {
+          padding: 10px 0 10px 4px;
         }
         :host([status="new"]) a::after {
           border-right: 8px solid green;
@@ -120,6 +106,20 @@ class MapMenuItem extends I18NMixin(LitElement) {
         }
         .no-icon {
           display: inline-flex;
+        }
+        .ops {
+          position: absolute;
+          display: block;
+          right: 0px;
+          height: 40px;
+          top: 0px;
+          z-index: 2;
+          margin: 0 4px 0 0;
+        }
+        .ops .op {
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+          margin: 4px;
         }
       `,
     ];
@@ -154,18 +154,23 @@ class MapMenuItem extends I18NMixin(LitElement) {
           <span class="title">${this.itemtitle}</span>
         </button>
       </a>
-    `;
+${this.editControls && this.hovered ? html`
+      <div class="ops">
+        <haxcms-button-add class="op" type="child" label="Add child page" action-id="${this.id}"></haxcms-button-add>
+      </div>` : ``}`;
   }
   static get tag() {
     return "map-menu-item";
   }
   constructor() {
     super();
+    this.editControls = false;
     this.icon = null;
     this.iconLabel = null;
     this.itemtitle = "";
     this.url = "";
     this.active = false;
+    this.hovered = false;
     this.hideInMenu = false;
     this.published = false;
     this.locked = false;
@@ -180,6 +185,19 @@ class MapMenuItem extends I18NMixin(LitElement) {
         new URL("../locales/map-menu.es.json", import.meta.url).href + "/../",
       locales: ["es"],
     });
+    setTimeout(() => {
+      this.addEventListener("focusin", this.__active.bind(this));
+      this.addEventListener("focusout", this.__deactive.bind(this));  
+      this.addEventListener("mouseenter", this.__active.bind(this));
+      this.addEventListener("mouseleave", this.__deactive.bind(this));
+    }, 0);
+  }
+
+  __active() {
+  this.hovered = true;
+  }
+  __deactive() {
+  this.hovered = false;
   }
   /**
    * LitElement life cycle - properties definition
@@ -189,6 +207,14 @@ class MapMenuItem extends I18NMixin(LitElement) {
       ...super.properties,
       icon: {
         type: String,
+        reflect: true,
+      },
+      editControls: {
+        type: Boolean,
+        attribute: 'edit-controls',
+      },
+      hovered: {
+        type: Boolean,
         reflect: true,
       },
       iconLabel: {

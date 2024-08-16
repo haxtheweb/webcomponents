@@ -4163,18 +4163,20 @@ export const DDDBreadcrumb = css`
     margin: var(--ddd-spacing-6) 0;
     padding: 0;
     pointer-events: auto;
-    list-style: "/ ";
-    gap: var(--ddd-spacing-5);
+    list-style: "/";
+    gap: var(--ddd-spacing-2);
     display: flex;
     flex-flow: row;
     color: light-dark(
       var(--ddd-theme-default-link),
       var(--ddd-theme-default-linkLight)
     );
+    line-height: normal;
+    text-align: start;
   }
   .breadcrumb li::marker {
     color: light-dark(black, white);
-    font-weight: var(--ddd-font-weight-regular);
+    font-weight: var(--ddd-font-weight-bold);
   }
   .breadcrumb li:first-child {
     list-style: none;
@@ -4184,7 +4186,9 @@ export const DDDBreadcrumb = css`
     pointer-events: none;
   }
   .breadcrumb li a {
-    padding-left: var(--ddd-spacing-1);
+    vertical-align: text-top;
+    display: inline-block;
+    padding: 0 var(--ddd-spacing-2);
     font-family: var(--ddd-font-navigation);
     font-weight: var(--ddd-font-weight-regular);
     text-decoration: none;

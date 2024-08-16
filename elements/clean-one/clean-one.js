@@ -117,7 +117,11 @@ class CleanOne extends PrintBranchMixin(
             var(--ddd-primary-4)
           );
           font-family: var(--ddd-font-navigation);
-          --site-menu-font-size: var(--ddd-font-size-xs);
+          --site-menu-font-size: var(--ddd-font-size-3xs);
+        }
+
+        :host([is-logged-in]) site-menu {
+          height: var(--clean-one-site-menu-height, calc(100vh - 108px));
         }
         scroll-button {
           --scroll-button-color: var(--haxcms-user-styles-color-theme-color-1);
