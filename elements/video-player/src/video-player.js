@@ -345,11 +345,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         {
           tag: "video-player",
           properties: {
-            accentColor: "orange",
-            dark: true,
-            crossorigin: "anonymous",
             source: "https://www.youtube.com/watch?v=LrS7dqokTLE",
-            track: "https://haxtheweb.org/files/HAXshort.vtt",
           },
           content: "",
         },
