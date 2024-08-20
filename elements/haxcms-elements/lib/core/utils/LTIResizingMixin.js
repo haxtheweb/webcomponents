@@ -20,25 +20,34 @@ export const LTIResizingMixin = function (SuperClass) {
       autorun(() => {
         // on content change, meaning it loaded, fire a resize statement
         if (store.activeItemContent || store.appReady) {
+          parent.postMessage('{"subject":"lti.scrollToTop"}', "*");
           setTimeout(() => {
-            var height = globalThis.document.body.scrollHeight + 50;
+            let height = globalThis.document.body.scrollHeight;
+            // scroll target is the content container
+            if (this.HAXCMSThemeSettings.scrollTarget && this.HAXCMSThemeSettings.scrollTarget.scrollHeight) {
+              height = this.HAXCMSThemeSettings.scrollTarget.scrollHeight;
+            }
             // Resize the window via canvas API so we don't have 2 scroll bars.
             parent.postMessage(
-              `{"subject":"lti.frameResize", "height":${height}}`,
+              '{"subject":"lti.frameResize", "height":'  + height + ' }',
               "*",
             );
             parent.postMessage('{"subject":"lti.scrollToTop"}', "*");
-            // give content a chance to self resize if loading nested materials
-            setTimeout(() => {
-              var height = globalThis.document.body.scrollHeight + 50;
-              // Resize the window via canvas API so we don't have 2 scroll bars.
-              parent.postMessage(
-                `{"subject":"lti.frameResize", "height":${height}}`,
-                "*",
-              );
-              parent.postMessage('{"subject":"lti.scrollToTop"}', "*");
-            }, 1000);
           }, 100);
+          // give content a chance to self resize if loading nested materials
+          setTimeout(() => {
+            let height = globalThis.document.body.scrollHeight;
+            // scroll target is the content container
+            if (this.HAXCMSThemeSettings.scrollTarget && this.HAXCMSThemeSettings.scrollTarget.scrollHeight) {
+              height = this.HAXCMSThemeSettings.scrollTarget.scrollHeight;
+            }
+            // Resize the window via canvas API so we don't have 2 scroll bars.
+            parent.postMessage(
+              '{"subject":"lti.frameResize", "height":'  + height + ' }',
+              "*",
+            );
+            parent.postMessage('{"subject":"lti.scrollToTop"}', "*");
+          }, 1000);
         }
       });
     }
