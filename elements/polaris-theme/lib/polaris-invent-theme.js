@@ -172,6 +172,10 @@ class PolarisInventTheme extends LTIResizingMixin(
             --ddd-theme-default-inventOrange
           );
           --map-menu-overflow: visible;
+          --site-menu-container-background-color: var(--ddd-accent-6);
+          --map-menu-item-a-active-color: var(--ddd-accent-6);
+          --map-menu-item-icon-active-color: black;
+ 
         }
 
         site-modal {
