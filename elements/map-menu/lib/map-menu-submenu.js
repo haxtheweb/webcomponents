@@ -59,7 +59,7 @@ class MapMenuSubmenu extends LitElement {
 
         :host([active]) a11y-collapse::part(icon),
         :host([hovered]) a11y-collapse::part(icon) {
-          color: var(--map-menu-item-a-active-color, black);
+          color: var(--map-menu-item-icon-active-color, black);
           background-color: var(--map-menu-container-background-color, white);
         }
 
@@ -77,7 +77,7 @@ class MapMenuSubmenu extends LitElement {
         :host(:hover) a11y-collapse::part(icon) {
           visibility: visible;
           opacity: 1;
-          color: var(--map-menu-item-a-active-color, black);
+          color: var(--map-menu-item-icon-active-color, black);
           background-color: var(--map-menu-container-background-color, white);
         }
       `,

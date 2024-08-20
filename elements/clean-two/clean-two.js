@@ -330,6 +330,14 @@ class CleanTwo extends LTIResizingMixin(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
           );
+          --map-menu-item-icon-active-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+          --site-menu-container-background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           font-family: var(--ddd-font-navigation);
           font-weight: var(--ddd-font-weight-light);
           --site-menu-font-size: var(--ddd-font-size-3xs);

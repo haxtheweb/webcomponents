@@ -143,6 +143,8 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           --simple-icon-height: 16px;
           --simple-icon-width: 16px;
           margin: 4px;
+          color: var(--map-menu-item-a-active-color, black);
+
         }
       `,
     ];
