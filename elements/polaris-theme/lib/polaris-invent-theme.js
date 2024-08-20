@@ -24,6 +24,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
+
 /**
  * `polaris-invent-theme`
  * `A 2nd polaris theme`
@@ -35,14 +37,16 @@ import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-
  * @demo demo/index.html
  * @element polaris-invent-theme
  */
-class PolarisInventTheme extends HAXCMSOperationButtons(
-  HAXCMSRememberRoute(
-    EmailPageMixin(
-      PDFPageMixin(
-        PrintBranchMixin(
-          QRCodeMixin(
-            HAXCMSThemeParts(
-              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+class PolarisInventTheme extends LTIResizingMixin(
+  HAXCMSOperationButtons(
+    HAXCMSRememberRoute(
+      EmailPageMixin(
+        PDFPageMixin(
+          PrintBranchMixin(
+            QRCodeMixin(
+              HAXCMSThemeParts(
+                HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+              ),
             ),
           ),
         ),
@@ -518,13 +522,13 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
     this.HAXCMSThemeSettings.scrollTarget =
-    this.shadowRoot.querySelector("#main");
-  globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
-    this.HAXCMSThemeSettings.scrollTarget;
+      this.shadowRoot.querySelector("#main");
+    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+      this.HAXCMSThemeSettings.scrollTarget;
 
-  // hook up the scroll target
-  this.shadowRoot.querySelector("scroll-button").target =
-    this.shadowRoot.querySelector("#main");
+    // hook up the scroll target
+    this.shadowRoot.querySelector("scroll-button").target =
+      this.shadowRoot.querySelector("#main");
   }
   // render function
   render() {
@@ -672,12 +676,16 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       let store = globalThis.HaxStore.requestAvailability();
       // elements that are in HAXcms that are injected regardless of what editor says
       // because the CMS controls certain internal connectors
-      ["polaris-cta", "polaris-mark", "polaris-story-card", "polaris-tile", "media-quote"].map(
-        (name) => {
-          let el = globalThis.document.createElement(name);
-          store.haxAutoloader.appendChild(el);
-        },
-      );
+      [
+        "polaris-cta",
+        "polaris-mark",
+        "polaris-story-card",
+        "polaris-tile",
+        "media-quote",
+      ].map((name) => {
+        let el = globalThis.document.createElement(name);
+        store.haxAutoloader.appendChild(el);
+      });
       this.windowControllersLoaded.abort();
     }
   }

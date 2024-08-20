@@ -7,6 +7,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -19,7 +20,9 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  *
  * @demo demo/index.html
  */
-class OutlinePlayer extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
+class OutlinePlayer extends LTIResizingMixin(
+  SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)),
+) {
   /**
    * LitElement style render
    */
@@ -165,11 +168,13 @@ class OutlinePlayer extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
             var(--ddd-primary-4)
           );
           --site-menu-item-active-item-color: light-dark(
-              var(--ddd-accent-6),
-              var(--ddd-primary-4)
-            );
-            background-color:
-            light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           color: light-dark(black, var(--ddd-accent-6));
           --map-menu-item-a-active-background-color: light-dark(
             var(--ddd-primary-4),

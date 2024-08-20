@@ -12,6 +12,7 @@ import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageM
 import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSOperationButtons } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
@@ -35,14 +36,16 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element clean-two
  */
-class CleanTwo extends HAXCMSOperationButtons(
-  HAXCMSRememberRoute(
-    EmailPageMixin(
-      PDFPageMixin(
-        PrintBranchMixin(
-          QRCodeMixin(
-            HAXCMSThemeParts(
-              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+class CleanTwo extends LTIResizingMixin(
+  HAXCMSOperationButtons(
+    HAXCMSRememberRoute(
+      EmailPageMixin(
+        PDFPageMixin(
+          PrintBranchMixin(
+            QRCodeMixin(
+              HAXCMSThemeParts(
+                HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+              ),
             ),
           ),
         ),
@@ -68,7 +71,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
-
         }
         .link-actions {
           margin: 0;
@@ -312,11 +314,13 @@ class CleanTwo extends HAXCMSOperationButtons(
             var(--ddd-primary-4)
           );
           --site-menu-item-active-item-color: light-dark(
-              var(--ddd-accent-6),
-              var(--ddd-primary-4)
-            );
-          background-color:
-            light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           color: light-dark(black, var(--ddd-accent-6));
           --map-menu-item-a-active-background-color: light-dark(
             var(--ddd-primary-4),
@@ -619,9 +623,9 @@ class CleanTwo extends HAXCMSOperationButtons(
     globalThis.document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.themeTop =
       this.shadowRoot.querySelector("#haxcms-theme-top");
-      this.HAXCMSThemeSettings.siteMenuContent =
+    this.HAXCMSThemeSettings.siteMenuContent =
       this.shadowRoot.querySelector(".body-wrapper");
-      this.HAXCMSThemeSettings.scrollTarget =
+    this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".content-wrapper");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
@@ -655,7 +659,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         <div class="left-col" part="left-col">${this.HAXCMSMobileMenu()}</div>
         <div class="content-wrapper">
           <div class="content">
-          <div id="haxcms-theme-top"></div>
+            <div id="haxcms-theme-top"></div>
             <header class="header">
               ${!["xl"].includes(this.responsiveSize)
                 ? html`

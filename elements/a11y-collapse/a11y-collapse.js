@@ -565,7 +565,7 @@ class A11yCollapse extends DDD {
   _onClick() {
     if (!this.disabled) {
       this.toggle();
-      this.shadowRoot.querySelector('simple-tooltip').hide();
+      this.shadowRoot.querySelector("simple-tooltip").hide();
       /**
        * Fires when clicked.
        *

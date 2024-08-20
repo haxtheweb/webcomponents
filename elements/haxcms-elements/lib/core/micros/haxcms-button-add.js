@@ -60,7 +60,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
         if (!this.label) {
           this.label = this.t.newPage;
         }
-      break;
+        break;
       case "child":
         if (!this.icon) {
           this.icon = "hax:add-child-page";
@@ -68,7 +68,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
         if (!this.label) {
           this.label = this.t.newChildPage;
         }
-      break;
+        break;
       case "duplicate":
         if (!this.icon) {
           this.icon = "hax:duplicate";
@@ -76,7 +76,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
         if (!this.label) {
           this.label = this.t.duplicatePage;
         }
-      break;
+        break;
     }
   }
 
@@ -110,8 +110,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
       // support for null as in top of heirarchy
       if (this.actionId == "null" || this.actionId == null) {
         item = toJS(await store.getLastChildItem(null));
-      }
-      else {
+      } else {
         item = await store.findItemAsObject(this.actionId);
       }
     }

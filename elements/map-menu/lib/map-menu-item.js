@@ -60,12 +60,15 @@ class MapMenuItem extends I18NMixin(LitElement) {
             var(--map-menu-item-a-color, inherit)
           );
           text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
-          background-color: var(--map-menu-item-a-active-background-color, black);
+          background-color: var(
+            --map-menu-item-a-active-background-color,
+            black
+          );
         }
         button {
           cursor: pointer;
           color: inherit;
-          transition: .1s ease-in all;
+          transition: 0.1s ease-in all;
           display: flex;
           font-family: inherit;
           background-color: transparent;
@@ -128,8 +131,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
    * LitElement life cycle - render callback
    */
   render() {
-    return html`
-      <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
+    return html` <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
         <button>
           ${!this.published
             ? html`<simple-icon-lite
@@ -154,10 +156,16 @@ class MapMenuItem extends I18NMixin(LitElement) {
           <span class="title">${this.itemtitle}</span>
         </button>
       </a>
-${this.editControls && this.hovered ? html`
-      <div class="ops">
-        <haxcms-button-add class="op" type="child" label="Add child page" action-id="${this.id}"></haxcms-button-add>
-      </div>` : ``}`;
+      ${this.editControls && this.hovered
+        ? html` <div class="ops">
+            <haxcms-button-add
+              class="op"
+              type="child"
+              label="Add child page"
+              action-id="${this.id}"
+            ></haxcms-button-add>
+          </div>`
+        : ``}`;
   }
   static get tag() {
     return "map-menu-item";
@@ -187,17 +195,17 @@ ${this.editControls && this.hovered ? html`
     });
     setTimeout(() => {
       this.addEventListener("focusin", this.__active.bind(this));
-      this.addEventListener("focusout", this.__deactive.bind(this));  
+      this.addEventListener("focusout", this.__deactive.bind(this));
       this.addEventListener("mouseenter", this.__active.bind(this));
       this.addEventListener("mouseleave", this.__deactive.bind(this));
     }, 0);
   }
 
   __active() {
-  this.hovered = true;
+    this.hovered = true;
   }
   __deactive() {
-  this.hovered = false;
+    this.hovered = false;
   }
   /**
    * LitElement life cycle - properties definition
@@ -211,7 +219,7 @@ ${this.editControls && this.hovered ? html`
       },
       editControls: {
         type: Boolean,
-        attribute: 'edit-controls',
+        attribute: "edit-controls",
       },
       hovered: {
         type: Boolean,

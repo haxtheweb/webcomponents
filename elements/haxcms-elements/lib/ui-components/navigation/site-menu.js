@@ -125,11 +125,17 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         @active-item="${this.mapMenuActiveChanged}"
         @map-menu-operation-selected="${this.mapMenuOperationSelected}"
       ></map-menu>
-      ${this.editControls ? html`
-      <div class="ops">
-        <haxcms-button-add class="op" type="sibling" label="Add page" action-id="null"></haxcms-button-add>
-      </div>` : ``}
-`;
+      ${this.editControls
+        ? html` <div class="ops">
+            <haxcms-button-add
+              class="op"
+              type="sibling"
+              label="Add page"
+              action-id="null"
+            ></haxcms-button-add>
+          </div>`
+        : ``}
+    `;
   }
 
   clickLink(id) {
@@ -276,7 +282,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       },
       editControls: {
         type: Boolean,
-        attribute: 'edit-controls',
+        attribute: "edit-controls",
       },
       /**
        * acitvely selected item

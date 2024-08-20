@@ -45,18 +45,19 @@ export const HAXCMSOperationButtons = function (SuperClass) {
     // though not required for usage
     HAXCMSRenderOperationButtons() {
       return html`
-          ${this.isLoggedIn ? html`
-        <div class="operation-buttons-wrapper">
-
-          <simple-icon-button-lite
-            class="btn ${this.editMode ? `edit-mode-active` : ``}"
-            icon="hax:page-edit"
-            ?disabled="${this.editMode}"
-            @click="${this._editButtonTap}"
-            >${this.t.editPage}</simple-icon-button-lite
-          >
-        </div>
-          ` : ``}
+        ${this.isLoggedIn
+          ? html`
+              <div class="operation-buttons-wrapper">
+                <simple-icon-button-lite
+                  class="btn ${this.editMode ? `edit-mode-active` : ``}"
+                  icon="hax:page-edit"
+                  ?disabled="${this.editMode}"
+                  @click="${this._editButtonTap}"
+                  >${this.t.editPage}</simple-icon-button-lite
+                >
+              </div>
+            `
+          : ``}
       `;
     }
     _editButtonTap(e) {

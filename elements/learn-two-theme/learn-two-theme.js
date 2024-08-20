@@ -11,6 +11,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -24,7 +25,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  
   * @demo demo/index.html
   */
-class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
+class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   //styles function
   static get styles() {
     let styles = [];

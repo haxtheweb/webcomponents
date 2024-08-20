@@ -11,7 +11,7 @@ import {
   DDDPulseEffect,
   DDDAnimations,
   DDDDataAttributes,
-  ApplicationAttributeData
+  ApplicationAttributeData,
 } from "./lib/DDDStyles.js";
 
 /**

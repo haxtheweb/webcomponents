@@ -9,6 +9,7 @@ import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/H
 import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { EmailPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js";
 import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/scroll-button/scroll-button.js";
@@ -32,13 +33,15 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element clean-one
  */
-class CleanOne extends PrintBranchMixin(
-  PDFPageMixin(
-    EmailPageMixin(
-      QRCodeMixin(
-        HAXCMSThemeParts(
-          HAXCMSMobileMenuMixin(
-            HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+class CleanOne extends LTIResizingMixin(
+  PrintBranchMixin(
+    PDFPageMixin(
+      EmailPageMixin(
+        QRCodeMixin(
+          HAXCMSThemeParts(
+            HAXCMSMobileMenuMixin(
+              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+            ),
           ),
         ),
       ),

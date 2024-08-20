@@ -107,7 +107,7 @@ class MapMenuBuilder extends LitElement {
       },
       editControls: {
         type: Boolean,
-        attribute: 'edit-controls',
+        attribute: "edit-controls",
       },
     };
   }

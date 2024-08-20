@@ -45,7 +45,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
               behavior: "instant",
               block: "start",
               inline: "nearest",
-            })
+            });
           }, 0);
         }
       }

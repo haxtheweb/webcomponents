@@ -13,7 +13,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         :host {
           display: block;
           position: relative;
-          transition: .3s ease-in all;
+          transition: 0.3s ease-in all;
         }
 
         :host([hovered]) {
@@ -34,7 +34,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
 
         :host([active]) button {
-          font-weight: var(--map-menu-item-button-active-font-weight, bold)
+          font-weight: var(--map-menu-item-button-active-font-weight, bold);
         }
         :host([active]) button,
         :host([hovered]) button,
@@ -86,7 +86,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
 
         button {
-          transition: .1s ease-in all;
+          transition: 0.1s ease-in all;
           cursor: pointer;
           font-family: inherit;
           color: inherit;
@@ -151,8 +151,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
    * LitElement life cycle - render callback
    */
   render() {
-    return html`
-      <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
+    return html` <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
         <button>
           ${!this.published
             ? html`<simple-icon-lite
@@ -177,10 +176,16 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           <div class="title">${this.itemtitle}</div>
         </button>
       </a>
-      ${this.editControls && this.hovered ? html`
-      <div class="ops">
-        <haxcms-button-add class="op" type="child" label="Add child page" action-id="${this.id}"></haxcms-button-add>
-      </div>` : ``}`;
+      ${this.editControls && this.hovered
+        ? html` <div class="ops">
+            <haxcms-button-add
+              class="op"
+              type="child"
+              label="Add child page"
+              action-id="${this.id}"
+            ></haxcms-button-add>
+          </div>`
+        : ``}`;
   }
 
   static get tag() {
@@ -255,7 +260,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       },
       editControls: {
         type: Boolean,
-        attribute: 'edit-controls',
+        attribute: "edit-controls",
       },
       url: {
         type: String,

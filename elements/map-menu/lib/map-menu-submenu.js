@@ -33,7 +33,7 @@ class MapMenuSubmenu extends LitElement {
           --simple-tooltip-margin: 0 -36px 0 0;
         }
         #container ::slotted(map-menu-builder)::after {
-          transition: .3s ease-in-out all;
+          transition: 0.3s ease-in-out all;
         }
         :host([opened]) #container ::slotted(map-menu-builder)::after {
           display: block;
@@ -41,10 +41,11 @@ class MapMenuSubmenu extends LitElement {
           bottom: 2px;
           content: "";
           position: relative;
-          border-bottom: 2px solid var(--map-menu-item-a-active-background-color, black);
+          border-bottom: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
         }
         a11y-collapse::before {
-          transition: .3s ease-in-out all;
+          transition: 0.3s ease-in-out all;
         }
         :host([opened]) a11y-collapse::before {
           display: block;
@@ -52,10 +53,11 @@ class MapMenuSubmenu extends LitElement {
           height: 40px;
           content: "";
           position: absolute;
-          border-bottom: 2px solid var(--map-menu-item-a-active-background-color, black);
+          border-bottom: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
         }
 
-        :host([active]) a11y-collapse::part(icon),        
+        :host([active]) a11y-collapse::part(icon),
         :host([hovered]) a11y-collapse::part(icon) {
           color: var(--map-menu-item-a-active-color, black);
           background-color: var(--map-menu-container-background-color, white);
@@ -110,7 +112,7 @@ class MapMenuSubmenu extends LitElement {
         this._mapMenuItemHiddenCheckHandler.bind(this),
       );
       this.addEventListener("focusin", this.__active.bind(this));
-      this.addEventListener("focusout", this.__deactive.bind(this));  
+      this.addEventListener("focusout", this.__deactive.bind(this));
       this.addEventListener("mouseenter", this.__active.bind(this));
       this.addEventListener("mouseleave", this.__deactive.bind(this));
     }, 0);
@@ -183,7 +185,7 @@ class MapMenuSubmenu extends LitElement {
       },
       editControls: {
         type: Boolean,
-        attribute: 'edit-controls',
+        attribute: "edit-controls",
       },
       hideInMenu: {
         type: Boolean,
@@ -195,7 +197,7 @@ class MapMenuSubmenu extends LitElement {
       },
       hovered: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       active: {
         type: Boolean,
@@ -274,10 +276,9 @@ class MapMenuSubmenu extends LitElement {
     );
   }
   __activeChanged(e) {
-    if (this.shadowRoot.querySelector('map-menu-header') === e.detail) {
+    if (this.shadowRoot.querySelector("map-menu-header") === e.detail) {
       this.active = true;
-    }
-    else {
+    } else {
       this.active = false;
     }
     this.opened = true;

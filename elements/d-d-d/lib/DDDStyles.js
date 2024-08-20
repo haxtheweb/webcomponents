@@ -1709,7 +1709,7 @@ export const DDDReset = css`
     border-top-style: solid;
     margin: 0 auto;
     padding: 0;
-    transition: 
+    transition:;
   }
 
   .h-invert {

@@ -52,12 +52,14 @@ class MapMenu extends LitElement {
 
         map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 2px solid var(--map-menu-item-a-active-background-color, black);
+          border-left: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
           margin-left: calc(var(--map-menu-gap) + 2px);
         }
         map-menu-builder map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 2px solid var(--map-menu-item-a-active-background-color, black);
+          border-left: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
           margin-left: calc(var(--map-menu-gap) + 2px);
         }
         map-menu-builder
@@ -70,8 +72,9 @@ class MapMenu extends LitElement {
           map-menu-builder
           map-menu-builder
           map-menu-submenu {
-            border-left: 2px solid var(--map-menu-item-a-active-background-color, black);
-            margin-left: calc(var(--map-menu-gap) + 2px);
+          border-left: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
+          margin-left: calc(var(--map-menu-gap) + 2px);
         }
         map-menu-builder
           map-menu-builder
@@ -85,8 +88,9 @@ class MapMenu extends LitElement {
           map-menu-builder
           map-menu-builder
           map-menu-submenu {
-            border-left: 2px solid var(--map-menu-item-a-active-background-color, black);
-            margin-left: calc(var(--map-menu-gap) + 2px);
+          border-left: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
+          margin-left: calc(var(--map-menu-gap) + 2px);
         }
 
         map-menu-container {
@@ -161,7 +165,7 @@ class MapMenu extends LitElement {
       },
       editControls: {
         type: Boolean,
-        attribute: 'edit-controls',
+        attribute: "edit-controls",
       },
       title: {
         type: String,

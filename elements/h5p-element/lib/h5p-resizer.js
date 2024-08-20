@@ -1,7 +1,7 @@
 // H5P iframe Resizer
 (function () {
     if (!globalThis.postMessage || !globalThis.addEventListener || globalThis.h5pResizerInitialized) {
-      return; // Not supported
+      return null; // Not supported or already added
     }
     globalThis.h5pResizerInitialized = true;
   
