@@ -48,7 +48,7 @@
     "chartist-plugin-axistitle": "^0.0.7",
     "chartist-plugin-fill-donut": "^0.1.4",
     "chartist-plugin-pointlabels": "0.0.6",
-    "lit": "^3.1.4"
+    "lit": "^3.2.0"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.2",
@@ -65,9 +65,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
-    "html"
+    "webcomponents",
+    "html",
+    "haxtheweb",
+    "lit"
   ],
   "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

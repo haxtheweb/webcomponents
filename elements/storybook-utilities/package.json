@@ -25,8 +25,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
+    "webcomponents",
     "storybook",
     "demo",
     "html"

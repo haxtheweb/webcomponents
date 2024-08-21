@@ -43,7 +43,7 @@
   "dependencies": {
     "@haxtheweb/simple-icon": "^9.0.3",
     "@haxtheweb/simple-picker": "^9.0.5",
-    "lit": "^3.1.4"
+    "lit": "^3.2.0"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.2",
@@ -61,9 +61,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
-    "html"
+    "webcomponents",
+    "html",
+    "haxtheweb",
+    "lit"
   ],
   "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

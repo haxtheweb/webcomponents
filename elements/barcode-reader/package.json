@@ -48,7 +48,7 @@
     "@zxing/library": "0.19.1",
     "javascript-barcode-reader": "0.6.9",
     "jquery": "^3.6.0",
-    "lit": "^3.1.4"
+    "lit": "^3.2.0"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.2",
@@ -66,8 +66,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
+    "webcomponents",
     "html",
     "barcode"
   ],

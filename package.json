@@ -77,10 +77,10 @@
     "turndown": "7.1.1",
     "sharp": "0.33.2",
     "markdown-it": "14.0.0",
-    "@lit-labs/virtualizer": "^2.0.13",
-    "lit-html": "^3.1.4",
+    "@lit-labs/virtualizer": "^2.0.14",
+    "lit-html": "^3.2.0",
     "@lit-labs/ssr": "^3.2.2",
-    "lit": "^3.1.4",
+    "lit": "^3.2.0",
     "node-html-parser": "^6.1.13",
     "@haxtheweb/course-design": "^9.0.2",
     "@haxtheweb/video-player": "^9.0.2",
@@ -178,10 +178,10 @@
     "@google/model-viewer": "3.2.1",
     "webpack": "5.87.0",
     "roughjs": "4.4.5",
-    "lit": "3.1.4",
-    "lit-html": "3.1.4",
-    "lit-element": "4.0.6",
-    "@lit-labs/virtualizer": "2.0.12",
+    "lit": "3.2.0",
+    "lit-html": "3.2.0",
+    "lit-element": "4.1.0",
+    "@lit-labs/virtualizer": "2.0.14",
     "polymer-cli": "1.9.11",
     "polymer-build": "3.1.4"
   },
@@ -191,11 +191,10 @@
     "*.css": "stylelint --fix"
   },
   "keywords": [
+    "webcomponents",
+    "html",
     "haxtheweb",
-    "hax",
-    "lit",
-    "custom-elements",
-    "webcomponents"
+    "lit"
   ],
   "private": true,
   "npmClient": "yarn",

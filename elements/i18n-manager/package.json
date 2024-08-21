@@ -53,8 +53,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
+    "webcomponents",
     "html",
     "i18n"
   ],
