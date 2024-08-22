@@ -2096,7 +2096,6 @@ export const DDDReset = css`
     position: relative;
     max-width: 650px;
     padding: 0;
-    color: light-dark(black, white);
     margin: 0;
   }
   details[disabled] {
