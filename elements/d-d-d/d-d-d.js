@@ -340,6 +340,10 @@ export class DDDSample extends DDDSuper(LitElement) {
         }
 
         /* @hack just for the docs bc we can't visualize margins */
+        [data-margin="center"] {
+          margin-left: auto;
+          margin-right: auto;
+        }
         [data-margin="xs"] {
           padding: var(--ddd-spacing-2);
         }

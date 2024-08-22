@@ -24,12 +24,15 @@ export const LTIResizingMixin = function (SuperClass) {
           setTimeout(() => {
             let height = globalThis.document.body.scrollHeight;
             // scroll target is the content container
-            if (this.HAXCMSThemeSettings.scrollTarget && this.HAXCMSThemeSettings.scrollTarget.scrollHeight) {
+            if (
+              this.HAXCMSThemeSettings.scrollTarget &&
+              this.HAXCMSThemeSettings.scrollTarget.scrollHeight
+            ) {
               height = this.HAXCMSThemeSettings.scrollTarget.scrollHeight;
             }
             // Resize the window via canvas API so we don't have 2 scroll bars.
             parent.postMessage(
-              '{"subject":"lti.frameResize", "height":'  + height + ' }',
+              '{"subject":"lti.frameResize", "height":' + height + " }",
               "*",
             );
             parent.postMessage('{"subject":"lti.scrollToTop"}', "*");
@@ -38,12 +41,15 @@ export const LTIResizingMixin = function (SuperClass) {
           setTimeout(() => {
             let height = globalThis.document.body.scrollHeight;
             // scroll target is the content container
-            if (this.HAXCMSThemeSettings.scrollTarget && this.HAXCMSThemeSettings.scrollTarget.scrollHeight) {
+            if (
+              this.HAXCMSThemeSettings.scrollTarget &&
+              this.HAXCMSThemeSettings.scrollTarget.scrollHeight
+            ) {
               height = this.HAXCMSThemeSettings.scrollTarget.scrollHeight;
             }
             // Resize the window via canvas API so we don't have 2 scroll bars.
             parent.postMessage(
-              '{"subject":"lti.frameResize", "height":'  + height + ' }',
+              '{"subject":"lti.frameResize", "height":' + height + " }",
               "*",
             );
             parent.postMessage('{"subject":"lti.scrollToTop"}', "*");

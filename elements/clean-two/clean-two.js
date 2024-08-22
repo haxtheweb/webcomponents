@@ -130,7 +130,7 @@ class CleanTwo extends LTIResizingMixin(
           -ms-grid-column-align: stretch;
           -webkit-box-direction: normal;
         }
-        
+
         site-git-corner {
           height: 40px;
           width: 40px;

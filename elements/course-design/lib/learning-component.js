@@ -205,6 +205,7 @@ class LearningComponent extends I18NMixin(DDD) {
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
+          color: black;
         }
         .header {
           display: grid;

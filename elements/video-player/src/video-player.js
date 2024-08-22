@@ -347,7 +347,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           properties: {
             source: "https://www.youtube.com/watch?v=LrS7dqokTLE",
             "data-width": "75",
-            "data-margin": "center"
+            "data-margin": "center",
           },
           content: "",
         },

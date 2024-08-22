@@ -67,6 +67,10 @@ export class BlockQuote extends DDD {
             --ddd-component-block-quote-background,
             var(--ddd-theme-default-limestoneMaxLight, #f5f5f5)
           );
+          color: var(
+            --ddd-component-block-quote-icon,
+            var(--ddd-theme-accent, var(--ddd-theme-default-potential50))
+          );
           display: flex;
           align-items: start;
           width: 100%;

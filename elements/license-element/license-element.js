@@ -95,7 +95,9 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         .license-link {
           font-style: italic;
         }
-        a, a:any-link, a:-webkit-any-link {
+        a,
+        a:any-link,
+        a:-webkit-any-link {
           color: var(--ddd-theme-default-link);
           font-weight: var(--ddd-font-weight-bold);
         }

@@ -295,7 +295,7 @@ class A11yGifPlayer extends I18NMixin(
         this._automaticStill
       ) {
         setTimeout(async () => {
-          this.srcWithoutAnimation = await this.generateStill(this.src);          
+          this.srcWithoutAnimation = await this.generateStill(this.src);
         }, 0);
       }
     });
@@ -304,9 +304,11 @@ class A11yGifPlayer extends I18NMixin(
     // enable core services, though should be available
     const MicroFrontendRegistry =
       globalThis.MicroFrontendRegistry.requestAvailability();
-      await import("@haxtheweb/micro-frontend-registry/lib/microServices.js").then((e) => {
-        MicroFrontendRegistry.enableServices(["core"]);
-      })
+    await import(
+      "@haxtheweb/micro-frontend-registry/lib/microServices.js"
+    ).then((e) => {
+      MicroFrontendRegistry.enableServices(["core"]);
+    });
     return MicroFrontendRegistry.url("@core/imgManipulate", {
       quality: 50,
       src: src,
