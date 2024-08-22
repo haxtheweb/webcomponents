@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.5",
+  "version": "9.0.6",
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",
@@ -41,17 +41,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^9.0.3",
-    "@haxtheweb/i18n-manager": "^9.0.3",
-    "@haxtheweb/simple-fields": "^9.0.5",
-    "@haxtheweb/simple-icon": "^9.0.3",
-    "@haxtheweb/simple-popover": "^9.0.3",
+    "@haxtheweb/hax-iconset": "^9.0.6",
+    "@haxtheweb/i18n-manager": "^9.0.6",
+    "@haxtheweb/simple-fields": "^9.0.6",
+    "@haxtheweb/simple-icon": "^9.0.6",
+    "@haxtheweb/simple-popover": "^9.0.6",
     "lit": "^3.2.0",
     "mobx": "6.12.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.2",
-    "@haxtheweb/storybook-utilities": "^9.0.3",
+    "@haxtheweb/deduping-fix": "^9.0.6",
+    "@haxtheweb/storybook-utilities": "^9.0.6",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
