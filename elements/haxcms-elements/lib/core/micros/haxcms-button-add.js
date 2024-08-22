@@ -107,24 +107,31 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     let item = {};
     // support for button defining the id of the associated item
     if (this.actionId) {
+      console.log(this.actionId);
       // support for null as in top of heirarchy
       if (this.actionId == "null" || this.actionId == null) {
+        console.log('null')
         item = toJS(await store.getLastChildItem(null));
       } else {
+        console.log('actionid');
         item = await store.findItemAsObject(this.actionId);
       }
     }
     // if we lacked dedicated context, assume the active Item
     else {
+      console.log('active');
       item = toJS(store.activeItem);
     }
+    console.log(item);
+
     if (item) {
       if (this.type === "sibling") {
         parent = item.parent;
         order = parseInt(item.order) + 1;
       } else if (this.type === "child") {
         // ensure we get last child
-        item = toJS(await store.getLastChildItem(item.id));
+        item = await toJS(store.getLastChildItem(item.id));
+        console.log(item);
         parent = item.parent;
         // @todo might need to check last child and add to end order wise there
         order = parseInt(item.order) + 1;

@@ -178,7 +178,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           <div class="title">${this.itemtitle}</div>
         </button>
       </a>
-      ${this.editControls && this.hovered
+      ${this.editControls && this.active
         ? html` <div class="ops">
             <haxcms-button-add
               class="op"

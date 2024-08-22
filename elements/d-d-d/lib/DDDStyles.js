@@ -1626,10 +1626,7 @@ export const DDDReset = css`
   a:any-link,
   a:-webkit-any-link {
     line-break: auto;
-    color: light-dark(
-      var(--ddd-theme-default-link),
-      var(--ddd-theme-default-linkLight)
-    );
+    color: var(--ddd-theme-default-link);
     font-weight: var(--ddd-font-weight-bold);
     text-decoration: none;
     background-color: var(--ddd-theme-accent);

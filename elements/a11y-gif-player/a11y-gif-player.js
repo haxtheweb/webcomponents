@@ -85,6 +85,7 @@ class A11yGifPlayer extends I18NMixin(
         button {
           position: absolute;
           width: 100%;
+          min-height: 100px;
           top: 0;
           left: 0;
           bottom: 0;
@@ -279,9 +280,9 @@ class A11yGifPlayer extends I18NMixin(
           // import registry
           import(
             "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"
-          ).then(() => {
+          ).then(async () => {
             this._automaticStill = true;
-            this.srcWithoutAnimation = this.generateStill(this.src);
+            this.srcWithoutAnimation = await this.generateStill(this.src);
           });
         }
       }
@@ -293,15 +294,19 @@ class A11yGifPlayer extends I18NMixin(
         this.elementVisible &&
         this._automaticStill
       ) {
-        this.srcWithoutAnimation = this.generateStill(this.src);
+        setTimeout(async () => {
+          this.srcWithoutAnimation = await this.generateStill(this.src);          
+        }, 0);
       }
     });
   }
-  generateStill(src) {
+  async generateStill(src) {
     // enable core services, though should be available
     const MicroFrontendRegistry =
       globalThis.MicroFrontendRegistry.requestAvailability();
-    MicroFrontendRegistry.enableServices(["core"]);
+      await import("@haxtheweb/micro-frontend-registry/lib/microServices.js").then((e) => {
+        MicroFrontendRegistry.enableServices(["core"]);
+      })
     return MicroFrontendRegistry.url("@core/imgManipulate", {
       quality: 50,
       src: src,

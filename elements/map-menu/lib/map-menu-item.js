@@ -157,7 +157,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
           <span class="title">${this.itemtitle}</span>
         </button>
       </a>
-      ${this.editControls && this.hovered
+      ${this.editControls && this.active
         ? html` <div class="ops">
             <haxcms-button-add
               class="op"
@@ -197,7 +197,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
     setTimeout(() => {
       this.addEventListener("focusin", this.__active.bind(this));
       this.addEventListener("focusout", this.__deactive.bind(this));
-      this.addEventListener("mouseenter", this.__active.bind(this));
+      this.addEventListener("mouseover", this.__active.bind(this));
       this.addEventListener("mouseleave", this.__deactive.bind(this));
     }, 0);
   }

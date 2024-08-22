@@ -113,7 +113,7 @@ class MapMenuSubmenu extends LitElement {
       );
       this.addEventListener("focusin", this.__active.bind(this));
       this.addEventListener("focusout", this.__deactive.bind(this));
-      this.addEventListener("mouseenter", this.__active.bind(this));
+      this.addEventListener("mouseover", this.__active.bind(this));
       this.addEventListener("mouseleave", this.__deactive.bind(this));
     }, 0);
   }

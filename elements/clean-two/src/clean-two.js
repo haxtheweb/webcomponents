@@ -130,7 +130,7 @@ class CleanTwo extends LTIResizingMixin(
           -ms-grid-column-align: stretch;
           -webkit-box-direction: normal;
         }
-        replace-tag[with="site-git-corner"],
+        
         site-git-corner {
           height: 40px;
           width: 40px;
@@ -597,6 +597,11 @@ class CleanTwo extends LTIResizingMixin(
         replace-tag[with="site-print-button"],
         site-print-button {
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+        }
+        replace-tag[with="site-rss-button"],
+        replace-tag[with="site-print-button"],
+        replace-tag[with="site-git-corner"] {
+          display: none;
         }
         site-rss-button,
         site-print-button,

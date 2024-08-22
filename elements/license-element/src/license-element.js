@@ -76,12 +76,13 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           bottom: var(--ddd-spacing-9);
           right: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-ms);
-          color: var(--ddd-theme-default-limestoneGray);
+          color: var(--ddd-theme-default-slateGray);
           font-style: italic;
         }
         .license-body {
           padding: var(--ddd-spacing-8);
           background-color: var(--ddd-theme-default-limestoneMaxLight);
+          color: var(--ddd-theme-default-slateGray);
         }
 
         :host([display-method="footnote"]) {
@@ -94,7 +95,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         .license-link {
           font-style: italic;
         }
-        a {
+        a, a:any-link, a:-webkit-any-link {
           color: var(--ddd-theme-default-link);
           font-weight: var(--ddd-font-weight-bold);
         }

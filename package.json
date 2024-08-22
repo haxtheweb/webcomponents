@@ -43,6 +43,8 @@
     "haxschema": "./node_modules/.bin/gulp haxschema",
     "new": "yarn run rebuild-wcfcache && wcf element && yarn install --link-duplicates",
     "ubiquity": "polymer build && yarn run terser && yarn run wc-autoloader && yarn run version-match && mkdir build/es6/node_modules/@lrnwebcomponents && cp -R build/es6/node_modules/@haxtheweb/wc-autoload build/es6/node_modules/@lrnwebcomponents/wc-autoload && cp -R build/es6/node_modules/@haxtheweb/dynamic-import-registry build/es6/node_modules/@lrnwebcomponents/dynamic-import-registry",
+    "ubiquity-testing": "bash scripts/ubiquity-testing.sh",
+    "ubiquity-push": "bash scripts/ubiquity-push.sh",
     "terser": "gulp terser --gulpfile=gulpfile.mjs",
     "wc-autoloader": "gulp wc-autoloader --gulpfile=gulpfile.mjs",
     "version-match": "gulp version-match --gulpfile=gulpfile.mjs"
