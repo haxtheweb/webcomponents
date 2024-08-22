@@ -51,6 +51,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
       css`
         :host {
           display: block;
+          color: black;
           --polaris-bg-color: #f5f5f5;
           --polaris-content-bg-color: #ffffff;
           --polaris-header-bg-color: #262c3a;

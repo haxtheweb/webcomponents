@@ -43,6 +43,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
       css`
         :host {
           display: block;
+          color: black;
           width: auto;
           --background-color: var(
             --ddd-component-stop-note-icon-background,
@@ -62,32 +63,20 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
 
         :host([icon="stopnoteicons:stop-icon"]) {
           --accent-color: var(--ddd-theme-default-original87Pink);
-          --background-color: light-dark(
-            var(--ddd-theme-default-errorLight),
-            var(--ddd-theme-default-error)
-          );
+          --background-color: var(--ddd-theme-default-errorLight);
         }
         :host([status="stop"]) {
           --accent-color: var(--ddd-theme-default-original87Pink);
-          --background-color: light-dark(
-            var(--ddd-theme-default-errorLight),
-            var(--ddd-theme-default-error)
-          );
+          --background-color: var(--ddd-theme-default-errorLight);
         }
 
         :host([icon="stopnoteicons:warning-icon"]) {
           --accent-color: var(--ddd-theme-default-keystoneYellow);
-          --background-color: light-dark(
-            var(--ddd-theme-default-warningLight),
-            var(--ddd-theme-default-warning)
-          );
+          --background-color: var(--ddd-theme-default-warningLight);
         }
         :host([status="warning"]) {
           --accent-color: var(--ddd-theme-default-keystoneYellow);
-          --background-color: light-dark(
-            var(--ddd-theme-default-warningLight),
-            var(--ddd-theme-default-warning)
-          );
+          --background-color: var(--ddd-theme-default-warningLight);
         }
 
         :host([icon="stopnoteicons:confirm-icon"]) {
@@ -95,20 +84,15 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
             var(--ddd-theme-default-success),
             var(--ddd-theme-default-opportunityGreen)
           );
-          --background-color: light-dark(
-            var(--ddd-theme-default-successLight),
-            var(--ddd-theme-default-success)
-          );
+          --background-color: var(--ddd-theme-default-successLight);
         }
         :host([status="success"]) {
           --accent-color: light-dark(
             var(--ddd-theme-default-success),
             var(--ddd-theme-default-opportunityGreen)
           );
-          --background-color: light-dark(
-            var(--ddd-theme-default-successLight),
-            var(--ddd-theme-default-success)
-          );
+          --background-color: var(--ddd-theme-default-successLight);
+
         }
 
         :host([icon="stopnoteicons:book-icon"]) {
@@ -116,20 +100,14 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
             var(--ddd-theme-default-info),
             var(--ddd-theme-default-skyBlue)
           );
-          --background-color: light-dark(
-            var(--ddd-theme-default-infoLight),
-            var(--ddd-theme-default-info)
-          );
+          --background-color: var(--ddd-theme-default-infoLight);
         }
         :host([status="info"]) {
           --accent-color: light-dark(
             var(--ddd-theme-default-info),
             var(--ddd-theme-default-skyBlue)
           );
-          --background-color: light-dark(
-            var(--ddd-theme-default-infoLight),
-            var(--ddd-theme-default-info)
-          );
+          --background-color: var(--ddd-theme-default-infoLight);
         }
 
         .container {

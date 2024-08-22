@@ -31,6 +31,7 @@ class OutlinePlayer extends LTIResizingMixin(
       super.styles,
       css`
         :host {
+          color: black;
           display: block;
           position: relative;
           overflow: hidden;

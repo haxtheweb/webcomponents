@@ -36,6 +36,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
       styles,
       css`
         :host {
+          color: black;
           --__learn-two-theme-default-background: var(
             --learn-two-theme-default-background,
             #ffffff
