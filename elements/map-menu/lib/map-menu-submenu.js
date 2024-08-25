@@ -16,38 +16,82 @@ class MapMenuSubmenu extends LitElement {
           cursor: pointer;
           display: block;
         }
-        :host([opened]) map-menu-header {
-          /*border-left: 16px solid var(--map-menu-border-depth, rgba(0,0,0,.1));*/
-        }
         :host([hide-in-menu]) {
           display: none;
         }
         #container {
-          margin: 0;
+          margin: 0 0 -2px 0;
         }
         #container ::slotted(map-menu-builder) {
           display: block;
-        }
-        #container ::slotted(map-menu-item),
-        #container ::slotted(map-menu-submenu) {
-          margin-left: 10px;
         }
         a11y-collapse {
           --a11y-collapse-border: 0;
           --a11y-collapse-horizontal-padding: 0;
           --a11y-collapse-vertical-padding: 0;
           color: var(--map-menu-item-a-color, inherit);
+          --simple-tooltip-margin: 0 -36px 0 0;
+        }
+        #container ::slotted(map-menu-builder)::after {
+          transition: 0.3s ease-in-out all;
+        }
+        :host([opened]) #container ::slotted(map-menu-builder)::after {
+          display: block;
+          width: 12px;
+          bottom: 2px;
+          content: "";
+          position: relative;
+          border-bottom: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
+        }
+        a11y-collapse::before {
+          transition: 0.3s ease-in-out all;
+        }
+        :host([opened]) a11y-collapse::before {
+          display: block;
+          width: 12px;
+          height: 40px;
+          content: "";
+          position: absolute;
+          border-bottom: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
+        }
+
+        :host([active]) a11y-collapse::part(icon),
+        :host([hovered]) a11y-collapse::part(icon) {
+          color: var(--map-menu-item-icon-active-color, black);
+          background-color: var(--map-menu-container-background-color, white);
+        }
+
+        a11y-collapse::part(icon) {
+          position: absolute;
+          margin-left: 4px;
+          --simple-icon-height: 18px;
+          --simple-icon-width: 18px;
+        }
+        :host(:not([icon=""])) a11y-collapse::part(icon) {
+          visibility: none;
+          opacity: 0;
+        }
+        :host(:focus) a11y-collapse::part(icon),
+        :host(:hover) a11y-collapse::part(icon) {
+          visibility: visible;
+          opacity: 1;
+          color: var(--map-menu-item-icon-active-color, black);
+          background-color: var(--map-menu-container-background-color, white);
         }
       `,
     ];
   }
   constructor() {
     super();
+    this.editControls = false;
     this.iconLabel = null;
     this.opened = false;
     this.collapsable = true;
     this.expandChildren = false;
-    this.avatarLabel = "";
+    this.hovered = false;
+    this.active = false;
     this.label = "";
     this.status = "";
     this.itemtitle = "";
@@ -67,7 +111,18 @@ class MapMenuSubmenu extends LitElement {
         "map-menu-item-hidden-check",
         this._mapMenuItemHiddenCheckHandler.bind(this),
       );
+      this.addEventListener("focusin", this.__active.bind(this));
+      this.addEventListener("focusout", this.__deactive.bind(this));
+      this.addEventListener("mouseover", this.__active.bind(this));
+      this.addEventListener("mouseleave", this.__deactive.bind(this));
     }, 0);
+  }
+
+  __active() {
+    this.hovered = true;
+  }
+  __deactive() {
+    this.hovered = false;
   }
 
   // align the collapse state w/ this state
@@ -89,10 +144,11 @@ class MapMenuSubmenu extends LitElement {
         @a11y-collapse-click="${this.__alignCollapseState}"
       >
         <map-menu-header
-          .avatar-label="${this.avatarLabel}"
           id="${this.id}"
+          ?edit-controls="${this.editControls}"
           itemtitle="${this.itemtitle}"
           label="${this.label}"
+          ?hovered="${this.hovered}"
           ?opened="${this.opened}"
           url="${this.url}"
           selected="${this.selected}"
@@ -127,9 +183,9 @@ class MapMenuSubmenu extends LitElement {
         type: String,
         attribute: "icon-label",
       },
-      avatarLabel: {
-        type: String,
-        attribute: "avatar-label",
+      editControls: {
+        type: Boolean,
+        attribute: "edit-controls",
       },
       hideInMenu: {
         type: Boolean,
@@ -139,8 +195,17 @@ class MapMenuSubmenu extends LitElement {
       label: {
         type: String,
       },
+      hovered: {
+        type: Boolean,
+        reflect: true,
+      },
+      active: {
+        type: Boolean,
+        reflect: true,
+      },
       icon: {
         type: String,
+        reflect: true,
       },
       url: {
         type: String,
@@ -211,6 +276,11 @@ class MapMenuSubmenu extends LitElement {
     );
   }
   __activeChanged(e) {
+    if (this.shadowRoot.querySelector("map-menu-header") === e.detail) {
+      this.active = true;
+    } else {
+      this.active = false;
+    }
     this.opened = true;
   }
 }

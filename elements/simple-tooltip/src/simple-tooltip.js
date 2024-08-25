@@ -19,6 +19,8 @@ import { LitElement, html, css } from "lit";
      `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`
      `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`
      `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`
+     `--simple-tooltip-padding` | padding on the wrapper for the tip | `8px`
+     `--simple-tooltip-margin` | margin on the wrapper for the tip | `0px`
   * @demo demo/index.html
   * @element simple-tooltip
   */
@@ -47,7 +49,8 @@ class SimpleTooltip extends LitElement {
           line-height: 1;
           background-color: var(--simple-tooltip-background, #616161);
           color: var(--simple-tooltip-text-color, white);
-          padding: 8px;
+          padding: var(--simple-tooltip-padding, 8px);
+          margin: var(--simple-tooltip-margin, 0px);
           border-radius: var(--simple-tooltip-border-radius, 2px);
           width: var(--simple-tooltip-width);
         }
@@ -402,7 +405,6 @@ class SimpleTooltip extends LitElement {
       .querySelector("#tooltip")
       .classList.add(this._getAnimationType("entry"));
   }
-
   /**
    * Hides the tooltip programatically
    * @return {void}
@@ -467,7 +469,6 @@ class SimpleTooltip extends LitElement {
         tooltipTop = targetTop + verticalCenterOffset;
         break;
     }
-    // TODO(noms): This should use IronFitBehavior if possible.
     if (this.fitToVisibleBounds) {
       // Clip the left/right side
       if (

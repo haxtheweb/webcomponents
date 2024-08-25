@@ -11,6 +11,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -24,7 +25,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  
   * @demo demo/index.html
   */
-class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
+class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   //styles function
   static get styles() {
     let styles = [];
@@ -35,6 +36,7 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
       styles,
       css`
         :host {
+          color: black;
           --__learn-two-theme-default-background: var(
             --learn-two-theme-default-background,
             #ffffff
@@ -217,10 +219,10 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
         }
 
         :host([is-logged-in]) app-drawer-layout[narrow] site-menu {
-          height: calc(100vh - 146px);
+          height: calc(100vh - 162px);
         }
         app-drawer-layout[narrow] site-menu {
-          height: calc(100vh - 98px);
+          height: calc(100vh - 116px);
         }
 
         site-menu-button[type="next"] {
@@ -249,7 +251,7 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
           background-color: var(--learn-two-theme-menu-color, #383f45);
           color: #ffffff;
           padding: 0;
-          height: calc(100vh - 98px);
+          height: calc(100vh - 116px);
           --site-menu-color: #ffffff;
           --map-menu-item-a-active-color: black;
           overflow: auto;
@@ -268,11 +270,11 @@ class LearnTwoTheme extends DDDSuper(HAXCMSLitElementTheme) {
             rgba(200, 200, 200, 0.1)
           );
           font-family: var(--ddd-font-navigation);
-          --site-menu-font-size: var(--ddd-font-size-xs);
+          --site-menu-font-size: var(--ddd-font-size-3xs);
         }
 
         :host([is-logged-in]) site-menu {
-          height: calc(100vh - 146px);
+          height: calc(100vh - 162px);
         }
 
         app-drawer-layout {

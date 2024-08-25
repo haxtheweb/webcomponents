@@ -249,7 +249,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
     <style>
     :host {
       display: block;
-      opacity: .3;
+      opacity: .2;
       transition: .3s linear opacity,.3s linear outline,.3s linear visibility,.3s linear display;
     }
     :host([import]) {
@@ -262,13 +262,15 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       line-height: 2px !important;
       height:2px;
     }
+    div {
+      font-size: 12px;
+    }
     :host(:not([import-method="click"])) {
-      background-color: #EEEEEE;
-      color: #444444;
-      font-size: 16px;
+      background-color: #FEFEFE33;
+      font-size: 12px;
       opacity: .8;
-      margin: 16px;
-      padding: 16px;
+      margin: 12px;
+      padding: 12px;
     }
     :host(:not([import-method="click"]):hover) {
       opacity: 1 !important;

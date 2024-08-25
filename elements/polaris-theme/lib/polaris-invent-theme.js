@@ -24,6 +24,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
+
 /**
  * `polaris-invent-theme`
  * `A 2nd polaris theme`
@@ -35,14 +37,16 @@ import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-
  * @demo demo/index.html
  * @element polaris-invent-theme
  */
-class PolarisInventTheme extends HAXCMSOperationButtons(
-  HAXCMSRememberRoute(
-    EmailPageMixin(
-      PDFPageMixin(
-        PrintBranchMixin(
-          QRCodeMixin(
-            HAXCMSThemeParts(
-              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+class PolarisInventTheme extends LTIResizingMixin(
+  HAXCMSOperationButtons(
+    HAXCMSRememberRoute(
+      EmailPageMixin(
+        PDFPageMixin(
+          PrintBranchMixin(
+            QRCodeMixin(
+              HAXCMSThemeParts(
+                HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+              ),
             ),
           ),
         ),
@@ -101,13 +105,13 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         scroll-button {
           position: fixed;
           right: 0px;
-          bottom: 40px;
+          bottom: 0px;
           z-index: 10000;
           --scroll-button-background-color: var(
             --ddd-theme-default-inventOrange
           );
-          --simple-icon-width: 40px;
-          --simple-icon-height: 40px;
+          --simple-icon-width: 32px;
+          --simple-icon-height: 32px;
           --simple-icon-button-border-radius: none;
         }
         .entry-content a {
@@ -118,7 +122,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           font-size: var(--ddd-font-size-l);
           padding: 0;
           margin: 0 0 var(--ddd-spacing-5) 0;
-          text-align: left;
+          text-align: start;
           line-height: normal;
         }
 
@@ -150,8 +154,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         .nav {
           background-color: var(--polaris-nav-bg-color);
           color: var(--polaris-nav-color);
-          padding-top: 4px;
-          padding-left: 0px;
         }
 
         #slot {
@@ -161,7 +163,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
 
         site-menu {
           font-family: var(--ddd-font-navigation);
-          --site-menu-font-size: var(--ddd-font-size-xs);
+          --site-menu-font-size: var(--ddd-font-size-3xs);
           --map-menu-item-a-active-background-color: var(
             --polaris-header-bg-color
           );
@@ -170,9 +172,9 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             --ddd-theme-default-inventOrange
           );
           --map-menu-overflow: visible;
-          width: 320px;
-          margin-bottom: 16px;
-          padding: 0 16px 0 0;
+          --site-menu-container-background-color: var(--ddd-accent-6);
+          --map-menu-item-a-active-color: var(--ddd-accent-6);
+          --map-menu-item-icon-active-color: black;
         }
 
         site-modal {
@@ -199,10 +201,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         }
 
         @media screen and (min-width: 900px) {
-          .nav {
-            padding-top: 8px;
-            padding-left: 4px;
-          }
           .link-actions .inner {
             margin: 0;
             display: grid;
@@ -415,9 +413,10 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           text-decoration: none;
         }
         #haxcmsmobilemenubutton {
-          padding: 4px;
+          padding: 0px;
           --simple-icon-height: 30px;
-          --simple-icon-width: 36px;
+          --simple-icon-width: 30px;
+          margin: 2px 6px 0 6px;
         }
         @media only screen and (max-width: 1139px) {
           .wrap {
@@ -433,7 +432,6 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             padding: 20px 0;
           }
           scroll-button {
-            bottom: 0px;
             --simple-icon-width: 20px;
             --simple-icon-height: 20px;
           }
@@ -467,12 +465,12 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
           flex: 0 1 0%;
           margin: 0;
           padding: 0;
-          margin-left: -360px;
+          margin-left: -300px;
           transition: margin 300ms ease;
           height: fit-content;
         }
         :host {
-          --menu-size: 360px;
+          --menu-size: 300px;
         }
         :host([menu-open]) {
           --menu-size: 0px;
@@ -480,6 +478,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         :host([menu-open]) .left-col {
           margin-left: 0px;
           position: sticky;
+          margin-top: 8px;
         }
 
         .pdf-page-btn,
@@ -489,8 +488,8 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         #qrcodebtnwrapper {
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
-          margin: 8px 12px;
-          transition: 0.3s ease-in-out all;
+          margin: 8px 4px 0 8px;
+          transition: 0.3s ease-in all;
         }
 
         :host([menu-open]) .pdf-page-btn,
@@ -499,18 +498,11 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
         :host([menu-open]) #emailbtnwrapper,
         :host([menu-open]) #qrcodebtnwrapper {
           display: inline-flex;
-          --simple-icon-height: 30px;
-          --simple-icon-width: 30px;
-          margin: 0 4px;
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
         }
-        :host([menu-open]) .search-modal-btn {
-          margin-left: 92px;
-        }
+
         @media screen and (min-width: 900px) {
-          #haxcmsmobilemenubutton {
-            --simple-icon-height: 40px;
-            --simple-icon-width: 40px;
-          }
           article {
             padding: 64px 80px 40px 40px;
           }
@@ -518,7 +510,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             flex: 0 0 auto;
             width: auto;
             z-index: 15;
-            width: 360px;
+            width: 300px;
             align-items: stretch;
             flex-direction: column;
             -webkit-box-align: stretch;
@@ -533,13 +525,13 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
     this.HAXCMSThemeSettings.scrollTarget =
-    this.shadowRoot.querySelector("#main");
-  globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
-    this.HAXCMSThemeSettings.scrollTarget;
+      this.shadowRoot.querySelector("#main");
+    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+      this.HAXCMSThemeSettings.scrollTarget;
 
-  // hook up the scroll target
-  this.shadowRoot.querySelector("scroll-button").target =
-    this.shadowRoot.querySelector("#main");
+    // hook up the scroll target
+    this.shadowRoot.querySelector("scroll-button").target =
+      this.shadowRoot.querySelector("#main");
   }
   // render function
   render() {
@@ -640,7 +632,7 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
             <site-region name="footerPrimary"></site-region>
           </div>
         </section>
-        <scroll-button></scroll-button>
+        <scroll-button position="left"></scroll-button>
       </footer>
     `;
   }
@@ -687,12 +679,16 @@ class PolarisInventTheme extends HAXCMSOperationButtons(
       let store = globalThis.HaxStore.requestAvailability();
       // elements that are in HAXcms that are injected regardless of what editor says
       // because the CMS controls certain internal connectors
-      ["polaris-cta", "polaris-mark", "polaris-story-card", "polaris-tile"].map(
-        (name) => {
-          let el = globalThis.document.createElement(name);
-          store.haxAutoloader.appendChild(el);
-        },
-      );
+      [
+        "polaris-cta",
+        "polaris-mark",
+        "polaris-story-card",
+        "polaris-tile",
+        "media-quote",
+      ].map((name) => {
+        let el = globalThis.document.createElement(name);
+        store.haxAutoloader.appendChild(el);
+      });
       this.windowControllersLoaded.abort();
     }
   }

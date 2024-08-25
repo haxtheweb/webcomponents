@@ -495,6 +495,7 @@ class A11yCollapse extends DDD {
           </div>
           <simple-icon-lite
             id="expand"
+            part="icon"
             class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
             .icon="${this._getExpanded(
               this.icon || "icons:expand-more",
@@ -529,6 +530,7 @@ class A11yCollapse extends DDD {
         </div>
         <simple-icon-button-lite
           id="expand"
+          part="icon"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
           @click="${this._onClick}"
           ?disabled="${this.disabled}"
@@ -563,6 +565,7 @@ class A11yCollapse extends DDD {
   _onClick() {
     if (!this.disabled) {
       this.toggle();
+      this.shadowRoot.querySelector("simple-tooltip").hide();
       /**
        * Fires when clicked.
        *

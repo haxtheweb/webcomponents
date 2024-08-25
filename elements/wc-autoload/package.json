@@ -15,7 +15,7 @@
       "hax": "src/wc-autoload-hax.json"
     }
   },
-  "version": "9.0.3",
+  "version": "9.0.6",
   "description": "automatically load new tags in the dom",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/dynamic-import-registry": "^9.0.3"
+    "@haxtheweb/dynamic-import-registry": "^9.0.6"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/deduping-fix": "^9.0.6",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -56,9 +56,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
-    "html"
+    "webcomponents",
+    "html",
+    "haxtheweb",
+    "lit"
   ],
   "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

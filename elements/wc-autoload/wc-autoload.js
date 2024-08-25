@@ -79,7 +79,11 @@ globalThis.WCAutoload.process = (e) => {
             ];
           }
           for (var i = 0; i < globalThis.WCAutoloadRegistryFile.length; i++) {
-            await fetch_retry(globalThis.WCAutoloadRegistryFile[i], {}, 3)
+            await fetch_retry(
+              globalThis.WCAutoloadRegistryFile[i],
+              { priority: "high" },
+              3,
+            )
               .then(function (response) {
                 return response.json();
               })

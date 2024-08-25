@@ -40,11 +40,13 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         if (this.isSafari) {
           this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
         } else {
-          this.HAXCMSThemeSettings.scrollTarget.scrollIntoView({
-            behavior: "instant",
-            block: "start",
-            inline: "nearest",
-          });
+          setTimeout(() => {
+            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView({
+              behavior: "instant",
+              block: "start",
+              inline: "nearest",
+            });
+          }, 0);
         }
       }
       // delay bc this shouldn't block page load in any way

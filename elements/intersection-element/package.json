@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/intersection-element",
-  "version": "9.0.2",
+  "version": "9.0.6",
   "description": "VanillaJS Intersection element / capabilities to mix into other elements",
   "repository": {
     "type": "git",
@@ -18,5 +18,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "webcomponents",
+    "html",
+    "haxtheweb",
+    "lit"
+  ],
   "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

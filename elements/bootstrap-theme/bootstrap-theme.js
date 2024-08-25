@@ -69,7 +69,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
           );
           --map-menu-item-height: 24px;
           --map-menu-button-height: 34px;
-          --map-menu-header-button-min-height: 34px;
           width: 100%;
           display: flex;
           padding: 0;

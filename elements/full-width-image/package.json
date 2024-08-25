@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.3",
+  "version": "9.0.6",
   "description": "full width image that flows beyond boundaries",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.2",
-    "@haxtheweb/storybook-utilities": "^9.0.3",
+    "@haxtheweb/deduping-fix": "^9.0.6",
+    "@haxtheweb/storybook-utilities": "^9.0.6",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -54,10 +54,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
+    "webcomponents",
     "html",
-    "haxtheweb"
+    "haxtheweb",
+    "lit"
   ],
   "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

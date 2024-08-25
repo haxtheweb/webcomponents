@@ -72,6 +72,7 @@ class MediaQuote extends DDD {
           font-family: var(--ddd-font-primary);
           display: flex;
           justify-content: center;
+          overflow-y: hidden; /* in case of really long input */
         }
 
         .top-content {
@@ -182,6 +183,7 @@ class MediaQuote extends DDD {
           }
           .quote {
             font-size: var(--ddd-font-size-xs);
+            line-height: normal;
           }
 
           .author,

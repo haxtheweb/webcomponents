@@ -808,7 +808,7 @@ class Store {
    * shortcut to find the last child of an item
    */
   async getLastChildItem(id) {
-    if (this.manifest && id) {
+    if (this.manifest) {
       let current = {};
       await this.manifest.items.map((item) => {
         if (item.parent === id) {

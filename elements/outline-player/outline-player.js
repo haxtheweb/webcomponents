@@ -7,6 +7,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -19,7 +20,9 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  *
  * @demo demo/index.html
  */
-class OutlinePlayer extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
+class OutlinePlayer extends LTIResizingMixin(
+  SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)),
+) {
   /**
    * LitElement style render
    */
@@ -28,6 +31,7 @@ class OutlinePlayer extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
       super.styles,
       css`
         :host {
+          color: black;
           display: block;
           position: relative;
           overflow: hidden;
@@ -155,24 +159,46 @@ class OutlinePlayer extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
           padding: 0;
         }
         site-menu {
-          height: calc(100vh - 64px);
-          color: #000000;
-          padding: 0;
-          background-color: #ffffff;
-          --site-menu-active-color: rgba(0, 0, 0, 0.1);
-          --site-menu-scrolltrack-bg-color: rgba(0, 0, 0, 0.3);
-          --site-menu-bg-shadow: rgba(0, 0, 0, 0.3);
-          --site-menu-bg-color: #fafafa;
-          --site-menu-padding: 0;
-          --site-menu-background-color: #ffffff;
-          --site-menu-color: #000000;
-          --site-menu-container-padding: 0;
-          --site-menu-container-background-color: #ffffff;
-          --site-menu-container-color: #000000;
-          --site-menu-item-active-item-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            rgba(100, 100, 255, 0.1)
+          height: calc(100vh - 50px);
+          --site-menu-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
           );
+          --site-menu-active-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          --site-menu-item-active-item-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          color: light-dark(black, var(--ddd-accent-6));
+          --map-menu-item-a-active-background-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+          --map-menu-item-a-active-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          --map-menu-item-icon-active-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+          --site-menu-container-background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-light);
+          --site-menu-font-size: var(--ddd-font-size-3xs);
+        }
+        :host([is-logged-in]) app-drawer {
+          top: -70px;
         }
         site-menu-button {
           --site-menu-button-button-hover-background-color: rgba(0, 0, 0, 0.2);

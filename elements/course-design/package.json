@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.5",
+  "version": "9.0.6",
   "description": "some different elements specific to the design of educational materials. Lots of small elements and a catch all repo",
   "repository": {
     "type": "git",
@@ -44,17 +44,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^9.0.3",
-    "@haxtheweb/haxcms-elements": "^9.0.5",
-    "@haxtheweb/i18n-manager": "^9.0.3",
-    "@haxtheweb/simple-colors": "^9.0.3",
-    "@haxtheweb/simple-icon": "^9.0.3",
-    "@haxtheweb/simple-tooltip": "^9.0.3",
-    "lit": "^3.1.4",
+    "@haxtheweb/hax-iconset": "^9.0.6",
+    "@haxtheweb/haxcms-elements": "^9.0.6",
+    "@haxtheweb/i18n-manager": "^9.0.6",
+    "@haxtheweb/simple-colors": "^9.0.6",
+    "@haxtheweb/simple-icon": "^9.0.6",
+    "@haxtheweb/simple-tooltip": "^9.0.6",
+    "lit": "^3.2.0",
     "mobx": "6.12.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/deduping-fix": "^9.0.6",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -67,10 +67,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
+    "webcomponents",
     "html",
-    "haxtheweb"
+    "haxtheweb",
+    "lit"
   ],
   "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

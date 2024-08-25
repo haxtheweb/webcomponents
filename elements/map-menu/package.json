@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.5",
+  "version": "9.0.6",
   "description": "Automated conversion of map-menu/",
   "repository": {
     "type": "git",
@@ -41,10 +41,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-collapse": "^9.0.5",
-    "@haxtheweb/simple-icon": "^9.0.3",
-    "@haxtheweb/simple-tooltip": "^9.0.3",
-    "lit": "^3.1.4"
+    "@haxtheweb/a11y-collapse": "^9.0.6",
+    "@haxtheweb/simple-icon": "^9.0.6",
+    "@haxtheweb/simple-tooltip": "^9.0.6",
+    "lit": "^3.2.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
@@ -58,9 +58,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
-    "html"
+    "webcomponents",
+    "html",
+    "haxtheweb",
+    "lit"
   ],
   "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

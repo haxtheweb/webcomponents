@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.3",
+  "version": "9.0.6",
   "description": "Reads barcodes",
   "repository": {
     "type": "git",
@@ -48,10 +48,10 @@
     "@zxing/library": "0.19.1",
     "javascript-barcode-reader": "0.6.9",
     "jquery": "^3.6.0",
-    "lit": "^3.1.4"
+    "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.2",
+    "@haxtheweb/deduping-fix": "^9.0.6",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -66,8 +66,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
+    "webcomponents",
     "html",
     "barcode"
   ],

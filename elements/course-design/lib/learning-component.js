@@ -205,6 +205,8 @@ class LearningComponent extends I18NMixin(DDD) {
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
+          color: black;
+          background-color: var(--ddd-theme-accent, white);
         }
         .header {
           display: grid;
@@ -213,7 +215,7 @@ class LearningComponent extends I18NMixin(DDD) {
           background-color: var(
             --ddd-component-learning-component-title-background,
             var(
-              --ddd-theme-accent,
+              --ddd-theme-primary,
               var(--simple-colors-default-theme-accent-8, #dc7927)
             )
           );

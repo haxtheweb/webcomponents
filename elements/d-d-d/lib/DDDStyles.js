@@ -65,6 +65,7 @@ if (globalThis && globalThis.addEventListener) {
                 options: {
                   "": "-- default --",
                   left: "Left",
+                  center: "Center",
                   right: "Right",
                 },
               });
@@ -487,6 +488,7 @@ export const ApplicationAttributeData = {
     14: "Alert Non Emergency",
   },
   margin: {
+    center: "Center",
     xs: "X-Small",
     s: "Small",
     m: "Medium",
@@ -1054,17 +1056,19 @@ export const DDDVariables = css`
 export const DDDDataAttributes = [
   css`
     /* basic width operation, not great but not terrible */
-    [data-width="25"] {
-      width: 25%;
-    }
-    [data-width="50"] {
-      width: 50%;
-    }
-    [data-width="75"] {
-      width: 75%;
-    }
-    [data-width="100"] {
-      width: 100%;
+    @media (min-width: 600px) {
+      [data-width="25"] {
+        width: 25%;
+      }
+      [data-width="50"] {
+        width: 50%;
+      }
+      [data-width="75"] {
+        width: 75%;
+      }
+      [data-width="100"] {
+        width: 100%;
+      }
     }
 
     /* Float positioning for larger devices */
@@ -1365,47 +1369,53 @@ export const DDDDataAttributes = [
     [data-font-size="type1-l"] {
       font-size: var(--ddd-font-size-type1-l);
     }
-    /* padding spacing */
-    [data-design-treatment="bg"][data-padding="xs"],
-    [data-accent][data-padding="xs"],
-    [data-padding="xs"] {
-      padding: var(--ddd-spacing-2);
-    }
-    [data-design-treatment="bg"][data-padding="s"],
-    [data-accent][data-padding="s"],
-    [data-padding="s"] {
-      padding: var(--ddd-spacing-4);
-    }
-    [data-design-treatment="bg"][data-padding="m"],
-    [data-accent][data-padding="m"],
-    [data-padding="m"] {
-      padding: var(--ddd-spacing-8);
-    }
-    [data-design-treatment="bg"][data-padding="l"],
-    [data-accent][data-padding="l"],
-    [data-padding="l"] {
-      padding: var(--ddd-spacing-12);
-    }
-    [data-design-treatment="bg"][data-padding="xl"],
-    [data-accent][data-padding="xl"],
-    [data-padding="xl"] {
-      padding: var(--ddd-spacing-16);
-    }
-    /* margin spacing */
-    [data-margin="xs"] {
-      margin: var(--ddd-spacing-2);
-    }
-    [data-margin="s"] {
-      margin: var(--ddd-spacing-4);
-    }
-    [data-margin="m"] {
-      margin: var(--ddd-spacing-8);
-    }
-    [data-margin="l"] {
-      margin: var(--ddd-spacing-12);
-    }
-    [data-margin="xl"] {
-      margin: var(--ddd-spacing-16);
+    /* padding spacing in content, only apply above small screens */
+    @media (min-width: 600px) {
+      [data-design-treatment="bg"][data-padding="xs"],
+      [data-accent][data-padding="xs"],
+      [data-padding="xs"] {
+        padding: var(--ddd-spacing-2);
+      }
+      [data-design-treatment="bg"][data-padding="s"],
+      [data-accent][data-padding="s"],
+      [data-padding="s"] {
+        padding: var(--ddd-spacing-4);
+      }
+      [data-design-treatment="bg"][data-padding="m"],
+      [data-accent][data-padding="m"],
+      [data-padding="m"] {
+        padding: var(--ddd-spacing-8);
+      }
+      [data-design-treatment="bg"][data-padding="l"],
+      [data-accent][data-padding="l"],
+      [data-padding="l"] {
+        padding: var(--ddd-spacing-12);
+      }
+      [data-design-treatment="bg"][data-padding="xl"],
+      [data-accent][data-padding="xl"],
+      [data-padding="xl"] {
+        padding: var(--ddd-spacing-16);
+      }
+      /* margin spacing */
+      [data-margin="center"] {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      [data-margin="xs"] {
+        margin: var(--ddd-spacing-2);
+      }
+      [data-margin="s"] {
+        margin: var(--ddd-spacing-4);
+      }
+      [data-margin="m"] {
+        margin: var(--ddd-spacing-8);
+      }
+      [data-margin="l"] {
+        margin: var(--ddd-spacing-12);
+      }
+      [data-margin="xl"] {
+        margin: var(--ddd-spacing-16);
+      }
     }
 
     /* border width */
@@ -1626,10 +1636,7 @@ export const DDDReset = css`
   a:any-link,
   a:-webkit-any-link {
     line-break: auto;
-    color: light-dark(
-      var(--ddd-theme-default-link),
-      var(--ddd-theme-default-linkLight)
-    );
+    color: var(--ddd-theme-default-link);
     font-weight: var(--ddd-font-weight-bold);
     text-decoration: none;
     background-color: var(--ddd-theme-accent);
@@ -1709,7 +1716,7 @@ export const DDDReset = css`
     border-top-style: solid;
     margin: 0 auto;
     padding: 0;
-    transition: 
+    transition:;
   }
 
   .h-invert {
@@ -2089,7 +2096,6 @@ export const DDDReset = css`
     position: relative;
     max-width: 650px;
     padding: 0;
-    color: light-dark(black, white);
     margin: 0;
   }
   details[disabled] {
@@ -4163,18 +4169,20 @@ export const DDDBreadcrumb = css`
     margin: var(--ddd-spacing-6) 0;
     padding: 0;
     pointer-events: auto;
-    list-style: "/ ";
-    gap: var(--ddd-spacing-5);
+    list-style: "/";
+    gap: var(--ddd-spacing-2);
     display: flex;
     flex-flow: row;
     color: light-dark(
       var(--ddd-theme-default-link),
       var(--ddd-theme-default-linkLight)
     );
+    line-height: normal;
+    text-align: start;
   }
   .breadcrumb li::marker {
     color: light-dark(black, white);
-    font-weight: var(--ddd-font-weight-regular);
+    font-weight: var(--ddd-font-weight-bold);
   }
   .breadcrumb li:first-child {
     list-style: none;
@@ -4184,7 +4192,9 @@ export const DDDBreadcrumb = css`
     pointer-events: none;
   }
   .breadcrumb li a {
-    padding-left: var(--ddd-spacing-1);
+    vertical-align: text-top;
+    display: inline-block;
+    padding: 0 var(--ddd-spacing-2);
     font-family: var(--ddd-font-navigation);
     font-weight: var(--ddd-font-weight-regular);
     text-decoration: none;

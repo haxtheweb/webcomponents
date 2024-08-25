@@ -22,8 +22,11 @@ class MapMenu extends LitElement {
     return [
       css`
         :host {
+          --map-menu-item-icon-height: 18px;
           --map-menu-item-active-item-color: rgba(100, 100, 255, 0.1);
-          --map-menu-size: 1;
+          --map-menu-item-button-height: 20px;
+          --map-menu-item-height: 20px;
+          --map-menu-gap: 10px;
           display: block;
           overflow-y: scroll;
           position: relative;
@@ -43,19 +46,21 @@ class MapMenu extends LitElement {
           position: absolute;
           pointer-events: none;
           z-index: -1;
-          width: calc(100% + 16px);
-          margin-left: -16px;
+          width: calc(100% + (2 * var(--map-menu-gap)));
+          margin-left: calc(-2 * var(--map-menu-gap));
         }
 
         map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 16px solid
-            var(--map-menu-expanded-color-depth-1, rgba(0, 0, 0, 0.02));
+          border-left: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
+          margin-left: calc(var(--map-menu-gap) + 2px);
         }
         map-menu-builder map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 16px solid
-            var(--map-menu-expanded-color-depth-2, rgba(0, 0, 0, 0.04));
+          border-left: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
+          margin-left: calc(var(--map-menu-gap) + 2px);
         }
         map-menu-builder
           map-menu-builder
@@ -67,8 +72,9 @@ class MapMenu extends LitElement {
           map-menu-builder
           map-menu-builder
           map-menu-submenu {
-          border-left: 16px solid
-            var(--map-menu-expanded-color-depth-3, rgba(0, 0, 0, 0.06));
+          border-left: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
+          margin-left: calc(var(--map-menu-gap) + 2px);
         }
         map-menu-builder
           map-menu-builder
@@ -82,40 +88,9 @@ class MapMenu extends LitElement {
           map-menu-builder
           map-menu-builder
           map-menu-submenu {
-          border-left: 16px solid
-            var(--map-menu-expanded-color-depth-4, rgba(0, 0, 0, 0.08));
-        }
-
-        map-menu-builder map-menu-submenu[opened] {
-          --map-menu-border-depth: var(
-            --map-menu-expanded-color-depth-1,
-            rgba(0, 0, 0, 0.02)
-          );
-        }
-        map-menu-builder map-menu-builder map-menu-submenu[opened] {
-          --map-menu-border-depth: var(
-            --map-menu-expanded-color-depth-2,
-            rgba(0, 0, 0, 0.04)
-          );
-        }
-        map-menu-builder
-          map-menu-builder
-          map-menu-builder
-          map-menu-submenu[opened] {
-          --map-menu-border-depth: var(
-            --map-menu-expanded-color-depth-3,
-            rgba(0, 0, 0, 0.06)
-          );
-        }
-        map-menu-builder
-          map-menu-builder
-          map-menu-builder
-          map-menu-builder
-          map-menu-submenu[opened] {
-          --map-menu-border-depth: var(
-            --map-menu-expanded-color-depth-4,
-            rgba(0, 0, 0, 0.08)
-          );
+          border-left: 2px solid
+            var(--map-menu-item-a-active-background-color, black);
+          margin-left: calc(var(--map-menu-gap) + 2px);
         }
 
         map-menu-container {
@@ -139,6 +114,7 @@ class MapMenu extends LitElement {
    */
   constructor() {
     super();
+    this.editControls = false;
     this.disabled = false;
     this.title = "Content outline";
     this.data = null;
@@ -168,6 +144,7 @@ class MapMenu extends LitElement {
           <div id="activeindicator"></div>
           <map-menu-builder
             id="builder"
+            ?edit-controls="${this.editControls}"
             .items="${this.items}"
             .selected="${this.selected}"
           ></map-menu-builder>
@@ -185,6 +162,10 @@ class MapMenu extends LitElement {
       disabled: {
         type: Boolean,
         reflect: true,
+      },
+      editControls: {
+        type: Boolean,
+        attribute: "edit-controls",
       },
       title: {
         type: String,

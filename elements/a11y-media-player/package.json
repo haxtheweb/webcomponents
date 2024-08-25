@@ -18,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.5",
+  "version": "9.0.6",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -43,22 +43,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/absolute-position-behavior": "^9.0.3",
-    "@haxtheweb/anchor-behaviors": "^9.0.3",
-    "@haxtheweb/fullscreen-behaviors": "^9.0.3",
-    "@haxtheweb/responsive-utility": "^9.0.3",
-    "@haxtheweb/simple-colors": "^9.0.3",
-    "@haxtheweb/simple-fields": "^9.0.5",
-    "@haxtheweb/simple-icon": "^9.0.3",
-    "@haxtheweb/simple-range-input": "^9.0.3",
-    "@haxtheweb/simple-search": "^9.0.5",
-    "@haxtheweb/simple-toast": "^9.0.3",
-    "@haxtheweb/simple-tooltip": "^9.0.3",
+    "@haxtheweb/absolute-position-behavior": "^9.0.6",
+    "@haxtheweb/anchor-behaviors": "^9.0.6",
+    "@haxtheweb/fullscreen-behaviors": "^9.0.6",
+    "@haxtheweb/responsive-utility": "^9.0.6",
+    "@haxtheweb/simple-colors": "^9.0.6",
+    "@haxtheweb/simple-fields": "^9.0.6",
+    "@haxtheweb/simple-icon": "^9.0.6",
+    "@haxtheweb/simple-range-input": "^9.0.6",
+    "@haxtheweb/simple-search": "^9.0.6",
+    "@haxtheweb/simple-toast": "^9.0.6",
+    "@haxtheweb/simple-tooltip": "^9.0.6",
     "@haxtheweb/utils": "^9.0.2",
-    "lit": "^3.1.4"
+    "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@haxtheweb/storybook-utilities": "^9.0.3",
+    "@haxtheweb/storybook-utilities": "^9.0.6",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -71,9 +71,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "customElements": "custom-elements.json",
   "keywords": [
-    "web-components",
-    "html"
+    "webcomponents",
+    "html",
+    "haxtheweb",
+    "lit"
   ],
   "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
 }

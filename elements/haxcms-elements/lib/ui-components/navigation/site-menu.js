@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "../../core/micros/haxcms-button-add.js";
 import "@haxtheweb/map-menu/map-menu.js";
 import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
@@ -22,6 +23,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       css`
         :host {
           display: block;
+          position: relative;
         }
         map-menu {
           padding: var(--site-menu-padding);
@@ -35,7 +37,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
           --map-menu-item-active-item-color: var(
             --site-menu-item-active-item-color
           );
-          --map-menu-font-size: var(--site-menu-font-size);
+          --map-menu-font-size: var(--site-menu-font-size, 18px);
           overflow-y: var(
             --map-menu-overflow,
             var(--map-menu-overflow-y, auto)
@@ -68,6 +70,20 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
             var(--site-menu-scrollbar-thumb-color, #999999);
           background-color: var(--site-menu-scrollbar-thumb-color, #999999);
         }
+        .ops {
+          position: absolute;
+          display: block;
+          left: 0px;
+          height: 40px;
+          bottom: -40px;
+          z-index: 2;
+          margin: 0 4px 0 0;
+        }
+        .ops .op {
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+          margin: 4px;
+        }
       `,
     ];
   }
@@ -85,10 +101,14 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     this.hideActiveIndicator = false;
     this.preventAutoScroll = false;
     this.trackIcon = "";
+    this.editControls = false;
     this.__disposer = [];
     autorun((reaction) => {
       this.routerManifest = Object.assign({}, toJS(store.routerManifest));
       this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.editControls = toJS(store.isLoggedIn);
     });
   }
   /**
@@ -99,10 +119,22 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       <map-menu
         .part="map-menu ${this.editMode ? `edit-mode-active` : ``}"
         .manifest="${this.routerManifest}"
+        ?edit-controls="${this.editControls}"
         ?active-indicator="${!this.hideActiveIndicator}"
         ?auto-scroll="${!this.preventAutoScroll}"
         @active-item="${this.mapMenuActiveChanged}"
+        @map-menu-operation-selected="${this.mapMenuOperationSelected}"
       ></map-menu>
+      ${this.editControls
+        ? html` <div class="ops">
+            <haxcms-button-add
+              class="op"
+              type="sibling"
+              label="Add page"
+              action-id="null"
+            ></haxcms-button-add>
+          </div>`
+        : ``}
     `;
   }
 
@@ -248,6 +280,10 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       routerManifest: {
         type: Object,
       },
+      editControls: {
+        type: Boolean,
+        attribute: "edit-controls",
+      },
       /**
        * acitvely selected item
        */
@@ -325,6 +361,9 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         JSON.stringify(userData),
       );
     } catch (e) {}
+  }
+  mapMenuHoveredChanged(e) {
+    console.log(e.detail);
   }
 }
 customElements.define(SiteMenu.tag, SiteMenu);

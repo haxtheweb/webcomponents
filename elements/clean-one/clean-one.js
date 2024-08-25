@@ -9,6 +9,7 @@ import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/H
 import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { EmailPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js";
 import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/scroll-button/scroll-button.js";
@@ -32,13 +33,15 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element clean-one
  */
-class CleanOne extends PrintBranchMixin(
-  PDFPageMixin(
-    EmailPageMixin(
-      QRCodeMixin(
-        HAXCMSThemeParts(
-          HAXCMSMobileMenuMixin(
-            HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+class CleanOne extends LTIResizingMixin(
+  PrintBranchMixin(
+    PDFPageMixin(
+      EmailPageMixin(
+        QRCodeMixin(
+          HAXCMSThemeParts(
+            HAXCMSMobileMenuMixin(
+              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+            ),
           ),
         ),
       ),
@@ -116,8 +119,20 @@ class CleanOne extends PrintBranchMixin(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
           );
+          --map-menu-item-icon-active-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+          --site-menu-container-background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           font-family: var(--ddd-font-navigation);
-          --site-menu-font-size: var(--ddd-font-size-xs);
+          --site-menu-font-size: var(--ddd-font-size-3xs);
+        }
+
+        :host([is-logged-in]) site-menu {
+          height: var(--clean-one-site-menu-height, calc(100vh - 108px));
         }
         scroll-button {
           --scroll-button-color: var(--haxcms-user-styles-color-theme-color-1);

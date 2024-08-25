@@ -30,14 +30,18 @@ class SiteBreadcrumb extends DDD {
           margin: var(--site-breadcrumb-margin, var(--ddd-spacing-6) 0);
           padding: 0;
           pointer-events: auto;
-          list-style: "/ ";
-          gap: var(--ddd-spacing-5);
+          list-style: "/";
+          gap: var(--ddd-spacing-2);
           display: flex;
           flex-flow: row;
           color: var(--ddd-theme-default-link);
+          line-height: normal;
+          text-align: start;
         }
         .breadcrumb li a {
-          padding-left: var(--ddd-spacing-1);
+          vertical-align: text-top;
+          display: inline-block;
+          padding: 0 var(--ddd-spacing-2);
           font-family: var(--ddd-font-navigation);
           font-weight: var(--ddd-font-weight-regular);
           text-decoration: none;
