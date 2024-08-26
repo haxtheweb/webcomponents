@@ -2,19 +2,20 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { ChatStore } from "./chat-agent-store.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { autorun, toJS } from "mobx";
-import { html, css } from "lit";
+import { css, html } from "lit";
+import { autorun, toJS, } from "mobx";
+import { ChatStore } from "./chat-agent-store.js";
 
 class ChatSuggestion extends DDD {
+  
   static get tag() {
     return "chat-suggestion";
   }
 
   constructor() {
     super();
-
+    
     this.chosenPrompt = false;
     this.disabled = false;
     this.promptType = "";
@@ -26,8 +27,11 @@ class ChatSuggestion extends DDD {
 
     autorun(() => {
       this.messageIndex = toJS(ChatStore.messageIndex);
+    })
+    
+    autorun(() => {
       this.userIndex = toJS(ChatStore.userIndex);
-    });
+    })
   }
 
   static get styles() {
@@ -41,6 +45,7 @@ class ChatSuggestion extends DDD {
           display: block;
         }
 
+
         .chat-suggestion-wrapper {
           align-items: center;
           border: var(--ddd-border-sm);
@@ -52,7 +57,7 @@ class ChatSuggestion extends DDD {
           display: flex;
           flex-direction: row;
           justify-content: center;
-          opacity: 1;
+          opacity: 1.0;
         }
 
         .suggestion-icon {
@@ -99,16 +104,14 @@ class ChatSuggestion extends DDD {
           background-color: var(--ddd-theme-default-futureLime);
         }
 
-        .chat-suggestion-wrapper:hover,
-        .chat-suggestion-wrapper:focus {
+        .chat-suggestion-wrapper:hover, .chat-suggestion-wrapper:focus {
           background-color: var(--ddd-theme-default-futureLime);
         }
 
-        .chat-suggestion-wrapper:hover p,
-        .chat-suggestion-wrapper:focus p {
+        .chat-suggestion-wrapper:hover p, .chat-suggestion-wrapper:focus p {
           text-decoration: underline;
         }
-
+        
         :host([disabled]) p {
           text-decoration: none;
         }
@@ -127,27 +130,23 @@ class ChatSuggestion extends DDD {
             display: none;
           }
         }
-      `,
+      `
     ];
   }
 
   // TODO fix corner clicking issue
   render() {
     return html`
-      <div
-        class="chat-suggestion-wrapper"
-        @click=${this.handleSuggestion}
-        @keypress=${this.handleSuggestion}
-        tabindex="0"
-        aria-label='Send suggestion "${this.suggestion}" to Merlin'
-      >
+      <div class="chat-suggestion-wrapper" @click=${this.handleSuggestion} @keypress=${this.handleSuggestion} tabindex="0" aria-label='Send suggestion "${this.suggestion}" to Merlin'>
         <div class="suggestion-icon">
           <div class="circle-wrapper">
             <simple-icon-lite></simple-icon-lite>
-          </div>
+          </div>  
         </div>
         <div class="suggestion-text">
-          <p class="chat-suggestion">${this.suggestion}</p>
+          <p class="chat-suggestion">
+            ${this.suggestion}
+          </p>  
         </div>
       </div>
     `;
@@ -155,43 +154,29 @@ class ChatSuggestion extends DDD {
 
   /**
    * @description Event handler for the suggestion button
-   */
-  handleSuggestion() {
-    if (!this.disabled) {
-      ChatStore.devStatement(
-        `Suggestion button pressed. Suggested prompt to send to Merlin: ${this.suggestion}`,
-        "info",
-      );
-
-      ChatStore.handleMessage(ChatStore.userName, this.suggestion);
+  */
+ handleSuggestion() {
+   if (!this.disabled) {
+     ChatStore.devStatement(`Suggestion button pressed. Suggested prompt to send to Merlin: ${this.suggestion}`, 'info');
+     
+     ChatStore.handleMessage(ChatStore.userName, this.suggestion);
     } else {
-      ChatStore.devStatement(
-        "Suggestion buttons disabled, ignoring request",
-        "warn",
-      );
+      ChatStore.devStatement('Suggestion buttons disabled, ignoring request', 'warn');
     }
   }
 
   /**
    * @description LitElement first update / sets suggestion icon
    */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-
+  firstUpdated() {
     let simpleIcon = this.shadowRoot.querySelector("simple-icon-lite");
     switch (this.promptType) {
       case "suggestion":
         simpleIcon.setAttribute("icon", "question-answer");
-        simpleIcon.style.color =
-          "var(--data-theme-primary, var(--ddd-primary-13))";
+        simpleIcon.style.color = "var(--data-theme-primary, var(--ddd-primary-13))";
         break;
       case "network":
-        simpleIcon.setAttribute(
-          "icon",
-          "device:signal-cellular-connected-no-internet-0-bar",
-        );
+        simpleIcon.setAttribute("icon", "device:signal-cellular-connected-no-internet-0-bar");
         simpleIcon.style.color = "var(--ddd-theme-default-coalyGray)";
         break;
       case "help":
@@ -200,8 +185,7 @@ class ChatSuggestion extends DDD {
         break;
       case "hax":
         simpleIcon.setAttribute("icon", "hax:hax2022");
-        simpleIcon.style.color =
-          "var(--data-theme-primary, var(--ddd-primary-13))";
+        simpleIcon.style.color = "var(--data-theme-primary, var(--ddd-primary-13))";
         break;
       default:
         simpleIcon.setAttribute("icon", "lrn:info");
@@ -209,19 +193,13 @@ class ChatSuggestion extends DDD {
         break;
     }
   }
-
+  
   /**
    * @description LitElement updated / sets disabled state
    */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-
+  updated() {
     if (this.disabled) {
-      this.shadowRoot
-        .querySelector(".chat-suggestion-wrapper")
-        .removeAttribute("tabindex");
+      this.shadowRoot.querySelector(".chat-suggestion-wrapper").removeAttribute("tabindex");
     }
   }
 
@@ -233,9 +211,9 @@ class ChatSuggestion extends DDD {
         attribute: "chosen-prompt",
       },
       disabled: { type: Boolean },
-      promptType: {
-        type: String,
-        attribute: "prompt-type",
+      promptType: { 
+        type: String, 
+        attribute: "prompt-type" 
       },
       suggestion: { type: String },
     };
