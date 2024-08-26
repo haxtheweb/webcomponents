@@ -260,7 +260,7 @@ class CleanOne extends LTIResizingMixin(
           display: none;
         }
         .pull-right {
-          top: 0px;
+          top: 4px;
           right: 16px;
           position: fixed;
         }
@@ -298,18 +298,19 @@ class CleanOne extends LTIResizingMixin(
           transition: left 0.3s ease;
         }
 
-        :host([responsive-size="xs"]) .page-inner,
-        :host([responsive-size="sm"]) .page-inner,
-        :host([responsive-size="md"]) .page-inner,
-        :host([responsive-size="lg"]) .page-inner {
+        :host([responsive-size="xs"]) .page-wrapper,
+        :host([responsive-size="sm"]) .page-wrapper,
+        :host([responsive-size="md"]) .page-wrapper,
+        :host([responsive-size="lg"]) .page-wrapper {
           padding: 48px 16px;
         }
-        :host([responsive-size="sm"]) .site-inner {
-          padding: 0 24px;
+        :host([responsive-size="sm"]) .page-wrapper {
+          padding: 24px;
         }
 
         :host([responsive-size="xs"]) .page-inner {
           overflow-x: auto;
+          text-align: left;
         }
         @media screen and (max-width: 640px) {
           site-breadcrumb {
@@ -424,12 +425,17 @@ class CleanOne extends LTIResizingMixin(
           display: block;
           padding: 0 16px;
         }
-        @media (max-width: 1200px) {
+        @media (max-width: 1400px) {
           .site-header {
             height: 50px;
             position: fixed;
             width: 100vw;
-            background-color: white;
+            background-color: light-dark(white, black);
+          }
+          .pdf-page-btn,
+          .print-branch-btn,
+          .btn-container .btn {
+            padding: 0 4px;
           }
         }
         @media (max-width: 900px) {
