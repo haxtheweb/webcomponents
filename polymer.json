@@ -40,6 +40,7 @@
     "node_modules/@haxtheweb/*/locales/*.json",
     "node_modules/@haxtheweb/haxcms-elements/package.json",
     "node_modules/@haxtheweb/haxcms-elements/**",
+    "node_modules/@haxtheweb/haxcms-elements/lib/**",
     "node_modules/@haxtheweb/*/lib/*/*.js",
     "node_modules/@haxtheweb/*/lib/*/*",
     "node_modules/@haxtheweb/*/lib/*/*/*.js",
