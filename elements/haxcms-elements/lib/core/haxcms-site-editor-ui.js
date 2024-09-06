@@ -2460,8 +2460,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js"
     );
-    // runkit embed
-    import("@haxtheweb/runkit-embed/runkit-embed.js");
   }
 
   goToLocation(location) {
