@@ -19,14 +19,15 @@ class ImageInspector extends LitElement {
         :host {
           display: block;
           overflow: hidden;
-          background-color: var(--image-inspector-background-color, #fdfdfd);
         }
 
         simple-icon-button {
           display: inline-flex;
           --simple-icon-width: 36px;
           --simple-icon-height: 36px;
-          margin: 0 8px;
+          margin: 0 4px;
+          padding: 0 4px;
+          border-radius: 0;
           background-color: var(--image-inspector-background-color, #fdfdfd);
           transition: 0.3s all ease-in-out;
         }
@@ -35,7 +36,7 @@ class ImageInspector extends LitElement {
         simple-icon-button:active {
           background-color: var(
             --image-inspector-background-color-active,
-            #eeeeee
+            #dddddd
           );
         }
 
@@ -48,9 +49,12 @@ class ImageInspector extends LitElement {
           --img-pan-zoom-height: var(--image-inspector-height, 600px);
         }
         .wrap {
-          border-bottom: 1px solid black;
           justify-content: center;
           display: flex;
+        }
+        .internal-btn-wrap {
+          border: 2px solid black;
+          background-color: var(--image-inspector-background-color, #fdfdfd);
         }
       `,
     ];
@@ -64,6 +68,7 @@ class ImageInspector extends LitElement {
   render() {
     return html`
       <div class="wrap">
+        <div class="internal-btn-wrap">
         <simple-icon-button
           label="Zoom in"
           icon="zoom-in"
@@ -91,6 +96,7 @@ class ImageInspector extends LitElement {
           ></simple-icon-button>
         </a>
         <slot name="toolbar"></slot>
+        </div>
       </div>
       <img-pan-zoom id="img" src="${this.src}"></img-pan-zoom>
       <slot></slot>

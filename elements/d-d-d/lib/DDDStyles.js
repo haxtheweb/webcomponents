@@ -2063,7 +2063,10 @@ export const DDDReset = css`
         --lowContrast-override,
         var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
       ),
-      var(--ddd-theme-default-linkLight)
+      var(
+        --lowContrast-override,
+        var(--ddd-theme-primary, var(--ddd-theme-default-linkLight))
+      )
     );
     cursor: pointer;
     text-wrap: wrap;
@@ -2084,7 +2087,10 @@ export const DDDReset = css`
         --lowContrast-override,
         var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
       ),
-      var(--ddd-theme-default-linkLight)
+      var(
+        --lowContrast-override,
+        var(--ddd-theme-primary, var(--ddd-theme-default-linkLight))
+      )
     );
     font-weight: var(--ddd-font-weight-regular);
     font-size: var(--ddd-font-size-m);
@@ -2112,7 +2118,10 @@ export const DDDReset = css`
         --lowContrast-override,
         var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
       ),
-      var(--ddd-theme-default-linkLight)
+      var(
+        --lowContrast-override,
+        var(--ddd-theme-primary, var(--ddd-theme-default-linkLight))
+      )
     );
     filter: saturate(1.5);
   }

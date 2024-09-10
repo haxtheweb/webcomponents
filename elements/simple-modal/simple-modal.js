@@ -110,11 +110,6 @@ class SimpleModal extends LitElement {
         #headerbar {
           margin: 0;
           padding: var(--simple-modal-header-padding, 0px var(--ddd-spacing-4));
-          color: var(--simple-modal-header-color);
-          background-color: var(
-            --simple-modal-header-background,
-            var(--ddd-theme-default-limestoneMaxLight)
-          );
         }
 
         #close {
@@ -127,13 +122,9 @@ class SimpleModal extends LitElement {
           min-width: unset;
           text-transform: none;
           background-color: transparent;
-          color: var(--ddd-theme-default-white);
+          color: var(--ddd-theme-default-nittanyNavy);
           --simple-icon-width: var(--ddd-icon-sm);
           --simple-icon-height: var(--ddd-icon-sm);
-        }
-
-        #close:focus {
-          opacity: 0.7;
         }
 
         #close simple-icon-lite {

@@ -237,7 +237,7 @@ class DDDocs extends DDD {
     for (let i = 0; i < 22; i++) {
       headers.push(html`
         <details style="max-width: 100%; margin: 0 64px;">
-          <summary data-primary="${i}" style="color: var(--ddd-theme-primary);">
+          <summary data-primary="${i}" style="color: var(--ddd-theme-primary); background-color: var(--ddd-theme-bgContrast);">
             Header Sample ${i}
           </summary>
           ${Array(6)
@@ -1942,7 +1942,7 @@ class DDDocs extends DDD {
             ></figure-label>
             <!-- application override -->
             <div
-              style="--ddd-component-figure-label-title: var(--ddd-theme-default-link80); --ddd-component-figure-label-background: var(--ddd-theme-default-infoLight);"
+              style="--ddd-component-figure-label-description-text: black; --ddd-component-figure-label-title: var(--ddd-primary-22); --ddd-component-figure-label-title-text: var(--ddd-primary-4); --ddd-component-figure-label-description-background: var(--ddd-theme-default-infoLight);"
             >
               <figure-label
                 title="1.3"
