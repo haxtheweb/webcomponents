@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>LaTex: la-tex Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../la-tex.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic la-tex demo</h3>
+      <demo-snippet>
+        <template>
+          <la-tex>
+            <pre>
+              \begin{pspicture}(-13,-5)(13,10)
+              \slider{1}{8}{a}{amplitude}{4}
+              \slider{1}{8}{n}{frequency}{4}
+              \psplot[algebraic,linewidth=1.5pt,plotpoints=1000]{-12.56}{12.56}{a*sin(n*x)/(n*x)}
+              \psaxes[showorigin=false,labels=none, Dx=3.14](0,0)(-12.6,0)(12.6,0)
+              \rput(0, -0.5){$0$}
+              \end{pspicture}
+            </pre>
+          </la-tex>
+          <la-tex>
+            \begin{pspicture}(0,-3)(8,3)
+            \rput(0,0){$x(t)$}
+            \rput(4,1.5){$f(t)$}
+            \rput(4,-1.5){$g(t)$}
+            \rput(8.2,0){$y(t)$}
+            \rput(1.5,-2){$h(t)$}
+            \psframe(1,-2.5)(7,2.5)
+            \psframe(3,1)(5,2)
+            \psframe(3,-1)(5,-2)
+            \rput(4,0){$X_k = \frac{1}{p} \sum \limits_{n=\langle p\rangle}x(n)e^{-ik\omega_0n}$}
+            \psline{->}(0.5,0)(1.5,0)
+            \psline{->}(1.5,1.5)(3,1.5)
+            \psline{->}(1.5,-1.5)(3,-1.5)
+            \psline{->}(6.5,1.5)(6.5,0.25)
+            \psline{->}(6.5,-1.5)(6.5,-0.25)
+            \psline{->}(6.75,0)(7.75,0)
+            \psline(1.5,-1.5)(1.5,1.5)
+            \psline(5,1.5)(6.5,1.5)
+            \psline(5,-1.5)(6.5,-1.5)
+            \psline(6,-1.5)(6.5,-1.5)
+            \pscircle(6.5,0){0.25}
+            \psline(6.25,0)(6.75,0)
+            \psline(6.5,0.5)(6.5,-0.5)
+            \end{pspicture}
+                      </la-tex>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

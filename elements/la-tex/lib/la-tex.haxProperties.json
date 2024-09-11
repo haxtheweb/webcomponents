@@ -1,0 +1,47 @@
+{
+    "api": "1",
+    "type": "grid",
+    "canScale": false,
+    "designSystem": false,
+    "canEditSource": true,
+    "contentEditable": false,
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "gizmo": {
+        "title": "LaTeX",
+        "description": "Write using the math notation LaTeX",
+        "icon": "hax:pi",
+        "color": "grey",
+        "tags": [
+            "Instructional",
+            "math",
+            "mathjax",
+            "mathml",
+            "latex",
+            "mathml"
+        ],
+        "handles": [],
+        "meta": {
+            "author": "HAXTheWeb core team"
+        }
+    },
+    "settings": {
+        "configure": [],
+        "advanced": [],
+        "developer": []
+    },
+    "saveOptions": {
+        "unsetAttributes": ["hydrated"]
+    },
+    "documentation": {
+        "howTo": null,
+        "purpose": null
+    },
+    "demoSchema": [
+        {
+            "tag": "la-tex",
+            "content": "<pre>\\begin{pspicture}(-13,-5)(13,10)\n\\slider{1}{8}{a}{amplitude}{4}\n\\slider{1}{8}{n}{frequency}{4}\n\\psplot[algebraic,linewidth=1.5pt,plotpoints=1000]{-12.56}{12.56}{a*sin(n*x)/(n*x)}\n\\psaxes[showorigin=false,labels=none, Dx=3.14](0,0)(-12.6,0)(12.6,0)\n\rput(0, -0.5){$0$}\n\\end{pspicture}</pre>",
+            "properties": {}
+        }
+    ]
+}

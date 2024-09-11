@@ -1,0 +1,73 @@
+{
+  "name": "@haxtheweb/la-tex",
+  "wcfactory": {
+    "className": "LaTex",
+    "customElementClass": "LitElement",
+    "elementName": "la-tex",
+    "generator-wcfactory-version": "0.13.1",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/la-tex.css",
+      "scss": "src/la-tex.scss",
+      "html": "src/la-tex.html",
+      "js": "src/la-tex.js",
+      "properties": "src/la-tex-properties.json",
+      "hax": "src/la-tex-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "9.0.6",
+  "description": "render LaTeX formatted math and science content",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haxtheweb/webcomponents.git"
+  },
+  "main": "la-tex.js",
+  "module": "la-tex.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"*.js|lib/**.js\" --format vscode --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lit": "^3.2.0",
+    "@haxtheweb/es-global-bridge": "^9.0.6"
+  },
+  "devDependencies": {
+    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.21",
+    "polymer-build": "3.1.4",
+    "@web/dev-server": "0.1.28",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2",
+    "@open-wc/testing": "2.5.32"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "webcomponents",
+    "html",
+    "lit"
+  ],
+  "customElements": "custom-elements.json"
+}
