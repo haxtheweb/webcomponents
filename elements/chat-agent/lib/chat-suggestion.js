@@ -218,14 +218,6 @@ class ChatSuggestion extends DDD {
       suggestion: { type: String },
     };
   }
-
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(ChatSuggestion.tag, ChatSuggestion);
