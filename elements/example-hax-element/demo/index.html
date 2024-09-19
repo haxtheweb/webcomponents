@@ -13,15 +13,18 @@
       import '../example-hax-element.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      :root {
+        --ddd-theme-accent: #FFAADD;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic example-hax-element demo</h3>
       <demo-snippet>
         <template>
-          <example-hax-element>
-            This is example-hax-element
-          </example-hax-element>
+          <example-hax-element title="This is an example hax element" shiny></example-hax-element>
         </template>
       </demo-snippet>
     </div>
