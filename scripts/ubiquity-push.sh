@@ -81,18 +81,18 @@ rm ~/elmsln/core/dslmcode/cores/haxcms-1/wc-registry.json
 rm ~/elmsln/core/webcomponents/wc-registry.json
 cp -r ~/haxtheweb/webcomponents/build/ ~/elmsln/core/dslmcode/cores/haxcms-1/build
 # we have a special registry which should be close enough to reality of known paths at the point of 9.x.x
-cp ~/ELMSLN-JS-FILES-FINAL/wc-registry.json ~/elmsln/core/dslmcode/cores/haxcms-1/wc-registry.json
-cp ~/ELMSLN-JS-FILES-FINAL/wc-registry.json ~/elmsln/core/webcomponents/wc-registry.json
+cp ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/wc-registry.json ~/elmsln/core/dslmcode/cores/haxcms-1/wc-registry.json
+cp ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/wc-registry.json ~/elmsln/core/webcomponents/wc-registry.json
 
-cp -R ~/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/materializecss-styles ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/materializecss-styles
-cp -R ~/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/dropdown-select ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/dropdown-select
-cp -R ~/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/threaded-discussion ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/threaded-discussion
-cp -R ~/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/nav-card ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/nav-card
-cp -R ~/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/simple-drawer ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/simple-drawer
+cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/materializecss-styles ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/materializecss-styles
+cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/dropdown-select ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/dropdown-select
+cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/threaded-discussion ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/threaded-discussion
+cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/nav-card ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/nav-card
+cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/simple-drawer ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/simple-drawer
 
-cp -R ~/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@polymer/* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@polymer/
-cp -R ~/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/elmsln* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
-cp -R ~/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/lrn* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
+cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@polymer/* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@polymer/
+cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/elmsln* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
+cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/lrn* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
 
 ## STEP 3 NODEJS IS BOILERPLATE AND CORECONFIG FOR PHP VERSION
 rm -rf ~/haxtheweb/haxcms-php/system/boilerplate
