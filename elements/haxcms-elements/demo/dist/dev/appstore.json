@@ -629,6 +629,7 @@
   ],
   "autoloader": {
     "multiple-choice": "@haxtheweb/multiple-choice/multiple-choice.js",
+    "example-hax-element": "@haxtheweb/example-hax-element/example-hax-element.js",
     "true-false-question": "@haxtheweb/multiple-choice/lib/true-false-question.js",
     "short-answer-question": "@haxtheweb/multiple-choice/lib/short-answer-question.js",
     "sorting-question": "@haxtheweb/sorting-question/sorting-question.js",

@@ -97,12 +97,6 @@ class A11yCollapse extends DDD {
 
           background-color: var(--a11y-collapse-heading-background-color);
         }
-        :host([disabled]) #heading {
-          color: var(--a11y-collapse-disabled-heading-color);
-          background-color: var(
-            --a11y-collapse-heading-disabled-background-color
-          );
-        }
         #text {
           flex-grow: 1;
           overflow: hidden;
