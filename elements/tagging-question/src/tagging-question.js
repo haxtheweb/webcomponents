@@ -65,8 +65,8 @@ class TaggingQuestion extends QuestionElement {
           border-radius: var(--ddd-radius-sm);
           box-sizing: border-box;
           background-color: light-dark(
-            var(--simple-colors-default-theme-grey-2),
-            var(--simple-colors-default-theme-grey-10)
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-coalyGray)
           );
         }
 
@@ -87,7 +87,7 @@ class TaggingQuestion extends QuestionElement {
 
         :host(:not([show-answer])) .tag-option:hover,
         :host(:not([show-answer])) .tag-option:focus {
-          background-color: var(--simple-colors-default-theme-grey-3);
+          background-color: var(--ddd-theme-default-disable);
         }
 
         :host([dragging]) #user-choice-container {
@@ -98,16 +98,16 @@ class TaggingQuestion extends QuestionElement {
           border-style: dashed;
           border-color: black;
           background-color: light-dark(
-            var(--simple-colors-default-theme-grey-3),
-            var(--simple-colors-default-theme-grey-9)
+            var(--ddd-theme-default-disable),
+            var(--ddd-theme-default-coalyGray)
           );
         }
         :host([drag-enter][dragging]) #possible-container {
           border-color: black;
           border-style: dashed;
           background-color: light-dark(
-            var(--simple-colors-default-theme-grey-2),
-            var(--simple-colors-default-theme-grey-8)
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-coalyGray)
           );
         }
 
@@ -119,7 +119,7 @@ class TaggingQuestion extends QuestionElement {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color: var(--ddd-theme-default-coalyGray);
           cursor: pointer;
           user-select: none;
           transition: background-color 0.3s ease;
