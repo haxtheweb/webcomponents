@@ -23,7 +23,6 @@ Watch and Read more about HAX here:
 - [HAX doc site](https://oer.hax.psu.edu/bto108/sites/haxcellence/)
 - [HAXcms](https://github.com/haxtheweb/haxcms)
 - [HAX + 11ty](https://github.com/haxtheweb/hax11ty)
-- [WCFactory Tooling](https://wcfactory.js.org/)
 
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
@@ -56,7 +55,7 @@ curl -fsSL https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scri
 ```bash
 git clone https://github.com/haxtheweb/webcomponents.git
 cd webcomponents
-yarn global add @wcfactory/cli
+npm install --global @haxtheweb/create
 yarn global add polymer-cli
 yarn global add @web/test-runner
 yarn global add @web/test-runner-commands
@@ -89,7 +88,7 @@ git config --global core.autocrlf true
 ```bash
 git clone https://github.com/haxtheweb/webcomponents.git
 cd webcomponents
-yarn global add @wcfactory/cli
+npm install --global @haxtheweb/create
 yarn global add polymer-cli
 yarn global add @web/test-runner
 yarn global add @web/test-runner-commands
@@ -109,11 +108,8 @@ yarn start
 Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the element to contribute back to us via PR.
 ## Scripts
 
-- `wcf element`
-    -  Create a new component.
-    -  Needs to be within the WCFactory (https://github.com/elmsln/WCFactory) to use.
-- `yarn run rebuild-wcfcache`
-    - Rebuild caches as to what web component libraries can be used
+- `hax create`
+    - Run HAX CLI to create a new web component
 - `yarn test`
     -  Run tests on ALL webcomponents.
 - `yarn run build`

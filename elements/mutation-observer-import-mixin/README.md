@@ -9,38 +9,17 @@ To use this web component in your project you can utilize one of the following s
 ```js
 /* In an existing JS module / web component */
 import '@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js';
-/* At top of an application with build routine */
-<script type="module" src="@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js"></script>
-/* Alternatives for top of application */
-<script type="module">
-  import '@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js';
-  // imperative form
-  import {MutationObserverImportMixin} from '@haxtheweb/mutation-observer-import-mixin';
-  // if you don't have a build routine and need to reference directly
-  import './node_modules/@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js';
-</script>
-// via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js"></script>
+
+/* CDN */
+<script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js"></script>
 ```
 
 ## Develop / Demo
-Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
+Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
 ```bash
-$ yarn start
+$ npm start
 ```
 
-## Test
-
-```bash
-$ yarn run test
-```
-
-## Build
-Builds ensure that wcfactory can correctly compile your web component project to
-work on the maximum number of browsers possible.
-```bash
-$ yarn run build
-```
 
 ## Contributing
 

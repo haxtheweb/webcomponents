@@ -212,5 +212,5 @@
       "pre-commit": "lint-staged"
     }
   },
-  "version": "9.0.0"
+  "version": "9.0.6"
 }

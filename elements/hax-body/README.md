@@ -50,9 +50,6 @@ Gizmo's are just a silly word for Custom Elements (so we don't use that word ove
 
 For all full "hello-world" style hAX element, see the [example-hax-element](https://github.com/haxtheweb/webcomponents/blob/master/elements/example-hax-element/example-hax-element.js) (the source of this is in its src directory).
 
-### Polymer, helpful but not required
-While extremely useful for web component development, you are able to wire ANY web component up to HAX with or without Polymer. See [WCFactory](https://github.com/haxtheweb/wcfactory/) mono-repo tooling for a methodology of managing all of your elements across libraries (and it comes with HAX support out of the box!). If you want to learn Polymer (or it's successor LitElement) check out the [Polymer Project homepage](https://www.polymer-project.org/).
-
 ### What do I need to integrate with hax?
 HAX is designed to integrate with any system by being about authoring HTML that any end user could have hit "view source" and done themselves. It manipulates the DOM in a targetted area and then bubbles up what the change was without all the HAX cruft attached. If you want to get more integrations listed above, here's what the system needs:
 - HTML blob storage - It has to store data as a block of HTML. If it has a CKEditor or TinyMCE input method currently then it probably does this already.
@@ -60,12 +57,9 @@ HAX is designed to integrate with any system by being about authoring HTML that 
 ```js
 /* In an existing module / web component */
 import '@haxtheweb/hax-body/hax-body.js';
-/* At top of an application */
-<script type="module" src="@haxtheweb/hax-body/hax-body.js"></script>
-/* Alternatives for top of application */
-<script type="module">
-  import '@haxtheweb/hax-body/hax-body.js';
-</script>
+
+
+
 ```
 - end point / API location to save the data (if building your own HAX integration not the cms or wysiwyg option)
 - optional: place to save uploaded files (though you'll probably want this)
@@ -154,23 +148,11 @@ And we've done it! Now we can ship this off to a back-end to do whatever we need
 
 
 ## Develop / Demo
-Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
+Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
 ```bash
-$ yarn start
+$ npm start
 ```
 
-## Test
-
-```bash
-$ yarn run test
-```
-
-## Build
-Builds ensure that wcfactory can correctly compile your web component project to
-work on the maximum number of browsers possible.
-```bash
-$ yarn run build
-```
 
 ## Contributing
 

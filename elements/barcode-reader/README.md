@@ -9,18 +9,9 @@ To use this web component in your project you can utilize one of the following s
 ```js
 /* In an existing JS module / web component */
 import '@haxtheweb/barcode-reader/barcode-reader.js';
-/* At top of an application with build routine */
-<script type="module" src="@haxtheweb/barcode-reader/barcode-reader.js"></script>
-/* Alternatives for top of application */
-<script type="module">
-  import '@haxtheweb/barcode-reader/barcode-reader.js';
-  // imperative form
-  import {BarcodeReader} from '@haxtheweb/barcode-reader';
-  // if you don't have a build routine and need to reference directly
-  import './node_modules/@haxtheweb/barcode-reader/barcode-reader.js';
-</script>
-// via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@haxtheweb/barcode-reader/barcode-reader.js"></script>
+
+/* CDN */
+<script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/barcode-reader/barcode-reader.js"></script>
 ```
 ## Usage after imported
 barcode-reader will give controls to show/hide and start the scanner, but the submit button to utilize the data is left up to the website.
@@ -31,23 +22,11 @@ barcode-reader will give controls to show/hide and start the scanner, but the su
 `hideinput` Include value to hide the input tag and result. Shown by default.
 
 ## Develop / Demo
-Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
+Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
 ```bash
-$ yarn start
+$ npm start
 ```
 
-## Test
-
-```bash
-$ yarn run test
-```
-
-## Build
-Builds ensure that wcfactory can correctly compile your web component project to
-work on the maximum number of browsers possible.
-```bash
-$ yarn run build
-```
 
 ## Contributing
 
