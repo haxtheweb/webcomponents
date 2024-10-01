@@ -8,14 +8,10 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing module / web component */
-import '@haxtheweb/multiple-choice.js';
-/* At top of an application */
-<script type="module" src="multiple-choice.js"></script>
+import '@haxtheweb/multiple-choice/multiple-choice.js';
 /* Alternatives for top of application */
 <script type="module">
-  import '@haxtheweb/multiple-choice.js';
-
-  import {MultipleChoice} from '@haxtheweb/multiple-choice';
+  import '@haxtheweb/multiple-choice/multiple-choice.js';
 </script>
 ```
 
