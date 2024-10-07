@@ -47,6 +47,7 @@
     "@haxtheweb/schema-behaviors": "^9.0.6",
     "@haxtheweb/simple-fields": "^9.0.6",
     "@haxtheweb/simple-icon": "^9.0.6",
+    "@haxtheweb/grid-plate": "^9.0.6",
     "@haxtheweb/simple-toast": "^9.0.6",
     "lit": "^3.2.0"
   },

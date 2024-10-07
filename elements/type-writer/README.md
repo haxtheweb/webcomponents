@@ -9,38 +9,17 @@ To use this web component in your project you can utilize one of the following s
 ```js
 /* In an existing JS module / web component */
 import '@haxtheweb/type-writer/type-writer.js';
-/* At top of an application with build routine */
-<script type="module" src="@haxtheweb/type-writer/type-writer.js"></script>
-/* Alternatives for top of application */
-<script type="module">
-  import '@haxtheweb/type-writer/type-writer.js';
-  // imperative form
-  import {TypeWriter} from '@haxtheweb/type-writer';
-  // if you don't have a build routine and need to reference directly
-  import './node_modules/@haxtheweb/type-writer/type-writer.js';
-</script>
-// via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@haxtheweb/type-writer/type-writer.js"></script>
+
+/* CDN */
+<script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/type-writer/type-writer.js"></script>
 ```
 
 ## Develop / Demo
-Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
+Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
 ```bash
-$ yarn start
+$ npm start
 ```
 
-## Test
-
-```bash
-$ yarn run test
-```
-
-## Build
-Builds ensure that wcfactory can correctly compile your web component project to
-work on the maximum number of browsers possible.
-```bash
-$ yarn run build
-```
 
 ## Contributing
 

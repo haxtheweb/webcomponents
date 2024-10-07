@@ -322,27 +322,9 @@ Here's a much more complex example from a Polymer Legacy style element who calls
   },
 ```
 
-## Develop
-
-```bash
-$ yarn run dev
-```
-
-## Test
-
-```bash
-$ yarn run test
-```
-## Build
-Builds ensure that wcfactory can correctly compile your web component project to
-work on the maximum number of browsers possible.
-```bash
-$ yarn run build
-```
-
 ## Demo
 
-Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
+Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
 
 ## Contributing
 

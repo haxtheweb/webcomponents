@@ -9,34 +9,21 @@ To use this web component in your project you can utilize one of the following s
 ```js
 /* In an existing module / web component */
 import '@haxtheweb/lrn-math/lrn-math.js';
-/* At top of an application */
-<script type="module" src="node_modules/@haxtheweb/lrn-math/lrn-math.js"></script>
-/* Alternatives for top of application */
+
+
 <script type="module">
   import '@haxtheweb/lrn-math/lrn-math.js';
 
-  import {LrnMath} from '@haxtheweb/lrn-math/lrn-math.js';
+  
 </script>
 ```
 
 ## Develop / Demo
-Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
+Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
 ```bash
-$ yarn start
+$ npm start
 ```
 
-## Test
-
-```bash
-$ yarn run test
-```
-
-## Build
-Builds ensure that wcfactory can correctly compile your web component project to
-work on the maximum number of browsers possible.
-```bash
-$ yarn run build
-```
 
 ## Contributing
 
