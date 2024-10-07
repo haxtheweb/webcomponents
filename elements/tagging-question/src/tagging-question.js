@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `tagging-question`
@@ -11,7 +12,7 @@ import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.
  * @demo demo/index.html
  * @element tagging-question
  */
-class TaggingQuestion extends QuestionElement {
+class TaggingQuestion extends QuestionElement(DDD) {
   static get tag() {
     return "tagging-question";
   }

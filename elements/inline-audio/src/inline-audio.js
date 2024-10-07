@@ -4,6 +4,8 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { DDD } from "@haxtheweb/d-d-d";
+
 /**
  * `inline-audio`
  * `A simple inline audio player to augment text`
@@ -29,7 +31,7 @@ Custom property | Description | Default
  * @element inline-audio
  * 
  */
-class InlineAudio extends I18NMixin(SimpleColors) {
+class InlineAudio extends I18NMixin(SimpleColors, DDD) {
   /**
    * convention
    */
@@ -58,7 +60,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
         :host {
           display: inline-flex;
           vertical-align: middle;
-          color: var(--simple-colors-default-theme-grey-12);
+          color: var(--ddd-theme-default-white);
           --inline-audio-padding: 0px 4px;
           --inline-audio-margin: 0;
           --inline-audio-icon-padding: 0px 4px 0px 0px;
@@ -69,7 +71,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
           align-items: center;
           padding: var(--inline-audio-padding);
           margin: var(--inline-audio-margin);
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color: var(--ddd-theme-default-coalyGray);
           min-width: 48px;
           border-radius: 4px;
           cursor: pointer;
@@ -109,7 +111,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
 
         .icon {
           padding: var(--inline-audio-icon-padding);
-          --simple-icon-color: var(--simple-colors-default-theme-grey-12);
+          --simple-icon-color: var(--ddd-theme-default-white);
           --simple-icon-button-border-radius: none;
           --simple-icon-button-focus-color: var(
             --simple-colors-default-theme-grey-12
