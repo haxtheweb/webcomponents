@@ -114,7 +114,7 @@ class InlineAudio extends I18NMixin(SimpleColors, DDD) {
           --simple-icon-color: var(--ddd-theme-default-white);
           --simple-icon-button-border-radius: none;
           --simple-icon-button-focus-color: var(
-            --simple-colors-default-theme-grey-12
+            --ddd-theme-default-white
           );
           --simple-icon-button-focus-opacity: var(
             --inline-audio-button-focus-opacity,
