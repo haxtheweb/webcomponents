@@ -1,6 +1,7 @@
 {
   "name": "@haxtheweb/webcomponents",
   "description": "HAXTheWeb web component library",
+  "orgNpm": "@haxtheweb",
   "wcfactory": {
     "askSASS": false,
     "askProps": false,
@@ -21,7 +22,10 @@
     "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
-  "repository": "git@github.com/haxtheweb/webcomponents.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haxtheweb/webcomponents.git"
+  },
   "scripts": {
     "prepare": "husky install",
     "start": "bash scripts/preinstall.sh && yarn run storybook",
