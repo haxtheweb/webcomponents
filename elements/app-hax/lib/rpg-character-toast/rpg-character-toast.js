@@ -73,7 +73,7 @@ export class RPGCharacterToast extends SimpleToastEl {
           width: 100px;
           margin: 6px 0px 0px;
           padding: 16px;
-          color: var(--simple-colors-default-theme-purple-6, purple);
+          color: var(--ddd-theme-default-wonderPurple);
           vertical-align: middle;
           display: inline-flex;
           height: 100px;
