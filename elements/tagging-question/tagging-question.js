@@ -66,7 +66,6 @@ class TaggingQuestion extends QuestionElement {
           border-radius: var(--ddd-radius-sm);
           box-sizing: border-box;
           background-color: (
-            var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-coalyGray)
           );
         }
@@ -99,7 +98,6 @@ class TaggingQuestion extends QuestionElement {
           border-style: dashed;
           border-color: black;
           background-color: (
-            var(--ddd-theme-default-disable),
             var(--ddd-theme-default-coalyGray)
           );
         }
@@ -107,7 +105,6 @@ class TaggingQuestion extends QuestionElement {
           border-color: black;
           border-style: dashed;
           background-color: (
-            var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-coalyGray)
           );
         }
