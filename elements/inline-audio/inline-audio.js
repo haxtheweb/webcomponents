@@ -31,7 +31,7 @@ Custom property | Description | Default
  * @element inline-audio
  * 
  */
-class InlineAudio extends I18NMixin(SimpleColors, DDD) {
+class InlineAudio extends I18NMixin(DDD) {
   /**
    * convention
    */
