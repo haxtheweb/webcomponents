@@ -1716,7 +1716,6 @@ export const DDDReset = css`
     border-top-style: solid;
     margin: 0 auto;
     padding: 0;
-    transition:;
   }
 
   .h-invert {
@@ -2082,16 +2081,6 @@ export const DDDReset = css`
     content: "+";
     margin-left: auto;
     text-align: right;
-    color: light-dark(
-      var(
-        --lowContrast-override,
-        var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
-      ),
-      var(
-        --lowContrast-override,
-        var(--ddd-theme-primary, var(--ddd-theme-default-linkLight))
-      )
-    );
     font-weight: var(--ddd-font-weight-regular);
     font-size: var(--ddd-font-size-m);
     line-height: 1;

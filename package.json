@@ -1,6 +1,7 @@
 {
   "name": "@haxtheweb/webcomponents",
   "description": "HAXTheWeb web component library",
+  "orgNpm": "@haxtheweb",
   "wcfactory": {
     "askSASS": false,
     "askProps": false,
@@ -21,7 +22,10 @@
     "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
-  "repository": "git@github.com/haxtheweb/webcomponents.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haxtheweb/webcomponents.git"
+  },
   "scripts": {
     "prepare": "husky install",
     "start": "bash scripts/preinstall.sh && yarn run storybook",
@@ -100,7 +104,7 @@
     "commit-and-tag-version": "^12.4.1",
     "@open-wc/building-rollup": "^2.0.1",
     "@rollup/plugin-node-resolve": "^15.2.1",
-    "@web/dev-server": "0.4.2",
+    "@web/dev-server": "0.4.6",
     "@web/rollup-plugin-import-meta-assets": "^1.0.7",
     "babel-plugin-template-html-minifier": "^4.1.0",
     "deepmerge": "^4.2.2",
