@@ -1,0 +1,15 @@
+diff --git a/node_modules/@web/dev-server-core/dist/middleware/serveFilesMiddleware.js b/node_modules/@web/dev-server-core/dist/middleware/serveFilesMiddleware.js
+index 36c6de2..fab0a7c 100644
+--- a/node_modules/@web/dev-server-core/dist/middleware/serveFilesMiddleware.js
++++ b/node_modules/@web/dev-server-core/dist/middleware/serveFilesMiddleware.js
+@@ -17,7 +17,9 @@ function serveFilesMiddleware(rootDir) {
+         brotli: false,
+         gzip: false,
+         setHeaders(res) {
+-            res.setHeader('cache-control', 'no-cache');
++          res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
++          res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');    
++          res.setHeader('cache-control', 'no-cache');
+         },
+     };
+     // the wds-root-dir parameter indicates using a different root directory as a path relative

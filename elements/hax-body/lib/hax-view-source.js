@@ -295,7 +295,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     if (response.status == 200 && response.data) {
       const link = globalThis.document.createElement("a");
       // click link to download file
-      // @todo this downloads but claims to be corrupt.
       link.href = globalThis.URL.createObjectURL(
         b64toBlob(btoa(response.data), "text/markdown"),
       );
