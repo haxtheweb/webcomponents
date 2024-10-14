@@ -6,7 +6,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { DDD } from "@haxtheweb/d-d-d";
 
-export class FlashCardAnswerBox extends I18NMixin(SimpleColors, DDD) {
+export class FlashCardAnswerBox extends I18NMixin(DDD) {
   static get tag() {
     return "flash-card-answer-box";
   }

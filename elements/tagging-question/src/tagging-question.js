@@ -65,8 +65,7 @@ class TaggingQuestion extends QuestionElement(DDD) {
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
           box-sizing: border-box;
-          background-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
+          background-color:(
             var(--ddd-theme-default-coalyGray)
           );
         }
@@ -98,16 +97,14 @@ class TaggingQuestion extends QuestionElement(DDD) {
         :host([drag-enter-answer][dragging]) #user-choice-container {
           border-style: dashed;
           border-color: black;
-          background-color: light-dark(
+          background-color:(
             var(--ddd-theme-default-disable),
-            var(--ddd-theme-default-coalyGray)
           );
         }
         :host([drag-enter][dragging]) #possible-container {
           border-color: black;
           border-style: dashed;
-          background-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
+          background-color: (
             var(--ddd-theme-default-coalyGray)
           );
         }

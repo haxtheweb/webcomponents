@@ -22,7 +22,7 @@ import { DDD } from "@haxtheweb/d-d-d";
  * @demo demo/iconset.html Iconset Demo
  * @element simple-icon
  */
-class SimpleIcon extends SimpleIconBehaviors(SimpleColors, DDD) {
+class SimpleIcon extends SimpleIconBehaviors(DDD) {
   /**
    * This is a convention, not the standard
    */
