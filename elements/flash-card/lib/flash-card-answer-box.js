@@ -4,8 +4,9 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import { DDD } from "@haxtheweb/d-d-d";
 
-export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
+export class FlashCardAnswerBox extends I18NMixin(DDD) {
   static get tag() {
     return "flash-card-answer-box";
   }
@@ -166,7 +167,7 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
       }
       button#check {
         background-color: var(--simple-colors-default-theme-accent-10);
-        color: var(--simple-colors-default-theme-grey-1);
+        color: var(--ddd-theme-default-white);
         font-size: 14px;
         margin: none;
         padding: 0px;
