@@ -2,6 +2,7 @@
   "name": "@haxtheweb/webcomponents",
   "description": "HAXTheWeb web component library",
   "orgNpm": "@haxtheweb",
+  "monorepo": "webcomponents",
   "wcfactory": {
     "askSASS": false,
     "askProps": false,
@@ -140,7 +141,7 @@
     "gulp-svg-sprite": "1.5.0",
     "gulp-terser": "2.1.0",
     "gulp-trim": "1.0.2",
-    "helmet": "5.0.2",
+    "helmet": "8.0.0",
     "husky": "7.0.4",
     "imagemin-lint-staged": "0.5.1",
     "inquirer-recursive": "0.0.7",

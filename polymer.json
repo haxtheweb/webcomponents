@@ -1,6 +1,12 @@
 {
   "entrypoint": "dist/build.html",
   "extraDependencies": [
+    "node_modules/@webcontainer/api/dist/*.js",
+    "node_modules/@webcontainer/api/dist/vendor/*.js",
+    "node_modules/@webcontainer/api/dist/utils/*.js",
+    "node_modules/@webcontainer/api/dist/internal/*.js",
+    "node_modules/@xterm/xterm/lib/*",
+    "node_modules/@xterm/addon-fit/lib/*",
     "node_modules/@polymer/app-layout/*/*.js",
     "node_modules/@polymer/**/*.js",
     "node_modules/@polymer/marked-element/node_modules/marked/lib/marked.js",

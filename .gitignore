@@ -8,7 +8,6 @@ lerna-debug.log
 build
 npm-debug.log
 test/.wct-kludge
-.sass-cache
 .yo-rc.json
 *-*.tgz
 analysis.json
