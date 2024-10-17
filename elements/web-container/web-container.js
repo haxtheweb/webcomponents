@@ -13,11 +13,6 @@ import { FitAddon } from "@xterm/addon-fit";
 // also needs to support terminal rendering / layouts to support and editing files
 // in the web container
 const files = {
-  'index.js': {
-    file: {
-      contents: ``
-    },
-  },
   'package.json': {
     file: {
       contents: `
@@ -26,10 +21,11 @@ const files = {
           "type": "module",
           "dependencies": {
             "@haxtheweb/haxcms-nodejs": "latest",
-            "nodemon": "latest"
+            "@haxtheweb/create": "latest"
           },
           "scripts": {
-            "start": "npx @haxtheweb/haxcms-nodejs"
+            "start": "npx @haxtheweb/haxcms-nodejs",
+            "hax": "hax"
           }
         }`,
     },
@@ -62,35 +58,6 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
         new URL("./locales/web-container.ar.json", import.meta.url).href +
         "/../",
       locales: ["ar", "es", "hi", "zh"],
-    });
-    globalThis.addEventListener("load", async () => {
-
-      const fitAddon = new FitAddon();
-      const terminal = new Terminal({
-        convertEol: true,
-      });
-      terminal.loadAddon(fitAddon);
-      terminal.open(this.shadowRoot.querySelector('.terminal'));
-    
-      fitAddon.fit();
-      // Call only once
-      this.webcontainerInstance = await WebContainer.boot();
-      await this.webcontainerInstance.mount(files);
-      await this.installDependencies();
-      await this.startDevServer();
-      // Wait for `server-ready` event
-      this.webcontainerInstance.on("server-ready", (port, url) => {
-        this.shadowRoot.querySelector('iframe').src = url;
-      });
-    
-      const shellProcess = await this.startShell(terminal);
-      globalThis.addEventListener("resize", () => {
-        fitAddon.fit();
-        shellProcess.resize({
-          cols: terminal.cols,
-          rows: terminal.rows,
-        });
-      });
     });
   }
 
@@ -146,6 +113,40 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
     };
+  }
+
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
+    this.setupWebContainers();
+  }
+
+  async setupWebContainers() {
+    const fitAddon = new FitAddon();
+    const terminal = new Terminal({
+      convertEol: true,
+    });
+    terminal.loadAddon(fitAddon);
+    terminal.open(this.shadowRoot.querySelector('.terminal'));
+  
+    fitAddon.fit();
+    // Call only once
+    this.webcontainerInstance = await WebContainer.boot();
+    await this.webcontainerInstance.mount(files);
+    await this.installDependencies();
+    await this.startDevServer();
+    // Wait for `server-ready` event
+    this.webcontainerInstance.on("server-ready", (port, url) => {
+      this.shadowRoot.querySelector('iframe').src = url;
+    });
+  
+    const shellProcess = await this.startShell(terminal);
+    globalThis.addEventListener("resize", () => {
+      fitAddon.fit();
+      shellProcess.resize({
+        cols: terminal.cols,
+        rows: terminal.rows,
+      });
+    });
   }
 
   // Lit scoped styles

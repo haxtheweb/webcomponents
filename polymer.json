@@ -6,6 +6,7 @@
     "node_modules/@webcontainer/api/dist/utils/*.js",
     "node_modules/@webcontainer/api/dist/internal/*.js",
     "node_modules/@xterm/xterm/lib/*",
+    "node_modules/@xterm/xterm/css/*",
     "node_modules/@xterm/addon-fit/lib/*",
     "node_modules/@polymer/app-layout/*/*.js",
     "node_modules/@polymer/**/*.js",
