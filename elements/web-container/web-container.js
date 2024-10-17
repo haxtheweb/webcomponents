@@ -128,7 +128,7 @@ export class webContainer extends DDDSuper(LitElement) {
   
     fitAddon.fit();
     // Call only once
-    this.webcontainerInstance = await WebContainer.boot();
+    this.webcontainerInstance = await globalThis.WebContainerManager.requestAvailability();
     await this.webcontainerInstance.mount(this.files);
     const shellProcess = await this.startShell(terminal);
     if (this.commands.length > 0) {
@@ -458,3 +458,15 @@ export class webContainer extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(webContainer.tag, webContainer);
+
+// register globally so we can make sure there is only one
+globalThis.WebContainerManager = globalThis.WebContainerManager || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same modal
+globalThis.WebContainerManager.requestAvailability = async() => {
+  if (!globalThis.WebContainerManager.instance && globalThis.document) {
+    globalThis.WebContainerManager.instance = await WebContainer.boot();
+  }
+  return globalThis.WebContainerManager.instance;
+};
