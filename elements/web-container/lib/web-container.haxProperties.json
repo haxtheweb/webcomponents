@@ -5,18 +5,21 @@
     "type": "element",
     "designSystem": {
         "accent": true,
-        "primary": true,
+        "primary": false,
         "card": true,
-        "text": true,
+        "text": false,
         "designTreatment": false
     },
     "gizmo": {
-        "title": "web-container",
+        "title": "NodeJS Container",
         "description": "",
         "icon": "icons:android",
         "color": "purple",
         "tags": [
-            "Other"
+            "Other",
+            "web",
+            "developer",
+            "code"
         ],
         "handles": [],
         "meta": {
@@ -25,27 +28,44 @@
     },
     "settings": {
         "configure": [
-            {
-                "property": "title",
-                "title": "Title",
-                "description": "",
-                "inputMethod": "textfield",
-                "icon": "editor:title",
-                "required": true
+          {
+            "property": "hideEditor",
+            "title": "Hide editor",
+            "description": "Hide the file editing interface"
+          },
+          {
+            "property": "hideTerminal",
+            "title": "Hide terminal",
+            "description": "Hide the terminal, useful for automatic running programs"
+          },
+          {
+            "property": "hideWindow",
+            "title": "Hide window",
+            "description": "Hide the output window, useful when purpose is terminal only"
+          },
+          {
+            "slot": "",
+            "title": "Commands",
+            "description": "Commands (1 per line) to run in the container prior to loading",
+            "inputMethod": "code-editor",
+            "slotWrapper": "template",
+            "editMode": {
+              "expanded": true,
+              "disabled": false
             }
+          }
         ]
     },
     "saveOptions": {
         "wipeSlot": false,
-        "unsetAttributes": []
+        "unsetAttributes": ["t"]
     },
     "demoSchema": [
         {
             "tag": "web-container",
             "properties": {
-              "title": "Sample property title"
             },
-            "content": ""
+            "content": "<template>npm install @haxtheweb/create</template>"
         }
     ]
 }

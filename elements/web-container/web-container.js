@@ -4,41 +4,16 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { WebContainer } from "@webcontainer/api";
 import { Terminal } from "@xterm/xterm";
 import { FitAddon } from "@xterm/addon-fit";
-
-// @todo now make this flexible on the files produced initially or commands to run
-// also needs to support terminal rendering / layouts to support and editing files
-// in the web container
-const files = {
-  'package.json': {
-    file: {
-      contents: `
-        {
-          "name": "hax-webcontainer",
-          "type": "module",
-          "dependencies": {
-            "@haxtheweb/haxcms-nodejs": "latest",
-            "@haxtheweb/create": "latest"
-          },
-          "scripts": {
-            "start": "npx @haxtheweb/haxcms-nodejs",
-            "hax": "hax"
-          }
-        }`,
-    },
-  },
-};
-
 /**
  * `web-container`
  * 
  * @demo index.html
  * @element web-container
  */
-export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
+export class webContainer extends DDDSuper(LitElement) {
 
   static get tag() {
     return "web-container";
@@ -46,19 +21,29 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.hideEditor = false;
+    this.hideTerminal = false;
+    this.hideWindow = false;
     this.webcontainerInstance = null;
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
+    this.files ={
+      'index.js': {
+        file: {
+          contents: ` `,
+        },
+      },
+      'package.json': {
+        file: {
+          contents: `
+            {
+              "name": "hax-webcontainer",
+              "type": "module",
+              "dependencies": {
+              }
+            }`,
+        },
+      },
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/web-container.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
+    this.commands = [];
   }
 
   async installDependencies() {
@@ -112,11 +97,24 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
+      files: { type: Object },
+      hideTerminal: { type: Boolean, reflect: true, attribute: 'hide-terminal' },
+      hideEditor: { type: Boolean, reflect: true, attribute: 'hide-editor' },
+      hideWindow: { type: Boolean, reflect: true, attribute: 'hide-window' },
     };
   }
 
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
+    if (this.querySelector('template')) {
+      let commands = this.querySelector('template').content.textContent.trim().split('\n');
+      if (commands.length > 0) {
+        for (let i=0; i<commands.length; i++) {
+          commands[i] = commands[i].trim();
+          this.commands.push(commands[i].split(' '));
+        }
+      }
+    }
     this.setupWebContainers();
   }
 
@@ -131,15 +129,20 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
     fitAddon.fit();
     // Call only once
     this.webcontainerInstance = await WebContainer.boot();
-    await this.webcontainerInstance.mount(files);
-    await this.installDependencies();
-    await this.startDevServer();
+    await this.webcontainerInstance.mount(this.files);
+    const shellProcess = await this.startShell(terminal);
+    if (this.commands.length > 0) {
+      await this.runCommands(this.commands);
+    }
+    else {
+      await this.installDependencies();
+      await this.startDevServer();        
+    }
     // Wait for `server-ready` event
     this.webcontainerInstance.on("server-ready", (port, url) => {
       this.shadowRoot.querySelector('iframe').src = url;
     });
   
-    const shellProcess = await this.startShell(terminal);
     globalThis.addEventListener("resize", () => {
       fitAddon.fit();
       shellProcess.resize({
@@ -147,6 +150,38 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
         rows: terminal.rows,
       });
     });
+  }
+
+  async runCommands(commands) {
+    var commandProcess;
+    for (let i=0; i<commands.length; i++) {
+      // support command vs command + arguments
+      if (Array.isArray(commands[i])) {
+        const tmp = Object.assign([], commands[i]);
+        let command = (tmp.length <= 1) ? tmp[0] : tmp.shift();
+        commandProcess = await this.webcontainerInstance.spawn(command, tmp);  
+        commandProcess.output.pipeTo(
+          new WritableStream({
+            write(data) {
+              console.log(data);
+            },
+          }),
+        );
+
+      }
+      else {
+        commandProcess = await this.webcontainerInstance.spawn(command[i]);  
+        commandProcess.output.pipeTo(
+          new WritableStream({
+            write(data) {
+              console.log(data);
+            },
+          }),
+        );
+      }
+    }
+    // Wait for install command to exit
+    return commandProcess.exit;
   }
 
   // Lit scoped styles
@@ -159,8 +194,18 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
+      :host([hide-terminal]) .terminal {
+        display: none;
+      }
+      :host([hide-editor]) .editor {
+        display: none;
+      }
+      :host([hide-window]) iframe {
+        display: none;
+      }
       iframe {
         width: 100%;
+        height: var(--web-container-height, 500px);
         border: none;
         background-color: transparent;
       }
@@ -168,6 +213,7 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
       .terminal {
         padding: 0;
         margin: 0;
+        height: var(--web-container-height, 200px);
         overflow: hidden;
       }
       /**
@@ -396,7 +442,7 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
     return html`
     <div class="container">
       <div class="preview">
-        <iframe src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>
+        ${!this.hideWindow ? html`<iframe src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
       </div>
     </div>
     <div class="terminal"></div>`;
