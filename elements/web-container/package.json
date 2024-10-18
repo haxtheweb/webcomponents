@@ -40,7 +40,7 @@
     "@open-wc/building-rollup": "^3.0.2",
     "@open-wc/testing": "^4.0.0",
     "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@web/dev-server": "^0.4.6",
     "@web/rollup-plugin-html": "^2.3.0",
