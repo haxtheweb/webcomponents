@@ -35,13 +35,42 @@
 <body>
   <div id="demo">
     <h1>web-container</h1>
-    <!-- this is going to do whatever the tag's defaults are -->
-    <h2>Default</h2>
-    <web-container hide-window>
-      <template>npm install @haxtheweb/create</template>
-    </web-container>
+    <select id="select">
+      <option></option>
+    </select>
+    <p>Select the project to produce a demo for. This will make a best attempt</p>
+    <div id="container"></div>
   </div>
-  <script type="module" src="./web-container.js"></script>
+  <script type="module" src="./lib/web-container-doc-player.js"></script>
+  <script>
+
+    // listen for user selection on the input field;
+    const select = globalThis.document.querySelector('#select');
+     
+    fetch(`https://cdn.hax.cloud/cdn/wc-registry.json`).then(d => d.json()).then(data => {
+      let obj = Object.fromEntries(Object.entries(data).filter(([key, value]) => value.includes('@haxtheweb/') && !key.startsWith('hax')));
+      Object.keys(obj).forEach(path => {
+        let el = globalThis.document.createElement('option');
+        el.value = path;
+        el.innerText = path;
+        select.appendChild(el);
+      });
+      globalThis.filteredWcRegistry = obj;
+    });
+    select.addEventListener('change', async (e) => {
+      if (select.value) {
+        let wcm = await globalThis.WebContainerManager.requestAvailability();
+        let wcdp = globalThis.document.createElement('web-container-doc-player');
+        let ary = globalThis.filteredWcRegistry[select.value].split('/');
+        wcdp.project = globalThis.filteredWcRegistry[select.value] = `${ary.shift()}/${ary.shift()}`;
+        wcdp.element = select.value;
+        wcdp.importpath = globalThis.filteredWcRegistry[select.value];
+        let container = globalThis.document.querySelector('#container');
+        container.innerHTML = '';
+        container.appendChild(wcdp);
+      }
+    })
+  </script>
 
 </body>
 </html>

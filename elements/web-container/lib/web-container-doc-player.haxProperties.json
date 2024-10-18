@@ -11,15 +11,16 @@
         "designTreatment": false
     },
     "gizmo": {
-        "title": "NodeJS Container",
+        "title": "Web component doc player",
         "description": "",
-        "icon": "icons:android",
-        "color": "purple",
+        "icon": "hax:html-code",
+        "color": "green",
         "tags": [
             "Other",
             "web",
             "developer",
-            "code"
+            "code",
+            "hax"
         ],
         "handles": [],
         "meta": {
@@ -29,33 +30,10 @@
     "settings": {
         "configure": [
           {
-            "property": "hideEditor",
-            "inputMethod": "boolean",
-            "title": "Hide editor",
-            "description": "Hide the file editing interface"
-          },
-          {
-            "property": "hideTerminal",
-            "inputMethod": "boolean",
-            "title": "Hide terminal",
-            "description": "Hide the terminal, useful for automatic running programs"
-          },
-          {
             "property": "hideWindow",
             "inputMethod": "boolean",
             "title": "Hide window",
             "description": "Hide the output window, useful when purpose is terminal only"
-          },
-          {
-            "slot": "",
-            "title": "Commands",
-            "description": "Commands (1 per line) to run in the container prior to loading",
-            "inputMethod": "code-editor",
-            "slotWrapper": "template",
-            "editMode": {
-              "expanded": true,
-              "disabled": false
-            }
           }
         ]
     },

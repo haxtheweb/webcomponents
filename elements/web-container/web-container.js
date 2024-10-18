@@ -13,7 +13,7 @@ import { FitAddon } from "@xterm/addon-fit";
  * @demo index.html
  * @element web-container
  */
-export class webContainer extends DDDSuper(LitElement) {
+export class WebContainerEl extends DDDSuper(LitElement) {
 
   static get tag() {
     return "web-container";
@@ -89,8 +89,9 @@ export class webContainer extends DDDSuper(LitElement) {
   }
 
   /** @param {string} content*/
-  async writeIndexJS(content) {
-    await this.webcontainerInstance.fs.writeFile("/index.js", content);
+  async writeFile(filename, content) {
+    // forces it to be at root of the active directory in the container
+    await this.webcontainerInstance.fs.writeFile(`/${filename}`, content);
   }
 
   // Lit reactive properties
@@ -136,7 +137,7 @@ export class webContainer extends DDDSuper(LitElement) {
     }
     else {
       await this.installDependencies();
-      await this.startDevServer();        
+      await this.startDevServer();
     }
     // Wait for `server-ready` event
     this.webcontainerInstance.on("server-ready", (port, url) => {
@@ -159,6 +160,7 @@ export class webContainer extends DDDSuper(LitElement) {
       if (Array.isArray(commands[i])) {
         const tmp = Object.assign([], commands[i]);
         let command = (tmp.length <= 1) ? tmp[0] : tmp.shift();
+        console.log(command, tmp);
         commandProcess = await this.webcontainerInstance.spawn(command, tmp);  
         commandProcess.output.pipeTo(
           new WritableStream({
@@ -457,7 +459,7 @@ export class webContainer extends DDDSuper(LitElement) {
   }
 }
 
-globalThis.customElements.define(webContainer.tag, webContainer);
+globalThis.customElements.define(WebContainerEl.tag, WebContainerEl);
 
 // register globally so we can make sure there is only one
 globalThis.WebContainerManager = globalThis.WebContainerManager || {};
