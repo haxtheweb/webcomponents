@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.6",
+  "version": "9.0.7",
   "description": "LunrJS search element",
   "repository": {
     "type": "git",
@@ -37,12 +37,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/es-global-bridge": "^9.0.6",
+    "@haxtheweb/es-global-bridge": "^9.0.7",
     "lit": "^3.2.0",
     "lunr": "2.3.9"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.6",
+    "@haxtheweb/deduping-fix": "^9.0.7",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

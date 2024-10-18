@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.6",
+  "version": "9.0.7",
   "description": "small call to action / attention that acts as a heading too",
   "repository": {
     "type": "git",
@@ -44,8 +44,8 @@
     "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.6",
-    "@haxtheweb/storybook-utilities": "^9.0.6",
+    "@haxtheweb/deduping-fix": "^9.0.7",
+    "@haxtheweb/storybook-utilities": "^9.0.7",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
