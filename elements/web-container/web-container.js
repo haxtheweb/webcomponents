@@ -207,7 +207,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       }
       iframe {
         width: 100%;
-        height: var(--web-container-height, 500px);
+        height: var(--web-container-iframe-height, 500px);
         border: none;
         background-color: transparent;
       }
@@ -215,7 +215,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       .terminal {
         padding: 0;
         margin: 0;
-        height: var(--web-container-height, 200px);
+        height: var(--web-container-terminal-height, 200px);
         overflow: hidden;
       }
       /**
@@ -444,10 +444,10 @@ export class WebContainerEl extends DDDSuper(LitElement) {
     return html`
     <div class="container">
       <div class="preview">
-        ${!this.hideWindow ? html`<iframe src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
+        ${!this.hideWindow ? html`<iframe part="iframe" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
       </div>
     </div>
-    <div class="terminal"></div>`;
+    <div class="terminal" part="terminal"></div>`;
   }
 
   /**
