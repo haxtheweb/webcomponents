@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.8",
+  "version": "9.0.9",
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   "dependencies": {
     "@haxtheweb/hax-iconset": "^9.0.7",
     "@haxtheweb/i18n-manager": "^9.0.7",
-    "@haxtheweb/simple-fields": "^9.0.8",
+    "@haxtheweb/simple-fields": "^9.0.9",
     "@haxtheweb/simple-icon": "^9.0.7",
     "@haxtheweb/simple-popover": "^9.0.7",
     "lit": "^3.2.0",

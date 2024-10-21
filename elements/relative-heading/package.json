@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.8",
+  "version": "9.0.9",
   "description": "Start of relative-heading",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
     "@haxtheweb/anchor-behaviors": "^9.0.7",
     "@haxtheweb/hax-iconset": "^9.0.7",
     "@haxtheweb/simple-icon": "^9.0.7",
-    "@haxtheweb/simple-toast": "^9.0.8",
+    "@haxtheweb/simple-toast": "^9.0.9",
     "@polymer/paper-toast": "^3.0.1",
     "lit": "^3.2.0"
   },

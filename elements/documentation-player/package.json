@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.8",
+  "version": "9.0.9",
   "description": "playlist like element but for documenting web components in the context of hax",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/play-list": "^9.0.8",
+    "@haxtheweb/play-list": "^9.0.9",
     "@haxtheweb/simple-img": "^9.0.7",
     "lit": "^3.2.0"
   },

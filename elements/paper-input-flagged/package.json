@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.8",
+  "version": "9.0.9",
   "description": "Automated conversion of paper-input-flagged/",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/hax-iconset": "^9.0.7",
-    "@haxtheweb/simple-fields": "^9.0.8",
+    "@haxtheweb/simple-fields": "^9.0.9",
     "@haxtheweb/simple-icon": "^9.0.7",
     "@haxtheweb/simple-tooltip": "^9.0.7",
     "lit": "^3.2.0"
