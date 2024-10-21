@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.7",
+  "version": "9.0.8",
   "description": "some different elements specific to the design of educational materials. Lots of small elements and a catch all repo",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/hax-iconset": "^9.0.7",
-    "@haxtheweb/haxcms-elements": "^9.0.7",
+    "@haxtheweb/haxcms-elements": "^9.0.8",
     "@haxtheweb/i18n-manager": "^9.0.7",
     "@haxtheweb/simple-colors": "^9.0.7",
     "@haxtheweb/simple-icon": "^9.0.7",

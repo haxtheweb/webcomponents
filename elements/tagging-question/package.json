@@ -6,7 +6,7 @@
     "elementName": "tagging-question",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "9.0.7",
+  "version": "9.0.8",
   "description": "Answer question by applying related tags",
   "repository": {
     "type": "git",
@@ -29,8 +29,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^3.2.0",
-    "@haxtheweb/multiple-choice": "^9.0.7"
+    "@haxtheweb/multiple-choice": "^9.0.8",
+    "lit": "^3.2.0"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.7",

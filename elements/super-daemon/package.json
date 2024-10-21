@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.7",
+  "version": "9.0.8",
   "description": "",
   "repository": {
     "type": "git",
@@ -45,9 +45,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/future-terminal-text": "^9.0.7",
-    "@haxtheweb/hal-9000": "^9.0.7",
+    "@haxtheweb/hal-9000": "^9.0.8",
     "@haxtheweb/i18n-manager": "^9.0.7",
-    "@haxtheweb/simple-fields": "^9.0.7",
+    "@haxtheweb/simple-fields": "^9.0.8",
     "@haxtheweb/simple-filter": "^9.0.7",
     "@haxtheweb/simple-icon": "^9.0.7",
     "@haxtheweb/user-scaffold": "^9.0.7",
