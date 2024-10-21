@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.9",
+  "version": "9.0.10",
   "description": "read and write localized data elements",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@haxtheweb/chartist-render": "^9.0.7",
     "@haxtheweb/deduping-fix": "^9.0.7",
-    "@haxtheweb/multiple-choice": "^9.0.9",
+    "@haxtheweb/multiple-choice": "^9.0.10",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

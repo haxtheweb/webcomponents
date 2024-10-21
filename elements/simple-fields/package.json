@@ -18,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.9",
+  "version": "9.0.10",
   "description": "Uses JSON Schema or an array of fields to display a series of fields",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/a11y-tabs": "^9.0.7",
-    "@haxtheweb/code-editor": "^9.0.9",
+    "@haxtheweb/code-editor": "^9.0.10",
     "@haxtheweb/hax-iconset": "^9.0.7",
     "@haxtheweb/i18n-manager": "^9.0.7",
     "@haxtheweb/responsive-utility": "^9.0.7",

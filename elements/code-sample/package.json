@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.7",
+  "version": "9.0.10",
   "description": "A wrapper element for highlight.js",
   "repository": {
     "type": "git",

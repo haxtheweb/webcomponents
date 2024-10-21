@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.9",
+  "version": "9.0.10",
   "description": "Automated conversion of wikipedia-query/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/citation-element": "^9.0.9",
+    "@haxtheweb/citation-element": "^9.0.10",
     "@haxtheweb/intersection-element": "^9.0.7",
     "lit": "^3.2.0"
   },

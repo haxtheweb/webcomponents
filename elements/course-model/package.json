@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.9",
+  "version": "9.0.10",
   "description": "view 3d models with multiple angel rotation for a course experience",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.7",
     "@haxtheweb/media-image": "^9.0.7",
-    "@haxtheweb/video-player": "^9.0.9",
+    "@haxtheweb/video-player": "^9.0.10",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

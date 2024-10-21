@@ -18,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.9",
+  "version": "9.0.10",
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",
@@ -43,8 +43,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-media-player": "^9.0.9",
-    "@haxtheweb/d-d-d": "^9.0.9",
+    "@haxtheweb/a11y-media-player": "^9.0.10",
+    "@haxtheweb/d-d-d": "^9.0.10",
     "@haxtheweb/i18n-manager": "^9.0.7",
     "@haxtheweb/intersection-element": "^9.0.7",
     "@haxtheweb/media-behaviors": "^9.0.7",

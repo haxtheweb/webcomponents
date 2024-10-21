@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.9",
+  "version": "9.0.10",
   "description": "A table that's editable",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
     "@haxtheweb/a11y-menu-button": "^9.0.7",
     "@haxtheweb/hax-iconset": "^9.0.7",
     "@haxtheweb/responsive-utility": "^9.0.7",
-    "@haxtheweb/rich-text-editor": "^9.0.9",
+    "@haxtheweb/rich-text-editor": "^9.0.10",
     "@haxtheweb/simple-icon": "^9.0.7",
     "@haxtheweb/simple-picker": "^9.0.7",
     "@haxtheweb/simple-toolbar": "^9.0.7",

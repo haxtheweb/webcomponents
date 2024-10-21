@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.9",
+  "version": "9.0.10",
   "description": "A simple vocabulary term highlighted with pop up for more details",
   "repository": {
     "type": "git",
@@ -42,13 +42,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/schema-behaviors": "^9.0.7",
-    "@haxtheweb/simple-modal": "^9.0.9",
+    "@haxtheweb/simple-modal": "^9.0.10",
     "lit": "^3.2.0"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.7",
     "@haxtheweb/storybook-utilities": "^9.0.7",
-    "@haxtheweb/video-player": "^9.0.9",
+    "@haxtheweb/video-player": "^9.0.10",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
