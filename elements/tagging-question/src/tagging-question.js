@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `tagging-question`
@@ -64,9 +65,8 @@ class TaggingQuestion extends QuestionElement {
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
           box-sizing: border-box;
-          background-color: light-dark(
-            var(--simple-colors-default-theme-grey-2),
-            var(--simple-colors-default-theme-grey-10)
+          background-color: (
+            var(--ddd-theme-default-coalyGray)
           );
         }
 
@@ -87,7 +87,7 @@ class TaggingQuestion extends QuestionElement {
 
         :host(:not([show-answer])) .tag-option:hover,
         :host(:not([show-answer])) .tag-option:focus {
-          background-color: var(--simple-colors-default-theme-grey-3);
+          background-color: var(--ddd-theme-default-disable);
         }
 
         :host([dragging]) #user-choice-container {
@@ -97,17 +97,15 @@ class TaggingQuestion extends QuestionElement {
         :host([drag-enter-answer][dragging]) #user-choice-container {
           border-style: dashed;
           border-color: black;
-          background-color: light-dark(
-            var(--simple-colors-default-theme-grey-3),
-            var(--simple-colors-default-theme-grey-9)
+          background-color: (
+            var(--ddd-theme-default-coalyGray)
           );
         }
         :host([drag-enter][dragging]) #possible-container {
           border-color: black;
           border-style: dashed;
-          background-color: light-dark(
-            var(--simple-colors-default-theme-grey-2),
-            var(--simple-colors-default-theme-grey-8)
+          background-color: (
+            var(--ddd-theme-default-coalyGray)
           );
         }
 
@@ -119,7 +117,7 @@ class TaggingQuestion extends QuestionElement {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color: var(--ddd-theme-default-coalyGray);
           cursor: pointer;
           user-select: none;
           transition: background-color 0.3s ease;

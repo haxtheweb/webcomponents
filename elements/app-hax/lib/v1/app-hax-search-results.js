@@ -117,7 +117,7 @@ export class AppHaxSearchResults extends SimpleColors {
           margin-bottom: 8px;
         }
         :host([dark]) #noResult {
-          color: var(--simple-colors-default-theme-grey-12, black);
+          color: var(--ddd-theme-default-coalyGray);
         }
       `,
     ];

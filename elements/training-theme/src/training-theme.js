@@ -212,7 +212,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
           --site-menu-button-link-decoration: none;
           --site-menu-button-button-hover-color: var(
             --haxcms-color,
-            var(--simple-colors-default-theme-purple-7)
+            var(--ddd-theme-default-wonderPurple)
           );
           color: #242a31;
           border: 1px solid #e6ecf1;
