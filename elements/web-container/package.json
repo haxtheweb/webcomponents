@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/web-container",
-  "version": "9.0.10",
+  "version": "9.0.11",
   "description": "Webcomponent web-container following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
