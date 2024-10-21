@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/code-editor/lib/monaco-element/monaco-element.js";
-import { formatHTML, ReplaceWithPolyfill } from "@haxtheweb/utils/utils.js";
+import { ReplaceWithPolyfill } from "@haxtheweb/utils/utils.js";
 if (!Element.prototype.replaceWith) {
   Element.prototype.replaceWith = ReplaceWithPolyfill;
 }
@@ -448,9 +448,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       content = children[0].innerHTML;
     }
     if (content) {
-      if (this.language === "html") {
-        content = formatHTML(content);
-      }
       this.shadowRoot.querySelector("#codeeditor").value = content.trim();
     }
   }
@@ -504,7 +501,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       wrap = globalThis.document.createElement("p");
     }
     if (this.value) {
-      wrap.innerHTML = formatHTML(this.value);
+      wrap.innerHTML = this.value;
     }
     // implies we were actually modifying the thing in question
     // which we wanted to leverage. Example, code-sample won't have code-sample as

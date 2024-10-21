@@ -174,12 +174,12 @@ class CodeSample extends LitElement {
             inputMethod: "select",
             options: {
               javascript: "JavaScript",
-              css: "CSS",
               html: "HTML",
+              css: "CSS",
               xml: "XML",
               json: "JSON data",
-              php: "PHP",
               yaml: "YAML",
+              php: "PHP",
             },
           },
           {
@@ -223,6 +223,7 @@ class CodeSample extends LitElement {
             const great = "example";
             const great = "example";</template>`,
           properties: {
+            "type": "javascript",
             "copy-clipboard-button": "copy-clipboard-button",
           },
         },
