@@ -44,6 +44,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
     await globalThis.WebContainerManager.requestAvailability();
     let wc = globalThis.document.createElement('web-container');
     wc.hideTerminal = true;
+    wc.hideEditor = true;
     wc.files ={
       'index.html': {
         file: {
