@@ -44,7 +44,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^3.2.0"
+    "lit": "^3.2.0",
+    "@haxtheweb/multiple-choice": "^9.0.7",
+    "@haxtheweb/simple-toolbar": "^9.0.7",
+    "@haxtheweb/simple-toast": "^9.0.7",
+    "@haxtheweb/grid-plate": "^9.0.7",
+    "@haxtheweb/d-d-d": "^9.0.7",
+    "@haxtheweb/simple-icon": "^9.0.7"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.7",

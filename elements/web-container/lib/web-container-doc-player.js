@@ -14,6 +14,17 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
     this.importpath = null;
     this.version = "latest";
     this.rebuilding = false;
+    // listen for the frame sending back it's height
+    globalThis.addEventListener(
+      'message',
+       (e) => {
+        // message that was passed from iframe page
+        let message = JSON.parse(e.data);
+        if (message.subject === "frameResize" && message.height) {
+          this.shadowRoot.querySelector('web-container').style.setProperty('--web-container-iframe-height', parseInt(message.height) + 40 + "px");
+        }
+      }
+    );
   }
 
   updated(changedProperties) {
@@ -57,6 +68,13 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
       <div id="codesample"></div>
       <div id="demo"></div>
   </body>
+  <script>
+    window.process = window.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
+  </script>
   <script type="module" async defer>
     import "${this.importpath ? this.importpath : this.project}";
     import "@haxtheweb/code-sample/code-sample.js";
@@ -75,7 +93,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
             return false;
           });
         }
-        if (schema.demoSchema && schema.demoSchema[0]) {
+        if (schema && schema.demoSchema && schema.demoSchema[0]) {
           el = haxElementToNode(schema.demoSchema[0]);        
         }
       }
@@ -87,6 +105,18 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
       let sampleWrapper = globalThis.document.querySelector('#codesample');
       sampleWrapper.innerHTML = '';
       sampleWrapper.appendChild(sample);
+      const bodyObserver = new ResizeObserver(entries => {
+        for (const entry of entries) {
+          if (entry.target === globalThis.document.body) {
+            const newHeight = entry.contentRect.height;
+            parent.postMessage(
+              '{"subject":"frameResize", "height":"' + entry.contentRect.height + '" }',
+              "*",
+            );
+          }
+        }
+      });
+      bodyObserver.observe(globalThis.document.body);
     }
     // generate example dynamically so we can use HAXProps if it exists
     getExample();

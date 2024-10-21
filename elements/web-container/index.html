@@ -62,7 +62,7 @@
         let wcm = await globalThis.WebContainerManager.requestAvailability();
         let wcdp = globalThis.document.createElement('web-container-doc-player');
         let ary = globalThis.filteredWcRegistry[select.value].split('/');
-        wcdp.project = globalThis.filteredWcRegistry[select.value] = `${ary.shift()}/${ary.shift()}`;
+        wcdp.project = `${ary.shift()}/${ary.shift()}`;
         wcdp.element = select.value;
         wcdp.importpath = globalThis.filteredWcRegistry[select.value];
         let container = globalThis.document.querySelector('#container');
