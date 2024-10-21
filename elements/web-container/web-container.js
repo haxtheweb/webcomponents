@@ -128,7 +128,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
             this.fname = 'index.html';
           }
           if (this.fname) {
-            this.shadowRoot.querySelector('code-editor').value = this.files[this.fname].file.contents;
+            this.shadowRoot.querySelector('code-editor').innerHTML = this.files[this.fname].file.contents;
           }
         }, 100);
       });
