@@ -21,6 +21,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
 
   constructor() {
     super();
+    this.fname = null;
     this.hideEditor = false;
     this.hideTerminal = false;
     this.hideWindow = false;
@@ -115,6 +116,22 @@ export class WebContainerEl extends DDDSuper(LitElement) {
           this.commands.push(commands[i].split(' '));
         }
       }
+    }
+    if (!this.hideEditor) {
+      import("@haxtheweb/code-editor/code-editor.js").then((e) => {
+        setTimeout(() => {
+          
+          if (this.files['index.js']) {
+            this.fname = 'index.js';
+          }
+          else if (this.files['index.html']) {
+            this.fname = 'index.html';
+          }
+          if (this.fname) {
+            this.shadowRoot.querySelector('code-editor').value = this.files[this.fname].file.contents;
+          }
+        }, 100);
+      });
     }
     this.setupWebContainers();
   }
@@ -439,10 +456,15 @@ export class WebContainerEl extends DDDSuper(LitElement) {
     `];
   }
 
+  editorValueChanged(e) {
+    this.writeFile(this.fname, e.detail.value);
+  }
+
   // Lit render the HTML
   render() {
     return html`
     <div class="container">
+      ${!this.hideEditor ? html`<div class="editor"><code-editor @value-changed="${this.editorValueChanged}"></code-editor></div>` : ``}
       <div class="preview">
         ${!this.hideWindow ? html`<iframe part="iframe" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
       </div>
