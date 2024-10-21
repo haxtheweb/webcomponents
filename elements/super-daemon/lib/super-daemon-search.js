@@ -348,8 +348,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           --simple-fields-placeholder-font-weight: bold;
           --simple-fields-placeholder-opacity: 0.8;
           --simple-fields-placeholder-color: var(
-            --simple-colors-default-theme-grey-12,
-            grey
+            --ddd-theme-default-coalyGray
           );
           background-color: rgba(255, 0, 255, 0.05);
         }
