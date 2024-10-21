@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.10",
+  "version": "9.0.13",
   "description": "HAX integration geared toward CMSs",
   "repository": {
     "type": "git",
@@ -37,8 +37,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/h-a-x": "^9.0.10",
-    "@haxtheweb/hax-body": "^9.0.10",
+    "@haxtheweb/h-a-x": "^9.0.13",
+    "@haxtheweb/hax-body": "^9.0.13",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/paper-spinner": "3.0.2",
     "@polymer/polymer": "^3.5.1",

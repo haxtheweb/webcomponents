@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.10",
+  "version": "9.0.13",
   "description": "Automated conversion of stop-note/",
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.10",
-    "@haxtheweb/i18n-manager": "^9.0.7",
+    "@haxtheweb/d-d-d": "^9.0.13",
+    "@haxtheweb/i18n-manager": "^9.0.13",
     "@haxtheweb/schema-behaviors": "^9.0.7",
     "@haxtheweb/simple-colors": "^9.0.7",
     "@haxtheweb/simple-icon": "^9.0.7",
