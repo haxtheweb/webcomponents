@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.13",
+  "version": "9.0.14",
   "description": "Single tag to transform authoring",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-body": "^9.0.13"
+    "@haxtheweb/hax-body": "^9.0.14"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.7",

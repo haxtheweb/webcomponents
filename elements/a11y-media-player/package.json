@@ -18,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.13",
+  "version": "9.0.14",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   "dependencies": {
     "@haxtheweb/absolute-position-behavior": "^9.0.7",
     "@haxtheweb/anchor-behaviors": "^9.0.7",
-    "@haxtheweb/d-d-d": "^9.0.13",
+    "@haxtheweb/d-d-d": "^9.0.14",
     "@haxtheweb/fullscreen-behaviors": "^9.0.7",
     "@haxtheweb/responsive-utility": "^9.0.7",
     "@haxtheweb/simple-colors": "^9.0.7",

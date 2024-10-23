@@ -15,7 +15,7 @@
       "hax": "src/product-card-hax.json"
     }
   },
-  "version": "9.0.13",
+  "version": "9.0.14",
   "description": "basic display of a product with advanced data driven helpers",
   "repository": {
     "type": "git",
@@ -60,7 +60,7 @@
     "@haxtheweb/license-element": "^9.0.7",
     "@haxtheweb/lrn-math": "^9.0.7",
     "@haxtheweb/lrn-table": "^9.0.7",
-    "@haxtheweb/lrn-vocab": "^9.0.13",
+    "@haxtheweb/lrn-vocab": "^9.0.14",
     "@haxtheweb/lrndesign-timeline": "^9.0.7",
     "@haxtheweb/md-block": "^9.0.13",
     "@haxtheweb/mdi-iconset-svg": "^9.0.1",
@@ -76,7 +76,7 @@
     "@haxtheweb/simple-icon": "^9.0.7",
     "@haxtheweb/stop-note": "^9.0.13",
     "@haxtheweb/user-action": "^9.0.7",
-    "@haxtheweb/video-player": "^9.0.13",
+    "@haxtheweb/video-player": "^9.0.14",
     "@haxtheweb/wikipedia-query": "^9.0.13",
     "@lrnwebcomponents/lrndesign-gallery": "^7.0.11",
     "@open-wc/testing": "4.0.0",
