@@ -2523,7 +2523,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "learningMode") {
+      if (propName === "learningMode"  && typeof oldValue !== "undefined") {
         this.disableSeek = this[propName];
         this.hideTranscript = this[propName];
       }
@@ -2948,7 +2948,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
    * Event version for Lit version requirements
    */
   selectTranscriptByKeyEvent(e) {
-    this.selectTranscriptByKey(e.detail.value);
+    if (this.__playerReady && this.__settingsOpen) {
+      this.selectTranscriptByKey(e.detail.value);
+    }
   }
 
   /**
