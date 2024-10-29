@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.14",
+  "version": "9.0.15",
   "description": "design, develop, destroy the competition",
   "repository": {
     "type": "git",
@@ -44,25 +44,24 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-colors": "^9.0.7",
     "@haxtheweb/hax-iconset": "^9.0.7",
+    "@haxtheweb/simple-colors": "^9.0.7",
     "@haxtheweb/simple-icon": "^9.0.7",
     "lit": "^3.2.0"
   },
   "devDependencies": {
     "@haxtheweb/accent-card": "^9.0.7",
     "@haxtheweb/course-design": "^9.0.14",
+    "@haxtheweb/deduping-fix": "^9.0.7",
     "@haxtheweb/figure-label": "^9.0.7",
-    "@haxtheweb/haxcms-elements": "^9.0.14",
+    "@haxtheweb/haxcms-elements": "^9.0.15",
     "@haxtheweb/media-image": "^9.0.7",
     "@haxtheweb/page-section": "^9.0.7",
-    "@haxtheweb/self-check": "^9.0.13",
+    "@haxtheweb/self-check": "^9.0.15",
     "@haxtheweb/simple-cta": "^9.0.7",
     "@haxtheweb/simple-modal": "^9.0.13",
-    "@haxtheweb/stop-note": "^9.0.13",
-    "@haxtheweb/video-player": "^9.0.14",
-    "@haxtheweb/deduping-fix": "^9.0.7",
-    "mobx": "^6.13.5",
+    "@haxtheweb/stop-note": "^9.0.15",
+    "@haxtheweb/video-player": "^9.0.15",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -71,6 +70,7 @@
     "concurrently": "8.2.2",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.21",
+    "mobx": "^6.13.5",
     "polymer-build": "3.1.4",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"

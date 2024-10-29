@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.13",
+  "version": "9.0.15",
   "description": "Automated conversion of lrndesign-imagemap/",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/hax-iconset": "^9.0.7",
-    "@haxtheweb/relative-heading": "^9.0.13",
+    "@haxtheweb/relative-heading": "^9.0.15",
     "@haxtheweb/simple-icon": "^9.0.7",
     "@haxtheweb/simple-popover": "^9.0.7",
     "@polymer/iron-a11y-keys": "^3.0.1",

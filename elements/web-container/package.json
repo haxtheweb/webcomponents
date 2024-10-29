@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/web-container",
-  "version": "9.0.13",
+  "version": "9.0.15",
   "description": "Webcomponent web-container following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
@@ -27,7 +27,7 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.13",
+    "@haxtheweb/d-d-d": "^9.0.15",
     "@haxtheweb/utils": "^9.0.7",
     "@webcontainer/api": "1.3.0",
     "@xterm/addon-fit": "0.11.0-beta.67",
