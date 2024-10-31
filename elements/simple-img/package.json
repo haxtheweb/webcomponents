@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.7",
+  "version": "9.0.16",
   "description": "simple image manipulation with a microservice",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/micro-frontend-registry": "^9.0.7"
+    "@haxtheweb/micro-frontend-registry": "^9.0.16"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.7",

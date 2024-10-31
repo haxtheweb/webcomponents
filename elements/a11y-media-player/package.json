@@ -18,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.15",
+  "version": "9.0.16",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   "dependencies": {
     "@haxtheweb/absolute-position-behavior": "^9.0.7",
     "@haxtheweb/anchor-behaviors": "^9.0.7",
-    "@haxtheweb/d-d-d": "^9.0.15",
+    "@haxtheweb/d-d-d": "^9.0.16",
     "@haxtheweb/fullscreen-behaviors": "^9.0.7",
     "@haxtheweb/responsive-utility": "^9.0.7",
     "@haxtheweb/simple-colors": "^9.0.7",
@@ -53,7 +53,7 @@
     "@haxtheweb/simple-icon": "^9.0.7",
     "@haxtheweb/simple-range-input": "^9.0.7",
     "@haxtheweb/simple-search": "^9.0.13",
-    "@haxtheweb/simple-toast": "^9.0.15",
+    "@haxtheweb/simple-toast": "^9.0.16",
     "@haxtheweb/simple-tooltip": "^9.0.7",
     "@haxtheweb/utils": "^9.0.7",
     "lit": "^3.2.0"

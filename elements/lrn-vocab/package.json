@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.14",
+  "version": "9.0.16",
   "description": "A simple vocabulary term highlighted with pop up for more details",
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.7",
     "@haxtheweb/storybook-utilities": "^9.0.7",
-    "@haxtheweb/video-player": "^9.0.14",
+    "@haxtheweb/video-player": "^9.0.16",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
