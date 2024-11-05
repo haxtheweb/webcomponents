@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.7",
+  "version": "9.0.17",
   "description": "Slider that allows comparison of two images",
   "repository": {
     "type": "git",
@@ -41,14 +41,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-details": "^9.0.7",
-    "@haxtheweb/radio-behaviors": "^9.0.7",
-    "@haxtheweb/simple-icon": "^9.0.7",
+    "@haxtheweb/a11y-details": "^9.0.17",
+    "@haxtheweb/radio-behaviors": "^9.0.17",
+    "@haxtheweb/simple-icon": "^9.0.17",
     "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.7",
-    "@haxtheweb/storybook-utilities": "^9.0.7",
+    "@haxtheweb/deduping-fix": "^9.0.17",
+    "@haxtheweb/storybook-utilities": "^9.0.17",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

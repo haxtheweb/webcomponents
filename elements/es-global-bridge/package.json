@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/es-global-bridge",
-  "version": "9.0.7",
+  "version": "9.0.17",
   "description": "A very simple class to help bridge global scoped code with ES Modules",
   "repository": {
     "type": "git",

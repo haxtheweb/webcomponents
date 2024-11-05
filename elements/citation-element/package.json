@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.16",
+  "version": "9.0.17",
   "description": "A simple way of citing things on the web.",
   "repository": {
     "type": "git",
@@ -37,15 +37,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.16",
-    "@haxtheweb/license-element": "^9.0.7",
-    "@haxtheweb/schema-behaviors": "^9.0.7",
-    "@haxtheweb/utils": "^9.0.7",
+    "@haxtheweb/d-d-d": "^9.0.17",
+    "@haxtheweb/license-element": "^9.0.17",
+    "@haxtheweb/schema-behaviors": "^9.0.17",
+    "@haxtheweb/utils": "^9.0.17",
     "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.7",
-    "@haxtheweb/storybook-utilities": "^9.0.7",
+    "@haxtheweb/deduping-fix": "^9.0.17",
+    "@haxtheweb/storybook-utilities": "^9.0.17",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.7",
+  "version": "9.0.17",
   "description": "A well designed section of a page with many options for marketing purposes",
   "repository": {
     "type": "git",
@@ -43,15 +43,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/media-image": "^9.0.7",
-    "@haxtheweb/simple-colors": "^9.0.7",
-    "@haxtheweb/simple-icon": "^9.0.7",
-    "@haxtheweb/simple-tooltip": "^9.0.7",
+    "@haxtheweb/media-image": "^9.0.17",
+    "@haxtheweb/simple-colors": "^9.0.17",
+    "@haxtheweb/simple-icon": "^9.0.17",
+    "@haxtheweb/simple-tooltip": "^9.0.17",
     "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.7",
-    "@haxtheweb/simple-cta": "^9.0.7",
+    "@haxtheweb/deduping-fix": "^9.0.17",
+    "@haxtheweb/simple-cta": "^9.0.17",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

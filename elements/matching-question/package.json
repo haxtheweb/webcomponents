@@ -6,7 +6,7 @@
     "elementName": "matching-question",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "9.0.7",
+  "version": "9.0.17",
   "description": "Match concepts question type",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.7",
+    "@haxtheweb/deduping-fix": "^9.0.17",
     "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
