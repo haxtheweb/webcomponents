@@ -237,7 +237,10 @@ class DDDocs extends DDD {
     for (let i = 0; i < 22; i++) {
       headers.push(html`
         <details style="max-width: 100%; margin: 0 64px;">
-          <summary data-primary="${i}" style="color: var(--ddd-theme-primary); background-color: var(--ddd-theme-bgContrast);">
+          <summary
+            data-primary="${i}"
+            style="color: var(--ddd-theme-primary); background-color: var(--ddd-theme-bgContrast);"
+          >
             Header Sample ${i}
           </summary>
           ${Array(6)

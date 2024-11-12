@@ -2523,7 +2523,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "learningMode"  && typeof oldValue !== "undefined") {
+      if (propName === "learningMode" && typeof oldValue !== "undefined") {
         this.disableSeek = this[propName];
         this.hideTranscript = this[propName];
       }

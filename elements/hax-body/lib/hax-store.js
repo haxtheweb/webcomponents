@@ -1941,7 +1941,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/tutorials"],
+        args: ["https://haxtheweb.org/tutorials"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/tutorials",
@@ -1954,9 +1954,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: [
-          "https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation",
-        ],
+        args: ["https://haxtheweb.org/documentation"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
@@ -1969,7 +1967,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/ontology"],
+        args: ["https://haxtheweb.org/ontology"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/pedagogy",

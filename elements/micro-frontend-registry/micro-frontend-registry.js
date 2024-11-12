@@ -41,7 +41,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
     add(params) {
       this.define(new MicroFrontend(params));
     }
-  
+
     /**
      * define a new micro frontend
      *
@@ -86,11 +86,12 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
         if (globalThis.MicroFrontendRegistryConfig[item.name]) {
           Object.keys(globalThis.MicroFrontendRegistryConfig[item.name]).map(
             (key) => {
-              item[key] = globalThis.MicroFrontendRegistryConfig[item.name][key];
+              item[key] =
+                globalThis.MicroFrontendRegistryConfig[item.name][key];
             },
           );
         }
-  
+
         if (!this.has(item.name)) {
           this.list.push(item);
           return true;
@@ -99,7 +100,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
         return false;
       }
     }
-  
+
     /**
      * get the definition for a machine named micro
      *
@@ -120,7 +121,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
       }
       return null;
     }
-  
+
     /**
      * boolean for having the definition for a machine named micro
      *
@@ -130,7 +131,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
     has(name) {
       return this.get(name, true) !== null;
     }
-  
+
     /**
      * set the definition for a machine named micro that was already registered
      *
@@ -145,7 +146,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
       }
       return null;
     }
-  
+
     /**
      * generate the call to the micro based on accepting name and params
      *
@@ -204,7 +205,8 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
             // support for formdata which is already encoded
             data = await fetch(item.endpoint + urlStringAddon, {
               method: method,
-              body: params instanceof FormData ? params : JSON.stringify(params),
+              body:
+                params instanceof FormData ? params : JSON.stringify(params),
             })
               .then((d) => {
                 return d.ok ? d.json() : { status: d.status, data: null };
@@ -227,7 +229,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
       }
       return null;
     }
-  
+
     /**
      * generate the call to the micro as a URL
      *
@@ -251,10 +253,12 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
       }
       return "";
     }
-  }
+  };
 };
 
-export class MicroFrontendRegistryNodeJS extends MicroFrontendRegCapabilities(Object) {
+export class MicroFrontendRegistryNodeJS extends MicroFrontendRegCapabilities(
+  Object,
+) {
   constructor() {
     super();
   }
@@ -267,7 +271,9 @@ export class MicroFrontendRegistryNodeJS extends MicroFrontendRegCapabilities(Ob
  * @demo demo/index.html
  * @element micro-frontend-registry
  */
-class MicroFrontendRegistryEl extends MicroFrontendRegCapabilities(HTMLElement) {
+class MicroFrontendRegistryEl extends MicroFrontendRegCapabilities(
+  HTMLElement,
+) {
   static get tag() {
     return "micro-frontend-registry";
   }
@@ -276,7 +282,10 @@ class MicroFrontendRegistryEl extends MicroFrontendRegCapabilities(HTMLElement) 
     super();
   }
 }
-globalThis.customElements.define(MicroFrontendRegistryEl.tag, MicroFrontendRegistryEl);
+globalThis.customElements.define(
+  MicroFrontendRegistryEl.tag,
+  MicroFrontendRegistryEl,
+);
 
 // register globally so we can make sure there is only one
 globalThis.MicroFrontendRegistry = globalThis.MicroFrontendRegistry || {};
@@ -285,16 +294,20 @@ globalThis.MicroFrontendRegistryConfig =
 globalThis.MicroFrontendRegistry.requestAvailability = () => {
   if (!globalThis.MicroFrontendRegistry.instance) {
     // weird but this would imply no DOM and thus node
-    if (globalThis.document && globalThis.document.body && globalThis.document.body.appendChild) {
-      globalThis.MicroFrontendRegistry.instance = 
+    if (
+      globalThis.document &&
+      globalThis.document.body &&
+      globalThis.document.body.appendChild
+    ) {
+      globalThis.MicroFrontendRegistry.instance =
         globalThis.document.createElement(MicroFrontendRegistryEl.tag);
       globalThis.document.body.appendChild(
         globalThis.MicroFrontendRegistry.instance,
       );
-    }
-    else {
+    } else {
       console.log("NODE WHATS UP MAN!");
-      globalThis.MicroFrontendRegistry.instance = new MicroFrontendRegistryNodeJS(); 
+      globalThis.MicroFrontendRegistry.instance =
+        new MicroFrontendRegistryNodeJS();
     }
   }
   return globalThis.MicroFrontendRegistry.instance;

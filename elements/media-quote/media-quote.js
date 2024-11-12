@@ -58,7 +58,7 @@ class MediaQuote extends DDD {
     return [
       super.styles,
       css`
-        /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
+        /* https://haxtheweb.org/documentation/ddd */
         :host {
           display: block;
           container-type: inline-size;

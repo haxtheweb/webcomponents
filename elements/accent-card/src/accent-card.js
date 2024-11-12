@@ -528,7 +528,7 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
             accentColor: "red",
             accentHeading: true,
             horizontal: true,
-            imageSrc: "http://placekitten.com/200/600",
+            imageSrc: "https://placehold.co/500x300",
           },
           content:
             '<h3 slot="heading">Accent Card</h3><h5 slot="subheading">A card with optional accent stylings.</h5><div slot="content"><p>This card is highly customizable to contain any content you\'d like</p></div>',

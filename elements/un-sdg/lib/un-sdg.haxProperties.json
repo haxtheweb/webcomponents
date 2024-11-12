@@ -8,14 +8,15 @@
     "gizmo": {
         "title": "UN SDG",
         "description": "United Nations Sustainable Development Goal",
-        "icon": "icons:android",
+        "icon": "hax:apps",
         "color": "purple",
         "tags": [
-            "Other"
+            "Other",
+            "sustainable"
         ],
         "handles": [],
         "meta": {
-            "author": "haxtheweb"
+            "author": "HAXTheWeb core team"
         }
     },
     "settings": {
@@ -24,7 +25,10 @@
                 "property": "goal",
                 "title": "Goal",
                 "description": "UN SDG number",
-                "inputMethod": "number",
+                "step": 1,
+                "max": 17,
+                "min": 1,
+                "inputMethod": "slider",
                 "required": true
             },
             {

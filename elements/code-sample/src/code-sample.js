@@ -223,7 +223,7 @@ class CodeSample extends LitElement {
             const great = "example";
             const great = "example";</template>`,
           properties: {
-            "type": "javascript",
+            type: "javascript",
             "copy-clipboard-button": "copy-clipboard-button",
           },
         },

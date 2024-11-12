@@ -342,7 +342,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/tutorials"],
+        args: ["https://haxtheweb.org/tutorials"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/tutorials",
@@ -355,9 +355,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       value: {
         target: this,
         method: "_openExternalLink",
-        args: [
-          "https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation",
-        ],
+        args: ["https://haxtheweb.org/documentation"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
@@ -370,7 +368,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/ontology"],
+        args: ["https://haxtheweb.org/ontology"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/pedagogy",

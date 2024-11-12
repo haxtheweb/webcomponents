@@ -392,7 +392,7 @@ const editor = (id, config) =>
   `<rich-text-editor toolbar="${id}">${emptyslot}${
     !hasImage(config)
       ? ``
-      : `<p><img src="//placekitten.com/200/200" width="50px"></p>\n`
+      : `<p><img src="https://placehold.co/500x300" width="50px"></p>\n`
   }</rich-text-editor>`;
 const rawProps = (toolbarProps) => {
   delete toolbarProps.canceled;
@@ -532,7 +532,7 @@ export const RichTextEditorToolbarMiniStory = () => {
     true,
   )}
 <figure style="max-width: 300px; border: 1px solid black;">
-  <img src="//placekitten.com/300/300">
+  <img src="https://placehold.co/500x300">
   <figcaption style="padding: 10px;">
     <rich-text-editor type="rich-text-editor-toolbar-mini">
       Click to edit inline with rich-text-editor-toolbar-mini

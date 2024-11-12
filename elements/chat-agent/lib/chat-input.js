@@ -4,11 +4,10 @@
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { css, html } from "lit";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 import { ChatStore } from "./chat-agent-store.js";
 
 class ChatInput extends DDD {
-
   static get tag() {
     return "chat-input";
   }
@@ -25,32 +24,33 @@ class ChatInput extends DDD {
 
     autorun(() => {
       this.chatLog = toJS(ChatStore.chatLog);
-    })
-    
+    });
+
     autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
-    })
-    
-    autorun(() => { // ! these two need to run together to prevent bugs
+    });
+
+    autorun(() => {
+      // ! these two need to run together to prevent bugs
       this.messageIndex = toJS(ChatStore.messageIndex);
       this.previousMessagesIndex = toJS(this.messageIndex);
-    })
-    
+    });
+
     autorun(() => {
       this.userIndex = toJS(ChatStore.userIndex);
-    })
-    
+    });
+
     autorun(() => {
       this.userName = toJS(ChatStore.userName);
-    })
+    });
   }
 
   static get styles() {
     return [
       super.styles,
       css`
-        /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-        
+        /* https://haxtheweb.org/documentation/ddd */
+
         :host {
           display: block;
           font-family: var(--ddd-font-primary);
@@ -95,8 +95,9 @@ class ChatInput extends DDD {
           gap: var(--ddd-spacing-1);
           justify-content: center;
         }
-        
-        button:hover, button:focus-visible {
+
+        button:hover,
+        button:focus-visible {
           background-color: #52525e;
         }
 
@@ -112,12 +113,14 @@ class ChatInput extends DDD {
           width: 52px;
         }
 
-        #send-button:hover, #send-button:focus-visible {
+        #send-button:hover,
+        #send-button:focus-visible {
           box-shadow: 0 6px rgba(0, 3, 33, 0.2);
           transform: translateY(-2px);
         }
 
-        #send-button:active, #send-button.active-mimic {
+        #send-button:active,
+        #send-button.active-mimic {
           box-shadow: 0 1px rgba(0, 3, 33, 0.2);
           transform: translateY(3px);
         }
@@ -132,26 +135,56 @@ class ChatInput extends DDD {
         simple-tooltip {
           --simple-tooltip-delay-in: 1000ms;
         }
-      `
+      `,
     ];
   }
 
   render() {
     return html`
       <div class="chat-input-wrapper">
-        <textarea name="prompt-input" id="user-input" placeholder="${ChatStore.promptPlaceholder}" @keydown=${this.handleKeyPress}></textarea>
+        <textarea
+          name="prompt-input"
+          id="user-input"
+          placeholder="${ChatStore.promptPlaceholder}"
+          @keydown=${this.handleKeyPress}
+        ></textarea>
         <div class="up-down-btns">
-          <button id="input-up-btn" @click=${this.handleDirectionButtons} aria-label="Display previously sent message (up)"><simple-icon-lite icon="hardware:keyboard-arrow-up"></simple-icon-lite></button>
-          <button id="input-down-btn" @click=${this.handleDirectionButtons} aria-label="Display previously sent message (down)"><simple-icon-lite icon="hardware:keyboard-arrow-down"></simple-icon-lite></button>
+          <button
+            id="input-up-btn"
+            @click=${this.handleDirectionButtons}
+            aria-label="Display previously sent message (up)"
+          >
+            <simple-icon-lite
+              icon="hardware:keyboard-arrow-up"
+            ></simple-icon-lite>
+          </button>
+          <button
+            id="input-down-btn"
+            @click=${this.handleDirectionButtons}
+            aria-label="Display previously sent message (down)"
+          >
+            <simple-icon-lite
+              icon="hardware:keyboard-arrow-down"
+            ></simple-icon-lite>
+          </button>
         </div>
-        <div class="send-button" id="send-button" @click=${this.handleSendButton} @keydown=${this.handleSendButtonKeyPress} tabindex="0" aria-label="Send Prompt">
+        <div
+          class="send-button"
+          id="send-button"
+          @click=${this.handleSendButton}
+          @keydown=${this.handleSendButtonKeyPress}
+          tabindex="0"
+          aria-label="Send Prompt"
+        >
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
-        <simple-tooltip for="send-button" position="left">Send Prompt to Merlin</simple-tooltip>
+        <simple-tooltip for="send-button" position="left"
+          >Send Prompt to Merlin</simple-tooltip
+        >
       </div>
     `;
   }
-  
+
   /**
    * @description - handles key presses in textarea
    * @param {event} e - event
@@ -175,7 +208,7 @@ class ChatInput extends DDD {
     }
   }
 
-  /** 
+  /**
    * @description handles key presses when focusing the send button
    */
   handleSendButtonKeyPress(e) {
@@ -205,7 +238,7 @@ class ChatInput extends DDD {
   handleDirectionButtons(e) {
     const BUTTON_ID = e.currentTarget.id;
 
-    ChatStore.devStatement(`${BUTTON_ID} button pressed.`, 'info');
+    ChatStore.devStatement(`${BUTTON_ID} button pressed.`, "info");
 
     switch (BUTTON_ID) {
       case "input-up-btn":
@@ -223,43 +256,59 @@ class ChatInput extends DDD {
   handleSendButton() {
     const INPUTTED_PROMPT = this.shadowRoot.querySelector("#user-input").value;
 
-    if (ChatStore.promptCharacterLimit > 0 && INPUTTED_PROMPT.length > ChatStore.promptCharacterLimit) { // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
-      alert(`Please shorten your prompt to no more than ${ChatStore.promptCharacterLimit} characters.`)
+    if (
+      ChatStore.promptCharacterLimit > 0 &&
+      INPUTTED_PROMPT.length > ChatStore.promptCharacterLimit
+    ) {
+      // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
+      alert(
+        `Please shorten your prompt to no more than ${ChatStore.promptCharacterLimit} characters.`,
+      );
     }
 
     if (INPUTTED_PROMPT !== "") {
-      ChatStore.devStatement(`Send function activated. "${INPUTTED_PROMPT}" sent to Merlin.`, 'info');
+      ChatStore.devStatement(
+        `Send function activated. "${INPUTTED_PROMPT}" sent to Merlin.`,
+        "info",
+      );
 
       ChatStore.handleMessage(ChatStore.userName, INPUTTED_PROMPT);
 
       this.shadowRoot.querySelector("#user-input").value = "";
-
     } else {
-      ChatStore.devStatement(`Send button activated. No prompt to send.`, 'warn');
+      ChatStore.devStatement(
+        `Send button activated. No prompt to send.`,
+        "warn",
+      );
     }
   }
 
   /**
-   * @description changed <textarea> text when using up and down buttons or up and down arrow keys (when focused in textarea) 
+   * @description changed <textarea> text when using up and down buttons or up and down arrow keys (when focused in textarea)
    */
   displayPreviousMessages(direction) {
     let textArea = this.shadowRoot.querySelector("#user-input");
-    
+
     switch (direction) {
       case "up":
         if (this.previousMessagesIndex > 1) {
           this.previousMessagesIndex--;
-          ChatStore.devStatement(`Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
-          
-          while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
-                  && this.previousMessagesIndex >= 1) {
+          ChatStore.devStatement(
+            `Arrow Up pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`,
+            "info",
+          );
+
+          while (
+            this.chatLog[this.previousMessagesIndex].author !== this.userName &&
+            this.previousMessagesIndex >= 1
+          ) {
             this.previousMessagesIndex--;
             if (this.previousMessagesIndex < 1) {
               this.previousMessagesIndex++;
-              break; 
+              break;
             }
           }
-  
+
           textArea.value = this.chatLog[this.previousMessagesIndex].message;
         }
         break;
@@ -267,8 +316,10 @@ class ChatInput extends DDD {
       case "down":
         if (this.previousMessagesIndex < this.messageIndex) {
           this.previousMessagesIndex++;
-          while (this.chatLog[this.previousMessagesIndex].author !== this.userName 
-                  && this.previousMessagesIndex < this.messageIndex) {
+          while (
+            this.chatLog[this.previousMessagesIndex].author !== this.userName &&
+            this.previousMessagesIndex < this.messageIndex
+          ) {
             this.previousMessagesIndex++;
             if (this.previousMessagesIndex >= this.messageIndex) {
               this.previousMessagesIndex = this.messageIndex;
@@ -283,20 +334,25 @@ class ChatInput extends DDD {
         } else {
           textArea.value = "";
         }
-        ChatStore.devStatement(`Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`, 'info');
+        ChatStore.devStatement(
+          `Arrow Down pressed. Previous message index = ${this.previousMessagesIndex} and message index = ${this.messageIndex}`,
+          "info",
+        );
         break;
 
       default:
-        ChatStore.devStatement(`Unknown direction: ${direction}.`, 'error');
+        ChatStore.devStatement(`Unknown direction: ${direction}.`, "error");
     }
   }
 
   /**
-   * @description - LitElement first update / 
+   * @description - LitElement first update /
    */
   firstUpdated() {
     if (ChatStore.promptCharacterLimit > 0) {
-      this.shadowRoot.querySelector("#user-input").setAttribute("maxlength", `${ChatStore.promptCharacterLimit}`);
+      this.shadowRoot
+        .querySelector("#user-input")
+        .setAttribute("maxlength", `${ChatStore.promptCharacterLimit}`);
     }
   }
 
@@ -306,12 +362,12 @@ class ChatInput extends DDD {
       darkMode: {
         type: Boolean,
         attribute: "dark-mode",
-        reflect: true
+        reflect: true,
       },
       userName: {
         type: String,
         attribute: "username",
-      }
+      },
     };
   }
 }

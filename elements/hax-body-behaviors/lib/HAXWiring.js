@@ -40,8 +40,8 @@
  *      "developer": [], // setting intended only for HTML experts
  *    },
  *    "documentation": {
- *      "howTo": "https://oer.hax.psu.edu/bto108/sites/haxcellence/capabilities/inline-audio/howToUse",
- *      "purpose": "https://oer.hax.psu.edu/bto108/sites/haxcellence/capabilities/inline-audio/purpose"
+ *      "howTo": "https://haxtheweb.org/capabilities/inline-audio/howToUse",
+ *      "purpose": "https://haxtheweb.org/capabilities/inline-audio/purpose"
  *    },
  *    // additional clean up options for specific pieces of saving / shortcut options
  *    "saveOptions": {},
@@ -762,7 +762,6 @@ export class HAXWiring {
         editingElement: "core",
         hideDefaultSettings: false,
         canScale: true,
-
         canEditSource: true,
         contentEditable: false,
         gizmo: {
@@ -851,8 +850,8 @@ export class HAXWiring {
           unsetAttributes: ["end-point", "secondary-color"],
         },
         documentation: {
-          howTo: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
-          purpose: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
+          howTo: "https://haxtheweb.org/welcome",
+          purpose: "https://haxtheweb.org/welcome",
         },
         demoSchema: [
           {

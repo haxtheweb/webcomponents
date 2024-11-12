@@ -3,8 +3,18 @@
   "tags": [
     {
       "name": "la-tex",
-      "description": "`la-tex`\n`render LaTeX formatted math and science content`\n\n",
-      "attributes": []
+      "description": "`la-tex`\n`render LaTeX formatted math and science content`\n\nAttributes:\n\n  * `hydrated` {`boolean`} - \n\n  * `initialText` {`string`} - \n\nProperties:\n\n  * `hydrated` {`boolean`} - \n\n  * `initialText` {`string`} - ",
+      "attributes": [
+        {
+          "name": "hydrated",
+          "description": "`hydrated` {`boolean`} - \n\nProperty: hydrated\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "initialText",
+          "description": "`initialText` {`string`} - \n\nProperty: initialText\n\nDefault: innerText"
+        }
+      ]
     }
   ],
   "globalAttributes": [],

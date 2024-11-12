@@ -24,24 +24,26 @@ export class ExampleHaxElement extends LitElement {
   static get properties() {
     return {
       title: {
-        type: String
+        type: String,
       },
       shiny: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
   static get styles() {
-    return [css`
-      :host {
-        display: block;
-      }
-      :host([shiny]) h2 {
-        background-color: var(--ddd-theme-accent);
-      }
-    `];
+    return [
+      css`
+        :host {
+          display: block;
+        }
+        :host([shiny]) h2 {
+          background-color: var(--ddd-theme-accent);
+        }
+      `,
+    ];
   }
 
   render() {
@@ -52,7 +54,8 @@ export class ExampleHaxElement extends LitElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 globalThis.customElements.define(ExampleHaxElement.tag, ExampleHaxElement);
