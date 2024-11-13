@@ -7,7 +7,7 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 // default movement speed
 const defaultSpeed = 500;
 // default list of non-status related hats
-const hatList = [
+export const hatList = [
   "bunny",
   "coffee",
   "construction",
@@ -19,6 +19,19 @@ const hatList = [
   "pirate",
   "watermelon",
 ];
+
+export const charBuilder = {
+  accessories: 9,
+  base: 1,
+  leg: ["", "R", "L"],
+  face: 5,
+  faceItem: 9,
+  hair: 9,
+  pants: 9,
+  shirt: 9,
+  skin: 9,
+  hatColor: 9,
+};
 /**
  * `rpg-character`
  * `Little RPG character that&#39;s remixable`
@@ -37,6 +50,7 @@ class RpgCharacter extends SimpleColors {
    */
   constructor() {
     super();
+    this.literalseed = false;
     this.height = 142;
     this.width = 113;
     this.accessories = 0;
@@ -75,6 +89,7 @@ class RpgCharacter extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
+      literalseed: { type: Boolean },
       accessories: { type: Number },
       height: { type: Number },
       width: { type: Number },
@@ -291,18 +306,10 @@ class RpgCharacter extends SimpleColors {
         if (Object.keys(funKeys).includes(this[propName])) {
           seed = funKeys[this[propName]];
         }
-        const charBuilder = {
-          accessories: 9,
-          base: 1,
-          leg: ["", "R", "L"],
-          face: 5,
-          faceItem: 9,
-          hair: 9,
-          pants: 9,
-          shirt: 9,
-          skin: 9,
-          hatColor: 9,
-        };
+        // support a literal seed value which is numerical selection of each of these in order
+        if (this.literalseed) {
+          seed = BigInt(this.seed).toString();
+        }
         Object.keys(charBuilder).forEach((trait, key) => {
           if (seed[key] !== undefined) {
             if (trait === "leg") {
