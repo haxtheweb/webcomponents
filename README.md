@@ -7,8 +7,6 @@
 [![Dependency Status](https://img.shields.io/david/haxtheweb/webcomponents.svg?style=flat)](https://david-dm.org/haxtheweb/webcomponents)
 [![X](https://img.shields.io/twitter/follow/haxtheweb.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=haxtheweb)
 
-![HAX Traveler: World Changer](https://github.com/haxtheweb/art/blob/main/haxtheweb/hax-traveler-world-changer.jpg?raw=true)
-
 # webcomponents
 Monorepo of all web components built as part of the HAX ecosystem, many working stand-alone.
 
@@ -210,3 +208,5 @@ Contributions are always welcome!
 
 ## Additional contributions
 Past contributors, student and larger community, can be found here: https://github.com/haxtheweb/webcomponents/graphs/contributors
+
+![HAX Traveler: World Changer](https://github.com/haxtheweb/art/blob/main/haxtheweb/hax-traveler-world-changer.jpg?raw=true)
