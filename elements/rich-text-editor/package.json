@@ -18,7 +18,7 @@
       "...RichTextStyles"
     ]
   },
-  "version": "9.0.17",
+  "version": "9.0.18",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -43,22 +43,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/absolute-position-behavior": "^9.0.17",
-    "@haxtheweb/code-editor": "^9.0.17",
+    "@haxtheweb/absolute-position-behavior": "^9.0.18",
+    "@haxtheweb/code-editor": "^9.0.18",
     "@haxtheweb/md-extra-icons": "^9.0.1",
-    "@haxtheweb/simple-fields": "^9.0.17",
-    "@haxtheweb/simple-icon": "^9.0.17",
-    "@haxtheweb/simple-icon-picker": "^9.0.17",
-    "@haxtheweb/simple-picker": "^9.0.17",
-    "@haxtheweb/simple-popover": "^9.0.17",
-    "@haxtheweb/simple-toolbar": "^9.0.17",
-    "@haxtheweb/utils": "^9.0.17",
+    "@haxtheweb/simple-fields": "^9.0.18",
+    "@haxtheweb/simple-icon": "^9.0.18",
+    "@haxtheweb/simple-icon-picker": "^9.0.18",
+    "@haxtheweb/simple-picker": "^9.0.18",
+    "@haxtheweb/simple-popover": "^9.0.18",
+    "@haxtheweb/simple-toolbar": "^9.0.18",
+    "@haxtheweb/utils": "^9.0.18",
     "lit": "^3.2.0",
     "shadow-selection-polyfill": "^1.1.0"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.17",
-    "@haxtheweb/storybook-utilities": "^9.0.17",
+    "@haxtheweb/deduping-fix": "^9.0.18",
+    "@haxtheweb/storybook-utilities": "^9.0.18",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

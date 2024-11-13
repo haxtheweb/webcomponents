@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/deduping-fix",
-  "version": "9.0.17",
+  "version": "9.0.18",
   "description": "A very simple fix for Failed to execute 'define' on 'CustomElementRegistry'",
   "repository": {
     "type": "git",
