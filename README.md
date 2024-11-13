@@ -1,14 +1,15 @@
 # webcomponents
-Monorepo of all web components built as part of the HAX ecosystem
+Monorepo of all web components built as part of the HAX ecosystem, many working stand-alone.
 
 # HAX
 The authoring experience of HAX and the ability to make fast, static file backed websites rapidly.
-Get all the details you want on [HAX docs](https://oer.hax.psu.edu/bto108/sites/haxcellence/)!
+Get all the details you want on [HAX docs](https://haxtheweb.org/)!
 HAX seeks to be the smallest possible back-end CMS to make HAX work and be able to build websites with it. Leveraging JSON Outline Schema, HAX is able to author multiple pages, which it then writes onto the file system. This way a slim server layer is just for basic authentication, knowing how to save files, and placing them in version control.
 
-Watch and Read more about HAX here:
+Watch and Learn more about HAX here:
+- Try Hax: https://hax.cloud
+- HAXCellence https://haxtheweb.org/what-is-hax
 - Youtube channel - https://www.youtube.com/@haxtheweb
-- HAXCellence https://oer.hax.psu.edu/bto108/sites/haxcellence/what-is-hax
 
 # Issues / Support / Community
 - Discord Channel - https://bit.ly/hax-discord
@@ -18,10 +19,11 @@ Watch and Read more about HAX here:
 # Related links and tech
 
 - [NPM Package list](https://www.npmjs.com/org/haxtheweb)
-- [storybook](https://haxapi.vercel.app/)
+- [HAXcms (NodeJS)](https://github.com/haxtheweb/haxcms-nodejs)
+- [HAXcms (PHP)](https://github.com/haxtheweb/haxcms-php)
+- [Storybook docs](https://open-apis.hax.cloud/)
 - [HAX [dot] PSU](https://hax.psu.edu)
-- [HAX doc site](https://oer.hax.psu.edu/bto108/sites/haxcellence/)
-- [HAXcms](https://github.com/haxtheweb/haxcms)
+- [HAX doc site](https://haxtheweb.org/)
 - [HAX + 11ty](https://github.com/haxtheweb/hax11ty)
 
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -50,7 +52,7 @@ Web components that can work in just about anything, are very small (Vanila or L
 curl -fsSL https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.sh -o haxthewebme.sh && sh haxthewebme.sh
 ```
 
-### Manual Install
+### Manual Install (as a core dev, forks preferrable)
 
 ```bash
 git clone https://github.com/haxtheweb/webcomponents.git
@@ -210,7 +212,6 @@ Contributions are always welcome!
 ## Active contributors
 
 - [@btopro](https://www.github.com/btopro)
-- [@cgldevel](https://www.github.com/cgldevel)
 
 ## Additional contributions
 Past contributors, student and larger community, can be found here: https://github.com/haxtheweb/webcomponents/graphs/contributors
