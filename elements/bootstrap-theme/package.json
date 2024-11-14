@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.18",
+  "version": "9.0.19",
   "description": "Hax bootstrap themeing",
   "repository": {
     "type": "git",
@@ -44,15 +44,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/utils": "^9.0.18",
-    "@haxtheweb/haxcms-elements": "^9.0.18",
     "@haxtheweb/es-global-bridge": "^9.0.18",
-    "@haxtheweb/map-menu": "^9.0.18",
+    "@haxtheweb/haxcms-elements": "^9.0.19",
+    "@haxtheweb/map-menu": "^9.0.19",
     "@haxtheweb/simple-icon": "^9.0.18",
+    "@haxtheweb/utils": "^9.0.18",
     "bootstrap": "4.6.0",
     "jquery": "3.6.0",
-    "mobx": "6.12.4",
-    "lit": "^3.2.0"
+    "lit": "^3.2.0",
+    "mobx": "6.12.4"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.18",

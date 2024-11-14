@@ -18,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.18",
+  "version": "9.0.19",
   "description": "A singular toast / message for conistency",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.18",
+    "@haxtheweb/d-d-d": "^9.0.19",
     "@haxtheweb/simple-colors": "^9.0.18",
     "lit": "^3.2.0"
   },

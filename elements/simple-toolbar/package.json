@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.18",
+  "version": "9.0.19",
   "description": "a customizable toolbar",
   "repository": {
     "type": "git",
@@ -43,12 +43,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.18",
-    "@haxtheweb/utils": "^9.0.18",
     "@haxtheweb/a11y-menu-button": "^9.0.18",
+    "@haxtheweb/d-d-d": "^9.0.19",
     "@haxtheweb/radio-behaviors": "^9.0.18",
     "@haxtheweb/simple-icon": "^9.0.18",
     "@haxtheweb/simple-tooltip": "^9.0.18",
+    "@haxtheweb/utils": "^9.0.18",
     "lit": "^3.2.0"
   },
   "devDependencies": {

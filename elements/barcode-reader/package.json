@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.18",
+  "version": "9.0.19",
   "description": "Reads barcodes",
   "repository": {
     "type": "git",
