@@ -44,6 +44,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/es-global-bridge": "^9.0.18",
+    "@haxtheweb/simple-icon": "^9.0.18",
     "@zxing/browser": "0.1.1",
     "@zxing/library": "0.19.1",
     "javascript-barcode-reader": "0.6.9",

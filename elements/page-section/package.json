@@ -43,8 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/media-image": "^9.0.18",
-    "@haxtheweb/simple-colors": "^9.0.18",
+    "@haxtheweb/d-d-d": "^9.0.18",
     "@haxtheweb/simple-icon": "^9.0.18",
     "@haxtheweb/simple-tooltip": "^9.0.18",
     "lit": "^3.2.0"
@@ -52,6 +51,10 @@
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.18",
     "@haxtheweb/simple-cta": "^9.0.18",
+    "@haxtheweb/future-terminal-text": "^9.0.18",
+    "@haxtheweb/grid-plate": "^9.0.18",
+    "@haxtheweb/video-player": "^9.0.18",
+    "@haxtheweb/rpg-character": "^9.0.18",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

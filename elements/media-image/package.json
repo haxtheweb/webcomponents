@@ -41,6 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/simple-modal": "^9.0.18",
+    "@haxtheweb/d-d-d": "^9.0.18",
     "@haxtheweb/figure-label": "^9.0.18",
     "@haxtheweb/image-inspector": "^9.0.18",
     "@haxtheweb/schema-behaviors": "^9.0.18",

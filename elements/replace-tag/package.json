@@ -43,6 +43,9 @@
     "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
+  "dependencies": {
+    "@haxtheweb/wc-autoload": "^9.0.18"
+  },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.18",
     "@open-wc/testing": "4.0.0",

@@ -43,6 +43,7 @@
   "dependencies": {
     "@haxtheweb/simple-icon": "^9.0.18",
     "@haxtheweb/simple-tooltip": "^9.0.18",
+    "@haxtheweb/d-d-d": "^9.0.18",
     "lit": "^3.2.0"
   },
   "devDependencies": {

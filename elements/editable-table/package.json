@@ -41,6 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/d-d-d": "^9.0.18",
     "@haxtheweb/a11y-menu-button": "^9.0.18",
     "@haxtheweb/hax-iconset": "^9.0.18",
     "@haxtheweb/responsive-utility": "^9.0.18",
