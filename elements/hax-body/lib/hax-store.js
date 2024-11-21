@@ -2375,14 +2375,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       const USER_AGENT = navigator.userAgent.toLowerCase();
       if (USER_AGENT.includes('windows')) {
         return 'Windows';
+      } else if (USER_AGENT.includes('iphone')) {
+        return 'iOS';
       } else if (USER_AGENT.includes('mac os')) {
         return 'macOS';
       } else if (USER_AGENT.includes('linux')) {
         return 'Linux';
       } else if (USER_AGENT.includes('android')) {
         return 'Android';
-      } else if (USER_AGENT.includes('ios')) {
-        return 'iOS';
       } else {
         return 'Unknown';
       }
