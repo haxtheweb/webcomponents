@@ -152,6 +152,8 @@ class HAXCMSSiteRouter extends HTMLElement {
       let item = this.lookupRoute(
         e.detail.location.search.replace("?p=/", "").split("&")[0],
       )[0];
+      // set active ID from the item we found here but
+      // location match must match below or this will get undone
       store.activeId = item.id;
       globalThis.history.replaceState(
         {},
@@ -161,6 +163,12 @@ class HAXCMSSiteRouter extends HTMLElement {
       e.detail.location.search = e.detail.location.search
         .replace("?p=/", "")
         .split("&")[0];
+      // ensure route gets the name of the 'search' param.
+      // this ensures we get the correct item on initial paint
+      // search param is an artifact that this happened
+      e.detail.location.route.name = item.id;
+      e.detail.location.route.path = e.detail.location.search;
+      e.detail.location.route.component = `fake-${item.id}-e`;
       store.location = e.detail.location;
     } else {
       store.location = e.detail.location;
