@@ -176,7 +176,8 @@ class AudioPlayer extends VideoPlayer {
           properties: {
             mediaTitle: "Jonny Quest Theme",
             crossorigin: "anonymous",
-            source: "https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3",
+            source:
+              "https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3",
           },
           content: "",
         },

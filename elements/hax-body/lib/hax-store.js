@@ -2373,18 +2373,18 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       return navigator.userAgentData.platform;
     } else {
       const USER_AGENT = navigator.userAgent.toLowerCase();
-      if (USER_AGENT.includes('windows')) {
-        return 'Windows';
-      } else if (USER_AGENT.includes('iphone')) {
-        return 'iOS';
-      } else if (USER_AGENT.includes('mac os')) {
-        return 'macOS';
-      } else if (USER_AGENT.includes('linux')) {
-        return 'Linux';
-      } else if (USER_AGENT.includes('android')) {
-        return 'Android';
+      if (USER_AGENT.includes("windows")) {
+        return "Windows";
+      } else if (USER_AGENT.includes("iphone")) {
+        return "iOS";
+      } else if (USER_AGENT.includes("mac os")) {
+        return "macOS";
+      } else if (USER_AGENT.includes("linux")) {
+        return "Linux";
+      } else if (USER_AGENT.includes("android")) {
+        return "Android";
       } else {
-        return 'Unknown';
+        return "Unknown";
       }
     }
   }
