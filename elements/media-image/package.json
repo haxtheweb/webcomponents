@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.19",
+  "version": "9.0.21",
   "description": "Automated conversion of media-image/",
   "repository": {
     "type": "git",
@@ -41,12 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.19",
-    "@haxtheweb/figure-label": "^9.0.19",
+    "@haxtheweb/d-d-d": "^9.0.21",
+    "@haxtheweb/figure-label": "^9.0.21",
     "@haxtheweb/image-inspector": "^9.0.18",
     "@haxtheweb/schema-behaviors": "^9.0.18",
     "@haxtheweb/simple-icon": "^9.0.18",
-    "@haxtheweb/simple-modal": "^9.0.19",
+    "@haxtheweb/simple-modal": "^9.0.21",
     "lit": "^3.2.0"
   },
   "devDependencies": {

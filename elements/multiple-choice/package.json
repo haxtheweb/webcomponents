@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.19",
+  "version": "9.0.21",
   "description": "Automated conversion of multiple-choice/",
   "repository": {
     "type": "git",
@@ -41,14 +41,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.19",
+    "@haxtheweb/d-d-d": "^9.0.21",
     "@haxtheweb/grid-plate": "^9.0.18",
     "@haxtheweb/hax-iconset": "^9.0.18",
     "@haxtheweb/i18n-manager": "^9.0.18",
     "@haxtheweb/schema-behaviors": "^9.0.18",
-    "@haxtheweb/simple-fields": "^9.0.19",
+    "@haxtheweb/simple-fields": "^9.0.21",
     "@haxtheweb/simple-icon": "^9.0.18",
-    "@haxtheweb/simple-toast": "^9.0.19",
+    "@haxtheweb/simple-toast": "^9.0.21",
     "lit": "^3.2.0"
   },
   "devDependencies": {

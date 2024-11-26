@@ -9,7 +9,7 @@
     "files": {},
     "sharedStyles": []
   },
-  "version": "9.0.19",
+  "version": "9.0.21",
   "description": "Converts evolution content to web component equivalents.",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@haxtheweb/a11y-tabs": "^9.0.18",
-    "@haxtheweb/accent-card": "^9.0.19",
+    "@haxtheweb/accent-card": "^9.0.21",
     "@haxtheweb/hax-iconset": "^9.0.18",
     "@haxtheweb/simple-icon": "^9.0.18"
   },

@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.19",
+  "version": "9.0.21",
   "description": "elements for interfacing with learning record stores",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^9.0.19",
+    "@haxtheweb/haxcms-elements": "^9.0.21",
     "@haxtheweb/intersection-element": "^9.0.18",
     "@haxtheweb/utils": "^9.0.18",
     "lit": "^3.2.0",

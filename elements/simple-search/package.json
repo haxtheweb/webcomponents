@@ -15,7 +15,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.19",
+  "version": "9.0.21",
   "description": "Automated conversion of simple-search",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-fields": "^9.0.19",
+    "@haxtheweb/simple-fields": "^9.0.21",
     "@haxtheweb/simple-icon": "^9.0.18",
     "@haxtheweb/simple-tooltip": "^9.0.18",
     "lit": "^3.2.0"

@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.19",
+  "version": "9.0.21",
   "description": "Start of accent-card",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.19",
+    "@haxtheweb/d-d-d": "^9.0.21",
     "@haxtheweb/intersection-element": "^9.0.18",
     "@haxtheweb/schema-behaviors": "^9.0.18",
     "@haxtheweb/simple-colors": "^9.0.18",
