@@ -51,7 +51,7 @@
     "@haxtheweb/simple-toolbar": "^9.0.21",
     "@haxtheweb/simple-tooltip": "^9.0.18",
     "@haxtheweb/utils": "^9.0.18",
-    "lit": "^3.2.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.18",

@@ -70,7 +70,7 @@
     "@haxtheweb/user-scaffold": "^9.0.18",
     "@haxtheweb/utils": "^9.0.18",
     "@vaadin/vaadin-upload": "^4.4.1",
-    "lit": "^3.2.0",
+    "lit": "^3.2.1",
     "mobx": "6.12.4"
   },
   "devDependencies": {

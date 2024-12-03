@@ -48,7 +48,7 @@
   "dependencies": {
     "@haxtheweb/simple-colors": "^9.0.18",
     "flag-icons": "6.6.4",
-    "lit": "^3.2.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.18",

@@ -45,7 +45,7 @@
     "@haxtheweb/lrndesign-avatar": "^9.0.1",
     "@haxtheweb/simple-icon": "^9.0.18",
     "dummy-text": "^1.0.3",
-    "lit": "^3.2.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.18",

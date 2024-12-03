@@ -47,7 +47,7 @@
     "@haxtheweb/hax-iconset": "^9.0.18",
     "@haxtheweb/simple-colors": "^9.0.18",
     "@haxtheweb/simple-icon": "^9.0.18",
-    "lit": "^3.2.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/accent-card": "^9.0.21",
@@ -69,7 +69,6 @@
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",
     "gulp-babel": "8.0.0",
-    "lodash": "4.17.21",
     "mobx": "6.12.4",
     "polymer-build": "3.1.4",
     "wct-browser-legacy": "1.0.2",

@@ -51,7 +51,7 @@
     "@haxtheweb/utils": "^9.0.18",
     "bootstrap": "4.6.0",
     "jquery": "3.6.0",
-    "lit": "^3.2.0",
+    "lit": "^3.2.1",
     "mobx": "6.12.4"
   },
   "devDependencies": {

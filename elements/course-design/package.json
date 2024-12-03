@@ -50,7 +50,7 @@
     "@haxtheweb/simple-colors": "^9.0.18",
     "@haxtheweb/simple-icon": "^9.0.18",
     "@haxtheweb/simple-tooltip": "^9.0.18",
-    "lit": "^3.2.0",
+    "lit": "^3.2.1",
     "mobx": "6.12.4"
   },
   "devDependencies": {

@@ -57,7 +57,7 @@
     "@haxtheweb/simple-fields": "^9.0.21",
     "@haxtheweb/utils": "^9.0.18",
     "idb-keyval": "6.1.0",
-    "lit": "^3.2.0",
+    "lit": "^3.2.1",
     "mobx": "6.12.4"
   },
   "devDependencies": {

@@ -46,7 +46,7 @@
     "@haxtheweb/simple-icon": "^9.0.18",
     "@haxtheweb/simple-toast": "^9.0.21",
     "@polymer/paper-toast": "^3.0.1",
-    "lit": "^3.2.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.18",

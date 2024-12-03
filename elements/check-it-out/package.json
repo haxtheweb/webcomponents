@@ -49,7 +49,7 @@
     "@haxtheweb/simple-icon": "^9.0.18",
     "@haxtheweb/simple-modal": "^9.0.21",
     "@haxtheweb/video-player": "^9.0.21",
-    "lit": "^3.2.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.18",
