@@ -47,6 +47,7 @@
     "@haxtheweb/i18n-manager": "^9.0.6",
     "@haxtheweb/simple-colors": "^9.0.6",
     "@haxtheweb/simple-icon": "^9.0.6",
+    "@haxtheweb/multiple-choice": "^9.0.6",
     "lit": "^3.2.0"
   },
   "devDependencies": {

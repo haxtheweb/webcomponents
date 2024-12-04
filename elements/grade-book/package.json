@@ -56,6 +56,9 @@
     "@haxtheweb/simple-colors": "^9.0.6",
     "@haxtheweb/simple-fields": "^9.0.6",
     "@haxtheweb/utils": "^9.0.2",
+    "@haxtheweb/video-player": "^9.0.6",
+    "@haxtheweb/simple-filter": "^9.0.6",
+    "@haxtheweb/md-block": "^9.0.6",
     "idb-keyval": "6.1.0",
     "lit": "^3.2.0",
     "mobx": "6.12.4"
