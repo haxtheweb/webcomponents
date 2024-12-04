@@ -99,6 +99,7 @@
     "@haxtheweb/super-daemon": "^9.0.6",
     "@haxtheweb/video-player": "^9.0.6",
     "@haxtheweb/wc-autoload": "^9.0.6",
+    "@haxtheweb/chat-agent": "^9.0.6",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-list": "^3.0.2",

@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/chartist-render/chartist-render.js";
-import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 
 // register globally so we can make sure there is only one
 globalThis.DataViz = globalThis.DataViz || {};
