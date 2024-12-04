@@ -39,6 +39,7 @@
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.6",
     "@haxtheweb/storybook-utilities": "^9.0.6",
+    "@haxtheweb/dynamic-import-registry": "^9.0.6",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
