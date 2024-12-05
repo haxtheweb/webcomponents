@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^9.0.6",
+    "@haxtheweb/haxcms-elements": "^9.0.21",
     "@haxtheweb/es-global-bridge": "^9.0.18",
     "lit": "^3.2.1"
   },

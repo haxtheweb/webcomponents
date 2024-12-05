@@ -43,8 +43,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^9.0.6",
-    "@haxtheweb/i18n-manager": "^9.0.6",
+    "@haxtheweb/haxcms-elements": "^9.0.21",
+    "@haxtheweb/i18n-manager": "^9.0.18",
     "@haxtheweb/hax-iconset": "^9.0.18",
     "@haxtheweb/responsive-utility": "^9.0.18",
     "@haxtheweb/scroll-button": "^9.0.18",
