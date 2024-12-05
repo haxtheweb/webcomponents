@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.21",
+  "version": "9.0.22",
   "description": "Automated conversion of multiple-choice/",
   "repository": {
     "type": "git",
@@ -41,19 +41,19 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.21",
-    "@haxtheweb/grid-plate": "^9.0.18",
-    "@haxtheweb/hax-iconset": "^9.0.18",
-    "@haxtheweb/i18n-manager": "^9.0.18",
-    "@haxtheweb/schema-behaviors": "^9.0.18",
-    "@haxtheweb/simple-fields": "^9.0.21",
-    "@haxtheweb/simple-icon": "^9.0.18",
-    "@haxtheweb/simple-toast": "^9.0.21",
+    "@haxtheweb/d-d-d": "^9.0.22",
+    "@haxtheweb/grid-plate": "^9.0.22",
+    "@haxtheweb/hax-iconset": "^9.0.22",
+    "@haxtheweb/i18n-manager": "^9.0.22",
+    "@haxtheweb/schema-behaviors": "^9.0.22",
+    "@haxtheweb/simple-fields": "^9.0.22",
+    "@haxtheweb/simple-icon": "^9.0.22",
+    "@haxtheweb/simple-toast": "^9.0.22",
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.18",
-    "@haxtheweb/storybook-utilities": "^9.0.18",
+    "@haxtheweb/deduping-fix": "^9.0.22",
+    "@haxtheweb/storybook-utilities": "^9.0.22",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

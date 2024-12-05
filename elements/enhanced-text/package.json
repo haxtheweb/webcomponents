@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.21",
+  "version": "9.0.22",
   "description": "take text and process it with various enhancements",
   "repository": {
     "type": "git",
@@ -44,12 +44,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/micro-frontend-registry": "^9.0.18",
-    "@haxtheweb/vocab-term": "^9.0.21",
+    "@haxtheweb/micro-frontend-registry": "^9.0.22",
+    "@haxtheweb/vocab-term": "^9.0.22",
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.18",
+    "@haxtheweb/deduping-fix": "^9.0.22",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

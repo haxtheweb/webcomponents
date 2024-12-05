@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.18",
+  "version": "9.0.22",
   "description": "Apply schema helper behaviors to existing Polymer (Legacy) based elements",
   "repository": {
     "type": "git",
@@ -37,11 +37,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/utils": "^9.0.18"
+    "@haxtheweb/utils": "^9.0.22"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.18",
-    "@haxtheweb/storybook-utilities": "^9.0.18",
+    "@haxtheweb/deduping-fix": "^9.0.22",
+    "@haxtheweb/storybook-utilities": "^9.0.22",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

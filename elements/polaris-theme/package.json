@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.18",
+  "version": "9.0.22",
   "description": "A polaris PSU based branding styled theme",
   "repository": {
     "type": "git",
@@ -47,7 +47,7 @@
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.18",
+    "@haxtheweb/deduping-fix": "^9.0.22",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
