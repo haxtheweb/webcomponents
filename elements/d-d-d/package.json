@@ -50,18 +50,6 @@
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/accent-card": "^9.0.21",
-    "@haxtheweb/course-design": "^9.0.21",
-    "@haxtheweb/deduping-fix": "^9.0.18",
-    "@haxtheweb/figure-label": "^9.0.21",
-    "@haxtheweb/haxcms-elements": "^9.0.21",
-    "@haxtheweb/media-image": "^9.0.21",
-    "@haxtheweb/page-section": "^9.0.21",
-    "@haxtheweb/self-check": "^9.0.21",
-    "@haxtheweb/simple-cta": "^9.0.18",
-    "@haxtheweb/simple-modal": "^9.0.21",
-    "@haxtheweb/stop-note": "^9.0.21",
-    "@haxtheweb/video-player": "^9.0.21",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
