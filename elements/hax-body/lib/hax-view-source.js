@@ -47,8 +47,8 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           height: calc(100vh - 200px);
         }
         .updatecontent {
-          background-color: var(--simple-colors-default-theme-green-1);
-          color: var(--simple-colors-default-theme-green-8);
+          background-color: var(--ddd-theme-default-coalygray);
+          color: var(--ddd-theme-default-opportunityGreen);
         }
         hax-toolbar {
           flex: 0 0 auto;

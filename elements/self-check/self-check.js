@@ -145,11 +145,11 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         #question_wrap {
           color: var(
             --ddd-component-self-check-question-text,
-            var(--simple-colors-default-theme-grey-12, #000)
+            var(--ddd-theme-default-coalyGray)
           );
           background-color: var(
             --ddd-component-self-check-question-background,
-            var(--simple-colors-default-theme-grey-1, #fff)
+            var(--ddd-theme-default-white)
           );
           position: relative;
         }

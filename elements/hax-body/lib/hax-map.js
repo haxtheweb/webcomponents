@@ -80,7 +80,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
           --simple-icon-height: 14px;
           height: 38px;
           margin: 0 4px;
-          color: var(--simple-colors-default-theme-grey-12, black);
+          color: var(--ddd-theme-default-coalyGray);
           background-color: var(--simple-colors-default-theme-grey-1, white);
         }
         li simple-icon-button:hover {

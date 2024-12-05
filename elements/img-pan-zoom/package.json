@@ -41,6 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/hexagon-loader": "^9.0.6",
     "@haxtheweb/es-global-bridge": "^9.0.18",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/polymer": "^3.5.1"

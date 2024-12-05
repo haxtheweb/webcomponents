@@ -45,6 +45,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@github/time-elements": "3.1.4",
+    "@haxtheweb/video-player": "^9.0.6",
+    "@haxtheweb/simple-filter": "^9.0.6",
+    "@haxtheweb/md-block": "^9.0.6",
     "@haxtheweb/a11y-collapse": "^9.0.21",
     "@haxtheweb/a11y-tabs": "^9.0.18",
     "@haxtheweb/editable-table": "^9.0.21",

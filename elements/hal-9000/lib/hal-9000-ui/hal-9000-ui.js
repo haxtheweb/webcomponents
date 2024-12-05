@@ -32,7 +32,7 @@ export class Hal9000UI extends SimpleColors {
           left: 20px;
           bottom: 20px;
           z-index: 10000;
-          background-color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--ddd-theme-default-coalyGray);
           border-radius: 15px;
         }
 
