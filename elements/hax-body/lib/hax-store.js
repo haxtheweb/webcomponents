@@ -1941,7 +1941,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/tutorials"],
+        args: ["https://haxtheweb.org/tutorials"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/tutorials",
@@ -1954,9 +1954,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: [
-          "https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation",
-        ],
+        args: ["https://haxtheweb.org/documentation"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
@@ -1969,7 +1967,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/ontology"],
+        args: ["https://haxtheweb.org/ontology"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/pedagogy",
@@ -2337,7 +2335,7 @@ What did you want merlin to do?
       var title = `[${type}] User report from HAX daemon`;
       body = `Location: ${globalThis.location.href}
 Browser: ${navigator.userAgent}
-OS: ${navigator.userAgentData.platform} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
+OS: ${this.getOperatingSystem()} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
 Screen: ${globalThis.screen.width}x${globalThis.screen.height}
 Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
@@ -2364,6 +2362,31 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       )}`,
       "_blank",
     );
+  }
+
+  /**
+   * @description - Gets operating system from browser navigator
+   * @returns {string} - The operating system either from userAgentData (if supported) with userAgent as back up
+   */
+  getOperatingSystem() {
+    if (navigator.userAgentData && navigator.userAgentData.platform) {
+      return navigator.userAgentData.platform;
+    } else {
+      const USER_AGENT = navigator.userAgent.toLowerCase();
+      if (USER_AGENT.includes("windows")) {
+        return "Windows";
+      } else if (USER_AGENT.includes("iphone")) {
+        return "iOS";
+      } else if (USER_AGENT.includes("mac os")) {
+        return "macOS";
+      } else if (USER_AGENT.includes("linux")) {
+        return "Linux";
+      } else if (USER_AGENT.includes("android")) {
+        return "Android";
+      } else {
+        return "Unknown";
+      }
+    }
   }
 
   async _richTextEditorPromptOpen(e) {
@@ -2429,7 +2452,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         setTimeout(() => {
           globalThis.HaxStore.requestAvailability().setHaxProperties(globalThis.customElements.get('instruction-card').haxProperties, 'instruction-card');
         }, 1000);
-      }); 
+      });
     });
    */
   _buildPrimitiveDefinitions() {

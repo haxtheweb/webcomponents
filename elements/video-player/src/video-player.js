@@ -418,6 +418,7 @@ class VideoPlayer extends IntersectionObserverMixin(
        */
       hideTranscript: {
         type: Boolean,
+        reflect: true,
         attribute: "hide-transcript",
       },
       /**

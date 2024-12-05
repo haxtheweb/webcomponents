@@ -5,11 +5,10 @@
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/type-writer/type-writer.js";
 import { css, html } from "lit";
-import { autorun, toJS, } from "mobx";
+import { autorun, toJS } from "mobx";
 import { ChatStore } from "./chat-agent-store.js";
 
 class ChatMessage extends DDD {
-
   static get tag() {
     return "chat-message";
   }
@@ -23,24 +22,24 @@ class ChatMessage extends DDD {
     this.hat = "none";
     this.isSentPrompt = false;
     this.message = "";
-    this.messageWasSuggestedPrompt = false; 
+    this.messageWasSuggestedPrompt = false;
     this.suggestedPrompts = ChatStore.currentSuggestions; // needs to remain this way that way it doesn't update.
 
     autorun(() => {
       this.darkMode = toJS(ChatStore.darkMode);
-    })
-    
+    });
+
     autorun(() => {
       this.editMode = toJS(ChatStore.editMode);
-    })
+    });
   }
 
   static get styles() {
     return [
       super.styles,
       css`
-        /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
-        
+        /* https://haxtheweb.org/documentation/ddd */
+
         :host {
           container-type: inline-size;
           display: block;
@@ -52,7 +51,8 @@ class ChatMessage extends DDD {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
         }
 
-        .sent-chat-message, .message {
+        .sent-chat-message,
+        .message {
           align-items: center;
           display: flex;
           flex-direction: row;
@@ -137,7 +137,7 @@ class ChatMessage extends DDD {
             justify-content: center;
           }
         }
-      `
+      `,
     ];
   }
 
@@ -147,7 +147,9 @@ class ChatMessage extends DDD {
   render() {
     return html`
       <div class="chat-message-wrapper">
-        ${this.isSentPrompt ? this.renderSentMessage() : this.renderReceivedMessage()}
+        ${this.isSentPrompt
+          ? this.renderSentMessage()
+          : this.renderReceivedMessage()}
       </div>
     `;
   }
@@ -162,12 +164,23 @@ class ChatMessage extends DDD {
           <div class="author-icon">
             <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
           </div>
-          <type-writer class="message-content" text="${this.message}" speed="${ChatStore.merlinTypeWriterSpeed}"></type-writer>
+          <type-writer
+            class="message-content"
+            text="${this.message}"
+            speed="${ChatStore.merlinTypeWriterSpeed}"
+          ></type-writer>
         </div>
         <div class="suggested-prompts">
-          ${this.suggestedPrompts.map((suggestedPrompt) => html`
-            <chat-suggestion suggestion="${suggestedPrompt.suggestion}" prompt-type="${suggestedPrompt.type}" @click=${this.disableSuggestions} @keypress=${this.disableSuggestions}></chat-suggestion>
-          `)}
+          ${this.suggestedPrompts.map(
+            (suggestedPrompt) => html`
+              <chat-suggestion
+                suggestion="${suggestedPrompt.suggestion}"
+                prompt-type="${suggestedPrompt.type}"
+                @click=${this.disableSuggestions}
+                @keypress=${this.disableSuggestions}
+              ></chat-suggestion>
+            `,
+          )}
         </div>
       </div>
     `;
@@ -181,7 +194,10 @@ class ChatMessage extends DDD {
       <div class="sent-chat-message">
         <p class="message-content">${this.message}</p>
         <div class="author-icon">
-          <rpg-character seed="${ChatStore.userName}" hat="${this.hat}"></rpg-character>
+          <rpg-character
+            seed="${ChatStore.userName}"
+            hat="${this.hat}"
+          ></rpg-character>
         </div>
       </div>
     `;
@@ -197,22 +213,30 @@ class ChatMessage extends DDD {
   pickHat() {
     if (ChatStore.month === 2 && ChatStore.day === 12) {
       this.hat = "party";
-    } else if (ChatStore.month === 6 && ChatStore.day === 6) { // Closest I could get for a consistent "cowboy" day. If you get the pop-culture reference then that's awesome
+    } else if (ChatStore.month === 6 && ChatStore.day === 6) {
+      // Closest I could get for a consistent "cowboy" day. If you get the pop-culture reference then that's awesome
       this.hat = "cowboy";
-    } else if (ChatStore.month === 7 && ChatStore.day === 27) { // Birthday of a famous cartoon "wabbit"
+    } else if (ChatStore.month === 7 && ChatStore.day === 27) {
+      // Birthday of a famous cartoon "wabbit"
       this.hat = "bunny";
-    } else if (ChatStore.month === 8 && ChatStore.day === 15) { // International Watermelon Day
-      this.hat = "watermelon"
-    } else if (ChatStore.month === 9 && ChatStore.day === 19) { // International Talk Like a Pirate Day
-      this.hat = "pirate"
-    } else if (ChatStore.month === 10 && ChatStore.day === 1) { // International Coffee Day
-      this.hat ="coffee";
-    } else if (ChatStore.month === 10 && ChatStore.day === 5) { // International Teacher Day
-      this.hat = "education"
-    } else if (ChatStore.month === 12 && ChatStore.day === 5) { // Day of the Ninja
-      this.hat = "ninja"
-    } else if (ChatStore.month === 12 && ChatStore.day === 18) { // Fellowship of the Ring founded
-      this.hat = "knight"
+    } else if (ChatStore.month === 8 && ChatStore.day === 15) {
+      // International Watermelon Day
+      this.hat = "watermelon";
+    } else if (ChatStore.month === 9 && ChatStore.day === 19) {
+      // International Talk Like a Pirate Day
+      this.hat = "pirate";
+    } else if (ChatStore.month === 10 && ChatStore.day === 1) {
+      // International Coffee Day
+      this.hat = "coffee";
+    } else if (ChatStore.month === 10 && ChatStore.day === 5) {
+      // International Teacher Day
+      this.hat = "education";
+    } else if (ChatStore.month === 12 && ChatStore.day === 5) {
+      // Day of the Ninja
+      this.hat = "ninja";
+    } else if (ChatStore.month === 12 && ChatStore.day === 18) {
+      // Fellowship of the Ring founded
+      this.hat = "knight";
     } else {
       this.hat = "none";
     }
@@ -243,7 +267,7 @@ class ChatMessage extends DDD {
         if (suggestion.hasAttribute("chosen-prompt")) {
           existingChosenPrompt = true;
         }
-      })
+      });
 
       if (!existingChosenPrompt) {
         e.currentTarget.setAttribute("chosen-prompt", "");

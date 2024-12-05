@@ -19,8 +19,7 @@ clone_and_install () {
   git clone https://github.com/haxtheweb/webcomponents.git
   cd webcomponents
   yarn global add symlink-dir
-  yarn global add @wcfactory/cli
-  yarn global add polymer-cli
+  yarn global add @haxtheweb/create
   yarn global add @web/test-runner
   yarn global add @web/test-runner-commands
   yarn global add @web/test-runner-puppeteer

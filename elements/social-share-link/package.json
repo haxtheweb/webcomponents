@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.6",
+  "version": "9.0.18",
   "description": "a link to share content on social",
   "repository": {
     "type": "git",
@@ -41,17 +41,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^9.0.6",
-    "@haxtheweb/simple-icon": "^9.0.6",
-    "lit": "^3.2.0"
+    "@haxtheweb/hax-iconset": "^9.0.18",
+    "@haxtheweb/simple-icon": "^9.0.18",
+    "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.6",
-    "@haxtheweb/storybook-utilities": "^9.0.6",
+    "@haxtheweb/deduping-fix": "^9.0.18",
+    "@haxtheweb/storybook-utilities": "^9.0.18",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.4.2",
+    "@web/dev-server": "0.4.6",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",
     "wct-browser-legacy": "1.0.2"
@@ -67,5 +67,5 @@
     "haxtheweb",
     "lit"
   ],
-  "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
+  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
 }

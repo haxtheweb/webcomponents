@@ -10,10 +10,7 @@
     "description": "Example Title text element",
     "icon": "icons:android",
     "color": "green",
-    "tags": [
-      "Other",
-      "example"
-    ],
+    "tags": ["Other", "example"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

@@ -1,0 +1,52 @@
+{
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+        "accent": true,
+        "primary": false,
+        "card": true,
+        "text": false,
+        "designTreatment": false
+    },
+    "gizmo": {
+        "title": "Web component doc player",
+        "description": "",
+        "icon": "hax:html-code",
+        "color": "green",
+        "tags": [
+            "Other",
+            "web",
+            "developer",
+            "code",
+            "hax"
+        ],
+        "handles": [],
+        "meta": {
+            "author": "haxtheweb"
+        }
+    },
+    "settings": {
+        "configure": [
+          {
+            "property": "hideWindow",
+            "inputMethod": "boolean",
+            "title": "Hide window",
+            "description": "Hide the output window, useful when purpose is terminal only"
+          }
+        ]
+    },
+    "saveOptions": {
+        "wipeSlot": false,
+        "unsetAttributes": []
+    },
+    "demoSchema": [
+        {
+            "tag": "web-container",
+            "properties": {
+            },
+            "content": "<template>npm install @haxtheweb/create</template>"
+        }
+    ]
+}

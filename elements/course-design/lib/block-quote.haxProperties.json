@@ -1,8 +1,10 @@
 {
-  "canScale": false,
-
-  "canEditSource": true,
+  "api": "1",
   "type": "grid",
+  "canScale": false,
+  "canEditSource": true,
+  "hideDefaultSettings": false,
+  "designSystem": false,
   "gizmo": {
     "title": "Block quote",
     "description": "Designed Quote",
@@ -26,15 +28,13 @@
         "property": "citation",
         "title": "Citation",
         "description": "The citation of the element",
-        "inputMethod": "textfield",
-        "icon": "icons:book"
+        "inputMethod": "textfield"
       },
       {
         "property": "alt",
         "title": "Alt",
         "description": "The alt text for the image",
-        "inputMethod": "textfield",
-        "icon": "editor:text-fields"
+        "inputMethod": "textfield"
       },
       {
         "property": "image",
@@ -42,11 +42,14 @@
         "description": "The image of the element",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
-        "validationType": "url",
-        "icon": "editor:insert-photo"
+        "validationType": "url"
       }
     ],
     "advanced": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": []
   },
   "demoSchema": [
     {

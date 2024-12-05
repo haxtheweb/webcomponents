@@ -4,45 +4,16 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { WebContainer } from "@webcontainer/api";
 import { Terminal } from "@xterm/xterm";
 import { FitAddon } from "@xterm/addon-fit";
-
-// @todo now make this flexible on the files produced initially or commands to run
-// also needs to support terminal rendering / layouts to support and editing files
-// in the web container
-const files = {
-  'index.js': {
-    file: {
-      contents: ``
-    },
-  },
-  'package.json': {
-    file: {
-      contents: `
-        {
-          "name": "hax-webcontainer",
-          "type": "module",
-          "dependencies": {
-            "@haxtheweb/haxcms-nodejs": "latest",
-            "nodemon": "latest"
-          },
-          "scripts": {
-            "start": "npx @haxtheweb/haxcms-nodejs"
-          }
-        }`,
-    },
-  },
-};
-
 /**
  * `web-container`
  * 
  * @demo index.html
  * @element web-container
  */
-export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
+export class WebContainerEl extends DDDSuper(LitElement) {
 
   static get tag() {
     return "web-container";
@@ -50,48 +21,30 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.fname = null;
+    this.hideEditor = false;
+    this.hideTerminal = false;
+    this.hideWindow = false;
     this.webcontainerInstance = null;
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
+    this.files ={
+      'index.js': {
+        file: {
+          contents: ` `,
+        },
+      },
+      'package.json': {
+        file: {
+          contents: `
+            {
+              "name": "hax-webcontainer",
+              "type": "module",
+              "dependencies": {
+              }
+            }`,
+        },
+      },
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/web-container.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
-    globalThis.addEventListener("load", async () => {
-
-      const fitAddon = new FitAddon();
-      const terminal = new Terminal({
-        convertEol: true,
-      });
-      terminal.loadAddon(fitAddon);
-      terminal.open(this.shadowRoot.querySelector('.terminal'));
-    
-      fitAddon.fit();
-      // Call only once
-      this.webcontainerInstance = await WebContainer.boot();
-      await this.webcontainerInstance.mount(files);
-      await this.installDependencies();
-      await this.startDevServer();
-      // Wait for `server-ready` event
-      this.webcontainerInstance.on("server-ready", (port, url) => {
-        this.shadowRoot.querySelector('iframe').src = url;
-      });
-    
-      const shellProcess = await this.startShell(terminal);
-      globalThis.addEventListener("resize", () => {
-        fitAddon.fit();
-        shellProcess.resize({
-          cols: terminal.cols,
-          rows: terminal.rows,
-        });
-      });
-    });
+    this.commands = [];
   }
 
   async installDependencies() {
@@ -137,15 +90,117 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   /** @param {string} content*/
-  async writeIndexJS(content) {
-    await this.webcontainerInstance.fs.writeFile("/index.js", content);
+  async writeFile(filename, content) {
+    // forces it to be at root of the active directory in the container
+    await this.webcontainerInstance.fs.writeFile(`/${filename}`, content);
   }
 
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
+      files: { type: Object },
+      hideTerminal: { type: Boolean, reflect: true, attribute: 'hide-terminal' },
+      hideEditor: { type: Boolean, reflect: true, attribute: 'hide-editor' },
+      hideWindow: { type: Boolean, reflect: true, attribute: 'hide-window' },
     };
+  }
+
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
+    if (this.querySelector('template')) {
+      let commands = this.querySelector('template').content.textContent.trim().split('\n');
+      if (commands.length > 0) {
+        for (let i=0; i<commands.length; i++) {
+          commands[i] = commands[i].trim();
+          this.commands.push(commands[i].split(' '));
+        }
+      }
+    }
+    if (!this.hideEditor) {
+      import("@haxtheweb/code-editor/code-editor.js").then((e) => {
+        setTimeout(() => {
+          
+          if (this.files['index.js']) {
+            this.fname = 'index.js';
+          }
+          else if (this.files['index.html']) {
+            this.fname = 'index.html';
+          }
+          if (this.fname) {
+            this.shadowRoot.querySelector('code-editor').innerHTML = this.files[this.fname].file.contents;
+          }
+        }, 100);
+      });
+    }
+    this.setupWebContainers();
+  }
+
+  async setupWebContainers() {
+    const fitAddon = new FitAddon();
+    const terminal = new Terminal({
+      convertEol: true,
+    });
+    terminal.loadAddon(fitAddon);
+    terminal.open(this.shadowRoot.querySelector('.terminal'));
+  
+    fitAddon.fit();
+    // Call only once
+    this.webcontainerInstance = await globalThis.WebContainerManager.requestAvailability();
+    await this.webcontainerInstance.mount(this.files);
+    const shellProcess = await this.startShell(terminal);
+    if (this.commands.length > 0) {
+      await this.runCommands(this.commands);
+    }
+    else {
+      await this.installDependencies();
+      await this.startDevServer();
+    }
+    // Wait for `server-ready` event
+    this.webcontainerInstance.on("server-ready", (port, url) => {
+      this.shadowRoot.querySelector('iframe').src = url;
+    });
+  
+    globalThis.addEventListener("resize", () => {
+      fitAddon.fit();
+      shellProcess.resize({
+        cols: terminal.cols,
+        rows: terminal.rows,
+      });
+    });
+  }
+
+  async runCommands(commands) {
+    var commandProcess;
+    for (let i=0; i<commands.length; i++) {
+      // support command vs command + arguments
+      if (Array.isArray(commands[i])) {
+        const tmp = Object.assign([], commands[i]);
+        let command = (tmp.length <= 1) ? tmp[0] : tmp.shift();
+        console.log(command, tmp);
+        commandProcess = await this.webcontainerInstance.spawn(command, tmp);  
+        commandProcess.output.pipeTo(
+          new WritableStream({
+            write(data) {
+              console.log(data);
+            },
+          }),
+        );
+
+      }
+      else {
+        commandProcess = await this.webcontainerInstance.spawn(command[i]);  
+        commandProcess.output.pipeTo(
+          new WritableStream({
+            write(data) {
+              console.log(data);
+            },
+          }),
+        );
+      }
+    }
+    // Wait for install command to exit
+    return commandProcess.exit;
   }
 
   // Lit scoped styles
@@ -158,8 +213,18 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
+      :host([hide-terminal]) .terminal {
+        display: none;
+      }
+      :host([hide-editor]) .editor {
+        display: none;
+      }
+      :host([hide-window]) iframe {
+        display: none;
+      }
       iframe {
         width: 100%;
+        height: var(--web-container-iframe-height, 500px);
         border: none;
         background-color: transparent;
       }
@@ -167,6 +232,7 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
       .terminal {
         padding: 0;
         margin: 0;
+        height: var(--web-container-terminal-height, 200px);
         overflow: hidden;
       }
       /**
@@ -390,15 +456,20 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
     `];
   }
 
+  editorValueChanged(e) {
+    this.writeFile(this.fname, e.detail.value);
+  }
+
   // Lit render the HTML
   render() {
     return html`
     <div class="container">
+      ${!this.hideEditor ? html`<div class="editor"><code-editor @value-changed="${this.editorValueChanged}"></code-editor></div>` : ``}
       <div class="preview">
-        <iframe src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>
+        ${!this.hideWindow ? html`<iframe part="iframe" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
       </div>
     </div>
-    <div class="terminal"></div>`;
+    <div class="terminal" part="terminal"></div>`;
   }
 
   /**
@@ -410,4 +481,16 @@ export class webContainer extends DDDSuper(I18NMixin(LitElement)) {
   }
 }
 
-globalThis.customElements.define(webContainer.tag, webContainer);
+globalThis.customElements.define(WebContainerEl.tag, WebContainerEl);
+
+// register globally so we can make sure there is only one
+globalThis.WebContainerManager = globalThis.WebContainerManager || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same modal
+globalThis.WebContainerManager.requestAvailability = async() => {
+  if (!globalThis.WebContainerManager.instance && globalThis.document) {
+    globalThis.WebContainerManager.instance = await WebContainer.boot();
+  }
+  return globalThis.WebContainerManager.instance;
+};

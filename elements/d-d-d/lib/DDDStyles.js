@@ -2129,6 +2129,7 @@ export const DDDReset = css`
   }
 
   code {
+    user-select: all;
     transition: all 0.3s ease 0s;
     display: inline-block;
     padding: 2px var(--ddd-spacing-1); /* breaking DDD spacing sys on purpose for code */

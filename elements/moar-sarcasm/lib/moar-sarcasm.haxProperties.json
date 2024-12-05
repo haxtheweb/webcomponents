@@ -40,7 +40,7 @@
   "demoSchema": [
     {
       "tag": "moar-sarcasm",
-      "content": "",
+      "content": "I am so cool",
       "properties": {
         "say": "I am so cool"
       }

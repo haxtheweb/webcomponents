@@ -9,7 +9,7 @@ import "@haxtheweb/rpg-character/rpg-character.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { css, html } from "lit";
-import { autorun, configure, toJS, } from "mobx";
+import { autorun, configure, toJS } from "mobx";
 import { ChatStore } from "./lib/chat-agent-store.js";
 import "./lib/chat-button.js";
 import "./lib/chat-control-bar.js";
@@ -61,10 +61,10 @@ class ChatAgent extends DDD {
     autorun(() => {
       this.isFullView = toJS(ChatStore.isFullView);
     });
-    
+
     autorun(() => {
       this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
-    })
+    });
   }
 
   /**
@@ -74,7 +74,7 @@ class ChatAgent extends DDD {
     return [
       super.styles,
       css`
-        /* https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation/ddd */
+        /* https://haxtheweb.org/documentation/ddd */
 
         :host {
           container-type: normal;
@@ -88,7 +88,7 @@ class ChatAgent extends DDD {
           gap: var(--ddd-spacing-2);
           position: fixed;
           right: var(--ddd-spacing-2);
-          width: 35%;        
+          width: 35%;
         }
 
         :host([is-full-view]) .chat-agent-wrapper {

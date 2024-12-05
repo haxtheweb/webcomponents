@@ -6,7 +6,7 @@
     "elementName": "tagging-question",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "9.0.6",
+  "version": "9.0.21",
   "description": "Answer question by applying related tags",
   "repository": {
     "type": "git",
@@ -29,18 +29,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^3.2.0"
+    "@haxtheweb/multiple-choice": "^9.0.21",
+    "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.6",
+    "@haxtheweb/deduping-fix": "^9.0.18",
     "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.1.28",
+    "@web/dev-server": "0.4.6",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
-    "lodash": "4.17.21",
     "polymer-build": "3.1.4",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
@@ -56,5 +56,5 @@
     "haxtheweb",
     "lit"
   ],
-  "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
+  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
 }

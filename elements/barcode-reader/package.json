@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.6",
+  "version": "9.0.19",
   "description": "Reads barcodes",
   "repository": {
     "type": "git",
@@ -44,22 +44,23 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/es-global-bridge": "^9.0.18",
+    "@haxtheweb/simple-icon": "^9.0.18",
     "@zxing/browser": "0.1.1",
     "@zxing/library": "0.19.1",
     "javascript-barcode-reader": "0.6.9",
     "jquery": "^3.6.0",
-    "lit": "^3.2.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.6",
+    "@haxtheweb/deduping-fix": "^9.0.18",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.4.2",
+    "@web/dev-server": "0.4.6",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",
     "gulp-babel": "8.0.0",
-    "lodash": "^4.17.21",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,
@@ -72,5 +73,5 @@
     "html",
     "barcode"
   ],
-  "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
+  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
 }

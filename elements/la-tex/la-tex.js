@@ -23,7 +23,8 @@ class LaTex extends LitElement {
   }
   hydrateLaTeX() {
     ESGlobalBridgeStore.import(
-      "latex2html5", new URL(`./lib/latex2html5.js`, import.meta.url).href,
+      "latex2html5",
+      new URL(`./lib/latex2html5.js`, import.meta.url).href,
     ).then(() => {
       setTimeout(() => {
         if (globalThis.LaTeX2HTML5) {
@@ -116,8 +117,8 @@ class LaTex extends LitElement {
   static get properties() {
     return {
       hydrated: { type: Boolean, reflect: true },
-      initialText: { type: String }
-    }
+      initialText: { type: String },
+    };
   }
   /**
    * LitElement render callback

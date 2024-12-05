@@ -170,9 +170,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         #answer_wrap {
           visibility: hidden;
           opacity: 0;
-          color: var(
-            --ddd-component-self-check-answer-text, #000
-          );
+          color: var(--ddd-component-self-check-answer-text, #000);
           background-color: var(
             --ddd-component-self-check-answer-background,
             var(--ddd-theme-default-successLight)

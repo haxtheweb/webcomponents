@@ -261,7 +261,6 @@ try {
           cdn + "assets/babel-top.js",
           cdn +
             "build/es5-amd/node_modules/web-animations-js/web-animations-next-lite.min.js",
-          cdn + "build/es5-amd/node_modules/fetch-ie8/fetch.js",
           cdn +
             "build/es6/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
           cdn +

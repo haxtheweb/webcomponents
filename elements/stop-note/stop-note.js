@@ -92,7 +92,6 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
             var(--ddd-theme-default-opportunityGreen)
           );
           --background-color: var(--ddd-theme-default-successLight);
-
         }
 
         :host([icon="stopnoteicons:book-icon"]) {

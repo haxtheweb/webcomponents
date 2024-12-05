@@ -69,33 +69,33 @@ class ImageInspector extends LitElement {
     return html`
       <div class="wrap">
         <div class="internal-btn-wrap">
-        <simple-icon-button
-          label="Zoom in"
-          icon="zoom-in"
-          @click="${this.zoomIn}"
-        ></simple-icon-button>
-        <simple-icon-button
-          label="Zoom out"
-          icon="zoom-out"
-          @click="${this.zoomOut}"
-        ></simple-icon-button>
-        <simple-icon-button
-          label="Rotate right"
-          icon="image:rotate-right"
-          @click="${this.rotateRight}"
-        ></simple-icon-button>
-        <simple-icon-button
-          label="Mirror image"
-          icon="image:flip"
-          @click="${this.mirrorImage}"
-        ></simple-icon-button>
-        <a href="${this.src}" target="_blank" rel="noopener noreferrer">
           <simple-icon-button
-            label="Open in new window"
-            icon="launch"
+            label="Zoom in"
+            icon="zoom-in"
+            @click="${this.zoomIn}"
           ></simple-icon-button>
-        </a>
-        <slot name="toolbar"></slot>
+          <simple-icon-button
+            label="Zoom out"
+            icon="zoom-out"
+            @click="${this.zoomOut}"
+          ></simple-icon-button>
+          <simple-icon-button
+            label="Rotate right"
+            icon="image:rotate-right"
+            @click="${this.rotateRight}"
+          ></simple-icon-button>
+          <simple-icon-button
+            label="Mirror image"
+            icon="image:flip"
+            @click="${this.mirrorImage}"
+          ></simple-icon-button>
+          <a href="${this.src}" target="_blank" rel="noopener noreferrer">
+            <simple-icon-button
+              label="Open in new window"
+              icon="launch"
+            ></simple-icon-button>
+          </a>
+          <slot name="toolbar"></slot>
         </div>
       </div>
       <img-pan-zoom id="img" src="${this.src}"></img-pan-zoom>

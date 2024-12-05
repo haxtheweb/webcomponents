@@ -1,6 +1,6 @@
 /**
  * Copyright 2021 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see License.md for full text
  */
 import { LitElement } from "lit";
 // register globally so we can make sure there is only one

@@ -151,7 +151,7 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
           ?autofocus="${this.autofocus}"
           ?disabled="${this.disabled}"
           font-size="${this.fontSize}"
-          editor-value="${this.__editorValue || ""}"
+          editor-value="${this.editorValue || ""}"
           theme="${this.theme || "auto"}"
           language="${this.language}"
           mode="${this.mode}"

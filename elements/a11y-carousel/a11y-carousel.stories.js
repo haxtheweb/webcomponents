@@ -22,15 +22,15 @@ export const a11yCarouselStory = () => {
       selection: utils.randomOption(["figure-1", "figure-2", "figure-3"]),
       emptyslot: `
         <figure id="figure-1">
-          <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200"/>
+          <img src="https://placehold.co/500x300" alt="Random Kitten, 400 X 200"/>
           <figcaption>Item 1</figcaption>
         </figure>
         <figure id="figure-2">
-          <img src="//placekitten.com/300/100" alt="Random Kitten, 300 X 100"/>
+          <img src="https://placehold.co/500x300" alt="Random Kitten, 300 X 100"/>
           <figcaption>Item 2</figcaption>
         </figure>
         <figure id="figure-3">
-          <img src="//placekitten.com/400/300" alt="Random Kitten, 400 X 300"/>
+          <img src="https://placehold.co/500x300" alt="Random Kitten, 400 X 300"/>
           <figcaption>Item 3</figcaption>
         </figure>`,
       width: "100%",
@@ -65,15 +65,15 @@ export const a11yCarouselButtonStory = () => {
       <!-- end customizable button code-->
     </div>
     <figure id="figure-1">
-      <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200"/>
+      <img src="https://placehold.co/500x300" alt="Random Kitten, 400 X 200"/>
       <figcaption>Item 1 (figure id: figure-1)</figcaption>
     </figure>
     <figure id="figure-2">
-      <img src="//placekitten.com/300/100" alt="Random Kitten, 300 X 100"/>
+      <img src="https://placehold.co/500x300" alt="Random Kitten, 300 X 100"/>
       <figcaption>Item 2 (figure id: figure-2)</figcaption>
     </figure>
     <figure id="figure-3">
-      <img src="//placekitten.com/400/300" alt="Random Kitten, 400 X 300"/>
+      <img src="https://placehold.co/500x300" alt="Random Kitten, 400 X 300"/>
       <figcaption>Item 3 (figure id: figure-3)</figcaption>
     </figure>
     <div slot="below"

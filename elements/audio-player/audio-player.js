@@ -174,10 +174,10 @@ class AudioPlayer extends VideoPlayer {
         {
           tag: "audio-player",
           properties: {
-            accentColor: "orange",
-            dark: true,
+            mediaTitle: "Jonny Quest Theme",
             crossorigin: "anonymous",
-            source: "https://inline-audio-mocha.vercel.app/assets/whopper.mp3",
+            source:
+              "https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3",
           },
           content: "",
         },

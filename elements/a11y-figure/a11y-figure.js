@@ -215,14 +215,14 @@ class A11yFigure extends A11yDetails {
         {
           tag: "a11y-figure",
           properties: {
-            imgSrc: "//placekitten.com/400/300",
-            imgAlt: "random kitten",
+            imgSrc: "https://placehold.co/500x300",
+            imgAlt: "",
             openText: "Show Description",
             closeText: "Hide Description",
             style: "max-width:400px",
           },
           content:
-            '<h4 slot="figcaption">Random Kitten</h4>\n<div slot="summary">Image Description</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>',
+            '<h4 slot="figcaption">Random</h4>\n<div slot="summary">Image Description</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>',
         },
       ],
     };

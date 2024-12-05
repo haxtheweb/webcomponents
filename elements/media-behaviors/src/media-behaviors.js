@@ -64,6 +64,10 @@ globalThis.MediaBehaviors.Video = {
       else if (input.indexOf("youtube.com/watch") != -1) {
         return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
       }
+      // copy and paste from the URL shorts
+      else if (input.indexOf("youtube.com/shorts/") != -1) {
+        return input.replace("youtube.com/shorts/", "youtube.com/embed/") + v;
+      }
       // copy and paste from the URL
       else if (input.indexOf("youtube-no-cookie.com/") != -1) {
         return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;

@@ -1,0 +1,56 @@
+{
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "type": "element",
+    "hideDefaultSettings": true,
+    "designSystem": false,
+    "gizmo": {
+        "title": "UN SDG",
+        "description": "United Nations Sustainable Development Goal",
+        "icon": "hax:apps",
+        "color": "purple",
+        "tags": [
+            "Other",
+            "sustainable"
+        ],
+        "handles": [],
+        "meta": {
+            "author": "HAXTheWeb core team"
+        }
+    },
+    "settings": {
+        "configure": [
+            {
+                "property": "goal",
+                "title": "Goal",
+                "description": "UN SDG number",
+                "step": 1,
+                "max": 17,
+                "min": 1,
+                "inputMethod": "slider",
+                "required": true
+            },
+            {
+              "property": "colorOnly",
+              "title": "Color only",
+              "description": "Goal color",
+              "inputMethod": "boolean",
+              "required": false
+          }
+        ]
+    },
+    "saveOptions": {
+        "wipeSlot": false,
+        "unsetAttributes": ["alt"]
+    },
+    "demoSchema": [
+        {
+            "tag": "un-sdg",
+            "properties": {
+              "goal": 4
+            },
+            "content": ""
+        }
+    ]
+}

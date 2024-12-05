@@ -289,12 +289,7 @@ export const LoremDataBehaviors = function (SuperClass) {
     }
 
     randomKitten(aspect = this.randomAspect(), greyscale) {
-      if (typeof greyscale === typeof undefined)
-        greyscale = this.randomWeightedOption([
-          { value: false, weight: 3 },
-          { value: true, weight: 1 },
-        ]);
-      return `//placekitten.com${greyscale ? "/g" : ""}/${aspect}`;
+      return `https://placehold.co/${aspect}`;
     }
 
     /**

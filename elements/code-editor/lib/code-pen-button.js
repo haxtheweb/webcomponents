@@ -20,7 +20,7 @@ class CodePenButton extends LitElement {
   }
   render() {
     return html`
-      <form action="${this.endPoint}" method="POST" target="_blank">
+      <form action="${this.endPoint}" method="post" target="_blank">
         <input type="hidden" name="data" value="${this.dataString}" />
         <input
           type="image"

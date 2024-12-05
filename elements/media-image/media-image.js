@@ -93,7 +93,10 @@ class MediaImage extends DDD {
             --ddd-component-figure-label-title,
             var(--ddd-theme-accent, var(--ddd-theme-default-limestoneLight))
           );
-          background: var(--ddd-component-figure-label-description-background, transparent);
+          background: var(
+            --ddd-component-figure-label-description-background,
+            transparent
+          );
           padding: var(--ddd-spacing-2);
           margin-bottom: var(--ddd-spacing-5);
           line-height: var(--ddd-lh-140);

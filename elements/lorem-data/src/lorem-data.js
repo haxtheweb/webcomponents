@@ -366,7 +366,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
   }
 
   /**
-   * generates URL for random image from placekitten.com
+   * generates URL for placeholder
    *
    * @param {string} aspect aspect ration as w/h
    * @param {boolean} greyscale whether image should be greyscale
@@ -374,13 +374,8 @@ class LoremData extends LoremDataBehaviors(LitElement) {
    * @memberof LoremData
    */
   randomKitten(aspect, greyscale) {
-    if (typeof greyscale === typeof undefined)
-      greyscale = this.randomWeightedOption([
-        { value: false, weight: 3 },
-        { value: true, weight: 1 },
-      ]);
     aspect = aspect || this.randomAspect();
-    return `//placekitten.com${greyscale ? "/g" : ""}/${aspect}`;
+    return `https://placehold.co/${aspect}`;
   }
 
   /**

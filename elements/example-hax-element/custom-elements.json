@@ -3,15 +3,15 @@
   "tags": [
     {
       "name": "example-hax-element",
-      "description": "`example-hax-element`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `available` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `available` {`boolean`} - \n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
+      "description": "`example-hax-element`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `shiny` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `shiny` {`boolean`} - ",
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: My Example"
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: null"
         },
         {
-          "name": "available",
-          "description": "`available` {`boolean`} - \n\nProperty: available\n\nDefault: ",
+          "name": "shiny",
+          "description": "`shiny` {`boolean`} - \n\nProperty: shiny\n\nDefault: false",
           "valueSet": "v"
         }
       ]

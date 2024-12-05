@@ -15,7 +15,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.6",
+  "version": "9.0.18",
   "description": "a collection of accessibility patterns and styles",
   "repository": {
     "type": "git",
@@ -40,15 +40,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^3.2.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.6",
+    "@haxtheweb/deduping-fix": "^9.0.18",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "8.2.2",
-    "lodash": "4.17.21",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,
@@ -62,5 +61,5 @@
     "haxtheweb",
     "lit"
   ],
-  "gitHead": "7f62cde6a6242afcb57715e1e2067ea767c777fd"
+  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
 }

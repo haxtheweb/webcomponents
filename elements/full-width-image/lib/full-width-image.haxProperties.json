@@ -42,7 +42,7 @@
     {
       "tag": "full-width-image",
       "properties": {
-        "source": "//placekitten.com/800/800",
+        "source": "https://placehold.co/500x300",
         "caption": "Kitten, being kittens"
       },
       "content": ""
