@@ -40,6 +40,10 @@
           "name": "t"
         },
         {
+          "name": "is-safari",
+          "type": "boolean"
+        },
+        {
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
@@ -97,6 +101,11 @@
         {
           "name": "t",
           "attribute": "t"
+        },
+        {
+          "name": "isSafari",
+          "attribute": "is-safari",
+          "type": "boolean"
         },
         {
           "name": "accentColor",

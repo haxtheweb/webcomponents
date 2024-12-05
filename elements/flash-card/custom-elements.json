@@ -35,7 +35,7 @@
     },
     {
       "name": "flash-card-answer-box",
-      "description": "Events:\n\n  * `flash-card-status-change` {`CustomEvent<string>`} - \n\nAttributes:\n\n  * `back` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `show-result` {`boolean`} - \n\n  * `side-to-show` {`string`} - \n\n  * `user-answer` {`string`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `back` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `correctAnswer` {`string`} - \n\n  * `showResult` {`boolean`} - \n\n  * `statusIcon` {`string`} - \n\n  * `sideToShow` {`string`} - \n\n  * `userAnswer` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `message` {`string`} - \n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Events:\n\n  * `flash-card-status-change` {`CustomEvent<string>`} - \n\nAttributes:\n\n  * `back` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `show-result` {`boolean`} - \n\n  * `side-to-show` {`string`} - \n\n  * `user-answer` {`string`} - \n\n  * `t` - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `back` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `correctAnswer` {`string`} - \n\n  * `showResult` {`boolean`} - \n\n  * `statusIcon` {`string`} - \n\n  * `sideToShow` {`string`} - \n\n  * `userAnswer` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `message` {`string`} - \n\n  * `t` - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "back",
@@ -62,6 +62,11 @@
         {
           "name": "t",
           "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
