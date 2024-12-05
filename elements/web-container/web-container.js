@@ -21,6 +21,8 @@ export class WebContainerEl extends DDDSuper(LitElement) {
 
   constructor() {
     super();
+    this.filesShown = [];
+    this.status = "Loading";
     this.fname = null;
     this.hideEditor = false;
     this.hideTerminal = false;
@@ -95,10 +97,17 @@ export class WebContainerEl extends DDDSuper(LitElement) {
     await this.webcontainerInstance.fs.writeFile(`/${filename}`, content);
   }
 
+  async readFile(filename) {
+    const file = await this.webcontainerInstance.fs.readFile(`/${filename}`, 'utf-8');
+    return file;
+  }
+
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
+      filesShown: { type: Array },
+      status: { type: String, reflect: true },
       files: { type: Object },
       hideTerminal: { type: Boolean, reflect: true, attribute: 'hide-terminal' },
       hideEditor: { type: Boolean, reflect: true, attribute: 'hide-editor' },
@@ -128,12 +137,16 @@ export class WebContainerEl extends DDDSuper(LitElement) {
             this.fname = 'index.html';
           }
           if (this.fname) {
-            this.shadowRoot.querySelector('code-editor').innerHTML = this.files[this.fname].file.contents;
+            this.setCodeEditor(this.files[this.fname].file.contents);
           }
         }, 100);
       });
     }
     this.setupWebContainers();
+  }
+
+  setCodeEditor(content) {
+    this.shadowRoot.querySelector('code-editor').innerHTML = content;
   }
 
   async setupWebContainers() {
@@ -146,19 +159,31 @@ export class WebContainerEl extends DDDSuper(LitElement) {
   
     fitAddon.fit();
     // Call only once
+    this.status = "Setting up container";
     this.webcontainerInstance = await globalThis.WebContainerManager.requestAvailability();
     await this.webcontainerInstance.mount(this.files);
     const shellProcess = await this.startShell(terminal);
     if (this.commands.length > 0) {
+      this.status = "Running commands";
       await this.runCommands(this.commands);
     }
     else {
+      this.status = "Installing..";
+      this.dispatchEvent(new CustomEvent('web-container-dependencies-installing', { bubbles: true, compose: true, cancelable: false, detail: true }))
       await this.installDependencies();
+      this.dispatchEvent(new CustomEvent('web-container-dependencies-installed', { bubbles: true, compose: true, cancelable: false, detail: true }))
+      this.status = "Running Start..";
       await this.startDevServer();
+      this.dispatchEvent(new CustomEvent('web-container-npm-start', { bubbles: true, compose: true, cancelable: false, detail: true }))
     }
     // Wait for `server-ready` event
     this.webcontainerInstance.on("server-ready", (port, url) => {
+      this.dispatchEvent(new CustomEvent('web-container-server-ready', { bubbles: true, compose: true, cancelable: false, detail: {
+        port: port,
+        url: url
+      } }))
       this.shadowRoot.querySelector('iframe').src = url;
+      this.status = "";
     });
   
     globalThis.addEventListener("resize", () => {
@@ -173,12 +198,15 @@ export class WebContainerEl extends DDDSuper(LitElement) {
   async runCommands(commands) {
     var commandProcess;
     for (let i=0; i<commands.length; i++) {
+      this.dispatchEvent(new CustomEvent('web-container-command-start', { bubbles: true, compose: true, cancelable: false, detail: {
+        command: commands[i],
+      } }));
       // support command vs command + arguments
       if (Array.isArray(commands[i])) {
         const tmp = Object.assign([], commands[i]);
         let command = (tmp.length <= 1) ? tmp[0] : tmp.shift();
-        console.log(command, tmp);
-        commandProcess = await this.webcontainerInstance.spawn(command, tmp);  
+        this.status = `Running ${command}`;
+        commandProcess = await this.webcontainerInstance.spawn(command, tmp);
         commandProcess.output.pipeTo(
           new WritableStream({
             write(data) {
@@ -189,7 +217,8 @@ export class WebContainerEl extends DDDSuper(LitElement) {
 
       }
       else {
-        commandProcess = await this.webcontainerInstance.spawn(command[i]);  
+        this.status = `Running ${commands[i]}`;
+        commandProcess = await this.webcontainerInstance.spawn(commands[i]);  
         commandProcess.output.pipeTo(
           new WritableStream({
             write(data) {
@@ -198,6 +227,9 @@ export class WebContainerEl extends DDDSuper(LitElement) {
           }),
         );
       }
+      this.dispatchEvent(new CustomEvent('web-container-command-finished', { bubbles: true, compose: true, cancelable: false, detail: {
+        command: commands[i]
+      } }));
     }
     // Wait for install command to exit
     return commandProcess.exit;
@@ -222,6 +254,13 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       :host([hide-window]) iframe {
         display: none;
       }
+      
+      .status {
+        background-color: var(--web-container-status-bg-color, var(--ddd-theme-default-infoLight, lightblue));
+        color: var(--web-container-status-color, var(--ddd-theme-default-info, navy));
+        font-size: var(--ddd-font-size-xxs);
+        font-family: var(--ddd-font-navigation);
+      }
       iframe {
         width: 100%;
         height: var(--web-container-iframe-height, 500px);
@@ -235,6 +274,56 @@ export class WebContainerEl extends DDDSuper(LitElement) {
         height: var(--web-container-terminal-height, 200px);
         overflow: hidden;
       }
+      .container {
+        display: grid; 
+        grid-template-columns: auto auto; 
+        grid-template-rows: auto auto; 
+        gap: 0px 0px; 
+        grid-template-areas: 
+          "editor preview"
+          "terminal terminal"; 
+      }
+      .editor {
+        grid-area: editor;
+        height: 100%;
+        display: contents;
+      }
+      code-editor {
+        margin: 0;
+      }
+      .editor {
+        display: grid; 
+        grid-template-columns:auto; 
+        grid-template-rows: auto; 
+        gap: 0px 0px; 
+        grid-template-areas: 
+          "files"
+          "codeeditor"; 
+        grid-area: editor; 
+      }
+      .files { grid-area: files; }
+      code-editor { grid-area: codeeditor; }
+      .preview {
+        grid-area: preview;
+        height: 100%;
+        display: contents;
+      }
+      .terminal {
+        grid-area: terminal;
+        max-height: 200px;
+      }
+      .preview {
+        display: grid; 
+        grid-template-columns:auto; 
+        grid-template-rows: auto; 
+        gap: 0px 0px; 
+        grid-template-areas: 
+          "iframe"
+          "status"; 
+        grid-area: preview; 
+      }
+      .iframe { grid-area: iframe; }
+      .status { grid-area: status; }
       /**
       * Copyright (c) 2014 The xterm.js authors. All rights reserved.
       * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
@@ -460,13 +549,24 @@ export class WebContainerEl extends DDDSuper(LitElement) {
     this.writeFile(this.fname, e.detail.value);
   }
 
+  async updateFile(e) {
+    this.fname = e.target.getAttribute('data-fname');
+    this.setCodeEditor(await this.readFile(this.fname));
+  }
+
   // Lit render the HTML
   render() {
     return html`
-    <div class="container">
-      ${!this.hideEditor ? html`<div class="editor"><code-editor @value-changed="${this.editorValueChanged}"></code-editor></div>` : ``}
-      <div class="preview">
-        ${!this.hideWindow ? html`<iframe part="iframe" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
+    <div class="container" part="container">
+      ${!this.hideEditor ? html`
+        <div class="editor" part="editor">
+          <div class="files" part="files">
+            ${this.filesShown.map(file => html`<button @click="${this.updateFile}" data-fname="${file.file}">${file.label}</button>`)}
+          </div>
+          <code-editor part="code-editor" @value-changed="${this.editorValueChanged}"></code-editor>
+        </div>` : ``}
+      <div class="preview" part="preview">
+        ${!this.hideWindow ? html`<iframe part="iframe" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe><div class="status" part="status">${this.status}</div>`: ``}
       </div>
     </div>
     <div class="terminal" part="terminal"></div>`;
