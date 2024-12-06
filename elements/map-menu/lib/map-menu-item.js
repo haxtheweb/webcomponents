@@ -33,8 +33,9 @@ class MapMenuItem extends I18NMixin(LitElement) {
         }
 
         .title {
-          text-transform: none;
+          text-transform: var(--map-menu-text-transform, none);
           font-size: var(--map-menu-font-size);
+          font-weight: var(--map-menu-font-weight);
           text-overflow: ellipsis;
           vertical-align: middle;
           width: auto;
@@ -64,6 +65,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
             --map-menu-item-a-active-background-color,
             black
           );
+          border-radius: var(--map-menu-item-border-radius, 4px);
         }
         button {
           cursor: pointer;
@@ -85,6 +87,10 @@ class MapMenuItem extends I18NMixin(LitElement) {
           text-align: left;
           border-radius: 0;
           vertical-align: middle;
+        }
+        :host([is-nested]) button {
+          padding: 10px 20px;
+          text-align: left;
         }
         :host(:not([icon=""])) button {
           padding: 10px 0 10px 4px;
@@ -174,6 +180,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.editControls = false;
+    this.isNested = false;
     this.icon = null;
     this.iconLabel = null;
     this.itemtitle = "";
@@ -221,6 +228,10 @@ class MapMenuItem extends I18NMixin(LitElement) {
       editControls: {
         type: Boolean,
         attribute: "edit-controls",
+      },
+      isNested: {
+        type: Boolean,
+        attribute: "is-nested",
       },
       hovered: {
         type: Boolean,
@@ -290,6 +301,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
   }
 
   _click() {
+    this.blur();
     this.dispatchEvent(
       new CustomEvent("link-clicked", {
         bubbles: true,
