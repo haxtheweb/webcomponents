@@ -66,15 +66,15 @@ class MapMenu extends LitElement {
         }
         :host([is-flex]) map-menu-builder .wrapper {
           background-color: var(--map-menu-parent-background-color);
-          width: var(--map-menu-width);
-          padding: var(--map-menu-outer-padding);
+          width: var(--map-menu-parent-width);
+          padding: var(--map-menu-parent-padding);
           position: relative;
           max-width: 100%;
         }
         :host([is-flex][is-horizontal]) map-menu-builder .wrapper {
           background-color: var(--map-menu-parent-background-color);
-          width: var(--map-menu-width);
-          padding: var(--map-menu-outer-padding);
+          width: var(--map-menu-parent-width);
+          padding: var(--map-menu-parent-padding);
           display: inline-flex;
           justify-content: center;
           align-items: center;
@@ -83,22 +83,23 @@ class MapMenu extends LitElement {
 
         :host([is-flex]) map-menu-builder map-menu-item,
         :host([is-flex]) map-menu-builder map-menu-submenu {
-          color: var(--map-menu-parent-font-color);
-          padding: var(--map-menu-parent-padding);
-          margin: var(--map-menu-parent-margin);
+          color: var(--map-menu-layer-1-font-color);
+          padding: var(--map-menu-layer-1-padding);
+          margin: var(--map-menu-layer-1-margin);
         }
 
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-item,
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-submenu {
           border-left: 0;
-          color: var(--map-menu-parent-font-color);
-          border-bottom: 4px transparent solid;
+
+          color: var(--map-menu-layer-1-font-color);
+          border-bottom: var(--map-menu-layer-1-bottom-border, 4px transparent solid);
         }
 
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-submenu:hover,
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-submenu:active,
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-submenu:focus {
-          border-bottom: var(--map-menu-bottom-border-layer-1, none);
+          border-bottom: var(--map-menu-layer-1-bottom-border-active, none);
         }
 
         /* Layer 2 */
@@ -115,7 +116,9 @@ class MapMenu extends LitElement {
           left: 0;
           width: 100%;
 
-          background-color: var(--map-menu-expand-background-color, white);
+          margin: var(--map-menu-layer-2-vertical-margin, 4px 0px);
+          padding: var(--map-menu-layer-2-vertical-padding, 20px 0px);
+          background-color: var(--map-menu-layer-2-background-color, white);
         }
 
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder .wrapper{
@@ -127,7 +130,8 @@ class MapMenu extends LitElement {
           grid-template-rows: repeat(10, min-content) 1fr;
           align-items: start;
 
-          margin: var(--map-menu-expand-padding, 0 auto);
+          margin: var(--map-menu-layer-2-horizontal-margin, 0 auto);
+          padding: var(--map-menu-layer-2-horizontal-padding, 0 46px);
         }
 
         map-menu-builder map-menu-builder map-menu-item,
@@ -139,12 +143,12 @@ class MapMenu extends LitElement {
 
         :host([is-flex]) map-menu-builder map-menu-builder map-menu-item,
         :host([is-flex]) map-menu-builder map-menu-builder map-menu-submenu {
-          --map-menu-text-transform: none;
           border: none;
           margin: 0;
           padding: 0;
-          
-          color: var(--map-menu-child-font-color, black);
+
+          color: var(--map-menu-layer-2-font-color, #262626);
+          --map-menu-text-transform: var(--map-menu-layer-2-text-transform, uppercase);
         }
 
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-item,
@@ -155,7 +159,9 @@ class MapMenu extends LitElement {
           flex-direction: row;
           flex-wrap: nowrap;
 
-          color: var(--map-menu-child-font-color, black);
+          color: var(--map-menu-layer-2-font-color, #001e44);
+          --map-menu-text-transform: var(--map-menu-layer-2-text-transform, uppercase);
+          --map-menu-font-weight: var(--map-menu-layer-2-font-weight, 700);
         }
          
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu {
@@ -174,7 +180,7 @@ class MapMenu extends LitElement {
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu:hover,
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu:active,
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu:focus {
-          border-bottom: var(--map-menu-bottom-border-layer-2, var(--map-menu-bottom-border-layer-1, none));
+          border-bottom: var(--map-menu-layer-2-bottom-border, var(--map-menu-layer-1-bottom-border-active, none));
         }
 
         /* Layer 3 */
@@ -218,13 +224,16 @@ class MapMenu extends LitElement {
 
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-item,
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
-          --map-menu-text-transform: none;
+          --map-menu-text-transform: var(--map-menu-layer-3-text-transform, none);
+          --map-menu-font-weight: var(--map-menu-layer-3-font-weight, 400);
+          --map-menu-header-a-text-decoration-hover: var(--map-menu-layer-3-text-decoration, none);
+          --map-menu-item-a-active-background-color: var(--map-menu-layer-3-active-background-color,#e4e5e7)
         }
 
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu:hover,
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu:active,
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu:focus {
-          border-bottom: var(--map-menu-bottom-border-layer-3, var(--map-menu-bottom-border-layer-2, none));
+          border-bottom: var(--map-menu-layer-3-bottom-border, var(--map-menu-layer-2-bottom-border, none));
         }
 
         /* Layer 4 */
@@ -338,6 +347,7 @@ class MapMenu extends LitElement {
    * LitElement life cycle - render
    */
   render() {
+    console.log("Here is flex: ", this.isFlex);
     return html`
       <div id="itemslist">
         <map-menu-container>
