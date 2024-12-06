@@ -43,6 +43,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/d-d-d": "^9.0.23",
+    "@haxtheweb/micro-frontend-registry": "^9.0.23",
+    "@haxtheweb/type-writer": "^9.0.23",
+    "mobx": "^6.3.0",
     "lit": "^3.2.1"
   },
   "devDependencies": {
