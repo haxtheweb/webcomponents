@@ -347,7 +347,6 @@ class MapMenu extends LitElement {
    * LitElement life cycle - render
    */
   render() {
-    console.log("Here is flex: ", this.isFlex);
     return html`
       <div id="itemslist">
         <map-menu-container>
@@ -460,11 +459,14 @@ class MapMenu extends LitElement {
     });
   }
 
+  /**
+   * Listen for submenu collapse events and close all other submenus
+   */
   __openChanged(e){
     e.stopImmediatePropagation();
     e.preventDefault();
     e.stopPropagation();
-    if(this.isHorizontal){
+    if(this.shadowRoot && this.isHorizontal){
       this.shadowRoot.querySelectorAll('map-menu-submenu').forEach( submenu => {
         if(submenu.isNested == false){
           if(submenu.hovered == false){

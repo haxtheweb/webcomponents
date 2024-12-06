@@ -136,7 +136,6 @@ class MapMenuSubmenu extends LitElement {
   }
 
   __active(e) {
-    console.log(e.type);
     this.hovered = true;
     if (e.type == "mouseover"){
       if (this.isHorizontal && !this.isNested && this.opened == false){
