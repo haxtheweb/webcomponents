@@ -52,6 +52,10 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         map-menu:not(:defined) {
           display: none;
         }
+        :host([is-flex]) map-menu {
+          overflow-y: visible;
+          overflow-x: visible;
+        }
 
         map-menu::-webkit-scrollbar-track {
           border-radius: 0;
