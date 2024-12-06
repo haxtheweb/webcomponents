@@ -47,6 +47,7 @@
     "lit": "^3.2.1"
   },
   "devDependencies": {
+    "@haxtheweb/d-d-docs": "^9.0.23",
     "@haxtheweb/accent-card": "^9.0.21",
     "@haxtheweb/course-design": "^9.0.21",
     "@haxtheweb/deduping-fix": "^9.0.18",
