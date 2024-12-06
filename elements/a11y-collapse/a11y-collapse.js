@@ -102,7 +102,7 @@ class A11yCollapse extends DDD {
           overflow: hidden;
         }
         #expand {
-          transform: rotate(0deg);
+          transform: rotate(var(--a11y-collapse-transform-deg,0deg));
           transition: transform 0.75s ease;
         }
         #content {
@@ -130,7 +130,7 @@ class A11yCollapse extends DDD {
         }
         @media screen {
           #expand.rotated {
-            transform: rotate(-90deg);
+            transform: rotate(var(--a11y-collapse-transform-rotated-deg, -90deg));
             transition: transform 0.75s ease;
           }
           :host #content {

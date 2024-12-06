@@ -74,8 +74,9 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
 
         .title {
-          text-transform: none;
+          text-transform: var(--map-menu-text-transform, none);
           font-size: var(--map-menu-font-size);
+          font-weight: var(--map-menu-font-weight);
           text-overflow: ellipsis;
           vertical-align: middle;
           max-width: 240px;
@@ -165,6 +166,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
             ? html`
                 <simple-icon-lite
                   icon="${this.icon}"
+                  part="icon"
                   id="icon"
                 ></simple-icon-lite>
                 ${this.iconLabel

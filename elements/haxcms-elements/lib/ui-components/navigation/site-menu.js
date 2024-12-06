@@ -52,6 +52,11 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         map-menu:not(:defined) {
           display: none;
         }
+        :host([is-flex]) map-menu {
+          overflow-y: visible;
+          overflow-x: visible;
+        }
+
         map-menu::-webkit-scrollbar-track {
           border-radius: 0;
           background-color: var(--site-menu-scrollbar-color, #252737);
@@ -102,13 +107,13 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     this.preventAutoScroll = false;
     this.trackIcon = "";
     this.editControls = false;
+    this.isFlex = false;
+    this.isHorizontal = false;
+    this.maxDepth = 5;
     this.__disposer = [];
     autorun((reaction) => {
       this.routerManifest = Object.assign({}, toJS(store.routerManifest));
       this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.editControls = toJS(store.isLoggedIn);
     });
   }
   /**
@@ -120,6 +125,9 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         .part="map-menu ${this.editMode ? `edit-mode-active` : ``}"
         .manifest="${this.routerManifest}"
         ?edit-controls="${this.editControls}"
+        ?is-flex="${this.isFlex}"
+        ?is-horizontal="${this.isHorizontal}"
+        max-depth="${this.maxDepth}"
         ?active-indicator="${!this.hideActiveIndicator}"
         ?auto-scroll="${!this.preventAutoScroll}"
         @active-item="${this.mapMenuActiveChanged}"
@@ -259,6 +267,11 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         },
       }),
     );
+    autorun((reaction) => {
+      if(!this.isFlex){
+        this.editControls = toJS(store.isLoggedIn);
+      }
+    });
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
     autorun((reaction) => {
       this.activeId = toJS(store.activeId);
@@ -283,6 +296,22 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       editControls: {
         type: Boolean,
         attribute: "edit-controls",
+      },
+      /**
+       * Track orientation state of flex menu
+       */
+      isFlex: {
+        type: Boolean,
+        attribute: "is-flex",
+      },
+      isHorizontal: {
+        type: Boolean,
+        attribute: "is-horizontal",
+        reflect: true,
+      },
+      maxDepth: {
+        type: Number,
+        attribute: "max-depth",
       },
       /**
        * acitvely selected item

@@ -23,7 +23,7 @@ class MapMenuSubmenu extends LitElement {
           margin: 0 0 -2px 0;
         }
         #container ::slotted(map-menu-builder) {
-          display: block;
+          display: var(--map-menu-submenu-display, block);
         }
         a11y-collapse {
           --a11y-collapse-border: 0;
@@ -37,7 +37,7 @@ class MapMenuSubmenu extends LitElement {
         }
         :host([opened]) #container ::slotted(map-menu-builder)::after {
           display: block;
-          width: 12px;
+          width: var(--map-menu-submenu-after-width, 12px);
           bottom: 2px;
           content: "";
           position: relative;
@@ -57,6 +57,11 @@ class MapMenuSubmenu extends LitElement {
             var(--map-menu-item-a-active-background-color, black);
         }
 
+        :host([is-nested]) a11y-collapse::before, 
+        :host([is-nested]) #container ::slotted(map-menu-builder)::after {
+          border-bottom: 0;
+        }
+
         :host([active]) a11y-collapse::part(icon),
         :host([hovered]) a11y-collapse::part(icon) {
           color: var(--map-menu-item-icon-active-color, black);
@@ -64,7 +69,7 @@ class MapMenuSubmenu extends LitElement {
         }
 
         a11y-collapse::part(icon) {
-          position: absolute;
+          position: var(--a11y-collapse-icon-position, absolute);
           margin-left: 4px;
           --simple-icon-height: 18px;
           --simple-icon-width: 18px;
@@ -80,6 +85,16 @@ class MapMenuSubmenu extends LitElement {
           color: var(--map-menu-item-icon-active-color, black);
           background-color: var(--map-menu-container-background-color, white);
         }
+        :host([is-horizontal]) a11y-collapse::part(icon){
+          position: static;
+          margin-left: 0px;
+        }
+        :host([is-horizontal][is-nested]) a11y-collapse::part(icon){
+          display: none;
+        }
+        :host([is-horizontal][is-nested]) map-menu-header::part(icon){
+          display: none;
+        }
       `,
     ];
   }
@@ -89,6 +104,8 @@ class MapMenuSubmenu extends LitElement {
     this.iconLabel = null;
     this.opened = false;
     this.collapsable = true;
+    this.isNested = false;
+    this.isHorizontal = false;
     this.expandChildren = false;
     this.hovered = false;
     this.active = false;
@@ -118,11 +135,21 @@ class MapMenuSubmenu extends LitElement {
     }, 0);
   }
 
-  __active() {
+  __active(e) {
     this.hovered = true;
+    if (e.type == "mouseover"){
+      if (this.isHorizontal && !this.isNested && this.opened == false){
+        this.opened = true;
+      }
+    }
   }
-  __deactive() {
+  __deactive(e) {
     this.hovered = false;
+    if (e.type == "mouseleave"){
+      if (this.isHorizontal && !this.isNested && this.opened == true){
+        this.opened = false;
+      }
+    }
   }
 
   // align the collapse state w/ this state
@@ -132,6 +159,16 @@ class MapMenuSubmenu extends LitElement {
     e.preventDefault();
     e.stopPropagation();
     this.opened = e.detail.expanded;
+    if(this.isHorizontal){
+      // when the user tabs to the open icon
+      this.dispatchEvent(
+        new CustomEvent("opened-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+        })
+      )
+    }
   }
   /**
    * LitElement life cycle - render
@@ -218,6 +255,16 @@ class MapMenuSubmenu extends LitElement {
       collapsable: {
         type: Boolean,
       },
+      isNested: {
+        type: Boolean,
+        attribute: "is-nested",
+        reflect: true,
+      },
+      isHorizontal: {
+        type: Boolean,
+        attribute: "is-horizontal",
+        reflect: true,
+      },
       expandChildren: {
         type: Boolean,
         attribute: "expand-children",
@@ -281,7 +328,12 @@ class MapMenuSubmenu extends LitElement {
     } else {
       this.active = false;
     }
-    this.opened = true;
+    if(this.isHorizontal && !this.isNested){
+      this.blur();
+      this.opened=false;
+    } else {
+      this.opened = true;
+    }
   }
 }
 customElements.define(MapMenuSubmenu.tag, MapMenuSubmenu);
