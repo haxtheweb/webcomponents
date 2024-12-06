@@ -277,6 +277,11 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       :host([hide-window]) iframe {
         display: none;
       }
+
+      :host([hide-editor]) .container,
+      :host([hide-window]) .container {
+        display: block;
+      }
       
       .status {
         background-color: var(--web-container-status-bg-color, var(--ddd-theme-default-infoLight, lightblue));
