@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.23",
   "description": "Automated conversion of self-check/",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/a11y-behaviors": "^9.0.22",
-    "@haxtheweb/d-d-d": "^9.0.22",
+    "@haxtheweb/d-d-d": "^9.0.23",
     "@haxtheweb/i18n-manager": "^9.0.22",
     "@haxtheweb/lazy-image-helpers": "^9.0.22",
     "@haxtheweb/replace-tag": "^9.0.22",

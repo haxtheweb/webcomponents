@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.23",
   "description": "Robot assistant tag, hopefully not evil",
   "repository": {
     "type": "git",
@@ -42,8 +42,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^9.0.22",
-    "@haxtheweb/simple-toast": "^9.0.22",
-    "@haxtheweb/super-daemon": "^9.0.22",
+    "@haxtheweb/simple-toast": "^9.0.23",
+    "@haxtheweb/super-daemon": "^9.0.23",
     "lit": "^3.2.1"
   },
   "devDependencies": {

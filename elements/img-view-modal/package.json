@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.23",
   "description": "Slider that allows comparison of two images",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "@haxtheweb/img-pan-zoom": "^9.0.22",
     "@haxtheweb/schema-behaviors": "^9.0.22",
     "@haxtheweb/simple-icon": "^9.0.22",
-    "@haxtheweb/simple-modal": "^9.0.22",
+    "@haxtheweb/simple-modal": "^9.0.23",
     "@haxtheweb/simple-tooltip": "^9.0.22",
     "@haxtheweb/utils": "^9.0.22",
     "lit": "^3.2.1"

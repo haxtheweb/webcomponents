@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.23",
   "description": "Clean HAXcms theme, one.",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/hax-iconset": "^9.0.22",
-    "@haxtheweb/haxcms-elements": "^9.0.22",
+    "@haxtheweb/haxcms-elements": "^9.0.23",
     "@haxtheweb/i18n-manager": "^9.0.22",
     "@haxtheweb/responsive-utility": "^9.0.22",
     "@haxtheweb/scroll-button": "^9.0.22",

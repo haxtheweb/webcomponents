@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.23",
   "description": "design, develop, destroy the competition",
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/d-d-docs": "^9.0.22",
+    "@haxtheweb/d-d-docs": "^9.0.23",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

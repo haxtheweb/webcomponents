@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.23",
   "description": "a markdown block",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.22",
+    "@haxtheweb/d-d-d": "^9.0.23",
     "@polymer/marked-element": "3.0.1",
     "lit": "^3.2.1",
     "marked": "5.1.0"
