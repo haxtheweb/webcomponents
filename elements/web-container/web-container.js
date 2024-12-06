@@ -98,17 +98,17 @@ export class WebContainerEl extends DDDSuper(LitElement) {
   }
 
   async readFile(filename) {
-    const file = await this.webcontainerInstance.fs.readFile(`/${filename}`, 'utf-8');
-    return file;
+    return await this.webcontainerInstance.fs.readFile(`/${filename}`, 'utf-8');
   }
 
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
-      filesShown: { type: Array },
+      fname: { type: String, reflect: true },
       status: { type: String, reflect: true },
       files: { type: Object },
+      filesShown: { type: Array },
       hideTerminal: { type: Boolean, reflect: true, attribute: 'hide-terminal' },
       hideEditor: { type: Boolean, reflect: true, attribute: 'hide-editor' },
       hideWindow: { type: Boolean, reflect: true, attribute: 'hide-window' },
@@ -137,7 +137,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
             this.fname = 'index.html';
           }
           if (this.fname) {
-            this.setCodeEditor(this.files[this.fname].file.contents);
+            this.setCodeEditor(this.files[this.fname].file.contents, this.getLanguageFromFileEnding(this.fname));
           }
         }, 100);
       });
@@ -145,8 +145,27 @@ export class WebContainerEl extends DDDSuper(LitElement) {
     this.setupWebContainers();
   }
 
-  setCodeEditor(content) {
-    this.shadowRoot.querySelector('code-editor').innerHTML = content;
+  getLanguageFromFileEnding(filename) {
+    if (filename.endsWith('.js')) {
+      return 'javascript';
+    }
+    else if (filename.endsWith('.json')) {
+      return 'json';
+    }
+    else if (filename.endsWith('.html')) {
+      return 'html';
+    }
+    else if (filename.endsWith('.yaml')) {
+      return 'yaml';
+    }
+    return 'javascript';
+  }
+
+  setCodeEditor(content, language = 'javascript') {
+    if (this.shadowRoot && this.shadowRoot.querySelector('code-editor')) {
+      this.shadowRoot.querySelector('code-editor').innerHTML = content;
+      this.shadowRoot.querySelector('code-editor').language = language;
+    }
   }
 
   async setupWebContainers() {
@@ -182,7 +201,11 @@ export class WebContainerEl extends DDDSuper(LitElement) {
         port: port,
         url: url
       } }))
-      this.shadowRoot.querySelector('iframe').src = url;
+      // incase hiding preview
+      if (this.shadowRoot.querySelector('iframe')) {
+        this.shadowRoot.querySelector('iframe').src = url;
+      }
+      // this makes message hide in the end as we don't have a status that needs to be constantly shown
       this.status = "";
     });
   
@@ -260,6 +283,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
         color: var(--web-container-status-color, var(--ddd-theme-default-info, navy));
         font-size: var(--ddd-font-size-xxs);
         font-family: var(--ddd-font-navigation);
+        padding: 4px 8px;
       }
       iframe {
         width: 100%;
@@ -293,33 +317,50 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       }
       .editor {
         display: grid; 
-        grid-template-columns:auto; 
-        grid-template-rows: auto; 
         gap: 0px 0px; 
         grid-template-areas: 
           "files"
           "codeeditor"; 
         grid-area: editor; 
       }
-      .files { grid-area: files; }
-      code-editor { grid-area: codeeditor; }
-      .preview {
-        grid-area: preview;
-        height: 100%;
-        display: contents;
+      .files {
+        grid-area: files;
+        width: 100%;
+      }
+      .files button {
+        opacity: .9;
+        background-color: #333333;
+        color: white;
+        font-size: var(--ddd-font-size-4xs);
+        padding: 4px 16px;
+      }
+      .files button:hover,
+      .files button:focus {
+        opacity: 1;
+      }
+      .files button[active] {
+        opacity: 1;
+        background-color: black;
+        border-color: var(--ddd-primary-1);
+      }
+      code-editor {
+        grid-area: codeeditor;
+        height: var(--web-container-iframe-height, 500px);
       }
       .terminal {
         grid-area: terminal;
         max-height: 200px;
       }
       .preview {
+        grid-area: preview;
+        height: 100%;
         display: grid; 
         grid-template-columns:auto; 
         grid-template-rows: auto; 
         gap: 0px 0px; 
         grid-template-areas: 
-          "iframe"
-          "status"; 
+          "status"
+          "iframe"; 
         grid-area: preview; 
       }
       .iframe { grid-area: iframe; }
@@ -551,7 +592,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
 
   async updateFile(e) {
     this.fname = e.target.getAttribute('data-fname');
-    this.setCodeEditor(await this.readFile(this.fname));
+    this.setCodeEditor(await this.readFile(this.fname), this.getLanguageFromFileEnding(this.fname));
   }
 
   // Lit render the HTML
@@ -561,12 +602,12 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       ${!this.hideEditor ? html`
         <div class="editor" part="editor">
           <div class="files" part="files">
-            ${this.filesShown.map(file => html`<button @click="${this.updateFile}" data-fname="${file.file}">${file.label}</button>`)}
+            ${this.filesShown.map(file => html`<button @click="${this.updateFile}" data-fname="${file.file}" ?active="${file.file === this.fname}">${file.label}</button>`)}
           </div>
           <code-editor part="code-editor" @value-changed="${this.editorValueChanged}"></code-editor>
         </div>` : ``}
       <div class="preview" part="preview">
-        ${!this.hideWindow ? html`<iframe part="iframe" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe><div class="status" part="status">${this.status}</div>`: ``}
+        ${!this.hideWindow ? html`<div class="status" part="status">${this.status}</div><iframe part="iframe" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
       </div>
     </div>
     <div class="terminal" part="terminal"></div>`;
