@@ -18,62 +18,78 @@ class MapMenuBuilder extends LitElement {
     super();
     this.editControls = false;
     this.items = [];
+    this.depthCount = 1;
+    this.maxDepth = 5;
+    this.isNested = false;
+    this.isHorizontal = false;
   }
   /**
    * LitElement life cycle - render
    */
   render() {
-    return html`
-      ${this.items
-        ? this.items.map(
-            (item) => html`
-              ${item.children.length > 0
-                ? html`
-                    <map-menu-submenu
-                      itemtitle="${item.title}"
-                      id="${item.id}"
-                      url="${item.slug}"
-                      icon="${item.metadata && item.metadata.icon
-                        ? item.metadata.icon
-                        : null}"
-                      icon-label="${item.metadata && item.metadata.pageType
-                        ? item.metadata.pageType
-                        : ""}"
-                      ?edit-controls="${this.editControls}"
-                      selected="${this.selected}"
-                      ?published="${this.getPublishedStatus(item)}"
-                      ?hide-in-menu="${this.hideInMenuStatus(item)}"
-                    >
-                      <map-menu-builder
-                        .items="${item.children}"
+    if(this.depthCount<=this.maxDepth){
+      return html`
+      <div class="wrapper">      
+        ${this.items
+          ? this.items.map(
+              (item) => html`
+                ${item.children.length > 0
+                  ? html`
+                      <map-menu-submenu
+                        itemtitle="${item.title}"
+                        id="${item.id}"
+                        url="${item.slug}"
+                        icon="${item.metadata && item.metadata.icon
+                          ? item.metadata.icon
+                          : null}"
+                        icon-label="${item.metadata && item.metadata.pageType
+                          ? item.metadata.pageType
+                          : ""}"
                         ?edit-controls="${this.editControls}"
                         selected="${this.selected}"
-                      ></map-menu-builder>
-                    </map-menu-submenu>
-                  `
-                : html`
-                    <map-menu-item
-                      ?edit-controls="${this.editControls}"
-                      itemtitle="${item.title}"
-                      id="${item.id}"
-                      url="${item.slug}"
-                      icon="${item.metadata && item.metadata.icon
-                        ? item.metadata.icon
-                        : ""}"
-                      icon-label="${item.metadata && item.metadata.pageType
-                        ? item.metadata.pageType
-                        : ""}"
-                      selected="${this.selected}"
-                      ?published="${this.getPublishedStatus(item)}"
-                      ?hide-in-menu="${this.hideInMenuStatus(item)}"
-                      ?locked="${item.metadata.locked}"
-                      status="${item.metadata.status}"
-                    ></map-menu-item>
-                  `}
-            `,
-          )
-        : ""}
+                        ?opened="${this.depthCount > 1 && this.isHorizontal}"
+                        ?is-nested="${this.depthCount > 1}"
+                        ?is-horizontal="${this.isHorizontal}"
+                        ?published="${this.getPublishedStatus(item)}"
+                        ?hide-in-menu="${this.hideInMenuStatus(item)}"
+                      >
+                        <map-menu-builder
+                          .items="${item.children}"
+                          ?edit-controls="${this.editControls}"
+                          selected="${this.selected}"
+                          depth-count="${this.depthCount+1}"
+                          max-depth="${this.maxDepth}"
+                          ?is-horizontal="${this.isHorizontal}"
+                          ?is-nested="${true}"
+                        ></map-menu-builder>
+                      </map-menu-submenu>
+                    `
+                  : html`
+                      <map-menu-item
+                        ?edit-controls="${this.editControls}"
+                        ?is-nested="${this.depthCount > 1}"
+                        itemtitle="${item.title}"
+                        id="${item.id}"
+                        url="${item.slug}"
+                        icon="${item.metadata && item.metadata.icon
+                          ? item.metadata.icon
+                          : ""}"
+                        icon-label="${item.metadata && item.metadata.pageType
+                          ? item.metadata.pageType
+                          : ""}"
+                        selected="${this.selected}"
+                        ?published="${this.getPublishedStatus(item)}"
+                        ?hide-in-menu="${this.hideInMenuStatus(item)}"
+                        ?locked="${item.metadata.locked}"
+                        status="${item.metadata.status}"
+                      ></map-menu-item>
+                    `}
+              `,
+            )
+         : ""}
+      </div>
     `;
+    }
   }
 
   hideInMenuStatus(item) {
@@ -109,6 +125,19 @@ class MapMenuBuilder extends LitElement {
         type: Boolean,
         attribute: "edit-controls",
       },
+      maxDepth: {
+        type: Number,
+        attribute: "max-depth",
+        reflect: true
+      },
+      depthCount: {
+        type: Number,
+        attribute: "depth-count",
+      },
+      isHorizontal: {
+        type: Boolean,
+        attribute: "is-horizontal"
+      }
     };
   }
   createRenderRoot() {
