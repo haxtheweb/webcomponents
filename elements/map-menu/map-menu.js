@@ -450,6 +450,21 @@ class MapMenu extends LitElement {
     });
   }
 
+  __openChanged(e){
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    e.stopPropagation();
+    if(this.isHorizontal){
+      this.shadowRoot.querySelectorAll('map-menu-submenu').forEach( submenu => {
+        if(submenu.isNested == false){
+          if(submenu.hovered == false){
+            submenu.opened = false;
+          }
+        }
+      });
+    }
+  }
+
   __activeItemHandler(e) {
     this.activeItem = e.detail;
   }
