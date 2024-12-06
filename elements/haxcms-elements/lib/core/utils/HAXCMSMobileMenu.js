@@ -12,6 +12,8 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
     constructor() {
       super();
+      this.isHorizontal = true;
+      this.isFlex = true;
       this.menuOpen = true;
       this.t.closeMenu = "Close menu";
       this.t.openMenu = "Open menu";
@@ -138,6 +140,26 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         </nav>
       `;
     }
+    HAXCMSFlexMenu(maxDepth = 3) {
+      return html`
+        <nav
+          id="haxcmsmobilemenunav"
+          role="navigation"
+          aria-labelledby="sitemenu"
+          itemtype="http://schema.org/SiteNavigationElement"
+        >
+          <replace-tag
+            with="site-menu"
+            part="site-menu"
+            id="sitemenu"
+            max-depth="${maxDepth}"
+            ?is-flex="${this.isFlex}"
+            ?is-horizontal="${this.isHorizontal}"
+            import-method="view"
+          ></replace-tag>
+        </nav>
+      `;
+    }
     /**
      * Notice small size and if menu is open, close it
      */
@@ -152,18 +174,21 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         if (propName == "responsiveSize" && this[propName]) {
           switch (this[propName]) {
             case "sm":
+              this.isHorizontal=false;
               // auto close for small layouts
               if (this.menuOpen && oldValue != "xs") {
                 this.__HAXCMSMobileMenuToggle();
               }
               break;
             case "xs":
+              this.isHorizontal=false;
               // auto close for small layouts
               if (this.menuOpen && oldValue != "sm") {
                 this.__HAXCMSMobileMenuToggle();
               }
               break;
             default: {
+              this.isHorizontal=true;
               // auto open for larger layouts
               if (!this.menuOpen) {
                 this.__HAXCMSMobileMenuToggle();
@@ -185,6 +210,14 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           reflect: true,
           attribute: "menu-open",
         },
+        isFlex: {
+          type: Boolean,
+          attribute: "is-flex"
+        },
+        isHorizontal: {
+          type: Boolean,
+          attribute: "is-horizontal"
+        }
       };
     }
   };
