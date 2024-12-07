@@ -65,12 +65,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
           );
-          --polaris-header-bg-color: #1e417b;
-          --polaris-nav-color: var(--ddd-accent-6);
-          --polaris-nav-bg-color: light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-nittanyNavy)
-          );
+          --polaris-header-bg-color: var(--ddd-theme-default-beaverBlue);
+          --polaris-nav-color: var(--ddd-theme-default-white);
+          --polaris-nav-bg-color: var(--ddd-theme-default-nittanyNavy);
           --polaris-footer-secondary-bg-color: var(
             --ddd-theme-default-beaverBlue
           );
@@ -108,7 +105,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           bottom: 0px;
           z-index: 10000;
           --scroll-button-background-color: var(
-            --ddd-theme-default-inventOrange
+            --polaris-nav-bg-color
           );
           --simple-icon-width: 32px;
           --simple-icon-height: 32px;
@@ -127,16 +124,20 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         header .wrap {
-          padding: 40px 0;
+          padding: 0 0;
         }
 
         .site-inner {
           display: flex;
+          margin: 0 auto;
         }
 
         .wrap {
           margin: 0 auto;
-          max-width: 1140px;
+        }
+
+        main {
+          margin: 0 auto;
         }
 
         article {
@@ -161,24 +162,44 @@ class PolarisFlexTheme extends LTIResizingMixin(
           min-height: 50vh;
         }
 
+        .nav-section {
+          width: 100%;
+        }
+
         site-menu {
           font-family: var(--ddd-font-navigation);
+          line-height: 1.5;
+
+          --a11y-collapse-transform-deg: 180deg;
+          --a11y-collapse-transform-rotated-deg: 0deg;
           --site-menu-font-size: var(--ddd-font-size-3xs);
-          --map-menu-item-a-active-background-color: var(
-            --polaris-header-bg-color
-          );
+
           --map-menu-item-button-active-color: white;
           --map-menu-item-button-active-background-color: var(
             --ddd-theme-default-inventOrange
           );
           --map-menu-overflow: visible;
-          --site-menu-container-background-color: var(--ddd-accent-6);
-          --map-menu-item-a-active-color: var(--ddd-accent-6);
-          --map-menu-item-icon-active-color: black;
+          --site-menu-container-background-color: var(--polaris-nav-bg-color);
+          --map-menu-parent-background-color: var(--polaris-nav-bg-color);
+          --map-menu-item-a-active-background-color: transparent;
+          --map-menu-item-a-active-color: var(--polaris-nav-color);
+          --map-menu-item-icon-active-color: var(--polaris-nav-color);
+          --map-menu-parent-margin: 0 auto;
+          --map-menu-header-a-text-decoration-hover: underline;
+
+          --map-menu-layer-1-font-color: var(--polaris-nav-color);
+          --map-menu-layer-1-bottom-border-active: var(--ddd-border-size-lg) solid var(--ddd-theme-default-pughBlue);
+          --map-menu-layer-2-bottom-border-active: none;
         }
 
         site-modal {
           --simple-modal-titlebar-background: var(--polaris-nav-bg-color);
+          color: white;
+        }
+
+        #haxcmsmobilemenubutton {
+          display: none;
+          color: white;
         }
 
         .link-actions {
@@ -200,89 +221,96 @@ class PolarisFlexTheme extends LTIResizingMixin(
           display: block;
         }
 
-        @media screen and (min-width: 900px) {
-          .link-actions .inner {
-            margin: 0;
-            display: grid;
-            padding: 0;
-            -ms-grid-rows: auto;
-            grid-column-gap: 24px;
-            -ms-grid-columns: 1fr 1fr;
-            grid-template-rows: auto;
-            grid-template-areas: "previous next";
-            grid-template-columns: 1fr 1fr;
+        @media only screen and (max-width: 1440px){
+          site-menu {
+            --map-menu-layer-2-horizontal-padding: 0 62px;
           }
         }
-        site-menu-button {
-          --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: black;
-          --site-menu-button-icon-fill-color: white;
-          color: white;
-          background-color: var(--ddd-theme-default-inventOrange);
-          border: 1px solid var(--ddd-theme-default-inventOrange);
-          margin: 8px;
-          display: block;
-          padding: 0;
-          position: relative;
-          align-self: stretch;
-          box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
-          transition: border 300ms ease;
-          align-items: center;
-          justify-self: stretch;
-          text-overflow: ellipsis;
-          border-radius: 3px;
-          flex-direction: row;
-          text-decoration: none;
-          -webkit-box-align: center;
-          page-break-inside: avoid;
-          -ms-grid-row-align: stretch;
-          -webkit-box-orient: horizontal;
-          -ms-grid-column-align: stretch;
-          -webkit-box-direction: normal;
-        }
-        site-menu-button[disabled] {
-          display: none !important;
+
+        :host([responsive-size="md"]){
+          site-menu {
+            --map-menu-layer-2-horizontal-padding: 0 46px;
+          }
         }
 
-        site-menu-button[edit-mode][disabled] {
-          display: block;
+        :host([responsive-size="sm"]){
+          .psu-flex-top-menu a {
+            display: none;
+          }
+          .header-branding {
+            display: flex;
+            justify-content: space-between;
+          }
+          #mark {
+            margin: 15px 0;
+            padding-left: var(--ddd-spacing-10);
+            width: 146px;
+          }
+          site-menu {
+            --map-menu-item-icon-active-color: var(--ddd-theme-default-nittanyNavy);
+            --site-menu-container-background-color: var(--ddd-theme-default-white);
+            --map-menu-parent-background-color: var(--ddd-theme-default-white);
+            --map-menu-width: 100%;
+            --map-menu-outer-padding: 48px 0px 128px;
+            --map-menu-parent-font-color: #001E44;
+            --map-menu-parent-padding: 0;
+            --map-menu-parent-margin: 0px 128px;          
+          }
+          #haxcmsmobilemenubutton{
+            display: inline;
+            padding-right: var(--ddd-spacing-10);
+          }
         }
-        site-menu-button[type="prev"] {
-          grid-area: previous;
+
+        :host([responsive-size="xs"]){
+          site-menu {
+            --map-menu-item-icon-active-color: var(--ddd-theme-default-nittanyNavy);
+            --site-menu-container-background-color: var(--ddd-theme-default-white);
+            --map-menu-parent-background-color: var(--ddd-theme-default-white);
+            --map-menu-width: 100%;
+            --map-menu-outer-padding: 40px 0px 128px;
+            --map-menu-parent-font-color: #001E44;
+            --map-menu-parent-padding: 0;
+            --map-menu-parent-margin: 0px 26px;
+          }
+          .psu-flex-top-menu a {
+            display: none;
+          }
+          .header-branding {
+            display: flex;
+            justify-content: space-between;
+          }
+          #mark {
+            margin: 15px 0;
+            padding-left: var(--ddd-spacing-10);
+            width: 146px;
+          }
+          #haxcmsmobilemenubutton{
+            display: inline;
+            padding-right: var(--ddd-spacing-10);
+          }
         }
-        site-menu-button[type="next"] {
-          grid-area: next;
+        :host([responsive-size="sm"]:not([menu-open])), 
+        :host([responsive-size="xs"]:not([menu-open])){
+          site-menu{
+            display: none;
+          }
         }
-        site-menu-button div.wrapper {
-          flex: 1;
-          margin: 0;
-          display: block;
-          padding: 16px;
-          text-overflow: ellipsis;
-          text-decoration: none;
-          font-size: 18px;
-          font-weight: 500;
-          line-height: 1.5;
-          text-transform: none;
-        }
-        site-menu-button div .top {
-          font-size: 18px;
-          font-weight: 800;
-          line-height: 1.625;
-          color: white;
-        }
-        site-menu-button div .bottom {
-          font-size: 18px;
-          font-weight: 500;
-          line-height: 1.5;
-          max-height: 50px;
-          overflow: hidden;
-        }
-        site-menu-button[type="next"] div {
-          text-align: left;
-        }
-        site-menu-button[type="prev"] div {
-          text-align: right;
+        @media only screen and (max-width: 360px){
+          site-menu {
+            --map-menu-outer-padding: 40px 0px 26px;
+            --map-menu-parent-padding: 0;
+            --map-menu-parent-margin: 0px 26px;
+          }
+          #mark {
+            margin: 15px 0;
+            padding-left: var(--ddd-spacing-10);
+            width: 146px;
+          }
+          #haxcmsmobilemenubutton{
+            display: inline;
+            padding-right: var(--ddd-spacing-10);
+          }
         }
 
         .footer-secondary {
@@ -420,7 +448,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
         @media only screen and (max-width: 1139px) {
           .wrap {
-            max-width: 960px;
+            /* max-width: 960px; */
           }
         }
         @media only screen and (max-width: 1023px) {
@@ -429,7 +457,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 0 0 var(--ddd-spacing-2) 0;
           }
           header .wrap {
-            padding: 20px 0;
+            /* padding: 20px 0; */
           }
           scroll-button {
             --simple-icon-width: 20px;
@@ -555,7 +583,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
           <site-region name="header"></site-region>
           <slot name="header"></slot>
           ${this.HAXCMSMobileMenuButton("right")}
-          ${this.HAXCMSFlexMenu()}
+          <div class="nav-section">
+            ${this.HAXCMSFlexMenu()}
+          </div>
         </div>
       </header>
       <div class="content site-inner">
