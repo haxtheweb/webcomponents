@@ -5,42 +5,48 @@
 import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { HAXCMSOperationButtons } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { EmailPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js";
-import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
-import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
+import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
-import "./lib/clean-one-search-box.js";
-import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
+import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js";
+import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 
 /**
- * `clean-one`
- * `Clean HAXcms theme, one.`
+ * `polaris-flex-theme`
+ * `Polaris theme based on modern flex design system`
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
  * @demo demo/index.html
- * @element clean-one
+ * @element polaris-flex-theme
  */
 class PolarisFlexTheme extends LTIResizingMixin(
-  PrintBranchMixin(
-    PDFPageMixin(
+  HAXCMSOperationButtons(
+    HAXCMSRememberRoute(
       EmailPageMixin(
-        QRCodeMixin(
-          HAXCMSThemeParts(
-            HAXCMSMobileMenuMixin(
-              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+        PDFPageMixin(
+          PrintBranchMixin(
+            QRCodeMixin(
+              HAXCMSThemeParts(
+                HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+              ),
             ),
           ),
         ),
@@ -54,336 +60,574 @@ class PolarisFlexTheme extends LTIResizingMixin(
       super.styles,
       css`
         :host {
-          width: 100%;
-          margin: 0;
-          display: flex;
-          padding: 0;
-          min-height: 100vh;
-          flex-direction: column;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
+          display: block;
+          --polaris-content-bg-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          --polaris-header-bg-color: #1e417b;
+          --polaris-nav-color: var(--ddd-accent-6);
+          --polaris-nav-bg-color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          --polaris-footer-secondary-bg-color: var(
+            --ddd-theme-default-beaverBlue
+          );
+          --polaris-footer-primary-bg-color: var(
+            --ddd-theme-default-nittanyNavy
+          );
+
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
           );
           color: light-dark(black, var(--ddd-accent-6));
-          --simple-tooltip-background: var(--ddd-theme-default-info);
-          --simple-tooltip-text-color: var(--ddd-theme-default-infoLight);
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-border-radius: 0;
-        }
-        site-git-corner {
-          --site-git-corner-background: black;
+
+          --video-player-color: var(--ddd-theme-default-white);
+          --video-player-bg-color: var(--ddd-theme-default-nittanyNavy);
+          --video-player-border-color: var(--ddd-theme-default-limestoneLight);
+          --video-player-caption-color: var(--ddd-theme-default-white);
+          --video-player-hover-color: var(--ddd-theme-default-inventOrange);
+          --video-player-hover-bg-color: var(--ddd-theme-default-beaver80);
+          --video-player-accent-color: var(--ddd-theme-default-inventOrange);
+          --video-player-faded-accent-color: var(--ddd-theme-default-beaver80);
+          --video-player-disabled-color: var(--ddd-theme-default-disabled);
         }
 
-        :host([hidden]) {
-          display: none;
-        }
-        [hidden] {
-          display: none;
-        }
-        site-menu-button:not(:defined) {
-          display: none;
-        }
-        .btn-container {
-          z-index: 2;
-          height: 50px;
-          padding: 6px;
-        }
-        .btn-container .btn {
-          padding: 8px 4px;
-        }
-        site-menu {
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          color: light-dark(black, var(--ddd-accent-6));
-          height: var(--clean-one-site-menu-height, calc(100vh - 60px));
-          --site-menu-active-color: var(
-            --haxcms-user-styles-color-theme-color-3
-          );
-          --site-menu-item-active-item-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            rgba(100, 100, 255, 0.1)
-          );
-          --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
-          --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
-          --map-menu-item-a-active-background-color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
-          --map-menu-item-a-active-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          --map-menu-item-icon-active-color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
-          --site-menu-container-background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          font-family: var(--ddd-font-navigation);
-          --site-menu-font-size: var(--ddd-font-size-3xs);
+        :host([is-safari]) {
+          background-color: var(--ddd-accent-6);
+          color: black;
+          --polaris-content-bg-color: var(--ddd-accent-6);
+          --polaris-nav-bg-color: var(--ddd-theme-default-skyBlue);
         }
 
-        :host([is-logged-in]) site-menu {
-          height: var(--clean-one-site-menu-height, calc(100vh - 108px));
-        }
-        
-        /* Navigation arrows */
-        site-menu-button {
-          --site-menu-button-icon-width: 64px;
-          --site-menu-button-icon-height: 64px;
-        }
-        :host([menu-open]) site-menu-button[type="prev"] {
-          left: 300px;
-        }
-        site-menu-button[type="prev"] {
-          left: 0;
-        }
-        site-menu-button[type="next"] {
-          right: 0;
-        }
-        .main-content site-active-title h1 {
-          margin: 0 0 var(--ddd-spacing-4) 0;
-        }
-        .navigation {
+        scroll-button {
           position: fixed;
-          top: 40vh;
-          bottom: 20vh;
-          margin: 0 20px;
-          max-width: 150px;
-          min-width: 90px;
-          display: flex;
-          justify-content: center;
-          align-content: center;
-          flex-direction: column;
-          font-size: 40px;
-          color: #ccc;
-          text-align: center;
+          right: 0px;
+          bottom: 0px;
+          z-index: 10000;
+          --scroll-button-background-color: var(
+            --ddd-theme-default-inventOrange
+          );
+          --simple-icon-width: 32px;
+          --simple-icon-height: 32px;
+          --simple-icon-button-border-radius: none;
         }
-        @media screen and (max-width: 600px) {
-          .page-wrapper {
-            width: 100vw;
-          }
-          #slot ::slotted(iframe) {
-            width: auto;
-          }
-          #slot ::slotted(h1),
-          #slot ::slotted(h2),
-          #slot ::slotted(h3) {
-            font-size: 1.5em !important;
-          }
-          #slot ::slotted(h4),
-          #slot ::slotted(h5),
-          #slot ::slotted(h6) {
-            font-size: 1.2em !important;
-          }
-          #slot ::slotted(replace-tag) {
-            overflow: hidden;
-          }
-        }
-        @media (max-width: 1240px) {
-          .navigation {
-            position: static;
-            margin: 0 auto;
-            display: inline-flex;
-          }
-        }
-        /* color,font,size switchers */
-
-        .site-header .font-settings .font-enlarge {
-          line-height: 30px;
-          font-size: 1.4em;
-        }
-        .site-header .font-settings .font-reduce {
-          line-height: 30px;
-          font-size: 1em;
-        }
-        .site-header .font-settings .font-reduce {
-          line-height: 30px;
-          font-size: 1em;
+        .entry-content a {
+          color: #1173ca;
         }
 
-        .site-body {
-          overflow-y: scroll;
-          color: var(--haxcms-user-styles-color-theme-color-color);
-          background: var(--haxcms-user-styles-color-theme-color-background);
-        }
-
-        button,
-        select {
-          text-transform: none;
-        }
-        button,
-        input {
+        site-active-title h1 {
+          font-size: var(--ddd-font-size-l);
+          padding: 0;
+          margin: 0 0 var(--ddd-spacing-5) 0;
+          text-align: start;
           line-height: normal;
         }
-        button,
-        input,
-        select,
-        textarea {
-          font-family: inherit;
-          font-size: 100%;
+
+        header .wrap {
+          padding: 40px 0;
+        }
+
+        .site-inner {
+          display: flex;
+        }
+
+        .wrap {
+          margin: 0 auto;
+          max-width: 1140px;
+        }
+
+        article {
+          padding: 16px 40px 16px 16px;
+          background-color: var(--polaris-content-bg-color);
+          font-family: var(--ddd-font-primary);
+          min-width: 280px;
+          min-height: 50vh;
+        }
+
+        header:not(:empty) {
+          background-color: var(--polaris-header-bg-color);
+        }
+
+        .nav {
+          background-color: var(--polaris-nav-bg-color);
+          color: var(--polaris-nav-color);
+        }
+
+        #slot {
+          line-break: auto;
+          min-height: 50vh;
+        }
+
+        site-menu {
+          font-family: var(--ddd-font-navigation);
+          --site-menu-font-size: var(--ddd-font-size-3xs);
+          --map-menu-item-a-active-background-color: var(
+            --polaris-header-bg-color
+          );
+          --map-menu-item-button-active-color: white;
+          --map-menu-item-button-active-background-color: var(
+            --ddd-theme-default-inventOrange
+          );
+          --map-menu-overflow: visible;
+          --site-menu-container-background-color: var(--ddd-accent-6);
+          --map-menu-item-a-active-color: var(--ddd-accent-6);
+          --map-menu-item-icon-active-color: black;
+        }
+
+        site-modal {
+          --simple-modal-titlebar-background: var(--polaris-nav-bg-color);
+        }
+
+        .link-actions {
           margin: 0;
+          display: block;
+          padding: 0;
+          border-top: 2px solid #e6ecf1;
+          margin-top: 16px;
+          align-items: center;
+          padding-top: 16px;
+          flex-direction: row;
+          -webkit-box-align: center;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
         }
-        scroll-button {
-          position: absolute;
-          bottom: 0;
-          right: 16px;
+        .link-actions .inner {
+          width: auto;
+          margin: 16px;
+          display: block;
         }
-        #site-search-input {
-          padding: 6px;
-          background: 0 0;
-          transition: top 0.5s ease;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-          border-top: 1px solid rgba(0, 0, 0, 0.07);
-          margin-bottom: 10px;
-          margin-top: -1px;
+
+        @media screen and (min-width: 900px) {
+          .link-actions .inner {
+            margin: 0;
+            display: grid;
+            padding: 0;
+            -ms-grid-rows: auto;
+            grid-column-gap: 24px;
+            -ms-grid-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: "previous next";
+            grid-template-columns: 1fr 1fr;
+          }
         }
-        site-search {
+        site-menu-button {
+          --site-menu-button-link-decoration: none;
+          --site-menu-button-button-hover-color: black;
+          --site-menu-button-icon-fill-color: white;
+          color: white;
+          background-color: var(--ddd-theme-default-inventOrange);
+          border: 1px solid var(--ddd-theme-default-inventOrange);
+          margin: 8px;
+          display: block;
+          padding: 0;
+          position: relative;
+          align-self: stretch;
+          box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+          transition: border 300ms ease;
+          align-items: center;
+          justify-self: stretch;
+          text-overflow: ellipsis;
+          border-radius: 3px;
+          flex-direction: row;
+          text-decoration: none;
+          -webkit-box-align: center;
+          page-break-inside: avoid;
+          -ms-grid-row-align: stretch;
+          -webkit-box-orient: horizontal;
+          -ms-grid-column-align: stretch;
+          -webkit-box-direction: normal;
+        }
+        site-menu-button[disabled] {
+          display: none !important;
+        }
+
+        site-menu-button[edit-mode][disabled] {
+          display: block;
+        }
+        site-menu-button[type="prev"] {
+          grid-area: previous;
+        }
+        site-menu-button[type="next"] {
+          grid-area: next;
+        }
+        site-menu-button div.wrapper {
+          flex: 1;
+          margin: 0;
+          display: block;
+          padding: 16px;
+          text-overflow: ellipsis;
+          text-decoration: none;
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1.5;
+          text-transform: none;
+        }
+        site-menu-button div .top {
+          font-size: 18px;
+          font-weight: 800;
+          line-height: 1.625;
+          color: white;
+        }
+        site-menu-button div .bottom {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1.5;
+          max-height: 50px;
+          overflow: hidden;
+        }
+        site-menu-button[type="next"] div {
+          text-align: left;
+        }
+        site-menu-button[type="prev"] div {
+          text-align: right;
+        }
+
+        .footer-secondary {
+          background-color: var(--polaris-footer-secondary-bg-color);
+          color: white;
+          clear: both;
+          padding: 40px 16px 16px;
+        }
+
+        @media screen and (max-width: 400px) {
+          main {
+            width: calc(100vw - 48px);
+            overflow: hidden;
+          }
+
+          footer {
+            width: calc(100vw - 8px);
+          }
+        }
+
+        footer {
+          font-family: var(--ddd-font-secondary);
+          background-color: var(--polaris-footer-primary-bg-color);
+        }
+
+        .footer-primary {
+          color: white;
+          font-size: 14px;
+          padding: 40px 16px;
+          text-align: center;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          line-height: 22px;
+          font-weight: 300;
+        }
+
+        /** stuff to refactor out after this is initially working visually */
+        #mark {
+          display: inline-flex;
+          width: 218px;
+          float: left;
+          margin: 0px 30px 0px 40px;
+        }
+        #mark a {
+          display: block;
+        }
+        @media only screen and (max-width: 1023px) {
+          #mark {
+            float: none;
+            margin: 15px auto;
+            max-width: 218px;
+            width: 100%;
+            text-align: center;
+            display: block;
+          }
+        }
+
+        img {
           height: auto;
           width: auto;
-          font-size: inherit;
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          color: light-dark(black, var(--ddd-accent-6));
+        }
+        embed,
+        iframe,
+        img,
+        object,
+        video,
+        .wp-caption {
+          max-width: 100%;
+        }
+        .wrap:after {
+          clear: both;
+          content: " ";
+          display: table;
+        }
+        .wrap:before {
+          content: " ";
+          display: table;
+        }
+
+        .footer-secondary a:hover {
+          color: #ddd;
+        }
+
+        .footer-secondary a {
+          border-bottom: 1px solid #666;
+          color: #999;
+        }
+        .footer-secondary p {
+          margin: 0 0 24px;
+          padding: 0;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 16px;
+          font-weight: 300;
+          line-height: 26px;
+        }
+        .footer-logo img {
+          width: 110px;
+        }
+        .footer-logo {
+          float: left;
+          margin-right: 30px;
+        }
+
+        a img {
+          margin-bottom: -4px;
+        }
+        img {
+          height: auto;
+          width: auto;
+        }
+        .footer_links a {
+          margin: 0 8px;
+        }
+        .footer_links {
+          text-align: left;
+          padding-top: 3px;
+        }
+
+        .footer-primary a {
+          color: #2c76c7;
+          border-bottom: 1px solid #2c76c7;
+        }
+        .footer-primary a:hover {
+          color: #fff;
+          border-bottom: 1px solid #fff;
+        }
+        a {
+          color: #1173ca;
+          text-decoration: none;
+        }
+        #haxcmsmobilemenubutton {
+          padding: 0px;
+          --simple-icon-height: 30px;
+          --simple-icon-width: 30px;
+          margin: 2px 6px 0 6px;
+        }
+        @media only screen and (max-width: 1139px) {
+          .wrap {
+            max-width: 960px;
+          }
+        }
+        @media only screen and (max-width: 1023px) {
+          site-active-title h1 {
+            font-size: var(--ddd-font-size-xs);
+            margin: 0 0 var(--ddd-spacing-2) 0;
+          }
+          header .wrap {
+            padding: 20px 0;
+          }
+          scroll-button {
+            --simple-icon-width: 20px;
+            --simple-icon-height: 20px;
+          }
+        }
+        :host([responsive-size="xl"]) main {
+          width: calc(var(--menu-size) + 70%);
+        }
+        :host([responsive-size="lg"]) main {
+          width: calc(var(--menu-size) + 70%);
+        }
+        :host([responsive-size="md"]) main {
+          width: calc(var(--menu-size) + 65%);
+        }
+        :host([responsive-size="sm"]) main {
+          width: calc(var(--menu-size) + 40%);
+        }
+        :host([responsive-size="xs"]) main {
+          width: calc(var(--menu-size) + 20%);
+        }
+        /* ensure iframe content doesn't get bigger than the main area */
+        :host([responsive-size]) main ::slotted(iframe) {
+          max-width: 100%;
+        }
+
+        .left-col {
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          flex: 0 1 0%;
+          margin: 0;
+          padding: 0;
+          margin-left: -300px;
+          transition: margin 300ms ease;
+          height: fit-content;
+        }
+        :host {
+          --menu-size: 300px;
+        }
+        :host([menu-open]) {
+          --menu-size: 0px;
+        }
+        :host([menu-open]) .left-col {
+          margin-left: 0px;
+          position: sticky;
+          margin-top: 8px;
+        }
+
+        .pdf-page-btn,
+        .print-branch-btn,
+        .search-modal-btn,
+        #emailbtnwrapper,
+        #qrcodebtnwrapper {
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+          margin: 8px 4px 0 8px;
+          transition: 0.3s ease-in all;
+        }
+
+        :host([menu-open]) .pdf-page-btn,
+        :host([menu-open]) .search-modal-btn,
+        :host([menu-open]) .print-branch-btn,
+        :host([menu-open]) #emailbtnwrapper,
+        :host([menu-open]) #qrcodebtnwrapper {
+          display: inline-flex;
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+        }
+
+        @media screen and (min-width: 900px) {
+          article {
+            padding: 64px 80px 40px 40px;
+          }
+          .left-col {
+            flex: 0 0 auto;
+            width: auto;
+            z-index: 15;
+            width: 300px;
+            align-items: stretch;
+            flex-direction: column;
+            -webkit-box-align: stretch;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+          }
         }
       `,
     ];
   }
 
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
+    this.HAXCMSThemeSettings.scrollTarget =
+      this.shadowRoot.querySelector("#main");
+    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+      this.HAXCMSThemeSettings.scrollTarget;
+
+    // hook up the scroll target
+    this.shadowRoot.querySelector("scroll-button").target =
+      this.shadowRoot.querySelector("#main");
+  }
   // render function
   render() {
     return html`
-      <div class="site">
-        <div class="menu-outline">
-          <div id="site-search-input" role="search" part="search-btn">
-            <clean-one-search-box
-              @input-changed="${this.searchChanged}"
-              value="${this.searchTerm}"
-            ></clean-one-search-box>
-          </div>
-          ${this.HAXCMSMobileMenu()}
+      <div id="haxcms-theme-top"></div>
+      <header itemtype="http://schema.org/WPHeader">
+        <div class="wrap">
+        <site-modal
+            @site-modal-click="${this.siteModalClick}"
+            .part="${this.editMode ? `edit-mode-active` : ``}"
+            ?disabled="${this.editMode}"
+            icon="icons:search"
+            title="Search site"
+            class="search-modal-btn"
+            button-label="Search"
+            part="search-btn"
+            position="right"
+          >
+            <site-search></site-search>
+          </site-modal>
+          <site-region name="header"></site-region>
+          <slot name="header"></slot>
+          ${this.HAXCMSMobileMenuButton("right")}
+          ${this.HAXCMSFlexMenu()}
         </div>
-        <div id="body" class="site-body" part="site-body">
-          <div id="haxcms-theme-top"></div>
-          <div class="site-inner">
-            <header class="site-header">
-              <div class="btn-container">
-                <div class="pull-left">
-                  ${this.HAXCMSMobileMenuButton()}
-                  ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
-                    ? this.PrintBranchButton("bottom")
-                    : html`
-                        <site-print-button
-                          class="btn js-toolbar-action"
-                          part="print-btn"
-                        ></site-print-button>
-                      `}
-                  ${MicroFrontendRegistry.has("@core/htmlToPdf")
-                    ? this.PDFPageButton("bottom")
-                    : ``}
-                </div>
-                <div class="pull-right">
-                  ${this.EmailPageButton()} ${this.QRCodeButton()}
-                  <site-rss-button
-                    type="rss"
-                    class="btn js-toolbar-action"
-                    part="rss-btn"
-                  ></site-rss-button>
-                  <site-git-corner
-                    size="small"
-                    part="git-corner-btn"
-                  ></site-git-corner>
-                </div>
-              </div>
-            </header>
-            <main class="page-wrapper" role="main">
-              <article class="main-content page-inner">
-                <site-breadcrumb
-                  part="page-breadcrumb ${this.editMode
-                    ? `edit-mode-active`
-                    : ``}"
-                  ?hidden="${this.searchTerm != "" ? true : false}"
-                ></site-breadcrumb>
-                <site-active-title
-                  part="page-title"
-                  ?hidden="${this.searchTerm != "" ? true : false}"
-                ></site-active-title>
-                <site-active-tags
-                  part="page-tags"
-                  auto-accent-color
-                  ?hidden="${this.searchTerm != "" ? true : false}"
-                ></site-active-tags>
-                <div class="normal main-section">
-                  <site-search
-                    hide-input
-                    part="search-btn"
-                    search="${this.searchTerm}"
-                    ?hidden="${this.searchTerm != "" ? false : true}"
-                  ></site-search>
-                  <section
-                    id="contentcontainer"
-                    ?hidden="${this.searchTerm != "" ? true : false}"
-                  >
-                    <div id="slot">
-                      <slot></slot>
-                    </div>
-                  </section>
-                </div>
-              </article>
-            </main>
+      </header>
+      <div class="content site-inner">
+        <main id="main">
+          <article id="contentcontainer">
+            <site-active-title part="page-title"></site-active-title>
+            <site-active-tags
+              part="page-tags"
+              auto-accent-color
+            ></site-active-tags>
+            <section id="slot" part="slot">
+              <slot></slot>
+            </section>
+          </article>
+          <div class="link-actions">
+            <div class="inner">
+            </div>
           </div>
-          <footer>
-            <!-- These two buttons allow you to go left and right through the pages in the manifest -->
-            <site-menu-button
-              type="prev"
-              position="right"
-              class="navigation"
-            ></site-menu-button>
-            <site-menu-button
-              type="next"
-              position="left"
-              class="navigation"
-            ></site-menu-button>
-          </footer>
-        </div>
-        <scroll-button
-          .part="${this.editMode ? `edit-mode-active` : ``}"
-        ></scroll-button>
+        </main>
       </div>
+      <footer
+        itemtype="http://schema.org/WPFooter"
+        .part="${this.editMode ? `edit-mode-active` : ``}"
+      >
+        <section class="footer-secondary">
+          <div class="wrap">
+            <slot name="footer-secondary"></slot>
+            <site-region name="footerSecondary"></site-region>
+          </div>
+        </section>
+        <section class="footer-primary">
+          <div class="wrap">
+            <slot name="footer-primary"></slot>
+            <site-region name="footerPrimary"></site-region>
+          </div>
+        </section>
+        <scroll-button position="left"></scroll-button>
+      </footer>
     `;
   }
 
-  searchChanged(e) {
-    if (e.detail.value) {
-      // prettier-ignore
-      import(
-         "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-       ).then(() => {
-        if (store.getInternalRoute() !== 'search') {
-          globalThis.history.replaceState({}, null, "x/search");
-        }
-         this.searchTerm = e.detail.value;
-       });
-    } else {
-      this.searchTerm = "";
-    }
-  }
   // properties available to the custom element for data binding
   static get properties() {
+    let props = {};
+    if (super.properties) {
+      props = super.properties;
+    }
     return {
-      ...super.properties,
+      ...props,
       searchTerm: {
         type: String,
+      },
+      siteDescription: {
+        type: String,
+      },
+      imageLink: {
+        type: String,
+      },
+      image: {
+        type: String,
+      },
+      imageAlt: {
+        type: String,
+      },
+      pageDescription: {
+        type: String,
+      },
+      pageMedia: {
+        type: String,
+      },
+      pageTimestamp: {
+        type: Number,
       },
     };
   }
@@ -395,67 +639,147 @@ class PolarisFlexTheme extends LTIResizingMixin(
   static get tag() {
     return "polaris-flex-theme";
   }
+
+  appStoreReady(e) {
+    if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
+      let store = globalThis.HaxStore.requestAvailability();
+      // elements that are in HAXcms that are injected regardless of what editor says
+      // because the CMS controls certain internal connectors
+      [
+        "polaris-cta",
+        "polaris-mark",
+        "polaris-story-card",
+        "polaris-tile",
+        "media-quote",
+      ].map((name) => {
+        let el = globalThis.document.createElement(name);
+        store.haxAutoloader.appendChild(el);
+      });
+      this.windowControllersLoaded.abort();
+    }
+  }
   /**
    * Add elements to cheat on initial paint here
    */
   constructor() {
     super();
+    // forcibly set things about the RPG toast for this design
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-display",
+      "none",
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-mid-background-image",
+      "none",
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-right-background-image",
+      "none",
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-left-background-image",
+      "none",
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-mid-padding",
+      0,
+    );
+    HAXCMSToastInstance.style.setProperty(
+      "--rpg-character-toast-height",
+      "96px",
+    );
+    HAXCMSToastInstance.style.backgroundColor =
+      "light-dark(var(--ddd-accent-6), var(--ddd-primary-4))";
+    this.windowControllersLoaded = new AbortController();
+    globalThis.addEventListener(
+      "hax-store-app-store-loaded",
+      this.appStoreReady.bind(this),
+      {
+        once: true,
+        passive: true,
+        signal: this.windowControllersLoaded.signal,
+      },
+    );
+    // @todo support injection of blocks specific to polaris
+    // this way we can have blocks whos definitions only get
+    // loaded in when we have a theme that intentionally
+    // has been designed around them
     this.searchTerm = "";
-    // prettier-ignore
-    import(
-       "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
-     );
-    // prettier-ignore
-    import(
-       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
-     );
-    // prettier-ignore
-    import(
-       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
-     );
-    // prettier-ignore
-    import(
-       "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
-     );
+    this.imageAlt = "";
+    this.image = "";
+    this.imageLink = "";
+    this.pageDescription = "";
+    this.pageMedia = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
+
+    autorun((reaction) => {
+      if (store.themeData && store.themeData.variables) {
+        const vars = toJS(store.themeData.variables);
+        this.imageAlt = vars.imageAlt;
+        this.image = vars.image;
+        this.imageLink = vars.imageLink;
+      }
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.siteDescription = toJS(store.siteDescription);
+      this.__disposer.push(reaction);
+    });
     autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.searchTerm = "";
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      let activeItem = toJS(store.activeItem);
+      this.pageDescription = activeItem.description;
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      let activeItem = toJS(store.activeItem);
+      let activeID = toJS(store.activeId)
+      if (activeID && activeItem.metadata && activeItem.metadata.image) {
+        this.uniqueImage = activeItem.metadata.image;
+      } else {
+        this.uniqueImage = ""
+      }
+      this.__disposer.push(reaction);
+    });
+
+    autorun((reaction) => {
+      if (
+        store.activeItem &&
+        store.activeItem.metadata &&
+        store.activeItem.metadata.updated
+      ) {
+        this.pageTimestamp = toJS(store.activeItem.metadata.updated);
+      }
       this.__disposer.push(reaction);
     });
   }
 
   /**
-   * life cycle, element is afixed to the DOM
+   * Delay importing site-search until we click to open it directly
    */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    // only way to hit this
-    globalThis.document.body.style.overflow = "hidden";
-    this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector("main");
-    globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
-      this.HAXCMSThemeSettings.scrollTarget;
-    // hook up the scroll target
-    this.shadowRoot.querySelector("scroll-button").target =
-      this.shadowRoot.querySelector("main");
-
-    const params = new URLSearchParams(store.currentRouterLocation.search);
-    // if we have a search param already, set it to the field on open
-    if (store.getInternalRoute() === "search" && params.get("search")) {
-      import(
-        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-      ).then(() => {
-        this.searchTerm = params.get("search");
-        this.shadowRoot.querySelector("clean-one-search-box").focus();
+  siteModalClick(e) {
+    // prettier-ignore
+    import(
+      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
+    ).then((m) => {
+      if (store.getInternalRoute() !== 'search') {
+        globalThis.history.replaceState({}, null, "x/search");
+      }
+      const params = new URLSearchParams(store.currentRouterLocation.search);
+      const input = globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");
+      input.focus();
+      // if we have a search param already, set it to the field on open
+      if (params.get("search")) {
+        input.value = params.get("search");
         // stall to allow value to be set
         setTimeout(() => {
-          this.shadowRoot.querySelector("clean-one-search-box").select();
+          input.select();          
         }, 0);
-      });
-    }
+      }
+    });
   }
   /**
    * life cycle, element is removed from the DOM
@@ -465,18 +789,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
       this.__disposer[i].dispose();
     }
     super.disconnectedCallback();
-  }
-  /**
-   * Previous page to hook into when prev is hit
-   */
-  prevPage(e) {
-    super.prevPage(e);
-  }
-  /**
-   * Next page to hook into when next is hit
-   */
-  nextPage(e) {
-    super.nextPage(e);
   }
 }
 customElements.define(PolarisFlexTheme.tag, PolarisFlexTheme);
