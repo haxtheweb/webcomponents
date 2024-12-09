@@ -50,6 +50,7 @@
     "@haxtheweb/media-behaviors": "^9.0.24",
     "@haxtheweb/schema-behaviors": "^9.0.24",
     "@haxtheweb/utils": "^9.0.22",
+    "@haxtheweb/simple-modal": "^9.0.24",
     "lit": "^3.2.1"
   },
   "devDependencies": {
