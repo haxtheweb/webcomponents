@@ -18,7 +18,7 @@
       "...RichTextStyles"
     ]
   },
-  "version": "9.0.25",
+  "version": "9.0.26",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -44,21 +44,21 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/absolute-position-behavior": "^9.0.22",
-    "@haxtheweb/code-editor": "^9.0.25",
+    "@haxtheweb/code-editor": "^9.0.26",
     "@haxtheweb/md-extra-icons": "^9.0.1",
-    "@haxtheweb/simple-fields": "^9.0.25",
-    "@haxtheweb/simple-icon": "^9.0.25",
-    "@haxtheweb/simple-icon-picker": "^9.0.25",
-    "@haxtheweb/simple-picker": "^9.0.25",
-    "@haxtheweb/simple-popover": "^9.0.25",
-    "@haxtheweb/simple-toolbar": "^9.0.25",
+    "@haxtheweb/simple-fields": "^9.0.26",
+    "@haxtheweb/simple-icon": "^9.0.26",
+    "@haxtheweb/simple-icon-picker": "^9.0.26",
+    "@haxtheweb/simple-picker": "^9.0.26",
+    "@haxtheweb/simple-popover": "^9.0.26",
+    "@haxtheweb/simple-toolbar": "^9.0.26",
     "@haxtheweb/utils": "^9.0.22",
     "lit": "^3.2.1",
     "shadow-selection-polyfill": "^1.1.0"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.22",
-    "@haxtheweb/storybook-utilities": "^9.0.25",
+    "@haxtheweb/storybook-utilities": "^9.0.26",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

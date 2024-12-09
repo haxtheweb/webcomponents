@@ -6,7 +6,7 @@
     "elementName": "fill-in-the-blanks",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "9.0.25",
+  "version": "9.0.26",
   "description": "Fill in the blanks question",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/mark-the-words": "^9.0.25",
+    "@haxtheweb/mark-the-words": "^9.0.26",
     "lit": "^3.2.1"
   },
   "devDependencies": {

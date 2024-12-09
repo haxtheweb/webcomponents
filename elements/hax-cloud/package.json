@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.25",
+  "version": "9.0.26",
   "description": "Turn any website into authorware with one tag and a computer",
   "repository": {
     "type": "git",
@@ -44,9 +44,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/file-system-broker": "^9.0.22",
-    "@haxtheweb/hax-iconset": "^9.0.25",
-    "@haxtheweb/haxcms-elements": "^9.0.25",
-    "@haxtheweb/simple-icon": "^9.0.25",
+    "@haxtheweb/hax-iconset": "^9.0.26",
+    "@haxtheweb/haxcms-elements": "^9.0.26",
+    "@haxtheweb/simple-icon": "^9.0.26",
     "lit": "^3.2.1"
   },
   "devDependencies": {

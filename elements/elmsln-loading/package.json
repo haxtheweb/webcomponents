@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.25",
+  "version": "9.0.26",
   "description": "Basic loading spinner based on the ELMS:LN icon",
   "repository": {
     "type": "git",
@@ -37,14 +37,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^9.0.25",
-    "@haxtheweb/simple-colors": "^9.0.25",
-    "@haxtheweb/simple-icon": "^9.0.25",
+    "@haxtheweb/hax-iconset": "^9.0.26",
+    "@haxtheweb/simple-colors": "^9.0.26",
+    "@haxtheweb/simple-icon": "^9.0.26",
     "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.22",
-    "@haxtheweb/storybook-utilities": "^9.0.25",
+    "@haxtheweb/storybook-utilities": "^9.0.26",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
