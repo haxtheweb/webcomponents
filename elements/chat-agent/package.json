@@ -45,6 +45,8 @@
     "@haxtheweb/d-d-d": "^9.0.24",
     "@haxtheweb/micro-frontend-registry": "^9.0.22",
     "@haxtheweb/type-writer": "^9.0.22",
+    "@haxtheweb/rpg-character": "^9.0.22",
+    "@haxtheweb/haxcms-elements": "^9.0.24",
     "lit": "^3.2.1",
     "mobx": "^6.3.0"
   },
