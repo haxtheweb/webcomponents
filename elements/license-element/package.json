@@ -42,6 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/schema-behaviors": "^9.0.22",
+    "@haxtheweb/d-d-d": "^9.0.23",
     "lit": "^3.2.1"
   },
   "devDependencies": {

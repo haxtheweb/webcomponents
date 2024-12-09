@@ -46,6 +46,7 @@
     "@haxtheweb/simple-colors": "^9.0.22",
     "@haxtheweb/simple-icon": "^9.0.22",
     "@haxtheweb/simple-tooltip": "^9.0.22",
+    "@haxtheweb/haxcms-elements": "^9.0.23",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/polymer": "^3.5.1"
   },

@@ -59,6 +59,7 @@
     "@haxtheweb/simple-filter": "^9.0.22",
     "@haxtheweb/utils": "^9.0.22",
     "@haxtheweb/video-player": "^9.0.23",
+    "@haxtheweb/micro-frontend-registry": "^9.0.22",
     "idb-keyval": "6.1.0",
     "lit": "^3.2.1",
     "mobx": "6.12.4"
