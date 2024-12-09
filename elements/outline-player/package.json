@@ -46,6 +46,7 @@
     "@haxtheweb/schema-behaviors": "^9.0.24",
     "@haxtheweb/simple-colors": "^9.0.24",
     "@haxtheweb/simple-icon": "^9.0.24",
+    "@haxtheweb/haxcms-elements": "^9.0.24",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-media-query": "^3.0.0",

@@ -28,6 +28,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/d-d-d": "^9.0.24",
     "lit": "^3.2.1"
   },
   "devDependencies": {
