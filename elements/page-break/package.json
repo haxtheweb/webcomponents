@@ -46,6 +46,8 @@
   "dependencies": {
     "@haxtheweb/d-d-d": "^9.0.24",
     "@haxtheweb/intersection-element": "^9.0.22",
+    "@haxtheweb/haxcms-elements": "^9.0.24",
+    "@haxtheweb/i18n-manager": "^9.0.22",
     "lit": "^3.2.1"
   },
   "devDependencies": {

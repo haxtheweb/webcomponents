@@ -45,6 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/simple-icon": "^9.0.24",
+    "@haxtheweb/absolute-position-behavior": "^9.0.22",
     "lit": "^3.2.1"
   },
   "devDependencies": {
