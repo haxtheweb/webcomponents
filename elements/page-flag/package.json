@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.23",
+  "version": "9.0.24",
   "description": "visual flag for notes about a piece of content",
   "repository": {
     "type": "git",
@@ -46,16 +46,16 @@
   "dependencies": {
     "@haxtheweb/absolute-position-behavior": "^9.0.22",
     "@haxtheweb/rpg-character": "^9.0.22",
-    "@haxtheweb/simple-colors": "^9.0.22",
-    "@haxtheweb/simple-datetime": "^9.0.22",
-    "@haxtheweb/simple-fields": "^9.0.23",
-    "@haxtheweb/simple-icon": "^9.0.22",
-    "@haxtheweb/simple-picker": "^9.0.22",
+    "@haxtheweb/simple-colors": "^9.0.24",
+    "@haxtheweb/simple-datetime": "^9.0.24",
+    "@haxtheweb/simple-fields": "^9.0.24",
+    "@haxtheweb/simple-icon": "^9.0.24",
+    "@haxtheweb/simple-picker": "^9.0.24",
     "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.22",
-    "@haxtheweb/grid-plate": "^9.0.22",
+    "@haxtheweb/grid-plate": "^9.0.24",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

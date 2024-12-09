@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.24",
   "description": "A-frame 3D player in the browser via data binding w/ polymer",
   "repository": {
     "type": "git",
@@ -38,12 +38,12 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^9.0.22",
-    "@haxtheweb/schema-behaviors": "^9.0.22",
+    "@haxtheweb/schema-behaviors": "^9.0.24",
     "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.22",
-    "@haxtheweb/storybook-utilities": "^9.0.22",
+    "@haxtheweb/storybook-utilities": "^9.0.24",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.24",
   "description": "Start of img-pan-zoom",
   "repository": {
     "type": "git",
@@ -42,13 +42,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^9.0.22",
-    "@haxtheweb/hexagon-loader": "^9.0.22",
+    "@haxtheweb/hexagon-loader": "^9.0.24",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.22",
-    "@haxtheweb/storybook-utilities": "^9.0.22",
+    "@haxtheweb/storybook-utilities": "^9.0.24",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
