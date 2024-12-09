@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.25",
+  "version": "9.0.26",
   "description": "a visual break but also helps manage hierarchy",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.25",
+    "@haxtheweb/d-d-d": "^9.0.26",
     "@haxtheweb/intersection-element": "^9.0.22",
     "lit": "^3.2.1"
   },

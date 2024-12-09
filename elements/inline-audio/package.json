@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.25",
+  "version": "9.0.26",
   "description": "audio that enhances the experience but is not required by being selectable inline with text content",
   "repository": {
     "type": "git",
@@ -44,10 +44,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^9.0.25",
+    "@haxtheweb/hax-iconset": "^9.0.26",
     "@haxtheweb/i18n-manager": "^9.0.22",
-    "@haxtheweb/simple-colors": "^9.0.25",
-    "@haxtheweb/simple-icon": "^9.0.25",
+    "@haxtheweb/simple-colors": "^9.0.26",
+    "@haxtheweb/simple-icon": "^9.0.26",
     "lit": "^3.2.1"
   },
   "devDependencies": {

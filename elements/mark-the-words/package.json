@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.25",
+  "version": "9.0.26",
   "description": "Mark desired words in a sentence",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/multiple-choice": "^9.0.25",
+    "@haxtheweb/multiple-choice": "^9.0.26",
     "lit": "^3.2.1"
   },
   "devDependencies": {

@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.25",
+  "version": "9.0.26",
   "description": "listing and display elements for collections of items",
   "repository": {
     "type": "git",
@@ -43,17 +43,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^9.0.25",
+    "@haxtheweb/haxcms-elements": "^9.0.26",
     "@haxtheweb/responsive-utility": "^9.0.25",
-    "@haxtheweb/simple-colors": "^9.0.25",
-    "@haxtheweb/simple-fields": "^9.0.25",
-    "@haxtheweb/simple-icon": "^9.0.25",
+    "@haxtheweb/simple-colors": "^9.0.26",
+    "@haxtheweb/simple-fields": "^9.0.26",
+    "@haxtheweb/simple-icon": "^9.0.26",
     "lit": "^3.2.1",
     "mobx": "6.12.4"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.22",
-    "@haxtheweb/hax-iconset": "^9.0.25",
+    "@haxtheweb/hax-iconset": "^9.0.26",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

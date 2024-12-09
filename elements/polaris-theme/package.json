@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.25",
+  "version": "9.0.26",
   "description": "A polaris PSU based branding styled theme",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^9.0.25",
+    "@haxtheweb/haxcms-elements": "^9.0.26",
     "lit": "^3.2.1"
   },
   "devDependencies": {
