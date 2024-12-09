@@ -46,6 +46,7 @@
     "@haxtheweb/absolute-position-behavior": "^9.0.22",
     "@haxtheweb/simple-icon": "^9.0.24",
     "@haxtheweb/simple-tooltip": "^9.0.24",
+    "@haxtheweb/simple-toolbar": "^9.0.24",
     "lit": "^3.2.1"
   },
   "devDependencies": {

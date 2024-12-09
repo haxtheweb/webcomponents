@@ -44,6 +44,9 @@
   "dependencies": {
     "@haxtheweb/a11y-utils": "^9.0.22",
     "@haxtheweb/simple-colors-shared-styles": "^9.0.22",
+    "@haxtheweb/simple-modal": "^9.0.24",
+    "@haxtheweb/simple-picker": "^9.0.24",
+    "@polymer/polymer": "^3.5.2",
     "lit": "^3.2.1"
   },
   "devDependencies": {

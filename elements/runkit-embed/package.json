@@ -29,6 +29,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/es-global-bridge": "^9.0.22",
     "lit": "^3.2.1"
   },
   "devDependencies": {
