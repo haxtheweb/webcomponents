@@ -163,7 +163,14 @@ export class WebContainerEl extends DDDSuper(LitElement) {
 
   setCodeEditor(content, language = 'javascript') {
     if (this.shadowRoot && this.shadowRoot.querySelector('code-editor')) {
-      this.shadowRoot.querySelector('code-editor').innerHTML = content;
+      if (language === 'html') {
+        // hack that allows full HTML doc editing to still function if passed a full file
+        this.shadowRoot.querySelector('code-editor').innerHTML = `<template><iframe>${content}</iframe></template>`;
+      }
+      else {
+        // ensures it does not get processed by the larger DOM
+        this.shadowRoot.querySelector('code-editor').innerHTML = `<template>${content}</template>`;
+      }
       this.shadowRoot.querySelector('code-editor').language = language;
     }
   }
@@ -597,7 +604,8 @@ export class WebContainerEl extends DDDSuper(LitElement) {
 
   async updateFile(e) {
     this.fname = e.target.getAttribute('data-fname');
-    this.setCodeEditor(await this.readFile(this.fname), this.getLanguageFromFileEnding(this.fname));
+    let code = await this.readFile(this.fname);
+    this.setCodeEditor(code, this.getLanguageFromFileEnding(this.fname));
   }
 
   // Lit render the HTML

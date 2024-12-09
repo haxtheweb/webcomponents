@@ -215,7 +215,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
 
   get placeholder() {
     let content = `${this.editorValue || this.innerHTML}`;
-    return content.replace(/\s*<\/?template.*>\s*/gm, "");
+    return content.replace(/\s*<\/?template.*>\s*/gm, "").replace(/\s*<\/?iframe>\s*/gm, "");
   }
 
   static get tag() {
@@ -432,7 +432,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   updateEditorValue() {
     var content = "";
     var children = this.children;
-    if (this.childNodes[0] && this.childNodes[0].tagName !== "TEMPLATE") {
+    // check for template tag; it is prefered but if not there support as text string
+    if (this.childNodes[0] && this.childNodes[0].tagName !== "TEMPLATE" && this.children.length === 0) {
       children = this.childNodes;
       if (children.length > 0) {
         // loop through everything found in the slotted area and put it back in
@@ -444,8 +445,21 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           }
         }
       }
-    } else if (children[0]) {
-      content = children[0].innerHTML;
+    } else if (this.children[0]) {
+      // special test for an iframe being the 1st descendent that has html
+      // right below it this is so that we can (legally as far as the spec is concerned)
+      // support FULL <html> documents being edited
+      if (
+        this.children[0].content &&
+        this.children[0].content.children &&
+        this.children[0].content.children.length === 1 &&
+        this.children[0].content.children[0].tagName === "IFRAME" &&
+        this.children[0].content.children[0].innerHTML) {
+        content = this.children[0].content.children[0].innerHTML;
+      }
+      else {
+        content = this.children[0].innerHTML;
+      }
     }
     if (content) {
       this.shadowRoot.querySelector("#codeeditor").value = content.trim();
