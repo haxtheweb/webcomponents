@@ -47,6 +47,7 @@
     "@haxtheweb/simple-colors": "^9.0.24",
     "@haxtheweb/simple-datetime": "^9.0.24",
     "@haxtheweb/simple-icon": "^9.0.24",
+    "@haxtheweb/haxcms-elements": "^9.0.24",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/polymer": "^3.5.1"
