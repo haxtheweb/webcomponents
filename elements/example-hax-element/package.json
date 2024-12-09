@@ -10,7 +10,7 @@
     "files": {},
     "sharedStyles": []
   },
-  "version": "9.0.24",
+  "version": "9.0.25",
   "description": "Provide an example to pick apart of a working HAX element",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.22",
-    "@haxtheweb/storybook-utilities": "^9.0.24",
+    "@haxtheweb/storybook-utilities": "^9.0.25",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -15,7 +15,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.24",
+  "version": "9.0.25",
   "description": "a simple picker for swatches, icons, etc.",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/intersection-element": "^9.0.22",
-    "@haxtheweb/simple-icon": "^9.0.24",
+    "@haxtheweb/simple-icon": "^9.0.25",
     "@lit-labs/virtualizer": "^2.0.14",
     "lit": "^3.2.1"
   },

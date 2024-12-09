@@ -6,7 +6,7 @@
     "elementName": "matching-question",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "9.0.24",
+  "version": "9.0.25",
   "description": "Match concepts question type",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/multiple-choice": "^9.0.24",
+    "@haxtheweb/multiple-choice": "^9.0.25",
     "lit": "^3.2.1"
   },
   "devDependencies": {

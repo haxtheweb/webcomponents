@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "9.0.24",
+  "version": "9.0.25",
   "description": "button to scroll to an area or back to top",
   "repository": {
     "type": "git",
@@ -37,8 +37,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-icon": "^9.0.24",
-    "@haxtheweb/simple-tooltip": "^9.0.24",
+    "@haxtheweb/simple-icon": "^9.0.25",
+    "@haxtheweb/simple-tooltip": "^9.0.25",
     "lit": "^3.2.1"
   },
   "devDependencies": {

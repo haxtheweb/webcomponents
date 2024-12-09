@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.24",
+  "version": "9.0.25",
   "description": "helpers for building lazy loading images",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   "dependencies": {
     "@haxtheweb/intersection-element": "^9.0.22",
     "@haxtheweb/replace-tag": "^9.0.22",
-    "@haxtheweb/simple-icon": "^9.0.24",
+    "@haxtheweb/simple-icon": "^9.0.25",
     "lit": "^3.2.1"
   },
   "devDependencies": {
