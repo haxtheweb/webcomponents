@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.25",
   "description": "cyberpunk 2077 inspired text for robots presentation",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-colors": "^9.0.22",
+    "@haxtheweb/simple-colors": "^9.0.25",
     "lit": "^3.2.1"
   },
   "devDependencies": {

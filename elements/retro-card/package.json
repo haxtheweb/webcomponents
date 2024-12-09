@@ -18,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "9.0.22",
+  "version": "9.0.25",
   "description": "Simple card in a cool retro design",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-colors": "^9.0.22",
+    "@haxtheweb/simple-colors": "^9.0.25",
     "lit": "^3.2.1"
   },
   "devDependencies": {

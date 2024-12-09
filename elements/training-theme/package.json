@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.22",
+  "version": "9.0.25",
   "description": "theme for training content in HAXcms",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^9.0.24",
+    "@haxtheweb/haxcms-elements": "^9.0.25",
     "lit": "^3.2.1"
   },
   "devDependencies": {
