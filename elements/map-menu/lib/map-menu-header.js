@@ -47,6 +47,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           );
           text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
           background-color: var(--map-menu-item-a-active-background-color);
+          border-radius: var(--map-menu-item-border-radius, 4px);
         }
 
         #link {
@@ -80,7 +81,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           text-overflow: ellipsis;
           vertical-align: middle;
           max-width: 240px;
-          margin-left: 8px;
+          margin-left: var(--map-menu-header-title-margin, 8px);
           white-space: nowrap;
           overflow: hidden;
           word-break: break-all;
@@ -98,7 +99,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           justify-content: left;
           margin: 0;
           border: 0px;
-          padding: 10px 20px;
+          padding: var(--map-menu-header-button-padding, 10px 20px);
           text-align: left;
           border-radius: 0px;
           vertical-align: middle;
@@ -130,6 +131,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
         :host(:not([icon=""])) button {
           padding-left: 0;
+          padding: var(--map-menu-header-button-padding);
         }
         .ops {
           position: absolute;

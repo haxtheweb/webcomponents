@@ -133,11 +133,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         .wrap {
-          margin: 0 auto;
+          /* margin: 0 auto; */
         }
 
         main {
-          margin: 0 auto;
+          width: 100%;
         }
 
         article {
@@ -152,9 +152,32 @@ class PolarisFlexTheme extends LTIResizingMixin(
           background-color: var(--polaris-header-bg-color);
         }
 
-        .nav {
-          background-color: var(--polaris-nav-bg-color);
-          color: var(--polaris-nav-color);
+        .header-top-menu {
+          font-family: var(--ddd-font-navigation);
+
+          display: flex;
+          justify-content: flex-end;
+          column-gap: 20px;
+
+          color: white;
+          margin-left: auto;
+          margin-right: auto;
+          padding-left: 62px;
+          padding-right: 62px;
+          padding-top: var(--ddd-spacing-2);
+          /* padding-bottom: var(--ddd-spacing-2); */
+        }
+
+        .header-branding {
+          display: flex;
+          justify-content: space-between;
+          max-width: 1080px;
+          margin: 0 auto;
+          padding: 28px 62px;
+        }
+
+        #mark {
+          max-width: 174px;
         }
 
         #slot {
@@ -164,6 +187,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
         .nav-section {
           width: 100%;
+          background-color: var(--polaris-nav-bg-color);
         }
 
         site-menu {
@@ -186,7 +210,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           --map-menu-item-icon-active-color: var(--polaris-nav-color);
           --map-menu-parent-margin: 0 auto;
           --map-menu-header-a-text-decoration-hover: underline;
-
+          --map-menu-layer-1-margin: 0 32px;
           --map-menu-layer-1-font-color: var(--polaris-nav-color);
           --map-menu-layer-1-bottom-border-active: var(--ddd-border-size-lg) solid var(--ddd-theme-default-pughBlue);
           --map-menu-layer-2-bottom-border-active: none;
@@ -194,6 +218,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
         site-modal {
           --simple-modal-titlebar-background: var(--polaris-nav-bg-color);
+          --simple-icon-width: 36px;
+          --simple-icon-height: 36px;
+          padding: 6px;
           color: white;
         }
 
@@ -202,34 +229,21 @@ class PolarisFlexTheme extends LTIResizingMixin(
           color: white;
         }
 
-        .link-actions {
-          margin: 0;
-          display: block;
-          padding: 0;
-          border-top: 2px solid #e6ecf1;
-          margin-top: 16px;
-          align-items: center;
-          padding-top: 16px;
-          flex-direction: row;
-          -webkit-box-align: center;
-          -webkit-box-orient: horizontal;
-          -webkit-box-direction: normal;
-        }
-        .link-actions .inner {
-          width: auto;
-          margin: 16px;
-          display: block;
-        }
-
         @media only screen and (max-width: 1440px){
           site-menu {
+            --map-menu-layer-1-margin: 0 36px;
+
             --map-menu-layer-2-horizontal-padding: 0 62px;
           }
         }
 
         :host([responsive-size="md"]){
           site-menu {
+            --map-menu-layer-1-margin: 0 32px;
             --map-menu-layer-2-horizontal-padding: 0 46px;
+
+            --map-menu-item-button-padding: 10px 0 10px 20px;
+
           }
         }
 
@@ -251,10 +265,16 @@ class PolarisFlexTheme extends LTIResizingMixin(
             --site-menu-container-background-color: var(--ddd-theme-default-white);
             --map-menu-parent-background-color: var(--ddd-theme-default-white);
             --map-menu-width: 100%;
-            --map-menu-outer-padding: 48px 0px 128px;
-            --map-menu-parent-font-color: #001E44;
-            --map-menu-parent-padding: 0;
-            --map-menu-parent-margin: 0px 128px;          
+            --map-menu-parent-padding: 40px 0px 128px;
+
+            --map-menu-layer-1-margin: 0px 128px;       
+            
+            --a11y-collapse-icon-position: static;
+            --map-menu-layer-1-font-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-item-a-active-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-layer-2-text-transform: none;
+
+
           }
           #haxcmsmobilemenubutton{
             display: inline;
@@ -268,10 +288,14 @@ class PolarisFlexTheme extends LTIResizingMixin(
             --site-menu-container-background-color: var(--ddd-theme-default-white);
             --map-menu-parent-background-color: var(--ddd-theme-default-white);
             --map-menu-width: 100%;
-            --map-menu-outer-padding: 40px 0px 128px;
+            --map-menu-parent-padding: 40px 0px 128px;
             --map-menu-parent-font-color: #001E44;
-            --map-menu-parent-padding: 0;
-            --map-menu-parent-margin: 0px 26px;
+            --map-menu-layer-1-margin: 0px 26px;
+            --a11y-collapse-icon-position: static;
+            --map-menu-layer-1-font-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-item-a-active-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-layer-2-text-transform: none;
+            --map-menu-parent-background-color: white;
           }
           .psu-flex-top-menu a {
             display: none;
@@ -314,7 +338,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         .footer-secondary {
-          background-color: var(--polaris-footer-secondary-bg-color);
+          background-color: var(--ddd-theme-default-nittanyNavy);
           color: white;
           clear: both;
           padding: 40px 16px 16px;
@@ -333,17 +357,43 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
         footer {
           font-family: var(--ddd-font-secondary);
-          background-color: var(--polaris-footer-primary-bg-color);
+          background-color: var(--ddd-theme-default-beaverBlue);
         }
 
         .footer-primary {
           color: white;
-          font-size: 14px;
-          padding: 40px 16px;
-          text-align: center;
-          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
           line-height: 22px;
-          font-weight: 300;
+        }
+
+        .footer-primary-content {
+          display: flex;
+          justify-content: space-between;
+
+          max-width: 1080px;
+          width: 100%;
+          margin: 0 auto;
+          padding: 20px 62px;
+        }
+
+        .footer-primary a {
+          color: white;
+          text-decoration: none;
+          font-weight: 400;
+          font-size: 14px;
+          font-family: var(--ddd-font-navigation);
+        }
+
+        .footer-primary a:hover {
+          text-decoration: underline;
+        }
+
+        .org-links {
+          width: 120px;
+          display: flex;
+          column-gap: 20px;
+        }
+        .org-detail {
+          width: 120px;
         }
 
         /** stuff to refactor out after this is initially working visually */
@@ -351,7 +401,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           display: inline-flex;
           width: 218px;
           float: left;
-          margin: 0px 30px 0px 40px;
+          /* margin: 0px 30px 0px 40px; */
         }
         #mark a {
           display: block;
@@ -428,14 +478,14 @@ class PolarisFlexTheme extends LTIResizingMixin(
           padding-top: 3px;
         }
 
-        .footer-primary a {
+        /* .footer-primary a {
           color: #2c76c7;
           border-bottom: 1px solid #2c76c7;
         }
         .footer-primary a:hover {
           color: #fff;
           border-bottom: 1px solid #fff;
-        }
+        } */
         a {
           color: #1173ca;
           text-decoration: none;
@@ -463,21 +513,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
             --simple-icon-width: 20px;
             --simple-icon-height: 20px;
           }
-        }
-        :host([responsive-size="xl"]) main {
-          width: calc(var(--menu-size) + 70%);
-        }
-        :host([responsive-size="lg"]) main {
-          width: calc(var(--menu-size) + 70%);
-        }
-        :host([responsive-size="md"]) main {
-          width: calc(var(--menu-size) + 65%);
-        }
-        :host([responsive-size="sm"]) main {
-          width: calc(var(--menu-size) + 40%);
-        }
-        :host([responsive-size="xs"]) main {
-          width: calc(var(--menu-size) + 20%);
         }
         /* ensure iframe content doesn't get bigger than the main area */
         :host([responsive-size]) main ::slotted(iframe) {
@@ -567,23 +602,45 @@ class PolarisFlexTheme extends LTIResizingMixin(
       <div id="haxcms-theme-top"></div>
       <header itemtype="http://schema.org/WPHeader">
         <div class="wrap">
-        <site-modal
-            @site-modal-click="${this.siteModalClick}"
-            .part="${this.editMode ? `edit-mode-active` : ``}"
-            ?disabled="${this.editMode}"
-            icon="icons:search"
-            title="Search site"
-            class="search-modal-btn"
-            button-label="Search"
-            part="search-btn"
-            position="right"
-          >
-            <site-search></site-search>
-          </site-modal>
-          <site-region name="header"></site-region>
-          <slot name="header"></slot>
-          ${this.HAXCMSMobileMenuButton("right")}
+          <div class="header-top-menu">
+            <site-modal
+                @site-modal-click="${this.siteModalClick}"
+                .part="${this.editMode ? `edit-mode-active` : ``}"
+                ?disabled="${this.editMode}"
+                icon="icons:search"
+                title="Search site"
+                class="search-modal-btn"
+                button-label="Search"
+                part="search-btn"
+                position="right"
+              >
+                <site-search></site-search>
+              </site-modal>
+              <site-region name="header"></site-region>
+              <slot name="header">                
+                <site-title
+                  .part="${this.editMode ? `edit-mode-active` : ``}"
+                  ?disabled="${this.editMode}"
+                  part="site-title"
+                ></site-title>
+              </slot>
+          </div>
           <div class="nav-section">
+          <div class="header-branding">
+              <div id="mark">
+                <a href="${this.imageLink}">
+                  <img
+                    src="${this.image}"
+                    alt="${this.imageAlt}"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                </a>
+              </div>
+              ${this.HAXCMSMobileMenuButton("right")}
+          </div>
+          
             ${this.HAXCMSFlexMenu()}
           </div>
         </div>
@@ -600,10 +657,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
               <slot></slot>
             </section>
           </article>
-          <div class="link-actions">
-            <div class="inner">
-            </div>
-          </div>
         </main>
       </div>
       <footer
@@ -612,14 +665,37 @@ class PolarisFlexTheme extends LTIResizingMixin(
       >
         <section class="footer-secondary">
           <div class="wrap">
-            <slot name="footer-secondary"></slot>
+          <div id="mark">
+                <a href="${this.imageLink}">
+                  <img
+                    src="${this.image}"
+                    alt="${this.imageAlt}"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                </a>
+              </div>
+            <slot name="footer-secondary">12 Borland Building
+            University Park, PA 16802</slot>
             <site-region name="footerSecondary"></site-region>
           </div>
         </section>
         <section class="footer-primary">
           <div class="wrap">
-            <slot name="footer-primary"></slot>
-            <site-region name="footerPrimary"></site-region>
+            <div class="footer-primary-content">
+              <div class="org-links">
+                <slot name="footer-primary">
+                  <a href="https://hax.psu.edu/">HAX</a>
+                  <a href="https://haxtheweb.org/">Docs</a>
+                  <a href="https://github.com/haxtheweb">GitHub</a>
+                </slot>
+                <site-region name="footerPrimary"></site-region>
+              </div>
+              <div class="org-detail">
+                <a href="https://hax.psu.edu/">HaxTheWeb © 2024</a>
+              </div>
+            </div>
           </div>
         </section>
         <scroll-button position="left"></scroll-button>
