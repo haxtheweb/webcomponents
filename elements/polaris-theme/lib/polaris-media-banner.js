@@ -54,7 +54,7 @@ export class PolarisMediaBanner extends LitElement {
           background-color: rgba(30, 64, 124, 0.7);
           z-index: 1;
         }
-        video {
+        img, video {
           position: absolute;
           object-fit: cover;
           width: 100%;
@@ -73,7 +73,7 @@ export class PolarisMediaBanner extends LitElement {
           height: 100%;
           z-index: 1;
         }
-        .page-text {
+        .page-title {
           width: 80%;
           margin-bottom: 60px;
         }
@@ -125,20 +125,28 @@ export class PolarisMediaBanner extends LitElement {
 
   render() {
     console.log(this.mediaType)
+    console.log(this.fileExt)
+    console.log(this.source)
     return html`
       ${this.mediaType === 'image' 
         ? html `
         <div class="media-banner">
-          <img src=${this.source}>
+          <img crossorigin='anonymous' src=${this.source}>
+          ${this.fileExt === 'gif' ? html `             
+            <div class="content">
+              <div class="page-title">
+                <slot class="title">text text text text</slot>
+              </div>
+            </div>` : html ``}
       </div>` :
         this.mediaType === 'video' 
         ? html `
         <div class="media-banner">
-          <video loop autoplay muted playsinline>
+          <video crossorigin='anonymous' loop autoplay muted playsinline>
             <source src=${this.source} type="video/${this.fileExt}">
           </video>
           <div class="content">
-             <div class="page-text">
+             <div class="page-title">
                 <slot class="title">text text text text</slot>
              </div>
             <simple-icon-button class="icon" title="${this.title}" aria-label="${this.aria}" icon="${this.icon}"></simple-icon-button>
