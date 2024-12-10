@@ -159,13 +159,32 @@ class PolarisFlexTheme extends LTIResizingMixin(
           justify-content: flex-end;
           column-gap: 20px;
 
+          padding: 8px 0;
           color: white;
           margin-left: auto;
           margin-right: auto;
           padding-left: 62px;
           padding-right: 62px;
           padding-top: var(--ddd-spacing-2);
-          /* padding-bottom: var(--ddd-spacing-2); */
+          text-transform: uppercase;
+          font-size: 16px;
+
+          padding-bottom: var(--ddd-spacing-2);
+        }
+
+        .header-links {
+          display: flex;
+          align-items: center;
+          column-gap: 20px;
+        }
+
+        .header-links a, site-title {
+          color: white;
+          font-weight: 400;
+        }
+
+        .header-links a:hover, site-title:hover {
+          text-decoration: underline;
         }
 
         .header-branding {
@@ -337,11 +356,50 @@ class PolarisFlexTheme extends LTIResizingMixin(
           }
         }
 
+        .footer-secondary-content {
+          display: flex;
+          justify-content: space-between;
+
+          max-width: 1080px;
+          width: 100%;
+          margin: 0 auto;
+          padding: 0 62px;
+        }
+
         .footer-secondary {
           background-color: var(--ddd-theme-default-nittanyNavy);
           color: white;
           clear: both;
+          
           padding: 40px 16px 16px;
+        }
+
+        .footer-secondary .footer-secondary-contact {
+          text-align: left;
+          width: 232px;
+          font-weight: 400;
+          padding-left: 28px;
+        }
+
+        .footer-secondary #mark {
+          display: block;
+          float: none;
+        }
+
+        .footer-secondary-links {
+          max-width: 644px;
+        }
+
+        .footer-secondary-links h2 {
+          margin-top: 0px;
+        }
+        .footer-secondary-links a {
+          color: var(--ddd-theme-default-pughBlue);
+          text-decoration: none;
+        }
+
+        .footer-secondary-links a:hover {
+          text-decoration: underline;
         }
 
         @media screen and (max-width: 400px) {
@@ -356,7 +414,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         footer {
-          font-family: var(--ddd-font-secondary);
+          font-family: var(--ddd-font-navigation);
           background-color: var(--ddd-theme-default-beaverBlue);
         }
 
@@ -387,12 +445,12 @@ class PolarisFlexTheme extends LTIResizingMixin(
           text-decoration: underline;
         }
 
-        .org-links {
+        .footer-primary-links {
           width: 120px;
           display: flex;
           column-gap: 20px;
         }
-        .org-detail {
+        .footer-primary-copyright {
           width: 120px;
         }
 
@@ -439,20 +497,10 @@ class PolarisFlexTheme extends LTIResizingMixin(
           display: table;
         }
 
-        .footer-secondary a:hover {
-          color: #ddd;
-        }
-
-        .footer-secondary a {
-          border-bottom: 1px solid #666;
-          color: #999;
-        }
         .footer-secondary p {
           margin: 0 0 24px;
           padding: 0;
-          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
           font-size: 16px;
-          font-weight: 300;
           line-height: 26px;
         }
         .footer-logo img {
@@ -486,10 +534,10 @@ class PolarisFlexTheme extends LTIResizingMixin(
           color: #fff;
           border-bottom: 1px solid #fff;
         } */
-        a {
+        /* a {
           color: #1173ca;
           text-decoration: none;
-        }
+        } */
         #haxcmsmobilemenubutton {
           padding: 0px;
           --simple-icon-height: 30px;
@@ -551,7 +599,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
         #qrcodebtnwrapper {
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
-          margin: 8px 4px 0 8px;
+          /* margin: 8px 4px 0 8px; */
           transition: 0.3s ease-in all;
         }
 
@@ -561,8 +609,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
         :host([menu-open]) #emailbtnwrapper,
         :host([menu-open]) #qrcodebtnwrapper {
           display: inline-flex;
-          --simple-icon-height: 24px;
-          --simple-icon-width: 24px;
+          /* --simple-icon-height: 24px;
+          --simple-icon-width: 24px; */
         }
 
         @media screen and (min-width: 900px) {
@@ -617,13 +665,18 @@ class PolarisFlexTheme extends LTIResizingMixin(
                 <site-search></site-search>
               </site-modal>
               <site-region name="header"></site-region>
-              <slot name="header">                
-                <site-title
-                  .part="${this.editMode ? `edit-mode-active` : ``}"
-                  ?disabled="${this.editMode}"
-                  part="site-title"
-                ></site-title>
-              </slot>
+              <div class="header-links">
+                <slot name="header">                
+                  <site-title
+                    .part="${this.editMode ? `edit-mode-active` : ``}"
+                    ?disabled="${this.editMode}"
+                    part="site-title"
+                  ></site-title>
+
+                  <a href="https://hax.psu.edu/#section-3">Usage</a>
+                  <a href="https://hax.psu.edu/#section-9">FAQ</a>
+                </slot>
+              </div>
           </div>
           <div class="nav-section">
           <div class="header-branding">
@@ -665,26 +718,44 @@ class PolarisFlexTheme extends LTIResizingMixin(
       >
         <section class="footer-secondary">
           <div class="wrap">
-          <div id="mark">
-                <a href="${this.imageLink}">
-                  <img
-                    src="${this.image}"
-                    alt="${this.imageAlt}"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
-                </a>
+            <div class="footer-secondary-content">
+              <div class="footer-secondary-contact">
+                <div id="mark">
+                  <a href="${this.imageLink}">
+                    <img
+                      src="${this.image}"
+                      alt="${this.imageAlt}"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                  </a>
+                </div>
+                <br>
+                <p>HAX Lab<br>
+                12 Borland Building<br>
+                University Park, PA 16802</p>
               </div>
-            <slot name="footer-secondary">12 Borland Building
-            University Park, PA 16802</slot>
-            <site-region name="footerSecondary"></site-region>
+              <div class="footer-secondary-links">
+                <slot name="footer-secondary">
+                  <h2>About</h2>
+                  <p><a href="https://hax.psu.edu/">HAX</a> is a service provided through a collaboration between 
+                  <a href="https://arts.psu.edu/">Penn State College of Arts and Architecture</a>, 
+                  <a href="https://science.psu.edu/">Eberly College of Science</a>, 
+                  <a href="https://ist.psu.edu/">College of Information Sciences and Technology</a>, and 
+                  <a href="https://libraries.psu.edu/">University libraries</a>. The platform is powered by HAXcms, 
+                  originally developed to power 100s of high scale online courses.
+                  </p>
+                </slot>
+                <site-region name="footerSecondary"></site-region>
+              </div>
+            </div>
           </div>
         </section>
         <section class="footer-primary">
           <div class="wrap">
             <div class="footer-primary-content">
-              <div class="org-links">
+              <div class="footer-primary-links">
                 <slot name="footer-primary">
                   <a href="https://hax.psu.edu/">HAX</a>
                   <a href="https://haxtheweb.org/">Docs</a>
@@ -692,7 +763,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
                 </slot>
                 <site-region name="footerPrimary"></site-region>
               </div>
-              <div class="org-detail">
+              <div class="footer-primary-copyright">
                 <a href="https://hax.psu.edu/">HaxTheWeb © 2024</a>
               </div>
             </div>
