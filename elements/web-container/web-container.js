@@ -235,7 +235,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       if (Array.isArray(commands[i])) {
         const tmp = Object.assign([], commands[i]);
         let command = (tmp.length <= 1) ? tmp[0] : tmp.shift();
-        this.status = `Running ${command}`;
+        this.status = `Running command (${i}/${commands.length}): ${command}`;
         commandProcess = await this.webcontainerInstance.spawn(command, tmp);
         commandProcess.output.pipeTo(
           new WritableStream({
@@ -247,7 +247,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
 
       }
       else {
-        this.status = `Running ${commands[i]}`;
+        this.status = `Running command (${i}/${commands.length}): ${commands[i]}`;
         commandProcess = await this.webcontainerInstance.spawn(commands[i]);  
         commandProcess.output.pipeTo(
           new WritableStream({
