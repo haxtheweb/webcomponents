@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.26",
+  "version": "9.0.27",
   "description": "An element to display the progress visually of forfilling an array of JS Promise objects",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-colors": "^9.0.26",
+    "@haxtheweb/simple-colors": "^9.0.27",
     "@haxtheweb/wc-autoload": "^9.0.22",
     "lit": "^3.2.1"
   },

@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.26",
+  "version": "9.0.27",
   "description": "scrollable component that accepts lightDom or data driven lists and generates a content player",
   "repository": {
     "type": "git",
@@ -43,14 +43,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-icon": "^9.0.26",
+    "@haxtheweb/simple-icon": "^9.0.27",
     "@haxtheweb/utils": "^9.0.22",
     "@shoelace-style/shoelace": "2.8.0",
     "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^9.0.22",
-    "@haxtheweb/video-player": "^9.0.26",
+    "@haxtheweb/video-player": "^9.0.27",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

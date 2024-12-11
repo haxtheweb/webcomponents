@@ -21,7 +21,7 @@
       "...super.properties"
     ]
   },
-  "version": "9.0.26",
+  "version": "9.0.27",
   "description": "an element that displays events on a timeline",
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
   "dependencies": {
     "@haxtheweb/responsive-utility": "^9.0.25",
     "@haxtheweb/schema-behaviors": "^9.0.25",
-    "@haxtheweb/simple-colors": "^9.0.26",
+    "@haxtheweb/simple-colors": "^9.0.27",
     "lit": "^3.2.1"
   },
   "devDependencies": {

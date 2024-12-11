@@ -6,7 +6,7 @@
     "elementName": "runkit-embed",
     "generator-wcfactory-version": "0.8.7"
   },
-  "version": "9.0.25",
+  "version": "9.0.27",
   "description": "",
   "repository": {
     "type": "git",
@@ -29,8 +29,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/d-d-d": "^9.0.27",
     "@haxtheweb/es-global-bridge": "^9.0.22",
-    "@haxtheweb/d-d-d": "^9.0.26",
     "lit": "^3.2.1"
   },
   "devDependencies": {
