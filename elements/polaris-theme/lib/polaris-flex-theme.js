@@ -18,6 +18,7 @@ import "@haxtheweb/scroll-button/scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
@@ -25,6 +26,7 @@ import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
+import "@haxtheweb/polaris-theme/lib/polaris-media-banner.js"
 
 /**
  * `polaris-flex-theme`
@@ -61,6 +63,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
       css`
         :host {
           display: block;
+          overflow-x: hidden;
           --polaris-content-bg-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
@@ -74,6 +77,10 @@ class PolarisFlexTheme extends LTIResizingMixin(
           --polaris-footer-primary-bg-color: var(
             --ddd-theme-default-nittanyNavy
           );
+          --polaris-xs-padding: 26px;
+          --polaris-sm-padding: 40px;
+          --polaris-md-padding: 46px;
+          --polaris-standard-padding: 62px;
 
           background-color: light-dark(
             var(--ddd-accent-6),
@@ -124,7 +131,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         header .wrap {
-          padding: 0 0;
+          padding: 0;
         }
 
         .site-inner {
@@ -133,7 +140,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         .wrap {
-          /* margin: 0 auto; */
+          margin: 0 auto;
         }
 
         main {
@@ -141,13 +148,22 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         article {
-          padding: 16px 40px 16px 16px;
           background-color: var(--polaris-content-bg-color);
           font-family: var(--ddd-font-primary);
           min-width: 280px;
           min-height: 50vh;
+          padding: 0 0 var(--ddd-spacing-12);
         }
 
+        article > *:not(polaris-media-banner){
+          padding: 0 var(--polaris-standard-padding);
+        }
+
+        site-breadcrumb{
+          padding: var(--ddd-spacing-12) 0 0;
+        }
+
+        /* Theme Header Section */
         header:not(:empty) {
           background-color: var(--polaris-header-bg-color);
         }
@@ -157,17 +173,16 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
           display: flex;
           justify-content: flex-end;
-          column-gap: 20px;
+          column-gap: var(--ddd-spacing-5);
 
-          padding: 8px 0;
           color: white;
           margin-left: auto;
           margin-right: auto;
-          padding-left: 62px;
-          padding-right: 62px;
+          padding-left: var(--polaris-standard-padding);
+          padding-right: var(--polaris-standard-padding);
           padding-top: var(--ddd-spacing-2);
           text-transform: uppercase;
-          font-size: 16px;
+          font-size: var(--ddd-spacing-4);
 
           padding-bottom: var(--ddd-spacing-2);
         }
@@ -175,12 +190,12 @@ class PolarisFlexTheme extends LTIResizingMixin(
         .header-links {
           display: flex;
           align-items: center;
-          column-gap: 20px;
+          column-gap: var(--ddd-spacing-5);
         }
 
         .header-links a, site-title {
           color: white;
-          font-weight: 400;
+          font-weight: var(--ddd-font-weight-regular);
         }
 
         .header-links a:hover, site-title:hover {
@@ -192,7 +207,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           justify-content: space-between;
           max-width: 1080px;
           margin: 0 auto;
-          padding: 28px 62px;
+          padding: var(--ddd-spacing-7) var(--polaris-standard-padding);
         }
 
         #mark {
@@ -212,173 +227,69 @@ class PolarisFlexTheme extends LTIResizingMixin(
         site-menu {
           font-family: var(--ddd-font-navigation);
           line-height: 1.5;
+          --map-menu-overflow: visible;
 
           --a11y-collapse-transform-deg: 180deg;
           --a11y-collapse-transform-rotated-deg: 0deg;
           --site-menu-font-size: var(--ddd-font-size-3xs);
-
-          --map-menu-item-button-active-color: white;
-          --map-menu-item-button-active-background-color: var(
-            --ddd-theme-default-inventOrange
-          );
-          --map-menu-overflow: visible;
+          --map-menu-item-button-active-color: var(--polaris-nav-color);
           --site-menu-container-background-color: var(--polaris-nav-bg-color);
           --map-menu-parent-background-color: var(--polaris-nav-bg-color);
+
           --map-menu-item-a-active-background-color: transparent;
           --map-menu-item-a-active-color: var(--polaris-nav-color);
           --map-menu-item-icon-active-color: var(--polaris-nav-color);
-          --map-menu-parent-margin: 0 auto;
           --map-menu-header-a-text-decoration-hover: underline;
-          --map-menu-layer-1-margin: 0 32px;
+
+          --map-menu-layer-1-margin: 0 var(--ddd-spacing-9) 0 0;
           --map-menu-layer-1-font-color: var(--polaris-nav-color);
           --map-menu-layer-1-bottom-border-active: var(--ddd-border-size-lg) solid var(--ddd-theme-default-pughBlue);
+          --map-menu-layer-2-horizontal-padding: 0 var(--polaris-standard-padding);
+          --map-menu-layer-2-active-color: var(--ddd-theme-default-nittanyNavy);
+          --map-menu-layer-2-font-weight: var(--ddd-font-weight-medium);
           --map-menu-layer-2-bottom-border-active: none;
+          --map-menu-layer-3-horizontal-padding: 0 var(--ddd-spacing-2);
         }
 
         site-modal {
           --simple-modal-titlebar-background: var(--polaris-nav-bg-color);
-          --simple-icon-width: 36px;
-          --simple-icon-height: 36px;
-          padding: 6px;
-          color: white;
+          --simple-icon-width: var(--ddd-spacing-9);
+          --simple-icon-height: var(--ddd-spacing-9);
+          padding: var(--ddd-spacing-2);
+          color: var(--polaris-nav-color);
         }
 
         #haxcmsmobilemenubutton {
           display: none;
-          color: white;
+          color: var(--polaris-nav-color);
         }
 
-        @media only screen and (max-width: 1440px){
-          site-menu {
-            --map-menu-layer-1-margin: 0 36px;
-
-            --map-menu-layer-2-horizontal-padding: 0 62px;
-          }
+        polaris-media-banner {
+          margin: 0;
         }
 
-        :host([responsive-size="md"]){
-          site-menu {
-            --map-menu-layer-1-margin: 0 32px;
-            --map-menu-layer-2-horizontal-padding: 0 46px;
-
-            --map-menu-item-button-padding: 10px 0 10px 20px;
-
-          }
-        }
-
-        :host([responsive-size="sm"]){
-          .psu-flex-top-menu a {
-            display: none;
-          }
-          .header-branding {
-            display: flex;
-            justify-content: space-between;
-          }
-          #mark {
-            margin: 15px 0;
-            padding-left: var(--ddd-spacing-10);
-            width: 146px;
-          }
-          site-menu {
-            --map-menu-item-icon-active-color: var(--ddd-theme-default-nittanyNavy);
-            --site-menu-container-background-color: var(--ddd-theme-default-white);
-            --map-menu-parent-background-color: var(--ddd-theme-default-white);
-            --map-menu-width: 100%;
-            --map-menu-parent-padding: 40px 0px 128px;
-
-            --map-menu-layer-1-margin: 0px 128px;       
-            
-            --a11y-collapse-icon-position: static;
-            --map-menu-layer-1-font-color: var(--ddd-theme-default-nittanyNavy);
-            --map-menu-item-a-active-color: var(--ddd-theme-default-nittanyNavy);
-            --map-menu-layer-2-text-transform: none;
-
-
-          }
-          #haxcmsmobilemenubutton{
-            display: inline;
-            padding-right: var(--ddd-spacing-10);
-          }
-        }
-
-        :host([responsive-size="xs"]){
-          site-menu {
-            --map-menu-item-icon-active-color: var(--ddd-theme-default-nittanyNavy);
-            --site-menu-container-background-color: var(--ddd-theme-default-white);
-            --map-menu-parent-background-color: var(--ddd-theme-default-white);
-            --map-menu-width: 100%;
-            --map-menu-parent-padding: 40px 0px 128px;
-            --map-menu-parent-font-color: #001E44;
-            --map-menu-layer-1-margin: 0px 26px;
-            --a11y-collapse-icon-position: static;
-            --map-menu-layer-1-font-color: var(--ddd-theme-default-nittanyNavy);
-            --map-menu-item-a-active-color: var(--ddd-theme-default-nittanyNavy);
-            --map-menu-layer-2-text-transform: none;
-            --map-menu-parent-background-color: white;
-          }
-          .psu-flex-top-menu a {
-            display: none;
-          }
-          .header-branding {
-            display: flex;
-            justify-content: space-between;
-          }
-          #mark {
-            margin: 15px 0;
-            padding-left: var(--ddd-spacing-10);
-            width: 146px;
-          }
-          #haxcmsmobilemenubutton{
-            display: inline;
-            padding-right: var(--ddd-spacing-10);
-          }
-        }
-        :host([responsive-size="sm"]:not([menu-open])), 
-        :host([responsive-size="xs"]:not([menu-open])){
-          site-menu{
-            display: none;
-          }
-        }
-        @media only screen and (max-width: 360px){
-          site-menu {
-            --map-menu-outer-padding: 40px 0px 26px;
-            --map-menu-parent-padding: 0;
-            --map-menu-parent-margin: 0px 26px;
-          }
-          #mark {
-            margin: 15px 0;
-            padding-left: var(--ddd-spacing-10);
-            width: 146px;
-          }
-          #haxcmsmobilemenubutton{
-            display: inline;
-            padding-right: var(--ddd-spacing-10);
-          }
-        }
-
-        .footer-secondary-content {
-          display: flex;
-          justify-content: space-between;
-
-          max-width: 1080px;
-          width: 100%;
-          margin: 0 auto;
-          padding: 0 62px;
-        }
-
+        /* Theme Footer Section */
         .footer-secondary {
           background-color: var(--ddd-theme-default-nittanyNavy);
           color: white;
           clear: both;
           
-          padding: 40px 16px 16px;
+          padding: var(--ddd-spacing-10) 0;
+        }
+
+        .footer-secondary .wrap {
+          display: flex;
+          justify-content: space-between;
+          column-gap: var(--ddd-spacing-5);
+
+          width: 100%;
+          margin: 0 auto;
+          padding: 0 var(--polaris-standard-padding);
         }
 
         .footer-secondary .footer-secondary-contact {
           text-align: left;
-          width: 232px;
-          font-weight: 400;
-          padding-left: 28px;
+          font-weight: var(--ddd-font-weight-regular);
         }
 
         .footer-secondary #mark {
@@ -387,7 +298,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         .footer-secondary-links {
-          max-width: 644px;
+          max-width: 50%;
         }
 
         .footer-secondary-links h2 {
@@ -397,20 +308,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
           color: var(--ddd-theme-default-pughBlue);
           text-decoration: none;
         }
-
         .footer-secondary-links a:hover {
           text-decoration: underline;
-        }
-
-        @media screen and (max-width: 400px) {
-          main {
-            width: calc(100vw - 48px);
-            overflow: hidden;
-          }
-
-          footer {
-            width: calc(100vw - 8px);
-          }
         }
 
         footer {
@@ -419,24 +318,24 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         .footer-primary {
-          color: white;
+          color: var(--polaris-nav-color);
           line-height: 22px;
+          padding: var(--ddd-spacing-5) 0;
         }
 
-        .footer-primary-content {
+        .footer-primary .wrap {
           display: flex;
           justify-content: space-between;
 
-          max-width: 1080px;
           width: 100%;
           margin: 0 auto;
-          padding: 20px 62px;
+          padding: 0 var(--polaris-standard-padding);
         }
 
         .footer-primary a {
-          color: white;
+          color: var(--polaris-nav-color);
           text-decoration: none;
-          font-weight: 400;
+          font-weight: var(--ddd-font-weight-regular);
           font-size: 14px;
           font-family: var(--ddd-font-navigation);
         }
@@ -446,33 +345,173 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         .footer-primary-links {
-          width: 120px;
           display: flex;
-          column-gap: 20px;
+          column-gap: var(--ddd-spacing-5);
         }
-        .footer-primary-copyright {
-          width: 120px;
+
+        /* Theme Responsive Section */
+        :host([responsive-size="md"]){
+          site-menu {
+            --map-menu-layer-1-margin: 0 var(--ddd-spacing-8) 0 0;
+            --map-menu-layer-2-horizontal-padding: 0 var(--polaris-md-padding);
+
+            --map-menu-item-button-padding: 10px 0 10px 20px;
+
+          }
+        }
+
+        :host([responsive-size="sm"]){
+          .header-links {
+            display: none;
+          }
+          .header-top-menu {
+            padding: 8px 40px;
+          }
+          .header-branding {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 40px;
+          }
+          #mark {
+            margin: 15px 0;
+            width: 156px;
+          }
+          site-modal{
+            padding: 6px 0;
+          }
+          site-menu {
+            --map-menu-item-icon-active-color: var(--ddd-theme-default-nittanyNavy);
+            --site-menu-container-background-color: var(--ddd-theme-default-white);
+            --map-menu-parent-background-color: var(--ddd-theme-default-white);
+            --a11y-collapse-icon-position: static;
+
+            --map-menu-width: 100%;
+            --map-menu-parent-padding: 40px 0px 128px;
+            --map-menu-layer-1-margin: 0px 128px;       
+            
+            --map-menu-layer-1-font-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-item-a-active-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-layer-2-active-color: #262626;
+            --map-menu-layer-2-text-transform: none;
+
+
+          }
+          #haxcmsmobilemenubutton{
+            display: inline;
+          }
+          .footer-secondary .wrap {
+            padding: 0;
+            flex-direction: column;
+          }
+
+          .footer-secondary-contact #mark {
+            margin: 0 auto;
+            padding: 0;
+          }
+          .footer-secondary-contact, .footer-secondary-links {
+            padding: 0;
+            margin: 0 auto;
+            text-align: center;
+          }
+          .footer-secondary-links p {
+            text-align: left;
+          }
+          .footer-primary{
+            text-align: center;
+            justify-content: center;
+          }
+          .footer-primary .wrap {
+            padding: 0;
+            flex-direction: column;
+          }
+          .footer-primary-links, .footer-primary-copyright {
+            margin: 0 auto;
+          }
+        }
+
+        :host([responsive-size="xs"]){
+          site-menu {
+            --map-menu-item-icon-active-color: var(--ddd-theme-default-nittanyNavy);
+            --site-menu-container-background-color: var(--ddd-theme-default-white);
+            --map-menu-parent-background-color: var(--ddd-theme-default-white);
+            --a11y-collapse-icon-position: static;
+
+            --map-menu-width: 100%;
+            --map-menu-parent-padding: 40px 0px 128px;
+            --map-menu-layer-1-margin: 0px var(--polaris-xs-padding);
+
+            --map-menu-layer-1-font-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-item-a-active-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-layer-2-active-color: #262626;
+            --map-menu-layer-2-text-transform: none;
+          }
+          site-modal {
+            padding: var(--ddd-spacing-2) 0;
+          }
+          .header-links {
+            display: none;
+          }
+          .header-top-menu {
+            padding: var(--ddd-spacing-2) var(--polaris-xs-padding);
+          }
+          .header-branding {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--ddd-spacing-2) var(--polaris-xs-padding);
+          }
+          #mark {
+            margin: 15px 0;
+            width: 146px;
+          }
+          #haxcmsmobilemenubutton{
+            display: inline;
+          }
+          polaris-media-banner {
+            --polaris-media-banner-max-width: 360px;
+          }
+          .footer-secondary .wrap {
+            padding: 0;
+            flex-direction: column;
+          }
+
+          .footer-secondary-contact #mark {
+            margin: 0 auto;
+            padding: 0;
+          }
+          .footer-secondary-contact, .footer-secondary-links {
+            padding: 0;
+            margin: 0 auto;
+            text-align: center;
+          }
+          .footer-secondary-links p {
+            text-align: left;
+          }
+          .footer-primary{
+            text-align: center;
+            justify-content: center;
+          }
+          .footer-primary .wrap {
+            padding: 0;
+            flex-direction: column;
+          }
+          .footer-primary-links, .footer-primary-copyright {
+            margin: 0 auto;
+          }
+        }
+        :host([responsive-size="sm"]:not([menu-open])), 
+        :host([responsive-size="xs"]:not([menu-open])){
+          site-menu{
+            display: none;
+          }
         }
 
         /** stuff to refactor out after this is initially working visually */
         #mark {
           display: inline-flex;
-          width: 218px;
           float: left;
-          /* margin: 0px 30px 0px 40px; */
         }
         #mark a {
           display: block;
-        }
-        @media only screen and (max-width: 1023px) {
-          #mark {
-            float: none;
-            margin: 15px auto;
-            max-width: 218px;
-            width: 100%;
-            text-align: center;
-            display: block;
-          }
         }
 
         img {
@@ -526,36 +565,16 @@ class PolarisFlexTheme extends LTIResizingMixin(
           padding-top: 3px;
         }
 
-        /* .footer-primary a {
-          color: #2c76c7;
-          border-bottom: 1px solid #2c76c7;
-        }
-        .footer-primary a:hover {
-          color: #fff;
-          border-bottom: 1px solid #fff;
-        } */
-        /* a {
-          color: #1173ca;
-          text-decoration: none;
-        } */
         #haxcmsmobilemenubutton {
           padding: 0px;
           --simple-icon-height: 30px;
           --simple-icon-width: 30px;
           margin: 2px 6px 0 6px;
         }
-        @media only screen and (max-width: 1139px) {
-          .wrap {
-            /* max-width: 960px; */
-          }
-        }
         @media only screen and (max-width: 1023px) {
           site-active-title h1 {
             font-size: var(--ddd-font-size-xs);
             margin: 0 0 var(--ddd-spacing-2) 0;
-          }
-          header .wrap {
-            /* padding: 20px 0; */
           }
           scroll-button {
             --simple-icon-width: 20px;
@@ -567,19 +586,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
           max-width: 100%;
         }
 
-        .left-col {
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -webkit-flex;
-          display: flex;
-          flex: 0 1 0%;
-          margin: 0;
-          padding: 0;
-          margin-left: -300px;
-          transition: margin 300ms ease;
-          height: fit-content;
-        }
         :host {
           --menu-size: 300px;
         }
@@ -592,42 +598,14 @@ class PolarisFlexTheme extends LTIResizingMixin(
           margin-top: 8px;
         }
 
-        .pdf-page-btn,
-        .print-branch-btn,
-        .search-modal-btn,
-        #emailbtnwrapper,
-        #qrcodebtnwrapper {
+        .search-modal-btn {
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
-          /* margin: 8px 4px 0 8px; */
           transition: 0.3s ease-in all;
         }
 
-        :host([menu-open]) .pdf-page-btn,
-        :host([menu-open]) .search-modal-btn,
-        :host([menu-open]) .print-branch-btn,
-        :host([menu-open]) #emailbtnwrapper,
-        :host([menu-open]) #qrcodebtnwrapper {
+        :host([menu-open]) .search-modal-btn {
           display: inline-flex;
-          /* --simple-icon-height: 24px;
-          --simple-icon-width: 24px; */
-        }
-
-        @media screen and (min-width: 900px) {
-          article {
-            padding: 64px 80px 40px 40px;
-          }
-          .left-col {
-            flex: 0 0 auto;
-            width: auto;
-            z-index: 15;
-            width: 300px;
-            align-items: stretch;
-            flex-direction: column;
-            -webkit-box-align: stretch;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-          }
         }
       `,
     ];
@@ -660,7 +638,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
                 class="search-modal-btn"
                 button-label="Search"
                 part="search-btn"
-                position="right"
+                position="left"
               >
                 <site-search></site-search>
               </site-modal>
@@ -691,7 +669,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
                   />
                 </a>
               </div>
-              ${this.HAXCMSMobileMenuButton("right")}
+              ${this.HAXCMSMobileMenuButton("left")}
           </div>
           
             ${this.HAXCMSFlexMenu()}
@@ -701,7 +679,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
       <div class="content site-inner">
         <main id="main">
           <article id="contentcontainer">
-            <site-active-title part="page-title"></site-active-title>
+            <polaris-media-banner source="${this.pageMedia}">
+              <site-active-title part="page-title"></site-active-title>
+              ${this.pageDescription}
+            </polaris-media-banner>
+            <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
             <site-active-tags
               part="page-tags"
               auto-accent-color
@@ -717,8 +699,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
         <section class="footer-secondary">
+          <site-region name="footerSecondary"></site-region>
           <div class="wrap">
-            <div class="footer-secondary-content">
               <div class="footer-secondary-contact">
                 <div id="mark">
                   <a href="${this.imageLink}">
@@ -747,26 +729,22 @@ class PolarisFlexTheme extends LTIResizingMixin(
                   originally developed to power 100s of high scale online courses.
                   </p>
                 </slot>
-                <site-region name="footerSecondary"></site-region>
               </div>
-            </div>
           </div>
         </section>
         <section class="footer-primary">
+          <site-region name="footerPrimary"></site-region>
           <div class="wrap">
-            <div class="footer-primary-content">
               <div class="footer-primary-links">
                 <slot name="footer-primary">
                   <a href="https://hax.psu.edu/">HAX</a>
                   <a href="https://haxtheweb.org/">Docs</a>
                   <a href="https://github.com/haxtheweb">GitHub</a>
                 </slot>
-                <site-region name="footerPrimary"></site-region>
               </div>
               <div class="footer-primary-copyright">
                 <a href="https://hax.psu.edu/">HaxTheWeb © 2024</a>
               </div>
-            </div>
           </div>
         </section>
         <scroll-button position="left"></scroll-button>
@@ -914,10 +892,10 @@ class PolarisFlexTheme extends LTIResizingMixin(
     autorun((reaction) => {
       let activeItem = toJS(store.activeItem);
       let activeID = toJS(store.activeId)
-      if (activeID && activeItem.metadata && activeItem.metadata.image) {
-        this.uniqueImage = activeItem.metadata.image;
+      if (activeItem.metadata && activeItem.metadata.image) {
+        this.pageMedia = activeItem.metadata.image;
       } else {
-        this.uniqueImage = ""
+        this.pageMedia = ""
       }
       this.__disposer.push(reaction);
     });
