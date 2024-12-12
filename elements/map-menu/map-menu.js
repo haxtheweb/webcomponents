@@ -37,6 +37,7 @@ class MapMenu extends LitElement {
         }
         :host([is-flex]){
           --map-menu-after-width: 0px;
+          --map-menu-active-item-text-decoration: none;
           z-index: 100;
         }
 
@@ -86,7 +87,8 @@ class MapMenu extends LitElement {
         :host([is-flex]) map-menu-builder map-menu-submenu {
           color: var(--map-menu-layer-1-font-color);
           padding: var(--map-menu-layer-1-padding);
-          margin: var(--map-menu-layer-1-margin);
+          margin: var(--map-menu-layer-1-margin, 0 auto);
+          --a11y-collapse-icon-position: var(--map-menu-layer-1-icon-position, static);
           --map-menu-text-transform: var(--map-menu-layer-1-text-transform, uppercase);
         }
 
@@ -95,6 +97,7 @@ class MapMenu extends LitElement {
           border-left: 0;
 
           color: var(--map-menu-layer-1-font-color);
+          --map-menu-font-weight: var(--map-menu-layer-1-font-weight, 500);
           border-bottom: var(--map-menu-layer-1-bottom-border, 4px transparent solid);
         }
 
@@ -238,7 +241,7 @@ class MapMenu extends LitElement {
           --map-menu-text-transform: var(--map-menu-layer-3-text-transform, none);
           --map-menu-font-weight: var(--map-menu-layer-3-font-weight, 400);
           --map-menu-header-a-text-decoration-hover: var(--map-menu-layer-3-text-decoration, none);
-          --map-menu-item-a-active-background-color: var(--map-menu-layer-3-active-background-color,#e4e5e7)
+          --map-menu-item-a-active-background-color: var(--map-menu-layer-3-active-background-color,#f2f2f4)
         }
 
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu:hover,
@@ -365,6 +368,7 @@ class MapMenu extends LitElement {
           <map-menu-builder
             id="builder"
             ?edit-controls="${this.editControls}"
+            ?is-flex="${this.isFlex}"
             ?is-horizontal="${this.isHorizontal}"
             max-depth="${this.maxDepth}"
             .items="${this.items}"

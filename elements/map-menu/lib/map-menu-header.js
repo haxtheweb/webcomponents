@@ -34,9 +34,15 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
 
         :host([active]) button {
+          color: var(
+            --map-menu-item-a-active-color,
+            var(--map-menu-item-a-color, inherit)
+          );
           font-weight: var(--map-menu-item-button-active-font-weight, bold);
+          text-decoration: var(--map-menu-active-item-text-decoration, var(--map-menu-header-a-text-decoration-hover, none));
+          background-color: var(--map-menu-item-a-active-background-color);
+          border-radius: var(--map-menu-item-border-radius, 4px);
         }
-        :host([active]) button,
         :host([hovered]) button,
         a:hover button,
         a:focus-within button,
