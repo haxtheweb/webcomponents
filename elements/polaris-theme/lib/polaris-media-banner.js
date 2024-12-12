@@ -69,7 +69,7 @@ export class PolarisMediaBanner extends LitElement {
           justify-content: space-between;
           align-items: flex-end;
           color: white;
-          max-width: 1080px;
+          max-width: var(--polaris-media-banner-max-width, 1080px);
           height: 100%;
           z-index: 1;
         }
