@@ -40,7 +40,7 @@ export class PolarisMediaBanner extends LitElement {
         .media-banner {
           position: relative;
           height:100%;
-          height: 540px;
+          height: var(--polaris-banner-height, 540px);
           width: 100%;
           z-index: 1;
         }
@@ -51,7 +51,7 @@ export class PolarisMediaBanner extends LitElement {
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(30, 64, 124, 0.7);
+          background-color: var(--polaris-banner-background-color, rgba(30, 64, 124, 0.7));
           z-index: 1;
         }
         img, video {
@@ -68,8 +68,9 @@ export class PolarisMediaBanner extends LitElement {
           display: flex;
           justify-content: space-between;
           align-items: flex-end;
-          color: white;
-          max-width: var(--polaris-media-banner-max-width, 1080px);
+          color: var(--polaris-banner-font-color, white);
+          overflow: hidden;
+          max-width: var(--polaris-banner-max-width, 1080px);
           height: 100%;
           z-index: 1;
         }
@@ -78,8 +79,8 @@ export class PolarisMediaBanner extends LitElement {
           margin-bottom: 60px;
         }
         simple-icon-button {
-          --simple-icon-color: white;
-          --simple-icon-button-focus-color: white;
+          --simple-icon-color: var(--polaris-banner-font-color, white);
+          --simple-icon-button-focus-color: var(--polaris-banner-font-color, white);
           --simple-icon-width: var(--inline-audio-width, 48px);
           --simple-icon-height: var(--inline-audio-height, 48px);
           margin-bottom: 60px;

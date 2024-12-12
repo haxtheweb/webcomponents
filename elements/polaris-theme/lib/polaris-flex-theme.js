@@ -393,12 +393,17 @@ class PolarisFlexTheme extends LTIResizingMixin(
             --map-menu-item-a-active-color: var(--ddd-theme-default-nittanyNavy);
             --map-menu-layer-2-active-color: #262626;
             --map-menu-layer-2-text-transform: none;
-
-
           }
+
           #haxcmsmobilemenubutton{
             display: inline;
           }
+
+          polaris-media-banner {
+            --polaris-banner-height: 400px;
+            --polaris-banner-max-width: 768px;
+          }
+
           .footer-secondary .wrap {
             padding: 0;
             flex-direction: column;
@@ -467,7 +472,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
             display: inline;
           }
           polaris-media-banner {
-            --polaris-media-banner-max-width: 360px;
+            --polaris-banner-height: 360px;
+            --polaris-banner-max-width: 360px;
           }
           .footer-secondary .wrap {
             padding: 0;
