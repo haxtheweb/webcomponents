@@ -85,14 +85,10 @@ class MapMenuSubmenu extends LitElement {
           color: var(--map-menu-item-icon-active-color, black);
           background-color: var(--map-menu-container-background-color, white);
         }
-        :host([is-horizontal]) a11y-collapse::part(icon){
-          position: static;
-          margin-left: 0px;
-        }
-        :host([is-horizontal][is-nested]) a11y-collapse::part(icon){
+        :host([is-flex][is-nested]) a11y-collapse::part(icon){
           display: none;
         }
-        :host([is-horizontal][is-nested]) map-menu-header::part(icon){
+        :host([is-flex][is-nested]) map-menu-header::part(icon){
           display: none;
         }
       `,
@@ -104,6 +100,7 @@ class MapMenuSubmenu extends LitElement {
     this.iconLabel = null;
     this.opened = false;
     this.collapsable = true;
+    this.isFlex = false;
     this.isNested = false;
     this.isHorizontal = false;
     this.expandChildren = false;
@@ -255,10 +252,12 @@ class MapMenuSubmenu extends LitElement {
       collapsable: {
         type: Boolean,
       },
+      isFlex: { type: Boolean, 
+        attribute: "is-flex" 
+      },
       isNested: {
         type: Boolean,
         attribute: "is-nested",
-        reflect: true,
       },
       isHorizontal: {
         type: Boolean,

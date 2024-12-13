@@ -113,6 +113,8 @@ export const DDDSuper = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.sm = 768;
+      this.md = 1080;
       this.isSafari = globalThis.safari !== undefined;
       globalThis.DDDSharedStyles.requestAvailability();
     }

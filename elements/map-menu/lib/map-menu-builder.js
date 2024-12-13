@@ -20,6 +20,7 @@ class MapMenuBuilder extends LitElement {
     this.items = [];
     this.depthCount = 1;
     this.maxDepth = 5;
+    this.isFlex = false;
     this.isNested = false;
     this.isHorizontal = false;
   }
@@ -48,6 +49,7 @@ class MapMenuBuilder extends LitElement {
                         ?edit-controls="${this.editControls}"
                         selected="${this.selected}"
                         ?opened="${this.depthCount > 1 && this.isHorizontal}"
+                        ?is-flex="${this.isFlex}"
                         ?is-nested="${this.depthCount > 1}"
                         ?is-horizontal="${this.isHorizontal}"
                         ?published="${this.getPublishedStatus(item)}"
@@ -59,6 +61,7 @@ class MapMenuBuilder extends LitElement {
                           selected="${this.selected}"
                           depth-count="${this.depthCount+1}"
                           max-depth="${this.maxDepth}"
+                          ?is-flex="${this.isFlex}"
                           ?is-horizontal="${this.isHorizontal}"
                           ?is-nested="${true}"
                         ></map-menu-builder>
@@ -133,6 +136,10 @@ class MapMenuBuilder extends LitElement {
       depthCount: {
         type: Number,
         attribute: "depth-count",
+      },
+      isFlex: {
+        type: Boolean,
+        attribute: "is-flex"
       },
       isHorizontal: {
         type: Boolean,
