@@ -644,7 +644,10 @@ export class QuestionElement extends SchemaBehaviors(
           border: 2px dashed #999999;
           box-sizing: border-box;
           padding: 16px;
-          background-color: #f5f5f5;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
         :host([edit]) .edit-wrapper::before {
           content: "Feedback edit mode";

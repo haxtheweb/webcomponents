@@ -47,11 +47,11 @@ class VideoPlayer extends IntersectionObserverMixin(
 
           --a11y-media-caption-color: var(
             --video-player-caption-color,
-            var(--ddd-theme-default-coalyGray)
+            var(--simple-colors-default-theme-grey-2, #eeeeee)
           );
           --a11y-media-bg-color: var(
             --video-player-bg-color,
-            var(--ddd-theme-default-coalyGray)
+            var(--simple-colors-default-theme-grey-2, #eeeeee)
           );
 
           --a11y-media-border-color: var(
