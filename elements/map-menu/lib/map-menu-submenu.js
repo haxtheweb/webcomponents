@@ -32,6 +32,13 @@ class MapMenuSubmenu extends LitElement {
           color: var(--map-menu-item-a-color, inherit);
           --simple-tooltip-margin: 0 -36px 0 0;
         }
+        :host([is-flex]) a11y-collapse {
+          --a11y-collapse-transition-duration: var(--a11y-collapse-transition-duration, 0.15s);
+        }
+        :host([is-flex][is-nested]) a11y-collapse {
+          --a11y-collapse-transition-duration: 0s;
+        }
+
         #container ::slotted(map-menu-builder)::after {
           transition: 0.3s ease-in-out all;
         }
