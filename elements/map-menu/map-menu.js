@@ -38,8 +38,6 @@ class MapMenu extends LitElement {
         :host([is-flex]){
           --map-menu-after-width: 0px;
           --map-menu-active-item-text-decoration: none;
-          --a11y-collapse-transition-duration: var(--map-menu-flex-transition-duration, 0.15s);
-
           z-index: 100;
         }
 
@@ -124,7 +122,7 @@ class MapMenu extends LitElement {
           left: 0;
           width: 100%;
 
-          margin: var(--map-menu-layer-2-vertical-margin, 2px 0px);
+          margin: var(--map-menu-layer-2-vertical-margin, 4px 0px);
           padding: var(--map-menu-layer-2-vertical-padding, 28px 0px 40px);
           background-color: var(--map-menu-layer-2-background-color, white);
         }
