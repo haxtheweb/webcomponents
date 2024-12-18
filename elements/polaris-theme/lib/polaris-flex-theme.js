@@ -187,14 +187,15 @@ class PolarisFlexTheme extends LTIResizingMixin(
           padding-bottom: var(--ddd-spacing-2);
         }
 
-        .header-links {
-          display: flex;
+        .header-links, .header-links p {
+          display: inline-flex;
+          margin: 0;
           align-items: center;
           column-gap: var(--ddd-spacing-5);
         }
 
         .header-links a, site-title {
-          color: white;
+          color: var(--polaris-nav-color);
           font-weight: var(--ddd-font-weight-regular);
         }
 
@@ -280,11 +281,39 @@ class PolarisFlexTheme extends LTIResizingMixin(
         .footer-secondary .wrap {
           display: flex;
           justify-content: space-between;
-          column-gap: var(--ddd-spacing-5);
 
-          width: 100%;
+          max-width: 1092px;
           margin: 0 auto;
           padding: 0 var(--polaris-standard-padding);
+        }
+
+        .footer-secondary-slot {
+          display: inline-flex;
+          column-gap: var(--ddd-spacing-5);
+          flex-wrap: wrap;
+        }
+
+        .footer-secondary-slot ul {
+          list-style-type: none;
+          flex-wrap: wrap;
+        }
+
+        .footer-secondary-slot ul ul {
+          padding-left: 0;
+          line-height: 18px;
+          row-gap: var(--ddd-spacing-2);
+        }
+
+        .footer-secondary-slot ul li{
+          font-size: 20px;
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-medium);
+        }
+
+        .footer-secondary-slot a {
+          font-size: 16px;
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-regular);
         }
 
         .footer-secondary .footer-secondary-contact {
@@ -297,18 +326,18 @@ class PolarisFlexTheme extends LTIResizingMixin(
           float: none;
         }
 
-        .footer-secondary-links {
+        .footer-secondary-media {
           max-width: 50%;
         }
 
-        .footer-secondary-links h2 {
+        .footer-secondary-media h2 {
           margin-top: 0px;
         }
-        .footer-secondary-links a {
-          color: var(--ddd-theme-default-pughBlue);
+        .footer-secondary-media a {
+          color: var(--ddd-theme-default-linkLight);
           text-decoration: none;
         }
-        .footer-secondary-links a:hover {
+        .footer-secondary-media a:hover {
           text-decoration: underline;
         }
 
@@ -323,11 +352,10 @@ class PolarisFlexTheme extends LTIResizingMixin(
           padding: var(--ddd-spacing-5) 0;
         }
 
-        .footer-primary .wrap {
+        .footer-primary-slot {
           display: flex;
           justify-content: space-between;
 
-          width: 100%;
           margin: 0 auto;
           padding: 0 var(--polaris-standard-padding);
         }
@@ -344,7 +372,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
           text-decoration: underline;
         }
 
-        .footer-primary-links {
+        .footer-primary-slot p {
+          margin: 0;
+        }
+
+        .footer-primary-slot p:first-of-type{
           display: flex;
           column-gap: var(--ddd-spacing-5);
         }
@@ -357,6 +389,10 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
             --map-menu-item-button-padding: 10px 0 10px 20px;
 
+          }
+          .footer-secondary .wrap {
+            max-width: 920px;
+            padding: 0 var(--polaris-md-padding);
           }
         }
 
@@ -413,23 +449,29 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 0 auto;
             padding: 0;
           }
-          .footer-secondary-contact, .footer-secondary-links {
+          .footer-secondary-contact, .footer-secondary-media {
             padding: 0;
             margin: 0 auto;
             text-align: center;
           }
-          .footer-secondary-links p {
+          .footer-secondary-slot {
+            justify-content: space-evenly;
+          }
+          .footer-secondary-media {
+            max-width: 60%;
+          }
+          .footer-secondary-media p, .footer-secondary-media li {
             text-align: left;
           }
-          .footer-primary{
+          .footer-primary { 
             text-align: center;
             justify-content: center;
           }
-          .footer-primary .wrap {
+          .footer-primary-slot {
             padding: 0;
             flex-direction: column;
           }
-          .footer-primary-links, .footer-primary-copyright {
+          .footer-primary-slot p {
             margin: 0 auto;
           }
         }
@@ -484,23 +526,29 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 0 auto;
             padding: 0;
           }
-          .footer-secondary-contact, .footer-secondary-links {
+          .footer-secondary-contact, .footer-secondary-media {
             padding: 0;
             margin: 0 auto;
             text-align: center;
           }
-          .footer-secondary-links p {
+          .footer-secondary-slot {
+            justify-content: space-evenly;
+          }
+          .footer-secondary-media {
+            max-width: 75%;
+          }
+          .footer-secondary-media p, .footer-secondary-media li {
             text-align: left;
           }
           .footer-primary{
             text-align: center;
             justify-content: center;
           }
-          .footer-primary .wrap {
+          .footer-primary-slot {
             padding: 0;
             flex-direction: column;
           }
-          .footer-primary-links, .footer-primary-copyright {
+          .footer-primary-slot p {
             margin: 0 auto;
           }
         }
@@ -509,6 +557,27 @@ class PolarisFlexTheme extends LTIResizingMixin(
           site-menu{
             display: none;
           }
+        }
+
+        :host([responsive-size="xl"]) main {
+          width: calc(var(--menu-size) + 70%);
+          margin: 0 auto;
+        }
+        :host([responsive-size="lg"]) main {
+          width: calc(var(--menu-size) + 70%);
+          margin: 0 auto;
+        }
+        :host([responsive-size="md"]) main {
+          width: calc(var(--menu-size) + 65%);
+          margin: 0 auto;
+        }
+        :host([responsive-size="sm"]) main {
+          width: calc(var(--menu-size) + 40%);
+          margin: 0 auto;
+        }
+        :host([responsive-size="xs"]) main {
+          width: calc(var(--menu-size) + 20%);
+          margin: 0 auto;
         }
 
         /** stuff to refactor out after this is initially working visually */
@@ -628,6 +697,70 @@ class PolarisFlexTheme extends LTIResizingMixin(
     this.shadowRoot.querySelector("scroll-button").target =
       this.shadowRoot.querySelector("#main");
   }
+
+  renderBrandMark() {
+    return html`
+    <div id="mark">
+      <a href="${this.imageLink}">
+        <img
+          src="${this.image}"
+          alt="${this.imageAlt}"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+        />
+      </a>
+    </div>
+    `
+  }
+
+  renderHeaderSlot() {
+    return html`
+        <site-title
+          .part="${this.editMode ? `edit-mode-active` : ``}"
+          ?disabled="${this.editMode}"
+          part="site-title"
+        ></site-title>
+
+        <a href="https://hax.psu.edu/#section-3">Usage</a>
+        <a href="https://hax.psu.edu/#section-9">FAQ</a>`
+  }
+
+  renderSideBar(){
+    return html``
+  }
+
+  renderFooterContactInformation(){
+    return html`
+        <br>
+        <p>HAX Lab<br>
+          12 Borland Building<br>
+          University Park, PA 16802</p>`
+  }
+
+  renderFooterSecondarySlot() {
+    return html`
+        <h2>About</h2>
+        <p><a href="https://hax.psu.edu/">HAX</a> is a service provided through a collaboration between 
+        <a href="https://arts.psu.edu/">Penn State College of Arts and Architecture</a>, 
+        <a href="https://science.psu.edu/">Eberly College of Science</a>, 
+        <a href="https://ist.psu.edu/">College of Information Sciences and Technology</a>, and 
+        <a href="https://libraries.psu.edu/">University libraries</a>. The platform is powered by HAXcms, 
+        originally developed to power 100s of high scale online courses.
+        </p>`
+  }
+
+  renderFooterPrimarySlot() {
+    return html`
+      <div class="footer-primary-links">
+        <a href="https://hax.psu.edu/">HAX</a>
+        <a href="https://haxtheweb.org/">Docs</a>
+        <a href="https://github.com/haxtheweb">GitHub</a>
+      </div>
+      <div class="footer-primary-copyright">
+        <a href="https://hax.psu.edu/">HaxTheWeb © 2024</a>
+      </div>`
+  }
   // render function
   render() {
     return html`
@@ -651,44 +784,28 @@ class PolarisFlexTheme extends LTIResizingMixin(
               <site-region name="header"></site-region>
               <div class="header-links">
                 <slot name="header">                
-                  <site-title
-                    .part="${this.editMode ? `edit-mode-active` : ``}"
-                    ?disabled="${this.editMode}"
-                    part="site-title"
-                  ></site-title>
-
-                  <a href="https://hax.psu.edu/#section-3">Usage</a>
-                  <a href="https://hax.psu.edu/#section-9">FAQ</a>
+                  ${this.renderHeaderSlot()}
                 </slot>
               </div>
           </div>
           <div class="nav-section">
           <div class="header-branding">
-              <div id="mark">
-                <a href="${this.imageLink}">
-                  <img
-                    src="${this.image}"
-                    alt="${this.imageAlt}"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
-                </a>
-              </div>
+              ${this.renderBrandMark()}
               ${this.HAXCMSMobileMenuButton("left")}
           </div>
           
             ${this.HAXCMSFlexMenu()}
           </div>
-        </div>
-      </header>
-      <div class="content site-inner">
-        <main id="main">
-          <article id="contentcontainer">
-            <polaris-media-banner source="${this.pageMedia}">
+          <polaris-media-banner source="${this.pageMedia}">
               <site-active-title part="page-title"></site-active-title>
               ${this.pageDescription}
             </polaris-media-banner>
+        </div>
+      </header>
+      <div class="content site-inner">
+        ${this.renderSideBar()}
+        <main id="main">
+          <article id="contentcontainer">
             <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
             <site-active-tags
               part="page-tags"
@@ -707,50 +824,23 @@ class PolarisFlexTheme extends LTIResizingMixin(
         <section class="footer-secondary">
           <site-region name="footerSecondary"></site-region>
           <div class="wrap">
-              <div class="footer-secondary-contact">
-                <div id="mark">
-                  <a href="${this.imageLink}">
-                    <img
-                      src="${this.image}"
-                      alt="${this.imageAlt}"
-                      loading="lazy"
-                      decoding="async"
-                      fetchpriority="low"
-                    />
-                  </a>
+                <div class="footer-secondary-contact">
+                  ${this.renderBrandMark()}
+                  ${this.renderFooterContactInformation()}
                 </div>
-                <br>
-                <p>HAX Lab<br>
-                12 Borland Building<br>
-                University Park, PA 16802</p>
-              </div>
-              <div class="footer-secondary-links">
-                <slot name="footer-secondary">
-                  <h2>About</h2>
-                  <p><a href="https://hax.psu.edu/">HAX</a> is a service provided through a collaboration between 
-                  <a href="https://arts.psu.edu/">Penn State College of Arts and Architecture</a>, 
-                  <a href="https://science.psu.edu/">Eberly College of Science</a>, 
-                  <a href="https://ist.psu.edu/">College of Information Sciences and Technology</a>, and 
-                  <a href="https://libraries.psu.edu/">University libraries</a>. The platform is powered by HAXcms, 
-                  originally developed to power 100s of high scale online courses.
-                  </p>
-                </slot>
+                <div class="footer-secondary-media">
+                  <slot name="footer-secondary" class="footer-secondary-slot">
+                    ${this.renderFooterSecondarySlot()}
+                  </slot>
               </div>
           </div>
         </section>
         <section class="footer-primary">
-          <site-region name="footerPrimary"></site-region>
           <div class="wrap">
-              <div class="footer-primary-links">
-                <slot name="footer-primary">
-                  <a href="https://hax.psu.edu/">HAX</a>
-                  <a href="https://haxtheweb.org/">Docs</a>
-                  <a href="https://github.com/haxtheweb">GitHub</a>
-                </slot>
-              </div>
-              <div class="footer-primary-copyright">
-                <a href="https://hax.psu.edu/">HaxTheWeb © 2024</a>
-              </div>
+          <site-region name="footerPrimary"></site-region>
+            <slot name="footer-primary" class="footer-primary-slot">
+              ${this.renderFooterPrimarySlot()}
+            </slot>
           </div>
         </section>
         <scroll-button position="left"></scroll-button>
