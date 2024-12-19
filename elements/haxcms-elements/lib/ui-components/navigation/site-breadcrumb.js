@@ -9,6 +9,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDBreadcrumb } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 
 /**
  * `site-breadcrumb`
@@ -16,7 +17,7 @@ import { DDDBreadcrumb } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
  *
  * @demo demo/index.html
  */
-class SiteBreadcrumb extends DDD {
+class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
@@ -74,6 +75,12 @@ class SiteBreadcrumb extends DDD {
     super();
     this.__disposer = [];
     this.items = [];
+    this.includeHome = false;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      home: "Home",
+    };
   }
   // render function
   render() {
@@ -103,6 +110,7 @@ class SiteBreadcrumb extends DDD {
     return {
       items: { type: Array },
       editMode: { type: Boolean, reflect: true, attribute: "edit-mode" },
+      includeHome: { type: Boolean, reflect: true, attribute: "include-home" },
     };
   }
 
@@ -144,6 +152,12 @@ class SiteBreadcrumb extends DDD {
             slug: itemBuilder.slug,
           });
         }
+      }
+      if (this.includeHome) {
+        items.unshift({
+          title: this.t.home,
+          slug: store.homeLink,
+        });
       }
       // don't display if we are the only thing in the trail bc there is no point
       if (items.length === 1) {
