@@ -26,11 +26,15 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
         :host {
           display: block;
         }
-        .breadcrumb {
+        ol.breadcrumb {
           font-weight: var(--ddd-font-weight-light);
           margin: var(--site-breadcrumb-margin, var(--ddd-spacing-6) 0);
           padding: 0;
           pointer-events: auto;
+          font-size: var(
+            --site-breadcrumb-font-size,
+            var(--ddd-font-size-4xs, 16px)
+          );
           list-style: "/";
           gap: var(--ddd-spacing-2);
           display: flex;
@@ -39,7 +43,13 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
           line-height: normal;
           text-align: start;
         }
-        .breadcrumb li a {
+        ol.breadcrumb li {
+          font-size: var(
+            --site-breadcrumb-font-size,
+            var(--ddd-font-size-4xs, 16px)
+          );
+        }
+        ol.breadcrumb li a {
           vertical-align: text-top;
           display: inline-block;
           padding: 0 var(--ddd-spacing-2);
@@ -55,10 +65,10 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
             var(--ddd-theme-default-link, #383f45)
           );
         }
-        .breadcrumb li:first-child a {
+        ol.breadcrumb li:first-child a {
           padding-left: 0;
         }
-        .breadcrumb li:last-child a {
+        ol.breadcrumb li:last-child a {
           color: var(--site-breadcrumb-last-color, black);
           pointer-events: none;
         }
@@ -86,7 +96,7 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
   render() {
     return html` ${this.items.length > 0
       ? html`
-          <ul
+          <ol
             class="breadcrumb"
             itemscope
             itemtype="https://schema.org/BreadcrumbList"
@@ -101,7 +111,7 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
                   <a itemprop="item" href="${item.slug}">${item.title}</a>
                 </li>`,
             )}
-          </ul>
+          </ol>
         `
       : ``}`;
   }
@@ -160,9 +170,14 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
         });
       }
       // don't display if we are the only thing in the trail bc there is no point
-      if (items.length === 1) {
+      if (!this.includeHome && items.length === 1) {
         this.items = [];
-      } else {
+      }
+      // ensure no trail on the home page if it matches the trail
+      else if(this.includeHome && items.length === 2 && items[0].slug === items[1].slug) {
+        this.items = [];
+      }
+      else {
         this.items = [...items];
       }
     }
