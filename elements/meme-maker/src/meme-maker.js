@@ -84,6 +84,7 @@ class MemeMaker extends LitElement {
           src="${this.imageUrl}"
           alt="${this.alt || ""}"
           aria-describedby="${this.describedBy || ""}"
+          ?crossorigin="${this.crossorigin}"
         />
         <figcaption class="top-text">${this.topText}</figcaption>
         <figcaption class="bottom-text">${this.bottomText}</figcaption>
@@ -96,6 +97,7 @@ class MemeMaker extends LitElement {
   constructor() {
     super();
     this.alt = "";
+    this.crossorigin = false;
   }
   static get properties() {
     return {
@@ -104,6 +106,9 @@ class MemeMaker extends LitElement {
        */
       alt: {
         type: String,
+      },
+      crossorigin: {
+        type: Boolean,
       },
       /**
        * Aria-describedby data passed down to appropriate tag
