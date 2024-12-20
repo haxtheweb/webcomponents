@@ -148,6 +148,18 @@ class HaxTray extends I18NMixin(
     });
     autorun(() => {
       this.elementAlign = toJS(HAXStore.elementAlign);
+      if (globalThis.document && globalThis.document.body) {
+        if (this.elementAlign === 'left') {
+          globalThis.document.body.style.setProperty("--hax-tray-element-align-margin", `0 0 0 var(--hax-tray-element-custom-width, calc(
+            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
+          ))`);
+        }
+        else {
+          globalThis.document.body.style.setProperty("--hax-tray-element-align-margin", `0 var(--hax-tray-element-custom-width, calc(
+            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
+          )) 0 0`);
+        }  
+      }
     });
     autorun(() => {
       this.tourOpened = toJS(HAXStore.tourOpened);
@@ -346,9 +358,9 @@ class HaxTray extends I18NMixin(
           pointer-events: all;
           background-color: var(--hax-ui-background-color);
           max-height: calc(100vh - 48px);
-          width: calc(
+          width: var(--hax-tray-element-custom-width, calc(
             var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
-          );
+          ));
           max-width: 70vw;
           min-width: 200px;
           overflow-x: auto;
@@ -629,11 +641,9 @@ class HaxTray extends I18NMixin(
             base = 0;
           }
           if (this.elementAlign === "right") {
-            this.shadowRoot.querySelector(".detail").style.width =
-              globalThis.innerWidth - this.__moveX - base + "px";
+            globalThis.document.body.style.setProperty("--hax-tray-element-custom-width", globalThis.innerWidth - this.__moveX - base + "px");
           } else {
-            this.shadowRoot.querySelector(".detail").style.width =
-              this.__moveX - base + "px";
+            globalThis.document.body.style.setProperty("--hax-tray-element-custom-width", this.__moveX - base + "px");
           }
         }
       },
@@ -1049,8 +1059,6 @@ class HaxTray extends I18NMixin(
           direction = !!directions[e.detail.index]
             ? directions[e.detail.index]
             : "left";
-        this.style.setProperty("--hax-tray-custom-y", null);
-        this.style.setProperty("--hax-tray-custom-x", null);
         HAXStore.elementAlign = direction;
         //set local storage
         localStorageSet("hax-tray-elementAlign", direction);
@@ -1636,7 +1644,7 @@ class HaxTray extends I18NMixin(
       this.shadowRoot &&
       this.shadowRoot.querySelector(".detail")
     ) {
-      this.shadowRoot.querySelector(".detail").style.width = "";
+      globalThis.document.body.style.setProperty("--hax-tray-element-custom-width", null);
       this.shadowRoot.querySelector(".detail").style.height = "";
     }
     if (newValue == "content-add") {

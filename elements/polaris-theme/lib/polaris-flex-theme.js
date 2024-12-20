@@ -99,6 +99,13 @@ class PolarisFlexTheme extends LTIResizingMixin(
           --video-player-disabled-color: var(--ddd-theme-default-disabled);
         }
 
+        :host([edit-mode]) {
+          /* react to the screen shifting left to right on edit mode w/ tray direction */
+          margin: var(--hax-tray-element-align-margin, 0 0 0 calc(
+            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
+          ));
+          transition: margin .6s ease-in-out;
+        }
         :host([is-safari]) {
           background-color: var(--ddd-accent-6);
           color: black;
@@ -856,6 +863,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
     }
     return {
       ...props,
+      haxTrayAlignment: {
+        type: String,
+        reflect: true,
+        attribute: 'hax-tray-alignment'
+      },
       searchTerm: {
         type: String,
       },
@@ -914,6 +926,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
    */
   constructor() {
     super();
+    // helps with user preference on side of screen for the tray
+    this.haxTrayAlignment = localStorageGet("hax-tray-elementAlign");
     // forcibly set things about the RPG toast for this design
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-display",
@@ -982,13 +996,15 @@ class PolarisFlexTheme extends LTIResizingMixin(
     });
     autorun((reaction) => {
       let activeItem = toJS(store.activeItem);
-      this.pageDescription = activeItem.description;
+      if (activeItem && activeItem.description) {
+        this.pageDescription = activeItem.description;
+      }
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
       let activeItem = toJS(store.activeItem);
       let activeID = toJS(store.activeId)
-      if (activeItem.metadata && activeItem.metadata.image) {
+      if (activeItem && activeItem.metadata && activeItem.metadata.image) {
         this.pageMedia = activeItem.metadata.image;
       } else {
         this.pageMedia = ""
@@ -1044,3 +1060,14 @@ class PolarisFlexTheme extends LTIResizingMixin(
 }
 customElements.define(PolarisFlexTheme.tag, PolarisFlexTheme);
 export { PolarisFlexTheme };
+
+function localStorageGet(name, defaultValue = "") {
+  try {
+    if (localStorage.getItem(name) === null) {
+      return defaultValue;
+    }
+    return JSON.parse(localStorage.getItem(name));
+  } catch (e) {
+    return false;
+  }
+}
