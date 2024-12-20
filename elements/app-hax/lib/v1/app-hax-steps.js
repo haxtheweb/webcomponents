@@ -34,7 +34,7 @@ const themeContext = {
   collection: ["collections-theme", "bootstrap-theme"],
   blog: ["haxor-slevin"],
   course: ["clean-one", "clean-two", "learn-two-theme"],
-  website: ["polaris-theme"],
+  website: ["polaris-flex-theme"],
   training: ["training-theme"],
   import: ["clean-one", "clean-two", "learn-two-theme"],
 };
@@ -130,7 +130,7 @@ export class AppHaxSteps extends SimpleColors {
       }
       if (value === "website") {
         store.site.type = "own";
-        store.site.theme = "polaris-theme";
+        store.site.theme = "polaris-flex-theme";
       }
       if (value === "training") {
         store.site.type = "own";
