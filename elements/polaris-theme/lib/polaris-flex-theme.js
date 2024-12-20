@@ -722,51 +722,23 @@ class PolarisFlexTheme extends LTIResizingMixin(
   }
 
   renderHeaderSlot() {
-    return html`
-        <site-title
-          .part="${this.editMode ? `edit-mode-active` : ``}"
-          ?disabled="${this.editMode}"
-          part="site-title"
-        ></site-title>
-
-        <a href="https://hax.psu.edu/#section-3">Usage</a>
-        <a href="https://hax.psu.edu/#section-9">FAQ</a>`
+    return html``;
   }
 
   renderSideBar(){
-    return html``
+    return html``;
   }
 
   renderFooterContactInformation(){
-    return html`
-        <br>
-        <p>HAX Lab<br>
-          12 Borland Building<br>
-          University Park, PA 16802</p>`
+    return html``
   }
 
   renderFooterSecondarySlot() {
-    return html`
-        <h2>About</h2>
-        <p><a href="https://hax.psu.edu/">HAX</a> is a service provided through a collaboration between 
-        <a href="https://arts.psu.edu/">Penn State College of Arts and Architecture</a>, 
-        <a href="https://science.psu.edu/">Eberly College of Science</a>, 
-        <a href="https://ist.psu.edu/">College of Information Sciences and Technology</a>, and 
-        <a href="https://libraries.psu.edu/">University libraries</a>. The platform is powered by HAXcms, 
-        originally developed to power 100s of high scale online courses.
-        </p>`
+    return html``
   }
 
   renderFooterPrimarySlot() {
-    return html`
-      <div class="footer-primary-links">
-        <a href="https://hax.psu.edu/">HAX</a>
-        <a href="https://haxtheweb.org/">Docs</a>
-        <a href="https://github.com/haxtheweb">GitHub</a>
-      </div>
-      <div class="footer-primary-copyright">
-        <a href="https://hax.psu.edu/">HaxTheWeb © 2024</a>
-      </div>`
+    return html``
   }
   // render function
   render() {

@@ -125,9 +125,6 @@ export class PolarisMediaBanner extends LitElement {
   }
 
   render() {
-    console.log(this.mediaType)
-    console.log(this.fileExt)
-    console.log(this.source)
     return html`
       ${this.mediaType === 'image' 
         ? html `
