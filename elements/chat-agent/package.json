@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.27",
+  "version": "10.0.0",
   "description": "chatbot agent style chat widget",
   "repository": {
     "type": "git",
@@ -42,16 +42,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^9.0.27",
-    "@haxtheweb/haxcms-elements": "^9.0.27",
-    "@haxtheweb/micro-frontend-registry": "^9.0.22",
-    "@haxtheweb/rpg-character": "^9.0.27",
-    "@haxtheweb/type-writer": "^9.0.22",
+    "@haxtheweb/d-d-d": "^10.0.0",
+    "@haxtheweb/haxcms-elements": "^10.0.0",
+    "@haxtheweb/micro-frontend-registry": "^10.0.0",
+    "@haxtheweb/rpg-character": "^10.0.0",
+    "@haxtheweb/type-writer": "^10.0.0",
     "lit": "^3.2.1",
     "mobx": "^6.3.0"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.22",
+    "@haxtheweb/deduping-fix": "^10.0.0",
     "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "9.0.27",
+  "version": "10.0.0",
   "description": "A 2nd clean theme",
   "repository": {
     "type": "git",
@@ -43,17 +43,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^9.0.27",
-    "@haxtheweb/micro-frontend-registry": "^9.0.22",
-    "@haxtheweb/q-r": "^9.0.25",
-    "@haxtheweb/simple-colors": "^9.0.27",
-    "@haxtheweb/simple-icon": "^9.0.27",
-    "@haxtheweb/utils": "^9.0.22",
+    "@haxtheweb/haxcms-elements": "^10.0.0",
+    "@haxtheweb/micro-frontend-registry": "^10.0.0",
+    "@haxtheweb/q-r": "^10.0.0",
+    "@haxtheweb/simple-colors": "^10.0.0",
+    "@haxtheweb/simple-icon": "^10.0.0",
+    "@haxtheweb/utils": "^10.0.0",
     "lit": "^3.2.1",
     "mobx": "6.12.4"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.22",
+    "@haxtheweb/deduping-fix": "^10.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

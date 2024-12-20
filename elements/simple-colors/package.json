@@ -17,7 +17,7 @@
       "screenreaderOnlyCSS"
     ]
   },
-  "version": "9.0.27",
+  "version": "10.0.0",
   "description": "Automated conversion of simple-colors/",
   "repository": {
     "type": "git",
@@ -42,16 +42,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-utils": "^9.0.22",
-    "@haxtheweb/simple-colors-shared-styles": "^9.0.22",
-    "@haxtheweb/simple-modal": "^9.0.27",
-    "@haxtheweb/simple-picker": "^9.0.27",
+    "@haxtheweb/a11y-utils": "^10.0.0",
+    "@haxtheweb/simple-colors-shared-styles": "^10.0.0",
+    "@haxtheweb/simple-modal": "^10.0.0",
+    "@haxtheweb/simple-picker": "^10.0.0",
     "@polymer/polymer": "^3.5.2",
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.22",
-    "@haxtheweb/storybook-utilities": "^9.0.27",
+    "@haxtheweb/deduping-fix": "^10.0.0",
+    "@haxtheweb/storybook-utilities": "^10.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
